@@ -15,7 +15,7 @@ const ChatBox = () => {
     setInput('');
   
       // Send POST request to REST API
-    axios.post('http://localhost:1234/v1/chat/completions', {
+    axios.post('http://127.0.0.1:8000/getModelInfo/', {
     model: 'gemma-3-4b-it',
     messages: [
         { role: 'user', content: userInput }
@@ -24,10 +24,10 @@ const ChatBox = () => {
     })
     .then(response => {
         console.log('Response:');
-        console.log('Chat Response:', response.data.choices[0].message.content);
+        console.log('Chat Response:', response);
         setMessages(prev => [
             ...prev,
-            { sender: 'Bot', text: response.data.choices[0].message.content },
+            { sender: 'Bot', text: response.data}
             ]);
     })
     .catch(error => {

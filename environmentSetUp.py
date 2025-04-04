@@ -14,7 +14,7 @@ openai_api_key = "lm-studio"
 # You can often find the model identifier in LM Studio.
 # If unsure, you can try a placeholder like "local-model".
 model_name = "gemma-3-4b-it" # Replace if needed, e.g., "Meta-Llama-3-8B-Instruct-GGUF"
-
+    
 # --- Initialize the LangChain LLM object ---
 llm = ChatOpenAI(
     model=model_name,
