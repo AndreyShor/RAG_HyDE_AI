@@ -5,21 +5,21 @@ from langchain_core.output_parsers import StrOutputParser
 # --- Configuration ---
 # Point to the local server exposed by LM Studio
 # Make sure the server is running in LM Studio!
-openai_api_base = "http://localhost:1234/v1"
+local_api_base = "http://localhost:1234/v1"
 # API key is not needed for local LM Studio server but LangChain requires something
-openai_api_key = "lm-studio"
+local_api_key = "lm-studio"
 # Optional: Specify the model name loaded in LM Studio.
 # Often, this isn't strictly necessary as LM Studio serves the loaded model,
 # but it can be good practice or required by certain LangChain components.
 # You can often find the model identifier in LM Studio.
 # If unsure, you can try a placeholder like "local-model".
 model_name = "gemma-3-4b-it" # Replace if needed, e.g., "Meta-Llama-3-8B-Instruct-GGUF"
-    
+
 # --- Initialize the LangChain LLM object ---
 llm = ChatOpenAI(
     model=model_name,
-    openai_api_key=openai_api_key,
-    openai_api_base=openai_api_base,
+    openai_api_key=local_api_key,
+    openai_api_base=local_api_base,
     temperature=0.7 # Adjust temperature and other parameters as needed
 )
 

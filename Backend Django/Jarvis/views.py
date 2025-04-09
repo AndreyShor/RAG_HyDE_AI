@@ -10,7 +10,7 @@ def home(request):
 @csrf_exempt
 def get_model_info(request):
     if request.method == 'POST':
-        # Parse JSON data from request body
+        # Parse JSON data from request body 
         try:
             data = json.loads(request.body)
             print(data)
