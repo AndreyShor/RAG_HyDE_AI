@@ -1,17 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI # type: ignore
 from pymongo import MongoClient
-from qdrant_client import QdrantClient
-from qdrant_client.http.exceptions import UnexpectedResponse
-import os
-
-app = FastAPI()
-
-# --- Configuration ---
-# MongoDB URI
-from fastapi import FastAPI
-from pymongo import MongoClient
-from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, VectorParams, PointStruct
+from qdrant_client import QdrantClient # type: ignore
+from qdrant_client.http.exceptions import UnexpectedResponse # type: ignore
 import os
 import uuid
 
