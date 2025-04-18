@@ -1,0 +1,115 @@
+Ablation Study on Bootstrapping Combinations.
+We
+conduct an ablation study to analyze various random combi-
+nations of bootstrapping methods. Fig. 8 reports the average
+accuracy fluctuation as we add different transformations.
+Results suggest the following findings:
+1) The composition bootstrapping strategy appears
+to have the strongest negative effect on model accuracy:
+Significant reduction in accuracy is observed when mul-
+tiple image (I) or textual (T) perturbations are combined.
+Particularly, the combination of I1+I2+I3 and T1+T2+T3
+contributed to the strongest overall reductions, including
+12.7% and 18.6% respective reductions in image and text. 2)
+Transformations in text produce a stronger reduction in
+accuracy than images: A single textual perturbation (e.g.,
+T1/T2/T3) consistently produces lower accuracy than a sin-
+gle visual perturbation (I1/I2/I3) indicating models’ greater
+reliance on the textual context during reasoning. 3) The
+hard tasks are less affected by the combined perturba-
+tions compared to easier tasks. For example, the accuracy
+on hard tasks typically remains stable or even slightly in-
+creases with certain compositions (e.g., I1+T1). It is possible
+that models inherently reason harder to solve hard tasks than
+simple memorization. These observations indicate the criti-
+cal need for developing models that are capable of maintain-
+ing robust multimodal comprehension and reasoning under
+dynamic and diverse conditions.
+6. Conclusion
+We introduce MDK12-Bench, a comprehensive multimodal
+benchmark designed to evaluate the reasoning abilities of
+MLLMs across diverse real-world K-12 tasks. By covering
+141K questions that span multiple disciplines and grade lev-
+els, structuring the knowledge system through fine-grained
+knowledge-point annotations and detailed answer explana-
+tions, MDK12-Bench fills critical gaps present in existing
+benchmarks, such as limited data scale, narrow domain cov-
+erage, and unstructured knowledge representation. We fur-
+ther proposed a dynamic evaluation framework employing
+multiple textual and visual bootstrapping strategies to miti-
+gate data contamination, ensuring robust, reliable, and fair
+assessment. Experimental results revealed significant limita-
+tions in current state-of-the-art MLLMs, particularly high-
+lighting their sensitivity to contextual changes and task com-
+plexity. Our insights highlight the necessity for enhanced
+multimodal contextual comprehension and reasoning abili-
+ties. Future work may focus on improving models’ resilience
+to dynamic perturbations of question formats, thereby paving
+the way toward more robust multimodal reasoning models.
+References
+[1] Josh Achiam, Steven Adler, Sandhini Agarwal, Lama Ahmad,
+Ilge Akkaya, Florencia Leoni Aleman, Diogo Almeida, Janko
+Altenschmidt, Sam Altman, Shyamal Anadkat, et al. GPT-4
+technical report. arXiv preprint arXiv:2303.08774, 2023. 2
+[2] Jean-Baptiste Alayrac, Jeff Donahue, Pauline Luc, Antoine
+Miech, Iain Barr, Yana Hasson, Karel Lenc, Arthur Mensch,
+Katherine Millican, Malcolm Reynolds, et al.
+Flamingo:
+a visual language model for few-shot learning. Advances
+in neural information processing systems, 35:23716–23736,
+2022. 1
+[3] Anthropic. The claude 3 model family: Opus, sonnet, haiku.
+2023. 2, 7
+[4] Shuai Bai, Keqin Chen, Xuejing Liu, Jialin Wang, Wenbin
+Ge, Sibo Song, Kai Dang, Peng Wang, Shijie Wang, Jun
+Tang, et al. Qwen2. 5-vl technical report. arXiv preprint
+arXiv:2502.13923, 2025. 7
+[5] Sami Baral, Li Lucy, Ryan Knight, Alice Ng, Luca Soldaini,
+Neil Heffernan, and Kyle Lo. Drawedumath: Evaluating
+vision language models with expert-annotated students’ hand-
+drawn math images. In The 4th Workshop on Mathematical
+Reasoning and AI at NeurIPS’24, 2024. 1, 2
+[6] Black Forest Labs.
+Flux.
+https://github.com/
+black-forest-labs/flux, 2024. Accessed: 2024-
+11-05. 5
+[7] Eason Chen, Danyang Wang, Luyi Xu, Chen Cao, Xiao Fang,
+and Jionghao Lin. A systematic review on prompt engineering
+in large language models for k-12 stem education. arXiv
+preprint arXiv:2410.11123, 2024. 1
+[8] Zhe Chen, Weiyun Wang, Yue Cao, Yangzhou Liu, Zhang-
+wei Gao, Erfei Cui, Jinguo Zhu, Shenglong Ye, Hao Tian,
+Zhaoyang Liu, et al. Expanding performance boundaries
+of open-source multimodal models with model, data, and
+test-time scaling. arXiv preprint arXiv:2412.05271, 2024. 7
+[9] Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian, Mark
+Chen, Heewoo Jun, Lukasz Kaiser, Matthias Plappert, Jerry
+Tworek, Jacob Hilton, Reiichiro Nakano, et al. Training
+verifiers to solve math word problems.
+arXiv preprint
+arXiv:2110.14168, 2021. 3
+[10] Rocktim Jyoti Das, Simeon Emilov Hristov, Haonan Li, Dim-
+itar Iliyanov Dimitrov, Ivan Koychev, and Preslav Nakov.
+Exams-v: A multi-discipline multilingual multimodal exam
+benchmark for evaluating vision language models. arXiv
+preprint arXiv:2403.10378, 2024. 3
+[11] EvolvingLMMs-Lab. open-r1-multimodal: A fork to add
+multimodal model training to open-r1. https://github.
+com/EvolvingLMMs-Lab/open-r1-multimodal.
+Accessed: 2025-03-08. 7
+[12] Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song,
+Ruoyu Zhang, Runxin Xu, Qihao Zhu, Shirong Ma, Peiyi
+Wang, Xiao Bi, et al. Deepseek-r1: Incentivizing reasoning
+capability in llms via reinforcement learning. arXiv preprint
+arXiv:2501.12948, 2025. 2
+[13] Yunzhuo Hao, Jiawei Gu, Huichen Will Wang, Linjie Li,
+Zhengyuan Yang, Lijuan Wang, and Yu Cheng. Can mllms
+reason in multimodality? emma: An enhanced multimodal
+reasoning benchmark.
+arXiv preprint arXiv:2501.05444,
+2025. 1, 2
+[14] Jiaxing Huang and Jingyi Zhang.
+A survey on evalua-
+tion of multimodal large language models. arXiv preprint
+arXiv:2408.15769, 2024. 1

@@ -9,8 +9,9 @@ from langchain.embeddings.base import Embeddings
 from sentence_transformers import SentenceTransformer
 
 # === CONFIGURATION ===
-DOCUMENTS_DIR = "./text_output_random300"  # path to your .txt files
-QDRANT_COLLECTION_NAME = "physics_papers_random_300_pages_v1"
+
+DOCUMENTS_DIR = os.path.dirname(__file__) + "/text_output_random300"
+QDRANT_COLLECTION_NAME = "physics_papers_random_300_pages_v2"
 QDRANT_HOST = "localhost"
 QDRANT_PORT = 6333
 EMBEDDING_DIM = 384 

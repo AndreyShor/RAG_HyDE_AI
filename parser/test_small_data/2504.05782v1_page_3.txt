@@ -1,0 +1,45 @@
+Figure 1. Overview of MDK12-Bench. It comprises 140K instances and spans 6 disciplines in K-12 education. The knowledge system of
+our bench is structured into six fine-grained levels: discipline, grade, curriculum, topic, meta-knowledge, and key knowledge points, where
+the three rings showcase the first three levels. Examples illustrate the representative grades (elementary, middle, and high schools), difficulty
+levels (easy, medium, and high), questions and answers, and key knowledge points of each discipline. The diverse question forms (single-
+and multiple-choice, open-ended question, fill-in-blank, true-or-false) and detailed answer explanations are also demonstrated.
+and deep reasoning, or include reasoning only in limited
+contexts. For instance, MathVerse [53] emphasizes visual
+mathematical comprehension, while MMBench examines
+basic visual understanding and cross-modal fusion [22]. Re-
+cently, more comprehensive evaluations have emerged. For
+instance, MMMU [50] proposed a large-scale ”expert AI”
+challenge across domains like medicine and law. GSM-8K
+[9] emphasized logical consistency in mathematical reason-
+ing. EXAMS-V [10] extended multilingual, multimodal
+exam-style assessments. Despite these advances, existing
+benchmarks still face limitations in data size, knowledge
+system completeness, and domain diversity, as they often
+focus on mathematics or a narrow set of specialized knowl-
+edge. Our benchmark aims to overcome these limitations by
+evaluating complex reasoning and multi-domain proficiency.
+Dyanmic Evaluation. Growing doubts about the “true capa-
+bilities” of LLMs in public benchmarks often attribute “spu-
+rious performances” to data contamination. To keep pace
+with evolving model capabilities and mitigate contamination,
+researchers have turned to dynamic or adaptive evaluations.
+Zhu et al. [56] introduced a meta-probing agent that contin-
+ually adjusts test content and difficulty during fine-tuning
+or domain adaptation, while Yang et al. [48] dynamically
+modifies visual and textual context to verify the influence
+of data contamination. These dynamic methods indicate
+a promising future for benchmarks, which must evolve as
+models expand their training corpora. More robust protocols
+are needed to distinguish genuine reasoning improvements
+from mere pattern matching. Therefore, we propose a dy-
+namic testing framework for MDK12-Bench to counter data
+leakage and maintain sustained benchmark integrity.
+3. MKD12-Benchmark
+To address the scarcity of high-quality multimodal academic
+reasoning benchmarks, We created MKD12-Bench in around
+two months with the participation of over 20 researchers and
+several K-12 educators. The data curation of our benchmark
+involves four stages, as shown in Fig. 2(a).
+Data Collection. The data collection involves an extensive
+search of online open-source exam paper repositories. The
+team established and refined an efficient acquisition work-

@@ -1,0 +1,80 @@
+MDK12-Bench: A Multi-Discipline Benchmark for
+Evaluating Reasoning in Multimodal Large Language Models
+Pengfei Zhou1*, Fanrui Zhang2,3∗, Xiaopeng Peng4∗, Zhaopan Xu5,1, Jiaxin Ai6,2, Yansheng Qiu6,1,
+Chuanhao Li1, Zhen Li1, Ming Li1, Yukang Feng2, Jianwen Sun2, Haoquan Zhang1, Zizhen Li2, Xiaofeng
+Mao1, Wangbo Zhao8, Kai Wang8, Xiaojun Chang3,7, Wenqi Shao1, Yang You8†, Kaipeng Zhang1,2†
+1Shanghai AI Laboratory 2Shanghai Innovation Institute 3USTC 4RIT 5HIT 6WHU 7MBZUAI 8NUS
+Abstract
+Multimodal reasoning, which integrates language and visual
+cues into problem solving and decision making, is a funda-
+mental aspect of human intelligence and a crucial step to-
+ward artificial general intelligence. However, the evaluation
+of multimodal reasoning capabilities in Multimodal Large
+Language Models (MLLMs) remains inadequate. Most exist-
+ing reasoning benchmarks are constrained by limited data
+size, narrow domain coverage, and unstructured knowledge
+distribution. To close these gaps, we introduce MDK12-
+Bench, a multi-disciplinary benchmark assessing the reason-
+ing capabilities of MLLMs via real-world K-12 examinations.
+Spanning six disciplines (math, physics, chemistry, biology,
+geography, and information science), our benchmark com-
+prises 140K reasoning instances across diverse difficulty
+levels from primary school to 12th grade. It features 6,827
+instance-level knowledge point annotations based on a well-
+organized knowledge structure, detailed answer explana-
+tions, difficulty labels and cross-year partitions, providing a
+robust platform for comprehensive evaluation. Additionally,
+we present a novel dynamic evaluation framework to mitigate
+data contamination issues by bootstrapping question forms,
+question types, and image styles during evaluation. Exten-
+sive experiment on MDK12-Bench reveals the significant
+limitation of current MLLMs in multimodal reasoning. The
+findings on our benchmark provide insights into the develop-
+ment of the next-generation models. Our data and codes are
+available at https://github.com/LanceZPF/MDK12.
+1. Introduction
+Reasoning is fundamental to human intelligence, enabling
+logical, rational, and deliberate thought, inference, and de-
+duction beyond prior knowledge [23, 37]. By integrating
+vision, language, and symbols, multimodal reasoning im-
+proves problem-solving and decision-making abilities based
+*Equal contribution †Corresponding author
+on diverse information sources. Replicating sophisticated
+and context-aware multimodal reasoning capabilities is cru-
+cial to achieving Artificial General Intelligence (AGI) [27].
+With the rapid advancement of Multimodal Large Lan-
+guage Models (MLLMs) [2, 18, 20, 33], reliable benchmarks
+are needed to assess their real-world reasoning capabilities.
+Existing multimodal benchmarks focus mainly on basic un-
+derstanding and low-order reasoning tasks [15, 17, 34], such
+as numerics [39], common sense [22, 49] and image quality
+judgment [47]. Unlike low-order reasoning, which relies
+on common knowledge, high-order reasoning requires step-
+by-step thinking and systematic analysis capabilities. While
+most existing benchmarks are restricted to single isolated dis-
+ciplines (e.g., mathematics [5, 24, 43] and medicine [38, 46])
+or common knowledge [13, 50], the evaluation of high-order
+reasoning has not been fully explored.
+While several early attempts have been made to evaluate
+the complex reasoning performance of MLLMs [14, 19], the
+previous benchmarks still have limitations in data scope, data
+size, data granularity, or systematic knowledge structuring.
+As a result, these benchmarks lack the breadth and depth
+to challenge the reasoning capabilities of MLLMs in com-
+plicated real-world reasoning tasks. In addition, due to the
+absence of fine-grained key-point annotations and structured
+knowledge, these benchmarks fail to trace how MLLMs fail
+in solving certain problems.
+To address these challenges, we introduce MDK12-
+Bench, a multi-disciplinary benchmark assessing reasoning
+capabilities of MLLMs at the K-12 level (defined for sim-
+plicity as Grades 1 to 12 excluding kindergarten). Spanning
+from Grade 1 to Grade 12, K-12 education is deeply inter-
+woven with disciplinary examinations for testing knowledge
+comprehension and high-order thinking skills [7, 21]. In con-
+trast to higher education, where individuals receive in-depth
+knowledge for professional development through self-guided
+learning, K-12 offers a broad spectrum of subjects that are
+more structured, well-defined and interconnected. These
+characteristics make the K-12 domains an ideal testbed for
+arXiv:2504.05782v1  [cs.CV]  8 Apr 2025

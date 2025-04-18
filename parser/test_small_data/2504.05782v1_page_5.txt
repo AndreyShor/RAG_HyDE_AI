@@ -1,0 +1,67 @@
+Figure 3. The proposed dynamic MLLMs evaluation pipeline. It includes an image and a text bootstrapping module to mitigate data
+contamination and a two-stage answer evaluation module comparing the model answers with ground truth.
+benchmark comprises 141,320 instances, including 77,857
+text-only and 63,463 multimodal instances, covering a total
+of 105,218 images over 12 years (2016-2025). Additionally,
+we define four question formats: multiple-choice (single-
+answer and multi-answer), fill-in-the-blank, true-or-false,
+and open-ended (primarily mathematical calculation). For
+accelerating assessment, we introduce MDK12-Mini, which
+includes three datasets. Each consists of 10% of the data
+from MDK12-Bench sampled at easy, medium, and hard lev-
+els respectively. Key knowledge points are uniformly sam-
+pled to ensure that each subset includes at least one instance
+per key knowledge point (each instance may cover multiple
+knowledge points). As MLLMs’ reasoning capabilities can
+also be challenged by text-only prompts, we include both
+single-modal and multimodal instances in MDK12-Bench.
+4. Dynamic MLLM Evaluation
+4.1. Bootstrapping Methods
+As illustrated in Fig. 3, we propose a dynamic evaluation
+framework that introduces controlled perturbations to texts
+and images during the evaluation of MLLMs by creating new
+test samples while preserving the accuracy of the answers.
+Image Bootstrapping.
+Three strategies are proposed to
+improve image diversity without changing image semantics:
+• Spatial Transformation. We pad the original image with
+colors uniformly sampled from black, white, and grey.
+The padding width is proportional to the image dimension
+along each side, with the ratios uniformly sampled in the
+range between 10% and 20%. The image padding allows
+the evaluation of the model’s recognition and localization
+performance in varying spatial visual contexts.
+• Color Transformation. In this step, the colors of the orig-
+inal image were inverted. Salt-and-pepper noise of random
+noise density is also added. This transformation assesses
+the model’s resilience to significant color distortions and
+random visual artifacts, ensuring it can still accurately
+identify and reason about objects.
+• Style Transformation. We apply mild style transforma-
+tions using the Flux-Dev [6] model, introducing subtle
+style variations without significantly altering its key visual
+elements and semantics that relate to the question. This
+tests the model’s robustness to image style shifts.
+Textual Bootstrapping.
+We introduce three methods to
+modify questions while preserving the answer’s correctness:
+• Word Substitution. We replace certain keywords with
+synonyms or contextually related expressions. This tests
+how well a model can maintain an accurate understanding
+when familiar terms are changed, thus assessing vocabu-
+lary sensitivity and semantic generalization.
+• Sentence Paraphrasing. We rephrase entire sentences
+through variations in sentence structure, word order, or
+style. This checks whether a model can consistently cap-
+ture the underlying meaning even when the surface form
+of the text is altered.
+• Question Type Permutation. We convert a question from
+one format to another, such as turning a multiple-choice
+problem into a fill-in-the-blank. By changing the required
+style of the answer, we can see if the model retains key
+information under different response formats.
+Throughout the generation process, we apply a GPT-
+based judge to reject sampling wrong adapted instances,
+guaranteeing that each dynamically altered text and image
+still aligns with the question’s original correct answer. By
+this framework, we construct diverse versions of the sam-
