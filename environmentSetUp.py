@@ -11,7 +11,7 @@ local_api_key = "lm-studio"
 # Optional: Specify the model name loaded in LM Studio.
 # Often, this isn't strictly necessary as LM Studio serves the loaded model,
 # but it can be good practice or required by certain LangChain components.
-# You can often find the model identifier in LM Studio.
+# You can often find the model identifier in LM Studio. 
 # If unsure, you can try a placeholder like "local-model".
 model_name = "gemma-3-4b-it" # Replace if needed, e.g., "Meta-Llama-3-8B-Instruct-GGUF"
 

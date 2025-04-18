@@ -6,44 +6,14 @@ from tqdm import tqdm
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import PointStruct, VectorParams, Distance
 from langchain.embeddings.base import Embeddings
+from sentence_transformers import SentenceTransformer
 
 # === CONFIGURATION ===
 DOCUMENTS_DIR = "./text_output_random300"  # path to your .txt files
-QDRANT_COLLECTION_NAME = "physics_papers_random_300_pages"
+QDRANT_COLLECTION_NAME = "physics_papers_random_300_pages_v1"
 QDRANT_HOST = "localhost"
 QDRANT_PORT = 6333
-EMBEDDING_DIM = 768  # Change this if your model returns a different dimension
-
-API_MODEL_BAASE = "http://localhost:1234/v1"
-API_MODEL_MODEL = "gemma-3-4b-it"  # or the exact model identifier LM Studio exposes
-API_MODEL_API_KEY = "lm-studio"  # API key is not needed for local LM Studio server but LangChain requires something
-
-
-class LMStudioEmbeddings(Embeddings):
-    def __init__(self, api_base="http://localhost:1234/v1", model="gemma-3-4b-it", api_key="lm-studio"):
-        self.api_base = api_base
-        self.model = model
-        self.api_key = api_key
-
-    def embed_documents(self, texts: List[str]) -> List[List[float]]:
-        return [self._embed(text) for text in texts]
-
-    def embed_query(self, text: str) -> List[float]:
-        return self._embed(text)
-
-    def _embed(self, text: str) -> List[float]:
-        response = requests.post(
-            f"{self.api_base}/embeddings",
-            headers={
-                "Authorization": f"Bearer {self.api_key}"
-            },
-            json={
-                "model": self.model,
-                "input": text
-            }
-        )
-        response.raise_for_status()
-        return response.json()["data"][0]["embedding"]
+EMBEDDING_DIM = 384 
 
 
 # === INITIALIZE QDRANT ===
@@ -57,13 +27,9 @@ if not client.collection_exists(QDRANT_COLLECTION_NAME):
 
 # === EMBEDDING FUNCTION ===
 def get_embedding(text):
-    embeddings = LMStudioEmbeddings(
-        api_base=API_MODEL_BAASE,
-        model= API_MODEL_MODEL,  # or the exact model identifier LM Studio exposes
-        api_key=API_MODEL_API_KEY
-    )
+    embedder = SentenceTransformer('all-MiniLM-L6-v2')  # Small and fast
 
-    return embeddings.embed_query(text)
+    return embedder.encode(text).tolist()
 
 # === PROCESSING FUNCTION ===
 def process_file(file_path):
