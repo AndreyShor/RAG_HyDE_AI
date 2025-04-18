@@ -11,7 +11,7 @@ const ChatBox = () => {
     if (!input.trim()) return;
   
     // Add user's message
-    setMessages(prev => [...prev, { sender: 'You', text: input }]);
+    setMessages(prev => [...prev, { sender: 'Andrey', text: input }]);
     const userInput = input;
     setInput('');
   
@@ -19,7 +19,7 @@ const ChatBox = () => {
     axios.post('http://127.0.0.1:8000/', {
     model: 'gemma-3-4b-it',
     messages: [
-        { role: 'user', content: userInput }
+        { role: 'Andrey', content: userInput }
     ],
     temperature: 0.7
     })
@@ -28,7 +28,7 @@ const ChatBox = () => {
         console.log('Chat Response:', response);
         setMessages(prev => [
             ...prev,
-            { sender: 'Bot', text: response.data.message}
+            { sender: 'Jarvis', text: response.data.message}
             ]);
     })
     .catch(error => {
@@ -36,7 +36,7 @@ const ChatBox = () => {
         console.error('Error:', error.response?.data || error.message);
         setMessages(prev => [
             ...prev,
-            { sender: 'Bot', text: 'Error: Unable to fetch response.' },
+            { sender: 'Jarvis', text: 'Error: Unable to fetch response.' },
             ]);
     });
 
@@ -69,8 +69,8 @@ const ChatBox = () => {
     <div className="chat-container">
       <div className="chat-output">
         {messages.map((msg, i) => (
-        <div key={i} className={`message ${msg.sender === 'You' ? 'user' : 'bot'}`}>
-          <ReactMarkdown>{msg.text}</ReactMarkdown>
+        <div key={i} className={`message ${msg.sender === 'Andrey' ? 'user' : 'bot'}`}>
+          <strong>{msg.sender}:</strong> <ReactMarkdown>{msg.text}</ReactMarkdown>
         </div>
         ))}
       </div>

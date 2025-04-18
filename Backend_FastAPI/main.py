@@ -76,7 +76,7 @@ async def send_llm_request(request: ChatRequest):
     output_parser = StrOutputParser()
 
     prompt = ChatPromptTemplate.from_messages([
-        ("system", "You are a helpful assistant. Please provide short answers."),
+        ("system", "You are a helpful assistant, your name is Jarvis. Please provide short answers."),
         ("user", "{input}")
     ])
 

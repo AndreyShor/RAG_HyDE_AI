@@ -23,6 +23,9 @@ services:
     container_name: react-frontend
     ports:
       - "3000:3000"
+    volumes:
+      - ./Frontend:/app        
+      - /app/node_modules       
     command: npm start
     stdin_open: true
     tty: true
