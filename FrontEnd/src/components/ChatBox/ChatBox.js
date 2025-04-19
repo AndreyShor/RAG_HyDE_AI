@@ -7,6 +7,8 @@ const ChatBox = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
+  const [thinking, setThinking] = useState(false);
+
   const handleSend = async () => {
     if (!input.trim()) return;
   
@@ -14,6 +16,8 @@ const ChatBox = () => {
     setMessages(prev => [...prev, { sender: 'Andrey', text: input }]);
     const userInput = input;
     setInput('');
+
+    setThinking(true);
   
       // Send POST request to REST API
     axios.post('http://127.0.0.1:8000/', {
@@ -30,6 +34,7 @@ const ChatBox = () => {
             ...prev,
             { sender: 'Jarvis', text: response.data.message}
             ]);
+        setThinking(false);
     })
     .catch(error => {
         console.log('Error:');  
@@ -38,6 +43,7 @@ const ChatBox = () => {
             ...prev,
             { sender: 'Jarvis', text: 'Error: Unable to fetch response.' },
             ]);
+        setThinking(false);
     });
 
 
@@ -68,11 +74,26 @@ const ChatBox = () => {
   return (
     <div className="chat-container">
       <div className="chat-output">
-        {messages.map((msg, i) => (
-        <div key={i} className={`message ${msg.sender === 'Andrey' ? 'user' : 'bot'}`}>
-          <strong>{msg.sender}:</strong> <ReactMarkdown>{msg.text}</ReactMarkdown>
-        </div>
-        ))}
+      {messages.map((msg, i) => {
+        const isLast = i === messages.length - 1;
+
+        return (
+          <div
+            key={i}
+            className={`message ${msg.sender === 'Andrey' ? 'user' : 'bot'}`}
+          >
+            <strong>{msg.sender}:</strong>
+            <ReactMarkdown>{msg.text}</ReactMarkdown>
+
+            {/* show the indicator only on the latest message */}
+            {isLast && thinking && (
+              <div className="thinking on">
+                <span>Thinking…</span>
+              </div>
+            )}
+          </div>
+        );
+      })}
       </div>
       <div className="input-area">
         <input
