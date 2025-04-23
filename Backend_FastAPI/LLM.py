@@ -5,6 +5,10 @@ from langchain_core.output_parsers import StrOutputParser
 from sentence_transformers import SentenceTransformer
 from Mongo import MongoDBConnection
 
+from Qdrant import QdrantConnector
+
+import json
+
 
 class LLM():
 
@@ -53,38 +57,36 @@ class LLM():
             print(f"- Is the API base URL correct? Expected default: http://localhost:1234/v1, Used: {self.local_api_base}")
             print("- Check the LM Studio server logs for errors.")
 
-    def get_embedding(self, text: str):
-        embedder = SentenceTransformer('all-MiniLM-L6-v2')  # Small and fast
-        return embedder.encode(text).tolist()
-    
 
 
-    
-    def get_response_personal(self, prompt: str, user_name: str):
+    def get_response_as_physics_guru(self, prompt: str):
         # Define the prompt template
         prompt_template = ChatPromptTemplate.from_messages([
-            ("system", "You are a helpful assistant, your name is Jarvis. Please provide short answers."),
+            ("system", "You are a helpful assistant use your knowledge and additional knowledge provided below to answer question. "),
             ("user", "{input}")
         ])
 
-        
+        print(f"Prompt before adding documents: {prompt}")
 
-        prompt_embedding = self.get_embedding(prompt)
-        mongo = MongoDBConnection()
-        userInfo = mongo.find_one(user_name)
+        vectorDb = QdrantConnector()
+
+        topKpapers = vectorDb.similarity_search(prompt, 3)
+        context = ""
+
+        for i, doc in enumerate(topKpapers):
+            context += f"{i}. Description from Knowledge base which should help you to answer question \n {doc.payload['text']}\n"
+
+        prompt = "There is a list of top 10 documents from knowledgebase which should help you to answer the question \n " + context + "\n" + prompt
 
 
-        #check VectorDB for similar embeddings
+        print(prompt)
 
-
-
-        # Define the output parser
+                # Define the output parser
         output_parser = StrOutputParser()
 
-        # Create the chain
         chain = prompt_template | self.llm | output_parser
 
-        # Run the chain and get the response
+                # Run the chain and get the response
         try:
             print("\nSending prompt to local LLM via LangChain...")
             response = chain.invoke({"input": prompt})
@@ -99,3 +101,51 @@ class LLM():
             print("- Is the correct model loaded in LM Studio?")
             print(f"- Is the API base URL correct? Expected default: http://localhost:1234/v1, Used: {self.local_api_base}")
             print("- Check the LM Studio server logs for errors.")
+
+
+    def get_repsone_relative_to_person_info(self, prompt:str, personName): 
+        prompt_template = ChatPromptTemplate.from_messages([
+            ("system", "You are a helpful assistant."),
+            ("user", "{input}")
+        ])
+
+        print("Name: " + personName)
+
+        db = MongoDBConnection()
+        userData = db.find_one("profiles", {"_id": personName})
+
+        userData = json.dumps(userData, default=str) 
+
+        print(userData)
+
+        context = "You are given user profile. Dont tell user anything about his profile at all just answer his quesion without any aditional questions " + userData
+
+        prompt = prompt + context
+
+        output_parser = StrOutputParser()
+
+        chain = prompt_template | self.llm | output_parser
+
+                # Run the chain and get the response
+        try:
+            print("\nSending prompt to local LLM via LangChain...")
+            response = chain.invoke({"input": prompt})
+            print("\nResponse:")
+            print(response)
+            return response
+        except Exception as e:
+            print(f"\nAn error occurred:")
+            print(e)
+            print("\nTroubleshooting tips:")
+            print("- Is the LM Studio server running?")
+            print("- Is the correct model loaded in LM Studio?")
+            print(f"- Is the API base URL correct? Expected default: http://localhost:1234/v1, Used: {self.local_api_base}")
+            print("- Check the LM Studio server logs for errors.")
+
+
+
+
+
+
+
+        

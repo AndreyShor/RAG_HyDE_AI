@@ -20,7 +20,7 @@ const ChatBox = () => {
     setThinking(true);
   
       // Send POST request to REST API
-    axios.post('http://127.0.0.1:8000/', {
+    axios.post('http://127.0.0.1:8000/person', {
     model: 'gemma-3-4b-it',
     messages: [
         { role: 'Andrey', content: userInput }

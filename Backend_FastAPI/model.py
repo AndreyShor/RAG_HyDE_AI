@@ -3,7 +3,7 @@ from typing import List
 
 class Message(BaseModel):
     role: str
-    content: str
+    content: str   
 
 class ChatRequest(BaseModel):
     model: str
