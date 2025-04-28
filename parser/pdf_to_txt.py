@@ -2,8 +2,8 @@ import os
 import fitz  # PyMuPDF
 
 # Set your folder path
-pdf_folder = "./Random_300_physics_papers"
-output_folder = os.path.join(pdf_folder, "text_output_random300")
+pdf_folder = "./Books"
+output_folder = os.path.join(pdf_folder, "txt")
 
 print("📁 Creating output folder (if it doesn't exist)...")
 os.makedirs(output_folder, exist_ok=True)

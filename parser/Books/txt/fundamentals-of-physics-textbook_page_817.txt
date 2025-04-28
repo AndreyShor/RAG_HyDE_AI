@@ -1,0 +1,66 @@
+Equation 27-39 tells us that q decreases exponentially with time, at a rate that
+is set by the capacitive time constant t ! RC. At time t ! t, the capacitor’s
+charge has been reduced to q0e#1, or about 37% of the initial value. Note that a
+greater t means a greater discharge time.
+Differentiating Eq. 27-39 gives us the current i(t):
+(discharging a capacitor).
+(27-40)
+This tells us that the current also decreases exponentially with time, at a rate set
+by t. The initial current i0 is equal to q0/RC. Note that you can find i0 by simply
+applying the loop rule to the circuit at t ! 0; just then the capacitor’s initial poten-
+tial V0 is connected across the resistance R, so the current must be i0 ! V0/R !
+(q0/C)/R ! q0/RC. The minus sign in Eq. 27-40 can be ignored; it merely means
+that the capacitor’s charge q is decreasing.
+Derivation of Eq. 27-33
+To solve Eq. 27-32, we first rewrite it as
+(27-41)
+The general solution to this differential equation is of the form
+q ! qp % Ke#at,
+(27-42)
+where qp is a particular solution of the differential equation, K is a constant to
+be evaluated from the initial conditions, and a ! 1/RC is the coefficient of q in
+Eq. 27-41. To find qp, we set dq/dt ! 0 in Eq. 27-41 (corresponding to the final
+condition of no further charging), let q ! qp, and solve, obtaining
+qp ! C#.
+(27-43)
+To evaluate K, we first substitute this into Eq. 27-42 to get
+q ! C# % Ke#at.
+Then substituting the initial conditions q ! 0 and t ! 0 yields
+0 ! C# % K,
+or K ! #C#. Finally, with the values of qp, a, and K inserted, Eq. 27-42 becomes
+q ! C# # C#e#t/RC,
+which, with a slight modification, is Eq. 27-33.
+dq
+dt %
+q
+RC ! #
+R .
+i ! dq
+dt ! ##
+q0
+RC$e#t/RC
+791
+27-4 RC CIRCUITS
+Checkpoint 5
+The table gives four sets of values for the circuit elements in Fig. 27-15. Rank the
+sets according to (a) the initial current (as the switch is closed on a) and (b) the time
+required for the current to decrease to half its initial value, greatest first.
+1
+2
+3
+4
+# (V)
+12
+12
+10
+10
+R (0)
+2
+3
+10
+5
+C (mF)
+3
+2
+0.5
+2
