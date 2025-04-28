@@ -33,18 +33,36 @@ async def root():
 
 @app.post("/", )
 async def send_llm_request(request: ChatRequest):
-    lastMessage = request.messages[-1].content
 
-    # Initialize LLM
-    llm = LLM(
-        model_name=model_name,
-        local_api_key=local_api_key,
-        local_api_base=local_api_base
-    )
+    try:
+        lastMessage = request.messages[-1].content
 
-    llm_response: str = llm.get_response_normal(lastMessage)
+        # Initialize LLM
+        llm = LLM(
+            model_name=model_name,
+            local_api_key=local_api_key,
+            local_api_base=local_api_base
+        )
 
-    return {"message": llm_response}
+        if(LLM.has_self_reference(lastMessage)):
+            print("Response persona")
+            response = llm.get_repsone_relative_to_person_info_HyDE(lastMessage, "john")
+        elif(LLM.has_physics_prefix(lastMessage)):
+            print("response physics")
+            lastMessage = lastMessage.removeprefix("phy:").removeprefix("Phy:")
+            response = llm.get_response_as_physics_guru_HyDE(lastMessage)
+        else:
+            print("general response")
+            response = llm.get_response_normal(lastMessage)
+
+        return {"message": response}
+
+    except Exception as e:
+        print("🔥 INTERNAL ERROR:", e)
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+
 
 @app.post("/RAG")
 async def send_llm_request(request: ChatRequest):
@@ -59,7 +77,7 @@ async def send_llm_request(request: ChatRequest):
 
         print("dome")
 
-        resposne = llm.get_response_as_physics_guru(lastMessage)
+        resposne = llm.get_response_as_physics_guru_RAG(lastMessage)
         return {"message": resposne}
 
     except Exception as e:
@@ -80,7 +98,7 @@ async def send_llm_request(request: ChatRequest):
 
         print("dome")
 
-        response = llm.get_repsone_relative_to_person_info(lastMessage, "john")
+        response = llm.get_repsone_relative_to_person_info_HyDE(lastMessage, "john")
         return {"message": response}
 
     except Exception as e:

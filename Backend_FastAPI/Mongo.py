@@ -6,6 +6,7 @@ class MongoDBConnection:
         self.db_name = db_name
 
         self.mongo_client = MongoClient(self.host)
+        
         self.mongo_db = self.mongo_client[self.db_name]
 
     
