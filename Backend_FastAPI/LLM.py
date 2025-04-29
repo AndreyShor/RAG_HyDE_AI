@@ -1,16 +1,15 @@
+import json
+import time
+import re
+
+from typing import List
+
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-from sentence_transformers import SentenceTransformer
-from Mongo import MongoDBConnection
-
-from Qdrant import QdrantConnector
-
-import json
-import time
-
-import re
+from DB.Mongo import MongoDBConnection
+from DB.Qdrant import QdrantConnector
 
 from core.logging import SystemLogger
 
@@ -26,14 +25,16 @@ class LLM():
 
         # Initialize the LangChain LLM object
         self.llm = ChatOpenAI(
-            model=self.model_name,
-            openai_api_key=self.local_api_key,
-            openai_api_base=self.local_api_base,
+            model=self.model_name, # type: ignore
+            openai_api_key=self.local_api_key, # type: ignore
+            openai_api_base=self.local_api_base, # type: ignore
             temperature=0.7,  # Adjust temperature and other parameters as needed
-            max_tokens=10000
+            max_tokens=10000 # type: ignore
         )
 
     def get_response_normal(self, prompt: str):
+        """This function is used to get the response from the LLM without any additional context or RAG."""
+
         # Define the prompt template
         prompt_template = ChatPromptTemplate.from_messages([
             ("system", "You are a helpful assistant."),
@@ -67,9 +68,9 @@ class LLM():
             print(f"- Is the API base URL correct? Expected default: http://localhost:1234/v1, Used: {self.local_api_base}")
             print("- Check the LM Studio server logs for errors.")
 
-
-
     def get_response_as_physics_guru_RAG(self, prompt: str):
+        """This function is used to get the response from the LLM with RAG (Retrieval-Augmented Generation) on Physics Data Set."""
+        
         # Define the prompt template
         prompt_template = ChatPromptTemplate.from_messages([
             ("system", "You are a helpful assistant use your knowledge and additional knowledge provided below to answer question. "),
@@ -80,18 +81,24 @@ class LLM():
 
         vectorDb = QdrantConnector()
         topKpapers = vectorDb.similarity_search(prompt, 3)
-        context_list = []
+
+        context_list: List[str] = []
+
         for i, doc in enumerate(topKpapers):
-            context_list.append(f"{i}. Description from Knowledge Base which should help you answer the question:\n{doc.payload['text']}\n")
+            raw_text = doc.payload['text']  # type: ignore
+            formatted_text = self._format_text(raw_text)  # Format each doc
+            context_list.append(
+                f"{i}. Description from Knowledge Base which should help you answer the question:\n{formatted_text}\n"
+            )
 
         # Combine the list into a single string
-        context = "\n".join(context_list)
+        contextDocs = "\n".join(context_list)
 
         # Build the final prompt context
         promptContext = (
             "There is a list of top 10 documents from the Knowledge Base which should help you to answer the question:\n\n"
-            + context
-            + "\n"
+            + contextDocs
+            + "\n User prompt to answer:\n"
             + prompt
         )
 
@@ -114,7 +121,7 @@ class LLM():
 
             durationResponse = time.time() - start_time
 
-            self.logger.log_rag(prompt, context_list, responseAI, durationResponse)
+            self.logger.log_rag(prompt, context_list, responseAI, durationResponse, duration_RAG) # type: ignore
 
             return responseAI
         except Exception as e:
@@ -126,8 +133,9 @@ class LLM():
             print(f"- Is the API base URL correct? Expected default: http://localhost:1234/v1, Used: {self.local_api_base}")
             print("- Check the LM Studio server logs for errors.")
 
-
     def get_response_as_physics_guru_HyDE(self, prompt: str):
+        """This function is used to get the response from the LLM with HyDE (Hypothetical Document Embeddings) on Physics Data Set."""
+
         # Define the prompt template
         output_parser = StrOutputParser()
 
@@ -145,34 +153,49 @@ class LLM():
 
         print("Extension to our prompt: ")
 
-        extendedContext = chainQuery.invoke(prompt)
+        start_time = time.time()
+        agentResponse = chainQuery.invoke(prompt) # type: ignore
+        durationAgent = time.time() - start_time
 
-        extendedPrompt = extendedContext + "\n" + "User prompt: " + prompt
-
-        print(extendedPrompt)
+        extendedPrompt = "Use agent suggestion to give resposne: " + agentResponse + "\n" + "User prompt to asnwer: " + prompt
 
 
+        start_time = time.time()
         vectorDb = QdrantConnector()
-
         topKpapers = vectorDb.similarity_search(extendedPrompt, 3)
-        context = ""
+
+        context_list: List[str] = []
 
         for i, doc in enumerate(topKpapers):
-            context += f"{i}. Data \n {doc.payload['text']}\n"
+            raw_text = doc.payload['text']  # type: ignore
+            formatted_text = self._format_text(raw_text)  # Format each doc
+            context_list.append(
+                f"{i}. Description from Knowledge Base which should help you answer the question:\n{formatted_text}\n"
+            )
 
-        finalPrompt = context + "\n\n" + extendedPrompt
+        # Combine the list into a single string
+        contextDocs = "\n".join(context_list)
+        durationRAG = time.time() - start_time
 
-        print("FinalPrompt: ")
+        # Build the final prompt context
+        finalPrompt = (
+            "There is a list of top 10 documents from the Knowledge Base which should assist you to answer the question:\n\n"
+            + contextDocs
+            + "\n"
+            + extendedPrompt
+        )
 
-        print(finalPrompt)
 
         chainMain = prompt_template | self.llm | output_parser
 
         try:
             print("\nSending prompt to local LLM via LangChain...")
+            start_time = time.time()
             response = chainMain.invoke({"input": finalPrompt})
-            print("\nResponse:")
-            print(response)
+            durationResponse = time.time() - start_time
+            
+            self.logger.log_hyde(prompt, agentResponse, context_list, response, durationResponse, durationRAG, durationAgent) # type: ignore
+
             return response
         except Exception as e:
             print(f"\nAn error occurred:")
@@ -184,7 +207,8 @@ class LLM():
             print("- Check the LM Studio server logs for errors.")
 
     def get_repsone_relative_to_person_info_RAG(self, prompt:str, personName): 
-
+        """This function is used to get the response from the LLM with RAG (Retrieval-Augmented Generation) on User Personal Data Set."""
+        
         output_parser = StrOutputParser()
 
         prompt_template = ChatPromptTemplate.from_messages([
@@ -192,27 +216,29 @@ class LLM():
             ("user", "{input}")
         ])
 
-        print("Name: " + personName)
+        start_time = time.time()
 
         db = MongoDBConnection()
         userData = db.find_one("profiles", {"_id": personName})
-
         userData = json.dumps(userData, default=str) 
-
-        print(userData)
-
+        durationRAG = time.time() - start_time
         context = "You are given user profile. Dont tell user anything about his profile at all just answer his quesion without any aditional questions " + userData
 
-        prompt = prompt + context
+        promptContext = context + "\n" + prompt
+
 
         chain = prompt_template | self.llm | output_parser
 
                 # Run the chain and get the response
         try:
             print("\nSending prompt to local LLM via LangChain...")
-            response = chain.invoke({"input": prompt})
-            print("\nResponse:")
-            print(response)
+
+            start_time = time.time()
+            response = chain.invoke({"input": promptContext})
+            durationResponse = time.time() - start_time
+
+            self.logger.log_rag(prompt, context, response, durationResponse, durationRAG) # type: ignore
+
             return response
         except Exception as e:
             print(f"\nAn error occurred:")
@@ -223,11 +249,10 @@ class LLM():
             print(f"- Is the API base URL correct? Expected default: http://localhost:1234/v1, Used: {self.local_api_base}")
             print("- Check the LM Studio server logs for errors.")
 
-
     def get_repsone_relative_to_person_info_HyDE(self, prompt:str, personName): 
-
+        """This function is used to get the response from the LLM with HyDE (Hypothetical Document Embeddings) on User Personal Data Set."""
+        
         output_parser = StrOutputParser()
-
 
         # Main Agent 
         prompt_template = ChatPromptTemplate.from_messages([
@@ -242,30 +267,34 @@ class LLM():
         ])
 
         # Get additional instruction
+        start_time = time.time()
         chainQuery = query_prep_template | self.llm | output_parser
-        extendedContext = chainQuery.invoke(prompt)
+        extendedContext = chainQuery.invoke(prompt) # type: ignore
+        durationAgent = time.time() - start_time
         agentInstruction = "Helping Agent response: " + extendedContext + "\n \n"
 
         #  Retrieve User Data
+        start_time = time.time()
         db = MongoDBConnection()
         userData = db.find_one("profiles", {"_id": personName})
         userData = json.dumps(userData, default=str) 
         userInfo = "There is " + personName + "data about his preferences and life:" + userData
-
+        durationRAG = time.time() - start_time
 
         # Construct final prompt
         finalPrompt = agentInstruction + "\n" + userInfo + "\n" +prompt
         
-        print("Finall Prompt")
-        print(finalPrompt)
         chain = prompt_template | self.llm | output_parser
 
                 # Run the chain and get the response
         try:
             print("\nSending prompt to local LLM via LangChain...")
+            start_time = time.time()
             response = chain.invoke({"input": finalPrompt})
-            print("\nResponse:")
-            print(response)
+            durationResponse = time.time() - start_time
+
+            # Log Creation
+            self.logger.log_hyde(prompt, agentInstruction, userInfo, response, durationResponse, durationRAG, durationAgent) # type: ignore
             return response
         except Exception as e:
             print(f"\nAn error occurred:")
@@ -276,18 +305,34 @@ class LLM():
             print(f"- Is the API base URL correct? Expected default: http://localhost:1234/v1, Used: {self.local_api_base}")
             print("- Check the LM Studio server logs for errors.")
 
-
-    def has_self_reference(text: str) -> bool:
-        print("test1")
+    def has_self_reference(self, text: str) -> bool:
         """Return True if the query contains any 1st-person term."""
+
         peronn_tag = r"(?i)\b(?:i|me|my|mine|myself|we|us|our|ours|ourselves)\b"
         
         return bool(re.search(peronn_tag, text))
 
-    def has_physics_prefix(text: str) -> bool:
+    def has_physics_prefix(self, text: str) -> bool:
         """Return True if the query starts with 'Phy:' (any casing)."""
-        print("text2")
+
         prefix = re.compile(r"^\s*phy:", re.IGNORECASE)
         return bool(prefix.match(text)) 
+    
+    def _format_text(self, text: str, max_length: int = 500) -> str:
+        """Format the text to fit within the specified maximum length."""
+
+        text = text.replace('\n', ' ').strip()
+        words = text.split()
+        lines = []
+        line = ''
+        for word in words:
+            if len(line) + len(word) + 1 <= max_length:
+                line += (' ' if line else '') + word
+            else:
+                lines.append(line)
+                line = word
+        if line:
+            lines.append(line)
+        return '\n'.join(lines)
 
         

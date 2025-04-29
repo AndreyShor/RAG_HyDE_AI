@@ -1,16 +1,14 @@
 import os
 import uuid
-import requests
-from typing import List
+
 from tqdm import tqdm
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import PointStruct, VectorParams, Distance
-from langchain.embeddings.base import Embeddings
 from sentence_transformers import SentenceTransformer
 
 # === CONFIGURATION ===
 
-DOCUMENTS_DIR = os.path.dirname(__file__) + "/Books/txt"
+DOCUMENTS_DIR = os.path.dirname(__file__) + "/Books/txt" # Change this to your txt folder
 QDRANT_COLLECTION_NAME = "physics_papers_random_300_pages_v2"
 QDRANT_HOST = "localhost"
 QDRANT_PORT = 6333

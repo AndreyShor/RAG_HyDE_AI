@@ -43,7 +43,7 @@ for category in PHYSICS_CATEGORIES:
             continue  # Skip already downloaded
 
         try:
-            result.download_pdf(dirpath=category_dir, filename=filename.name)
+            result.download_pdf(dirpath=category_dir, filename=filename.name) # type: ignore
         except Exception as e:
             print(f"❌ Failed to download {paper_id}: {e}")
         time.sleep(1)

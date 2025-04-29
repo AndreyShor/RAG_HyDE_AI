@@ -1,7 +1,7 @@
 import os
 import fitz  # PyMuPDF
 
-# Set your folder path
+# Set your folder path, Change this to your PDF folder
 pdf_folder = "./Books"
 output_folder = os.path.join(pdf_folder, "txt")
 
@@ -30,7 +30,7 @@ for filename in files:
 
         for page_num in range(total_pages):
             page = doc.load_page(page_num)
-            text = page.get_text()
+            text = page.get_text() # type: ignore
 
             txt_filename = f"{base_name}_page_{page_num + 1}.txt"
             txt_path = os.path.join(output_folder, txt_filename)

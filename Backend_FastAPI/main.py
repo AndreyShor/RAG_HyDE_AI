@@ -1,10 +1,16 @@
+# FastAPI server for LLM
 from fastapi import FastAPI # type: ignore
-from fastapi import HTTPException
+from fastapi import HTTPException # type: ignore
+from fastapi.middleware.cors import CORSMiddleware # type: ignore
 
-from fastapi.middleware.cors import CORSMiddleware
+# Config for FastAPI
+from core.config import SettingsAPI
 
+# Model for routs 
+from routeModel import ChatRequest
+# LLM Functionality for API
 from LLM import LLM
-from model import ChatRequest
+
 
 # LLM Setings
 local_api_base = "http://host.docker.internal:1234/v1"
@@ -13,18 +19,11 @@ model_name = "gemma-3-1b-it"
 
 app = FastAPI()
 
-# 👇 Add this block before your routes
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000"
-    ], # or ["*"] for all origins (dev only)
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# Initialize Settings, CORS
+SettingsAPI(app, corsFlag=True)
 
+
+# Routs of API, for testing, production should be replaced with separate router
 
 @app.get("/start")
 async def root():
@@ -32,7 +31,7 @@ async def root():
 
 
 @app.post("/", )
-async def send_llm_request(request: ChatRequest):
+async def send_llm_request(request: ChatRequest): # type: ignore
 
     try:
         lastMessage = request.messages[-1].content
@@ -44,13 +43,13 @@ async def send_llm_request(request: ChatRequest):
             local_api_base=local_api_base
         )
 
-        if(LLM.has_self_reference(lastMessage)):
+        if(llm.has_self_reference(lastMessage)):
             print("Response persona")
             response = llm.get_repsone_relative_to_person_info_HyDE(lastMessage, "john")
-        elif(LLM.has_physics_prefix(lastMessage)):
+        elif(llm.has_physics_prefix(lastMessage)):
             print("response physics")
             lastMessage = lastMessage.removeprefix("phy:").removeprefix("Phy:")
-            response = llm.get_response_as_physics_guru_HyDE(lastMessage)
+            response = llm.get_response_as_physics_guru_RAG(lastMessage)
         else:
             print("general response")
             response = llm.get_response_normal(lastMessage)
@@ -62,10 +61,8 @@ async def send_llm_request(request: ChatRequest):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-
-
 @app.post("/RAG")
-async def send_llm_request(request: ChatRequest):
+async def send_llm_request(request: ChatRequest): # type: ignore
     try:
         lastMessage = request.messages[-1].content
 

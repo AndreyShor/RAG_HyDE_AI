@@ -8,7 +8,6 @@ class QdrantConnector:
         self.encoder = SentenceTransformer("all-MiniLM-L6-v2")
 
 
-
     def similarity_search(self, query: str, k: int = 10, collectionName: str ="physics_papers_random_300_pages_v2"):
         """ Return hits object which contain 'text':, 'source_file':, "score" """
 
