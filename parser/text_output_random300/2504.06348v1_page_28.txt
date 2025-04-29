@@ -1,0 +1,101 @@
+Purification.
+Consider the unitary V s,k for each of the 3ηs
+ion −6 modes,
+V s,k|0⌈log2 lmax
+s,k ⌉⟩=
+lmax
+s,k
+X
+l=0
+p
+Prk(l)|l⟩.
+(75)
+A generic state preparation algorithm can achieve this unitary with a number of gates scaling linearly with
+the Hilbert space dimension in the worst case, hence as O(log(1/ϵ)) due to Eq. (72) [76, 77]. We apply the
+following protocol to each of the k = 1, ..., 3ηs
+ion −6 modes, to obtain the state in Eq. (71):
+• Initialize all qubits in zero: |0⌈log2 lmax
+s,k ⌉⟩⊗|0nvib⟩.
+• Perform the unitary V s,k on the |0⌈log2 lmax
+s,k ⌉⟩qubits.
+• Perform the controlled unitary U s,k
+C
+= Plmax
+s,k
+l=0 |l⟩⟨l| ⊗U s,k
+l
+.
+The total cost of this procedure across all ions scales as O(ηionnvib log(1/ϵ))) in the worst case, and in practice
+it can be neglected compared to the rest of the algorithm.
+Note that the protocol we have described can be generalized to other non-thermal mixtures as desired.
+For example, we might create a mixture of modes in an specific energy band that is relevant to a reaction
+mechanism of interest, or rather understand a reaction mechanism itself by creating an energy band of
+vibrational excitations and moving the energy band higher/lower while observing the resulting products.
+Electrons.
+We prepare the electrons in an approximate ground state of the BO Hamiltonian (Eq. (50)) as
+computed by classical computational methods such as DFT. Explicitly, for each particle on a grid r that is
+the inverse Fourier transform of the plane wave basis, we wish to create,
+|gel
+s (Rs,0)⟩= A
+X
+i1,...,iηs
+val
+X
+r1,...,rηs
+val
+ci1,...iηs
+val(Rs,0)ϕi1(r1; Rs,0)...ϕiηs
+val(rηs
+val; Rs,0)|r1, ..., rηs
+val⟩
+where {ϕi(r; Rs,0)} are a suitably chosen set of normalized spin orbitals in which the classical calcula-
+tion is performed, and A denotes the anti-symmetrization operator. Since classical methods often give a
+single (single-reference/single-determinant, e.g. the Hartree-Fock state) or at most a superposition (multi-
+reference/multi-determinant) of a few product states,20 most of the coefficients ci1,...iηs
+val (Rs,0) vanish.
+For the typical case of a single product state given by single set α = {i1, ..., iηs
+val}, we load the ηs
+val single-
+particle states in parallel and use the efficient anti-symmetrization circuit of Ref. [78] for A, to prepare a
+single-reference state,
+|ϕs
+α⟩= A
+ηs
+val
+O
+j=1
+X
+rj
+ϕij(rj; Rs,0)|rj⟩
+Recalling that |G| is the size of the basis, the loading procedure has a worst case cost O(ηs
+val|G|), and the
+anti-symmetrization circuit costs O(ηs
+val logc ηs
+val log |G|) (with c ≥1). More refined techniques than simple
+loading could be used to lower the cost to logarithmic in the number of plane waves and polynomial in the
+number of primitive Gaussian functions approximating the Slater determinant [79], but in practice including
+these is not currently a priority in our setting. For example, with |G| ∼106, ηval ∼100, S ∼10 one can
+expect an overall gate cost ∼109, which as we shall see is a sub-leading contribution to the overall cost of
+the algorithm.
+Multi-reference states of ndet products can be prepared using an additional LCU procedure. Defining
+U s
+α|0⟩= |ϕs
+α⟩for the sets of determinants α1, ..., αndet, V s|0⟩= Pndet
+α=1
+p
+csα(Rs,0)|α⟩for their associated
+coefficients, and the select operator S = P
+α |α⟩⟨α| ⊗U s
+α, we obtain,
+(V s)†SV s|0⟩|0⟩=
+1
+λs
+det
+|0⟩|gel
+s (Rs,0)⟩+ |0⊥⟩
+20Increasing the amount of determinants in the state comes with significant classical computational overhead. Often a single
+determinant is sufficient for practical situations but, on occasion, one might want to refine this approximation with additional
+terms.
+Note again that very high accuracy in the initial state should not be needed for our purposes, since it is only an
+approximate initial state from which significant entanglement can arise through full Hamiltonian dynamics.
+28

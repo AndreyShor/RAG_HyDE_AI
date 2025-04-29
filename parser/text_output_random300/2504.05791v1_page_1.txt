@@ -1,0 +1,106 @@
+Illusion Spaces in VR: The Interplay Between Size and Taper
+Angle Perception in Grasping
+Jian Zhang
+University of Melbourne
+Melbourne, VIC, Australia
+jianzhang10@student.unimelb.edu.au
+Wafa Johal
+University of Melbourne
+Melbourne, VIC, Australia
+wafa.johal@unimelb.edu.au
+Jarrod Knibbe
+The University of Queensland
+St Lucia, QLD, Australia
+j.knibbe@uq.edu.au
+Abstract
+Leveraging the integration of visual and proprioceptive cues, re-
+search has uncovered various perception thresholds in VR that
+can be exploited to support haptic feedback for grasping. While
+previous studies have explored individual dimensions, such as size,
+the combined effect of multiple geometric properties on perceptual
+illusions remains poorly understood. We present a two-alternative
+forced choice study investigating the perceptual interplay between
+object size and taper angle. We introduce an illusion space model,
+providing detailed insights into how physical and virtual object
+configurations affect human perception. Our insights reveal how,
+for example, as virtual sizes increase, users perceive that taper an-
+gles increase, and as virtual angles decrease, users overestimate
+sizes. We provide a mathematical model of the illusion space, and
+an associated tool, which can be used as a guide for the design of
+future VR haptic devices and for proxy object selections.
+CCS Concepts
+• Human-centered computing →Virtual reality; Empirical
+studies in HCI; HCI theory, concepts and models; Haptic
+devices.
+Keywords
+Virtual Reality, Grasping, Haptics, Perception
+ACM Reference Format:
+Jian Zhang, Wafa Johal, and Jarrod Knibbe. 2025. Illusion Spaces in VR:
+The Interplay Between Size and Taper Angle Perception in Grasping. In
+CHI Conference on Human Factors in Computing Systems (CHI ’25), April
+26-May 1, 2025, Yokohama, Japan. ACM, New York, NY, USA, 17 pages.
+https://doi.org/10.1145/3706598.3714162
+1
+Introduction
+Accurate haptic feedback remains a grand challenge of virtual re-
+ality (VR). While visual and audio resolution continues toward
+realism, haptics remain relatively limited. One of the opportunities
+here is to leverage physical objects from the space around the user
+to provide haptic feedback for virtual objects in VR. By leveraging
+visuo-proprioceptive illusions, these objects do not have to be an
+exact match for one another. Understanding what virtual objects a
+physical object can represent remains a challenge. To date, research
+Please use nonacm option or ACM Engage class to enable CC licenses
+This work is licensed under a Creative Commons Attribution 4.0 International License.
+CHI ’25, April 26-May 1, 2025, Yokohama, Japan
+© 2025 Copyright held by the owner/author(s).
+ACM ISBN 979-8-4007-1394-1/25/04
+https://doi.org/10.1145/3706598.3714162
+has considered the impact of individual geometric properties in iso-
+lation, and are yet to consider how different properties may impact
+one another and our perception.
+This style of illusory, nearby-object-based haptic interaction is
+typically referred to as a passive haptics approach. These solutions
+benefit from being just-in-time, device-free, ad-hoc, and, (concep-
+tually) scalable [12, 14, 45]. At the same time, they are constrained
+by perceptual illusion limits that require careful design and precise
+application to not adversely impact the user experience [25].
+Much of the existing literature on passive haptics has explored
+object co-location (considering where the physical proxy object is,
+such that it may feel as though it is in the same location as the virtual
+object, e.g., through haptic retargeting [2, 12, 14, 54]), rather than
+object similarity (considering what the object is, such that it may
+feel like the same in material and geometry) [40]. This exploration
+of co-location has revealed that objects can be approx. 15° around
+an arc to the left or right of the virtual object [13] and between
+0.87x and 1.31x as far from the user [19].
+Explorations of similarity have provided insights into the min-
+imum and maximum size the proxy can represent [6], and the
+perception of separate factors including sizes, angles and curves on
+the surface of the object [16]. So far, these works have considered
+object properties in isolation. However, the properties’ impacts
+on hand-pose, and joint forces and torques are not isolated – size
+and shape together drive the finger spacing, orientations, and joint
+configurations of grasping, for example. How object shapes and
+sizes interplay to impact our perceptual limits remains poorly un-
+derstood.
+We study the illusory limits and interplay of size and taper angle
+of physical proxies, using real-time, virtual remapping techniques
+where users’ fingers are retargeted whilst reaching for the objects.
+We produced physical hexahedron objects for grasping, with 3
+widths (3 cm, 6 cm, and 9 cm) and 3 taper angles (0°, 8°, and 16°,
+between the side face and the vertical direction). We conduct a
+study with 40 participants, grasping the physical objects with dif-
+fering virtual counterparts (6 virtual sizes × 7 virtual angles for each
+physical object). By studying these object properties together, we
+reveal a complex, multi-dimensional illusion space across both size
+and taper angle. For example, our results show how increasing the
+virtual size of an object will strongly increase the perceived angle of
+that object, while increasing the virtual angle makes the perceived
+size smaller. We provide a set of mathematical expressions that
+describes a proxy object’s haptic capacity and reveals how size and
+taper angle interplay with each other in creating illusions. We also
+discuss how these results may feed into mechanical, actuated, ac-
+tive haptics controller designs, to facilitate super-resolution haptic
+devices.
+arXiv:2504.05791v1  [cs.HC]  8 Apr 2025

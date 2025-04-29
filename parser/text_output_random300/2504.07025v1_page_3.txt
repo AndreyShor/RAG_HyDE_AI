@@ -1,0 +1,117 @@
+Rendering Loss Layer
+Neural Implicit Surface
+Decomposed Radiance Fields
+Polarization Rendering Layer
+𝒙
+SDFNet
+MaskNet
+Normal
+Roughness
+Net
+DiffuseNet
+Specular
+Net
+View Direction
+Polarized
+Image
+Formation
+Model
+Rendered
+Polarized
+Image
+Loss
+Input Image
+1
+2
+3
+Data Acquisition
+Neural Radiance Field
+Polarization Rendering
+𝐈!!"#
+𝐬"#$
+Polarizer Angle
+𝜙%"&
+𝐈!!"#
+"#$
+Stokes
+Vectors
+Figure 2. Overview of neural glossy object reconstruction with polarization cues. Our method consists of three main steps (1–3):
+data acquisition, neural radiance field-based representation, and polarization rendering. This work employs neural rendering techniques
+in conjunction with the fundamental principles of polarization to generate a polarized image. These coupled modules allow for acquiring
+only one single polarization image at each viewing angle and then recover geometry and material properties through the optimization of
+rendering loss. Components marked with upward diagonal strips, such as DiffuseNet and SpecularNet, are optimized during training,
+while those with grid checker patterns are calculated using corresponding equations.
+ple camera poses surrounding the target object and capture
+a single polarization image Iϕpol at each view with our low-
+cost data acquisition system, as shown in Fig. 1. Next, in
+alignment with prior study [7], we employ VolSDF [33] and
+Ref-NeRF [27] as the fundamental blocks for modeling the
+neural implicit surface and decomposed radiances. Then,
+we harness the polarimetric BRDF model to accurately esti-
+mate Stokes vectors sout. Furthermore, we introduce an end-
+to-end polarization rendering layer, which first estimates the
+polarizer’s angle ϕpol and then incorporates physical rules to
+render a polarized image Iout
+ϕpol, which is compared with the
+captured ground-truth for loss calculation.
+As in Fig. 2, our method utilizes a polarization image
+Iϕpol as the input and initiates by sampling a collection of
+3D locations along each camera ray. These locations are
+processed through a coordinate-based neural implicit sur-
+face module, facilitating the estimation of signed distances
+and surface normals. Along with view directions, separate
+radiance networks are employed to determine the diffuse
+and specular components. This separation allows us to ef-
+fectively handle the non-Lambertian properties exhibited by
+the surface. Combined with the polarimetric BRDF model,
+the outgoing Stokes vectors sout can be obtained, which lay
+the foundation for polarization-based rendering. The details
+on these methods can be found in supplementary materials.
+Next, we present a differentiable processing pipeline to
+estimate the polarizer’s angle ϕpol, eliminating the need for
+precise polarization angle measurements and facilitating the
+implicit rendering of desired polarized images Iout
+ϕpol for loss
+calculation.
+Subsequently, we provide a comprehensive
+analysis of the fundamental principles of polarization and
+its application in aiding the reconstruction and radiance de-
+composition in Sec. 8. Moreover, we illustrate the rationale
+behind the efficacy of using a single polarization image per
+view to achieve our goals and elucidate the distinctions be-
+tween this approach and prior methodologies in Sec. 3.3.
+3.2. Polarization-empowered Rendering
+In this approach, we take the estimated outgoing Stokes
+vector sout as input, which characterizes the polarization
+state of light and is represented by a four-dimensional vec-
+tor [s0, s1, s2, s3]. From this, we calculate the fundamental
+polarization information as follows:
+ \l a b
+el { e q
+:
+po
+l _ in
+f
+o}
+ \ m a
+thbf {I}_\te xt {un} = \frac {1}{2}s_0, ~\rho = \frac {\sqrt {s_1^2+s_2^2}}{s_0}, ~\phi = \frac {1}{2}\text {arctan2}(s_2,s_1), 
+(1)
+where ρ is the degree of polarization (DoP), ϕ is the angle
+of polarization (AoP), and Iun is the unpolarized intensity.
+On the one hand, the polarized intensity Iϕpol (i.e., the
+captured image) exhibits sinusoidal variation with the rota-
+tion angle of the polarizer ϕpol, as shown below:
+  \la b el {e q : pol} \ m athbf { I}_{\phi _\text {pol}} = \mathbf {I}_\text {un}\left ( 1 + \rho \cos (2\phi - 2\phi _\text {pol}) \right ). 
+(2)
+Using Eq. 1, the only unknown variable ϕpol can be easily
+solved given sout and Iϕpol.
+Moreover, Mueller matrices are only valid in the aligned
+reference coordinate system when considering the light
+passing through a polarizer. Therefore, for a linear polar-
+izer with a rotation angle of ϕpol, its Mueller matrix must be
+deduced according to [5]:
+  \la b el
+ {eq:mueller_lp} \mathbf {M_{\phi _\text {pol}}} = \mathbf {R_{\phi _\text {pol}}^T} \mathbf {M_{LP}} \mathbf {R_{\phi _\text {pol}}}, 
+(3)
+where Rϕpol is the rotation matrix and MLP is the Mueller
+matrix of an ideal linear polarizer with the horizontal trans-

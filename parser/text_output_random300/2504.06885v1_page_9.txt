@@ -1,0 +1,102 @@
+tion ratio, is defined as:
+AR =
+E −Emax
+Emin −Emax
+,
+where E is the energy expectation value of the so-
+lutions, Emin and Emax are the theoretically cal-
+culated minimum and maximum energy values of
+the cost function over all bit strings that satisfy
+the constraints, as in Ref. [52].
+In our case we calculate AR using the solu-
+tions after post-selection. The reason we do this
+is because before post-selection we can have ener-
+gies outside the range [Emin, Emax]. These Emin
+and Emax values are calculated using constrained
+brute-force techniques. The AR places the aver-
+age energy found within the context of the whole
+energy landscape of the problem. We note that
+there is some variation in the name and precise
+definition used in the literature for this metric.
+When exploring new large problems, the theo-
+retical minimum and maximum values of energy
+may not be readily available without having to
+solve using an exact method. An option for larger
+problems is that, in place of the AR, the values of
+the the average energy and the minimum energy
+found experimentally by the particular method
+can be used individually as metrics.
+User Runtime – The time experienced by the
+user when running the experiment:
+User Runtime = Tencoding + Tlatency + Tdevice
+where Tencoding is the classical-to-quantum encod-
+ing time, Tlatency is the job processing time (the
+time it takes to send the job to the desired de-
+vice, also known as the latency) and Tdevice the
+device runtime, which is the CPU or QPU time
+(or both for VQE on the QPU). In the case of
+VQE, Tencoding includes transpilation of the cir-
+cuit to native gates, optimisation of the phys-
+ical circuit and compiling time (converting the
+transpiled quantum circuit into pulse sequences),
+whereas, for quantum annealing, Tencoding is the
+embedding time and the compiling time.
+Note
+that we do not include the time spent in device
+queues.
+For classical brute force, random sampling,
+simulated annealing and VQE with the state vec-
+tor solver, Tencoding = 0.
+For classical brute
+force, random sampling and simulated annealing
+Tlatency is also equal to zero as code is run locally
+on HPC, such that there is no network latency.
+The post-selection time, Tpost-selection, is another
+interesting time metric to show for full visibility.
+As our post-selection time is approximately equal
+for each method we do not include it in the user
+runtime, as discussed in the previous sub-section.
+QPU Time – The time required on the QPU to
+reach a solution to the problem:
+QPU Time = Tdevice,Q
+where Tdevice,Q is the QPU runtime, specific to
+running on real quantum hardware.
+For D-Wave devices this is the ‘QPU access
+time’ [53]. Similarly, for IBM devices this is de-
+fined as the time a QPU is committed to complete
+a job [54]. This metric is important for hybrid
+algorithms as it separates Tdevice into CPU and
+QPU time.
+Having discussed the selected metrics, we also
+note a number of other metrics that are used in
+the wider literature. Ref. [32], considers the num-
+ber of violated constraints. For our QUBO there
+is only one constraint specified - the number of
+vacancies.
+The number of times it is violated
+could be reflected in a ‘validity’ metric: if many
+solutions violate the constraint then the validity
+returned will be low. We instead choose to en-
+code information about constraint violation by
+post-selecting the data to remove solutions that
+do not obey the constraint, as described above.
+A metric specific to the quality of the quantum
+annealing process in current devices is the per-
+centage of broken chains. We report this value in
+Appendix E, Figure 19d.
+Another metric often used is the time-to-
+solution (TTS), where this is the time taken for
+a method to find the optimal solution once with
+a desired accuracy (often 99%). TTS, as defined
+in Ref. [55], is:
+TTS = T ln (1 −pd)
+ln (1 −pGS).
+Where pd is the desired accuracy (99%). The
+TTS can be calculated from our metrics realising
+T is our user runtime and pGS = Ps.
+Ref. [56] uses TTϵ for approximate optimisa-
+tion, where TTϵ is the time to reach an energy
+within a fraction ϵ of the ground state energy.
+TTϵ is a useful metric for large problem sizes
+where the ground state may not be found.
+9

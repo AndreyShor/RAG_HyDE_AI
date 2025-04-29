@@ -1,0 +1,132 @@
+5
+They then proceed to estimate two important parameters
+of the channel: the BER and the Phase Error Rate. The
+average probabilities for a successful detection and for
+systematic error in the protocol are presented in Fig. 5.
+Average Error
+Average Success
+0.5
+1.0
+1.5
+μ
+0.2
+0.4
+0.6
+0.8
+1.0
+Probability
+Bases Match: Error and Success Probabilities
+FIG. 4: Bases match. Using the information in Table II, we
+calculate the average probability of a successful detection for
+Types 0 or 1, as well as the probability of a systematic error
+for these detection types. For the latter, we average the
+probabilities that an input of Type 1 (0), 3, or 4 in Table II
+results in a detection of Type 0 (1).
+Average Error
+Average Success
+Success of Original
+0.5
+1.0
+1.5
+μ
+0.2
+0.4
+0.6
+0.8
+1.0
+Probability
+(a) Overall protocol: Error and Success Probabilities
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+μ
+0.10
+0.12
+0.14
+0.16
+0.18
+BER
+(b) BER on pairwise key distribution
+FIG. 5: (a) Average probability of success (dashed line) and
+systematic error (dotted line) for the overall protocol
+described in Section IV versus the intensity µ of the
+coherent states prepared by the users. The probability of
+successful detection for the protocol in [6] is also shown
+(solid line). (b) BER for an honest implementation of the
+protocol. All lines in the figure refer to key distribution
+between a single pair of users.
+V.
+IS THE PROTOCOL SECURE?
+We offer only a partial answer to this question. By
+decomposing the protocol into the Bases Mismatch and
+Bases Match cases, the security of the first part di-
+rectly follows from the security proofs in [6].
+For the
+Bases Match case, however, we can only establish a non-
+rigorous connection to concepts derived in [11].
+A.
+Bases Mismatch
+Assuming the protocol applies only in the Bases Mis-
+match case, the plots in Fig. 3 represent the probability
+of successfully distributing a key to a pair of users and
+the associated systematic error. From these plots, it is
+clear that the key generation rate for the Mismatch pro-
+tocol is lower than that of the one in [6], and the presence
+of a systematic error further reduces the SKR. However,
+the security parameters and the formula for estimating
+the SKR from [6] still apply here, with the necessary ad-
+justment for the inclusion of the systematic error factor
+in the estimations.
+In more detail, for the Bases Mismatch protocol, the
+states sent by the three users are unentangled. As seen
+in Tables I, IV, and V, the bit value of the unmatched
+user does not correlate with the key of the matched users.
+Therefore, if the unmatched state is attributed to Eve,
+it does not increase her knowledge or influence over the
+protocol.
+One can re-design the virtual protocol from
+Section 5 of [6] by taking the density matrix represent-
+ing the ensemble of two different encodings for the un-
+matched user and putting it in product with the states of
+the paired users and Eve. This approach preserves ∆ini,
+the key security parameter of the protocol that quantifies
+the basis mismatch flaw.
+On the other hand, the input of the unmatched state
+introduces noise into the output of the paired users,
+thereby inducing the aforementioned systematic error
+(Fig. 3).
+To calculate the secure key generation rate,
+one can still apply the formula (10) from [6], with the bit
+error rates, δX and δ′Y , now augmented due to the sys-
+TABLE III: Summary of admissible detection types –bases
+mismatch and match. After announcing the detection type
+and selected bases, an event is discarded if the triplet of
+bases does not match the detection type as shown in this
+table. The occurrence of two ∧along a row implies that both
+detectors simultaneously fire.
+Detection Type Bases Triplet (A, B1, B2) D0 D1 D2
+0
+XXY, YYX, XXX, YYY
+∧
+∧
+1
+XXY, YYX, XXX, YYY
+∧
+2
+XXY, YYX
+∧
+∧
+3
+XXY, YYX
+∧
+4
+XYX, YXY
+∧
+5
+XYX, YXY
+∧
+∧

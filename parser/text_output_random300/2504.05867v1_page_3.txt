@@ -1,0 +1,111 @@
+3
+including the variability timescale of ∼1 day and a low
+Doppler factor of 0.48.
+The strong radio source S3 1227+25 (I. Pauliny-
+Toth et al. 1972) at R.A.=187◦.560, decl.=25◦.298, also
+known as ON 246 (R. Dixon & J. Kraus 1968), was first
+identified as a BL Lac candidate based on the corre-
+lation study between the ROSAT all-Sky Survey and
+the Hamburg Quasar Survey (N. Bade et al. 1994).
+Several studies have been carried out to classify this
+source based on the synchrotron peak frequency (νpeak).
+The observed νpeak values are 1014.11 Hz (Z.-Z. Wu
+et al. 2009), 1014.41±0.13 Hz (J. Fan et al. 2016), and
+1014.91 Hz (M. Ackermann et al. 2015).
+These stud-
+ies indicate that this source lies near the boundary be-
+tween intermediate synchrotron peak blazar (IBL) and
+high synchrotron peak blazar (HBL) in the classifica-
+tion scheme. VERITAS (A. Acharyya et al. 2023) has
+detected this source in very high energy (VHE) band
+during MJD 57158-57160 and the average integral flux
+of (4.51 ± 0.44) × 10−11 cm−2 s−1 above 0.12 TeV was
+reported. This source is one of the IBL objects detected
+so far in the VHE band. P. Kharb et al. (2008) resolved
+a parsec-scale core with radio observations. For the sci-
+entific study, we adopted the redshift (z) = 0.325 from
+A. Acharyya et al. (2023) in this work.
+The paper is structured as follows: Section 2 cov-
+ers multi-wavelength observations and reduction tech-
+niques.
+In Section 3, we explore quasi-periodicity
+analysis using different methodologies, including the
+Lomb-Scargle Periodogram (LSP), Weighted Wavelet
+Z-transform (WWZ), and REDFIT. Section 4 focuses
+on Gaussian process modeling with a damped random
+walk model.
+In Section 5, we assess the significance
+of quasi-periodic signals (QPOs) using two independent
+approaches, including Monte Carlo simulations and red
+noise modeling of light curves. Section 8 presents the
+findings of our QPO study, while Section 9 presents
+an interpretation of the observed QPO across multiple
+bands and wraps up with a conclusion.
+2. MULTI-WAVELENGTH OBSERVATIONS
+2.1. Fermi-LAT observation
+The Fermi Gamma-ray Space Telescope, launched by
+NASA on June 11, 2008, onboard two instruments: the
+Large Area Telescope (LAT) and the Gamma-ray Burst
+Monitor (GBM). Together, they enable comprehensive
+gamma-ray observations across a wide energy range,
+from a few keV to 500 GeV. The Fermi-LAT, a pair-
+conversion gamma-ray detector, is designed to explore
+high-energy gamma rays from ∼20 MeV to 500 GeV. It
+provides a wide field of view (>2 sr ), covering about
+20% of the entire sky. Since its launch, Fermi-LAT has
+conducted all-sky surveys every three hours, providing
+near-continuous observations of γ-ray emissions from as-
+trophysical sources (W. Atwood et al. 2009).
+We collected Fermi-LAT data of blazar ON 246 dur-
+ing the period 2012 January 6 (MJD 55932) to 2023
+May 17 (MET 60081) (over 1.6 years). During the data
+download procedure, we chose the energy range of 0.1-
+300 GeV with Pass8 class events (evclass==128, ev-
+type==3) recommended by the Fermi-LAT collabora-
+tion from a region of interest (ROI) with a radius of 10◦
+centered at the source (R.A.=187◦.560, decl.=25◦.298
+). The analysis of γ-rays was performed following the
+standard procedures for point-source analysis using the
+Fermi Science Tools package (v11r05p3), provided by
+the Fermi Science Support Center.
+To minimize con-
+tamination from the Earth’s limb, a zenith angle cut
+of > 90◦was applied.
+The good time interval (GTI)
+data was extracted using the standard filtering using
+filter (DATA QUAL > 0) && (LAT CONFIG == 1) to en-
+sure high-quality observations. We used GTLTCUBE and
+GTEXPOSURE tools to calculate the integrated livetime
+as a function of sky position and off-axis angle and
+exposure, respectively. To model the galactic and ex-
+tragalactic diffuse background emissions, we used mod-
+els gll iem v07.fits1 and iso P8R3 SOURCE V3 v1.txt1,
+respectively.
+Further, we used the make4FGLxml.py
+script to create the source model XML file, which con-
+tains the information about the source location and the
+best prediction of spectral form. The unbinned likeli-
+hood analysis was performed with GTLIKE tool (W.
+Cash 1979; J. R. Mattox et al. 1996) using the XML
+spectrum file, and the instrumental response function
+(IRF) ”P8R3 SOURCE V3” was adopted to get the fi-
+nal source spectrum.
+To find the significance of the
+source of interest, we used GTTSMAP tool to calcu-
+late the test statistics (TS), which is defined as TS =
+2∆log(likelihood) = -2log( L
+L0 ), where L and L0 are the
+maximum likelihood of the model with and without a
+point source at the target location and maximum likeli-
+hood value fitted by the background model, respectively.
+The significance of finding the source at the specified po-
+sition is accessed by the TS value with TS ∼σ2 (J. R.
+Mattox et al. 1996).
+We adopted a criterion with TS(≥9) for data points
+in the light curve, and a weekly binned light curve is
+generated using Fermipy2. The resulting weekly binned
+γ-ray light curve is shown in Figure 1.
+1
+https://fermi.gsfc.nasa.gov/ssc/data/access/lat/
+BackgroundModels.html
+2 https://fermipy.readthedocs.io/en/latest/

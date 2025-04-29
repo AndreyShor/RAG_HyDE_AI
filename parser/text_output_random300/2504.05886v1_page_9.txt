@@ -1,0 +1,117 @@
+9
+Algorithm 2 Reinforcement learning of ϱ(S)
+1: initialise model parameters.
+2: initialise ˆϱ(S) = −1 and n(S) = 1 for all S.
+3: for e = 1...E do
+4:
+repeat
+5:
+initialise the system at random state point S1 and simulate time T.
+6:
+until a state point is found such that ρA(T) > 0.
+7:
+for k = 1...K do
+8:
+reset the hunger level of all the particles in the system to 0.
+9:
+simulate the system at state Sk based on Algorithm 1.
+10:
+measure reward rk.
+11:
+update value estimate ˆϱ(Sk) using Eq. (15).
+12:
+update n(Sk) ←n(Sk) + 1.
+13:
+if rk > 0 (species A has not died out) then
+14:
+choose new state point Sk+1 based on policy in Eq. (17).
+15:
+else
+16:
+terminate current episode.
+17:
+end if
+18:
+end for
+19: end for
+Parameters
+Value
+Number of episodes, E
+2000
+Number of steps, K
+20 or 30
+Greedy factor, ϵ
+0.2
+Tolerance in reward calculation, δ
+0.05
+Simulation time (MCS), T
+5000
+Measurement period, Tmeas
+2000
+TABLE II. The parameters used in the learning algorithm
+and their values.
+This procedure can be described in the framework
+of Markov decision processes [54, 91, 92]. Within each
+episode, we consider a trajectory as a sequence of state
+points, and associated value estimates S1, r1, S2, r2, . . . .
+In the context of Markov decision processes, the state-
+action on the kth step simply reduces to the state point
+Sk (the standard multi-armed bandit has a similar fea-
+ture).
+The separation of the training process into episodes
+aids exploration of the state space by resetting to a com-
+pletely random state point at the start of each episode,
+as well as providing a mechanism for the system to re-
+cover from extinction events.
+A side-benefit is that it
+aids the analysis of convergence of the learning process,
+see below.
+D.
+Algorithm implementation and convergence
+Having described the general algorithm, we now dis-
+cuss its application in practice. We keep most parame-
+ters fixed while optimising relevant parameters for species
+A. The fixed parameters are summarised in Tab. I. [The
+time step is now fixed at τ = (2/9) which allows λA to
+be adjusted at fixed τ, recall the probabilities in (7) must
+all be positive.]
+For illustration, consider a pure directional strategy
+for species A as described in Sec. II D, for example the
+hunting strategy. We aim to optimise three parameters
+σA, λA, ϕ. The grid for the parameters is defined as fol-
+lows: σA and λA are varied between 0 to 2 with grid
+spacing 0.2, but we restrict σA + λA ≤2.5 for numer-
+ical convenience.
+(This reduction of the search space
+does not affect the optimal strategy.)
+The directional
+parameter ϕ runs from 0 to 3 with grid spacing 0.25. For
+mixed strategies as in Eq. 11 we optimise four parameters
+σA, λA, ϕ1, ϕ2 where the grid spacing for ϕ1, ϕ2 is again
+0.25, we restrict ϕ1, ϕ2 > 0 and ϕ1 + ϕ2 ≤3.
+The main parameters of the RL algorithm are given
+in Table II. The number of episodes E is chosen to be
+2000 to ensure convergence of the value function. The
+number of steps K = 20 for pure directional strategies
+and K = 30 for mixed directional strategies, this ensures
+that in each episode the algorithm sufficiently explores
+the grid of state points, given that the dimensionality of
+this grid is larger for the mixed strategies. The greedy
+factor ϵ = 0.2 ensures the balance between exploration
+vs. reinforcement. Simulation time T and measurement
+period Tmeas are chosen to ensure reward is obtained in
+a steady state.
+As the algorithm runs, the value estimates ˆϱ converge
+to the value function ϱ, and the distribution of visited
+state points also converges to a steady state. To assess
+the convergence of our algorithm, we introduce the inte-
+grated reward for episode e:
+T (e) =
+K
+X
+k=1
+ˆϱ(Sk, e, k)
+(18)
+where ˆϱ(S, e, k) is the estimated value for state point S
+after step k of episode e. If the episode ends due to ex-
+tinction (before K steps have been carried out) then we

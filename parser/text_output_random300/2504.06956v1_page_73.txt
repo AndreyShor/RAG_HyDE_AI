@@ -1,0 +1,102 @@
+Brownian bridge above a curve
+73
+Proof. The equality (A.1) is standard and follows by the reflection principle. The bounds in (A.2)
+follows by the elementary inequalities x −x2/2 ≤1 −e−x ≤x which are valid for x ≥0. To get
+(A.3), it suffices to note that, for s ∈[0, b],
+Px,u,b(τ0 > s, τ0 ≤b) =
+Z ∞
+0
+Px,y,s(τ0 > s)Px,u,b(Bs ∈dy) .
+Since the density Px,u,b(Bs ∈dy) is the same as that of a normal random variable with mean
+x + s(u −x)/b and variance s(b −s)/b and by using the exact identity (A.1), the result follows by
+differentiation.
+Lemma A.2. For b > 0, consider Mb
+def= infr∈[0,b] Br and Tb
+def= sup{r ∈[0, b] : Br = Mb}. Then,
+for u > 0, it holds that
+P0,u,b(Tb ∈ds, Mb ∈dz) =
+r
+2
+π
+√
+b(−z)(u −z)e−(bz−us)2
+2bs(b−s)
+(s(b −s))3/2
+1{s∈[0,b]}1{z<0}dsdz .
+(A.4)
+Proof. The proof is inspired by the proof of [BL18, Lemma A.1]. Using the path continuity and the
+strong Markov property of the Brownian bridge, along with the exact identity (A.1), we note that for
+any s ∈[0, b] and z ≤0, it holds that
+P0,u,b(Tb ≤s, Mb ≤z) = lim
+ε→0
+X
+k∈N0
+Z s
+0
+Pz−kε,u,b−r(τz−(k+1)ε > b −r)P0,u,b(τz−kε ∈dr)
+= lim
+ε→0
+X
+k∈N0
+Z s
+0
+Pε,u−(z−(k+1)ε),b−r(τ0 > b −r)P0,u,b(τz−kε ∈dr)
+= 2
+Z z
+−∞
+Z s
+0
+u −w
+b −r P0,u,b(τw ∈dr)dw ,
+and so the claim follows by using (A.3) and by differentiation.
+Lemma A.3. Let b ≥1 and x ≥1. For all u ∈[0, b3/4] and s ∈[1, b], it holds that
+Px,u,b(τ0 > s) ≤2x2
+s
++ 8x
+s1/4 .
+(A.5)
+Proof. Fix b ≥1, x ≥1, and u ∈[0, b3/4]. As we have observed in the proof of Lemma A.1, for any
+s ∈[1, b], by conditioning on the value of the Brownian bridge at times s, we can write
+Px,u,b(τ0 > s) =
+Z ∞
+0
+Px,y,s(τ0 > s)Px,u,b(Bs ∈dy) ,
+where, as one can easily check, the density Px,u,b(Bs ∈dy) is that of a normal random variable with
+mean x + s(u −x)/b and variance s(b −s)/b, i.e.,
+Px,u,b(Bs ∈dy) =
+s
+b
+2πs(b −s) exp
+
+−
+b
+2s(b −s)
+
+y −
+
+x + su −x
+b
+2
+dy .
+Therefore, for s ∈[1, b], by letting
+r = r(s, u, b, x)
+def= x + s(u −x)
+b
++
+r
+s(b −s)
+b
+log(e + s) ,
+we have that
+Px,u,b(τ0 > s) ≤
+Z r
+0
+
+1 −e−2xy
+s
+
+Px,u,b(Bs ∈dy) +
+Z ∞
+r
+Px,u,b(Bs ∈dy) ,
+(A.6)

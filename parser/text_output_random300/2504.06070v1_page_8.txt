@@ -1,0 +1,81 @@
+Published as a conference paper at ICLR 2025
+Real
+U-NO
+HelmFluid
+PINP
+t = 50
+t = 100
+Prediction
+Error
+Prediction
+Error
+(a) Concentration prediction and comparison
+Real
+Real
+Pred.
+Pred.
+(b) Latent physical quantities Prediction
+t = 50
+t = 100
+(c) Correlation 
+t = 50
+t = 100
+Correlation
+Correlation
+0.9039
+0.9099
+0.9251
+0.9207
+0.9123
+0.9061
+Figure 6: (a) A comparison of prediction results between our method and U-NO, Helmfluid. (b) A
+comparison between our predicted latent physical quantities and the ground truth and (c) Correlation.
+t = 2
+t = 4
+t = 6
+t = 8
+t = 10
+Real
+HelmFluid
+PINP
+Figure 7: A comparison between our method and Helm-
+fluid for 3D smoke prediction, with the predicted frames
+increasing from left to right.
+As shown in Figure 6 (c), a high cor-
+relation (≥0.9) demonstrates the sim-
+ilarity of our estimated latent physical
+quantities with the true data, indicat-
+ing that the estimated physical quanti-
+ties contribute to understanding the fu-
+ture motion process. However, it is im-
+portant to note that, due to the unknown
+physical scale, a scaling relationship ex-
+ists between the estimated latent physi-
+cal quantities and their true values. To
+obtain the true values of these estimated
+quantities, the initial values of the real
+physical quantities or any real data point
+are necessary to determine the scaling
+constant. A detailed discussion of this
+is provided in Appendix D.
+Smoke 3D. Similar to the 2D smoke scenario, we extend our method to a 3D setting. During training,
+the model predicts the future 4 frames of concentration based on the past 4 frames. During testing,
+the model is required to predict the future 10 frames of concentration using the past 4 frames, with
+varying smoke source locations and concentrations between the training and testing sets.
+In the 3D smoke concentration prediction task, PINP significantly outperforms other models (Table
+1). In the frame-by-frame prediction comparison (Figure 4 (c)), our model also outperforms others.
+Figure 7 presents an example. Compared to Helmfluid, our model preserves more detailed features.
+The prediction results on the top surface are significantly better than those predicted by Helmfluid.
+4.2
+REAL-WORLD DATA
+We consider the nowcasting prediction problem in real scenarios, which can be viewed as the trans-
+port problem of water-bearing clouds driven by wind. Unlike the simulated data, nowcasting data is
+boundary-less and contains noise. It is important to note that the baseline from the simulated data
+test is not applied to this task, and we establish new baselines for this problem.
+Baselines. The baselines for nowcasting include video prediction models: ConvLSTM (Shi et al.,
+2015), PredRNN (Wang et al., 2022), SimVP (Gao et al., 2022a) and Earthformer (Gao et al., 2022b).
+And a physics-driven prediction model: NowcastNet (Zhang et al., 2023). NowcastNet uses a de-
+terministic prediction model (Evolution network) paired with a probabilistic model (GAN). The
+Evolution network outperforms the GAN-based model in most metrics. Results for the Evolution
+network are shown in Table 2, while full comparisons of NowcastNet are in Appendix A (Table S1).
+8

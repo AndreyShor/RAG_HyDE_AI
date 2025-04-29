@@ -1,0 +1,94 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+For simplicity, we consider the system on the d-dimensional torus Td, though an extension to
+bounded domains with homogeneous Neumann boundary conditions should not pose a signiﬁ-
+cant diﬃculty.
+The well-posedness, the long-time behavior, and approximations of systems of the form (1.1)
+have been studied with diﬀerent methods for a long time. We refer to [Ali79, Rot06, Mor89,
+DF∗07] and references therein for the study of classical solutions, i.e., solutions that are globally
+uniformly bounded in L∞([0, ∞) × Td; RI). In this context, two often used strategies are to
+obtain bounds for the full reaction-diﬀusion system by exploiting global a priori bounds for a
+lower order functional such as mass conservation or entropy bounds (cf. [Ali79, Mor89]) or by
+studying the space-independent reaction ODE system, which is applicable when all the species
+ρi, i ∈I diﬀuse with the same speed δ = δi.
+However, to the surprise of many, in [PiS00] it was shown that in the case where species
+diﬀuse with diﬀerent diﬀusion constants δi, there may exist no classical solutions to the reaction-
+diﬀusion system even when the involved reactions behave nicely. This furthered the interest in
+weaker notions of solutions, like renormalized solutions studied e.g. in [Fis15].
+In recent years, entropy methods became an important tool for the study of reaction-
+diﬀusion systems [DeF06, DF∗07, DeF15, MHM15, DFT17].
+Here, the idea is to use the
+non-increasing relative Boltzmann entropy (also called free energy) as an a priori bound to
+control solutions and study their long-time behavior. Moreover, entropy methods are a useful
+tool for deriving convergence results for the spatial discretization of linear reaction-diﬀusion
+systems, see [HPS24]; and it is the purpose of this work to generalize these results to nonlinear
+reaction kinetics.
+We stress that our works main focus is not on the regularity of the spatial discretization
+nor of the model (like data or coeﬃcients), but instead the variational nature of our approach,
+which is based on the theory of generalized gradient ﬂows (see e.g. [Mie23] for an introduction).
+To be more precise, we are interested in reaction-diﬀusion systems, where not only the free
+energy is decaying, but where the system is a gradient ﬂow of the free energy. Starting with the
+pioneering work of Otto [JKO98, Ott01], it is known that many diﬀusion-type problems can
+be understood as gradient ﬂows driven by a suitable free energy. Later, this was extended to
+reaction-diﬀusion systems satisfying detailed balance in [Mie11] for quadratic dissipations and
+in [MP∗17] for cosh-type dissipations, which we also use here. The fundamental assumption
+here, is that the system satisﬁes the detailed balance (or reversibility) condition. This means
+that there exist reference concentrations ω = (ωi)i∈I such that ωi := exp(−Vi) and such that
+for all r ∈R it holds
+kfw
+r
+Y
+¯ı∈I
+ωαr
+¯ı
+¯ı
+= kbw
+r
+Y
+¯ı∈I
+ωβr
+¯ı
+¯ı
+=: κr
+Y
+¯ı∈I
+ω
+αr¯ı +βr¯ı
+2
+¯ı
+.
+We observe that the detailed balance assumption ensures that the reaction-diﬀusion system
+(1.1) can now be written in the symmetric form
+∂tρi = δi div
+
+ρi∇log
+ ρi
+ωi
+
++
+X
+r∈R
+κrω
+αr+βr
+2
+ ρ
+ω
+αr
+−
+ ρ
+ω
+βr
+(βr
+i −αr
+i ),
+(1.2)
+where we introduced the notation
+ραr :=
+Y
+i∈I
+ρ
+αr
+i
+i ,
+2

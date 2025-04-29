@@ -1,0 +1,56 @@
+of freedom. For instance, BOMD simulations cannot qualitatively capture how electrons may transition
+from one set of electronic states (known as a BO surface) to another as the ions move – critical for simulat-
+ing many catalysts, and necessary for even qualitatively describing photocatalytic processes [14, 15, 16, 17].
+Tools for studying coupled ion and electron dynamics, such as real-time time-dependent DFT (RT-TDDFT),
+have been recently developed and are under investigation, but suffer nonetheless from significant drawbacks
+such as the incorrect prediction of thermalization, the inherit inaccuracies given typical approximations to
+the exchange-correlation functionals employed, and large computational costs, which limits such methods to
+small systems [18, 19, 20].
+In summary, the construction of a physically consistent, multi-scale model, from atomic scale to macro-
+scopic flow, to accelerate research and development of new catalysts presents several formidable challenges.
+A major one, at its atomistic foundation, is that we lack a satisfactory techniques to capture the electronic
+system including its environment-dependent correlations, that treats ions and electrons on the same footing,
+does not use uncontrolled approximations, retains all correlations up to finite discretization effects, and can
+study the dynamics (and hence excited states) in real-time. Here, we put forth a quantum computational
+framework for this atomistic foundation.
+1.2
+Quantum computing for chemical dynamics
+Exact simulation of chemical dynamics on classical computers incurs exponential computational costs with
+the number of constituents and/or the target simulation time. Hence such simulations are currently in-
+accessible, and most likely will remain out of reach for the foreseeable future. In contrast, fault-tolerant
+quantum computers (FTQC) present a novel computing paradigm that can efficiently and exactly time-
+evolve wavefunctions present within an exponentially large Hilbert space. Significant prior work has focused
+on increasingly efficient methods for this problem [21, 22, 23, 24, 25]. Among other techniques, quantum
+signal processing (QSP) [23, 24, 26, 27] applied to Hamiltonian evolution efficiently outputs a quantum state
+encoding the solution to the Schrödinger equation at a final time t, given an efficient unitary encoding of the
+Hamiltonian and an efficient protocol to prepare an initial state. For example, evolution up to precision ϵ of
+an initial state of η particles under a molecular Hamiltonian in first quantization, discretized with N plane
+waves per particle,2 may be performed with ˜O(η log N) qubits and ˜O(N 1/3η8/3|t| log 1
+ϵ ) elementary quantum
+operations (gates) – using the algorithm of Ref. [28] – or ˜O((N 2/3η4/3 + N 1/3η8/3)(|t| + log 1
+ϵ )) elementary
+quantum operations – using QSP and the encoding in Ref. [29]. Nonetheless, quantum algorithms for quan-
+tum chemistry and materials science have mostly focused on the electronic structure problem under the BO
+approximation, proposing algorithms to compute ground state energies (and sometimes a few excited states,
+see [30]) with controlled precision using quantum phase estimation (QPE) [31, 32, 33, 34, 35, 36, 37, 38].
+Ground state energy computations using FTQC circumvent many of the heuristics and approximations used
+in DFT and other conventional techniques. While valuable and conceptually straightforward to integrate
+as a reliable, high-precision replacement for (static) electronic structure calculations in the aforementioned
+computational pipeline for catalyst design, this quantum computational paradigm can address dynamical
+properties only indirectly via a costly reconstruction of potential energy surfaces/force-fields, and is still
+limited to the BO approximation.
+Performing time-evolution of quantum systems which is exact up to
+a user-specified precision and finite basis size is particularly efficient with an FTQC. The question then
+becomes, how do we make use of this capability of FTQC to study chemical dynamics?
+Several prior works have considered using FTQC to simulate quantum dynamics in a chemical setting.
+Chan et al. [39] classically emulated a short (variant of) Trotterized quantum time-evolution in a few sce-
+narios, including single electron ionization under an applied field in 2D, two-electron collision in 2D, and the
+evolution of two electrons in a He atom (with no nuclear dynamics) in 3D. Kale and Kais [40] developed a
+time-dependent formulation of quantum scattering of wavepackets based on the Møller operator formulation
+to compute scattering matrix elements, which requires one to specify the molecular scattering channel, i.e.
+the reactant and product of interest. Closer to the present work, Kassal et al. [41] first suggested the possi-
+bility to use FTQC for direct grid-based simulation of non-BO chemical dynamics via a first-order Trotter
+method. Ideas were sketched for how to initialize appropriate molecular states and compute reaction prob-
+abilities. Following that, Schleich et al. [42] outlined a “molecular factory” approach using time-evolution
+2The simulation cell is assumed to have volume scaling linearly with η.
+4

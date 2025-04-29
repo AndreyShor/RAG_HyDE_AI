@@ -1,0 +1,131 @@
+A Self-Supervised Framework for Space Object Behaviour Characterisation.
+14
+Awareness pipelines they become an attractive target for ad-
+versarial attack, particularly through data poisoning. For this
+reason, ensuring the integrity of data provenance is highly im-
+portant, and blockchain approaches could be used here, treating
+the dataset as the transaction to be verified on the public ledgers,
+e.g., through the use of Trustchain [23].
+A substantial challenge direction for further development is
+multi-modal fusion - i.e., integrating the light curve analysis
+presented here with other observation types (e.g., hyperspec-
+tral data, orbits, radar etc.) Indeed, part of the decision to use
+a Perceiver based architecture was to readily enable extension
+to other data modalities, as it is well suited to this through its
+cross-attention and latent bottleneck design, which could en-
+able multiple modalities to be reduced to a common set of em-
+beddings. However, there are substantial technical challenges
+in multimodal fusion, including developing an appropriate fu-
+sion strategy at different levels of the pre-training/fine-tuning
+pipeline. One such method to fuse information from other sen-
+sors with light curves could include implementation of con-
+trastive learning using paired observations. For example, pos-
+itive pairs (same space object at different dates) and negative
+pairs (different objects on the same date) would help develop
+more discriminative features for space object characterisation.
+Additionally incorporating metadata prediction tasks as part of
+the self-supervised framework could help capture characteris-
+tic signatures of specific satellites, or debris. For example, a
+fine-tuned metadata prediction FM could generate a likely light
+curve given an orbital eccentricity, which could help unpick the
+relationships between satellite structure/behaviour and orbital
+path.
+Our initial framework provides promising results, and as the
+amount of data available increases, a basis for further analysis.
+We suggest foundation Models could become powerful tools
+for automated space object monitoring and space situational
+awareness. As orbital populations continue to grow, automated
+approaches such as ours will become increasingly crucial for
+maintaining space safety & sustainability.
+Conflict of interest
+The authors declare no potential conflict of interests.
+Author contributions
+CRediT Classification:
+Conceptualization: IG, MV, VN, Data Curation: IG, AC, JF,
+DR Formal Analysis: IG, Funding Acquisition: PM, MV,
+VN, Investigation: IG, Methodology: IG, MV, VN, Project
+Administration: IG, MV, VN, Software: IG, AC, Supervi-
+sion: VN, Writing – Original Draft Preparation: IG, Writ-
+ing – Review & Editing: IG, VN.
+References
+[1] United Nations Office for Outer Space Affairs.
+An-
+nual number of objects launched into space – un-
+oosa, 2025.
+URL https://ourworldindata.org/
+grapher/yearly-number-of-objects-launched-
+into-outer-space. Dataset processed by Our World in
+Data. Original data from United Nations Office for Outer
+Space Affairs, "Online Index of Objects Launched into
+Outer Space". Retrieved April 2, 2025.
+[2] NPSA.
+Critical National Infrastructure | NPSA,
+2025. URL https://www.npsa.gov.uk/critical-
+national-infrastructure-0.
+[3] Michael A. Lombardi, Andrew N. Novick, George
+Neville-Neil, and Ben Cooke.
+Accurate, Traceable,
+and Verifiable Time Synchronization for World Finan-
+cial Markets.
+Journal of Research of the National In-
+stitute of Standards and Technology, 121:436, October
+2016. ISSN 2165-7254. doi: 10.6028/jres.121.023. URL
+https://nvlpubs.nist.gov/nistpubs/jres/121/
+jres.121.023.pdf.
+[4] Maxar.
+Maxar Selected by NASA to Study Fu-
+ture Space Communications Architecture and Services |
+Maxar, 2019. URL https://www.maxar.com/press-
+release-show.
+[5] High Earth Orbit Robotics.
+Identification and charac-
+terisation of space objects through non-earth imaging,
+2025. URL https://heospace.com/white-papers/
+identification - characterisation - space -
+objects.
+White Paper on Defence & Intelligence.
+Retrieved April 2, 2025.
+[6] Tung Nguyen, Johannes Brandstetter, Ashish Kapoor,
+Jayesh K. Gupta, and Aditya Grover.
+ClimaX: A
+foundation model for weather and climate, December
+2023.
+URL http://arxiv.org/abs/2301.10343.
+arXiv:2301.10343 [cs].
+[7] Clay. Clay Foundation Model — Clay Foundation Model,
+2024. URL https://clay-foundation.github.io/
+model/index.html.
+[8] Andrew Jaegle, Felix Gimeno, Andrew Brock, Andrew
+Zisserman, Oriol Vinyals, and Joao Carreira.
+Per-
+ceiver: General Perception with Iterative Attention, June
+2021.
+URL http://arxiv.org/abs/2103.03206.
+arXiv:2103.03206 [cs].
+[9] Diederik P. Kingma and Max Welling.
+Auto-Encoding
+Variational Bayes, December 2022.
+URL http://
+arxiv.org/abs/1312.6114. arXiv:1312.6114 [stat].
+[10] Marius Giger and André Csillaghy.
+Unsupervised
+Anomaly Detection With Variational Autoencoders Ap-
+plied to Full-Disk Solar Images. Space Weather, 22(2):
+e2023SW003516, 2024. ISSN 1542-7390. doi: 10.1029/
+2023SW003516.
+URL https://onlinelibrary.
+wiley.com/doi/abs/10.1029/2023SW003516.
+[11] Andrew
+Jaegle,
+Sebastian
+Borgeaud,
+Jean-Baptiste
+Alayrac, Carl Doersch, Catalin Ionescu, David Ding,
+Skanda Koppula, Daniel Zoran, Andrew Brock, Evan
+Shelhamer, Olivier Hénaff, Matthew M. Botvinick, An-
+drew Zisserman, Oriol Vinyals, and Jo¯ao Carreira. Per-
+ceiver IO: A General Architecture for Structured Inputs &
+Outputs, March 2022. URL http://arxiv.org/abs/
+2107.14795. arXiv:2107.14795 [cs].
+[12] G. M. Beskin, S. V. Karpov, A. V. Biryukov, S. F. Bon-
+dar, E. A. Ivanov, E. V. Katkova, N. V. Orekhova, A. V.

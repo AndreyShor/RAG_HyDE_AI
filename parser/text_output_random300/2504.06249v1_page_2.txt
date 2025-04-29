@@ -1,0 +1,73 @@
+otic quantum phases such as superconductivity and topological quantum states. Prior deep-learning studies
+have yielded models which can predict the DOS from a given atomic structure [31, 32], but the inverse
+process of generating materials matching a given DOS remains highly challenging. To effectively utilize
+the DOS information as a condition for structure generation, we implemented and evaluated two distinct
+guidance strategies for diffusion models: classifier-based guidance [33] and classifier-free guidance [34].
+We find classifier-free guidance outperforms classifier-based guidance, offering a more robust mechanism
+for aligning generated structures with the desired properties. Next, using the classifier-free guidance, we
+demonstrate DOSMatGen’s capability for fine-grained control over atomic structure generation through
+three constrained generation tasks that selectively impose distinct constraints on specific subsets of atoms
+within a single structure. Finally, we demonstrate a post-processing workflow to yield stable, optimized
+crystal structures which are ready for DFT validation. An overview of the DOSMatGen framework is
+shown in Fig. 1.
+Training DOSMatGen
+Generation
+DOS Features
+CFG
+Classiﬁer-free Guidance
+P
+P
+P
+S0
+St
+ST
+t −1steps
+T −t steps
+Post-processing Workﬂow
+DOSMatGen
+Machine Learning 
+Force Field
+Formation Energy 
+Predictor
+0.5 
+eV/atom
+-1.8 
+eV/atom
+DFT
+DOS
+Diﬀerent starting 
+material
+Constrained to 
+speciﬁc elements
+Figure 1: Overview of DOSMatGen. The training process of the denoising neural network in DOSMatGen
+employs classifier-free guidance (CFG). A projection layer P maps node-level density of states (DOS) fea-
+tures into the same space as the node embeddings, which are then combined through element-wise addition.
+During training, a structure S0 is progressively noisified to St at timestep t and passed into the network to
+predict the noise added. During generation, DOSMatGen can condition one or more atoms on target DOS
+features, ensuring the denoised structure aligns with the specified conditions. Additional constraints, such
+as fixing element types or using structural templates as starting points, can be incorporated for finer control
+over the generation process. Furthermore, DOSMatGen can be integrated as part of larger materials discov-
+ery workflows, generating large sets of candidate structures that are subsequently relaxed using a machine
+learning force field (MLFF) and evaluated with a formation energy predictor. Candidates below a specified
+formation energy threshold can then be filtered for further analysis, including DFT validation.
+2
+METHODOLOGY
+2.1
+REPRESENTATION OF PERIODIC MATERIALS
+A periodic material is usually represented by its unit cell—the smallest repeating arrangement of atoms
+in Cartesian coordinates that, when translated in space, generates the complete crystal structure. Given a
+structure S with N atoms in its unit cell, it can be fully described by the tuple S = (A, X, L), where
+L = (l1, l2, l3) ∈R3×3 is a matrix of lattice vectors, X = (x1, . . . , xN) ∈RN×3 represents the Cartesian
+coordinates of the N atoms within the unit cell, and A ∈{0, 1}N×Z is a matrix of one-hot encoded
+representations of Z possible elements for each atom. Note that the unit cell can be translated arbitrary in
+space by L. In this work, we use fractional coordinates, obtained by transforming Cartesian coordinates x
+through the inverse lattice matrix: xf = L−1x. For notational clarity, we omit the subscript f when the
+coordinate system is contextually clear.
+2.2
+JOINT DIFFUSION MODEL
+Given a structure S = (A, X, L), DOSMatGen simultaneously diffuses the atom types A, the fractional
+coordinate matrix X and the lattice L. Given a timestep t ∈[0, T], St = (At, Xt, Lt) denotes the interme-
+diate noisy structure. In particular, the forward diffusion process deterministically adds noise to S0, while
+the backward denoising process iteratively samples from the prior distribution ST to recover the original
+structure S0. If the prior distribution p(ST ) is invariant and the Markov transition p(St−1|St) is equivari-
+2

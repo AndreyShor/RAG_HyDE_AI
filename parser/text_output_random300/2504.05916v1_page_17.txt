@@ -1,0 +1,66 @@
+Multilevel Quantum Rabi Models
+17
+We can also derive expressions for the moments of our largest singular value [21]
+E[λl
+1] =
+Z ∞
+√µ−αρ
+ylfλ1(y) dx = ρ
+l
+2
+θk
+µ
+ρ −α
+ l
+2 +k
+U
+
+k, l
+2 + k + 1, 1
+θ
+µ
+ρ −α
+
+,
+(B.4)
+where U is Tricomi’s confluent hypergeometric function. When l = 0, and using the
+identity U(a, a+1, x) = x−a [21], we can confirm that our distribution is a unit measure.
+For the mean (l = 1), we use that U(a, b, x) ∼x−a [21] asymptotically as x →∞. In
+our case, this would correspond to n, m →∞, and so
+E[λ1] ∼√µ −αρ = 22/3n1/6p
+22/3n2/3 −α ∼2√n,
+(B.5)
+for n →∞. For whenever min(κ1) < 0, we verified numerically in Fig. 4 that the
+expressions 16 and 18 still yield accurate results for the mean and variance when using
+the principal branch of the Tricomi function [21]. Note that the principal branch is
+used automatically when no specific determination is made in the SciPy package. It is
+also important to emphasise that when numerically calculating either the PDF of the
+distribution itself or its moments, the terms being multiplied together in the expressions
+are very varied in magnitude, leading to significant errors in computation.
+This
+sometimes requires the extra step of using arbitrary floating point precision arithmetic.
+In this Appendix we have derived a novel approximate distribution for the largest
+singular value of uncorrelated Ginibre matrices using an approximation for the largest
+eigenvalue of Wishart matrices [17]. We have also validated that errors are small when
+using the derived approximation. This is true even for the small values of n, m, and
+the accuracy improves quickly as the size of the matrix grows, as left tail errors in
+fκ1 (see Fig. B2), and subsequently fλ1, shrink rapidly. Our approximations in this
+Appendix yield a novel and computationally easier way to calculate accurate singular
+value statistics for real and complex Ginibre ensemble matrices.
+References
+[1] Jaynes E T and Cummings F W 1963 Proc. IEEE 51 89
+[2] Braak D 2011 Phys. Rev. Lett. 107 100401
+[3] Twyeffort Irish E K 2007 Phys. Rev. Lett. 99 173601
+[4] Braak D, Chen Q H, Batchelor M T and Solano E 2016 Journal of Physics A: Mathematical and
+Theoretical 49 300301
+[5] Xie Q, Zhong H, Batchelor M T and Lee C 2017 Journal of Physics A: Mathematical and
+Theoretical 50 113001
+[6] Rossatto D Z, Villas-Bˆoas C J, Sanz M and Solano E 2017 Phys. Rev. A 96 013849
+[7] Forn-D´ıaz P, Lamata L, Rico E, Kono J and Solano E 2019 Rev. Mod. Phys. 91 025005
+[8] Twyeffort Irish E K and Armour A D 2022 Phys. Rev. Lett. 129 183603
+[9] Frisk Kockum A, Miranowicz A, De Liberato S, Savasta S and Nori F 2019 Nat. Rev. Phys. 1 19
+[10] Tufarelli T, Friedrich D, Groß H, Hamm J, Hess O and Hecht B 2021 Phys. Rev. Res. 3 033103
+[11] Groß H, Hamm J M, Tufarelli T, Hess O and Hecht B 2018 Science Advances 4 eaar4906
+[12] Morris J R and Shore B W 1983 Phys. Rev. A 27 906
+[13] Zlatanov K N, Vasilev G S and Vitanov N V 2020 Phys. Rev. A 102 063113
+[14] Dicke R H 1954 Phys. Rev. 93 99

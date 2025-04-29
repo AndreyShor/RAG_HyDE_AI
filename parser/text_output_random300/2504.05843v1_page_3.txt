@@ -1,0 +1,81 @@
+The article is organised as follows: in Section
+• 2 we make an MB representation for the one-loop box into a double sum over residues and re-sum into
+a two-parameter Euler integral,
+• 3 we review bivariate intersection theory and apply it to the one-loop box,
+• 4 we derive two four-parameter Euler-integrals for the parts of the MB representation (50) of the double
+box, construct Pfaffian equations and solve these in terms of Goncharov logarithms. We reproduce the
+symbol [11, 12] of (5),
+• 5 we use a parameter shift to substantially simplify the latter computation falling upon the same functions
+and symbols.
+Finally, we present some conclusions. Appendix A reviews how to build MB representations. Formula (50)
+is derived there. Appendix B collects the intersection matrices, higher connections, and Pfaffian matrices
+for the shorter computation of Section 5. Bulkier expressions are relegated to the ancillary material to this
+publication, i.e. the same items for the longer computation of Section 4, and the functions and symbols for
+the two parts (which agree between the two versions of the calculation) composing that of the double box.
+2
+Euler integrals for the off-shell one-loop box
+The Feynman diagram has the simple and appealing MB representation [9]
+I1 =
+1
+(2πi)2 x2
+12
+Z
+dz1dz2 uz1vz2 Γ[−z1]2Γ[−z2]2Γ[1 + z1 + z2]2 .
+(6)
+The integration domains for both MB parameters are straight lines parallel to the imaginary axis. With the
+aim of stating the basic steps of the approach and the relevant formulae we include a derivation of (6) in
+Appendix A.
+One can close both integration contours to the right, or one to the right and one to the left, leading to
+three distinct series expansions of I1 in {u, v}, {u/v, 1/v}, {1/u, v/u}, respectively. Closing both contours to
+the right we pick residues from Γ[−z1]2Γ[−z2]2, so z1, z2 →n1, n2 for integer ni. The position of the real part
+of the original straight line integrations determines the starting values for the sums over n1, n2. The package
+MBresolve.m [13] suggests1
+{ℜ(z1) = −0.476559 , ℜ(z2) = −0.0434094} .
+(7)
+These negative real parts imply that zero is included, thus n1, n2 ∈N0. Given that
+resz=−nΓ[z] =
+(−1)n
+Γ[1 + n]
+(8)
+closing both contours to the right we find the expansion
+I1 =
+1
+x2
+12
+∞
+X
+n1,n2 = 0
+∂γ∂δ un1+γvn2+δ
+Γ[1 + n1 + n2 + γ + δ]2
+Γ[1 + n1 + γ]2Γ[1 + n2 + δ]2 ,
+γ = 0 = δ
+(9)
+The differentiation in the parameters γ, δ was introduced because both poles are double.
+Note that the undifferentiated sum on the rhs. of the last equation at γ = 0 = δ is the double Taylor
+expansion of 1/
+p
+(1 −u + v)2 −4v with the root function from (3). The series converges for small enough u, v
+as one may numerically check on truncations. It is simple to re-sum at u = v which suggests the estimate
+√
+u2 + v2 < 1/
+√
+8; the exact region of convergence is larger but unknown to us. Importantly, since a non-
+vanishing domain of convergence exists we will freely swap differentiation over summation/integration in the
+following. This assumption is, of course, quite non-trivial and will be justified only a posteriori by the success
+of our exercise.
+The n1 and n2 sums in (9) both individually yield hypergeometric 3F2 functions, for instance
+∞
+X
+n1 = 0
+un1 Γ[1 + n1 + n2 + γ + δ]2
+Γ[1 + n1 + γ]2
+= Γ[1 + n2 + γ + δ]2
+Γ[1 + γ]2
+3F2[u]{1,1+n2+γ+δ,1+n2+γ+δ}
+{1+γ,1+γ}
+.
+(10)
+1These conclusions are not hard to reach for I1.
+We introduce MBresolve.m here because it will become relevant to the
+application of Barnes’ Lemmata for the simplification of the MB representation of I2, see Appendix A.
+3

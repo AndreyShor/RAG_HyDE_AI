@@ -1,0 +1,52 @@
+2
+W. Shen, Y. Ge, Z. Han, Y. Zhao and Y. Yang
+important structures that govern its behavior. Wall-bounded turbulence exhibits a complex,
+multiscale nature characterized by hierarchical, interacting coherent structures governed by
+intricate vortex dynamics (Pope 2000; Sayadi et al. 2013; Hickey et al. 2013). Building upon
+Townsend’s attached-eddy hypothesis (Townsend 1976), hairpin vortices and their hierarchi-
+cal organization have emerged as promising candidates for the fundamental structures that
+shape wall turbulence dynamics (Marusic & Monty 2019). Hierarchical hairpin vortices are
+arranged along the flow direction to form a vortex packet (Adrian 2007), not only driving
+Reynolds stress generation but also orchestrate the spatial distribution of energy across scales.
+Substantial evidence from both experiments (Wang et al. 2022) and simulations (Cheng et al.
+2020; Hu et al. 2020) supports the existence of wall-attached eddies, which effectively recover
+the statistical and structural features of wall turbulence. The evolution of attached-eddy
+models (AEM) has established a theoretical framework linking these coherent structures
+to turbulence’s statistical properties (Hu et al. 2023). Within this framework, a hierarchy
+of geometrically self-similar flow structures (eddies) extending from the wall into the flow
+can effectively model turbulent flows, especially in the logarithmic region, successfully
+reproducing key statistical features such as the logarithmic velocity profile and high-order
+moments of velocity fluctuations (Perry & Maruˇsi´c 1995; Woodcock & Marusic 2015).
+Despite these theoretical advances, practical methodologies for incorporating these insights
+into numerical simulations remain limited.
+An alternative approach to understanding turbulence involves constructing turbulence itself
+to replicate its structures and statistical properties. This inverse strategy not only enables the
+validation of various models and theories but also facilitates practical applications, such
+as generating realistic inlet or initial conditions for wall turbulence (Wu 2017). Generating
+such conditions is challenging because simple random noise perturbations lack physically
+meaningful structures, fail to satisfy continuity, and risk being damped by the pressure
+equation. Traditional synthetic methods – including the random Fourier method (Kraichnan
+1970), digital filtering method (Klein et al. 2003), and volume forcing method (Spille-Kohoff
+& Kaltenbach 2001) – are widely used but often fail to reproduce the structural-statistical
+coherence of real turbulence. While these methods can generate pseudo-turbulence with
+targeted statistics, they require extensive adjustment zones for slow structural development,
+leading to high computational costs. This persistent gap between coherent structures and
+statistical fidelity underscores the need for novel physics-driven approaches to construct wall
+turbulence.
+Coherent-structure-based modeling of wall-bounded turbulent flow seeks to bridge this
+gap by explicitly constructing flow fields. For instance, de Silva et al. (2016a) generated
+three-dimensional (3D) synthetic velocity fields using discrete attached vortices. Building
+on the hairpin-packet paradigm, they adopted packets of Λ-shaped vortices as representative
+eddies. Subsequent refinements to this strategy include incorporating spatial repulsion effects
+among same-scale vortices (de Silva et al. 2016b), embedding streamwise meandering
+of large-scale structures (Eich et al. 2020), and developing spectral scaling-based AEM
+extensions (Chandran et al. 2020). While these synthetic attempts retain key structural
+features, their vortex geometries remain oversimplified. Flow fields are computed via the Biot-
+Savart law using idealized vortex filaments without core variations, limiting their ability to
+replicate realistic flow dynamics. Since flow predictions are highly sensitive to the geometry
+of representative structures (Deshpande et al. 2021) and methods for constructing complex
+vortices near walls remain underdeveloped, these simplifications limit their applicability to
+construct intricately structured vortices and generate more realistic wall turbulence fields.
+In particular, they constrain the accurate representation of high-order statistical moment
+distributions across different Reynolds numbers, which have not been reported in previous
+studies on synthetic wall turbulence.

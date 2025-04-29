@@ -1,0 +1,85 @@
+11
+cesses while maintaining self-consistency in tem-
+perature evolution.
+2.7. Metallicity
+Metallicity plays a fundamental role in many as-
+trophysical processes, particularly in radiative cool-
+ing. Metals, synthesized through stellar nucleosyn-
+thesis, are injected into the ISM and CGM through
+SN explosions and stellar winds, and subsequently
+redistributed by turbulent diffusion. Therefore, in-
+corporating metallicity evolution is essential for ac-
+curate simulation of galaxy evolution. For compu-
+tational efficiency while maintaining physical ac-
+curacy, we track the evolution of total metallicity
+rather than individual elemental abundances, as this
+approach sufficiently captures the key physics, es-
+pecially for cooling and heating calculations. Al-
+though implementing a more detailed metallicity
+model that tracks individual elements (e.g., Eisen-
+reich et al. 2017) is valuable, such implementation
+is straightforward within the MACER3D frame-
+work and will be considered in future work.
+The evolution of gas metallicity 𝑍gas is modeled
+as a passive scalar governed by sink terms from
+star formation and source terms from stellar yields,
+following the equation:
+𝑍gas ¤𝜌gas = 𝑍II ¤𝜌II+𝑍Ia ¤𝜌Ia+𝑍SE ¤𝜌SE−𝑍gas ¤𝜌SF, (27)
+where ¤𝜌II, ¤𝜌Ia, and ¤𝜌SE denote the mass loss rates
+from SN II, SN Ia, and stellar evolution respec-
+tively, while ¤𝜌SF represents the star formation rate.
+The corresponding metal yields are given by 𝑍II,
+𝑍Ia, and 𝑍SE.
+Although metal production from
+stellar winds is not explicitly included here, these
+contributions are incorporated into the stellar evo-
+lution models. While our implementation includes
+metal diffusion to account for additional mixing
+processes, this mechanism is deactivated in this
+initial study using the MACER3D framework.
+For SN yields, we adopt values from Hopkins
+et al. (2018), with 𝑍Ia = 1 for SN Ia and 𝑍II =
+1.02(1.9134 + 0.0479 ˜𝑁)/10.5 for SN II, where
+˜𝑁= max(𝑍∗/𝑍⊙, 1.65). These yields represent
+averages over the initial mass function. Given our
+simulation’s initial redshift of 𝑧∼2, corresponding
+to a turn-off mass 𝑀TO ∼1.4 M⊙, metal production
+through stellar evolution primarily originates from
+low-mass stars (𝑀∗< 8M⊙) via planetary nebulae
+and stellar winds. To determine stellar evolution
+yields, we employ the yield tables from Nomoto
+et al. (2013), implementing bilinear interpolation
+to construct a fitting function 𝑍SE dependent on
+both 𝑀TO and stellar metallicity (𝑍∗).
+2.8. Simulation suit
+As the very first work of the MACER3D frame-
+work, we focus on the evolution of an isolated el-
+liptical galaxy and explore the impact of the AGN
+feedback and SN feedback on the galaxy’s evolu-
+tion, respectively. We set up three simulations to
+investigate the effects of different feedback mech-
+anisms on the galaxy’s evolution. The fiducial
+simulation includes both AGN feedback and SN
+feedback. Another two simulations, noAGNfb and
+noSNfb, turn off AGN feedback and SN feed-
+back, respectively, while other feedback mecha-
+nisms (e.g., stellar wind) remain active. We note
+that although the AGN feedback is disabled in
+noAGNfb simulation, a central SMBH is still in-
+cluded, therefore the central BH still accretes gas,
+grows and give rise to luminosity, but neither out-
+flows nor heating are produced. In all simulations,
+multiple passive scalar tracers are included to track
+the evolution of the mass from different sources,
+including AGN winds (hot and cold traced sepa-
+rately), stellar winds, ejecta of SNe Ia and SNe II,
+and the ISM/CGM gas.
+3. RESULTS
+3.1. Time evolution of AGN luminosity and star
+formation rate
+Fig. 2 presents the temporal evolution of the AGN
+luminosity 𝐿BH (normalized by the Eddington lu-
+minosity 𝐿Edd) and the specific star formation rate
+(sSFR) in our fiducial simulation. Both quantities
+demonstrate pronounced temporal variability span-
+ning multiple orders of magnitude. The AGN lu-

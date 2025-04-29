@@ -1,0 +1,53 @@
+Lemma 5.3. Given any r-qubit unitary operators U1, . . . , Uk for some k < 2r−1 and any bit
+b ∈{0, 1}, there is an r-qubit state |ψb⟩with pure parity b such that ⟨1r| Ui |ψb⟩= 0 for all 1 ≤i ≤k.
+Proof. Let P0 and P1 be as in Deﬁnition 5.1. For 1 ≤i ≤k, let Zi ⊆Hr be the (2r −1)-dimensional
+subspace of Hr spanned by {U ∗
+i |x⟩: x ∈{0, 1}r \ {1r}}. Then for all i, ⟨1r| Ui |ψ⟩= 0 for any state
+|ψ⟩∈Zi. Letting Z := Tk
+i=1 Zi, we see that dim(Z) ≥2r −k. For b ∈{0, 1}, we then have
+dim(Pb ∩Z) = dim Pb + dim Z −dim(Pb + Z) ≥dim Pb + dim Z −2r ≥2r−1 + (2r −k) −2r ≥1 .
+It follows that we can choose a state (unit vector) |ψb⟩in Pb ∩Z, and this vector has the desired
+properties.
+We will use Lemma 5.3 to turn oﬀCZ-gates. If some CZ-gate G that touches all r qubits
+(and possibly other qubits) is applied to Ui |ψb⟩⊗· · · , then G is turned oﬀ, i.e., G(Ui |ψb⟩⊗· · · ) =
+Ui |ψb⟩⊗· · · , where “· · · ” represents some state of the other qubits, if they are present.
+6
+Quantum Circuit Lower Bounds
+In this section we prove that no depth-2 QAC-circuit computes ⊕n for n > 3 (see Deﬁnition 2.7),
+which improves upon a previous version of our paper [PFGT20].
+Theorem 6.1. No depth-2 QAC-circuit computes ⊕n for n > 3.
+This result is tight in the sense that there is a simple 4-qubit depth-2 QAC-circuit that com-
+putes ⊕3:
+|t⟩
+H
+H
+|x1⟩
+|x2⟩
+H
+H
+|x3⟩
+=
+We will prove Theorem 6.1 through a sequence of lemmas that may be useful in proving lower
+bounds for circuits of higher depth. We will also make repeated use of the Entanglement Lemma
+(Lemma 4.3) and Lemma 5.3. We adopt the conventions of Deﬁnition 2.5 to describe gates within
+circuits.
+Lemma 6.2. There is no depth-1 QAC-circuit that weakly computes ⊕n for n ≥2.
+Proof. Consider such a circuit C on n ≥2 input qubits, witnessed by some ﬁxed initial state of
+the ancilla qubits.
+The target and ﬁrst two input qubits must all be incident to a single gate
+G(1)
+0
+= CSZ for some S ⊇{0, 1, 2}, for otherwise there is an input qubit that does not interact with
+the target qubit at all, whence C cannot weakly compute ⊕n. Then by Lemma 5.3 (with r := 2
+and U1 := G(1)
+{1,2}), for each b ∈{0, 1}, qubits 1 and 2 can be initially committed to a 2-qubit state
+with pure parity b that turns oﬀG(1)
+0 . With either of these initial states (setting any other input
+qubits to |0⟩), the target does not interact with any other qubits and so can only be G(1.5)
+0
+G(0.5)
+0
+|0⟩.
+But then the ﬁnal state of the target does not depend on b, and thus C does not weakly compute
+⊕n.
+19

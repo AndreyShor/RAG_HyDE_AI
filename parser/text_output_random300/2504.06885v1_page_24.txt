@@ -1,0 +1,96 @@
+0
+5
+10
+0.0000
+0.0002
+0.0004
+0.0006
+0.0008
+Ps
+Figure 7: Solving the 18 variable problem with random sampling at different values of the penalty coefficent λ.
+Method
+Ps
+Ps Post-
+Selection
+AR Post-
+Selection
+User
+Runtime (s)
+QPU Time
+(s)
+Brute
+Force
+1
+N/A
+N/A
+2.2 ± 0.03
+N/A
+Simulated
+Annealing
+0.993 ±
+0.003, 0.001∗
+0.994 ±
+0.003, 0.001∗
+0.994 ±
+0, 0.001∗
+0.339 ± 0.001
+N/A
+VQE
+State
+Vector
+0.319 ±
+0.1, 0.001∗
+0.695 ±
+0.2, 0.001∗
+0.826 ±
+0.01, 0.001∗
+38.5 ± 7
+N/A
+VQE
+QPU
+0.183 ±
+0.07, 0.002∗
+0.595 ±
+0.1, 0.002∗
+0.761 ±
+0.08, 0.002∗
+(2.54 ± 0.4) ×
+103
+941 ± 200
+Quantum
+Annealing
+0.189 ±
+0.02, 0.004∗
+0.398 ±
+0.03, 0.005∗
+0.626 ±
+0.03, 0.005∗
+2.54 ± 0.08
+0.399 ± 0.08
+Random
+Sampling
+0.0004 ±
+0.0005, 0.0002∗
+0.104 ±
+0.1, 0.003∗
+0.235 ±
+0.2, 0.004∗
+0.001 ± 0
+N/A
+Table 2: The same table as 1 in the main text with the standard error denoted by ∗, which arises from shot noise.
+The standard deviation error is also included.
+C
+Technical Information and Additional Data for Simulated Annealing
+D-wave’s ‘SimulatedAnnealingSampler’ was used, where all hyperparameters found from the search at
+the 18 variable problem size were also used for the larger problem sizes. For the rate of decrease of the
+temperature parameter, a default ‘geometric’ annealing schedule was chosen, and a default number of
+solution updates or iterations (number of sweeps) was found from the hyperparameter search, which
+was 1000 [98]. The optimal penalty term coefficient λ for simulated annealing was found to be λ = 3,
+which was found via hyperparameter optimisation.
+D
+Technical Information and Additional Data for VQE
+The number of shots was set to 10,000 for both the real device and for the state vector solver. To solve
+the QUBO problem using VQE, each variable is initially mapped to a single physical qubit. Qiskit’s
+circuit transpilation is used when running on the real device, with the optimization_level=3 [99].
+The qubit connectivity plot for ibm_fez is shown in Figure 10a, where the qubits that were used are
+24

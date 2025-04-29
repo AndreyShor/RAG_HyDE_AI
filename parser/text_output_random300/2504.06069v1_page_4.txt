@@ -1,0 +1,27 @@
+results. Each data point represents a unique configuration of structural parameters, with the resulting 
+phase and amplitude of transmitted light. The structural parameters include the diameter and height 
+of the nanodisk, period, and the incident angle of the incoming light. As seen in Figure I-a, an important 
+characteristic of the datasets is their small size and imbalance, which leads to an overrepresentation 
+or underrepresentation of specific values, making it more challenging to develop a high-performing 
+model. Neural network approaches typically need large, balanced datasets to achieve good 
+generalization [40,43], because they lack knowledge about the underlying physics. Therefore, they 
+struggle to learn complex relationship between parameters from limited, imbalanced examples, 
+especially when certain parameters are underrepresented. 
+Figure I-b shows the phase distribution across different gap sizes in Dataset A, with the Kernel Density 
+Estimation (KDE) providing a smoothed view, overlaid with scatter points representing the phase 
+values for each gap size. The gap refers to the physical distance between adjacent nanodisks, 
+calculated by subtracting diameter from period. The KDE visualization reveals that for the large-gap 
+regime (approximately > 50 nm), phase values tend to cluster mainly around the range of 2-4 radians. 
+In contrast, in the small-gap regime (approximately below 50 nm), metasurface exhibits a volatile 
+phase change with values scattered across the entire 0-2π range. This volatile phase behavior in the 
+small-gap region is physically expected due to stronger near-field coupling between adjacent 
+structures but causes a significant learning challenge for neural networks. The samples from such a 
+region are crucial to reaching the full potential of metasurfaces, as they are often related to high-Q 
+resonances and enhanced light-matter interactions [44–52]. Dataset B exhibits a comparable pattern. 
+ 
+ 
+ 
+Figure I: a. Histogram shows the frequency of gap values within Dataset A. b. kernel density estimation (KDE) with scatter 
+points illustrates the distribution of phase values across different gap sizes in Dataset A. The darker blue regions represent 
+higher concentrations of data points.  
+ 

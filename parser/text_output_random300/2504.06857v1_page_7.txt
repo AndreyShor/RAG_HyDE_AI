@@ -1,0 +1,60 @@
+7
+FIG. 4: χ2/DoF for the OmniFold result as a function
+of number of iterations of the procedure, for each of the
+differential cross sections under consideration. The 0th
+iteration is the prior, which begins outside the y-axis
+limits for (pµ, cos θµ). As with any iterative procedure,
+using a larger number of iterations reduces the
+dependence on the prior and reduces the amount of bias
+in the result. The point at which the χ2 appears to
+converge depends on the observable and binning under
+inspection.
+FIG. 5: The average weight change that each event has
+received over the previous 5 iterations of the OmniFold
+procedure, after 5, 10, and 45 total iterations. After 5
+and 10 iterations, one can see the distributions of
+weight changes are still obviously skewed, indicating
+that there are significant reweightings still occurring
+across the whole dataset. After 45 iterations, we see the
+distribution is centered around 0 with not much of a
+tail. This suggests the unfolding procedure is mostly
+done at this point, which is also consistent with the
+behavior of the χ2 curves shown in Fig. 4.
+FIG. 6: OmniFold χ2 performance for each differential
+cross section of interest as a function of number of
+iterations, using different efficiency treatments.
+Including efficiency effects during unfolding (solid lines)
+means including non-reconstructed events in step 2 of
+the OmniFold procedure, where truth-level event
+reweighting is done. Applying efficiency corrections
+after unfolding (dashed lines) means excluding
+non-reconstructed events from step 2 but applying
+reweighting factors to them when they are brought in
+for the final unfolded result, which we see yields faster
+and better convergence.
+the OmniFold procedure, and this is equivalent to apply-
+ing an unbinned efficiency correction after the unfolding
+procedure. A comparison of the performance of these ap-
+proaches for our setup is shown in Fig. 6. We expect little
+difference in results between the two approaches when ef-
+ficiencies are generally high for all bins, but this is not
+the case for efficiencies in our analysis. We observe that
+including efficiency effects during unfolding considerably
+slows the rate of χ2 convergence, since this increases the
+bias towards the prior in regions of low efficiency. Cor-
+respondingly, the rest of the results in this paper are all
+obtained using the approach of an efficiency correction
+after unfolding.
+B.
+Results
+The resulting χ2 values comparing the unfolded truth-
+level differential cross sections against those underlying
+the data are shown in Tab. III for each of the observ-
+ables of interest and for each of the multiple unfolding
+approaches described in Sec. IV. Since the χ2 metric does
+not clearly distinguish between results with large bias and
+large uncertainty and results with small bias and small
+uncertainty, we also consider the triangular discrimina-
+tor ∆(P, Q) = P
+i |pi −qi|2/(pi + qi) [66], where pi is the
+unfolded content of bin i, qi is the true content of bin

@@ -1,0 +1,64 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+20
+=
++ O(ǫ)
+1
+3
+2
+3
+2
+1
+1
+2
+1
+2
+Figure 6. The interactions in Yukawa-ϕ4 theory (the Gross-Neveu-Yukawa model).
+The three-point Yukawa interaction is rational in four dimensions (uniqueness)
+10. Constructible graphs
+We combine the results of the previous sections to define a class of graphs with spin whose graphi-
+cal functions in even dimensions ≥4 can be computed (subject to constraints from time and memory
+consumption).
+Graphical functions depend on the position of the external labels 0, 1, z. A permutation of external
+vertices changes the graphical function in an explicit way, see Section 7.2. To decide whether a graphical
+function is computable or not, the distinction between internal and external labels suffices; the assignment
+of 0, 1, z to the external labels is insignificant. We may hence forget the labels on external vertices in
+the following definition.
+Definition 22 (An extension of Section 3.7 in [17]). We consider the following set of commuting reduction
+steps for a graphical function f α
+G(z):
+(R1) Deletion of edges between external vertices, Section 7.1,
+(R2) Product factorization, Section 7.3,
+(R3) Integrating out two-point functions, Section 5,
+(R4) Contraction of an isolated edge with spin α and weight 1 −k/λ + |α|/2λ, k = 0, 1, . . . , n + 1,
+attached to any external vertex, Sections 7.2 and 8.
+A graphical function is irreducible if it cannot be reduced by any of these steps. A two-point functions in
+(R3) is a two-point insertion in G. Any such insertion is equal to a Feynman period times a propagator,
+see Section 5. Maximum use of the reduction steps (R1) to (R4) maps a graph G to a set of Feynman
+periods and irreducible graphical functions. The kernel of G is this unique set of periods and irreducible
+graphical functions.
+We recursively define constructible graphical functions and periods by
+(1) A graphical function is constructible if, after using (R3), it is logarithmically divergent and its
+kernel is the empty graphical function plus constructible periods.
+(2) A Feynman period P α
+G is constructible if it has two vertices or if there exist three vertices a, b, c
+in G such that the graphical function G|abc=01z is constructible.
+See Figure 5 for the construction of the cat eye two-point graph.
+In [2] constructible graphical functions were defined for completed graphs (see [17]).
+Completion
+(adding a fourth external vertex ∞using conformal invariance) is only possible for theories whose
+fermionic interaction is of Yukawa type, see Section 11.
+In such theories the vertices are scalar, i.e.
+they have no vector or spin index. In particular, QED and Yang-Mills theories are not amenable to
+completion.
+11. Primitive Feynman periods in Yukawa-ϕ4 theory
+In this section we apply the results of the article to four-dimensional Yukawa-ϕ4 theory which has a
+spin 0 boson with a four-point ϕ4 interaction (the Higgs in the standard model) and a spin 1/2 fermion
+with a three-point Yukawa coupling to the boson, see Figure 6. In physics, this Yukawa-ϕ4 theory has
+the name Gross-Neveu-Yukawa model. The beta functions of the interactions have been calculated with
+classical momentum space IBP methods to loop order four [28].
+As a consequence of conformal symmetry, the Yukawa vertex is rational in position space for ϵ = 0.
+This results in the star-triangle (Y −∆) identity that is depicted in Figure 6. Such identities are called
+uniqueness relations in physics [14]. Note that the right-hand side of the star-triangle identity is not a
+subgraph of Yukawa-ϕ4 theory. The star-triangle identity operates on a more general set of Feynman
+graphs that also has spin 1/2 particles of weight 1/2. In the following, we work in this set of generalized
+Feynman graphs.

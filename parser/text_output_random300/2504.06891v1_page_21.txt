@@ -1,0 +1,27 @@
+librium is assumed for seismic solar models. To achieve this, we ensure that the luminosity at
+0.3R⊙matches the solar luminosity. Inspections of solar models show a plateau in the luminos-
+ity proﬁle at 0.3R⊙that corresponds to the surface value within 0.1%. Physically, this implies
+that above this limit, energy generated in the core by nuclear reactions is simply transported
+outward.
+Achieving this involves parametrizing the chemical composition proﬁle below 0.3R⊙to ﬁnd
+a solution matching the energy generation of the evolutionary model. The chemical proﬁle’s
+parametrization is discussed below, and the minimization procedure is rigorously constrained
+to avoid solutions with unphysical chemical composition gradients and signiﬁcant deviations
+from the evolutionary model. At 0.3R⊙, the chemical composition proﬁle precisely aligns with
+that of the evolutionary model. Consequently, above this limit, it remains unaffected by core
+region parametrization and is solely determined by evolutionary computations.
+This second reconstruction step is based on equation
+dL
+dr = 4πr2ρǫ(ρ, T, X, Z),
+(8)
+with L the luminosity, ρ the density of the seismic model, X and Z coming from the parametriza-
+tion, T the temperature proﬁle given by the equation of state and ǫ is the energy generation rate
+of nuclear reactions, which is computed from the nuclear energy generation routines of the
+Li`ege stellar evolution code. The contribution from gravity, ǫg is less than 0.1% and thus negli-
+gible.
+As noted by Gough (2004)83, the reproduction of the solar luminosity by the seismic model
+depends on the amount of helium in the core. Thus, the chemical composition of the core is
+iterated so that the model reproduces the luminosity plateau observed around 0.3R⊙. Previous
+approaches in Gough & Scherrer (2001)92, Gough (2004)83 changed the global core helium
+content, or assumed a constant metallicity in the solar interior93;94 to provide a unique solution
+21

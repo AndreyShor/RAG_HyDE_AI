@@ -1,0 +1,151 @@
+# Plot
+the
+cusp
+catastrophe
+surface
+ax1 . p l o t s u r f a c e (x ,
+z ,
+y ,
+cmap=’ v i r i d i s ’ ,
+alpha =0.7 ,
+edgecolor=’ none ’ )
+# Overlay
+the
+agents ’
+i n i t i a l
+s t a t e s
+(no
+pregnancies
+i n i t i a l l y )
+ax1 . s c a t t e r ( agents [ ’ c o n t r a c e p t i v e u s e ’ ] ,
+compute beta ( agents [ ’ deprivation ’ ] ,
+agents [ ’ v i o l e n c e ’ ] ,
+agents [ ’ substance abuse ’ ] ) ,
+agents [ ’ pregnancy state ’ ] ,
+c=’ blue ’ ,
+l a b e l=’ Not  Pregnant ’ ,
+s =50,
+edgecolor=’ k ’ )
+ax1 . v i e w i n i t ( elev =30, azim=150)
+# Set
+the
+view
+angle
+ax1 . s e t
+t i t l e ( ’ I n i t i a l  Conditions  ( Before  ABM imulation ) ’ ,
+f o n t s i z e =18)
+ax1 . s e t x l a b e l ( ’Non−c a t a s t r o p h i c  f e r t i l i t y  f a c t o r s  (X) ’ ,
+f o n t s i z e =15)
+ax1 . s e t y l a b e l ( ’ Catastrophic  shocks  (Z) ’ ,
+f o n t s i z e =15)
+ax1 . s e t z l a b e l ( ’ F e r t i l i t y  rate  (Y) ’ ,
+f o n t s i z e =15)
+ax1 . legend ( l o c=’ upper  l e f t ’ ,
+f o n t s i z e =14, frameon=False )
+# Increase
+the
+s i z e
+of
+t i c k s
+ax1 . tick params ( axis=’ both ’ ,
+which=’ major ’ ,
+l a b e l s i z e =13)
+# Final
+s t a t e
+( After
+simulation )
+ax2 = f i g . add subplot (122 ,
+p r o j e c t i o n=’ 3d ’ )
+# Plot
+the
+cusp
+catastrophe
+surface
+ax2 . p l o t s u r f a c e (x ,
+z ,
+y ,
+cmap=’ v i r i d i s ’ ,
+alpha =0.7 ,
+edgecolor=’ none ’ )
+# Separate
+the
+agents
+by
+pregnancy
+s t a t u s
+pregnant agents = f i n a l
+f e r t i l i t y
+s t a t u s == 1
+non pregnant agents = f i n a l
+f e r t i l i t y
+s t a t u s == 0
+# Overlay
+the
+agents ’
+f i n a l
+s t a t e s
+( color−coded
+by
+pregnancy
+s t a t u s )
+ax2 . s c a t t e r ( agents [ ’ c o n t r a c e p t i v e u s e ’ ] [ non pregnant agents ] ,
+compute beta ( agents [ ’ deprivation ’ ] [ non pregnant agents ] ,
+agents [ ’ v i o l e n c e ’ ] [ non pregnant agents ] ,
+agents [ ’ substance abuse ’ ] [ non pregnant agents ] ) ,
+agents [ ’ pregnancy state ’ ] [ non pregnant agents ] ,
+c=’ blue ’ ,
+l a b e l=’ Not  Pregnant ’ ,
+s =50,
+edgecolor=’ k ’ )
+ax2 . s c a t t e r ( agents [ ’ c o n t r a c e p t i v e u s e ’ ] [ pregnant agents ] ,
+compute beta ( agents [ ’ deprivation ’ ] [ pregnant agents ] ,
+agents [ ’ v i o l e n c e ’ ] [ pregnant agents ] ,
+agents [ ’ substance abuse ’ ] [ pregnant agents ] ) ,
+agents [ ’ pregnancy state ’ ] [ pregnant agents ] ,
+c=’ red ’ ,
+l a b e l=’ Pregnant ’ ,
+s =50,
+edgecolor=’ k ’ )
+ax2 . v i e w i n i t ( elev =30, azim=150)
+# Set
+the
+view
+angle
+ax2 . s e t
+t i t l e ( ’ Final  Conditions  ( After  ABM simulation ) ’ ,
+f o n t s i z e =18)
+ax2 . s e t x l a b e l ( ’Non−c a t a s t r o p h i c  f e r t i l i t y  f a c t o r s  (X) ’ ,
+f o n t s i z e =15)
+ax2 . s e t y l a b e l ( ’ Catastrophic  shocks  (Z) ’ ,
+f o n t s i z e =15)
+ax2 . s e t z l a b e l ( ’ F e r t i l i t y  rate  (Y) ’ ,
+f o n t s i z e =15)
+ax2 . legend ( l o c=’ upper  l e f t ’ ,
+f o n t s i z e =14, frameon=False )
+# Increase
+the
+s i z e
+of
+t i c k s
+ax2 . tick params ( axis=’ both ’ ,
+which=’ major ’ ,
+l a b e l s i z e =13)
+# Adjust
+layout
+to
+reduce
+the
+space
+between
+f i g u r e s
+p l t . s u b p l o t s a d j u s t ( l e f t =0.05 ,
+r i g h t =0.95 ,
+top =0.9 ,
+bottom =0.1 ,
+wspace=−0.05)
+# Save
+the
+f i g u r e
+at
+660 DPI
+22

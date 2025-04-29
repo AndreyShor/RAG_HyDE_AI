@@ -1,0 +1,130 @@
+5
+-2.0
+-1.5
+-1.0
+-0.5
+ 
+Energy (a.u.)
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+  J
+ c=1
+ c=2.2
+ Mitigated
+ Exact
+ w/o noise
+-5
+-4
+-3
+-2
+-1
+ 
+Energy (a.u.)
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+ 
+ J
+ c=1
+ c=2.2
+ Mitigated
+ Exact
+ w/o noise
+-3.0
+-2.5
+-2.0
+-1.5
+-1.0
+-0.5
+ 
+Energy (a.u.)
+1.0
+0.8
+0.6
+0.4
+0.2
+0.0
+  J
+ c=1
+ c=2.2
+ Mitigated
+ Exact
+ w/o noise
+2-spin
+3-spin
+4-spin
+(a)
+(b)
+(c)
+FIG. 4. Experiment results for the ground state energy of the 2-spin (a), 3-spin (b), and 4-spin (c) circular Ising model with varying transverse
+field intensities J. Noise-free simulation results are indicated by the yellow triangles, while the exact ground state energy is shown by the black
+dashed line. Error-mitigated results obtained through first-order Richardson extrapolation are shown in blue, along with data for noise scaling
+factors c = 1 in red and c = 2.2 in green. The short transverse lines represent numerical simulations incorporating measured decoherence rates,
+where each data point corresponds to 20 different random initial parameter sets for direct comparison with experimental results.
+To optimize the circuit parameters, we employ the simul-
+taneous perturbation stochastic approximation algorithm [11,
+39], which is particularly effective in quantum optimization
+tasks due to its ability to estimate the gradient with only two
+measurements per iteration, regardless of the number of pa-
+rameters involved. The red dots in Fig. 3 illustrate the learning
+process of the 4-spin model, where each iteration of the opti-
+mization algorithm includes two measurements correspond-
+ing to perturbations in opposite directions in the parameter
+space, represented by the lighter and darker data points, re-
+spectively. Throughout the optimization process, each data
+point represents the average of more than 20,000 measure-
+ment samples. Given the long lifetime of the photonic qubit
+in the storage cavity, the standard initialization method, which
+relies on waiting for spontaneous relaxation of the population
+in the cavity, would introduce significant delays and poten-
+tial system drift before convergence. To address this, we im-
+plement an active population purge by applying measurement
+and feedback control to the cavity, allowing for faster initial-
+ization [34, 40].
+To improve the precision of the VQE, we implement the
+analog error mitigation that involves measuring the energy of
+the system under different noise levels and using Richardson
+extrapolation to estimate the zero-noise energy. Specifically,
+as previously mentioned, in each iteration, the energy of the
+quantum state is first obtained under normal noise conditions
+with a noise coefficient c = 1, as shown by red dots in Fig. 3.
+Then, the transmon qubit noise is amplified by a factor of
+c = 2.2 through the noise injection, and the energy is recalcu-
+lated. Using Richardson extrapolation, we estimate the zero-
+noise energy by combining these two measurements, mitigat-
+ing the impact of transmon qubit noise to the first order. The
+mitigated energies are then iteratively incorporated into the
+optimization process to refine the circuit parameters, leading
+to improved accuracy of the results. Despite these efforts, a
+discrepancy remains compared to the exact energy, primarily
+due to the extended gate duration, which increases the impact
+of decoherence. While error mitigation reduces noise effects,
+first-order mitigation alone is insufficient for achieving the de-
+sired precision, underscoring the need for higher-order tech-
+niques to close the gap.
+We further validate the qubit-efficient VQE algorithm and
+explore the effect of analog error mitigation by solving the
+ground state energy of systems with varying spin numbers
+(N = 1,2,3) and different transverse field intensities J. Fig-
+ure 4 summarizes the experimental results, demonstrating the
+effectiveness of our approach across a range of system sizes
+and parameters. For each system configuration, we perform
+numerical simulations incorporating the measured system de-
+coherence rates, using 20 random initial parameter sets. The
+corresponding simulation data (horizontal bars) are plotted to
+the right of the experimental data points for direct comparison.
+As evident from Fig. 4, the experimental data exhibit a con-
+sistent trend with the exact ground state energy as the trans-
+verse field intensity J varies. However, a systematic deviation
+from the ideal eigenvalues is observed, which can be attributed
+to the presence of unmitigated noise in the quantum system.
+Remarkably, our numerical simulations, which take into ac-
+count the system’s decoherence rates, show excellent agree-
+ment with the experimental data. This consistency highlights

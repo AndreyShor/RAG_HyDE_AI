@@ -1,0 +1,34 @@
+ 
+12 
+of a Physical Property Measurement System (DynaCool, Quantum Design) system, which 
+can provide the environment of high three-dimensional vector magnetic fields and varied 
+temperatures. To study the Joule heating effect at high current densities during SOT 
+switching, we conduct the finite element analysis (FEA) simulation and find the 
+temperature increase at the switching current density of 21.8 MA/cm2 is ~5 K (see 
+Supplementary Note 12). 
+Macrospin simulations 
+The macrospin simulations are based on the Landau-Lifshitz-Gilbert (LLG) equation, 
+which includes damping-like SOTs. This can be expressed as: 
+d𝒎𝒎ෝ𝒊𝒊
+d𝑡𝑡−𝛼𝛼𝒎𝒎ෝ𝒊𝒊×
+d𝒎𝒎ෝ𝒊𝒊
+d𝑡𝑡=
+−𝛾𝛾𝒎𝒎ෝ𝒊𝒊× 𝑯𝑯eff. In the static simulations, we solve the equilibrium equations: 𝒎𝒎ෝ𝒊𝒊× 𝑯𝑯eff =
+0 using Newton’s method. The magnetic parameters, such as the exchange field 𝐻𝐻ex =
+1/3𝐻𝐻an, are determined from experimental data. A fixed in-plane magnetic field 𝐻𝐻ext =
+0.4𝐻𝐻an is applied in the simulations of SOT switching (Fig. 4a). 
+In the dynamic simulations, we rewrite the LLG equation as: 
+d𝒎𝒎ෝ𝒊𝒊
+d𝑡𝑡= −
+𝛾𝛾
+1+𝛼𝛼2 ൫𝒎𝒎ෝ𝒊𝒊× 𝑯𝑯eff +
+𝛼𝛼𝒎𝒎ෝ𝒊𝒊× (𝒎𝒎ෝ𝒊𝒊× 𝑯𝑯eff)൯. We assume that the magnetism of atoms mainly originates from 
+electron spin, so the gyromagnetic ratio 𝛾𝛾 = 1.76×1011 T-1 s-1. A Gilbert damping constant 
+of 𝛼𝛼= 0.1 is selected based on the reference literature48,49. The Heun method are employed 
+during the simulation50. The time step of the simulation is controlled such that the 
+maximum change in 𝒎𝒎ෝ𝒊𝒊 is less than 1 × 10−2. The SOT is introduced at 𝑡𝑡= 0 and persists 
+long enough to induce switching. Additionally, the critical SOT values in the dynamic 
+simulations are given from the static simulations. 
+ 
+ 
+ 

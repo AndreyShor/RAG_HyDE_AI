@@ -1,0 +1,105 @@
+3
+a convenient framework for ab initio quantum chemical
+calculations[36] [37, 38].
+For the hydrogen dimer H2, we adopt the minimal
+STO-3G basis set, where each hydrogen atom is described
+by a linear combination of three Gaussian functions ap-
+proximating the 1s atomic orbital. Despite its simplicity,
+the STO-3G basis offers a tractable, yet accurate model
+for exploring fundamental electronic properties of the hy-
+drogen dimer.
+To accurately determine the ground state of H2, we
+adopt an Unrestricted Hartree–Fock (UHF) approach,
+hence allowing different spatial orbitals for electrons of
+different spins (α and β), which is crucial for avoiding
+spin contamination [37, 38]. This is particularly impor-
+tant in the dissociation limit, where a restricted method
+would fail to describe the correct covalent bond break-
+ing and yield unphysical results. Building upon the UHF
+solution, FCI is then employed to solve the electronic
+Schr¨odinger equation exactly within our STO-3G basis
+set [39]. FCI provides our benchmark for electron cor-
+relation, ensuring an accurate description of the ground
+state of the system across all interatomic distances.
+Results and Discussion—The FCI ground state of the
+system is very well captured at any interatomic distance
+by a state of the form
+|ψ(θ)⟩= cos(θ) |1100⟩+ sin(θ) |0011⟩
+(8)
+with the ordering of the four fermionic modes given by:
+(i) spin α molecular orbital 0, (ii) spin β molecular or-
+bital 0, (iii) spin α molecular orbital 1, and (iv) spin β
+molecular orbital 1. The second determinant corresponds
+to the fully excited state whose contribution is crucial for
+avoiding spin contamination in the large interatomic dis-
+tance limit.
+The angle θ ≡θ(ℓ) is a smooth function
+of the interatomic distance ℓ, connecting the large dis-
+tance limit in which the system factorizes into a pair a
+independent hydrogen atoms to the interatomic distance
+regime of covalent bond formation. Indeed, at these large
+distances, the purely ionic contribution from the two de-
+terminants precicely cancel each other, leaving solely the
+purely covalent contribution. Around the bound state,
+the Hartree-Fock contribution alone provides instead a
+qualitatively good description of the ground state. The
+reader will find in Fig. 1 the binding energy curve of the
+H2 molecule, namely the FCI energy
+Efci(ℓ) =
+D
+ψ(θ(ℓ))
+ ˆH
+ ψ(θ(ℓ))
+E
+(9)
+as a function of the interatomic distance, translated by
+the asymptotic contribution of two isolated hydrogen
+atoms Efci(∞), as well as the angle θ defining the cor-
+responding FCI ground state wavefunction.
+Let us define the extrinsic curvature of the binding
+energy curve as
+κ(ℓ) =
+|E′′
+fci(ℓ)|
+(1 + E′fci(ℓ)2)3/2 ,
+(10)
+FIG. 1.
+FCI binding energy Efci and θ angle defining the
+ground state wavefunction of the H2 dimer as a function of
+the interatomic distance.
+Let us denote by ℓ⋆the point of maximal extrinsic cur-
+vature of the binding energy curve ℓ⋆= argmaxℓκ(ℓ).
+For each value of the interatomic distance ℓ, we compute
+the fermionic Wigner function of the ground state and
+evaluate the magic proxies defined in the first Section of
+the paper. The reader will find in Fig. 2 the behavior
+of the stabilizer Renyi entropy S2 and the mana M as a
+function of the interatomic distance ℓ.
+Our results reveal a striking phenomenon: as the hy-
+drogen atoms approach each other, the magic proxies
+develop a pronounced peak precisely at the interatomic
+distance where the extrinsic curvature of the binding en-
+ergy curve is maximal.
+This suggests that the bond-
+ing process is accompanied by a significant increase in
+non-stabilizerness, implying that the formation of a co-
+valent bond requires the consumption of a large amount
+of non-Clifford operations. As we discussed, a state with
+low magic is efficiently classically simulable, while high
+magic is a necessary ingredient for quantum computa-
+tional speedup [6, 40]. Thus, our analysis indicates that
+the H2 bond formation is not only a chemical process
+but also a transformation that incurs a cost in terms of
+quantum computational resources.
+The angle θ defining the ground state wavefunction
+adjusts smoothly with ℓ, reflecting the relative weight of
+two determinants.
+In regions where the determinants
+contribute comparably, the interference between them
+amplifies off-diagonal correlations in the Majorana basis,
+leading to a more spread out fermionic Wigner function
+and, consequently, to a higher value of our magic proxies
+as defined by Lp norms of the fermionic Wigner function.
+From the standpoint of molecular physics and quan-
+tum chemistry, our results offer an intriguing reinterpre-
+tation of chemical bond formation: in the dissociation

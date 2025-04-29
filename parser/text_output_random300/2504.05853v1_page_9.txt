@@ -1,0 +1,90 @@
+NOTES ON COLOR REDUCTIONS AND γ TRACES
+9
+Notice that Tloop(i) = 0, so that partitions with |S| = 1 or |T| = 1 can be omitted from the sum. For
+the empty set we have Tloop(∅) = N.
+Example 9. The cases n = 2 and n = 3 are in (17) and (18). For n = 4 we have the nontrivial
+decompositions 1, 2, 3, 4 ⊔∅; ∅⊔1, 2, 3, 4; 1, 2 ⊔3, 4; 1, 3 ⊔2, 4; 1, 4 ⊔2, 3; 2, 3 ⊔1, 4; 2, 4 ⊔1, 3; 3, 4 ⊔1, 2.
+With the third line in Figure 3 we obtain
+(20) floop(i1, i2, i3, i4) = NTloop(i1, i2, i3, i4)+NTloop(i4, i3, i2, i1)+2δi1,i2δi3,i4+2δi1,i3δi2,i4+2δi1,i4δi2,i3.
+3. Gamma reduction
+The reduction of traces of γ matrices is standard, see e.g. [5, 4]. We have the anti-commutator relation
+(21)
+{γα, γβ} = 2δα,β1,
+where 1 is the unit matrix in the vector space of the γ matrices. Moreover, the γ matrices are traceless,
+(22)
+Tr γα = 0.
+The dimension of space(-time) is
+(23)
+D = δα,α.
+In QFT, the dimension D is sometimes considered as non-integer parameter. The following results are
+consistent with this setup.
+We define chains of gamma matrices
+Sn = γα1γα2 · · · γαn.
+Upper indices indicate γ matrices that are omitted in Sn,
+Sk
+n = γα1 · · · γαk−1γαk+1 · · · γαn ≡γα1 · · · c
+γk · · · γαn,
+Sk,ℓ
+n
+= γα1 · · · c
+γk · · · bγℓ· · · γαn.
+With this notation the anti-commutator iterates to
+(24)
+γβSn = 2
+n
+X
+k=1
+(−1)k−1δαk,βSk
+n + (−1)nSnγβ.
+Left and right multiplication with γβ gives (respectively)
+(25)
+γβSnγβ = (−1)n(D −2)Sn + 2
+n
+X
+k=2
+(−1)n−kγαkSk
+n = (−1)n(D −2)Sn + 2
+n−1
+X
+k=1
+(−1)k−1Sk
+nγαk.
+By anti-commuting γα1 and γα2 in the terms k = 2 and k = 3 of the first identity in (25) we obtain for
+n ≥3 the one term shorter relation
+(26)
+γβSnγβ = (−1)n
+(D −4)Sn + 2γα3γα2S2,3
+n
++ 2
+n
+X
+k=4
+(−1)kγαkSk
+n
+
+.
+Likewise, we get from the second identity in (25)
+(27)
+γβSnγβ = (−1)n
+(D −4)Sn + 2Sn−2,n−1
+n
+γαn−1γαn−2
+
++ 2
+n−3
+X
+k=1
+(−1)k−1Sk
+nγαk.
+Let ˜Sn = γαn · · · γα1 be Sn in reversed order. We obtain the following contraction formulae
+γ2
+β = D 1,
+(28)
+γβS1γβ = −(D −2)S1,
+γβS2γβ = (D −4)S2 + 4δα1,α2,
+γβS3γβ = −(D −4)S3 −2 ˜S3,
+= −(D −6)S3 −4δα1,α2γ3 + 4δα1,α3γ2 −4δα2,α3γ1,
+γβS4γβ = (D −4)S4 + 2γα3γα2γα1γα4 + 2γα4γα1γα2γα3
+= (D −6)S4 −2 ˜S4 + 8(δα1,α2δα3,α4 −δα1,α3δα2,α4 + δα1,α4δα2,α3)
+= (D −8)S4 + 4(δα1,α2γα3γα4 −δα1,α3γα2γα4 + δα1,α4γα2γα3 + δα2,α3γα1γα4 −δα2,α4γα1γα3
++ δα3,α4γα1γα2).

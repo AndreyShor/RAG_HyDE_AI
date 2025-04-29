@@ -1,0 +1,74 @@
+The Gaussian steering measure G is monogamous and then satisfies a Coffman-Kundu-Wootters type
+monogamy inequality [445], in direct analogy with entanglement [447]. For an m-mode Gaussian state
+with covariance matrix σA1,··· ,Am, the following inequalities hold for each party Aj composed of a single
+mode (nj = 1, 1 ≤j ≤m):
+G(A1,··· ,Ak−1,Ak+1,...,Am)→Ak(σA1,··· ,Am)
+−P
+j̸=k GAj→Ak(σA1,··· ,Am) ≥0,
+GAk→(A1,··· ,Ak−1,Ak+1,...,Am)(σA1,··· ,Am)
+−P
+j̸=k GAk→Aj(σA1,··· ,Am) ≥0.
+(180)
+For the tripartite case, this becomes
+G(AB)→C(σABC) −GA→C(σABC) −GB→C(σABC) ≥0,
+(181)
+GC→(AB)(σABC) −GC→A(σABC) −GC→B(σABC) ≥0.
+In analogy with the case of entanglement, residual Gaussian steering (RGS) can be defined by calculating
+the residuals from (181) and minimization over all mode permutations. Therefore, in the case of a pure
+three-mode Gaussian state, the RGS can be defined as
+GA:B:C(σpure
+ABC) = min
+⟨i,j,k⟩{G(jk)→i −Gj→i −Gk→i}.
+(182)
+This quantity is a monotone under Gaussian local operations and classical communication, such that a
+nonzero value of the RGS certifies genuine tripartite steering [448]. Therefore, it can be regarded as a
+meaningful quantitative indicator of genuine tripartite steering for pure three-mode Gaussian states under
+Gaussian measurements. Returning to the key rate of the QSS protocol (176), the mode-invariant QSS
+key rate bound KA:B:C
+full
+that takes into account eavesdropping and potential dishonesty of the players can
+be obtained by minimizing the right-hand side of (176) over permutations of A,B,and C. It was found
+that it admits the exact linear upper and lower bounds as a function of the RGS (182):
+GA:B:C(σpure
+ABC)
+2
+−ln e
+2 ≤KA:B:C
+full
+(σpure
+ABC) ≤GA:B:C(σpure
+ABC) −ln e
+2.
+(183)
+Thus, partial DI QSS yields a direct operational interpretation for the RGS in terms of the guaranteed
+key rate of the protocol.
+EPR steering is a necessary requirement for non-zero key rates in all of the protocols mentioned above.
+Therefore, it is essential to have a procedure for generating EPR steering between two or more distant
+parties. Xiang et al. [449] designed a protocol that allows the distribution of one-way Gaussian steering.
+This can be subsequently employed for 1SDI-QKD and also for three-user scenarios to distribute richer
+steerability properties, including one-to-multimode steering and collective steering, which can be utilized
+for 1SDI quantum secret sharing. Since all of their protocols can be implemented with squeezed states,
+beam splitters, and displacements, they can be readily realized experimentally. A related experiment was
+done by Wang et.al. [450] which experimentally demonstrate the deterministic distribution of Gaussian
+entanglement and steering with separable ancillary states both in two-user and multi-user scenarios by
+preparing independent squeezed states and applying classical displacements on them, which makes initial
+states fully separable.
+In a later development in 2023, Lv et al.
+[451] demonstrated that a 2-qubit
+entangled state can consistently produce steering through sequential and independent pairs of observers,
+given that the initial pair shares either a pure entangled state or a specific category of mixed entangled
+states.
+Experiments: One-sided Device Independent QKD. 1SDI-QKD is rigorously based upon the loophole-free
+observation of EPR-steering (also known as quantum steering) [431, 432]. As EPR-steering is below Bell
+nonlocality in the hierarchy of correlations, 1SDI-QKD provides a security paradigm that is less robust
+than that of full-DI QKD. However, it is much easier to close the detection loophole for EPR-steering than
+in Bell non-locality. As such 1SDI-QKD can be realized with much lower detection efficiencies. In fact,
+EPR-steering can be observed for arbitrarily large losses in the DV context, provided that a sufficiently
+large number of measurements can be realized on a bipartite state with sufficient entanglement [192, 452].
+1SDI-QKD has also been implemented in continuous variable systems, with the advantage that gaussian
+states and measurements can be used [453, 454].
+6. Towards future a DI-QKD network: Requirements, Challenges and Solutions
+DI-QKD has the appeal that it can help resolve security risks associated to implementation issues,
+as it aims to provide information theoretic security with minimum physical assumptions and unchar-
+acterized hardware, thus reducing or eliminating many of the side-channels and security concerns in
+70

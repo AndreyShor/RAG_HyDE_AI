@@ -1,0 +1,118 @@
+MobiSys ’25, June 23–27, 2025, Anaheim, California, US
+Jinbo Peng, Junwen Duan, Zheng Lin, Haoxuan Yuan, Yue Gao, and Zhe Chen
+𝑁
+1
+…
+Query tokens
+Embedding
+Linear layers
+Recovered signals
+Decoding
+From protocol 
+identification model
+…
+Linear layer
+…
+Feature fusion
+Decoder layer
+Decoder layer
+Decoder layer
+Figure 8: The architecture of header decoding models.
+packets. Frames without intact headers, as flagged by the protocol
+identification model, are excluded from processing here. The model
+consists of a feature fusion stage and a decoding stage, as illustrated
+in Figure 8. In feature fusion, 𝑥(𝑗)
+𝑏𝑏is firstly processed following the
+steps in Section 3.1, similar to that in Section 3.3, although with a
+different embedding dimension 𝑑𝑚𝑜𝑑𝑒𝑙. The resulting embeddings
+are then merged with output features from the encoder layers of
+the protocol identification model. To match feature dimensions,
+the encoder output is passed through an adapter, which is a linear
+layer with GELU activation and layer normalization, before being
+combined with the embeddings via a weighted summation. The
+fusion process is expressed as
+𝑥fusion = 𝑓embed(𝑥(𝑗)
+𝑏𝑏) + 𝛼· 𝑓adapter(𝑥enc),
+(4)
+where 𝑓embed and 𝑓adapter denote the embedding process and adapter
+in the header decoding model, respectively, 𝛼is the learnable weight
+parameter, and 𝑥enc is the output of the encoder layers in protocol
+identification model.
+The decoding stage employs Transformer decoders only, taking
+the fused features and a sequence of learnable query tokens as input.
+Similar to the protocol identification model, these query tokens
+are also irrelevant to the input samples and serve as parts of the
+learnable parameters. Although each physical-layer protocol has
+its unique and complex calibration, demodulation, and decoding
+process, SigChord adopts a unified architecture for header decod-
+ing. For different protocols, the complex decoding procedures are
+abstracted into a direct signal-to-bit mapping process. The differ-
+ence lies in query tokens. The number of query tokens matches the
+number of unencoded bits for a given protocol, with each token
+dedicated to decoding a single bit. This allows flexible extension of
+new protocols while reserving systematic consistency, with only
+query tokens adjusted to align with the bit representation of the
+target protocol. For example, since the DVB-S2 protocol header en-
+codes 7 bits, its decoding model uses 7 query tokens. After passing
+through three decoder layers, the model performs signal calibra-
+tion, demodulation, and decoding. The hidden state corresponding
+to each query token is then passed through a single linear layer,
+followed by a Sigmoid activation, outputting the probability of each
+bit being 1.
+4
+Implementation
+We detail the datasets and model configurations below. To evaluate
+the performance of SigChord, we prepare both a in-band synthetic
+Possible preambles
+Figure 9: An example spectrogram of the multiband signals.
+Multi-coset sampling is then applied to get sub-Nyquist sam-
+pled dataset.
+dataset and an over-the-air collected dataset where multiple signals
+co-exist across 5.0-5.8GHz and are sensed to get the sub-Nyquist
+multi-coset samples. All models in SigChord are trained on the
+synthetic dataset.
+4.1
+Synthetic Dataset
+We synthesize data using a representative single-carrier physical
+layer protocol, namely DVB-S2, and two representative terrestrial,
+OFDM-based protocols, namely IEEE 802.11g/b non-HT Wi-Fi and
+IEEE 802.11n HT Wi-Fi. We use MATLAB’s Communications Tool-
+box to generate multiband signals, with the signal model described
+as follows,
+𝑥(𝑡) =
+𝑀
+∑︁
+𝑗=1
+ℎ𝑗(𝑡) ∗[𝑥𝑗(𝑡)𝑒2𝜋𝑖(𝑓𝑐
+𝑗+∆𝑓𝑗)𝑡] + 𝑛(𝑡),
+(5)
+where 𝑥(𝑡) is the synthetic multiband signal, 𝑀is the number of
+narrowband signals existing in the spectrum and is set to 6, ℎ𝑗(𝑡) is
+the channel impulse response, 𝑥𝑗(𝑡) represents each narrowband
+signal, ∗denotes convolution, 𝑓𝑐
+𝑗is the in-band carrier frequency,
+∆𝑓𝑗is the frequency offset, and 𝑛(𝑡) is the additive white Gaussian
+noise (AWGN). For each narrowband signal, physical layer packets
+are generated with randomly assigned payloads, while transmission
+parameters such as modulation scheme, coding scheme, and packet
+length are randomly selected. DVB-S2 signals have a symbol rate of
+20MHz, with roll-off factors for the square-root raised cosine filter
+chosen randomly from {0.2, 0.25, 0.35}. Wi-Fi signal bandwidths can
+be either 20MHz or 40MHz, as permitted by protocol specifications.
+The amplitude of each narrowband signal is scaled by a random
+factor within [0.5, 1]. Channel impulse responses are drawn from
+Rician and Rayleigh fading channels, featuring 3 delay paths, an
+average delay spread of 40ns, and path gains within [-10, 0]dB.
+We divide the spectrum into 50 MHz sub-bands and choose the
+carrier frequency 𝑓𝑐
+𝑗from {25 + 50𝑘MHz | 𝑘∈Z, 0 ≤𝑘≤15}.
+The frequency offset satisfies |∆𝑓𝑗| < 200 KHz. The AWGN has a
+signal-to-noise ratio (SNR) of [0, 10]dB for the training set.
+We initially use MATLAB to generate Nyquist-rate frames of
+the synthetic signals at a sampling rate of 2GSPS, with each frame
+fixed to 48𝜇s, which is generally enough to capture intact headers,
+enabling data-aligned parallel processing while avoiding excessive
+Transformer complexity due to long sequences. An example spectro-
+gram of the signal is shown in Figure 9. Then we apply multi-coset
+sampling to obtain sub-Nyquist samples, which serve as input to
+SigChord. Setting 𝐵= 2GHz and 𝐿= 40 in Eq. (3), each low-speed

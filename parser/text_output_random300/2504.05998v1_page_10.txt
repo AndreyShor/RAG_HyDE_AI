@@ -1,0 +1,92 @@
+4
+D.
+Considerations regarding the rotating wave approximation
+The model analyzed in this work is based on the rotating wave approximation, in which non-resonant processes are neglected.
+For this approximation to be valid, the rates of dissipative processes must be much smaller than the relevant system frequencies.
+Focusing on a single optomechanical system (disregarding, for the moment, the gravitational interaction), this approximation
+amounts to neglecting the effect of back-action noise. In the weak coupling limit g ≪κ (consistent with the parameters of Fig. 1
+in the main text and Fig. S.1), this is valid if the natural thermal mechanical noise rate γ NT is much larger than the light-induced
+mechanical noise rate γ◦N◦, where γ◦is the light-induced dissipation rate, and N◦describes the effective number of thermal
+mechanical excitations associated with residual heating due to light scattering. Under the resonant condition analyzed in this
+work, γ◦= 4g2/κ, and N◦is given by the sideband cooling limit, N◦= κ2/4ω2
+B. This implies that for our model to be valid, it is
+necessary that NT ≫g2
+γ
+κ
+ω2
+B . This condition is fulfilled for the parameters in Fig. 1.
+We note that in the low mechanical frequency regime, the validity of this approximation requires particularly low cavity
+linewidths κ. This is one of the challenging aspects of our proposal. For larger values of κ one has to relax the rotating wave
+approximation, so that the expression for the output spectral mode at frequency omega (S.8) must be generalized to include the
+coupling with the input spectral modes at the frequency −ω −2ωB, taking the form
+aout2(ω) = α1(ω) ain1(ω) + β1(ω) bin1(ω) + α2(ω) ain2(ω) + β2(ω) bin2(ω)
++µ(ω) a†
+in1(ω + 2ωB) + ν1(ω) b†
+in1(ω + 2ωB) + µ2(ω) a†
+in2(ω + 2ωB) + ν2(ω) b†
+in2(ω + 2ωB),
+(S.23)
+where a†
+in1(ω + 2ωB) = ain1(−ω −2ωB)†. This implies that our optical channel from ain1(ω) to aout2(ω) would couple to
+additional, uncontrolled dissipative ports through the input fields at −ω−2ωB. As a result, additional noise would be introduced,
+reducing the non-classicality of the single-mode channel. A more efficient test in this scenario would probably require analyzing
+the two-mode channel from the two input modes ain1(ω) and ain1(−ω−2ωB) to the two output modes aout2(ω) and aout2(−ω−2ωB).
+Notice that non-classicality criteria exist for general multi-mode Gaussian channels [18], but they are not as simple as the
+criterion for a single-mode attenuator introduced in (8).
+S.II.
+THE GENERAL CASE IN WHICH S 1 AND S 2 ARE NOT SYMMETRIC.
+In this work, we focused on the simple case in which the optomechanical systems S 1 and S 2 have the same parameters (ωA,
+ωB, κ, γ, NT, etc.) because it significantly simplifies the analytic derivation of the main results. However, in this Section, we
+show that the symmetry between S 1 and S 2 is not a strong assumption and that similar results can be obtained even in a regime in
+which S 1 and S 2 are asymmetric. Specifically, here we assume that the two systems can be different with mechanical frequencies
+ωB,j, mechanical dissipation rates γ j, optomechanical couplings gj, detunings ∆j = ωA,j −ωpump,j, and optical linewidths κ j, for
+j ∈1, 2. In any case, we assume that the parameters allow for the rotating wave approximation as discussed in the main text. In
+particular, we assume that the mechanical frequencies are sufficiently close
+ωB,1 −ωB,2
+ ≪ωB,1, ωB,2. In this case, it is useful
+to use a different picture where the optical fields rotate at the laser frequencies [as in Eq. (1) of the main text]. The quantum
+Langevin equations in Fourier space are given by
+−
+κ j
+2 + i
+
+∆j −ω
+
+a j(ω) −i gj bj(ω) + √κj ain j(ω) = 0 ,
+−
+γ
+2 + i
+
+ωB,j −ω
+
+b j(ω) + i g j aj(ω) −i λ b3−j(ω) + √γj bin j(ω) = 0 .
+(S.24)
+In this picture the frequency ω = 0 corresponds the frequency of the laser fields, meaning that the input spectral mode at optical
+frequency ωpump,1 + ω is resonantly coupled to the output spectral mode at frequency ωpump,2 + ω.
+Introducing the optomechanical and gravitational cooperatives
+Γj =
+4 g2
+j
+κ j γ j
+,
+Γλ = 4 λ2
+γ1 γ2
+,
+(S.25)
+the relative detunings
+xj(ω) = 2 ∆j −ω
+κj
+,
+yj(ω) = 2 ωB,j −ω
+γ j
+,
+(S.26)
+and the parameters
+ϱ(ω) =
+[1 + i x1(ω)]1 + i y1(ω) + Γ1 ,
+ς(ω) = [1 + i x2(ω)]
+(1 + i y2(ω) + [1 + i x1(ω)] Γλ
+ϱ(ω)
+)
+,
+(S.27)

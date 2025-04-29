@@ -1,0 +1,102 @@
+suﬃciently large intervals (whose precise size depends on the structure constants for X and Y
+respectively) with I << J (again the precise requirements depend on the constants from weak
+algebraic Haag duality). Then {ξi ⊠A ηj} forms a projective basis for X ⊠A Y , and the braiding
+is given by
+βX,Y (ξi ⊠A νj) = νj ⊠A ξi ∈Y ⊠A X.
+This indeed gives a well-deﬁned intertwiner of correspondences, does not depend on the choice of
+bases, and satisﬁes the hexagon equation that characterizes a braiding on a monoidal category.
+2.2. Charge transporters. In this section, we introduce an analogue of the notion of ‘charge
+transporter’ [M¨ug99] from algebraic quantum ﬁeld theory. We note that charge transporters are
+essentially formalizations of “patch operators” used in topological holography [IW23, CW23].
+Fix a DHR bimodule X over A•. Suppose that F1, F2 are ﬁnite subsets of Z, such that we have
+bases (ξk
+i )i localized in Fk for k = 1, 2. We then put
+tij = ⟨ξ1
+i |ξ2
+j ⟩∈A.
+We thus have
+(2.2)
+X
+i
+ξ1
+i tij = ξ2
+j
+for all j. We note t∗
+ij = ⟨ξ2
+j |ξ1
+i ⟩, hence
+(2.3)
+X
+j
+ξ2
+j t∗
+ij = ξ1
+i
+also holds. In the following we write T = [tij]i,j ∈Mn1×n2(A), where n1 and n2 are the sizes of
+the bases localized in F1 and F2 respectively.
+Proposition 2.7. Consider the matrix P1 = [p(1)
+ij ]i,j ∈Mn1(A) given by p(1)
+ij
+= ⟨ξ1
+i |ξ1
+j ⟩. We
+then have TT ∗= P1 and P1T = T, that is,
+X
+j
+tijt∗
+kj = ⟨ξ1
+i |ξ1
+k⟩,
+tij =
+X
+k
+⟨ξ1
+i |ξ1
+k⟩tkj.
+Proof. This follows from
+a ⟨ξ|η⟩= ⟨ξa∗|η⟩
+and (2.1).
+□
+A similar computation demonstrates the following.
+Proposition 2.8. Consider the matrix P2 ∈Mn2(A) given by P2 = [p(2)
+ij ]i,j ∈Mn1(A), where
+p(2)
+ij = ⟨ξ2
+i |ξ2
+j ⟩. Then we have T ∗T = P2 and TP2 = T, that is, we have
+X
+j
+t∗
+jitjk = ⟨ξ2
+i |ξ2
+k⟩,
+tik =
+X
+j
+tij ⟨ξ2
+j |ξ2
+k⟩.
+Let X and Y be DHR bimodules over A•. Let us recall some facts about the braiding
+βX,Y : X ⊠A Y →Y ⊠A X.
+Choose ﬁnite subsets F1 < F3 < F2 of Z, where < refers to the order on Z rather than
+containment, such that X has bases (ξ1
+i )i and (ξ2
+j )j localized in F1 and F2 respectively, and
+Y has a basis (ηk)k localized in F3. Then by the independence of basis choice in deﬁning the
+braiding, we can express βX,Y and βY,X as A-linear extensions of the maps deﬁned on bases by
+βX,Y (ξ1
+i ⊠ηk) = ηk ⊠ξ1
+i ,
+βY,X(ηk ⊠ξ2
+j ) = ξ2
+j ⊠ηk.
+Proposition 2.9. The monodromy βY,XβX,Y : X ⊠A Y →X ⊠A Y is given by
+(2.4)
+βY,XβX,Y (ξ1
+i ⊠ηk) =
+X
+l,j
+ξ1
+l ⊠tljηkt∗
+ij.
+6

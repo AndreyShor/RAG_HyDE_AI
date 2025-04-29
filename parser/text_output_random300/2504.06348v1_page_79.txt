@@ -1,0 +1,154 @@
+and for the local term with s = −1 we choose
+˜Gζ
+s=−1(kp) =
+(
+21−µ,
+for p ∈♢:= {p : |k(j)
+p ¯rζ
+l | ≤(k∗)−1 ∀j}
+dζ
+−1e−γζ
+−1∥kp¯rζ
+l ∥1,
+for p ∈G \ ♢,
+(202)
+where µ = 1 + ⌊log(maxj{|kp
+(j)|})⌋. Specifically, for the non-local term conditioned on l, ζ and α we will
+prepare a state:
+|ψ ˜
+G⟩=
+1
+NNL
+
+dζ,l
+α
+
+X
+p∈G\♢
+e−γζ,l
+α ∥kp¯rζ
+l ∥1|p⟩
+
++ max
+p
+|Gl,ζ
+α |
+
+X
+p∈♢
+|p⟩
+
+
+
+.
+(203)
+Likewise for the local term with s ≥0:
+|ψ ˜
+G⟩=
+1
+Nloc,s≥0
+
+dζ
+s
+
+X
+p∈G\♢
+e−γζ
+s ∥kp¯rζ
+l ∥1|p⟩
+
++ cζ
+s
+
+X
+p∈♢
+|p⟩
+
+
+
+.
+(204)
+and the local term with s = −1:
+|ψ ˜
+G⟩=
+1
+Nloc,s=−1
+
+dζ
+−1
+
+X
+p∈G\♢
+e−γζ
+s ∥kp¯rζ
+l ∥1|p⟩
+
++
+
+X
+p∈♢
+21−µ|p⟩
+
+
+
+
+(205)
+For readability, we drop the ζ, l and α dependence (and the s dependence for the local term) in the
+compilation below and reintroduce them when needed for resource estimates.
+We will also absorb the
+parameter ¯rζ
+l in the 1-norm into the parameter γζ,l
+α .
+Preparing superpositions over the points in ♢is
+nontrivial, and instead we opt to prepare superpositions over simpler domains and then use amplitude
+amplification to remove parts that we don’t want.
+In particular, let □ins = {p : |pa| ≤pins, ∀a} and
+□circ = {p : |pa| ≤pcirc, ∀a} be the squares that inscribe and circumscribe ♢, respectively.
+Also, let
+□out = {p : |pa| ≤pmax −pins, ∀a}. As written, ∥kp∥1 = P
+j |kp
+(j)| is not immediately separable into
+its pa components and so is not simply preparable as a product state over a (which would complicate the
+compilation). However, define the indicator
+Ij =
+(
+0
+if P
+a pab(j)
+a
+≥0
+1
+if P
+a pab(j)
+a
+< 0.
+(206)
+Then ∥kp∥1 = P
+j
+P
+a pab(j)
+a
+ = P
+j(−1)Ij P
+a pab(j)
+a
+= P
+a pa
+P
+j(−1)Ijb(j)
+a
+
+, which is separable. For each
+component pa, we will load rotation angles that, if implemented appropriately, approximate a rotation by
+γ P
+j(−1)Ijb(j)
+a .
+To prepare the state, we first initialize and rotate an ancilla to match the relative weight of the two
+branches of the reference, |ψ0⟩= cos θζ,l
+α |0⟩+ sin θζ,l
+α |1⟩for some appropriately chosen θζ,l
+α
+(and likewise for
+some appropriately chosen θs for the local term). This has cost brot if implemented up to brot bits. Let
+f(µ) = 21−µ for the s = −1 local term and f(µ) = 1 otherwise. The next steps are elucidated below:
+79

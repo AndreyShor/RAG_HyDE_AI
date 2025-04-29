@@ -1,0 +1,82 @@
+11
+Altogether, by returning to the original variables, the joint invariants of L−1, L0 and L1 are such that
+η(z) = ρc(1 −ρd)
+ρd(1 −ρc) =
+zc−za
+zb−za
+
+1 −zd−za
+zb−za
+
+zd−za
+zb−za
+
+1 −zc−za
+zb−za
+ = (zc −za)(zd −zb)
+(zb −za)(zd −zc) = cabcd(z) ,
+(S44)
+that is, the joint invariants are cross-ratios.
+If the cross-ratios are not known to be conserved in the Kuramoto model a priori, the presented procedure provides
+a systematic way to construct them from the Koopman generator. Clearly, for n = N, this means that the cross-ratios
+are constants of motion for identical oscillators with generator K = p(z)L−1 + iωL0 −p(z)L1. Yet, it is also true in
+more general cases where 4 ≤n < N and K = PN
+j,k=1(Ajkzk −¯Ajk¯zkz2
+j )∂j: the requirements to conserve a cross-ratio
+are stated in Thm. 2 (Thm. S12). Before getting to the proof of Thm. 2 (Thm. S12), we present a lemma on the
+functional independence of cross-ratios.
+C.
+Functional independence of cross-ratios
+In this subsection, to make the presentation more self-contained, we demonstrate a known result (e.g., Ref. [61,
+Example 2.35] or Appendix of Ref. [62]) about the functional independence of cross-ratios using the classical criterion
+on the rank of a Jacobian matrix [60, Theorem 2.16]. We will use the result not only for globally coupled oscillators
+(n = N), but for any subgraph of 4 ≤n < N vertices with a certain number of functionally independent cross-ratios.
+Each cross-ratio cabcd depends on four indices {a, b, c, d} with a, b, c, d ∈{1, ..., n}, where the order of the indices a,
+b, c, and d may change the cross-ratio. Since there are n!/(n −4)! (falling factorial (n)4) ways to select an ordered
+list of 4 distinct elements from a set of n items (number of 4-permutations in a set of size n), there are n!/(n −4)!
+cross-ratios. Yet, only some of them are independent as stated in the next lemma.
+Lemma S6. Among the n!/(n −4)! cross-ratios cabcd such that a, b, c, d ∈{1, ..., n} with a ̸= b ̸= c ̸= d, only n −3
+cross-ratios form a functionally independent set, such as
+{c1234, c2345, ..., c(n−3)(n−2)(n−1)n} .
+(S45)
+Proof. A large portion of the proof is taken from Ref. [62]. First, it is straightforward to show that all cross-ratios
+with permutations of the same 4 indices are functionally dependent. For a given cross-ratio cabcd,
+cbadc(z) = cabcd(z) ;
+(S46)
+ccdab(z) = cabcd(z) ;
+(S47)
+cdcba(z) = cabcd(z) ;
+(S48)
+cabdc(z) =
+1
+cabcd(z) ;
+(S49)
+cacbd(z) = 1 −cabcd(z) ;
+(S50)
+cacdb(z) =
+1
+cacbd(z) =
+1
+1 −cabcd(z)
+by Eqs. (S49-S50) ;
+(S51)
+cadcb(z) = 1 −cacdb(z) = 1 −
+1
+1 −cabcd(z) =
+cabcd(z)
+cabcd(z) −1
+by Eqs. (S50-S51) ;
+(S52)
+cadbc(z) =
+1
+cadcb(z) = cabcd(z) −1
+cabcd(z)
+by Eqs. (S49-S52) .
+(S53)
+The 15 other permutations can be obtained by permuting the indices of the cross-ratios in Eqs. (S49-S53) according
+to Eqs. (S46-S48). Thus, cross-ratios with all 24 permutations of the same 4 indices are functionally dependent. For
+the rest of the proof, permutations can therefore be omitted without loss of generality.
+Next, demonstrate the functional independence of the n −3 cross-ratios
+{c1234, c2345, ..., c(n−3)(n−2)(n−1)n} .
+Consider the function ζ : Tn 7→Rn−3 defined as
+ζ(z) = (c1234(z), c2345(z), ..., c(n−3)(n−2)(n−1)n(z)) .

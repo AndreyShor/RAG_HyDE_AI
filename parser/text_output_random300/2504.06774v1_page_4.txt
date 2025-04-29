@@ -1,0 +1,42 @@
+time, and model complexity.
+This study reflects the need for tailored deep learning
+models, where architecture selection is guided by the unique dynamics of the system
+under consideration.
+On the other hand, ROMs have surfaced as a promising approach to achieving both
+efficiency and accuracy for cleaning and data extraction from CFD simulations, experi-
+mental, and real-world datasets. ROMs significantly reduce the computational cost by
+projecting high-dimensional data onto a lower-dimensional subspace, capturing the most
+essential features of the system [14]. Several studies have demonstrated the successful
+application of ROMs in fluid dynamics. Rowley and Dawson [15] provided a comprehens-
+ive review of model reduction techniques, including Proper Orthogonal Decomposition
+(POD) [16], Dynamic Mode Decomposition (DMD) [17], and other methods for flow ana-
+lysis and control, showcasing the efficiency of POD and DMD in reducing computational
+costs. Schmid [16] and Kutz et al. [18] explored the utility of dynamic mode decom-
+position to capture the dynamics of complex systems with experimental and numerical
+data, demonstrating its role in improving traditional ROMs. Similarly, Taira et al. [19]
+elucidated the merits of Singular Value Decomposition (SVD) [20] and DMD in fluid
+dynamics, emphasizing its ability to capture essential fluid characteristics with minimal
+computational effort. SVD serves as one of the primary techniques for calculating POD
+modes, as highlighted by Le Clainche [21]. By decomposing the flow field into orthogonal
+spatial modes and their corresponding temporal coefficients, SVD enables efficient dimen-
+sionality reduction while preserving the most significant features of the flow dynamics.
+This dual capability makes SVD a cornerstone of reduced-order modeling in fluid dynam-
+ics, offering both computational efficiency and physical interpretability. Begiashvili et al.
+[22] provides a comprehensive review of the most widely used modal decomposition tech-
+niques, including DMD, SVD, spectral POD [23], higher-order DMD [24], and resolvent
+analysis [25], emphasizing their strengths and limitations in fluid dynamics applications.
+The study highlights how each method performs in developing ROMs and extracting dom-
+inant patterns from complex flow fields, offering critical insights into their suitability for
+various fluid dynamic problems. Both POD and DMD are powerful and complementary
+techniques for identifying flow structures in fluid dynamics. POD modes are orthogonal
+in space, meaning that each POD mode captures multiple frequencies. Conversely, DMD
+modes are orthogonal in time, with each mode associated with a single frequency, making
+DMD particularly well-suited for identifying flow instabilities. In linear flows, the DMD
+modes correspond to the linear stability modes, while in periodic flows, they represent
+Fourier modes. In saturated flows, the DMD modes capture groups of flow structures
+that effectively model the flow dynamics [26]. This distinction allows POD to excel in
+capturing dominant spatial structures and DMD to provide detailed temporal dynamics.
+The fusion of ROMs with deep learning architectures has attracted a lot of attention
+in recent times. These models, termed hybrid ROMs, can capture the underlying phys-
+ics while using deep learning architectures to construct highly robust predictive models
+4

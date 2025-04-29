@@ -1,0 +1,80 @@
+empirical estimation in terms of the number of samples, M, and the variable range
+with high probability. In particular, we have
+Rn ∈
+
+q
+min
+y
+PYn(y),
+1
+q
+miny P ˆYn(y)
+
+⊆[√cn,
+p
+1/cn]
+(26)
+cn = min{min
+y
+PYn(y), min
+y
+P ˆYn(y)}
+(27)
+and, for any t > 0,
+Prob
+
+
+
+M−1
+M
+X
+m=1
+v
+u
+u
+tPYn( ˆYnm)
+P ˆYn( ˆYnm)
+−E ˆYnRn( ˆYn)
+
+≤t
+
+=
+(28)
+= Prob
+ ˆBCn −BC(Yn, ˆYn)
+ ≤t
+
+≥1 −e−
+2t2
+M Cn
+(29)
+where Cn = |cn −c−1
+n |. The statement is then obtained by combining the con-
+centration and CP bounds, (28) and (25). □The BC approximator needs to
+be trained on data that are not used to calibrate the CP algorithm. Ideally,
+the training data set should be a random subset of all available data, but
+this is not required for the validity of (10). In general, however, the em-
+pirical estimation of bc(ˆY ) will not fulfil Assumption 2.4. If we assume the
+BC is Gaussian distributed around a conditional mean that depends only
+on (features extracted from) ˆY , and bc is a good enough approximation of
+such conditional mean, we do not need Assumption 2.4 to show that using
+˜An = |BC(Yn, ˆYn)−bc(Xn)| instead of An = BC(Yn, ˆYn) reduces the validity
+gap.
+Lemma 2.6. Let BCn = BC(Yn, ˆYn) ∼N(µn, 1), n = 1, . . . , N + 1, where
+the unknown conditional mean depends only on ˆYn, i.e. µn = µ(ˆYn). Let
+bc(ˆYn) ≈E(BCn|ˆYn) = µn be a pre-trained approximation of the conditional
+expectation of BCn. Then replacing An = BCn with ˜An = |BCn −bc(ˆYn)| in
+(10) is reduces the validity gap if
+max
+n {|µn −bc(ˆYn)|} ≤1
+5
+1
+N
+N
+X
+n=1
+|µn −µN+1|,
+(30)
+Proof of Lemma 2.6.
+According to Theorem 1.3 of Devroye et al.
+(2018), the Total Variation distance between two one-dimensional Guassians

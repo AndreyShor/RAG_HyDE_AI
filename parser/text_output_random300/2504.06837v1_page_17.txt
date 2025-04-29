@@ -1,0 +1,149 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+Lemma 3.16. For each c ∈M+(XN), ϕ ∈C(X), it holds
+⟨ιNc, ϕ⟩= ⟨c, ι∗
+Nϕ⟩N.
+Furthermore, we have for ϕ ∈C(X), (F, J) ∈M(YN) that
+⟨ιN,diﬀF, ∇ϕ⟩= ⟨F, ∇ι∗
+Nϕ⟩N
+and
+⟨ιN,reactJ, Γ ϕ⟩= ⟨J, Γ ι∗
+Nϕ⟩N.
+In particular, it holds (c, F, J) ∈CEN if and only if (ιNc, ιN,diﬀF, ιN,reactJ) ∈CE.
+Proof. For the ﬁrst equality, we calculate
+⟨ξi, ιNci⟩=
+Z
+Td ξi
+X
+k∈Zd
+N
+ci,k11QN
+k dx = 1
+Nd
+X
+k∈Zd
+N
+ι∗
+Nξi,kci,k = ⟨ι∗
+N(ξi), ci⟩N.
+Furthermore, we have for all test functions ϕ ∈C∞
+0 (X) that
+⟨F, ∇ι∗
+Nϕ⟩N = 1
+Nd
+X
+k∈Zd
+N
+X
+e∈E
+Fk,e • [(ι∗
+Nϕ)k+e −(ι∗
+Nϕ)k] =
+X
+k∈Zd
+N
+X
+e∈E
+Fk,e •
+Z
+QN
+k
+[SN
+e ϕ −ϕ] dx.
+Rewriting for each i ∈I the integral by
+SN
+e ϕi(x) −ϕi(x) =
+Z 1
+0
+∇ϕi
+
+x + e
+N θ
+
+· e
+N dθ = 1
+N
+Z 1
+0
+SN
+eθ ∂xeϕi(x) dθ,
+(3.13)
+and using Fubini for the integrable integrand, we get
+⟨F, ∇ι∗
+Nϕ⟩N =
+X
+k∈Zd
+N
+X
+e∈E
+Fk,e
+N •
+Z
+QN
+k
+Z 1
+0
+SN
+eθ ∂xeϕ(x) dθ dx
+=
+X
+k∈Zd
+N
+X
+e∈E
+Fk,e
+N •
+Z
+Td 11QN
+k (x)
+Z 1
+0
+SN
+eθ ∂xeϕ(x) dθ dx
+=
+X
+k∈Zd
+N
+X
+e∈E
+Fk,e
+N •
+Z
+Td
+Z 1
+0
+11QN
+j+eθ(x)∂xeϕ(x) dθ dx =
+Z
+Td
+X
+e∈E
+fe(x) • ∂xeϕ(x) dx = ⟨f N, ∇ϕ⟩.
+For the reactive ﬂux, we simply observe that
+⟨J, Γι∗
+Nϕ⟩N = 1
+Nd
+X
+k∈Zd
+N
+(ΓTJ) • Nd
+Z
+QN
+k
+ϕ dx =
+X
+k∈Zd
+N
+Jk •
+Z
+QN
+k
+Γϕ dx = ⟨j, Γϕ⟩.
+In particular, for all ϕ ∈C∞(Td) we obtain ⟨˙c, ι∗
+Nϕ⟩N = −⟨div F, ι∗
+Nϕ⟩N + ⟨Γ∗J, ι∗
+Nϕ⟩N if and
+only if ⟨∂tιNc, ϕ⟩= −⟨div f, ϕ⟩+ ⟨Γ∗j, ϕ⟩.
+This ﬁnishes the proof of Lemma 3.16.
+17

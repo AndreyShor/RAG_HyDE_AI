@@ -1,0 +1,143 @@
+7
+|s|vh = 0, in which case we define 0 × +∞= 0, allowing
+us to estimate probabilities for any sequence.
+Additionally, since we work with very large n and small
+h we can further simplify the equation, obtaining our final
+formula for ϵh estimation.
+˜ϵh
+≈
+n→∞max
+vh
+
+|s|vh
+|s|v′
+h
+−1
+2
+
+(15)
+The estimation, defined by the above formula, is real-
+ized by the central part of our software. We will describe
+it in more detail in Section V.
+We are ready to come back in the next Section to the
+problem of how to combine a just-defined sequence of ˜ϵh
+into a single final ϵ.
+Remark IV.1 (Quality of ˜ϵh estimation). It is impor-
+tant to point out here two important issues:
+• For tested string s with fixed length n, the quality
+of estimation drops down as the history length h is
+increasing. The above follows because the number
+of occurrences of each binary string will decrease
+with h since the maximization in Eq. (15) is taken
+over all binary strings of length h.
+• The string s will be too short to contain all binary
+substrings of length h, so the estimation will become
+trivial.
+Because of that, when estimating final ϵ we can take into
+account only ϵh for some reasonable small values of h and
+additionally, we should incorporate them with decreasing
+weights.
+C.
+Epsilons combining functions
+As we already explained in the previous section, our
+software outputs a sequence of epsilons.
+Our primary
+goal is then to have a single value of epsilon computed
+from the family of epsilons described in the previous sec-
+tion. In [11], we proposed to use the weighted average in
+the following form
+˜ϵ(sn) :=
+1
+w(⌊log2(n)⌋−1)
+⌊log2(n)⌋−1
+X
+i=0
+˜ϵi(sn)
+(i + 1)
+(16)
+with w(h) = Ph
+i=0
+1
+i+1. Although using the above for-
+mula is a reasonable choice, we did not justify it in the
+previous publication. Therefore, in this manuscript, we
+would like to analyze in depth the problem of obtaining a
+single epsilon, which is one of the central problems of this
+research.
+Indeed, although the method for calculating
+epsilons for fixed history length is quite straightforward,
+the task of obtaining a single final epsilon is not easy to
+define uniquely. As justified in Section IV A and Remark
+IV.1, we cannot use the supremum over the set of ep-
+silons, which would be the theoretically correct function
+in the infinite case. Therefore, we have to come up with
+a different solution that is suitable for estimation in the
+finite case.
+We will first formalize the notation of the epsilon-
+generating function and show that the direct analog of
+the ϵ-SV source condition is not applicable in a finite
+testing context. Next, in Section IV D, we will provide a
+list of axioms (properties) that the reasonable epsilon-
+generating function should fulfill.
+Finally, in Section
+IV E, we will give a few examples of such functions and
+justify our choice of one of them.
+We will start with a formal definition of the function
+that transforms the sequence of epsilons into a single fi-
+nal epsilon. Let, s = (si)n
+i=1 be the sequence of n bits
+obtained from a source using the chosen discretization
+method and optionally some additional post-processing
+(see Section IV F). Then, as we already described in Sec-
+tion IV B our software is capable of estimating, from the
+source s, the sequence of epsilons (ϵh)hmax
+h=0 , each for given
+history length h, where hmax ≤n −1.
+Additionally, in the specific case of our epsilon esti-
+mating method, we can even further limit the length of
+the history. To make sure that ϵi could potentially ever
+be smaller than 1/2, it is not enough to say that i < n.
+Since the epsilon always equals half if some bit with some
+history is not present in the sequence, we have to make
+sure that occurrences of all of them are even possible. It
+gives us a tighter bound that h ≤h′ := ⌊log2 n⌋−1. Let
+us note here that we used the same bound on h in our
+previous work (see Lemma 1 in [11]). Because of this,
+our method of estimation is enough to consider functions
+ψh for h ≤h′.
+Also, since epsilon with a bigger history length has
+smaller statistical significance, it should depend more on
+the epsilons with smaller indexes. We will define that
+condition in the following way.
+In general function that generate single epsilon from
+infinite sequence (ϵh)∞
+h=0 of epsilons for given history is
+of the form
+Ψ : l∞→
+
+0, 1
+2
+
+.
+(17)
+We will additionally define the sequence of functions
+Ψh : l∞→
+
+0, 1
+2
+
+.
+(18)
+We want that each Ψh depends only on the first h argu-
+ments namely
+Ψh((ϵi)∞
+i=0) := ψh((ϵi)h
+i=0)
+(19)
+for some function ψh : [0, 1/2]h+1 →[0, 1/2].
+In the ideal case, we would like to limh→∞Ψh = Ψ for
+some mode of convergence [56, 57], such as pointwise or
+uniform, that we will not specify here and also that Ψ
+would be one defined as supremum in Eq. (10). Instead
+of imposing that convergence, we will construct a set of
+axioms for the function to fulfill.

@@ -1,0 +1,36 @@
+Fukuzawa, Goodrich, and Irani
+XX:17
+D
+A Lower bound for Quantum Convex Hulls
+In this appendix, we show that our algorithm is optimal up to polylogarithmic factors
+assuming a sorted input and oracle access to the data. A key ingredient of this proof is the
+lower-bound on unstructured search given oracle access to a database, summarized below.
+▶Theorem 9. Let S be a set of size N and f : S →{0, 1} be a Boolean function such that
+f(x) = 1 for a unique x ∈S and Uin be a unitary providing oracle access to f. Then, to find
+x, a quantum computer requires at least Ω
+√
+N
+
+queries to Uin.
+For the lower bound, we consider a lexicographically sorted set of n points whose convex
+hull contains h + 1 points lying on a parabola, and h points lying above that parabola. We
+also assume a setting where the points on the convex hull appear every n/h points, which we
+will call partition points. Furthermore, there will be a point on the convex hull between every
+pair of partition points. What remains is to find these remaining points on the convex hull.
+This problem reduces to finding the nearest point to the parabola below the chord formed by
+consecutive partition points. By Theorem 9, if each block has a unique winner to be found,
+we require at least Ω
+p
+n/h
+
+queries to find a winner per block. Since there are h blocks,
+we see that we require Ω
+√
+nh
+
+queries to the oracle to find the convex hull. (See Figure 7).
+Figure 7 A set of n = 19 points with 7 points on the convex hull. There are h + 1 = 4 points
+that lie on the parabola (in green) assumed to be given to us, and h points on the convex hull lying
+between the chords and parabola. Now the objective is to find within each block, the point marked
+in black.
+SoCG 2025

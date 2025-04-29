@@ -1,0 +1,154 @@
+2
+0
+1
+2
+3
+−1
+−2
+⋯
+⋯
+Qt
+FIG. 1. Schematic illustration of the step initial condition for
+ρa = 1 and ρb = 0. Starting from the step initial condition,
+we evolve the system according to Eq. (1) and investigate
+the fluctuations of an integrated current Qt across the bond
+between site 0 and site 1.
+In this state, each site to the left of the origin (x ≤0) is
+independently occupied with the probability ρa, and each
+site to the right of the origin is independently occupied
+with the probability ρb (see Fig. 1). Note that the state
+corresponds to a steady state when ρa = ρb and a domain
+wall state when (ρa,ρb) = (1,0) or (0,1).
+We will study the fluctuation of an integrated current
+Qt, defined as total currents has flowed from time 0 to
+t across the bond between site 0 and site 1.
+Due to
+particle number conservation, Qt can be measured via
+a two-time measurement of the particle number in the
+right half of the system, NR ∶= ∑x≥1 nx; specifically Qt
+is obtained by the difference between the measurement
+outcomes of NR at time t and time 0 [74, 75]. The fluctu-
+ation of Qt can be characterized by the moment generat-
+ing function ⟨eλQt⟩or the cumulant generating function
+χ(λ,t) ∶= log⟨eλQt⟩. Here, we define the average of a func-
+tion f(Qt) as ⟨f(Qt)⟩∶= ∑n∈Z f(n)Pr[Qt = n], denoting
+a probability that Qt takes the value n as Pr[Qt = n].
+This probability can be expressed in terms of Born prob-
+abilities, which yield the compact analytical expression
+of ⟨eλQt⟩[74, 75],
+⟨eλQt⟩= Tr[eλNReLt[e−λNRρini]].
+(3)
+See Sec. I of the Supplemental Material (SM) [76] for the
+derivation. From ⟨eλQt⟩, the variance of the integrated
+current σ2
+Qt ∶= ⟨Qt⟩2 −⟨Qt⟩2, the quantity of our prime
+interest, can be expressed as σ2
+Qt = ∂2
+λ χ(λ,t)∣λ=0.
+ω-dependence.— We show that ⟨eλQt⟩depends on ρa,
+ρb, and λ only through a single reduced parameter
+ω ∶= ρa(eλ −1) + ρb(e−λ −1) + ρaρb(eλ −1)(e−λ −1).
+Specifically, ⟨eλQt⟩can be expanded in terms of ω as
+⟨eλQt⟩= ∑n≥0 qn(t)ωn. Here qn(t) is given by the sum of
+the n-particle density matrices,
+qn(t) ∶=
+∑
+y1<⋯<yn≤0<x1<⋯<xn
+⟨x∣eLt[∣y⟩⟨y∣]∣x⟩,
+(4)
+where we define x ∶= (x1,⋯,xn) and ∣x⟩∶= a†
+x1⋯a†
+xn∣0⟩
+with the vacuum state ∣0⟩. We shall refer this dependence
+to as the ω-dependence because a similar dependence has
+been observed in stochastic interacting systems and it is
+called the ω-dependence [65, 66].
+Thanks to the ω-dependence, σ2
+Qt can be expressed as
+σ2
+Qt = (ρa −ρb)2[2q2 −q2
+1] + (ρa + ρb −2ρaρb)q1.
+(5)
+In this expression, the variance is determined solely by
+q1(t) and q2(t) which are the sum of the single and two-
+particle density matrices, and no longer depend on ρa
+or ρb. This implies that the problem of calculating σ2
+Qt,
+which originally involves the infinitely many particles and
+depends on ρa and ρb, is reduced to the single- and two-
+particle problems, both independent of these parameters.
+Note that this reduction holds for general n-th moments.
+That is, each ⟨Qn
+t ⟩is determined by qj(t), (j = 1,⋯,n).
+The derivation of the ω-dependence relies on particle-
+hole symmetry and a duality relation between the n-
+particle density matrix and a 2n-point correlation func-
+tion [77, 78], namely the time evolution of the 2n-point
+correlation function is equivalent to that of the n-particle
+density matrix. The detailed derivation is given in Sec.
+II of SM [76]. We remark that several models have the
+particle-hole symmetry and the duality relation, for ex-
+ample the tight-binding chain with incoherent symmetric
+hopping [77], and therefore the ω-dependence could be
+extended to such models as well.
+Integral
+formulas
+for
+the
+Green’s
+function.—
+In
+this
+work,
+the
+Green’s
+function
+is
+defined
+as
+G(n)
+t
+(x(1);x(2)∣y(1);y(2)) ∶= ⟨x(1)∣eLt[∣y(1)⟩⟨y(2)∣]∣x(2)⟩
+with x(j) ∶= (x(j)
+1 ,⋯,x(j)
+n ), y(j) ∶= (y(j)
+1 ,⋯,y(j)
+n ). If one
+obtains an analytical expression for the Green’s func-
+tion, one has the full time dependence for any n-particle
+density matrix by appropriately summing over y(1) and
+y(2). In what follows, we focus on G(n)
+t
+(x(1);x(2)∣y;y),
+since it suffices to derive the analytical expression for
+σ2
+Qt (see Eq. (4) and Eq. (5)). For simplicity, we denote
+it by G(n)
+t
+(x(1);x(2)∣y), and assume that y1 < ⋯< yn
+without loss of generality.
+As shown in Ref. [78], our model can be mapped to the
+one-dimensional Fermi-Hubbard model with imaginary
+interaction, which is exactly solvable via the Bethe ansatz
+[79, 80]. Indeed, by defining ψ(2n)
+t
+(x;a∣y) as
+ψ(2n)
+t
+(x;a∣y) ∶=
+n
+∏
+j=1
+(−1)xn+j−yj
+× G(n)
+t
+(x1,⋯,xn;xn+1,⋯,x2n∣y),
+(6)
+for aj =↓and an+j =↑, (j = 1,⋯,n), and defining
+ψ(2n)
+t
+(x;a∣y) for other a such that it is antisymmetric
+under simultaneous exchange of x and a, the equation of
+motion for G(2n)
+t
+(x(1);x(2)∣y) can be rewritten in terms

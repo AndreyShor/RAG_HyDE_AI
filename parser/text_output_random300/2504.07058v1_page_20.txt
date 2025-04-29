@@ -1,0 +1,97 @@
+The analytic solution to this model, as presented in [1] (though with different boundary conditions), is given by
+exp(−𝑡) sin(𝜋𝑥). The source term is:
+exp(−𝑡) sin(𝜋𝑥)
+
+𝛾𝜋4 + 𝜋2 −2 + exp(−2𝑡)(sin(𝜋𝑥))2
+.
+Figure 12 shows a graphical comparison between the approximate solutions obtained using PINN and the exact
+solution. The results demonstrate that the PINN-based approximation closely matches the exact solution, validating
+its stability. Furthermore, Fig. 17a illustrates the variation in tumor cell density over time 𝑡. Table 4 presents the
+relative error E𝑟
+𝐺and training error E𝑇, along with the selected hyper-parameters.
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+u
+Exact, t = 0.5,
+Predicted, t = 0.5,
+0
+1
+0.0
+0.5
+(a) Exact versus predicted solution at different 𝑡=
+0.5.
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+u
+Exact, t = 0.0.
+Predicted, t = 0.0.
+Exact, t = 0.2.
+Predicted, t = 0.2.
+Exact, t = 0.4.
+Predicted, t = 0.4.
+(b) Exact and predicted solution at different t.
+Figure 10: Comparison between exact solution and PINN solution at 𝛾= 0.0001.
+𝑁int
+𝑁sb
+𝑁sb
+𝐾−1
+¯𝑑
+𝜆
+E𝑇
+E𝑟
+𝐺
+Training Time/s
+4096
+1024
+1024
+4
+20
+0.1
+0.0003
+0.0002
+84
+Table 4: Best-Performing PINN Configuration for Section 3.1.3.
+3.1.4
+1D extended Fisher–Kolmogorov equation
+Consider the EFK equation:
+𝑢𝑡+ 𝛾𝑢𝑥𝑥𝑥𝑥−𝑢𝑥𝑥+ 𝑢3 −𝑢= 0,
+(𝑥, 𝑡) ∈[0, 1] × (0,𝑇],
+(3.12)
+with initial and boundary conditions:
+(a) 𝑢(𝑥, 0) = 𝑥3(1 −𝑥)3,
+(b) 𝑢(𝑥, 0) = 𝑥2(1 −𝑥)2,
+𝑢(0, 𝑡) = 0,
+𝑢(1, 𝑡) = 0,
+(3.13)
+𝑢𝑥𝑥(0, 𝑡) = 0,
+𝑢𝑥𝑥(1, 𝑡) = 0.
+(3.14)
+The numerical solution for this equation has been computed using the parameter 𝛾= 0.01 with different initial
+values. Figure 11a shows the numerical solution for the initial condition 𝑢(𝑥, 0) = 𝑥3(1 −𝑥)3, while Figure 11b
+corresponds to the initial condition 𝑢(𝑥, 0) = 𝑥2(1 −𝑥)2. Both figures display the numerical solutions at different
+times, exhibiting the same characteristics as those presented in [42]. Table 5 reports the training error E𝑇alongside
+the chosen hyperparameters.
+20

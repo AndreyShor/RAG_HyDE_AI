@@ -1,0 +1,137 @@
+4
+The imaginary part of the self-energy represents the lifetime of the underlying quasiparticles.
+For a Fermi liquid,
+the self-energy turns out to be proportional to ω2, which is much smaller than the excitation energy ω, in the limit
+ω ≪1. This is the reason why we can define long-lived Landau quasiparticles for a normal metal (or Fermi liquid).
+But here we find that ImΣ ∝|ω|
+2
+3 , whose magtinude is much much greater than |ω| in the limit ω →0. Thus the
+quasiparticle-picture fails for the Ising-nematic QCP, making the traditional Boltzmann formalism inadequate to derive
+the corresponding kinetic equations.
+A.
+Keldysh formalism
+To deal with a generic nonquilibrium situation, a widely used method is to use the closed-time Keldysh contour [41].
+Using the field operators on the forward and the backward branches of the time contour, we write down the total Keldysh
+action, as shown in Refs. [35, 36]. which we do not repeat here. The Keldysh formalism comes to include various types of
+Green’s functions, which appear as a consequence of the respective locations of their time arguments on the folded contour.
+These are shown in Appendex A for the sake of completeness. Using these ingredients, we finally change the spacetime
+coordinates to (trel = t1 −t2, rrel = r1 −r2) and (t = t1+t2
+2
+, r = r1+r2
+2
+), which are also known as the Wigner coordinates.
+While the former refers to the relative coordinates, the latter comprises the centre-of-mass description. Through this step,
+we can easily describe the system in the equilibrium limit, because the dependence on (t, r) drops out due to the emergent
+translational insurance both in time and space, causing all the Green’s functions to depend only on (trel, rrel). Defining
+k1 ≡(ωk1, k1) and k2 ≡(ωk2, k2) to be the canonically conjugate energy-momentum variables of x1 ≡(t1, r1) and
+x2 ≡(t2, r2), respectively, we can then easily perform our calculations by going to the Fourier space, with the canonically
+conjugate variable defined as k = k1−k2
+2
+. In a generic nonequilibrium situation, the additional dependence on (trel, rrel)
+needs to be accounted for, when we can use the canonically conjugate variables q = k1 + k2, respectively. For the sake
+of notational simplification, we define the shorthand symbols of xrel = (trel, rrel), k ≡(ωk, k) and q ≡(ωq, q) [and set
+ωq = Ω], combining everything into three-vectors.
+B.
+Equilibrium properties and generalized distribution functions
+For our system, the explicit expressions for the bare (aka noninteracting) Green’s functions, at equilibrium, are given
+by
+GR
+bare(ωk, k) = G(0)(i k0, k)
+
+i k0→ωk+i 0+ =
+1
+ωk −δk + i 0+ ,
+GA
+bare(ωk, k) = G(0)(i k0, k)
+
+i k0→ωk−i 0+ =
+1
+ωk −δk −i 0+ ,
+(9)
+and
+DR
+1 (ωk, k) = D(1)(i k0, k)
+
+i k0→ωk+i 0+ =
+1
+−k2
+∥−ΠR
+0 (ωk, k) ,
+DA
+1 (ωk, k) = D(1)(i k0, k)
+
+i k0→ωk−i 0+ =
+1
+−k2
+∥+ ΠR
+0 (ωk, k) ,
+ΠR
+0 (ωk, k) = −i χ ω
+|k| ,
+χ = e2 m
+π vF
+= 8 m kF α ,
+α =
+e2
+8 π vF kF
+,
+(10)
+for the fermions and the bosons, respectively. The superscripts “R” and “A” refer to the “retarded” and ”advanced” ones,
+respectively. The expressions follow straightforwardly from Eqs. (6) and (7). While performing the analytic continuation,
+i k0 →ωk + i 0+, one has to use
+sgn[k0] ≡sgn
+h
+Im[i k0]
+i
+→sgn
+h
+Im
+
+ωk + i 0+i
+= sgn
+
+0+
+= 1 ,
+and an analogous relation for the case of i k0 →ωk −i 0+, required to derive DA
+1 . We note that α represents the analogue
+of the fine-structure constant of the electromagnetic interactions.
+The feedback of the overdamped bosons on the fermions are computed via the the retarded and advanced fermion self-
+energies at one-loop order. The equilibrium expressions for these self-energies at one-loop order, after analytic continuation
+of Eq. (8) to real frequencies, are obtained as
+ΣR(ωk) = −e4/3 √
+3 sgn[ωk] + i
+
+|ωk|
+2
+3
+4 vF π
+2
+3 (m/vF )
+1
+3
+and ΣA(ωk) = −e4/3 √
+3 sgn[ωk] −i
+
+|ωk|
+2
+3
+4 vF π
+2
+3 (m/vF )
+1
+3
+,
+(11)
+respectively. Thus, the one-loop corrected Green’s functions take the forms of
+h
+GR/A
+1
+(ωk, k)
+i−1
+=
+h
+GR/A
+bare(ωk, k)
+i−1
+−ΣR/A(ωk) .
+(12)

@@ -1,0 +1,29 @@
+6 
+fluctuations, we applied a multi-step correction process as illustrated in Fig. 2 (block with light 
+blue background). First, 𝑋𝑋(𝜏𝜏) was scaled to [1, 1.5] using equation: 
+𝑥𝑥(𝜏𝜏) =
+𝑋𝑋(𝜏𝜏) −min൫𝑋𝑋(𝜏𝜏)൯
+max൫𝑋𝑋(𝜏𝜏)൯−min൫𝑋𝑋(𝜏𝜏)൯× 0.5 + 1,
+(8) 
+where 𝑥𝑥(𝜏𝜏) is the scaled measured ACF. Second, 𝑥𝑥(𝜏𝜏) was fitted with a single exponential decay 
+function, 𝑓𝑓(𝜏𝜏) = 𝑎𝑎+ 𝑏𝑏𝑒𝑒𝑐𝑐𝑐𝑐. Third, we calculated the standard deviation of the residuals for each 𝜏𝜏, 
+i.e., 𝜎𝜎= 𝑠𝑠𝑠𝑠𝑠𝑠൫𝑥𝑥(𝜏𝜏) −𝑓𝑓(𝜏𝜏)൯, std() is the standard deviation calculation function used in MATLAB. 
+We obtained five sequences of 𝜎𝜎 from the five tests and calculated their mean and standard 
+deviation. The averaged sequence was then scaled by ±30% to encompass the variability observed 
+across the tests (actual range is from -27.8% to +30.1% relative to the averaged sequence). This 
+yielded three levels of 𝜎𝜎: the averaged 𝜎𝜎, +30% and –30% from mean. Finally, the three levels of 
+𝜎𝜎 are substituted into a Gaussian distribution model with zero mean to generate noise and added 
+to the simulated clean dataset44. In total, we generated 1,200,000 training data samples (through 
+combination of 400k clean curves × 3 noise levels). Notably, we rescaled each noise-added curve 
+with the same method (Eq. 8) prior to training. Likewise, any experimental SPAD ACF is scaled 
+with Eq. (8) before input to the model, to maintain consistency between training and inference. 
+The data processing protocol is illustrated in Fig. 2, including five parts: noise calculation, training 
+dataset generation, test dataset generation, model training, and regression. 
+ 
+Fig. 2 Flowchart of the data processing protocol. The process consists of five main components: (1) the 'Noise 
+Calculation' block, which calculates the standard deviation from experimental baseline data; (2) the 'Dataset 
+Generation' block, which outlines the procedure for generating clean data and adding noise; (3) the 'Model Training' 
+block, which describes the training of the model on a GPU; (4) the ‘Test Dataset’ block, which illustrates the test 
+dataset generation using MC simulation to assess our model, and (5) the 'Regression' block, which represents real-
+time CBFi/rCBFi display using the trained model and the preparation of experimental data before input to the 
+model. 

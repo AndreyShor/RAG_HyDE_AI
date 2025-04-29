@@ -1,0 +1,122 @@
+SINGULARITY AND REGULARITY OF THE CRITICAL 2D SHF
+23
+Once (4.2) is proved, we have the convergence of positive moments: for all p ě 0
+lim
+NÑ8 E
+“`
+Zav
+N
+˘ps “ E
+“`
+eNp0,σ2q´ 1
+2 σ2˘p‰
+“ e
+ppp´1q
+2
+σ2
+“ p1 ` ϱq
+ppp´1q
+2
+.
+This follows by the weak convergence (4.2) once we show that positive moments are uniformly
+bounded, say supNPN ErpZav
+N q2hs ă 8 for all h P N (so that pZav
+N qp is uniformly integrable).
+We already know from Corollary 2.9 that VarrZav
+N s is bounded, hence any moment ErpZav
+N q2hs
+is bounded too by Theorem 1.11 (the assumptions (1.29), (1.31) and (1.32) of Theorem 1.11
+are satisfied by φ “ Up0,δϱ
+N
+?
+Nq with Drφs „ pδϱ
+Nq2N).
+Remark 4.1. The log-normality (4.2) is reminiscent of the corresponding result for the
+point-to-plane partition function Zβ
+Lp0q in the sub-critical regime β “ βsub-crit
+L
+, see (1.26)
+with ˆβ P p0, 1q, that we proved in [CSZ17, Theorem 2.8]. As we described in Remark 1.10,
+the heuristic behind (4.2) is that, after coarse-graining space on the scale δϱ
+N
+?
+N and
+time on the scale δ2ϱ
+N N, the averaged partition function Zav
+N in the quasi-critical regime
+becomes comparable to a sub-critical point-to-plane partition function with disorder parameter
+ˆβ2 “
+ϱ
+1`ϱ and effective time horizon L “ 1{δ2ϱ
+N .
+The key to the analysis of Zβsub-crit
+L
+L
+p0q in the sub-critical regime in [CSZ17] was a multiscale
+structure with time scales Lα for α P p0, 1q. We will see that the same multiscale structure
+emerges in our analysis of Zav
+N with corresponding time scales pδ2ϱ
+N Nq Lα with L “ 1{δ2ϱ
+N
+and α P p0, 1q, see (4.5). This justifies the heuristic comparison just described.
+We divide the proof of (4.2) into several steps.
+Overall strategy. Let us fix a (large) integer M P N, which will be the number of
+time scales. For technical reasons, we will first approximate the original partition function
+Zav
+N by switching off the disorder in suitable time strips, which defines Zoff
+N in (4.15) and
+provides some smoothing between consecutive time scales; we will then introduce almost
+diffusive restrictions on the polymer paths, which defines Zdiff
+N
+in (4.24). We will show that
+Zoff
+N and Zdiff
+N
+(which also depend on M) are good approximations in the following sense:
+@M P N :
+Zav
+N ´ Zoff
+N
+L2
+ÝÝÝÝÑ
+NÑ8
+0 ,
+Zoff
+N ´ Zdiff
+N
+L1
+ÝÝÝÝÑ
+NÑ8
+0 .
+(4.3)
+Therefore to prove our goal (4.2), we can just replace Zav
+N with Zdiff
+N .
+Remark 4.2. A similar idea of switching-off the noise in suitably chosen strips to obtain a
+smoothing approximation was also used by Dunlap-Gu [DG22] in their treatment of nonlinear
+SHE in a subcritical regime.
+We introduce explicit time scales
+0 “: N0 ă ˜N1 ! N1 ! ˜N2 ! N2 ! . . . ! ˜NM ! NM “ N .
+(4.4)
+We define Zoff
+N by switching off the noise in the time strips p ˜Ni, Nis, see (4.15), then we
+define Zdiff
+N
+by restricting polymer paths at times ˜Ni and Ni to an almost diffusive ball, see
+(4.23) and (4.24). The scales Ni are defined as follows:
+N0 :“ 0 ,
+Ni :“
+q
+pNδ2ϱ
+N q p 1
+δ2ϱ
+N q
+i
+M y
+“
+q
+N pδ2ϱ
+N q1´ i
+M y
+for i “ 1, . . . , M ,
+(4.5)

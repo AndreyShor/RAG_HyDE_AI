@@ -1,0 +1,96 @@
+5
+Godunov method with directionally unsplit and
+staggered-mesh (USM) schemes ensures robust so-
+lution of hydrodynamic equations. The code’s effi-
+cient CPU parallelization and its GPU-compatible
+version, AthenaK (Stone et al. 2024), provide op-
+portunities for future computational enhancements.
+The simulation solves three-dimensional hydro-
+dynamic equations in spherical coordinates (𝑟, 𝜃,
+𝜙) using the standard Euler form, incorporating
+specialized gas physics and feedback mechanisms
+detailed in subsequent sections. The computational
+domain spans from 𝑟in = 25 pc to 𝑟out = 250 kpc,
+enabling simultaneous resolution of gas accretion
+flows across the SMBH Bondi radius (Bondi &
+Hoyle 1944) and large-scale galactic and halo en-
+vironmental effects.
+The fiducial resolution is
+256×64×128, where radial grid spacing decreases
+logarithmically from outer to inner boundaries,
+achieving sub-pc resolution at the inner boundary.
+While this sub-pc resolution substantially increases
+computational demands for Gyr timescale evolu-
+tion, it remains essential for accurate capture of
+accretion flows and AGN feedback processes. Un-
+der this configuration, the number of total timestep
+cycles for the simulation is a few 107 to reach the
+total duration of 1.3 Gyr for the fiducial simulation
+(and 1 Gyr for other simulations with varying feed-
+back prescriptions).
+To maintain computational
+efficiency, the simulation excludes a 6◦region near
+the z-axis to avoid geometric singularities.
+2.2. Initial and boundary conditions
+The initial conditions of our simulations consist
+of a supermassive black hole (SMBH) of mass
+𝑀bh at the center of a dark matter halo (DM)
+which is modeled as a spherically symmetric quasi-
+isothermal halo with a circular velocity 𝑣c, and em-
+bedded within a stellar distribution and gas dis-
+tribution in hydrostatic equilibrium.
+The stellar
+component follows the Jaffe profile (Jaffe 1983):
+𝜌∗=
+𝑀∗𝑟∗
+4𝜋𝑟2(𝑟∗+ 𝑟)2,
+(1)
+where 𝑀∗represents the total stellar mass and 𝑟∗
+denotes the galaxy scale length. The distribution of
+gas number density 𝑛g is characterized by the beta
+model (Mo et al. 2010):
+𝑛g = 𝑛0
+
+1 + 𝑟2
+𝑟2𝑐
+−3𝛽
+2
+,
+(2)
+where 𝑛0 is the central gas number density and 𝑟𝑐
+is the core radius and the beta parameter 𝛽= 2/3.
+The gas is initialized without rotation and config-
+ured to maintain hydrostatic equilibrium within a
+dark matter halo. The total mass profile is designed
+to follow an 𝑟−2 law, consistent with observational
+constraints (Czoske et al. 2008; Dye et al. 2008).
+The gas metallicity is initially set to 2𝑍⊙within
+0.125𝑟𝑐and decreases following a power-law pro-
+file with radius, reaching sub-solar values beyond
+𝑟𝑐. We also note that dark matter halo and stellar
+component are static in our simulations, therefore
+the dynamical response of the gravitational poten-
+tial to gas inflows, outflows, and feedback processes
+is not captured.
+We suspect that in the case of
+an elliptical galaxy, where the stellar component
+is typically dispersion-supported and evolves more
+slowly compared to disk galaxies, the impact of
+this approximation may be less severe. However,
+we acknowledge that this is a limitation of our cur-
+rent model and will be addressed in future work.
+For boundary conditions, the outer boundary em-
+ploys a modified outflow boundary condition: the
+standard outflow boundary condition allows the gas
+to enter or leave the computational domain across
+the outer boundary with zero gradient for density
+and velocity, while a non-zero pressure gradient
+with 𝜕𝑟𝑃= 𝜌𝑔is always enforced at the outer
+boundary in order to preserve the hydrostatic equi-
+librium of the gas, where 𝑔is the local gravitational
+acceleration measured at the outer boundary. At the
+inner boundary, we employ conditions that permit
+gas to leave the computational domain which is
+treated as black hole accretion, and simultaneously
+inject mass and momentum into the computational
+domain at certain rates and opening angles to sim-

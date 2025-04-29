@@ -1,0 +1,103 @@
+arXiv:2504.06009v1  [math.OC]  8 Apr 2025
+Linear time-and-space-invariant relaxation systems
+Tihol Ivanov Donchev1,
+Brayan M. Shali1,
+Rodolphe Sepulchre1,2
+Abstract— This paper generalizes the physical property of
+relaxation from linear time-invariant (LTI) to linear time-and-
+space-invariant (LTSI) systems. It is shown that the deﬁning
+features of relaxation—complete monotonicity, passivity, and
+memory-based storage—carry over seamlessly to the spatio-
+temporal domain. An LTSI system is shown to be of relaxation
+type if and only if its associated spatio-temporal Hankel
+operator is cyclically monotone. This implies the existence of
+an intrinsic quadratic storage functional deﬁned uniquely by
+past inputs, independently of any state-space realization. As in
+the LTI case, LTSI relaxation systems are shown to be those
+systems for which the state-space concept of storage coincides
+with the input-output concept of fading memory functional.
+I. INTRODUCTION
+Relaxation systems have recently received renewed atten-
+tion in systems and control theory due to their relevance in
+structured optimal control, circuit synthesis, and modeling
+of physical and biological processes [1], [2], [3], [4], [5].
+Yet, existing literature mostly addresses relaxation from a
+purely temporal perspective. Many real-world applications—
+particularly in distributed-parameter systems governed by
+partial differential equations—require a framework that also
+accounts for spatial variations. In this paper, we propose such
+an extension, generalizing the classical theory of linear time-
+invariant (LTI) relaxation systems to systems that depend on
+both time and space. Speciﬁcally, we address systems that
+are also spatially invariant, resulting in a linear time-and-
+space-invariant (LTSI) system.
+In the LTI setting, the relaxation property admits two
+classical characterizations [6]. From a state-space viewpoint,
+relaxation systems are (internally) reciprocal and passive,
+containing only one type of energy storage element. From
+an input-output perspective, relaxation systems correspond
+to convolution operators whose impulse responses are com-
+pletely monotone, i.e., their memory decays monotonically
+and without a hint of oscillation. The recent work [3] shows
+that relaxation can be characterized as cyclic monotonicity
+of the Hankel operator. The cyclic monotonicity of the
+Hankel operator implies the existence of an intrinsic storage
+functional uniquely determined by past inputs alone. The
+latter is consistent with Willems’ notion of storage, hence
+this result identiﬁes relaxation systems as those systems for
+∗The research leading to these results has received funding from
+the European Research Council under the Advanced ERC Grant Agree-
+ment SpikyControl n.101054323. Email: tiholivanov.donchev@kuleuven.be,
+brayan.shali@kuleuven.be, rodolphe.sepulchre@kuleuven.be.
+1Department of Electrical Engineering (ESAT), KU Leuven, KasteelPark
+Arenberg 10, B-3001 Leuven, Belgium.
+2Department of Engineering, University of Cambridge, Trumpington-
+Street, Cambridge CB2 1PZ, United Kingdom.
+which the state-space notion of storage coincides with the
+input-output notion of memory.
+More recently, these ideas have been extended to the
+nonlinear setting. Building on the state-space notions of
+reciprocity and passivity, [5] deﬁnes nonlinear relaxation
+systems as gradient systems with a Hessian Riemannian
+metric satisfying both reciprocity and passivity conditions,
+thus ensuring energy dissipation without oscillatory behavior.
+An alternative deﬁnition is provided in [4], where nonlinear
+relaxation systems are characterized from an input-output
+perspective as fading memory operators with completely
+monotone impulse responses. This characterization relies on
+the universal approximation property of nonlinear fading
+memory operators [7], which shows that a nonlinear fading
+memory operator can be uniformly approximated by an LTI
+system composed with a nonlinear static readout. The input-
+output characterization introduced in [4] is consistent with
+the state-space deﬁnition of [5] in the sense that the former
+can be seen as a special case of the latter.
+In this paper, we show that the deﬁning features of
+relaxation—complete monotonicity, passivity, and memory-
+based storage—carry over seamlessly to the spatio-temporal
+domain. Speciﬁcally, we prove that an LTSI system is of
+relaxation type precisely when its spatio-temporal Hankel
+operator is cyclically monotone. As such, the latter is the
+gradient of a closed convex functional deﬁned uniquely by
+past inputs alone. This establishes a direct link between the
+internal (state-space) and external (input-output) perspectives
+on energy storage. The results are illustrated throughout this
+paper with the diffusion equation as a canonical example of
+spatio-temporal relaxation.
+The remainder of this paper is organized as follows. In
+Section II, we discuss how diffusion is a natural example
+of spatio-temporal relaxation. Section III contains notation
+and preliminaries. In Section IV, we deﬁne and characterize
+(internal) relaxation for LTSI systems. In Section V, we
+show that internal relaxation implies impedance passivity
+with storage that is determined from the external behaviour.
+In Section VI, we formalize the connection between inter-
+nal and external by establishing properties of the Hankel
+operator of an LTSI relaxation system. Finally, Section VII
+summarizes our ﬁndings and discusses directions for further
+work.
+II. DIFFUSION AND RELAXATION
+In this section, we will demonstrate that the diffusion
+process is a natural example of spatio-temporal relaxation.
+Historically, the relaxation property was ﬁrst studied system-
+atically in electrical circuits composed exclusively of one

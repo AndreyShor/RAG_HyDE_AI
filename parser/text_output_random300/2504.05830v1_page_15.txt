@@ -1,0 +1,264 @@
+Springer Nature 2021 LATEX template
+Human Activity Recognition using RGB-Event based Sensors
+15
+Table 1 Comparison of datasets for human activity recognition. MVW, MILL, MMO,
+DYB, OCC, and DR denote multi-view, multi-illumination, multi-motion, dynamic
+background, occlusion, and duration of the activities, respectively. Note that we only
+report these attributes of realistic DVS datasets for HAR..
+Dataset
+Year
+Scale
+Class
+Resolution
+Real
+MVW
+MILL
+MMO
+DYB
+OCC
+DR
+ASLAN-DVS [64]
+2011
+3, 697
+432
+240 × 180
+✗
+-
+-
+-
+-
+-
+-
+MNIST-DVS [22]
+2013
+30, 000
+10
+128 × 128
+✗
+-
+-
+-
+-
+-
+-
+N-Caltech101 [58]
+2015
+8, 709
+101
+302 × 245
+✗
+-
+-
+-
+-
+-
+-
+N-MNIST [58]
+2015
+70, 000
+10
+28 × 28
+✗
+-
+-
+-
+-
+-
+-
+CIFAR10-DVS [21]
+2017
+10, 000
+10
+128 × 128
+✗
+-
+-
+-
+-
+-
+-
+HMDB-DVS [23]
+2019
+6, 766
+51
+240 × 180
+✗
+-
+-
+-
+-
+-
+-
+UCF-DVS [65]
+2019
+13, 320
+101
+240 × 180
+✗
+-
+-
+-
+-
+-
+-
+N-ImageNet [66]
+2021
+1, 781, 167
+1000
+480 × 640
+✗
+-
+-
+-
+-
+-
+-
+ES-ImageNet [67]
+2021
+1, 306, 916
+1000
+224 × 224
+✗
+-
+-
+-
+-
+-
+-
+N-ROD [27]
+2022
+41,877
+51
+640 × 480
+✗
+-
+-
+-
+-
+-
+-
+DvsGesture [20]
+2017
+1, 342
+11
+128 × 128
+✓
+✗
+✓
+✗
+✗
+✗
+-
+N-CARS [59]
+2018
+24, 029
+2
+304 × 240
+✓
+✓
+✗
+✓
+✗
+✓
+-
+ASL-DVS [19]
+2019
+100, 800
+24
+240 × 180
+✓
+✗
+✗
+✗
+✗
+✗
+0.1s
+PAF [60]
+2019
+450
+10
+346 × 260
+✓
+✗
+✗
+✗
+✗
+✗
+5s
+DailyAction [68]
+2021
+1, 440
+12
+346 × 260
+✓
+✓
+✓
+✗
+✗
+✗
+5s
+PokerEvent [44]
+2024
+27, 102
+114
+346 × 260
+✓
+✓
+✓
+✓
+✓
+✓
+-
+Dailydvs-200 [61]
+2024
+22, 046
+200
+320 × 240
+✓
+✓
+✓
+✓
+✓
+✓
+1-20s
+HARDVS 2.0
+2024
+107, 646
+300
+346 × 260
+✓
+✓
+✓
+✓
+✓
+✓
+5s
+important role in the deep learning era. In this work, we collect more than
+100k paired RGB-Event sequences to meet the needs for large-scale training
+and evaluation of HAR. 2). Wide varieties: Thousands of human activities
+can exist in the real world, but existing DVS-based HAR datasets only con-
+tain limited categories. Therefore, it is hard to fully reflect the classification
+and recognition ability of HAR algorithms. Our newly proposed HARDVS
+2.0 contains 300 classes that are several times larger than other datasets. 3).
+Different capture distances: The HARDVS 2.0 dataset is collected under
+various distances, i.e., 1-2, 3-4, and more than 5 meters. 4). Long-term: Most
+of the existing HAR datasets are microsecond-level, in contrast, each video in
+our HARDVS 2.0 dataset lasts for about 5 seconds. 5). Dual-modality: The
+DAVIS346 camera can output both RGB frames and event streams, there-
+fore, our dataset can be used for HAR by fusing video frames and events. In
+this work, we focus on HAR with both RGB and event modality and design a
+multi-modal method for HAR from a new perspective.
+Our dataset considers multiple challenging factors that may influence the
+results of HAR. The detailed introductions can be found below: (a). Multi-
+view: We collect different views of the same behavior to mimic practical
+applications, including front-, side-, horizontal-, top-down-, and bottom-
+up-views. (b). Multi-illumination: High dynamic range is one of the most
+important features of DVS sensors, therefore, we collect the videos under sce-
+narios with strong-, middle-, and low-light. Note that, 60% of each category
+are videos with low-light. Our dataset also contains many videos with glitter,
+because we find that the DVS sensor is sensitive to flashing lights, especially
+at night. (c). Multi-motion: We also highlight the features of DVS sensors by
+recording many activities with various motion speeds, such as slow-, moderate-
+, and high-speed. (d). Dynamic background: As it is relatively easy to recognize
+activities without background objects, i.e., a stationary DVS camera, we also
+collect many activities with a dynamic moving camera to make our dataset

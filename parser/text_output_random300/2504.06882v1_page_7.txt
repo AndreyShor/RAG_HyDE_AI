@@ -1,0 +1,182 @@
+Supplemental Materials for “Brillouin Platycosms and Topological Phases”
+Contents
+I. Homology and cohomology groups of platycosms
+1
+II. The derivation of K groups by the Atiyah–Hirzebruch spectral sequence
+2
+III. The complete set of topological invariants
+7
+IV. Equivalence relations between topological invariants
+12
+V. Two-band Dirac models
+14
+VI. The tight-binding models
+17
+VII. Weyl semimetals over Brillouin platycosms
+19
+I.
+Homology and cohomology groups of platycosms
+The classification of line bundles of valence bands over Brillouin platycosm Mα is given by the cohomology group
+H2(Mα, Z).
+Since Mα is the classifying space of Bα, Hn(Mα, Z) is isomorphic to the group-cohomology group
+Hn(Bα, Z),
+Hn(Mα, Z) ∼= Hn(Bα, Z).
+(S1)
+The isomorphism is also held for homology groups, i.e.,
+Hn(Mα, Z) ∼= Hn(Bα, Z).
+(S2)
+From the universal coefficient theorem of cohomology groups, we know
+H2(Mα, Z) ∼= T α
+1 ⊕F α
+2 ,
+(S3)
+here T α
+1 is the torsion component of H1(Bα, Z), and F α
+2 is the free Abelian group component Znα of H2(Bα, Z). The
+following table lists the first three homology groups and cohomology groups. Results are obtained from GAP.
+α
+Bα
+H1(Mα)
+H2(Mα)
+H3(Mα)
+H1(Mα)
+H2(Mα)
+H3(Mα)
+Presentation
+0
+P1
+Z3
+Z3
+Z
+Z3
+Z3
+Z
+⟨Lx, Ly, Lz|[Lx, Ly], [Lx, Lz], [Ly, Lz]⟩
+1
+Pc
+Z2 ⊕Z2
+Z2 ⊕Z
+0
+Z2
+Z2 ⊕Z
+Z2
+⟨Lx, Ly, Gx|GxLxG−1
+x
+= L−1
+x , [Lx, Ly], [Gx, Ly]⟩
+2
+Cc
+Z2
+Z2 ⊕Z
+0
+Z2
+Z
+Z2
+⟨La, Lb, G|GLaG−1 = Lb, [La, Lb]⟩
+3
+Pca21
+Z2
+2 ⊕Z
+Z2
+0
+Z
+Z2
+2
+Z2
+⟨Ly, Gx, Gy|GxLyG−1
+x
+= G−1
+y , GyLyG−1
+y
+= L−1
+y , [Gx, Ly]⟩
+4
+Pna21
+Z4 ⊕Z
+Z2
+0
+Z
+Z4
+Z2
+⟨Ly, Gx, Gy|GxGyG−1
+x
+= LyG−1
+y , GyLyG−1
+y
+= L−1
+y , [Gx, Ly]⟩
+5
+P21
+Z2
+2 ⊕Z
+Z
+Z
+Z
+Z2
+2 ⊕Z
+Z
+⟨Lx, Ly, R2|R2LxR2 = L−1
+x , R2LyR2 = L−1
+y , [Lx, Ly]⟩
+6
+P31
+Z3 ⊕Z
+Z
+Z
+Z
+Z3 ⊕Z
+Z
+⟨La, Lb, R3|R3LaR−1
+3
+= La, R3LbR−1
+3
+= L−1
+a L−1
+b , [La, Lb]⟩
+7
+P41
+Z2 ⊕Z
+Z
+Z
+Z
+Z2 ⊕Z
+Z
+⟨Lx, Ly, R4|R4LxR−1
+4
+= Ly, R4LyR−1
+4
+= L−1
+x , [Lx, Ly]⟩
+8
+P61
+Z
+Z
+Z
+Z
+Z
+Z
+⟨La, Lb, R6|R6LaR−1
+6
+= Lb, R6LbR−1
+6
+= L−1
+a Lb, [La, Lb]⟩
+9
+P212121
+Z2
+4
+0
+Z
+0
+Z2
+4
+Z
+⟨Ry, Rz|Ry = R2
+zRyR2
+z, Rz = R2
+yRzR2
+y⟩
+TABLE S1: he first two columns list the labels and the ten Bieberbach groups, respectively. The next three columns, labeled
+H1(Mα), H2(Mα), and H3(Mα), present the first three homology groups of the ten platycosms. The following three columns
+display the cohomology groups H1(Mα), H2(Mα), and H3(Mα). The final column provides the explicit presentations of the
+corresponding Bieberbach groups.

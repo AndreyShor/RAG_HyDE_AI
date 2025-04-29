@@ -1,0 +1,129 @@
+11
+At the same time, longer and longer intervals are not
+necessarily beneficial, as they would cover broader dy-
+namic ranges of W, thus increasing the sampling depth
+d required to cover the entire interval. Thus, the optimal
+choice of m should be made by taking into account the
+variation of W and the gaps of its argument.
+To quantitatively assess the effect of sampling depth d
+on reconstruction fidelity, we divided the 5, 000 collected
+states for each interval into s non-overlapping blocks,
+each comprising d microstates, with d ranging from 200
+to 1250. Next, we obtained s independent reconstruc-
+tions, W1, W2, ... , Ws, by using respectively only the
+data from the first block of each interval, then from the
+second block, etc.
+We next considered the pointwise error of the profiles:
+∆Wi(nq) = Wi(nq) −Wexact(nq) ,
+(18)
+and computed the mean and variance of these errors
+across the s equivalent and independent reconstructions:
+⟨∆W(nq)⟩= ⟨W(nq)⟩−Wexact(n)
+Var [∆W(nq)] = ⟨∆W 2(nq)⟩−⟨∆W(nq)⟩2
+(19)
+= Var [W(nq)]
+where ⟨.⟩denotes the average over the s block estimates.
+Fig. 5b shows the results of the error analysis for the
+representative bin nq = 50, corresponding to one of the
+two midpoints of log(W). For clarity, the data are nor-
+malized to the exact W value, Wexact(nq = 50). For all
+considered ms, we observe that the ∆Wi values (data
+points) are clustered around zero. In fact, their means
+(solid lines) are compatible with zero within the esti-
+mated error on the mean (shaded band), which is equal
+to:
+Var [⟨∆W(nq)⟩] = Var [∆W(nq)]
+√s −1
+(20)
+Note that the results also establish that ⟨W⟩is compat-
+ible with Wexact within the estimated error. Considering
+that the latter can be calculated without reference Wexact
+(see eq. 19), we conclude that multiple independent re-
+constructions of the normalized W allow for computing
+the associated statistical uncertainty in a reliable and un-
+biased manner.
+In addition, the third panel shows the error on the indi-
+vidual reconstructions,
+p
+Var [∆W(nq)], which decreases
+with the sampling depth for all ms.
+APPENDIX B: MELT OF SELF-ASSEMBLED
+RINGS WITH VARYING BENDING RIGIDITY
+QUBO-based sampling of self-assembled ring melts
+We consider ring melts that completely fill cubic lat-
+tices of N index sites. A QUBO Hamiltonian for such
+systems can be formulated in terms of two types of Ising-
+like binary variables, hereafter indicated as Γ−and Γ⌞.
+A Γ−
+ij variable is attached to each lattice edge, ij, to in-
+dicate whether a bond is present (1, active) or absent (0,
+inactive) between neighboring sites i and j > i. Simi-
+larly, a Γ⌞
+ijk variable is assigned to each corner triplet of
+sites, j being neighbor to both i and k > i. This variable
+indicates whether the two incident edges ij and jk are
+both occupied by bonds (1, active) or not (0, inactive).
+FIG. 6. Example of QUBO encoding for space-filling
+melts of ring polymers. (a) Symbolic representation of
+QUBO binary variables corresponding to occupied/empty
+bonds (Γ−
+ij) and corner triplets (Γ⌞
+ijk). (b) The represented
+configuration is one of the possible ground state solutions of
+the QUBO Hamiltonian of eq. 21 formulated for a 4×4 square
+lattice and with the setting N = 16 to impose space-filling.
+In this example, the total curvature (number of corner turn)
+is nc = 12.
+Using the above variables, the QUBO Hamiltonian for
+the system reads [33]:
+HN = Ab
+P
+⟨ij⟩Γ−
+ij −N
+2
++ Ac
+P
+⟨ijk⟩
+P′
+⟨ljm⟩Γ⌞
+ijkΓ⌞
+ljm
++Abc
+P
+⟨ijk⟩
+h
+3Γ⌞
+ijk + Γ−
+ijΓ−
+jk −2Γ⌞
+ijk(Γ−
+ij + Γ−
+jk)
+i
+(21)
+where the A coefficients are non-negative, P
+⟨ij⟩and
+P
+⟨ijl⟩indicate summations over distinct neighboring
+pairs and triplets of lattice sites, respectively.
+The
+prime indicates the restriction over inequivalent triplets,
+⟨ijk⟩̸= ⟨ljm⟩.
+The first quadratic term is minimized when the total
+number of bonds (active edges) is equal to the number of
+lattice sites N, as required by the space-filling condition
+of the ring melt. The second term is a quadratic con-
+straint that enforces the consistency of the Γ−and Γ⌞
+variables. In fact, this term is minimized if and only if
+the active corners of Γ⌞are compatible with the active
+bonds of Γ−, i.e.,
+Γ⌞
+ijk =
+(
+1,
+if Γ−
+ij = Γ−
+jk = 1
+0,
+otherwise.
+(22)

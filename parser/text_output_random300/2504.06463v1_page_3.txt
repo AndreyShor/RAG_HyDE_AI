@@ -1,0 +1,86 @@
+Figure 1: Hyper Suprime-Cam (HSC) imaging data. Left: A cutout of size 1000 × 1000 pixels from an HSC exposure,
+where each pixel y(t)
+i
+is normalized by its standard deviation σ(t)
+i
+. The exposures contain useful information such as sources
+(e.g. stars, galaxies), which are obfuscated by noise, atmospheric blur and other artifacts, such as occlusions caused by chip gaps
+and their borders (i.e., the large gray bands with dark gray borders). Middle: The masks are applied to each pixel, in order to
+disregard problematic pixels such as those corresponding to chip gaps and their borders (colored in black). Right: The PSF f(t)
+for this exposure produced by the HSC software pipeline, of size 25 × 25 pixels (not to scale).
+stars in the exposures, which are identified from a
+catalog of sources.
+We display a concrete example of such imaging
+data in Figure 1, which is sourced from the Hy-
+per Suprime-Cam (HSC) survey. This dataset con-
+sists of n = 33 calibrated i-band exposures taken
+by the HSC telescope, together with their associ-
+ated masks and PSFs. For more information on the
+pre-processing of this imaging data, see [19, 20, 1].
+To model the exposures, we follow the approach
+proposed in the ImageMM framework [21]. Specifi-
+cally, we model each observed exposure y(t) as the
+result of convolving the true, background-subtracted,
+noise-free latent image of the night sky, denoted as
+x, with the corresponding PSF f (t), plus an additive
+noise term η(t). The observed pixel values in each
+exposure are thus represented by:
+y(t)
+i
+= (f (t)∗x)i + η(t)
+i .
+(1)
+The noise terms η(t)
+i
+are assumed to be indepen-
+dently drawn from a probability distribution with
+a mean of zero and variance v(t)
+i . For instance, one
+may model the noise terms as independent, mean
+zero Gaussian random variables whose variances are
+given by v(t)
+i
+.= (σ(t)
+i )2, as detailed in [21]. One can
+also consider noise terms drawn from distributions
+with heavier tails in order to account for outlier
+pixel values, as we will explain in the next section.
+Moreover, we highlight that in model (1), the
+PSFs and noise terms may vary between exposures,
+whereas the underlying latent image of the sky re-
+mains common to all exposures.
+3. The AstroClearNet framework
+To perform multi-frame astronomical image
+restoration, our goal is to recover the unknown la-
+tent image x from model (1) using the exposures
+and PSFs at hand.
+3.1. MLE and MAP estimation
+A classical approach for doing so involves solving
+for the latent image x as a maximum likelihood esti-
+mate (MLE) of model (1). To do so, one estimates a
+latent image bx which is most likely to have generated
+the exposures y and PSFs f, by maximizing the joint
+likelihood p(x | y, f) of the pixel values of x given
+the data, i.e., the exposures y and PSFs f. Equiva-
+lently, the MLE problem entails minimizing the joint
+negative log-likelihood L(x | y, f) .= −ln p(x | y, f)
+of the latent image’s pixel values:
+bx = argmin
+x∈X
+L (x | y, f) .
+(2)
+This minimization problem is defined over the set
+of images with non-negative pixel values, denoted
+as X .= {x ∈Rd+d′−1
++
+}. Following [21], we enforce
+this non-negativity constraint to obtain physically
+meaningful maximum likelihood estimates, where
+sky pixels are zero and source pixels (e.g., stars,
+galaxies) have positive values.
+Additionally, the
+restored image bx is padded with d′−1 extra pixels to
+account for flux contributions from sources beyond
+the telescope’s field of view during the restoration
+process.
+3

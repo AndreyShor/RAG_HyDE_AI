@@ -1,0 +1,89 @@
+CasTex: Cascaded Text-to-Texture Synthesis via Explicit Texture Maps and
+Physically-Based Shading
+Mishan Aliev
+HSE University
+Moscow, Russia
+alievmishan78@gmail.com
+Dmitry Baranchuk
+Yandex Research
+Moscow, Russia
+dbaranchuk@yandex-team.ru
+Kirill Struminsky
+Yandex Reseach, HSE University
+Moscow, Russia
+kstruminsky@yandex-team.ru
+Abstract
+This work investigates text-to-texture synthesis using diffu-
+sion models to generate physically-based texture maps. We
+aim to achieve realistic model appearances under varying
+lighting conditions. A prominent solution for the task is
+score distillation sampling. It allows recovering a complex
+texture using gradient guidance given a differentiable ras-
+terization and shading pipeline. However, in practice, the
+aforementioned solution in conjunction with the widespread
+latent diffusion models produces severe visual artifacts and
+requires additional regularization such as implicit texture
+parameterization. As a more direct alternative, we propose
+an approach using cascaded diffusion models for texture
+synthesis (CasTex). In our setup, score distillation sampling
+yields high-quality textures out-of-the box. In particular, we
+were able to omit implicit texture parameterization in favor
+of an explicit parameterization to improve the procedure. In
+the experiments, we show that our approach significantly
+outperforms state-of-the-art optimization-based solutions on
+public texture synthesis benchmarks.
+Project page: https://thecrazymage.github.io/CasTex/.
+1. Introduction
+The creation of 3D assets is a crucial part of modern com-
+puter graphics applications, with demand being supported by
+such industries as movie production, industrial design, and
+computer gaming, to name a few. High-quality assets should
+simultaneously meet aesthetic requirements and technical
+production requirements (i.e., high-quality mesh topology
+and limited polygon count). As a result, designing a 3D
+model is a labor-intensive creative task that involves multiple
+skills and is hard to automate due to the lack of high-quality
+data and occasionally difficulty in formalizing target criteria.
+At the same time, the rapid development of generative
+models in the visual domain has already tremendously im-
+pacted various creative domains and even extends to 3D
+graphics. The successes in 3D reconstruction [1, 17, 25] and
+foundation text-to-image model [32, 33] led fully-automated
+end-to-end 3d asset creation prototypes [20, 23, 29]. Such
+solutions use the prior knowledge acquired by the diffusion
+model to generate 3D assets meeting aesthetic requirements.
+However, the resulting assets come in a volumetric repre-
+sentation and are often incompatible with modern graphics
+engines. Even with conversion tools for extracting meshes
+from volumetric representation, the assets end up having
+overly detailed geometry with occasional high-level geo-
+metric inconsistencies (e.g., multiple faces, as in the Janus
+effect). The aforementioned limitations may be critical when
+the technical requirements come into play.
+Texture synthesis is a more modest attempt to automate
+3D asset creation, aiming to create a realistic texture for a
+given 3D shape. The task assumes that all of the technical
+requirements regarding the model geometry are already ad-
+dressed by an artist. To meet modern industry standards, in
+our work, we specifically consider the synthesis of physi-
+cally based textures [4]. Such textures present a versatile
+instrument able to capture a diversity of materials and create
+realistically looking assets within varying lighting scenarios.
+Some early texture synthesis approaches involved the
+back-projection of synthetic images on 3D shapes. However,
+such approaches are incompatible with PBR textures as they
+only allow the capture of a fraction of material properties
+through RGB colors. As an alternative, we consider an opti-
+mization based approach that allows capturing the material
+properties with back-propagation through the rendering en-
+gine. In particular, we continue the line of work studying
+various applications of Score Distillation Sampling [29].
+We aimed to design a zero-shot texture-synthesis solution
+without relying on auxiliary 3D data and foundation model
+fine-tuning. However, we note that the texture synthesis
+setup unveils the limitations of Score Distillation Sampling
+applied in conjunction with modern diffusion models. Our
+observations go in line with the results of [41]. We continue
+their analysis and attribute the effect to the specifics of latent
+diffusion models.
+arXiv:2504.06856v1  [cs.CV]  9 Apr 2025

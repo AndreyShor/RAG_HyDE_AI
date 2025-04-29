@@ -1,0 +1,207 @@
+L =
+k−1
+X
+i=1
+{
+X
+si−1
+p(si−1)
+X
+si
+p(si|si−1)[log(p(si|si−1)) −log(p(si))]}
++
+X
+sk−1
+p(sk−1)
+X
+sk
+p(sk|sk−1)[log(p(sk|sk−1)) −log(p(sk))]
++
+X
+sk
+p(sk)
+X
+sk+1
+p(sk+1|sk)[log(p(sk+1|sk)) −log(p(sk+1))]
++
+n
+X
+i=k+2
+{
+X
+si−1
+p(si−1)
+X
+si
+p(si|si−1)[log(p(si|si−1)) −log(p(si))]}
+−β
+k−1
+X
+i=1
+{
+X
+ti
+p(ti)
+X
+si
+p(si|ti)[log(p(si|ti)) −log(p(si))]}
+−β
+X
+tk
+p(tk)
+X
+sk
+p(sk|tk)[log(p(sk|tk)) −log(p(sk))]
+−β
+n
+X
+i=k+1
+{
+X
+ti
+p(ti)
+X
+si
+p(si|ti)[log(p(si|ti)) −log(p(si))]}
++
+k−1
+X
+i=1
+{
+X
+si−1
+λ(si−1)[
+X
+si
+p(si|si−1) −1)]}
++
+X
+sk−1
+λ(sk−1)[
+X
+sk
+p(sk|sk−1) −1)]}
++
+n
+X
+i=k+1
+{
+X
+si−1
+λ(si−1)[
+X
+si
+p(si|si−1) −1)]}
+(14)
+We can then take the derivative of the Lagrangian
+δL
+δp(sk|sk−1) for fixed sk and sk−1. From basic calculus, we
+can derive that
+d(f(x)log(f(x)))
+dx
+= df(x)
+dx (log(f(x)) + 1)
+(15)
+The terms related to the first part (level 1 to k −1) are
+zero as explained above. Using the chain rule along with
+(15), the derivative of the Lagrangian (14) is,
+δL
+δp(sk|sk−1)
+=p(sk−1)[log(p(sk|sk−1)) + 1]
+−
+δp(sk)
+δp(sk|sk−1)[log(p(sk)) + 1]
++
+δp(sk)
+δp(sk|sk−1)
+X
+sk+1
+p(sk+1|sk)log(p(sk+1|sk))
+−
+X
+sk+1
+δp(sk+1)
+δp(sk|sk−1)[log(p(sk+1)) + 1]
++
+n
+X
+i=k+2
+{
+X
+si−1
+δp(si−1)
+δp(sk|sk−1)
+X
+si
+p(si|si−1)log(p(si|si−1))
+−
+X
+si
+δp(si)
+δp(sk|sk−1)[log(p(si)) + 1]}
+−β{
+X
+tk
+p(tk) δp(sk|tk)
+δp(sk|sk−1)[log(p(sk|tk)) + 1]
+−
+δp(sk)
+δp(sk|sk−1)[log(p(sk)) + 1])}
+−β
+n
+X
+i=k+1
+{
+X
+ti
+p(ti)
+X
+si
+δp(si|ti)
+δp(sk|sk−1)[log(p(si|ti)) + 1]
+−
+X
+si
+δp(si)
+δp(sk|sk−1)[log(p(si)) + 1])} + λ(sk−1)
+(16)
+Let us now derive for the expressions of the derivatives
+of the conditional probabilities.
+Since each scene level
+is a strict compression of the previous level, we have the
+Markov chain condition Ti ←S0 ←S1 ←. . . ←Sn for
+all resolutions of the task description Ti. The conditional
+distributions for the first two levels are,
+p(s1) =
+X
+s0∈S0
+p(s1|s0)p(s0)
+(17)
+p(s1|t1) =
+X
+s0∈S0
+p(s1|s0)p(s0|t1)
+(18)
+p(s2) =
+X
+s1∈S1
+X
+s0∈S0
+p(s2|s1)p(s1|s0)p(s0)
+(19)
+p(s2|t2) =
+X
+s1∈S1
+X
+s0∈S0
+p(s2|s1)p(s1|s0)p(s0|t2)
+(20)
+Generalized for level n and some k such that n > k > 0,
+p(sn) =
+X
+sk∈Sk
+X
+sk−1∈Sk−1
+p(sn|sk)p(sk|sk−1)p(sk−1)
+(21)
+5

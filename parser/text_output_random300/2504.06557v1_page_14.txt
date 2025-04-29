@@ -1,0 +1,47 @@
+－14－ 
+ 
+ 
+𝑝𝑖𝑗=
+𝑎𝑖𝑗
+∑𝑎ℎ𝑗
+𝑛
+ℎ
+ 
+(9) 
+Randomly selecting a node and assigning it a wealth of 1 is represented as an 
+𝑛-row column vector 𝒗0, with only one element being 1 and the rest being 0. By 
+repeating the product of the propagation matrix 𝑷 with 𝒗0 for a number of steps 𝜏, 
+the column vector 𝒗𝜏 after the propagation of wealth can be obtained as in Eq (10). 
+The elements of 𝒗𝜏 represent the distribution of wealth for all nodes. 
+ 
+𝒗𝜏= 𝑷𝜏∙𝒗0 
+(10) 
+The Gini coefficient is a well-known index for evaluating the degree of 
+inequality in the distribution of wealth [30] and is calculated by drawing the Lorenz 
+curve and the equal distribution line [31]. Various indices can be calculated from the 
+Lorenz curve; however, we used the Gini coefficient, which is the most common. 
+ By operating on Eq (11), the elements 𝑣𝜏𝑖 of 𝒗𝜏 at step 𝜏 are sorted from 
+smallest to largest, and the 𝑗-th wealth from smallest is taken as 𝑢𝜏𝑗, and the Gini 
+coefficient 𝐺 is calculated using Eq (12). If wealth is distributed evenly, 𝐺 is 0; if in a 
+delta distribution (all wealth is concentrated in just one node), 𝐺 is 1. In other words, 
+the greater the inequality, the larger the Gini coefficient. The Gini coefficient for 𝒗0 is 
+1. 
+ 
+𝑢𝜏𝑗= 𝑆𝑜𝑟𝑡𝑗(𝑣𝜏𝑖) 
+(11) 
+ 
+𝐺=
+2 ∙∑𝑗∙
+𝑛
+𝑗
+𝑢𝜏𝑗
+𝑛∑𝑢𝜏𝑗
+𝑛
+𝑗
+−𝑛+ 1
+𝑛
+ 
+(12) 
+ 
+Results 
+First, we set the parameters that are common to four-mode network models. 

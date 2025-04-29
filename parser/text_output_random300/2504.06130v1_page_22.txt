@@ -1,0 +1,70 @@
+B.
+Numerical methods
+To verify the validity of the analytical expression introduced in eq. (4) of the main doc-
+ument, we numerically solved the Semiconductor Bloch Equations (SBEs) [4–6]
+i∂tρmn(k; t) =
+
+ϵm(bt) −ϵn(bt) −(1 −δnm) i
+T2
+
+ρmn(k; t)
++ E(t) ·
+X
+l
+[dml(bt)ρln(k; t) −ρml(k; t)dln(bt)] ,
+(8)
+where ρmn(k; t) are density matrix elements, ϵm(k) are the band energies for band m and
+dmn(k) = i
+
+uk
+m
+ ∇kuk
+n
+
+are the dipole matrix elements (including the Berry connections
+for n = m) calculated from the lattice-periodic part of a Bloch function unk.
+E is the
+electric field, A =
+R t
+−∞E(t′) dt′ the associated vector potential, bt = k −A(t) is a shifted k
+vector, and T2 is the dephasing time. Throughout this work, we use the convention ℏ= 1.
+Analogously to our previous work [7], in which we describe the numerical solution of the
+SBEs in detail, we used a Haldane model [8] to calculate the band energies and dipole matrix
+elements for eq. (8). The electric field is parametrized by
+E(t) = ℜ
+
+ˆex E0 exp2
+
+−t2log(4)2
+T 2
+
+exp(−iω0t)
+
+,
+(9)
+where ˆex is the unit vector in x-direction, E0 is the field strength and T = 200fs is the FWHM
+of the Gaussian envelope with respect to the intensity of the light field. The frequency is
+varied around the half band gap ∆= 0.826 eV in 96 steps from 0.9∆to 1.1∆. For each
+frequency, we simulate the SBEs for 20 different powers from 0.18 mW to 6.0 mW, which
+correspond to field strengths of 0.025 V nm−1 to 0.19 V nm−1. After simulating the SBEs,
+we calculate the induced current density
+j(t) = −1
+N
+X
+k∈{−K,+K}
+j(k, t) ,
+j(k, t) :=
+X
+n,m
+pmn(bt) ρnm(k; t),
+(10)
+where N refers to the number of k-points in the Brillouin zone and pmn(k) = ∇kϵn(k)δmn +
+i(ϵm(k)−ϵn(k))dmn(k) are the momentum matrix elements. The sum over the k-points only
+contains one point at each valley −K and +K. As the time derivative of the polarization is
+equal to the current density j(t) = ∂tP(t), the susceptibility χxxx(ω) can be determined by
+Fourier transforming the current density
+χxxx(ω) = iωjx(ω)
+Ex(ω)2 ,
+(11)
+where Ex(ω) and jx(ω) are the x-components of E(ω) and j(ω), respectively.
+4

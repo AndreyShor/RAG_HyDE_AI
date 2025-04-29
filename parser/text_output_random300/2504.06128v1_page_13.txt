@@ -1,0 +1,129 @@
+SINGULARITY AND REGULARITY OF THE CRITICAL 2D SHF
+13
+The following result compares RLp¨q and Gp¨q. The proof is given in Appendix A.
+Lemma 2.1 (Green’s function). Uniformly for L P N and z P Z2 we can write
+RLpzq “ 2 G
+´
+|z|`1
+?
+L
+¯
+1zPZ2
+even` Op1q “
+1
+π log
+`
+1 `
+L
+1`|z|2
+˘
+1zPZ2
+even` Op1q .
+(2.9)
+Moreover, for any t P p0, 8q, there is ct ą 0 such that
+uniformly for L P N, z P Z2
+with |z| ď t
+?
+L ^ L:
+RLpzq ě ct log
+`
+1 `
+L
+1`|z|2
+˘
+1zPZ2
+even .
+(2.10)
+(The restriction |z| ď L in (2.10) ensures that RLpzq ě q2Lpzq ą 0 for z P Z2
+even.)
+2.3. Polynomial chaos expansion. Let us introduce random variables
+ξβ
+n,x :“ eβωpn,xq´λpβq
+σβ
+,
+which are i.i.d. with zero mean and unit variance, thanks to the definition (1.16) of σβ. We
+can represent the point-to-plane partition function Zβ
+Lpxq as a polynomial chaos expansion:
+Zβ
+Lpxq “ 1 `
+L
+ÿ
+k“1
+σk
+β
+ÿ
+0“n0ăn1ă...ănkďL
+x0“x, x1,...,xkPZ2
+k
+ź
+i“1
+qni´ni´1pxi ´ xi´1q ξβ
+ni,xi .
+(2.11)
+see e.g. [CSZ20, eq. (2.17)]. This follows from the definition (1.17)-(1.18) by writing
+eHβ
+p0,Ls “
+L
+ź
+n“1
+ź
+xPZ2
+etβωpn,xq´λpβqu1tSn“xu “
+L
+ź
+n“1
+ź
+xPZ2
+␣
+1 ` σβ ξβ
+n,x 1tSn“xu
+(
+and then expanding the product.
+Remark 2.2 (Switching off some disorder). We will later consider partition functions
+where disorder is “switched off” in a time interval pA, Bs Ď p0, Ls, meaning that the Hamil-
+tonian Hβ
+p0,Ls is replaced by Hβ
+p0,As ` Hβ
+pB,Ls, see (1.18). This amounts to setting ξn,x “ 0 for
+all n P pA, Bs, which is equivalent to restricting the polynomial chaos (2.11) to sequences of
+times n1, . . . , nk which avoid the interval pA, Bs.
+2.4. Second moment of point-to-plane partition function. Recalling
+(1.16), we define a weighted renewal function Uβp¨q by setting Uβp0q :“ 1 and for n ě 1
+Uβpnq :“
+ÿ
+kě1
+pσ2
+βqk
+ÿ
+0“:n0ăn1ă¨¨¨ănk“n
+x0:“0, x1,...,xkPZ2
+k
+ź
+i“1
+qni´ni´1pxi ´ xi´1q2
+“
+ÿ
+kě1
+pσ2
+βqk
+ÿ
+0“:n0ăn1ă¨¨¨ănk“n
+k
+ź
+i“1
+q2pni´ni´1qp0q ,
+(2.12)
+where the last equality holds by the fact that ř
+zPZ2 qnpzq2 “ ř
+zPZ2 qnpzq qnp´zq “ q2np0q.
+The quantity Uβp¨q arises in the second moment of the point-to-plane partition function:
+E
+“
+Zβ
+Lp0q2‰
+“ UβpLq :“
+L
+ÿ
+n“0
+Uβpnq ,
+(2.13)

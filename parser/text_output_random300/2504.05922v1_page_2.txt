@@ -1,0 +1,139 @@
+2
+tion of the time-dependent Hartree approximation22 to
+various quadratic effective molecular potentials. A one-
+to-one correspondence links each TGED method to its
+single-surface thawed Gaussian wavepacket dynamics
+(TGWD) analog in the limit of uncoupled electronic
+states.
+Here, we concentrate on the single-Hessian TGED,
+the nonadiabatic mean-field analog of the single-Hessian
+TGWD, where the Hessian of the effective potential along
+the nuclear trajectory is kept constant23.
+We use the
+quadratic vibronic coupling Hamiltonian to parameter-
+ize the potential energy surfaces for different scenarios
+and evaluate the performance of TGED. First, we present
+numerical results for a system in which the TGED is ex-
+act and highlight its advantages over both the TGWD
+and Ehrenfest dynamics. Next, we explain why single-
+trajectory mean-field methods completely fail to cap-
+ture electronic population transfer near conical intersec-
+tions between electronic states belonging to different ir-
+reducible representations of the molecular point group,
+using pyrazine as a case study. Importantly, most conical
+intersections studied in the literature fall into this cate-
+gory because their locations can be predicted using group
+theory. Finally, we show that TGED is useful for study-
+ing nonadiabatic dynamics near conical intersections be-
+tween electronic states of the same symmetry, which have
+been largely overlooked so far. In particular, conical in-
+tersections of asymmetric molecules (which belong to the
+C1 point group) always fall into this category. We evalu-
+ate the performance of TGED in a system modeling such
+a conical intersection and demonstrate that the semiclas-
+sical mean-field trajectory provides a good description of
+the crossing and recrossing of the intersection.
+II.
+THEORETICAL BACKGROUND
+The systems used in this study are parameterized with
+the quadratic vibronic coupling Hamiltonian, which is
+often used to model potential energy surfaces of real
+molecules in the vicinity of conical intersections. In this
+section, we briefly review how this Hamiltonian is con-
+structed and provide the equations of motion of TGED
+in the diabatic representation, which conveniently avoids
+the complexities associated with the geometric phase24
+and the divergence of derivative couplings at conical in-
+tersections.
+A.
+The quadratic vibronic coupling Hamiltonian
+The construction of the quadratic vibronic coupling
+Hamiltonian model25–27 starts with a reference nuclear
+Hamiltonian
+ˆH0 = ˆTN + ˆV0 = −1
+2
+D
+X
+i=1
+ℏωi
+∂2
+∂q2
+i
++ 1
+2
+D
+X
+i=1
+ℏωiq2
+i ,
+(1)
+expressed as a sum of the nuclear kinetic energy TN and
+a quadratic expansion V0 of the potential energy sur-
+face of a reference electronic state about a reference po-
+sition taken to be at q = (0, . . . , 0). We shall consider
+the reference state to be the ground electronic state and
+the reference position to be the minimum of the elec-
+tronic ground-state surface, which is also the location of
+the Franck-Condon point. Each dimensionless mass- and
+frequency-scaled coordinate qi is associated with mass
+mi, force constant ki, and frequency ωi =
+p
+ki/mi. In
+the quadratic vibronic coupling model, the full molecu-
+lar Hamiltonian describing a system with S coupled elec-
+tronic states takes the form
+ˆH = ˆH01S + W(ˆq),
+(2)
+where 1S is the S × S unit matrix.
+The off-diagonal
+elements of W(q),
+Wmn(q) = W 0
+mn +
+D
+X
+i=1
+λimnqi,
+m ̸= n,
+(3)
+linearly couple different electronic states m and n, en-
+abling transfer of electronic population. Importantly, the
+constant, zeroth-order term W 0
+mn vanishes when the elec-
+tronic states m and n transform according to different
+irreducible representations28. The diagonal elements,
+Wmm(q) = Em +
+D
+X
+i=1
+κimqi +
+X
+ij
+gijmqiqj,
+(4)
+add three modifications to the harmonic reference po-
+tential V0(q) to define the mth electronic surface. The
+first term shifts the mth electronic surface vertically by
+Em.
+The second term shifts the mth surface horizon-
+tally by ∆qi = −κim/ℏωi, which also leads to a nonzero
+gradient at the Franck-Condon point. Finally, the last
+term, which is neglected in the linear vibronic coupling
+Hamiltonian29, induces changes in the vibrational fre-
+quencies (“mode distortion”) when i = j and rotation of
+the normal coordinates (“Duschinsky effect”30 or “mode
+mixing”) when i ̸= j. The quadratic vibronic coupling
+Hamiltonian is commonly employed to simulate nonadi-
+abatic dynamics involving conical intersections in poly-
+atomic molecules. When restricted to a single surface,
+the model reduces to the global harmonic approxima-
+tion, where the TGWD and the TGED become equiva-
+lent and exact. This makes the quadratic vibronic cou-
+pling Hamiltonian a useful model for exploring the fac-
+tors that determine the success or failure of the TGED
+method.
+B.
+Equations of motion of the TGED
+In the time-dependent Hartree approximation, the
+molecular wavefunction is written as the Hartree product
+Ψ(t) = ψ(t) · ct,
+(5)

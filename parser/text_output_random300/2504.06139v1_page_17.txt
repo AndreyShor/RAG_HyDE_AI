@@ -1,0 +1,31 @@
+• |ǫ|11 = 0 where ǫ is the empty string;
+• |abx|11 = |x|11 + 1 if ab = 11, |x|11 otherwise.
+Burhman et al.’s protocol for bit commitment consists of repeating k
+times the following commit/reveal scheme:
+Bit-Commitment(c)
+Commit
+• Alice wants to commit to bit c. She constructs x ∈{0, 1}2n+1 by
+randomly choosing the ﬁrst 2n bits and choosing the last bit such
+that |x1 . . . x2n| + x2n+1 + c is even.
+• Alice inputs the bits x1, . . . x2n+1 into the 2n + 1 PR-boxes. Let
+a1, . . . , a2n+1 be the outputs.
+• Alice computes A = L
+i ai and sends it to Bob.
+• Bob chooses a random string y ∈R {0, 1}2n+1 and inputs bits
+y1, . . . , y2n+1 into his end of the 2n+1 PR-boxes. Let b1, . . . , b2n+1
+be the outputs.
+Reveal
+• Alice sends c, x and b1, . . . , b2n+1 to Bob.
+• Bob checks if ai ⊕bi = xi ·yi for 1 ≤i ≤2n+1 and |x1 . . . x2n|11 +
+x2n+1 + c is even. If not, he accuses Alice of cheating.
+Theorem 16. This protocol is secure against Alice. The best probability with
+which Alice can change her mind is 1/2 + 1/2k−1.
+This protocol is secure against Bob. The best probability with which Bob
+can learn c before the reveal stage is 1/2 + k/2n+1.
+7
+Generalized Non-local Boxes
+In this section we study a more general class of non-local boxes, where we
+extend the set of inputs, the set of outputs, and the number of participants.
+We also present some results on the connections between types of generalized
+boxes.
+17

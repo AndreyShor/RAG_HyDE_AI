@@ -1,0 +1,33 @@
+different values of ℓ. To address these limitations, we adopt a reference potential made up of three Morse function
+which are smoothly joined at the in between boundaries to accurately describe the short-range, medium-range, and
+long-range behavior of the interaction.
+The range of values limited by the bounds set for the various model parameters of the reference function results
+in a diverse set of curves in the sample space. The optimal inverse potential, which best reproduces the expected
+phase shifts, is identified by adjusting the parameters of the reference function to minimize a cost function, such
+as the Mean Absolute Percentage Error (MAPE). This procedure of constructing inverse potentials by solving the
+phase equation using a reference function is known as the reference potential approach.
+Based on this methodology, we have previously modeled the interaction using two Morse functions for α −α[20]
+and three Morse functions for n-p [21] system to obtain the inverse potential across various ℓ-channels. Here we
+extend the methodology to construct the inverse potential for α −d system to study the low-lying excited states
+for 6Li corresponding to T =0.
+2
+Methodology
+In this section, we discuss the significance of the reference function in inverse scattering and demonstrate the
+non-linear relationship between the observable and the obtained inverse potential. The phase function method
+(PFM) is used as a guiding principle in machine learning algorithms to determine the inverse scattering potential
+via the Reference Potential Approach (RPA). Hence, referred to as physics-informed machine learning (PIML).
+PFM provides a versatile and efficient framework for analyzing quantum scattering problems, offering distinct
+advantages and simplicity. We elaborate the PFM for both single and multi-channel scattering [22] and discuss the
+machine-learning-based meta-heuristic algorithm used to optimize the model parameters [14].
+2.1
+Reference Potential Approach
+Understanding nuclear structure, reactions, and scattering requires an understanding of the nuclear interaction
+potential, which describes the forces between nucleons. The nuclear interaction potential exhibits a complex struc-
+ture with three distinct regions, corresponding to different physical behaviors at short, intermediate, and long ranges.
+An effective potential encompasses all three regions: short-range repulsion, intermediate-range attraction, and
+long-range decay to provide an accurate description of nuclear scattering dynamics.
+Therefore, we use a combination of Morse functions to construct the reference potential. As a sum of exponential
+terms, the Morse function effectively captures the complex structure of the interaction potential, including short-
+range repulsion and the long-decaying tail at large distances. The availability of an analytical solution for the l = 0
+state makes it particularly suitable for modeling nuclear interactions that vary with distance.
+3

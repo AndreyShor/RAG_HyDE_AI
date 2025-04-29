@@ -1,0 +1,134 @@
+NOTES ON COLOR REDUCTIONS AND γ TRACES
+4
+Proof. We first check (9) for the orthonormal basis in Lemma 1. The sum over αβ in T αβ ⊗T αβ and
+˜T αβ ⊗˜T αβ gives
+1
+2
+X
+1≤α<β≤N
+(δa,αδb,β + δa,βδb,α)(δc,αδd,β + δc,βδd,α) −(δa,αδb,β −δa,βδb,α)(δc,αδd,β −δc,βδd,α).
+Only the cross terms survive, yielding
+X
+1≤α<β≤N
+(δa,αδb,βδc,βδd,α + δa,βδb,αδc,αδd,β) = δa,dδb,c
+X
+1≤α<β≤N
+(δa,αδb,β + δb,αδa,β).
+The first term in the sum gives 1 for a < b and 0 for a ≥b. The second term is 1 for b < a and 0 for
+b ≥a. Adding and subtracting δa,b yields
+δa,dδb,c(1 −δa,b).
+We assume a ≤c (otherwise we swap a, b with c, d) and obtain for the sum over T k ⊗T k,
+N−1
+X
+k=1
+1
+k(k + 1)
+
+k
+X
+r=1
+δa,rδb,r
+
+−kδa,k+1δb,k+1
+
+k
+X
+s=1
+δc,sδd,s
+
+−kδc,k+1δd,k+1
+
+=δa,bδc,d
+N−1
+X
+k=1
+1
+k(k + 1)
+
+k
+X
+r,s=1
+δa,rδc,s
+
+−kδc,k+1
+
+k
+X
+r=1
+δa,r
+
+−kδa,k+1
+
+k
+X
+s=1
+δc,s
+
++ k2δa,k+1δc,k+1
+
+=δa,bδc,d
+ N−1
+X
+k=c
+1
+k(k + 1) −1
+c (1 −δa,c) −0 + δa,c
+c −1
+c
+
+.
+Because 1/(k(k + 1)) = 1/k −1/(k + 1), the sum over k yields 1/c −1/N. Altogether we get
+δa,bδc,d(−1
+N + δa,c).
+Adding the sum over αβ and the sum over k, we see that the terms with three Kronecker deltas (implying
+a = b = c = d) cancel and (9) follows.
+To get the result for any orthonormal basis we transform T i to T ′i = ST iS−1 for some invertible n×n
+matrix S. In components, we get for P
+i T ′i ⊗T ′i
+T ′i
+abT ′i
+cd = Saa′T i
+a′b′(S−1)b′bScc′T i
+c′d′(S−1)d′d = Saa′(S−1)b′bScc′(S−1)d′d(δa′,d′δb′,c′ −1
+N δa′,b′δc′,d′)
+= Saa′(S−1)a′dScb′(S−1)b′b −1
+N Saa′(S−1)a′bScc′(S−1)c′d) = δa,dδb,c −1
+N δa,bδc,d.
+This completes the proof of the proposition.
+□
+Note that in Figure 4 the orientation of the external half-edges is preserved. This promotes (9) to a
+two term relation which is the oriented analog of the classical tree term relation in graph theory (the
+cross term is forbidden because it is in conflict with the orientation of the edges).
+With (4) we can eliminate all adjoint vertices fijk and with (9) we can eliminate all non-oriented
+edges between two chains of oriented edges. For any graph with at least one vertex, we finally obtain
+a result which is a product of (1) oriented chains with any number of non-oriented external half-edges
+(products of T i) and (2) closed oriented loops with any number of non-oriented external half-edges (traces
+of products of T i). In the case of a ‘vacuum’ graph with no external half-edges, we only get a sum of
+oriented self-loops δa,a = N. Then, RG(N) ∈Z[N, N −1].
+For practical purposes, it is useful to derive formulae for small cycles. We have (see Figures 3 and 5)
+δa,a = N,
+δi,i = N 2 −1,
+T i
+aa = 0,
+fijj = 0,
+T i
+abT i
+bc = (N −1
+N )δa,c,
+T i
+abT j
+ba = δi,j,
+fikℓfℓkj = 2Nδi,j,
+T i
+abT j
+bcT i
+cd = −1
+N T j
+ad,
+T i
+abT j
+bcfijk = −NT k
+ac,
+fijkfjℓmfmnk = Nfiℓn.
+(10)
+Oriented cycles with ≥3 edges cannot be reduced.

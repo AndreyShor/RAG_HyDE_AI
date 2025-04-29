@@ -1,0 +1,293 @@
+"Inspect the cleanliness of the utility area.": {
+ "1": {
+        
+"items": "utility area door",
+        
+"description": "Open the utility area door."
+    },
+    "2": {
+        
+"items": "floor",
+        
+"description": "Check the floor for debris."
+    },
+    "3": {
+        
+"items": "shelves",
+        
+"description": "Examine shelves for dust accumulation."
+    },
+    "4": {
+        
+"items": "counter",
+        
+"description": "Inspect counter for spills."
+    },
+    "5": {
+        
+"items": "bins",
+        
+"description": "Look at bins for overflow."
+    }
+}
+"Inspect the cleanliness of the utility area.": {
+    "1": {
+        
+"items": "washing machine",
+        
+"description": "Walk to the washing machine next to the bucket."
+    },
+    "2": {
+        
+"items": "washing machine",
+        
+"description": "Check if the area around the washing machine is clean and free of lint or spills."
+    },
+    "3": {
+        
+"items": "bucket",
+        
+"description": "Go to the bucket next to the washing machine."
+    },
+    "4": {
+        
+"items": "bucket",
+        
+"description": "Ensure that the inside of the bucket is clean and dry."
+    },
+    "5": {
+        
+"items": "counter",
+        
+"description": "Check the counter area near the radiator to ensure it does not have any dust or 
+clutter."
+    },
+    "6": {
+        
+"items": "shelf",
+        
+"description": "Examine the shelf above the counter to verify if it is organized and free of dust."
+    }
+}
+"Inspect the cleanliness of the utility area.": {
+    "1": {
+“items”: “utility area door, door”,
+            
+"description": "Open the utility area door.",
+    },
+    "2": {
+    
+“items: “tile”,
+            
+"description": "Check the floor for debris.",
+    },
+    "3": {
+    
+“items: “shelves”,
+            
+"description": "Examine shelves for dust.",
+    },
+    "4": {
+    
+“items: “counter, sink, countertop”,
+            
+"description": "Inspect counter for spills.",
+     },
+    “5”: {
+    
+“items”: “laundry”,
+    
+“description": "Check for any dirty laundry left in the area.",
+     }
+    “6”: {
+    
+“items: “washing machine, laundry machine”,
+    
+“description”: “Inspect the washing machine for residue or lint buildup.”,
+     }
+}
+Initial Task Hierarchy
+Final Task Hierarchy 
+Reference Task Hierarchy 
+(a) Initial task hierarchy, final ASHiTA generated task hierarchy, and the reference task hierarchy from [50].
+"Inspect the cleanliness of the utility area.": {
+    
+"1": {
+“items”: “utility area door”,
+        
+"description": "Open the utility area door.",
+    
+},
+    
+"2": {
+“items: “floor”,
+        
+"description": "Check the floor for debris.",
+    
+},
+    
+"3": {
+“items: “shelves”,
+        
+"description": "Examine shelves for dust.",
+    
+},
+    
+"4": {
+“items: “counter”,
+        
+"description": "Inspect counter for spills.",
+     
+}
+}
+Inspect the 
+cleanliness of the 
+utility area
+shelves
+utility area door
+counter
+floor
+Suggestions: “door”, “floor mat”, 
+“surface”, “shelf”, “sink”, “countertop”, 
+“bath carpet”, “washing machine”, 
+“laundry”, …
+(b) Task hierarchy and scene graph after first iteration.
+"Inspect the cleanliness of the utility area.": {
+    
+"1": {
+“items”: “utility area door, door”,
+        
+"description": "Open the utility area door.",
+    
+},
+    
+"2": {
+“items: “floor, tile”,
+        
+"description": "Check the floor for debris.",
+    
+},
+    
+"3": {
+“items: “shelves”,
+        
+"description": "Examine shelves for dust.",
+    
+},
+    
+"4": {
+“items: “counter, sink, countertop”,
+        
+"description": "Inspect counter for spills.",
+     
+},
+“5”: {
+“items”: “laundry”,
+“description": "Check for any dirty laundry 
+left in the area.",
+}
+“6”: {
+“items: “washing machine”,
+“description”: “Inspect the washing 
+machine for residue or lint buildup.”,
+}
+Inspect the 
+cleanliness of the 
+utility area
+shelves
+utility area door
+counter
+floor
+Suggestions: “towel”, “clothes dryer”, 
+“bucket”, “trash can”, “laundry machine”
+door
+surface
+sink
+countertop
+floor
+Inspect the 
+cleanliness of the 
+utility area
+shelves
+utility area door
+counter
+floor
+laundry
+washing 
+machine
+sink
+countertop
+tile
+floor
+(c) Task hierarchy and scene graph after second iteration.
+"Inspect the cleanliness of the utility area.": {
+    
+"1": {
+“items”: “utility area door, door”,
+        
+"description": "Open the utility area door.",
+    
+},
+    
+"2": {
+“items: “tile”,
+        
+"description": "Check the floor for debris.",
+    
+},
+    
+"3": {
+“items: “shelves”,
+        
+"description": "Examine shelves for dust.",
+    
+},
+    
+"4": {
+“items: “counter, sink, countertop”,
+        
+"description": "Inspect counter for spills.",
+     
+},
+“5”: {
+“items”: “laundry”,
+“description": "Check for any dirty laundry 
+left in the area.",
+}
+“6”: {
+“items: “washing machine, laundry 
+machine”,
+“description”: “Inspect the washing 
+machine for residue or lint buildup.”,
+}
+utility area door
+counter
+sink
+shelves
+utility area door
+laundry
+washing 
+machine
+countertop
+tile
+laundry 
+machine
+Inspect the 
+cleanliness of the 
+utility area
+(d) Task hierarchy and scene graph after third iteration.
+shelves
+laundry
+utility area door
+washing 
+machine
+laundry 
+machine
+(e) Zoomed in view on the primitives and the scene.
+Figure 11.
+ASHiTA with three iterations for the high-level task of "Inspect the cleanliness of the utility area". (b) From the initial hierarchy, all items
+except for the bins are grounded in the generated scene graph. Many suggestions are generated to update the hierarchy. (c) Suggested items "laundry" and
+"washing machine" are used to generate new subtasks, these are also successfully grounded in the generated scene graph. Grounding these items trigger a
+few additional suggestions. (d) Suggested items "laundry machine" added to the task hierarchy. This refers to the dryer next to the washing machine. Our
+estimated final task hierarchy recalls all of the grounded items in the reference task hierarchy except for the bucket next to the washing machine.
+3

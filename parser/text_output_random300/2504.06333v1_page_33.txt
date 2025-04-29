@@ -1,0 +1,51 @@
+and for which C admits a ﬁber functor. Then, C acts as a resolution of Vec(G,α). In
+principle, this will coincide with the group-like case if C = Vec(Γ) and K = Vec(K).
+Next, we turn to the details of diﬀerentials and so forth.
+Suppose we have a situation as described in Section 2.1, in which a group G
+with an anomaly encoded by a cocycle α ∈H3(G,U(1)) is extended by trivially
+acting symmetries K to a group Γ,
+1 Ð→K Ð→Γ
+π
+Ð→G Ð→1,
+(6.43)
+such that the pullback [π∗α] of the anomaly class is trivial in H3(Γ,U(1)), i.e. there
+exists a 2-cochain j ∈C2(Γ,U(1)) such that dj = π∗α. We would now like to de-
+scribe how this looks from the categorical point of view, where we have a strong
+monoidal functor (F,J) from Vec(Γ) to Vec(G,α).
+First we recall that the simple objects in Vec(G,α) are labeled by elements
+g ∈G and their fusion is given by the group multiplication, g1 ⊗g2 = (g1g2). The
+Hom spaces between simple objects Hom(g,h) are either zero4 if g ≠h or are
+isomorphic to C if g = h.
+In the latter case we have a canonical basis vector
+ϕg ∈Hom(g,g). The associators of Vec(G,α), a collection of morphisms ag,h,ℓ∈
+Hom((g ⊗h) ⊗ℓ,g ⊗(h ⊗ℓ)), are given in terms of the cocycle α ∈Z3(G,U(1)) as
+ag,h,ℓ= α(g,h,ℓ)ϕghℓ.
+Now to construct a strong monoidal functor from a tensor category C to another
+tensor category D, we need to specify a functor F from C to D, along with a
+collection of morphisms JX,Y ∈HomD(F(X) ⊗F(Y ),F(X ⊗Y )) that makes the
+following diagram commute,
+(F(X) ⊗F(Y )) ⊗F(Z)
+F(X) ⊗(F(Y ) ⊗F(Z))
+F(X ⊗Y ) ⊗F(Z)
+F(X) ⊗F(Y ⊗Z)
+F((X ⊗Y ) ⊗Z)
+F(X ⊗(Y ⊗Z))
+aF (X),F (Y ),F (Z)
+JX,Y ⊗idF (Z)
+idF (X)⊗JY,Z
+JX⊗Y,Z
+JX,Y ⊗Z
+F (aX,Y,Z)
+(6.44)
+For the case at hand, we take the functor to act on objects as F(γ) = π(γ),
+and to act on morphisms as F(ϕγ) = ϕπ(γ). The morphisms Jγ1,γ2 are constructed
+4In fact, when we have a normal subgroup K ⊂Γ that acts trivially, then this is no longer true;
+instead the space HomΓ(γ1,γ2) is isomorphic to C whenever γ1γ−1
+2
+∈K. This fact is important
+in explaining decomposition in such cases, since it is point operators at the end of K lines
+(i.e. living in Hom(k,1)) that become the topological point operators heralding decomposition
+once we gauge K [6]. However, we don’t need to worry about such extra homomorphisms here
+when we construct the strong monoidal structure. If γ1 ≠γ2 then we necessarily have F(ϕ) = 0
+for all ϕ ∈Hom(γ1,γ2).
+33

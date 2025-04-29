@@ -1,0 +1,73 @@
+traversal of the dependency dictionary. These boxes form
+a subgraph, which is then topologically sorted to ensure
+that removal follows dependency constraints. This guarantees
+that no box is extracted before those it supports, preventing
+collapses and enabling stable and efficient box removal in
+automated warehouse systems. Additional applications of the
+Box Relations Graph are discussed in later sections.
+Algorithm 2 Obtaining the Safe Sequence for Extraction
+Input: Dependency dictionary D, target box s.
+Initialize an empty set Svisited.
+Initialize an empty list Ssequence.
+// Step 1: Recursively collect all boxes related to s
+function EXPLORE(box)
+if box /∈Svisited then
+Add box to Svisited.
+for each box b in D[box] do
+EXPLORE(b).
+end for
+end if
+end function
+EXPLORE(s).
+// Step 2: Construct subgraph G′ using nodes in Svisited
+and perform a topological sort
+Construct subgraph G′ with nodes Svisited and edges from
+D.
+Compute a topological ordering of G′ and store it in
+Ssequence.
+return Ssequence.
+C. Interaction and Collaboration
+To enable multi-modal interactions and reasoning, the
+system consists of the following key components:
+Fig. 5: Pointing Recognition Pipeline
+1) Pointing Recognition: Captured images are processed
+using a segmentation mask that isolates the human arm
+(Figure 5 (b)) . To refine the depth data in Figure 5 (c),
+the point cloud undergoes DBSCAN clustering, which
+removes segmentation noise and enhances accuracy (as
+seen in Figures 5 (d) and (e)). The system then selects
+the top 2% of depth points within the refined mask and
+computes their median to estimate the user’s intended
+target (as seen in Figure 5 (f)). The closest box to this
+estimated point is identified as the selected box. This
+enables the LLM to interpret user gestures, providing
+contextual awareness for decision-making. Based on
+this, the system can designate the pointed box as the
+target for extraction. Additionally, it detects whether
+the user is actively pointing; if a removal request is
+made without a detected pointing gesture, the system
+prompts the user to specify the desired box through
+pointing, ensuring clarity and reducing errors in task
+execution.
+Fig. 6: Illustrations showcasing how the LLM uses Chain-of-
+Thought (CoT) reasoning for decision making
+2) Natural Language Reasoning: The system also al-
+lows users to select a box for extraction through natural
+language commands. Using the Qwen2.5-7B-Instruct
+[17] model, the extracted features from the perception
+stage are passed to the LLM, enabling it to exhibit
+multi-modal capabilities by integrating both visual and
+textual inputs. With Chain-of-Thought (CoT) prompt-
+ing, the LLM processes the user’s request, leverag-
+ing contextual awareness to accurately identify the
+referenced box. This ensures a flexible and intuitive
+interaction, allowing users to specify their intent either
+through gestures or spoken instructions. The system
+can also parse natural language queries into sub tasks,
+which allows it make decisions and give commands
+to the robot according to the user query. Furthermore,
+the LLM acts as a bridge between the robot and the
+human, as it allows the human to natural ask for
+assistance and give queries without being restricted to
+a specific querying format or structure. This reasoning
+is illustrated in Figure 6

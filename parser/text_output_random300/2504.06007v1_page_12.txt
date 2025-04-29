@@ -1,0 +1,33 @@
+CAMulator
+Figure 8: Global climatological distributions of daily rainfall from CAM6 (teal), CAMulator (purple), and GPCP
+observations (dotted black). (Top) Rain amount (mm day−1) as a function of rain rate. (Bottom) Rain frequency
+distribution (%) as a function of rain rate. The dry-day frequency is indicated in the top left of the bottom panel, with
+values for CAM6 (teal), CAMulator (purple), and GPCP (black). GPCP serves as an observational reference dataset
+and is coarsened prior to computing distributions.
+3.5
+Rain Amount Distribution
+In this section we look at the similarities of the modeled rain amount and rain frequency distributions [e.g., Pendergrass
+and Hartmann, 2014], using logarithmically distributed rain-rate bins following Watterson and Dix [2003]. See the
+appendix section A.3 for the exact form of the calculation. The global distributions of CAM6 and CAMulator, along
+with the distribution observed in the daily GPCP dataset spanning years 1997-2012 are shown in Figure 8. The rain
+amounts in CAM6 and CAMulator are nearly identical, each peaking at around 10 mm day−1 and are in agreement for
+all rain rates (Fig 8a). However, the biases in CAM6 when compared to the GPCP product (i.e. narrower distribution
+focused on a higher rain rate) persist in CAMulator. This is expected as CAMulator was trained as a CAM6 emulator.
+At larger rain rates (> 10 mm day−1) the rain frequency distributions align fairly well (Fig 8b). However, at lighter rain
+rates, between 0.1 and 3 mm day−1, there is a noted reduction in CAMulator rain frequency, bringing the distribution
+closer the the GPCP. Additionally, the dry-day frequency is nearly double that of CAM, and much more similar to
+GPCP. These are known biases in CAM6 that have persisted through most of the generations of the CAM models
+[e.g., Pendergrass and Hartmann, 2014, Pendergrass et al., 2017]. As discussed in [Sha et al., 2025a], the reduction in
+drizzle bias is primarily a consequence of our global conservation schemes. In our moisture budget framework, the
+global sum of total precipitation is required to be consistent with conserved quantities such as water, mass, and energy.
+When CAMulator overestimates drizzle—characterized by relatively low precipitation amounts—and underestimates
+precipitation in drier regions, the resulting global precipitation sum deviates from these conservation constraints. To
+enforce global consistency, a multiplicative correction is applied. However, because drizzle values are small, even minor
+absolute adjustments result in large relative changes. This disproportionate correction significantly increases the MSE
+during training, effectively penalizing the drizzle bias to meet the physical conservation laws.
+3.6
++2K and +4K runs
+Before evaluating the CAMulator’s response to SST perturbations beyond its training distribution, we impose clima-
+tological SSTs for the year 2000 as a baseline forcing (+0K). Figure 9 presents the global mean temperature at the
+lowest model level (Fig. 9a), along with the vertically integrated heat content for the lower (850–1000 hPa; Fig. 9b) and
+12

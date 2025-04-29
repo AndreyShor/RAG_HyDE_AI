@@ -1,0 +1,29 @@
+shots. Hence, the 80-20 split was not followed. Instead, the last 99 snapshots were used
+for validation, and the preceding 200 for training. The data set encompasses the three
+velocity components (u, v, w), representing the streamwise, normal, and spanwise flow
+directions, respectively.
+(a) Ground Truth
+(b) HOSVD
+(b) SVD
+Y
+X
+X
+Y
+X
+X
+Y
+X
+X
+Figure 16: (a) Ground truth streamwise velocity components at t = 528. (b) Comparison
+of the predicted streamwise velocity components for HOSVD (left column) and SVD (right
+column) across different LSTM architectures. From top to bottom: predictions for LSTM
+with 1 Dense, 2 Dense, and Time-Distributed architectures.
+Figure 16 compares the predicted streamwise velocity components for the 3D cylin-
+der flow, showing that all models effectively capture the main flow structures. HOSVD
+provides smoother, more coherent predictions, while SVD remains accurate it shows slight
+inconsistencies. For the normal velocity component, HOSVD and SVD consistently repro-
+duce flow structures with minimal artifacts. The spanwise velocity component presents
+the greatest challenge due to the dominance of zero and near-zero low-velocity regions.
+SVD and HOSVD struggle to predict the flow features accurately. The 1 dense SVD-based
+model performs the worst, failing to adequately capture spanwise velocity structures, lead-
+31

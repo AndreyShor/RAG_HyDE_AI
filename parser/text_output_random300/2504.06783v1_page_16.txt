@@ -1,0 +1,47 @@
+ 
+16 
+ 
+45. Ham, Y.-G., Kim, J.-H. & Luo, J.-J. Deep learning for multi-year ENSO forecasts. Nature, 573(7775), 568–
+572 (2019). https://doi.org/10.1038/s41586-019-1559-7  
+46. Ling, F., Luo, J.-J., Li, Y., Tang, T., Bai, L., Ouyang, W. & Yamagata, T. Multi-task machine learning 
+improves multi-seasonal prediction of the Indian Ocean Dipole. Nat. Commun., 13, 7681 (2022). 
+https://doi.org/10.1038/s41467-022-35412-0  
+47. Zhang, S., Xu, S., Fu, H., et al. Toward Earth system modeling with resolved clouds and ocean submesoscales 
+on heterogeneous many-core HPCs. Natl. Sci. Rev., 10, nwad069 (2023). https://doi:10.1093/nsr/nwad069  
+48. Golden, K. M., Bennetts, L. G., Cherkaev, E., et al. Modeling sea ice (invited). Not. Am. Math. Soc., 67, 
+1535–1555 (2020). https://doi.org/10.1090/noti2171  
+49. Koldunov, N. V., Danilov, S., Sidorenko, D., et al. Fast EVP solutions in a high-resolution sea ice model. J. 
+Adv. Model. Earth Syst., 11, 1269–1284 (2019). https://doi.org/10.1029/2018MS00148  
+ 
+Methods 
+Coupled data assimilation systems 
+Two coupled models. The CESM [32] and CM2 [33] employed the historical simulation period from 1945 
+to 2006 and the Representative Concentration Pathway 4.5 (RCP45) scenario period from 2007 to the present. 
+For CESM, the atmospheric component (Community Atmosphere Model version 5, CAM5) employed a 
+spectral-element dynamic core (“ne30g16” configuration) with approximately 1° × 1° horizontal resolution 
+near the equator, and 26 vertical levels; the oceanic component (Parallel Ocean Program version 2, POP2) is 
+configured with a horizontal resolution of approximately 1° × 1° and 60 vertical levels, with 15 levels of 10-
+m thickness in the upper 150 m. For CM2, the atmospheric component (Atmosphere Model version 2.1, AM2.1) 
+employed a finite-volume dynamic core with a horizontal resolution of 2° latitude × 2.5° longitude and 24 
+vertical levels; the oceanic component (Modular Ocean Model version 4, MOM4) is configured with 50 
+vertical levels (22 of which are 10-m thick in the upper 220 m) and a 1° × 1° horizontal B-grid resolution, 
+telescoping to 1/3° meridional spacing near the equator. 
+Multiscale data assimilation algorithm. A multi-timescale, high-efficiency approximate Ensemble 
+Kalman Filter [28], combined with a deep-ocean bias relaxation scheme [10], is implemented into both models 
+to establish two CDA systems. This CDA algorithm uses the single-model state time series to construct 
+stationary, low-frequency, and high-frequency filters, markedly reducing the consumption of computational 
+resources [29,30]. The algorithm consists of the following two steps: 
+Δ𝑦𝑜,(𝜏) =
+1
+(𝜎(𝜏))2 𝑦𝑓
+𝑝+
+1
+(𝜎(𝑜))2 𝑦𝑜
+1
+(𝜎(𝜏))2 +
+1
+(𝜎(𝑜))2
+−𝑦𝑓
+𝑝， 𝜏= 1,
+𝛤 (𝛤= 3 𝑖𝑛 𝑡ℎ𝑖𝑠 𝑠𝑡𝑢𝑑𝑦),
+(1) 

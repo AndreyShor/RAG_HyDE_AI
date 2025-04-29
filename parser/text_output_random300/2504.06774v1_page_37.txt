@@ -1,0 +1,21 @@
+(a) HOSVD
+(b) SVD
+w × 10−6
+w × 10−6
+w × 10−6
+Figure 21: Comparison of the predicted temporal evolution of spanwise velocity compon-
+ents for (a) HOSVD (left column) and (b) SVD (right column) across different LSTM
+architectures for the 3D cylinder flow. From top to bottom: LSTM 1 Dense, LSTM 2
+Dense, and LSTM Time-Distributed.
+captures the complexity of the wake while effectively eliminating additional noise, offering
+a more accurate representation of the flow dynamics.
+Figure 24 and Figure 25 present the predicted streamwise and normal velocity com-
+ponents for HOSVD and SVD across the three LSTM architectures. For the streamwise
+velocity, HOSVD performs well, effectively capturing the primary flow structures across all
+architectures. The SVD-based LSTM models, for certain snapshots, provide an averaged
+flow scenario just like the cylinder 2D case, except for the time-distributed architecture.
+However, the predicted normal velocity snapshots align very closely with the cleaned
+ground truth across the architectures based on the two decomposition techniques.
+For the streamwise velocity component (Table 14), HOSVD achieves lower RRMSE
+values across all LSTM architectures compared to SVD. The LSTM 2 Dense architecture
+37

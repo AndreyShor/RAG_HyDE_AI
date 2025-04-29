@@ -1,0 +1,84 @@
+A Self-Supervised Framework for Space Object Behaviour Characterisation.
+3
+Figure 2: Pre-training approach. Input array(s) (M) provide keys (K) which index the data (e.g., timestep in a timecourse) and
+values (V) which represent the information at each K. The model includes a learned latent array (N) which provides queries
+(Q) for the Cross Attention mechanism. Q interacts with K and V to extract relevant information from the input. The latent
+representation (z) is computed from this mechanism using the mean and log variance, capturing compressed features of the input.
+In this way, z acts as a latent bottleneck. Self Attention layers then learn meaningful relations within this latent space. This
+architecture incorporates elements of Variational Autoencoders (VAE) in its training process, whereby the loss is calculated by
+sampling probabilistically from the latent space. Figure adapted from [8].
+To address this limitation, DeepMind recently developed the
+Perceiver/Perceiver-IO, a transformer-based neural network ar-
+chitecture. [8, 11]. For a SDA Foundation Model, Perceiver
+has two main motifs that make it an attractive choice of archi-
+tecture for training a FM (Figure 2), computational efficiency
+and heterogenous learning. Perceiver only performs the full
+self-attention mechanism in the latent (hidden) space which is
+computationally efficient as the latent vector is constrained in
+size. Additionally, as the substantive part of the learning of
+Perceiver is done within the latent space, this readily enables
+heterogenous learning, as the modality of the data has already
+been abstracted into the lower dimensional latent space.
+Given the potential of VAEs as anomaly detectors, and the
+computational efficiency of Perceiver, a VAE-based Perceiver
+model is a promising approach for a computationally efficient,
+SDA FM for anomaly detection.
+In this work, we will use
+visible light curves as a test-bed for development of an SDA
+Foundation Model, due to the availability of large amounts of
+real observational data, and the maturity of light curve simula-
+tors. Here, we use the largest publicly released dataset of light
+curves, from the Mini-Mega TORTORA (MMT-9) observatory
+in Russia [12].
+Light curves are plotted time-series measurements of the
+brightness of light received by a sensor reflected by, or emitted
+from a space object (SO). Light curves allow both the physi-
+cal properties and the behaviour of the SO to be inferred. For
+example, rotating objects may exhibit short-term periodic vari-
+ations in their light curves.
+Light curves are well studied in the literature and recently there
+has been substantial interest in the field in using light curves
+to train machine learning models [13, 14, 15]. These efforts
+are mostly concerned with supervised classification problems;
+whereby light curves are labelled into classes, and the model
+is trained to distinguish between those classes. Despite this
+focus, some groups have trained unsupervised deep learning
+models for light curve analysis, [16, 17, 18, 19]. However,
+to our knowledge, our work here is the first to leverage un-
+supervised learned representations of light curves of SOs from
+a large dataset to downstream applications, i.e., anomaly detec-
+tion, object characterisation, and synthetic data generation. Fig-
+ure 1 outlines the research in this study (into pre-training, fine-
+tuning, and generative AI capabilities). This paper is structured
+as follows: Section 2 presents the results of our pre-training
+approach, anomaly detection, motion prediction fine-tuning,
+and synthetic data generation capabilities; Section 3 details our
+methodological approach and implementation. Finally, Section
+4 discusses future directions and implications.
+2
+Results & Discussion
+2.1
+Pre-training VAE-Perceiver to reconstruct MMT light
+curves.
+First, we trained a VAE-based Perceiver on the MMT-9 light
+curve dataset.
+Training showed expected convergence be-
+haviour, with rapid initial improvement followed by gradual re-
+finement. The loss values reduce consistently before plateauing
+at 0.0011 (train) and 0.0012 (validation) (Figure 3, Left-hand
+panels). Additionally, when training a VAE, we optimise the la-
+tent to space to be well ordered using a KL divergence term (see
+equation 7). This term measures how normally distributed the
+latent space is, and therefore can be interpreted as a measure of
+dataset heterogeneity. The KL divergence terms exhibit inter-
+esting dynamics - they increase early in training, peaking at ap-
+proximately epoch 25, then gradually reduce and stabilise. This
+suggests the VAE initially encodes maximum information into
+the latent space, before finding a balance between reconstruc-
+tion accuracy and latent space regularity. The close tracking of
+train and validation loss suggest a good generalisation perfor-
+mance, without memorisation. Final KL Divergence values of
+approximately 0.86 indicate the model maintained a meaning-
+fully ordered latent space whilst avoiding latent space collapse
+(recall that a KL divergence of 0 implies a normally distributed
+latent space, Figure 3, right-hand panels). As a VAE loss func-

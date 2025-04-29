@@ -1,0 +1,103 @@
+First, a linear transformation is applied to the binarized 3D CT volume. This transformation involves rotating around
+the principal axes of the 3D image. The rotation angles α, β, and γ are applied sequentially around the x-, y-, and
+z-axes using the following rotation matrices:
+Rx(α) =
+
+
+1
+0
+0
+0
+cos(α)
+−sin(α)
+0
+sin(α)
+cos(α)
+
+,
+Ry(β) =
+
+
+cos(β)
+0
+sin(β)
+0
+1
+0
+−sin(β)
+0
+cos(β)
+
+,
+Rz(γ) =
+
+
+cos(γ)
+−sin(γ)
+0
+sin(γ)
+cos(γ)
+0
+0
+0
+1
+
+.
+(1)
+The composite rotation matrix is:
+R = Rz(γ) Ry(β) Rx(α).
+(2)
+We obtain the rotated CT volume by:
+CT ′ = CT · R,
+(3)
+where CT is the binarized 3D volume image, and CT ′ is the rotated image. After rotation, a 2D slice is extracted from
+the rotated image at slice index s along the original x-axis:
+Is = CT ′(α, β, γ)
+
+x=s.
+(4)
+We then employ a template-matching algorithm to quantify the similarity between the extracted CT section Is and the
+thin section image T. Specifically, we compute the normalized cross-correlation (NCC) over every possible location of
+T within Is. To ensure zero-mean data, we first subtract the mean intensity from both images:
+T ′ = T −¯T,
+I′
+s = Is −¯Is.
+(5)
+The normalized cross-correlation (NCC) map is defined as:
+NCC(u, v) =
+P
+p,q
+
+I′
+s(p + u, q + v) T ′(p, q)
+
+rhP
+p,q(I′s(p + u, q + v))2
+i hP
+p,q(T ′(p, q))2
+i,
+(6)
+where (u, v) denote the offsets applied to the reference image Is, and (p, q) range over the valid region of the template
+T, satisfying 0 ≤p < w and 0 ≤q < h, where w and h denote the width and height of T, respectively.
+The peak value of the NCC map indicates the highest similarity between Is and T, corresponding to the optimal
+alignment. Thus, for a given rotation and slice index, we can determine the best placement of the thin section T within
+the trial section Is. We formulate the objective function for optimization as follows:
+f(α, β, γ, s) = −max
+u,v NCC(u, v | Is, T),
+(7)
+(α∗, β∗, γ∗, s∗) = arg min
+α,β,γ,s f(α, β, γ, s).
+(8)
+Differential evolution (DE) is an evolutionary algorithm to minimize this objective function [Storn and Price, 1997].
+DE initializes a population of parameter vectors given the bounds of each of the four parameters. The initial population
+at generation 0 is
+θ(0)
+i
+=
+
+α, β, γ, s
+(0)
+i ,
+i = 1, . . . , NP ,
+(9)
+5

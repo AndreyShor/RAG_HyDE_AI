@@ -1,0 +1,127 @@
+7
+15
+10
+5
+0
+5
+10
+15
+Time ( s)
+0
+20
+40
+60
+80
+100
+120
+Voltage (mV)
+6.67 s
+660nm warm
+APD Data
+Fitted Gaussian
+Baseline Uncertainty
+15
+10
+5
+0
+5
+10
+15
+Time ( s)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+Voltage (mV)
+4.53 s
+660nm cold (averaged)
+APD Data
+Fitted Gaussian
+Baseline Uncertainty
+FIG. 5.
+Left: Pulse-width measurement from the MEMS chopping system at warm temperature with a 660 nm LED. Right:
+Pulse width from the MEMS chopping system at cold temperature.
+Combining the known geometry, component values,
+and resonant frequency constraint, an estimate of the
+minimum achievable pulse duration can be readily cal-
+culated in terms of LED wavelength λ, assuming oscil-
+lation at the resonant frequency, assuming the system is
+geometrically optimal for pulsed measurement:
+tpulse,ideal ≳2.4µs
+p
+1 + (0.31λ · 106)2
+(8)
+The diffraction correction for optical wavelengths is at
+the percent level, and thus equation 9 implies a mini-
+mum pulse width of ∼2.4 µs at 650 nm for a perfectly
+optimized drive signal and exactly aligned optics.
+A large caveat is that the mirror positions in this sys-
+tem were designed around larger NA fiber optics for the
+first mems version. As a result, the mirror position (la ∼
+84mm) is substantially shorter than the maximum dis-
+tance the mirror could be positioned. Using equation 6,
+we find that for the geometry implemented here, we have
+tpulse ≳4.0µs
+p
+1 + (0.31λ · 106)2
+(9)
+Thus, even without re-optimization, our existing scanner
+should be able to produce ∼4µs-scale pulse widths.
+Note that equation 9 sets the minimum obtainable
+pulse width for the current set-up, but pulses can be
+tuned above this value to arbitrarily slow pulse widths
+and long duty cycles by simply adjusting the harmonic
+drive frequency of the MEMS mirror.
+For the case of
+the square drive, we are thus testing the highest achiev-
+able mirror drive frequency while retaining the filtering
+needed to produce stable MEMs control. While we ex-
+pect we could achieve results close to this limiting value
+by removing hardware filtering, we would risk mirror
+damage, and opted to keep these limits in place for this
+test.
+To measure the pulse chopping time using the output
+plate, the y-position of the mirror was set to the centroid
+of the beam spot and the x-position was set to oscillate
+with time, driven by the filtered square wave as discussed
+above. The APD output signals were used as a scope
+trigger.
+After signal averaging, the data were fit to a
+Gaussian profile to extract the 4σ pulse width for each
+wavelength. Example pulse-width measurements made
+at both 300 K and 10 mK for 660 nm photons are shown
+in Figure 5. Results from similar measurements made at
+10 mK for different λ are summarized in Table I. We note
+that the warm measurements are 50–100% higher than
+our predicted minimum value of 4µs, while the cold values
+are less than 15% higher than our predicted limit, with a
+wavelength-dependent trend consistent with an increase
+due to the astigmatism effects discussed earlier. We ex-
+plore the reason for this difference in the next section, as
+it requires comparing the pulse width to measured spot
+size to separate focusing and temporal effects.
+Due to limitations in performance of the APD and
+fibers in the IR regime, as well as the measured (in situ)
+∼7x reduction in fiber optic light transmission with the
+scanner operating at cryogenic temperatures compared
+to 300 K, cold pulses were indistinguishable from noise
+for 940-nm and 970 nm sources. We note, however, that
+although the IR pulses were not detected by the APD
+in our tests, a cryogenic detector coupled to the scanner
+unit for detector characterization would be sensitive to
+these smaller energy deposits. We discuss our extensive
+fiber optic testing performed to cross-check these results
+in Appendix A. We find that this reduction is not due
+to any property of the reflective optics, but a reduction
+in transmission in the Thorlabs fibers due to jacket com-
+pression when cold. The 100µm fiber shows substantially
+worse temperature dependence and is the leading cause of
+increased attenuation when cold. We anticipate that just
+replacing the thorlabs fiber with our standard Accuglass
+fibers would yield a 20x higher SNR than this measure-
+ment based on the tests discussed in the appendix.

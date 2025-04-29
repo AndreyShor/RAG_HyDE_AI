@@ -1,0 +1,38 @@
+uses the initialized reference potential as input, providing a simulated scattering phase shifts that can be
+compared with the expected data obtained from experimental cross-sections
+• Testing and validation: The optimization procedure continues until the mean absolute percentage error
+(MAPE) does not change anymore, indicating that the method has successfully identified the ideal model
+parameters and converges to an optimal solution. Once the optimization is complete, the inverse potential
+is successfully constructed with the best optimized parameters. To ensure reproducibility, the process can
+be repeated using different initial seeds. Exploring different parameter ranges is crucial to avoid missing a
+solution with a lower MAPE and to ensure the accuracy of the results.
+4
+Results
+4.1
+Database
+The scattering phase shift (SPS) data for various ℓ−channels has been taken from schmelzbach et al.[33] (Ed =
+3.0 to 5.8 MeV ) and Jenny et al.[34] (Ed = 6 to 14 MeV ). A significant portion of the experimental analysis
+relies on analyzing power, which is subject to substantial errors arising from fluctuating systematic uncertainties,
+including background subtraction uncertainty, beam position stability, and spin-angle uncertainty. To accurately
+model the resonance observed in low-energy experimental data for deuteron-alpha elastic scattering (below 3 MeV
+CM energy), D-wave effects must be included in the theoretical cross-section calculations. This necessitates the
+analysis of low-energy D-wave data. The two-body α −d system can have the following states, which correspond
+to the orbital angular momentum ℓ= 0, 1 & 2, based on the spin-zero of alpha and spin-one of the deutron and
+the ℓ−wave components of the α −d system: 3S1, 3P0, 3P1, 3P2, 3D1, 3D2, and 3D3. For J = 1, α −d scattering
+allows for the coupling of partial waves with angular momentum difference of two units.
+4.2
+Optimization routine to obtain Inverse Potential
+The model parameters of the reference function must be optimized in order to determine the interaction potential
+for the ℓ−channels of α−d. The reference potential consists of three Morse functions, with a total of 14 parameters
+to optimize, including the boundary points X1 and X2. Using the four boundary conditions given in Eqn. 3, four
+of these parameters can be expressed in terms of the other parameters. As a result, we were left with only ten
+parameters to optimize. Thus, a 10-dimensional parameter space is formed, resulting in a vast range of potential
+curves. We optimized the parameters α0, α1, α2, r0, r1, r2, V2, D0. Meanwhile, the parameters V1, V2, D1, D2
+are determined by enforcing the boundary conditions.
+The optimization process is carried out using a genetic
+algorithm, which evolves solutions through natural selection, incorporating crossover and mutation to explore the
+parameter space effectively.
+The optimization routine relies heavily on the selection of bounds. The final integration distance, or rf, has
+been set to a high value so that potential eventually becomes zero, and the boundaries are initially selected to span
+a broad range.
+9

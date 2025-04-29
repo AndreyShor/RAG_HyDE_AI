@@ -1,0 +1,74 @@
+44
+Tools and methodology
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+F2(x, Q2)
+x = 0.0001
+0.3
+0.4
+0.5
+0.6
+0.7
+F2(x, Q2)
+x = 0.01
+NNLO Predictions
+FFN0
+FFNS
+101
+102
+Q2 [GeV2]
+0.75
+1.00
+RATIO
+101
+102
+Q2 [GeV2]
+0.9
+1.0
+RATIO
+0.0
+0.2
+0.4
+0.6
+0.8
+F (c)
+2 (x, Q2)
+x = 0.0001
+0.00
+0.05
+0.10
+F (c)
+2 (x, Q2)
+x = 0.01
+NNLO Predictions
+FFN0
+FFNS
+101
+102
+Q2 [GeV2]
+−2.5
+0.0
+RATIO
+101
+102
+Q2 [GeV2]
+−5
+0
+RATIO
+Figure 2.6: Same as Fig. 2.5 but now comparing FFNS3 and FFNS3(0).
+2.1.3. The Pineline framework
+As mentioned above, the determination of PDFs from high energy experimental data, requires FK-
+tables i.e. a theory map given by Eq. (2.2), made of two main components: a PDF independent
+interpolation grid and an evolution operator. The latter are computed with EKO, while the
+former have to be produced by different generators in order to cover the full variety of available
+processes. For this reason, we have constructed a unique infrastructure, Pineline with the
+following targets: standardize the input/output format and make the results reproducible.
+The framework adopts PineAPPL as back-end and bridges the output of different generators to
+an FK-table. In particular, PineAPPL exposes APIs to different languages: it is natively written
+in Rust, but has an API to C/C++, that can be consumed also by a FORTRAN application,
+and a Python API. Different grid providers can thus interface directly to PineAPPL when filling
+grids. ThePineline architecture is visible in Fig. 2.7. Starting with the experimental data,

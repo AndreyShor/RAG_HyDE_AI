@@ -1,0 +1,142 @@
+44
+F. CARAVENNA, R. SUN, AND N. ZYGOURAS
+For such values of x, y we have |x ´ y| ď 2
+b
+W `
+N , so the logarithm in the LHS of (2.23) is
+bounded from below by
+log
+´
+1 `
+LN
+1`4 W `
+N
+¯
+ě log
+LN
+5 W `
+N “ log LN
+WN ´ tN ´ log 5 “ log LN
+WN ´ op|ϑN|q ,
+(A.9)
+where the first inequality holds for large N because W `
+N ě WN Ñ 8, see (2.19). This yields
+the RHS of (2.23).
+To get an upper bound, we fix ξN Ñ 8 with ξN “ op|ϑN|q and we define the scale
+VN :“ W ´
+N e´ξN “ WN e´tN´ξN which is smaller than W ´
+N . For |x ´ y| ě ?VN, we can
+bound from above the logarithm in (2.23) by logp1 `
+LN
+1`VN q ď logp1 ` LN
+VN q. In case LN
+VN ď 1
+this is at most log 2 “ op|ϑN|q, while in case LN
+VN ą 1 we obtain the upper bound
+log
+´
+2 LN
+VN
+¯
+“ log LN
+WN ` tN ` ξN ` log 2 “ log LN
+WN ` op|ϑN|q ,
+which agrees with the RHS of (2.23). We are left with showing that the range |x´y| ă ?VN
+gives a negligible contribution of order op|ϑN|q to the sum in (2.23).
+For fixed y, we apply the second relation in (A.8) to estimate the sum over x in (2.23):
+ÿ
+xPBpy,?
+VNq
+φNpxq log
+´
+1 `
+LN
+1`|x´y|2
+¯
+ď
+1
+W ´
+N
+ÿ
+xPBpy,?
+VNq
+log
+´
+1 `
+LN
+1`|x´y|2
+¯
+ď C VN
+W ´
+N
+ż
+|z|ď1
+log
+´
+1 ` LN
+VN
+1
+|z|2
+¯
+dz
+for some C ă 8, by Riemann sum approximation. Since
+VN
+W ´
+N “ e´ξN “ op1q by definition of
+VN, it remains to show that the integral is Op|ϑN|q. If LN
+VN ď 1 then the integral is at most
+ż
+|z|ď1
+log
+´
+1 `
+1
+|z|2
+¯
+dz “ Op1q “ op|ϑN|q ,
+while if LN
+VN ą 1 then, recalling that VN “ WN e´op|ϑN|q, we can bound the integral by
+ż
+|z|ď1
+log
+´
+LN
+VN
+2
+|z|2
+¯
+dz “ log LN
+VN ` Op1q “ log LN
+WN ` op|ϑN|q “ Op|ϑN|q ,
+where the last equality holds by (2.18) and (2.19). The proof is completed.
+□
+Appendix B. Auxiliary proofs for high moments bounds
+In this appendix, we collect the proofs of some results from Section 5.
+B.1. Proof of Lemma 5.1. We can rewrite Drφs, see (1.28), as follows:
+Drfs “ 1
+2
+ÿ
+z,wPZ2
+|z ´ w|2 fpzq fpwq .
+(B.1)
+To prove (5.4), we first estimate
+pą :“
+ÿ
+|z´z0|ąs?
+L{2
+φpzq ď e´
+?
+2 ˆt s ÿ
+zPZ2
+φpzq e2 ˆt
+|z´z0|
+?
+L
+ď c1 e´
+?
+2 ˆt s ď 1
+4
+for s :“ logp4c1q
+?
+2 ˆt
+,

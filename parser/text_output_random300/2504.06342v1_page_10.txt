@@ -1,0 +1,99 @@
+10
+104
+106
+108
+10
+21
+10
+25
+0
+10
+25
+10
+21
+104
+106
+108
+Temperature [K]
+[erg cm3 s 1]
+-
+Figure 1. A representative subset of the cooling func-
+tions adopted in MACER3D, illustrating their depen-
+dence on gas number density (left) and AGN radiation
+flux (right). In the left panel, colors represent different
+number densities 𝑛H: 10−8 cm−3 (blue), 10−5 cm−3 (or-
+ange), 10−2 cm−3 (green), 10 cm−3 (red), and 104 cm−3
+(purple).
+Solid and dashed lines correspond to red-
+shifts of 𝑧= 0 and 𝑧= 2, respectively, with zero AGN
+flux and solar metallicity.
+In the right panel, colors
+represent varying AGN radiation flux: 0 erg s−1 cm−2
+(blue), 10−5 erg s−1 cm−2 (orange), 10−2 erg s−1 cm−2
+(green), 10 erg s−1 cm−2 (red), 104 erg s−1 cm−2 (pur-
+ple), and 107 erg s−1 cm−2 (brown). Solid and dashed
+lines correspond to metallicities of 0.1 𝑍⊙and 𝑍⊙, with
+a fixed number density of 1 cm−3 and redshift of 𝑧= 0.
+Figure 1 illustrates a representative subset of the
+cooling functions, in particular, showcasing their
+dependence on gas density and AGN radiation flux.
+The second enhancement in MACER3D is the
+implementation of the Townsend exact cooling
+integration scheme (Townsend 2009), which of-
+fers superior robustness and precision compared
+to conventional explicit or implicit time integration
+schemes. This approach reformulates the energy
+equation into an operator-split form:
+∫𝑇𝑛+1
+𝑇𝑛
+d𝑇
+Λ(𝑇) = −(𝛾−1)𝜇𝜌
+𝑘B𝜇𝑒𝜇𝑖𝑚p
+Δ𝑡,
+(26)
+where 𝛾denotes the adiabatic index, 𝜇the mean
+molecular weight, 𝜇𝑖(𝜇𝑒) the mean molecular
+weight per ion (electron), and 𝑚p the proton mass,
+with 𝑇𝑛and 𝑇𝑛+1 representing the temperatures at
+steps 𝑛and 𝑛+ 1, respectively. The mean molec-
+ular weight is updated at each time step based on
+local metallicity, with the full ionization approxi-
+mation since individual species are not traced in our
+simulations given both the computational cost and
+complexity, and the star formation is consequently
+treated as a subgrid model as described in §2.4. For
+piecewise power-law cooling functions Λ(𝑇), this
+operator-split equation permits analytical solutions
+through integration from a reference temperature
+𝑇ref to the current temperature 𝑇𝑛, enabling exact
+calculation of the new temperature 𝑇𝑛+1 for arbi-
+trary time steps. This scheme facilitates more ac-
+curate and efficient temperature evolution by elim-
+inating constraints from the Courant condition due
+to short cooling times, thereby mitigating overcool-
+ing issues. We also note that no time step limit
+constrained by the cooling time is imposed in our
+work, which is allowed by the Townsend scheme,
+however, the time step limit from the Courant con-
+dition in our simulations is typically as short as hun-
+dreds of years due to the finest resolution, which is
+sufficiently small compared to the cooling time.
+We further extend the Townsend cooling scheme
+to incorporate heating processes, including pho-
+toionization and Compton heating from AGN and
+UVB radiation. This extension introduces equilib-
+rium points in the cooling curves where heating
+balances cooling (indicated by net cooling curves
+crossing zero on the y-axis in Fig. 1), which require
+special consideration in the integration scheme.1
+The modified scheme ensures accurate and simul-
+taneous treatment of both cooling and heating pro-
+1 The dimensionless temporal evolution function in Eq. (24) of
+Townsend (2009), which describes temperature evolution by
+integrating the cooling function from an arbitrary reference
+temperature, approaches infinity at the equilibrium points by
+definition. However, this singularity is purely mathematical,
+and is eliminated by choosing two different reference tem-
+peratures and performing integrations on each side of the
+equilibrium point along the heating and cooling branches,
+respectively.

@@ -1,0 +1,172 @@
+assumption that we make on the devices is that they satisfy the no-signaling constraints in Eq. (7). This
+could be enforced by performing each measurements by Alice and Bob as space-like separated events in
+def. 6. Clearly, this approach, though theoretically possible, would be extremely costly in practice. A
+cheaper possibility—actually the one employed by all existing experiments—is that Alice and Bob each
+use one single device repeatedly for the different measurements. The constraints (7) then mean that there
+should be no signaling between the individual uses of the devices. This would be the case, for instance, if
+the devices had no memory. While such a no-memory assumption may be hard to guarantee in practice,
+it is still considerably weaker than the assumption that the devices can be modeled completely, which
+is necessary in standard (non DI) cryptography. At the end of the protocol ΠR Alice and Bob generate
+the keys kA, kB ∈{0, 1}ℓ(see box 1 sec. 1.3.1) and all the relevant information is characterized by a
+distribution pr
+kA,kB,T,E|Z where T = {ιi}i is a transcript of the communication, containing all messages
+{ιi}i exchanged between Alice and Bob through the authenticated channel (note that T is accessible to
+Eve). An ideal QKD protocol produces the distribution
+The stronger notion of security, universal composable security [206] warrantees that the composed
+scheme that uses QKD is secure as if an ideal secret key was used instead
+X
+KA,KB,t
+max
+z
+X
+e
+|preal
+KAKBte|z −pideal
+KAKBte|z| = O(1/N),
+pideal
+KAKBte|z =
+1
+2Ns δkA,kBpreal
+te|z
+(35)
+with KA, KB the secret string taking values on {0, 1}Ns, T = {(ai, bi, xi, yi), hash}i∈Ne the tapescript
+of communication containing all messages exchanged between Alice and Bob through the authenticated
+channel also accessible to Eve, so that Ne is the set of runs of uncorrelated (x, y) and hash are the
+collection of post-processing functions for error correction and privacy amplification. Given that, a QKD
+protocol can be seen as a transformation pA,B,E|X,Y,Z 7→ΠKA,KB,BI,T,E|Z.
+The historical approach started with the E91 protocol and follows with the adversary constrained to
+perform individual or collective attacks, or totally unrestricted [25]. Table 1 provides an overview of the
+major DI-QKD protocols and their security scenarios.
+protocol
+attack
+security
+memory
+pp
+robust
+η∗
+E91 [50]
+ind
+QT
+no
+no
+no
+1
+BHK05 [207]
+unr
+post-QT
+no
+no
+no
+1
+CHSH [30, 56]
+ind
+post-QT
+no
+1w,2w
+yes
+1
+CGLMP [56]
+ind
+CHAIN [57]
+ind
+post-QT
+1w
+CHAIN-M [57, 206]
+ind
+post-QT
+1w
+CHSH-M [61, 60]
+unr
+post-QT
+1w
+yes
+1
+CHSHc [54, 57]
+col
+QT
+no
+1w
+yes
+0.924
+CHSHc [68]
+col
+QT
+yes
+2w
+yes
+0.891
+CHSHc (T) [208]
+col
+QT
+no
+1w
+yes
+0.832
+CHSH2c [69]
+col
+QT
+no
+1w
+yes
+CHSHG [209, 210]
+col
+QT
+1w
+yes
+0.826
+CHAIN (T) [211]
+col
+QT
+no
+1w
+yes
+0.685
+CHSHℓ[63]
+col
+QT
+no
+1w
+yes
+-
+MPG-DIQKD [71]
+col
+QT
+no
+1w
+yes
+-
+Table 1: ind=individual, unr=unrestricted, col=collective, pp=post-processing, η∗= critical efficiency, QT = quantum
+theory, post-QT = post-quantum theory, T is the preprocessing map.
+3.2. E91 Protocol – against classical attacks
+E91 is the first application of BI in quantum cryptography [50]. Let |ϕ+⟩=
+1
+√
+2(|00⟩+ |11⟩) shared
+between Alice and Bob, who randomly choose one of three dichotomic measurements, represented by
+projectors M±|x = 1
+2(1 ± UxσzU †
+x), with Ux = e−i θx
+2 σx and x : {0, 1, 2} 7→θx. Let Alice choose θx ∈
+{0, π
+2 , π
+4 } and for Bob θy ∈{ π
+4 , 3π
+4 , π
+2 }. Disclosing their measurement orientations along the runs, they
+evaluate the CHSH value (11) for x, y = 0, 1. If the measured systems are unperturbed, the achieve
+S = 2
+√
+2. But if Eve intervenes, she introduces reality elements, modifying S such that:
+S(p) =
+1
+X
+x,y=0
+(−1)xy
+Z
+ρ(na, nb)(ax · na)(by · nb) dnadnb ∈[−
+√
+2,
+√
+2] =⇒p ∈L.
+(36)
+19

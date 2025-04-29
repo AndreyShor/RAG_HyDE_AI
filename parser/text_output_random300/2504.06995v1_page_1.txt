@@ -1,0 +1,91 @@
+Broadband Optical Modulation and Control at Millikelvin Temperatures
+N. Tabassum,1, 2 T. Aralis,1, 2, ∗J. Anczarski,1, 2 D. Baxter,3 B. Cabrera,1, 2 R. Chapla,4 N. Entin,1, 2
+L. Hsu,3 H.W. Magoon,1, 2 A. Nunez,1, 2 J.L. Ryan,1, 2 M. Salatino,2 A. Simchony,1, 2 Z.J. Smith,1, 2
+S. Stevens,1, 2 G. Perez,1, 2 H. Stueber,1, 2 B.A. Young,4 N.A. Kurinsky,1, 2 and K. Stifter1, 2, †
+1SLAC National Accelerator Laboratory, Menlo Park, California 94025, USA
+2Kavli Institute for Particle Astrophysics and Cosmology, Stanford University, Stanford, CA 94035, USA
+3Fermi National Accelerator Laboratory, Center for Particle Astrophysics, Batavia, IL 60510 USA
+4Santa Clara University, Santa Clara, CA 95053, USA
+(Dated: April 10, 2025)
+A universal experimental challenge when studying radiation effects on cryogenic devices is to
+precisely and accurately characterize the position-dependent device response very near the energy
+detection threshold. We have developed a compact cryogenic optical beam steering system that
+can be used to generate O(µs) pulses of small numbers of photons over the energy range of 1.2
+- 4.5eV at room temperature, and deliver those photons via fiber optic to any specified location
+on the surface of a detector operating at cryogenic temperatures. This new system will allow for
+robust calibration of any photon-sensitive detector, including supercondcting devices. The system
+can be used efficiently to explore the physics of target materials, quantify the position sensitivity of
+different sensor designs, measure phonon transport, and study the effects of quasiparticle poisoning
+on detector operation. We describe the design of this pulsed calibration method and present first
+results obtained with a second-generation system operated at room temperature and sub-Kelvin
+temperatures.
+I.
+INTRODUCTION
+The radiation response of cryogenic devices is an ex-
+perimentally interesting question for a number of fields.
+For telescope applications, it is usually suitable to test
+sensors in a built environment with a fake focal plane.
+For the newest generation of far-IR telescopes, however,
+room-temperature radiation precludes the use of sources
+above 4 K, and 4 K backgrounds represent a critical back-
+ground themselves (see e.g. Refs [1, 2]). For other sensi-
+tive applications, such as operating high-coherence qubits
+or rare-event detectors, calibrating spatial response of de-
+vices comes into conflict with the requirement to optically
+isolate these devices from the outside world. External ra-
+diation sources can be used to provide controlled radia-
+tive doses, but these events are often both too energetic
+and randomly positioned to help inform detailed mod-
+els of charge and energy transport (see e.g. Refs [3, 4]).
+Optical fibers can be used to deliver more precisely tar-
+geted photons, but without additional components to
+move the optical beam, only limited spatial information
+can be gleaned from a given experimental setup (see e.g.
+Refs[5–7]).
+Some limited control over X-ray and opti-
+cal sources can be achieved with commerically available
+peizo-electric stages, but these lead to substantial heat-
+ing during each movement (see e.g. Ref [8]), limiting scan
+fidelity and consistency between measurements.
+Some of the authors of this paper have historically
+been involved in developing this MEMs mirror-based
+technique for cryogenic optical control, first at 0.5 K[9–
+∗taralis@slac.stanford.edu
+† kstifter@slac.stanford.edu
+13] in a 4 K photon bath, and more recently isother-
+mally at 10 mK[14]. All of these systems notably used
+custom-built refractive fiber focusers, with the majority
+of measurements taking place at a single wavelength, and
+used monochromatic laser or LED sources. For the final
+measurement with the 0.5 K system, the photo-electric
+cross-section of Si was measured as a function of wave-
+length, which required swapping in a new focuser for each
+measurement[13]. This data was nonetheless very useful,
+and led to a desire for an intrinsically broad-band system
+that could provide monochromatic operation over a wide
+wavelength range by simply swapping out LEDs at room
+temperature.
+In discussing the need for this broad-band system, the
+general architecture of a multiple-mirror system was de-
+veloped, in which a first mirror could generate temporal
+pulses from a filtered broad-band source, and a second
+mirror could steer those pulses to create a spatially and
+temporally resolved map of device response.
+In this paper, we document the first development steps
+towards this concept, in which we have developed a
+broad-band scanner/optical chopper and measured its
+performance across about a decade in wavelength, from
+280 nm to 970 nm.
+First, in Section II, we describe
+the design modifications required to move from refrac-
+tive optics to broad-band reflective optics, based around
+a small multi-mode input optical fiber. We summarize
+the expected optical performance when using this device
+to couple light back into a larger multi-mode output fiber.
+In Section III, we report on the optical performance of
+the focusing system, both on its own as well as when
+installed in the scanner and re-coupled into an output
+fiber, the latter case including tests at 300 K and 10 mK.
+Finally, we present 300 K and 10 mK measurements of
+the system used as an optical chopper, demonstrating a
+arXiv:2504.06995v1  [physics.ins-det]  9 Apr 2025

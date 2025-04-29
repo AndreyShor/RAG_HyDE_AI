@@ -1,0 +1,99 @@
+PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY A, VOLUME 383, ISSUE 2289, 2025, DOI:10.1098/RSTA.2024.0146
+9
+(a)
+(b)
+(d)
+1
+7
+14
+Front View
+Z ( x10 ft)
+Y ( x10 ft)
+X ( x10 ft)
+Front View
+Front View
+Z ( x10 ft)
+Y ( x10 ft)
+X ( x10 ft)
+Z ( x10 ft)
+Y ( x10 ft)
+X ( x10 ft)
+Front View
+*
+: Agent Start
+: Agent ﬁnal state
+Coverage Plans:
+: Agent 1
+: Agent 3
+: Agent 2
+: Agent 4
+: Agent 5
+: Points to be covered
+: Covered by Agent 1
+: Covered by Agent 2
+: Covered by Agent 3
+: Covered by Agent 4
+: Covered by Agent 5
+(e)
+Z ( x10 ft)
+Y ( x10 ft)
+X ( x10 ft)
+Back View
+Z ( x10 ft)
+Y ( x10 ft)
+X ( x10 ft)
+Back View
+Z ( x10 ft)
+Y ( x10 ft)
+X ( x10 ft)
+Front View
+(c)
+Time 
+steps
+X ( x10 ft)
+Y ( x10 ft)
+Z ( x10 ft)
+Back View
+*
+*
+*
+*
+**
+Fig. 3. Coverage of the Marina Bay Sands Hotel in Singapore with 5 collaborative UAV agents. (a) Points of interest for coverage shown as ◦, (b)(c) Final
+coverage trajectories, (d) Allocation of points to agents, and (e) Timing of point coverage during the mission.
+of uncovered points while minimizing the duplication of work. Finally, Fig. 2(c) offers a top-down view of how the points of
+interest have been allocated among the agents for coverage, and Fig. 2(d) indicates the point in time each point was covered.
+Next, Fig. 3 shows the proposed approach applied for the task of 3D structural inspection of a real-world building i.e., to a
+3D reconstruction of the Marina Bay Sands (MBS) hotel in Singapore. The MBS, consisting of three towers as seen in Fig.
+3(a), stands approximately 200m (656 ft) tall. These towers are linked by a 340m (1120 ft) long skybridge as depicted. In this
+experiment we randomly selected 35 points (marked as white ◦) from the triangulated surface mesh of the building as illustrated
+in Fig. 3(a). Five agents are positioned at the coordinates (125, 10, 5), (115, 10, 5), (20, 20, 5), (80, 80, 5), and (160, 60, 5) for
+agents 1 (green), 2 (pink), 3 (blue), 4 (purple), and 5 (orange) respectively. Maintaining the previously discussed setup, Fig.
+3(b)(c) display the final executed coverage plans by the five agents achieving full coverage of all points of interest within 15
+time-steps. The proposed approach generated collaborative trajectories for optimized coverage with the allocation of points to
+agents clearly shown in Fig. 3(d) and the timing of point coverage during the mission shown in Fig. 3(e). We should note here
+that, in order to handle obstacle avoidance in such complex, non-convex structures, the object of interest is first decomposed
+into several convex sub-regions. This decomposition allows us to utilize the constraints shown in Eq. (5j) in each of those
+sub-regions to avoid collisions.
+Our next goal is to evaluate the proposed approach’s performance concerning computational complexity as shown in Fig.
+4(a)(b), and performance i.e., mission completion time, as depicted in Fig. 4(c), comparing it with other methods. For this
+purpose, we have conducted a Monte Carlo (MC) simulation randomly initializing the states of N agents, where N ∈{1, 3, 5, 7},
+within the environment E as per the setup described in Sec. VV-A for covering 35 points of interest on the object depicted
+in Fig. 2. The first set of experiments measures the average runtime required to solve one iteration of Problem (P1) and
+generate a solution, varying the planning horizon’s length and the number of agents, and then comparing these findings with
+the centralized approach from [16]. It is important to mention that the computational complexity of a mixed integer program
+(MIP), such as Problem (P1), is generally influenced by the number of binary variables. This is because the primary optimization
+method for solving MIPs, a branch-and-bound variant [21], [22], constructs a search tree that enumerates potential solutions
+systematically. The size of this tree which directly affects computational complexity is determined by the number of integer
+and binary variables. Therefore, the primary factor affecting computational complexity, as illustrated in Problem (P1), is the
+length of the planning horizon. Conversely, the centralized approach mentioned in [16] also depends on the number of agents
+for generating collaborative coverage plans. Figure 4(a) presents the average runtime over 50 MC trials for generating coverage
+plans with our distributed approach for a planning horizon of T = 3 time-steps (blue bar) compared to the centralized approach
+(gray hatched bar) for scenarios with 1, 3, 5 and 7 agents. As evident from Fig. 4(a), while both approaches are comparable
+in runtime for the single agent scenario, the centralized controller’s computational complexity increases exponentially with the
+number of agents indicating poor scalability. Conversely, the proposed distributed approach’s performance is not influenced
+by the number of agents, maintaining its ability to generate non-myopic collaborative plans efficiently. Similar findings are
+depicted in Fig. 4(b) for a planning horizon of T = 6, where the proposed method’s performance is influenced only by the
+planning horizon’s length, not by the number of agents.
+The subsequent experiment assesses the performance of the proposed approach in terms of mission completion time, i.e.,
+the duration required for agents to cover all points of interest. This analysis involved 50 MC trials with N = 5 agents

@@ -1,0 +1,164 @@
+40
+20
+0
+20
+40
+60
+80
+100
+Energy
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+Probability
+Min QUBO Energy
+41.5
+41.0
+40.5
+40.0
+39.5
+39.0
+38.5
+Energy
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+Probability
+Min QUBO Energy
+0
+50
+100
+150
+200
+250
+300
+Iterations
+50
+0
+50
+100
+150
+200
+250
+Objective Value
+Min QUBO Energy
+Figure 15: 32 variable solved with VQE on the QPU. λ = 3 shots = 10,000, tol = 1, RealAmplitudes ansatz,
+COBYLA, CVaR with α = 0.4, maxiters = 300.
+60
+40
+20
+0
+20
+Energy
+0.00
+0.01
+0.02
+0.03
+0.04
+0.05
+Probability
+Min QUBO Energy
+68.5
+68.0
+67.5
+67.0
+66.5
+66.0
+65.5
+Energy
+0.0
+0.2
+0.4
+0.6
+0.8
+Probability
+Min QUBO Energy
+0
+100
+200
+300
+400
+Iterations
+0
+200
+400
+600
+800
+Objective Value
+Min QUBO Energy
+Figure 16: 50 variable solved with VQE on the QPU. λ = 2, shots = 10,000, tol = 1, RealAmplitudes ansatz,
+COBYLA, CVaR with α = 0.4, maxiters = 450.
+100
+80
+60
+40
+20
+0
+20
+Energy
+0.000
+0.005
+0.010
+0.015
+0.020
+Probability
+Min QUBO Energy
+106
+104
+102
+100
+98
+96
+Energy
+0.04
+0.02
+0.00
+0.02
+0.04
+Probability
+Min QUBO Energy
+0
+200
+400
+600
+800
+1000
+1200
+Iterations
+0
+200
+400
+600
+Objective Value
+Min QUBO Energy
+Figure 17: 72 variable solved with VQE on the QPU. λ = 1, shots = 10,000, tol = 1, RealAmplitudes ansatz,
+COBYLA, CVaR with α = 0.4, maxiters = 1300.
+E
+Technical Information and Additional Data for Quantum Annealing
+101
+102
+Number of Variables
+100
+101
+102
+User Runtime (s)
+Simulated Annealing
+QA - Minor Embedding
+QA - Clique Embedding
+Figure 18: Simulated and quantum annealing user runtime when solving the three vacancy QUBO problem at different
+sizes up to 338 variables. The same data as in Figure 5 with logarithmic axis scales. The results were repeated 10
+times, with average values used, and the standard deviation included as error bars. The hyperparameters used for
+each method and each problem size are detailed in Appendices C and E.
+To run a QUBO problem on the quantum annealer, each variable must be encoded to the hardware.
+Given the limited connectivity of the hardware, multiple physical qubits need to be mapped to a single
+variable. The mapping procedures used were minor embedding, D-Wave’s default mapping scheme,
+and clique embedding, intended for fully connected problem graphs. The minor embedding mapping to
+the D-Wave Advantage_system 6.4 QPU is shown in Figure 10b. The time taken for this embedding
+30

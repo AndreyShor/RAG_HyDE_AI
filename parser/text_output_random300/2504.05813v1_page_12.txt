@@ -1,0 +1,84 @@
+called Chebyshev collocation points and correspond to T ′
+k(xk) = 0. The solution is
+fNcheb(x) =
+Ncheb
+X
+k=0
+Lk(x)f(xk),
+(4.2)
+Lk(x) =
+(−1)k+1(1 −x2)T ′
+Ncheb(x)
+¯ckN2
+cheb(x −xk)
+,
+(4.3)
+where ¯ck = 2 if k = 0, N and ¯ck = 1 in other cases. The functions Lk are called Lagrange
+interpolation polynomials. With this, we can easily obtain the p derivative to be:
+f(p)
+Ncheb(xi) =
+Ncheb
+X
+k=0
+L(p)
+k (xi)fNcheb(xk).
+(4.4)
+Defining the Chebyshev differentiation matrix D(p) = {L(p)
+k (xi)} we have :
+D(1)
+i,j = ¯ci
+¯cj
+(−1)i+j
+(xi −xj), (i ̸= j), i, j = 1, ..., Ncheb −1,
+(4.5)
+D(1)
+i,i = −
+xi
+2(1 −x2
+i ), i = 1, ..., Ncheb −1,
+(4.6)
+D(1)
+0,0 = −D(1)
+Ncheb,Ncheb = 2N2
+cheb + 1
+6
+.
+(4.7)
+In order to improve the round-off errors (see [72] for details), we use the following identity
+to compute the diagonal terms of the matrix D:
+D(1)
+i,i = −
+Ncheb
+X
+j=0,j̸=i
+D(1)
+i,j .
+(4.8)
+Then, to obtain the n-derivatives with the Chebyshev differentiation matrix, we just need to
+multiply the Chebyshev matrix itself n times:
+D(n) =
+
+D(1)n
+.
+(4.9)
+The stability of the numerical evolution is constrained by the CFL condition [73], which
+depends on Ncheb and dt. An increase in the spatial resolution will require a sufficiently small
+time step dt to avoid instabilities during the evolution. For our purposes, we use, as in [17],
+a time-dependent conformal time step dt = dt0 (t/t0)α with dt0 = 10−3 in general.
+In our settings, the radial physical domain is given by Ω= [rmin, rmax], where rmin = 0
+and rmax = NHRH(t0) with NH ≈102. In order to map the spectral domain [−1, 1] to the
+physical domain, we implement the linear mapping:
+˜xk = rmax + rmin
+2
++ rmax −rmin
+2
+xk ;
+˜D =
+2
+rmax −rmin
+D.
+(4.10)
+˜D and ˜xk are the new Chebyshev matrix and grid points rescaled to our domain Ω. To
+implement a Dirichlet boundary condition at a given xk, such that f(˜x = ˜xk) = uD,bc, we just
+need to replace the value at the grid point: fNcheb(˜x = ˜xk) = uD,bc directly. In contrast, for
+– 11 –

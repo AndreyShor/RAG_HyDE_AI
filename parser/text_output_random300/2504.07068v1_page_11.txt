@@ -1,0 +1,89 @@
+11
+obtain
+lim
+ǫ→0 lim
+n→∞
+1
+nu(ρ⊗n, ǫ) ≥S(CQ)ω.
+(24)
+Also, we show u(ωCNQR, 0) = S(CQ)ω as follows
+u(ωCNQR, 0) =
+min
+Λ2:CNQ→CNQ
+Λ3:E→E′
+S(CnN nQnE′)ω
+= S(CQ)ω + S(NE′|C)
+≥S(CQ)ω,
+where the second line is by Theorem 16, namely, the environment system of a CPTP map, which preserves the state,
+acts only on the redundant system. The inequality above can be saturated by choosing Λ2 as a map which traces out
+system N and for given c outputs a pure state |ωc⟩⟨ωc|NE′ and by letting Λ3 = id. Finally, by deﬁnition
+u(ωCNQR, 0) ≥lim
+n→∞
+1
+nu((ωCNQR)⊗n, 0) ≥lim
+ǫ→0 lim
+n→∞
+1
+nu((ωCNQR)⊗n, ǫ),
+(25)
+and this completes the proof.
+■
+Proposition 12. For a fully classical input state ρAR = P
+x px|x⟩⟨x|A ⊗|x⟩⟨x|R the optimal unassisted simulation
+rate is limn→∞1
+nu(ρ⊗n, 0) = limǫ→0 limn→∞1
+nu(ρ⊗n, ǫ) = E∞
+p (B : KR)σ.
+Proof. The proof is similar to the proof of Proposition 9 as follows
+S(BnE′)τ3 ≥S(BnE′)σ +
+√
+2ǫ log(|BnE′|) + h(
+√
+2ǫ)
+≥u((|ρ⟩⟨ρ|AR)⊗n, 0) +
+√
+2ǫ log(|BnE′|) + h(
+√
+2ǫ)
+= Ep(Bn : KnRn)σ +
+√
+2ǫ log(|BnE′|) + h(
+√
+2ǫ)
+(26)
+where
+in
+the
+ﬁrst
+line
+the
+entropy
+is
+with
+respect
+to
+the
+state
+σBnE′KnRnR′n
+=
+(MGnR′n֒→E′ ⊗
+idBnKnRn)|σ⟩⟨σ|BnKnGnRnR′n, and the inequality is obtained by Uhlmann’s theorem and Fannes-Audenaert inequality.
+The diﬀerence with Proposition 9 is that the map MGnR′n֒→E′ acts on R′n as well. To obtain the second inequality
+note that R′n in the puriﬁed input state P
+xn √pxn |xn⟩An
+|xn⟩Rn
+|xn⟩R′n
+is another copy of system An, hence, the
+desired E′ system in Uhlmann’s construction can be obtained by applying a map only on An. Finally the proposition
+follows by dividing the above inequality by n and taking the limit of n →∞and ǫ →0. The ǫ-terms vanish because
+the dimension of system E′ is bounded as explained in Remark 4.
+■
+VI.
+DISCUSSION
+We consider an asymptotic i.i.d. simulation of an arbitrary channel N : A →BK, with an isometric extension
+UN : A →BKG, acting as (N ⊗idR)ρAR on a general mixed input state shared with a reference system R. An
+encoder, Alice, has access to An, and the goal is to simulate system Bn at the decoder side, Bob, and system Kn at
+her side. This general deﬁnition captures various considerations of [2] in a single model: classical, quantum, feedback,
+non-feedback. The two extreme cases of the fully classical and fully quantum models in [2] are realized by constraining
+ρAR to be either a classical state or a pure quantum state, respectively. The non-feedback and feedback models are
+realized by constraining K = ∅or K = G (the environment of an isometric extension), respectively. We also recover

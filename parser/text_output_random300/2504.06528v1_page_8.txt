@@ -1,0 +1,166 @@
+8
+0
+8
+16
+24
+32
+Width of the grid Ntx
+0
+60
+120
+180
+240
+Time (μs)
+(a)
+Unbatched
+Red-Rec 
+Batched
+Red-Rec
+0
+8
+16
+24
+32
+0
+60
+120
+180
+240
+Red-Rec
+(GPU)
+Red-Rec
+(CPU)
+Width of the grid Ntx
+Time (μs)
+(b)
+Figure 7.
+Problem solving.
+(a) Processing times for
+preparing a center-compact configuration of N 2
+tx atoms in a
+grid of Ntx ×Nty traps with Nty = Ntx/0.6 using red-rec with
+(orange triangles) and without (yellow triangles) batching.
+The unbatched red-rec implementation scales as N 3/2
+t
+∼N 3
+tx
+(yellow line), whereas the batched one includes an additional
+quadratic factor. (b) Processing time for solving the same re-
+configuration problems using the unbatched red-rec algorithm
+implemented on a CPU or a GPU.
+calculating the index. As a result, lookups are done in
+constant time regardless of the database size. The total
+runtime grows linearly with the number of waveforms,
+which equals the number of batched control operations
+multiplied by the time it takes to access and copy each
+waveform.
+Our benchmarking results indicate that the lookup
+time per waveform is 0.21 µs, corresponding to 14 µs for
+2 segments of 32 waveforms. The upload time is 252 µs
+per segment, for a total of 506 µs. Updating the sequence
+memory takes 4 µs. However, the delay time before the
+sequence memory update is in effect is non-deterministic
+due to internal data processing performed by the propri-
+etary hardware of the AWG.
+E.
+Module 5 – Waveform streaming
+Waveform streaming occurs uninterrupted until all
+waveforms have been played. The total runtime is equal
+to the number of waveforms multiplied by the duration of
+each waveform. As noted previously (see Sec. II E), wave-
+form streaming is performed concurrently with waveform
+synthesis; the waveforms are continuously uploaded to
+the data memory of the AWG, while the sequence mem-
+ory is updated to ensure smooth transitions between the
+various segments. Continuous streaming without under-
+run errors requires the upload time of each segment to
+be shorter than the stream time (see Fig. 8a, b). This
+condition is met when more than 32 waveforms are up-
+loaded per segment, reducing the probability of failure
+to less than one in every 257 reconfiguration events (see
+Fig. 8b). Underrun errors occur due to timing jitter from
+non-deterministic execution, possibly induced by the op-
+erating system. When an underrun error happens, the
+AWG switches to a failsafe sequence that plays a static
+waveform, holding all atoms in their trap.
+The worst
+outcome is the loss of all extracted atoms, resulting in a
+reduction of the probability of solving the problem, and
+thus a reduction in the operational performance.
+0 4 8 16
+32
+64
+Waveforms per segment
+0
+250
+500
+750
+1000
+Time (μs)
+0
+8 16
+32
+64
+Waveforms per segment
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Failure prob.
+(b)
+(a)
+Upload
+Stream
+Figure 8.
+Waveform streaming. (a) Measured time for
+uploading a waveform segment of various lengths to the AWG
+memory (blue disks). The upload time is less than the pre-
+dicted waveform stream time (yellow squares) for segments
+containing more than 32 waveforms per segment. (b) Prob-
+ability of encountering an underrun error as the number of
+waveforms per segment increases. The system is stable when
+the stream time is larger than the upload time. A small fail-
+ure probability remains due to unexpected timing events.
+IV.
+CONCLUSIONS
+We presented the architecture and workflow of a low-
+latency feedback system and quantified its runtime per-
+formance for solving atom reconfiguration problems on
+chains and grids.
+The associated software is publicly
+available as an open-source package, enabling cross-
+comparison across different systems and implementa-
+tions. The system is a low-cost, motherboard-based sys-
+tem that comprises a frame grabber card, a processor,
+and an arbitrary waveform generator. The system sup-
+ports the remote direct memory access (RDMA) protocol
+to reduce the transfer time between the GPU and other
+peripherals, as well as lookup tables to reduce the synthe-
+sis time of control waveforms. The system is compatible
+with parallel processing on GPUs, although its use is only
+justified when solving large reconfiguration problems.
+The system realizes a simple five-step workflow that ac-
+quires and processes images from a camera, solves combi-
+natorial optimization problems on a processor, and syn-
+thesizes and stream control waveforms to actuate a con-
+figuration of atoms. The system achieves high runtime ef-
+ficiency by leveraging highly optimized implementations
+of reconfiguration algorithms [12], concurrent processes,
+and look-up tables.
+Our runtime benchmarking results show that the la-
+tency is limited by the image acquisition and waveform
+streaming modules. The image acquisition time can be
+reduced by cropping the region of interest, binning pix-
+els, increasing vertical shift speed and readout rate, albeit
+at cost of a potential decrease in discrimination fidelity.
+The frame transfer and readout time may be reduced by
+implementing advanced pixel-shifting algorithms, or us-
+ing a different camera, either an EMCCD camera with a
+smaller sensor or having multiple analog-to-digital con-
+verters. Another solution is using different sensing tech-
+nologies, such as a CMOS camera operating in global
+shutter mode or SPAD arrays, which allows measuring
+pixels in parallel. The streaming time is ultimately lim-
+ited by the efficiency of the reconfiguration algorithms,

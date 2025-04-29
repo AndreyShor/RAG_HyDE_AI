@@ -1,0 +1,126 @@
+To train the confidence head, we use the force errors produced by the model in an online fashion
+during model training. As such, the error distribution is dynamic, with error magnitudes
+decreasing as training progresses. In order to stabilize training on this shifting distribution,
+we train the confidence head using force predictions with a maximum error of 0.3 Å, so as to
+provide a more calibrated confidence measure at distances which are more representative of
+a converged model’s force predictions. Additionally, we use detached node representations
+from our model, meaning only confidence head parameters are affected by gradients from the
+confidence head loss. Figure 4 shows that the intrinsic predicted confidence bin correlates well
+with force MAE, indicating that it may be useful for practitioners involved in active learning,
+data selection and other computational filtering workflows.
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+34
+36
+38
+Predicted Confidence Bin
+0.00
+0.25
+0.50
+0.75
+1.00
+1.25
+1.50
+1.75
+2.00
+Force MAE (eV/Å) per atom
+MP Traj (In Distribution)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+Predicted Confidence Bin
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+Small Molecules (OOD, small organic)
+0
+1
+2
+3
+4
+5
+6
+7
+8
+Predicted Confidence Bin
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+IZA (OOD, large inorganic)
+Figure 4: Binned confidence predictions from Orb-v3’s confidence head on on a random sample of
+systems from 3 datasets. MP Traj systems are sampled from the validation set; Small Molecules are
+systems randomly sampled from optimization trajectories of 162 commmon organic molecules from [3]
+(the g2 subset, made available in ASE), and IZA are 233 relaxed zeolite structures, all optimized with
+VASP at the PBE level of theory. Even for out of distribution datasets, confidence bin predictions correlate
+well with Force MAE at the atom level.
+Conclusion
+We have presented the Orb-v3 family of interatomic potentials, which redefine the performance-
+speed-memory Pareto frontier for universal MLIPs. Our most significant achievement is the
+construction of extremely lightweight potentials that can model a variety of physical properties
+with an accuracy that matches or exceeds expensive, physically constrained models such as those
+in the MACE or SevenNet family [21, 29]. In particular, our orb-v3-direct-*-omat models
+demonstrate how direct-force prediction reconciles accuracy and speed on established phonon
+prediction benchmarks while emphatically disproving the paradigm that conservatism and
+equivariance are strict prerequisites for universal MLIPs.
+Across our publicly released models, we have introduced several features we hope will be useful
+to practitioners, such as substantial improvements in speed compared to Orb-v2, increased
+equivariance, and an intrinsic confidence measure. This confidence measure is inspired by
+the pLDDT scores predicted by Alphafold [10] and we hope it has similar utility in enabling
+scientists to gain a visual insight into what the model does and does not "understand" on a
+per-atom basis. We are also excited by the potential of confidence measures to unlock new types
+of self-distillation and active learning [17].
+A promising avenue for future work is to find a way to obtain the memory and speed benefits of
+neighbor limits without sacrificing any performance. The key question in our view is: how can
+we process fewer edges without losing too much information or inducing discontinuities in the
+PES? Taken to its extreme, this question suggests that edgeless architectures may represent the
+future of ultra-efficient MLIPs, provided that they can be appropriately engineered to match the
+performance of edge-based GNNs.
+9

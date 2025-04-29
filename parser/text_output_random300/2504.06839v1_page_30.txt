@@ -1,0 +1,135 @@
+with Jk and dk defined as in the previous step, and
+αk := 1 + dk
+2dk
+∈
+
+1, 1
+dk
+
+.
+Therefore by Definitions 1.9 of gk and 1.8 of f one has again
+∥tJk∥L∞
+≤
+2∥tgk∥L∞≤2∥tf∥L∞thanks to (B.3.7) of Lemma B.5,
+∥φk∥L∞
+≤
+∥f∥L∞
+C′ min{1, |k|2} thanks to (3.1.12),
+and
+αk
+αk −1 = 1 + dk
+1 −dk ≤
+2
+1 −dk ≤
+2
+C′ min{1, |k|2},
+1
+1 −αkdk =
+2
+1 −dk ≤
+2
+C′ min{1, |k|2}.
+Substituting these estimates into (3.1.13) one gets
+∥tφk∥L∞≤2
+2∥tf∥L∞+ C
+2
+C′ min{1,|k|2}
+2
+C′ min{1,|k|2}2∥f∥L∞
+C′ min{1, |k|2}
+≤
+C′′
+min{1, |k|6},
+that is the thesis.
+3.1.1
+Proof of Theorem 1.2.
+Now that we have proved Proposition 3.1, we can use it to prove Theorem 1.2.
+Proof. Since the estimates are completely analogue to the estimates in Theorem 1.1, here we are only going to write
+the summands which µk
+t (θ, s, h) is made up of. Thanks to the evolution equation (3.1.1) and to Proposition 3.1 we
+can write
+µk
+t (θ, s, h)
+=
+e2πitk·v(θ)µk
+0(θ, s + t, h)
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)e2πi(t−t′)k·v(θ)e2πit′k·v(θ+π−2 arcsin(h′))µk
+0(θ + π −2 arcsin(h′), t′, h′)
++
+R t
+0 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′)e2πi(t−t′)k·v(θ) R t′
+0 dt′′ R 1
+−1 dh′′Q(t′ −t′′, h′|h′′)
+·e2πi(t′−t′′)k·v(θ+π−2 arcsin(h′))e2πit′′k·v(θ+2π−2 arcsin(h′)−2 arcsin(h′′))
+·µk
+0(θ + 2π −2 arcsin(h′) −2 arcsin(h′′), t′′, h′′)
++
+R t
+0 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′)e2πi(t−t′)k·v(θ) R
+T1
+2π dθ′ R t′
+0 dt′′ R 1
+−1 dh′′
+·φk(θ + π −2 arcsin(h′), t′ −t′′, h′|θ′, h′′)e2πit′′k·v(θ′)µk
+0(θ′, t′′, h′′)
+.
+Therefore we have four summands which can be bounded respectively as (2.2.2), (2.2.3), (2.2.4) and (2.2.7) in Theorem
+1.1. The only difference is that when we estimate the last of these ones, we have to take into account that the upper
+bounds for φk and tφk ensured by Proposition 3.1 depend on wether k is close to 0. Thus in the statement we get
+C
+min{1,|k|6} instead of C.
+3.2
+Convergence of the joint probability density.
+Now that we can affirm that all the Fourier coefficients with k ̸= (0, 0) are vanishing for large t, we can prove Theorems
+1.3 and 1.4. Let us begin with the first one.
+3.2.1
+Proof of Theorem 1.3.
+Proof. We start by proving (1.1.18). It is easily checked that µ0 satisfying the hypothesis in the statement of the
+Theorem belongs to L1(T2 × T1
+2π × [0, +∞) × [−1, 1]), indeed
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh∥µ0(·, θ, s, h)∥Lp(T2) ≥
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh∥µ0(·, θ, s, h)∥L1(T2) = ∥µ0∥L1(T2×T1
+2π×[0,+∞)×[−1,1]).
+Then, if µ0 is chosen as in the hypothesis, let us fix ε > 0 and choose ˜µ0 ∈L∞compactly supported in T2 × T1
+2π ×
+[0, T] × [−1, 1], for T > 0, such that
+∥µ0 −˜µ0∥Lp(T2×T1
+2π×[0,+∞)×[−1,1]) +
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh∥µ0(·, θ, s, h) −˜µ0(·, θ, s, h)∥Lp(T2) ≤ε.
+(3.2.1)
+30

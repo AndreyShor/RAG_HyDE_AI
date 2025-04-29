@@ -1,0 +1,108 @@
+classifier. Although preliminary findings were pre-
+sented at QTML 2024, we provide here a more
+comprehensive account of the dataset, network ar-
+chitecture, quantum embedding, and the geometric
+insights that underpin our approach.
+4.2.1. Dataset and Preprocessing
+We curated a dataset of DFU images (Fig. 2)
+covering a range of lesion severities, lighting condi-
+tions, and patient demographics to ensure robust-
+ness. Each image is in color (3 channels) and varies
+in resolution. As a first step, we resized all images
+to 150 × 150 × 3 to standardize input dimensions
+and reduce computational overhead. We then ap-
+plied standard preprocessing:
+• Normalization: Pixel intensities were scaled
+to the [0, 1] range to stabilize training.
+• Segmentation (optional): For images con-
+taining significant background noise, we exper-
+imented with automated or semi-automated
+segmentation to isolate the ulcer region.
+• Augmentation: Random rotations, flips, and
+slight shifts were optionally applied to increase
+the effective size of the training set and im-
+prove generalization.
+Figure 2: Sample DFU images from our dataset, illustrating
+variations in ulcer size, tissue color, and overall image qual-
+ity. (Placeholder: replace with actual images.)
+4.2.2. Modified Xception Network
+We employed a modified Xception network [47] as
+the classical backbone for feature extraction. The
+network input layer accepts 150 × 150 × 3 images,
+which pass through depthwise-separable convolu-
+tions and residual connections.
+Table 2 summa-
+rizes the key layers of our modified Xception-based
+model, including the global average pooling step
+and two dense layers for classification.
+The final
+layer in the table shows a 2-dimensional output,
+typically used for binary classification (e.g., healthy
+vs. ulcer) or to represent two sub-classes of DFU.
+However, in our actual experiments, we adapted the
+output layer to handle multiple classes (infection,
+ischaemia, none, or both) depending on the specific
+classification scheme.
+Table 2: Layer Summary for the Modified Xception Network
+(example).
+Layer (type)
+Output Shape
+Param #
+input 4 (InputLayer)
+(None, 150, 150, 3)
+0
+sequential (Sequential)
+(None, 150, 150, 3)
+0
+xception (Functional)
+(None, 5, 5, 2048)
+20,861,480
+global average pooling2d (GlobalAvgPool2D)
+(None, 2048)
+0
+dense 2 (Dense)
+(None, 128)
+262,272
+dense 3 (Dense)
+(None, 2)
+258
+Training proceeds in two phases:
+1. Feature Extraction Phase: We freeze the
+Xception layers and train only the final dense
+layers, allowing the network to adapt to DFU
+data while preserving the general features
+learned from ImageNet.
+2. Fine-Tuning Phase:
+We unfreeze selected
+layers of the Xception backbone at a reduced
+learning rate to refine feature extraction for
+DFU-specific cues (e.g., color variations indica-
+tive of infection or tissue necrosis).
+After fine-tuning, we extract the output from the
+penultimate dense layer (with 128 neurons). This
+vector serves as a high-level representation of each
+DFU image, capturing morphological and textural
+features essential for subsequent classification.
+4.2.3. SPD Matrix Construction and Quantum En-
+coding
+Motivation for SPD Matrices.. To leverage the
+non-Euclidean geometry of medical imaging fea-
+tures, we convert the 128-dimensional embedding
+from the Xception network into a Symmetric Pos-
+itive Definite (SPD) matrix.
+Although multiple
+strategies exist, one simple approach is to com-
+pute a covariance-like matrix or to reshape the fea-
+ture vector into a matrix that ensures positivity
+(e.g., via outer product plus a small identity reg-
+ularizer).
+The key insight is that SPD matrices
+naturally inhabit a Riemannian manifold with well-
+defined geodesics and intrinsic metrics, preserving
+the structure of correlations among features.
+Amplitude Encoding.. Once the data is in SPD
+form, we flatten or otherwise vectorize the matrix
+(while retaining positivity constraints) to obtain a
+final feature vector v ∈Rd. We then map v into a
+quantum state via amplitude encoding, where each
+13

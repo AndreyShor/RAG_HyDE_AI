@@ -1,0 +1,103 @@
+arXiv:2504.06462v1  [physics.app-ph]  8 Apr 2025
+1
+A Reconﬁgurable Intelligent Surface With
+Surface-Wave Assisted Beamforming Capabilities
+Vasileios G. Ataloglou, Member, IEEE, and George V. Eleftheriades, Fellow, IEEE
+Abstract—The integration of tunability mechanisms in the
+metasurface design has unleashed a tremendous potential for
+wireless communications. In particular, reconﬁgurable intelligent
+surfaces (RISs) can manipulate the reﬂections of an incident
+electromagnetic wave at will, based on the real-time conditions,
+with the aim of enhancing communication links. In this paper,
+we develop an RIS at C band that operates with a transverse-
+electric (TE) polarization and can shape the radiation pattern
+at a single plane with high-accuracy, in addition to the more
+conventional beamsteering functionalities. The beamforming is
+facilitated by subwavelength unit cells that allow the excita-
+tion of auxiliary surface waves in the vicinity of the RIS.
+Importantly, these evanescent ﬁelds are predicted and harnessed
+through an integral-equation framework used for the analysis
+and optimization of the RIS. A fabricated prototype demonstrates
+beamsteering up to ±60◦with an average illumination efﬁciency
+of 95% and sector patterns with a varying beamwidth (ranging
+from 30◦to 60◦) that verify the full-wave simulations. Lastly,
+losses •are predicted and constrained during the optimization
+stage leading to solutions with relatively high power efﬁciency.
+Index Terms—Beamforming, Integral Equations, Method of
+Moments, Reconﬁgurable Intelligent Surface, Surface Waves
+I. INTRODUCTION
+The continuously growing number of interconnected devices
+requiring constant, reliable and high data-rate connectivity
+poses challenges to the development of future generations (6G
+and beyond) of wireless communication networks. Among the
+innovative ideas to overcome these challenges, reconﬁgurable
+intelligent surfaces (RISs) have been proposed as a way to
+modify the propagation environment and improve communi-
+cation links between users. An RIS is a tunable metasurface
+consisting of subwavelength scatterers that can be programmed
+to anomalously reﬂect an incident electromagnetic wave to-
+wards one or more desired directions [1]–[3]. In this way,
+RISs are utilized to increase the power of the received signals
+in areas that are not sufﬁciently covered by the transmitter
+due to obstacles or multipath interference. Moreover, RISs
+are passive structures acting directly on the radio-frequency
+(RF) signal and they usually require only a DC external
+bias [4]. Therefore, they offer a cost-effective and power-
+efﬁcient solution for the growing requirements of wireless
+communications.
+The hardware implementation of reconﬁgurable metasur-
+faces operating at microwaves has been thoroughly investi-
+gated and different tunable elements and design methods have
+Submitted on 03/10/2024.
+V. G. Ataloglou and G. V. Eleftheriades are with the Edward S. Rogers Sr.
+Department of Electrical & Computer Engineering, University of Toronto,
+Toronto ON M5S3G4, Canada (e-mail: vasilis.ataloglou@mail.utoronto.ca,
+gelefth@waves.utoronto.ca).
+been proposed [5]–[15]. In the vast majority of cases, the
+RIS is designed as a tunable reﬂectarray with each unit cell
+inducing locally a spatially-varying phase in the reﬂected ﬁeld.
+In the case that PIN diodes are used, the reﬂected phase takes
+discrete values, and the structure is typically called an n-
+bit RIS (n being the number of diodes per cell for a single
+polarization) [9], [16], [17]. On the other hand, varactor diodes
+offer a continuous tunability of the reﬂecting phase, avoiding
+any drop in efﬁciency due to phase quantization. Additionally,
+varactor diodes operate under a reverse DC bias voltage and,
+therefore the DC power dissipation is minimal. These are the
+reasons that varactor diodes were used in our presented work.
+Lastly, for an RIS application, the metasurface is typically
+placed in the far-ﬁeld region of the transmitting antenna,
+rendering the incident illumination approximately a uniform
+plane wave. This is in contrast to the earlier implementations
+of such tunable reﬂective surfaces that were focused on the
+realization of reconﬁgurable reﬂectarray antennas with a feed
+placed in the vicinity of the metasurface [6].
+For RIS applications, it is often important to modify not
+only the direction of the main beam, but also the beam shape.
+For instance, if a wider angular range needs to be covered
+by a single RIS, a sector pattern of larger beamwidth may
+be preferable compared to a narrower highly-directive beam.
+While several RIS studies focus on efﬁcient beamsteering of
+the reﬂected beam, the beamshaping capabilities of the RIS
+and the design methods to realize them are often overlooked. A
+beamshaped far-ﬁeld pattern would require both amplitude and
+phase tapering throughout the metasurface aperture. One way
+to fulﬁll this requirement is to deliberately introduce ohmic
+losses that are controlled independently from the reﬂected
+phase, thus providing a way to acquire the required complex
+reﬂection coefﬁcients [18], [19]. However, this approach limits
+the power efﬁciency, especially in cases that a low reﬂection
+amplitude is required for a large portion of the unit cells.
+Alternatively, optimization techniques based on a reﬂect-array
+approach may be used to optimize the reﬂected phases includ-
+ing the coupled loss to achieve some constrained beamshaping
+effects [14]. Yet, the calculation of the far-ﬁeld based on
+the local reﬂection coefﬁcient at each cell usually disregards
+mutual coupling and leads to deviations from the expected
+pattern. In particular, these discrepancies are signiﬁcant when
+the unit cell size is smaller than the typical choice of half-
+wavelength and surface waves are excited by means of fast-
+varying parameters between adjacent cells. Metallic vias acting
+as bafﬂes have been examined as a way to eliminate coupling,
+but the approach can only be applied for a single polarization
+and increases the fabrication complexity [20], [21].

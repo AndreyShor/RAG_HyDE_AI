@@ -1,0 +1,103 @@
+Proof of Lemma 7.10
+82
+By [Mad15, Equation (3.10)], we know that there exist constants c1, c2 > 0 such that the probability
+on the right-hand side in the previous display is bounded from above by c1e−c2e−bk. Hence, we have
+that
+F∗(g)4 ≤S−8⌈1/δ⌉8d +
+∞
+X
+k=⌈1/δ⌉
+S−8(k + 1)8dP
+
+sup
+x,y∈Bb, |x−y|≤eb/k
+|Yb(e−bx) −Yb(e−by)| ≥1
+4
+
+≤S−8⌈1/δ⌉8d + c1
+∞
+X
+k=⌈1/δ⌉
+S−8(k + 1)8de−c2e−bk ≲δ−10d ,
+where the implicit constant depends on b.
+Finally, regarding condition (4), we fix g1, g2 ∈C(Rd) such that supx∈Bb+2|g1(x) −g2(x)| ≤1/8.
+Then, thanks to the triangle inequality and Cauchy–Schwarz inequality, we obtain that
+|F1
+A,L,b(z, g1) −F1
+A,L,b(z, g2)|
+≤e−
+√
+2d(z+L)+dbEz
+
+1{Yb(0)≥−A−L}
+|1{M0,b(Υb,g1)≤1} −1{M0,b(Υb,g2)≤1}|
+|Dg1(1)|
+
+(B.2)
++ e−
+√
+2d(z+L)+dbEz
+
+1{Yb(0)≥−A−L}1{M0,b(Υb,g1)≤1}
+|1{Eg1} −1{Eg2}|
+|Dg1(1)|
+
+(B.3)
++ e−
+√
+2d(z+L)+dbEz
+
+1{Yb(0)≥−A−L}1{M0,b(Υb,g2)≤1}
+
+1
+|Dg1(1)| −
+1
+|Dg2(1)|
+
+
+(B.4)
++ h(z)F∗(g1)Ez[∆(g1, g2)4]1/4 ,
+(B.5)
+where, for g ∈C(Rd), we set
+Eg
+def= {M0,b+1,b(Υb,g) + Yb(0) < −A −L} ,
+and also, for g1, g2 ∈C(Rd), we let
+∆(g1, g2)
+def= exp
+
+−
+Z
+Bb
+Fγ(y)eγ(Υb,g1(y)+Yb(0)+L)dy
+
+−exp
+
+−
+Z
+Bb
+Fγ(y)eγ(Υb,g2(y)+Yb(0)+L)dy
+
+.
+We proceed to bound separately (B.2), (B.3), (B.4), and (B.5). We will use repeatedly the fact that,
+letting δ = ∥g1 −g2∥∞, it holds that |M0,b(Υb,g1) −M0,b(Υb,g2)| ≤δ and |M0,b+2,b,g1(Υb,g1) −
+M0,b+2,b,g2(Υb,g1)| ≤δ.
+Regarding (B.2), we have the following bound
+|1{M0,b(Υb,g1)≤1} −1{M0,b(Υb,g2)≤1}| ≤1{M0,b(Υb,g1)∈[1−δ,1+δ]} .
+Therefore, using [PT79, Theorem 3.1] as in the proof of Lemma 4.13, thanks to the Cauchy–Schwarz
+inequality, one obtains that
+(B.2) ≲∥g1 −g2∥1/8
+∞h(z)F∗(g1) .
+Regarding (B.3), we note that
+|1{Eg1} −1{Eg2}| ≤1{M0,b+1,b(Υb,g1)+Yb(0)+A+L∈[−δ,δ]} .
+Therefore, thanks again to [PT79, Theorem 3.1] and using the Cauchy–Schwarz inequality, we have
+that
+(B.3) ≲∥g1 −g2∥1/8
+∞h(z)F∗(g1) .
+Regarding (B.4), we note that
+1{M0,b(Υb,g2)≤1}
+
+1
+|Dg1(1)| −
+1
+|Dg2(1)|
+

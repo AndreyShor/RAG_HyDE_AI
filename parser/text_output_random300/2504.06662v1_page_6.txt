@@ -1,0 +1,119 @@
+Term
+Value
+Forward velocity P ˆvx
+[−0.5, 0.5] (m/s)
+Side velocity P ˆvy
+[−0.5, 0.5] / [−0.0, 0.0] (m/s)
+turning velocity P ˆωz
+[−0.5, 0.5] (rad/s)
+EE position x (P ˆpm
+i )x
+[0.1934, 0.5] / [0.15, 0.30] (m)
+EE position y (P ˆpm)y
+[0, 0.2] (m)
+EE position z (P ˆpm)z
+[0.0, 0.4] / [0.3, 0.9] (m)
+EE force in x, y, z P ˆu
+[−30, 30] / [−20, 20] (N)
+Friction coefficient
+[0.5, 1.5]
+Add mass for base
+[−2.0, 2.0] (kg)
+CoM offset for base
+[−0.05, 0.05] (m)
+Actuator random delay
+[0, 20] (ms)
+Initial base position sample p
+[−0.05, 0.05] (m)
+Initial base orientation sample R
+[−0.15, 0.15]
+Initial base linear velocity sample v
+[−0.05, 0.05] (m/s)
+Initial base angular velocity sample v
+[−0.05, 0.05] (rad/s)
+Initial joint position sample qj
+[−0.1, 0.1] (rad)
+Initial joint velocity sample ˙qj
+[−0.05, 0.05] (rad/s)
+Base position noise px, py
+[−0.05, 0.05] (m)
+Base position noise pz
+[−0.02, 0.02] (m)
+Base orientation noise R
+[−0.05, 0.05]
+Base linear velocity noise v
+[−0.1, 0.1] (m/s)
+Base angular velocity noise ω
+[−0.15, 0.15] (m/s)
+Joint position noise qj
+[−0.01, 0.01] (rad)
+Joint velocity noise ˙qj
+[−1.5, 1.5] (rad/s)
+TABLE IV: Detailed command sampling and domain randomization. (·)/(·)
+represents different values used for quadruped and biped tasks respectively.
+The orientation noise is estimated from the noise sampled on unit quaternion
+representations. Besides the terms listed above, we also add random push on
+the robot base within an episode. Note that the EE position and forces are
+listed only for the front-left limb of the robot. For biped tasks, we sample
+the quantities in symmetry for the front-right limb.
+A. Quantitative Evaluation
+To evaluate the performance of RAMBO, we compare
+RAMBO with the following baselines in terms of tracking the
+target velocity command as well as the desired EE positions
+under the external counteract force at the end-effectors:
+• E2E: Policies trained using RL in an end-to-end
+scheme. To facilitate the training, we use the same
+contact schedule from the gait pattern to prevent the
+E2E policy from exhibiting highly jittery motions and
+foot slips. Note that the action space of the E2E policy is
+an offset of target joint positions relative to the default
+ones. We set the action scale to 0.25, as the popular
+choice in previous works [13];
+• Imitation: Policies trained using RL to track the same
+generated kinematic reference as RAMBO, which shares
+the same action space as the E2E policy. Besides the
+reward functions used in RAMBO, we add an additional
+reward function to track desired joint positions;
+• RAMBO-base: Policies trained with RAMBO but with
+only ∆P ˆa as output of the residual policy;
+• RAMBO-joint: Policies trained with RAMBO but with
+only ∆ˆqj as output of the residual policy;
+• RAMBO-ff: RAMBO with only feedforward torque (no
+training needed).
+As shown in Table V, RAMBO achieves comparable or su-
+perior performance to all baselines across both quadrupedal
+and bipedal tasks. Notably, our method exhibits a clear
+advantage in tracking target end-effector positions, signifi-
+cantly reducing tracking errors. These results underscore the
+precision and effectiveness of RAMBO in whole-body loco-
+manipulation for both locomotion modes.
+For fair comparison, we trained both end-to-end and
+imitation-based policies using reward coefficients similar to
+those of RAMBO. While further tuning could potentially
+improve tracking performance, we observed that both E2E
+and imitation policies tend to produce highly jittery actions,
+making them unsuitable for deployment on real hardware. In
+terms of velocity tracking during bipedal walking, we found
+that all methods required various termination conditions to
+successfully learn walking with only hind legs. Although the
+trained policies are able to follow commanded velocities,
+their tracking performance generally lags behind that of
+quadrupedal walking.
+We also emphasize the critical role of feedback through the
+learned residual policy. As shown in Table V, incorporating
+residual feedback—particularly at the joint position level—
+leads to a substantial reduction in EE tracking error. How-
+ever, we found that overly amplifying the action scale for
+base and joint-level residuals can hinder learning efficiency
+and result in less smooth, more jittery behaviors.
+B. Real-world Experiments
+We train the residual policy in simulation for quadrupedal
+and bipedal tasks individually, and test the policies on real-
+world loco-manipulation tasks without further finetuning. We
+demonstrate the success deployment of RAMBO on:
+• Shopping cart pushing: The quadruped is commanded
+to push a shopping cart by applying forward-down
+Fig. 4: Snapshots of two whole-body loco-manipulation tasks, where the
+desired EE force are overlaid as pink arrows. Upper: pushing a shopping
+cart while walking in bipedal mode; bottom: holding a sponge while walking
+in quadrupedal mode.

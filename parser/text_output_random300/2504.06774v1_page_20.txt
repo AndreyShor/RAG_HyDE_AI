@@ -1,0 +1,37 @@
+where u = (ux, uy, uz) is the velocity field, p is the pressure, ρ is the fluid density, and
+ν is the kinematic viscosity. The first equation represents momentum conservation,
+while the second enforces the incompressibility condition.
+In the 2D case, the simulation is performed at Re = 130. At this Reynolds number,
+the flow is characterized by unsteady behavior due to the formation of a von Kármán
+vortex street in the wake of the cylinder. The computational domain extends 15D
+upstream and 50D downstream in the streamwise direction, with the cylinder dia-
+meter D normalized to D = 1. The dataset has been obtained from Ref [54], where
+the spatial dimensions are nx = 100 points in the streamwise direction, ny = 100
+points in the vertical direction, and nt = 500 the temporal steps, with a time step
+∆t = 0.2.
+Y
+X
+X
+Figure 6: Ground truth snapshots for the 2D cylinder case. From left to right: streamwise
+velocity and normal velocity components.
+Extending the problem to three dimensions introduces spanwise variations and re-
+quires capturing all three velocity components. The flow becomes unsteady at Re =
+46, where a Hopf bifurcation initiates flow with two-dimensional oscillations. Bey-
+ond Re = 189, a second bifurcation causes three-dimensionality for specific span-
+wise wavelengths. The boundary conditions are consistent with the 2D case but
+account for the spanwise velocity component. The domain has a spatial dimension
+of nx = 100, ny = 40, nz = 64 in the spanwise direction, and nt = 599 temporal
+snapshots, with a time step ∆t = 1. The data set presented by Le Clainche et al.
+[55] has been utilized for the 3D cylinder case. The 2D simulation considers nvar = 2
+variables, representing the velocity components (u, v) in the streamwise and vertical
+directions, while the 3D simulation expands to nvar = 3 variables to include the
+spanwise velocity component (w).
+The three-dimensional cylinder flow data set is particularly challenging due to the
+strong coupling of dynamics across the three spatial dimensions. The flow is transit-
+ory, with the spanwise component only beginning to develop near the 300 snapshot
+mark. This data set serves as an excellent benchmark for testing and validating
+the developed hybrid model, providing insights into its robustness. Both cases are
+simulated using the open-source spectral element solver Nek5000, which solves the
+incompressible Navier-Stokes equations.
+• Turbulent Flow Past a Circular Cylinder (Experimental):
+20

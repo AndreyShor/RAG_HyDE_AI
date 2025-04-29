@@ -1,0 +1,68 @@
+For the inference in the DNN, the multiplications were implemented using XNOR gates. For addition in binary 
+domain, approximate parallel counter [43] or scaled multiplexer [44] can be used since SC-based networks generally 
+allow some degree of precision loss. The activation function can be implemented for stochastic bitstream in various 
+ways such as sigmoid and tanh functions implemented using JK Flip Flop or Finite State Machine (FSM) [45]. 
+However, due to shorter bitstream and highly quantized (only 5 and 11 states) networks, parallel counter-based 
+addition and look up table based sigmoid can be adopted without significant resource utilization, as explained in the 
+following section.  
+Quantization: For practical implementation on edge devices, it would be resource intensive to generate all the 
+probabilities. Hence, quantized weights have been used. In this network, weights have been scaled in the range of        
+[-1, +1]. Weights or nodes are further quantized into 5 states or 11 states. We chose odd number of quantization states 
+as they are centered around zero. Also, our past work [29], [31] showed that there is a significant gain in accuracy as 
+one goes from 3-states to 5-states but gain is less significant beyond 5 states. Thus, the choice of 5-states was with an 
+aim of achieving reasonable accuracy and the choice of 11-states was to see if there is a significant improvement in 
+accuracy beyond 5-states. These quantized states are converted to corresponding stochastic bitstream for 
+multiplication operation with bitwise XNOR. Afterwards, addition was performed with parallel counters. For 
+implementation of the activation function, it is noticed that sigmoid activation function has only 3 or 6 distinct states 
+(figure 4a) corresponding to 5 or 11 quantized states systems respectively. Hence sigmoid activation is implemented 
+with look up tables. 
+After completion of feedforward pass, error is calculated from difference of predicted and actual output. Accordingly, 
+weight gradients are calculated to update the weights. At the next training epoch, quantization of weights and inputs 
+are implemented as before along to incorporate quantization aware training. Equations for quantization are presented 
+below.  
+Clip (m, a, b) = min  (max  (m, a), b) 
+(1) 
+∆= b −a
+n −1 
+(2) 
+q = ቈ round ቆ clip (m, a, b) −a
+∆
+ቇ቉× ∆+ a 
+(3) 
+ 
+Here we have followed the approach of [29], [46], where n is the number of quantized states and a and b represent 
+lower and upper limits.   
+Weights and nodes of the neural network are converted to corresponding stochastic bitstreams for multiplication 
+operation with bitwise XNOR, after which addition is performed with a parallel counter. Sigmoid activation has only 
+several distinct states so it can be implemented with look up tables (figure 4b). 
+Learning: For quantization-aware learning, methods of [29] were incorporated. Equations for learning are as follows. 
+Cost function, C = 
+1
+2 ∑(yi
+L − di
+L)2 
+(4) 
+Gradient of cost function for output layer or error,  δi
+L =  yi
+L −di
+L 
+(5) 
+Error for preceding layer, δi
+l =  Wijδj
+l+1 
+(6) 
+Weight update parameter, ∆Wij =  ηxi
+lδj
+l+1fl+1
+′
+ 
+(7) 
+Here η= learning rate, fl+1
+′
+= gradient of the activation function of layer l+1 neuron. 
+ 
+Here cost function is calculated by summation of square of error function defined by differences between predicted 
+output and actual output (Eq. 4). Gradient of cost function for output layer is calculated by differentiation with respect 
+to predicted outputs which can be termed as error (Eq 5).  For preceding layers, errors were calculated by the 
+backpropagation Eq. 6. Weights are updated as per Eq 7. Gradient of activation function is not included for back 
+propagation though it is incorporated for weight updates [29]. It is to be noted that since differentiation for discrete or 

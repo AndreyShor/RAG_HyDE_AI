@@ -1,0 +1,37 @@
+E2. Bernestein-Vazirani Algorithm
+from
+AriaQuanta.aqc.circuit
+import
+Circuit
+from
+AriaQuanta.aqc. gatelibrary
+import H, CX , Z, I
+from
+AriaQuanta.backend.simulator
+import
+Simulator
+from
+AriaQuanta.aqc.measure
+import
+MeasureQubit
+from
+AriaQuanta.backend.result
+import
+plot_histogram
+# Bernestein -Vazirani
+Algorithm
+for
+string ’10’
+qc = Circuit(3)
+qc | H(0) | H(1) | H(2) | Z(2) | CX(0,2) | H(0) | H(1) | MeasureQubit ([0,1])
+sim = Simulator ()
+result = sim.simulate(qc , 1000 , 1)
+counts , probability = result.count ()
+print(’\ncounting
+measurement
+on the
+result :\n’, counts)
+plot_histogram (counts)
+Documents
+For additional details, refer to the GitHub link: https://github.com/AriaQuanta/AriaQuanta-tutorial
+12

@@ -1,0 +1,72 @@
+35
+V.
+DISCUSSION AND APPLICATION
+We have just completed mathematical derivations and found two separate multivaraite estimators. The Meticulous
+Estimator theoretically outperforms previous algorithms in Ref. [5], eliminating almost all log factors. Meanwhile,
+the simple estimator offers a straight-forward solution in the regime where log n ≫d
+1
+4 and is memory-efficient. In
+this section we make detailed discussions about their implications and future prospects.
+A.
+Utilizing Quantum Monte Carlo Directly
+One of the noticeable feature of the entire logic chain presented in this work is the fact that it deviates from
+the original derivations of Ref. [2]. We proved a different, and arguably stronger property of the Grover gate in
+Theorem III.4 and start from here. The only part where the logic collides with Ref. [2] is the classical reduction for
+the univariate mean value estimator. Is this justified?
+For the simple estimator which trades a quartic slowdown but for memory-efficiency, the answer is yes.
+Our
+property in Theorem III.4 shows closeness for the original values, as opposed to its counterpart in Ref. [2], which only
+demonstrates closeness for the absolute values. This property allows us to bound the distance between states which
+is vital to allow for multidimensional phase estimation.
+For the merticulous estimator, the answer is mixed. In Sec. IV B, we practically provided a pipeline that takes in
+any univaraite estimator and spits out a multivariate estimator. The only restriction is that the univariate estimator
+must be a hybird (reversible) circuit, where we are not allowed to skip any part of the execution. In other words,
+we want the number of times we called the Grover gate in the phase estimation to be a constant, such that it is
+independent of each thread in the quantum parallelization in the final algorithm. The original work in Ref.[2] does
+not have this property. Nevertheless, we might find ways to convert it into so by admitting some constant overhead.
+In that sense, the merticulous estimator can probably be constructed from Ref. [2] directly, with some more work.
+B.
+The final log d
+δ factor
+Even the meticulous estimator we found is still not quite optimal, as there is a O(log d
+δ ) factor in our complexity.
+It is probably more pleasant if we have instead something that goes like O(log 1
+δ ), because then for a constant δ we
+would not suffer from an additional O(log d) for large d. Note that this factor essentially comes from the properties
+of multidimensional phase estimation in Algorithm 1, as it output results with a constant success probability for each
+dimension separately. Coalescing these dimensions into the ∥∥∞bound causes this extra factor which finds a way into
+our final result.
+To remove this factor, one may find ways to generalize the multidimensional phase estimation and potentially obtain
+something different. The nicest way is to think of the hypercubic lattice G as the name suggests—a lattice in the real
+space. Then, multivariate phase estimation essentially tries to pinpoint the corresponding location of the unknown
+vector on the reciprocal lattice in momentum space. This allows us to generalize multidimension phase estimation
+expect G doesn’t have to be an orthogonal lattice. However, this still won’t give us any progress.
+To navigate the issue, one could define multivariate phase estimation except the coordinates in G are somehow
+chosen from a sphere. However, this choice loses translational symmetry in the lattice, which leads to complications.
+At best, we might only be able to work with some form of spherical harmonics transform instead of Fourier transform,
+but the meaning of “phase estimation” remains unclear in this setting. Even if we can do such, there is no guarantee
+that we will work with something such as
+D
+⃗u, ⃗X
+E
+in the phase, which is a linear function of ⃗X. The linearity in the
+phase is important because we have E
+hD
+⃗u, ⃗X
+Ei
+=
+D
+⃗u, E
+h
+⃗X
+iE
+. If we relinquish such linearity it is unlikely that we
+get anything useful. For such reasons optimizing on this log d
+δ might be very difficult. In fact, we conjecture that our
+result is optimal for the ∥∥∞norm.
+C.
+Practical Considerations
+As discussed in Sec. II B, in practice, what we are presented is usually some program that generates a superposition
+of all possible situations representing all the possibilities of the value we are trying to measure, as we defined as
+“complete quantum experiment” in Definition II.32. In this paper we partitioned such a program into two parts, the
+synthesizer P which generates all the possibilities, and the quantum experiment which computes the value for each

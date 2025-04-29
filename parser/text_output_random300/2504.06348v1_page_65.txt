@@ -1,0 +1,130 @@
+l
+s
+0
+1
+2
+-1
+0
+1
+2
+3
+k∗
+( π
+6 )1/3¯r
+1.4
+1.8
+2.2
+1
+1
+2.1
+2.7
+3.1
+√
+3¯rγ
+1.5
+1.5
+1.5
+1.69
+1
+1
+1
+1
+d
+7
+10
+12
+e1.6
+e1.02
+e1.9
+e3.0
+e4.25
+Table 9: Parameters for the Type I and Type III reference states used for rejection sampling inside the
+block-encodings of the non-local and local terms Note that ¯r indicates ¯rζI
+l , ¯rζI
+loc for the non-local and local
+terms respectively.
+C
+Reference states for quantum rejection sampling
+We provide the 3 classes of reference states used in quantum rejection sampling throughout the algorithm.
+To compute success probabilities of the target states below (excluding the 1d quantum harmonic oscillator
+case), we use the NH3BF3 instance, although the results are fairly insensitive to the exact problem instance.
+C.1
+Type I (Constant with exponential tail)
+This reference state is used for the state preparation routine PREPloc,2 (Eq. (103)) for s ≥0 in the local
+term block-encoding, for the state preparation routine PREPNL,2 (Eq. (113)) in the non-local term block-
+encoding, and a 1-dimensional version is used for preparation of the quantum harmonic oscillator eigenstates
+(Eq. (73)). We construct a piecewise function with two regions, wherein the function is uniform in the inner
+region and an exponential tail in the outer region.
+Non-local and local terms
+In the case of the non-local term (Eq. (200) reproduced here),
+˜Gζ,l
+α (kp¯rζI
+l ) =
+(
+maxp |Gζ,l
+α (|kp|¯rζ
+l )|
+for p ∈♢:= {p : |k(j)
+p ¯rζ
+l | ≤(k∗)ζ,l
+α ∀j}
+dζ,l
+α e−γζ,l
+α ||kp¯rζ
+l ||1
+for p ∈G\♢
+(156)
+where ||kp||1 = P
+j |k(j)
+p | is the 1-norm of the vector kp in Cartesian components, i.e. k(j)
+p
+= P3
+α=1 pαb(j)
+α
+where b(j)
+α
+is the j-th Cartesian component of reciprocal vector bα. Note that this form is indeed a product
+over each Cartesian direction making it to easy prepare. For the s ≥0 terms, instead of parameters l, α,
+we have parameter s such that ˜Gζ,l
+α (kp¯rζ
+l ) →˜Gζ
+s(kp¯rζ
+loc) as seen in Eq. (201), and we have the simple
+formula that maxp | ˜Gζ
+s(kp¯rζ
+loc)| = ( 2s
+e )s/2 for s = 1, 2, 3 and 1 for s = 0. For the non-local (local) term,
+we choose parameters k∗, d that have explicit dependence solely on l (s), while γ is chosen to be constant.
+The parameters k∗, γ have implicit dependence on ζ through ¯rζ
+l (¯rζ
+loc) for the non-local (local) term. The
+parameters are summarized in Table 9, where we drop all the parameter labels since they are clear from
+context.
+In Fig. 8, we show the (unnormalized) Type I reference states (for non-local and s ≥0) bounding
+the target functions along the p1 and p3 axes for the pseudoion ζ = Cu11. On the left hand side, columns
+represent l-values and rows represent the eigenstate values α = 1, 2, 3. On the right hand side, the same cuts
+for s ≥0 are shown. While the reference function may not always appear to tightly bind the target function
+along any specific cut for a given set of parameters, the overall probability of success, approximately given
+by the ratio of the volume integrals of the squared functions,
+psucc =
+P
+p∈G Gζ,l
+α (|kp|¯rζ
+l )2
+P
+p∈G ˜Gζ,l
+α (kp¯rζ
+l )2 ≈
+R
+p∈G Gζ,l
+α (|kp|¯rζ
+l )2
+R
+p∈G ˜Gζ,l
+α (kp¯rζ
+l )2
+(157)
+are sufficiently large to ensure that for most pseudoions ζ and cases l, α, only 1-2 rounds of amplification
+are required to restore the full norm of the target function. This is apparent in Fig. 9, where we show
+the success probabilities of preparing the target function for a substantial selection of pseudoions (though
+65

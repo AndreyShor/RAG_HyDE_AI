@@ -1,0 +1,129 @@
+21
+-1
+Figure 10 Laguerre Gauss field encoding and decoding using
+(Arriz´on et al., 2007) hologram.
+field in the first order of the Fourier plane is c1(a) ∝a.
+As shown by (Arriz´on et al., 2007), c1(a) ≤a, which
+sets a maximum for the light efficiency of reconstruction
+η =
+∥c1∥2
+P
+j ∥cj∥2 ≤∥a∥2, with ∥f∥2 =
+1
+M
+P
+x,y |f(x, y)|2 the
+power of the signal f, and M the number of pixels.
+A solution for Ψ(a, ϕ) that fulfills the condition c1(a) =
+a and minimizes errors due to the discrete nature of the
+SLM is given by (Arriz´on et al., 2007):
+Ψ[a, ϕ] = ϕ + J−1
+0 (a) sin ϕ,
+(93)
+where
+J−1
+0
+is
+the
+inverse
+of
+the
+Bessel
+function.
+In
+Fourier
+space,
+the
+transfer
+function
+becomes
+H[a, ϕ](u, v) = P
+j Hj[a, ϕ](u, v) with Hj[a, ϕ](u, v) =
+F
+
+cj(a)eijϕ
+(u, v). There is no mathematical reason for
+H1 to be spatially separated from the other Hj̸=1 terms,
+and thus it cannot be spatially filtered in general. To
+improve filtering, it is required to add a phase gradient
+of spatial frequency u0: Ψ(a, ϕ) →Ψ(a, ϕ + u0x), such
+that the transfer function reads:
+h[a, ϕ + u0x](x, y) =
+X
+j
+hj[a, ϕ](x, y) eiju0x
+=⇒H[a, ϕ](u, v) =
+X
+j
+Hj[a, ϕ](u −ju0).
+(94)
+The phase gradient has the effect to spatially shift each
+Hj term by ju0, allowing the spatial filtering of the tar-
+get signal present in H1. However, the SLM pixel density
+limits how large u0 can be chosen, as the gradient’s dis-
+cretization error increases the fewer pixels are used to
+encode it. The bandwidth of the signal must be smaller
+than u0
+2 to avoid any overlap between the diffraction or-
+ders, and ensure the correct reconstruction of the target
+field. Therefore the pixel density fixes the bandwidth of
+the target signal that can be reconstructed.
+As an example, a Laguerre Gauss field has been en-
+coded and decoded using the aforementioned hologram
+in Fig. 10. The phase of the target field has a high band-
+width, as it varies instantaneously from one quadrant to
+the next. As can be seen from the reconstructed field, the
+phase has been slightly distorted near the image center,
+a sign that the gradient is not steep enough to capture
+high spatial frequencies.
+The main advantage of spatial light modulators lies in
+their ability to achieve high diffraction efficiencies, thanks
+to their relatively large modulation depth (8 to 16 bits).
+However, their refresh rates are limited, typically from
+10 Hz to a few hundred Hz.
+An alternative to SLMs is the Digital Micromirror De-
+vice (DMD). These devices, composed of arrays of reflec-
+tive micromirrors, are traditionally used for amplitude-
+only modulation. However, various techniques have been
+developed to enable wavefront shaping by grouping mi-
+cromirrors into macropixels (Gauthier et al., 2016; Popoff
+et al., 2024). While DMDs can reach refresh rates of sev-
+eral tens of kilohertz, this comes at the cost of signifi-
+cantly reduced light efficiency.
+B. Potential engineering
+For the various platforms presented in this paper, it is
+possible to create an arbitrary potential by locally mod-
+ifying the linear refractive index.
+The ability to engi-
+neer such potentials enables the realization of complex
+potential landscapes. Here, we describe how attractive
+and repulsive potentials can be implemented in the three
+platforms.
+In warm atomic vapors, one can exploit the hyperfine
+structure of the atomic levels to optically pump atoms
+into a dark state, i.e. a state that does not interact with
+the probe field, and therefore reduce the effective density
+of atoms. By spatially shaping the intensity of a control
+beam, one can create spatially dependent optical pump-
+ing, thus inducing a local decrease in the optical suscep-
+tibility. This results in a local change in the refractive
+index and therefore a potential seen by the fluid of light.
+A lower index creates a repulsive potential, while an in-
+crease can create an attractive one. This idea has been
+implement in rubidium vapors to create optically writ-
+ten waveguides (Andersen et al., 2001; Truscott et al.,
+1999). More complicated schemes using the multi-level
+structure of alkali atoms have also been proposed (Zhang
+et al., 2013), in particular using electromagnetically in-
+duced transparency (EIT) (Sheng et al., 2015; Sun et al.,
+2006; Vudyasetu et al., 2009). Interestingly, to keep the
+shape of the potential constant over z while reaching a
+high resolution, non-diffractive Bessel beams have been
+used (Fontaine et al., 2019).
+In photorefractive crystals, the refractive index change
+arises from the spatial redistribution of photo-generated
+charge carriers. When the medium is illuminated with an
+intense beam, it becomes saturated as shown in Eq. (87),
+and its response to additional light is reduced.
+A lo-
+calized “writing” beam can therefore induce a spatially

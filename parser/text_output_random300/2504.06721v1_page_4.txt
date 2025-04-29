@@ -1,0 +1,132 @@
+0
+10
+1
+Pendubot rollout
+2.5
+0.0
+2.5
+2
+0
+1
+2
+3
+4
+5
+time [s]
+2.5
+0.0
+2.5
+u
+Fig. 3: 20 simulated trials of the Pendubot system (500 Hz), under MC-
+PILCO’s control policy (50 Hz). The initial position for each joint is
+uniformly sampled from the interval [−π, π].
+For both robots, we use the model described in Sec-
+tion III-A.1, with mean function from eq. (9) and squared-
+exponential kernel [11]. The policy optimization horizon
+was set much lower than the horizon required for the
+competition, this allows to reduce the computational burden
+of the algorithm, moreover, it pushes the optimization to find
+policies that can execute a fast swing-up. We exploit dropout
+in the policy optimization as a regularization strategy, to yield
+better policies.
+Note: The performance score for the simulation stage is
+computed by simulating the controllers for 60 s, randomly
+resetting the joints to some position in [−π, π]. The score
+is proportional to the duration for which the system remains
+stabilized in the unstable equilibrium2. However, this is done
+with a PID controller activated for 0.2 s, which, when the
+joints are outside [−π, π] causes the system to accelerate
+to high velocity, becoming uncontrollable, due to the lack
+of friction. This can be partially solved on the pendubot by
+switching to a damping control when the joint velocity is too
+high, while it remains unsolved for the acrobot.
+A. Pendubot
+The policy for the Pendubot swing-up was optimized
+for a horizon of T = 3.0 s, with uM = 3.0 N · m. The
+control switches to a damping controller u = −D ˙q1 when
+max( ˙q1, ˙q2) ≥20 rad/s to limit uncontrollable maneuvers
+caused by the resetting PID. The Linear Quadratic Regulator
+(LQR) controller for stabilization is not used for this system,
+to avoid additional complexity in the control strategy. The
+policy is optimized over a total of 20 episodes, using γk
+scheduling reported in fig. 1 (km = 5, K = 10).
+In fig. 2 we compare the total rollout costs of the policy
+update steps obtained with the proposed incremental training,
+with the standard approach using the nominal initial distri-
+bution eq. (7) in all trials. While the number of episodes of
+the two trainings is the same, the number of steps in the
+optimizations is quite different. Specifically, the incremental
+training allows the policy to first learn the swing-up task,
+starting from the stable equilibrium, and then gradually adapt
+the parameters to a wider initial distribution. In contrast,
+using the nominal uniform distribution since the first trial
+2https://ai-olympics.dfki-bremen.de/
+10
+0
+10
+1
+Acrobot rollout
+2.5
+0.0
+2.5
+2
+0
+1
+2
+3
+4
+5
+time [s]
+5
+0
+5
+u
+Fig. 4: 20 simulated trials of the Pendubot system (500 Hz), under MC-
+PILCO’s control policy (50 Hz). The initial position for each joint is
+uniformly sampled from the interval [−π, π].
+Controller
+Perf. score Pendubot
+Perf. score Acrobot
+MC-PILCO (incremental)
+0.468
+0.292
+MC-PILCO (standard)
+0.1
+0.21
+TVLQR
+0.094
+0.073
+TABLE I: Pendubot and Acrobot scores comparison.
+results in a much more complex optimization, because the
+initial parameters of the policy are random and the model’s
+prediction is more uncertain (having less data). This results in
+noisy policy gradient steps, which trigger the exit condition
+from the optimization sooner than with the proposed strategy.
+As a result, the final total rollout cost of the policy trained
+with the incremental initial distribution is lower than with
+the standard training.
+The Controller’s strategy is depicted in fig. 3. This con-
+troller has a performance score close to 0.5, while the
+MC-PILCO controller obtained with the standard training
+achieves a score of 0.1. The baseline controller Time Varing
+Linear Quadratic Regulator (TVLQR) [3], [10] has a score
+≤0.1. Table I reports the scores of our controller and the
+baseline.
+B. Acrobot
+The policy for the Acrobot swing-up was optimized for a
+horizon of T = 2.0 s, with uM = 3.0 N · m. The policy is
+optimized over a total of 20 episodes, using γk scheduling
+reported in fig. 1 (km = 5, K = 10). The optimization steps
+for the acrobot’s policy result in a learning plot similar to
+fig. 2.
+Given the ideal conditions considered in this simulation,
+the control switches to an LQR controller after the swing-up.
+Under ideal circumstances, the LQR controller can stabilize
+the system at an unstable equilibrium by exerting zero final
+torque. The switching condition is obtained by checking if
+the system’s state is within the LQR’s region of attraction.
+The Controller’s strategy is depicted in fig. 4. This con-
+troller has a performance score of around 0.3, while with
+standard training it is slightly lower, around 0.2. The baseline
+TVLQR has a score lower than 0.1. Table I reports the scores
+of our controller and the baseline.

@@ -1,0 +1,51 @@
+CAMulator
+4.1
+CAMulator Deficiencies and Future Improvements
+Despite these strengths, several key deficiencies remain, highlighting areas for future development.
+• High-latitude biases due to missing cryospheric processes: The absence of interactive sea and land ice, and
+the limited representation of its change in the training period leads to a persistent cold bias, particularly in
+boreal winter. This bias is most pronounced in later periods and becomes apparent in seasonal temperature
+cycles (Supplemental Fig. 17S). The lack of explicit ice-feedbacks and phase transition processes likely
+contributes to this discrepancy, especially in polar regions.
+• Muted ENSO-related variability: While CAMulator successfully captures the broad-scale atmospheric
+response to ENSO events, it underestimates the magnitude of certain ENSO-related variability. This is
+particularly evident in the integrated atmospheric heat content during strong ENSO events, such as the 1997/98
+El Niño (Fig. 2). Improved representation of coupled ocean-atmosphere interactions and internal variability
+could enhance this response.
+• Challenges in extrapolating to extreme SST perturbations: CAMulator’s response to out-of-distribution
+SST forcing (+2K and +4K) diverges from CAM6, which suggests that while the model generalizes well
+within its training range, it struggles with conditions that require dynamically consistent extrapolation. Future
+improvements to training strategies, including exposure to a broader range of climate states and variables, may
+mitigate this issue.
+To address these limitations, several promising research directions should be explored:
+• Coupling CAMulator with an interactive ocean, sea ice, and land model: Incorporating dynamic surface
+processes would improve the representation of feedback mechanisms, particularly in polar regions, and help
+resolve biases associated with missing feedback states. We hope that these models could be both physics-based
+and machine learned [e.g., Dheeshjith et al., 2024].
+• Enhancing variability through stochastic parameterizations: Training CAMulator with a Stochastic Kinetic
+Energy Backscatter Scheme [SKEBS; Berner et al., 2009] or a similar approach could improve CAMulator’s
+ability to represent subgrid-scale variability, potentially addressing the muted ENSO and NAO responses.
+• Exploring supermodeling approaches: One promising avenue is to integrate CAMulator with multiple
+ML-based emulators coupled to a single dynamical model, allowing for dynamic state corrections and
+improved climate change projections [e.g., Schevenhoven et al., 2023]. Such a framework could enhance the
+representation of future warming scenarios while maintaining computational efficiency.
+4.2
+Broader Implications and Future Outlook
+The ability of CAMulator to rapidly emulate atmospheric states while conserving fundamental physical properties
+makes it an attractive tool for accelerating climate simulations, uncertainty quantification, and data assimilation.
+Furthermore, its differentiability opens new opportunities for inverse modeling and sensitivity analyses, potentially
+improving parameter estimation in Earth system models.
+As ML-driven climate modeling continues to evolve, hybrid approaches that combine data-driven methods with
+traditional physics-based models will likely become increasingly valuable. CAMulator provides a foundation for
+such efforts, demonstrating that machine-learned emulators can maintain physical fidelity while offering substantial
+computational advantages. By incorporating additional coupling mechanisms and improving variability representation,
+future iterations of CAMulator could play a critical role in next-generation climate modeling, bridging the gap between
+computational efficiency and physical realism.
+Acknowledgments
+This project is supported by Schmidt Sciences, LLC. We thank all the scientists and administrators who contributed
+to the development of CESM2. Additionally, this work was supported by the U.S. National Science Foundation
+National Center for Atmospheric Research (NSF NCAR), which is a major facility sponsored by the NSF under
+Cooperative Agreement No. 1852977 and by Grant No. RISE-2019758. Any opinions, findings, and conclusions or
+recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the U.S.
+National Science Foundation.
+16

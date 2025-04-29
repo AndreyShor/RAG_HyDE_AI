@@ -1,0 +1,116 @@
+4
+interaction between the two mechanical resonators of S 1 and
+S 2 can be described by adding to the full Hamiltonian of the
+system a quadratic interaction term
+V = ℏλ(b†
+1 + b1)(b†
+2 + b2),
+(9)
+where λ represents the gravitational coupling rate. This model
+is a good approximation for a linearized Newtonian force,
+where the specific value of λ originates from the Taylor ex-
+pansion of the gravitational potential energy of the mechan-
+ical modes and depends on the specific geometric configu-
+ration. For example, as discussed in Supplemental Material
+S.III, λ = Gm/(d3ωB) for two spheres of mass m whose cen-
+ters are at an average distance d.
+The full Hamiltonian H = H1 + H2 + V can be further sim-
+plified in the so-called rotating-wave approximation (RWA).
+In this work, we are interested in enhancing state-transfer in-
+teractions [14, 15], so we focus on the resonance condition
+∆= ωB and move to an interaction picture with respect to
+H0 = ℏωB(a†
+jaj + b†
+jbj) such that, after neglecting all terms
+rotating at frequency ±2ωB (RWA), we are left with a passive
+interaction Hamiltonian:
+HI = ℏg(a1b†
+1 + a†
+1b1 + a2b†
+2 + a†
+2b2) + ℏλ(b1b†
+2 + b†
+2b1). (10)
+The above Hamiltonian represents a chain of 4 bosonic modes
+in which excitations (and therefore quantum information) can
+coherently hop from one mode to a nearest-neighbor in the
+chain. Taking into account dissipation and thermal noise, we
+obtain the following set of quantum Langevin equations [14,
+15, 37]:
+da j(t)
+dt
+= −κ
+2aj(t) −igbj(t) + √κain j(t),
+(11)
+db j(t)
+dt
+= −γ
+2b j(t) −igaj(t) −iλb3−j(t) + √γbin j(t),
+where j ∈{1, 2}, κ and γ are the optical and mechanical damp-
+ing rates respectively, ain j and binj are the optical and mechan-
+ical noise operators already introduced in Eqs. (2) and (3).
+We move to the frequency domain where the Langevin
+equations (11) can be easily solved by linear algebra (see Sup-
+plemental Material S.I). Combining the solution of (11) with
+Eq. (4), we can express the output operator of the second cav-
+ity as a linear combination of the four input operators. In par-
+ticular, identifying the term proportional to ain1(ω) as the input
+“signal”, the GIT channel from ain1(ω) to aout2(ω) can be writ-
+ten as a phase-insensitive thermal attenuator [19, 20],
+aout2(ω) =
+p
+η(ω)eiφ(ω)ain1(ω) +
+p
+1 −η(ω)aE(ω),
+(12)
+where the transmissivity η(ω) and the phase factor φ(ω) can
+be analytically computed (see Supplemental Material S.I for
+explicit expressions). In Eq. (12), we collected the noise terms
+proportional to bin1(ω), bin2(ω), and ain2(ω), into an single
+environmental mode aE(ω). The quantum state of aE(ω) is
+a thermal state with ⟨aE(ω)⟩= 0 and ⟨[aE(ω)]†aE(ω′)⟩=
+N(ω)δ(ω −ω′), where the mean occupation number N(ω) can
+be analytically computed and represents the effective thermal
+noise of the attenuator channel. The non-classicality of the
+FIG. 2. Non-classicality analysis of the GIT channel in the param-
+eter space (ωB, Q = ωB/γ), according to Eq. (13) and Eqs. (5-7).
+We assume the mechanical degrees of freedom are two nearby gold
+spheres at a temperature of T = 1 mK, such that λ ≃πGρAu/(6ωB),
+where ρAu is the gold mass density. See Supplemental Material S.III
+for more details. The transmissivity η of the effective channel is ≈1
+in the low-frequency region, but it is extremely small (≲10−23) in
+the high-frequency region. This fact makes the high-frequency re-
+gion theoretically valid but experimentally problematic. The red star
+corresponds to the parameters of Fig. 1.
+quantum channel is completely determined by η(ω) and N(ω)
+and is independent from the phase factor eiφ(ω).
+Replacing the analytic solutions for η(ω) and N(ω) in
+Eq. (8) and optimizing over ω and g (see Supplemental Ma-
+terial S.I for explicit calculations), we find that the maximum
+ratio is achieved at ωopt = 0 1 and gopt := ( √κ/2)(γ2 +4λ2)1/4,
+where Eq. (8) reduces to
+A ⇔B ⇔C ⇔λ2 > γ2NT(NT + 1),
+(13)
+corresponding to a thermal attenuator with:
+ηopt =
+2λ2/γ2
+1 +
+p
+1 + 4λ2/γ2 + 2λ2/γ2 ,
+Nopt = NT.
+(14)
+We observe that, within the range of validity of the RWA (see
+App. S.I D), the optimized gravity-induced channel is inde-
+pendent of the cavity decay rate κ, and its effective temper-
+ature reduces to the real temperature of the mechanical res-
+onators. The analytic expression in Eq. (13) determines a sim-
+ple requirement for testing the non-classicality of gravity in
+terms of only three parameters (λ, γ and NT), providing a clear
+figure of merit in the search for the optimal parameter regions
+as shown in Fig. 2. In principle, the condition in Eq. (13) is the
+only fundamental requirement imposed by quantum mechan-
+ics. However, in a real experiment, one must consider further
+technical constraints such as ensuring reasonable values for
+the time duration of the experiment and for the magnitude of
+1 Note that, in this picture, ω = 0 corresponds to the cavity resonance fre-
+quency ωA.

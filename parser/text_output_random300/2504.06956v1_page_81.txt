@@ -1,0 +1,92 @@
+Proof of Lemma 7.10
+81
+Proof. Thanks to Lemma A.10, we have that
+P0,u,b
+b−1
+\
+j=1
+{Bj > −ζa,k(j)},
+b−1
+[
+j=k
+{Bj < ζa,k(j)}
+
+b
+Y
+j=1
+
+1 −e−2ζa,k(j)22
+≤P0,u,b
+
+inf
+r∈[0,b](Br + ζ2a,k(r)) > 0,
+inf
+r∈[k,b](Br −ζ2a,k(r)) < 0
+
+.
+By observing that the product on the first line is bounded away from zero uniformly in k and b, the
+conclusion follows from Proposition A.9 with s = k.
+Appendix B
+Proof of Lemma 7.10
+In this appendix, we verify that, for any λ > 0 and A, L, b ≥0, the function Fλ
+A,L,b : R × C(Rd) →R
+defined in (7.29) satisfies conditions (1) – (4) of Lemma 7.10. To simplify the notation, we prove the
+case λ = 1 and note that the general case, where λ > 0, follows with straightforward modifications.
+To streamline the presentation, only in this appendix, for any g ∈C(Rd) and η ≥0, we let
+Dg(η)
+def= {y ∈Bb : Υb,g(y) ≥M0,b(Υb,g) −η} .
+We note that if 0 ≤η1 ≤η2, then Dg(η1) ⊆Dg(η2).
+Proof of Lemma 7.10. Fix λ = 1. We begin by defining the functions h : R →R+ and F∗: C(Rd) →
+R+ as follows
+h(z)
+def= e−
+√
+2d(z+L)Pz+A+L(Yb(0) ≥0)1/2 ,
+F∗(g)
+def= E
+
+1{M0,b(Υb,g)≤2}
+e−8db|Dg(1/2)|8 ∧1
+1/4
+,
+We observe that (1) follows immediately from the definition of h, while (2) is an immediate consequence
+of Cauchy–Schwarz inequality. Hence, it remains to verify that (3) and (4) are satisfied.
+Regarding condition (3), we fix δ ∈(0, 1) and g ∈C(Rd) such that
+sup
+x,y∈Rd, |x−y|≤δ
+|g(x) −g(y)| ≤1/4 .
+(B.1)
+We define the random radius r ≥0 as the largest radius for which all of the following conditions hold:
+1. There exists x ∈Bb for which B(x, r) ⊆Bb and Υb,g(x) = M0,b(Υb,g).
+2. For all y ∈B(x, r), it holds that Υb,g(y) ≥M0,b(Υb,g) −1/2.
+For δ > 0 and letting S be the volume of the unit ball, we observe that
+F∗(g)4 ≤S−8⌈1/δ⌉8d +
+∞
+X
+k=⌈1/δ⌉
+S−8(k + 1)8dE[1{S/(k+1)d≤e−db|Dg(1/2)|<S/kd}] .
+For k ∈N such that k ≥⌈1/δ⌉, we note that e−db|Dg(1/2)| ≤S/kd implies that r ≤eb/k < ebδ. On
+this event, we know that there exists z ∈Bb with |x−z| ≤eb/k such that Υb,g(z) < M0,b(Υb,g)−1/2.
+In turn, this implies that
+|Υb,g(x) −Υb,g(z)| ≥1
+2 =⇒|Yb(e−bx) −Yb(e−bz)| ≥1
+2 −|g(x) −g(z)| .
+In particular, recalling that we are assuming (B.1), for all k ∈N such that k ≥⌈1/δ⌉, it holds that
+P
+
+e−db|Dg(1/2)| ≤S
+kd
+
+≤P
+
+r ≤eb
+k
+
+≤P
+
+sup
+x,y∈Bb, |x−y|≤eb/k
+|Yb(e−bx)−Yb(e−by)| ≥1
+4
+
+.

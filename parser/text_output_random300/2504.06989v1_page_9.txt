@@ -1,0 +1,117 @@
+9
+A.
+Duality between n-particle density matrix and 2n-point correlation function
+Before moving on the proof, we explain the duality relation between the n-particle density matrix and a 2n-point
+correlation function [77, 78], which is an essential ingredient of the proof. To show the duality, we first define a
+n-particle density matrix element and a 2n-point correlation function as
+ρ(n)
+t
+(x(1);x(2)) ∶= ⟨x(1)∣ρ(t)∣x(2)⟩,
+(S-5)
+G(2n)
+t
+(x(1);x(2)) ∶= Tr[a†
+xn+1⋯a†
+x2nax1⋯axnρ(t)]
+(S-6)
+with x(j) = (x(j)
+1 ,⋯,x(j)
+n ). Then, one can show that, by using the GKSL equation and the definitions of ρ(n)
+t
+and
+G(2n)
+t
+, the equation of motion for ρ(n)
+t
+and G(2n)
+t
+are exactly the same. Here, the equation of motion for ρ(n)
+t
+is given
+by
+i d
+dtρ(n)
+t
+(x(1);x(2)) =
+n
+∑
+j=1
+−ρ(n)
+t
+(x(1) + ej;x(2)) −ρ(n)
+t
+(x(1) −ej;x(2)) + ρ(n)
+t
+(x(1);x(2) + ej) + ρ(n)
+t
+(x(1);x(2) −ej)
++ 4iγ[(
+n
+∑
+j,k=1
+δx(1)
+j
+,x(2)
+k ) −n]ρ(n)
+t
+(x(1);x(2)).
+(S-7)
+This duality means that the calculation of the 2n point correlation function for an initial condition with finite density
+can be reduced to the calculation of the n-particle density matrix.
+B.
+Proof of the ω-dependence
+Let us move on the concrete proof of Eq. (S-3). Our argument of the derivation follows that in SEP [66]. In the
+derivation, we consider a finite lattice ΛL ∶= {x ∈Z∣−L < x ≤L} with an open boundary condition. We could obtain
+the desired result by taking the limit L →∞.
+The important observation is that ⟨Qn
+t ⟩is a polynomial of degree n in ρa and ρb. To avoid complexity in the
+notation, we demonstrate this for n = 1 and n = 2. From Eq. (3) in the main text, the explicit forms of ⟨Qt⟩and ⟨Q2
+t⟩
+are given by
+⟨Qt⟩= Tr[NReLt[ρini]] −Tr[NRρini],
+(S-8)
+⟨Q2
+t⟩= Tr[N 2
+ReLt[ρini]] −2Tr[NReLt[NRρini]] + Tr[N 2
+Rρini]
+(S-9)
+with NR ∶= ∑L
+x=1 nx.
+Note that the terms in the above equations can be expressed in terms of Tr[nxeLt[ρini]],
+Tr[nxeLt[nyρini]], and Tr[nxnyeLt[ρini].
+Because Tr[nxeLt[ρini]] can be written as G(2)
+t
+(x;x), for which initial
+condition is linear in ρa and ρb, and the equation of motion for G(2)
+t
+(x;y) is given by Eq. (S-7), one can show that
+Tr[nxeLt[ρini]] is liner in ρa and ρb. Similarly, one finds that Tr[nxeLt[nyρini]] and Tr[nxnyeLt[ρini] are second-order
+polynomials in ρa and ρb. Hence, ⟨Qt⟩n is a polynomial of degree n in ρa and ρb.
+We next substitute the following expression for ρini into Eq. (3) in the main text,
+ρini =
+L
+∑
+p,q=0
+∑
+x1<⋯<xp≤0<xp+1<⋯<xp+q
+ρp
+a(1 −ρa)L−pρq
+b(1 −ρb)L−q∣x1,⋯,xp+q⟩⟨x1,⋯,xp+q∣.
+(S-10)
+Then, we have
+⟨eλQt⟩=
+L
+∑
+p,q=0
+ρp
+a(1 −ρa)L−pρq
+b(1 −ρb)L−qe−qλ
+×
+∑
+x1<⋯<xp≤0<xp+1<⋯<xp+q
+Tr[eλNReLt[∣x1,⋯,xp+q⟩⟨x1,⋯,xp+q∣]]
+´¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¸¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¹¶
+Rp+q(eλ)
+.
+(S-11)
+Since the number of total particles is conserved, Rp+q(eλ) is a polynomial of degree p + q in eλ. Expanding the above

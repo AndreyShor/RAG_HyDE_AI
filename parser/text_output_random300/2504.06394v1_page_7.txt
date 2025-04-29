@@ -1,0 +1,71 @@
+7
+the rotating frame, ˆu(ˆ𝑟= ˆ𝑎) = 0. We require a second set of boundary conditions where the
+cupula and the endolymph meet. The kinematic boundary condition requires that the cupular
+velocity and the endolymph velocity at the surface of the cupula must match. As the spatial
+gradients of the cupula’s deformation are small, we can write this as
+𝜕ˆ𝜂
+𝜕ˆ𝑡𝒆𝑠= ˆu(ˆ𝑟, ˆ𝑠= 0, ˆ𝑡) = ˆu(ˆ𝑟, ˆ𝑠= 2𝜋𝑅, ˆ𝑡).
+(2.7)
+We also require boundary conditions for the plate equation (2.6). The precise attachment
+between the cupula and the utricle is an open area of research and the conditions to be
+satisfied are not immediately clear. We opt to implement a straightforward choice suggested
+by Rabbitt & Damiano (1992), which is to apply clamped boundary conditions at the edge
+of the cupula, i.e.
+ˆ𝜂(ˆ𝑟= ˆ𝑎(0)) = 𝜕ˆ𝜂
+𝜕ˆ𝑟
+
+ˆ𝑟= ˆ𝑎(0)
+= 0.
+(2.8)
+We also require initial conditions for the velocity, ˆu(ˆx, ˆ𝑡= 0) and the cupular deflection
+ˆ𝜂(ˆ𝑟, 𝜃, ˆ𝑡= 0). Unless otherwise stated we assume that the system is initially at rest and is
+undeformed.
+2.4. Scalings and non-dimensionalization
+The SCCs in mammals are thin and slender: with an aspect ratio 𝜖= 𝑎/𝑅between 0.05
+and 0.1 (Daocai et al. 2014). It is therefore natural to exploit 𝜖≪1 and use an asymptotic
+approach to perform a long wavelength asymptotic analysis similar to lubrication theory. We
+also know from the continuity equation that if ˆ𝑤∼U then ˆ𝑢, ˆ𝑣∼𝜖U. This is required to have
+a non-trivial balance and is a typical scaling in lubrication theory (Craster & Matar 2006;
+Papageorgiou 1995). To make this asymptotic intuition more formal, we non-dimensionalize,
+scaling the dimensional variables according to:
+ˆ𝑟= 𝑎𝑟,
+ˆ𝑠= 𝑅𝑠,
+ˆ𝑡= T𝑡,
+ˆ𝑤= 𝑅¤Ω0𝑎2
+𝜈
+𝑤,
+(2.9)
+ˆ𝑝= 𝐵𝑅Ω0
+𝑎2𝜈𝑝,
+ˆ𝜂= 𝑎2𝑅Ω0
+𝜈
+𝜂,
+𝑑ˆΩ
+𝑑ˆ𝑡= ¤Ω0 𝑓(𝑡),
+ˆΩ = Ω0𝐹(𝑡).
+(2.10)
+(‘Unhatted’ variables are therefore dimensionless counterparts of the corresponding hatted
+variables.) Here T is the timescale of variation of the forcing so that ¤Ω0 = Ω0/T. The velocity
+scale U = 𝑅¤Ω0𝑎2/𝜈is chosen to balance the viscous forces with the Euler force. The pressure
+scale is chosen to balance the bending term and the forcing term in the plate equation (2.6).
+Note that 𝐹(𝑡) is the dimensionless angular velocity and 𝑓(𝑡) is the dimensionless angular
+acceleration so that by definition 𝑓(𝑡) = ¤𝐹(𝑡).
+2.4.1. Dimensionless equations
+Following the rescaling of equations (2.4)–(2.7), the dimensionless continuity equation (2.4)
+reads
+𝜕𝑢
+𝜕𝑟+ 𝑢
+𝑟+ 1
+𝑟
+𝜕𝑣
+𝜕𝜃+ 1
+ℎ
+𝜕𝑤
+𝜕𝑠−𝜖𝑣sin 𝜃
+ℎ
++ 𝜖𝑢cos 𝜃
+ℎ
+= 0,
+(2.11)
+where the scale factor ℎcan be expressed as ℎ= 1 + 𝜖𝑟cos 𝜃. The dimensionless Navier–
+Stokes equations (2.5) along the e𝑟, e𝜃and e𝑠directions are given, respectively, by:

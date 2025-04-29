@@ -1,0 +1,39 @@
+Supremacy regime (Preskill, 2012)? And can the characterization be used to
+provide statistically sound upper bounds for the quantum noise of classically
+intractable quantum hardware?
+Conformal Prediction (CP) is a data-driven, scalable, and assumption-
+free uncertainty quantification technique. CP’s recent popularity relies on
+the increasing demand for trustworthy and reliable AI, with general appli-
+cability and mild assumptions. Designed and commonly used to assess the
+uncertainty of ML systems in the finite-sample regime, CP is rarely exploited
+in AI-unrelated applications, e.g. to calibrate and characterize physical de-
+vices or complex natural processes.
+In principle, CP’s model-agnosticism
+may help quantify the output randomness of any partially observed physical
+system. Compared to more standard statistical approaches, e.g. Bayesian
+inference, CP can be expected to be more robust because it does not require
+to guess or approximate the system’s dynamics. In QC, modeling the details
+of the data-generating process is particularly hard because of the unavoid-
+able interactions with the environment and the complex-valued formalism of
+Quantum Mechanics, which is partially incompatible with the classical no-
+tion of probability (Feynman et al., 1951). Can a frequentist approach as CP
+overcome this challenge?
+Using CP to evaluate the unmodeled parts of quantum hardware noise, we
+provide reliability guarantees for classically intractable QC systems. Tech-
+nically, we aim to test whether noise characterizations trained on small de-
+vices can be extrapolated to devices and tasks that go beyond the Quantum
+Supremacy boundary. Assuming hardware noise increases as a function of a
+device’s features, e.g. its size and depth, we analyze the validity and efficiency
+of CP intervals when we calibrate and test the algorithm on circuits of dif-
+ferent sizes. A prior, usual CP validity is not guaranteed in this case because
+the output distributions of small and large devices may be non-exchangeable.
+1.1
+Contribution
+CP for physical systems.
+Using CP beyond the evaluation of AI systems
+is new. To our knowledge, there are no examples of CP-based schemes to
+directly estimate and quantify the uncertainty of physical systems.
+Unpaired samples.
+Park and Simeone (2023) use CP in the QC frame-
+work but focus on Quantum ML applications, which are trained to solve
+standard ML tasks, e.g. MNIST digit recognition. Unlike Park and Simeone

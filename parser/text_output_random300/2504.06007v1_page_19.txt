@@ -1,0 +1,95 @@
+CAMulator
+where P(i, j, k) represents the pressure at level k for a given latitude-longitude point (i, j). The terms Ak (hPa) and
+Bk (dimensionless fraction) are reference coefficients defining the hybrid coordinate system, while P0 (1000.0 hPa) is
+the reference pressure. The surface pressure, PS(i, j), varies across grid points and is used to determine the pressure
+levels dynamically.
+For a quantity S(z) that varies with height z, its mass-weighted vertical integral can be converted to a pressure level
+integral using the hydrostatic equation:
+Z ∞
+0
+ρSdz = 1
+g
+Z 0
+ps
+Sdp ≈1
+g
+Z p0
+ps
+Sdp
+(8)
+where S represents the variable of interest at the midpoint of the (i, j, k)-the grid box, and g is the acceleration due to
+gravity. We conduct similar corrections to [Sha et al., 2025a,b], except applied on sigma-hybrid pressure levels, we
+repeat the derivation of those calculations below for completeness.
+B.1
+Global dry air mass conservation
+The evolution of dry air mass within a given atmospheric column is determined by the divergence of the vertically
+integrated dry air mass flux:
+1
+g
+∂
+∂t
+Z p0
+p1
+(1 −q)dp = −∇· 1
+g
+Z p0
+p1
+[(1 −q) v]dp
+(9)
+where v represents velocity, and q corresponds to total atmospheric moisture, approximated by specific total water (see
+Table 1).
+For a global sum, if the atmosphere is considered incompressible, the divergence term in equation (9) becomes zero.
+Consequently, the total global dry air mass (⟨Md⟩) remains conserved over time (henceforth, ⟨⟩denotes a global sum):
+∂
+∂t⟨Md⟩= ∂
+∂t
+1
+g
+Z p0
+p1
+(1 −q)dp
+
+= ϵd
+(10)
+Where ϵd is the residual term that violates the global dry air mass conservation.
+For two forecast time steps separated by ∆t = t1 −t0, where t0 corresponds to the initial analyzed state and t1 denotes
+a subsequent validation time, equation (10) can be reformulated as:
+∂
+∂t⟨Md⟩= ⟨Md (t0)⟩−⟨Md (t1)⟩= ϵd
+(11)
+During the correction stage, PS can be adjusted to ensure ϵd = 0 using a multiplicative ratio. For this correction, the
+contribution of global dry air mass from coefficients A and B are estimated as follows:
+⟨MA⟩= SUM
+"
+1
+g
+Nl−1
+X
+il=0
+∆Ail (1 −q)il
+#
+,
+∆Ail = Ail −Ail−1
+⟨MB⟩= SUM
+"
+ps
+g
+Nl−1
+X
+il=0
+∆Bil (1 −q)il
+#
+,
+∆Bil = Bil −Bil−1
+(12)
+Where ⟨MA⟩and ⟨MB⟩are global dry air mass components spread to A and B, respectively. When computed on t1,
+they are denoted as ⟨MA (t1)⟩and ⟨MB (t1)⟩.
+The correction of ps is defined as follows:
+p∗
+s (t1) = ps (t0) ⟨Md (t1)⟩−⟨MA (t1)⟩
+⟨MB (t1)⟩
+(13)
+Where ⟨Md (t0)⟩is the total amount of global dry air mass calculated from the initial condition. p∗
+s (t1) is the corrected
+ps on t1. The same multiplicative correction is applied to ps on all grid cells.
+19

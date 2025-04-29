@@ -1,0 +1,110 @@
+3
+If the quantum channel is noise-free, each of the three
+controllers is progressively stronger than the one before.
+To see this, notice that s can be computed from b by
+monitoring the parameter estimation phase; and b can
+be computed from a by measuring Alice’s photons us-
+ing a. Note that in the latter case, to make sure that
+Alice and Bob do not abandon the communication, the
+controller can re-prepare photons according to a, b and
+forward them to Bob.
+Let us see how the controller can do these in practice.
+First of all, the channels between the users and the con-
+troller must be quantum, otherwise the security between
+users boils down to classical security between the users
+and the controller.
+Therefore, the ﬁrst controller can simply require Al-
+ice and Bob to use DL04 [25] (or any other quantum
+secure direct communication (QSDC) protocol) to pass
+s to him; the second controller can require Alice to use
+BB84 (or any other QKD protocol) to agree with him
+on a shared secret and use this shared secret as b in her
+BB84 communication with Bob; and the third controller
+is similar to the second except that Alice is required to
+use the shared secret as a instead of b.
+We analyze if all the three controllers make sense. The
+ﬁrst controller is the most practical one since it does not
+interfere the BB84 process. The second and third con-
+trollers have the risk of violating the purpose of using
+quantum communication, which is to avoid “any” trusted
+third party by the no-cloning theorem and wavefunction
+collapse. If the states or bases of the photons are dis-
+closed to a third party in advance, the quantum advan-
+tage is entirely lost. Then quantum cryptography will be
+far less appealing, eﬀectively reducing to classical cryp-
+tography. Then there will be no reason for the users to
+use quantum communication, as classical cryptography
+with simpler infrastructure would be a more preferable
+option.
+However, if we recall that the controllers will ban clas-
+sical public key cryptography and post-quantum pub-
+lic key cryptography, leaving quantum cryptography and
+post-quantum symmetric key cryptography as the only
+options, then the two controllers are plausible. Thus it
+is highly valuable if we could ﬁnd a solution to achieve
+covert communication under the control of such strong
+controllers.
+B.
+Covert communication in BB84
+Now we consider how to achieve covert communication
+against the ﬁrst controller. We will handle the strongest
+third controller in DL04 in the next section.
+To handle the ﬁrst controller, a naive idea might be for
+Alice and Bob to generate a fake shared secret using an
+input-length-preserving hash function.
+Speciﬁcally, suppose s ∈{0, 1}ℓis the shared secret
+between Alice and Bob after parameter estimation. Both
+of them hash s into a fake shared secret ¯s = ¯H(s) ∈
+{0, 1}ℓof the same length, and submit ¯s to Colin. Now
+Alice and Bob have two shared keys: K = H(s) and
+¯K = H(¯s), where H is the hash function used in normal
+BB84. Colin knows the fake shared key ¯K but he does
+not know the true shared key K.
+However, this approach does not work because the con-
+troller could verify the shared key by inspecting cipher-
+texts in subsequent communications between Alice and
+Bob. This would leave no opportunity for Alice and Bob
+to use their true shared key K.
+Our real method is to embed message into the error
+checking phase. The high level idea is that after photon
+transmission and bases publishing, Alice assumes that
+the channel is noise-free and immediately generates a
+shared key and uses it to encrypt messages and publishes
+the ciphertext for error rate estimation; on the other side,
+Bob simultaneously publishes a random string for error
+rate estimation, and he can decrypt Alice’s ciphertext
+using the shared key.
+The detailed scheme is as follows, where we modiﬁed
+the error checking phase and key generation phase of
+BB84.
+1. Quantum Transmission Phase:
+• Same as standard BB84.
+2. Parameter Estimation Phase:
+• Alice and Bob disclose their basis selection
+strings a and a′ in a classical channel, dis-
+card the bits in b and b′ where a and a′ do
+not match, resulting in substrings c ∈{0, 1}k
+and c′ ∈{0, 1}k of b and b′.
+• Alice randomly parses c into substrings d ∈
+{0, 1}k1 and e ∈{0, 1}k2, where k1 < k2,
+uses error correcting code to correct e to get
+f ∈{0, 1}ℓwith k1 < ℓ< k2, hashes it to
+get h = H(f) ∈{0, 1}k1, encrypts message
+m ∈{0, 1}k1 as ct = h ⊗m, where ⊗denotes
+bit-wise XOR. Simultaneously, Bob samples a
+random string r ∈{0, 1}k1.
+• Alice and Bob publish ct and r for error rate
+estimation.
+• Bob parses c′ into d′ ∈{0, 1}k1 and e′ ∈
+{0, 1}k2, where k1 < k2, uses error correct-
+ing code to correct e′ to get f ′ ∈{0, 1}ℓwith
+k1 < ℓ< k2, hashes it to get h′ = H(f ′) ∈
+{0, 1}k1, and tries to decrypt ct by computing
+m′ = ct ⊗h′.
+3. Key Generation Phase:
+• If the error rate between ct and r is not higher
+than a predeﬁned threshold t, Alice hashes f
+into ¯f = ¯H(f) ∈{0, 1}ℓand submits it to the
+controller, simultaneously, Bob hashes f ′ into
+¯f ′ = ¯H(f ′) ∈{0, 1}ℓand submits it to the
+controller; otherwise if the error rate is higher

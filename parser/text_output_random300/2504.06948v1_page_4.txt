@@ -1,0 +1,162 @@
+4
+where
+Mk(Ah) :=
+
+
+In
+−Ah In
+...
+...
+−Ah
+k
+In
+
+,
+ys :=
+
+
+bx((s −1)h)
+hb
+0
+...
+0
+
+
+∈Cn(k+1),
+1 :=
+
+
+1
+...
+1
+
+∈Rk+1.
+Combining the m steps and repeating bx(T) for p times to boost the success probability, we get the linear
+system
+
+
+Mk(Ah)
+T
+Mk(Ah)
+...
+...
+T
+Mk(Ah)
+−1T ⊗In
+In
+−In In
+...
+...
+−In In
+
+
+|
+{z
+}
+=: Cm,k,p(Ah)
+
+
+z(1)
+z(2)
+...
+z(m)
+bx
+bx
+...
+bx
+
+
+=
+
+
+y1
+y0
+...
+y0
+0
+0
+...
+0
+
+
+m blocks
+
+
+
+
+
+p blocks
+
+
+
+
+
+(6)
+where
+T := −
+
+
+In
+· · · In
+On · · · On
+...
+...
+On · · · On
+
+∈Rn(k+1)×n(k+1),
+y1 :=
+
+
+x(0)
+hb
+0
+...
+0
+
+
+∈Cn(k+1),
+y0 :=
+
+
+0
+hb
+0
+...
+0
+
+
+∈Cn(k+1).
+In the rest of this paper, we refer to the coefficient matrix in Eq. (6) as Cm,k,p(Ah). With appropriately chosen
+parameters m, k, and p, we can solve the linear system using QLSA [12], and then perform measurements
+on the resulting quantum state. This allows us to obtain a quantum state that approximates |x(T)⟩within
+the required precision, with constant positive probability. The most time-consuming step in this procedure
+is solving the linear system using QLSA. Assuming the block-encoding of Cm,k,p(Ah) is available, the query
+complexity of QLSA depends at least linearly on the condition number of Cm,k,p(Ah). Therefore, it is crucial
+to control the condition number of the resulting linear system.
+III.
+QUANTUM ALGORITHM BASED ON PADÉ APPROXIMATION
+In this section, we present our quantum algorithm for solving linear differential equations using Padé
+approximation. We begin by outlining the Padé approximation to matrix exponential.
+Definition III.1. The (p, q) Padé approximation to eA is defined by
+Rpq(A) = [Dpq(A)]−1Npq(A) = Npq(A)[Dpq(A)]−1,
+(7)
+where
+Npq(A) =
+p
+X
+j=0
+njAj,
+nj =
+(p + q −j)!p!
+(p + q)!j!(p −j)!
+(8)
+and
+Dpq(A) =
+q
+X
+j=0
+dj(−A)j,
+dj =
+(p + q −j)!q!
+(p + q)!j!(q −j)!.
+(9)

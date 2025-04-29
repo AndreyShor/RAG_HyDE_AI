@@ -1,0 +1,84 @@
+0
+2
+4
+6
+8
+10
+rotational gradient [meV/atom]
+0.00
+0.25
+0.50
+0.75
+1.00
+1.25
+1.50
+energy RMSD [meV/atom]
+equigrad loss
+default loss
+𝐾SRME
+is_plusminus
+true
+is_plusminus
+auto
+default loss
+0.222
+0.868
+equigrad loss
+0.232
+0.365
+MACE-MPA
+0.412
+0.412
+Figure 3: (left) Scatter plot comparing the measured invariance (the standard deviation of the
+energy prediction over a randomized set of rotations) to the norm of the rotational gradient
+||Δrot||, for all 103 structures in the thermal conductivity benchmark. Gray dots are obtained
+using Orb-v3 trained on OMat24 with the default loss function; red dots are obtained using Orb-
+v3 trained with equigrad regularization. (right) Thermal conductivity benchmark performance
+for two different methods in Phonopy; auto exploits the crystal symmetry to reduce the number
+of displacements to consider. For non-invariant models, this reduction is invalid, but models
+trained with equigrad regularization partially alleviate this difference due to increased invariance
+under rotation.
+such, we can apply L2-regularization to Δrot during training to incentivize rotational invariance
+of 𝐸at no additional cost.
+Figure 3 demonstrates the efficacy of equigrad in improving rotational invariance; the scatter
+plot on the left shows that the rotational invariance of Orb-v3 improves by ∼5x when training
+includes equigrad regularization. The table on the right demonstrates improved robustness
+of equigrad-trained models for crystal-symmetry-based workflows which make assumptions
+about equivariance, such as thermal conductivity calculations with Phonopy.
+Uncertainty Estimates
+Inspired by the widespread use of the per-residue 1DDT-C𝛼(pLDDT) scores predicted by
+Alphafold [10] as a confidence measure for structure prediction quality, we introduce a similar
+intrinsic binned confidence prediction for atomic force errors. All Orb-v3 models include a
+confidence head which predicts this binned atomic force error based on the final per-atom node
+representations.
+Algorithm 1 Per Atom Intrinsic Force Confidence
+perAtomForceConfidence{𝑠𝑖}, 𝑣bins = [1, 3, 5, . . . , 50]⊤, {𝑟Force MAE
+𝑖
+}, 𝑐= 128
+𝑎𝑖= 𝑀𝐿𝑃𝑐𝑜𝑛𝑓(𝑠𝑖)
+⊲𝑎𝑖, and intermediate activations ∈R𝑐
+𝑝𝑖𝑓𝑐
+𝑖
+= softmax(𝑎𝑖))
+⊲𝑝ifc
+𝑖
+∈R|𝑣bins|
+𝑝true ifc
+𝑖
+= onehot(𝑟true ifc
+𝑖
+, 𝑣bins)
+ℒconf = mean𝑖(𝑝true ifc⊤
+𝑖
+log 𝑝ifc
+𝑖)
+𝑟ifc
+𝑖
+= argmax(𝑝ifc
+𝑖)
+⊲𝑟ifc
+𝑖
+∈𝑣bins
+return 𝑟ifc
+𝑖, ℒconf
+8

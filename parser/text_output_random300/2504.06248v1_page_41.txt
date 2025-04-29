@@ -1,0 +1,91 @@
+33
+only be a source (first condition of Thm. S5) to another vertex v that also receives from the source s. The vertex set
+for the subgraph admitting the symmetry generator Sη is thus Wη = {v} ∪M. Using conditions 2,3,4 of Thm. S5,
+Sη[zν] = (i P
+j∈M νj(ωj −ω1)) zν, i.e., the monomial is an eigenfunction of the symmetry, Sη[zν] is functionally
+dependent on zν and Sη[zν] is not a new constant of motion.
+F.
+Basic examples for Theorem 3
+The example that helped us obtain Thm. 3 through the singular vectors of the determining matrix is the following
+one.
+Example S31. Consider a directed star of 5 nodes with weight matrix
+A =
+
+
+
+
+
+
+
+iω1/2
+0
+0
+0
+0
+A1
+iω/2
+0
+0
+0
+A1
+0
+iω/2
+0
+0
+A1
+0
+0
+iω/2
+0
+A1
+0
+0
+0
+iω/2
+
+
+
+
+
+
+
+,
+where A1 is any complex number, ω ∈R and we assume for now that ω1 ̸= ω + 2 Im(A1). The Koopman generator
+of the dynamics is K = iω1z1∂1 + K2 + K3 + K4 + K5, where Kη = (iωzη + A1z1 −¯
+A1¯z1z2
+η) ∂η for η ∈{2, 3, 4, 5}. Of
+course, one can write the solution z1(t) = z1(0)eiω1t and then substitute it in the four independent equations for z2
+to z5. From there, one can find the solution for z2(t) to z5(t) by quadrature. Yet, using the results of the paper leads
+to conserved observables and we can avoid computing some or all quadratures. Indeed, Thm. S12 readily guarantees
+that there is one conserved cross-ratio
+C1(z) := c2345(z) = (z4 −z2)(z5 −z3)
+(z4 −z3)(z5 −z2)
+and four symmetries Sη = Kη −iω1zη∂η. Using the derivatives of cross-ratios computed in Eq. (S54), we thus find
+the four constants of motion
+C2(z) := S2[C1(z)] = [i(ω −ω1)z2 + A1z1 −¯
+A1¯z1z2
+2] (z5 −z3)(z4 −z5)
+(z4 −z3)(z5 −z2)2
+C3(z) := S3[C1(z)] = [i(ω −ω1)z3 + A1z1 −¯
+A1¯z1z2
+3] (z4 −z2)(z5 −z4)
+(z4 −z3)2(z5 −z2)
+C4(z) := S4[C1(z)] = [i(ω −ω1)z4 + A1z1 −¯
+A1¯z1z2
+4] (z2 −z3)(z5 −z3)
+(z4 −z3)2(z5 −z2)
+C5(z) := S5[C1(z)] = [i(ω −ω1)z5 + A1z1 −¯
+A1¯z1z2
+5] (z4 −z2)(z3 −z2)
+(z4 −z3)(z5 −z2)2 ,
+which can be verified analytically with K[Cη] = 0 or with symbolic calculations. Note also that C2 +C3 +C4 +C5 = 0,
+meaning that there is at least one functional dependency. In fact, it is easily verified symbolically that the rank of
+the Jacobian matrix of (C1, C2, ..., C5) is 3, so we have three functionally independent constants of motion. Note that
+there is also one more. Indeed, since there is a source, we have a monomial eigenfunction z1 with eigenvalue iω1
+and C0(t, z) = z1e−iω1t is a constant of motion. The dynamics can thus be reduced to two autonomous equations
+and three constants of motion (e.g., C1, C2, C3) or one non-autonomous equation and four constants of motion (e.g.,
+C0, C1, C2, C3).
+If, moreover, ω1 = ω + 2 Im(A1), then the cross-ratio
+C6(z) := c1234(z) = (z3 −z1)(z4 −z2)
+(z3 −z2)(z4 −z1)
+is also a constant of motion (c1345 and others are functionally dependent with c1234, c2345 as shown in subsection III C),

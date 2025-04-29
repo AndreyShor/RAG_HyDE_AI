@@ -1,0 +1,82 @@
+Background and preliminaries
+13
+= E
+
+e
+√
+2dZs0
+ n
+X
+i=1
+fi(·)eγ(Zsi−Zs0)
+Z
+Rd exp(γeΨsi(y))dy
+
+√
+2d
+γ 
+.
+This strongly suggests that the process (eΨs)s≥0 is “stationary modulo tilt” in the sense that, for any
+non-decreasing sequence of non-negative times (s0, . . . , sn) ⊆R+
+0 , any t ≥0, and any function
+F ∈Cb((C(Rd))n), one has
+E[e
+√
+2dZs0F(eΨs1, . . . , eΨsn)] = E[e
+√
+2dZs0+tF(eΨs1+t, . . . , eΨsn+t)] .
+(2.19)
+Now, consider the process (ρt)t≥0 given by
+ρt
+def=
+X
+j∈N
+δxj ⊗δwj+Zj,t ⊗δeΨj,t ,
+∀t ≥0 ,
+(2.20)
+where (Zj, eΨj)j∈N is a collection of i.i.d. copies of (Z, eΨ), and (xj, wj)j∈N is an arbitrary enumeration
+of the Poisson point process with intensity a⋆γµγc(dx) ⊗exp(−
+√
+2dw)dw, where a⋆is the constant
+introduced in (2.11). Then, similarly to [RA05, Proposition 3.1], one can show that (2.19) implies
+that the process (ρt)t≥0 is stationary.
+Remark 2.19 (Full process convergence). For 0 ≪b ≪t, recalling (2.1), we define the measure ρt,b
+on [0, 1]d × R × C(Rd) as follows
+ρt,b
+def=
+X
+x∈Rd : Xt(x)=sup|y−x|≤eb−t Xt(y)
+δx ⊗δXt(x)−mt ⊗δXt(x+e−t·)−Xt(x) ,
+which roughly speaking keeps track of the locations of the maxima, their heights, and the shape of the
+field around them. Then, combining the results of the present article with the techniques of [BL18], it
+should not be too hard to show, analogously to [BL18, Theorem 2.1], the convergence in law
+lim
+b→∞lim
+t→∞ρt,b = PPP(a⋆γµγc(dx) ⊗e−
+√
+2dwdw ⊗ν(dϕ)) ,
+where ν denotes the law of the field Ψ on C(Rd), and a⋆is the constant introduced in (2.11).
+Furthermore, the discussion in the preceding paragraph strongly suggests that
+lim
+b→∞lim
+t→∞ρt+·,b = ρ· ,
+where ρ is the process introduced in (2.20).
+2.4
+Outline
+The remainder of the paper is organised as follows. In Section 3, we gather some background material
+that will be used throughout the paper. Section 4 focuses on the local structure of extremal points, and
+contains the proofs of Theorems A and B. In Section 5, we establish key properties of the shape field,
+including a suitable resampling property, and prove Propositions 2.11 and 2.13. Section 6 is dedicated
+to the proof of Theorem C, which is based on Proposition 2.17. The proof of this proposition, in turn,
+relies on a key technical result, Proposition 6.1, whose proof is given in Section 7. We conclude the
+paper with three appendices. In Appendix A, we establish several estimates concerning the probability
+of a Brownian bridge remaining above a slowly growing positive or negative curve. Appendix B
+contains the proof of a technical lemma used in Section 7. Finally, in Appendix C, we collect some
+standard results on Gaussian fields.
+3
+Background and preliminaries
+In this section, we collect some preliminary results needed for the proof of our main theorems. In
+particular, in Section 3.1, we collect some basic and recurrent notation that will be used throughout
+the paper. In Section 3.2, we recall some standard results related to convergence in distribution of
+random measures, and in particular we briefly introduce the concept of stable convergence. Finally, in
+Section 3.3, we record some properties of ⋆-scale invariant fields and their martingale approximations.

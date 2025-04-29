@@ -1,0 +1,159 @@
+Config
+s-rec (%) s-prec (%) t-acc (%)
+Recursive IB
+1.51
+24.53
+1.46
+w/o Top Down Pruning
+9.22
+18.93
+5.37
+w/o Spatial Update
+8.7
+22.22
+6.34
+w/o Hierarchy Refinement
+7.71
+23.13
+6.83
+Primitives + GPT
+6.14
+7.16
+5.37
+ASHiTA
+10.39
+20.6
+9.27
+Table 4.
+Ablation study on components of the ASHiTA pipeline.
+ing the LLM-based Hierarchy Refinement (Sec. 4.3). We
+also include a comparison against using only GPT and the
+primitives layer: in this case, we first obtain words in the
+word bank based on the max cosine similarity score, and
+query GPT-4o-mini with the labeled primitives to come
+up with the subtasks and associated grounding. The results
+are shown in Table 4. While applying IB recursively com-
+pared to H-IB yields a higher precision, we obtain signifi-
+cantly lower recall due to the disconnect between layers of
+the task hierarchy in recursive IB variant.
+5.4. Qualitative Results
+Real-World Demonstrations. We demonstrate ASHiTA
+working in real-world environments. In Fig. 4, a Boston
+Dynamics Spot is teleoperated through a snack bar and an
+adjacent seminar room. Given high-level tasks of “prepare
+room for a seminar” and “prepare room for seminar recep-
+tion”, ASHiTA was able to detect grounded items and sub-
+tasks associated with these high-level tasks. One limitation
+of ASHiTA exposed here is the ability to deal with multiple
+identical items. As seen under the chair arrangement sub-
+task in Fig. 4, even though there are many identical chairs in
+the seminar room, ASHiTA retained only three chairs and
+assigned them unique labels. In Fig. 5, the Spot explores a
+hardware area in an office building. ASHiTA is given four
+high level tasks of varying abstraction, is able to perform
+reasonable hierarchical task analyses on the given tasks, and
+demonstrate the ability to incorporate additional subtasks to
+account for observed scene elements.
+6. Limitations and Future Work
+One major limitation of ASHiTA is the lack of relations
+in ASHiTA’s 3D scene graph, which means that ASHiTA
+is unable to accurately handle the incorporation of spatial
+specifications like “inside-of” or “on-top-of”. Additionally,
+the level of detail of the task hierarchy is limited by the
+descriptiveness of the word bank. Similar but distinct ob-
+jects (e.g., different types of cups) will not be differentiated
+in the task hierarchy and the final scene graph if the word
+bank consists only of a general category type (e.g., cup).
+Lastly, there is no guarantee that the subtasks in the gener-
+ated task hierarchy are sufficient to carry out the given high-
+level task. The hierarchical tree structure also constrains the
+Prepare room for seminar
+Prepare room for 
+seminar reception
+Arrange chairs in neat 
+rows and ensure proper 
+spacing
+Set up the screen at 
+the from of the room 
+for presentations
+Test microphone for speaker
+Chairs
+Guest Seating
+Auditorium 
+Chairs
+Podium
+Sort and categorize 
+snacks on the rack
+Screen
+Snack Rack
+Snacks
+Refill water in water dispenser
+Ensure the coffee machine is 
+in good working condition 
+and clean
+Water Dispenser
+Coffee Machine
+Soda Dispenser
+Soft Drink 
+Cooler
+Check the inventory of 
+soft drinks in the cooler 
+and restock if necessary
+Clean the soda dispenser to 
+ensure it is hygienic and 
+functioning properly
+Figure 4.
+ASHiTA demonstrated in a real-world seminar room and snack
+bar on a robot, given two high-level tasks. Blue denotes the high-level
+tasks, magenta the decomposed subtasks, and red the items.
+Move the Wheel
+Inspect ladder for damage
+Check for Printing Supplies
+Organize the 
+workshop
+Check the storage bins for 
+extra ink cartridges
+Check the printer for paper levels
+Inspect the ladder 
+for loose bolts
+Put the wheel 
+on a cart
+Locate the 
+wheel
+Arrange tools by size in the tool chest
+Store miscellaneous items neatly on the rack.
+Wheel
+Use the shop vacuum to clean up any 
+remaining debris and dust
+Ladder
+Cart
+Storage Bins
+Printer
+Workbench
+Tool Chest
+Shop Vacuum
+Peg Board
+Tool Rack
+Toolbox
+Clear the workbench of 
+unnecessary items
+Figure 5.
+ASHiTA demonstrated in a real-world hardware workshop en-
+vironment on a robot given 4 high-level tasks.
+granularity of subtasks in an object-centric manner, prevent-
+ing an object from being shared across multiple subtasks. A
+possible future direction is to incorporate classical planning
+approaches to verify and refine the generated subtasks [5].
+7. Conclusion
+We present ASHiTA, the first framework to generate a task
+hierarchy grounded to a 3D scene graph by breaking down
+high-level tasks into grounded subtasks. To achieve this, we
+introduce the Hierarchical Information Bottleneck (H-IB),
+a hierarchical generalization of the well known Information
+Bottleneck algorithm [42], and present an iterative approach
+that alternates between hierarchical task analysis and scene
+graph generation. We demonstrated that ASHiTA is able
+to decompose high-level tasks into grounded subtasks bet-
+ter than LLM and scene graph baselines by benchmarking
+against human-annotated scene-specific task breakdowns.
+8

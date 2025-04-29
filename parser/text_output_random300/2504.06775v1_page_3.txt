@@ -1,0 +1,105 @@
+3
+|0⟩
+|0⟩
+X
+RX(θ)
+RZ(θ)
+RY (θ)
+σz
+RX(θ)
+RZ(θ)
+RY (θ)
+Basis Encoding
+Variational Component
+FIG. 1. The Variational Quantum Classifier (VQC) with an example input state of |10⟩and rotational parameter θ.
+where c and s are short-hand notations for cos(θ) and
+sin(θ), the logical states are subscripted with L and the
+ancilla states are subscripted with aj.
+There are two
+ancilla states (a1, a2) invoked because two rotations have
+occurred. By the end of a logical operation, the ancilla
+qubits in each term reflect the logical state within the
+same term.
+The steps we used to logically perform the double RY
+and RX gates are outlined below:
+1. New ancilla initiation: If no rotations have been
+performed in previous steps, initiate two new an-
+cilla qubits to match the initial input logical state
+to the circuit. For example, if the initial input log-
+ical state is |01⟩L, then the two new ancilla qubits,
+aj and aj+1, should respectively be in the states |0⟩
+and |1⟩. If double rotations have been performed
+in previous steps, invoke the new ancilla qubits in
+the |0⟩state, then match the new ancilla states to
+the previous two ancilla states that were invoked
+to perform the last double rotation, by applying
+CNOT gates to the new ancilla qubits controlled
+by the two previous ancilla qubits.
+2. Change previous ancilla states: If double rota-
+tions have been performed in previous steps, apply
+CNOT gates to each of the previously invoked an-
+cilla qubits, controlled by the new ancilla qubits.
+For example, for newly invoked ancilla qubits aj
+and aj+1, we apply CNOT gates to any previous
+ancillas aj−2, aj−4, ..., a0 and aj−1, aj−3, ..., a1
+controlled by aj and aj+1 respectively.
+3. Change logical state:
+Apply CNOT gates to
+physical qubits q1 and q3 controlled by newly ini-
+tiated ancilla aj, and CNOT gates to q2 and q3
+controlled by newly initiated ancilla aj+1.
+4. Apply rotation gate: Apply the relevant rota-
+tion gates to each of the 2 ancilla qubits.
+5. Undo logical state change: Apply the same set
+of CNOT operations targeting the physical qubits
+and controlled by the 2 ancilla qubits as was per-
+formed in Step 3.
+6. Undo previous ancilla state change: Apply the
+same set of CNOT operations as applied in Step 2,
+targeting the ancilla qubits invoked for previous ro-
+tations, and controlled by the newest ancilla states.
+The steps for implementing the RZ gates are much
+simpler and do not require as many CNOT gates be-
+tween physical and ancilla qubits. We only match the
+newly introduced ancilla qubits to the previous two an-
+cilla qubits, then apply the RZ rotation gate to each new
+ancilla qubit. In Figure 2, we show the full set of oper-
+ations we used to perform the logical equivalent of the
+double RX, RZ and RY gates shown in Figure 1. For the
+logical CNOT gate, we applied additional CNOT gates
+after the SWAP gate to ensure matching between the an-
+cilla and logical states in each term of the full quantum
+state of the system.
+The above steps can also be used to logically imple-
+ment single qubit rotations, in which case we only need
+to introduce one ancilla qubit each time. Logically ro-
+tating a logical qubit generally requires initiating a new
+ancilla qubit, transforming the states of the ancillas that
+were used to logically rotate the qubit in previous steps,
+transforming the qubit state itself, followed by applying
+the relevant rotation gate to the newly initiated ancilla,
+and finally re-applying the same operations to the an-
+cillas and logical qubit that were applied before the ro-
+tation. This approach to logically performing rotation
+gates can be generalised to circuits with any number of
+rotation gates.
+The logical circuit does not allow the direct Z basis
+measurement of the first logical qubit, so we conducted
+the logical equivalent by measuring the probability dis-
+tribution across the 16 states spanned by the four phys-
+ical qubits, in the Z basis. Using these probabilities, we
+calculated the equivalent probability distribution for the
+four logical 2-qubit states, from which we determined the
+expectation value of the Z basis measurement of the first
+logical qubit.
+B.
+Noise and Error models
+We considered two types of incoherent noise that can
+occur in a quantum circuit: probabilistic gate noise and
+environmental noise. Gate noise can arise from imper-
+fections in hardware or control signals, qubit cross-talk
+during multi-qubit operations, and otherwise non-ideal
+behaviour of the qubit system whenever a gate is imple-
+mented. Environmental noise typically consists of noise
+that is external to the qubit system seeping in, including
+stray electromagnetic (EM) fields, photons, and mechani-

@@ -1,0 +1,85 @@
+Using the earlier inequality, this leads to:
+PB(a0) + PE(a1) ≤5 +
+√
+3
+4
+.
+A similar inequality can be derived by interchanging a0 and a1. This illustrates that when Eve attempts
+to guess a different bit than Bob, she will inevitably disturb Bob’s statistical outcomes. From inequality
+PB(a0) + PE(a1) ≤5+
+√
+3
+4
+and its symmetry with respect to a0 and a1, we conclude:
+PB + PE ≤5 +
+√
+3
+4
+.
+This implies that PB > PE if:
+PB > 5 +
+√
+3
+8
+≈0.8415.
+When Bob uses measurement operators (σx ± σz)/
+√
+2, PB ∼0.8536 and the key rate is
+r = I(A : B) −I(A : E) ≈0.0581.
+An additional conclusion can be drawn from the discussion above. In DI-QKD, nonlocality is necessary
+but not sufficient [70] (see 4.5).
+Similarly, we can deduce the analogous result: mere violation of a
+dimension witness (S > 2 =⇒PB > 3/4) is not sufficient to guarantee the security of SDI-QKD.
+In the ideal scenario where perfect detectors are assumed, meaning all systems leaving Alice’s labo-
+ratory are detected by Bob, PB is the sole security parameter. However, in the presence of losses, the
+average detection efficiency of Bob’s detectors, denoted as ηB, becomes an additional security parameter.
+It is crucial to define how the parties handle rounds where no particle is detected. Chaturvedi et al. [302]
+chose the simplest case, where no-detection rounds are discarded from the statistics. This choice allows
+the parties to estimate the average success probability close to the optimal one in [94]. If we split Bob’s
+detection efficiency as ηB = η + η′, where η = P(Click|e ̸= b) represents the detection efficiency when
+Eve’s and Bob’s inputs are different, and η′ corresponds to the case where their inputs are the same, then
+Eve maximizes η′ because she wants Bob’s device to return outcomes as often as possible. Since Eve has
+no control over Bob’s setting, this leads to ηB = 1+η
+2 . Therefore, the condition for establishing a secret
+key is translated to
+PB(η) > PE(η).
+(155)
+Chaturvedi et al. [302] studied security against two types of quantum eavesdroppers, those with and
+without access to quantum memory. They showed that, in the general case where Eve could control both
+Alice’s and Bob’s devices, the security condition for both cases (with and without memory) is
+PB > 1
+2
+
+1 +
+1
+1 + η
+
+.
+(156)
+Moreover, they considered a minimal characterization of the preparation device, with the restriction
+that, while Eve can choose the states that leave Alice’s laboratory, she cannot alter them during the
+protocol. This is a reasonable assumption, as manipulations inside Alice’s laboratory are significantly
+more difficult for Eve. They found that the optimal states are mutually unbiased bases, and the security
+condition in this case is
+PB > 1
+4
+
+2 + cos αη + 1 −η
+1 + η sin αη
+
+,
+(157)
+where αη = arctan
+
+1−η
+1+η
+
+. The fact that these conditions are the same for both cases, with and
+without memory, proves that access to a small quantum memory (a qubit) does not help the eavesdropper
+in attacking the SDI-QKD protocol.
+Additionally, as a straightforward generalization of the original protocol [94], Chaturvedi et al. [302]
+presented a modified SDI-QKD protocol based on the (3 →1) scenario. In this protocol, Alice is given
+three bits, and depending on them, she prepares a state and sends it to Bob, who has as input a classical
+trit b ∈{0, 1, 2} to select his measurement. Although the generalized protocol has lower key rates, the
+security requirements are significantly reduced.
+55

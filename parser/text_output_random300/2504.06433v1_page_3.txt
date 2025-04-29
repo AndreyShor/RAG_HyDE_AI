@@ -1,0 +1,45 @@
+In an earlier version of our paper [PFGT20] it was shown that no depth-2 QAC-circuit on n > 3
+qubits can implement parity exactly. This result improved upon that announced by Pius [Piu14]
+by reducing the number of input qubits, and was tight in the sense that one can easily simulate
+the 3-qubit parity gate cleanly with a depth-2 QAC-circuit.
+The current paper improves upon our earlier version [PFGT20] by removing the cleanliness
+restriction, showing that no depth-2 QAC-circuit can exactly compute the parity of more than
+three qubits, even uncleanly. To do this, we introduce a new algebraic technique for our proof
+that is of independent interest and potentially useful for proving negative results for depth-3 and
+beyond. Our technique is based on work of Shpilka & Volkovich [SV10] on variable-disjoint factors
+of a multivariate polynomial. We show that a particular family of multivariate polynomials are all
+irreducible. Using that, we prove a speciﬁc entangling property of the C-SIGN gate (a cousin of
+the generalized Toﬀoli gate; see Section 2). Roughly, any essential application of a C-SIGN gate
+leaves all its qubits entangled, provided they were not so entangled to begin with. By “essential”
+we mean that the gate does not disappear or simplify to a gate of smaller arity.
+More recently and independently of us, improved bounds for depth-d QAC circuits approximately
+computing n-qubit fanout/parity have been obtained by a number of people. Rosenthal [Ros21]
+proved that such circuits can approximate parity arbitrarily closely when d ≥7, albeit with an
+exponential number of ancilla qubits. He also showed that depth-2 QAC-circuits of arbitrary size
+cannot approximate parity (even uncleanly). Nadimpalli, Parham, Vasconcelos, & Yuen [NPVY24]
+considered the Pauli spectra of polynomial-size QAC circuits, showing that such circuits of depth-d
+using nO(1/d) ancilla qubits cannot compute parity on more than a
+
+1
+2 + 2−Ω(n1/d)
+-fraction of the
+inputs. More recently, Anshu, Dong, Ou, & Yao [ADOY24] obtained a slightly superlinear lower
+bound of n1+3−d on the number of ancilla qubits needed to compute any function of linear approx-
+imate degree, including parity. Improving this lower bound even slightly to n1+exp(−o(d)) would
+imply that parity is not in QAC0, leading to a separation of the language classes computed by
+these circuits: QAC0 ̸= QACC0. Here, QACC0-circuits are families of constant-depth, polynomial-
+size quantum circuits with single-qubit gates and unbounded mod-q gates (for any q > 1 constant
+across the circuits in the family). (Parity gates were shown to be depth-1 equivalent to fanout
+gates [Moo99], so these circuits are layer-for-layer equivalent to circuits with fanout gates instead,
+and it is known that mod-q gates are simulatable by QAC-circuits with parity gates in constant
+depth, and vice versa [GHMP02, HˇS05, TT16].) Echoing Rosenthal’s result [Ros21], Grier & Mor-
+ris [GM24] show that constant-depth, polynomial-size quantum circuits equipped with unbounded
+threshold gates can compute fanout to arbitrarily close approximation.
+Our results use techniques very diﬀerent from all of those used above and address exact compu-
+tation of parity for non-asymptotic n, whereas those in [Ros21, NPVY24, ADOY24, GM24] address
+approximations of various sorts that are asymptotic in nature. Rosenthal’s bounds on depth-2 cir-
+cuits, for example, give asymptotic trade-oﬀs between the closeness of the approximation and the
+maximum number of qubits allowed, and (as he implicitly admits) they are nontrivial only for n at
+least roughly 1060,000. Our current result is incomparable in that we give a tight upper bound on
+n allowing depth-2 circuits to exactly compute parity (even uncleanly).
+3

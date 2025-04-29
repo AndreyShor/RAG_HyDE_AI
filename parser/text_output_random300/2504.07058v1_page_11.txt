@@ -1,0 +1,133 @@
+For any function 𝑔∈𝐶𝑘(𝜕D × [0,𝑇]), the quadrature rule corresponding to quadrature weights 𝑤𝑠𝑏
+𝑛
+at points
+(𝑥𝑛, 𝑡𝑛) ∈S𝑠𝑏, with 1 ⩽𝑛⩽𝑁𝑠𝑏, satisfies
+
+𝑇Z
+0
+Z
+𝜕D
+ℎ(𝑥, 𝑡)𝑑𝑠(𝑥)𝑑𝑡−
+𝑁𝑠𝑏
+∑︁
+𝑛=1
+𝑤𝑠𝑏
+𝑛ℎ(𝑥𝑛, 𝑡𝑛)
+
+⩽𝐶𝑠𝑏
+𝑞𝑢𝑎𝑑(∥ℎ∥𝐶𝑘)𝑁−𝛼𝑠𝑏
+𝑠𝑏
+.
+(2.38)
+Finally, for any function ℎ∈𝐶ℓ(D × [0,𝑇]), the quadrature rule corresponding to quadrature weights 𝑤𝑖𝑛𝑡
+𝑛
+at points
+(𝑥𝑛, 𝑡𝑛) ∈S𝑖𝑛𝑡, with 1 ⩽𝑛⩽𝑁𝑖𝑛𝑡, satisfies
+
+𝑇Z
+0
+Z
+D
+ℎ(𝑥, 𝑡)𝑑𝑥𝑑𝑡−
+𝑁𝑖𝑛𝑡
+∑︁
+𝑛=1
+𝑤𝑖𝑛𝑡
+𝑛ℎ(𝑥𝑛, 𝑡𝑛)
+
+⩽𝐶𝑖𝑛𝑡
+𝑞𝑢𝑎𝑑(∥ℎ∥𝐶ℓ)𝑁−𝛼𝑖𝑛𝑡
+𝑖𝑛𝑡
+.
+(2.39)
+In the above, 𝛼𝑖𝑛𝑡, 𝛼𝑠𝑏, 𝛼𝑡𝑏> 0 and in principle, different-order quadrature rules can be used. The generalization
+error for the Burgess equation and the EFK equation, obtained using Algorithm 2.1, is given in the following form:
+E𝐺⩽𝐶1
+
+E𝑡𝑏
+𝑇+ E𝑖𝑛𝑡
+𝑇
++ 𝐶2(E𝑠𝑏
+𝑇)
+1
+2 + (𝐶𝑡𝑏
+𝑞𝑢𝑎𝑑)
+1
+2 𝑁−𝛼𝑡𝑏
+2
+𝑡𝑏
++ (𝐶𝑖𝑛𝑡
+𝑞𝑢𝑎𝑑)
+1
+2 𝑁−𝛼𝑖𝑛𝑡
+2
+𝑖𝑛𝑡
++ 𝐶2(𝐶𝑠𝑏
+𝑞𝑢𝑎𝑑)
+1
+4 𝑁−𝛼𝑠𝑏
+4
+𝑠𝑏
+
+,
+(2.40)
+where the constants 𝐶1 and 𝐶2 are shown in Appendix E.1 and Appendix E.2.
+2.9
+Stability and Convergence of Multilayer Neural Network
+This section presents the stability and convergence analysis of the neural network for both models. For convenience,
+let 𝑢𝜃= 𝑈.
+2.9.1
+Stability of multilayer neural network
+Here, 𝐿∞bounds are derived for both models.
+Theorem 2.3. Let 𝑈be a neural network solution to the equation
+𝜕𝑈
+𝜕𝑡= 1
+2
+𝜕2𝑈
+𝜕𝑥2 + 𝑅(𝑈),
+(2.41)
+where the reaction term 𝑅(𝑈) satisfies the Lipchitz condition Appendix E.6 along with one of the following conditions:
+• (i) Linear growth condition: If there exists a constant 𝐶> 0 such that
+|𝑅(𝑈)|⩽𝐶(1 + |𝑈|),
+(2.42)
+then 𝑈is uniformly bounded in 𝐿2(D), i.e., there exists a constant 𝑀> 0 such that
+sup
+𝑡∈[0,𝑇]
+∥𝑈(𝑡)∥𝐿2(D)⩽𝑀.
+(2.43)
+• (ii) Exponential decay condition
+|𝑅(𝑈)|⩽𝐶𝑒−𝛼𝑈,
+(2.44)
+for some constants 𝐶, 𝛼> 0. Then 𝑈is uniformly bounded in 𝐿∞(D) and satisfies the estimate:
+sup
+𝑡∈[0,𝑇]
+∥𝑈(𝑡)∥𝐿∞(D)⩽𝐶′𝑒−𝛽𝑡∥𝑈0∥𝐿2(D),
+(2.45)
+for some constant 𝐶′ > 0, decay rate 𝛽> 0 and initial condition 𝑈0.
+Proof. Multiplying the equation (2.41) by 𝑈and integrating over D:
+Z
+D
+𝑈𝜕𝑈
+𝜕𝑡𝑑𝑥= 1
+2
+Z
+D
+𝑈𝜕2𝑈
+𝜕𝑥2 𝑑𝑥+
+Z
+D
+𝑈𝑅(𝑈) 𝑑𝑥.
+(2.46)
+Using integration by part and the Dirichlet boundary condition 𝑈= 0 on 𝜕D,
+Z
+D
+𝑈𝜕2𝑈
+𝜕𝑥2 𝑑𝑥= −
+Z
+D
+ 𝜕𝑈
+𝜕𝑥
+2
+𝑑𝑥⩽0.
+(2.47)
+11

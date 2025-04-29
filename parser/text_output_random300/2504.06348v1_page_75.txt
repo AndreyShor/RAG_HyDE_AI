@@ -1,0 +1,88 @@
+where bg is a finite bit-precision for the Gramian elements, but note that the cost can be reduced given
+information about the lattice geometry. For the sake of readability, let n2
+1+n2
+2+n2
+3 = ˜n and n1+n2+n3 = n.
+Then the leading order cost for the computation of |ϕV
+q ⟩is
+5˜n + 4n2 + 8bgn,
+(184)
+and for the uncomputation
+5
+2 ˜n + 2n2 + 4bgn.
+(185)
+Assuming that the number of bits to encode momenta is large relative to the bit precision with which
+we carry out arithmetic, the overwhelming cost to the ancilla count are the ˜n qubits necessary to en-
+code |kq|2.
+Likewise for the pseudoion term, the subroutine PREPcoul,ion prepares the state |ϕV
+Q⟩∝
+P
+Q∈¯
+G0
+trunc
+q
+π
+Ω|kQ|2 |Q⟩. This preparation proceeds identically as above, but now we span over ¯G0
+trunc mo-
+menta. In general, this quantity will be small given the ion-ion cutoff. However, we make the conservative
+assumption that there is no truncation and we must prepare a state over all momenta in ¯G0. In this case,
+we have the same cost as the electronic case but with n replaced with ¯n and ˜n replaced with ˜¯n to account
+for the increased number of plane waves spanning the ion momentum register.
+E.3.3
+SELcoul,el, SELcoul,ion
+The SELECT for the electronic Coulomb term is given by
+SELcoul,el =
+X
+q∈G0
+X
+c∈{0,1}
+|q, c⟩⟨q, c| ⊗U coul, el
+(q,c)
+(186)
+U coul,el
+(q,c)
+=
+X
+p,p′∈G
+(−1)c([p−q/∈G]∨[p′+q/∈G])|p −q⟩⟨p| ⊗|p′ + q⟩⟨p′|.
+(187)
+The construction is identical to that in Ref. [91], Sec II D (except we iterate over the composite index ¯I),
+and so we describe it only briefly. The addition of the transferred momentum q is complicated by the fact that
+the momenta are not encoded in two’s complement, but in a signed representation. Conversion, addition and
+back-conversion costs 8n Toffolis (Ref. [91], Eq. (94)). Checking whether the added/subtracted momenta
+p −q and p′ + q are in G is not strictly necessary, given that this branch flips high bits in these registers
+to 1 if outside the prerequisite range, and we can select on |0⟩for these bits, implying that that branch lies
+outside the block encoding. However, if the checking is explicitly included then it adds an additional four
+Toffolis (one each to check p −q and p′ + q, one to OR them, and one to AND them with the bit c). We
+do not include the additional Toffolis in the resource count in the main body. As for ancilla qubits, maxi ni
+qubits are needed for the arithmetic and four are needed for the checking.
+The SELECT for the ion-ion term is almost identical:
+SELcoul,ion =
+X
+Q∈¯
+G0
+trunc
+X
+c∈{0,1}
+|Q, c⟩⟨Q, c| ⊗U coul, ion
+(Q,c)
+(188)
+U coul,ion
+(Q,c)
+=
+X
+P,P′∈¯
+Gtrunc
+(−1)c([P−Q/∈¯
+Gtrunc]∨[P′+Q/∈¯
+Gtrunc])|P −Q⟩⟨P| ⊗|P′ + Q⟩⟨P′|.
+(189)
+It therefore incurs an equivalent cost, but with n replaced by ¯n to account for the larger registers needed to
+store the pseudoion momenta.
+E.4
+The local interaction term, V PI
+loc
+E.4.1
+PREP2 (interaction term)
+The subroutine PREP2 prepares a state
+75

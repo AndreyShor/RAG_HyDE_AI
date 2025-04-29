@@ -1,0 +1,189 @@
+15
+1
+2
+3
+4
+5
+6
+7
+8
+9
+Cycle
+0.0
+0.4
+0.8
+1.2
+1.6
+NBν (103)
+(c)
+1
+2
+3
+4
+5
+6
+7
+8
+9
+Cycle
+0.0
+0.6
+1.2
+1.8
+2.4
+1
+2
+3
+4
+5
+6
+7
+8
+9
+Cycle
+0.0
+1.5
+3.0
+4.5
+6.0
+Nα (103)
+(b)
+Nν (103)
+(a)
+1
+2
+3
+4
+5
+6
+7
+8
+9
+0.0
+0.2
+0.4
+0.6
+0.8
+Cycle
+NBα
+(d)
+FIG. 4.
+Control operations.
+(a-b) Mean number of
+displacement and transfer operations when solving a typical
+problem using red-rec (yellow triangles) and bird (blue disks)
+without batching. (c-d) Number of batched displacement and
+transfer operations when solving the same problem using red-
+rec (orange triangles) and bird (red diamonds) with batching.
+along with their efficient implementations, demonstrate
+improved runtime and operational performance.
+We
+showed that sequential implementations of the exact 1D
+and red-rec algorithms on CPUs outperform parallel im-
+plementations on GPUs for small problem sizes, but that
+GPUs might be justified for preparing grids of more than
+N T
+a = 422 = 1764 atoms. We showed that bird, which
+was specifically designed as a generalization of red-rec
+for preparing a center-compact configuration of atoms,
+outperforms red-rec, at the cost of a slight increase in
+computational runtime. We further showed that the aro
+algorithm, which is valid for any arbitrary graph, still
+outperforms both red-rec and bird, but that its runtime
+is too slow for real-time applications, restricting its use
+to benchmarking applications. We finally showed that
+the batching routine decreases the total number of con-
+trol sequences, and thus the total execution time, but
+that the advantage it provides is not significant as the
+trapping lifetime increases beyond 60 s.
+Our results highlight the typical trade-off between run-
+time performance and operational performance, and the
+importance of optimizing and benchmarking implemen-
+tations on processors.
+They further establish formal
+groundwork for the development of improved atom re-
+configuration algorithms and their deployment in prac-
+tical settings. These algorithms can readily be used to
+solve atom reconfiguration problems and assess the per-
+formance of new algorithms.
+Beyond these findings, future work will focus on in-
+tegrating these algorithms into circuit compilation tech-
+niques for quantum processors with dynamic connectivity
+graphs, combining displacement operations with unitary
+control to realize digital quantum circuits. On the the-
+oretical front, open questions remain regarding the de-
+velopment of a general theory of batching algorithms for
+reconfiguration problems defined on arbitrary graphs.
+1
+10
+100
+1000
+Trapping lifetime (s)
+Atom loss (%)
+(b)
+10.0
+12.5
+15.0
+17.5
+20.0
+0
+8
+16
+24
+32
+Width of the grid Ntx
+0
+256
+512
+768
+1024
+ EDI cycles
+(a)
+Red-Rec (CPU) 
+Unbatched
+Red-Rec (CPU) 
+Batched
+FIG. 5.
+Batching routine. (a) Distribution of the number
+of EDI cycles executed using the red-rec algorithm with the
+batching routine (blue disks) or without it (yellow squares).
+The reconfiguration problem is a center-compact configura-
+tion of N T
+a = 322 atoms in a grid of Nt = 32 × 64 traps with
+a loading efficiency of ϵ = 0.6. (b) Mean number of EDI cy-
+cles for preparing a configuraiton of N T
+a = N 2
+tx atoms in a
+rectangular grid of Nt = Ntx × Nty traps with Nty = 2Ntx.
+The number grows quadratically in the absence of batching,
+as opposed to linearly in the presence of batching. (c) Per-
+centage of atom loss for different trapping lifetimes. Batching
+becomes progressively less advantageous as the trapping life-
+time approaches infinity. (d) Ratio of EDI cycles executed
+without batching to those executed with batching. The rela-
+tive gain in performance increases linearly with the width of
+the grid.
+Further improvements can also be made to the bird
+algorithm to speed up its implementation. Currently, for
+each column with negative surplus, the entire grid is tra-
+versed to construct a generalized exact 1D instance from
+scratch. A more efficient approach would be to traverse
+the grid only once after resolving columns with zero or
+positive surplus and represent all atoms in the reservoir
+regions as diagonals in a dedicated data structure, en-
+abling fast updates after each solved column. Another
+possible optimization is to transition from a many-to-
+one approach to a 2d-to-one approach, sampling atoms
+only from columns within a fixed distance d on either
+side. While this should not significantly impact opera-
+tional performance, since columns are typically saturated
+by nearby atoms rather than those from opposite ends of
+the grid, it could substantially reduce computation time.
+However, ensuring correctness and termination requires
+choosing d appropriately to guarantee sufficient available
+atoms.
+Our source code is available for non-commercial use in
+a public repository.
+VII.
+ACKNOWLEDGMENT
+This research was funded thanks in part to CFREF.

@@ -1,0 +1,208 @@
+42
+F. CARAVENNA, R. SUN, AND N. ZYGOURAS
+For |z| ď t
+?
+L we have ¯npzq ď 1
+2pL`1q, equivalently L`1
+¯npzq ě 1` L`1
+2¯npzq, and since ¯npzq ď |z|2`1
+2
+we finally obtain log L`1
+¯npzq ě logp1 `
+L`1
+1`|z|2 q, hence (2.10) holds with ct “ c e´ t4
+c .
+□
+The key tool for the proof of Proposition 2.3 is the following renewal representation of
+the second moment of the partition function developed in [CSZ19a].
+Remark A.1 (Renewal interpretation). Given N P N, we define the integer valued
+renewal process
+τ pNq
+k
+“ T pNq
+1
+` . . . ` T pNq
+k
+with τ pNq
+0
+:“ 0 and i.i.d. increments pT pNq
+i
+qiPN with distribution (recall (1.14) and (1.15))
+P
+`
+T pNq
+i
+“ n
+˘
+“
+1
+RN
+q2np0q,
+1 ď i ď N.
+(A.2)
+For β “ βN in the quasi-critical regime (1.22), we can then write (2.12) as follows: for every
+n P N0,
+UβN pnq “
+ÿ
+kě0
+`
+1 ´ |ϑN|
+log N
+˘k P
+`
+τ pNq
+k
+“ n
+˘
+“ log N
+|ϑN| P
+`
+τ pNq
+KN “ n
+˘
+,
+(A.3)
+where KN is an independent Geometric random variable with mean log N
+|ϑN| .
+Proof of Proposition 2.3. Note that (recall (A.2) and (1.15))
+P
+`
+τ pNq
+k
+ď L
+˘
+ď P
+`
+T pNq
+i
+ď L @i “ 1, . . . , L
+˘
+“ P
+`
+T pNq
+1
+ď L
+˘k “
+´ RL
+RN
+¯k
+.
+Then it follows by (2.12) and (2.13) that
+E
+“
+ZβN
+L p0q2‰
+“ UβN pLq “
+ÿ
+kě0
+`
+1 ´ |ϑN|
+log N
+˘k P
+`
+τ pNq
+k
+ď L
+˘
+ď
+ÿ
+kě0
+`
+1 ´ |ϑN|
+log N
+˘k ` RL
+RN
+˘k ,
+which yields the RHS of (2.14) as an upper bound.
+To get a lower bound, note that we can write P
+`
+τ pNq
+k
+ď L
+˘
+“ p RL
+RN qk P
+`
+τ pLq
+k
+ď L
+˘
+because
+the law of T pNq
+i
+conditionally on T pNq
+i
+ď L is just the law of T pLq
+i
+, see (A.2). By Markov’s
+inequality, we have P
+`
+τ pLq
+k
+ď L
+˘
+ě 1 ´ 1
+LErτ pLq
+k
+s, where
+Erτ pLq
+k
+s “ k Erτ pLq
+1
+s “ k
+RL
+L
+ÿ
+n“1
+n q2np0q ď c k
+RL
+L
+for some
+c ă 8.
+Using ř8
+k“0 k xk “
+x
+p1´xq2 , we obtain
+E
+“
+ZβN
+L p0q2‰
+ě
+ÿ
+kě0
+`
+1 ´ |ϑN|
+log N
+˘k ` RL
+RN
+˘k `
+1 ´ c
+k
+RL
+˘
+“
+1
+1 ´ RL
+RN p1 ´ |ϑN|
+log N q
+ˆ
+1 ´ c
+RL
+RL
+RN p1 ´ |ϑN|
+log N q
+1 ´ RL
+RN p1 ´ |ϑN|
+log N q
+˙
+ě
+1
+1 ´ RL
+RN p1 ´ |ϑN|
+log N q
+ˆ
+1 ´
+c1
+|ϑN|
+˙
+,

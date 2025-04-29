@@ -1,0 +1,63 @@
+ 
+ 
+for i= 1 to num_neurons do 
+  
+ 
+Xk[i] = sigmoid ( ∑StochasticMult ( Xk−1[j], Wk [j, i])
+j
+)  // j= number of inputs  
+ 
+ 
+end for 
+ 
+// stochastic multiplication implemented with XNOR for bipolar stochastic bitstreams 
+ 
+// sigmoid activation implemented with look up tables.  
+ 
+ 
+end for 
+ 
+// Compute gradient  
+Compute gradient GL= 
+𝜕𝜕𝜕𝜕
+𝜕𝜕𝑋𝑋𝐿𝐿 from XL and X0 
+ 
+for k= L to 1 do 
+ 
+Gk-1 ← Gk Wk 
+ 
+∆Wk = ηGkXk-1 
+end for 
+ 
+ 
+// Update weight 
+for k= 1 to L do 
+ 
+Wk (t+1) ← Update (Wk (t), ∆Wk) 
+ 
+η ← λη   // λ denotes learning rate decay 
+end for 
+ 
+ 
+ 
+IV. DISCUSSION AND ANALYSIS OF PERFORMANCE 
+As mentioned earlier, neural networks with one hidden layer and three hidden layers were tested with the MNIST 
+dataset. Each network was tested for 5 quantized states and 11 quantized states for weights and hidden layer nodes. 
+For stochastic Computing (SC), bitstream lengths of 100, 200, 300, 400 and 500 were used. Accuracy was determined 
+for two scenarios for different bitstreams:  
+Accuracy: i. Method 1: Training was conducted for 5 and 11 quantized states across both networks without using 
+SC. Inference computations were carried out both without SC and with SC, utilizing the mentioned bitstreams. 
+ii. Method 2: To explore the improvement of inference accuracy via SC training, the forward pass was carried out 
+with SC and quantization while the backpropagation was carried out with high accuracy wights (not SC). Afterwards 
+inference was conducted with and without SC, like the previous method. 
+The accuracy of the networks for different training and inference combinations are shown in figure 6. 
+For one hidden layer architecture, accuracy is always higher for training with SC. Besides, longer bitstreams generally 
+provide higher accuracy. For 5 quantized states, the highest accuracy of 93.68% was achieved for 400 bits while for 
+11 states, highest accuracy of 94.48% was obtained for 500 bits. 
+For three hidden layer architecture, higher accuracy was also achieved for training with SC for all cases, similar to the 
+one hidden layer architecture. However, the relationship between bitstream length and accuracy is not that 
+straightforward for the deeper network. The highest accuracy obtained for 5 states is 96.62% for 300 bits and for 11 
+states it is 96.82% for 400 bits.  It can be theorized that noise arising from quantization and stochasticity errors assists 
+the model in escaping the local minimum and moving closer to the global minimum of the loss function for the one 
+hidden layer architecture. However, in a three-hidden-layer architecture, the cumulative effect of noise may become 
+too large, potentially averaging itself out and failing to contribute effectively to approach the global minimum. 

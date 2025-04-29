@@ -1,0 +1,83 @@
+4
+where
+Ln =
+
+zn+1
+1
+∂
+∂z1
+, . . . , zn+1
+N
+∂
+∂zN
+⊤
+= z ◦· · · ◦z
+|
+{z
+}
+n+1
+◦∇,
+n ∈Z.
+(S12)
+are the vectorial Euler differential operators. The elements of the vectorial operators Ln form a larger algebra. Indeed,
+defining
+ℓn
+j = zn+1
+j
+∂
+∂zj
+,
+n ∈Z,
+j ∈{1, . . . , N},
+(S13)
+the Koopman generator becomes
+K =
+N
+X
+j,k=1
+Ajkzkℓ−1
+j
+−
+N
+X
+j,k=1
+¯Ajkz−1
+k ℓ1
+j .
+(S14)
+We adopt Ln and ℓn
+j as notation by analogy with the elements of the Witt (more generally, Virasoro) algebra, to
+which the special linear group naturally forms a subalgebra.
+All the forms of the Koopman generator can be useful depending on the context. We will typically use Eq. (S10)
+as in the paper, because of its simple form. In the next section, we show how one can find monomial eigenfunctions
+for the generator K and how they lead to constants of motion.
+II.
+MONOMIAL EIGENFUNCTIONS AND THEIR CONSERVATION
+Among the most fundamental objects in Koopman theory are the eigenfunctions. The goal of this section is to
+provide the proof of Theorem 1 on monomial eigenfunctions from the main text and the details regarding their
+conservation, along with some basic examples.
+A.
+Proof of Theorem 1: Monomial eigenfunctions of the Koopman generator
+Before providing the proof of the first theorem of the paper, we need to introduce an important lemma that defines
+symmetrizable matrices in a more general way than Ref. [81].
+Lemma S4. Consider a real matrix B of size b × b. The following statements are equivalent:
+1. B is symmetrizable;
+2. DB is symmetric, where D is a real diagonal matrix with nonzero diagonal elements;
+3. µjBjk = µkBkj for some µj, µk ∈R \ {0} for all 1 ≤j < k ≤b;
+4.
+(a) Bjk ̸= 0 whenever Bkj ̸= 0 for all 1 ≤j < k ≤b;
+(b) Bi1i2Bi2i3...Biη−1iηBiηi1 = Bi1iηBiηiη−1...Bi3i2Bi2i1 for all sequences i1, i2, ..., iη of elements of {1, ..., b}.
+Proof. (1 ⇔2) By definition.
+(2 ⇔3) Since all the elements of µ = (µj)b
+j=1 and those of the diagonal of D are nonzero, suppose that D = diag(µ).
+Element-wise, DB = (DB)⊤is then equivalent to µjBjk = µkBkj for all 1 ≤j < k ≤b.
+(3 ⇒4) First, all the elements of µ are nonzero and thus, µjBjk = µkBkj implies that Bjk = µkBkj/µj for all
+j, k ∈{1, ..., b}. Consequently, Bkj ̸= 0 implies that Bjk ̸= 0. Second, multiplying together µkBkj = µjBjk for any
+sequence i1, i2, ..., iη of elements of {1, ..., b} gives
+µi1µi2...µiη−1µiηBi1i2Bi2i3...Biη−1iηBiηi1 = µi1µiη...µi3µi2Bi1iηBiηiη−1...Bi3i2Bi2i1 .
+(S15)
+But µj ̸= 0 for all j and therefore,
+Bi1i2Bi2i3...Biη−1iηBiηi1 = Bi1iηBiηiη−1...Bi3i2Bi2i1 .
+(S16)
+(3 ⇐4) The matrix B can be interpreted as the weight matrix of a strongly connected (because of condition 4(a)),
+weighted, and directed graph. If the graph is not connected, simply repeat the following process for each strongly

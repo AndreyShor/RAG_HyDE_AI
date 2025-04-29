@@ -1,0 +1,132 @@
+SINGULARITY AND REGULARITY OF THE CRITICAL 2D SHF
+19
+The idea is to approximate the SHF with the directed polymer partition function. Recalling
+the convergence in distribution (3.8) in the critical regime (1.19), we abbreviate
+WN,k :“ Zβcrit
+N pkq
+tN
+`
+UBpx
+?
+N,δϱ
+ϑk
+?
+Nq
+˘
+where
+σ2
+βcrit
+N pkq “
+1
+RN
+ˆ
+1 `
+ϑk
+log N
+˙
+.
+(3.10)
+For fixed k P N, we have WN,k Ñ Yk in distribution as N Ñ 8. Therefore we can choose
+N “ Nk large enough so that ErΦpWNk,kqs is close to ErΦpYkqs. Let us define
+N1 :“ min
+␣
+N P N: |ErΦpWN,1qs ´ ErΦpY1qs| ď 1
+(
+,
+Nk :“ min
+␣
+N ą Nk´1 : N ě ek|ϑk| and |ErΦpWN,kqs ´ ErΦpYkqs| ď 1
+k
+(
+,
+so that we have by construction N1 ă N2 ă . . . and, for every k P N,
+Nk ě ek|ϑk| ,
+|ErΦpWNk,kqs ´ ErΦpYkqs| ď 1
+k .
+(3.11)
+By the triangle inequality, our goal (3.9) holds if we show that
+lim
+kÑ8 ErΦpWNk,kqs “ ErΦpY qs .
+(3.12)
+We claim that this holds by (1.25), because the directed polymer partition functions WNk,k
+from (3.10) satisfy the assumptions of Theorem 1.8. Note indeed that:
+‚ the sequence βcrit
+N pkq for N “ Nk is in the quasi-critical regime (1.22), since by (3.10)
+σ2
+βcrit
+Nk pkq “
+1
+RNk
+ˆ
+1 `
+ϑk
+log Nk
+˙
+“
+1
+RNk
+ˆ
+1 ´
+|ϑk|
+log Nk
+˙
+with
+1 ! |ϑk| ! log Nk ,
+where |ϑk| ! log Nk holds by the first inequality in (3.11);
+‚ the initial condition UBpx
+?
+N,δϱ
+ϑk
+?
+Nq for N “ Nk satisfies the requirement that δϑk Ó 0
+at rate (1.24), because by definition δϑk :“ e
+1
+2 ϱ ϑk “ e´ 1
+2 ϱ |ϑk| as in (1.11).
+We can thus apply Theorem 1.8 to pWNk,kqkPN: relation (1.25) along the subsequence N “ Nk
+yields directly (3.12) and completes the proof.
+□
+Remark 3.3. The strategy in the proof of Theorem 1.2 is very general and it shows that
+the convergence in distribution (1.20) or (1.21), which are proved for each ϑ in the critical
+regime (1.19), can effectively be transferred to the quasi critical regime (1.22), provided we
+take ϑN Ñ ´8 slow enough. This naturally leads to Metatheorem 1.15.
+3.3. Long-time behaviour of the SHF. We prove Theorem 1.4 on the long-time
+behaviour of the SHF. This is a corollary of Theorem 1.1 on the singularity of the SHF,
+together with the following scale-covariance property, proved in [CSZ23a, Theorem 1.2]:
+@a ą 0:
+Z ϑ
+at
+`
+UBp0,?a Rq
+˘ d“ Z ϑ`log a
+t
+`
+UBp0,Rq
+˘
+,
+(3.13)
+which holds for any t, R P p0, 8q and ϑ P R.
+Proof of Theorem 1.4. To prove (1.13), it suffices to show that
+@R ă 8:
+Z ϑ
+t
+`
+UBp0,Rq
+˘
+d
+ÝÝÝÝÑ
+tÑ8
+0 ,
+(3.14)
+which follows if we show that for some fixed α P p0, 1q the fractional moment vanishes:
+@R ă 8:
+lim
+tÑ8 E
+“
+Z ϑ
+t
+`
+UBp0,Rq
+˘α‰
+“ 0 .
+(3.15)

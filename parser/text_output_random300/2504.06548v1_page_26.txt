@@ -1,0 +1,99 @@
+26
+FIG. 18. Schematic of the range of distinct nonlinear, hysteretic
+transformations produced by the different FMR channel outputs of
+ASI arrays from a single time-series input. (a) shows two exam-
+ple datasets input to the ASI system, a sine wave (pink) and the
+chaotic oscillatory Mackey-Glass time-series (blue). These time se-
+ries are input as minor field loops, with FMR spectra measured at
+each time step. Corresponding outputs of seven different targets are
+shown on the right side of the figure, highlighting the ability of ASI
+to produce many distinct complex nonlinear transformations in par-
+allel. This ability is at the core of the computational performance
+of ASI when measured using spin wave spectra. (b) Examples of
+how the different nonlinear transformations of each time series may
+be combined to reproduce complex arbitrary output functions in a
+manner similar to a Fourier series - with the weighted sum of multi-
+ple sine waves replaced by a weighted sum of the different nonlinear
+responses produced by different FMR frequency channels. Adapted
+from Ref. [28].
+that was not linearly separable/solvable in the input space be-
+comes linearly separable in the output space of the reservoir.
+Fading memory or the ‘echo state’ property253,254 describes
+the ability of the reservoir to provide an output response at a
+given timestep t which contains information on previous in-
+puts at timesteps t −n - with the ‘fading’ aspect meaning that
+the reservoir has a strong response to recent inputs, weaker re-
+sponse to inputs further in the past and eventually no response
+to inputs from far in the past. The fading aspect of the mem-
+ory means the memory capacity of the reservoir is not simply
+saturated by data from very far in the past and dynamically
+‘forgets’ old data in order to be able to respond to more perti-
+nent inputs from the recent past. If the system has no memory,
+it may still perform some useful tasks such as classification
+but it shouldn’t be termed a reservoir computer - other termi-
+nology for memory-free processors include ‘extreme learning
+machines’255.
+Reservoir computing is attractive as it does not require di-
+rect reconfigurability of the physical system during training,
+instead only training a separate single linear layer of weights,
+typically via linear or logistic regression. This makes physi-
+cal implementation easier as it is challenging to engineer reli-
+able, accurate means for meaningfully reconfiguring the state
+and dynamics of a physical system, though it typically comes
+at a cost of reduced computational power relative to fully-
+trained neural networks. ASI based schemes using methods
+to physically write and reconfigure network ‘weights’ through
+means such as electrical, surface probe72,122, magnonic74 or
+all-optical magnetic switching73,125,252 (see also Sec. V).
+An area where reservoirs have an advantage is in time-
+domain tasks such as prediction.
+Training larger neural
+networks for such history-sensitive tasks typically requires
+highly computationally intensive processes such as backprop-
+agation through time. As reservoirs possess internal memory
+and recurrency, they allow history-dependent time-domain
+tasks to be accomplished through cheap regression methods,
+appealing for applications where reducing training cost is im-
+portant.
+In order to design a ‘good’ reservoir, one wants to max-
+imize and control key task-agnostic performance metrics.
+These include nonlinearity and memory-capacity as men-
+tioned above256, with higher nonlinearity essential for solv-
+ing classification and nonlinear transform tasks, and memory-
+capacity key for future prediction tasks. Typically, some com-
+bination of both properties are required, with an ideal rela-
+tive ratio between the two for different specific tasks: A chal-
+lenge of designing reservoir systems is that memory and non-
+linearity are somewhat inversely defined, a system has a fi-
+nite signal-to-noise headroom for its output space and both
+the memory and nonlinearity of a system must share this fi-
+nite headroom. If most of the output signal represents a non-
+linear transform of the current input step, little headroom is
+left to reflect information based on prior time steps, e.g., a
+strongly nonlinear system typically has reduced memory and
+vice-versa. This is termed the ‘memory/nonlinearity trade-
+off’257 and can place limitations. There are routes to surpass-
+ing it, including improving signal-to-noise; so more headroom
+is available, and building interconnected networks of multi-
+ple reservoirs with different individual memory/nonlinearity
+scores, which can combine to give an overall network perfor-
+mance greater than the sum of its parts258,259. This networked
+physical reservoir approach has recently been employed in
+ASI systems with good results28.
+An example of experi-
+mentally assessed memory-capacity and nonlinearity scores
+of ASI arrays is given in Fig. 17, with 17 (h) showing mem-
+ory and nonlinearity metric scores for 3 different single ASI
+arrays, and 17 (j) showing scores where the same 3 arrays
+are now interconnected to form a physical network of multi-
+ple ASI arrays where the output of one array feeds the inputs
+of others, leading to significantly enhanced metric scores and
+task performance.
+How might one increase the memory or nonlinearity of their
+ASI system? Increased memory can be found by tuning the
+ASI such that its microstates change more gradually in re-
+sponse to input or increasing the number of potential states.
+This has been achieved via a combination of the array geom-
+etry and input technique, using a pinwheel ASI and ‘clocked’
+rotating magnetic field input260, and by tuning the magnetic
+energetics of ASI nanoislands such that they are multi-stable

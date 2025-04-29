@@ -1,0 +1,65 @@
+4
+Remark II.12. For synthesizer P we have
+P |0⟩= |1⟩
+(11)
+Remark II.13. We have ⟨k|X⟩= √pkX k for k ∈Ω.
+Our ultimate goal is to investigate multivariate random variables defined as:
+Definition II.14 (Multivariate Random Variable). A multivariate (real) random variable ⃗X of dimension d is a d-
+dimension tuple of (real) random variables ⃗X = (X 1, X 2, · · · , X d), each from probability space (Ω, p). As suggested,
+for α ∈[d] we would denote the α-th element with superscript X α, and an instance for k ∈Ωof that element X α
+k .
+Similarly, we can define a multivariate complex random variable and use notation accordingly. There is also the
+random variable ⃗1 = (1, 1, · · · , 1).
+Lastly, for k ∈Ωan instance of a mulvariate random variable is a vector ⃗Xk = (X 1
+k , X 2
+k , · · · , X d
+k ).
+Drawn from physicists’ playbook, we will utilize both superscripts and subscripts for different indices.
+Remark II.15 (Index). We will consistently use Greek letters as dimension indices in [d] and put them as superscripts;
+conversely, we will use Latin letters as elements from Ωand put them as subscripts.
+Here we introduce notations on operations between random variables:
+Definition II.16 (Operations on Random Variables). Whenever we have an elementary operation (addition, mul-
+tiplication, exponential, trig function, etc) acting on one or two random variables, the outcome is the element-wise
+result of such operation on the random variables, with the same dimensions.
+Remark II.17 (Example). As examples, we have:
+• C = A + B will be a univariate random variable with Ck = Ak + Bk for all outcome k ∈Ω.
+• ⃗B = e ⃗A is a univariate random variable with Bα
+k = eAα
+k , for k ∈Ωand α ∈[d].
+• B = arcsin A is a random variable with Bk = arcsin Ak for k ∈Ω.
+There are some miscellaneous operations and definitions that will be important in the future.
+Definition II.18 (Truncation). Consider a univariate random variable X, we denote its truncation to threshold K
+(where K ⩾0) JXKK to be a random variable such that for all k ∈Ω:
+(JXKK)k =
+
+
+
+
+
+−K
+Xk < −K
+Xk
+|Xk| ⩽K
+K
+X > K
+(12)
+We will also need to define truncation for multivariate random variable.
+Definition II.19 (Truncation of Multivariate Random Variable). Consider a multivariate random variable ⃗X, we
+denote its truncation to threshold K (where K ⩾0) JXKK to be a random variable such that for all k ∈Ω:
+(JXKK)k =
+( ⃗Xk
+ ⃗Xk
+
+2 ⩽K
+0
+otherwise
+(13)
+Definition II.20 (Inner Product). Given vectors ⃗u,⃗v ∈Rd, there inner product ⟨u, v⟩is defined as ⟨u, v⟩=
+Pd
+α=1 uαvα, where subscript is the index for dimension.
+Given vector ⃗u ∈Rd and read multivariate random variable ⃗X, their inner product is a univariate random variable
+⟨⃗u, ⃗X⟩= Pd
+α=1 uαX α.
+Definition II.21 (Vector Encoding). Given vector ⃗u ∈S ⊆Rd, where S is some finite set that is made clear within
+the context, we can use a quantum register in Hilbert space HS to encode the vector denoted as |⃗u⟩.
+A random variable has expectations and variances which we will define here:

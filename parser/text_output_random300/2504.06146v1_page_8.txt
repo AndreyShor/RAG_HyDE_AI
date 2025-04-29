@@ -1,0 +1,117 @@
+8
+Supplemental Material for
+“Entanglement asymmetry in chaotic quantum systems at finite temperature”
+Here we report some useful information complementing the main text. In particular,
+- In Sec. I, we show in detail the derivation of Eq. (5).
+- In Sec. II, we provide a numerical check of the analytical results and some further numerical results.
+I.
+ANALYTICAL DERIVATION OF EQ. (5)
+Equation (5) is the average entanglement asymmetry of the U(1)-symmetric Haar random ensemble with respect
+to a charge orthogonal to the conserved charge that generates the symmetry of this ensemble. For simplicity, we take
+here as conserved charge Qz = PL
+j=1 σz
+j and as orthogonal charge Qx = PL
+j=1 σx
+j . Since by construction any state
+in the ensemble commutes with Qz, which is the charge generating the rotations along the z−axis, we have that the
+asymmetry for Qx is the same as that for Qy. Therefore, we also have that, on average, E[∆S(2)|Qx] = E[∆S(2)|Qy].
+From now on, and for simplicity, we consider as conserved charge Q′
+z = 1
+2(Qz + L) such that the eigenvalues are
+integers q′ = 0, 1, 2, . . . , L. This will not modify our final result: the asymmetry is invariant under this change since
+the projectors in the eigenspaces of Q′
+z and Qz are the same. Let us take a state |Ψ(M)⟩belonging to the ensemble
+of U(1)-symmetric Haar random states with fixed total charge Q′
+z |Ψ(M)⟩= M |Ψ(M)⟩. We divide the full system
+in a subsystem A of ℓA sites and the complement B with L −ℓA sites. To compute the asymmetry of the reduced
+density matrix ρA = Tr(|Ψ(M)⟩⟨Ψ(M)|) with respect to Qx, we need to calculate its symmetrization,
+ρA,Qx =
+X
+k
+Π(x)
+k ρAΠ(x)
+k ,
+(sm-1)
+where Π(α)
+q
+is the projector onto the eigenspace of with eigenvalue q of Qx,A, i.e. the restriction to A of Qx. To
+enlighten the notation, we omit in the projectors the subscript A indicating that they act on the Hilbert space HA.
+To exploit the symmetry properties of ρA, we find convenient to write the projectors Π(x)
+q
+in terms of the projectors
+Π(z)
+q
+of the conserved charge. Due to the algebra of Pauli matrices, they are simply related by
+Π(x)
+k
+= U†Π(z)
+k U,
+(sm-2)
+where U ≡exp(iπQy,A/4). Combining Eqs. (sm-1) and (sm-2), the second moment of the symmetrized density matrix
+is then
+Tr[ρ2
+A,Qx] =
+X
+k
+Tr[U†Π(z)
+k UρAU†Π(z)
+k UρA].
+(sm-3)
+The next step is to write the operator U†Π(z)
+k U in the basis of the eigenstates {|qm⟩} of Q′
+z,A as follows
+U†Π(z)
+k U =
+X
+qq′
+mm′
+A(k)mm′
+qq′
+|qm⟩⟨q′m′| .
+(sm-4)
+The state |qm⟩satisfies Q′
+z,A |qm⟩= q |qm⟩and m labels the degenerate states in the eigenspace with eigenvalue q.
+The coefficients A(k)mm′
+qq′
+are defined as
+A(k)mm′
+qq′
+≡⟨qm| Π(x)
+k
+|q′m′⟩.
+(sm-5)
+Applying Eq. (sm-2) and Π(z)
+k
+= P
+p |kp⟩⟨kp|,
+A(k)mm′
+qq′
+= ⟨qm| U†Π(z)
+k U |q′m′⟩=
+X
+p
+Cmp
+qk Cm′p ∗
+q′k
+,
+(sm-6)
+where Cmm′
+qq′
+is the matrix element Cmm′
+qq′
+≡⟨qm| U† |q′m′⟩. Plugging (sm-4) into (sm-3), we obtain
+Tr[ρ2
+A,Qx] =
+X
+k
+X
+qq′
+mm′
+X
+˜q˜q′
+˜m ˜m′
+A(k)mm′
+qq′ A(k) ˜m ˜m′
+˜q˜q′
+⟨q′m′| ρA |˜q ˜m⟩⟨˜q′ ˜m′| ρA |qm⟩.
+(sm-7)

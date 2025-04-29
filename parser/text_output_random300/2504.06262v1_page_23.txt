@@ -1,0 +1,121 @@
+23
+the center of a quadrant of the Fourier plane (Carpen-
+ter, 2022). This phase reconstruction process is depicted
+in Fig. 11. For this example, we used as an illustration
+k′⊥= π
+d
+
+1
+√
+2,
+1
+√
+2
+
+, where d is the effective camera pixel
+pitch. Using adequate numerical implementations, this
+process can run at several hundreds of Hz for high reso-
+lution images, allowing for fast data acquisition, as well
+as live imaging of the full field and its derived quantities.
+D. Velocity decomposition and kinetic energy spectrum
+Figure 12 Velocity decomposition for two vortices of same
+sign. The phase map is used to compute the total velocity vtot
+in order to achieve the Helmholtz decomposition. Each com-
+ponent gives the velocity contribution of the acoustic waves
+(compressible) and vortices (incompressible).
+As explained in Section II.D, the velocity field of the
+paraxial fluid of light is defined as the phase gradient in
+the transverse plane v = c
+k0
+∇⊥ϕ. As we have shown in
+the previous section, the spatially resolved phase can be
+obtained using interferometric techniques.
+To analyze these velocity fields, we need to recon-
+struct the total velocity from the experimentally mea-
+sured phase map. The total velocity field vtot(r) is de-
+rived from the spatial gradients of the phase after careful
+unwrapping along both spatial axes to avoid phase dis-
+continuities to appear. The unwrapped phases along the
+x and y directions are noted ϕ′
+x and ϕ′
+y, respectively. The
+total velocity field is then expressed as the combination
+of the gradient components along each spatial axis:
+vtot(r⊥) = c
+k0
+∂ϕ′
+x(x, y)
+∂x
+, ∂ϕ′
+y(x, y)
+∂y
+
+.
+(99)
+In the absence of phase singularities, this effectively
+gives a zero curl: ∇× v = 0.
+However this property
+does not hold in the case of the density-weighted velocity
+utot(r⊥) =
+p
+ρ(r⊥)vtot(r⊥). By introducing this quan-
+tity, it becomes possible to distinguishing between the
+compressible (irrotational) and the incompressible (rota-
+tional) components of the velocity field. These compo-
+nents are defined by the Helmholtz decomposition:
+utot(r⊥) = ∇θ(r⊥)
+| {z }
+compressible
++ ∇× A(r⊥)
+|
+{z
+}
+incompressible
+,
+(100)
+where θ(r⊥) is a scalar potential and A(r⊥) a vector
+potential. In momentum space, the Helmholtz decompo-
+sition of the velocity field is given by:
+˜utot(k⊥) = ik⊥˜uθ(k⊥) + ik⊥× ˜uA(k⊥),
+(101)
+with
+˜uθ(k⊥) = k⊥· ˜utot(k⊥)
+i|k⊥|2
+,
+˜uA(k⊥) = ik⊥× ˜utot(k⊥)
+|k⊥|2
+.
+(102)
+By performing inverse Fourier transforms, these compo-
+nents are retrieved in real space:
+∇θ(r⊥) = F−1 [ik⊥˜uθ(k⊥)] ,
+∇× A(r⊥) = F−1 [ik⊥× ˜uA(k⊥)] .
+(103)
+To simplify the computation, the incompressible velocity
+component is often obtained by directly subtracting the
+compressible part from the total velocity (Panico et al.,
+2023).
+This approach allows for a clear separation of
+the compressible and incompressible contributions to the
+fluid’s kinetic energy (Baker-Rasooli et al., 2023).
+An
+example of this velocity decomposition is shown in Fig.12
+for a vortex pair of same sign.
+E. Vortices and topological charge detection
+Vortex
+Saddle
+Nodes
+Figure 13 Topological charge zoology. Phase and associated
+velocity streamplot for a vortex (left), a saddle point (middle)
+and two nodes (right).
+Having a direct access to the phase in fluids of light
+allows for unambiguous identification of topological ob-
+jects. Vortices are defined by a variation ∆ϕ of the phase
+of the wavefunction (or the phase of the electric field
+envelope) by a multiple of 2π due to the uniqueness of
+the condensate wavefunction (or electric field envelope)
+(Pethick and Smith, 2008):
+∆ϕ =
+I
+∇ϕ · dl = 2πℓ,
+(104)

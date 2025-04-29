@@ -1,0 +1,84 @@
+Resampling property and independence from the threshold
+43
+Since the sets (Sθ,1)θ>0 are disjoint, for all n ∈N, there exists a countable set Λ
+c
+1,n ⊆Λ such that
+for all θ ∈Λ \ Λ
+c
+1,n, it holds that ν∞,n(Sθ,1) = 0. Indeed, if that were not the case, the measure
+ν∞,n would assign positive measure to uncountable many disjoint sets, which is, of course, not
+possible. Furthermore, thanks to Lemma 5.5, we know that for each λ ∈Λ ∩(0, n], it holds
+that ν∞,λ = ν∞,n|Aλ. In particular, this implies that for all λ, θ ∈Λ \ S
+n∈N Λ
+c
+1,n, it holds that
+ν∞,λ(Sθ,1) = 0.
+Next, for θ > 0, we introduce the set Sθ,2 ⊆X ⊆X by letting
+Sθ,2
+def= {(∞, ϕ) ∈X : |{x ∈Rd : ϕ(x) −M(ϕ) = −θ}| > 0}
+Consider the mapping Θ : X × Rd →R defined as Θ((b, ϕ), x) = ϕ(x) −M0,b(ϕ). For n ∈N
+and a standard multivariate normal random variable N(0, Id), let ν⋆
+∞,n be the pushforward of
+ν∞,n ⊗N(0, Id) under Θ, which is a measure on R−
+0 . We note that there exists a countable set
+Λ
+c
+2,n ⊆Λ such that for all θ ∈Λ \ Λ
+c
+2,n, it holds that ν⋆
+∞,n(θ) = 0. This is due to the fact that
+the measure ν⋆
+∞,n can only have at most countable many point masses. In turn, this implies that
+for all θ ∈Λ \ Λ
+c
+2,n, it holds that ν∞,n(Sθ,2) = 0. Now, we observe once again that thanks to
+Lemma 5.5, for each λ ∈Λ ∩(0, n], it holds that ν∞,λ = ν∞,n|Aλ. Therefore, this implies that for
+all λ,θ ∈Λ \ ∪n∈NΛ
+c
+2,n, it holds that ν∞,λ(Sθ,2) = 0. Finally, combining the previous discussions,
+the conclusion follows by setting Λ
+def= Λ \ S
+n∈N(Λ
+c
+1,n ∪Λ
+c
+2,n).
+We conclude this section by proving that the proportionality constant appearing in Definition 2.7 lies
+in the interval (0, ∞). Specifically, it suffices to establish the following result.
+Lemma 5.6. For all λ ∈Λ, it holds that E[|Dλ(eΥλ)|−1] ∈(0, ∞).
+Proof. The fact that E[|Dλ(eΥλ)|−1] > 0 follows immediately from the continuity of the field eΥλ and
+from its almost sure decay at infinity, as implied by Lemma 4.20 (see also Remark 4.21). Hence, it
+remains to verify that E[|Dλ(eΥλ)|−1] < ∞. To this end, fix 0 < j ≤b. Then, using Lemma 4.22
+(see also Remark 4.23) and proceeding exactly as in the proof of Lemma 7.12 below, one obtains that
+lim
+L→∞lim sup
+b→∞
+√
+b
+E[|Dλ
+0,j(Υb)|−11{M0,b(Υb)≤λ}] −E[(|Dλ
+0,j(Υb)|−1 ∧L)1{M0,b(Υb)≤λ}]
+ = 0 .
+Since λ ∈Λ, we have that the set of discontinuities of the mapping C(Rd) ∋ϕ 7→|Dλ
+0,j(ϕ)|−1 ∧L is
+assigned measure zero by the law of the field eΥλ. Therefore, we are in a position to apply Theorems A
+and B from which we can deduce that
+lim
+b→∞
+√
+bE[|Dλ
+0,j(Υb)|−11{M0,b(Υb)≤λ}] = αc⋆,λE[|Dλ
+0,j(eΥλ)|−1] .
+By invoking the monotone convergence theorem and Lemma 4.22 (see also Remark 4.23), the claim
+follows by taking the limit as j →∞on both sides of the above expression.
+5.2
+A resampling property
+In what follows, for x ∈Rd, we recall the definition (2.7) of the shift operator τx. We begin with the
+proof of the “resampling property” stated in Proposition 2.9 for the field eΥλ. We will use the notation
+introduced in (3.2), (3.3), and (3.4). Furthermore, we recall that Λ ⊆R+ denotes the set introduced
+in Lemma 5.1.
+Proof of Proposition 2.9. For b ∈N, we recall that Υb = Φb −
+√
+2dab, where the field Φb is such
+that, for all x, y ∈Rd,
+E[Φb(x)Φb(y)] = ab(x) + ab(y) −ab(x −y) ,

@@ -1,0 +1,71 @@
+Preprint. Under review.
+model.param().label(" Geometrical Parameters ");
+model.param().create ("par2");
+model.param("par2").set("Re", "100");
+model.param("par2").descr ("Re", "Reynolds number ");
+model.param("par2").set("rho0", "1e3[kg/mˆ3]");
+model.param("par2").descr ("rho0", "Density ");
+```
+===
+Here are some example errors, their causes, and example actions that should be
+taken to address them:
+1.
+Error: ‘Unknown feature‘...
+Cause: The feature either does not exist, or
+is created under the wrong node.
+It’s possible that a feature may be a de-
+fined under another feature of the interface, instead of under the interface
+directly.
+Eg:
+‘model.component(”comp1”).physics(”int1”).feature(”f2”)...‘
+might
+raise
+an
+error
+because
+the
+correct
+pattern
+is
+‘model.component(”comp1”).physics(”int1”).feature(”f1”).feature(”f2”)...‘
+Ac-
+tion: Ensure the feature actually exists and substitute it with a similar sounding
+feature if it doesn’t, or define it under the correct node.
+2. Error: ‘Undefined material property ’A’ required by FeatureNode F. Cause: An
+essential property needed by F (usually a solver/physics node) has not been defined
+correctly. Action: Edit the code where ‘A‘ is defined. Try to set the property in one of
+the following ways instead. a) Easier Way. You can define a ”userdefined” property
+under the appropriate feature branch of the ‘physics‘ branch. The code in this case
+looks like:
+```
+model.component ("comp1").physics ("int1").feature ("f1").set("A", "
+userdef ");
+model.component ("comp1").physics ("int1").feature ("f1").set("A", "
+A_value ");
+```
+You must have the first line, that sets the property to ‘userdef‘ in this case, otherwise
+f1 might not be able to see A value.
+b) Harder Way. The property value is defined under the appropriate propertygroup
+of the material. The code should look like this:
+```model.component ("comp1 ").material ("mat1").propertyGroup ("def").
+set(" density", "7200");```
+If the property is defined under another propertygroup of the material, the physics
+branch will sometimes not know where to look, and the code could fail silently.
+3. Error: The code saves a value but it’s far from the expected value, even though the
+code is executable. Cause: There might be an issue with the study code. You might
+be missing study settings or the ‘study.run();‘ line which is essential for the default
+numerical solver to run. You should also preferably not generate any ‘model.sol‘
+lines and ensure that the ‘model.study..‘ block ends with ‘model.study.run();‘ as
+this automatically chooses the default COMSOL solver for the problem and runs
+it. Action: Try to redefine the .study() code so it includes only the bare minimum
+described in ‘Cause‘.
+4. Error: ‘Feature cannot be created in dimension‘. Cause: The feature is being created
+in a dimension inconsistent with the dimension of the problem. Action: Examine
+what the dimension of the goemetry is and reassess what the correct dimension of
+the feature should be. For example, a domain feature will typically have the same
+dimension as the geometry and a boundary feature will have D geom -1.
+5. Error: ‘SelectionOutOfBoundsException: Illegal input vector illegal entity number.‘
+Cause: An incorrect or non-existent entity number has been assigned. Action: Please
+recheck the SELECTION INFORMATION and ensure your code is exactly consistent
+with it.
+37

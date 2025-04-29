@@ -1,0 +1,85 @@
+3
+FIG. 2. A comparison between the dynamics of interdependent networks and of the correspondent demographic
+process. Panel (a) shows the mean time to absorption TA (time until the cascading failure process ends, either in a collapse
+of the network or in its survival) and Panel (b), the mean time to failure TF (time until the cascading process ends in a
+failure, conditioned on failure). In both panels, markers present the outcome of an explicit interdependent networks dynamics,
+whereas the dashed lines show the results of the corresponding demographic process. We used Erdös–Rényi networks with
+average degree k = 5, and the results present an average over 104 different network realizations for each N. Note that the
+larger the network, the better the fit to the simulations of demographic theory. For additional details and metrics regarding
+the distribution of outcomes, see Appendix E. The basic scaling with N 1/3, implied in these graphs, is derived below following
+Eq. (5).
+dynamics depend on the strength of the initial attack,
+that is, on the number of nodes that failed in the first
+step, n0. Any such attack can end either when the GCC
+in both networks still exists, in which case we say that
+the attack has failed. The attack is considered successful
+if it leads to a collapse.
+In general, the analysis of such processes involves three
+fundamental questions. First, what is the probability of
+success, second, what is the average number of iterations
+until success, assuming the attack ended successfully, and
+third, what is the average number of iterations until the
+attack is over, where in this third case we do not dis-
+tinguish between successful and failed attacks. At the
+critical point p = ˜p, all three of these quantities depend
+on the size of the network N and on the strength of the
+initial attack n0. As will be shown later, the dependence
+on n0 enters through the variable n3
+0/N.
+Let’s start by comparing two types of numerical re-
+sults: those obtained from a direct simulation of inter-
+dependent networks, a complex simulation that requires
+building a suitable network and tracking the size of the
+mutual GCC at each step, versus the simple and fast
+simulation of the corresponding demographic process.
+For direct simulations, we prepared two interdependent
+networks at their critical state. At the critical point, the
+dynamics within each network is such that, on average,
+each failing node triggers the detachment of one other
+node from the GCC. Accordingly, we identified the corre-
+sponding value of pc by analyzing a single network. Then
+we duplicate it and connect the nodes of the two result-
+ing networks via randomly chosen dependency links. See
+Appendix B for further details.
+Once we have a system at criticality, we can examine
+the characteristics of the collapse process and compare it
+with the results obtained for the demographic process as
+described above.
+Figure 2 demonstrates the power of our technique. For
+the same n0, we examined the mean time until collapse
+TF , and the mean time to absorption TA, and com-
+pare the demographic process (where time is measured
+in generations) with the collapse of the interdependent
+networks (where time is measured in iterations).
+The
+qualitative and quantitative match is very good, which
+demonstrates that the demographic model indeed reflects
+the dynamics of the networks.
+After establishing a quantitative correspondence be-
+tween the two processes, we can apply well-known tech-
+niques from the neutral theory [18, 22] to derive analyt-
+ical solutions for interdependent networks problems. To
+begin, let us consider Π(n0, N), the probability of col-
+lapse given n0 and N. The analogous problem in neutral
+dynamics is the probability of ultimate fixation.
+Switching to continuous time, the Langevin equation
+for a population under pure demographic stochasticity is
+dn/dt = η(t)√n, where η(t) is a white noise process [23].
+As explained, at criticality the cascading failure process
+corresponds to the dynamics of a population for which
+the growth rate is CM(t)/N, where M(t) is the accu-
+mulated number of birth (failed nodes) until t and C
+is a constant. Accordingly, the coupled Langevin equa-
+tions characterizing the interdependent network process
+are delineated as follows:
+dn(t)
+dt
+= CM(t)
+N
+n + η(t)√n,
+dM(t)
+dt
+= n.
+(1)
+As long as the process is neutral (i.e., when M/N is
+small), a process that survived until t admits n(t) ∼t

@@ -1,0 +1,64 @@
+Physics-informed KAN PointNet
+with 𝑃(𝛼,𝛽)
+𝑖
+(𝑧) being the Jacobi polynomial of order 𝑖, 𝑛representing the degree of the polynomial, and Λ𝑖serving as
+trainable parameters. As a result, the total number of trainable parameters in this KAN layer is (𝑛+1)×𝑑output ×𝑑input.
+The Jacobi polynomials 𝑃(𝛼,𝛽)
+𝑛
+(𝑧) are computed using the following recursive formula [113]:
+𝑃(𝛼,𝛽)
+𝑛
+(𝑧) = (𝐴𝑛𝑧+ 𝐵𝑛)𝑃(𝛼,𝛽)
+𝑛−1 (𝑧) + 𝐶𝑛𝑃(𝛼,𝛽)
+𝑛−2 (𝑧),
+(12)
+where the coefficients 𝐴𝑛, 𝐵𝑛, and 𝐶𝑛are defined as:
+𝐴𝑛= (2𝑛+ 𝛼+ 𝛽−1)(2𝑛+ 𝛼+ 𝛽)
+2𝑛(𝑛+ 𝛼+ 𝛽)
+,
+(13)
+𝐵𝑛=
+(2𝑛+ 𝛼+ 𝛽−1)(𝛼2 −𝛽2)
+2𝑛(𝑛+ 𝛼+ 𝛽)(2𝑛+ 𝛼+ 𝛽−2),
+(14)
+𝐶𝑛= −2(𝑛+ 𝛼−1)(𝑛+ 𝛽−1)(2𝑛+ 𝛼+ 𝛽)
+2𝑛(𝑛+ 𝛼+ 𝛽)(2𝑛+ 𝛼+ 𝛽−2)
+.
+(15)
+The initial conditions for the recursion are:
+𝑃(𝛼,𝛽)
+0
+(𝑧) = 1,
+(16)
+𝑃(𝛼,𝛽)
+1
+(𝑧) = 1
+2(𝛼+ 𝛽+ 2)𝑧+ 1
+2(𝛼−𝛽).
+(17)
+Given this recursive formulation, the Jacobi polynomials 𝑃(𝛼,𝛽)
+𝑖
+(𝑧) for 0 ≤𝑖≤𝑛are successively generated. Since
+Jacobi polynomials require inputs in the range [−1, 1], the input vector 𝐫is scaled accordingly before entering the
+KAN layer. To achieve this, we apply the hyperbolic tangent function:
+tanh(𝑧) = 𝑒2𝑧−1
+𝑒2𝑧+ 1.
+(18)
+This scaling strategy has been adopted in previous studies (e.g., [67, 114, 95]). Lastly, when 𝛼= 𝛽= 0, the Jacobi
+polynomials reduce to Legendre polynomials [115, 113]. Chebyshev polynomials of the first and second kinds are
+obtained with 𝛼= 𝛽= −0.5 and 𝛼= 𝛽= 0.5, respectively, while Gegenbauer (ultraspherical) polynomials emerge
+when 𝛼= 𝛽[113].
+Multiple KAN layers can be stacked to form a KAN component. In our implementation within PointNet (see Sect.
+4), we utilize shared KAN components. For the definition and detailed explanation of shared KAN layers, one might
+refer to [64]. A shared KAN component with two layers of sizes 1 and 2 is denoted as (1, 2), and a component
+with three layers is expressed as (1, 2, 3).
+4. Architecture of physics-informed PointNet with KAN layers
+The main objective of PI-KAN-PointNet is to obtain the solution of inverse problems over the 𝑚number of domains
+with irregular geometries, simultaneously. Figure 1 illustrates the architecture of PI-KAN-PointNet. In a set containing
+𝑚domain, each domain 𝑉𝑖(1 ≤𝑖≤𝑚) is represented by a point cloud 𝑖with 𝑁points, where 𝑖= {𝒙𝑗∈ℝ𝑑}𝑁
+𝑗=1.
+The spatial dimension of 𝑉𝑖, and thus of 𝑖, is denoted by 𝑑. In this study, we focus on two-dimensional problems,
+setting 𝑑= 2. Therefore, 𝒙𝑗(1 ≤𝑗≤𝑁) represents the spatial coordinates of each point in the point cloud 𝑖.
+We denote the 𝑥and 𝑦components of 𝒙𝑗as 𝑥𝑗and 𝑦𝑗, respectively. In PI-KAN-PointNet, an end-to-end mapping is
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 5 of 25

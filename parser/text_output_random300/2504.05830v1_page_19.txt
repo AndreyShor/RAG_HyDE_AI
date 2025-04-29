@@ -1,0 +1,92 @@
+Springer Nature 2021 LATEX template
+Human Activity Recognition using RGB-Event based Sensors
+19
+Table 3 Results on the PokerEvent dataset (RGB+Event).
+No.
+Algorithm
+Publish
+Backbone
+Top-1
+#01
+C3D [70]
+ICCV-2015
+3D-CNN
+51.8
+#02
+TSM [71]
+ICCV-2019
+ResNet-50
+55.4
+#03
+ACTION-Net [75]
+CVPR-2021
+ResNet-50
+54.3
+#04
+TAM [74]
+ICCV-2021
+ResNet-50
+53.7
+#05
+V-SwinTrans [76]
+CVPR-2022
+Swin Transformer
+54.1
+#06
+TimeSformer [73]
+ICML-2021
+ViT
+55.7
+#07
+X3D [72]
+CVPR-2020
+ResNet
+51.8
+#08
+MVIT [77]
+CVPR-2022
+ViT
+55.0
+#09
+SSTFormer [44]
+arXiv-2023
+SNN-Former
+54.7
+#10
+SAFE [14]
+PR-2024
+VLM
+57.6
+#11
+Ours
+-
+Multi-modal HCO
+57.4
+5.4 Component Analysis
+In this section, we will isolate each component to analyze our MMHCO-
+HAR framework on our HARDVS 2.0 dataset. As shown in Table 4, the
+vHeat denotes only employing the vHeat model to replace the original back-
+bone network and fusing bimodal features through the concatenate operation,
+achieving an accuracy of 52.3% on acc/top-1. To enhance modality-specific
+visual heat conduction and improve information interaction between blocks,
+we design modality-specific continuous FVEs, which improves the results to
+52.8% acc/top-1. Concurrently, we propose three fusion strategies for different
+feature combinations and introduce policy networks to adaptively routing and
+select the appropriate fusion method. In this way, there has been a certain
+improvement compared to the initial version, and the issue of imbalance in
+multi-modal has been alleviated. Finally, combining the above innovations, we
+develop a multi-modal HCO model, which achieves even higher accuracy on
+both acc/top-1 and acc/top-5 metrics on the HARDVS 2.0 dataset. Through
+experimental analysis of the above components, it is evident that our proposed
+modality-specific continuous FVEs and policy routing adaptive fusion mecha-
+nism significantly aid in learning multi-modal human activities, demonstrating
+the effectiveness of our method for HAR tasks.
+5.5 Ablation Study
+• Analysis of Number of Input Frames. In this section, we analyze the
+influence of various experimental parameters through ablation studies. Firstly,
+we examine the effect of the number of input frames on model performance.
+As illustrated in Fig. 5 (a), we conduct experiments using 4, 8, and 12 input
+frames per modality for comparison. The results indicate that the best recog-
+nition accuracy is achieved when each modality inputs 8 frames. We believe
+that using fewer frames limits the model’s ability to capture sufficient tempo-
+ral information, leading to inaccurate video recognition. Conversely, inputting

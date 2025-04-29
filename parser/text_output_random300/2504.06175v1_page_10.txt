@@ -1,0 +1,129 @@
+10
+0
+20
+40
+60
+80
+100
+120
+140
+160
+Delay time µs
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+Bell Fidelity
+Recurrence Z2B
+ρ1 - Data
+ρ1 - Simulation
+ρ2 - Data
+ρ2 - Simulation
+Distilled - Simulation
+Distilled - Data
+(a) Bell fidelity of the non-local Bell pairs prior to and after
+recurrence Z2B.
+0
+20
+40
+60
+80
+100
+120
+140
+160
+Delay time µs
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Bell Fidelity
+Recurrence X2B
+ρ1 - Data
+ρ1 - Simulation
+ρ2 - Data
+ρ2 - Simulation
+Distilled - Simulation
+Distilled - Data
+(b) Bell fidelity of the non-local Bell pairs prior to and after
+recurrence X2B.
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+Fb
+0.925
+0.950
+0.975
+1.000
+1.025
+1.050
+1.075
+1.100
+1.125
+Fa/Fb
+Recurrence Z2B
+Simulation
+Data
+(c) Fractional change in Bell fidelity with recurrence Z2B.
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+Fb
+0.85
+0.90
+0.95
+1.00
+1.05
+1.10
+Fa/Fb
+Recurrence X2B
+Simulation
+Data
+(d) Fractional change in Bell fidelity with recurrence X2B.
+FIG. 9. Data and simulation for recurrence Z2B and X2B on qubits (0,1,2,3) of ibm kyiv. Solid lines are simulations assuming
+reported noise parameters as described in Table. III and IV of App. E. Additional plots in App. H, Fig. 16 and 17
+does not indicate consistent improvement in Bell fidelity
+with distillation. To get improvements we notice (see Ta-
+ble III in App. E) that, in general, the dominant source of
+noise on the qubits under consideration is T2 noise (i.e.,
+Z errors) while the ZB2 catches T1 noise, i.e., X and
+amplitude damping type errors.
+The X2B distillation protocol catches Z errors. Re-
+sults from implementing this protocol in both simulation
+and experiment is given in Fig. 9b. In this figure, there
+is reasonable agreement between the experimental data
+and numerical simulations. In addition, notice there is
+general improvement in Bell fidelity, indicating that the
+likely dominant source of T2 errors are caught by X2B
+recurrence. Improvements are not seen for higher Bell
+fidelities. This likely occurs due to both measurement
+errors and asymmetry in Bell fidelities of the two Bell
+pairs being distilled. The former are not removed by dis-
+tillation while the latter generally shrink the noise region
+where distillation shows improvement. In specific cases
+simulations indicate that lowering measurement errors to
+zero can allow distillation to give improvements even for
+high fidelity Bell pairs.
+D.
+Three Bell distillation experiment with idle
+noise
+Using the same technique for experiment and num-
+bers as in the previous sections we extend the experi-
+ment to the three Bell (ZX3B) protocol (circuit avail-
+able in App. G, Fig. 14) and results of this are shown in
+Figs. 10. Again, we get reasonable agreement with the
+numerics using just the backend calibration parameters.
+We see two cases, in the first (see Fig. 10a) we have small
+acceptance ratio and no real improvement in the Bell
+state; here the noise parameters are quite large. In the

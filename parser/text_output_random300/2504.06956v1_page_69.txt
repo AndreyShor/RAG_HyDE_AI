@@ -1,0 +1,143 @@
+Proof of Proposition 6.1
+69
+Now, for x ∈[L/2, A + L] and u ∈[b1/4, b3/4], we need to bound from above the following
+difference,
+E0,u,b
+h
+|Fλ
+b,x−L(Υu+x
+b
+) −Fλ
+b,x−L,L(Υu+x
+b
+)|1{M0,b(Υu+x
+b
+)≤λ}
+i
+.
+(7.37)
+To this end, recalling the definition of the function Fλ
+k,x in (7.1) and that of Fλ
+k,x,L in (7.9), we note
+that
+|Fλ
+b,x−L(Υu+x
+b
+) −Fλ
+b,x−L,L(Υu+x
+b
+)| ≤(|Dλ
+0,b(Υu+x
+b
+)|−1 −L)1{|Dλ
+0,b(Υu+x
+b
+)|−1≥L} .
+Therefore, plugging this into (7.37) and using Lemma 4.22, there exists δ = δ(d) ∈(0, 1) such that
+E0,u,b
+h
+|Fλ
+b,x−L(Υu+x
+b
+) −Fλ
+b,x−L,L(Υu+x
+b
+)|1{M0,b(Υu+x
+b
+)≤λ}
+i
+≤
+Z ∞
+L
+P0,u,b(|Dλ
+0,b(Υu+x
+b
+)|−1 ≥η, M0,b(Υu+x
+b
+) ≤λ)dη
+≲u
+b
+Z ∞
+L
+η−(1+δ)dη ≲u
+b L−δ .
+Therefore, the conclusion follows readily from the above bound.
+We now need to show how we can remove the first two indicator functions appearing on the second
+line of Gλ
+(7.35). To this end, we consider
+Gλ
+(7.38)
+def= α
+Z A+L
+L/2
+e
+√
+2d(x−L)
+Z b3/4
+b1/4
+e−u2
+2b
+√
+2πb
+(u + x)
+· E0,u,b
+h
+Fλ
+b,x−L,L(Υu+x
+b
+)1{M0,b(Υu+x
+b
+)≤λ}
+i
+dudx ,
+(7.38)
+and we claim the following lemma.
+Lemma 7.13. For any λ > 0, ε > 0 and A ≥0, there exist L ≥0 sufficiently large, and b ≥0
+sufficiently large such that
+|Gλ
+(7.38) −Gλ
+(7.35)| ≤ε .
+Proof. We divide the proof in two steps. First, we prove that the indicator function involving the
+Brownian motion can be removed. Then, we show that the indicator function concerning the quantity
+M0,b+1,b(Υu+x
+b
+) can also be disregarded.
+Step 1: We start by showing how we can remove the indicator function regarding the Brownian
+motion. To this end, we fix x ∈[L/2, A + L] and u ∈[b1/4, b3/4], and we proceed to bound from
+above the following quantity,
+E0,u,b
+h
+Fλ
+b,x−L,L(Υu+x
+b
+)1{infs∈[0,b] Bs<−x}1{M0,b(Υu+x
+b
+)≤λ}
+i
+,
+(7.39)
+which arises when considering the difference Gλ
+(7.38) −Gλ
+(7.35). Since the quantity Fλ
+b,x−L,L(Υu+x
+b
+) is
+by definition bounded above by L, we can proceed to estimate the following probability
+P0,u,b
+
+inf
+s∈[0,b] Bs < −x, M0,b(Υu+x
+b
+) ≤λ
+
+,
+for x and u as specified above. By monotonicity, since x > L/2, the probability in the previous
+display is bounded above by
+P0,u,b
+
+inf
+s∈[0,b] Bs < −L/2, M0,b(Υu+x
+b
+) ≤λ
+
+.

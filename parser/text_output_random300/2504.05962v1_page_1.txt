@@ -1,0 +1,65 @@
+*1 Niigata University 
+*2 Max Planck Institute for Solar System Research 
+ Autoencoder-Based Detection of Anomalous Stokes V Spectra in the  
+Flare-Producing Active Region 13663 Using Hinode/SP Observations 
+ 
+Jargalmaa BATMUNKH*1, Yusuke IIDA*1, Takayoshi OBA*2 
+ 
+ABSTRACT 
+ 
+Detecting unusual signals in observational solar spectra is crucial for understanding the features associated with 
+impactful solar events, such as solar flares. However, existing spectral analysis techniques face challenges, 
+particularly when relying on pre-defined, physics-based calculations to process large volumes of noisy and complex 
+observational data. To address these limitations, we applied deep learning to detect anomalies in the Stokes V spectra 
+from the Hinode/SP instrument. Specifically, we developed an autoencoder model for spectral compression, which 
+serves as an anomaly detection method. Our model effectively identifies anomalous spectra within spectro-
+polarimetric maps captured prior to the onset of the X1.3 flare on May 5, 2024, in NOAA AR 13663. These atypical 
+spectral points exhibit highly complex profiles and spatially align with polarity inversion lines in magnetogram 
+images, indicating their potential as sites of magnetic energy storage and possible triggers for flares. Notably, the 
+detected anomalies are highly localized, making them particularly challenging to identify in magnetogram images 
+using current manual methods. 
+ 
+Keywords: Solar physics, Sunspot, Spectro-polarimetry, Deep learning, Anomaly detection 
+ 
+1. INTRODUCTION 
+Solar spectra provide physical parameters such as 
+Doppler velocity, temperature, and magnetic fields. 
+Identifying unusual signals in the spectra is significantly 
+important from the perspective of observational 
+discovery. The Hinode Solar Optical Telescope 
+Spectral-Polarimeter (Hinode SOT/SP) mission [1,2] has 
+continuously collected high-resolution, full-Stokes 
+solar 
+spectro-polarimetric 
+data 
+[3]. 
+However, 
+conventional methods for analyzing these spectral data 
+lack flexibility because they rely on time-consuming, 
+human-driven setups for statistical calculations. 
+Additionally, high noise levels in the observations 
+complicate data processing and often necessitate 
+manual inspections. Furthermore, the rapidly increasing 
+volume of observational data collected by the satellite 
+further challenges the ability of conventional methods 
+to examine each spectrum individually.  
+Machine 
+learning 
+(ML) 
+approaches 
+have 
+demonstrated increasing efficacy in handling large-
+scale, complex data, making them well-suited for 
+processing and analyzing solar spectral data. Previous 
+studies on solar flare prediction using spectral data [4,5] 
+have applied ML techniques primarily focused on 
+Stokes I profiles, which contain information mainly on 
+temperature and velocity, with pre-selected features for 
+model input. Incorporating the other Stokes profiles (Q, 
+U, and V) would enhance the analysis to improve flare 
+prediction accuracy because these profiles carry 
+intrinsic information strongly influenced by the 
+magnetic field in the solar atmosphere. To address this, 
+we propose a method specifically adapted to enable 
+detecting anomalous profiles in both Stokes I and V 
+spectra from Hinode/SP data, using a compression 

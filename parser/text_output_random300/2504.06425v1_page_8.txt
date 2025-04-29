@@ -1,0 +1,56 @@
+8
+NEURAL NETWORK POLYCONVEXIFICATION
+and ◦denotes the Hadamard product, i.e. the element-wise product between two vectors. The
+functions gi and ˜gi are activation functions.
+Proposition 4.2. The function Φpc
+pred( · ; ζ) is polyconvex in the signed singular values vector ˆν,
+that is hc
+pred( · ; ζ; θ) is convex in ˆm, i.e. the minors m(ˆν) of the signed singular values vector ˆν,
+provided that the weights W (z)
+1:k−1 are non-negative, and all activation functions gi associated with
+the ˆm path are convex and non-decreasing.
+In the present work, FICCN is employed when the function to be predicted does not depend
+on parameters but only on the signed singular values vector ˆν, and PICCN is employed when the
+function to be predicted depends on the signed singular values vector ˆν along with additional
+parameters ζ. Indeed, the use of PICCN allows to ensure convexity with respect to the minors
+m(ˆν) of the signed singular values vector ˆν while relaxing the constraints on the ζ-path, allowing
+a better representation.
+Remark 4.3. Using ICNN is not the only way to enforce convexity (resp. polyconvexity). For
+instance, in [TSRT22] the convexity condition is ensured by penalisation with an additional term
+in the loss function that imposes positive-definiteness of the Hessian matrix. [TCT22] present a
+formulation based on neural ordinary differential equations (N-ODEs) in which polyconvexity
+of the strain energy is automatically satisfied by the proposed formulation. [CG22] considers
+enforcing convexity in the strong sense, by defining classes of surrogate models that satisfy the
+condition a priori. Their approach relies on simple integral representations to define an operator
+that transforms any arbitrary function (and in particular, a free neural network) into a convex
+function. [LK23] employ polyconvex activation functions and suitable network architectures to
+ensure polyconvexity.
+4.3. Enforcing the Upper Bound Relation. By definition, the polyconvex envelope Φpc of
+the function Φ is the largest polyconvex function below Φ. Consequently, the goal is to ensure
+that the polyconvex envelopes predicted by the neural network are below the function Φ. In
+what follows, we present different approaches and their limitations to achieving this. The direct
+approach to ensure the upper bound relation in the neural network, discussed in Sections 4.3.1
+and 4.3.2, is to integrate constraints in the architecture, while a weak approach is to penalise the
+loss function as discussed in Section 4.3.3.
+4.3.1. Multiplication Layer. One possible way to enforce the upper bound relation is to add a
+layer in the architecture which performs a multiplication operation. In this case, the output
+layer of the usual neural network consists in a neuron with an activation function g whose image
+lies between 0 and 1. Then, the modified output is calculated via a so-called multiplication
+layer, which performs the product of this last quantity and the values of the function Φ, thereby
+guaranteeing that the prediction lies below the function Φ. However, such a function g is often
+nonconvex, which causes nonconvexity of the overall network.
+4.3.2. Minimum Operation Layer. Another possible way to enforce the upper bound relation is
+to add a layer in the architecture which performs a minimum operation, i.e. the final output is
+derived by taking the pointwise minimum between the predicted output and the value of the
+function Φ, i.e. min{Φpc
+pred,i, Φi}, where the subscript i denotes the evaluation of these functions
+at the ith learning input data point given as tuple of the form (m(ˆν), ζ). However, numerical
+experiments have shown that this constraint is too restrictive. Indeed, if the prediction is already
+below the function Φ, then the model stops to learn.
+4.3.3. Penalisation via Loss Function. Instead of adding constraints directly in the architecture,
+the upper bound relation can be imposed in a weak sense by penalisation. To achieve this, a
+custom loss function is designed, which penalises more severely if the prediction of the neural
+network is above the function Φ during the training process. By minimising this loss function,
+the network should ultimately achieve predictions below Φ. The loss function is thus written as
+(14)
+L = Lmse + λineq Lineq

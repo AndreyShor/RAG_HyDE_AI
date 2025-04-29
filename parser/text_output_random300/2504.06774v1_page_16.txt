@@ -1,0 +1,26 @@
+to prepare input-output pairs for time-series forecasting tasks. This method is particu-
+larly suited for recurrent neural networks (RNNs), LSTM, or similar sequential models,
+where the temporal dependency between consecutive data points plays a crucial role in
+prediction accuracy.
+The rolling window mechanism is designed to slide over the time-series data, extracting
+fixed-length sequences (seq_len) as inputs and the subsequent time steps (horizon) as
+outputs. This approach ensures that the model can learn temporal patterns effectively
+while maintaining a consistent input-output structure.
+Specifically, for each batch of data:
+• A window of size seq_len is used to extract the input sequence, denoted as X ∈R,
+where X represents the set of input sequences consisting of seq_len consecutive time
+steps from the data set.
+• The output target, y ∈R, is constructed by taking the next horizon time steps im-
+mediately following the input sequence. Here, y represents the set of corresponding
+output targets that the model aims to predict.
+The rolling window approach allows the generator to traverse the data set in over-
+lapping segments, ensuring that each time step contributes to both input and output
+sequences. This overlap is critical for extracting meaningful temporal correlations, espe-
+cially in scenarios with limited data.
+Figure 4: Illustration of the rolling window mechanism [1].
+2.5
+Autoregression
+Autoregression relies on the regression of a variable against one or more past values of itself
+[52]. This approach is particularly effective for sequential data, as it builds predictions
+step-by-step by feeding prior predictions as inputs to predict subsequent values.
+16

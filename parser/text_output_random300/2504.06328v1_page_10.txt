@@ -1,0 +1,108 @@
+models as trajectories on unitary manifolds also il-
+luminates how QML can achieve transformations
+that classical models cannot easily mimic. A uni-
+tary evolution is inherently reversible and can cre-
+ate highly non-linear entangling mappings of input
+states to output states. For example, a sequence of
+unitary operations in a quantum circuit can imple-
+ment a far-from-trivial permutation of basis states
+or an interference pattern that would correspond to
+a complicated oscillatory function in a classical net-
+work. Yet in the unitary viewpoint, this could sim-
+ply be a smooth path connecting the identity oper-
+ator to some target operator on the manifold. The
+continuity and differentiability of paths on U(N)
+allow the use of continuous optimization (gradient-
+based) to find these transformations, something
+classical combinatorial optimization (for, say, de-
+signing a logic circuit) would find intractable for
+large N. In essence, the unitary manifold picture
+reinforces the idea that QML’s search space is dra-
+matically larger and more nuanced, but still struc-
+tured (by Lie group geometry) so that it can be
+navigated systematically.
+3.4. Expressive Power as a Superset of Classical
+Models
+Bringing the above threads together, we empha-
+size that QML’s greater expressivity can be un-
+derstood as a direct consequence of operating in
+this superset geometric space. Classical GML mod-
+els, grounded in Euclidean spaces or differentiable
+manifolds of comparatively low dimension, are en-
+compassed within QML when we restrict quantum
+states to behave classically (e.g. forcing all quan-
+tum operators to commute or disallowing entan-
+glement between qubits). For instance, a classical
+neural network can be seen as a limit of a quan-
+tum circuit where all qubits remain unentangled
+and effectively carry classical bits or probabilities
+forward. In that limit, the quantum Hilbert space
+factors into a direct product of one-dimensional
+subspaces, the Fubini–Study metric reduces to a
+flat metric on those subspaces, and the quantum
+model loses its advantage, collapsing onto a clas-
+sical geometric model.
+However, away from that
+restricted limit, QML models can realize state dis-
+tributions and decision boundaries of vastly greater
+complexity.
+The quantum state space’s large di-
+mensionality and curvature allow encoding of in-
+tricate functions in the amplitudes of a quantum
+state.
+A concrete example is in quantum kernel
+methods for machine learning: one can map an in-
+put x to a quantum feature state |ϕ(x)⟩in an expo-
+nentially large Hilbert space, and the inner product
+between two such states |⟨ϕ(x)|ϕ(x′)⟩| (which is di-
+rectly a Fubini–Study cosine of the angle between
+them) serves as a kernel. Some quantum kernels
+have no known efficient classical simulation because
+they implicitly compute similarities via interference
+in a huge feature space. From the geometric view-
+point, the data points x are being embedded on the
+quantum state manifold in such a way that even a
+simple linear separator in that space (implemented
+by a measurement or a fixed unitary) corresponds
+to a highly non-linear decision boundary in the orig-
+inal space. This is akin to the classical kernel trick
+but boosted to “feature spaces” that are quantum
+state manifolds rather than RN.
+Not only can QML represent classical models and
+then some, but certain computational procedures
+are fundamentally more efficient on quantum ge-
+ometric representations. Optimization landscapes
+defined on quantum manifolds can have qualita-
+tively different characteristics.
+For example, a
+highly entangled ansatz might reach a good solu-
+tion with fewer parameters than a classical model
+would require, because each parameter in a quan-
+tum circuit can simultaneously influence an expo-
+nentially large state (through superposition of ba-
+sis states). Additionally, QML can exploit quan-
+tum parallelism and interference to evaluate global
+properties of a dataset. A striking case is quantum
+principal component analysis, where a quantum al-
+gorithm can estimate the principal components of
+a density matrix (which encodes a data covariance)
+in time polylogarithmic in the matrix dimension,
+something infeasible classically for very large ma-
+trices. While this is a specific algorithmic example
+beyond our current scope, it stems from the fact
+that a quantum state can encode an entire large
+vector or matrix as its amplitudes and evolve it in
+a coherent fashion. Geometrically, one might say
+the quantum computation is moving along a clever
+path in a huge state space that traverses an infor-
+mative subspace efficiently, whereas a classical al-
+gorithm would get lost exploring an exponentially
+large vector space.
+In conclusion, quantum machine learning should
+be viewed as a superset of geometric machine learn-
+ing. It inherits all the structural advantages of clas-
+sical approaches (manifolds, metrics, natural gra-
+dients, symmetry exploitation) but operates in a
+far more expansive arena of quantum states.
+By
+10

@@ -1,0 +1,127 @@
+12
+ing the pulse measurement system on the bench. Rather
+than utilize a fiber-coupled APD, which has a bandwidth
+and performance defined by refractive optics, we opted
+for a free-space APD with an SMA fiber adapter to allow
+the fiber to shine freely on the APD. As a result, we don’t
+expect the coupling to be highly efficient, but the APD
+output with our nominal fiber setup was found to drive
+the APD halfway to saturation as it was. We therefore
+did not perform any additional efficiency enhancements
+prior to the testing described here, and left the APD set
+to its maximum gain setting.
+The results of this testing are summarized in the main
+text, with power throughput summarized for comparison
+to the power meter in Table III. Our best throughput
+in warm (300 K) testing of the MEMS setup, with the
+spot aligned at the maximum responsitivity point, was a
+power of about 100 nW. This is only about 20 nW lower
+than the loopback test using the 10µm fiber in a 4 K
+test, suggesting that additional losses in the warm APD
+setup are small, and coupling efficiency into the output
+fiber is fairly high. An excess loss of 16 dB was measured
+compared to an expected loss of 2 dB or less, which we
+now attribute to substantially higher than expected loss
+in the 105 µm Thorlabs output fiber.
+Appendix B: Expected Optical Performance
+This paper describes the cryogenic performance of a
+new optical scanning and chopping unit that uses a
+broad-band optical focusing apparatus in place of the
+refractive focuser used previously Ref [14]. The new de-
+sign, with its separate focusing and collimation optics,
+offers flexibility to define the scan range, spot size, and
+chopping-pulse timing during scanner construction. Be-
+low, we show in detail how specific component choices
+affect these three MEMS-scanner metrics.
+1.
+Spot Size
+First, consider the case where a perfectly collimated
+monochromatic source is focused to a diffraction-limited
+spot at its focal length, a distance f0 from the focusing
+optic. After traveling a distance l, the beam is incident on
+a movable MEMS mirror, which can cover its full angular
+deflection in some time t, sweeping the beam across a
+focal plane at distance f0 −l from the MEMS mirror.
+This setup is pictured in Figure 1 in the main text.
+Consider a simple model for the beam waist size when
+diffraction-limited at the focal spot. The diameter do of
+the beam, assuming perfect collimation, is given by:
+d0 = 2fc · NA
+(B1)
+where NA ∼n sin θ is the fiber’s numerical aperture, n
+index of refraction, and fc is the focal length of the re-
+flective collimator mirror. For a diffraction limited spot,
+the size of the central diffraction peak can be defined as:
+ddiff = (1.22)λf0
+d0
+= f0
+fc
+1.22λ
+2NA
+(B2)
+In practice, the divergence of the collimated beam lim-
+its longer focal length optics, and we need to include the
+impact of beam divergence on the spot size. For the fiber-
+based reflective collimators we use, the divergence angle
+of the beam is given as:
+θc = df
+fc
+(B3)
+where df is the core diameter of the input optical fiber.
+To calculate the spot diameter at the focal length of the
+focuser from a beam with a known divergence angle,
+ddiv = θcf0 = df
+f0
+fc
+(B4)
+For gaussian beams, we expect the divergence and diffrac-
+tive effects to add in quadrature, so we have the effective
+spot size at the focus of
+deff = f0
+fc
+q
+d2
+f + (1.22λ/2NA)2
+(B5)
+= f0
+d0
+q
+(2NA · df)2 + (1.22λ)2.
+(B6)
+In the limit that the fiber is much larger than the diffrac-
+tion limited spot, this is just a magnifier, where an image
+of the fiber is projected at the focal point of the focusing
+optic, scaled by the magnification ratio M = f0/fc.
+2.
+Scan Range
+For scanning applications, we care about both the spot
+size and scan range. The beam waist varies with distance
+from the main focusing mirror as d = d0 l
+f0 where d0 is
+the initial size of the collimated beam. For a mirror with
+reflector of size dr, the maximum distance from the focal
+spot is:
+la = (f0 −l)max = dr
+d0
+f0 =
+dr
+2NA
+f0
+fc
+(B7)
+All mirrors considered here have small angular deflec-
+tions, and we can thus approximate the scan range dis-
+tance as:
+dscan ≈2θdla = drθd
+NA
+f0
+fc
+(B8)
+where θd is the angle the beam is reflected. The beam
+angle is doubled for a given angular displacement of the
+mirror θm, so we find θd = 2θm, and:
+dscan ≈2drθm
+NA
+f0
+fc
+(B9)

@@ -1,0 +1,143 @@
+5
+the sign of δ is opposite for the red and blue drives, if
+Ωeff can be made equal for the two transitions during the
+MS gate, these contributions cancel, as is the case for a
+continuous-wave laser [32].
+|01
+|10
+|n
+|n−1
+|n + 1
+|11
+|00
+ωr
+ωb
+ωg
+AOM
+frep
+Red Comb
+Blue Comb
+Global Comb
+/2π
+/2π
+a)
+b)
+ω 1 −0
+δ
+FIG. 4: Raman transitions and frequency combs to
+generate MS(θ). In a), the level structure for the
+MS(θ) Raman transitions. |n⟩is the initial phonon
+number in a particular motional mode, and red- and
+blue-sideband transitions are |n −1⟩and |n + 1⟩
+respectively. The Raman transitions operate through
+virtual states to address the qubit motional modes. The
+grey arrow is the global beam ωg acting as one leg of
+the transition, while the individual beams complete the
+transition as symmetric red-(blue-) detuned transitions
+ωr (ωb). As the qubits never occupy the virtual
+intermediate states, the population oscillates between
+|00⟩and |11⟩. b) A graphical representation of the three
+frequency combs involved in the MS(θ) gate. frep
+indicates the repetition rate of the laser, δAOM/2π
+represents the median frequency shift of the red and
+blue combs relative to the global comb. These are then
+shifted further from δAOM/2π by ±δc/2π (not denoted
+here). To generate the necessary transitions to drive the
+gate near ω|1⟩−|0⟩/2π, tooth j of the global comb and
+teeth j + 105 of the red and blue combs combine. Comb
+tooth separation of 105 is represented by a smaller
+number of comb teeth in the figure for graphical
+purposes.
+However, in our implementation of the MS gate,
+we split a mode locked laser (repetition rate frep =
+120.125 MHz, and pulse duration τpulse = 3.9 ps) into
+two paths, the global and IA paths. Using AOMs, differ-
+ent frequency shifts are produced on each of the paths.
+To drive the MS gate, we need two separate Raman tran-
+sitions as shown in Fig 4a. The frequency on global beam
+ωg is shared between these transitions. To complete the
+gate, red- and blue- detuned sidebands are needed, and
+these tones ωb and ωr are both applied to the IA AOM.
+By definition, a pulsed laser is also a frequency comb,
+thus each of those tones has a corresponding comb offset
+from each other, shown in Fig 4b [12]. The angular fre-
+quencies of the j-th comb tooth of each comb are offset
+from one another,
+ω(j)
+b
+= ω(j)
+g
++ δAOM + δc,
+ω(j)
+r
+= ω(j)
+g
++ δAOM −δc,
+(10)
+in which δAOM/2π ≈30 MHz is the difference between
+the singular frequency applied to the global beam AOM
+and the median frequency applied to the IA beam AOM.
+We can define ω(j)
+g
+in terms of the frequency comb:
+ω(j)
+g
+= ωSP + ∆+ j2πfrep,
+(11)
+where ωSP /2π is the 2S1/2 |F = 1, mF = 0⟩−2 P1/2
+|F = 0, mF = 0⟩transition frequency, and ∆is the single-
+photon detuning of tooth zero of comb g from this tran-
+sition.
+To drive the MS gate, our Raman transition
+needs to have a frequency difference of approximately
+ω|1⟩−|0⟩/2π ≈12.643 GHz.
+This is realized with comb
+teeth separated by 105 harmonics (105 × 120.125 MHz
+≈12.613 GHz) plus the additional shift δAOM ± δc.
+To be precise, the the jth tooth of comb g combines
+with the j + 105th teeth of combs r and b to primarily
+drive the blue and red motional sidebands of the two-
+photon Raman transition between qubit states, respec-
+tively. As described below, these frequency combs cre-
+ate a significant contribution to the fourth-order light
+shift [31], which we need to account for in our calibra-
+tion routine.
+We describe the resonant 2S1/2 −2 P1/2 Rabi rate of
+the jth tooth of each frequency comb α = g, b, r by a
+hyperbolic secant envelope [33],
+h(j)
+α
+= h(0)
+α sech(j2πfrepτpulse),
+(12)
+where the single-photon Rabi rate h(0)
+α
+corresponds to
+tooth j = 0 of comb α.
+The resonant two-photon Rabi rate of the qubit tran-
+sition generated from tooth j of comb α and tooth j + l
+of comb β is,
+Ω(l)
+α,β =
+X
+j
+h(j)
+α h(j+l)
+β
+2
+×
+
+1
+∆+ j2πfrep
+−
+2
+∆+ j2πfrep −ωP P
+
+,
+(13)
+where ωP P is the fine-structure splitting of the 2P3/2 and
+2P1/2 levels. In this equation, we have neglected the hy-
+perfine splittings of the P states and the inter-comb de-
+tunings δAOM ±δc which are all much smaller than ∆and
+∆−ωP P . We have also assumed that the laser polariza-
+tion of all beams is ˆσ± which maximizes the Rabi rate

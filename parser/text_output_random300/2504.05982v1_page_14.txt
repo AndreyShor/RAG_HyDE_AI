@@ -1,0 +1,41 @@
+For this molecular system, we employed a simple informed resetting protocol: no reset-
+ting for RMSD values smaller than some threshold, and Poisson resetting at some ﬁnite
+rate otherwise. In practice, however, the resetting rate can be any function of the spatial
+and momenta coordinates or some low-dimensional CV space. In Ref.,76 we showed that a
+neural network-based resetting protocol relying on three CVs (the RMSD, the radius of gyra-
+tion, and the end-to-end distance) could provide greater speedups than the one-dimensional
+threshold-based protocol employed in Ref.41 Moreover, we found neural network-based re-
+setting protocols that accelerate transitions from the unfolded state to the native state – a
+process for which one-dimensional thresholds along the RMSD did not improve over standard
+resetting. This proves that incorporating additional information into the resetting scheme
+can provide further acceleration. But, as is common in CV-based methods, the performance
+of ISR depends on the correct utilization of the available information. When prior knowl-
+edge is lacking, one may better begin by sampling trajectories with standard SR. Insights
+from those trajectories can later be used to design informed resetting protocols for additional
+sampling with improved eﬃciency.
+5
+Kinetics inference
+We now discuss another major goal of enhanced sampling: inferring the unbiased kinetics
+from accelerated simulations. We ﬁrst consider the inference of the MFPT. We overview two
+approaches designed for SR as a standalone method, and a suitable approach when incorpo-
+rating SR in MetaD simulations. The latter is also appropriate for improving the eﬃciency
+of kinetics inference from MetaD simulations without resetting.42 Finally, we discuss the
+inference of kinetic properties other than the MFPT, focusing on direct transit times.
+5.1
+Inference of the MFPT for SR as a standalone method
+In the ﬁrst approach, we obtain the MFPT under resetting at diﬀerent rates r and ﬁt a
+function to ⟨τ⟩r. The estimation of the unbiased MFPT is simply the value of the ﬁtted
+function at r = 0. Diﬀerent techniques can be employed for the ﬁt. In Ref.,5 we obtained ⟨τ⟩r
+at nine equally-spaced grid points and ﬁtted them with a fourth-order Taylor series, using
+ﬁnite-diﬀerence methods to evaluate the derivatives. Crucially, performing many simulations
+to obtain the MFPT at various rates would have been prohibitive. Luckily, instead, we only
+need to perform simulations at a single resetting rate r∗and obtain the MFPT at higher
+rates as explained in Section 3.
+This inference procedure is illustrated in Figure 5(a): simulations with resetting rate
+r∗directly provide ⟨τ⟩r∗(orange star), and the FPT distribution under resetting rate r∗,
+fr∗(τ). With fr∗(τ) at hand, the MFPT under r > r∗is predicted through Equations 4 or 6
+(green circles). A function is ﬁtted (blue dashed line) and extrapolated to r →0 to obtain
+the unbiased MFPT, ⟨τ⟩0 (pink rhombus). We note that this approach is also applicable to
+simulations with ISR as a standalone method.41
+The second approach is suited for sharp resetting at constant time intervals T ∗. We ﬁrst
+14

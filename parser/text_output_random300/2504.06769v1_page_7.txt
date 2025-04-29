@@ -1,0 +1,201 @@
+7
+Consequently, the birth rates of the neighboring mutant and
+resident denote as br
+m(j) = eωΠr
+m(j)/(k+1) and br
+r(j) =
+eωΠr
+r(j)/(k+1), respectively. The birth rate is proportional to
+the probability of taking over an empty site for which a given
+mutant or resident individual competes.
+For death-birth updating [24, 48, 49], the frequency of mu-
+tants and mutant-mutant pairs increases whenever a resident
+dies and a mutant neighbor repopulates the vacated site. For a
+resident with j mutant neighbors, this happens with probabil-
+ity
+T +(j) = (1 −pm)
+k
+j
+
+qj
+m|rqk−j
+r|r
+jbr
+m(j)
+jbrm(j) + (k −j)brr(j).
+(A9)
+2.
+Updating a mutant
+We here consider that a mutant is selected and replaced by a
+neighboring resident. We also assume that there are j mutants
+among the k nearest neighbors. By considering the possible
+configurations around the mutant, we can estimate his/her res-
+ident and mutant neighbors’ payoff values. Accordingly, the
+total payoff of the resident player, who is the neighbor of the
+selected mutant individual, can be given as
+Πm
+r (j) = πr(j + 1)
++
+k−1
+X
+i=0
+k −1
+i
+
+qi
+m|r(1 −qm|r)k−1−i(πr(i + 1)
++ i
+k−1
+X
+t=0
+k −1
+t
+
+qt
+m|m(1 −qm|m)k−1−tπr(t + 1)
++ (k −1 −i)
+k−1
+X
+t=0
+k −1
+t
+
+qt
+m|r(1 −qm|r)k−1−tπr(t)).
+(A10)
+The payoff of his mutant neighbor can be given as
+Πm
+m(j) = πm(j + 1)
++
+k−1
+X
+i=0
+k −1
+i
+
+qi
+m|m(1 −qm|m)k−1−i(πm(i + 2)
++ i
+k−1
+X
+t=0
+k −1
+t
+
+qt
+m|m(1 −qm|m)k−1−tπm(t + 2)
++ (k −1 −i)
+k−1
+X
+t=0
+k −1
+t
+
+qt
+m|r(1 −qm|r)k−1−tπm(t + 1)).
+(A11)
+Similarly, the frequency of mutants and mutant-mutant
+pairs decreases if a mutant dies and one of his/her resident
+neighbors reproduces. For a mutant with j mutant neighbors,
+this happens with probability
+T −(j) = pm
+k
+j
+
+qj
+m|mqk−j
+r|m
+(k −j)bm
+r (j)
+(k −j)bm
+r (j) + jbm
+m(j).
+(A12)
+Appendix B: Adaptive dynamics of continuous PGG
+Based on the above-mentioned description, T + and T −re-
+spectively represent the probability that pm will increase or
+decrease by 1/N. We assume that each invasion step takes
+place in one unit of time 1/N [56, 58]. Hence the derivative
+of pm is given by
+˙pm =
+k
+X
+j=0
+(T +(j) −T −(j)).
+(B1)
+To derive the change rate in qm|m, it helps to start with
+the changes in pmm. First, consider a resident with j mu-
+tant neighbors who are successfully replaced by a mutant.
+This happens with probability T +(j) and increases the num-
+ber of mm-pairs by j or, equivalently, their frequency pmm
+by 2j/(Nk), where Nk/2 is the total number of undirected
+links in a regular graph of size N and degree k. Similarly,
+with probability T −(j) a mutant with j mutant neighbors will
+be replaced by a resident, reducing the frequency pmm by
+2j/(Nk). So the change rate of pmm is
+˙pmm =
+k
+X
+i=0
+(T +(j) −T −(j))2j
+k .
+(B2)
+Finally, using ˙qm|m = ( ˙pmm −qm|m ˙pm)/pm results in
+˙qm|m = 1
+pm
+k
+X
+j=0
+(T +(j) −T −(j))
+2j
+k −qm|m
+
+.
+(B3)
+In the limit pm →0, the sum over T +(j) in Eq. (A9) and
+divided by pm is reduced to
+lim
+pm→0
+1
+pm
+k
+X
+j=0
+T +(j)=
+k(1 −qm|m)br
+m(1)
+brm(1) + (k −1)brr(1).
+(B4)
+Thus the invasion fitness becomes
+f(x, y) = lim
+pm→0
+˙pm
+pm
+= lim
+pm→0
+1
+pm
+k
+X
+j=0
+(T +(j) −T −(j))
+=
+k(1 −qm|m)br
+m(1)
+brm(1) + (k −1)brr(1)
+−
+k
+X
+j=0
+k
+j
+
+qj
+m|m(1 −qm|m)k−j
+×
+(k −j)bm
+r (j)
+jbm
+m(j) + (k −j)bm
+r (j),
+(B5)

@@ -1,0 +1,25 @@
+Figure 23: Velocity components of the experimental wake flow. Top: Streamwise velocity
+(reconstructed vs. ground truth). Bottom: Normal velocity (reconstructed vs. ground
+truth).
+demonstrates the best performance, achieving the lowest RRMSE of 3.1%, compared
+to 7.2% for SVD. The LSTM 1 Dense and LSTM Time-Distributed architectures also
+show significant improvement with HOSVD, achieving RRMSE values of 4.7% and 3.9%,
+respectively, compared to 8.6% and 5.4% for SVD.
+For the normal velocity component (Table 15), the trend remains consistent, though
+the overall errors are higher compared to the streamwise case. HOSVD achieves lower
+RRMSE values across all architectures, with the LSTM Time-Distributed architecture
+achieving the best performance at 29.3% compared to SVD’s 34.5%. The LSTM 2 Dense
+and LSTM 1 Dense architectures also maintain a significant advantage, with RRMSE
+values of 29.4% and 33.6%, respectively, compared to 37.2% and 42.7% for SVD.
+The streamwise and normal velocity components, depicted in Figure 26 and 27, re-
+veal that HOSVD and SVD maintain considerable agreement with the ground truth.
+Both LSTM 2 dense and LSTM time-distributed architectures demonstrate exceptional
+performance, closely replicating the periodic nature of the streamwise oscillations while
+minimizing deviations across the time steps. These results highlight the robustness of
+decomposition techniques in capturing complex temporal dynamics. In comparison, the
+LSTM 1 dense architecture, while still effective, displays minor discrepancies, particularly
+at the peaks of the oscillations and over increasing time steps. The HOSVD-based LSTM
+2 Dense and LSTM Time-Distributed architectures exhibit a superior ability to capture
+finer-scale variations at the smaller crests and troughs compared to the SVD-based mod-
+els, specifically at the streamwise temporal evolution plots.
+39

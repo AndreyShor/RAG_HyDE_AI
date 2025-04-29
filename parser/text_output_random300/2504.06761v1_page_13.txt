@@ -1,0 +1,54 @@
+Constructing wall turbulence
+13
+0
+1
+2
+3
+4
+5
+6
+200
+400
+600
+800
+1000
+1200
+Figure 7. Time evolution of the friction Reynolds number in DNS simulations with different initialization
+methods. The blue line corresponds to the traditional perturbation method (perturbU), while the black line
+represents SWAT. The flow field at the time indicated by the circle on the black line is shown in figure 8.
+of Re𝜏= 1000 and a bulk Reynolds number of Re ≈20000, using a grid resolution of
+𝑁𝑥× 𝑁𝑦× 𝑁𝑧= 768 × 769 × 768 (Wang & Zaki 2022). The flow is driven by a constant
+pressure gradient in the streamwise direction.
+To assess the computational efficiency of the synthetic turbulence method, we compare it
+to the traditional perturbation initialization ‘perturbU’ (de Villiers 2006), which introduces
+perturbations by superimposing a fluctuating velocity field, 𝒖, onto the Poiseuille base flow,
+𝑈0. This approach mimics key aspects of the near-wall turbulence cycle, allowing for the
+transition to turbulence to occur relatively quickly. However, the effectiveness of this method
+depends on the gradual amplification of small perturbations, which can result in a longer
+overall transition time.
+To quantify the computational cost of achieving fully developed turbulence, we compare
+the time-dependent evolution of the Reynolds number in DNSs using both initialization
+methods (see figure 7). The perturbU approach initiates turbulence through the progressive
+strengthening of initial vortices, which subsequently undergo asymmetric breakdown, en-
+hancing turbulent mixing and promoting vortex formation (de Villiers 2006). As turbulence
+production intensifies, momentum transfer increases, gradually eroding the parabolic velocity
+profile. Eventually, the flow stabilizes into a statistically steady state characterized by a
+logarithmic velocity distribution. Despite effectively triggering turbulence, this process is
+computationally expensive, requiring more than five flow-through times (FTTs) over 129,000
+CPU hours for turbulence to fully develop at the target Re𝜏due to the slow evolution of the
+flow structures.
+In contrast, the SWAT method for channel flow generates a well-structured turbulence field
+from the beginning, featuring meandering low- and high-speed streaks alongside densely
+packed hairpin vortex bundles. These structures introduce an appropriate distribution of
+turbulent kinetic energy, ensuring that both turbulence characteristics and statistics closely
+align with the target Reynolds number early in the evolution. As the flow progresses,
+interactions between vortices near the upper and lower walls further enhance the transition
+to fully developed turbulence (see figure 8). This transition occurs rapidly and efficiently,
+preserving the essential turbulence structures while minimizing computational overhead.
+Although there is a slight initial drop in the Reynolds number, it quickly recovers to the
+target value within 𝑂(1) FTTs (requiring only 35,800 CPU hours). Furthermore, due to the
+well-matched initial statistics provided by SWAT, the mean velocity profiles and Reynolds
+stresses converge to their true equilibrium states significantly faster than with the perturbU
+approach. By contrast, the traditional perturbation method requires considerably longer to
+reach the same level of turbulence development, making SWAT a more efficient alternative
+for simulations requiring rapid and reliable turbulence initialization.

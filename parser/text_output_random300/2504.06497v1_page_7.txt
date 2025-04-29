@@ -1,0 +1,253 @@
+3.0.1
+Instantaneous Quantum Polynomial (IQP) Encoding
+Instantaneous Quantum Polynomial (IQP) encoding is a discrete Quantum encoding Method
+that utilizes a restricted form of quantum circuits with only commuting gates. IQP multi qubit
+circuits are a non-universal model of quantum computation characterized by diagonal unitaries
+in the computational basis[39][40] . It is particularly relevant in quantum machine learning and
+quantum supremacy experiments due to its unique structure that is believed to be classically
+hard to simulate.
+IQP circuits consist only of gates that commute with each other (AB = BA), meaning their order
+does not affect the final state. These circuits follow the form:
+UIQP(x) = H⊗nD(x)H⊗n
+(1)
+where, where H⊗n applies Hadamard gates to all qubits, and D(x) is a diagonal unitary matrix
+encoding phase rotations. The diagonal unitary encoding is defined as:
+D(x) = exp (i(x1Z1 + x2Z2 + x1x2Z1Z2))
+(2)
+where Zi represents the Pauli-Z matrix: Z =
+1
+0
+0
+−1
+
+. The Hadamard matrix is given by:
+H =
+1
+√
+2
+1
+1
+1
+−1
+
+and applying Hadamard gates to a two-qubit system results in:
+Z1 = Z ⊗I =
+
+
+1
+0
+0
+0
+0
+1
+0
+0
+0
+0
+−1
+0
+0
+0
+0
+−1
+
+,
+Z2
+= I ⊗Z =
+
+
+1
+0
+0
+0
+0
+−1
+0
+0
+0
+0
+1
+0
+0
+0
+0
+−1
+
+,
+Z1Z2 = Z ⊗Z =
+
+
+1
+0
+0
+0
+0
+−1
+0
+0
+0
+0
+−1
+0
+0
+0
+0
+1
+
+,
+H ⊗H
+= 1
+2
+
+
+1
+1
+1
+1
+1
+−1
+1
+−1
+1
+1
+−1
+−1
+1
+−1
+−1
+1
+
+
+(3)
+[D(x)] encodes the input data x into the diagonal unitary. The key idea is that this encod-
+ing projects data into a highly non-linear quantum space, making it suitable for kernel-based
+quantum models. IQP circuits are believed to be BQP-complete, meaning they offer potential
+quantum advantage in machine learning. Unlike simple angle encoding, IQP encoding introduces
+non-linear correlations between features. IQP circuits form the basis for quantum kernel meth-
+ods, improving classification tasks.
+We begin by defining a classical input vector x = (0.5, 0.8), which we encode using an In-
+stantaneous Quantum Polynomial (IQP) two qubit circuit. x1 = 0.5, x2 = 0.8
+Step 1: Applying Equation 1 and 2. Compute the Matrix Sum = 0.5Z1 +0.8Z2 +(0.5∗0.8)Z1Z2
+= 0.5
+
+
+1
+0
+0
+0
+0
+1
+0
+0
+0
+0
+−1
+0
+0
+0
+0
+−1
+
++ 0.8
+
+
+1
+0
+0
+0
+0
+−1
+0
+0
+0
+0
+1
+0
+0
+0
+0
+−1
+
++ 0.4
+
+
+1
+0
+0
+0
+0
+−1
+0
+0
+0
+0
+−1
+0
+0
+0
+0
+1
+
+
+Step 2: Compute Each Matrix Entry
+
+
+0.5
+0
+0
+0
+0
+0.5
+0
+0
+0
+0
+−0.5
+0
+0
+0
+0
+−0.5
+
++
+
+
+0.8
+0
+0
+0
+0
+−0.8
+0
+0
+0
+0
+0.8
+0
+0
+0
+0
+−0.8
+
++
+
+
+0.4
+0
+0
+0
+0
+−0.4
+0
+0
+0
+0
+−0.4
+0
+0
+0
+0
+0.4
+
+
+7

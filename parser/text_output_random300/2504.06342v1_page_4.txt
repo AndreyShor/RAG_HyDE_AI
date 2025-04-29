@@ -1,0 +1,90 @@
+4
+studies of accretion disk physics. MACER2D has
+studied the role of AGN feedback in the evolution
+of massive slow rotators (Yuan et al. 2018), massive
+fast rotators (Yoon et al. 2018), compact galaxies
+(Di et al. 2023) and disk galaxies (Zou et al. in
+prep), ISM properties of massive galaxies (Li et al.
+2018), the impact and fate of cosmological inflow
+in elliptical galaxies (Zhu et al. 2023b), the impacts
+of different modes of AGN feedback (Yoon et al.
+2019; Zhu et al. 2023a), and the effects of parameter
+variation of AGN feedback (Yao et al. 2021).
+Recent advances in computational capabilities
+and improved understanding of feedback micro-
+physics have enabled increasingly feasible and nec-
+essary three-dimensional AGN feedback simula-
+tions (Hopkins et al. 2024a,b; Guo et al. 2023).
+These simulations more accurately capture turbu-
+lence effects, instabilities, and non-axisymmetric
+structures crucial for understanding multiphase
+gas mixing in the ISM and CGM. Consequently,
+we have developed the Multiscale AGN-regulated
+Cosmic Ecosystem Resolver in 3D (hereafter
+MACER3D) project, a three-dimensional hydro-
+dynamic framework representing a comprehen-
+sive upgrade of MACER2D. MACER3D incor-
+porates numerous improvements in physical pro-
+cesses and subgrid models, particularly focusing
+on gas and stellar feedback physics, including cool-
+ing/heating processes, SN feedback, and metal
+yielding.
+The framework enables controlled in-
+vestigation of physical complexities while isolating
+AGN feedback effects from other feedback mecha-
+nisms.
+The paper is organized as follows.
+In §2, we
+introduce the updated physical processes and setup
+in the MACER3D framework. In §3, we present the
+results from the simulations of an isolated elliptical
+galaxy under the framework. Finally, we discuss
+and summarize our main conclusions in §4.
+2. METHODS
+MACER3D incorporates a comprehensive up-
+grade of the previous MACER2D framework. Be-
+yond the expansion in dimensionality, MACER3D
+incorporates a number of enhanced implementa-
+tions of physical processes and subgrid models.
+Notable improvements primarily focus on gas and
+stellar feedback physics, including advanced cool-
+ing and heating processes, realistic SN feedback
+mechanisms, and detailed metal yielding. These
+enhancements are detailed in subsequent sections.
+The development roadmap of MACER3D includes
+the incorporation of non-thermal physics such as
+magnetic fields (Xia et al. in prep), and extends the
+framework to diverse galactic systems, including
+disk galaxies (Zou et al. in prep) and dwarf galax-
+ies (Su et al. in prep), which will be presented in
+future work.
+2.1. Dimensionality and code base
+A fundamental enhancement in MACER3D is the
+implementation of three-dimensional physics, en-
+abling more realistic modeling of AGN feedback
+effects on galaxy evolution. This advancement of-
+fers two key benefits. First, it allows for accurate
+representation of turbulence, which is crucial for
+understanding multiphase gas and metal mixing in
+the ISM and CGM. This represents a significant
+improvement over two-dimensional simulations,
+which suffer from inverse energy cascade, leading
+to artificial large-scale eddy formation and suppres-
+sion of small-scale turbulence and mixing (Fjørtoft
+1953). Second, the three-dimensional framework
+enables the simulation of non-axisymmetric struc-
+tures and instabilities, including spiral arms, grav-
+itational torques, and thermal instabilities, which
+significantly influence galaxy evolution and gas ac-
+cretion onto the central supermassive black hole
+(SMBH) (Balbus & Soker 1989; Binney et al.
+2009).
+The numerical foundation of MACER3D has
+been modernized through the adoption of the
+Athena++ code (White et al. 2016), replacing the
+ZEUS code (Stone & Norman 1992; Hayes et al.
+2006) used in MACER2D. Athena++ is a state-
+of-the-art, open-source, high-performance, grid-
+based hydrodynamic code optimized for astro-
+physical applications.
+Its implementation of the

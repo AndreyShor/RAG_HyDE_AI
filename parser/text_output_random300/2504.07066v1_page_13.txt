@@ -1,0 +1,147 @@
+13
+We further define a chiral winding phase ϕ(kz)
+=
+arg(det[U(kz)V †(kz)]).
+Here, the unitary matrices U
+and V arise from a singular value decomposition with
+h(kz) = UDV †. By tracking the evolution of ϕ(kz), we
+can conclude WS by counting the winding number of ϕ.
+For example, Fig. 5 (g) shows the evolution of ϕ(kz) at
+µ = 0, clearly showing WS = 2. Notably, this double-
+MZM vortex phase has also been predicted to exist in
+superconducting SnTe [57, 64].
+Notably, there exist two pairs of degenerate VLT tran-
+sitions, one at µ = 0.144 and another at µ = −0.225.
+Interestingly, we find that these degenerate transitions
+fail to trigger any change in vortex topology. Hence, we
+will ignore these “fake transitions” from now on. Below,
+we summarize the VLT indices for each region,
+(WS, ζ0, ζ2, Q1) =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(0, 0, 0, 0)
+µ > 0.712,
+(1, 0, 1, 0)
+µ ∈(0.168, 0.712),
+(2, 0, 0, 0)
+µ ∈(−0.239, 0.168),
+(1, 0, 1, 0)
+µ ∈(−0.628, −0.239),
+(0, 0, 0, 0)
+µ < −0.628.
+(29)
+This result not only agrees well with our π-junction-based
+predictions, but also establish the Dirac octet as a new
+playground for various Majorana physics.
+V.
+APPLICATION TO REAL-WORLD
+SUPERCONDUCTORS
+Thus far, we have theoretically proposed and estab-
+lished a topological correspondence relation between π-
+phase junctions and vortex lines, as numerically con-
+firmed by comprehensive model studies. In this section,
+we will develop a JVC-based ab-initio workflow to diag-
+nose JT and further extrapolate VLT for real-world can-
+didate superconductors, without performing challenging
+large-scale vortex simulations. We will first discuss the
+general construction scheme of π-junction Hamiltonians
+at the first-principles level. As concrete examples, we will
+proceed to apply our theoretical strategy to investigate
+and clarify the Majorana possibilities of two supercon-
+ducting materials that have been experimentally synthe-
+sized, 2M-WS2 and Sr3SnO. Remarkably, both systems
+are numerically confirmed to be promising playgrounds
+for discovering and engineering JT and VLT.
+A.
+Ab-initio simulations of a π-junction
+For a candidate superconductor χ, we will first conduct
+the density-functional theory (DFT) [65] to calculate the
+full electronic band structure of its normal state within
+the generalized gradient approximation (GGA) [66]. This
+will be followed by a Wannier-function projection [67] to
+obtain a multi-orbital electronic tight-binding Hamilto-
+nian hw(k) that accurately captures the low-energy dis-
+persions of χ. We will then construct a slab Hamiltonian
+Hα(k∥) to describe an ˆα-directional π-junction geometry
+by updating hw(k) to a BdG form H(k). Although the
+above procedure looks straightforward, there are several
+technical aspects that can be tricky in practice.
+First of all, hw(k) must respect the full crystalline and
+time-reversal symmetries of χ, which, however, may not
+always hold in conventional Wannierization procedures.
+To understand this stringent symmetry requirement, we
+note that the pairing matrix for the conventional s-wave
+channel is exactly the unitary matrix UT of the TRS
+operation Θ = UT K, up to a possible minus sign. For
+example, UT = isy in Eq. 1, and so is the s-wave pairing
+matrix. Consequently, we will be able to write down the
+correct BdG matrix H(k) if and only if (i) hw(k) respects
+TRS; and (ii) the exact matrix form of UT is known for
+hw(k). Besides, a knowledge of lattice-symmetry repre-
+sentations for hw(k) will also be essential for evaluating
+JT symmetry indicators for Hα(k∥).
+To cope with this challenge, we employ the full-
+potential local-orbital (FPLO) package [68] to conduct
+first-principles simulations, which features a built-in
+module that can wannierize the DFT band structure
+based on symmetry-conserving maximally localized Wan-
+nier functions (MLWFs) [69]. Specifically, the real-space
+hopping matrix element between two Wannier orbitals is
+given by,
+tαβ(R −R′) = ⟨R′α|ˆh0|Rβ⟩,
+(30)
+where ˆh0 formally represents the electronic Hamiltonian
+operator for χ.
+Here, |Rα⟩represents the symmetry-
+preserving Wannier function at the real-space lattice vec-
+tor R = ma+nb+lc, where α denotes the orbital or spin
+index and a, b and c denote the primitive lattice vectors
+of the crystal. Upon a Fourier transform, we have
+[h0(k)]αβ =
+X
+R
+eik·Rtαβ(R).
+(31)
+Secondly, we are often interested in simulating a π-
+junction that does not align with any of the primitive
+lattice vectors, as will be the case for 2M-WS2. Hence,
+we need to develop a formalism that allows us to con-
+struct a slab Hamiltonian Hα(k∥) along any direction.
+This process involves two main steps. First, for a given
+Miller-index plane (hkl), we identify all lattice vectors
+v = ua + vb + wc lying within the plane by satisfying
+the condition v·[hkl] = 0. Next, a pair of in-plane lattice
+vectors (a′, b′) is selected to minimize the enclosed area
+while maximizing their linear independence. An out-of-
+plane vector c′ is further determined by minimizing the
+slab volume, which ensures our updated choice of lattice
+parameters is the smallest possible one. (a′, b′, c′) thus
+defines a new unit cell for the slab-geometry construc-
+tion. Notably, the new cell may have an enlarged volume
+compared to the original one.
+We
+now
+construct
+a
+rotation
+matrix
+U
+=
+(a′, b′, c′)(a, b, c)−1
+which
+transforms
+the
+hopping

@@ -1,0 +1,33 @@
+& Automation Explorer interface. A Python-based real-time processing algorithm running on the
+PC applied set the delay and gain parameters to the acquired signal. The processed signal was then
+converted back to an analog form using a analog output (model NI 9263) at a sampling rate of 2000
+Hz as well and delivered to a piercing solenoid, which generated the feedback magnetic field.
+Sample preparation
+Samples were prepared in a nitrogen-atmosphere and transferred into a spherical NMR tube (outer
+diameter = 10.5 mm, inner diameter = 8.5 mm) (36) that can be adapted to the pH2 gas-handling
+setup. Samples were prepared of a common Ir-precursor [Ir(IMes)(COD)Cl] dissolved in acetonitrile
+or methanol, c.f. detailed sample composition is provided in Table S1. Following substrates and
+solvents were purchased from Sigma Aldrich and used without further purification: (A) acetonitrile
+(0.36 % [15N]-ACN and 99.64 % [14N]-ACN), (B) 1 % [2-13C,15N]-ACN in 99 % [14N]-ACN, and
+(C) 1% [1-13C,15N]-ACN in 99 % [14N]-ACN; (D)[15N]-pyridine, (E) [15N2]-imidazole, (F)[15N3]-
+metronidazole, (G)4-amino[15N]-pyridine, (H)[1-13C]-pyruvate, and(I)[U-13C, 15N]-butyronitrile,
+c.f. Figure 3. An additional co-substrate was introduced to stabilize hyperpolarization transfer
+efficiency of samples (A,B,C,H, and I), which are listed in Table S1.
+The algorithm below implements real-time processing which adds the programmable feedback
+delay (𝜏) and gain (𝐺ext) to the feedback field (𝐵ext) by continuously looping through these steps:
+Theory of 𝐽-oscillators
+The master equation.
+The dynamics of the 𝐽-oscillator signal can be simulated using a master
+equation:
+𝑑
+𝑑𝑡ˆ𝜌(𝑡) = −𝑖[ ˆ𝐻0 + ˆ𝑉(𝑡), ˆ𝜌(𝑡)] + ˆˆ𝑅ˆ𝜌(𝑡) + ˆ𝑃,
+(S1)
+where ˆ𝜌(𝑡) is the density operator, ˆ𝐻0 represents the 𝐽-coupling interaction, ˆ𝑉(𝑡) represent the
+coupling of the molecule with the feedback loop, ˆˆ𝑅is the relaxation superoperator, ˆ𝑃accounts for
+the SABRE hyperpolarization pumping.
+Coherent Hamiltonian:
+The 𝐽-coupling interaction Hamiltonian for the [15N]-ACN maser sys-
+tem is:
+ˆ𝐻0 = 2𝜋𝐽( ˆS · ˆK),
+(S2)
+S3

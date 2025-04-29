@@ -1,0 +1,61 @@
+3
+A.
+Notations and Definitions
+First we define some basic concepts and notations for mathematical rigor.
+Definition II.1 (Finite Probability Space). A finite probability space is a pair (Ω, p) where Ωis a finite set of possible
+outcomes and p : Ω→[0, 1] is a probability mass function satisfying P
+k∈Ωp(k) = 1, we can abbreviate p(k) as pk. 1
+Definition II.2 (Hilbert Space). Given some finite set X, the Hilbert space on X is noted as HX, which has {|x⟩}x∈X
+as an orthornormal basis.
+Remark II.3 (Labels in Kets). Within this paper, whenever we designate a variable x from a set X, the vectors
+labeled with this variable {|x⟩}x∈X automatically denotes the basis for HX as clarified in Definition II.2. In general,
+we might like to use a more explicit notation such as |x⟩X to avoid ambiguity, but within the context of this paper,
+dropping the X subscript suffice.
+Definition II.4 (Synthesizer). Let (Ω, p) be a probability distribution. A synthesizer is a unitary operator P acting
+on HΩ⊗Hanc:
+P |0⟩=
+X
+k∈Ω
+√pk |k⟩
+(7)
+where |auxk⟩∈Hanc are normalized vectors, and |0⟩denotes some state that is easily achievable.
+Remark II.5 (Potential Auxiliaries). In general one might write
+P |0⟩=
+X
+k∈Ω
+√pk |k⟩|auxk⟩
+(8)
+where Hanc is the Hilbert space of some ancilla qubits that may encode extra information. For the scope of this paper
+we will ignore ancillas for simplicity and clarity. (One can always recover ancillas by either re-inserting them in
+appropriate locations throughout derivation process, or by redefining the states |k⟩to incorporate potential ancillas.)
+Here are definitions relating to random variables.
+Definition II.6 (Random Variable). A univariate (real) variable X on a finite probibility space (Ω, p) is a mapping
+Ω→R. For each k ∈Ω, we can abbreviate X(k) as Xk, with bold font and nonbold font accordingly.
+Similarly, we can define a univariate complex random variable Y as mapping Ω→C and introduce abbreviations
+Yk acoordingly.
+Remark II.7 (Notation). We will use bold font (and usually calligraphic) to represent random variables.
+Remark II.8 (Omitting Ω). In our notations we often omit Ωbecause in the scope of this paper we always fix a
+single probability space.
+There are some special univariate random variables that will be useful in the future.
+Definition II.9. (Identity Random variable) In particular, 1 is the random variable Ω→{1}.
+Definition II.10. (Indicator Random variable) Given some event A, 1A is the indicator random variable that is 1
+when A is true and 0 otherwise, that is, for all k ∈Ω
+(1A)k =
+(
+1
+if A
+0
+if ¬A
+(9)
+It is convenient to label quantum states with random variables which we will define as follows:
+Definition II.11 (Associated Quantum State). Given a complex univariate random variable X in finite probaility
+space (Ω, p), its associated quantum state, denoted |X⟩is a state in HΩwith
+|X⟩=
+X
+k∈Ω
+√pkXk |k⟩
+(10)
+1 Most authors would probably use ω to indicate an element from probability space Ω. Here we use k, an index variable. The exact
+mathematical object as elements in Ωdoes not matter, so in practice we could just label them with some index, that is, Ω= {ωk}i∈[|Ω|].
+Then we might just represent these elements ωk with the index k. More rigorously, while k ∈Ωis not necessarily an integer index, we
+can effectively think of it as an index.

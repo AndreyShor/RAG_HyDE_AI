@@ -1,0 +1,81 @@
+Ours
+Reference
+Indirect lighting
+RelightGS
+Figure 7. Relighting results. We perform relighting on real dataset DTU. The indirect shading results are in the blue borders. By
+recalculating indirect lighting for each new light source, our method avoids the unrealistic bright indirect illumination that Relightable
+3DGS [6] exhibits under low-light conditions. More results are in the supplementary material.
+Table 2. Comparison of NVS quality between our method and oth-
+ers on the TensoIR Synthetic and ADT dataset. Red numbers rep-
+resent the best performance, and orange denotes the second best.
+TensoIR
+ADT
+PSNR/ SSIM / LPIPS PSNR/ SSIM / LPIPS
+MII
+30.92 /0.9371/0.0801 30.94 /0.9568/0.0506
+TensoIR
+35.17 /0.9764/0.0397 39.72 /0.9916/0.0173
+GS-IR
+35.02 /0.9637/0.0429 37.30 /0.9821/0.0219
+RelightGS 33.35 /0.9657/0.0414 36.94 /0.9879/0.0146
+Ours
+36.71 /0.9758/0.0332 41.48 /0.9923/0.0103
+IR [20], GaussianShader [11] and Relightable 3DGS [7].
+We trained each method using the official code and settings.
+Metrics.
+We evaluate the quality of our comparison and
+ablation study results using PSNR, structural similarity in-
+dex (SSIM) [26], and learned perceptual image patch simi-
+larity (LPIPS) [34]. To account for the ambiguity between
+albedo and lighting, we follow TensoIR by rescaling relight-
+ing images according to both the ground truth and predicted
+albedo. Additionally, we report the mean training time, both
+tested on the same one RTX 4090 setup.
+6.2. Comparison with previous works
+Relighting on synthetic data.
+In Tab. 1, we provide the
+numerical relighting results on the TensoIR Synthetic and
+ADT datasets. Our method achieves the SOTA relighting
+results in almost all scenes. In Fig. 6, we provide the visual
+comparison between our method and others. Our method
+produces smoother and more detailed relighting renderings,
+thanks to our Spatially-varying Gaussian representation and
+physically-based illumination.
+In contrast, GS-IR shows
+noticeable artifacts due to the constant color on a single
+Gaussian, and TensoIR produces renderings with missing
+details and unnatural lighting effects. Additional metrics on
+the datasets, along with more images, are provided in the
+supplementary materials.
+Relighting on real data.
+For real scenes, we conducted
+experiments on several scenes selected from the object-
+level datasets DTU datasets and scene-level dataset Mip-
+NeRF360. Since ground truth is not available, we provide
+the reference training views along with the rendering results
+under novel lighting conditions. As shown in Fig. 7, the
+indirect lighting renderings produced by Relightable 3DGS
+under different environment maps remain the same, causing
+unnaturally bright renderings even under dark light sources.
+On the contrary, our method can dynamically adopt indi-
+rect lighting w.r.t. different environment maps due to our
+relighting strategy, which uses one-bounce ray tracing to
+model indirect illumination.
+Similarly, we compare our
+method with GS-IR in Fig. 9, showing more natural relight-
+ing results.
+NVS.
+Besides relighting task, we validate our method on
+the NVS task, by performing a comparison with other IR
+methods [7, 14, 20, 36]. In Tab. 2, our method outperforms
+the others on the TensoIR Synthetic and ADT datasets.
+The visual comparison is shown in Fig. 8, showing that
+our method can produce cleaner results than GS-IR [20]
+and Reglitable 3DGS [7] with less artifacts, thanks to the
+spatially-varying material in a single Gaussian.
+6.3. Ablation study
+We perform ablation studies on the key components of our
+model on the TensoIR Synthetic dataset in terms of PSNR,
+SSIM and LPIPS. As shown in Tab. 3, we observe that as we
+incorporate our key components, the performance improves
+consistently.

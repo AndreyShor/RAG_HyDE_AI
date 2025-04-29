@@ -1,0 +1,101 @@
+Brownian bridge above a curve
+77
+we can just focus on the probability in the last line of the above display. Using the strong Markov
+property of the Brownian bridge, we note that
+Px,u,b(τ0 ≤b/2, τ−ζ > b) =
+Z b/2
+0
+P0,u,b−s(τ−ζ(s+·) > b −s)Px,u,b(τ0 ∈ds) .
+(A.15)
+Now, thanks to Lemma A.6, we have that, for all s ∈[0, b/2], it holds that
+P0,u,b−s(τ−ζ(s+·) > b −s) ≤32u
+b
+
+ζ(s) +
+Z b
+0
+ζ(z + s)ζ′(z + s)
+√z
+dz + ζ(b)2
+u
+
+,
+and so plugging this estimate into the right-hand side of (A.15), we note that
+Px,u,b(τ0 ≤b/2, τ−ζ > b) ≤32u
+b
+ζ(b)2
+u
++
+Z b/2
+0
+ζ(s)Px,u,b(τ0 ∈ds) +
+Z b/2
+0
+Z b
+0
+ζ(z + s)ζ′(z + s)
+√z
+dzPx,u,b(τ0 ∈ds)
+
+. (A.16)
+Regarding the first integral in (A.16), we note that by proceeding in the same exact way as in the proof
+of Proposition A.4, we get that
+Z b/2
+0
+ζ(s)Px,u,b(τ0 ∈ds) ≤ρ(x) ,
+where we recall that the function ρ is defined in (A.7). Regarding the second integral in (A.16), by
+using (A.3), we note that
+Z b
+0
+Z b/2
+0
+ζ(z + s)ζ′(z + s)
+√z
+bxe−(bx+s(u−x))2
+2bs(b−s)
+√
+2πs√bs(b −s)dsdz ≤
+1
+√π
+Z ∞
+0
+Z ∞
+0
+ζ(z + s)ζ′(z + s)
+√z
+xe−x2
+2s
+s3/2 dsdz
+≤2ζ(x2)2
+x
++
+Z ∞
+x2
+ζ(s)2
+s3/2 ds .
+where to obtain the last inequality, it is sufficient to follow the calculations in the proof of [BL18,
+Lemma A.8]. Hence, the claim follows by gathering toghther all the previous estimates.
+Let a, k > 1, and consider the function ζa,k : R+
+0 →R+
+0 given by
+ζa,k(s)
+def= a(1+[ log(1 + k + s)]2) .
+(A.17)
+Lemma A.7. Let a, k > 1 and consider the functions ρa,k, eρa,k : [0, ∞] →R+
+0 defined in (A.7) and
+(A.10) with ζ = ζa,k as in (A.17). Then, there exist constants c1, c2, ec1, ec2, ec3 > 0, depending on a
+but not on k, such that
+ρa,k(x) ≤c1ζa,k(0) + c2[log(e + x4)]2 ,
+∀x ≥1 ,
+and
+eρa,k(x) ≤ec1ζa,k(0) + ec2
+ζa,k(0)2
+x
++ ec3[log(e + x4)]4 ,
+∀x ≥1 .
+Proof. For a, k > 1, we have that
+ζ′
+a,k(s) = 2a log(1 + k + s)
+1 + k + s
+,
+∀s ≥0 .

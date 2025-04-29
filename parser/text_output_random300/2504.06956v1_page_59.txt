@@ -1,0 +1,138 @@
+Proof of Proposition 6.1
+59
+Hence it suffices to show that when the cutoff parameters are taken to infinity, the limit of the constant
+Cλ,new
+A,L,k,b coincides with Tγ defined in (6.1), up to a multiplicative constant. To establish that this is
+indeed the case, we rely on Propositions 4.1 and 4.2.
+We observe that for any A, L, k ≥0, x ∈[L/2, A + L], and k ∈N, conditional on (Wi)i∈[n], the
+function Fλ
+k,x−L,L : C(Rd) →R is continuous, bounded, depends on the values of the input field in a
+bounded set, and it is such that its set of discontinuities is assigned measure zero by the law of the field
+eΥλ on C(Rd). This last fact follows since we fixed λ ∈Λ and from Remark 5.2. Furthermore, as can
+be easily verified using the Gaussian tail bound, the field gz
+b, introduced in (7.4), satisfies (G1) – (G3)
+uniformly over all z ≥0. Therefore, we are in a position to apply Propositions 4.1 and 4.2, from
+which we deduce that for any ε > 0, k ≥0, b ≥0 sufficiently large, and u ∈[b1/4, b3/4], it holds that
+E0,u,b
+h
+Fλ
+k,x−L,L(Υu+x
+b
+)1{M0,b(Υu+x
+b
+)≤λ}
+i
+−2c⋆,λ
+u
+b E[Fλ
+k,x−L,L(eΥλ)]
+ ≤εu
+b .
+(7.10)
+Furthermore, thanks to Proposition 2.11, it holds that
+E[Fλ
+k,x−L,L(eΥλ)] =
+E[
+R
+Rd Fλ
+k,x−L,L(τzΨ)e
+√
+2dΨ(z)1{Ψ(z)≥−λ}dz]
+E[
+R
+Rd e
+√
+2dΨ(z)1{Ψ(z)≥−λ}dz]
+,
+(7.11)
+where, once again, we recall that we omit the subscript λ when writing the field Ψ, since, thanks to
+Proposition 2.13, its law does not depend on λ ∈Λ. Therefore, recalling the definition (2.11) of a⋆
+and performing a change of variables in the integral over x in the definition (7.8) of Cλ,new
+A,L,k,b, we
+obtain that
+lim
+b→∞Cλ,new
+A,L,k,b = a⋆γ
+Z A
+−L/2
+e
+√
+2dxE
+Z
+Rd Fλ
+k,x,L(τzΨ)e
+√
+2dΨ(z)1{Ψ(z)≥−λ}dz
+
+dx .
+(7.12)
+Recalling the definition of the function Fλ
+k,x in (7.1) and that of Fλ
+k,x,L in (7.9), and using the
+dominated convergence theorem along with the monotone convergence theorem, we observe that
+taking first the limit as k →∞, then as L →∞and finally as A →∞of the expression on the
+right-hand side of (7.12), we conclude that limA,L,k,b→∞Cλ,new
+A,L,k,b equals
+a⋆γE
+Z
+Rd
+Z ∞
+−∞
+e
+√
+2dx
+
+1 −exp
+
+−e−γx
+Z
+Rd Fγ(y)eγτzΨ(y)dy
+e
+√
+2dΨ(z)1{Ψ(z)≥−λ}
+|Dλ(τzΨ)|
+dxdz
+
+.
+Now, recalling the definition (2.13) of the constant β(d, γ), we note that, for all c > 0 and any
+γ >
+√
+2d, it holds that
+Z ∞
+−∞
+e
+√
+2dx(1 −e−ce−γx)dx = c
+√
+2d
+γ β(d, γ)
+γ
+.
+Therefore, by collecting the previous considerations, using the above identity, and leveraging the
+independence between the fields (Wi)i∈[n] and Ψ, as well as the stationarity of the fields (Wi)i∈[n]
+implied by (W2), we obtain that
+lim
+A,L,k,b→∞Cλ,new
+A,L,k,b = ea⋆E
+Z
+Rd
+Z
+Rd Fγ(y)eγτzΨ(y)dy
+
+√
+2d
+γ e
+√
+2dΨ(z)1{Ψ(z)≥−λ}
+|Dλ(τzΨ)|
+dz
+
+= ea⋆E
+Z
+Rd Fγ(y)eγΨ(y)dy
+
+√
+2d
+γ 
+= ea⋆Tγ ,
+where we recall that Tγ is defined in (6.1), and ea⋆= β(d, γ)a⋆. Hence, the desired result follows.

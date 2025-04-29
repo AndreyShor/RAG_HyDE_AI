@@ -1,0 +1,41 @@
+Table 2: Comparison of effective properties based on 2D images
+Property
+CT registered image
+TS registered image
+Porosity
+0.154
+0.232
+Mean pore size (µm)
+18.80
+7.52
+Bulk modulus (GPa)
+15.09
+11.25
+Shear modulus (GPa)
+16.39
+11.36
+4.1
+Porosity and pore size distribution
+Pore characteristics play a fundamental role in determining a rock’s effective material properties, including fluid transport
+[Soulaine et al., 2016, Nelson, 1994], mechanical behavior [Zhang and Bentley, 2003], and electrical conductivity
+[Wong et al., 1984]. The registered CT and TS images yield porosities of 0.154 and 0.232, respectively, indicating that
+the TS image reveals approximately 50 % more porosity than the CT plane. Figure 10 shows the pore size distributions
+obtained from both images. Both exhibit a left-skewed distribution, indicating a higher frequency of smaller pores, as
+reported in previous studies [Andriamihaja et al., 2019, Yao et al., 2013].
+In addition, the TS image reveals thousands of smaller pores with radii below 8.02 µm (the CT pixel size). Beyond
+submicron pore recovery, the TS image also shows a notable reduction in pore sizes compared to the CT image, even
+for pores larger than the CT resolution limit. These two factors—submicron pore recovery and overall pore size
+reduction—result in a mean pore radius of 7.52 µm in the TS image, compared to 18.80 µm in the CT image, meaning
+pores appear 2.5 times larger in CT than in TS. This suggests that TS images can provide valuable corrections for
+common biases in CT-derived porosity and permeability estimates, where CT imaging underestimates porosity and
+overestimates permeability [Saxena et al., 2019a, 2017b].
+Figure 10: Pore size distribution comparison between the registered CT plane and the thin-section image.
+4.2
+Effective elastic moduli
+Next, we compute the effective elastic moduli of the paired images using an FFT-based solver in GeoDict [GmbH,
+2025] under a plane strain approximation. Specifically, we assume a two-phase composite, where all solid material is
+considered quartz, and the remaining regions are pores, based on the primary components of Berea Sandstone [Saxena
+et al., 2019b]. A nonzero strain of ε11 = ε22 = 0.001 and 2ε12 = 0.001 is applied, along with the physical properties
+listed in Table 3. Once the averaged stress (σ) and strain (ε) are obtained, the bulk and shear moduli of the 2D composite
+are computed as follows [Saxena and Mavko, 2016]:
+11

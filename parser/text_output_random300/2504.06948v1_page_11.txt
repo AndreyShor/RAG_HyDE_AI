@@ -1,0 +1,87 @@
+11
+Using the unitaries UM1, UM2 and UM3, we obtain a (3, d + 3)-block-encoding of W through LCU, as
+illustrated in Fig. 3, where ζ = 2 arccos
+√
+6
+3 . The gate complexity of this block-encoding is O(k), except for
+the implementation of the controlled UA.
+|·⟩a
+1
+Z
+RY (ζ)
+•
+•
+Z
+RY (ζ)
+|·⟩a
+1
+H
+•
+H
+|·⟩a
+1
+UM1
+UM2
+UM3
+|·⟩k
+|·⟩a
+d
+UA
+|·⟩n
+Figure 3. A quantum circuit that implements the block-encoding of W , denoted by UW .
+Next, we consider the block-encoding of B in Eq. (31). The bi-diagonal matrix can be decomposed as
+
+
+1
+√k+1
+−1
+1
+... ...
+−1 1
+
+=
+
+
+0
+−1
+0
+... ...
+−1 0
+
++
+
+
+1
+√k+1
+1
+...
+1
+
+=: M4 + M5,
+where M4 ∈Rp×p is similar to M1 but with different size and opposite signs. To introduce the negative sign,
+we use a negative Pauli gate Z. The quantum circuit for UM4 is shown in Fig. 4
+|0⟩a
+1
+X
+−Z
+|·⟩k+m
+•
+ADD
+Figure 4. A quantum circuit that implements the block-encoding of M4, denoted by UM4.
+Thus, UM4 is a (1, 1)-block-encoding of matrix M4 with gate complexity O(log(m · k)).
+The second matrix is diagonal and can be implemented using the circuit in Fig. 5.
+|0⟩a
+1
+RY (θ0)
+|·⟩k+m
+Figure 5. A quantum circuit that implements the block-encoding of M5, denoted by UM5.
+The parameter θ0 = 2 arccos
+1
+√k+1, and UM5 is a (1, 1)-block-encoding of M5 with gate complexity O(log(m·
+k)). Next, using LCU, we obtain the block-encoding of UM4 + UM5, which provides a (2, 2)-block-encoding
+of B. To match the (3, d + 3)-block-encoding of W , we add a qubit, yielding a (3, 3)-block-encoding of B
+using Lemma B.5, as shown in Fig. 6, where θ1 = 2 arccos 2
+3 such that cos θ1
+2 = 2
+3. The gate complexity for
+the block-encoding of B is also O(log(m · k)).

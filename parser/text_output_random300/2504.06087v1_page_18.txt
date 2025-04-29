@@ -1,0 +1,80 @@
+0.28
+0.30
+0.32
+0.34
+energy variance [E2
+h]
+−107.4525
+−107.4500
+−107.4475
+−107.4450
+−107.4425
+−107.4400
+−107.4375
+−107.4350
+energy [Eh]
+12.7
+mEh
+11.4
+mEh
+a)
+ﬁnal step
+extrapolated
+21
+22
+23
+24
+|preconditioned gradient|2 / a.u.
+12.7
+mEh
+11.8
+mEh
+b)
+ﬁnal step
+extrapolated
+50
+60
+70
+80
+90
+opt steps [k]
+Figure S4: Energy extrapolation for the phenol dimer a) based on variance. b) based on preconditioned
+gradient norm. Energy as a function of variance / gradient norm for the dissociated geometry and the equilibrium
+geometry.
+tensor shapes that are too small results in incorrect computations, as non-zero elements need to be dropped.
+To dynamically adjust to the current wave function and avoid an abundance of compilations, we compute
+the necessary tensor shapes to execute this step at every call. In particular, we log the numbers of electron-
+nuclei edges, electron-electron edges, affected electrons in single-electron moves (local and global), electrons
+close to pseudopotentials, and the triplets in Eq. (45). In subsequent steps, we use these as lower bounds with
+some padding as tensor shapes and pad the necessary tensors to fixed shapes, avoiding recompilation for every
+possible neighborhood combination. This way, the first call may be numerically incorrect due to non-aligned
+tensor shapes, but subsequent calls minimize the amount of padding while maintaining exact computation.
+Laplacian computations were done with folx [13].
+J
+Theoretical VMC convergence rates
+Recent work [14, 15] has investigated theoretical convergence bounds for NN-VMC in conjunction with MCMC-
+based SGD methods. The theoretically established convergence rates are α = 1/4 for convergence to a first-order
+stationary point [14, Corollary 4.4] and α = 2/11 for convergence to an approximate second-order stationary
+or a low-variance point [15, Theorem 3]. While the polynomial nature of these convergence results is consistent
+with our empirical findings, our empirical rate of α = 1 is considerably higher than the rates suggested by
+theory. Potential reasons for this discrepancy could be our use of preconditioning during optimization or the
+fact that the variance of the sampling distribution tends to zero as an eigenvector is approached, thereby
+improving the sampling complexity. We also mention that under additional assumptions (most importantly a
+Polyak-Lojasiewicz condition), an optimal rate α = 1 can be established for standard SGD-type methods [16].
+While this rate would match our empirical findings, it is unclear if a Polyak-Lojasiewicz condition holds in our
+setting. Furthermore, the results of [14, 15] are not directly applicable to our setting because they monitor the
+loss gradient instead of the energy error and also rely on certain boundedness/mixing assumptions that may
+not be satisfied in our case. A more comprehensive analysis would be highly desirable but lies beyond the scope
+of this work.
+K
+Conventional quantum chemistry calculations
+All conventional calculations were performed using ORCA 6.0.1 [17] using correlation consistent basis cc-pVXZ
+sets by Dunning [18] for CCSD(T) calculations and def2-XVP basis sets for DFT calculations. We extrapolate
+results to the complete basis set (CBS) limit by extrapolating the Hartree-Fock energy from calculations at
+the triple- and quadruple-zeta levels. The correlation energy is extrapolated from calculations performed at
+the double- and triple-zeta levels, where affordable. Calculations denoted as DZ correspond to Hartree-Fock
+energy at the CBS level and correlation energy obtained at the double-zeta level. For basis set extrapolation,
+we use the relationships published by Neese et al. [19]. For DFT calculations, we use the PBE0 [20] exchange-
+correlation-functional with the D3BJ dispersion correction [21]. ZPVE for the benzene dimer at the MP2-level
+were taken from [22]; for chloroferrocene, we calculated them at the PBE0/D3BJ level. Subtracting them from
+18

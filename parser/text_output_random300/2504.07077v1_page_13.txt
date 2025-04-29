@@ -1,0 +1,64 @@
+3
+Fig. S1: Schematic representation for generating training data sets: SREM and Noisy energy for one, two, and
+three-parameter circuits.
+data for training the GNM model. This noisy energy Enoisy
+JK
+is obtained by optimizing both parameters starting from an initial
+value of zero:
+Enoisy
+JK
+= ⟨φHF|e−τJ(θJ)e−τK(θK) ˆHeτK(θK)eτJ(θJ) |φHF⟩(initial −point = [0,0])
+(9)
+Next, we consider the mitigation procedure for circuits parameterized by three operators, where the ansatz is defined as
+|ψ⟩= eτLeτKeτJ |φHF⟩. Following a similar strategy as before, we construct a three-parameter energy functional. Here, we
+optimize θL as the sole variational parameter while fixing the other parameters θJ and θK at their previously optimized values,
+¯θ
+′
+J and ¯θ
+′
+K respectively. The energy evaluated under noise with this single-parameter optimization for the operator τL is given by
+EJKL = ⟨φHF|e−τJ( ¯θ
+′
+J)e−τK( ¯θ
+′
+K)e−τL(θL) ˆHeτL(θL)eτK( ¯θ
+′
+K)eτJ( ¯θ
+′
+J) |φHF⟩
+(10)
+Similarly, as discussed above the noisy reference energy for the three-parameter circuit is defined as
+(E0
+L)JK = ⟨φHF|e−τJ( ¯θ
+′
+J)e−τK( ¯θ
+′
+K)e−τL(θL=0) ˆHeτL(θL=0)eτK( ¯θ
+′
+K)eτJ( ¯θ
+′
+J) |φHF⟩
+(11)
+where, (...)JK suggests that the reference state is taken as eτJ( ¯θ
+′
+J)eτK( ¯θ
+′
+K) |φHF⟩. Therefore, the deviation in the reference state
+energy for the three-parameter circuit is expressed as
+∆re f
+JKL = ESREM
+JK
+−(E0
+L)JK
+(12)
+the mitigated energy with respect to the noise for the one-parameter optimization of τL, becomes
+EEM
+JKL = EJKL +∆re f
+JKL.
+(13)
+Finally, all three parameters are released as free variational parameters. The energy functional is then re-optimized, starting from
+their previously determined optimal values, yielding
+E
+′
+JKL = ⟨φHF|e−τJ(θJ)e−τK(θK)e−τL(θL) ˆHeτL(θL)eτK(θK)eτJ(θJ) |φHF⟩
+(14)

@@ -1,0 +1,92 @@
+New designs of linear optical interferometers with minimal depth and component
+count
+Timoth´ee Goubault de Brugi`ere, Rawad Mezher, Sebastian Currie, and Shane Mansfield
+Quandela, 7 Rue L´eonard de Vinci, 91300 Massy, France∗
+(Dated: April 9, 2025)
+We adapt an algorithm for CNOT circuits synthesis based on the Bruhat decomposition to the
+design of linear optical circuits with Mach-Zehnder interferometers (MZI). The synthesis algorithm
+reduces to designing sorting networks with nearest neighbor swapping operations as elementary
+gates. We recover previous designs from the literature but with additional theoretical properties
+regarding the compiler that implements unitaries on the interferometer. Notably the compiler can
+always decide whether a unitary can be implemented on a given interferometer and, if so, returns
+the shallowest possible implementation.
+We also show natural extensions of our framework for
+boson sampling experiments and for the coupling of multiple integrated interferometers to design
+larger linear optical systems. In both cases, the designs are optimal in terms of number of optical
+components. Finally, we propose a greedy design which exploits the arbritrary-but-fixed coupling
+of separate integrated interferometers to perform shallow boson sampling. We discuss the optimal
+interferometer dimensions to maximize the transmission. Beyond boson sampling, our developed
+framework allows a resource-favourable implemention of any non-adaptive linear optical quantum
+algorithm, by providing the shallowest possible interferometer for implementing this algorithm.
+I.
+INTRODUCTION
+Integrated photonics is a promising hardware can-
+didate for both noisy-intermediate scale (NISQ) tasks
+like boson sampling [1], and universal fault-tolerant
+quantum computing [2, 3]. In NISQ photonics archi-
+tectures computation is typically performed by passing
+photons through a lithographically defined integrated
+interferometer and detecting the photons at the output.
+Recent improvements in state of the art photon sources
+[4] and integrated interferometers [5] have resulted in
+demonstrations of photonic NISQ calculations [6, 7].
+The design of these integrated interferometers is fixed
+upon manufacture, and control of the implemented
+operations is achieved by tunable phase-shifters. When
+designing these photonic circuits there are two key
+desiderata. First, we wish to ensure they are computa-
+tionally universal, in the sense that they can implement
+any linear optical unitary [8], or can implement a
+predetermined subset of unitaries.
+Secondly, these
+circuits should minimise photon loss and gate infidelity.
+To mitigate photon loss, one minimises the optical
+depth of the chip.
+To mitigate power consumption,
+control complexity and fidelity errors, which arise due
+to noise and cross-talk in phase settings, one minimises
+the total number of phase-shifters.
+For a universal m-mode chip with perfect beam-
+splitters Clements et al.
+gave an optimal scheme
+[9] for minimisation of both depth and number of
+phase-shifters. However this decomposition, although
+optimal, is also a normal form in that the number of
+components used is the same regardless of the unitary
+∗timothee.goubault@quandela.com
+being implemented and the target application. Some
+specific cases are subject to improvements. For example
+when the beamsplitters are not perfect [10], when the
+universality constraint is relaxed, or when we can add
+layers of arbitrary connectivity by coupling multiple
+chips together. These more general cases motivate the
+investigation of new circuit decompositions.
+The design of linear optical interferometers shares a
+number of similarities with the synthesis of CNOT cir-
+cuits [11–13]. Recent insights on the CNOT synthesis
+problem for a linear nearest neighbour (LNN) archi-
+tecture [11] suggest a way to exploit these connections
+to find novel designs.
+In this work we adapt the al-
+gorithms of [11] and [13] to the case of linear optical
+circuit design. This results in two versatile frameworks,
+one based on the Bruhat decomposition [14] and one
+based on a greedy Gaussian elimination process. These
+have various applications and optimality results:
+• For the design of universal interferometers we re-
+cover the optimal scheme of Clements et al. [9].
+• The framework’s efficient compiler decides if a tar-
+get unitary can be implemented on a given LNN
+interferometer.
+The procedure always gives the
+shallowest implementation within the chip.
+• For the design of interferometers targeting Boson
+sampling, our framework is optimal in the number
+of linear optical components and in depth.
+• For the design of universal interferometers with
+layers of arbritrary connectivity, our framework is
+optimal in the number of linear optical compo-
+nents.
+• For the design of interferometers targeting Boson
+sampling, with layers of arbritrary connectivity,
+arXiv:2504.06059v1  [quant-ph]  8 Apr 2025

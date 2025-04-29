@@ -1,0 +1,53 @@
+3
+Figure 2. An illustration of the workflow adapted in our work, consisting of optimizations carried out at the wavefunction level
+(left panel) and at the Hamiltonian level (right panel). Left panel: eˆτ(1) is the UCC operator acting on the first determinant, |Φ1⟩,
+whereas eˆτ(2) acts on the second determinant, |Φ2⟩. Upon using point group symmetry, the number of non-zero amplitudes are
+reduced. Thus, ⃗θ′
+1, for example, is ⃗θ1 with several elements in the latter zeroed out. ˆ˜τ refers to the UCC operator that contains
+only the linearly independent amplitudes upon removing redundancies. In the energy sort VQE sub-panel, the dominant optimized
+parameter that we pick is expressed as ˜Θ∗. The reduced state, |Ψ(˜Θ∗)⟩, is passed through a pipeline optimization routine. Right
+panel: the Hamiltonian, ˆH, is partitioned into qubit-wise mutually commuting sets called cliques (denoted as Cl0 for the 0th clique,
+etc). The cliques giving the same energy are grouped under supercliques. We pick the top three supercliques. The expectation
+value is then calculated (with error mitigation) using quantum hardware for the reduced Hamiltonian, with respect to this pipeline
+optimized wavefunction to obtain the counts. We then pass the counts obtained from clique 0 through a post-selection step to
+obtain the final set of counts, and thus the final energy. We note that IXZZX· · · I is a shorthand for ˆI ⊗ˆX ⊗ˆZ ⊗ˆZ ⊗ˆX ⊗· · · ⊗ˆI.
+of the molecular orbital (MO); the indexing of MOs is fol-
+lowing the big-endian convention) were generated following
+a multiconfiguration self-consistent field (MCSCF) calcula-
+tion with two MOs (HOMO and LUMO) and two electrons,
+using the GAMESS-US quantum chemistry software [38].
+The one- and two-electron integrals were fetched from the
+DIRAC22 program [39].
+We developed our own code to
+remove redundancies by comparing the output states that
+result from the action of excitation operators on the con-
+sidered reference determinants. The VQE simulations are
+carried out using Qiskit 0.39.5 [40].
+We now briefly comment on the input state prepara-
+tion.
+We found an isometry to prepare the input state,
+C1 |220000⟩+ C2 |202000⟩with C1 = 0.911174 and C2 =
+−0.412020 (rounded off to six decimal places), which hap-
+pens to be simple and involves only three two-qubit gates
+(Figure 1(b); we note that this is a many-fold reduction over
+Qiskit’s in-built isometry routine for the same state), how-
+ever it is not easy in general to prepare an entangled state
+built as a linear combination of many determinants, and
+thus preparing a multideterminantal state for an MRUCC-
+VQE (or for that matter, quantum phase estimation [3, 4]
+or the HHL algorithms [41, 42]) computation is an open
+problem in the field.
+C.
+Resource reduction
+The MRUCC-VQE quantum circuit for our problem has
+12515 two-qubit gates. On the other hand, the Hamiltonian
+has 551 Pauli terms upon Jordan-Wigner transformation.
+In order to execute our problem on quantum hardware and
+get reliable results, we need to carry out extensive resource
+reduction both on the wave function as well as the Hamilto-
+nian fronts, as illustrated in Figure 2. The resource reduc-
+tion procedure involves several routines, all of which are car-
+ried out on a classical computer. The need for reducing the
+number of two-qubit gates in a circuit on a NISQ era com-
+puter can be seen using a back-of-the-envelope calculation,
+where with a two-qubit gate fidelity of 99.28% (the fidelity

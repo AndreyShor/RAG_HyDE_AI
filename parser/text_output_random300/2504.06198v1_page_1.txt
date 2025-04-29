@@ -1,0 +1,44 @@
+Critical Slowing Down in Bifurcating Stochastic Partial
+Differential Equations with Red Noise
+P. Bernuzzi1,†, C. Kuehn1,2, and A. Morr3,4
+1Technical University of Munich, School of Computation Information and Technology, Department of Mathematics, Boltzmannstraße 3,
+85748 Garching, Germany
+2Technical University of Munich, Munich Data Science Institute, Walther-von-Dyck-Straße 10, 85748 Garching, Germany
+3Technical University of Munich, School of Engineering and Design, Lise-Meitner Str. 9, 85521 Ottobrunn, Germany
+4Potsdam Institute for Climate Impact Research, Research Domain IV: Complexity Science, Telegrafenberg A 31, 14473 Potsdam, Germany
+†Author to whom any correspondence should be addressed.
+Email addresses: paolo.bernuzzi@ma.tum.de (P. Bernuzzi), ckuehn@ma.tum.de (C. Kuehn), andreas.morr@tum.de (A. Morr).
+April 9, 2025
+Abstract
+The phenomenon of critical slowing down (CSD) has played a key role in the search for reliable precursors of
+catastrophic regime shifts. This is caused by its presence in a generic class of bifurcating dynamical systems. Simple
+time-series statistics such as variance or autocorrelation can be taken as proxies for the phenomenon, making their
+increase a useful early warning signal (EWS) for catastrophic regime shifts. However, the modelling basis justifying the
+use of these EWSs is usually a finite-dimensional stochastic ordinary differential equation, where a mathematical proof
+for the aptness is possible. Only recently has the phenomenon of CSD been proven to exist in infinite-dimensional
+stochastic partial differential equations (SPDEs), which are more appropriate to model real-world spatial systems. In
+this context, we provide an essential extension of the results for SPDEs under a specific noise forcing, often referred to
+as red noise. This type of time-correlated noise is omnipresent in many physical systems, such as climate and ecology.
+We approach the question with a mathematical proof and a numerical analysis for the linearised problem. We find that
+also under red noise forcing, the aptness of EWSs persists, supporting their employment in a wide range of applications.
+However, we also find that false or muted warnings are possible if the noise correlations are non-stationary. We thereby
+extend a previously known complication with respect to red noise and EWSs from finite-dimensional dynamics to the
+more complex and realistic setting of SPDEs.
+Keywords: SPDEs, Early-warning signs, Critical Slowing Down, Red noise, Bifurcations.
+MSC codes: 60H15
+Funding: This work was supported by the European Union’s Horizon 2020 research and innovation programme under Grant
+Agreement 956170. This is ClimTip contribution #. The ClimTip project has received funding from the European Union’s Horizon
+Europe research and innovation programme under grant agreement No. 101137601. Views and opinions expressed are however
+those of the author(s) only and do not necessarily reflect those of the European Union or the European Climate, Infrastructure,
+and Environment Executive Agency (CINEA). Neither the European Union nor the granting authority can be held responsible for
+them.
+1
+Introduction
+Identifying and assessing high-impact events, such as climate tipping points or ecological catastrophes, has gained tremendous
+importance recently [37, 2]. The non-linear, potentially abrupt response of complex systems to anthropogenic changes poses a
+grave challenge for conventional modelling techniques [49]. This has motivated the use of conceptual models, wherein the complex,
+high-dimensional dynamics are reduced to a few variables and their characterising feedback mechanisms. Often, a noise model is
+added to replace some of the omitted complexity [40, 55]. In such conceptual models, the nature of abrupt regime shifts can be
+formalized as dynamical bifurcations, that is, a vanishing of a previously stable equilibrium state [1, 12].
+1
+arXiv:2504.06198v1  [math.PR]  8 Apr 2025

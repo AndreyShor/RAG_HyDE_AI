@@ -1,0 +1,140 @@
+3
+A.
+Bases mismatch
+Bases
+mismatch
+describes
+any
+of
+the
+following
+six
+basis
+choices
+of
+the
+users
+A,
+B1
+and
+B2:
+{XXY, YYX, XYX, YXY, YXX, XYY}.
+Furthermore
+one can pair the triplets which coincide if X ↔Y, e.g.,
+{XXY, YYX}, since both options output coherent states
+of the same amplitude. For the first pair, assuming that
+the amplitude of the input states is √µ, in Table I we pro-
+vide the amplitudes of the coherent states reaching the
+detectors for all possible choices of encoding. The Table I
+illustrates that each output state provides a probability
+for each detector to either fire or remain inactive. Thus
+we are obliged to ‘enforce’ to each scenario a detection
+type keeping though in mind not only that a detection
+might not occur but more importantly that a misdetec-
+tion can happen as well.
+For instance, an input state
+characterized on Table I as Type 0 can lead with some
+probability to detection Type 1 and vice versa.
+Bases
+mismatch
+refers
+to
+any
+of
+the
+following
+six possible basis choices for users A, B1, and B2:
+{XXY, YYX, XYX, YXY, YXX, XYY}. These can be
+paired by swapping X ↔Y (e.g., {XXY, YYX}), as both
+options yield coherent states with the same amplitude.
+For the first pair, assuming the amplitude of the input
+states is √µ, Table I shows the amplitudes of the coher-
+ent states reaching the detectors for all encoding choices.
+The table illustrates that each output state results in a
+probability for each detector to either fire or remain in-
+active. We must therefore ‘enforce’ a detection type for
+each scenario, keeping in mind not only that a detection
+might not occur, but also that misdetections can happen
+(contrary to [6]). In Appendix we provide the tables for
+the rest of the triplets.
+In Fig. 3 we present the average success probability of
+correct detection over all six bases triplets and phase en-
+codings, assuming perfect detectors. The average error
+is presented in the same graph. This concerns an honest
+implementation of the protocol, and for this reason we re-
+fer to it as systematic error to differentiate it from errors
+due to eavesdropping or imperfection on devices/links.
+B.
+Bases match
+In the event that all users encode the information on
+the same basis, e.g., XXX, we identify four different pat-
+terns of detection, presented in Table II. As for Bases
+mismatch, in Table II we relate the inputs to the outputs,
+the detection types and the required actions so that each
+pair adds a bit on its pairwise key – bit-string.
+We calculate the probability of systematic errors for an
+honest implementation, as shown in Table II. In calcu-
+lations not presented here, we observe a significant sys-
+tematic error of about 20% for µ ≈0.4, primarily due to
+the overlap between detection outcomes of types 3 and
+4 with type 0.
+This high systematic error leads to a
+Bit Error Rate (BER) of approximately 40%, rendering
+the Bases match case of the protocol impractical.
+To
+address this, we exclude detection types 3 and 4, as do-
+ing so, significantly reduces the systematic error without
+compromising the probability of a successful implemen-
+tation, making the BER more tolerable. In Fig. 4, we
+plot the probability of a successful detection for Types
+0 and 1, along with the corresponding systematic error
+introduced by other detection types. Finally, Table III
+summarizes the admissible detection types for each basis
+triplet.
+It is important to note that a Bases Match (excluding
+detection types 3 and 4) occurs with a probability of 1/8
+across all cases. This probability is further adjusted by
+the probability of successful implementation, as shown
+in Fig. 4. The low overall probability of success, coupled
+with the additional systematic error, makes the current
+protocol unsuitable for implementing QCKA. For a more
+effective approach, we refer interested readers to more
+sophisticated protocols, such as the one in [8].
+IV.
+THE STEPS OF THE PROTOCOL
+The analysis in the previous section prepares us to
+present the steps of the protocol for distributing keys.
+In the case of a Bases mismatch, the protocol distributes
+keys to a single pair of users.
+In the case of a Bases
+match, keys are distributed to all three pairs, with only
+Types 0 and 1 of detection being considered.
+1. Each user randomly selects a bit value (b := 0, 1)
+and a basis (B := X, Y ). They create and send
+a reference pulse followed by a coherent pulse with
+intensity µ, whose phase ϕ is modulated according
+to the chosen bit value and basis as follows:
+• (b = 0, B = X) →ϕ = 0
+Average Error
+Average Success
+Success of Original
+0.5
+1.0
+1.5
+μ
+0.2
+0.4
+0.6
+0.8
+1.0
+Probability
+Basis Mismatch: Error and Success Probabilities
+FIG. 3: Bases mismatch between the three users, where a
+bit is distributed to the pair of users with matching bases.
+Dashed red line: Average probability of a successful
+detection event, assuming perfect detectors. Dotted black
+line: Average probability of a wrong detection type, leading
+to a bit error in the pairwise distributed key. Solid yellow
+line: Probability of successful detection for the original
+protocol in [6]. Horizontal axis: Intensity µ of the coherent
+states prepared by the users.

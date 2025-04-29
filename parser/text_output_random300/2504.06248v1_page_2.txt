@@ -1,0 +1,75 @@
+2
+FIG. 1. The Kuramoto model, its constants of motion and its Lie symmetries under Koopman’s perspective. (a) The complex
+weight matrix A in Eq. (3) encodes all the parameters of any network of Kuramoto oscillators, whose evolution is described
+by z = (z1, ..., zN) on the N-torus. Observables f for the model are complex-valued functions on the N-torus, possibly time-
+dependent. The observable (1/N) PN
+j=1 zj lies in the closed unit disk D and its modulus, the Kuramoto order parameter [37],
+measures synchronization. (b) The observables belong to a function space O. The Koopman generator K is the total deriva-
+tive d/dt that generates the time evolution of the observables through the Koopman operator exp(tK), which composes the
+observables with the flow ϕt of the dynamics. An eigenfunction ψ of K (e.g., monomials in Thm. 1) gives key information
+about the dynamics (e.g., isostables [29] as level sets of |ψ|). Notably, an eigenfunction with eigenvalue 0 is a constant of
+motion C (e.g., cross-ratios in Thm. 2). The existence of an eigenfunction ψ with eigenvalue λ directly provides a constant of
+motion C = ψe−λt. (c) A Lie symmetry transforms a solution of the Kuramoto model to a new solution. A transformation is a
+symmetry provided that an infinitesimal criterion is satisfied: a symmetry generator S commutes with the Koopman generator.
+The general form of the criterion is provided in Eq. (8). Note the abuse of notation that zj is used as a function of time, but
+also as a coordinate for T throughout the paper.
+then, by shifting the focus away from identical oscilla-
+tors, there has been a surge of studies on complex net-
+works of phase oscillators and their synchronization, as
+heterogeneous connections are a key feature of complex
+systems and significantly influence synchronization pat-
+terns [3, 38–41].
+This raises the question: under which network condi-
+tions does finding constants of motion remain possible
+for phase oscillators ? Pikovsky and Rosenblum [42] rec-
+ognized that Watanabe-Strogatz (WS) theory is applica-
+ble to networks with M all-to-all coupled communities,
+leading to N −3M constants of motion [42, 43]. Another
+step towards heterogeneity was to analyze the Kuramoto
+dynamics on star graphs [12, 13, 44–46]—prevalent mo-
+tifs of complex networks. Because periphery vertices are
+identically connected to the core, WS theory can be ap-
+plied [47–52]. Yet, complex networks feature diverse mo-
+tifs [53] with potentially significant stability and synchro-
+nizability properties [54–56]. It is thus our goal to iden-
+tify the motifs that enable constants of motion to exist
+for the Kuramoto model on general networks.
+To begin with, a scalar function C of time and z :=
+(z1, ..., zN) is a constant of motion of the dynamics with
+Koopman generator K if and only if K[C(t, z)] = 0, that
+is, C is an eigenfunction of the Koopman generator with
+null eigenvalue [Fig. 1 (a)]. One way to obtain constants
+of motion is to look for an eigenfunction ψ(z) of the
+Koopman generator with eigenvalue λ, as it directly im-
+plies that C(t, z) = ψ(z)e−λt is conserved.
+Since the vector field is polynomial for the Kuramoto
+model described in z, we begin by searching for monomial
+eigenfunctions zµ := zµ1
+1 ...zµN
+N . In terms of the phases, a
+monomial eigenfunction corresponds to a complex-valued
+eigenfunction exp(iµ⊤θ), where µ⊤θ is a real-valued lin-
+ear observable with linear time evolution. As stated in
+the next theorem, these eigenfunctions indeed exist given
+the presence of special network motifs [proof in Sec. II A].
+Theorem 1 (Monomial eigenfunction). Let W ⊂V be a
+non-empty subset of vertices such that |αjk| < π/2 for all
+j, k ∈W. Set µ = (µ1 · · · µN)⊤∈RN such that µj ̸= 0
+if and only if j ∈W. Then, zµ is an eigenfunction of K
+in Eq. (2) if and only if :
+1.1. Wjk = 0 for all j ∈W and k ∈V \ W;
+1.2. Wjk ̸= 0 whenever Wkj ̸= 0 for all j, k ∈W ;
+1.3. Wi1i2...Wiη−1iηWiηi1 = Wi1iηWiηiη−1...Wi2i1
+for all sequences i1, i2, ..., iη of elements of W;
+1.4. αjk = −αkj whenever j, k ∈W, j ̸= k, Wjk ̸= 0.
+If zµ is an eigenfunction, then its eigenvalue is iµ⊤ω.
+As illustrated in Fig. 2 (a), condition 1.1 ensures that the
+subgraph induced by the vertex set W is a source within
+the whole network. Then, condition 1.2 constrains the
+reciprocity : there cannot be a unidirectional edge within
+the subgraph, making it a strongly connected component
+[Fig. 2 (a)]. Condition 1.3 restricts the cycles : the prod-
+uct of the weights in the subgraph when circling clock-
+wise in any cycle must be the same as the product of the
+weights when circling counterclockwise. In matrix terms,
+the second and third conditions mean that (Wjk)j,k∈W is

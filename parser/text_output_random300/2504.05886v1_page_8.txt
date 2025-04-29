@@ -1,0 +1,129 @@
+8
+coexistence phase) but large enough to allow exploration
+of this phase. Compared to taking simply r(t) = ρA(t),
+the definition (13) penalises parameters S where the sys-
+tem has a significant probability of extinction within the
+time T. (One might also consider larger penalties, by re-
+placing the value −1 in (13) by −rpen with some rpen > 1.
+We expect similar results in this case.)
+The optimisation is performed over the movement and
+predation rates of species A. Other parameters are fixed,
+with values given in Table I. These values are not fine-
+tuned and we expect the behaviour observed here to be
+robust across a range of parameters, within the physical
+constraints already discussed.
+To better understand the optimisation problem, we
+show example time series for the populations in Fig. 4(b),
+for a system in the coexistence state.
+The popula-
+tions show the characteristic oscillations associated with
+predator-prey dynamics [3, 37]. The competitive nature
+of the dynamics and the volume exclusion constraint both
+mean that a large population for one species tends to
+occur at the expense of the others [6, 36, 62, 81].
+In
+particular, Fig. 4(b) shows that reducing the predation
+rate from σA = 1 to σA = 0.5 means that species A
+gains larger population at the expense of species C. This
+higher ρA is the result of the “survival of the weakest”
+which we will discuss in Sec. VI A below. At this point,
+we note that that if species A achieves a large population,
+its prey species B is likely to be less numerous. However,
+if ρB is small, this species runs the risk of dying out,
+which leads in turn to the collapse of the whole ecosys-
+tem [extinction of all species and r(t) = −1]. Hence, the
+optimisation problem for species A is twofold: how can
+it learn an advantageous survival strategy that improves
+its population density, while still sustaining a stable prey
+population, and maintaining the system’s biodiversity?
+In other words, the “smart” species need to balance opti-
+mising its population and keeping ecosystem sustainable.
+C.
+Learning Algorithm
+We optimise the value function ϱ over the parameters
+S by a type of multi-armed bandit algorithm [54, 82–
+85]. However, we insist (contrary to standard algorithms)
+that all updates to S are small, in order to mimic the pre-
+dominantly incremental process of collective learning and
+adaptation in evolutionary biology [86–88], see also [71–
+73, 89, 90].
+We optimise over a set of three or four parameters,
+whose values are discretised on a grid. Each point on the
+grid is a state point S, recall (14). Our aim is to learn the
+value function ϱ(S) in the vicinity of the optimal state
+point S∗. The RL method achieves this via a function
+ˆϱ(S) which is an estimator for ϱ(S).
+The method is illustated in Fig. 5, it proceeds in steps
+indexed by k = 1, . . . , K, which are further organised
+into training episodes, indexed by e = 1, . . . , E. On step
+k the state point is Sk, and a simulation is run at this
+state point in order to improve ϱ(Sk). A new state point
+Sk+1 is chosen on the basis of the estimated values, and
+the method continues. The constraint of incremental up-
+dates to S means that Sk+1 is always a neighbour of Sk
+on the parameter grid. In addition to the current esti-
+mate of ϱ(S), we define variables n(S) to keep track of
+the number of simulations that have been performed at
+state point S (this is relevant for the uncertainty of the
+estimate ˆϱ(S)).
+This scheme is formalised in Algorithm 2, and we now
+describe this method.
+The reward estimates are ini-
+tialised to the arbitrary value ˆϱ(S) = −1 for all S, and
+all n(S) are initialised to 1. Each training episode begins
+with a random state point S1 that supports a finite popu-
+lation of A. (This is achieved by choosing a random state
+point Sinit and simulating T MCS: if the final population
+is non-zero then take S1 = Sinit, else choose another state
+point Sinit, and repeat this procedure until a finite pop-
+ulation is found.) Each episode includes many steps of
+the algorithm, and every step involves a simulation of T
+MCS. The initial condition of each simulation is taken as
+the final condition of the last one, so one may think of a
+species adjusting its behaviour in order to find effective
+strategies. However, if the population of species A drops
+below δ at any point then the episode ends and the next
+episode starts with a new random state point S1.
+During step k the parameters are Sk. The step consists
+of T MCS and we average the reward r(t) in (13) over
+the final Tmeas MCS, and denote its value by rk. Then
+we update our estimate of the relevant value function as
+ˆϱ(Sk) ←ˆϱ(Sk) +
+1
+n(Sk)[rk −ˆϱ(Sk)]
+(15)
+and we also update n(Sk) ←n(Sk) + 1.
+This update
+ensures that
+ˆϱ(S) =
+1
+n(S)
+n(S)
+X
+i=1
+r(S, i)
+(16)
+where r(S, i) is the reward for the ith simulation at state
+point S.
+(This sum generically includes contributions
+from all episodes, note however that r(S, 1) = −1 is fixed
+by initialisation and does not correspond to an actual
+simulation. Results depend weakly on this choice.) The
+more simulations are performed at state point S, the
+more accurately ˆϱ(S) approximates the value function
+ϱ(S), which is the average reward. The above-described
+process is called value evaluation.
+It remains to describe the method of choosing Sk+1,
+which is called the learning policy. As noted above, the
+only possible choices for Sk+1 are adjacent to Sk on the
+parameter grid. (We do not allow Sk+1 = Sk.) We write
+Nk for the set of possible choices and we take the ϵ-greedy
+policy
+Sk+1 =
+(
+arg maxS∈Nk ˆϱ(S)
+with prob. 1 −ϵ
+random element of Nk
+with prob. ϵ
+,
+(17)

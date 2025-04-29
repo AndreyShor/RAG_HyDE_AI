@@ -1,0 +1,93 @@
+Proof. Using (2.3), we write
+βX,Y (ξ1
+i ⊠ηk) = ηk ⊠ξ1
+i =
+X
+j
+ηk ⊠ξ2
+j t∗
+ij.
+Then the eﬀect of the A-module homomorphism βY,X becomes
+X
+j
+ξ2
+j ⊠ηkt∗
+ij.
+Then using (2.2), we get the right hand side of (2.4).
+□
+3. Distinguished algebra objects
+3.1. Lagrangian algebra in the Drinfeld center. Let C be a unitary fusion category, and let
+us denote the set of its irreducible classes by Irr(C). Given i ∈Irr(C), we denote its representative
+by Ui. We also write 0 for the class of monoidal unit, so that we have U0 = 1C.
+We denote the (unitary) Drinfeld center of C by Z(C) (for example, see [M¨ug03a]). Its objects
+are pairs (Z, c), consisting of an object Z ∈C together with a half braiding, that is, a natural
+unitary isomorphism
+cX : Z ⊗X →X ⊗Z
+(X ∈C).
+that fulﬁlls the hexagon axiom. Morphisms in Z(C) are morphisms in C between the underlying
+objects that commute with the respective half braidings. The monoidal product of C induces
+a monoidal structure on Z(C) where the half braiding of a product Z ⊗Z′ is given by the
+composition of the respective half braidings. Moreover, Z(C) is naturally unitarily braided with
+braiding
+(3.1)
+β(Z,c),(Z′,c′) = cZ′ : Z ⊗Z′ →Z′ ⊗Z.
+for objects (Z, c) and (Z′, c′) in Z(C).
+Recall that there is a distinguished object (Zreg, creg) in Z(C), given by
+(3.2)
+Zreg =
+M
+i∈Irr(C)
+U ∗
+i ⊗Ui.
+Let us recall the unitary half-braiding creg, cf. [NY16, Section 3.2]. Given X ∈C and indexes i
+and j for Irr(C), we take a family of morphisms vij
+α : Ui ⊗X →Uj such that P
+α vij∗
+α vij
+α is the
+orthogonal projection onto the j-th isotypic summand of Ui ⊗X. Then we deﬁne
+cX,ij : U ∗
+i ⊗Ui ⊗X →X ⊗X∗⊗U ∗
+i ⊗Ui ⊗X →X ⊗U ∗
+j ⊗Uj
+by setting
+cX,ij =
+s
+di
+dj
+X
+α
+(idX ⊗vij∗∨
+α
+⊗vij
+α )( ¯RX ⊗idU∗
+i ⊗Ui⊗X),
+where di is the categorical dimension of Ui, and vij∗∨
+α
+: X∗⊗U ∗
+i →U ∗
+j is the morphism we obtain
+by composing vij∗
+α
+with the standard solutions of conjugate equations for X, Ui, and Uj. If we
+collect cX,ij as a morphism Zreg ⊗X →X ⊗Zreg, it is unitary, and satisﬁes the consistency
+conditions for half-braiding.
+We can detect the triviality of the M¨uger center of Z(C) by testing it against (Zreg, creg), as
+follows.
+Proposition 3.1. Let (Z, c) be an object of Z(C) such that βZreg,ZβZ,Zreg = idZ⊗Zreg. Then we
+have Z ≃1⊕k
+C
+for some integer k.
+Proof. The morphism β−1
+Z,Zreg = c−1
+Zreg respects the direct sum decomposition (3.2). In particular,
+for the direct summand U0 = 1C, we get the identity morphism of Z. On the other hand, if we
+look at βZreg,Z = creg
+Z
+out of the summand U ∗
+0 ⊗U0, we end up in the summands Z ⊗U ∗
+j ⊗Uj
+for all Uj contained in Z. From βZreg,Z = β−1
+Z,Zreg, we get the claim.
+□
+7

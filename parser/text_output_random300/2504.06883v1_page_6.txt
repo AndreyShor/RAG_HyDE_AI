@@ -1,0 +1,62 @@
+Entropy 2025, 27, 395
+6 of 14
+above equations, as we have seen earlier. In this way, the update rule of the new cellular
+automaton will altogether be described by permutations, extending the Cellular Automaton
+Interpretation from the case of the Weyl equation (Section 2.1) to the Dirac equation.
+However, as indicated above, we need to generalize the model of the Ising spin chain
+in order to accommodate the arithmetic implied by the mass terms of the Dirac equation.
+Instead of an Ising spin chain with periodic boundary conditions, we will implement a
+“Necklace of Necklaces”. This we already alluded to in reference [24]. However, its torus-like
+topology will now be made use of differently, once again based on two-state Ising spins.
+Borrowing notation from quantum theory, the state of the automaton at time t = nT is
+represented by
+|Ψ⟩n := |s1, l1, . . . , s2k, l2k, . . . , s2k+1, l2k+1, . . . , s2S, l2S⟩,
+(12)
+where the spin variables can assume values s = ±1. We note that the variables here are
+labeled by two indices, an either even or odd index for the “longitudinal” position, with
+k = 1, . . . , S , and an index for the “transverse” position, −S, −S + 1, . . . , lk, . . . , S −1, S;
+the index k on lk will mostly be suppressed when no confusion arises.
+Furthermore, the following torus-like periodic boundary conditions are assumed:
+s2S+1, l = s1, l, s2S+2, l = s2, l, for all l,
+(13)
+sk, S+1 = sk, −S, sk, −S−1 = sk, S, for all k.
+(14)
+Thus, the index k labels even- and odd-numbered sites along a “necklace” in the longitudinal
+direction and each such site is part of a transverse “necklace”; altogether sites are labelled
+by k, lk, often simplified to k, l, hence the name “Necklace of Necklaces”.
+The states of the automaton, cf. Equation (12), are further restricted to have, for each
+longitudinal position, say k′, exactly one spin up with sk′, l′ = +1 and all other spins down
+with value sk′, l̸=l′ = −1.
+The operator ˆL(k′) which measures the position of the one up spin at a given k′ is then
+defined by
+ˆL(k′) :=
+S
+∑
+l=−S
+l
+2(ˆσz
+k′, l + 12),
+(15)
+where ˆσz
+k′, l denotes the usual diagonal Pauli matrix acting on the spin sk′, l. The restricted
+automaton states are eigenstates of this operator, such that for sk′, l′ = +1, sk′, l̸=l′ = −1 we
+obtain ˆL(k′)|Ψ⟩n = l′|Ψ⟩n .
+We shall now employ the transverse position l′ of a single up spin with given longi-
+tudinal position k′ to encode the integer value of the variables sL
+n(k′) (k′ odd) or sR
+n (k′) (k′
+even) that are described by the Equations (10) and (11). Additions and subtractions due to
+the mass terms then correspond to shifts of up spin positions.
+A positive unit shift for a state with a single up spin at k′, l′ is effected by moving all
+spins with this k′ one step towards increasing transverse position lk′. This is achieved by a
+complete permutation – see Appendix A.1 – with a unitary operator ˆU⊥:
+ˆU⊥(k′)| . . . , sk′, lk′ , . . . ⟩:= | . . . , sk′, lk′+1, . . . ⟩,
+(16)
+for all spins at fixed k′ with l ∈[−S, S], respecting the periodic boundary condition. This
+operator is explicitly given in terms of pairwise transpositions of nearest neighbor spins:
+ˆU⊥(k′) :=
+S
+∏
+l=−S
+ˆPl l+1(k′),
+(17)

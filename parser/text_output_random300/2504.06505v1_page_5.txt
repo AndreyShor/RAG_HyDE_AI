@@ -1,0 +1,47 @@
+ 
+5 
+improves its ability to produce statistically consistent samples, while the discriminator refines its ability to 
+detect discrepancies. 
+In the dynamics matching framework, we still employ a neural network as the classifier to detect 
+discrepancies. The generator, however, is a CG model that can generate sample trajectories by propagating 
+the state of the system forward in time according to the predefined dynamic equations. In the numerical 
+experiments, we consider two types of dynamics: Brownian dynamics and Langevin dynamics. 
+In the case of Brownian dynamics, learnable parameters 𝜽= {𝜽', α, 𝛾} include potential network 
+parameters 𝜃: for potential 𝑈(𝑹, 𝜽:), a time scaling factor 𝛼, and the diffusion coefficient 𝛾, such that 
+ 
+𝑑𝑹
+𝑑τ = −1
+γ ∇𝑈(𝑹) + M2𝑘;𝑇
+γ
+𝝃(𝜏) 
+τ =  α𝑡 
+ 
+(4) 
+Here for simplicity, we assume a constant diffusion coefficient. Similarly for Langevin dynamics, with the 
+extra learning parameter 𝑚 (note it need not be the real mass): 
+ 
+𝑚𝑑<𝑅
+𝑑τ< = −∇𝑈(𝑹) −𝑑𝑹
+𝛾𝑑𝜏+ T2𝑘;𝑇𝛾𝝃(𝜏) 
+τ =  α𝑡 
+ 
+(5) 
+Following the adversarial training framework, we optimize the learnable parameters in the dynamic 
+equation by formulating the problem as a minimax optimization task: 
+ 
+𝜃4 = argmax
+5
+Umin
+= X〈𝑓=(𝑹+:-)〉>" −〈𝑓=(ℳ(𝒓𝟏:𝑻))〉?#$%\], 
+ (6) 
+ 
+where 𝑓= represents the neural network and the expectations 〈∙〉 are taken separately over the CG trajectory 
+ensemble 𝑄5 and the AA trajectory ensemble 𝑃789. As illustrated in Fig.1, trajectories are sampled from 
+both the AA model and CG model. The classifier is trained to give a high classification score for the 
+projected trajectories from the AA model and a low classification score for the CG trajectories. 
+Concurrently, the CG model is optimized according to the feedback of the classifier network, maximizing 
+the classification score of the CG trajectories. To enable this, we leverage JAX-MD28 as our differentiable 
+molecular dynamics engine, with the classifier network implemented directly in JAX.29 This framework 
+ensures seamless integration of gradient-based optimization with the dynamics simulations. Other 
+differentiable MD packages, such as TorchMD,30 offer similar capabilities. 
+ 

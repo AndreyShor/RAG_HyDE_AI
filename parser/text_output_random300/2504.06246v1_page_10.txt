@@ -1,0 +1,165 @@
+10
+than the original Hamiltonian, Eq. (3), resulting in
+a Floquet Hamiltonian that encodes a redundancy in
+the quasienergies and eigenvectors. We define the first
+“Floquet-Brillouin zone” (FBZ) by the set of quasiener-
+gies in the interval −ℏω/2 < E ≤ℏω/2 [10]. Any eigen-
+vector of Eq. (6) with quasienergy outside the first FBZ
+can be obtained from a state in the first FBZ with energy
+shifted by mℏω. To simulate the system numerically, we
+will truncate the Floquet Hamiltonian to a finite num-
+ber (2M + 1) of Fourier coefficients. This is enabled by
+the linear potential −mℏω in Eq. (6), which results in
+localized eigenstates in the Fourier harmonic space. The
+finite range ℓm of appreciable Fourier coefficients for the
+Floquet eigenstates can be estimated as ℓm ∼W/(ℏω),
+where W is the bandwidth, approximately given by the
+largest one of H0 and V . The truncation will provide a
+good approximation for the system far from the trunca-
+tion boundaries if we take (2M + 1) ≫ℓm. For details,
+see Ref. [10].
+We
+simulate
+the
+planar
+SNS
+system
+using
+the
+Kwant [21] python package, where we take a tight-binding
+approximation of Eq. (5) in a finite square lattice of
+size L by Ly, where Ly = 2WS + WN, and truncate
+the Floquet matrix to the M-th lowest Floquet side-
+band, i.e., m, n ∈[−M, M].
+At this point, with the
+Floquet truncation and tight binding approximation, our
+system is still computationally costly to solve numer-
+ically for a realistic set of parameters.
+Considering a
+system of size L × Ly ∼1 µm × 1 µm and lattice con-
+stant of order ∼1 nm, results in a ∼106-dimensional
+Hamiltonian H0. Here, instead, we introduce an effective
+Hamiltonian approach to solve the Floquet Hamiltonian
+numerically. We choose an undriven SNS Hamiltonian
+given by HSNS = H0 + V + V † and solve the eigen-
+value problem numerically, finding N eigenvalues closest
+to the Fermi level. Then, we project H0, V , and V † in
+Eq. (5) on this reduced N-dimensional basis, which, com-
+bined with the Floquet harmonics truncation, results in
+a (2M +1)N-dimensional Floquet Hamiltonian. Alterna-
+tively, we could have chosen another basis for the effective
+Hamiltonian projection, such as the SN Hamiltonian H0
+eigenstates. For sufficiently large N (we take N = 400),
+both basis choices will result in indistinguishable results
+for the low-energy (near Fermi level) properties.
+By using the obtained eigenvectors and eigenstates, we
+calculate the time-averaged density of states (DOS) de-
+fined as [10]
+ρ(ω, E) =
+X
+ν
+M
+X
+m=−M
+⟨ϕ(m)
+ν
+|ϕ(m)
+ν
+⟩δ(ϵν + mℏω −E), (7)
+where the sum over ν is over all the eigenvalues. Here
+|ϕ(m)
+ν
+⟩is the m Fourier harmonic, obtained from the
+eigenvector φν corresponding to the ν-th eigenvalue ϵν
+of Eq. (6),
+φν =
+
+
+
+
+
+
+
+
+
+
+
+...
+ϕ(m−1)
+ν
+E
+ϕ(m)
+ν
+E
+ϕ(m+1)
+ν
+E
+...
+
+
+
+
+
+
+
+
+
+
+
+.
+(8)
+By projecting the eigenvector to a small region on the
+edge of the junction with the size determined by the
+Fermi wavelength, we can obtain the local density of
+states (LDOS) in the junction.
+The LDOS with ω =
+2eVJ/ℏis plotted in Figs. 3(c) and 5(a) of the main text.
+For the LDOS simulation shown in this work, we
+take the parameters WS = 300 nm, WN = 100 nm,
+α = 2.5 meV nm, µ = 46.86 meV, µJ = 0.8µ, µSC = µ,
+m∗= 0.036me, where me is the electron mass, and
+lattice constant for the tight-binding approximation of
+a = 5 nm.
+To simulate the experimental system in
+Fig. 3(c) and Fig. 5(a), we take ∆ind = 0.2 meV and
+for the small coherence length calculation in Fig. 5(b)
+we take ∆ind = 1.6 meV. For the energy and frequency
+range studied in this work, we take the truncation for the
+Floquet coefficients and effective Hamiltonian as M = 5
+and N = 400, respectively.
+The value of M is deter-
+mined by taking the lowest frequency studied, setting
+the correspondent energy to be of order ℏω ∼∆ind. The
+cutoff for the effective Hamiltonian N sets the bandwidth
+W ∼∆ind, resulting in localization range ℓm ∼1. There-
+fore, the choice of M = 5 is sufficient to describe the low-
+est frequency states (ω ≳0.5∆ind) in this work. For the
+study of Floquet physics at lower frequencies, the range
+ℓm would increase, and the truncation M should increase
+accordingly.
+VII.
+CONDUCTANCE IN A
+THREE-TERMINAL SYSTEM
+We consider a three-terminal system composed of a
+normal (N) lead and superconductor SC1 at voltages VB
+and VJ, respectively, relative to a grounded superconduc-
+tor SC2, as shown in Fig. 3(b). The differential conduc-
+tance in the normal lead dIN/dVB will have contribu-
+tions from two NS interfaces, each of which is described
+by a low-temperature tunneling conductance given by
+dINS/dV = GNNNBCS(e|V |)/NN [18], where V is the
+voltage drop across the interface, GNN is the interface
+normal state conductance (assumed constant in V ), and
+NBCS(e|V |) and NN are the Bardeen–Cooper–Schrieffer
+(BCS) superconducting and normal state DOS, respec-
+tively.
+The BCS DOS can be written with the Dynes
+formula [25, 26]
+NBCS(ϵ) = Re
+"
+ϵ + iγ
+p
+(ϵ + iγ)2 −∆2
+#
+,
+(9)

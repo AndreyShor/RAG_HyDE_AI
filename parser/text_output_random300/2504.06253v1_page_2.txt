@@ -1,0 +1,42 @@
+2
+•
+Bhattacharyya et al.
+QAOA falls under the broader class of quantum algorithms called Variational Quantum Algorithms [4], which
+all use this hybrid quantum-classical optimization loop to minimize a cost function evaluated on a quantum circuit.
+For current and near-term quantum devices, it is important to be mindful of the circuit depth since an in-
+crease in circuit depth and gate count as the former will causing to an increase in total runtime leading to
+increased decoherence and the latter will cause an increase in the compounded gate errors. Tate et al. [5, 6]
+developed a “warm-start" heuristic that modifies the initial quantum state of QAOA from |+⟩⊗𝑛(the uniform
+superposition of all bitstrings) to warm-start initial state that is designed to be biased towards better solutions.
+The idea is that with an improved initial state, fewer QAOA layers (and hence fewer gates and lower circuit
+depths) are needed to transform the initial state into a quantum state whose measurement yields good solutions,
+and indeed, this was what has been empirically observed.
+In particular, when solving Max-Cut problems, one can relax the problem into a semidefinite program (SDP) as
+is done in the Goemans-Williamson algorithm [7]; the SDP is a convex problem that can be solved efficiently
+and Tate et al. uses the solutions from this SDP relaxation (which are high-dimensional vectors) to construct the
+warm-start initial quantum state.[6].
+Around the same time that Tate et al. [6] developed their warm-start approach, Egger et al. [8] had inde-
+pendently developed their own warm-start approaches. For any given QUBO, one of their approaches considers a
+simple QUBO-relaxation that relaxes the integer constraints 𝑥𝑖∈{0, 1} of the QUBO to an interval constarint
+𝑥𝑖∈[0, 1]; the optimal solutions from the QUBO-relxation are then used to generate a warm-started quantum
+state. If the matrix defining the QUBO satisfies certain criteria, the relaxation is convex and can thus be solved
+efficiently; however, for general QUBOs, solving this relaxation is known to be NP-Hard [9]. For an arbitrary
+QUBO, one possible approach is to perform the above QUBO-relaxation and to find an approximate optimal
+solution (of the relaxation) via local optimization.
+Alternatively, this work proposes a new approach: a mapping that takes arbitrary QUBOs and maps them
+to equivalent Max-Cut instances. Using the warm-start approach of Tate et al. [5, 6], these Max-Cut problems
+can be solved to obtain solutions that can then be mapped back to solutions for the original QUBO.
+This “QUBO to Max-Cut” mapping introduces an additional auxiliary qubit/variable. In Tate et al.’s approach, a
+global rotation is typically applied to the solution of the SDP relaxation before mapping it to a warm-started
+initial quantum state. They propose a vertex-at-top heuristic where the global rotation rotates one of the qubits
+so that it is on top of the Bloch sphere in the warm-start quantum state. However, some choices of vertices are
+better than others, and hence, an 𝑂(𝑛) overhead (where 𝑛is the number of vertices) is required to test all possible
+vertex-at-top rotations. Interestingly, when mapping a QUBO to a Max-Cut instance, we find that the auxiliary
+qubit is frequently the best choice of qubit for the vertex-at-top heuristic; this observation can be used to reduce
+the overhead of trying multiple random vertices in the vertex-at-top heuristic.
+We empirically compare the two warm-start approaches above for a variety of different types of QUBOs up to 16
+variables. The QUBOs we test come from randomly generated matrices or QUBOs that arise from specific problems
+in combinatorial optimization (e.g. portfolio optimization, traveling salesman, and maximum independent set).
+We find that the best warm-start approach is highly problem-dependent and also dependent on the metric of
+success (e.g. approximation ratio vs probability of finding the optimal solution).
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

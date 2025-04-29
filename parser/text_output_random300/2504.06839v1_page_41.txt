@@ -1,0 +1,255 @@
+Proof of Proposition A.1.
+Proof. We start by proving the existence and the uniqueness: Lemma A.1 with X = R2 or X = T2, p ∈[1, +∞] and
+µ = µ0 provides the existence of a function ρ satisfying (A.0.6). Therefore, if we define µt(x, θ, 0, h) = ρ(x, θ, t, h),
+and we then use equation (1.1.7) to obtain µt(x, θ, s, h), we get a solution of the equation (1.1.6). The uniqueness is a
+consequence of the fact that the relation (1.1.7) forces µt(x, θ, 0, h) to be a solution of (A.0.6), which is unique thanks
+to Lemma A.1, and therefore also µt(x, θ, s, h) is uniquely defined for any s ≥0.
+The next step is to prove property (A.0.1).
+By representation formula (1.1.7) we get
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z T
+0
+ds
+Z 1
+−1
+dh|µt(x, θ, s, h)|
+≤
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z T
+0
+ds
+Z 1
+−1
+dh|µ0(x −tv(θ), θ, s + t, h)|
++
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z T
+0
+ds
+Z 1
+−1
+dh
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)|µt′(x −(t −t′)v(θ), θ + π −2 arcsin(h′), 0, h′)|
+=
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t+T
+t
+ds
+Z 1
+−1
+dh|µ0(x, θ, s, h)|
++
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z T
+0
+ds
+Z 1
+−1
+dh
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)|µt′(x, θ, 0, h′)|
+=
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t+T
+t
+ds
+Z 1
+−1
+dh|µ0(x, θ, s, h)|
++
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh′|µt′(x, θ, 0, h′)|
+Z T
+0
+ds
+Z 1
+−1
+dhQ(s + t −t′, h|h′).
+Now we look at the last term, and since
+Z T
+0
+ds
+Z 1
+−1
+dhQ(s + t −t′, h|h′) = E(t −t′, h′) −E(t + T −t′, h′) ≤E(t −t′, h′),
+we can write
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z T
+0
+ds
+Z 1
+−1
+dh|µt(x, θ, s, h)|
+≤
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t+T
+t
+ds
+Z 1
+−1
+dh|µ0(x, θ, s, h)| +
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh′|µt′(x, θ, 0, h′)|E(t −t′, h′)
+|
+{z
+}
+≤
+R
+X dx
+R
+T1
+2π dθ
+R t
+0 dt′ R 1
+−1 dh′|µ0(x,θ,t′,h′)| by (A.0.7) of Lemma A.1
+≤
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t+T
+t
+ds
+Z 1
+−1
+dh|µ0(x, θ, s, h)| +
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh′|µ0(x, θ, t′, h′)|
+=
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t+T
+0
+ds
+Z 1
+−1
+dh|µ0(x, θ, s, h)|,
+and this proves property (A.0.1).
+As for (A.0.2), it is instead sufficient to take the limit T →+∞in the equation (A.0.1).
+Then, to prove property (A.0.3), the same argument as the one used to prove property (A.0.1) works: the only
+differences are that (A.0.8) should be used instead of (A.0.7) and that all the computations have to be meant in the
+limit T →+∞.
+The positivity of µt is preserved in time since Lemma A.1 ensures that µ0 ≥0 a.e.
+implies ρ(x, θ, t, h) =
+µt(x, θ, 0, h) ≥0 a.e. and therefore thanks to (1.1.7) we have also µt ≥0 a.e..
+Lastly, if µ0 does not depend on x or on (x, θ) neither ρ(x, θ, t, h) = µt(x, θ, 0, h) does thanks to Lemma A.1.
+Therefore, thanks to the representation formula (1.1.7), the same holds for µt.
+Now we only have to prove (A.0.4). To this purpose, if we use the representation (1.1.7), through triangle inequality
+and by extending the Lp norm of the second summand to all s ∈[0, +∞), we get
+∥µt∥Lp(X×T1
+2π×[0,T ]×[−1,1])
+≤
+∥µ0(·, ·, · + t, ·)∥Lp(X×T1
+2π×[0,T ]×[−1,1])
+(A.0.21)
++
+
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(· + t −t′, ·|h′)µt′(·, ·, 0, h′)
+
+Lp(X×T1
+2π×[0,+∞)×[−1,1])
+.(A.0.22)
+41

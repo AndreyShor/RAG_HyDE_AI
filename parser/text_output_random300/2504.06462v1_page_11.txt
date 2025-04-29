@@ -1,0 +1,145 @@
+11
+Fig. 14. Measured directivity patterns for the beamsteering patterns at 5GHz:
+(a) Patterns for the untuned sets of DC bias voltages that are optimized
+through the integral-equation framework. (b) Patterns for tuned sets of DC
+bias voltages. In both cases, the directivity of a uniform-amplitude aperture
+is included (dashed line).
+TABLE I
+MEASURED EFFICIENCY METRICS FOR THE TUNED AND UNTUNED RIS
+BEAMSTEERING.
+Untuned
+Tuned
+Case
+ηil
+ηp
+ηtot
+ηil
+ηp
+ηtot
+−60◦
+0.81
+0.52
+0.42
+1
+0.54
+0.54
+−45◦
+0.94
+0.57
+0.53
+0.93
+0.59
+0.55
+−30◦
+0.93
+0.67
+0.62
+1
+0.67
+0.67
+0◦
+0.83
+0.69
+0.57
+0.83
+0.72
+0.60
+30◦
+0.87
+0.62
+0.54
+0.93
+0.68
+0.63
+45◦
+0.84
+0.64
+0.53
+0.97
+0.64
+0.62
+60◦
+0.90
+0.58
+0.52
+0.96
+0.54
+0.52
+Average
+0.87
+0.61
+0.53
+0.95
+0.63
+0.59
+the untuned voltages leads to highly-directive beams that
+match well with simulations. The effectiveness of the untuned
+voltages is particularly crucial in cases that tuning cannot be
+applied easily, as in beamshaping cases of Sec. V-D.
+Finally, the 3-dB fractional gain bandwidth of the RIS for
+each case is ranging from 6.1% to 9.8% with an average
+value of 7.5%. The main limitation stems from the resonant
+behaviour of the unit cells that results in a frequency-dispersive
+homogenized impedance. It is noted that the reported values
+refer to the “instantaneous” bandwidth for ﬁxed sets of bias
+voltages optimized for the center frequency of 5GHz. More-
+over, the gain degradation is measured at the ﬁxed desired
+angle, so beam-squinting effects also reduce the bandwidth.
+D. Beamforming Measurements
+The beamforming capabilities of the RIS have been exam-
+ined through full-wave simulations in Sec. IV-B. Moreover,
+it was shown that the beamforming is enabled by auxiliary
+surface waves that are excited by high spectral components of
+the induced currents. These surface waves require an accurate
+framework to analyze the RIS response, such as the proposed
+analysis through integral equations, as a simple reﬂect-array
+model that disregards coupling effects is not sufﬁcient to
+correctly predict the radiation pattern. In this section, the
+optimized sets of surface impedances to realize sector patterns
+of various beamwidths, as given in Fig. 6, are translated to DC
+bias voltages and measurements are performed. It is recalled
+that the frequency is 5GHz and the RIS is illuminated from
+an incident angle of −15◦. Unlike the beamsteering cases, an
+automated tuning is not possible in the sector-pattern cases,
+since there is not a single angle that we aim to maximize
+the reﬂected power. Hence, the radiation patterns for the
+solutions obtained directly through the proposed optimization
+framework are shown.
+The three measured directivity patterns for the three sector
+beams are plotted in Fig. 15(a)-(c) together with the simulated
+patterns. As observed the measured patterns match satisfac-
+torily with the simulations, with the respective angular pass
+ranges identiﬁed as θm
+pass = [−43◦, −16◦], [−50◦, −12.5◦]
+and θm
+pass = [−57.5◦, −4◦]. These angular pass ranges are
+matching closely with the ones set as θpass in Eq. (14)
+during optimization. Additionally, the directivity variation
+within these ranges is 2.9dB, 2.5dB and 3dB, respectively.
+Importantly, the sidelobe level (SLL) remains at least −10.9dB
+compared to the peak value for all three sector patterns.
+The sidelobes in the beamforming case were severely af-
+fected in Fig. 8(b), when the radiation pattern was predicted
+through the RA model. Similarly, a previous work that tried
+to optimize the RIS for realizing a sector pattern based on
+an RA model revealed issues with high SLL, probably due
+to the inaccuracies introduced by disregarding the coupling
+effects between adjacent unit cells [14]. Therefore, the results
+herein demonstrate that the key pattern characteristics, even
+for beamforming cases like the realized sector patterns, are
+accurately preserved through our high-accuracy optimization
+framework not only in full-wave simulations but also in the
+measured results. Lastly, the power efﬁciency is estimated to
+0.51, 0.52 and 0.53 for the three sector patterns, which are
+close to the expected power efﬁciency values from full-wave
+simulations.
+VI. CONCLUSION
+In conclusion, the design of an RIS for beamsteering and
+beamforming at 5 GHz was presented. The RIS consists
+of varactor-loaded unit cells that are represented with a
+tunable homogenized impedance. By optimizing the surface
+impedances through a rigorous integral-equation framework,
+the reﬂections of the RIS can be shaped into desired radiation
+patterns, while a constraint can be placed on the total power
+efﬁciency. Both the case of beamsteering to ±60◦and the case
+of beamforming into sector patterns with varying beamwidth

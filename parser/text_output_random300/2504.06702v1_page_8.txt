@@ -1,0 +1,67 @@
+8
+Figure 8. CBO results for several small molecules. For all molecules, we have 20 agents and Nout = 20 outer iterations, shown
+are non-optimized positions initialized far apart (blue), optimized positions from blue initialization (gold), and non-optimized
+positions initialized according to distance distribution of gold optimized positions (green). Results in insets sorted on x-axis
+based on blue results for visibility. a) LiH (4 qubits, Nin = 50), b) CH4 (5 qubits, Nin = 100), c) BeH2 (6 qubits, Nin = 200).
+IV.
+CONCLUSION
+This work discusses and analyzes a new method to
+construct problem-adapted configurations for variational
+quantum algorithms.
+This is an important issue, as
+the choice of entanglement ansatz, determined by the
+position-dependent interaction strength between qubits,
+plays an important role in both the solvability of the
+problem and the avoidance of barren plateaus. In partic-
+ular, we leverage the unique advantage of a neutral atom
+tweezer platform to be able to place qubits anywhere in
+the 2D plane, thus having the ability to create arbitrary
+configurations.
+Gradient optimization of the qubit
+positions has shown to be hard as a consequence of the
+divergent nature of the interaction energies.
+Instead,
+we opt to use a gradient-free CBO algorithm to find
+improved qubit configurations. Our work shows that this
+consensus-based algorithm is able to effectively sample
+the configuration space to find qubit configurations that
+lead to faster and lower error solutions of the ground
+state minimization problem, for a large scale of random
+and practical Hamiltonians.
+We also hypothesize that
+our algorithm can be used practically unchanged for
+other quantum optimization algorithms.
+In future work, we hope to improve the cost functions
+used in the CBO algorithm to use the size of the gradi-
+ent as information, as in Eq. (5). For our found solutions,
+we generally see steeper gradients and faster convergence
+in pulse optimization. In view of this, our aim is to quan-
+titatively investigate the effect our optimized configura-
+tions have on the avoidance of barren plateaus. Another
+interesting problem would be to examine the correlations
+between optimized configurations and the target Hamil-
+tonian Htarg.
+This could reveal information on better
+configuration ansatzes. Lastly, experimental verification
+of the optimized configurations versus randomized con-
+figurations could be of great interest.
+ACKNOWLEDGEMENTS
+We thank Bas Wijnsma, Raul dos Santos, Emre Akaturk,
+Jasper Postema, Madhav Mohan and Jasper van de
+Kraats for fruitful discussions.
+This research is finan-
+cially supported by the Dutch Ministry of Economic Af-
+fairs and Climate Policy (EZK), as part of the Quan-
+tum Delta NL program, the Horizon Europe programme
+HORIZON-CL4-2021-DIGITAL-EMERGING-01-30 via
+the project 101070144 (EuRyQa), and by the Nether-
+lands Organisation for Scientific Research (NWO) under
+Grant No. 680.92.18.05 and NGF.1582.22.009.
+COMPETING INTERESTS
+The authors declare no competing interests.
+DATA AVAILABILITY
+The data supporting the findings are available from the
+corresponding author upon reasonable request.
+CODE AVAILABILITY
+The code supporting the findings is available from the
+corresponding author upon reasonable request.

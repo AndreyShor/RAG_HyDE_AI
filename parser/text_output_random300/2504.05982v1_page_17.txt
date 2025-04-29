@@ -1,0 +1,29 @@
+Figure 6: (a) A trajectory in a two-state system. The inlet zooms in on the DTT. (b) A
+schematic two-state system. The black dotted lines in both panels mark the thresholds that
+deﬁne the DTT.
+cause ST-iMetaD does not require the entire rescaled FPT distribution, it is also suitable
+for simulations with resetting. In that case, resetting does not bias the survival function at
+times shorter than the resetting rate and we take the short time ﬁt of the survival function
+in a similar manner. Moreover, resetting minimizes the amount of long simulations with bias
+over-deposition, so they do not contribute to the ST-iMetaD ﬁt.
+5.3
+Direct transit times
+When considering inference of the MFPT from biased simulations, there is always a tradoﬀ
+between speedup and accuracy.5,42,87–89 Signiﬁcant accelerations often carry errors of or-
+ders of magnitude in the MFPT estimation.39 However, there are other important kinetic
+properties that are less sensitive to bias and can be reliably assessed even at high accel-
+erations. One such property is the direct transit time (DTT), which is the time duration
+between the last crossing of some predeﬁned high-dimensional surface, to the ﬁrst crossing of
+a second predeﬁned surface.91 It is often deﬁned using two thresholds of some CV, centered
+around the transition state,92 estimating the barrier-crossing time. DTTs were measured
+experimentally for biological macromolecules93–95 and were studied both theoretically92,96
+and computationally.97,98 To better illustrate what is a DTT, Figure 6(a) shows a typical
+trajectory in a two-state system along some CV. The system remains in the lower state for
+a long period of time, before showing a quick transition to the upper state. The DTT is
+the duration of just the transition between the two states (see inlet), which is signiﬁcantly
+shorter than the FPT. It is deﬁned by the black dotted lines, which are plotted against a
+schematic two-state free energy surface in Figure 6(b).
+Because DTTs are intrinsically shorter than FPTs, if the MetaD bias over the transition
+state is minimal, DTTs are much less vulnerable to inference errors that originate in bias
+over-deposition. They are also less sensitive to resetting at random times, since the time
+17

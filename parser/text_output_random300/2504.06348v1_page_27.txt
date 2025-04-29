@@ -1,0 +1,150 @@
+Vibrations
+Truncated thermal state.
+The truncated thermal state over 3ηs
+ion −6 (3ηs
+ion −5 for linear molecules)
+independent quantum harmonic oscillator (QHO) states for each species s is,
+ρvib
+s
+=
+3ηs
+ion−6
+O
+k=1
+
+
+lmax
+s,k
+X
+l=0
+Prs,k(l)
+ϕs,k
+l
+ED
+ϕs,k
+l
+
+
+.
+(70)
+We will prepare a purification of ρvib
+s , specifically
+|ψvib
+s ⟩=
+3ηs
+ion−6
+O
+k=1
+
+
+lmax
+s,k
+X
+lk=0
+q
+Prs,k(lk)|lk⟩|ϕs,k
+lk ⟩
+
+
+=
+X
+qs,1,...,qs,3ηs
+ion−6
+lmax
+s,1
+X
+l1=0
+...
+lmax
+s,3ηs
+ion−6
+X
+l3ηion−6=0
+q
+Prs,1(l1)...Prs,3ηs
+ion−6(l3ηs
+ion−6)⟨qs,1|ϕs,1
+l1 ⟩...⟨qs,3ηs
+ion−6|ϕs,3ηs
+ion−6
+l3ηs
+ion−6 ⟩
+
+|
+{z
+}
+fvib(qs,ls)
+|l1, ..., l3ηs
+ion−6⟩|qs,1, ..., qs,3ηs
+ion−6⟩.
+(71)
+where ls = (l1, ..., l3ηs
+ion−6) label computational basis states of an ancilla and qs = (qs,1, ..., qs,3ηs
+ion−6) as
+before. A physically motivated cutoff is to choose the smallest l such that Prk(l) ≤ϵ for all l ≥lmax
+s,k , for
+some fixed ϵ, although other choices are possible.19 We obtain,
+lmax
+s,k =
+ 1
+βωs
+k
+log
+1
+ϵ (1 −e−βωs
+k)
+
+= O(log(1/ϵ))
+(72)
+For each k, introduce ⌈log2 lmax
+s,k ⌉= O(log log(1/ϵ)) ancillary qubits for the purification register. As desired,
+performing the trace over the first register |l1, ..., l3ηs
+ion−6⟩yields ρvib
+s . We create this purification in the
+following manner.
+Preparation of QHO eigenstates.
+With slight abuse of notation, we define ϕs,k
+l
+(qs,k) as a vector en-
+coding ⟨qs,k|ϕs,k
+l
+⟩discretized using nvib qubits, where we keep the same number of discretization points for
+all modes, although other choices are possible. On the k-th mode,
+|ϕs,k
+l
+⟩=
+1
+N s,k,l
+vib
+2nvib
+X
+b=1
+ϕs,k
+l
+(qs,k(b))|qs,k(b)⟩
+(73)
+where qs,k(1) and qs,k(2nvib) are determined by the relevant range in shape space, qs,k(b) linearly interpolates
+between the two with Nvib = 2nvib discretization points, and N s,k,l
+vib
+is a normalization that depends on the
+excitation number l and on the number of discretization points.
+Let U s,k
+l
+be a unitary that prepares the state in Eq. (73) (the l = 0, . . . , lmax
+s,k -th discretized QHO eigenstate
+of mode k, species s) from the all zero state |0nvib⟩, given the vibrational mode frequencies,
+U s,k
+l
+|0nvib⟩= |ϕs,k
+l
+⟩
+(74)
+The unitary U s,k
+l
+may be, for example, efficiently realized by quantum rejection sampling discussed in
+Ref. [75] with the Type I reference states detailed in App. C, with complexity scaling with the logarithm of
+the number discretization points, O(nvib).
+19Note that since Prs,k(l) is temperature dependent, so too will be the choice of lmax
+s,k , since higher temperatures mean higher
+cutoffs to achieve the same ϵ. An alternative choice is to fix l so that we have a trace norm error ϵ to the exact thermal state.
+27

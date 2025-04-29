@@ -1,0 +1,118 @@
+Strikingly, we observe that AstroClearNet gen-
+erates latent images with minimal sky-background
+noise and noticeably sharper bright sources com-
+pared to those in the HSC pipeline coadd. This
+enhanced clarity reveals fine spatial features—such
+as the shapes and structures of galaxies—in remark-
+able detail. We also observe that the method is able
+to effectively reduce the blur around various types
+of sources (of various shapes and sizes), even when
+sources are not well-separated in the exposures.
+Despite the overall effectiveness of the approach,
+certain limitations remain. In particular, the detec-
+tion of small, low-surface-brightness sources in faint
+sky regions may be less reliable when using latent im-
+ages produced by AstroClearNet, especially in com-
+parison to advanced multi-frame restoration meth-
+ods such as ImageMM [21]. Further comprehensive
+photometric evaluations are necessary to rigorously
+assess the detection limits attainable through As-
+troClearNet’s restorations.
+Such limitations suggest several paths for improv-
+ing on the preliminary results. For instance, it may
+be possible to enhance the latent images by perform-
+ing multi-frame image restoration in a higher spatial
+resolution, as shown in [21, 10]. This would entail
+modifications of AstroClearNet’s network architec-
+ture to allow for learning a super-resolved latent
+image x with sub-pixel detail in galaxies and stars,
+which may facilitate the detection of small, faint
+sources.
+Moreover, an interesting avenue for fu-
+ture work involves leveraging the differentiability of
+the network (with respect to the exposures), i.e.,
+the existence of ∂yFθ(y), in order to propagate un-
+certainties from the input exposures through the
+restoration process. This would allow us to con-
+struct confidence intervals for the restored latent
+images, providing valuable information for subse-
+quent scientific analyses. Furthermore, as part of
+future work, the authors plan on rigorously compar-
+ing AstroClearNet with the ImageMM method [21],
+as well as exploring the possibility of combining the
+two methods to leverage the strengths of each.
+Appendix A. Joint estimation of PSFs
+As mentioned in Section 3.2, one can extend the
+AstroClearNet framework in order to perform multi-
+frame blind image restoration.
+In this setting, the PSFs f ={f (1), . . . , f (n)} cor-
+responding to each exposure y={y(1), . . . , y(n)} are
+assumed to be unknown, and thus, one may jointly
+estimate the latent image x and these PSFs f as
+maximum a posterior (MAP) estimates of model (1).
+This is achieved by computing:
+bx, bf = argmax
+x,f
+ln p(y | x, f) + ln p(x, f).
+(A.1)
+Note that p(y | x, f) is the conditional distribution
+of the pixel values in the exposures y given those in
+the latent image x and PSFs f, which, as outlined
+in Section 3.1, is given by the joint distribution of
+the noise terms from (1) (e.g., the Gaussian distribu-
+tion). Meanwhile, p(x, f) is a joint prior distribution
+on the pixels values of the latent image and PSFs, for
+which a handcrafted regularization prior is typically
+used.
+Due to the difficulties in coming up with an effec-
+tive prior, especially in the context of astronomical
+image restoration, one may therefore compute bx
+and bf as MAP estimates by leveraging the Astro-
+ClearNet deep image prior, exactly as outlined in
+Section 3.2.
+In particular, when training the hourglass network
+from Figure 2, one would jointly learn the network
+weights of the encoder, θ, as well as the weights of
+the decoder, i.e., the final 2D convolution layer f:
+θ∗, f ∗= argmin
+θ,f
+X
+t,i
+m(t)
+i Hδ
+ 
+y(t)
+i
+σ(t)
+i
+,
+
+f (t)∗Fθ(y)
+
+i
+σ(t)
+i
+!
+(A.2)
+The optimal weights of the decoder f ∗obtained
+after training the network would thus correspond to
+the MAP estimates of the unknown PSFs for each
+exposure.
+Acknowledgements
+The authors thank Yusra AlSayyad for providing
+access to the Hyper Suprime-Cam imaging data,
+and for extending valuable support with regards to
+the use of the LSST Science Pipelines for processing
+the data.
+Y.S. and F.N. gratefully acknowledge support
+from the NVIDIA Academic Hardware Grant Pro-
+gram.
+T.B. gratefully acknowledges support from the
+National Science Foundation (Award 1909709).
+This research makes use of the SciServer science
+platform (www.sciserver.org). SciServer is a col-
+laborative research environment for large-scale data-
+driven science. It is being developed at, and ad-
+ministered by, the Institute for Data Intensive En-
+gineering and Science at Johns Hopkins University.
+7

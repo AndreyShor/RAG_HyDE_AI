@@ -1,0 +1,124 @@
+(viii) Given that we want to keep the case when p ∈♢for the uniform part and p ∈G\♢for the exponential
+part, we must flip the output of the ♢ancilla controlled on the branch ancilla. This requires only a
+single CNOT, with no non-Clifford cost.
+(ix) The subspace that we wish to amplify is now encoded in the |0⟩subspace of the ♢ancilla. Naively, the
+amount of amplification depends on the input parameters to the problem. However, we note that both
+the subspace and its amplitude are known in advance, and so we can incorporate the same “partial
+reflection” trick as in USP to amplify this branch to unit relative amplitude with a single round. This
+requires three calls to the preparation above, plus some small overhead to carry out the reflections.
+We omit this overhead in the resource estimate.
+(x) We assume that the cost to uncompute µ is the same as the cost of computation; i.e. n2 + 5n.
+(xi) The ♢ancilla is already in the |0⟩state and can be discarded. Uncomputation of the branch ancilla
+can be carried out by rechecking whether p ∈♢. If we have retained the outputs of the inequality tests
+in step (v), this requires only two Toffolis. The inequality tests themselves are uncomputed with cost
+3n + 2.
+(xii) Finally, the calculation of kp is uncomputed with cost 3˜n + 6n.
+The total cost is therefore 12˜n + 74n + 4n2 + 6bpln + 6bexpn + 3brot + 8. For R rounds of amplification,
+this must be repeated 1 + R times (and the dagger R times). We assume that both have the same cost,
+and therefore that the complexity above must be multiplied by 1 + 2R. As for ancillas, the rotations require
+bexp qubits and the kp and µ registers are over n qubits, and the intermediate arithmetic requires n qubits.
+Other constant-factor costs (such as additional ancillae for amplitude amplification and checking inequality
+tests) are omitted.
+E.5.4
+Computing Gζ,l
+α (|kp|¯rζ
+l )/ ˜Gζ,l
+α (kp) and Gζ
+s(|kp|¯rζ
+loc)/ ˜Gζ
+s(kp) to an ancilla register
+In order to carry out rejection sampling, for the non-local term we must coherently evaluate the inequality
+Gζ,l
+α M ≥˜Gζ,l
+α m for a uniformly-prepared set of amplitudes m. In practice, we rearrange this inequality to
+check Gζ,l
+α
+˜
+Gζ,l
+α M ≥m.
+Let ¯Gζ,l
+α := Gζ,l
+α
+˜
+Gζ,l
+α . The preparation of the state | ¯Gζ,l
+α (k)⟩largely proceeds analogously to the construction
+in [29], Sec VI D, for |F ζ,l
+a (k)⟩(given that they are both a polynomial multiplied by a Gaussian) but with
+a few minor modifications; in particular that we are concerned with a decomposition into radial functions
+gl
+a(|k|rζ
+l ) as in Eqs. (107) and (152). We assume that the registers are encoded as signed integers. To first
+do the conversion from g to G, we write
+Gζ,l
+α (|kp|¯rζ
+l ) =
+3
+X
+a=1
+[Xζ,l]aαgl
+a(|kp|¯rζ
+l )
+(223)
+=
+3
+X
+a=1
+[Xζ,l]aαe−(|k|¯rζ
+l )2/2(|k|¯rζ
+l )l
+√π2a−1(a −1)!
+q
+Γ(l + 2a −1
+2)
+L
+l+ 1
+2
+a−1((|k|¯rζ
+l )2/2)
+(224)
+= e−(|k|¯rζ
+l )2/2(|k|¯rζ
+l )l
+3
+X
+a=1
+[Xζ,l]aα
+√π2a−1(a −1)!
+q
+Γ(l + 2a −1
+2)
+L
+l+ 1
+2
+a−1((|k|¯rζ
+l )2/2)
+(225)
+= e−(|k|¯rζ
+l )2/2(|k|¯rζ
+l )l
+3
+X
+a=1
+[Y α
+l,ζ]aL
+l+ 1
+2
+a−1((|k|¯rζ
+l )2/2)
+(226)
+= e−(|k|¯rζ
+l )2/2(|k|¯rζ
+l )l
+3
+X
+a=1
+[Y α
+l,ζ]a
+a−1
+X
+x=0
+cx,la(|k|¯rζ
+l )2x,
+(227)
+82

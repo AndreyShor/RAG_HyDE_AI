@@ -1,0 +1,56 @@
+Preprint. Under review.
+Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, and
+Yuan Cao. React: Synergizing reasoning and acting in language models. arXiv preprint
+arXiv:2210.03629, 2022.
+Appendix
+A
+Related Work
+LLMs and Agents for Code
+Several studies have focused on benchmarking coding in
+general-purpose programming languages, with a particular focus on software engineering
+tasks (Austin et al., 2021; Chen et al., 2021; Jimenez et al., 2023; Li et al., 2022), and less
+commonly, science problems (Tian et al., 2024). FEA software emerged because simulating
+and numerically solving real-world problems from scratch in mainstream languages would
+require significantly more effort without specialized packages, automatic mesh generation
+and pre-verified physics modules. Other work in the LLM literature has focused on opti-
+mizing agent-tool call and design such as the ReAct and CodeAct strategies (Wang et al.,
+2024b; Yao et al., 2022). It would be valuable to port blocks from our agent such as the Eval-
+uator and the specialized functions into generalist agentic frameworks like AutoGPT and
+LangChain (Significant Gravitas; Chase, 2022) to explore possible performance gains and
+understand the optimum way to distil visual information from the Graphical User Interface
+(GUI). Beyond the realm of general-purpose programming, some works have sought to
+incorporate productivity APIs such as those for weather, email among others into agentic
+workflows (Qin et al., 2023; Basu et al., 2024). Our agentic approach shares similarities
+with the Reflexion strategy (Shinn et al., 2024), although in our case the Evaluator mainly
+subjective feedback from the API, and only queries its VerifierLLM when executability is
+already high.
+LLMs for Science
+The utility of LLMs in science has been explored by evaluating their
+performance on tasks in medicine (Saab et al., 2024; Yang et al., 2024c), theorem proving
+(Yang et al., 2024b), examination problems of varying levels of difficulty (Hendrycks et al.,
+2021; Wang et al., 2024a; Lewkowycz et al., 2022) and in specific domains such as physics
+and chemistry (Pan et al., 2024; Bran et al., 2023). More recently, there have been efforts to
+examine whether LLMs can be of utility in other aspects of the scientific process, such as
+developing hypotheses, reproducibility of code and question-answering (Pramanick et al.,
+2024; Mishra-Sharma et al., 2024; Siegel et al., 2024). Ni & Buehler (2024) and Tian & Zhang
+(2024) made a preliminary exploration on getting LLMs to solve elasticity problems and in a
+human-in-the-loop setting and Kumar et al. (2023) explored the role of LLMs on optimizing
+airfoils.
+B
+Dataset Curation
+B.1
+FEABench Gold
+B.1.1
+Selection Criteria:
+We chose tutorials that satisfied the following considerations:
+1. Simpler Geometry: COMSOL Multiphysics®can be used to analyze the physics of
+systems involving intricate geometries such as microwaves or transformers. In these
+cases, in practice, most problems involve importing a pre-built geometry object that
+might have been built externally using Computer-Aided Design (CAD) software
+and to then perform the remaining analysis. Since we wanted to explore the ability
+to solve the problem end-to-end and without requiring imports of derived objects,
+we restrict ourselves to problems that did not require imports of geometry, or any
+other files.
+2. Tutorial / Code Simplicity: We additionally chose problems that did not involve
+multiple ‘Model’ JAVA classes and restricted ourselves to tutorial documents with
+14

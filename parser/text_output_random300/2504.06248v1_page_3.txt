@@ -1,0 +1,134 @@
+3
+symmetrizable [Lem. S4]. Finally, condition 1.4 implies
+that the submatrix (αjk)j,k∈W with αjk = 0 whenever
+Wjk = 0 is antisymmetric. It ensures that for each os-
+cillator pair (j, k) such that Wjk ̸= 0, there is an angle
+αjk = θk −θj such that the pair does not interact.
+Consequently, if there are q functionally independent
+monomial eigenfunctions zµ1, . . . , zµq for K with µρ ∈
+RN and eigenvalues iµ⊤
+ρ ω, then there are q constants of
+motion having the form zµρexp(−iµ⊤
+ρ ω t). Of course, if
+the natural frequencies are such that µ⊤
+ρ ω = 0 for some
+ρ, the constant of motion is time-independent (some-
+times called integral of motion or first integral), but
+one doesn’t have to restrict the natural frequencies to
+get rid of explicit time dependency. Indeed, given the
+above q monomial eigenfunctions, one can always con-
+struct q−1 functionally independent monomial constants
+of motion zν1, , . . . , zνq−1, whose exponents satisfy the
+matrix equation (ν1 · · · νq−1) = (µ1 · · · µq) O, where
+O ∈Rq×(q−1) has linearly independent columns orthogo-
+nal to (iµ⊤
+1 ω · · · iµ⊤
+q ω) [Lem. S5]. Intuitively, the exis-
+tence of a monomial conserved quantity is guaranteed by
+the presence of any two or more source subgraphs with
+monomial eigenfunctions, no matter how far away they
+are from each other in the graph.
+Theorem 1 thus provides one form of constants of mo-
+tion, but how to derive other ones ? For that, it is instruc-
+tive to look more carefully at the Koopman generator
+and address the case of identical oscillators (ωj = ω ∈R,
+αjk = 0 and Wjk = 1 for all j, k ∈V). In such case,
+K = p(z)L−1 + iωL0 −p(z)L1
+(4)
+becomes associated to an element of the Lie algebra for
+the projective special unitary group PSU(1, 1), where
+Ln =
+N
+X
+j=1
+zn+1
+j
+∂j
+(5)
+for n ∈{−1, 0, 1} are the generators of the algebra,
+p(z) = (σ/2) PN
+j=1 zj and p(z) is its complex conjugate.
+But for every dynamics with Koopman generator of the
+form α(t, z)L−1 + β(t, z)L0 + γ(t, z)L1 [57] (e.g., Win-
+free [58], theta [59], or Riccati dynamics), if one finds
+a joint invariant [60, 61] for L−1, L0, L1, i.e., such that
+Ln[C(z)] = 0 for all n ∈{−1, 0, 1}, then C is a constant
+of motion. The method of characteristics makes it possi-
+ble to deduce the exact form of such joint invariant: the
+cross-ratio
+cabcd(z) = (zc −za)(zd −zb)
+(zc −zb)(zd −za)
+(6)
+for non-identical indices a, b, c, d
+∈
+V
+[Sec. III B].
+This represents a simple systematic method for de-
+riving the conservation of cross-ratios for identical
+phase oscillators, a result that was distinctly estab-
+lished in Ref. [62] alongside its link with the constants
+of motion originally found by Watanabe and Strogatz
+(“WS integrals”): Cws
+i1...iN
+=
+Si1i2Si2i3...SiN−1iN SiNi1
+with
+Sjk(θ) = sin((θj −θk)/2).
+Indeed,
+cabcd
+=
+−Cws
+acdb i5...iN /Cws
+adcb i5...iN = (ScaSdb)/(ScbSda) [63].
+Knowing that cross-ratios are constants of motion for
+identical Kuramoto oscillators, what are the conditions
+on A so that K[cabcd(z)] = 0 ? This question leads us
+to obtain the sufficient and necessary conditions for con-
+serving cross-ratios [proof in Sec. III D].
+Theorem 2 (Cross-ratio conservation). The cross-ratio
+cabcd is a constant of motion of the Kuramoto model (1)
+if and only if the vertices a, b, c, and d of the graph
+described by the complex matrix in Eq. (3) have the same:
+2.1. outgoing interactions within {a, b, c, d}, i.e.,
+Aba = Aca = Ada =: Aa ,
+Aab = Acb = Adb =: Ab ,
+Aac = Abc = Adc =: Ac ,
+Aad = Abd = Acd =: Ad ,
+2.2. incoming interactions from V \ {a, b, c, d}, i.e.,
+Aak = Abk = Ack = Adk ,
+∀k ∈V \ {a, b, c, d}
+2.3. shifted natural frequencies
+ωj −2 Im(Aj) = ωk −2 Im(Ak),
+∀j, k ∈{a, b, c, d} .
+Condition 2.1 and 2.2 can be formulated together as
+Aak = Abk = Ack = Adk for all k ∈V, but separat-
+ing them offers clearer insights into the underlying net-
+work structure. Indeed, as illustrated in Fig. 2 (b), con-
+dition 2.1 constrains the possible directed network motifs
+that allow a cross-ratio to be a constant of motion. Con-
+dition 2.2 clarifies how these motifs can receive incom-
+ing edges from other vertices, e.g., a vertex k1 can send
+equally-weighted edges to {a, b, c, d} and another vertex
+k2 can do the same with different equally-weighted edges.
+Yet, there is no restriction on the outgoing edges from the
+vertices involved in conserved cross-ratios to the vertices
+not involved in a conserved cross-ratio or a monomial
+eigenfunction. It is thus possible to connect these mo-
+tifs in various ways, ultimately leading to a diverse fam-
+ily of weighted, directed, signed and modular networks
+with conserved cross-ratios. Finally, condition 2.3 makes
+the oscillators have the same effective natural frequency.
+Basic examples of cross-ratio conservation are given in
+Fig. 2(b) and in SI [Sec. III E].
+Theorem 2 readily provides the necessary and sufficient
+conditions to have N −3 constants of motion having the
+form of cross-ratios. Indeed, the model maximally has
+N −3 constants of motion having the form of functionally
+independent cross-ratios if and only if
+2A. Ajℓ= Akℓ=: Aℓfor all ℓ∈V ,
+2B. ωj −2 Im(Aj) = ωk −2 Im(Ak) ,
+for all pairs (j, k) with j, k ∈V and k, ℓ̸= j [Cor. S17].
+These conditions were previously recognized, in a differ-
+ent form, to be sufficient [64] and we thus add that they
+are also necessary. As a consequence, there are N differ-
+ent directed graphs (non-isomorphic, weakly connected,

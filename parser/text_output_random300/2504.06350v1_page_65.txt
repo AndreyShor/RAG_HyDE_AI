@@ -1,0 +1,80 @@
+5.3.5. Measurement-device-independent Multiparty Quantum Communication
+Multiparty quantum communication protocols strive to ensure information-theoretic security in the
+realm of highly sensitive and confidential multiuser communication. Using the principles of quantum
+mechanics, these protocols exhibit superior physical performance compared to their classical counterparts.
+Their versatile applications encompass a spectrum of scenarios such as secret multiparty conferences,
+remote voting, online auctions, management of payment system master keys, collaborative scrutiny of
+accounts containing quantum money, and the facilitation of secure distributed quantum computation.
+Specifically, Quantum Cryptographic Conferencing (QCC) is a protocol designed for multiparty Quan-
+tum Key Distribution. QCC ensures the secure sharing of a key among legitimate users, even in the
+presence of potential eavesdroppers. Another notable protocol, Quantum Secret Sharing (QSS), involves
+the fragmentation of a message into multiple parts distributed among a group of participants. Each
+participant is allocated a share of the secret, and consequently, the complete set of shares is required
+to comprehensively decipher the message. For instance, QSS can be employed to guarantee that no sin-
+gle individual possesses the capability to launch a nuclear missile or access a bank vault independently.
+Instead, the collective participation of all legitimate users is essential for these critical actions.
+Discrete variable protocols. The Greenberger-Horne-Zeilinger (GHZ) entanglement is an important re-
+source for multiparty quantum communication tasks especially for the measurement-device-independent
+versions of QCC (MDI-QCC) and QSS (MDI-QSS). However, the practical applications of GHZ states
+are quite limited due to the lack of two important factors—(i) high-intensity sources and (ii) reliable
+distribution of the GHZ states. To tackle these limitations, Fu et al. [399] take advantage of postselected
+GHZ states among three legitimate users (typically called Alice, Bob, and Charlie) to perform secure
+multiparty quantum communication. As a typical MDI-QKD protocol, the postselecting measurement
+device here can be regarded as a black box that can be manipulated by anyone including the eaves-
+dropper. Therefore, the scheme is naturally immune to all detection-side attacks and can be regarded
+as the combination of time-reversed GHZ state distribution and measurement. Moreover, by employing
+the decoy-state method, the scheme can defeat photon-number-splitting attacks. The protocol in [399]
+is as follows: Alice, Bob, and Charlie independently and randomly prepare quantum states with phase-
+randomized weak coherent pulses in two complementary bases (Z basis and X basis). They send the
+pulses to the untrusted fourth party located in the middle node, David, to perform a GHZ-state measure-
+ment which projects the incoming signals onto a GHZ state. After performing the measurement, David
+announces the events through public channels whether he has obtained a GHZ state and which GHZ state
+he has received. Alice, Bob, and Charlie only keep the raw data of successful GHZ-state measurements
+and discard the rest. They post-select the events where they use the same basis in their transmission
+through an authenticated public channel. Notice that Alice performs a bit flip when Alice, Bob, and
+Charlie all choose X basis and David obtains a GHZ state
+1
+√
+2(|000⟩−|111⟩). The data of Z basis is used
+to generate the key, while the data of X basis are used to estimate errors. After classical error correction
+and privacy amplification, Alice, Bob, and Charlie extract secure cryptographic conferencing keys. In
+the asymptotic limit, the MDI-QCC key generation rate and the MDI-QSS key rate are given by
+RQCC = QZ
+ν + QZ
+111[1 −H(eBX
+111 )] −H(EZ∗
+µνω)fQZ
+µνω,
+(170)
+RQSS = QX
+ν + QX
+111[1 −H(eBZ
+111)] −H(EX
+µνω)fQX
+µνω
+(171)
+where QZ
+µνω and EZ∗
+µνω (QX
+µνω and EX
+µνω)) are the gain and quantum bit error rate of Z (X) basis
+respectively. The subscripts µ,ν, and ω are the pulse intensities of Alice, Bob, and Charlie respectively.
+QZ
+111 (QX
+111) is the gain of of Z (X) basis and eBX
+111 (eBZ
+111) is the bit error rate of X (Z) basis. The
+parameter f is the error correction efficiency.
+Simulation results for QCC show that the estimation using two decoy states gives a secure key rate
+nearly the same as the corresponding one using infinite decoy states. In the case of asymptotic data
+with two decoy states, the secure transmission distance between Alice and the middle node of MDI-QCC
+is about 190 km for the detection efficiency of 40% (210 km for the detection efficiency of 93%). For
+MDI-QSS, the secure transmission distance is about 130 km for the detection efficiency of 40% (150
+km for the detection efficiency of 93%) between the middle node and any user. Hua et al. proposed a
+similar scheme based on a GHZ entangled state which is different from the above protocol and uses a
+GHZ entangled state and the polarization state prepared by users to execute BSM and realize multi-user
+sharing of a common secret key [400]. They derived the secure key rate when users employ an ideal
+single photon source and a weak coherent source and showed that the secure distance between each user
+and the measurement device can reach more than 280 km while reducing the complexity of the quantum
+network. Despite the efficiency of the protocol, its scalability diminishes exponentially with the number
+65

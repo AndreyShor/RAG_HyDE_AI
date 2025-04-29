@@ -1,0 +1,113 @@
+an inflated 3DUNet architecture and incorporating explicit
+dense conditioning signals (e.g., optical flow, depth maps,
+or sketches) to preserve motion and structure from the guid-
+ing video [14, 17, 18, 38, 52]. Animate-A-Story [19] uti-
+lizes a similar technique for guiding generation, but instead
+of relying on user-provided input, it retrieves a single video
+from a database to serve as the anchor. Other works have ex-
+plored the broader task of motion transfer. Yatim et al. [59]
+addresses motion transfer between objects of different cat-
+egories that may not share the same motion characteristics.
+They enforce the transfer through an inference-time opti-
+mization, introducing a loss to match the correlation of fea-
+tures of the input with the output video. Similarly, [35, 60]
+propose a DreamBooth-like [43] training strategy to learn
+motion patterns from a set of videos with the same action.
+Our work is inspired by this line of research but differs
+fundamentally because we do not aim to replicate the con-
+ditioning video, nor do we rely on a manually curated set
+of examples. Furthermore, we seek a practical implementa-
+tion that avoids costly test-time training procedures.
+Retrieval Augmented Generation (RAG)
+It represents a
+well established technique in Natural Language Processing
+as a powerful way to improve model performances, by in-
+tegrating information from an external database that acts as
+a memory bank [6, 29, 41]. Early attempts to adapt sim-
+ilar retrieval mechanisms for image and video generation
+were introduced within the context of GANs [8, 48]. More
+recently, [2, 44] have applied these concepts to image dif-
+fusion models. Their approach involves a semi-parametric
+generative model that combines a learnable module with an
+external database, allowing for post-hoc conditioning based
+on labels, prompts, or specific styles. Re-Imagen [6] ex-
+tends this concept to text-to-image (T2I) models, and [57]
+propose an in-context learning strategy to integrate retrieved
+samples and enhance generation results.
+To the best of our knowledge, RAG has not yet been ap-
+plied to video generation, which presents additional chal-
+lenges in both the retrieval mechanism and the model’s con-
+ditioning component.
+3. Method
+We describe the technical details of RAGME, formalize the
+task, and outline its applications. We begin by defining the
+notation used throughout the paper. We assume to have ac-
+cess to a database D = {Xi}N
+i=1. Each data-point represents
+a video, with Xi ∈RT ×3×H×W denotes the T frames of the
+video with spatial resolution H × W.
+We define a Retrieval Mechanism (RM) as a non-
+learnable function to retrieve from the database given a
+query q, i.e. fK : (q, D) →Z, with Z = {(Xj, Tj)}K
+j=1,
+Z ⊆D and K = |Z| represents the number of retrieved
+samples. Next, we define gθ : Ti →Yi as a (pretrained)
+T2V Generative Model that synthesizes an output video
+Yi ∈RT ×3×H×W given a textual prompt Ti.
+In this work, we propose to learn a semi-parametric T2V
+model, which can incorporate relevant retrieved samples via
+conditioning, i.e. gθ′ : (Ti, Z) →Yi.
+As discussed in
+Sec. 1, our final goal is to produce videos with better tem-
+poral dynamics, without copy-pasting artifacts from the re-
+trieved examples.
+T2V Diffusion Models Preliminaries
+Diffusion models
+are probabilistic models that approximate distributions by
+iteratively denoising data. Starting with a sample of Gaus-
+sian noise, the model learns to progressively remove noise
+in steps until the sample approximates the target distribu-
+tion [20, 46]. Our framework builds upon a pre-trained la-
+tent T2V model [3, 42]. Instead of learning the distribu-
+tion directly in the complex, high-dimensional video space,
+this model projects the video into a compressed latent rep-
+resentation and learns a conditional distribution based on
+text. Architecturally, it consists of three main components:
+The VAE Encoder E(·), which projects the raw input pix-
+els to the latent space i.e. z = E(X), and the correspon-
+dent Decoder D(·). The text encoder τθ(·), which maps the
+input textual prompt to a conditioning vector; and the de-
+noiser ϵθ(·), which takes the text embedding and a noisy
+version of the latent as input and predicts (with the correct
+reparametrization [20]) the added noise.
+The training is performed by sampling a noise ϵ ∼
+N(0, 1) and diffusing the original sample z0 according
+to a noise scheduler function and a time-step t ∼f(t)
+[11, 20, 24]. The diffused sample zt is computed as
+zt = √αt · z0 +
+√
+1 −αt · ϵ
+(1)
+where αt is a parameter controlled by the noise scheduler
+function that dictates the amount of noise at timestep t. At
+the final timestep t = T, the original sample is completely
+destroyed to pure noise, i.e. zT ∼N(0, 1), which allows
+sampling from the model at inference time.
+The parameters of the denoiser network are trained to
+recover the added noise. Specifically, the training loss is
+defined as:
+Lsimple := EE(x),ϵ∼N(0,1),t
+h
+∥ϵ −ϵθ(zt, t, τθ(c)∥2
+2
+i
+(2)
+In this work, we focus on the denoiser network ϵθ(·). Al-
+though purely transformer based architecture are emerging,
+we rely on the widespread 3DUNet models [3, 4, 50, 53].
+From an architectural perspective, combines convolutional
+layers with attention operations. The attention blocks can
+be further categorized into the:
+• Cross-Attention blocks, which integrate information from
+the text encoder.
+3

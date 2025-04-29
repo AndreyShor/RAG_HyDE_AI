@@ -1,0 +1,65 @@
+Remark 1 (Initial Condition vs. Innate Opinions). The initial condition of the FJ-MM model is given by the
+sequence x(−L + 1), . . . , x(0). In the original FJ model (L = 1), it is often assumed that x(0) = s, as the innate
+opinions, according to [12], retain information about the agents’ past experiences and thus serve a role similar to the
+initial state vector x(0). Following this logic, a natural choice for the initial condition is x(−L+1) = . . . = x(0) = s.
+This choice, however, is not crucial as we are primarily interested in the asymptotic stability of the FJ-MM system,
+which implies that initial conditions are forgotten at an exponential rate.
+Remark 2 (Nested Convex Hulls). It is known [23] that the FJ model with s = x(0) is featured by the nested
+convex hull property: the convex hull spanned by the opinions xi(t) is non-expanding; in particular, the opinions
+never leave the convex hull of the initial opinions, being an “implicit” decision space for the agents. A more general
+property for the system (4) can be proved: the sequences
+m(t) := minℓ=1,...,L mini{xi(t −ℓ+ 1), si},
+M(t) := maxℓ=1,...,L maxi{xi(t −ℓ+ 1), si}.
+are monotone: m(t + 1) ≥m(t) and M(t + 1) ≤M(t).
+Using Remark 2 and induction on t, the following proposition is immediate, entailing that the FJ-MM system
+is (marginally) Lyapunov stable and has bounded solutions.
+Proposition 1. For every solution x(t) it holds that xi(t) ∈[m(0), M(0)] for all i ∈V and all t ≥0. Hence, the
+dynamics of the FJ-MM system (4) is marginally Lyapunov stable (all solutions are bounded).
+2.3
+Main Use Cases
+We illustrate the flexibility of the multiple influence weight matrices W (ℓ) by considering several scenarios (Use
+Cases 1–4) that generalize the standard Friedkin–Johnsen social influence networks [1]. We adopt the following
+assumption for brevity and simplicity in the remainder of this paper.
+Assumption 1 (One-Step Memory). The FJ-MM model (4) has the depth of memory L = 2, being thus
+x(t + 1) = Λ
+
+W (1)x(t) + W (2)x(t −1)
+
++ (I −Λ)s.
+(5)
+In all use cases we consider, the influence matrices are given by
+W (1) = (I −[β])W,
+W (2) = [β] ˜W,
+(6)
+where W and ˜W are stochastic matrices, and β ∈[0, 1]n is some vector. In other words, the weighted average of
+the neighbors’ opinions in (3) at each time t can be expressed as:
+¯xi(t) = (1 −βi)
+X
+j
+wijxj(t) + βi
+X
+j
+˜wijxj(t −1), where
+X
+j
+wij =
+X
+j
+˜wij = 1.
+The parameter βi ∈[0, 1] admits a simple interpretation: it represents the total influence weight that agent i
+allocates to the past opinions of herself and others, i.e., βi = P
+j(βi ˜wij), while the remaining weight, 1 −βi, is
+distributed across the current opinions. As in the original FJ model (corresponding to β = 0), the weights wij
+and ˜wij reflect the level of trust that agent i places in the current and past opinions of agent j, respectively.
+However, as already noted, the mechanisms by which agent i receives the current and past opinions of agent j can
+differ fundamentally: while current opinions are directly communicated by other individuals, past opinions may be
+accessible only through “rumors” spread by them or may rely on their memory. For these reasons, W and ˜W are
+not only distinct matrices, but may also correspond to entirely different graphs.
+Use Case 1 (Secondary Neighbors). Our first use case is inspired by the model in [33], where agents receive
+opinions from both direct and secondary neighbors in the influence graph G[W], defined by stochastic matrix W,
+whereas ˜W = W 2 in (6). If agent i accesses the opinion of agent k through an intermediary j, the weight assigned
+to k’s opinion is proportional to the product wijwjk. Considering all possible two-step walks from i to k, the total
+weight is proportional to the sum of these contributions – that is, the (i, k) entry of the (weighted) walk matrix W 2.
+Unlike the model in [33], which assumes immediate availability of secondary neighbors’ opinions, we assume that
+an opinion reaching agent i via the path i →j →k at time t is xk(t −1) rather than xk(t), as it reflects agent j’s
+memory of an earlier interaction with k.

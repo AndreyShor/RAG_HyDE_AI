@@ -1,0 +1,46 @@
+structured to incorporate all relevant physical variables and spatial-temporal dependen-
+cies, providing a robust representation of the flow dynamics.
+2.2
+Modal Decomposition Techniques
+Singular Value Decomposition (SVD) is a fundamental matrix factorization technique
+extensively used in numerical analysis, machine learning, and data-driven reduced-order
+modeling. SVD decomposes a given snapshot matrix V K
+1 (representing spatio-temporal
+data) into three components: spatial modes U, singular values Σ, and temporal modes
+T ⊤. The decomposition is expressed as [1]:
+V K
+1 = U Σ T ⊤,
+(3)
+Where:
+• V K
+1 is the J × K snapshot matrix, where J = Tvar · Nx · Ny · Nz is the total number
+of spatial degrees of freedom, and K is the number of temporal snapshots,
+• U is the J × J orthogonal matrix of spatial modes,
+• Σ is the J × K diagonal matrix of singular values, arranged in decreasing order,
+representing the energy associated with each mode,
+• T ⊤is the K × K orthogonal matrix of temporal modes, where T ⊤denotes the
+transpose of the temporal modes matrix.
+The singular values σi in Σ represent the importance of each corresponding mode in
+describing the energy or variance of the data. Larger singular values correspond to modes
+that capture more significant features of the dataset. These singular values are arranged
+in descending order within the diagonal matrix Σ. To select the most dominant modes
+while filtering out less significant ones, a subset of N dominant modes is chosen such that
+[1]:
+σN+1
+σ1
+≤ε,
+(4)
+Where σ1 is the largest singular value, σN+1 is the first excluded singular value, and ε
+is a user-defined tolerance controlling the energy threshold or significance of the retained
+modes.
+Using the dominant singular values and the corresponding spatial and temporal modes,
+the snapshot matrix V K
+1 can be approximated as [1]:
+V K
+1 ≃U N ΣN T ⊤
+N,
+(5)
+where U N contains the first N spatial modes, ΣN contains the most significant singular
+values, and T ⊤
+N contains the corresponding temporal modes.
+9

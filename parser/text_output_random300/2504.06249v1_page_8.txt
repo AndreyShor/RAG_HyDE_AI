@@ -1,0 +1,54 @@
+TiI3Tl
+CoLaSnGd
+CuCl2Bi
+PdF5As2
+Figure 6: Density of states (DOS) for generated materials with the first atom constrained to Ti, Co, Cu
+or Pd. The orange curve represents the DOS of the first atom in each generated material, conditioned on
+Ni’s DOS from Au3Ni (shown in blue). Visualizations of the corresponding structures are of a 2 × 2 × 2
+supercell.
+3.3
+POST-PROCESSING WORKFLOW
+The results provided so far provide illustrative examples of the capabilities of DOSMatGen for generating
+well-conditioned crystal structures under various constraints. Here, we show how DOSMatGen can be
+further incorporated into a more comprehensive materials discovery workflow to generate large quantities
+of high-quality materials. The workflow involves using DOSMatGen to first conditionally generate many
+candidate structures (i.e. 10,000 or more), followed by structural relaxation using a universal machine
+learning force field (MLFF) to yield local minimum structures. After relaxation, the formation energy
+per atom (in eV/atom) is calculated for all structures based on MLFF energies. Structures with formation
+energies (or optionally, energy below hull) below a desired threshold are then filtered. From this subset, the
+predicted DOS of the generated materials is compared against the ground truth DOS, and the best-matched
+structures are then selected for further evaluation with DFT calculations. These post-processing steps help
+ensure the generated materials will all be locally minimum, stable, and well-matched in terms of the DOS.
+We select the DOS of Ir from rutile IrO2 as the target, which presents more a complex target DOS than the
+previous example. IrO2 is widely considered to be a state-of-the-art electrocatalyst for oxygen evolution
+[43, 44, 45]. Designing new materials which exhibit the electronic structure of Ir could help lead to similarly
+well-performing catalysts. Here we first generate 10,000 candidate structures, with number of atoms in the
+unit cell within the range Natoms ∈{4, 5, 6, 7, 8}. For each value of Natoms, 2,000 structures are generated,
+ensuring an even distribution across the possible values. We then use Orb-v2 [38] as the MLFF for
+structure relaxation and for calculating the formation energy per atom for all structures. Structures with
+formation energies ≤−1.5 eV/atom are then selected.
+Fig. 7 shows the distribution of formation energies per atom for the 10,000 unrelaxed and relaxed structures.
+As expected, the distribution for the relaxed structures is shifted to the left compared to the unrelaxed
+structures, demonstrating that structural relaxation with an MLFF effectively lowers the formation energies.
+Notably, both distributions closely resemble Gaussian distributions centered around zero, with significant
+overlap between them. This indicates that DOSMatGen can conditionally generate relatively stable crystal
+structures even without structural optimization, and the the MLFF is mainly used for providing further
+refinement.
+Applying a formation energy threshold of ≤−1.5 eV/atom yields a total of 108 candidate structures, from
+which 8 are selected for further DFT validation based on closeness to the target DOS. Fig. 8 compares
+the target DOS with the generated DOS, obtained using either the surrogate GNN model or computed
+from DFT. While the 8 selected structures do not perfectly reproduce all features of the target DOS, they
+generally show strong resemblance, capturing key peaks and overall trends. This remains true under DFT
+validation as well. Visualizations of the eight selected structures are provided in Appendix C. Here, we
+note that the final materials all tend towards containing Ir in some rutile or rutile-like configuration. It is an
+unsurprising result, given the target DOS is derived from Ir in rutile IrO2, though it fails to yield the desired
+earth-abundant alternative materials. This may be attributed to the fact that matching the DOS of Ir exactly
+may be too strong a constraint leading to low diversity, whereas it may only be necessary to match certain
+regions in the DOS (i.e. near the Fermi level). At the same time, it may also suggest the intrinsic difficulty
+of this particular problem, which we leave for future investigation.
+4
+CONCLUSION
+In this work, we introduced DOSMatGen, an E(3)-equivariant joint diffusion framework for the condi-
+tional generation of crystalline materials guided by quantities from electronic structure such as the DOS.
+DOSMatGen excels in generating compositionally diverse and stable structures while maintaining strong
+8

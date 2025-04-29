@@ -1,0 +1,158 @@
+29
+Making the change of indices to yield zp in every term leads to
+[U, S] −U[ξ(t, z)] U =
+X
+ℓ,p
+˙φℓp(t)zp∂ℓ+
+X
+ℓ,p,j,k
+(pj + 1 −δjk)φℓp+ej−ek(t)Ajkzp∂ℓ−
+X
+ℓ,p,j
+φℓp(t)Ajℓzp∂j
+−
+X
+ℓ,p,j,k
+(pj −1 + δjk)φℓp−ej+ek(t) ¯Ajkzp∂ℓ−
+X
+ℓ,p,j
+φℓp−2ej+2eℓ(t) ¯Ajℓzp∂j + 2
+X
+ℓ,p,k
+φℓp−eℓ+ek(t) ¯Aℓkzp∂ℓ
+−
+X
+p,j,k
+˙εp−ek(t)Ajkzp∂j +
+X
+p,j,k
+˙εp−2ej+ek(t) ¯Ajkzp∂j −
+X
+p,j,k,r,s
+(pr + 1 −δrs −δrk)εp+er−es−ek(t)ArsAjkzp∂j
++
+X
+p,j,k,r,s
+(pr + 1 −δrs + δrk −2δrj)εp+er−es+ek−2ej(t)Ars ¯Ajkzp∂j
++
+X
+p,j,k,r,s
+(pr −1 + δrs −δrk)εp−er+es−ek(t) ¯ArsAjkzp∂j
++
+X
+p,j,k,r,s
+(pr −1 + δrs + δrk −2δrj)εp−er+es+ek−2ej(t) ¯Ars ¯Ajkzp∂j .
+The change of indices from j to ℓto get a factor ∂ℓin every sum implies
+[U, S] −U[ξ(t, z)] U =
+X
+ℓ,p
+˙φℓp(t)zp∂ℓ+
+X
+ℓ,p,j,k
+(pj + 1 −δjk)φℓp+ej−ek(t)Ajkzp∂ℓ−
+X
+j,p,ℓ
+φjp(t)Aℓjzp∂ℓ
+−
+X
+ℓ,p,j,k
+(pj −1 + δjk)φℓp−ej+ek(t) ¯Ajkzp∂ℓ−
+X
+j,p,ℓ
+φjp−2eℓ+2ej(t) ¯Aℓjzp∂ℓ+ 2
+X
+ℓ,p,k
+φℓp−eℓ+ek(t) ¯Aℓkzp∂ℓ
+−
+X
+p,ℓ,k
+˙εp−ek(t)Aℓkzp∂ℓ+
+X
+p,ℓ,k
+˙εp−2eℓ+ek(t) ¯Aℓkzp∂ℓ−
+X
+p,ℓ,k,r,s
+(pr + 1 −δrs −δrk)εp+er−es−ek(t)ArsAℓkzp∂ℓ
++
+X
+p,ℓ,k,r,s
+(pr + 1 −δrs + δrk −2δrℓ)εp+er−es+ek−2eℓ(t)Ars ¯Aℓkzp∂ℓ
++
+X
+p,ℓ,k,r,s
+(pr −1 + δrs −δrk)εp−er+es−ek(t) ¯ArsAℓkzp∂ℓ
++
+X
+p,ℓ,k,r,s
+(pr −1 + δrs + δrk −2δrℓ)εp−er+es+ek−2eℓ(t) ¯Ars ¯Aℓkzp∂ℓ.
+The infinitesimal condition of symmetry then yields
+0 = ˙φℓp(t) +
+X
+j,k
+(pj + 1 −δjk)Ajkφℓp+ej−ek(t) −
+X
+j
+Aℓjφjp(t) −
+X
+j,k
+(pj −1 + δjk) ¯Ajkφℓp−ej+ek(t)
+−
+X
+j
+¯Aℓjφjp−2eℓ+2ej(t) + 2
+X
+k
+¯Aℓkφℓp−eℓ+ek(t) −
+X
+k
+Aℓk ˙εp−ek(t) +
+X
+k
+¯Aℓk ˙εp−2eℓ+ek(t)
+−
+X
+k,r,s
+(pr + 1 −δrs −δrk)ArsAℓkεp+er−es−ek(t) +
+X
+k,r,s
+(pr + 1 −δrs + δrk −2δrℓ)Ars ¯Aℓkεp+er−es+ek−2eℓ(t)
++
+X
+k,r,s
+(pr −1 + δrs −δrk) ¯ArsAℓkεp−er+es−ek(t) +
+X
+k,r,s
+(pr −1 + δrs + δrk −2δrℓ) ¯Ars ¯Aℓkεp−er+es+ek−2eℓ(t)
+for all ℓ∈{1, ..., N}, p ∈ZN. By rearranging, one finds the general determining equations
+˙φℓp(t) −
+X
+k
+Aℓk ˙εp−ek(t) +
+X
+k
+¯Aℓk ˙εp−2eℓ+ek(t) =
+X
+k
+[Aℓkφkp(t) + ¯Aℓkφkp−2eℓ+2ek(t) −2 ¯Aℓkφℓp−eℓ+ek(t)]
++
+X
+j,k
+(pj −1 + δjk) ¯Ajkφℓp−ej+ek(t) −
+X
+j,k
+(pj + 1 −δjk)Ajkφℓp+ej−ek(t)
++
+X
+k,r,s
+(pr + 1 −δrs −δrk)ArsAℓkεp+er−es−ek(t) −
+X
+k,r,s
+(pr + 1 −δrs + δrk −2δrℓ)Ars ¯Aℓkεp+er−es+ek−2eℓ(t)
+−
+X
+k,r,s
+(pr −1 + δrs −δrk) ¯ArsAℓkεp−er+es−ek(t) −
+X
+k,r,s
+(pr −1 + δrs + δrk −2δrℓ) ¯Ars ¯Aℓkεp−er+es+ek−2eℓ(t) ,
+for all ℓ∈{1, ..., N}, p ∈ZN, which represent an infinite-dimensional differential-algebraic system of equations.

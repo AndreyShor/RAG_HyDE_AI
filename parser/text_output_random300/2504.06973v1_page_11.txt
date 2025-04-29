@@ -1,0 +1,135 @@
+Johanna Müller-Horn et al.: HIP 15429: a newborn Be star on an eccentric binary orbit
+4020
+4040
+4060
+4080
+4100
+4120
+4140
+4160
+4180
+wavelength [Å]
+0.4
+0.6
+0.8
+1.0
+1.2
+normalised flux
+H
+HeI
+ HeI 
+  HeI  
+4320
+4340
+4360
+4380
+4400
+4420
+4440
+4460
+4480
+wavelength [Å]
+H
+    HeI    
+      HeI      
+MgII
+disentangled Be star
+Teff = 16 kK, log g = 4.5
+Teff = 17 kK, log g = 4.0
+Teff = 19 kK, log g = 3.5
+Fig. 9: Spectral constraints on the temperature and surface gravity of the Be companion star. The panels show a comparison between
+the disentangled Be star spectrum (black) with models of different Teff - log g combinations (see the legend for the respective Teff
+and log g values). The blue dashed line represents our fiducial model. The shape of the Balmer line wings favours a surface gravity
+of log g of 3.5 - 4.0, as would be expected for a star that is slightly inflated due to recent mass transfer.
+7. Photometric analysis
+7.1. SED fit
+To estimate the stellar radii, we fitted the SED of the system. We
+queried archival photometric data for HIP 15429 using the VO
+Sed Analyzer (VOSA; Bayo et al. 2008). We found near-infrared
+(NIR) photometry that includes J-, H-, and Ks-band data from
+the 2MASS all-sky catalogue (Cutri et al. 2003), and far-infrared
+(FIR) photometry that covers the W1, W2, W3, and W4 bands
+from the Wide-field Infrared Survey Explorer (WISE; Wright
+et al. 2010). Optical photometry was obtained from Gaia DR3 in
+the G, G_RP, and G_BP filters, together with synthetic photom-
+etry in the Sloan u, g, r, and i filters derived from Gaia BP/RP
+mean spectra (Gaia Collaboration et al. 2023b). Additionally,
+we acquired near-ultraviolet (NUV) photometry with the Swift
+Ultra-Violet/Optical Telescope (UVOT; Roming et al. 2005). On
+2 March 2023, we obtained a single exposure in the UVM2 filter
+band with an exposure time of 505 s and 2x2 binning 3. The raw
+data were processed and calibrated with the standard pipeline at
+the Swift Data Center (version 3.19.01). We measured flux den-
+sities and uncertainties via manually placed apertures using the
+uvotsource routine as part of the HEASOFT software pack-
+age (Nasa High Energy Astrophysics Science Archive Research
+Center (Heasarc) 2014). Table A.2 lists all flux measurements
+and filter bands.
+For the narrow-lined star, we used the grid of PoWR stellar
+atmosphere models, while for the Be companion star, we used
+the Tlusty spectra (see the beginning of Sect. 6 and Appendix C
+for model specifications). We adopted the extinction law of Fitz-
+patrick (1999) and performed two-dimensional linear interpola-
+tion between model SEDs, with synthetic photometry computed
+using pyphot (Fouesneau 2024).
+We used a nested sampling framework to infer the posterior
+PDFs for the stellar radii. The radius of the narrow-lined star,
+RB, was assigned a uniform prior of [1, 15] R⊙. Since extinction
+affects the SED shape, we also inferred the extinction parame-
+ters, assuming uniform priors for E(B −V) ∈[0.5, 1.0] mag and
+RV ∈[2.0, 4.0]. The broad-lined Be star’s radius was constrained
+through the flux ratio and the inferred RB. The stellar parame-
+ters (Teff, log g, and the flux ratio) were determined from spec-
+tral analysis; rather than independently re-determining them, we
+adopted normal priors based on their measured values and un-
+certainties (see Table 1), allowing them to vary only to propa-
+3Obs. ID: 00015861001, Target ID: 15861
+104
+105
+wavelength [Å]
+10
+18
+10
+17
+10
+16
+10
+15
+10
+14
+10
+13
+10
+12
+flux [erg/s/cm2/Å]
+fit, total flux
+fit, stripped star
+fit, Be star
+model photometry
+obs. photometry
+Gaia DR3 XP
+Fig. 10: Comparison of model SEDs with observed photometry
+of HIP 15429. Black stars indicate photometric measurements
+(see Table A.2), grey circles show synthetic photometry gener-
+ated from the model SED in the same filters. Only data points
+leftwards of the grey dotted line were used in the fitting process.
+As a grey line, the model fit of the SED is plotted which is the
+sum of contributions from the narrow-lined stripped star (blue)
+and Be star companion (red). For the stellar components, exam-
+ple draws from the posterior are shown as thin lines, the me-
+dian values as the thicker, dashed curves. The inset axis shows
+a zoom-in on the optical wavelength regime with the Gaia XP
+spectrum overplotted in green. An infrared excess is visible on
+the right-hand side of the plot.
+gate their uncertainties to the radius estimates. For distance, we
+assumed a normal prior centred on the Gaia DR3 estimate of
+(1693 ± 89) pc, with the standard deviation set to three times the
+Gaia uncertainty. This accounts for the typical underestimation
+of parallax (and hence distance) uncertainties by up to a factor
+of 2 for bright sources and those with RUWE > 1.4 (El-Badry
+et al. 2021; Nagarajan & El-Badry 2024). Our analysis indicates
+an infrared excess, likely originating from the companion star’s
+circumstellar disk. Therefore, we restricted the SED fit to the
+optical and UV wavelength bands, excluding WISE and 2MASS
+photometry.
+Article number, page 11 of 28

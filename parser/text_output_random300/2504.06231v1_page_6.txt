@@ -1,0 +1,98 @@
+Model
+F1 ↑
+𝜅SRME ↓
+Steps/Second
+(1k atoms) ↑
+eSEN-30M-OAM [40]
+0.925
+0.170
+—
+SevenNet-MF-ompa [29]
+0.901
+0.317
+3.5
+GRACE-2L-OAM [23]
+0.880
+0.294
+—
+MACE-MPA-0 [21]
+0.852
+0.412
+21.2
+DPA3-v2-OpenLAM [45]
+0.890
+0.687
+—
+MatterSim v1 5M [34]
+0.862
+0.574
+18.8
+eqV2 M [14]
+0.917
+1.771
+OOM
+ORB v2 [28]
+0.880
+1.732
+88.3
+Orb-v3-direct-20-mpa
+0.877
+0.668
+216.5
+Orb-v3-direct-inf-mpa
+0.883
+0.348
+125.0
+Orb-v3-conservative-20-mpa
+0.902
+0.457
+41.2
+Orb-v3-conservative-inf-mpa
+0.906
+0.210
+28.1
+Orb-v3-direct-20-omat
+—
+0.472
+216.5
+Orb-v3-direct-inf-omat
+—
+0.575
+125.0
+Orb-v3-conservative-20-omat
+—
+0.413
+41.2
+Orb-v3-conservative-inf-omat
+—
+0.216
+28.1
+Table 1: Matbench results for a range of Orb-v3 models. Orb-v3 models perform competitively,
+whilst having significantly improved speed and memory profiles. Note that results for *-omat
+models on the discovery portion of the benchmark are not included, as OMat24 uses PBE54
+VASP pseudopotentials, making them incompatible with the WBM test set. See Appendix J for
+an analysis of how these datasets result in broadly similar potentials.
+Physical Property Predictions
+Ultimately, the goal of developing general purpose MLIPs is to enable efficient and high-fidelity
+predictions of materials properties at scale. Benchmark performance on relative targets, such
+as F1 with respect to a predefined energy hull, does not necessarily transfer into accurate and
+reliable prediction of physical properties; this is well demonstrated by the new Matbench
+thermal conductivity benchmark. In this Section, we aim to provide a more comprehensive
+evaluation of Orb-v3 as well as other models from literature in terms of their ability to predict
+material properties – beyond what is included in Matbench Discovery. We believe this is
+important for scientists and engineers who wish to decide on which model they will use to fuel
+their computational research.
+In addition to the Matbench suite of evaluations, we also consider the MDR phonon benchmark
+[18, 26, 40], which presents a database of roughly ten thousand materials along with their
+vibrational and derived thermodynamic properties as computed at the PBE and PBEsol levels
+using Phonopy. This benchmark is more comprehensive than the one included in Matbench
+since (1) its reference dataset is two orders of magnitude larger, and (2) it covers a wider range of
+physical observables depending on both the low- and high-frequency behavior of the material.
+Second, we evaluate the models’ ability to predict mechanical stability, based on a large subset
+of about ten thousand materials with precomputed PBE-level bulk and shear moduli from
+MP [42]. These mechanical properties are complimentary to those obtained using (constant
+cell) phonon calculations, and the combination of these two benchmarks comprises a total of
+six physical properties. Note that in the present evaluation, all six properties rely on finite
+difference estimates of higher-order PES derivatives and therefore require a MLIP to have a
+sufficiently smooth PES for successful evaluation.
+6

@@ -1,0 +1,56 @@
+2.1. DHR bimodules. If A is a C∗-algebra, recall that a correspondence over A is a right
+Hilbert A module X together with a (non-degenerate) homomorphism from A to the adjointable
+operators on X (see [CHPJP22] for a detailed exposition). We usually think of a correspondence
+as an (algebraic) A-A bimodule X equipped with a right A-valued inner product ⟨ξ|η⟩for
+ξ, η ∈X, which is conjugate linear in ﬁrst variable and right A-linear in the second.
+The collection of all correspondences over A forms a C∗-tensor category we call Corr(A),
+whose objects are correspondences over A and morphisms are adjointable bimodule intertwiners.
+The monoidal product is the relative tensor product, denoted
+X ⊠A Y.
+A projective basis of a correspondence is a ﬁnite sequence (ξi)n
+i=1 ⊆X such that
+(2.1)
+x =
+X
+i
+ξi ⟨ξi|x⟩
+holds for all x ∈X. Note that the existence of a projective basis only depends on X as a
+right Hilbert A module, and not on the structure of the left action. It is not hard to show that
+the existence of a projective basis is equivalent to X being ﬁnitely generated projective as an
+(algebraic) right A-module.
+We can use projective bases to make the connection with algebraic quantum ﬁeld theory
+(AQFT), generalizing the Doplicher-Haag-Roberts (DHR) theory approach to superselection
+sectors. In AQFT, the DHR C∗-tensor category can be deﬁned in terms of localized, trans-
+portable endomorphisms of the quasi-local algebra. An endomorphism ρ is localized in a small
+region F if ρ(a) = a for all a localized in the complement of F. Transportability is deﬁned by
+the property that for any small region F, ρ is unitarily conjugate to an endomorphism localized
+there.
+To translate this into correspondences, we note that an endomorphism ρ: A →A yields a
+correspondence ρA, which is A as a right Hilbert A module, with left action given by ρ. However,
+this abstract bimodule does not recover the endomorphism itself, and thus we cannot a-priori
+make sense of localized, transportable bimodules. However, if we choose the 1-element projective
+basis 1 ∈ρA, then we recover ρ as the matrix coeﬃcient of the Hilbert module ρ(a) = ⟨1|a · 1⟩.
+Furthermore, if we pick any unitary u ∈ρA, we see that that Ad(u) ◦ρ = ⟨u|a · u⟩. Thus the
+correspondence picture allows us to collect all unitary conjugacy classes of an endomorphism
+into one object, and recover them by picking (unitary) projective bases.
+The idea behind DHR-bimodules is to focus on this later point, but keep it a bit more general
+by not requiring endomorphisms (encoded by the special type of projective basis), but more
+generally amplimorphisms encoded by arbitrary projective bases. An amplimorphism is a (not
+necessarily unital) homomorphism π: A →Mn(A). This is required to capture the full level
+of generality of super-selection theory, since in the setting of abstract spin chains, the local
+algebras are ﬁnite dimensional, and in particular are not purely inﬁnite. The idea to apply this
+to abstract spin chains has its origins in the earlier work of [NS97], but was more developed
+recently in [Jon24].
+We now give a formal deﬁnition of DHR-bimodules, following [Jon24]. We denote the category
+of dualizable C∗-correspondences over A by Corrd(A).
+Deﬁnition 2.6. Let A• be an abstract spin chain and X a dualizable correspondence over the
+quasi-local algebra A. Given a subset F ⊆Z, we say a vector ξ ∈X is localized in F if we have
+aξi = ξia
+for all a ∈AF c.
+The bimodule X is a called a DHR-bimodule if there exists an r ≥0 such that for any interval
+I of length at least r, there is a projective basis (ξi)i for X localized in I. The full C∗-tensor
+subcategory of Corrd(A) consisting of DHR bimodules is denoted DHR(A•).
+Under Condition 2.2, the tensor category DHR(A•) is braided [Jon24, Theorem 3.13]. The
+braiding can be explicitly described as follows. For two DHR-bimodules X and Y , pick pro-
+jective bases {ξi} ⊆X and {ηj} ⊆Y localized in I and J respectively, where I and J are
+5

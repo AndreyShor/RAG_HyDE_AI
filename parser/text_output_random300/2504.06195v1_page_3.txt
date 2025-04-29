@@ -1,0 +1,31 @@
+3 
+ 
+1. Introduction 
+Resonant nanophotonic structures are widely used in optical biosensing, where changes in the 
+surrounding refractive index produce measurable shifts in the optical spectrum 1-18. These shifts 
+are typically tracked through single resonance peaks or simplified one-dimensional fitting routines 
+that monitor only a small portion of the spectrum. While these methods are practical and 
+interpretable, they inherently overlook the rich spectral features that span across broader 
+wavelength ranges and may contain valuable sensing information. 
+Machine learning has been increasingly used across scientific domains, including biosensing, 
+to uncover patterns in complex data and enhance predictive performance 19-26. In our prior work27, 
+we introduced a machine learning approach that used multiple pre-selected resonance peak shifts 
+as inputs for ridge regression. That method significantly reduced mean squared error in refractive 
+index prediction, outperforming conventional single-feature techniques by orders of magnitude. 
+However, it still required manual feature selection and was limited to spectra with well-defined 
+peaks. 
+In parallel, the advancement of optical sensing hardware has been accelerated by the 
+development of metamaterials. These are artificially structured materials engineered to manipulate 
+electromagnetic waves beyond the capabilities of naturally occurring media28. Metasurfaces 
+represent the two-dimensional class of metamaterials and offer powerful control over phase, 
+amplitude, and polarization29-33. Among them, meta-gratings are periodic metasurfaces with  a 
+wide range of applications and are highly suited for biosensing applications due to their strong 
+spectral sensitivity and tunability34. 
+In this work, we explore whether full-spectrum machine learning, without manual feature 
+selection, or peak selection, can improve prediction accuracy across different spectral response 
+types. We simulate a meta-grating structure consisting of triangular nanorods on a gold reflector, 
+where the rod material is set to either Ti (Ti) or Si (Si). Ti supports broadband intensity spectrum 
+modulation, while Si supports narrowband shifting Mie-type resonances. To account for the 
+anisotropy of the design, both TE and TM polarizations are simulated for each configuration. 
+To evaluate generalization, we apply five-fold cross-validation by holding out different 
+refractive index values during training. This mimics experimental biosensing scenarios, where 

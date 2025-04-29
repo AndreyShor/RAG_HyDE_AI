@@ -1,0 +1,64 @@
+17
+Appendix C: Finite-alphabet finite-state hidden Markov channels
+This appendix defines hidden Markov channels in general as well as some special classes of hidden Markov channels.
+For a review on hidden Markov processes see [24].
+Let X and Y denote the finite input and output alphabets, respectively. A discrete-time, finite-alphabet channel
+is defined as a function from input sequences x ∈X N0 to distributions over the channel’s output process, Y . This
+function can be represented as a conditional distribution, denoted νY |X. Thus, for a fixed input sequence X = x, a
+channel assigns probabilities νY |X(y|x) for all output sequences y ∈YN0.
+In the simplest case, νY |X’s inputs are distributed as pX such that the joint distribution becomes pXY = νY |XpX.
+However, note that in general, νY |X’s inputs may depend on (some of) νY |X’s outputs. Therefore, the joint probability
+distribution over the joint process of inputs and outputs, XY is in general given by
+pXY = νY |XηX|Y
+(C1)
+where ηX|Y (x|y) is another channel which specifies how the νY |X’s inputs are distributed, depending on νY |X’s
+outputs. In such cases, the distribution
+pY |X(y|x) = pXY (x, y)
+pX(x)
+(C2)
+=
+νY |X(y|x)ηX|Y (x|y)
+P
+y∈YN0 νY |X(y|x)ηX|Y (x|y)
+(C3)
+can be different from νY |X(y|x). This difference is also the reason we denote the channel by ν and reserve the symbol
+p for the joint distribution pXY (and distributions which can be obtained from it by marginalizing or conditioning,
+such as pY |X and pX).
+The conditional probability νY |X thus characterizes the behavior intrinsic to the channel while the conditional
+probability pY |X also takes into account how the channel’s inputs are prepared.
+In this work, we focus on a subclass of discrete-time finite-alphabet channels commonly known as finite-state [25,
+p.97] or hidden Markov channels [24].
+Definition 6. A (discrete-time finite-alphabet) channel νY |X is a finite-state hidden Markov channel if there exists
+a distribution pZ0 over a finite set of states Z and a transition matrix Φ = (ϕ(j|i))j,i with i ∈X × Z and j ∈Y × Z
+such that
+νY |X(y|x) =
+X
+z
+pZ0(z0)
+∞
+Y
+t=0
+ϕ (yt, zt+1|xt, zt) ,
+(C4)
+where the sum runs over all z ∈ZN0. Then, the tuple (Φ, pZ0) is called a hidden Markov model of νY |X and z ∈Z
+the hidden states of the Markov model.
+In particular, since any such Markov model defines a hidden Markov channel and any hidden Markov channel by
+definition has a Markov model, eq. (C4) defines a many-to-one correspondence between Markov models and channels.
+Further, hidden Markov channels are causal channels [30, definition 4] in the sense that
+νY0:n|X(y0:n|x0:nxn:∞) = νY0:n|X(y0:n|x0:nx′
+n:∞)
+(C5)
+for all n ∈N and for all future input sequences xn:∞, x′
+n:∞∈X Z0, where νY0:n|X(y0:n|x) = P
+yn:∞νY |X(y|x). This
+means that for a complete description of the channel’s behavior for the first n rounds (channel uses) it is sufficient to
+know its input past x0:n. In particular, hidden Markov channels can be understood as those causal channels which
+admit an implementation using only finite memory resources as represented by the finite set of hidden states Z.
+The transition matrix Φ stores as its coefficients the conditional probability assignments ϕ (yt, zt+1|xt, zt) which are
+independent of t (and hence Φ generates a homogeneous Markov chain).
+Given that one knows the transition matrix Φ, the current hidden state z, as well as the current input x and output
+y, the obtainable knowledge about the next hidden state z′ of the Markov model is represented by a distribution
+determined by Φ which, up to normalization, is given by (ϕ (y, z′|x, z))z′∈Z. Markov models for which this distribution
+is a delta distribution, are said to be unifilar [24, 25, 31]. Unifilar Markov models represent an important class of
+Markov models because, given the current hidden state, input, and output, for unifilar Markov models it is possible
+to infer the next hidden state with certainty.

@@ -1,0 +1,100 @@
+2
+geometry [4], [6] as a model device to illustrate these ideas.
+II. ACOUSTIC MICRORING RESONATORS
+Fig. 1(a) shows an optical microscope image of a repre-
+sentative acoustic microring resonator device fabricated in a
+gallium nitride (GaN) on silicon carbide (SiC) platform [6],
+with radius (R) of 115 µm side-coupled to acoustic waveguides
+with width (wwg) of 1.8 µm and thickness (twg) of 1.5 µm.
+The waveguide resonator gap (g) is ≈600 nm. Focusing in-
+terdigitated transducers (FIDTs) are used to convert microwave
+fields at ≈3.4 GHz into propagating acoustic fields that are
+focused at the waveguide entrance for efficient mode matching.
+A finite element method (FEM) simulation of the waveguide
+mode is shown in the inset of Fig.1(a). At the output port
+of the waveguides, the process is reversed and the FIDTs are
+used to reconvert the acoustic field exiting the waveguide into
+the microwave domain. The microwave signal is generated
+and detected in a standard swept-frequency scattering matrix
+(S-parameter) measurement using a vector network analyzer
+(Keysight E5063A).
+The resonator transmission spectrum (S21) measured in the
+through (T, red) and drop (D, blue) ports are shown in Fig.1(b).
+This device has a coupling length (lcp) of 6 λa where the
+acoustic wavelength (λa), which determines the IDT period, is
+1.6 µm. The waveguide resonator gap in this case is 500 nm.
+Both transmission spectra show a periodic series of resonance
+peaks in D (dips in the T), that correspond to successive
+resonant modes of the ring resonator. The resonance condition
+can be stated approximately as mλR = 2πR where m is an
+integer, λR is the acoustic wavelength in the ring and R is
+the ring radius. Each of the successive resonances correspond
+to successive integer values of m. As noted previously [6],
+acoustic ring resonators relying on total internal reflection
+of acoustic waves can have very low intrinsic damping,
+approaching the underlying material limits, and can exceed
+the loss performance of traditional SAW and bulk acoustic
+wave (BAW) [12] based resonators at the same frequency.
+We can numerically transform the complex spectral data into
+the time domain [13]. The signal transmission as a function of
+time is shown in Fig.1(c) with the T and D ports indicated in
+red and blue respectively, and the T port data has been offset
+by 20 dB for clarity. We would like to note that the T and D
+port measurements are not done simultaneously because we
+are limited to a 2-port VNA. The ringdown of the resonator is
+clearly seen in both the T and D port data, with each successive
+temporal pulse corresponding to one additional round trip
+of the cavity. The difference in arrival time of subsequent
+pulses allows us to estimate the group velocity (vg) to be
+3534±25 m s−1 which agrees well with the frequency domain
+estimate of 3526 ± 33 m s−1 calculated from the measured
+cavity free spectral range (FSR ≈4.754 ± 0.045 MHz). The
+difference is mainly due to the finite temporal resolution (5 ns)
+in the system which bounds the fidelity with which we can
+estimate the arrival time of each pulse. This time resolution is
+given by:
+dt =
+1
+n · df
+,
+(1)
+(b)
+(c)
+50 m
+D
+L
+T
+(a)
+3.38
+3.39
+3.4
+3.41
+3.42
+Frequency (GHz)
+-80
+-70
+-60
+-50
+-40
+-30
+Transmission (dB)
+Drop
+Through
+GaN
+z-displacement 
++
+_
+z y
+m
+SiC
+Fig. 1. (a) Microscope image of a representative acoustic microring resonator
+device. Inset shows an FEM simulation of the z-displacement of the propa-
+gating waveguide mode. Focusing interdigitated transducers (IDTs) are used
+to convert microwave fields at ≈3.4 GHz into propagating acoustic fields
+(launch port, L) which can be efficiently routed using on-chip waveguides.
+The acoustic field in the waveguide can couple into and circulate in an
+acoustic microring resonator. The power leaking out from the resonator can
+be measured in both the through (T) and drop (D) ports. (b) The transmission
+spectrum of the device in the T (red) and D (blue) ports. (c) Time domain
+transform of the data in (b) for the T (red) and D (blue) ports. The time-
+domain T port data is shifted by 20 dB for illustration clarity.

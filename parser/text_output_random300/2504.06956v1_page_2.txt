@@ -1,0 +1,72 @@
+Introduction
+2
+7
+Proof of Proposition 6.1
+56
+7.1
+Setup and main technical lemmas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+57
+7.2
+Proof of Lemma 7.2 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+60
+7.3
+Proof of Lemma 7.4 . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+67
+A Brownian bridge above a curve
+72
+A.1
+Some preliminary results
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+72
+A.2
+Brownian bridge above a positive curve . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+74
+A.3
+Brownian bridge above a negative curve . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+75
+A.4
+Entropic repulsion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+78
+A.5
+Random walk estimates . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+80
+B
+Proof of Lemma 7.10
+81
+C Gaussian toolbox
+83
+1
+Introduction
+The theory of Gaussian Multiplicative Chaos (GMC) involves the study of random measures that can
+be formally expressed as
+µγ(dx) “=” eγX(x)dx ,
+(1.1)
+where γ > 0 is a real positive parameter representing the inverse temperature of the model, X is a
+log-correlated Gaussian field on a domain D ⊆Rd, and dx denotes Lebesgue measure on D. Since
+X only exists as a random Schwartz distribution, regularisation and renormalisation are necessary to
+show the existence of the measure µγ as defined above [Kah85,DS11,RV14,Sha16,Ber17].
+It is by now well-known that the behaviour of the random measure (1.1) exhibits a phase transition at
+γc
+def=
+√
+2d .
+Following standard convention, we call the regime γ < γc subcritical, the borderline case γ = γc
+critical, and the range γ > γc supercritical. These three different regimes differ in the normalisation
+needed to obtain a non-trivial limiting measure, as well as in the qualitative features of the limiting
+measure (see also [LRV15] for a more detailed phase diagram including complex values of γ).
+Notably, in the supercritical regime, the limiting random measure is not measurable with respect to
+the underlying field X and is purely atomic. Before delving into more details and stating our main
+results, we introduce the family of log-correlated fields we will be working with.
+The class of ⋆-scale invariant fields. We consider log-correlated Gaussian fields X on Rd with
+short-range correlations, which naturally admit an approximation by a martingale (Xt)t≥0. Here, each
+Xt is a smooth Gaussian field, and for every x ∈Rd, the process (Xt(x))t≥0 is a standard Brownian
+motion. Moreover, these fields satisfy a certain type of scale-invariance called ⋆-scale invariance
+[RV14, Section 2.3]. In a nutshell, it states that for any s, t > 0, the fields Xt and Xt+s −Xt are
+independent, and that the latter is equal in law to the field Xs, spatially rescaled by a factor et.
+The key ingredient in constructing a ⋆-scale invariant field is the so-called seed covariance function
+K : Rd →R, which we assume satisfies the following properties:
+(K1) K is positive definite, radial, and K(0) = 1.
+(K2) K ∈C∞(Rd) and it is supported in B(0, 1).
+Remark 1.1. The unit ball appearing in (K2) can of course be replaced by any compact subset of Rd.
+We write K : Rd →R for the (unique) positive definite function such that the convolution of K with
+itself equals K.

@@ -1,0 +1,95 @@
+9
+FIG. 7: Comparison of χ2 performance for different
+inputs to the neural network in the OmniFold approach.
+For OmniFold (solid lines), the inputs are the muon and
+leading proton kinematics (pµ, cos θµ, ϕµ, pp, cos θp, ϕp),
+from which our observables of interest can be derived.
+With MultiFold (dashed lines), the kinematic variables
+used as input are (pµ, cos θµ, pp, δpT, δαT, δϕT), directly
+including the observables of interest.
+VI.
+CONCLUSIONS
+With its approach of event-by-event reweighting with
+the assistance of machine learning, OmniFold offers the
+ability to perform unbinned unfolding of multiple observ-
+ables simultaneously while accounting for background
+and efficiency corrections with high-dimensional depen-
+dencies. We have demonstrated for the first time its ap-
+plication to a neutrino cross-section measurement, using
+public simulated data from the T2K ND280 detector. By
+creating fake data with nontrivial reweightings of the un-
+derlying interaction models, we were able to test the clo-
+sure properties of the OmniFold approach, finding that
+with optimized inputs it was able to achieve similar χ2
+goodness of fit with less bias and smaller uncertainties
+compared to a conventional IBU approach across several
+observables of interest.
+Our results did not show strict improvement in terms of
+χ2 from using OmniFold-based approaches compared to
+a conventional unfolding method. Moving from a binned
+to unbinned approach without the addition of other in-
+formation yielded generally worse results, which seems to
+stem from imperfect neural network training. Compar-
+ing MultiFold against OmniFold, we also see that directly
+providing the most relevant observables yields better per-
+formance than requiring the procedure to derive this in-
+formation from other more general inputs, which tells us
+that thoughtful choices of input variables are important.
+These issues are partially caused by the generally low
+statistics associated with a neutrino dataset, but any fu-
+ture application of OmniFold to real neutrino data would
+face the same problem. Since OmniFold requires train-
+ing with the actual data, improving the statistics is not
+a trivial matter of running more simulations, and this
+problem will require particular attention. Other meth-
+ods for data augmentation in unfolding, including pre-
+training [67, 68], would be useful to explore in future
+work.
+That being said, the performance of the OmniFold
+method was likely also limited by the nature of the pub-
+lic dataset that we used. For instance, the dataset only
+contained information about the primary muon and lead-
+ing proton in each event, but we would expect OmniFold
+to do a better job of dealing with background contri-
+butions if we could provide pion kinematic information
+where it existed. For events where more than one proton
+is reconstructed, providing information about the sub-
+leading protons should be helpful too. This is supported
+by our general observation that our MultiFold and Omni-
+Fold implementations outperformed UniFold by making
+use of additional information besides just the unfolding
+variable. The public dataset that we used lacked the full
+stack of potentially useful information because it was not
+used in the conventional analysis, but for a future appli-
+cation of OmniFold to actual data we would want to max-
+imize the amount of useful information that we provide
+as input.
+In conclusion, this work shows that OmniFold is a use-
+ful unfolding method to apply to neutrino measurements.
+Even with a limited dataset, it is able to deliver on its
+theoretical advantages, using high dimensional informa-
+tion to improve the quality of the unfolding and do this
+for multiple observables simultaneously. While we used a
+T2K ND280 dataset, the advantages should be similar for
+any detector. We have identified the difficulties encoun-
+tered during this work, some of which may be particular
+to neutrino datasets and will require further study, but
+OmniFold shows promise as an unfolding technique for
+all neutrino experiments to improve the quality of their
+measurements.
+ACKNOWLEDGMENTS
+We would like to thank T2K for making the simu-
+lated dataset extensively used in this work publicly avail-
+able. We would also like to particularly thank Ciro Riccio
+for his invaluable help in understanding the T2K public
+dataset and in his efforts to produce the dataset initially.
+Additionally, we would like to thank Ryan Milton for vali-
+dating the implementation of OmniFold used in this work
+with his RooUnfold implementation. The work of RH,
+BN and CW was supported by the U.S. Department of
+Energy, Office of Science, Office of High Energy Physics,
+under contract number DE-AC02-05CH11231. The work
+of MK and TK was supported by JSPS KAKENHI Grant
+Number JP23H04504. The work of AC was supported
+by the U.S. Department of Energy, Office of Science,
+Office of High Energy Physics, under DOE award DE-

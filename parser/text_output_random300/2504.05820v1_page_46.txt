@@ -1,0 +1,48 @@
+32
+Tools and methodology
+Section 2.3, by highlighting some features of the NNPDF4.0 [109] set including the recently
+published MHOU set [6]. These sets constitute the baseline upon which the results of the
+following chapters are built.
+2.1. Theory predictions for PDF fitting
+Addressing the problem of PDF fitting requires integrating several elements from different
+sources: data from experiments - ranging over multiple decades and formats - and competitive
+theory predictions, coming from different providers. Moreover, a fitting methodology has
+to be selected and engineered to implement theory constraints, and to limit not physically
+motivated bias. While data are a static component in the fit, the theory predictions depend on
+the candidate PDF, since, through the factorization theorem (cf. Eq. (1.104)), they constitute
+the mapping that connects the unobserved PDF space, to the observed data space.
+During a PDF fit, this map is evaluated repeatedly (at least once for every minimization step),
+so it is paramount to have an efficient way to evaluate it, otherwise it can become a serious
+bottleneck. This issue has been solved by introducing an interface that is able to produce
+PDF independent theory predictions. Few examples are present in literature [111, 112, 113,
+114] and, they are being used in various context. In particular, the convolution of Eq. (1.104)
+is performed in three different spaces that needs be factored out: the flavor space, and the
+kinematic space of x and Q2. The main concept of such interfaces is to split the prediction
+generator (usually a Monte Carlo generator for hadronic processes) output into different
+luminosity components, perturbative orders, and observables binning. Essentially, this recast
+the partonic cross-sections predictions as a theory array (celled grid), for which the Mellin
+convolution is replaced by a linear algebra contraction over a single or multiple PDF sets.
+However, this step is not exhaustive for the implementation of the PDF factorization. In fact,
+while discretization on the luminosity and bins takes care of the flavor and x-space dependency
+of the PDF, it leaves the dependence on the energy scale untouched. The latter dependence
+is not fitted, since it is only determined by perturbative QCD through the DGLAP equation
+(Eq. (1.60)) and can be computed a priori. Being DGLAP a set of integro-differential equations
+linear in the PDF, its solution can be converted in the application of a suitable evolution operator
+(Eq. (1.77)). It is possible to combine the two ingredients (the operator and the grid) in a
+single fast array interface, that directly produce the required theory predictions once contracted
+on the PDF candidate. This way, the map from PDF space to data space discussed above, is
+reduced to a linear algebra product. Such an interface is called a “Fast Kernel table” (shortened
+to FK-table) in the context of the NNPDF collaboration.
+For example, given any observable O(Q), evaluated at the scale Q and which depends linearly
+on the PDF (i.e. a DIS observable), the theory prediction is achieved via
+O(Q) =
+X
+i
+FKi
+
+as(Q), aem(Q), µR
+Q , µF
+Q
+
+⊗fi(Q0) ,
+(2.1)

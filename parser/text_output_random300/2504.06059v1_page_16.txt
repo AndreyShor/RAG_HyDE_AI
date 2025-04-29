@@ -1,0 +1,241 @@
+16
+Tk[0] = 1
+2k m +
+k
+X
+l=1
+1
+2l Sk−l[0].
+Using the fact that
+Tk[i]
+2
+
+= Tk[i] + Sk[i]
+2
+it is easy to check that the formula is true for k + 1 when i = 0.
+Now, let 0 < i < n:
+Tk+1[i] =
+Tk[i]
+2
+
++
+Tk[i −1]
+2
+
+= Tk[i] + Sk[i] + Tk[i −1] −Sk[i −1]
+2
+= 1
+2
+
+1
+2k
+k
+i
+
+m +
+k
+X
+l=1
+1
+2l ·
+min(l,i)
+X
+j=0
+l −1
+j
+
+−
+l −1
+j −1
+
+Sk−l[i −j]
+
+
++ 1
+2
+
+1
+2k
+ k
+i −1
+
+m +
+k
+X
+l=1
+1
+2l ·
+min(l,i−1)
+X
+j=0
+l −1
+j
+
+−
+l −1
+j −1
+
+Sk−l[i −1 −j]
+
+
++ Sk[i] −Sk[i −1]
+2
+We merge two terms using Pascal’s rule. We split the sums to deal the cases where l < i and l > i and we merge
+the two sums with a change of variable in the second sum, this gives
+Tk+1[i] =
+1
+2k+1
+k + 1
+i
+
+m + Sk[i] −Sk[i −1]
+2
++
+i−1
+X
+l=1
+1
+2l+1 ·
+
+
+l
+X
+j=0
+l −1
+j
+
+−
+l −1
+j −1
+
+Sk−l[i −j] +
+l+1
+X
+j=1
+l −1
+j −1
+
+−
+l −1
+j −2
+
+Sk−l[i −j]
+
+
++
+k
+X
+l=i
+1
+2l+1 ·
+
+
+i
+X
+j=0
+l −1
+j
+
+−
+l −1
+j −1
+
+Sk−l[i −j] +
+i
+X
+j=1
+l −1
+j −1
+
+−
+l −1
+j −2
+
+Sk−l[i −j]
+
+
+Again, using Pascal’s rule we can factor by Sk−l[i −j]. The cases j = 0 in the two sums and the case j = l + 1
+in the first sum can be merged as well because of the nice behavior of the binomial coefficient. This gives
+Tk+1[i] =
+1
+2k+1
+k + 1
+i
+
+m + Sk[i] −Sk[i −1]
+2
++
+i−1
+X
+l=1
+1
+2l+1 ·
+
+
+l+1
+X
+j=0
+l
+j
+
+−
+
+l
+j −1
+
+Sk−l[i −j]
+
+
++
+k
+X
+l=i
+1
+2l+1 ·
+
+
+i
+X
+j=0
+l
+j
+
+−
+
+l
+j −1
+
+Sk−l[i −j]
+
+
+=
+1
+2k+1
+k + 1
+i
+
+m + Sk[i] −Sk[i −1]
+2
++
+k
+X
+l=1
+1
+2l+1 ·
+
+
+min(l+1,i)
+X
+j=0
+l
+j
+
+−
+
+l
+j −1
+
+Sk−l[i −j]
+
+
+One last change of variable on l and we can integrate the terms in Sk in the sum to get the final result

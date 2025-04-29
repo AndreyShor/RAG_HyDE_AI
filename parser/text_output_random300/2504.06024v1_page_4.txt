@@ -1,0 +1,65 @@
+and includes properties such as the number of qubits, the state vector, and a list of all qubits. Listing 1
+shows the example code for initializing quantum states with 3 qubits.
+Code1. Qubit
+initialization
+from
+AriaQuanta.aqc.qubit
+import
+Qubit , MultiQubit
+onequbit = Qubit(’q0’)
+#Defining 1 qubit
+using
+Qubit
+qubits = MultiQubit(3)
+#Defining 3 qubits
+using
+MultiQubit
+print("\nstate is:", onequbit.state)
+print("\nname is:", onequbit.name)
+print(’\nstate of qubit[0] is:’, onequbit_multi .qubits[0].state)
+print(’\nname of qubit[0] is:’, onequbit_multi .qubits[0].name)
+3.2
+Quantum gates
+The subsequent step in quantum circuit implementation involves the utilization of quantum gates.. In
+general, a quantum gate is a unitary operator (UU † = I), divided into three main categories based
+on the number of inputs and outputs:
+single-qubit, two-qubit, and three-qubit gates.
+Multi-qubit
+gates are constructed using these basic gates.
+AriaQuanta consists of five classes of gates:
+single-
+qubit gates, two-qubit gates, three-qubit gates, control gates, and arbitrary gates.
+Note that the
+control gate can be categorized as a two-qubit or three-qubit gate, but it is separated here for sim-
+plicity.
+The arbitrary gate can also be defined by its matrix.
+Currently, single-qubit gates include
+I,X,Y,Z,S,H,P,T,Xsqrt,GlobalPhase,Rot,RX,RY,RZ gates.
+Two-qubit gates include SWAP,ISWAP,SWAPsqrt,SWAPalpha,Magic,RXX,RYY,RZZ,RXY,
+Barenco,Berkeley,Canonical,Givens gates. Three-qubit gates include Toffoli,Margolus,Fredkin
+gates. Control gates gates include CX,CZ,CP,CU(arbitrary U),CS,CSX(Controlled-Sqrt-X)
+gates.
+The general utilization of gate is G(i), G(i,j) and G(i,j,k) for single-qubit gates, two-qubit
+gates and three-qubit gates respectively and i, j, k represent the qubits. If the gate is parametric such
+as RX(θ), in addition to the qubit, the parameter value is also given i.e G(i, parameter) or G(i,j,
+parameter) where the number of parameters can be different for gates. Parametric gates are essential
+for variational quantum circuits and algorithms in NISQ area.
+Aria Quanta provides t single-qubit
+and two-qubit parametric gates: Rx(θ), Ry(θ), Rz(θ), U(θ, ϕ, γ) and Rxx(ϕ), Ryy(ϕ), Rzz(ϕ), Rxy(ϕ),
+Barenco(α, ϕ, θ), Canonical(a, b, c), Givens(θ). In addition, a parametric control gate can be defined in
+arbitrary control gate CU. Listing 2 shows the example code for using quantum gates
+Code2. Implement
+quantum
+gates
+from
+AriaQuanta.aqc. gatelibrary
+import*
+import
+numpy as np
+rxxgate = RXX(np.pi)
+print("\nname is:", rxxgate.name)
+print("\nmatrix
+is:", rxxgate.matrix)
+print("\nqubits
+are:", rxxgate.qubits)
+4

@@ -1,0 +1,62 @@
+degrades the formation of the offensive team by putting excessive weight on evasion of DF, undermining ball
+possession performance. In addition to the sensitivity analysis, the process of constructing the model offered
+insights into the effect of DF’s behaviour on the number of passes. At first, we focused on modifying behaviour
+of OFs in the previous model [39]. Then, it turned out that DF was hardly able to intercept the ball. The
+average number of passes exceeded 1000, when we turned off the maximum-pass termination condition. This
+was how we learned that we needed to revise the behaviour not only of OFs but also of DF. Since the previous
+model [39] incorporated only the ‘chase’ motion mode of DF, we added the second motion mode of ‘wait’, which
+allowed DF to intercept passes more frequently, considerably reducing the average number of passes. In light
+of this experience, we presume it to be essential in ball possession dynamics that DF has the possibilities to
+both run and stay still. In the previous agent-based model for 2v1 ball possession [15], while DF always moved
+towards the ball, the running speed was drawn from an exponential distribution at every time step. Their choice
+for an exponential distribution could have been a key to their success, since its high probability density around
+0 would give rise to a motion similar to the ‘wait’ mode.
+Among the psychological literature on team effectiveness, it has been argued that more focus should be put
+on dynamic, complex, and emergent nature of team processes [2, 52]. To this end, Kozlowski and Chao [52]
+described computational modelling as one of promising methodologies. They discussed three potential difficulties
+for computational modeling, which we summarise as difficulties in (1) constructing computational models based
+on theories expressed in natural languages, (2) balancing parsimony and complexity, and (3) validating the
+models. The first concern points to an inherent limitation of our approach. That is, if one tries to incorporate
+existing insights into a model, they must be reformulated mathematically, through which the original nuance
+may well be lost. This was the reason why we opted for physical analogy, such as elastic spring between players
+and viscosity. Nevertheless, our study circumvented the second and third problems. We concentrated on a
+specific case of 3v1 ball possession game, which made it easier to determine what needed to be modelled. For
+instance, we incorporated two motion modes of DF, because it was the simplest choice to reproduce the empirical
+average number of passes. In this way, we were able to keep our model from becoming too complex to interpret,
+addressing the second concern. Finally, our model generates position data that are comparable with empirical
+tracking data. As such, our model can be validated in terms of any quantity that is calculated from position
+data, including the OF area we showed in Fig. 3. This significantly mitigates the third concern for verifiability.
+We maintain that, to realise these advantages in studies using dynamical models, it is crucial to define a specific
+context, such as 3v1 ball possession game, and to simulate data that is as close to raw as possible, for instance
+position data from tracking systems in our case.
+We owe the basic modelling framework, where a game is decomposed into pass scenes and transitions, to the
+previous work by Yokoyama et al. [39]. Nevertheless, our model is distinct from the previous one because the
+motivation is different: while their interest lay in synchronisation patterns among OFs, our work concerns the
+number of passes. Our major novelties include termination conditions, motion modes of DF, and the strategic
+choice of pass direction. We also made technical modifications to enhance efficiency and stability. For instance,
+the ODE system [eq. (1)] in our model can be integrated by numerical solvers with adaptive time steps, unlike
+the previous model, where the time step size of the Euler method, ∆t, appears in the model equation. In
+this article, we have discussed advantages of dynamical modelling for analysing influence of behaviour on team
+performance. Accordingly, we hope to facilitate the use of dynamical models in future studies. To this end, we
+aimed to present a model that is easy to modify, so that researchers can employ and adapt our model to suit
+their needs. A salient possibility for revision lies in the social force term ⃗G in the equation of motion (1e) of
+Passer and Mover. One may even formulate social forces specific to each of Passer and Mover, which would
+come with the cost of the increase in the number of parameters. Another possibility is to change the algorithm
+to determine the pass destination ⃗dn+1
+B
+. For instance, the pass angle θn may follow a distribution whose mean
+is not zero. On the contrary, we would be discouraged to modify the confinement mechanism ⃗F return + ⃗F viscous
+and DF’s motion until it turns out necessary. As we discuss in ‘Details on the dynamical model’ in Methods
+section, designing the confinement mechanism was challenging. Moreover, details of the confinement mechanism
+should not influence the result as long as it works as expected. Hence we do not see any reason for modification
+so far. In this research, our focus is on the team performance of the offensive team. Therefore we regard DF as
+a part of the environment, which we wish to model in the as simple manner as possible, and we have not found
+the need for revision.
+Although we were able to reproduce the average number of passes and OF area for the high- and low-level
+teams, there is still room for improvement in our model to enhance plausibility. A closer look at the simulated
+dataset suggests that τ must to be small, i.e. DF must run faster, to mimic the empirical result of the low-level
+team. This was contrary to our expectation that smaller τ would correspond to more competent DF. It is
+probable that the OFs in our model are too competent and thus the only way to reduce the number of passes is
+to enhance the DF’s capability. A different kind of social forces which hinders the offensive team performance
+is apparently necessary to more accurately reproduce the dynamics of the low-level team. There might be
+9

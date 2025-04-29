@@ -1,0 +1,212 @@
+2
+so that
+eZj =
+(
+Z∗
+j + ∆W
+if the jth energy interval includes ¯E,
+Z∗
+j
+otherwise.
+(S7)
+Substitution into the right-hand side of eq. (S4)
+yields the updated array f
+W ′,
+f
+W ′(E) = (1 −α) W ∗(E) + α
+P′
+j
+nj(E) e
+Zj
+e
+Zj−f
+W (E)
+P′
+k
+Nk
+e
+Zk−f
+W ( ¯
+E)
+. (S8)
+Case E = ¯E. We first specialize eq. S8 to the
+case E = ¯E.
+We note that eZk −f
+W( ¯E) = Z∗
+k −
+W ∗( ¯E) for all intervals that include ¯E. Additionally,
+the term nj( ¯E) eZj in the numerator can be written
+as nj( ¯E)Z∗
+j + nj( ¯E)∆W. Therefore, eq. S8 can be
+rewritten as:
+f
+W ′( ¯E) = W ∗( ¯E) + α
+P′
+j
+nj ( ¯
+E)
+Z∗
+j −W ∗( ¯
+E)
+P′
+k
+Nk
+Z∗
+k−W ∗( ¯
+E)
+∆W
+= W ∗( ¯E) + α A ∆W ,
+(S9)
+where the non-negative coefficient A is ≤1 because
+nj ≤Nj.
+Case E ̸= ¯E. The update via eq. S8 will generally
+propagate the initial pointwise perturbation to the
+neighborhood of ¯E, and specifically to the Ws of
+energy levels spanned by intervals that include ¯E.
+Thus, we shall now consider E ̸= ¯E. In this case, for
+intervals that include ¯E, we have eZj −f
+W( ¯E) = Z∗
+j −
+W ∗( ¯E)+∆W, otherwise eZj −f
+W( ¯E) = Z∗
+j −W ∗( ¯E).
+Taking this into account and expanding the right-
+hand side of eq. S8 to linear order in ∆W, one ob-
+tains:
+f
+W ′(E) = W ∗(E) + α(B1 −B2)∆W
+(S10)
+where the non-negative coefficients B1 and B2 are:
+B1 =
+P′′
+j
+njW ∗
+(Z∗
+j −W ∗)
+2
+P′
+k
+Nk
+Z∗
+k−W ∗
+; B2 = W ∗(E)
+P′′
+l
+Nl
+(Z∗
+l −W ∗)
+2
+P′
+k
+Nk
+Z∗
+k−W ∗
+,
+(S11)
+with the double prime indicating that the sums are
+restricted to intervals that include ¯E.
+Considering that: (i) 0 ≤W( ¯E) ≤Zj −W ∗, (ii)
+W ∗(E) ≤Zj, and using the identity of eq. S1 for
+the fixed point solution, one has the following upper
+bounds:
+B1 ≤
+1
+W ∗( ¯
+E)
+P′
+j
+nj
+(Z∗
+j −W ∗)
+P′
+k
+Nk
+Z∗
+k−W ∗
+= W ∗(E)
+W ∗( ¯
+E)
+B2 ≤W ∗(E)
+W ∗( ¯
+E)
+P′′
+l
+Nl
+Z∗
+l −W ∗
+P′
+k
+Nk
+Z∗
+k−W ∗≤W ∗(E)
+W ∗( ¯
+E) .
+(S12)
+We thus obtain the following bound for the per-
+turbation propagated by the update:
+∥f
+W ′(E) −f
+W(E)∥≤2αW ∗(E)
+W ∗( ¯E)∆W .
+(S13)
+Combining expressions S9 and S13, we have that
+the overall perturbation of the updated array has a
+norm smaller than the initial one as long as the re-
+laxation parameter α is sufficiently small compared
+to the largest ratio of pairs of W ∗s in the same in-
+tervals. To leading order, for non-pointwise pertur-
+bations, the updated entries f
+W ′(E) will differ from
+W ∗by the linear combination of terms analogous to
+those of eqs. S9 and S10. Because such terms are
+bound, and their number is no larger than the pre-
+assigned number of bins per interval, a sufficiently
+small - though finite - value of α will ensure that the
+norm of the perturbation decays at each iteration
+step. The fixed point solution is thus an attractor
+for the iterative procedure.
+C.
+Approximate solution for initialization
+We now derive an approximate solution to the self-
+consistent equations S1 - S3. Given its simplicity,
+the approximate solution can be straightforwardly
+used as the starting point of the iterative scheme,
+making convergence significantly faster than, e.g.,
+starting from an initially flat W profile.
+The approximation hinges on the assumption that
+the individual W elements are much smaller than the
+Zs of the intervals containing them. In this limit, the
+self-consistent equation S1 reduces to:
+W(E) =
+P′
+j
+nj(E)
+gj
+P′
+k
+Nk
+Zk gk
+(S14)
+Setting all g’s equal to 1 for simplicity and rearrang-
+ing the terms, the equation can be rewritten more
+conveniently as:
+P′
+j nj(E)
+W(E)
+=
+′
+X
+k
+Nk
+Zk
+.
+(S15)
+1.
+Analytical solution
+We further assume that the energy range of inter-
+est is spanned by intervals (hence histograms) that
+overlap only at the edge bins. The requirement of
+histograms overlapping at the edges is not restrictive
+in applicative contexts, in that multiple histogram
+coverages can always be downsampled a posteriori
+to meet this condition.

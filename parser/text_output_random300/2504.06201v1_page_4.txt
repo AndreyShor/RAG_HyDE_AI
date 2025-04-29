@@ -1,0 +1,48 @@
+ 
+4 
+To further evaluate scalability, we conduct a systematic benchmarking study on QUBO problems 
+(size: up to 10,000 variables), designed to mimic real-world scenarios through randomly generated 
+elements. PT-ICM is excluded from this analysis due to excessive solving times compared to other 
+solvers (Fig. 1b). As shown in Fig. 2, classical solvers (IP, SA, SD, and TS) are accurate for smaller 
+problems but become inaccurate as the problem size increases. Consistent with the results in Fig. 
+1, the SD and TS solvers exhibit low relative accuracy even for a relatively small problem (e.g., 
+2,000). IP and SA are more accurate than SD and TS but fail to identify the optimal state for large 
+problems. It is known that IP can provide global optimality guarantees40, but our study highlights 
+that proving a solution is globally optimal is challenging for large and dense problems. For 
+example, in one case (n = 7,000), the optimality gap remains as large as ~17.73%, where the best 
+bound is -19,660 while the solution obtained from the IP solver is -16,700, with the optimality gap 
+not narrowing even after 2 hours of runtime. The relative accuracy can be improved by employing 
+the QUBO decomposition strategy (e.g., SA–QBSolv), yet it still fails to identify high-quality 
+solutions for problem sizes exceeding 4,000. In contrast, quantum solvers demonstrate superior 
+accuracy for large-scale problems. Notably, the HQA solver consistently outperforms all other 
+methods, reliably identifying the best solution regardless of problem size (Fig. 2).  
+ 
+Fig. 3a shows that the solving time rapidly increases as the problem size increases for the classical 
+solvers, indicating that solving combinatorial optimization problems with classical solvers can 
+become intractable for large-size problems (Fig. 3b). The solving time trends with increasing 
+problem size agree well with the theoretical time complexities of the classical solvers (Fig. 3b and 
+Fig. S3, see 2-4-2. Computational Time section). While the IP solver can be faster than other 
+classical solvers, it also requires significant time for large problems (e.g., n > 5,000). The use of 
+the QUBO decomposition strategy dramatically reduces the solving time, but the quantum solvers 
+consistently outpace classical counterparts (Fig. 3a). For example, the solving time (n = 10,000) is 
+0.0855 s for HQA, 101 s for QA–QBSolv, and 561 s for SA–QBSolv.  
+ 
+Decomposing a large QUBO into smaller pieces leads to a higher relative accuracy, as a solver can 
+find better solutions for each decomposed QUBOs, mitigating the current hardware limitations. 
+Note that the accuracy of QA for QUBOs with problem sizes of 30 and 100 is, respectively, 1.0 
+and 0.9956 (without leveraging the QUBO decomposition method). Hence, the accuracy of QA–
+QBSolv with a sub-QUBO size of 30 is higher than that with a sub-QUBO size of 100, as 
+decomposed QUBOs with a smaller size fit the QA hardware better (Fig. 4a). However, a smaller 
+sub-QUBO size results in a greater number of sub-QUBOs after decomposition, leading to 
+increased time required to solve all decomposed problems (Fig. 4b). It is noted that the QA–
+QBSolv solver does not guarantee finding the best solution for large problems (size > 4,000), 
+resulting in lower accuracies regardless of sub-QUBO sizes, as can be seen in Fig. 2 and Fig. 4a.  
+ 
+Our results show that HQA, which incorporates QA with classical algorithms to overcome the 
+current quantum hardware limitations, is currently the most efficient solver for complex real-world 
+problems that require the formulation of dense and large QUBOs. In this context, we define 
+"Quantum Advantage" as the ability of a quantum-enhanced solver to achieve high accuracy and 
+significantly faster problem-solving time compared to the classical solvers for large-scale 
+optimization problems. Our findings suggest that leveraging quantum resources, particularly in 
+hybrid configurations, can provide a computational advantage over classical approaches. Besides, 
+as the current state of HQA demonstrates, we expect QA will have much higher accuracy and 

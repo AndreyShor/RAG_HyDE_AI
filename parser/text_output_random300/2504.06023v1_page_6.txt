@@ -1,0 +1,123 @@
+6
+Although the three effective interactions share properties
+(i)-(vi), their underlying basic interactions—1/r, waa(r) and
+wcd(r)—differ fundamentally. Notably, waa(r) depends on
+the system’s periodicity through the parameter rs, whereas the
+bare Coulomb interaction and wcd(r) do not. Consequently,
+the bulk potential described by νaa(r, L) depends not only on
+the configuration of the surrounding charges but also on the
+setup of the primary cell. In contrast, the following prop-
+erty of bulk invariance applies exclusively to νe3dtf(r, L) and
+νcd(r, L).
+(vii) Bulk Invariance. In the left panel of Fig. 1 (P = 1), if
+all the charges within the crystal collectively act as the source
+subject to an extended periodicity of 3L, the potential at the
+target point remains unchanged, provided the basic interaction
+is L-independent,
+ν(r, L) = ν(r, 3L) +
+1
+X
+n̸=0
+[ν(r + nL, 3L) −ν(nL, 3L)] .
+(31)
+This invariance holds even when generalized to arbitrary pri-
+mary cells with variations in shape, size, or both.
+Conversely, defining r = sL reveals that both 1/(sL) and
+waa(sL) are inversely proportional to L for the fixed dimen-
+sionless parameter s, whereas wcd(sL) is not. As a conse-
+quence, the following property of scaling behavior applies ex-
+clusively to νe3dtf(r, L) and νaa(r, L).
+(viii) Scaling Behavior. For any fixed dimensionless vector
+s, ν(sL, L) scales as 1/L, yielding an identity of the deriva-
+tive:
+∂ν(sL, L)
+∂L
+
+s
+= −ν(sL, L)
+L
+.
+(32)
+This scaling behavior underpins the classical result that the
+pressure of a Coulomb system is uniquely determined by its
+potential energy—a relation known since the 19th century
+[10].
+In the field of molecular dynamics simulations, this
+energy-pressure relation often serves as a validation criterion
+for the convergence of the Ewald summation (e.g.[43, 44]).
+Eq. (32) establishes critical criteria for effective interactions
+to preserve the energy-pressure relation, as detailed in Sec-
+tion V.
+IV.
+ELECTROSTATIC POTENTIALS AND ENERGIES
+The
+effective
+interaction
+ν(r, L)
+corresponds
+to
+νe3dtf(r, L) for the Coulomb interaction,
+νaa(r, L) for
+the angular-averaged interaction truncated at the L-dependent
+distance rs, and νcd(r, L) for some modified Coulomb
+interaction truncated at the fixed cutoff rc, respectively. It
+represents the bulk electric potential produced by a unit
+charge under PBC, expressed in a unified manner. Under this
+unified framework, a point charge q, acting as the source,
+generates an electric potential qν(r, L) at the displacement r,
+analogous to the conventional electric potential q/r generated
+under the open boundary condition.
+This analysis extends
+naturally to any N-particle system. When focusing on the
+position of the i-th particle ri, the remaining N −1 charges
+collectively act as the source, generating an electric potential
+at ri:
+ϕpp(i) =
+N
+X
+j=1,j̸=i
+qjν(ri −rj, L).
+(33)
+For
+charge-neutral
+systems
+satisfying
+the
+constraint,
+PN
+j=1 qj = 0, the neutralizing charge in any replica must
+equal qi, since it is negative to the sum of the N −1 charges:
+−
+N
+X
+j=1,j̸=i
+qj = qi.
+(34)
+As shown in the top panel of Fig. 3, this constraint ensures that
+all replicas remain identical to the original N-particle system
+regardless of which particle is focused. Consequently, ϕpp(i)
+(for any i = 1, 2, · · · , N) fully accounts for interactions with
+replicas of the entire N-particle system.
+FIG. 3.
+Primary cells (solid squares) and their replicas (dashed
+squares) for a system composed of pure point charges (top) and a sys-
+tem composed of both point charges and a charge distribution (bot-
+tom). The target point is located either at the position of a point
+charge or at an infinitesimally small region (bottom right) of the
+charge continuum. The corresponding source is always the collec-
+tion of the remaining charges. As long as the system is electrically
+neutral, the replica remains identical to the system, regardless of the
+target point. See Eqs. (33), (35) and (37).
+If the system includes an extra charge continuum treated as
+a collection of infinitely many point charges, each contribut-
+ing an infinitesimal charge element ρ(r)dr at r, the total elec-
+tric potential experienced by the i-th point charge becomes
+ϕp(i) = ϕpp(i) + ϕpc(ri),
+(35)
+where ϕpc(r) is the electric potential at r produced solely by
+the charge distribution,
+ϕpc(r) =
+Z
+V
+dr′ ρ(r′)ν(r −r′, L).
+(36)

@@ -1,0 +1,23 @@
+11 
+ 
+Fig. 5 Examples of noise calculation. (a) A waveform of detected blood flow changes, where red and light blue 
+circles indicate the peak and trough of one cycle. (b) Scaled SPAD ACF and the corresponding fitted single-
+exponential decay curves at the peak and trough. (c) The difference between the scaled SPAD ACF and the fitted 
+single-exponential decay function at the peak and trough. (d) The standard deviation was calculated over 1000 
+frames across five tests, we minified and magnified the original 𝜎𝜎 to get three levels of noise added to the clean 
+dataset. 
+3.2 CBFi waveform recovery on simulated data 
+In this section, we firstly visualized the performance of the proposed DL model in CBFi waveform 
+recovery as well as its ability in isolating SBFi variations. Fig. 6 presents the recovered CBFi 
+waveform from the simulated dataset of the four-layer slab head model. The results indicate that 
+while the DL model effectively reconstructs the CBFi waveform, it tends to underestimate absolute 
+CBFi values. This underestimation arises from the two-layer analytical model’s bias, where the 
+scalp and skull are grouped into a single extracerebral layer. Since blood flow in the skull is 
+typically minimal, this grouping leads to a downward bias in CBFi estimation22,38. The results 
+presented in Fig. 6 align with the two-layer analytical model-induced bias, suggesting that our 
+model has learned the same characteristics of the analytical model. As the simulated SBFi was 
+programmed to increase linearly (from 1×10-6 to 2×10-6 mm2/s), the recovered CBFi waveform 
+also exhibits a slight upward shift with increasing sample index (time). This suggests that the 
+recovered CBFi remains partially influenced by blood flow changes in the shallow layers (i.e., not 
+perfectly separating scalp influence). The quantitative analysis of CBFi sensitivity to both CBFi 
+and SBFi changes is provided in Sections 3.3 and 3.4. 

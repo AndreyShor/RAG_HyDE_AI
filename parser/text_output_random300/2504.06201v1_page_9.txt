@@ -1,0 +1,50 @@
+ 
+9 
+For example, a benchmark problem instance (G10) with 800 nodes and 19,176 edges has a density 
+of 6%, calculated as: density = 19,176/319,600 = 0.06. The density of Max-Cut problems can be 
+adjusted by changing the number of edges, with typical instances having densities ranging from 
+0.02% to 6% (Fig. S1, Table S2). In contrast, real-world problems feature fully connected 
+configurations, corresponding to a density of 100%. QUBOs for this benchmarking study have 
+dense matrices fully filled with real-number elements in the upper triangular part (i.e., fully 
+connected graph nodes, Fig. S2). This configuration aims to approximate real-world optimization 
+problems, which usually requires a dense QUBO matrix4,28. 
+ 
+Performance Metrics: Relative Accuracy and Computational Time 
+Relative Accuracy 
+For small-scale problems, brute-force search guarantees the identification of the global optimum 
+by evaluating all possible solutions. However, this approach becomes infeasible for large-scale 
+problems due to the exponential growth of the search space. The IP solver, such as Gurobi, utilizes 
+the branch-and-bound method to efficiently explore the solution space and prove global optimality 
+within an optimality gap. However, due to computational limitations or time constraints, IP may 
+struggle to find the global optimum for large-scale problems. To address this challenge in our 
+benchmarking study, we employ a ‘Relative Accuracy’ metric to compare the relative performance 
+of different solvers. Relative accuracy is defined as the ratio of a solver’s objective value to the 
+best objective found across all solvers: 
+ 
+ 
+Relative Accuracy = Solution./0123 / Solution42.5 
+(5) 
+ 
+This metric provides a way to evaluate the solution quality when the global optimum cannot be 
+definitively found or proven for large-scale problem instances. Note that the best solution is the 
+lowest value among the solutions obtained from all solvers since the solvers are designed to find 
+the lowest energy state (generally negative values for the QUBOs used in this study). The relative 
+accuracies of the solvers are plotted as a function of problem sizes. In Fig. 1, the relative accuracy 
+represents the average value calculated from three different QUBOs that represent material 
+optimization, and in Fig. 2, it represents the average from four different QUBOs with varying 
+standard deviations for each problem size (ranging from 120 to 10,000). Error bars on the plot 
+represent the standard deviation of accuracies calculated from the four different QUBOs for each 
+problem size, relative to the average values. By definition, the relative accuracy is 1.0 when the 
+solver finds a solution with the best-known objective function value (equation 5). 
+ 
+Computational Time 
+Computational time is another important factor in determining the solvers’ performance. 
+Combinatorial optimization problems are considered NP-hard, so increasing problem sizes can 
+lead to an explosion of search space, posing challenges in optimization processes. We measure the 
+computational time dedicated solely to solving given problems, excluding problem reading time, 
+queue time, or communication time between the local computer and quantum annealer. This is 
+consistent with other benchmarking studies17,18. For problems solved on D-Wave systems' QPU 
+for QA, the execution time includes programming and sampling times (anneal, readout, and delay 
+time). QPU access time is calculated for all of them after programmed anneal-read cycles, 
+corresponding to the time charged to users in their allocations, which is used as the computational 
+time for QA and HQA. Classical solvers (SA, SD, TS, and PT-ICM) run on a workstation (AMD 

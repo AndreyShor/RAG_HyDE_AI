@@ -1,0 +1,47 @@
+2.3
+Numerical Solution of the Eye2Heart Closed-Loop Model
+The Eye2Heart mathematical model was implemented in MATLAB and solved using the stiff solver ODE15s [31], a
+variable-step, variable-order solver designed to efficiently solve stiff ordinary differential equations (ODEs). ODE15s
+was chosen to solve the system of ODEs due to its ability to efficiently handle stiffness, ensuring stable and accurate
+numerical solutions. The solver was configured with a relative tolerance of 10−13 and an absolute tolerance 10−5,
+ensuring high numerical precision. A fixed time step of 0.001 s was used throughout the simulations. To minimize
+numerical artifacts, transient effects at the beginning of the simulation were discarded.
+3
+Simulation results of the Eye2Heart model
+3.1
+Model validation
+The model’s cardiovascular component is validated through comparison with well-established physiological indica-
+tors. The following key parameters are computed and contrasted with clinical literature:
+• End-Diastolic Volume (EDV): Maximum ventricular volume during the cardiac cycle.
+• End-Systolic Volume (ESV): Minimum ventricular volume during the cardiac cycle.
+• Stroke Volume (SV): S V = EDV −ES V, representing the amount of blood ejected per beat.
+• Cardiac Output (CO): CO = HR × S V
+1000, measuring total blood flow per minute, where HR is heart rate.
+• Ejection Fraction (EF): EF = 100 × S V
+EDV , quantifying ventricular efficiency as the percentage of blood ejected
+during each beat.
+• End-Systolic Elastance (Ees): slope of the end-systolic pressure-volume relationship.
+• Arterial Elastance (Ea): estimate of aortic input impedance.
+• Central Systolic and Diastolic Pressures (SP/DP).
+• Right Atrial Pressure (Pra).
+Table 3 presents a comparison between model predictions and clinical reference values, considering these quantitative
+indicators.
+The model predictions for key cardiovascular biomarkers,
+including ventricular volumes, stroke volume, cardiac
+output, and ejection fraction, align well with reported clinical values. Notably, EDV and ESV for both left and right
+ventricles fall within the expected clinical ranges, with only slight underestimations compared to some references.
+This discrepancy may be attributed to model simplifications in ventricular compliance or assumptions on pressure-
+volume relationships.
+SV is well captured, remaining within the accepted physiological range, reinforcing the model’s ability to replicate
+fundamental cardiac dynamics. Similarly, the predicted CO falls within the expected 4−8 L/min range, demonstrating
+the model’s ability to effectively integrate heart rate and stroke volume.
+The EF, a key indicator of ventricular function, is slightly lower than some clinical values but remains within a
+reasonable physiological range. This could suggest that the model, while accurately capturing systolic and diastolic
+phases, may benefit from refinements in contractility representation or vascular resistance calibration. Nonetheless,
+the overall agreement with literature values indicates a robust framework for modeling cardiac function.
+In terms of Ees, the model predicts a value of of 1.03 mmHg/ml for the left ventricle and 0.32 mmHg/ml for the
+right ventricle. These values are slightly higher than those reported in [32] and [26], respectively. This discrepancy
+may stem from the model’s simplified assumptions regarding the pressure-volume relationship and elastance dynam-
+ics. Furthermore, the model does not account for individual variability, particularly for the left ventricle, which could
+contribute to the observed differences.
+8

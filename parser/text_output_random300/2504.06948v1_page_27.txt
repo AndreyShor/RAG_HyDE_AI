@@ -1,0 +1,154 @@
+27
+Here, we use the fact that
+β1 · · · βk−i+1
+β1 · · · βk−j+1
+≤β1 · · · βk−i+1βk−i+2 · · · βs+j−i
+β1 · · · βk−j+1βk−j+2 · · · βs
+= β1 · · · βs+j−i
+β1 · · · βs
+,
+which follows from the monotonicity of the βi’s. Therefore, we obtain the inequality
+f
+W −1
+ij
+ ≤
+Pk
+s=k−j+1 β1 · · · βs+j−iλs+j−i
+Dkk(−λ)
+≤1.
+• If i ≤j, the first term eT
+i B−1ej = βk−j+2 · · · βk−i+1λj−i, and thus we have
+f
+W −1
+ij
+= βk−j+2 · · · βk−i+1λj−i −β1 · · · βk−i+1
+β1 · · · βk−j+1
+Pk
+s=k−j+1 β1 · · · βsλs+j−i
+Dkk(−λ)
+= β1 · · · βk−i+1
+β1 · · · βk−j+1
+·
+ 
+λj−i −
+Pk
+s=k−j+1 β1 · · · βsλs+j−i
+Dkk(−λ)
+!
+= β1 · · · βk−i+1
+β1 · · · βk−j+1
+·
+Pk
+s=0 β1 · · · βsλs+j−i −Pk
+s=k−j+1 β1 · · · βsλs+j−i
+Dkk(−λ)
+= β1 · · · βk−i+1
+β1 · · · βk−j+1
+·
+Pk−j
+s=0 β1 · · · βsλs+j−i
+Dkk(−λ)
+.
+Here,
+β1 · · · βk−i+1
+β1 · · · βk−j+1
+= β1 · · · βs+j−iβs+j−i+1 · · · βk−i+1
+β1 · · · βsβs+1 · · · βk−j+1
+≤β1 · · · βs+j−i
+β1 · · · βs
+,
+which follows from the monotonicity of the βi’s. Therefore, we get
+f
+W −1
+ij
+ ≤
+Pk−j
+s=0 β1 · · · βs+j−iλs+j−i
+Dkk(−λ)
+≤1.
+Moreover, it is easy to verify that |f
+W −1
+ij | ≤1 for i = k + 1 and j ≤k. Next, we consider an upper bound for
+the summation
+k
+X
+j=1
+k+1
+X
+i=1
+f
+W −1
+ij
+ .
+(A3)
+From the previous discussion, we know that f
+W −1
+ij
+< 0 if and only if i > j, and we also have 1T f
+W −1ej =
+eT
+k+1 f
+W f
+W −1ej = 0 for all j = 1, . . . , k. This implies that
+k+1
+X
+i=1
+f
+W −1
+ij
+ = 2
+j
+X
+i=1
+f
+W −1
+ij
+=
+2
+Dkk(−λ)
+j
+X
+i=1
+k−j
+X
+s=0
+β1 · · · βk−i+1 · β1 · · · βs
+β1 · · · βk−j+1
+λs+j−i
+=
+2
+Dkk(−λ)
+j−1
+X
+l=0
+k−j
+X
+s=0
+β1 · · · βk−j+l+1 · β1 · · · βs
+β1 · · · βk−j+1
+λs+l
+=
+2
+Dkk(−λ)
+j−1
+X
+l=0
+k−j
+X
+s=0
+βs+l+1 · · · βk−j+l+1
+βs+1 · · · βk−j+1
+β1 · · · βs+lλs+l
+=
+2
+Dkk(−λ)
+k−1
+X
+r=0
+min{j−1,r}
+X
+l=max{0,r+j−k}
+βr+1 · · · βk−j+l+1
+βr−l+1 · · · βk−j+1
+β1 · · · βrλr,
+(A4)

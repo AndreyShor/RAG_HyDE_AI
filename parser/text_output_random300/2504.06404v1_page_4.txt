@@ -1,0 +1,129 @@
+Lateral: 
+ 
+𝑞) =
+⎝
+⎜⎜⎜
+⎛
+−sin(𝜓)) ⋅𝑓#,2
+⋮
+−sin(𝜓)) ⋅𝑓0,2
+cos(𝜓)) ⋅𝑓#,3
+⋮
+cos(𝜓)) ⋅𝑓0,3 ⎠
+⎟⎟⎟
+⎞
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+𝑄# = & 𝑄+     𝑏# = & 𝑏+. 
+ 
+    The same could be done for the derivatives by using the basis 
+function derivatives. In (Fig. 3) we can see the effect of a 
+longitudinal position jump, if we weigh the longitudinal error 
+low. Also as a human driver we can guess the lateral position of 
+a car that is further away better than its distance, because we can 
+compare it to lane lines and other structures. 
+ 
+Fig. 3. Top left birds eye plot, top right velocity over time, bottom left x-
+position over time, bottom right y-position over time. In orange we added points 
+normally. In green the longitudinal error gets a 1000 times lower weight than 
+the lateral error. Together with the regularization (see below) that results in 
+only a small reaction to the longitudinal  jump of the blue input data. We can 
+also see the kinematic consistency in the velocity plot. The orange model has to 
+accelerate in order to move towards the jumped position.  
+C. Considering heading information 
+A vehicle has typically an orientation and can only move into 
+this heading direction (Some deviations are possible especially 
+in drifting situations). In order to get better results we make use 
+of this information and prefer velocities that point into heading 
+direction. 
+Above it was mentioned that the optimization problem 
+would become nonlinear if we estimate the heading at the same 
+time as the cartesian states. However, it is still possible to 
+consider heading measurements that come from any source as 
+long as we keep the nonlinearity static. To do that we only 
+consider heading measurements for the x and y estimation, but 
+do not estimate the heading itself at the same time. We start with 
+the following equation 
+𝑦̇
+𝑥̇ = tan(ψ) →0 = (𝑥̇ ⋅tan(𝜓) −𝑦̇) 
+𝑎𝑙𝑡𝑒𝑟𝑛𝑎𝑡𝑖𝑣𝑙𝑦: 0 = (−𝑥̇ + 𝑦̇ ⋅cot(𝜓)). 
+(15) 
+The resulting error function looks like (16) . For each point 
+either the tan or cot is chosen depending on which function 
+provides the lower absolute value to avoid the singularities of 
+the functions. By plugin in the formulars of 𝑥̇(𝑡) and 𝑦̇(𝑡) from 
+(1) and summing over all measurements we get 
+𝑒,-./+01 = 1
+2 & 𝑐#h𝑥̇ ⋅tanh𝜓#i −𝑦̇i
+2
+&
+#
+ 
+𝑒= 1
+2 & 𝑐# jtanh𝜓#i ⋅& 𝑤!,+ ⋅𝑓!,3̇ (𝑡#)
+_kkkk`kkkka
+!̇(65)
+−& 𝑤$,+ ⋅𝑓̇$,+(𝑡#)
+_kkkk`kkkka
+$̇(65)
+l
+2
+.
+&
+#
+ 
+(16) 
+Using the same procedure as above we get the following 
+matrices 
+𝑞) =
+⎝
+⎜
+⎜
+⎜
+⎛
+tan7𝜓!8 𝑓̇2,#
+⋮
+tan7𝜓!8 𝑓̇2,0
+−𝑓̇3,#
+⋮
+−𝑓̇3,0
+⎠
+⎟
+⎟
+⎟
+⎞
+  𝑜𝑟  𝑞) =
+⎝
+⎜
+⎜
+⎜
+⎛
+−𝑓̇2,#
+⋮
+−𝑓̇2,0
+cot7𝜓!8 𝑓̇3,#
+⋮
+cot7𝜓!8 𝑓̇3,0⎠
+⎟
+⎟
+⎟
+⎞
+ 𝑄) = 𝑐) ⋅𝑞) ⋅𝑞)
+4    𝑏) = 0. 
+(17) 
+In (Fig. 4) we can see position input data from a circle that 
+was overlayed with a sinus wave. By adding the correct heading 
+we can reconstruct the circle itself. By knowing the road heading 
+we can correct movements that do not follow the road geometry 
+ 
+Fig. 4. For this plot we are trying to fit a circle. However the measurment data 
+of the position x and y was corrupted with a sinus wave. The sinus was chosen 
+instead of high frequent white noise to mimic a different kind of error. By 
+adding the heading from the normal circle with a heigh weight the fit follows 
+the origninal circle despite getting the position measurements from the 
+corrupted  circle. 

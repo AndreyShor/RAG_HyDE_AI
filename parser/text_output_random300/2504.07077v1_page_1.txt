@@ -1,0 +1,90 @@
+Machine Learning Approach towards Quantum Error Mitigation for
+Accurate Molecular Energetics
+Srushti Patil,1, a) Dibyendu Mondal,2, a) and Rahul Maitra2, 3, b)
+1)NNF Quantum Computing Programme,
+Niels Bohr Institute, University of Copenhagen, Jagtvej
+155 A, Copenhagen N DK, 2200
+Copenhagen, Denmark
+2)Department of Chemistry,
+Indian Institute of Technology Bombay,
+Powai, Mumbai 400076, India
+3)Centre of Excellence in Quantum Information, Computing, Science & Technology,
+Indian Institute of Technology Bombay,
+Powai, Mumbai 400076, India
+Despite significant efforts, the realization of the hybrid quantum-classical algorithms has predominantly been
+confined to proof-of-principles, mainly due to the hardware noise. With fault-tolerant implementation being
+a long-term goal, going beyond small molecules with existing error mitigation (EM) techniques with current
+noisy intermediate scale quantum (NISQ) devices has been a challenge. That being said, statistical learning
+methods are promising approaches to learning the noise and its subsequent mitigation. We devise a graph
+neural network and regression-based machine learning (ML) architecture for practical realization of EM
+techniques for molecular Hamiltonian without the requirement of the exponential overhead. Given the short
+coherence time of the quantum hardware, the ML model is trained with either ideal or mitigated expectation
+values over a judiciously chosen ensemble of shallow sub-circuits adhering to the native hardware architecture.
+The hardware connectivity network is mapped to a directed graph which encodes the information of the native
+gate noise profile to generate the features for the neural network. The training data is generated on-the-fly
+during ansatz construction thus removing the computational overhead. We demonstrate orders of magnitude
+improvements in predicted energy over a few strongly correlated molecules.
+I.
+INTRODUCTION
+Finding the exact ground state of general many-body
+systems is computationally hard and belongs to classi-
+cally intractable problems1,2. In fact, finding the ground
+state of a k-local Hamiltonian is QMA-complete3. Nev-
+ertheless, with recent advancements in developing Noisy
+Intermediate-Scale Quantum (NISQ) devices4,5, handling
+the exponential scaling of resources has become tractable.
+Even though state-of-the-art quantum computers do not
+offer substantial quantum advantages due to quantum
+decoherence and a limited number of qubits, there has
+been active research in developing quantum algorithms
+and error mitigation techniques to harness the poten-
+tial of quantum computing which might even allow us to
+study emerging phenomena in physics and chemistry.
+Variational Quantum Eigensolver (VQE)6 is a promis-
+ing near-term application to find the ground state energy
+as it is designed to run on noisy machines with low co-
+herence time7. VQE takes the parameterized quantum
+ansatz |Ψ(θ)⟩, and classically optimizes parameters to
+reach the ground state of a given molecular Hamiltonian.
+E(θ) = ⟨Ψ(θ)| ˆH |Ψ(θ)⟩
+(1)
+There has been an extensive study on the choice of ansatz
+|Ψ(θ)⟩8,9. Within the domain of chemistry the unitary
+a)These two authors contributed equally.
+b)Electronic mail: rmaitra@chem.iitb.ac.in
+coupled cluster with singles and doubles (UCCSD)8–10
+ansatz has emerged as a prevalent choice for the trial
+wavefunction where the unitary is expressed as:
+U(θ) = eτ1(θ1)+τ2(θ2);
+τ(θ) = T(θ) −T †(θ)
+(2)
+Here, T(θ) = θa,b,...
+i,j,... a†
+aa†
+b...ajai is the excitation operator
+where i, j, ... are the occupied orbital indices and a, b, ...
+are the virtual orbital indices with respect to reference
+Hartree-Fock (HF) state. In our implementations, we’ve
+reduced excitation operators by focusing solely on the
+dominant ones in the unitary, as detailed in section II A.
+Although VQE has been proven to be resilient to noise
+for smaller quantum systems, inherent noise present in
+the current quantum processors deteriorates the perfor-
+mance of VQE for larger many-body Hamiltonian and
+complex quantum circuits. The sampling complexity of
+the expectation value estimation within VQE scales as
+O( 1
+ϵ2 ) for given precision ϵ, leading to exponential run-
+time and thus preventing it from going beyond proof of
+principles11. The theory of quantum fault tolerance could
+be used to deal with noise in the long run; however, in
+the current NISQ era, focusing on mitigating the noise in-
+stead of eliminating it is practically more realistic. The
+most captivating feature of Quantum Error Mitigation
+(QEM) techniques is their ability to minimize the noise-
+induced distortion in expectation values calculated on
+noisy hardware. Current methods such as Zero Noise Ex-
+trapolation (ZNE)12, Dynamical Decoupling13,14, Prob-
+abilistic Error Cancellation15, etc rely on modifying the
+existing circuit into a logically equivalent circuit but with
+arXiv:2504.07077v1  [quant-ph]  9 Apr 2025

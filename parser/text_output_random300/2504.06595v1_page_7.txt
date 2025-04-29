@@ -1,0 +1,111 @@
+7
+Deflection (Å)
+Head-on particle reflection
+Force (meV/Å)
+Time (ps)
+0.5
+1.0
+0
+1
+2
+3
+2.5
+5.0
+0
+0
+0
+5
+10
+15
+-175.25
+0
+0.1318
+0
+0.0823
+0
+-76.9
+0
+-7.61
+0
+0.008
+0
+a)
+b)
+c)
+d)
+h)
+0.003
+0
+-3.15
+0
+g)
+f)
+e)
+Full EOM
+Time-local
+Time-local, quasistatic
+Time-local, quasistatic, homogeneous
+FIG. 3. Validations of the time-local formalism. We numerically simulated a mobile particle launched towards a framework
+mass, as shown in Fig. 2, with framework properties given in Sec. III. The mobile particle interacts only with its target mass
+via U = U0e−|x|/λ/x with U0 = 14, 000 meV. Panels (a)–(d) show the deflection of the interacting mass, while (e)–(h) show the
+force experienced by the mobile particle. The four columns correspond to different combinations of the potential width λ and
+initial particle speed ˙R0. Each panel includes four curves corresponding to different levels of approximation. We calculated
+“Full” results by solving the equations of motion, Eqs. (2) and (3), for the 50 × 50 × 50 framework and the mobile particle. We
+calculated “Time-local” r by inserting the full-solution r, ˙r, R, and ˙R into the expression on the right-hand side of Eq. (25),
+and calculated the force using “time-local” r and “full-solution” R. For the remaining two solutions, we also used Eq. (25),
+but set ˙r or both r and ˙r on the right-hand side to zero, in quasistatic and homogeneous approximations, respectively. The
+horizontal dashed lines in all the panels show the amplitude of the maximum displacement and force obtained from the “Full”
+solutions.
+for all the results.
+While the deflection of the framework mass is a good
+check for our solutions, the dynamics of the mobile parti-
+cle are more governed by the force exerted by the frame-
+work mass. Therefore, we plotted the force, −U ′(R −r),
+in Fig. 3(e)–(h) calculated from the corresponding de-
+flection in Fig. 3(a)–(d). We see that the difference in
+the force between the full and time-local results is sub-
+stantially smaller than the difference in the deflection. In
+fact, for all but the most pathological case, the difference
+is essentially negligible.
+Although the calculated displacements of our full and
+time-local solutions match well, the time-local equation
+of motion Eq. (16) is not solvable on its own. First of
+all, even in the single-framework case, Eq. (25), there
+are two unknowns: r and ˙r. If we try to circumvent this
+difficulty by solving for ˙r to obtain a differential equation
+of the form ˙r = f(r), this produces a term r/U ′′(r −R)
+which diverges when U ′′ goes to zero. In the more general
+case of Eq. (16), it is impossible to solve for ∇rdU/dt
+because the matrix KLKT is singular, so some further
+simplification is necessary.
+To proceed with our under-defined time-local problem,
+we make use of the fact that the deflection of the frame-
+work mass is rather small, so its velocity must also be
+small:
+˙r →0 on the right-hand side of Eq. (25). Us-
+ing this quasistatic approximation, we calculated the de-
+flection and force for the same parameters as the other
+simulations, with the results shown as yellow curves in
+Fig. 3. We see that this simplification leads to very mi-
+nor changes in the deflection and even smaller ones in the
+force. The main advantage of this simplification is that
+it turns Eq. (25) and, by extension, Eq. (16) into truly
+time-local transcendental equations for r. In the pres-
+ence of thermal motion, this quasistatic approximation
+amounts to substituting ˙r →˙rH.
+Although the quasistatic approximation leads to an im-
+portant simplification, solving the resulting transcenden-
+tal equation can still be numerically costly. Therefore,
+noticing that the magnitude of the deflection is smaller
+than the potential width, we set r →0 on the right-
+hand side of Eq. (25), which is equivalent to replacing
+r →rH on the right-hand side of Eq. (16). The resulting
+solutions with a homogeneous-motion approximation are
+plotted in Fig. 3 as red curves. Comparing the various so-
+lutions, we see that this dramatic simplification does not
+introduce a significant difference to the force experienced
+by the particle.
+Based on the results presented in Fig. 3, we see
+that the numerically tractable time-local, quasistatic,
+homogeneous-motion approximation captures the motion
+of the framework and the force it exerts on the mobile

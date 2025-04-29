@@ -1,0 +1,34 @@
+6
+Figure 4. Examples of CBO for a randomized target Hamiltonian under different types of interactions. Shown is the pulse
+optimization energy errors for 12 agents with non-optimized (blue) and optimized positions (gold). Energy errors stay high
+for the non-optimized positions, whereas several agents for the optimized positions reach low errors. a) Dipole-Dipole energy
+interactions, showing order magnitude lower errors. b) VdW gr-interaction, illustrating faster convergence when full optimiza-
+tion is not possible. c) VdW gg-interaction, showing low errors for qutrit system. For all cases, Nin = 20, Nout = 20.
+Figure 5. Varying of hyperparameters in CBO algorithm. a) pulse energy optimization for varying hyperparameters. b-e)
+position evolution of varying hyperparameters, with color of top right square indicating corresponding pulse evolution in a). b)
+normal hyperparameters of α = 4, σ = 0.1, λ = 0.4. c-e) position evolution for respective adjustment of hyperparameters α, σ
+and λ. Qubits are colorized by index. For all cases, Nin = 20, Nout = 100.
+D.
+Randomized Hamiltonians
+In this section, we illustrate the consistency of our
+method by solving for a fixed Htarg for 20 instances of
+initial configurations.
+We then repeat this for several
+Htarg, each of which constitutes an ‘individual problem’.
+We want to compare the final results with the ran-
+domized initial configurations.
+However, as seen from
+Figs. 2 and 5, the final configuration must always lie in
+the simplex of the originally initialized configurations
+(unless σ ≫λ). Therefore, the final configuration will
+on average have smaller interatomic distances and thus
+create more entanglement.
+Thus, it is not entirely
+fair to compare the random initializations to the final
+contracted configuration.
+For this reason, random configurations that are more
+comparable to the final configurations are desired. Since
+all initial configurations and Htarg considered are drawn
+from the same distributions, we will estimate a probabil-
+ity density function of all interatomic distances between
+the final configurations.

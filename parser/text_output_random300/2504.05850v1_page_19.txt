@@ -1,0 +1,75 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+19
+=
+z = 0
+0
+0
+1
+1
+z
+−1
+1
+Figure 4. Integration over z by appending an edge of weight 1.
+0
+1
+0
+1
+z
+R
+dzdz
+z
+1
+0
+0 ↔z
+z
+1
+0
+∆−1
+z
+1
+0
+ext. edges
+1
+z
+0
+1 ↔z
+1
+z
+0
+∆−1
+1
+z
+0
+ext. edges
+1
+z
+0
+∆−1
+1
+z
+0
+ext. edges
+Figure 5. Example of the graphical reduction of a two-point function in ϕ4 theory. The
+two-point function can be calculated by following the arrows starting from the trivial
+graphical function which is equal to 1. The symbol ∆−1 means appending an edge and
+R
+dzdz is integration over z.
+for three different orders in ϵ where we reached dimension 10 and spin 7 for order ϵ0, dimension 10 and
+spin 5 for order ϵ2, and dimension 8 and spin 4 for order ϵ4.
+9. Integration over z
+There exist three options for the transition from graphical functions to two-point functions and periods.
+Firstly, one can specify the external vertex z to 0, 1, or ∞, which transforms a three-point amplitude
+into a two-point amplitude. This simple method was used to calculate the zigzag periods in [7].
+Secondly, one can integrate over z in integer dimensions using a residue theorem which was developed
+in [17]. In non-integer dimensions, the residue theorem cannot yet be used. A generalization to non-
+integer dimensions needs to control functions with powers of log |z−z| which are not GSVHs because they
+are singular on the entire real axis. A method that handles this difficulty has not yet been developed.
+Thirdly, one can integrate over z by the following practical method. One can add a scalar edge of
+weight −1 between the external vertices 0 and z. Then, one appends a scalar edge of weight 1 to z.
+Finally, setting z = 0 gives the integral of the original graph over z, see Figure 4. This method is fully
+general but more time-consuming than the residue theorem in integer dimension. It seems inefficient
+to calculate a graphical function in the intermediate step only to specialize it to z = 0.
+For scalar
+graphs, however, integration over z was typically not the bottleneck of the calculations. The situation is
+somewhat worse with non-zero spin (depending an the size of |α|), so that ultimately it may be useful to
+generalize the second method that uses the residue theorem.

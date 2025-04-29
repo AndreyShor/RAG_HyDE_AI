@@ -1,0 +1,159 @@
+9
+Φ =
+X
+i
+ϕi +
+X
+j
+π
+2
+,
+(4)
+where ϕi is the phase shift for each propagation segment (ϕi =
+(2π/λ) · lprop), and j is the number of couplings in the path
+(each coupling from waveguide to ring or ring to waveguide
+contributing a phase of π/2). We would like to note that the
+π/2 phase shift is strictly true for a lossless beam splitter, but
+works well in practice for modelling our devices.
+The total transmission power for each path is given by:
+A = Ri−2(1 −R)2 Y
+j
+Aj,
+(5)
+where Aj is the transmission power for jth propagation
+segment, and i denotes the total number of port interactions in
+the path. We include the multiplicative factor R−2(1−R)2 to
+correct for the signal’s injection at the L-port and extraction
+at the T-port, which correspond to signal transmission, rather
+than reflection. This compensates for the recursive pathfinding
+algorithm’s implicit assumption that all port interactions are
+reflective, ensuring that the computed transmission power
+accurately models physical launch and detection conditions.
+Each path, therefore, has an associated path length from
+which one can estimate the signal arrival time and the accu-
+mulated phase and propagation loss. If multiple paths converge
+at time T, within the system timing uncertainty (± 5 ns), their
+phasors are summed to account for multi-path interference:
+A(T) =
+
+X
+m∈P (T )
+p
+PmejΦm
+
+2
+,
+(6)
+where P(T) denotes all paths whose arrival time is T, Pm is
+the signal power, and Φm is the net phase for path m.
+Finally, the contributions from all paths are summed to
+obtain the total time-domain response:
+S21(t) =
+X
+k
+Akδ(t −tk),
+(7)
+where tk is the time delay associated with path k.
+To validate the model against measured time-domain trans-
+mission data, we time-gate the signal from the launch port
+to the drop port to generate the template for the temporal
+pulse which accounts for the spectral shaping induced by the
+transmit and receive IDTs and the complex phase shifts at
+the waveguide-taper interface. The convolution of the impulse
+response from Eq.7 with the isolated first arriving pulse (the
+direct transit, 1d) provides a model of the full temporal
+transmission characteristics, as noted in the main text. The
+comparison of the measured and simulated temporal responses
+demonstrates the utility of the model in capturing the com-
+plicated multipath propagation effects observed in phononic
+ring resonators, namely the temporal distribution of arriving
+acoustic pulses and the identification of interference patterns
+resulting from multiple propagation paths.
+Table I lists the extracted model parameters for the repre-
+sentative point coupled and pulley coupled devices discussed
+in the main text. We can clearly see that the model shows
+Fit Parameter
+Pulley-coupled Ring
+Point-coupled Ring
+a
+0.679178
+0.818398
+r1
+0.683769
+0.950522
+r2
+-
+0.884144
+leff
+324.1 µm
+203.6 µm
+lidt
+10 µm
+100 µm
+R
+0.21
+0.08∗
+Device Parameter
+Roundtrip Length
+1136 µm
+741.77 µm
+lwg
+269 µm
+176.6 µm
+vg
+3370 m s−1
+3535 m s−1
+∗For D-Port measurement. For T-Port R ≈0.37
+TABLE I
+MODEL PARAMETERS FOR PULLEY-COUPLED RINGS (FIG.5(B) AND
+POINT-COUPLED RINGS IN FIG.6
+that the rings approach critical coupling (r≈a) in the pulley
+coupled rings from the undercoupled regime (r > a) in
+the point-coupled devices, as expected. The fitting procedure
+makes some simplifications, and there are two free parameters,
+namely lidt and lwvg, that are used to align the measured and
+model temporal response. But once they are fixed, the rest of
+the model parameters can be extracted analytically and they
+give very good agreement with the measured data, as shown
+in Fig.6 for the drop port. As noted in the main text, we
+currently don’t understand the reasons behind the large device-
+to-device variation in R beyond fabrication imperfections, and
+especially how it compares to what we can calculate using
+FEM simulations [1].
+More broadly, this computational methodology successfully
+captures the complex temporal dynamics of phononic ring
+resonators, as evidenced by Fig.6 fitting the drop port data.
+By leveraging graph-based pathfinding, phase accumulation,
+and attenuation modelling, this approach provides a powerful
+tool for analysing multi-path propagation effects in phononic
+circuits.
+REFERENCES
+[1] K. C Balram, “Piezoelectric phononic integrated circuits,” Applied
+Physics Letters, vol. 125, no. 20, 2024.
+[2] W. Fu, Z. Shen, Y. Xu, C.-L. Zou, R. Cheng, X. Han, and H. X. Tang,
+“Phononic integrated circuitry and spin–orbit interaction of phonons,”
+Nature communications, vol. 10, no. 1, p. 2743, 2019.
+[3] F. M. Mayor, W. Jiang, C. J. Sarabalis, T. P. McKenna, J. D. Witmer, and
+A. H. Safavi-Naeini, “Gigahertz phononic integrated circuits on thin-film
+lithium niobate on sapphire,” Physical Review Applied, vol. 15, no. 1,
+p. 014039, 2021.
+[4] M. Bicer, S. Valle, J. Brown, M. Kuball, and K. C Balram, “Gallium
+nitride phononic integrated circuits platform for GHz frequency acoustic
+wave devices,” Applied Physics Letters, vol. 120, no. 24, 2022.
+[5] L. Chrostowski and M. Hochberg, Silicon photonics design: from devices
+to systems.
+Cambridge University Press, 2015.
+[6] M. Bicer and K. C. Balram, “Low-loss GHz frequency phononic inte-
+grated circuits in Gallium Nitride for compact radio frequency acoustic
+wave devices,” IEEE Transactions on Ultrasonics, Ferroelectrics, and
+Frequency Control, vol. 71, no. 1, pp. 172–181, 2023.
+[7] B. E. Little, S. T. Chu, H. A. Haus, J. Foresi, and J.-P. Laine, “Microring
+resonator channel dropping filters,” Journal of lightwave technology,
+vol. 15, no. 6, pp. 998–1005, 1997.
+[8] D. Morgan, Surface acoustic wave filters: With applications to electronic
+communications and signal processing.
+Academic Press, 2010.
+[9] L. Zheng, L. Shao, M. Loncar, and K. Lai, “Imaging acoustic waves
+by microwave microscopy: Microwave impedance microscopy for visu-
+alizing gigahertz acoustic waves,” IEEE Microwave Magazine, vol. 21,
+no. 10, pp. 60–71, 2020.

@@ -1,0 +1,43 @@
+matching segment of the virtual ship-track [23]. The age of the virtual ship-track seg-
+ment is the time difference between the release of virtual emission parcel and MODIS
+observation time.
+Analyze cloud adjustments
+Similar to Yuan et al. [7], we automatically find background pixels for each ship-
+track segment. An example is shown in Figure 1. We consider the impact of overlap
+between high and low clouds on the true low cloud fraction [7]. Only low cloud pixels
+are included in calculating cloud properties. Nd is calculated using cloud retrievals of
+Reff and COD [51]. For each segment, we calculate cloud changes using the means
+of ship-track and background pixels.
+Distributions of ∆L are known to be not normal and have many outliers [8]. ∆Nd
+can be small in some of the segments. When calculating
+dln L
+dln Nd , the combination of
+large ∆L and small ∆Nd can introduce outlier values. We try to remove top 5%
+absolute values from calculated
+dln L
+dln Nd or use kernel density estimation method to
+remove outliers before calculate the mean
+dln L
+dln Nd . We also try to adopt the method
+used in previous studies (e.g., [8]) where we calculate mean ∆L and ∆Nd for a set of
+samples and then determine dln L
+dln Nd ≈dln L
+dln Nd . Averaging ∆L first makes it less prone
+to samples that have anomalously large values of ∆L
+∆Nd .
+Data availability
+MODIS data are freely available here: https://www.earthdata.nasa.gov/centers/laads-
+daac.
+MERRA-2
+reanalysis
+data
+are
+also
+freely
+availalbe
+at
+https://gmao.gsfc.nasa.gov/reanalysis/merra-2/. The HYSPLIT model is available at
+https://www.ready.noaa.gov/HYSPLIT.php.
+Fig. S1 Similar to Figure 1, but for another time. The example is taken on Aug 19, 2016 at 2145
+UTC time.
+12

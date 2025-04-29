@@ -1,0 +1,25 @@
+To evaluate the importance of the Euclidean normalization, we trained the model without this physics 
+constraint. Figure VI provides a visual comparison of phase component distributions for the neural 
+networks with and without Euclidean normalization, where the grey dashed circle indicates 𝑠𝑖𝑛2𝜑+
+𝑐𝑜𝑠2𝜑= 1. Figure VI-a shows that a large number of predicted component values (orange dots) 
+deviated from the unit circle. These deviations indicate physically impossible phase values that violate 
+the mathematical constraint governing the cosine-sine relationship. These predictions could introduce 
+artifacts in practical applications. In contrast, Figure VI-b displays the phase components from the 
+physics-constrained model with Euclidean normalization. The predicted sine-cosine components are 
+tightly constrained to the unit circle due to the Euclidean normalization layer. This embedded physical 
+knowledge in the network architecture reduces the aspects the model must learn solely from data, 
+and thus leads to better generalization with less data. 
+ 
+ 
+Figure VI: Comparison of phase component distributions for neural networks: (a) without and (b) with Euclidean 
+normalization. Dashed circle indicates 𝑠𝑖𝑛2𝜑+ 𝑐𝑜𝑠2𝜑= 1. 
+ 
+ 
+A key strength of this network is its ability to achieve accurate prediction while preserving physical 
+interpretability. Unlike black-box models, the physics-constrained network ensures that the network’s 
+predictions respect fundamental electromagnetic principles like energy conservation and periodic 
+nature of phase. By incorporating physical constraints that narrow the solution space to physically 
+meaningful predictions, the model effectively generalizes small, imbalanced datasets.  
+4. Conclusions 
+We have presented a physics-constrained neural network that effectively predicts the amplitude and 
+phase of transmitted light from metasurface, demonstrating strong performance across datasets of 

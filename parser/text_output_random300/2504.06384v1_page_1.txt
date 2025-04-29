@@ -1,0 +1,97 @@
+arXiv:2504.06384v1  [quant-ph]  8 Apr 2025
+Continuous-Variable Quantum Key Distribution with Composable Security and Tight
+Error Correction Bound for Constrained Devices
+Panagiotis Papanastasiou1,3, Carlo Ottaviani2,3, Stefano Pirandola2, Poonam Yadav2, and Marco Lucamarini1,3
+1School of Physics, Engineering & Technology, University of York, YO10 5FT York, U.K.
+2Department of Computer Science, University of York, YO10 5GH York, U.K. and
+3York Centre for Quantum Technologies, University of York, YO10 5FT York, U.K.
+Constrained devices, such as smart sensors, wearable devices, and Internet of Things nodes, are
+increasingly prevalent in society and rely on secure communications to function properly. These
+devices often operate autonomously, exchanging sensitive data or commands over short distances,
+such as within a room, house, or warehouse.
+In this context, continuous-variable quantum key
+distribution (CV-QKD) oﬀers the highest secure key rate and the greatest versatility for integration
+into existing infrastructure.
+A key challenge in this setting, where devices have limited storage
+and processing capacity, is obtaining a realistic and tight estimate of the CV-QKD secure key
+rate within a composable security framework, with error correction (EC) consuming most of the
+storage and computational power. To address this, we focus on low-density parity-check (LDPC)
+codes with non-binary alphabets, which optimise mutual information and are particularly suited for
+short-distance communications. We develop a security framework to derive ﬁnite-size secret keys
+near the optimal EC leakage limit and model the related memory requirements for the encoding
+process in one-way error correction. This analysis facilitates the practical deployment of CV-QKD,
+particularly in constrained devices with limited storage and computational resources.
+I.
+INTRODUCTION
+Quantum key distribution (QKD) [1] allows two parties
+to establish a common secret key, which can later be used
+in symmetric cryptographic primitives. Its security re-
+lies on the fundamental principles of quantum physics
+rather than computational complexity conjectures [2–
+5] and constitutes, along with post-quantum cryptogra-
+phy [6], the leading candidate for countering quantum
+threats, such as an eavesdropper equipped with a quan-
+tum computer.
+Initially, QKD was developed for discrete-variable
+(DV) systems, which use discrete degrees of freedom,
+such as the polarization of the electromagnetic ﬁeld.
+Later, protocols based on continuous degrees of free-
+dom, such as the quadratures of the electromagnetic ﬁeld,
+i.e., continuous-variable (CV) systems [7], emerged, of-
+fering high performance in the asymptotic regime and
+over short distances, as well as compatibility with ex-
+isting technological infrastructure. Recent studies have
+advanced both the security [8, 9] and the experimental
+performance [10, 11] of CV-QKD, bringing it close to the
+repeaterless PLOB bound [12] and making it comparable
+to DV-QKD.
+The most common and earliest CV-QKD protocols em-
+ploy Gaussian modulation of coherent states (GMCS),
+utilising homodyne detection [13] or heterodyne detec-
+tion [14] in direct or reverse reconciliation (RR) [15].
+CV-QKD has also been extended to protocols using dif-
+ferent frequencies (thermal states), two-way communi-
+cation [16–20], and network settings [21–32]. There also
+have been considered schemes with post-selection [33–35]
+and discrete modulation [37–41].
+In this study, we focus on the GMCS protocol, which is
+particularly eﬀective in short- to moderate-loss regimes,
+and precisely quantify the demands of postprocessing,
+especially error correction (EC), which can signiﬁcantly
+impact the protocol’s performance [42–49]. More speciﬁ-
+cally, we adopt the analysis from Ref. [9], which imposes
+strict bounds on the secret key length, to evaluate the
+protocol’s performance under composable security with
+ﬁnite-size eﬀects.
+Furthermore, we adapt the tight one-way EC bound
+from Ref. [50] to non-binary low-density parity-check
+(LDPC) codes [51–53] to compute secret key rates with
+near-optimal performance.
+This allows us to estimate
+the storage requirements of the encoder during EC. Al-
+though this represents only half of the complete EC pro-
+cedure, it provides valuable insight in scenarios where
+there is a strong asymmetry in computational resources
+between the CV-QKD transmitter and receiver. Speciﬁ-
+cally, the transmitter, which performs the encoding, can
+be lightweight and agile, while the receiver, responsi-
+ble for decoding, may be bulkier and better suited for
+computationally intensive tasks. This scenario arises in
+networks of small sensors transmitting to a central pro-
+cessing unit, as seen in smart home sensors, wearable
+devices, IoT systems [54–59], or drones [60]. These de-
+vices play a crucial role in modern society, supporting
+the technological infrastructure by enabling automation,
+real-time monitoring, and critical decision making. As
+they become increasingly integrated into daily life, cyber
+threats targeting them pose signiﬁcant risks to public
+safety. We suggest feasible cases where CV-QKD can be
+used to safeguard from these threats.
+In Sec. II A, we introduce the composable secret key
+length bound.
+In Sec. II B, we derive the information
+leakage in one-way EC for nonbinary LDPC codes. In
+Sec. II C, we present the ﬁnal formula for the secret key
+rate, and in Sec. III, we introduce one-way EC with non-
+binary LDPC codes. Finally, we link these results to an
+estimate of the storage required for the encoding of the

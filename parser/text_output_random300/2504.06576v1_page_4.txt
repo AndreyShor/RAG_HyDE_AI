@@ -1,0 +1,85 @@
+4
+Lorentz force term will contain the 𝑥-coordinate. This section aims to derive an analytical
+solution for this pattern. It is not difficult to determine that the velocity in the main flow region
+𝑈must be a linear function of the tangential coordinate 𝑥, implying 𝑘= 1. This phenomenon
+is referred to as stagnation point flow (Fang 2019). Consequently, the momentum equation
+is simplified as
+𝜕3 𝑓
+𝜕𝜂3 −𝜕2 𝑓
+𝜕𝜂𝜕𝜏−𝛽( 𝜕𝑓
+𝜕𝜂)2 + 𝛽𝑓𝜕2 𝑓
+𝜕𝜂2 + 𝛽= 2𝛽𝜎𝐵2
+𝜌𝑊( 𝜕𝑓
+𝜕𝜂−1)
+(3.1)
+This text will first present an analytical solution for a nonlinear partial differential equation
+applicable to various multi-physical field parameters. However, in extreme cases, where there
+is a significant difference between the pressure and the Lorentz force, this non-linear equation
+can be simplified to a linear equation. The analytical solution in this scenario will provide
+deeper insight into the spatiotemporal characteristics of the boundary layer.
+3.1. General Solution under Arbitrary Magnetic Field
+Performing a two-order Taylor expansion of the two nonlinear terms in the momentum
+equation near the boundary, in conjunction with the non-penetration and non-slip boundary
+conditions, results in the following equations
+𝑓𝜕2 𝑓
+𝜕𝜂2 = ( 𝑓|𝜂=0 + 𝜕𝑓
+𝜕𝜂|𝜂=0𝑑+ 1
+2
+𝜕2 𝑓
+𝜕𝜂2 𝑑2) 𝜕2 𝑓
+𝜕𝜂2 = 1
+2 ( 𝜕2 𝑓
+𝜕𝜂2 )2𝑑2
+(3.2)
+( 𝜕𝑓
+𝜕𝜂)2 = ( 𝜕𝑓
+𝜕𝜂|𝜂=0 + 𝜕2 𝑓
+𝜕𝜂2 𝑑)2 = ( 𝜕2 𝑓
+𝜕𝜂2 )2𝑑2
+(3.3)
+Where 𝑑is a geometric small quantity relative to the boundary layer scale. So two nonlinear
+terms can be reduced to a single square term within the region near the wall. For the sake of
+convenience in the derivation process, it is reasonable to set 𝛽= 1. It is noteworthy that 𝜎𝐵2
+𝜌𝑊
+corresponds to the Stuart number 𝑁(Turkyilmazoglu 2012). The momentum equation can
+be further simplified as follows
+𝜕3 𝑓
+𝜕𝜂3 −𝜕2 𝑓
+𝜕𝜂𝜕𝜏−1
+2 ( 𝜕𝑓
+𝜕𝜂)2 + 1 = 2𝑁( 𝜕𝑓
+𝜕𝜂−1)
+(3.4)
+Based on the idea of substitution, taking 2𝑁as the proportional coefficient of 𝑓𝐿, the final
+simplified form of momentum equation can be obtained
+𝜕3𝑔
+𝜕𝜂3 −𝜕2𝑔
+𝜕𝜂𝜕𝜏−1
+2 ( 𝜕𝑔
+𝜕𝜂)2 + 1 + 2𝑁+ 2𝑁2 = 0
+(3.5)
+Where nonlinear function 𝑔= 𝑓+ 2𝑁𝜂. The mathematical form of this partial differential
+equation is analogous to the Falkner-Skan equation (Zhang et al. 2011), with the distinction
+being the time-varying term. A closed analytical solution can be expressed as
+𝑔(𝜂, 𝜏) = 𝑐3𝑏tanh(𝑐1𝑏𝜂+ 𝑐2𝑏𝜏+ 𝑐𝑏) −𝑐4𝑏ln cosh(𝑐1𝑏𝜂+ 𝑐2𝑏𝜏+ 𝑐𝑏) + ℎ(𝜏)
+(3.6)
+ℎ(𝜏) = −𝑐3𝑏tanh(𝑐2𝑏𝜏+ 𝑐𝑏) + 𝑐4𝑏ln cosh(𝑐2𝑏𝜏+ 𝑐𝑏)
+(3.7)
+By thoroughly matching the powers of tanh, exact solutions for each coefficient of every
+term can be easily obtained. It is important to note that the only parameter currently
+undetermined is 𝑐𝑏.
+𝑓(𝜂, 𝜏) = −2𝑁𝜂−
+√︃
+6
+√
+2
+√︁
+1 + 2𝑁+ 2𝑁2 tanh 𝜉+ 2
+√︃
+6
+√
+2
+√︁
+1 + 2𝑁+ 2𝑁2 ln cosh 𝜉+ ℎ(𝜏)
+(3.8)
+Focus on Fluids articles must not exceed this page length

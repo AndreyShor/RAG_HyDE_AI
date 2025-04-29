@@ -1,0 +1,36 @@
+contributions [8].
+The direct problem involves predicting the outcome of a scattering experiment – the distribution of outgoing
+particles by modeling the description of the nuclear interaction potential using mathematical functions and solving
+the TISE to obtain wavefunction from the S-matrix that describe various scattering variables.
+In inverse scattering theory, instead of deriving the scattering S-matrix from the interaction potential between
+the scattering particles, we reverse the process and calculate the interaction potential directly from the S-matrix
+[9]. In essence, inverse scattering involves determining the interaction potential solely from the available scattering
+observables. Inverse scattering theory constructs a separable model potential that serves as an adequate input to
+calculate many-nucleon properties [10].
+Typically, one requires all the bound state energies (E < 0) and the scattering phase shifts at all energies E> 0 up
+to inf, to be able to exactly solve inverse scattering problems. Thus, inverse scattering problems are generally more
+challenging and less developed than the corresponding direct methods, as they require reconstructing an unknown
+system from limited observed data. The process involves solving an ill-posed problem, often requiring regularization
+techniques and optimization methods[9].
+Recently, Muzafarov[11] proposed a comprehensive solution to the case of nonlocal separable potentials, pro-
+viding a rather intricate algorithm that encompasses the entire class of phase equivalent potentials within a single
+parial wave channel. Several studies have shown that machine learning (ML) approaches are effective in solving
+inverse scattering problems[12].
+Deep neural networks that have been highly successful in uncovering the underlying relationships in the model
+usually need large datasets, which are typically scarce in scattering problems[13]. Instead, these networks can be
+trained using additional information by enforcing physical laws. Physics-informed machine learning integrates data
+with mathematical models, guiding solutions toward physical plausibility while improving accuracy and efficiency
+[14]. Researchers have proposed leveraging ML to optimize the parameters in model simulations and to directly
+tackle many-body problems by enhancing traditional Monte-Carlo simulation methods [15, 16].
+In this paper, we will use a genetic algorithm based global optimization to obtain the reference potential model
+parameters using the available experimental energy data up to 14 MeV . The optimization procedure utilizes the
+scattering phase shifts obtained by numerical solution of the phase equation for a chosen ℓ-channel, and minimizes
+a loss function, which quantifies the discrepancy between the simulated and expected data. The crucial part of this
+procedure is the choice of reference potential whose parameters are optimized to obtain the inverse potential.
+In charged particle scattering, the Coulomb interaction plays a significant role alongside the nuclear interaction.
+The phase function method involves matching spherical Bessel functions at the boundary where the interaction
+becomes negligible. To model the electromagnetic interaction, various screened Coulomb potentials, such as the
+error function (erf ) and the atomic Hulth´en potential, have been employed in the literature [18, 19].
+However, the long-range nature of the erf function requires it to be abruptly truncated at large distances, and
+the atomic Hulth´en potential demands fine-tuning of the screening parameter a, which alters the potential depth for
+2

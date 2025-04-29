@@ -1,0 +1,31 @@
+an ingredient of Cowan’s atomic structure code116. RCG proceeds to the diagonalization of the
+Hamiltonian.
+Accounting for levels, conﬁgurations and superconﬁgurations
+The computation is initialized an average-atom calculation, providing the mean populations of
+the subshells and a list of superconﬁgurations:
+(1s)q1(2s)q2 · · · (nk−1ℓk−1)qk−1σqk
+(13)
+is built, where
+σ =
+
+N
+Y
+i=k
+niℓi
+,
+(14)
+where nNℓN is, at a given temperature and density, the highest-energy bound subshell predicted
+by the average-atom calculation. The LTE ﬂuctuation theory is then applied to the average-
+atom non-integer mean populations to establish the range of variation for the populations qk,
+where k = 1, N. This process deﬁnes the possible conﬁgurations (if qk = 0) or superconﬁgu-
+rations (if qk > 0). The superconﬁgurations are subsequently sorted based on their respective
+Boltzmann probabilities, initially estimated using the average-atom wavefunctions and eigen-
+energies. Next, a self-consistent calculation is performed for each superconﬁguration, which has
+therefore its own potential and corresponding set of wavefunctions and eigen-energies, used to
+reevaluate the probabilities.
+The power of this hybrid approach lies in its ability to account for numerous highly excited
+states and satellite lines. Although their probabilities may be small, their large number means
+they are likely to make a signiﬁcant contribution to the total opacity. In SCO-RCG, orbitals
+are handled individually up to a speciﬁed limit, beyond which they are merged into a single
+supershell (referred to as the Rydberg supershell). The grouped orbitals (in this case, those
+40

@@ -1,0 +1,157 @@
+14
+⟨a∣zP1⟩∣z1↔z2 →⟨a∣zP1⟩, ∏2n
+j=1 zxj
+Π1,2P1(j) →∏2n
+j=1 zxj
+P1(j), and the radii of the contours return to their original values.
+After all, one can conclude that
+I(Π1,2P1) + I(P1) = 2sign(P1)∮dz2ne−iE(z)t⟨a∣zP1⟩∣z1↔z2 ×
+2n
+∏
+j=1
+zxj
+Π1,2P1(j)
+n
+∏
+j=1
+z−yj
+2j−1z−yj
+2j
+s1 −s2
+s1 −s2 −2γ .
+(S-49)
+By performing this procedure sequently, we obtain Eq. (S-47).
+Thanks to the lemma 1, the number of terms that we need to consider can be reduced from 2n! to 2n!/2n. Namely,
+one can write down as ψ(2n)
+t
+(x;a) = ∑P ∈F2n T(P). Next, we show the following Lemma.
+Lemma 2. It follows that
+T(I2n)∣t=0 = (−1)n(n−1)/2
+n
+∏
+j=1
+δx2j−1,yjδx2j,yj(δa2j−1,↓δa2j,↑−δa2j−1,↑δa2j,↓).
+(S-50)
+Proof of Lemma 2. From the lemma 1, T(I2n)∣t=0 can be written as
+T(I2n)∣t=0 = (−1)n(n−1)/2
+n
+∏
+j=1
+[δa2j−1,↓δa2j,↑−δa2j−1,↑δa2j,↓]∮dz2n
+2n
+∏
+j=1
+zxj
+Π(j)
+n
+∏
+j=1
+z−yj
+2j−1z−yj
+2j
+s2j−1 −s2j
+s2j−1 −s2j −2γ .
+(S-51)
+Since the integrand is the product of zx2j−1−yj
+2j
+zx2j−yj
+2j−1
+s2j−1−s2j
+s2j−1−s2j−2γ , one only needs to consider the following integral,
+A = ∮∣z1∣=r
+dz1
+2πiz1 ∮∣z2∣=1
+dz2
+2πiz2
+s1 −s2
+s1 −s2 −2γ zx1−y1
+2
+zx2−y1
+1
+.
+(S-52)
+Making the substation z2 →z2/z1 yields
+A = ∮∣z1∣=r
+dz1
+2πiz1 ∮∣z2∣=r
+dz2
+2πiz2
+z2
+1 −1 −z2 + z2
+1/z2
+z2
+1 −1 −z2 + z2
+1/z2 −4iγz1
+zx2−x1
+1
+zx1−y1
+2
+.
+(S-53)
+Note that the term 1/(z2
+1 −1 −z2 + z2
+1/z2 −4iγz1) is holomorphic inside the z1-contour, and it holds that x2 −x1 ≥0
+from the assumption. Hence, we have
+A = ∮∣z2∣=r
+dz2
+2πiz2
+zx1−y1
+2
+δx1,x2
+(S-54)
+= δx1,y1δx2,y1.
+(S-55)
+In the first and second line, we use the residue theorem. Combining these results, we obtain Eq. (S-50).
+Lastly, we prove the following lemma to establish the theorem.
+Lemma 3. For n = 1 and n = 2, it follows that
+∑
+P ∈F2n∖{I2n}
+T(P)∣t=0 = 0.
+(S-56)
+Proof of Lemma 3. The proof for the case n = 1 is obvious since F2 ∖{I2} = ∅. In the following, we consider the case
+n = 2. For each P ∈F4 ∖{I4}, T(P)∣t=0 is given by the following form,
+T(1,3,2,4)∣t=0 = −4∮dz4⟨a∣Y2,3(s1 −s4)∣I4⟩S × zx1−y1
+2
+zx2−y2
+4
+zx3−y1
+1
+zx4−y2
+3
+,
+T(1,3,4,2)∣t=0 = 4∮dz4⟨a∣Y3,4(s1 −s3)Y2,3(s1 −s4)∣I4⟩S × zx1−y1
+2
+zx2−y2
+4
+zx3−y2
+3
+zx4−y1
+1
+,
+T(3,1,2,4)∣t=0 = 4∮dz4⟨a∣Y1,2(s2 −s4)Y2,3(s1 −s4)∣I4⟩S × zx1−y2
+4
+zx2−y1
+2
+zx3−y1
+1
+zx4−y2
+3
+,
+T(3,1,4,2)∣t=0 = −4∮dz4⟨a∣Y1,2(s2 −s4)Y3,4(s1 −s3)Y2,3(s1 −s4)∣I4⟩S × zx1−y2
+4
+zx2−y1
+2
+zx3−y2
+3
+zx4−y1
+1
+,
+T(3,4,1,2)∣t=0 = 4∮dz4⟨a∣Y2,3(s2 −s3)Y1,2(s2 −s4)Y3,4(s1 −s3)Y2,3(s1 −s4)∣I4⟩S × zx1−y2
+4
+zx2−y2
+3
+zx3−y1
+2
+zx4−y1
+1
+.

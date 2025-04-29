@@ -1,0 +1,54 @@
+CAMulator
+system components, including ocean, land, cryosphere and chemistry.It has also been proposed to interactively combine
+such emulators with dynamical models using a supermodeling framework [e.g., Schevenhoven et al., 2023, Chapman
+et al., 2024]. These differences hinder the seamless coupling with traditional physics-based models and limit the broader
+adoption of atmospheric ML-emulators in Earth system simulations.
+Here, we introduce CAMulator Version 1, an ML-based emulator that mimics the Community Atmosphere Model
+version 6 (CAM6) [Danabasoglu et al., 2020] while preserving both vertical and horizontal spatial resolution. CAMulator
+runs approximately 350 times faster than CAM6 (see Section 2.5 for details) while enforcing key conservation properties,
+including global dry mass, total water, and energy.
+For model training and testing, we leverage the National Science Foundation’s (NSF) National Center for Atmospheric
+Research (NCAR)-Community Research Earth Digital Intelligence Twin (CREDIT) platform [Sha et al., 2025a, Schreck
+et al., 2024]. CREDIT is a machine learning platform for scientific research that provides an efficient framework for
+the rapid development of auto-regressive models, making it well-suited for Earth system modeling tasks. In our study,
+CREDIT serves as the backbone for an efficient data pipeline, scalable high-performance computing, model training,
+and inference. We extend its capabilities from numerical weather prediction emulation to fast climate emulation and
+demonstrate the necessity of incorporating physical constraints on mass, water, and energy to enhance model fidelity
+and improve emulation accuracy.
+In this work, we focus on emulating atmospheric physics during the historical period (1979–2014), a common validation
+period for CAM6. We conduct this experiment as an AMIP simulation, where CAMulator is forced with observed sea
+surface temperatures (SSTs) and incoming solar radiation. We show that CAMulator successfully captures the historical
+climate trend over this period. To test model stability in an indefinite forcing mode, we run long-term integrations using
+climatological SSTs as the prescribed boundary condition, ensuring consistency with the statistical properties of the
+CAM6 climate system.
+We find that CAMulator successfully reproduces key climate statistics, including variability associated with the El Nino
+Southern Oscillation and has similar root mean square error compared to CAM6. Although geopotential height is not
+directly predicted, the emulator is still able to accurately capture major modes of variability, such as the North Atlantic
+Oscillation and the Pacific North American pattern, from predicted variables. This suggests that the model preserves
+physical consistency across key atmospheric fields, even in extended simulations.
+An important application of climate models is to predict the response to an external forcing, for example increased
+ocean sea surface temperatures (SSTs). Beyond historical validation, we test CAMulator in out-of-sample scenarios
+(i.e. forcing scenarios the emulator was not trained on) with ocean surface warming of +2K and +4K,. The model
+demonstrates a promising ability to adjust dynamically to these warmer conditions, though its response appears weaker
+under +4K warming. In this manuscript, we focus on evaluating CAMulator’s performance and exploring its potential
+applications and extensions.
+In this manuscript, we focus on evaluating CAMulator’s performance and exploring its potential applications and exten-
+sions and is organized as follows: Section 2 describes the data sources used for model training and evaluation. Section
+3 outlines the methodology, including model construction and training. Section 4 presents the results, highlighting
+CAMulator’s performance in reproducing key climate statistics and its response to out-of-sample warming scenarios.
+Finally, we conclude with a discussion of CAMulator’s strengths, limitations, and potential extensions for future work.
+1.1
+Training and Verification Data
+We use the Community Atmosphere Model version 6 (CAM6), the atmospheric component of the Community Earth
+System Model version 2.1.5 (CESM2), developed by the NSF NCAR [Bogenschutz et al., 2018, Gettelman et al., 2018].
+At the training time, CAM6 was the latest supported model release and incorporates advancements in atmospheric
+physics, cloud microphysics, and boundary layer turbulence while leveraging a finite-volume (FV) dynamical core.
+For this study, we run CAM6 in AMIP mode, where it is forced by observed SSTs and sea ice concentrations from 1979
+to 2014 [Huang et al., 2017, 2021, Rayner et al., 2003], with these monthly forcing fields linearly interpolated to daily
+values. CAMulator also accounts for time-evolving aerosol emissions and trace gas concentrations (including CO2) to
+ensure consistency with historical atmospheric conditions.
+Model simulations use the scientific release resolution of CAM6, with a horizontal grid spacing of 0.9◦latitude × 1.25◦
+longitude and 32 hybrid sigma-pressure levels extending up to 2.26 hPa in the vertical dimension. The emulator was
+trained on a number of static and dynamic variables (see Table 1), all saved at 6-hourly intervals. For simplicity, we
+keep the vertical and horizontal resolution the same.
+2

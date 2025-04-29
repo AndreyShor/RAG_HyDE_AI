@@ -1,0 +1,143 @@
+XXX:16
+Israel et al.
+Table 4. Comparison of metrics for all cyber-physical cases.
+Case
+Topology
+𝐿𝑎𝑣𝑒
+𝑑𝑖𝑎𝑚𝑒𝑡𝑒𝑟
+Max
+Number
+Number
+Density
+Gen.
+(hops)
+(hops)
+Node
+of
+of
+Degree
+Links
+Nodes
+(sec)
+SC (500)
+star
+4.87
+6
+68
+216
+217
+0.92%
+3.25
+radial
+5.15
+8
+57
+216
+217
+0.92%
+3.35
+statistic
+12.54
+40
+8
+228
+213
+1.01%
+147.48
+Texas (2k)
+star
+5.60
+6
+200
+1290
+1291
+0.15%
+21.22
+radial
+5.84
+8
+179
+1316
+1291
+0.15%
+20.54
+statistic
+17.8
+88
+20
+1368
+1271
+0.17%
+1347.2
+WECC (10k)
+star
+4.32
+5.85
+299
+4922
+4942
+0.040%
+77.06
+radial
+4.63
+7.8
+275
+5064
+4942
+0.041%
+76.62
+statistic
+5.57
+36
+80
+5252
+4843
+0.044%
+6012.7
+Table 5. Number of ACLs.
+Case
+Reg.
+Utility
+Substation
+Total ACLs
+SC
+4
+224
+624
+852
+Texas
+20
+1330
+3750
+5100
+WECC
+80
+5082
+14286
+19448
+10,000-bus case. Additionally, the diameter 𝑑of the network, which also correlates with this metric,
+further illustrates the disparities in topology performance. The diameter for the statistics-based
+topology spans 40, 88, and 36 hops for the respective bus cases, compared to only 6 to 8 hops in both
+the star and radial topologies. This extended path length in the statistics-based topology is a notable
+drawback, potentially resulting in increased latency. As described in [27], the power grid is highly
+interconnected and disturbances in one region can spread to other regions. This means the utility
+control center or a balancing authority needs to receive timely voltage and current measurements
+over the wide area network. A read command sent from a UCC to a substation might experience
+delays due to the need to traverse more nodes, i.e., more routers, which could significantly impact
+the timely delivery of packets. Also, these routers may experience congestion delays. For this
+reason and the latency it may cause, the statistics-based topology’s higher path length and network
+diameter are considered drawbacks of this topology, but they show more realism.
+On the other hand, the maximum node degree in the statistics-based topology is significantly
+lower, with a peak of 8, in contrast to 68 and 57 in the star and radial topologies, respectively, for
+the 500-bus case. This indicates fewer critical nodes within the statistics-based topology and a
+lack of nodes burdened by excessive connections. As a result, the failure of a single node in the
+statistics-based topology would likely have a less severe impact on the communication network
+than a failure in either the star or radial topologies.
+Node degree calculations provide insights into the connectivity of every node within the graph.
+Fig. 8, Fig. 9, and Fig. 10 illustrate a more balanced node degree distribution within the statistics-
+based topology, characterized by several nodes having multiple connections. Yet, none are exces-
+sively linked. In contrast, the star topology has multiple connections converge on a single node.
+Such bottlenecks can lead to network overload, heightened latency, and critical failure points. The
+radial topology offers a slight improvement over the star topology in node degree distribution,
+because not all substations are directly connected to the control center. However, the radial topology
+still presents nodes with high degrees, such as the utility control centers.

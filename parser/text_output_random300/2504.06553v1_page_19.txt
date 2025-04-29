@@ -1,0 +1,305 @@
+x1
+x2
+x3
+x4
+x5
+s1
+1.0
+0.0
+0.0
+0.0
+0.0
+s2
+0.0
+1.0
+0.0
+0.0
+0.0
+s3
+0.0
+0.0
+0.5
+0.5
+0.0
+s4
+0.0
+0.0
+0.5
+0.5
+0.0
+s5
+0.0
+0.0
+0.0
+0.0
+1.0
+Table 9.
+Conditional Probability Table Pτ=1(SO|X)
+s1
+s2
+s3
+s4
+s5
+p
+0.7
+0.6
+0.1
+0.1
+0.1
+q
+0.1
+0.1
+0.1
+0.1
+0.6
+r
+0.1
+0.2
+0.1
+0.1
+0.2
+s
+0.1
+0.1
+0.7
+0.7
+0.1
+Table 10.
+Conditional Probability Table Pτ=1(O|SO)
+Setting β = 100, we obtain an updated Pτ=1(SO|X)
+given in Table 9.
+This conditional probability informs us of a soft cluster
+map to group the primitives to objects. In this case, x1, x2,
+x5 each corresponds to an object and x3, x4 are grouped
+together as primitives of the same object. Furthermore, we
+can label these clusters by taking the argmax of P (O|SO),
+which is shown in Tab. 10 and can be obtained by manipu-
+lating the probability as follows,
+p1(o|so) =
+X
+x∈X
+p(o|x)p1(x|so), ∀(o, so) ∈O × SO
+(48)
+To summarize, after this first iteration of just the object
+layer, 4 objects are obtained, an object with label p con-
+sisting of the primitive x1, an object with label p consisting
+of the primitive x2, an object with label s consisting of the
+primitives x3 and x4, and an object with label q consisting
+of the primitive x5.
+We repeat this for all three layers and for n iterations
+until convergence. The final Pτ=n(SO|X), Pτ=n(SU|SO),
+Pτ=n(ST |SU) is given in Table 11, Table 12, and Ta-
+ble 13 respectively with associated final Pτ=n(O|SO),
+Pτ=n(U|SU), Pτ=n(T |ST ) given in Table 14, Table 15, and
+Table 16. The combined gives us a hierarchy where task Γ
+consists of subtask A, which consists of 2 objects both with
+label p that came from two different primitives x1 and x2,
+and task Ωconsists of 2 subtasks B and C, subtask B con-
+sists of an object with label q from primitive x5 and subtask
+C consists of an object with label s from primitives x3 and
+x4. This is visually shown in Fig. 12, where the edges rep-
+resent the cluster assignment from taking the argmax of the
+conditional probabilities.
+x1
+x2
+x3
+x4
+x5
+s1
+0.99
+0.03
+0.0
+0.0
+0.0
+s2
+0.01
+0.97
+0.0
+0.0
+0.0
+s3
+0.0
+0.0
+0.5
+0.5
+0.0
+s4
+0.0
+0.0
+0.5
+0.5
+0.0
+s5
+0.0
+0.0
+0.0
+0.0
+1.0
+Table 11.
+Conditional Probability Table final Pτ=n(SO|X)
+s1
+s2
+s3
+s4
+s5
+s1
+0.51
+0.51
+0.0
+0.0
+0.0
+s2
+0.49
+0.49
+0.0
+0.0
+0.0
+s3
+0.0
+0.0
+0.5
+0.5
+0.0
+s4
+0.0
+0.0
+0.5
+0.5
+0.0
+s5
+0.0
+0.0
+0.0
+0.0
+1.0
+Table 12.
+Conditional Probability Table final Pτ=n(SU|SO)
+s1
+s2
+s3
+s4
+s5
+s1
+0.51
+0.51
+0.0
+0.0
+0.0
+s2
+0.49
+0.49
+0.0
+0.0
+0.0
+s3
+0.0
+0.0
+0.33
+0.33
+0.33
+s4
+0.0
+0.0
+0.33
+0.33
+0.33
+s5
+0.0
+0.0
+0.33
+0.33
+0.33
+Table 13.
+Conditional Probability Table final Pτ=n(ST |SU)
+s1
+s2
+s3
+s4
+s5
+p
+0.7
+0.6
+0.1
+0.1
+0.1
+q
+0.1
+0.1
+0.1
+0.1
+0.6
+r
+0.1
+0.2
+0.1
+0.1
+0.2
+s
+0.1
+0.1
+0.7
+0.7
+0.1
+Table 14.
+Conditional Probability Table Pτ=n(O|SO)
+s1
+s2
+s3
+s4
+s5
+A
+0.57
+0.57
+0.18
+0.18
+0.23
+B
+0.16
+0.16
+0.16
+0.16
+0.46
+C
+0.27
+0.27
+0.66
+0.66
+0.31
+Table 15.
+Conditional Probability Table Pτ=n(U|SU)
+s1
+s2
+s3
+s4
+s5
+Γ
+0.58
+0.58
+0.31
+0.31
+0.31
+Ω
+0.42
+0.42
+0.69
+0.69
+0.69
+Table 16.
+Conditional Probability Table Pτ=n(T |ST )
+1
+2
+3
+4
+5
+p
+p
+s
+q
+A
+C
+B
+Γ
+𝛺
+Figure 12.
+Final hierarchy from HIB for tutorial example.
+8

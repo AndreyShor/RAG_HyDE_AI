@@ -1,0 +1,187 @@
+A Scalable Automatic Model Generation Tool for Cyber-Physical Network Topologies and Data Flows for Large-Scale
+Synthetic Power Grid Models
+XXX:5
+Server
+Switch
+Hub
+Switch
+Switch
+Utility 
+Control 
+Center
+Balancing Authority
+Transmission Substation
+Radial Topology 
+Connection
+DMZ 
+Firewall
+Firewall
+Firewall
+Utility
+Firewall
+Substation
+Firewall
+Router
+Utility
+Router
+Substation
+Router
+Router
+ICCP Server
+ICCP Client
+Switch
+Outstation
+Relay
+Relay
+Relay
+Host
+Host
+Local 
+Database
+Local Web 
+Server
+EMS
+HMI
+Relay 
+Controller 
+(RTAC)
+Corporate 
+Network
+Switch
+Hub
+Switch
+Generation Substation
+Firewall
+Router
+OT Switch
+Workstation
+Relay
+Relay
+Relay
+Host
+Host
+Local 
+Database
+Local Web 
+Server
+Relay 
+Controller
+HMI
+HMI
+Router
+Firewall
+Switch
+Switch
+Server
+Switch
+Hub
+Switch
+Switch
+Utility 
+Control 
+Center
+Balancing Authority
+Transmission Substation
+Star Topology Connection
+DMZ 
+Firewall
+Firewall
+Firewall
+Utility
+Firewall
+Substation
+Firewall
+Router
+Utility
+Router
+Substation
+Router
+Router
+ICCP Server
+ICCP Client
+Switch
+OT Switch
+Outstation
+Relay
+Relay
+Relay
+Host
+Host
+Local 
+Database
+Local Web 
+Server
+EMS
+HMI
+Relay 
+Controller 
+(RTAC)
+Corporate 
+Network
+Switch
+Hub
+Switch
+Generation Substation
+Firewall
+Router
+OT 
+Switch
+Corporate 
+Switch
+Workstation
+Relay
+Relay
+Relay
+Host
+Host
+Local 
+Database
+Local Web 
+Server
+Relay 
+Controller
+HMI
+HMI
+Router
+Firewall
+Switch
+Corporate 
+Switch
+Corporate 
+Switch
+Corporate 
+Switch
+OT Switch
+Corporate 
+Switch
+Fig. 2. Network topology based on [30]. This shows two different topologies, star, and radial, and how the
+different substations would connect to the UCC.
+nodes. The study presents various results and comparisons demonstrating the scalability of its
+proposed cyber-physical power system model generation approach.
+Similarly, in the 8-substation model [28], the cyber-physical system consists of four intercon-
+nected networks: electrical, substation control, secondary substation, and control center. The
+electrical power network includes the physical components that directly interface with Intelligent
+Electronic Devices (IEDs). The substation control network contains the IEDs, while the secondary
+substation network provides the cyber-physical link between the electrical power and substation
+control networks. The control center network encompasses the Energy Management System (EMS)
+and the Supervisory Control and Data Acquisition (SCADA) system. Each substation network has
+its own Java-Object Oriented Notation (JSON) file, which defines nodes and links. These JSON files
+include nodes such as switches, relays, breakers, buses, transformers, and generators.
+Using an object-oriented approach and detailed communication nodes, the authors in [30] model
+a star topology where all substations within a given region of the Texas grid connect to a Utility
+Control Center (UCC). The placement of UCCs is determined by identifying a central node through
+the K-nearest neighbor method, using the geographic coordinates of substations. The model also
+includes a Regulatory Authority or Balancing Authority (BA) linked to all UCCs, with each site
+incorporating communication infrastructure such as routers, firewalls, switches, and relays. In [24],
+statistical metrics were collected from a simplified communication network topology based on a
+realistic utility communication system presented in [6].
+3
+Communication Model Design
+Fig. 2 delineates the architectural framework of the proposed communication model, illustrating
+the network configurations for a UCC, a BA, and two distinct substation types: generation and
+transmission. Fig. 2 demonstrates how these entities are interconnected using two prevalent Wide
+Area Network (WAN) topologies: star and radial. Each substation is directly connected to the UCC
+in the star topology, facilitating centralized control. Conversely, the radial topology employs a
+hierarchical structure where generation substations link to transmission substations, which connect
+to the UCC. The nuances and implications of these topologies and a third topology are further
+elaborated in the subsequent subsection.

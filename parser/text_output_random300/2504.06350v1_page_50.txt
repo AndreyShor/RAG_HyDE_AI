@@ -1,0 +1,104 @@
+What is a non-trivial upper bound on the secret key rate that can be extracted from a DI-QKD protocol?
+Understanding upper bounds on key rates is crucial from a practical perspective, as it reveals the inherent
+limitations of an entire class of protocols rather than focusing on individual protocols and analyzing them
+in isolation.
+This question was first posed by Kaur et al. [67], who introduced information-theoretic measures of
+nonlocality, termed intrinsic nonlocality and quantum intrinsic nonlocality. They demonstrated that these
+measures serve as upper bounds for DI-QKD protocols, specifically against no-signaling and quantum
+adversaries, respectively. Instead of using intrinsic nonlocality, Arnon-Friedman et al. [290] examined
+a closely related information-theoretic quantity known as intrinsic information, which they employed to
+derive an upper bound on the key rates of DI-QKD protocols.
+Winczewski et al. [291] initiated a systematic study of upper bounds on secret key rates within the
+no-signaling DI scenario. They introduced a computable function, termed squashed nonlocality, as one
+such bound. Their numerical analysis suggests that quantum devices with two binary inputs and two
+binary outputs can extract only a limited amount of key. Moreover, they found that isotropic devices
+with less than 80% of the Popescu-Rohrlich box weight are generally key-undistillable.
+Since DI-QKD has a higher security demand than QKD, one has the trivial bounds rDI ≤rDD (rDD is
+the key rate of a standard device-dependent QKD protocol). Christandl et al. [292] use this fact to find
+an upper bound on a DI-QKD as follows: assume that the POVMs {Aa|x} and {Bb|y} are chosen such
+that the key-rate r is optimal, there might be different measurement A′
+a|x and B′
+b|y and state ρ′ leading
+to the same distribution
+p(a, b | x, y) := Tr[(Aa|x ⊗Bb|y)ρ] = Tr[(A′
+a|x ⊗B′
+b|y)ρ′],
+(142)
+the above equality is shown as (M, ρ) ≡(M′, ρ′). Since the maximal achievable key rate for ρ is also
+achievable for ρ′ (rDI(ρ) ≤rDI(ρ′) ) then combining it with rDI(ρ′) ≤rDD(ρ′) the following bound can
+be obtained [292]
+rDI(ρ) ≤sup
+M
+inf
+(M′,ρ′)
+(M,ρ)≡(M′,ρ′)
+rDD(ρ′),
+(143)
+Consider that ρ is a PPT state ρΓ ≥0 (Γ denotes partial transpose) because the transpose of a POVM
+element is a POVM element then one can find
+rDI(ρ) ≤min{rDD(ρ), rDD(ρΓ)},
+(144)
+The significance of the above result, can be seen by an example. Consider the 2d × 2d state σd as
+σd = 1
+2
+
+
+(1 −p)
+√
+XX†
+0
+0
+(1 −p)X
+0
+pY
+0
+0
+0
+0
+pY
+0
+(1 −p)X
+0
+0
+(1 −p)
+√
+XX†
+
+
+where Y = 1
+d
+Pd−1
+i=0 |ii⟩⟨ii| and X =
+1
+d
+√
+d
+Pd−1
+i,j=0 uij |ij⟩⟨ij|, where uij’s are the elements of a unitary
+matrix such that |uij| =
+1
+d. For this state, it has been found in [292] that for the case of d = 220,
+rDD(σ220) ≥0.98 and rDD(σΓ
+220) ≤
+1
+210+1. Therefore, we see that whereas in QKD, the obtained bit in
+this setting is secure, the upper bound tells us that this bit is not secure in a device-independent setting.
+Therefore the state, and any of its parts, cannot be tested independently of the device. This example
+can be also regarded as supported evidence for the revised Peres conjecture for DI-QKD in [290] which
+states that bound entangled states cannot be used as a resource for DI-QKD.
+Kaur et al. [293] develop the above bounds by going beyond PPT states and arrive at the following upper
+bound for general DI-QKD protocols based on the relative entropy of entanglement [294]
+rDI(ρ) ≤(1 −p)
+inf
+(σNL,N)=(ρNL,M) ER(σNL) + p
+inf
+(σL,N)=(ρL,M) ER(σL),
+(145)
+where ρ = (1 −p)ρNL + pρL such that (σL, N), (ρL, M) ∈LHV where LHV denoted the set of devices
+with locally realistic hidden variable models. For the CHSH-based protocols, with ω denoting the CHSH
+violation, the following analogous upper bound can be obtained
+rDI(ρ) ≤(1 −p)
+inf
+ω(σNL,N)=ω(ρNL,M) ER(σNL),
+(146)
+50

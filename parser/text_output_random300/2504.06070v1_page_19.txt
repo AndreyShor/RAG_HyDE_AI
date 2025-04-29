@@ -1,0 +1,87 @@
+Published as a conference paper at ICLR 2025
+Table S3: Hyperparameter and Training setup
+Type
+Name
+Meaning
+Value
+Hyperparameter
+Mask1
+First-order gradient operator mask
+Eq. S3
+Hyperparameter
+Mask2
+Second-order gradient operator mask
+Eq. S4
+Training setup
+LR
+Learning Rate
+1e-3
+Training setup
+Epoch
+Number of training epochs
+100
+Training setup
+Optimizer
+Type of model optimizer
+Adam
+Training setup
+Scheduler
+Schedule the learning rate of the optimizer
+StepLR
+Training setup
+Batch Size
+the number of samples processed together
+(2, 2, 2, 32)∗
+()∗: Value is different for each dataset, in the order of 2D fluid, 2D smoke, 3D smoke, and SEVIR.
+Correlation =
+Pn
+i=1
+
+bxn,t,h,w −bxn,t,h,w
+
+(xn,t,h,w −xn,t,h,w)
+r
+Pn
+i=1
+
+bxn,t,h,w −bxn,t,h,w
+2qPn
+i=1 (xn,t,h,w −xn,t,h,w)2
+(S6)
+Specifically, Veillette et al. (2020) used six precipitation thresholds which correspond to pixel values
+[219, 181, 160, 133, 74, 16]. The prediction bxn,t,h,w and the ground-truth xn,t,h,w are rescaled back
+to the range 0 −255.
+#Hits(τ) = #{bxn,t,h,w | bxn,t,h,w ≥τ, xn,t,h,w ≥τ}
+#Misses(τ) = #{bxn,t,h,w | bxn,t,h,w ≥τ, xn,t,h,w < τ}
+#F.Alarms(τ) = #{bxn,t,h,w | bxn,t,h,w < τ, xn,t,h,w ≥τ},
+(S7)
+CSI −τ =
+#Hits(τ)
+#Hits(τ) + #Misses(τ) + #F.Alarms(τ)
+CSI-M = 1
+6
+X
+τ
+CSI- τ, τ ∈[219, 181, 160, 133, 74, 16].
+(S8)
+# represents the number of elements in the set, τ ∈[219, 181, 160, 133, 74, 16] is one of the thresh-
+olds. We denote the average CSI- τ over the thresholds [219, 181, 160, 133, 74, 16] as CSI-M.
+It must be stated that the extreme point of MSE and the extreme point of CSI are usually not consis-
+tent, and the model with the smallest MSE on the validation set is selected for testing.
+C
+TRAINING DETIALS
+In this section, we present the training details of our experiments, including hyperparameter settings,
+training setup, and the specifics of multi-loss training.
+C.1
+HYPERPARAMETERS AND TRAINING SETUP
+The hyperparameters and experimental setup used in our experiments are shown in the table below:
+C.2
+MULTI-LOSS FUNCTION TRAINING
+Since the model training process involves a multi-loss optimization problem (Eq. 16), we further
+show the training details.
+Figure S5 (left) shows the change of Loss with the number of training rounds during training, and
+Figure S5 (right) shows the change of validation metrics with the number of training rounds.
+As shown in Figure S5 (left) and Figure S5 (right) , the loss corresponding to the data constraint re-
+mains the largest, indicating that despite the introduction of multiple loss functions, the other losses
+do not significantly affect the primary constraint. Additionally, the loss associated with the temporal
+19

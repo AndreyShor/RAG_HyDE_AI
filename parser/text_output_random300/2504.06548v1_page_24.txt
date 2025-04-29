@@ -1,0 +1,118 @@
+24
+VIII.
+NEUROMORPHIC COMPUTING IN ARTIFICIAL
+SPIN ICE
+We have seen throughout this tutorial that artificial spin
+ice is a rich, complex system with many emergent properties,
+huge microstate spaces, intrinsic physical memory, GHz dy-
+namics and compatibility with a broad range of measurement
+approaches. These qualities make ASI an intriguing potential
+candidate for providing artificial intelligence (AI)/machine
+learning like computation via its intrinsic physical dynamics.
+Leveraging complex physical systems for machine learning is
+the aim of a growing research effort loosely termed ‘physical
+neuromorphic computing’. In this section, we briefly intro-
+duce the concept, some background on ASI computing and
+describe how ASI may be used in neuromorphic computing
+schemes.
+Recently, as the global energy cost of running machine
+learning/AI continues to spiral unsustainably, the search has
+intensified for novel computational hardware platforms which
+may be capable of efficiently powering AI. A large part of this
+effort has been devoted to identifying computational hardware
+which offers functionality inspired by the brain, termed ‘neu-
+romorphic computing’236. The brain outperforms AI at the
+vast majority of tasks, and consumes just 20 W instead of the
+MW required by GPU farms powering large neural networks.
+A key difference between the brain and conventional CMOS
+hardware is that CMOS currently stores and processes data in
+separate memory and processor units, with a huge portion of
+the computational energy budget spent on shuttling data be-
+tween memory and processor rather than actually processing
+- the so-called ‘von Neumann’ bottleneck. CMOS also has
+nowhere near the capacity for parallel processing as the brain.
+CMOS designers are working on developing neuromorphic-
+style chips using transistor technology, where memory and
+processor are still separate aspects of the device but many
+small memory caches are used and situated closer to the pro-
+cessor. While impressive, early results have been achieved
+and progress continues. However, the underlying approach
+and hardware are still similar to conventional CMOS and.
+Although the von Neumann bottleneck is reduced, it is still
+present.
+A parallel approach, termed ‘physical neuromorphic com-
+puting’ aims to design and identify complex physical systems
+which intrinsically provide nonlinear processing and physical
+memory directly via their underlying physics237–241. While
+it is understandably at an earlier stage than CMOS transistor
+hardware due to its relative infancy, physical neuromorphic
+computing has several attractive benefits including direct in-
+tegration of memory and processor, the ability to provide a far
+more complex and varied range of nonlinear activation func-
+tions than the simple ReLu/sigmoid functions used in software
+neural networks and the possibility of engineering intrinsic
+parallel coupling between processing elements through phys-
+ical interactions.
+Nanomagnetic arrays such as artificial spin ice are promis-
+ing candidates for physical neuromorphic hardware. Nano-
+magnets passively retain information for 1000s of years.
+Neighboring nanomagnets are strongly coupled via dipolar
+magnetic field, enabling efficient, parallel information ex-
+change and collective ‘in-memory’ processing at zero added
+energy cost - bypassing the memory-processor bottleneck.
+Crucially, nanomagnet arrays display collective GHz dynam-
+ics in their magnonic response, enabling information process-
+ing and transfer at rapid speeds without electron movement
+or Joule heating, ideal for low-energy computation and inte-
+gration with existing GHz telecoms technologies. Indeed, the
+maths powering modern software neural networks are inspired
+by theoretical frameworks developed by physicists in the
+1970’s to describe strongly-interacting magnetic networks242.
+The early machine learning community adopted these frame-
+works (originally termed Hopfield networks243) and adapted
+and refined them towards the neural networks of today. Inter-
+estingly, Hopfield and Hinton were awarded the Nobel prize in
+Physics in 2024 for their “foundational discoveries and inven-
+tions that enable machine learning with artificial neural net-
+work”. Since the early successes of machine learning, engi-
+neers have dreamt of removing the software layer of abstrac-
+tion and implementing machine learning directly in physical
+magnetic networks. However, until recently, the engineering
+challenges of providing efficient data input/output and train-
+ing schemes presented a barrier to realizing such systems.
+Recent years have seen several neuromorphic computing
+schemes implemented in ASI and closely-related nanomag-
+netic arrays, using a variety of approaches to read com-
+putational output from the system including studies using
+the magnetic microstate126,244,245, experimental schemes us-
+ing the GHz magnon spectra28,246–248 and magneto-resistance
+signals249.
+Nano-ring arrays which are very close to
+connected ASI have been studied with magneto-resistance
+readout248,250,251. These studies reveal the capacity for ASI to
+provide promising neuromorphic computation performance,
+with the intrinsic physical memory allowing prediction of
+chaotic time-series, nonlinear waveform transformation and
+classification tasks. It is also worth noting that ASI has been
+studied as a platform for logic-based computation125,252.
+In this tutorial, we will examine how one may go about de-
+signing and implementing a neuromorphic computing scheme
+based on ASI.
+Figure 17 shows a general schematic outline of neuromor-
+phic computing ASI where data is input by global magnetic
+field and read-out via FMR spectrum, with the performance of
+different ASI arrays compared. The input and output schemes
+may be chosen freely, and the global field/FMR example here
+is just one way to implement computing in ASI. There are
+many demonstrated and proposed neuromorphic computing
+architectures, and for the sake of brevity as well as ease of
+description and implementation we will concentrate on a neu-
+romorphic approach termed ‘reservoir computing’253,254. A
+reservoir computing architecture comprises three layers, an
+input layer with one or more input channels where data may
+be introduced to the reservoir (for physical reservoirs this in-
+volves exciting the system, such as applying magnetic field,
+current or voltage), the reservoir itself, which acts as a set of
+interconnected nodes with nonlinear and recurrent connection
+between nodes, and an output layer with one or more channels
+(for physical reservoir computing these are the measurement

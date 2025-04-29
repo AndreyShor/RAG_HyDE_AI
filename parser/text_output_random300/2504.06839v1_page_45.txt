@@ -1,0 +1,116 @@
+Lastly, to prove (B.1.4), we only use that Q preserves L1 norm, indeed
+Z ∞
+0
+ds
+Z 1
+−1
+dhQ(n)(s, h|h′)
+=
+Z ∞
+0
+ds
+Z 1
+−1
+dh
+Z s
+0
+ds′
+Z 1
+−1
+dh′′Q(s −s′, h|h′′)Q(n−1)(s′, h′′|h′)
+=
+Z ∞
+0
+ds′
+Z 1
+−1
+dh′′Q(n−1)(s′, h′′|h′)
+Z ∞
+s′
+ds
+Z 1
+−1
+dhQ(s −s′, h|h′′)
+|
+{z
+}
+=1
+=
+Z ∞
+0
+ds′
+Z 1
+−1
+dh′′Q(n−1)(s′, h′′|h′) = 1 by inductive hypothesis.
+B.2
+Properties of E and E(n).
+To begin with, we recall some properties of E. Let us first look at the (s, h) where E is supported on.
+Support of E.
+The structure of the support of E is easily understood: for h ≥0 (h < 0 is symmetric because
+E(s, −h) = E(s, h)), we have
+E(s, h) = 0 if and only if Q(s′, h|h′) = 0∀s′ ≥s, h′ ∈[−1, 1],
+that is
+E(s, h) = 0 if and only if
+
+
+
+s′ ≥
+1
+1+h′ ∀h′ ∈[−h, h], s′ ≥s
+s′ ≥
+1
+1+h∀s′ ≥s, h′ ∈(h, 1]
+s′ ≥
+1
+1−h∀h′ ∈[−1, −h), s′ ≥s
+that is if and only if s ≥
+1
+1 −h.
+Therefore
+Support of E =
+
+(s, h) : h ∈[−1, 1], 0 ≤s ≤
+1
+1 −|h|
+
+,
+(B.2.1)
+and in particular E(s, h) > 0∀h ∈[−1, 1], 0 ≤s < 1. Moreover we have the following asymptotic estimate.
+Figure B.2.1: The support of E is defined by the curve {s ≥1, s =
+1
+1−|h|} ∪{s = 0, h ∈[−1, 1]} ∪{s ≥0, h = ±1}.
+Lemma B.2 ([15]). There exists a constant C > 0 such that
+E(s, h) ≤
+C
+s + 11s≤
+1
+1−|h| ,
+∀s ∈[0, +∞), h ∈[−1, 1].
+The previous Lemma can be obtained by direct computations on Q. The main consequence of this Lemma is that,
+as a function of s, the support of E is compact for any h ∈(−1, 1) (not for h = ±1) and that, for fixed s, E is non
+zero only in an interval (in h) whose amplitude is 2
+s.
+Moreover by [6, 15] we have
+Z 1
+−1
+dhE(s, h) ≃
+1
+π2s2 and therefore
+Z ∞
+s
+ds′
+Z 1
+−1
+dhE(s′, h) ≃
+1
+π2s,
+(B.2.2)
+but the rougher (and sufficient for our purposes) estimate
+R ∞
+s
+ds′ R 1
+−1 dhE(s′, h) ≤
+C
+s+1 can also be proved by using
+Lemma B.2. Then, in the following Lemma we collect some properties of the function E(n), n ≥1.
+45

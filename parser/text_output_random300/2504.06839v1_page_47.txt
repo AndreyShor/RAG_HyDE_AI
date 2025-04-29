@@ -1,0 +1,241 @@
+Property (B.2.4) follows from (B.2.3), indeed by definition of Q(n−1), if n ≥3 we have
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(n−1)(s −s′, h|h′)E(s′, h′)
+=
+Z s
+0
+ds′
+Z 1
+−1
+dh′E(s′, h′)
+Z s−s′
+0
+ds′′
+Z 1
+−1
+dh′′Q(s −s′ −s′′, h|h′′)Q(n−2)(s′′, h′′|h′)
+=
+Z s
+0
+ds′
+Z 1
+−1
+dh′E(s′, h′)
+Z s
+s′ ds′′
+Z 1
+−1
+dh′′Q(s −s′′, h|h′′)Q(n−2)(s′′ −s′, h′′|h′)
+=
+Z s
+0
+ds′′
+Z 1
+−1
+dh′′Q(s −s′′, h|h′′)
+Z s′′
+0
+ds′
+Z 1
+−1
+dh′E(s′, h′)Q(n−2)(s′′ −s′, h′′|h′)
+|
+{z
+}
+=E(n−1)(s′′,h′′)−E(n−2)(s′′,h′′) thanks to (B.2.3)
+,
+that is, by using again property (B.2.3), we have
+E(n)(s, h) −E(n−1)(s, h) =
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(s −s′, h|h′)
+h
+E(n−1)(s′, h′) −E(n−2)(s′, h′)
+i
+,
+that is (B.2.4).
+The other three properties follow from the first and the second ones, and also from the fact that they hold for
+n = 1. Let us begin with proving (B.2.5): by changing variables h′ 7→−h′ in Definition 1.6 of E(n) we have
+E(n)(s, −h)
+=
+Z ∞
+s
+ds′
+Z 1
+−1
+dh′Q(n)(s′, −h|h′)
+=
+Z ∞
+s
+ds′
+Z 1
+−1
+dh′
+Q(n)(s′, −h| −h′)
+|
+{z
+}
+=Q(n)(s′,h|h′) thanks to (B.1.3) of Lemma B.1
+=
+E(n)(s, h).
+Then, (B.2.6) follows immediately from (B.2.3), indeed
+Z ∞
+0
+ds
+Z 1
+−1
+dhE(n)(s, h)
+=
+Z ∞
+0
+ds
+Z 1
+−1
+dhE(n−1)(s, h) +
+Z ∞
+0
+ds
+Z 1
+−1
+dh
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(n−1)(s −s′, h|h′)E(s′, h′)
+=
+Z ∞
+0
+ds
+Z 1
+−1
+dhE(n−1)(s, h)
+|
+{z
+}
+=n−1 by inductive hypothesis
++
+Z ∞
+0
+ds′
+Z 1
+−1
+dh′E(s′, h′)
+Z ∞
+s′
+ds
+Z 1
+−1
+dhQ(n−1)(s −s′, h|h′)
+|
+{z
+}
+=1 by (B.1.4)
+=
+n −1 + 1 = n.
+Then, as for (B.2.7), by using again (B.2.4) we infer that
+E(n)(s, h)
+≤
+E(n−1)(s, h) +
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(s −s′, h|h′)E(n−1)(s′, h′)
+≤
+E(n−1)(s, h)
+|
+{z
+}
+≤
+cn−1
+s+1
++
+Z s/2
+0
+ds′
+Z 1
+−1
+dh′
+Q(s −s′, h|h′)
+|
+{z
+}
+≤
+C
+s−s′+1 ≤2C
+s+2 by (B.1.1)
+E(n−1)(s′, h′)
++
+Z s
+s/2
+ds′
+Z 1
+−1
+dh′Q(s −s′, h|h′)
+E(n−1)(s′, h′)
+|
+{z
+}
+≤
+cn−1
+s′
+≤
+2cn−1
+s+2
+by inductive hypothesis
+≤
+cn−1
+s + 1 + 2C
+s + 1
+Z s/2
+0
+ds′
+Z 1
+−1
+dh′E(n−1)(s′, h′)
+|
+{z
+}
+≤n−1 by (B.2.6)
++2cn−1
+s + 1
+Z s
+s/2
+ds′
+Z 1
+−1
+dh′Q(s −s′, h|h′)
+|
+{z
+}
+≤1
+≤
+3cn−1 + 2C(n −1)
+s + 1
+=:
+cn
+s + 1.
+Lastly, (B.2.8) is a consequence of the fact that
+Z ∞
+s
+ds′
+Z 1
+−1
+dhE(n)(s′, h) ≤
+Z ∞
+0
+ds′
+Z 1
+−1
+dhE(n)(s′, h) = n,
+47

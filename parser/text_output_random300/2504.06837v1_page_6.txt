@@ -1,0 +1,48 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+being the split of X and Y in a domain and a target space, which allows us to directly incorporate
+well-known objects like the classical gradient ∇: C1(Td) →C(Td; Rd) into our framework.
+Furthermore, we observe that by setting G = id, Y = X, X = M+(X) and R∗(ρ, ϕ) :=
+R∗(ρ, Gϕ) for all ρ, ϕ, we recover the well-established notion of a gradient system (X , E, R∗)
+as introduced in [Mie23]. Choosing R∗as a quadratic functional, we can also recover metric
+gradient systems and metric gradient ﬂows in the spirit of [AGS08].
+To establish the link between the gradient system (X, Y, G, E, R∗) and the gradient ﬂow
+equation (2.1), we split the latter into two parts: First, we introduce the continuity equation,
+which links a weak-∗measurable curve ρ : [0, T] →M+(Xdom, Xtar) with a weak-∗measur-
+able curve of ﬂuxes j : [0, T] →M(Y dom, Y tar) by the relation (understood in the sense of
+distributions on [0, T] × Xdom)
+∂tρ = G∗j.
+(2.2)
+The set of curves (ρ, j) satisfying (2.2) is denoted by CE.
+Secondly, given a pair (ρ, j) ∈CE, we recover (2.1) if the initial condition (2.1b) holds and
+j satisﬁes (in the sense of measures) the constitutive relation
+j = ∂ξR∗(ρ, −GDE(ρ)).
+(2.3)
+One important link between a gradient system and its induced gradient ﬂow is called the
+energy-dissipation principle. It is formally established as follows. We introduce the (primal)
+dissipation potential R : M+(Xdom, Xtar) × M(Y dom, Y tar) →[0, ∞] as the convex dual of R∗
+with respect to the second variable. Together CE, E, R and R∗give rise to the dissipation
+functional
+D(ρ, j) :=
+( R T
+0 R(ρ, j)+R∗(ρ, −GDE(ρ)) dt
+for (ρ, j) ∈CE
++∞
+for (ρ, j) /∈CE,
+and the energy-dissipation functional
+L(ρ, j) := E(ρ(T)) −E(ρ(0)) + D(ρ, j).
+We say that the gradient system satisﬁes the energy-dissipation principle if ρ solving (2.1) (in
+a suitable weak sense) is equivalent to (ρ, j) solving CE and L(ρ, j) = 0.
+A crucial role in making this principle rigorous is played by the chain rule inequality for
+the gradient system, which means that L(ρ, j) ≥0 holds for all (ρ, j) ∈CE. This name is
+motivated by the following formal calculation:
+d
+dtE(ρ) = ⟨DE(ρ), ∂tρ⟩X = −⟨−GDE(ρ), j⟩Y ≥−R∗(ρ, −GDE(ρ)) −R(ρ, j),
+where the ﬁrst equality is the classical chain rule, the second equality holds for (ρ, j) ∈CE,
+and the inequality follows from the duality of R∗and R (Young-Fenchel estimate). Integrating
+in time from 0 to T, we obtain L(ρ, j) ≥0.
+However, if L(ρ, j) ≤0 is imposed additionally, then we must have equality in the Young-
+Fenchel inequality for a.a. t ∈[0, T]:
+⟨−GDE(ρ), j⟩Y = R∗(ρ, −GDE(ρ)) + R(ρ, j).
+6

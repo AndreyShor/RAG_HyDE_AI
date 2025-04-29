@@ -1,0 +1,54 @@
+optimal simulation it is preferable to deviate from this ideal and focus attention solely on the reaction
+mechanism/bond reconfiguration step.5 We then initialize the reactants close to the catalyst surface
+with minimal velocity, giving rise to a “soft-landing” to facilitate adsorption. The preparation of in-
+dependent states for each reactant and the catalyst then remains justified to the extent that it does
+not significantly influence the reaction mechanism. This can be deemed acceptable based on heuristic
+considerations, or alternatively the initial mutual separation between the chemical species could also
+be treated as a convergence parameter subject to numerical experimentation.
+2. Kinematic modeling requirements: These refer to further kinematic constraints imposed by the single
+reaction-event physics we focus on. For example, to faithfully model a small time window of a single
+reaction event of a larger chemical reaction, the wavepackets should not significantly delocalize before
+strong interactions between all species develop, and the time for strong interactions to develop should
+be smaller than the average time between reactant collisions, e.g. in the case of the gas, the mean free
+time.
+Rotational Motion
+We may approach the rotational motion with a similar spirit. Statistical mechanics again suggests preparing
+these DoF in a thermal state. A collection of atoms forming metal clusters/slabs, or most molecules for
+that matter, have large equilibrium principal moments of inertia, which are inversely proportional to the
+energy scale of rotations. If one associates a rotational temperature Θrot to this rotational energy scale, for
+typical reaction temperatures T we have T ≫Θrot. Barring H2, with Θrot ∼10−40K, small molecules have
+rotational temperatures Θrot ≲0.1 −10K (see Table 11C.1 in [68] and Table 6.1 in [69]). Hence, naively we
+would have to prepare a thermal state of rotational eigenstates (e.g., eigenstates of the rigid rotor Hamiltonian
+under typical approximations discussed later) to very high angular momentum for molecules. This is a non-
+trivial state preparation that could be carried out by a similar procedure as that discussed for the vibrational
+modes in the next section. In practice, however, such a rotational state preparation is not desirable. For
+small molecules, larger angular momenta, and therefore larger angular velocities, are associated with initial
+configurations that are less likely to adsorb to the catalysts. Hence, these configurations are less kinetically
+relevant for simulations. For larger molecules, even though one naively expects the angular momentum to
+acquire a large quantum number, the effective linear velocities of extremal atoms decreases with increasing
+molecular size, and are asymptotically small compared to the contribution from the vibrational states.
+Accordingly, we construct the molecular reactants in the rotational ground state.
+This choice carries a
+potential additional benefit.
+Assume that a uniform superposition in the rotational degrees of freedom
+effectively behaves as a uniform ensemble for the purposes of chemical bonding and determining the output
+reaction rates. Then, initializing the molecule in the spherically symmetric rotational ground state effectively
+captures uniform averaging over classical molecular orientations relative to the catalytic surface, which would
+instead require several distinct classical calculations. Finally, note that substrates (slabs) are approximated
+in our approach as being periodic, and hence do not have rotational modes associated with them due to
+being confined in a simulation super cell. Isolated atoms also do not have rotational modes.
+Vibrational Motion
+The vibrational modes, extensive in the number of atoms for any molecule, cluster, or other extended phase,
+typically carry the majority of the thermal energy and are mechanistically critical for bond reconfiguration.
+After all, vibrationally stretching a bond is highly conducive to eventually breaking it, a precursor to forming
+new bond configurations. At typical reaction temperatures, for most small and medium size molecules, only
+a few excitations of vibrational modes occur, since they typically involve energies scales between 10 to
+300 meV (∼80 to 2500 cm−1). Therefore, at the initial time, we prepare the vibrational modes of molecules
+in a thermal state with a finite cutoff on the number of excitations per mode, i.e.
+a truncated thermal
+state. Similarly, we build a truncated thermal state for the vibrational modes of the catalyst, although
+the cutoffs for a large cluster or extended phase are higher and therefore will consume more computational
+5If we insisted in preparing reactants far enough from the surface that they are approximately non-interacting at the initial
+time, we would easily find ourselves spending the majority of the overall simulation time waiting for the reactants to reach the
+surface.
+11

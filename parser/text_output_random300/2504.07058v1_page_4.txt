@@ -1,0 +1,100 @@
+The above model can be rewritten as
+𝜕𝑡U(𝑡, 𝑥) = 𝐷1
+𝑥2 𝜕𝑥(𝑥2𝜕𝑥U(𝑡, 𝑥)) + 𝜌U(𝑡, 𝑥) −𝑘𝑡U(𝑡, 𝑥).
+(2.5)
+The following strategy of [38] and [20]. Let 𝑡= 2𝐷𝑡, 𝑢(𝑡, 𝑥) = 𝑥U(𝑡, 𝑥) with these equation (2.3) leads to
+𝜕𝑢(𝑡, 𝑥)
+𝜕𝑡
+= 1
+2
+𝜕2𝑢(𝑡, 𝑥)
+𝜕𝑥2
++ (𝜌−𝑘𝑡)
+2𝐷
+𝑢(𝑡, 𝑥).
+(2.6)
+By letting 𝑅(𝑡, 𝑥) = (𝜌−𝑘𝑡)
+2𝐷
+𝑢(𝑡, 𝑥) equation (2.6) becomes
+𝜕𝑢(𝑡, 𝑥)
+𝜕𝑡
+= 1
+2
+𝜕2𝑢(𝑡, 𝑥)
+𝜕𝑥2
++ 𝑅(𝑡, 𝑥),
+on
+[0,𝑇] × D,
+(2.7)
+𝑢(0, 𝑥) = 𝑢0(𝑥),
+on
+D,
+(2.8)
+𝑢= Γ1,
+𝑢= Γ2,
+on
+[0,𝑇] × 𝜕D.
+(2.9)
+2.1.2
+Extended Fisher–Kolmogorov equation
+The EFK equation represents a nonlinear biharmonic equation. It is expressed as [23]
+𝑢𝑡+ 𝛾∆2𝑢−∆𝑢+ 𝐹(𝑢) = 0,
+on
+[0,𝑇] × D,
+(2.10)
+𝑢(0, 𝑥) = 𝑢0(𝑥),
+on
+D,
+(2.11)
+𝑢= Γ1,
+∆𝑢= Γ2,
+on
+[0,𝑇] × 𝜕D.
+(2.12)
+Here, 𝑢𝑡represents the time evolution of the tumor cell density, 𝛾∆2𝑢accounts for higher-order diffusion
+(biharmonic diffusion), which influences the tumor’s spatial spread but does not represent treatment, −∆𝑢
+corresponds to standard diffusion, describing tumor cell movement, and 𝐹(𝑢) = 𝑢3 −𝑢is a nonlinear reaction term,
+modeling tumor proliferation.
+In this context, Γ1 and Γ2 denote given functions, while 𝑡∈[0,𝑇], 𝑥∈D ⊂R𝑑and 𝑢∈[0,𝑇] × D →R represents
+a confined domain. The parameter 𝛾is a strictly positive constant. An essential characteristic of the EFK equation
+is its energy dissipation law, defined through the energies dissipation law, defined through the energy functional
+can be written as [41]
+𝐸(𝑢) =
+Z
+D
+ 𝛾
+2 |∆𝑢|2+1
+2 |∇𝑢|2+1
+4(1 −𝑢2)2
+
+𝑑𝑥.
+(2.13)
+2.2
+The Underlying Abstract PDE
+Consider separable Banach spaces 𝑋and 𝑌with norms ∥·∥𝑋and ∥·∥𝑌, respectively.
+To be precise, define
+𝑌= 𝐿𝑝(D; R𝑚) and 𝑋= 𝑊𝑠,𝑞(D; R𝑚), where 𝑚⩾1, 1 ⩽𝑝, 𝑞< ∞, and 𝑠⩾0, with D ⊂R𝑑for some ¯𝑑⩾1.
+D = D𝑇= [0,𝑇] × D ⊂R𝑑. Let 𝑋∗⊂𝑋and 𝑌∗⊂𝑌be closed subspaces equipped with norms ∥·∥𝑋∗and ∥·∥𝑌∗,
+respectively. The forward problem is well-posed, as all necessary information is available, while the inverse problem
+is inherently ill-posed due to missing or incomplete information.
+2.2.1
+Forward problems
+The abstract formulation of the governing PDE is
+D(𝑢) = f,
+(2.14)
+where D represents a differential operator mapping 𝑋∗to 𝑌∗, and f ∈𝑌∗satisfies the following conditions:
+(H1) :
+∥D(𝑢)∥𝑌∗< ∞,
+∀𝑢∈𝑋∗with ∥𝑢∥𝑋∗< ∞.
+(H2) :
+∥f ∥𝑌∗< ∞.
+(2.15)
+Additionally, assume that for each f ∈𝑌∗, a unique solution 𝑢∈𝑋∗exists for (2.14), subject to approximate
+boundary and initial conditions given by
+B(𝑢) = 𝑢𝑏
+on 𝜕D,
+𝑢(0, 𝑥) = 𝑢0
+on D.
+(2.16)
+Here, B represents a boundary operator, 𝑢𝑏is the prescribed boundary data, and 𝑢0(𝑥) denotes the initial condition.
+4

@@ -1,0 +1,34 @@
+matter interactions [6–17]. The applications of metasurfaces have expanded to numerous domains as 
+they enable one to control and manipulate light characteristics such as phase, amplitude, and 
+polarization [18–21]. Metasurfaces design is traditionally based on the forward prediction of the 
+optical properties using Finite Element Methods (FEM) and Finite Difference Time Domain (FDTD) 
+methods. While accurate, these methods are computationally expensive, and optimization does not 
+follow a completely systematic approach, especially for multi-parameters problems [22], which are 
+typical of metasurfaces’ design due to the collective nature of their effect. Therefore, finding an ideally 
+optimized design is difficult when the forward prediction is used. 
+Machine learning algorithms are able to learning sophisticated relationships between the structural 
+parameters of metasurfaces and their optical properties through datasets provided by simulation. 
+Therefore, recent efforts have been incorporating machine learning approaches to metasurface 
+design to achieve a more systematic optimization [23–25], enabling to reduce computation time 
+significantly using systematic exploration of parameters, while predicting solutions for new design 
+problems. It has been demonstrated that deep learning is more efficient than conventional 
+optimization methods to predicting optical response of simple metasurfaces [26]. Machine learning 
+has been also used for phase response optimization in research focused on optimization of binary-
+coded metasurfaces [27]. A recent work incorporated an optimization algorithm into machine learning 
+to design multifunctional metasurfaces, considering constraints such as dimensions and 
+materials [28]. However, the standard machine learning methods, being purely data-driven, may 
+struggle with physical constraints existing in optical systems, such as energy conservation and phase 
+continuity. They may also predict non-unique solutions for the same inputs. Physics-informed neural 
+networks are thus introduced to overcome such challenges by incorporating physical laws to the 
+training process [29–34]. Incorporating the Helmholtz equation and neural network is utilized to 
+optimize a solitary cylinder as a replacement for an array of cylinders while the structure maintains 
+the same electric field response [35]. Recently, physical guidance within recurrent neural networks 
+has been used to derive the resonant frequency of structures [36]. The physics-informed methods can 
+increase the accuracy of the predictions, and use smaller datasets to training models [22]. 
+In this research we propose a physics-constrained neural network specifically designed to include 
+physical laws in the prediction of metasurface optical response. While previous physics-informed 
+methods have made important contributions to metasurface’s machine learning, our approach 
+embeds the unit circle normalization directly as a non-trainable network layer and effectively handles 
+the challenging gap-dependent phase behavior, achieving high accuracy with small, imbalanced 
+datasets of 580 and 1075 samples compared to several thousand typically required in previous 
+works [37,38]. Unlike methods that use specialized weighting strategies for imbalanced datasets or 

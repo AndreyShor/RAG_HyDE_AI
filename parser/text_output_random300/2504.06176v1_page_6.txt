@@ -1,0 +1,19 @@
+A Self-Supervised Framework for Space Object Behaviour Characterisation.
+6
+Figure 4: The ten highest reconstruction error test light curves, where A is the highest, and J the tenth highest. These curves
+exhibit periodic variation over time in the measured standardised magnitude (K-T). As in A-K but for the ten lowest error test
+light curves, which exhibit mostly linear variation in the standardised magnitude over time. Some curves exhibit troughs in
+standardised magnitude (K, P, T).
+the light curve fine-tuning, the correlation between reconstruc-
+tion loss and classification accuracy decreased from 0.3 to 0.05
+(Figure 7). This suggests that while the model initially utilised
+the reconstruction representations to assist classification, it later
+learned task-specific features for classification, effectively sep-
+arating out the pre-training task from that of the fine-tuning.
+The variance in this correlation was notably higher during hy-
+perspectra fine-tuning when compared to the light curve fine-
+tuning.
+Having fine-tuned our model to high classification accuracy, we
+next analysed the held-out test dataset, classifying test samples
+as anomalous/non-anomalous and visualising the top twelve
+most confidently predicted anomalies (Figure 8). We found a

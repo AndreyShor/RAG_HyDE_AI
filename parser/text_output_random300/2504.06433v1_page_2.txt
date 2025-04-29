@@ -1,0 +1,45 @@
+Fourier Transform in essentially constant depth [HˇS05]. Are fanout gates necessary here? If one
+only allows gates to act on O(1) qubits each, it is clear that any decision problem computed by
+o(log n)-depth quantum circuits with bounded error can only depend on 2o(log n) bits of the input
+(see Fang et al. [FFG+06] for a discussion). Thus without allowing some class of quantum gates
+with unbounded width (arity), no nontrivial decision problem can be computed by such a circuit.
+What if we restrict to constant-width quantum gates, but we allow measurement of several qubits
+at the end, followed by post-processing by a polynomial-size classical circuit? Here the situation
+is more complicated. For certain types of constant-depth circuits—particularly, for circuits with
+constant-width gates followed by a classical AND applied to the measured results of all the output
+qubits—one can compute in polynomial time the result, provided there is a wide enough gap in the
+probabilities of getting a 0-result versus a 1-result [FGHZ05]. In contrast, Bravyi, Gosset, & K¨onig
+presented a search problem1 that can be computed exactly by a constant-depth quantum circuit
+with constant-width gates, and no classical probabilistic circuit of sublogarithmic depth can solve
+the same problem with high probability [BGK18].
+Another type of multiqubit gate that has a natural deﬁnition is the quantum AND-gate, which
+ﬂips the value of a target just when all the control qubits are on.2 It is not clear whether such a
+gate will be easy to implement, but it is a natural question to compare the power of fanout versus
+quantum AND-gates with respect to constant-depth quantum computation.
+A quantum circuit (actually a family of such circuits, one for each input size) using unbounded
+quantum AND-gates and single-qubit gates is called a QAC-circuit. This is the quantum analogue
+of a classical AC-circuit. Takahashi & Tani showed that the quantum AND-gate can be simulated
+exactly in constant depth by a quantum circuit with single-qubit gates and fanout gates [TT16].
+The converse of the Takahashi & Tani result—can a fanout gate be simulated exactly (or even
+approximately) by a constant-depth QAC-circuit?—is still an open question, and is the main focus
+of this paper. We conjecture that the answer is no, and our current results supply evidence in
+that direction, proving a separation between fanout and depth-2 QAC-circuits. It is known that
+quantum fanout gates are constant-depth equivalent to quantum parity gates [Moo99], and so the
+question at hand is a reasonable quantum analogue to the already proven separation between parity
+and AC0 in classical circuit complexity [Ajt83, FSS84] (the superscript 0 signiﬁes constant-depth
+circuits). This analogy is not perfect; in classical circuit complexity, fanout is usually taken for
+granted and used freely, and this is not the case with quantum circuits.
+Conjecture 1.1. Constant-depth QAC-circuits cannot simulate quantum fanout gates.
+Partial progress on this conjecture was made by Fang et al. [FFG+06], where it was shown that
+no constant-depth QAC-circuit family (a.k.a. a QAC0-circuit family) with a sublinear number of
+ancilla qubits can approximate a fanout gate. Subsequent progress on this conjecture then stalled
+for several years. In 2014, E. Pius [Piu14] announced a result that parity (equivalently, fanout) of
+more than ﬁve qubits cannot be simulated cleanly by a QAC-circuit with depth 2.3 We have been
+unable to verify his proof completely. Nonetheless, some ideas in that paper have been helpful in
+a new push to prove the conjecture.
+1In a search problem (or relation problem) there may be several possible acceptable outputs, and the device is
+only required to produce one of them.
+2These gates are also called generalized Toﬀoli gates.
+3We ignore single-qubit gates in determining the depth of a circuit, counting only those layers containing multiqubit
+gates. See Section 2 for deﬁnitions.
+2

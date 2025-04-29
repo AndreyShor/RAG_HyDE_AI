@@ -1,0 +1,44 @@
+Preprint. Under review.
+Figure 7: Executability and number of errors over solutions returned by the ControllerAgent.
+The scatter at 0 denotes the spread from the samples in the initial population and the black
+line denotes the mean value for the metric at that state across all problems. Each colored
+line demarcates a different problem.
+Figure 6 depicts the blockwise executability in the initial sample relative to the best solution
+across problems. The standard deviations in the best case are higher since we have 1 best
+solution for each problem, and 20 samples per problem in the initial population. Figure 7
+plots the Executability as well as the number of errors over solution iteration. The evolution
+of the metrics isn’t monotonic and in some cases the agent gets stuck on the same solution for
+some iterations, or takes an incorrect turn. We added the acceptance criterion to minimize
+the number of iterations required to “escape” an incorrect turn.
+F
+Qualitative Analysis
+In Figure 8, we qualitatively compare the LLM-generated code for the ModelSpecs task
+in the baseline (one-shot) setting with Gemini-1.5-Pro, relative to the ground truth code
+field, for the problem in Appendix B.1.3. At a high-level, the LLM’s solution consists of
+API calls that qualitatively possess the same structure and grammar as in the GT code.
+This problem requires the LLM to represent the cylindrical cross-section of a cylinder as a
+rectangle in 2D, with the axisymmetric condition applied for rotational symmetry about the
+cylinder’s axis. The LLM instead creates a 3D geometry and attempts to create a rectangle.
+This doesn’t work as is indicated by the error message, since the rectangle is a 2D construct
+and cannot be directly created as a 3D object. Since the rectangle creation action fails, no
+‘r1’ node is created, and subsequent actions acting on the ‘r1’ node are invalid. This pattern
+of non-executability is also observed downstream, where all actions on the ‘ht’ node are
+rendered invalid because the ‘ht’ node could not be created in the first place. Note, if the
+LLM had chosen a 2D axisymmetric geometry, the remaining geometry lines of code would
+be correct. They fail because of an incorrect decision made first.
+The LLM tries to create a ‘HeatTransferinSolids’ interface. We described this pathology in
+RQ2. In this example, the Interface Recall and Feature Recall metrics are 0, as is the Interface
+Factuality metric. The GT code modifies 5 features, of which the LLM only modifies 1
+(setting T0 to 273.15 K). Thus the Modify Feature Property score is 0.2.
+G
+Can LLMs solve these problems in Python?
+Our experiments underscored the challenge of composing physics reasoning skills with the
+ability to generate syntactically correct and consistent COMSOL Multiphysics®API code.
+In this section, we seek to evaluate how well LLMs can solve FEABench Gold problems
+with a general purpose programming language, Python. We set up a Docker environment
+with the numerical packages, numpy (Harris et al., 2020) and scipy (Virtanen et al., 2020),
+along with the open-source FEniCSx (dolfinx) (Baratta et al., 2023) package. We further test
+the SWE-Agent (Yang et al., 2024a) framework with claude-3-5-sonnet-20241022 as the
+underlying LLM on its ability to solve these problems, since claude-3.5-sonnet generally
+performed best in Table 2 and 3.
+27

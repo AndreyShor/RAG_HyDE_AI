@@ -1,0 +1,62 @@
+(L−Θ+ = 0), where the symbol L−denotes the Lie derivative along the congruence k−. In
+general, we can define the Lie derivative of Θq = (Θ+, Θ−) along the congruence p = (k+, k−)
+as LpΘq = kµ
+p ∂µΘq = (Dt + pDr)Θq, where q, p take the values (+1, −1). In terms of the
+Misner-Sharp variables, we can write the following general expression,
+LpΘq = 2
+R
+ M
+R2 (q p −1) −
+w
+w + 1
+ρ′
+ρB (Γ + q U) −p
+
+K + 2U
+R
+
+(Γ + qU)
+−4πρR(q p + w) −(U + qΓ)(U + pΓ)
+R
+
+,
+(3.18)
+where we made use of Eq.(2.15) to eliminate the divergences associated with type-II
+fluctuations. We refer the reader to the appendix B for details about the derivation.
+In this work, we are mainly interested on the identification of type A/B PBH (we
+refer the reader to [41] for a more detailed discussion and analysis about the horizon struc-
+ture) during the numerical evolution, and therefore for practical purposes we simply clas-
+sify the horizons as:
+the apparent horizon of a spherically symmetric black hole corre-
+sponds to a marginally trapped surface which fulfills Θ+ = 0, Θ−< 0 (which satisfies
+U(r∗, t) = −Γ(r∗, t)), the cosmological horizon corresponds to a marginally anti-trapped
+surface where Θ−= 0, Θ+ > 0 (which satisfies U(r∗, t) = Γ(r∗, t)) and bifurcated trapping
+horizons corresponds to Θ+ = Θ−= 0, which implies that U(r∗, t) = Γ(r∗, t) = 0 and its
+formation denotes type B PBH. This means that at the location r∗of the bifurcated trapping
+horizon, the Eulerian velocity U vanishes at the same r∗where R′ = 0 is found. In section
+5, we will focus on studying the congruence expansion Θ± in the numerical simulations to
+identify type A/B PBH.
+4
+Numerical methodology
+To implement the new approach, we develop a numerical code following the numerical
+methodology in [17]. We call this new code SPriBHoS-II (in comparison with SPriBHoS6
+from [17]), and we make a basic version publicly available here [55]. In particular, we use
+the Pseudo-Spectral Chebyshev Collocation Method to compute the radial derivatives in
+Eqs.(2.17)-(2.23), while the time evolution of the equations is carried out using an explicit
+fourth-order Runge-Kutta (RK4) method. The advantage of spectral methods, is that the
+error decays exponentially with Ncheb. This is because spectral methods compute derivatives
+globally, considering all grid points rather than just the neighboring points.
+To learn about spectral methods, we refer the reader to [72], but we provide the main
+ideas here, following [17]. Let’s consider a function f(x) and approximate it using Ncheb
+Chebyshev polynomials. Then the approximated function is written as,
+fNcheb(x) =
+Ncheb
+X
+k=0
+ckTk(x),
+(4.1)
+where Tk(x) are the Chebyshev polynomial of order k. The coefficients ck, k = 0, 1, ..., Ncheb
+are then obtained by solving fNcheb(xk) = f(xk) where xk = cos(kπ/Ncheb). Those points are
+6SPriBHoS was the first numerical code publicly available in the literature for spherically symmetric
+simulations of PBH formation from the collapse of adiabatic fluctuations with a perfect fluid.
+– 10 –

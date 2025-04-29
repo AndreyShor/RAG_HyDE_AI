@@ -1,0 +1,33 @@
+4
+Thus, the final SREM energy for the three-parameter ansatz is given by
+ESREM
+JKL
+= EEM
+JKL +(E
+′
+JKL −EJKL)
+(15)
+= EJKL +∆ref
+JKL +(E
+′
+JKL −EJKL)
+= (ESREM
+JK
+−(E0
+L)JK)+(E
+′
+JKL)
+This completes the mitigation process for the three-parameter circuit and ESREM
+JKL
+is used as noiseless energy for training in
+GNM model. The noisy energy Enoisy
+JKL for three parameter circuit which is used as training data for GNM model is obtained by
+optimizing all three parameters θJ, θK and θL starting from the initial point zero.
+Enoisy
+JKL = ⟨φHF|e−τJ(θJ)e−τK(θK)e−τL(θL) ˆHeτL(θL)eτK(θK)eτJ(θJ) |φHF⟩(initial −point = [0,0,0])
+(16)
+The detailed algorithm for the SREM technique is shown in Fig. S1.
+Fig. S2: The energy error relative to the noiseless value is plotted for both noisy and SREM energies across various
+snippet circuit combinations. The pink region corresponds to the one-parameter circuit, the light yellow region
+represents the two-parameter circuit, and the white region denotes the three-parameter circuit. The mitigated
+expectation values show larger spread as one moves from one to two to three parameter snippet circuits.

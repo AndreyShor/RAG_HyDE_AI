@@ -1,0 +1,111 @@
+5
+Figure 2 shows an example of the configuration evolu-
+tion for the CBO algorithm for 12 agents, 4 qubits and
+a randomly sampled Htarg.
+The initial configurations
+are sampled, after which they start to concentrate and
+eventually reach a consensus.
+All results in this work
+will initialize 12 agents, which is equal to the number
+of available cores on our classical simulation system, but
+the algorithm would obviously benefit from more agents.
+A.
+GHZ state preparation
+As
+a
+first
+illustrative
+example,
+we
+investigate
+the
+preparation
+of
+a
+maximally
+entangled
+Green-
+berger–Horne–Zeilinger (GHZ) [37] state on 3 qubits
+|GHZ⟩=
+1
+√
+2(|000⟩+ |111⟩),
+by taking Htarg = −|GHZ⟩⟨GHZ|. To show the result-
+ing energies reached more clearly, we will solve the pulse
+optimization for Nfinal ≫Nin iterations throughout this
+work for both the initial and final configurations. Fig-
+ure 3 shows that the pulse optimization for an equilateral
+triangle configuration (red triangles) performs much bet-
+ter than in a lattice configuration (red squares), which is
+logical given the symmetry in Htarg. This indicates that
+certain configurations exhibit significantly better perfor-
+mance compared to others. The CBO algorithm can be
+seen to take symmetry into account as it converges to
+an equilateral triangle-like configuration. The optimized
+interatomic distance in the equilateral triangle also con-
+tributes to reaching convergence.
+Figure 3. Energy error convergence for preparation of 3-qubit
+GHZ state for initial lattice (squares) and triangle (triangles)
+configurations (red). Random initial configurations (blue) are
+optimized (gold) and reaching much faster energy error con-
+vergence. Inset: lattice (red squares) and triangle (red tri-
+angles) configurations with initial to optimized configuration
+evolution. Nin = 100, Nout = 20. Colorized by qubit index.
+B.
+Interaction types
+To investigate the performance of our algorithm for vary-
+ing interaction types, we run our consensus-based posi-
+tion optimization procedure for Dipole-Dipole, VdW gr-
+qubit, and VdW gg-qubit interactions (see App. B). Fig-
+ure 4 shows representative instances for each of these
+interaction types. For both Dipole-Dipole (Fig. 4a) and
+VdW gg-qubit interactions (Fig. 4c), we see a great de-
+crease in energy error for the optimized positions (gold)
+compared to the initial positions (blue).
+In particu-
+lar, pulse optimization is somewhat slower for VdW gg-
+qubits due to the extra controls and the qutrit manifold
+{|0⟩, |1⟩, |r⟩} (rather than qubit). Figure 4b shows a typ-
+ical instant for VdW gr-qubits. When inside each other’s
+Rydberg blockade radius, two interacting qubits can not
+be excited to their |1⟩states simultaneously, and there-
+fore the ground state can not be reached for most Htarg.
+Nevertheless, this use case clearly illustrates another ad-
+vantage of the position optimization, which is that con-
+vergence is sped up. From Fig. 4b, we clearly see that
+fewer pulse optimization iterations are needed to reach
+the lowest possible energy. The advantage of the CBO is
+thus two-fold: configurations are found that lead both to
+lower energies and fewer necesary pulse iterations. For
+the rest of this section we will use Dipole-Dipole inter-
+acting qubits as these do not inhibit any part of the com-
+putational state space from being reached and thus give
+the clearest result on energy error improvement.
+C.
+Hyperparameter analysis
+Next, the influence of the hyperparameters α, σ and λ on
+the consensus algorithm is investigated, as in (2) and (4).
+Figure 5 shows the results for varying hyperparameters,
+but with the exact same initial configurations and target
+Hamiltonians Htarg.
+For all cases, solutions are found
+below chemical accuracy. However, the behavior of the
+solutions differs strongly. In Fig. 5c, the parameter α is
+enhanced, leading to higher weights ωα
+f for better solu-
+tions. This results in a stronger and faster convergence
+and less overall exploration of the configuration space. In
+Fig. 5d, σ is enhanced, leading to more diffusion and to-
+tal exploration of the configurations at the cost of slower
+consensus. This can be seen in Fig. 5a, where the final
+errors still vary quite strongly after 100 pulse optimiza-
+tions. Lastly, in Fig. 5e, λ is enhanced, giving rise to
+faster attraction to the weighted mean. For this case, we
+see in Fig. 5a that all configurations have very similar
+pulse optimizations that come at the cost of exploration.
+In general, we empirically find that the hyperparameters
+(α = 4, σ = 0.1, λ = 0.4) lead to good solutions. The
+final configurations found for all of these different cases
+are similar in configuration, with the exception of Fig. 5b,
+indicating the existance of several well-performing con-
+figurations for a particular instance of Htarg.

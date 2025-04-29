@@ -1,0 +1,46 @@
+resetting, with and without MetaD. Section 6 overviews anticipated future development of
+the resetting method. We conclude the review with a practical discussion of when and how
+should practitioners use resetting for enhanced sampling.
+2
+What is stochastic resetting?
+Before reviewing the theory of resetting in detail, and outlining suﬃcient and universal
+conditions for accelerating a stochastic process, we qualitatively discuss the typical behavior
+of stochastic processes that are accelerated under resetting.
+Resetting is the procedure of occasionally stopping and restarting a random process,
+subject to the resampling of independent and identically distributed initial conditions. It
+has drawn much attention for over a decade,43,44 since the pioneering work of Evans and
+Majumdar.45 They studied a particle diﬀusing in one dimension, which is returned to its
+initial position (reset) at random times, sampled from an exponential distribution with a
+ﬁxed rate r. Evans and Madjumadar showed this system is fundamentally diﬀerent than the
+corresponding process without resetting: While the position distribution without resetting
+is a Gaussian with time-dependent width, under resetting the system reaches a steady state
+with a Laplace position distribution. Furthermore, the mean time for the particle to reach
+an absorbing boundary at a distance L from the origin diverges without resetting but is
+ﬁnite under resetting at a ﬁnite rate.
+Figure 1(a) illustrates the setup of Evans and Majumdar. The blue line shows a random
+trajectory without resetting along a coordinate x.
+The particle is initiated at the black
+dashed line, and ﬁrst reaches the target gray dashed line located at L at time t = τ. We
+will refer to the time in which the system ﬁrst reaches the target (with or without resetting)
+as the ﬁrst-passage time (FPT). Alternatively, under resetting, the particle returns to the
+initial position at some random time, as indicated by the dotted orange line. In this speciﬁc
+example, the trajectory is composed of two independent segments separated by a resetting
+event, but it can generally be composed of any number of segments.
+The ﬁrst segment
+follows the blue line until the restart and the second segment follows the orange solid line
+until reaching the target at time τr. Note that τr is the cumulative duration of all segments
+in the trajectory under resetting. In this particular case, the total time it took the particle to
+reach the absorbing boundary is shorter with resetting, i.e., τr < τ. Evans and Madjumdar
+showed that for a diﬀusing Brownian particle introducing resetting at a small ﬁnite rate
+makes the mean FPT (MFPT) under restart ﬁnite. Therefore, ⟨τ⟩r ≪⟨τ⟩for all ﬁnite r.
+As we will discuss in the next section, resetting will not always accelerate a stochastic pro-
+cess. However, this powerful result, that introducing resetting lowers the MFPT, was found
+to be widespread, as demonstrated in various recent applications of resetting for accelerating
+stochastic processes: from queuing systems46,47 and randomized computer algorithms,48,49
+to ﬁrst-passage and search processes,50–59 and recently, by us, in enhanced sampling of MD
+simulations.5,39–41 Apart from applications, resetting also emerged as a theoretical frame-
+work for a better understanding of biological phenomena such as enzymatic catalysis and
+inhibition,60,61 and backtrack recovery by RNA polymerases.62,63 In addition, its ability to
+generate non-trivial non-equilibrium steady states recently encouraged novel experimental
+studies in non-equilibrium statistical mechanics.64–66 The ability to reduce the MFPT of
+4

@@ -1,0 +1,70 @@
+30
+Mt
+At
+St
+Zt
+Mt+1
+At+1
+Zt+1
+St+1
+Mt−1
+At−1
+St−1
+Zt−1
+Mt+2
+At+2
+Zt+2
+St+2
+Mt−2
+At−2
+St−2
+Zt−2
+Mt+3
+At+3
+Zt+3
+Mt−3
+At−3
+St−3
+Zt−3
+FIG. 16. Bayesian network for an product environment channel (lemma 7) with colored d-separarion (blue d-separates red and
+green) used in the proof of Theorem 6.
+order to show that (bt) is monotone increasing, we use the chain rule for mutual information in the form of eq. (A10)
+with W = St+j, X = Aj+1:t+j+1Sj:t+j, Y = A0:jS0:j and Z = Mt+j:
+I[A0:t+j+1S0:t+j; St+j|Mt+j] = I[Aj:t+j+1Sj:t+j; St+j|Mt+j] + I[A0:jS0:j; St|MtAj:t+j+1Sj:t+j].
+(F30)
+Using stationarity (eq. (F25)) of the process MAS, we find pM0:t+1A0:t+1S0:t+1 = pMj:t+j+1Aj:t+j+1Sj:t+j+1 for any
+t, j ∈N0, which can be marginalized to the statement pMtA0:t+1S0:t = pMt+jAj:t+j+1Sj:t+j. Thus, I[A0:t+1S0:t; St|Mt] =
+I[Aj:t+j+1Sj:t+j; St+j|Mt+j]. Plugging this into eq. (F30) yields
+I[A0:t+j+1S0:t+j; St+j|Mt+j] = I[A0:t+1S0:t; St|Mt] + I[A0:jS0:j; St|MtAj:t+j+1Sj:t+j].
+(F31)
+From this, using the nonnegativity of mutual information, we obtain
+I[A0:t+j+1S0:t+j; St+j|Mt+j] ≥I[A0:t+1S0:t; St|Mt]
+∀t, j ∈N0,
+(F32)
+or equivalently bt+j ≥bt, which proves that (bt) is monotone increasing.
+Further, since cN is defined as the arithmetic mean of b0, b1, . . . , bN−1, we have that cN is bounded and monotone
+increasing as N →∞.
+We are now in the position to prove the first part of the theorem. By the monotone convergence theorem and the
+properties of cN, the limit lim
+N→∞cN exists and equals the supremum. Therefore, eq. (F24) holds true if and only if cN
+is zero for all N ∈N0 which, in turn, is the case if and only if bt is zero for all t ∈N0. Further, by lemma 8, this is
+equivalent to eq. (F26) which concludes the proof of the first part of the theorem.
+For the second part of the theorem, we need to show that, given the assumption that the environment channel is
+also a product channel, eq. (F25) is equivalent to eq. (F26). Using the single-step chain rule of mutual information
+(eq. (A10)), we can split up eq. (F25) as
+I[A0:t+1S0:t; St:∞|Mt] = I[S0:t; St:∞|Mt] + I[A0:t+1; St|MtS0:t]
+∀t ∈N0
+(F33)
+The second term on the right-hand side vanishes for product environment channels due to d-separation (see Figure 16)
+and the first term corresponds to eq. (F26) which concludes the proof.
+The next theorem provides a condition for the existence of predictive agent models:
+Theorem 7. Let agt →
+←env be any percept-action loop. If the environment channel is unifilar, then there exists an
+a.m. predictive agent model agtM for agt.
+The proof is based on the idea that the agent’s memory can be extended to store and update the hidden state
+of the unifilar environment model. Knowledge of the hidden states of an environment model makes the agent predictive.
+Proof. The proof proceeds by construction.
+Let
+• agtM′ = (Θagt, pM ′
+0A0) be a Markov model for agt with memory states M′;
+• envM = (Φenv, pZ0) be a unifilar Markov model for env on some hidden-state alphabet Z.

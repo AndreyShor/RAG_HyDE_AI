@@ -1,0 +1,50 @@
+Preprint. Under review.
+A way to further increase the complexity of the benchmark could involve more intricate
+geometries, imported Computer-Aided Design (CAD) models, and requiring the LLM to
+operate the software via its graphical user interface. While datasets such as FEABench Large
+provide a useful statistical signal on the quality of code solutions generated across a large
+number of problems, adding more human verified problems would be valuable. Using an
+LLM-annotated corpus to boost code executability might facilitate code generation in other
+low-resource domain-specific language contexts. Conversely, code generation approaches
+for other low-resource languages (Cassano et al., 2024) might reduce the bottleneck of
+translating predefined decisions to code.
+The ability to operate engineering simulation software to quantitatively analyze a problem
+would augment LLMs’ reasoning skills with the software’s numerical precision and inbuilt
+checks, and significantly push the ceiling on the complexity of problems that LLMs can
+accurately and reliably solve. Unlocking this potential would bring LLMs a step closer to
+being able to serve as grounded ‘engineering assistants’ that can autonomously run precise
+simulations to innovate and optimize designs and answer quantitative questions about
+physical phenomena in the real world.
+7
+Reproducibility Statement
+The benchmark problems for FEABench Gold and the code are available at FEABench .
+The prompts used are in Appendix H. We will also release the list of tutorial identifiers used
+in our evaluation on FEABench Large, and the library of code block annotations used in the
+RetrieveAnnotatedSnippets tool. A COMSOL Multiphysics®license will be needed to run
+the Multi-Turn Agent experiment, and to compute execution-based metrics (delineated in
+Section 3 by †). The bridge to communicate with COMSOL Multiphysics®from Python is
+described in Appendix D.1 and the Python packages needed are open-source. The tutorial
+documents and models used in FEABench Large are accessible on the internet on the
+COMSOL Multiphysics®website.
+8
+Acknowledgements
+We are grateful to Eser Ayg¨un for valuable suggestions on agent design. We thank Stephan
+Hoyer and Marc Coram for useful comments on the draft, and are grateful to Rachel Stigler
+for guidance. At Harvard, NM is partially supported by the National Science Foundation
+under Cooperative Agreement PHY2019786 (The NSF AI Institute for Artificial Intelligence
+and Fundamental Interactions).
+References
+Jpype. Available online at: https://jpype.readthedocs.io/en/latest/.
+Mph. Available online at: https://mph.readthedocs.io/en/1.2/.
+COMSOL Multiphysics®. COMSOL Multiphysics®application gallery. Available online at:
+https://www.comsol.com/models.
+Google Cloud Vertex AI.
+Discoveryengine.
+URL https://cloud.google.com/
+generative-ai-app-builder/docs/ranking.
+Ansys, Inc. Ansys. Available online at: https://www.ansys.com/.
+Anthropic. Claude 3.5 sonnet. https://www.anthropic.com/news/claude-3-5-sonnet.
+Jacob Austin, Augustus Odena, Maxwell Nye, Maarten Bosma, Henryk Michalewski, David
+Dohan, Ellen Jiang, Carrie Cai, Michael Terry, Quoc Le, et al. Program synthesis with
+large language models. arXiv preprint arXiv:2108.07732, 2021.
+10

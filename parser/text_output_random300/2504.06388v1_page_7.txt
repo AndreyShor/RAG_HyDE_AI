@@ -1,0 +1,50 @@
+Elimination of spurious oscillations on photoemission spectra
+7
+In order to understand the origin of the spurious oscillations commonly observed
+in the theoretical photoionization spectra, we start considering a laser interacting
+with an electron conﬁned within a square potential well. This potential has a width of
+a = 3 a.u. and depth V0 = 0.5. It features a single bound state φ1 with an energy of
+E1 = −0.314 a.u.. The laser pulse has a frequency of ω = 0.8 a.u., peak ﬁeld strength
+of F0 = 0.5, and a duration of six cycles, i.e., τ = 6 × 2π/ω = 47.12 a.u.. We solve the
+TDSE as given by Eq. (1) in the length gauge, where Hint(t) = zF(t). The spatial grid
+for our calculations consists of 5000 points evenly distributed over z = (−L/2, L/2)
+with L = 200 a.u.. The stationary eigenfunctions are obtained by diagonalizing the H0
+Hamiltonian using the LAPACK package [25]. For the TDSE solution, we utilize the
+staggered leap-frog method [19, 20], propagating the wavefunctions over 60000 time
+steps with ∆t = 8.3 × 10−4 a.u. until a time slightly greater than the pulse duration.
+Throughout the propagation, we continuously monitor the proper normalization of
+the wave function to ensure unitarity.
+3.1. Diﬀerential emission probabilities
+The photoionization emission probability is usually calculated by projecting the
+solution of the TDSE at the end of the laser pulse onto the continuum stationary
+eigenvectors. We computed the probabilities using Eq. (6) and present the outcome
+in Fig. 2.
+The expected photoelectron emission spectra consists of broad peaks
+resulting from the multiphoton absorption process from the initial bound state. These
+peaks correspond to above-threshold ionization (ATI) energy levels (n = 1, 2, . . .) and
+are separated by a photon energy of ω = 0.8 a.u., in accordance with the energy
+conservation relation given by:
+En = nω −Ip −Up .
+(14)
+In this context, the ionization potential is the binding energy of the initial state,
+Ip = |E1| = 0.314 a.u., while the ponderomotive potential Up = (F0/2ω)2 ≃0.1
+represents the energy of an oscillating electron inﬂuenced solely by the laser ﬁeld [2].
+However, the resulting spectra exhibit a strong oscillating pattern superimposed
+on the expected curves. These rapid oscillations cover an amplitude of about two
+orders of magnitude, and the spacing between their peaks increases as the emitted
+electron energy increases. It becomes evident [24] that the strong oscillatory structures
+within the peaks are a spurious artefact of the ﬁnite basis set used in the computations.
+The explanation for these unexpected oscillations is straightforward. Since the time-
+evolved wavefunction ψ(τ) primarily retains the spatial shape of the initial bound state
+φ1, projecting onto continuum functions results in two types of transition amplitudes:
+one type, where both the initial φ1 (and consequently ψ(τ)) and the projected φk
+waves have the same parity, retains nearly the entire probability. The other type, in
+which the projected wavefunctions have opposite parities, exhibits signiﬁcantly lower
+probabilities. When the physical problem is conﬁned to a numerical grid, it is possible
+to move arbitrarily the walls of the box, changing thus the stationary eigenfunctions.
+It is possible then to design two potentials in which the same eigenvalue appears in
+both cases, but the corresponding eigenvectors have diﬀerent parities. Therefore, the
+highly oscillating structures interfering with the ATI photoemission spectra are indeed
+spurious and should be disregarded.
+To reduce the high oscillations in the total energy spectrum, we initially employed
+the WOM method using Eq. (12) with γ = 0.045 and examined three diﬀerent values

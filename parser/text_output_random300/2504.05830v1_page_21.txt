@@ -1,0 +1,44 @@
+Springer Nature 2021 LATEX template
+Human Activity Recognition using RGB-Event based Sensors
+21
+Table 6 Ablation Studies of Fusion Methods on HARDVS 2.0 dataset.
+# Fusion Methods
+acc/top-1
+acc/top-5
+1. Simple addition
+52.3
+59.3
+2. Concatenate
+52.3
+60.2
+3. Random selection
+52.6
+60.3
+4. Adaptive routing selection
+53.2
+62.1
+Fig. 5 (a). The impact of the number of frames on accuracy; (b). The impact of input
+image resolution on accuracy.
+• Analysis of Fusion Methods.
+In this study, we propose a novel policy
+routing based fusion method to effectively tackle the challenge of imbalanced
+multi-modal. As illustrated in Table 6, we first explored basic fusion strategies
+such as simple addition and concatenation. However, both methods achieved
+a top-1 accuracy of 52.3%, highlighting their limitations in capturing complex
+multi-modal interactions. To enhance adaptability across diverse scenarios, we
+designed three distinct fusion strategies tailored to better integrate comple-
+mentary modality information. Notably, the results presented in the third and
+fourth rows of Table 6 demonstrate that our policy routing based approach
+significantly outperforms the strategy of randomly selecting among the three
+fusion methods, showcasing superior robustness and generalization capabili-
+ties. These compelling experimental findings validate the effectiveness of our
+proposed method in advancing performance on multi-modal human activity
+recognition tasks.
+• Efficiency Analysis.
+As shown in Table 7, we conduct a comprehensive
+comparison of three critical model metrics: checkpoint storage size, compu-
+tational efficiency (measured in FLOPs), and parameter count. The results
+demonstrate that our proposed multi-modal HCO achieves a reduction in
+model storage requirements (from 1.04GB to 309.3MB) compared to the
+multi-modal Transformer (Here, we employ a 10-layer stacked Transformer
+architecture for comparative analysis), improves computational efficiency by

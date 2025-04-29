@@ -1,0 +1,56 @@
+Background and preliminaries
+15
+Convergence in distributions of random measures. For a locally compact Polish space X, we let
+M+(X) be the space of non-negative, locally finite measures on X endowed with the topology of
+vague convergence. We equip the space of probability distributions on M+(X) with the topology of
+weak convergence. For a collection (νt)t≥0 of M+(X)-valued random variables, we write νt ⇒ν to
+indicate vague convergence in distribution as t →∞.
+We record here a useful criterion to establish the vague convergence in distributions of M+(X)-valued
+random variables.
+Lemma 3.2. Let (νt)t≥0 be a collection of M+(X)-valued random variables and let ν ∈M+(X).
+If for all f ∈C+
+c (X), the following limit holds
+lim
+t→∞E[exp(−νt(f))] = E[exp(−ν(f))] ,
+(3.6)
+then it holds that νt ⇒ν as t →∞.
+Proof. This is an immediate consequence of the continuity theorem for Laplace transforms, see e.g.
+[Kal17, Theorem 4.11].
+Remark 3.3. In what follows, we will be interested in the case X = [n] × Rd which coincides
+(including the topology) with the space (M+(Rd))n.
+Given a locally compact Polish space X and a Hilbert space Y equipped with a dense subspace Y0, we
+consider probability distributions on Y × M+(X). Similarly to before, for a sequence (Y, νt)t≥0 of
+Y × M+(X)-valued random variables, we write (Y, νt) ⇒(Y, ν) to indicate vague convergence in
+distribution. We now state the following result, which provides sufficient conditions for convergence
+in distribution on the space Y × M+(X).
+Lemma 3.4. Let (Y, νt)t≥0 be a sequence of Y × M+(X)-valued random variables, and let
+ν ∈M+(X). If for all (φ, f) ∈Y0 × C+
+c (X) the following limit holds
+lim
+t→∞E
+h
+exp(i⟨Y, φ⟩) exp(−νt(f))
+i
+= E
+h
+exp(i⟨Y, φ⟩) exp(−ν(f))
+i
+,
+(3.7)
+then it holds that (Y, νt) ⇒(Y, ν) as t →∞.
+Proof. Taking φ = 0 in (3.7) and using Lemma 3.2, we deduce that νt ⇒ν. Consequently, the
+joint distribution (Y, νt) is tight in Y × M+(X). Thus, the joint convergence in distribution follows
+if we can show the convergence of the finite-dimensional distributions. As both Y and νt are
+linear forms, the convergence of the finite-dimensional distributions can be inferred from that of the
+one-dimensional distributions. Therefore, it suffices to verify that, for all (φ, f) ∈Y0 × C+
+c (X), the
+following convergence holds
+(⟨Y, φ⟩, νt(f)) ⇒(⟨Y, φ⟩, ν(f)) .
+(3.8)
+Since the random variable ν(f) is almost surely non-negative, it can be readily observed that the
+joint convergence in distribution (3.8) holds if the corresponding joint Fourier–Laplace transform
+converges, i.e. if (3.7) holds.
+Remark 3.5. In what follows, we will be interested in the case X = [n] × Rd and Y = H−κ
+loc (Rd),
+for some κ > 0, in which case we can take Y0 = C∞
+c (Rd).

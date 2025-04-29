@@ -1,0 +1,57 @@
+this case, (6) does not hold and should be replaced by (Barber et al., 2023)
+Prob
+
+BC(YN+1, ˆYN+1) ≥Qα
+
+≥1 −α −gap
+(10)
+gap =
+1
+N + 1
+N
+X
+n=1
+dTV(An, AN+1)
+(11)
+Qα = sup
+q
+( N
+X
+n=1
+1(An ≥q) ≥⌈(1 −α)(N + 1)⌉
+)
+(12)
+An = BC(Yn, ˆYn)
+(13)
+The practical use of the bound is limited because we cannot estimate dTV(An, AN+1),
+n = 1, . . . , N, without knowing all noise sources of the test device or having
+samples from the noiseless outputs, YN+1. Two orthogonal general strategies
+have been proposed to mitigate similar non-exchangeability issues, sample
+reweighting, e.g. the Mondrian Conformal Prediction algorithm of Bostr¨om
+and Johansson (2020) and the localization approaches of Tibshirani et al.
+(2019) and Guan (2023), and calibration training, where the calibration
+score function is trained to account for possible object-conditional variabil-
+ity.
+2. These and follow-up works focus on establishing CP-conditional va-
+lidity instead of addressing general shifts between the calibration and test
+distributions. Replacing CP marginal validity (6) with an exact or approx-
+imate input-conditional version of it is challenging and, in general, prac-
+tically unachievable (Vovk, 2012).
+Assuming there exists a feature map,
+Z = ϕ(ˆY ) ∈Z, defined for any ˆY , i.e. for any QC device, estimating an
+upper bound of the BC between the noisy and noiseless outputs of classi-
+cally intractable circuits would be equivalent to finding a quantile function
+Q : Z ⊗(0, 1) →[0, 1], such that
+Prob
+
+BC(YN+1, ˆYN+1) ≥Q(z, α)|ZN+1 = z
+
+≥1 −α
+(14)
+where Zn = ϕ(ˆYn) are the features of the n-th device. In particular, (14)
+would automatically provide valid noise quantification for large devices by
+setting z = ZN+1 at test time. In the Quantum Supremacy regime, however,
+this is impossible because circuits with z = ZN+1 are classically intractable
+2The latter approach was initiated by Papadopoulos et al. (2008) in 2028 but has
+been rarely exploited fully or investigated further. See Colombo (2024) for a more recent
+example.

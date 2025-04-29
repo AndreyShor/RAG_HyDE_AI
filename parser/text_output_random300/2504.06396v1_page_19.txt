@@ -1,0 +1,47 @@
+A Scalable Automatic Model Generation Tool for Cyber-Physical Network Topologies and Data Flows for Large-Scale
+Synthetic Power Grid Models
+XXX:19
+Fig. 19. Substation’s local area networks have two
+separate networks, one with relays, a relay controller,
+and an outstation. The other with the local HMI, data-
+base, and other local hosts.
+Fig. 20. UCCs local area network, including EMS and
+HMI hosts, switches, routers, firewalls, and the BA
+DMZ with the ICCP node.
+Fig. 21. Star Topology
+Fig. 22. Radial Topology
+Fig. 23. Statistics-based Topology
+Fig. 24. Cyber-physical network connection between UCCs and their respective substations for the 10k-bus
+model on the footprint of the Western United States. The green dots are generation substations, the blue
+dots are transmission substations, the yellow dots are UCCs, and the red dots are the BA.
+Table 6. Comparing our tool with related work in [19]
+Category
+Our tool
+The tool in [19]
+Network Topologies
+star, radial, statistical
+statistical; added redundancy
+Type of Substations
+Transmission and Generation
+380–400 kV Transmission
+Size
+500, 2k, 10k buses
+Continental Europe
+Wide Area Network
+Subst., UCC, BA
+Subst., Central Hub, UCC
+Types of communication nodes
+firewalls, routers, switches, hosts
+routers and switches
+Communication layer
+1 (logical)
+2 (physical and logical)
+Data flows
+DNP3, ICCP, SQL, HTTP traffic
+N/A
+radial topology, generation substations are linked to transmission substations based on the power
+system’s branch information, as detailed in Table ??. The proposed tool creates cyber topology
+for a synthetic power grid with 10,000 buses spanning western U.S.. In contrast, the other covers
+the continental European grid with 289 nodes and some individual countries’ power systems. The
+communication layer in the latter is split into physical and logical components, while the former
+integrates a logical network layer equipped with routers, firewalls, and data flows.

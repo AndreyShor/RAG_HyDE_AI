@@ -1,0 +1,160 @@
+15
+under control the cutoff effects on our physical observ-
+ables.
+Indeed, the decay rate and the lepton-energy
+moments are on-shell quantities that probe the QCD
+spectrum for energies smaller than mDs. Therefore, in
+principle, to keep under control cutoff effects, given our
+O(a)-improved lattice setup, it would be enough to have
+(amDs)2 ≪1 on the finer simulated lattices and, in fact,
+this condition is satisfied in our case (see Table I). On
+the other hand, given our representations of the decay
+rate and of the lepton-energy moments (see Eqs. (33)
+and (41)), it is important to avoid large errors in the
+approximation of the smearing kernels Θ(p)
+σ (ωmax −ω0)
+for ω0 ≫1/(amDs) that could enhance the cutoff effects
+by interfering with the distortions of the lattice spectral
+densities Z(p)(ω0, ω2; a) at energies of the order of the
+lattice cutoff. Actually, in our approach (see Ref. [6] for
+a different possibility) the limits
+dΓ(p)(σ)
+dω2
+= lim
+a7→0 lim
+N7→∞lim
+λ7→0
+dΓ(p)(σ; a, N, Σ)
+dω2
+,
+(86)
+where
+dΓ(p)(σ; a, N, Σ)
+dω2
+=
+¯Γ |ω|3−p
+N
+X
+n=1
+g(p)
+n (N; Σ) ˆZ(p)(an, ω2; a) ,
+(87)
+have to be taken by first performing the λ 7→0 and
+N 7→∞limits, that can safely be interchanged and that
+we perform jointly with the so-called stability analysis
+procedure (see below), and then by performing the con-
+tinuum extrapolation. Notice that the dependence upon
+the parameter α disappears after performing the N 7→∞
+limit because, according to the Stone-Weierstrass theo-
+rem, the systematic error associated with the imperfect
+reconstruction of the smearing kernel at finite N can be
+made arbitrarily small by increasing N for any definition
+of the L2-norm and therefore, in our language, for any
+definition of the functional A(p)
+α [g]. Unfortunately, this
+is not the case for the statistical error
+∆stat
+ 1
+¯Γ
+dΓ(p)(σ; a, N, Σ)
+dω2
+
+=
+q
+B(p)[g(p)(N; Σ)] . (88)
+Within the HLT algorithm statistical errors are tamed
+by implementing the regularization mechanism originally
+proposed by Backus and Gilbert in Ref. [39].
+This is
+done by introducing the so-called trade-off parameter λ
+and by adding the term proportional to the error func-
+tional in Eq. (80). There are two facts that have to be
+considered in order to understand the rˆole of the trade-
+off parameter within the HLT algorithm.
+The first is
+that the Backus-Gilbert regularization is statistically un-
+biased: in the idealized situation in which the correla-
+tors ˆZ(p)(an, ω2; a) have no errors the functional B(p)[g]
+0.35
+0.40
+0.45
+1
+¯Γ
+dΓ(p)
+¯cs (σ;a,N,Σ)
+dω2
+|ω| = 0.38, σ = 120 MeV/mDs, p = 0, ¯cs
+N = 43, α = 0
+N = 33, α = 0
+N = 28, α = 0
+N = 23, α = 0
+N = 13, α = 0
+0.050
+0.075
+0.100
+0.125
+0.150
+0.175
+0.200
+d(p)(N; Σ)
+0.35
+0.40
+0.45
+1
+¯Γ
+dΓ(p)
+¯cs (σ;a,N,Σ)
+dω2
+|ω| = 0.38, σ = 120 MeV/mDs, p = 0, ¯cs
+N = 43, α = 0
+N = 43, α = 1
+N = 43, α = 2−
+FIG. 8.
+Stability analysis for the contribution p = 0 to the
+total decay rate for the ¯cs channel with smearing parameter
+σmDs = 120 MeV, spatial momentum |ω| = 0.38, sigmoid
+kernel and D96 ensemble. See the main text for the complete
+description and interpretation of the figure. Top panel: study
+of the limit N 7→∞by changing λ at fixed α = 0. Bottom
+panel: study of the dependence on α, i.e. on the definition
+of the norm functional of Eq. (81), by changing λ at fixed
+N = 43.
+is identically zero and, therefore, the same result is ob-
+tained for any value of λ. The second fact is that, for
+small values of the smearing parameter σ, the coefficients
+obtained by solving Eq. (83) with increasingly smaller
+values of λ tend to become huge in magnitude and os-
+cillating in sign [9]. Consequently, by using these coeffi-
+cients in Eq. (87), the statistical errors on the differential
+decay rate tend to be unacceptably large and, moreover,
+the estimates of the central values cannot be trusted in
+this regime because even tiny rounding errors on the lat-
+tice correlators ˆZ(p)(an, ω2; a) get enormously enhanced.
+The stability analysis, introduced in Ref. [40] (see also
+Refs. [17–19, 41]), is a procedure that allows to perform
+the λ 7→0 and N 7→∞limits appearing in Eq. (86) by
+leveraging on these two facts.
+An example of stability analysis is shown in Figure 8.
+The data correspond to the dΓ(0)
+¯cs (σ; a, N, Σ)/dω2 contri-
+bution to the decay rate evaluated on the D96 ensemble
+for σmDs = 120 MeV and |ω| = 0.38. The differential
+decay rate is plotted as a function of the variable
+d(p) (N; Σ) =
+v
+u
+u
+tA(p)
+0
+
+g(p)(N; Σ)
+
+A(p)
+0 [0]
+,
+(89)
+measuring the deviation of the reconstructed kernel
+Θ(p)
+σ (ωmax −ω0; N, Σ) from the target one. By choosing
+increasingly smaller values of λ one gets smaller values
+of d(p) (N; Σ) and, therefore, smaller systematic errors

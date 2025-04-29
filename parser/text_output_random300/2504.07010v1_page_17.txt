@@ -1,0 +1,84 @@
+with unit variance and means µ and µ′ obeys
+4
+200|µ −µ′| ≤dTV(N(µ, 1), N(µ′, 1)) ≤1
+2|µ −µ′|
+(31)
+Consider a CP algorithm calibrated using ˜An = BCn −bc(ˆYn) ∼N(µn −
+bc(ˆY ), 1), n = 1, . . . , N + 1, instead of An = BCn. In this case, the validity
+gap defined in (10) obeys
+˜
+gap =
+1
+N + 1
+N
+X
+n=1
+dTV( ˜An, ˜AN+1)
+(32)
+=
+1
+N + 1
+N
+X
+n=1
+dTV(N(µn −bc(ˆYn), 1), N(µn −bc(ˆYn), 1))
+(33)
+≤
+1
+N + 1
+1
+2
+N
+X
+n=1
+|µn −bc(ˆYn) −µN+1 + bc(ˆYN+1)|
+(34)
+≤
+N
+N + 1 max
+n {|µn −bc(ˆYn)|}
+(35)
+The validity gap of a CP algorithm calibrated using An = BCn ∼N(µn, 1)
+obeys
+gap =
+1
+N + 1
+N
+X
+n=1
+dTV(An, AN+1)
+(36)
+=
+1
+N + 1
+N
+X
+n=1
+dTV(N(µn, 1), N(µn, 1))
+(37)
+≤
+1
+N + 1
+1
+5
+N
+X
+n=1
+|µn −µN+1|
+(38)
+The latter is larger than
+˜
+gap if
+1
+N
+1
+5
+N
+X
+n=1
+|µn −µN+1| ≥max
+n {|µn −bc(ˆYn)|}
+(39)
+The claim follows from noting that the total variation between two random
+variables, Z, Z′, is larger than the total variation distance between any func-
+tion applied to Z and Z′, e.g. between |Z| and |Z′|. See the discussion below

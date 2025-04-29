@@ -1,0 +1,85 @@
+here Qps
+1 is the bit error rate between Aps
+1 and Bps
+1 . By bounding Hϵ
+min(B1|E) using the chain rule and
+the data-processing inequality for smooth min-entropy, the following bound on the secret key rate can be
+obtained
+r ≥ηA[1 −h(Qps
+1 )] −h(Q2) −(1 −q),
+(173)
+where q is a measure of how distinct Bob’s two measurements are. Q2 is the bit error rate between A2
+and B2.
+In analogy to the connection between DI-QKD and the violation of Bell inequalities, here the security
+of this one-sided DI-QKD is related to the demonstration of quantum steering. That is, ηA[1 −h(Qps
+1 )] −
+h(Q2) −(1 −q) ≤0 can be understood as an EPR-steering inequality [431–433]. Because closing the
+detection loophole in a steering experiment is easier than in a Bell test, 1SDI-QKD is more feasible
+to realize experimentally.
+For example, consider a typical experimental setup, where a source sends
+maximally entangled two-qubit states to Alice and Bob through a depolarizing channel with visibility v,
+with measurement settings A1 = B1 = σz and A2 = B2 = σx. Then, for perfect visibility v = 1, a positive
+secret key can be obtained whe Alice’s detection efficiency ηA > 65.9%, which is much lower compared to
+those in DI-QKD. As a comparison, for the cases where Alice and Bob have the same detection efficiency,
+to close the detection loophole in DI-QKD requires η > 94.6% are needed ( η > 91.1% for post-selected
+data).
+As is the case for most conventional proofs, the security for the above 1SDI-QKD protocol provided for
+the asymptotic limit of infinitely long keys. In practical implementations, the number of signals used for
+establishing a secure key is finite. For the case of 1SDI-QKD, finite lkey analysis was addressed by Wang
+et.al [434] based on the asymptotic of 1SDI-QKD presented above. They present the secure key rate of
+1SDI-QKD with finite resources by employing the smooth min-entropy and smooth max-entropy[435, 436]:
+l ≈Hϵ′
+min(Y ps
+1 |E) −Hϵ′
+max(Y ps
+1 |Xps
+1 ).
+(174)
+Using the uncertainty relation for smooth entropies [437] and the upper bound for smooth-max entropy
+[438], the following bound for the key rate will be obtained
+r ≥ηAP 2
+Z[1 −h(Qps
+1 )] −P 2
+Z[1 −q + h(Q2 + µ)] −1
+N log2
+2
+ϵcor
+,
+(175)
+where PZ is the probability that Alice (and also Bob) chooses the measurement in Z basis and µ =
+q
+n+k
+nk . k+1
+k . ln
+2
+ϵsec , with n and k being the length of the raw key and the length of the bit string used for
+parameter estimation respectively. ϵcor is the security parameter bounding the possibility that Alice and
+Bob have different outputs.
+For comparison purposes the simulation results were done in [434] and show that the sifted key rate
+is consistently lower than that predicted by the asymptotic case, particularly when considering finite-key
+analysis. Furthermore, the outcomes reveal that the relative difference between the asymptotic and non-
+asymptotic cases (δ = r∞−rN
+r∞
+) gradually diminishes as the detection efficiency ηA increases. Notably, the
+investigation also pinpoints the minimum number of exchanged quantum signals required for achieving
+efficient detection efficiencies. The results illustrate the potential for a non-zero final secret key rate,
+approaching 9 × 106, specifically when ηA reaches 0.67.
+This underscores the viability of attaining
+substantial secret key rates even in scenarios involving moderate detection efficiency.
+The protocols mentioned above are the QKD schemes that encode a discrete variable (DV) key in a
+two-dimensional space, typically encoded into a pair of entangled photons. Considerable attention has
+also been devoted to schemes that instead utilize the quadratures of the optical field, in which one has
+access to deterministic, high-efficiency broadband source and detectors. In this case, the secret key is
+now a continuous variable (CV) that is encoded in states living in an infinite-dimensional Hilbert space.
+This kind of protocol has some advantages over the discrete variable counterpart. The very important
+ones are that in the CV case, detection-loophole-free tests have been experimentally feasible for over 30
+years [187] and very strong violations of steering inequalities have been demonstrated. These benefits
+provide enough motivation for studying the possible one-sided device-independent CV QKD (1SDI-CV-
+QKD). This was done by Walk et.al [439] where they studied Gaussian CV-QKD protocols from the
+perspective of 1SDI-QKD against collective attacks, and showed that 1SDI-CV-QKD is possible even
+with coherent states. The existence of non-zero key rates was connected to the steering parameters for
+Gaussian states. An experimental implementation achieved positive secret keys under a lossy channel
+for both entanglement based and coherent state protocols. A version of a 1SDI-CV-QKD protocol that
+generates a finite and composable key and is secured against coherent attacks was reported by Gehring
+et.al [102]. The experiment used two continuous wave optical light fields whose amplitude and phase
+68

@@ -1,0 +1,111 @@
+corrective actions.
+We demonstrate the effectiveness of our method on
+a range of loco-manipulation tasks, including pushing a
+shopping cart, balancing a plate, and holding soft ob-
+jects—spanning both quadrupedal and bipedal dynamic
+walking on a quadruped platform. Through both qualitative
+and quantitative comparisons, we show that our framework
+outperforms typical end-to-end learning-based policies in
+tracking end-effector targets. Moreover, the explicit separa-
+tion of feedforward and feedback torque commands allows
+our method to flexibly trade off tracking performance for
+compliance when needed.
+In summary, we present a hybrid control framework for
+legged systems that integrates contact force optimization
+with a feedback RL policy to tackle loco-manipulation tasks.
+Through extensive hardware experiments and demonstrations
+across a diverse set of scenarios, we show that our approach
+delivers robust, precise, and efficient performance in whole-
+body loco-manipulation.
+II. RELATED WORK
+In this section, we review two major groups of the state-of-
+the-art control approaches for whole-body loco-manipulation
+applications: model-based and learning-based methods.
+A. Model-based Methods for Loco-manipulation
+Model-based methods generate control signals by solving
+optimal control problems using first-principles dynamics
+models that describe the relationship between system states
+and control inputs [24]. By explicitly accounting for interac-
+tion forces, these methods can effectively optimize motion
+while incorporating the dynamic effects from contacts into
+the control loop [22, 28]. When applied to loco-manipulation
+tasks, model-based approaches offer precise control over the
+forces exerted on objects and produce effective torque-level
+commands for each joint [19, 29]. Among these, Model
+Predictive Control (MPC) is especially popular for legged
+systems, as it provides a robust feedback mechanism and
+enables emergent behaviors by forecasting the impact of
+control inputs over a time horizon [20, 30].
+However, pure model-based approaches typically demand
+high computation cost due to the complexity of the model
+for legged systems. To meet real-time requirements, these
+methods typically rely on simplifying the optimization prob-
+lem or employing hierarchical scheme at multiple frequen-
+cies [31, 23]. More critically, their applicability is limited in
+complex scenarios—such as locomotion over uneven terrain
+or manipulation of objects with involved inertial properties—
+where accurate knowledge of the environment is difficult to
+obtain and the required modeling and computational effort
+becomes excessively large [20, 32].
+To overcome these limitations, our framework incorpo-
+rates a computationally efficient contact force optimization
+module leveraging a simplified dynamics model [33]. We
+augment this model-based component with a residual policy
+trained via reinforcement learning, which effectively com-
+pensates for modeling inaccuracies. By explicitly consider-
+ing contact locations and forces, our approach retains the
+essential benefits of model-based control while enhancing
+robustness in loco-manipulation tasks.
+B. Learning-based Methods for Loco-manipulation
+Significant progress has been made in training learning-
+based locomotion policies within physics-based simulators
+using reinforcement learning (RL) [13, 17]. By leveraging
+techniques such as domain randomization [12], policies
+trained in an end-to-end scheme have also demonstrated ro-
+bust performance in a range of loco-manipulation scenarios,
+including soccer dribbling [7], object transferring [6, 34] and
+other pedipulation tasks [8, 14].
+Despite these successes, RL-based approaches still face
+several notable limitations. First, the vast exploration space—
+spanning diverse end-effector positions and object states—
+makes learning meaningful and effective manipulation be-
+haviors sample-inefficient and reliant on various exploration
+strategies [10, 15, 35]. Second, most policies are trained
+in conjunction with low-level joint proportional–derivative
+(PD) controllers to facilitate the exploration in joint positions.
+However, this structure is often exploited by RL policies that
+output overly large position targets to generate sufficient con-
+tact forces [16], resulting in poor controllability of interaction
+forces [9, 36], which is critical for precise loco-manipulation.
+While torque-level control can mitigate this issue, it requires
+high-frequency updates to prevent overshooting, further in-
+creasing the complexity of training [37, 38].
+Although recent methods have explored using demonstra-
+tions to guide RL agents and improve exploration during
+training [11, 39, 40, 41], they still inherit the limitations by
+operating on joint positions. Drawing inspiration from prior
+work [42, 43], our framework instead integrates model-based
+optimization to compute feedforward torque commands a
+while complementing it with a learned feedback policy to
+enhance robustness—resulting in an effective control strategy
+for end-effector force control in loco-manipulation tasks.
+III. PRELIMINARIES
+In this section, we describe the preliminaries for better
+understanding the framework, including the dynamics model
+and foot trajectory generation strategy used in RAMBO.
+A. Single Rigid Body Dynamics for Legged Robots
+In our framework, we employ the single rigid body (SRB)
+dynamics to model the quadruped robot. It assumes the
+majority of the mass is concentrated in the base link of the
+robot, and all the limbs are massless and their inertial effects
+are negligible [33]. While more complex models such as
+centroidal model or whole-body model [23, 30] can be in
+principle leveraged, they still inherit the limitations such as
+model inaccuracy and sensitivity to disturbances. We choose
+SRB to trade off complexity for computational efficiency.
+As shown in Fig. 2, the state of the single rigid body can
+be described by
+x := [p v R Bω],
+(1)
+where p ∈R3 is the position of the body Center of Mass
+(CoM); v ∈R3 is the CoM velocity; R ∈SO(3) is the

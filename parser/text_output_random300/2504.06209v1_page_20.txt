@@ -1,0 +1,76 @@
+20
+denotes the percept-action loop where both Markov models are specified, with the associated process MASZ, called
+the global process, having distribution over action, percept, and hidden states
+pMASZ(m, a, s, z) = pagt
+A0M0(a0, m0)penv
+Z0 (z0)
+∞
+Y
+t=0
+θagt(at+1, mt+1|st, mt)ϕenv(st, zt+1|at, zt),
+(D8)
+see also Figure 8b. The models agt →
+←envM and agtM →
+←env are defined correspondingly.
+Lemma 4 (Global Markov chain). Let agtM →
+←envM be a percept-action loop global process distribution given in
+eq. (D8). Then, the stochastic process U, where
+Ut = (Mt, At, St, Zt),
+(D9)
+is a homogeneous finite-state Markov chain which will be called the global Markov chain of the percept-action loop.
+Proof.
+First we check the Markov property, that is,
+p(un|u0:n−1un−1) = p(un|u′
+0:n−1un−1),
+(D10)
+for any n ≥1 and u0:n−1, u′
+0:n−1, where un = (xn, an, sn, zn). Note that for better readability, we drop p’s index.
+This is a direct consequence of the Markov property of the Markov models for agent and environment which can
+be seen as follows. For any n ≥1 we have by the definition of conditional probability
+p(un|u0:n) = p(u0:n+1)
+p(u0:n) ,
+(D11)
+where, by marginalizing the global distribution of a percept-action loop, eq. (D8) and writing un as (mn, an, sn, zn):
+p(u0:n+1) = pagt
+A0M0(a0, m0)penv
+Z0 (z0)
+
+X
+zn+1
+ϕenv(sn, zn+1|an, zn)
+
+
+n−1
+Y
+t=0
+θagt(at+1, mt+1|st, mt)ϕenv(st, zt+1|at, zt). (D12)
+Due to the product structure of eq. (D12), most terms cancel out when we compute eq. (D11) and we are left with
+p(un|un−1, un−2, . . . ) =
+hP
+zn+1 ϕenv(sn, zn+1|an, zn)
+i
+θagt(an, mn|sn−1, mn−1)ϕenv(sn−1, zn|an−1, zn−1)
+P
+z′n ϕenv(sn−1, z′n|an−1, zn−1)
+.
+(D13)
+Since the right-hand side depends only on variables with time index n and n −1, we have shown the Markov
+chain property, eq. (D10). Further, since the right-hand side is determined by the transition matrices of agent and
+environment, the Markov chain is homogeneous, and with this the lemma is proven.
+□
+Appendix E: Markov conditions for percept-action loops
+Bayesian networks are graphical models that represent probabilistic relationships among random variables using di-
+rected acyclic graphs [73–75]. They allow for efficient reasoning about conditional independence through d-separation.
+d-separation is a key concept in Bayesian networks that determines whether two sets of variables are independent
+given a third set, based on the structure of the graph. It provides a formal criterion for understanding how information
+flows through the network. This appendix introduces Bayesian networks in general and shows how to use them for
+percept-action loops.
+1.
+Bayesian networks and d-separation
+Let {V1, . . . , Vn} be a set of n random variables and let G be a directed acyclic graph (DAG) such that for each
+random variable in {V1, . . . , Vn} there is precisely one node in G. Let PAj be the set of parents of Vj and NDj the set
+of non-descendants of Vj except itself. If B, C, D are sets of random variables, I[B; C|D] is the conditional mutual
+information with respect to the joint random variables constituting the sets, and I[B; C|D] = 0 means that B is
+statistically independent of C, given D.
+In the following, a path is defined as a sequence of nodes connected by edges, regardless of the direction of the
+edges. The following definition is adapted from [76].

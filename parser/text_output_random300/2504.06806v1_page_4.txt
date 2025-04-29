@@ -1,0 +1,47 @@
+4 
+ 
+𝛥𝛥𝐺
+= (𝐺𝐹(𝑚) −𝐺𝐹(𝑤))  
+ 
+ 
+ 
+[4] 
+ 
+Under this approximation, the second term of Eq. 2, describing the ΔG between the 
+unfolded states of the two protein sequences, is typically neglected due to the 
+difficulty of properly defining and measuring it. However, this approximation might 
+not always hold, since, for example, different inter-residue interactions and degrees 
+of freedom between wild-type and mutant might persist in the unfolded state. An 
+additional contribution might be the difference in free-energy of solvation for the 
+amino acids involved in the mutation26. It should also be observed that the ΔΔG 
+expression is a difference between two terms, and neglecting one could lead to 
+significant deviations from the correct solution. Furthermore, neglecting this second 
+term also implicitly means violating the mass-conservation for the process, as Gibbs 
+free energy is defined for closed systems where mass is conserved.  
+ 
+Considering the extreme flexibility of the neural-networks in implicitly modeling all 
+terms of Eq. 1, the approximation of ΔG between the unfolded states of the two 
+protein sequences equal to zero should not affect, in principle, models that explicitly 
+incorporate the protein-sequence composition change among their input features 
+(e.g. I-mutant19, ACDC-NN20, Stability Oracle21). However, as previously mentioned, 
+this approximation  might become relevant for models that do not compensate for it, 
+such as most “potential-like” methods. 
+ 
+To address this gap, we propose a novel correction that incorporates “mass balance” 
+back into potential-like scoring methods, improving the accuracy of protein stability 
+predictions without compromising their usually high computational efficiency. By 
+retrofitting these potential-like models with this extra term, which we call mass-
+balance correction (MBC), our approach adjusts for a key flaw in the evaluation of 
+ΔΔG, significantly enhancing the prediction accuracy without any reparameterization 
+of the original model.  
+Furthermore, the obtained performance for some of these modified methods are 
+comparable, or even better, to those of state-of-the-art models such as Stability 
+Oracle, providing a valuable tool for researchers needing rapid stability 
+assessments. 
+ 
+Results 
+Incorporating Mass-Balance Information as a First Approximation of the 
+Unfolded State 
+We first evaluated the performance of three different potential-like methods, 
+representing three different approaches to ΔΔG calculation, with and without the 
+MBC correction. Then we compared them to the results of the DDGun3D22,23 

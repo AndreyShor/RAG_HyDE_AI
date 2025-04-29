@@ -1,0 +1,73 @@
+6
+FIG. 3.
+Mean training accuracy of the logically-encoded VQC when training under different levels of gate (left) and envi-
+ronmental (right) noise, ranging from p = 0.001 −0.01. The black dashed line indicates the accuracy obtained from training
+without noise.
+B.
+Training with Noise and Error Detection
+In Figure 4, we display the effect of implementing the
+[[4,2,2]] stabiliser code with different numbers of syn-
+drome extraction rounds on the final training accuracy
+achieved after model convergence. In this and subsequent
+figures, we are interested in the mean final training ac-
+curacy, which we calculated by taking the mean of the
+accuracies recorded over the last 40 iterations of train-
+ing (as we can assume the training has stabilised by this
+point), and averaging this mean over 10 simulations of
+VQC training. We also report the first standard devia-
+tion associated with this mean.
+Under both gate noise and environmental noise mod-
+els, we observe that for low noise levels (which we define
+as p ≤0.0025), the training accuracy always improves
+with increasing number of syndrome extraction rounds
+and there is high consistency in the final training accu-
+racy recorded across the 10 simulations.
+However, for
+higher levels of noise (specifically, 0.005 ≤p ≤0.01), the
+training accuracy is fairly inconsistent (greater spread in
+values), and occasionally worsens with more syndrome
+extractions. This runs counter to our expectation that
+more syndrome extractions should lead to the detection
+of more errors. Our results show that at higher noise lev-
+els, the effectiveness of syndrome extractions (and error
+detection) is limited.
+There is also evidence of limitations in the effectiveness
+of error detection at low noise levels. We find that even
+for p ≤0.0025, the increase in syndrome extractions pro-
+duces no clear increase in final training accuracy beyond
+two extraction rounds, and does not reach 1.00 even at
+low noise levels and with five rounds of syndrome extrac-
+tions.
+These results suggest that there is noise in the
+logically-encoded circuit that syndrome measurements
+cannot detect. The only possible source of this noise is
+the ancilla qubits, which we do not apply any syndrome
+extractions to, but are entangled with the physical qubits
+via multiple CNOT gates.
+We ran the training with different levels of ancilla qubit
+noise, to determine the validity of our hypothesis that the
+ancilla qubit errors are responsible for the limited effec-
+tiveness of the [[4,2,2]] stabiliser code in detecting errors
+in the system. We show in Figures 5 (gate noise model)
+and 6 (environmental noise model) the evolution in the
+mean final training accuracy as number of syndrome ex-
+tractions increases, with different levels of ancilla qubit
+noise. The fraction fanc denotes the fraction of the phys-
+ical qubit Pauli Error Rate that we apply to the ancilla
+qubits. For example, fanc = 0.0 means that there is no
+ancilla qubit noise, while fanc = 0.5 means that the an-
+cilla Pauli Error Rate is half the physical Pauli Error
+Rate.
+It is clear from the plots that as the ancilla Pauli
+Error Rate increases, the syndrome extractions become
+less effective and less reliable, confirming our earlier hy-
+pothesis.
+There is a greater spread in the final train-
+ing accuracy, as well as an increase in non-monotonicity
+(which we suggest is a consequence of the greater vari-
+ance), when the ancilla error rate is higher. We note that
+lower noise levels produce better training outcomes than
+higher noise levels for fanc ̸= 0.0; specifically there is a
+far smaller chance of exhibiting non-monotonicity in the
+final training accuracy as the number of syndrome ex-
+tractions increase, and a far smaller variance in the final

@@ -1,0 +1,201 @@
+2
+hanced efficiency and low power consumption.
+Model.—We illustrate the principle of the evanescent
+orbital pumping using the Luttinger model [25, 26]. To
+this end, we take the prototypical semiconductors such
+as Ge and Si [66, 67] as examples, which contain three
+degenerate p-orbitals at the Γ point of valence bands.
+Disregarding the weak SOC [24, 25], we adopt a spherical
+approximation for the Luttinger model, resulting in an
+effective Hamiltonian of electrons with wave vector k [24]
+H0(k) = Ak2 −r(k · I)2,
+(1)
+where the coefficients A and r are given in the L¨owdin
+partitioning theory [26, 69–71] and the OAM matrices
+Ix =
+
+
+0 0
+0
+0 0 −i
+0 i
+0
+
+, Iy =
+
+
+0
+0 i
+0
+0 0
+−i 0 0
+
+, Iz =
+
+
+0 −i 0
+i
+0
+0
+0
+0
+0
+
+.
+The helicity ek · I along the propagation direction ek =
+sin ϕk cos θkˆx + cos ϕkˆy + sin ϕk sin θkˆz commutes with
+H0 and is thereby conserved. Among the three valence
+bands, two bands “a” and “b” are degenerate with dis-
+persions εa/b(k) = (A −r)k2, and the third one, de-
+noted by “c”, has a dispersion εc(k) = Ak2.
+The ef-
+fective masses of the heavy and light holes associated
+with these bands are mh
+a = mh
+b = ℏ2/|2(A −r)| and
+mh
+c = ℏ2/|2A|.
+The Bloch states of the three bands
+ψα,k(r) = (1/
+√
+V )eik·rφα,k, in which V is the crystal
+volume and
+φa,k = (−cos ϕk sin θk, sin ϕk, −cos ϕk cos θk)T ,
+φb,k = (cos θk, 0, −sin θk)T ,
+φc,k = (sin ϕk sin θk, cos ϕk, sin ϕk cos θk)T ,
+(2)
+are the eigenstates of the matrix (1) [72]. Correspond-
+ingly, including the chemical potential µ of holes, the hole
+Hamiltonian is expressed as [72]
+ˆH0 =
+X
+α={a,b,c}
+X
+k
+(εh
+α,k −µ)ˆh†
+α,kˆhα,k,
+(3)
+where ˆhα,k (ˆh†
+α,k) annihilates (creates) a hole in the
+Bloch band α with wave vector k and energy εh
+α,k =
+(ℏ2k2)/(2mh
+α).
+We consider the coupling of electron orbitals to an ex-
+ternal magnetic field H(r, t) that is emitted by, e.g., the
+magnetization dynamics of magnetic nanostructures [47,
+73] or an antenna. In this case, the electric field is negli-
+gible in the magnetic radiation. By the Kohn-Luttinger
+transcription ℏk →ℏˆK = (ℏ/i)∇−eA [25, 26, 69],
+the commutator of momentum operators [ ˆKa, ˆKb] =
+iϵabcµ0eHc/ℏ, where µ0 is the vacuum permeability and
+ϵabc is the antisymmetric tensor, generates an additional
+Zeeman coupling ˆHint(r) = (µ0µB/ℏ)H(r, t) · LLL between
+electron orbitals and external magnetic field [refer to the
+Supplementary Material (SM) [72] for details] [26, 69],
+in which the effective OAM matrix Lα = (m0D/ℏ2)Iα.
+Here, m0 is the mass of free electrons, µB = |e|ℏ/(2m0)
+is the Bohr magneton, and D is another material co-
+efficient governed by the band mixing [26, 72].
+With
+the hole field operator ˆΨ(r) = P
+α,k ψα,k(r)ˆh†
+α,−k, the
+Zeeman interaction implies the OAM operator ˆL =
+´
+drˆΨ†(r)ℏLˆΨ(r) = P
+α,β
+P
+k ℏ˜L
+h(k)|αβˆh†
+α,kˆhβ,k, where
+˜L
+h(k) = −(U †(−k)LU(−k))T is the OAM carried by
+the holes of wave vector k, governed by the unitary
+transformation U(k) = (φa,k, φb,k, φc,k). ˜L
+h(k) depends
+strongly on the wave-vector direction, giving rise to an
+orbital texture in the k space, which plays an impor-
+tant role in the orbital Hall effect [24, 34]. The OAM
+derived from the Kohn-Luttinger transcription in the
+k · p Hamiltonian includes both the atomic and itiner-
+ant contributions, consistent with the general definition
+of OAM [30, 31, 68, 74–76]. The Zeeman coupling to hole
+spin is weaker than the orbitals.
+When the AC magnetic field H(r, t) = H(+)(r)e−iωt +
+H(−)(r)eiωt is monochromatic with frequency ω, the Zee-
+man interaction is written as
+ˆHint =
+ˆ
+drˆΨ†(r) ˆHint(r)ˆΨ(r)
+=
+X
+ζ=±
+X
+α,β
+X
+k,k′
+e−iζωtGh,(ζ)
+kk′ |αβˆh†
+α,kˆhβ,k′,
+(4)
+in which with ˜L
+h
+kk′ ≡−(U †(−k′)LU(−k))T the cou-
+pling matrix Gh,(ζ)
+kk′
+= (µ0µB/V )H(ζ)(k −k′) · ˜L
+h
+kk′.
+H(±)(k) =
+´
+drH(±)(r)e−ik·r denotes the wave-vector
+components of the magnetic field integrated over the
+crystal volume V .
+With the Bloch states of valence bands {a, b, c}, the
+OAM density operator
+ˆLd(r) = ˆΨ†(r)ℏLˆΨ(r)
+= 1
+V
+X
+α,β
+X
+k,k′
+ℏ˜L
+h
+kk′|αβei(k′−k)·rˆh†
+α,kˆhβ,k′
+(5)
+defines the OAM current density ˆJd(r) and OAM torque
+density ˆTd(r) according to the continuum equation
+∂ˆLd(r, t)
+∂t
+= 1
+iℏ
+h
+ˆLd(r, t), ˆH0
+i
+= −∇· ˆJd(r) −ˆTd(r).
+The OAM current density operator
+ˆJd(r) = 1
+V
+X
+α,β
+X
+k,k′
+ 
+ℏ2k′
+2mh
+β
++ ℏ2k
+2mhα
+!
+⊗˜L
+h
+kk′|αβ
+× ˆh†
+α,kˆhβ,k′ei(k′−k)·r,
+(6)
+which can be alternatively derived according to the an-
+ticommutator of the velocity ˆv and OAM density ˆLd(r)

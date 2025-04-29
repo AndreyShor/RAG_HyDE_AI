@@ -1,0 +1,120 @@
+G. Pennings, N. P. Polyzos, F. Shenfield, M. Showell, M. J. Tucker, F. Zegers-
+Hochschild, and L. Gianaroli. Declining global fertility rates and the impli-
+cations for family planning and family building: an iffs consensus document
+based on a narrative review of the literature. Reproductive Biomedicine
+Online, 46(4):563–580, 2023.
+H. A. Zaghloul, H. A. Abou Ali, A. H. El Gilany, A. A. El-Houfey, H. A.
+El-Khayat, I. H. El-Sayed, M. M. Fahmy, S. S. Gaber, N. F. Hosny, Y. A.
+Hussein, M. M. Ismail, M. A. Mohamed, S. A. Morsy, H. A. Radwan, R. M.
+Ramzy, Y. A. Refaat, H. A. Shalaby, H. A. Soliman, and H. A. Youssef.
+Contributing factors to the total fertility rate declining trend in the middle
+east and north africa: a systemic review. Journal of Health, Population and
+Nutrition, 40(1):1–17, 2021.
+A
+Python Code of to replicate the simulations
+of the Cusp Catastrophe-Agent Based Math-
+ematical Model of Teenage Pregnancy
+%\begin {minted }[ frame=l i n e s ,
+bgcolor=lightgray ,
+l i n e n o s ] { python}
+import numpy as np
+import
+matplotlib . pyplot
+as
+p l t
+from
+m p l t o o l k i t s . mplot3d import Axes3D
+# Parameters
+for
+Cusp Catastrophe
+model
+alpha 0 = 1.5
+# Reduced
+base
+alpha
+to make pregnancy
+s l i g h t l y
+more
+l i k e l y
+lambda 1 = 0.8
+# Impact
+of
+contraceptive
+use
+w1 ,
+w2 ,
+w3 = 0.8 ,
+0.6 ,
+0.4
+# Weights
+for
+deprivation ,
+violence ,
+and
+substance
+abuse
+# Time
+s t e p s
+and number
+of
+agents
+n steps = 100
+n agents = 100
+# Create
+neighborhoods
+with
+d i f f e r e n t
+socio−economic
+conditions
+n neighborhoods = 5
+# Each neighborhood
+has
+[ deprivation ,
+violence ,
+e d u c a t i o n q u a l i t y ]
+neighborhoods = np . random . uniform (0 ,
+1 ,
+s i z e =(n neighborhoods ,
+3))
+# I n i t i a l i z e
+agents
+with
+a t t r i b u t e s :
+pregnancy
+state ,
+contraceptive
+use ,
+# deprivation ,
+violence ,
+substance
+abuse
+agents = {
+# I n i t i a l
+pregnancy
+s t a t e
+( y )
+’ pregnancy state ’ :
+np . random . normal (0 ,
+0 .1 ,
+s i z e=n agents ) ,
+# More use
+contraception
+’ c o n t r a c e p t i v e u s e ’ :
+np . random . choice ( [ 0 ,
+1 ] ,
+s i z e=n agents ,
+p =[0.7 ,
+0 . 3 ] ) ,
+’ deprivation ’ :
+np . random . uniform (0 ,
+1 ,
+s i z e=n agents ) ,
+# Deprivation
+l e v e l
+’ v i o l e n c e ’ :
+np . random . uniform (0 ,
+1 ,
+s i z e=n agents ) ,
+# Violence
+l e v e l
+20

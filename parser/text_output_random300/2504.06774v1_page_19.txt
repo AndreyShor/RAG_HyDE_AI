@@ -1,0 +1,45 @@
+ϵu =
+U true −U pred
+|U true −U pred|max
+(18)
+ϵv =
+V true −V pred
+|V true −V pred|max
+(19)
+ϵw =
+W true −W pred
+|W true −W pred|max
+(20)
+here, U true, V true, and W true represent the true values of the velocity components,
+while U pred, V pred, and W pred are the predicted values. The errors are normalized by the
+maximum absolute error to facilitate comparison between different velocity components.
+The methodology section has detailed the integration of SVD and HOSVD with LSTM
+networks, along with the implementation of the rolling-window method to effectively pro-
+cess temporal data. All of the LSTM architectures have been hyper-tuned for optimal
+predictive accuracy, the results of which are presented in the next section. This com-
+prehensive approach is designed to improve the predictive capabilities and computational
+efficiency of the model.
+3.
+Test Cases
+In the investigation of dynamic fluid behavior, the adopted approach has been subjected
+to various scenarios of fluid flows to establish its efficacy and adaptability.
+The test
+cases encompass a diverse range of data types and flow regimes, including laminar and
+turbulent flows, as well as numerical and experimental data sets. The proposed method,
+which integrates SVD/HOSVD with deep learning architectures, is tested on three fluid
+dynamics problems:
+• Laminar Flow Past a Circular Cylinder (Numerical):
+The flow around a circular cylinder is a well-known benchmark in fluid dynamics
+used to validate numerical methods and experimental techniques. The dynamics of
+the flow are governed by the Reynolds number (Re), which is defined based on the
+cylinder diameter D. At low Reynolds numbers, the flow is steady; however, as Re
+increases, significant flow transitions occur.
+The motion of an incompressible Newtonian fluid is governed by the Navier-Stokes
+equations, expressed as:
+∂u
+∂t + (u · ∇)u = −1
+ρ∇p + ν∇2u
+(21)
+∇· u = 0
+(22)
+19

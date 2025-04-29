@@ -1,0 +1,138 @@
+Fig. 2: Illustration of the 3D single rigid body model for a quadruped robot.
+{W}, {B}, {P} denote the inertial world frame, the body frame, and the
+projected frame, respectively. ri is the contact position of limb i relative to
+the CoM. ui is the external reaction force at the contact position.
+rotation matrix of the body frame {B} expressed in the
+inertial world frame {W}; det(·) calculates the determinant
+of a matrix and I is the 3-by-3 identity matrix. Bω ∈R3
+is the angular velocity expressed in the body frame {B}.
+Variables without superscript on the upper-left are assumed
+to be in the inertial frame {W}.
+Additionally, we define another coordinate frame, namely
+the projected frame {P}, which is centered at the projection
+of CoM onto the ground plane, and whose x and z axes point
+forward and upward, respectively.
+The input to the dynamics system is the external reaction
+forces ui ∈R3 for the locations pi ∈R3 in contact, where
+i ∈{1, 2, .., N} = N denotes the index for different contact
+locations, and N is the number of contact points. Taking
+the quadruped robot for example, if we restrict the contact
+to happen only at the end-effectors (EEs), we will have i ∈
+{1, 2, 3, 4} denoting the index of four feet, as shown in Fig. 2.
+The net external wrench F ∈R6 exerted on the body is:
+F =
+F
+τ
+
+=
+N
+X
+i=1
+
+I
+[ri]×
+
+ui,
+(2)
+where F and τ are the total force and torque applied at the
+CoM; ri = pi −p is the contact positions relative to CoM;
+the [·]× : R3 →so(3) operator converts the element from R3
+to skew-symmetric matrices as [a]×b = a × b for all a, b ∈
+R3. The inverse of [·]× is the vee map [·]∨: so(3) →R3 .
+The full dynamics of the rigid body can be formulated as
+˙x =
+
+
+˙p
+˙v
+˙R
+B ˙ω
+
+=
+
+
+v
+1
+M F + g
+R[Bω]×
+BI−1(R⊤τ −[Bω]×BIBω)
+
+,
+(3)
+where M is the mass of the rigid body; g ∈R3 is the
+gravitational acceleration vector; BI is the fixed moment of
+inertia in the body frame {B}.
+The dynamics of the linear and angular velocity can
+further derived after ignoring the gyroscopic effect (assuming
+the angular velocity is small and its second-order term is
+negligible) and expressed in the body frame {B} as
+B ˙v
+B ˙ω
+
+=
+ 1
+M R⊤F + R⊤g
+BI−1R⊤τ
+
+=
+N
+X
+i=1
+
+1
+M
+BI−1[Bri]×
+
+Bui + ˆg,
+(4)
+where ˆg = [g, 03]⊤∈R6 is the total gravity vector for the
+base.
+B. Foot Trajectory Generation Strategy
+We leverage a heuristic strategy to generate foot trajec-
+tories ensuring symmetric lifting and landing behaviors for
+each limb responsible for locomotion.
+Given a specific gait pattern, one can interpolate three
+keyframe locations (P plift, P pmid, P pland)i expressed in the
+projected frame {P} for each contact leg i based on the
+swing timing. The lifting location (P plift)i is taken from
+the previous contact location when the leg i switches from
+contact to swing. The mid-air position (P pmid)i is located
+at the corresponding hip position (P phip)i projected towards
+the ground in the projected frame {P} with some fixed de-
+sired foot height. The landing position(P pland)i is calculated
+according to the hip velocity in the projected frame {P} as
+(P pland)i = (P phip)i + Tstance
+2
+(P vhip)i,
+(5)
+where Tstance is the stand duration. The desired foot trajectory
+is described using cubic B´ezier curve connecting the three
+keyframes.
+IV. METHOD
+In this section, we introduce the components of RAMBO.
+As shown in Fig. 3, RAMBO is composed of three main
+elements: kinematic reference generation, feedforward torque
+acquiring and learned feedback residual policy.
+A. Kinematic Reference Generation
+For each control time step, RAMBO starts with querying a
+kinematic reference for both the base and joint (ˆq, ˆ˙q), where
+ˆq, ˆ˙q are the desired generalized coordinates and velocities
+respectively; ˆq = [ˆp ˆR ˆqj] are the desired base position,
+orientation and joint positions; ˆ˙q = [ˆv ˆω ˆ˙qj] are the desired
+base linear and angular velocities, joint velocities. We use
+the subscript j to denote the dimensions corresponding to
+joints. We note that RAMBO in principle allows any refer-
+ence trajectory generation process including the ones using
+trajectory optimization or from offline motion library. The
+only requirement is to provide the contact state ˆci ∈{0, 1}
+for each end-effector i ∈N in addition to the kinematic
+reference.
+In this work, we implement a simple kinematic reference
+generation process from the user command, allowing for
+interactive control. The input from the user includes the
+desired base velocity (P ˆvx, P ˆvy, P ˆωz), which consists of the
+desired forward, side and turning velocities, all expressed in
+the projected frame P. Defining the reference in the projected
+frame P allows RAMBO to operate with only proprioceptive
+information, without relying on an accurate estimation of
+coordinates in the inertial frame {W}.

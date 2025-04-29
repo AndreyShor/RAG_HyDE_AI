@@ -1,0 +1,135 @@
+2
+eters and observables.
+In combination with an acqui-
+sition function to find the next point to evaluate, this
+process is repeated until convergence is achieved. Adjust-
+ing the balance between exploration and exploitation can
+effectively maximize the optimal parameter space while
+searching for better results in new regions. With an aug-
+mented data set after each iteration, the result is a global
+optimum with the least number of iterative processes.
+Early successes applying ML in the form of BO [18–24]
+has proven the effectiveness of this method. This tech-
+nique has been chosen over others such as Reinforcement
+Learning (RL) [25] due to its non-parametric nature. GP
+does not require pre-training a Neural Network (NN) on
+either simulated or historical data. The learning is in real
+time from current samples and the model estimations im-
+prove with each iteration. Although digital-twins of the
+system could be useful as a testbed for new algorithms,
+they fail to account for the underlying changing dynamics
+and fringe behaviors. Likewise, historical data is unable
+to accurately represent current parameters. Thus, BO
+is the most straightforward method to automate a com-
+plex system – like the transport of radioactive beams –
+without a priori knowledge.
+At RIB facilities, the successful transport of radioac-
+tive beams depends on the synchronized performance of
+numerous devices operating in optimum conditions to en-
+sure maximum transport efficiency. In Fig. 1, we show a
+diagram of the key elements involved in the transport of
+radioactive beams produced at CARIBU. After extrac-
+tion from the ion source (bottom of the figure), electro-
+static quadrupoles and steerers transport and focus ions
+into a set of dipole magnets and slits (labeled “Isobar
+separator”) that act as a filter, only letting through ions
+with a particular mass-to-charge ratio. Quadrupoles fo-
+cus ions vertically (Y) or horizontally (X), while steerers
+adjust beam direction in these planes. The beamline is
+divided into sections to facilitate the application of the
+method presented here. Fission produces multiple species
+with different mass numbers (A), but experiments typi-
+cally target isotopes with a specific A. Transporting all
+species can create background noise, complicating the ion
+identification. To filter unwanted fission products, the
+isobar separator is positioned early in the beamline for
+initial separation. Due to hysteresis in the magnets gen-
+erating magnetic fields, this device is set to a specific field
+and does not require live tuning like other beam elements.
+Given the potential effectiveness of BO for these sys-
+tems, the recently launched Badger optimizer [26] was
+selected for this work. This framework combines modern
+algorithms from the Xopt package [27] with a graphi-
+cal user interface (GUI) for customizing run parameters
+and tracking optimization progress. Additionally, a plu-
+gin mode facilitates communication with devices and in-
+struments, allowing exploration of tailored operation se-
+quences. A centralized directory for archiving optimiza-
+tion routines and past results enhances the platform’s
+CARIBU source
+Steer1-X 
+Steer1-Y
+Quad1-X
+Quad1-Y
+QH-control
+QS-Y
+Elements
+Elements
+Elements
+Feedback
+Monitor
+Elements
+RFQ
+Cooler/
+Buncher
+MR-TOF
+Feedback
+Monitor
+HV 
+Elevator
+Elements
+Elements
+Feedback
+Monitor
+Elements
+Elements
+Elements
+Elements
+Feedback
+Monitor
+Section 1
+Section 2
+Section 3
+Section 4
+Section 5
+Feedback
+Monitor
+FIG. 1. Key beam elements at CARIBU. Radioactive ions are
+produced at the source and transported through various ele-
+ments, with arrows indicating the transport direction. Feed-
+back monitors along the beamline measure rates, and BO is
+applied sequentially to each section.
+suitability for daily operations.
+To integrate this optimization framework into the fa-
+cility, beam elements and feedback monitors must be re-
+motely accessible via a web server, a connection typically
+managed by the Accelerator Controls Group for secu-
+rity. However, due to safety concerns, the server must be
+enabled and disabled by an accelerator operator to act
+as the human-in-the-loop. Figure 2 describes the basic
+workflow of our approach. Once the server is enabled and
+a secure connection is established, we use the developed
+functions to read (get) and write (set) values from and
+to the devices.
+As described in Ref. [26], variables, variable ranges,
+and the observables are specified in an abstract element
+called Environment. Variables, such as DC voltages con-
+trolling steerers, quadrupoles, and focusing elements, are
+set within operational limits. Historical “good-tune” val-
+ues are loaded at initialization. The observable, defined
+as the optimization target (labeled “Feedback” in Fig. 2),
+uses signals from particle detectors. In the case of RIBs
+produced by CARIBU, we used Silicon detectors to ob-
+serve electrons from the beta-decay of the isotope of in-
+terest. Three high-level class methods facilitate commu-
+nication with devices: reading current values, setting new
+values from optimization, and obtaining feedback for op-
+timization. A second abstract element, called Interface,
+contains the instructions for device communication.
+This approach offers extensive flexibility in designing
+procedural steps for machine communication. In case of
+a beam-down event, the optimizer can be re-started using
+the most recent optimal parameters. This approach uses
+parameters that reflect the current beamline dynamics,
+rather than outdated historical data. The same interface
+can be applied to different beamline sections without al-

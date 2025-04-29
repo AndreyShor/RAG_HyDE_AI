@@ -1,0 +1,120 @@
+4
+Table I.
+Contribution to the energy (in units of Hartree) from different cliques.
+We combine cliques giving the same energy
+contribution into supercliques. The table provides the six most important supercliques, and for our quantum hardware executions,
+we pick only the top three. IYZZYIIIIIII is a shorthand for I ⊗Y ⊗Z ⊗Z ⊗Y ⊗I ⊗I ⊗I ⊗I ⊗I ⊗I ⊗I. Furthermore, we have
+omitted for the sake of simplicity the ‘hat’ on top of each Pauli operator in a string. The operator, ˆVi, in the heading for the last
+column refers to the clique-wise unitary for the ith clique that occurs in Figure 2. The energies are rounded off to six decimal places.
+Superclique no.
+Cliques in Si
+Terms
+⟨Ψ′(˜Θ∗)| ˆVi |Ψ′(˜Θ∗)⟩
+S0
+Clique 0
+IIIIIIIIIIII, IIIIIIIIIIIZ, IIIIIIIIIIZI, IIIIIIIIIZII,· · · , ZZIIIIIIIIII
+−3.545409
+S1
+Clique 5
+IIIIIIIYZZYI, IYZZYIIIIIII, IIIIIIIYZZYZ,· · · , ZYZZYIIIIIII
+−0.005795
+Clique 6
+IIIIIIIXZZXI, IXZZXIIIIIII, IIIIIIIXZZXZ, · · · , ZXZZXIIIIIII
+−0.005795
+Clique 79
+IXZZXIIYZZYI
+−0.005795
+Clique 80
+IYZZYIIXZZXI
+−0.005795
+S2
+Clique 11
+IIIIIIIYZYYY, IIIIIIYYIIYY, IIIIYYIIIIYY, · · · , YYIYYIIIIIII
+−0.005536
+S3
+Clique 12
+IIIIIIIXZXYY, IIIIIIXXIIYY, IIIIXXIIIIYY, · · · , XXIXXIIIIIII
+0.000958
+S4
+Clique 13
+IIIIIIIYZXXY, IIIIIIYYIXXI, IIIIYYIIIXXI, · · · , YYIIIIIIIXXI
+−0.006494
+Clique 14
+IIIIIIIXZYYX, IIIIXXIIIYYI, IIIXXIIIIYYI, · · · , XXIIIIIIIYY
+−0.006494
+Clique 16
+IIIIIIIXZXXX, IIIIIIXXIIXX, IIIIXXIIIIXX, · · · , XXIIIIIIIXXI
+−0.006494
+S5
+Clique 101
+IIIXXIIYZYII, IXZXIIIYZYII
+0.000958
+Clique 102
+IIIYYIIXZXII, IYZYIIIXZXII
+0.000958
+observed during the time of execution of our tasks on the
+commercially available IonQ Forte-I quantum computer)
+yields an expected result fidelity of ∼(0.9928)12515 = 0,
+whereas to obtain a result fidelity of about 0.85, we require
+to optimize the circuit such that it has only about 20 two-
+qubit gates. With regard to the number of Pauli words in
+the Hamiltonian, it is worth noting that each term would
+correspond to one circuit evaluation per VQE iteration, and
+thus to avoid accumulating errors over evaluation of several
+circuits as well as reduce the cost involved in such a com-
+putation, we need to employ resource reduction strategies
+to reduce the number of measurements. The resource re-
+duction techniques used in the current work are based on
+those used in Ref. [43].
+1.
+Reducing the number of two-qubit gates
+Our resource reduction workflow begins with leveraging
+the C2v point group symmetry [44] to reduce the number
+of excitation amplitudes.
+We obtain the C2v symmetry-
+adapted excitations from each reference determinant and
+manually remove those excitations that lead to redundant
+determinants. We denote the set of linearly independent
+amplitudes thus obtained as ⃗˜θ. We note that the two-qubit
+gate count reduces from 12515 to 3995 with the application
+of C2v symmetry while incurring no loss in the calculated
+ground state energy. We then perform VQE on a classical
+computer with our MRUCC ansatz to obtain the converged
+excitation amplitudes, ⃗˜θ∗, which we then use to construct
+the circuit for ˆU(⃗˜θ∗) |Φ⟩and measure the Hamiltonian on
+the state on a quantum computer, to obtain the ground
+state energy. This is in contrast to a full VQE calculation,
+where each iteration would be carried out on a quantum
+computer. We do not opt for this procedure due to the pro-
+hibitively high costs involved for such a calculation, as well
+as the errors that would be accumulated in such a task ex-
+ecution. In particular, we need to execute nHniter number
+of circuits, where nH is the number of terms in the Hamil-
+tonian, which typically scales as N 4 for an N-spin-orbital
+calculation, and niter is the number of iterations. For our
+work, we use the Sequential Least SQuares Programming
+(SLSQP) optimizer [45], with which we incur 636 iterations
+in a 44-parameter VQE (as opposed to 2092 iterations in
+a 138-parameter VQE without leveraging point group sym-
+metry).
+This step is followed by performing energy-sort VQE [46]
+to pick a dominant excitation. Although the original work
+does not advocate picking only the dominant excitation (a
+double excitation where the spin-orbital 1 →4 and 7 →10;
+the ordering of spin-orbital indices starts from 0, and follows
+the block spin arrangement), this becomes a necessity in
+view of current-day gate fidelities. The inclusion of each ad-
+ditional excitation incurs many two-qubit gates, thus mak-
+ing the circuit optimization that follows harder and with a
+final two-qubit gate count that is outside of the scope of
+obtaining reasonable results using current hardware. The
+energy sort VQE step leads to 115 two qubit gates with a
+loss of 1.83% in the active space energy. We note that the
+calculated energy with this one-parameter approximation
+is −3.590735 Ha. Next, the one-parameter quantum circuit
+is optimized using Qiskit L3 [40] →Pytket [47] →PyZX
+[48] →Qiskit L3 routines in tandem. This step reduces the
+total two-qubit gate count to 43 with no loss in energy. The
+circuit undergoes another layer of optimization by an agent
+trained by reinforcement learning and Graph Neural Net-
+works to enforce rules based on ZX-calculus [49], followed

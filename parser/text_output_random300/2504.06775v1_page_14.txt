@@ -1,0 +1,50 @@
+14
+FIG. 9.
+Mean ancilla state fidelity as a function of number of syndrome extraction rounds under the gate noise model, for
+different rates of ancilla error. The means are calculated from 10 training runs per combination of ancilla and physical error
+rate, where the physical error rate ranges from p = 0.001 −0.01, and the ancilla error rate is expressed as a fraction of the
+physical error rates and denoted by fanc. The standard deviations in fidelity are not displayed to ensure visibility.
+is the propagation of Pauli errors from ancilla qubits
+to physical qubits through the combination of CNOT
+gates and rotation gates, which transform the Pauli er-
+rors into non-Pauli errors that are undetectable by the
+stabiliser code. Although our results come from a sin-
+gle system consisting of a 2-qubit VQC and the [[4,2,2]]
+error-detecting code, the physical phenomena that give
+rise to these results are clearly generalisable to other com-
+binations of QML and QEC algorithms.
+We conclude
+from our results that any QML algorithm and QEC code
+implementation where rotation gates need ancilla qubits
+to logically encode non-transversally, will allow errors to
+propagate between ancilla and physical qubits, leading to
+the formation of exotic errors in the physical qubits. If
+the QEC code employed is not able to detect or correct
+for these types of errors, the effectiveness of the QEC
+code is significantly hampered at high error rates and
+training accuracies achievable by the QML system will
+also be limited. The specific limit on achievable accuracy
+depends on the ancilla error rate and the capabilities of
+the QEC code.
+These findings indicate that practical implementation
+of QML algorithms on NISQ systems requires considera-
+tion of both the logical encoding associated with the QEC
+code and the code’s capacity to detect a wide range of
+error types, in addition to error mitigation approaches
+to be used in conjunction with the QEC code.
+Given
+the limitations of a purely QEC-based approach, it is
+worth exploring alternative methods to use in addition to
+QEC codes. For example, flag qubits may be employed
+to address errors on the ancilla qubits before they have
+a chance to propagate to the physical register. If errors
+propagating between ancilla and physical qubits cannot
+be fully corrected or detected, we cannot perform QML
+algorithms with logical error rates suppressed to arbitrar-
+ily low levels even with fully fault-tolerant systems.
+ACKNOWLEDGMENTS
+The authors acknowledge the support of the CSIRO
+Impossible Without You Program. This research/project
+relied on the use of resources and services from the
+CSIRO’s High Performance Computing cluster (Petri-
+chor).

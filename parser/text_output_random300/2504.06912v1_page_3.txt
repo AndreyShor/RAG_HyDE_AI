@@ -1,0 +1,146 @@
+3
+out of the integration, replacing it with its value at x∗.
+In the non-singular sub-intervals, the integral itself,
+I(ω, x), is slow-varying and can be approximated by
+usual integration routines which require discretizing the
+interval. In doing so, it would be beneficial to choose the
+size of the sub-intervals to be δ so that the singular sub-
+interval is naturally accounted for in the partitioning of
+the integration interval [a, b).
+For definiteness, we will use the Riemann sum as the
+conventional prescription. Therefore, if we break the in-
+tegration into N equal sub-intervals of size δ, we can
+write
+χ(ω)
+=
+N
+X
+m=1
+Z xm
+xm−1
+dx I(ω, x),
+=
+N
+X
+m=1
+m̸=m∗
+I(ω, ¯xm) (xm −xm−1)
+|
+{z
+}
+δ
++R(ω, ¯xm∗)S(ω, ¯xm∗),
+(4)
+where (x0, xN) = (a, b), ¯xm is a point in the sub-interval
+[xm−1, xm) chosen according to some given prescription
+(e.g., the mid-point of the interval) and m∗is the index
+corresponding to the singular sub-interval.
+Next, note that for non-singular sub-intervals
+I(ω, ¯xm)δ =
+I(ω, ¯xm)
+s(ω, ¯xm −x∗)s(ω, ¯xm −x∗)δ
+= R(ω, ¯xm)s(ω, ¯xm −x∗)δ
+≈R(ω, ¯xm)
+Z xm
+xm−1
+dx s(ω, x −x∗)
+|
+{z
+}
+Sm(ω) ≡S(ω,xm) −S(ω,xm−1)
+,
+(5)
+where the functional S is the integral of s(x). The last
+line uses the fact that in a non-singular sub-interval, even
+s(ω, y) is slowly varying, allowing us the replace sδ with
+an integral of s over the interval of size δ.
+We thus see that we can express the integral over the
+entire interval as a weighted sum of the modified-residue
+over all the sub-intervals. That is,
+χ(ω) ≈χmRes(ω) ≡
+N
+X
+m=1
+R(ω, ¯xm)Sm(ω)
+=
+N
+X
+m=1
+I(ω, ¯xm)
+s(ω, ¯xm)Sm(ω).
+(6)
+This is what we call the modified-residue (mRes) pre-
+scription.
+In practice, I(ω, ¯xm) would be the sample points that
+are numerically made available to us that we need to
+integrate over. More often than not, unfortunately, the
+m-mesh is not fine enough to successfully deploy the Rie-
+mann sum (RSum) prescription to integrate over the sin-
+gular nature of I(ω, x) [which would mean approximating
+χ(ω) with χRSum(ω) = P
+m I(ω, ¯xm)δ]. However, if we
+knew the asymptotic singular form s(ω, x−x∗), we could
+compute S(ω, x) analytically. Then, using its definition
+in Eq. (5), we can evaluate Sm(ω) and deploy Eq. (6) to
+estimate χ(ω). As is evident from this construction, for
+a fixed N, χmRes should perform the same as χRSum in
+the non-singular sub-intervals and improve on it in the
+singular sub-interval, rendering an overall improvement
+in the former’s performance.
+A.
+Demonstration of the prescription
+As a quick proof of concept, let us demonstrate the
+above claim for the integral
+χC(ω) = Im
+"
+lim
+η→0
+Z 2π
+0
+dθ
+2π γ2
+C(θ)
+Z ∞
+−∞
+dε
+∆2
+θ
+p
+ε2 + ∆2
+θ
+1
+ε2 + ∆2
+θ −(ω + iη)2/4
+|
+{z
+}
+I(ω,θ)
+#
+,
+(7)
+where
+∆θ
+=
+∆0 cos(2θ),
+with
+∆0
+>
+0,
+C
+∈
+{A1g, B1g, B2g} and γA1g(θ) = 1, γB1g(θ) = cos(2θ),
+γB2g(θ) = sin(2θ). The meaning and relevance of these
+terms and symbols are not relevant at this stage (but
+will be elaborated on in the next section). It suffices to
+know that they just give us access to different scenarios
+where the applicability of the mRes prescription can be
+demonstrated.
+Equation (7) represents a common scenario in many-
+body physics problems: we need the integration over a
+variable (here θ), but the integrand I(ω, θ) itself is a re-
+sult of a different, and potentially involved, numerical
+calculation. Thus, the availability of I(ω, θ) for different
+values of θ is usually limited. To use our prescription,
+we would need to know the resulting singularity after
+performing the 1D integration.
+For this demonstrative example, the 1D integration is

@@ -1,0 +1,130 @@
+Proof of Proposition 6.1
+63
+Remark 7.7. The reason why, on the right-hand side of the previous display, we included the
+seemingly redundant indicator function of the event {Mm,bt+1,bt −dt < −A} is due to a technicality
+in the proof of Lemma 7.9 below. This will be better explained during the course of the proof of that
+lemma.
+Now, by introducing the following quantities,
+E(7.22)
+def= E
+Z
+SR,t
+1{m∈Dλ
+m,bt}1{Mm,bt+1,bt−dt<−A}1{Y·(m)∈Sχ(m),A,L
+t
+}
+|Dλ
+m,bt|
+(1 −Gm,bt)dm
+
+, (7.22)
+E(7.23)
+def= E
+Z
+SR,t
+1{LA
+m,bt}
+1{m∈Dλ
+R }1{Y·(m)∈Sχ(m),A,L
+t
+}
+|Dλ
+R|
+(1 −GR)dm
+
+,
+(7.23)
+E(7.24)
+def= E
+Z
+SR,t
+1{LA
+m,bt}
+1{m∈Dλ
+m,bt}1{Mm,bt+1,bt−dt<−A}1{Y·(m)∈Sχ(m),A,L
+t
+}
+|Dλ
+m,bt|
+· (1 −Gm,bt)dm
+
+,
+(7.24)
+E(7.25)
+def= E
+Z
+SR,t
+1{(LA
+m,bt)c}
+1{m∈Dλ
+R }1{Y·(m)∈Sχ(m),A,L
+t
+}
+|Dλ
+R|
+(1 −GR)dm
+
+,
+(7.25)
+E(7.26)
+def= E
+Z
+SR,t
+1{(LA
+m,bt)c}
+1{m∈Dλ
+R }1{Y·(m)∈Sχ(m),A,L
+t
+}
+|Dλ
+R|
+(1 −Gm,bt)dm
+
+,
+(7.26)
+one can easily check that,
+E(7.18) = E(7.22) + E(7.23) −E(7.24) + E(7.25) −E(7.26) .
+We will show that the fist term is dominant by separately bounding the sum of the second and third
+term (since both terms are positive, this dominates their difference), as well as the difference between
+the two last terms.
+Lemma 7.8. For any λ > 0 and ε > 0, there exists a constant A ≥0 sufficiently large such that for
+any s ≥0 sufficiently large satisfying (es + 1)(R + 1)−1 ∈N, there exists T ≥0 sufficiently large
+such that for any t ≥T, b ≥0, L ≥0, and χ : [0, R]d →R satisfying the conditions in (6.6), it holds
+that
+|E(7.25) −E(7.26)| ≤ερχ([0, R]d) .
+Proof. Using the elementary inequality 1 −e−(u1+u2) ≤(1 −e−u1) + (1 −e−u2) which is valid for
+u1, u2 ≥0, we note that for all m ∈SR,t, it holds that
+1 −GR ≤(1 −G[0,R]d\Bbt(m)) + (1 −Gm,bt) .
+Hence the claim is proved if we can show that there exists a constant A ≥0 sufficiently large such
+that for any s ≥0 sufficiently large satisfying (es + 1)(R + 1)−1 ∈N, there exists T ≥0 sufficiently
+large such that for any t ≥T, b ≥0, L ≥0, and χ : [0, R]d →R satisfying the conditions in (6.6), it
+holds that
+E
+Z
+SR,t
+1{(LA
+m,bt)c}
+1{m∈Dλ
+R }1{Y·(m)∈Sχ(m),A,L
+t
+}
+|Dλ
+R|
+(1 −G[0,R]d\Bbt(m))dm
+
+≤ερχ([0, R]d) .
+By bringing the indicator function of the complement of the event LA
+m,bt inside the exponential, the
+above expectation can be bounded from above by
+E
+
+1 −exp
+
+−
+Z
+[0,R]d Fγ,t(x)1{Yχ
+t (x)−dt≤−A−λ}µχ
+γ,t(dx)
+
+,
+and so the conclusion follows by choosing A ≥0 as in Lemma 7.5.

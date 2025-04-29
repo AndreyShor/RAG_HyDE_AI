@@ -1,0 +1,78 @@
+Resampling property and independence from the threshold
+46
+and so the claim follows from the dominated convergence theorem and the monotone convergence
+theorem.
+We are now ready to prove Proposition 2.11.
+Proof of Proposition 2.11. Let λ ∈Λ and F ∈Cb
+loc(C(Rd)). By applying the characterisation (2.8) of
+the field Ψλ to the right-hand side of (2.10), we obtain that the claim follows if one can prove that the
+following equality holds
+E[F(eΥλ)] = E
+R
+Rd F(τx eΥλ)e
+√
+2deΥλ(x)1{eΥλ(x)≥M(eΥλ)−λ}dx
+R
+Rd e
+√
+2deΥλ(x)1{eΥλ(x)≥M(eΥλ)−λ}dx
+
+.
+We note that this is precisely (2.9), and thus the claim is established by Proposition 2.9.
+5.3
+Independence from the choice of threshold
+In this section, we verify the independence of certain quantities of interest from the arbitrary threshold
+λ. Specifically, we begin by proving Proposition 2.13, which establishes the independence of the law
+of the field Ψλ from λ ∈Λ. Then, in Lemma 5.8, we show that the constant a⋆, defined in (2.11), is
+also independent from λ ∈Λ.
+We start by proving Proposition 2.13.
+Proof of Proposition 2.13. Consider λ1, λ2 ∈Λ such that λ2 < λ1. Thanks to Lemma 5.1, we know
+that the field eΥλ2 has the same law as the field eΥλ1, conditioned on the event M(eΥλ1) ≤λ2. Therefore,
+for any F ∈Cb
+loc(C(Rd)), recalling Definition 2.7, we can write
+E[F(Ψλ2)] ∝E
+
+
+F(τx⋆eΥλ1)e
+√
+2dM(eΥλ1)
+R
+Rd e
+√
+2deΥλ1(x)1{eΥλ1(x)≥M(eΥλ1)−λ2}dx
+1{M(eΥλ1)≤λ2}
+
+,
+(5.9)
+where x⋆∈Rd denotes the point where the field eΥλ1 achieves its maximum. Now, one would like to
+apply the resampling property (2.9) of the field eΥλ1 to the quantity on the right-hand side. However,
+we observe that the function that assigns to eΥλ1 the quantity inside the expectation in (5.9) is not
+a function in Cb
+loc(C(Rd)). Indeed, this map is neither bounded nor dependent on the values of the
+input function inside a compact set. Moreover, note that it is also not continuous. However, since λ1,
+λ2 ∈Λ, its set of discontinuities has measure zero under the law of eΥλ1, so this does not pose an issue.
+For k > 0, let x⋆,k ∈Bk denote the point where the field eΥλ1 achieves its maximum inside Bk. Then,
+to overcome the issues mentioned above, we claim that the following quantity
+E
+
+
+F(τx⋆,keΥλ1)e
+√
+2dM0,k(eΥλ1)
+(
+R
+Bk e
+√
+2deΥλ1(x)1{eΥλ1(x)≥M0,k(eΥλ1)−λ2}dx) ∨L−1 1{M0,k(eΥλ1)≤λ2}
+
+
+(5.10)
+converges to the right-hand side of (5.9) as k →∞first, and then L →∞. This follows from
+Theorems A, B and Lemmas 4.20, 4.22. For brevity, we do not provide the details here, but we note
+that similar computations are carried out in the proofs of Lemmas 7.12 and 7.14 below.
+Now, we are in a position to apply the resampling property (2.9) of the field eΥλ1 to the quantity on the
+right-hand side of (5.10) for fixed k ≥0 and L ≥0. Proceeding in this manner, performing some
+algebraic rearrangements, and then removing the cutoff parameters, it is straightforward to see that the
+quantity on the right-hand side of (5.9) coincides with E[F(Ψλ1)], as desired.
+We now argue that the constant a⋆, defined in (2.11), is independent of λ ∈Λ. To establish this, we
+first need to prove the following result concerning the constant c⋆,λ, defined in (2.6).

@@ -1,0 +1,101 @@
+However, building large-scale quantum LLMs faces
+formidable hardware barriers. Even if conceptually
+feasible, millions or billions of parameters would ex-
+ceed the capacity of near-term devices. Nonethe-
+less, hybrid strategies, classical embeddings feed-
+ing into smaller quantum layers that capture cer-
+tain language correlations, are a possible stepping
+stone. Exploring whether quantum geometry gen-
+uinely helps encode linguistic relationships (e.g.,
+synonyms, polysemy) beyond classical attention
+networks is an intriguing open question.
+5.2. Quantum Reinforcement Learning (Quantum
+RL)
+Reinforcement learning (RL) aims to learn poli-
+cies that maximize cumulative reward in an envi-
+ronment. Quantum RL [23, 24] envisions an agent
+partially or wholly implemented on quantum hard-
+ware:
+• Quantum policy representations: The agent’s
+policy π(a | s) might be encoded in a quantum
+state, with actions chosen via measurement.
+• Quantum value functions: Variational circuits
+could approximate value functions, with the
+manifold geometry guiding how one updates
+these circuits in response to environment feed-
+back.
+• Entanglement
+for
+state-action
+correlations:
+The ability to entangle state and action reg-
+isters might produce more compact or flexi-
+ble representations, particularly if the environ-
+ment has complex correlation structures.
+Open problems include identifying when quantum
+RL offers an advantage, how to design quantum ex-
+ploration strategies, and how to handle the contin-
+uous interplay between classical environment states
+and quantum internal representations. In practice,
+the geometry of the quantum policy manifold might
+facilitate stable policy optimization akin to natural
+gradient methods in classical RL, but more theo-
+retical and experimental work is needed.
+5.3. Geometry of Quantum Generative Modeling
+Generative modeling in QML can proceed via
+quantum Boltzmann machines, quantum GANs,
+or other variational approaches [7]. The question
+arises: what unique geometric benefits do quantum
+states provide for modeling complex data distribu-
+tions (images, molecular configurations, etc.)?
+• Manifold capacity: Does the manifold of den-
+sity operators at limited rank better approxi-
+mate certain distributions than classical mix-
+ture models or normalizing flows?
+• Entanglement and multi-modal data: For high-
+dimensional, multi-modal data (e.g., cross-
+sensor imagery), can entanglement-based ar-
+chitecture more naturally capture correlations
+across modalities?
+Investigation of these questions likely requires com-
+bined insights from classical information geometry
+and quantum physics, especially analyzing manifold
+curvature in partial trace operations and entangled
+sub-blocks of a quantum system.
+5.4. Hardware-Limited
+but
+Progressing:
+Near-
+Term vs. Fault-Tolerant
+Despite conceptual advances, NISQ hardware re-
+mains constrained by:
+• Qubit count: Current devices typically provide
+tens or hundreds of qubits, far from the thou-
+sands or millions implied by large-scale QML.
+• Gate errors and decoherence: The depth of re-
+liable circuits is limited, restricting the expres-
+sivity of the quantum manifold.
+• Classical-quantum data conversion bottlenecks:
+For many real datasets, amplitude encoding
+or other forms of state preparation can them-
+selves be expensive.
+In the near term, hybrid pipelines, error-mitigation
+strategies, and specialized problem domains (where
+data is naturally quantum or the dimension is
+small) offer the most viable route to advantage.
+Long term, universal fault-tolerant quantum com-
+puting could unlock the full expressive power of
+Geometric Quantum ML, making manifold-based
+transformations less hardware-limited.
+5.5. Theoretical Characterization of Entanglement-
+Induced Curvature
+One of the most fascinating open directions is
+a deeper mathematical characterization of how
+entanglement modifies the manifold geometry of
+multi-qubit states [10]. For instance:
+• Sectional curvature:
+Understanding how en-
+tanglement alters curvature in specific sub-
+manifolds might clarify potential “bottlenecks”
+or “shortcuts” in state-space optimization.
+16

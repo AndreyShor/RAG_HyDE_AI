@@ -1,0 +1,138 @@
+SigChord: Sniffing Wide Non-sparse Multiband Signals for Terrestrial and Non-terrestrial Wireless Networks
+MobiSys ’25, June 23–27, 2025, Anaheim, California, US
+0
+1
+2
+3
+4
+5
+6
+Bit index
+0.7
+0.8
+0.9
+1.0
+Accuracy
+(a) DVB-S2, 𝑟= 0.625
+0 1 2 3 4 5 6 7 8 9 1011121314151617181920212223
+Bit index
+0.7
+0.8
+0.9
+1.0
+Accuracy
+(b) Non-HT Wi-Fi, 𝑟= 0.625
+0 2 4 6 8 10121416182022242628303234363840424446
+Bit index
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Accuracy
+(c) HT Wi-Fi, 𝑟= 0.625
+MCS
+Pilot
+Frame length
+(d) DVB-S2, 𝑟= 0.83
+MCS Reserved
+Packet length
+Parity
+Padding
+(e) Non-HT Wi-Fi, 𝑟= 0.83
+11010
+Duration
+Padding MCS & CBW Packet length
+(f) HT Wi-Fi, 𝑟= 0.83
+Figure 18: Decoding accuracy on each bit.
+For HT Wi-Fi headers, the bit-level decoding accuracy is slightly
+lower for certain low-weight bits in the packet length field, but
+this has minimal impact on wireless network sniffing since these
+bits are less significant. As shown in Table 3, the 95th percentile
+error in packet length prediction is only 0.224KB, with an average
+error of 0.07KB, which remain well within acceptable thresholds.
+Additionally, we observe that the accuracy in HT decoding easily
+improves with increased data and model scale. Fine-tuning with 500,
+750, and 1,000 data points raises the lowest accuracy from 0.7835
+to 0.8140 and 0.8301. Further, increasing decoder layers to four
+boosts the accuracy to 0.9059, with the 95th percentile packet length
+error of 0.064KB and the average error of 0.042KB. Remarkably,
+even without any fine-tuning, the four-layer model achieves the
+lowest bit accuracy of 0.8973. These results suggest that with an
+appropriately scaled dataset and model, even minor errors can be
+further minimized, supporting the broader potential of SigChord
+for effective wireless sniffing applications.
+At 𝑟= 0.625, SigChord shows a reduction in decoding accuracy
+across some fields; however, it still maintains over 90% accuracy for
+key fields such as DVB-S2 frame length, payload pilot format, Non-
+HT Wi-Fi MCS, and HT Wi-Fi channel bandwidth. For Non-HT
+Wi-Fi packet length, the 95th percentile error is 1.06KB, with an
+average error of 0.136KB. For HT Wi-Fi transmission duration, the
+95th percentile error is 1.18ms, with an average error of 0.145ms.
+Despite operating near the Landau rate, SigChord achieves rela-
+tively reliable header decoding, indicating practical applicability
+for wireless network sniffing tasks for non-sparse signals with low
+cost.
+In terms of inference speed, for a batch size of 1,024 sub-sampled
+multiband signals, which include 1,340 DVB-S2 headers, 1,416 Non-
+HT Wi-Fi headers, and 1,345 HT Wi-Fi headers, SigChord processes
+them in 26.8 ± 0.25ms, 39.5 ± 0.22ms, and 52.7 ± 0.22ms, respectively.
+Averaged over 1,024 sub-samples multiband signals, the processing
+times are 26.17𝜇s, 41.80𝜇s, and 51.46𝜇s, comparable to the 48𝜇s
+duration of the input. Given that signal headers represent only a
+small fraction of the whole signal (e.g., DVB-S2 headers account
+for at most 1/37 of the total length), and that payload frames are
+0.0
+0.5
+1.0
+Packet Length (KB)
+0.0
+0.5
+1.0
+CDF
+Packet length r=0.625
+Packet length r=0.83
+(a) Non-HT packet length error
+0
+2
+4
+Packet Length (KB)
+0.0
+0.5
+1.0
+CDF
+Packet length r=0.625
+Packet length r=0.83
+Duration r=0.625
+Duration r=0.83
+0.0
+0.5
+1.0
+Duration (ms)
+(b) HT packet length and duration er-
+rors
+Figure 19: The cumulative distribution function of the pre-
+dicted length and duration errors of non-HT and HT signals.
+filtered out by the protocol identifier of SigChord, the actual frames
+requiring processing are much fewer than those in the dataset.
+GPU memory usage and inference time are summarized in Ta-
+ble 2, where SigChord demonstrates moderate GPU memory con-
+sumption and real-time processing capability. The computational
+cost of SigChord scales linearly as the number of signals increases.
+And due to the modular and software-based design, SigChord can
+employ software engineering techniques such as load balancing
+and dynamic scaling to handle increased signal loads. In exception-
+ally high-density scenarios, the challenge shifts from individual
+module efficiency to specific scheduling algorithm design, akin to
+upper-layer network telemetry under heavy traffic. We leave such
+algorithm design for future exploration.
+6
+Related Work
+Sniffing physical-layer signals is far more challenging than upper-
+layer analysis due to the complexities of electromagnetic character-
+istics. Key difficulties include the constraints imposed by Nyquist
+sampling theory and the need to parse raw electromagnetic waves
+instead of clean bit streams.
+Sequential scanning: There are existing sequential scanning
+studies to address the first challenge. SpecInsight [1] achieves

@@ -1,0 +1,25 @@
+8
+networks. It is sufficient to follow an attack on a single network, where Pm is the probability that the removal of a
+single node detaches m other nodes from the giant connected component (GCC). Figure 5 shows the distribution of
+the number of offspring, Pm vs. m, on a double logarithmic scale, for a few values of the mean number of offspring,
+m. As expected, this pdf is a truncated power law whose exponent is close to 1.3, and different values of m differ only
+by the truncation point.
+Hence, in the simulations of the demographic process (e.g., those shown in Figure 2 of the main text), we picked
+the number of offspring per individual from a truncated power law with a hard cutoff, i.e., Pm = Am−1.3 dor m < m∗
+and Pm = 0 for m > m∗, where the truncation point m∗and the normalization factor A were determined such that
+m = 1 + CM/N. The factor C depends on the slope of m vs. M/N near the point where m = 1, a slope that was
+very difficult to measure numerically. Therefore, we took the value C = 2.5 (which lies within the range of values we
+obtained) as representative, since it provided a better fit to the results.
+FIG. 5. The probability distribution function Pm for different values of m, plotted on a double logarithmic scale. Pm
+appears to follow a truncated power-law distribution, with an exponent of approximately −1.3 (dashed line). To simulate the
+demographic process, the number of offspring per individual was drawn from this distribution, with the truncation point m∗
+(vertical dashed lines) and normalization determined by the constraint on m.
+Appendix E: Additional details for Figure 2
+The results presented in Figure 2 of the main text were obtained as follows.
+For every network size N, 104
+interdependent networks were generated. In each attack, n0 sites were removed, and the resulting dynamics was
+monitored to determine TA and TF . Six independent attacks with n0 removed sites were performed for each of the
+104 realizations. The circles represent the mean, calculated over all these attacks.
+The spread of the results is shown in Figure 6, where the shaded areas mark the regions containing 67% of the
+numerical experiment outcomes. Importantly, the demographic process accurately reproduces both the mean and the
+variance of the interdependent network dynamics.

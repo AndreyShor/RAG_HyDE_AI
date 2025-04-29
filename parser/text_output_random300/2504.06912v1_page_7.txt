@@ -1,0 +1,174 @@
+7
+−2
+0
+2
+E=¢0
+0.0
+1.5
+3.0
+4.5
+6.0
+7.5
+9.0
+10.5
+g=º0 (d-wave)
+(a1)
+RSum
+N=24
+N=32
+N=48
+N=64
+N=96
+N=128
+N=192
+−2
+0
+2
+E=¢0
+(a2)
+mRes
+−2
+0
+2
+E=¢0
+0.0
+1.5
+3.0
+4.5
+6.0
+7.5
+9.0
+10.5
+g=º0 (anisotropic nodeless s-wave)
+(b1)
+RSum
+N=24
+N=32
+N=48
+N=64
+N=96
+N=128
+N=192
+−2
+0
+2
+E=¢0
+(b2)
+mRes
+FIG. 5. Density of states. Side-by-side comparison of the density of states of (a) d-wave and (b) nodeless anisotropic s-wave
+superconductors computed using the RSum – (a1) and (b1) – and the mRes – (a2) and (b2) – methods for different numbers
+of subdivisions N. In the d-wave case, the density of states for low values of N using the RSum accidentally and erroneously
+resembles the result for the anisotropic nodeless s-wave system. This is not the case when computing the density using the
+mRes prescription, which outperforms RSum in all cases. The densities are shifted such that the dashed horizontal lines mark
+the zeros.
+is
+g(E)
+= ν0
+Z 2π
+0
+dθ
+Z ∞
+0
+dε δ
+
+E −
+q
+ε2 + ∆2
+θ
+
+= −Im
+ 
+lim
+η→0
+ν0
+π
+Z 2π
+0
+dθ
+Z ∞
+0
+dε
+1
+E −
+p
+ε2 + ∆2
+θ + iη
+|
+{z
+}
+I(E,θ)
+!
+.
+(9)
+where ν0 is a reference density of states that is not rele-
+vant for the present discussion. The form of the singular-
+ity of this integrand is s(E, θ) = 1/
+p
+E −|∆θ| + iη and
+we can straightforwardly carry out its integration by ap-
+plying our mRes prescription. The results for d-wave and
+nodeless anisotropic s-wave superconductors are shown
+in Fig. 5, where the mRes method is shown to outper-
+form the RSum. It can be seen even in this case that
+the RSum at low N gives results that cannot distinguish
+between the nodal and nodeless scenarios. This is better
+resolved with mRes.
+IV.
+ERROR ANALYSIS
+In this section, we quantify the error in our approxi-
+mation. While the improvement in the cases discussed
+here is visibly evident, it is important to understand the
+bounds within which this prescription operates. Observe
+that the main change of our method from the Riemann-
+sum prescription is that the uniform weight δ of each
+interval m is modified as
+δ →
+Sm(ω)
+s(ω, ¯xm) ≈
+
+
+
+δ
+if m ̸= m∗,
+S(ω, m∗)
+s(ω, m∗)
+otherwise.
+(10)
+As stated earlier, the prescription implements the Rie-
+mann sum in all non-singular sub-intervals and replaces
+the Riemann weight in the singular sub-interval with the
+modified-residue weight. This weight removes the singu-
+larity of I(ω, x) and leads to a finite result. A similar
+substitution would apply for incorporation with other
+integration methods.
+Thus, what would have conven-
+tionally required further subdivision of the sub-interval
+to arrive at the right result, this prescription achieves
+without the extra subdivisions. This is the source of the
+improvement.
+In fact, in Fig. 6, we show the normalized root mean
+square error (RMSE) of the two methods as function of
+N for all the cases presented in Figs. 1 to 3. Observe that
+for N ranging from small to sufficiently large (∼103), we
+have the residue prescription outperform the Riemann
+sum by an order of magnitude in many cases. However,
+observe that there is a crossover point (that is not reached
+in all the panels) beyond which the Riemann sum outper-
+forms the residue prescription. Although this happens at
+N ∼103, which is already a relatively large number of
+sub-intervals that will seldom be necessary in practice
+and the error still decreases, it is incumbent on the pre-
+senters of the prescription to address this tendency. This
+is discussed next.
+A.
+Constraint on the sub-interval size
+We first point out that there can be two types of
+non-singular sub-intervals in our prescription.
+One
+where I(ω, x) is slowly varying (which is what was dis-
+cussed above) and another where I(ω, x) is not singu-
+lar, but medium-to-fastly varying. Ideally, if we chose
+an appropriate size of the sub-interval, we would not
+encounter these non-singular medium-fast-varying sub-
+intervals. But as we reduce δ, we are bound to increase
+the number of these sub-intervals. See Fig. 7 where this

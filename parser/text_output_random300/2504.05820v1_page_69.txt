@@ -1,0 +1,47 @@
+Tools and methodology
+55
+x
+ln x
+xg(x, Q0)
+xΣ(x, Q0)
+xV(x, Q0)
+xV3(x, Q0)
+xT3(x, Q0)
+xT15(x, Q0)
+xT8(x, Q0)
+xV8(x, Q0)
+xg(x, Q0)
+xu(x, Q0)
+x ¯u(x, Q0)
+xd(x, Q0)
+xs(x, Q0)
+xc+(x, Q0)
+x¯s(x, Q0)
+x ¯d(x, Q0)
+n(4) = 8
+n(3) = 20
+n(2) = 25
+n(1) = 2
+Figure 2.10: The neural network architecture adopted for unpolarized NNPDF4.0 PDF set. A single
+network is used, whose eight output values are the PDFs in the evolution (red, default) or the flavor
+basis (blue box). The architecture displayed corresponds to the optimal choice of the hyperparameters in
+the evolution basis. From Ref. [109].
+We now proceed to Section 2.3.1 specifying the PDF parametrization and the theoretical
+constraint adopted, then we recap the experimental data used in our framework (Section 2.3.2)
+and we conclude in Section 2.3.3 with an overview of NNPDF4.0 PDF up to NNLO with and
+without MHOU.
+2.3.1. PDF parametrization and theoretical constrain
+Any PDF analysis requires to select a fitting scale Q0, a PDF parametrization and a flavor basis,
+namely the choice of different flavor combinations that are determined independently during
+the fit. In NNPDF4.0 methodology we fit PDFs at the initial scale Q0 = 1.65 GeV, and we assume
+the evolution basis of Eq. (1.61) as the default, considering 8 different linear combinations
+fk = {V, V3, V8, T3, T8, T15, Σ, g} .
+(2.26)
+This basis facilitates the implementation of sum rules and integrability constrain but, fits in the
+standard flavor basis can also be performed and used to cross-check the final result. Each of the
+flavor combinations is related to the output of the neural network via
+xfk (x, Q0; θ) = Ak x1−αk(1 −x)βkNNk(x; θ) ,
+k = 1, . . . , 8 ,
+(2.27)
+where NNk(x; θ) is the k-th output of a neural network, whose architecture is shown in Fig. 2.10,
+and θ collectively indicates the full set of neural network parameters.

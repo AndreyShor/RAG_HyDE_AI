@@ -1,0 +1,164 @@
+A&A proofs: manuscript no. main
+4265
+4270
+0.80
+0.85
+0.90
+0.95
+1.00
+1.05
+normalised flux
+CII
+4630
+4635
+4640
+4645
+4650
+0.80
+0.85
+0.90
+0.95
+1.00
+1.05
+NII
+OII, NII
+OII
+* eta CMa
+HIP 15429, co-added spectra
+4025
+4030
+4035
+wavelength [Å]
+0.6
+0.8
+1.0
+normalised flux
+HeI
+SiII SiII
+4580
+4590
+4600
+4610
+wavelength [Å]
+0.80
+0.85
+0.90
+0.95
+1.00
+1.05
+FeII
+NII
+NII
+Fig. 2: Comparison of CNO lines in the co-added spectra of
+HIP 15429 (black) and the B5 supergiant standard star Eta Canis
+Majoris (purple) presumed to be of similar temperature, surface
+gravity and metallicity. Carbon and oxygen appear to be depleted
+in HIP 15429.
+of Fig. 1 shows three epoch spectra observed within a 10-day
+period, illustrating the high variability of the central absorption
+feature. The short variability timescale, corresponding to ≲5%
+of the orbital period (see Sect. 4), suggests that these profile
+changes are not due to the superposition of the narrow-lined
+star’s spectrum, nor does the absorption feature trace the com-
+panion star.
+4. Orbital analysis
+We measured RVs of the narrow-lined star by cross-correlating
+the data with a synthetic template spectrum. We used a spectral
+template from the Potsdam Wolf-Rayet (PoWR) model atmo-
+spheres grids for OB-type stars (Hainich et al. 2019, see Sect. 6
+for a more detailed description of the code) with temperature
+Teff = 15 kK, surface gravity log g = 2.6 and solar metallic-
+ity. Cross-correlation was performed in eight wavelength regions
+of equal size, each 250 Å wide, spanning the range of 4000 to
+6000 Å. RVs were determined by averaging measurements from
+all wavelength regions, with uncertainties derived as the standard
+deviation of the RVs across these regions. The most important
+spectral lines contributing to the RV measurements include He I
+absorption lines (e.g., He I λ4026, λ4144, λ4388, λ4922, λ5116
+and λ5876) and narrow metal lines such as Mg II, Ca II, Si II/III
+and Fe II/III lines. We masked wavelength regions with known
+telluric or interstellar features and the Balmer lines, where there
+is substantial contribution from the companion star. We cross-
+checked the measured RVs by fitting Voigt profiles to individ-
+ual spectral lines, including multiple He I and metal lines (e.g.,
+Mg II). Voigt profiles were chosen because they provided bet-
+ter fits to the slightly broader line wings compared to Gaussian
+profiles. The fitting was performed using the funcFit module
+of the PyAstronomy Python package. To determine RVs and
+their uncertainties, we averaged the RVs obtained from all fitted
+lines and calculated the standard deviation among these mea-
+surements as the RV uncertainty. Comparing the RVs from the
+Voigt profile fitting and template cross-correlation, we found the
+results to be consistent within 2-σ uncertainties.
+We did not attempt to measure RVs for the companion star
+because its only discernible feature is the emission component
+in the Balmer lines, which is highly variable on short timescales
+(see Fig. 1) and therefore not suitable for RV measurements.
+We used a nested sampling framework to determine the
+binary orbit. In particular, we used the algorithm MLFriends
+(Buchner 2016, 2019) as part of the UltraNest package (Buch-
+ner 2021) to infer posterior probability distribution functions
+for orbital parameters. The RV curve is parameterized by
+six orbital parameters (KB, P, M0, e, ω, vz), which we fitted to-
+gether with an additional jitter term s to account for poten-
+tially underestimated RV uncertainties. Here, KB is the RV
+semi-amplitude of the narrow-lined star, P denotes the or-
+bital period, and M0
+=
+2πt0/P is the mean anomaly at a
+reference time t0. e and ω are the orbital eccentricity and
+the argument of the pericenter, and vz denotes the system’s
+barycentric velocity. The assumed prior distributions are un-
+informative and uniform for all parameters with prior ranges
+KB ∈[0, 200] km/s, P ∈[200, 250] d, M0, ω ∈[0, 2π], e ∈
+[0.0, 0.99], s ∈[0.01, 10] km/s, vz ∈[−100, 100] km/s. The as-
+sumed log-likelihood function has the form
+log L =
+X
+i
+−1
+2
+
+(vrad,obs(ti) −vrad,model(ti))2
+σ2vrad,i + s2
+−log
+
+1
+σ2vrad,i + s2
+
+
+(1)
+for observed RVs of the narrow-lined star vrad,obs with uncertain-
+ties σvrad,i and predicted RVs vrad,model, summed over all available
+epochs ti. Given the different wavelength regime and higher res-
+olution of the obtained spectra with respect to Gaia RVS spectra,
+as well as the good orbital coverage, we opted not to include the
+DR3 orbital solution in the prior or likelihood of the parameter
+inference, but rather to get an independent estimate of the orbital
+parameters.
+In Fig. 3, the results of the orbital analysis are presented,
+showing the posterior samples of period and eccentricity and
+the maximum a posteriori (MAP) phase folded orbit model. The
+posterior samples are clearly unimodal and clustered around an
+orbital solution with a period of P = 221 ± 1 d and eccentricity
+e = 0.52±0.03. The mean values and uncertainties for all orbital
+parameters are listed in Table 1. The derived orbital solution is
+broadly consistent with the spectroscopic solution published in
+Gaia DR3. However, we infer slightly higher period and higher
+eccentricity compared to the DR3 values; PDR3 = 217 ± 2 d,
+eDR3 = 0.41 ± 0.05 (Gaia Collaboration et al. 2023a).
+5. Spectral disentangling
+We performed spectral disentangling in an attempt to separate
+the observed composite spectra into the intrinsic spectra of the
+two stellar components. To increase the robustness of our re-
+sults, we used two independent methods, namely the shift-and-
+add technique (Marchenko et al. 1998; González & Levato 2006;
+Shenar et al. 2020) and a method based on singular value decom-
+position following Simon & Sturm (1994).
+The shift-and-add technique has previously been used to dis-
+entangle spectra in several bloated stripped star systems (e.g.,
+Bodensteiner et al. 2020a; Villaseñor et al. 2023). This method
+starts with an initial guess, typically a flat spectrum for the com-
+panion and Doppler-shifted, coadded spectra for the primary
+star, and iteratively refines both components. The algorithm is
+Article number, page 4 of 28

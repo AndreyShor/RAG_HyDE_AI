@@ -1,0 +1,205 @@
+5
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+Time
+0
+1
+2
+3
+4
+EPR Values
+EPR Over Time
+Stot
+Sm
+Sact
+Ssys
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+0.00
+0.02
+0.04
+0
+15
+30
+45
+60
+75
+90
+Time
+2
+0
+2
+4
+6
+8
+10
+12
+EPR Values
+EPR Over Time
+Stot
+Sm
+Sact
+Ssys
+FIG. 1.
+Entropy production rates for a Brownian particle
+immersed in the active bath. Top: the jump size has 0 mean
+and 1/24 variance; Bottom: the jump size has 0.1 mean and
+1/24 variance.
+V NN(r, t) is updated accordingly. Using (20), we then
+generate the samples XNN
+0,t+∆t(x) at the next time step,
+t + ∆t, and thus we obtain the numerical empirical dis-
+tribution P NN(r, t + ∆t) =
+1
+N
+PN
+i=1 δ(r −XNN
+0,t+∆t(xi)).
+Under a similar argument of [43] we can show that:
+E
+X0,n∆t −XNN
+0,n∆t
+ /T
+≤O(ε) + O(∆t), with ε the
+bounds of score loss, and ∆t the time step size, n∆t ≤T.
+When the active fluctuation vanishes, our approach is
+consistent with [54].
+Examples—We first consider the motion of a Brow-
+nian particle starting from a standard Gaussian distri-
+bution immersed in an active bath of temperature T
+[17], diffusing in a spatially asymmetric periodic po-
+tential of period L and barrier height 2V0:
+V (r) =
+−V0 [sin(2πr/L) + 0.25 sin(4πr/L)]. The motion of the
+particle is governed by
+dr
+dt =
+−1
+Γ
+∂V (r)
+∂r
++ ηth(t) +
+√
+2
+N(t)
+X
+i=1
+Aiδ(t −ti),(26)
+where N(t) is a Poisson counting process with parame-
+ters λ and Ai are Gaussian random variables with mean
+µ and variance σ2. The numerical details and parameters
+can be found in the Supplemental Material. Using our
+proposed deep learning framework, we perform three nu-
+merical experiments under the following conditions: (1)
+active fluctuations with a mean of µ = 0 and variance
+σ2 = 1/24, and (2) active fluctuations with a mean of
+µ = 0.1 and variance σ2 = 1/24, respectively.
+FIG. 1 illustrates the entropy production rates for this
+example. In the top panel, the active fluctuation is mod-
+eled by compound Poisson noise with zero mean and vari-
+ance 1/24. In this case, since the noise does not have net
+drift, its impact on the system is minimal, and all en-
+tropy production rates eventually decay to zero, indicat-
+ing that the system relaxes to equilibrium. This is similar
+to the case where there is only Gaussian thermal noise.
+In the bottom panel, increasing the mean jump height
+of the Poisson noise to 0.1 introduces a net drift that
+drives the system further away from equilibrium. As a
+result, the total entropy production rate ( ˙Stot) stabilizes
+to a nonzero steady-state value due to the contribution
+( ˙Sact) from active fluctuations, which defines the non-
+equilibrium steady state with active fluctuations break-
+ing the detailed balance.
+These results highlight how
+the statistical properties of active noise, particularly the
+mean jump height, play a crucial role in determining the
+system’s dynamics and steady-state entropy production.
+The validity of our deep learning approach is verified in
+the Supplemental Material.
+Our second example is an active polymer system con-
+sisting of an active Brownian particle (ABP) cross-linker
+and (n+1)m ordinary Brownian beads described in [31].
+The dynamics of the active polymer is described by the
+following Langevin equations:
+Γ drA
+dt
+= −k
+m
+X
+l=1
+(rA −r(l)
+1 ) + ηth(t) + ηact(t),
+Γ dr(l)
+s
+dt
+= −k
+
+2r(l)
+s
+−r(l)
+s+1 −r(l)
+s−1
+
++ η(l)
+th .
+(27)
+The first equation describes the motion of the ABP cross-
+linker represented by rA(t) (≡r(·)
+0 (t) with the index 0
+denoting the center bead); the vector r(l)
+s
+denotes the
+position of s-th monomer in the l-th linear chain (where
+s ∈{1, · · · , n} and l ∈{1, · · · , m}) and k is the spring
+constant for the harmonic potential between neighboring
+beads.
+The active fluctuation ηact,i is modeled as the
+compound Poisson process ηact,i(t) = v0,iσD,i(t) where
+v0,i is the constant speed of self-propulsion and σD,i(t)
+takes the values of ±1 following the Poissonian statistics
+with a fixed rate r0,i [8]. The second equation describes
+the dynamics of the Rouse chains in the polymer net-
+work. ηth and η(l)
+th are the δ-correlated thermal noises
+for the cross-linker and the remaining particles, respec-
+tively, which are independent of one another and have a
+variance of 2kBT /Γ for each Cartesian component.
+The boundary conditions for the arms in our study
+are the pinned arms where the last (n + 1)-th beads
+in the arms are fixed in space, i.e., Γ
+dr(l)
+n+1
+dt
+≡0,
+l ∈
+{1, · · · , m}. We consider the cases where m = 3, 4 and
+n = 1, 3, 7. We set the initial state of the system to follow
+a Gaussian distribution, where the mean configuration
+ensures a distance of 0.5 between adjacent particles, and
+the covariance matrix is specified as the identity matrix.
+Fig. 2 shows the entropy production for the active poly-
+mer system with m = 3, 4 arms, where each arm consists
+of n = 1, 3, 7 Brownian beads and a fixed end bead in

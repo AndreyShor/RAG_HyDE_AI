@@ -1,0 +1,130 @@
+Primitives Layer Construction
+Scene Hierarchy Update
+Task Update
+RGB-D 
+Images
+Pose 
+Estimates
+Segmenter
+Encoder
+Association
+Optimization
+Encoded 3D 
+Detections
+Primitives Layer
+Scene Graph
+HIB
+Bottom-up 
+Construction
+Top-Down 
+Pruning
+Task-associated Primitives
+Word 
+Generator
+Hierarchy 
+Refinement
+1. Clean the office
+a. Clear items on desk
+i. Paper
+ii. …
+b. Arrange the shelves
+i. …
+c. …
+2. …
+Task Hierarchy
+Spatial Update
+Figure 2.
+ASHiTA first segments and encodes primitives in 2D, and then associates and optimizes them in 3D together with the camera poses. ASHiTA
+then breaks down high-level tasks into a task hierarchy by alternating two steps: a Scene Hierarchy Update (Section 4.2) which creates a 3D scene graph
+from the primitives layer using the task hierarchy, and a Task Update (Section 4.3) which uses an LLM and the 3D scene graph to refine the task hierarchy.
+ory, the Information Bottleneck [42], which compresses a
+representation in a task-driven fashion. In particular, we
+propose a hierarchical extension, dubbed the Hierarchi-
+cal Information Bottleneck algorithm (H-IB), which com-
+presses the primitives multiple times, according to the lay-
+ers in the task hierarchy. We use the output of H-IB to first
+construct the scene graph in a bottom-up fashion, then per-
+form a top-down pass to refine and prune the parts of the
+scene graph that have low task relevance.
+Hierarchical Information Bottleneck. The Informa-
+tion Bottleneck algorithm (IB) [42] seeks to find a com-
+pressed representation S of the input data S0 that retains
+as much relevant information about the task T as possible
+while minimizing the amount of information about S0 that
+is not useful for T . Intuitively, IB creates a "bottleneck" in
+the information flow between input S0 and task T , and the
+compressed version of the input S preserves the maximum
+amount of information about T while discarding irrelevant
+details from S0. Formally, this can be written as
+min
+P(S|S0) I(S0; S) −βI(T ; S)
+(2)
+where I(X; Y ) is the mutual information between X and
+Y , and the parameter β controls the amount of compression.
+H-IB is a generalization of IB to account for multi-
+resolution tasks T1 . . . Tn and multiple levels of compres-
+sion S1 . . . Sn. Conceptually, this can be visualized as pass-
+ing input information through a series of bottlenecks of
+varying sizes —from large to small— each representing dif-
+ferent levels of abstractions. Formally, we can write the new
+minimization functional as
+min
+P(Sk|Sk−1), k=1...n
+n
+X
+k=1
+I(Sk−1; Sk) −β
+n
+X
+k=1
+I(Tk; Sk) (3)
+We solve for the minimum by taking the partial deriva-
+tive of the Lagrangian of (3) with respect to P (sk|sk−1).
+Assuming the Markov chain conditions Tn . . . ←T1 ←
+S0 ←. . . ←Sn, we can write the Lagrangian in terms of
+known probabilities and P (sk|sk−1). Setting the derivative
+to zero gives a set of multi-layer update steps
+
+
+
+
+
+pτ(sk|sk−1) = 1
+Z pτ(sk) exp(−βd)
+pτ+1(sk) = P
+sk−1 pτ(sk−1)pτ(sk|sk−1)
+pτ+1(tk|sk) = P
+sk−1 pτ(tk|sk−1)pτ(sk−1|sk)
+(4)
+where d is a weighted sum of the Kullback–Leibler Diver-
+gence DKL across the multi-resolution tasks.
+d =DKL(pτ(tk|sk)||pτ(tk|sk−1))
++
+n
+X
+i=k+1
+X
+si
+pτ(si|sk)DKL(pτ(ti|si)||pτ(ti|sk−1)) (5)
+Note that we recover the standard IB [42] when n = 1. The
+full derivation is given in the supplementary material.
+As mutual information is always non-negative and
+I(Tk; Sk) is bounded by the entropy H(Sk), the functional
+(3) is bounded from below, preventing it from decreasing
+indefinitely. Let us call Cτ the objective function value at
+iteration τ in (3). Each iteration step is independent and re-
+duces the objective with respect to one of the distributions
+p(sk|sk−1), p(sk), and p(tk|sk) while keeping the others
+fixed, therefore Cτ+1 ≤Cτ. Since Cτ is non-increasing and
+bounded below, the sequence converges. We remark that
+since the objective is not jointly convex in all distributions
+simultaneously, the algorithm may converge to different lo-
+cal minima depending on the initialization.
+Bottom-Up Construction. Starting with an ungrounded
+initial task hierarchy, we generate a rough version of the
+scene graph using H-IB as sketched out in Fig. 3a. Starting
+with the primitives layer, we compute the normalized cosine
+similarities between the primitives (green boxes in Fig. 3a)
+and the text embedding of the items in the task hierarchy
+(red diamonds in Fig. 3a) and take all primitives that have
+4

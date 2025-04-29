@@ -1,0 +1,33 @@
+XXX:4
+Israel et al.
+Fig. 1. Large-scale synthetic electric grid models: (left) 500-Bus (footprint of South Carolina); (center) 2,000-
+Bus (footprint of Texas); (right) 10,000-Bus (footprint of Western U.S.)
+• the 2,000-bus case on the footprint of Texas: This case has 2,000 buses, 544 generators, 1,356
+loads, and 2,345 transmission lines. It has a total of 1,250 substations. For this case, the
+assumption made in this paper is that it has 20 utilities and 1 balancing authority.
+• the 10,000-bus case on the footprint of the Western United States: This case has 10,000 buses,
+2,485 generators, 4,899 loads, and 9,726 transmission lines. It has a total of 4,762 substations.
+For this case, the assumption made in this paper is that it has 80 utilities and 20 balancing
+authorities.
+2.2
+Cyber-Physical Models and Test Cases
+Cyber-physical models not only aid in assessing system performance but also help evaluate the
+impact of cyber threats on power system operations and the implementation of appropriate security
+measures. Understanding network topologies and their implications for cyber-physical systems is
+essential to ensuring the integrity and functionality of electrical power grids. As a result, various
+cyber-physical models for power grid networks have been developed for research.
+One common approach is to model the communication network using the electric grid test case
+as a reference, resulting in similar topologies for both networks. This method was demonstrated in
+[27], where a communication model was developed based on the IEEE 118-bus synthetic grid. In
+that study, the communication network was represented as a graph, with substations as nodes and
+communication lines as links, to analyze the impact of latency on Phasor Measurement Unit (PMU)
+messages.
+The study compared a centralized topology, where substations connect directly to a control center,
+with a decentralized topology that includes an intermediate communication hub. The findings
+indicated that the decentralized topology resulted in lower delays. The algorithm proposed in this
+paper also generates both centralized and decentralized communication network topologies but
+follows a different approach for connecting the hubs compared to [27].
+A large-scale cyber-physical model for a power system is presented in [19]. That study models
+the power grids of multiple European countries using a decentralized network topology, where
+substation routers connect to intermediate communication hubs, which in turn link to a utility
+control center. The model also incorporates network redundancy and identifies the most critical

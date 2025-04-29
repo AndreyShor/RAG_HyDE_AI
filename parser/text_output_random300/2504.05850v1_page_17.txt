@@ -1,0 +1,106 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+17
+∼
+P
+0
+0
+0
+z
+z
+1
+1
+Figure 2. The asymptotic expansion of graphical functions at z = 0. Bold lines stand
+for sets of edges.
+The first two terms have pole order 3 < 2λ = 4. They are consistent with the theory of graphical functions.
+Terms three and four are pure poles in z = 1 of orders 5 and 4, respectively. They are killed by subtraction.
+The regular solution is given by the first two terms,
+(94)
+F α
+reg(z) = −(ˆzα1
+2 −ˆzα1
+1 )(ˆzα2
+2 −ˆzα2
+1 )(ˆzα3
+2 −ˆzα3
+1 )
+6((z −1)(z −1))3
+−gα1,α2(ˆzα3
+2 −ˆzα3
+1 ) + gα1,α3(ˆzα2
+2 −ˆzα2
+1 ) + gα2,α3(ˆzα1
+2 −ˆzα1
+1 )
+24((z −1)(z −1))2
+.
+It is possible to derive a result for the general function (87) in any dimension D.
+8.3. The log-divergent case. If, after appending an edge, the Feynman integral has a logarithmic
+divergence, we cannot proceed as in Section 8.2.
+One needs to subtract the divergence taking into
+account the exact scaling behavior; an expansion in ϵ is not sufficient. From (6) we, e.g., obtain for a
+pole of order D + 2aϵ in a scalar propagator,
+(95)
+Z
+RD Q1+ 1+aϵ
+λ (x, y)Q1(y, z) dDy
+πD/2 = −Q1+ aϵ
+λ (x, z)
+aϵ(λ + aϵ)Γ(λ).
+An expansion in ϵ of the singular propagator gives
+(96)
+Q1+ 1+aϵ
+λ (x, y) =
+1
+∥x −y∥D (1 −2aϵ log ∥x −y∥) + O(ϵ2).
+The coefficient of the pole in ϵ depends on the constant a which determines the scaling behavior of the
+singularity. In the expansion of the propagator the parameter a appears at order ϵ1 which may mix with
+other terms ∼∥x −y∥−D log ∥x −y∥.
+The solution to this problem is to extract the exact scaling behavior of the singularity in terms of
+two-point functions as depicted in Figure 2 for a singularity at z = 0. The asymptotic expansions at
+0, 1, and ∞only rely on scaling arguments. They lift to graphical functions with numerator structure.
+The result is related to the momentum space method of expansion by regions (see [26] and the references
+therein).
+The mathematical statement (a well-tested conjecture) is as follows [18, 21]. Assume G is a graph
+such that the graphical function f α
+G(z) exists. Let Vint
+G
+and Vext
+G
+= {0, 1, z} be the sets of internal and
+external vertices of G, respectively. For V ⊆Vint
+G
+let G[V ] be the subgraph of G which is induced by V ,
+i.e. the subgraph which contains the vertices V and all edges of G with both vertices in V . Further, let
+G[V = 0] be the contracted graph G/G[V ] where all vertices in V are identified with the vertex 0. Then,
+we obtain the asymptotic expansions at z = 0 by
+(97)
+f α
+G(z) =
+X
+V ⊆Vint
+G
+f α
+G[V ∪{0,z}](z)f α
+G[V ∪{0,z}=0](1 + O(|z|))
+whenever the right-hand side exists. Note that the right-hand side of (97) only has two-point graphs.
+The situation at z = 1 is analogous,
+(98)
+f α
+G(z) =
+X
+V ⊆Vint
+f α
+G[V ∪{1,z}](z)f α
+G[V ∪{1,z}=1](1 + O(|z −1|)).
+In case of a logarithmic singularity at infinity one has to subtract the asymptotic expansion
+(99)
+f α
+G(z) =
+X
+V ⊆Vint
+f α
+G[V ∪{0,1}]f α
+G[V ∪{0,1}=0](z)(1 + O(|z|−1)).
+Subtraction of the asymptotic formulae eliminate logarithmic singularities. Appending the edge to the
+subtractions (which are two-point functions) is a convolution that can be calculated analytically using
+(6). Details are analogous to the scalar case which is explained in detail in [21].

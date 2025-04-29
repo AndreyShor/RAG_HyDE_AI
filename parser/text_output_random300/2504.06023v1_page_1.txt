@@ -1,0 +1,100 @@
+Infinite Boundary Terms and Pairwise Interactions: A Unified Framework for Periodic Coulomb
+Systems
+Yihao Zhao1 and Zhonghan Hu1, ∗
+1Qingdao Institute for Theoretical and Computational Sciences (QiTCS),
+Center for Optics Research and Engineering, Shandong University, Qingdao 266237, P. R. China
+The introduction of the infinite boundary terms and the pairwise interactions [J. Chem. Theory Comput.,
+10, 5254, (2014)] enables a physically intuitive approach for deriving electrostatic energy and pressure for both
+neutral and non-neutral systems under the periodic boundary condition. For a periodic system consisting of N
+point charges (with charge qj located at rj where j = 1, 2, · · · N) and one charge distribution of density ρ(r)
+within a primary cell of volume V , the derived electrostatic energy can be expressed as,
+U =
+N
+X
+i<j
+qiqjν(rij) +
+N
+X
+j=1
+qj
+Z
+V
+dr0 ρ(r0)ν(r0j) + 1
+2
+Z
+V
+dr0
+Z
+V
+dr1 ρ(r0)ρ(r1)ν(r01),
+where rij = ri −rj is the relative vector and ν(r) represents the effective pairwise interaction. The charge
+density ρ(r) is free of Delta-function-like divergence throughout the volume but may exhibit discontinuity.
+This unified formulation directly follows that of the isolated system by replacing the Coulomb interaction 1/|r|
+or other modified Coulomb interactions with ν(r). For a particular system of one-component plasma with a
+uniform neutralizing background, the implementation of various pairwise formulations clarifies the contribution
+of the background and subsequently reveals criteria for arbitrary volume-dependent potentials that preserve the
+simple relation between energy and pressure.
+I.
+INTRODUCTION
+Since the seminal work of De Leeuw, Perram, and
+Smith[1], it has been recognized that the Coulomb lattice sum
+for electrically neutral systems of point charges is a condi-
+tionally convergent series whose value depends on the chosen
+order of summation. The essence of this conditional conver-
+gence can be elucidated through a prototypical alternating se-
+ries,
+S = 1 −1 + 1 −1 + · · · .
+(1)
+Two summation conventions obviously exist:
+S−= (1 −1) + (1 −1) + · · · = 0,
+(2)
+leaving the last number at the boundary always −1, and
+S+ = 1 + (−1 + 1) + (−1 + 1) + · · · = 1,
+(3)
+leaving the last in the series always +1. A unified represen-
+tation, S∓= Sbulk ∓1/2, admits two contributions to the
+series: the bulk component satisfying the intrinsic periodic-
+ity, S = 1 −S, which gives S = 1/2 = Sbulk[2], and the
+boundary term, ∓1/2, reflecting the influence of the chosen
+last number.
+The Coulomb lattice sum can be analyzed analogously. As
+the periodic lattice approaches infinity, distinct summation or-
+ders correspond to different geometries or symmetries of the
+lattice, each generating unique non-vanishing boundary term
+in general. With the conditional boundary term removed, the
+remaining bulk component becomes well-defined and can be
+∗zhonghanhu@sdu.edu.cn
+further expressed as a sum of two rapidly and absolutely con-
+vergent series via the Ewald technique, that was first devel-
+oped by Paul Peter Ewald in 1921[3]. The Ewald formulation,
+now commonly referred to as the three-dimensional Ewald
+summation associated with the tinfoil (conducting) boundary
+condition (e3dtf)[1], has become fundamental to both molecu-
+lar dynamics simulations and electronic structure calculations
+of condensed-phase materials.
+Although the Ewald summation method has been exten-
+sively revisited (e.g.[4–8]), it remains highly nontrivial to gen-
+eralize the method for deriving expressions of energy and
+pressure in complex periodic systems containing both point
+charges and charge distributions represented by a charge den-
+sity. The difficulty arises because, unlike the Coulomb en-
+ergy of isolated systems, conventional Ewald formulations ex-
+hibit analytical complexity and lack a physically well-defined,
+easily generalizable pairwise decomposition. Indeed, for the
+particular system of a one-component plasma with a uniform
+neutralizing background, inconsistency between the outputs
+of energy and pressure from the software LAMMPS[9] was
+found[10]. This inconsistency has been identified as the lack
+of a proper treatment of the background contribution[11, 12].
+However, as remarked by Demyanov et al.[12], the proper in-
+corporation of the background contribution remains unclear
+in maintaining thermodynamic consistency between energy
+and pressure calculations for systems governed by custom
+volume-dependent potentials.
+The recently proposed framework of pairwise decompo-
+sition for periodic systems[13] establishes a promising ap-
+proach for overcoming the difficulty.
+For a system of N
+charged particles within a cubic cell of volume V = L3, the
+particle-particle (pp) electrostatic energy under PBC/tinfoil
+arXiv:2504.06023v1  [physics.comp-ph]  8 Apr 2025

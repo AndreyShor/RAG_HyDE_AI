@@ -1,0 +1,52 @@
+The determinant of a general (n+1)×(n+1) matrix can similarly be deﬁned in terms of
+the Segre embedding of Pn ×Pn into P(n+1)2−1. For example, let X = P1 ×P1 with respective
+homogeneous coordinates [x1 : x2] and [y1 : y2] and consider the Segre embedding
+σ : [x1 : x2] × [y1 : y2] 7→[x1y1 : x1y2 : x2y1 : x2y2] ∈P3 .
+(5.7)
+Denoting the homogeneous coordinates on the dual P3 by [a1 : a2 : a3 : a4] the intersection of
+the corresponding hyperplane with X is given by
+I = {⃗y T A⃗x = 0 } ⊂X ,
+A =
+ 
+a1 a3
+a2 a4
+!
+,
+(5.8)
+and the projective dual variety again takes the form X∨= { det A = 0 } ⊂P3.
+If A has full rank then I is just a rational curve since the projection to any of the P1
+factors of X is a bijection. On the other hand, if the rank of A drops to one, then I consists
+of two rational curves that intersect transversely in a point. To see this, note that when ⃗x is
+the up to scale unique (right) zero-eigenvector of A then the condition on ⃗y is trivial while
+for generic ⃗x we again have a bijective projection to the ﬁrst P1 factor of X.
+Hypermatrices and hyperdeterminants
+In the case of an (n + 1) × (m + 1) matrix,
+with n ̸= m, the analogous construction using the Segre embedding of Pn × Pm leads to a
+projective dual variety that is not a hypersurface and therefore the determinant of a non-
+square matrix can be deﬁned to be 1. However, when applied to the Segre embedding of more
+general products Pk1 × . . . × Pkr, the deﬁning equation of the projective dual variety leads to
+the concept of hyperdeterminants of (k1 + 1) × . . . × (kr + 1) hypermatrices.
+One refers to the dimensions (k1 + 1) × . . . × (kr + 1) as the format of the corresponding
+hypermatrix. In the following we will denote by Det A the hyperdeterminant of a hypermatrix
+A and reserve det A for the case when A is of format m × m.
+Hyperdeterminants of format 2 × 2 × 2 have ﬁrst appeared in the work of Cayley [64]
+and for general format they have been systematically introduced over a century later in [65]
+(for a nice review see also [66]). While the determinant of an n × m matrix is non-trivial
+only if n = m, [65, Theorem 1.3] states that more generally the hyperdeterminant of format
+(k1 × 1) × . . . × (kr + 1) is non-trivial if and only if
+kj ≤
+X
+i̸=j
+ki ,
+(5.9)
+for all j = 1, . . . , r. The degree of the hyperdeterminant of format 2×n×n as a homogeneous
+polynomial in the entries of the hypermatrix is given by 2n(n −1).
+A hypermatrix A of format (k1 + 1) × . . . × (kr + 1) can be interpreted as a multilinear
+map fA : Ck1+1 × . . . × Ckr+1 →C. It is called degenerate if there exist non-zero vectors
+⃗x(i) ∈Cki+1, i = 1, . . . , r such that
+fA
+
+⃗x(1), . . . , ⃗x(i−1), ⃗y, ⃗x(i+1), . . . , ⃗x(r)
+= 0 ,
+(5.10)
+– 25 –

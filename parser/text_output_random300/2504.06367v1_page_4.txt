@@ -1,0 +1,147 @@
+4
+Name
+𝐿box
+𝑁part
+𝑧end
+rei
+𝑇0(𝑧= 4.6) 𝑢0(𝑧= 4.6)
+WDM mass
+𝑓WDM
+[ℎ−1 cMpc]
+[K]
+[eV m−1
+p ]
+[keV−1]
+L20-ref
+20.0
+2 × 10243
+6.00
+10066
+7.7
+[0, 1
+4, 1
+3, 1
+2, 1] [0, 1
+8, 1
+4, 1
+5, 1]
+L20-ref CLASS
+20.0
+2 × 10243
+6.00
+”
+”
+0
+0
+R10-ref
+10.0
+2×[10243,5123]
+”
+”
+”
+[0, 1
+4, 1
+3, 1
+2, 1]
+[0, 1]
+TABLE I: Reference thermal history simulations used in this work. A complete list, including all thermal history runs, can be found in Table I
+of [46]. The columns include the box size ([ℎ−1 cMpc]), the number of particles, the end of reionisation redshift, the thermal parameters 𝑇0
+and 𝑢0 at redshift 𝑧= 4.6, the inverse of the WDM mass 𝑚WDM−1, and the additional dark matter parameter, the fraction of WDM particle
+mass 𝑓WDM. The first two rows list the main simulations: one with fiducial CAMB initial conditions (as in [46], [92]) and the other using the
+CLASS code ([93]). The last row contains the fiducial simulation for mass resolution correction. Box correction runs match those in [46].
+Note that the simulations in all three rows extend to 𝑚WDM = 1 keV, with the first set covering CWDM models. Different CWDM models listed
+in this table were run for all 12 thermal histories of [46].
+1.5
+1.0
+0.5
+0.0
+0.5
+1.0
+1.5
+2.0
+log10 k [h Mpc
+1]
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+log10 k3P(k)
+fWDM = 0.16 (mWDM = 1 keV)
+mWDM = 5.47 keV (fWDM = 1)
+mWDM = 1.2 keV, fWDM = 0.2
+mWDM = 1.4 keV, fWDM = 0.24
+mWDM = 1.6 keV, fWDM = 0.27
+mWDM = 1.8 keV, fWDM = 0.3
+CDM
+100
+101
+102
+k [h Mpc
+1]
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+PCWDM(k) / PCDM(k)
+accepted within 2
+rejected within 2
+(1.1,0.18)
+(1.3,0.21)
+(2.0,0.31)
+(2.9,0.44)
+(4.8,0.81)
+mWDM [keV], fWDM
+accepted within 2
+rejected within 2
+FIG. 2: Left: Linear matter power spectrum at 𝑧= 0 computed using the Boltzmann solver CLASS for CDM (black), a CWDM model (blue)
+and pure WDM model (red). The last two correspond to the 2𝜎bounds found when fixing the highest 𝑓WDM ( 𝑓WDM = 1) and lowest 𝑚WDM
+(𝑚WDM = 1 keV) in our analysis. We also present a range of CWDM models, shown in blue with varying line styles, which are drawn from
+the region of power suppression of allowed models. These models delineate the 2𝜎allowed region, represented by the blue shaded area. The
+region of rejected models is shown in gray. Right: The matter transfer function (𝑇2(𝑘)) from random samples of the 2D posterior distribution
+in the (𝑚WDM−1 −𝑓WDM) plane inside (outside) the 2𝜎contour in blue (gray). We highlight five allowed models in color, highlighting that
+we are sensitive to both the CWDM departure scale from CDM (mainly set by 𝑚WDM) and the suppression amplitude (dependent on 𝑓WDM).
+Notably, lower 𝑚WDM values can be constrained at the cost of reduced suppression at higher-𝑘.
+highlight the primary effect of dark matter free-streaming on
+structure formation. As 𝑚WDM decreases in these pure WDM
+models, the free-streaming length increases. This results in
+the smoother filamentary structure observed in the Figure.
+Notably, this smoothing effect is more pronounced for the
+𝑚WDM = 1 keV model compared to the 𝑚WDM = 3 keV model.
+A.
+Imprint of mixed dark matter models on the matter power
+spectrum
+The initial conditions for WDM and CWDM simulations
+differ from those of CDM in the computation of the power spec-
+trum. The free-streaming effect, 𝜆fs, is incorporated through a
+transfer function, 𝑇(𝑘), that modifies the original power spec-
+trum, (e.g. [96]). Specifically, the power spectra for CDM and
+pure warm thermal relic models are computed using the Boltz-
+mann solver CAMB [92], while for the latter cosmology, we
+apply the transfer function from [96–98]. The mixed models
+are generated using the in-built CLASS option, which accounts
+for the temperature, mass, and density of non-cold dark matter
+[93, 99]. To ensure consistency across different cosmologies
+simulated with different codes, we correct for minor discrep-
+ancies by taking the ratio of the flux power spectrum between
+CDM models computed with CAMB and CLASS (see Table I).
+In the context of CWDM models, the transfer function
+asymptotically approaches a constant plateau at small scales.
+The height of this plateau is primarily determined by the warm
+dark matter (WDM) fraction, 𝑓WDM, due to the presence of a
+dominant CDM component. The characteristic cut-off scale
+is governed by the mass of the warm dark matter counterpart,
+similar to the behavior observed in pure WDM models.
+Figure 2 shows on the left the linear matter power spectrum
+for CDM at 𝑧= 0, along with the 2𝜎lower bound on pure
+WDM and on a mixed model with 𝑚WDM = 1 keV. The latter
+is the lightest thermal relic allowed in our analysis. We further
+show models with progressively heavier warm counterparts
+(and correspondingly smaller fractions), which bracket the
+2𝜎allowed region found in this work, shaded in blue. This
+Figure illustrates the imprint of CWDM in the matter power
+spectrum: the scale at which it deviates from CDM is set
+by 𝑚WDM while the suppression depends on the abundance

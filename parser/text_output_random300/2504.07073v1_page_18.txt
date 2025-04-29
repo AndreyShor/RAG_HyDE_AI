@@ -1,0 +1,128 @@
+A&A proofs: manuscript no. main
+Appendix B: MESA modeling
+For our stellar evolution calculations, we utilized the Modules
+for Experiments in Stellar Astrophysics (MESA) code, version
+24.08.1 (Paxton et al. 2011, 2013, 2015, 2018, 2019; Jermyn
+et al. 2023). The physical setup follows the framework estab-
+lished by Brott et al. (2011). Convection is modeled using the
+Ledoux criterion and the standard mixing length theory (Böhm-
+Vitense 1958), adopting a mixing length parameter of αmlt = 1.5.
+Semiconvective mixing in layers that are stable according to
+the Schwarzschild criterion but not the Ledoux criterion is in-
+cluded with an efficiency parameter of αsc = 1. For overshoot-
+ing, we apply step overshooting for H and He convective cores,
+allowing the cores to extend by 0.335 HP, where HP is the pres-
+sure scale height at the convective boundary (Brott et al. 2011).
+Additionally, thermohaline mixing is incorporated with an effi-
+ciency of αth = 1. Rotational mixing is treated as a diffusive
+process, accounting for dynamical and secular shear instabili-
+ties, the Goldreich-Schubert-Fricke instability, and Eddington-
+Sweet circulations (Heger et al. 2000). Consistent with Brott
+et al. (2011), we adopt rotational mixing efficiency factors of
+fc = 1/30 and fµ = 0.1.
+The chemical abundances of H, He, C, N, O, Mg, Si, and
+Fe are tailored for the different galaxies following Brott et al.
+(2011), with the used values listed in Table B.1. For elements
+not explicitly specified, abundances are scaled to the solar val-
+ues from Asplund et al. (2005) according to the metallicity of the
+galaxy. To reduce computation time all models are only evolved
+until core helium depletion. For the most massive stars, con-
+vergence issues were encountered during core He-burning. To
+address this, we applied the MLT++ prescription, as detailed
+in Sect. 7.2 of Paxton et al. (2013), for stars with helium core
+masses exceeding M > 12 M⊙.
+Within the binary model calculations, mass transfer during
+the main sequence is modeled using the “contact” scheme im-
+plemented in MESA (Marchant et al. 2016). For subsequent evo-
+lutionary stages, we employed the updated mass transfer scheme
+from Martins & Palacios (2021), which accounts for outflows
+from the outer Lagrangian points.
+Table B.1. Chemical abundances used in the stellar evolution models in
+mass fractions.
+Element
+abundance (mass-fr.)
+Reference
+GAL
+H
+0.726
+1 −Y −Z
+He
+0.265
+Interpol.(a)
+C
+1.16 × 10−3
+Hunter et al. (2007)
+N
+4.40 × 10−4
+Hunter et al. (2008, 2009)
+O
+4.08 × 10−3
+Hunter et al. (2008, 2009)
+Mg
+3.60 × 10−4
+Hunter et al. (2007)
+Si
+5.17 × 10−4
+Hunter et al. (2007)
+Fe
+1.01 × 10−3
+Venn (1995)
+LMC
+H
+0.738
+1 −Y −Z
+He
+0.257
+Interpol.(a)
+C
+4.94 × 10−4
+Kurt & Dufour (1998)
+N
+8.14 × 10−5
+Kurt & Dufour (1998)
+O
+2.62 × 10−3
+Kurt & Dufour (1998)
+Mg
+1.97 × 10−4
+Hunter et al. (2007, 2009)
+Trundle et al. (2007)
+Si
+3.24 × 10−4
+Hunter et al. (2007, 2009)
+Trundle et al. (2007)
+Fe
+4.59 × 10−4
+Ferraro et al. (2006)
+SMC
+H
+0.746
+1 −Y −Z
+He
+Interpol.(a)
+C
+2.08 × 10−4
+Kurt & Dufour (1998)
+N
+3.27 × 10−5
+Kurt & Dufour (1998)
+O
+1.13 × 10−3
+Kurt & Dufour (1998)
+Mg
+9.31 × 10−5
+Hunter et al. (2007, 2009)
+Trundle et al. (2007)
+Si
+1.30 × 10−4
+Hunter et al. (2007, 2009)
+Trundle et al. (2007)
+Fe
+2.49 × 10−4
+Venn (1999)
+(a) Interpolated between the primordial He mass-fraction of Y =
+0.2477 (Peimbert et al. 2007) and solar value Y = 0.28 from
+(Grevesse et al. 1996). Note that in (Brott et al. 2011) the GAL
+composition was chosen to match the abundances of the Galactic
+FLAMES survey.
+Article number, page 18 of 18

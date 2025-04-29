@@ -1,0 +1,70 @@
+10
+σ!
+η!"
+0
+1
+FIG. 4.
+Example of QUBO encoding for energy-
+constrained Ising models. Left: Symbolic representation
+of QUBO binary variables associated to up/down physical
+spins (σi) and parallel/antiparallel spin pairs (ηij).
+Right:
+The represented state is one of the possible ground state solu-
+tions of the QUBO Hamiltonian of eq. 14 formulated for a 4×4
+periodic Ising system with Hs parameters set to ¯nq = 8 and
+m = 0. The ground state solutions correspond to Ising spin
+configurations with 16 pairs of parallel neighbouring spins,
+including those wrapping across the periodic boundary con-
+ditions (dotted).
+Thus, by minimizing the total Hamiltonian of Eq. 14
+the sampling can be targeted at specific intervals of nq,
+as needed for reconstructing the density of states W(nq).
+Comparison of exact and reconstructed Ws
+We considered the 12 × 12 Ising system (L = 12) with
+periodic boundary conditions. The argument nq can take
+on L2 −1 distinct values, corresponding to all integers
+between 0 and 144, except for 1 and L2 −1 = 143. The
+peak value of W is ∼2 × 1042, thus indicating that the
+”dynamic range” of the density of states spans across
+more than 40 orders of magnitude.
+For the QUBO-based reconstruction, we used multiple
+intervalled samplings with unit increments in ¯nq.
+We
+considered intervals of width 2, 4, and 8, corresponding
+to m = 1, 2 and 3 slack variables, respectively.
+We covered each of the ∼150 intervals with a sampling
+depth of d ∼5, 000 independent states. The latter were
+obtained using a classical parallel tempering scheme to
+minimize the QUBO Hamiltonian (Supporting Informa-
+tion Section S2).
+The reconstructed Ws are compared with the normal-
+ized exact one [54] in the semi-log plot of Fig. 5a, which
+shows a remarkably consistent agreement throughout the
+40 orders of magnitude spanned by W.
+The reconstructed profiles are visually indistinguish-
+able from the exact one at all ms, although there are dif-
+ferences. While W(nq) can be accurately reconstructed
+across the entire range of the argument using m = 2 and
+m = 3, this is not the case for m = 1, where W is not
+resolved close to boundaries nq = 0 and nq = L2. This is
+(b)
+(a)
+(c)
+FIG. 5. Density of states of the 12 × 12 Ising model.
+(a) Exact and reconstructed density of states, W(nq) for a
+12 × 12 Ising model as a function of the number of parallel
+neighbouring spins. The data in this and the following pan-
+els are color-coded according to the number of slack variables
+and distinguished by different marker shapes. (b) Normal-
+ized reconstruction error, ∆W(nq = 50)/Wexact(nq = 50), for
+different sampling depths, d. The solid lines connect the av-
+erage values of ∆W(nq = 50) computed from independent
+reconstructions. The data points include jitter along the x-
+axis for visual clarity. Non-overlapping blocks of d samples
+were used from a population of 5000 independent samples per
+interval. The shaded bands indicate the standard error of the
+mean.
+(c) Statistical error of the reconstructed density of
+states, W, as a function of sampling depth, d, for nq = 50.
+because m = 1 intervals are too short to bridge the gaps
+at nq = 1, L2 −1.

@@ -1,0 +1,27 @@
+neurons may lead to underfitting, while an excess can result in overfitting and increased
+computational costs. Additionally, managing computational resources is vital, as complex
+architectures will incur additional costs [32]. The complexity of the model must be care-
+fully balanced with the available resources to ensure practical training and deployment.
+A broad overview of these foundational aspects, not specific to any case but general prin-
+ciples and strategies that were followed for the development of the optimization model,
+are presented in the Appendix.
+This integrated approach addresses the challenges of processing high-dimensional spatio-
+temporal data by effectively capturing the underlying dynamics of fluid flows, which are
+crucial for simulations in engineering and research applications. This section is organized
+as follows: (i) data structure, (ii) modal decomposition techniques, (iii) deep learning
+model, (iv) data preprocessing, and (v) autoregression.
+The proposed hybrid ROM methodology is summarized in Figure 2. The approach
+consists of the following key steps:
+(a) The model is provided with N previous snapshots of the flow field, capturing its
+evolution over time.
+(b) The dimensionality of the snapshot data is reduced using SVD or HOSVD, resulting
+in a set of dominant spatial modes and corresponding temporal coefficients.
+(c) The temporal coefficients obtained from SVD/HOSVD are used as input to train
+the DL model with an LSTM architecture, which learns their temporal evolution.
+The trained LSTM model predicts the temporal evolution of the coefficients over a
+specified future time horizon.
+(d) The predicted coefficients are then used to reconstruct the solution and predict
+the evolution of the flow field over time. Autoregression has been implemented to
+predict over multiple timesteps.
+Figure 2: Illustration of the hybrid ROM methodology.
+7

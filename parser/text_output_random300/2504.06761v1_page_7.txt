@@ -1,0 +1,59 @@
+Constructing wall turbulence
+7
+Reτ, δ, Lx, Ly, Lz
+Input
+Attached-eddy model
+Np, hi
+(j), Mi, Δzi 
+σi
+(j), Гi
+(j)
+Vortex centerlines
+Vorticity field
+Velocity field
+Construct hairpin 
+vortex tubes
+Biot-Savart law
+Wall and bulk
+flow corrections
+Figure 3. Construction of synthetic wall-attached turbulence. The input parameters include the prescribed
+friction Reynolds number Re𝜏, boundary layer thickness 𝛿, and the dimensions of the computational domain
+𝐿𝑥× 𝐿𝑦× 𝐿𝑧. Based on the attached-eddy model, key structural properties are determined, including the
+hierarchical level number of vortex packets 𝑁𝑝in (2.6), the height of individual hairpin vortices ℎ( 𝑗)
+𝑖
+in
+(2.7), population density 𝑀𝑖in (2.8), and spanwise meandering Δ𝑧𝑖in (2.11). These parameters define the
+centerlines of the wall-attached eddies. Next, the vorticity field of the hairpin vortices is constructed based
+on their centerlines, circulation strengths Γ( 𝑗)
+𝑖
+in (2.10), and core size distribution 𝜎( 𝑗)
+𝑖
+in (2.5). Finally, the
+velocity field of the synthetic wall turbulence is obtained by applying the Biot–Savart law along with wall
+and bulk flow corrections in (2.12).
+and dominate the outer layer, highlighting the influence of large-scale outer-layer structures
+over near-wall turbulence characteristics.
+2.3. Construction method of flow fields
+To satisfy the no-penetration condition at the wall, we construct hairpin vortices directly
+on the wall, and introduce symmetric virtual vortices in the mirror space relative to the
+wall. The influence of the wall is modeled through the induced velocity of these virtual
+vortices within the computational domain. The vorticity field is assembled by summing
+contributions from all hairpin vortices, following (2.3), using a numerical algorithm that
+transforms Cartesian coordinates 𝒙into (𝑠, 𝜌, 𝜃). This approach has proven highly robust,
+producing a smooth vorticity field even in cases of complex vortex tube interactions, including
+self-intersections (Shen et al. 2024). The fluctuating velocity field is then computed from
+the vorticity via the Biot–Savart law in Fourier space. To better resolve the wall flow, we
+interpolate the data onto a non-uniform grid based on Chebyshev polynomials (Wang & Yang
+2024).
+In our approach, the induced velocity field of the constructed eddies ˜𝑈, along with an extra
+uniform bulk velocity ¯𝑈= 1, directly determine the wall-normal distribution of the turbulent
+velocity profile
+𝑈= ( ˜𝑈+ ¯𝑈)(1 −exp (−𝑦/𝐴)).
+(2.12)
+Note that a van Driest-type damping function is introduced to enforce the no-slip boundary
+condition, where the constant
+𝐴= 𝛿2⟨˜𝑈⟩𝑦=0
+Re2
+𝜏𝜈
+(2.13)
+depends on Re𝜏, ensuring accurate reproduction of the wall shear stress.

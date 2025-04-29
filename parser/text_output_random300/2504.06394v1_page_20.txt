@@ -1,0 +1,57 @@
+20
+enough. This transition point increases for larger 𝜅, as indicated by the blue wedge region
+in Figure 8(c), meaning that an orders of magnitude higher 𝜅is possible with cupular
+deflection still tracking angular velocity, if the Stokes number is accordingly increased in a
+very particular way.
+We may interpret the effect of high fluid inertia by considering the response of the cupula
+as the forcing frequency is increased. For small forcing frequencies the deformation will
+follow the angular acceleration, and as the forcing frequency is increased the cupula will
+start deforming in phase with the angular velocity, as expected from § 3.2; this is well known
+in the vestibular literature (Benson 1990). However, our results from this section suggest that
+when the forcing frequency is further increased (in humans, to about 100 Hz), the cupular
+deformation will again be in phase with the angular acceleration.
+5.3. Non-uniform channel widths
+As noted in the introduction, an advantage of our theoretical formulation is that it is also
+compatible with a non-uniform and arbitrary channel width, described by the function 𝑎(𝑠),
+so long as the small aspect ratio between channel width and length is maintained. This case
+is more delicate than the one we saw in the last subsection, as the pressure gradient is no
+longer constant but depends on 𝑎(𝑠), and must be integrated along the channel to obtain the
+pressure jump across the cupula. In Appendix C a method based on the Laplace transform
+and the convolution theorem is developed, through which we obtain an approach to solving
+the problem for both non-uniform channel widths and St > 0. The main result is that we
+obtain the same form of equation (5.6) for the deflection 𝜂0(𝑟, 𝑡), with the Kernel K(𝑥; St)
+given by the (temporal) inverse Laplace transform of
+˜K(𝜎; St) =
+ ∫2𝜋
+0
+d𝑠
+𝑎(𝑠)4 Í∞
+𝑛=0 𝜆−2
+𝑛
+
+𝑎(𝑠)2St𝜎+ 𝜆2𝑛
+ −1
+!−1
+.
+(5.15)
+For a given canal profile 𝑎(𝑠), the Kernel may be numerically obtained by fixing a
+discretization of 𝜎into a finite number of points. For each point, the integral can be populated
+for 𝑎(𝑠) and computed using standard quadrature methods. This will yield ˜K(𝜎; St) for a
+finite number of 𝜎. The equation for the pressure jump (5.7), can then be either solved in
+Laplace space, inverting the transformed solution using an efficient algorithm (Kuhlman
+2013), or in real space using a trapezoidal method.
+We have developed a general framework that allows us to solve for the cupular displacement
+and pressure jump for complicated canal geometries allowing also for the possibility of fluid
+inertia. As an example of the scenarios in which this approach might be useful, we now
+reconsider some of the numerical results presented in figure 4.
+5.4. Fluid inertia explains discrepancies between numerics and model
+Figure 4 generally shows excellent agreement between the St = 0 model presented in § 3 and
+our COMSOL numerics, especially at the scale of the largest velocities, which were used
+for comparison in figure 4. However, if we zoom in to situations where the velocity is small,
+such as when 𝑡= 0.5, then we might expect to observe differences caused by small errors
+in the phase of the motion. Figure 9 shows just such an effect: the agreement between the
+predictions of the St = 0 asymptotics (dashed black curves) and COMSOL simulations (blue
+markers) is no longer satisfactory for small and moderate values of the stiffness 𝜅≲1: while
+the absolute error is small, the relative error is very large. This is because even for small
+Stokes numbers, the exact time at which the velocity zero is different from that predicted by
+the St = 0 asymptotics of § 3, which essentially assume that the motion is quasi-steady.

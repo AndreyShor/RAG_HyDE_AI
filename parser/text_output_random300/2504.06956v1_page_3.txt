@@ -1,0 +1,74 @@
+Introduction
+3
+Remark 1.2. As a consequence of (K1) – (K2), the Fourier transform bK is a probability measure with
+a smooth density and admitting moments of all orders. In particular, the Hessian D2K(0) at the origin
+is strictly negative definite in the sense that there exists δ > 0 such that, for any v ∈Rd, one has
+⟨v, D2K(0)v⟩≤−δ|v|2.
+Definition 1.3. For ξ a space-time white noise on Rd × R+, we define the ⋆-scale invariant field
+with seed covariance K by
+X(·)
+def=
+Z
+Rd
+Z ∞
+0
+K(er(y −·))e
+dr
+2 ξ(dy, dr) .
+(1.2)
+Furthermore, for 0 ≤s < t, we let Xs,t be the field on Rd given by
+Xs,t(·)
+def=
+Z
+Rd
+Z t
+s
+K(er(y −·))e
+dr
+2 ξ(dy, dr) ,
+(1.3)
+with the notational convention that X0,t = Xt.
+For t ≥0, the fields X and Xt have the following covariance structures, for all x, y ∈Rd,
+E[X(x)X(y)] =
+Z ∞
+0
+K(er(x −y))dr ,
+E[Xt(x)Xt(y)] =
+Z t
+0
+K(er(x −y))dr .
+(1.4)
+Clearly E[X(x)2] = ∞, so X can only be realised as a random Schwartz distribution. The collection
+of fields (Xt)t≥0 is called the martingale approximation of X. Indeed, by construction, (Xt)t≥0 is a
+martingale for the filtration (Ft)t≥0 given by
+Ft
+def= σ(Xs : s ∈[0, t)) .
+(1.5)
+Moreover, as t →∞the field Xt converges almost surely to X in the space H−κ
+loc (Rd) for any κ > 0.
+The three phases of GMC measures. As previously mentioned, GMC measures exhibit three
+distinct phases depending on the value of the parameter γ > 0 in (1.1). Each phase is characterised
+by the specific form of renormalisation required to obtain a nontrivial limiting measure.
+In the subcritical regime, i.e., when γ ∈(0, γc), the sequence of random measures
+µγ,t(dx) = eγXt(x)−γ2
+2 tdx
+(1.6)
+converges weakly in probability to a limiting positive random measure µγ as t →0 [Kah85,RV14,
+Sha16,Ber17], which is almost surely nontrivial. It is well-known that µγ is almost surely non-atomic,
+but singular with respect to Lebesgue measure. Many further properties of these measures concerning,
+among others, moments and multifractal behaviour are known [RV14,Ber23]. An important feature
+of the measure µγ is that it is carried by the set of γ-thick points. Intuitively, a thick point is a point
+where the field takes an unusually large value: one where it is of the order of its variance instead of
+the order of its standard deviation.
+When γ ≥γc a phase transition occurs and if one considers the sequence of measures defined in (1.6),
+then for any compact subset A ⊂Rd, it holds that µγ,t(A) →0 in probability as t →0. Therefore,
+in order to define a nontrivial limiting measure at the critical threshold γc, one needs to give the
+sequence of approximating measures an extra “push” in the right direction. More precisely, in the
+critical regime, i.e., when γ = γc, the sequence of random measures
+µγc,t(dx) = (−Xt(x) + γc t)eγc Xt(x)−γc2
+2 tdx
+(1.7)
+converges weakly in probability as t →∞to a limiting positive random measure µγc [DRSV14a,
+DRSV14b,Pow21], which is non-atomic and has full support. The normalisation used in (1.7) is
+known as the “derivative normalisation” since it can be obtained by evaluating at γ = γc the derivative
+with respect to γ of the expression on the right-hand side of (1.6).

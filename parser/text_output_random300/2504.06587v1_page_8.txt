@@ -1,0 +1,197 @@
+MobiSys ’25, June 23–27, 2025, Anaheim, California, US
+Jinbo Peng, Junwen Duan, Zheng Lin, Haoxuan Yuan, Yue Gao, and Zhe Chen
+-10
+-6
+-2
+2
+6
+SNR (dB)
+0
+0.1
+0.2
+0.3
+False alarm
+DTMP r=0.52
+DTMP r=0.83
+WrT r=0.52
+WrT r=0.83
+SigChord r=0.52
+SigChord r=0.83
+(a) False alarm
+-10
+-6
+-2
+2
+6
+SNR (dB)
+0
+0.2
+0.4
+0.6
+0.8
+1
+Miss detection
+DTMP r=0.52
+DTMP r=0.83
+WrT r=0.52
+WrT r=0.83
+SigChord r=0.52
+SigChord r=0.83
+(b) Miss detection
+Figure 11: Spectrum sensing performance on the synthetic
+dataset under different SNRs. The threshold 𝜃for SigChord
+and WrT [64] is set to 0.5.
+5.1
+Spectrum Sensing and Signal Recovery
+In this section, we evaluate the performance of SigChord in spec-
+trum sensing and signal recovery. We compare SigChord with a
+Transformer-based SOTA spectrum sensing model WrT [64], the
+CS recovery algorithm DTMP [8], and a deep compressed sens-
+ing (DCS) recovery algorithm [52]. Firstly, we show the spectrum
+sensing performance of SigChord, WrT and DTMP. Since WrT is
+designed for Nyquist-rate spectrum sensing only, we adjust its
+spectra size and patch size to accommodate sub-Nyquist samples.
+Specifically, we reshape and unfold a (𝑃, 2400) complex sample to
+(2400, 2𝑃) real sample, and set the spectra size and patch size to
+(2400, 2𝑃) and (16, 2𝑃), respectively, corresponding to the folding
+factor 𝐹= 16 in SigChord. We implement WrT with 3 Transformer
+encoder layers,𝑑𝑚𝑜𝑑𝑒𝑙= 128, 4 attention heads and feeding forward
+dimension of 512. The number of parameters of WrT is similar to
+that of SigChord. WrT is trained on the synthetic dataset with batch
+size of 512 for 100 epochs as well. For the CS recovery algorithm
+DTMP, we recover 𝑋with the number of narrowband signals as
+the prior information. Apart from the synthetic dataset and over-
+the-air dataset, we generate a Gaussian random signal dataset to
+validate the generalization of SigChord. Unless otherwise specified,
+each random signal contains 6 narrowband signals, each with a
+Table 2: Model parameters, memory usage, and inference
+time for one batch (size = 1,024, representing data with dura-
+tion 49ms). The batch contains 1,340 DVB-S2, 1,416 Non-HT
+Wi-Fi, and 1,345 HT Wi-Fi headers. 5 ≤𝑃≤11 denotes the
+number of low-speed ADCs.
+Model
+No. of Params
+GPU Mem (MB)
+Inference Time
+Spectrum sensor
+630 + 8𝑃K
+1677★
+17.0ms★
+WrT [64]
+812 + 4𝑃K
+2619★
+27.9ms★
+SigChord signal recovery
+N/A
+1679★
+29.1ms★
+DTMP [8]
+N/A
+539★
+4.36s★
+DCS [52]
+15.9K
+391★†
+204s★†
+Protocol identifier
+706K
+3631
+45.3ms
+T-Prime [66]
+755K
+5135
+81.5ms
+DVB-S2 header decoder
+8.67M
+2607
+26.8ms
+Non-HT header decoder
+8.68M
+3347
+39.5ms
+HT header decoder
+8.69M
+4615
+52.7ms
+★Measured with 𝑃= 8.
+†Measured with batch size = 1.
+0
+0.02
+0.04
+0.06
+False alarm
+0.9975
+0.998
+0.9985
+0.999
+0.9995
+1
+Detection rate
+SigChord r=0.52
+SigChord r=0.625
+WrT r=0.52
+WrT r=0.625
+(a) Over-the-air signals
+0
+0.1
+0.2
+0.3
+0.4
+False alarm
+0.2
+0.4
+0.6
+0.8
+1
+Detection rate
+SigChord r=0.42
+SigChord r=0.67
+SigChord r=0.5 (8 signals)
+WrT r=0.42
+WrT r=0.67
+WrT r=0.5 (8 signals)
+(b) Random signals
+Figure 12: ROC curves of spectrum sensing from unseen
+environments. The over-the-air signals have SNR of 10dB,
+and the random signals have SNR of -6dB.
+50MHz bandwidth and frequency components generated randomly
+following a Gaussian distribution.
+Results on the synthetic dataset are shown in Figure 11. Let 𝑟
+represent the ratio of the total sampling rate to twice the Landau
+rate, with 𝑟= 0.5 corresponding to the Landau rate, and 𝑟= 1
+marking the sub-Nyquist sampling limit. The cases 𝑟= 0.52 and
+𝑟= 0.83 correspond to 𝑃= 5 and 𝑃= 8 low-rate ADCs, respectively.
+The conventional compressed sensing algorithm, DTMP, struggles
+to reliably detect signals when 𝑟< 1, particularly as 𝑟= 0.52 nears
+the Landau rate, where its performance deteriorates sharply. In con-
+trast, both Transformer-based deep learning models, SigChord and
+WrT, accurately perform spectrum sensing at 𝑟< 1. Importantly,
+despite WrT having more parameters in our experiments, SigChord
+outperforms WrT at low SNRs, leveraging its embedding process,
+which is specifically tailored for sub-Nyquist sampling inputs.
+By adjusting the threshold 𝜃, Figure 12 shows the ROC curves of
+SigChord and WrT at sampling rates below the sub-Nyquist limit,
+evaluated on unseen over-the-air signals and random Gaussian
+signals. SigChord and WrT generalize well to over-the-air datasets,
+showing minimal errors under favorable SNR that could achieve per-
+fect detection and zero false alarms. For the random signal dataset,
+where data distributions differ significantly from the training data,
+SigChord consistently outperforms WrT. Its ROC curves are closer
+to the top-left corner, reflecting superior accuracy. Notably, Sig-
+Chord achieves comparable performance at 𝑟= 0.5 with dense
+spectra containing 8 signals, while WrT requires 𝑟= 0.67 to handle
+only 6 signals. Furthermore, even at an extremely low sampling rate
+below the Landau rate (𝑟= 0.42), SigChord demonstrates robust
+performance, maintaining both false alarm and miss detection rates
+below 0.1.
+Next, We evaluate the signal recovery mean square error (MSE)
+of Algorithm 1, DTMP, and DCS across various sampling rates.
+DCS, which requires seconds to converge even for a single input,
+is iterated for 20,000 steps. The reference MSE is calculated by
+comparing the noisy Nyquist-rate signal against its noise-free coun-
+terpart. SigChord’s robust spectrum sensing ensures Algorithm 1
+generalizes effectively to unseen signals. For over-the-air signals
+with 𝑟> 0.83 and random Gaussian signals with 𝑟> 0.67, the
+recovery MSE aligns closely with the optimal reference, enabling
+high-quality non-sparse signal recovery below the sub-Nyquist
+limit. In contrast, DTMP suffers significant degradation when 𝑟< 1

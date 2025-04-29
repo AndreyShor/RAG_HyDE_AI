@@ -1,0 +1,71 @@
+16
+NEURAL NETWORK POLYCONVEXIFICATION
+6. Engineering Example: Isotropic Damage Problem
+Having validated our approach with mathematical benchmark problems, we return to the
+isotropic damage problem introduced in Section 2. In order to fit this model into our setting, we
+rephrase it in signed singular value formulation.
+6.1. Reformulation of the Isotropic Damage Problem. The function W from (4) is
+dependent on d × d + 1 parameters and on the d × d-deformation gradient. Due to the isotropy
+of W, it can be recast into a signed singular value formulation utilising ˆν ∈Rd. To stress the
+dependence on the signed singular values, the function φ is now employed to rewrite (5) as
+φ(ˆν, α) = (1 −D(α)) φ0(ˆν).
+Within this formulation, the function φ0 denotes the signed singular value formulation of the
+isotropic undamaged energy density ψ0 from (5), i.e. φ0 and ψ0 are related by
+φ0(ˆν) = ψ0(diag(ˆν))
+and
+ψ0(F) = φ0(ν(F)).
+Consequently, the pseudo-time incremental energy density W in the signed singular value
+formulation, denoted by Φ, for the time step k + 1 reads
+Φ(ˆνk+1; ˆνk, αk) = φ(ˆνk+1, p(ˆνk+1; αk)) −φ(ˆνk, αk)
++ p(ˆνk+1; αk) D(p(ˆνk+1; αk)) −αk D(αk) −D(p(ˆνk+1; αk)) + D(αk).
+(19)
+The parameter dependence in this function can be given the following interpretation. The scalar
+parameter αk plays still the same role as the internal variable, while the vector ˆνk ∈Rd belongs
+to the signed singular values of the deformation gradient Fk from the previous pseudo-time step.
+Within (19), the internal variable evolution is written explicitly using the path function in the
+signed singular value formulation as
+(20)
+αk+1 = p(ˆνk+1; αk) =
+(
+φ0(ˆνk+1)
+if φ0(ˆνk+1) > αk,
+αk
+else.
+The formulation as stated in (19) significantly reduces dimensionality in both the ˆνk+1 argument
+as well as the ˆνk parameter dependence, opening the possibility for efficient parameter-dependent
+polyconvexification of the function Φ(ˆνk+1; ˆνk, αk) in the argument ˆνk+1. For the neural network,
+this leads to a reduction in parameter space from d × d + 1 to d + 1 dimensions, and a reduction
+in the minors input argument from dimension Kd to kd, corresponding to the dimension of the
+vector m(ˆνk+1).
+The damage parameters d0 and d∞are set to d0 = 0.5, d∞= 0.99 in our numerical experiments.
+The Lam´e constants λ and ν of the materials in (2) and (3) are set to λ = 0, µ = 0.5.
+Remark 6.1. Let us consider α∞and k0 such that for all k ≥k0 it holds αk ≥α∞and by
+evolution it holds αk+1 ≥αk. For the choice of damage function D in (6), we have for α∞large
+enough that D(αk) ≈d∞and D(αk) ≈αk d∞for d∞marking the asymptotic damage limit. In
+such a case, (19) can be rewritten as
+Φ(ˆνk+1; ˆνk, αk) ≈(1 −d∞) φ0(ˆνk+1) −(1 −d∞) φ0(ˆνk)
++ αk+1 d∞−αk d∞−αk+1 d∞+ αk d∞
+≈(1 −d∞) (φ0(ˆνk+1) −φ0(ˆνk)).
+Consequently, for αk ≥α∞, the energy becomes independent of αk. This observation allows
+to train the neural network for the parameter αk ∈[0, α∞] and to consider αk = α∞for the
+predictions in the case αk ≥α∞, which drastically reduces the computational effort. For the
+choice of parameters d0 and d∞, we choose α∞= 4 in the numerical experiments noting that for
+αk ≥α∞, we can perform the estimate
+|D(α∞) −D(αk)| ≤
+exp
+
+−α∞
+d0
+
+−exp
+
+−αk
+d0
+ ≤exp
+
+−α∞
+d0
+
+= exp(−8) ≈3 × 10−4,
+which is much smaller than the prediction accuracy of the neural networks. This choice is also
+motivated by numerical experiments.

@@ -1,0 +1,49 @@
+ZeroScope
+FreeInit
+RagInit
+RAGME
+"A person is cutting or shaving the beard."
+"A zebra running to join a herd of its kind."
+ZeroScope
+FreeInit
+RagInit
+RAGME
+"Yoda playing guitar on the stage."
+"A person is playing piano."
+Figure 5. Visual comparison of the different methods. We report the prompt at the bottom.
+tational burden of RAGME is encoding the retrieved videos
+with CLIP and the VAE encoder to obtain the latent for the
+initialization. All these steps can be easily parallelized and
+introduce negligible computation and latency, while the re-
+trieval is high-speed thanks to the FAISS library [13]. In
+total, this amounts to an increased latency of 20% to gener-
+ate a single video.
+4.3. Qualitative Results
+In this section, we present a qualitative comparison between
+different methods, moreover, we explore an additional use
+case of our method i.e. motion transfer. In Fig. 5, we dis-
+play frames from the generated videos based on prompts
+from the VBench suite. Our methods produce better videos
+in terms of both motion and scene composition. Addition-
+ally, in Fig. 6, we show the first frame of the generated video
+alongside the first frames of the five videos used for condi-
+tioning. We observe that no clear leakage is present, indi-
+cating that RAGME effectively integrates the retrieved in-
+formation to achieve better results. The generated videos
+from our method contain watermarks due to the training
+dataset, WebVid10M [1].
+However, training on higher-
+quality datasets would eliminate this artifact.
+5. Conclusions
+In this work, we propose RAGME a framework for retrieval
+augmented text-to-video generation. We exploit retrieved
+videos to enhance the motion realism of the final result,
+showing superior performance both qualitatively and quan-
+titatively. Moreover, we showcase how this framework can
+be adapted to specific tasks such as Motion Transfer, ob-
+taining results on par with state-of-the-art at a fraction of
+the computational costs.
+Our work opens the door to several future improvements.
+First, exploring the use of alternative encoders, such as
+video models, could provide more robust representations of
+8

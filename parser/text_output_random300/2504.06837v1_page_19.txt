@@ -1,0 +1,58 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+This result will be a consequence of the more detailed Proposition 6.1. With this chain rule
+it is then possible to show that discrete EDB solutions are equivalent to ODE solutions, i.e., in
+the discrete setting the Energy-Dissipoation Principle holds.
+Theorem 4.3 (Discrete EDB and (1.3)). A function c ∈AC([0, T]; M+(XN)) is a solution to
+the discrete reaction-diﬀusion system (1.3) if and only if the triple (c, F, J) with F and J given
+by (6.4) is a discrete EDB solution in the sense of Deﬁnition 3.8.
+We refer to the end of Section 6.1 for the proof.
+We now turn to the continuum system, where we need to restrict the stoichiometric vectors
+αr and βr, which was not the case in the discrete setting. At the end of this section we will
+shortly address the case where we have a priori bounds in L∞, which is again a case, where
+arbitrary stoichiometric vectors are allowed.
+In our analysis we will use two levels of assumptions: the ﬁrst is needed for deriving the
+lower-limit estimates and the second, which is slightly stronger, will be used to derive the
+abstract chain rule.
+Assumption 4.4 (for lower-limit estimates). The reaction coeﬃcients satisfy
+∀r ∈R :
+1
+2
+αr + βr
+1 ≤pcrit := 1 + 2/d.
+(4.A1)
+Assumption 4.5 (for chain rule inequality). The reaction coeﬃcients satisfy
+∀r ∈R :
+|αr|1 ≤pcrit,
+|βr|1 ≤pcrit,
+1
+2|αr+βr|1 ≨pcrit.
+(4.A2)
+Example 4.6. In all space dimensions we have pcrit > 1. Hence, our analysis covers linear
+exchange reactions
+X1 ⇋X2
+where |α|1 = |β|1 = 1
+2|α+β|1 = 1.
+In space dimensions d ≤2 we have pcrit = 3 or pcrit = 2, which allows to handle binary reactions
+with j = c1c2 −c3, i.e.,
+X1+X2 ⇋X3
+where |α|1 = 2,
+|β|1 = 1,
+1
+2|α+β|1 = 3/2,
+or the semi-conductor reaction with j = cneqcpos −1, i.e.,
+Xneg + Xpos ⇋∅
+where |α|1 = 2,
+|β|1 = 0,
+1
+2|α+β|1 = 1.
+Having ﬁxed the assumptions, we now state the convergence of the discrete gradient systems
+to the continuum gradient system.
+Theorem 4.7 (Convergence and lower limit of energy-dissipation functionals). Consider
+(cN, F N, JN) ∈CEN such that the uniform bounds supN∈N ess supt∈[0,T] EN(cN(t)) < ∞and
+supN∈N DN(cN, F N, JN) < ∞hold true. Moreover, assume that the reactions satisfy (4.A1).
+Then, there exists (ρ, f, j) ∈CE with f ∈L1([0, T] × Ydiﬀ) and j ∈L1([0, T] × Yreact) such
+that (up to a subsequence) we have ιNcN →ρ strongly in L1([0, T] × X), ιN,diﬀF N ⇀f weakly
+in L([0, T] × Ydiﬀ), and ιN,reactJN ⇀j weakly in L1([0, T] × Yreact).
+19

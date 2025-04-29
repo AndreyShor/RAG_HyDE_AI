@@ -1,0 +1,43 @@
+A Self-Supervised Framework for Space Object Behaviour Characterisation.
+9
+Figure 7: Fine-tuning results for anomaly detection, averaged across five training runs comparing pre-trained light curve
+Perceiver-VAE (A-E), and the pre-trained hyperspectra Perceiver-VAE (F-J). Both training and validation classification accu-
+racy and Receiver Operating Characteristic (ROC) Area Under the Curve (AUC) increase over time for both data modalities
+(A-D), (F-I). Validation accuracies of approximately 88% and 84% are achieved for the light curve and hyperspectral models
+respectively, with narrow variance between runs (B, G). Additionally, validation ROC-AUC values of approximately 0.9 and
+0.88 are achieved for the light curve model and hyperspectral model respectively (D, I), suggesting good discriminatory power
+between anomalous/normal curves. We also tracked the correlation between reconstruction loss and classification loss, finding
+that for the light curve fine-tuning this increased over time to approximately 0.28 (E), whereas for hyperspectral fine-tuning the
+opposite was true, where the correlation decreased over time to approximately 0.05 (J).
+Figure 10 shows that we can produce curves with a similar
+overall trend to the reference curve (i.e., that are appropriately
+constrained by the reference curve). Secondly, we show that
+adding increasing amounts of noise to these activations pro-
+duces curves which vary further from the reference curve (com-
+pare Fig 10A, noise scale 1.00 curves to Fig 10A, noise scale
+0.25 curves).
+Next, we used the fine-tuned model from Section 2.6 to gener-
+ate motion mode informed synthetic light curves (Figure 10B,
+C). To do this, we first took a held-out test set used to evaluate
+the fine-tuned model from Section 2.6. Next we obtained refer-
+ence curves for the latent space by using light curves with high
+confidence predictions from that model (>95% likelihood). Fi-
+nally, we generated around the neighbourhood of those refer-
+ences by first applying noise to those latent activations and then
+decoding into light curves as in Figure 10A. From this, we
+saw that in each motion class, we could in essence query an
+inference dataset to produce more curves of a similar attitude
+motion mode.
+Considering that producing these fine-tuning
+data is time and computationally expensive, we present this and
+the methodology as something of potentially high utility to the
+SDA field.
+3
+Methods
+3.1
+Data Sources and Preparation
+The MMT-9 light curve dataset was downloaded as text files
+from https://www.sao.ru/lynx/karpov/satellites/
+and processed with custom scripts using the BeautifulSoup
+Python library (v4.11.1). The light curves varied in length, and
+were therefore resampled to a uniform size of nsamples, 128. Vi-

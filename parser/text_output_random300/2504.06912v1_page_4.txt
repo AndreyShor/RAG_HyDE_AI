@@ -1,0 +1,160 @@
+4
+0
+2
+4
+6
+8
+ω/∆0
+0
+1
+2
+χC
+(a)
+C =A1g
+RSum
+mRes
+Quadrature
+0
+2
+4
+6
+8
+ω/∆0
+(b)
+C =B1g
+RSum
+mRes
+Quadrature
+0
+2
+4
+6
+8
+ω/∆0
+(c)
+C =B2g
+RSum
+mRes
+Quadrature
+FIG. 1. Superiority of the modified-residue prescription. A comparison of the Riemann sum (RSum) and the modified-
+residue prescription (mRes) to evaluate χC(ω), with ∆θ = ∆0 cos(2θ) for C ∈{A1g, B1g, B2g}. Here N = 40. The exact
+calculations, obtained using the method of quadratures (which uses a high resolution and adaptive mesh), are shown as dashed
+lines.
+exactly doable leading to
+I(ω, θ) = 2γ2
+C(θ)arcsin[ω/(2|∆θ|)]
+ω/(2|∆θ|)
+|∆θ|
+p
+∆2
+θ −(ω + iη)2/4
+.
+(8)
+The singular part
+p
+∆2
+θ −(ω + iη)2/4 in the denomina-
+tor allows us to identify the local asymptotic form s(ω, θ)
+as 1/
+p
+(ω + iη)/(2|∆θ|) −1. The precise representation
+of the singularity (1/
+√
+x2 −1 or 1/√x −1 forms near
+x ∼1) is not important as long as Sm(ω) uses the appro-
+priate s(ω, x) – see Appendix A. Although such closed-
+form results are not always achievable, one does not need
+to explicitly evaluate the integral to deduce s(ω, θ) [22].
+Knowing I(ω, θ) and s(ω, θ), we can now follow the pre-
+scription in Eq. (6). In Fig. 1 we plot the ‘exact’ result
+with the dashed line.
+It was obtained using an adap-
+tive quadrature numerical routine (SciPy’s nquad [30])
+on Eq. (8). We then present the result for the modified-
+residue prescription with N = 40 with dark solid lines
+and that with the Riemann sum with light solid lines.
+The panels (a)–(c) correspond to different choices of C
+which affects the slope of the low-ω behaviour and also
+the singularity (or lack thereof) at ω = 2∆0. It is evident
+that the residue sum outperforms the Riemann sum and
+correctly captures the slopes and singular features of the
+result. This improvement will be quantified in Sec. IV.
+B.
+Incorporation with other prescriptions
+The Riemann sum discussed above is also referred to
+as the rectangle rule for integration. Consider also the
+following prescriptions [31] which are known to perform
+better than the rectangle rule:
+• Trapezoidal rule, which implements
+Z b
+a
+dx I(x) ≈δ
+2
+h
+I(a) + 2
+N−1
+X
+m=1
+I(xm) + I(b)
+i
+.
+• Simpson’s rule, which implements
+Z b
+a
+dx I(x) ≈δ
+3
+h
+I(a)+4
+X
+odd m
+I(xm)+2
+X
+even m
+I(xm)+I(b)
+i
+.
+• Gaussian quadratures, which rescales the integra-
+tion limits and the function to evaluate
+Z 1
+−1
+dx I(x) ≈
+X
+m
+wmI(xm),
+for some pre-computed sample points {xm} and
+{wm} (according to some orthogonal set of poly-
+nomials) for a given N.
+In all of these prescriptions, we have essentially a
+weighted sum over the discrete points I(xm).
+The
+weights, however, are not tied to any form of a singu-
+larity and, therefore, finer meshes would be demanded to
+correctly integrate singular integrands using these pre-
+scriptions. Nonetheless, our prescription could be incor-
+porated into the above schemes to obtain better results
+without requiring a finer mesh by suitably promoting δ to
+Sm/s(xm), provided we have knowledge of the nature of
+the local asymptotic singularity s(x). The logic remains
+that in the non-singular sub-intervals, the proposed form
+already implements the original prescription, while pro-
+viding the appropriate value for the singular sub-integral.
+Note:
+It is worth noting that Sm can also be evalu-
+ated numerically with a high density of grid points. This
+is not the same as evaluating
+R
+dθ I(ω, θ) numerically
+with the same high density of grid points because we
+do not have access to I(θ) at those finer grid points. But
+knowing the asymptotic form, albeit only in the singular
+sub-interval, provides an analytical structure that can be
+integrated over a finer grid. This step is not really more
+computationally expensive that using the analytical form
+for Sm. At this point, we may also note that when one
+needs to compute multi-dimensional integrals, one often
+resorts to Monte Carlo-based techniques. While these are
+known to perform best when the integrand is bounded,
+there are special algorithms designed to deal with singu-
+lar integrands (see, for instance, Ref. [32]). We leave the
+incorporation of this idea into Monte Carlo techniques to
+a future endeavour.

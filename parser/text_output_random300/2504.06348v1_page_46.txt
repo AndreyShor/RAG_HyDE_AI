@@ -1,0 +1,125 @@
+Parameter
+H2O
+CO
+CO2
+H2
+w0
+−2.050 × 102
+−1.460 × 104
+−7.193 × 104
+5.254 × 10−1
+w1
+3.993 × 101
+−5.155 × 106
+−3.902 × 108
+−2.254 × 10−2
+w2
+3.413 × 10−1
+−5.312 × 10−3
+−5.410 × 10−1
+−5.564 × 100
+w3
+2.696 × 10−3
+−2.744 × 10−7
+−2.894 × 10−5
+−7.897 × 10−1
+w4
+−3.651 × 101
+−5.503 × 106
+1.195 × 108
+−1.189 × 10−1
+w5
+7.643 × 10−2
+−1.074 × 1012
+7.602 × 1011
+−2.355 × 10−3
+w6
+−1.306 × 10−3
+−3.485 × 10−7
+4.229 × 10−6
+−4.304 × 10−1
+w7
+8.586 × 10−12
+−2.210 × 10−15
+2.407 × 10−14
+3.710 × 10−3
+w8
+−1.366 × 100
+−2.387 × 109
+1.099 × 1010
+−1.824 × 10−2
+w9
+−1.840 × 10−5
+−2.350 × 1017
+−1.341 × 1016
+−3.551 × 10−5
+w10
+−2.565 × 10−7
+−2.858 × 10−11
+3.057 × 10−10
+−1.053 × 10−2
+w11
+7.613 × 10−20
+−2.006 × 10−23
+−8.579 × 10−24
+−7.813 × 10−5
+b
+−7.954 × 103
+8.487 × 102
+2.158 × 104
+1.068 × 102
+Table 7: Parameters obtained from logistic regression for our fingerprinting function I(u) = Θ(wT u + b)
+trained for a few select molecules. The input feature vectors u are defined for atomic positions defined in
+angstroms, and do not include any scaling or centering around the mean, as is commonly done in machine-
+learning protocols. The values reported for the intercept b for the CO and CO2 molecules were increased
+by 500 and 2000 relative to the values directly obtained from the logistic regression to yield a sharper
+classification, as discussed in the text.
+discrete parameters (e.g. different target motifs), over which we want to average. We also assume access
+to a target probability distribution px over the parameter space S. Let sx denote the probability that a
+target chemical species of interest is formed after some time t,26 given that the system was initialized in a
+configuration x ∈S. The problem is to estimate
+s =
+X
+x∈S
+pxsx,
+(133)
+up to relative error ϵ, e.g., ϵ = 0.01, or even ϵ ∼1 if we are we are performing a cursory scan and do not
+care yet care about high precision. Formally, we want an estimate ˜s such that
+|˜s −s| ≤ϵs.
+(134)
+We discuss two different possible solutions.
+Solution 1: standard averaging
+A standard procedure is as follows:
+• Sample x ∈S according to probability px.
+• Apply the unitary Ux that prepares the initial state |ψx(0)⟩from the all zero state.
+• Run the time-evolution to obtain a state |ψx(t)⟩. Then run the chemical species identification compo-
+nents of the algorithm discussed in Sec. 6, to obtain the state at time t,
+√sx|ψidentified
+x
+(t)⟩|0⟩+
+√
+1 −sx|ψ⊥
+x (t)⟩|0⊥⟩,
+(135)
+where |ψidentified
+x
+(t)⟩is the normalized state that includes all ionic configurations in the support
+of |ψx(t)⟩identified as target species, and |ψ⊥
+x (t)⟩is the normalized state including all ionic con-
+figurations in the support of |ψx(t)⟩where the target species are identified not to exist.
+Then,
+sx = |
+
+ψidentified
+x
+(t)|ψx(t)
+
+|2. The extra register flags as |0⟩the identification of a target species and by
+‘not zero’ everything else (|0⊥⟩is any state satisfying
+
+0|0⊥
+= 0). Note that we absorbed phases in
+the definition of |0⟩, |0⊥⟩.
+26A similar argument can be made if we are specifically interested in the number of chemical species that have formed, in
+which case we’d have different probabilities for different product counts.
+46

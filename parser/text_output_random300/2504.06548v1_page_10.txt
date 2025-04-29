@@ -1,0 +1,82 @@
+10
+FIG. 5. ASI microstate control, local optical writing and microwave assisted control. (a) All-optical writing of ASI, allowing local control.
+Write/erase toggle switching is possible. Adapted from Ref. [73]. (b) Avalanche switching in ASI assisted by microwave field supplied by
+micro-patterned waveguide. Adapted from Ref. [74].
+ergy barriers, which prevent access to the ground state.
+Both the effective temperature model and the network
+model are useful to explore general results about how the ASI
+microstate can be controlled with applied magnetic fields, but
+for specific systems it can be useful to directly simulate the
+response to an external field. Carrying out full micromagnetic
+simulations is generally too costly for treating large arrays.
+Alternatives such as network models simply track whether lo-
+cal fields exceed the switching fields of each island and re-
+verse their magnetizations accordingly. This approach can be
+used to efficiently track which microstates can be accessed by
+field protocols. The flatspin93 package efficiently carries out
+simulations of ASI systems using this approach.
+Thermal protocols (quenching, annealing, phase transi-
+tions, as-grown):
+The other major statistical approach to preparing reproducible
+ASI configurations is through thermal techniques. While the
+rotating field protocols discussed above were motivated by the
+fact that early ASI systems were athermal, it has since become
+possible to fabricate thermally active systems.
+The first hint that it might be possible to create thermal ASI
+systems came from the observation that vertex configurations
+in ‘as-grown’ samples obey Boltzmann statistics94–96. This
+was interpreted as a result of the system being thermally ac-
+tive during the deposition process while the islands had not
+yet reached their full thickness (and hence following Eq. (12)
+the energy barrier KDV was lower) and the thermal state being
+frozen in as the thickness increased. Since this initial observa-
+tion, various means of activating thermal fluctuations in ASI
+have been discovered.
+To access ground states, ASI systems can be thermally an-
+nealed by heating them to either the Curie temperature of the
+material used to form the islands or to the blocking tempera-
+ture of the islands Tb ∼KVD/kB (it is worth noting that while
+the thermal energy barrier is often taken to be exactly KDV,
+careful modeling of the transition between the two microstates
+during switching suggests that it can be significantly lower
+than this97–99).
+The Curie temperature for NiFe is around 850 K, which
+is significantly lower than the blocking temperature for ASI
+systems with thicknesses greater than 5 nm.
+However,
+heating permalloy ASI structures to this temperature has
+been observed to cause a substantial reduction in saturation
+magnetization100. This effect has been attributed to the degra-
+dation of the permalloy islands, due to the interdiffusion of the
+permalloy into the Si/SiO2 substrates typically used101,102.
+It is possible to circumvent this by lowering the Curie tem-
+perature and this was demonstrated with systems made of
+monolayers of Fe delta-doped into palladium islands103,104
+and with alternative materials such as Ni-rich permalloy105
+and FePd alloys106,107. On the other hand, annealing ASI sys-
+tems based on standard permalloy is possible if a silicon ni-
+tride substrate is used100,108 to prevent the permalloy diffusing
+into the substrate.
+Alternatively, the blocking temperature can be lowered to
+below room temperature by reducing the thickness of the
+islands to below ∼5 nm (the exact thickness threshold is
+system-dependent, so a common trick to maximize the chance
+that some region of a sample is thermally active is to de-
+posit permalloy in a wedge so that the thickness varies over
+the system).
+This offers full thermal control over the ver-
+tex fractions, as well as the possibility of controlling the
+magnetic configuration by sweeping the temperature through
+phase transitions109–112. By tuning the energy scales such that
+the critical temperature for a phase transition is close to room
+temperature,113 it could thus be possible to engineer a dra-
+matic change in the spin configuration with small temperature
+modulations.
+Lattice modification:
+So far, we have considered homogeneous arrays of regular fer-
+romagnetic nano-islands, but a powerful means of expanding
+the range of microstates which can be accessed both through
+field protocols and thermal relaxation is to modify the lattice
+in a way that locally modifies interaction energies. While this
+generally breaks the degeneracy of ASI systems, the reward is
+ready access to specific subsets of microstates.

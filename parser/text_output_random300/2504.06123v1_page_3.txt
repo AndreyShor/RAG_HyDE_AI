@@ -1,0 +1,156 @@
+3
+show that the total error ϵn is upper bounded by n times
+the local error (i.e., bounded by Lemma 1) cannot be
+directly applied, due to the non-unitary nature of ITE.
+Instead, we show in the Appendix A that ϵk is given by
+a recursive relation of the form
+ϵk ≤ϵk−1A + B
+(6)
+where A = 1 + 4∆β∥H∥∞and B = 10∆β2∥H∥2
+∞. As
+such, the error ϵn is upper bounded by a geometric series
+ϵn ≤B
+n−1
+X
+k=0
+Ak = B 1 −An
+1 −A ,
+(7)
+which establishes the following bound.
+Theorem 1:
+The error ϵn between the ITE state
+|ψ(β)⟩(1) and the state |ϕn⟩(4) created by n steps of
+RGD with step size ∆β = β
+n is upper bound by
+ϵn ≤5
+2∆β∥H∥∞
+
+e4β∥H∥∞−1
+
+.
+(8)
+Thus, for β∥H∥∞≪1, such that the second order of
+eβ∥H∥∞can be neglected, the complexity for preparing
+the corresponding ITE state through RGD is of the order
+O( β2∥H∥2
+∞
+ϵ
+). Such a short ITE has been used in primitive
+subroutines in other quantum algorithms, such as the
+quantum Lanczos or the quantum minimally entangled
+typical thermal states algorithm [3, 36]. Thus, Theorem 1
+provides error guarantees for the implementation of these
+subalgorithms via RGD.
+We further remark that since by the triangle inequality
+we have ∥|E0⟩−|ϕn⟩∥≤∥|E0⟩−|ψ(β)⟩∥+ϵn, Theorem
+1 allows us to bound the error for preparing the ground
+state |E0⟩of H via RGD [18–20]. However, Theorem 1
+goes beyond ground state preparation as it bounds the
+error for preparing a generic ITE state. This includes
+preparing excited states, which can be achieved by ini-
+tializing the system in a state that has zero overlap with
+the ground state.
+Gradient flow-based quantum algorithms for quantum
+imaginary time evolution – The RGD update step Uk =
+e−∆βgradJ is, in general, not efficiently implementable
+on a quantum computer. As the Riemannian gradient
+gradJ ∈su(2N) generally lives in an exponentially large
+Lie algebra su(2N) of dimension 22N −1 where N is
+the number of qubits, we can in general not hope for
+implementing Uk with polynomially many gates. How-
+ever, several approximation schemes have been intro-
+duced in the literature that project the Riemannian gra-
+dient into smaller dimensional subspaces to make the up-
+date step efficiently implementable, e.g., through Trot-
+terization [18–21]. The key idea is to pick a polynomi-
+ally sized subspace Ak ⊂su(2N) in each update step
+k. The Riemannian gradient is then projected into this
+subspace to obtain an approximate Riemannian gradient
+^
+gradJ = i P
+Pj∈Ak Ck,jPj in which the coefficients Ck,j
+can be estimated via measurements of the gradients
+Ck,j = ∂
+∂θ ⟨ϕk| eiθPjHe−iθPj |ϕk⟩
+
+θ=0
+(9)
+= ⟨gradJ, iPj⟩,
+e.g., through the parameter shift rule or finite differences
+[37, 38]. Here, ⟨X, Y ⟩= Tr{X†Y } denotes the Hilbert-
+Schmidt inner product.
+A particularly appealing strategy is to project into a
+randomly chosen directions Pj (in the tangent space) in
+each update step [20]. For ground state problems, this
+randomization strategy convergences to the ground state
+almost surely despite the existence of saddle points [18].
+Here, we employ a similar randomization strategy to ef-
+ficiently implement Uk on average.
+Consider sampling in each update step k a gate V (j)
+k
+=
+e−iCk,jD∆βPj by picking uniformly random a (normal-
+ized) Pauli operator iPj ∈su(d) where D = dim(su(d)) =
+d2−1. We recall that the coefficients Ck,j are determined
+by (9) and depend on the state of the previous step. To
+gain some intuition on how this randomization procedure
+gives rise to implementing ITE, we start by considering
+the energy change ∆Ej = ⟨ϕ| H |ϕ⟩−⟨ϕ| V (j)†
+k
+HV (j)
+k
+|ϕ⟩
+at the step k for some state |ϕ⟩.
+For a step size
+∆β = 1/(4D∥H∥∞) this change is lower bounded by
+∆Ej ≥
+1
+8∥H∥∞⟨gradJ, iPj⟩2 [20].
+Sampling Pauli op-
+erators Pj from su(d) uniformly gives, for any A, that
+1
+D
+P
+j PjAPj = Tr{A}
+d
+. As such, we find that the average
+energy change ∆E = Ej[∆Ej] at a single random step k
+is lower bound by
+∆E ≥∥gradJ∥2
+HS
+8d∥H∥∞
+.
+(10)
+The Hilbert-Schmidt norm ∥· ∥HS of the Riemannian
+gradient gradJ = [H, |ϕ⟩⟨ϕ|] is given by the variance
+∥gradJ∥HS =
+q
+⟨ϕ| H2 |ϕ⟩−⟨ϕ| H |ϕ⟩2, which is zero
+only at eigenstates of the Hamiltonian. As such, on aver-
+age a randomized step corresponds to the energy change
+that is obtained for one step of RGD. In fact, to first or-
+der in the step size, the averaged evolution is described
+by the unitary quantum channel that corresponds to one
+step of RGD.
+In Fig.
+2 we investigate how close a single random
+trajectory (grey curves) is to the ITE state, characterized
+by the fidelity error
+ε(γ)
+k
+= 1 −| ⟨ψ(β)| χ(γ)
+k ⟩|2.
+(11)
+Here, |χ(γ)
+k ⟩is a particular random state generated
+by a sequence of random unitaries, V (j)
+k
+, correspond-
+ing to the choice of random Pauli operators γ
+=
+{iP1, iP2, · · · , iPk}. We refer to the sequence of random
+unitaries V (j)
+k
+that creates the states |χ(γ)
+k ⟩as stochastic
+Riemannian gradient descent (SRGD) [18, 39].

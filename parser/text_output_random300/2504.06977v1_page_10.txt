@@ -1,0 +1,65 @@
+10
+subspace for the atom Hamiltonian to reproduce the spectroscopic results accurately. However, this large subspace
+was too big to compute the dipolar interaction time dynamics due to the computational complexity.
+To reduce the Hamiltonian to a smaller and more tractable subspace (99P3/2, 98D5/2), we truncated the eigenstates
+U full in the original subspace, resulting in the matrix U. Because this new matrix is no longer orthonormal, we
+decomposed our truncated unitary with an SVD decomposition U = MΣV and imposed singular values of unity to
+arrive at an orthonormalized basis set U ′ = MV . Under this approach, the atomic state that resonantly interacts
+with the molecule maintains its overlap with the original eigenstates after orthonormalization. The truncated atomic
+Hamiltonian in the uncoupled basis can be calculated using the orthonormalized wavefunctions with,
+Hatom = U ′Hfull
+atom(U ′)†,
+(7)
+where Hfull
+atom is the diagonal matrix with energies associated with relevant eigenstates before truncation. This approach
+allowed us to capture the exact eigen-energies and the approximate eigenstate decompositions.
+Collective Interactions
+We perform Monte Carlo simulations by sampling particle positions based on measured spatial dimensions and
+densities of the atomic and molecular clouds. The distribution of the distances between a random Rb atom and its
+nearest and next-nearest molecular neighbors are presented in Fig. 8. A finite probability of having multiple KRb
+molecules inside the Rydberg atom wavefunction motivated the use of a collective model where one Rydberg atom
+interacts with several of KRb molecules. Because a collective model exhibits exponential scaling of the Hilbert space
+dimension with increasing molecule number, we restrict our calculations to the single-excitation subspace as further
+expanded upon in Fig. 9.
+0
+1
+2
+3
+4
+Distance from Rydberg atom core ( m)
+0
+0.01
+0.02
+0.03
+0.04
+Probability of finding
+a KRb molecule
+nearest neighbor
+next nearest neighbor
+Rydberg atom radius
+0
+1
+2
+3
+4
+-4
+-2
+0
+2
+4
+Wavefunction
+amplitude ( m-3/2)
+FIG. 8. Wavefunction of the 98D5/2 Rydberg electron and the averaged distance distribution of the nearest and the next nearest
+KRb molecules from a Rydberg atom. We determined the Rydberg atom radius to be 1 µm (dashed line) as the wavefunction
+falls off dramatically beyond it. This corresponds to a characteristic KRb density of 1 × 1012/cm3. There is a 39% probability
+of finding a single KRb molecule within the Rydberg orbit and a 14% probability of finding two.
+This approach ensures a linear scaling of the Hilbert space dimension, making the computations tractable. We can
+now define H0 (Eq. 5) within this relevant subspace {|R⟩|0, 0, 0...0⟩, |r⟩|1m
+j ⟩}, where |1m
+j ⟩= |0, 0, ..., 1m, ..0⟩denotes
+the excitation of the j-th molecule to one of the three m = (1, 0, −1) molecular projection modes of |N = 1, MN = m⟩.
+This approximation is valid due to the conservation of energy, given that the interaction strength is sufficiently weaker
+than the energy of dipolar quanta (2.227 GHz). In addition, we also simplified our treatment of the Rydberg atom
+as a two-level system by focusing solely on the coupling between the highest energy 98D5/2 state (|R⟩) and the
+highest energy 99P3/2 state (|r⟩). Interactions between other state pairs are at least 20 MHz detuned and, thus, are
+significantly suppressed, ensuring the closure of the chosen subspace and the validity of the approximation.

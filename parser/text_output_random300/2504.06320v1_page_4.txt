@@ -1,0 +1,88 @@
+Fig. 1. The encoder part of the autoencoder at the current, previous, and next
+time steps. The static deterministic nodes (green), their respective derivatives
+(red), and statistical nodes (grey) are shown schematically. We enforce the
+derivative nodes to reflect the central difference derivative.
+feature is typically min-max scaled, this introduces an abstract
+time scale, which can potentially affect the interpretability of
+absolute derivative values.
+C. Informing Training Process with Temporal Differentials
+In this work, we build upon the TDC-AE [1], which
+leverages the concept of temporal differential consistency loss
+(TDC-Loss) to enforce structured temporal relationships in
+the latent space in complex dynamical systems. The TDC-
+Loss encourages the model to learn a representation that
+captures the system’s temporal evolution by ensuring that
+the time derivatives of latent deterministic nodes align with
+their estimated finite difference approximations. To extend this
+framework, we integrate conventional statistical latent nodes
+alongside TDC-informed latent nodes, leading to our proposed
+hybrid Temporal Differential Consistency Autoencoder
+(hTDC-AE). A compact version of the pseudocode for hTDC-
+AE is presented in Algo. 1.
+D. Anomaly Estimation based on Autoencoders
+Anomaly detection is carried out independently on the test
+dataset for each edge area using the trained Autoencoders. For
+each data sample, the reconstruction error is calculated, which
+forms the basis for detecting anomalies. To smooth out any
+fluctuations, a moving average filter with a window size of 7 is
+applied to the reconstruction errors, as suggested by [23]. The
+threshold is defined as the 95th percentile of the reconstruction
+errors of the training data. Samples where the reconstruction
+error surpasses this threshold are classified as anomalies. Fig.
+2 provides an example of this approach applied to Edge Area
+2, demonstrating how the smoothing filter helps reduce noise
+and enhance the reliability of anomaly detection.
+Algorithm 1 hTDC-AE: Hybrid Temporal Differential Con-
+sistency Autoencoder Training
+1: Initialize: Autoencoder with deterministic latent nodes
+z, their time derivatives ˙z, and statistical latent nodes s,
+Optimizer, MSE loss function, Weight α TDC loss term.
+2: for each epoch in training epochs do
+3:
+for each batch in training data do
+4:
+Perform forward pass through the Autoencoder and
+Encoder:
+5:
+˜Xt ←Autoencoder(Xt)
+6:
+(zt−1, ˙zt−1, st−1) ←Encoder(Xt−1)
+7:
+(zt+1, ˙zt+1, st+1) ←Encoder(Xt+1)
+8:
+Compute central difference derivative:
+9:
+∆tz ←(zt+1 −zt−1)/2∆t
+10:
+Compute temporal difference consistency loss using
+MSE:
+11:
+TDC-Loss ←MSE(∆tz, ˙zt)
+12:
+Compute reconstruction loss using MSE:
+13:
+Rec-Loss ←MSE( ˜Xt, Xt)
+14:
+Compute total loss:
+15:
+L = Rec-Loss + α · TDC-Loss
+16:
+Backpropagate the total loss: compute gradients w.r.t.
+model parameters
+17:
+Update the Autoencoder parameters using the opti-
+mizer
+18:
+end for
+19: end for
+Fig. 2. Reconstruction error of the BATADAL test dataset on Edge Area 2
+with an average window of 7.
+E. Hardware and Implementation Details
+Our experiments were conducted on a Windows 11 machine
+equipped with a 13th Gen Intel Core i7-13700H processor (2.4
+GHz, 14 cores, 20 threads), 32 GB of RAM, and an NVIDIA
+GeForce RTX 4070 Laptop GPU.
+For implementation, we utilized PyTorch 2.3.0 with CUDA
+11.8 for GPU-accelerated training. The autoencoder archi-
+tecture and training parameters are summarized in Tab. II.
+The model was trained using GPU acceleration to optimize

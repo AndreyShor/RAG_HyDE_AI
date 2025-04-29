@@ -1,0 +1,39 @@
+46
+Tools and methodology
+theoretical predictions, to the independent degrees of freedom the PDFs and overcome all the
+complications arising due to the flavor mixing and Q2 dependency. However, to solve the PDF
+regression problem we are left with at least 3 major obstacles that have to be taken into account.
+First, the problem might seem mathematically ill-defined, as the number of datapoints is finite,
+while PDFs have a continuous domain. This is practically solved by restricting the region of
+validity of the fitted PDFs to a specific x range (approximately [10−4, 0.7]), called data region,
+where the behavior of PDFs can be really determined by the data, and adopting a discrete grid
+parametrization. In the very small-x and large-x regions our analysis can only be interpreted as
+an extrapolation, which might be possible to validate with future measurements or so-called
+future tests [147]. Second, both the experimental data and the theory predictions used during
+the fit, have a finite accuracy. Thus, their uncertainties, need to be taken into account. In this
+work we adopt a Monte Carlo method to sample the experimental distributions (described in
+Section 2.2.1) and a covariance matrix formalism to propagate different theoretical errors such
+as nuclear uncertainties or missing higher order corrections (cf. Section 2.2.2) to the PDF fit.
+Finally, there is an arbitrariness in the choice of the parametrization to adopt for the initial scale
+PDFs. Various approaches have been proposed in literature, in the thesis we mainly present
+results based on the NNPDF methodology where the PDFs are given as an output of feed forward
+neural network. The solutions adopted to overcome these issues together with the setting used
+to define a cost function and its minimization, define the so-called fitting methodology, which is
+described in Section 2.2.3.
+2.2.1. Treatment of experimental uncertainties
+In particle physics, measurements are typically presented as binned and fiducial cross-sections.
+In a simplistic way, given a scattering process, defined by the kinematics of its final state and,
+the possible background processes, we can define a fiducial cross-section σ as
+σ = Nc −Nb
+ϵL
+(2.10)
+where Nc and Nb are respectively the total number of observed events satisfying the selection
+criteria and the estimate of background events. L corresponds to the integrated luminosity
+which acts as a normalization by total number of collision happening in a certain time and
+detected by the experimental apparatus. ϵ instead, called acceptance, is used to model possible
+systematic effects such as, detector acceptance, trigger efficiency, reconstruction efficiency,
+which are typical of the experimental setup. Subsequently, one can divide the phase space
+regions into different bins and obtain differential cross-sections. Often, in order to reduce
+uncertainties, measurements are presented as ratios of cross-sections: for instance, polarized
+asymmetries are computed from the ratio of the polarized to unpolarized cross-sections.
+The experimental uncertainties can thus be classified into:

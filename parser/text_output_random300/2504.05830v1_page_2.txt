@@ -1,0 +1,46 @@
+Springer Nature 2021 LATEX template
+2
+Human Activity Recognition using RGB-Event based Sensors
+RGB and event cameras. The first contribution is the proposed large-
+scale multi-modal RGB-Event human activity recognition benchmark
+dataset, termed HARDVS 2.0, which bridges the dataset gaps. It
+contains 300 categories of everyday real-world actions with a total of
+107,646 paired videos covering various challenging scenarios. Inspired
+by the physics-informed heat conduction model, we propose a novel
+multi-modal heat conduction operation framework for effective activity
+recognition, termed MMHCO-HAR. More in detail, given the RGB
+frames and event streams, we first extract the feature embeddings
+using a stem network. Then, multi-modal Heat Conduction blocks are
+designed to fuse the dual features, the key module of which is the multi-
+modal Heat Conduction Operation (HCO) layer. We integrate RGB
+and event embeddings through a multi-modal DCT-IDCT layer while
+adaptively incorporating the thermal conductivity coefficient via FVEs
+(Frequency Value Embeddings) into this module. After that, we pro-
+pose an adaptive fusion module based on a policy routing strategy for
+high-performance classification. We conduct comprehensive experiments
+comparing our proposed method with baseline methods on the HARDVS
+2.0 dataset and other public datasets. These results demonstrate that
+our method consistently performs well, validating its effectiveness and
+robustness. The source code and benchmark dataset will be released
+on
+https://github.com/Event-AHU/HARDVS/tree/HARDVSv2.
+Keywords: Event Camera; Human Activity Recognition; Multi-modal
+Learning; Physics-informed Heat Conduction; Signal Processing
+1 Introduction
+Human-centered visual tasks (e.g., human activity recognition [1], pedes-
+trian attribute recognition [2], person re-identification [3]) have increasingly
+garnered attention with the development of deep learning and computer vision.
+For the critical task of human activity recognition [4–9], most researchers rely
+on the mature technology of RGB cameras to achieve effective activity clas-
+sification. In recent years, numerous activity recognition tasks based on RGB
+cameras have emerged, involving various application scenarios such as intel-
+ligent surveillance, sports activity analysis, and human-computer interaction.
+However, the inherent limitations of the traditional RGB sensors pose vari-
+ous challenges in practical application, including issues related to data usage,
+analysis, and ethics. On the one hand, the standard RGB cameras often have
+limited frame rates (e.g., 30FPS), resulting in motion blur when capturing
+fast-moving scenes, such as athletes performing high-speed activities in sports
+events. On the other hand, when facing extreme light conditions such as over-
+exposure or low-light, traditional RGB cameras’ low dynamic range tends to
+produce low-quality videos. These challenges significantly hinder the progress
+of current human activity recognition tasks.

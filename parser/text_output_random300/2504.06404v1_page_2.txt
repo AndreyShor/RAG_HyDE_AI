@@ -1,0 +1,187 @@
+III. FUNCTIONAL MODEL OF THE PHYSICAL SPLINE 
+For estimation purposes, the functions x(t) and y(t) are modeled 
+as linear combinations of non-linear basis functions 
+ 
+𝑥(𝑡) = & 𝑤!,# ⋅𝑓#(𝑡)
+#
+ 
+𝑦(𝑡) = & 𝑤$,# ⋅𝑓#(𝑡)
+#
+ 
+𝑤=
+⎝
+⎜⎜
+⎛
+𝑤!,%
+⋮
+𝑤!,&
+𝑤$,%
+⋮
+𝑤$,&⎠
+⎟⎟
+⎞
+. 
+(1) 
+𝑥̇(𝑡) = & 𝑤!,# ⋅𝑓'̇ (𝑡)
+#
+ 
+𝑦̇(𝑡) = & 𝑤$,# ⋅𝑓'̇ (𝑡)
+#
+ 
+𝑥̈(𝑡) = & 𝑤!,# ⋅𝑓'̈ (𝑡)
+#
+ 
+𝑦̈(𝑡) = & 𝑤$,# ⋅𝑓'̈ (𝑡)
+#
+ 
+ 
+This approach is also popular in a machine learning context 
+as “feature based linear regression” (further details see [2]). 
+The functions will be chosen in such a way that the first three 
+parameters represent the initial state ( 𝑤!,# = 𝑥(0), 𝑤!,$ =
+𝑥̇(0), 𝑤!,% = 𝑥̈(0) ). All following parameters ( 𝑤!,&, 𝑤!,', …  ) 
+represent the acceleration after one resolution step. The 
+parameters in the weight vector have the following 
+representation and are defined on a underlying time vector tgrid  
+𝑤! = (𝑥#
+𝑥̇#
+𝑥̈#
+𝑥̈∆)
+𝑥̈%∆)
+…)  
+𝑡*+,- = -𝑡#, 𝑡$, … , 𝑡., … , 𝑡/. = [0, Δ𝑡, 2Δ𝑡, …]. 
+(2) 
+ 
+ 
+In between the weight centers the acceleration is linear 
+interpolated. Stated otherwise, we choose the basis functions for 
+the second derivatives as first order B-Spline functions [3]. By 
+integrating these basis functions twice we obtain corresponding 
+basis functions for x(t) and y(t)  
+𝑓̈! = 
+⎩
+⎪⎪
+⎨
+⎪⎪
+⎧
+0   for 𝑡≤𝑡!"# 
+𝑡−𝑡!"#
+𝑡! −𝑡!"#
+    for 𝑡!"# < 𝑡≤𝑡! 
+−
+𝑡−𝑡!
+𝑡!$# −𝑡!
++ 1   for  𝑡! < 𝑡≤𝑡!$#
+0   for   𝑡> 𝑡!$#
+ 
+ 
+(3) 
+𝑓̇! =
+⎩
+⎪
+⎪
+⎪
+⎨
+⎪
+⎪
+⎪
+⎧
+0  for 𝑡≤𝑡!"#
+1
+2 ⋅7𝑡−𝑡!"#8
+%
+𝑡! −𝑡!"#
+  for 𝑡!"# < 𝑡≤𝑡!
+−
+1
+2 7𝑡−𝑡!8
+%
+𝑡!$# −𝑡!
++ 7𝑡−𝑡!8 + 1
+2 ⋅7𝑡! −𝑡!"#8  for 𝑡! < 𝑡≤𝑡!$#
+1
+2 7𝑡!$# −𝑡!"#8   for 𝑡> 𝑡!$#
+ 
+ 
+ 
+𝑓!
+=
+⎩
+⎪⎪⎪
+⎨
+⎪⎪⎪
+⎧
+0  for 𝑡≤𝑡!"#
+1
+6 ⋅1𝑡−𝑡!"#3
+$
+𝑡! −𝑡!"#
+  for 𝑡!"# < 𝑡≤𝑡!
+−
+1
+6 1𝑡−𝑡!3
+$
+𝑡!%# −𝑡!
++ 1
+2 1𝑡−𝑡!3
+& + 1
+2 ⋅1𝑡! −𝑡!"#3 ⋅1𝑡−𝑡!3 + 1
+6 ⋅1𝑡! −𝑡!"#3
+& for 𝑡! < 𝑡≤𝑡!%#
+1
+2 1𝑡!%# −𝑡!"#3 ⋅1𝑡−𝑡!%#3 + 1
+3 1𝑡!%# −𝑡!3
+& + 1
+6 1𝑡! −𝑡!"#3
+& + 1
+2 1𝑡! −𝑡!"#31𝑡!%# −𝑡!3
+. 
+ 
+The constants resulting from  integration are used to fulfil  the 
+condition of the first two weights being the initial position and 
+initial velocity.  
+𝑓% = 1 
+(4) 
+𝑓( = 𝑡−𝑡% 
+The function f0 has a one in position and a zero in the derivatives. 
+The function f1 has a zero in position and acceleration at t0 and a 
+one in the first derivative. The function f2  denotes the start of 
+the acceleration weights for the initial acceleration. 
+In (Fig. 2) we can see the plot of the basis functions (except 
+for the first two). We can see that the second derivative, only 
+depends on the corresponding weight of the basis function at its 
+center. 
+ 
+ 
+ 
+ 
+Fig. 2. Basis functions with the first and second derivative. The basis functions 
+look similar to a ReLu, the derivatives to a sigmoid, the second derivative to a 
+radial basis function. 
+A visual way to think about physical knowledge integrated 
+into the basis functions in (Fig. 2) is that a weight change of one 
+parameter only influences the acceleration function locally 
+through the radial basis function, i.e. the long-term future of the 
+acceleration is not affected by changes in earlier weights. For the 
+velocity a weight change influences the long-term future of the 
+track like a constant offset because the sigmoid like function 
+behaves like a constant for larger times. The position changes 
+linearly by a weight change of an earlier weight. The intuitive 
+picture behind that is that without any action an object in motion 
+stays in motion, the position changes linear, the velocity stays 
+constant, and an acceleration requires constant effort of weights 
+unequal to zero to not go back to zero. If we extend the physical 
+spline by just appending zeros to the parameter vector at the end 
+the vehicle continues to travel at constant speed. This also means 
+that position, velocity and acceleration values at time are not 
+affected by changing parameters for a later point in time 
+(causality). With these concepts in mind more complex models 
+with physics could be incorporated as an extension. Also, an 
+iterative approach to determine the next parameters would be 
+possible without the need to redetermine the parameters of the 
+past. 
+However in the following we determine the parameter vector 
+with an optimization problem that gets solved once after the 
+whole track is already recorded. In the following we work with 
+the representation from (1) to formulate the Conditions and 
+determine the weight vector. 

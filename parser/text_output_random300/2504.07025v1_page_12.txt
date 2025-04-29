@@ -1,0 +1,70 @@
+detailed explanations and computation of remaining param-
+eters. Herein, we denote the coefficients of the two terms on
+the right side of Eq. 19 as diffuse radiance cd and specular
+radiance cs.
+8. Polarization Rendering
+As shown in Fig. 2 and the following rendering pipeline,
+we use a polarization image Iϕpol as the input and leverage
+polarimetric BRDF model, characterized by the neural ra-
+diance field, to estimate the outgoing Stokes vectors sout,
+which lay the foundation for polarization rendering. Re-
+fer to Eq. 19 in the supp. for how to render sout using dif-
+fuse, specular, and roughness components. Subsequently,
+we present a differentiable processing pipeline to estimate
+the ϕpol, eliminating the need for precise polarization an-
+gle measurements and facilitating the implicit rendering of
+desired polarized images Iout
+ϕpol for loss calculation.
+Image
+Neural
+Radiance Field
+Eq. 7 (supp.):
+𝒔!"#
+Eq. 1: 𝜌/ 𝜙
+Eq. 2: 𝜙$%&
+(avg. of per-pixel 𝜙!"#)
+Eq. 3: 𝐌'"#$
+Eq. 5: 𝒔%()
+$%&
+Loss 
+Function
+9. Implementation Details
+The SDF network takes the 3D coordinate as input and ap-
+plies the positional encoding (PE) to spatial locations using
+6 frequencies. This encoded input is then processed through
+8 fully connected layers with 256 channels each, utilizing
+ReLU activations. Additionally, the encoded input vector is
+connected to the output feature at the 4th layer through a
+skip connection. The network outputs the signed distance
+value and an extra 256-dimensional geometric feature vec-
+tor. Notably, surface normals can be obtained as the normal-
+ized gradient of the neural SDF. To initialize parameters of
+the SDF network, we utilize geometric initialization meth-
+ods as described by Gropp et al. [10].
+The diffuse radiance fθ, roughness, and mask prediction
+functions share similar network architectures. They take the
+concatenation of the geometric feature vector and the en-
+coded spatial locations with 10 frequencies as input. The
+network is composed of 4 MLP layers with a width of 512
+channels. The output structures contain 3 channels with
+sigmoid, 1 channel with softplus, and 1 channel with sig-
+moid, respectively. For the estimation of specular compo-
+nents [27], we enable the network to reason about radiances
+with the integrated directional encoding of roughness and
+the encoded reflective directions with PE of 2 frequencies.
+gθ also uses 4 fully connected MLP layers with 512 chan-
+nels per layer and outputs 3 channels with the softplus.
+Our algorithms are implemented in Pytorch [21]. In our
+experiments, we use a batch size of 512 rays, each sampled
+at 128 locations. We use the Adam optimizer [15] (β1 =
+0.9, β2 = 0.999) with a learning rate that begins at 5×10−4
+and decays exponentially to 5 × 10−5 during training. To
+better warm up the training, in the early 10k iterations, we
+define Lrgb as the loss between the predicted radiance c in
+Eq. 16 and the ground truth. In the next 5k iterations, we
+replace c with the diffuse components of sout
+ϕpol, which are
+subsequently used for loss computation. In addition, The
+refractive index of the object is set to 1.5. The optimization
+for a single object typically takes around 200k iterations to
+converge on a single NVIDIA Titan X GPU (∼2 days).

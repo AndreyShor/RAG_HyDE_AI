@@ -1,0 +1,52 @@
+1
+2
+3
+6
+5
+4
+¯x1 = 0
+¯x2 = 0
+¯x3 = 0
+¯x4 = 1
+¯x5 = 1
+¯x6 = 1
+(a) original FJ
+1
+2
+3
+6
+5
+4
+¯x1 ≃0.31
+¯x2 ≃0.31
+¯x3 = 0
+¯x4 = 1
+¯x5 ≃0.69
+¯x6 ≃0.69
+(b) FJ-MM
+Figure 3: Example 1: Comparison between the nodes’ equilibrium opinions ¯xi in case of the original FJ and the FJ-MM models.
+Figure 4: Example 2: Polarization Index for a Barbell Graph with 10 nodes.
+Along with polarization, the higher-order neighbors visibly affect the average network’s opinion.
+Example 3. Consider a Barbell graph with 16 nodes, using the same polarized initial condition as in Examples
+1 and 2. We set [β] = 0.8I, and assign λii = 0 to the two nodes at the endpoints of the central edge as well
+as to two randomly selected nodes (one from each clique). The remaining agents are assigned λii = 1. Fig. 5a
+compares the average opinion dynamics for the FJ-MM, the comparison FJ model, and the original FJ model with
+matrix W. It is evident that the FJ-MM model converges more slowly than both the original FJ and the comparison
+models. We present preliminary results on the convergence rate in the next section. Fig. 5b displays the final opinion
+distributions of individual nodes.
+4
+Convergence Rate
+In the previous section, we have established conditions for the existence of a unique equilibrium for the system
+introduced in (5) and for convergence to it. Now, we focus on the analysis of the corresponding convergence rate.
+Specifically, we analyze the convergence rate for the FJ-MM model (9) (determined by the spectral radius ρ( ¯Ad))
+and compare it with the convergence rates of the comparison FJ model (7). In the scenarios of Use Cases 1,3,4,
+where the FJ-MM is determined by a single stochastic matrix W, it is also interesting to compare these convergence
+rates with the one of the original FJ model (2).
+To simplify the notation, also in this case, we will refer to the FJ-MM model defined in (5) using the formulation
+introduced in (9), i.e.
+y(t) = ¯Ady(t −1) + ¯c .
+Similarly, we will refer to comparison model using (7).
+First, we will focus on the relation among the convergence rates for the FJ-MM and for the comparison model,
+showing that the introduced FJ-MM system converges slower to the steady state with respect to the other one.
+Proposition 2. Under Assumption 1, the convergence rate of the FJ-MM system in (5) does not exceed the one
+of FJ comparison model in (7): ρ( ¯Ad) ≥ρ( ¯A).

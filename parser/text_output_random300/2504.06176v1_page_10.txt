@@ -1,0 +1,53 @@
+A Self-Supervised Framework for Space Object Behaviour Characterisation.
+10
+Figure 8: The top 12 confidence anomaly predictions from the fine-tuned light curve Perceiver-VAE model on an independent
+test set of MMT light curves. We mapped the light curves back to the names of the object, finding a mixture of satellites (A, B,
+E, H, J, L), debris (C, D, G), and rocket bodies (F, I, K). Within these predicted anomalies, we see notable anomalous patterns
+such as abrupt peak changes in magnitude (E, red dotted outline), step changes (F, red dotted outline), and highly periodic curves
+(K, red dotted outline). In addition to well documented anomaly profiles, we also identified characteristic debris profiles. Here
+every debris light curve has a symmetric ’U’ shaped profile, where the minima in magnitude lies approximately in the midpoint
+of the observation (C, D, G, orange dotted outlines). Units: Std. Mag: Standardised Magnitude rescaled between 0 and 1 (A.U).
+Time: Resampled to 128 observations (A.U).
+Table 4: Data modalities and their sources
+Data Modality
+Source
+Notes
+n
+Light curves
+MMT-9
+Real obs.
+227,697
+(10,600 sats)
+CASSANDRA
+Simulated.
+800
+(Anomalies)
+GMV GRIAL
+Simulated.
+22,009
+(Motions)
+sual inspection showed this length to not noticeably degrade
+light curves. Similarly, the anomaly detection (CASSANDRA)
+and motion prediction (GRIAL) fine-tuning datasets were pro-
+cessed to nsamples, 128, nlabels, where there were two labels for
+anomaly detection and six for motion prediction. For details on
+dataset sizes, please see Table 4, which described the datasets
+produced by the CASSANDRA simulator (anomaly detection
+fine-tuning), and GRIAL simulator (motion prediction fine-
+tuning).
+3.2
+Model Architecture
+Our Perceiver-VAE model archiecture is outlined in Equation
+1, and we briefly describe these steps below.
+We implemented Perceiver as outlined in [8], adapting the Py-
+torch implementation of [22], including Fourier positional en-
+coding (Figure 2, Equation 1). This encoding maps tempo-
+ral coordinates to higher-dimensional representations, enabling
+the attention mechanisms to capture sequential patterns in light
+curve data.
+To include Variational Autoencoder functionality we computed
+the mean and log variance of the learned latent vector z, using
+those values to sample the latent space probabilistically. This
+produces the reconstructed input, the Mean Squared Error loss
+(Equation 3, and KL Divergence (which constrains the latent
+space such that it is well ordered and stable, Equation 7). By

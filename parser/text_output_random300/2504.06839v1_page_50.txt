@@ -1,0 +1,175 @@
+Lemma B.5. The function f : T1
+2π × [0, +∞) × [−1, 1] × [−1, 1] →[0, +∞) in Definition 1.8 has the following
+properties:
+Z
+T1
+2π
+dθ
+Z ∞
+0
+dt
+Z 1
+−1
+dhf(θ, t, h|h′) = 1
+∀h′ ∈[−1, 1],
+(B.3.5)
+Z
+T1
+2π
+dθ
+Z ∞
+0
+dt
+Z 1
+−1
+dh′f(θ, t, h|h′) = 1
+∀h ∈[−1, 1],
+(B.3.6)
+f(θ, t, h|h′) ≤
+C
+t + 1
+∀(θ, t, h|h′) ∈T1
+2π × [0, +∞) × [−1, 1] × [−1, 1],
+(B.3.7)
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)f(θ + π −2 arcsin(h′′), t′, h′′|h′) ≤
+C
+t + 1.
+(B.3.8)
+Proof. Let us begin with the proof of (B.3.5). By definition of f, we have
+Z
+T1
+2π
+dθ
+Z ∞
+0
+dt
+Z 1
+−1
+dhf(θ, t, h|h′)
+=
+Z 2 arcsin(h′)−π
+2 arcsin(h′)−3π
+dθ
+Z ∞
+0
+dt
+Z 1
+−1
+dh∂h′′(θ, h′)
+∂θ
+Z t
+0
+dt′Q(t −t′, h|h′′(θ, h′))Q(t′, h′′(θ, h′)|h′)
+=
+Z ∞
+0
+dt
+Z 1
+−1
+dh
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)Q(t′, h′′|h′)
+=
+Z ∞
+0
+dt
+Z 1
+−1
+dhQ(2)(t, h|h′) = 1 by using (B.1.4).
+The proof of (B.3.6) is analogue, indeed
+Z
+T1
+2π
+dθ
+Z ∞
+0
+dt
+Z 1
+−1
+dh′f(θ, s, h|h′)
+=
+Z ∞
+0
+dt
+Z 1
+−1
+dh′
+Z 2 arcsin(h′)−π
+2 arcsin(h′)−3π
+dθ∂h′′(θ, h′)
+∂θ
+Z t
+0
+dt′Q(t −t′, h|h′′(θ, h′))Q(t′, h′′(θ, h′)|h′)
+=
+Z ∞
+0
+dt
+Z 1
+−1
+dh′
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)Q(t′, h′′|h′)
+=
+Z ∞
+0
+dt
+Z 1
+−1
+dh′Q(2)(t, h|h′) = 1 by using properties (B.1.2) and (B.1.4).
+As for (B.3.7), since f is obtained as
+f(θ, t, h|h′) =
+X
+ℓ∈Z
+∂h′′(θ + 2ℓπ, h′)
+∂θ
+Z t
+0
+dt′Q(t −t′, h|h′′(θ + 2ℓπ, h′))Q(t′, h′′(θ + 2ℓπ, h′)|h′),
+with
+h′′(θ, h′) = sin
+θ + 2π −2 arcsin(h′)
+2
+
+1[2 arcsin(h′)−3π,2 arcsin(h′)−π](θ),
+and since cos2 + sin2 = 1 and f is obtained by extending periodically its definition for
+θ ∈[2 arcsin(h′) −3π, 2 arcsin(h′) −π],
+where cos
+
+θ+2π−2 arcsin(h′)
+2
+
+≥0, we have
+f(θ, t, h|h′) =
+X
+ℓ∈Z
+p
+1 −h′′(θ + 2ℓπ, h′)2
+2
+Z t
+0
+dt′Q(t −t′, h|h′′(θ + 2ℓπ, h′))Q(t′, h′′(θ + 2ℓπ, h′)|h′).
+That is, it is sufficient to prove that there exists a constant C > 0 such that
+√
+1 −h′′2
+2
+Z t
+0
+dt′Q(t −t′, h|h′′)Q(t′, h′′|h′) ≤
+C
+t + 1
+∀h, h′, h′′ ∈[−1, 1].
+50

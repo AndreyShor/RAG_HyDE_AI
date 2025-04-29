@@ -1,0 +1,99 @@
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+t
+1
+2
+3
+4
+5
+6
+7
+Exact Solution
+Exact Solution
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+t
+1
+2
+3
+4
+5
+6
+7
+Prediction
+Prediction
+2
+3
+4
+5
+6
+7
+Figure 7: Comparison between exact solution and PINN solution.
+where
+𝑅(𝑡, 𝑥) = 𝑒−𝑢(𝑡,𝑥) + 1
+2𝑒−2𝑢(𝑡,𝑥).
+(3.7)
+The exact solution is:
+𝑢(𝑡, 𝑥) = log(𝑥+ 𝑡+ 2).
+(3.8)
+Figure 8 showcases a graphical comparison between the approximate solutions obtained using PINN and the exact
+solution for the model given by Eq. (3.5). The results demonstrate that the PINN-based approximation remains
+highly consistent with the exact solution, highlighting its stability. Moreover, Fig. 8 clearly depicts the increase in
+tumor cell density as time 𝑡progresses. A three-dimensional visualization comparing the PINN and exact solutions
+is presented in Fig. 9. Additionally, Table 3 provides the relative error E𝑟
+𝐺and training error E𝑇along with the
+chosen hyper-parameters. A zoom view of the plot at 𝑡= 0.5 reveals that the PINN prediction aligns more closely
+with the exact solution compared to the Fibonacci and Haar wavelet methods [38].
+𝑁int
+𝑁sb
+𝑁sb
+𝐾−1
+¯𝑑
+𝜆
+E𝑇
+E𝑟
+𝐺
+Training Time/s
+2048
+512
+512
+4
+20
+0.1
+7.1e-05
+2.1e-05
+4.9
+Table 3: Best-Performing PINN Configuration for Section 3.1.2.
+3.1.3
+1D nonlinear extended Fisher–Kolmogorov equation
+The EFK model in one dimension is expressed as follows:
+𝑢𝑡+ 𝛾𝑢𝑥𝑥𝑥𝑥−𝑘2𝑢𝑥𝑥+ 𝑢3 −𝑢= 𝑓,
+(3.9)
+𝑢(0, 𝑥) = sin(𝜋𝑥).
+(3.10)
+𝑢(𝑡, 0) = 0,
+𝑢(𝑡, 1) = 0.
+(3.11)
+18

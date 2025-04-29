@@ -1,0 +1,72 @@
+p(Ti = 1) = γ, bi will be used for security check (Ti = 1), else it will be used to generate final key (Ti = 0).
+The classical-quantum state describing his measurement result is
+N Ti
+bi|yi = |Ti⟩⟨Ti| ⊗1
+2Hyi |bi⟩⟨bi| Hyi.
+(2)
+Step 2 – (Public discussion and raw key construction) Alice and Bob must partially compare preparation
+and measurement results stored in classical registers CAi = (xi, ai) ∈CAi and CBi = (yi, bi, ti) ∈CBi,
+respectively. To do so, Bob publicly announces (yi, ti) (but not bi) so that Alice can inform Bob in which
+rounds xi = yi, so that Alice can define a raw key bit κAi = ai and Bob κBi = bi. When xi ̸= yi, both
+parties discard their results, defining null bits κAi = κBi = Null. Provided no errors occurred or no one
+manipulated the qubits sent, Bob has a string of bits identical to Alice’s: κB = κA = {κAi ̸= Null}i.
+Step 3 – (Error correction and Security Check) Both noise and/or intrusion by Eve will produce errors
+in Bob’s bit string κB. To correct them, Alice and Bob publicly communicate kEC for error correction
+(cascade, LDPC, parity check) on their key bits (Ti = 0). Let us say that is Bob to perform a security
+check on results with Ti = 1. For each result, he defines errors using (see Box 1)
+ci =
+
+
+
+
+
+Null
+if xi ̸= yi ∨Ti = 0, no useful check,
+1
+if xi = yi ∧Ti = 1, check passed,
+0
+else, check failed.
+(3)
+Then, Alice and Bob can estimate Q, the Quantum Bit Error Rate (QBER),
+Q =
+|{ci|ci = 0}i|
+|{ci|ci = 1 ∨ci = 0}i|.
+(4)
+A QBER below a predetermined threshold indicates minimal interference or eavesdropping, so Alice and
+Bob can agree under a certain level of coinfidence that they final keys {kAi = kBi}i|Ti=0 are correctly
+distributed and the technique for the step 3.4 discussed in the tutorial can be applied [18]. This refined
+key, now highly secure, is suitable for encrypting messages. We will see more formally in Sec. 4 how
+bound Eve’s knowledge about the key.
+Box 1: General QKD prepare-and-measure protocol
+The most general QKD prepare-and-measure protocol can be defined as [25]:
+– Data generation: for i = 1, . . . , n, where n is the number of rounds Alice prepares ψCn
+AQn = ψ⊗n
+CAQ
+and stores in a classical register (xi, ai) ∈CAi her i−th preparation label by ai and setting xi.
+She sequentially sends ψQi via a public channel to Bob; Bob chooses yi and measures Nyi =
+{Nbi|yi}dB
+bi=1 storing (yi, bi) ∈CBi at each round, where bi labels one of the dB possible outcomes.
+– Public discussion for the raw key generation: Alice and Bob publicly exchange information, i.e.
+PD : CAi × CBi 7→Ii with ιi = PD((xi, ai), (yi, bi)) such that Alice can compute the raw key
+κA = {κAi}i, with κAi = RK((xi, ai), ιi) ∈Si via RK : CAi × Ii 7→Si.
+– Post-processing: The players exchange a string κEC ∈{0, 1}λEC to define the final key kA = kB
+via
+1. Error correction:
+the players exchange κEC from CAi, CBi and Ii so that Bob compute
+κB = {κBi}i ∈S where κBi(κEC
+i
+, (yi, bi), ιi) ∈Si.
+2. Raw key validation: for εKV > 0 Alice chooses an universal hash function HASH : S 7→
+{0, 1}⌈−log εKV⌉and publishes a description of it and the value HASH(κA). Bob computes
+HASH(κB) and if HASH(κB) ̸= HASH(κA) the protocol aborts.
+3. Statistical security check: Bob sets EV : CBi × Ii × Si 7→C ∋qBi. Bob then computes
+qB = CA(freq(qB)), where CA is an affine function corresponding to collective attack bound
+qCA. If the required amount of single-round entropy generation is qB < qCA, he aborts the
+protocol.
+4. Privacy amplification: Alice and Bob respectively have κA, κB ∈{0, 1}m. Alice chooses a
+seed µ ∈{0, 1}m uniformly at random and publishes her choice. Alice and Bob independently
+compute ℓ−bit string kA = EXT(κA, µ) and kB = EXT(κB, µ) where EXT : {0, 1}m ×
+{0, 1}m 7→{0, 1}ℓis a quantum-proof strong extractor.
+Notably, in BB84 the no-cloning theorem [26] prohibits the duplication of quantum states (we rep-
+resent no-cloning in Fig. 1 as a not perfect copy process giving deformated spheres), ensuring that any
+5

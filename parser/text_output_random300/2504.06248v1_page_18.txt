@@ -1,0 +1,144 @@
+10
+The idea is to successively (1) apply the method of characteristics to the partial differential equation Lk[η] = 0 for
+some k ∈{−1, 0, 1}, (2) find the characteristic curves (invariants of Lk) and (3) use them as new coordinates for the
+next Lℓ[η] = 0 for some ℓ∈{−1, 0, 1} \ {k} and (4) repeat step (1) to (3) until the three partial differential equations
+are treated. The easiest way to proceed is to address the partial differential equations in this order: L−1[η] = 0,
+L0[η] = 0 and then, L1[η] = 0.
+First, we find the general form of the invariants of L−1. They obey the first-order partial differential equation
+L−1[η] =
+n
+X
+j=1
+∂η
+∂zj
+= 0 ,
+(S39)
+where η is a complex-valued function of TN. The characteristic equations are dza = dzj for some a ∈{1, ..., n} and
+for all j ∈{1, ..., n} \ {a}. Integrating yields N −1 functionally independent characteristic curves having the form
+zj −za = Cja ∈C.
+Let ∆j := zj −za. The change of coordinates from z1, ..., zd to za, (∆j)j̸=a gives ∂/∂zj = ∂/∂∆j for j ̸= a and
+L0[η] =
+n
+X
+j=1
+zj
+∂η
+∂zj
+= za
+∂η
+∂za
++
+X
+j̸=a
+(∆j + za) ∂η
+∂∆j
+= zaL−1[η] +
+X
+j̸=a
+∆j
+∂η
+∂∆j
+=
+X
+j̸=a
+∆j
+∂η
+∂∆j
+= 0 ,
+(S40)
+because L−1[η] = 0. Hence, the characteristic equations and curves are respectively d∆b/∆b = d∆j/∆j and ∆j/∆b =
+C′
+jb ∈C for some b ∈{1, ..., n} \ {a} and for all j ∈{1, ..., n} \ {a, b}.
+Applying the same change of coordinates to the partial differential equation for L1 gives
+L1[η] =
+n
+X
+j=1
+z2
+j
+∂η
+∂zj
+= z2
+aL−1[η] + 2za
+X
+j̸=a
+∆j
+∂η
+∂∆j
++
+X
+j̸=a
+∆2
+j
+∂η
+∂∆j
+= 0 .
+(S41)
+But again, L−1[η] = 0 and P
+j̸=a ∆j
+∂η
+∂∆j = L0[η] −L−1[η] = 0. Therefore, Eq. (S41) is simplified to
+X
+j̸=a
+∆2
+j
+∂η
+∂∆j
+= 0 .
+(S42)
+With the characteristic curves from Eq. (S40), define ρj = ∆j/∆b and the new coordinates za, ∆b, (ρj)j̸=a,b. The
+partial derivatives ∂/∂∆j for j ̸= a, d become ∆−1
+d ∂/∂ρj and making the change of coordinates for Eq. (S42), one
+obtains
+∆b
+∂η
+∂∆b
++
+X
+j̸=a,b
+ρ2
+j
+∂η
+∂ρj
+= 0 .
+Adding 0 = P
+j̸=a,b ∆j∂η/∂∆j −P
+j̸=a,b ∆j∂η/∂∆j yields
+X
+j̸=a
+∆j
+∂η
+∂∆j
+−
+X
+j̸=a,b
+(∆bρj)
+ 1
+∆b
+∂η
+∂ρj
+
++
+X
+j̸=a,b
+ρ2
+j
+∂η
+∂ρj
+= 0 ,
+but Eq. (S40) implies that the first term vanishes, which gives
+X
+j̸=a,b
+ρj(ρj −1) ∂η
+∂ρj
+= 0 .
+For all c, d ̸= a, b, the method of characteristics leads to
+dρc
+ρc(ρc −1) =
+dρd
+ρd(ρd −1) ,
+and the characteristic curves
+ρc(1 −ρd)
+ρd(1 −ρc) = C′′
+cd .
+(S43)

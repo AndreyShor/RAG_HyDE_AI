@@ -1,0 +1,163 @@
+B
+Properties of some functions deriving from the kernel Q.
+B.1
+Properties of Q and Q(n).
+First we recall some basic properties of Q.
+Behavior of Q for large s.
+For fixed h, h′ ∈(−1, 1), Q is compactly supported in s. But we need a bound not
+depending on h, h′, and therefore we assert that there exists a constant C > 0 such that
+Q(s, h|h′) ≤
+C
+s + 1
+∀s ∈[0, +∞), h, h′ ∈[−1, 1].
+(B.1.1)
+As pointed out in [7, 15], this can be easily derived from Definition 1.1 because, if |h′| ≤h then
+• if h −h′ ≤1
+2, then
+1
+1+h′ =
+1
+1 + h
+| {z }
+≥1
+−(h −h′)
+|
+{z
+}
+≤1
+2
+≤2 and therefore
+Q(s, h|h′) = 0
+∀s ≥2, h > 0, h′ ∈[h −1
+2, h],
+• instead if h −h′ ≥1
+2 then, since
+1
+1+h ≤1, ∀s ≥1
+Q(s, h|h′) = 6
+π2
+1
+s −(1 + h′)
+h −h′
+≤6
+π2
+2
+s.
+Since Q is also bounded, this proves (B.1.1) for |h′| ≤h, and thanks to the symmetries of Q this exhausts all the other
+cases and proves (B.1.1).
+Now we study the properties of Q(n), from Definition 1.5, which we collect in the following Lemma.
+Lemma B.1. Q(n) has the following three properties:
+Q(n)(s, h|h′)
+=
+Q(n)(s, h′|h);
+(B.1.2)
+Q(n)(s, h|h′)
+=
+Q(n)(s, −h| −h′);
+(B.1.3)
+Z ∞
+0
+ds
+Z 1
+−1
+dhQ(n)(s, h|h′)
+=
+1 and in particular E(n) ≤1.
+(B.1.4)
+Proof. To begin with, we prove (B.1.2). For this purpose, it is sufficient to observe that, if s0 := s and sn := 0, since
+Q is symmetric we can rewrite Q(n) as
+Q(n)(s, h0|hn)
+=
+Z
+s0>s1>···>sn−1>0
+n−1
+Y
+i=1
+dsi
+Z
+[−1,1]n−1
+n−1
+Y
+i=1
+dhi
+n−1
+Y
+i=0
+Q(si −si+1, hi|hi+1)
+=
+Z
+s0>s1>···>sn−1>0
+n−1
+Y
+i=1
+dsi
+Z
+[−1,1]n−1
+n−1
+Y
+i=1
+dhi
+n−1
+Y
+i=0
+Q(si −si+1, hi+1|hi),
+and if we change variables τi := s −sn−i, ki = hn−i we get
+Q(n)(s, h0|hn)
+=
+Z
+τ0>τ1>···>τn−1>0
+n−1
+Y
+i=1
+dτi
+Z
+[−1,1]n−1
+n−1
+Y
+i=1
+dki
+n−1
+Y
+i=0
+Q(τn−1−i −τn−i, kn−i−1|kn−i)
+|
+{z
+}
+=Qn−1
+i=0 Q(τi−τi+1,ki|ki+1)
+= Q(n)(s, hn|h0).
+Then, (B.1.3) can be proven inductively on n, indeed by changing variables h′′ 7→−h′′ in Definition 1.5, we get
+Q(n)(s, −h| −h′)
+=
+Z s
+0
+ds′
+Z 1
+−1
+dh′′Q(s −s′, −h|h′′)Q(n−1)(s′, h′′| −h′)
+=
+Z s
+0
+ds′
+Z 1
+−1
+dh′′ Q(s −s′, −h| −h′′)
+|
+{z
+}
+=Q(s−s′,h|h′′)
+Q(n−1)(s′, −h′′| −h′)
+|
+{z
+}
+Q(n−1)(s′,h′′|h′) by inductive hypothesis
+=
+Z s
+0
+ds′
+Z 1
+−1
+dh′′Q(s −s′, h|h′′)Q(n−1)(s′, h′′|h′)
+=
+Q(n)(s, h|h′) by Definition 1.5.
+44

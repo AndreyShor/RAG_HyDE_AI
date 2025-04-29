@@ -1,0 +1,36 @@
+positives by the sum of true positives and false negatives. The F1 score, a harmonic mean of
+precision and recall, balances the trade-off between these two metrics. Additionally, the Area
+Under the Receiver Operating Characteristic curve (ROC AUC) assesses the model’s ability to
+discriminate between positive and negative instances across different probability thresholds. A
+higher ROC AUC signifies superior model performance, particularly useful when evaluating the
+discriminatory power of the model.The Cohen’s Kappa coefficient is a statistic that measures
+the level of agreement between two raters beyond that which would be expected by chance[44].
+The table 1 below shows the performance of classical data and quantum data embedding with
+an 80:20 train-test split ratio.
+The experimental results indicate that different data encoding techniques, including Classical,
+IQP, Displacement, and Squeezing, exhibit varying levels of performance across multiple clas-
+sifiers and PCA dimensions. The accuracy of Logistic Regression improves as the number of
+PCA components increases, reaching a peak of 79.01% for PCA=23. Similarly, k-NN and SVM
+(Linear and Polynomial) show an increasing trend in performance with higher PCA components.
+IQP encoding maintains an accuracy of 49.33% across all models and PCA settings. This suggests
+that the method either does not effectively capture the necessary data structure or introduces
+excessive noise that affects classification performance. In contrast, Displacement and Squeezing
+encodings, which fall under continuous-variable quantum encoding, demonstrate relatively bet-
+ter performance. Logistic Regression with Squeezing achieves a maximum accuracy of 73.26%
+for PCA=23, showing an improvement over IQP. Similarly, k-NN with Displacement encoding
+attains an accuracy of 71.12% for PCA=23. A similar trend is observed in SVM models, where
+Displacement and Squeezing encodings show marginal improvements with increasing PCA com-
+ponents.
+The impact of PCA components is evident, as increasing PCA dimensions enhances classifi-
+cation performance for all encoding techniques. PCA=23 consistently provides the best results,
+demonstrating the importance of feature dimensionality reduction in improving predictive accu-
+racy. Despite these improvements, quantum encodings tend to have significantly higher running
+times. The computational cost is particularly high in models such as SVM with Displacement
+encoding, especially when using PCA=23. In contrast, Logistic Regression with IQP encoding
+exhibits low running times but does not deliver comparable accuracy, indicating that the method
+may require further optimization.
+The results suggest that different encoding strategies influence classification outcomes in dis-
+tinct ways. While some quantum encodings show improvements with increasing PCA compo-
+nents, computational efficiency remains a key consideration. Further exploration is required to
+optimize these techniques for enhanced predictive performance and practical feasibility.
+11

@@ -1,0 +1,80 @@
+Gaussian toolbox
+83
+≤
+Z
+Bb
+1{M0,b(Υb,g1)≤1−δ}
+|Dg1(1/2)|2
+1{M0,b(Υb,g1)−Υb,g1(y)∈[1−δ,1+δ]}dy ,
+where we also used the fact that min{|Dg1(1)|, |Dg2(1)|} ≥|Dg1(1/2)|. Therefore, proceeding
+similarly to the above, we obtain that
+(B.4) ≲∥g1 −g2∥1/8
+∞h(z)F∗(g1) .
+To conclude, it remains to handle (B.5). For this term, it suffices to show that Ez[∆(g1, g2)4]1/4 ≲
+∥g1 −g2∥1/8
+∞, which follows from some elementary computations.
+Appendix C
+Gaussian toolbox
+We collect here some well-known results on Gaussian fields. In all the subsequent lemmas, we assume
+D ⊆Rd to be a bounded domain. We begin with the well known Cameron–Martin theorem [CM44].
+Lemma C.1. Consider an almost surely continuous centred Gaussian field (X(x))x∈D and a real-
+valued random variable Z belonging to the L2 closure of the vector space spanned by {X(x)}x∈D.
+Let F : C(D) →R be a bounded measurable functional. Then the following equality holds
+E
+h
+eZ−E[Z2]
+2 F (X(·))
+i
+= E[F(X(·) + E[X(·)Z])] .
+We have the following standard concentration inequality for Gaussian fields which is known as
+Borell-TIS inequality. We refer to [AT07, Theorem 2.1.1] for a proof.
+Lemma C.2. Consider an almost surely continuous centred Gaussian field (X(x))x∈D. Then it holds
+that
+P
+sup
+x∈D
+X(x) −E
+
+sup
+x∈D
+X(x)
+ > t
+
+≤2e
+−t2
+2σ2
+D ,
+for all t ≥0, where σ2
+D := supx∈D E[X(x)2].
+We now state Fernique’s majorizing criterion, and we refer to [AT07, Theorem 1.3.3] for a proof.
+Lemma C.3. Consider an almost surely continuous centred Gaussian field (X(x))x∈D. Consider the
+pseudometric on D defined as follows
+dX(x, y) :=
+p
+E[|X(x) −X(y)|2],
+∀x, y ∈D .
+Then there exists a universal constant C such that for any probability measure σ on D,
+E
+
+sup
+x∈D
+X(x)
+
+< C sup
+x∈D
+Z ∞
+0
+√
+−log σ(BX(x, r))dr ,
+where BX(x, r)
+def= {y ∈D : dX(x, y) < r}.
+References
+[Aco14]
+J. Acosta. Tightness of the recentered maximum of log-correlated Gaussian fields. Electron. J.
+Probab. 19, (2014), no. 90, 25. doi:10.1214/EJP.v19-3170.
+[AT07]
+R. J. Adler and J. E. Taylor. Random fields and geometry. Springer Monographs in Mathematics.
+Springer, New York, 2007, xviii+448. doi:10.1007/978-0-387-48116-6.
+[Ber17]
+N. Berestycki. An elementary approach to Gaussian multiplicative chaos. Electron. Commun.
+Probab. 22, (2017), Paper No. 27, 12. doi:10.1214/17-ECP58.

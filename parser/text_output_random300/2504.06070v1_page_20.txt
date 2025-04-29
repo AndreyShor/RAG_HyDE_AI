@@ -1,0 +1,49 @@
+Published as a conference paper at ICLR 2025
+Figure S5: Training loss versus training epochs (left), loss of validation versus training epochs
+(middle) and Temporal loss versus training epochs (right).
+Table S4: Correlation between Predicted and True Latent Physical Quantities.
+Latent Physical Quantities
+Correlation (PINP)
+Correlation (HelmFluid)
+ux
+0.9017
+0.8891
+uy
+0.9109
+0.8997
+p
+0.8984
+-
+constraint reaches a value of zero, demonstrating that we can effectively bound the temporal loss in
+||c(x, t + 1) −c(x, t)||2
+2, preventing it from degrading into:
+LTemporal(x, t) = ||c(x, t′) −c(x, t)||2
+2.
+(S9)
+As shown in Figure S5 (middle), the test metrics of validation decrease rapidly with the increase in
+training epochs and then level off. In a sense, the physical constraints and temporal constraints act
+as a form of regularization, providing some resistance to overfitting.
+D
+DISCUSSION ON LATENT PHYSICAL QUANTITIES
+In this section, we will compare our estimated latent physical quantities with the baselines and
+provide a detailed explanation.
+Since the HelmFluid model is capable of estimating the velocity field (but not the pressure field), we
+considered it a relevant comparison for our method. The comparative results of correlation on the
+estimated latent physical quantities are shown in Table S4. We can see that our estimation subpasses
+that of HelmFluid.
+Additionally, it’s important to note that due to the unknown physical scale (since only the grayscale
+video sequences of the concentration field are provided as the training data), our estimated velocity
+fields and the true values have a scaling relationship, expressed as follows:
+ˆu = αu,
+(S10)
+where α is a scaling constant related to the actual physical scale. When only concentration videos are
+available, we cannot determine the exact physical scale of the region represented in the video (e.g.,
+the scale may lie in any range such as from 10 cm to 1 m in the smoke dataset). This uncertainty
+introduces a constant factor difference between the predicted and true values.
+Thus, directly computing the MSE might be inappropriate. To address this, we considered two
+methods for calibration:
+- Case 1: Using the true initial velocity values (assumed known a priori) to compute α.
+- Case 2: Using just one true data point to estimate α.
+We then apply the computed α to correct the estimated results (note that HelmFluid also requires
+calibration). The calibrated MSE values are shown in Table S5.
+20

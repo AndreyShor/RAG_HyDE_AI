@@ -1,0 +1,107 @@
+Non-Hermitian Numerical Renormalization Group:
+Solution of the non-Hermitian Kondo model
+Phillip C. Burke and Andrew K. Mitchell
+School of Physics, University College Dublin, Belfield, Dublin 4, Ireland and
+Centre for Quantum Engineering, Science, and Technology, University College Dublin, Dublin 4, Ireland
+Non-Hermitian (NH) Hamiltonians describe open quantum systems, nonequilibrium dynamics, and
+dissipative processes. Although a rich range of single-particle NH physics has been uncovered, many-
+body phenomena in strongly correlated NH systems have been far less well studied. The Kondo
+effect, an important paradigm for strong correlation physics, has recently been considered in the NH
+setting. Here we develop a NH generalization of the numerical renormalization group (NRG) and
+use it to solve the NH Kondo model. Our non-perturbative solution applies beyond weak coupling,
+and we uncover a nontrivial phase diagram. The method is showcased by application to the NH
+pseudogap Kondo model, which we show supports a completely novel phase with a genuine NH
+stable fixed point and complex eigenspectrum. Our NH-NRG code, which can be used in regimes
+and for models inaccessible to, e.g., perturbative scaling and Bethe ansatz, is provided open source.
+The past two decades have seen immense interest in
+open quantum systems, with non-Hermitian (NH) Hamil-
+tonians describing the effective dynamics of dissipative
+systems playing a key role [1–5].
+NH Hamiltonians
+present certain unique challenges, such as dealing with
+complex eigenvalues, non-orthonormal eigenvectors [6, 7],
+and exceptional points [8–18] – singularities in parame-
+ter space at which eigenvalues and eigenstates coalesce.
+NH systems with PT -symmetry [19–21] are somewhat
+simpler, having real eigenvalues; but many systems of in-
+terest do not fall into this class. Much attention has, to
+date, focused on single-particle NH systems [3, 4], while
+many-body counterparts remain far less well explored.
+Although recent work has begun to address strongly-
+correlated NH physics, non-perturbative numerical meth-
+ods beyond exact diagonalization remain limited [22, 23].
+The Kondo model [24] is a classic paradigm for strong-
+correlation physics in the standard Hermitian scenario, so
+the solution of its NH generalizations is naturally of im-
+portance for understanding NH physics in the many-body
+context. Furthermore, as shown in Ref. [25], ultracold
+atom systems undergoing inelastic scattering with two-
+body losses can be described by an effective NH Kondo
+model. These factors have stimulated considerable inter-
+est in a range of NH quantum impurity models [25–35].
+The non-Hermitian Kondo model reads,
+ˆH = ˆHbath + J ˆSi · ˆS0 ,
+(1)
+where J = JR −iJI is taken to be complex, ˆSi is a
+spin- 1
+2 operator for the impurity, ˆHbath = P
+k,σ ϵkc†
+kσckσ
+describes a continuum bath of non-interacting conduc-
+tion electrons labeled by spin σ =↑, ↓and momentum
+k, and ˆS0 =
+1
+2
+P
+σ,σ′ c†
+0στ σ,σ′c0σ′ is the local conduc-
+tion electron spin density at the impurity position (here
+c0σ = P
+k αkckσ and τ is the Pauli vector). The bath is
+characterized by its density of states (DOS) at the im-
+purity, ρ(ω). For a standard metallic flat band, we take
+ρ(ω) = ρ0Θ(D −|ω|).
+Eq. (1) does not possess PT -
+symmetry, so generically has a complex eigenspectrum.
+The standard Hermitian Kondo model is recovered for
+JI = 0. For antiferromagnetic coupling JR > 0, the im-
+purity spin is dynamically screened by surrounding con-
+duction electrons via the Kondo effect [24] at low tem-
+peratures T ≪TK, with TK ∼De−1/ρ0JR the Kondo
+temperature. The physics is non-perturbative and non-
+Markovian: even for small bare JR, the impurity becomes
+strongly coupled to the bath at low T by formation of a
+many-body Kondo singlet state inside a large entangle-
+ment ‘cloud’ [36–38]. The Kondo effect can be under-
+stood in the renormalization group (RG) framework [39]
+as a flow from the unstable local moment (LM) fixed
+point, corresponding to a free spin on the impurity de-
+coupled from the bath, to the stable strong-coupling (SC)
+fixed point in which the impurity is bound up in the
+Kondo singlet. A full, non-perturbative solution of the
+Kondo problem is provided by Wilson’s numerical renor-
+malization group (NRG) technique [40, 41], which can
+also be applied to generalized quantum impurity prob-
+lems, and works with arbitrary bath density of states.
+The Hermitian Kondo model in the wide flat-band limit
+can also be solved exactly by Bethe ansatz [42].
+The NH Kondo model was studied in Ref. [25] using
+a combination of perturbative scaling and Bethe ansatz,
+which provides a rather complete picture of the weak-
+coupling physics up to |J|/D ≲0.25, beyond which the
+methods break down.
+It was shown that sufficiently
+strong dissipation (tuned by increasing JI) can produce
+a quantum phase transition between the standard Kondo
+SC phase and an unscreened LM phase, via a mechanism
+analogous to the continuous quantum Zeno effect [43]. A
+reversion of the RG flow was observed in the LM phase,
+which violates the g-theorem for Hermitian systems [44].
+The low-energy fixed points were found to be real, mean-
+ing that the metallic NH Kondo model has an emergent
+Hermiticity.
+However, this scenario has recently been
+challenged, with the alternative Bethe ansatz results of
+Ref. [28] appearing to show a different phase diagram,
+with a new phase intervening between SC and LM.
+arXiv:2504.07019v1  [cond-mat.str-el]  9 Apr 2025

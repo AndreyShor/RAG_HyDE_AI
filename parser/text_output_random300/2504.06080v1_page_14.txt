@@ -1,0 +1,72 @@
+ˆ∆
+ω
+ψ
+ψ
+=⇒
+ω
+φ
+c
+⊗
+φ
+ψ
+ψ
+=⇒
+ω
+φ
+c
+ψ
+ψ
+Figure 3: Schematic decomposition of the b∆-vertex coupled to an antighost source ω into
+two normal three-point vertices φcc and φψψ. These form a reducible tree-level diagram
+connected by an auxiliary scalar ﬁeld φ with unit propagator to reproduce the correct
+Feynman rule of b∆.
+calculation while allowing for suitable generalizations. Such a successful implementation
+around a FeynArts-model ﬁle will be discussed here brieﬂy.
+As a fermionic object with ghost number −1, the tree-level b∆-operator is very diﬀerent
+from a typical Lagrangian term, yet is eﬀectively treated as such in the logic of FeynArts.
+In the quantum action principle (cf. Eq. (3.4)) b∆is understood as a one-time insertion
+into the action which can be deﬁned by introducing an additional external source which
+couples to the operator and renders it a standard Lagrangian term,
+b∆· Γφ1...φn = δΓφ1...φn
+δω∆
+
+ω∆=0
+,
+(3.20)
+where ω∆denotes an auxiliary antighost.
+Hence it would be suitable to realize the
+breaking vertex as ω∆cψψ. Since however in FeynArts handling of such 4-fermion vertices
+can be subtle, it is preferable to split them into two 3-point vertices by means of an
+auxiliary scalar ﬁeld φ with unit propagator, as shown in Fig. 3. On the Lagrangian
+level this can be schematically understood via eliminating an auxiliary scalar ﬁeld by its
+equations of motion,
+Lφ−aux = −φ2
+2 + ω∆caφa + gT a
+Rij
+ 
+ψi
+←
+b/∂PRψj + ψi
+→
+b/∂PLψj
+!
+φa.
+(3.21)
+The Feynman rules of the 3-point vertex insertions ω∆cφ and ψψφ are adjusted in such
+a way that the reducible tree-level diagram rightmost in Fig. 3 and formed from these
+vertices reproduces the familiar Feynman rule of Eq. (2.16).
+For multi-loop calculations of b∆-Green functions thus implemented there will be both
+1PI reducible and irreducible diagrams, the former coming from diagrams where the
+original ghost ca within b∆and thus the ghost of the left vertex in the middle of Fig. 3 is
+external to the diagram. These include all diagrams of the Abelian model. The diagram
+generation has to be furnished with additional selection rules such that only sensible
+reducible diagrams are considered.
+The external sources for BRST transformations are external ﬁelds with antighost
+number and wrong statistics; hence their implementation in FeynArts employs similar
+decompositions. At ﬁrst, the external sources are eﬀectively treated as composite ﬁelds
+of conventional types available in FeynArts, e.g.
+ρaµ −→ωa
+ρAµ
+Rjβ −→ωRχjβ.
+(3.22)
+13

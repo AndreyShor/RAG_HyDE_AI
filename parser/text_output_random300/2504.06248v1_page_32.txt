@@ -1,0 +1,113 @@
+24
+A.
+Proof of the Lemma: Infinitesimal criterion of symmetry under Koopman’s perspective
+To use Thm. S23 in our context, we first adapt Defs. 2.30 and 2.70 of Ref. [60] for systems of first-order ODEs.
+Definition S25. Let ∆i(t, u, ˙u) = 0 for i ∈{1, ..., N} be a system of first-order ordinary differential equations. The
+system is of maximal rank if the N × (2N + 1) Jacobian matrix of ∆= (∆1, ..., ∆N),
+J∆(t, u, ˙u) =
+
+
+
+
+∂∆1(t,u, ˙u)
+∂t
+∂∆1(t,u, ˙u)
+∂u1
+· · ·
+∂∆1(t,u, ˙u)
+∂uN
+∂∆1(t,u, ˙u)
+∂˙u1
+· · ·
+∂∆1(t,u, ˙u)
+∂˙uN
+...
+...
+...
+...
+...
+...
+...
+∂∆N(t,u, ˙u)
+∂t
+∂∆N(t,u, ˙u)
+∂u1
+· · ·
+∂∆N(t,u, ˙u)
+∂uN
+∂∆N(t,u, ˙u)
+∂˙u1
+· · ·
+∂∆N(t,u, ˙u)
+∂˙uN
+
+
+
+,
+is of rank N for all (t, u, ˙u) such that ∆(t, u, ˙u) = 0.
+Definition S26. A system of N first-order differential equations, ∆(t, u, ˙u) = 0 is locally solvable at the point
+(t0, u0, ˙u0) ∈G∆= {(t, u, ˙u) | ∆(t, u, ˙u) = 0} if there exists a smooth solution u = y(t) of the system, defined for t
+in a neighborhood of t0, which has the prescribed “initial condition” ˙u0 = pr(1) y(t0). The system is locally solvable
+if it is locally solvable at every point of G∆. A system is nondegenerate if at every point (t0, u0, ˙u0) ∈G∆it is both
+locally solvable and of maximal rank.
+Consider the system of first-order ordinary differential equations (henceforth, called the “dynamics”)
+dyi
+dt = Fi(t, y1, ..., yN) ,
+i ∈{1, ..., N} ,
+(S80)
+with initial condition yi(t0) = (u0)i for all i, t0 < t, and F1, ..., FN are smooth (C ∞) in their arguments. Note that
+we could relax the differentiability requirements in principle, but we use smooth functions for simplicity and to be
+coherent with the approach and the results in Ref. [60, see p.4 and p.96]. Let us define the smooth functions ∆i for
+all i ∈{1, ..., N} on the 1-jet space related to the i-th equation in the dynamics such that
+∆i(t, u, ˙u) = ˙ui −Fi(t, u) ,
+(S81)
+where u = (u1, ..., uN) ∈RN and ˙u = ( ˙u1, ..., ˙uN) ∈RN are coordinates with t ∈T for the jet space. In such case,
+the next lemma shows that there is no problem with the system regarding the condition of maximal rank and local
+solvability.
+Lemma S7. The dynamics in Eq. (S80) is nondegenerate.
+Proof. The N × (2N + 1) Jacobian matrix of ∆= (∆1, ..., ∆N) where ∆i is given in Eq. (S81) is
+J∆(t, u, ˙u) =
+
+
+
+
+∂F1(t,u)
+∂t
+−∂F1(t,u)
+∂u1
+... −∂F1(t,u)
+∂uN
+1 ... 0
+...
+...
+...
+...
+... ... ...
+∂FN(t,u)
+∂t
+−∂FN(t,u)
+∂u1
+... −∂FN(t,u)
+∂uN
+0 ... 1
+
+
+
+
+and is of rank N with respect to all (t, u, ˙u), because of the N ×N identity submatrix in the last columns of J∆(t, u, ˙u).
+The dynamics is thus of maximal rank.
+Moreover, by assumption, the vector field in Eq. (S80) is smooth. Thus, there exists a unique smooth solution
+y(t) = u starting at y(t0) = u0 by Lem. 2.3 of Ref. [90].
+The existence of the solution and the form of the
+differential equations imply that ˙y(t0) = F (t0, y(t0)) = F (t0, u0) =: ˙u0. Such solution exists for any initial condition
+(u0, ˙u0) = pr(1) y(t0) ∈G∆and the system is therefore locally solvable and altogether, nondegenerate.
+Consider the set O of time-dependent smooth observables f : S ⊂T × U →R. The Koopman operator for a
+non-autonomous dynamical system described by Eq. (S80) is Uφ : T × T × O →O with Uφt0,t[f] := Uφ(t0, t, f) and
+it acts on an observable f such that
+Uφt0,t[f] = f ◦φt0,t
+with the properties Uφt0,t0 = id and Uφa,t+a◦Uφt0,a = Uφt0,t+a [91]. There is a family (Ut0)t0∈T of Koopman generators
+Ut0[f](u0) = df(t, y(t))
+dt
+
+t=t0
+,

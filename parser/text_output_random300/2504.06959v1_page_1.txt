@@ -1,0 +1,111 @@
+1
+Temporal dynamics of GHz acoustic waves in chipscale phononic
+integrated circuits
+A. Fahad Malik†, Mahmut Bicer†, Krishna C. Balram
+Abstract—Phononic
+integrated
+circuits,
+which
+manipulate
+GHz-frequency acoustic fields in µm-scale waveguides, provide
+new degrees of freedom for routing and manipulation of mi-
+crowaves in deeply sub-wavelength geometries with associated
+implications for chipscale sensing and signal processing. The
+combination of low propagation loss, long interaction lengths
+and slow speed of sound put together with the large measurement
+bandwidths and high frequency resolution available from modern
+vector network analyzers (VNA) makes it feasible to visualize
+the temporal dynamics of propagating acoustic fields in these
+devices and see the device in action. Two representative examples
+we discuss here are pulse circulation and ringdown in an acoustic
+microring resonator, and the observation of (parasitic) multipath
+interference effects in waveguide resonator geometries. In the
+absence of fast 3D acoustic field imaging modalities, such time
+domain reflectometry based methods provide the best alterna-
+tive for mapping interface reflection and loss, which becomes
+increasingly critical as these devices start to scale in complexity.
+Index Terms—Piezoelectric devices, surface acoustic waves,
+bulk acoustic wave, waveguides, guided modes, Lamb waves,
+semiconductors, ring resonator, cavity, dispersion, reflectometry,
+time domain, Fourier analysis
+I. INTRODUCTION
+P
+Iezoelectric phononic integrated circuits (PnICs) [1], plat-
+forms that can route GHz-frequency acoustic fields in
+wavelength (µm-scale) waveguide geometries, are currently
+being actively explored across a variety of material platforms
+[2]–[4] for applications in sensing and signal processing. Like
+their well-established integrated photonics counterparts [5],
+PnICs provide low-loss [6] waveguiding (≈3.6 dB mm−1
+at 3.4 GHz) with strong confinement and long interaction
+lengths in chipscale platforms. Given that the acoustic field
+is generated from a microwave signal in piezoelectric de-
+vices, PnIC platforms provide new degrees of freedom for
+manipulating microwaves in chipscale platforms at the deeply
+subwavelength-scale (acoustic wavelength (λa) ≈µm, RF
+wavelength ≈cm). An illustrative example from our previous
+This work was supported in part by the UK’s Engineering and Physical
+Sciences Research Council (EP/V005286/1, EP/N015126/1), the European
+Research Council (SBS 3-5, 758843) and the UKRI frontier research guarantee
+(EP/Z000688/1).
+A.F. Malik gratefully acknowledges funding from the Commonwealth
+Scholarship Commission and the Foreign, Commonwealth and Development
+Office in the UK. All views expressed here are those of the author and not
+the funding body.
+M. Bicer, A.F. Malik, and K.C. Balram are with the Quantum Engineering
+Technology Labs and the School of Electrical, Electronic and Mechanical
+Engineering, University of Bristol, Woodland Road, Bristol BS8 1UB, UK
+† Contributed Equally
+email: fahad.malik@bristol.ac.uk
+email: mahmut.bicer@bristol.ac.uk
+email: krishna.coimbatorebalram@bristol.ac.uk
+work [6] is the demonstration of compact spiral delay lines
+that achieve on-chip signal delays of ≈2.5 µs, corresponding
+to a free space delay of ≈750 m, while maintaining an on-chip
+footprint < 0.25 mm2.
+A large part of the promise of such chipscale acous-
+tics platform, like with their microelectronic and photonic
+counterparts, derives from the prospect of cascading multiple
+elements together and getting the field (either electrons, light,
+or microwaves via sound) to flow through them in a controlled
+sequence to realize complex functionality. A simple example
+would be to go beyond the single acoustic microring resonator
+[6] towards coupled ring-resonator [7] geometries with a view
+towards improving spectral filtering. But cascading elements
+brings with it the challenges of designing (multiple) interface
+transitions to minimize reflections and avoid mode conversion,
+as these parasitic reflections in a low-loss waveguide platform
+can lead to a variety of multipath interference effects, as
+we demonstrate below. These stray fields can cause spectral
+distortion, with the classic example being triplet transits in
+traditional surface acoustic wave (SAW) devices [8].
+In the absence of (fast) 3D field imaging modalities that can
+map acoustic fields with nm-scale depth resolution [9], time
+domain reflectometry (TDR) methods [10] provide the best
+alternative for mapping propagating acoustic fields in guided
+wave geometries. While TDR methods have long been used
+in the microwave domain [11], they are particularly suited to
+studying acoustic fields in PnICs. The combination of low
+propagation loss, long interaction lengths and slow speed
+of sound combined with the large measurement bandwidths
+and frequency resolution of modern VNAs makes it feasible
+to visualize the temporal dynamics of propagating GHz-
+frequency acoustic fields in these devices in exquisite detail, as
+we discuss below in Section III. In a way, the PnIC platform
+provides a nice playground for acoustic dynamics, especially
+multipath interference effects, and the VNA has sufficient
+sensitivity for us to resolve and identify these events. This
+sensitivity is the main advantage of using the time domain
+transform of VNA spectral data over doing the experiments in
+the time domain [6], as insertion loss [1] is currently the main
+bottleneck in these chipscale devices and limits the achievable
+signal-to-noise ratio severely in practice.
+More broadly, visualizing the temporal dynamics allows
+us to see the device in action. Although PnICs have been
+developed in analogy with their photonic counterparts, the
+slower speed of sound coupled with direct access to the phase
+information in a VNA makes studying temporal dynamics in
+this platform much more accessible and provides additional
+insights that cannot be directly inferred from the spectral do-
+main. Here, we use the side-coupled waveguide ring resonator
+arXiv:2504.06959v1  [physics.app-ph]  9 Apr 2025

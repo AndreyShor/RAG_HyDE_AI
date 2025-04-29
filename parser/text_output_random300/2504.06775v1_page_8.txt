@@ -1,0 +1,56 @@
+8
+FIG. 5.
+Impact of ancilla qubit error rate on the mean final training accuracy, under the gate noise model with physical
+qubit error probability ranging from p = 0.001 −0.01. Each subplot displays the variation in mean final training accuracy with
+the number of rounds of syndrome extraction, for a specific combination of ancilla and physical qubit error probabilities. The
+ancilla error rates are expressed as a fraction of the physical error rates, denoted by the fraction fanc. The standard deviation
+in the meaning final training accuracies, each calculated from 10 training runs, is shown by the shaded regions.
+at a lower final training accuracy than the environmental
+noise model, which reflects the difference in error levels
+between the two models.
+Given the greater frequency
+of errors produced and the higher error rate for 2-qubit
+gates under the gate model, it is unsurprising that the
+level of noise in the physical qubits, both detectable and
+undetectable, is greater in the gate noise model than in
+the environmental noise model.
+Our results for both noise models motivate the defini-
+tion of a threshold Pauli Error Rate for ancilla qubits,
+such that when the error rate is larger than this thresh-
+old, error correction may not be effective - namely, the
+addition of more syndrome extractions may not improve
+training, there is high variability in final training accu-
+racy, and the maximum mean final training accuracy is
+considerably lower than 1.0 for the system. In determin-
+ing the threshold Pauli Error Rate for our system, we
+excluded ancilla error rates that produce a plateau at
+a final training accuracy of less than 0.90, even if high
+variability is not an issue. Taking into account all these
+requirements, we arrive at a threshold Pauli Error Rate of
+p = 0.003 for the gate noise model, and p = 0.004 for the
+environmental depolarising noise model. For comparison,
+the current lowest single-qubit gate error rate exhibited
+by a NISQ device is 0.15% [59], meaning that we may be
+able to run our simple VQC with the [[4,2,2]] code on the
+least noisy NISQ devices under special circumstances (for
+example, if the dominant noise is gate noise and environ-
+mental noise is very low). However, with the addition
+of real-world environmental noise to the gate noise, it is
+possible that the error threshold would be too low to run
+on currently available NISQ devices.
+There is a parallel between the threshold we have de-
+fined and the Threshold Theorem for quantum error cor-
+rection, which asserts that there is a critical error rate
+below which sufficiently good quantum error correction
+codes can successfully correct errors.
+For error rates
+above this threshold, errors accumulate too quickly for
+effective error correction.
+However, despite the paral-
+lels, the Threshold Theorem does not explicitly cover the
+phenomenon of ancilla errors spreading to the physical
+qubits and reducing the effectiveness of the error cor-
+recting code.
+Though the threshold values we found are specific to
+our system and cannot be generalised to other systems,
+both the limit on the maximum training accuracy achiev-

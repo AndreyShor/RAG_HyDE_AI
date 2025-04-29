@@ -1,0 +1,31 @@
+Materials and methods
+Parahydrogen handling
+The ZULF setup is presented in a simplified scheme in Figure 1A. The pH2 gas-handling setup
+was presented in detail in previous work of our group . (34,35). Controlled supply of enriched pH2
+into the NMR tube containing the liquid sample was enabled by several pneumatic valves and a
+back-pressure regulator from Swagelok. For all experiments, hydrogen gas was first passed over
+a packed bed of an iron oxide catalyst, FeO(OH), at a temperature of 30 K to selectively convert
+the commercially available di-hydrogen gas mixture into pH2 (approx. 97% enrichment).After
+conversion, the gas in our piping system, i.e. mainly polyetheretherketone piping with good thermal
+conductivity was used, warmed up (approx. 21°C at a pressure of 10 bar) before it is introduced
+into the NMR tube. Two Teflon capillaries were inserted into the NMR tube, one leading to the
+bottom and used for inflow of pH2 gas and the second capillary only at the top for the gas outlet. The
+design of our NMR tubes is presented in the literature (34,36). Flow of hydrogen gas into the NMR
+tube was controlled with a mass flow controller from Sierra Instruments (20 scc min−1). Quantum
+oscillators were measured with continuous parahydrogen bubbling. Zero-field NMR spectra were
+collected by pulsed bubbling of parahydrogen in short, controlled cycles, where each cycle involved
+2.6 seconds of bubbling followed by a 0.5-second pause, repeated five times in total. The so-called
+“ZF-ZF” (36) magnetic field sequences were adopted for collecting the conventional zero-field
+NMR spectra. Pressure in the NMR tube was controlled using a back-pressure regulator that was
+set to 6 bar. Control of all timings, pneumatic valves, and communication with hardware required
+to set up ZULF detection were realized by TTL pulses in Python, where the signal processing and
+feedback is also realized.
+External feedback loop apparatus
+The hardware components of the feedback loop system are described as follows. The signal produced
+by the sample was measured using a commercially available optically pumped magnetometer (model
+QuSpin Gen 2) with a sensitivity of around 15 fT/
+√
+Hz in a 3-100 Hz band. The analog output from
+the OPM was digitized by a National Instruments (NI) analog input card (model NI 9239) at a
+sampling rate of 2000 Hz. This digitized signal was transmitted to a PC via the NI Measurement
+S2

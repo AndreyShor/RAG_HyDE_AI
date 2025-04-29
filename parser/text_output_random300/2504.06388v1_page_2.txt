@@ -1,0 +1,53 @@
+Elimination of spurious oscillations on photoemission spectra
+2
+1. Introduction
+Many ionization experiments aimed at obtaining energy spectra and cross sections
+are performed under quasi-stationary conditions. Consequently, quantum mechanics
+and scattering theory have traditionally focused on solutions of the time-independent
+Schr¨odinger equation, primarily because stationary scattering states form a basis that
+facilitates the analysis of time-dependent collisions. However, recent breakthroughs
+in laser technology—particularly the advent of attosecond pulses, a key achievement
+recognized by the 2023 Nobel Prize in Physics [1]—have sparked growing interest in
+ultrashort laser pulses as ionizing sources. As a result, theoretical approaches must
+adapt to these developments by placing greater emphasis on the temporal description
+of physical processes.
+The calculation of photoionization spectra has been an active area of research
+for several decades, encompassing a wide variety of targets, including atoms [2–5],
+molecules [6–8], and solids [9–11]. In many cases—such as electron emission from solid
+surfaces—the underlying physics can be eﬀectively described using one-dimensional
+models [12, 13]. For instance, photoemission from the valence band has been studied
+for metallic surfaces like Al(111), Al(100), Be(0001), and Mg(0001) [12, 13].
+Following previous studies [12–15], photoelectron spectra are commonly obtained
+by numerically solving the time-dependent Schr¨odinger equation (TDSE) and
+projecting the ﬁnal wavefunction onto the stationary continuum eigenstates of the
+unperturbed time-independent Hamiltonian. However, this approach often yields large
+unphysical oscillations in the energy spectrum [12, 14]. To mitigate these artifacts,
+convolution techniques such as the widely used window-operator method (WOM)
+[16, 17] are typically employed.
+Nevertheless, we have found that these methods
+can inadvertently suppress physically meaningful structures in the spectrum.
+In this work, we restrict our study to one-dimensional ionization processes and
+perform a detailed analysis of electron emission from symmetric potentials.
+To
+overcome the aforementioned spurious oscillations, we introduce a computational
+method that projects the wavefunction—evaluated at the end of the laser pulse—onto
+scattering states with the appropriate incoming or outgoing boundary conditions. Our
+Scattering Projection Method (SPM) not only eliminates the unphysical oscillations
+more eﬀectively than the WOM but also preserves ﬁne structures of physical relevance,
+such as Ramsauer-Townsend-type oscillations, which are otherwise suppressed by the
+WOM.
+We investigate the ionization of a one-electron system subjected to an external
+electric ﬁeld, modeled as either a traveling wave (short laser pulse) or a standing wave
+(half-cycle pulse). We begin with a simple square well potential supporting a single
+bound state, then proceed to the jellium model [14] as a ﬁrst approximation of a
+metallic surface, and ﬁnally apply a more sophisticated band-structure-based (BSB)
+potential for Al(111), which incorporates surface roughness due to atomic layering as
+well as surface plasmon eﬀects [13, 18].
+This article is organized as follows.
+In Sec.
+2, we describe the numerical
+methods used to solve the TDSE for electron ionization in a one-dimensional
+potential, and we detail two approaches to extract the energy spectrum: (i) projection
+onto standard stationary continuum eigenstates of the time-independent Schr¨odinger
+equation (TISE), and (ii) the proposed SPM using scattering states. A step-by-step
+numerical procedure is provided in the Appendix. In Sec. 3, we present and compare

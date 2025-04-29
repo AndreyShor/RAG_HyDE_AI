@@ -1,0 +1,122 @@
+14
+The quantity Bact,n({r(ti)}n
+i=0) represents the difference in local-global statistical correlations. Furthermore, we
+find that the transition density-based L´evy score and the probability distribution-based L´evy score are equivalent in
+a weak sense. To demonstrate this equivalence, for some function Φ(r(ti+1), T −ti+1), we know that,
+
+Φ(r(ti+1), T −ti+1) · SL,r(ti)(r(ti+1), ti+1)
+
+:=
+Z
+dr0 · · · dr(tn)Φ(r(ti+1), T −ti+1) · SL,r(ti)(r(ti+1), ti+1)P[r(t1) · · · r(tn) | r0]P0(r0)
+≃−
+Z
+dr0 · · · dr(tn)
+Z 1
+0
+dθ
+Z
+ν( dz)z · Φ(r(ti+1), T −ti+1)P(r(ti+1) −θz, ti+1 | r(ti), ti)
+P(r(ti+1), ti+1 | r(ti), ti)
+P[r(t1) · · · r(tn) | r0]P0(r0)
+= −
+Z
+dr(ti+1) · · · dr(tn)P[r(ti+2), ti+2 | r(ti+1), ti+1] · · · P[r(tn), tn | r(tn−1), tn−1]
+×
+Z
+dr0 · · · dr(ti)
+Z 1
+0
+dθ
+Z
+ν( dz)z · Φ(r(ti+1), T −ti+1)P(r(ti+1) −θz, ti+1 | r(ti), ti)
+× P[r(ti), ti | r(ti−1), ti−1] · · · P[r(t1), t1 | r(t0), t0]P0(r0)
+= −
+Z
+dr(ti+1) · · · dr(tn)P[r(ti+2), ti+2 | r(ti+1), ti+1] · · · P[r(tn), tn | r(tn−1), tn−1]
+×
+Z 1
+0
+dθ
+Z
+ν( dz)z · Φ(r(ti+1), T −ti+1)P(r(ti+1) −θz, ti+1)
+P(r(ti+1), ti+1)
+×
+Z
+dr0 dr(t1) · · · dr(ti)P[r(ti+1), ti+1 | r(ti), ti] · · · P[r(t1), t1 | r(t0), t0]P0(r0)
+= ⟨Φ(r(ti+1), T −ti+1) · SL(r(ti+1), ti+1)⟩,
+(S.23)
+where ⟨· · · ⟩denotes averaging over all trajectories {r0, r(t1), · · · , r(tn)} with r0 drawn from the invariant distribution
+P s(r). This means that, when Φ is independent of time explicitly and we consider the steady-state case, we have
+
+Φ(r(ti+1)) · SL,r(ti)(r(ti+1), ti+1)
+
+≃⟨Φ(r(ti+1)) · Ss
+L(r(ti+1))⟩.
+(S.24)
+We immediately have that,
+*
+log P s[r(t1) · · · r(tn) | r0]
+˜P s
+pf[r(t1) · · · r(tn) | r0]
++
+≃
+∆Stot,
+(S.25)
+Following a similar calculation with (S.23), we have that,
+
+Φ(r(ti+1)) · Ss
+L,b(r(ti+1), r(ti), ti+1)
+
+:=
+Z
+dr0 · · · dr(tn)Φ(r(ti+1)) · Ss
+L,b(r(ti+1), r(ti), ti+1)P[r(t1) · · · r(tn) | r0]P s
+0(r0)
+≃−
+Z
+dr0 · · · dr(tn)
+Z 1
+0
+dθ
+Z
+ν( dz)z · Φ(r(ti+1))P s(r(ti+1) −θz + z)
+P s(r(ti+1) −θz)
+× P(r(ti+1) −θz, ti+1 | r(ti), ti)
+P(r(ti+1), ti+1 | r(ti), ti)
+P s[r(t1) · · · r(tn) | r0]P s
+0(r0)
+= −
+Z
+dr(ti+1) · · · dr(tn)P[r(ti+2), ti+2 | r(ti+1), ti+1] · · · P[r(tn), tn | r(tn−1), tn−1]
+×
+Z
+dr0 · · · dr(ti)
+Z 1
+0
+dθ
+Z
+ν( dz)z · Φ(r(ti+1))P s(r(ti+1) −θz + z)
+P s(r(ti+1) −θz)
+P(r(ti+1) −θz, ti+1 | r(ti), ti)
+× P[r(ti), ti | r(ti−1), ti−1] · · · P[r(t1), t1 | r(t0), t0]P s
+0(r0)
+= −
+Z
+dr(ti+1) · · · dr(tn)P[r(ti+2), ti+2 | r(ti+1), ti+1] · · · P[r(tn), tn | r(tn−1), tn−1]
+×
+Z 1
+0
+dθ
+Z
+ν( dz)z · Φ(r(ti+1))P s(r(ti+1) −θz + z)
+P s(r(ti+1) −θz)
+P s(r(ti+1) −θz)
+P s(r(ti+1))
+×
+Z
+dr0 dr(t1) · · · dr(ti)P[r(ti+1), ti+1 | r(ti), ti] · · · P[r(t1), t1 | r(t0), t0]P s
+0(r0)
+= −⟨Φ(r(ti+1)) · Ss
+L(r(ti+1))⟩.
+(S.26)

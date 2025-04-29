@@ -1,0 +1,44 @@
+Solving General QUBOs with Warm-Start QAOA via a Reduction to
+Max-Cut
+BIKRANT BHATTACHAYRA, California Institute of Technology, USA
+MICHAEL CAPRIOTTI, Northwestern University, USA
+REUBEN TATE, CC3: Information Sciences, Los Alamos National Laboratory, USA
+The Quantum Approximate Optimization Algorithm (QAOA) is a quantum algorithm that finds approximate solutions
+to problems in combinatorial optimization, especially those that can be formulated as a Quadratic Unconstrained Binary
+Optimization (QUBO) problem. In prior work, researchers have considered various ways of "warm-starting" QAOA by
+constructing an initial quantum state using classically-obtained solutions or information; these warm-starts typically cause
+QAOA to yield better approximation ratios at much lower circuit depths. For the Max-Cut problem, one warm-start approaches
+constructs the initial state using the high-dimensional vectors that are output from an SDP relaxation of the corresponding
+Max-Cut problem. This work leverages these semidefinite warmstarts for a broader class of problem instances by using a
+standard reduction that transforms any QUBO instance into a Max-Cut instance. We empirically compare this approach to a
+"QUBO-relaxation" approach that relaxes the QUBO directly. Our results consider a variety of QUBO instances ranging from
+randomly generated QUBOs to QUBOs corresponding to specific problems such as the traveling salesman problem, maximum
+independent set, and portfolio optimization. We find that the best choice of warmstart approach is strongly dependent on the
+problem type.
+CCS Concepts: • Theory of computation →Semidefinite programming; • Hardware →Quantum computation.
+Additional Key Words and Phrases: QAOA, approximation algorithms, Max-Cut, warm-starts
+ACM Reference Format:
+Bikrant Bhattachayra, Michael Capriotti, and Reuben Tate. 2025. Solving General QUBOs with Warm-Start QAOA via a
+Reduction to Max-Cut. ACM Trans. Quantum Comput. 1, 1 (April 2025), 24 pages. https://doi.org/XXXXXXX.XXXXXXX
+1
+Introduction
+The Quantum Appoximate Optimization Algorithm (QAOA) is a hybrid quantum-classical optimization algorithm
+developed by Farhi et al. [1] designed to solve combinatorial optimization problems. This algorithm uses a classical
+optimization loop to fine-tune the parameters of a quantum circuit. The ansatz for QAOA circuits is based off of a
+Trotterization of the adiabatic quantum algorithm [1, 2].
+Many NP-hard problems can be formulated as quadratic optimization problems over discrete variables [3];
+such quadratic formulations are well-suited for QAOA (and quantum algorithms in general) due to the natural
+correspondence between the quadratic terms and native two-qubit gates that exist on most quantum devices.
+Authors’ Contact Information: Bikrant Bhattachayra, California Institute of Technology, USA, bbhattac@caltech.edu; Michael Capriotti,
+Northwestern University, USA, michaelcapriotti2028@u.northwestern.edu; Reuben Tate, CC3: Information Sciences, Los Alamos National
+Laboratory, USA, rtate@lanl.gov.
+Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that
+copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page.
+Copyrights for components of this work owned by others than the author(s) must be honored. Abstracting with credit is permitted. To copy
+otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from
+permissions@acm.org.
+© 2025 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+ACM 2643-6817/2025/4-ART
+https://doi.org/XXXXXXX.XXXXXXX
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.
+arXiv:2504.06253v1  [quant-ph]  8 Apr 2025

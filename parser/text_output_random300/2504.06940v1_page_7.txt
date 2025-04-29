@@ -1,0 +1,79 @@
+7
+More generally, we can extend the phase estimation into the multivariate case, as an algorithm that we will call
+“multidimensional phase estimation.” It is originally used to estimate the gradient of some function proposed in
+Refs. [10, 11]. Later authors polished the results and referred to it as Jordan’s algorithm in Ref. [12]. We, in a similar
+fashion as in Ref. [5], will reformulate results mainly following Ref. [12].
+First, we consider vectors from the following set:
+Definition II.38 (Hypercubic Lattice). For a dimension d and resolution N (which is usually a power of 2), define
+the hypercubic lattice to be:
+GN =
+
+j ∈{0, 1, · · · , N −1} : j
+N −1
+2 −1
+2N
+d
+(20)
+The multidimensional phase estimation requires the following component which we call multivariate phase unitary:
+Definition II.39 (Multivariate Phase Unitary). Given a vector ⃗x, a multivariate phase unitary U acts on HGN via:
+U |⃗u⟩= e2πi⟨⃗u,⃗x⟩|u⟩
+(21)
+where ⃗u ∈GN, G is the hypercubic lattice for dimension d and resolution N.
+Algorithm 1: Multidimensional Phase Estimation
+Data: Resolution N, dimension d, Multivariate Phase Unitary U on HGN
+Result: Some estimate of the phase ⃗y
+Initialize state |ψ⟩←
+1
+N
+d
+2
+P
+⃗u∈GN |⃗u⟩;
+Obtain state |φ⟩←U N |ψ⟩;
+Apply inverse QFT: |ψ2⟩←QFT−1
+GN |ψ1⟩;
+Measure all dimensions and obtain the estimate ⃗y.
+Now, algorithm 1 illustrates the process to recover the multivariate phase parameter ⃗x from the unitary. The
+QFTGN represents Fourier transforming the register that corresponds to each dimension in ⃗u ∈GN. Its definition can
+be found in Definition 5.2 (or Definition 17 in preprint) in Ref. [12]. The following theorem summarizes the accuracy,
+which, as written in Ref. [12], is eventually sourced from Ref. [13].
+Theorem II.40 (Multidimensional Phase Estimation). For each dimension α ∈[d], the probability for the outcome
+of Algorithm 1 satisfy:
+P
+h
+|xα −yα| > κ
+N
+i
+⩽
+1
+2(κ −1)
+(22)
+In algorithm 1 we assumed that the unitary U is perfectly the multivariate phase unitary. If we are using some
+other unitary V to approximate U N there will be another term in error:
+Theorem II.41 (Multidimensional Phase Estimation with Noise). If we are using another unitary V in the place of
+U N in Algorithm 1, such that we end up achieving |φ′⟩instead of |φ⟩, with ∥|φ′⟩−|φ⟩∥⩽ε for some ε, Eq. (22) is
+modified to:
+P
+h
+|xα −yα| > κ
+N
+i
+⩽
+1
+2(κ −1) + 2ε
+(23)
+The proof for the above theorem is directly refactored from Lemma 5.2 (or Lemma 20 in preprint) in Ref. [12] with
+specific values replaced by symbolic variables.
+Corollary II.42. In theorem II.41 we might take ε =
+1
+12, κ = 4, and we get:
+P
+
+|xα −yα| > 4
+N
+
+⩽1
+3
+(24)
+Going to hybrid algorithms, we will use the fact that one can easily translate a hybrid circuit into a quantum
+subroutine.

@@ -1,0 +1,44 @@
+5 
+“untrained” benchmark model. DDGun3D explicitly incorporates a form of  MBC by 
+considering the hydrophobicity difference between mutated and wild-type residues, 
+establishing it as a suitable reference benchmark. We also derived the data-driven 
+MBC term, referred to as MBC(dd) hereafter, by fitting it to the training set using 
+ridge regression implemented in Scikit-learn24 with default parameters. 
+The MBC(dd) term was then compared with the Kyte-Doolittle25 and Rose26 scales to 
+score the difference between hydrophobicity and solvation, respectively, as first 
+approximations of the unfolded state. Additionally, we included a comparison with 
+the Stability Oracle model, a recent state-of-the-art deep learning-based method. We 
+used the S461 dataset27 as the test set to perform comparisons. 
+ 
+The three potential-like methods considered are: 
+1. ESM-IF1, a large protein-language model (PLM) trained to predict a protein 
+sequence likelihood from its backbone atom coordinates; 
+2. FoldX, a widely-used all-atom knowledge-based potential for fast and 
+quantitative estimation of the importance of the interactions contributing to the 
+stability of proteins; 
+3. Pythia, a self-supervised graph neural network tailored for zero-shot ∆∆G 
+predictions, large-scale residue scanning and missing-residue probability 
+prediction. 
+ 
+On the S461 test set, all methods showed visible performance boosts, with 
+increased Pearson correlation coefficients (PCC) compared to the original methods 
+and with Pythia/MBC(dd) being the top-performer. 
+ 
+Although we used PDB structures to train our model, we observed that the 
+performance of both the baseline ESM-IF1 and Pythia models noticeably depends 
+on the type of structure used. Namely, the performance of both of these methods is 
+higher if AlphaFold28 models are used instead of experimental X-ray structures from 
+PDB. This is probably due to the way these methods have been parameterized: for 
+both ESM-IF1 and Pythia training sets, the percentage of AlphaFold structure 
+exceeds 90%, thus any bias that may be introduced by using models instead of 
+experimental structures is captured by the methods. Nonetheless, the MBC(dd) 
+validity is not affected by the choice of the model origin (Table S2): using the 
+MBC(dd) correction derived from the PDB structures on the same test sets, but 
+giving in input the AlphaFold structures, instead of those from PDB, results in models 
+that are even better-performing. Both Stability Oracle and Pythia/MBC(dd)-AF 
+achieve a PCC higher than the one obtained by the benchmark DDGun3D method 
+(PCC: 0.62), whose performance on the S461 data set is very strong (Figure 2). We 
+also computed the MBC(dd) correction for Stability Oracle and DDGun3D 
+benchmarks, and, as expected, the result is worse for both methods (Figuure 2). 
+This supports our expectation that these methods, which already account for 
+descriptors of the unfolded state in their input, such as the stoichiometry of the 

@@ -1,0 +1,26 @@
+Figure 3: (a) Speedup in MetaD simulations of the two-dimensional modiﬁed Faradjian-
+Elber potential as a function of the CV quality. The quality is measured by the rotation
+angle relative to the optimal CV. Results are given either with or without resetting, in orange
+triangles and green squares, respectively. (b) Survival functions S(t) for transitions between
+an “unfolded” and “folded” conformers of alanine tetrapeptide, in unbiased simulations
+(upper left) and MetaD simulations with a good CV (φ3 dihedral angle, upper right), a
+suboptimal CV (ψ3, lower left), or a poor CV (φ2, lower right). (c) An illustration of the
+eﬀect of MetaD bias on the eﬀective free energy. Representative unbiased and biased FESs
+are given in blue and green, respectively. The black hollow circle represents a system on the
+biased surface, far from the energy barrier.
+CVs. The bias is deposited on-the-ﬂy at visited regions of the low-dimensional CV space,
+encouraging the exploration of poorly visited areas. In the popular well-tempered version,26
+the bias is guaranteed to converge, such that at long times the eﬀective free energy surface
+in the simulation is
+1
+γF(s), with F(s) being the true free energy along CV s and γ > 1,
+called the bias factor, is a control parameter. However, the time for convergence is unknown
+a priori and can be long. Furthermore, the eﬃciency highly depends on the choice of CV:
+if F(s) poorly reﬂects the slowest modes of the system, acceleration of rare transitions is
+limited.
+Figure 3(a) demonstrates the dependency of the acceleration on CV choice through the
+example of the modiﬁed Faradjian-Elber potential (Figure 2(a)). There, the optimal CV
+is the x-axis. In Ref.,39 we artiﬁcially degraded the quality of the CV by rotating it at an
+angle θ with respect to the x-axis and measured ﬁrst-passage from the right minimum to the
+left basin (x < −1 ˚A). The speedup as a function of θ is plotted with green squares. It is
+11

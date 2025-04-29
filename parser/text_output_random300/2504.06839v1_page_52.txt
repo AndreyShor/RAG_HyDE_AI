@@ -1,0 +1,195 @@
+In order to prove the other two properties we write ∥gk(θ, ·, h|·, ·)∥L1 as
+∥gk(θ, ·, h|·, ·)∥L1 =
+Z ∞
+0
+dt
+Z 1
+−1
+dh′
+Z 1
+−1
+dh′′
+
+Z t
+0
+dt′Q(t −t′, h|h′′)Q(t′, h′′|h′)e2πit′k·(v(θ+π−2 arcsin(h′′))−v(θ))
+ .
+Now we prove (B.3.11). For this purpose we use the properties of Q(2) introduced by Definition 1.5.
+Since Q(2) has integral 1 (thanks to (B.1.4) of Lemma B.1), we have
+1 −∥gk(θ, ·, h|·, ·)∥L1
+=
+Z ∞
+0
+dt
+Z 1
+−1
+dh′
+Z 1
+−1
+dh′′
+Z t
+0
+dt′Q(t −t′, h|h′′)Q(t′, h′′|h′)
+−
+
+Z t
+0
+dt′Q(t −t′, h|h′′)Q(t′, h′′|h′)e2πit′k·(v(θ+π−2 arcsin(h′′))−v(θ))
+
+
+≥
+Z
+1
+2
+0
+dt
+Z 1
+−1
+dh′
+| {z }
+=2
+Z 1
+−1
+dh′′
+
+
+Z t
+0
+dt′ Q(t −t′, h|h′′)
+|
+{z
+}
+= 6
+π2
+Q(t′, h′′|h′)
+|
+{z
+}
+= 6
+π2
+−
+
+Z t
+0
+dt′ Q(t −t′, h|h′′)
+|
+{z
+}
+= 6
+π2
+Q(t′, h′′|h′)
+|
+{z
+}
+= 6
+π2
+e2πit′k·(v(θ+π−2 arcsin(h′′))−v(θ))
+
+
+
+=
+72
+π4
+Z
+1
+2
+0
+dt
+Z 1
+−1
+dh′′
+
+t −
+
+Z t
+0
+dt′eit′2πk·(v(θ+π−2 arcsin(h′′))−v(θ))
+
+
+,
+and therefore, since
+
+Z t
+0
+dt′eit′ω
+ =
+
+eitω −1
+ω
+ = t
+p
+2(1 −cos(|ω|t))
+|ω|t
+,
+if x(θ, t, h′′) := 2π|k · (v(θ + π −2 arcsin(h′′)) −v(θ))|t, we got
+1 −∥gk(θ, ·, h|·, ·)∥L1 ≥72
+π4
+Z
+1
+2
+0
+dtt
+Z 1
+−1
+dh′′
+"
+1 −
+p
+2(1 −cos x(θ, t, h′′))
+x(θ, t, h′′)
+#
+.
+(B.3.12)
+First we want to estimate from below the integrand. To this purpose, notice that since by direct computations one
+can find a constant c′′ > 0 such that
+1 −
+p
+2(1 −cos x)
+x
+≥c′′ min{x, c′′}2,
+by (B.3.12) one gets
+1 −∥gk(θ, ·, h|·, ·)∥L1 ≥72c′′
+π4
+Z
+1
+2
+0
+dtt
+Z 1
+−1
+dh′′ min {x(θ, t, h′′), c′′}2 ,
+(B.3.13)
+and therefore we finally have to bound from below x(θ, t, h′′), at least in a suitable region (denoted by Ak(θ)). This
+is what we are going to do in the following. To this purpose, first let us observe that
+x(θ, t, h′′) = 2π|k · (v(θ + π −2 arcsin(h′′)) −v(θ))|t = 4πt
+p
+1 −h′′2|k|
+
+p
+1 −h′′2ˆk · v(θ) −h′′ˆk · v⊥(θ)
+ ,
+with ˆk :=
+k
+|k| and v⊥(θ) = (−sin θ, cos θ).
+Now
+if k · v⊥(θ) = 0, then ˆk · v(θ) = ±1 and therefore
+
+p
+1 −h′′2ˆk · v(θ) −h′′ˆk · v⊥(θ)
+ =
+p
+1 −h′′2,
+thus we fix δ ∈(0, 1
+3) and in this case we define
+Ak(θ) := [−1 + δ, 1 −δ], with measure |Ak(θ)| = 2 −2δ,
+(B.3.14)
+such that for any h′′ ∈Ak(θ)
+x(θ, t, h′′) = 4πt
+p
+1 −h′′2|k|
+
+p
+1 −h′′2ˆk · v(θ) −h′′ˆk · v⊥(θ)
+ = 4πt(1 −h′′2)|k| ≥4πtδ|k|.
+(B.3.15)
+52

@@ -1,0 +1,53 @@
+7
+Let Λ0 : C →CC′′ be a map which copies system C to another register C′′. This gives the state
+|τ⟩CQRR′C′C′′
+=
+X
+c
+√pc |c⟩C ⊗|ωc⟩QRR′
+⊗|c⟩C′
+⊗|c⟩C′′
+,
+(11)
+and the mutual information evaluates to
+I(CQ : RR′C′)τ = S(CQ)τ + S(RR′C′)τ −S(CQRR′C′)τ
+= S(CQ)τ + S(CC′′Q)τ −S(C′′)τ
+= S(CQ)ω + S(CQ)ω −S(C)ω,
+where the second follows since the overall state on CQRR′C′C′′ is pure. The last equality follows because C′′ is a
+copy of C. This implies that 2a(ωCNQR, 0) ≥2S(CQ)ω −S(C)ω. Now, we show that Λ0 : C →C′′ is optimal. By
+KI-theorem the isometric extension UΛ of any CPTP map Λ : CQ →CQ that preserves ωCQR can only act as follows
+|ν⟩CQRR′C′M = (UΛ ⊗11RR′) |ω⟩CQRR′
+=
+X
+c
+√pc |c⟩C ⊗|ωc⟩QRR′
+⊗|c⟩C′
+⊗|vc⟩M .
+(12)
+Hence, the mutual information is bounded as
+I(CQ : RR′C′)ν = S(CQ)ν + S(RR′C′)ν −S(CQRR′C′)ν
+= S(CQ)ν + S(CMQ)ν −S(M)ν
+= S(CQ)ω + S(CQ)ω + S(M|C)ω −S(M)ν,
+= S(CQ)ω + S(CQ)ω −S(M)ν,
+in the third line the S(M|C)ω = 0 because the state on M given C = c is pure. In the last line S(M)ν is maximized
+if |vc⟩M are orthogonal, that is S(M)ν = S(C)ν.
+■
+V.
+UNASSISTED SIMULATION
+In this section, we obtain achievability and converse bounds for the unassisted qubit rate. The unassisted model
+refers to the case where the encoder and decoder do not share or distill any entanglement, namely registers A0, A1, B0
+and B1 are trivial registers.
+Theorem 8. For the unassisted simulation of the channel N : A →BK, the following regularized rate is achievable
+where u(ρ, γ) is deﬁned in Deﬁnition 3
+Q∗≤lim
+m→∞
+1
+mu(ρ⊗m, 1
+m9 ).
+Moreover, any achievable quantum rate is lower bounded as
+Q∗≥lim
+γ→0 lim
+m→∞
+1
+mu(ρ⊗m, γ).
+Proof. The proof of the direct part is as follows. Consider m copies of the state ρAR as a single state and the optimal

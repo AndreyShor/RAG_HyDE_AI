@@ -1,0 +1,141 @@
+Initial Hierarchy
+Method
+s-rec (%) s-prec (%) t-acc (%)
+1
+ASHiTA
+10.39
+20.6
+9.27
+ASHiTA (GT Pos + Txt Emb)
+38.71
+34.39
+36.1
+2
+ASHiTA
+9.95
+20.41
+7.8
+ASHiTA (GT Pos + Txt Emb)
+40.56
+35.38
+37.56
+ASHiTA
+14.3
+17.0
+12.2
+Privileged
+ASHiTA (GT Pos + Txt Emb)
+42.13
+38.68
+42.93
+Table 5.
+ASHiTA and ASHiTA with ground-truth objects and labels with
+different initial task hierarchies. Top two rows are generated with ChatGPT
+given only the abstract tasks; the last row was generated given ground-truth
+labels of known objects in the scene.
+cially chosen set of high-level tasks, we can approximately
+recover a similar set of rooms and objects. This is shown in
+Fig 9, where ASHiTA is given 6 high-level cleaning tasks
+related to the types of rooms in the scene. However, it is
+clear that ASHiTA lacks the understanding of structures and
+the overall floor plan, and only retains the entities that are
+deemed relevant to the given tasks.
+9. Initial Hierarchy Ablations
+In Section 5, we use GPT-4o-mini to generate the ini-
+tial task hierarchy by first giving GPT-4o-minia manu-
+ally generated task hierarchy for some arbitrary task as an
+example then querying with the prompt:
+"Given the example above, generate a con-
+cise task hierarchy for <task>, ensuring brief
+and clear descriptions."
+Here we include an ablation to evaluate the impact of the
+initial task hierarchy. Using three different ChatGPT gen-
+erated initial hierarchies including one privileged with the
+inclusion of objects in the scene as priors. The results are
+shown in Table 5. The impact of the initial task hierarchy is
+minimal, even with privileged priors, and does not change
+the reported trend of the results shown in Table 3.
+10. Derivation of the Hierarchical Information
+Bottleneck
+In this section, we detail the derivation of the iterative multi-
+layer update steps (4) used to minimize the H-IB func-
+tional in (3), following the same approach as the original
+IB derivation outlined in [42]. To do this, we first formulate
+the Lagrangian for H-IB along with the derivative of the
+Lagrangian. Next, we express the derivatives of the condi-
+tional probabilities used in H-IB conditioned on the Markov
+chain assumption. These expressions can be substituted into
+the derivative of the Lagrangian, which allows us to solve
+for the zero of the Lagrangian derivative.
+Accounting for the constraint that P (Sk|Sk −1) is a
+valid probability, the Lagrangian of (3) can be written as,
+L =
+n
+X
+i=1
+{I(Si−1; Si) −βI(Ti; Si)
++
+X
+si−1∈Si−1
+λ(si−1)[
+X
+si∈Si
+p(si|si−1) −1]}
+(11)
+Recalling the definition of mutual information
+I(X; Y ) =
+X
+x
+X
+y
+p(x, y)log( p(x, y)
+p(x)p(y))
+=
+X
+x
+X
+y
+p(x|y)p(y)log(p(x|y)
+p(x) )
+(12)
+using the logarithm properties, we expand (11) as,
+L =
+n
+X
+i=1
+{
+X
+si−1
+p(si−1)
+X
+si
+p(si|si−1)[log(p(si|si−1)) −log(p(si))]
+−β
+X
+ti
+p(ti)
+X
+si
+p(si|ti)[log(p(si|ti)) −log(p(si))]
++
+X
+si−1
+λ(si−1)[
+X
+si
+p(si|si−1) −1)]}
+(13)
+Our goal is to derive p(sk|sk−1) for some arbitrary level
+k for some integer k ∈[1, n]. We rewrite and expand (13)
+and break up the sum of the levels into three parts: from
+level 1 to k −1, level k, and from level k + 1 to level
+n. The Markov chain assumption designate that the lev-
+els lower than k are not dependent on p(sk|sk−1), level k
+is directly dependent on p(sk|sk−1), and the higher levels
+are indirectly dependent on p(sk|sk−1). This means that
+when we take the derivative of the Lagrangian with respect
+to p(sk|sk−1) for fixed sk and sk−1, the terms related to the
+first part are zero. This broken up expression is as follows,
+arranged in order of the three terms in (11), and for each
+term, broken up into three parts based on k as described,
+4

@@ -1,0 +1,83 @@
+where inverse temperature β ≥0 controls the accuracy of choosing the wider side. The limit of high temperature,
+β = 0, indicates a complete randomness, and β →∞represents a deterministic choice for the one with the
+wider angle. Once the next roles among OFs are determined, the initial conditions for their positions are fixed.
+For example, Passer of the (n + 1)-th pass scene must start from the position where the previous Receiver,
+who is the same individual, stood at the last moment in the n-th pass scene. To take into account the drastic
+reorientation of players, initial velocities are set to zero for all players, i.e. ⃗vi(tn+1 = 0) = ⃗0. In the model,
+the destination of the (n + 1)-th pass ⃗dn+1
+B
+is determined before the (n + 1)-th pass scene starts. Although the
+ball runs generally towards Receiver, its direction can deviate either intentionally or by mistake. Therefore,
+similarly to the pervious work [39], ⃗dn+1
+B
+is calculated by rotating the vector ⃗x∗
+R −⃗x∗
+P, which directs from Passer
+to Receiver of the n-th pass at the moment of the transition, around ⃗x∗
+P by a random angle of θn drawn from
+a normal distribution N(0, σ2). The DF’s motion mode depends stochastically on the previous one. With the
+probability of q, which is a model parameter, DF employs the same motion mode as in the previous pass scene.
+An extreme case of q = 0 means that the DF’s motion mode alternates between ‘wait’ and ‘chase’, while q = 1
+indicates that DF keep choosing the same mode throughout a game.
+During each pass scene, dynamics are governed by the ODEs, and therefore dynamics are deterministic. The
+transition algorithm is a stochastic mapping from the n-th to (n + 1)-th pass scene. Hence, it may be possible
+to regard our model as a Markov process by considering each pass scene to be a single ‘state’. This class of
+models differs from other well-known classes of stochastic models such as stochastic differential equations or
+random ODEs. It may be beneficial to elaborate on mathematical properties of this class of models, especially
+in relation to development of data assimilation methodologies.
+Numerical methods and parameters
+Table 1 lists the model parameters. Simulations and analyses in this study were performed with Julia. We
+utilised DifferentialEquations.jl package [56] for the numerical integration of the ODE system [eq. (1)].
+Generating simulated dataset
+To prepare Fig. 3 and perform the sensitivity analysis, we generated a dataset composing of randomly sampled
+values of model parameters, the average number of passes, and the average OF area. Among the parameters
+listed in table 1, we fixed the values of L, Lbuff, and Lout. For each of the other 13 model parameters, a value
+was drawn from a uniform distribution whose range is indicated in table 1. We determined the value ranges
+in consideration of the previous study [39] and plausibility. For each set of parameter values, 500 games were
+simulated. We recorded the number of passes and the temporal average of OF area for every game, and then
+took ensemble average over 500 trials to obtain the average number of passes and the temporal and ensemble
+average of OF area, which we simply denote as the average OF area, for each set of parameter values. This
+procedure was repeated to obtain data for 15, 000 sets of parameter values. The simulated dataset is visually
+summarized in Supplementary Figure S1.
+A small portion of parameter values induced unrealistic results in terms of the average number of passes and
+the average OF area. Since our major concern was on influences of model parameters on the outcomes, not on
+conditions for the model to work properly in the first place, we excluded unreasonable data points according to
+the following criteria. Firstly, the average number of passes must not be less than 1. In addition, the average
+OF area must be less than 18 m2, which is the area of the largest triangle within the court. Moreover, the
+number of games terminated due to the ball-out event must not be more than 400 out of 500 trials. As a result,
+895 samples were excluded, leaving 14, 105 samples for further analyses. The dataset after the preprocessing is
+visually summarised in Supplementary Figure S2.
+Sensitivity analysis
+Using the preprocessed dataset, we performed multivariate quadratic regression to examine effects of parameters
+that were varied. The regression model was
+yi = ai +
+13
+X
+k=1
+ 
+bkx(k)
+i
++ ck
+h
+x(k)
+i
+i2
++
+X
+l>k
+dkl
+h
+x(k)
+i
+· x(l)
+i
+i!
++ ϵi,
+(9)
+where i is the index of sets of parameters, yi is the average number of passes, x(k)
+i
+is the standardised value of the
+k-th parameter whose mean is 0 and variance is 1, and ϵi is the residual following a normal distribution. On the
+right-hand side, ai denotes the intercept, bk and ck represent the linear and square effects of the k-th parameter,
+respectively, and dkl indicates the interaction effect between the k-th and l-th parameters. In Fig. 4, we plotted
+14

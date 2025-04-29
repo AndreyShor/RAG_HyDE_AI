@@ -1,0 +1,111 @@
+ing as an anchor for the video editing algorithm. We draw
+from these techniques but apply them to the broader prob-
+lem of video generation. Our goal is to transfer the high-
+level action from the retrieved examples without preserv-
+ing their specific details. Specifically, our design choices
+focus on preventing the transfer of low-level details, such
+as the background, the subject’s identity, or the spatial ar-
+rangement of the scene. For example, when generating a
+video of a person walking, we can gather samples from an
+external database where the action is performed in various
+ways. People have distinct identities and walk in different
+ways, in different directions, and across different environ-
+ments. However, the underlying action remains consistent
+across these examples, and all of these variations can guide
+the model to produce a video with a more realistic motion.
+In this work, we aim to preserve only high-level informa-
+tion, allowing the model to generate new content without
+directly copying specific instances from the retrieved exam-
+ples. When evaluating Fr´echet Video Distance (FVD), our
+method significantly reduces this metric compared to the
+base model while ensuring that the generated video is not
+a replica of the retrieved samples, as indicated by a slight
+increase in cosine similarity between them (see Figure 1).
+We build our pipeline in a general manner, without
+specific assumptions about the architecture or the applica-
+tion (e.g., humans). We use the WebVid10M as a large-
+scale text-to-video dataset and use it to build a retrieval
+mechanism, which is used to condition a pre-trained T2V
+model by inserting cross-attention layers that fuse infor-
+mation from retrieved samples. Additionally, we propose
+a novel mechanism to initialize the random noise for the
+denoising process leveraging the retrieved samples.
+We
+evaluate our model through standard metrics like FVD, but
+also on the recently proposed video generation benchmarks.
+We demonstrate superior results compared to baselines and
+training-free methods for enhancing video quality and con-
+sistency. The core contribution of this work is to apply for
+the first time a RAG pipeline to video generation as a first
+step to guide the model towards more realistic motion gen-
+eration.
+2. Related Works
+Text-to-Video Diffusion Models
+In the last years, there
+have been several efforts to expand the achievements of
+text-to-image models to the video domain [4, 15, 21, 45,
+50, 53]. ImagenVideo [21] and Make-A-Video [45] pro-
+pose a deep cascade of temporal and spatial upsamplers
+to generate videos and jointly train their models on im-
+age and video datasets.
+A consistent line of works fo-
+cus on extending powerful pre-trained text-to-image (T2I)
+models introducing new layers to model the time dimen-
+sion and exploiting the powerful prior learned on the spa-
+tial domain [50, 53]. Blattmann et al. [5] initially explored
+this direction by leveraging a pre-trained Stable Diffusion
+model [42], which was later extended to image-to-video
+generation and longer videos by Stable Video Diffusion [3].
+AnimateDiff [18] proposes to freeze the spatial layers and
+train only the temporal module and introduce MotionLoRA
+[22] as a lightweight finetuning technique to learn specific
+motion patterns. Nevertheless, all these methods rely on
+3DUNet with separable spatial and temporal computation
+which poses a limitation on motion modeling capabilities.
+SnapVideo [36] proposes to use a transformer-based FIT
+[30] architecture which can jointly model the space and time
+components, by exploiting a compressed video latent repre-
+sentation. Other works introduce fully transformer-based
+architectures [33], culminating in the state-of-the-art results
+achieved by SORA [7]. While the open-source community
+is working to replicate these outcomes, the generated qual-
+ity still lags behind [28, 61].
+Concurrently, some approaches have explored not only
+the architectural modeling choices but also the noising pol-
+icy.
+Pyoco [15] introduces a noise-correlated sampling
+strategy, based on the intuition that frames shouldn’t be
+sampled from independent noise. Recently, FreeInit [55]
+proposed a training-free technique to optimize the initial
+noise of the denoising process. The model predicts a sam-
+ple that is diffused back according to the noising schedule,
+mixing the low-frequency components with randomly ini-
+tialized high-frequency components. While this approach
+results in improved sample consistency, it requires repeat-
+ing the sampling process multiple times, which is often im-
+practical.
+We build on the recent advancement of T2V models,
+leveraging the strengths of powerful pre-trained models and
+extending their capabilities with minimal architecture mod-
+ifications. Additionally, we propose a noise initialization
+strategy that enhances the final result without incurring the
+high computational costs associated with existing methods.
+Motion Transfer and Video Editing
+One line of work
+exploits pre-trained T2I models and adapts them to the task
+in a zero-shot manner [9, 16, 27, 39, 58]. The temporal con-
+sistency of the generated frames is typically obtained by ex-
+tending the self-attention operation across frames[27, 54].
+Tune-A-Video [54] involves fine-tuning the model on the
+video to be edited, enabling test-time edits through text
+prompts or cross-attention control [31]. Pix2Video [9] and
+FateZero [39] propose a training-free approach, exploit-
+ing the attention maps extracted during an initial inversion
+step and blended with those generated during the editing
+process, confining the edit to a specific region.
+Token-
+Flow [16] and FLATTEN [10] propose to propagate fea-
+tures of the base T2I model leveraging the optical flow ex-
+tracted from the source video. In contrast, other methods
+opt for pretraining on video datasets, typically employing
+2

@@ -1,0 +1,67 @@
+𝑦= {𝑦(1), … , 𝑦(𝑛)}
+ො𝑦= ො𝑦(1), … , ො𝑦(𝑛)
+𝐿𝑜𝑠𝑠𝑦, ො𝑦= ෍
+𝑡=1
+𝑛
+෍
+𝑖=1
+𝑑
+𝑚𝑖
+𝑡𝐻𝛿
+𝑦𝑖
+𝑡
+𝜎𝑖
+𝑡, ො𝑦𝑖
+𝑡
+𝜎𝑖
+𝑡
+ 
+Depthwise convolution
+ReLU
+Batch 
+Normalization
+Concatenate
+Pointwise Convolution
+2D Convolution
+𝑥= 𝐹𝜃(𝑦)
+Encoder
+Decoder
+Figure 2: Network architecture. The network takes multiple exposures of the night sky y = {y(1), . . . , y(n)} as input.
+These exposures pass through the “encoder" of the network, where we extract and combine multi-scale information via various
+convolutional layers. All input exposures first pass through several depth-wise convolution layers in parallel, before a ReLU
+activation and batch normalization are applied. The resulting output channels are concatenated, before a pointwise convolution is
+applied to produce the latent image x, which respects desired physical constraints such as non-negativity due to the application of
+another ReLU activation. We then “decode" the latent image x via a final 2D convolutional layer to produce the reconstructions
+by = {by(1), . . . , by(n)}. This last layer corresponds to the PSFs for each exposure (if these are known), and thus contains fixed,
+constant weights. Otherwise, the weights in the last layer could be considered as additional learnable parameters, allowing for
+the extension of AstroClearNet to the setting of blind multi-frame image restoration, as outlined in Appendix A.
+3.4. AstroClearNet network architecture
+We now elaborate on the key architectural fea-
+tures of the AstroClearNet neural network, which is
+illustrated in Figure 2.
+• Hourglass structure: An hourglass or encoder-
+decoder architecture naturally fits our image restora-
+tion problem. Indeed, since our goal is to recover the
+latent image x from the observed exposures based
+on model (1), we must first map the input exposures
+into a latent space to learn x, thus requiring an en-
+coder. The decoder then reconstructs the exposures
+from the latent image, forming a self-supervised
+learning framework. This approach is essential, as
+no labeled training data is available for our task.
+• Multi-frame method and multi-scale fea-
+ture maps: Moreover, to effectively learn the la-
+tent image, we must combine information from all
+n observations. This motivates the use of depthwise
+convolutions in the encoder. Indeed, unlike tradi-
+tional convolutions, which aggregate information
+across input channels, depthwise convolutions apply
+separate kernels to each channel, thus preserving
+information specific to each observation. Further-
+more, this allows us to capture features at multiple
+scales by applying depthwise convolutions in parallel
+with different kernel sizes, promoting the learning
+of features at varying resolutions. Once the input
+exposures pass through these depthwise convolution
+layers, the resulting feature maps are merged using
+5

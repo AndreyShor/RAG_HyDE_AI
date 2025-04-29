@@ -1,0 +1,19 @@
+ 
+11 
+ 
+ 
+FIG. 4. Comparison of coarse-grained (CG) models run with Langevin dynamics and all-atom (AA) simulations. Each 
+panel shows results from two CG models initialized with different parameters, represented in orange and green. (A) 
+Radial distribution function; (B) Three-body correlation; (C) Mean squared displacement. The results from the AA 
+simulations are displayed in blue. Transparent curves indicate results from the initial models, while solid curves 
+represent those from the trained models. 
+ 
+We also evaluated the effect of increasing the CG integration timestep on simulation stability and 
+dynamic fidelity. Figure 5 presents the MSD of the CG model with different timestep choices. The CG 
+model was trained using a timestep 2.5 times that of the all-atom (AA) simulation. Notably, the MSD curve 
+of the CG model remains close to the AA reference even when the timestep is increased to 5 times the AA 
+timestep. However, we observed that further increasing the timestep leads to unstable simulations. 
+Nevertheless, these results suggest that we can improve the computational efficiency of the CG model by 
+increasing the CG timestep while still maintaining dynamical accuracy. By identifying the largest stable 
+timestep, our method enables longer simulations with reduced computational cost, making it a valuable tool 
+for studying largescale biomolecular systems. 

@@ -1,0 +1,189 @@
+8
+equations. For example, using
+
+iG−1
+0
+αβ
+ij,σσ′ (t, t′) =
+−→δ
+δηα
+i,σ(t)S [η, ψ, χ]
+←−δ
+δηβ
+j,σ′(t′)
+= δC(t −t′) δij δσσ′
+h
+iδαβ ∂t′ −Mαβ(t)
+i
+,
+iM(t) =
+
+0
+∆′(t)
+0
+−∆′(t)
+0
+˜gϕ(t)
+0
+−˜gϕ(t)
+0
+,
+(S.11)
+where ϕ(t) = ⟨ˆϕ(t)⟩and ∆′(t) = ∆+ λ + ⟨ˆχi(t)⟩= ∆+ λ + P
+j,σ Vij⟨ˆsz
+j,σ(t)⟩, one readily obtains the equation for the contour
+Majorana propagator:
+δαγ∂t + iMαγ(t)Gγβ(t, t′, i, σ) −
+Z
+C
+dt′′ Παγ(t, t′′, i, σ)Gγβ
+f (t′′, t′, i, σ) = δαβ δij δσσ′δC(t −t′) .
+(S.12)
+This equation can be readily transformed into a system of equations for the statistical and spectral functions by using the
+decomposition [77]
+G(t, t′) = F f (t, t′) −i
+2ρf (t, t′) sgnC(t −t′) ,
+Π(t, t′) = −iΠ(0)(t) δC(t −t′) + ΠF(t, t′) −i
+2Πρ(t, t′) sgnC(t −t′)
+(S.13)
+to yield
+δαγ∂t + iMαγ(t) ργβ
+f (t, t′, i, σ) = −i
+Z t
+t′ dt′′ Παγ
+ρ (t, t′′, i, σ) ργβ
+f (t′′, t′, i, σ) ,
+δαγ∂t + iMαγ(t) Fγβ
+f (t, t′, i, σ) = −i
+Z t
+t0
+dt′′ Παγ
+ρ (t, t′′, i, σ) Fγβ
+f (t′′, t′, i, σ) + i
+Z t′
+t0
+dt′′ Παγ
+F (t, t′′, i, σ) ργβ
+f (t′′, t′, i, σ) .
+(S.14)
+Note that Π(0) = 0 in our case. In this form, the equations are often referred to as the Kadanoff–Baym equations.
+The boson propagator equations can be derived in a similar fashion. The explicit matrix form of equation (S.10), in our case,
+reads
+
+
+D−1
+0
+ϕϕ −Σϕϕ 
+D−1
+0
+ϕπ
+−Σϕχ
+
+D−1
+0
+πϕ
+
+D−1
+0
+ππ
+0
+−Σχϕ
+0
+
+D−1
+0
+χχ −Σχχ
+
+◦
+
+Dϕϕ Dϕπ Dϕχ
+Dπϕ Dπϕ Dπχ
+Dχϕ Dχπ Dχχ
+
+=
+
+1 0 0
+0 1 0
+0 0 1
+
+,
+(S.15)
+with the self-energies (S.8) and the bare inverse propagators obtained by differentiating the Keldysh action according to Eq. (S.5).
+Two of the resulting equations are given by (S.9). We note that the equation for Dχχ, without the last term, has the structure
+of the Bethe–Salpeter equation, reflecting the composite nature of the Hubbard–Stratonovich field χ. The remaining equations,
+governing the dynamics of the photon degrees of freedom, have an integro-differential structure similar to (S.14) after decom-
+position (S.13). Due to the photon-loss dissipative term, which couples the two branches of the Schwinger–Keldysh contour to
+each other, cf. Eq. (S.2), the explicit form of the equations cannot be so easily written in a compact fashion. For the sake of
+completeness, we provide the Kadanoff–Baym equations for the ππ-component of the photon propagator as an example:
+∂tρππ(t, t′) = −ω2
+0 ρϕπ(t, t′) −κρππ(t, t′) sgn(t −t′) −
+Z t
+t′ dt′′ h
+Σϕϕ
+ρ (t, t′′) ρϕπ(t′′, t′) + Σϕχ
+ρ,i(t, t′′) ρχπ
+i (t′′, t′)
+i
+,
+∂tFππ(t, t′) = −ω2
+0 Fϕπ(t, t′) −κFππ(t, t′) −κω0ρϕπ(t, t′) Θ(t′ −t) −
+Z t
+t0
+dt′′ h
+Σϕϕ
+ρ (t, t′′) Fϕπ(t′′, t′) + Σϕχ
+ρ,i(t, t′′) Fχπ
+i (t′′, t′)
+i
++
+Z t′
+t0
+dt′′ h
+Σϕϕ
+F (t, t′′) ρϕπ(t′′, t′) + Σϕχ
+F,i(t, t′′) ρχπ
+i (t′′, t′)
+i
+.
+(S.16)
+Finally, the Kadanoff–Baym equations are accompanied by evolution equations for the one-point functions. Due to the
+aforementioned Z2 gauge symmetry, the Majorana expectation value vanishes, ⟨ˆη⟩= 0. The equation for the expectation
+value of the Hubbard–Stratonovich field can be obtained by varying the 2PI effective action with respect to χ:
+δΓ2PI
+δχi(t) = δS [η, ψ, χ]
+δχi(t)
+−i
+2
+δ Tr
+h
+G−1
+0 (ψ, χ)G
+i
+δχi(t)
+= 0
+=⇒
+χi(t) =
+X
+j,σ
+iVij
+2
+Gyx(t, t, j, σ) −Gxy(t, t, j, σ) =
+X
+j,σ
+Vijsz
+j,σ(t) .
+(S.17)
+Similarly, the equations for the photon one-point functions can be obtained by varying Γ2PI with respect to ϕ and π, giving
+∂tϕ = π −κϕ ,
+∂tπ = −ω2
+0ϕ −κπ −˜g
+X
+i,σ
+sx
+i,σ = −ω2
+0ϕ −κπ + i˜g
+X
+i,σ
+Gyz(t, t, i, σ) .
+(S.18)
+Above, we adopted a simplified notation χ = ⟨ˆχ⟩, ϕ = ⟨ˆϕ⟩, etc.

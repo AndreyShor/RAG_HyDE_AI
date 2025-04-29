@@ -1,0 +1,115 @@
+3.1.1
+1D linear Burgess equation
+The linear term 𝑅(𝑥, 𝑡) characterizes the tumor’s progression in the absence of treatment [20,38]. Consider the
+linear brain tumor growth model:
+𝜕𝑢(𝑡, 𝑥)
+𝜕𝑡
+= 1
+2
+𝜕2𝑢(𝑡, 𝑥)
+𝜕𝑥2
++ 𝑅(𝑡, 𝑥),
+(3.1)
+subject to the conditions:
+𝑢(0, 𝑥) = 𝑒𝑥,
+𝑢(𝑡, 0) = 𝑒𝑡,
+𝑢(𝑡, 1) = 𝑒1+𝑡,
+(3.2)
+where
+𝑅(𝑡, 𝑥) = 1
+2𝑢(𝑡, 𝑥).
+(3.3)
+The exact solution is
+𝑢(𝑡, 𝑥) = 𝑒𝑥+𝑡.
+(3.4)
+Figure 6 shows a graphical analysis of the exact solution alongside the approximate solutions derived from PINN
+for the model given by Eq. (3.1). The results indicate that the PINN-based approximation closely aligns with the
+exact solution, confirming the stability of PINN. Additionally, Fig. 6 illustrates the increasing tumor cell density
+over time 𝑡. A three-dimensional graphical comparison between the PINN and exact solutions is provided in Fig. 7.
+Table 2 displays the relative error E𝑟
+𝐺and training error E𝑇alongside the selected hyper-parameters. A zoomed-in
+view of the plot at 𝑡= 0.5 clearly shows that the PINN prediction is more accurate than the solutions obtained
+using the Fibonacci and Haar wavelet methods [38].
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+1
+2
+3
+4
+5
+6
+u
+Exact, t = 0.1,
+Predicted, t = 0.1,
+Exact, t = 0.3,
+Predicted, t = 0.3,
+Exact, t = 0.5,
+Predicted, t = 0.5,
+Exact, t = 0.7,
+Predicted, t = 0.7,
+Exact, t = 0.9,
+Predicted, t = 0.9,
+(a) Exact versus prediction at different time 𝑡
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+2.0
+2.5
+3.0
+3.5
+4.0
+4.5
+u
+Exact, t = 0.5,
+Predicted, t = 0.5,
+0.5325 0.5350
+2.804
+2.806
+(b) Exact versus prediction at time 𝑡= 0.5
+Figure 6: Comparison between exact solution and PINN solution.
+𝑁int
+𝑁sb
+𝑁int
+𝐾−1
+¯𝑑
+𝜆
+E𝑇
+E𝑟
+𝐺
+Training Time/s
+2048
+512
+512
+4
+20
+0.1
+0.0001
+8.6e-06
+5.6
+Table 2: Best-Performing PINN Configuration for Section 3.1.1.
+3.1.2
+1D nonlinear Burgess equation:
+The nonlinear brain tumor growth model proposed in [20,38] is considered:
+𝜕𝑢(𝑡, 𝑥)
+𝜕𝑡
+= 1
+2
+𝜕2𝑢(𝑡, 𝑥)
+𝜕𝑥2
++ 𝑅(𝑡, 𝑥),
+(3.5)
+subject to the conditions:
+𝑢(0, 𝑥) = log(𝑥+ 2),
+𝑢(𝑡, 0) = log(𝑡+ 2),
+𝑢(𝑡, 1) = log(𝑡+ 3),
+(3.6)
+17

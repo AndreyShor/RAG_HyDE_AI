@@ -1,0 +1,85 @@
+8
+10.2
+Topological Coefficient of Friction
+Calculate the dissipation coefficient through linear response theory:
+γtopo = 1
+T
+Z ∞
+0
+⟨F(t)F(0)⟩dt = ϵµνFµν
+2πT
+The modified Langevin equation is:
+¨λ + γtopo ˙λ = ξ(t)
+11
+THEORETICAL CONNECTION BETWEEN QUASI-TOPOLOGICAL NUMBER AND FIDELITY
+11.1
+Mathematical Definition of Quasi-topological Number
+Set the parameter space to be a tight manifold X with the boundary ∂X corresponding to experimental constraints,
+then the weak topological number is defined as:
+νqua = 1
+2π
+Z
+S−Sref
+F ∈Z
+(S41)
+where:
+• F = dA is the Berry curvature, A is the Berry connection.
+• S, Sref are the relative 2-dimensional chains enclosed by the open path and the reference path, respectively.
+11.2
+Geometric Phase Representation of Fidelity
+The total phase of quantum state evolution includes both geometrical and dynamical parts under the open path:
+γ = 2πνqua
+| {z }
+geo
++
+Z T
+0
+⟨ψ|i∂t|ψ⟩dt
+|
+{z
+}
+dyn
+(S42)
+Counterdiabatic driving (AGP) suppresses the dynamic phase, and the fidelity is simplified to:
+F = 1 −
+δγ
+2π
+2
+,
+δγ ∝
+Z T
+0
+(δλ)2dt
+(S43)
+12
+FIDELITY CALCULATION IN KITAEV SUPERCONDUCTING CHAIN
+12.1
+Model Hamiltonian
+The real-space and momentum-space Hamiltonians of the Kitaev chain are, respectively:
+Hreal = −µ
+X
+j
+c†
+jcj −t
+X
+j
+(c†
+jcj+1 + h.c.) + ∆
+X
+j
+(cjcj+1 + h.c.)
+(S44)
+H(k) =
+
+−(µ + 2t cos k)
+i∆sin k
+−i∆sin k
+µ + 2t cos k
+
+(S45)
+12.2
+Fidelity Calculation Steps
+1. Parametric path design: Non-closed path λ(t) = (µ(t), ∆(t)), such as:
+µ(t) = µ0 + δµ sin(πt/T),
+∆(t) = ∆0 + δ∆(1 −cos(πt/T))
+(S46)

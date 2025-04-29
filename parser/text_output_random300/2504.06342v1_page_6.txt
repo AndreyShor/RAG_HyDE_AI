@@ -1,0 +1,100 @@
+6
+Parameter
+Value
+DM halo circular velocity, 𝑣c
+400 km s−1
+SMBH mass, 𝑀bh
+1.8 × 109 M⊙
+Stellar mass, 𝑀∗
+3 × 1011 M⊙
+Stellar scale length, 𝑟∗
+9.27 kpc
+Central gas number density, 𝑛0
+0.08 cm−3
+Gas core radius, 𝑟𝑐
+6.9 kpc
+Table 1. Key parameters used for initial conditions.
+ulate the AGN feedback-driven outflows, with de-
+tailed prescriptions described in §2.3.
+The parameters of the initial conditions are sum-
+marized in Table 1. The initial conditions are set
+to match those of the fiducial MACER2D model as
+closely as possible for comparison purposes. The
+only significant difference is the initial central gas
+density is much higher in MACER3D, consistent
+with observations of ellipticals (e.g., Capelo et al.
+2010; Werner et al. 2012), while the initial gas den-
+sity in MACER2D is negligible and relies on stellar
+winds for gas supply.
+2.3. Two-mode AGN feedback physics
+MACER3D implements AGN feedback through
+a sophisticated subgrid model based on its pre-
+decessor MACER2D (Yuan et al. 2018).
+The
+model distinguishes between two primary feedback
+modes: the hot (radio) mode and the cold (quasar)
+mode, delineated by a critical BH accretion rate
+¤𝑀BH ∼0.02 ¤𝑀Edd (Yuan & Narayan 2014). The hot
+mode occurs when low-density gas accretes onto
+the central SMBH, driving radio-mode feedback,
+while the cold mode activates during high-density
+gas accretion, powering quasar-mode feedback. Al-
+though the hot mode encompasses winds, jets, and
+radiation, we defer the implementation of jet feed-
+back to future work for simplicity. For the cold
+mode, we consider only winds and radiation, ex-
+cluding jets – a choice consistent with observations
+showing that radio-loud quasars constitute only a
+small fraction of the total quasar population (Keller-
+mann et al. 1989; Ivezi´c et al. 2002; Ba˜nados et al.
+2015; Liu et al. 2021).
+The AGN feedback mode, hot or cold, is deter-
+mined by the accretion rate onto the central SMBH
+¤𝑀BH, which is calculated on the fly. Since the in-
+ner boundary of our simulation is set at 𝑟in = 25 pc,
+which is typically smaller than the Bondi radius, we
+can directly compute the accretion rate crossing the
+inner boundary ¤𝑀(𝑟in), from which the BH accre-
+tion rate ¤𝑀BH and the properties of wind (outflow)
+can be inferred via the standard black hole accretion
+theory and observations, as detailed below.
+2.3.1. The hot (radio) mode
+The accretion flow in the hot AGN mode is mod-
+eled to consist of two distinct regions:
+a trun-
+cated thin disk at large radii and a hot accretion
+flow within the truncation radius (Yuan & Narayan
+2014). The truncation radius is given by:
+𝑟tr ≈3𝑟s
+0.02 ¤𝑀Edd
+¤𝑀(𝑟in)
+2
+(3)
+where 𝑟s denotes the Schwarzschild radius. While
+observational evidence for winds from hot accre-
+tion flows (Wang et al. 2013; Cheung et al. 2016;
+Peng et al. 2020; Shi et al. 2021, 2022) and its inter-
+action with ISM (Shi et al. 2024) has emerged re-
+cently, robust constraints on their properties remain
+limited. Therefore, following Yuan et al. (2018), we
+adopt the theoretical prescriptions from Yuan et al.
+(2015):
+¤𝑀BH = ¤𝑀(𝑟in)
+3𝑟s
+𝑟tr
+0.5
+,
+(4)
+¤𝑀wind,hot = ¤𝑀(𝑟in) −¤𝑀BH,
+(5)
+𝑣wind hot = (0.2 −0.4)𝑣K(𝑟tr),
+(6)
+where 𝑣K(𝑟tr) represents the Keplerian velocity at
+the truncation radius. Consistent with (Yuan et al.
+2018), we restrict the angular distribution of the
+wind to 30◦−70◦and 110◦−150◦.
+For radiative processes, we implement the de-
+tailed calculations of hot accretion flow radiative
+efficiency from Xie & Yuan (2012).
+This effi-
+ciency is significantly lower than that of standard

@@ -1,0 +1,110 @@
+5
+same time. Each injection has a Pauli Error Rate defined
+in the same way as for the gate noise model. Applying
+noise at regular intervals mimics the cumulative build-
+up of errors in quantum circuits that occur as a result of
+environmental noise, where the specific regularity of the
+noise injections reflects the typical relaxation time and
+dephasing time of the system. Although this model does
+not include amplitude damping noise, dephasing noise, or
+the entire span of complex errors that could arise from
+realistic noise models, it is able to capture a range of
+alterations that may occur to the qubits as a result of
+energy loss to the system and decoherence. The model is
+also compatible with our choice of QEC code.
+III.
+SIMULATIONS
+We ran simulations of the logically-encoded circuit un-
+der the gate noise and environmental noise models in a
+classical high-performance computing environment, us-
+ing Xanadu’s Pennylane library [58] in Python 3.12.3.
+The application of each stabiliser and syndrome extrac-
+tion adds one extra qubit to the system, hence the re-
+source overhead for the simulations ranged from 12 qubits
+to 20 qubits depending on the number of syndrome ex-
+traction rounds performed.
+Since there are only four unique data points that can
+be used to train the VQC (namely, [0,0,0], [0,1,1], [1,0,1]
+and [1,1,0]), we duplicated the set to produce 40 train-
+ing samples, and split it into 24 samples for training and
+16 samples for testing. We used a batch size of 8 and
+ran the training for 100 iterations each, which was more
+than sufficient for convergence in a zero noise environ-
+ment. Since the [[4,2,2]] stabiliser code is not capable of
+correcting errors, we discarded shots where at least one
+X or Z error was detected. Shots were rerun until no
+errors are detected.
+We apply the noise models to both ancilla and physical
+qubits in the system, but keep the syndrome extraction
+qubits noise-free. We chose a Pauli Error Rate ranging
+from 0.001 to 0.01 for both models, which is consistent
+with current NISQ device capabilities [59]. For the envi-
+ronmental noise model, we chose a Pauli error injection
+regularity of once every 4 gates, with the same Pauli Er-
+ror Rates as used for the gate noise model. Since most
+of our gates are 2-qubit gates, with an estimated comple-
+tion time of ≈10 −200 ns [60–62], and since our Pauli
+Error Rates produce one error every 100 to 1000 injec-
+tions, equivalent to one error every 400 to 4000 gates, we
+estimate the time interval between errors to be ≈4−800
+µs. This is consistent with realistic relaxation and co-
+herence times, which are roughly of order 10 −1000 µs
+in superconducting qubits [63, 64].
+Incoherent noise is normally modelled by mixed states
+and density matrices, as this formulation captures the
+true nature of how the quantum state evolves over time
+as a result of random noise. However, due to the large
+computational overhead of simulating the QML model
+training with density matrices (where size scales poorly
+with number of qubits), we modelled the system using
+statevectors instead. Although this model does not cap-
+ture the decoherence of the original pure state, for our
+purposes it was able to correctly predict the probability
+vector output at the end of each circuit, while requiring
+much less computational time to simulate.
+IV.
+RESULTS AND DISCUSSION
+We first present the impact of the noise models on
+training accuracy with and without error correction, fo-
+cusing on the effectiveness of the [[4,2,2]] stabiliser code
+in detecting errors and protecting the training accuracies.
+We then show the impact of ancilla qubit noise on the
+fidelities of the physical qubit states and consequently,
+the training accuracies. We also reveal that ancilla qubit
+noise limits the effectiveness of the stabiliser code, and
+use our results to define a threshold for the maximum an-
+cilla Pauli Error Rate and the minimum ancilla fidelity
+required for reliable error detection and best training ac-
+curacies.
+A.
+Training with Noise without Error Detection
+In Figure 3, we show the evolution of the mean train-
+ing accuracy achieved during training (where the mean
+was calculated from 10 simulations with different start-
+ing seeds), under both noise models, with varying noise
+levels expressed as Pauli Error Rates and without error
+detection.
+As we might expect, it is clear from Figure 3 that the
+higher the noise level, the lower the final training accu-
+racy is. For noise levels where p ≥0.005, the training
+curve does not exhibit a significant jump in accuracy
+within the first 30 iterations, as it does for the lower
+noise level simulations. Instead, they stay close to their
+initial training accuracy throughout training, indicating
+that the patterns in the data required for training are
+lost in the noise. When noise levels are at p ≤0.0025,
+learning appears hampered but not impossible.
+These results indicate that our simple VQC model is
+fairly susceptible to noise, which we suggest is due to its
+reliance on only two qubits to learn and make predic-
+tions. While larger and more complex QML algorithms
+generally have greater learning capacities and may be
+more robust to noise and errors, they also require more
+qubits and gates, which increases the potential for errors.
+Consequently, training and inference for both simple and
+complex QML algorithms on NISQ devices (where noise
+levels can exceed p = 0.005) will most likely require a
+combination of error correction and mitigation. For some
+QML algorithms and applications, fully fault-tolerant
+quantum computation will still be necessary to achieve
+desirable levels of accuracy.

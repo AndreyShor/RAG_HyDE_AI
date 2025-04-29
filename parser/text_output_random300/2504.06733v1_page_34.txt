@@ -1,0 +1,35 @@
+chemical systems such as Ar@C60 and Ar@C60/Ag(111). Although MOM-DFT might,
+in principle, be a good source of the initial wavefunction required for the WPP cal-
+culations, implementing a theoretical framework to solve this long-standing problem
+goes far beyond the scope of the present paper.
+10 Relativistic considerations
+Although a relativistic treatment would further enhance the theoretical calculations,
+we found that it was difficult to include relativistic effects via TD-DFT in such a
+way that enables us to elucidate and distinguish the two transitions Ar 2p3/2 →4s
+and Ar 2p1/2 →4s. For example, spin–orbit coupling calculations in contemporary
+quantum chemistry packages such as ORCA tend to give coupling matrix elements
+between multiplets that arise from a non-relativistic TD-DFT calculation, and while
+this might be able to incorporate some relativistic effects into the computed excitation
+energies, we found that it was not straight-forward at all to obtain physical insights
+into the spin–orbit-coupled excitation energies that would give us the understanding
+or insights we sought.
+Instead, we performed Dirac–Hartree–Fock (DHF) calculations[32, 33] including Breit
+and Gaunt interactions[34, 35] in a j-adapted Gaussian basis set as implemented in
+PySCF[36]. As a single-determinantal method, DHF provides access to spin–orbit-
+coupled four-component molecular orbitals (bispinors) which allows us to identify the
+Ar 2p3/2 and 2p1/2 bispinors in the ground state of Ar@C60, easily. In fact, the DHF/6-
+31++G** calculation for the ground state yields doubly degenerate Ar 2p1/2 bispinors
+and quadruply degenerate Ar 2p3/2 bispinors that are separated by 2.13 eV, in good
+agreement with experimental results (Figure S2).
+11 The Z+1 approximation: ground state K@C60
+Key Kohn-Sham molecular orbitals for K@C60 calculated at the PBE/ 6-31++G**
+level of theory are shown in Fig. S9. As noted in the main paper, while there is indeed
+some similarity between the Ar 2p →4s excited-state Ar@C60 system and the ground
+state K@C60 system by virtue of the Z + 1 approximation, for the latter there exists
+both a first-order electron transfer from K to C60 to generate the ion pair K+(C60)−
+and a second-order back-donation from (C60)−to K+ to reduce the charge separation
+in accordance with Pauling’s principle of electroneutrality. On the other hand, in
+excited-state Ar@C60 there exists only a partial charge transfer from Ar to C60 via the
+distortion of the occupied Ar 4s molecular orbital induced by the core hole, without
+any back-donation from the cage.
+14

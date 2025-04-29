@@ -1,0 +1,72 @@
+Preprint. Under review.
+Table 1: Summary of Evaluation Metrics
+METRIC
+ARTIFACTS
+SKILLS MEASURED
+Correctness
+Alignment
+Physics Reasoning
+Executability
+API Messages
+✓
+Model Tree Score
+Model Tree
+✓
+Physics Metrics
+Physics Code
+Interface Factuality
+✓
+Recall Metrics
+✓
+✓
+Feature Dimension
+✓
+✓
+Target Value Metrics
+Output
+✓
+✓
+✓
+• Executability†: Executable lines as a fraction of parsed API calls in an LLM solution. A
+given line may be invalid if it is syntactically incorrect or if it refers to an invalid action
+(like modifying a property under a non-existent node).
+• Model Tree Score†: Similarity score between the LLM solution’s model tree and a GT
+tree. This is normalized so that a solution with no parsed lines of code is scored 0. If it
+was equivalent to the GT tree, the score would be 1. This measures the alignment of the
+model’s solution path with a successful path.
+• Physics Metrics: The metrics above analyzed the entire solution or its derived artifacts.
+The code is a basis to represent the actions the LLM takes to model the problem.
+Since the physics block is both the most diverse and the most challenging (Figure 4),
+we further evaluated specifically the LLM’s physics actions. The most basic physics
+action sequence involves: Create Interface (e.g.: HeatTransfer) →Create Feature under
+Interface (e.g.: TemperatureBoundary) →Modify Feature Properties (e.g.: T0, to set
+a temperature). Our Physics Metrics include (a) Interface Factuality: What fraction
+of interfaces created by the LLM are real COMSOL Multiphysics®interfaces and not
+hallucinated? (b) Interface / Feature / Feature Property Recall: How many interfaces /
+features / feature properties created / modified by the GT solution were also in the LLM
+solution? (c) Feature Dimension: For features created by both, does the feature’s spatial
+dimension match? For example, if an LLM sets a temperature boundary condition on
+a 1D geometry, this metric checks whether it deduced that the boundary should be 0
+dimensional, by comparing the dimension with the GT boundary dimension. While
+these metrics offer a granular look into the LLM’s physics reasoning path, some nested
+physics metrics, such as ‘Feature Dimension’ will not be valid for a problem when there
+is no overlap between the GT and the LLM code: we mask out these problems while
+computing the means for that metric.
+• Target Relative Error†: We entask an LLM to check that the computed value in the
+exported table matches the target description and is not a default value, and to parse the
+response, if so. Valid Target is the number of problems for which the LLM judges the
+value to be valid. We then compute the relative error between the value and the Target
+(GT) Value. Relative Error | Strict computes the mean relative error only over problems
+for which Valid Target is True, AND the relative error is less than 10%. Relative Error |
+Strict is the principal metric one would ideally use to assess whether a problem was truly solved.
+The tables report the means and standard errors on the mean across problems that the
+experiments were run on. Some nested physics metrics, such as ‘Feature Dimension’ might
+not be valid for a specific problem, if there was no matching feature between the GT and the
+LLM code: we mask out these problems while computing the means for that specific metric.
+5
+Results and Discussion
+Comparison across LLMs at baseline.
+Three closed-source LLMs – Claude-3.5-Sonnet
+(Anthropic), GPT-4o (OpenAI) and Gemini-1.5-Pro (Reid et al., 2024) – and three open-
+weights LLMs from the Gemma family (CodeGemma Team et al., 2024; Gemma Team et al.,
+6

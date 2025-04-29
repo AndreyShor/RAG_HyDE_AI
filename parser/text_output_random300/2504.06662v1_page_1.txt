@@ -1,0 +1,86 @@
+RAMBO: RL-augmented Model-based Optimal Control
+for Whole-body Loco-manipulation
+Jin Chengα, Dongho Kangα, Gabriele Fadiniα, Guanya Shiβ, Stelian Corosα
+Abstract— Loco-manipulation—coordinated locomotion and
+physical interaction with objects—remains a major challenge
+for legged robots due to the need for both accurate force inter-
+action and robustness to unmodeled dynamics. While model-
+based controllers provide interpretable dynamics-level planning
+and optimization, they are limited by model inaccuracies and
+computational cost. In contrast, learning-based methods offer
+robustness while struggling with precise modulation of inter-
+action forces. We introduce RAMBO—RL-Augmented Model-
+Based Optimal Control—a hybrid framework that integrates
+model-based reaction force optimization using a simplified
+dynamics model and a feedback policy trained with reinforce-
+ment learning. The model-based module generates feedforward
+torques by solving a quadratic program, while the policy
+provides feedback residuals to enhance robustness in control
+execution. We validate our framework on a quadruped robot
+across a diverse set of real-world loco-manipulation tasks—
+such as pushing a shopping cart, balancing a plate, and
+holding soft objects—in both quadrupedal and bipedal walking.
+Our experiments demonstrate that RAMBO enables precise
+manipulation while achieving robust and dynamic locomotion,
+surpassing the performance of policies trained with end-to-
+end scheme. In addition, our method enables flexible trade-off
+between end-effector tracking accuracy with compliance.
+I. INTRODUCTION
+Modern legged robots have demonstrated impressive mo-
+bility across a wide range of terrains [1, 2, 3, 4]. To ex-
+pand their capabilities beyond conventional locomotion tasks,
+there is growing interest in loco-manipulation, which enables
+these machines to actively interact with and manipulate
+their surroundings. However, whole-body loco-manipulation
+remains a challenging task for these systems, as it requires
+coordinated effort of controlling both the base and end-
+effector movements to achieve both precise and robust be-
+haviors, which often pose conflicting objectives [5].
+Being robust against unmodeled effects and unexpected in-
+teractions, learning-based controllers have achieved impres-
+sive results in various pedipulation and manipulation tasks [6,
+7, 8]. However, training agents for loco-manipulation via
+reinforcement learning (RL) remains challenging due to the
+large exploration space, often necessitating reward shap-
+ing, curriculum design, or intrinsic motivation strategies [9,
+10, 11]. To bridge the sim-to-real gap, techniques such
+as domain randomization have become common [12, 13],
+but they typically trade off precise end-effector tracking
+for greater robustness in locomotion [14, 15]. Additionally,
+αComputational Robotics Lab (CRL) at ETH Zurich, Switzerland
+{first.last}@ethz.ch
+βLearning and Control for Agile Robotics Lab (LeCAR), Carnegie
+Mellon University, USA guanyas@andrew.cmu.edu
+Supplementary video: https://youtu.be/jIrysIF1eF8
+Fig. 1: Various whole-body loco-manipulation tasks enabled by RAMBO on
+Unitree Go2 [27] in both quadrupedal and bipedal modes.
+learned policies tend to produce excessively large position
+targets to ensure sufficient contact forces, which can lead to
+unpredictable and potentially unsafe behaviors [16, 17].
+Model-based control methods, on the other hand, have
+proven highly effective for contact planning and handling
+interactions with objects in whole-body loco-manipulation
+tasks [18, 19, 20]. By explicitly taking contact forces into
+account, these approaches enable precise control and op-
+timization of torque-level commands [21, 22, 23]. How-
+ever, their performance heavily depends on accurate state
+estimation and system modeling with carefully identified
+parameters on real hardware [24]. Moreover, techniques such
+as model predictive control (MPC) often involve significant
+computational demands and require substantial engineering
+effort to achieve real-time motion optimization in complex
+scenarios [25, 26].
+The ultimate goal of this work is to equip the legged
+controllers with the capability to perform robust, precise, and
+efficient whole-body loco-manipulation. We aim to combine
+the strengths of both model- and learning-based approaches,
+achieving effective force-level control while remaining robust
+against unmodeled effects and disturbances.
+To this end, we propose RAMBO—RL-Augmented Model-
+Based Optimal Control—a hybrid control framework for
+whole-body loco-manipulation tasks on legged systems. Our
+method generates feedforward torque commands by opti-
+mizing end-effector contact forces through quadratic pro-
+gramming (QP), while ensuring robustness with a feedback
+RL policy that compensates for modeling errors through its
+arXiv:2504.06662v1  [cs.RO]  9 Apr 2025

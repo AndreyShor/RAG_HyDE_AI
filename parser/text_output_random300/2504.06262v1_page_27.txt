@@ -1,0 +1,122 @@
+27
+In the case of the NLSE, N depends on the field, and
+the above approximation breaks down.
+There is mul-
+tiple choices for when to sample the field, i.e.
+before
+or after the first and second exponential multiplication.
+The following sampling choice conserves the convergence
+properties of (112) (Javanainen and Ruostekoski, 2006):
+E1 = e
+iδz
+2 g|E0|2E0
+(113)
+E2 = eiδzDE1
+(114)
+E3 = e
+iδz
+2 g|E2|2E2,
+(115)
+where N(E) = V + g|E|2. This gives one step of the
+algorithm, we then loop over the
+L
+δz times until the end
+of the nonlinear medium cell to get the output field.
+This method converges with O(δz3) temporal accuracy
+and O(δr2) spatial accuracy. As explain in (Weideman
+and Herbst, 1986), the stability condition is δz ≤
+δr2
+π .
+The strategy to balance performance and precision is to
+choose δr such that δr < ξ, and adjust δz to satisfy the
+stability condition.
+In the case of the simple Euler scheme presented
+above, all of the steps are diagonal in real and Fourier
+space. This means that all calculations can be carried
+out element-wise over the real and Fourier space grids.
+This makes it particularly suited for GPU acceleration
+as this type of hardware is heavily optimized for such
+matrix calculations, as well as packing a lot of comput-
+ing power at an accessible price.
+Compared to CPU-
+based implementations, GPU-based solvers offer impor-
+tant speedups depending on problem size and hardware
+(Aladjidi et al., 2024). This makes it possible to model
+large optical systems with high spatial and temporal res-
+olution.
+Open source packages are available to imple-
+ment this approach without any pre-existing knowledge
+of GPU programming (Aladjidi et al., 2024).
+VII. RECENT EXPERIMENTAL ADVANCES
+During the last decade, experiments with fluids of light
+have moved towards more and more connections with ul-
+tracold atomic quantum gases. Using similar vocabulary
+and formalism, this has opened a new era for the field
+with three objectives in mind: i) validate the paraxial
+fluid of light systems as a potential platform to study
+quantum gases; ii) improve our understanding of quan-
+tum gases with new observables or better resolution using
+fluids of light with respect to ultracold atomic systems;
+iii) invent novel optics experiments directly inspired by
+ultracold quantum gases. These three goals are some-
+what chronological. The fluid of light community made a
+clear effort initially to settle this system as a solid and rig-
+orous equivalent of ultracold quantum gases at the mean-
+field level, observing superfluidity, Bogoliubov dispersion,
+vortex nucleation, etc. In a second step, extending the
+knowledge of quantum gases thanks to the specific tools
+available for fluids of light has shown great results in
+turbulence, Bose-Bose mixtures and out-of-equilibrium
+dynamics. The third step is not clearly established yet.
+While several original optics experiments have been con-
+ducted, no truly novel nonlinear or quantum optics phe-
+nomena has been discovered yet. We will propose a few
+ideas along this direction at the end of this review.
+A. Hydrodynamics and nonlinear dynamics
+Hydrodynamics is one of the main testbed for fluids of
+light. Compared to atomic BECs, fluids of light gives ac-
+cess to direct imaging of the beam intensity and off-axis
+digital holography allows to reconstruct the phase of the
+light field and thereafter the velocity field. Historically,
+these studies were targeting the observation of bright
+and dark solitons to demonstrate the nonlinear nature
+of these systems, where the balance between diffraction
+and nonlinearity allows for the formation of self-confined
+waves (Fleischer et al., 2003).
+Subsequently, study of
+jetlike tunneling (Cohen et al., 2013), optical analogue
+of the Laval nozzle (Fouxon et al., 2010) and Rayleigh-
+Taylor instabilities (Jia et al., 2012) have reinforced the
+hydrodynamics interpretation. In the past years, several
+other topics have emerged. Several studies have focused
+on the formation of dispersive shock waves, analogous to
+those observed in other fluid systems, including atomic
+BECs (Abuzarli et al., 2021; Azam et al., 2021; Bienaim´e
+et al., 2021; Copie et al., 2020; Dieli et al., 2024; Walczak
+et al., 2015; Wan et al., 2007; Xu et al., 2015). These
+shock waves manifest when perturbations propagate at
+different speeds due to dispersion and nonlinearity, lead-
+ing to oscillatory structures.
+Notably, the dynamics of shock waves in fluids of
+light have been quantitatively analyzed using Whitham
+modulation theory, showing good agreement with ex-
+perimental observations (Azam et al., 2021; Bienaim´e
+et al., 2021).
+Blast waves, characterized by increased
+pressure and flow followed by a negative pressure wind,
+have also been experimentally generated and studied in
+fluids of light, providing insights into compressible fluid
+dynamics in different spatial dimensions (Abuzarli et al.,
+2021).
+Similarly, dam break experiments have been
+conducted in fluids of light, where the interaction of
+dispersive shock waves propagating in orthogonal direc-
+tions gives rise to a 2D ensemble of solitons (Dieli et al.,
+2024). These experiments involved measuring analogous
+physical properties like hydrostatic pressure, density,
+and particle velocity, and showed good agreement with
+hydrodynamical models.
+Very tightly connected is the study of topological de-
+fect formation, particularly vortices. Experiments have
+demonstrated the spontaneous generation of vortices fol-
+lowing perturbations (Aladjidi, 2023), such as the snake

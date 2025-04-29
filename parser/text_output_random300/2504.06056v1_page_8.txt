@@ -1,0 +1,145 @@
+PAGIONO
+An ionospheric activity index
+Dr.Paul.Kinsler@physics.org
+Band Pair
+Norm, C1.65
+Norm, C0
+L1CL2C
+0.9733
+0.9916
+L1CL6C
+0.9562
+1.1750
+L1DL5D
+1.0368
+1.0208
+L1DL7D
+0.9448
+1.1287
+L1LL2L
+0.9446
+1.0681
+L1PL2P
+0.9791
+1.0218
+L1PL5P
+1.0286
+1.2900
+L1WL2W
+0.9258
+1.3930
+L5Xl8X
+0.9756
+0.5477
+TABLE II. A sample of the computed dTEC normalisation scalings
+for the 30 band-pairs used to calculate TEC and dTEC values, as
+based on aggregated data from the KP “quiet” days 006 and 007 of
+2022. A full table and explanation is given in the Supplementary
+Material A.9. Here “Norm, C1.65” is the band pair scaling needed
+to align the fitted widths if the η = 1.65 path-angles correction was
+applied, whereas “Norm, C0” is that if no path-angle correction was
+applied.
+2.
+Band pair correction
+The band pair used in any dTEC computation is an impor-
+tant consideration, because the TEC (and hence dTEC) values
+are uncalibrated, and are computed based on band pairs that
+have frequency differences that span an order of magnitude –
+∆f for L1CL2C is 356MHz, but for e.g. L7QL8Q it is only
+15.345MHz. Further, the frequency differences fall broadly
+into two groups, those with ‘large ∆f (i.e. > 250MHz), and
+those with small ∆f (i.e. < 120MHz). This grouping is sim-
+ply an artifact of the transmission frequencies used by GNSS
+satellite constellations considered here.
+If we try to normalise based on our quiet days reference,
+using dTEC values without any path-angle compensation, we
+find that the computed scaling factors for dTEC’s from differ-
+ent bands can vary by up to a factor of two.
+However, once the η = 1.65 path-angle compensation dis-
+covered above is applied, the scaling factors – with only one
+exception – fall within about 10% of unity, seen on Table II.
+This unexpected reduction in the spread of band pair scaling
+factors also helps give us more confidence in the application
+of the η = 1.65 path-angle compensation.
+H.
+Tails and widths
+The “distribution width” measure WdT introduced above
+does not include any width-like contributions from the fits to
+the power-law tails; and so they were not included in the band
+pair normalisation. This is because – as already discussed –
+the tails have neither a natural width scale, nor any natural
+amplitude scale. Further, they in no way (ever) contribute a
+significant fraction of the number of dTEC values sampled.
+However, that does not mean that the tail fitting parameters do
+not contain useful information, but only that it is not straight-
+forward to detrrmine to what extent they should (or might)
+contribute to a combined width.
+Since WdT is intended as a proxy for ionospheric activity,
+the ability to consider adding an extra pseudo-width compo-
+nent calculated from the tail fits (from e.g. (11) and (12))
+seems desirable. This could capture and incorporate infor-
+mation on the varying magnitude of dTEC under changing
+ionospheric conditions, thus potentially increasing the accu-
+racy and utility of WdT as an ionospheric scale (from which the
+likelihood of ionospheric propagation disturbances in a given
+region and over a given temporal interval can be deduced).
+In the width and amplitude constructions below, we might
+want to assume – in the absence of other determinations – that
+the tail behaviour is of roughly equal importance as any of the
+gaussian or exponential G2E contributions; for this we need
+to compute a width-like parameter and an amplitude-like one
+that vary over a similar range to the G2E ones.
+To construct a width-like tail parameter we started from
+the observation that exponents α8 typically vary between −2
+(broad) and −5 (narrow), whilst typical gaussian and expo-
+nential widths on quiet days (see subsection IV F) usually
+have a minimum of about 0.05. Thus here we use an ad hoc
+procedure where we assign an effective ”tail width” parameter
+to be
+ωT =
+1
+4|α8|,
+(11)
+where we insert the 1/4 to ensure that ωT, like the other
+widths, also ranges from 0.05 upwards.
+To construct an effective amplitude-like tail parameter (or
+weighting) we integrate the power-law tail from the cut-off (at
+α7) to infinity, and compare that to a tail normalised to have
+unit area. Then, if we also multiply it by a factor of 50, we
+bring it into same range or values as that for the gaussian and
+exponential amplitudes (see subsection IV F). Recalling that
+α9 is the amplitude of the tail feature, this rescaled normalisa-
+tion approach gives us an effective “tail amplitude” of
+βT = 50α9
+αα8+1
+7
+α8+1 .
+(12)
+As a result, should we wish to apply it, we would add the
+product βTωT of these two estimates to WdT to obtain a width-
+like quantity that took these power law tails into account with
+a broadly similar emphasis to the true width estimates:
+W ∗
+dT = WdT +βTωT.
+(13)
+Of course, these initial estimates as to how to incorporate
+the significance of the power law tails are tentative, and in
+future work we intend to place them on a firmer footing.
+V.
+UTC VERSUS LOCAL TIME
+Before proceeding to the calculation of our index LdT, it
+is instructive to analyse multi-day sets of data and see how
+the ionosphere responds to the day/night cycle. To do this we
+consider the two distinct temporal bases on which we might
+divide the dTEC measurements: either by universal time (UT)
+or local time (LT). We now proceed to compare representa-
+tions of the data looked at in both ways; but in order to align
+with our 30◦longitude divisions (dodecants), we base these
+comparisons on slices containing two hours of data, rather
+than our typical minimum – a single hour of data.
+In Figs. 3, 4, 5 we compare three different sequences of
+day-data organised by either universal time (UT) or local time
+(LT). In all three sequences, we see that by LT the temporal
+variation has a more regular and more pronounced modulation
+as compared to that aggregated by UT; whilst noting that the
+8

@@ -1,0 +1,57 @@
+develop certification procedures for QKD equipment that can be carried out by third parties [509], as is
+done for conventional IT and security equipment.
+On the other hand, the development of device independent protocols can provide a more broad
+solution with it’s goal to achieve information-theoretic security with as few assumptions as possible. DI-
+QKD, MDI-QKD and SDI-QKD can solve many of the most important implementation issues. While
+DI techniques allow for the main concepts behind security to be rooted to fundamental laws of physics,
+practical implementation will inevitably introduce new issues that may not have been considered. These
+need to be identified and scrutinized in order for QKD (DI or otherwise) to have widespread use. This is
+one of the objectives of the ongoing standardization process of QKD systems (see next section).
+Authentication. To prevent man-in-the-middle attacks, QKD requires two-way authentication of the clas-
+sical channel between users for the classical post-processing stage of the QKD protocol (basis sifting, error
+correction, privacy amplification). In small networks, pre-shared keys can be used. However, this severely
+limits the network, as not only do the keys need to be stored securely, but new users should be able to join
+without having previously established a key. In classical communications, the public-key infrastructure
+(PKI) provides methods for authentication, which will soon include post-quantum cryptography (PQC).
+Though it is not information-theoretic secure, PQC and crypto-agility is the current next step to be
+adopted in protecting public-key cryptosystems from quantum computing [510]. PQC has already been
+used to authenticate classical communications in QKD sessions in several network topologies [511, 512].
+Importantly, since PQC is used only for authentication (key exchange for data encoding is realized with
+QKD), only short-term security is required. That is, if the PQC method used is broken in the future,
+the encoded data is still safe. Thus, PQC+QKD can offer a more robust security paradigm.
+Trusted Relays. As discussed above, currently trusted relays are required to construct QKD links over
+several hundred kilometers. As the development of quantum repeaters evolves [470], these classical relays
+can be exchanged for quantum relays, which will solve this issue. In a quantum network architecture,
+distributing several keys over multiple paths incorporating different sets of nodes will improve security,
+should one or more trusted nodes become compromised. Post-processing of the keys by the end users
+can reduce any leaked information. In addition, MDI-QKD can be used to transform some of the trusted
+relay stations into untrusted ones. For DI-QKD at large-scale distances, however, quantum repeaters are
+indeed a requirement.
+Denial of service. Since QKD involves sending a single quantum state over a channel, any interruption in
+transmission, such as simply cutting the optical fiber, or introducing high amounts of noise, will prevent
+key exchange.
+This risk, known as denial of service, has been reduced in several proof-of-concept implementations by
+using quantum link redundancy, which takes advantage of the quantum network architecture to distribute
+keys over multiple paths [513]. In addition, hybrid approaches using QKD and PQC can also mitigate
+denial of service [514, 515].
+Cost. When evaluating the cost of cybersecurity, it should be compared to the cost of cybercrime, which
+worldwide is the equivalent third largest economy in the world (∼9.5 trillion USD in 2023 and grow-
+ing) [516]. In this regard, massive investment in cybersecurity is warranted, as exemplified by the US
+governments migration to post-quantum encryption, which is estimated to be 7.1 billion USD over ten
+years [517]. Second, the last century has shown that the evolution of technology typically leads to cheaper
+and better devices, as is the case of the microchip, for example. In this regard, integrated photonics will
+inevitably bring not only miniaturization and improvement but also the cost-reduction of quantum pho-
+tonic devices, as it has done for classical equipment (see Ref. [518] for a recent review). It should also
+be noted that research and investment in quantum technology in general will accelerate development
+in quantum communications, since quantum photonic devices are widely used in most applications. In
+regards to QKD, manufacture of on-chip transmitters and receivers should facilitate the standardization
+and deployment of QKD systems. While chip integration of sources and optical circuits is quite ad-
+vanced, the current technological roadblock is the integration of on-chip single-photon detectors, which
+are currently at a proof-of-principle or development stage [518].
+Much progress has been made in integrating QKD into existing telecommunications infrastructure
+(see below), which will help decrease costs and requirement of special purpose equipment. In addition,
+QKD network architecture can be designed for cost reduction. For example, Hub and spoke [519] or
+multi-user [520] architectures with MDI-QKD or standard QKD [521], incorporating a central detection
+station, reduce the need for multiple detectors, which should minimize infrastructure costs.
+Finally,
+77

@@ -1,0 +1,166 @@
+PREP2|0⟩=
+1
+√ηval
+ηval
+X
+i=1
+|i⟩⊗
+1
+p
+λVloc/ηval
+ηion
+X
+I=1
+q
+λ ˜V I
+loc|I⟩= |Φel⟩⊗|Φion⟩.
+(190)
+The state |Φel⟩is a uniform state prepared with USP. However, we must include the cost of the control
+on the term selection register. The cost of a controlled USP is 7⌈log(ηval)⌉+ 2bηval −6 and uses ⌈log(ηval)⌉
+additional ancillae. For the non-local term, we must also prepare |Φel⟩controlled on the term selection
+register. However, this cost can be shared; we encode the local and non-local terms in the term selection
+register with the bases |0100⟩and |1000⟩, respectively, and so if we wish to prepare |Φel⟩conditioned on
+either of these terms, we only need to CNOT the high bit conditioned on the second-highest bit to flip to
+|1100⟩and |1000⟩, and then prepare |Φel⟩once conditioned on the high bit (and then undo the CNOT).
+We have the state
+|Φion⟩=
+ηion
+X
+I=1
+s
+λ ˜V I
+loc
+λVloc/ηval
+|I⟩.
+(191)
+However, the coefficient λ ˜V I
+loc only depends on ion I insofar as it depends on the ionic species ζI. Instead of
+preparing |Φion⟩directly, we first prepare a state
+|Φζ⟩=
+1
+qPZ
+ζ=1 λ ˜V ζ
+locmζ
+Z
+X
+ζ=1
+q
+λ ˜V ζ
+locmζ|ζ⟩,
+(192)
+where mζ is the multiplicity of the ion species ζ. We then use a QROM over ζ to load mζ, use USP to
+prepare a uniform superposition over mζ amplitudes, and then uncompute the QROM:
+|Φζ⟩7→
+1
+qPZ
+ζ=1 λ ˜V ζ
+locmζ
+Z
+X
+ζ=1
+q
+λ ˜V ζ
+locmζ|ζ⟩|mζ⟩
+(193)
+7→
+1
+qPZ
+ζ=1 λ ˜V ζ
+locmζ
+Z
+X
+ζ=1
+q
+λ ˜V ζ
+locmζ|ζ⟩|mζ⟩
+ 
+1
+√mζ
+mζ
+X
+I=1
+|I⟩
+!
+(194)
+7→
+1
+qPZ
+ζ=1 λ ˜V ζ
+locmζ
+Z
+X
+ζ=1
+q
+λ ˜V ζ
+locmζ|ζ⟩
+ 
+1
+√mζ
+mζ
+X
+I=1
+|I⟩
+!
+.
+(195)
+Rearranging yields
+1
+qPZ
+ζ=1 λ ˜V ζ
+locmζ
+Z
+X
+ζ=1
+q
+λ ˜V ζ
+locmζ|ζ⟩
+ 
+1
+√mζ
+mζ
+X
+I=1
+|I⟩
+!
+=
+1
+qPZ
+ζ=1 λ ˜V ζ
+locmζ
+Z
+X
+ζ=1
+mζ
+X
+I=1
+q
+λ ˜V ζ
+loc|ζ⟩|I⟩
+(196)
+=
+1
+qPηion
+I=1 λ ˜V I
+loc
+ηion
+X
+I=1
+q
+λ ˜V ζ
+loc|ζ⟩|I⟩,
+(197)
+which is |Φion⟩up to entanglement with junk in the |ζ⟩register (that we can ignore given that this is a state
+preparation routine inside a block encoding).
+The cost of preparing a state |Φζ⟩just using arbitrary state preparation to bZ bits of precision using
+routines like [103] is 4Z + ⌈log Z⌉(bZ −3) −2 [63]. The QROM to load mζ has cost Z (and we assume
+the same cost for its uncomputation). Adding a control (for the term selection register) to each of these
+subroutines only requires a small constant number of Toffolis, which we omit. The controlled USP has cost
+at most 7⌈log(ηion)⌉+ 2bI −4 (i.e. in the case where all the ions are the same species). The total cost,
+therefore, is 6Z + ⌈log Z⌉(bZ −3) + 7⌈log(ηion)⌉+ 2bI −6. We require bZ ancillas for the arbitrary state prep
+and max{bI, ⌈log(ηion)⌉} for the USP.
+As for the non-local term, the QROM to load mζ and the USP is shared with the local term, and we can
+therefore compute those steps once (using the trick above). The only retained cost is that for the preparation
+of |Φζ⟩(where now we are loading analogous coefficients that are constructed from V PI
+NL rather than V PI
+loc).
+76

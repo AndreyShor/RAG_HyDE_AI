@@ -1,0 +1,112 @@
+CHI ’25, April 26-May 1, 2025, Yokohama, Japan
+Jian Zhang, Wafa Johal, and Jarrod Knibbe
+Our contributions:
+(1) we study, reveal, and describe the interplay between size and
+taper angle when grasping objects in VR
+(2) we provide visualisations of the multi-dimensional illusion
+space, to provide designers with guidelines on VR haptic
+perception
+(3) we provide mathematical functions that enable designers to
+calculate whether a given physical object can represent an
+intended virtual object.
+(4) We provide an online tool that allows designers to calculate
+physical-virtual object pairings within the illusion space.
+2
+Related Work
+When designing for advanced haptics in VR, researchers have to
+consider both co-location – ensuring the haptic feedback is deliv-
+ered in the correct location – and object similarity – ensuring the
+haptic feedback matches the material and geometric properties of
+the virtual object [40]. In this section, we begin by discussing the
+different approaches to increasing haptic fidelity, before presenting
+the current knowledge in illusory techniques and the associated
+perceptual limits.
+2.1
+Providing Haptics in VR
+Research has been exploring two avenues for achieving advanced
+haptics: (i) active haptics, and (ii) passive haptics. Some mechani-
+cally reflect the exact properties of the virtual objects (active con-
+trollers, e.g., Choi et al. [10]) while others use proxy objects and
+illusions to render them (passive approaches, e.g., Bergström et al.
+[6]).
+Much of the recent effort in active haptics has focused on hand-
+held and wearable device designs. These can be portable and are
+most akin to the controllers we see being adopted commercially.
+Prominent examples here include wearable controllers for grasping
+rigid objects [10, 11], axisymmetric devices for grasping pseudo-
+cylindrical objects [29], and multiple degree-of-freedom controllers
+for grasping asymmetric objects [33]. To date, however, these con-
+trollers have remained specialist, cumbersome, and heavy.
+On the other hand, grounded and encounter-type devices provide
+just-in-time feedback, that is only available at the exact moment
+the user needs it and can leave them otherwise hands-free. Exam-
+ples of such devices include the commercially available Touch1
+and Omega2 devices, alongside research prototypes such as in-
+FORM Follmer et al. [24], ShapeShift [47], and REACH+ [27]. While
+high-resolution, inFORM, for example, features 30×30 individu-
+ally controllable haptic pins [24]. This resolution highlights how
+these devices are often mechanically complex, bulky, expensive,
+and necessitate a step towards infrastructuring that makes them
+impractical for everyday use.
+As a result of high-resolution active controllers remaining com-
+plex, specialist, and bespoke, research has also been exploring op-
+portunities for leveraging passive physical objects and haptic illu-
+sions, both to enable the use of physical objects in the user’s reach
+for feedback and to extend the capacity of haptic controllers. Using
+13D Systems, USA - formerly Phantom from Sensable Technologies
+2Force Dimension, Switzerland
+passive haptic techniques has proven effective across a range of ap-
+plications, including for objects in the kitchen [31], for perception
+of ledges on the floor [32], to experience spiders [9], and to better
+leverage cups in the environment [46]. Furthermore, passive objects
+with simply designed geometry features can display various shapes
+with edges, curves, and surfaces by altering the visual presentation
+and taking advantage of VR visual feedback [3, 4, 53].
+By more carefully considering and tailoring the physical props,
+however, we might be able to push the ability of the passive hap-
+tics further. By designing 3D printed materials and structures, for
+example, different textures can be simulated in VR [17, 20]. As for
+the geometry properties, a toolkit named Haptwist was developed
+to combine passive proxies in a flexible way to represent more
+complex virtual objects [57].
+Furthermore, there have been new methods developed in attempt
+to further push capabilities and to understand better users’ percep-
+tion in VR. To figure limits of hand redirection techniques, gaze
+detection and electroencephalogram (EEG) have been applied in
+some studies [21] instead of merely psychomotor metrics. Research
+has also explored the possibility of rendering haptics for complex,
+arbitrary shapes with visual feedback [55].
+These techniques seek to obscure the visuo-proprioceptive mis-
+matches to convince the user they are interacting with the virtual
+object when, in fact, they are interacting with something else, poten-
+tially somewhere else, creating visuo-haptic illusions. When illusions
+are applied within perceptual limits, users are considered unlikely
+to notice their occurrence, which results in another type of haptic
+techniques using illusions such as retargeting [2] and resizing [6].
+These techniques expand the ability of passive objects in VR haptics.
+2.2
+Illusions in Haptic Feedback
+Due to the influence and application potentials of illusions in VR
+haptics, numerous studies have concentrated on exploring how
+illusions affect users’ perceptions. This illusory work has one of
+two focuses: co-location (where the object is), or similarity (what
+the object is) [40].
+Illusions of co-location have been heavily influenced by redirected
+touching [36], haptic retargeting [2] and haptic remapping [38].
+These illusions seek to guide the user’s physical hand towards a
+proxy object that is spatially decoupled from its virtual counterpart.
+Examples have demonstrated redirect controller buttons [28, 54], en-
+abled users to grab objects placed around them [13], and attempted
+to retarget random, unscripted reaches [12]. From work on these
+illusions, we have come to understand the spatial haptic coverage
+of a physical object – the area within which it can provide haptic
+feedback for virtual objects [14].
+Illusions of similarity explore the extent to which one physical
+object can feel like another. These illusions aim to convince users
+they are interacting with an object with one property (for example,
+a heavy hammer), while they in fact interact with an object with
+a different property or, at least, with an object with a different
+magnitude of that property (e.g., a lightweight bottle). For example,
+illusions have been used to simulate factors in interaction such as
+geometry [51], force feedback [37], weight [39], stiffness [43] and
+texture [7].

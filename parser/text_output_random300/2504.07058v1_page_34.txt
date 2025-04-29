@@ -1,0 +1,122 @@
+Form Theorem 2.4
+𝑑
+𝑑𝑡𝐸(𝑈𝑛) ⩽0.
+(5.35)
+Since 𝐸(𝑈𝑛) is non-increasing, it follows that
+𝐸(𝑈𝑛) ⩽𝐸(𝑈𝑛) ⩽𝐶(𝑈𝑛(0)).
+(5.36)
+Thus,
+∥∇𝑈𝑛∥2
+𝐿2(D)+∥∆𝑈𝑛∥2
+𝐿2(D)+2
+Z
+D
+𝐹(𝑈𝑛)𝑑𝑥⩽𝐶(𝑈𝑛(0)).
+(5.37)
+By the Sobolev embedding theorem, this implies the uniform bound:
+∥𝑈𝑛(𝑡)∥∞⩽𝐶′,
+∀𝑡∈[0,𝑇].
+(5.38)
+𝜕𝑈𝑛
+𝜕𝑡
++ 𝛾∆2𝑈𝑛−∆𝑈𝑛+ (𝑈𝑛)3 −𝑈𝑛= 0.
+(5.39)
+Multiplying both sides by ∆2𝑈𝑛and integrating over D to get
+Z
+D
+𝜕𝑈𝑛
+𝜕𝑡∆2𝑈𝑛𝑑𝑥+ 𝛾
+Z
+D
+∆2𝑈𝑛∆2𝑈𝑛𝑑𝑥−
+Z
+D
+∆𝑈𝑛∆2𝑈𝑛𝑑𝑥+
+Z
+D
+((𝑈𝑛)3 −𝑈𝑛)∆2𝑈𝑛𝑑𝑥= 0.
+(5.40)
+Using integration by parts and the symmetry of the Laplacian,
+1
+2
+𝑑
+𝑑𝑡∥∆𝑈𝑛∥2
+𝐿2(D)+𝛾∥∆2𝑈𝑛∥2
+𝐿2(D)+∥∇∆𝑈𝑛∥2
+𝐿2(D)= −
+Z
+D
+(𝑈𝑛−(𝑈𝑛)3)∆2𝑈𝑛𝑑𝑥.
+(5.41)
+Applying Sobolev embedding,
+Z
+D
+(𝑈𝑛−(𝑈𝑛)3)∆2𝑈𝑛𝑑𝑥⩽𝐶𝑇(1 + ∥𝑈𝑛∥2
+∞)∥∆𝑈𝑛∥2
+𝐿2(D)+𝛾
+4 ∥∆2𝑈𝑛∥2
+𝐿2(D).
+(5.42)
+Thus,
+1
+2
+𝑑
+𝑑𝑡∥∆𝑈𝑛∥2
+𝐿2(D)+3𝛾
+4 ∥∆2𝑈𝑛∥2
+𝐿2(D)+∥∇∆𝑈𝑛∥2
+𝐿2(D)⩽𝐶𝑇(1 + ∥𝑈𝑛∥2
+∞)∥∆𝑈𝑛∥2
+𝐿2(D).
+(5.43)
+Applying Gr¨onwall’s inequality,
+∥∆𝑈𝑛∥2
+𝐿2(D)+𝛾
+Z𝑇
+0
+∥∆2𝑈𝑛∥2
+𝐿2(D) 𝑑𝜏⩽𝐶𝑇𝑒𝐶𝑇
+R𝑇
+0 (1+∥𝑈𝑛∥2
+∞) 𝑑𝜏.
+(5.44)
+This establishes the uniform boundedness:
+{∆𝑈𝑛}𝑛∈N is uniformly bounded in 𝐿2([0,𝑇]; 𝐻2(D)).
+(5.45)
+Taking the time derivative of both sides,
+𝑈𝑛
+𝑡𝑡+ 𝛾∆2𝑈𝑛
+𝑡−∆𝑈𝑛
+𝑡+ 3(𝑈𝑛)2𝑈𝑛
+𝑡−𝑈𝑛
+𝑡= 0.
+(5.46)
+Multiplying by 𝑈𝑛
+𝑡and integrating over D,
+1
+2
+𝑑
+𝑑𝑡∥𝑈𝑛
+𝑡∥2
+𝐿2(D)+𝛾∥∆𝑈𝑛
+𝑡∥2
+𝐿2(D)⩽𝐶𝑇(1 + ∥𝑈𝑛∥2
+∞)∥𝑈𝑛
+𝑡∥2
+𝐿2(D).
+(5.47)
+Applying Gr¨onwall’s inequality, we conclude the boundedness of 𝑈𝑛
+𝑡. Thus, by integrating in time, the uniform
+boundedness follows. Combining with the Aubin-Lions compactness theorem and the uniform boundedness of {𝑈𝑛},
+{∆𝑈𝑛}, and {𝜕𝑡𝑈𝑛}, there exists a subsequence of {𝑈𝑛}𝑛∈N (still denoted by {𝑈𝑛}𝑛∈N), which converges to some
+function
+𝑈∈𝐶([0,𝑇]; 𝐻2(D)) ∩𝐿2([0,𝑇]; 𝐻4(D)).
+(5.48)
+Moreover, 𝑈𝑛converges strongly to 𝑈in 𝐿2(D). By the Arzel`a-Ascoli theorem, 𝑈𝑛uniformly converges to 𝑈in D.
+Appendix E.4 (Lemma). Under Assumption (H1), if 𝑢0 ∈𝐻2(D), then the EFK equation (2.10) admits a unique
+solution 𝑢on [0,𝑇] satisfying
+𝑢∈𝐶([0,𝑇]; 𝐻2(D)) ∩𝐿2(0,𝑇; 𝐻4(D)).
+Appendix E.5 (Lemma). Under Assumption (H2), let 𝑢0 ∈𝐻1(D), then the Burgess equation (2.10) has a unique
+solution 𝑢on [0,𝑇] such that
+𝑢∈𝐶([0,𝑇]; 𝐻1(D)) ∩𝐿2([0,𝑇]; 𝐻2(D)).
+34

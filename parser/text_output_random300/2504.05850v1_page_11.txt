@@ -1,0 +1,109 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+11
+1
+0
+z
+G
+1
+0
+z
+G1
+Figure 1. Appending an edge to the vertex z in G gives G1.
+corresponding to the matrix
+(zz)−λNG−1
+
+
+
+
+
+
+zz
+0
+0
+0
+0
+0
+0
+0
+0
+1
+0
+0
+0
+1
+0
+0
+0
+1
+0
+0
+0
+1
+0
+0
+0
+
+
+
+
+
+
+together with the transformation z 7→1/z in the arguments.
+Transformations of labels 0 ↔1 and 1 ↔z generate the transformation group S3 of the three external
+vertices 0, 1, and z. So, every transformation of external vertices can be expressed as a sequence of the
+transformations 0 ↔1 and 1 ↔z.
+7.3. Product factorization. If the graph G of a three-point function or a graphical function disconnects
+upon removal of the three external vertices, G = G1 ∪G2 with G1 ∩G2 ⊆{0, 1, z}, then the Feynman
+integral trivially factorizes into Feynman integrals over the internal vertices of G1 and G2. This implies
+(56)
+f α
+G(z) = f β1
+G1(z)f β2
+G2(z),
+where, after the elimination of contractions, α = (β1 ∪β2) \ (β1 ∩β2).
+8. Appending an edge
+In this section, we present the main calculation technique for graphical functions: appending an edge
+to a graph G at the external vertex z, thus creating a graph G1 with a new vertex z, see Figure 1. The
+appended edge is scalar with weight 1. Appending a sequence of edges and external differentiation at
+z = z2 allows one also to append edges with non-zero spin and weights ̸= 1, see Section 8.4.
+Because the appended edge has spin 0, weight 1, we obtain from (10) for k = 1,
+(57)
+∆z2Aα
+G1(z0, z1, z2) = −
+4
+Γ(λ)Aα
+G(z0, z1, z2),
+where ∆z2 = ∂α1
+z2 ∂α1
+z2 is the D-dimensional Laplace operator.
+In the following section, we will translate this differential equation into an effective Laplace equation
+(58)
+□α
+λf α
+G1(z) = −
+1
+Γ(λ)f α
+G(z)
+acting on the graphical function f α
+G1(z).
+We use the symbol □for differential operators that act on the variable z ∈C. The subscript λ refers
+to the dimension D while the superscript α carries the spin structure.
+We will then show how to construct the unique solution of the effective Laplace equation in the space
+of graphical functions.
+8.1. The effective Laplace operator □α
+λ. We first determine the effect of the differential operators
+∂β
+zi on a graphical function f α
+G(z). We consider f α
+G(z) as a function of the invariants zz and (z −1)(z −1),
+see (44). Let ∂s be the differential with respect to the invariant (z −s)(z −s) for s = 0, 1.
+We define the differential operators
+(59)
+δk =
+1
+z −z (zk∂z −zk∂z),
+k = 0, 1, 2.
+Note that by explicit calculation
+(60)
+δ2 = −zzδ0 + (z + z)δ1.
+Moreover, δ0, δ1, δ2 span a solvable three-dimensional Lie-Algebra, [δ0, δ1] = 0, [δ0, δ2] = δ0, [δ1, δ2] = δ1.

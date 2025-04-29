@@ -1,0 +1,57 @@
+This reduced representation ensures that the essential dynamics of the data are pre-
+served while significantly reducing computational complexity, enabling applications in
+predictive modeling and real-time analysis.
+2.3
+Deep Learning Model
+Long Short-Term Memory Networks are a specialized type of recurrent neural network
+(RNN) designed to address the challenges of learning long-term dependencies in sequential
+data [40]. As highlighted by Yu et al. [41], LSTM networks have demonstrated unpar-
+alleled success in various applications, ranging from speech recognition to time-series fore-
+casting, making them a cornerstone of modern deep learning research. Standard RNNs
+struggle with problems such as vanishing and exploding gradients, making them ineffi-
+cient at handling temporal dependencies when the gap between relevant inputs is large.
+LSTM networks overcome this limitation by introducing gating mechanisms that control
+the flow of information through the network, allowing them to effectively "remember"
+and "forget" data as needed [42].
+Multiple architectures have been implemented to forecast the temporal evolution of
+reduced-order flow modes derived through dimensionality reduction techniques.
+The
+model begins with an input layer, followed by an LSTM layer, and ends with dense lay-
+ers, forming a structured architecture. This combination enables the model to effectively
+generalize across diverse flow scenarios, providing accurate and reliable forecasts. Sim-
+pler architectures have fewer trainable parameters, which reduces computational costs.
+Hence, the approach starts by implementing the simplest architectures and progressively
+increasing complexity, allowing for a systematic evaluation of how network depth impacts
+performance. The architectures are structured as follows:
+• LSTM 1 Dense: The simplest architecture consists of an input layer connected
+directly to an LSTM layer, followed by a single dense layer as output. The LSTM
+layer captures temporal dependencies, and the dense layer maps these represent-
+ations to the output space using a linear activation function.
+This architecture
+focuses on leveraging the ability of LSTM to model sequential patterns without
+additional transformations, providing a baseline to evaluate the impact of deeper
+configurations.
+Layer
+Layer Details
+Neurons
+Activation Function
+Dimension
+0
+Input
+modes
+-
+(seq_len, modes)
+1
+LSTM
+128
+-
+128
+2
+Dense
+modes
+Linear
+modes
+Table 1: Layer details for LSTM 1 Dense architecture.
+• LSTM 2 Dense: This architecture extends the first LSTM 1 dense architecture
+by introducing an intermediate dense layer with a non-linear activation function,
+11

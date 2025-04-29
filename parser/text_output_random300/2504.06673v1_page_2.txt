@@ -1,0 +1,153 @@
+2
+terns can capture both conventional two-center bonds
+and delocalized multicenter bonds, with the degree of
+multipartite entanglement serving as a quantitative in-
+dex of bond strength and aromaticity. Finally, comple-
+menting these theoretical advances, Stein and Reiher [17]
+developed an automated protocol for active orbital space
+selection in multireference calculations, effectively lever-
+aging entanglement measures to identify strongly corre-
+lated orbitals and streamline computational processes.
+The goal of this work is to combine these quan-
+tum information non-stabilizerness insights with quan-
+tum chemistry.
+We conduct an analysis of the non-
+stabilizerness in the H2 molecule as it forms and breaks
+a bond. By doing so, we aim to illustrate how concepts
+like magic, alongside more standard notions like entangle-
+ment together provide a more complete characterization
+of the electronic wavefunction’s quantum nature.
+The
+rest of the paper is organized as follows. We first sum-
+marize the theoretical background and definitions of the
+various magic proxies used in this letter in the context
+fermionic systems. We then describe our methodology
+for computing our reference ab initio ground state of the
+H2 dimer accross a range of interatomic distances. We
+finally present the results, showing the behavior of magic
+as a function of interatomic distance, and provides a dis-
+cussion of our observations, and discuss in some possible
+experimental implications in the outlook section.
+The
+Fermionic
+Wigner
+Function
+and
+Proxies
+of
+Magic—Non-stabilizerness concepts have be explored
+mostly in quantum spin chain context [18–24]. These no-
+tion can of course be defined for fermionic systems in vari-
+ous defferent ways. One possible trajectory is fermioniza-
+tion in the form of Jordan-Wigner transformation from a
+system of spin 1/2 degrees of freedom, following then the
+work of Wootters [25, 26]. Another direction could be to
+define a Grassmann valued phase space, and a notion of
+fermionic Wigner function defined thereof, following the
+seminal work of Cahill and Glauber [27]. We will instead
+follow the approach of [28–31] to leverage the structure of
+the Majorana group [32], fermionic analogue of the Pauli
+group, and define the fermionic Wigner function in terms
+of Majorana strings and discrete phase space.
+Given a collection of n fermionic creation and annihi-
+lation operators cp and c†
+p, following [31, 32] we intro-
+duce for each mode the Hermitian Majorana operators
+η2p−1 = cp + c†
+p and η2p = i(cp −c†
+p). We then define the
+Majorana strings
+Mv = iv·Ωvηv1
+1 ηv2
+2 . . . ηv2n−1
+2n−1 ηv2n
+2n ,
+(1)
+where v = (v1, v2, . . . , v2n−1, v2n)t ∈(Z2)2n is a binary
+vector, and Ωis a (2n)×(2n) square matrix with zeros on
+the diagonal, zeros on the upper-right triangle, and ones
+on the lower-left triangle.
+The prefactor iv·Ωv ensures
+Hermiticity of the Majorana strings. Γ = (Z2)2n plays
+here the role of discrete phase space for the fermionic
+system. The Majorana strings form a basis of Hermitian
+operators, and given a quantum state represented by a
+density matrix ρ, one can decompose it in the Majorana
+basis as
+ρ =
+1
+22n
+X
+v∈Γ
+Tr(ρMv)Mv.
+(2)
+We then call the quantity
+Wρ(v) = Tr(ρMv)
+(3)
+the fermionic Wigner function of the state ρ.
+Given this fermionic Wigner function we define its Lp
+norm as
+||Wρ||p =
+"X
+v∈Γ
+|Wρ(v)|p
+# 1
+p
+.
+(4)
+The α-stabilizer Renyi entropy is defined as
+Sα =
+1
+1 −α log
+||Wρ||2α
+2α
+22n
+
+.
+(5)
+Following intuition from the discrete Wigner function of
+Wootters [25, 26], we define the mana as the L1 norm
+instead:
+M = log
+||Wρ||1
+22n
+
+.
+(6)
+The filtered α-stabilizer Renyi entropy FSα is defined
+like the α-stabilizer Renyi entropy but removes the often
+dominating contribution of the identity v = (0, 0, . . . , 0)t
+and parity operator v = (1, 1, . . . , 1)t from the sum defin-
+ing the Lp norm [30], whose contribution can become
+dominant, especially in the large number of modes limit.
+The Lp norms of the discrete Wigner function of a
+fermionic state capture how broadly the quantum state
+spreads over the discrete phase space Γ.
+The H2 dimer in second quantization: computing the
+ground state across dissociation—In the second quanti-
+zation formalism, the electronic Hamiltonian (within the
+Born-Oppenheimer approximation) of a molecular sys-
+tem is expressed in terms of fermionic creation (c†
+p) and
+annihilation (cq) operators defined with respect to a cho-
+sen orbital basis. For a generic set of orbitals, the Hamil-
+tonian is written as [33]
+ˆH =
+X
+p,q
+hpq c†
+pcq + 1
+2
+X
+p,q,r,s
+⟨pq|rs⟩c†
+pc†
+qcscr,
+(7)
+where hpq are the one-body integrals (incorporating the
+kinetic energy of electrons and their interaction with the
+nuclei), ⟨pq|rs⟩are the two-body integrals (accounting for
+electron-electron repulsion), and the quantum numbers
+p, q, r, s run over the complete set of orbitals in the ba-
+sis [34, 35]. This non-relativistic field theory representa-
+tion encapsulates all the many-body effects and provides

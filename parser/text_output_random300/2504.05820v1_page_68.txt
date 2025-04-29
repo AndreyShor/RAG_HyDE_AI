@@ -1,0 +1,33 @@
+54
+Tools and methodology
+Figure 2.9: Diagrammatic representation of the calculation of the χ2 in the NNPDF fitting framework
+as a function of the values of {x(k)
+n } for the different datasets. Each block indicates an independent
+component. From Ref. [109].
+three inputs are given by the theoretical calculation encoded in the FK-tables, the experimental
+data and the set of optimal hyperparameters which determine the neural network and the
+optimization algorithm. These are used to compute (and optimize) the figure of merit χ2 over
+different Monte Carlo replicas. The algorithm make use of the cross validation technique to
+avoid over-fitting, impose necessary constraints and, provide as output a set of best fitting PDF
+grids for each replica. Finally, we can obtain the all scale PDFs running the DGLAP evolution
+with the program EKO and dump the final result as a standard LHAPDF set.
+More specifically, see Fig. 2.9, the χ2 computation is preformed starting from the initial scale
+PDFs which are parametrized in the evolution basis (Eq. (1.61)) at a given scale Q0 and related
+to the initial x-grid through the neural network. PDF parametrizations are normalized to
+match theoretical constraints, such as sum rules and integrability and then convolved with the
+FK-tables to match the experimental observables. Finally, the datapoints are split in training
+and validation sets and we proceed to update the neural network parameters until the stopping
+criteria are matched.
+2.3. The NNPDF 4.0 PDF set
+The previous sections summarize the key concepts of the NNPDF methodology. In principle,
+these apply to a generic polarized and unpolarized PDF determination of the NNPDF family but,
+the result that we shall present in Chapters 3 to 5 are build upon a specific unpolarized PDF
+set, the NNPDF4.0 PDF set. In particular, in Chapters 3 and 4 we assume the NNLO set with
+fitted charm to be our baseline, while in Chapter 5 we adopt the NNLO set with perturbative
+charm as boundary condition. This section, by describing a concrete example of a PDF fit, aims
+to bridge the introductory part of the thesis, with the chapters focused on the actual results.
+NNPDF4.0 [109] has been a major release that has improved the previous NNPDF3.1 [156],
+both upon kinematic coverage, including systematically LHC data, and upon fitting methodology
+which has been supported by validation tools as closure tests and hyperoptimization. In Ref. [6]
+this determination has been complemented with the inclusion of theoretical error, while a
+photon PDF has been determined in Ref. [11] together with mixed QED⊗QCD effects.

@@ -1,0 +1,41 @@
+q0
+q1
+q2
+q3
+4
+c
+H
+H
+X
+X
+2
+3
+Figure 2: The modular 4-qubit quantum circuit of Martina et al. (2022).
+The 3-gate structure is repeated 3 times to increase the circuit depth. The
+top horizontal lines and blocks represent the device’s interacting qubits and
+logical gates. The bottom line represents the device output. In this case,
+only 2 qubits are measured, q2 and q3, making each run produce a 2-digit
+binary string, e.g. Ym, ˆYm ∈{00, 01, 10, 11}. The first two blue 2-qubit links
+represent CNOT gates and the third 3-qubit is a Toffoli gate. See Barenco
+et al. (1995) for a formal definition. The red boxes are Hadamard gates, used
+to prepare the unobserved qubits into an equal superposition state 1
+2(|0⟩+|1⟩).
+By convention, the initial state of all qubits is |0⟩. The grey vertical lines
+represent 4-qubit synchronization.
+(2012) for a review of the theoretical and empirical advantages of estimating
+ˆr instead of the two densities separately.
+2.4
+Conformal upper bounds
+Assume we have a set of N classically tractable circuits and run them on
+a given QC machine. Let n = 1, . . . , N index these N circuits and m =
+1, . . . Mshots the i.i.d. measurements from each circuit, i.e. the execution out-
+puts, and Ynm and ˆYnm the m-th noiseless and noisy measurements obtained
+from the n-th circuit. As the dimensionality of a circuit’s output depends
+on the number of measurements, we do not require Ynm and Yn′m, to have
+the same dimensionality.
+For example, we may have Ynm ∈{0, 1}sn and
+Yn′m ∈{0, 1}sn′ with dn ̸= dn′. Naturally, we require different runs from
+the same circuit to have the same dimensionality, i.e. Ynm ∈{0, 1}sn for all
+m = 1, . . . Mshots).
+Let N + 1 index a test circuit that we can only run on the noisy device
+and ˆP ˆYN+1 the corresponding output distribution. The prediction interval

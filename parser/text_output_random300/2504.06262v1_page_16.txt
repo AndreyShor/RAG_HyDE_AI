@@ -1,0 +1,159 @@
+16
+populations are conserved: ρR
+11 +ρR
+22 = ρ11 +ρ22 +ρ33=1.
+Transit also causes relaxation of the coherences be-
+tween the two ground states, as atoms potentially in a
+superposition of states |1⟩and |2⟩are replaced by atoms
+in a statistical mixture. This leads to the rate equations:
+∂ρ33
+∂t
+
+transit
+= −Γtρ33,
+∂ρ22
+∂t
+
+transit
+= −Γtρ22 + Γ(2)
+t ,
+∂ρ11
+∂t
+
+transit
+= −Γtρ11 + Γ(1)
+t ,
+∂ρ12
+∂t
+
+transit
+= −Γtρ12.
+The notation {...}transit denotes the contribution of the
+transit in the rate equation. The full rate equation would
+include the [H, ρ] commutator, as well as the Lindbladi-
+ans. The Rabi frequencies, decoherence and decay rates
+in the three-level system are represented in Figure 6(a).
+We numerically solve the resulting equations to obtain
+ρ13 in a steady state, to deduce χ = N
+V
+µ13ρ13
+ε0E . We fit χ
+with a polynomial expansion of |E/Es| and obtain χ(3)
+as the coefficient of the second-order term. The result is
+plotted in Figure 6(b), along with the linear absorption.
+Interestingly, optical pumping can also be used to lo-
+cally change the atomic population in the two ground
+states. Typically, this is done using an arrangement of
+two lasers: one on the D2 line (the fluid beam), and one
+localized one on the D1 line (the potential beam). The
+D1 laser modifies locally the number of atoms visible by
+the D2 line laser. This will lead to a local change of re-
+fractive index δn(r) and therefore an effective potential
+for the fluid of light (Truscott et al., 1999) as shown in
+Section II.C. How to use this approach experimentally
+will be described in Section VI.B and can be modeled
+by the master equations of a four-level system (Aladjidi,
+2023).
+3. Corrections to the Kerr model
+A simple Kerr model with a real linear susceptibility
+and a nonlinear susceptibility restricted to a local χ(3)
+response does not capture the full picture of alkali va-
+pors. Other important mechanisms have to be consid-
+ered, which are notably influenced by the effect of atomic
+transit discussed previously.
+a. Non-locality
+A phenomenon in hot atomic vapors that
+can significantly modify the effective nonlinearity is non-
+locality. Due to atomic motion, the nonlinear response
+at a given point in the fluid is not solely determined by
+the local density but rather by the density within a char-
+acteristic interaction radius. Taking into account a non-
+local optical response, the nonlinear term in Eq. (28) is
+modified into:
+k0
+nE
+2
+n0
+Z
+S
+dr′
+⊥G(r⊥−r′
+⊥)|E(r′
+⊥, z)|2E(r′
+⊥, z),
+(75)
+where G is the non-local response function in real space,
+and S is the beam surface. This non-local response has
+been observed and identified as a crucial stabilizing factor
+in the study of collapse instabilities (Azam et al., 2021).
+Two processes compete, the mean distance before atoms
+de-excite lb, and the mean distance between atomic col-
+lisions lcol. If lb ≤lcol, which is valid until ∼155°C for
+87Rb vapors (Skupin et al., 2007), the atomic motion can
+be considered ballistic. This model leads to a non-local
+kernels in Fourier space:
+G(k⊥) =
+√π
+Γ
+e
+1
+(k⊥lb)2
+k⊥lb
+Erfc
+
+1
+k⊥lb
+
+,
+(76)
+where lb =
+1
+Γ
+q
+2kbT
+m
+∼7.6 µm. Accounting for the ef-
+fects induced by non-locality amounts to convolving the
+electric field E(r⊥, z) at each z with the function G. In
+other terms, non-locality can be understood as a smooth-
+ing of the nonlinear interactions. For example, we will
+see in Section V.C that this effect is predominant in case
+of thermo-optic nonlinearity (Vocke et al., 2016). Impor-
+tantly, the presence of non-locality modifies the Bogoli-
+ubov dispersion relation as:
+ΩB(k⊥) =
+s
+k2
+⊥
+2k0
+ k2
+⊥
+2k0
++ k0∆n × G(k⊥)
+
+.
+(77)
+It is actually possible to exploit this effect to observe
+an inflection in the dispersion relation and it has been
+predicted that this effect could lead to self-organization
+of superfluid light similar to supersolidity (Maucher et al.,
+2016).
+b. Saturation
+At large optical intensity,
+the atomic
+medium becomes saturated and the nonlinear response is
+not of purely χ(3) type (McCormick et al., 2004). A quin-
+tic term χ(5), with opposite sign, starts to play a role and
+reduces the nonlinearity. This effect (actually accounting
+for all higher order terms) is known as saturation. For a
+two-level system at resonance, the saturation intensity is
+expressed as
+Isat(0) = πℏω0Γ
+3λ3
+,
+(78)
+where ω0, λ and Γ are respectively the pulsation, the
+wavelength and the linewidth of the atomic transition.
+For a field detuned by ∆= ω −ω0, the saturation inten-
+sity depends on the detuning as Isat(∆) = Isat(0)(1+ ∆2
+Γ2 ).

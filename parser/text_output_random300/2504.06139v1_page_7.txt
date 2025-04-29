@@ -1,0 +1,35 @@
+By reversible local operations, it is meant that Alice may relabel her input,
+x ←x ⊕1, or she may relabel her output conditionally on her input, a ←
+a ⊕αx ⊕β, and similarly for Bob. It is easy to see that any vertex of a
+given class (local or non-local) can be transformed into any other vertex of
+the same class by these operations.
+2.1
+Depolarization
+Demoralization is the act of taking a box which is a mixture of any non-
+signalling box and transforming it into a symmetric box, while preserving
+the CHSH value.
+It consists of generating three maximally random bits α, β, γ and doing
+the following substitutions: x →x ⊕α, y →y ⊕β, a →a ⊕βx ⊕αβ ⊕γ and
+b →b ⊕αy ⊕γ.
+Note that this operation requires three bits of shared randomness between
+the two parties for every box they wish to depolarize.
+3
+Trivial Communication Complexity
+There has been evidence that non-locality helps in the communication com-
+plexity of some distributed tasks. See for example [4]. Protocols that make
+use of non-locality in the form of quantum entanglement oﬀers advantages
+over local protocols, but since quantum non-locality is restricted, it is natural
+to ask ourselves if stronger non-locality is more helpful.
+Deﬁnition 6. The communication complexity of a function f is trivial if it
+can be computed using a single bit of communication per participant.
+This is the minimum communication needed to compute any function
+which is not itself trivial (i.e. it does not depend on only one of the inputs).
+3.1
+Two participants
+It will be useful to deﬁne the following property.
+Most proofs of trivial
+communication complexity using non-local boxes try to achieve this property.
+Deﬁnition 7. The Boolean function f is distributively computed by Alice
+and Bob if they respectively receive x and y and output a and b such that
+a ⊕b = f(x, y).
+7

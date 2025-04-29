@@ -1,0 +1,98 @@
+Brownian bridge above a curve
+78
+and so using the elementary inequality log(1 + s)/(1 + s) ≤e log(e + s)/(e + s) and the fact that the
+expression on the right decreases for s ≥0, we get that
+ζa,k(s) =
+Z k+s
+0
+ζ′
+a,0(r)dr + a = 2a
+Z k
+0
+log(1 + r)
+1 + r
+dr + 2a
+Z k+s
+k
+log(1 + r)
+1 + r
+dr + a
+≤ζa,k(0) + 2ae
+Z s
+0
+log(e + r)
+e + r
+dr
+≤ζa,k(0) + ea[log(e + s)]2 .
+By using the above bound on ζa,k and recalling the exact expressions of the functions ρa,k and eρa,k,
+the claims follow by some elementary calculations.
+A.4
+Entropic repulsion
+Lemma A.8. For a, k > 1, let ζa,k : R+
+0 →R+
+0 be the function defined in (A.17). There exists
+a constant c = c(a) > 0 such that for all ι ∈(0, 1/8), b ≥1 sufficiently large, u ∈[bι, b3/4], all
+s ∈(0, b/2], and all x ≥ζa,k(s),
+P0,u,b
+
+inf
+r∈[0,b](Br + ζa,k(r)) > 0, Bs ≤x
+
+≤c ux2
+b√s .
+Proof. For a, k > 1 and s ∈(0, b/2], we let
+As
+def=
+
+inf
+r∈[s,b](Br + ζa,k(r)) > 0
+
+,
+so that the event in the lemma statement can be written as A0 ∩{Bs ≤x}. Using the Markov property
+of the Brownian bridge, we note that
+P0,u,b(A0, Bs ≤x) ≤E0,u,b
+h
+1{−ζa,k(s)<Bs≤x}P0,u,b(As|σ(Bs))
+i
+.
+(A.18)
+On the event {Bs ∈(−ζa,k(s), x]}, the above conditional probability is maximised when {Bs = x}.
+Now, since s ∈(0, b/2] and x ≥ζa,k(s), Proposition A.5 and Lemma A.7 ensure that there exists a
+constant c1 = c1(a) > 0 such that for all b ≥1 sufficiently large and u ∈[bι, b3/4], it holds that
+P0,u,b(As|Bs = x) = Px,u,b−s
+
+inf
+r∈[0,b−s](Br + ζa,k+s(r)) > 0
+
+≤c1
+xu
+b .
+(A.19)
+To conclude, it remains to estimate the probability of the event in the indicator function on the
+right-hand side of (A.18). Since x ≥ζa,k(s), we observe that there exists a constant c2 > 0 such that
+P0,u,b(−ζa,k(s) < Bs ≤x) ≤P0,u,b(|Bs| ≤x) ≤c2
+x
+√s .
+Finally, putting everything together, we showed that there exist a constant c3 = c3(a) > 0 such that
+P0,u,b(A0, Bs ≤x) ≤c3
+ux2
+b√s ,
+and so the claim follows.
+Proposition A.9. For a, k > 1, let ζa,k : R+
+0 →R+
+0 be the function defined in (A.17). There
+exist constants c1 = c1(a), c2 = c2(a) > 0 such that for all ι ∈(0, 1/8), b ≥1 sufficiently large,
+u ∈[bι, b3/4], and all s ∈(c2, b/2],
+P0,u,b
+
+inf
+r∈[0,b](Br + ζa,k(r)) > 0,
+inf
+r∈[s,b](Br −ζa,k(r)) < 0
+
+≤c1
+u
+b
+(k + s)7/16
+√s
+.

@@ -1,0 +1,119 @@
+8
+ratio of different vertex populations is controlled but not the
+spatial distribution of the different vertex types throughout the
+system. Because of the vastly degenerate energy landscape
+of ASI systems it is generally not possible to access the full
+microstate space using such global techniques, which tend to
+favor lower energy vertex configurations.
+In contrast, local techniques which use either scanning
+probes, optical pulses, local microwave or magnetic fields
+from striplines/waveguides or electrical control to switch is-
+lands may be fully deterministic and can in principle be used
+to access any microstate of an ASI array. The cost of this
+greater control is that ‘writing’ the microstate of an ASI sys-
+tem island-by-island typically takes significantly longer than
+addressing all islands simultaneously, and requires substan-
+tially harder device engineering. An ASI system limited to
+a single 100µm × 100µm EBL writefield can easily contain
+105 to 106 islands, so that to keep the total array writing time
+below one minute – each island would have to take no longer
+than 10 µs to address. This is out of reach for most scanning
+probe systems and at the limit of what might be achieved us-
+ing optical methods with fast-steering mirrors, though recent
+advances in spatially structured light are appealing here70.
+There is some scope for improving write speeds by address-
+ing multiple islands simultaneously or wiring up electrical ad-
+dress lines to every island in the array, but in the short term
+approaches tend to be local, precise, slow and experimentally
+challenging – or global, coarse, typically somewhat stochas-
+tic/statistical and experimentally easy. Combined local/global
+approaches are appealing, where a small number of nanois-
+lands may be locally written before applying global fields to
+‘seed’ some initial conditions of microstate evolution.
+B.
+Global Control
+Magnetic field protocols (effective temperature):
+A simple method to generate a reproducible state of all ‘Type
+II’ vertices [e.g., field polarized, see Fig. 4 (a) and (b)] in a
+square-lattice ASI system might involve applying a magnetic
+field above the nanoisland coercive fields so that the whole
+array is saturated along the field axis. This approach is quick
+and reliably ‘deletes’ the memory an ASI sample has of its mi-
+crostate history, but how can magnetic fields be used to access
+a broader range of microstates than just the saturated state?
+For each island in an ASI array there is some coercive
+switching field Hswitch
+i
+at which that island’s magnetization
+will reverse. If the islands in a system are identical, then they
+will all reverse at the same external applied field strength ex-
+cept where local dipolar magnetic fields from the nanoislands
+locally effectively reduce or increase the global field magni-
+tude required to switch nanoislands. Such local modulations
+in the magnetic field may occur due to stray fields from neigh-
+boring islands as in the case of artificial ferromganetic qua-
+sicrystal tiling75, but in the example above all vertices have
+the same configuration after the saturation field has been ap-
+plied and hence all islands are subjected to identical fields
+from neighbouring elements. If the system starts in a ran-
+dom configuration before the saturation field is applied then it
+may pass through some intermediate microstates as the exter-
+nal field is ramped up to the coercive field, but once a system
+of identical islands enters a state where all vertices have the
+same spin configuration any further field looping will gener-
+ally only be able to access a small set of microstates.
+Thankfully, imperfections in fabrication mean that the is-
+lands in experimental ASI systems are generally not identical
+but rather have some distribution of switching fields. Empir-
+ical work on a range of ASI systems76–78 indicates that the
+effect of these imperfections, referred to as ‘quenched dis-
+order’, can generally be modeled as a Gaussian distribution
+of switching fields Hswitch
+i
+∼N (µ,σ2) where µ and σ2 are
+respectively the mean and variance of the distribution. The
+moments of the distribution can be estimated by measuring a
+hysteresis loop and fitting a Gaussian to ∂M/∂H as a func-
+tion of the applied field H. Though strictly speaking such
+a measurement does not take into account the effect of local
+stray fields, in practice the effect of quenched disorder typi-
+cally dominates the effect of dipolar inter-island interactions
+for nanoscale magnetic arrays79–81.
+The randomization injected by quenched disorder into the
+microstate trajectory of ASI systems responding to some mag-
+netic field sequence massively expands the set of microstates
+accessible by applying global fields, allowing islands with low
+switching fields to act as nucleation points located at random
+sites in the lattice82. For fields sequences in which the field
+strength is kept below the level that forces all macrospins to
+align with it (known as ‘minor loops’) the strong path depen-
+dence of microstate trajectories leads to a particularly rich
+ensemble of branching dynamical pathways31 which can be
+used to provide the ‘fading memory’ required for reservoir
+computing22,83,84. Since for most early ASI systems the en-
+ergy barrier of KDV associated with shape anisotropy [from
+Eq. (12)] was orders of magnitude greater than the thermal
+energy scale kBT, such ASI systems were ‘athermal’ in the
+sense that thermal fluctuations were generally incapable of re-
+versing the magnetization direction of individual islands, pre-
+venting the spin state from reaching its equilibrium configura-
+tion. As a result, a large body of work has explored whether
+quenched disorder can take the place of random switching due
+to thermal fluctuations to direct ASI systems into ground state
+configurations whose statistical properties match those of sys-
+tems in thermal equilibrium. Such configurations are of in-
+terest where the focus is on thermodynamic properties of ASI
+systems or on the behaviour of low-energy excitations such as
+monopoles.
+The general strategy for achieving low-energy states is to
+use alternating or rotating magnetic fields whose magnitude
+is gradually decreased so that island reversals that lower the
+magnetic energy are favored5, analogous to a thermal anneal.
+An analogy with thermal processes has proved useful in de-
+scribing the statistical properties of the magnetic configura-
+tions achieved through these field protocols, for which the
+number of different vertex types after certain rotating field
+protocols were found to follow a Boltzmann distribution with
+an effective temperature85 whose value varies linearly with the
+size of the steps with which the field strength is reduced and
+decreases in proportion to the strength of the inter-island inter-

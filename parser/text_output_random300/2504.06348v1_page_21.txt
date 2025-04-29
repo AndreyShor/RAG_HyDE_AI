@@ -1,0 +1,132 @@
+4.1
+Kinematics
+4.1.1
+Species Partitioning
+We partition the degrees of freedom (electrons and nuclei) into disjoint sets, each of which forms a chemical
+“species” defined by spatial proximity and chemical bonding at t = 0. For example, consider simulating a
+single event of the water gas-shift (WGS) reaction
+CO + H2O →H2 + CO2
+(43)
+on a copper catalyst, with 1 C, 2 O, 2 H, and a collection of Cu atoms. We lump all the metal Cu nuclei
+and their associated electrons into one set representing the metal catalyst species, labeled s = 0. Similarly,
+we lump 1 C and 1 O together representing the CO species, labeled s = 1, and lump the remaining 2 H and
+1 O together representing H2O, labeled s = 2. For our purposes of a single catalyst and S reactants (e.g.
+S = 2 above), we label all S + 1 species from s = 0, ..., S, where s = 0 refers to the catalyst and the rest
+index the reactants. For a species s, the labels E′
+s, Is denote a corresponding set of associated electrons and
+nuclei, where |E′
+s| = ηs
+el, |Is| = ηs
+ion. With this, let us define,
+Hs = −1
+2
+X
+i∈E′s
+∇2
+i −
+X
+I∈Is
+1
+2MI
+∇2
+I + 1
+2
+X
+i̸=j∈E′s
+1
+|ri −rj| +
+X
+I̸=J∈Is
+ZIZJ
+|RI −RJ| −
+X
+i∈E′s
+X
+I∈Is
+ZI
+|ri −RI|,
+H =
+S
+X
+s=0
+Hs + HINT,
+(44)
+where HINT is implicitly defined by collecting all mutual interactions between different chemical species (e.g.
+a reactant with another reactant, a reactant with the catalyst, etc.). We neglect interspecies interactions
+HINT for the purpose of creating an initial state ansatz and further assume that all species are initially
+mutually uncorrelated.
+This invokes the same spirit as in the usual treatment of quantum-mechanical
+scattering, wherein initial states are product states of spatially well-separated non-interacting particles,
+although for efficiency purposes, we might choose to prepare species in close proximity to each other as
+discussed in Sec. 2.2. Altogether, this yields a tensor product ansatz for the initial state, described by the
+density operator
+ρ(t = 0) = ⊗S
+s=0ρs(t = 0),
+(45)
+where ρs(t = 0) is the initial state of species s.
+4.1.2
+Reaction geometry
+Fixing a species s, for each of its constituents labeled by i ∈E′
+s and I ∈Is, we move to the corresponding
+center-of-mass (CoM) coordinates,
+˜ri = ri −Rs
+CoM,
+˜RI = RI −Rs
+CoM,
+Rs
+CoM =
+X
+I∈Is
+MI
+M s
+tot
+RI,
+(46)
+where M s
+tot = P
+I∈Is MI. Ignoring the typically small mass polarization term coupling internal (non-CoM)
+and CoM DoF (Ref. [70]), we get the separation
+Hs ≈−
+1
+2M s
+tot
+∇2
+CoM,s −1
+2
+X
+i∈E′s
+˜∇2
+i −
+X
+I∈Is
+1
+2MI
+˜∇2
+I + 1
+2
+X
+i̸=j∈E′s
+1
+|˜ri −˜rj| +
+X
+I̸=J∈Is
+ZIZJ
+| ˜RI −˜RJ|
+−
+X
+i∈E′s
+X
+I∈Is
+ZI
+|˜ri −˜RI|
+(47)
+where ∇CoM,s is the gradient with respect to Rs
+CoM, ˜∇i,I are gradients in relative coordinates with respect
+to the CoM. Note that the CoM coordinates obey P
+I∈Is MI ˜RI = 0 by construction and hence only 3ηs
+ion −3
+of the CoM coordinates are independent.
+We choose the CoM for each species to be prepared in an isotropic minimal uncertainty Gaussian
+wavepacket.
+Such a wavepacket has 7 free parameters per species, 3 fixing the mean position, 3 fixing
+21

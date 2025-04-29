@@ -1,0 +1,149 @@
+10
+The generator of the time reversal process ˜r(t) := r(T −t) for t = [0, T] is given by (see, e.g., [S3, S4]):
+˜Lf(r) =
+
+−F (r)
+Γ
++ 2Dth∇log P(r, T −t)
+
+· ∇f(r) + Dth△f(r) +
+Z
+˜νT −t(r, dz) [f(r + z) −f(r)] ,
+(S.7)
+where ˜νT −t(r, dz) dt := P (r+z,T −t)
+P (r,T −t) ν( dz) dt (˜νs(r, dz) dt := P s(r+z)
+P s(r) ν( dz) dt for the steady state case) is a state-
+dependent L´evy measure and P(r, t) is the probability density of r(t) to SDE (S.4). The time reversal process ˜r(t)
+satisfies the following SDE:
+d˜r(t) = −F (˜r(t))
+Γ
+dt + 2Dth∇log P(˜r(t), T −t) +
+p
+2Dth dWt +
+Z
+z ˜
+N( dt, dz), ˜r(0) ∼P(r, T),
+(S.8)
+where Wt is a standard Brownian motion, and ˜
+N( dt, dz) is an independent Poisson random measure. The L´evy
+measure is given by ˜νT −t(r, dz) dt. And the steady state case reads
+d˜r(t) = −F (˜r(t))
+Γ
+dt + 2Dth∇log P s(˜r(t)) +
+p
+2Dth dWt +
+Z
+z ˜
+N s( dt, dz), ˜r(0) ∼P s(r).
+(S.9)
+Let the transition densities of r(t), rpf(t) and ˜r(t) from position rj at time tj to r at time t be denoted by
+P(r, t|rj, tj), ˜Ppf(r, t|rj, tj) and ˜P(r, t|rj, tj) respectively (0 ≤tj ≤t ≤T).
+∂tP(r, t|rj, tj) = −∇·
+F (r)
+Γ
+P(r, t|rj, tj)
+
++ Dth△P(r, t|rj, tj) −∇·
+Z 1
+0
+dθ
+Z
+zν( dz)P(r −θz, t | rj, tj)
+
+,
+∂t ˜Ppf(r, t|rj, tj) = −∇·
+
+−F (r)
+Γ
++ 2Dth∇log P(r, T −t) −2
+Z 1
+0
+dθ
+Z
+ν( dz)z P(r −θz, T −t)
+P(r, T −t)
+
+˜Ppf(r, t|rj, tj)
+
++ Dth△˜Ppf(r, t|rj, tj) −∇·
+Z 1
+0
+dθ
+Z
+ν( dz)z ˜Ppf(r −θz, t | rj, tj)
+
+,
+∂t ˜P(r, t|rj, tj) = −∇·
+
+−F (r)
+Γ
++ 2Dth∇log P(r, T −t)
+
+˜P(r, t|rj, tj)
+
++ Dth△˜P(r, t|rj, tj) −∇·
+Z 1
+0
+dθ
+Z
+˜νT −t(r −θz, dz)z ˜P(r −θz, t | rj, tj)
+
+.
+(S.10)
+Thus the transition densities P(r, t|rj, tj), ˜Ppf(r, t|rj, tj) and ˜P(r, t|rj, tj) are identical to those of the following SDEs,
+respectively:
+drd(t) =
+
+F (rd(t))/Γ +
+Z 1
+0
+dθ
+Z
+ν( dz)z P(rd(t) −θz, t | rj, tj)
+P(rd(t), t | rj, tj)
+
+dt +
+p
+2Dth dWt,
+rd(tj) = rj;
+d˜rpfd(t) =
+"
+−F (˜rpfd(t))/Γ + 2Dth∇log P(˜rpfd(t), T −t) −2
+Z 1
+0
+dθ
+Z
+ν( dz)z P(˜rpfd −θz, T −t)
+P(˜rpfd, T −t)
++
+Z 1
+0
+dθ
+Z
+ν( dz)z
+˜Ppf(˜rpfd(t) −θz, t | ˜rj, tj)
+˜Ppf(˜rpfd(t), t | ˜rj, tj)
+#
+dt +
+p
+2Dth dWt,
+˜rpfd(tj) = ˜rj,
+d˜rd(t) =
+"
+−F (˜rd(t))/Γ + 2Dth∇log P(˜rd(t), T −t)
++
+Z 1
+0
+dθ
+Z
+˜νT −t(˜rd −θz, dz)z
+˜P(˜rd(t) −θz, t | ˜rj, tj)
+˜P(˜rd(t), t | ˜rj, tj)
+#
+dt +
+p
+2Dth dWt,
+˜rd(tj) = ˜rj.
+(S.11)
+For the time partition 0 = t0 ≤t1 ≤· · · ≤tn + T, we consider the above SDEs in (S.11), and typically apply
+the anti-Itˆo scheme as an approximate method for propagating the position as a function of time. The updates for

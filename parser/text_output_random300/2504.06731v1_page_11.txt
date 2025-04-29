@@ -1,0 +1,43 @@
+Figure 6: Comparison of spectral radius for FJ-MM vs comparison model vs original FJ in Use Case 3 for the homogeneous case.
+Spectral radius of FJ-MM computed for different network topologies.
+Proposition 4. Consider the FJ-MM with matrices (6), where W is some stochastic matrix and ˜W = W 2 (as in
+Use Case 1). Suppose also that Assumption 2 holds. Then, the FJ-MM model converges slower than the comparison
+FJ model (and than the original FJ model with matrix W). Namely,
+ρ( ¯Ad) = σ(1 −β0) +
+p
+σ2(1 −β0)2 + 4σβ0
+2
+> ρ( ¯A) = ρ(ΛW) = σ.
+Proof. Repeating the argument from the proof of Proposition 3, we have that λ is an eigenvalue of ¯Ad if and only if
+(Λβ0W + Λ(1 −β0)W 2λ)v1 = λ2v1.
+(16)
+for some non-zero vector v1. Substituting Λ = σI, this is equivalent to the relation
+det(λ2I −λσ(1 −β0)W −σβ0W 2) = 0.
+Let µ1, . . . , µn denote the eigenvalues of W. For any analytic function f : C →C – in particular, for the polynomial
+f(z) = λσ(1 −β0)z + σβ0z2, – the eigenvalues of f(W) are given by f(µi). Hence, for some µ = µi, one has
+λ2 = λσ(1 −β0)µ + σβ0µ2.
+(17)
+Conversely, if λ is a solution to (17) with some µ ∈{µ1, . . . , µn}, then λ is an eigenvalue of ¯Ad.
+Considering (17) as a quadratic equation in µ, one notices that, for λ being real, one has (−λ2) ≤0, and
+hence (17) can only be satisfied for real µ. Resolving (17) with respect to λ for µ being real, one obtains
+λ = σ(1 −β0)µ ± |µ|
+p
+σ2(1 −β0)2 + 4σβ0
+2
+.
+Hence, ρ( ¯Ad), the maximal real eigenvalue of ¯Ad, is equal to the maximum of these expressions over all real
+eigenvalues of W. Clearly, this maximum is attained when µ = 1 and the larger of the two roots is selected, i.e.,
+ρ( ¯Ad) = σ(1 −β0) +
+p
+σ2(1 −β0)2 + 4σβ0
+2
+> σ(1 −β0) +
+p
+σ2(1 −β0)2 + 4σ2β0
+2
+= σ,
+which finishes the proof.
+4.2
+Numerical Analysis
+In general, the convergence rates of the FJ-MM model–as well as its corresponding comparison FJ system–depend
+significantly not only on the vector β, but also on the graphs corresponding to W and ˜W and the structure

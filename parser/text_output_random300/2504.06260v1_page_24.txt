@@ -1,0 +1,55 @@
+Preprint. Under review.
+D.2
+COMSOL Multiphysics®Code Structure
+1. Geometry, if any: This involves identifying the dimensionality of the problem, and
+constructing a representation of the object being modelled, say a cup, by creating
+and composing primitive shapes such as ellipses or rectangles to build the object.
+While already constructed geometries can also be imported from other software
+such as CAD, in our benchmark, we currently restrict ourselves to models for which
+we construct the geometry from scratch in COMSOL Multiphysics®. This typically
+starts with a ‘model.component(“comp1”).geom’ pattern.
+2. Physics: This will include specifying all the physical conditions for the prob-
+lem, including initial or boundary conditions, forces, properties or in the case
+of mathematics problems, the differential equation. This typically starts with a
+‘model.component(“comp1”).physics’ pattern. Some problems may additionally
+have lines that begin with ‘model.component(“comp‘”).multiphysics’, and set up
+the coupling between different kinds of physical phenomena. We categorize these
+lines, if any as ‘physics’ in Figure 4 and 6.
+3. Material: Creating materials and assigning them to domains. One can either assign
+known materials such as ‘Copper’ and the object will inherit the default properties
+of that material, or define a blank material and its properties such as conductivity
+from scratch. This typically starts with a ‘model.component(“comp1”).material’
+pattern.
+4. Mesh: Usually a shorter step that involves meshing the surfaces of the geometry
+to set up elements. This typically starts with a ‘model.component(“comp1”).mesh’
+pattern.
+5. Study / Solver: This involves specifying the conditions of the analysis and solver,
+such as the number of timesteps. While the solver code can be modified to override
+defaults, COMSOL Multiphysics®also has the ability to automatically populate
+the model with the default solvers most apt for a given problem. This typically
+starts with a ‘model.study’ or ‘model.sol’ pattern respectively. In Figure 4 and 6, we
+categorize both patterns as ‘solver’.
+6. Results: Once the numerical solver has completed the analysis, one will likely
+postprocess the problem, in order to generate desired plots or tables. This typically
+starts with a ‘model.result’ pattern.
+E
+Agent Details
+We design a multi-agent system that interacts with the COMSOL Multiphysics®API, as well
+as tools (or specialized functions). Each agent has a specific role and input context.
+ControllerAgent: The main agent that tries to solve the problem description by generating
+solutions, interacting with the API and calling subagents.
+Input Context: Problem description.
+Components: Evaluator, ControllerSubAgent
+Working: This samples an initial population of N(=20) solutions using PhyDoc In-Context.
+Over the course of its trajectory, the agent proposes 40 solutions: 20 from oversampling
+the initial prompt, and another 20 from correcting the best of the initial 20, and the best
+solution is selected from the tracked best solutions. This allows us to include gains obtained
+both from oversampling as well as from correction. For 5 problems, the best solution
+corresponded to one of the initial population of solutions. Each solution is evaluated by
+the Evaluator. A fitness score, between 0 and 2, is computed for each solution, using the
+following formula: Executability + ExportSuccessful where ExportSuccessful is 1 if (the
+solution computed a value AND had executability above 90%) and 0 if not. The controller
+agent tracks a set of best replies using their fitness. The set of best replies stores at least
+B(=1) solution, as well as all solutions that successfully computed a value. This agent also
+determines the context to be sent to the CorrectorSubAgent, using the following algorithm:
+24

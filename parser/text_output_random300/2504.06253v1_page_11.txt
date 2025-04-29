@@ -1,0 +1,51 @@
+Warm-Start QAOA via a Reduction to Max-Cut
+•
+11
+(↓) worse than QUBO-Relaxed with 10 initializations
+Rand.
+TSP
+PO
+MIS
+P
+↓
+↑
+↑
+↔
+𝛼
+↑
+↓
+↑
+↔
+Fig. 2. Classification of best performing vertex on top-rotation GW2 relative to QUBO-relaxed warmstart. For every prob-
+lem/metric, the last vertex on top rotation was used for comparison except TSP optimal sampling probability where no
+rotation was used.
+4.1.1
+Random QUBOs.
+For both random QUBOs the optimal sampling probability falls under (↓), while the instance-specific approxima-
+tion ratio falls under (↑).
+For the instance-specific approximation ratio, GW2 outperforms QUBO-Relaxed with both 50 and 10 initializations,
+and is above 0.25 standard deviations for discrete random QUBOs while being within 0.25 standard deviations for
+continous random QUBOS.
+For the optimal sampling probability, QUBO-Relaxed with 10 initializations and 50 initializations are within
+0.25 standard deviations of each other for both continuous and discrete random QUBOs. QUBO-Relaxed with 10
+initializations outperforms GW2 in both instances, but it is within 0.25 of GW2 for continuous random QUBOs
+whereas it is not for discrete random QUBOs.
+The difference between these metrics is likely due to GW2 creating initial states that are superpositions of
+the optimal state and other high-cost but suboptimal states, which carries through subsequent optimizations.
+4.1.2
+Traveling Salesman.
+For TSP, the optimal sampling probability falls under (↑), while the instance-specific approximation ratio falls
+under (↓).
+The optimal sampling probability obtained by both GW2 as well as QUBO-Relaxed are relativley low when
+compared to other problems. This is likely due to the constraints in the cost function being significantly larger
+(and contributing more terms to the QUBO matrix). For our case of 5 cities, there are 216 possible QUBO bitstrings
+but only 24 feasible solutions.
+With that being said, for the optimal sampling probability, the warmstarts in decreasing order are, GW2 no
+rotation, QUBO-Relaxed with 10 initializations, QUBO-Relaxed with 50. None of these are within 0.25 standard
+deviations of each other. Although QUBO-Relaxed performing better with fewer initializations is surprising, it is
+likely an artifact of the generally low optimal sampling probabilities.
+For the instance-specific approximation ratio, GW2 is significantly lower than QUBO-Relaxed with 50 ini-
+tializations, but its within 0.25 standard deviations for QUBO-Relaxed with 10 initializations. The reason why
+increasing the number of initializations has a singificant improvement on the cost is likely also a result of the
+large number of constraint terms in the cost function.
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

@@ -1,0 +1,104 @@
+Brownian bridge above a curve
+80
+Hence, plugging this estimate back into (A.21) and recalling (A.20), we get that
+P0,u,b(A+
+0 \ A−
+s )
+P0,u,b(A+
+0 )
+≤1−1 −δ
+1 + eδ
+
+1−c3
+ux2
+ζa,k(0)(u + ζa,k(0))√s
+
+≤eδ+δ+c3
+ux2
+ζa,k(0)(u + ζa,k(0))√s .
+Thanks to Proposition A.5, Lemma A.7, and by using the fact that ζa,k(s) ≤ζa,0(s) + ζa,k(0), we
+have that there exist a constant c4 = c4(a) such that
+P0,u,b(A+
+0 ) ≤c4
+ζa,k(0)(u + ζa,k(0))
+b
+,
+and so, putting everything together, we obtain that there exist constants c5 = c5(a), c6 = c6(a) > 0
+such that
+P0,u,b(A+
+0 \ A−
+s ) ≤c5
+ux2
+b√s + c6
+ζa,k(0)(u + ζa,k(0))
+b
+(δ + eδ)
+If we choose x = c7(k + s)7/32, for some constant constant c7 = c7(a) > 0 for which x > ζa,k(s),
+one can check that the first term on the right-hand side of the above expression dominates the others
+as soon as s is larger than some constant depending on a, and so we have that
+P0,u,b(A+
+0 \ A−
+s ) ≤c8
+u
+b
+(k + s)7/16
+√s
+,
+for some constant c8 = c8(a).
+A.5
+Random walk estimates
+We collect in this subsection some results that allows us to transfer the statements for Brownian bridge
+we obtained in the previous subsection to the case of the random walk.
+Lemma A.10. Let ζ : R+
+0 →R+
+0 be a non-decreasing concave function. For each x ∈R, all
+b ≥k ≥1 it holds that
+Px,u,b
+ b\
+j=k
+{Bj > −ζ(j)}
+ Bk = z
+
+≤Pz,u,b−k
+
+inf
+s∈[0,b−k](Bs + 2ζ(k + s)) > 0
+
+b
+Y
+j=k
+
+1 −e−2ζ(j)2−2
+.
+Similarly, for all x ∈R and all b ≥k ≥1, it holds that
+Px,u,b
+ b\
+j=k
+{Bj > −ζ(j)}
+ Bk = z
+
+≥Pz,u,b−k
+
+inf
+s∈[0,b−k](Bs + ζ(k + s)) > 0
+
+.
+Proof. The proof follows exactly the same lines as that of [BL18, Lemma 4.15].
+Lemma A.11. For a, k > 1, let ζa,k : R+
+0 →R+
+0 be the function defined in (A.17). There exist
+constants c1 = c1(a), c2 = c2(a) > 0 such that for all ι ∈(0, 1/8), b ≥1 sufficiently large,
+u ∈[bι, b3/4], and all k ∈(c2, b/2],
+P0,u,b
+b−1
+\
+j=1
+{Bj > −ζa,k(j)},
+b−1
+[
+j=k
+{Bj < ζa,k(j)}
+
+≤c1
+u
+b k−1/16 .

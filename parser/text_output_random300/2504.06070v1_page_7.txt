@@ -1,0 +1,54 @@
+Published as a conference paper at ICLR 2025
+(a) Flow2d
+(b) Smoke2d
+(c) Smoke3d
+FNO
+UNO
+UFNO
+LSM
+HelmFluid
+PINP
+Figure 4: Comparison of MSE for different models on each prediction frame.
+Real（t = 40）
+U-NO
+U-FNO
+PINP
+Prediction
+Error
+Prediction
+Error
+(a) Concentration prediction and comparison
+t = 40
+(b) Latent physical quantities Prediction
+Figure 5: (a) A comparison of the 40th frame prediction results between our method and U-NO,
+U-FNO. (b) The inferred and predicted velocity and pressure fields at the 40th frame.
+As shown in Table 1, PINP significantly outperforms other models, achieving a notable reduction in
+error compared to the second-best model (MAE: 0.0107 vs. 0.0183). In the frame-by-frame fluid
+prediction comparison (Figure 4 (a)), our model also outperforms others.
+To further illustrate the effectiveness of our model, Figure 5 (a) presents several examples. Com-
+pared to U-NO and U-FNO, our model predicts fluid evolution more accurately, particularly in
+regions where the substance interacts with boundaries. Additionally, our model estimates velocity
+and pressure fields at each prediction step, providing interpretable evidence that supports the predic-
+tions and highlights its advantages in capturing complex dynamics. Figure 5 (b) shows the estimated
+latent physical quantities at the 40th predicted frame. The inferred physical quantities have physical
+significance, including the velocity distribution at the edges of obstacles and the pressure changes
+before and after the obstacles. These quantities can serve as interpretable evidence for predictions.
+In Figure 4 (a), some of the baseline models exhibit periodic oscillations in the MSE as the number
+of prediction frames increases. This phenomenon is quite unusual because, under normal circum-
+stances, a well-trained model should not exhibit such erratic oscillations. This might be due to rollout
+training with a small number of steps. We have discussed this issue in Supplementary Material.
+Smoke 2D. Smoke rises and diffuses in an enclosed space, with smoke concentration as the ob-
+servable data. During training, the model predicts the next 10 frames of concentration based on the
+previous 4 frames. During testing, the model need to predict 100 future frames based on the first 4
+frames input, with variations in smoke source locations between the training and testing sets.
+In the 2D smoke concentration prediction task, PINP significantly outperforms other models (Table
+1). In the frame-by-frame prediction comparison (Figure 4 (b)), both HelmFluid and U-NO ini-
+tially perform better than our model. But their prediction errors increase rapidly as the prediction
+progresses. This demonstrates the temporal extrapolation capability of our model.
+Figure 6 (a) presents an example showing that, compared to U-NO and HelmFluid, our model pre-
+dicts the movement of smoke more accurately, particularly the shape of the smoke plume and the
+direction of the smoke column. Additionally, Figure 6 (b) shows a comparison between our inferred
+and predicted latent physical quantities and the ground truth in the smoke region. The velocity and
+pressure fields, estimated solely from observable data, resemble the true values, effectively serving
+as evidence for the interpretability of our method.
+7

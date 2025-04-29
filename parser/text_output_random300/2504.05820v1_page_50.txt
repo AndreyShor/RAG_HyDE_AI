@@ -1,0 +1,73 @@
+36
+Tools and methodology
+10−7
+10−6
+10−5
+10−4
+10−3
+10−2
+10−1
+100
+x
+−0.04
+−0.03
+−0.02
+−0.01
+0.00
+0.01
+rel. distance to exa
+g(x)
+pexa
+exp
+trn
+10−7
+10−6
+10−5
+10−4
+10−3
+10−2
+10−1
+100
+x
+−0.0025
+0.0000
+0.0025
+0.0050
+0.0075
+0.0100
+0.0125
+0.0150
+0.0175
+V (x)
+Figure 2.2: Comparison of selected solutions strategies, with respect to the iterated-exact (called
+exa in label) one. In particular: perturbative-exact (pexa) (matching the reference in the non-singlet
+sector), iterated-expanded (exp), and truncated (trn). The distributions are evolved in the range
+µF = 1.65 →102 GeV, with same plotting settings as in Fig. 2.1.
+• iterate-expanded: In the singlet sector we follow the strategy of iterate-exact. In the
+non-singlet sector we expand Eq. (1.75) first to the order specified, before solving the
+equations.
+• truncated: In both sectors, singlet and non-singlet, we make an ansatz to determine the
+solution as a transformation U(as) of the LO solution and then expand the transformation
+U up to the order specified (see [119, Eq. 2.24]). Note that for programs using x-space this
+strategy is difficult to pursue as the LO solution is kept exact and only the transformation
+U is expanded.
+The strategies differ mostly in the small-x region where the PDF evolution is enhanced and the
+treatment of sub-leading corrections become relevant. This feature is seen prominently in the
+singlet sector between iterate-exact (the reference strategy) and truncated. On contrary, in
+the non-singlet sector the distributions vanish for small-x and so the difference can be artificially
+enhanced. This is eventually the source of the spread visible for the valence distribution V (x)
+making it more sensitive to the initial PDF.
+Matching at thresholds.
+EKO can perform calculations in a fixed flavor number scheme where
+the number of active or light flavors nf is constant and in a variable flavor number scheme
+(VFNS) where the number of active flavors changes when the scale µ2
+F crosses a threshold µ2
+h.
+The latter requires a matching procedure as explained in Section 1.4.2. Although the value of µh
+usually coincides with the respective quark mass mh, EKO implements the explicit expressions
+when the two scales do not match. This variation can be used to estimate MHOU.
+In Fig. 2.3 we show the relative difference for the PDF evolution with threshold values µ2
+h that
+do not coincide with the respective heavy quark masses m2
+h. When matching at a lower scale
+the difference is significantly more pronounced as the evolution includes a region where the

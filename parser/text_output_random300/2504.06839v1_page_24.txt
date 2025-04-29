@@ -1,0 +1,271 @@
+and then we use again twice Young inequality (2.2.8). Let us begin with (2.2.16):
+(2.2.16)p
+≤
+R
+T1
+2π dθ
+R ∞
+0
+ds
+R 1
+−1 dh
+R t
+2
+0 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′)
+(E(s + t
+2, h) −E(s + t, h))p−1
+|
+{z
+}
+≤
+Cp−1
+(s+ t
+2 +1)p−1 1(s+ t
+2 ≤
+1
+1−|h| ) by Lemma B.2
+·|
+R
+T1
+2π dθ′ R t′
+0 dt′′ R 1
+−1 dh′′ |φ(θ, t′ −t′′, h′|h′′)|
+|
+{z
+}
+≤C by Proposition 2.1
+|µ0(θ′, t′′, h′′)||p
+≤
+2πC2p−1
+Z ∞
+0
+ds
+Z 1
+−1
+dh
+Z
+t
+2
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)
+1
+(s + t
+2 + 1)p−1 1(s + t
+2 ≤
+1
+1 −|h|)∥µ0∥p
+L1
+=
+2πC2p−1∥µ0∥p
+L1
+Z ∞
+0
+ds
+1
+(s + t
+2 + 1)p−1
+Z 1
+−1
+dh1(1 −|h| ≤
+1
+s + t
+2
+) (E(s + t
+2, h) −E(s + t, h))
+|
+{z
+}
+≤E(s+ t
+2 ,h)≤
+C
+s+ t
+2 +1 by Lemma B.2
+≤
+2πC2p∥µ0∥p
+L1
+Z ∞
+t
+2 +1
+ds
+1
+sp+1 = 2π 2pC2p
+p(t + 2)p ∥µ0∥p
+L1.
+We still have to estimate the other two terms: the second one can be bounded using Proposition 2.1 as follows.
+(2.2.17)p
+≤
+R
+T1
+2π dθ
+R ∞
+0
+ds
+R 1
+−1 dh
+R t
+t
+2 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′) (E(s, h) −E(s + t
+2, h))p−1
+|
+{z
+}
+≤E(s,h)p−1≤1
+·|
+R
+T1
+2π dθ′ R t′
+2
+0
+dt′′ R 1
+−1 dh′′
+|φ(θ, t′ −t′′, h′|h′′)|
+|
+{z
+}
+≤
+C
+t′−t′′+1 ≤2C
+t′+2 ≤4C
+t+4 by Proposition 2.1
+|µ0(θ′, t′′, h′′)||p
+≤
+(4C)p
+(t + 4)p 2π∥µ0∥p
+L1
+Z ∞
+0
+ds
+Z 1
+−1
+dh
+Z t
+t
+2
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)
+|
+{z
+}
+=E(s,h)−E(s+ t
+2 ,h)≤E(s,h)
+≤
+(4C)p
+(t + 4)p 2π∥µ0∥p
+L1
+Z ∞
+0
+ds
+Z 1
+−1
+dhE(s, h) = (4C)p
+(t + 4)p 2π∥µ0∥p
+L1.
+Finally, only (2.2.18) is missing and we are going to estimate it below.
+(2.2.18)p
+≤
+R
+T1
+2π dθ
+R ∞
+0
+ds
+R 1
+−1 dh
+R t
+t
+2 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′) (E(s, h) −E(s + t
+2, h))p−1
+|
+{z
+}
+≤E(s,h)p−1≤1
+·|
+R
+T1
+2π dθ′ R t′
+t′
+2 dt′′ R 1
+−1 dh′′ |φ(θ, t′ −t′′, h′|h′′)|
+|
+{z
+}
+≤C by Proposition 2.1
+|µ0(θ′, t′′, h′′)||p
+≤
+2πCp
+Z ∞
+0
+ds
+Z 1
+−1
+dh
+Z t
+t
+2
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)∥µ0∥p
+L1(T1
+2π×[ t′
+2 ,+∞)×[−1,1])
+≤
+2πCp∥µ0∥p
+L1(T1
+2π×[ t
+4 ,+∞)×[−1,1])
+Z ∞
+0
+ds
+Z 1
+−1
+dh (E(s, h) −E(s + t
+2, h))
+|
+{z
+}
+≤E(s,h)
+≤
+2πCp∥µ0∥p
+L1(T1
+2π×[ t
+4 ,+∞)×[−1,1]).
+Thus we get
+∥(2.2.7)∥Lp ≤(2.2.16) + (2.2.17) + (2.2.18) ≤(2π)
+1
+p
+ 2C2
+t + 2 + 4C
+t + 4
+
+∥µ0∥L1 + C∥µ0∥L1(T1
+2π×[ t
+4 ,+∞)×[−1,1])
+
+,
+which terminates the proof of the first statement (1.1.13) of Theorem 1.1.
+Now only the second part of the Theorem is still to be proven, that is, (1.1.14), which states that in the particular
+case µ0(θ, s, h) = µin(θ)E(s, h)
+µt −⟨µ0⟩
+2π E
+
+Lp(T1
+2π×[0,+∞)×[−1,1])
+≤
+C
+t + 1∥µin∥Lp(T1
+2π).
+To this purpose, notice that we can estimate the four summands in the right hand side of (1.1.13) as follows. For any
+q ≥1 we have
+∥µ0∥Lq(T1
+2π×[A,+∞)×[−1,1]) = ∥µin∥Lq(T1
+2π)∥E∥Lq([A,+∞)×[−1,1]),
+24

@@ -1,0 +1,78 @@
+Astronomy & Astrophysics manuscript no. main
+©ESO 2025
+April 10, 2025
+New empirical mass-loss recipe for UV radiation line-driven winds
+of hot stars across various metallicities
+D. Pauli1, 2, L. M. Oskinova1, W.-R. Hamann1, A. A. C. Sander3, Jorick S. Vink4, M. Bernini-Peron3, J. Josiek3,
+R. R. Lefever3, H. Sana2, and V. Ramachandran3
+1 Institut für Physik und Astronomie, Universität Potsdam, Karl-Liebknecht-Str. 24/25, 14476 Potsdam, Germany
+2 Institute of Astronomy, KU Leuven, Celestijnenlaan 200D, 3001 Leuven, Belgium
+3 Zentrum für Astronomie der Universität Heidelberg, Astronomisches Rechen-Institut, Mönchhofstr. 12-14, 69120 Heidelberg
+4 Armagh Observatory and Planetarium, College Hill, BT61 9DG Armagh, Northern Ireland
+Received ; Accepted
+ABSTRACT
+Context. The winds of massive stars remove a significant fraction of their mass, strongly impacting their evolution. As a star evolves,
+the rate at which it loses mass changes. In stellar evolution codes, different mass-loss recipes are employed for different evolutionary
+stages. The choice of the recipes is user-dependent and the conditions for switching between them are poorly defined.
+Aims. Focusing on hot stars, we aim to produce a physically motivated, empirically calibrated mass-loss recipe suitable for a wide
+range of metallicities. We want to provide a ready-to-use universal recipe that eliminates the need for switching between recipes for
+hot stars during stellar evolution calculations.
+Methods. We compile a sample of hot stars with reliable stellar and wind parameters in the Galaxy and the Magellanic Clouds. Our
+sample spans effective temperatures from T ≈12 kK – 100 kK and initial masses from Mini ≈15 M⊙– 150 M⊙. The sample is used to
+determine the dependence of the mass-loss rate on the basic stellar parameters.
+Results. We find that independent of evolutionary stage and temperature, the wind mass-loss rate is a function of the electron-
+scattering Eddington parameter (Γe) and metallicity (Z), being in line with expectations of radiation-driven wind theory. Our derived
+scaling relation provides an adequate (∆log( ˙M/( M⊙yr−1)) = 0.43) and broadly applicable mass-loss recipe for hot stars.
+Conclusions. The newly derived mass-loss recipe covers nearly the entire parameter space of hot stars with UV radiation-driven
+winds and eliminates the need for interpolation between mass-loss formulae at different evolutionary stages when applied in stellar
+evolution models. Examples of stellar evolution calculations using our new recipe reveal that the predictions on the ionizing fluxes
+and final fates of massive stars, especially at low metallicity, differ significantly from models that use the standard mass-loss rates,
+impacting our understanding of stellar populations at low metallicity and in the young Universe.
+Key words. stars: mass-loss – stars: winds, outflows – stars: atmospheres – stars: massive – stars: early-type – stars: evolution
+1. Introduction
+Massive stars are the mighty engines of the Universe. They shape
+their surroundings through intense ionizing radiation and pow-
+erful stellar outflows, making them regulators of star formation
+and contributors to the chemical enrichment of galaxies (e.g.,
+Maeder 1983; Dray et al. 2003; Hopkins et al. 2014; Ramachan-
+dran et al. 2018b; Crowther 2019). Despite their significance, un-
+derstanding the evolutionary pathways of massive stars remains
+challenging due to uncertainties in nuclear reaction rates, inter-
+nal mixing processes, and stellar winds. While a star’s initial
+mass is the primary factor determining its evolution, the effects
+of mass loss on the evolution – particularly for the more mas-
+sive (Mini > 30 M⊙) stars – cannot be neglected as stellar winds
+can remove significant portions of the hydrogen-rich envelope,
+altering the star’s evolutionary path and its final fate (e.g., Conti
+1976; Maeder 1987; Langer 1987).
+The theoretical foundation for understanding UV-radiation-
+driven stellar winds was established in the late 20th century (e.g.,
+Mihalas et al. 1972, 1976; Castor et al. 1975; Abbott 1982; Paul-
+drach et al. 1986). Over the past decades, significant advance-
+ments, both theoretical and empirical, have improved our un-
+derstanding of the mass lost through stellar winds (e.g., Vink
+et al. 2001; Mokiem et al. 2007; Krtiˇcka & Kubát 2018; Sander
+et al. 2020; Rickard et al. 2022; Björklund et al. 2023). How-
+ever, these studies often focus on specific groups of stars, such
+as main-sequence stars, supergiants, or Wolf-Rayet (WR) stars,
+and sometimes only address a narrow range of metallicities. In
+stellar evolution models, this segmented approach is reflected in
+the use of different mass-loss prescriptions for distinct evolution-
+ary phases, resulting in abrupt transitions or simplistic interpola-
+tions between these phases (e.g., Brott et al. 2011; Ekström et al.
+2012; Choi et al. 2016; Limongi & Chieffi 2018).
+When aiming to create synthetic stellar populations, the seg-
+mented approach of combining different mass-loss recipes intro-
+duces considerable uncertainty as several widely used mass-loss
+prescriptions overestimate mass-loss rates by at least an order of
+magnitude, particularly for low-metallicity stars (e.g., Oskinova
+et al. 2007; Kobulnicky et al. 2019; Shenar et al. 2020). This
+discrepancy leads to population synthesis models overpredicting
+intermediate-mass helium (He) and WR stars at low metallici-
+ties. Such inaccuracies have profound implications for our in-
+terpretation of spectra from distant, low-metallicity galaxies ob-
+served by the Hubble and James Webb Space Telescopes (Curtis-
+Lake et al. 2023; Bunker et al. 2023), as well as on our un-
+derstanding of massive star feedback in galaxies. Furthermore,
+Article number, page 1 of 18
+arXiv:2504.07073v1  [astro-ph.SR]  9 Apr 2025

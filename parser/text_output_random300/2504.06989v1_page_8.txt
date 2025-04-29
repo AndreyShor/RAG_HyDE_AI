@@ -1,0 +1,46 @@
+8
+SUPPLEMENTAL MATERIAL FOR “EXACT CURRENT FLUCTUATIONS IN A TIGHT-BINDING
+CHAIN WITH DEPHASING NOISE”
+Taiki Ishiyama, Kazuya Fujimoto, and Tomohiro Sasamoto
+Department of Physics, Institute of Science Tokyo, 2-12-1 Ookayama, Meguro-ku, Tokyo 152-8551, Japan
+This Supplemental Material describes the following:
+(I) Derivation of Eq. (3),
+(II) Proof of the ω-dependence,
+(III) The Bethe ansatz for the one-dimensional Fermi-Hubbard model,
+(IV) Proof of the integral formula for the Green’s function,
+(V) Derivation of the exact expression for the variance,
+(VI) Asymptotic analysis for q1(t) and q2(t),
+(VII) Numerical scheme for the variance and cumulant generating function.
+I.
+DERIVATION OF EQ. (3)
+We derive Eq. (3) in the main text, by following the argument of Refs. [74, 75]. As explained in the main text, Qt
+can be measured by performing the two-time measurement of NR = ∑x≥1 nx. Due to particle conservation, Qt can be
+obtained as the difference between the measurement outcomes of NR at time t and time 0, therefore Pr[Qt = n] can
+be written in terms of the Born probabilities as follows,
+Pr[Qt = n] = ∑
+m≥0
+Tr[Pm+neLt[PmρPm]],
+(S-1)
+where ρ is an initial density matrix and Pm is the projection operator onto the eigenspace of NR with the eigenvalue
+m. Using the above equation, we have
+⟨eλQt⟩= ∑
+n∈Z
+eλnPr[Qt = n] = Tr[eλNReLt[e−λNRρ′]]
+(S-2)
+with ρ′ ∶= ∑m≥0 PmρPm. For the step initial condition ρini, it holds that ρ′
+ini = ρini. Thus we obtain Eq. (3) in the
+main text.
+II.
+PROOF OF THE ω-DEPENDENCE
+We prove the ω-dependence. Namely, we show that ⟨eλQt⟩can be expanded in terms of ω = ρa(eλ −1) + ρb(e−λ −
+1) + ρa(eλ −1)ρb(e−λ −1) as
+⟨eλQt⟩= ∑
+n≥0
+qn(t)ωn
+(S-3)
+with
+qn(t) =
+∑
+y1<⋯<yn≤0<x1<⋯<xn
+⟨x∣eLt[∣y⟩⟨y∣]∣x⟩.
+(S-4)

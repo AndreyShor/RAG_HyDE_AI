@@ -1,0 +1,74 @@
+have been made with SVD-based models developed using the same methodology and
+hyperparameters.
+The temporal evolution of the predictions was compared with the
+ground truth to assess how well the models captured dynamic behavior over time.
+For UQ, the error probability distribution has been plotted for all velocity components,
+with the streamwise component (u) marked in red, the normal component (v) in green,
+and the spanwise component (w) in blue. These comparisons provide a comprehensive
+analysis of the predictive capabilities of the architectures and the dimensionality reduction
+methods across all test cases.
+It will also be particularly interesting to observe how the same architecture behaves in
+different test cases. To investigate this, each of the three LSTM architectures will be tested
+with similar neurons and activation functions in all three cases. This approach allows for
+a consistent evaluation of the architectures’ adaptability and effectiveness in handling
+varying flow scenarios. The following tables summarize the tuned hyperparameters used
+for the LSTM architectures across different test cases.
+2D Cylinder
+Architecture
+Learning Rate
+Batch Size
+Sequence Length
+LSTM 1 Dense
+0.001
+12
+20
+LSTM 2 Dense
+0.001
+32
+5
+LSTM Time-Distributed
+0.001
+20
+5
+Table 6: Tuned hyperparameters for 2D cylinder flow.
+3D Cylinder
+Architecture
+Learning Rate
+Batch Size
+Sequence Length
+LSTM 1 Dense
+0.001
+8
+20
+LSTM 2 Dense
+0.001
+16
+5
+LSTM Time-Distributed
+0.001
+20
+15
+Table 7: Tuned hyperparameters for 3D cylinder flow.
+Experimental Cylinder
+Architecture
+Learning Rate
+Batch Size
+Sequence Length
+LSTM 1 Dense
+0.0001
+20
+25
+LSTM 2 Dense
+0.0001
+32
+35
+LSTM Time-Distributed
+0.0001
+24
+20
+Table 8: Tuned hyperparameters for experimental cylinder flow.
+3.2.1
+Case: Laminar Flow Past a Circular Cylinder (2D)
+This test case focuses on the classic flow past a two-dimensional cylinder at Re = 130,
+a regime in which laminar vortices form in the wake of the cylinder. The original data
+24

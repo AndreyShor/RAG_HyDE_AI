@@ -1,0 +1,37 @@
+XXX:6
+Israel et al.
+Balancing Authority
+Utility Control Center
+Transmission Substation
+Generation Substation
+Star Topology
+Radial Topology
+Statistics-Based Topology
+Fig. 3. Comparison between star, radial, and statistics-based topologies illustrates how the substations are
+connected to the UCC.
+3.1
+Modelling Network Topologies
+The network topology in the study of Cyber-Physical Power Systems (CPPS) may refer to the
+topology of the physical system, i.e., the power grid with its substations, buses, and transmission
+lines. It may also refer to the communication network and how communication links connect routers,
+firewalls, switches, and hosts. In this paper, the network topology refers to the communication
+network topology. The proposed model generation focuses on star, radial, and statistical topologies.
+The difference among these topologies is how the substations are connected to the UCC. These
+network topologies are illustrated in Fig. 3, where each node matches the color of the communication
+network shown in Fig. 2. The choice of topology depends on factors such as the devices to be
+connected, the desired reliability of the network, and the cost of cabling[14]. Each topology offers
+different advantages and is employed in specific contexts based on scalability, fault tolerance, and
+ease of maintenance[7]. Following is an overview of each topology:
+• Star topologies have all nodes connected directly to a central node, such as a UCC. All
+data passes through the central node. If it fails, communication between all substations is
+disrupted.
+• Radial topologies organize nodes in a hierarchical structure, where a central node connects
+to one or more secondary nodes, which in turn link to additional nodes. Since generation
+and transmission substations serve different functions, their connections to utilities can
+vary, making this hierarchical structure a suitable approach. However, a key drawback of
+radial topologies is their susceptibility to single points of failure[12].
+• Statistics-based: The communication links can be modeled after the transmission power
+lines between substations, but the communication network does not exactly follow the
+power network in the real world. Hence, this paper also considers that substations can be
+connected in a mesh/hybrid topology that we call statistical topology connection, based on
+the network metrics derived in [24].

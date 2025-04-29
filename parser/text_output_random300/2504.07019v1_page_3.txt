@@ -1,0 +1,77 @@
+3
+FIG. 2. Non-Hermitian pseudogap Kondo Model. (a) Critical JR separating LM and SC phases, vs pseudogap exponent r, for
+different JI. Lower-critical dimension of the Hermitian model at r = 0.5 shown as the dotted vertical line. (b-e) Eigenvalue
+RG flow for systems indicated by the star points in (a). (b,c) Representative LM and SC flows for r = 0.35; (d,e) Flow for LM
+and a new ‘complex strong coupling’ (CSC) fixed point for r = 0.525. NH-NRG calculations with Λ = 3 and Nk = 400.
+In the NH case, ˆHN in general has complex eigenvalues,
+and its left and right eigenvectors are distinct. The itera-
+tive diagonalization procedure in NH-NRG proceeds sim-
+ilarly to the Hermitian case, but the recursion by which
+ˆHN+1 is obtained from ˆHN must be carefully reformu-
+lated to account for these crucial differences – see End
+Matter and [46]. One may construct a bi-orthonormal
+basis [6] if the spectrum is non-degenerate, and this pro-
+vides substantial advantages in terms of the efficiency and
+stability of the algorithm. Although quantum impurity
+models do typically have many eigenvalue degeneracies,
+the most significant source of these is from symmetries.
+However, these symmetries can then be utilized to block-
+diagonalize the Hamiltonian in distinct quantum number
+subspaces [48]. In the present setting, labeling states by
+the total charge Q and total spin projection Sz is suf-
+ficient to separate all exact degeneracies into different
+blocks [49]. It is anyway desirable to exploit symmetries
+in this way since it reduces block sizes, and increases com-
+putational efficiency [50]. We identify two other sources
+of approximate degeneracy in these systems: accidental
+and emergent. In both cases, the use of high-precision nu-
+merics is found to overcome any instabilities associated
+with bi-orthonormalization [46].
+Another key aspect of the NRG procedure that must
+be adapted is the Fock-space truncation at each step.
+In Hermitian NRG, where the eigenvalues EN are real,
+we retain only the Nk lowest-lying eigenvalues; but this
+becomes ambiguous in the NH context when the eigenval-
+ues are complex. We found that truncating by the lowest
+real-part of the eigenvalues gives the most accurate and
+stable results. We therefore identify the ‘ground state’ as
+the one with the lowest real-part (consistent with existing
+conventions in NH physics).
+We have confirmed explicitly that applying NH-NRG
+to a non-interacting NH resonant level model using this
+truncation scheme perfectly reproduces the results of ex-
+act diagonalization, as shown in the End Matter. This
+provides a stringent test of the NH-NRG algorithm.
+Our NH-NRG code is available open source to facilitate
+future studies of NH quantum impurity models, see [51].
+Solution of the NH Kondo model.– We now apply NH-
+NRG to the metallic NH Kondo model (bandwidth D ≡1
+hereafter). The full phase diagram obtained by NH-NRG
+is presented in Fig. 1(a) as a function of the real and
+imaginary parts of the complex Kondo coupling, JR and
+JI. We find two phases, described by the SC and LM
+fixed points of the Hermitian Kondo model, separated by
+a first-order quantum phase transition. We identify the
+phases from the NH-NRG eigenspectrum at large N after
+convergence, which takes a distinct form in SC and LM
+phases. In particular, the imaginary part of the eigen-
+values Im(EN) vanish in all cases at large N, indicating
+the emergent Hermiticity of the fixed point Hamiltonian.
+Since the fixed points are Hermitian, we can compute
+their thermodynamic properties in the usual way [40]. As
+expected, we find an impurity contribution to entropy of
+kB ln(2) for a free spin in the LM phase, and 0 for the
+screened Kondo singlet in the SC phase.
+At relatively weak bare coupling |J| ≲0.25, the NH-
+NRG phase boundary (black line) matches precisely with
+the Bethe ansatz prediction of Ref. [25], plotted as the red
+dot-dashed line (see inset). However at stronger coupling
+we find new features. For JR ≳0.55 the LM phase dis-
+appears, and the Kondo effect dominates over dissipative
+effects. For JR ≲0.55 we find re-entrant Kondo physics
+as |JI| is increased. Therefore, the dissipation-induced
+unscreened phase in fact occupies a bounded region in
+the parameter space of the NH Kondo model.
+We analyze the RG flow in Fig. 1(b-e) by tracking the
+(rescaled) NRG eigenvalues EN as a function of itera-
+tion number N. In (b) we plot the real and imaginary

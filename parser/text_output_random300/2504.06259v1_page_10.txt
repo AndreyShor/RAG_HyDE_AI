@@ -1,0 +1,135 @@
+10
+a counter-propagating configuration or a co-propagating
+configuration (two tones on the IA beam), but in many
+cases are performed in a co-propagating configuration as
+they are not motionally sensitive. However, phase insta-
+bilities arise due to path length differences when naively
+combining co- and counter-propagating gates. Thus, we
+take advantage of counter-propagating single-qubit gates
+to perform a change of basis whenever a two qubit-gate
+is needed. Specifically, this allows us to transform the
+XX-type interaction to a ZZ interaction using counter-
+propagating “wrapper” gates, Rcu
+y (±π/2) to surround the
+MS(θ) interaction, as shown in Fig. 10 [34].
+Rcu
+y ( π
+2 )
+MS(θ)
+Rcu
+y (−π
+2 )
+Rcu
+y (± π
+2 )
+Rcu
+y (∓π
+2 )
+FIG. 10: ZZ(θ) circuit. To convert the MS(θ) to the
+ZZ(θ), the MS(θ) is surrounded by counter-
+propagating wrapper gates, Rcu
+y (±π/2). If the desired θ
+is positive (negative), the sign of the wrapper gates on
+both qubits are matched (mismatched). The waveforms
+for the internal MS(θ) are performed at a specific phase
+relation to always generate an XX(|θ|) gate (i.e. 0 (π)
+for a native XX (−XX) interaction)
+We also find that this approach eliminates errors in
+θ that arise from phase-dependent optical crosstalk on
+nearest and next-nearest neighbor pairs [35]. These er-
+rors are dependent on the phase relationship of the wave-
+forms generating an MS(θ) gate. Because most circuits
+on the QSCOUT system rely on the ubiquitous use of
+frame rotations (both as the dynamic phase shifts for
+light shift cancellation described in the previous section,
+and as programmed virtual Z gates) this means that all
+qubit frames, Φi(t), within a circuit at any given time
+may vary significantly from qubit to qubit. Therefore,
+for an arbitrary MS(θ) gate within a given circuit, the
+actual phase relation between the waveforms of the gate
+pulses for each qubit is undetermined until the applica-
+tion of that particular circuit. To be clear, we are making
+a distinction between the well-defined programmed phase
+relationships of each gate at the circuit level and what is
+transpiring on the waveform-generating control hardware
+which tracks the use of virtual Z gates and frame rota-
+tions to update all subsequent waveforms. For instance,
+given a simple two-qubit circuit in which a virtual Z(π/2)
+is performed on one of the two qubits prior to an XX-
+oriented MS(θ) gate, the phase relation of the waveforms
+being generated during the MS(θ) gate would actually
+be the equivalent of a YX-oriented interaction.
+Now, by inserting the MS(θ) gate within wrapper
+single-qubit gates to transform it to a ZZ(θ) gate, this
+new operation is now agnostic to any accumulated phases
+on the two qubits’ respective frames as any phase oper-
+ations commute through ZZ(θ).
+As such, we are free
+to specify the inner MS(θ) operation with any phase re-
+lation between the respective qubits’ waveforms as long
+as the accompanying wrapper gates are phased appro-
+priately to match. On the QSCOUT system, we always
+perform the inner MS(θ) interaction of the ZZ(θ) gate
+at a specific phase relation between the waveforms (i.e. 0
+(π) for a native XX (−XX) interaction). For more de-
+tails on how this approach mitigated the errors in θ, see
+Ref. [35], but here we will describe the nuances of how to
+specify the phase relationship of the waveforms generat-
+ing that inner MS(θ) with our Octet control hardware.
+Within Octet, for a given qubit i, we have access to
+two separate qubit frames that can be tracked, Φ0
+i (or
+frame0) and Φ1
+i (or frame1)[36]. In this case, we utilize
+Φ0
+i to be the default phase bookkeeper for each qubits’
+frame. The other frame, Φ1
+i , becomes a temporary qubit
+frame that is reset for each implementation of the ZZ(θ)
+gate. During the ZZ(θ) gate interaction, we reset Φ1
+i = 0
+for both qubits involved in the gate, and both qubits’ ref-
+erence point becomes Φ1
+i . Within this temporary frame,
+the first set of wrapper gates is performed. Then, the
+MS(θ) interaction is performed with the appropriate dy-
+namic frame rotation, ϕf,i(t) which now accumulates on
+Φ1
+i for each qubit, such that by the end of the gate, the
+frame Φ1
+i = ϕf,i(τ). Finally, the second set of wrapper
+gates is performed within frame Φ1
+i . After completion
+of the ZZ(θ) gate, those qubits return to Φ0
+i for frame
+tracking. The key benefit of this additional frame is that
+we do not need manual bookkeeping of phases through-
+out the circuit in order to reset the phase relation for
+the ZZ(θ) gate. Instead by having two separate frames,
+the hardware natively accumulates the appropriate phase
+for the qubit frame from virtual Z gates on Φ0
+i , while Φ1
+i
+provides a fixed starting phase relationship for waveforms
+generating ZZ(θ) gates.
+VI.
+GATE PERFORMANCE METRICS AND
+USE CASES
+With these considerations, we now investigate the per-
+formance of MS(θ). For these purposes, we will assess
+the performance of MS(θ) rather than the circuit-level
+gate, ZZ(θ), as the performance of the ‘wrapper’ gates
+will be the same regardless of θ.
+A.
+State Fidelity Estimates
+To determine the fidelity of a single application of the
+MS(θ) operation on an initial state |00⟩, we perform two
+measurements: first a probability measurement of the
+qubit states after application of the gate and a parity
+measurements.
+The parity measurement consists of a
+gate operation followed by a varied projection π/2 pulse
+on each qubit which results in oscillations between even
+and odd parity state probabilities.
+A common fidelity
+estimate metric [37], is thus:

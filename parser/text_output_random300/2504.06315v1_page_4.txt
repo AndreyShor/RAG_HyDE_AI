@@ -1,0 +1,50 @@
+been adjusted to 6.93 · 10−2 [mmHg · s · ml−1], capturing the additional resistance introduced by the retinal blood flow
+dynamics.
+Importantly, all other aspects of the cardiovascular system remain unchanged from the original model proposed
+by Avanzolini et al. [2]. These modifications focus solely on integrating the eye-specific circulation while preserving
+the original framework for the rest of the cardiovascular system. As such, the adopted strategy ensures consistency
+with the validated physiological dynamics described in the original model.
+Ocular System
+A detailed description of the retinal circulation model and mathematical equations can be found in Guidoboni et al.
+[10, 11]. This section provides a brief overview of the main features of the model. In this framework, the vasculature is
+divided into five main compartments labeled accordingly: the central retinal artery (CRA), arterioles (art), capillaries
+(cap), venules (ven), and the central retinal vein (CRV). Alphanumerical labels further distinguish between specific
+segments within each compartment. The blood flow within the retina is driven by a pressure difference between the
+inlet, Pcra,in, which is the blood pressure upstream of the CRA, and the outlet, Pcrv,out, the pressure downstream of the
+CRV. External pressures affect different parts of the retinal network: intraocular segments are exposed to intraocular
+pressure (IOP), while retrobulbar segments behind the eye experience retrolaminar tissue pressure (RLTp). This
+combination of resistances and pressures provides a comprehensive blood flow model through the retinal vasculature.
+The eye-heart model retains the retinal circulation framework established in the foundational work by Guidoboni
+et al. [10], ensuring consistency with physiological values derived from experimental data. The original description
+of retinal circulation and its parameters, including vascular resistance, compliance, and blood flow dynamics, remain
+unchanged. In this manner, the model predictions remain consistent with validated physiological observations of
+retinal hemodynamics.
+Moreover, building upon the base model of the retinal circulation, we further introduce an additional parallel
+circuit, referred to as the eye branch, which represents the blood flow directed toward non-retinal structures. Although
+the term "eye branch" can be seen a simplification, it is intended to encompass all ocular vascular beds outside
+the retina, such as the choroid and ciliary body. This extension enables the model to capture the broader ocular
+circulation, accounting for the distinct hemodynamic properties and functional roles of these non-retinal structures.
+By incorporating the eye branch, the model provides a more comprehensive representation of blood flow within the
+eye and accounts for flow redistribution mechanisms under conditions of elevated external pressure.
+Eye-Heart Coupling
+The original eye-heart coupling component of the physiological model is designed to capture the dynamics of blood
+circulation between the heart and a single eye. This focused approach simplifies the systemic circulatory model by
+isolating the blood flow directed to the eye while incorporating the rest of the blood flow, including that towards the
+brain and other systemic tissues, into a separate branch of the body circulation. This separation enables a targeted
+analysis of ocular hemodynamics without compromising the systemic integrity of the model.
+The direct connection between the heart and the eye is described using an aorta-to-eye and eye-to-vena cava
+equivalent circuit, represented by resistive, capacitive, and inductive elements. These elements collectively simulate
+the vascular resistance, compliance, and volumetric blood flow within the pathway from the aorta to the ocular circu-
+lation and back to the venous system. By calibrating the R, C, and L parameters, the model captures the distinctive
+hemodynamic properties of the eye, including its dependence on systemic blood pressure and flow rates originating
+from the heart.
+This simplification enhances computational efficiency and allows detailed exploration of the interplay of cardio-
+vascular and ocular systems. It provides a robust framework for investigating eye-specific circulatory phenomena,
+such as retinal blood flow regulation and pressure-induced vascular changes.
+Model equations
+The overall description results in the following set of ODEs, which models the coupling between the eye and heart
+dynamics. These equations describe the hemodynamics between various compartments, including the aorta, body,
+lungs, and the eye. The system of equations accounts for pressure and flow rates in the cardiovascular and ocular
+systems, considering factors such as resistance, compliance, and inductance in each compartment. We gather below
+the equations governing the overall dynamics of the coupled system:
+4

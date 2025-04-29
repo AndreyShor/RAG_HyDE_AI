@@ -1,0 +1,137 @@
+where the functions ΦB(s) and QB(s) are given by
+ΦB(s) =
+√
+πB
+√s exp
+h s
+π log
+πe
+s
+i
+Γ
+ s
+π + 1
+
+,
+QB(s) = 1
+Bs
+∞
+X
+m=0
+m+1
+X
+n=0
+Qn,m+1−n(log B)
+Bmsn
+.
+(17)
+We now need to expand this expression in B and s at infinity. After some work, the resolvent
+in the edge region can be brought into the following form:
+¯R(s) =
+√
+B
+√s
+∞
+X
+m=0
+∞
+X
+j=−m−1
+j+m+1
+X
+i=0
+sj
+Bm log(4Bs)iV B0
+Q [m, j + 1, i] ,
+(18)
+where we introduced
+V B0
+Q [m, j, i] =
+j+m
+X
+k=0
+k
+i
+
+log
+B0
+B
+k−i
+VQ[m, j, k] ,
+(19)
+with B0 =
+1
+4πe.
+Determining the coefficients.
+We can now use the recursive algorithm of Volin [13, 14] to
+solve for the coefficients. By comparing the expansions for the bulk and edge region, we need
+to solve
+Vc[m, n, t] = V B0
+Q [m, n + 1, t] ,
+(20)
+in order to determine the respective coefficients.
+2.1
+Extracting the moments
+From the definition of the resolvent R(x) in (7), we can see how it is related to the sought for
+moments (5)
+RB(x) =
+Z ∞
+−∞
+X
+ℓ≥0
+f(y)y2ℓ
+x2ℓ+1 dy =
+X
+ℓ≥0
+ϕℓx−2ℓ−1 .
+(21)
+The moments can be obtained by expanding the resolvent in the bulk region from eq. (10) at
+x = ∞. For instance, from the large x expansion we can easily read off the first few moments:
+ϕ0 = ρ = πB2 +
+∞
+X
+m=0
+c0,m,0 −2c0,m,1
+Bm−1
+,
+ϕ1 = πB4
+4
++
+∞
+X
+m=0
+c1,m,0 −2c1,m,1
+Bm−2
++
+1
+2c0,m,0 −5
+3c0,m,1 + 4c0,m,2 −8c0,m,3
+Bm−3
+
+.
+ϕ2 = πB5
+8
++
+∞
+X
+m=0
+c2,m,0 −2c2,m,1
+Bm−2
++
+3
+2c1,m,0 −11
+3 c1,m,1 + 4c1,m,2 −8c1,m,3
+Bm−3
++
+3
+8c0,m,0 −89
+60c0,m,1 + 14
+3 c0,m,2 −12c0,m,3
+Bm−5
+
+.
+(22)
+Other moments can be obtained by expanding RB(x) to higher orders. Using the recursive
+algorithm, we can determine the coefficients cn,m,k and evaluate the perturbative part of the
+moments up to any order in 1/B. However, the number of coefficients contributing to a given
+6

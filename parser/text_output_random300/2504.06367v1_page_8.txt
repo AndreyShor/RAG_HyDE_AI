@@ -1,0 +1,114 @@
+8
+ing the convergence of the loss function, we settle on a neural
+network with [120,120,120] units and a Rectified Linear Unit
+activation function (see Figure 4). We further find that the min-
+imum of the validation loss is generally achieved after Δ𝑡=
+500 epochs. However, by allowing for early stopping, we note
+that the lowest redshift bin completes training earlier, whereas
+higher redshift bins do not meet the early stopping criteria.
+We further optimize training by allowing the initial learning
+rate to decrease from an initial value of 10−3, to a minimum
+value of 10−6 if the validation loss does not improve for Δ𝑡=
+30 epochs. We choose the Adam optimization algorithm and
+a batch size = 18. Even though this batch size seems small
+compared to the total data size, we check that larger batches
+are not able to achieve as small losses for even larger number
+of epochs.
+This process of hyperparameter tuning is therefore done
+within cross-validation, where each neural network is validated
+using a different subset of the original training set, while the
+test set remains unseen. The building process of the emulator
+is shown in Figure 4.
+In this way, we end up with 10 neural networks per redshift
+bin at our disposal. To obtain the final prediction, we average
+the prediction extracted from each model using the arithmetic
+mean.
+Since each model was trained in parallel and on a
+different training set in cross-validation, the combination of
+these models will give a better average performance than each
+model individually. We also use this method to estimate the
+combined emulator’s error, as shown in Figure 5. This shows
+that the error from the emulator is significantly smaller than
+the error on the data shown in Figure 3 and the one used in
+[82] without model ensembling and a separate test set.
+V.
+RESULTS
+The results of the main analyses for thermal and dark matter
+parameters are shown in Figure 6 and Figure 7.
+We em-
+ploy a uniform prior on 𝑚WDM−1, specifically U ∼[0, 1]
+keV−1, after verifying that the emulator’s predictions are un-
+reliable in extrapolated regions of the parameter space. Simi-
+larly, we impose a uniform prior on 𝑓WDM, U ∼[0, 1]. Fig-
+ure 6 shows the 1 and 2𝜎recovered posterior projected in the
+(𝑚WDM−1 −𝑓WDM) plane. The shape of the contours matches
+the expected degeneracy between the two parameters, where
+the data allows for a very light thermal relic as long as its abun-
+dance is small (𝑚WDM−1 →1), or a heavy thermal relic with
+large abundance ( 𝑓WDM →1), with CDM at (𝑚WDM−1, 𝑓WDM)
+= (0,0) in this parameterization.
+The default analysis uses
+gaussian priors on 𝑇0𝑧𝑖centered on fitted 𝑇0𝑧𝑖measurements
+from observations at low-𝑧([110]) and high-𝑧([111]), follow-
+ing [46]. The second analysis (orange) represents the model
+that incorporates all the physical considerations in addition to
+the default priors. These include a thermal-dependent reso-
+lution correction, patchy reionization correction and 𝑢0 −𝑇0
+informed through the measurement of 𝜏CMB from Planck [112].
+In the following sections we describe each correction and the
+constraints found for their corresponding analysis, which are
+shown in Table II.
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+mWDM
+1 (keV
+1)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+fWDM
+Default
+Patchy + 
+CMB + Rscdm (u0)
+1  Irsic+24
+2  Irsic+24
+FIG. 6: The 2D posterior distribution in the 𝑓WDM and 𝑚−1
+WDM plane
+for our default analysis (gaussian priors on 𝑇0) and for patchy + 𝜏CMB
++ 𝑅𝑠cdm (𝑢0). Vertical black and gray dashed lines correspond to
+the 1𝜎and 2𝜎constraints from [46]. The grid of simulations is also
+shown as the starred black points.
+The degeneracy between 𝑓WDM and 𝑚WDM−1 from Fig-
+ure 6 is well-fitted by a power law of the form 𝑓WDM =
+𝐴× (1keV/𝑚WDM)𝑏. For the 2𝜎contours of the default anal-
+ysis, we find 𝐴= 0.14 ± 0.0007 for the normalization, and 𝑏
+= -1.1 ± 0.0033 for the index parameter. We further identify
+a combination of 𝑓WDM and 𝑚WDM−1 that is perpendicular to
+the above degeneracy axis, and is best-constrained by the data,
+through the parameter 𝑊WDM ≈𝑓WDM (1 keV/𝑚WDM)3.4. The
+1𝜎models in the 2D posterior of Figure 6 result in the upper
+bound 𝑊WDM < 0.27 at 1𝜎.
+A.
+Thermal priors
+To effectively constrain the (𝑚WDM−1 −𝑓WDM) plane, we
+need to marginalize over the two astrophysical effects that
+impact the small scale power spectrum apart from dark matter
+free-streaming.
+The thermal histories within our hydrodynamical simula-
+tions were constructed to bracket observational constraints on
+the thermal state of the IGM and effective optical depth evolu-
+tion. These models can provide a useful prior in the (𝑢0 −𝑇0)
+plane, corresponding to the gray band in the 2D contours in
+the top row of Figure 7, as was done in [46].
+Alternatively, as proposed by [46], one can impose a prior
+on the thermal state of the IGM represented by 𝑇0, based on
+observational data and therefore independent of the specific
+physical models used in our analysis. We apply these priors in
+our default analysis shown in Figure 7.

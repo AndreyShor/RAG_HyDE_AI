@@ -1,0 +1,88 @@
+39
+Mt
+At
+St
+Zt
+Mt+1
+At+1
+Zt+1
+Mt−1
+At−1
+St−1
+Zt−1
+FIG. 24.
+Bayesian network for an product environment channel (lemma 7) and agent with independently and uniformly
+distributed actions (see eq. (G45)) used in the proof of Lemma 9.
+Proof: Recall eq. (G43), the expression for work rate for a product environment channel:
+W(agtM →
+←env) = ⟨H (At|Mt)⟩t −h (S) −⟨I [S0:tA0:t+1; St|Mt]⟩t .
+(G49)
+First assume that agtM ∈A
+→
+←env
+mea ∩A
+→
+←env
+pred . By Definition 14, agents in A
+→
+←env
+mea fulfill
+⟨H (At|Mt)⟩t = log |A|,
+(G50)
+and, by Definition 12 agents in A
+→
+←env
+pred fulfill
+0 = ⟨I [S0:tA0:t+1; St|Mt]⟩t .
+(G51)
+Plugging eqs. (G50) and (G51) into eq. (G49) yields W(agtM →
+←env) = log|Y| −h(S) which equals the work capacity
+of unifilar product environment channels according to Lemma 9, and thus agtM ∈A
+→
+←env
+eff
+.
+For the other direction, assume agtM ∈A
+→
+←env
+eff
+. Then,
+0 = Cwork(env) −W(agtM →
+←env)
+(G52)
+= log |A| −⟨H (At|Mt)⟩t −⟨I [S0:tA0:t+1; St|Mt]⟩t
+(G53)
+where for the second line we used the expressions for work capacity of product environment channels (Lemma 9) and
+extractable work of agents using a product environment channel (eq. (G49)).
+Note that −⟨I [S0:tA0:t+1; St|Mt]⟩t is upper bounded by zero and ⟨H (At|Mt)⟩t is upper bounded by log |A|. The
+expression in eq. (G53) is thus upper bounded by zero. Thus, agtM must be such that both upper bounds are reached.
+By Definition 14, the set of agents which reach the upper bound for ⟨H (At|Mt)⟩t is A
+→
+←env
+mea , and, by Definition 12, the
+set of agents which reach the upper bound for −⟨I [S0:tA0:t+1; St|Mt]⟩t is A
+→
+←env
+pred . It follows that agtM ∈A
+→
+←env
+mea ∩A
+→
+←env
+pred .□
+Theorem 9 shows that efficient agents should be constructed such that they are predictive whenever the environment
+is modeled by a unifilar product environment channel.
+This, however, is no longer true for general environment
+channels. We first prove the following lemma which shows properties for a particular memoryless environment channel.
+Lemma 10. Let environment env be a memoryless environment channel and such that At and St take values in an
+alphabet A = S = {0, 1}. Let the environment’s transition matrix Φenv = (ϕenv(j|i))j,i with j, i ∈A be such that
+ϕenv(j|0) = δ0,j and ϕenv(j|1) = 1/2 for j = 0, 1. Then, for any agtM →
+←env we have
+⟨I [At; St|Mt]⟩t = 0 ⇔⟨H (At|Mt)⟩t = 0.
+(G54)
+Proof.
+First note that if an agent model agtM admits ⟨H (At|Mt)⟩t = 0, then
+⟨I [At; St|Mt]⟩t = ⟨H (At|Mt)⟩t −⟨H (At|MtSt)⟩t = 0,
+(G55)
+where we used the definition of mutual information (eq. (A6)), and the conclusion follows from the nonnegativity of
+conditional mutual information and conditional entropy, proving one direction of eq. (G54).

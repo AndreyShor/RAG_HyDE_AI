@@ -1,0 +1,112 @@
+NNLO polarized PDFs with MHOU
+161
+Parameter
+Sampled range
+Optimal model
+min.
+max.
+NN architecture
+n1, n2, n3 = 10
+n1, n2, n3 = 40
+n1 = 29,n2 = 12,n3 = 6
+Number of layers
+2
+3
+3
+NN initializer
+GLOROT_NORMAL
+GLOROT_UNIFORM
+GLOROT_UNIFORM
+Activation functions
+TANH
+SIGMOID
+TANH
+Optimizer
+NADAM
+ADAM
+NADAM
+Clipnorm
+10−7
+10−4
+2.95 × 10−5
+Learning rate
+10−4
+10−2
+1.40 × 10−3
+Maximum # training epochs
+17000
+17000
+Stopping patience
+0.1
+0.1
+Initial positivity multiplier
+185
+185
+Initial integrability multiplier
+10
+10
+Table 5.4: The hyperparameter space considered in this study. We scan the internal neural network
+architecture (number of layers, nodes and activation functions), the χ2 optimizer, the value
+of the clipnorm parameter, and the learning rate. In the lower part we list also other relevant
+hyperparameters which are kept fixed during the hyperopt and the PDF fit.
+0
+20
+40
+60
+80
+100
+120
+trial
+2.0
+2.5
+3.0
+3.5
+4.0
+4.5
+5.0
+5.5
+6.0
+L
+(
+2
+pdf)
+hopt
+L
+(
+2
+pdf)
+hopt, min
+Selected Model
+[L
+(
+2
+pdf)
+hopt, min, L
+(
+2
+pdf)
+hopt, min +
+2]
+0.015
+0.020
+0.025
+0.030
+0.035
+0.040
+0.045
+0.050
+L(
+2)
+hopt
+Figure 5.4: The distribution of the hyperoptimization losses as a function of the trials. For each model
+we show the value of L(χ2)
+hopt (orange dot, left y-axis) and of L(φ2)
+hopt (green maker, right y-axis) computed
+on the left-out folds. The yellow shaded band indicate the range within which we select the model with
+the lowest L(φ2)
+hopt.
+5.3. Results
+In this section, we present the NNPDFPOL2.0 parton set. The results of the NNLO fit are shown
+in Fig. 5.5 at low (Q = 3.2 GeV) and a high (Q = 100 GeV) scale. The quarks polarization is
+mainly dominated by the valence quarks, which display a valence-like structure with ∆u−being
+positive and ∆d−negative. Overall ∆u−and ∆d−are quite well determined by the available

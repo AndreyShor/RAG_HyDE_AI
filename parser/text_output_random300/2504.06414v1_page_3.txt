@@ -1,0 +1,94 @@
+figure 2, consisting of two ferromagnetic layers separated by an oxide layer [24]. One layer has fixed magnetic 
+orientation, referred to as the reference layer. The other layer’s orientation can be switched. If the reference layer and 
+free layer have magnetic orientation in the same direction, it corresponds to low resistance referred to as the Parallel 
+(P) state (‘0’). When the free layer has magnetic orientation in the opposite direction, it corresponds to higher resistance 
+and is referred to as the Antiparallel (AP) state (‘1’) [35]. The two states are separated by an energy barrier Eb and 
+corresponding retention time 𝜏𝜏= 𝜏𝜏0 exp ቀ𝐸𝐸𝑏𝑏𝑘𝑘𝐵𝐵𝑇𝑇
+ൗ
+ቁ. Here 𝑘𝑘𝐵𝐵 denotes the Boltzmann constant and T denotes 
+temperature. The energy barrier is determined by the interfacial magnetic anisotropy in the case of perpendicular 
+magnetic tunnel junctions [36]-[38]. If 𝐸𝐸𝑏𝑏 is chosen to be small enough, then random thermally activated switching 
+may occur at room temperature. For example, 𝐸𝐸𝑏𝑏< 16𝑘𝑘𝐵𝐵𝑇𝑇 resulted in bitstream generation at a rate of milliseconds in 
+[24], although much faster bit generation has been demonstrated in devices with smaller energy barriers or devices 
+where the energy barrier is temporarily reduced by voltage controlled magnetic anisotropy (VCMA) [24], [39]-[41].  
+ 
+(a)  
+            (b) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Figure 1. (a) Generation of stochastic bitstream, (b) Generation of Binary Number from stochastic bitstream [42] 
+In prior work, different bias voltages were applied to generate bitstreams corresponding to different input and weight 
+values. It was shown that tunability from > 95% AP to > 95% P was achieved by bias voltages from -1V to +1V (figure 
+2c) [24]. About 30 different bias voltages were used to generate 30 different bitstreams per MTJ. The products (XNOR) 
+of two MTJs were then utilized to increase resolution of each bitstream [24] and used for inference (not for learning 
+with backpropagation) of a neural network for recognition of handwritten digits from MNIST dataset. However, this 
+work [24] did not consider quantization of synaptic weights and outputs, which is implemented in our current work 
+with only 5 or 11 quantized states. Such quantization could lead to significant improvements in latency and energy 
+efficiency for inference, without significantly sacrificing inference accuracy.  
+(a) 
+(b) 
+ 
+Top Electrode 
+CoFeB 
+Free layer 
+MgO 
+Tunnel Barrier 
+CoFeB 
+Fixed layer 
+ 
+Coupling layer  
+Co/Pt 
+SAF 
+ 
+Bottom 
+Electrode 
+Parallel  
+(Low R) 
+ 
+Anti-parallel 
+(High R) 
+ 
+ 
+ 
+Free layer 
+ 
+Tunnel Barrier 
+ 
+Fixed layer 
+(i) 
+ 
+(ii) 
+ 
+ 
+ 
+ 
+ 
+ 
+RNG 
+Clock 
+X 
+Y 
+Comparator 
+stochastic 
+bitstream 
+X>Y 
+Counter 
+Clock 
+Binary 
+Number 
+stochastic 
+bitstream 

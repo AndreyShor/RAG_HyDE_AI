@@ -1,0 +1,45 @@
+have leveraged micro-CT images to accelerate the prediction of effective rock properties, improving computational
+efficiency [Liu et al., 2023, Ahmad et al., 2023, Chung et al., 2024b,c].
+Despite these advantages, three-dimensional CT images present several challenges. First, the resolution may not be
+sufficient to capture all pore structures [Blunt, 2017, Saxena et al., 2019a]. As resolution increases, the sample size that
+can be imaged decreases. For instance, a 20003-voxel dataset at 1 µm resolution represents a 2 mm3 volume. Given the
+fixed total number of voxel, increasing the resolution by reducing the pixel size to 0.5 µm halves the sample size to
+1 mm3. Since the studied volume must be at least as large as the representative elementary volume (REV) to derive
+meaningful upscaling properties, a coarser resolution is commonly chosen to image a larger sample exceeding the REV
+[Yoon and Dewers, 2013, Milani et al., 2016]. Consequently, typical micro-CT scans of rocks have resolutions ranging
+from 1 to 20 µm for samples a few to a few tens of millimeters in size [Bazaikin et al., 2017, Blunt, 2017, Saenger and
+Madonna, 2011]. However, submicron pores, grain roughness, small throat channels, and microcracks—features that
+significantly influence upscaled properties—often remain unobserved in micro-CT images but are detectable at higher
+resolutions [Bazaikin et al., 2017]. Second, micro-CT images do not provide explicit geological information. While
+grayscale intensity variations allow density-based differentiation between grains and pores, they do not distinguish
+mineral compositions [Niu et al., 2020a, Goldfarb et al., 2022]. Additionally, cementation and weathering effects, which
+critically impact rock properties [Basu et al., 2009, Cook et al., 2015], are not explicitly visible in CT images . Third,
+the computed effective properties are subject to systematic errors due to the aforementioned resolution limitations and
+the inability to identify geological information. In particular, these issues can lead to porosity underestimation (by a
+factor of 0.5) and permeability overestimation (by a factor of 10) [Saxena et al., 2019a]. Similarly, effective elastic
+moduli derived from digital images tend to be stiffer than those measured in laboratory tests [Saxena et al., 2019b].
+Additional imaging modalities can help overcome these limitations by providing complementary information. Thin-
+section microscope images offer submicron resolution (e.g., 0.65 µm/pixel [Araya-Polo et al., 2020], 0.74 µm/pixel
+[Saxena et al., 2017a]) and reveal mineralogy, grain contacts, fine-scale pore structures, and weathering features [Saxena
+et al., 2021]. However, thin-section images capture only 2D information, making it difficult to infer the broader 3D rock
+microstructure. Data-driven super-resolution techniques have attempted to fuse CT and thin-section data [Niu et al.,
+2020b, Liu and Mukerji, 2022], but they often assume that submicron features in thin-section images match those in the
+entire CT volume, which may not hold for heterogeneous or anisotropic rocks. If the thin section is not representative
+of the full 3D volume, reconstructed 3D features may be misinterpreted. Therefore, before applying unpaired image
+fusion techniques, it is essential to verify that the thin-section image is spatially aligned with the 3D CT volume.
+A persistent challenge in multimodal imaging is the precise alignment of a 2D thin section within a 3D CT volume.
+Manual feature matching is time-consuming, prone to errors, and complicated by uncertainties introduced during
+thin section preparation. Figure 1 shows a general procedure for preparing thin-section digital rock images, which
+includes multiple steps such as sawing, polishing, and digitizing. Each of these steps introduces potential misalignment,
+complicating the precise spatial correlation between the thin section and the original rock sample. Consequently,
+accurate registration of thin-section and micro-CT images remains challenging, even with a known rough location,
+limiting the effective integration of dual-modality information.
+Image registration—which aligns images from different modalities into a single coordinate system—is widely used in
+fields such as medical imaging and automatic target recognition [Brown, 1992, Zitova and Flusser, 2003]. In medicine,
+for example, physicians frequently combine CT scans (which depict bone structures) with MRI data (which highlight
+soft tissues) to track tumor growth or plan treatments, as each modality provides complementary information about the
+same anatomical region [Maurer and Fitzpatrick, 1993, Maes et al., 2003]. Similarly, multimodal image registration in
+geoscience can improve the accuracy of effective rock properties that align with laboratory measurements by integrating
+CT and thin-section data. However, geological applications of image registration remain largely unexplored, particularly
+for aligning a 2D thin section within a 3D CT volume, which introduces 3D rotational challenges.
+2

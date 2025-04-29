@@ -1,0 +1,48 @@
+ 
+2 
+the combinatorial parametric space, highlighting QA as a powerful and practical solver11-14. The 
+ability to efficiently explore high-dimensional combinational spaces makes QA capable of 
+handling a wide range of optimization tasks4,5,10,15,16. 
+ 
+The potential merit of QA motivates the systematic comparison with classical counterparts (e.g., 
+simulated annealing, integer programming, steepest descent method, tabu search, and parallel 
+tempering with isoenergetic cluster moves), focusing on the solution quality and the time 
+complexity. While previous benchmarking studies showed some advantages of QA, most used 
+low-dimensional or the sparse configuration of QUBO matrices due to the lack of available qubits 
+in the QA hardware and poor topology to connect qubits17-19. For example, O’Malley et al. 17 
+compared the performance of QA with classical methods (mathematical programming), but they 
+limited the number of binary variables to 35 due to the QA hardware limitation. Similarly, Tasseff 
+et al. 18 highlighted the potential advantages of QA compared to classical methods (such as 
+simulated annealing, integer programming, and Markov chain Monte Carlo) for sparse 
+optimization problems containing up to 5,000 decision variables and 40,000 quadratic terms. Haba 
+et al. 19 demonstrated that a classical solver (integer programming) could be faster than QA for 
+small problems, e.g., ~100 decision variables. Consequently, these benchmarking studies show 
+that QA methods and their classical counterparts can exhibit similar solution quality and time 
+complexity. However, such low-dimensional or sparse QUBOs considered in the previous 
+benchmarking studies are challenging to map to a wide range of practical problems, which usually 
+require high-dimensional and dense configuration of QUBO matrices4,5,10,20. For example, in our 
+previous QA optimization of one-dimensional and two-dimensional optical metamaterials, the 
+QUBO matrices exhibit these properties (Fig. S1) 4,5,16,20. 
+ 
+The state-of-the-art QA hardware (D-Wave Advantage System) features more than 5,000 qubits, 
+advanced topology to connect qubits, and efficient hybrid algorithms (e.g., Leap Hybrid sampler). 
+For example, the recent development (e.g., Pegasus topology) has increased qubit connectivity 
+from 6 to 1521-23. Improved qubit connectivity reduces the need for complex embedding processes, 
+which map problem variables to physical qubits on the hardware. With better connectivity, such 
+as in D-Wave's Pegasus topology, the embedding process becomes more efficient and can better 
+preserve the structure of dense optimization problems. This enhancement allows the quantum 
+annealer to increase the potential for finding high-quality solutions24,25. In addition, a QUBO 
+decomposition algorithm (i.e., QBSolv) splits a large QUBO matrix into small pieces of sub-
+QUBO matrices, allowing us to handle a QUBO matrix with dimensions higher than the maximum 
+number of qubits in the QA hardware26,27. Given these advancements, it is imperative to study the 
+performance of the state-of-the-art QA system for high-dimensional and dense configuration of 
+QUBO matrices, and systemically compare solution quality and the time complexity with the 
+classical counterparts.  
+ 
+In this work, we benchmark the performance of quantum solvers against classical algorithms in 
+solving QUBO problems with large and dense configurations to represent real-world optimization 
+problems. We analyze the solution quality and the required time to solve these benchmark 
+problems using several quantum and classical solvers. This benchmarking study provides 
+important insights into employing QA in practical problem-solving scenarios. 
+ 
+ 

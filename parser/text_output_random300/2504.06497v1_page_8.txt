@@ -1,0 +1,90 @@
+Summing element-wise:
+M =
+
+
+1.7
+0
+0
+0
+0
+−0.7
+0
+0
+0
+0
+−0.1
+0
+0
+0
+0
+−0.9
+
+
+Step 3: Apply the Exponential Since D(x) = eiM, we exponentiate each diagonal element:
+D(x) =
+
+
+ei(1.7)
+0
+0
+0
+0
+ei(−0.7)
+0
+0
+0
+0
+ei(−0.1)
+0
+0
+0
+0
+ei(−0.9)
+
+
+These features allow quantum classifiers to separate data in a high-dimensional feature space
+efficiently.
+The key insight is that IQP multi qubit encoding embeds classical data into quantum circuits
+via diagonal unitary transformations. This mapping enables quantum feature spaces where clas-
+sical algorithms struggle to capture complex correlations. The resulting quantum state exhibits
+interference effects that enhance the expressiveness of features for machine learning applications.
+3.0.2
+Displacement Encoding
+Displacement Encoding is used to encode classical data into quantum states using displacement
+operators in phase space.
+It is particularly relevant when working with continuous-variable
+quantum computing (CVQC). It allows for flexible transformations of quantum states, enhancing
+the expressiveness of quantum models. The displacement operator is given by: D(α) = eαˆa†−α∗ˆa
+where:
+α is the displacement amplitude (a complex number).
+ˆa† and ˆa are the creation and annihilation operators, respectively. These operators are
+used to manipulate quantum states, such as the number (or Fock) states, which describe
+the quantum state of a system with a specific number of particles (like photons or quanta)
+[41] [42] [43].
+The annihilation operator ˆa lowers the number of particles (or quanta) in a quantum state
+by 1. For example, if the system is in a state with n quanta (denoted as |n⟩), applying
+the annihilation operator a will give: a|n⟩= √n|n −1⟩. It ”removes” one quantum (or
+particle) from the state, lowering the state by 1 quantum.
+The creation operator ˆa† raises the number of particles (or quanta) in a quantum state by
+1. Applying ˆa† to a state |n⟩gives: ˆa†|n⟩= √n + 1|n + 1⟩. It ”adds” one quantum (or
+particle) to the state, increasing the state by 1 quantum.
+For a two-qubit system, the displacement operator acts as: D(α1, α2) = eα1a†
+1−α∗
+1a1 ⊗eα2a†
+2−α∗
+2a2
+For an N-qubit system, the displacement encoding is applied to each qubit independently.
+The combined displacement operator for the entire N-qubit system is: D(α1, α2, . . . , αN) =
+NN
+i=1 Di(αi) where Di(αi) = exp
+
+αia†
+i −α∗
+i ai
+
+After applying the displacement operators to all qubits, the resulting state will be: |α1, α2, . . . , αN⟩=
+NN
+i=1 Di(αi)|00 . . . 0⟩
+To encode a classical value x=0.8 (Using single Qubit),
+Step 1: Displacement Operator The displacement operator is given by: D(α) = eαa†−α∗a
+8

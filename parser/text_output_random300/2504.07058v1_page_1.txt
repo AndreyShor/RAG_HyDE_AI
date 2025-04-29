@@ -1,0 +1,49 @@
+Physics informed neural network for forward and inverse modeling
+of low grade brain tumors.
+K. Murari ∗
+P. Roul †
+S. Sundar ∗
+April 10, 2025
+∗Centre for Computational Mathematics and Data Science
+Department of Mathematics, IIT Madras, Chennai 600036, India
+† Department of Mathematics, VNIT, Nagpur, Maharashtra 440010, India
+kmurari2712@gmail.com, pradipvnit@yahoo.com, slnt@iitm.ac.in
+Abstract
+A low-grade tumor is a slow-growing tumor with a lower likelihood of spreading compared to
+high-grade tumors. Mathematical modeling using partial differential equations (PDEs) plays a crucial
+role in describing tumor behavior, growth and progression. This study employs the Burgess and
+extended Fisher–Kolmogorov equations to model low-grade brain tumors. We utilize Physics-Informed
+Neural Networks (PINNs) based algorithm to develop an automated numerical solver for these models
+and explore their application in solving forward and inverse problems in brain tumor modeling.
+The study aims to demonstrate that the PINN based algorithms serve as advanced methodologies
+for modeling brain tumor dynamics by integrating deep learning with physics-informed principles.
+Additionally, we establish generalized error bounds in terms of training and quadrature errors. The
+convergence and stability of the neural network are derived for both models. Numerical tests confirm
+the accuracy and efficiency of the algorithms in both linear and nonlinear cases. Additionally, a
+statistical analysis of the numerical results is presented.
+Keywords: Brain tumor dynamics modeling, PINN, Forward Problems, Inverse Problems, Reaction-Diffusion
+Equations.
+1
+Introduction
+A brain tumor represents an anomalous tissue mass resulting from unchecked cellular proliferation, serving no
+useful purpose within the brain. These growths can emerge in various brain regions and exhibit diverse imaging
+features. Brain tumors are commonly divided into two main types: primary and metastatic. Primary tumors
+originate in the brain, affecting cells, glands, neurons, or the encompassing membranes. Metastatic, or secondary,
+tumors occur when cancer cells from other body parts spread to the brain. Gliomas originate from glial cells and
+represent the most prevalent form of primary brain tumors. The tumors are distinguished by their aggressive
+growth and invasive behavior in humans. Glioma treatment typically includes chemotherapy, radiation, and
+surgery. The model was designed to represent a recurrent anaplastic astrocytoma case undergoing chemotherapy.
+It has since been adapted to estimate the effects of varying surgical resection levels and to account for differences
+in tumor growth and diffusion, thereby capturing a wide range of glioma behaviors. Gliomas, although capable
+of developing at any age, are predominantly found in adults aged over forty-five. These tumors usually form
+in the brain’s hemispheres but can also emerge in the lower part of the brain. Burgess et al. [8] developed
+mathematical framework for gliomas in 1997. A model incorporating fractional operators was later developed
+by [20]. More recently, [38] conducted simulations of this model using Fibonacci and Haar wavelets. The EFK
+equation was developed by augmenting the Fisher–Kolmogorov (FK) model with a fourth-order derivative term, as
+presented in [10], [16], and [49]. The EFK equation is widely applied across various physics disciplines, including
+fluid dynamics, plasma science, nuclear reactions, ecological modeling, and epidemic studies [2]. However, these
+equations can exhibit very complex behavior, especially in reaction-diffusion systems, due to their nonlinear
+nature and complex computational domains [2]. [7] provides a fundamental framework for describing low-grade
+glioma growth and progression, effectively capturing tumor cells’ infiltration and proliferation characteristics.
+1
+arXiv:2504.07058v1  [math.NA]  9 Apr 2025

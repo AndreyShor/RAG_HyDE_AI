@@ -1,0 +1,59 @@
+Preprint. Under review.
+was the result of genuinely solving the model, computing a solution and exporting
+it. Return ‘N/A‘ for both fields if the table suffers from either of the failure modes
+described above.
+−−−−−
+PROBLEM: {{problem description}}
+−−−−−
+EXPECTED TARGET QUANTITY: {{ target description }}
+TABLE: {{table}}
+REPLY:
+We then compute the number of problems for which the LM was able to parse the reply and
+convert it to a JSON. This fraction is the number we report as Valid Target.
+C.5
+Relative Error | Strict
+Our strict filter for whether a model has truly solved the problem is to take the subset
+of problems for which the problem was judged to be a valid export by the LLM, and to
+consider the algorithmically parsed last value. We then compute the relative error of this
+value against the ground truth target value. If this value is less than 10%, we consider it
+valid.
+C.6
+Physics Metrics
+The interface lines are parsed from the ground truth code by finding lines that fit the
+regex pattern for interface creation. Likewise for the feature creation and feature property
+modification lines. Each of these lines of codes can be considered as an “Action” consisting
+of an Action Type (eg: Create Interface) with corresponding Arguments (eg: Interface tag,
+Name of the Interface, Geometry).
+Create
+Interface:
+model.component("comp1").physics().create("Interface tag",
+"InterfaceName", "Geometry tag");
+Eg: model.component("comp1").physics().create("ht", "HeatTransfer", "geom1");
+Create Feature:
+model.component("comp1").physics("Interface tag").create("
+Feature tag", "FeatureName", Dimension);
+Eg:
+model.component("comp1").physics("ht").create("temp1",
+"TemperatureBoundary", 1);
+Modify Feature Property: model.component("comp1").physics("Interface tag")
+.feature("Feature tag").set("Param", "Value");
+Eg:
+model.component("comp1").physics("ht").feature("temp1").set("T0",
+"1000[degC]");
+C.6.1
+Interface Factuality
+We
+check
+whether
+the
+Interface
+name
+exists
+in
+a
+list
+of
+known
+COMSOL
+Multiphysics®interfaces. If it exists in this list, we assign it a factuality of 1, else 0.
+22

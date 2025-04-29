@@ -1,0 +1,138 @@
+2
+cusing on atom reconfiguration problems [9–12], we de-
+scribe the system’s architecture and workflow (Sec. II),
+followed by a characterization of its runtime perfor-
+mance (Sec. III). Our goal is to establish blueprints and
+benchmarks to expedite the development of similar sys-
+tems, as well as to identify limitations and opportunities
+for further improvement (Sec. IV).
+II.
+SYSTEM ARCHITECTURE AND
+WORKFLOW
+We first consider the typical architecture of a feedback
+control system used to actuate a physical system. The
+feedback control system comprises a chain of modules
+operating in a closed loop (Fig. 1a). A sensor collects
+data about the physical system, and a digitizer gathers
+and distributes the digitized data to a processor. The
+processor analyzes the data to determine the state of the
+system, compares the current state against the target
+state, and solves a combinatorial optimization problem
+to find the sequence of control operations required to
+bring the system toward the desired state. The controller
+translates these control operations into physical signals,
+either by retrieving them from a database or synthesizing
+them in real time. These signals are streamed to drive the
+actuator, which in turn updates the state of the physical
+system. This process continues in a loop until interrupted
+or terminated.
+Our low-latency reconfiguration system (LLRS) is a
+specific realization of this architecture specifically de-
+signed for actuating fluorescent particles imaged on a
+camera (Fig. 1b).
+An Electron Multiplying Charge-
+Coupled Device (EMCCD, Andor iXon Ultra 888) cam-
+era images a configuration of atoms or molecules by col-
+lecting their scattered photons through an optical mi-
+croscopy system.
+A Frame Grabber Card (FGC, Ac-
+tive Silicon Firebird 1xCLD-2PE4L) receives the digi-
+tized photo-electron counts measured for each pixel of
+the camera within a pre-defined region of interest. These
+counts are transferred to the memory of the processor,
+which we choose as either a CPU (AMD Ryzen Thread-
+ripper 2950X) or a GPU (NVIDIA Quadro RTX 4000).
+The processor analyzes the images to detect the presence
+or absence of an atom in each trap and infers the config-
+uration of atoms. It then solves an atom reconfiguration
+problem, determining the sequence of displacement op-
+erations required to achieve the desired configuration of
+atoms. These control operations are translated into poly-
+chromatic radio-frequency waveforms, which are then up-
+loaded to the on-board memory of an Arbitrary Wave-
+form Generator (AWG, Spectrum M4i.6622-x8), acting
+as the controller. The AWG streams the polychromatic
+waveforms, which are then amplified to drive a pair of
+Acousto-Optic Deflectors (AODs, AA Opto Electronic
+DTSX-400) acting as the actuators. These AODs are ac-
+tive optical diffractive devices that deflect a single laser
+beam at an angle proportional to the frequency of its
+(III)
+Problem
+solving
+(II)
+Image 
+processing
+(I)
+Image 
+acquisition
+(IV)
+Waveform
+synthesis
+(V)
+Waveform
+streaming
+ • Process
+ • Threshold
+ • Lookup
+ • Upload
+ • Configure
+ • Stream
+ • Solve
+ • Batch
+ • Expose
+ • Transfer
+ • Read out
+Figure 2.
+Overview of the software architecture. Im-
+age acquisition is performed by the EMCCD and FGC. Image
+processing, problem solving, and waveform synthesis are per-
+formed by the CPU or GPU. Waveform synthesis and stream-
+ing are performed by the processor and AWG.
+monochromatic driving field, or multiplex it into multi-
+ple laser beams when driven by a polychromatic wave-
+form. Each of the multiplexed laser beams can extract,
+displace, and implant individual atoms from their traps,
+effectively updating the configuration of atoms. The re-
+configuration process continues for multiple reconfigura-
+tion cycles until the desired configuration is reached or
+the reconfiguration problem is no longer solvable [9].
+A key challenge in designing the LLRS was achiev-
+ing low-latency operation while maintaining modularity
+and flexibility across different hardware platforms. Our
+approach optimizes data transfer pathways and parallel
+processing strategies to minimize bottlenecks, enabling
+real-time feedback control at a speed necessary for prac-
+tical quantum applications. The workflow of the LLRS
+comprises five modules (Fig. 2): (1) image acquisition,
+(2) image processing, (3) problem solving, (4) waveform
+synthesis, and (5) waveform streaming. We now describe
+the implementation of each module.
+A.
+Module 1 – Image acquisition
+The image acquisition module relies on the EMCCD,
+FGC, and AWG devices.
+Upon being externally trig-
+gered by some external controller, the AWG triggers the
+EMCCD to open its mechanical shutter and initiate ex-
+posure. The photons incident on each pixel of the cam-
+era are converted into primary photoelectrons that are
+stored as charges on a capacitor.
+After a fixed user-
+defined exposure time, the EMCCD vertically shifts the
+photoelectrons to a storage region and then horizontally
+shifted them to an amplification region that converts
+them into secondary photoelectrons.
+These secondary
+photoelectrons are then digitized by an analog-to-digital
+converter. As they are collected, the digitized counts are
+continuously transferred to the FGC over a 3-tap Cam-
+era Link interface, which supports higher data transfer
+rates (2 GBps) than the USB 3.0 protocol supported by
+the camera (0.625 GBps) [13, 14].
+After all digitized
+counts have been received, the FGC transfers them onto
+the memory of the processor, either to the CPU via Di-
+rect Memory Access (DMA) or to the GPU via Remote
+Direct Memory Access (RDMA). The RDMA protocol
+transfers the data directly to the onboard memory of the

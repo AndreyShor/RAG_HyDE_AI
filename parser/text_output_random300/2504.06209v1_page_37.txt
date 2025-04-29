@@ -1,0 +1,65 @@
+37
+≤: In general, an upper bound on work capacity can be obtained by optimizing each summand of the work capacity
+separately:
+Cwork = max
+agtM ⟨H (At, Mt) −H (St, Mt)⟩t
+(G33)
+≤
+
+max
+agtM [H (At, Mt) −H (St, Mt)]
+
+t
+.
+(G34)
+This upper bound simplifies further for memoryless invariant environments as follows. Note that memoryless
+invariant environments admit a description with a |Y| × |Y| transition matrix Φ such that the global process at
+any time t is given by
+pUt(ut) = pMtAtSt(mt, at, st) = ϕ(st|at)pMtAt(mt, at).
+(G35)
+Thus, the maximization in eq. (G34) reduces to a maximization over pMtAt. In fact, this is the same optimization
+problem for all t since Φ does not depend on t. Thus, the upper bound in eq. (G34) simplifies to
+Cwork ≤max
+pA0M0
+[H (A0M0) −H (S0M0)] .
+(G36)
+Further, we find
+H (A0, M0) −H (S0, M0) = H (A0) + H (M0) −I [A0; M0] −H (S0) −H (M0) + I [S0; M0]
+(G37)
+where we used H (X, Y ) = H(X) + H(Y ) −I[X; Y ] which is easily checked with an information diagram, see
+Supplemental Material A. Using I [X1, Y ] −I [X2, Y ] = I [X1, Y | X2] −I [X2, Y |X1], eq. (G37) becomes
+H (A0, M0) −H (S0, M0) = H (A0) −I [A0; M0|S0] −H (S0) + I [S0; M0|A0] .
+(G38)
+Note that I [S0; M0|A0] = 0 due to d-separation (see Figure 22). Then, by the nonnegativity of conditional
+M0
+A0
+S0
+M1
+A1
+S1
+M2
+A2
+FIG. 22. Bayesian network for a memoryless environment channel (corollary 2) with colorized d-separation (blue d-separates
+red and green) used in the proof of Lemma 9.
+mutual information, we find
+H (A0, M0) −H (S0, M0) ≤H (A0) −H (S0)
+(G39)
+which proves the upper bound.
+≥: Consider a memoryless agent model which, for all t, prepares its action in arg maxpA0 [H (A0) −H (S0)], i.e.,
+its extracted work is given by max
+pA0
+[H (S0) −H (A0)]. Since any agent’s extracted work is a lower bound on the
+work capacity, this proves the lower bound.
+Equations (G31) and (G32) imply equality.
+(iii) We start by deriving an expression for the a.m. work production under the assumption that the environment
+is modeled by a unifilar product environment channel. The a.m. work production in units of kBT ln 2 is given by
+eq. (G12),
+W(agtM →
+←env) = ⟨H (At|Mt) −H (St|Mt)⟩t .
+(G40)
+Rewriting the second term in the Ces`aro limit using twice the definition of conditional mutual information eq. (A6)
+we find
+H (St|Mt) = H (St|MtS0:tA0:t+1) + I [S0:tA0:t+1; St|Mt]
+(G41)
+= H (St|S0:t) −I [St; MtA0:t+1|S0:t] + I [S0:tA0:t+1; St|Mt] .
+(G42)

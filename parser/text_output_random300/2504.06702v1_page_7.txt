@@ -1,0 +1,63 @@
+7
+Figure 6. Probability density functions for the pairwise inter-
+atomic distances. The pairwise distances for initial configura-
+tions (blue, as described in App. A), for final configurations
+after running the algorithm (gold) and for configurations fit-
+ted to the final configurations (green, as described in App. A).
+A method of creating initial configurations can then be
+fitted so that it generates an equivalent distribution, as
+described in App. A. This leads to random configura-
+tions that will have interatomic distance distributions
+similar to the final configurations and thus are more
+fair to compare against.
+We will call these the fitted
+configurations, see Fig. 6.
+Figure 7 shows the statistics on the multiple random
+target Hamiltonians.
+From Fig. 7a, we see that there
+is a large decrease in error between the final and fitted
+configurations. Figure 7b shows most clearly that over
+many different initializations and many different Htarg,
+our method can consistently find configurations leading
+to lower energy errors. In many cases the initial configu-
+rations do not reach chemical accuracy. However, for the
+fitted and the final configurations, chemical accuracy is
+reached in almost all cases, with the final configurations
+often still outperforming the fitted ones by several orders
+of magnitudes.
+E.
+Molecular Hamiltonians
+Lastly, our method is tested for practical applications by
+minimizing the energies of small molecules, where their
+internal structure is varied. For this, molecular Hamil-
+tonians are generated using the Psi4 quantum chemistry
+library [38].
+We consider LiH with varying distances
+between Li and H, resulting in 4-qubit Hamiltonians.
+CH4 in the 2D plane with varying distances between
+the C and H atoms, resulting in 5-qubit Hamiltonians.
+Lastly, BeH2 for varying distances between Be and the
+two H’s resulting in a 6-qubit Hamiltonian.
+The results are shown in Fig. 8. For all three molecules,
+configurations are found that largely outperform their
+fitted configuration counterparts.
+It was found that
+in order to solve the problems, the number of inner
+iterations needed to be scaled with the number of qubits,
+which has been reported before for pulse optimization
+algorithms and VQAs in general [14, 39, 40]. However,
+as mentioned in Sec. II, the position optimization does
+not suffer from this, and the number of outer iterations
+can be kept at Nout = 20. The CH4 and BeH2 ground
+states also seem easier to find than the LiH ground
+state.
+A reason for this could be the fact that LiH
+has a more entangled ground state than the other two
+molecules [14].
+In future work, it would be interest-
+ing to quantify how well a configuration for one fixed
+interatomic distance functions for another one close to it.
+Figure 7. CBO results for 14 random target Hamiltonians, with 4 qubits, 20 agents and dipole-dipole interactions, repeated
+20 times each. Nout = 20 outer iterations and Nin = 100 inner iterations. a) distribution of log errors for final configurations
+(gold) and fitted configurations (green). b) Log errors for initial (blue), fitted (green) and final (gold) configurations, separated
+for all 14 individual problem.

@@ -1,0 +1,105 @@
+resent possible solutions to the QUBO problem,
+except for the brute force approach that produces
+a deterministic outcome. Notice that the QUBO
+problem is unconstrained and only energetically
+penalises the solutions that do not adhere to the
+constraint encoded in its cost function. We can
+filter out the solutions that do not satisfy the con-
+straint, i.e. the solutions with the wrong number
+of vacancies, by classical post-processing.
+A natural question that arises is: why were
+these constraint violating configurations sampled
+at all? Should we not have a large enough penalty
+coefficient, λ, so that these configurations are
+never sampled? The answer is as discussed before
+- finding the optimal λ is a balance between mak-
+ing sure these solutions are never sampled and
+trying to not increase the QUBO energy range
+too much by penalising the cost of these con-
+straint violation configurations. Often the latter
+is preferred. Removal of these configurations is
+achievable by sorting through the bit string so-
+lutions and counting the number of present va-
+cancies (represented by zeros).
+If an incorrect
+number of vacancies is present in the solution,
+then the solution is removed. For all the explored
+methods, the post-selection improves the proba-
+bility of finding the optimal solution for the orig-
+inal configurational analysis problem.
+To perform post-selection for our use-case with
+a single constraint, a constant number of bit-
+strings must be checked, equal to the number
+of samples (shots), which have N entries each.
+Therefore, the scaling of this method is linear in
+N. The time required for post-selection at the
+N = 18 QUBO problem size, was found to be
+approximately 0.01 s for 10, 000 samples, which
+is the maximum number of samples produced as
+output in any of our experiments. However, for
+larger problems, this number of samples may need
+to scale with N to achieve non-zero probability of
+the optimal solution. As N increases, this proba-
+bility decreases due to increased noise from using
+more qubits, which we have confirmed experimen-
+tally.
+The ultimate output from all of these meth-
+ods is a probability distribution over classical bit-
+strings or, equivalently, over the configuration en-
+ergies we sample from, as described above. The
+classical brute force approach produces the exact
+solution, but we can associate this with a delta
+function probability distribution, peaked at the
+optimal solution. The properties of the full dis-
+tributions are revealing, and we analyse several
+of these shortly. Furthermore, this unified output
+conveniently allows various metrics or summary
+statistics to be defined that are applicable for all
+methods. These metrics are important for quick
+comparisons between different methods and for
+summarising the important behaviours. We next
+discuss the metrics considered in this work, which
+we choose to quantify the performance in terms of
+both the time to find the solution and the quality
+of the solution found.
+4.3
+Performance Metrics
+Defining good benchmarking strategies for mea-
+suring performance of optimisation algorithms
+has been extensively studied in both quantum
+and classical computing contexts [51].
+In gen-
+eral, these strategies fall under two distinct cat-
+egories. The first category involves allocating a
+fixed amount of resources, such as time or energy,
+and measuring the quality of solution obtained,
+using a well-defined metric for it.
+The second
+involves measuring the amount of a resource, us-
+ing an appropriate metric, that is necessary to
+acquire a solution that achieves a pre-specified
+threshold (or target) for the quality of solution.
+It is therefore clear from the above that, in or-
+der to proceed, we need to define metrics of two
+different types: ones that measure the quality of
+solution, and metrics that measure the amount
+of the resource devoted to obtaining a solution.
+In our case, we select optimal solution probability
+and approximation ratio as metrics for the qual-
+ity of solution, and user runtime and QPU time
+for measuring the resources to solution.
+Optimal Solution Probability, Ps – The pro-
+portion of times, Nground state, the ground state
+occurs in all Nsolutions solutions:
+Ps = Nground state
+Nsolutions
+.
+By ‘solutions’ in the above definition we mean a
+collection of output samples either before or after
+post-selection, and this will be specified when the
+metric is used. This metric is independent of the
+detailed structure of the probability distribution
+and describes only the likelihood of successfully
+finding the solution to the problem.
+Approximation Ratio, AR – The approxima-
+8

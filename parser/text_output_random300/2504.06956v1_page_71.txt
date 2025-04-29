@@ -1,0 +1,152 @@
+Proof of Proposition 6.1
+71
+for some constant a > 0. By arguing as in the proof of Lemma 4.20, and using the fact that the
+function Fλ
+b,x−L,L is bounded above by L, we note that for any x ∈[L/2, A + L], b ≥0 sufficiently
+large, and u ∈[b1/4, b3/4], it holds that
+E0,u,b
+h
+Fλ
+b,x−L,L(Υu+x
+b
+)1{Ek,b}1{M0,b(Υu+x
+b
+)≤λ}
+i
+≲Lk−1
+16 u
+b .
+Obviously, the same bound also holds with Fλ
+b,x−L,L(Υu+x
+b
+) replaced by Fλ
+k,x−L,L(Υu+x
+b
+). Therefore,
+we can focus our attention on the complement of the event Ek,b. Specifically, we need to estimate the
+following expectation
+E0,u,b
+h
+|Fλ
+b,x−L,L(Υu+x
+b
+) −Fλ
+k,x−L,L(Υu+x
+b
+)|1{Ec
+k,b}1{M0,b(Υu+x
+b
+)≤λ}
+i
+.
+(7.41)
+By recalling the Definition 4.6 of the control variable Kb, we can further restrict our attention
+to the event {Kb ≤k}, as the bound on the complement of this event can be obtained by using
+Lemma 4.10. We recall that Υu+x
+b
+(0) = 0, and so on the complement of the event Ek,b, it holds that
+|Dλ
+b,0(Υu+x
+b
+)| = |Dλ
+k,0(Υu+x
+b
+)|. Therefore, we have that
+|Fλ
+b,x−L,L(Υu+x
+b
+) −Fλ
+k,x−L,L(Υu+x
+b
+)|
+≤L
+
+1 −exp
+
+−e−γ(x−L)
+Z
+Bb\Bk
+Fγ(y)eγΥu+x
+b
+(y)dy
+
+.
+Thanks to Lemma 4.9, and by choosing a > 0 sufficiently large, we observe that there exists a constant
+c1 = c1(a) > 0 such that
+Ec
+k,b ∩{Kb ≤k} ⊆
+b−1
+\
+j=k
+{Bj ≥c1(log j)2} ∩{Kb ≤k} .
+Therefore, recalling once again the Definition 4.6 of the control variable Kb, on the event Ec
+k,b ∩{Kb ≤
+k}, by using the decomposition (4.5) of the field Υb and by choosing the constant a > 0 sufficiently
+large, we obtain that there exist constants c2, c3 > 0 such that
+Z
+Bb\Bk
+Fγ(y)eγΥu+x
+b
+(y)dy ≤
+b−1
+X
+j=k
+Z
+Aj
+Fγ(y)eγ(−c2(log j)2+Zj(y)−
+√
+2dj)dy
+≲
+b−1
+X
+j=k
+e−γc3(log j)2 Z
+B1\B0
+Fγ(ejy) eγ(Zj(ejy)−
+√
+2dj−dj)+djdy
+|
+{z
+}
+µγ,j(dy)
+,
+where we recall that dj is defined as in (7.13), and we use the notation introduced in (6.1). Furthermore,
+since thanks to (K2), the function K is supported in B(0, 1), we observe that on B1 \ B0, the measure
+µγ,j has the same law as the measure introduced in (1.9) (with t replaced by j), i.e., it is a regularised
+and normalised supercritical GMC measure. Hence, applying the previous estimate, we deduce that
+the quantity in (7.41) is bounded above by
+LE
+
+1 −exp
+
+−e−γ(x−L)
+∞
+X
+j=k
+e−γc3(log j)2 Z
+B1\B0
+Fγ(ejy)µj(dy)
+
+1{M0,b(Υu+x
+b
+)≤λ, Kb≤k}
+
+.
+We observe that the quantity inside the parenthesis in the previous display is independent of (Bs)s≤b.
+Therefore, using (4.13) and arguing as in the proof of Lemma 4.10, for any k ≥0 sufficiently large and
+for b ≥0 sufficiently large, the quantity in the previous display is bounded from above by a multiple of
+u
+b LE
+
+1 −exp
+
+−
+∞
+X
+j=k
+e−γ(x−L+c3(log j)2)
+Z
+B1\B0
+Fγ(ejy)µγ,j(dy)
+ 1
+2

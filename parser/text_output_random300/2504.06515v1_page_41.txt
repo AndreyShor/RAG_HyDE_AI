@@ -1,0 +1,96 @@
+Entropy 2024, 26, 612
+40 of 84
+and a discrete mapping can be constructed that describes the particle’s angular and radial
+velocities each time it collides with one of the edges. The systems are nearly identical
+in the equal mass case since a crossing between the two equal mass particles cannot be
+distinguished from an elastic collision between them.
+The interesting dynamics of the system arises due to these crossings, or alternatively,
+due to the non-smoothness of the potential along the bisectors. Two types of motion can
+be distinguished [3]: A-motion, in which the hex-particle crosses a single bisector twice in
+succession (the same pair of particles cross twice in a row) and B-motion, corresponding
+to the hex-particle crossing two successive sextant boundaries (one particle crosses each
+of its compatriots in succession). Any given motion is characterized by a symbol sequence,
+a sequence of letters A and B, with a ﬁnite exponent n denoting n-repetitions and an
+overbar denoting an inﬁnite repeated sequence. For example, the expression A2B3 denotes
+three A-motions (two adjacent particles cross twice in a row twice in succession) followed
+by three B-motions (one particle crosses the other two in succession, which then cross each
+other). The expression (AnBm)p denotes the motion AnBm repeated p times, and (AnBm)
+denotes inﬁnitely many repeats of this motion. There is an ambiguity in classifying either
+the ﬁnal or the initial crossing since whether or not a motion is of A-type or B-type is
+contingent upon the previous crossing; this ambiguity can be resolved by taking the initial
+crossing of any sequence of motions as being unlabeled.
+Since the same initial conditions for the N, pN, and R systems do not yield the
+same conserved energy H, comparison of these cases necessitates a choice: one can either
+compare at ﬁxed values of the energy (FE conditions), modifying the initial conditions as
+appropriate (as required by the conservation laws for each system), or else ﬁx the initial
+conditions, comparing trajectories at differing values of H (ﬁxed-momenta (FM) conditions).
+Numerically, it is useful to rescale
+pi = Mtotc ˆpi
+zi =
+4
+κMtotc2 ˆzi
+(181)
+in which case, the equations of motion become
+∂η
+∂ˆpi
+=
+1
+c
+∂H
+∂pi
+=
+4
+κMtotc3
+dˆzi
+dt = dˆzi
+dˆt
+(182)
+∂η
+∂ˆzi
+=
+(
+4
+κM2
+totc4 )∂H
+∂zi
+= −
+4
+κMtotc3
+d ˆpi
+dt = −d ˆpi
+dˆt
+(183)
+where Mtot = 3m is the total mass of the system, t =
+4
+κMtotc3 ˆt, and ˆzi and ˆpi are the respective
+dimensionless positions and momenta. The quantities Mi and Li likewise rescale
+Mi
+=
+Mtotc2
+q
+ˆpi2 + ˆmi2 + ˆpi
+
+= Mtotc2 ˆMi
+(184)
+Li
+=
+Mtotc2
+ 
+η + 1 −
+q
+ˆpi2 + ˆmi2 −ϵ(∑
+j
+ˆpjsji)
+!
+= Mtotc2 ˆLi
+(185)
+where η + 1 = H/Mtotc2, ˆmi = ( mi
+Mtot ).
+One consideration in describing the motion is that the proper time (97) differs for each
+particle, even in the equal mass case. The simplest choice (but not the only one) is to work
+with the coordinate time t.
+The plots in this section were obtained numerically [30,116], with a time step in
+the numerical code having a value ˆt = 1. Absolute and relative error tolerances of
+ϵabs = ϵrel = 10−8 were imposed so that the estimated error in each of the dynam-
+ical variables ρ(i), λ(i), pρ(i), and pλ(i) at each step i in the numerical integration is
+ϵ(i) ≤max(ϵrel|y(i)|, ϵabs).

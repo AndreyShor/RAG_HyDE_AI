@@ -1,0 +1,69 @@
+Note that m = b + γq is the moist static energy of the model, and the moist
+pseudoadiabat is defined as a profile for which dm/dz = 0 and q = qs (Vallis et al.
+2019). Imposing moist pseudoadiabatic boundary conditions allows the temperature
+and moisture to adjust to moist convection. In Vallis et al. (2019), Oishi and Brown
+(2024) and Agasthya et al. (2025), both T(H) and q(H) were fixed, so there was
+no possibility to adjust the upper levels to a convectively controlled profile, and the
+stratification leads to an unrealistic downward heat flux. In the real atmosphere,
+the diffusive fluxes of buoyancy and humidity (κ ∂b/∂z, κq ∂q/∂z) are small at the
+tropopause, and the profile is close to the moist pseudoadiabat, especially in the
+tropics. The top boundary conditions are consistent with atmospheric conditions at
+the tropopause, and they additionally allow convective adjustment of the profiles.
+The idealised climate change scenario is imposed by increasing both radiative
+cooling and surface temperature, inline with Figure 4 of Jeevanjee and Fueglistaler
+(2020). We consider climate change (increasing both r&∆Tsurf) for a range of different
+surface relative humidities in the following analysis.
+2.2.
+Dry Adiabatic Buoyancy Non-Dimensionalisation
+Following Appendix 7.1 in Vallis et al. (2019), we use a “buoyancy based non-
+dimensionalisation”. We cannot use the classical Rayleigh-B´enard temperature
+scale [T] = T(0) −T(H), since T(H) is free to adjust to moist convection un-
+der our moist pseudoadiabtic boundary conditions specified in Section 2.1. The
+temperature scale is instead set by the dry adiabatic temperature difference,
+[T] = Td(0) −Td(H) = gH/cp ∼100K.
+We use equation (4) to set the buoyancy scale to be proportional to the temperature
+scale, [B] = g[T]/θ0 ∼3.3ms−2. The length scale is defined to be height of the
+domain, [L] = H ∼10km, and we define the timescale using [t] = ([L]/[b])1/2 ∼55s.
+We scale the specific humidity by [q] = q0 ∼3.8 × 10−3 which is lower than its real
+value (see Appendix C), to ensure that the fluxes of buoyancy and humidity are small
+at the top boundary. The velocity scale is set by [U] = [L]/[t] ∼180ms−1 and the
+pressure scale by [ϕ] = [U]2 ∼3.3 × 105Pa. The non-dimensional system is then given
+by,
+Dˆu
+Dˆt = −ˆ∇ˆϕ + ˆbk +
+ 
+Pr
+Ra
+! 1
+2
+ˆ∇2ˆu,
+(9)
+Dˆb
+Dˆt = ˆγ ˆq −ˆqs
+ˆτ
+H(ˆq −ˆqs) +
+1
+(PrRa)
+1
+2
+ˆ∇2ˆb −ˆr,
+(10)
+Dˆq
+Dˆt = −ˆq −ˆqs
+ˆτ
+H(ˆq −ˆqs) +
+Sm
+(PrRa)
+1
+2
+ˆ∇2ˆq,
+(11)
+ˆ∇· ˆu = 0,
+(12)
+ˆ
+δT = ˆb −ˆz,
+(13)
+ˆqs = eˆα ˆ
+δT .
+(14)
+5

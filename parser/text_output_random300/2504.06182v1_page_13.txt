@@ -1,0 +1,174 @@
+13
+Complexity
+When Γ consists of a directed path, the
+batching routine runs in worst-case O(n2)-time, since the
+path system could consist of O(n2) edges in the worst
+case (resulting in O(n2) batches). Moreover, for “reason-
+able” sets of local constraints (such as ours), the O(n2)-
+time bound holds regardless of the structure of Γ.
+V.
+QUANTIFYING PERFORMANCE
+To justify their practical implementation, we evaluate
+our algorithms by measuring their runtime and opera-
+tional performance.
+A.
+Performance evaluation methodology
+Runtime performance is quantified by the average time
+required to solve a specific reconfiguration problem, and
+its scaling with the problem size. It depends on the algo-
+rithm, its implementation, and the specifications of the
+processor, whether a CPU (AMD Ryzen Threadripper
+2950X) or a GPU (Nvidia Quadro RTX 4000).
+Oper-
+ational performance is quantified by the mean success
+probability of solving a specific reconfiguration problem
+when randomly sampling over the initial configuration of
+atoms and loss processes. It depends on the reconfigura-
+tion algorithm and batching routine, as well as the loss
+parameters. It is computed numerically using realistic
+physical parameters, following the approach outlined in
+our previous works [20, 21].
+For trap arrays with 1D geometries, we solve the prob-
+lem of preparing a center-compact chain of N T
+a atoms in
+a chain of Nt = N T
+a /η traps, where η = 0.5. For trap ar-
+rays with 2D geometries, we solve the problem of prepar-
+ing a center-compact configuration of N T
+a atoms in a rect-
+angular grid of Nt = Ntx × Nty traps with Ntx =
+p
+N T
+a .
+Unless specified otherwise, when Nty is fixed, we typi-
+cally choose Nty = Ntx/ϵ with ϵ = 0.6. This number of
+traps is chosen to achieve a baseline success probability
+¯p0 = 0.5. The baseline success probability is the mean
+success probability obtained in the absence of loss, deter-
+mined solely by the number of atoms loaded in the initial
+configuration [20].
+We solve each problem over a thousand problem in-
+stances. For each instance, we randomly sample the ini-
+tial configuration of N 0
+a = ϵNt atoms, as well as the loss
+realizations. We choose a trapping lifetime of τ = 60 s,
+and a loss probability of pν = 0.985 and pα = 0.985
+for displacement and transfer operations, respectively.
+When using the GPU, we operate in persistence mode
+to keep it fully powered at all times. Otherwise, we typ-
+ically observe that runtime performance improves over
+the first few repetitions as the GPU resources become
+fully active.
+Width of the grid Ntx
+Time (s)
+(c)
+ARO (CPU)
+Number of traps
+0
+256
+512
+768
+1024
+0
+8
+16
+24
+32
+0
+8
+16
+24
+32
+0
+8
+16
+24
+32
+0
+8
+16
+24
+32
+Width of the grid Ntx
+10
+-6
+10
+-4
+10
+-2
+10
+0
+10
+2
+Time (s)
+(d)
+Time (μs)
+(a)
+Exact 1D (CPU)
+Exact 1D (GPU)
+0
+8
+16
+24
+32
+0
+60
+120
+180
+240
+Width of the grid Ntx
+Time (μs)
+(b)
+Red-Rec
+(GPU)
+Red-Rec
+(CPU)
+Bird
+(CPU)
+FIG. 1.
+Runtime performance. (a) Measured runtime for
+solving reconfiguration problems on chains using the serial im-
+plementation of the exact 1D algorithm on a CPU (gray disks)
+and its parallel implementation on a GPU (red triangles). The
+gray line is a linear fit to the CPU data. (b) Measured run-
+time for solving reconfiguration problems on grids using the
+serial implementation of the red-rec algorithm on a CPU (yel-
+low triangles), its parallel implementation on a GPU (green
+inverted triangles), and the bird algorithm on a CPU (blue
+disks). Solid lines are cubic fits for red-rec (CPU) and bird,
+and linear fits for red-rec (GPU). (c) Measured runtime for
+solving reconfiguration problems on grids using the aro algo-
+rithms. The purple line is a quartic fit to the data. (d) Same
+data as in (b) and (c) represented on a semi-log scale.
+B.
+Runtime performance
+We first analyze the runtime performance of the exact
+1D algorithm, considering both its serial implementation
+on a CPU (see Sec. III A) and its parallel implementation
+on a GPU (see Sec. III B). The serial implementation is
+fast, solving a chain with Nt = 1024 traps in 22(1) µs.
+Its runtime scales linearly with the number of atoms (see
+gray line in Fig. 1a). In contrast, the parallel implemen-
+tation has a finite initialization time 7 µs for starting
+parallel GPU kernels. Its runtime is upper bounded by
+a constant factor, and it achieves better performance for
+small problem sizes. Additionally, our implementation
+is restricted to chains of no more than 1024 traps due to
+the limitations in the number of threads per block on our
+GPU. These results indicate that the serial implementa-
+tion outperforms the parallel implementation when solv-
+ing 1D problems. However, this conclusion may change
+with future hardware advancements, as GPUs continue
+to evolve rapidly.
+We then analyze the runtime performance of the red-
+rec algorithm, considering both its serial implementation
+on a CPU (see Sec. III C) and its parallel implementa-
+tion on a GPU (see Sec. III D). The serial implementation
+is fast, solving a grid of N T
+a = 322 atoms in 106(6) µs.
+As expected, its runtime scales as O(N 3/2
+t
+= N 3
+tx) (see
+yellow line in Fig. 1b, d). The parallel implementation
+exhibits a finite initialization time of 7 µs and approxi-

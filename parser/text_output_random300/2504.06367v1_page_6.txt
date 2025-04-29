@@ -1,0 +1,112 @@
+6
+2.0
+1.5
+1.0
+log10 (k [km
+1 s])
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+PF / Pref
+fWDM = 1
+mWDM = 4.0 keV
+mWDM = 3.0 keV
+mWDM = 2.0 keV
+mWDM = 1.0 keV
+2.0
+1.5
+1.0
+log10 (k [km
+1 s])
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+mWDM = 2.0 keV
+fWDM = 0.125
+fWDM = 0.25
+fWDM = 0.5
+fWDM = 1.0
+±  Boera+19
+FIG. 3: Flux power spectrum ratio of simulated models to the reference model for CDM cosmology with post-processed parameters fixed to
+fiducial values (𝑇0 = 10700 K, 𝛾= 1.2) at 𝑧= 4.2. Left: The WDM particle mass varied with fixed 𝑓WDM = 1. Right: CWDM models with
+vaying 𝑓WDM for 𝑚WDM = 2 keV.
+D.
+Patchy correction
+Cosmic reionization is not homogeneous but occurs in three
+stages: the formation of H II bubbles, their overlap due to
+increased number of ionizing sources, and the disappearance
+of the last remaining neutral hydrogen regions as a uniform
+UV background forms. As pointed out in previous work that
+has used the same suite of simulations (e.g. [46, 74]), the non-
+uniform nature of the reionization process leaves an imprint on
+the Lyman-𝛼forest at both large and small scales. The former
+consists of an enhancement of power at scales 𝑘< 0.03 km−1s
+more noticeable at higher redshifts as well as thermal histories
+with an earlier end of reionization. This can be understood
+through the temperature dependence of the recombination co-
+efficient already mentioned in Subsection III B, which means
+that fluctuations in the gas temperature contribute to the varia-
+tions of the neutral hydrogen fraction. At small scales, patchy
+reionization causes suppression in the power spectrum mainly
+through thermal broadening and differences in peculiar veloc-
+ity for regions that reionized recently [74, 107]. We account
+for this extra power by computing the correction tabulated in
+[74] following [46].
+IV.
+STATISTICAL MEASURES OF THE FLUX
+DISTRIBUTION
+The flux power spectrum models are defined on a six-
+dimensional grid per redshift bin, for each combination of
+model parameters (𝑇0𝑧𝑖, 𝛾𝑧𝑖, 𝜏𝑧𝑖
+eff, 𝑢0𝑧𝑖, 𝑚WDM−1, 𝑓WDM) =
+−→𝜃. Comparing power spectra derived from observations and
+simulations enables us to constrain the free parameters of the
+model, −→𝜃, a process typically conducted within a Bayesian
+Monte Carlo Markov Chain (MCMC) framework.
+In this
+study, we utilize the Cobaya code [108] to sample the Gaus-
+sian multivariate likelihood function from [69] at each redshift.
+However, our approach differs from previous works in the in-
+terpolation scheme used to generate simulated power spectra
+at each grid point. Specifically, we employ a machine learning
+model capable of predicting the power spectra within a fraction
+of a second on a single CPU.
+A.
+Neural network emulator
+Given that −→𝜃∈R6, evaluating the likelihood at each grid
+point is limited by the computation cost of interpolating in
+such a high-dimensional space. We circumvent this problem
+by employing a neural network. This neural network maps the
+input parameters 𝜃to the output parameters 𝑃F(𝑘𝑚), in the
+form 𝑃F(𝑘𝑚) = 𝑓[ −→𝜃, 𝜙], where 𝜙are the hyperparameters
+that describe the relationship between input and output, and
+𝑘𝑚is a finite set of wavenumbers matching the ones reported
+in the measurements of [69].
+As an initial framework, we adopt the model architecture
+proposed by [82] and make two key observations. First, the
+original work assessed the emulation error using 𝑘-fold cross-
+validation on the training set itself. This approach likely leads
+to overfitting, reducing the model’s ability to generalize to
+unseen data, which is precisely the role of an independent test
+set. Secondly, we can enhance the performance of the emulator
+by using a combination of baseline models, also known as
+ensemble learning. In particular, we consider averaging the
+output from a range of models trained using 𝑘-fold cross-
+validation.
+We begin by randomly splitting the dataset into a 90% train-
+ing set and a 10% test set, with the validation set included
+within the training subset.
+We then divide the training set
+into 𝑘subsets, and perform the 𝑘-fold cross-validation. In this
+way, each neural network is trained on 𝑘-1 folds of the training
+data, with the remaining one being used as validation. We use
+𝑘= 10, therefore repeating the process iteratively 10 times.
+This results in 10 neural network emulators, each validated on

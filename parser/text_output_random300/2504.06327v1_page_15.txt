@@ -1,0 +1,90 @@
+Physics-informed KAN PointNet
+of 2𝛼= 𝛽= 2 and 𝛼= 2𝛽= 2 results in an average relative error of approximately 13% for the 𝑢-component of the
+velocity vector, making these two members of the Jacobi polynomial family less suitable for engineering applications.
+According to Table 3, from a training perspective, the lowest minimum loss is achieved when 𝛼= 𝛽= −0.5.
+However, this configuration requires more epochs to converge compared to 𝛼= 𝛽= 0.5 and 2𝛼= 𝛽= 2. The right
+panel of Fig. 8 illustrates the evolution of the loss function for different values of 𝛼and 𝛽. As shown in Fig. 8, all
+polynomial types exhibit oscillatory behavior, characterized by sharp jumps at certain epochs during training. Notably,
+the Chebyshev polynomials of the first and second kinds (i.e., 𝛼= 𝛽= −0.5 and 𝛼= 𝛽= 0.5) demonstrate smoother
+convergence, with smaller and less frequent oscillations, which may indicate greater training stability. In contrast, the
+Jacobi polynomials with settings 𝛼= 2𝛽= 2 and 𝛼= 𝛽= 0 exhibit the most pronounced oscillations, with large
+abrupt jumps in the loss function. Our conclusion is that, overall, the Chebyshev polynomial demonstrates superior
+performance, particularly its first kind, compared to other types of Jacobi polynomials. Considering our discussion in
+Sect. 6.1.2, we conclude that the effect of the polynomial degree is more pronounced than the effect of the polynomial
+type.
+Table 4
+Performance comparison of physics-informed PointNet with MLP and physics-informed PointNet with KAN for predicting
+the velocity, pressure, and temperature fields across 135 geometries. In physics-informed PointNet with KAN, the Jacobi
+polynomial degree is set to 2, with 𝛼= 𝛽= −0.5 and 𝑛𝑠= 0.5. In physics-informed PointNet with MLP, 𝑛𝑠= 0.85. || ⋅||𝑉
+denotes the 𝐿2 norm over the entire domain 𝑉and || ⋅||Γ represents the 𝐿2 norm over the inner cylinder surface.
+Physics-informed PointNet with MLP
+Physics-informed PointNet with KAN
+Average ||̃𝑢−𝑢||𝑉∕||𝑢||𝑉
+1.18367E−1
+1.08973E−1
+Maximum ||̃𝑢−𝑢||𝑉∕||𝑢||𝑉
+1.37381E−1
+1.31928E−1
+Minimum ||̃𝑢−𝑢||𝑉∕||𝑢||𝑉
+1.02223E−1
+8.78500E−2
+Average || ̃𝑣−𝑣||𝑉∕||𝑣||𝑉
+8.39424E−2
+8.84278E−2
+Maximum || ̃𝑣−𝑣||𝑉∕||𝑣||𝑉
+1.05331E−1
+1.11167E−1
+Minimum || ̃𝑣−𝑣||𝑉∕||𝑣||𝑉
+6.86013E−2
+7.06122E−2
+Average || ̃𝑝−𝑝||𝑉∕||𝑝||𝑉
+2.61402E−2
+2.97057E−2
+Maximum || ̃𝑝−𝑝||𝑉∕||𝑝||𝑉
+2.91599E−2
+3.41539E−2
+Minimum || ̃𝑝−𝑝||𝑉∕||𝑝||𝑉
+2.04838E−2
+2.63087E−2
+Average || ̃𝑇−𝑇||𝑉∕||𝑇||𝑉
+2.58254E−2
+2.84486E−2
+Maximum || ̃𝑇−𝑇||𝑉∕||𝑇||𝑉
+3.10124E−2
+3.66225E−2
+Minimum || ̃𝑇−𝑇||𝑉∕||𝑇||𝑉
+2.00219E−2
+2.28196E−2
+Average || ̃𝑇−𝑇||Γ∕||𝑇||Γ
+1.45697E−2
+5.03499E−3
+Maximum || ̃𝑇−𝑇||Γ∕||𝑇||Γ
+1.86680E−2
+9.08389E−3
+Minimum || ̃𝑇−𝑇||Γ∕||𝑇||Γ
+9.04055E−3
+2.59714E−3
+Minimum loss achieved
+3.72039E−4
+3.03649E−4
+Training time
+15.6
+15.4
+per epoch (s)
+Number of epochs to
+2324
+2238
+reach the minimum loss
+Number of trainable
+639611
+666880
+parameters
+6.2. Comparison with physics-informed PointNet with MLP
+6.2.1. A brief overview of physics-informed PointNet with MLPs
+The details of the technical implementation and formulation of physics-informed PointNet with MLPs (commonly
+referred to as PIPN) are presented in Refs. [20, 40]. Here, we provide a brief overview and highlight the key differences
+between PIPN and PI-KAN-PointNet. The architecture of physics-informed PointNet with MLPs is shown in Fig. 2
+of Ref. [20] and Fig. 2 of Ref. [40]. At a high level, its structure is similar to what we present in Fig. 1 of the current
+article, with the primary difference being that instead of using shared KANs, we implement shared MLPs. An MLP
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 15 of 25

@@ -1,0 +1,46 @@
+we look at the modularity question of DHR(A•). In Section 5, we look at the Witt triviality of
+DHR(A•). Finally, in Section 6, we give a construction of abstract spin chain generalizing that
+of fusion spin chains. Our model is based on a variation of the Longo–Roberts recognition for
+a construction of bimodules from 2-categories, and provides an example of abstract spin chains
+without any homogeneity for the underlying lattice. In Appendix A, we look at the question of
+duality, and show that if an object X ∈DHR(A•) is dualizable as an A-correspondence, then
+its dual object also belongs to DHR(A•).
+Acknowledgments. This project started at Topological Quantum Computation meeting at ICMS,
+Edinburgh, in October 2023. We thank the organizers for setting up a productive environment
+that stimulated our discussion. L.H. is supported by the Engineering and Physical Sciences
+Research Council (EP/X026647/1). M.Y. is partially supported by The Research Council of
+Norway [project 300837]. D.J. and M.Y. are supported by The Research Council of Norway -
+project 324944. C.J. is supported by NSF Grant DMS- 2247202.
+2. Abstract spin chains
+In this section, we brieﬂy review deﬁnitions and notations which we will make use of in the
+main body of work.
+Let I denote the set of discrete intervals in Z, partially ordered with inclusion.
+This is
+contained in the poset P(Z) of all subsets of Z with inclusion. For F ⊆Z, we will denote its
+complement by F c. Furthermore, for any subset F, we will denote its R neighborhood by F +R.
+Recall that any poset can naturally be viewed as a category, with a unique morphism I →J
+precisely when I ≤J. Let C∗-algfd denote the category of ﬁnite-dimensional C∗-algebras whose
+morphisms are unital inclusions. Then we have the following deﬁnition.
+Deﬁnition 2.1. An abstract spin chain is a functor A• : I →C∗-algfd such that for any intervals
+I ∩J = ∅, [AI, AJ] = 0 in AK for I ∪J ⊂K.
+Associated to an abstract spin chain is the quasi-local C∗-algebra A = limI AI. This is a
+unital AF C∗-algebra.
+Since we have assumed our connecting maps are inclusions, we can
+identify each AI as a subalgebra of A, with I ⊆J implying AI ⊆AJ as a C∗-subalgebra.
+For any subset F ⊆Z, we can deﬁne the subalgebra AF ⊆A by
+AF = C∗-alg { x ∈AG | G ⊆F } .
+We now introduce some useful properties abstract spin systems can have, which we view as
+“regularity” conditions. Similar to the situation for conformal nets, there are many regularity
+conditions. In the theorems below we will use combinations of these properties as hypotheses,
+so it will be convenient to give them names. Many are extensions of familiar properties from
+the theory of conformal nets [GF93].
+Condition 2.2 (Weak algebraic Haag duality). There are K, R ≥0 such that for every
+interval I of length at least K, A′
+Ic ∩A ⊂AI+R. If we can choose R = 0, we say A satisﬁes
+algebraic Haag duality.
+Condition 2.3 (Covering property). There is an L > 0 such that if I, J are intervals whose
+intersection contains an interval of length L, then AI∪J = AI ∨AJ.
+Condition 2.4 (Strong simplicity). The quasi-local algebra A is simple with unique trace.
+Condition 2.5. The centers of the half-line algebras A(−∞,a] and A[a,∞) are 1-dimensional for
+all a ∈Z.
+4

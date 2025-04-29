@@ -1,0 +1,110 @@
+Proof of Proposition 6.1
+57
+7.1
+Setup and main technical lemmas
+Throughout this section, we fix γ >
+√
+2d, n ∈N, and a collection of non-negative constants (θi)i∈[n].
+For any x ∈R, k > 0, and λ > 0, we define the (random) function Fλ
+k,x : C(Rd) →R by
+Fλ
+k,x(Φ)
+def=
+1 −exp(−e−γx R
+Bk Fγ(y)eγΦ(y)dy)
+|Dλ
+k,0(Φ)|
+,
+(7.1)
+where Fγ : Rd →R is the function given by
+Fγ(y)
+def=
+n
+X
+i=1
+θieγWi(y) .
+(7.2)
+We introduce here the main processes and fields that will be used for the reminder of this section:
+• Let B′ be a standard Brownian motion and R a three-dimensional Bessel process starting at zero.
+For any z ≥0, define Uz to be a random variable uniformly distributed on the interval [−z, 0],
+independent of all other processes. Also, let τz
+def= inf{s ≥0 : B′
+s = Uz}. We then define the
+process
+Γz
+s
+def=
+(
+B′
+s ,
+if s ≤τz ,
+Rs−τz + Uz ,
+if s > τz .
+(7.3)
+• For b > 0 and z ≥0, we let gz
+b be the field on Rd given by
+gz
+b(·)
+def= −
+Z ∞
+0
+(1 −K(e−(s+b)·))dΓz
+s + Z′
+∞(e−b·) −
+√
+2d
+Z ∞
+0
+(1 −K(e−(s+b)·))ds ,
+(7.4)
+where Z′
+∞has the same law as the field Z∞defined in Definition 3.9, and it is independent of the
+process Γz.
+• For b > 0, we recall that Υb denotes the field on Rd introduced in (4.2) and given by
+Υb(·)
+def= −
+Z b
+0
+(1 −K(e−s·))dBs + Zb(·) −
+√
+2dab(·) ,
+where Zb is introduced in Definition 3.9, B is an independent Brownian motion, and ab is the
+function defined in (2.2).
+Remark 7.1. We emphasise that the processes and fields introduced above are all assumed to be
+mutually independent. Additionally, given x, y ∈R and b > 0, we write Px,y,b for the probability
+measure under which (Bs)s∈[0,b] is a Brownian bridge from x to y in time b, while the other
+processes/fields are left unchanged. Moroever, given a function g : Rd →R, we set Υb,g = Υb + g.
+In what follows, for b > 0 and z ≥0, we need to consider the field given by the sum of Υb and gz
+b. In
+order to lighten the notation, instead of writing the field gz
+b as a subscript of Υb, we let
+Υz
+b
+def= Υb + gz
+b .
+(7.5)
+We also observe that a standard Gaussian tail bound implies that, uniformly over all z ≥0, the field
+gz
+b satisfies (G1) – (G3).
+For λ > 0 and A, L, b ≥0, we introduce the function Fλ
+A,L,b : R × C(Rd) →R given by
+Fλ
+A,L,b(z, g)
+def=
+1
+√
+2πb
+Z A+L
+0
+e
+√
+2d(x−L)−(x−z)2
+2b
+Ex,z,b
+h
+Fλ
+b,x−L(Υb,g)
+· 1{infs∈[0,b] Bs≥0}1{M0,b+1,b(Υb,g)≤x−(A+L)}1{M0,b(Υb,g)≤λ}
+i
+dx .
+(7.6)

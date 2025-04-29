@@ -1,0 +1,33 @@
+IV. Combined loss 
+The final loss function combines all these components with adjustable weights (𝑤𝑎𝑚𝑝, 𝑤𝑒𝑛𝑒𝑟𝑔𝑦, and 
+𝑤𝑝ℎ𝑎𝑠𝑒) that represent their relative physical significance:  
+𝐿𝑡𝑜𝑡𝑎𝑙= (𝑤𝑎𝑚𝑝× 𝐿𝑎𝑚𝑝) + (𝑤𝑒𝑛𝑒𝑟𝑔𝑦× 𝐿𝑒𝑛𝑒𝑟𝑔𝑦) + (𝑤𝑝ℎ𝑎𝑠𝑒× 𝐿𝑝ℎ𝑎𝑠𝑒) 
+(5) 
+This physics-constrained loss function enables the neural network to capture the complex, non-linear 
+relationships between structural parameters and optical response while ensuring physical 
+consistency.  
+3. Results and Discussion 
+Naturally, due to the imbalanced datasets and the presence of regions with different behaviors, we 
+may hypothesize that specialized approaches would be necessary. These could include either 
+specialized weighting strategies—adjusting each region's contribution to the loss function—or 
+separate architectural branches for different data regimes. Our analyses, however, revealed that our 
+physics-informed architecture is sufficiently robust to handle both gap regimes effectively with 
+uniform weighting. This suggests that incorporating physical laws directly into the model architecture 
+provides a space where the model can learn different regimes with equal emphasis. Instead of 
+applying standard techniques like oversampling or class weighting [53,54] that mainly address 
+statistical imbalances in dataset, or creating complex multi-branch architectures to handle different 
+physical behaviors, the physics-constrained architecture can naturally capture the various physical 
+behaviors with a simpler, unified approach. 
+Our neural network was implemented using TensorFlow and Keras. For both Dataset A and Dataset B, 
+the model randomly splits samples into training (70%), validation (20%), and test (10%). Compared to 
+fixed dataset divisions, this random splitting approach more effectively demonstrates the model’s 
+ability to generalize rather than merely memorizing specific data points. Figure III shows how the 
+various loss components evolve during training for both training and validation datasets. The 
+amplitude loss quickly converges (Figure III-a), indicating that the model immediately learns amplitude 
+prediction task. It is not a surprising result, because most of amplitude values in the dataset are above 
+0.9 (due to the material and light wavelength used for the metasurface) making the amplitude 
+prediction relatively straightforward. However, amplitude predictions are still important as we can 
+consider them as an important validation confirming the fundamental predictive capabilities of the 
+model before addressing the challenging phase prediction task. While the energy conservation loss 
+plays a key role in our framework, we observe its rapid convergence to zero even in the earliest 
+training epochs (see top diagram in Figure III-b). This behavior shows a key advantage of the physics-

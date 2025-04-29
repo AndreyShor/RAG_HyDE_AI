@@ -1,0 +1,133 @@
+some a ∈M and let
+Γ
+0→t v denote the parallel transport of a vector v ∈TaM along Γ. Let v(t) be a deterministic
+curve in TaM such that v(0) = v(T) = 0. Then Yt :=
+Γ
+0→t v(t) is the TM-valued semimartingale over Γ such
+that Y0 = YT = 0. The admissibility hypothesis ensures that there exists a deformation ϵ 7→Γϵ of Γ with δΓ = Y .
+Next, given a closed subset K ⊆M we describe how to construct variations of the portion of Γ contained in
+K. Recall that τ h
+K is the hitting time for K and if τ (h,e)
+K
+:= τ e
+K
+
+Γt+τ h
+K(Γ)
+
+then Γ|[[τ h
+K,τ h
+K+τ (h,e)
+K
+]] is the portion of
+Γ that lies in K. Let f ∈C∞(M) be supported on the interior int K of K and X ∈X (M). Then f · X vanishes
+outside int K. It follows that ˜Y = f · X(Γ) vanishes on [[0, ∞[[ \ ]]τ h
+K, τ h
+K + τ (h,e)
+K
+[[= [[0, τ h
+K]] S[[τ h
+K + τ (h,e)
+K
+, ∞[[.
+Let g ∈C∞(R) be supported on (0, T) and let Yt = g(t) ˜Yt is a TM valued semimartingale that not only vanishes
+on [[0, τ h
+K]] S[[τ h
+K + τ (h,e)
+K
+, ∞[[, but also for all t ≥T. The admissibility hypothesis shows that there exists a
+deformation ϵ 7→Γϵ of Γ with δΓ = Y .
+Definition 3.4. Let K ⊆M be a closed subset and Γ be an admissible semimartingale in M.
+1. A K-deformation of Γ is a deformation ϵ 7→Γϵ of Γ such that δΓ vanishes outside ]]τ h
+K, τ h
+K +τ (h,e)
+K
+[[. The
+corresponding variation will be called a K-variation.
+2. Given T > 0, a (K, T)-deformation of Γ is a deformation ϵ 7→Γϵ of Γ such that δΓ vanishes on
+[[
+
+τ h
+K + τ (h,e)
+K
+
+∧T, ∞[[. The associated variation δΓ will be called a (K, T)-variation.
+Lemma 3.2. Let ϵ 7→Γϵ be a K-deformation of Γ, where K ⊂M is closed. Then:
+1. For every f ∈C∞(M)
+D
+Z T
+0
+f(Γ) ◦dX =
+Z τ h
+K+τ (h,e)
+K
+τ h
+K
+df(δΓ|T ) ◦dX
+.
+2. For every 1-form α on M
+D
+Z T
+0
+α ◦dΓ =
+Z τ h
+K+τ (h,e)
+K
+τ h
+K
+iδΓ|T dα ◦dΓ|T + ⟨α(ΓT ), δΓT ⟩−⟨α(Γ0), δΓ0⟩.
+Proof. We only prove (1) since the proof of (2) is similar. It follows from the definition that δΓ vanishes outside
+]]τ h
+K, τ h
+K + τ (h,e)
+K
+[[. Let 1(·) denotes the indicator function. Using Proposition 5.3 in L´azaro-Cam´ı and Ortega [2],
+we have
+D
+Z T
+0
+f(Γ) ◦dX =
+Z T
+0
+df(δΓ) ◦dX
+=
+Z
+1[0,T ]1[[τ h
+K,τ h
+K+τ (h,e)
+K
+]]df(δΓ) ◦dX
+=
+Z
+1[[τ h
+K,τ h
+K+τ (h,e)
+K
+]]df(δΓ|T ) ◦dX
+=
+Z τ h
+K+τ (h,e)
+K
+τ h
+K
+df(δΓ|T ) ◦dX.
+3.2
+A Stochastic Analogue of the Fundamental Lemma of the Calculus of Variations
+We will formulate a stochastic analogue of the fundamental lemma of the calculus of variations in coordinate
+charts. Let ⟨·, ·⟩denote the standard Euclidean inner product and (e0, · · · , en) denote the standard basis of Rn.
+Lemma 3.3. Let M be a smooth n-manifold and U ⊆M be a coordinate chart. We identify U with an open
+subset of Rn, also denoted by U. Let Γ ∈S (M) be admissible and Ξ : S (M) →S (Rn) satisfy Ξ(Γ)At = Ξ(ΓAt)
+for any continuous change of time t 7→At. If for every ( ¯U, T)-deformation ϵ 7→Γϵ we have
+Z τ h
+¯
+U+τ (h,e)
+¯
+U
+τ h
+¯
+U
+D
+δΓ|T , ◦dΞ(Γ|T )
+E
+= 0,
+6

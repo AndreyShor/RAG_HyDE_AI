@@ -1,0 +1,135 @@
+2
+our second framework offers practical depth re-
+duction compared to the state of the art. We also
+show how this practical saving in depth is useful
+to reach quantum utility.
+One interesting application of our framework con-
+cerns Boson sampling. In particular, we show that, if
+we allow layers of MZIs with arbitrary connectivity,
+Boson sampling experiments with m modes and n
+photons can be performed using an interferometer
+Vopt of depth O(n + log(m)) in worst-case.
+This is
+a significant reduction in depth as compared to, for
+example, a Clements interferometer V performing a
+Boson sampling experiment, where the depth is O(m).
+Furthermore, even when considering losses due to
+couplings which are present in interferometers with
+layers of arbitrary connectivity, we show that for a
+number of modes m >> n, the overall losses in Vopt
+are still significantly smaller than in V .
+Our results
+therefore bring closer the possibility of experimentally
+achieving quantum advantage for the Boson sampling
+task with single photon inputs, a feat that to our
+knowledge has never been performed.
+The paper is structured as follows. Section II gives
+background on linear optical circuit synthesis prior to
+presenting our framework based on the Bruhat decom-
+position in Section III. Then we discuss the compiler as-
+sociated to our framework in Section IV. In Section V
+we discuss two explicit examples of practical applica-
+tions of this result.
+In Section VI we present a de-
+sign based on a greedy Gaussian elimination process
+to perform shallow Boson sampling by coupling chips
+together.
+We discuss the optimal chip size and how
+far we are from quantum utility in Section VII, before
+concluding in Section VIII.
+II.
+BACKGROUND ON LINEAR OPTICAL
+CIRCUITS
+Here we briefly present the linear optical circuit
+model before discussing known methods for implement-
+ing given unitary operations in this picture.
+A.
+Linear optical circuits
+An interferometer on m modes acts linearly on the
+creation and annihilation operators a†
+i, ai of each mode
+i = 1 . . . m. Its action is represented by a unitary matrix
+U such that
+a†
+i →
+m
+X
+j=1
+Ujia†
+j.
+In other words the column k of U stores the image
+of the creation operator a†
+k.
+To implement a desired
+MZI
+(ϕ, θ)
+ϕ
+θ
+FIG. 1: Implementation of an MZI in terms of
+phase-shifters and beamsplitters.
+unitary U on-chip, we rely on two elementary linear
+optical components. The beamsplitter (BS), a constant
+2-mode transformation with matrix representation
+1
+√
+2
+
+1 i
+i 1
+
+,
+and the phase-shifter (PS), a parameterized 1-mode
+transformation with matrix representation
+
+eiϕ
+.
+We arrange these components in linear optical
+circuits to create more complex interferometers. The
+sequential composition of two operators A, B, both
+acting on the same subset of modes, gives the operator
+BA.
+The spatial composition of two operators A,
+B acting on two disjoint subset of modes gives the
+operator A ⊕B where ⊕is the direct sum operator.
+A beampslitter and a phase-shifter can be used to
+build a canonical Mach-Zehnder Interferometer (MZI).
+Here we define our MZI with an extra phase-shifter on
+the input, as shown in Fig. 1. This MZI is parameterized
+by ϕ, θ, and they verify the following property:
+Property 1 (zeroing an arbitrary entry). Given
+any complex vector
+
+a
+b
+
+, there exists two angles ϕ, θ such
+that
+MZI(θ, ϕ)
+
+a
+b
+
+=
+
+a′
+0
+
+.
+For the rest of this paper, the circuits are MZI-based.
+Note that our results also extend to symmetric MZIs
+where both phase shifters are internal.
+This can be
+achieved by applying specific commutation rules to the
+original circuit, as done in [15].
+The number of components in a circuit is the
+number of MZIs, and the MZI-depth of a circuit is the
+minimum number of time steps needed to execute a
+circuit, provided that two non-overlapping MZIs can be
+executed simultaneously. In our linear optical circuit
+drawings, any 2-mode box will represent the MZI in
+Fig. 1.
+The structure of integrated interferometers is fixed
+upon manufacture, and the only tuneable parameters
+are the angles of the MZIs.
+The compilation of a
+unitary to the interferometer therefore consists of

@@ -1,0 +1,152 @@
+where Rs,0
+I
+is the value of the section at the base point corresponding to the equilibrium molecular shape Qs,0,
+with the latter defined as the base point projection from a suitable minimum of the PES. This encodes
+the choice of orientation when the nuclear coordinates are at equilibrium. The Eckart frame is specified
+everywhere once a choice of Rs,0
+I
+is made. Often, this equilibrium reference orientation is taken to be a
+principal axis frame for the equilibrium shape, i.e., a frame which diagonalizes the moment of inertia tensor
+at equilibrium. This is the choice we make in this work. The Eckart section is not, in general, perpendicular
+to the fibers, except at the equilibrium base point. This means that, in general, the rotational-vibrational
+coupling vanishes only at equilibrium. However, if the molecule is semi-rigid, as is typically the case, and
+we do not depart too much from the equilibrium shape, these couplings will be small. This is the scenario
+we envision for all the species at t = 0. Capitalizing on this, we further ignore the rotational-vibrational
+coupling terms to obtain the rigid-rotor Hamiltonian,17 displaying the desired separation of translations,
+rotations, and vibrations:18
+Hs
+ion ≈−
+1
+2M s
+tot
+∇2
+CoM,s + 1
+2
+3
+X
+α=1
+µs,0
+α (Js
+α)2 −1
+2
+3ηs
+ion−6
+X
+r=1
+∂2
+∂(Qsr)2 + Es(Qs),
+(55)
+where µs,0
+α
+are the inverse eigenvalues of the equilibrium moment of inertia tensor
+Is,0
+ij
+:=
+X
+I∈Is
+MI(|Rs,0
+I |2δij −Rs,0
+i,I Rs,0
+I,j),
+(56)
+with α labeling the principal axis directions, Js
+α are the associated components of the body-fixed rigid-rotor
+angular momentum operator obeying the commutation relation (note the minus sign)
+[Js
+α, Js
+β] = −iϵαβγJs
+γ,
+(57)
+where ϵαβγ is the Levi-Civita symbol.
+4.2.3
+Harmonic oscillator approximation
+Let us now focus on the vibrational Hamiltonian component of Eq. (55) defined on shape space
+Hs
+vib := −1
+2
+3ηs
+ion−6
+X
+r=1
+∂2
+∂(Qsr)2 + Es(Qs).
+(58)
+We expand the above close to the equilibrium shape Qs,0 for species s, up to second order:
+Hs
+vib ≈−1
+2
+3ηs
+ion−6
+X
+r=1
+∂2
+∂(Qsr)2 + Es(Qs,0) + 1
+2
+3ηs
+ion−6
+X
+r,r′=1
+∂2Es
+∂(Qsr)∂(Qs
+r′)|Q=Qs,0.
+(59)
+By diagonalizing the Hessian
+∂2Es
+∂(Qs
+r)∂(Qs
+r′)|Q=Qs,0 at the equilibrium shape we obtain eigenvalues fs,k and
+eigenvectors qs,k corresponding to the normal modes corresponding to 3ηs
+ion −6 decoupled oscillators. We
+hence obtain the rigid-rotor-harmonic-oscillator (RRHO) Hamiltonian approximating Hs
+ion in Eq. (55):
+Hs
+ion ≈−
+1
+2M s
+tot
+∇2
+CoM,s
+|
+{z
+}
+HCoM,s
++1
+2
+3
+X
+α=1
+µs,0
+α (Js
+α)2
+|
+{z
+}
+Hrot,s
++Es(Qs,0) +
+3ηs
+ion−6
+X
+k=1
+(−1
+2
+∂2
+∂(qs,k)2 + 1
+2fs,k(qs,k)2)
+|
+{z
+}
+Hvib,s
+.
+(60)
+17See Eq. (5.68) in Ref. [74] for the fully coupled rotational-vibrational Hamiltonian in Eckart gauge. We ignore all rovi-
+brational coupling terms involving the variable K and also the so-called “Watson term” V2(q). The error in the rovibrational
+decoupling is often only of the order of a few percent in practice (see Sec. 14.5 in [70]). Finally, we approximate the inverse
+inertia tensor to leading order in the displacement around equilibrium as the inverse of the equilibrium inertia tensor. As we
+discussed earlier, with our choice of Rs,0
+I
+, the moment of inertia tensor is a diagonal matrix. This leads to the rigid-rotor
+Hamiltonian given below, which is constructed in the Eckart frame and so is a gauge-dependent approximation of the full
+rovibrational Hamiltonian. The full gauge-invariant rovibrational Hamiltonian is given in Eq. (4.146) in Ref. [74].
+18Here and below, we show the DoF count for the general non-linear molecule case but note the DoF counts are straightfor-
+wardly different for linear molecules, periodic substrates, and isolated atoms as discussed earlier.
+24

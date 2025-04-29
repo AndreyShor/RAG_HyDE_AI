@@ -1,0 +1,96 @@
+The joint Laplace functional
+48
+6
+The joint Laplace functional
+The main goal of this section is to prove Proposition 2.17 which is the main input for the proof
+of the stable convergence result Theorem C. The main ingredient in the proof of this theorem is
+Proposition 6.1 below, which will be proved separately in Section 7. The key idea for the proof is to
+split the field X into two independent scales, namely Xs and Xs,t, for 0 ≤s < t. The former field
+has strong local interactions, while the latter one has a strong independence structure. In particular,
+as we will see, the exponential of the field Xs,t macroscopically behaves like an independent stable
+random measure that will integrate the exponential of the field Xs, thus generating the desired limiting
+measure.
+This section is organised as follows. In Section 6.1, we introduce several definitions and state
+Proposition 6.1, which plays a fundamental role in the proof of Proposition 2.17. In Section 6.2,
+assuming Proposition 6.1, we establish the convergence of the “small scales” while conditioning on
+the “large scales”. In Section 6.3, we prove the “full” conditional convergence. Finally, in Section 6.4,
+we show how Proposition 2.17 follows directly from the results obtained thus far, and we also prove
+Theorem C.
+6.1
+Setup and preliminary results
+For the reminder of this section, we fix γ >
+√
+2d. For n ∈N, we consider a collection of fields
+(Wi,t)i∈[n],t≥0 satisfying (W1) – (W4). We recall that we need to prove that for all (φ, (fi)i∈[n]) ∈
+C∞
+c (Rd) × (C+
+c (Rd))n, the following limit holds
+lim
+t→∞E
+
+exp(i⟨X, φ⟩)
+n
+Y
+i=1
+exp(−µγ,t,i(fi))
+
+= E
+h
+exp(i⟨X, φ⟩) exp(−ea⋆µγc(Tγ[f1, . . . , fn]))
+i
+,
+where we refer to the statement of Proposition 2.17 for the definitions of all the quantities involved.
+To simplify the presentation, we assume that the functions (fi)i∈[n] are all of the form fi = θi1[0,1]d
+for some non-negative constants (θi)i∈[n] ⊆R+
+0 . The proof developed below works in the general
+case where (fi)i∈[n] ∈(C+
+c (Rd))n, with minor and straightforward adjustments. In particular, in the
+general setting, the unit box [0, 1]d can be replaced by any compact set that contains the supports of
+all the functions (fi)i∈[n].
+With a slight abuse of notation, for all t ≥0, it is convenient to introduce the function Fγ,t : Rd →R
+and the quantity Tγ ≥0 given by
+Fγ,t(x)
+def=
+n
+X
+i=1
+θieγWi,t(x) ,
+Tγ
+def= E
+ n
+X
+i=1
+θi
+Z
+Rd exp(γ(Wi(y) + Ψ(y)))dy
+
+√
+2d
+γ 
+,
+(6.1)
+where Ψ denotes the field introduced in Definition 2.7, which, as stated in Proposition 2.13, has a
+law independent of λ ∈Λ, where Λ is the set introduced in Lemma 5.1. For this reason, we omit the
+subscript λ when referring to the field Ψ.
+In this way, assuming that the function (fi)i∈[n] are as specified above, we need to prove that the
+following limit holds
+lim
+t→∞E
+h
+exp(i⟨X, φ⟩) exp(−µγ,t(Fγ,t))
+i
+= E
+h
+exp(i⟨X, φ⟩) exp
+
+−ea⋆Tγ µγc([0, 1]d)
+i
+.
+(6.2)
+In order to prove (6.2), we introduce a decomposition of the unit box [0, 1]d as follows. For R ≥1,
+we consider s ≥0 such that (es + 1)(R + 1)−1 ∈N, and we write
+[0, 1]d =
+[
+i∈[I]
+Ai + BR,s ,
+(6.3)

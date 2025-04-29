@@ -1,0 +1,29 @@
+lateral position (M-mode scan). A high precision function generator (AFG3021C, Tektronix, 
+Beaverton, OR, USA) is used to synchronize the timing between the mechanical excitation and 
+the OCT acquisition. 
+The excitation system consists of a function generator (model 4052, B&K Precision, Yorba 
+Linda, CA, USA) and an amplifier (PDu150, PiezoDrive, Callaghan, New South Wales, 
+Australia). A multi-frequency signal is generated in MATLAB, imported into the excitation 
+system, and used to generate a synchronized multi-frequency excitation signal. This signal is 
+then applied to a piezoelectric actuator, which induces multi-frequency shear waves within the 
+sample. 
+ 
+Fig. 2. Detailed schematic of the MFR-OCE system. 
+4.2 Multi-frequency signal and synchronization process 
+Synchronization is a critical aspect of multi-frequency shear wave elastography as it ensures 
+that the OCT imaging system is synchronized not only with the main excitation signal but also 
+with each individual frequency component. In conventional swept-source OCT, the 3D data 
+acquisition process involves a combination of 2D lateral scanning of the laser beam on a 
+sample’s surface within the field of view (B-mode scanning), and depth scanning along the 
+beam propagation direction (axial scan), which is achieved by the sweeping of the laser 
+wavelength. The acquired data is then used to form a 3D tomographic dataset. 
+In MFR-OCE, each point on the 2D surface is scanned multiple times (multiple sweeps of 
+the laser wavelength to capture sample motion, a so-called “M-mode scanning”. As the waves 
+propagate during the scan, the axial position of tissue particles changes, introducing a Doppler 
+phase shift across the time sampling. Therefore, analyzing the Doppler phase shift on the time-
+series data acquired through M-mode scanning enables the estimation of SWS. In this study, 
+100 spectra per M-mode scan and 100  100 lateral sampling points per B-mode scan were 
+acquired and processed. 
+Figure 3 illustrates the synchronization process in MFR-OCE scanning. The top axes 
+represent B-mode scanning for spatial data acquisition, the middle axes depict mechanical 
+excitation, and the bottom axes show M-mode scanning at each position. At the end of the scan, 

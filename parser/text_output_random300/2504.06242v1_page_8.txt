@@ -1,0 +1,143 @@
+2
+2.5
+3
+−0.5
+0
+0.5
+C
+z [m]
+˙z [m/s]
+Lgh(x) = 0
+xdes
+x
+0
+5
+10
+15
+0.2
+0.4
+0.6
+Time [s]
+u [m/s2]
+π(x)
+πs(x)
+Chattering
+(a) Single-CBF baseline approach.
+2
+2.5
+3
+−0.5
+0
+0.5
+CQ
+z [m]
+˙z [m/s]
+xdes
+x
+0
+5
+10
+15
+0.2
+0.4
+0.6
+Time [s]
+u [m/s2]
+π(x)
+πs(x)
+(b) Proposed multi-CBF approach with PINNs.
+Fig. 5: Experimental results of our proposed PINN-based CBF synthesis approach for rendering a convex set safe. Similar to the simulation example,
+we approximate the desired safe set (gray shaded area) using eight PINNs (zero-level sets in green). The single-CBF baseline uses a quadratic CBF,
+which results in a set where Lgh(x) = 0 inside of C (black solid line). The quadrotor is initialized at similar states (blue circle), and an uncertified
+policy (blue dashed line) is used to drive the quadrotor from the interior of the safe set to the unsafe region. With the standard single-CBF safety filter, as
+the quadrotor approaches the safety boundary (black crosses in the first panel), we observe large input oscillations near the boundary of the safe set due
+to filter inactivity (second panel). In contrast, with our proposed multi-CBF method, as the quadrotor approaches the safety boundary (red crosses in the
+third panel), the input oscillations are mitigated through proper CBF gradient design (fourth panel).
+synthesis as boundary value problems, which are solved
+using physics-informed neural networks (PINNs). This ap-
+proach allows us to mitigate varying relative degrees and the
+resulting CBF inactivity issues without relying on conserva-
+tive safe set approximations or retrospective verification and
+modification. Through quadrotor simulations and real-world
+experiments, we demonstrate that our approach successfully
+mitigates the chattering behaviour caused by inactive safety
+filters and thereby enables the certification of systems with
+the desired safety guarantees.
+REFERENCES
+[1] L. Brunke, S. Zhou, M. Che, and A. P. Schoellig, “Practical consid-
+erations for discrete-time implementations of continuous-time control
+barrier function-based safety filters,” in Proc. of the American Control
+Conference (ACC), 2024, pp. 272–278.
+[2] L. Brunke, M. Greeff, A. W. Hall, Z. Yuan, S. Zhou, J. Panerati,
+and A. P. Schoellig, “Safe learning in robotics: From learning-based
+control to safe reinforcement learning,” Annual Review of Control,
+Robotics, and Autonomous Systems, vol. 5, pp. 411–444, 2022.
+[3] K.-C. Hsu, H. Hu, and J. F. Fisac, “The safety filter: A unified view
+of safety-critical control in autonomous systems,” Annual Review of
+Control, Robotics, and Autonomous Systems, vol. 7, 2023.
+[4] A. D. Ames, S. Coogan, M. Egerstedt, G. Notomista, K. Sreenath,
+and P. Tabuada, “Control barrier functions: Theory and applications,”
+in Proc. of the European Control Conf. (ECC), 2019, pp. 3420–3431.
+[5] P. Wieland and F. Allg¨ower, “Constructive safety using control barrier
+functions,” IFAC Proceedings Volumes, vol. 40, no. 12, pp. 462–467,
+2007.
+[6] J. Zeng, B. Zhang, and K. Sreenath, “Safety-critical model predictive
+control with discrete-time control barrier function,” in Proc. of the
+American Control Conference (ACC), 2021, pp. 3882–3889.
+[7] L. Brunke, S. Zhou, and A. P. Schoellig, “Preventing unconstrained
+cbf safety filters caused by invalid relative degree assumptions,”
+2024. [Online]. Available: https://arxiv.org/abs/2409.11171
+[8] M. Black and D. Panagou, “Adaptation for validation of consolidated
+control barrier functions,” in Proc. of the IEEE Conference on Decision
+and Control (CDC), 2023, pp. 751–757.
+[9] M. Jankovic, “Robust control barrier functions for constrained sta-
+bilization of nonlinear systems,” Automatica, vol. 96, pp. 359–367,
+2018.
+[10] X. Tan, W. S. Cortez, and D. V. Dimarogonas, “High-order barrier
+functions: Robustness, safety, and performance-critical control,” IEEE
+Transactions on Automatic Control, vol. 67, no. 6, pp. 3021–3028,
+2021.
+[11] M. Raissi, P. Perdikaris, and G. Karniadakis, “Physics-informed neural
+networks: A deep learning framework for solving forward and inverse
+problems involving nonlinear partial differential equations,” Journal
+of Computational Physics, vol. 378, pp. 686–707, 2019.
+[12] H. Baty, “A hands-on introduction to physics-informed neural net-
+works for solving partial differential equations with benchmark
+tests taken from astrophysics and plasma physics,” arXiv preprint
+arXiv:2403.00599, 2024.
+[13] H. Dai and F. Permenter, “Convex synthesis and verification of control-
+lyapunov and barrier functions with input constraints,” in Proc. of the
+American Control Conference (ACC), 2023, pp. 4116–4123.
+[14] Z. Qin, D. Sun, and C. Fan, “SABLAS: Learning safe control for
+black-box dynamical systems,” IEEE Robotics and Automation Letters,
+vol. 7, no. 2, pp. 1928–1935, 2022.
+[15] A. Taylor, A. Singletary, Y. Yue, and A. Ames, “Learning for safety-
+critical control with control barrier functions,” in Proc. of the Learning
+for Dynamics and Control Conf. (L4DC), vol. 120, 2020, pp. 708–717.
+[16] S. Chen and M. Fazlyab, “Learning performance-oriented control bar-
+rier functions under complex safety constraints and limited actuation,”
+arXiv preprint arXiv:2401.05629, 2024.
+[17] J. Choi, D. Lee, K. Sreenath, C. J. Tomlin, and S. L. Herbert, “Robust
+control barrier–value functions for safety-critical control,” in Proc. of
+the IEEE Conf. on Decision and Control (CDC), 2021, pp. 6814–6821.
+[18] S. Tonkens and S. Herbert, “Refining control barrier functions through
+hamilton-jacobi reachability,” in Proc. of the IEEE/RSJ International
+Conference on Intelligent Robots and Systems (IROS), 2022, pp.
+13 355–13 362.
+[19] D. P. Bertsekas, “Nonlinear programming,” Journal of the Operational
+Research Society, vol. 48, no. 3, pp. 334–334, 1997.
+[20] R. Le ao de Andrade, “Complete convex hypersurfaces of a Hilbert
+space,” Journal of Differential Geometry, vol. 10, no. 4, pp. 491–499,
+1975.
+[21] M. Alyaseen, N. Atanasov, and J. Cort´es, “Continuity and bounded-
+ness of minimum-norm cbf-safe controllers,” IEEE Transactions on
+Automatic Control, pp. 1–8, 2025.
+[22] I. Lagaris, A. Likas, and D. Fotiadis, “Artificial neural networks for
+solving ordinary and partial differential equations,” IEEE Transactions
+on Neural Networks, vol. 9, no. 5, pp. 987–1000, 1998.
+[23] D. Mellinger and V. Kumar, “Minimum snap trajectory generation and
+control for quadrotors,” in Proc. of the IEEE International Conference
+on Robotics and Automation, 2011, pp. 2520–2525.
+[24] D. Himmelblau, Applied Nonlinear Programming.
+McGraw-Hill,
+1972.

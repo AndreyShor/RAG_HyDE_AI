@@ -1,0 +1,89 @@
+30
+Now, we focus on bounding the spectral norm of matrix c
+W , which is indeed a special case of the discussion
+in Lemma A.4. Setting λ = 1 in Lemma A.4, and get
+∥c
+W ∥2 ≤Dkk(−1) ·
+p
+(k + 1)(4 log(k + 1) + 1),
+where Dkk(−1) ≤√e by Lemma A.3. Thus, we obtain
+Wk(A)−1
+2 ≤2√e
+3 −e
+p
+(k + 1)(4 log(k + 1) + 1).
+4.
+Proof of Theorem III.6
+Lemma A.6. Suppose that α and β are defined as in Eq. (15). For indexes i > j, it holds that αi < αj and
+βi < βj.
+Proof. We examine the quantity αj/αj+1
+αj
+αj+1
+= (j + 1)(p + q −j)(p −j + 1)
+j(p −j)(p + q −j + 1)
+=
+
+1 + 1
+j
+ 
+1 +
+q
+(p −j)(p + q −j + 1)
+
+> 1.
+By induction, we conclude that αi < αj for i > j. Similarly, we can show that βi < βj for i > j.
+Lemma A.7. Suppose A ∈Cn×n is Hermitian and negative semi-definite, and Wk(A) is defined by Eq. (20).
+Then, we have
+ e
+ET Wk(A)−1
+2 ≤
+√
+5k + 1,
+(A8)
+where e
+E = e1 ⊗In, and e1 is defined in Eq. (21).
+Proof. For simplicity, we write W = Wk(A) in this proof. Similar to the proof of Lemma III.4, we only need
+to consider the case A = −λ ≤0. At first, we consider solving the linear system
+W T x = e1,
+(A9)
+where x = (xk+1, . . . , x1)T . We aim to show that the solution to this linear system Eq. (A9) is given by
+(
+xk+1 = −
+√
+k + 1 D(λ)
+D(−λ),
+xj = (−1)j+1
+D(−λ)
+Pk−j
+i=0
+dj+i
+dj (−λ)iPj+i+1(λ), 1 ≤j ≤k.
+(A10)
+Here, the notations are defined as follows
+(
+d0 = 1,
+dj = d0β1 · · · βj,
+1 ≤j ≤k,
+D(λ) =
+k
+X
+j=0
+dj(−λ)j,
+Pj(λ) = D(−λ) + (−1)jD(λ).
+Using the explicit expression for W −1 from Lemma A.5, we can verify that xk+1 = −
+√
+k + 1 D(λ)
+D(−λ). Moreover,
+by the first row of the linear system (A9), we have
+xk = (−1)k+1 −
+1
+√
+k + 1xk+1 = (−1)k+1
+D(−λ) Pk+1(λ)
+which satisfies the expression (A10).
+Next, we verify for general j by induction. Using the recurrence relation
+1
+√
+k + 1xk+1 −βj+1λxj+1 + xj = (−1)j+1,
+∀j = 0, . . . , k −1,
+(A11)

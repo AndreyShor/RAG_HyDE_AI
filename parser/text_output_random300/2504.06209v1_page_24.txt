@@ -1,0 +1,104 @@
+24
+M0
+A0
+S0
+V0
+M1
+A1
+S1
+V1
+M2
+A2
+S2
+V2
+M3
+A3
+S3
+V3
+M4
+A4
+S4
+V4
+FIG. 11. Bayesian network of an agent interacting with a memoryless environment channel.
+M0
+A0
+S0
+Z1
+Z0
+W0
+V0
+M1
+A1
+S1
+Z2
+W1
+V1
+M2
+A2
+S2
+Z3
+W2
+V2
+M3
+A3
+S3
+Z4
+W3
+V3
+M4
+A4
+S4
+Z5
+W4
+V4
+FIG. 12. Bayesian network of an agent receiving percepts from a source. This is an edge case of a percept-action loop where
+the environment is modeled as a product environment channel.
+Lemma 7. Let env be a product environment channel.Then, for any percept-action loop agtM →
+←env with a total
+distribution pMAS over the variables (M, A, S), that is of the form in eq. (E20), the Bayesian network in Figure 12
+is compatible with pMAS.
+The proof is similar to the proof of Lemma 6.
+Proof. By Lemma 5, a distribution over the variables in the Bayesian network shown in Figure 12 fulfills the global
+Markov conditions if and only if it factorizes as
+pMASZV W = pV0 pZ0
+∞
+Y
+t=0
+pMt|Vt pAt|Vt pVt+1|StMt pZt+1|Wt pSt|Wt pWt|Zt.
+(E21)
+Let pMASZV W be of the form in eq. (E21). Then, in particular those global Markov which involve only variables
+Mt, At, and St , t ∈N0, must hold.
+Further, Since product environment channels are hidden Markov channels, by Definition 9 for any product environ-
+ment channel there must exist a Markov model (Φenv, penv
+Z0 ) such that
+νenv
+S|A(s|a) =
+X
+z
+penv
+Z0 (z0)
+∞
+Y
+t=0
+ϕenv (st, zt+1|at, zt) .
+(E22)
+Further, by the definition of product environment channels (Definition 8) we have νenv
+S|A(s|a) = νenv
+S|A(s|a′) for all
+a, a′ ∈MN0.
+Thus, for product environment channels, eq. (E22) must still hold if one sets all actions on the
+right-hand side in eq. (E22) to some a ∈A. In this case, we obtain
+νenv
+S|A(s|a) =
+X
+z
+penv
+Z0 (z0)
+∞
+Y
+t=0
+˜ϕenv (st, zt+1|zt) ,
+(E23)
+where we defined a new |S × Z| × |Z| transition matrix ˜Φenv with coefficients
+˜ϕenv (st, zt+1|zt) = ϕenv (st, zt+1|a, zt) .
+(E24)

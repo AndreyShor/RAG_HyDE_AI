@@ -1,0 +1,116 @@
+SigChord: Sniffing Wide Non-sparse Multiband Signals for Terrestrial and Non-terrestrial Wireless Networks
+MobiSys ’25, June 23–27, 2025, Anaheim, California, US
+DVB-S2 
+Tx 0
+DVB-S2 
+Tx 1
+NI PXIe 1095 
+chassis and NI 
+PXIe 5840 
+signal generator
+(a) DVB-S2 transmitters
+NI USRP 
+2901  
+NI USRP 
+2900  
+NI USRP 
+2901  
+Ettus 
+USRP 
+B210
+Tx 0
+Tx 1
+Tx 2
+Tx 3
+(b) Wi-Fi transmitters
+Rx antenna
+NI PXIe 1095 
+chassis and NI 
+PXIe 5840 RF 
+receiver
+(c) Receiver
+Figure 10: The over-the-air dataset collection devices.
+ADC in multi-coset sampling operates at the rate of 50MSPS, re-
+sulting in complex samples with a shape of (𝑃, 2400), i.e., 𝑁= 2400.
+The corresponding measurement matrix 𝐴and the measurement
+results 𝑌are constructed according to [8]. The synthetic dataset
+contains 300,000 samples for training, 5,000 samples for validation
+and 5,000 for testing.
+4.2
+Over-the-Air Dataset
+To validate the performance of SigChord beyond simulations, we
+collect an over-the-air dataset using Universal Software Radio Pe-
+ripheral (USRP) devices. The setup, as shown in Figure 10, includes
+two National Instruments (NI) USRP 2901 devices, one NI USRP
+2900, and an NI Ettus USRP B210 as Wi-Fi transmitters. For DVB-S2
+signal generation, we use an NI PXIe-5840 signal generator, capable
+of multi-channel output and equipped with two individual trans-
+mitting antennas. The receiver is an NI PXIe-5840 configured to
+sample at 1GSPS.
+The transmitters generate 20MHz-rate DVB-S2 signals, non-HT
+Wi-Fi and HT Wi-Fi signals, and transmits them over the air. During
+each transmission, each transmitter generates a batch of signals,
+selects a unique 50MHz sub-band within 5.0-5.8GHz, then transmits
+repeatedly to ensure successful capture at the receiver. Signals
+are collected over four days with varying transceiver positions
+to capture diverse channel conditions. In post-processing, we up-
+sample signals to 2GSPS rate and locate header positions to label
+the signals. Additional AWGN of 10dB SNR is added, and multi-
+coset sampling, consistent with that on the synthetic dataset, is
+then applied. The over-the-air dataset contains 1000 samples for
+fine-tuning and 2,000 samples for testing.
+4.3
+Model Parameter Settings
+We implement SigChord using Python 3.10.11 and PyTorch 2.0.1.
+The three kinds of signal analysis models are trained separately. All
+Transformer layers employ GELU activation. The spectrum sensor
+uses a folding factor of 𝐹= 16, 𝑑𝑚𝑜𝑑𝑒𝑙= 128, 4 attention heads,
+and a feed-forward dimension of 512. The ground truth spectrum
+occupancy states are represented in binary form (1 for occupied and
+0 for unoccupied). We train the model with binary cross-entropy
+loss. The loss is summed across sub-bands and then averaged over
+the training batch. We use AdamW optimizer for all models, with
+𝛽1 = 0.9, 𝛽2 = 0.99, L2 weight decay of 0.01. The initial learning
+rate of the spectrum sensor is set to 10−3, reduced by a factor of 0.1
+when the training loss fails to decrease for 3 consecutive epochs,
+with a minimum learning rate of 10−6.
+The protocol identification model uses 𝐹= 32, 𝑑𝑚𝑜𝑑𝑒𝑙= 128, 4
+attention heads, and a feed-forward dimension of 384. The output
+is activated by Softmax, with cross-entropy loss incorporating a
+label smoothing rate of 0.1, averaged over the training batch. The
+initial learning rate is set at 2 × 10−3, with linear warmup over the
+first 1,000 steps, followed by exponential decay at a rate of -0.5.
+For header decoding, we set 𝐹= 32, 𝑑𝑚𝑜𝑑𝑒𝑙= 384, 8 attention
+heads, and a feed-forward dimension of 1,536, using 3 decoder layers
+for all DVB-S2, non-HT Wi-Fi, and HT Wi-Fi decoding models.
+The feature fusion weight 𝛼is initialized to 1.0. We decode all
+header fields in DVB-S2, all L-SIG fields for non-HT Wi-Fi, and
+both L-SIG and HT-SIG1 fields for HT Wi-Fi, corresponding to 7, 24,
+and 48 query tokens, respectively. The final output is activated by
+Softmax, with cross-entropy loss and a label smoothing rate of 0.1,
+averaged over all bits in a training batch. The initial learning rate is
+6.25 × 10−4, with linear warmup for the first 10,000 steps, followed
+by exponential decay at -0.5. All the learnable tokens, including the
+[CLS] token and the query tokens, are initialized with Gaussian
+distribution N(0, 1). The loss is not back-propagated to the protocol
+identification model, although features from encoders are fused
+here.
+5
+Experiment Results
+In this section, we evaluate the performance of SigChord in spec-
+trum sensing, signal recovery, protocol identification, and header
+decoding tasks at sampling rates below the sub-Nyquist sampling
+limit. All the models are trained on the synthetic dataset where
+6 of the 50MHz sub-bands are occupied: the spectrum sensor is
+trained with a batch size of 512 for 100 epochs, the protocol iden-
+tification model with a batch size of 128 for 300 epochs, and the
+header decoding models with a batch size of 128 for 600 epochs. We
+only fine-tune the 3-layer decoding models on 1,000 over-the-air
+training signals with a batch size of 128 for 5 epochs. To evaluate
+generalization, all the spectrum sensing and protocol identifica-
+tion models, as well as a 4-layer decoding model, are tested on
+the over-the-air dataset without any fine-tuning. All training and
+evaluation are conducted on Ubuntu 22.04 using an NVIDIA RTX
+4090 GPU with CUDA 11.8, paired with an Intel Platinum 8352V
+CPU. Parameters of models in SigChord and the baseline models
+used in the experiments are listed in Table 2.

@@ -1,0 +1,84 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+4
+4. Feynman Periods
+Consider a graph G with one external vertex 0 ∈RD (also labeled 0) and zero scaling weight
+(15)
+NG = 0.
+For the definition of the period of G we pick any vertex z1 ̸= 0 in G (leading to the graph Gz1 with
+two external vertices) and integrate the two-point function Aα
+Gz1(0, z1) over the (D −1)-dimensional
+unit-sphere parametrized by ˆz1 = z1/∥z1∥,
+(16)
+P α
+G = ∥z1∥D
+Z
+SD−1 Aα
+Gz1(0, z1)dD−1ˆz1,
+where the integral is normalized to
+R
+SD−1 dD−1ˆz1 = 1. The period of G depends neither on the choice of
+0 and z1 nor on ∥z1∥.
+Lemma 3. Let G be a graph with an external label 0 and NG = 0. Then, the integral (16) does not
+depend on the choices of 0 and z1.
+That is, P α
+G is well defined and for every G′ which is G with a different external label 0 (0 in G is
+internal in G′ and vice versa) we have NG′ = 0 and
+(17)
+P α
+G = P α
+G′.
+Moreover, P α
+G = 0 if the total spin |α| of G is odd.
+Proof. It is obvious from the definition (14) that NG′ = 0.
+We first show the independence of z1. The total scaling weight of Aα
+Gz1(0, z1) is ∥z1∥−2λ(NG+(λ+1)/λ)
+(because the graph Gz1 loses the internal vertex corresponding to z1). We obtain independence from
+∥z1∥from (15) and (1). Independence from the orientation of z1 is explicit by integration over the unit
+sphere.
+Next, we prove the independence of the choice of z1 in G. We may assume that z1 = ˆz1 is a unit
+vector. We pick an internal vertex in Gˆz1 and label it x1. Next, we scale all internal vertices ̸= x1
+by xi 7→xi∥x1∥. From each edge e we extract the scaling weight ∥x1∥−2λνe of the propagator Qe. We
+collect a total weight ∥x1∥−2D because NG = 0 and we are not scaling ˆz1 and x1. Moreover, the scaling
+replaces x1 with the unit vector ˆx1 = x1/∥x1∥and ˆz1 with ˆz1/∥x1∥. We have integrations over ˆx1, ˆz1,
+and ∥x1∥. We swap the variables ˆx1 and ˆz1 and invert ∥x1∥by ∥x1∥7→∥x1∥−1. The scaling weight
+∥x1∥−2D compensates for the change in the integration measure. We combine the integral over the new
+ˆx1 with the integral over ∥x1∥to the D-dimensional integral over x1 and the claim follows.
+A transformation of all internal integration variables xi 7→−xi maps z1 to −z1. We pick up a sign
+(−1)
+P
+e |αe| = (−1)|α| in the integral (16). Independence of z1 gives P α
+G = 0 if |α| is odd.
+A transformation of all internal integration variables xi 7→z1 −xi swaps 0 and z1 with a sign (−1)|α|.
+If |α| is even, then (17) is proved. If |α| is odd, then (17) is trivial.
+□
+Assume that the spin |α| is even (otherwise P α
+G = 0). Let π = π(α) be a partition of {α1, . . . , α|α|} into
+pairs {πi1, πi2}, i = 1, . . . , |π| = |α|/2. Let Πα
+0 be the set of all such partitions (later we will define Πα
+1
+and Πα
+2 for 2- and 3-point functions). Note that the set Πα
+0 has |Πα
+0 | = (|α| −1)!! = |α|!/(2|α|/2(|α|/2)!)
+elements.
+Because P α
+G does not depend on any external vectors, it is a sum over all possibilities to construct a
+spin |α| vector from products of gαi,αj. For |α| ≥2 we obtain
+(18)
+P α
+G =
+X
+π∈Πα
+0
+PG,πgπ(α),
+where we used the notation
+(19)
+gπ = gπ11,π12 · · · gπN1,πN2
+with N = |α|/2. For α = ∅we set PG,∅= PG and g∅= 1.
+By contraction over repeated indices, π 7→gπ defines a bilinear form on Πα
+0 ,
+(20)
+⟨π1, π2⟩0 = gπ1gπ2 ∈Z[D],
+for π1, π2 ∈Πα
+0 .
+Lemma 4. The bilinear form ⟨·, ·⟩0 is nondegenerate.

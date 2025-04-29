@@ -1,0 +1,175 @@
+Lemma B.3. For fixed n ∈N, E(n) by Definition 1.6 writes also as:
+E(n)(s, h)
+=
+E(n−1)(s, h) +
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(n−1)(s −s′, h|h′)E(s′, h′),
+n ≥2.
+(B.2.3)
+E(n)(s, h)
+=
+E(n−1)(s, h) +
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(s −s′, h|h′)E(n−1)(s′, h′)
+−
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(s −s′, h|h′)E(n−2)(s′, h′),
+n ≥3.
+(B.2.4)
+Moreover E(n) has the following properties:
+E(n)(s, h) = E(n)(s, −h),
+(B.2.5)
+Z ∞
+0
+ds
+Z 1
+−1
+dhE(n)(s, h) = n,
+(B.2.6)
+E(n)(s, h) ≤
+cn
+s + 1,
+cn > 0,
+(B.2.7)
+Z ∞
+s
+ds′
+Z 1
+−1
+dhE(n)(s′, h) ≤
+c′
+n
+s + 1.
+(B.2.8)
+Proof. To begin with, we prove property (B.2.3). We first look at the identity
+E(s, h) =
+Z ∞
+s
+ds′
+Z 1
+−1
+dh′Q(s′, h|h′) = 1 −
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(s′, h|h′) = 1 −
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(s −s′, h|h′).
+Taking the convolution with Q(n−1) of both sides, we get
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(n−1)(s −s′, h|h′)E(s′, h′)
+=
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(n−1)(s −s′, h|h′)
+−
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(n−1)(s −s′, h|h′)
+Z s′
+0
+ds′′
+Z 1
+−1
+dh′′Q(s′ −s′′, h′|h′′).
+=
+1 −E(n−1)(s, h)
+−
+Z s
+0
+ds′′
+Z 1
+−1
+dh′′
+Z s−s′′
+0
+ds′
+Z 1
+−1
+dh′Q(n−1)(s −s′′ −s′, h|h′)Q(s′, h′|h′′),
+and since the integral of the third summand can be also written as
+Z s−s′′
+0
+ds′
+Z 1
+−1
+dh′Q(n−1)(s′ −s′′ −s′, h|h′)Q(s′, h′|h′′)
+=
+Z s−s′′
+0
+ds′
+Z 1
+−1
+dh′
+Q(n−1)(s′, h|h′)
+|
+{z
+}
+=Q(n−1)(s′,h′|h) by (B.1.2)
+Q(s′ −s′′ −s′, h′|h′′)
+|
+{z
+}
+=Q(s′−s′′−s′,h′′|h′) by (B.1.2)
+=
+Z s−s′′
+0
+ds′
+Z 1
+−1
+dh′Q(s′ −s′′ −s′, h′′|h′)Q(n−1)(s′, h′|h)
+=
+Q(n)(s −s′′, h′′|h) by Definition 1.5
+=
+Q(n)(s −s′′, h|h′′) for the symmetry property (B.1.2),
+recalling the previous expression we have
+Z s
+0
+ds′
+Z 1
+−1
+dh′Q(n−1)(s −s′, h|h′)E(s′, h′)
+=
+1 −E(n−1)(s, h) −
+Z s
+0
+ds′′
+Z 1
+−1
+dh′′Q(n)(s′′, h|h′′)
+|
+{z
+}
+=1−E(n)(s,h) thanks to (B.1.4) and Definition 1.6
+=
+E(n)(s, h) −E(n−1)(s, h),
+and this proves property (B.2.3).
+46

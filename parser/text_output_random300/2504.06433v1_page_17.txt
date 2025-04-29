@@ -1,0 +1,49 @@
+where
+T1 =
+X
+s,t
+cs,txsyt ,
+T2 =
+X
+u,v
+du,vzuwv .
+Thus
+polyHAC,HAD,HBC,HBD(|ϕ⟩) = T1T2 −2
+X
+s2,t2,u2,v2
+cs,tdu,v x1◦s2y1◦t2z1◦u2w1◦v2 = P ,
+where P is given by Eq. (11) of Lemma 3.8 with α = 2. Assuming the hypotheses of that lemma
+hold, P is irreducible. One cannot write |ϕ⟩as a tensor product |ϕ⟩C ⊗|ϕ⟩D then, for otherwise,
+P = polyHAC,HBC(|ϕ⟩C)·polyHAD,HBD(|ϕ⟩D) with each factor being nonconstant, contradicting the
+irreducibility of P. Since C and D were chosen arbitrarily subject to the constraints of Case (1), it
+follows that |ϕ⟩is S-entangled. It remains to show that the hypotheses of Lemma 3.8 hold in this
+case.
+Our assumption that CSZ does not simplify on |ψ⟩puts constraints on the coeﬃcients cs,t and
+du,v. Since CSZ does not disappear, the expression for |ψ⟩in Eq. (12) must include at least one
+term in the sum with all 1’s being fed into CSZ, that is, there is some nonzero term of the form
+cs,tdu,v |1 ◦s2⟩⊗|1 ◦t2⟩⊗|1 ◦u2⟩⊗|1 ◦v2⟩.
+Thus cs,t ̸= 0 and du,v ̸= 0 for this choice of s, t, u, v.
+This matches the hypotheses 2(a, b) of
+Lemma 3.8.
+We also assume that CSZ does not simplify to CT Z on |ψ⟩for any T ⊊S. Such a simpliﬁcation
+occurs when there is some position p ∈S such that |ψ⟩factors into a state with |1⟩on qubit p,
+unentangled with the state of the other qubits, in which case we have T ⊆S \ {p}. For this not
+to happen then, for every p ∈S, there is a nonzero term in the sum of Eq. (12) whose basis
+state |s⟩⊗|t⟩⊗|u⟩⊗|v⟩has 0 in position p. Since S has nonempty intersection with all four sets
+A ∩C, A ∩D, B ∩C, B ∩D (because we are in Case (1)), hypotheses 2(c, d) of Lemma 3.8 must
+hold. This concludes the proof for Case (1).
+Cases (2) and (4) are simpler but completely analogous to Case (1). Instead of using Lemma 3.8,
+Case (2) uses Lemma 3.7 and Case (4) uses Lemma 3.6. We omit the details.
+Rather than using Lemma 4.3 directly, we will use the following stronger corollary.
+Lemma 4.4. Let r and S ⊆[r] be as in Lemma 4.3, and let {A, B} and {C, D} be two partitions
+of [r]. Let |ψ⟩A , |ψ⟩B , |ϕ⟩C , |ϕ⟩D be states in HA, HB, HC, HD, respectively. If CSZ(|ψ⟩A⊗|ψ⟩B) =
+|ϕ⟩C ⊗|ϕ⟩D, then either CSZ disappears on |ψ⟩A ⊗|ψ⟩B or CSZ simpliﬁes to CT Z on |ψ⟩A ⊗|ψ⟩B,
+where T ⊆S is a subset of one of the sets A, B, C, D.
+Proof. Let |ψ⟩:= |ψ⟩A ⊗|ψ⟩B and |ϕ⟩:= |ϕ⟩C ⊗|ϕ⟩D. Suppose CSZ does not disappear on |ψ⟩.
+If S is a subset of one of A, B, C, D, then we can set T := S and we are done. Otherwise, both
+|ψ⟩and |ϕ⟩are S-separable. Therefore by Lemma 4.3, CSZ simpliﬁes to CT1Z on |ψ⟩for some
+T1 ⊊S. If T1 is a subset of one of A, B, C, D, then we are done. Otherwise, |ψ⟩and |ϕ⟩are both
+T1-separable, and applying Lemma 4.3 again, we get that CT1Z (hence also CSZ) simpliﬁes on |ψ⟩
+to CT2Z for some T2 ⊊T1, etc., eventually getting CSZ to simplify to CTjZ on |ψ⟩for some j such
+that Tj is a subset of one of A, B, C, D. Set T := Tj.
+17

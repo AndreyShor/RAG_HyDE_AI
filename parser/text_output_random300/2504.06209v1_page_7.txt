@@ -1,0 +1,133 @@
+7
+percept-action loops? Based on Theorem 4, one might
+expect the same design principles to apply in these sce-
+narios.
+In particular, it is not immediately clear why
+an efficient agent model should not be a.m. predictive, as
+predicting its percepts reduces the uncertainty H(St|Mt),
+which contributes negatively to the work rate. However,
+the following theorem demonstrates that there exist en-
+vironments where neither of these previously identified
+design principles is compatible with work-efficient agent
+models.
+Theorem 5. There exist environment channels env such
+that the sets A
+→
+←env
+pred , A
+→
+←env
+mea , and A
+→
+←env
+eff
+are all nonempty
+and mutually exclusive.
+See Supplemental Material G 4 for a proof, and refer
+to Figure 6b for a set diagram illustrating the theorem.
+This result underscores a fundamental distinction be-
+tween the tape setting and the percept-action loop set-
+ting. In order to be maximally predictive of its percepts,
+an agent must, for some environments, retain informa-
+tion about past actions that carry predictive information
+about future percepts. While doing so reduces the per-
+cept entropy H(St|Mt), thereby increasing the work rate
+(see eq. (15)), remembering actions reduces the action
+entropy H(At|Mt), thereby decreasing the work rate.
+Conversely,
+randomizing actions without retaining
+memory of them increases H(At|Mt), but may drive
+the environment into a less predictable regime, such
+that
+H(St|Mt)
+increases.
+Crucially,
+there
+exist
+environments—such as the memoryless invariant envi-
+ronment shown in Figure 5—for which the energetic costs
+outweigh the benefits of implementing either of the two
+design principles.
+Consequently, the two design principles for work-
+efficient agents in the tape setting can no longer be pur-
+sued independently in percept-action loops. Instead, a
+tradeoff emerges between predictive memory and action
+forgetfulness, generally rendering both strategies subop-
+timal.
+VI.
+DISCUSSION AND FUTURE DIRECTIONS
+Predicting future observations is a central theme across
+various fields, including Bayesian and active inference
+[47], predictive analytics [48], computational mechanics
+[49], and chaos theory [50]. It also plays a crucial role
+in modern machine learning, particularly in transformer
+models and large language models, which are designed to
+predict future states in a sequence [51].
+However, as we show in this work by analyzing the
+fundamental limits of information processing in percept-
+action loops, the mere act of remembering the past to
+predict the future has thermodynamic consequences. To
+investigate this, we developed a framework for studying
+the stochastic thermodynamics of information processing
+in percept-action loops. Within this framework, we de-
+fine the work capacity of an environment channel as the
+maximal rate of expected work extraction by an agent.
+Similar to communication capacity, work capacity is an
+intrinsic information theoretic property of a channel. Ac-
+cording to previously established design principles for
+work-efficient agents—derived in the context of linear in-
+formation processing on a tape—an agent’s actions, from
+its own perspective, should appear maximally random,
+while its percepts should be as predictable as possible.
+Surprisingly, we find that neither of these two prin-
+ciples remains valid in general. Most notably, maximal
+predictability of percepts is no longer optimal.
+This phenomenon arises specifically in percept-action
+loops with genuine feedback. In such settings, when pre-
+dicting percepts requires remembering past actions, a
+trade-off emerges and the goals of prediction and work-
+efficiency diverge: as we prove in this work, there exist
+environments in which any agent that maximizes work ef-
+ficiency must necessarily forget certain aspects of its past
+actions—and, therefore, cannot be maximally predictive.
+Building on the results established in this work, several
+natural directions for future research emerge:
+• Agents with goals—In this work, we considered
+classes of agents with implicit objectives, such as
+maximizing work rate or predictive power. A nat-
+ural next step is to investigate agents with specific
+goals within our framework.
+One approach is to
+fix a desired percept-action behavior, which corre-
+sponds to specifying an agent channel. Then, the
+energetic limits of the agent’s behavior can be de-
+termined by optimizing over all models that im-
+plement this channel (see related ideas in the tape
+setting [20, 22]). Alternatively, one could emulate
+a reinforcement learning scenario by encoding re-
+wards as predictable (i.e., low-entropy) percepts. In
+this case, an agent aiming to maximize its work rate
+could be guided toward desired behaviors through
+suitable reward design.
+• Dissipation in percept-action loops—If one
+considers that both agent and environment thermo-
+dynamically implement their respective channels,
+the agent’s positive work rate implies a correspond-
+ing work cost for the environment. In such a set-
+ting, the environment converts work into structured
+correlations, while the agent converts those corre-
+lations back into work. For memoryless channels,
+this conversion can happen without dissipation,
+with the energetic cost of implementing the envi-
+ronment channel—known in the quantum context
+as the thermodynamic capacity [52, 53]—equaling
+the work capacity.
+However, for channels with
+memory, it remains an open question whether for
+any agt →
+←env the agent’s maximum work rate can
+match the environment’s minimum work cost. Any
+gap between these values would imply intrinsic en-
+tropy production in percept-action loops.
+• Quantum work capacity—A natural extension
+of this work is to explore quantum generalizations

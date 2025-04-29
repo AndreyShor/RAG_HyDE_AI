@@ -1,0 +1,167 @@
+ 
+ 
+polarization, respectively. Therefore, the input data 
+dimensions for the model are N×112×2 (the number of 
+pixels × wavelength points × I and V parameters). 
+Additionally, we incorporate temporal information from 
+the data, allowing us to analyze spatio-temporal spectro-
+polarimetric 
+data 
+for 
+a 
+more 
+comprehensive 
+understanding. 
+We categorized our SP map data into two types: non-
+flare and pre-flare. Non-flare data consist of SP maps 
+capturing ARs more than 24 hours prior to X-class flares, 
+while pre-flare data encompass SP maps collected 
+between 3 to 24 hours before X-class flares. In this 
+context, non-flare maps are considered normal data, 
+while pre-flare maps are treated as anomalous data.  
+For our analysis, we prepared eight non-flare SP 
+maps for training and five for validating the 
+compression model. Additionally, we collected four 
+maps (three pre-flare maps and one during-flare map) 
+for the X1.3 flare event in AR 13663 on May 5, 2024, 
+for testing. All the datasets were downloaded from the 
+Community 
+Spectropolarimetric Analysis 
+Center 
+website [7,8]. Table 1 presents the SP map datasets used 
+for model training, validation, and testing, labeled with 
+their captured datetime and including details of the 
+observation mode for a single FITS scan in each SP map. 
+Table 1. SP maps datasets used for training, validation, and testing, including their observed datetime and observation 
+mode from the first FITS scan of each SP map. The datetime format follows the convention of yyyymmdd_hhmmss, 
+where the date is followed by the time. 
+The observation mode parameters across the training, 
+validation, and test sets were generally consistent across 
+all the datasets. However, a few exceptions are 
+highlighted in bold in Table 1, with their scan names 
+Dataset 
+Observed datetime 
+of SP maps 
+Observation 
+mode 
+Pixel sampling scale 
+in the dispersion 
+direction [Ang/pix] 
+Pixel sampling 
+scale in the slit 
+direction [asec/pix] 
+Integration 
+time [sec] 
+Step size 
+of slit 
+scanning 
+Training 
+20160430_002505 
+QT 
+0.021549 
+0.317 
+1.6 
+1 
+20201017_182230 
+QT 
+0.021549 
+0.317 
+1.6 
+1 
+20201229_150006 
+QT 
+0.021549 
+0.317 
+1.6 
+1 
+20210511_193050 
+(SP3D20210511_193050.8C) 
+QT 
+0.021549 
+0.1585 
+4.8 
+1 
+20210516_091405 
+QT 
+0.021549 
+0.317 
+1.6 
+1 
+20210619_162335 
+QT 
+0.021549 
+0.317 
+1.6 
+1 
+20210803_120106 
+(SP3D20210803_120106.2C) 
+QT 
+0.021549 
+0.1585 
+4.8 
+1 
+20211020_102805 
+QT 
+0.021549 
+0.317 
+1.6 
+1 
+Validation  
+20190515_115005 
+QT 
+0.021549 
+0.317 
+1.6 
+1 
+20201107_112449 
+QT 
+0.021549 
+0.317 
+1.6 
+1 
+20210312_080005 
+QT 
+0.021549 
+0.317 
+1.6 
+1 
+20210618_224105 
+QT 
+0.021549 
+0.317 
+1.6 
+1 
+20211201_010034 
+(SP3D20211201_010034.5C) 
+QT 
+0.021549 
+0.1585 
+4.8 
+1 
+Test 
+20240504_143042 
+QT 
+0.021549 
+0.317 
+1.6 
+1 
+20240505_020424 
+(SP3D20240505_020424.2C) 
+FL 
+0.021549 
+0.317 
+0.8 
+2 
+20240505_021351 
+QT 
+0.021549 
+0.317 
+1.6 
+1 
+20240505_065322 
+(SP3D20240505_065322.8C) 
+FL 
+0.021549 
+0.317 
+0.8 
+2 

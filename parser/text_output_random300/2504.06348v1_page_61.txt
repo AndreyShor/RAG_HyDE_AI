@@ -1,0 +1,194 @@
+Appendices
+A
+Basis change from real space to plane waves
+We discuss the keys steps required in changing basis from real space in Eq. (3) to plane waves in Eqs. (33),
+(34), (35), (36), (37), (38), (39). The kinetic terms Tel, Tion are straightforwardly diagonal in plane waves.
+The Coulomb terms Vel, V PI
+ion utilize the textbook result
+R
+r e−ik·r 1
+|r| =
+4π
+|k|2 to change basis. The local and
+non-local terms are more involved and, for completeness, we walk through the calculations carefully.
+Local term
+Using the matrix elements given in Eqs. (6) and (10),
+⟨r2, R2|V i,I
+loc |r1, R1⟩=
+ 
+−ZI
+|r1 −R1|erf(¯λI
+loc|r1 −R1|) + e−(¯λloc|r1−R1|)2
+4
+X
+c=1
+CI
+c (
+√
+2¯λI
+loc|r1 −R1|)2(c−1)
+!
+δr1r2δR1R2,
+we move to the plane wave basis in electrons,
+V i,I
+loc =
+Z
+r1,r2
+Z
+R1,R2
+⟨r2, R2|V i,I
+loc |r1, R1⟩|r2, R2⟩⟨r1, R1|i,I
+=
+Z
+R
+X
+p∈G,q∈G0
+p−q∈G
+(Vloc,1 + Vloc,2)e−ikq·R|p −q, R⟩⟨p, R|i,I,
+(147)
+where the two terms are (recalling that ¯λI
+loc :=
+1
+√
+2¯rI
+loc ),
+Vloc,1 = 1
+Ω
+Z
+r
+e−ikq·r(−ZPI
+I
+|r|
+erf(¯λI
+loc|r|)) = 4π
+Ω(−ZPI
+I
+|kq|2 e−(|kq|¯rI
+loc)2/2),
+Vloc,2 = 1
+Ω
+4
+X
+c=1
+CI
+c 2c−1
+Z
+r
+e−ikq·re−(¯λI
+loc|r|)2(¯λI
+loc|r|)2(c−1) = 4π
+Ω
+4
+X
+c=1
+CI
+c 2c−1
+1
+|kq|
+Z ∞
+0
+drr sin(|kq|r)e−(¯λI
+locr)2(¯λI
+locr)2(c−1).
+For each summand c = 1, 2, 3, 4 separately,
+CI
+1
+|kq|
+Z ∞
+0
+drr sin(|kq|r)e−(¯λI
+locr)2 = CI
+1
+r
+π
+2 ¯r3
+loce−(|kq|¯rloc)2/2,
+2CI
+2
+|kq|
+Z ∞
+0
+drr sin(|kq|r)e−(¯λI
+locr)2(¯λI
+locr)2 = CI
+2
+r
+π
+2 e−(|kq|¯rloc)2/2(3¯r3
+loc −¯r5
+loc|kq|2),
+4CI
+3
+|kq|
+Z ∞
+0
+drr sin(|kq|r)e−(¯λI
+locr)2(¯λI
+locr)4 = CI
+3
+r
+π
+2 e−(|kq|¯rloc)2/2(15¯r3
+loc −10¯r5
+loc|kq|2 + ¯r7
+loc|kq|4),
+8CI
+4
+|kq|
+Z ∞
+0
+drr sin(|kq|r)e−(¯λI
+locr)2(¯λI
+locr)6 = CI
+4
+r
+π
+2 e−(|kq|¯rloc)2/2(105¯r3
+loc −105¯r5
+loc|kq|2 + 21¯r7
+loc|kq|4 −¯r9
+loc|kq|6),
+where above we have suppressed the superscript I on ¯rI
+loc on the RHS for brevity. Consolidating both terms
+in the overall expression and noting that
+R
+R e−ikq·R|R⟩⟨R| = P
+P |P+q⟩⟨P| as a result of 1
+Ω
+R
+r e−i(k−k′)·r =
+δkk′, we obtain,
+V i,I
+loc =
+X
+p,P∈G,q∈G0
+p−q,P+q∈G
+hloc
+I (|kq|¯rI
+loc)|p −q, P + q⟩⟨p, P|i,I,
+hloc
+I (|kq|¯rI
+loc) = e−(|kq|¯rI
+loc)2/2(−4π(¯rI
+loc)2ZPI
+I
+Ω(|kq|¯rI
+loc)2
++ 4π(¯rI
+loc)3
+Ω
+rπ
+2 (CI
+1 + CI
+2(3 −(¯rI
+loc|kq|)2) + CI
+3(15 −10(¯rI
+loc|kq|)2 + (¯rI
+loc|kq|)4)
++ CI
+4(105 −105(¯rI
+loc|kq|)2 + 21(¯rI
+loc|kq|)4 −(¯rI
+loc|kq|)6))).
+(148)
+61

@@ -1,0 +1,208 @@
+26
+Just as what was done in proof for Theorem III.10, for ℓ> 1, define success condition as the following:
+Pℓ≡
+(⃗˜µℓ−E
+h
+⃗X
+i
+∞⩽K
+2 σ0ε′
+ℓ
+⃗˜µℓ−1 −E
+h
+⃗X
+i
+∞⩽K
+2 σ0ε′
+ℓ−1
+
+true
+otherwise
+(130)
+This gives two key properties:
+• By assumption on ⃗X and our specific pick of K, E
+h
+⃗X
+Kσ0
+i
+⩽
+ε0
+Kσ0 ⩽
+1
+900d
+1
+4 , so Theorem IV.2 holds with parameters
+(ε, δ) replaced with ( ε0
+Kσ0 , δ′
+1), so we know that
+P[P1] = P
+⃗˜µ1 −E
+h
+⃗X
+i
+∞⩽K
+2 σ0ε′
+1
+
+= P
+"⃗µ1 −E
+" ⃗X
+Kσ0
+#
+∞
+⩽ε0
+2
+#
+⩾1 −δ′
+1
+(131)
+• Consider ℓ∈[M −1]. Assume
+⃗˜µℓ−E
+h
+⃗X
+i
+∞⩽K
+2 σ0ε′
+ℓ. Then
+
+E[ ⃗X]−⃗˜µℓ
+Kσ0
+
+∞
+⩽ε′
+ℓ
+2 = ε′
+ℓ+1 which means that
+
+E[ ⃗X]−⃗˜µℓ
+Kσ0
+
+2
+⩽
+√
+dε′
+ℓ+1 ⩽
+1
+900d
+1
+4 . So Theorem III.8 holds with parameters (ε, δ) replaced with (ε′
+ℓ+1, δ′
+ℓ+1), so we
+know that
+P
+⃗˜µℓ+1 −E
+h
+⃗X
+i
+∞⩽K
+2 σ0ε′
+ℓ+1
+
+= P
+Kσ0⃗µℓ+1 −E
+h
+⃗X −⃗˜µℓ
+i∞⩽K
+2 σ0ε′
+ℓ+1
+
+= P
+"⃗µℓ+1 −E
+" ⃗X −⃗˜µℓ
+Kσ0
+#
+∞
+⩽ε′
+ℓ+1
+2
+#
+⩾1 −δ′
+ℓ+1
+(132)
+From the definition of our success condition {Pℓ}, we know that at ℓ-th time Algorithm 2 is called it always succeeds
+with probability at least 1 −δℓ. Thus, we can use Theorem II.45 to know that
+P [P1 ∧P2 ∧· · · PM] ⩾1 −δ
+(133)
+But P1 ∧P2 ∧· · · PM implies (due to our pick of M)
+⃗˜µ −E
+h
+⃗X
+i
+∞⩽2σ0ε′
+M = ε0
+2M ⩽σ0
+n
+(134)
+That is, we find that:
+P
+h⃗˜µ −E
+h
+⃗X
+i
+∞⩽σ0
+n
+i
+⩾1 −δ
+(135)
+The complexity is given by
+Theorem IV.5 (Complexity of Algorithm 6). The algorithm always uses O
+
+nd
+1
+4 log d
+δ
+
+access to quantum experiment
+to return the result. In terms of quantum memory (outside all potential ancillas) it needs 1 register for results of
+quantum experiment.
+Proof. We have:
+1
+ε′
+M
+= 2M−1Kσ0
+ε0
+∈σ0
+ε0
+× O
+nε0
+σ0
+
+× O
+
+d
+1
+4
+
+= O
+
+nd
+1
+4
+
+(136)
+With the complexity statement in Remark IV.3 and Theorem II.45, we thus confirms that the algorithm uses
+O
+
+nd
+1
+4 log d
+δ
+
+calls to the quantum experiment.
+In terms of memory, we get to reuse the quantum registers whenever a quantum subroutine is called, so it’s O(1).
+Algorithm 6 gives an estimator without any log scalling on n. However, it scales badly with respect to d. The
+key reason is due to the extra
+√
+d factor when we go from the accuracy parameter ε for each dimension, to 2.5
+√
+dε
+as the accuracy parameter for the combined random variable
+D
+⃗u, ⃗X
+E
+at the Grover operator level. Since our Grover
+gate has an intrinsic uncertainty in the phase ∝O(s2
+0ε) where ε is now replaced with O(
+√
+dε). We are thus forced to
+reduce s0 to accommodate.

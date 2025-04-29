@@ -1,0 +1,218 @@
+πθ : O →A, which is parameterized by θ, is trained to
+maximize the expected sum of discounted reward
+Eo0∼p0(·),ot+1∼P (·|ot,πθ(ot))
+T
+X
+t=0
+γtr(ot, πθ(ot)),
+(13)
+over an episode of T, where p0 is the initial state distribution.
+We design the observation space O to include the pro-
+prioceptive information, gait information, kinematic joint
+position target, and user commands. They are chosen to en-
+sure reward function can be successfully induced from only
+the observation. In contrast to previous works [42, 43], the
+action at ∈A is designed to have two separate heads: base
+acceleration residual ∆P ˆa and joint position residual ∆ˆqj,
+providing feedback to both feedforward torque calculation
+and joint positions. The surrogate targets are
+P ˜a = P ˆa + ∆P ˆa
+˜qj = ˆqj + ∆ˆqj,
+(14)
+where P ˜a is taken as the target for the base acceleration
+for the reaction force optimization module. The desired
+joint position ˜qj is used to calculate the final joint torque
+command sent to the robot, formulated as
+τj = τ FF
+j
++ τ GC
+j
++ kp(˜qj −qj) + kd( ˙ˆqj −˙qj),
+(15)
+where kp, kd are the proportional and derivative gains for the
+joint PD controller.
+The reward function consists of a combination of task-
+related rewards and regularizations
+r = rtask + rreg,
+(16)
+where rtask = Q
+i ri
+task and rreg = Q
+j rj
+reg are a product
+of series sub-rewards. Both rewards are designed to ensure
+the success of tracking user commands and regularized
+action. For detailed description of the state space and reward
+functions, please refer to Table I and Table II.
+Term name
+Symbol
+Dimension
+Base height
+pz
+1
+Projected gravity
+Bg
+3
+Base linear velocity
+Bv
+3
+Base angular velocity
+Bω
+3
+Joint position
+qj −qj0
+12
+Joint velocity
+˙qj
+12
+Gait phase
+ϕ
+4
+Gait mode
+ψ
+4
+Desired joint position
+ˆqj −qj0
+12
+Velocity command
+(P ˆvx, P ˆvy, P ˆωz)
+3
+EE position command
+P ˆrm
+i
+3 · |M|
+EE force command
+P ˆui
+3 · |M|
+Last action
+at−1
+18
+TABLE I: Detailed observation space O. qj0 is the default joint position;
+ϕ ∈[−1, 1] is the phase for each periodic limb motion; ψ ∈{−1, 0, 1}
+is the mode for each limb to distinguish the periodic patterns (swing, gait,
+stance); | · | is the cardinality of the set.
+V. RESULTS
+RAMBO offers a general framework for whole-body loco-
+manipulation on legged systems. We demonstrate its effec-
+tiveness on the Unitree Go2 [27], a small-scale quadruped
+Reward
+Term name
+Error ϵ
+Sensitivity σ
+rtask
+Base height
+pz −ˆpz
+0.1 / 0.2
+Base orientation
+Bgz −B ˆgz
+0.3 / 0.6
+Linear velocity
+P vx,y −P ˆvx,y
+0.2 / 0.3
+Angular velocity
+P ωz −P ˆωz
+0.3 / 0.4
+EE position
+P rm
+i
+−P ˆrm
+i
+0.1
+rreg
+Contact mismatch
+ˆci ̸= ci
+-
+Joint acceleration
+¨qj
+700 / 500
+Joint torque
+τj
+100
+Action rate
+at −at−1
+10.0
+Action scale
+at
+8.0
+TABLE II: Detailed reward functions. To ensure all reward functions
+produce values with the range of [0, 1], we map the error term for each
+reward using r = exp(∥ϵ∥2 /σ2). The contact mismatch reward is mapped
+using r = 0.5|ˆci̸=ci|. (·)/(·) indicates different values for quadruped or
+biped tasks. We set desired base height ˆpz to 0.3 and 0.45, desired gravity
+vector B ˆgz to [0, 0, −1] and [−1, 0, 0] for quadruped and biped tasks.
+robot, across a variety of tasks involving both quadrupedal
+and bipedal locomotion.
+In the quadruped tasks, the robot walks using three legs
+while lifting the front-left leg to perform manipulation.
+For the bipedal tasks, it walks solely on its hind legs
+while using both front legs for manipulation. We design the
+base orientation to keep flat and parallel to the ground for
+quadruped tasks, while demonstrating more challenging loco-
+manipulation tasks by making the robot to perform bipedal
+walking with upright pose. These bipedal demonstrations
+highlight the potential of our framework for future applica-
+tions on more advanced bipedal systems, such as humanoids.
+We leverage Isaac Lab [44]—a massive parallel training
+framework on GPU—to efficiently train the residual pol-
+icy with Proximal Policy Optimization [45]. The detailed
+training hyperparameters can be found in Table III. During
+training, we leverage qpth [46]—a fast batch QP solver
+implemented in PyTorch—to solve parallel QPs to generate
+feedforward torques. Despite the effectiveness of qpth in
+training, we employ OSQP [47] as a faster QP solver for
+a single problem to ensure the whole control pipeline runs
+at 100 Hz in the real-world experiments.
+We also implement external forces acted at the end-
+effector same as the desired force but in reversed direction
+to facilitate the training, similarly to the training scheme
+proposed by Portela et al. [36]. We employ various Domain
+Randomization [12] to ensure successful sim-to-real transfer.
+Detailed command sampling and domain randomization can
+be found in Table IV.
+Term
+Value
+Term
+Value
+# environments
+4096
+# steps per iter
+24
+Episode length
+10 (s)
+γ
+0.99
+Learning rate
+1e−3
+λ
+0.95
+Desired KL
+0.02
+Clip ratio
+0.2
+Value loss coeff
+1.0
+Policy network
+MLP
+Entropy coeff
+1e−3
+Policy hidden
+[512, 256, 128]
+Action head scale
+(base acceleration)
+5.0
+Policy activation
+ELU
+Value network
+MLP
+Action head scale
+(joint position)
+0.15
+Value hidden
+[512, 256, 128]
+Value activation
+ELU
+Joint P gain kp
+40
+Joint D gain kd
+1.0
+TABLE III: Detailed training hyperparameters.

@@ -1,0 +1,46 @@
+ 
+2 
+Abstract: 
+ 
+Molecular dynamics (MD) simulations are essential for studying complex molecular systems, but 
+their high computational cost limits scalability. Coarse-grained (CG) models reduce this cost by simplifying 
+the system, yet traditional approaches often fail to maintain dynamic consistency, compromising their 
+reliability in kinetics-driven processes. Here, we introduce an adversarial training framework that aligns 
+CG trajectory ensembles with all-atom (AA) reference dynamics, ensuring both thermodynamic and kinetic 
+fidelity. Our method adapts the adversarial learning paradigm, combining a physics-based generator with a 
+neural network discriminator that differentiates between AA and CG trajectories. By adversarially 
+optimizing CG parameters, our approach eliminates the need for predefined kinetic features. Applied to 
+liquid water, it accurately reproduces radial and angular distribution functions as well as dynamical mean 
+squared displacement, even extrapolating long-timescale dynamics from short training trajectories. This 
+framework offers a new approach for bottom-up CG modeling, offering a systematic and principled way to 
+preserve dynamic consistency in complex coarse-grained molecular systems. 
+ 
+I. Introduction 
+ 
+Molecular dynamics (MD) simulations have become a crucial tool in studying the behavior of 
+complex molecular systems. However, the computational cost associated with all-atom (AA) simulations 
+severely limits their ability to capture long timescales and large system sizes.1 To overcome these 
+limitations, coarse-graining (CG) techniques have been widely adopted, systematically reducing the 
+degrees of freedom while aiming to retain the essential properties of the system of interest. Bottom-up CG 
+modeling, which derives effective interactions by learning from high-resolution AA simulation, has proven 
+successful in applications ranging from lipid membrane to polymer self-assembly.2-6 Despite its success, a 
+key challenge in any CG modeling remains: i.e., ensuring dynamic consistency, such that the CG model 
+faithfully reproduces not only equilibrium properties but also the kinetics of the underlying atomistic 
+system.4, 5, 7 This limitation hinders the application of CG methods to large-scale biomolecular processes 
+where kinetics plays a critical role, such as the aggregation of misfolded proteins.8  
+ 
+From the perspective of bottom-up CG modeling, projecting the AA dynamics into some reduced 
+degrees of freedom (collective variables) brings more complicated interplay between these variables, 
+raising the fundamental question of how to define the governing equation of motion for these variables. 
+Several theoretical frameworks have been developed to answer this question, including the Mori-Zwanzig 
+formalism,9, 10 which formulates projected dynamics with the generalized Langevin equation (GLE) form, 
+and the effective dynamical formula,11 which describes the dynamics of collective variables when they 
+sufficiently capture essential reaction mechanisms. While these frameworks elegantly formalize reduced 
+dynamics, their practical implementation often faces challenges due to the need to compute intractable 
+terms such as memory kernels or high-dimensional free energy landscapes. 
+ 
+Building upon these theoretical foundations, numerical methods have been developed to construct 
+dynamically consistent CG models. For example, an approach based on consistent Markov State Models 
+has been developed in an attempt to enhance the kinetic fidelity of models.12, 13 In the work by Izvekov and 
+Voth, friction coefficients were derived by approximating the thermal friction and interactions arising from 
+eliminated degrees of freedom.4 Expanding on this concept, Davtyan et al. introduced the dynamic force 

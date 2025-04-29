@@ -1,0 +1,146 @@
+SINGULARITY AND REGULARITY OF THE CRITICAL 2D SHF
+31
+Both estimates are opεNq as N Ñ 8, see (4.31), hence (4.34) follows. Finally, to prove
+(4.35), we note that the LHS equals
+P
+´
+|z ` SNi´ ˜
+Ni| ď
+b
+Ni log
+1
+δ2
+N
+¯
+ě P
+´
+|SNi| ď 1
+2
+b
+Ni log
+1
+δ2
+N
+¯
+ě 1 ´ C exp
+`
+´ 1
+C
+ˇˇb
+log
+1
+δ2
+N
+ˇˇ2˘
+“ 1 ´ C pδ2
+NqC ď p1 ` εNq´1 ,
+where the last inequality holds for N large enough, see (4.31).
+□
+4.4. Step 4: variance computation. In this step, we compute the asymptotic
+variance of ∆Ni from (4.9), which is needed to prove (4.12) and (4.13). We work under the
+conditional probability Pp ¨ |FNi´1q and note from (4.8) and (4.9) that
+Er∆Ni|FNi´1s “ 0 .
+(4.37)
+Therefore we focus on the second moment. In the next result, we exploit the control on the
+polymer distribution µN,i´1 that we obtained in (4.32) in the previous step.
+Theorem 4.5 (Second moment asymptotics). For any M P N and i “ 1, . . . , M, we
+have the a.s. convergence (uniformly over FNi´1)
+lim
+NÑ8 Erp∆N,iq2 | FNi´1s “ 1
+M
+ϱ
+1 ` p1 ´
+i
+M q ϱ .
+(4.38)
+Proof. Recalling the definition (4.9) of ∆N,i and the representation (4.28), we can write
+∆N,i “
+1
+mN,i
+ÿ
+xPZ2
+even
+µN,i´1pxq E
+”´
+e
+H
+βN
+pNi´1, ˜
+Nis ´ 1
+¯
+1D ˜
+NiXDNi
+ˇˇˇ SNi´1 “ x
+ı
+.
+(4.39)
+Removing the constraint 1D ˜
+NiXDNi, the RHS of (4.39) would simply become
+˜∆N,i :“
+1
+mN,i
+`
+ZβN
+LN pφNq ´ 1
+˘
+with
+LN “ ˜Ni ´ Ni´1 ,
+φN “ µN,i´1 .
+(4.40)
+We can now apply Theorem 2.5, because LN “ ˜Ni ´Ni´1 satisfies (2.18) with ℓ“ p1´ i
+M q ϱ,
+(cf. (4.5) and (4.6)), while φN “ µN,i´1 satisfies (2.20) with WN “ Ni´1 ´ ˜Ni´1 thanks to
+(4.32), (2.24), and (2.25), and (2.19) holds with w “ p1 ´ i´1
+M q ϱ. Recalling from (4.30) that
+mN,i “ 1 ´ op1q, relation (2.21) then yields
+lim
+NÑ8 E
+“
+p ˜∆N,iq2ˇˇFNi´1
+‰
+“ lim
+NÑ8 Var
+“
+ZβN
+LN pφNq
+‰
+“ w ´ ℓ
+1 ` ℓ“
+ϱ{M
+1 ` p1 ´
+i
+M q ϱ ,
+(4.41)
+which matches our goal (4.38). It remains to show that removing the constraint 1D ˜
+NiXDNi
+from (4.39) is immaterial, that is, almost surely we have E
+“
+p∆N,i ´ ˜∆N,iq2 ˇˇ FNi´1
+‰
+Ñ 0. To
+this end, we note that
+˜∆N,i ´ ∆N,i “
+1
+mN,i
+ÿ
+xPZ2
+even
+µN,i´1pxq E
+”´
+e
+H
+βN
+pNi´1, ˜
+Nis ´ 1
+¯
+1Dc
+˜
+NiYDc
+Ni
+ˇˇˇ SNi´1 “ x
+ı
+.
+Since in the expectation above, disorder is restricted to the time interval pNi´1, ˜Nis with
+Ni´1 ! ˜Ni ! Ni, we can show that the contribution from the event D ˜
+Ni X Dc
+Ni, which

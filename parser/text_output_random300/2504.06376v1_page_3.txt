@@ -1,0 +1,59 @@
+XX:2
+Quantum Combine and Conquer
+Our Results.
+In this paper, we introduce quantum combine and conquer,
+which is a novel quantum divide-and-conquer paradigm where we perform the combine step
+before the conquer step and avoid recursion. Our combine-and-conquer paradigm provides a
+quantum analogue to a classical divide-and-conquer variation that Kirkpatrick and Seidel
+call “marriage-before-conquest” [20–22]. We show that using this paradigm it is possible to
+compute the convex hull of a set of points in the plane in ˜O(
+√
+nh) time given that the input
+is presorted in lexicographic order. As the sorting problem can be reduced to computing the
+convex hull, and there is no quantum speed-up for sorting [19], we don’t expect quantum
+algorithms to outperform classical algorithms for this problem in the general case, but this
+result shows that some reasonable conditions can provide significant speedups. For example,
+for inputs where h is O(log n), such as is expected for n points uniformly distributed in a
+convex polygon with a constant number of sides [17], then our method achieves an ˜O(n1/2)
+running time. Similarly, for inputs where h is O(n1/3), such as is expected for n points
+uniformly distributed in a disk [17,31], then our method achieves an ˜O(n2/3) running time.
+In general, our algorithms achieve sublinear running times for sorted input sets for h up to
+almost n. Moreover, our results do not depend on any assumptions about the input points
+coming from a given distribution, such as uniformly distributed points in a convex region.
+Indeed, our results hold for adversarial chosen point sets, such as n points on a circle.
+To introduce the combine-and-conquer paradigm, we first apply it to constructing the
+maxima set of a set of lexicographically sorted points in the plane. Our quantum maxima
+set algorithm runs in ˜O(
+√
+nh) time, where h is the size of the output. The key idea to our
+technique is that there is information that can first be computed globally (the combine step),
+which partitions the computation into the smaller blocks that then use this information to
+finish the computation locally and (in a conquer step) without recursion.
+We then apply our quantum combine-and-conquer paradigm to the convex hull problem.
+In this case, the combine step is more complex, in that it includes multiple reductions to
+two-dimensional linear programming. Nonetheless, we show that the combine steps can still
+be performed before the conquer steps in this case. As a result, we give a quantum convex
+hull combine-and-conquer algorithm that runs in ˜O(
+√
+nh) time, where n is the number of
+(sorted) input points and h is the size of the output. The quantum combine-and-conquer
+technique provides a novel algorithm design paradigm that may be useful for designing more
+quantum algorithms that use similar intuition as classical algorithms.
+We compare our bounds to previous quantum convex hull algorithms in Table 1. In our
+algorithm’s input model, the data is encoded by a unitary, such that if the input is a list
+of points, [p0, p1, . . . , pn−1], then we assume access to a unitary Uin that maps an index i
+to the corresponding element in the array pi: |i⟩|0⟩
+Uin
+→|i⟩|pi⟩. The existing literature on
+quantum solutions to this problem assume that the data is given in a uniform superposition
+state, (1/√n) P
+i |i⟩|pi⟩. Access to the unitary Uin is a somewhat stronger assumption in
+that the uniform superposition state can be prepared in unit time given access to Uin. On
+the other hand, the most natural way to prepare such a state is via access to Uin, as we do.
+2
+Preliminaries
+We assume basic familiarity with quantum computing; see, e.g., Nielsen and Chuang [28].
+A quantum state over n qubits is a unit vector of length 2n with complex entries. The
+computational basis {|j⟩}j∈[0,...,2n−1] is a basis over quantum states where |j⟩represents the
+unit vector of length n with a 1 in the j-th index and 0 elsewhere. A computational basis
+state can be used as a classical bit string to simulate any classical algorithm. We can express

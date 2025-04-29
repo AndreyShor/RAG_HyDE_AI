@@ -1,0 +1,93 @@
+where we obtained the matrices Mv and Mx by computing the derivatives of the 2dHPL
+were computed with PolyLogTools. The boundary conditions were computed by evalu-
+ating the 2dHPL at the point (v = 1/4, x = 1) using GiNaC [136]. We solve the systems
+above in a generalised series expansion around v →0, by expanding
+Mv = 1
+v M(0)
+v
++
+X
+k≥0
+vk M(1+k)
+v
+(x), .
+(3.8)
+where M(0)
+v
+is a matrix of rational numbers. We use the package DiffExp [137] to transport
+the boundary conditions to v →0, where they diverge logarithmically
+lim
+v→0
+⃗f(v, 1) = exp
+h
+ε log(v) M(0)
+v
+i
+⃗g0(ε),
+(3.9)
+where M(0)
+v
+is the leading order term in eq. (3.8) and ⃗g0(ε) are computed with 120 digits
+through O(ε6), via DiffExp. The solution of eqs. (3.6) and (3.7) can be written in the
+form of generalised series expansion [42, 48, 49]
+⃗f(v, x) = T(ε, v, x) exp
+h
+ε log(v) M(0)
+v
+i
+Pexp
+
+ε
+Z x
+1
+Mx(v = 0, t), dt
+
+⃗g0,
+(3.10)
+where the matrix T(ε, v, x) has a Taylor expansion in v
+T(ε, v, x) = I +
+X
+k,j≥1
+vk εj T (k,j)(x).
+(3.11)
+The matrix T(ε, v, x) controls the power corrections and it is not needed for the expansion
+of ⃗f(v, x) at leading power in v. However, in the quark-gluon amplitude (3.4), some of
+the 2dHPLs multiply rational factors involving spurious poles in v, thus requiring the
+subleading powers in eq. (3.11)
+T (k,1)(x) = M(k)
+v (x)
+k
+,
+(3.12)
+T (k,j)(x) = 1
+k
+
+
+
+
+M(0)
+v , T (k, j−1)(x)
+
++
+k−1
+X
+q=1
+M(k−q)
+v
+(x)T (q, j−1)(x)
+
+
+.
+(3.13)
+The matrix Mx(v = 0, x) in eq. (3.10) has a very simple structure.
+Its entries are
+{1/x, 1/(1 + x)}, and the iterated integrals in eq. (3.10) can be written in terms of HPLs,
+with letters {−1, 0}, in the variable x. Finally, the numeric constants in ⃗g0(ε), together
+with the constants arising in the path integrals of eq. (3.10), can be written in terms of
+Riemann zeta values using the FindIntegerNullVector command in MATHEMATICA
+[138], which implements the PSLQ algorithm [139].
+By expanding the rational factors appearing in the amplitudes of ref. [130] and re-
+placing the HPLs and 2dHPLs with their asymptotic expansion, eq. (3.10), we obtain the
+Regge limit of the amplitudes for q + g →q + H and g + g →g + H up to O(ǫ4) at one
+loop and up to O(ǫ2) at two loops.
+– 12 –

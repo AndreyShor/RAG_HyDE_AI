@@ -1,0 +1,112 @@
+GECCO ’25, July 14–18, 2025, Malaga, Spain
+Kölle et al.
+immigrants, and single-point crossover [10, 14, 28]. The mutation
+strategies include change, delete, add, swap, and every possible
+combination of these, using either static or dynamic mutation rates.
+Hyperparameters are tuned autonomously after each repetition to
+improve performance. Six-qubit circuits form the dataset for these
+evaluations, and the same dataset is reused to maintain consistency
+in performance measurements.
+Our contributions involve a comprehensive, modular quantum
+environment that serves as a framework for evaluating GA-based
+and other machine learning approaches in quantum computing.
+We also supply empirical data on how various mutation strategies
+perform in quantum synthesis and offer guidance on their efficient
+application.
+The remainder of this work is structured as follows: In Section 2,
+we review related work on quantum state preparation, quantum
+circuit optimization, and the application of genetic algorithms in
+quantum computing. Section 3 introduces our quantum circuit en-
+vironment. Section 4 describes the experimental setup. Section 5
+presents the results, analyzing the performance of the genetic algo-
+rithm, the impact of mutation strategies, and the effects of mutation
+rate, population size, and adaptive mutation. Finally, Section 6 con-
+cludes the paper, summarizing key findings and discussing potential
+directions for future research.
+2
+RELATED WORK
+This section provides an overview of the foundational and recent
+research that underpins this work. It focuses on quantum state
+preparation, quantum circuit optimization, quantum circuit synthe-
+sis, and the application of GAs in quantum computing.
+2.1
+Quantum State Preparation
+Quantum hardware typically initializes each qubit in the |0⟩state
+by default, yet quantum algorithms often require more complex
+states. Preparing these states manually is time-intensive, especially
+for multi-qubit algorithms, and does not guarantee an optimal solu-
+tion. To automate this process, researchers have proposed several
+methods, including state decomposition [16], black-box approaches
+[22], and adiabatic methods [5].
+Another prominent direction uses machine learning algorithms
+to train parameterized circuits that generate specific target states.
+Recent papers demonstrate that reinforcement learning agents can
+efficiently assemble state preparation sequences [11, 18], reinforc-
+ing the notion that goal-oriented methods are well-suited for au-
+tomating state preparation.
+2.2
+Quantum Circuit Optimization and
+Synthesis
+Quantum circuit optimization and synthesis are core techniques in
+state preparation. Optimization aims to reduce the number of oper-
+ations in existing circuits by removing redundancies, reordering
+gates, or minimizing T-gates [7]. This step is crucial in NISQ-era
+hardware, where qubit counts are low and noise is high. Reducing
+circuit depth and gate count mitigates noise, improving overall
+reliability.
+Synthesis centers on decomposing target states into smaller
+subcircuits or template-based solutions. Efficient decomposition
+and template matching help researchers and automated tools build
+complex circuits more readily [7]. Despite ongoing progress, the
+search for better optimization and synthesis strategies continues,
+including contributions from the present work.
+2.3
+Genetic Algorithms in Quantum Computing
+Inspired by the successful use of reinforcement learning in state
+preparation, researchers have also explored GAs for optimizing
+quantum circuits. GAs excel at navigating large search spaces, mak-
+ing them promising candidates for quantum state preparation tasks
+[6, 20, 29]. Miranda et al. [15] notably demonstrated the effective-
+ness of an island-model GA, in which the population splits into
+partially isolated subpopulations. This division helps avoid pre-
+mature convergence by maintaining diversity across subgroups.
+Sunkel [27] introduced a comprehensive GA framework that of-
+fers standardized interfaces and extensibility, enabling future en-
+hancements without altering core components. Meanwhile, Ge [7]
+presented guidelines for crafting fitness functions and prioritizing
+circuit properties in the NISQ era, where limited qubit counts and
+elevated error rates constrain feasible circuit sizes. This work also
+highlighted metrics for mitigating noise and error accumulation,
+and provided strategies for balancing gate fidelity against circuit
+depth to ensure viability on near-term hardware.
+3
+QUANTUM CIRCUIT ENVIRONMENT
+This section introduces the quantum circuit environment devel-
+oped for synthesizing quantum states with a GA. It describes the
+GA structure and outlines how optimization proceeds for a given
+problem. The goal is to explain the main components and their
+implementation. This environment uses flexible approaches to can-
+didate generation, mutation, and evaluation to adapt to diverse
+quantum state synthesis tasks. Fig. 1 presents the streamlined op-
+timization process used in this work, highlighting the steps for
+refining candidate circuits toward the target quantum state.
+3.1
+Candidate Representation
+A candidate 𝐶in a population 𝑃is a potential solution for an op-
+timization problem 𝑂. Each 𝐶𝑖with 0 < 𝑖< |𝑃| is stored as a
+one-dimensional list of quantum operations:
+• Id: A label denoting a quantum operation (e.g., Hadamard,
+CNOT).
+• Wires: A number or list specifying which qubit(s) the oper-
+ation targets.
+Fig. 2 shows how a list of operations translates into a quantum
+circuit. This list-based format simplifies iteration, manipulation, and
+assessment when performing genetic operations such as mutation
+and crossover.
+3.2
+Target State
+The target state is the desired quantum state for a specific algorithm
+or experiment, and it defines the objective in quantum circuit opti-
+mization. Each candidate’s effectiveness is measured by its success
+in producing this state. A target state can be characterized by its
+statevector and density matrix.

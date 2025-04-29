@@ -1,0 +1,187 @@
+9
+Since Re[DR] is a flat function of ωp, it can be safely ignored in Eq. (33). We note that ΠR is purely imaginary at
+equilibrium and, we assume that, slightly away from the equilibrium, it retains this property. With these approximations,
+the left-hand side of Eq. (33) simplifies to
+
+D−1
+0 (p), D<(k, xrel)
+
+PB = 2 p · ∇rD<(ωp, p; t, r). Transforming everything to
+the Fourier space, integrating over ωp on both sides, and using Eq. (18), we get
+2 p · ∇rn(ωp, p; t, r) = −i
+
+Π>(ωp, p; t, r) n(ωp, p; t, r) −Π<(ωp, p; t, r) {1 + n(ωp, p; t, r)}
+
+.
+(34)
+Next, we linearize Eq. (34) near equilibrium in the small deviations of δn ≡n −nB and δΠ<(>) ≡Π<(>) −Π<(>)
+0
+, where
+Π<
+0 and Π>
+0 are the equilibrium self-energies and nB is the equilibrium value of the bosonic distribution function. Since
+nB(ω) = 0 at T = 0, we have
+2 p · ∇rn(ωp, p; t, r) = −i
+
+Π>
+0 (ωp, p) −Π<
+0 (ωp, p)
+	
+δn(ωp, p; t, r) −δΠ<(ωp, p; t, r)
+
+= −2 Im[ΠR
+0 (ωp, p)] δn(ωp, p; t, r) + i δΠ<(ωp, p; t, r) .
+(35)
+On Fourier-transforming from (t, r) to (Ω, q), we get
+δn(ωp, p; Ω, q) = 1
+2
+δΠ<(ωp, p; Ω, q)
+p · q + i Im[ΠR
+0 (ωp, p)] .
+(36)
+Up to the one-loop order,
+Π<(x1, x2) = −2 i e2 G<(x1, x2) G>(x2, x1)
+⇒Π<(ωp, p; t, r) = −2 i e2
+Z
+d2k
+(2 π)2
+Z ∞
+−∞
+dν
+2 π G<(ωp + ν, k + p; t, r) G>(ν, k; t, r)
+= −2 i e2
+Z
+d2k
+(2 π)2
+Z
+d2k′
+(2 π)2
+Z ∞
+−∞
+dν
+2 π
+Z ∞
+−∞
+dν′
+2 π G<(ν′, k′; t, r) G>(ν, k; t, r) δ(k′ −p −k) δ(ν′ −ωp −ν)
+= −2 i e2 N 2
+0
+Z 2 π
+0
+dθk
+2 π
+Z 2 π
+0
+dθk′
+2 π
+Z ∞
+−∞
+dν
+2 π
+Z ∞
+−∞
+dν′
+2 π f(ν′, θk′; t, r) [ 1 −f(ν, θk; t, r) ]
+× δ(θk′ −θp −θk) δ(ν′ −ωp −ν) .
+(37)
+This leads to
+δΠ<(ωp, p; t, r)
+−2 i e2 N 2
+0
+=
+Z 2 π
+0
+dθk
+2 π
+Z ∞
+−∞
+dν
+2 π δf(ν, θk; t, r) [1 −f0(ν −ωp) −f0(ν + ωp)] .
+(38)
+Plugging Eq. (38) into Eq. (36), and using Im[ΠR
+0 (ωpp)] = −χ ωp/|p| ≃−|p|2, we find that
+δn(ωp, p; Ω, q) =
+e2 N 2
+0
+R 2 π
+0
+dθkq
+2 π
+R ∞
+−∞
+dν
+2 π f(ν, θkq; Ω, q) [ 1 −f0(ν −ωp) −f0(ν + ωp) ]
+|p|2 + i p · q
+.
+(39)
+Now we are ready to compute the effects of δn on δf, governed by Eqs. (C5) and (C6) (appearing in Appendix C). As
+for the fermionic QBE here, it takes the form of
+(Ω−vF |q| cos θpq) δf(ωp, θpq; Ω, q) −
+
+Re[ΣR
+0
+
+ωp + Ω
+2
+
+] −Re[ΣR
+0
+
+ωp −Ω
+2
+
+]
+
+δf(ωp, θpq; Ω, q)
++
+
+f0
+
+ωp + Ω
+2
+
+−f0
+
+ωp −Ω
+2
+
+δRe[ΣR(ωp, θpq; Ω, q)]
+= f0(ωp) δΣ>(ωp, θpq; Ω, q) + Σ>
+0 (ωp) δf(ωp, θpq; Ω, q) −[f0(ωp) −1] δΣ<(ωp, θpq; Ω, q) −Σ<
+0 (ωp) δf(ωp, θpq; Ω, q) .
+(40)
+The corrections due to the nonequilibrium bosons appear through the fermionic self-energy terms, viz. δΣ>, δΣ<, and
+δRe[ΣR], which are now functions of both δn and δf. We will denote the contribution coming from δn as δΣ>(<)
+fb
+, which
+is equal to δΣ>(<) −δΣ>(<)
+b0
+, where δΣ>(<)
+b0
+is the contribution when the bosons are in equilibrium. A straightforward
+calculation, using Eqs. (D1), (D2), and (D3), show that
+δΣ>
+fb(ωp, θpq; Ω, q) = i e2 N0
+Z 2 π
+0
+dθkq
+2 π
+Z ∞
+0
+dω
+π Im[DR
+0 (ω, θkp)] δn(ω, θkp; Ω, q) [f0(ωp + ω) + f0(ωp −ω) −2] ,
+δΣ<
+fb(ωp, θpq; Ω, q) = i e2 N0
+Z 2 π
+0
+dθkq
+2 π
+Z ∞
+0
+dω
+π Im[DR
+0 (ω, θkp)] δn(ω, θkp; Ω, q) [f0(ωp + ω) + f0(ωp −ω)] ,
+δRe[ΣR
+fb(ωp, θpq; Ω, q)] = 0 .
+(41)

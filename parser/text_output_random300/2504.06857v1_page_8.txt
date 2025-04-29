@@ -1,0 +1,166 @@
+8
+TABLE III: χ2 values from comparing unfolded
+differential cross sections using each method to the
+truth-level cross sections underlying the data. Results
+are divided by observable of interest.
+χ2
+Method
+(pµ, cos θµ)
+DoF=58
+δpT
+DoF=8
+δαT
+DoF=8
+δϕT
+DoF=8
+Prior
+298.2
+2.3
+5.9
+4.9
+IBU-UniFold
+2.1
+0.2
+0.4
+0.1
+Binned UniFold
+21.4
+1.4
+0.9
+0.5
+UniFold
+27.1
+1.1
+0.6
+1.1
+MultiFold
+3.1
+0.3
+0.2
+0.3
+OmniFold
+10.0
+0.8
+1.1
+0.4
+TABLE IV: Triangular discriminator values from
+comparing unfolded differential cross sections using each
+method to the truth-level cross sections underlying the
+data. Results are divided by observable of interest.
+Triangular Discriminator
+Method
+(pµ, cos θµ) δpT δαT δϕT
+Prior
+545.6
+27.5 31.2 26.7
+IBU-UniFold
+17.1
+1.9
+3.4
+0.8
+Binned UniFold
+29.9
+2.8
+6.0
+1.9
+UniFold
+17.3
+5.7
+5.8
+1.7
+MultiFold
+2.7
+0.7
+0.6
+0.6
+OmniFold
+9.4
+1.7
+3.0
+2.1
+i, and the summation runs over the available bins. The
+results from evaluating the triangular discriminator be-
+tween each unfolded result and the true data distribution
+are shown in Tab. IV, serving as an estimate of solely
+the bias. We see that MultiFold and OmniFold are able
+to achieve χ2 values comparable to those of IBU-UniFold
+across all observables, while also achieving less bias. We
+emphasize that the IBU-UniFold and UniFold results are
+obtained by running a separate unfolding procedure for
+each different observable, whereas in the MultiFold and
+OmniFold results we are simultaneously unfolding all of
+them in one pass.
+IBU-UniFold performs better than Binned UniFold,
+even though in principle these methods have access to the
+same amount of information. The discrepancy in perfor-
+mance between these methods is attributed to difficulties
+in training the neural networks, as learning the bin-to-bin
+fluctuations is easier with discrete inputs3. These train-
+ing difficulties are likely exacerbated by the generally low
+statistics in a neutrino dataset compared to previous ap-
+plications of OmniFold, with only around 20000 events
+in the data for our setup. Given this limitation, the sim-
+ilarity in performance between Binned UniFold and un-
+binned UniFold is unsurprising too, as our analysis bins
+are already quite fine relative to the available statistics.
+3 Neural networks are known to be more effective in higher dimen-
+sions, which is the case for the one-hot-encoded entries.
+The clear improvement in performance seen when com-
+paring MultiFold and OmniFold against UniFold demon-
+strates that the additional information provided in those
+cases is indeed helpful in unfolding. The observation that
+MultiFold performs better than OmniFold across all met-
+rics also serves as another indication that the classifier
+training is imperfect. A direct comparison of the χ2 con-
+vergence of these two methods is shown in Fig. 7, where
+we see MultiFold converges both faster and to better val-
+ues. While in principle OmniFold has access to all the
+information that MultiFold did in our setup, it is a non-
+trivial function to derive the STVs from the muon and
+proton kinematics.
+With the limited statistics in our
+dataset, it is unsurprising that the OmniFold networks
+appear to be unable to perform as well as the MultiFold
+networks, given that the latter directly receive all of the
+variables of interest. From a practical perspective, an an-
+alyzer who knows the observables they will be interested
+in will usually want to include this information as direct
+input to the procedure anyway, sidestepping this prob-
+lem, but this calls for caution when attempting to unfold
+arbitrarily complicated derived quantities from simple in-
+puts.
+The fact that MultiFold achieves similar χ2 perfor-
+mance to IBU-UniFold for any particular observable is
+noteworthy given that it has the additional advantage
+that it is unfolding them all simultaneously. On top of
+this, the triangular discriminator performances indicate
+that MultiFold and OmniFold achieve less bias than IBU-
+UniFold. The discrepancy between the χ2 and triangu-
+lar discriminator comparisons among methods can be at-
+tributed to the generally lower uncertainties obtained by
+the OmniFold methods. A comparison of the uncertainty
+budgets between IBU-UniFold, UniFold, and MultiFold
+is provided in Fig. 8. We see that for the (pµ, cos θµ)
+distribution in particular with its relatively fine bins,
+IBU-UniFold yields notably higher uncertainties.
+The
+unbinned nature of the OmniFold method’s reweighting
+in combination with the penalization of overfitting by
+the training/validation split of the data results in a more
+regularized result compared to IBU-UniFold.
+The uncertainty budget shown in Fig. 8 also includes
+the contribution to the uncertainty from neural network
+training randomness, evaluated by calculating the vari-
+ation in results using identical data but different train-
+ing initializations for the neural networks. However, this
+standard error can be reduced by simply running the pro-
+cedure additional times and averaging all of the results.
+In our results we obtain the result through the average of
+5 trials, which reduces the standard error to a level that
+is negligible relative to the systematic and statistical un-
+certainties involved with the data.
+For direct visualization of the results, the unfolded dif-
+ferential cross sections from both IBU-UniFold and Mul-
+tiFold compared against the true values underlying the
+data are shown for the muon kinematics in Fig. 9 and
+Fig. 10, and for the STVs in Fig. 11.

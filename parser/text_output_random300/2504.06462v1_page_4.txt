@@ -1,0 +1,118 @@
+4
+speciﬁed unit cell. The synthesis problem is formed as the
+minimization of the cost function:
+F =
+X
+n
+
+|Eff(θn)|
+max
+n {|Eff(θn)|} −
+|Eff
+des(θn)|
+max
+n {|Eff
+des(θn)|}
+
+2
+,
+(8)
+where |Eff
+des| is the desired ﬁeld pattern. The expression in (8)
+quantiﬁes the difference in the normalized ﬁeld pattern values
+over all angles, and its minimization guarantees good matching
+between the obtained radiation pattern and the desired one.
+Two types of constraints are included in the optimization
+problem. First, the imaginary part of the surface impedances
+are constrained within a range of realizable values Xn ∈
+[Xmin, Xmax], as obtained from the unit cell simulation for
+the respective range of the varactor’s capacitance. Secondly,
+supplementing the losses of the unit cell into the surface
+impedance through the real part Rn allows to predict the total
+reﬂected power Prad. Thus, a constraint is included with regard
+to the minimum power efﬁciency ηmin:
+ηp = Prad
+Pmin
+> ηmin,
+(9)
+where Pinc is the total normal incident power to the RIS. As
+expected, if the value ηmin is selected to be unrealistically
+high, the radiation pattern matching of the optimized solution
+degrades. Thus, the value ηmin is modiﬁed gradually until
+a good compromise between power efﬁciency and pattern
+matching is achieved for each presented case. In general,
+the beneﬁt of incorporating losses in the framework and
+constraining them through Eq (9) is to avoid convergence to
+any solutions that exhibit unnecessarily high losses.
+The optimization consists of two steps. In the ﬁrst one, the
+built-in genetic algorithm optimization in MATLAB is utilized
+to arrive at a quasi-random starting point. Subsequently, this
+starting point is provided to a gradient-descent optimization
+that converges to the ﬁnal solution. Due to the randomness of
+the ﬁrst step, the process is repeated 10 times and the solution
+with the lowest value for the cost function is selected. For
+simple beamsteering cases, a starting point could have been
+deﬁned analytically based on a phase gradient. On the other
+hand, for beamforming cases that an intuitive selection of a
+good starting point may not be possible, the genetic algorithm
+could have been used as the sole optimization method at the
+expense of higher computational time. The latter is the reason
+for utilizing the genetic algorithm with only few generations
+and the sole purpose of getting initial points for the faster
+gradient-descent optimization.
+Solving for the induced currents at every optimization
+iteration is greatly accelerated by eliminating the unknowns
+¯Jg and ¯Jv from Eq. (3) and formulating a linear system of size
+Nw × Nw that calculates solely the currents ¯Jw. This method
+was described in [23], and it is usually referred to as Kron’s
+reduction (or node elimination) in power systems analysis [33].
+Additionally, providing a semi-analytical gradient for the cost
+function, as also suggested in [23], speeds up the gradient-
+descent optimization, compared to using ﬁnite differences. A
+single repetition of the two-stage optimization for an RIS
+comprising 30 meta-wires segmented into 5 basis functions
+Fig. 2. Tunable unit cell: (a) Top view. (b) Perspective view. A varactor is
+incorporated at each cell and it is reverse biased through a voltage line at the
+bottom layer and vias that connect to the voltage line and the ground plane.
+each (Nw = 150) takes on average around 48 seconds in a
+standard desktop computer.
+III. UNIT CELL DESIGN AND CHARACTERIZATION
+The unit cell of the RIS is depicted in Fig. 2 on top and
+perspective views. The top layer takes the form of a tapered
+copper wire that is loaded with a varactor at its center and with
+a static capacitance at the edges (formed between the adjacent
+cells in the x-direction). The center frequency of operation
+is 5GHz, and the unit cell dimensions (in terms of center
+wavelength λ) are λ/4 × λ/4.6. The subwavelength spacing
+in the y-direction is selected on purpose in order to be able
+to excite surface waves with high spectral ky components,
+that are necessary for beamshaping, as will become evident
+in the next section. A sparser design degrades the metrics
+of the achievable radiation patterns for some beamshaping
+examples. Similarly, a sparser periodicity in the x-direction
+compromises the accuracy of the homogenization of the loaded
+wires into impedance sheets, and decreases the tunability of
+the cell’s surface impedance for a given range of the varactor’s
+capacitance. The above aspects, together with the prototype’s
+cost that increases with a higher density of cells, were con-
+sidered to arrive at the unit cell’s dimensions. The gallium
+arsenide MACOM MAVR-000120 varactor is employed in the
+design, providing a tunable capacitance from around 0.18pF
+(for a reverse bias voltage of 14V) to 1.2pF (for zero bias
+voltage). The lumped resistance is selected to be 3Ωbased on
+a previous fabricated RIS design. This approximate value will
+be validated experimentally in Sec. V-B.
+The RIS stack-up comprises two Rogers TMM4 substrates
+(εr = 4.7, tan(δ) = 0.002) of thickness h = 1.9mm that are
+bonded together with the use of Panasonic R1650V prepreg
+of thickness 0.1mm. Therefore, the total RIS thickness is
+approximately htot ≈3.9mm (≈0.065λ). The top impedance
+layer includes the varactor-loaded cells, the middle layer serves
+as a ground plane, whereas the bottom layer hosts the bias
+lines that carry the DC bias voltage. The biasing is achieved
+with vias that connect alternately at the ground plane and the
+bias line through an oversize hole in the ground plane. The
+polarity of the varactors in a single meta-wire also alternates so
+that all varactors are reverse-biased through the corresponding
+bias line in the bottom layer. Lastly, two 100kΩresistors are
+included to dissipate any RF currents induced on the bias lines.

@@ -1,0 +1,89 @@
+Entropy Production in Non-Gaussian Active Matter: A Unified Fluctuation Theorem
+and Deep Learning Framework
+Yuanfei Huang1, Chengyu Liu2, Bing Miao3, Xiang Zhou1
+1Department of Mathematics, City University of Hong Kong, Kowloon, Hong Kong SAR.
+2Department of Data Science, City University of Hong Kong, Kowloon, Hong Kong SAR.
+3Center of Materials Science and Optoelectronics Engineering,
+College of Materials Science and Opto-Electronic Technology,
+University of Chinese Academy of Sciences (UCAS), Beijing 100049, China.
+We present a general framework for deriving entropy production rates in active matter systems
+driven by non-Gaussian active fluctuations. Employing the probability flow equivalence technique,
+we rigorously derive an entropy production decomposition formula and demonstrate that the entropy
+production, ∆stot, satisfies the integral fluctuation theorem ⟨exp[−∆stot + Bact]⟩= 1 and the
+generalized second law of thermodynamics ⟨∆stot⟩≥⟨Bact⟩, where Bact is a path-dependent random
+variable associated with the active fluctuations.
+Our result holds generally for arbitrary initial
+conditions, encompassing both steady-state and transient finite-time regimes. In the limiting case
+where active fluctuations are absent (i.e., Bact ≡0), the theorem reduces to the well-established
+results in stochastic thermodynamics. Building on the theoretical foundation, we propose a deep
+learning-based methodology to efficiently compute the entropy production, utilizing the L´evy score
+function we proposed. To illustrate the validity of this approach, we apply it to two representative
+systems: a Brownian particle in a periodic active bath and an active polymer system consisting
+of an active Brownian particle cross-linker interacting with passive Brownian beads. Our results
+provide a unified framework for analyzing entropy production in active matter systems while offering
+practical computational tools for investigating complex nonequilibrium behaviors.
+Introduction—Fluctuations are intrinsic to many mi-
+croscopic systems with Gaussian thermal noise that
+forms the foundation of stochastic thermodynamics [1–4].
+However, recent advances in active matter systems have
+revealed the ubiquitous presence of non-Gaussian fluctu-
+ations driven by activity, observed in phenomena such as
+stochastic navigation in eukaryotic microorganisms [5],
+bacterial run-and-tumble dynamics [6, 7], self-propelling
+colloidal particles [8–11], Janus particles [12], molecular
+motor-driven transport [13–16], and active living cells
+[17–20]. These discoveries have inspired the development
+of generalized Langevin equations that incorporate both
+thermal and active noise [21–31]. In theory, fluctuations
+in active matters are typically studied via two types of
+stochastic models [8]. The first utilizes active Ornstein–
+Uhlenbeck (OU) processes [32]. The second encompasses
+L´evy-type processes, such as compound Poisson [15] and
+α-stable L´evy processes [13].
+Some key questions in stochastic thermodynamics are
+as follows: (i) how to rigorously define and compute en-
+tropy production, (ii) how to consistently extend stochas-
+tic thermodynamics to systems governed by active fluc-
+tuations, and (iii) how active fluctuations influence en-
+tropy production and dissipation mechanisms. Address-
+ing these questions is crucial for advancing our under-
+standing of the thermodynamics of active matter and
+for uncovering the fundamental principles underlying
+nonequilibrium processes in systems with complex fluc-
+tuations. These questions have been explored in [32] for
+diffusion systems. However, there are limited references
+addressing these issues in systems driven by L´evy-type
+active fluctuations. Previous studies on nonequilibrium
+heat transport [33–36] and fluctuations under L´evy and
+Poisson noise [37–40] have provided valuable insights.
+Nevertheless, these works predominantly focus on spe-
+cific cases, and a unified theoretical framework for the
+stochastic thermodynamics of active systems with non-
+Gaussian fluctuations remains largely undeveloped.
+In this Letter we address these challenges through
+proving a unified fluctuation theorem in non-Gaussian
+active matter and providing a deep learning framework to
+compute the entropy production. First, using the prob-
+ability flow equivalence technique, we rigorously derive
+the entropy production decomposition formula:
+∆stot = ∆ssys + ∆sm + ∆sact,
+(1)
+where the total entropy production, ∆stot, is decomposed
+into three contributions—the system entropy change
+(∆ssys), the medium entropy change (∆sm), and the con-
+tribution from active fluctuations (∆sact).
+Second, we derive an integral fluctuation theorem for
+entropy production by the rigorous stochastic analysis:
+⟨e−∆stot+Bact⟩= 1,
+(2)
+where ⟨· · · ⟩describes the ensemble average over all mi-
+croscopic trajectories, and Bact is a path-dependent ran-
+dom variable induced by active fluctuations. This result
+is valid under general nonequilibrium conditions, encom-
+passing both finite-time and steady-state regimes. This
+fluctuation relation bears a formal resemblance to the
+Sagawa–Ueda relation in information thermodynamics
+[41]. Applying Jensen’s inequality to (2), we derive that:
+⟨∆stot⟩≥⟨Bact⟩.
+(3)
+arXiv:2504.06628v1  [cond-mat.stat-mech]  9 Apr 2025

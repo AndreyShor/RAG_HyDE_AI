@@ -1,0 +1,201 @@
+6
+TABLE II: Metrics evaluating the classification results of the
+QAE–qudit VQC model.
+Class #
+Precision Recall F1-Score
+0
+0.91
+0.96
+0.93
+1
+0.82
+0.14
+0.23
+2
+0.87
+0.47
+0.61
+3
+0.99
+0.95
+0.97
+4
+0.93
+1.00
+0.96
+5
+1.00
+0.91
+0.95
+6
+0.96
+1.00
+0.98
+7
+0.88
+0.99
+0.93
+8
+0.99
+1.00
+0.99
+Accuracy
+0.93
+Macro Average
+0.93
+0.82
+0.84
+in (9), are necessary components for these successful out-
+comes. It is straightforward to justify the use of QAE by
+comparing it to the results achieved without its inclusion.
+Therefore we implement the classification task with the
+qudit VQC of (10) but now we embed the K-plet of fea-
+tures, K = 5, on the qudit VQC without pre-processing.
+The basic VQC unit is similar to (9) but 75 out of 80
+features need to be reset to unity:
+ˆU(⃗ϕl, ⃗x) = exp
+
+−i
+5
+X
+j=1
+xjϕj
+l ˆgj −i
+80
+X
+j=6
+ϕj
+l ˆgj
+
+.
+(11)
+To eliminate the scenario where the choice of generators,
+ˆgi, encoding the non-unity features is crucial, we ran-
+domly permute the ordering of the ˆgi’s before applying
+equation (11). We perform the classification for three dif-
+ferent random permutations, resulting in different VQC
+basic units, as shown in equation (11). The outcomes of
+these three runs are very similar, and in Table III, we
+report one of them.
+Regarding the use of a qudit instead of qubits, this
+is a more complex question, as we would need to com-
+pare the results with the best outcomes achieved using a
+qubit-based VQC. To match the dimensions of the qu-
+dit’s Hilbert space with a qubit circuit we consider a
+VQC made of 4 qubits.
+However, given the extensive
+design possibilities for a four-qubit circuit, this compari-
+son becomes infeasible. Therefore, we provide an indica-
+tive result from a circuit that we designed as closely as
+possible to the qudit circuit.
+Let us describe the qubit model consisting by a VQC
+that is assisted by a QAE. Each of the four qubits re-
+ceives three features xi via the parametrized angle encod-
+ing transformation: exp
+h
+−i P3
+j=1 xiϕiˆgi
+i
+. The encoding
+is succeeded by a cascade arrangement of three CNOT
+gates which aims to entangle the qubits thus allowing
+the circuit to explore the full dimension of the Hilbert
+space. Since we aim to employ re-uploading technique,
+this basic VQC unit is repeated m times. To match the
+given K-plet to the 12 features of the qubit-VQC the cir-
+cuit, and also to enhance the outcomes, we employ the
+TABLE III: Metrics evaluating the classification results of all
+models tested in this work. For precision, recall and F1-score
+we list the macro average values. The number of total train-
+able parameters in each model is listed in the last column. For
+the QAE–Qudit model 490 from the total number of param-
+eters are attributed to the QAE model. For the QAE–Qubits
+model 220 parameters out of the 316 parameters are used in
+the QAE model.
+Model
+Precision Recall
+F1
+Accuracy # weights
+QAE–Qudit
+0.93
+0.82
+0.84
+0.93
+1,130
+Classic NN
+0.94
+0.83
+0.85
+0.94
+67,328
+Qudit
+0.85
+0.78
+0.80
+0.91
+640
+QAE–Qubits
+0.35
+0.42
+0.38
+0.62
+316
+Precision
+Recall
+F1-Score
+Accuracy
+0
+20
+40
+60
+80
+100
+93
+82
+84
+93
+94
+83
+85
+94
+85
+78
+80
+91
+35
+42
+38
+62
+Score Percentage %
+QAE + Qudit
+Classic NN
+Qudit
+QAE + Qubits
+FIG. 3:
+A visual representation of the metric values for the
+classification task achieved by every model under study in
+this work. The numerical valued for this plot are listed on
+Table III.
+‘batched’ QAE presented in Fig. 5 (b) of the work [9]. We
+have performed the classification task using m = 6, 8 and
+12 basic VQC units (layers) and the best outcomes are
+achieved for m = 8. The latter are reported in Table III,
+where we also summarize the results of all models used
+in this study.
+VI.
+DISCUSSION
+In this work, we developed a hybrid model capable of
+processing a large dataset consisting of around 10,000
+rows, which is significantly larger than datasets typically
+explored in QML. The results achieved are comparable to
+those obtained with a deep NN, whose number of train-
+able weights is nearly two orders of magnitude greater
+than in the proposed (QAE–qudit VQC) model. These
+findings suggest that if the qudit-based VQC were a phys-
+ical system, rather than being simulated as in this work,
+its training could potentially be faster than that of a deep
+NN
+The comparison of the suggested model, the QAE-
+qudit VQC, with simpler models in Section VI suggests
+that there are two key elements that warrant considera-
+tion. The first is the use of an encoding adapted for the

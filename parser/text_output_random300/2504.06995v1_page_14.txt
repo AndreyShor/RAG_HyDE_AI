@@ -1,0 +1,135 @@
+14
+mate given known mirror properties, but is unknown for
+the experimental conditions we intend to run the device
+at. When driven harmonically with a frequency ω0, the
+scan position is given as
+x(t) = laθdsin(ω0t),
+(B12)
+and we expect the velocity to be highest when the mirror
+is centered at x = 0, giving a maximimum scan velocity
+of
+vmax = d
+dtx
+
+t=0
+= laθdω0 = laξ
+(B13)
+We thus take ω0 as an effective angular speed for the
+mirror, which in principle is correlated with deflection
+angle for larger drive amplitude. We will see later that
+the product ξ = θdω0 = 2θmω0 is inseparable in our pulse
+timing calculation, and should be the relevant parameter
+to compare mirrors.
+Using the results from the previous section, we thus
+get the scan speed
+vmax = f0ξ dr
+d0
+= ξ dr
+2NA
+f0
+fc
+(B14)
+Thus scan speed is determined by intrinsic mirror char-
+acteristics (frequency and mirror size, which in general
+are anti-correlated) as well as the area and focal length
+of the focusing optics.
+The expected pulse duration is given by tpulse =
+dpulse/vmax. Using equations derived earlier, this gives a
+diffraction limited pulse width of
+tpulse,diff =
+1
+fcξ
+1.22λ
+2NA
+d0
+dr
+
+= 1
+ξ
+1.22λ
+dr
+(B15)
+This is the smallest pulse that a mirror with given ξ and
+dr can produce for a very small sensor, assuming mirror
+size is smaller than the initial beam diameter.
+Including divergence effects as in the previous section,
+we find an effective pulse duration for a realistic geometry
+of
+teff ≈deff
+vmax
+=
+p
+(2NA · df)2 + (1.22λ)2
+ξdr
+, dr ≤d0
+(B16)
+The pre-factors here are now the same as the previous
+calculation, but the fiber diameter will dominate the tim-
+ing if it is substantially larger than the wavelength of the
+light. Single-mode fibers will therefore always produce
+diffraction-limited chopping in the optical regime, but we
+are focused on producing a broad-band design, which re-
+quires light guides to admit multiple modes; this restricts
+some of our optimization to utilize larger collimators and
+longer focal lengths.
+We note that the scaling with mirror size only holds
+until dr ≥d0, after which d0 becomes the limiting fac-
+tor.
+This leads to some confusing performance in the
+case of small numerical aperture, as the above derivation
+assumes this also allows the mirror to be placed further
+from the slit, canceling out the increased spot size due
+to diffraction effects. In this case, our maximum velocity
+becomes
+vmax = f0ξ
+(B17)
+which gives the equation
+tmin ≈
+p
+(df)2 + (1.22λ/2NA)2
+ξfc
+, dr ≥d0
+(B18)
+This is the relevant behavior for a scan-optimized setup,
+where the MEMS mirror is located as close to the fo-
+cusing optic as possible. Readily available MEMS mir-
+rors are typically much smaller than focusing optics, and
+larger mirrors tend to have lower values of ξ, meaning
+that a realistic optimization needs to take into account
+the range of mirror sizes and ξ values to determine which
+will best match timing requirements.
+Appendix C: System Performance Improvements
+To date, we have produced and tested two versions of
+the fully enclosed MEMS scanner system, incorporating
+improvements based on initial cryogenic tests. The v1
+design, described in detail in Ref [14], achieved spot sizes
+of around 170 µm at fixed wavelength using a commercial
+refractive focusing system. The v2 design, for which the
+focuser described in this paper was designed, substan-
+tially improved the performance of the system, reducing
+spot size by a factor of 2 and introducing broad-band
+operation, allowing for warm interchange of light sources
+across a wavelength range of 300 nm to 1 µm limited only
+by optical fiber transmission cryogenically. The design
+shown in this paper was an intermediate design, using
+the focuser of the v2 system with modified v1 body, to
+demonstrate cryogenic performance. The remainder of
+the v2 system also decreased total copper volume to fit
+into a 5” diameter cryoperm can in order to test state
+of the art devices, like superconducting qubits, in an op-
+timal environment. Results from this system are forth-
+coming with active cryogenic devices.
+We are in the process of finalizing designs for a third
+version which will simplify alignment, reduce manufac-
+turing cost, and improve reproducibility between devices.
+This will reduce the number of parts in the system, sim-
+plifying alignment, and allow for easier customization of
+magnification factor and scan range. The main improve-
+ment to the optics chain involves fixing the astigmatism
+in the focusing unit described in the body of the pa-
+per by manufacturing a unibody focuser, which allows
+for more precise angular alignment of the collimator and
+primary focusing mirror.
+The improvement in focuser
+performance is summarized in Figure 9, where the astig-
+matism is drastically reduced compared to the existing

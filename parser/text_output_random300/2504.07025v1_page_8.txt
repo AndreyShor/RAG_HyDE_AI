@@ -1,0 +1,75 @@
+Novel View 1
+Novel View 2
+Reference View
+Pred. RGB
+Pred. Diffuse Pred. Specular
+Reference View
+Pred. RGB
+Pred. Diffuse Pred. Specular
+Figure 8. Novel view synthesis results of real-world captured objects. Remarkably, despite never encountering this particular perspective
+during training, the network is still capable of producing reasonably accurate rendering results.
+0  /  est. 2.35
+45  /  est. 41.16
+90  /  est. 95.74
+o
+o
+o
+o
+o
+o
+Figure 9. Robustness analysis. Despite minor color variations
+occur in specular regions across different polarization angles, par-
+ticularly those highlights indicated by red boxes, our algorithm
+effectively restores a coherent geometry, while accurately recov-
+ers the corresponding specular map.
+components. As depicted, in the absence of polarization
+information, the network lacks substantial physical con-
+straints, making it challenging to learn results that adhere
+to physics principles. In contrast, our method faithfully fol-
+lows the polarization theorem during the rendering process,
+enabling more intuitive and reasonable decomposition.
+Novel view synthesis.
+We conduct experiments on a held-
+out test set of the captured objects. These images are care-
+fully chosen to be distinct from the existing viewing an-
+gles in the training set. During the testing phase, the net-
+work automatically generates essential information, includ-
+ing surface normals, polarization states, and decomposed
+radiances, using only the provided camera poses. The ren-
+dered visualizations of our results are illustrated in Fig. 8.
+Robustness to different angles of the polarizer.
+As pre-
+viously mentioned, our approach does not require the polar-
+ization angle of the input image to be calibrated in advance,
+as this information can be implicitly solved by the network.
+From another perspective, the network itself is ignorant of
+the polarization angle of the input image, and we can the-
+oretically obtain the same reconstruction results. To verify
+this, we synthesize images with different polarization an-
+gles, such as 0◦, 45◦, and 90◦, using Eq. 2, as shown in
+Fig. 9. Our algorithm produces consistent and high-quality
+reconstruction results for different inputs. In addition, we
+output the estimated angle of the polarizer from the net-
+work, with an error less than 5◦.
+5. Discussion and Conclusion
+This work presents advancements in polarization-based 3D
+reconstruction of glossy objects, by tackling the highly
+challenging yet novel task of estimating geometry and ap-
+pearance from multi-view images with one single polar-
+ization angle per-view without pre-calibration. We intro-
+duce a fully differentiable polarization rendering pipeline
+that streamlines data acquisition to a single image per view
+and automatically determines the polarizer angle, eliminat-
+ing manual calibration requirements and reducing costs.
+Despite challenges such as color bleeding, our approach
+accurately reconstructs object geometry and material prop-
+erties, predicting diffuse and specular maps essential for po-
+larization cues. By implicitly estimating the polarization
+angle to render a polarized image and comparing it to the
+captured image to compute loss, our integration of polar-
+ization information reinforces the relationship between sur-
+face normals and radiances, facilitating precise estimation
+of components for accurate geometry reconstructions. This
+work paves the way for high-fidelity reconstruction using
+accessible tools, with potential applications on devices like
+smartphones or IoTs.

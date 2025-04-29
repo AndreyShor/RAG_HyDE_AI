@@ -1,0 +1,42 @@
+CAMULATOR: FAST EMULATION OF THE COMMUNITY
+ATMOSPHERE MODEL ∗
+William E. Chapman‡, John S. Schreck†, Yingkai Sha†, David John Gagne II†, Dhamma Kimpara†,
+Laure Zannaζ, Kirsten J. Mayer‡, Judith Berner‡
+Climate and Global Dynamics (CGD) Laboratory‡
+Computational and Information Systems (CISL) Laboratory†
+Courant Institute of Mathematical Sciences, New York Universityζ
+NSF National Center for Atmospheric Research
+Boulder, Colorado, USA
+{wchapman, schreck, ksha}@ucar.edu
+ABSTRACT
+We introduce CAMulator version 1, an auto-regressive machine-learned (ML) emulator of the
+Community Atmosphere Model version 6 (CAM6) that simulates the next atmospheric state given
+prescribed sea surface temperatures and incoming solar radiation. CAMulator explicitly conserves
+global dry air mass, moisture, and total atmospheric energy while remaining numerically stable
+over indefinite climate integrations. It successfully reproduces the annual CAM6 climatology and
+key modes of climate variability, including the El Niño–Southern Oscillation, the North Atlantic
+Oscillation, and the Pacific-North American pattern, with slightly muted variability. When forced
+with sea surface temperature (SST) beyond the training distribution, CAMulator exhibits a systematic
+cold bias in high-latitude regions, particularly in boreal winter, likely due to the absence of interactive
+land and sea ice. Nonetheless, CAMulator achieves these results with a 350 times speedup over
+CAM6, making it an efficient alternative for generating large ensembles. CAMulator represents a
+step toward fast, physically realistic ML-driven climate modeling.
+1
+Introduction
+Earth system models are essential for understanding Earth system dynamics, characterizing extreme events, and
+projecting future climate scenarios. However, their high computational cost limits their practical applications. One
+major computational bottleneck of these models is the atmosphere component [Worley et al., 2011]. Recent advances
+in machine learning (ML) emulators offer a promising path forward, with the potential to accelerate simulations
+and improve physical representation. Demonstrating the fidelity of ML-driven emulation is crucial; success in Earth
+system model component emulation could enhance and enable key modeling activities such as rapid hypothesis testing,
+large-ensemble generation [Kay et al., 2015, Maher et al., 2021], and comprehensive uncertainty quantification [e.g.,
+Deser et al., 2017, Touma et al., 2022], ultimately broadening the scope and efficiency of climate research.
+Progress in ML-based climate emulation has been rapid, particularly in emulating component models [Dheeshjith
+et al., 2024, Watt-Meyer et al., 2023, 2024] and, more recently, in coupled systems [Cresswell-Clay et al., 2024].
+The community is beginning to demonstrate that ML-based Earth system component models have the potential to
+emulate key features that are important for climate research, such as emergent variability and response to external
+forcing. However, the extent to which this has been achieved remains an active area of investigation [Watt-Meyer
+et al., 2024]. However, differences in the state variables, reduced dimensionality, and lower physical resolution—both
+horizontally and vertically—pose challenges for combining these ML-based atmospheric emulators with other Earth
+∗Citation: Chapman W. et al. fully resolved, fast emulation of the Community Atmosphere Model
+arXiv:2504.06007v1  [physics.ao-ph]  8 Apr 2025

@@ -1,0 +1,121 @@
+Evaluating Mutation Techniques in Genetic Algorithm-Based Quantum Circuit Synthesis
+GECCO ’25, July 14–18, 2025, Malaga, Spain
+0.6
+0.8
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Fitness score
+mutation_rate (with swap)
+mutation_rate (without swap)
+Figure 12: Influence of different mutation rates on swap.
+Rates were already near optimal, resulting in minimal per-
+formance changes.
+0.6
+0.8
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Fitness score
+mutation_rate (with deletion)
+mutation_rate (without deletion)
+Figure 13: Influence of different mutation rates on deletion.
+Minimal effects are visible.
+200
+400
+600
+800
+1000
+0.2
+0.4
+0.6
+0.8
+1.0
+Fitness score
+population (with swap)
+population (without swap)
+Figure 14: Effect of population size on swap. Larger popula-
+tions slightly increase performance but demand more com-
+putational resources.
+Population Size. Fig. 14 and Fig. 15 show a minor performance
+boost when increasing the population size, but the gains do not
+justify the substantial rise in computational costs. Generally, allo-
+cating resources to run more generations may be more beneficial
+than increasing population size.
+Adaptive Mutation. Fig. 16 and Fig. 17 illustrate that adaptive
+mutation reduces variance but tends to yield lower overall fitness.
+Although it balances exploration and exploitation by altering rates
+200
+400
+600
+800
+1000
+0.2
+0.4
+0.6
+0.8
+1.0
+Fitness score
+population (with deletion)
+population (without deletion)
+Figure 15: Effect of population size on deletion, showing a
+slight improvement at higher population sizes.
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Fitness score
+adaptive_mutation (with swap)
+adaptive_mutation (without swap)
+Figure 16: Impact of adaptive mutation on swap. Although
+variability decreases, final fitness also trends lower.
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Fitness score
+adaptive_mutation (with deletion)
+adaptive_mutation (without deletion)
+Figure 17: Impact of adaptive mutation on deletion. Similar
+patterns of reduced variability coincide with reduced fitness.
+in response to population diversity and convergence, those adjust-
+ments appear to curb performance. A well-tuned static rate often
+suffices and may simplify implementation while producing stronger
+final results.
+6
+CONCLUSION
+This work investigated how different mutation strategies affect
+GA performance in quantum state preparation. We conducted ex-
+tensive experiments in a highly parameterized quantum circuit
+environment, concluding that the swap, deletion strategy generates
+optimized quantum circuits with the greatest efficiency.

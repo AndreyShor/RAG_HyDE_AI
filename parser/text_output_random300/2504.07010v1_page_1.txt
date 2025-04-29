@@ -1,0 +1,30 @@
+Assumption-free fidelity bounds for hardware
+noise characterization
+Nicolo Colombo∗
+April 10, 2025
+Abstract
+In the Quantum Supremacy regime, quantum computers may over-
+come classical machines on several tasks if we can estimate, miti-
+gate, or correct unavoidable hardware noise. Estimating the error re-
+quires classical simulations, which become unfeasible in the Quantum
+Supremacy regime. We leverage Machine Learning data-driven ap-
+proaches and Conformal Prediction, a Machine Learning uncertainty
+quantification tool known for its mild assumptions and finite-sample
+validity, to find theoretically valid upper bounds of the fidelity be-
+tween noiseless and noisy outputs of quantum devices.
+Under rea-
+sonable extrapolation assumptions, the proposed scheme applies to
+any Quantum Computing hardware, does not require modeling the
+device’s noise sources, and can be used when classical simulations are
+unavailable, e.g. in the Quantum Supremacy regime.
+1
+Introduction
+The high potential of Quantum Computing (QC) has not manifested yet in
+real-world applications (Dasgupta and Humble, 2022). Tasks where QC has
+proven scalability advantages (Arute et al., 2019) require correcting errors
+induced by hardware noise. Available Quantum Error Correction algorithms
+(Lidar and Brun, 2013), based on physics-informed Noise and Error Models
+(NEMs) that make strong assumptions on the underlying quantum process,
+∗nicolo.colombo@rhul.ac.uk
+1
+arXiv:2504.07010v1  [quant-ph]  9 Apr 2025

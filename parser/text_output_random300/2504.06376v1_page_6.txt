@@ -1,0 +1,53 @@
+Fukuzawa, Goodrich, and Irani
+XX:5
+n points in the plane and are tasked with finding the subset of points in S that are not
+dominated by any other points in S. We say that a point p dominates a point q if p.x > q.x
+and p.y > q.y. Note that the output size, h, can be as small as 1 or as large as n.
+We assume that the input set is sorted in lexicographic order (first by x-coordinates and
+then by y-coodinates in the case of ties), as discussed in the introduction.
+Let us begin by reviewing a simple divide-and-conquer algorithm in the classical computing
+model, which is provided the set, S, of n points as input in sorted order, and returns the
+maxima set, M (see Preparata and Shamos [30]). The algorithm splits S into left and right
+sets, S1 and S2, and recursively finds the maxima sets of each. Then it prunes away each
+point in S1 with smaller y-coordinate than the point, pmax, in S2 with maximum y-coordinate.
+The resulting maxima set algorithm, which we give in detail in an appendix, takes Θ(n log n)
+time, even when S is sorted [30]. Kirkpatrick and Seidel [21] show that if the combine step
+of finding pmax is performed before the divide and conquer steps, and used to prune points
+in recursive subproblems, then the running time can be improved to O(n log h).
+For our output-sensitive quantum algorithm, we also perform the combine step before
+the conquer step, but our goal is to design a quantum algorithm that runs in ˜O(
+√
+nh)
+time without recursion, which requires a more sophisticated approach. We first describe
+an algorithm where the output size, h, is known in advance and later show how to use this
+algorithm to solve the case where the output size is not known.
+At a high level, the combine-and-conquer approach performs the combine step first before
+conquering the subproblems. In the maxima set problem, this is achieved in the following
+way. We begin by dividing our set S into h different blocks using Algorithm 1. The key
+observation we use is that we can isolate the problem of finding the maxima set to each of the
+local blocks once we identify representative information from each block. This representative
+information is used globally, so we describe the process of finding such information as the
+combine step. The combine-and-conquer paradigm works for problems where, once the
+global information is identified, the blocks do not need to communicate with each other for
+the remainder of the algorithm. In the case of computing the maxima set, the combine step
+consists of searching for the set T of the h highest points in each block. Once the set T is
+found, we classically compute the maxima set MT of T. Note that MT cannot contain more
+than h points, and if a block does not share a point with MT no points in that block can be
+in the final output set. Once the points in MT are identified, we begin the conquer step of
+the algorithm to find the points in each block that appear in the maxima set. Block number
+j uses information from two points identified in the combine step to restrict the search region.
+The first is the y coordinate Tj of the tallest point within the j-th block, which immediately
+removes all points to the left of it inside block j out of the candidate set. The second is the
+y coordinate Rj of the highest point that appears in any of the blocks to the right of block j.
+Note that Rj is left-most point from MT that is to the right of block j. See Figure 2.
+Using Tj and Rj, we can define a Boolean function f that takes as input a point p and
+returns 1 if p is not dominated by either of Tj and Rj. We then apply Theorem 1 to search
+for the maximum element in lexicographic order subject to this Boolean function. It turns
+out that this point is part of the final output set, as Rj tells us it is not dominated by any
+point in blocks to the right of j and Tj tells us it is not dominated by any point in block
+j. We then update Rj to equal this maximal point we found, and repeat this process in
+block j until the Boolean function does not mark any elements in the set. We illustrate the
+first iteration of this process in Figure 3. Since the output size is h, it suffices to run this
+process O(h) times in total across all blocks. Finally, we collect the outputs in the blocks
+that contain a point in MT , which takes at most O(h) time. See Algorithm 2.
+SoCG 2025

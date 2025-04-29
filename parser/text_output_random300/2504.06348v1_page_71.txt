@@ -1,0 +1,65 @@
+E
+Compilation of the block encoding
+There are two routines that we will use significantly throughout the block encoding: (i) preparation of a
+uniform superposition over an arbitrary number of amplitudes (“USP”), and (ii) quantum rejection sampling
+(“QRS”).
+For USP, we reuse the construction from Ref. [102] for preparing a uniform superposition over d ampli-
+tudes. In the worst case, d has no factors that are a power of two; in this case, the subroutine consists of
+two inequality tests over ⌈log(d)⌉qubits and two rotations with a d-dependent angle. If these rotations are
+carried out using phase gradient state addition (with a b-bit phase gradient state), the total cost is
+2(⌈log(d)⌉−1) + 2(b −3) = 2⌈log(d)⌉+ 2b −8.
+(167)
+We assume that the cost of preparing the phase gradient state is amortized across the entire algorithm and
+therefore has negligible cost per evocation. The USP subroutine uses ⌈log(d)⌉+ 1 ancillae for the arithmetic
+for the inequality test and b ancillae for the rotation, but these ancillae are not instantiated concurrently.
+USP has tunable parameters that dictate the quality of the state that is prepared. These parameters will
+be left as free parameters in the resource estimation sections below, and we defer discussion of fixing them
+when we consider specific problem instances.
+For QRS, we use the framework from [75].
+In particular, QRS proceeds as a coherent analogue of
+rejection sampling; in order to prepare a state with amplitudes proportional to some target function f(x),
+we instead prepare a state with amplitudes corresponding to some bounding function g(x), chosen such that
+it is easier to prepare than f(x) itself. We can then use coherent arithmetic to “flag” the portion of the state
+over f(x), versus that over the remainder; amplitude amplification then amplifies the part corresponding
+to f(x) and dampens the rest. Judicious choice of g(x) often leads to low resource counts in practice. In
+extending this preparation technique to block encodings, we also inherit the distinction between explicit and
+implicit rejection sampling; in explicit rejection sampling, the QRS occurs inside PREP, in implicit rejection
+sampling, the QRS occurs inside SEL. See [75], Sec. 5.3 for detail.
+E.1
+Subroutines shared across the block encoding
+E.1.1
+Selecting between terms
+The selection between terms is achieved by preparing the state
+PREPterms|0⟩=
+1
+√
+λ
+p
+λTel+Tion|0⟩+
+p
+λVel+Vion|1⟩+
+p
+λVloc|2⟩+
+p
+λVNL|3⟩
+
+,
+(168)
+encoded in unary. We prepare this state by first preparing the encoding in binary, using at most three
+rotations, then converting from binary to unary using three CSWAPS. If the rotations are performed over
+bP bits, the total cost of this preparation is 3bP + 3. We assume the same cost for the uncomputation.
+E.1.2
+Swapping particle registers
+For every term in the block encoding, SELECT requires carrying out some arithmetic on particle registers,
+conditioned on the index of the particle. As noted in [91] (Sec.II B), it is typically cheaper to “swap up” the
+particle to an “active” register conditioned on the index register once, and then to flag which term in the
+block encoding to carry out based on the state of flag qubits, rather than copying particles up and down for
+each term of the block encoding. In particular, we must swap up four registers: an electron indexed by i,
+an electron indexed by j, an ion indexed by I and an ion indexed by J. Each electron register contains n
+qubits, each ion register contains ¯n qubits, and must be indexed over ηval and ηion indices for electron and
+ion terms, respectively. Given two indices each for electrons and ions (i and j for electrons and I and J for
+ions), the cost for swapping up η particles where each particle encodes its momentum in n qubits controlled
+on their index, is
+nη + η −1,
+(169)
+71

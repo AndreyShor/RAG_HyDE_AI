@@ -1,0 +1,48 @@
+Springer Nature 2021 LATEX template
+10
+Human Activity Recognition using RGB-Event based Sensors
+newly proposed routing mechanism-guided multi-modal fusion strategy enables
+more effective integration of RGB-Event features. The detailed implementation
+process will be described in the following sections.
+3.3 Network Architecture
+3.3.1 Input Representation
+Given the RGB frames I ∈RB×T ×C×H×W = {I1, I2, ..., IT } and event streams
+Ep = {e1, e2, ..., eM}, where B and T denote the batch size and the number
+of video frames, the dimensions of channel, height, and width are expressed
+as C, H, W, respectively, ej (j ∈[1, 2, ..., M]) denotes each asynchronously
+launched event point, M is the number of event points in the current sam-
+ple. Each point ej exists in the form of a quadruple {x, y, t, p}, where (x, y)
+denotes the spatial coordinates, t and p denote the time stamp and polarity.
+For the event streams Ep, we stack them into event images based on the time
+stamp of the RGB frames, which can fuse more conveniently with the existing
+RGB modality. Consequently, we can obtain the multi-modal inputs with RGB
+frames I ∈RB×T ×C×H×W and aligned event frames E ∈RB×T ×C×H×W .
+3.3.2 Multi-modal Heat Conduction Backbone Network
+As shown in Fig. 2 (the top sub-figure), our RGB-Event HAR method is
+built on the vHeat model with physical interpretability. We begin by inputting
+both RGB frames I ∈RB×T ×C×H×W and event frames E ∈RB×T ×C×H×W
+to the StemNet, which consists of convolutional layers, BatchNorm layers,
+and GeLU activation functions, to obtain the image patches. Next, we feed
+the image patches into the multi-modal heat conduction blocks for feature
+fusion and interaction. As shown in Fig. 2 (the bottom left sub-figure), the
+multi-modal HCO block contains two branches to deal with the bimodal input.
+For each multi-modal HCO block, we first feed the RGB image patches and
+event image patches to the weight-sharing depth-wise convolutional networks.
+For RGB modality, a linear layer is employed to project the dimension of the
+feature channel from C to 2 ∗C, and then divide the features into two parts
+according to the channel dimension. The first part is XR, which is passed into
+a multi-modal HCO layer for thermal diffusivity based feature modeling (the
+detailed description will be introduced later), and X′
+R is obtained through a
+LayerNorm. The other part denoted as ZR, is multiplied by X′
+R after passing
+through a linear layer and a SiLU activation function. Finally, we can obtain
+the output of this block through another linear layer. The event modality also
+performs the same operation as the RGB modality. Therefore, the formulas
+can be described as,
+X′′
+R = Linear(X′
+R ∗SiLU(Linear(ZR))),
+X′
+R = LN(MMHCO(XR)),
+(4)

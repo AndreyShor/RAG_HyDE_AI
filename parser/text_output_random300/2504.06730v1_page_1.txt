@@ -1,0 +1,97 @@
+arXiv:2504.06730v1  [cs.LG]  9 Apr 2025
+PETNet– Coincident Particle Event Detection using
+Spiking Neural Networks
+Jan Debus∗, Charlotte Debus†, G¨unther Dissertori∗, and Markus G¨otz†‡
+∗Institute for Particle Physics and Astrophysics, ETH Z¨urich, Switzerland
+†Scientiﬁc Computing Center, Karlsruhe Institute of Technology, Germany
+‡Helmholtz AI
+Abstract—Spiking neural networks (SNN) hold the promise
+of being a more biologically plausible, low-energy alternative to
+conventional artiﬁcial neural networks. Their time-variant nature
+makes them particularly suitable for processing time-resolved,
+sparse binary data. In this paper, we investigate the potential
+of leveraging SNNs for the detection of photon coincidences in
+positron emission tomography (PET) data. PET is a medical
+imaging technique based on injecting a patient with a radioactive
+tracer and detecting the emitted photons. One central post-
+processing task for inferring an image of the tracer distribution
+is the ﬁltering of invalid hits occurring due to e.g. absorption or
+scattering processes. Our approach, coined PETNet, interprets
+the detector hits as a binary-valued spike train and learns to
+identify photon coincidence pairs in a supervised manner. We
+introduce a dedicated multi-objective loss function and demon-
+strate the effects of explicitly modeling the detector geometry on
+simulation data for two use-cases. Our results show that PETNet
+can outperform the state-of-the-art classical algorithm with a
+maximal coincidence detection F1 of 95.2%. At the same time,
+PETNet is able to predict photon coincidences up to 36 times
+faster than the classical approach, highlighting the great potential
+of SNNs in particle physics applications.
+Index Terms—Spiking neural networks, positron emission
+tomography, particle coincidence detection, supervised denoising
+I. INTRODUCTION
+In recent years spiking neural networks (SNN) have received
+increasing research interest, given their potential as a low-
+energy and computationally efﬁcient alternative to classical
+artiﬁcial neural networks (ANNs). Spiking neurons model their
+activations as time-dependent membrane potentials, thereby
+mimicking brain functionality more closely. Information is
+propagated via binary spike trains, naturally capturing the
+sparsity and temporal dynamics found in their biological
+analogue [1]. The intrinsic concept of sparsity and temporal
+dynamics enables SNNs to model sparse, time-resolved data,
+which can be found in a wide variety of scientiﬁc applications.
+Especially for high-frequency data, conventional ANNs strug-
+gle with the additional computational complexity introduced
+This work was performed on the HoreKa supercomputer funded by the
+Ministry of Science, Research and the Arts Baden-W¨urttemberg and by the
+Federal Ministry of Education and Research. The authors would like to thank
+the Federal Ministry of Education and Research and the state governments
+(www.nhr-verein.de/unsere-partner) for supporting this work/project as part
+of the joint funding of National High Performance Computing (NHR). This
+work is supported by the Helmholtz Association Initiative and Networking
+Fund under the Helmholtz AI platform grant and by the German Federal
+Ministry of Education and Research under the 01IS22068 - EQUIPE grant.
+by the temporal dimension. Recurrent ANN architectures, such
+as LSTMs, are not able to capture long range dependencies,
+while Transformer-based approaches face the challenge of
+excessive memory consumption for long sequences. For such
+cases, SNNs provide a promising alternative with the potential
+of surpassing conventional ANN prediction accuracy while
+requiring substantially less computational resources [2].
+One such potential application is the task of detecting
+photon coincidence pairs from raw detector data in positron
+emission tomography (PET). PET is a medical imaging tech-
+nique based on injecting a radioactive positron-emitter into
+a patient and measuring the emitted photons of the result-
+ing electron-positron-annihilation using a scintillating ring
+detector. In theory coincidence pairing can be performed by
+simply matching two measured signals within a predeﬁned
+temporal window. In practice, however, not all annihilation
+photons can be detected due to absorption processes in the
+body or physical constraints of the detector elements, thus
+impeding the matching process. At high signal rates and
+temporal resolutions, existing classical algorithms prevalent in
+the PET-community reach their limits as computation times
+can require several hours. We demonstrate that SNNs can
+speed up this task and even improve detection accuracy by
+learning coincidence patterns. The photons detected by the
+scanner inherently comprise a time-variant series of binary
+events in discrete locations, and thus can be easily translated
+into spike-trains interpretable by an SNN.
+Our contributions are as follows:
+• A multi-objective loss function for SNNs that is both
+sensitive to spike counts and timing critical in particle
+detection applications.
+• An approach to model the a-priori known detector geom-
+etry with window functions.
+• Large-scale data-parallel SNN training on a multi-node
+GPU systems for extremely high-rate PET scanners.
+• Prediction of photon coincidence pairs in PET using
+SNNs, on-par or even surpassing the classical approach
+in prediction accuracy while reducing inference time by
+more than an order of magnitude.
+We evaluate our approach on two sets of simulations, one
+based on a high-rate preclinical system and one based on
+a low-rate monolithic clinical design, which will be made
+publicly available to serve as benchmark datasets. Our work

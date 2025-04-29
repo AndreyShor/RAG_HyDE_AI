@@ -1,0 +1,44 @@
+Swinging small quantum systems out of available values of control parameters
+2
+the optimal control theory to prepare desired strongly interacting ground states of small
+quantum systems treating interaction strength as a control parameter that is experimentally
+bounded to some range of weak interactions. Meanwhile, we employ this technique to speed
+up the processes of these quantum state preparations and to estimate the minimal time to
+reach the target state, i.e., the quantum speed limit [8]. We select cubic spline functions
+as the ramp protocol to avoid rapid oscillations and employ the Broyden-Fletcher-Goldfarb-
+Shanno approach to enhance the fidelity which is the optimization function. The optimized
+ramp protocol is exceptionally efficient and demonstrates no resistance against the impact
+of control errors.
+Optimal control theory is the state-of-the-art tool [9, 10] with its application
+across diverse physical systems, including nuclear magnetic resonance [11] and ultracold
+atoms [12, 13]. It typically employs two principal classes of optimization algorithms: (i)
+local optimization strategies like Krotov [14, 15], GRAPE [11], CRAB [16], GROUP [17], or
+GOAT [18]; and (ii) global optimization strategies, exemplified by differential evolution [19,
+20] or covariance matrix adaptation evolution strategy (CMA-ES) [21].
+The method
+proposed by us in this work belongs to the first class since it relies on local derivatives.
+Although analytic solutions are available for quantum systems with low-dimensional Hilbert
+space [22, 23, 24, 25], the high-dimensional quantum systems require the invocation of
+numerical optimization techniques.
+The paper is organized as follows. In Sec. 2 we describe the theoretical framework
+and the method that forms the basis of our investigation. Then in Sec. 3 we introduce a
+two-qubit toy model to illustrate the optimization method which is employed in Sec. 4 to
+discuss a more realistic model of three interacting fermions. Finally, in Sec. 5 we extend
+the discussion to a larger system of three-component fermionic mixture. In this way, we can
+demonstrate how the method can be generalized to cases when the optimization is required
+only for a selected subsystem. Section 6 concludes our work.
+2. The framework and the method
+In our work, we assume that the system is described by the time-dependent Hamiltonian of
+the form
+H(g(t)) = H0 + g(t)Hc,
+(1)
+where H0 and Hc are noncommuting time-independent parts (the drift and the control
+Hamiltonian, respectively) and a whole time-dependence comes from the external control
+field g(t), e.g., interaction strength. We assume that the intensity of this field can be quite
+well controlled experimentally. Of course, this description also includes time-independent
+scenarios with particularly chosen intensities of the field, g(t) = g. In these cases, at least in
+principle, one can solve eigenproblem for a corresponding Hamiltonian
+H(g)|Ψi(g)⟩= Ei(g)|Ψi(g)⟩
+(2)
+and eigenstates obtained for different intensities g are connected by adiabatic varying of
+the field. This is particularly true for the ground states |Ψ0(g)⟩which remain isolated for

@@ -1,0 +1,145 @@
+8
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Amplitude (a.u.)
+a)
+0
+/2
+t, Time
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+f, i(t), Phase 
+Accum. (a.u.)
+b)
+FIG. 7: Pulse shaping for amplitude and frame rotation
+of the MS(θ) gate, a) The amplitude of the waveform
+(teal) follows a Gaussian with σ = 0.133τ, while b) the
+frame rotation ϕf,i(t) follows the integral of the square
+of Gaussian amplitude, erf(
+√
+2t) (orange), as the
+residual light shift is predominantly fourth-order.
+rent with the MS gate in order to counteract the influ-
+ence of the light shift during the varying amplitude pulse
+(Gaussian-shaped). Since the residual light shift is pre-
+dominantly due to fourth-order shifts, it is proportional
+to the square of the Rabi rate. This means the light shift
+will cause the gate to accumulate phase as the integral of
+the square of that Gaussian envelope, which is a scaled
+error function, erf(
+√
+2t) (see Fig. 7b). We therefore pro-
+gram the frame rotation ϕf,i(t) to also accumulate phase
+as erf(
+√
+2t) spanning the duration of the gate, but with
+the opposing sign of the phase from the light shift in
+order to cancel it.
+To calibrate the magnitude of the correction needed,
+we perform two sequential MS(π/2) gates on an initial
+state of |00⟩, which should result in complete population
+transfer to |11⟩. However, in the presence of light shifts,
+the second gate will not be aligned in phase with the fi-
+nal state of the first, resulting in less overall population
+transfer to |11⟩. Here, we vary the total accumulation
+of phase of the frame rotation, which is ϕf,i(t) at t = τ,
+or more compactly ϕf,i(τ). We then find ϕf,i(τ) which
+corresponds to the maximal |11⟩population, as shown in
+the green data of Fig. 8a. During calibrations, we fit the
+entirety of the scan with a simple Gaussian curve fitting
+routine, taking its center to be the calibrated frame ro-
+tation. However, the true functional form is not a Gaus-
+sian, and so for more thorough investigations and fidelity
+estimations, we utilize a maximum likelihood estimation
+that fits a Gaussian only to the upper half of the curve to
+extract the amplitude (for fidelity estimations) and the
+center (for frame rotation calibrations), demonstrated in
+Fig. 8a. When we compare the two different methods to
+determine the necessary frame rotation, we find they are
+typically within 2° of one another (a example set of 22
+calibration measurements yielded an average difference
+of 0.95° or ∼1.5% of the Gaussian 2σ).
+150
+100
+50
+0
+50
+100
+150
+f( ), Frame Rotation (o)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+P11
+a)
+br = 0.5
+br = 0.8
+br = 1.05
+br = 1.7
+100
+0
+100
+200
+Light Shift 
+Per Gate (o)
+b)
+simulated light shift
+measured via Single-Qubit Ramsey
+measured via Frame Rotation
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+br, Blue/Red Ratio
+0.850
+0.875
+0.900
+0.925
+0.950
+0.975
+1.000
+P11
+c)
+FIG. 8: Different impacts of the light shift as a function
+of ζbr measured with the 2x MS(π/2) gates. a) The
+probability in |11⟩after two sequential MS(π/2) gates
+vs. ϕf,i(τ). The four different data sets have different
+values of ζbr. b) From a), the center of each set is fit to
+extract the frame rotation needed to cancel the residual
+light shift (orange squares), i.e. the sign of the
+measured frame rotation is inverted to indicated the
+light shift that is being canceled. The single-qubit
+MS(π/2) calibration results in Fig. 5e have been
+reproduced (teal diamonds) and assigned the
+appropriate directionality (sign) as the original
+measurement is unable to determine the sign. The
+frame rotation and the single-qubit MS(π/2) Ramsey
+measurements were interleaved to reduce the effect of
+system drift. A simulation (black curve) based of the
+fourth-order light shift resulting from the effect of the
+other pulsed laser comb harmonics is fit to the data to
+account for imperfect polarization and mismatch
+between the intended and actual ζbr at the ion. c) An
+estimate of the gate performance, √P11 after two
+applications of MS(π/2), as determined from the frame
+rotation measurements reveals significant degradation
+as ζbr moves away from the ideal 1.05. Error bars in b)
+and c) are 2σ confidence intervals either determined
+from a maximum likelihood estimation or basic curve
+fitting routine.

@@ -1,0 +1,153 @@
+22
+varying saturation leading to a refractive index change
+determined by the local intensity distribution. Typically,
+in the self-defocusing regime (achievable in strontium-
+barium-niobate crystals with appropriate external field
+orientation), this results in a reduction of the refractive
+index in regions of high intensity, which can be concep-
+tualized as the creation of repulsive optical potentials for
+light (Boughdad, 2020; Boughdad et al., 2019).
+Con-
+versely, realizing attractive potentials (i.e., an increase
+in refractive index in bright regions) can be achieved
+through specific configurations such as inverting the ap-
+plied external electric field in materials like SBN to enter
+a self-focusing regime, or by utilizing background inco-
+herent illumination to manipulate the effective nonlin-
+earity.
+In thermo-optic liquid it is actually possible to include
+an object inside the medium (it is a liquid), therefore a
+macroscopic modification of the refractive index can be
+induced by choosing an object with a different index than
+the liquid. This approach has been followed by (Vocke
+et al., 2016).
+C. Off-axis interferometry: phase measurement
+(a)
+(b)
+(c)
+(d)
+(e)
+(f)
+Figure 11 Off-axis interferometry. (a) Intensity measured by
+a camera. (b) Real part of the 2D Fast Fourier transform.
+(c) Selection of one of the sidebands. (d) Demodulation to
+remove the k′
+⊥component. (e) Argument of the 2D Inverse
+Fast Fourier transform. (f) Extra-step to flatten the phase.
+A considerable advantage of fluids of light compared to
+ultracold atomic gases is the simple access to the phase of
+the field, using interferometric method like off-axis inter-
+ferometry (Cuche et al., 1999; Fienup, 1982). This tech-
+nique is widely in optics since it gives fast reconstruction
+(possibly above 30 Hz) with high resolution.
+The signal beam Es, which propagated through the non-
+linear medium, is overlapped with a reference beam Er.
+The resulting interference pattern is imaged on a camera
+and can be expressed as follow:
+Icam(r⊥) ∝|Es(r⊥)eiϕ(r⊥) + Er(r⊥)eik′
+⊥r⊥|2 =
+Is(r⊥) + Ir(r⊥)
+|
+{z
+}
+DC part
++ E∗
+sEre−i(ϕ−k′
+⊥r⊥) + EsE∗
+rei(ϕ−k′
+⊥r⊥)
+|
+{z
+}
+modulated part
+(95)
+where k′
+⊥is the transverse wavevector of the reference
+beam with respect to the signal.
+The phase of Er is
+ignored as it is set to not vary with r⊥.
+In order to
+demodulate the signal, we take the Fourier transform of
+this expression, giving:
+˜Icam(k⊥) = ˜Is(k⊥) + ˜Ir(k⊥)
+|
+{z
+}
+DC part
++
+F
+h
+Eseiϕ(r⊥)i
+(k⊥) ∗
+n
+˜Er(k⊥−k′
+⊥)
+o
++
+F
+h
+Ese−iϕ(r⊥)i
+(k⊥) ∗
+n
+˜Er(k⊥+ k′
+⊥)
+o
+.
+(96)
+The phase can be extracted from the sidebands, but the
+difficulty is that the convolution product is hard to in-
+vert. However, if one uses a very large reference beam
+compared to the signal beam, its Fourier transform will
+be much narrower than the one of the signal. We can
+then approximate the Fourier transform of the reference
+by a Dirac function, meaning that the convolution prod-
+uct will simply shift the signal by k′
+⊥in the Fourier plane.
+In this scenario, the camera intensity in the Fourier do-
+main becomes:
+˜Icam(k⊥) ≃˜Is(k⊥) + ˜Ir(k⊥)
+|
+{z
+}
+DC part
++
+F
+h
+Eseiϕ(r⊥)i
+(k⊥+ k′
+⊥) + F
+h
+E∗
+se−iϕ(r)i
+(k⊥−k′
+⊥)
+|
+{z
+}
+modulated part (sidebands)
+.
+(97)
+We then spatially filter the Fourier plane in order to
+recover the information carried by the sidebands. This
+is done with a band-pass filter ˜T(k⊥) around one of the
+first sideband term, and by shifting the signal in Fourier
+domain by −k′⊥to get rid of the off-axis term. By ap-
+plying an inverse Fourier transform, we recover:
+Eseiϕ(r⊥) ∗F−1 h
+˜T
+i
+(r⊥).
+(98)
+If the band-pass filter ˜T(k⊥) has a circular shape, its
+inverse Fourier transform, F−1 h
+˜T
+i
+, corresponds to an
+Airy function. This implies that the recovery process is
+not perfect, as it degrades the spatial resolution of the
+reconstructed field.
+We select the largest possible re-
+gion around the satellite peak in the Fourier plane which
+still excludes the zeroth order. This fixes the choice of
+the relative angle between signal and reference k′⊥so
+that the satellite peak is (approximately) positioned at

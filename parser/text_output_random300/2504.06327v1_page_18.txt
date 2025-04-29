@@ -1,0 +1,158 @@
+Physics-informed KAN PointNet
+particularly noticeable for the 𝑢-component of the velocity vector, where the relative error exceeds 10%, surpassing the
+commonly accepted engineering threshold. However, the errors in the pressure and temperature fields remain within
+acceptable limits. We conclude that reducing the depth of PI-KAN-PointNet significantly impacts its performance, in
+contrast to the application of PointNet with KAN in part segmentation tasks in computer graphics.
+global 
+feature
+Shared MLP (𝑛𝑠× 64, 𝑛𝑠× 64)
+Shared MLP (𝑛𝑠× 64, 𝑛𝑠× 128, 𝑛𝑠× 1024)
+shared
+shared
+Shared KAN (𝑛𝑠× 512, 𝑛𝑠× 256, 𝑛𝑠× 128)
+𝑛𝑠× 1024
+Input
+shared
+shared
+Shared KAN (𝑛𝑠× 128, 𝑛PDE)
+𝑁× 2
+𝑁× 𝑛𝑠× 64
+𝑁× 𝑛𝑠× 1024
+𝑁× 𝑛𝑠× 128
+𝑁× 𝑛PDE
+Output
+𝑁× 𝑛𝑠× 1088
+Max pool
+𝒙1
+𝒙2
+.
+.
+.
+.
+𝒙𝑁
+⋯
+𝑋1
+𝑋2
+𝑋𝑚
+Spatial coordinates
+ of 𝑚 geometries
+𝛿
+𝛿𝑥
+𝛿
+𝛿𝑦
+𝛿
+𝛿𝑥
+𝛿
+𝛿𝑥
+𝛿
+𝛿𝑦
+𝛿
+𝛿𝑦
+Automatic
+differentiation
+Physics-informed
+ loss function
+𝒙1
+𝒙2
+.
+.
+.
+.
+𝒙𝑁
+𝒙1
+𝒙2
+.
+.
+.
+.
+𝒙𝑁
+Figure 11: Architecture of the physics-informed PointNet with shared MLPs in the encoder and shared KANs in the
+decoder. In this study, we set 𝑛𝑠= 1 in the encoder, while 𝑛𝑠= 0.5 in the decoder. Other components are defined similarly
+to the caption of Fig. 1.
+global 
+feature
+Shared KAN (𝑛𝑠× 64, 𝑛𝑠× 64)
+Shared KAN (𝑛𝑠× 64, 𝑛𝑠× 128, 𝑛𝑠× 1024)
+shared
+shared
+Shared MLP (𝑛𝑠× 512, 𝑛𝑠× 256, 𝑛𝑠× 128)
+𝑛𝑠× 1024
+Input
+shared
+shared
+Shared MLP (𝑛𝑠× 128, 𝑛PDE)
+𝑁× 2
+𝑁× 𝑛𝑠× 64
+𝑁× 𝑛𝑠× 1024
+𝑁× 𝑛𝑠× 128
+𝑁× 𝑛PDE
+Output
+𝑁× 𝑛𝑠× 1088
+Max pool
+𝒙1
+𝒙2
+.
+.
+.
+.
+𝒙𝑁
+⋯
+𝑋1
+𝑋2
+𝑋𝑚
+Spatial coordinates
+ of 𝑚 geometries
+𝛿
+𝛿𝑥
+𝛿
+𝛿𝑦
+𝛿
+𝛿𝑥
+𝛿
+𝛿𝑥
+𝛿
+𝛿𝑦
+𝛿
+𝛿𝑦
+Automatic
+differentiation
+Physics-informed
+ loss function
+𝒙1
+𝒙2
+.
+.
+.
+.
+𝒙𝑁
+𝒙1
+𝒙2
+.
+.
+.
+.
+𝒙𝑁
+Figure 12: Architecture of the physics-informed PointNet with shared KANs in the encoder and shared MLPs in the
+decoder. In this study, we set 𝑛𝑠= 0.5 in the encoder, while 𝑛𝑠= 1.0 in the decoder. Other components are defined similarly
+to the caption of Fig. 1.
+6.4. Physics-informed PointNet with an MLP (KAN) encoder and KAN (MLP) decoder
+After a comprehensive evaluation of PI-KAN-PointNet and an in-depth comparison with physics-informed
+PointNet with shared MLPs, an idea worth investigating is the integration of both shared KANs and MLPs into
+PointNet to potentially leverage the strengths of both architectures. There are multiple ways to achieve this integration.
+One reasonable and straightforward approach is to construct the encoder of PointNet using shared KAN layers
+while utilizing shared MLP layers for the decoder, or vice versa. Figure 11 and Figure 12 illustrate the schematic
+representation of these two proposed models. Specifically, in shred KAN layers, the Chebyshev polynomial (i.e.,
+𝛼= 𝛽= −0.5) with a degree of 2 and 𝑛𝑠= 0.5 was used, while in shared MLP layers, 𝑛𝑠was set to 1.
+Table 5 compares these two models in predicting velocity, pressure, and temperature fields across 135 geometries
+(𝑚= 135). The evaluation, based on relative pointwise error (𝐿2 norm) over the entire domain and the inner cylinder
+surface (for temperature), reveals that the configuration with the MLP encoder and KAN decoder generally produces
+lower errors in velocity and temperature predictions, particularly along the inner cylinder surface, while pressure
+predictions remain comparable between the two approaches. Additionally, this configuration achieves a lower minimum
+loss (1.25308E−4 vs. 4.58812E−4), although it requires slightly longer training times per epoch and a marginally
+increased number of epochs to converge. The loss evolution for both models is shown in the left panel of Fig. 13.
+Accordingly, the loss function of the physics-informed PointNet with an MLP encoder and KAN decoder decreases
+to approximately 8.7 × 10−4 after just 200 epochs, whereas this value remains at 3.8 × 10−2 at the same epoch for the
+model with a KAN encoder and MLP decoder. Additionally, the loss plot of the first model exhibits fewer fluctuations
+and appears smoother.
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 18 of 25

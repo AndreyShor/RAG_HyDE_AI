@@ -1,0 +1,41 @@
+and cannot be used to calibrate the intervals. More generally, estimating the
+empirical quantile of the conditional distribution for any z ∈Z when Z ⊆Rd
+is impossible if N < ∞because the probability of having N samples with
+z = ZN+1 in the calibration set is zero. (Vovk, 2012). Here we focus on our
+specific setup and approximate conditional validity based on two observations
+1. We may be able to extract from ˆY an ordinal feature, S = ϕ(ˆY ), such
+that
+dTV(BCn, BCn′) ∝f(|Sn −Sn′|),
+Sn = ϕ(ˆYn),
+∂tf(t) > 0
+(15)
+For example, S may be a weighted sum of a circuit’s depth and number
+of interacting qubits.
+2. Since the object attributes are distributions, we can infer an arbitrar-
+ily high-dimension feature map, ϕ(ˆY ) ∈Rq, such that BC(Yn, ˆYn) ≈
+wTϕ(ˆY ) obeys
+˜A(ˆY ) = BC(Y, ˆY ) −wTϕ(ˆY ) ∼P ˜
+A
+for all ˆY
+(16)
+for some w ∈Rq3
+We formalize these assumptions to derive two non-exchangeability mitigation
+algorithms in Sections 2.5.1 and 2.5.2. In the experiments, we combine the
+algorithms and test them empirically against a baseline CP algorithm, i.e.
+the standard Split CP approach without non-exchangeability mitigation.
+2.5.1
+Sample selection with an ordinal feature
+The idea is to rank the calibration samples according to an ordinal feature
+extracted from the output distributions. Assuming the test samples rank
+higher, we show that discarding low-rank calibration samples may reduce
+the validity gap in (10). In this section, we make the following
+Assumption 2.2. Let Y, ˆY and Y ′, ˆY ′ be any two noiseless and noisy dis-
+tributions of two devices, A = BC(Y, ˆY ), and A′ = BC(Y ′, ˆY ). There exists
+a one-dimensional score, ϕ(ˆY ) ∈R+, such that the Total Variation distance
+between A and A′ obeys
+dTV(A, A′) ∝|ϕ(ˆY ) −ϕ(ˆY ′)|
+(17)
+3More formally, ˜A is such that the joint distribution of ˜A and ˆY factorizes, that is
+P ˜
+A ˆY = P ˜
+AP˜ˆY

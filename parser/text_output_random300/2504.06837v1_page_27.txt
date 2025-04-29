@@ -1,0 +1,142 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+Remark 5.6. The uniform equi-integrability for the diﬀusive rate
+RR
+C(F n
+i,e) dx dt ≤Cdiﬀ
+ﬂux was
+also obtained in [HrT23, Lem. 4.4] by a slightly diﬀerent and more generally applicable argument
+that only uses that σN is uniformly bounded in L∞(0, T; L1(Td)).
+Having established the spatial regularity of ˜ρN in Lemma 5.3 as well as boundedness of the
+ﬂuxes in Proposition 5.5, our next step is to show time regularity for ˜ρN.
+Lemma 5.7 (Time regularity). Assume (4.A1) and let (cN, F N, JN) satisfy the a priori esti-
+mates (5.1). Then, we have the uniform bound supN∈N∥˜ρN∥BV (0,T;(W 1,∞(X))∗) < ∞.
+Proof. We ﬁrst focus on the more complicated interpolation ˜ιN and recall (3.13), which implies
+for every ϕ ∈C1(X)
+⟨F N, ∇˜ι∗
+Nϕ⟩= 1
+Nd
+X
+k∈Zd
+N
+X
+e∈E
+X
+i∈I
+F N
+i,k,e[(˜ι∗
+Nϕ)i,k+e −(˜ι∗
+Nϕ)i,k]
+=
+X
+k∈Zd
+N
+X
+e∈E
+X
+i∈I
+X
+m∈M
+F N
+i,k,e
+Z
+QN
+k
+SN
+−k fN
+m SN
+−m[SN
+e ϕi −ϕi] dx
+=
+X
+k∈Zd
+N
+X
+e∈E
+X
+i∈I
+X
+m∈M
+F N
+i,k,e
+N
+Z
+QN
+k
+Z 1
+0
+SN
+−k fN
+m(x) SN
+eθ−m ∂xeϕi(x) dθ dx
+≤CM∥∇ϕ∥L∞(X)
+X
+i∈I
+X
+e∈E
+
+F N
+i,e
+N
+
+1
+.
+Similarly, for every ϕ ∈C(X) we have
+⟨JN, Γ˜ι∗
+Nϕ⟩=
+X
+k∈Zd
+N
+X
+r∈R
+JN
+r,k
+X
+i∈I
+γr,i
+X
+m∈M
+Z
+QN
+k
+SN
+−k fN
+m SN
+−m ϕi dx
+≤∥ϕ∥L∞(X) max
+s∈R
+X
+i∈I
+|γs,i|
+X
+r∈R
+∥JN
+r ∥1.
+With this, we consider any partition (tm)M
+m=0, M ∈N of [0, T]. Then, the previous bounds, the
+discrete continuity equation, and Proposition 5.5 yield, for every ϕ ∈C1(X), the estimate
+M
+X
+m=1
+⟨˜ρN(tm) −˜ρN(tm−1), ϕ⟩=
+M
+X
+m=1
+⟨cN(tm) −cN(tm−1), ˜ι∗
+Nϕ⟩N
+=
+M
+X
+m=1
+Z tm
+tm−1
+⟨F N, ∇˜ι∗
+Nϕ⟩+ ⟨JN, Γ˜ι∗
+Nϕ⟩dt ≤C∥ϕ∥C1(X).
+Taking suprema with respect to ϕ ∈{ϕ ∈C1(X): ∥ϕ∥W1,∞(X) ≤1} and the partition, we obtain
+supN∥˜ρN∥BV(0,T;(W1,∞)∗) < ∞. This ﬁnishes the proof of Lemma 5.7.
+Combining the spatial regularity of ˜u from Lemma 5.3 and the time regularity of ˜ρ from
+Lemma 5.7, we are now able to apply the Aubin-Lions-Simon lemma to obtain strong L1
+compactness for ˜ρN. We then show that ρN has the same strong limit by comparing it to ˜ρN.
+27

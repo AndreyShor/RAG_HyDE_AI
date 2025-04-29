@@ -1,0 +1,82 @@
+nisms, while Khanna et al. [16] examine how explaining
+robotic failures improves user trust and collaboration.
+Current HRC research struggles with real-world shelf-
+picking complexities. We address this by integrating a real-
+to-sim pipeline with an LLM interface. This enables robots to
+interpret natural language, understand human intent, assess
+extraction, and predict risks like collapse. This integration
+fosters efficient, safe, and adaptive collaboration in diverse
+warehouse environments
+III. METHODOLOGY
+This section details a collaborative shelf picking frame-
+work that is capable of multi-modal interactivity to enable
+more effective human robot collaboration. The framework
+leverages a Large Language Model (LLM) with Chain of
+Thought (CoT), integrated with a novel physics simulation
+engine. This engine models structural support and potential
+instabilities, grounding the LLM’s reasoning in real-world
+physics. Additionally, the framework incorporates visual
+perception and multi-modal interaction—natural language
+commands and gesture recognition—to create shared situa-
+tional awareness. These components enable the robot to per-
+ceive and understand its environment, improving planning,
+reducing risk, and increasing collaborative efficiency. The
+following subsections provide a detailed breakdown of each
+component within the proposed framework.
+A. Scene Perception
+Using a single RGB-D image a segmenetation mask for all
+the detected cardboard boxes in the scene is generated. From
+this segmentation mask, box dimensions, location (centroid),
+orientation, and distance from the camera are calculated
+using bounding boxes and depth data.
+Fig. 3: Real-to-Sim Pipeline
+These extracted features are used to reconstruct the per-
+ceived scene in a physics simulation using PyBullet, a
+lightweight and realistic physics engine. Gravity is set to
+9.81 m/s², and each box is modeled with a density of 1 kg/m³
+and uniform mass distribution. The simulation standardizes
+interactions by setting the surface friction coefficient to 0.75
+and the spinning friction to 0.01 while applying uniform
+friction across contact surfaces. These parameters provide
+an accurate model of stacked cardboard structures and yield
+realistic simulation outcomes. This entire pipeline can be
+seen in Figure 3.
+B. Physics-based Reasoning for Human-Robot Collabora-
+tion
+Insights from the simulation are used to construct a Box
+Relations Graph (BRG) (as seen in Figure 4), which models
+dependency relationships between boxes. In this graph, each
+node represents a box and each directed edge indicates a
+support dependency; an edge is created if removing one
+box would cause another to collapse. The system employs a
+depth-first search algorithm to systematically explore these
+relationships and identify critical structural supports within
+the stack. This is an extension of our previous work [1]
+as this work focuses more on understanding how the boxes
+are related to each other in the entire stack, and uses it to
+compute support candidates and extraction sequences.
+This graph-based approach enables the robot to understand
+stability constraints and plan box removals in a way that
+minimizes the risk of unintended collapses, ensuring safe
+and efficient warehouse operations. Algorithm 1 describes
+how the BRG is computed.
+Algorithm 1 Building the Dependency Graph
+Input: A dependency dictionary D, where for each box b,
+D[b] is a list of boxes that support b.
+Initialize an empty graph G.
+for each box b in D do
+Add node b to G.
+for each dependency d in D[b] do
+Add a directed edge from d to b ▷Box b depends
+on d.
+end for
+end for
+return G.
+Fig. 4: Illustration showing how a Box Relations Graph is computed
+from a simulation
+Once the Box Relations Graph is constructed, it enables
+several applications. One of the key applications is safe
+box extraction (as described in algorithm 2, where Kahn’s
+algorithm determines an optimal removal sequence for a
+given target box. The algorithm first identifies all boxes
+that structurally depend on the target using a recursive

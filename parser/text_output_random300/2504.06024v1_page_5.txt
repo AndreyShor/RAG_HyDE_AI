@@ -1,0 +1,89 @@
+n=0,m=1
+Z(n)
+#apply
+gate Z on qubit 0
+CX(n,m) #apply
+CNOT gate , n is
+control
+qubit
+and m is target
+qubit
+RX(theta , m)
+#apply RX gate on qubit 1
+In addition to standard and custom gates, noise in quantum operations is described through three
+main types: phase flip, bit flip, and depolarization. AriaQuanta utilizes these noise models to implement
+noisy quantum circuits. These noises can be used in a quantum circuit with the BitFlipNoise(p,n),
+DepolarizingNoise(p,n), PhaseFlipNoise(p,n), where p is the probability of the noise effect
+and n is the number of qubits.
+3.3
+Quantum circuits
+A quantum circuit represents qubits and quantum gates. In AriaQuanta, circuits can be easily defined
+and manipulated by calling the Circuit
+and adding gates. There are two methods to add gates to
+a circuit: the add_gate method and the _or_ operator i.e | operator. The circuit methods include
+circuit depth, circuit size, circuit size, number of qubits, and initial state vector. Also, with the method
+to_gate a quantum circuit can be converted into a gate and used in other circuits and the number of
+classical bits that can be designated for storing the state after measurement. To draw a quantum circuit,
+the class CircuitVisualizer and method visaulize are used. In Ariaquanta, different colors are
+assigned to different gate categories. Listing 3 shows the example code for employ quantum circuits
+Code3. implementation
+of
+quantum
+circuits
+from
+AriaQuanta.aqc.circuit
+import
+Circuit
+from
+AriaQuanta.aqc. gatelibrary
+import*
+from
+AriaQuanta.aqc. visualization
+import
+CircuitVisualizer
+qc = Circuit(4)
+# circuit
+white 4 qubits
+qc | X(0)|X(1)
+qc | CX(0,2) | CX(1,2)
+qc | CCX(0,1,3)
+visualizer = CircuitVisualizer (qc)
+visualizer .visualize ()
+print("\nnumber
+of
+qubits
+are: ", qc. num_of_qubits )
+print("\nnumber
+of
+classical
+bits
+are: ", qc. num_of_clbits )
+print("\ncounting
+all the
+gates: ", qc.gatesinfo)
+print("\nwidth of the
+circuit: ", qc.width)
+print("\nsize of the
+circuit: ", qc.size)
+print("\ndepth of the
+circuit: ", qc.depth)
+print("\ninitial
+state is: ", qc. initial_state )
+print("\nstate
+vector
+before
+running
+is the
+initial
+state: ", qc. statevector )
+print("\ndensity
+matrix
+before
+running , the
+matrix
+represenation
+of the
+initial
+state: ",
+qc. density_matrix )
+5

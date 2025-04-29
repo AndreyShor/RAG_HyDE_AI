@@ -1,0 +1,25 @@
+with 5 < n < 16) are selected to be weakly interacting with inner orbitals. A Detailed Line
+Accounting (DLA) calculation is then performed for all transition arrays starting from that con-
+ﬁguration. DLA calculations are only carried out for pairs of conﬁgurations that give rise to
+fewer than 800,000 lines (with the maximum size of a J-block within a conﬁguration set to
+4,000). For all other cases, transition arrays are represented statistically using Gaussian proﬁles
+within the frameworks of Unresolved Transition Arrays (UTA)118 or Spin-Orbit Split Arrays
+(SOSA)119. If the supershell contains at least one electron, transitions originating from the su-
+perconﬁguration are treated using the Super Transition Arrays (STA) model117, ensuring that
+no conﬁguration is omitted. The contribution of the supershell is thus kept as small as possi-
+ble. The computational effort in SCO-RCG is now dominated by these detailed calculations.
+As a result, the computed spectrum becomes less sensitive to the modeling of the remaining
+statistical contributions (UTA, SOSA, STA). The Partially Resolved-Transition-Array (PRTA)
+model121 has also been implemented, allowing for the replacement of many statistical transition
+arrays with smaller-scale DLA calculations. These DLA computations are carried out using
+the wavefunctions of the ”real” conﬁguration that was previously calculated. The electrostatic
+variance due to passive subshells is added to the widths of individual lines of the DLA calcu-
+lation. This approach has been extended to the STA formalism by temporarily excluding the
+Rydberg supershell during the calculation, and adding its contribution to the widths of all lines
+as a Gaussian “dressing function”. For instance, the calculation of the iron opacity in the solar
+mixture at the boundary of the solar convective zone involves about 1,000 non-relativistic (nℓ)
+conﬁgurations, 75,000 relativistic (nℓj) conﬁgurations, and 2 billion J-levels. The total number
+of lines in the spectrum is approximately one billion, corresponding to 20,000 DLA transition
+arrays. The statistical part includes 460,000 UTAs, SOSAs, and STAs.
+Recent developments: inverse Bremsstrahlung and Stark effect
+41

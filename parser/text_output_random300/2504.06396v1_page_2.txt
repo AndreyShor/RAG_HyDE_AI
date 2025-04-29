@@ -1,0 +1,49 @@
+XXX:2
+Israel et al.
+development of synthetic models, or test cases, provides a strong foundation for advancing practical
+algorithms that can, in turn, strengthen the cybersecurity of real-world power grid systems.
+By building synthetic cyber-physical models, researchers can leverage these datasets to develop
+and test new applications. These models also serve educational purposes, offering an intuitive way
+to explore various cyber-physical scenarios. Additionally, they enable visualization techniques
+that enhance understanding of cyber-physical interactions and system behavior under different
+adversarial actions.
+The availability of test cases with realistic cyber-physical topology is limited. Some cyber-physical
+models are restricted to distribution systems or smaller IEEE test cases [8, 31]. A power distribution
+cyber-physical test case presented in [18] considers the correlation between cyber and physical
+systems by covering a range of power generation and load variations. The 8-substation model [28]
+is an early example of a cyber-physical test case that models an electrical transmission system,
+following the Western System Coordinating Council (WSCC) 9-bus model.
+A large-scale cyber-physical model was proposed in [30], based on the Texas 2000-bus system.
+More recently, a statistics-based cyber-physical topology for the European power grid was intro-
+duced in [19]. This model addresses the scalability challenges of representing large cyber-physical
+networks by incorporating three distinct layers: the power system layer, the communication layer
+(which includes physical devices such as fiber optic switches), and the logical communication layer
+(which accounts for network routers). The tool also introduces redundant communication nodes
+within the communication layer to enhance reliability. However, this model does not capture data
+flows or the communication protocols used in utilities’ Supervisory Control and Data Acquisition
+(SCADA) systems, and it supports only a single network topology.
+In this paper, the creation of a cyber-physical model of a power grid is automated. The goal
+of this approach is to take any power system network model as input and generate a realistic
+communication topology that overlays the physical power system layer. This topology is designed
+to be valid alongside the power system model for joint simulation and/or emulation. It can also be
+customized based on the specific use cases being studied.
+To demonstrate this, cyber-physical topologies are generated and validated using metrics for
+three synthetic power grid models, with bus sizes ranging from 500 to 10,000. These cyber-physical
+models include relays, substations, Utility Control Centers (UCC), and Balancing Authorities (BA),
+developed based on the approach in [30]. Creating such a versatile framework holds substantial
+promise for advancing the field of power grid modeling and enhancing cyber-physical system
+integration. Specifically, the creation of these cyber-physical synthetic grid models is of crucial
+importance for the development and validation of novel applications in power system critical
+infrastructure defense including cyber-physical situational awareness techniques and intrusion
+response engines.
+In summary, the main contributions of this paper are as follows:
+• The work presents SAM-GT, a scalable turn-key approach for generating large-scale realistic
+cyber-physical models. The model generation tool produces a large-scale cyber-physical
+power system model, with a detailed cyber layer which is overlayed and connected with
+the large-scale electric power system model.
+• SAM-GT creates object-oriented data structures for representing the system within and
+between different power system levels (e.g., substations, utilities, and balancing authorities),
+where the communication layer models real-world data flows and operations.
+• SAM-GT models the data flows and operations using different communication protocols
+that would be found at different levels and in different geographical/ownership regions of a
+power system.

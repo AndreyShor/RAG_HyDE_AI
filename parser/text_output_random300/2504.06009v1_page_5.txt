@@ -1,0 +1,128 @@
+are not satisﬁed seem to be artiﬁcial mathematical constructs
+rather than real physical examples. Similar issues arise when
+dealing with (impedance) passivity, see Remark 3.
+Remark 2: Systems of the form (13) with B = C∗are
+known as collocated systems [15, p.266]. The name reﬂects
+the practice of applying control and observation actions at
+the same point in distributed parameter systems. We refer
+to a collocated system of the form (13) with A = A∗as
+internally symmetric. If, in addition, A ≤0, then A is the
+inﬁnitesimal generator of a contraction semigroup, see [15,
+Section 2.3] for details. The latter is a mild form of stability
+which is implied by, e.g., exponential stability. Therefore,
+internal relaxation in LTSI systems is a combination of
+internal symmetry and stability, just like internal relaxation
+in LTI systems [6], [14].
+V. IMPEDANCE PASSIVITY AND RELAXATION
+In this section, we will show that LTSI systems that are
+internally of relaxation type are impedance passive with
+energy storage that can be determined from their input-
+output behaviour, thus extending the analogous result on LTI
+relaxation systems [6]. In doing so, we will also characterize
+impedance passivity for LTSI systems, namely, we will show
+that it can be veriﬁed pointwise, just like (internal) relaxation.
+To begin with, impedance passivity is the analogue of pas-
+sivity for inﬁnite-dimensional systems, see [15, Section 7.5]
+for details. It is deﬁned as follows.
+Deﬁnition 3: The LTSI system Σ is impedance passive if
+U = Y and there exists a storage functional S : Z →R+,
+given by S(z) = ⟨Qz, z⟩with Q ∈B(Z), Q ≥0, such that
+S(z(t)) ≤S(z(0)) +
+Z t
+0
+⟨u(τ), y(τ)⟩+ ⟨y(τ), u(τ)⟩dt
+for all z(0) ∈Z, t ≥0, and u ∈L2([0, τ], U).
+Impedance passivity of inﬁnite-dimensional systems has
+a similar characterization as passivity of ﬁnite-dimensional
+systems, namely, it can be expressed as the solvability of a
+linear operator inequality.
+Lemma 1: The LTSI system Σ is impedance passive if
+and only if there exists Q ∈B(Z), Q ≥0, such that
+C = B∗Q,
+⟨Az, Qz⟩+ ⟨Qz, Az⟩≤0
+(20)
+for all z ∈D(A).
+Proof: See [15, Lemma 7.5.2].
+Just like (internal) relaxation, impedance passivity of LTSI
+systems can be veriﬁed pointwise. This is shown in the
+following theorem.
+Theorem 3: The LTSI system Σ is impedance passive if
+and only if there exist ˆQω ∈Cn×n, ˆQω ≥0, ω ∈Rs, such
+that
+ˆCω = ˆB∗
+ω ˆQω, ,
+ˆA∗
+ω ˆQω + ˆQω ˆAω ≤0,
+(21)
+for all ω ∈Rs, and supω∈Rs∥ˆQω∥< ∞.
+Proof: This proof is similar to the proof of [16, Theo-
+rem 2]. The idea is that the condition supω∈Rs∥ˆQω∥< ∞is
+equivalent to the boundedness of the multiplication operator
+with symbol ˆQ, which we denote by ˆQ ∈B(Z). We start
+by proving sufﬁciency. Since ˆQω ≥0 and (21) hold for all
+ω ∈Rs, it follows that ˆQ ≥0 and
+ˆC = ˆB∗ˆQ,
+⟨ˆ
+Aˆz, ˆQˆz⟩+ ⟨ˆQˆz, ˆ
+Aˆz⟩≤0
+(22)
+for all ˆz ∈D( ˆ
+A). Recall that the Fourier transform is unitary.
+This implies that Q = F∗ˆQF ∈B(Z), satisﬁes Q ≥0 and
+the conditions of Lemma 1, hence Σ is impedance passive.
+For the proof of necessity, suppose that Σ is impedance
+passive. Since the dynamics of Σ are translation-invariant, the
+storage is translation-invariant, i.e., there exists translation-
+invariant Q ∈B(Z), Q ≥0, that satisﬁes the conditions
+of Lemma 1. This implies that ˆQ = FQF∗∈B(Z) is a
+multiplication operator that satisﬁes ˆQ ≥0 and (22). Finally,
+the symbol ˆQ of ˆQ is such that supω∈Rs∥ˆQω∥< ∞because
+ˆQ ∈B(Z), ˆQω ≥0 for all ω ∈Rs because ˆQ ≥0, and
+(21) holds for all ω ∈Rs because (22) holds.
+In [6], it is shown that LTI relaxation systems are passive
+with a unique1 compatible storage function that can be
+determined from their input-output behaviour. Deriving the
+analogue of this result for LTSI relaxation systems presents
+some minor technical challenges, see Remark 3. We cir-
+cumvent these by instead considering LTSI systems that are
+internally of relaxation type. In particular, we obtain the
+following theorem.
+Theorem 4: If the LTSI system Σ is internally of re-
+laxation type, then it is impedance passive with storage
+S : Z →R+ given by S(z) = ∥z∥2. Furthermore,
+S(z(0)) =
+Z ∞
+0
+⟨u(−t), y(t)⟩dt
+(23)
+where z : R →Z and y : R →Y are the state and output
+trajectories corresponding to the input trajectory u : R →U
+such that u(t) = 0 for t ≥0.
+Proof: Since Σ is internally of relaxation type, we
+have that A ≤0 and B = C∗. Let Q ∈B(Z) be the
+identity operator and note that Q ≥0 and S(z) = ⟨Qz, z⟩.
+Furthermore, (20) holds for all z ∈Z, hence Σ is impedance
+passive due to Lemma 1. Now, consider an input trajectory
+u : R →U such that u(t) = 0 for t ≥0. Let z : R →Z
+and y : R →Y be the resulting state and output trajectories.
+Consider the Fourier transforms ˆu, ˆz and ˆy of u, z and y,
+respectively. Note that ˆzω and ˆyω are the state and output
+trajectories of ˆΣω corresponding to the input trajectory ˆuω,
+which is such that ˆuω(t) = 0 for t ≥0. Due to Theorem 2,
+ˆΣω is internally of relaxation type for all ω ∈Rs and, thus,
+ˆAω ≤0 and ˆBω = ˆC∗
+ω. As shown in [6, Theorem 9], see
+also [6, Remark 8], this implies that
+∥ˆzω(0)∥2 =
+Z ∞
+0
+⟨ˆuω(−t), ˆyω(t)⟩dt
+(24)
+Since the Fourier transform is unitary, it follows that
+∥z(0)∥2
+Z = ∥ˆz(0)∥2
+Z =
+Z
+Rs∥ˆzω(0)∥2 dω
+(25)
+1assuming minimality of the state-space realization

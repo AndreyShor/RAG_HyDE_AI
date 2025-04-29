@@ -1,0 +1,116 @@
+6
+the idler photons, Colin cannot distinguish whether the
+signal photons are single or entangled.
+Colin may also want to check if the photons from Bob
+to Alice have any unexpected phases (no “−” phases
+are expected in normal DL04). But this does not give
+him any evidence that Bob and Alice are trying to do
+covert communication, since the phase changes can also
+be caused by Eve, and the two causes will result in the
+same distributions, which are indistinguishable.
+Colin can also clean the sending photons by preparing
+new photons according to a and forward them to Alice.
+But this only disrupts potential covert communication
+and not solidifying it.
+Disruption is inevitable in any
+quantum protocol anyways.
+Colin can also measure Alice’s returning photons on
+their way to Bob and see if there are any unexpected
+phases. Again, this does not give any evidence to Colin,
+since only Bob knows the initial phases of the photons,
+and without this information, Colin can only see random
+phase changes, and he cannot tell whether this is due to
+covert communication or phase interference by Eve.
+A more powerful detect would be for Colin to mea-
+sure Bob’s sending photons, recover b, re-prepare new
+entangled photons according to strings a, b as well as a
+newly sampled random Bell state selection string c′, and
+forward a new A-batch to Alice. Bob will know that his
+sending photons are being intercepted, but he cannot sig-
+nal Alice in any way, particularly during the ﬁrst error
+rate estimation phase, since this will alert Colin. Alice
+does not know the signal photons have been replaced, and
+she will encode both m and m′ as scheduled, and returns
+the encoded B-batch to Bob. Colin then measures Alice’s
+encoded photons and recovers her covert message m′ by
+measuring Bell state changes. He can do this because he
+has the corresponding idler photons.
+This detection does not work either. This is because
+m′ is a random message, Colin cannot tell if the Bell
+state changes are caused by covert communication or
+Eve. This is why this covert channel can only be used to
+distribute random keys rather than arbitrary messages.
+Otherwise if m′ is a low entropy message, Colin can im-
+mediately tell the existence of covert communication.
+In this detection, there is a more subtle way for Colin
+to detect covert communication. Since he has the idler
+photons, whenever Alice applies a unit operation on the
+signal photon, it will aﬀect the idler photon. Colin can
+simply observe whether the same photon is being ﬂipped
+multiple times within a very short time (in standard
+DL04 each photon is ﬂipped by Alice one time at most).
+But this detection can be avoided if Alice chooses ran-
+dom timings to ﬂip the signal photons in order to mimic
+eavesdropping from Eve.
+Note also that in this attack, Colin cannot eventually
+obtain a common string m′ between Alice and Bob, be-
+cause he has destroyed the entanglement of Bob’s initial
+pairs, there is no way he can fake a new batch of return-
+ing photons such that Bob can still recover m′, even if he
+knows all the secrets a, b, m′.
+This means that it is not only true that Colin cannot
+detect covert communication, but also true that Colin
+cannot obtain any secret key m′ shared by Alice and
+Bob’s via this covert channel. He can only disrupt po-
+tential covert key sharing, which is what Eve can do as
+well in any quantum protocols via eavesdropping.
+Note that the other cover communication idea does not
+work, namely Bob uses another random basis selection
+string a′ diﬀerent from the a that he agreed with Colin
+beforehand. This is because in the ﬁrst error rate estima-
+tion phase, Bob has to publish the a that Colin expects,
+and for this a, Alice’s measurement will not match Bob’s
+true states with high probability. This means that the
+security check will not pass with high probability, and
+there will be no reason for Alice to continue the protocol
+and return any photons to Bob.
+Note also that the proposed covert communication idea
+cannot be directly applied in BB84. This is because with
+one pass of photons, even if Alice (in BB84, Alice is the
+photon sender) initially uses entangled photons and em-
+beds Bell state changes into the entangled pairs, Bob will
+not have any advantage in recovering the message m′ over
+Colin or Eve. Bob’s advantage only occurs after agreeing
+with Alice on some common secret after the BB84 error
+rate estimation phase. But that common secret is not
+known before Alice encodes the covert message m′. I.e.,
+the common secret is independent of the encoding of m′
+and thus useless in recovering m′.
+IV.
+SUBSEQUENT COVERT
+COMMUNICATION
+In the previous two sections, we have shown how
+to perform covert quantum key distribution (where in
+BB84 we can send any covert messages, including ran-
+dom keys).
+We show in this section that, after an initial secret
+sharing, Alice and Bob can easily share more and more
+random secrets in subsequent communications. The idea
+is as follows.
+Suppose Alice and Bob has shared a random secret
+m′, resulting in a ﬁnal shared key K (e.g., via a hash
+function). Alice can then use this K as the basis selection
+string a in her next execution of BB84 (or any other
+quantum protocols) with Bob, and sends photons with
+random states. Denote the state selection string of these
+random states as b. Since Bob knows a, he can always
+measure the photons in the correct basis, and recover the
+state selection string b′ ≈b up to diﬀerences caused by
+noise. Assume the noise rate of the quantum channel is
+low, they can then use error correcting code to turn b and
+b′ into a common secret s. This is the new secret they
+share.
+In order to fake the controller, in the error rate estima-
+tion phase, Alice will publish the basis that Colin forces
+her to use, and Bob can simply publish a random ba-
+sis. They then (with high probability) announce security

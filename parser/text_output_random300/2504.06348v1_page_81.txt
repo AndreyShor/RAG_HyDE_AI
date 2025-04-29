@@ -1,0 +1,72 @@
+(i) The uniform state preparation on both branches can be carried out by controlled USP, but given
+that we will flag out unwanted subspaces using amplitude amplification, we “overprepare” a uniform
+superposition over 2⌈log(pcirc)⌉amplitudes rather than pcirc using controlled Hadamards and we combine
+the flagging of the superfluous amplitudes with the flagging for ♢. In the worst case, this step requires
+2n controlled Hadamards, each costing a single Toffoli.
+(ii) Evaluating P
+a pab(j)
+a
+to an ancilla register requires three multiplications and two additions, with cost
+˜n + 2n. This must be evaluated for each value of j, so the total cost is 3˜n + 6n.
+(iii) We compute µ(kp) = 1+⌊log(maxj |kp
+(j)|)⌋in unary. Computing maxj |kp
+(j)| requires three inequality
+tests to find the maximum component, each with cost n, and then a ladder of 3n Toffolis to copy the
+state of the maximum component to an ancilla register. The function 1 + ⌊log(x)⌋corresponds to
+finding the most-significant non-zero digit of x. If x has n bits, then 1 + ⌊log(x)⌋is also encoded
+in n bits in unary. If we label the bits of x from least-significant to most-significant, this function
+can be achieved by initializing an output register in the state |0 . . . 01⟩and then flipping the jth zero
+conditioned on whether x ≥2j. Naively checking each inequality via inequality test has cost n, and
+there are n −1 inequalities to check. Flipping bits requires CNOTs only. The total cost of this step is
+therefore n2 + 5n.
+(iv) We wish to effect a transformation on the branch of the wavefunction inside □circ, and for the s = −1
+part of the local pseudopotential only. Let □circ = ♢∪(□circ \ ♢), and decompose the region ♢as a
+set of annuli indexed by µ: ♢= Sµmax
+µ=1 ♢µ. Then the branch of the wavefunction we are interested in
+is in the (un-normalized) state P
+p∈□circ |p⟩|kp⟩|µ⟩= P
+µ
+P
+p∈♢µ |p⟩|kp⟩|µ⟩+ P
+p∈(□circ\♢) |p⟩|kp⟩|µ⟩.
+The target state given f(µ) and conditioned on the flag for the s = −1 part of the local pseudopoten-
+tial is P
+µ
+P
+p∈♢µ 21−µ|p⟩|kp⟩|µ⟩+ P
+p∈(□circ\♢) 2−µmax|p⟩|kp⟩|µ⟩= P
+µ 21−µ|♢µ| P
+p∈♢µ |p⟩|kp⟩|µ⟩+
+P
+p∈(□circ\♢) 2−µmax|p⟩|kp⟩|µ⟩. Given that µ is encoded in unary, this transformation can be imple-
+mented using a ladder of controlled rotations like in the power law reference state preparation in [75],
+Sec. 3.3 (and also in [81]). However, in these examples the multiplicities of the points in each pair of
+adjacent annuli are a constant fraction and so the preparation reduces to a ladder of singly-controlled
+Hadamards (i.e. with target on qubit j and control on qubit j −1 in the register encoding µ). In
+this instance, the multiplicities of points in ♢µ and ♢µ+1 are not so obviously related; and so instead
+we assume arbitrary angle rotations (to a finite bit precision bpl). For each rotation, we must add an
+additional two controls: one on the branch ancilla, and one on the flag qubit indicating the s = −1
+local term. Each rotation can be implemented with two Toffolis and two uncontrolled rotations, with
+cost 2bpl + 2. There are µmax = n rotations, so the cost of this step is 2bpln + 2n.
+(v) To load the rotation angles for the tail, we must first compute Ij; however, this is free because it just
+corresponds to the carry bit of the register containing k(j)
+p . There are naively eight different choices
+for the summation P
+j(−1)Ijb(j)
+a
+given the possible evaluations of (−1)Ij. However, we can pull out a
+“global” sign difference and cut down the loading by half (e.g. we load the case where Ij = 1, ∀j, but
+the case where Ij = −1, ∀j is generated from the first case by a CNOT on the sign bit conditioned
+on, say, the value of I(1)). For the four remaining cases, we load all possible rotation angles and then
+swap up the correct ones based on the evaluation of Ij. If the rotation angles are loaded to bexp bits
+of precision, then swapping up the correct angles for the ath component requires 3bexp CSWAPS (or
+an equal number of Toffoli gates), and so the cost is 9bexp once we have summed over a. We carry out
+a bexp-bit rotation on every qubit in the |p⟩register, conditioned on the ancilla being in the state |1⟩.
+This has total cost 2bexpn.
+(vi) To switch from a domain □out to G \ □ins for the branch on which we prepared the exponential state,
+we shift each component pa by pins. This requires three controlled additions, with total cost 2n.
+(vii) We next compute whether p ∈♢to an additional ancilla qubit (call this qubit the “♢ancilla”). Given
+that we have already computed the components of kp, this step requires only a inequality test for each
+of the three components plus two Toffolis to AND the results together. This step therefore has cost
+3n + 2.
+81

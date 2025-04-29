@@ -1,0 +1,52 @@
+some works have investigated PBH formation in non-spherical settings [27–30], which may
+have some impact on specific scenarios where non-sphericities become important (for instance
+in a matter-dominated era [31]). While this is an interesting avenue that warrants further
+exploration, for the purposes of this study, which focuses on a radiation-dominated Universe,
+we will assume spherically symmetric PBH formation.
+As introduced in Ref. [32], curvature fluctuations ζ can be classified into two types: type-
+I and type-II. Type-I fluctuations correspond to cases where the areal radius R =
+p
+A/4π is
+a monotonically increasing function, where A is the area of the 2-sphere as a function of the
+radial coordinate r at constant t. In contrast, type-II fluctuations correspond to cases with
+a non-monotonic R associated with sufficiently large fluctuations, satisfying the condition
+that exist a region where ∂rR < 0. This results in a characteristic throat structure, which
+also appears in other scenarios like baby Universes, domain wall formation and inflating
+monopoles [33–37].
+Type-I fluctuations have been considered the standard in the literature. However, al-
+though type-II fluctuations have commonly been neglected due to the rarity of such large
+fluctuations, recent studies have highlighted their importance in specific scenarios related
+to non-Gaussianities [38], vacuum bubbles [39], and very recently in non-linear statistics
+[40]. Remarkably, reference [41] presented numerical simulations of type-II fluctuations in
+a radiation-dominated Universe, following the formalism of [42] with the BSSN formalism
+[43, 44] and the numerical code of [45, 46] (COSMOS code, which originally follows SACRA
+code [47]).
+From the numerical results obtained, a new classification of PBHs based on
+the trapping horizon configuration was proposed, with type A PBHs corresponding to the
+standard formation of a marginally trapped surface during the numerical evolution of over-
+threshold fluctuations, and type B PBHs featuring bifurcated trapping horizons for suffi-
+ciently large curvature fluctuations above the threshold for type A PBH formation. Recently,
+references [48, 49] documented cases where specific fluctuation shapes (from large negative
+non-Gaussianity models) exhibit a formation threshold in the type-II region, meaning that
+some type-II fluctuations do not lead to PBH formation. This contrasts with the common
+understanding that type-II fluctuations always collapse to form black holes.
+These find-
+ings emphasize the need for detailed numerical studies of type-II fluctuations, particularly
+exploring their profile dependence.
+A standard and successful numerical approach that has been employed to study PBH
+formation under the assumption of spherical symmetry is the so-called Misner-Sharp formal-
+ism [50] (see for some examples [13, 17, 51–54]), which essentially corresponds to Einstein’s
+equations in the comoving gauge. However, in the case of simulating type-II fluctuations, the
+standard formulation suffers from divergent terms of the form (0/0), which are associated
+with the existence of a neck structure in the initial conditions, where the areal radius satisfies
+∂rR = 0. This makes the simulation challenging and potentially causes it to crash immedi-
+ately after starting or when the initial condition approaches the boundary in the parameter
+space that separates the type-I and type-II regions.
+In this work, we address this issue with the goal of developing a new approach for nu-
+merical simulations of PBH formation using the Misner-Sharp formalism that can effectively
+handle generic curvature fluctuations, type-I and type-II. Our objective is to successfully sim-
+ulate type-II fluctuations and explore key features such as the dynamics of the collapse, the
+trapping horizon configurations, the formation thresholds, and the PBH mass. We demon-
+strate that using auxiliary equations enables us to absorb the divergent terms in the Misner-
+Sharp equations in a straightforward manner. We follow the same numerical methodology
+– 2 –

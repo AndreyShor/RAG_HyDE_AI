@@ -1,0 +1,113 @@
+not directly interact, a property crucial for tasks requiring
+coordination between different limbs or sequential phases.
+Mathematically:
+(7)
+Inv(P i
+t ⊗P j
+t ) = Inv(P i
+t ) · Inv(P j
+t ) · Ω(i, j)
+The coupling term Ω(i, j) is learned during training but
+constrained to satisfy braiding relations that preserve
+physical consistency. These braiding relations can be for-
+mally expressed as:
+(8)
+Ω(i, j) · Ω(j, k) · Ω(i, j) = Ω(j, k) · Ω(i, j) · Ω(j, k)
+for all triplets of primitives (i, j, k). This condition en-
+sures that the coupling terms respect the underlying phys-
+ical constraints regardless of the order in which they are
+applied.
+At the highest level, invariant subspaces in the attention
+mechanism correspond to global properties that must be
+preserved throughout the action sequence. These invari-
+ant subspaces are mathematically represented as projec-
+tion operators:
+(9)
+Πa =
+X
+α
+|ψα
+a ⟩⟨ψα
+a |
+These projectors ensure that the attention mechanism re-
+spects the topological sectors of the action space, pre-
+venting transitions that would violate global invariants.
+The mathematical properties of these projectors, partic-
+ularly their idempotence (Π2
+a = Πa) and orthogonality
+(ΠaΠb = 0 for a ̸= b), guarantee that the resulting action
+sequences respect the fundamental physical constraints of
+the problem domain.
+5.1
+Implementation and Training
+In practice, Mtopo is initialized using physical priors de-
+rived from fundamental physical laws and refined dur-
+ing training.
+To maintain the topological constraints
+while allowing adaptation to task-specific requirements,
+we project the learned attention patterns onto the mani-
+fold of valid topological masks after each update:
+(10)
+Mtopo ←ΠT (Mtopo + η∇ML)
+where ΠT is a projection operator that enforces the
+pentagon and hexagon equations, ensuring that the mask
+maintains its topological properties throughout training.
+Operationally, after each gradient update, we project the
+updated attention weights back onto the subspace of “al-
+lowed” mask values that preserve fusion-rule consistency.
+This step effectively prunes any minor violations intro-
+duced by data noise or optimization errors. Concretely,
+we solve a small-scale consistency check that verifies
+the matrix Mtopocontinues to satisfy the local fusion con-
+straints and global invariants (e.g., object continuity, con-
+servation of kinematic feasibility). By doing so, we guar-
+antee that the final topological mask used at inference
+never diverges into physically invalid regimes, even as it
+adapts across training epochs.
+The mathematical structure of the topological attention
+mechanism provides formal guarantees about the physical
+validity of the generated action sequences. These guaran-
+tees derive from the properties of the underlying topolog-
+ical framework and ensure that the model can only gen-
+erate physically plausible actions. The hierarchical nature
+of the fusion rules allows the model to capture physical
+constraints at multiple scales, from local interactions to
+global task structure. This multi-scale approach is partic-
+ularly effective for complex tasks requiring long-horizon
+planning and precise physical interactions.
+We extend the flow matching framework by introducing
+topological constraints. Given a trajectory from noise to
+data distribution:
+(11)
+q(Aτ
+t |At) = N(Aτ
+t ; τAt, (1 −τ 2)I)
+We train a vector field vθ(Aτ
+t , ot) to match the optimal
+transport direction u(Aτ
+t |At):
+Lτ(θ) = Ep(At|ot),q(Aτ
+t |At)∥vθ(Aτ
+t , ot) −u(Aτ
+t |At)∥2
+T
+(12)
+Where ∥·∥2
+T is a norm that respects the topological struc-
+ture of the action space, encoding invariances present in
+the task domain. This is implemented as:
+(13)
+∥v∥2
+T = vT Mtopov
+5.2
+Topological Constraints via Mtopo
+The matrix Mtopo serves as the bridge between topologi-
+cal field theory and practical robotic control constraints.
+This matrix encodes three critical categories of physical
+constraints necessary for coherent action generation.
+Physical admissibility constraints are encoded through
+each entry Mtopo(i, j), which represents whether action
+token i can physically precede or coexist with action to-
+ken j. For instance, in a robotic manipulation scenario,
+a "grasp" action must necessarily precede a "lift" action,
+6

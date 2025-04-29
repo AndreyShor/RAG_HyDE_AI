@@ -1,0 +1,159 @@
+3
+tering the optimization source code.
+Based on the known physical behavior of the beam-
+line elements, the GP model employed a Mat´ern 5/2 ker-
+nel [17, 28, 29] with Gamma priors, which was preferred
+over the Radial Basis Function (RBF) for its flexibility
+in modeling smooth functions.
+The Upper Confidence
+Bound (UCB) was chosen as the acquisition function due
+to its effective balance between exploration and exploita-
+tion, which is critical for optimizing complex systems.
+This function is defined as,
+α(x) = µ(x) + βν(x)
+(1)
+where µ(x) is the predicted mean and ν(x) is the uncer-
+tainty of the GP model. The parameter β controls the
+exploration-exploitation trade-off.
+Prioritizing a high µ and low ν by choosing a small
+β in (1), leads the algorithm to exploit known good re-
+sults, while a high β encourages exploration in areas with
+high uncertainty and potential reward. The impact of β
+is demonstrated in Fig. 3, where the value of β was ad-
+justed during an optimization run.
+It is worth noting
+that such cases that start without a feedback signal are
+very challenging, even for experienced facility staff. The
+results in Fig. 3, highlight some of the benefits of our
+approach.
+Figure 4 illustrates various aspects of optimizing the
+radioactive beamline Section 1. The top panel displays
+live optimization of the observed activity versus iteration.
+The times scale of our optimization iterations is selected
+such that, after background subtraction, an increment of
+the observed activity is proportional to an increment in
+the RIB intensity. Initially, the observed rate fluctuates
+User Interface
+Server 
+Developer
+Accelertor 
+Operator
+AI-Assisted 
+Controller
+Secure 
+Connection
+Enable/Disable
+Get Values
+Suggested Settings
+Beam Response
+Get/Set
+ Values
+Feedback
+Monitor
+Elements
+Access Request
+Environment
+Interface
+FIG. 2.
+Workflow design for AI-assisted radioactive beam
+transport. Developers write the environment and interface
+plugins to communicate with the machines. Inside the accel-
+erator network, operators enable a server to facilitate remote
+control of beamline elements.
+0
+20
+40
+60
+80
+100
+Iteration
+200
+400
+600
+800
+1000
+Activity (cps)
+= 2 (No Beam Found)
+Max: 88
+Beam Rate
+Max Achieved
+0
+10
+20
+30
+40
+50
+60
+70
+80
+Iteration
+= 3 (Finding Beam)
+Max: 484
+Beam Rate
+Max Achieved
+0
+20
+40
+60
+80
+100
+120
+Iteration
+= 2 (Optimizing Beam)
+Max: 705
+Beam Rate
+Max Achieved
+10
+20
+80
+85
+FIG. 3. Effect of varying β on optimization. Left: Conser-
+vative exploration with β = 2 stalls at a suboptimal local
+maximum (observed no RIB). Center: Aggressive exploration
+with β = 3 reaches high-performance regions (found RIB).
+Right: Returning to β = 2 prioritizes exploitation, converging
+to the global maximum (increased RIB rate).
+as the algorithm explores the tuning space of quadrupoles
+and steerers, characterized by large changes. As itera-
+tions progress, the algorithm refines the machine con-
+figuration, resulting in steady RIB rate improvements.
+Despite significant drops around iterations 70, 80, and
+100, the algorithm successfully returned to optimal set-
+tings. In the final iteration, a background measurement
+was conducted by removing the beam to measure the
+beam-off rate, stemming from the beta decay chain. The
+Bateman equation [30] for a two-isotope chain approxi-
+mates this curve:
+λP
+λD −λP AP (0)(e−λP t −e−λDt) + AD(0)eλDt
+(2)
+Where λP is the decay constant of the parent nucleus,
+λD, the decay constant of the daughter nucleus, AP is
+the initial beam rate, and AD is the initial daughter
+rate.
+The net rate is calculated as: (Observed Activ-
+ity) - (Background Activity).
+In the bottom panel of Fig. 4 the tuning of con-
+trol variables across iterations highlights the balance be-
+tween exploration and exploitation. Up to iteration 40,
+variations are large as the algorithm samples the pa-
+rameter space.
+Later iterations converge towards op-
+timal settings, demonstrating BO’s capability in multi-
+dimensional optimization.
+Figure 5(a) shows a correlation heatmap between tun-
+ing variables, useful for understanding inter-variable in-
+fluences. Strong positive correlations (red) indicate di-
+rect proportionality, while negative correlations (blue)
+suggest inverse relationships. For instance, QH-control
+and Steer1-X have small positive correlations (0.34 and
+0.28) with Beam Rate, indicating moderate increases
+with voltage.
+Conversely, Steer1-Y, Quad1-X, and
+Quad1-Y show high negative correlations (-0.706, -0.647,
+-0.547), suggesting beam rate benefits from reduced volt-
+age. A high positive correlation (0.891) between Beam
+Rate and Iteration aligns with optimization rules. Ele-
+ments like Steer2-X (-0.003), Steer2-Y (0.024), and QS-
+Y (-0.150) show near-zero correlation, indicating no di-
+rect influence on beam rate. Further analysis identifies

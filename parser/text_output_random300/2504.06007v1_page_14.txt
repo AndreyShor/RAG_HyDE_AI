@@ -1,0 +1,33 @@
+CAMulator
+Figure 10: Annual mean temperature at the bottom model level in CAM6 (middle row) and CAMulator (top row) for
+three sea surface temperature (SST) climatologies: 2000+0K (left column), 2000+2K (middle column), and 2000+4K
+(right column). The bottom row shows the difference (CAMulator - CAM), highlighting deviations between the two
+models. The color scale represents temperature (K), with positive/negative values (red/blue) indicating stronger/weaker
+values in CAMulator.
+In the lower troposphere (Fig. 9b), the integrated heat content exhibits a seasonal amplitude shift relative to CAM6,
+which may reflect errors in boundary layer processes or the representation of heat fluxes from the surface. Similarly,
+upper-tropospheric heat content (Fig. 9c) shows systematic biases that may be linked to discrepancies in heating
+distribution via convective processes or the large-scale advection of heat anomalies.
+Overall, the lack of cryosphere representation is a key limitation of CAMulator for extrapolation into warmer climates,
+particularly in regions where ice-related feedbacks play a critical role. Future work should assess whether incorporating
+explicit representations of land-ice/sea-ice state changes, or at least indirect constraints on polar energy fluxes, could
+mitigate these systematic biases and improve the model’s ability to handle out-of-distribution SST forcings.
+CAMulator’s ability to replicate large-scale low-level wind patterns under different SST forcing scenarios is evaluated
+in Figure 11. The top two rows show the zonal wind component (U) at 850 hPa for CAMulator (Figs. 11a–c) and
+CAM6 (Figs. 11d–f) across the +0K, +2K, and +4K SST warming states, while the bottom row (Figs. 11g–i) presents
+the difference between CAMulator and CAM6.
+Overall, CAMulator demonstrates skill in capturing the large-scale structure of the low-level winds, particularly in
+the Southern Ocean. The core features of the midlatitude westerlies, including their equatorward contraction under
+warming, are well preserved. The close alignment with CAM6 suggests that CAMulator effectively learns the statistical
+relationship between SST forcing and the strength and position of the Southern Hemisphere storm tracks. Given that
+Southern Ocean winds are strongly tied to meridional temperature gradients and baroclinic wave activity and that this
+relationship is well represented in the training dataset, it is unsurprising that CAMulator generalizes well in this region.
+On the other hand, the North Atlantic sector presents a key divergence from CAM6. Despite increasing SSTs, there is
+little evidence that the North Atlantic westerlies strengthen in response to warming in CAMulator, whereas CAM6
+shows a more pronounced intensification. This discrepancy may reflect limitations in how CAMulator extrapolates
+the response of dynamically driven modes such as the North Atlantic Oscillation (NAO). Since the NAO is strongly
+influenced by internal atmospheric variability, rather than a direct SST-driven forcing, its response may be more difficult
+for a data-driven model to capture, especially in out-of-distribution scenarios. Additionally, CAMulator lacks an
+explicit representation of transient eddies and their feedbacks on mean flow, which could contribute to weaker NAO-like
+variability under warming.
+14

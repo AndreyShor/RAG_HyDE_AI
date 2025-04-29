@@ -1,0 +1,104 @@
+Figure 2. (a) Structure of predictor for a sub-step. (b) Structure of MoSim using Neural ODE to integrate many sub-steps to make a
+prediction for the next state.
+ϵ and a simple MLP to implement τ. Detailed configura-
+tion of these networks are left to the Appendix. We refer to
+f(s, a) = M(s)[b(s) + τ(a)] as the predictor and ϵ(s, a)
+as the corrector. Predictor. In the position encoder, the
+ResNet output is rearranged into a lower triangular matrix
+L, from which M is calculated as M = LLT , based on the
+property of Cholesky decomposition [14] that any symmet-
+ric positive definite matrix can always be expressed in this
+form. We assembled M, b and τ into ¨q, as illustrated in
+the Figure 2. Subsequently, ¨q is combined with ˙q to form
+the output ˙s. We embed strong inductive biases into the
+predictor by leveraging the general structure of rigid body
+dynamics. As demonstrated in the ablation study in Section
+3, these inductive biases significantly improve the predic-
+tion accuracy. It is important to emphasize that we do not
+incorporate any additional prior knowledge of physics be-
+yond the compositional structure, and, in practice, our net-
+work does not rely on the physical interpretation of these
+intermediate variables. Correctors. On the other hand, the
+correctors are made up entirely of one or more parallelly
+connected standard residual networks. Unlike the predictor,
+we do not introduce as much prior knowledge into the cor-
+rector, as its role is to handle the remaining complexities,
+such as friction, collisions, and unmodeled factors.
+Neural ODE. The general form of Neural ODE is a contin-
+uous extension of recurrent neural networks:
+dz(t)
+dt
+= gθ(z(t), t)
+(5)
+Here, z(t) represents the hidden variables over continuous t,
+and the dynamical function gθ is parameterized by a neural
+network. Its solution takes an integral form:
+z(t1) = z(t0) +
+Z t1
+t0
+gθ(z(t), t) dt
+(6)
+The
+integration
+in
+practice
+is
+computed
+iteratively
+through numerical integration methods such as the Euler
+method[15] and the Runge-Kutta method[16, 17]. Our work
+employs the DOPRI5 integrator[18], which is an adaptive-
+order method based on the Runge-Kutta framework.
+Neural ODE addresses the challenge of backpropagation
+in the continuous setting[10], which is inherently more dif-
+ficult than in the discrete case, by cleverly reformulating it
+as another numerical integration:
+dL
+dθ = −
+Z t0
+t1
+α(t)∂gθ(z(t), t)
+∂θ
+dt,
+(7)
+where L represents the loss function, and α(t) :=
+∂L
+∂z(t) is
+deined as the adjoint state of z(t). The value of α(t) can
+also be obtained through an integral process.
+α(t0) = α(t1) −
+Z t0
+t1
+α(t)∂gθ(z(t), t)
+∂z(t)
+dt
+(8)
+The integrands in Equations 7 and 8 can both be computed
+using automatic differentiation. In MoSim, we treat s(t) as
+the latent variable, and the dynamics network gθ(s(t), t) =
+fθ(s(t), a(t)) + P
+i ϵi
+θ(s(t), a(t)) is precisely composed of
+the predictor and corrector we mentioned earlier.
+2.2. Benchmark
+While previous world models have typically been evaluated
+in reinforcement learning tasks, we propose a benchmark
+specifically designed to evaluate the predictive capability of
+the world model itself: continuous multi-step prediction of
+robotic motion. We use DeepMind Control [19] as the vir-
+tual environment for robotics, which is based on the physi-
+cal dynamics simulation provided by MuJoCo [12].
+We construct the test set in two ways: by generating
+random action sequences using Poisson sampling and by
+generating action sequences based on policies from pre-
+trained reinforcement learning agents.
+The former pro-
+vides untrained, dispersed data across the action and state
+space, while the latter offers task-specific, meaningful data.
+We generate sufficiently long data sequences to ensure that
+both the random and policy-based data reach a steady state,
+and then randomly sample fragments of the desired horizon
+length for evaluation.
+Our benchmark includes prediction horizons critical for
+existing models: 3 steps (for TD-MPC2[6]), 16 steps (for
+3

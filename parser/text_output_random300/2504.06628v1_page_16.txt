@@ -1,0 +1,181 @@
+16
+Input
+: An initial time t0 = 0. A set of N samples {x(i)}N
+i=1 from initial distribution P(·, t0). A time step ∆t and the
+number of steps NT . Initialize sample locations X(i)
+t0 = x(i) for i = 1, · · · , N.
+for k = 0 : NT do
+Optimize
+(SNN
+B (·, tk), SNN
+L
+(·, tk)) = arg minSNN
+B
+,SNN
+L
+1
+N
+PN
+i=1
+
+D2
+th
+SNN
+B (X(i)
+tk , tk)
+
+2
++ 2D3
+th∇· SNN
+B (X(i)
+tk , tk) +
+SNN
+L
+(X(i)
+tk , tk)
+
+2
++2
+R
+ν(dz)
+R 1
+0 dθSNN
+L
+(X(i)
+tk + θz, tk) · z
+ 
+;
+Propagate the samples for i = 1, · · · , N: X(i)
+tk+1 = X(i)
+tk + ∆t
+
+F (X(i)
+tk )/Γ −DthSNN
+B (X(i)
+tk , tk) −SNN
+L
+(X(i)
+tk , tk)
+
+;
+Set tk+1 = tk + ∆t;
+end
+Output: N samples {X(i)
+tk }N
+i=1 from ptk and the scores {SNN
+B (·, tk)(X(i)
+tk , tk)}N
+i=1 and {SNN
+L
+(·, tk)(X(i)
+tk , tk)}N
+i=1 for all
+{tk}NT
+k=0.
+Algorithm 1: Sequential L´evy score-based transport modeling for EPR
+TABLE I. List of model parameters used in simulations.
+Parameter
+Notation
+Value
+Dimension
+Thermal energy
+kBT
+4.114
+pN nm
+Viscous drag
+Γ
+3.25
+pNs/nm
+Barrier height
+V0
+5× 4.114
+nm
+Potential period
+L
+40
+nm
+Poisson parameter
+λ
+30
+1
+Mean of jump amplitude
+µ
+0.1
+nm
+Variance of jump amplitude
+σ2
+1/24
+nm2
+Simulation time step
+∆t
+10−3
+s
+Example 1: A Brownian particle immersed in a periodic active bath
+The first example considers a Brownian particle immersed in a periodic (active) bath, and the dynamics follows the
+SDE:
+dr = −V0
+Γ
+2π
+L cos
+2πr
+L
+
++ π
+L cos
+4πr
+L
+
+dt +
+p
+2Dth dWt +
+√
+2λ
+Z
+νA( dz)zN( dt, dz),
+(S.32)
+where N( dt, dz) is a Poisson random measure with L´evy measure λνA( dz) dt, here νA is the density of a Gaussian
+distribution with mean 0 and variance σ2. The values of the parameters selected are listed in Table I.
+Figure 3 illustrates the temporal evolution of probability flows and probability density functions for Equation (S.32),
+obtained via both the Monte Carlo simulation and the proposed numerical method. Specifically, the Monte Carlo
+simulation employs the following Euler–Maruyama discretization scheme:
+r(i)
+t+∆t =r(i)
+t
+−V0
+Γ
+"
+2π
+L cos
+ 
+2πr(i)
+t
+L
+!
++ π
+L cos
+ 
+4πr(i)
+t
+L
+!#
+∆t +
+p
+2Dthξt +
+√
+2λ
+N∆t
+X
+k=1
+Ak,
+i = 1, . . . , N,
+(S.33)
+where ξt ∼N0,∆t where N0,∆t is a Gaussian distribution with mean 0 and variance ∆t, N∆t ∼Po(λ∆t) is a Poisson
+random variable with rate λ∆t, and Ak’s are i.i.d. random variables for jump sizes distributed as N0,σ2.
+Fig. 4 shows the entropy production rates under different conditions on time interval [0,18]. When the mean jump
+height of the active noise is zero, the system reaches an equilibrium steady state relatively quickly. However, when the
+mean jump height increases to 0.1, non-equilibrium behavior becomes evident, and the time required for the system
+to attain a non-equilibrium steady state is significantly prolonged compared to the zero-mean case (as shown in Fig.
+5).
+Example 2: An active Brownian particle cross-linked to a Rouse networked polymer
+Our second example examines an active polymer system comprising an active Brownian particle (ABP) cross-linker
+connected to ordinary Brownian beads, as shown in Fig. 6 (which is adapted from Ref. [S6]) .

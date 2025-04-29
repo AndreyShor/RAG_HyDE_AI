@@ -1,0 +1,119 @@
+27
+beyond Ising macrospin states22. The addition of metastable
+magnetic vortex states was introduced to form an ‘artificial
+spin-vortex ice’, where vortices would nucleate in the system
+at a gradual rate providing longer-term memory than a purely
+macrospin system22.
+Nonlinearity may also be enhanced by array design, with
+disordered arrays fabricated that have a gradual gradient of
+nanoisland geometry and dimensions across a large array28.
+This has the result of broadening and enhancing the range
+of nonlinear transforms provided by the system, with differ-
+ent regions of the array providing distinct physical nonlinear-
+ities – increasing the overall nonlinearity of the reservoir28.
+Nonlinearity may also be increased by including different dis-
+tinct elements/states in the ASI array. The vortex states in-
+troduced above have a very different magnon spectra than
+the more linear Kittel modes of macrospin states.
+Includ-
+ing both vortices and macrospins combines both of these out-
+put responses in the GHz spectral readout and enhances sys-
+tem nonlinearity22,28.
+This also helps by accessing differ-
+ent frequency-domain output channels of the magnon spectral
+readout, which both helps improve effective signal-to-noise
+by increasing the range of output frequency channels contain-
+ing useful computational information and also allows the dif-
+ferent nonlinear responses to be separated out to discrete out-
+put channels for better training performance. Essentially, en-
+gineering a more diverse set of system states and responses to
+input can improve nonlinearity, and engineering the system to
+exhibit gradual responses to input rather than abrupt switch-
+ing and broadening the microstate space can improve memory
+capacity.
+Another key property of a reservoir is its capacity to han-
+dle higher dimensional data, both on the input and output
+side. Reservoirs ideally want to ‘project’ each input chan-
+nel to multiple output channels with different nonlinear and
+hysteretic transforms on each channel, such that the training
+process has access to a broader range of physical responses
+to draw on.
+The capacity to accept multi-dimensional in-
+put greatly expands the range of computational tasks that
+the system is suited for, e.g., if one is processing an image
+with n × n pixels it is ideal if the system can accept n × n
+concurrent input channels. So far, neuromorphic ASI sys-
+tems have demonstrated the ability to produce good high-
+dimensional output, largely through use of GHz magnon spec-
+tra recorded through ferromagnetic resonance or spin-torque
+ferromagnetic resonance210. Each discrete frequency channel
+of the spectra may be treated as an independent output channel
+with its own weight applied during training, with a few GHz-
+wide spectra easily providing several hundred output chan-
+nels. An example of this high-dimensional output behavior,
+and how the different nonlinear and hysteretic responses of
+different FMR channels may be combined in a manner similar
+to the weighted sums of a Fourier series to produce arbitrary
+complex output functions is shown in Fig. 18.
+Electrical magneto-resistance output approaches have the
+ability to provide high-dimensional output, but this is chal-
+lenging to realize experimentally at the lab scale as it requires
+the patterning of many separate current paths and electrical
+contacts. The electrical ASI schemes demonstrated so far typ-
+ically use from one to a handful of outputs and require further
+development, but have the benefit that these outputs are fast
+and simple to measure relative to GHz spectra by microwave
+spectroscopy, and may be taken from different regions of the
+array and provide spatially-resolved readout249,250. Simulated
+studies which take full knowledge of the magnetic microstate
+as their readout can have very high dimensionality, partic-
+ularly for larger arrays.
+However, it is challenging to ex-
+tract this information experimentally – imaging techniques
+such as MFM, LTEM or X-ray magnetic circular dichroism
+photoemission electron microscopy are slow and require ex-
+pensive, cumbersome hardware (see also Sec. V B). ASI ar-
+rays of electrically-connected islands, perhaps with multilayer
+magnetic-tunnel-junction-style design can be imagined to pro-
+vide full microstate readout, but engineering this is challeng-
+ing.
+Data input is more of an unsolved issue than data output in
+neuromorphic ASI systems. Existing schemes typically use
+global magnetic fields to input data. This is an obvious choice
+as most labs have access to such equipment and the ASI ar-
+rays respond well to field, but it is slow, one-dimensional
+and hard to scale to device technologies. ASI needs better
+input solutions to be integrated with computing schemes in
+order to progress. Some exciting methods exist and now re-
+quire integration with computational architectures, including
+electrical switching, microwave switching74 and all-optical
+switching73. Improving data input is the largest open chal-
+lenge in advancing neuromorphic computing in ASI and re-
+lated strong-coupled nanomagnetic arrays.
+Once we have designed our ASI array and identified an ex-
+perimental data input and output method, it is time to train the
+reservoir and evaluate performance. Schematic illustration of
+the process is provided in Fig. 17, where the computational
+performance of multiple ASI arrays with different microstate
+and spin-wave dynamics are assessed. The core steps to train-
+ing and evaluating reservoir performance are as follows, with:
+1. Select a time-series or discrete data set to be the input
+data X for your task and select a target computational
+output result for your training process (e.g., the result
+of a nonlinear transform, or correct classes for image
+recognition), and scale your input data to an appropriate
+range of the physical input value (e.g., voltage, current,
+magnetic field) for the reservoir you are measuring. As
+an example of what X and Y could represent, X could
+be a set of photographs of cats and dogs, and Y is a set
+of ‘labels’ reading either ‘cat’ or ‘dog’ – or for a time
+series prediction task, X could be a chaotically oscil-
+lating time series and Y could be a copy of that time
+series projected n steps into the future to give a target
+for accurate future prediction.
+2. Sequentially input the desired dataset X, recording the
+reservoir state after each input to obtain a set of reser-
+voir outputs Z (sometimes referred to as the ‘reservoir
+states’).
+3. Split the reservoir responses Z and the desired computa-
+tional output (often termed the target function), Y, into

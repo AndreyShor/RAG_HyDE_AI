@@ -1,0 +1,154 @@
+COMPARISON OF FROBENIUS ALGEBRA STRUCTURES ON CALABI–YAU TORIC HYPERSURFACES
+11
+the cup product of Φ([g(z)]) ∈Ca(U|X, ∧aTX) and Φ([h(z)]) ∈Cb(U|X, ∧bTX) is given by
+Φ([g(z)]) · Φ([h(z)])
+(3.2)
+=
+(−1)ab
+
+
+(−1)a+bg(z)
+(−1)afs
+∂
+∂zja−1 · · ·
+∂
+∂zj0
+fsfja−1 · · · fj0
+h(z)
+(−1)0fs
+∂
+∂zj′
+b
+· · ·
+∂
+∂zj′
+1
+fj′
+b · · · fj′
+1fs
+
+
+
+(j0,··· ,ja−1,s,j′
+1,··· ,j′
+b)
+=
+
+
+(−1)a+bg(z)h(z)
+(−1)afia
+∂
+∂zia+b · · ·
+∂
+∂zia+1 ·
+∂
+∂zia−1 · · ·
+∂
+∂zi0
+fia+bfia+b−1 · · · fi1fi0
+
+
+
+I=(i0,··· ,ia,ia+1,··· ,ia+b)
+.
+On the other hand, we have
+Φ([g(z)] · [h(z)]) =
+
+(−1)a+bg(z)h(z)PJa
+fJ
+
+|J|=a+b+1
+.
+Therefore we have Φ([g] · [h]) = Φ([g]) · Φ([h]), which ﬁnishes the proof of Theorem 3.1.
+□
+Proof of Proposition 2.8. The proof amounts to careful application of results of Villaﬂor [12].
+For f ∈S = C[z], we deﬁne an ideal J0(f) := ⟨z1f1, · · · , zmfm, · · · , zrfr⟩of S and set R0(f) :=
+S/J0(f).
+Let ρi1, · · · , ρim be linearly independent primitive generators of the rays of Σ. Then for I = {i1, · · · , im},
+[12, Section 6] gives a deﬁnition of the toric Hessian of f as
+HessΣ(f) := HessI
+Σ(f)
+det(ρI)
+∈R0(f)mβ,
+(3.3)
+which turns out to be independent of the choice of I. Since dimC R0(f)mβ = 1 and HessΣ(f) is non-zero
+by [12, Proposition 3.3, Corollary 6.1], for V ∈R0(f)mβ, there is a unique number cV ∈C such that
+V ≡cV · HessΣ(V )
+mod J0(f).
+Motivated by [12, Corollary 6.1], we deﬁne the LG trace pairing TrLG : R(f)(m−1)β →C by
+TrLG(U) := −(2πi)m−1(−1)
+m(m−1)
+2
+cz1···zrU · m! · Vol(∆),
+(3.4)
+where ∆is the convex polyhedron associated to the anti-canonical divisor β.
+Here we used that if
+U ∈S(m−1)β, then z1 · · · zrU ∈Smβ and that z1 · · · zrJ(f)(m−1)β ⊂J0(f)mβ holds.
+Now let us calculate the cup product in ˇCech cohomology
+Ca(U|X, ˆΩb
+X) × Cb(U|X, ˆΩa
+X) →Cm−1(U|X, ˆΩm−1
+X
+),
+a + b = m −1.
+By Theorem 3.5, we have
+φΩ([u(z)]) := res
+
+(−1)aa!u(z)Ω
+f a+1
+
+= (−1)m−1+a
+u(z)ΩJ
+fJ
+
+|J|=a+1
+∈Ha(U, ˆΩm−1−a
+X
+) = Ha(U, ˆΩb
+X)
+for u(z) ∈R(f)aβ. Then for u(z) ∈R(f)aβ and v(z) ∈R(f)bβ (with a + b = m −1), the cup product is
+given by
+φΩ([u(z)]) ∪φΩ([v(z)])
+=
+(−1)a2+a+b
+u(z)v(z)ΩRs ∧ΩsT
+fRf 2s fT
+
+|L|=m
+=
+(−1)b
+u(z)v(z)ΩRs ∧ΩsT
+fRf 2s fT
+
+|L|=m
+∈Cm−1(U|X, Ωm−1
+X
+)
+where the sign (−1)a2 arises from (3.2) and the multi-index L is partitioned to
+L = (r0, · · · , ra−1, s, t1, · · · , tb),
+R = (r0, · · · , ra−1),
+T = (t1, · · · , tb).
+Note that dimC R(f)(m−1)β = 1 and u(z)v(z) ∈R(f)(m−1)β.
+Since one can show ΩRs ∧ΩsT =
+det(ρL)c
+zLΩs from (2.3), we have
+u(z)v(z)ΩRs ∧ΩsT
+fRf 2s fT
+
+|L|=m
+=
+u(z)v(z) det(ρL)c
+zLΩs
+fLfs
+
+|L|=m
+.
+We recall the reside map res of the Poincar´e regular sequence in [12, Deﬁnition 10.1] and the coboundary
+map [12, (19)]
+τ : Hm−1(X, ˆΩm−1
+X
+)
+∼
+=
+−→Hm(P, ˆΩm
+P ).

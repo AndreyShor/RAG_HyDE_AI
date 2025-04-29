@@ -1,0 +1,65 @@
+for DI-QKD [267] solve these drawbacks. However, if condition (i) is satisfied the security of DI-QKD
+against coherent attacks follows from security under the iid assumption.Moreover, the dependence of the
+key rate on the number of rounds, n, is the same as the one in iid case, up to terms that scale like
+1
+√n. As
+a consequence, one can extend tight results known for DI-QKD, under the iid assumption, to the most
+general setting. This yields the best rates known for any protocol for a DI cryptographic task as shown
+in fig. 13 for n = 1015.
+4.2.1. Security of rDI-QKD with GEAT
+An rDI-QKD protocol introduced in 3.8.2 mainly differs from DI-QKD in the quantum measurement
+phases Mi. To see it more clearly, let’s focus on each step i. Conditioning on the input classical variables
+xi, si, zi, and yi, each Mi can be described as a CPTP map Mi : QAi−1QBi−1Ei−1 →AiBiCiQAiQBiEi
+that takes as input the quantum registers QAi−1 (Alice’s private measurement device A), QBi−1 (B’s
+private measurement device B), and Ei−1 (Eavesdropper Eve) and outputs the classical variables Ai, Bi,
+Ci along with updated quantum registers QAi,QBi, and Ei. By including the additional data in rDI-QKD
+(compared to DI-QKD) i.e. random inputs Si, zi, and the outcome ci into the Eve’s side information E,
+the non-signal condition in 112 remains unaffected and GEAT can be applied for the security proof of
+the protocol.
+An rDI-QKD protocol introduced in 3.8.2 can be shown by a tuple Qr = {ρAB, Ax, By, Tz}. which gives
+rise to the correlations p(a, b|x, y) and p(a, c|x, z). Based on the above discussion, as in the standard DI-
+QKD, the asymptotic key rate can be calculated by the iid Devetak-Winter rate r = H(A|XE)−H(A|B).
+To lower-bound the term H(A|XE), considering that the source initially produces a state ρABE, without
+loss of generality, one can assume that this state is a pure state |ΨABE⟩and all the measurement settings
+are projective. The possible quantum strategies that Eve can use are fully characterized by the pure state
+|ψABE⟩and the projective measurements {Aa|x},Bb|y, and Tc|z conditioned to the fact that they return
+the honest correlations
+p(a, c|x, z) = ⟨ΨABE| Aa|x ⊗Tc|z |ΨABE⟩,
+(115)
+p(a, b|x, y) = ⟨ΨABE| Aa|x ⊗Tc|z |ΨABE⟩,
+where Tc|z acts jointly on subsystems B and E. To each strategy, one can associate the post-measurement
+state σAXE = P
+a,x p(x) |ax⟩⟨ax| ⊗σa,x
+E
+where σa,x
+E
+= trAB(|ΨABE⟩⟨ΨABE| (Aa|x ⊗IB ⊗IE)) is the
+unnormalized state held by Eve conditioned to Alice’s inputs and outputs. The conditional min-entropy
+can then be computed as
+H(A|XE) = inf
+ˆ
+Q|p
+H(A|XE)σAXE,
+(116)
+where the optimization runs over all quantum strategies ˆQ compatible with the honest correlations (115).
+Notice that this optimization is almost identical to the optimization problem in a standard DI-QKD
+protocol where Bob performs the measurements Tz ⊗By, with a difference that the measurements Tz
+act on the joint systems BE, instead of just B. The method in section 4.4.2 (see Theorem 13) then can
+be applied to lower bound the conditional entropy H(A|XE) in rDI-QKD in almost the same way as in
+DI-QKD. For the rCHSH protocol which is the routed version of the DI-QKD CHSH protocol, if A and
+T have perfect detectors ηA = ηB = 1, the key rats are very robust as ηB decreases, remaining positive
+for ηB ≳0.68 [265]. However, this value is not robust when ηA and ηB are decreased for example, in the
+case where all devices have the same detection efficiency η, the key rate is positive for η ≳0.96 which is
+worse than standard CHSH based DI-QKD protocols.
+4.2.2. GEAT and the security of monogamy-of-entanglement based DI-QKD
+While some protocols, such as the generalized CHSH game 3.7.4 and the magic square game 3.8.3,
+have also been considered, most of the protocols studied so far have been based on the CHSH game due
+to its simplicity of implementation. So, here an important question arise: Is it possible to explicitly prove
+secrecy of a DI-QKD protocol using an arbitrary monogamy-of-entanglement game? This question was
+tackled in [254]. Let us start by defining a non-local game.
+Definition 22. A two-party nonlocal game is a tuple G2 = (π, X, Y, A, B, V ), where π is a probability
+distribution over input pairs (x, y) ∈X ×Y, and V : X ×Y×A×B →{0, 1} is the winning predicate. Alice
+and Bob receive input (x, y), respond with output a ∈A, b ∈B, and win if V (x, y, a, b) = 1. Similarly,
+a three-party game G3 is defined as one in which a third player (Eve) also contributes by receiving (x, y)
+and outputs a bit c ∈{0, 1}.
+43

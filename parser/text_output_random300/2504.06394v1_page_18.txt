@@ -1,0 +1,60 @@
+18
+Relaxation of the Cupula
+Underdamping for high St 
+Input-output phase diﬀerence
+Figure 8: Left panel: Solution to (5.7), when 𝑓(𝑡) = 0 and Δ𝑝0(𝑡= 0) = 1 for different
+values of the Stokes number, showing underdamped dynamics for large enough St. Central
+panel: Bifurcation diagram, showing the evolution of Re( ¯𝜔) (blue) and Im( ¯𝜔) (red).
+Markers represent the numerically obtained solution from (5.8) and dashed lines the
+analytical approximation (5.9). Right panel: bifurcation diagram for 𝑓(𝑡) ∼𝑒2𝜋𝑖𝑡,
+showing how the transition between the two regimes Δ𝑝0 ∼𝐹(𝑡) and Δ𝑝0 ∼𝑓(𝑡) depends
+on both 𝜅and St. Colour represents the complex angle of 𝜒, with blue arg(𝜒) = 𝜋/2 and
+red representing arg(𝜒) = 0.
+To transform this equation into a more manageable form, we define a complete kernel
+K(𝑥; St) = St−1 Í∞
+𝑛=1 𝜆−2
+𝑛𝑒−𝜆2
+𝑛𝑥/St. Finally, we may directly substitute Δ𝑝0 from (5.4b) into
+(5.3) to obtain a single equation for the cupular deflection 𝜂0(𝑟, 𝑡):
+∫1
+0
+𝜕𝜂0
+𝜕𝑡𝑟d𝑟= −2 ¯𝑓(𝑡) −𝜅
+𝜋
+∫𝑡
+0
+
+∇4𝜂0 −𝑏−1∇2𝜂0 + 𝜚
+
+St𝜕2𝜂0
+𝜕𝑡2 + 𝑓(𝜏)
+
+K(𝑡−𝜏; St) d𝜏,
+(5.6)
+where we have introduced ¯𝑓(𝑡) =
+∫𝑡
+0 𝑓(𝜏)K(𝑡−𝜏; St) d𝜏.
+Equation (5.6) is an integro-PDE for 𝜂with an exponential-like kernel. Seeking a separable
+solution 𝜂0 = ¯𝜂(𝑟)Δ𝑝0 when 𝜚≪1 will lead to an integro-differential equation for Δ𝑝0(𝑡)
+𝛼(𝑏) dΔ𝑝0
+d𝑡
+= −2 ¯𝑓−𝜅
+𝜋
+∫𝑡
+0
+Δ𝑝0(𝜏)K(𝑡−𝜏; St)d𝜏.
+(5.7)
+Here, ¯𝜂and 𝛼(𝑏) are the same as in the St ≪1 limit, given in (3.10). Equation (5.7) may be
+efficiently solved numerically by truncating the infinite series in the kernel and transforming
+the integral equation into a system of ODEs. This is a standard calculation, with details given
+in Appendix B.
+5.2. Fluid inertia can make the cupula underdamped
+To understand the effect of inertia in the cupular response, we first consider the case of a
+cupula that is initially stretched by a pressure jump Δ𝑝0(𝑡= 0) = 1 in a frame rotating at
+constant speed, so that 𝑓(𝑡) = 0.
+The numerical solution to (5.7) for a range of Stokes numbers is given in Figure 8(a).
+Notice that for sufficiently large St, Δ𝑝(𝑡) exhibits decaying oscillatory behaviour, meaning
+that the cupula is underdamped; this is in contrast to smaller values of St, in which the cupula
+dynamics show an exponential decay whose rate of decay increases with St.
+To understand this change in behaviour as St is increased, we seek an exponential ansatz
+to solve (5.7), with Δ𝑝0 ∼𝑒−𝜔𝑡in the simple case when 𝑓(𝑡) = 0. Direct substitution yields

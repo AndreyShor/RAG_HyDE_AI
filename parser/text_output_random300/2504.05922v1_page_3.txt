@@ -1,0 +1,129 @@
+3
+where ψ(t) represents the nuclear state and the S-
+dimensional complex vector ct consists of the components
+of the electronic wavepacket in a chosen electronic basis.
+The complex vector ct also appears in Ehrenfest dynam-
+ics, where the nuclear part is represented by the position
+and momentum vectors qt and pt, because the nuclear
+wavefunction is assumed to be infinitesimally narrow in
+phase space. For this reason, the molecular wavefunc-
+tion is no longer defined, and single-trajectory Ehrenfest
+dynamics does not capture nuclear quantum effects. In
+contrast, the TGED21 represents the nuclear state by a
+Gaussian wavepacket
+ψ(q, t) = exp
+ i
+ℏ
+1
+2xT · At · x + pT
+t · x + γt
+
+,
+(6)
+x := q −qt,
+(7)
+where qt and pt are the phase space coordinates of the
+center of the wavepacket, At is a complex symmetric
+width matrix with a positive-definite imaginary part, and
+γt is a complex number whose real part adds a dynam-
+ical phase and imaginary part ensures normalization at
+all times. The TGED is based21 on replacing the exact
+potential V with some locally quadratic effective poten-
+tial Veff. Here, we will use the single-Hessian TGED,
+where the approximate effective molecular potential is
+Veff(q; ψ) = V0(qt) + VT
+1 (qt) · x + xT · V2(qr) · x/2. (8)
+Coefficients V0 and V1 are the diabatic potential energy
+matrix and its gradient at the center of the wavepacket qt,
+while V2 is the Hessian of the potential energy matrix at
+a reference point qr. In the Hartree mean-field approach,
+the nuclear wavepacket (6) is propagated with an effective
+nuclear potential
+Vn,eff := c†
+tVeffct = Vn,0 + V T
+n,1 · x + xT · Vn,2 · x/2,
+(9)
+Vn,j = c†
+tVjct,
+(10)
+obtained by averaging the multistate potential (8) over
+the electronic wavepacket.
+Consequently, the time de-
+pendence of the nuclear Gaussian wavepacket is given by
+a set of differential equations21
+˙qt = m−1 · pt,
+(11)
+˙pt = −Vn,1,
+(12)
+˙At = −At · m−1 · At −Vn,2,
+(13)
+˙γt = T(pt) −Vn,0 + (iℏ/2)Tr(m−1 · At),
+(14)
+identical to that of the TGWD, with the exception that
+the potential is Vn,eff instead of Veff, the single-surface
+analog of Eq. (8).
+Conversely, the effective electronic
+potential matrix is obtained by averaging the effective
+molecular potential (8) over the nuclear wavepacket (6):
+⟨Veff(q; ψ)⟩n = ⟨ψ|Veff(q; ψ)|ψ⟩
+= V0(qt) + Tr[V2(qr) · Cov(q)]/2.
+(15)
+The position covariance matrix Cov(q) = (ℏ/2)(ImAt)−1
+adds a correction to the Ehrenfest electronic potential
+V0 due to the finite width of the nuclear wavepacket.
+In the TGED, the equation of motion for the electronic
+coefficients
+iℏ˙ct = [T(pt) + ⟨Veff(q; ψ)⟩n]ct
+(16)
+resembles that of Ehrenfest dynamics, but the potential
+V(qt) is replaced by ⟨Veff(q; ψ)⟩n.
+III.
+RESULTS AND DISCUSSION
+In this section, we begin by demonstrating the condi-
+tions under which TGED becomes exact and outperforms
+both Ehrenfest dynamics and the TGWD. Then, using
+pyrazine as a case study, we show that single-trajectory
+mean-field methods fail to capture electronic popula-
+tion transfer near conical intersections between electronic
+states of different symmetry and explain the underlying
+cause. Finally, we apply the TGED to a model repre-
+senting a conical intersection between electronic states
+of the same symmetry. We show, and also explain why,
+here the TGED agrees qualitatively with exact quantum
+dynamics evaluated with the split-operator algorithm31.
+A.
+Vertically displaced harmonic oscillators
+The first example demonstrates when TGED is exact.
+Our model is loosely based on the system proposed by
+Tully and coworkers32, involving a heavy and a light par-
+ticle, both represented by harmonic potentials, and mu-
+tually coupled with a bilinear coupling. As a result, the
+potential energy surfaces along the heavy particle coor-
+dinate correspond to equally spaced vertically displaced
+harmonic potentials.
+Physically, this system topology
+can represent a harmonic vibration with electronic states
+broadened by the solvent33.
+In this model, Ehrenfest
+dynamics was demonstrated to produce more accurate
+results than surface hopping, which introduces an ar-
+tificial loss of coherence32,33.
+However, one should re-
+member that a mean-field trajectory generally underes-
+timates electronic decoherence effects, since all electronic
+states share the same nuclear configuration. In contrast,
+when multiple “locally” mean-field trajectories are prop-
+agated34, although each individual path remains fully co-
+herent, the total Hamiltonian no longer follows the mean-
+field approximation, enabling decoherence to occur.
+Here, we consider two nuclear degrees of freedom and
+ten electronic states. Retaining the energy gaps of
+√
+5
+a.u., vibrational frequency of ki = 15 a.u.
+and mass
+of mi = 10 of the original paper of Tully and cowork-
+ers, our system consists of ten vertically displaced two-
+dimensional harmonic surfaces centered at the origin.
+The diabatic couplings between each pair of electronic
+states are arbitrarily set to the constant value Wmn = 0.6

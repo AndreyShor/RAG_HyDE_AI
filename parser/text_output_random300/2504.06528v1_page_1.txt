@@ -1,0 +1,99 @@
+Low-latency control system for feedback experiments with optical tweezer arrays
+Amir H. Dadpour,1 Timur Khayrullin,1 Fouad Afiouni,2, 3 Remy El Sabeh,4
+Amer E. Mouawad,2, 4 Izzat El Hajj,2 and Alexandre Cooper1, 5, ∗
+1Institute for Quantum Computing, University of Waterloo, Canada.
+2Department of Computer Science, American University of Beirut, Lebanon.
+3School of Electrical and Computer Engineering, Purdue University, USA.
+4David R. Cheriton School of Computer Science, University of Waterloo, Canada.
+5Department of Physics and Astronomy, University of Waterloo, Canada.
+(Dated: April 10, 2025)
+We present and characterize a modular, open-source system to perform feedback control experi-
+ments on configurations of atoms and molecules in arrays of optical tweezers. The system features a
+modular, cost-effective computer architecture with a motherboard and peripheral cards. It supports
+efficient data transfer to and from graphics processing units (GPUs) using Remote Direct Memory
+Access (RDMA), leveraging GPU efficiency in matrix multiplication and parallelism, while enabling
+direct data transfer between devices without involving the CPU. We first describe the architecture
+and workflow of the system, detailing its hardware components and software modules. We then
+evaluate the computational runtime for preparing defect-free chains and grids of atoms using effi-
+cient implementations of atom reconfiguration algorithms. Finally, we discuss timing bottlenecks
+and strategies to reduce latency. Beyond solving reconfiguration problems, the system can readily
+be used to implement adaptive and feedforward protocols, as well as digital quantum algorithms re-
+lying on particle displacement. Our results lay the groundwork for developing low-latency feedback
+control systems, benchmarking their performance, and advancing scalable quantum hardware.
+I.
+INTRODUCTION
+Quantum processors rely on classical control and ac-
+quisition systems to prepare, manipulate, and read out
+their quantum states. Whereas open-loop systems exe-
+cute pre-defined sequences of control operations, closed-
+loop systems dynamically update their sequences based
+on measurement outcomes. Real-time feedback control
+systems are control systems that actuate the processor
+faster than the dominant dissipation processes.
+These
+systems play an increasingly important role in improving
+the capability of quantum processors across many plat-
+forms, including those based on configurations of atoms
+and molecules. Their recent deployment in practical set-
+tings has enabled the preparation of defect-free configu-
+rations of atoms [1–3], the realization of non-local con-
+nectivity by displacing atoms [4], and the implementation
+of mid-circuit measurements and feedforward operations
+to stabilize quantum gates [5] and realize quantum error
+correction codes [6]. These demonstrations have relied
+on custom solutions that interface multiple components,
+typically utilizing motherboard-based or FPGA architec-
+tures [2, 6–8].
+However, despite their shared architec-
+tural principles and workflows, a comprehensive analysis
+of their underlying hardware and software, along with
+a quantitative breakdown of their runtime performance,
+remains largely unexplored. Furthermore, the rapid ad-
+vances in the capabilities of GPUs, including their pro-
+cessing speed and low-latency data transfers, call for sys-
+tematic studies of the opportunities they offer for inte-
+gration into experimental workflows.
+∗alexandre.cooper@uwaterloo.ca
+(a)
+(b)
+CPU
+GPU
+Digitizer
+Processor
+Controller
+Sensor
+System
+Actuator
+FGC
+AWG
+EMCCD
+System
+AODs
+Figure 1.
+Diagram of feedback control system. (a) A
+typical FCS comprises a chain of modules to actuate the state
+of a physical system based on a sequence of measurements.
+(b) Our low-latency reconfiguration system is built on the ar-
+chitecture of a typical FCS. An Electron Multiplying Charge-
+Coupled Device (EMCCD) camera acquires images of config-
+urations of individual atoms. A Frame Grabber Card (FGC)
+transfers these images to a Central Processing Unit (CPU)
+or Graphics Processing Unit (GPU). The processor solves an
+atom reconfiguration problem to compute the sequence of con-
+trol signals necessary to reach the desired configuration of
+atoms. An Arbitrary Waveform Generator (AWG) streams
+these signals to actuate a pair of Acousto-Optic Deflectors
+(AODs). The resulting multiplexed laser beams update the
+configuration of atoms. The LLRS repeats the process until
+the desired state is reached, or the the criteria for solving the
+problem is no longer met.
+In this work, we introduce and characterize an open-
+source low-latency reconfiguration system (LLRS) for
+quantum processors based on atoms and molecules. The
+LLRS features a simple, cost-effective, and extendable
+motherboard-based architecture that ensures easy de-
+ployment and cross-compatibility with multiple devices,
+including GPUs. Its use of off-the-shelf components pro-
+vides flexibility in interfacing with diverse devices and
+enabling new capabilities across various applications. Fo-
+arXiv:2504.06528v1  [quant-ph]  9 Apr 2025

@@ -1,0 +1,41 @@
+2
+The Non-Signalling Polytope
+Barrett et al.[1] characterized the class of non-signalling correlations. All
+probability distributions within this class are subject to the following condi-
+tions:
+1. positivity
+P(ab|xy) ≥0;
+2. normalization
+X
+a,b
+P(ab|xy) = 1;
+3. non-signalling constraints (see deﬁnition 2).
+Since these constraints are linear, the class forms a polytope.
+To deter-
+mine the dimension of the polytope, ﬁrst note that the set of probabilities
+P(a, b|x, y) where x, y, a, b ∈{0, 1} form a table with 24 entries. The dimen-
+sion of the polytope is then given by subtracting the number of independent
+constraints from 24 which gives us the number of in-dependant “variables”
+of the table, and turns out to be 8.
+The polytope has 24 vertices, 16 of which correspond to local deterministic
+boxes of the form
+P αβγδ(a, b|x, y) =
+(
+1
+if a = αx ⊕β, b = γy ⊕δ
+0
+otherwise
+where α, β, γ, δ ∈{0, 1}. These alone form the local polytope containing all
+local boxes as a convex combination of those 16 vertices. The remaining 8
+vertices of the non-local polytope are of the form
+P αβγ(a, b|x, y) =
+(
+1/2
+if a ⊕b = xy ⊕αx ⊕βy ⊕γ
+0
+otherwise
+where α, β, γ ∈{0, 1}.
+Theorem 4. All vertices of the local polytope are equivalent under reversible
+local operations and all non-local vertices of the non-signalling polytope are
+equivalent under reversible local operations.
+6

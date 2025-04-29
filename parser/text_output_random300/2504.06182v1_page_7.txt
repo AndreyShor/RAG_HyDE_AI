@@ -1,0 +1,128 @@
+7
+ceiver. Secondly, we can always assume, without loss of
+generality, that the reservoir region of the receiver Rj
+does not contain tokens before the transfer from donor
+column to receiver column begins; otherwise, since those
+tokens must eventually enter the target region, we can
+simply execute the minimum number of displacement
+operations needed to clear the reservoir. Putting it all
+together, to create an instance of the 1D problem, we
+simply create a path consisting of the target region of Rj
+and the reservoir region(s) of Di, leaving the source and
+target vertices as they appear in their respective regions.
+Since all tokens must traverse the same “horizontal” dis-
+tance from the donor to the receiver, we can simply ignore
+this distance and apply their corresponding moves after
+solving the 1D problem.
+The second major improvement is a new strategy for
+pairing donors and receivers combined with the notion
+of delayed moves that guarantees that every token moves
+at most once. Observe that when a donor does not have
+enough surplus to saturate a receiver, we do not have
+enough information yet to deduce the final positions of
+the redistributed tokens. Therefore, instead of moving
+the tokens to arbitrary locations on the receiver, and
+then move them again when more tokens are received,
+we remember the moves by marking the corresponding
+tokens and delay moving them until we have enough in-
+formation. That is, we delay the moves until the receiver
+column is ready to be saturated by its current (final)
+donor; only then can we guarantee that the tokens on
+the receiver will never have to move again.
+Algorithm 1 – The red-rec algorithm
+Require: A grid graph, G = (V, E), representing a static
+trap array; an initial configuration of atoms represented
+as a set of source vertices, S ⊆V (G); and a target con-
+figuration of atoms represented as a set of target vertices,
+T ⊆V (G) (|S| ≥|T|).
+1: for each column Ci, 0 ≤i < W do
+2:
+Compute surplus σi = |S ∩V (Ci)| −|T ∩V (Ci)|;
+3:
+if σi = 0 then
+4:
+Solve column Ci using the exact 1D algorithm;
+5: while there exists column with negative surplus do
+6:
+Let (Ci, Cj) denote a best donor-receiver pair;
+7:
+if |σi| −|σj| > 0 then
+8:
+Reconfigure |σj| tokens from Ci to Cj;
+9:
+Solve the receiver column Cj (exact 1D);
+10:
+else if |σi| −|σj| = 0 then
+11:
+Reconfigure tokens from Ci to Cj;
+12:
+Solve both Ci and Cj (exact 1D);
+13:
+else
+14:
+Solve the donor column Ci (exact 1D);
+15:
+Mark excess tokens in Ci for delayed moving to Cj;
+16:
+Update surpluses and pairs;
+17:
+Write delayed moves when the need arises;
+18: for each unsolved column Ci, 0 ≤i < W do
+19:
+Solve column Ci using the exact 1D algorithm;
+More specifically, assuming without loss of generality
+that i < j, σi > 0, and σj < 0, we select a donor-receiver
+pair (Ci, Cj) such that every column Ck, i < k < j has
+already been solved (and σk = 0), and such that the num-
+ber of tokens that can be exchanged between the donor
+and receiver columns is maximized. If several such pairs
+exist, then we look to minimize the number of columns
+in between the donor and receiver columns to “heuristi-
+cally” minimize the total number of displacement opera-
+tions. If we still have several candidate pairs with a tie,
+we choose the pair that has a receiver that is closest to
+saturation.
+After a donor-receiver pair is selected, we either im-
+mediately execute the exchange of tokens between donor
+and receiver or mark appropriate tokens from the donor
+for delayed exchange to the receiver. In particular, one
+of the following three cases applies:
+1. Only the receiver column will have surplus zero, in
+which case the receiver column is solved using the
+exact 1D algorithm.
+2. Both the donor and receiver columns will have sur-
+plus zero, in which case we solve both columns us-
+ing the exact 1D algorithm.
+3. Only the donor column will have surplus zero, in
+which case the donor column is solved using the ex-
+act 1D algorithm. In this case, we do not execute
+the moves that redistribute the tokens from donor
+to receiver immediately; instead we mark those to-
+kens for delayed movement. Simply put, marked
+tokens no longer count towards the surplus of their
+original column and are considered to be part of
+the receiver column as far as computing surpluses
+is concerned. Once a receiver column becomes sat-
+urated, i.e., by being paired with enough donors, all
+moves corresponding to tokens marked for delayed
+movement into that column are executed.
+Complexity.
+In terms of complexity, running the
+exact 1D algorithm on a column of the grid requires
+O(√n)-time to solve the assignment problem but poten-
+tially O(√n·√n) = O(n)-time to produce the output list
+of moves, in the worst case. Hence, if all columns start
+with non-negative surplus, the red-rec algorithm solves
+the instance (and produces the output) in O(n√n)-time
+in the worst case. Since every iteration of the main loop
+reduces the number of unsolved columns by at least 1,
+we can bound the number of iterations by the number of
+columns, i.e., √n. Without including the low-level de-
+tails, we claim that every iteration can be implemented
+to run in O(n)-time; note that there are at most √n
+pairs to consider since a receiver column can only be
+paired with one of two columns, i.e., the donor is the first
+positive-surplus column appearing either before or after
+the receiver. Putting it all together, the red-rec algorithm
+solves the reconfiguration problem on a √n × √n-grid in
+time O(n√n).

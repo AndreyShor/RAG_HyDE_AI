@@ -1,0 +1,42 @@
+and let µ = log α + eµ. Then, the continuous-time counterpart of (14) becomes
+dXτ = −µ dτ + σ dWτ,
+if Xτ ≥log(ǫ),
+Xτ = −∞,
+otherwise.
+(18)
+The ﬁrst line of the last display describes Xτ as a Brownian motion with drift for Xτ above the
+barrier log(ǫ). The second line enforces truncation (i.e., Xτ = −∞) upon hitting the barrier,
+as in the discrete-time case. We now present the continuous-time analogue of Theorem 2.
+Theorem 3 Let {Xτ : τ ≥0} be the stochastic process deﬁned in (18) with parameters
+µ, σ, ǫ > 0. Then, for all xa, xb > log ǫ, we have:
+lim
+τ→∞
+P(Xτ ̸= −∞| X0 = xa)
+P(Xτ ̸= −∞| X0 = xb) = exp
+h µ
+σ2(xa −xb)
+i
+.
+The proof of the theorem, given in the appendix, draws on spectral theory for diﬀusion
+processes with absorbing boundaries from Karlin and Taylor (1981).
+See also Asmussen
+(2003). In terms of the original process Φτ = ατ exp(Xτ), this result yields the continuous-
+time counterpart of (15):
+lim
+τ→∞
+P(Φτ > 0 | Φ0 = φa)
+P(Φτ > 0 | Φ0 = φb) =
+φa
+φb
+β
+,
+(19)
+with β = µ/σ2 unchanged.
+However, a notable simpliﬁcation arises in the continuous-time setting: The result here
+holds for any ﬁxed ǫ > 0, without requiring the limit ǫ →0. In contrast, the discrete-time
+result in Theorem 2 required this limit due to the discontinuous, step-wise nature of the
+process. Brownian motion, with its continuous sample paths, eliminates this granularity.
+Still, the fact that (19) holds for ﬁnite ǫ is somewhat surprising. The following inductive
+argument is not a proof, but oﬀers a heuristic rationale for why the result here holds at
+ﬁnite ǫ.
+24

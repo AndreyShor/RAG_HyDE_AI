@@ -1,0 +1,117 @@
+in our ansatz for which E0
+I −EI > ϵ, where ϵ is a suitably
+chosen threshold30,33. With NT number of such param-
+eters screened in, we align them in descending order of
+their stabilization energy to form the ansatz:
+U2 = ...eτL...eτK...eτJ...
+(5)
+where |EJ|... > ..|EK|.. > ..|EL|... This forms the ba-
+sis of our ansatz towards the development of the GNM
+mitigation model. The determination of EI for various
+I can be performed independently in parallel. Note that
+the set of noisy expectation value EJ’s are to be used as
+one of the features of the ML model (vide infra). Also
+it is pertinent to mention that in our actual implemen-
+tation, we used a fixed seed value of the sampling error
+for reproducibility which is compatible with the modern
+hardware noise suppression techniques.
+The method outlined above selects only effective dou-
+ble excitation operators. The dominant single excitation
+operators are chosen based on spin-orbital symmetry con-
+siderations. Only those single excitation operators are se-
+lected for which the product of the irreducible represen-
+tation of the occupied and virtual spin-orbital is totally
+symmetric (A) and thus their selection does not incur any
+additional quantum resource utilization34,35. If there is
+a M number of such totally symmetric single excitation
+operators then the final unitary can be represented as:
+U =
+M
+Y
+a=1
+eτ a
+1 U2
+(6)
+It is important to note the ordering of the operators in
+which they appear in the ansatz Eq. 6 as the various
+circuit snippets (as required for training the NN) uses
+this ordered pool of operators.
+B.
+Additional Feature Vector and Label Generation for Data
+Training
+For circuit generation that forms our training data, we
+consider a predefined operator pool forming the ansatz U
+given by Eq. 6. The circuits over which the data train-
+ing is performed are snippets of the final parametrized
+quantum circuit corresponding to the ansatz given by
+Eq. 6. There are various possible approaches one may
+adopt to select these smaller circuits (to be referred inter-
+changeably as snippet circuit). An option is to randomly
+group the operators from the pool of selected operators.
+However, we specifically choose to generate and mitigate
+the noisy data with up to 3-parameter circuits and the
+corresponding mitigated energy values of these snippet
+circuits form the training labels for the GNM. Towards
+this, we generate the snippets of all allowed 1-parameter
+circuits {(eτJ), (eτK),... (eτL)}, ordered 2-parameter cir-
+cuits {(eτKeτJ), (eτLeτK),...
+(eτLeτJ)}, and ordered 3-
+parameter circuits {(eτLeτKeτJ)}, taken from the ordered
+set of operators selected in the parametrized quantum
+circuit.
+The ordering of the operators is preserved in
+these snippet (training) circuits as they appear in Eq. 6.
+The corresponding quantum circuits are transpiled for
+the chosen hardware as per its qubit connectivity and
+native gate configuration. Each circuit constructed ad-
+hering to the above ordering and hardware layout has
+a one-to-one correspondence with a directed graph that
+captures all the CNOT connections and acts as an input
+to our GNN of hybrid GNM. Details of graph construc-
+tion are given in section II C 1. We derive the additional
+features like the noisy expectation values, number of two-
+qubit gates, number of single-qubit gates, and the num-
+ber of parameters from the transpiled circuit and they
+serve as inputs to our regressor. As mentioned before,
+our model is trained in two different ways; (1) with ideal
+simulated values and (2) with SREM values. In SREM,
+the noisy expectation values from the transpiled snippets
+are sequentially mitigated starting from the 1-parameter
+snippets to all the way down to the 3-parameter snippets
+(see supplementary materials for their detailed working
+equations). These mitigated energy values are used as
+labels of GNM for training. This is also to be noted that
+we could have used any mitigation strategy for label gen-
+eration but the accompanying exponential overhead of
+such strategies (like ZNE and PEC) makes them difficult
+to be cost-efficient and thus we rely upon the sequential
+error mitigation strategy for the label generation.
+In principle, the SREM values generated from the 1, 2,
+3 parameter snippets for the labels are nearly as accurate
+as when the model is trained against the ideal values. To
+summarize, our approach, in principle, does not require
+any fault-tolerant qubit, nor does it necessarily have any
+dependence on any existing error mitigation strategy that
+itself requires exponential quantum overheads to generate
+the training labels. In the next subsections, we discuss
+the details of the graph formulation and the subsequent
+GraphNetMitigator Architecture.
+C.
+Machine Learning Model Architecture
+We begin this section with the following disclaimer:
+while in this particular work we generated an ansatz on
+the fly, the ML model and the associated EM strategy
+that follow is independent of the way the ansatz is formed
+and in all aspects, is compatible with any disentangled
+ansatz. In this section, we give a detailed explanation of
+how the training data and training labels are generated,
+how the graph inputs are formulated which serve as an
+input to GNN, and the working of the entire model along
+with its complexity.
+1.
+Graph formulation
+As mentioned in the section I, our training data con-
+sists of snippets of circuit ansatz consisting of one- and
+two-body fermionic excitations which only differ in terms
+of one and two-qubit gate applications. Therefore, graph
+3

@@ -1,0 +1,78 @@
+7
+Fig. 6.
+Drop port time domain transmission (blue), and predictive model
+fit (red, cf. AppendixA) for a four port ring resonator device, as shown in
+Fig.1(a). The drop port data is cleaner and fits better than the through port
+(cf. Fig.5(b) due to the spectral and modal filtering induced by the ring and
+the avoidance of the background straight through path (1d in Fig.2(b),3(b))
+can scale to O(10) components in the near-term.
+V. CONCLUSIONS
+In this work, we have shown that the temporal dynamics
+of propagating GHz acoustic fields in µm-scale waveguide
+geometries in PnIC platforms can be accurately visualized
+and modelled using the time domain transform of the spectral
+data from a vector network analyzer. The combination of low
+propagation loss, long interaction lengths, slow speed of sound
+and multiple interfaces with the high dynamic range and sensi-
+tivity that the VNA data provides enables us to directly see the
+device in action. We use an acoustic microring resonator ge-
+ometry, excited by an on-chip waveguide, as a model platform
+and demonstrate resonant pulse circulation and ringdown and
+the quantification of multipath interference effects that occur
+due to reflection at component interfaces. As PnIC platforms
+scale in complexity, such temporal field mapping techniques
+become increasingly critical as both visualization aids and
+metrology tools for measuring and improving performance.
+VI. ACKNOWLEDGMENTS
+We would like to thank Martin Cryan, John Haine, Mar-
+tin Kuball, Bruce Drinkwater, Jacob Brown, Yingqiang He,
+Robert Thomas, Chaowang Liu, Hugues Marchand, and Yutian
+Zhang for valuable suggestions and feedback.
+APPENDIX A
+MODELLING MULTIPATH INTERFERENCE EFFECTS
+In order to capture the temporal propagation and interfer-
+ence effects observed in a ring resonator, we employ a multi-
+path interference model. In addition to the principal paths from
+the launch port to the drop/through port with or without ring
+traversals, we also consider additional subsidiary paths that
+arise when reflections from waveguide taper junctions are non-
+negligible. Thus, the signal from the transmit (launch) port can
+traverse a range of possible routes, encompassing direct paths,
+ring transits, and multiple triplet transits, some of which are
+outlined in Fig.5(a), before emerging at the output port. Each
+of these routes contributes a distinct amplitude and phase to
+the total through/drop-signal as a function of time. Interference
+effects can be observed when the arrival time of two distinct
+paths lie within the temporal pulse width.
+Fig. 7.
+Directed graph representation of a 2-port ring resonator used to
+model valid signal paths. Each edge is annotated with a 2×1 array indicating
+the physical propagation length and corresponding power transmission. The
+graph captures all possible routes the signal can take from the launch (L) port
+to the through (T) port, including multiple ring transits and various triplet
+transits due to reflection at the waveguide taper interface. Both clockwise
+(CW) and counterclockwise (CCW) roundtrips (cf. Fig.8) within the ring are
+represented using four nodes each to fully capture the propagation behaviour.
+This allows modelling of cumulative coupling loss, with each successive
+roundtrip incurring an additional loss corresponding to k2. Additional node
+losses at the ports due to reflection (R) are omitted from the graph for clarity.
+This graph forms the basis for modelling multipath interference effects in the
+time-domain response.
+To enumerate all such paths, we represent the ring resonator
+as a directed graph as in Fig.7, whose nodes correspond
+to physical locations or geometrical features. Directed edges
+connecting these nodes have weights corresponding to the
+propagation distance (lprop), and associated loss due to prop-
+agation and coupling. Nodes corresponding to ports are also
+assigned weights corresponding to the (lumped) loss due to
+reflection at waveguide taper interface and IDTs. A path is
+then defined as a sequence of connected edges leading from
+the input node to the output node. A recursive pathfinding
+algorithm is employed to find valid paths that the signal can
+take in the directed graph. The algorithm is tweaked to allow
+for revisiting nodes after reaching the output node to account
+for reflections from the waveguide taper interface. Since
+this directed graph represents an Infinite Impulse Response
+(IIR) system, the number of valid paths grows exponentially
+with time. Therefore, we impose a maximum time/distance
+constraint based on the length of the time data.

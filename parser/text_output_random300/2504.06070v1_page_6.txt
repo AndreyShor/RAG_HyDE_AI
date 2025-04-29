@@ -1,0 +1,108 @@
+Published as a conference paper at ICLR 2025
+(a) Simulated Data
+(b) Real World Data
+Fluid 2D
+Smoke 2D
+Smoke 3D
+SEVIR
+Data
+Spatial Resolution
+Fluid 2D
+640 × 256
+Smoke 2D
+256 × 256
+Smoke 3D
+64 × 64 × 64
+SEVIR
+96 × 96 (down sample)
+Figure 3: Overview of the data with spatial resolution.
+very short time interval, assuming steady flow, we can approximate the temporal evolution of c(x, t)
+as a monotonic bounded function. Since t′ lies between tk and tk+1, we have:
+||c(x, t′) −c(x, tk)||2
+2 ≤||c(x, tk+1) −c(x, tk)||2
+2.
+(14)
+Based on this, we establish the residual term as follows:
+LTemporal(x, tk) = max{||c(x, t′) −c(x, tk)||2
+2 −||c(x, tk+1) −c(x, tk)||2
+2, 0}.
+(15)
+This implies that if ||c(x, t′) −c(x, tk)||2
+2 is less than or equal to ||c(x, tk+1) −c(x, tk)||2
+2, we
+consider the concentration at time t′ to be optimized within an acceptable error range, and the loss
+term for this component is set to 0. However, if ||c(x, t′) −c(x, tk)||2
+2 is greater than ||c(x, tk+1) −
+c(x, tk)||2
+2, we consider the concentration value at time t′ to require further optimization.
+In summary, our loss function assembles the above constraints and is written as:
+L =
+1
+NHW
+N
+X
+i=1
+(LData(x, tk) + LPhysical(x, tk) + LTemporal(x, tk)) .
+(16)
+4
+EXPERIMENTS
+We extensively evaluate our model across four benchmarks, including both simulated and real-world
+scenarios, as well as 2D and 3D settings. The training and testing data consist solely of observable
+data. Overview of the data with spatial resolution can be found in Figure 3.
+4.1
+SIMULATED DATA
+Table 1: Comparison of prediction performance on synthetic
+data with test metrics of MSE (↓) and MAE (↓). For clarity, the
+best result is shown in bold and the second best is underlined.
+Flow 2D
+Smoke 2D
+Smoke 3D
+Method
+MAE
+MSE
+MAE
+MSE
+MAE
+MSE
+U-Net (2015)
+0.0362 0.0076 0.0346 0.0140 0.1397 0.0385
+ResNet (2016)
+0.0424 0.0092 0.0412 0.0192 0.1460 0.0419
+FNO (2020)
+0.0300 0.0029 0.0303 0.0118 0.1465 0.0413
+U-NO (2022)
+0.0183 0.0008 0.0284 0.0092 0.1386 0.0363
+U-FNO (2022)
+0.0187 0.0011 0.0335 0.0125 0.1237 0.0314
+F-FNO (2023)
+0.0336 0.0055 0.0282 0.0107 0.1124 0.0250
+LSM (2023)
+0.0338 0.0037 0.0311 0.0109 0.1193 0.0293
+HelmFluid (2024) 0.1222 0.0503 0.0254 0.0085 0.1217 0.0298
+PINP (this work) 0.0107 0.0003 0.0209 0.0057 0.1073 0.0249
+Baselines.
+Given the simulated
+data, we compare our model with
+seven recognized advanced mod-
+els, including five baselines that
+are purely data-driven to approxi-
+mate complex mapping: FNO (Li
+et al., 2020), F-FNO (Tran et al.,
+2023), U-FNO (Wen et al., 2022),
+U-NO (Rahman et al., 2022) and
+LSM (Wu et al., 2023), and a base-
+line that utilizes established ve-
+locity fields to assist predictions:
+HelmFluid (Xing et al., 2024),
+and two other baselines for vision
+tasks: U-Net (Ronneberger et al., 2015) and ResNet (He et al., 2016).
+Fluid 2D. We consider a scenario where a substance is transported by fluid flow through a pipe. An
+incompressible fluid with a certain concentration flows from left to right, passing through multiple
+solid objects with varying positions and shapes. The substance is advected and diffuses with the
+fluid, and its concentration is the observed data. The real-world scenario involves the transport of
+dye carried by water flow through a pipe. To evaluate the model’s temporal extrapolation and spatial
+generalization capabilities, the training process involves predicting the next 5 frames of concentra-
+tion based on the previous 4 frames. During testing, the model is challenged to predict 40 future
+frames of concentration from the 4-frame input. Additionally, the test set includes variations such
+as the addition, removal and shape changes of obstacles, which were not present in training set.
+6

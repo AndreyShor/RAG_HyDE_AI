@@ -1,0 +1,49 @@
+Tools and methodology
+51
+The set of assumptions including the correlation patterns of renormalization and factorization
+scale variations, the process categorization, the range of variation of the scales, and the specific
+choice of variation points involves a certain degree of arbitrariness. This is inevitable given that
+the MHOU is the estimate of the probability distribution for the size of an unknown quantity
+which has a unique true value, and thus it is intrinsically Bayesian. The only way to validate
+this kind of estimate is by comparing its performance to cases in which the true value is known.
+Finally, we acknowledge that there exist cases where scale variations are known to fail in
+the estimate of MHOU. By construction, scale varied terms only include ingredients that are
+available at previous perturbative orders, so they will never be able to predict effects due to new
+partonic channels or due to higher logarithmic divergences appearing in the small or large-x
+regions, which can also spoil the pQCD expansion. This boundary can be seen as the theoretical
+counterpart of the limitation that we have on the finite kinematic coverage of experimental
+data and, it constrains the validity of the result we shall derive solely to the region where pQCD
+is a descriptive tool.
+2.2.3. Fitting methodology
+We now review the main aspects of the PDF fitting methodology adopted through this work: the
+Monte Carlo replica method and the neural network workflow along with its implementation.
+The Monte Carlo replica method.
+Given an ensemble of data (Di, i = {1 . . . Ndat}) and
+the corresponding PDF dependent theoretical predictions, in order to extract the best fitting
+PDFs, we begin by defining the likelihood function L(Di|θ). This describes the probability of
+observing the given sample of data for a given set of parameters θ, which, in our case, are any
+complete set of parameters able to describe a PDF. Under the assumption that data are Gaussian
+distributed G(σ, C) around the expected values σi with a covariance covij, we can write the
+likelihood as
+L(Di|θ) ∝exp
+
+−1
+2(Ti(θ) −σi) covij (Tj(θ) −σj)
+
+= exp
+
+−1
+2χ2(θ)
+
+,
+(2.23)
+where Ti(θ) are the theoretical predictions evaluated with the PDF we aim to determine. By
+the application of Bayes theorem, we can see that the posterior distribution describing the
+parameters θ given the data can be obtained by maximizing Eq. (2.23). For practical reasons, it
+is more convenient to minimize the argument of the exponential, i.e. the χ2, which, in summary,
+describes how well the theoretical predictions model the data.
+Since experimental data and theory prediction are not exact we adopt a Monte Carlo replica
+method to propagate uncertainties to the PDF parameter space [153]. The Monte Carlo replica
+method proceed as follows: for all the datapoints, we construct an artificial replica σ(r)
+i
+from

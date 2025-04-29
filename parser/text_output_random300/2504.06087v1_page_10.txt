@@ -1,0 +1,164 @@
+primal xi ∈Rdi, the Jacobian ∇xi ∈Rdi×d1, and the
+Laplacian ∆xi ∈Rdi:
+xi+1 = fi(xi),
+(36)
+∇xi+1 = Jfi(xi)∇xi,
+(37)
+∆xi+1 = Jfi(xi)∆xi + Tr
+
+(∇xi)T Hfi(xi)∇xi
+
+(38)
+where Jfi(xi) and Hfi(xi) are the Jacobian and Hes-
+sian of fi at xi. Most of the computation is here fre-
+quently dominated by the propagation of the Jacobian
+∇x which scales linearly with the domain of f and the
+computation of Tr
+
+(∇xi)T Hfi(xi)∇xi
+
+.
+Our local updates accelerate the Laplacian computa-
+tion due to sparse Jacobians ∇hi as an electron’s em-
+bedding only depends on the electrons in its vicinity.
+This way, we avoid materializing the full Jacobian but
+instead propagate sparse tensors, reducing the Jaco-
+bian propagation costs by O(nel). The case of the de-
+terminant is particularly noteworthy.
+The Jacobian
+and Hessian of the logarithm of the determinant are
+given as
+Jln det
+ij
+(Φ) = Φ−1
+ji
+(39)
+Hln det
+ij,km(Φ) = −Φ−1
+jk Φ−1
+mi.
+(40)
+To compute the forward propagations in Eqs. (37)
+and (38), we define the tensor M ∈Rnel×nel×nel×ndim
+as the product of the Jacobian of the orbital matrix
+with its inverse
+Mik,nd =
+X
+j
+(∇ndΦij)Φ−1
+jk .
+(41)
+The required terms for Eqs. (37) and (38) are then
+given as
+Jln det(Φ)∇Φ =
+X
+i
+Mii,nd
+(42)
+Jln det(Φ)∆Φ =
+X
+ij
+∆ΦijΦ−1
+ji
+(43)
+Tr
+
+(∇Φ)T Hln det(Φ)∇Φ
+
+= −
+ndim
+X
+d=1
+nel
+X
+i,k,n=1
+Mik,ndMki,nd.
+(44)
+For fully correlated orbitals, the last sum contains nel3
+terms for each combination of the indices i, k, n. For
+finite-range orbitals, however, we can utilize the fact
+that Mik,and = 0 if n /∈Ni, because in that case, the
+Jacobian for electron i w.r.t. electron n is zero. There-
+fore, we can restrict this sum to
+nel
+X
+i,k,n=1
+Mik,ndMki,nd =
+nel
+X
+n=1
+X
+i,k∈Nn
+Mik,ndMki,nd, (45)
+which reduces the complexity of this contraction from
+O(nel3) to O(nelnnb2).
+Another large advantage of
+range-limited orbitals arises in Eq. (41).
+For fully
+correlated orbitals, this contraction has complexity
+O(nel4) since each of the O(nel3) entries of M is a con-
+traction over dimension nel. However, for finite-range
+embeddings, the Jacobian ∇ndΦij is sparse, thus yield-
+ing corresponding sparsity in M, reducing the memory
+and compute cost by O(nel).
+4.5
+Improved Monte Carlo sampling
+We use the Metropolis-Hastings algorithm [58] to sam-
+ple electron coordinates r from the wavefunction Ψ.
+The standard proposal distributions ρ(r′|r) in NN-
+VMC propose new electron positions by perturbing
+the previous electronic coordinates with noise ρ(r′|r) =
+N(r′|r, σ2I). While working well in covalent systems,
+it may lead to non-variational energies in largely sepa-
+rated sub-systems. If the gap between two sub-systems
+is too large, the probability of moving an electron from
+one sub-system to the other decays to zero due to the
+exponential envelopes. In such cases, the samples may
+not represent the wave function’s distribution well.
+We propose to additionally use global single-electron
+jumps to eliminate this issue. While non-local moves
+have a history in diffusion Monte Carlo (DMC) [59,
+60], there, they obey a specific form that ensures cor-
+rect convergence but is costly to evaluate. In contrast,
+VMC’s proposal distribution’s support set must only
+cover the target distribution’s support set. Thus, we
+define a Gaussian Mixture Model (GMM) proposal dis-
+tribution
+ρglobal(r′) =
+1
+PNn
+m=1 Zm
+Nn
+X
+m=1
+Zm N(r′|Rm, σ2
+gI). (46)
+Unlike local Gaussian moves, these global moves do
+not have a symmetrical proposal distribution, and we,
+therefore, need to adjust the acceptance probability by
+a factor of
+ρ(r|r′)
+ρ(r′|r) = ρ(r)
+ρ(r′),
+(47)
+to obtain unbiased estimates. While one traditionally
+optimizes the proposal distribution to yield an accep-
+tance ratio of ≈50% by adjusting the scale parame-
+ter σ2 on the fly, i.e., with lower σ2 yielding higher
+acceptance ratios as σ2 →0
+=⇒
+Ψ2(r′)
+Ψ2(r) →1, the
+same cannot trivially be done with ρglobal. Due to the
+magnitude of the perturbation, we observe lower ac-
+ceptance ratios for these global moves. To set σg, we
+compared acceptance ratios for σg ∈{1, 2, 3} on the
+benzene dimer and chose σg = 2, which yielded the
+highest acceptance ratio of ≈10%. We find that this
+acceptance rate depends weakly on system size, rang-
+ing from 12% for C4H4 to 6% for C16H4. To maximize
+computational efficiency, we alternate between tradi-
+tional single-electron moves, perturbing a single elec-
+tron’s position with noise, and global single-electron
+jumps.
+10

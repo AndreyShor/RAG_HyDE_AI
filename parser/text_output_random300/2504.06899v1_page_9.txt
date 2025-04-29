@@ -1,0 +1,149 @@
+9
+weights are a non-increasing sequence, then Axiom 3 is
+also fulfilled. Finally, if we only allow normalized aver-
+ages, we will satisfy Axiom 4.
+Now, we will consider two types of such weighted av-
+erages, starting from the one presented in our previ-
+ous work [11]. A natural generalization of the weights
+1/(i+1) are their powers, i.e., weights 1/(i+1)k for some
+fixed natural number k (for details of implementation see
+Section V). Another possible choice that is well justified
+is taking weights
+1
+2i . It is the probability of occurring
+in history a string of length i with the assumption of its
+uniform distribution.
+For a low number of epsilons forming the final epsilon,
+the powers of (i + 1) can yield a lower value than 2i (in-
+deed, the exponential function is larger asymptotically
+than the polynomial one while for low values, the polyno-
+mial can be larger). However, we prefer the exponential
+weights due to the following theoretical justification.
+It is also important to note that both types of weighted
+averages mentioned above (with appropriate normaliza-
+tion) fulfill assumptions of Observation 1.
+They take
+form as we show below.
+ϵpoly,k :=
+1
+hmax
+P
+i=0
+(i + 1)−k
+hmax
+X
+h=0
+˜ϵh
+(h + 1)k
+(24)
+The above definition generalizes the one given in [11] to
+higher powers k ≥1.
+In the case of exponential weights
+1
+2i , we obtain
+ϵexp :=
+1
+hmax
+P
+i=0
+2i
+hmax
+X
+h=0
+˜ϵh
+2i .
+(25)
+Here, the normalization can be expressed as the sum of
+a geometric series, hence, we end up with the following
+form:
+ϵexp :=
+1
+2 −2−hmax
+hmax
+X
+h=0
+˜ϵh
+2h
+(26)
+It is not hard to notice that the mean number of oc-
+currences of strings of length i (the current bit and its
+history of length h = i −1) is equal to k =
+n
+2i . It de-
+creases with increasing i (for the maximal i = ⌊log n⌋
+k = 1 ). Hence, for large enough i > i0, with high proba-
+bility, some string does not appear and ϵi = 1
+2. However,
+in such a case, the exponential weights of ϵi for i > i0
+are relatively small, which makes them irrelevant for the
+final value of the ϵ.
+The SVTest software implements both ϵpoly,k and ϵexp,
+however, in experiments due to the above reasons we use
+the ϵexp as in Eq. (26).
+F.
+Discretization
+As described in the previous Section III, obtained and
+preprocessed earth data are in the form of sequences of
+real numbers d = (di)l
+i=0 where ∀idi ∈R. On the other
+hand, we wish to have a sequence of bits s = (si)n
+i=0
+where ∀isi ∈{0, 1} that we can further test, use, or
+amplify its randomness. Generally, we could arbitrarily
+choose the length parameter n and use any deterministic
+function δ : d →s. However, for practicality and sim-
+plicity reasons, we will limit ourselves to the case where
+n = l (the length of row data is equal to the length of the
+preprocessed data) and the discretization function is “lo-
+cal”. By local, we mean that each bit si is computed in
+the same way and depends only on some small neighbor-
+hood of input numbers {di−r, . . . , di+r}. The main idea
+of this restriction is that the discretization should create
+i-th bit in the sequence directly from i-th real number or
+from the relation between i-th real number and its up to
+r predecessors and successors.
+We should mention here that a careful reader could no-
+tice that, in fact, the discretizations B.2 and B.3 are not
+“local” in the strict sense. Nevertheless, averages used
+in these discretizations can be seen as metaproperties of
+the source, not as direct dependence on all bits.
+Fur-
+thermore, when using some type of source regularly, we
+could try to estimate these averages in advance and treat
+them as a constant value for future runs. For example,
+our results for discretization B.2 indicate that the aver-
+age bit value is extremely close to zero. Therefore, we
+could assume that it is, in fact, zero in all future tests for
+the same source and the same kind of measurement ap-
+paratus. In the case of discretization B.2, it would make
+it equal to discretization B.1, which we observe in our
+results. In conclusion, in that broad sense, all discretiza-
+tion methods presented in our manuscript can be seen as
+local.
+In our experiments, we use several discretization meth-
+ods described in the Appendix B, delineated as follows:
+The first discretization attributes 0 to a real number di
+when di > 0 and 1 otherwise. Hence, it depends on the
+sign (see Definition B.1). The second discretization maps
+di to 0 when di ≥E[d], where E[d] = 1
+n
+P
+i di, and maps
+to 1 if it is not the case. Hence, it depends on the average
+value over the whole sequence (see Definition B.2). The
+third discretization distinguishes from the second by re-
+placing the condition defining the value of the output bit,
+namely |di| ≥E[|d|] where E[|d|] = 1
+n
+P
+i |di| (see Defini-
+tion B.3). As we will see this change significantly affects
+the value of final ϵ. The fourth discretization maps di to
+0 iff di+1 ≥di, that is when the values increase from step
+i to step i + 1, and 1 else (see Definition B.4). Finally,
+the fifth discretization maps di to 0 iff |di| ≥|di+1|, and 1
+else, i.e., like in the case of the fourth, but up to modulus.
+(see Definition B.5).
+To finish this section, we will briefly discuss the case
+of using a min-entropy source instead of an SV source.
+Min-entropy source is another commonly used definition

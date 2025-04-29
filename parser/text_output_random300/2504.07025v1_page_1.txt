@@ -1,0 +1,75 @@
+Glossy Object Reconstruction with Cost-effective Polarized Acquisition
+Bojian Wu1
+Yifan Peng2,∗
+Ruizhen Hu3
+Xiaowei Zhou1,∗
+1Zhejiang University
+2The University of Hong Kong
+3Shenzhen University
+Extracted mesh
+Data acquisition system
+Polarization images
+DoP
+Specular
+Normal
+Polarizer
+......
+Figure 1. We build a cost-effective data acquisition system for capturing multi-view polarization images, where a linear polarizer is
+mounted in front of the off-the-shelf RGB camera and a single image per-view with unknown angle of the polarizer is captured, which
+eliminates the need for precise alignment. For objects with a hybrid of ceramics (tummy) and metal (feet), we can still nicely recover the
+specular components and estimate the polarimetric states, directly leading to high-fidelity geometry.
+Abstract
+The challenge of image-based 3D reconstruction for glossy
+objects lies in separating diffuse and specular components
+on glossy surfaces from captured images, a task compli-
+cated by the ambiguity in discerning lighting conditions
+and material properties using RGB data alone.
+While
+state-of-the-art methods rely on tailored and/or high-end
+equipment for data acquisition, which can be cumber-
+some and time-consuming, this work introduces a scalable
+polarization-aided approach that employs cost-effective ac-
+quisition tools.
+By attaching a linear polarizer to read-
+ily available RGB cameras, multi-view polarization images
+can be captured without the need for advance calibration or
+precise measurements of the polarizer angle, substantially
+reducing system construction costs. The proposed approach
+represents polarimetric BRDF, Stokes vectors, and polar-
+ization states of object surfaces as neural implicit fields.
+These fields, combined with the polarizer angle, are re-
+trieved by optimizing the rendering loss of input polarized
+images. By leveraging fundamental physical principles for
+the implicit representation of polarization rendering, our
+method demonstrates superiority over existing techniques
+through experiments in public datasets and real captured
+images on both reconstruction and novel view synthesis.
+∗Corresponding authors.
+1. Introduction
+3D reconstruction has been a long-standing topic in the
+graphics and vision communities. State-of-the-art methods
+are mostly designed for opaque surfaces with the Lamber-
+tian reflectance model and may perform sub-optimally in
+non-Lambertian scenes [19, 28], posing a challenge for both
+acquisition systems and reconstruction algorithms.
+In particular, to deal with glossy or specular regions, ex-
+cept for painting with diffuse coats, specially-tailored de-
+vices are often required for recording the controlled envi-
+ronmental illumination and/or reflective lighting conditions.
+An alternative approach explores polarization cues, referred
+to as Shape-from-Polarization (SfP) [6, 8, 36], as polariza-
+tion properties are closely related to surface normals. More-
+over, diffuse and specular reflectances exhibit different po-
+larimetric statuses, with the specular being more polarized
+than the diffuse and their polarization angles being orthogo-
+nal. These physical insights can be valuable for algorithms.
+The existing optimization-based SfP methods face chal-
+lenges when processing irregular triangles or non-manifold
+mesh, that could be largely overcome by incorporating neu-
+ral implicit surfaces. Dave et al. [7] propose the first im-
+plementation that integrates polarization cues into neural
+radiance fields. It should be noted, however, that this ap-
+proach requires an expensive polarization camera for data
+acquisition to obtain full polarization states, such as Stokes
+vectors, as supervision for network training. In contrast, we
+arXiv:2504.07025v1  [cs.CV]  9 Apr 2025

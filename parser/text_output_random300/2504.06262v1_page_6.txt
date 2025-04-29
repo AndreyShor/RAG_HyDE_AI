@@ -1,0 +1,238 @@
+6
+B. Nonlinear Schr¨odinger equation in 2D+1
+We consider a perfectly monochromatic field E written
+using the convention of Eq. (5) propagating in a Kerr
+medium of susceptibility defined in Eq. (11). Injecting
+this field in Eq. (1) yields the propagation equation for
+the field envelope E0:
+∇2E0 + ω2
+c2
+
+1 + χ(1)(r)
+
+E0 = −3
+4
+ω2
+c2 χ(3)|E0|2E0. (20)
+Note the
+3
+4 prefactor in front of χ(3) which follows
+from the definition of E0 in Eq.(5).
+This is the most
+commonly used convention, although others are found
+in the literature (Grynberg et al., 2010). Some authors
+define E0 as E = E0e−iωt + c.c., which leads to a factor
+of 3 instead of 3
+4.
+The field is decomposed as E0 = Eeik0z and the slowly
+varying envelope approximation is applied, where the en-
+velope E varies slowly along the propagation axis z com-
+pared to the carrier wavelength k0 = n′
+0
+ω
+c . This approx-
+imation implies that:
+∇2E =
+
+∇2
+⊥E + ∂2E
+∂z2 −k2
+0E + 2ik0
+∂E
+∂z
+
+eik0z
+(21)
+≃
+
+∇2
+⊥E −k2
+0E + 2ik0
+∂E
+∂z
+
+eik0z.
+(22)
+Note that this approximation also implies that the field
+is paraxial, as the envelop can’t change significantly over
+a wavelength, the wavefront must be flat enough to keep
+the beam near the optical axis. With these approxima-
+tions, we decompose the Laplacian of Eq. (20) as follows:
+∇2E =
+
+∇2
+⊥E + ∂2E
+∂z2 −k2
+0E + 2ik0
+∂E
+∂z
+
+eik0z
+(23)
+≃
+
+∇2
+⊥E −k2
+0E + 2ik0
+∂E
+∂z
+
+eik0z.
+(24)
+Injecting this expression into Eq. (20) leads to the parax-
+ial wave equation:
+∇2
+⊥E +2ik0
+∂E
+∂z −k2
+0E + ω2
+c2 (1+χ(1)(r))E = −3k2χ(3)|E|2E.
+(25)
+The refractive index is split
+p
+1 + χ(1) into real and imag-
+inary parts since they lead to different effects, and we
+rewrite the linear susceptibility as:
+ω2
+c2
+
+1 + χ(1)
+= (k0+iα
+2 )2 = k2
+0 +ik0α−α2
+4 ≃k2
+0 +ik0α,
+(26)
+where α = 2ωn′′
+0
+c
+is the linear loss coefficient for the in-
+tensity, hence the factor 1
+2 in front of the electric field.
+In the following, it is assumed that the medium is trans-
+parent, so n′′
+0 ≪n′
+0 =⇒α ≪k0. We neglect the term
+α2 since α is much smaller than k0, but we keep the term
+ik0α since k2
+0 will cancel out in the propagation equation.
+We then find:
+∇2
+⊥E +2ik0
+∂E
+∂z +ik0αE + ω2
+c2 δχ(1)(r)E = −3
+4
+ω2
+c2 χ(3)|E|2E.
+(27)
+A word of caution here: one should be careful when com-
+paring the coefficients to those obtained in other works.
+Choosing the convention E = Eeiωt+c.c. eliminates the 1
+4
+coefficient in front of the nonlinearity. Moreover, adopt-
+ing a convention for the susceptibility that absorbs fac-
+tors arising from powers of E causes the factor 3 in front
+of the nonlinearity to disappear.
+The susceptibilities are replaced with their respective re-
+fractive index expressions of Eq. (16) and the 2D+1 non-
+linear Schr¨odinger equation Eq. (28) is obtained:
+i∂E
+∂z = −1
+2k0
+∇2
+⊥E −iα
+2 E −k0
+δn0(r)
+n0
+E −k0
+nE
+2
+n0
+|E|2E.
+(28)
+In general the potential term
+δn0(r)
+n0
+and the nonlinear
+term nE
+2
+n0 are complex as the refractive index n0 is com-
+plex. However these terms can be approximated real if:
+ℑ(k0 n2
+n0 I) ≪α/2 and ℑ(k0
+δn0(r)
+n0
+) ≪α/2. The imaginary
+part of the nonlinear term can be rewritten as:
+ℑ(k0
+n2
+n0
+I) = ℑ
+
+k0
+n2I
+n′
+0 + in′′
+0
+
+= −k0
+n2In′′
+0
+n′2
+0 + n′′2
+0
+≃−k0
+n2In′′
+0
+n′2
+0
+= −n2I ω
+c
+n′′
+0
+n′
+0
+.
+(29)
+where the transparent medium approximation has been
+made, i.e., n′′
+0 ≪n′
+0. From this, we deduce that, in order
+to safely neglect the imaginary part of the nonlinear term,
+this condition must hold: n2I ω
+c
+n′′
+0
+n′
+0 ≪
+α
+2 =
+ω
+c n′′
+0 and
+therefore n2I ≪n′
+0. Similarly, the potential term can
+be considered real if the spatial index variation satisfies
+δn0(r) ≪n′
+0.
+C. Mapping the Gross-Pitaevskii and the nonlinear
+Schr¨odinger equations
+The concept of fluids of light relies on the mathemati-
+cal mapping that can be made between the NLSE and
+the Gross-Pitaevskii equation (GPE), which describes
+the evolution of the macroscopic wavefunction ψ of a
+weakly interacting Bose gas, with an additional damp-
+ing term γ:
+iℏ∂ψ
+∂t =
+−ℏ2
+2m ∇2 −iγ
+2 + V (r) + g|ψ|2
+
+ψ.
+(30)
+In this equation, g = 4πℏ2as
+m
+, with as the s-wave scatter-
+ing length, describes two-body contact interaction (Dal-

@@ -1,0 +1,79 @@
+Brownian bridge above a curve
+72
+≤u
+b L
+ ∞
+X
+j=k
+E
+
+1 −exp
+
+−e−γ log j
+Z
+B1\B0
+Fγ(ejy)µγ,j(dy)
+ 1
+2
+≲u
+b L
+ ∞
+X
+j=k
+j−
+√
+2d log j
+ 1
+2
+,
+where here we used the elementary inequality 1 −e−P∞
+j=k uj ≤P∞
+j=k(1 −e−uj) valid for (uj)j≥k ⊂
+R+
+0 , and the last inequality follows from [MRV16, Proposition 4.2] applied with χ = log j. Strictly
+speaking, we cannot directly apply [MRV16, Proposition 4.2], as the function Fγ is random. However,
+by following the proof of that proposition, we obtain the same conclusion in our more general setting
+by leveraging assumptions (W1) and (W4). Thus, the conclusion follows, as the series in the last line
+of the above display converges to zero as k →∞.
+We are now ready to prove Lemma 7.4.
+Proof of Lemma 7.4. The claim follows by combining Lemmas 7.11, 7.12, 7.13, and 7.14.
+Appendix A
+Brownian bridge above a curve
+In this appendix, we collect some estimates for the probability of a Brownian bridge staying above a
+positive/negative curve, and some “entropic repulsion” estimates. In particular, we are interested in
+results analogous to those stated in [BL18, Section 4.2]. We emphasise that in [BL18, Section 4.2],
+there are actually estimates for Brownian bridges but are only limited to the case where the underlying
+curve is symmetric about the midpoint of the lifespan of the Brownian bridge. Hence, their techniques
+for transferring statements about Brownian motion to statements about the Brownian bridge cannot be
+applied to our setting. Generally speaking, the proofs of our results are relatively simple adaptations
+of the proofs of the results for the Brownian motion in [BL18, Section 4.2].
+A.1
+Some preliminary results
+We collet in this subsection some simple results that are used several times throughout the remaining
+part of this appendix. For a continuous function ζ : R+
+0 →R, we define the stopping time
+τζ
+def= inf{s ≥0 : Bs = ζ(s)} .
+We recall that for x, u ∈R and b > 0, the law of (Bs)s∈[0,b] under Px,u,b is that of a Brownian bridge
+from x to u in time b. We start with some basic facts about Brownian bridges.
+Lemma A.1. For b > 0 and x, u > 0, it holds that
+Px,u,b(τ0 > b) = 1 −e−2xu
+b
+,
+(A.1)
+and in particular, we have the following upper and lower bounds,
+2xu
+b
+
+1 −xu
+b
+
+≤Px,u,b(τ0 > b) ≤2xu
+b
+.
+(A.2)
+Furthermore, it holds that
+Px,u,b(τ0 ∈ds, τ0 ≤b) = bxe−((b−s)x+su)2
+2bs(b−s)
+s3/2√2πb(b −s)1{s∈[0,b]}ds .
+(A.3)

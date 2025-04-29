@@ -1,0 +1,28 @@
+B. Environment lights
+For our texture generation setup, we utilize the HDRI light map visualized in Figure 7(b). In contrast, the Paint-it HDRI light
+map, shown in Figure 7(c), represents an alternative lighting configuration. All the HDRI light maps used in this work are
+publicly available for download from polyhaven.
+C. Texture Synthesis Results in Verying Setups
+In this section, we provide textures obtained with different diffusion model combinations to illustrate the impact of model size
+and the role of super-resolution model. We also provide additional illustrations to compare our method to the baselines.
+M
+M + L
+XL + L
+XL
+Figure 9. Textures obtained with middle (M) and extra-large (XL) diffusion models along with their versions improved with large (L)
+super-resolution model on the second stage.
+D. High frequency study in DIP
+Our investigation into integrating Deep Image Prior (DIP) with our framework reveals certain limitations that affect its practical
+utility in texture synthesis. Despite being computationally more expensive, our experiments suggest that DIP may not provide
+sufficient benefits to justify its implementation costs.
+As shown in Figure 11, spectral analysis conducted on the Objaverse dataset [12] demonstrates why the parameterization of
+DIP performs poorly compared to our standard explicit approach. The spectral plot (Figure 11(a)) reveals DIP’s significant
+deficiency in high-frequency components, visually translating to outputs with noticeably less textural detail and surface
+variation. To further illustrate this effect, we provide additional examples in Figure 11(b) using two cow prompts, which
+clearly demonstrate the degradation of the detail in the generation based on DIP.
+This limitation in creating detailed textures further validates our choice of explicit parameterization, which achieves better
+visual quality and quantitative metrics with less computational cost.
+E. Visualization of PBR Texture Maps
+Even though physically based texture improve the overall results, our method occasionally struggles to fully disentangle the
+lighting effects. We visualize a few examples in Figure 12. For instance, consider partially baked highlights on the coffee
+maker or the suitcase.

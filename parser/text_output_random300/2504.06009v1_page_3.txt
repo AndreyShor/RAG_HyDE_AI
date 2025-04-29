@@ -1,0 +1,132 @@
+the Fourier transform can be extended to a unitary operator
+F ∈B(L2(Rs, Cn)), i.e., F−1 = F∗. Since F agrees with
+the Fourier transform on the dense subspace of absolutely
+integrable functions, we will refer to Ff as the Fourier
+transform of f, and we will write ˆf = Ff.
+A key property of the Fourier transform that we will
+exploit in this paper is that translation-invariant operators
+are transformed into multiplication operators. The Fourier
+transform of a densely deﬁned operator A on L2(Rs, Cn) is
+the densely deﬁned operator ˆ
+A = FAF∗on L2(Rs, Cn),
+such that
+ˆ
+A ˆf ∈L2(Rs, Cn) is the Fourier transform of
+Af ∈L2(Rs, Cn). For each ¯x ∈Rs, the translation operator
+T¯x ∈B(L2(Rs, Cn)) is given by (T¯xf)(x) = f(x + ¯x).
+A densely deﬁned operator A is translation-invariant if
+T¯x : D(A) →D(A) and T¯xA = AT¯x for all ¯x ∈Rs.
+The Fourier transform of a translation-invariant operator is a
+multiplication operator [12, Section 3.6], i.e., there exists a
+function ˆA : Rs →Cn×n such that ( ˆ
+A ˆf)(ω) = ˆA(ω) ˆf(ω).
+The function ˆA is called the symbol of the operator ˆ
+A. It is
+well-known that the operators ˆ
+A and, thus, A are bounded
+if and only if the symbol ˆA is bounded.
+Throughout this paper, we will consider functions that
+depend on a temporal variable t and a spatial (frequency)
+variable x (ω). We will denote the dependence on the spatial
+(frequency) variable with a subscript, e.g., we will write
+fx instead of f(x). In particular, we will often consider
+functions of the form f : T →L2(Rs, Cm), where T is
+a temporal domain and Rs is a spatial (frequency) domain.
+We interpret such functions as mapping the temporal variable
+t ∈T to a spatial (frequency) proﬁle f(t) ∈L2(Rs, Cm).
+We will denote the dependence on the spatial (frequency)
+variable with a subscript, i.e., we will write fx(t) = f(t)(x),
+so that the function fx : T →Cn is the temporal trajectory
+at a given point in space x ∈Rs. Finally, we will write ˆf to
+denote the spatial Fourier transform of f, i.e., the function
+ˆf : T →L2(Rs, Cm) such that ˆf(t) ∈L2(Rs, Cm) is the
+Fourier transform of f(t) ∈L2(Rs, Cm) for all t ∈T.
+B. LTI relaxation systems
+Consider the linear time-invariant (LTI) system
+Σ :
+
+
+
+d
+dtz(t) = Az(t) + Bu(t),
+y(t) = Cx(t),
+(9)
+with input space Rm, state space Rn, and output space Rp.
+The impulse response of the system Σ is the matrix-valued
+map g : R+ →Rp×m given by g(t) = CeAtB. Assuming
+that the system Σ is initially at rest, i.e., z(−∞) = 0, its
+output is given by the convolution
+y(t) =
+Z t
+−∞
+g(t −τ)u(τ) dτ
+(10)
+The system Σ is of relaxation type [6] if m = p and its
+impulse response g is devoid of any oscillatory behaviour,
+expressed as g being completely monotone [13], i.e.,
+(−1)k dk
+dtk g(t) ≥0
+(11)
+for all t ∈R+ and k ∈Z+. By Bernstein’s theorem, g is
+completely monotone if and only if it is a conic combination
+of decaying exponentials, i.e., g(t) = Pn
+i=1 Gie−pit, where
+Gi ≥0 and pi ≥0 for all i ∈{1, . . . , n}. Relaxation
+systems are passive and reciprocal with only one type of
+energy storage. They admit a unique storage function that
+can be determined from the input-output behaviour of the
+system. Furthermore, every relaxation system has a state
+space realization that is internally of relaxation type [14],
+i.e., B = C∗and A ≤0.
+For an exponentially stable system Σ, relaxation can be
+characterized via the Hankel operator, i.e., the bounded linear
+operator H : L2(R+, Rm) →L2(R+, Rp) given by
+(Hv)(t) =
+Z
+R+
+g(t + τ)v(τ) dτ
+(12)
+The Hankel operator H maps past inputs to future outputs
+in the sense that the input u(t) = v(−t) for all t ≤0 and
+u(t) = 0 for all t > 0, results in the output y(t) = (Hv)(t)
+for all t ≥0. In [3], it is shown that the Hankel operator
+of a relaxation system is self-adjoint and nonnegative, hence
+cyclically monotone. This implies that H is the functional
+derivative of a quadratic (memory) functional, which serves
+as an intrinsic energy storage for the system.
+Finally, we note that the results in this section are also
+valid for LTI systems with complex input, state and output
+spaces, which will be considered throughout this paper.
+IV. LTSI SYSTEMS AND RELAXATION
+In this section, we will deﬁne and characterize the notion
+of relaxation for a class of linear time-and-space-invariant
+(LTSI) systems. The deﬁnition of relaxation for LTSI systems
+will be a natural generalization of the deﬁnition for LTI
+systems, namely, it will be expressed as complete monotonic-
+ity of the (operator-valued) impulse response. The spatial
+invariance of the LTSI system will allow us to view it as a
+family of LTI systems via the Fourier transform. This will
+allow us to characterize relaxation of the LTSI system as
+relaxation of the corresponding family of LTI systems.
+Consider the LTSI system Σ of the form
+Σ :
+
+
+
+d
+dtz(t) = Az(t) + Bu(t),
+y(t) = Cz(t),
+(13)
+with (inﬁnite-dimensional) input space U = L2(Rs, Cm),
+state space Z = L2(Rs, Cn), output space Y = L2(Rs, Cp),
+and translation-invariant linear operators A : D(A) →Z,
+B ∈B(U, Z) and C ∈B(Z, Y), where we assume that
+the domain D(A) ⊂Z is dense. The system is time-
+invariant because the operators A, B and C are constant,
+and space-invariant because they are translation-invariant.
+The operator A is typically unbounded and the notion of
+solution requires some care, see, e.g. [15]. Without going
+into details, we assume that A is the inﬁnitesimal generator
+of a C0-semigroup t 7→exp(At) ∈B(Z). The notation is
+motivated by the fact that the latter is a generalization of the
+exponential function.

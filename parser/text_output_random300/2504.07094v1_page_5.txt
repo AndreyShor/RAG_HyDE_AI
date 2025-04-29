@@ -1,0 +1,126 @@
+5
+desired canonical expectation values as a function of the
+conjugate variable, i.e. the ring’s bending rigidity, κb.
+We reconstructed W(nc) for space-filling ring melts on
+a 5 × 5 × 4 cubic lattice for a total of 100 lattice sites;
+see (b-h) panels in Fig. 2. To cover the entire admissi-
+ble range 32 ≤nc ≤100, we used multiple intervalled
+samplings with unit increment in ¯nc and m = 3 slack
+variables, corresponding to intervals of widths 8. Con-
+sidering the numerous intervals involved, we performed
+the sampling with a parallel tempering scheme on a clas-
+sical high-performance computing cluster, and reserved
+the use of quantum optimization platforms to the more
+manageable 3 × 3 × 2 system, which we discuss later.
+The density of states obtained using m = 3 variables
+is shown in Fig.1.
+30
+40
+50
+60
+70
+80
+90
+100
+nc
+10
+22
+10
+19
+10
+16
+10
+13
+10
+10
+10
+7
+10
+4
+10
+1
+W (nc)
+FIG. 1. Density of states as a function of total curva-
+ture for a ring melt filling a 5 × 5 × 4 lattice. The re-
+construction was obtained using a sampling depth d ≈1, 000
+for each of the 69 intervals of length 8 (m = 3) straddling
+the entire range of curvature values, 32 ≤nc ≤100. The
+data points represent the average density of states computed
+from 4 reconstructions; error bars are smaller than the
+symbol size, because the average error is around 5%.
+W (nc) is peaked around nc = 78, which would be
+the most probable value of nc for curvature-unrestricted
+sampling. W decreases rapidly on both sides of the peak,
+dropping by more than 9 and 22 orders of magnitude to
+the right and left, respectively.
+We note that if the same total number of states were
+collected from a curvature-unrestricted QUBO sampling,
+rather than from multiple overlapping intervals, then the
+single resulting histogram would only cover the 60 ≤
+nc ≤96 range. This limited coverage would preclude the
+calculation of the entire W profile and, hence, of canon-
+ical expectation values at arbitrary βκb.
+B.
+Canonical expectation values for varying
+bending rigidity
+The density of states W(nc) enables calculating the
+expectation values of a generic observable, O, at fixed
+inverse temperature, β, and bending rigidity, κb, via:
+⟨O⟩βκb =
+P
+nc⟨O⟩ncW (nc) e−βκbnc
+P
+nc W (nc) e−βκbnc
+,
+(13)
+where ⟨O⟩nc is the average of the observable of interest
+computed at fixed nc. In the above expression, which
+specializes eq. 12 to self-assembled ring melts, we have
+set E = κbnc, thereby absorbing the curvature of π/2 at
+each corner turn into the definition of κb.
+Note that W is the same for any considered observ-
+able and, therefore, needs to be reconstructed only once
+by covering the admissible range of nc with overlapping
+intervals. In addition, it is advantageous to compute the
+constrained average, ⟨O⟩nc, using (uncorrelated) states
+with the given nc from all intervals that include nc.
+C.
+Results: linking probability
+We used the above scheme to profile the linking (con-
+catenation) probability of canonically equilibrated melts
+of rings as a function of the bending rigidity.
+Concatenation constraints, also termed mechanical
+bonds, are key structural motifs for supramolecular self-
+assemblies, from self-limited synthetic catenanes [64,
+76–78] to modular ones [65, 79–82], including three-
+dimensional Olympic gels [83].
+In recent years, various experimental advancements
+[84, 85], especially in metal-ion templating techniques,
+have finally made it possible not only to externally con-
+trol the geometry and topology of mechanical bonding
+but also to boost the yield of these topological constructs.
+However, despite these breakthroughs, identifying the
+conditions most conducive to inter-molecular linking re-
+mains an open problem.
+In this regard, the bending rigidity, κb is a natural pa-
+rameter for the design of topologically-bonded materials.
+However, studying the effect of κb on concatenation prob-
+ability of long and densely packed rings is challenging for
+real-space Monte Carlo and molecular dynamics because
+the autocorrelation times increase rapidly with the rings’
+rigidity. For instance, high effective bending rigidities,
+e.g., due to electrostatic repulsions, can cause the dynam-
+ical arrest in ring melts [86]; in addition, concatenation
+constraints significantly slow down the system’s relax-
+ation dynamics [87]. Consequently, profiling inter-chain
+linking in canonical equilibrium has so far been feasible
+only for a few distinct values of βκb and for discrete mod-
+els amenable to special-purpose sampling methods [88].
+Thus, how mutual entanglements in ring melts vary as
+a function of βκb remains an unsolved problem for con-
+ventional Monte Carlo methods. For the same reasons,
+it is the natural avenue for applying the QUBO-based
+sampling and the thermodynamic reweighting technique.
+In fact, our recent study of ref. [33] has shown the po-
+tential of using QUBO-based models to profile the en-
+tanglement of ring melts. However, such considerations

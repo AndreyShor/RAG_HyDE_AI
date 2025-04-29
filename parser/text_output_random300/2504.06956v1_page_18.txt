@@ -1,0 +1,57 @@
+Local structure of extremal points
+18
+is equal in law to the field introduced in Definition 2.3 (which justifies using the same notation), and
+we also recall that Υb is given by
+Υb = Φb −
+√
+2dab .
+(4.2)
+We will carry our analysis in a slightly more general setting than what we specified in the introduction,
+namely we allow the field Υb to be perturbed by a suitable “well-behaved” independent field. For
+b ∈N, we consider an independent random field gb on Rd, which we fix for the reminder of this
+section and assume to satisfy the following properties:
+(G1) One has gb(0) = 0 almost surely.
+(G2) For all j ∈[b]0, there exists a constant c > 0 such that for all η ≥0,
+P(M0,j(gb) ≥η) ≲e−ce2(b−j)η2 .
+(G3) There exist constants c > 0 such that for all η ≥0,
+P
+
+sup
+i,k∈[d]
+M0,b(∂2
+i,kgb) ≥η
+
+≲e−cη2 .
+For b ∈N, we then define the field Υb,g on Rd by
+Υb,g(·) = Υb(·) + gb(·) .
+(4.3)
+In what follows, given b ∈N and x, y ∈R, we use the convention that under Px,y,b, the law of
+(Bs)s∈[0,b] is that of a Brownian bridge from x to y in time b. Furthermore, Ex,y,b denotes the
+expectation with respect to Px,y,b.
+The main goal of this section is to prove the following two propositions, which are analogous to
+Theorems A and B, but with the Brownian motion replaced by the Brownian bridge.
+Proposition 4.1. For each λ > 0, there exists a continuous random field eΥλ on Rd such that, for any
+function F ∈Cb
+loc(C(Rd)), and for all u ∈[b1/4, b3/4], one has
+E[F(eΥλ)] = lim
+b→∞E0,u,b[F(Υb,g) |M0,b(Υb,g) ≤λ] = lim
+b→∞E[F(Υ∞) | M0,b(Υ∞) ≤λ] .
+(4.4)
+Proposition 4.2. For λ > 0, let c⋆,λ > 0 be the constant defined as follows
+c⋆,λ = lim
+k→∞E[Bk1{Bk∈[k1/6,k5/6]}1{M0,k(Υk)≤λ}] ,
+then, for all u ∈[b1/4, b3/4], it holds that
+lim
+b→∞
+b
+uP0,u,b(M0,b(Υb,g) ≤λ) = 2c⋆,λ .
+4.2
+Reduction to a Brownian motion
+The main goal of this subsection is to show that the condition that the supremum of Υb,g over the ball
+Bb is bounded above by λ can essentially be rewritten as a condition on (Bs)s∈[0,b] appearing in (4.1).
+The idea is to use a suitable decomposition across annuli of the field Φb, which will be introduced
+below. The key feature of this decomposition is that, for any j ∈[b −1], the supremum of the field in
+the annulus Bj+1 \ Bj is given by the position of the driving Brownian motion at time j (modulo a
+sign change), plus a remainder term whose tails we have good control over (see Figure 1). Hence, the
+condition that the supremum of Υb,g over the ball Bb is bounded above by λ can be recast in terms of
+the requirement that this driving Brownian motion stays above some polylogarithmic curve.

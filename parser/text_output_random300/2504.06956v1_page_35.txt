@@ -1,0 +1,82 @@
+Local structure of extremal points
+35
+Before proceeding with the proof of Lemma 4.22, we state and prove the following auxiliary result
+concerning the tail behaviour of the second derivative of the field Zb.
+Lemma 4.24. There exists a constant c > 0 such that for any b ∈N, r ∈[0, eb], i, k ∈[d], and
+η ≥0,
+P
+
+sup
+|x|≤r
+|∂2
+i,kZb(x)| > η
+
+≲1 ∧rde−cη2 .
+(4.55)
+Proof. Recall that, for x, y ∈Bb,
+E[∂2
+i,kZb(x)∂2
+i,kZb(y)] =
+Z b
+0
+(e−4sKi,i,k,k(e−s(x −y)) −e−4sKi,k(e−sx)Ki,k(e−sy))ds ,
+where, given n ∈N and (j1, . . . jn) ∈[d]n, we write Kj1,...,jn for the n-th derivative of K along the
+directions ej1, . . . , ejn. In particular, by the smoothness of K and the fact that it is supported in the
+unit ball, it holds
+E[|∂2
+i,kZb(x) −∂2
+i,kZb(y)|2] ≲|x −y|2 ∧1 ,
+where the implicit constant is independent of b. It follows from Fernique’s majorizing criterion
+(Lemma C.3) and Borell-TIS inequality (Lemma C.2) that, for any η ≥0 and for some c > 0, one has
+the bound
+P
+
+sup
+|x−y|≤1
+|∂2
+i,kZb(x)| > η
+
+≲e−cη2 ,
+uniformly over y. The requested estimate then follows from the union bound.
+Before proceeding with the proof of Lemma 4.22, we introduce some notation. For r ≥0, we set
+Sr
+def=
+sup
+i,k∈[d], x∈B(0,r)
+|∂2
+i,kΥb,g(x)| ,
+(4.56)
+where, to simplify the notation, we have omitted the dependence of Sr on the parameter b. Furthermore,
+recalling the characterisation (4.1) of the field Φb, for any i, k ∈[d] and x ∈Bb, we have
+∂2
+i,kΥb,g(x) =
+Z b
+0
+e−2sKi,k(e−sx)dBs+∂2
+i,kZb(x)−
+√
+2d
+Z b
+0
+e−2sKi,k(e−sx)ds+∂2
+i,kgb(x), (4.57)
+where we have used the same notation introduced in the proof of Lemma 4.24.
+The reason why it is useful to look at the second derivative of the field Υb,g is due to the following
+observation.
+Remark 4.25. For any λ > 0, η ≥0, and 0 < j ≤b, we observe that the following implication holds
+|Dλ
+0,j(Υb,g)|−1 ≥η
+=⇒
+Sej > cλη2/d ,
+(4.58)
+for some suitable constant cλ depending on λ and d. Indeed, if the condition on the right-hand side of
+the above display is not satisfied then there exists a ball of area at least η−1 around the maximum of
+Υb,g inside Bj where Υb,g is greater than its maximal value minus λ, which contradict the fact that
+|Dλ
+0,j(Υb,g)|−1 ≥η.
+A straightforward consequence of Lemma 4.24 is the following result.
+Lemma 4.26. Let A > 0 be fixed. There exist constants c1, c2 > 0 such that for any η ≥0, b ≥j > 0,
+and u > −A, it holds that
+P0,u,b(Sej > η2/d) ≲1 ∧edj+c1 u
+b η2/de−c2η4/d .
+(4.59)

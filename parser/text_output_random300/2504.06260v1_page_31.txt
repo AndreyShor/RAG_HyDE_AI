@@ -1,0 +1,53 @@
+Preprint. Under review.
+model.component ("comp1").physics (" solid ").create ("sym2", "
+SymmetrySolid", 1);
+model.component ("comp1").physics (" solid ").feature ("sym2").selection
+().set(1);
+model.component ("comp1").physics (" solid ").create (" bndl1", "
+BoundaryLoad", 1);
+model.component ("comp1").physics (" solid ").feature (" bndl1 ").
+selection ().set(4);
+model.component ("comp1").physics (" solid ").prop(" Type2D ").set("
+Type2D", "PlaneStress ");
+model.component ("comp1").physics (" solid ").prop("d").set("d", ".1");
+model.component ("comp1").physics (" solid ").feature (" bndl1 ").set("
+LoadType", "FollowerPressure ");
+model.component ("comp1").physics (" solid ").feature (" bndl1 ").set("
+FollowerPressure", "-10 [MPa ]");
+model.component ("comp1").mesh(" mesh1 ").create ("map1", "Map");
+model.component ("comp1").mesh(" mesh1 ").feature ("size").set(" hauto",
+4);
+model.component ("comp1").mesh(" mesh1 ").run();
+model.study().create ("std1");
+model.study("std1").create ("stat", "Stationary ");
+model.study("std1").feature ("stat").setSolveFor ("/ physics/solid",
+true);
+model.study("std1").run();
+model.result ().numerical ().create ("pev1", "EvalPoint ");
+model.result ().numerical ("pev1").selection ().named ("sel1");
+model.result ().numerical ("pev1").set(" probetag", "none");
+model.result ().table().create ("tbl1", "Table ");
+model.result ().table("tbl1").comments (" Point Evaluation 1");
+model.result ().numerical ("pev1").set(" table", "tbl1");
+model.result ().numerical ("pev1").set("expr", new String []{" solid.
+syy"});
+model.result ().numerical ("pev1").set("unit", new String []{"N/mˆ2"})
+;
+model.result ().numerical ("pev1").set(" descr", new String []{" Stress
+tensor , yy-component "});
+model.result ().numerical ("pev1")
+.set("const", new String [][]{{" solid.refpntx", "0", "
+Reference point for moment computation , x-coordinate "}, {"
+solid.refpnty", "0", "Reference point for moment
+computation , y-coordinate "}, {" solid.refpntz", "0", "
+Reference point for moment computation , z-coordinate "}});*
+model.result ().numerical ("pev1").setResult ();
+model.result ().table("tbl1").save(" OUTPUT\_PATH/output.txt");
+```
+===
+Now generate the JAVA API code to compute the target quantity for the problem
+below. Export the table containing the target quantity to OUTPUT PATH/output.txt.
+PROBLEM DESCRIPTION: {{problem description}}
+TARGET QUANTITY to be computed : {{ target description }}
+ANSWER:
+31

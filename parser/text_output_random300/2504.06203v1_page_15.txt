@@ -1,0 +1,104 @@
+15
+the positivity is obvious. The above argument, combined with the Schur product theorem [117] for the Hadamard product in
+(B.4) then implies that the sesqulinear form ⟨ϕ(x)| ˆOϕ|ϕ(y)⟩is positive definite for ∆ϕ ≥∆O/2. Given the discussion above
+(B.2), we expect this positivity to persist for more general ∆ϕ consistent with unitarity, though the sesqulinear forms in (B.5)
+may not be separately positive.
+Kato’s (second) representation theorem [113, 114, 116] states that a densely defined closed Hermitian form is uniquely rep-
+resented by a self-adjoint operator. The Hermitian forms and quadratic forms are clearly in one-to-one correspondence. The
+closeness condition amounts to requiring the corresponding quadratic form q(·) to satisfy lower semicontinuity, namely, for any
+convergent sequence (fn) [118],
+lim
+n→∞||fn −f|| = 0 ⇒q(f) ≤lim
+n→∞inf q(fn) .
+(B.11)
+Since the form defined by (B.4) and (B.5) is closed by construction and positive, by Kato’s theorem, we confirm the existence
+of the unique self-adjoint operator ˆOϕ whose domain is dense in Hϕ and whose matrix elements coincide with the form as in
+(B.3).
+Now let us consider the case where two conformal families {ϕ1,2} are involved in the definition of the form (B.2). The
+generalization to cases involving more conformal families can be done analogously. For this purpose it suffices to consider the
+following state |ϕf⟩≡c1|ϕ1(x)⟩+ c2|ϕ2(y)⟩. The corresponding sesquilinear form reads,
+(ϕf, ϕf) = c11O |c1|2 ⟨ϕ1(x)| ˆOϕ1|ϕ1(x)⟩+ c22O |c2|2 ⟨ϕ2(y)| ˆOϕ2|ϕ2(y)⟩
++
+c12O
+(|⃗x −⃗y|2 + (xd + yd)2)
+∆1+∆2−∆O
+2
+Z
+dd−1⃗z
+
+
+
+c1
+((⃗x −⃗z)2 + x2
+d)
+∆1+∆−∆2
+2
++
+c2
+((⃗x −⃗z)2 + x2
+d)
+∆1+∆−∆2
+2
+
+2
+−(−↔+)
+
+.
+(B.12)
+Since the above can be written as a sum of semi-bounded closed quadratic forms and each can be represented by a unique self-
+adjoint operator by Kato’s theorem, we have identified the self-adjoint operator ˆO∆acting on two conformal families. Now this
+approach can be extended to H∆which contains a finite number of conformal families.
+Appendix C: Establishing the trivial representation
+Given a Gelfand triple ΦD ⊂H ⊂Φ′
+D associated with the CFT Hilbert space H, and let |⃗x⟩∈Φ′
+D be elements obeying the
+following actions of the conformal subalgebra,
+Pi|⃗x⟩= i∂i |⃗x⟩,
+D|⃗x⟩= xi∂i |⃗x⟩,
+Ki|⃗x⟩= i(2xixj∂j −xjxj∂i) |⃗x⟩,
+Mij|⃗x⟩= i(xi∂j −xj∂i) |⃗x⟩,
+(C.1)
+we prove below that these states, when represented in terms of bulk local operators, as in
+|⃗x⟩=
+X
+a
+Z
+Rd
++
+ddy fa(⃗x, y) ϕa(y)|0⟩,
+(C.2)
+for an orthonormal basis of primary operators ϕa(x), are linear combinations of Ishibashi states. In particular, the coefficient
+function fa(⃗x, y) is only nonzero if ϕa is a scalar primary, in which case, up to an overall constant,
+fa(⃗x, y) = y∆a−d
+d
+.
+(C.3)
+Without loss of generality, we can focus on a single primary operator ϕa in (C.2) and thus will drop the subscript a below. We
+present the details below for scalar ϕa only as the case of spinning operators is very analogous.
+From the action of Pi in (C.1) and (C.2), we have
+Pi|⃗x⟩= i
+Z
+ddyf(⃗x, y)∂iϕ(y)|0⟩= −i
+Z
+ddy ∂y
+i f(⃗x, y)ϕ(y)|0⟩= i∂x
+i
+Z
+ddyf(⃗x, y)ϕ(y)|0⟩,
+(C.4)
+which implies
+Z
+ddy(∂x
+i + ∂y
+i )f(⃗x, y)ϕ(x)|0⟩= 0 ⇒f(⃗x, y) = g(⃗x −⃗y, yd) ,
+(C.5)
+where we have used the linear independent of ϕ(x). In a similar way, from the actions of rotation Mij and dilation D, we can
+further constrain the coefficient function f(⃗x, y) to be
+f(⃗x, y) = y∆−d
+d
+h
+|⃗x −⃗y|
+yd
+
+.
+(C.6)

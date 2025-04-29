@@ -1,0 +1,30 @@
+Figure 5 illustrates the autoregressive process for a horizon of one. In this method,
+the predicted snapshot is fed back into the model to generate the next predicted snap-
+shot, effectively building a sequence iteratively. This technique ensures that the temporal
+dependencies are preserved and learned efficiently by the model.
+Figure 5: Illustration of the autoregressive process for a horizon of one.
+The autoregressive process for temporal prediction can be described in the following
+steps:
+• Initialization: The input data, consisting of T snapshots, is represented as:
+X0 = {x1, x2, . . . , xT},
+(13)
+where xi represents the i-th snapshot.
+• Future Prediction: The model predicts the next snapshot ˆxT+1 using the past
+snapshots X0 as input:
+ˆxT+1 = f(xT, xT−1, . . . , xT−q+1; θ),
+(14)
+Where f is the predictive model parameterized by θ, and q is the window size
+indicating the number of past snapshots used for prediction. The same follows for
+multi-step predictions.
+• Feedback Mechanism: The predicted snapshot ˆxT+1 is appended to the existing
+set of snapshots to form the new input for subsequent predictions:
+X1 = {x2, x3, . . . , xT, ˆxT+1}.
+(15)
+• Recursive Prediction: The process is repeated to predict H future snapshots:
+ˆxT+h = f(ˆxT+h−1, ˆxT+h−2, . . . , ˆxT+h−q+1; θ),
+h = 2, 3, . . . , H.
+(16)
+These equations generalize the autoregressive framework, where the predictive model
+f learns the temporal dependencies between snapshots and iteratively generates future
+predictions. This framework ensures that the sequential nature of the data is effectively
+17

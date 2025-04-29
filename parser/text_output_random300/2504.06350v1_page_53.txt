@@ -1,0 +1,60 @@
+5. Semi-Device-independent Quantum Key Distribution
+The implementation of fully DI-QKD schemes is hampered by the stringent hardware requirements
+that limit, nowadays, a reasonable and practical key rate. One way to make DI methods more viable is to
+slightly relax the notion of device independence, and establish a minimal set of reasonable assumptions.
+This approach, named semi-device-independent (SDI) QKD reduces hardware demands, so that a more
+reasonable key ( or randomness) rate can be achieved with current technology [94]. Examples of these
+additional assumptions include (i) an upper bound on the system’s dimension [94], (ii) shared randomness
+[298], or (iii) honest construction of part of the device [299]. Still other approaches within the general
+semi-DI philosophy include measurement-device independent (MDI) QKD [96] and one-sided DI-QKD
+(1SDI-QKD) [95]. In the following sections, we present these methods.
+5.1. Prepare-Measure semi-device-independence
+In DI-QKD protocols, the security is based on testing non-locality between two parties. One question
+that can arise is whether such a strong form of security could be established for prepare and measure
+scenarios. This question is especially important since many commercially available QKD systems operate
+in one-way configurations, in which a transmitter (Alice) prepares a quantum state and sends it to a
+receiver (Bob). This question was first addressed by Paw lowski and Brunner in 2011 [94], in a scenario
+which they called semi-DI (SDI). In their approach, the Hilbert space dimension of the quantum system
+is known, but the quantum preparation and measurement devices are uncharacterized, such that the
+devices of Alice and Bob can be seen as black boxes. The assumptions of the SDI protocols are the
+following:
+SDI-QKD scenario [94]
+1. Alice’s black box is a “state preparator” which has the freedom to choose among a certain set of
+preparations ρa ∈B(Cd) with a ∈{1, . . . , N} unentangled from Eve 15, but knows nothing about these
+quantum states apart from their dimensionality. She sends the prepared state to Bob.
+2. Bob’s measurement device is a black box. He can choose to perform an uncharacterized measurement
+My with y ∈{1, . . . , m} and gets the outcome b ∈{1, . . . , k}.
+3. The boxes may feature shared classical variables λ, known to Eve, but uncorrelated from the choice
+of preparation (measurement) made by Alice (Bob).
+4. After repeating this procedure many times, Alice and Bob can estimate the probability distributions
+P(b|a, y) = Tr(ρaM b
+y) which denotes the probability of Bob finding outcome b when he performed
+measurement My and Alice prepared ρa.
+5. The protocol is restricted to individual attacks.
+To prove the security of SDI-QKD from the table of probabilities P(b|a, y), a dimension witness can
+be used to estimate the minimal dimension of the state sent from Alice to Bob. Introduced by Gallego
+et al. [58], a dimension witness is defined as W = P
+a,y,b wabyP(b|ay), where the real coefficients w are
+chosen such that one can derive lower bounds on the dimension of classical or quantum systems that is
+necessary to reproduce the measurement data. For example, in the simplest case of a two-dimensional
+system with three preparations and two binary measurements, for a classical system (i.e., a bit), they
+derived the witness I3:
+I3 = |E11 + E12 + E21 −E22 −E31| ≤3,
+(152)
+where Eij = P(b = +1|ij) −P(b = −1|ij).
+To surpass the upper bound with a classical system,
+dimension of at least three (trits) is required, giving an algebraic maximum of I3 = 5. Looking now to
+the quantum case, the same witness can be employed. After solving the maximization problem, one finds
+that max|ψ⟩∈H2I3 = 1 + 2
+√
+2, and the witness takes the form I3 ≤1 + 2
+√
+2.
+The first four terms in (152) can be seen as a CHSH inequality (whose maximum is 2
+√
+2), and the
+maximization does not involve the fifth term (E31), which can be set to −1. Thus, the violation of (152)
+corresponds to the violation of the CHSH inequality and can be seen as a device-independent protocol
+15Notice that if Alice’s preparations were entangled with Eve’s system, then the communication capacity would be
+effectively doubled using dense coding [300].
+53

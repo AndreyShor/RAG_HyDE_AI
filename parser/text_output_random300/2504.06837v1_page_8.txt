@@ -1,0 +1,109 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+To conclude that the limits are indeed solution, we now assume the well-preparedness of
+initial data
+ιNρ0
+N ⇀∗ρ0
+and
+lim
+N→∞EN(ρ0
+N) = E(ρ0) < ∞.
+The energy identity combined with (2.4) and the limit chain rule inequality yield
+0 = lim inf
+N→∞LN(˜ρN, ˜N) ≥L(˜ρ, ˜) ≥0,
+from which the energy-dissipation principle of the limit gradient system implies that ˜ρ is solution
+starting at ˜ρ(0) = ρ0 and that ˜is given by the kinetic relation (2.3).
+3
+Gradient system for the reaction-diﬀusion system
+We want to describe the evolution of i∗chemical species Xi with i ∈{1, . . . , i∗} =: I undergoing
+diﬀusion in a subdomain Ω⊂Rd and interacting according to r∗chemical reactions:
+X
+i∈I
+αr
+i Xi ⇋
+X
+i∈I
+βr
+i Xi,
+r ∈{1, . . . , r∗} =: R.
+Throughout the paper we assume that the physical domain is given by Ω= Td (the d-
+dimensional torus), and that we have ﬁnitely many species and reactions, i.e., i∗, r∗∈N. In the
+following, we will also use the eﬀective stoichiometric vectors γr =: αr−βr ∈RI. Moreover, we
+ﬁx reaction coeﬃcients κr > 0 (describing the reaction speed) for each reaction and diﬀusion
+coeﬃcients δi > 0 for each species.
+3.1
+Discrete reaction-diﬀusion gradient systems
+We present the gradient structure for the spatially discrete reaction-diﬀusion system with ﬁxed
+N ∈N. Denoting Zd
+N = (Z/NZ)d the set of discrete positions (with periodic boundary con-
+ditions), and E :=
+
+e = (e1, . . . , ed)⊤∈{0, 1}d, Pd
+l=1 el = 1
+	
+the set of discrete directions, we
+introduce the spaces
+XN
+:= (Xdom
+N
+, Xtar
+N )
+:= (I × Zd
+N, R),
+YN,diﬀ
+:= (Y dom
+N,diﬀ, Xtar
+N,diﬀ)
+:= (I × Zd
+N × E, R),
+YN,react
+:= (Y dom
+N,react, Xtar
+N,react)
+:= (R × Zd
+N, R),
+YN
+:= (Y dom
+N
+, Y tar
+N )
+:= (Y dom
+N,diﬀ× Y dom
+N,react, Y tar
+N,diﬀ× Y tar
+N,react).
+We introduce the short notation C(XN) := C(Xdom
+N
+; Xtar
+N ) and analogously for all other spaces
+of functions/measures over these spaces. Furthermore, given a time interval [0, T] we write
+C([0, T] × XN) := C([0, T] × Xdom
+N
+; Xtar
+N ) and analogously for all other spaces of functions or
+measures over these spaces.
+Abusing notation, we denote by ⟨·, ·⟩N the dual products for vectors as well as components,
+e.g., for (ζ, ξ) ∈C(YN) and (u, v) ∈M(YN) we write
+⟨(ξ, ζ), (u, v)⟩N = ⟨ξ, u⟩N + ⟨ζ, v⟩N =
+X
+i∈I
+⟨ξi, ui⟩N +
+X
+r∈R
+⟨ζr, vr⟩N
+= 1
+Nd
+X
+k∈Zd
+N
+ X
+i∈I
+X
+e∈E
+ξi,k,eui,k,e +
+X
+r∈R
+ζr,kvr,k
+
+8

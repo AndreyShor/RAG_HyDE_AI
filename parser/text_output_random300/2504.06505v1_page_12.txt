@@ -1,0 +1,30 @@
+ 
+12 
+ 
+FIG. 5. The diffusion behavior of the coarse-grained CG model with varying simulation time steps. The all-atom (AA) 
+reference, performed with time steps ∆𝑡'' = 2 𝑓𝑠 and saved every 10 steps for training data, is shown as the orange 
+solid line representing the mean squared displacement (MSD) of the center of mass of individual water molecules. 
+The MSD of CG beads is shown for the CG model simulated with time steps ∆𝑡() = 5 𝑓𝑠 and ∆𝑡() = 10 𝑓𝑠,  , 
+represented by red and blue dashed lines, respectively. 
+ 
+IV. Discussion 
+In this work, we introduced a novel adversarial training framework for achieving dynamical 
+consistency in CG models. Unlike traditional approaches that require the preselection of dynamic features, 
+our method aims to match trajectory ensembles directly, ensuring that the CG model faithfully reproduces 
+the underlying dynamics of the AA model. With liquid water molecules as an example, we demonstrated 
+that the proposed method successfully recovers key structural and dynamical properties, including radial 
+distribution functions, three-body angular distributions, and diffusion behavior.  Notably, the optimized CG 
+models extrapolate long-timescale diffusion behavior even when trained on short trajectories, 
+demonstrating good generalization. We also showed that our approach allows for robust convergence of 
+the learned parameters across different training runs. 
+Compared to machine learning emulators, which often struggle with generalization and stability outside 
+their training regimes, the CG modeling framework offers distinct advantages rooted in physics-based 
+principles. By explicitly integrating the governing equations of motion, CG models inherently preserve the 
+dynamical and thermodynamical constraints of the system. While our methodology employs ML 
+components, the temporal evolution of the system remains rigorously governed by these foundational 
+physical laws. This integration ensures that critical mechanistic behaviors are retained, potentially enabling 
+enhanced generalizability across diverse simulation conditions compared to purely data-driven ML 
+approaches.  
+The design of network architectures and the training framework herein suggest its potential applicability to 
+more complex molecular systems. By employing a graph-equivariant neural network architecture 
+augmented with attention mechanisms for temporal modeling, our method is designed to efficiently process 

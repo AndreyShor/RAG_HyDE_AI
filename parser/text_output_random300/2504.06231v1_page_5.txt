@@ -1,0 +1,192 @@
+0
+5
+10
+15
+20
+25
+Relative Time
+11.6GB
+2.0GB
+0.7GB
+0.4GB
+0.5GB
+0.4GB
+0.4GB
+0.2GB
+0.2GB
+0.2GB
+100 atoms
+0
+10
+20
+30
+40
+50
+Relative Time
+OOM
+21.5GB
+7.1GB
+2.7GB
+4.4GB
+3.6GB
+1.5GB
+0.4GB
+1.0GB
+0.6GB
+1,000 atoms
+0
+10
+20
+30
+40
+50
+60
+70
+Relative Time
+OOM
+92.0GB
+28.8GB
+11.2GB
+19.0GB
+14.6GB
+6.7GB
+1.6GB
+3.8GB
+1.9GB
+5,000 atoms
+0
+5
+10
+15
+20
+25
+30
+35
+Relative Time
+OOM
+OOM
+63.6GB
+24.0GB
+40.6GB
+31.6GB
+13.2GB
+3.1GB
+8.0GB
+3.6GB
+10,000 atoms
+0
+2
+4
+6
+8
+10
+12
+14
+16
+Relative Time
+OOM
+OOM
+OOM
+124.3GB
+OOM
+OOM
+64.1GB
+14.9GB
+40.2GB
+16.5GB
+50,000 atoms
+0.0
+0.5
+1.0
+1.5
+2.0
+2.5
+3.0
+3.5
+Relative Time
+OOM
+OOM
+OOM
+OOM
+OOM
+OOM
+127.9GB
+29.6GB
+78.5GB
+32.8GB
+100,000 atoms
+0
+20
+40
+60
+80
+100
+120
+Time (ms)
+0
+50
+100
+150
+200
+250
+300
+350
+Time (ms)
+0
+200
+400
+600
+800
+1000
+1200
+1400
+Time (ms)
+0
+200
+400
+600
+800
+1000
+1200
+1400
+Time (ms)
+0
+500
+1000
+1500
+2000
+2500
+3000
+Time (ms)
+0
+200
+400
+600
+800
+1000
+1200
+1400
+1600
+Time (ms)
+orb-v3 Direct (20 neighbors)
+orb-v3 Direct (inf neighbors)
+orb-v3 Conservative (20 neighbors)
+orb-v3 Conservative (inf neighbors)
+orb-v2 Direct (20 neighbors)
+mace-mpa-0 (inf neighbors)
+mace-mpa-0-nocueq (inf neighbors)
+mattersim-v1.0-5M (inf neighbors)
+7net-mf-ompa-nocueq (inf neighbors)
+equiformerv2 Direct (20 neighbors)
+Graph construction
+Figure 2: Speed + max GPU memory allocated on an NVIDIA H200 for the computation of energies,
+forces and stress. The batch size is fixed to 1, but we vary the number of atoms across the subplots.
+Relative times are computed with respect to the fastest model: orb-v3 Direct (20 neighbors). Times
+include both model inference and graph construction, with the latter marked by hatched lines. The
+graph construction method for Orb is a function of the number of atoms, as described in Appendix D.
+A key takeaway from this figure is that extreme scalability requires a confluence of i) efficient graph
+construction ii) Finite max neighbors iii) Non-conservative direct predictions. For the baselines, we
+use mace-medium-mpa-0 (v0.3.10, cuequivariance-torch v0.1.0), mattersim-v1.0.0-5m (v1.1.2),
+7net-mf-ompa (v0.11.0). All models are benchmarked using PyTorch v2.6.0+cu124. Alternative
+libraries, like JAX, may yield further improvements for some models, but is out of scope for this work.
+5

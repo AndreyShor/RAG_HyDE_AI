@@ -1,0 +1,81 @@
+1
+Introduction
+The Lorentz Gas is the dynamical system describing the motion of a classical particle interacting through elastic
+collisions with a system of obstacles. We will focus here on hard-core scatterers with spherical symmetry, and since
+the obstacles are infinitely heavy they do not move. This model was first proposed by Lorentz [13] to describe the
+motion of the electrons in a metal.
+Let the spherical obstacles have centers c := {cj}j∈N in Rd and radius ε. Then, the motion of the particle is
+described as follows. If no collisions occur, that is, as long as the distance between the particle and any obstacle is
+larger than ε, the particle’s motion is free: given (x, v) ∈Rd × Rd such that |x −cj| > ε
+∀j ∈N, and denoting by
+(Xt, Vt) the position and velocity of the particle at time t, the dynamics is described by
+
+X0(x, v; c) = x, ˙Xt(x, v; c) = Vt(x, v; c),
+V0(x, v; c) = v, ˙Vt(x, v; c) = 0,
+if |Xt(x, v; c) −cj| > ε
+∀j ∈N,
+(1.0.1)
+but when the particle hits an obstacle it gets specularly reflected. That is, if the particle collides at time t with the
+obstacle ¯j, then |Xt(x, v; c) −c¯j| = ε and
+( Xt+(x, v; {cj}j) = Xt−(x, v; c),
+Vt+(x, v; c) = R
+h Xt(x,v;c)−c¯j
+ε
+i
+Vt−(x, v; c)
+(1.0.2)
+where ft± denote respectively lims→t± f(s) and R[x]v is the orthogonal reflection of v with respect to the real line of
+direction x, i.e. R[x]v = −vx + v⊥
+x when v = vx + v⊥
+x , vx ∈Rx, v⊥
+x ∈(Rx)⊥.
+The obstacles may overlap, that is, it could happen that, for j ̸= k ∈N, 0 < |cj −ck| ≤2ε. In this case, the
+dynamics is not well defined only if the particles hits both the obstacles at the same time, i.e, if |Xt(x, v; c) −cj| =
+|Xt(x, v; c)−ck| = ε, since the obstacles should reflect the velocity vector in two different directions. The points which
+belong to the boundary of two different obstacles are usually referred as "angular points". This problem is overcome
+by noticing that the Lebesgue measure of the set of initial data (x, v) such that the particle hits an angular point is
+zero (see for example [2]).
+Since |v| is preserved within the motion, it is assumed to be 1 with no loss of generality.
+Therefore if one considers a particle with randomly distributed initial data (x, v) ∈Rd ×Sd−1, for example through
+a density function µin(x, v), for finite ε > 0 the time evolution of the density is
+µt(x, v; c) = µin(X−t(x, v; c), V−t(x, v; c)),
+with Xt and Vt described in (1.0.1) and (1.0.2), and one may ask under what assumptions on c the quantity
+limε→0 µt(x, v; c) exists and is non trivial. Typically, one should scale also the time t (i.e., dividing it by ε).
+Here we are focusing on the low density case.
+The case of low density and randomly Poisson distributed obstacles was first studied by Gallavotti [9]. The author
+proved that if a point particle moves in R2 and the centers of the obstacles are a Poisson point process of intensity
+n ∼
+1
+2λε, then for any continuous and bounded probability density µin : R2 × S1 →[0, +∞) there exists the limit of
+the averaged particle density
+E[µt(·, ·; c)]
+L1(R2×S1)
+−−−−−−−→
+ε→0
+µt, uniformly on compact t-sets,
+(1.0.3)
+where the expected value is taken with respect to the (Poisson) distribution of the obstacles’ centers c. Moreover the
+limiting µt satisfies the Boltzmann equation
+
+∂tµt(x, v) + v · ∇xµt(x, v) + λµt(x, v) = λ
+4
+R 2π
+0
+dθµt(x, R[θ]v) sin( θ
+2),
+µ0(x, v) = µin(x, v),
+(1.0.4)
+where R[θ]v is the rotation of v by angle π −θ, i.e., the same rotation R as before expressed as a function of the angle
+of the impact.
+The previous limit is the low-density (Boltzmann-Grad) limit, that is, one lets the size of the scatterer radius ε →0
+but keeping constant the mean free path length. In the previous case the mean free path length is λ ∼(2nε)−1.
+Spohn [21] strengthened the previous result by proving that the convergence of the Lorentz process
+(Xt(x, v; c), Vt(x, v; c))
+to a stochastic process holds with respect to the weak∗topology of regular Borel measures on the paths space, even
+if more general random distributions of the obstacles are taken into account.
+A further related result was obtained by Boldrighini-Bunimovich-Sinai [2]: the authors proved that the scaled
+Lorentz process converges for almost all c configurations of the obstacles’ centers.
+Then a natural question is what changes in (1.0.3) and in (1.0.4) if the obstacles’ centers have periodic configuration,
+instead of being randomly distributed, and the expectation sign in (1.0.3) is transferred to the initial data. This model
+is better known as periodic Lorentz Gas and it has been studied by several authors.
+2

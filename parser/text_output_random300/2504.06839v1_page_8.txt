@@ -1,0 +1,91 @@
+1.2
+Notations and Definitions.
+Notations.
+As we said in the introduction, we will denote by T2 := R2/Z2 the two-dimensional flat torus, and by
+T1
+2π := R/(2πZ) the one-dimensional torus with period 2π. This last notations may be uncommon but we decided to
+use it since using only T1 could create misunderstandings about the period. We also denote by ⟨f⟩the integral of f
+(over the space it is defined on). Moreover, for θ ∈T1
+2π, we denote v(θ) := (cos θ, sin θ) and v⊥(θ) := (−sin θ, cos θ).
+Definitions.
+Here we define some quantities that we will need in the following. First, let us also recall from [6, 15, 4]
+that for Q and E as in Definitions 1.1 and 1.2 it holds
+Z ∞
+0
+ds
+Z 1
+−1
+dhQ(s, h|h′) = 1,
+∀h′ ∈[−1, 1],
+and
+Z ∞
+0
+ds
+Z 1
+−1
+dhE(s, h) = 1.
+Other properties are stated in Appendix B. Recall also the definition of the transition probability Π(h|h′) in [7], that
+is, the probability that the impact parameter of the next collision is h if in the previous one it was h′.
+Definition 1.4. The transition probability Π : [−1, 1] × [−1, 1] →(0, +∞) is
+Π(h|h′) :=
+Z ∞
+0
+dsQ(s, h|h′).
+By Definition 1.1, we know that Π writes as
+Π(h|h′) := 6
+π2
+log(1 + h) −log(1 + h′)
+h −h′
+∀|h′| ≤h,
+and that it has the symmetries
+Π(h|h′) = Π(h′|h) = Π(−h| −h′) > 0
+∀(h, h′) ∈[−1, 1]2,
+Z 1
+−1
+dh′Π(h|h′) = 1∀h ∈[−1, 1].
+We also need a generalization of the kernel Q, as follows.
+Definition 1.5. The kernels Q(n) : [0, +∞) × [−1, 1] × [−1, 1] →[0, +∞) are defined inductively
+Q(n)(s, h|h′) :=
+Z s
+0
+ds′
+Z 1
+−1
+dh′′Q(s −s′, h|h′′)Q(n−1)(s′, h′′|h′),
+n ≥2,
+with Q(1) := Q by Definition 1.1.
+For fixed n, Q(n)(s, h|h′) is to be understood as the probability (density) of having impact parameter h exactly n
+collisions and time s after a collision with impact parameter h′.
+We also define the functions E(n), extending the Definition 1.2 of E, but replacing Q by Q(n).
+Definition 1.6. The functions E(n) : [0, +∞) × [−1, 1] →[0, +∞) are
+E(n)(s, h) :=
+Z ∞
+s
+ds′
+Z 1
+−1
+dh′Q(n)(s′, h|h′),
+n ≥1,
+with kernels Q(n) by Definition 1.5.
+We will also use the following functions f (mostly in Section 2) and {gk}k∈R2,k̸=(0,0) (mostly in Section 3). Let us
+first define the function h′′(θ, h′).
+Definition 1.7. The function h′′ : R × [−1, 1] →[−1, 1] is
+h′′(θ, h′) := sin
+θ + 2π −2 arcsin(h′)
+2
+
+1[2 arcsin(h′)−3π,2 arcsin(h′)−π)(θ).
+Then let us use h′′ to define f.
+Definition 1.8. The function f : T1
+2π × [0, +∞) × [−1, 1] × [−1, 1] →[0, +∞) is
+f(θ, t, h|h′) :=
+X
+ℓ∈Z
+∂h′′(θ + 2ℓπ, h′)
+∂θ
+Z t
+0
+dt′Q(t −t′, h|h′′(θ + 2ℓπ, h′))Q(t′, h′′(θ + 2ℓπ, h′)|h′).
+Notice that by integrating f over θ one gets exactly Q(2), as in Definition 1.5.
+Then let us also use h′′ to define gk.
+8

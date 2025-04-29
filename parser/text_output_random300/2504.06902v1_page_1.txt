@@ -1,0 +1,90 @@
+A Measurement Device Independent Quantum Key Distribution protocol in the
+service of three users
+Nikolaos Stefanakos,1, 2 Georgios Maragkopoulos,1, 2 Aikaterini Mandilara,1, 2 and Dimitris Syvridis1, 2
+1Department of Informatics and Telecommunications,
+National and Kapodistrian University of Athens, Panepistimiopolis, Ilisia, 15784, Greece
+2Eulambia Advanced Technologies, Agiou Ioannou 24,
+Building Complex C, Ag.
+Paraskevi, 15342, Greece
+Quantum Key Distribution (QKD) is the only theoretically proven method for secure key distribu-
+tion between two users. In this work, we propose and analyze a Measurement Device Independent
+(MDI) protocol designed to distribute keys among three users in a pairwise manner. Each user
+randomly selects a basis, encodes bit values in the phase of coherent states, and sends the resulting
+pulses to a central measurement unit (MU) composed of three beam splitters and three photon de-
+tectors. When the three pulses arrive simultaneously at the MU and under the condition of succesful
+detection of photons, a key bit is distributed to at least one pair of users. This protocol extends
+the foundational phase-encoding MDI protocol introduced by [K. Tamaki, et al., Phys. Rev. A 85,
+042307 (2012)] to three users, but this comes at the cost of introducing a systematic error in the
+implementation of the honest protocol.
+I.
+INTRODUCTION
+Four decades after the introduction of the first Quan-
+tum Key Distribution (QKD) protocol, BB84 [1], the
+field has evolved significantly, driven by the need for prov-
+able unconditional security in realistic use cases. The in-
+troduction of the first Measurement Device Independent
+(MDI) protocol [2] marked a major advancement in the
+QKD field for two reasons. First, the measurement unit
+(MU) was moved to a third party, which can be untrusted
+and potentially controlled by an eavesdropper, but whose
+imperfections do not affect the security of the protocol.
+Second, the MDI protocol increased the achievable dis-
+tance between two users. This advancement is a key point
+for current cutting-edge protocols like Twin-Field [3, 4]
+and Mode-Pairing [5], which generalize the applicability
+of the first MDI protocols [2, 6].
+In this work, we extend the first of the two protocols
+proposed in the seminal paper ”Phase Encoding Schemes
+for MDI QKD with Basis-Dependent Flaw” [6] to a three-
+user scenario.
+Unlike protocols designed for Quantum
+Conference Key Agreement (QCKA) [7–10]which aim to
+establish a shared key among all usersthis protocol fo-
+cuses on the pairwise distribution of keys among the three
+possible user pairs formed by Alice (A), Bob1 (B1), and
+Bob2 (B2). As in the original protocol, there is no need to
+distribute entangled states; instead, the users send their
+encoded coherent pulses to a central MU. When the MU
+announces a successful measurement, the three users re-
+veal their encoding bases. The users with matching bases
+then append a bit to their shared key sequence. The key
+feature of the protocol is the use of a single MU instead of
+three, as would be required in a straightforward approach
+(see Fig. 1). An additional benefit is that base matching
+among all users is not necessary for pairwise key distribu-
+tion, thereby reducing measurement discards by a factor
+of two. In the straightforward scenario, a user discards
+with a probability of 50%, while in the introduced sce-
+nario, the probability of discarding is reduced to 25%.
+However, this approach comes with practical trade-offs:
+it requires the simultaneous arrival of signals from all
+users at the MU, reduces the maximum achievable dis-
+tance between users by a factor of
+√
+3/2 compared to
+the straightforward approach, and introduces a system-
+atic error in the honest protocol, ultimately impacting
+the Secure Key Rate (SKR).
+In this paper, we first present in Section II the re-
+sources available to the users, the details of the MU unit,
+and the overall optical setup of the protocol. In the fol-
+lowing Section (Section III), we proceed with analytical
+derivations of the outcomes, considering two cases: a)
+Bases mismatch, where one user encodes the bit value in
+a different basis than the other two, and b) Bases match,
+where all users select the same encoding basis. The inves-
+tigations aim to align the users’ encodings with distinct
+measurement outcomes at the MU, ensuring that the en-
+coded values remain private to the users, even when mea-
+surement outcomes and information about the bases are
+FIG. 1: (a) A straightforward scheme for distributing keys
+to three users in a pairwise manner using MDI QKD. (b)
+The scheme proposed in this work. Note that in scheme (b),
+the central MU is necessarily more complex than those in
+scheme (a). Assuming a fixed maximum average distance for
+undistorted quantum signal propagation, the maximum
+achievable distance between users in scheme (b) is reduced
+by a factor of
+√
+3/2 compared to scheme (a).
+arXiv:2504.06902v1  [quant-ph]  9 Apr 2025

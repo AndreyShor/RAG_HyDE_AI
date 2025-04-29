@@ -1,0 +1,128 @@
+XXX:10
+Israel et al.
+Table 1. Sample rows of CSV file for South Carolina’s 500-bus model, for 208 substations.
+Lon.
+Lat.
+Sub#
+Sub Name
+Area Name
+Zone
+-81.09
+34.37
+1
+WINNSBORO
+SouthCarolina
+Columbia
+-80.89
+34.14
+2
+COLUMBIA 11
+SouthCarolina
+Columbia
+-81.39
+35.01
+3
+SMYRNA
+SouthCarolina
+York
+-80.62
+33.83
+4
+EASTOVER 2
+SouthCarolina
+Columbia
+...
+...
+...
+...
+...
+...
+-82.25
+33.93
+208
+MC CORMICK
+SouthCarolina
+Midlands
+Table 2. Sample rows of CSV file for South Carolina’s 500-bus model, a continuation from Table ??.
+Sub#
+...
+#Buses
+kV
+Gen(MW)
+Gen(Mvar)
+Load(MW)
+Load(Mvar)
+1
+...
+2
+138
+30.2
+8.05
+2
+...
+2
+138
+93.62
+24.97
+3
+...
+2
+138
+2.18
+0.58
+4
+...
+3
+345
+231.54
+36.67
+...
+...
+...
+...
+...
+...
+...
+...
+208
+...
+1
+138
+16.27
+4.34
+Table 3. 500-bus model - Branches information.
+SubNumberFrom
+SubNumberTo
+1
+1
+19
+1
+167
+1
+2
+2
+26
+2
+2
+195
+Gen Mvar columns, which denote generated megawatts and megavolt-amperes reactive.
+Substations without generation output are identified as transmission substations.
+• Branches data: Table 3 shows the branch information of selected substations in the 500-bus
+case. It lists all transmission lines between two substations. Our tool uses this file to connect
+transmission and generation substations in the radial topology.
+While the CSV file also has load information in megawatts, the proposed model does not currently
+use this information. However, it shows that future distribution substations can also be created to
+be included in the cyber-physical model.
+4.2
+Creation of the cyber-network model
+The code starts by reading user inputs from the settings.ini file, which has parameters such as the
+number of UCCs, the number of BAs, the name of the synthetic power system, and the topology
+(e.g., star, radial, or statistical).
+Once these configuration parameters are defined, the process follows the steps in Fig. 5: cluster
+substation into utilities, generate cyber components, convert data to JSON, and visualize network
+maps and metrics using NetworkX. These steps are described in detail next. Algorithms 1 and 2
+show the pseudocode to create substations, UCCs, and BAs.
+4.2.1
+Cluster Substations into Utilities. Substations are allocated to UCCs using a 𝑘-means
+clustering algorithm, with 𝑁representing the number of utilities specified by the user in the
+settings.ini file. The centroids of these clusters determine the placement of UCCs within star and

@@ -1,0 +1,58 @@
+variable QKD systems developed by several different groups and institutions. The SECOQC network
+demonstrated compatability and interoperability of these different systems, and employed a “hop-by-
+hop” relay scheme, in which a cypher key (to be used for classical encryption) is sent along the chain
+of trusted nodes using one-time pad encryption between each connected pair of nodes. Routing and key
+consumption were also addressed. From 2009 to 2011, the three-node SwissQuantum network was de-
+ployed in Geneva, Switzerland [500]. The keys generated were tested for various applications, including
+high-speed commercial OS layer 2 encryptors (10 Gbit/s Ethernet), research platforms for encryption
+and authentication, and IPSec encryptors.
+In 2010, high-speed QKD systems running at GHz clock
+rates were developed and deployed in Tokyo, enabling encrypted video conferencing over 45km using a
+one-time pad (OTP) [501]. In addition, a key management layer was included to control and coordinate
+key consumption. To date, China has constructed the largest QKD network, spanning over 2,000 km
+and linking cities from Beijing to Shanghai using trusted relays [496]. Furthermore, in 2016 the Micius
+quantum science satellite was launched. Micius has facilitated quantum key distribution between various
+locations in China [496] and Europe and enabled real-time encrypted video calls between Beijing and
+Vienna [502]. The Cambridge quantum network achieved ∼2Mbps key rates coexistent with 100Gbps
+data traffic over metropolitan distances, and used link redundancy to mitigate denial of service risk. A
+thorough overview of QKD networks implemented to date can be found in Ref. [108].
+In terms of DI approaches, MDI-QKD has been field tested in a metropolitan network, where three
+users in a star configuration could communicate with each other through a central untrusted relay [423].
+MDI-QKD systems have been realized in fiber optical links together with classical IP network signals [424,
+425]. Recently, free-space satellite links and fiber optic channels have been integrated for MDI-QKD [503],
+showing improvement to background noise when compared with BB84, and which could greatly increase
+transmission distances. There has also been considerable progress in CV MDI-QKD [504].
+Though these field-tested QKD networks and other important advances have propelled QKD towards
+real-world use, there are still many challenges to be faced before QKD (of any type) can be fully inte-
+grated into the existing cybersecurity infrastrucure. Despite the progress mentioned above, many national
+security organizations and regulatory agencies worldwide still do not classify QKD as a viable replace-
+ment for key distribution based on public-key cryptosystems. To protect against the threat of quantum
+computation, post-quantum cryptography is currently seen as a more cost effective and robust solution
+to key agreement [505–507]. In one form or another, the critical issues most often cited are:
+1. Implementation security - specialty hardware and implementation particularities (laser pulses are
+not single photons, detectors can be vulnerable to side-channel attacks) can introduce additional
+vulnerabilities that may not be considered into theoretical security proofs.
+2. Authentication - Unlike public key cryptosystems, QKD does not provide a method for authenti-
+cation protocols, which are widely used for handshaking, signatures, etc. Moreover, the security of
+QKD relies on a an authenticated classical channel for post-processing.
+3. Trusted Relays - without quantum repeaters, extending QKD to large distances requires interme-
+diate trusted relays, where security depends upon a classical hardware device.
+4. Denial of service risk - If a private key cannot be established, the QKD protocol aborts, opening
+the door to denial-of-service attacks in which the communication channel is shut down.
+5. Cost - special-purpose equipment is required for QKD. These devices, such as single-photon detec-
+tors, are typically expensive, raising costs of installation, operation and maintenance.
+6. Compatibility - QKD needs to coexist and integrate with classical encryption systems and networks,
+which is complex due to the different operational frameworks of quantum and classical cryptography.
+Here we provide a brief description of how these issues are currently being tackled by QKD community.
+Implementation Security. Quantum cryptographic protocols can be shown to be information-theoretic
+secure in principle. However, practical implementations can open the door to a wide range of vulner-
+abilities that might not be considered in security proofs [32, 508]. Thus, implementation security is of
+paramount importance in taking QKD into the real world. Of course QKD is not special in this regard,
+the same is true for all encryption techniques, which are based on security claims or assumptions that
+might not be valid upon implementation. It is essential that all components of any cybersecurity system
+be extensively vetted and routinely tested.
+The effort to achieve implementation security in QKD has been two-fold. On the one hand is the
+effort to remedy the practical issues with specific solutions, either by including additional techniques to
+QKD protocols (as in the case of decoy-state QKD, for example) and/or characterization of the devices,
+or by adapting security proofs to include these practical details. In addition, there has been effort to
+76

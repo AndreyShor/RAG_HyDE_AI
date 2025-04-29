@@ -1,0 +1,108 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+Next, we deﬁne the embedding operator ιN : M(XN) →M(X) by
+ιN(ci)(x) := ρi(x) :=
+X
+k∈Zd
+N
+ci,k11QN
+k (x).
+Dual to it, we introduce the discretization operator ι∗
+N : C(X) →C(XN) by setting
+ι∗
+Nξi,k := (ι∗
+Nξi)k := Nd
+Z
+QN
+k
+ξi dx.
+For the diﬀusive ﬂuxes we introduce ιN,diﬀ: M+(YN,diﬀ) →M(Ydiﬀ) deﬁned by
+ιN,diﬀFi(x) := fi(x) = (fi,e1(x), . . . , fi,ed(x))⊤
+(3.10a)
+where for e ∈E we set
+fi,e(x) = 1
+N
+X
+k∈Zd
+N
+ Z 1
+0
+11QN
+k+θe(x) dθ
+
+Fi,k,e.
+(3.10b)
+Finally, for the reactive ﬂuxes we deﬁne ιN,react : M+(YN,react) →M(Yreact) by
+ιN,reactJr(x) := jr(x) :=
+X
+k∈Zd
+N
+11QN
+k (x)Jr,k.
+(3.10c)
+Using the above embedding operator is is clear that EN(c) = E(ιN(c)) and analogous iden-
+tities hold for other integral functionals as well. Moreover, by construction, s 7→fi,e(x+se) is
+piecewise aﬃne, whereas s 7→fi,e(x+sˆe) is piecewise constant for ˆe ̸= e. Moreover, by deﬁnition
+we have for all i ∈I and all e ∈E the estimate
+Z
+Td|fi,e|(x) dx ≤1
+N
+Z 1
+0
+X
+k∈Zd
+N
+Z
+Td 11QN
+j+eθ(x) dx dθ|Fi,k,e| ≤1
+Nd
+X
+k∈Zd
+N
+|Fi,k,e|
+N
+,
+(3.11)
+and for all r ∈R the estimate
+Z
+Td|jr|(x) dx ≤1
+Nd
+X
+k∈Zd
+N
+|Jr,k|.
+Denoting the discrete L1-norms on L1(Zd
+N) by ∥G∥L1
+N :=
+1
+Nd
+P
+k∈Zd
+N |Gk|, the estimates can be
+written equivalently as
+∀i ∈I, e ∈E :
+∥fi,e∥L1 ≤1
+N ∥Fi,e∥L1
+N,
+∀r ∈R :
+∥jr∥1 ≤∥Jr∥L1
+N.
+To simplify notation, for all N ∈N and y ∈Rd we introduce the shift-operator SN
+y deﬁned by
+SN
+y : L1(Td) →L1(Td),
+SN
+y φ(x) := φ
+
+x + y
+N
+
+mod 1
+
+,
+(3.12)
+where the modulus is applied componentwise.
+The following lemma uses the embeddings deﬁned above to connect the discrete and con-
+tinuous continuity equations (recall CEN from Deﬁnition 3.7).
+16

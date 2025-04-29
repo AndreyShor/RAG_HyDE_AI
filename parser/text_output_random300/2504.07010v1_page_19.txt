@@ -1,0 +1,51 @@
+5. Use {ˆYn, Yn}n∈Itrain to train the shift function, g(ϕ(ˆY )), by minimizing
+P
+n∈Itrain(An −g(ϕ(ˆYn)))2, where ϕ : P ˆY →Rd is an arbitrary feature
+map.
+6. Evaluate the transformed conformity scores, Bn = BC(Yn, ˆYn)−g(ϕ(ˆYn))
+for all n ∈Ical.
+7. Let Qα be the 1−α empirical quantile of the calibration scores, {Bn}n∈Ical.
+8. Let ˆYN+1 be the noisy output of a classically intractable test circuit
+and evaluate g(ϕ(ˆYN+1)).
+9. Return the upper bound for the BC between ˆYN+1 and its ideal (un-
+available) counterpart,
+BC(YN+1, ˆYN+1) ≥g(ϕ(ˆYN+1) + Qα)
+(43)
+which hold with probability 1 −α −gap, with
+gap = 2
+P
+n∈Ical dTV(An −g(ϕ(ˆYn)), AN+1 −g(ϕ(ˆYN+1))
+|Ical| + 1
+(44)
+An = BC(Yn, ˆYn)
+(45)
+ϕ(ˆYn) = (ˆE(ˆYn), ˆE(ˆYn ⊗ˆY T
+n )) =
+ M
+X
+m=1
+ˆYnm,
+M
+X
+m=1
+ˆYn, ⊗ˆY T
+nm
+!
+(46)
+3.2
+Density-ratio estimator
+In all experiments, we use a Logistic Regression (LR) parametric estimator
+for ˆr = PY
+P ˆY ,
+ˆrLR(ˆYn) =
+f(ˆYn)
+1 −f(ˆYn)
+,
+(47)
+f(Y ) = σ(ˆθTϕ(Y )) ∼Prob(Y ∼PY |Y )
+(48)
+where θ ∈Rd, d ∈N+ is an optimized free parameter and ϕ(ˆYn) a fixed
+feature map from {ˆYn1, . . . , ˆYnMshots} to Rd. Other options include matching
+all moments of PY and rP ˆY under the assumption that the distributions
+belong to a Reproducing Kernel Hilbert Space (RKHS) (Sugiyama et al.,
+2012).

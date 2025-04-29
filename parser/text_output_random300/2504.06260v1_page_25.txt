@@ -1,0 +1,56 @@
+Preprint. Under review.
+• Solution to iterate on: We use an iteration criterion inspired by the Markov Chain
+Monte Carlo (MCMC) acceptance criterion. The solution to iterate on (rendered in
+the prompt to the CorrectorSubAgent as “CURRENT CODE”) is (a) the last solution
+if the last solution has equal fitness as the best solution, and (b) the last solution if a
+random float between [0, 1] is less than α = Last Fitness
+Best Fitness, else the best solution.
+• ExecutionHistory: The best solutions, if not already used in context upto a
+maximum of 3 best solutions, in addition to the last N bad(=1) replies, if not already
+in context.
+Evaluator: This returns the feedback for a solution in a ‘score’ dictionary (Left panel, Figure
+3)
+Input Context: An LLM solution.
+Working: The evaluator always returns execution feedback and additionally includes
+subjective feedback from a VerifierLLM if Executability exceeds 90%. Note, this evaluator is
+not aware of the GT target value.
+CorrectorSubagent: This returns an updated solution.
+Input Context: Problem description, Current Code and Feedback, Execution History
+Components: ToolLookupAgent
+Working: This calls the ToolLookupAgent and retrieves its reply. It then includes this reply
+to the rest of the context received from the ControllerAgent to propose the next solution.
+ToolLookupAgent: This calls tools and returns the information retrieved from them.
+Input Context: Feedback
+Components: ToolRegistry
+Working: The LLM is shown tool descriptions and the input context and must return a list
+of tool calls, as structured classes using the Langfun (Peng, 2023) package consisting of the
+tool name and its arguments. If successfully parsed, each tool is called with its arguments
+and the replies are concatenated (see Figure 3 for the feedback and reply for a single step).
+The tools in the registry are:
+1. QueryPhysicsInterfaces: This returns a list of valid physics interfaces.
+2. QueryPhysicsFeatures: This returns the features under an argument interface or a
+list of known features under interfaces.
+3. QueryModelTreeProperties: The LLM must call this tool with a path argument
+(‘/physics/Heat Transfer in Solids/Solid 1’ in Figure 3) to receive the properties
+under the node corresponding to path.
+4. RetrieveAnnotatedSnippets: To call this tool, the LLM must specify a branch – one
+of the conceptual blocks such as physics or geometry – and a query – a brief natural
+language description of a specific step. In Figure 3, the LLM first called this tool
+with the branch ‘geometry’ and the query ‘Create a 2D axisymmetric geometry in...’.
+A retriever then looks up the annotated library and retrieves 3 annotations along
+with their code snippets, most similar to the query made. Thus, this allows the LLM
+to search a library of code snippets to find the correct ways to express certain steps
+in code, simulating how a human unfamiliar with a coding language would look
+up similar examples of code.
+At the end of this experiment, the ControllerAgent saves its best solutions as well as other
+intermediate states. During evaluation, the best solutions are read in and evaluated. If there
+are multiple best solutions (in cases where multiple solutions were able to compute a target
+value), the top best solution is the one that maximizes the following formula: Executability
++ bool(Computed Value) + [(1.0 - Target Relative Error) if (Target Relative Error<1) AND
+(Valid Target) else 0]. The three conditions together prioritize solutions that (1) had high
+executability, (2) were complete enough to export any value, albeit incorrect or the wrong
+quantity and, (3) exported a ‘Valid Target’ within 100% of the desired value.
+The agent experiment on a single problem takes slightly over 12 minutes (ranging from 7-17
+minutes) on average per problem. The dominant factor contributing to this variability is the
+number of LLM queries: in problems where executability crosses 0.90, there will be more
+25

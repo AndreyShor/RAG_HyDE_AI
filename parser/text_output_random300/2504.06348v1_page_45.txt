@@ -1,0 +1,45 @@
+a
+b
+c
+d
+a
+b
+c
+d
+Figure 5: (Left) Number of molecules per species identified as per the QCI protocol. Initially, at t = 0, there
+is a single vibrationally energetic CO2 impinging on the Ir(100) surface and no CO. At about ∼0.55 ps, the
+CO2 count vanishes and the CO count concurrently rises to unity, indicating the conversion of CO2 to CO.
+(Right) Configurational snapshots at selected times (a-d) that show the conversion is indeed related to the
+dissociative adsorption of CO2 on the surface.
+similarity, depending on the simulation goals. Whatever the chosen ground truth or training strategy, the
+main requirement is that the results can be distilled into a relatively small number of weights to be combined
+in a fingerprinting function via simple coherent arithmetic.
+6.1.2
+Surrogate classical molecular dynamics calculation
+To test that our fingerprinting approach can detect various molecular species throughout our quantum
+dynamics simulation, we perform a surrogate classical molecular dynamics for the dissociative adsorption
+of CO2 on an Ir(100) surface. While such a surrogate classical calculation is not expected to be nearly as
+accurate as the quantum one we develop in this work, it is suitable to test our QCI approach. That is
+because at the core of the QCI is a fingerprinting that only involves simple functions of ionic coordinates.
+On a FTQC, our fingerprinting is applied coherently in superposition on a wavefunction, and classically
+we can apply fingerprinting on each element of an ensemble of classical trajectories. We simulate one such
+trajectory here using a simple approximation for the ionic interactions using machine-learned interatomic
+potentials parametrized for catalytic surfaces [89].
+We construct a 4×4 Ir(100) slab with 3 layers and initialize the atomic velocities according to a Maxwell-
+Boltzmann distribution at 300 K. Next, we add a CO2 molecule centered around a hollow Ir site, aligning the
+CO2 major axis parallel to the Ir(100) surface, and imprint a large population of bond-stretching vibrational
+modes to more quickly simulate a dissociation event. We then perform an MD simulation for 20 000 time
+steps, with a time step of 0.2 fs. Next, we apply our QCI function on each frame of the MD trajectory,
+and show the resulting classification in Fig. 5, together with a few snapshots of the corresponding molecular
+configuration. Notably, the fingerprinting approach can successfully detect the breakdown of a CO2 molecule
+into a CO molecule plus an oxygen atom. For completeness, we also include the parameter vector w and the
+scalar b obtained from our logistic regression for defining the fingerprinting function I(u) = Θ(wT u + b) in
+Table 7.
+6.2
+Sampling and coherent sampling
+The initial state preparation presented earlier contains a range of adjustable parameters, including those
+determining the reaction kinematics (initial positions, velocities, incident angles for each reactant CoM,
+motifs on the catalyst surface). In many physical situations, we may be interested in knowing the reaction
+rate suitably averaged over chemically relevant configurations (see Sec. 2.2). We abstractly define a finite
+parameter space S, which includes a subset of configuration space (e.g. initial positions/velocities) and other
+45

@@ -1,0 +1,58 @@
+Preprint. Under review.
+We used the prompt above for the ModelSpecs experiment with Gemini-1.5-Pro. We used
+an identical prompt for Claude-3.5-Sonnet and GPT-4o with the 3rd last line of code in the
+One-Shot example (marked by *) deleted, since it prevented us from querying those LLMs.
+We also used the version of the prompt with this line deleted for the Agent experiment
+using Gemini-1.5-Pro.
+Plan | One-Shot
+You are an experienced COMSOL engineer. You must generate the COMSOL API
+code in JAVA to execute the steps described in the plan below to compute the desired
+TARGET QUANTITY by generating COMSOL JAVA API code. The model creation
+line “‘Model model = ModelUtil.create(”Model”);”’ has already been generated and
+you should not repeat this line. All lines of code must begin with ‘model.‘ You must
+not generate any ‘model.sol...‘ solver code but should ensure that your ‘model.study...‘
+block ends with a ‘model.study(”std1”).run();‘. This will automatically create and
+run the default solver for the problem.
+Use the example provided below to infer how to format your response and generate
+COMSOL code.
+===
+EXAMPLE 0:
+PLAN: ## Implementing the Elliptic Membrane Analysis in COMSOL Multiphysics:
+**1. Model Setup:**
+* **New Model:** Start COMSOL Multiphysics and create a new model.
+* **Space Dimension:** Select 2D for the space dimension.
+* **Physics Selection:** Choose the ”Structural Mechanics Module” and select ”Solid
+Mechanics” as the physics interface.
+* **Study:** Create a new ”Stationary” study.
+**2. Geometry Creation:**
+* **Geometry Primitives:** Use the ”Ellipse” tool to create two quarter ellipses repre-
+senting the outer and inner boundaries. To get a quarter-symmetry geometry, limit
+the sector angle to 90 degrees.
+* Outer Ellipse: Center (0, 0), Semi-axes (3.25, 2.75) meters, sector angle = 90 degrees.
+* Inner Ellipse: Center (0, 0), Semi-axes (2, 1) meters, sector angle = 90 degrees.
+* **Boolean Operations:** Use the ”Difference” operation to subtract the inner ellipse
+from the outer ellipse, creating the quarter-symmetry membrane geometry.
+**3. Definitions:**
+* **Points:** Create an explicit selection for Point O (Point 3).
+**4. Material Properties:**
+* **Material Definition:** In the ”Material” node, define a new material with the
+following properties:
+* Young’s Modulus (E): 2.1e11 Pa
+* Poisson’s Ratio (ν): 0.3
+**5. Physics:**
+* **2D Approximation:** Use the ”Plane Stress” physics approximation, with a
+thickness of 0.1 meters.
+**6. Boundary Conditions:**
+* **Symmetry:** * Select the bottom edge (Boundary 2) and apply a ”Symmetry”
+boundary condition.
+* Repeat the same for the left edge (Boundary 1).
+* **Pressure Load:** Pressure load of 10e6 Pa acting outwards. * Select the outer
+curved edge Boundary 4 and apply a ”Boundary Load” boundary condition with a
+”Pressure load” of magnitude of -10 MPa.
+**7. Meshing:** * **Mesh Creation:** Right-click on the ”Mesh” node and choose
+”Mapped”. * **Mesh Size:** Adjust the mesh size settings to ”Fine”.
+**8. Study Setup:** * **Study Type:** Choose a ”Stationary” study to analyze the
+static equilibrium state. * **Solver Configuration:** Use the default solver settings.
+**9. Solving the Model:** * **Compute:** Click on the ”Compute” button to run the
+finite element analysis.
+32

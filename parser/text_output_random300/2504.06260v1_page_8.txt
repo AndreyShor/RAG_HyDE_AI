@@ -1,0 +1,36 @@
+Preprint. Under review.
+Figure 4: Block-wise executability across 300 samples of code and Gemini-1.5-Pro. The
+physics block has the lowest executability. Error bars denote standard deviations.
+LLMs find it challenging to translate physics reasoning decisions to code.
+We examine
+whether the Plan task is easier than the ModelSpecs task. The comparison between task
+versions is of interest since both demand slightly different skills. ModelSpecs requires
+the composition of planning and reasoning about engineering decisions with translation to
+valid API calls. Eg: In Figure 1, the LLM needs to infer that the correct representation of
+a cylinder’s 2D cross-section is a rectangle. The Plan task explicitly describes all steps to
+be followed in natural language and requires the LLM to only translate them to valid calls.
+The comparison between the two tasks offers a way to decouple the difficulty arising from
+making correct modelling decisions from translating the decisions into calls with the correct
+syntax. If an LLM or a user fared poorly at making correct modelling decisions but could
+reliably translate natural language instructions to API calls, it would find Plan an easier
+task. However, we find that providing an explicit plan doesn’t consistently boost performance on
+FEABench Gold. We hypothesize this could be due to the LLM hallucinating API calls by
+following natural language instructions verbatim. For instance, for Heat Transfer problems,
+the natural language instructions in Plan instruct the LLM to construct a ‘Heat Transfer in
+Solids’ interface. However, the syntactically correct interface name is HeatTransfer. This is
+also observable in the slight drop on Interface Factuality between the two tasks in Table 6.
+Grounding the LLM with API information boosts performance.
+The comparison between
+task formulations indicates that correctly translating decisions to code is a larger bottleneck
+for our dataset than making correct decisions. We now assess performance, with the
+list of physics interfaces and features included in the prompt (PhyDoc In-Context). This
+helps performance, particularly reducing interface hallucinations (factuality: ModelSpecs :
+0.54→1.0, Plan : 0.38→0.85).
+Physics specific blocks are the most challenging.
+Figure 4 analyzes executability across
+LLM solutions by breaking down line-wise executability by the block of code the line
+belongs to. We used the initial set of 20 samples for the 15 problems with the PhyDoc
+In-Context prompt from the Agent experiment. The physics block has the lowest executability
+with a single query. This motivates our focus on evaluation metrics that focus on the physics
+block and tools that seek to help ground the LLM’s code with physics-specific information.
+8

@@ -1,0 +1,62 @@
+4
+FIG. 2.
+Directed, weighted, and signed network of Kuramoto oscillators with motifs supporting monomial eigenfunctions,
+conserved cross-ratios, and symmetry-generated constants of motion. (a) Examples for Thm. 1. (a1) A single source vertex
+trivially satisfies all four conditions of Thm. 1. (a2) Two oscillators satisfying 1.1 and 1.2 always satisfy 1.3. (a3) A 5-cycle
+illustrating 1.3. (a4) A more complex motif yielding a monomial eigenfunction. To construct such a motif, especially to satisfy
+1.3, one can define a symmetric matrix and multiply it by a real, nonzero diagonal one to obtain a symmetrizable matrix
+(1.2, 1.3). (a5) A source complete graph of oscillators with antisymmetric phase-lag matrix induces a monomial eigenfunction.
+(b) Examples for Thm. 2. (b1) Eight globally coupled identical oscillators lead to 8 −3 = 5 conserved cross-ratios. If these
+cross-ratios are to coexist with a monomial, the phase-lag matrix is null. If αjk = π/2, there are 8−2 = 6 WS integrals. (b2) An
+empty subgraph (2.1) of oscillators with identical natural frequencies (2.3) yields a conserved cross-ratio. It can have incoming
+edges (2.2) and influence the time evolution of other oscillators (no restriction on the outgoing edges). (b3) The smallest directed
+star inducing a conserved cross-ratio. (b4) A non-complete, non-empty and non-star graph yielding a conserved cross-ratio.
+(b5) Motif of 5 vertices admitting 5 −3 = 2 functionally independent cross-ratios. (c) Examples for Thm. 3. (c1) Four (blue
+and green) vertices with identical natural frequencies (3.2A) only receiving from a source with identical weights (3.1A) and
+distributed into 3 disjoint parts (3.3A) admit 3 distinct symmetry generators [Lem. S10]. Theorem 3A implies that symmetry
+generators acting on a conserved cross-ratio yield new constants of motion. The green separation line is meant to include all
+vertices below it, forming a disjoint part linked to a symmetry generator. (c2) Four (blue and green) vertices with identical
+natural frequencies ωs −2 Im(As) (3.2B) receiving one edge from source s with weight As (3.1B) are distributed in 3 disjoint
+parts (3.3B). This yields two conserved cross-ratios and 3 symmetries acting on them to form additional constants of motion.
+(c3) The subgraph (i.e., the rest of the network) admits a symmetry generator but yields no new constant of motion.
+binary) leading to N −3 integrals, and complex weights
+satisfying 2A can be included.
+Thus far, we have shown through Theorems 1 and 2
+that the existence of constants of motion is intimately
+related to the presence of specific motifs in the graph
+connecting Kuramoto oscillators.
+It is natural to ask
+whether monomials and cross-ratios are associated to any
+symmetry in the oscillators’ connections or dynamics. In
+fact, the conditions in Theorems 1 and 2 are not condi-
+tions on the existence of graph automorphisms (a.k.a.,
+network symmetries [65]), known to have crucial impli-
+cations for cluster synchronization [66–69]. We shall see
+next that other types of symmetries are particularly use-
+ful, that is, Lie symmetries (a.k.a., point symmetries,
+continuous symmetries): transformations of a solution
+to another solution of a system of differential equations
+[Fig. 1 (b)] [60].
+Lie symmetries.— For variational problems, Noether’s
+theorem guarantees that Lie symmetries are associated to
+constants of motion, thus allowing a reduction of the sys-
+tem’s order [60, 70]. Yet, there is no guarantee that there
+are symmetries underlying the presence of constants of
+motion for non-Lagrangian and non-Hamiltonian sys-
+tems. But finding a Lie symmetry may allow building
+new functionally independent constants of motion from
+known ones [71], which will be our goal.
+The general method to derive Lie symmetries for any
+smooth differential equations involves computing the pro-
+longation of the symmetry group action or its genera-
+tors S [60, Theorem 2.71], often requiring lengthy calcu-
+lations. For Euler-Lagrange problems and Hamiltonian
+systems, the prolongation condition amounts to identify-
+ing commuting operators. As shown below, such simplifi-
+cation is also possible for first-order ordinary differential
+equations (ODEs). Indeed, for
+˙yj = Fj(t, y1, ..., yN) ,
+j ∈V
+(7)
+with Koopman generator U = ∂t + PN
+j=1 Fj(t, y)∂j, the

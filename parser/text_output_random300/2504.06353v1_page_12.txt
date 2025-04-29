@@ -1,0 +1,63 @@
+Parameters (TNPs), which is introduced and described in detail in ref. [40]. Section 6.2 of
+that paper discusses the implementation of the TNP approach in the context of a SCET
+resummation calculation with beam, soft and hard functions, which is what is needed here.
+Our aim here is to make a simple alternative estimate of the resummation uncertainty to
+check our existing MaxDev estimate, and not to replace the latter, so we use a simplified
+version of the TNP method as outlined in the following sections.
+Given that the issues identified earlier in this section are located in the resummation
+region, we focus on this region and do not include matching to the FO cross section.
+Further, to simplify and speed up the calculations, we will perform them for on-shell Z
+boson production and only for the TBj observable; we expect the pattern of results to
+essentially be the same for Drell-Yan and for TCj (the main difference will be some overall
+normalisation difference of all uncertainty estimates due to the different Born level cross
+sections).
+4.3.1
+Overview of Method
+In our resummation formula (and many others), the ingredients are the fixed-order pieces
+(H, B, S) and the non-cusp anomalous dimensions γ (plus the cusp anomalous dimension
+Γ). In order to increase the precision of the resummation from an NnLL′ to Nn+1LL′ we
+need these ingredients to the n + 1-loop order (and the cusp anomalous dimension at n + 2
+loops). At a given order, much of the structure of each of the fixed-order pieces can be
+predicted from its renormalization group equation (RGE) and quantities already known for
+the NnLL′ calculation, such that a full (n+1) loop calculation is only needed to determine
+the µ-independent boundary conditions F, and the (n + 1)-loop anomalous dimensions γ.
+If we were applying the full TNP method of ref. [40] to our NnLL′ prediction, we
+would first augment the calculation by adding all the pieces at the next order that can be
+determined from the RGE along with ingredients that were already known in the NnLL′
+calculation, shifting the central prediction. We would then include nuisance parameters for
+the remaining boundary conditions F and anomalous dimensions γ and Γ, varying these
+by an appropriate amount to generate the theoretical uncertainty. In ref. [40], a proposal
+was made for an appropriate size of these variations by looking at the size of F, γ and Γ
+for various observables. Writing the expansions of F, γ and Γ as:
+F (αs) = 1 +
+X
+n=1
+αs
+4π
+n
+Fn,
+(4.2)
+Γ (αs) =
+X
+n=0
+αs
+4π
+n+1
+Γn,
+(4.3)
+γ (αs) =
+X
+n=0
+αs
+4π
+n+1
+γn,
+(4.4)
+then ref. [40] suggests that the nuisance parameter for Fn+1, γn+1 and Γn+1 should be:
+Fn+1 (θn+1) =4Cr (4CA)n n! θn+1,
+(4.5)
+Γn+1 (θn+1) =2Cr (4CA)n+1 θn+1,
+(4.6)
+γn+1 (θn+1) =4Cr (4CA)n+1 θn+1.
+(4.7)
+– 11 –

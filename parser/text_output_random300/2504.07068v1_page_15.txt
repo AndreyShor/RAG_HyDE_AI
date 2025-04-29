@@ -1,0 +1,53 @@
+15
+Z2 := B1K1ZR1R′
+1, and the following holds
+F(σB2K2R2
+2
+, τ B2K2R2)
+≥F(σB1K1R1
+1
+⊗σB2K2R2
+2
+, τ B1K1R1B2K2R2)
+≥1 −γ,
+By the above deﬁnitions, we obtain
+2a(ρ1 ⊗ρ2, γ) = I(B1B2 : R1R′
+1R2R′
+2)τ
+(B7)
+≥I(B1 : R1R′
+1)τ + I(B2 : R2R′
+2)τ
+(B8)
+≥2a(ρ1, γ) + 2a(ρ2, γ).
+(B9)
+where the second line is due to Lemma 14. The last line follows from the deﬁnitions of a(ρ1, γ) and a(ρ2, γ).
+4. The function is convex for γ ≥0, so it is continuous for γ > 0. Furthermore, since the function is non-increasing,
+the convexity implies that it is lower semi-continuous at γ = 0. On the other hand, since the ﬁdelity and the
+quantum mutual information are all continuous functions of CPTP maps, and the domain of the optimization is
+a compact set, the optimum is attained [10, Thms. 10.1 and 10.2], so, the function is also upper semi-continuous
+at γ = 0. Combining the two observation, the function is continuous at γ = 0.
+■
+Appendix C: Miscellaneous Lemmas and Facts
+Lemma 13 (Alicki-Fannes [11]; Winter [12]). Let ρ and σ be two states on a bipartite Hilbert space A ⊗B with trace
+distance 1
+2∥ρ −σ∥1 ≤ǫ, then
+|S(A|B)ρ −S(A|B)σ| ≤2ǫ log |A| + (1 + ǫ)h(
+ǫ
+1 + ǫ).
+The quantum mutual information also satisﬁes a property called superadditivity.
+Lemma 14 ([13]).
+Let ρA1R1 and σA2R2 be pure quantum states on composite systems A1R1 and A2R2.
+Let
+N A1A2→B1B2 be a quantum channel, and ωB1B2R1R2 := N A1A2→B1B2(ρA1R1 ⊗σA2R2). Then,
+I(B1B2 : R1R2)ω ≥I(B1 : R1)ω + I(B2 : R2)ω.
+We apply quantum state redistribution [14, 15] as subprotocol to construct our direct (achievability) proofs, which
+can be summarized as follows.
+Theorem 15 (Quantum state redistribution [14, 15]). Consider an arbitrary tripartite state on ACB, with puriﬁcation
+|ψ⟩ACBR. Consider n copies of the state for large n, on systems A1, · · · An, C1, · · · Cn, B1, · · · Bn, R1, · · · Rn. Suppose
+initially Alice has systems A1, · · · An, C1, · · · Cn, and Bob has systems B1, · · · Bn. Then, there is a protocol transmitting
+Q = n( 1
+2I(C : R|B) + ηn) qubits from Alice to Bob, and consuming nE ebits shared between them, where Q + E =
+S(C|B), so that the ﬁnal state is ǫn-close to (|ψ⟩ACBR)⊗n but C1, · · · Cn is transmitted from Alice to Bob, and such
+that {ηn}, {ǫn} are vanishing non-negative sequences.
+The properties of Koashi-Imoto decomposition are stated in the following theorem.

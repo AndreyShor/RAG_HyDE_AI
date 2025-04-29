@@ -1,0 +1,53 @@
+logistic regression or support vector machines with linear kernels), trained on the information encoded by IXα
+over a relevant subset of the configuration space. In other words, Ifeat
+Xα is the model trained on the classical
+data {(FXα(x), IXα(x))}. We refer to ˜IXα as the fingerprint for molecule Xα. A set of M fingerprints are
+compiled to form the fingerprint-based species counters via CX1,...,XM defined above (viewing the fingerprints
+acting on the appropriate subspace of R3ηion).
+By construction, machine learning models involve layered compositions of linear functions and a simple
+nonlinear function (e.g.
+tanh).
+As before, the compiler appends additional logic onto the fingerprints
+functions, which can be also be implemented coherently, possibly with the use of extra ancilla (to coherently
+implement classically irreversible logic).
+Hence, coherent implementation of both the feature map and
+the feature indicator map (and therefore ˜IXα), and additional compiler logic only utilizes straightforward
+coherent arithmetic and logic. The full expression for the proposed form of the fingerprinting function is
+detailed in Sec. 6. Critically, it is obtained from a simple logistic regression model, involves only additions
+and multiplications, and requires only ionic distances as input.
+Readout
+We may either directly measure the chemical species counts or we may implement amplitude estimation.
+For the latter, we first flag a subset of the count registers indicating a subspace of interest, e.g. all pieces of
+the wavefunction that contain a desired set of product molecules, perform amplitude amplification on that
+subspace, and hence measure the amplitude for which such products occur as a result of the reaction, with
+quadratic improvement over naive sampling in terms of the total end-to-end quantum resources..
+In summary, in this framework, collections of simple ionic configuration features, such as bond lengths
+or bond angles, can be used to classify chemical species via a classical machine learning model, and the
+resulting feature indicator maps are tabulated for all desired chemical species. Composition of the feature
+maps and the learned feature indicator gives chemical fingerprints, which are then mapped to species counts
+via a reaction-specific compiler. These fingerprint-based species counters are coherently implemented using
+arithmetic and logic in order to identify and evaluate production rates for all chemical species of interest
+in the wavefunction of a chemical reaction. Algorithmic implementation of the fingerprints, along with a
+classical simulation to exemplify and validate the QCI protocol, are discussed in detail in Sec. 6.
+2.4
+Results for a sequence of increasingly challenging applications
+We consider 3 classes of chemical reactions to exemplify our approach. In each of the classes, there are one
+or more problem instances, where an instance is an exact specification of pseudoions, supercell, and basis.
+Table 1 displays all specifications for the problem instances. Here, |G|, |G| denote the sizes of the plane-wave
+bases for electrons and pseudoions, determined by the respective momentum cutoff vectors Λ, Λ. Note that
+Λtrunc is a hard-cutoff vector for the pseudoion-pseudoion interaction (for details, see Sec. 3.1 and Sec. 3.2).
+The 3 classes represent:
+1. Ammonia - Boron Trifluoride: We consider a typical Lewis acid-base interaction NH3+BF3 ⇌NH3BF3,
+where NH3 donates its sp3 lone-pair to the vacant p orbital of the BF3 to form a dative covalent bond.
+This simple system is fundamental in understanding electron donation, charge transfer, and bond
+stabilization, key processes in catalysis and molecular recognition. There is only one instance in this
+class.
+2. Direct Methane to Methanol (DMTM): Two-dimensional transition metal doped Boron-Nitride (BN)
+is considered an interesting class of catalysts that can be used to convert methane to methanol, a
+highly significant process in scientific and industrial applications to remove and economically repurpose
+(into fuel, chemical feedstock, etc.) the potent greenhouse gas, methane. We consider 4 increasingly
+demanding representations of such a system divided into 1 molecular instance and 3 extended instances.
+The molecular system is a Pd-O complex bonded to 3 NH2 groups. The extended systems are of the
+form of m × m conventional unit cells with 1 B and 1 N atom each, and a single B atom replaced by
+a Pd-O complex. All instances have a single CH4 molecule.
+14

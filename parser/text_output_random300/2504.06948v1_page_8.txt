@@ -1,0 +1,109 @@
+8
+Theorem III.6. Let A ∈Cn×n, T > 0, and the parameters m and k ≥3 be chosen such that
+I −e−iAhRi
+kk(Ah)
+
+2 ≤1,
+∀i = 1, . . . , m,
+(25)
+where h = T/m. Denoting by κ the condition number of Lm,k,p(Ah). Then
+1. if A is Hermitian and negative semi-definite, then
+Lm,k,p(Ah)−1
+2 ≤6(m + p)
+p
+k log k
+(26)
+and
+κ ≤3(m + p)
+p
+k log k (6 + ∥Ah∥2) .
+(27)
+2. if ∥Ah∥2 ≤1, then
+Lm,k,p(Ah)−1
+2 = O
+
+C(A)(m + p)
+p
+k log k
+
+,
+and
+κ = O
+
+C(A)(m + p)
+p
+k log k
+
+,
+where C(A) := maxt∈[0,T ] ∥exp(At)∥2.
+In summary, both of the two cases lead to
+κ = O
+
+C(A)(m + p)
+p
+k log k∥Ah∥2
+
+.
+Remark III.7. One advantage of the Padé approximation over the Taylor approximation is that when A
+is Hermitian and negative semi-definite, the spectral norm of the inverse of Wk(Ah) and Lm,k,p(Ah) are
+independent of ∥Ah∥2. In contrast, for their counterparts, Mk(Ah) and Cm,k,p(Ah), the spectral norms may
+grow exponentially with ∥Ah∥2. To illustrate this, observe that
+C−1
+m,k,p(Ah)
+
+2 ≥
+M −1
+k (Ah)
+
+2 ,
+and
+M −1
+k (Ah) · (e1 ⊗In) =
+
+
+In
+Ah
+(Ah)2
+2!...
+(Ah)k
+k!
+
+
+.
+When A is Hermitian, we then have
+∥M −1
+k (Ah)∥2 ≥
+v
+u
+u
+t
+k
+X
+j=0
+∥Ah∥2j
+2
+(j!)2
+≥
+1
+√
+k + 1
+k
+X
+j=0
+∥Ah∥j
+2
+j!
+≈exp (∥Ah∥2)
+√
+k + 1
+.
+(28)
+C.
+Block-encoding of Lm,k,p(Ah)
+In this section, we implement the block-encoding of Lm,k,p(Ah).
+The definition of block-encoding is
+provided in Appendix B. We assume:
+• The parameters n, m, k + 1, and p are powers of two, specifically n = 2n, m = 2m, k + 1 = 2k, and
+p = m · (k + 1) = 2m+k. The corresponding registers are denoted as |·⟩n, |·⟩m, and |·⟩k, where the
+subscript indicates the number of qubits in this register. Additionally, a superscript a denotes that the
+register contains ancilla qubits.

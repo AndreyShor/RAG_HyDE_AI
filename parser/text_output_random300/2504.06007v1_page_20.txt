@@ -1,0 +1,74 @@
+CAMulator
+B.2
+Global moisture budget conservation scheme
+For an air column, the time tendency of total precipitable water (Mv) is governed by the balance between the vertically
+integrated moisture flux divergence, evaporation, and total precipitation:
+∂
+∂tMv = 1
+g
+∂
+∂t
+Z p0
+p1
+qdp = −∇· 1
+g
+Z p0
+p1
+(vq)dp −E −P
+(14)
+Here, q represents the specific total water content, while E and P correspond to evaporation and total precipitation,
+respectively, with units of kg · m−2 · s−1.
+On a global scale, the divergence term in equation (14) vanishes, implying that the global sum of Mv is primarily
+modulated by the spatially averaged evaporation (⟨E⟩) and precipitation (⟨P⟩), with an additional residual term ϵm
+indicating conservation errors:
+−
+∂Mv
+∂t
+
+−⟨E⟩−⟨P⟩= ϵm
+(15)
+By convention, downward precipitation results in a positive ⟨P⟩, whereas ⟨E⟩is typically negative due to upward
+evaporation.
+To enforce moisture budget closure, precipitation is adjusted during the correction step via a multiplicative factor:
+P ∗(t1) = P (t1) ⟨P ∗(t1)⟩
+⟨P (t1)⟩,
+⟨P ∗(t1)⟩= −
+Mv (t1) −Mv (t0)
+∆t
+
+−⟨E (t1)⟩
+(16)
+where ⟨P ∗(t1)⟩denotes the globally adjusted precipitation necessary to achieve moisture conservation. This correction
+is uniformly applied across all grid points.
+B.3
+Global total atmospheric energy conservation scheme
+For a given air column, its vertically integrated total atmospheric energy (A) is defined as follows:
+A = 1
+g
+Z p0
+p1
+(CpT + Lvq + Φs + k)dp
+(17)
+The terms on the right side of the equation (17) are thermal energy, latent heat energy, potential energy, and kinetic energy,
+respectively. Lv is the latent heat of vaporization, and Φs is the geopotential at the surface. Kinetic energy (k) is defined
+as k = 0.5 (v · v). The specific heat capacity of air at constant pressure (Cp) is defined as Cp = Cpd(1 −q) + Cpvq.
+The formulation of equation (17) has some limitations, which will be addressed in a separated section below.
+The tendency of A is determined by the divergence of vertically integrated moist static energy (h = CpT + Lvq + Φ),
+kinetic energy, and other energy sources and sinks:
+∂
+∂tA = −∇· 1
+g
+Z p0
+p1
+v (h + k)dp = RT −FS
+(18)
+Where RT and FS are net radiation and energy fluxes on the top of the atmosphere and the surface.
+RT = TOAnet + OLR
+FS = Rshort + Rlong + Hs + Hl
+(19)
+Where TOAnet is the top-of-atmosphere net solar radiation, OLR is outgoing longwave radiation. Rshort, Rlong, Hs,
+and Hl are the surface net solar radiation, surface net longwave radiation, surface net sensible heat flux, and surface net
+latent heat flux, respectively. Frictional heating is ignored in FS.
+For global sum, the divergence term in equation (18) is zero, and the global sum of the tendency of A is balanced by its
+energy sources and sinks, subject to a residual term:
+20

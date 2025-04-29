@@ -1,0 +1,145 @@
+The joint Laplace functional
+55
+satisfies the conditions required in the statement of Corollary 6.5. Therefore, for ε > 0 as fixed above
+and for s ≥0 sufficiently large, it holds almost surely that
+lim inf
+t→∞E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t(x)µγ,t(dx)
+Fs
+
+≥
+
+exp
+
+−(ea⋆+ ε)Tγµγc,s([0, 1]d)
+
+−ε
+
+1Es,R ,
+lim sup
+t→∞
+E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t(x)µγ,t(dx)
+Fs
+
+≤
+
+exp
+
+−(ea⋆−ε)Tγµγc,s([0, 1]d)
+
++ ε
+
+1Es,R + 1Ec
+s,R .
+Thanks to [DRSV14a, Theorem 4], the sequence of random measure (µγc,s)s≥0 converges as s →∞
+almost surely to µγc in the topology of vague convergence. Furthermore, we can extract positive
+diverging sequences (sn)n∈N and (Rn)n∈N such that 1Esn,Rn converges almost surely to 1 as n →∞.
+This follows since, thanks to [Mad15, Lemmas 3.1, 3.2, 3.3] (see also [MRV16, Lemma A.2]), we have
+that P(Es,R) converges to 1 as s, R →∞. In particular, this shows that the following convergences
+hold almost surely
+lim
+n→∞lim inf
+t→∞E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t(x)µγ,t(dx)
+Fsn
+
+≥exp
+
+−(ea⋆+ ε)Tγµγc([0, 1]d)
+
+−ε ,
+lim
+n→∞lim sup
+t→∞
+E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t(x)µγ,t(dx)
+Fsn
+
+≤exp
+
+−(ea⋆−ε)Tγµγc([0, 1]d)
+
++ ε .
+Therefore, the conclusion follows by arbitrariness of ε > 0.
+6.4
+Stable convergence
+The goal of this section is to prove Proposition 2.17, from which Theorem C follows immediately.
+Proof of Proposition 2.17. Forn ∈N and γ >
+√
+2d, we consider the collection of measures (µγ,i)i∈[n]
+introduced in the statement of Theorem C. We recall that we need to check that, for all (φ, (fi)i∈[n]) ∈
+C∞
+c (Rd) × (C+
+c (Rd))n, the following holds
+lim
+t→∞E
+
+exp(i⟨X, φ⟩)
+n
+Y
+i=1
+exp(−µγ,t,i(fi))
+
+= E
+h
+exp(i⟨X, φ⟩) exp(−ea⋆µγc(Tγ))
+i
+,
+where here, to simplify the notation, we have omitted the dependence of Tγ on (fi)i∈[n], and where
+we recall that ea⋆= β(d, γ)a⋆with a⋆as defined in (2.11).
+We consider the sequence (sn)n∈N introduced in the statement of Lemma 6.7. For n ∈N, we
+consider u, t ≥0 such that u < sn < t, and we note that
+E
+
+exp(i⟨X, φ⟩)
+ n
+Y
+i=1
+exp(−µγ,t,i(fi)) −exp(−ea⋆µγc(Tγ))
+
+≤
+E
+
+exp(i⟨Xu, φ⟩)
+ n
+Y
+i=1
+exp(−µγ,t,i(fi)) −exp(−ea⋆µγc(Tγ))
+
++ 2E
+hexp(i⟨X, φ⟩) −exp(i⟨Xu, φ⟩)
+
+i
+,
+where we simply used the triangle inequality and the fact that the function x 7→e−x is bounded by 1
+for x ≥0. For the term appearing in the second line of the above display, we note that it is equal to
+E
+
+exp(i⟨Xu, φ⟩)E
+ n
+Y
+i=1
+exp(−µγ,t,i(fi)) −exp(−ea⋆µγc(Tγ))
+ Fsn
+ ,

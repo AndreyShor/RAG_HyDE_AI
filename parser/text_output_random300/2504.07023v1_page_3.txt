@@ -1,0 +1,53 @@
+Swinging small quantum systems out of available values of control parameters
+3
+any g. Already at this level it is interesting to ask the question if it is possible to engineer
+time evolution of the intensity g(t) such that two different ground states, i.e., the initial
+|ini⟩= |Ψ0(g1)⟩and the target |tar⟩= |Ψ0(g2)⟩state, are connected (as fast as possible)
+by unitary finite-time evolution determined by H(g(t)).
+Formally this question can be
+formulated as an optimization problem for finding the intensity g(t) maximizing the final
+fidelity
+F(g(t), T) = |⟨tar|T exp
+"
+−i
+¯h
+Z T
+0 H(g(t))dt
+#
+|ini⟩|2,
+(3)
+where T is the time-ordering operator and T is the total duration. In our work, to calculate
+resulting fidelity for a given g(t), we perform the time evolution of the state of the system
+by solving the Schr¨odinger equation written in the basis of Fock states using the MATLAB
+function ode45 which is based on the Runge-Kutta method.
+At this point, it is important to mention that physically this kind of optimization is not
+sufficiently well-defined since it still does not take into account experimental limitations on
+control intensity g(t). For example, although it is mathematically possible, in practice, it is
+not feasible to change the intensity arbitrarily fast. Typically, its amplitude is also limited
+to some well-defined, experimentally accessible range. Therefore, we should consider these
+limitations when constructing the control protocol. In the following, we assume that the
+intensity g(t) can be easily changed only in some range g ∈[gA, gB]. From the physical
+engineering point of view, the most interesting cases are of course those in which target
+interaction g2 is essentially outside the range [gA, gB], i.e., when the target state cannot
+be attained with any adiabatic-like protocol. To check these scenarios we consider three
+substantially different accessible ranges: (i) g2 > gB = −gA; (ii) gA = 0, gB < g2; (iii)
+−g2 < gA, gB = 0. Additionally, to avoid nonphysical rapid changes of the control parameter,
+we introduce an additional parameter M encoding the number of equally spaced time points
+in period T at which the value of g(t) is optimized. Between these points, the value of g(t)
+is interpolated smoothly via cubic splines (standard interp1 function in MATLAB).
+After setting up the optimization function F and the control protocol g(t), we now
+employ the optimal control theory to optimize the fidelity F, to estimate the quantum
+speed limit TQSL, and to obtain the optimal control field g(t). We wish to determine the
+temporal shape of g(t) for which the final fidelity F(g(t), T), for a chosen physical limitation
+established by gA and gB, is saturated as close to 1 as possible. To achieve this goal, we
+optimize g(t) to obtain the maximal possible fidelity F(g(t), T) for a given T. Given T,
+we gradually increase M and repeat the optimization.
+In general, the fidelity obtained
+converges upon increasing M. In such a case, the optimization for the given value of T is
+stopped. Then we increase T and do the optimization with this given T. We repeat this
+procedure until fidelity is saturated above a given threshold. The choice of the threshold
+value F depends on the quantum system to be optimized, as well as the precision wished
+to obtain. As the precision increases, in general, the total duration also has to be increased.
+The minimal duration obtained numerically is a good approximation of the quantum speed
+limit TQSL. In our approach, we choose the Broyden-Fletcher-Goldfarb-Shanno method as
+the optimization algorithm [26]. This method can be understood as a quasi-Newton method

@@ -1,0 +1,41 @@
+• ℏΩIndependence (or weak dependence): At Nf
+max = 300, the predic-
+tions should be stable with respect to the ℏΩvariations. We impose
+the maximal allowable deviations of 2 keV for energies and of 0.002 fm
+for radii.
+• Convergence Principle (for energies only): For each network in the
+ensemble, a critical model space Nc
+max is deﬁned such that the network
+predictions for this model space ﬁt the following two conditions. (1) In
+the model space Nmax = Nc
+max, the diﬀerence between the predicted
+maximal and minimal energies in the range of ℏΩvalues included in the
+prediction array do not exceed 20 keV. (2) The diﬀerence between the
+predicted minimal energy values in adjacent model spaces Nmax = Nc
+max
+and Nmax = Nc
+max + 2 do not exceed 1 keV.
+From the networks that meet these criteria, the 20% with the highest
+Nc
+max values are discarded to ensure fast enough convergence behavior.
+• Loss-Based Filtering: The 5% of networks with the largest loss function
+values at the end of training are also discarded.
+Outlier Filtering. Following the above initial selection procedure, an addi-
+tional outlier ﬁltering step is performed [18]. For each neural network, pre-
+dictions at Nmax = Nf
+max are taken. In the case of energy predictions, the
+minimal value is determined for the range of ℏΩvalues. For the radius pre-
+dictions, the arithmetic mean is calculated for the range of ℏΩ.
+This yields a distribution of extrapolated energy or radius values in the
+network ensemble. To remove outliers from this distribution, we apply the
+boxplot rule as described in Ref. [29].
+A neural network is excluded from further statistical analysis if it fails
+to meet any of the above selection criteria. This ensures that only models
+exhibiting stable and physically consistent predictions contribute to the ﬁnal
+ensemble results, enhancing the reliability of the overall approach.
+Final Estimation and Uncertainty Quantiﬁcation. For the ﬁltered prediction
+array at Nf
+max, the median value is computed and serves as the ﬁnal esti-
+mate of the observable. The interquartile range between the 25th and 75th
+percentiles is used as a measure of the extrapolation uncertainty.
+8

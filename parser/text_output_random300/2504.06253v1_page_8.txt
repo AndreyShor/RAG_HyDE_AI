@@ -1,0 +1,80 @@
+8
+•
+Bhattacharyya et al.
+0
+50
+100
+150
+200
+250
+Day
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+1.6
+Price
+(a)
+Brownian Motion Price Data
+1.0
+0.5
+0.0
+0.5
+1.0
+1.0
+0.5
+0.0
+0.5
+1.0
+(b)
+Travelling Salesman Optimal Route
+Optimal Cycle
+All Edges
+(c)
+MIS-GNP
+MIS
+(d)
+MIS-NWS
+MIS
+Fig. 1. Visualization of example problem instances. From left to right, (a) geometric Brownian prices versus timestep (days),
+(b) an example Travelling Salesman optimal route, (c) an example Erdős–Rényi graph (max independent set in blue), (d) an
+example Newman–Watts–Strogatz graph (max independent set in blue)
+The second is the optimal sampling probability,
+PQ =
+∑︁
+|𝜙Q⟩
+|⟨𝜙Q|𝜓Q⟩|2
+where
+⟨𝜙Q|𝐻Q
+𝐴|𝜙Q⟩= 𝐸Q
+max,
+PM =
+∑︁
+|𝜙M⟩
+|⟨𝜙M|𝜓M⟩|2
+where
+⟨𝜙M|𝐻M
+𝐴|𝜙M⟩= 𝐸M
+max.
+(26)
+Because the superscript on 𝛼, P will be made clear by the warmstart in consideration, it will be dropped from
+here on.5
+Because 𝛼, P ∈[0, 1] by construction, they serve as a comparable performance metric for the different warmstarts
+applied to either 𝐻Q
+𝑄or 𝐻M
+𝐴.6 In principle, one could compute (𝛼, P) for the Max-Cut case first, or first project
+down onto the QUBO space and then compute (𝛼, P). Because of how these metrics are defined, either procedure
+for computing the metrics gives the same result, allowing for a fair comparison.
+3.3
+Example Problems Instances
+Representative quadratic optimization problems were utilized for benchmarking, with most being non-QUBO-
+Relaxed. These example problems include
+• Random QUBOS. These are QUBOs where the matrix elements of 𝑄are chosen either uniformly from
+[−1, 1] or discretely from {−1, 1}.
+5Obtaining the optimal solution to either the QUBO or Ising problem by measuring the QAOA output requires sufficiently large P. With that
+being said, there is no way to directly optimize P without knowing the optimal solution ahead of time, so QAOA optimizes the expectation
+directly instead, which is turn optimizes for the approximation ratio 𝛼.
+6The approximation ratio 𝛼is not evenly distributed over states. See Appendix D
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

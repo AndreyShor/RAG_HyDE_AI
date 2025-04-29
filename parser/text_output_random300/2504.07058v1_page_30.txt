@@ -1,0 +1,95 @@
+5
+Conclusion
+This paper presents Physics-Informed Neural Networks (PINNs) for approximating solutions to partial differential
+equations in the modeling of low-grade brain tumors.
+The approach involves training a neural network to
+approximate classical solutions by minimizing the residuals of the governing PDE. Both well-posed problems
+(with initial and boundary conditions) and ill-posed problems (without complete initial or boundary data) are
+considered, using a gradient-based optimization method. Theoretical error bounds for the PINN approximation
+are derived, and both forward and inverse numerical experiments are conducted to demonstrate the effectiveness
+of PINNs in solving linear and nonlinear PDEs efficiently. Glioblastoma is a frequently occurring malignant brain
+tumor in adults, characterized by rapid progression and an unfavorable prognosis. Standard treatment typically
+involves a combination of surgery, radiation therapy, and chemotherapy. In recent years, mathematical modeling
+has played a crucial role in studying brain tumors under both treated and untreated conditions. This study
+presents a mathematical model for glioblastoma, integrating key factors of tumor growth: cancer cell diffusion and
+proliferation rates. The PINN method was applied to obtain numerical solutions for the nonlinear biharmonic
+EFK equation, which arises in brain tumor dynamics, as well as the Burgesss equation. A comparison with
+other mesh-less local weak-form methods demonstrated that the PINN Algorithm effectively solves forward and
+inverse nonlinear fourth-order PDEs, particularly the EFK equation and the first-order Burgesss equation relevant
+to brain tumor modeling. The results strongly correlate with established exact solutions, while graphical and
+tabular analyses indicate that the advanced PINNs method achieves superior accuracy in brain tumor modeling,
+exceeding traditional computational techniques. We derive rigorous error bounds for PINNs and perform numerical
+experiments to assess their accuracy in solving both linear and nonlinear equations. Additionally, we establish the
+convergence and reliability of the neural network.
+Declaration of competing interest
+The authors declare that they have no competing interests.
+Acknowledgment
+The first author acknowledges the Ministry of Human Resource Development (MHRD), Government of India, for
+providing institutional funding and support at IIT Madras.
+Appendix
+An estimate for the generalization error of the given equation is derived for forward problems.
+Appendix E.1. Let 𝑢∈𝐶2(D × [0,𝑇]) be the unique classical solution of the Burgess equation (2.7), where the
+source term 𝑅satisfies Lipchitz condition (Appendix E.6). Consider 𝑢∗= 𝑢𝜃∗, a PINN approximation obtained
+through Algorithm 2.1, corresponding to the loss functions (2.31) and (2.32). Then, the generalization error (2.34)
+satisfies the following bound:
+E𝐺⩽𝐶1
+
+E𝑡𝑏
+𝑇+ E𝑖𝑛𝑡
+𝑇
++ 𝐶2(E𝑠𝑏
+𝑇)
+1
+2 + (𝐶𝑡𝑏
+𝑞𝑢𝑎𝑑)
+1
+2 𝑁−𝛼𝑡𝑏
+2
+𝑡𝑏
++ (𝐶𝑖𝑛𝑡
+𝑞𝑢𝑎𝑑)
+1
+2 𝑁−𝛼𝑖𝑛𝑡
+2
+𝑖𝑛𝑡
++ 𝐶2(𝐶𝑠𝑏
+𝑞𝑢𝑎𝑑)
+1
+4 𝑁−𝛼𝑠𝑏
+4
+𝑠𝑏
+
+,
+(5.1)
+where the constants are given by:
+𝐶1 =
+√︃
+𝑇+ (1 + 2𝐶𝑅)𝑇2𝑒(1+2𝐶𝑅)𝑇,
+𝐶2 =
+√︃
+𝐶𝜕D(𝑢, 𝑢∗)𝑇
+1
+2 ,
+𝐶𝜕D = 0.5|𝜕D|
+1
+2
+
+∥𝑢∥𝐶1([0,𝑇]×𝜕D)+∥𝑢∗∥𝐶1([0,𝑇]×𝜕D)
+
+.
+(5.2)
+The constants 𝐶𝑡𝑏
+𝑞𝑢𝑎𝑑= 𝐶𝑡𝑏
+𝑞𝑢𝑎𝑑(∥ℜ2
+𝑡𝑏,𝜃∗∥𝐶2), 𝐶𝑠𝑏
+𝑞𝑢𝑎𝑑= 𝐶𝑡𝑏
+𝑞𝑢𝑎𝑑(∥ℜ2
+𝑠𝑏,𝜃∗∥𝐶2), and 𝐶𝑖𝑛𝑡
+𝑞𝑢𝑎𝑑= 𝐶𝑖𝑛𝑡
+𝑞𝑢𝑎𝑑(∥ℜ2
+𝑖𝑛𝑡,𝜃∗∥𝐶0) arise
+from the quadrature error.
+Proof. The proof follows the approach of [35] (see Theorem 3.1). The authors briefly discuss a related argument
+in [46].
+□
+30

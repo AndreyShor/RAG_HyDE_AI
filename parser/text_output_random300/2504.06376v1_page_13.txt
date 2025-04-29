@@ -1,0 +1,43 @@
+XX:12
+Quantum Combine and Conquer
+Figure 5 An upper hull with n = 36 and h = 6. Consecutive blocks of points are colored in
+alternating purple and green. The bridge edges discovered are shown in purple, and the dotted and
+dashed lines starting from block S2 indicate how the algorithm handles left turns. The bridge edge
+between S4 and S5 forms a left turn relative to the previous dotted bridge edge, so both are popped
+and a new bridge edge is found between S3 and S5. This is repeated until no left turns are formed,
+giving the solid purple line. Finally, the bridge edges do not close the hull in some blocks, which is
+where we run the quantum Jarvis march to find the edges of the upper hull shown in red.
+Algorithm 7 QuantumConvexHull(Uin)
+Require: Uin: A unitary that encodes the lexicographically sorted data [d0, . . . , dn−1]
+1: Let h = 4.
+2: while True do
+3:
+B = FindBridgeEdges(h)
+4:
+for j ∈[0, 1, . . . , h −1] do
+5:
+QuantumBlockJarvisMarch(j, h, B)
+6:
+if the total number of points found exceeds h then
+7:
+h = 2h
+8:
+else
+9:
+Print all the points in the output register of each block and terminate the loop.
+set S. Since P
+j hj ≤h, the total running time for all the calls to QuantumJarvisMarch is
+˜O(
+√
+nh). Finally, printing the h discovered points takes O(h) time.
+◀
+In an appendix, we give a lower bound for quantum convex hull that shows our algorithm
+is optimal up to polylogarithmic factors.
+5
+Discussion
+Afshani, Peyman, and Chan [1] give an instance-optimal classical algorithm for finding
+2D convex hulls, which adapts the algorithm by Kirkpatrick and Seidel [22] to run in
+O(n(H(S) + 1)) time, where H(S) is a classical-computing structural entropy measure that
+is never more than O(log h). An interesting direction for future work would be to determine
+if there is a quantum convex hull algorithm that is instance optimal based on a quantum
+structural entropy measure.

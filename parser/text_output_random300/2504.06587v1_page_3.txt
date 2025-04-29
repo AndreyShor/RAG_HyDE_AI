@@ -1,0 +1,151 @@
+SigChord: Sniffing Wide Non-sparse Multiband Signals for Terrestrial and Non-terrestrial Wireless Networks
+MobiSys ’25, June 23–27, 2025, Anaheim, California, US
+0.0 0.2 0.4 0.6 0.8 1.0
+Frequency (GHz)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Amplitude
+(a)
+0.0 0.2 0.4 0.6 0.8 1.0
+Frequency (GHz)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Amplitude
+(b)
+0.0 0.2 0.4 0.6 0.8 1.0
+Frequency (GHz)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Amplitude
+(c)
+Figure 3: CS recovered [58] spectrum under different sam-
+pling rates with SNR of 10dB. (a) Original; (b) Recovered at
+146% of the blind sub-Nyquist limit; (c) Recovered at 83% of
+the blind sub-Nyquist limit.
+can be reduced to the sum of occupied bandwidths, known as the
+Landau rate. Mishali et al. [5] extended this concept to blind sam-
+pling, where the occupied locations are unknown, showing that
+universal sub-Nyquist sampling is feasible. They proved that the
+overall sampling rate can be reduced to twice the Landau rate by CS
+techniques, enabling low-cost blind wideband signal sniffing. The
+relationship between Nyquist rate 𝐵, non-blind sub-Nyquist Landau
+rate Σ, and blind sub-Nyquist rate 2Σ is illustrated in Figure 2.
+CS [50] practically facilitates sparse signal recovery at sub-Nyquist
+rates. Formally, let 𝑋∈C𝐿×𝑁denote the signal to be sampled, and
+𝐴∈C𝑃×𝐿be the 𝑃measurement vectors, where 𝑃≪𝐿. The CS
+process can be expressed as
+𝑌= 𝐴𝑋+ 𝑛,
+(1)
+where 𝑌represents the measurement results and 𝑛is the noise.
+When 𝑋is row-sparse, meaning that only a few rows are non-zero,
+and the measurement matrix 𝐴satisfies the Restricted Isometric
+Property (RIP), 𝑋can be uniquely and accurately recovered by Eq. 2,
+where ∥∗∥𝑘represents 𝑘-norm and 𝜖represents the noise threshold.
+ˆ𝑋= arg min
+˜𝑋
+∥˜𝑋∥0
+s.t.
+∥𝑌−𝐴˜𝑋∥2≤𝜖
+(2)
+Several studies [5, 7, 8, 48] have proposed low cost sub-Nyquist
+sampling methods to formulate sampling and recovery into stan-
+dard CS problems. The measurement matrix 𝐴and measurement
+result 𝑌are determined by specific sampling schemes. The recov-
+ery target 𝑋typically represents the signal spectrum, where each
+row of 𝑋corresponds to the spectrum of a sub-band. While these
+methods perform well under sparse spectrum conditions, their effec-
+tiveness diminishes significantly for non-sparse spectra that exceed
+the blind sub-Nyquist sampling capacity, leading to pronounced
+performance degradation. Figure 3 demonstrates the CS recovery
+performance. We randomly generate DVB-S2 signals and Wi-Fi
+signals in a 1GHz spectrum. We recover 𝑋by a classic algorithm
+SOMP [58]. With sufficient sampling rate, as shown in Figure 3b,
+CS algorithm basically recovers the signals. But under non-sparse
+scenario shown in Figure 3c, i.e., when the sampling rate is below
+the theoretical limit, the CS algorithm fails to recover the signal
+and cannot even correctly predict the spectrum occupancy.
+Despite degradation of existing methods near twice the Lan-
+dau rate, we argue that this bound can be reduced. Recall that
+in non-blind recovery, i.e., where spectrum occupancy is known,
+the sampling limit is just one time the Landau rate. Instead of
+abrupt direct recovery, there should be a smoother path to blind
+Table 1: Fields of DVB-S2 and Wi-Fi Headers
+DVB-S2
+Bit 0-4
+Bit 5
+Bit 6
+MCS
+Frame Size
+Pilot State
+Wi-Fi L-SIG
+Bit 0-3
+Bit 4
+Bit 5-16
+MCS (Non-HT)
+Fixed (HT)
+Reserved
+Packet Length (Non-HT)
+Tx Duration (HT)
+Bit 17
+Bit 18-23
+Parity
+Padding
+Wi-Fi HT-SIG1
+Bit 0-6
+Bit 7
+Bit 8-23
+MCS
+Bandwidth
+Packet Length
+recovery that passes through non-blind recovery: spectrum sensing
+first, then non-blind recovery. The effective bound becomes the
+maximum of the Landau rate and the rate required for spectrum
+sensing. If accurate spectrum sensing is feasible below twice the
+Landau rate, we can break the blind recovery bound. To realize
+this approach, deep learning [59–63] offers a promising avenue to
+for uncovering hidden structures in signals [12–14, 43, 64, 65]. For
+example, Zhang et al. [43] show that deep learning requires less
+sampling resource for spectrum sensing. Follow the discussions
+above, SigChord uses deep learning for spectrum sensing to enable
+subsequent non-sparse recovery.
+2.2
+Headers of Physical Layer Signals
+In physical layer protocols, payloads are often scrambled with
+user-specific pseudo-random sequences for security, while head-
+ers remain accessible, carrying critical metadata. For example, the
+DVB-S2 protocol used for satellite communications encodes the
+modulation and coding scheme (MCS), packet length, and pilot
+state into 7 bits, which are bi-orthogonally expanded into 64 bits,
+scrambled by predefined sequence and appended to a fixed SOF
+preamble. Similarly, IEEE 802.11 Wi-Fi signals encode MCS and
+packet length into 24 bits for non-HT packets, and 48 bits for HT
+packets which include additional parameters such as transmission
+duration and bandwidth. These bits are convolutionally encoded
+into 48 bits (non-HT) or 96 bits (HT) across the L-SIG and HT-SIG1
+fields, scrambled and appended to fixed L-STF and L-LTF preambles.
+The scrambling sequences and encoding schemes are open to the
+public, so it is feasible to recover the headers. The detailed fields
+are listed in Table 1.
+A blind sniffer operates non-cooperatively without prior proto-
+col knowledge. To detect physical layer packets, traditional methods
+involve enumerating preambles to identify potential headers, yield-
+ing low detection accuracy [66]. Additionally, subsequent signal
+processing requires various synchronization, compensation, equal-
+ization, demodulation, and decoding algorithms for each protocol,
+significantly increasing system complexity. To address these, after
+signal recovery, SigChord employs end-to-end neural networks
+for signal classification and processing, including synchronization,
+compensation, equalization, demodulation and decoding, enabling
+accurate sniffing and simplified system designs.

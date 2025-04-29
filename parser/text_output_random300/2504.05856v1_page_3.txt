@@ -1,0 +1,126 @@
+Müller-Bravo et al.: SNe Ia NIR Analysis with PCA
+3. Initial selection of supernovae
+Despite the relatively large number of SNe Ia with NIR data de-
+scribed in Sect. 2, many objects have a limited number of photo-
+metric epochs. For this study, we require good data coverage of
+the light curves, that is sampling the first and second peaks, as
+well as the local minimum between them (we will also refer to
+this minimum as ‘valley’).
+To have a relatively accurate estimation of the NIR light-
+curve shape, a minimum of five epochs are needed: ideally be-
+fore first peak, around first peak, around the valley, around sec-
+ond peak and after second peak. We fit the SNe Ia light curves
+with SNooPy (Burns et al. 2011, 2014) using the max_model
+model to help apply this cut (note that these fits are also used
+in the analysis in Sect. 6). In this process, four objects are ini-
+tially excluded due to failed fits caused by insufficient photo-
+metric coverage: SNe 2005ao, 2006E, 2006mq and 2008fx. The
+coverage criterium used is to select all the SNe Ia that have at
+least one NIR epoch before optical peak and one epoch 20 days
+after optical peak, and at least five NIR epochs, on any NIR band,
+independently.
+In addition, as several SNe Ia have photometry from both
+CSP and CfAIR2, we use optical photometry from CSP and
+combine the NIR photometry of both surveys to have better cov-
+erage. Note that the NIR photometry of these surveys is in very
+good agreement, as shown in Friedman et al. (2015).
+These minimal selection cuts reduce the initial sample to 160
+normal SNe Ia with five NIR epochs on any band and with a
+partial coverage of the first and second peaks. Note, however,
+that this number is further reduced in the following sections due
+to other selection criteria.
+4. Rest-frame light curves
+To obtain rest-frame light curves, K-corrections (Oke & Sandage
+1968) are commonly used. This normally requires knowing the
+spectral energy distribution (SED) of the object in question, for
+which previously trained templates can be used (e.g. Hsiao et al.
+2007). In this work, we follow a similar approach as in Pessi
+et al. (2022) and Galbany et al. (2023). The observed photometry
+was first fit with SNooPy using the max_model model (as men-
+tioned in Sect. 3), which outputs K-corrected, and Milky-Way
+dust-extinction corrected photometry. We used version 2.7.0 of
+SNooPy that includes the updated NIR SED templates from Lu
+et al. (2023). Then, the corrected photometry was fit with PIS-
+COLA (version 3.0.0; Müller-Bravo et al. 2022b), a data-driven
+light-curve fitter based on Gaussian Process Regression (GPR;
+Rasmussen & Williams 2006), to produce continuous, rest-frame
+light curves. As PISCOLA fits multiple bands at the same time,
+information across light curves is used to interpolate the gaps in
+the data. Examples of PISCOLA light-curve fits to the corrected
+photometry are shown in Fig. 1. Each SN Ia has a different ca-
+dence and signal-to-noise, which is clearly propagated into the
+fit’s uncertainty.
+5. Near-infrared light-curve decomposition
+Principal Component Analysis (PCA; Pearson 1901; Hotelling
+1933) is a statistical technique for linear transformation of a set
+of basis functions into a new coordinate system. The new basis
+functions are sorted in terms of the degree to which they describe
+of 0.634 mag as described in Table 7 of Hewett et al. (2006), which
+is only an approximation.
+53590
+53600
+53610
+53620
+53630
+53640
+MJD
+13.0
+13.5
+14.0
+14.5
+15.0
+Apparent Magnitude
+2005df @ z = 0.00435
+Y
+J
+H
+54780
+54800
+54820
+54840
+Modified Julian Date
+17
+18
+19
+20
+Apparent Magnitude
+2008gp @ z = 0.03339
+Y
+J
+H
+58980
+58990
+59000
+59010
+59020
+59030
+MJD
+18.5
+19.0
+19.5
+20.0
+20.5
+21.0
+Apparent Magnitude
+2020jjf @ z = 0.064268
+Y
+J
+H
+Fig. 1: PISCOLA light-curve (YJH-bands) fits of three SNe Ia:
+2005df (Literature; top), 2008gp (CSP; middle) and 2020jjf (DE-
+HVILS; bottom). The photometric uncertainties propagates into
+the fits themselves.
+the variance in the original data. Although PCA is commonly
+used for dimensionality reduction, it has several different appli-
+cations depending on the goal. In the field of supernovae, PCA
+has been used in many different studies (e.g. Cormier & Davis
+2011; Galbany 2014; Ishida et al. 2014; He et al. 2018; Shah-
+bandeh et al. 2022; Holmbo et al. 2023; Lu et al. 2023; Burrow
+et al. 2024). In this work, PCA is used to produce a qualitative
+analysis of SNe Ia NIR light curves.
+5.1. Light-curve preprocessing
+Before applying PCA, a series of steps need to be performed
+for producing a sensible analysis. First of all, as PISCOLA
+fits do not rely on templates, we visually inspect the rest-
+frame light curves to make sure they are well-sampled and have
+Article number, page 3 of 16

@@ -1,0 +1,51 @@
+ical models, as it incorporates the challenges of experimental noise and turbulent
+flow characteristics.
+Y
+X
+X
+Figure 9: Ground truth snapshots for the experimental cylinder case. From left to right:
+streamwise velocity and normal velocity components.
+To further illustrate the characteristics of each test case, Table 1 summarizes the type
+of data, nature of flow, and Reynolds number for each scenario. The shape of the dataset
+is presented in the format (nvar, nx, ny, nz, nt), where for the 2D case the spatial resolution
+is defined by nx and ny, and for the 3D case nz represents the resolution in the spanwise
+direction along with nx, ny, and nt representing temporal snapshots.
+Test Case
+Data Type
+Nature
+Reynolds Number
+Tensor Shape
+2D Cylinder
+Numerical
+Laminar
+130
+(2, 100, 100, 500)
+3D Cylinder
+Numerical
+Laminar
+280
+(3, 100, 40, 64, 599)
+Experimental Cylinder
+Experimental
+Turbulent
+2600
+(2, 111, 301, 4000)
+Table 5: Summary of fluid dynamics test cases including data type, nature of flow, Reyn-
+olds number, and tensor shape.
+3.1
+Selection of Modes
+Choosing the correct number of modes is crucial as they capture the dominant flow struc-
+tures while discarding irrelevant noise. The selection is based on the decay of singular
+values, ensuring that only the most relevant modes are retained for reconstruction. For
+laminar datasets, selecting 8-12 modes provided an optimal balance, with 10 modes chosen
+for the predictions. In the case of the turbulent dataset, 4-6 modes worked best, and 5
+modes were used. Figure 10 presents the singular values versus modes curves for the three
+cases.
+In the 2D cylinder case, all significant flow dynamics can be represented by approxim-
+ately 30-40 modes. Beyond this range, the singular values drop to (10−8), which corres-
+ponds to machine errors. These low-amplitude modes primarily capture spatial redund-
+ancies or numerical noise originating from the CFD simulations. Thus, selecting 8-12
+modes is justified, as the singular values within this range are still large enough to retain
+the dominant coherent structures of the flow. This selection ensures that the primary
+flow dynamics are well-reconstructed with minimal error. The same can be observed for
+22

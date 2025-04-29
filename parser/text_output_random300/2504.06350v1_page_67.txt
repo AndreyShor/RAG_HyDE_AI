@@ -1,0 +1,73 @@
+Regarding the actual establishment of metropolitan communication networks based on the security
+of the MDI-QKD protocol, many advances have already been made, including the construction of a
+star-type quantum network in a metropolitan area of 200-square-km, which in addition to providing a
+high transmission bit rate, also proven to be safe against detection attacks [423]. MDI-QKD has been
+implemented in quantum channels that coexist in the same fiber with classical data channels [424, 425].
+5.4. Detector-device-independent quantum key distribution
+As discussed in the previous section, implementing the MDI-QKD protocol requires the interference
+of photons from two separate lasers, making its implementation more challenging than conventional QKD
+schemes. Another issue lies in the finite-key analysis, which demands a relatively large post-processing
+data block to achieve optimal performance.
+To address these challenges, an alternative approach called detector-device-independent QKD (DDI-
+QKD) has been proposed [426–428]. While DDI-QKD shares a similar conceptual framework with MDI-
+QKD, it differs in its use of a ‘black box’ model.
+In this method, Alice and Bob ensure that their
+measurement systems do not leak any unwanted information to external sources. This is accomplished,
+in principle, by replacing the measurement apparatus in Bob’s laboratory with a device built by them
+but not necessarily characterized. Additionally, DDI-QKD replaces the two-photon Bell state measure-
+ment (BSM) with a 2-qubit single-photon BSM, eliminating the need for two-photon interference from
+independent light sources.
+An example of such a protocol works as follows: Alice encodes BB84 polarization states in single
+photons, which she sends to Bob. Bob encodes his information into the spatial degree of freedom of
+the incoming photons (two modes). This is achieved using a 50:50 beam splitter along with a phase
+modulator that applies a random phase to each incoming signal. Bob then performs a BSM on the two
+qubits (polarization, spatial modes) to project each input photon into a Bell state. The remaining steps
+of the protocol are identical to MDI-QKD.
+Despite the anticipated strong performance and partial security proofs, Sajeed et al. [429] demon-
+strated that the security of DDI-QKD cannot rely on the same principles as MDI-QKD. They demon-
+strated two key security vulnerabilities. First, DDI-QKD’s security is not based on postselected entan-
+glement, and a blinding attack renders its security. Second, Sajeed et al. [429] revealed that DDI-QKD
+is vulnerable to detector side-channel attacks, as well as other side-channel attacks that exploit imperfec-
+tions in Bob’s receiver. The source of these vulnerabilities seems to stem from Bob’s preparation process,
+which, unlike MDI-QKD, can be influenced by Eve through the signals she sends to Bob.
+5.5. One-sided device-independent quantum key distribution
+5.5.1. Standard 1SDI-QKD
+Another approach to relaxing technical requirements of DI-QKD systems is to consider an asymmetric
+scenario, known as one-sided DI-QKD (1SDI-QKD), in which one party trusts their device and the other
+does not. Note that this situation might describe QKD between a user who is technologically sophisticated
+enough characterize and trust their equipment (such as a bank or government agency), with a client with
+untrusted devices.
+The protocol first introduced by Branciard et al. [95] is as follows: Alice and Bob each receive part
+of an entangled photon pair. Alice has two binary measurement settings A1 and A2. Since she does
+not trust her measurement apparatus, it is treated as as a block box with a single bit input to choose
+between settings. On the other side, Bob has two fully trustful projective measurements B1 and B2 in
+some qubit subspaces. Alice and Bob might not always detect their photons due to channel losses or
+inefficient detectors. Alice and Bob will to try to extract a secret key from the outcomes of A1 and B1
+and can estimate the information of a possible Adversary (Eve) using the results of A2 and B2. Since
+Bob fully trusts his measurement device, he can safely discard the events where he does not detect a
+photon, since Eve cannot gain any information from these. Alice, on the other hand, cannot, and must
+include no-click events in her analysis. For the security proof and key rate in this protocol, let us denote
+by Ai = (Aps
+i , Adis
+i ) and Bi = (Bps
+i , Bdis
+i ) the strings of classical bits of Alice and Bob get from the
+recording of their measurements results. Here Aps
+i
+and Bps
+i
+applied for actual detection (ps for post
+selection) and Adis
+i
+and Bdis
+i
+are for no detection and they will be discarded for the key extraction. Then
+from n-bit strings of Aps
+1 and Bps
+1 on which Eve can have some information, Alice and Bob can extract
+a secret key of length l [430] where
+l ≈Hϵ
+min(B1|E) −nh(Qps
+1 ),
+(172)
+67

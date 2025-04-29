@@ -1,0 +1,146 @@
+3
+In other words, even though |I⟩is not an element of the orig-
+inal Hilbert space, its overlap with any element in the dense
+subspace Φ is well-defined. For instance, if |I⟩= |ϕ⟩⟩is an
+Ishibashi state corresponding to a scalar primary operator ϕ,
+⟨ψ|ϕ(x)⟩⟩= x−∆ϕ
+d
+.
+(II.6)
+We emphasize that this overlap is not well-defined for general
+states in H (see Appendix F). We have thus explicitly defined
+the RHS of equation (II.1).
+Now we define the regularization and renormalization of
+the defect operator in (II.1). The first step is to regularize the
+operator ˆO in the exponent so that it is self-adjoint and has
+well-defined spectral decomposition. Here we consider a se-
+quence of subspaces H∆⊂H which contain all conformal
+families of primary operators ϕα with dimension ∆α ≤∆.
+We assume that the CFT spectrum is discrete and does not
+contain accumulation points, thus H∆is a finite sum over con-
+formal families and a Hilbert space itself. This regularization
+still contains an infinite number of states but explicitly pre-
+serves the conformal symmetry of the bulk theory which will
+be important in the subsequent analysis.
+To regularize ˆO amounts to defining its action on H∆. We
+define Φ∆= Φ∩H∆and introduce the following sesqulinear
+form on Φ∆
+(ϕf, ϕg) ≡⟨ϕf| ˆO|ϕg⟩,
+(II.7)
+for |ϕf⟩, |ϕg⟩∈Φ∆and the RHS is defined by the bulk OPE
+(see (B.1)). Using results in Appendix B, there is a unique
+self-adjoint operator ˆO∆with a dense domain in Φ∆(thus
+also dense in H∆) whose matrix elements coincide with that
+of ˆO in (II.7). The operator ˆO∆is self-adjoint but unbounded,
+as we describe below [56].
+The conformal generators preserving the quantization sur-
+face are dilation D, translations Pi, special conformal trans-
+formations Ki and SO(d −1) rotations Mij. Acting on the
+Hilbert space H, we have explicitly
+D|ϕf⟩=
+X
+a
+Z
+Rd
++
+ddx (xµ∂µ + d −∆a) fa(x) ϕa(x)|0⟩,
+Pi|ϕf⟩=
+X
+a
+Z
+Rd
++
+ddx ∂ifa(x) ϕa(x)|0⟩.
+(II.8)
+Importantly, the unitary operator Ub = ebD implies,
+⟨Ubϕf|Ubϕg⟩= ⟨ϕf|ϕg⟩,
+⟨Ubϕf| ˆO∆|Ubϕg⟩= eb(d−1−∆O) ⟨ϕf| ˆO∆|ϕg⟩.
+(II.9)
+The operator ˆO∆is thus clearly unbounded, since Ub can
+be used to indefinitely increase its matrix elements between
+normalizable states [57]. By applying the Hellinger–Toeplitz
+theorem [58], we deduce that the domain of ˆO∆is a proper
+subspace of the Hilbert space, i.e. Φ∆⊂dom( ˆO∆) ⊊H∆.
+From (II.9) we also conclude ˆO∆does not possess nontrivial
+eigenvectors in H∆.
+Nevertheless, generalized eigenvectors of
+ˆO∆do exist
+in Φ′
+∆(as in the Gelfand triple in (II.4)) by invoking the
+Gelfand–Maurin theorem [54, 55]. Specifically, we represent
+the self-adjoint operator ˆO∆as
+ˆO∆=
+Z
+R
+µ dE ˆ
+O∆(µ), E ˆ
+O∆(µ)E ˆ
+O∆(λ) = E ˆ
+O∆(min(µ, λ)) .
+Here E ˆ
+O∆(µ), known as projection measure, denotes the pro-
+jection operator onto the closed subspace of H∆where the
+expectation value of ˆO∆is less than or equal to µ. Then the
+Gelfand-Maurin theorem (see Chap 4 of [55]) assures the exis-
+tence of the following derivative (almost everywhere) for any
+unit vector |e⟩∈H∆with spectral density σλ defined below,
+|λ⟩= dEO∆(λ)
+dσλ
+|e⟩∈Φ′
+∆, dσλ ≡⟨e| dEO∆|e⟩,
+s.t. ∀|ψ⟩∈Φ∆, ⟨λ|ψ⟩=
+d
+dσλ
+⟨e|E ˆ
+O∆(λ)|ψ⟩,
+(II.10)
+and |λ⟩are the (generalized) eigenvectors of ˆO∆in Φ′
+∆.
+With subspaces H∆(e) ≡span({E ˆ
+O∆(λ) e}) ⊆H∆, the
+Gelfand-Maurin theorem states that if the Hilbert space de-
+composes as an orthogonal sum H∆= L
+α∈A H∆(eα) for
+a set of vectors {eα}α∈A, we can define a spectral measure
+dσλ,α and the following decomposition holds
+ˆO∆=
+Z
+R
+λ dσλ,α |α, λ, ∆⟩⟨α, λ, ∆| .
+(II.11)
+Physically, α keeps track of extra symmetry charges that com-
+mute with ˆO∆.
+For the case of interest, ˆO∆commutes with the momentum
+operators Pi and SO(d −1) rotations, which do not mutually
+commute and we will choose to diagonalize Pi below [59].
+The generic condition stated below (II.1) corresponds to as-
+suming the existence of a cyclic vector |e⟩such that all linear
+combinations of the form
+EO∆(λ)
+d−1
+Y
+i=1
+EPi(pi) |e⟩,
+(II.12)
+span the Hilbert space H∆, where EPi denotes the projection
+measure for Pi, we can then decompose ˆO∆in a basis of si-
+multaneous eigenstates of ˆO∆and Pi as,
+Pi |λ, ⃗p, ∆⟩= pi |λ, ⃗p, ∆⟩,
+ˆO |λ, ⃗p, ∆⟩= λ|λ, ⃗p, ∆⟩.
+ˆO∆=
+Z
+R
+λ dσλ
+Z
+dd−1⃗p
+(2π)d−1 |⃗p, λ⟩⟨⃗p, λ| ,
+(II.13)
+This basis is complete, allowing us to express inner products
+of states in H explicitly as below,
+⟨ψ|χ⟩=
+Z
+dσλ
+Z
+dd−1⃗p
+(2π)d−1 ⟨ψ|⃗p, λ, ∆⟩⟨⃗p, λ, ∆|χ⟩.
+(II.14)

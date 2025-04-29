@@ -1,0 +1,102 @@
+Learning strategies for optimised fitness in a model of cyclic dominance
+Honghao Yu1 and Robert L. Jack1, 2
+1Yusuf Hamied Department of Chemistry, University of Cambridge,
+Lensfield Road, Cambridge CB2 1EW, United Kingdom
+2Department of Applied Mathematics and Theoretical Physics,
+University of Cambridge, Wilberforce Road, Cambridge CB3 0WA, United Kingdom
+(Dated: April 9, 2025)
+A major problem in evolutionary biology is how species learn and adapt under the constraint
+of environmental conditions and competition of other species. Models of cyclic dominance provide
+simplified settings in which such questions can be addressed using methods from theoretical physics.
+We investigate how a privileged (“smart”) species optimises its population by adopting advantageous
+strategies in one such model. We use a reinforcement learning algorithm, which successfully identifies
+optimal strategies based on a survival-of-the-weakest effect, including directional incentives to avoid
+predators. We also characterise the steady-state behaviour of the system in the presence of the
+smart species and compare with the symmetric case where all species are equivalent.
+I.
+INTRODUCTION
+Ecological systems consist of large numbers of indi-
+viduals, interacting through cooperation or competition,
+and surviving under complex environmental constraints
+such as limited resources and space. As such, they are
+naturally studied by statistical mechanical models where
+populations of several (or many) species interact via com-
+petition or co-operation [1–4].
+An interesting class of
+these models involves three species with a relationship of
+cyclic dominance, analogous to the game of rock-paper-
+scissors [5–7]. This situation can be realised in exper-
+iments on E. coli [6, 8–11], and is also relevant more
+generally [12–19].
+Models of cyclic dominance support spiral patterns
+which arise from the combination of “diffusion” (indi-
+viduals’ motion) with local “reactions” (for example pre-
+dation and reproduction) The spirals are formed by the
+species chasing one another, as may be generically ex-
+pected in systems with non-reciprocal interactions [20–
+25]. Such patterns are also relevant in the biological set-
+ting [26–31]. The pattern formation has been studied in
+detail for simple models, focussing in particular on the
+case where the species all have equivalent behaviour, so
+that the system is invariant under their cyclic permu-
+tation [7, 10, 32–37]. Such models also support a fixa-
+tion transition between a biodiverse state (with all three
+species present) and an absorbing (fixed) state where only
+one species survives [7, 9, 11, 33, 38]. Particles’ mobility
+plays a crucial role in this transition [7, 39, 40].
+In the context of these simplified ecological models it
+is also natural to consider how individuals or species can
+learn and optimize their behaviour [41–44], or adapt to
+their environment [45–49]. (This is the subject of evo-
+lutionary game theory [3, 50–52].) Even in simple sys-
+tems with three cyclically dominating species, complex
+and counter-intuitive phenomenon can emerge. For ex-
+ample, when three species have different predation rates,
+the species with the weakest predation tends to domi-
+nate: this counter-intuitive behaviour is referred to as
+the survival of the weakest [36, 53]. To address the com-
+plexity of spatial models, reinforcement learning (RL)
+techniques [54] are naturally applied to species optimiza-
+tion and learning [41, 55, 56], as well as being fruitfully
+exploited in more general non-equilibrium physical set-
+tings [42, 45, 57–61].
+This work applies these ideas to a model of cyclic dom-
+inance.
+Understanding how individual species survive
+and evolve is of fundamental interest to evolutionary bi-
+ology [3, 10]. Starting from the model of [7], we introduce
+several new features, to arrive at a situation in which one
+privileged (“smart”) species seeks to increase its popula-
+tion, for which it faces a complex optimisation problem.
+We address this via an RL scheme in which the species
+changes its behaviour incrementally, to adapt to its en-
+vironment.
+The modifications to [7] include a natural
+(spontaneous) death process that acts on all species, and
+a hunger level for each particle, which provides an incen-
+tive for predation. For the parameters that we consider,
+this means that species can only survive if their prey
+is also present, so the smart species must optimise its
+population while maintaining a biodiverse state.
+This
+aspect makes the optimisation problem challenging. To
+solve it, the smart species can learn by adjusting its pre-
+dation rate, and by adopting directional strategies that
+bias individuals’ motion. For example, they may choose
+to evade their predators, or hunt their prey.
+The RL algorithm successfully improves the fitness
+of the smart species, by exploiting the survival-of-the-
+weakest effect. (This effect is robust, despite the addi-
+tional features of hunger and natural death in our model.)
+We optimise the parameters of the smart species under
+two sets of external conditions which differ strongly in
+their total population densities, due to different natural
+death rates. In both cases, the smart species gains an
+advantage by evading its predators.
+In the less dense
+case, it also benefits from spreading into empty regions.
+We discuss the effects of these strategies on the pattern
+formation and spatial correlations, and we use these re-
+sults to interpret the competitive advantage of the smart
+species.
+arXiv:2504.05886v1  [cond-mat.stat-mech]  8 Apr 2025

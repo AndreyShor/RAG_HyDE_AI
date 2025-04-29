@@ -1,0 +1,94 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+5
+Proof. We consider {1, . . . , |α|} as the vertices of a graph Γ and every pair in π ∈Πα
+0 as an edge in Γ. Then
+Γ has |α|/2 disconnected edges (Γ is a 1-regular graph). For π1, π2 ∈Πα
+0 , the graph π1 ∪π2 is a 2-regular
+graph. Any such graph is a collection of L(π1, π2) loops. By contraction of indices, ⟨π1, π2⟩0 = DL(π1,π2).
+In particular, ⟨π, π⟩0 = D|α|/2 whereas for any π1 ̸= π2 we obtain that ⟨π1, π2⟩0 = Dn with n < |α|/2.
+Therefore, det⟨π1, π2⟩0 has unit leading coefficient as a polynomial in D. In particular, det(⟨π1, π2⟩0) ̸= 0
+and ⟨·, ·⟩0 is nondegenerate.
+□
+If one (artificially) divides the |α| vertices of the graph Γ in the above proof into |α|/2 upper vertices
+and |α|/2 lower vertices, one obtains an element in the Brauer algebra [13]. The scalar product (20)
+is the trace in the Brauer algebra. For generic parameter D, Brauer algebras have been shown to be
+semi-simple. Brauer algebras belong to the class of cellular algebras.
+By Lemma 4, every partition π ∈Πα
+0 has a dual ˆπ = ˆπ(α) in the vector space of formal sums of
+partitions with coefficients in the field of rational functions in D,
+(21)
+⟨πi, ˆπj⟩0 = δi,j,
+πi ∈Πα
+0 , ˆπj ∈⟨Πα
+0 ⟩Q(D).
+By linearity, we extend ˆπ to gˆπ yielding
+(22)
+gπigˆπj = δi,j.
+From (18) we hence obtain
+(23)
+PG,π = P α
+Ggˆπ(α),
+for π ∈Πα
+0 .
+Example 5. For |α| = 2 we write 12 for the pair α1, α2 and get Πα
+0 = {{12}}. The dual of {12} is
+1
+D{12}. Hence
+PG,{12} = P α1,α2
+G
+gα1,α2
+D
+.
+For |α| = 4 we have Πα
+0 = {{12, 34}, {13, 24}, {14, 23}} = {π1, π2, π3}. A short calculation gives
+ˆπ1 = (D + 1)π1 −π2 −π3
+(D −1)D(D + 2)
+with cyclic results for ˆπ2 and ˆπ3. Hence
+PG,{12,34} = P α1,α2,α3,α4
+G
+((D + 1)gα1,α2gα3,α4 −gα1,α3gα2,α4 −gα1,α4gα2,α3)
+(D −1)D(D + 2)
+,
+with cyclic results for PG,{13,24} and PG,{14,23}.
+Results up to spin |α| = 10 are in the Maple package HyperlogProcedures [23].
+For fixed G, we lift duality from partitions to formal sums of (spin zero) graphs in the graph algebra
+with coefficients in Q(D).
+For π ∈Πα
+0 we denote the lift of ˆπ = P
+i ciπi (ci ∈Q(D)) by Gˆπ, i.e.
+Gˆπ = P
+i ciGgπi. We define the period of Gˆπ as
+(24)
+PGˆπ =
+X
+i
+ciPGgπi =
+X
+i
+ciP α
+Ggπi(α) = P α
+Ggˆπ(α) = PG,π,
+if ˆπ =
+X
+i
+ciπi,
+where in the last equation we used (23). With (18) we get
+(25)
+P α
+G =
+X
+π∈Πα
+0
+PGˆπgπ.
+Hence, spin |α| periods can be expressed as sums of scalar periods.
+Example 6. From Example 5 we obtain
+Gd
+{12} = G(α)gα1,α2
+D
+,
+G \
+{12,34} = (D + 1)G(α)gα1,α2gα3,α4 −G(α)gα1,α3gα2,α4 −G(α)gα1,α4gα2,α3
+(D −1)D(D + 2)
+,
+where G(α) indicates that the graph G depends on the spin indices α. On the right-hand sides all spin
+indices are contracted, so that the graphs are scalar.

@@ -1,0 +1,37 @@
+this physical constraint is built into representation itself. Furthermore, it can address the problem of 
+misleading the loss function gradient near phase boundaries. For example, if true phase is 0.1 radians 
+and the predicted phase is 2𝜋−0.1 radians, then there is a large numerical difference (~6.08) 
+between them while they are nearly identical physical states, leading to inaccurate loss function 
+gradients during backpropagation. Unlike direct phase prediction, sine-cosine representation can 
+handle this problem. This representation aligns with the wave nature of electromagnetic phenomena 
+and helps avoiding complex unwrapping algorithms. 
+Euclidean Normalization for Phase Components  
+A key feature of the model is Euclidean normalization technique, which enforces the fundamental 
+mathematical constraint that the sine and cosine components must satisfy the equation 𝑠𝑖𝑛2𝜑+
+𝑐𝑜𝑠2𝜑= 1 for any valid phase angel 𝜑. Without this constraint, when the model predicts phases as 
+(sin, cos) pairs, it may produce values that violate the equation resulting in physically meaningless 
+phases. The normalization process projects any point in the sine-cosine plane onto a unit circle while 
+preserving the angular information. When the model outputs raw sine and cosine components (sin 𝜑, 
+cos 𝜑), we normalize these values using: 
+sin𝑛𝑜𝑟𝑚=
+sin𝜑
+√sin2𝜑+ cos2𝜑
+ 
+cos𝑛𝑜𝑟𝑚=
+cos𝜑
+√sin2𝜑+ cos2𝜑
+ 
+(1) 
+This ensures all phase predictions are physically valid in the sine-cosine space. As shown in Figure II, 
+this normalization takes place within the model architecture as a non-trainable layer rather than 
+applying it after prediction. This ensures that all gradients during backpropagation flow through this 
+constraint. This means that the model inherently learns parameters that naturally tend toward 
+generating physically meaningful outputs, rather than merely normalizing outputs to be valid after 
+training. This embedded physical knowledge in the network architecture reduces what the model 
+needs to discover from data alone and thus leads to better generalization with less data. In the other 
+words, rather than post-processing to make outputs look right, we guide the network learn to respect 
+the physical law from the start. 
+Energy Conservation Constraints 
+To ensure the model respects energy conservation principle, we constrain the predictions for 
+amplitude by a sigmoid activation function in the model architecture. It is implemented in the 
+amplitude branch and ensures that outputs remain in the physical range of [0 , 1]. Additionally, we 

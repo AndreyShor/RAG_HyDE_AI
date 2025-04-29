@@ -1,0 +1,172 @@
+# Fewer engage
+in
+substance
+abuse
+’ substance abuse ’ :
+np . random . choice ( [ 0 ,
+1 ] ,
+s i z e=n agents ,
+p =[0.85 ,
+0 . 1 5 ] )
+}
+# Sigmoid
+function
+for
+l o g i s t i c
+update
+of
+contraceptive
+use and
+substance
+abuse
+def
+sigmoid (x ) :
+return 1 /
+(1 + np . exp(−x ))
+# Function
+to
+compute
+the
+c a t a s t r o p h i c
+control
+parameter
+beta
+def
+compute beta ( deprivation ,
+violence ,
+substance abuse ) :
+return w1 ∗
+deprivation + w2 ∗
+v i o l e n c e + w3 ∗
+substance abuse
+# Simulation
+function
+def
+simulate agents ( agents ,
+n steps ) :
+f e r t i l i t y
+s t a t u s = np . zeros ( n agents )
+# Track
+f i n a l
+pregnancy
+s t a t u s
+for
+step
+in range( n steps ) :
+for
+i
+in range( n agents ) :
+# Compute normal
+control
+parameter
+alpha
+a l p h a i = alpha 0 + lambda 1 ∗
+agents [ ’ c o n t r a c e p t i v e u s e ’ ] [ i ]
+# Compute
+c a t a s t r o p h i c
+control
+parameter
+beta
+b e t a i = compute beta ( agents [ ’ deprivation ’ ] [ i ] ,
+agents [ ’ v i o l e n c e ’ ] [ i ] ,
+agents [ ’ substance abuse ’ ] [ i ] )
+# Update
+pregnancy
+s t a t e
+( cusp
+catastrophe
+dynamics )
+dy dt = −agents [ ’ pregnancy state ’ ] [ i ]∗∗3 + a l p h a i
+∗agents [ ’ pregnancy state ’ ] [ i ]
++ b e t a i
+agents [ ’ pregnancy state ’ ] [ i ] += dy dt
+∗
+0.01
+# Time step
+update
+# Update
+contraceptive
+use and
+substance
+abuse
+with some randomness
+# More
+l i k e l y
+to
+use
+contraception
+agents [ ’ c o n t r a c e p t i v e u s e ’ ] [ i ] = sigmoid (np . random . uniform (0 ,
+1)) > 0.7
+# Less
+l i k e l y
+to
+abuse
+substances
+agents [ ’ substance abuse ’ ] [ i ] = sigmoid (np . random . uniform (0 ,
+1)) > 0.85
+# Determine
+f e r t i l i t y
+s t a t u s
+based on pregnancy
+s t a t e
+# Adjust
+t h r e s h o l d
+for
+pregnancy
+f e r t i l i t y
+s t a t u s = np . array ( [ 1
+i f
+sigmoid ( y ) > 0.8
+else
+0 for y in
+agents [ ’ pregnancy state ’ ] ] )
+return
+f e r t i l i t y
+s t a t u s
+# Run the
+simulation
+i n i t i a l
+f e r t i l i t y
+s t a t u s = np . zeros ( n agents )
+# Assume no one
+i s
+pregnant
+i n i t i a l l y
+f i n a l
+f e r t i l i t y
+s t a t u s = simulate agents ( agents ,
+n steps )
+# Cusp
+catastrophe
+surface
+x = np . l i n s p a c e ( −1.5 ,
+1.5 ,
+50)
+# Non−c a t a s t r o p h i c
+f e r t i l i t y
+f a c t o r s
+z = np . l i n s p a c e ( −1.5 ,
+1.5 ,
+50)
+# Catastrophic
+shocks
+x ,
+z = np . meshgrid (x ,
+z )
+y = 0.25
+∗x∗∗4 −0.5
+∗x∗∗2 −z
+# P l o t t i n g
+the
+surface
+and
+r e s u l t s
+f i g = p l t . f i g u r e ( f i g s i z e =(18 ,
+8))
+# I n i t i a l
+s t a t e
+( Before
+simulation )
+ax1 = f i g . add subplot (121 ,
+p r o j e c t i o n=’ 3d ’ )
+21

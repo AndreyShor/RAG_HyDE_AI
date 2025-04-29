@@ -1,0 +1,116 @@
+the mean momentum, and 1 for the spatial standard deviation of the wavepacket at t = 0. Hence, for S + 1
+species, we have 7(S + 1) free parameters to specify which we define as the reaction geometry. The reaction
+geometry is user-specified and based on the kinematic scenario desired for simulation. While in principle any
+configuration is acceptable, certain desiderata exist to bolster a combination of physical realism, scientific
+utility, and algorithmic efficiency, as discussed in Sec. 2.2.
+4.2
+Approximate molecular Hamiltonian for initial state preparation
+We invoke a standard series of approximations in molecular physics literature [72, 73, 74]:
+• Born-Oppenheimer approximation (Sec. 4.2.1),
+• Rigid-rotor approximation (Sec. 4.2.2),
+• Harmonic oscillator approximation (Sec. 4.2.3).
+4.2.1
+Born-Oppenheimer (BO) approximation
+We assume that the degrees of freedom of the molecules are well-described by the Born-Oppenheimer (BO)
+approximation at t = 0. This means separating the electronic and nuclear Schrödinger equations as per
+the standard procedure.13
+We solve for the electronic ground state with parametric dependence on the
+nuclear positions to construct the ground state potential energy surface (PES). Specifically, we start with
+the operator Hs in Eq. (44), drop the nuclear kinetic term and fix nuclear positions for species s
+Rs = {RI}I∈Is,
+(48)
+obtaining the operator
+Hs
+BO(Rs) = −1
+2
+X
+i∈E′s
+∇2
+i + 1
+2
+X
+i̸=j∈E′s
+1
+|ri −rj| +
+X
+I̸=J∈Is
+ZIZJ
+|RI −RJ| −
+X
+i∈E′s
+X
+I∈Is
+ZI
+|ri −RI|.
+(49)
+We now introduce the pseudopotential approximation [60]. That is, we remove some of the electron DoF (non-
+valence) and replace the Coulomb potential felt by the electrons due to the fixed nuclei with a pseudopotential:
+HPP,s
+BO (Rs) = −1
+2
+X
+i∈Es
+∇2
+i + 1
+2
+X
+i̸=j∈Es
+1
+|ri −rj| +
+X
+I̸=J∈Is
+ZPI
+I ZPI
+J
+|RI −RJ| +
+X
+I∈Is
+V I
+PP,s(RI),
+(50)
+where ZPI
+I
+= ZI −ηcore,I as given in Eq. (2), Es is a set of labels for the ‘valence’ electrons of molecular
+species s, with |Es| = ηs
+val and V I
+PP,s(RI) is defined as in Eq. (5), just restricted to species s:
+V I
+PP,s(RI) =
+X
+i∈Es
+V i,I
+PP,loc(RI) +
+X
+i∈Es
+V i,I
+PP,NL(RI),
+(51)
+with V i,I
+PP,loc(RI), V i,I
+PP,NL(RI) given in Eq. (6) and Eq. (7), respectively.
+The Hamiltonian HPP,s
+BO
+is, in
+essence, the BO version of the pseudoion Hamiltonian of Eq. (3) for a single molecular species.
+We then consider the eigenproblem for HPP,s
+BO (Rs) for fixed nuclear coordinates. We make the assumption
+that the electronic degrees of freedom are in the ground state as discussed in Sec. 2.2. Let Es(Rs) be an
+approximation to the ground state PES, i.e., the ground state energy of HPP,s
+BO (Rs) as a function of Rs.
+The corresponding ground state for species s and fixed nuclear coordinates Rs is denoted by |gel
+s (Rs)⟩. The
+nuclei then obey a Hamiltonian describing particles experiencing a potential given by the PES,
+Hs
+ion = −
+X
+I∈Is
+1
+2MI
+∇2
+I + Es(Rs).
+(52)
+13The BO approximation, as per usual, entails the adiabatic approximation, where potential energy surfaces (PES) of all
+electronic energy manifolds are mutually well-separated such that the non-adiabatic coupling terms between PES are ignored;
+and it entails neglecting the diagonal correction, such that the Hamiltonian simply reduces to kinetic terms with the ground
+state PES as an effective potential. See Sec. 3.1 in Ref. [70] for details.
+22

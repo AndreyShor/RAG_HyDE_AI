@@ -1,0 +1,82 @@
+Heuristic justiﬁcation for Theorem 3
+Suppose that for some ﬁxed time s > 0 and constant C > 0 (independent of x), the following
+asymptotic relation holds, for all x > log ǫ,
+lim
+τ→∞
+P(Xτ ̸= −∞| Xs = x)
+exp
+
+−µ2(τ−s)
+2σ2
+
+= C exp
+µx
+σ2
+
+.
+(20)
+Taking this as given, we obtain the conclusion of Theorem 3 at time s. We now argue that
+if (20) holds for small s > 0, then it must also hold at time s = 0, by virtue of the dynamics
+of the process Xτ.
+By the Markov property, for any τ > s and x > log ǫ:
+P(Xτ ̸= −∞| X0 = x) = E
+
+P(Xτ ̸= −∞| Xs) ·
+1{Xs>log ǫ}
+ X0 = x
+
+.
+(21)
+Over the short interval [0, s], the process evolves as
+Xs = x −µs + σWs,
+where Ws ∼N (0, s),
+because for x−log ǫ ≫
+√
+σ2s the probability of hitting the barrier before time s is negligible.
+More precisely, this probability decays like exp
+
+−(x−log ǫ)2
+2σ2s
+
+.
+Thus, for such x, we may
+approximate
+1{Xs>log ǫ} ≈1 with high probability.
+Substituting (20) into (21), and using the moment generating function E[exp(yWs)] =
+exp(y2s/2) with y = µ/σ, we obtain:
+lim
+τ→∞
+P(Xτ ̸= −∞| X0 = x)
+exp
+
+−µ2τ
+2σ2
+
+≈C exp
+µ2s
+2σ2
+
+· E
+h
+exp
+ µ
+σ2(x −µs + σWs)
+i
+= C exp
+µx
+σ2 −µ2s
+σ2 + µ2s
+2σ2
+
+· exp
+µ2s
+2σ2
+
+= C exp
+µx
+σ2
+
+.
+This conﬁrms that (20) also holds at time 0. The key insight is that the exponential form
+exp(µx/σ2) is preserved under Brownian motion with drift, and that the moment generating
+25

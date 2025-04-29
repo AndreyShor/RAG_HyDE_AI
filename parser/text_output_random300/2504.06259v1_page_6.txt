@@ -1,0 +1,149 @@
+6
+of the qubit transition and prevents |F = 0, mF = 0⟩−
+|F = 1, mF = ±1⟩transitions [31]. In practice, the laser
+polarization of the global beam is optimized to maximize
+the Rabi rate of a counter-propagating beam, but as the
+IA beams must be able to generate both co-propagating
+and counter-propagating gates, their polarization will not
+be purely ˆσ±.
+The fourth-order light shift from combs α and β on
+each qubit level is,
+∆E(±)
+α,β = ±
+X
+l
+
+Ω(l)
+α,β
+2
+4(ω(l)
+α −ω(0)
+β
+−ω|1⟩−|0⟩)
+,
+(14)
+where the + and −sign correspond to a shift of level
+|1⟩and |0⟩, respectively. Hence, the differential fourth-
+order light shift on the qubit transition from each pair of
+combs is δLS
+α,β = ∆E(+)
+α,β −∆E(−)
+α,β = 2∆E(+)
+α,β. The inter-
+comb detunings are important for determining the value
+of Eq. 14 as they dictate the two-photon detuning from
+the qubit transition for pairs of comb teeth separated by
+l harmonics and thus cannot be neglected as in Eq. 13.
+An example MS(π/2) gate (with target qubits q0
+and q1 in a 2- or 4-qubit register) has standard pa-
+rameters τ = 250 µs and a blue-sideband detuning of
+δk = ω(105)
+b
+−ω(0)
+g
+−ω|1⟩−|0⟩−ν0 = 52 kHz from the
+lowest motional mode k = 0. This gate requires a two-
+photon Rabi rate of Ω(105)
+b,g
+/2π = Ω(105)
+r,g
+/2π = 122.1 kHz,
+which we achieve by scaling the value of h(0)
+α
+(for each α)
+accordingly. We approximate beam amplitudes and po-
+larizations of the experiment in the model. Specifically,
+the global beam has ∼2× the amplitude of the individ-
+ual beams at the ion. Likewise, the global beam polariza-
+tion is set to maximize counter-propagating interactions
+at the expense of co-propagating interactions for which
+we measure a 7× reduction in the amount of ˆπ polariza-
+tion (driving co-propagating) relative to ˆσ± polarization
+(driving counter-propagating). Therefore we reduce the
+fourth-order shifts from the global beam intra-comb (a
+co-propagating interaction) by a factor of 72 due to in-
+compatible polarizations to induce a light shift. This re-
+sults in a total differential fourth-order light shift approx-
+imately P
+α,β δLS
+α,β = 418Hz. This light shift is clearly
+dependent on the overall power in each comb, changing
+for different θ and h(j)
+α , and thus methods for mitigating
+the light shift must account for these dependencies.
+B.
+Empirical Cancellation of Light Shifts
+Fourth-order light shifts from the red or blue Raman
+drive alone cause the qubit to quickly dephase; therefore,
+it is important that these terms cancel to improve the
+coherence of the MS(θ) gate. In the previous section, we
+considered the effect of all combs simultaneously. If in-
+stead, we examine the effects of δLS
+g,b and δLS
+g,r separately,
+we find they are of opposite sign and comparable magni-
+tudes. Instead of scaling h(j)
+α
+for each comb together, we
+can scale each comb independently such that δLS
+g,b and δLS
+g,r
+cancel, but with the overall two-photon Rabi rate being
+comparable to the target.
+To find the optimal cancellation point, we begin by
+directly measuring the resulting light shift and its coher-
+ence via a Ramsey measurement. Specifically, we insert
+increasing numbers of ‘single-qubit’ MS(π/2) gates be-
+tween two microwave π/2 pulses. In this case, we drive
+an MS(π/2) gate with the parameters necessary for the
+maximally entangling two-qubit version of the gate but
+only with a single ion’s IA beam on.
+In this way, we prevent any changes to the spin proba-
+bilities thus isolating the magnitude of the light shift. We
+repeat this scan for different ratios ablue/ared = ζbr of the
+red and blue MS gate tones applied to the AOMs. While
+the ratios are varied, the amplitudes are changed in or-
+der to maintain the parameters for a two-qubit MS(π/2)
+gate.
+We note that the scaling of ζbr is performed in
+a manner consistent with the amplitude scaling neces-
+sary for arbitrary θ – specifically, only the amplitude of
+the global beam is adjusted to determine rotation, thus
+leaving adjustment on the IA tones for the purposes of
+balancing ζbr for the light shift.
+Figures 5a-d show these Ramsey measurements after
+M applications of a single-qubit MS(π/2). We quantify
+the light shift effects by fitting the Ramsey measurements
+to a cosine with a Gaussian decay profile to find the ac-
+cumulated phase and coherence decay constants.
+Figure 5a shows the Ramsey reasurement for a signif-
+icant mismatch of ζbr = 0.6. The accumulated phase is
+∼98° per single-qubit MS(π/2) gate, along with a fast
+Gaussian decay constant of Mσ,1q = 5.7 gates which is
+highlighted in red on Fig. 5e and f.
+Figures 5e,f also
+show that as ζbr is increased, the degree of cancellation
+improves, evidenced by the decreasing phase accumula-
+tion per gate and the increasing coherence of Ramsey
+oscillations. Interestingly, there is a slight difference be-
+tween the ratio at which accumulated phase is minimized
+and the ratio at which the coherence is maximized. The
+longest coherence occurs at ζbr = 1.05 and is found to
+have Mσ,1q = 81.9 gates with each MS gate accumulat-
+ing 6.2° of light shift (Fig. 5c and the green shaded regions
+in Fig. 5e and f). However, the phase is best nullified at
+ζbr = 1.1 with Mσ,1q = 37.5 and each gate accumulating
+1.8° of light shift (Fig. 5d and the blue shaded regions in
+Fig. 5e and f). To summarize, the ratio ζbr resulting in
+the most coherent operation leaves a residual light shift,
+which we compensate with a calibration described in the
+next section.
+In order to more easily calibrate ζbr for any given
+ion and gate pair, we test an echo sequence against
+the Ramsey sequence and find similar decay profiles
+(Fig. 6) indicating largely homogeneous dephasing on
+these timescales. Thus for calibration, we can now sim-
+ply scan ζbr within an echo containing a fixed number
+of single-qubit MS gates and select the point where the
+ion best returns to its initial state. For a chain of ions,
+this calibration is done within a single scan by applying

@@ -1,0 +1,107 @@
+NEURAL NETWORK POLYCONVEXIFICATION
+13
+quickly become intractable for more complex scenarios, such as parameter-dependent functions
+or real engineering problems.
+Remark 5.1. In addition to the values of the polyconvex envelopes, most engineering applications
+also require their derivatives. We briefly point out two straight forward approaches for predicting
+these derivatives. The first approach involves differentiating the predictions of the neural network
+directly using standard finite difference methods. However, preliminary results indicate that
+this method suffers from significant drawbacks owing to the lack of continuity in the network
+evaluations. A more conventional alternative is to train a separate neural network to learn the
+derivatives of the polyconvex envelopes. Initial numerical experiments on this example demonstrate
+that this can be achieved with a relatively simple network architecture, consisting of two hidden
+layers with 10 and 20 neurons, ReLU activation functions and a two-dimensional output with
+linear activation functions. However, we do not pursue this direction further as it is beyond the
+scope of this paper.
+5.2. The Generalised Kohn–Strang–Dolzmann Function. After the previous initial bench-
+mark example, we consider a more complex case, i.e. a two-parameter-dependent family of
+functions. The following example was studied in [AF98, Zha02] and modified to achieve continu-
+ity. We consider the function W : R2×2 × R+ × R+ \ {0} →R, defined as
+W(F; λ, α) =
+(
+λ + α |F|2
+if |F| ≥
+q
+λ
+α (
+√
+2 −1),
+2
+√
+2 λ α |F|
+else,
+where |F| := (Pd
+i,j=1 F 2
+ij)1/2. The polyconvex envelope of W is known analytically in closed form
+and reads
+W pc(F; λ, α) =
+(
+λ + α |F|2
+if ρ(F) ≥
+q
+λ
+α,
+2
+√
+λ α ρ(F) −2α |det(F)|
+else,
+where ρ(F) :=
+p
+|F|2 + 2 |det(F)|. The functions W and W pc are isotropic, and, rewritten in
+terms of the signed singular values, they reduce to Φ, Φpc : R2 × R+ × R+ \ {0} →R with
+(17)
+Φ(ˆν; λ, α) =
+(
+λ + α (ν2
+1 + ν2
+2)
+if
+p
+ν2
+1 + ν2
+2 ≥
+q
+λ
+α (
+√
+2 −1),
+2
+√
+2 λ α
+p
+ν2
+1 + ν2
+2
+else,
+and
+(18)
+Φpc(ˆν; λ, α) =
+(
+λ + α(ν2
+1 + ν2
+2)
+if ρ(ˆν) ≥
+q
+λ
+α,
+2
+√
+λ α (|ν1| + |ν2|) −2α |ν1ν2|
+else,
+where ρ(ˆν) = |ν1| + |ν2|.
+5.2.1. Network Architecture and Learning Data. For this parameter-dependent example, we
+implement a PICNN where each path consists of three hidden layers with 10, 20, and 20 neurons,
+respectively. The convex input, denoted by ˆm, represents the minors of the signed singular values,
+i.e. m(ˆν), while the nonconvex inputs, denoted as vector ζ, correspond to the two parameters λ
+and α. The learning domain for ˆν is defined as [−ν, ν]2 with ν = 1.05, while the learning domain
+is [1, 2] for each of the parameters λ and α. For the training dataset, the set of points in the
+signed singular value space is obtained by discretising each axis into 201 points, so that the point
+0 is included, with a local refinement towards the origin using a quadratic transformation, as in
+the previous example. The parameter λ takes values from the discrete set {1, 1.2, . . . , 1.8, 2} and
+α follows the same parameter discretisation. These discretisations lead to a total of 1,454,436
+points in the training dataset. For the validation dataset, in the parameter components we
+randomly select six values each for λ and for α within the interval [1, 2], and for each couple
+of parameters (λ, α) we randomly sample 1302 points in the ν argument within the domain
+[−ν, ν]2, making hence 608,400 points. Consequently, the training dataset accounts for 70% of
+the total learning dataset, while the validation dataset accounts for 30% of it. The target values
+are computed using the analytical function Φpc, cf. (18). Figure 5 illustrates a one-dimensional

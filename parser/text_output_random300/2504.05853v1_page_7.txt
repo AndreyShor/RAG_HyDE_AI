@@ -1,0 +1,69 @@
+NOTES ON COLOR REDUCTIONS AND γ TRACES
+7
+Inverting this matrix yields
+(14)
+RG(N)i,j,k =
+(2RG1
+0(N) + (N 2 −2)RG2
+0(N))T i
+abT j
+bcT k
+ca + ((N 2 −2)RG1
+0(N) + 2RG2
+0(N))T k
+abT j
+bcT i
+ca
+N(N 2 −1)(N 2 −4)
+.
+Figure 8. A subgraph which leads to zero color reduction.
+2.4. Results and a conjecture.
+Proposition 6. Let G with vG ≥1 be a connected vacuum color graph for the group SU(N) and let RG(N)
+be its color reduction. Let eG and fG be the number of edges and oriented cycles in G, respectively.
+(1) RG(N) is divisible by N 2 −1.
+(2) If G has a subgraph as depicted in Figure 8, then RG(N) = 0.
+(3) The polynomial RG(N) ∈Z[N, 1
+N ] has low degree ≥−hG + 2. If G has a fundamental vertex,
+then deg(RG(N)) ≤hG, otherwise deg(RG(N)) ≤hG + 1.
+(4) The polynomial RG(N) has parity fG + eG,
+(15)
+RG(−N) = (−1)fG+eGRG(N).
+Proof. (1) Because vG ≥1, the graph G has at least one non-oriented edge. We open G at this edge, see
+Example 5 (1), and calculate the reduction as a polynomial in Z[N, 1
+N ]. The result follows from (11).
+(2) By anti-symmetry of adjoint vertices, see Figure 2, permuting the two left vertices in Figure 8
+reproduces the graph with a minus sign comming from the three right vertices.
+(3) If G has no adjoint vertex, then one third of its edges is non-oriented. The reduction of a non-
+oriented edge with (9) produces one factor of 1/N and may disconnect the graph. After all non-oriented
+edges are reduced, we have eG/3 powers of 1/N (bar cancellations). The number of oriented self-loops
+(with value N) is between one and eG/3 + 1. From (8) we obtain vG = 2eG/3; from (7) we get eG/3 =
+hG −1. The low degree of RG(N) is therefore ≥−hG + 2 and deg(RG(N)) ≤hG.
+With the first equation in Figure 3 we can replace an adjoint vertex that is attached to an oriented
+chain by a fundamental vertex. The reduction does not change eG, vG or cG. By (7) it also fixes hG. If
+G has an adjoint and a fundamental vertex, then (because G is connected) there exists an adjoint vertex
+that is attached to a fundamental vertex. By induction over the number of adjoint vertices using the
+above reduction, we obtain a low degree ≥−hG + 2 and a degree ≤hG.
+If G has no fundamental vertex, we use (9) to produce three fundamental vertices. The loop order of
+G increases by one.
+(4) We can calculate the reduction only by using (4) (to eliminate all adjoint vertices) and (9) (to
+eliminate all non-oriented edges).
+In both terms of (4), we obtain fG 7→fG + 1, eG 7→eG + 3. So, fG + eG 7→fG + eG + 4 and the parity
+does not change.
+In the first term of (9) we obtain the map fG 7→fG ± 1 (depending on whether or not the oriented
+chains are from the same oriented cycle), eG 7→eG −3. So, fG + eG does not change modulo 2.
+In the second term of (9) we obtain the map fG 7→fG, eG 7→eG −3. So, fG + eG changes modulo 2.
+The coefficient 1/N is anti-symmetric, so that (15) remains valid.
+Hence, it suffices to show (15) for complete reductions, which are a collection of oriented self-loops
+(with e◦= 0). A union of n oriented loops has the reduction N n with n = fG = fG + eG.
+□
+The graph in Figure 8 is only the smallest example of a subgraph that renders the color factor zero.
+If G1 (G2) is a (non-)oriented cycle with hG1 −1 (hG2 −1) parallel chords, then we obtain from
+repeatedly using the second line in Figure 5 that
+(16)
+RG1(N) =
+
+N −1
+N
+hG1−1
+N,
+RG2(N) = (2N)hG2−1(N 2 −1).

@@ -1,0 +1,52 @@
+Here Aµ denotes an auxiliary vector ﬁeld and χjβ refers to a fermion, and ωρ,R denote fur-
+ther auxiliary antighosts. For instance the ψcR vertex becomes the 4-point vertex ψcωRχ.
+In a second step in this and all similar cases, 4-point interactions of fermionic ﬁelds are
+treated analogously to b∆and split into two 3-point vertices. This also means that an
+n-point Green function with insertions of either ∆or external sources is represented in
+FeynArts as a higher-valence function.
+We couple each breaking vertex, i.e. also those generated at one-loop in ∆1L
+ct , by dif-
+ferent external ghosts and scalars and can access them individually for selecting diagrams
+in FeynArts. The same decomposition as in Fig. 3 is used if needed. The most delicate
+kind of higher-valence vertices in our implementation due to the one-loop renormaliza-
+tion is given by the breaking operator ∆1L
+ψccR. Since it is both a ∆-insertion and carries
+the external source R, this operator necessitates two additional antighost sources, which
+would in total correspond to a vertex of valence six. With two spinors, two ghosts and two
+antighosts, the vertex is decomposed into three three-point vertices each with their own
+scalar ﬁeld, and joined by a triple scalar vertex. Despite this complication, we recover
+the necessary diagrams for (∆1L
+ψccR · Γ)2L.
+Our implementation as described here correctly reproduces the results in Refs. [15,
+20]. We mention that simpler implementations in FeynArts which e.g. do not couple
+the b∆-vertex to an auxiliary source ﬁeld have been tested but produce incorrect results.
+Explicitly, at one-loop the Green function (b∆· Γ)ψRcc was found to be sensitive to such a
+diﬀerence in implementation, producing an incorrect relative sign between diagrams with
+crossed external ghost lines. We note that such diagrams with identical external fermions
+do not appear in the Abelian calculation.
+4
+Results for the two-loop counterterms
+In this section we provide the explicit and full counterterm Lagrangian of both UV renor-
+malization and restoration of symmetry breaking L2L
+ct = L2L
+sct + L2L
+fct. The one-loop coun-
+terterms needed for subrenormalization are essentially the ones of Ref. [20] but have been
+re-derived by doing the complete one-loop renormalization in our setup adapted to the
+reducible SU(2)-model.
+The technical setup is similar to the ones used in the Abelian two-loop and three-loop
+calculations of Refs. [21, 23]. The results for loop diagrams are obtained using the well-
+known tadpole expansion method [34–36], by introducing an auxiliary mass into the de-
+nominators and setting external momenta to zero. The calculations were performed with
+the help of Mathematica, speciﬁcally the packages FeynRules, FeynArts, FeynHelpers
+and FeynCalc [37–42]. As discussed in Sec. 3.2, powerful consistency checks are possible
+by separately evaluating and comparing both the LHS and RHS of the quantum action
+principle (cf. Eq. (3.18)). These consistency checks were performed for the divergent parts
+of all breaking Green functions. Additionally we also performed the consistency checks
+for the ﬁnite parts for the Green functions (∆·Γ)Gc and (∆·Γ)ψψc. The latter calculation
+employs TARCER [43] in order to evaluate the ﬁnite part of some of the two-loop integrals,
+providing further independent checks. Further non-trivial consistency checks arise from
+the absence of logarithms in the two-loop counterterms required to cancel UV divergences
+and symmetry breakings after subrenormalization and all subtleties mentioned in Sec. 3.2
+are taken into account.
+14

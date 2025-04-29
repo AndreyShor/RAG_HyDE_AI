@@ -1,0 +1,136 @@
+2
+−1
+−0.5
+0
+0.5
+1
+0.0
+0.4
+0.8
+1.2
+1.6
+2
+ε/ε∗
+∆S(2)
+A |Qy
+L = 16
+Haar
+U(1) Haar
+ℓA = 4
+ℓA = 11
+FIG. 1. R´enyi−2 entanglement asymmetry for the charge Qy
+of the eigenstates of the mixed-field Ising Hamiltonian (2)
+with L = 16 sites in the chaotic point g = 1.1, h = 0.35 for a
+subsystem of length ℓA = 4 (blue points) and ℓA = 11 (green
+points). The energy density ε of the eigenstates is rescaled by
+ε∗= 1.54, as explained in the main text. The black continu-
+ous lines are the analytical prediction (7) obtained using the
+ensemble of U(1)-symmetric Haar random states, with con-
+served charge orthogonal to Qy. The blue and green shaded
+regions correspond to the confidence interval E[∆S(2)
+A ] ± 3σ,
+where the variance σ is estimated numerically by sampling
+the ensemble of U(1)-symmetric random states.
+The grey
+dashed lines are the prediction (8) of the standard Haar uni-
+tary ensemble, which is expected to only capture the behavior
+of midspectrum eigenstates (ε ∼0).
+nian H, i.e. it can be partitioned as H = HA+HB+HAB,
+where HA (HB) only acts on A (B) and HAB contains
+all of the terms coupling A and B.
+Any eigenstate
+|ψE⟩of H with energy E then admits the decomposition
+|ψE⟩= P
+ij cij |ψEi⟩A ⊗
+ψEj
+
+B, where |ψEi⟩A(B) is an
+eigenstate of HA(B) with energy Ei. A key observation,
+first analyzed in [1], is that the locality of the interaction
+HAB makes the matrix cij banded; that is, cij is non-zero
+only for energies Ei + Ej ∈[E −δ/2, E + δ/2], where δ
+is set by the interaction term HAB. The locality of the
+interactions implies that δ ∼O(1). More rigorously, it
+is possible to prove that cij are upper bounded by a de-
+creasing exponential in Ei + Ej −E [69]. Refs. [13, 14]
+used this idea to construct states consistent with the sub-
+system ETH [70] and that describe universal properties
+of finite-temperature eigenstates of chaotic Hamiltoni-
+ans. A further approximation assumed in Refs. [31, 32]
+is the coarse-graining of the spectrum of HA(B) with the
+scale δ by assigning to all the eigenstates in the win-
+dow εk −δ/2 ≤Ei ≤εk + δ/2 the same energy εk. This
+identification effectively discretizes the spectrum and cre-
+ates degenerate energy subspaces HA(B)(εk). As a result,
+the typical eigenstates can be approximately written as
+|ψE⟩≈P
+k cεk |ψεk⟩with |ψεk⟩∈HA(εk) ⊗HB(E −εk),
+akin the structure of states with a global U(1) symmetry.
+Based on this approximation, Refs. [31, 32] conjecture
+that the properties of typical eigenstates of local chaotic
+Hamiltonians are captured by random states subject to
+this symmetry constraint.
+As shown in [31], this U(1)-symmetric random state
+ensemble not only gives a better prediction than the Haar
+ensemble of the entanglement entropy at zero energy
+density but it is also able to capture the universal en-
+tanglement properties of finite-temperature eigenstates.
+These eigenstates have typically less entanglement en-
+tropy than the infinite-temperature one, as the fraction
+of the Hilbert space they can explore is smaller. This ef-
+fect can be modeled by changing in the ensemble the sec-
+tor of the total conserved charge. After introducing the
+ensemble of U(1)-symmetric random states in the next
+paragraph, we describe how to make this correspondence
+in detail.
+U(1)-symmetric random state ensemble.— The ensem-
+ble of U(1)-symmetric random states employed in [31, 32]
+was initially studied in [16, 18]. A complete characteriza-
+tion of the first two moments of the entanglement entropy
+has been given in [15] and of its symmetry-resolution
+in [71, 72]. To define it, we need to consider a charge op-
+erator Q that generates a global U(1) group. The Hilbert
+space of the full system can be then decomposed as the
+direct sum of each charge sector, H = ⊕MH(M), where
+M is an eigenvalue of Q. If we take a bipartition of the
+system in subsystems A and B and we assume that the
+total charge is the sum of the contributions of A and B,
+Q = QA + QB, then the subspace H(M) of fixed total
+charge M further decomposes as
+H(M) =
+M
+q
+HA(q) ⊗HB(M −q).
+(1)
+Thus, the U(1)-symmetric states |Ψ(M)⟩∈H(M), i.e.
+those satisfying Q |Ψ(M)⟩= M |Ψ(M)⟩, can be writ-
+ten as |Ψ(M)⟩= P
+q
+√pq |ψq⟩, where |ψq⟩∈HA(q) ⊗
+HB(M −q).
+The corresponding reduced density ma-
+trix that describes the subsystem A is of the form ρA =
+P
+q pqρA(q). Here pq is the probability of finding a charge
+q in A. In Ref. [15], it is proved that the uniform mea-
+sure over H(M) subject to the symmetry constraint (1)
+is equal to the product of the uniform measure in each
+subspace HA(q) ⊗HB(M −q), which is the usual Haar
+unitary measure, times the probability measure over the
+coefficients {pq}, which is given by the Dirichlet distri-
+bution with parameters dq = dA,qdB,q, where dq is the
+dimension of the space HA(q)⊗HB(M −q) for each pos-
+sible q.
+Hamiltonian model.— As a concrete example, we
+consider the one-dimensional Mixed-Field Ising Model
+(MFIM), a paradigmatic model of quantum chaos [5, 9,
+75]. This is a spin-1/2 chain with Hamiltonian:
+H =
+X
+j
+(σz
+j σz
+j+1 + gσx
+j + hσz
+j ),
+(2)

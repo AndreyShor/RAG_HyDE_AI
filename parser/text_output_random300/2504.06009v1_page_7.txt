@@ -1,0 +1,130 @@
+nonnegative (hence cyclically monotone). Here, we extend
+this result to exponentially stable LTSI systems.
+Theorem 6: Suppose that the LTSI system Σ is exponen-
+tially stable. Then, Σ is of relaxation type if and only if the
+Hankel operator H ∈B(L2(R+, U)) satisﬁes H ≥0.
+Proof: Note that H ∈B(L2(R+, U)) due to Theorem 5
+and the assumption that Σ is exponentially stable. We ﬁrst
+prove necessity. Suppose that Σ is of relaxation type. It
+follows that ˆΣω is of relaxation type for all ω ∈Rs due
+to Theorem 1. Furthermore, due to [16, Thoerem 1], ˆΣω is
+stable for all ω ∈Rs. Consequently, due to [3, Theorem 5],
+the Hankel operator ˆHω ∈B(L2(R+, Cm)) of ˆΣω satisﬁes
+ˆHω ≥0 for all ω ∈Rs. Note that
+⟨ˆHωˆvω, ˆwω⟩=
+Z
+R+
+Z
+R+
+⟨ˆgω(t + τ)ˆvω(τ), ˆwω(t)⟩dτdt (36)
+for all ˆvω, ˆwω ∈L2(R+, Cm), and, similarly,
+⟨Hv, w⟩=
+Z
+R+
+Z
+R+
+⟨G(t + τ)v(τ), w(t)⟩dτdt.
+(37)
+for all v, w ∈L2(R+, U). Due to Plancherel’s theorem,
+⟨G(t + τ)v(τ), w(t)⟩= ⟨ˆG(t + τ)ˆv(τ), ˆw(t)⟩
+=
+Z
+Rs⟨ˆgω(t + τ)ˆvω(τ), ˆwω(t)⟩dω
+for all v, w ∈L2(R+, U) with (spatial) Fourier transforms
+ˆv, ˆw ∈L2(R+, U). Substituting the latter in (37) and chang-
+ing the order of integration yields
+⟨Hv, w⟩=
+Z
+Rs⟨ˆ
+Hωˆvω, ˆwω⟩dω
+(38)
+where ˆvω, ˆwω
+∈L2(R+, Cm) for almost all ω ∈Rs.
+Therefore, H ≥0 because ˆHω ≥0 for all ω ∈Rs.
+Next, we prove sufﬁciency. Suppose that H ≥0. Consider
+arbitrary ¯v, ¯w ∈L2(R+, Cm). Let ˆvω = ¯v and ˆwω = ¯w for
+all ω ∈Ω, and ˆvω = ˆwω = 0 for all ω /∈Ω, where Ω⊂Rs
+is an arbitrary compact subset. Then, v, w ∈L2(R+, U) and
+Z
+Ω
+⟨ˆ
+Hω¯v, ¯w⟩−⟨¯v, ˆHω ¯w⟩dω = 0
+(39)
+due to (38) and the assumption that H is self-adjoint. The
+latter holds for all ¯v, ¯w ∈L2(R+, Cm) and compact Ω⊂Rs,
+hence ˆHω is self-adjoint for almost all ω ∈Rs. Similarly, ˆHω
+is nonnegative for almost all ω ∈Rs. Due to [3, Theorem 5],
+this implies that ˆΣω is of relaxation type and, thus, ˆgω is
+completely monotone for almost all ω ∈Rs. Note that ˆgω(t)
+and its time derivatives are continuous in ω ∈Rs for each
+t ∈R+ because the symbols ˆA, ˆB and ˆC are assumed to
+be continuous. Therefore, by continuity, ˆgω is completely
+monotone for all ω ∈Rs, hence Σ is of relaxation type due
+to Theorem 1.
+As a consequence of Theorem 6, the Hankel operator H
+of an LTSI relaxation system Σ is (maximally) cyclically
+monotone and, thus, the gradient of a closed convex func-
+tional [21], [22]. In fact, H is the functional derivative of the
+convex quadratic functional H : L2(R+, U) →R+ given by
+H(v) = 1
+2⟨Hv, v⟩,
+(40)
+see [3, Lemma 1]. Theorem 4 shows that H is intimately
+related to the (impedance passive) storage of a relaxation
+system. In particular, we can write (23) as
+S(z(0)) = ⟨H¯u, ¯u⟩= 2H(¯u),
+(41)
+where ¯u(t) = u(−t) for all t ∈R+. The latter implies that
+the energy stored in a relaxation system is completely deter-
+mined from the past input, i.e., its memory. In the LTI case
+[3], the functional H deﬁnes a so-called intrinsic storage,
+which is used to show passivity of relaxation systems from
+a purely input-output perspective. An analogous derivation
+is also possible in the LTSI case. As always, the main idea
+is that the LTSI system Σ inherits the properties of the
+corresponding family of LTI systems ˆΣω, and vice versa.
+VII. CONCLUSION
+We extended the classical concept of relaxation from LTI
+to a class of LTSI systems. We showed that LTSI relaxation
+systems enjoy the same properties as LTI relaxation systems,
+i.e., they have completely monotone impulse responses, they
+are impedance passive, and their Hankel operators are cycli-
+cally monotone. As in the LTI case, LTSI relaxation systems
+reconcile the state-space concept of energy storage with the
+input-output concept of memory functional. Throughout this
+paper, we made use of the properties of the Fourier transform
+with respect to translation invariance to decouple the inﬁnite-
+dimensional LTSI system into an inﬁnite family of ﬁnite-
+dimensional LTI systems, so that properties of one can be
+characterized as properties of the other.
+We identify several topics for future research. It would be
+interesting to investigate whether the apparent discrepancy
+between internal and external relaxation can be resolved
+by imposing spatial properties on the impulse response, or,
+alternatively, by working in a Hardy space rather than L2. It
+would also be interesting to consider LTSI relaxation from
+a purely geometric viewpoint [5]. In any case, we intend
+to extend the theory developed in this paper to nonlinear
+systems, in the same spirit as [4]. In particular, we conjecture
+that spatio-temporal input-output operators that are myopic in
+space [23] with completely monotone fading memory [7] can
+be universally approximated by an LTSI relaxation system
+composed with an absolutely monotone readout.
+REFERENCES
+[1] R. Pates, C. Bergeling, and A. Rantzer, “On the optimal control
+of relaxation systems,” in Proceedings of the IEEE Conference on
+Decision and Control, pp. 6068–6073, 2019.
+[2] R. Pates, “Passive and reciprocal networks: From simple models to
+simple optimal controllers,” IEEE Control Systems Magazine, vol. 42,
+no. 3, pp. 73–92, 2022.
+[3] T. Chaffey, H. J. van Waarde, and R. Sepulchre, “Relaxation systems
+and cyclic monotonicity,” in Proceedings of the IEEE Conference on
+Decision and Control, pp. 1673–1679, 2023.
+[4] R. Sepulchre, T. Chaffey, F. Forni, and Y. Huo, “On the relaxation
+property of nonlinear circuit elements,” in Proceedings of the IEEE
+Conference on Decision and Control, 2024.
+[5] A. van der Schaft, “Reciprocity of nonlinear systems,” SIAM Journal
+on Control and Optimization, vol. 62, no. 6, pp. 3019–3041, 2024.
+[6] J. C. Willems, “Dissipative dynamical systems Part II: Linear systems
+with quadratic supply rates,” Archive for Rational Mechanics and
+Analysis, vol. 45, no. 5, pp. 352–393, 1972.

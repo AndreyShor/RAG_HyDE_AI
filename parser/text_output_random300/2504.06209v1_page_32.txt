@@ -1,0 +1,70 @@
+32
+However, for future reference we point out that the proof and in particular the construction of the predictive
+agent model can be simplified since, for unifilar source environments, there exist unifilar models whose hidden state
+z′ = u(s, z) are a function of the current percept s and the current hidden state z but not of the action. Thus, the
+decomposition of Θ in Figure 17 can be replaced by the simpler decomposition in Figure 18 and, in analogy to the
+proof of theorem 7, one can show that agtM is predictive.
+M′
+Y
+Z′
+ΘMY
+M′
+Y
+Z′
+=
+u(s, z)
+UZ′Y
+Θagt
+M′Y
+FIG. 18. Circuit diagram for the decomposition of ΘMY for unifilar source environments.
+Mj
+Aj
+Sj
+Zj
+Mj+1
+Aj+1
+Zj+1
+Sj+1
+Mj−1
+Aj−1
+Sj−1
+Zj−1
+Mj+2
+Aj+2
+Zj+2
+Sj+2
+Mj−2
+Aj−2
+Sj−2
+Zj−2
+Mj+3
+Aj+3
+Zj+3
+Mj−3
+Aj−3
+Sj−3
+Zj−3
+FIG. 19. Bayesian network for a percept-action loop (lemma 6) with colorized d-separarion (blue d-separates red and green)
+used in the proof of Theorem 7.
+Appendix G: The extractable work in percept-action loops
+In this framework, memory is represented by a physical system coupled to a thermal reservoir at temperature T.
+The system possesses a few degrees of freedom, the information-bearing degrees of freedom, which are assumed to
+be meta-stable, i.e., their equilibration time τinfo is much larger than that of the system’s other degrees of freedom,
+τothers. Information processing on the information-bearing degrees of freedom is carried out through an isothermal
+protocol, i.e., a protocol executed at constant temperature T, with a time scale such that τothers ≪τprotocol ≪τinfo.
+The protocol has access to a work reservoir for storing (or retrieving) work.
+1.
+Derivation of work capacity
+Let X be a finite set of information-bearing degrees of freedom of an information reservoir [37], pXin an arbitrary
+initial distribution over X, and Φ = (ϕ(j|i))j,i an arbitrary transition matrix where i, j ∈X. Then, given that the
+available knowledge of about the information-bearing degrees of freedom X is pXin, the work W which one can expect
+(with respect to pXin) to extract by implementing an isothermal process realizing Φ on X is upper-bounded by the
+second law of thermodynamics as [7, 8]
+W ≤H (Xout) −H (Xin)
+(G1)
+where W is in units of kBT ln 2, and Xout is distributed as
+pXout(xout) =
+X
+xin∈X
+ϕ(xout|xin)pXin(xin),
+(G2)

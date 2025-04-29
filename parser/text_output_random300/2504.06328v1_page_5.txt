@@ -1,0 +1,102 @@
+and distances between density matrices can be de-
+fined by fidelity-based measures like the Bures or
+Helstrom metric [10]. Hence, the transition from
+classical to quantum can be seen as “widening” the
+scope of information geometry from probability dis-
+tributions to density operators. This insight under-
+lies the conceptual link between classical GML on
+statistical manifolds and QML on quantum state
+manifolds [11].
+Implications for Machine Learning.. Natural gra-
+dients have been fruitfully applied to train proba-
+bilistic models and neural networks in classical set-
+tings [22]. Analogously, in QML, a quantum natural
+gradient preconditions parameter updates by the
+quantum Fisher information, aiming for more sta-
+ble and efficient convergence [11]. Thus, the same
+geometric principles that improved optimization on
+SPD or Grassmann manifolds reappear in quan-
+tum contexts, reinforcing the broader theme that
+respecting curvature is crucial, whether the man-
+ifold arises from classical probability distributions
+or quantum mechanics.
+2.5. A Bridge to Quantum Manifolds
+Summarizing the above, GML has established
+methodologies for exploiting geometry on SPD and
+Grassmann manifolds to achieve robust results in
+classification, clustering, and regression.
+Mean-
+while, information geometry has shown that proba-
+bility distributions form curved statistical manifolds
+where natural gradient optimization outperforms
+naive methods [5].
+The jump to quantum states
+is therefore a natural extension: quantum density
+matrices and projective Hilbert spaces are simply
+further instances of curved manifolds, albeit shaped
+by quantum superposition and entanglement. Rec-
+ognizing this commonality sets the stage for our
+framework (Section 3), where QML is recast as a
+form of Geometric ML on density operators.
+2.6. Recent Advances in Geometric and Quantum
+Geometric ML (2020 -2025)
+The last few years have seen a surge of interest
+and breakthroughs in both GML and its quantum
+counterparts. Below, we highlight some key con-
+ceptual, theoretical, and algorithmic developments,
+as well as cross-disciplinary applications.
+Deeper Symmetry and Equivariance in GML.. Re-
+cent work in geometric deep learning has empha-
+sized symmetry or group-equivariant architectures
+[6], enabling neural networks to respect the trans-
+formations inherent to the data (e.g., rotations, per-
+mutations).
+Examples include SE(3)-equivariant
+networks for molecular modeling, hyperbolic net-
+works for hierarchical data, and new Graph Trans-
+former variants that scale to massive graphs with
+attention-based global context [13, 14]. Equivari-
+ant models often provide higher accuracy and bet-
+ter generalization with fewer parameters.
+Manifold-Aware Deep Architectures.. Beyond SPD
+or Grassmann features, several authors have ex-
+plored manifold-aware layers directly within deep
+networks [46].
+.
+For instance, SPDNet [38] in-
+troduced operations on Sym+ that preserve ma-
+trix positivity, while other works extend to hy-
+perbolic embeddings for hierarchical classification
+[42]. These manifold-based neural layers have been
+applied in fields like 3D shape analysis, medical
+imaging, and time-series modeling, showing im-
+proved performance due to respecting geometric
+constraints.
+Quantum Geometry and Equivariant QML.. On
+the QML side, researchers have increasingly lever-
+aged group-theoretic ideas to design symmetry-
+preserving or equivariant quantum circuits, partly
+to mitigate the so-called “barren plateau” problem
+in variational quantum algorithms [35]. By restrict-
+ing circuit ans¨atze to preserve certain group sym-
+metries, one can achieve more stable training and
+better scaling.
+In addition, new quantum kernel
+methods incorporate data symmetries to reduce re-
+quired qubit counts [43].
+Hybrid Methods and Real-World Applications.. Re-
+cent hybrid classical -quantum approaches have
+tackled problems in:
+• Robotics & Control:
+Using geometric graph
+representations of robot sensor data, then em-
+bedding them in variational quantum circuits
+for certain high-level decision tasks (e.g., path
+optimization) [44].
+• NLP and QNLP: Quantum natural language
+processing techniques exploit compositional
+structures in grammar, mapping them to ten-
+sor networks (and ultimately quantum states)
+[45].
+Early experiments on real hardware
+5

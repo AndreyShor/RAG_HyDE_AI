@@ -1,0 +1,147 @@
+9
+For calibrations, we determine ζbr prior to calibrat-
+ing the frame rotation. To confirm that the residual shift
+canceled through this method matches our previous mea-
+surements of phase accumulation (Fig. 5), we investigate
+how ζbr affects the determination of the best ϕf,i(τ) in
+Fig. 8. Four examples of the ϕf,i(τ) calibration are pre-
+sented, each at taken at a different ζbr. Each ζbr yields
+a different necessary ϕf,i(τ) for cancellation of the light
+shift.
+When compared to the light shift imparted by
+the single-qubit MS(π/2) as a function of ζbr (originally
+presented in Fig. 5e and reproduced as teal diamonds in
+Fig. 8b), there is significant agreement. This agreement
+further indicates the measured necessary frame rotation
+does indeed cancel any light shift of the gate. Frame rota-
+tion scans presented in Fig. 8 were performed interleaved
+with the single-qubit Ramsey measurements in Fig. 5 to
+combat possible drift in the system.
+While the frame rotation alone is sufficient to cancel
+the entire light shift, there are clear performance im-
+pacts for non-ideal ζbr as shown in Fig. 8a. At ζbr =
+1.05, nearly all the population is transferred to |11⟩at
+ϕf,i(τ) = −6.25° (which cancels a light shift of +6.25°).
+However, as ζbr moves away from its optimal point so
+does the maximal degree of population transfer to |11⟩.
+As such, we can also extract a rough performance esti-
+mate of the gate based on its ability to generate |11⟩.
+To estimate the performance of a single gate, we take
+the square root of the probability of measuring |11⟩, or
+√P11. When we plot that performance metric as a func-
+tion of ζbr in Fig. 8c, there are clear reductions away from
+the optimal point, ζbr = 1.05, similar to the reduction in
+coherence seen in Fig. 5f.
+A simulation of the fourth-order light shift is also
+plotted in Fig. 8b with the measurements.
+The light
+shifts from each combination of comb teeth (i.e.
+red
+with global, blue with global, and red with blue as well
+as intra-comb combinations) are summed (and scaled
+based on empirically estimates that approximate beam
+amplitudes and polarizations) to determine the simu-
+lated fourth-order contribution.
+We fit the simulation
+to the empirical results, and find the Rabi rate to be
+1.10 times the measured rate (at ζbr = 1.0, we measure
+Ω(105)
+b,g
+/2π = Ω(105)
+r,g
+/2π = 122.1 kHz), and ζbr to be 1.04
+times the intended (or programmed) ratio. These mis-
+matches between the measurements and simulations are
+not unexpected. The mismatch in Rabi rate is likely due
+to imperfect polarizations at the ion not adequately cap-
+tured in the model. Specifically, ˆπ polarization compo-
+nents of the light are unable to drive counter-propagating
+carrier Raman transitions, but will contribute to light
+shifts from the |F = 0, mF = 0⟩−|F = 1, mF = ±1⟩Zee-
+man transitions (separated by ∼5.96MHz from the car-
+rier) which are neglected in this model.
+Likewise, the
+minor mismatch in the amplitudes we program relative
+to the amplitudes at the ion are a result of slight differ-
+ences in AOM efficiencies at the blue- and red-detuned
+frequencies.
+The next challenge is understanding how to scale the
+100
+80
+60
+40
+20
+0
+20
+40
+60
+f( ), Frame Rotation (o)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+P11
+a)
+32 × MS( /32)
+8 × MS( /8)
+4 × MS( /4)
+2 × MS( /2)
+0
+/16
+/8
+3 /8
+/4
+5 /16
+3 /8
+7 /16
+/2
+, Entangling Angle (rad.)
+25
+20
+15
+10
+5
+0
+ 
+f( ), Calibrated 
+Frame Rotation (o)
+b)
+FIG. 9: Frame rotations for various different MS(θ) a)
+M × MS(π/M) are performed while the total frame
+rotation magnitude, ϕf,i(τ) is scanned. Plotted are
+examples (M = [2,4,8,32]) from the complete dataset.
+The peak of the upper half of the distribution is fit for
+each M in the dataset to a Gaussian through maximum
+likelihood estimation and plotted in b) where the
+shaded regions correspond to the examples presented in
+a). There is a clear linear relationship between θ and
+the ϕf,i(τ). This relationship is used to interpolate the
+needed ϕf,i(τ) for any given θ.
+magnitude of these light shifts for any arbitrary en-
+tangling angle θ.
+In this case, we use M successive
+MS(π/M) pulses and repeat the procedure above for
+a variety of M.
+In Fig. 9a, we see that with decreas-
+ing θ, the residual light shift to be canceled decreases
+as well. Interestingly, we find a linear relationship be-
+tween θ and the frame rotation, ϕf,i(τ) needed to cancel
+the light shift, as shown in Fig. 9b. Therefore, in prac-
+tice, we only need to find two points along this functional
+form to interpolate/extrapolate the needed frame rota-
+tion for any arbitrary rotation. We find 2 × MS(π/2)
+and 32 × MS(π/32) are sufficient.
+V.
+ZZ GATES AND PHASE AGNOSTICISM
+The final step in our procedure is to convert the MS(θ)
+gate into its phase-agnostic ZZ(θ) formulation [7, 34, 35]
+for integration into larger and deeper circuits. We note
+that ZZ(θ) gates are phase agnostic because single-qubit
+Z gates commute with ZZ(θ). The rationale for this con-
+version is two-fold.
+To begin, two-qubit MS(θ) gates
+are performed in a counter-propagating configuration
+(two tones on the IA beam and one tone on the global
+beam). Our single-qubit gates can be performed either in

@@ -1,0 +1,258 @@
+20
+Let’s now present a more general example in terms of network structure.
+Example S16. Consider a graph with N = 13 vertices with complex weight matrix
+A =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+iω1/2
+A1,2
+A1,3
+A1,4
+A1,5
+A1,6
+A1,7
+A1,8
+A1,9
+A1,10
+A1,11
+A1,12
+A1,13
+A1,1
+iω2/2
+A1,3
+A1,4
+A1,5
+A1,6
+A1,7
+A1,8
+A1,9
+A1,10
+A1,11
+A1,12
+A1,13
+A1,1
+A1,2
+iω3/2
+A1,4
+A1,5
+A1,6
+A1,7
+A1,8
+A1,9
+A1,10
+A1,11
+A1,12
+A1,13
+A1,1
+A1,2
+A1,3
+iω4/2
+A1,5
+A1,6
+A1,7
+A1,8
+A1,9
+A1,10
+A1,11
+A1,12
+A1,13
+A2,1
+A2,2
+A2,3
+A2,4
+iω5/2
+A2,6
+A2,7
+A2,8
+A2,9
+A2,10
+A2,11
+A2,12
+A2,13
+A2,1
+A2,2
+A2,3
+A2,4
+A2,5
+iω6/2
+A2,7
+A2,8
+A2,9
+A2,10
+A2,11
+A2,12
+A2,13
+A2,1
+A2,2
+A2,3
+A2,4
+A2,5
+A2,6
+iω7/2
+A2,8
+A2,9
+A2,10
+A2,11
+A2,12
+A2,13
+A2,1
+A2,2
+A2,3
+A2,4
+A2,5
+A2,6
+A2,7
+iω8/2
+A2,9
+A2,10
+A2,11
+A2,12
+A2,13
+A2,1
+A2,2
+A2,3
+A2,4
+A2,5
+A2,6
+A2,7
+A2,8
+iω9/2
+A2,10
+A2,11
+A2,12
+A2,13
+A2,1
+A2,2
+A2,3
+A2,4
+A2,5
+A2,6
+A2,7
+A2,8
+A2,9
+iω10/2
+A2,11
+A2,12
+A2,13
+A11,1
+A11,2
+A11,3
+A11,4
+A11,5
+A11,6
+A11,7
+A11,8
+A11,9
+A11,10 iω11/2 A11,12
+A11,13
+A12,1
+A12,2
+A12,3
+A12,4
+A12,5
+A12,6
+A12,7
+A12,8
+A12,9
+A12,10
+A12,11 iω12/2 A12,13
+A13,1
+A13,2
+A13,3
+A13,4
+A13,5
+A13,6
+A13,7
+A13,8
+A13,9
+A13,10
+A13,11
+A13,12 iω13/2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+,
+where
+ωj =
+
+
+
+
+
+arbitrary real number
+if j ∈{1, 5, 11, 12, 13},
+ω1 + 2 Im(A1,j −A1,1)
+if j ∈{2, 3, 4},
+ω5 + 2 Im(A2,j −A2,5)
+if j ∈{6, 7, 8, 9, 10}.
+The effective natural frequencies within each partially integrable part are Ω1 = ω1 −2 Im(A1,1) and Ω2 = ω5 −
+2 Im(A2,5). Following Thm. S12 and Lem. S6, the following cross-ratios are functionally independent constants of
+motion:
+c1,2,3,4(z) = (z3 −z1)(z4 −z2)
+(z3 −z2)(z4 −z1)
+related to the first four oscillators and
+c5,6,7,8(z) = (z7 −z5)(z8 −z6)
+(z7 −z6)(z8 −z5) ,
+c6,7,8,9(z) = (z8 −z6)(z9 −z7)
+(z8 −z7)(z9 −z6) ,
+c7,8,9,10(z) = (z9 −z7)(z10 −z8)
+(z9 −z8)(z10 −z7)
+for oscillators 5 to 10.
+We end this subsection with Fig. S2, which illustrates the weight matrix of a more general network of Kuramoto
+oscillators with conserved cross-ratios.
+F.
+Corollaries of Theorem 2
+In this subsection, we provide some consequences of Thm. S12. First, the theorem readily gives the necessary and
+sufficient conditions to have N −3 constants of motion having the form of cross-ratios. The sufficiency is known from
+the excellent work of Lohe [64, 73]. The following corollary formalizes this result while adding the necessity of the
+conditions.
+Corollary S17. The N-dimensional Kuramoto model on a graph with complex weight matrix A admits the maximum
+number of functionally independent cross-ratios as constants of motion, namely N −3, if and only if the following
+two conditions are satisfied:
+1. Ajℓ= Akℓ=: Aℓfor all ℓ∈{1, ..., N} and for all pairs (j, k) with j, k ∈{1, ..., N} and k, ℓ̸= j ;
+2. ωj −2 Im(Aj) = ωk −2 Im(Ak) for all pairs (j, k) with j, k ∈{1, ..., N} and k ̸= j .

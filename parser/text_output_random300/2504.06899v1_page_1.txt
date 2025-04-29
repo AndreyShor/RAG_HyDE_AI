@@ -1,0 +1,91 @@
+SVTest: general purpose software for testing weakly random sources with exemplary
+application to seismic data analysis enabling quantum amplification.
+Maciej Stankiewicz
+,1 Roberto Salazar
+,2, 3 Miko laj Czechlewski
+,4 Alejandra Mu˜noz Jensen
+,5
+Catalina Morales-Y´a˜nez
+,6, 7 Omer Sakarya
+,4 Julio Viveros Carrasco,6 and Karol Horodecki
+4, ∗
+1Institute of Informatics, Faculty of Mathematics, Physics and Informatics,
+University of Gda´nsk, Wita Stwosza 57, 80-308 Gda´nsk, Poland
+2Department of Communications & Computer Engineering,
+Faculty of Information & communication technology (ICT), University of Malta, Msida, MSD 2080, Malta
+3Faculty of Physics, Astronomy and Applied Computer Science, Jagiellonian University, 30-348 Krak´ow, Poland
+4Institute of Informatics, National Quantum Information Centre,
+Faculty of Mathematics, Physics and Informatics,
+University of Gda´nsk, Wita Stwosza 57, 80-308 Gda´nsk, Poland
+5EMGG TerraData Limitada, Concepci´on, Chile
+6Department of Geophysics, Universidad de Concepci´on, Concepci´on, Chile
+7Department of Civil Engineering, Universidad Cat´olica de la Sant´ısima Concepci´on, Concepci´on, Chile
+(Dated: April 9, 2025)
+Generating private randomness is essential for numerous applications ranging from security proofs
+to online banking. Consequently, the capacity of quantum devices to amplify the privacy of a weak
+source of randomness, in cases unattainable by classical methods, constitutes a practical advantage.
+One of the theoretical models of such weak sources are the so-called Santha-Vazirani (SV) sources;
+however, finding natural sources satisfying the SV model is a paramount challenge. In this article, we
+take three significant steps on the way to simplify this hard task. We begin with an in-depth analysis
+of the mathematical background for estimating the quality of a weak randomness source by providing
+a set of axioms that systematize the possible approaches to such estimation.
+We then develop
+software (SVTest) to estimate the parameter characterizing the source’s randomness. The software
+is general-purpose, i.e., it can test the randomness of any target sequence of bits. Later, we apply
+the software to test seismic events (earthquakes and local noise) as potential sources of randomness.
+Our results demonstrate that seismic phenomena are possible sources of randomness, depending
+on the choice of discretization. Therefore, our work provides strong evidence of the potential of
+geophysical phenomena as a source of cryptographic resources, building an unprecedented bridge
+between both fields.
+Keywords: randomness, amplification, earthquake, quantum
+I.
+INTRODUCTION
+The creation of random bits is ubiquitous across In-
+ternet applications and extends its importance to realms
+such as online banking, where confidentiality against po-
+tential adversaries becomes paramount [1].
+However,
+achieving privacy in these bits poses an elusive chal-
+lenge. Proving the privacy of a sequence against adver-
+saries without additional assumptions about the source
+generating the sequence remains an insurmountable task.
+An area of considerable interest lies within the domain
+of pseudorandom deterministically generated sequences,
+extensively investigated in [2] and references therein. De-
+spite their popularity, these sequences reveal vulnera-
+bility upon partial disclosure of their initial conditions,
+resulting in predictability and compromising their secu-
+rity. This susceptibility to attacks challenges their seam-
+less integration, underscoring the intricate equilibrium
+required between security and operational efficiency to
+pursue robust random bit generation. One approach to
+address this challenge involves leveraging physical phe-
+∗Correspondence: karol.horodecki@ug.edu.pl
+nomena as foundational sources, harnessing properties of
+these natural processes to generate a stream of inherently
+weakly random bits. However, this raw randomness re-
+quires further refinement through post-processing tech-
+niques aimed at distilling private, secure randomness—
+a process thoroughly examined in [1, 3] and references
+therein. Some of the above physically certified random-
+nesses include radioactive decay, specific astronomical
+data selections, or even fluctuations captured by the cam-
+era on a mobile device [4]. Nevertheless, for this method-
+ology to prove effective, it necessitates at least two statis-
+tically independent sources against classical adversaries
+with access to specific knowledge about the source. In-
+deed, M. Santha and U. Vazirani proved a no-go state-
+ment for classical post-processing methods [5].
+They
+considered a family of sources—now called the Santha-
+Vazirani source—parameterized by ϵ > 0, expressing its
+divergence from the ideal source of uniform bits. They
+showed that extracting a more random sequence—that
+is, decreasing the value of ϵ—is unattainable by classical
+methods. Here, the following condition constrains n bits
+of the SV source:
+1
+2 −ϵ ≤P(si|si−1, . . . , s0, e) ≤1
+2 + ϵ
+(1)
+arXiv:2504.06899v1  [quant-ph]  9 Apr 2025

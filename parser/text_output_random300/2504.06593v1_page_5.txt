@@ -1,0 +1,86 @@
+3) Collaboration
+Leveraging the extracted perception features and the
+Box Relations Graph (BRG) constructed from the
+physics simulation, the system optimizes efficiency
+by facilitating human-robot collaboration. It analyzes
+the predicted action sequence and determines whether
+task execution can be expedited by prompting human
+assistance. This can be seen in Figure 7
+Fig. 7: Illustration showcasing how the LLM asks the user for
+assistance and divides the task accordingly
+For shelf clearance, the BRG is used to identify in-
+dependent nodes—boxes that can be removed without
+affecting others—allowing the sequence to be split into
+parallel tasks for both the robot and the human. This
+is described in algorithm 3.
+Algorithm 3 Dividing the Safe Sequence into Robot and
+Human Tasks
+Input: A safe sequence S (an ordered list of boxes) and
+dependency dictionary D.
+Initialize empty lists RobotTasks and HumanTasks.
+for each box b in S do
+if D[b] is empty then
+Append b to RobotTasks ▷Box b has no depen-
+dencies.
+else
+Append b to HumanTasks ▷Box b has depen-
+dencies; may require human supervision.
+end if
+end for
+return (RobotTasks, HumanTasks).
+Similarly, in box extraction, if multiple boxes must be
+removed before reaching the target, the system can
+request the user to support certain boxes or directly
+extract the target while the robot provides the support.
+By enabling both assistance from and to the human,
+the system enhances efficiency in shelf-picking tasks
+through adaptive collaboration. This is described in
+algorithm 4.
+IV. EXPERIMENTS AND RESULTS
+A. Experimental Setup
+Figure 8 illustrates our experimental setup, which features
+a Doosan H2515 robotic arm with six degrees of freedom
+Algorithm 4 Selecting Support Candidate Boxes
+Input: Dependency dictionary D, target box s, maximum
+number of support candidates k.
+Initialize an empty set Srelated.
+EXPLORE(s) ▷Reuse the DFS from the safe sequence step
+to collect related boxes.
+Initialize an empty list Candidates.
+for each box b in Srelated do
+Compute the support count: the number of boxes in
+D[b] that are also in Srelated.
+Append the pair (b, support count) to Candidates.
+end for
+Sort Candidates in descending order by support count.
+return the first k boxes from Candidates.
+Fig. 8: Experimental Setup
+(6DOF). This means the arm can move in several different
+ways, making it very flexible. It is fitted with a suction
+gripper that helps it handle boxes precisely. Additionally, an
+Intel RealSense D455 depth camera is used to capture real-
+time spatial data, so the robot understands its surroundings.
+A shelf measuring 100 cm by 30 cm by 160 cm was placed
+104 cm away from the robot. This shelf served as the stacking
+area for our tests, which included picking a single box and
+clearing the shelf entirely. Additionally, we demonstrated the
+robustness of our approach using cardboard boxes of mixed
+sizes. Specifically, we used the following three sizes: 23 cm
+× 31 cm × 25 cm, 20 cm × 20 cm × 20 cm, and 50 cm ×
+17 cm × 17 cm.
+B. Graphical User Interface
+All components discussed in the methodology section are
+integrated into a graphical user interface, designed to enable
+effective human-robot collaboration through clear and trans-
+parent communication. Built with Flask, HTML, and CSS,
+the interface features a live camera feed with object detection
+overlays, alongside a chat-based interface that displays the
+robot’s reasoning. Qwen2.5-7B-Instruct [17] is used as the
+LLM backend for Chain-of-Thought reasoning and decision-
+making, with Whisper and gTTS used for speech-to-text and
+text-to-speech, respectively, ensuring seamless interaction
+and fostering operator trust.
+C. Training Settings
+Object segmentation for cardboard box detection is per-
+formed using a YOLOv11n-seg model, fine-tuned on the
+8,401-image Online Stacked Cardboard Boxes Dataset (80%

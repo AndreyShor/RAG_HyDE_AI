@@ -1,0 +1,82 @@
+Tools and methodology
+35
+10−7
+10−6
+10−5
+10−4
+10−3
+10−2
+10−1
+100
+x
+−0.100
+−0.075
+−0.050
+−0.025
+0.000
+0.025
+0.050
+0.075
+0.100
+rel. distance to N = 120
+Gluon distribution g(x)
+60
+30
+20
+10−7
+10−6
+10−5
+10−4
+10−3
+10−2
+10−1
+100
+x
+−0.0100
+−0.0075
+−0.0050
+−0.0025
+0.0000
+0.0025
+0.0050
+0.0075
+0.0100
+Valence distribution V (x)
+Figure 2.1: Relative differences between the outcome of NNLO QCD evolution as implemented in EKO
+with 20, 30, and 60 points to 120 interpolation points respectively. We used NNPDF4.0 as input PDF, the
+upper and lower borders of the envelope correspond respectively to the 0.16 and 0.84 quintiles of the
+replicas set, while the dashed lines correspond to one standard deviation. The distributions are evolved
+in the range µF = 1.65 →102 GeV.
+strategies and, specifically, the oscillating behavior is caused due to these difficulties. The spikes
+for x →1 are not relevant since the PDFs are intrinsically small in this region (f(x) →0) and
+thus small numerical differences are enhanced.
+Solution strategies.
+The formal solution of Eq. (1.75) in terms of evolution kernel operators
+is given by Eq. (1.77). If the anomalous dimension γij is diagonal in flavor space, i.e. it is
+in the non-singlet sector, it is always possible to find an analytical solution to Eq. (1.77). In
+the singlet sector, however, this is only true at LO and to obtain a solution beyond, we need
+to apply different approximations and solution strategies, on which EKO offers currently eight
+implementations, which may differ only by the strategy in a specific sector. All provided
+strategies agree at fixed order, but differ by higher order terms.
+In Fig. 2.2 we show a comparison of a selected list of solution strategies: 2
+• iterate-exact: In the non-singlet sector we take the analytical solution of Eq. (1.75)
+up to the order specified. In the singlet sector we split the evolution path into segments
+and linearize the exponential in each segment [60]. This provides effectively a straight
+numerical solution of Eq. (1.75). In Fig. 2.2 we adopt this strategy as a reference.
+• perturbative-exact: In the non-singlet sector it coincides with iterate-exact. In the
+singlet sector we make an ansatz to determine the solution as a transformation U(as) of
+the LO solution (see [119, Eq. 2.23]). We then iteratively determine the perturbative
+coefficients of U.
+2For
+the
+full
+list
+of
+available
+solutions
+and
+a
+detailed
+description
+see
+https://eko.readthedocs.io/en/latest/theory/DGLAP.html.

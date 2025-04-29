@@ -1,0 +1,127 @@
+and certain joint configurations may be physically incom-
+patible. These constraints are encoded through the fusion
+coefficients F ij
+k , which determine the probability ampli-
+tude of action tokens i and j fusing into a resultant state
+k. The non-zero elements of F ij
+k precisely delineate the
+physically admissible transitions in the action space.
+Conservation law preservation constitutes the second
+category of constraints.
+Physical systems necessarily
+preserve certain invariants including object constraints
+and kinematic feasibility.
+The consistency conditions
+C(i, j, k) encode these conservation laws by imposing the
+relation:
+(14)
+X
+m,n
+F ij
+mF mk
+n
+=
+X
+p,q
+F ik
+p F pj
+q
+This relation is equivalent to the pentagon equation in cat-
+egory theory, ensuring that different sequences of actions
+leading to the same outcome maintain physical consis-
+tency. The satisfaction of this condition guarantees that
+the physical consequences of action sequences are path-
+independent when they should be, a necessary condition
+for physical realism.
+Temporal structuring represents the third category. Long-
+horizon planning requires actions to maintain temporal
+coherence across extended sequences. Mtopo encodes this
+through a block structure that imposes constraints be-
+tween action primitives P i
+t and P j
+t , ensuring that tran-
+sitions between primitive blocks maintain causal consis-
+tency. The temporal structure is formally represented as a
+partial ordering relation that guarantees the physical fea-
+sibility of generated action sequences.
+The construction of Mtopo follows a three-phase process.
+First, we initialize the matrix using physical priors about
+valid action transitions, establishing baseline constraints
+derived from fundamental physical laws.
+Second, we
+apply consistency refinement by enforcing the pentagon
+and hexagon equations, guaranteeing global consistency
+from local constraints. Finally, during training, we em-
+ploy learned adaptation through a separate projection head
+that maintains the topological structure while adapting to
+task-specific requirements. This projection operation is
+formally defined as:
+(15)
+Mtopo ←ΠT (Mtopo + η∇ML)
+where ΠT is a projection operator that enforces the re-
+quired topological constraints.
+Unlike standard attention masks that merely control in-
+formation flow, Mtopo encodes rich structural informa-
+tion about the physical world, providing a formally rig-
+orous framework that constrains the model to generate
+only physically valid action sequences. The mathemati-
+cal formalism underlying Mtopo guarantees that the result-
+ing attention mechanism respects the fundamental physi-
+cal constraints of the problem domain.
+5.3
+Integration Technique
+Instead of using a simple forward Euler scheme (which
+often requires many small steps or suffers from numerical
+instability), we adopt a fourth-order Runge-Kutta method
+for the flow-matching process.
+This higher-order inte-
+gration balances computational cost with accuracy; it al-
+lows us to take fewer, larger steps (only four integration
+substeps per action sequence) while still preserving fine-
+grained trajectory quality.
+In practice, this reduces in-
+ference time by over 40% compared to a 10-step Euler
+method, without sacrificing the precision needed for pre-
+cise robot control. Moreover, Runge-Kutta’s reduced er-
+ror accumulation translates to more stable policy outputs,
+minimizing the risk of drift or compounding minor errors
+across a long-horizon task. Our specific implementation
+follows:
+(16)
+Aτ+δ
+t
+= Aτ
+t + δ
+6(k1 + 2k2 + 2k3 + k4)
+Where:
+k1 = vθ(Aτ
+t , ot)
+(17)
+k2 = vθ(Aτ
+t + δ
+2k1, ot)
+(18)
+k3 = vθ(Aτ
+t + δ
+2k2, ot)
+(19)
+k4 = vθ(Aτ
+t + δk3, ot)
+(20)
+This higher-order method allows for larger step sizes (δ =
+0.25) and fewer integration steps (4 instead of 10) while
+achieving superior accuracy.
+5.4
+Training Objective
+We augment the flow matching loss with complementary
+objectives:
+L(θ) = Lflow(θ)+λ1Ltask(θ)+λ2Lsmooth(θ)+λ3Ltopo(θ)
+(21)
+Where Ltopo(θ) is our novel topological consistency loss:
+Ltopo(θ)
+= Ep(At|ot),q(Aτ
+t |At) ∥F(vθ(Aτ
+t , ot))−F(u(Aτ
+t |At))∥2
+(22)
+7

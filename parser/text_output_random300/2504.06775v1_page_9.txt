@@ -1,0 +1,52 @@
+9
+FIG. 6.
+Impact of ancilla qubit error rate on the mean final training accuracy, under the environmental noise model with
+error probability ranging from p = 0.001 −0.01. Each subplot shows the variation in mean final training accuracy with the
+number of rounds of syndrome extraction, for a specific combination of ancilla and physical qubit error probabilities. The
+ancilla error rates are expressed as a fraction of the physical error rates, denoted by the fraction fanc. The standard deviation
+in the meaning final training accuracies, each calculated from 10 training runs, is shown by the shaded regions.
+able and the existence of a threshold error rate for ancilla
+qubits should generalise to other combinations of QML
+algorithms and QEC codes. All QML algorithms contain
+rotation gates, and when implemented with QEC codes
+where ancilla qubits are needed for logically encoding
+rotation gates, resulting in the entanglement of ancilla
+and physical qubits, we can expect error propagation be-
+tween the ancilla and physical qubit registers. If the QEC
+code cannot correct the full range of complex errors that
+may arise from such propagation, its effectiveness will
+be limited in noisy environments, leading to a maximum
+achievable training accuracy and a threshold error rate.
+Additionally, these results could potentially be relevant
+for implementing certain non-QML algorithms with QEC
+codes. This is because many QEC codes require ancilla
+qubits to logically encode rotation gates (and other non-
+Clifford gates), and since no known code can fully address
+the full spectrum of possible errors in practice, these im-
+plementations could also theoretically suffer from errors
+propagating from ancilla qubits to physical qubits.
+Our findings also highlight the need for additional con-
+siderations when applying techniques to achieve fault-
+tolerant implementations of QML algorithms.
+Fault-
+tolerant quantum machine learning may only be achiev-
+able with QEC if additional error mitigation techniques
+are used with it. For example, performing rotations with
+error mitigation instead of as logical operations (such as
+with zero-noise extrapolation [65] or dynamical gate error
+correction [66]), and using flag qubits normally applied
+to syndrome qubits [67, 68] in the ancilla register to min-
+imise errors before they propagate, may help minimise
+uncorrectable errors.
+C.
+State Fidelities
+We next present our results showing the effect that
+noise and the implementation of error detection have on
+the state fidelities of physical and ancilla qubits, and use
+these results to further explain our training accuracy re-
+sults above. All state fidelities (F) that we present in this
+subsection were calculated using the following definition:
+F(ρ, σ) = |⟨ψρ|ψσ⟩|2,
+(7)
+where ρ and σ represent the two pure quantum states we
+seek to compare (since we use pure states to represent

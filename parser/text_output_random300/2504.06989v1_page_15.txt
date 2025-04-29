@@ -1,0 +1,133 @@
+15
+Here, we define S ∶= (s1 −s2)/(s1 −s2 −2γ) × (s3 −s4)/(s3 −s4 −2γ). In the following, we show that
+T(1,3,2,4)∣t=0 = T(1,3,4,2)∣t=0 = T(3,1,2,4)∣t=0 = 0
+(S-57)
+and
+T(3,1,4,2)∣t=0 + T(3,4,1,2)∣t=0 = 0.
+(S-58)
+First, we consider T(1,3,2,4)∣t=0. Making the substitution z2 →z2/z1 yields
+T(1,3,2,4)∣t=0 = −4∮∣z1∣=r3
+dz1
+2πi ∮∣z2∣=r5
+dz2
+2πiz2 ∮∣z3∣=r
+dz3
+2πiz3 ∮∣z4∣=1
+dz4
+2πiz4
+⟨a∣Y2,3(s1 −s4)∣I4⟩
+×
+z2
+1 −1 −z2 + z2
+1/z2
+z2
+1 −1 −z2 + z2
+1/z2 −4iγz1
+s3 −s4
+s3 −s4 −2γ zx1−y1
+2
+zx2−y2
+4
+zx3−x1−1
+1
+zx4−y2
+3
+.
+(S-59)
+Since x3 −x1 −1 ≥0, the integrand is holomorphic with respect to z1 inside the z1-contour. Hence, one can conclude
+T(1,3,2,4)∣t=0 = 0. By performing the similar calculation, one obtains T(1,3,4,2)∣t=0 = 0.
+Next, we show that T(3,1,2,4)∣t=0 = 0. By making the substitutions zj →izj, we consider the following quantity
+instead of T(3,1,2,4)∣t=0,
+M(3,1,2,4) ∶= ∮dz4⟨a∣Y1,2(c2 −c4)Y2,3(c1 −c4)∣I4⟩C × zx1−y2
+4
+zx2−y1
+2
+zx3−y1
+1
+zx4−y2
+3
+,
+(S-60)
+where we define the shorthand notations cj = c(zj) and C ∶=
+c1−c2
+c1−c2−2γ
+c3−c4
+c3−c4−2γ with c(z) ∶= (z + 1/z)/2. In the above
+equation, we first make the substitution z4 →z4/z1, followed by z1 →z4z1, and finally exchange the variables z1 ↔z4.
+This procedure yields
+M(3,1,2,4) =∮dz4⟨a∣Y1,2(c2 −c4)Y2,3(c(z1z4) −c4)∣I4⟩
+×
+c(z1z4) −c2
+c(z1z4) −c2 −2γ
+c3 −c4
+c3 −c4 −2γ zx3−y1
+1
+zx2−y1
+2
+zx3−x1+y2−y1
+4
+zx4−y2
+3
+.
+(S-61)
+We first integrate with respect to z4. Since x3 −x1 + y2 −y1 −1 > 0 (note that dz4 = ∏4
+j=1
+dzj
+2πizj ), the poles inside the
+z4-contour only come from the terms, 1/(c2 −c4 −2γ) and 1/(c3 −c4 −2γ). For ∣z∣≪1, we define λ(z) as the solution
+of λ2 −2[c(z) −2γ]λ + 1 = 0 which satisfies λ(z) = z + O(z2) (the case ∣z∣≪1 is only relevant in our proof). Note the
+other solution of λ2 −2[c(z) −2γ]λ + 1 = 0 is given by 1/λ(z). By integrating with respect to z4, we have
+M(3,1,2,4) =∮dz3⟨a∣4γλ(z2)(1 −Π1,2)
+λ2(z2) −1
+Y2,3(c(z1λ(z2)) −c2 + 2γ)∣I4⟩
+×
+c(z1λ(z2)) −c2
+c(z1λ(z2)) −c2 −2γ
+c3 −c2 + 2γ
+c3 −c2
+zx3−y1
+1
+zx2−y1
+2
+λ(z2)x3−x1+y2−y1zx4−y2
+3
++ ∮dz3⟨a∣Y1,2(c2 −c3 + 2γ)Y2,3(c(z1λ(z3)) −c3 + 2γ)∣I4⟩
+×
+c(z1λ(z3)) −c2
+c(z1λ(z3)) −c2 −2γ
+−4γλ(z3)
+λ(z3)2 −1zx3−y1
+1
+zx2−y1
+2
+λ(z3)x3−x1+y2−y1zx4−y2
+3
+.
+(S-62)
+with ∮dz3 ∶= ∏3
+j=1 ∮∣zj∣=r4−j
+dzj
+2πizj . In the first term of Eq. (S-62), using the identity (1 −Π1,2)Y2,3(λ)∣I4⟩= λ−4γ
+λ−2γ , and
+making the substitution z1 →z1/λ(z2), we obtain
+the first term of Eq. (S-62) =∮∣z2∣=r2
+dz2
+2πiz2 ∮∣z1∣=r3×∣λ(z2)∣
+dz1
+2πiz1 ∮∣z3∣=r
+dz3
+2πiz3
+⟨a∣I4⟩
+× 4γλ(z2)
+λ2(z2) −1
+c2 −c3 −2γ
+c2 −c3
+zx3−y1
+1
+zx2−y1
+2
+λ(z2)−x1+y2zx4−y2
+3
+.
+(S-63)
+When changing the radius of the z1-contour from ∣z1∣= r3 × ∣λ(z2)∣to ∣z1∣= r3 (note ∣λ(z2)∣≃r2), the integrand does

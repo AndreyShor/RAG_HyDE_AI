@@ -1,0 +1,101 @@
+when the GNM model is trained with either the noiseless
+(simulator generated) or SREM training datasets of the
+snippets.
+Similarly, on the ibmq-Guadalupe machines,
+the maximum observed error for GNM mitigated energy
+reaches around 20 mEh for both the noiseless and SREM
+training datasets generated from the snippets.
+The stretching of the B −H bond represents one of
+the most challenging test cases for NISQ implementa-
+tions.
+In STO-3G basis with frozen 1s core orbital of
+B, it turns out to be a system of 4 electrons in 10 spin-
+orbitals.
+Observing Figure 4, it becomes evident that
+the energy error between the noisy and noiseless scenar-
+ios for full circuit fall within the range of 0.82 to 0.59
+Eh on fake-ibmq-Melbourne device, and within 0.21 to
+0.19 Eh on the fake-ibmq- Guadalupe device.
+In con-
+trast, the GNM model predicts the mitigated energies
+which are within 20 mEh and 18 mEh (at max over the
+potential energy surface, with respect to the correspond-
+ing noiseless values) on fake-ibmq-Melbourne and fake-
+ibmq-Guadalupe machine respectively, irrespective of the
+training dataset used for the snippets.
+We also tested the robustness of our model against
+varying noise levels for H4 at 2Å. For this particular anal-
+ysis, we specifically accounted for the depolarizing noise
+(which is one of the primary sources of noise in NISQ
+hardware) with noise strength varying from {0.0001,
+0.001} to {0.001, 0.01} for one-qubit and two-qubit gates,
+respectively. Here the training labels are generated via
+the SREM mitigated values. The results are shown in
+Fig. 5. We test for different variations of machine learn-
+ing models, from only one-feature regression to GNM
+and in all occasions, GNM predicts the most accurate
+energy, establishing its robustness across a spectrum of
+noise strengths. It is particularly interesting to note that
+with the decrease in noise strength, as expected with the
+improvement of the hardware quality, GNM predicted
+values linearly approach the corresponding ’exact’ value,
+demonstrating its ability to handle the spectrum of noise
+strength.
+without overestimating or underestimating.
+Despite its good performance with some of the most dom-
+inant noise channels as discussed so far, its robustness is
+subject to further validation when the state preparation
+and measurement (SPAM) errors, without sampling noise
+suppression models14,42, are accounted for. In principle,
+a separate SPAM error mitigation strategy may be com-
+plemented as an additional mitigation layer for better
+state preparation. However, the current graph network-
+based model gives us a practical tool to mitigate gate er-
+rors that otherwise incur exponential overheads and deep
+mitigation circuits.
+IV.
+CONCLUSIONS AND FUTURE OUTLOOK
+In this work, we developed a learning-based error mit-
+igation technique to accurately predict the ground state
+energy of molecular Hamiltonian. The developed GNM
+FIG. 5. Noisy and Mitigated energy expectation val-
+ues are plotted at different two-qubit depolarizing
+noise strength.
+Three different models (regression
+model with only one feature, regression model with
+additional circuit features, and GraphNetMitigator
+model) are trained under these scenarios.
+model successfully predicts the ground state energy of
+the many-electron Hamiltonian without the need for any
+additional mitigation circuits and bypasses exponential
+overhead. GNM outperforms current EM methods like
+digital-ZNE and PEC which fail at larger and complex
+circuits. Unlike other NN-based techniques which often
+use ideal expectation values generated on the simulator
+as labels, we generate our labels, either by ideal values or
+by sequentially mitigating the reference error over much
+shallower snippet circuits, thus eliminating the need to
+access the ideal quantum computer. The data for train-
+ing the model is generated on the fly while the ansatz is
+constructed in a noisy quantum environment. GNM is
+entirely general mitigation model, and does not have any
+specific dependence to the underlying ansatz. Our results
+consistently demonstrate the robustness and effectiveness
+of GNM across hardware connectivity and a spectrum of
+synthetic noise strengths, and thus GNM is expected to
+hold its ground when the qubit quality improves over the
+coming years.
+One important future research direction is the gener-
+alization of the model across diverse and larger classes
+of Hamiltonians and ansatze. Testing the model while
+considering different noise channels with nonlinear sam-
+pling complexity is an important future direction towards
+establishing its robustness. More importantly, feature se-
+lection can be improved using a different set of features
+altogether. The current method captures the device char-
+acteristics through a CNOT-connectivity graph adhering
+to the coupling map of the device and gate errors. An
+additional set of features like decoherence time of qubits
+and other device-specific parameters can be incorporated
+to further capture the noise profile accurately.
+8

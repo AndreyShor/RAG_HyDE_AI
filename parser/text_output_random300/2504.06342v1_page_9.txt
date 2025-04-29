@@ -1,0 +1,88 @@
+9
+where 𝑅0 = 0.22 × 10−12 (Cappellaro et al. 1999;
+Maoz et al. 2014), slightly lower than Ciotti & Os-
+triker (2012), ℎ= 𝐻0/100 km s−1 Mpc−1 = 0.75
+(Cappellaro et al. 1999), 𝐿B is the B-band stellar
+luminosity, and 𝑠= 1.1. At each time step Δ𝑡, we
+sample a local random number from this Poisson
+distribution to determine the number of SN events.
+A key property of the Poisson distribution ensures
+that the accumulated samples over time converge to
+the expectation value 𝜇sn, maintaining consistency
+with the prescribed SN rate in the simulation. Each
+type Ia SN injects 𝑀Ia = 1.4 M⊙into the ambi-
+ent gas, while type II SNe inject an IMF-averaged
+mass of 𝑀II = 16.6 M⊙, based on Sukhbold et al.
+(2016). The total energy injected into the ISM per
+supernova is 𝐸SN = 0.85 × 1051 erg.
+Another significant enhancement in MACER3D
+is the implementation of an improved supernova
+energy injection prescription. We implement the
+scaling relation developed by Martizzi et al. (2015),
+derived from high-resolution simulations of su-
+pernova explosions in an inhomogeneous medium
+with varying densities and metallicities. This sub-
+grid prescription offers two key advantages. First,
+it incorporates momentum feedback, enabling the
+simulation to address the overcooling problem by
+directly accounting for momentum transfer from
+supernovae. This is particularly crucial in high-
+density regions where, due to limited numerical
+resolution, radiative cooling would otherwise ar-
+tificially dominate and suppress realistic feedback
+effects. Second, the prescription accurately cap-
+tures both turbulent and thermal energy injection
+from multiple concurrent supernova events (Mar-
+tizzi et al. 2015), which is essential for modeling
+clustered supernova explosions during periods of
+elevated supernova activity. While this prescrip-
+tion is typically enabled in MACER3D, particularly
+for disk (Zou et al. in prep) and dwarf galaxy sim-
+ulations (Su et al. in prep), Martizzi et al. (2015)
+also mention the heads-up that their fitting formu-
+las are not calibrated for and thus less accurate
+in low-density ambient medium due to the longer
+cooling time, therefore for the simulated ellipticals
+in this work which indeed have a low-density ISM,
+we adopt the thermal feedback that is widely used
+for simulations of ellipticals in the literature (e.g.
+Sharma et al. 2014; Li et al. 2020). We also note
+that the SN fade radius ranging between 20 pc to
+150 pc raised by Li et al. (2020) is well resolved in
+our simulations, where the mean resolution within
+𝑟< 1kpc (where most of the SN events occur) is
+∼7 pc.
+2.6. Radiative cooling and heating
+Although star formation in MACER3D is imple-
+mented as a subgrid model that does not directly
+involve cooling for molecular cloud formation, ac-
+curate treatment of radiative cooling remains criti-
+cal for calculating the cool gas supply to the central
+SMBH and star formation. Recent idealized, small-
+scale numerical studies have emphasized the fun-
+damental role of radiative cooling in the formation,
+survival, and destruction of cool (∼104 K) gas in
+the ISM and CGM (Armillotta et al. 2016; Armil-
+lotta et al. 2017; Gronke & Oh 2018; Gronke et al.
+2022) through thermal instabilities (McCourt et al.
+2012; Sharma et al. 2012; Ji et al. 2018) and turbu-
+lent mixing (Ji et al. 2019; Fielding et al. 2020; Tan
+et al. 2021; Yang & Ji 2023). With these consider-
+ations in mind, we have significantly enhanced the
+radiative cooling and heating model in MACER3D.
+The first enhancement involves implementing
+more accurate cooling functions. Different from
+the empirical fitting formula (Sazonov et al. 2005)
+used in MACER2D, we employ a comprehensive 5-
+dimensional cooling table generated using Cloudy
+(Ferland et al. 2017). This table captures the depen-
+dence on gas density 𝑛H, temperature 𝑇, metallicity
+𝑍, redshift 𝑧, and AGN radiative flux 𝐹AGN. The
+redshift dependence incorporates both ultraviolet
+background (UVB) and cosmic microwave back-
+ground (CMB) radiation.
+The cooling function
+spans an extensive range of physical parameters
+relevant to our simulations: 𝑛H = 10−8 −104 cm−3,
+𝑍= 10−10, 10−3 −10 𝑍⊙, 𝑧= 0 −10, 𝑇=
+102−109 K, and 𝐹AGN = 0, 10−7−107 erg s−1 cm−2.

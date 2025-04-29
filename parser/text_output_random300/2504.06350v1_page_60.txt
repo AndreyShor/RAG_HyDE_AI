@@ -1,0 +1,87 @@
+Alice
+Quantum State
+Source (A)
+Charlie/Eve
+Quantum
+Measurement
+Device
+(in Bell basis)
+Bob
+Quantum State
+Source (B)
+A/ B
+H
+V
+D
+A
+H
+Π0
+Π±
+X
+X
+V
+Π±
+Π0
+X
+X
+D
+X
+X
+Π+, Π0
+Π−, Π0
+A
+X
+X
+Π−, Π0
+Π+, Π0
+Figure 16: Basic set-up of an MDI-QKD protocol. Alice and Bob each send a single photon to Charlie, who implements a
+linear-optical Bell-state measurement, which can be described by measurement operators Π+, Π−, Π0. The tables includes
+expected detection results at BSM station in MDI-QKD. “X” refers to discarded results in which Alice and Bob chose
+different bases. H, V , D, A are horizontal, vertical, diagonal and anti-diagonal linear polarization states, respectively.
+needs to consider the imperfection of signal resources, such as the basis-dependent flaw that results in a
+decrease in achievable distance. Therefore, a generalization of [96] is essential for practical purposes.
+Published back to back with Ref.
+[96], Braunstein et al.
+(2012) adopted a similar approach by
+devising a side-channel-free protocol to account for all potential side channels that might arise during a
+QKD implementation [38]. In its simplest form, this protocol corresponds to an entanglement-swapping
+experiment, where the dual teleportation channels serve as ideal Hilbert space filters to eliminate the
+possibility of side-channel attacks. To prevent any attempts at probing side channels within Alice’s and
+Bob’s laboratories, they implemente state-generation via partial measurement of a bipartite entangled
+state. This strategic move effectively isolates any external probes from the state-generation device. This
+approach ensures the complete protection of both Alice and Bob’s private spaces against any potential
+side-channel attacks.
+In this protocol, the secret key rate can be lower bounded through the use of
+quantum memory and by calculating the entanglement distillation rate over the distributed state as
+follows:
+r ≥I(A⟩B|L′) + ∆.
+(165)
+Here, I(A⟩B|L′) represents the coherent information conditioned on Eve’s fake variable L′ which Eve sends
+to both parties to mislead them, instead of the true variable L (I(A⟩B) = S(ρB) −S(ρAB) = −S(A|B))
+and ∆denotes the amount of classical cheating.
+Practical loopholes in MDI-QKD. Practical loopholes in MDI-QKD shift the focus from measurement
+device imperfections to state preparation or source flaws, as these can be exploited to compromise security.
+Liu et al. [307] demonstrated a hacking strategy leveraging modulation errors to obtain all key bits. One
+significant imperfection is the basis-dependent flaw arising from discrepancies in density matrices in BB84
+states, while the birefringence effect in optical fibers highlights the practicality of phase encoding over
+polarization encoding. Tamaki et al. [308] addressed these issues with two MDI-QKD schemes: one
+using phase locking of separate lasers and a double BB84 protocol to control basis-dependent flaws, and
+another employing phase encoding for longer distances. Primaatmaja et al. [309] introduced a numerical
+technique using semidefinite programming to analyze phase-error rates, showing phase-encoding MDI-
+QKD’s potential to outperform decoy-state MDI-QKD at short distances. Zhu et al. [310] improved
+analysis by modulating different intensities in key and test bases.
+Bourassa et al.
+[311] identified a
+time-dependent side channel in sources employing Faraday mirrors, showing divergences between three-
+state and BB84 protocols. Alternative schemes [312] simplified encoding and decoding with minimal
+performance compromise.
+Xu et al.
+[313] analyzed error sources like polarization misalignment and
+mode mismatch, showing that MDI-QKD tolerates up to 6.7% polarization misalignment at 0 km and
+5% at 120 km, while mode mismatch tolerance decreases from 80% to 50% over the same range. Wang
+et al. [314] estimated gains, error rates, and key rates under arbitrary photon mixtures, while Li et
+al. [90] proposed a polarization-alignment method using fewer devices to reduce photon loss. Phase-
+randomized weakly coherent pulses (PR-WCPs), commonly used due to a lack of mature single-photon
+sources, introduce errors in the X basis. Li et al. [315] incorporated these errors into security analysis,
+showing equivalence between PR-WCPs and Poisson-distributed photon states, with a tighter key rate
+60

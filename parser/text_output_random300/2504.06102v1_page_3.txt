@@ -1,0 +1,113 @@
+Sherlock: A Dataset for Process-aware Intrusion Detection Research on Power Grid Networks
+CODASPY ’25, June 4–6, 2025, Pittsburgh, PA, USA
+consumes substantial bandwidth and exposes the IIDS to manipu-
+lated data. Given that the centralized control center typically serves
+as a data sink, it provides an ideal vantage point, offering a com-
+prehensive overview of the network. Sherlock also provides data
+from alternative vantage points for further insights when desired.
+In total, we simulate 35 days of power grid behavior, split into
+training and test sets of three different scenarios for Sherlock.
+3.2
+Scenarios
+Sherlock contains three different scenarios of different size and
+complexity, each consisting of a power grid topology, an ICT net-
+work topology, and configurations regarding the coupling of both
+domains, i.e., responsibilities of remote terminal units (RTUs) along
+with communication protocol information. For each power grid
+topology, we use PowerOwl [5] to automatically detect facilities
+and derive a realistic ICT network, resulting in a simulation sce-
+nario compatible with Wattson. The power grid itself comprises
+multiple stations, i.e., several distribution substations (DSSs) and one
+transforming substation (TSS). Each station contains one or multiple
+buses that are connected by lines and transformers and further link
+with assets such as storages (batteries), generators, and loads.
+The ICT network comprises multiple subnets, with each scenario
+including at least two OT subnets for RTUs: one for the TSS and one
+or more for the DSSs. Additionally, there is a Control Center subnet
+hosting the master terminal unit (MTU) and multiple office subnets
+for servers and workstations. The subnets are interconnected via
+routers using the OSPF protocol and further include switches to link
+individual facilities and multiple hosts within these facilities. The
+topologies are part of Sherlock’s documentation and are explained
+further on the dataset website. Beyond the topologies, each scenario
+specifies the communication behavior of key assets, such as the
+MTU and RTUs, as well as the operational behavior of power grid
+components like loads, storage systems, and generators.
+For the IEC 104-based communication between the control cen-
+ter and the RTUs, we define an interval of 10 s for periodic mea-
+surement transmissions such that each RTU transmits measured
+voltages, currents, and power values unsolicitedly. Discrete values,
+such as binary states of circuit breakers, are only transmitted when
+explicitly requested and every time the value changes.
+The power grid behavior is determined by the pre-defined be-
+havior of loads, generators, and storages, further influenced by
+control operations executed by the grid operator. These operations
+involve sending control commands to RTUs. Depending on the in-
+dividual scenario, the respective power profiles target all assets and
+vary across asset types. For instance, a load representing a house-
+hold exhibits different behavior compared to that of a supermarket.
+Whenever possible, we utilize profiles provided by the power grid
+scenarios; otherwise, we rely on a generic load curve as a fallback.
+Next, we briefly introduce the three different scenarios featured
+in the Sherlock dataset.
+3.2.1
+01-Basic: The Cigre MV Reference Grid. This scenario com-
+prises 12 medium voltage (MV) DSSs connected to a high voltage to
+medium voltage (HV/MV) TSS. It includes 13 generators, 2 storages,
+18 loads, and 2 HV/MV transformers. With 32 RTUs distributed
+across two operational technology (OT) subnets, each substation
+supports remote monitoring and control via a single MTU. We
+apply a generic load profile to all 18 loads, while storages and
+generators operate with static power infeed or consumption. The
+scenario adopts the Cigre MV power grid topology provided by pan-
+dapower [27], based on the CIGRE Task Force C6.04.02 paper [25].
+3.2.2
+02-Semiurban: Simbench MV Semi-urban. Complementing
+the 01-Basic scenario, the Sherlock dataset incorporates two
+larger, more realistic scenarios derived from Simbench [21]. The
+Simbench MV Semi-urban models an HV/MV distribution grid sup-
+plying a semi-urban city area. It features a central TSS with two
+transformers connecting to two double-busbars. Its 118 DSSs follow
+a multi-ring topology and, like the Cigre MV scenario, connect a
+future-oriented number of renewable generators. The OT network
+includes 9 of 17 subnets, with all 72 RTUs linked to a single control
+center. Unlike the Cigre MV scenario, this setup applies scenario-
+specific load and generation profiles to all relevant assets. The power
+grid topology is based on the simbench key 1-MV-semiurb–2-sw.
+3.2.3
+03-Rural: Simbench MV Rural. Transferability of IIDSs to
+similar yet different scenarios is a crucial research objective. To
+support this, Sherlock includes a third scenario that shares similar-
+ities with the 02-Semiurban scenario’s topology but differs in size
+and asset count. The power grid topology is based on the simbench
+key 1-MV-rural–2-sw and compromises 95 DSSs and a single TSS,
+representing a rural distribution grid. The combined nominal power
+of all loads exceeds 30 MVA, while all generators provide 47 MVA.
+With 12 OT subnets, 16 subnets in total, and 60 RTUs, the ICT
+network is smaller compared to 02-Semiurban. Providing no train-
+ing data, the Sherlock dataset encourages researchers to enhance
+transferability by training their IIDSs with the 02-Semiurban sce-
+nario and testing them against the 03-Rural scenario.
+3.3
+Commands and Measurements
+In all scenarios, RTUs monitor and control power grid assets, in-
+cluding buses, lines, transformers, circuit breakers, loads, gener-
+ators, and batteries. Most floating-point measurements that are
+expected to change gradually, such as voltages and currents, are
+periodically transmitted to the control center using the IEC 104
+protocol (Type ID=13, Cause of Transmission (CoT)=1). Other
+data points, such as booleans (Type ID=1), are configured to be
+transmitted spontaneously (CoT=3), i.e., when they are changed.
+This includes tap positions on transformers, circuit breaker states,
+and the connectivity of loads, generators, and storages.
+For control commands, the MTU issues target values to the RTUs
+with desired states, e.g., for circuit breaker positions or power infeed
+set points. These commands are verified by the responsible RTU,
+executed, and an acknowledgment is sent back to the MTU. In case
+of invalid or unrealizable commands, a negative confirmation is
+sent. During normal operation, the control center can reduce and
+increase the power infeed of generators or change the topology—
+either to reduce the load on transformers and lines or to allow
+maintenance work in distribution substations or on power lines.
+For the dataset, benign commands issued by the power grid operator
+will not impede the power supply for customers.

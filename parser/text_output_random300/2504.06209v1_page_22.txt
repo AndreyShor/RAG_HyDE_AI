@@ -1,0 +1,91 @@
+22
+W
+X
+Z
+Y
+Φ
+(a)
+W
+X
+Z
+Y
+(b)
+W
+X
+Z
+Y
+V
+(c)
+FIG. 9. On finding a compatible Bayesian network of a Markov channel with two inputs and two outputs. (a): Circuit diagram
+of a memoryless channel with input (W, X) and output (Y, z) described by transition matrix Φ, (b): a Bayesian network which
+is not compatible with arbitrary Φ, and (c): a Bayesian network with an auxiliary variable V = Y Z which is compatible with
+arbitrary Φ.
+address the problem with Figure 9b (for instance [79, Lemma 1]), but it is a particularly simple solution which, as we
+will see, allows one to use d-separation for percept-action loops. With this choice of V , we can write
+pY ZV |W X = pY |V pZ|V pV |W X
+(E6)
+where, since V = Y Z, the conditional distribution pV |W X is given by the transition matrix Φ, pV |W X(y, z|w, x) =
+ϕ(v|w, x) with v = (y, z), and pY |V , pZ|V are delta distributions since
+pY |V (y|v) = pY |Y Z(y|y′, z′) = δy,y′,
+(E7)
+and similarly for pZ|V .
+We recover the original channel from eq. (E6) through marginalization:
+X
+v∈V
+pY ZV |W X(y, z, v|w, x) =
+X
+v∈V
+pY |V (y|v)pZ|V (z|v)pV |W X(v|w, x)
+(E8)
+=
+X
+y′∈Y,z′∈Z
+pY |Y Z(y|y′, z′)pZ|Y Z(z|y′, z′)ϕ(y′, z′|w, x)
+(E9)
+=
+X
+y∈Y,z∈Z
+δy,y′δz,z′ϕ(y′, z′|w, x)
+(E10)
+= ϕ(y, z|w, x).
+(E11)
+M0
+A0
+S0
+Z1
+Z0
+W0
+V0
+M1
+A1
+S1
+Z2
+W1
+V1
+M2
+A2
+S2
+Z3
+W2
+V2
+M3
+A3
+S3
+Z4
+W3
+V3
+M4
+A4
+S4
+Z5
+W4
+V4
+FIG. 10. Bayesian network of a general percept-action loop.
+Applying the Bayesian network representation Figure 9c to the Markov channels of agent and environment in
+agtM →
+←envM leads us to the following
+Given a distribution qV over a set of variables V compatible with a Bayesian network B, for any subset W ⊆V ,
+let G(q, W) denote the set of Markov conditions
+I[S; T|R] = 0
+(E12)
+with respect to q for all three sets S, T, R ⊂W of nodes for which S and T are d-separated by R.

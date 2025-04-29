@@ -1,0 +1,85 @@
+ρ
+Bob’s
+Device
+Alice’s
+Device A0
+Alice’s
+Device A1
+R
+i=0
+i=1
+Figure 9: A schematic of routed Bell experiment introduced in [247]. In each round of experiment, Alice transmits her choice
+of i ∈{0, 1} to the relay switch,R, which then transmits the quantum system from the source to either the measurement
+device,A0, placed close to the source or A1, placed further away, based on i.
+measurement M′
+key which has two settings {σx, σz} and produce a binary output and a source S′.
+In 1WCPP, the secret key length in asymptotic limit then can be obtained as [63]
+l
+mx
+= 1 −log2
+
+1 + Stol
+4ηtol
+q
+8 −S2
+tol
+
+−2h(Qtol),
+(75)
+where l is the secret key length, mx is the classical postprocessing block size, Stol and Qtol are tolerated
+CHSH value and tolerated channel error rate respectively, and ηtol is the tolerated efficiency of Charlie’s
+operation. In the limit S →2
+√
+2, the performance of CHSHℓprotocol reaches BB84’s one.
+3.8.2. rDI-QKD: DI-QKD based on routed Bell tests
+Routed Bell tests. The current state-of-the-art combination of detection efficiency and visibility v (2b) (see
+Sec.6) is achieved only for distances less than 400 m. For DI-QKD to become a widely adopted near-term
+technology, operationally certifiable robust nonlocal correlations must be sustained over distances that are
+orders of magnitude greater (>>100 km). Due to the high sensitivity inherent in traditional approaches
+for establishing nonlocal quantum correlations, these methods prove ineffective for long-distance DI-QKD.
+Consequently, developing alternative methods to establish nonlocality over large distances is essential.
+An approach to extending nonlocal correlations over large distances involves generalizing standard Bell
+experiments to the routed Bell experiments introduced in [247]. In a routed Bell experiment, as illustrated
+in Figure 9, the measuring parties randomly select the location of their measurement in each round (the
+relay R in Fig.10).
+For a general quantum strategy, the correlations in a routed Bell experiment can be expressed as follows
+[248]
+p(a, b|x, y, i) = Tr[Ci ⊗I(ρAB)Ma|xi ⊗Mb|y] = Tr[ρAB ˜
+Ma|xi ⊗Mb|y],
+(76)
+where Ci is the CPTP map describing the transmission of Alice’s system on the short-path (i = 0) or the
+long-path (i = 1), and ˜
+Ma|xi = C†
+i (Ma|xi) are the elements of a valid POVM. Thus general correlation in a
+routed Bell experiment coincides with those of regular bipartite Bell experiment where Alice has m0 +ml
+inputs (m0 and m1 are the number of measurement settings at short-distance i = 0 and long-distance
+i = 1, respectively). Various subsets of general quantum correlations (denoted as Q) then can be defined
+as follows [248]:
+Definition 15.
+• Short-range quantum correlations: denoted as QSR, short-range quantum
+(SRQ) correlations refer to the correlations achieved without the distribution of any entanglement
+to A1. For these correlations, C1 is an entanglement-breaking channel C1(ρ) = P
+λ Tr[Nλρ]ρλ,
+where Nλ’s are the elements of a POVM. Therefore, the POVM elements of Ma|y1 are maps to
+˜
+Ma|x1 =
+X
+λ
+p(a|x, λ)Nλ,
+where
+p(a|x, λ) = Tr[ρλMa|x1],
+(77)
+which is equivalent to the statement that the measurement Ma|x1 are jointly-measurable. Therefore,
+the SRQ correlations can be expressed as
+p(a, b|x, y, i) =
+(
+Tr[ρAB ˜
+Ma|x0 ⊗Mb|y]
+if i = 0,
+P
+λ p(a|x, λ)Tr[ρABNλ ⊗Mb|y]
+if i = 1.
+(78)
+This operationally means that if the relay selects the short path i = 0, the correlations are obtained
+by measuring a shared entangled state ρAB as in a regular Bell experiment. If it selects the long
+31

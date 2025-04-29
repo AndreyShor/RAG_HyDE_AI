@@ -1,0 +1,136 @@
+Glossy Object Reconstruction with Cost-effective Polarized Acquisition
+Supplementary Material
+6. Neural Radiance Field
+Neural implicit surface.
+We apply the neural volume
+rendering framework to represent implicit surfaces and fol-
+low VolSDF [33] to parameterize the density values with
+the transformation of an SDF. For each pixel, we sample N
+points along the camera ray and approximate the color ˆC
+by:
+  \
+h
+a
+t {C} = \sum _{i=1}^N w_i c_i, \label {eq:volsdf_1} 
+w
+(13)
+  \text {with}~w_i = T_i \left ( 1 - \exp (-\sigma _i \delta _i) \right ), ~T_i = \exp \left ( -\sum _{j=1}^{i-1} \sigma _j \delta _j \right ), \label {eq:volsdf_2} w
+(14)
+where wi is the weight of rendering, σi and ci denote the
+density and color at each sampled point i on the ray, and δi
+is the distance between adjacent samples. The density is de-
+fined as Laplace’s cumulative distribution function applied
+to a signed distance d, as follows:
+  \s i
+g
+m
+a (d)= \
+l e
+ft  \ {
+\
+b
+e
+g i n
+ {matr i x
+}  \
+f
+ra c  { 1}{2\beta }\exp (\frac {d}{\beta }) & if~d \leq 0 \\ \frac {1}{\beta }\left ( 1 - \frac {1}{2}\exp (1-\frac {d}{\beta })) \right ) & if~d > 0 \end {matrix}\right .. \label {eq:lcd} 
+(15)
+Herein, β is a learnable parameter during network train-
+ing. In practice, we use MLPs to take 3D coordinates as
+input and output the corresponding signed distance as well
+as a global geometric feature vector. Referring to Eq. 15,
+the estimated SDFs are transformed to density values for
+volumetric integration of Eq. 14.
+Decomposed radiance fields.
+The outgoing radiance c of
+a sampled point x on the camera ray can be decomposed
+into diffuse radiance cd and specular radiance cs, respec-
+tively, as follows:
+  c ^d = f_\ th e ta (\ mathbf  {b},  \m a t hbf {x}), \; c^s = g_\theta (\mathbf {b}, \mathbf {IDE}(\eta , \omega _r)), \; \text {and} \; c = \gamma (c^d + c^s), \label {eq:rad_decomp} 
+(16)
+where fθ(·) and gθ(·) denote MLPs with learnable param-
+eters, and b is the geometric feature vector as mentioned
+above. Following the representations in Eq. 19, the diffuse
+surfaces should satisfy the property of Lambertian, thus cd
+in fact is only a function of position. However, for spatially-
+varying specular effects, following Verbin et al. [27], the ra-
+diance has strong correlations with surface roughness η and
+the reflective direction of light ωr. With integrated direc-
+tional encoding (IDE), the directions are encoded with a set
+of spherical harmonics, which enables the network to better
+reason about the inherent properties of the material. Finally,
+the diffuse and specular components are combined together
+with a fixed tone mapping function γ.
+7. Polarimetric BRDF Model
+In this work, we only consider linear polarization and build
+a scalable setup for the polarization image acquisition. To
+provide a clearer understanding of how polarization infor-
+mation is utilized in our method, We begin by presenting in
+the following the fundamental concepts.
+Stokes vector.
+The polarization state of light is often char-
+acterized by the Stokes vector s, which is usually computed
+by taking a series of measurements with different rotation
+angles, for example, polarized images with four different
+polarizing angles 0◦, 45◦, 90◦and 135◦, represented by I0,
+I45, I90 and I135:
+  \mat hbf  {s } = [ s_0 , s_1, s_ 2 ,s_3 ]^T  = [\m ath bf {I}_0+\mathbf {I}_{90},\mathbf {I}_0-\mathbf {I}_{90},\mathbf {I}_{45}-\mathbf {I}_{135},0]^T. \label {eq:comp_stokes} 
+(17)
+Mueller matrix.
+Any change of the polarization state due
+to the interaction with optical elements, such as linear polar-
+izers or object surfaces, can be denoted as a multiplication
+of the corresponding Stokes vector with a Mueller matrix
+M ∈R4×4. The incident and outgoing Stokes vector, rep-
+resented by sin and sout, respectively, are related by
+  \l a bel {eq:mueller} \mathbf {s}^\text {out} = \mathbf {M} \mathbf {s}^\text {in}. 
+(18)
+For surface reflection, considering the distant incident
+illumination Li, which is commonly assumed to be un-
+polarized, its corresponding Stokes vector is denoted as
+si = Li[1, 0, 0, 0]T . Based on the pBRDF model proposed
+by Baek et al. [1], the Mueller matrix can be decomposed as
+the sum of diffuse component Md and specular component
+Ms, i.e., M = Md + Ms. Therefore, the outgoing Stokes
+vector can be reformulated as follows:
+  \r e siz e box {0 . 92\hsi z e 
+}
+{!
+}
+{$
+\
+mat
+h b
+f  {
+s
+} ^
+\ t e
+x t 
+{o u
+t }  
+=  (
+\
+m
+ath b f {M
+}^
+d +  \m
+a
+th
+b
+f 
+{
+M}^
+s)
+\mat
+hbf {
+s
+}
+^\t ext {in} = \underbrace {L_i k_d (\mathbf {n}\cdot \mathbf {i})}_{c^d} \begin {bmatrix} T_o^+ T_i^+ \\ T_o^- T_i^+ \beta _o \\ -T_o^- T_i^+ \alpha _o \\ 0 \end {bmatrix} + \underbrace {L_i k_s \frac {DG}{4(\mathbf {n}\cdot \mathbf {o})}}_{c^s} \begin {bmatrix} R^+ \\ R^- \gamma _o \\ -R^- \chi _o \\ 0 \end {bmatrix}. $} \label {eq:pbrdf} 
+(19)
+In essence, Md and Ms depend on surface albedo, sur-
+face normals, refractive index, and lighting conditions. In
+short, n, i, and o represent surface normal, incident and out-
+going light direction, respectively. kd is the diffuse albedo,
+ks is the specular albedo, T and R are the Fresnel transmis-
+sion and reflection coefficients. Refer to Baek et al. [1] for

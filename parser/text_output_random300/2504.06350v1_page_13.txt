@@ -1,0 +1,82 @@
+Using Jordan’s lemma, one can decompose the Bell operator as ˆβ = L
+i ˆβi, where each ˆβi acts on
+a two-dimensional subspace.
+This decomposition implies that self-testing is independent of the local
+Hilbert space dimensions dim B(HA) and dim B(HB), being invariant under local isometries ΦA⊗ΦB that
+preserve physical predictions. This leads to the so-called qubit reduction argument, a key security feature
+of device-independent QKD: although the actual devices may operate in high-dimensional spaces, only
+two-dimensional subspaces contribute to the Bell inequality violation. Suppose the state decomposes as
+ρ = L
+i piρi, then the observed value is β = Tr(ρˆβ) = P
+i pi⟨ˆβi⟩. Each ˆβi is bounded above by Tsirelson’s
+bound 2
+√
+2. If ρ is entirely supported on the block achieving this bound, the full violation is maximal.
+Otherwise, contributions from blocks with lower eigenvalues reduce the total violation. This dilution
+effect makes the security proof robust against dimension attacks, where an adversary might try to hide
+extra information in higher-dimensional components (see Sec. 1.3.2). Consequently, the derivation of
+bounds on the adversary’s information—such as bounding the guessing probability from the observed
+Bell violation—becomes independent of the internal structure of the devices, which can be treated as
+black boxes. The existence of a map Σ : p 7→R (via Jordan’s lemma) is sufficient to certify private
+randomness extraction. Specifically, condition (18) implies:
+σAE =
+X
+a
+|a⟩⟨a| ⊗TrAB
+h
+( ˜
+Ma|x ⊗IB ⊗IE) |ψ⟩⟨ψ|
+i
+=
+"X
+a
+pA(a|x) |a⟩˜
+A ⟨a|
+#
+⊗σE,
+where σE = Tr ˜
+A ˜
+B |junk⟩⟨junk| ∈H ¯
+A ¯
+BE, and pA(a|x) = P
+b p(a, b|x, y) is Alice’s marginal. Thus, Al-
+ice’s outcomes are completely random from Eve’s perspective [72], and for any correlation satisfying
+condition (18), one may optimize over Bob’s measurements accordingly. A comprehensive review of self-
+testing is given in [134], and a geometric characterization of self-testing via nonlocal extremal points p
+is presented in [125]. In the next section, we examine how to account for experimental imperfections in
+Bell tests.
+2.4. Experimental Loopholes
+Experimental validation that p ∈Q \ L requires careful treatment of imperfections in Bell tests. Such
+imperfections—typically due to transmission losses, detector inefficiencies, or other technical limita-
+tions—can open loopholes that allow an LHV model to reproduce data that would otherwise appear
+nonlocal. These loopholes undermine the assumption that the observed statistics p truly violate the
+causal constraints illustrated in Fig.5a [140, 141]. Although this may seem like a conspiratorial behavior
+of nature, in practice, an adversary could exploit such loopholes to forge fake BI violations using only
+classical resources [142], potentially compromising device-independent cryptographic protocols. Below,
+we briefly summarize the main loopholes (see Refs. [140, 141] for a detailed discussion).
+2.4.1. Detection Efficiency Loophole
+Consider the ideal scenario depicted in Fig.2a, where the behavior p = {p(ab|xy)} satisfies β(p) = 2
+√
+2
+as in Eq. (11). Detection is illustrated as “eyes” observing which lamp turns on, but in reality, it involves
+two detectors that click with respective probabilities ηA, ηB < 1. For simplicity, let us consider only
+Bob’s detector, then he measures only a set D of detected particle from a set E, of emitted particle,
+where η = |D|/|E| 7. The most general way of accounting for no-click events is to consider an additional
+outcome, which enlarges the Bell scenario8 [143, 144]. As a results, characterizing the sets L and Q
+becomes considerably more complex [145, 146, 55]. To remain in the same Bell scenario, Bob fixes an
+outcome b to assign at each no-click event with probability qB(b|y).
+Similarly, Alice assigns a with
+probability qA(a|x) 9.
+An affine map ˆp = ΩηAηB(p) = {ˆp(ab|xy)} describes the events of both the
+detectors: both, only one, or none of them click with related probabilities ηAηB, ηA(1−ηB) or (1−ηA)ηB,
+and (1 −ηA)(1 −ηB), such that
+ˆp(ab|xy) = ηAηBp(ab|xy)+ηA(1 −ηB)pA(a|x)qB(b|y) + (1 −ηA)ηBqA(a|x)pB(b|y)
++(1 −ηA)(1 −ηB)qA(a|x)qB(b|y).
+(25)
+7Here η is the probability that a photon emitted by the source is indeed detected. A discussion on the experimental
+parameters that contribute to η is provided in 6.2.
+8This approach can be used to describe null events for analyzers with a number of outcomes that span the space associated
+to the degree of freedom of interest, such as two-outcome polarizing beam splitters, for example.
+9This approach is best suited for experiments using “pass/fail” measurement devices, such as a polarization filter, where
+one cannot distinguish a null event from a projection onto the state that does not pass through the filter.
+13

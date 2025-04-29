@@ -1,0 +1,61 @@
+and SDG, with the following payoff matrices:
+Q =
+
+R S
+T P
+
+, T = b (1 < b ≤2), R = 1, P = 0, S = ±σ (0 ≤σ ≤1).
+(1)
+In the PDG, the parameters are given by R = 1, P = 0, T = b (1 ≤b ≤2), and S = −σ
+(0 < σ ≤1). The SDG parameters are rescaled such that S = +σ (0 < σ ≤1), while the
+other values remain unchanged. These can be represented as:
+Q1 =
+
+1 −σ
+b
+0
+
+, Q2 =
+
+1 +σ
+b
+0
+
+.
+(2)
+According to previous research [44], the relationship between parameters is given by:
+Dg = T −R, Dr = P −S, D
+′
+g =
+Dg
+R −P , D
+′
+r =
+Dr
+R −P .
+(3)
+From (1), (2), and (3), it follows that Dg = D
+′
+g = b −1 > 0 and Dr = D
+′
+r = ±σ. When
+σ = 0, all players participate in a weak PDG, marking the boundary between PDG and
+SDG. When σ ̸= 0, both PDG and SDG coexist in the system [45].
+At the initial stage, each agent is allocated one unit of resources. Each player adopts
+either a cooperative (Sx) or defective (Sy) strategy with equal probability, expressed as:
+Sx = (1, 0)⊤, Sy = (0, 1)⊤.
+(4)
+The system evolves through a standard discrete-time asynchronous Monte Carlo simula-
+tion, consisting of the following steps:
+1. Game stage. Following typical Glauber dynamics, a player i is randomly selected and
+obtains a payoff pi by engaging in games with its four nearest neighbors, regardless of
+their game type. This is given by:
+pi =
+X
+j∈Ω(i)
+SiQTiSj,
+(5)
+where Ω(i) denotes the set of neighboring individuals of i, whose cardinality is just
+the agent’s degree |Ω(i)| = ki = 4, and QTi is the payoff matrix corresponding to the
+individual i’s game type.
+6

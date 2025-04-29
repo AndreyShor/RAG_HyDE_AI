@@ -1,0 +1,39 @@
+Tools and methodology
+41
+used to describe data from HERA, CHORUS, NuTeV, CDHSW [138], and FPF [124]. Finally, we
+provide the linearly dependent structure functions 2xF1 and 2xg5.
+Flavor tagging.
+In general, any total DIS structure function F can be decomposed in three
+different components, according to the type of quark coupling to the exchanged EW boson (see
+Section 1.4):
+F = F (l) + F (h) + F (hl),
+(2.8)
+where F (l) denotes the contribution coming from diagrams where all the fermion lines are
+massless, F (h) is the contribution due to heavy quarks coupling to the EW boson and F (hl)
+originates from higher order diagrams where a light quark is coupling to the boson, but heavy
+quarks lines are present.
+Given Eq. (2.8), we support the calculation of fully inclusive (total) observables, where only the
+lepton is observed in the final state, and flavor tagged final state, where we require a specific
+heavy quark (charm, bottom, or top) to couple with the mediating boson. For completeness,
+also light structure functions F (l) are available, in isolation, although they do not correspond to
+any physical observable.
+Theory configuration options
+Renormalization and factorization scale variations.
+In perturbative QCD the DIS coefficients
+of Eq. (1.80), are expanded in powers of as. The estimate of the error introduced by the
+truncation of such series is quite relevant in multiple precision applications. Some information
+about the missing higher orders, and the related uncertainty (MHOU), can be extracted from the
+Callan-Symanzyk equations violation. In this sense, a practical approach to obtain a numerical
+estimate consists in varying the relevant unphysical scales (see Section 2.2.2).
+In DIS, the two involved unphysical scales are the renormalization scale, arising from the
+subtraction of ultraviolet divergences, and the factorization scale, from the subtraction of
+collinear logarithms in the PDF definition.
+The explicit expressions of the Ci expansion upon scale variations can be found, in [139, Sec. 2].
+Generally, these depend, order by order in perturbation theory, on the derivatives of as and the
+PDFs with respect to the mentioned scales. The former are the β-function coefficients and the
+latter the splitting functions. In Yadism, necessary β-function coefficients are taken from the
+EKO package, while the x-space splitting functions are directly implemented.
+At the level of structure function, scale variations can be cast into an additional convolution
+with a kernel K:
+F(x, µ ̸= Q) = (K ⊗C ⊗f) (x)
+(2.9)

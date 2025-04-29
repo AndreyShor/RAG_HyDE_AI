@@ -1,0 +1,235 @@
+2
+proach to identify promising electrolyte candidates. Its
+primary utility comes from allowing dynamical simula-
+tions at longer timescales, and over a greater temperature
+range, leading to improved statistics and direct predic-
+tion of temperature scaling.
+This paper is organized as follows: we give a micro-
+scopic description of ionic motion through a solid elec-
+trolyte in Sec. II. There, we show that the displacement
+of the electrolyte’s atoms in response to the mobile ions
+is given by a transcendental time-local Eq. (16). Next,
+we introduce a model system in Sec. III and validate our
+time-local treatment in Sec. IV, where we show that ad-
+ditional simplifications remove the transcendental nature
+of Eq. (16). We demonstrate our formalism’s power to
+capture dissipation and diffusion in Secs. V and VI, re-
+spectively. In section VII, we discuss of the results, as-
+sumptions, limitations, and consequences of our study,
+and conclude with a summary in Sec. VIII.
+II.
+MODEL
+As in our earlier work, [22–26] we start with a La-
+grangian describing the motion of a particle of mass M
+through a crystalline framework:
+L = M
+2
+˙RT ˙R + 1
+2 ˙rT ↔
+m˙r −rT
+↔
+V
+2 r −U(r, R) .
+(1)
+Here, R is the mobile particle’s position, r is a vector
+of framework atom displacements from their equilibria,
+and ↔
+m is the framework’s mass matrix.
+rT ↔
+V r/2 gives
+the framework’s potential energy in the harmonic ap-
+proximation and U(r, R) is the interaction between the
+framework and particle.
+Equation (1) yields the standard equations of motion
+M ¨R = −∇RU (r, R) ,
+(2)
+↔
+m¨r = −
+↔
+V r −∇rU (r, R) .
+(3)
+Although Eqs. (2) and (3) contain all the information
+necessary to solve the problem, they are unmanageable
+for large systems.
+Fortunately, it is possible to write
+down a formal solution for r which can then be used to
+solve Eq. (2). We start by writing Eq. (3) as a symmetric
+eigenvalue problem
+↔
+m
+1
+2 ¨r = −0+˙r −↔
+m−1
+2
+↔
+V ↔
+m−1
+2
+
+↔
+m
+1
+2 r
+
+−↔
+m−1
+2 ∇rU (r, R) ,
+(4)
+where 0+ is an infinitesimal dissipation.
+Without the
+final term, r describes a homogeneous solution for the
+framework which corresponds to thermal vibration. We
+will address this motion component below and focus on
+the framework’s response to its interaction with the par-
+ticle first. Taking the Fourier transform of Eq. (4) with
+respect to time and solving for rω gives
+rω = ↔
+m−1
+2
+
+ω2 + iω0+ −↔
+m−1
+2
+↔
+V ↔
+m−1
+2
+−1 ↔
+m−1
+2
+× F [∇rU (r, R)] ,
+(5)
+where F[. . . ] denotes the Fourier transform.
+Because
+↔
+m−1
+2
+↔
+V ↔
+m−1
+2 is a real symmetric matrix, there exists a
+matrix D = [ε1, ε2, . . . ] such that D†↔
+m−1
+2
+↔
+V ↔
+m−1
+2 D = Ω
+↔2,
+where Ω
+↔2 is a diagonal matrix and εj are eigenstates of
+↔
+m−1
+2
+↔
+V ↔
+m−1
+2 . Thermally-excited eigenmodes produce the
+homogeneous framework motion referred to above. Tak-
+ing the eigenvalues for the jth state to be Ω2
+j, we have
+
+ω2 + iω0+ −↔
+m−1
+2
+↔
+V ↔
+m−1
+2
+−1
+=
+X
+j
+εjε†
+j
+(ω + i0+)2 −Ω2
+j
+,
+(6)
+leading to
+r =
+X
+j
+F−1
+"
+↔
+m−1
+2 εjε†
+j
+↔
+m−1
+2
+(ω + i0+)2 −Ω2
+j
+#
+∗∇rU (r, R)
+√
+2π
+,
+(7)
+where ∗denotes the convolution. Using
+1
+√
+2π F−1
+"
+1
+(ω + i0+)2 −Ω2
+j
+#
+= −sin Ωjt
+Ωj
+Θ(t) ,
+(8)
+where Θ(t) is the Heaviside step function, we have
+r(t) = −
+Z t
+0
+dt′ d
+↔
+W(t −t′)
+dt′
+∇rU [r(t′), R(t′)] ,
+(9)
+↔
+W(t) = ↔
+m−1
+2 X
+j
+εjε†
+j
+cos (Ωjt)
+Ω2
+j
+↔
+m−1
+2 .
+(10)
+Having obtained the particular solution determined by
+the forcing term, we add the homogeneous trajectory
+rH(t) to Eq. (9). Integrating the forcing term by parts
+gives
+r(t) = rH(t) −
+V
+↔−1
+z }| {
+↔
+W(0) ∇rU[r(t), R(t)]
++
+↔
+W(t)∇rU[r(0), R(0)]
++
+Z t
+0
+dt′ ↔
+W(t −t′) d
+dt′ ∇rU[r(t′), R(t′)] .
+(11)
+The third term on the right-hand side goes to zero at
+large t because it is a sum of oscillating cosine func-
+tions. Therefore, we will drop it in the subsequent anal-
+ysis.
+If the time derivative of the force vanishes, we
+can introduce δ ≡r −rH so that Eq. (11) becomes
+δ = −
+↔
+V −1∇rU[rH + δ, R]. This expression corresponds

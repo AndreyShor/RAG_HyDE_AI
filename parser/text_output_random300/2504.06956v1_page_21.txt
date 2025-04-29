@@ -1,0 +1,88 @@
+Local structure of extremal points
+21
+Remark 4.7. For each b ∈N, j ∈[b −1]0, and l ∈[j]0, recalling (4.1), we have, for all x ∈Bl,
+Υb,g(x) −Υj,g(x) = −
+Z b
+j
+(1 −K(e−sx))dBs + Zj,b(x) .
+Now, on the event {Kb ≤j}, one has
+sup
+x∈Bl
+|Zj,b(x)| ≲e−(j−l)/2(log j)2 ,
+as well as
+sup
+x∈Bl
+Z b
+j
+|1 −K(e−sx)|dBs ≲el
+b−1
+X
+i=j
+e−i Osci(B) ≤e−(j−l)
+∞
+X
+i=0
+e−iΘj(i + j) ≲e−(j−l)(log j)2 .
+Therefore, combining the previous two bounds, we obtain that for all l ∈[j]0, on the event {Kb ≤j},
+it holds that
+sup
+x∈Bl
+|Υb,g(x) −Υj,g(x)| ≲e−(j−l)/2(log j)2 .
+(4.9)
+Thanks to Lemmas 4.3 and 4.4, we have the following result concerning the tail behaviour of the
+control variables.
+Lemma 4.8. There exists a constant c > 0 and k0 ∈N such that for b ∈N with b > k0, and
+u ∈[b1/4, b3/4],
+P0,u,b(Kb = k) ≤e−c(log k)2 ,
+∀k ∈{k0, . . . , b} .
+(4.10)
+Similarly, there exists a constant ec > 0 and ek0 ∈N such that
+P(K∞= k) ≤e−ec(log k)2 ,
+∀k ≥ek0 .
+(4.11)
+Proof. We start with (4.10). Fix b ∈N, u ∈[b1/4, b3/4], and let k ∈[b]. By Definition 4.6, the event
+{Kb = k} is contained in the union of the following events,
+b−1
+[
+j=0
+{Oscj(B) > Θk−1(j)} ,
+b−1
+[
+j=0
+
+sup
+x∈Aj
+gb(x) > e−(b−j)/2Θk−1(j)
+
+,
+b−1
+[
+j=1
+ sup
+x∈Aj
+Zj(x) −mj
+ > Θk−1(j)
+
+,
+b−1
+[
+j=1
+j[
+l=1
+
+sup
+x∈Al
+Zj,b(x) > e−(j−l)/2Θk−1(j)
+
+.
+The conclusion then follows since there exists constants c1, c2 > 0 such that the probabilities of the
+events appearing in the unions of the above display are bounded either by c1 exp(−c2Θk−1(j)2) (for
+the ones on the first line) or by c1 exp(−c2Θk−1(j)) (for the ones on the second line). Summing over
+j then yields the desired bound.
+Indeed, for the events in the union on the top-left, this follows since for all u ∈[b1/4, b3/4], the
+oscillation norms Oscj(B) have Gaussian tails uniformly over the probability laws P0,u,b, for all
+j ∈[b −1]0. For the event in the union on the top-right this follows from (G2). Finally, regarding the
+events in the union on the bottom-left and bottom-right, this follows by Lemma 4.3 and Lemma 4.4,
+respectively. To conclude, we note that the proof of (4.11) proceeds in the same exact way.
+We are now ready to state and prove the following key lemma. For a diagrammatic representation
+related to this lemma, we refer to Figure 1.

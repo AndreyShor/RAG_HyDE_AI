@@ -1,0 +1,28 @@
+6 
+mutation process, are effectively capturing the correct underlying physics without 
+requiring any posterior corrections.  
+ 
+Comparison between residue specific-coefficients and experimental 
+solvation scales 
+ 
+We performed a Pearson correlation analysis among the residue-specific parameters 
+fitted using the VBS3322 dataset (see Methods section) to assess their consistency 
+across different methods. Additionally, we included solvation and hydrophobicity 
+scale values in the correlation comparison to evaluate their relationship with the fitted 
+parameters. As shown in Fig. 3, the amino acid-specific parameters (a1 to a20) exhibit 
+strong correlations across the potential-like methods. Furthermore, these fitted 
+parameters show a notable correlation with Kyte and Doolittle hydrophobicity scale 
+and an even stronger correlation with the experimentally-derived Rose scale, which 
+was specifically designed to predict the average change in solvent accessible 
+surface area of amino acids upon folding. 
+In agreement with these observations, we then computed a new MBC based on the 
+Rose scale, referred to as MBC(Rose). This correction was derived using a two-
+parameter linear combination between the original-method delta and the Rose-scale 
+delta (see Eq. 8), with results summarized in Fig. 2. The performance of MBC(Rose) 
+is consistent with, or in some cases superior to, that obtained by the MBC(dd) 
+approach. 
+As a further validation, we computed the Pythia/MBC(dd) and Pythia/MBC(Rose) 
+scores using the parameters derived from our VBS3322 training set and tested them 
+on the independent mega-scale dataset29, which was not used in the parameter 
+derivation. The results show an improvement (PCC: +0.07) over the original Pythia 
+score, achieving a PCC close to 0.70 and an RMSE of 1.43 kcal/mol.  

@@ -1,0 +1,104 @@
+6
+wave function and Hamiltonian and EHF is the HF energy
+calculated classically, we find it to be very limited at best,
+due to noise. In fact, recalling that the correlation energy
+that we sought to capture is 17.079 milliHa, we find that
+our calculation captures 400 milliHa but on the other side
+of the HF value. An earlier work that calculates ground
+state energies using the UCC-VQE approach on quantum
+hardware also report similar findings (large errors in corre-
+lation energy itself, although the total energy error is small
+due to the large HF contribution to it) for their 6- and
+12-qubit computations on the Aria-I and the Forte-I quan-
+tum computers respectively [43], but we find that in our
+MRUCC-VQE case, the issue is more pronounced. In fact,
+the clique 0 contribution to the energy is −3.545409 Ha,
+whereas the HF energy is −3.570995 Ha in our case. How-
+ever, in the UCC-VQE case that the authors in Ref. [43]
+considered, the dominant clique subsumed the HF energy
+in it, and thus measuring one clique was sufficient in their
+case to obtain a total energy lower than the HF value. We
+note that a larger active space choice and/or a lower degree
+of approximation (for example, picking more parameters
+from energy sort VQE) would have led to a larger amount
+of correlation energy to capture, but would have run into
+the issue of very deep circuit to evaluate in a noisy setting.
+Thus, we conclude that we need better resilience to noise
+on the quantum hardware front to be able to capture the
+right correlation energy trend in the VQE framework.
+IV.
+CONCLUSION
+In conclusion, we carry out a 12-qubit multireference
+unitary coupled cluster VQE calculation on a trapped
+ion quantum hardware to obtain the energy of the BeH2
+molecule in a geometry where the role of strong correlation
+effects is significant. The limitations imposed by current-
+day quantum hardware demanded the use of resource re-
+duction techniques to reduce the two-qubit gate count and
+the number of measurements, besides necessitating the use
+of error mitigation (debiasing) and post-selection (based on
+particle number conservation).
+By leveraging symmetry,
+using energy sort VQE, and using pipeline-based quantum
+circuit optimization, we reduced the two-qubit gate count
+from 12515 to 20 with a loss of 0.45% in the total energy.
+We used the notion of supercliques, where we partition a
+Hamiltonian into sets of qubit-wise mutually commuting
+terms (cliques), and then combine cliques yielding the same
+energy contributions into supercliques.
+Picking only the
+important supercliques leads to a drastic reduction in the
+number of circuits to evaluate on quantum hardware. Fur-
+thermore, we use a simple isometry, which leads to an in-
+put state preparation circuit with only 3 two-qubit gates.
+We also note that in view of the prohibitive costs and ac-
+cumulation of errors, we prepare a circuit with optimized
+parameters obtained from VQE simulation and then mea-
+sure the Hamiltonian on that prepared state on a quantum
+computer. We find that the error in ground state energy
+obtained on the Forte-I quantum computer relative to that
+evaluated on a traditional computer with the same reduced
+problem setting is only 2.69%. However, although employ-
+ing a series of resource reduction techniques significantly
+lowers the depth of the quantum circuit while not losing a
+notable fraction of the energy to be captured, a combination
+of the small magnitude of correlation energy in the chosen
+active space and the high physical error rates in current-day
+quantum computers yields an energy that is still larger than
+the HF value. We expect that with further advances in the
+quantum hardware front, one can carry out multireference
+UCC-VQE computations with better precision.
+V.
+ACKNOWLEDGMENTS
+The work was carried out as a part of the Meity Quantum
+Applications Lab (QCAL) Cohort 2 projects. VSP acknowl-
+edges support from CRG grant (CRG/2023/002558). VSP,
+PC, and DS acknowledge Prof. Bhanu Pratap Das for ini-
+tial discussions on multireference coupled cluster theories,
+Ms. Aashna Anil Zade for fruitful discussions on various
+concepts, Dr.
+Cedric, Dr.
+Mao, and Mr.
+Jeffrey with-
+out whose support in fixing a bug at the last minute would
+have made quantum hardware execution a huge challenge,
+Dr. Subimal Deb for deliberations on single particle basis
+sets, and Mr. Sudhindu Bikash Mandal for support with
+AWS Braket.
+KS acknowledges support from Quantum
+Leap Flagship Program (Grant No.
+JPMXS0120319794)
+from the MEXT, Japan, Center of Innovations for Sustain-
+able Quantum AI (JPMJPF2221) from JST, Japan, and
+Grants-in-Aid for Scientific Research C (21K03407) and for
+Transformative Research Area B (23H03819) from JSPS,
+Japan.
+JR acknowledges support from the Agència de
+Gestió d’Ajuts Universitaris i de Recerca through the DI
+grant (No. 2020-DI00063). JR and JN acknowledge sup-
+port from MICIU/AEI/10.13039/501100011033/ FEDER,
+UE.
+[1] D. S. Abrams and S. Lloyd, Physical Review Letters 79,
+2586 (1997).
+[2] D. S. Abrams and S. Lloyd, Physical Review Letters 83,
+5162 (1999).

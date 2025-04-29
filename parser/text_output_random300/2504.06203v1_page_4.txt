@@ -1,0 +1,145 @@
+4
+For convenience, we introduce Wannier wave functions [60],
+|λ, ⃗x, ∆⟩≡
+Z
+dd−1⃗p
+(2π)d−1 e−i⃗p·⃗x|λ, ⃗p, ∆⟩.
+(II.15)
+In this representation, the operators D and Pi act as
+D|λ, ⃗x, ∆⟩= (xµ∂µ + (d −1 −∆O)λ∂λ) |λ, ⃗x, ∆⟩,
+Pi|λ, ⃗x, ∆⟩= ∂i|λ, ⃗x, ∆⟩.
+(II.16)
+This allows us to determine the action of Ki from the confor-
+mal algebra,
+Kj|λ, ⃗x, ∆⟩= (2(d −1 −∆O)xiλ∂λ
++(2xi(x · ∂) −x2∂i)
+
+|λ, ⃗x, ∆⟩.
+(II.17)
+Now we consider the dense subset HD∆⊂H∆, where for
+any |f⟩∈HD∆the following limit exists
+∃lim
+λ→∞⟨λ, ⃗x, ∆|f⟩⇒|⃗x, ∆⟩= w-lim
+λ→∞|λ, ⃗x, ∆⟩.
+(II.18)
+In general this weak limit might not exist or could simply
+be zero [61]. Physically, this amounts to demanding a well-
+defined IR limit of correlation functions of ˆO (and the de-
+fect) with bulk local operators. It is straightforward to check
+that the limit states |⃗x, ∆⟩form a representation of the algebra
+{Pi, D, Kj, Mij}. For instance, for any state |f⟩∈HD∆
+lim
+λ→∞⟨f|ebD|λ, ⃗x⟩= lim
+λ→∞⟨f|λeb(d−1−∆), eb⃗x⟩
+= ⟨f|eb⃗x⟩
+⇒
+ebD |⃗x⟩= |eb⃗x⟩.
+(II.19)
+where ∆dependence is implicit. From Appendix C, we show
+that for all ⃗x, the limit is the same in (II.18),
+|⃗x, ∆⟩= |B, ∆⟩,
+(II.20)
+which is a linear combination of Ishibashi states correspond-
+ing to scalar primaries.
+After having analyzed the spectrum of ˆO∆, we are ready to
+deal with its exponential in (II.1),
+D ≡w-lim
+∆→∞w-lim
+h→∞
+h
+eh ˆ
+O∆i
+ren ,
+(II.21)
+by introducing a cutoff Λ on the spectrum of ˆO∆and then tak-
+ing weak limits. Before these limits, the renormalized defect
+is defined via minimal subtraction as
+D∆(h, Λ) ≡
+(II.22)
+N
+Λ
+Z
+−∞
+dσλ
+eh(λ−Λ)
+h
+Z
+dd−1⃗p
+(2π)d−1 |λ, ⃗p, ∆⟩⟨λ, ⃗p, ∆| .
+with a normalization factor N which we will fix later. The
+following weak limit clearly exists,
+w-lim
+h→∞D∆(h, Λ) = N dσλ
+dλ
+
+λ=Λ
+×
+Z
+dd−1⃗p
+(2π)d−1 |Λ, ⃗p, ∆⟩⟨Λ, ⃗p, ∆| ,
+(II.23)
+where we have used that
+lim
+h→∞heh(λ−Λ)θ(Λ −λ) = δ(Λ −λ).
+(II.24)
+Taking weak limit Λ →∞, using (II.18) together with (II.20)
+and then ∆→∞, we obtain
+D = |B⟩⟨B| ,
+|B⟩∝w-lim
+∆→∞|B, ∆⟩,
+(II.25)
+where we have absorbed the normalization constants in (II.23)
+and the IR volume factor into |B⟩, which is a linear combina-
+tion of Ishibashi states. By locality, we expect |B⟩to be an
+indecomposable Cardy state of the CFT and its normalization
+is fixed this way.
+Let us comment on the extensions to (II.1) when the pin-
+ning flow preserves additional global symmetries. This hap-
+pens when ˆO commutes with the corresponding topological
+defects. Correspondingly, the spectrum of ˆO has degenera-
+cies due to the symmetry action (fusion with the topological
+defects). When the symmetry preserved is finite, this leads
+to a finite direct sum of factorized interfaces in the IR for the
+pinning defect,
+D =
+X
+α
+|Bα⟩⟨Bα| ,
+(II.26)
+where the individual Cardy states |Bα⟩furnish a representa-
+tion of the symmetry. We will see concrete examples in Sec-
+tion IV.
+If the symmetry is continuous, we have instead an integral
+over the factorization channels,
+D =
+Z
+dα|Bα⟩⟨Bα| ,
+(II.27)
+for a spectral measure dα invariant under the symmetry. For
+example if α labels the elements of a continuous group sym-
+metry G, dα is proportional to the Haar measure on G. In the
+case of spontaneous G-symmetry breaking on the interface,
+this measure arises from the path integral over the Goldstone
+bosons localized at the interface. For 3d, there is no spon-
+taneous continuous symmetry breaking [62], but this form of
+factorization (II.27) persists (see Section IV B).
+The factorized form of the pinning defect derived here
+makes their IR fusion product ◦defined in [20] (see also [21–
+23, 63–66]) more transparent. In particular, the defect self-
+fusion follows an idempotent rule,
+D ◦D(Σ) = S(Σ)D(Σ) ,
+(II.28)
+where Σ is the defect worldvolume and S denotes the fusion
+coefficient theory (CFT) on Σ and S(Σ) is its partition func-
+tion. Here we have used that the boundary states |Bα⟩in the
+factorization of D are related by symmetries and the Casimir
+energy densities Eαβ for a pair of such boundaries defined by
+⟨Bα|e−zPd|Bβ⟩
+z→0
+−−−→e−
+A
+zd−1 Eαβ ,
+(II.29)
+with IR regulator A for the defect volume, satisfies
+Eαβ = Eβα ≥Eαα = Eββ ,
+(II.30)

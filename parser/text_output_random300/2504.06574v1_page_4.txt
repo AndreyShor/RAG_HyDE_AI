@@ -1,0 +1,150 @@
+a
+P
+M
+R
+D
+d𝑢1/d𝑡1 = Ԧ𝑓𝑡1, 𝑢1; Ԧ𝜃, Ԧ𝜆1
+R
+→
+P
+P
+→
+M
+M
+→
+R
+𝑢1 𝑇
+Ԧ𝜆1
+→
+𝑢2 0
+Ԧ𝜆2
+P
+M
+R
+D
+P
+M
+R
+0
+𝑇
+Pass 1
+Pass 2
+Pass 3
+Transition
+Transition
+R
+→
+P
+P
+→
+R
+M
+→
+M
+𝑢2 𝑇
+Ԧ𝜆2
+→
+𝑢3 0
+Ԧ𝜆3
+𝑡1
+0
+𝑇
+𝑡2
+0
+𝑇
+𝑡3
+D
+d𝑢2/d𝑡2 = Ԧ𝑓𝑡2, 𝑢2; Ԧ𝜃, Ԧ𝜆2
+d𝑢3/d𝑡3 = Ԧ𝑓𝑡3, 𝑢3; Ԧ𝜃, Ԧ𝜆3
+intercept
+b
+1. Initialise the system
+— Set the pass count to 1
+— Determine the initial condition of the state vector ⃗u1(t1) and the pass-specific parameters ⃗λ1
+2. Simulate dynamics during a single pass scene
+— During the n-th pass scene, ⃗un(tn) evolves according to a system of ODEs (1) with parameters ⃗θ and ⃗λn:
+d⃗un/dtn = ⃗f(tn, ⃗un; ⃗θ,⃗λn) for tn ∈[0, T]
+3. Terminate the simulation if a termination condition has been satisfied
+— Check three conditions: pass intercept, ball-out, and the maximum number of passes
+4. Transition to the next pass scene
+— Determine the next pass-specific parameters ⃗λn+1 and the initial condition for ⃗un+1(tn+1) stochastically
+based on the current parameters ⃗λn and the final state of the current pass scene ⃗un(T)
+— Update the pass count from n to n + 1
+5. Go back to step 2
+Figure 2:
+Overview of our model. (a) A game comprises a sequence of pass scenes and transitions between
+successive pass scenes. (b) Our model breaks down into five steps, through which the state vector during the
+n-th pass scene, ⃗un(tn), and the pass count evolve.
+Table 1:
+List of model parameters and their value ranges in this study. The entry of — in ‘unit’ column stands
+for a dimension-less quantity.
+parameter
+value range
+unit
+description
+m
+55 – 75
+kg
+Mass of each player.
+T
+0.5 – 1.2
+s
+Duration of every pass scene.
+σ
+3 – 9
+rad
+Standard deviation of pass angles.
+β
+0 – 25
+—
+Accuracy for Passer to choose the wider side in giving a pass.
+kr
+0 – 1000
+kg m/s2
+Spring constant of the returning force.
+γ
+0 – 1000
+kg s/m2
+Viscosity of the neighbourhood of the court boundary.
+kf
+0 – 200
+kg/s2
+Spring constant of the following force.
+Lf
+3 – 8
+m
+Natural length of the following force.
+ke
+0 – 200
+kg/s2
+Spring constant of the evading force.
+Le
+1 – 6
+m
+Natural length of the evading force.
+q
+0.2 – 0.8
+—
+Probability that DF chooses the same motion mode as in the previous
+pass scene.
+τ
+0.5 – 1.5
+s
+Time scale of DF’s motion.
+Lict
+0.4 – 0.8
+m
+Threshold distance for DF to intercept the ball.
+Lbuff
+0.5
+m
+Width of the viscous region around the court boundary.
+Lout
+0.5
+m
+Threshold distance for evaluating the ‘ball-out’ termination condition.
+L
+6
+m
+Length of each side of the square court.
+4

@@ -1,0 +1,115 @@
+2
+0
+1
+2
+3
+4
+5
+Total contribution,τi 
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Benefit function
+B1(τi)
+B2(τi)
+B3(τi)
+Fig. 1.
+Three kinds of benefit functions of the PGG. The lin-
+ear benefit function (the dash-dot line), B1(τi) = bτi/5, where
+b = 1. The saturating benefit function (the dashed line), B2(τi) =
+b(1 −exp(−βsatτi)), where b = 1 and βsat = 2. The sigmoid ben-
+efit function (the solid line) , B3(τi) =
+b
+1+exp(−βsig(τi−T )), where
+b = 1, βsig = 5, and T = 5/2.
+can be effectively described by utilizing N-player games [25–
+30]. In particular, the public goods game (PGG) is a paradigm
+of multi-player games [31–42]. Thus, the evolution of coop-
+eration within continuous public goods games merits further
+exploration. Notably, when analyzing public goods games,
+various forms of benefit functions are typically considered.
+The most common types include linear, saturating, and sig-
+moid benefit functions
+[16, 35, 36]. However, the evolu-
+tionary dynamics of cooperation in continuous public goods
+games with these benefit functions remain unknown in struc-
+tured populations. Therefore, it is worthwhile to investigate
+the evolutionary dynamics in continuous public goods games
+with these different forms of benefit functions in structured
+populations.
+In this paper, we thus consider the continuous PGG in the
+structured population depicted by a regular network. By em-
+ploying the pair approximation approach, we obtain the inva-
+sion fitness and subsequently derive dynamic equations under
+three different benefit functions, thereby analyzing the evolu-
+tion of cooperative investments. For the PGG with a linear
+benefit function, our analysis reveals that cooperative invest-
+ments evolve to either maximum or minimum depending on
+the benefit-to-cost ratio. We then turn our attention to the
+game with a saturating benefit function and find a potential
+singular strategy that serves as an evolutionarily stable strat-
+egy (ESS). Next, we analyze the PGG with a sigmoid bene-
+fit function. Our observations indicate that when the thresh-
+old value in the benefit functions is small, a singular strategy
+serving as an ESS exists; when the threshold is intermediate,
+both singular strategies, ESS and repellor, exist; and when the
+threshold is large, only a unique repellor displays.
+II.
+MODEL
+We consider the continuous PGG in an infinitely structured
+population represented by a regular network of degree k. In-
+dividuals are assigned to the nodes of the network and each of
+them participates in k +1 games organized by himself/herself
+d hi /h
+k
+i hb
+h
+i
+l
+individual investment. We respectively consider linear, satu-
+rating, and sigmoid functions for the benefit functions B(τi),
+by following previous works [16, 35, 36]. Specifically, we
+consider the following expressions for the benefit function:
+B(τi) = bτi/n (linear), B(τi) = b(1−exp(−βsatτi)) (saturat-
+ing), and B(τi) =
+b
+1+exp(−βsig(τi−T )) (sigmoid). For clarity,
+these benefit functions are plotted in Fig. 1. For the cost func-
+tion, we adopt the standard linear form C(xi) = cxi where
+b > c , which is widely used in evolutionary public goods
+games [43, 44]. We stress that the linear cost function is a
+classical assumption, ensuring the consistency with existing
+studies [16, 35, 36].
+Here, each individual i participates in k + 1 games where
+he/she is a member and collects the total payoff from all the
+involved games, denoted as Πi. The payoffs obtained from
+interactions with their k neighbors determine the birth rates,
+given by bi = exp(ωΠi/n), where ω > 0 represents the
+strength of selection [45–47]. This exponential payoff to the
+birth rate map is designed to ensure that the birth rates are al-
+ways positive and can be easily converted into probabilities
+for reproduction.
+After playing the game, the death-birth updating is em-
+ployed to describe the update process [24, 48, 49]. To be
+specific, a random individual is selected to die, and the sur-
+rounding neighbours compete for the empty site proportional
+to their birth rates.
+In
+what
+follows,
+through
+theoretical
+analysis
+and
+individual-based simulations, we respectively investigate
+the evolutionary dynamics of cooperation in the continuous
+public goods game with the proposed linear, saturating, and
+sigmoid functions.

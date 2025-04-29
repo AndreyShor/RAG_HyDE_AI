@@ -1,0 +1,99 @@
+Calculate Loss
+FiRE
+b) Wave Function Laplacian
+Non-zero
+(computed)
+Zero
+(not computed)
+c) Variational Monte Carlo
+Sampling with
+Metropolis Hastings
+Parameter update
+Pseudopotential
+Kinetic energy
+Spin penalty
+Cache
+FiRE
+a) Wave Function Update
+Nuclei
+Moved/Affected Electrons
+Electrons
+Low-rank update
+Figure 1: Conceptual overview: a) For each-single electron move, e.g., during sampling or pseudopotentials,
+we only update the orbitals of electrons within the cutoff of its old and new positions. b) FiRE enables effi-
+cient Laplacian computations by exploiting the sparsity patterns within the Jacobian ∇Φ(r) to only compute
+non-zero entries. c) All components of VMC that are accelerated by FiRE.
+of single-electron orbitals ϕl : R3 →R:
+Φil(r) = ϕl(ri).
+(2)
+While the orbitals being single-electron functions en-
+ables efficient single-electron updates and Laplacian
+calculations of the wave function in O(nel2) and
+O(nel3), respectively [6], their constrained functional
+form prohibits the accurate representation of strongly
+correlated systems [7].
+In NN-VMC, one lifts this constraint by replacing the
+single-electron orbitals with many-electron neural net-
+works hi : Rnel×3 →Rndim multiplied with envelope
+functions φl : R3 →R to ensure the correct long-range
+behavior:
+Φil(r) = (hi(r)T wl)φl(ri),
+(3)
+hi(r) = h
+
+ri, {rj}j̸=i
+
+.
+(4)
+The ith electron’s embedding hi(r) depends in this
+formulation on the position of all other electrons,
+indicated by the (multi-)set {rj}j̸=i.
+By choosing
+permutation-equivariant architectures like graph neu-
+ral networks [8, 9], or transformers [10] for h, antisym-
+metry is preserved. For several small molecules, NN-
+VMC achieves energy estimates outperforming conven-
+tional ‘gold-standard’ methods such as Coupled Clus-
+ters (CCSD(T)) or Multireference Configuration Inter-
+action (MRCI) [3, 11].
+However, as the orbital ma-
+trix elements depend on all electrons, the Laplacian
+requires O(nel4) operations, and efficient low-rank up-
+dates are impossible.
+Several fruitful improvements
+have reduced the cost of NN-VMC, accelerating each
+optimization step [12, 13], reducing the number of op-
+timization steps required [14, 15], or amortizing the
+cost across several systems [16, 17]. Nevertheless, none
+of these change the overall computational complexity,
+and system sizes studied by NN-VMC are typically still
+limited to nel ≈80 in 10,000 GPU hours [10].
+In this work, we connect the favorable computational
+scaling of conventional VMC and the accuracy of NN-
+VMC by introducing a novel neural wave function
+based on finite-range embeddings (FiRE). FiRE re-
+duces the computational scaling of NN-VMC by O(nel)
+to O(nel3), yielding speed-ups of ≈10× for relevant
+system sizes.
+This enables the application to larger
+systems at lower runtimes while maintaining highly ac-
+curate relative energies, yielding a new ‘gold standard’
+for fast and accurate ab-initio electronic structure cal-
+culations.
+As electron interactions are most pronounced at short
+ranges, we focus the electron’s embedding on its vicin-
+ity by limiting its dependence on the electrons within
+some cutoff c. Thus, instead of the extrema of single-
+electron conventional VMC and all-electron NN-VMC,
+FiRE defines the ith electron’s embedding, from which
+the orbital matrix Φ(r) is derived (Eq. (3)), via the
+neighborhood Nri defined by the cutoff c ∈R+:
+hi(r) = h(ri, {rj}j∈Nri),
+(5)
+Nri = {j | j ̸= i ∧|ri −rj| ≤c} .
+(6)
+This ansatz can trivially represent single-electron or-
+bitals (Eq. (2)), including arbitrarily delocalized or-
+bitals, by letting c = 0, i.e, Nri = ∅. Further, thanks to
+the dependence on the close-by electrons, FiRE is a su-
+2

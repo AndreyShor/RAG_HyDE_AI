@@ -1,0 +1,102 @@
+Time-local stochastic equation of motion for solid ionic electrolytes
+A. Rodin,1, 2 B. A. Olsen,3 A. Ustyuzhanin,4, 5 and A. Maevskiy5
+1Yale-NUS College, 16 College Avenue West, 138527, Singapore
+2Department of Materials Science and Engineering,
+National University of Singapore, 117575, Singapore
+3Department of Physics, Lewis & Clark College, Portland, Oregon, 97219, USA
+4Constructor University, Bremen, Campus Ring 1, 28759, Germany
+5Institute for Functional Intelligent Materials, National University of Singapore, 4 Science Drive 2, Singapore 117544, Singapore
+Numerical studies of ionic motion through solid electrolytes commonly involve static nudged-
+elastic band (NEB) methods or costly ab initio molecular dynamics (AIMD). Building on a time-
+local model of current carrier-electrolyte interaction and incorporating thermal motion, we introduce
+an approach that is intermediate between the two well-established methodologies by treating the
+electrolyte as an effective medium that interacts with the mobile particle. Through this coupling,
+the thermally vibrating electrolyte imparts energy to the charge carriers while also absorbing en-
+ergy from them due to its own finite elasticity.
+Using a simple model system, we validate our
+approach through a series of numerical simulations. Our methodology reproduces both dissipative
+and diffusive behavior, and helps link microscopic system parameters to measurable macroscopic
+properties.
+I.
+INTRODUCTION
+Ionic transport through solids [1, 2] is a fundamen-
+tal physics problem at the root of solid-state batter-
+ies [3–5], hydrogen fuel cells [6], electrolysis cells [7],
+and electrochemical synapses [8].
+This transport con-
+sists of current-carrying mobile ions traveling through
+an electrolyte whose constituent atoms remain close to
+their equilibrium positions, retaining the structural in-
+tegrity of the material. Compared to their liquid coun-
+terparts, solid electrolytes can enhance device robustness
+by suppressing dendrite formation [5] and operate over a
+larger temperature range [3, 4]. Microscopically, the mo-
+bile conducting ions intermittently become trapped in,
+and escape from, local potential energy minima within
+the electrolyte, leading to macroscopic limits on con-
+ductivity.
+Despite solid-state electrolytes’ advantages,
+their conductivity is currently smaller then traditional
+liquid electrolyte technology [3], so substantial effort is
+being dedicated to finding materials with better trans-
+port properties. One avenue in this effort is to find ma-
+terials that minimize the amount of “trapped” time the
+mobile ions spend in potential wells.
+In recent years, the search for better electrolyte ma-
+terials has been dominated by various ab initio meth-
+ods, which provide a glimpse into the microscopic pro-
+cesses of ionic conduction. While some efforts have fo-
+cused on which material properties facilitate escape from
+potential minima [9–12], others have explored conduc-
+tion mechanisms that reduce the chance of ions becom-
+ing trapped [13–20]. The most common computational
+approaches—nudged elastic band (NEB) calculations
+and ab initio molecular dynamics (AIMD) simulations—
+have somewhat complementary strengths and shortcom-
+ings.
+In NEB calculations, the mobile ion location varies
+from one energy minimum to another in a series of
+steps—at each location, the ion is held fixed along the
+transport direction while the rest of the system relaxes.
+The total energy is calculated along the ion’s path, and
+the maximum is the activation energy Ea.
+This qua-
+sistatic NEB approach to estimate Ea can help efficiently
+suggest material classification. A common technique uses
+Ea to predict charge carrier number (and, by exten-
+sion, conductivity) scaling with temperature using the
+Arrhenius form: e−Ea/kBT . However, recent work [21]
+has shown that this Arrhenius dependence can break
+down even when the “electrolyte” consists of a single one-
+dimensional oscillator. Moreover, since NEB calculations
+are quasistatic, they do not capture the dynamical effects
+that determine the prefactor for the Arrhenius term.
+AIMD computes the trajectories of each of the frame-
+work atoms and the mobile ions in the presence of an
+externally-induced thermal motion.
+These simulations
+make it possible to estimate mobility either using the
+Nernst-Einstein relation and numerically-determined dif-
+fusivity, or directly using an applied bias voltage [19].
+While the evolution in these trajectories is governed by
+realistic forces calculated from first principles with den-
+sity functional theory (DFT), this approach is very com-
+putationally costly.
+To keep computational resources
+manageable, a typical calculation evolves the system at
+extremely high temperatures for only several nanosec-
+onds, and is limited to a few unit cells. For similar rea-
+sons, direct computations of the mobility require extreme
+electric field strengths (e.g., Ref. [19] used 0.075 V/˚A =
+7.5 × 108 V/m, about 250 times higher than the break-
+down voltage of air).
+In this paper, we use microscopic theory to construct
+a stochastic single-particle equation to describe the mo-
+tion of a mobile ion.
+This formalism incorporates dy-
+namical effects, which do not arise in NEB calculations,
+and can evolve under more realistic system parameters
+than are feasible with AIMD computations. At the cost
+of using less realistic potentials, this tool can comple-
+ment the other methods as part of a multi-pronged ap-
+arXiv:2504.06595v1  [cond-mat.mtrl-sci]  9 Apr 2025

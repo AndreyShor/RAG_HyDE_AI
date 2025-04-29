@@ -1,0 +1,213 @@
+get node). The edge weights represent the frequency of
+identical edges. Subsequently, the matrix ˜A = A + I is
+created to incorporate self-loops (I is the identity ma-
+trix). The degree matrix ˜D is derived from ˜A to account
+for next-neighboring nodes.
+˜D = diag( ˜D1, ..., ˜Dn) with
+˜Di = P
+j ˜Aij.
+S = ˜D−1
+2 ˜A ˜D−1
+2 normalizes the adja-
+cency matrix to incorporate information from neighbor-
+ing nodes.
+The feature matrix Xg ∈Rn×n (g stands for GNN) of
+the nodes is then constructed. The diagonal elements xg
+ii
+encode information about single-qubit gate errors spe-
+cific to each qubit in the hardware used in the circuit.
+This information encompasses all single-qubit errors as-
+sociated with the native gates. The off-diagonal elements
+{xg
+ij, i ̸= j} portray errors in two-qubit CNOT gates con-
+cerning the coupling map. The coupling map is a reflec-
+tion of the physical connectivity of qubits in the hard-
+ware. The adjacency matrix A ∈Rn×n represents CNOT
+connectivity with Aij representing the edge weight be-
+tween two nodes vi and vj. For more details, refer to
+Fig. 1. The adjacency matrix representation suffers from
+drawbacks like redundancy and memory issues. One ele-
+gant and compact way to represent such sparse matrices
+is the adjacency list.
+It represents the connectivity of
+k-th edge emn as a tuple (m, n) in the k-th entry of the
+list. For instance, the adjacency list of the graph in Fig.
+1 is given as [(1, 0), (2, 1), (3, 2)].
+2.
+GraphNetMitigator Architecture and Training Details
+In this section, we describe the GNM architecture de-
+veloped for error mitigation. We use a Graph Convolu-
+tional Network (GCN) to learn the features of the graph
+where each node corresponds to an n dimensional embed-
+ding. Once we get the feature matrix Xg and adjacency
+list of the graph, this input is passed to the GCN which
+transforms with the following propagation rule for l-th
+layer:
+H(l+1)
+g
+= σ
+
+SH(l)
+g W (l)
+g
+
+(7)
+Where
+W (l)
+g
+∈
+Rfl×fl+1
+is
+a
+feature
+transforma-
+tion/weight matrix which maps the node features of size
+fl to size fl+1. The GCN contains two convolutional lay-
+ers. The first layer has f0 = n input channels reflecting
+the number of qubits present in the hardware and f1 = k
+output channels and the second layer has f2 = k input
+channels and f3 = 1 output channel (This flow indicates
+the node feature transformation from n →k →1 di-
+mension ). When the first layer is applied to the input
+Xg = H(0)
+g , it transforms in a way with the weight ma-
+trix W (0)
+g
+∈Rn×k as shown below. A ReLU activation
+function σ(x) = max(0, x) is applied on top of it.
+H(1)
+g
+= σ
+
+SH(0)
+g W (0)
+g
+
+(8)
+= σ
+
+
+
+
+
+
+
+
+h(1)
+11
+... h(1)
+1k
+h(1)
+21
+... h(1)
+2k
+...
+...
+...
+h(1)
+n
+... h(1)
+nk
+
+
+g
+
+
+
+
+
+
+=
+
+
+H(1)
+1
+H(1)
+2...
+H(1)
+n
+
+
+g
+Where h(1)
+ij
+= Pn
+m=1 xg
+imwg
+mj. This represents the node
+representations after the first layer of the GCN. After
+passing through the second layer with a weight matrix of
+W (1)
+g
+∈Rk×1 we get,
+H(2)
+g
+=
+
+
+H(2)
+1
+H(2)
+2...
+H(2)
+n
+
+
+g
+=
+
+
+h(2)
+11
+h(2)
+21...
+h(2)
+n1
+
+
+g
+Where h(2)
+ij
+= Pk
+m=1 xg
+imwg
+mj. H(2)
+g
+represents the node
+representations after the second layer of the GCN. This
+transformation corresponds to one-dimensional node em-
+bedding and serves as an input to our regressor along
+with additional features.
+We construct the rest of the features from the following
+data set: noisy expectation values learnt over the snip-
+pet circuits, number of two-qubit gates, number of single-
+qubit gates, number of variational parameters (number of
+single and double excitation operators). We construct a
+feature vector Xr ∈Rl×1 (r stands for regression) where
+l is the number of features in regressor. H(2)
+g
+is then con-
+catenated with Xr to get final feature vector X ∈Rv×1
+where v = n + l.
+The quantity X = (x1, x2, ..., xv)T
+serves as an input to the feed-forward neural network
+with one hidden layer of kr = 64 nodes which is used for
+the regression task to mitigate the noisy value. First, X
+transforms as follows:
+H(1) = σ
+
+X · W (0) + b(0)
+(9)
+W (0) and b(0) are weights and biases applied to the in-
+put layer with ReLU activation. Hidden layer H(1) also
+transforms in a similar manner giving the mitigated ex-
+pectation values f(X) as output:
+f(X) = H(2) = σ
+
+H(1) · W (1) + b(1)
+(10)
+The loss function used to calculate the loss is Huber loss.
+The Huber loss function is often used in regression prob-
+lems as a combination of the mean squared error and
+mean absolute error which is defined as:
+5

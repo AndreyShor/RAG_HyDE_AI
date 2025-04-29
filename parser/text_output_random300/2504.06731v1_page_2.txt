@@ -1,0 +1,50 @@
+The Model Under Study
+In this paper, we analyze a generalization of the FJ model with hereditary effects, where at each opinion update, an
+agent is influenced not only by current opinions (their own and others’) but also by opinions from previous steps.
+Note that the primary motivation for introducing this model is not to account for communication delays, which are
+frequently addressed in the opinion dynamics literature [27–29] and studies on multi-agent systems [30]. Rather,
+the motivation stems from intertwined effects of higher-order neighbors in the influence graph, or the multi-hop1,
+as explored in recent works [33, 34], and individual memory. In view of this, we refer to the model in question as
+the FJ-MM: the FJ model with Memory and Multi-hop influence.
+The original FJ model entails indirect influence through walks in the influence graph [1]. For example, if agent
+i trusts agent j, and agent j’s opinions depend on agent k, then k indirectly influences i without direct opinion
+sharing. In [33,34], the FJ model is extended to assume that agents average opinions from long-range connections
+(via walks of a given length) along with those of adjacent nodes in each update. Though the exact mechanism of
+this multi-hop influence is unspecified in [33, 34], a plausible explanation is that agents share not only their own
+opinions but also information from their nearest neighbors, thereby disseminating those opinions to individuals
+who would otherwise lack access to them. An additional mechanism is observational learning, where information
+about an agent’s neighbors’ opinions can be inferred by observing the agent’s actions that are influenced by those
+opinions [35]. Both explanations imply that secondary neighbor influence involves a time lag, which is neglected
+in [33, 34]. For instance, if opinions from agent k reach agent i via the path i →j →k at timestep t, then agent
+j must have received information about k at timestep t −1 or earlier to relay (or allow inference of) it at time t.
+Essentially, agent i at time t relies on agent j’s memory of past interactions.
+On the other hand, memory effects extend beyond multi-hop opinion propagation. Many social media platforms
+(e.g., Facebook) provide personalized prompts for users to revisit and reshare historical content, such as past posts
+and images [36], and may also direct users back to old discussion threads. It is therefore plausible to assume that
+agents assign positive influence weights not only to current opinions but also to their own and their neighbors’ past
+opinions. Whereas the effects of memory have been explored in consensus-type algorithms for iterative averaging
+(see, e.g., [37] and references therein), models examining memory’s impact on opinion formation are scarce [38–41],
+and to the best of our knowledge, none are based on the FJ linear mechanism.
+Structure and Contributions of the Paper
+The remainder of the paper is organized as follows. Section 2 introduces the FJ-MM model and related concepts,
+along with preliminaries from graph theory. The stability analysis of the FJ-MM model is presented in Section 3.
+Using results from positive systems theory, we show that the stability and equilibrium properties of the FJ-MM
+reduce to those of the comparison system, being the FJ model with a modified matrix. This section also illustrates
+the impact of memory and multi-hop influence on opinion formation outcomes. In Section 4, we present some
+findings on convergence rate of the FJ-MM model. Unlike stability, this rate (the Perron-Frobenius eigenvalue) is
+not determined by the comparison model and depends on the graph topology. Section 5 concludes the paper.
+2
+Model Definition and Framework
+In this section, we introduce the FJ-MM model and related concepts that will be used in subsequent sections.
+2.1
+Preliminaries and Notation
+We use R, Rn, and Rm×n to denote, respectively, the sets of real numbers, real n-dimensional (column) vectors,
+and real m × n matrices. The all-0 and all-1 column vectors are denoted by 0n and 1n ∈Rn respectively, and the
+identity n × n matrix is denoted by In, with dimensions omitted when clear from context. Throughout the text,
+capital letters denote matrices, and their entries are denoted by lowercase letters—for example, W = (wij). For
+vectors and matrices, the relations ≥, > and ≤, < are understood entry-wise. Given a vector v ∈Rn, the symbol
+[v] denotes the diagonal matrix D ∈Rn×n with diagonal entries dii = vi. Given an arbitrary matrix M, we denote
+by diag(M) the diagonal matrix whose diagonal entries are the same as those of M.
+1The term “multi-hop” refers to indirect (or long-range) influence or communication involving multiple intermediary nodes between
+the source and target in a network. Multi-hop protocols, utilizing information from higher-order neighbors, have been proposed to
+accelerate consensus seeking [31,32].

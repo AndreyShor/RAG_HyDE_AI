@@ -1,0 +1,118 @@
+4
+Mt
+At
+St
+Zt
+Mt+1
+At+1
+Zt+1
+Mt−1
+At−1
+St−1
+Zt−1
+FIG. 3. Bayesian network for a percept-action loop. Shown
+is a fragment for rounds t −1, t, and the beginning of round
+t + 1.
+This type of Bayesian network plays an important
+role in the information-theoretic framework underlying our
+results (see Supplemental Material E for details). Note that
+to faithfully represent the dynamics of the agent and envi-
+ronment, auxiliary nodes (gray and reduced in size) are in-
+cluded. The colorized nodes illustrate the condition for an
+agent to be maximally predictive in round t: the agent’s mem-
+ory (blue) must store all information from past actions and
+percepts S0:tA0:t+1 (red) that is relevant for predicting the
+current percept St (green).
+is because the agent’s memory, which can be seen as a
+function of the past, A0:t+1S0:t, must serve as a sufficient
+statistic for St for eq. (8) to vanish [29]. Computational
+mechanics shows that there are channels that admit suf-
+ficient statistics only with a countably infinite number of
+states [30]. In this work, instead of allowing agents infi-
+nite memory, we consider so-called unifilar environment
+channels [25, 31], for which there always exist predictive
+and a.m. predictive agents.
+Definition 4. An environment model envM = (Φ, pZ0)
+is said to be unifilar if
+• pZ0 is a delta distribution and
+• H(Zt+1|At, St, Zt) = 0 for all t ∈N0.
+An environment channel env is said to be unifilar if there
+exists a unifilar model for it.
+Unifilar models have the useful property that the val-
+ues of At, St, and Zt fully determine the value of Zt+1
+for all rounds t, enabling an agent, given the initial value
+of Z0, to perfectly track the hidden state of the environ-
+ment. The following theorem is based on this insight:
+Theorem 1. Let agt →
+←env be any percept-action loop.
+If the environment channel is unifilar, then there exists
+an a.m. predictive agent model agtM for agt.
+See Supplemental Material F for a proof. Before pre-
+senting our results on work capacity, we first demonstrate
+that Definition 3 for predictive agents recovers the defini-
+tion previously used in the context of stationary processes
+in the tape setting [17]. Note that a process X is sta-
+tionary if pXn:m = pXn+t:m+t for all n, t ∈N0 and m > n.
+The tape setting can be embedded within the percept-
+action loop framework [32] by making the environment
+channel effectively generate the tape pattern, i.e., it acts
+as a finite-state source of percepts unaffected by actions:
+νS|A(s|a) = νS|A(s|a′) for all a, a′ ∈AN0. Channels
+with this property are also known as product channels
+[33].
+The following theorem reveals a remarkable property
+of predictive agents in the stationary regime:
+being
+a.m. predictive of the next percept is equivalent to be-
+ing predictive of all future percepts at all times.
+Theorem 2. Let agtM →
+←env be such that the joint pro-
+cess MAS of actions, percepts, and agent memory is
+stationary. Then, agtM is a.m. predictive, i.e.,
+⟨I[A0:t+1S0:t; St|Mt]⟩t = 0
+(11)
+if and only if
+I[A0:t+1S0:t; St:∞|Mt] = 0
+∀t ∈N0.
+(12)
+If in addition
+env is a product channel,
+agtM is
+a.m. predictive if and only if
+I[S0:t; St:∞|Mt] = 0
+∀t ∈N0.
+(13)
+See Supplemental Material F for a proof utilizing the
+Markov conditions of the underlying Bayesian network
+(see Figure 3). The second part of the theorem connects
+our definition of a.m. predictive agents to the one by Boyd
+et al. [17] who define predictive agents via eq. (13) and
+another condition which is automatically fulfilled for the
+type of channels considered in this work (see [34] for a
+different notion of predictive agents) [35].
+IV.
+WORK CAPACITY OF CHANNELS
+So far, we have treated agents and environments as
+abstract information-processing systems.
+However, as
+Landauer famously quipped, information is physical [36]:
+any implementation of an agent must ultimately rely
+on physical memory and dynamics subject to thermo-
+dynamic laws. To analyze the energetic limits of such
+implementations, we adopt a framework from stochas-
+tic thermodynamics that models the agent’s information
+processing—described by its transition matrix Φagt—as
+a physical process acting on memory [7, 8]. We briefly
+outline its assumptions.
+In this framework, memory is represented by a phys-
+ical system coupled to a thermal reservoir at temper-
+ature T.
+The system possesses a few degrees of free-
+dom, the information-bearing degrees of freedom, which
+are assumed to be meta-stable, i.e., their equilibration
+time τinfo is much larger than that of the system’s other
+degrees of freedom, τothers.
+Information processing on
+the information-bearing degrees of freedom is carried out
+through an isothermal protocol, i.e., a protocol executed
+at constant temperature T, with a time scale such that

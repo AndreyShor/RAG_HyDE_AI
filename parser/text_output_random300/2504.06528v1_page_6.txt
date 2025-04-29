@@ -1,0 +1,151 @@
+6
+Reconfiguration cycle time (ms)
+Exact 1D
+red-rec
+red-rec
+Na = 1 × 32
+Na = 16 × 16
+Na = 32 × 32
+Nt = 1 × 64
+Nt = 16 × 32
+Nt = 32 × 64
+ROI = 16 × 1024
+ROI = 256 × 512
+ROI = 512 × 1024
+I. Image acquisition
+25.454 ± 0.695
+30.850 ± 0.588
+46.250 ± 0.707
+I.1 Exposure*
+20.000
+20.000
+20.000
+I.2 Vertical frame transfer* (4.33 µs / px)
+4.499
+4.499
+4.499
+I.3 Frame readouts* (30 Mpxps)
+0.677
+5.923
+20.549
+I.4 DMA data transfer
+0.278
+0.428
+1.202
+II. Image processing
+0.259 ± 0.108
+0.281 ± 0.158
+0.277 ± 0.084
+II.1 Deconvolution
+0.259
+0.279
+0.269
+II.2 Thresholding
+0.001
+0.002
+0.007
+III. Problem solving
+0.008 ± 0.001
+0.059 ± 0.005
+0.177 ± 0.014
+III.1 Solving
+0.005
+0.035
+0.100
+III.2 Batching
+0.003
+0.024
+0.077
+IV. Waveform synthesis
+0.630 ± 0.268
+0.663 ± 0.117
+0.635 ± 0.247
+IV.1 Waveform lookups (2 × 32 = 64 wfms) 0.078
+0.046
+0.038
+IV.2 Waveform uploads (2 segments)
+0.553
+0.593
+0.574
+IV.3 Memory configuration
+0.000
+0.025
+0.023
+V. Waveform streaming
+0.746 ± 0.004
+2.765 ± 0.392
+8.496 ± 0.577
+V.1 Streaming*
+0.640 ± 0.000
+2.667 ± 0.355
+8.392 ± 0.533
+V.2 Other
+0.106 ± 0.004
+0.098 ± 0.191
+0.104 ± 0.231
+Total
+27.097 ± 1.076
+34.618 ± 1.260
+55.835 ± 1.629
+Table I. Tabulated runtime values for solving reconfiguration problems on chains and grids. Values are averaged over one
+thousand realizations of a typical problem. The first column reports values for preparing center-compact configurations on
+chains using the exact 1D algorithm. The second column report values for preparing center-compact configurations on grids
+using the latest version of the red rec CPU algorithm. Values reported for steps labeled by stars are theoretical values. The
+problem instances are randomly generated based on an ϵ = 0.6 initial probability of the presence of a particle in a trap.
+active rows, 2 transition rows, and a storage section of
+1037 rows. The reference rows, transition rows, and stor-
+age section are shielded from external light, exposing only
+the image section. In the horizontal direction, the sensor
+has 1056 pixels, but the image section is shielded on both
+sides by 16 dark reference pixels, providing an effective
+image area of 1024×1024 px. The sensor is located above
+a single-row amplification and readout section containing
+1056 registers which is next to into a distribution chain of
+468 pixels and a multiplication chain of 604 pixels. The
+readout section is enclosed by 16 additional overscan pix-
+els on each side before the linkage to the analog-to-digital
+converter.
+We estimate the vertical frame transfer time from the
+image section to the storage section to be (1037+2)/vV =
+4.499 ms, where vV = 4.33 µs/px is the vertical shift
+speed per row.
+Assuming that the bottom row of the
+storage section is shifted to the readout region as soon
+as the receiving registers have been emptied, the frame
+readout time for each row is equal to the vertical shift
+time, tV = 1/vV , plus the latency time for reading out
+the stray charges by horizontally shifting the pixels along
+the readout region (NH columns of the image), the dark
+references (32 pixels), and the overscan elements (16 pix-
+els).
+Given NV rows, the frame readout time is thus
+NV (tV + (NH + 48)/vH), which is equal to 41 µs at
+full frame for NV = 1024, NH = 1024, and horizontal
+shift rate of vH = 30 µs/px. There is an additional con-
+stant offset for horizontally shifting the pixels through
+the dump region which includes the chain of 1072 gain
+elements and the overscan elements (16 pixels) at the
+start of the readout.
+The frame transfer and readout time can be reduced
+by restricting the region of interest (ROI), defined as the
+contiguous set of pixels starting with the one closest to
+the detection region.
+As expected, our measurements
+shows that the frame transfer and readout time depends
+linearly on the height of the ROI (see Fig. 5a). This time
+can be further reduced by restricting the width of the
+region of interest to a power of two (see Fig. 5b). The
+readout time can be further reduced by vertically binning
+the pixels, which decreases by a factor of two with each
+doubling of the binning size in powers of two (Fig. 5d).
+However, horizontal binning does not affect the readout
+time.
+We explain the difference between the measured and
+predicted readout time by the transfer time from the
+FGC to the processor. A linear fit to the residuals (see
+Fig. 5c) show a transfer rate of 1.431 GBps for 2 B/px,
+which is consistent to the rate of 1.7 GBps expected for
+the FGC using DMA transfer via 4-lane Gen2 PCIe pro-
+tocol. A similar transfer rate of 1.206 GBps is obtained
+when transferring data from the FGC to the GPU using
+RDMA transfer.

@@ -1,0 +1,105 @@
+PAGIONO
+An ionospheric activity index
+Dr.Paul.Kinsler@physics.org
+Appendix: Supplementary Material:
+LdT: A new index of ionospheric activity based on
+GNSS-derived rates of change in TEC
+Paul Kinsler, Biagio Forte
+Department of Electronic and Electrical Engineering
+University of Bath, Bath BA2 7AY, United Kingdom
+Appendix: A. Code and data processing
+The code is a combination of (bash) shell scripts and
+python3 code with minimal dependencies. The bash scripts
+are mainly used for workflow management - i.e. supervising
+the running of the python code with suitable arguments and in
+the right order - but also is used with (e.g.) unix stream editing
+tools to extract basics like satellite and ground station names,
+and data timestamps from data and configuration files. The
+python codes generally handle the more sophisticated opera-
+tions, making heavy use of its list comprehension abilities to
+filter and sort large lists to find and step-through appropriate
+subsets. Output data is saved in a custom (but fairly generic)
+space-separated text format, so that conversion of output into
+other formats is simple.
+The main processing steps proceed as follows:
+1.
+Downloads
+RINEX files containing 30 second interval data are down-
+loaded as hourly or daily sets from CDDIS [39]. This typi-
+cally provides data from over 300 ground stations distributed
+around the world. However, RINEX data from other sources
+can also be processed.
+2.
+File conversion
+To simplify processing we convert the downloaded RINEX
+files into simpler (but less compact) lists, and extract some
+summary information such as lists of reporting ground sta-
+tion, their locations, the satellites that were seen, and so on.
+The code can automatically extract all observation (receive)
+times from the data, but usually we use the 30 second obser-
+vation interval to directly construct a list of all possible ob-
+servation times. A summary of GLONASS sideband usage
+is also compiled, as precise frequencies are needed later for
+cycle-slip detection.
+Some of these conversions fail due to corrupted RINEX
+data, so the code is written to be as tolerant as possible of
+such complications.
+3.
+Satellite trajectory prediction
+Given the list of observation times, we calculate each seen
+satellite’s position at that time. Since this is a complicated pro-
+cesss, we have checked the positions predicted by our codes
+against those computed by gLAB [46] from the same navi-
+gation data. For GPS, GALILEO, Beidou, and GLONASS
+satellites, we see negligible differences when predictions are
+compared.
+4.
+Ionosphere intersections
+Here we assume a spherical Earth, and a thin shell-like
+ionosphere at 350km. Since the spatial and temporal reso-
+lution eventually used is rather coarse, any discrepancies due
+to these simplifying assumptions are negligible.
+With these assumptions, the computation of the line of
+sight (LOS) intersections between each possible satellite and
+ground station pair is a simple exercise in geometry. To en-
+sure we can later correct for the LOS angle as it intersectes
+the ionosphere, as well as keep track of any horizon-skimming
+recieve events, we record its cosine in the resulting data files.
+5.
+Observations
+Matching up the LOS intersections with the received data
+is simply a process of correlating the LOS markers of time,
+satellite, and station with those in the converted RINEX ob-
+servation files. This step is, however, one of the more compu-
+tationally demanding ones.
+6.
+Checking
+Since we intend to compute and use TEC values from these
+observations, we also filter the data to remove cycle slips with
+an implementation of the Melbourne-Wubbena algorithm. In
+addition, we also remove short data lines (since we need at
+least two matched code-signals in different frequency bands),
+and isolated detections (since we are only interested in differ-
+ences).
+The rejected observation lines are stored separately from
+the acceptable ones, and can be use to e.g. plot or tabulate the
+number of cycle slip events.
+7.
+TEC computations
+Here we compute the slant TEC from every possible pair
+of code-matched signals in different frequency bands, i.e. not
+just L1C and L2C but all of the thirty or so possibilities, which
+are listed on Table III. This simply requires measured phase
+data by signal band and coding, signal frequencies, and the
+the standard formula from (1).
+8.
+dTEC values (“events”)
+Having computed the slant TEC, we then follow each
+station-satellite pair and use the TEC’s change in time over the
+30s observation interval to compute its time derivative (dTEC)
+in TEC units-per-second. Note that since satellites are moving
+above the Earth’s surface, no two TEC estimates ever corre-
+spond to exactly the same intersection point with the iono-
+sphere, but (as above) since our analysis is coarse-grained in
+space – not going beneath 1-by-1 degree pixels – this motion
+i

@@ -1,0 +1,133 @@
+2
+As another option, integral equation methods can be utilized
+to optimize an aperiodic ﬁnite metasurface for desired far-
+ﬁeld patterns [22]–[24]. In this case, the mutual coupling
+between different cells is accounted for and patterns can be re-
+alized through a rigorous optimization framework with higher
+precision compared to traditional array factor approaches. In
+fact, the interactions between cells can be harnessed to excite
+auxiliary surface waves that allow for amplitude tapering with-
+out deliberately introducing losses [25]. Speciﬁcally, surface
+waves can facilitate wave transformations in reﬂection and
+transmission with theoretically unity power efﬁciency, that
+is limited in practice only by the materials and lossy parts
+of the metasurface [25]–[27]. Therefore, the beneﬁts of this
+design method lie both on the more accurate modeling of the
+metasurface, and on the possibility to achieve higher power
+efﬁciency for patterns requiring amplitude tapering through
+the excitation of surface waves.
+An RIS has been recently optimized based on an integral
+equation framework in [13]. Compared to that work, we for-
+mulate the integral equations based on analytical expressions
+without the need of preliminary simulations to obtain the
+Green’s function that depends on the substrate parameters and
+the locations of loaded wires. The use of analytical expressions
+facilitates the design process, as it is much faster to modify the
+density of loaded wires and substrate parameters, until a de-
+sirable performance is obtained. Moreover, we incorporate the
+unit cell losses into the framework and try to minimize them
+during optimization to achieve the highest-possible power efﬁ-
+ciency, while maintaining the desired far-ﬁeld radiation. Lastly,
+the beamsteering and beamshaping capabilities of the RIS
+are explored and veriﬁed experimentally. While the presented
+RIS is biased uniformly along one dimension, limiting its
+beamforming capabilities to a single plane and TE-polarized
+ﬁelds, the design framework can be expanded to RISs varying
+in both dimensions, by modifying the Green’s functions [28],
+and individually biasing all unit cells.
+The rest of the paper is organized as follows. Section II
+describes the homogenized model used for the design and
+optimization of the RIS. The unit cell topology is described
+in Sec. III, while simulation results and a comparison with
+traditional approaches to design RISs are given in Sec. IV.
+The measurements of the fabricated prototype are discussed
+in Sec. V and conclusions are made in Sec. VI. Lastly, some
+technical details for the extraction of the performance metrics
+are detailed in the Appendix. It is noted that our work focuses
+on the design framework and electromagnetic performance of
+the presented reconﬁgurable metasurface, while it disregards
+any communication-related aspects and requirements of RISs
+(e.g., channel estimation, modulation schemes) that are often
+discussed in theoretical communication-focused works [29],
+[30]. Yet, the term reconﬁgurable intelligent surface (RIS) is
+adopted herein due to its wide use in similar works focusing
+also on the reconﬁgurable manipulation of the reﬂections from
+an incident electromagnetic wave.
+II. ANALYSIS AND OPTIMIZATION FRAMEWORK
+In this section, the framework to model, analyze and op-
+timize the RIS is presented. The integral-equation approach
+Metawires
+Ltot
+h
+y
+z
+...
+Incident
+Z1 Z2 Z3
+ZN
+ZN-1
+(model)
+Implemenation
+Reﬂected
+θ<0
+θ>0
+Fig. 1.
+Sketch of the RIS consisting of N rectangular sheets of homoge-
+nized impedances Zn along a length of Ltot. Each homogenized sheet is
+implemented with varactor-loaded cells that are repeated periodically along
+the x-axis.
+solved with a Method of Moments is based on a previous
+work presented in [23] for static metasurfaces illuminated by
+an embedded source, but the main steps are included herein
+for completeness.
+A. Geometry and simpliﬁed model
+As sketched in Fig. 1, the RIS consists of an impedance
+layer etched on a grounded substrate of thickness h, dielectric
+constant εr and loss tangent tan(δ). The impedance layer in-
+corporates the unit cells, that are loaded with varactors and re-
+peat periodically along the x-axis. In turn, the effect of the unit
+cells is homogenized into rectangular sheets of width w and
+uniform surface impedance Zn = Rn + jXn(n = 1, ..., N),
+where N is the number of impedance strips. It is noted that the
+RIS has a length Ltot in the y-direction, while it is considered
+uniform along the x-axis, i.e. the biasing is identical for the
+cells corresponding to the same impedance strip. Furthermore,
+the RIS is illuminated by a TE-polarized wave (Einc = Eincˆy)
+that induces y-polarized currents. The simpliﬁed model allows
+the fast and highly-accurate calculation of the reﬂected far-
+ﬁeld pattern through integral-equations for any set of surface
+impedances Zn that corresponds to a set of bias voltages Vn.
+In turn, this enables the optimization of the applied DC bias
+voltages Vn for desired far-ﬁeld patterns.
+B. Volume-surface Integral Equations
+When the RIS is illuminated by an incident wave, surface
+current densities will be induced on the impedance sheets and
+the ground plane, denoted by Jw(y) and Jg(y), respectively.
+In addition, the effect of the dielectric is considered through
+an induced volumetric current density Jv(y, z) that takes
+nonzero values within the substrate region. The free-space two-
+dimensional (2D) Green’s function is utilized to calculate the
+scattered ﬁelds as:
+Esc
+i (ρ) =
+
+
+
+
+
+
+
+−kη
+4
+Z
+Ci
+Ji(y′)H(2)
+0 (k|ρ −ρ′|)dl′, i = {w, g},
+−kη
+4
+Z
+Si
+Ji(y′, z′)H(2)
+0 (k|ρ −ρ′|)ds′,
+i = v,
+(1)

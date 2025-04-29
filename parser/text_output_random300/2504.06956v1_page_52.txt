@@ -1,0 +1,126 @@
+The joint Laplace functional
+52
+Step 2: In this second step, we show that, for any ε > 0, there exist R ≥1 large enough such that for
+all s > 0 large enough satisfying (es + 1)(R + 1)−1 ∈N, and t ≥s large enough, it holds that
+E
+
+exp
+
+−eds
+Z
+∪i∈[I]Ai
+Fγ,t(x)e−γχ(x)µγ,s,t(dx)
+
+≥exp
+
+−(ea⋆+ ε)edsTγρχ([0, 1]d)
+
+E
+
+exp
+
+−eds
+Z
+∪i∈[I]Ai
+Fγ,t(x)e−γχ(x)µγ,s,t(dx)
+
+≤exp
+
+−(ea⋆−ε)edsTγρχ([0, 1]d)
+
++ ε .
+Since the lower bound can be obtained in a similar manner to the upper bound, we just focus on the
+latter. We recall that if x, y ∈[0, 1]d belong to two different squares in the decomposition described
+in Figure 2, then |x −y| ≥e−s and so Xs,t(x) and Xs,t(y) are independent. Moreover, if x, y are
+as above, then thanks to (W3), we also have that (Wi,t(x))i∈[n] and (Wi,t(y))i∈[n] are independent.
+Hence, using this fact, making the change of variables x 7→esx, and preceding in the same manner in
+the first step, we obtain that
+E
+
+exp
+
+−eds
+Z
+∪i∈[I]Ai
+Fγ,t(x)e−γχ(x)µγ,s,t(dx)
+
+=
+Y
+i∈[I]
+E
+
+exp
+
+−
+Z
+esAi
+Fγ,t−s(x)e−γχ(e−sx)µγ,t−s(dx)
+
+.
+Now, since for each i ∈[I], the function χ(e−s·) on esAi satisfies all the conditions stated in (6.6),
+by Proposition 6.1, we get that for all s > 0 large enough satisfying (es + 1)(R + 1)−1 ∈N, and
+t ≥s large enough, it holds that
+E
+
+exp
+
+−
+Z
+esAi
+Fγ,t−s(x)e−γχ(e−sx)µγ,t−s(dx)
+
+≤1 −(ea⋆−ε)Tγρχ(e−s·)(esAi) .
+For all i ∈[I], using the assumptions on the function χ, we obtain that for sufficiently large s ≥0,
+the following holds
+(ea⋆−ε)Tγρχ(e−s·)(esAi) ≤Rd(ea⋆−ε)Tγ
+
+sup
+z∈[log s/(8
+√
+2d),∞)
+ze−
+√
+2dz
+
+< 1 .
+Therefore, using the inequality Q
+i∈[I](1−ai) ≤exp(−P
+i∈[I] ai), which is valid for (ai)i∈[I] ⊂[0, 1],
+and making the change of variables x 7→esx, we get that
+E
+
+exp
+
+−eds
+Z
+∪i∈[I]Ai
+Fγ,t(x)e−γχ(x)µγ,s,t(dx)
+
+≤exp
+
+−(ea⋆−ε)edsTγρχ(∪i∈[I]Ai)
+
+= exp
+
+−(ea⋆−ε)edsTγ(ρχ([0, 1]d) −ρχ(BR,s))
+
+≤exp
+
+−(ea⋆−ε)edsTγρχ([0, 1]d)
+
++ ε ,
+where, once again, the last inequality is due to the fact that, since by assumption χ is scaled-admissible
+in the sense of Definition 6.2, the quantity edsρχ(BR,s) can be made arbitrarily small by taking s ≥0
+and R ≥1 large enough.
+Step 3: In this final step, we show how to combine the previous two steps to obtain the desired result.
+Thanks to decomposition (6.3) and to the elementary inequality ab ≥a + b −1 valid for a, b ∈[0, 1],
+we have that
+E(6.8) ≥E
+
+exp
+
+−eds
+Z
+∪i∈[I]Ai
+Fγ,t(x)e−γχ(x)µγ,s,t(dx)
+

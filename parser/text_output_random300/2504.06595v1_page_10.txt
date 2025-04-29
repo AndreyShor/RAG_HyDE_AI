@@ -1,0 +1,135 @@
+10
+100
+101
+100.5
+10-0.5
+Diffusion Coefficient Temperature Dependence
+10
+15
+20
+25
+30
+40
+50
+Mean squared displacement
+0
+50
+100
+150
+200
+250
+300
+350
+0
+150
+300
+450
+600
+750
+900
+Time (ps)
+0
+2
+4
+6
+8
+10
+12
+time-local solution
+full solution
+a)
+b)
+0.05
+0.1
+10-0.5
+100.5
+100
+10-1
+0.05
+0.1
+FIG. 7. Temperature dependence of diffusivity. Main figures:
+mean square displacement for a mobile particle as a function
+of time at different temperatures for U0 = 4 eV, λ = 1/2 ˚A.
+In a), we used the time-local solution, while in b) we used the
+full solution. In all cases, the initial growth is quadratic, and
+later evolution is linear, allowing us to extract the slope 6D
+from a fit. Insets: diffusivity D as a function of temperature
+demonstrates Arrhenius behavior, where the slope of the fit
+is −Ea, and the offset gives D0.
+dow, as seen from Fig. 5, it is not computationally fea-
+sible to have a sufficiently large system for a full simula-
+tion. Therefore, while the particle’s trajectory is contin-
+uous, we use periodic boundary conditions to calculate
+the forces.
+Based on an apparent linear relation between D and
+1/ℏΩT on the logarithmic scale for both types of so-
+lution, we fit the diffusivities using an Arrhenius form
+D = D0e−Ea/ℏΩT and found, with 95% confidence, D0 =
+9.8+2.4
+−1.9 (23.0+4.4
+−3.7) ˚A2/ps and Ea = 42±5 (40±5) meV for
+time-local (full) solutions—the latter are close to the es-
+timated barrier height of 42.3 meV. This barrier estimate
+includes both the particle-framework interaction compo-
+nent of 39.4 meV, as well as the framework deformation
+energy of 2.9 meV.
+VII.
+DISCUSSION
+A key approximation we made in order to obtain a
+time-local expression was setting the maximum phonon
+momentum to infinity in Eq. (15), turning the response
+kernel into a Dirac delta function. In reality, of course,
+the response kernel decays on time-scales similar to the
+period of the fastest mode, as seen in Fig. 1(e). Fortu-
+nately, because the decay is quite fast, if we want to bear
+a greater computational cost in order to more faithfully
+capture the finite decay time, we can replace the lower
+limit of the integral in Eq. (11) by ∼t−2π/Ωmax. As long
+as the framework deflection is small enough to warrant
+the r →rH switch on the right-hand side of Eq. (11), we
+can obtain a tractable quasi-time-local description.
+For our calculations, we used a cubic lattice and
+screened Coulomb interactions, for computational con-
+venience. However, we chose system parameters to try
+to yield insight into a variety of (more complicated) re-
+alistic systems. In order to demonstrate diffusion in this
+suboptimal lattice structure, we made the framework less
+stiff so that its thermal fluctuations could push the mo-
+bile particle out of local energy minima more frequently.
+Although a softer lattice reduces the applicability of our
+time-local approach, where a comparison was possible,
+time-local results showed a good agreement with the full
+simulations. We expect that stiffer bonds in real ionic
+conductors will lead to a greater accuracy of the for-
+malism for two main reasons.
+First, the recoil kernel
+will decay faster, making the Dirac delta function ap-
+proximation more accurate. Second, the deflection of the
+framework atoms will be suppressed, supporting replac-
+ing r →rH on the right hand side of Eq. (11).
+In a good ionic conductor, current carriers easily es-
+cape energy minima and spend a long time delocalized
+before getting trapped again [5]. The energy necessary
+for a charge carrier to leave a minimum originates from
+the framework’s thermal fluctuations. Unfortunately, be-
+cause of the fluctuation-dissipation theorem, increased
+thermal forces experienced by the mobile particles are
+necessarily accompanied by an increase in drag. Our an-
+alytical results indicate that the drag is inversely pro-
+portional to the framework density and the cube of the
+speed of sound (a measure of the lattice stiffness). For
+an infinitely stiff material, the dissipation term vanishes.
+Simultaneously, however, the amplitude of the thermal
+fluctuations vanishes and the particle never acquires suf-
+ficient energy to become delocalized. Conversely, for a
+very soft material, both the fluctuations and the drag
+forces are large, suppressing the particle’s motion. There-
+fore, it is reasonable to assume that, all else being equal,
+there is some optimal stiffness that balances the fluctua-
+tion and dissipation components, leading to the greatest
+diffusivity. Similar logic can be applied to the material
+density.
+We expect the improved efficiency of our ap-
+proach to facilitate explorations of the parameter phase
+space to build an intuitive understanding of the role that
+these characteristics play in ionic conductivity.

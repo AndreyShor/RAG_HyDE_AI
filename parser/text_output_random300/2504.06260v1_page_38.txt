@@ -1,0 +1,45 @@
+Preprint. Under review.
+Note, this is NOT an exhaustive list, and several other errors can occur. Read the
+error messages carefully, as they typically provide hints about the cause.
+===
+Now return the corrected code for the following problem:
+PROBLEM: {{problem}}
+EXECUTION HISTORY: {{history}}
+CURRENT CODE:
+```
+{{code}}
+```
+CURRENT EXECUTION FEEDBACK: {{ state info }}
+The following information may be useful to you:
+RELEVANT INFORMATION: {{tool lookup}}
+CORRECTED CODE:
+H.3
+SWE-Agent Experiment Prompts
+Problem Statement
+You are provided with a PROBLEM DESCRIPTION and a TARGET DESCRIPTION.
+This is a problem that will likely require solving the partial differential equations
+that describe the system using finite element analysis. You may use numpy or scipy,
+which have been preinstalled. Do not use any other packages unless absolutely
+necessary. First generate the Python code to solve this problem in ‘main.py‘.
+You must then execute the code and compute the target value corresponding to
+TARGET DESCRIPTION. This target value needs to be exported to a file called
+‘output.txt‘ along with its units. For example, if the target value you compute is
+‘30 K‘, ‘output.txt‘ should have a single line saying ‘30 K‘. If the code executed
+successfully, read in the ‘output.txt‘ file and check whether the computed value
+seems reasonable according to your analytical guess.
+PROBLEM DESCRIPTION: {{problem description}}
+TARGET DESCRIPTION: {{ target description }}
+Evaluate Target Validity
+You are provided with the contents of a file exported by Python code used to solve a
+problem. The contents * should * contain the EXPECTED TARGET QUANTITY. If
+the code is incorrect, the contents of the file may be empty or might export a physical
+quantity that is different from the expected target quantity.
+Carefully examine the ‘OUTPUT‘ and compare it with the units and description
+of the expected target quantity and the numbers in ‘PROBLEM‘ to assess whether
+the table exported a value that was the result of genuinely numerically solving the
+problem. You must return TARGET VALUE and TARGET UNITS in json format if
+the output was the result of genuinely solving the problem, computing a solution
+and exporting it. Return ‘N/A‘ for both fields, otherwise.
+—–
+PROBLEM: {{problem description}}
+38

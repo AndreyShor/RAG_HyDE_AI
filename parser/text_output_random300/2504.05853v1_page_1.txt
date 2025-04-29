@@ -1,0 +1,55 @@
+NOTES ON COLOR REDUCTIONS AND γ TRACES
+OLIVER SCHNETZ
+Abstract. We present efficient algorithms to calculate the color factors for the SU(N) gauge group
+and to evaluate γ traces.
+The aim of these notes is to give a self-contained, proved account of the
+basic results with particular emphasis on color reductions. We fine tune existing algorithms to make
+calculations at high loop orders possible.
+1. Introduction
+Yang-Mills quantum field theories (QFTs) feature combinatorial factors in the Feynman integrals which
+come from the SU(N) color gauge group. The calculation of these color factors is explained in [3].
+In QFTs with fermions, a first step in the calculation of a Feynman integral often is the evaluation of
+the traces over the γ matrices which originate from fermion edges and from vertices. The evaluation of
+these γ traces is explained in any textbook on QFT, see e.g. [5].
+Today, one typically calculates to loop orders ≤5, where any implementation of these reductions is
+sufficient, see e.g. [6, 4]. With the method of graphical functions [7, 2, 8, 9, 1] it may become possible to
+tackle higher loop orders in certain setups. At loop orders ≥6 it becomes increasingly desirable to fine
+tune the algorithms for color and γ reductions.
+In these notes, we collect identities that are necessary to perform the reductions to high loop orders.
+We include the proofs of all relevant results. Particular emphasis is on color reductions, where the proof
+of the essential identity (Proposition 3) is not included in [3]. We also prove some additional results
+about color reductions.
+The suggested algorithms are implemented in the Maple package HyperlogProcedures. Typical color
+reductions are more or less instant at relevant loop orders. The reduction of γ traces is slightly more
+time-consuming, mostly because it can produce lengthy results at high loop orders. For example, using
+HyperlogProcedures on a single core of an office PC, the average time for a γ reduction of a Feynman
+graph that contributes to the photon propagator is approximately 2 minutes at six loops and 30 minutes
+at seven loops.
+Acknowlegements
+The author is supported by the DFG-grant SCHN 1240/3-1. He thanks Sven-Olaf Moch for discussions
+and encouragement. The author also thanks Simon Theil for generating the figures in this work.
+2. Color reduction
+2.1. The color graph. We follow the algorithm presented in [3], which is particularly simple in the case
+of the group SU(N). The complex Lie-algebra of SU(N) is sl(N), the Lie-algebra of traceless matrices.
+For any representation of sl(N), the commutator of the basis T i = (T i)ab is1
+(1)
+[T i, T j] = fijkT k =
+N 2−1
+X
+k=1
+fijkT k,
+where we sum over repeated indices (Einstein’s sum convention). The structure constants fijk = (fi)kj
+define an adjoint representation of sl(N).
+By definition, the trace of T i vanishes,
+(2)
+T i
+aa ≡
+N
+X
+a=1
+T i
+aa = 0.
+1In [3] fijk = iCijk. We do not see the necessity to pass to complex numbers. Euclidean QED and Yang-Mills theory
+can be formulated in a real setup.
+1
+arXiv:2504.05853v1  [hep-ph]  8 Apr 2025

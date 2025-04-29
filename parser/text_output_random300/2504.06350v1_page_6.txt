@@ -1,0 +1,58 @@
+attempt by Eve to intercept and replicate the qubits would be futile without introducing detectable
+errors. Additionally, if Eve measures a qubit without knowing the correct basis, (only Alice knows x),
+the original information encoded in the other basis is irreversibly lost due to the uncertainty principle.
+Consequently, any eavesdropping attempt increases the QBER alerting Alice and Bob. Specifically, after
+comparing m = |{ci|ci = 1∨ci = 0}i| bits, the probability that Eve can eavesdrop without being detected
+drops to (3/4)m as 50% chance that Eve guesses correctly (same Alice’s color in Fig. 1) no matter Bob’s
+choice plus 50% chance that Eve guesses wrongly, and within that 50%, there’s another 50% chance that
+Bob’s measurement will yield an incorrect result (Alice’s color differs from Eve and Bob’s color in Fig.
+1). The theoretical security proofs depend on Eve’s ability to perform (i) individual attacks, measuring
+states separately; (ii) collective attacks, measuring individually with joint classical post-processing; (iii)
+coherent attacks, using joint quantum measurements on all states stored in a memory.
+1.3.2. Implementation issues and Quantum Hacking
+As is traditionally advertised in regards to QKD, any attempt by Eve to uncover information of the
+key results in an increase in the QBER. A simple and straightforward example are Intercept-and-Resend
+Attacks, where Eve intercepts ψQi sent by Alice, measures it in a chosen basis, prepares a new photon
+state based on her measurement result and sends it to Bob [27–29]. Since she chooses the wrong basis
+some of the time, her disturbance increases the QBER and is thus detectable. Evaluation of the QBER
+can give an upper bound for the amount of information Eve has about the key. Thus, QKD can be
+theoretically secure. However, even in a noise-free scenario, the difference between theory and practice
+can result in vulnerabilities. Indeed, if ψQi ∈H with uncontrolled dim H and no Bell Inequality (BI)
+violation is measured, QKD is insecure, because the same BB84 correlations ( p(ai = bi|xi = yi) = 1
+and p(ai ̸= bi|xi ̸= yi) = 1/2) produced by |ψ⟩= (|00⟩+ |11⟩)/
+√
+2 ∈C2 ⊗C2 are also reproduced by a
+four-qubit separable state [30], ( [31] in app. A),
+ρ = 1
+4 (|00⟩⟨00| + |11⟩⟨11|) ⊗(|++⟩⟨++| + |−−⟩⟨−−|) ,
+when Alice measures the first (third) qubit in the σz (σx) basis, and Bob measures the second (fourth)
+qubit in the σz (σx) basis. As there is no quantum correlation, a secure key cannot be established.
+While this type of quantum state manipulation might seem to give too much power to Eve, it is
+indeed true that operational imperfections present considerable opportunities for hacking [32, 33]. For
+example, Eve can exploit the fact that weak coherent pulses (WPCs), used in some QKD systems, can
+contain more than one photon to implement the Photon Number Splitting (PNS) attack. By separating
+and storing one of the photons from a WCP, Eve can measure it later, once the measurement basis has
+been publicly announced. In this way, she can obtain full information without disturbing the state of
+the photons sent to Bob [34–36]. Other examples incude side-channel [37–40], trojan horse [41, 42], and
+device calibration [43, 12, 44–47] attacks (a full list in [18]). To effectively counter these vulnerabilities,
+the best approach is to use security proofs based on minimal principles and strategies that reduce or
+eliminate reliance on trusted components. Among these, DI-QKD stands out as the ultimate solution.
+1.4. Overview of Device-independent QKD
+The internal workings and security of the quantum devices involved in QKD protocols, as we analyzed,
+are often faulty and vulnerable to quantum hacking. DI-QKD represents a significant advance in that it
+aims to ensure the utmost security of QKD, irrespective of the reliability or trustworthiness of the devices
+used. This security is achieved through nonlocal correlations verified by the BI violation, as depicted in
+Fig. 2. In general, the correlations, or behaviours are indicated as points p = {p(ab|xy)}a,b,x,y in the
+convex correlation space characterized by the regions L ⊂Q ⊂NS respectively for local and realistic,
+quantum, and no-signalling behaviours, respectively.
+A BI violation (p ̸∈L), classified as “strongly
+nonclassical” [48], implies one of two possibilities, or both: (1) a and b are determined only when
+observed; (2) a nonlocal influence ensures that the key is established solely through interactions between
+the trusted parties. In either case, Eve cannot access the information without being detected because
+any interference would deviate from the expected nonlocal correlations.
+Fig. 3 shows the evolution of DI-QKD, from BB84 and E91 protocol [50] up to the formalization
+of theoretical techniques and the first implementations in 2022 [51–53] (details in Fig. 4). Remarkably,
+the first successful implementation of DI-QKD was reached after overcoming all the Bell test loopholes,
+highlighting the challenges in realizing DI-QKD and its connecting with BI experiments. Fig. 4 compares
+the current experimental reach of DI-QKD - specifically, the distances of 2 m, approximately 200 m, and
+6

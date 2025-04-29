@@ -1,0 +1,61 @@
+3.1
+Standard resetting
+The ﬁrst question a practitioner might ask is whether resetting would accelerate a stochas-
+tic process. In the context of enhanced sampling this would mean reducing the MFPT for
+transitions between two metastable states separated by a free energy barrier. Fortunately,
+Reuveni et al. derived a universal suﬃcient condition to answer such questions, requiring lit-
+tle knowledge of the ﬁrst-passage process.43,71 The ﬁrst two moments of the FPT distribution
+determine whether resetting would be beneﬁcial: if the standard deviation σ is larger than
+the mean µ, introducing a small ﬁnite resetting rate is guaranteed to lower the MFPT for
+any stochastic process. This condition is often written in terms of the coeﬃcient of variation
+(COV),
+COV = σ
+µ > 1,
+(1)
+which is known as the COV condition, or the COV test. As it only depends on the ﬁrst
+two moments, a few samples of ﬁrst-passage events without resetting provide an adequate
+estimation of the COV, and are enough to assess whether resetting should be used.
+Next, we would like to know what resetting rate to use. We summarize results for the
+two best-studied protocols of resetting. The ﬁrst is Poisson resetting, where time durations
+T between resets are taken from an exponential distribution with rate r, f(T) = r exp(−rT).
+The MFPT under Poisson resetting is related to the FPT distribution without resetting f (τ)
+through72
+⟨τ⟩r = 1 −˜f(r)
+r ˜f(r)
+.
+(2)
+Here, ˜f(r) is the Laplace transform of f (τ),
+˜f(r) =
+Z ∞
+0
+e−rτf (τ) dτ = ⟨e−rτ⟩≈1
+N
+N
+X
+i=1
+e−rτi,
+(3)
+which, in the context of enhanced sampling, is estimated numerically from i = 1, 2, . . . , N
+FPT samples τi.
+A second common resetting protocol is sharp resetting, where the time duration T = 1/r
+between restarts is constant. The MFPT under sharp resetting is73
+⟨τ⟩T =
+1
+1 −S(T)
+T
+Z
+0
+S(t)dt,
+(4)
+where S(t) is the survival function of the process without resetting,
+S(t) = 1 −
+t
+Z
+0
+f(τ)dτ ≈1 −N {τ|τ < t}
+N
+,
+(5)
+with N {τ|τ < t} being the number of samples for which τi < t. Thus, given some samples
+of ﬁrst-passage events without resetting, one can estimate the MFPT under resetting for any
+6

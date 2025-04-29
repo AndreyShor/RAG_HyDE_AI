@@ -1,0 +1,116 @@
+3
+as a Type IL GRB. We identified 5 GRBs whose light
+curve patterns align with the characteristics of Type IL
+GRBs. Upon examining their observational properties,
+we found that these 5 GRBs indeed fall within Type I
+GRB category, thereby further validating the classifica-
+tion of Type IL GRB as a subclass of Type I GRB. We
+also obtain a comprehensive sample of Type IL GRBs
+collected over the past decade.
+Furthermore, we also
+search for thermal components in the precursors of Type
+IL GRBs and briefly discuss theoretical models related
+to the progenitors, central engines, and extended radia-
+tion that could produce Type IL GRBs.
+This paper is organized as follows. Data selection re-
+quired for establishing the criterion is described in sec-
+tion 2.
+The process of criterion establishment is pre-
+sented in section 3. The results of searching based on
+the criterion and the verification of Type IL GRBs are
+given in section 4, discussions are given in section 5.
+Summary is given in section 6.
+All parameter errors in this work are for the 68% con-
+fidence level if not otherwise stated.
+2. INSTRUMENT AND DATA SELECTION
+The Gamma-ray Burst Monitor (GBM) is one of the
+two instruments onboard the Fermi Gamma-ray Space
+Telescope (Meegan et al. 2009; Bissaldi et al. 2009),
+which consists of 14 detectors with different orientations:
+12 Sodium Iodide (NaI) scintillation detectors (labeled
+from n0 to nb) covering the energy range of about 8-1000
+keV, and 2 Bismuth Germanate (BGO) scintillation de-
+tectors (b0 and b1) covering the energy range of about
+0.2-40 MeV.
+From the Fermi GBM Burst Catalog 1, we selected all
+long GRBs with T90 greater than 4 s from January 1,
+2014 to January 1, 2024. The reason why those bursts
+with duration exceeding 4 seconds were chosen is be-
+cause the GRBs we want to investigate generally have a
+long duration, for example, the main emission of GRB
+211211A lasts about 10 s. With this filter, we obtain a
+total dataset of about 1800 GRBs. We note that there
+were about 400 short GRBs in the past decade in this
+catalog. We use the trigger time and T90 provided in
+the catalog for the subsequent criterion establishment
+process.
+3. SEARCH CRITERION FOR TYPE IL GRB
+As mentioned in Wang et al. (2024), Type IL GRBs
+feature a unified burst pattern:
+(1) there must be an evident precursor;
+1 https://heasarc.gsfc.nasa.gov/W3Browse/fermi/fermigbrst.html
+(2) the duration of quiescent period is defined as the
+waiting time, and the waiting time Twt should be
+relatively short;
+(3) a relatively long T90 of the prompt emission, includ-
+ing precursor, main emission and extended emission;
+(4) there must be an extended emission, which is sepa-
+rated from the main emission by a dip-like structure.
+Therefore, two aspects are considered in the process of
+criterion establishment: one is the precursor and qui-
+escent period, and the other is the extended emission
+and the dip. The standard for the long main emission
+is guaranteed by the filter of T90 greater than 4 s in the
+dataset.
+The flowchart of the criterion is shown in Fig.1. We
+start by extracting the total light curve of the three
+NaI detectors with the strongest signal from the time
+range T0-5 s to T0+2*T90, with a time resolution of 0.2 s.
+Choosing 5 s before T0 is based on the consideration that
+the background should not have too much influence on
+the burst. If a GRB’s precursor appears more than 5 s
+before T0, then its waiting time is too long, and this
+GRB should not be considered. The choice of resolu-
+tion of 0.2 s is considered from two aspects: On one
+hand, if the time resolution is too high, it would bring
+large statistical fluctuations, affecting the recognition of
+the precursor and quiescent period. On the other hand,
+if the resolution is too low, the structure of the quies-
+cent period may be covered by the precursor and main
+emission. After all, the durations of the precursor and
+quiescent period are relatively short.
+Next, we segment the light curve using the Bayesian
+Block algorithm and calculate the significance of each
+block using the Li-Ma formula (Li & Ma 1983)
+SNRLi−Ma =
+√
+2
+
+n log
+
+α
+α + 1
+n
+n + b
+
++ b log
+
+(α + 1)
+b
+n + b
+1/2
+(1)
+where n is the counts of the on-source time interval ton to
+testify the existence of a burst, b is the measured back-
+ground counts in the off-source time interval toff, and α
+is the ratio of the on-source time to the off-source time
+ton/toff. The first block is taken as the off-region. This
+is based on the assumption that the first block, which
+occurs before the source signal rises, represents the back-
+ground region. Subsequently, we use the SNRLi−Ma of
+each block to characterize the strength of the GRB sig-
+nal. If none of the blocks has SNRLi−Ma greater than 3,
+this GRB is considered to be too weak, and no further
+analysis is conducted. Conversely, for those light curves
+with blocks that have SNRLi−Ma exceeding 3, all blocks
+are classified into low-significance blocks (LSBs) with

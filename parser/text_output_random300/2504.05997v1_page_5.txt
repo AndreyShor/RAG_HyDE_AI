@@ -1,0 +1,64 @@
+5
+Step 3: Correctness. After iteration ℓ= k + 1, we must have at most two nonzero entries in each row since initially, Q has at
+most one nonzero value per each row, and by Eq. (12), we only modify one entry of each row. Let r be the largest row index
+such that Qrℓ̸= 0, ℓ= k + 1. After the next iteration ℓ= k + 2, we have two cases: (1) if the capacity of row r is used up by
+pk+1, then the ﬁrst nonzero entry of column k + 2 starts at row r. In this case, Q has at most two nonzero entries per row; (2) if
+some capacity of row r is left, i.e., P
+j Qrj ≤1/N, then ﬁrst nonzero entry of column k + 2 starts at row r + 1, giving rise to
+three nonzero entries for this row. Note that the above argument between iterations k + 1 and k + 2 holds for any two iterations
+ℓand ℓ+ 1. Hence, we conclude that after iteration ℓ≥k + 1, the following conditions are true:
+1. P
+i Qij = pj for 1 ≤j ≤ℓ;
+2. There are at most three nonzero entries in each row of Q.
+Now, proceed with the above argument until ℓ= N, we must have: (1) P
+j Qij = 1/N for 1 ≤i ≤N; (2) P
+i Qij = pj for
+1 ≤j ≤N; (3) there are at most three nonzero entries in each row of Q.
+Next, we show that using twice as many q-vectors, we can represent the probability vector p with 2-sparse probabilities. The
+basic idea is that a 3-sparse vector can always be written as a uniform mixture of two 2-sparse vectors: Let p be a 3-sparse
+vector with 0 < pa ≤pb ≤pc, for indices a, b, c. Then we deﬁne the probability vectors q1 and q2 as follows: (q1)a = 2pa,
+(q1)c = 1 −2pa, (q2)b = 2pb, and (q2)c = 1 −2pb. The correctness can be veriﬁed by q1, q2 are 2-sparse, q1/2 + q2/2 = p,
+and pa ≤1/2 and pb ≤1/2.
+Lemma 5. Every N-dimensional probability vector p can be expressed as a uniform mixture of 2N 2-sparse probability vectors.
+That is, there exists a set {q(i)}i of 2N 2-sparse probability vectors such that
+p =
+X
+i
+1
+2N q(i).
+Proof. Taking Lemma 5, we know there exists a set {q(i)}i of N 3-sparse probability vectors such that p = P
+i
+1
+N q(i). Now,
+for each q(i), if it is 3-sparse but not 2-sparse, we can always split it into two 2-sparse vectors using the observation before the
+lemma, i.e., q(i) = q1(i)/2 + q2(i)/2; If q(i) is 2-sparse, we simply produce two copies of it. This construction satisﬁes the
+conditions of the lemma.
+With these lemmas in place, we can now prove the main theorem.
+Theorem 1 (Exact universality of IQP-circuits with hidden qubits). For any target probability distribution p over {0, 1}n, there
+exists an IQP circuit acting on n visible qubits and m = n + 1 hidden qubits that produces p exactly when we measure the ﬁnal
+n qubits.
+Proof. By Lemma 2 the reduced density matrix of an IQP circuit with m hidden qubits can be exactly written as sum of 2m pure
+states density matrices |ψk⟩⟨ψk|. The output distribution will be a uniform mixture of the distributions obtained from measuring
+one of the |ψk⟩states in the basis speciﬁed by Pauli-X eigenstates. Each |ψk⟩can be expressed as a superposition of strings
+of Pauli-X eigenstates, and the probability of observing the string b ∈{0, 1}n is given by |⟨˜b|ψk⟩|2 with |˜b⟩= H⊗n|b⟩. In
+Lemma 3 we have shown how we can encode any 2-sparse distribution in |ψk⟩. On the other hand, Lemma 5 states that any
+probability distribution over {0, 1}n can be decomposed as a uniform sum of 2n+1 such 2-sparse distributions. Therefore, by
+choosing m = n + 1, we have sufﬁcient expressive power to represent any target distribution p exactly using an IQP circuit with
+hidden qubits.
+C.
+Remark on optimality
+We note that it is not clear if the construction of the main Theorem above is optimal in terms of the number of ancillary qubits,
+i.e., hidden units for the worst-case distributions. On the one hand, the purpose of this construction is to generate a particular
+reduced density matrix over the last n qubits, and it is well known that this can be puriﬁed using at most n additional qubits.
+However, in general, the states on the purifying system will then not correspond to UMA states, this puriﬁed state may not be
+obtainable by an IQP circuit in general. An n instead of n + 1 qubit overhead could also be obtained if any N-dimensional
+probability vector could be decomposed to a uniform mixture of the sum of just N 2-sparse probability vectors (we achieve
+3-sparse). We do not have a strong argument that this is impossible, but we have equally failed to provide a provably correct
+construction. Another route to reducing resources is to encode more than 2 outcome distributions in the states |ψk⟩. However,
+already for 2 qubit (4 dimensional) case, the non-universality results of [1] (page 47) imply that there exist distributions that
+cannot be encoded into UMA states. In general, any n-qubit UMA state characterized by 2n −1 phases (θj)j (counting for the
+global phase) can only generate probability vectors with probabilities expressible with pk ∝|1 + P2n
+j=2(−1)z·jeiθj|2, which,
+as said, do not include all distributions already for n = 2. Already, one hidden unit allows us to recover arbitrary convex
+combinations of any two such distributions, and further hidden units allow for more complicated combinations. The minimal
+point at which this becomes universal we leave for future work.

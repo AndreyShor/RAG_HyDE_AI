@@ -1,0 +1,39 @@
+⟨ψ0|ψ0⟩. While φt(b) depends on this initial value φ0, we leave this dependence implicit in
+our notation. As explained in Subsection 2.1, in the absence of truncation, the total squared
+norm is preserved over time, that is, φt−1(b1, . . . , bt−1) = PK
+k=1 φt(b1, . . . , bt−1, k). In our basic
+model, we consider K-way branching with ﬁxed ratios δk ∈(0, 1) for k = 1, . . . , K where
+PK
+k=1 δk = 1. Thus, in the absence of truncation, our branching process would be given by
+φt(b) = δbt φt−1(b1, . . . , bt−1),
+(5)
+for all t ∈{1, . . . , T} and b ∈{1, . . . , K}t. To introduce truncation into this model, we
+incorporate time-dependent threshold values ξt ∈(0, ∞). Our basic branching model with
+truncation is then deﬁned as:
+φt(b) =
+
+
+
+
+
+δbt φt−1(b1, . . . , bt−1)
+if δbt φt−1(b1, . . . , bt−1) ≥ξt ,
+0
+otherwise.
+(6)
+This formulation implements small-signal truncation by eliminating branches whose squared
+amplitude falls below the threshold ξt at time t. When a branch’s squared amplitude becomes
+zero (φt(b) = 0), the corresponding state vector vanishes (ψt(b) = 0), which we interpret as
+the termination of that branch of the process. Through the threshold ξt, this model modiﬁes
+the standard Schr¨odinger evolution by terminating branches whose squared amplitude falls
+below the threshold. For the basic model, we choose the threshold ξt to be exogenously
+determined as
+ξt = ǫ αt,
+(7)
+where α ∈(0, 1) and ǫ > 0 are ﬁxed parameters. To motivate this functional form, consider
+how φt(b) would evolve in the absence of any threshold (as in equation (5)). Obviously, φt(b)
+would decay exponentially with t, with decay rate determined by the sequence of branching
+ratios δbt along the path b. Therefore, any positive threshold not decaying exponentially
+would eventually truncate all paths.
+The exponentially decaying threshold ξt guarantees
+14

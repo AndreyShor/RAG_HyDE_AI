@@ -1,0 +1,168 @@
+that is
+h′′ = sin
+θ −θ′ + 2π −2 arcsin(h′)
+2
+
+12 arcsin(h′)+[−3π,−π)(θ −θ′) = h′′(θ −θ′, h′) as in Definition 1.7.
+Therefore we have obtained
+(2.1.5)
+=
+R t
+0 dt′ R 1
+−1 dh′ R θ+3π−2 arcsin(h′)
+θ+π−2 arcsin(h′)
+dθ′µ0(θ′, t′, h′) ∂h′′
+∂θ (θ −θ′, h′)
+·
+R t−t′
+0
+dt′′Q(t −t′ −t′′, h|h′′(θ −θ′, h′))Q(t′′, h′′(θ −θ′, h′)|h′)
+=
+Z t
+0
+dt′
+Z 1
+−1
+dh′
+Z θ+3π−2 arcsin(h′)
+θ+π−2 arcsin(h′)
+dθ′µ0(θ′, t′, h′)f(θ −θ′, t −t′, h|h′) by Definition 1.8 of f
+=
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′µ0(θ′, t′, h′)f(θ −θ′, t −t′, h|h′),
+(2.1.7)
+since the integrand is periodic with respect to θ′ and therefore we can choose any period to compute the integral.
+Lastly, as for (2.1.6) we operate similarly to (2.1.5): first we change the integration order (before with respect to
+(θ′, t′′, h′′) and then with respect to (t′, h′)), and then we exchange the variables names (that is t′′ with t′ and h′′ with
+h′). This way we get
+(2.1.6) =
+R t
+0 dt′ R 1
+−1 dh′ R
+T1
+2π dθ′µ0(θ′, t′, h′)
+·
+R t−t′
+0
+dt′′ R 1
+−1 dh′′Q(t −t′ −t′′, h|h′′)γ(t′′, h′′, θ + π −2 arcsin(h′′) −θ′|h′)
+.
+(2.1.8)
+Therefore we obtained
+(2.1.4) = (2.1.5) + (2.1.6) = (2.1.7) + (2.1.8),
+which, for any µ0 ∈L1, writes as
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′µ0(θ′, t′, h′)γ(θ −θ′, t −t′, h|h′)
+=
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′µ0(θ′, t′, h′)f(θ −θ′, t −t′, h|h′)
++
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′µ0(θ′, t′, h′)
+Z t−t′
+0
+dt′′
+Z 1
+−1
+dh′′Q(t −t′ −t′′, h|h′′)γ(θ + π −2 arcsin(h′′) −θ′, t′′, h′′|h′).
+Therefore property (2.1.3) holds for any µ0 ∈L1 if and only if γ verifies
+γ(θ, t, h|h′) = f(θ, t, h|h′) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)γ(θ + π −2 arcsin(h′′), t′, h′′|h′).
+(2.1.9)
+Now let us first focus on why γ(·, ·, ·|h′) exists in the space of non negative and ∩T >0L∞(R×[0, T]×[−1, 1]) functions,
+for fixed h′. To prove it, it is sufficient to use Lemma A.1 (for fixed h′) in the case: no dependance on x, with p = ∞
+and µ(θ, t, h) = f(θ, t, h|h′).
+To get an estimate in the space L∞(T1
+2π ×[0, T]×[−1, 1]) uniform with respect to h′ (but a priori depending on T),
+that is an estimate in the space L∞(T1
+2π × [0, T] × [−1, 1]2)), we recall that γ is obtained by using Lemma A.1, which
+is based on the Contraction Theorem, and therefore ∥γ(·, ·, ·|h′)∥L∞(T1
+2π×[0,T ]×[−1,1]) is bounded by a linear function
+of ∥f(·, ·, ·|h′)∥L∞(T1
+2π×[0,T ]×[−1,1]), which is in turn bounded uniformly with respect to h′. This last property is stated
+in (B.3.7) of Lemma B.5.
+Step 2: we want to use γ −
+1
+2π instead of γ: since we would like to state that µt(θ, 0, h) −−−−→
+t→+∞
+⟨µ0⟩
+2π
+(we
+intentionally do not precise the setting which this convergence is to be understood in), what we expect from γ by
+looking the equation (2.1.3) is that γ(θ, t, h|h′) −−−−→
+t→+∞
+1
+2π.
+Let us call then
+φ := γ −1
+2π .
+By using this notation, thanks to (2.1.3), µt(θ, 0, h) writes as a function of φ as
+µt(θ, 0, h)
+=
+µ0(θ, t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)µ0(θ + π −2 arcsin(h′), t′, h′)
++
+1
+2π
+Z 2π
+0
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′µ0(θ′, t′, h′)
++
+Z 2π
+0
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′φ(θ −θ′, t −t′, h|h′)µ0(θ′, t′, h′),
+12

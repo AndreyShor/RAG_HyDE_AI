@@ -1,0 +1,64 @@
+arXiv:2504.06433v1  [quant-ph]  8 Apr 2025
+Tight bounds on depth-2 QAC-circuits computing parity
+Daniel Pad´e
+Stephen Fenner
+University of South Carolina∗
+Daniel Grier
+IQC†
+Thomas Thierauf
+Ulm University‡
+April 10, 2025
+Abstract
+We show that the parity of more than three non-target input bits cannot be computed by
+QAC-circuits of depth-2, not even uncleanly, regardless of the number of ancilla qubits. This
+result is incomparable with other recent lower bounds on constant-depth QAC-circuits by Rosen-
+thal [ICTS 2021,arXiv:2008.07470] and uses diﬀerent techniques which may be of independent
+interest:
+1. We show that all members of a certain class of multivariate polynomials are irreducible.
+The proof applies a technique of Shpilka & Volkovich [STOC 2008].
+2. We give a tight-in-some-sense characterization of when a multiqubit CZ gate creates or
+removes entanglement from the state it is applied to.
+The current paper strengthens an earlier version of the paper [arXiv:2005.12169].
+Keywords: multivariate polynomial, irreducible, indecomposable, justifying assignment, quan-
+tum circuit, QAC, QACC, parity gate, fanout gate, entanglement lemma
+1
+Introduction
+Quantum decoherence is a major obstacle to maintaining long quantum computations. Current
+quantum computers confront short decoherence times and so must act quickly to do useful compu-
+tations, and this limitation is likely to continue long into the future.
+A reasonable theoretical model of such computations are shallow quantum circuits, i.e., quantum
+circuits of small depth. The decoherence dilemma has inspired much theoretical interest in the
+capabilities of these circuits, particularly circuits that have constant depth and polynomial size. To
+solve useful problems, quantum circuits that are very shallow will require gates acting on several
+qubits at once. A major question then is this: do there exist multiple-qubit gates that are both
+potentially realizable and suﬃcient for powerful computation in small (even constant) depth?
+It is known that, with the aid of fanout gates (a certain multiqubit gate deﬁned below), quantum
+circuits can do a variety of important tasks such as phase estimation and approximate Quantum
+∗Computer
+Science
+and
+Engineering
+Department,
+Columbia,
+SC
+29208
+USA.
+djpade@gmail.com,
+fenner.sa@gmail.com.
+Part of the work was done while the ﬁrst author visited the fourth author in June and
+July, 2019.
+†Institute
+for
+Quantum
+Computing,
+University
+of
+Waterloo,
+Waterloo,
+ON
+N2L3G1
+Canada.
+daniel.grier@uwaterloo.ca
+‡Department of Engineering, Computer Science and Psychology, Ulm, Germany. thomas.thierauf@uni-ulm.de.
+Supported by DFG grant TH 472/5-2.
+1

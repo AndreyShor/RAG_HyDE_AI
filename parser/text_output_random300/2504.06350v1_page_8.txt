@@ -1,0 +1,51 @@
+(a) MDI–QKD
+5 10
+50 100
+500
+10-6
+10-5
+10-4
+0.001
+0.010
+0.100
+1
+(b) DI–QKD
+Figure 4: Comparative Analysis of DI-QKD and MDI-QKD Experiments – Fig. 4a encapsulates the progress in quantum
+communication distances achieved through MDI-QKD implementations (see. 3). In contrast fully-DI-QKD in Fig. 4b at
+distances: 2 m (yellow)[51], 20 m, 100 m, and 200 m (red)[52], and 400 m (blue)[53].
+400 m — with those achieved using Measurement Device Independent-QKD (MDI-QKD), a related but
+distinct approach that is easier to implement.
+Despite the challenges that lie ahead in terms of practical implementation and scalability, as the tech-
+nology readiness level currently stands at 2-4, with expectations to advance to level 3-5 in the coming
+years, the pursuit of DI-QKD continues to push the boundaries of what is possible for secure communi-
+cations negating the possibility of inventa fraus.
+1.5. Focus of this Review
+Here, we provide an in-depth presentation of DI-QKD, while also introducing Semi-device independent
+methods, including standard SDI-QKD, as well as MDI-QKD (see Fig. 4a), receiver DI-QKD (RDI-QKD),
+and one–sided DI-QKD (1SDI-QKD). As shown in Fig. 3, this review integrates DI-QKD theoretical
+proofs [50, 30, 54–72], and experimental challenges [73–78] (with BI loopholes), resulting in fully DI-
+QKD experiments [51–53] (see Fig. 4b). We present simulations that bridge the gap with experiments in
+[79–81], as well as advanced mathematical methods, such as entropy accumulation and bounds in [82–
+87, 25]. DI randomness generation (theory[88–90], experiments[91–93]), and broader DI-QKD versions
+(theory [38, 94–97], experiments [98–103], are also discussed.
+A number of very nice review papers have covered theoretical, experimental and implementation
+aspects of QKD and DI-QKD [4–6, 16, 32, 104–108]. As the DI framework relies on Bell nonlocality, we
+also refer the reader to reviews on this subject [109–111]. In the present review, we have attempted to
+build on this previous work by including the most recent results, and providing alternative approaches
+when possible. For example, the topic of Bell nonlocality in section 2 is presented using the modern
+approach of causal structures. While touching upon mathematical and technological advancements, our
+review, starting with a pedagogical focus, remains concise, without claiming to cover all developments
+exhaustively, but providing references to relevant details in references, as well as a repository of simulations
+and tutorials, which we have made available online [18].
+2. Nonclassicality in quantum cryptography
+Not all entangled states violate a BI (see Fig. 2b, [112]). Then, different types of non-classical behavior
+lead to distinct communication tasks. In this section, we introduce the ones related to DI cryptography.
+2.1. Bell nonlocality
+In 1862 Boole laid out conditions for probabilities and logical constraints that any consistent probability
+theory should follow [113] a.k.a. Boole’s conditions of “possible experience”, or causal instruments [114]
+. Boole’s work was essentially about the constraints on observable correlations, an early classical
+analogue to BI’s constraints on local and realistic correlations [115]. A Bell test, in its simplest form,
+involves two random measurement settings X3 and Y assuming values x, y ∈{0, 1}, with dichotomous
+outcomes A and B with values a, b ∈{0, 1} for Alice (A) and Bob (B), who are space-like separated, as
+3We refer with the capital letter to the random variable and its lower case the values that it can assume.
+8

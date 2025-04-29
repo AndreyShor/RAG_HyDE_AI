@@ -1,0 +1,90 @@
+Examples
+This section presents several examples that have been implemented in Ariaquanta.
+E1. Quantum Teleportation
+The implementation of quantum teleportation can be outlined as follows:
+from
+AriaQuanta.aqc.circuit
+import
+Circuit
+from
+AriaQuanta.aqc. gatelibrary
+import H, CX , Z, X
+from
+AriaQuanta.aqc.measure
+import
+MeasureQubit
+from
+AriaQuanta.aqc.operations
+import
+If_cbit
+from
+AriaQuanta.aqc.qubit
+import
+create_state
+# define
+qubits
+with
+optional
+states
+alpha = 0.7
+# create
+qubit=0 with
+state
+alpha|0>+ beta|1>
+q0 = create_state (0,alpha)
+# create
+qubit=1 with
+state |0>
+q1 = create_state (1,1)
+# create
+qubit=2 with
+state |0>
+q2 = create_state (2,1)
+# add
+qubits to a circuit
+qc = Circuit(3, list_of_qubits =[q0 , q1 , q2])
+# Make
+the
+shared
+entangled
+state
+qc | H(1)
+qc | CX(1, 2)
+# Alice
+applies
+teleportation
+gates (or
+projects
+to Bell
+basis)
+qc | CX(0, 1)
+qc | H(0)
+# Alice
+measures
+her
+qubits
+qc | MeasureQubit ([0,1], [’a’,’b’])
+# Bob
+applies
+certain
+gates
+based on the
+outcome
+of Alice ’s measurements
+qc | If_cbit([’a’,1], Z(2))
+qc | If_cbit([’b’,1], X(2))
+# --------------------------------------------------
+# simple
+run and
+output
+the
+statevector
+# Bob
+checks
+the
+state of the
+teleported
+qubit
+qc.run ()
+print("\nBob ’s statevector :\n", qc. statevector )
+11

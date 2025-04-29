@@ -1,0 +1,119 @@
+A&A proofs: manuscript no. main
+ited amount of information. At near-infrared (NIR) wavelengths,
+SNe Ia are well-known for being pseudo-standard candles (NIR;
+e.g. Elias et al. 1981, 1985; Meikle 2000; Krisciunas et al. 2004a;
+Avelino et al. 2019). Their high degree of intrinsic homogeneity
+at these wavelengths even allows us to estimate their peak bright-
+ness with a single photometric epoch, with the caveat of having
+well-sampled optical light curves (Stanishev et al. 2018; Müller-
+Bravo et al. 2022a). However, this low dispersion only applies to
+their first peak. SNe Ia develop a distinct secondary NIR peak a
+few weeks after the first one, but the characteristics of it largely
+vary from object to object. Therefore, the study of SNe Ia at NIR
+wavelengths gives provides further insights into their progeni-
+tors and explosion mechanisms (e.g. Wheeler et al. 1998; Kasen
+2006).
+Some initial theoretical modeling of SNe Ia at NIR wave-
+lengths, such as those from Hoeflich et al. (1995) and Pinto &
+Eastman (2000), hinted towards a drop in opacity, that is a de-
+crease of the diffusion time, explaining the secondary peak. This
+would also avoid the need of an additional power source inject-
+ing energy at later epochs. Pinto & Eastman (2000) also noted an
+increase in the abundance of Fe ii coinciding with the increase in
+emissivity in the NIR. Kasen (2006, hereafter K06), also through
+theoretical modeling, came to the conclusion that the secondary
+peak is produced by the recombination of iron-group elements
+inside the ejecta of the SN, going from double to single ionized
+(e.g., Fe iii →Fe ii). The prominence and time of the peak was
+found to depend on several physical parameters, such as MNi, the
+metallicity of the progenitor and the amount of mixing of 56Ni. In
+addition, Hoeflich et al. (2017) argue that the NIR flux reaches a
+secondary maximum when the radius of the photosphere reaches
+its maximum, assuming that the NIR flux follows Wein’s limit1.
+Purely from observations, Phillips (2012) showed that
+brighter SNe Ia tend to have brighter and delayed secondary
+peaks, while fainter ones have fainter and earlier secondary
+peaks, even turning into a shoulder instead of a distinct sec-
+ondary peak for the SNe in the faint end of the luminosity distri-
+bution (see also Ashall et al. 2020 and Pessi et al. 2022, although
+for the i band). Ashall et al. (2020) also showed that SNe Ia i-
+band light curves present different behaviors for different SN Ia
+sub-types, most-likely tracing different physical aspects of these
+transients. Additionally, studying how the environment of SNe Ia
+affects their light curves, across multiple wavelengths, also pro-
+vides useful information about the physics of these transients
+(e.g. Uddin et al. 2020; Johansson et al. 2021; Ponder et al.
+2021).
+In this work, we perform a qualitative study of SNe Ia to un-
+derstand the characteristics of their NIR light curves. We make
+use of machine-learning methods, widely used by the astronomi-
+cal community, to study SNe Ia and link observational properties
+to their physical parameters.
+The outline of this paper is the following: Sects. 2 & 3 de-
+scribe the sample of SNe Ia used and the initial selection cuts; the
+light-curve fits and calculation of NIR rest-frame light curves are
+described in Sect. 4, and the decomposition method in Sect. 5;
+the analysis of the decomposition and correlation between differ-
+ent light-curve and physical parameters is presented in Sect. 6,
+finalizing with the summary and conclusions in Sect. 7.
+1 For an expanding ejecta, the flux is proportional to TRphot, where T
+is the temperature and Rphot is the radius of the photosphere.
+2. Type Ia supernova near-infrared samples
+Historically, SN Ia surveys have focused on optical observations,
+with only a few extending to the NIR, mainly due to a lack of
+detectors at these wavelengths. However, in recent years, as NIR
+array technology has significantly improved, and thanks to the
+effort of several surveys, the number of SNe Ia observed at NIR
+wavelengths has rapidly increased. The surveys included as part
+of this work are described below.
+CSP: The Carnegie Supernova Project (CSP; Hamuy et al. 2006)
+provides optical and NIR (uBgVriYJH bands) observations of
+336 SNe Ia, split into two samples. CSP-I contains 121 SNe Ia
+from three public data releases (Contreras et al. 2010; Stritzinger
+et al. 2011; Krisciunas et al. 2017a). CSP-II contains 215 SNe Ia,
+described in Phillips et al. (2019) and Hsiao et al. (2019), with
+an upcoming data release (Suntzeff et al. in preparation).
+CfAIR2: The Harvard-Smithsonian Center for Astrophysics
+IR2 sample (CfAIR2) consists of several data releases with
+optical photometry (CfA1-5 Riess et al. 1999; Jha et al. 2006;
+Hicken et al. 2009, 2012), and two including NIR photometry
+(CfAIR1-2; Wood-Vasey et al. 2008; Friedman et al. 2015).
+This sample includes 94 SNe Ia with UBVRIr’i’JH photometry.
+RATIR: The Reionization and Transients InfraRed sample
+(RATIR;
+Johansson et al. 2021) presents optical and NIR
+observations (UBgVrRiIzZYJH bands) of 37 SNe Ia observed
+as part of the intermediate Palomar Transient Factory (iPTF)
+survey.
+DEHVILS: The Dark Energy, H0, and peculiar Velocities using
+Infrared Light from Supernovae (DEHVILS; Peterson et al.
+2023) survey observed 96 SNe Ia with NIR (YJH bands)
+photometry. Optical photometry of these SNe was covered
+by the c and o bands of the Asteroid Terrestrial-Impact Last
+Alert System (ATLAS Tonry et al. 2018). This is additionally
+complemented with ZTF g- and r-bands light curves for 78
+of the 96 SNe using the Automatic Learning for the Rapid
+Classification of Events (ALeRCE; Förster et al. 2021) broker.
+Literature: We made a literature search for SNe Ia with available
+rest-frame NIR photometry. The following objects are those that
+pass the initial selection cuts discussed in Sect. 3: SNe 1998bu
+(Meikle 2000), 1999ac (Phillips et al. 2006), 1999cl (Krisciunas
+et al. 2006), 1999ee (Krisciunas et al. 2004b), 2000E (Valentini
+et al. 2003), 2001ba (Krisciunas et al. 2004b), 2001bt (Krisci-
+unas et al. 2004b), 2001el (Krisciunas et al. 2003), 2002bo
+(Krisciunas et al. 2004c; Miknaitis et al. 2007), 2002cv (Elias-
+Rosa et al. 2008), 2002dj (Pignata et al. 2008; Miknaitis et al.
+2007), 2002fk (Cartier et al. 2014), 2003cg (Elias-Rosa et al.
+2006; Miknaitis et al. 2007), 2003du (Stanishev et al. 2007),
+2005df (Krisciunas et al. 2017b), SDSS3241, SDSS3331 (Freed-
+man et al. 2009), 2011fe (Matheson et al. 2012), 2013dy (Pan
+et al. 2015), 2014J (Foley et al. 2014; Marion et al. 2015; Sri-
+vastav et al. 2016), and 2017cbv (Wee et al. 2018; Wang et al.
+2020). Note that the photometry of SN 2013dy was published in
+the AB magnitude system, so we convert it to the Vega magni-
+tude system following Galbany et al. (2023)2.
+2 AB to Vega offsets of 0.894 and 1.368 mag in J and H bands
+are applied, respectively. We did not find any published AB to Vega
+offset value for the Y band, so we follow the notes in https://
+ratir.astroscu.unam.mx/instrument.html and apply an offset
+Article number, page 2 of 16

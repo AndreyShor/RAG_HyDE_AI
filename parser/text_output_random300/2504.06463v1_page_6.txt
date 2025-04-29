@@ -1,0 +1,38 @@
+Figure 3: Results with HSC imaging data. Left: Cutouts from an HSC exposure, where the sky-background is noisy,
+and blurry sources are hard to detect, especially when they are small and faint (top row). Middle: Cutouts from the HSC
+pipeline coadd, in which sky-background noise is reduced, and sources become more easily distinguishable despite retaining
+some blur. Right: Corresponding cutouts from latent image bx obtained using AstroClearNet. The estimate bx exhibits minimal
+sky-background noise, and sources appear markedly sharper than those in the coadd, enabling more detailed visualization of
+fine spatial features such as the shapes and sizes of galaxies (middle and bottom row).
+pointwise convolutions, thereby generating a single
+latent image which combines multi-scale information
+from all exposures.
+• Incorporating physical model and con-
+straints: Another key requirement when design-
+ing AstroClearNet entails ensuring that the net-
+work’s output by adheres to the physical model of
+the exposures given in (1). This principle shapes
+the decoder’s structure, ensuring that its final layer
+(a 2D convolution) produces outputs that follow
+by(t) = f (t)∗x = f (t)∗Fθ(y) for each t = 1, . . . , n. By
+embedding this model directly into the neural net-
+work’s architecture, we maintain consistency with
+the underlying physics.
+Additionally, to enforce
+the non-negativity constraint on the latent image
+x, we apply a ReLU activation in the last layer of
+our encoder, thus ensuring the network produces a
+physically meaningful latent image.
+4. Results and discussion
+We now present preliminary results obtained by
+applying AstroClearNet on a multi-frame restoration
+task using ground-based astronomical imaging data
+from the Hyper Suprime-Cam (HSC) survey, which
+was described in Figure 1.
+Specifically, we used
+n = 33 HSC exposures of size 4200 × 4200 pixels,
+together with their corresponding masks, standard
+deviations and PSFs, in order to recover a latent
+image of the night sky. Our results are presented in
+Figure 3.
+6

@@ -1,0 +1,70 @@
+5
+Definition II.22 (Expectation). Given a univariate random variable X, its expectation E [X] is defined as E [X] =
+P
+k∈ΩpkXi.
+For a multivariate random variable with dimension d ⃗X, its expectation E[ ⃗X] is a vector with E
+h
+⃗X
+iα
+= E [X α] for
+α ∈[d].
+Remark II.23. For univariate random variables X, Y, ⟨X|Y⟩= E [X ∗Y].
+Definition II.24 (Variance). For a univariate random variable X, its variance is σ2 = E
+h
+(X −E [X])2i
+. The
+variance can also be denoted Var X.
+For a multivariate random variable ⃗Y, its covariance matrix Σ satisfies Σαβ = E
+h
+(Yα −E [Yα])
+
+Yβ −E
+h
+Yβii
+There are also some basic concepts from quantum information that needs to be addressed and assigned with
+notations for convenience.
+Definition II.25 (Measurement). As in quantum mechanics, in some Hilbert space H, given an observable (Hermitian
+operator) A and a normalized state |ψ⟩, measuring the observable on the state |ψ⟩generates a probability space and
+a random variable (as the resulting eigenvalues). Let the random variable be λ, we denote this as λ ∼(A, |ψ⟩), and
+the probability of some event E depending on λ being Pλ∼(A,|ψ⟩)[E(λ)].
+Remark II.26. When we are describing probabilities resulting from some algorithm, the labels for the Hilbert space,
+the subscript after P can be dropped.
+Definition II.27 (Phases of Unitary). Given some unitary U, let arg(U) be a Hermitian operator with eigenvalues
+in (−π, π] such that U = exp{i arg(U)}. In other words, arg(U) will denote the operator corresponding to the phases
+of U.
+Remark II.28 (Phase Estimation). Given a unitary operator U and input state |ψ⟩, as an example, phase estimation
+aims to produce a random variable θ ∼(arg(U), |ψ⟩).
+Definition II.29 (absolute value mod 2π). Given a real number (in practice, a phase) φ, we define |φ|2π as
+minn∈Z |φ −2πn|.
+B.
+Primitives
+In this section, we set up the problem of mean value estimation and provide useful algorithmic tools. First, we
+introduce the notion of a quantum experiment.
+Definition II.30 (Quantum Experiment). Given a multivariate random variable ⃗X of dimension d, a quantum
+experiment is a unitary U such that for all k ∈Ω
+U |k⟩|0⟩= |k⟩
+ ⃗Xk
+E
+(14)
+The unitary acts on HΩ⊗Hvec, where Hvec is the Hilbert space with basis representing quantum states corresponding
+to vectors in Rd.
+Remark II.31 (Incorporating Ancilla). The experiment can be redefined to incorporate extra changes in other ancillas
+as
+U |k⟩|0⟩|0⟩= |k⟩
+ ⃗Xk
+E
+|aux′
+k⟩
+(15)
+Just as in Remark II.5 we drop it for simplicity.
+In practice, we might not have access to either the synthesizer or the quantum experiment, but presented with
+access to a complete quantum experiment in the form of the following
+Definition II.32 (Complete Quantum Experiment). Given a multivariate random variable ⃗X, a complete quantum
+experiment is a unitary V with
+V |0⟩|0⟩=
+X
+k∈Ω
+√pk |k⟩
+ ⃗Xk
+E
+(16)

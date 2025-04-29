@@ -1,0 +1,91 @@
+On the right-hand side of the dynamics for Passer and Mover [eq. (1e)], social force terms appear. First
+two terms correspond to the confinement mechanism. One of the two is the returning force ⃗F return, which is an
+elastic attraction towards the court. It acts independently along x and y axes, which are parallel to the court
+boundary (Fig. 6). Along x direction, the returning force is modelled by Hooke’s law regarding the distance
+from the origin, which is at the centre of the court, with the natural length of (L −Lbuff)/2:
+F return
+x
+(x) :=
+
+
+
+
+
+
+
+−sign(x)kr
+|x| −(L −Lbuff)/2
+Lbuff/2
+,
+|x| ≥L −Lbuff
+2
+0,
+|x| < L −Lbuff
+2
+.
+(4)
+The same applies along y direction. The natural length of (L −Lbuff)/2, not L/2, reflects players’ tendency to
+stand slightly within the court, not exactly on the boundary. We note that the displacement is normalized by
+Lbuff/2. We chose Lbuff to be 50 cm throughout this study. The other component of the confinement mechanism
+is the viscous force ⃗F viscous, which takes effect only in the neighbourhood of the court boundary (Fig. 6, gray
+area). It acts on x and y directions independently as well, taking the form of nonlinear viscosity. Along x axis,
+it is described as
+F viscous
+x
+(x, vx) :=
+
+
+
+
+
+−γ(vx)3,
+|x| ∈
+L −Lbuff
+2
+, L + Lbuff
+2
+
+0,
+otherwise,
+(5)
+where vx stands for x component of the player’s velocity. The same holds along y direction. Buffer width
+Lbuff is the width of the viscous region, centred around the court boundary. For a player’s outward motion, the
+viscous force prevents the player from going out. For the inward motion, it reduces the influence of the returning
+force on the dynamics inside the court. The remaining term ⃗G can be any function of the state vector ⃗un and
+parameters ⃗θ and ⃗λn. In our model, two social forces were included: the evading force ⃗F evade and the following
+force ⃗F follow. With the two terms, we incorporated dyadic interactions between OF and DF and among OFs.
+The evading force ⃗F evade models OF’s tendency to stay away from DF. It resembles a linear spring with the
+natural length of Le between DF and the focal player, who is either Passer or Mover (Fig. 6, orange dash-dotted
+line):
+⃗F evade(⃗x, ⃗xD) := −ke(∥⃗x −⃗xD∥−Le) ⃗x −⃗xD
+∥⃗x −⃗xD∥.
+(6)
+The following force ⃗F follow aims to model OF’s behaviour to prepare for the next pass scene. As Receiver surely
+gives the next pass, we assumed other OFs would adjust their positions in relation to Receiver. To keep our
+model simple, we approximated this behaviour by a linear spring with the natural length of Lf (Fig. 6, blue
+dotted line):
+⃗F follow(⃗x, ⃗xR) := −kf(∥⃗x −⃗xR∥−Lf) ⃗x −⃗xR
+∥⃗x −⃗xR∥.
+(7)
+Governing equations for Receiver, DF and the ball are first-order ODEs [eqs. (1a), (1b) and (1c)], which may
+be regarded as the overdamped limit of Newtonian equations of motion, so as to reduce the complexity of our
+model. On the other hand, the governing equations for Passer and Mover [eqs. (1d) and (1e)] take the form of
+Newtonian equation of motion. This is because we are primarily interested in the offensive team performance,
+which we expect to be strongly affected by the off-the-ball movements of Passer and Mover.
+At step 3 (Fig. 2 b), the termination conditions are evaluated. If a condition is satisfied, the simulation
+ends. We introduced three termination conditions: pass intercept, ball-out, and the maximum number of passes.
+The n-th pass is considered to be intercepted, if the ball has been closer to DF than the threshold Lict during
+tn ∈[0, T]. Similarly, we say the ball went out of the court during the n-th pass if the ball went further than
+the threshold distance Lout from the court during tn ∈[0, T]. In these cases, the number of successful passes
+of this game would be n −1. Finally, the simulation is terminated when the number of passes reaches 20 in
+accordance with the experiment’s setting.
+Step 4 concerns the transition from the n-th to (n + 1)-th pass scene. Pass-specific parameters and initial
+conditions must be determined based on the state at the end of the previous pass scene. First, roles among
+OFs switch. Obviously, Receiver of the n-th pass becomes Passer of the (n + 1)-th pass. Between the remaining
+two OFs, we postulate that the one with a wider pass course is more likely to become the next Receiver. This
+feature is implemented by defining the probability that the current Passer becomes the next Receiver as
+pP→R :=
+exp(β∠PRD)
+exp(β∠MRD) + exp(β∠PRD),
+(8)
+13

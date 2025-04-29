@@ -1,0 +1,75 @@
+evolution of a spherically symmetric collapse of a perfect fluid in general relativity are:
+DtU = −
+
+Γ
+(ρ + p)Drp + M
+R2 + 4πRp
+
+,
+(2.6)
+Dtρ = −(ρ + p)
+ΓR2 Dr(UR2),
+(2.7)
+DtR = U,
+(2.8)
+DtM = −4πR2Up,
+(2.9)
+DtΓ = A′
+A
+U
+B ,
+(2.10)
+DtB = U′
+Γ ,
+(2.11)
+DrM = 4πΓρR2,
+(2.12)
+DrA = −A
+ρ + pDrp .
+(2.13)
+We refer the reader to [56] for the details of the derivation. This previous set of equations
+is typically used to numerically study PBH formation [13, 17, 51–53]. Let’s now consider a
+linear equation of state defined by p = wρ with constant parameter w, being w = 1/3 for a
+radiation-dominated Universe. The lapse equation in Eq. (2.13) can be solved analytically
+considering A(r →∞, t) = 1 to match with the Friedmann–Lemaˆıtre–Robertson–Walker
+(FLRW) background,
+A(r, t) =
+ ρb(t)
+ρ(r, t)
+
+w
+w+1
+,
+(2.14)
+where ρb(t) = ρ0(t0/t)2 is the energy density of the FLRW background and ρ0 = 3H2
+0/8π is
+the initial value at time t = t0, with H0 being the initial Hubble factor defined as H(t) = ˙a/a
+and a is the scale factor (see [17] for the analytical solution using the same notation we use
+in this work). From Eqs.(2.6)-(2.11), not all time-evolution equations are strictly necessary
+for simulating PBH formation. For instance, in [17] only U, R, ρ, M are necessary and B, Γ
+are obtained from their definitions using the other variables. However, the divergence term
+associated with type-II fluctuations is essentially caused by the time evolution of the energy
+density Eq.(2.7) and the function B Eq.(2.11) due to the existence of the term U′/R′. This
+is responsible for disrupting the numerical evolution from the beginning, since for type-II
+fluctuations, it is true that R′ = 0 at least at one point in r. To address this issue, we define
+the term involved in ˙ρ, as an auxiliary variable to absorb the divergent term, i.e.,
+K ≡−
+U′
+R′ + 2U
+R
+
+.
+(2.15)
+This is indeed the trace of the extrinsic curvature K = γijKij with Kij = −Lnγij/2 =
+(−∂tγij + Lβγij)/(2A) where L is the Lie-derivative, γij is the spatial metric of Eq.(2.2)
+and n is the unit normal vector orthogonal to the hypersurfaces of constant t (Σt), i.e.,
+nµ = (1/A, −βi/A). In the comoving threading βi = 0 we simply have Kij = −∂tγij/(2A).
+In the case of the Misner-Sharp formalism with the metric of Eq. (2.2), we can easily check
+using the definition of the extrinsic curvature that K = −
+ ˙B
+B + 2 ˙R
+R
+
+/A, which matches with
+Eq. (2.15) if we use the time-evolution equations of Eqs. (2.11), (2.8). In the flat FLRW
+– 4 –

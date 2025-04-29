@@ -1,0 +1,233 @@
+A Self-Supervised Framework for Space Object Behaviour Characterisation.
+5
+Table 1: The ten highest reconstruction errors from the pre-flagged light curve samples contained in the test set. We evaluated
+the lowest-loss light curve model from Section 2.2 against the entire test dataset unseen during training/validation, recording the
+reconstruction error for each sample. Examination of the ten lowest reconstruction error light curves shows a variety of space
+objects (SOs). Seven light curves are from satellites (all of which are in orbit), and three belong to rocket bodies. US: United
+States of America, IND: India, PRC: China.
+Intl Code
+NORAD
+Name
+Source
+App.
+Launch Date
+Status
+Notes
+2019-029N
+41912
+CZ-3B R/B
+PRC
+45
+2017-01-05
+Not in orbit
+Rocket Body
+1996-017A
+28646
+USA 182
+USA
+66
+2005-04-30
+Unknown
+Satellite (classified)
+1965-016J
+16908
+EGS (AJISAI)
+JPN
+1064
+1986-08-12
+In orbit
+Geodetic
+1998-026B
+16908
+EGS (AJISAI)
+JPN
+1064
+1986-08-12
+In orbit
+Geodetic
+2013-046E
+44796
+CZ-3B R/B
+PRC
+138
+2019-11-23
+In orbit
+Rocket Body
+2011-061A
+38043
+GLOBSTAR M092
+Globalstar
+285
+2011-12-28
+In orbit
+Cellular
+2019-082B
+16908
+EGS (AJISAI)
+JPN
+1064
+1986-08-12
+In orbit
+Geodetic
+1963-038A
+29517
+CZ-3 R/B
+PRC
+269
+2006-10-28
+In orbit
+Rocket Body
+2012-056D
+16908
+EGS (AJISAI)
+JPN
+1064
+1986-08-12
+In orbit
+Geodetic
+2013-055G
+41857
+YUNHAI 1
+PRC
+48
+2016-11-11
+In orbit
+Polar weather
+Table 2: The ten lowest reconstruction error light curve samples from the test dataset. We evaluated the lowest-loss model from
+Section 2.2 against the entire test dataset unseen during training/validation, recording the reconstruction error for each sample.
+Examination of the ten lowest reconstruction error light curves shows a variety of space objects (SOs). Seven light curves are
+from satellites (of which one is no longer in orbit), two belong to rocket bodies, and one to debris. JPN: Japan, US: United States
+of America, IND: India, PRC: China.
+Intl Code
+NORAD
+Name
+Source
+App.
+Launch Date
+Status*
+Notes
+2006-002A
+28931
+ALOS
+JPN
+67
+2006-01-24
+In Orbit
+Remote Sensing
+2019-029N
+44247
+STARLINK-33
+Starlink
+11
+2019-05-24
+Not in Orbit
+Cellular
+2019-082B
+44820
+CZ-4C R/B
+PRC
+9
+2019-11-27
+In Orbit
+Rocket Body
+1999-057A
+25940
+CBERS 1
+PRC / BR
+81
+1999-10-14
+In Orbit
+Earth Resources
+2019-074AD
+44740
+STARLINK 1035
+Starlink
+28
+2019-11-11
+In Orbit
+Cellular Data
+2010-009E
+36417
+CZ-4C DEB
+PRC
+153
+2010-03-05
+In Orbit
+Debris
+2010-059A
+37214
+FENGYUN 3B
+PRC
+133
+2010-11-04
+In Orbit
+Weather
+1996-017A
+23827
+IRS B3
+IND
+87
+1996-03-21
+In Orbit
+Remote Sensing
+2009-066B
+36105
+H-2A R/B
+JPN
+24
+2009-11-28
+In Orbit
+Rocket Body
+2013-055G
+39271
+CUSAT 2/FALCON
+US
+74
+2013-09-29
+In Orbit
+Amateur Radio
+framework CASSANDRA (Computational Agent For Space
+Situational Awareness And Debris Remediation Automation).
+Within this framework is an orbital simulator first introduced
+by Vasile et al.
+(2023), generating the light curves using a
+CAD model of an orbiting Space Object with a specific ge-
+ometry. This dataset contains 800 simulations of four different
+satellite platforms: a boxwing satellite (e.g., Jason-3), Sentinel-
+3, SMOS, and Starlink. These space objects (SOs) orbit an
+observing ground station, with both light and spectral curves
+recorded as time courses. Within these 800 simulations, a sub-
+set contain anomalous events of varying magnitudes - specifi-
+cally debris collisions that result in detectable changes in signal.
+These changes in signal are shown in Figure 6 F, H, where oth-
+erwise linear light curves abruptly change to a different profile,
+oscillating in magnitude between very high and low minima.
+Our fine-tuning approach combines the pre-training objective
+with supervised learning to better characterise space object be-
+haviour (see Equation 8 for details). Briefly, we impose the ad-
+ditional constraint of classification, where our Perceiver-VAE
+is simultaneously maintaining reconstruction whilst learning to
+distinguish between anomalous and non-anomalous curves. We
+focus on light curves due to public availability of the MMT-9
+real observational dataset, however the CASSANDRA simu-
+lator also generates hyperspectral light curves. Therefore, we
+also present finetuning results on normal/anomalous hyperspec-
+tra, allowing us to explore the versatility of our approach and
+model performance across a different data modality.
+To understand stability of fine-tuning, we fine-tuned our pre-
+trained Perceiver-VAE five times to convergence on the light
+curve and hyperspectral curves from the CASSANDRA fine-
+tuning dataset (Figure 7). We then average training runs and
+compute the variance.
+For light curves, we found our pre-
+trained model could classify anomalies in the fine-tuning val-
+idation dataset with approximately 88% accuracy, and 0.9 Re-
+ceiver Operating Characteristic Area Under the Curve (ROC
+AUC) (Figure 7 A-D). Throughout training, the correlation be-
+tween reconstruction loss and classification accuracy increased
+to approximately 0.28 (Figure 7 E). This suggests that the
+features learned during reconstruction are useful in classify-
+ing anomalous light curves from non-anomalous. For the hy-
+perspectra, we found similarly high accuracy after fine-tuning
+(Figure 7), with validation accuracies of approximately 84%
+and ROC AUC scores of approximately 0.86. However, unlike

@@ -1,0 +1,112 @@
+Restriction to the negative component of a DHR bimodule is the inverse of (4.2). Given a B0-
+A-bimodule map h: X →Y and x ∈X−, then for every a ∈A+ we have that h(x)a = h(xa) =
+h(ax) = ah(x) by Proposition 4.20. It follows again from Proposition 4.20 that h(x) ∈Y−. For
+f ∈HomC(X−, Y−) and h ∈HomB0-A(X, Y ), it follows from the deﬁnition of a projective basis
+that ˜f(x′) = f(x′) for x′ ∈X−and that ˜h(x) = h(x) for any x ∈X.
+□
+As a byproduct, we see that the category of negative half-line bimodules and the one of
+positive half-line bimodules are equivalent.
+Corollary 4.22. Given X ∈DHR(A•), let X+ be the A+-bimodule constructed in the same
+way as X−from a basis (ηi)i localized in some F ⊂[0, ∞). Let C+ be the idempotent completion
+of the category of A+-bimodules X+. The assignment
+HomC−(X−, Y−) →HomC+(X+, Y+),
+f 7→˜f|X+
+extends to a natural isomorphism between C−and C+.
+Proof. In analogy to Proposition 4.21, the morphism space HomC+(X+, Y+) is isomorphic to
+HomB0-A(X, Y ). Thus, composing the corresponding isomorphisms of C−and C+ morphism
+spaces the assertion follows.
+□
+Proposition 4.23. If the net A• fulﬁlls strict algebraic Haag duality, then the C∗-tensor cate-
+gories C−and Cmop
++
+are tensor equivalent.
+Proof. The functor given by the assignment
+Ω: C−→Cmop
++
+,
+X−7→X+,
+f 7→˜f|X+
+(X ∈DHR(A•))
+is essentially surjective by deﬁnition, and fully faithful by Corollary 4.22, and thus, an equiva-
+lence of categories. The restriction of the DHR braiding β : (X ⊠A Y )+ →Y+ ⊠A+ X+ endows
+Ωwith a monoidal structure. Indeed, β obeys the corresponding hexagon axiom and is natural
+for A−-bimodule maps, that is, the diagram
+(X ⊠A Y )+
+Y+ ⊠A+ X+
+(X′ ⊠A Y ′)+
+Y ′
++ ⊠A+ X′
++
+Ω(f⊗g)
+β
+Ω(g)⊗Ω(f)
+β
+commutes for every f ∈HomC−(X−, X′
+−) and g ∈HomC−(Y−, Y ′
+−). In order to check this,
+choose bases (ηX
+l )l and (ηY
+k )k of X and Y , respectively localized in F1 < F2 ⊂[0, ∞). On one
+hand, we have that
+Ω(g) ⊗Ω(f) ◦β(ηX
+t ⊗ηY
+s ) = ˜g(ηY
+s ) ⊗˜f(ηX
+t )
+On the other hand, Ω(f ⊗g) is explicitly given by
+Ω(f ⊗g)(ηX
+t ⊗ηY
+s ) =
+X
+i,j
+f(ξX
+i ) ⊗g(ξY
+j ) ⟨ξY
+j | ⟨ξX
+i |ηX
+t ⟩ηY
+s ⟩.
+Now, ηY
+s is localized to the right of ηX
+t
+and thus
+⟨ξY
+j | ⟨ξX
+i |ηX
+t ⟩ηY
+s ⟩= ⟨ξY
+j |ηY
+s ⟩⟨ξX
+i |ηX
+t ⟩,
+which in turn leads to
+Ω(f ⊗g)(ηX
+t ⊗ηY
+s ) =
+X
+i
+f(ξX
+i ) ⊗˜g(ηY
+s ) ⟨ξX
+i |ηX
+t ⟩.
+Now, by writing Ω(f ⊗g) in terms of the basis (ηX
+k ⊗ηY
+l )l,k, we obtain that
+β ◦Ω(f ⊗g)(ηX
+t ⊗ηY
+s ) =
+X
+i
+X
+l,k
+ηY
+l ⊗ηX
+k ⟨ηY
+l | ⟨ηX
+k |f(ξX
+i )⟩˜g(ηY
+s )⟩⟨ξX
+i |ηX
+t ⟩.
+14

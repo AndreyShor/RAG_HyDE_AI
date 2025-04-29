@@ -1,0 +1,165 @@
+12
+Appendix C: Fermionic part of the QBEs
+In order to derive the QBE, we employ the Dyson equation for the fermions [cf.
+Eq. (A8)], relevant for the G<
+component. While the details can be found in Refs. [35, 36, 39, 42], we present a brief outline for the convenience of the
+reader and, also, for setting up the notations. We multiply both the sides of Eq. (A8) with ˜G from the left and ˜G−1 from
+the right, subtract the result from Eq. (A8), and write the resulting (1, 2)th matrix-element as
+G−1
+0
+◦G< −G< ◦G−1
+0
+= Re[ΣR] ◦G< −G< ◦Re[ΣR] + Σ< ◦Re[GR] −Re[GR] ◦Σ<
++ Σ> ◦G< + G< ◦Σ> −Σ< ◦G> −G> ◦Σ<
+2
+.
+(C1)
+Here, the equilibrium Green’s functions and self-energies have been indicated by using the subscript “0”. Next, we per-
+form Fourier transformations on Eq. (C1), from the center-of-mass coordinates coordinates to their canonically-conjugate
+variables (see the discussions in Sec. II A). This leads to
+
+G−1
+0 (k) −Re[ΣR(k, xrel)], G<(k, xrel)
+
+PB −
+
+Σ<(k, xrel), Re[GR(k, xrel)]
+
+PB
+= −i
+
+Σ>(k, xrel) G<(k, xrel) −Σ<(k, xrel) G>(k, xrel)
+
+,
+(C2)
+where
+[A(k, xrel), B(k, xrel)]PB ≡
+3
+X
+i=1
+[∂xiA ∂kiB −∂kiA ∂xiB] = ∇rA · ∇pB −∇kA · ∇rB + ∂ωA ∂tB −∂tA ∂ωB .
+(C3)
+In order to study the dynamics not too-far-from the equilibrium, we linearize the resulting equation in the deviations
+parametrized by δG< ≡G<−G<
+0 , δRe[GR] ≡Re[GR]−Re[GR
+0 ], δΣ<(>) ≡Σ<(>)−Σ<(>)
+0
+, and δRe[ΣR] ≡Re[ΣR]−Re[ΣR
+0 ].
+All these exercises result in
+
+G−1
+0 (p + q/2) −G−1
+0 (p −q/2)
+
+δG<(p, q) −
+h
+Re[ΣR
+0 (p + q/2)] −Re[ΣR
+0 (p −q/2)]
+i
+δG<(p, q)
++
+
+G<
+0 (p + q/2) −G<
+0 (p −q/2)
+
+δ
+
+Re[ΣR(p, q)]
+
+−
+
+Σ<
+0 (p + q/2) −Σ<
+0 (p −q/2)
+
+δ
+
+Re[GR(p, q)]
+
++
+h
+Re[GR
+0 (p + q/2)] −Re[GR
+0 (p −q/2)]
+i
+δΣ<(p, q) = Icoll(p, q) ,
+where Icoll(p, q) = G<
+0 (p) δΣ>(p, q) + Σ>
+0 (p) δG<(p, q) −G>
+0 (p) δΣ<(p, q) −Σ<
+0 (p) δG>(p, q) .
+(C4)
+Here, p and q are connected with the relative and the centre-of-mass spacetime coordinates, respectively. Integrating both
+sides with respect to ξp, so that we can use the definitions in Eq. (19), we arrive at
+(Ω−vF |q| cos θpq) δf(ωp, θpq; Ω, q) −
+
+Re[ΣR
+0
+
+ωp + Ω
+2
+
+] −Re[ΣR
+0
+
+ωp −Ω
+2
+
+]
+
+δf(ωp, θpq; Ω, q)
++
+
+f0
+
+ωp + Ω
+2
+
+−f0
+
+ωp −Ω
+2
+
+δRe[ΣR(ωp, θpq; Ω, q)] =
+Z dξp
+2 π Icoll(ωp, θpq; Ω, q) ,
+(C5)
+where θpq = θp −θq, and
+Z dξp
+2 π Icoll(ωp, θpq; Ω, q) = f0(ωp) δΣ>(ωp, θpq; Ω, q) + Σ>
+0 (ωp) δf(ωp, θpq; Ω, q)
+−[f0(ωp) −1] δΣ<(ωp, θpq; Ω, q) −Σ<
+0 (ωp) δf(ωp, θpq; Ω, q) .
+(C6)
+In order to progress further, we need the expressions for the self-energies. Starting with
+Σ<(x1, x2) = i e2 G<(x1, x2) D>(x1, x2) ,
+the Fourier-transformed counterpart takes the form of
+Σ<(ωp, θpq; Ω, q) = i e2
+Z ∞
+−∞
+dν
+2 π
+Z
+d2k
+(2 π)2 G<(ωp + ν, p + k; Ω, q) D>(ν, k, ; Ω, q)
+= i e2 N0
+Z ∞
+0
+dν
+2 π
+Z dξk
+2 π
+Z dθkq
+2 π
+h
+G<(ωp + ν, ξk, θkq; Ω, q) D>(ν, k −p; Ω, q)
++ G<(ωp −ν, ξk, θkq; Ω, q) D<(ν, k −p; Ω, q)
+i
+,
+(C7)
+where N0 is the fermionic density-of-states at the Fermi surface.
+Also, we have used the property D>(k, xrel) =
+D<(−k, xrel), applicable for real bosons.

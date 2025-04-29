@@ -1,0 +1,72 @@
+βH = ⟨A1B+C+⟩−⟨A0B−⟩−⟨A0C−⟩−⟨B0C−⟩
+L
+≤1
+Q
+≤3
+2,
+(127)
+where B± = 1
+2(B0 ± B1) and C± = 1
+2(C0 ± C1).
+If Alice, Bob, and Charlie test this inequality and obtain an expected Bell value βH, the following
+tight analytical bound on the conditional entropy of Alice’s outcome A0 can be derived:
+H(A0|E) ≥1 −h
+1
+4
+
+βH + 1 +
+q
+β2
+H −3
+
+.
+(128)
+Moreover, the authors demonstrate that the entropy bounds for the Holz inequality remain non-
+zero below the GME threshold set by the MABK inequality. This implies that GME might not be a
+strict requirement for certifying the privacy of a single party’s outcome when testing multipartite Bell
+inequalities.
+4.4. Numerical techniques
+The main theoretical problem in QKD is calculating how much of a secret key can be extracted by a
+given protocol. A crucial practical issue is that the QKD protocols that are easiest to implement with
+existing technology do not necessarily coincide with the protocols that are easiest to analyze theoreti-
+cally. Furtheremore, existing analytical methods for calculating the key rate are highly technical and
+often limited in scope to particular protocols, and invoke inequalities that introduce looseness into the
+calculation. Therefore, putting efforts into numerical methods, which are inherently more robust to de-
+vice imperfections and protocol structure changes, is necessary.
+At the technical level, the key rate problem is an optimization problem, since one must minimize the
+well-known entropic formula (H(A|E)) for the key rate, over all states ρAB that satisfy Alice’s and Bob’s
+experimental data . Coles et al. [279] showed that the key rate r can be lowerbounded with the use of
+the dual problem by the following maximization problem
+r ≥Θ
+ln 2 −H(A | B),
+(129)
+where Θ = max⃗λ
+
+−∥P
+i Aai|¯xR(⃗λ)Aai|¯x∥−⃗λ.⃗γ
+
+(¯x is the key generating measurement) and R(⃗λ) =
+exp(−I −⃗λ.⃗Γ). ⃗Γ = {Γi} where Γi are bounded Hermitian operators dependent on the observed experi-
+mental data and ⃗λ = {λi} (λi = Tr(ρABΓi)). The key rate also can be lower bounded by applying direct
+optimization (primal problem) [280]
+r ≥α −ppassleakEC,
+(130)
+such that α = minρ∈C f(ρ) where f(ρ) is a convex function of ρ and leakEC denotes the number of bits
+Alice publicly reveals during error correction.
+To apply the EAT, as discussed in the previous section, a trade-off function must be computed that
+lower-bounds the amount of randomness produced in a single round. Existing results for the CHSH game
+[57] are highly specific to this case, with limited generalizability to other games. A particularly promising
+approach involves using SDP relaxations[234, 281] provide valuable techniques for studying classical and
+quantum advantages in DI and SDI protocols (see also [282]). Often, these methods can provide exact
+solutions to the problems at hand. However, the complexity of these techniques imposes limitations,
+especially when studying protocols involving higher-dimensional quantum systems.
+4.4.1. Lower bounds on the min-entropy
+A straightforward way to derive numerical lower bounds for von Neumann entropy minimization is
+through the use of min-entropy, as demonstrated in [283, 284]. The corresponding optimization of min-
+entropy can be formulated as a noncommutative polynomial over measurement operators. This problem
+can be relaxed into a semidefinite program (SDP) using the NPA hierarchy [285], which can then be
+solved efficiently. While this method provides a simple and effective way to lower bound the rates of
+various device-independent (DI) tasks, the min-entropy is generally much smaller than the von Neumann
+entropy. As a result, this approach often yields suboptimal outcomes. Therefore, to achieve optimal
+bounds, obtaining upper bounds on von Neumann entropy is both more efficient and essential.
+47

@@ -1,0 +1,60 @@
+𝐵𝑉𝑧𝑉𝑧(∆𝜺) = 3𝑉𝑧
+2 {sin2 𝜃𝑠
+2
+[𝑗0(𝑘∆𝜀) −𝑗1(𝑘∆𝜀)
+𝑘∆𝜀
+] + cos2 𝜃𝑠 𝑗1(𝑘∆𝜀)
+𝑘∆𝜀
+} 
+ (2) 
+where 𝐵𝑉𝑧𝑉𝑧 represents the autocorrelation function of 𝑉𝑧, while 𝑉𝑧
+2 denotes the expected value 
+of the squared particle velocity magnitude 𝑣𝑞𝑙
+2   averaged over both 𝑞 and 𝑙 instances. The 
+functions 𝑗0 and 𝑗1 are spherical Bessel functions of the first kind of zero and first order, 
+respectively, and 𝜃𝑠 denotes the angle between ∆𝜀 and the z-axis. By performing an angular 
+integration of the autocorrelation function over 𝜃𝑠 from 0 to 2π within two-dimensional planes, 
+the angular integral autocorrelation (𝐵𝐴𝐼𝐴) expressions for the xy, xz, and yz planes are derived 
+[39] as 
+𝐵𝐴𝐼𝐴𝑥𝑦(∆𝜌) = 3
+2 𝑉𝑧̅ 2 [𝑗0(𝑘∆𝜌) −𝑗1(𝑘∆𝜌)
+𝑘∆𝜌
+] 
+ (3.a) 
+𝐵𝐴𝐼𝐴𝑥𝑧(∆𝜌) = 𝐵𝐴𝐼𝑦𝑧(∆𝜌) = 3
+4 𝑉𝑧̅ 2 [𝑗0(𝑘∆𝜌) + 𝑗1(𝑘∆𝜌)
+𝑘∆𝜌
+] 
+ (3.b) 
+where ∆𝜌 represents the one-dimensional lag in the angular integral autocorrelation argument. 
+The local wavenumber 𝑘 is extracted by analyzing the 2D autocorrelation function within a 
+localized region of a reverberant field and fitting the resulting autocorrelation profiles to 
+Equation 3.a or 3.b, depending on the plane configuration. Given the excitation frequency 𝜔, 
+the shear wave speed 𝐶𝑠 is determined using the relation 𝐶𝑠= 𝜔/𝑘. 
+To implement the angular integral autocorrelation approach in a multi-frequency 
+reverberant shear wave field, it is essential to extract the particle velocity at each frequency 
+using a bandpass filter. This method enables the separate estimation of SWS for each frequency. 
+By incorporating multiple frequencies into the SWS estimation process, a more comprehensive 
+analysis of shear wave behavior is achieved, leading to improved diagnostic capabilities and 
+deeper insight into tissue dynamics. 
+The power-law model provides a mathematical framework for characterizing the frequency-
+dependent dispersion of SWS in viscoelastic bio-materials. Within the Kelvin-Voigt fractional 
+derivative model, this relationship is expressed as 
+𝐶𝑠(𝑓) = 𝐶0𝑓
+𝑎
+2 
+ (4) 
+where 𝑓 is the frequency, 𝐶0 represents the reference wave speed at a unit reference frequency 
+(e.g., 1 Hz), and 𝑎 is the dispersion coefficient [28] of the complex shear modulus. 
+ 
+3. Multi-frequency reverberant elastography simulation 
+The k-Wave toolbox in MATLAB (version 2022b, The MathWorks, Inc., Natick, MA, USA) 
+[40] was employed to assess the effectiveness of multi-frequency reverberant shear wave fields 
+for SWS estimation. The simulation involved a two-sided medium, consisting of a softer side 
+with an SWS of 1 m/s and a stiffer side with an SWS of 2 m/s, as depicted in Fig. 1(a). The 
+model was constructed as a cube with dimensions of 12 mm × 12 mm × 2.4 mm. Both the softer 
+and stiffer sides were modeled as homogeneous isotropic materials with a density of 1000 
+kg/m³. 
+In order to generate a multi-frequency reverberant shear wave field, 1000 point-velocity 
+excitation sources were utilized. The region of interest (ROI) was defined as a smaller cube 
+with dimensions of 10 mm × 10 mm × 2 mm (Fig. 1). To create a source-free reverberant 

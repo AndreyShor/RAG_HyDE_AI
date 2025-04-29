@@ -1,0 +1,98 @@
+20
+19
+18
+Energy (arbitrary units)
+0.00
+0.25
+0.50
+0.75
+1.00
+Probability
+Simulated Annealing
+(a)
+0
+50
+100
+Energy (arbitrary units)
+0.0
+0.1
+0.2
+0.3
+Probability
+Min constrained prob energy
+VQE - State Vector
+(b)
+20
+18
+16
+14
+12
+10
+Energy (arbitrary units)
+0.0
+0.2
+0.4
+Probability
+Quantum Annealing
+(c)
+0
+50
+100
+Energy (arbitrary units)
+0.0
+0.1
+0.2
+0.3
+Probability
+VQE - QPU
+(d)
+20
+15
+10
+5
+0
+Energy (arbitrary units)
+0.00
+0.05
+0.10
+Probability
+Random Sampling
+(e)
+Figure 3: The distributions as a function of energy obtained from each method on the 18 variable problem, without
+post-selection. Quantum annealing was performed on D-Wave’s 5612 physical qubit Advantage System 6.4. The
+VQE results were obtained using a noiseless state vector solver and the real 156 qubit ibm_fez QPU. Experiments
+were repeated 10 times to produce accumulated distributions which have been normalised. The minimum constrained
+problem energy represented by the red dashed line is −20 in our units. Note that the distribution for the brute force
+method is omitted, as it is a trivial delta function distribution centred on the exact solution. The hyperparameters
+used for simulated annealing were: λ = 3, the temperature range was set at β = [0.1, 10] with 1000 iterations
+(sweeps) and number of repeats = 1000. Quantum annealing with minor embedding: λ = 1, chain strength = 3,
+the annealing time = 1400 ns and the number of shots = 1000. For VQE: λ = 3, with the RealAmplitudes ansatz,
+using CVaR α = 0.4, COBYLA with tol = 1, and shots = 10000. For random sampling λ = 5 and 1000 samples
+were used.
+5.1
+Quantum Annealing Results
+The quantum annealing distribution in Figure 3
+is skewed closer to the optimal solution than ran-
+dom sampling, so it has better general perfor-
+mance in the sense of solution quality, as reflected
+in the optimal solution probability metrics in Ta-
+ble 1. The optimal solution, for the rest of this
+section, being the optimal energy among the so-
+lutions that respect the fixed vacancy constraint
+in the QUBO. However, solutions below the min-
+imum constrained problem energy are also found.
+This is a consequence of the small penalty coeffi-
+cient λ which was found from hyperparameter op-
+timisation. If λ is large this increases the QUBO
+energy range and results in a smaller spectral gap
+in the annealing Hamiltonian.
+A smaller spec-
+tral gap means that more non-adiabatic effects
+are likely, which can cause erroneous results.
+Comparing the quantum annealing distribution
+in Figure 3 with the post-selected distribution
+in Figure 4, we see that the post-selected distri-
+bution has support over a smaller range of en-
+ergies because high-energy/less-optimal solutions
+are invalid and are removed, as expected. The
+11

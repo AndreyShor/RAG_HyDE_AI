@@ -1,0 +1,110 @@
+2
+aiming at a thorough monitoring of user communications.
+In this paper, we introduce it to quantum communica-
+tion and refer to it as the controller in classical, quantum,
+and post-quantum cryptography.
+In public key cryptography, the controller is deﬁned
+as a traditional adversary who further possesses users’
+private keys [22, 23], violating the fundamental assump-
+tion of public key cryptography that user private keys
+are kept secret.
+In this paper, we consider an even more powerful
+controller who controls the entire communication infras-
+tructure, including both classical and quantum channels.
+This controller can force users to submit any local secrets
+for which it has evidence of existence. Additionally, it is
+itself a quantum computer.
+More speciﬁcally, anticipating future challenges, we en-
+vision an extremely powerful controller who is not satis-
+ﬁed with merely possessing users’ private keys in pub-
+lic key cryptography.
+This controller completely bans
+both classical and post-quantum public key cryptogra-
+phy and further seeks to control quantum communica-
+tion. Such a controller is a plausible scenario within the
+next 30 years, particularly in specialized contexts like
+low-frequency and high-security environments.
+We analyze how this controller could undermine ex-
+isting quantum protocols and how users could achieve
+covert communication under its control.
+We will call the users Alice and Bob, the eavesdropper
+Eve, and the controller Colin.
+II.
+COVERT COMMUNICATION IN BB84
+Unlike public key cryptography, there is no clear or
+general concepts of public or private keys in quantum
+communication. Hence the deﬁnition of the dictator [22]
+in public key cryptography does not naturally extend to
+quantum communication.
+For quantum communication, it is perhaps more ap-
+propriate to deﬁne the controller in terms of speciﬁc pro-
+tocols or speciﬁc types of protocols.
+A.
+Controller for BB84
+We take BB84 [19] as an example and see what the
+controller can do to control quantum communication.
+BB84 was the ﬁrst quantum cryptography protocol
+ever invented.
+The main idea of BB84 is to agree on
+random photon states through random basis matching.
+It runs as follows:
+1. Quantum Transmission Phase:
+• Alice generates two random strings a
+=
+(a1, . . . , an) ∈{0, 1}n (basis selection string)
+and b = (b1, . . . , bn) ∈{0, 1}n (state se-
+lection string), prepares a sequence of pho-
+tons |ϕa1b1⟩, . . . , |ϕanbn⟩such that |ϕ00⟩= |0⟩,
+|ϕ01⟩= |1⟩, |ϕ10⟩= |+⟩, and |ϕ11⟩= |−⟩, and
+sends them to Bob over a quantum channel.
+• Bob generates a random basis selection string
+a′ = (a′
+1, . . . , a′
+n) ∈{0, 1}n and measures
+each photon |ϕaibi⟩in the computation basis
+{|0⟩, |1⟩} if a′
+i = 0 or in the Hadamard basis
+{|+⟩, |−⟩} if a′
+i = 1, resulting in a state char-
+acteristic string b′ = (b′
+1, . . . , b′
+n) where b′
+i = 0
+if |ϕaibi⟩= |0⟩or |+⟩, or b′
+i = 1 if |ϕaibi⟩= |1⟩
+or |−⟩.
+2. Parameter Estimation Phase:
+• Alice and Bob disclose their basis selection
+strings a and a′ in a classical channel, dis-
+card the bits in b and b′ where a and a′ do
+not match, resulting in substrings c ∈{0, 1}k
+and c′ ∈{0, 1}k of b and b′.
+• Alice randomly parses c into substrings d ∈
+{0, 1}k1 and e ∈{0, 1}k2, where k1 < k2, and
+discloses the positions of d to Bob.
+• Bob parses c′ in the same way to get the cor-
+responding substrings d′ and e′ of c′.
+• Alice and Bob disclose d and d′ to calculate
+and estimate the error rate.
+3. Key Reconciliation Phase:
+• If the error rate is not higher than a predeﬁned
+threshold t, they use information reconcilia-
+tion (e.g., an error correcting code) to turn e
+and e′ into a shared secret s and then use pri-
+vacy ampliﬁcation (e.g., a hash function) to
+turn s into a shared key K; otherwise if the
+error rate is higher than t, they abandon this
+communication.
+Note that there are three main secrets in BB84:
+1. the ﬁnal shared secret s;
+2. the state selection string b;
+3. the basis selection string a.
+We deﬁne three controllers to demand one of the three
+secrets respectively. Speciﬁcally:
+Controller I: The ﬁrst controller demands s from
+Alice and Bob after the BB84 execution is com-
+pleted;
+Controller II: The second controller demands Al-
+ice’s b before she sends photons to Bob;
+Controller III: The third controller demands Al-
+ice’s a before she sends photons to Bob.

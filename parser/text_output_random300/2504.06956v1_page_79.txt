@@ -1,0 +1,132 @@
+Brownian bridge above a curve
+79
+Proof. For a, k > 1 and s ≥0, we define the events
+A±
+s
+def=
+
+inf
+r∈[s,b](Br ± ζa,k(r)) > 0
+
+,
+so that the probability in the statement can be written as P0,u,b(A+
+0 \ A−
+s ). For x ≥ζa,k(s), we have
+that
+P0,u,b(A+
+0 \ A−
+s )
+P0,u,b(A+
+0 )
+= 1 −P0,u,b(A+
+0 ∩A−
+s )
+P0,u,b(A+
+0 )
+≤1 −P0,u,b(A+
+0 ∩A−
+s ∩{Bs ≥x})
+P0,u,b(A+
+0 )
+.
+(A.20)
+Our goal now is to find a suitable lower bound for the probability in the numerator on the right
+hand-side of (A.20). To this end, we define the event
+A+
+0,s
+def=
+
+inf
+r∈[0,s](Br + ζa,k(r)) > 0
+
+,
+and we note that
+P0,u,b(A+
+0 ∩A−
+s ∩{Bs ≥x}) = E0,u,b
+h
+1{A+
+0,s∩{Bs≥x}}P0,u,b(A−
+s | σ((Br)r≤s))
+i
+.
+For any s ∈(0, b/2], on the event {Bs ≥x}, thanks to Proposition A.4 and Lemma A.7, we have that
+there exists a constant c1 = c1(a) > 0 such that
+P0,u,b(A−
+s | σ((Br)r≤s)) ≥2Bsu
+b −s
+
+1 −c1
+ζa,k+s(0)
+x
++ [log(e + x4)]2
+x
++ ob(1)
+
+.
+Similarly, for any s ∈(0, b/2], on the event {Bs ≥x}, thanks to Proposition A.5 and Lemma A.7, we
+have that there exists a constant c2 = c2(a) > 0 such that
+P0,u,b(A+
+s | σ((Br)r≤s)) ≤2Bsu
+b −s
+
+1 + c2
+ζa,k+s(0)
+x
++ ζa,k+s(0)2
+x2
++ [log(e + x4)]4
+x
++ ob(1)
+
+.
+Therefore, denoting by δ and eδ the two error terms in the previous two displays, we have that
+P0,u,b(A+
+0 ∩A−
+s ∩{Bs ≥x}) ≥1 −δ
+1 + eδ
+P0,u,b(A+
+0 ∩{Bs ≥x}) ,
+and so
+P0,u,b(A+
+0 ∩A−
+s ∩{Bs ≥x})
+P0,u,b(A+
+0 )
+≥1 −δ
+1 + eδ
+P0,u,b(A+
+0 ∩{Bs ≥x})
+P0,u,b(A+
+0 )
+= 1 −δ
+1 + eδ
+
+1 −P0,u,b(A+
+0 ∩{Bs ≤x})
+P0,u,b(A+
+0 )
+
+.
+(A.21)
+Now, by using (A.2), we note that, by possibly taking b > 0 large enough depending on k and a, it
+holds that
+P0,u,b(A+
+0 ) ≥P0,u,b(τ−ζa,k(0) > b) ≥2ζa,k(0)(u + ζa,k(0))
+b
+
+1 −ζa,k(0)(u + ζa,k(0))
+b
+
+≥ζa,k(0)(u + ζa,k(0))
+b
+,
+By using this estimate along with Lemma A.8, we obtain that there exists a constant c3 = c3(a) such
+that, for all x ≥ζa,k(s),
+P0,u,b(A+
+0 ∩{Bs ≤x})
+P0,u,b(A+
+0 )
+≤c3
+ux2
+ζa,k(0)(u + ζa,k(0))√s .

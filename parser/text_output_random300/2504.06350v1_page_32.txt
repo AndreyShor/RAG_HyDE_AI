@@ -1,0 +1,90 @@
+path i = 1, a fixed measurement Nλ is performed on Alice’s system, yielding a classical outcome λ
+with the probability distribution p(a|x, λ), and transmit it to A1.
+• Fully quantum marginal correlations: denoted as Mqq, the fully quantum marginal correlations
+are where the source prepares on Alice’s side a pair of systems A = (A0, A1) and if i = 0 (i = 1) the
+relay routs the first subsystem to the device A0 (A1). The resulting correlations can be encompassed
+to the bipartite marginals of qqq-correlations
+p(a0, a1, b|x0, x1, y) = Tr[ρA0A1BMa|x,0 ⊗Ma|x,1 ⊗Mb|y].
+(79)
+• Quantum-classical marginal correlations: denoted as Mqc, the quantum-classical marginal
+correlations can be obtained by further restricting the state ρA0A1B to be a qqc-state as
+ρA0A1B =
+X
+λ
+p(λ)ρA0B ⊗|λ⟩⟨λ|A1 .
+(80)
+All the above correlations can be written as
+p(a, b, i) = Tr[ρMa|xiMb|y],
+(81)
+where Ma|xi and Mb|y are projectors that satisfy the following commutation relations for each subset
+[Ma|xi, Mb|y] = 0,
+if p ∈Q,
+(82)
+[Ma|xi, Mb|y] = 0,
+[Ma|x1, Ma′|x′1] = 0,
+if p ∈QSR,
+(83)
+[Ma|xi, Mb|y] = 0,
+[Ma|x0, Ma′|x′1] = 0,
+if p ∈Mqq,
+(84)
+[Ma|xi, Mb|y] = 0,
+[Ma|x0, Ma′|x′1] = 0,
+[Ma|x1, Ma′|x′1] = 0,
+if p ∈Mqc.
+(85)
+which follows from the fact that each of the tensor products between subsystems in definition 15 can be
+replaced by commutation relations.
+As a result, the above representation fits in the framework of non-commutative polynomial optimization,
+which means that the sets defined in 15 can be outer-approximated through SDP hierarchies.
+Trade-off relations between S0 and S1. Let us consider a realistic CHSH scenario in which the source and
+measurement devices are imperfect. Considering the situation described in fig. 9, when i = 0 Alice places
+her measurement device A0 close to the source achieving an effective detection efficiencies, ηA0, whereas
+when i = 1, she places her device A1, further away from the source, therefore ηA1 ≤ηA0. Similarly, for
+effective visibilities vA1 ≤vA0, which result in the following quantum state shared between (Ai, B)
+ρ(vi) = vAivB |ψ⟩⟨ψ| + vAi(1 −vB)(ρB ⊗I
+2 ) + (1 −vAi)vB(I
+2 ⊗ρA) + (1 −vAi)(1 −vB)I4
+4 ,
+(86)
+where ρA(B) = TrB(A)(|ψ⟩⟨ψ|). Treating i ∈{0, 1} as an additional Alice’s input, denoting the location
+of her measurement device, the CHSH value is also dependent on i, which we denote by Si. The following
+theorem captures the tradeoffs between S0 and S1 [247]
+Theorem 4. If a loophole-free nonlocal correlation between (A0, B) is witnessed S0 > 2, then loophole-free
+nonlocal correlations between (A1, B) can be certified whenever the following inequality is violated
+S1 ≤
+q
+8 −S2
+0.
+(87)
+Proof. The short range correlations that were considered in [247] are represented as
+p(a, b|x, y, i) =
+(P
+λ p(λ)Tr[ρλ
+A0BMa|x0 ⊗Mb|y]
+if i = 0,
+P
+λ p(λ)p(a|x, λ)p(b|y, λ)
+if i = 1.
+(88)
+The intuition for the proof is as follows: for simplicity consider the case where S0 = 2
+√
+2. Then, by
+standard self-testing result 2.3, it can be inferred that the measurement {Bb|x} corresponds to a Pauli
+measurement on a two-dimensional subspace of B that is maximally entangled with A0. In particular,
+the Bob’s measurement outcomes must be fully random and uncorrelated with the classical instructions
+λ shared with B which result in p(b|y, λ) = p(b|y) =
+1
+2 for all λ’s which gives S1 = 0 Although the
+assumption that S0 = 2
+√
+2 is too strong, for any value S0 > 2 there is a bound on how much the outcomes
+of POVM {Bb|y} can be correlated to other systems besides. Particularly p(b|x, λ) ≤1
+2(1 +
+√
+8−S2
+0
+2
+) for
+all λ [59], which result in the bound (87).
+32

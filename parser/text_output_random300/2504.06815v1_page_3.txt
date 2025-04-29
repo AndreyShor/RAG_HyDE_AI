@@ -1,0 +1,119 @@
+baked-based volumes to obtain visibility and leverage the
+unconstrained spherical harmonics (SH) to learn residual
+terms as the indirect illumination, which is challenging to
+achieve natural indirect lighting, due to the lack of physical
+constraints. Our approach not only extends the Gaussian
+representation but also models lighting physically, further
+improving the decoupling of material and lighting.
+3. Preliminaries
+Gaussian surfel splatting.
+Gaussian Surfel Splatting
+(GSS), also referred to as 2D Gaussian Splatting (2DGS), is
+a lower-dimensional form of 3DGS. 3DGS uses Gaussians
+to represent a scene, with the Gaussians defined as
+G(x) = e−1
+2 (x−µ)T Σ−1(x−µ),
+(1)
+where µ and Σ denotes the mean and covariance matrix of
+the 3D Gaussian, representing the position and shape of the
+Gaussian points. Σ can be decomposed into the multipli-
+cation of a rotation matrix R and a scaling matrix S, as
+Σ = RSST RT , while the Gaussian Surfels differ as the S
+is defined in 2-dimensional as,
+S = Diag(sx, sy, 0).
+(2)
+Similarly to 3DGS, the color C of each pixel is computed
+by alpha-blending all the ordered Gaussians overlapping the
+pixel:
+Ti =
+i−1
+Y
+j=1
+(1 −αj),
+(3)
+C =
+n
+X
+i=0
+Ticiαi,
+(4)
+αi = G
+′(u; ui, Σ
+′
+i)oi.
+(5)
+where ci is the color of each Gaussian, and αi is a multi-
+plication between opacity oi and Gaussian Filter G
+′ [39] by
+the 2D covariance matrix in the screen space of the Gaus-
+sian surfels.
+4. Method
+In this section, we first introduce our new Spatially-varying
+Gaussian representation (Sec. 4.1). Next, we present our
+inverse rendering framework built on the SVG representa-
+tion (Sec. 4.2), followed by the physically-based illumina-
+tion model (Sec. 4.3).
+4.1. Spatially-varying Gaussian representation
+For Gaussian-based inverse rendering approaches, we no-
+tice obvious artifacts in both training and testing views,
+as shown in Fig. 6. The reason behind this phenomenon
+is that, each Gaussian is tailored with a constant material
+parameters conducting an uniform color, which is not ca-
+pable of capturing spatially-varying color across the area
+of the Gaussian. Therefore, we propose a novel Gaussian
+representation–Spatially-varying Gaussian (SVG), which
+allows spatially-varying materials, to replace the original
+Gaussian (i.e., Constant Gaussian).
+In our Spatially-varying Gaussian, we define several rep-
+resentative locations at each Gaussian, where these loca-
+tions have different material parameters. Analogous to the
+concept of vertex for a triangle, we name a representative
+location as a Gaussian vertex. The Constant Gaussian is a
+special case in our definition, which only has one Gaussian
+vertex. We build the Gaussian vertex based on 2D Gaussian,
+parameterizing on the tangent space of each Gaussian. The
+tangent space is defined with rotation matrix R and then
+is stretched by the scaling matrix S. When querying at-
+tributes at any locations on the Gaussian, we interpolate the
+attribute values of Gaussian vertices to achieve spatially-
+varying properties.
+By attaching attributes at Gaussian vertices, the capabil-
+ity of Gaussians can be enhanced to better fit a given distri-
+bution, as shown in Fig. 2.
+4.2. SVG-IR framework
+Now, we introduce our inverse rendering framework–SVG-
+IR, on top of the SVG representation.
+The core of our
+framework is the rendering of Spatially-varying Gaussians
+and the physically-based illumination modeling, which will
+be presented in the next section.
+We use Spatially-varying Gaussians with M Gaussian
+vertices as our Gaussian primitives, set as 4 in practice. Be-
+sides the parameters defined for Gaussians (covariance Σi,
+position µ, color ci and opacity oi), we introduce material
+parameters for each Gaussian vertex: albedo ai and rough-
+ness ri defined by the Disney Principled BRDF model [21].
+We also set a normal offset ∆Ni at each Gaussian vertex.
+Here, the offset indicates the difference from the Gaussian
+normal N g
+i defined by Gaussian covariance. Now, Gaus-
+sian i has the following attributes: covariance Σi, position
+µi, radiance color ci, opacity oi, albedo a{M}
+i
+, roughness
+r{M}
+i
+and normal offset ∆N {M}
+i
+.
+Spatially-varying Gaussian splatting.
+Inspired by the
+rasterization of triangles, we propose a novel rendering
+scheme for SVG, consisting of Gaussian vertex shading and
+Gaussian fragment shading. In the Gaussian vertex shad-
+ing, the radiance of each Gaussian vertex is computed us-
+ing the physically-based lighting (see Sec. 4.3), leading to
+M colors c{M}i for each Gaussian. Then, in the fragment
+shading, given a camera ray, the radiance of each Gaussian
+is computed by interpolating among M colors, followed by
+alpha blending, to obtain the radiance of each pixel.

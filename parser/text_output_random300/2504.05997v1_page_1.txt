@@ -1,0 +1,48 @@
+arXiv:2504.05997v1  [quant-ph]  8 Apr 2025
+Note on the Universality of Parameterized IQP Circuits with Hidden Units for Generating
+Probability Distributions
+Andrii Kurkin,1,2, 3 Kevin Shen,1,2, 3 Susanne Pielawa,3 Hao Wang,1, 2 and Vedran Dunjko1,2
+1⟨aQaL⟩Applied Quantum Algorithms, Leiden University, The Netherlands
+2LIACS, Leiden University, Niels Bohrweg 1, 2333 CA, Leiden, The Netherlands
+3BMW Group, 80788 M¨unchen, Germany
+(Dated: April 9, 2025)
+In a series of recent works, an interesting quantum generative model based on parameterized instantaneous
+polynomial quantum (IQP) circuits has emerged as they can be trained efﬁciently classically using any loss
+function that depends only on the expectation values of observables of the model. The model is proven not to be
+universal for generating arbitrary distributions, but it is suspected that marginals can be - much like Boltzmann
+machines achieve universality by utilizing hidden (traced-out in quantum jargon) layers. In this short note, we
+provide two simple proofs of this fact. The ﬁrst is near-trivial and asymptotic, and the second shows universality
+can be achieved with a reasonable number of additional qubits.
+I.
+INTRODUCTION
+Recently, a promising quantum generative model has been proposed and demonstrated to be efﬁciently trainable at scale [1, 2].
+The model is a type of Quantum Circuit Born Machine (QCBM) [3, 4], with the circuit speciﬁcally chosen as a parameterized
+instance of Instantaneous Quantum Polynomial (IQP) circuit [5, 6]. The model prepares an n-qubit state from a parameterized
+IQP circuit, and measuring each qubit in the computational basis will generate a bitstring of length n. We will call this model
+IQP-QCBM.
+In Ref. [1], it was shown that an IQP-QCBM with n qubits cannot represent arbitrary probability distributions over n-
+bitstrings. Although the model provides 2n −1 complex phases, these are insufﬁcient for universality. However, the authors
+pointed out a potential pathway toward universality: the model may be universal with additional qubits, i.e., by applying circuits
+on m + n qubits and considering the marginal distributions on n qubits (tracing out the ﬁrst m qubits) [1].
+In this short note, we provide two simple constructive proofs that IQP-QCBMs with additional qubits are indeed universal. In
+Section II, we give deﬁnitions needed for the proof. In Section III, we present the main results. We close with a discussion in
+Section IV.
+II.
+PRELIMINARIES
+Deﬁnition 1 (Parameterized IQP-circuit [1, 2]). A parameterized IQP circuit on n qubits is a circuit with the following con-
+struction:
+(i) initialize in the state |0⊗n⟩,
+(ii) apply a sequence of parameterized gates of the form exp(iθjXj), where Xj is a tensor product of Pauli X operators
+acting on a subset of the qubits,
+(iii) measure all qubits in the computational basis.
+The model above is equivalent to a model where, in place of (ii), we consider a three-layer model where we ﬁrst apply a
+layer of Hadamard gates, followed by arbitrary diagonal operators (with respect to the computational basis), and a ﬁnal layer of
+Hadamard operators. In our derivations, we will be utilizing this representation.
+Deﬁnition 2 (Parameterized IQP circuit with hidden units). A parameterized IQP circuit with hidden units is a parameterized
+IQP circuit in which a chosen subset of qubits is traced out.
+We have here adopted the terminology from the model of Boltzmann machines where analogously using additional neurons
+that are traced out (marginalized), we obtain universality (see [7]).
+Deﬁnition 3 (k-sparse distribution). Consider a probability distribution p on the discrete sample space X. p is said to be
+k-sparse if p has nonzero probability mass for at most k outcomes, i.e.,
+|{x ∈X|p(x) > 0}| ≤k
+(1)

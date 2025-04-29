@@ -1,0 +1,55 @@
+Main results
+8
+Theorem A. For each λ > 0, there exists a continuous random field eΥλ on Rd such that, for any
+function F ∈Cb
+loc(C(Rd)), one has
+E[F(eΥλ)] = lim
+b→∞E[F(Υb) | M0,b(Υb) ≤λ] = lim
+b→∞E[F(Υ∞) | M0,b(Υ∞) ≤λ] .
+(2.5)
+We emphasise that the existence of the weak limits in (2.5) is part of the statement. We also observe
+that the conditioning on the right-hand side of (2.5) is singular as b →∞. More precisely, by letting
+α
+def=
+√
+2/π ,
+we have the following result.
+Theorem B. For each λ > 0, there exists a constant c⋆,λ > 0, such that
+lim
+b→∞
+√
+b P(M0,b(Υ∞) ≤λ) = α c⋆,λ .
+Remark 2.5. In Section 4, we introduce a characterisation of the field Φb in terms of a stochastic
+integral driven by a one-dimensional Brownian motion (Bt)t≥0 (as a cartoon, think of this as being
+a smoothened out version of the field x 7→−Blog |x|), plus an independent centred Gaussian field,
+see (4.1). In particular, we will prove a stronger version of Theorems A and B, where we also
+allow conditioning on the value of B at time b. We refer to Propositions 4.1 and 4.2 for the precise
+statements.
+Remark 2.6. Although we don’t have an explicit representation for the constant c⋆,λ, we will see in
+(4.44) below that it is given by
+c⋆,λ = lim
+k→∞E[Bk1{Bk∈[k1/6,k5/6]}1{M0,k(Υk)≤λ}] ,
+(2.6)
+with B and Υk related as in Remark 2.5. The exponents 1/6 and 5/6 appearing here are of course
+unimportant and could probably be replaced by any values in (0, 1/2) and (1/2, ∞) respectively. We
+refer to Lemma 4.18 for a proof of the fact that c⋆,λ ∈(0, ∞).
+We recall that the introduction of a threshold λ > 0 in Theorems A and B is necessary due to the
+continuous setting in which we are working. In such a context, conditioning on the event that a
+field, which is zero at the origin, remains negative is ill-posed. However, it is desirable to define
+a “canonical” field that captures the local structure of X around an extremal point, without being
+arbitrarily dependent on λ.
+To achieve this, we introduce below a field Ψλ, which is essentially just eΥλ shifted to move its
+maximum to the origin, but under a slightly tilted law. At first glance, it may seem contradictory to
+define a field that we claim is independent of λ while still denoting it as Ψλ. This notation arises
+because, from its definition, it is not immediately evident that Ψλ is indeed independent of the
+threshold λ. However, this independence (albeit in a slightly weaker sense) will be established a
+posteriori (see Proposition 2.13).
+Before defining the field Ψλ, for all x ∈Rd, we introduce the shift operator τx : C(Rd) →C(Rd) by
+τxf(·) = f(· + x) −f(x) ,
+∀f ∈C(Rd) .
+(2.7)
+Furthermore, we let Λ ⊆R+ denote the uncountable set introduced in Lemma 5.1 below. Roughly
+speaking, Λ consists of the “good thresholds” λ for which the law of the field eΥλ exhibits some desirable
+properties. More precisely, these bad values are those values of λ such that P(supx∈Rd eΥλ(x) = λ) > 0
+or P(|{y ∈Rd : eΥλ(y) = supx∈Rd eΥλ(x) −λ}| > 0) > 0 where |·| denotes Lebesgue measure. We
+emphasise that we don’t expect any such bad values to exist, i.e., we expect that Λ = R+. However,

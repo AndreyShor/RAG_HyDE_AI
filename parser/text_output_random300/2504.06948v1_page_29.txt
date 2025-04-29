@@ -1,0 +1,222 @@
+29
+Finally, using the fact that
+k+1
+X
+i=1
+|f
+W −1
+i,k+1| =
+k+1
+X
+i=1
+f
+W −1
+i,k+1 = 1T f
+W −1ek+1 =
+√
+k + 1eT
+k+1 f
+W f
+W −1ek+1 =
+√
+k + 1,
+we get
+∥f
+W −1∥2 ≤∥f
+W −1∥F =
+v
+u
+u
+t
+k+1
+X
+j=1
+k+1
+X
+i=1
+f
+W −1
+ij
+
+2
+=
+v
+u
+u
+t
+k
+X
+j=1
+k+1
+X
+i=1
+f
+W −1
+ij
+
+2
++
+k+1
+X
+i=1
+f
+W −1
+i,k+1
+
+2
+≤
+v
+u
+u
+u
+t
+k
+X
+j=1
+k+1
+X
+i=1
+f
+W −1
+ij
+ +
+ k+1
+X
+i=1
+f
+W −1
+i,k+1
+
+!2
+≤
+p
+4(k + 1) log(k + 1) + k + 1 =
+p
+(k + 1)(4 log(k + 1) + 1).
+Here, we use the fact that
+f
+W −1
+ij
+ ≤1 for all 1 ≤i ≤k + 1 and 1 ≤j ≤k in the second inequality.
+Proof of Lemma III.4. Since A is Hermitian and negative semi-definite, by unitary similarity transformation,
+Wk(A) is unitarily similar to a block diagonal matrix. Each diagonal block has the same structure as Wk(A)
+but with scalar blocks. Therefore, without loss of generality, we assume A = −λ, where λ ≥0. Next, applying
+Lemma A.4, we obtain the bound
+Wk(A)−1
+2 ≤
+p
+(k + 1)(4 log(k + 1) + 1).
+Lemma A.5. For any matrix A ∈Cn×n, if the matrix Wk(A) defined by Eq. (20) is invertible, then the
+inverse is given by
+Wk(A)−1 =
+h
+Ik+1 ⊗(Dkk(A))−1i
+×
+
+
+dk
+√
+k + 1(−A)k
+dk
+dk
+Pk−1
+j=0 dj(−A)j
+· · ·
+dk
+d2
+P1
+j=0 dj(−A)j+k−2
+dk
+d1 d0(−A)k−1
+dk−1
+√
+k + 1(−A)k−1 −dk−1
+dk
+Pk
+j=k dj(−A)j−1 ...
+...
+...
+...
+...
+...
+d2
+d2
+P1
+j=0 dj(−A)j
+d2
+d1 d0(−A)
+d1
+√
+k + 1(−A)
+−d1
+dk
+Pk
+j=k dj(−A)j−k+1 · · ·
+−d1
+d2
+Pk
+j=2 dj(−A)j−1
+d1
+d1 d0In
+d0
+√
+k + 1In
+−d0
+dk
+Pk
+j=k dj(−A)j−k
+· · ·
+−d0
+d2
+Pk
+j=2 dj(−A)j−2
+−d0
+d1
+Pk
+j=1 dj(−A)j−1
+
+
+.
+Proof. Applying the discussion in Lemma A.4, we can directly write each block of Wk(A)−1.
+Proof of Lemma III.5. First, using Lemma C.1, we have
+Dkk(A)−1
+2 ≤
+2
+3 −e.
+Next, we construct a (k + 1) × (k + 1) matrix c
+W satisfying
+c
+Wls =
+
+
+
+
+
+dl−1
+dt
+Pt−1
+j=0 dj,
+s ≥2, t + 1 ≤l ≤k + 1,
+dl−1
+dt
+Pk
+j=t dj,
+s ≥2, 1 ≤l ≤t,
+√
+k + 1dk+1−l,
+s = 1,
+where we define t = k + 2 −s for simplicity. Then, by Lemma A.5 and Lemma A.2, we have
+Wk(A)−1
+2 ≤
+Dkk(A)−1
+2 ·
+c
+W
+
+2 ≤
+2
+3 −e
+c
+W
+
+2 .

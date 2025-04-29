@@ -1,0 +1,51 @@
+construction of expressions, tracing, and their subsequent evaluation during rational reconstruc-
+tion, replaying the existing trace with different inputs. Recent algorithmic improvements in the
+reconstruction of rational functions are presented in Refs. [61,62]. In principle, the need for IBP
+reduction can be side-stepped using techniques from intersection theory, for an introduction see
+Ref. [63], several advances in this direction were presented in Refs. [64–68]. Significant devel-
+opments in the methods and tools used for simplifying the resulting reduced expressions have
+also been achieved. The FUEL package provides routines for the manipulation of rational func-
+tions, a tool for partial fractioning such expressions was described in Ref. [69]. In Refs. [70,71],
+advances in techniques for directly obtaining simplified expressions using p-adic numbers were
+presented.
+The methods used to calculate Feynman integrals continue to evolve. Several new ideas
+and methods have been presented in the literature and existing techniques have been refined
+and applied in new contexts. The use of canonical differential equations, for an introduction see
+Refs. [72,73], remains an essential technique. Previously, all integrals required for 2 →3 massless
+scattering had been computed and expressed in terms of (analytic) pentagon functions [74–80].
+Recently, the master integrals required for five-point one-mass scattering have also been obtained
+analytically [81,82] using the differential equations method. In Ref. [83], a family of planar two-
+loop massless six-point master integrals relevant for 2 →4 scattering were obtained using the
+technique. As the number of loops, scattered particles and internal/external masses increases,
+it is increasingly common to encounter functions beyond multiple polylogarithms (MPLs), for a
+review of the various developments see Ref. [84]. Very significant advances have occurred in this
+area in recent years, stemming from joint research by both the phenomenology and amplitude
+communities. These advances have helped to clarify the analytic properties of integrals beyond
+MPLs and is enabling their numeric evaluation, see e.g., Refs. [85–100]. When a fully analytic
+solution of the differential equations cannot be obtained, the use of generalised series expansions
+as implemented in DiffExp [101] and the recent SeaSyde package [102] remain indispensable.
+The method of Auxiliary Mass Flow [103–105], as implemented in AMFlow [106], is also used
+in many cutting-edge calculations either to directly evaluate the relevant master integrals or for
+obtaining high-precision numerical boundary values for differential equations.
+Methods to evaluate integrals directly in parameter space, either analytically as imple-
+mented in e.g.,HyperInt [107], or numerically as implemented in Fiesta [108, 109] or py-
+SecDec [110–113], continue to be developed and used in modern calculations. A procedure to
+efficiently evaluate parameter integrals based on tropical Monte Carlo quadrature [114] has been
+implemented in the public tool feyntrop [115] and applied also to integrals in the Minkowski
+regime. The analytic and numeric computation of Feynman integrals via their Mellin-Barnes
+representation provides another avenue of research, for a recent introducion and review see
+Ref. [116]. Feynman integrals satisfy a Gel´fand-Kapranov-Zelevinsky (GKZ) system of partial
+differential equations, an automated package, FeynGKZ, to derive the associated GKZ system
+and solve it in terms of hypergeometric functions was presented in Ref. [117].
+Various new
+approaches have also been developed in the last few years. In Ref. [118], A method of evalu-
+ating Euclidean integrals via positivity constraints was derived. In Ref. [119], a procedure for
+reformulating Feynman integrals as integrals over a small set of parameters was proposed.
+Loop–Tree Duality provides a framework for treating real and virtual corrections simul-
+taneously, this can help to avoid having to separately treat the IR divergences arising in and
+then cancelling between the amplitudes. Progress continues to be made in this direction, some
+recent advances were presented in e.g., [120–126]. We also point the reader to the reviews of
+Refs. [127,128].
+A regularly updated review of the various applications of machine learning in high-energy
+physics including for the computation, simplification and approximation of scattering amplitudes
+8

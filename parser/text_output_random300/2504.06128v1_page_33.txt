@@ -1,0 +1,86 @@
+SINGULARITY AND REGULARITY OF THE CRITICAL 2D SHF
+33
+where in the inequality, we enlarged the range of summation for b1. We can then use the
+next bound, which can be proved by following the same steps as in [CSZ23a, Lemma 3.5]:
+ÿ
+xPZ2
+UβN pn, xqeλ|x| ď cecλ2nUβN pnq.
+From this bound, the negligibility of (4.46) as N Ñ 8 follows easily by a Markov type
+inequality with appropriate choices λ.
+□
+Remark 4.6 (Sub-critical regime). In the sub-critical regime (1.26), we need to modify
+(4.38) to:
+lim
+NÑ8 Erp∆N,iq2 | FNi´1s “ 1
+M
+ϱ ˆβ2
+1 ` p1 ´
+i
+M q ϱ ˆβ2 .
+(4.47)
+The proof is the same, except that in (4.41) we need to apply (2.22) in place of (2.21), see
+Remark 2.6.
+Step 5. (Higher moment bounds). In this step, we control higher moments of
+∆N,i defined in (4.9), proving the following bound (recall the second moment computation
+(4.38)).
+Proposition 4.7 (High moment bounds). For any h P N, there is a constant Ch ă 8
+such that, for any M P N and i “ 1, . . . , M, we have the a.s. bound (uniformly over FNi´1):
+lim sup
+NÑ8
+ˇˇ Erp∆N,iqh | FNi´1s
+ˇˇ ď Ch
+ˆ 1
+M
+ϱ
+1 ` p1 ´
+i
+M qϱ
+˙ h
+2
+.
+(4.48)
+Note that the case h “ 1 is trivial by (4.37), while the case h “ 2 holds by (4.38), and
+hence we focus on h ě 3, in which case the bound is a direct consequence of Theorem 1.11.
+Proof. As in the proof Theorem 4.5, see (4.39), conditioned on FNi´1, ∆N,i can be written
+as a modified partition function where the random walk is restricted to D ˜
+Ni XDNi. In (4.39),
+we can ignore the mean mN,i “ 1 ´ op1q (see (4.30)). Thanks to Theorem 1.11 (whose
+assumptions we check in a moment), we can obtain a moment upper bound by removing
+the random walk restriction and applying (1.33) to get
+ˇˇ Erp∆N,iqh | FNi´1s
+ˇˇ ď Ch Var
+“
+ZβN
+LN pφNq
+ˇˇ FNi´1
+‰ h
+2 .
+Our goal (4.48) then follows from (4.38), since, as we showed in the proof of Theorem 4.5,
+lim
+NÑ8 Var
+“
+ZβN
+LN pφNq
+ˇˇ FNi´1
+‰
+“ lim
+NÑ8 Erp∆N,iq2 | FNi´1s “ 1
+M
+ϱ
+1 ` p1 ´
+i
+M qϱ .
+(4.49)
+It only remains to check the assumptions of Theorem 1.11, namely that βN from (1.22)
+and LN “ ˜Ni ´ Ni´1, φN “ µN,i´1 from (4.40) fullfill conditions (1.29), (1.30) and (1.32).
+‚ The bounded variance condition (1.32) clearly holds by (4.49).
+‚ By (4.32), we have φN “ µN,i´1 ď p1 ` εNq2 qNi´1´ ˜
+Ni´1 ď 2 qNi´1´ ˜
+Ni´1, so φN is
+exponentially concentrated on the scale
+b
+Ni´1 ´ ˜Ni´1 „
+a
+Ni´1 much smaller than
+b
+˜Ni „ ?LN, thus condition (1.29) holds by the local limit theorem (2.3).

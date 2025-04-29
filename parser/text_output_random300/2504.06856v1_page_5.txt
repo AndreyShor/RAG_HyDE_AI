@@ -1,0 +1,94 @@
+We denote the parameterization as DIP (Deep Image Prior),
+following [38]. In this case, the image is an output of a UNet
+network with weights θdip and a fixed input sampled from
+the standard Gaussian distribution. In the context of the
+SDS, we can interpret the forward pass of the UNet as the
+differentiable rendering algorithm gUNet(θdip) constrained to
+generate natural images.
+We minimize Eq. 5 for the implicit parameterization as-
+suming both latent and pixel-space models. The implicit
+parameterization significantly improves the result for the
+latent diffusion model (middle row). The artifacts present
+in the explicit parameterization are less noticeable. Still,
+even with the implicit parameterization SDS in the latent
+space is unable to match the reconstruction quality of the
+reconstructed latent code (middle and right bottom row im-
+ages). In our preliminary experiments, we tried to impose
+additional regularization on θ using the decoder outputs, but
+did not achieve noticeable improvements compared to the
+default SDS. Besides that, pixel-space optimization achieves
+significantly better result for both explicit and implicit image
+parameterization.
+Given the above observations, in our work, we use SDS
+with pixel-space models.
+4.2. Applying SDS with Super-Resolution Diffusion
+Models
+The downside of pixel-space diffusion models is that the
+model for high-resolution images require significant re-
+sources. While latent diffusion models employ a VAE [18]
+to encode a high-resolution image into a low-dimensional
+latent code, the typical solution for pixel-space models is to
+generate an image in a cascaded fashion. At the first stage,
+diffusion model generates a low-resolution image. During
+the second stage, a super-resolution model generates a high-
+resolution version of the image from the first stage.
+In [29], the authors run SDS only with a low-resolution
+model. However, the low-resolution model may be unable
+to recover fine-grained details and high-frequency features
+as its training domain was limited to down-scaled images.
+To achieve highly detailed textures, in our work we mimic
+the architecture of cascaded diffusion models. First, we run
+SDS with a low-resolution diffusion model. Then, we refine
+the output of the first stage with SDS combined with a super-
+resolution model. In text-to-image setup, the second stage
+model takes a low-resolution image as an input along with a
+text prompt and time. This leads to the two natural ways of
+applying SDS to refine the first stage output. The first option
+is to pass the rendered image g(θ, c) as the diffusion model
+argument in SDS and a down-scaled copy of the image as a
+condition. Intuitively, in this case, the algorithm gradually
+updates the texture by adding the details lacking after the
+previous gradient step. The second option is to freeze the
+parameter θ0 = θ obtained at the first stage and run SDS
+Score Distillation Sampling Iterations
+xcond = g(θ0)
+xcond = g(θ)
+Figure 3. Score distillation sampling applied to a super-resolution
+diffusion model. Horizontal axis represents progress over time.
+Top row: the same image g(θ) used both as a diffusion model
+input x and the condition xcond for super-resolution. The resulting
+procedure is unstable and significantly diverges from the original
+image. Bottom row: same procedure with fixed super-resolution
+condition xcond = g(θ0). The condition anchors the dynamics to
+the initial image.
+using a copy of θ as the new parameter and the previous θ0 as
+a condition. In this case, the first stage output in the condition
+acts as an anchor for the gradient descent dynamics.
+In our experience, the procedure in the first solution tends
+to be less stable and leads toward out-of-domain images,
+whereas the second approach tends to improve the resolution
+while preserving the details of the first stage result. We
+illustrate our observations in Figure 3.
+In summary, we propose a texture synthesis approach
+based on a cascaded modification of the SDS. Figure 1 is a
+schematic representation of the overall approach.
+5. Experiments
+We evaluated our method on the Objaverse dataset [12],
+comparing it both qualitatively and quantitatively with state-
+of-the-art texture synthesis approaches. We also performed
+an ablation study to validate key design decisions.
+5.1. Evaluation setup
+For our method, we took DeepFloyd-IF [35] as an open-
+source cascaded diffusion model. We considered the XL
+(64×64) and L (256×256) models for the first and second
+stages, respectively. Also, we considered the setting with the
+smaller model IF(M) at the first stage to explore the effect
+of the diffusion model scale on the texture quality.
+We compared the proposed method with three baselines
+that represent various approaches to texture synthesis. First,
+Text2Tex [6] is a well-established back-projection-based
+method generating non-PBR textures. Second, Paint-it [41]
+is a simplistic optimization-based method using SDS. The
+crucial distinction between our method and Paint-it is the
+underlying diffusion model and texture parameterization.
+Finally, FlashTex [13] is another recent approach using SDS.

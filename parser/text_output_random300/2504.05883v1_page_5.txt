@@ -1,0 +1,66 @@
+PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY A, VOLUME 383, ISSUE 2289, 2025, DOI:10.1098/RSTA.2024.0146
+5
+whenever they are within communication range or apply the proposed coordination scheme within smaller neighborhoods.
+However, this flexibility comes at the cost of generating coverage plans that may exhibit overlaps and some duplication of
+work. In Sec. IV-A we discuss in detail the proposed collaborative controller shown in Problem (P1). Subsequently, in Sec.
+IV-B we show how we extend this approach to include light-path propagation constraints to determine the visibility of the
+points of interest with respect to the agents’ future predicted states, and we demonstrated how non-linear and non-convex
+visibility assessment constraints can been converted into logical expression which can easily be embedded into a mixed integer
+optimization framework.
+A. Distributed Coverage Planning
+Problem (P1) is executed by each agent n in a coordinated manner to generate joint optimized coverage plans over a
+rolling planning horizon τ ∈{1, . . . , T} with the goal of covering points of interest in P. As demonstrated, this objective is
+accomplished through a rolling horizon mixed integer program (MIP), the specifics of which are elaborated next.
+1) Collaborative Coverage Constraints: The constraints in Eq. (5b)-(5c) are due to the agent dynamics. These constraints are
+used to compute the predicted trajectory of agent n inside the planning horizon by appropriately selecting the agent’s direction
+and speed through the control input un(t+τ|t), ∀τ. Subsequently, the constraint in Eq. (5d) computes, all possible realisations
+of agent’s n camera states M n,m(t + τ|t) inside the planning horizon with respect to its predicted trajectoriy. Because the
+camera rotations involve non-linear transformations, as shown in Eq. (2), which make optimization challenging in this work
+we precompute all possible camera rotations at the origin. These are subsequently translated during optimization to the desired
+location based on the predicted trajectory. In other words, in order to embed camera rotation constraints into a linear MIP
+we precompute all possible camera states ˜
+M n,m at the origin as: ˜
+M n,m = Rotz(ϕ)Roty(θ)M 0, ∀m ∈{1, . . . , |{Θ × Φ}|},
+where |{Θ × Φ}| is the cardinality of the set of angles which results from the Cartesian product between the finite sets Θ
+and Φ. Subsequently, Eq. (5d) translates for each agent all these possible camera states to its predicted location xp
+n(t + τ|t).
+Therefore, M n,m(t + τ|t) denotes the mth camera pose of agent n at time-step t + τ|t.
+Next, for each point of interest p˜p ∈P we associate a binary variable ξn,m,˜p(t + τ|t) ∈{0, 1} which indicates whether
+point p˜p is covered by the mth camera state of agent n at the future time-step t + τ|t. This binary variable is activated (i.e.,
+becomes equal to 1) when point p˜p resides inside the convex hull of the mth camera FOV M n,m(t + τ|t) at time-step t + τ|t
+as shown in Eq. (5e). A point p˜p ∈P that belongs to the convex-hull defined by the camera FOV vertices in M n,m(t + τ|t)
+must satisfy the following system of linear inequalities: dot(αi,n,m(t + τ|t), p˜p) ≤βi,n,m(t + τ|t), ∀i ∈{1, . . . , 5}, where
+dot(a, b) is the dot product between vectors a and b, dot(αi,n,m(t + τ|t), p˜p) = βi,n,m(t + τ|t) is the equation of the plane
+which at time-step t + τ|t contains the ith face of the mth camera FOV state, of the nth agent αi,n,m(t + τ|t) is the unit
+outward normal vector to this plane and βi,n,m(t + τ|t) is a constant. Any point p˜p ∈E which satisfies the aforementioned
+system of inequalities is contained within the convex-hull of M n,m(t + τ|t) and therefore can be potentially observed by the
+agent (provided it is visible). This functionality is then implemented as follows:
+dot(αi,n,m(t + τ|t), p˜p) + ˜ξi,n,m,˜p(t + τ|t) (M −βi,n,m(t + τ|t)) ≤M, ∀i, m, τ, ˜p
+(6a)
+5ξn,m,˜p(t + τ|t) −
+5
+X
+i=1
+˜ξi,n,m,˜p(t + τ|t) ≤0, ∀m, τ, ˜p.
+(6b)
+In Eq. (6a) observe that the auxiliary binary variable ˜ξi,n,m,˜p(t + τ|t) ∈{0, 1} becomes equal to 0 when the ith inequality
+is not satisfied (i.e., dot(αi,n,m(t + τ|t), p˜p) ≰βi,n,m(t + τ|t)) and the constraints in Eq. (6a) holds with the use of a
+big positive constant M. Conversely, ˜ξi,n,m,˜p(t + τ|t) = 1 when the ith inequality is satisfied. As a result the activation of
+ξn,m,˜p(t + τ|t) ∈{0, 1} for a particular configuration of the parameters (m, ˜p, τ) indicates that agent n covers with the mth
+camera state point p˜p at time-step t + τ|t which is achieved with the constraint shown in Eq. (6b).
+Next, the binary variable µn,m(t + τ|t) ∈{0, 1} indicates which of the |Θ × Φ| camera states is active at time-step t + τ|t.
+Essentially, µn(t + τ|t) is a matrix with |Θ × Φ| rows (indexed by m) and T columns. At each time-step t + τ|t only one
+camera state should be active (i.e., the sum of each column should be equal to one) which is enforced via the constraint
+in Eq. (5f). The subsequent logical conjunction, i.e., Eq. (5g) makes sure that only points that have been covered with the
+active camera state are considered as indicated by the binary variable ¯ξn,m,˜p(t + τ|t) ∈{0, 1}. Now, in order to handle the
+duplication of work (i.e., ensure that points of interest previously covered are not scheduled for future coverage) we need
+to keep track all points that have been covered. In a centralized formulation where the agents consult a central database
+Q(˜p) ∈{0, 1}, ∀˜p ∈{1, . . . , |P|} which records the coverage status of each point p˜p ∈P this can be accomplished with the
+following constraint: ˆξn,m,˜p(t + τ|t) ≤¯ξn,m,˜p(t + τ|t) + Q(˜p), ∀n, m, ˜p. For a point indexed by ˜p which has been already
+covered this constraint makes sure that the agents are discouraged from generating plans that include for coverage point p˜p
+since the value of ˆξn,m,˜p(t + τ|t) is activated through Q(˜p) prompting the agents to focus on points yet to be covered. We
+will show in Sec. IV-A2 how this binary variable can be linked to the coverage objective.
+However, in the absence of a central station the database Q(˜p) is held in a distributed form amongst the agents i.e.,
+Q(˜p) = PN
+n=1 Qn(˜p), ∀˜p and therefore this functionality is implemented by allowing the agents to exchange at each time-step
+t their individual records Qn as shown in Eq. (5h).

@@ -1,0 +1,40 @@
+The output layer consists of a single neuron with the identity activation func-
+tion. The random initialization of weights and biases follows the default Glo-
+rot initialization method [21]. The machine learning model is implemented
+using Keras [22] with TensorFlow [23] as the backend. Programming code is
+available on GitHub [24].
+The chosen neural network architecture, particularly the use of the sig-
+moid activation function, leads to the saturation when large Nmax values
+are provided as the input. As a result, in the limit Nmax →∞, the neural
+network predictions become independent of ℏΩ.
+The use of the linear activation function in the output layer allows to
+generate predictions over a wide range of ℏΩwithout being constrained by
+the limiting values of the activation function; the saturation at large Nmax
+occurs in the network hidden layers.
+Data and Preprocessing. The neural network input includes the NCSM pa-
+rameters Nmax and ℏΩ, while the output corresponds to the calculated observ-
+ables (e. g., energy of a given state E, rms point-proton rp, point-neutron rn
+or point-nucleon rm radii). The dataset composed of Nmax, ℏΩ, E (or rp, or
+rn, or rm) serves as the training set. It was shown in Ref. [10] that stable
+extrapolation results for energies using the SS-HORSE–NCSM method are
+only achieved if, in each model space, the data lying to the right of the vari-
+ational minimum in ℏΩare considered. Based on our experience gained in
+numerical calculations, we conclude that this selection of data also signiﬁ-
+cantly improves extrapolations utilizing machine learning. The right cutoﬀ
+value of ℏΩ= 40 MeV is applied both for radii and energies while the left
+cutoﬀvalue for radii we set to ℏΩ= 12.5 MeV. We use for the training the
+NCSM results obtained with a set of diﬀerent ℏΩvalues in the model spaces
+Nmax = 4, Nmax = 6, ... , Nmax = Nu
+max and increase Nu
+max to examine the
+convergence of the obtained predictions. Prior to training, the data of each
+type in the training set is normalized to a standard range of [0, 1].
+Training process. Each network is trained using the Adam optimization al-
+gorithm [25], which provides internal adaptive learning rates and eﬃcient
+gradient-based optimization.
+Additionally, an external triangular cyclical
+learning rate schedule [26] is employed to dynamically adjust the learning
+rate during training, improving convergence. This schedule is implemented
+with TensorFlow Addons [27] library. The learning rate cycles between the
+base value of 10−4 and the amplitude value which is equal to 10−2 at the
+5

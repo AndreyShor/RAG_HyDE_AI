@@ -1,0 +1,55 @@
+Preprint. Under review.
+C.6.2
+Interface Recall
+How many GT interface creation actions (ignoring Interface tag) were also in the LM code?
+This checks whether the same interface was defined on the same geometry. ‘nan’ if there are
+no interfaces in the GT (not encountered in our dataset).
+C.6.3
+Feature Recall
+Since multiple features may be created under the same interface (eg: 2 Boundary Conditions
+with different temperatures), we compute the occurrences of each GT feature name in the GT
+code and in the LM code, and a recall for each GT feature name, and then average over all
+GT features. In our implementation, if no GT features are defined, a) AND no LM features
+are defined the recall is 1, b) but LM features are defined, the recall is 0.
+C.6.4
+Feature Dimension
+Let Fc be all the GT features that are also created by the LM solution. Let Dimc be the set of
+Fc such that the LM feature has the same dimension as the GT feature. Feature Dimension =
+|Dimc|
+|Fc|
+This is a correctness and physics reasoning metric as opposed to an alignment-focused
+metric since creating a TemperatureBoundary with dimension 2 attempts to create a 2D
+temperature boundary condition. Creating a TemperatureBoundary with dimension 1
+attempts to create a temperature on an edge. Thus this measures the LM’s ability to correctly
+deduce the spatial dimension of boundary conditions or other features from the context of
+the problem.
+C.6.5
+Feature Property Recall
+This compares the modify feature property actions. It computes how many GT modify
+feature property actions were also in the ground truth, ignoring differences in Interface tag
+and Feature tag. If no GT properties are modified, a) AND no LM features are modified the
+recall is 1, b) but LM features are modified, the recall is 0.
+D
+Querying the COMSOL Multiphysics®API from Python
+D.1
+The Python-COMSOL Multiphysics®Bridge
+The raw output of the LLM is a string containing COMSOL Multiphysics®API commands
+in Java. An interface between Python and COMSOL Multiphysics®is needed to execute
+this code and interact in other ways with the API. We use the Python package MPh (mph)
+and Rpyc for this. MPh is a scripting interface built on JPype (jp) that enables a Python
+program to communicate with and build a model in COMSOL Multiphysics®. Each Java
+API command in the LM’s output can be ‘pythonized’ algorithmically. In most cases, the
+pythonized line is near identical to the Java line. However, due to differences in Java and
+Python syntax there exist some corner cases that need to be handled separately. Eg: ‘new
+String[]’ is exclusively a Java construction, while the notation for booleans in Python is True
+/ False as opposed to true / false in Java. Thus a ‘pythonizer’ is constructed that parses and
+translates Java API calls to their Python counterparts.
+The setup involves the following assumptions: an MPh client object is created. This behaves
+like a stateful ‘sandbox’, where models can be built by LLMs, code can be evaluated, or
+information such as the current state of the model tree, properties under a node and the
+exported table can be queried and retrieved. Although multiple models can be created and
+set under the client, for simplicity we work with settings that involve a single model. Before
+running a new solution, the existing model is deleted and a new blank model is created.
+The LLM actions will modify this blank model. Thus, by design, all lines of code the LLM
+outputs, should start with ‘model.’ and end with ‘;’.
+23

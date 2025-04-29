@@ -1,0 +1,145 @@
+3
+p(k|y) given in Eq. (68) of Ref.[47]. That allows the par-
+ties to achieve higher mutual information at short dis-
+tances, because when d increases, the entropy of digi-
+tized variables approach that of their continuous-variable
+counterpart.
+To minimize the probability of errors in the ﬁnal key
+string, the parties apply the veriﬁcation step: one party
+sends the syndrome and a hash of the raw key khn with
+collision probability ǫcor. The other party will compare
+this with the hash of the guessed string ˆkhn and, if they
+match, then the protocol can continue with probability
+pec and conditional probability of error P[ˆkn ̸= kn|pec] ≤
+ǫcor, otherwise they will abort. This means that
+P[ˆkn ̸= kn] =1 −pec
+h
+1 −P[ˆkn ̸= kn|pec]
+i
+≤1 −pec [1 −ǫcor] := ǫec
+(14)
+We then replace Eq. (10) into Eq. (7) and obtain
+Rǫpe+ǫec
+∞
+= hI(k : y) −χ(x : E)τ ǫpe,ξǫpe −∆ǫec
+leak(h)
+√n
+(15)
+where the O
+
+log2 n
+n
+
+terms are omitted and I(k : y) =
+H(k) −H(k|y) is the mutual information between k and
+y.
+We now can group the mutual information and ∆leak
+term in Eq. (15), to deﬁne the quantities
+ζleakhI(k : y) := hI(k : y) −∆ǫec
+leak(h)/√n
+(16)
+and
+ζdigit := hI(k : y)/I (x : y) ,
+(17)
+where the mutual information I(x : y) refers to the Gaus-
+sian variables as described in [9, Eq. (83)].
+Then using Eq. (16) and (17) into Eq. (15), we can
+rewrite the asymptotic rate as follows
+Rǫpe+ǫec
+∞
+= ζI (x : y) −χ(x : E)τ ǫpe ,ξǫpe ,
+(18)
+where
+ζ = ζdigitζleak.
+(19)
+C.
+Secret key rate with tight estimation of EC
+performance
+Replacing Rǫpe
+∞
+of Eq. (7) with Rǫpe+ǫec
+∞
+from either
+Eq. (15) or (18), we obtain
+sǫ
+n/n ≤rǫ
+n := Rǫpe+ǫec
+∞
+−∆ǫs
+aep(h)
+√n
++ θ
+n −O(log2(n)/n).
+This gives the highest number of bits per signal that can
+be extracted with security ǫ and a tight estimation of EC
+leakage, and it can be used to compute the ﬁnal secret
+key rate,
+R := pec(n/N)rǫ
+n,
+(20)
+where N is the number of the total signals in the block.
+III.
+LDPC CODES FOR NON-BINARY
+VARIABLES AND STORAGE REQUIREMENTS
+In this section we connect practical schemes of EC with
+(nonbinary) LDPC codes with the previous theoretical
+bound of Eq. (10).
+This will further allow us to con-
+nect the secret key performance with predictions for the
+storage requirements of the devices that handle the EC
+procedure and especially the encoding phase. The en-
+coder obtains a string khn and computes the syndrome
+Hkhn = sr where H is a r × Dn parity-check matrix.
+In general, every element of the matrix belongs to the
+Galois ﬁeld k = GF = 0, 1, . . ., 2d −1.
+More speciﬁ-
+cally, the matrix is a representation of a Tanner graph
+with hn message nodes and r parity check nodes. When
+a message i = 1, . . . , hn is included in a parity check
+j = 1, . . . , r, there is an edge between the corresponding
+message node and parity-check node while the entry Hji
+of the associated parity-check matrix in this intersection
+is chosen randomly from k = 1, . . . , 2d −1.
+One then may calculate the corresponding code rate
+Rcode = hn −r
+hn
+= 1 −Rsynd
+(21)
+The code is usually designed by assuming that each mes-
+sage participates in dv (column weight) checks and ev-
+ery check contains dc (row weight) messages. Then the
+number of edges must follow ndv = rdc (for sparse ma-
+trices, i.e., dv < dc ≪r < Dn). Therefore, by replacing
+r := hn dv
+dc in Eq. (21), we obtain the design rate
+Rdesign = 1 −dv
+dc
+,
+(22)
+where we usually set dv = 2 as it gives the best per-
+formance in decoding. This means that the design code
+rates for regular LDPCs are given by
+Rdesign = 0.333, 0.5, 0.6, 0.666, 0.714, 0.75, . . ., 0.777, 0.8 . . ..
+On the other hand, irregular LDPC codes can be
+designed where the column and row weights are not
+constant. Through the probability distributions of the
+weights, one deﬁnes their means ¯dc and ¯dv, respectively.
+Therefore, we have
+Rdesign = 1 −
+¯dv
+¯dc
+(23)
+which allows for more ﬂexible values than before. How-
+ever, the performance of these codes is not particularly
+stable, i.e., diﬀerent structures with the same Rdesign re-
+spond very diﬀerently in terms of correcting diﬀerent lev-
+els of SNRs or in terms of probability of successful EC.
+Then from Eq. (8), we have that
+leakec ≤log2 |M| = qr = hndRsynd.
+(24)
+One then may deﬁne a tight approximation for the
+optimal Rsynd by Eq. (10), where
+R∗
+synd = H(k|y)/d + ∆ǫec
+leak(h)/(dh√n) + δ(n)/(dhn).
+(25)

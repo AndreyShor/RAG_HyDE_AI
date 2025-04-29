@@ -1,0 +1,75 @@
+Proof of Proposition 6.1
+64
+Lemma 7.9. For any λ > 0, ε > 0, and A, L ≥0, there exist b0, s0 ≥0 large enough such that for
+any s ≥s0 satisfying (es + 1)(R + 1)−1 ∈N and b ≥b0, there exists T ≥0 large enough such that
+for any t ≥T, and χ : [0, R]d →R satisfying the conditions in (6.6), it holds that
+|E(7.23) + E(7.24)| ≤ερχ([0, R]d) .
+Proof. The proof of this result is similar to the proof of [Mad15, Lemmas 5.1, 5.2]. We only consider
+the quantity E(7.24), since E(7.23) can be bounded by following a similar, and in fact simpler, strategy.
+We introduce the lattice Λbt by letting
+Λbt
+def=
+1
+4
+√
+d
+ebtZd ∩[0, R]d .
+Using the fact that SR,t ⊆∪x∈Λt,bBbt−log 4(x), we note that the quantity inside the expectation E(7.24)
+can be bounded from above by
+Z
+SR,t
+1{LA
+m,bt}
+1{m∈Dλ
+m,bt}1{Mm,bt+1,bt−dt<−A}1{Y·(m)∈Sχ(m),A,L
+t
+}
+|Dλ
+m,bt|
+dm
+≤
+X
+x∈Λbt
+Z
+Bbt−log 4(x)
+1{LA
+m,bt}
+1{m∈Dλ
+m,bt}1{Mm,bt+1,bt−dt<−A}1{Y·(m)∈Sχ(m),A,L
+t
+}
+|Dλ
+m,bt|
+dm
+≤
+X
+x∈Λbt
+1{LA
+x,bt−log(4/3)}1{∃m∈Bbt−log 4(x) such that Y·(m)∈Sχ(m),A,L
+t
+} .
+(7.27)
+In order to get the last inequality, one can note that for m ∈Bbt−log 4(x), it holds that
+1{Mm,bt+1,bt−dt<−A}1{Yχ
+t (m)−dt≥−A} ≤1{Mm,bt=Mx,bt+log(5/4)} ,
+where we refer to Figure 4 for a diagram illustrating the sets involved. Thus, by letting
+5
+4ebt
+ebt
+4
+x
+ebt
+ebt+1
+m
+Figure 4: The point m is chosen inside the small grey ball Bbt−log 4(x), and the blue ball represents
+Bbt(m). Since we are on the event {Yχ
+t (m) −dt ≥−A}, on the event {Mm,bt+1,bt −dt < −A}, the
+supremum of the field Yχ
+t inside the large striped ball must coincide with the supremum of the field Yχ
+t
+inside the shaded black ball Bbt+log(5/4)(x).
+D
+λ
+x,bt
+def= {y ∈Bbt−log 4(x) : Yχ
+t (y) ≥Mx,bt+log(5/4) −λ} ,

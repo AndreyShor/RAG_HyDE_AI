@@ -1,0 +1,43 @@
+34
+Tools and methodology
+their integration into the full solution, including matching conditions, is non-trivial. We also
+implement backward evolution, again including the non-trivial handling of matching conditions.
+EKO adopts Python as a programming language opting for a high-level language which is easy
+to understand for newcomers. In particular, with the advent of Data Science and Machine
+Learning, Python has become the language of choice for many scientific applications, mainly
+driven by the large availability of packages and frameworks. The code is developed mainly as a
+library, that contains physics, math, and algorithmic tools, such as those needed for managing
+or storing the computed operators.
+The full code documentation can be accessed at:
+https://eko.readthedocs.io/en/latest/
+This document is also regularly updated and extended upon the implementation of new features.
+The code has been extensively benchmarked against the tables of Refs. [116, 117] and with the
+program APFEL [118] and PEGASUS [119] as reported in [8, Sec. 3.1] finding agreement up to
+O(10−4) relative accuracy. The following paragraphs describe some interesting options of the
+code.
+Interpolation.
+Mellin space has the theoretical advantage that the analytical solution of the
+DGLAP equations becomes simpler, but the practical disadvantage that it requires PDFs in
+Mellin space. This constraint is in practice a serious limitation since most matrix element
+generators [120] as well as the various generated coefficient function grids are not using Mellin
+space, but rather x-space.
+We are bypassing this limitation by introducing a Lagrange-interpolation [121, 122] of the PDFs
+in x-space on arbitrarily user-chosen grids G:
+f(x) ∼¯f(x) =
+X
+j
+f(xj)pj(x),
+with xj ∈G
+(2.3)
+For the usage inside the library we do an analytic Mellin transformation of the polynomials
+˜pj(N) = M[pj(x)](N). For the interpolation polynomials pj we are choosing a subset with
+Ndegree + 1 points of the interpolation grid G to avoid Runge’s phenomenon [123, 122] and to
+avoid large cancellation in the Mellin transform. 1
+As standard setting we adopt a grid of at least 50 points with linear scaling in the large-x region
+(x ≥0.1) and with logarithmic scaling in the small-x region and an interpolation of degree four.
+For a first qualitative study, we show in Fig. 2.1 a comparison between an increasing number of
+interpolation points distributed according to [114, Eq. 2.12]. The separate configurations are
+converging to the solution with the largest number of points. Using 60 interpolation points is
+almost indistinguishable from using 120 points (the reference configuration in the plot). In the
+singlet sector (gluon) the convergence is significantly slower due to the more involved solution
+1More details of the implementation are available at https://eko.readthedocs.io/en/latest/theory/Interpolation.html.

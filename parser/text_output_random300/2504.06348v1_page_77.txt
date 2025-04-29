@@ -1,0 +1,95 @@
+E.4.2
+PREPloc,1
+PREPloc,1|0⟩|ζI⟩=
+1
+q
+λ ˜V I
+loc
+3
+X
+s=−1
+X
+c∈{0,1}
+s
+2π(¯rζI
+loc)3
+Ω
+rπ
+2 |cζI
+s |λζI,s
+loc |s, sgn(cζI
+s ), c⟩|ζI⟩.
+(198)
+Given that the index s is only over five values, we compute this state using a routine for preparing states
+with arbitrary amplitudes. For arbitrary state preparation, we use coherent alias sampling. Note, however,
+that the preparation is multiplexed over the ion index I (or more specifically, the ion species index ζI). Given
+that ζI = 1 . . . Z is loaded in unary using the QROM in App. E.5.1, the total cost for this subroutine is the
+cost of a singly-controlled alias sampler, multiplied by the total number of nuclear species Z. The steps for
+the alias sampling are as follows:
+1. Controlled on the ζI bit, prepare a uniform superposition over 5 amplitudes with cost 15+2bs for some
+precision bs.
+2. Controlled on the ζI bit, use a QROM to load alt values and keep probabilities with a cost of 7 Toffolis.
+We also use this QROM to load b-bit approximants to the precomputed coefficients θζ,l
+α
+as needed in
+Sec. E.5.3, and the coefficients [Y α
+l,ζ]a,
+1
+bζ,l
+α , γζ,l
+α
+and
+1
+maxp |Gζ,l
+α (|kp|¯rζ
+l )| as needed in Sec. E.5.4.
+3. For keep probabilities with bkeep bits, apply an inequality test with cost bkeep.
+4. Conditioned on the flag from the inequality test, swap the alt values using 3 Toffolis.
+The total cost for the alias sampler is Z(2bs + bkeep + 25). The subroutine is cheap enough that we just
+assume doubling the cost to include uncomputation. As for qubits, 3 + bkeep are necessary for the QROM
+and bkeep for the inequality test.
+E.4.3
+SELloc
+SELECT for the local interaction term is given by
+SELloc =
+3
+X
+s=−1
+X
+q∈G0
+X
+c∈{0,1}
+|s, sgn(cζI
+s ), q, c⟩⟨s, sgn(cζI
+s ), q, c| ⊗U loc
+(s,sgn(c
+ζI
+s ),q,c)
+U loc
+(s,sgn(c
+ζI
+s ),q,c) =
+X
+p,P∈G
+(−1)c(p−q/∈G∨P+q/∈G)+sgn(c
+ζI
+s )|p −q, P + q⟩⟨p, P|.
+This has an identical structure to the Coulomb term in App. E.3.3, but where the momentum transfer is
+between an electron-ion pair. It therefore requires a slightly larger cost of 8¯n Toffolis (because the register
+encoding P is larger than that of p). The cost for checking overflow of the output momenta is free, as noted
+above and in [91] Sec. II D (as the carry-out bits for the arithmetic already flag overflow).
+E.5
+The non-local interaction term, V PI
+NL
+E.5.1
+Nuclear data loading
+We use a single QROM over the pseudoion index I to (i) load the corresponding nuclear species ζI for the
+interaction term; and (ii) to load a function of the pseudoion masses M
+−1
+2
+I
+for state preparation in the kinetic
+term. In the following section, we will often drop the subscript I in ζI for the sake of readability. The Toffoli
+cost of this operation is just ηion. Given how few species we consider, we will load ζ in unary. The total
+ancilla cost is then 5 + bM.
+77

@@ -1,0 +1,117 @@
+4
+Having clarified the formalism and the figures of merit,
+we can now focus on the target ranging protocol, and
+compare the performance of quantum and classical probe
+states.
+III.
+APPLICATION: COVERT TARGET
+RANGING
+The problem of target ranging can be expressed as a
+m−hypoteses test, as in Eq. (4) with
+ρj := ρ(j)
+κ
+⊗
+m−1
+O
+i̸=j
+ρ(i)
+B ,
+(10)
+where the tensor product structure denotes the m slots
+of the state, ρB is the state of the background and
+ρκ = Eκ,µB(ρ0) is the returning signal after the inter-
+action with the channel and the mixing with the back-
+ground, described by the quantum channel Eκ,µB. Our
+analysis focuses on the optical regime and we choose to
+model the interaction as proposed in Ref. [9], i.e. a pure
+loss channel of reflectance κ followed by an incoherent
+mixing with a large number of background modes hav-
+ing a total number of photons µB. Here, the idea is to
+describe a situation in which the modal structure of the
+returning signal is unpredictable and non-stationary, due
+to target and environment scattering, and the detector
+integrates over many spatial-temporal modes in order to
+maximize the collection efficiency. In this varying multi-
+modal scenario it is also natural to expect phase informa-
+tion to be hardly preserved. So, here we consider photon
+counting measurement, motivated by the fact that inter-
+ferometric approaches would be not useful. Fixing the
+measurement to photon-counting means that the quan-
+tum hypothesis testing on the states is translated in a
+classical testing on the photon number distributions.
+Denoting the photon number distribution at the re-
+ceiver when the target is present as Pκ and PB when it is
+not, then the target ranging Chernoff information is [9]:
+ξ(A) = 2B(Pκ, PB),
+(11)
+where B(P0, P1) := C1/2(P0, P1) is the Bhattacharyya
+information.
+Since Eve operates in the same regime as Alice we fix
+the same conditions for both, i.e. same interaction model
+with target and background, and the same restriction to
+phase-insensitive measurements. Further justification for
+this latter restriction is given by the fact that Alice can
+randomize the probe phase to prevent Eve from extract-
+ing further information with phase measurements. Eves
+best performance will be then characterized by the rate:
+ξ(E) = max
+0≤α≤1 Cα(P1−κ, PB).
+(12)
+A
+B
+𝜉TMSV
+(A)
+𝜉coh
+(A)
+𝜉(𝐸)
+𝜉TMSV
+(A)
+𝜉coh
+(A)
+𝜉(𝐸)
+∙10−4
+∙10−4
+∙10−4
+∙10−4
+𝜉(𝐸)
+𝜉(𝐸)
+𝜉(𝐴)
+𝜉(𝐴)
+𝜉coh
+(𝐴,∞)
+𝜉coh
+(𝐴,∞)
+FIG. 2.
+Sensing-covertness trade-off.
+We plot the pair
+{ξ(E), ξ(A)} for the TMSV (blue) and coherent (red) probe.
+The dashed orange line represents ξ(A,∞)
+coh
+, characterizing the
+alternative classical strategy described in the main text. The
+gray area denotes the region in which effective covertness (see
+main text) is allowed. The blue and red regions denote quan-
+tum and classical achievable sensing respectively. For panel
+A we set κ = 0.2, µB = 10, ηA = ηE = 1. The parameters are
+the same in panel B except Eve’s reduced collection efficiency
+ηE = 0.3.
+A.
+Sensing-Covertness Trade-off
+We investigate the quantities ξ(A) and ξ(B) in different
+parameter settings. We compare the performance in the
+task of covert target ranging of the class of “classical”
+probes [39], i.e. convex combinations of coherent states,
+with probes in “quantum” states of light. Since we con-
+sider phase insensitive measurements we use as a classical
+benchmark a probe in a coherent state ρcla = |α⟩⟨α| with
+µ = |α|2 mean photons. This state has a Poisson photon
+number distribution. At optical frequencies, the back-
+ground is strongly multi-mode, each mode occupied with
+a low mean photon number, thus the photon-counting
+statistics can be approximated by a Poisson distribution
+[9], with mean µB. Alice’s performance in the ranging
+task is, according to Eq.(11) [9]:
+ξ(A)
+cla = κηAµ + 2µB −2√µB
+√µB + κηAµ
+(13)

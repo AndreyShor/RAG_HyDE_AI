@@ -1,0 +1,76 @@
+Physics-informed KAN PointNet
+0
+500
+1000
+1500
+2000
+2500
+Epoch
+10
+4
+10
+3
+10
+2
+10
+1
+Loss
+Physics-informed PointNet with KAN Encoder and MLP Decoder
+Physics-informed PointNet with MLP Encoder and KAN Decoder
+3
+2
+1
+0
+1
+2
+3
+ (rad)
+0.970
+0.975
+0.980
+0.985
+0.990
+0.995
+1.000
+1.005
+Temperature (K)
+Physics-informed PointNet with KAN Encoder and MLP Decoder
+Physics-informed PointNet with MLP Encoder and KAN Decoder
+Ground Truth
+Figure 13: Comparison of loss evolution (left) and temperature distribution prediction along the cylinder surface for the
+octagon with Ω = 31◦between the physics-informed PointNet with a KAN encoder and MLP decoder, and the physics-
+informed PointNet with an MLP encoder and KAN decoder. In KANs, the Jacobi polynomial degree is set to 2, with
+𝛼= 𝛽= −0.5 and 𝑛𝑠= 0.5. In MLPs, 𝑛𝑠= 1.0. See the text for further details about the setup of these two models. The
+angle 𝜃is defined with reference to the positive 𝑥-axis and increases counterclockwise (or decreases clockwise). See Table
+1 and the text for the definition of Ω.
+7. Summary and future studies
+In this research article, we introduced Physics-Informed Kolmogorov-Arnold PointNet (PI-KAN-PointNet) as a
+novel machine learning framework for solving time-independent inverse problems. PI-KAN-PointNet allowed for
+the simultaneous solution of inverse problems across multiple irregular geometries in a single training run, reducing
+computational costs compared to conventional physics-informed neural networks, which required retraining for each
+new geometry. PI-KAN-PointNet combined PointNet [41] with KANs and employed a loss function based on the
+residuals of the governing equations and sparse data obtained from sensor locations, using the automatic differentiation
+tools in deep learning libraries such as PyTorch [111] and TensorFlow [110]. In contrast, PIPN [20] took the opposite
+approach, incorporating MLPs within the physics-informed PointNet framework instead of KANs. To construct KANs
+in PI-KAN-PointNet, we used different Jacobi polynomial families with varying degrees. We used the PyTorch library
+[111] and Adam optimizer [117]. As a benchmark test case, we considered natural convection in a square enclosure
+containing a cylinder across 135 different geometries. To assess PI-KAN-PointNet’s performance, we conducted both
+quantitative and visual error analyses. Our findings showed that using a polynomial degree of 2 and the Chebyshev
+polynomial of the first kind resulted in the most accurate solution. A comparison between PI-KAN-PointNet and
+PIPN demonstrated that, for approximately the same computational cost and number of trainable parameters, PI-KAN-
+PointNet produced more accurate predictions, particularly for temperature estimation on the surface of inner cylinders,
+which served as unknown boundary conditions. Furthermore, we explored a hybrid architecture that integrated both
+KAN and MLP layers within the physics-informed PointNet framework. The results indicated that using MLPs in
+the encoder and KANs in the decoder improved prediction accuracy and represented the optimal configuration,
+outperforming both PIPN and PI-KAN-PointNet models that relied exclusively on MLPs or KANs.
+There are several possible directions for extending this research. One of our plans is to expand the current framework
+to three-dimensional and unsteady problems, as well as to other areas of computational physics, such as nonlinear
+elasticity, plasticity, and compressible flows. Additionally, we aim to explore the integration of KANs with neural
+operators [128, 129, 130, 131] and large language models [132, 133, 134, 135, 136]. Furthermore, we plan to investigate
+the performance of PI-KAN-PointNet using alternative basis functions, including B-splines [45, 46], wavelet functions
+[89], and residual basis functions [94].
+Declaration of competing interest
+The authors declare that they have no known competing financial interests or personal relationships that could have
+appeared to influence the work reported in this paper.
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 20 of 25

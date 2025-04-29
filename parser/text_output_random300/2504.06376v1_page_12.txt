@@ -1,0 +1,50 @@
+Fukuzawa, Goodrich, and Irani
+XX:11
+Algorithm 6 QuantumBlockJarvisMarch(j, h, B)
+Require: B is the set of bridges of S computed in Algorithm 5.
+1: Define fc to be a function such that fc(p) = 1 iff there is a bridge in B that starts at p.
+2: Define ff to be a function such that ff(p) = 1 iff there is a bridge in B that ends at p.
+3: pc = qMax(fc, ⪯Lex, j, h)
+4: pf = qMax(ff, ⪯Lex, j, h)
+5: If neither are present, Return.
+6: Let ps, pc be the two end points of the bridge edge containing pc.
+7: while pc ̸= pf do
+8:
+Define ⪯deg(ps,pc) to be the ordering induced by the angle formed between (ps, pc)
+and (pc, p) for p ∈S.
+9:
+pr = qMax(f, ⪯deg(ps,pc), j, h) where f(x) = 1 for all x.
+10:
+Add pr to the set of output points associated with block j.
+11:
+Let (ps, pc) = (pc, pr).
+Figure 4 An example of our restricted Jarvis March convex hull algorithm. The purple lines are
+edges that we know are on the convex hull, and the points are the content of some block Sj. In a
+Jarvis March algorithm, we start our search from pc which is known to be on the convex hull, then
+search for the point that forms the maximum angle with the incoming edge containing pc. In the
+above example, the edges we check are in blue, and the solid line denotes the edge that is added to
+the convex hull. We repeat the search again starting at pr, until we connect to pf.
+▶Lemma 6. Let S be a set of m points and ps, pf ∈S be points on the convex hull of
+S. The part of the convex hull from ps to pf in the clockwise direction can be computed in
+˜O(h√m) time, where h is the number of points on the convex hull from ps to pf.
+We now combine the above pieces to describe our complete quantum convex hull algorithm.
+See Figure 5. As was the case in the maxima set algorithm, we begin with a guess for the
+upper bound of h, then during the conquer step detect whether or not we have exceeded this
+bound. A convex hull requires at least 3 points, so we use 4 as our initial guess, as it is the
+smallest power of 2 greater than 3. If we exceed our guess, then we double our estimate for
+h and rerun the algorithm. Thus, the running times across all our guesses form a geometric
+sum that is ˜O(
+√
+nh). See Algorithm 7.
+▶Theorem 7. There is a quantum algorithm for finding the convex hull of a set of n points
+in lexicographic order that runs in ˜O(
+√
+nh) time, where h is the size of the output.
+Proof. As observed, the outer loop will run at most log n times. By lemma 5, FindBridgeEdges
+takes ˜O(
+√
+nh) time. By lemma 6, QuantumJarvisMarch takes ˜O(hj
+p
+n/h) time for block Sj,
+where hj is the number of points from Sj that lie on the convex hull of the entire points
+SoCG 2025

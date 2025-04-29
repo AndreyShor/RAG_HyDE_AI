@@ -1,0 +1,33 @@
+essential features of a deeper, more fundamental dynamics — possibly one grounded in an
+underlying discrete dynamics, as discussed in Section 2.3.
+5.2
+Continuous-time process with exogenous barrier
+We begin by reconsidering the exogenous threshold from our earlier analysis. Throughout
+this section, we work with the continuous-time version of the branching model introduced in
+Section 4.2. Our ﬁrst goal is to characterize the stationary distribution of this process. Our
+second goal is to evaluate E[Φτ | Φτ > 0] in this steady state. This will serve as a useful
+precursor to the subsequent analysis of the endogenous threshold.
+Stationary Distribution
+Consider the process Xτ deﬁned in (18). We deﬁne the stationary (or steady state) distri-
+bution as the limiting distribution of Xτ conditional on survival up to time τ, as τ →∞.
+Formally, for any Borel set A ⊂[log ǫ, ∞),
+πX(A) := lim
+τ→∞P(Xτ ∈A | Xτ ̸= −∞, X0 = x0),
+(27)
+which turns out to be independent of the initial value x0 > log(ǫ). Let fX(x) denote the
+density of πX with respect to Lebesgue measure — we then use the standard notation
+πX(dx) = fX(x) dx in the following.
+Theorem 4 Consider the continuous-time process Xτ deﬁned in (18) with ﬁxed parameters
+µ, σ, ǫ > 0 and initial condition x0 > log(ǫ), and let πX denote the limiting distribution of
+the process as deﬁned in (27). Then we have, for x ≥log(ǫ),
+πX(dx) = µ
+σ2 exp
+n
+−µ
+σ2[x −log(ǫ)]
+o
+dx.
+The proof of the theorem is given in the appendix. The continuous-time framework signif-
+icantly simpliﬁes this derivation by allowing us to leverage analytical tools from stochastic
+calculus, particularly the reﬂection principle for Brownian motion and martingale techniques.
+33

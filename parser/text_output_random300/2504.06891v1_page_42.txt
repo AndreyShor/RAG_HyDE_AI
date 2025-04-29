@@ -1,0 +1,58 @@
+The inverse Bremsstrahlung (free-free) absorption cross-section is computed following the ap-
+proaches of Hummer122 and van Hoof123. The thermal averages are performed numerically, and
+the resulting values are then ﬁtted by a two-dimensional Chebyshev expansion in temperature
+and photon energy, both in a logarithmic scale. The included line-broadening mechanisms com-
+prise inelastic collisions in the impact approximation, the Stark effect from neighboring ions in
+the quasi-static approximation, the Doppler effect, and the natural line width. The elastic con-
+tribution from electron collisions is neglected because it is much smaller than the inelastic one.
+The Doppler effect is modeled using a Gaussian proﬁle, while inelastic collisions with electrons
+are described by a Lorentzian proﬁle. Except for speciﬁc lines of one- and two-electron atoms
+(as discussed below), the ionic Stark effect is modeled by a Gaussian proﬁle. The corresponding
+half-widths at half maximum (HWHM) are denoted by γDoppler, γcoll, γStark and γnat, respectively.
+The convolution of the Gaussian and Lorentzian proﬁles leads to a Voigt proﬁle:
+Ψ(E) =
+1
+√
+2πσ
+V
+ 
+E
+√
+2σ
+,
+a
+√
+2σ
+!
+,
+(15)
+a = γcoll + γnat being the Lorentzian parameter, E = hν the photon energy, σ = (γStark +
+γDoppler)/
+√
+2 ln 2 the standard deviation of the Gaussian, and V the Voigt function:
+V (x, y) = y
+π
+Z ∞
+−∞
+e−u2
+y2 + (u −x)2du,
+(16)
+computed, in SCO-RCG, following the numerical procedure described in Ref.124.
+Inelastic electron collisions
+The electron collisions are described following Dimitrijevi´c and Konjevi´c125;126;127, which relies
+on Baranger’s expression for the width of an isolated line128;129:
+γcoll = ne
+v
+
+X
+i′
+σii′ +
+X
+f′
+σﬀ′
+
+,
+(17)
+where ne is the density of free electrons, v their velocity, and σii′ and σﬀ′ are the inelastic scat-
+tering cross-sections for the initial and ﬁnal states respectively. The sums run over all states
+42

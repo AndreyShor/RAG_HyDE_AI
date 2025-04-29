@@ -1,0 +1,52 @@
+NNLO polarized PDFs with MHOU
+153
+the desired accuracy, including in the case in which unpolarized and polarized PDFs ought
+to be used simultaneously. This amounted to the following. We implemented in Yadism the
+FONLL general-mass variable-flavor-number scheme up to NNLO [12, 5], which combines the
+massless computation [89] with the recent massive one [73] and its asymptotic limit [105].
+We implemented in EKO the polarized splitting functions, including the known corrections up
+to NNLO [57, 58, 56, 59] and their matching conditions [105]. We have extended PINEAPPL
+and PINEKO to deal with polarized observables, including in the case in which unpolarized and
+polarized PDFs ought to be used simultaneously, such as in the computation of spin asymmetries.
+The second goal is achieved following the methodology developed by the NNPDF collaboration
+in [152, 151, 6]. Specifically, we supplement the experimental covariance matrix, reconstructed
+from knowledge of experimental uncertainties, with a MHOU covariance matrix, constructed
+from renormalization and factorization scale variations
+cov(tot)
+ij
+= cov(exp)
+ij
++ cov(MHOU)
+ij
+i, j = 1 . . . Ndat.
+(5.1)
+To properly correlate renormalization scale variations, we therefore define four process cate-
+gories: neutral current DIS (NC DIS), corresponding to measurements of g1; charged current
+Drell-Yan (CC DY), corresponding to measurements of AW ±
+L
+; single-inclusive jet production
+(JETS), corresponding to measurements of A1-jet
+LL ; and dijet production (DIJET), corresponding
+to measurements of A2-jet
+LL . We thus assume four independent renormalization scales µr,i and one
+common factorization scale µf. For each scale we define the ratio ρk = µk/Q, where Q denotes
+the typical scale of the process. The computation of cov(MHOU)
+ij
+then follows the scheme B
+prescription detailed in [151]. Using an approach similar to that developed in Section 4.2.3, we
+can distinguish two different scale variation procedures, depending on which MHOU component
+we want to estimate.
+(a) We adopt a 3-point renormalization scale variation prescription to estimate missing NNLO
+corrections in the matrix elements of those processes for which they are unknown, that is,
+single-inclusive jet and dijet production in polarized proton-proton collisions. We therefore
+vary the ratios ρr,i of the JETS and DIJET processes in the range ρr,i ∈{0.5, 1.0, 2.0}.
+(b) We adopt a 7-point renormalization and factorization scale variation prescription to
+estimate the MHOU for the complete dataset. This prescription can be applied both at
+NLO and at NNLO. We therefore consider simultaneous variations of the factorization and
+renormalization scales in the range ρk = {0.5, 1.0, 2.0}, and discard the two outermost
+combinations (ρr,i = 0.5, ρf = 2.0), (ρr,i = 2.0, ρf = 0.5). The associated correlation
+matrix is displayed in Fig. 5.2, both at NLO (left) and at NNLO (right).
+The two prescriptions are exclusive. Prescription (a) will be adopted only in the NNLO fits that
+we will call without MHOUs in Section 5.3. This nomenclature puts the emphasis on the fact
+that MHOUs are included only partially, and specifically only to account for unknown NNLO
+corrections. All the other fits called without MHOUs, either LO or NLO, will not use either

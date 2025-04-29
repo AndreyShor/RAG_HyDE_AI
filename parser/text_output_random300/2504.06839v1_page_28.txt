@@ -1,0 +1,138 @@
+Through this passages we get
+(3.1.6)
+=
+R t
+0 dt′ R 1
+−1 dh
+R θ+3π−2 arcsin(h′′)
+θ+π−2 arcsin(h′)
+dθ′e2πit′k·v(θ′)µk
+0(θ′, t′, h′) ∂h′′(θ−θ′,h′)
+∂θ
+e2πik(t−t′)·v(θ)
+·
+R t−t′
+0
+dt′′Q(t −t′ −t′′, h|h′′(θ −θ′, h′))Q(t′′, h′′(θ −θ′, h′)|h′)e2πit′′k·(v(θ′−π+2 arcsin(h′))−v(θ))
+=
+Z t
+0
+dt′
+Z 1
+−1
+dh
+Z θ+3π−2 arcsin(h′′)
+θ+π−2 arcsin(h′)
+dθ′e2πit′k·v(θ′)µk
+0(θ′, t′, h′)gk(θ, t −t′, h|θ′, h′) by Definition 1.9 of gk
+=
+Z t
+0
+dt′
+Z 1
+−1
+dh
+Z
+T1
+2π
+dθ′e2πit′k·v(θ′)µk
+0(θ′, t′, h′)gk(θ, t −t′, h|θ′, h′), since the integrand is periodic.
+As for the term in (3.1.7) we first change the integration order (before with respect to (θ′, t′′, h′′) and then with respect
+to (t′, h′)), and then we change the variables names (t′′ ↔t′ and h′ ↔h′′). This way we obtain
+(3.1.7) =
+R
+T1
+2π dθ′ R t
+0 dt′ R 1
+−1 dh′e2πit′k·v(θ′)µk
+0(θ′, t′, h′)
+R t−t′
+0
+dt′′ R 1
+−1 dh′′Q(t −t′ −t′′, h|h′′)e2πi(t−t′−t′′)k·v(θ)
+·φk(θ + π −2 arcsin(h′′), t′′, h′′|θ′, h′)
+.
+Thus, if we compute
+(3.1.5) = (3.1.6) + (3.1.7),
+and if we impose it to be valid for any µk
+0, we get
+φk(θ, t, h|θ′, h′)
+=
+gk(θ, t, h|θ′, h′)
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)e2πi(t−t′)k·v(θ)φk(θ + π −2 arcsin(h′′), t′, h′′|θ′, h′),
+which is exactly (3.1.3).
+The existence and the uniqueness of φk are ensured as follows: for fixed θ′ ∈R and h′, φk exists in the space
+∩T >0L∞(T1
+2π ×[0, T]×[−1, 1]; C): this can be proven by using Lemma A.2 with p = ∞and µ(θ, t, h) = gk(θ, t, h|θ′, h′).
+The estimate ∥φk∥L∞(T1
+2π×[0,T ]×[−1,1]×T1
+2π×[−1,1]) (that is, a local L∞estimate not depending on (h′, θ′)) is a conse-
+quence of the fact that φk is obtained in Lemma A.2 through the Contraction Theorem, and therefore the quantity
+∥φk(·, ·, ·|θ′, h′)∥L∞(T1
+2π×[0,T ]×[−1,1]),
+is bounded by a linear function (depending on T) of
+∥gk(·, ·, ·|θ′, h′)∥L∞(T1
+2π×[0,T ]×[−1,1]),
+which is in turn bounded uniformly with respect to θ′, h′ thanks to (B.3.9) of Lemma B.6.
+Lastly, φk is periodic with respect to θ′ since, for fixed θ′ ∈R, φk(·, ·, ·|θ′, h′) and φk(·, ·, ·|θ′ + 2π, h′) solve the
+same problem in (3.1.3) because gk is periodic with respect to variable θ′, and therefore they coincide since Lemma
+A.2 ensures that the solution of such a problem is unique.
+Therefore what is missing in order to prove Proposition 3.1 are the estimates on φk for large t. The following
+Lemma collects all the necessary estimates to prove that φk is bounded and decays as 1
+t (at most).
+Lemma 3.2. For any k ∈R2, k ̸= (0, 0), being gk introduced in Definition 1.9, the function φk defined in Lemma 3.1
+verifies the following identity
+φk(θ, t, h|θ′, h′)
+=
+gk(θ, t, h|θ′, h′) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)e2πi(t−t′)k·v(θ)gk(θ + π −2 arcsin(h′′), t′, h′′|θ′, h′)
++
+Z
+T1
+2π
+dθ′′
+Z t
+0
+dt′
+Z 1
+−1
+dh′′′gk(θ, t −t′, h|θ′′, h′′′)φk(θ′′, t′, h′′′|θ′, h′).
+(3.1.8)
+and moreover for k ∈R2, k ̸= (0, 0), gk is a contractive map, that is, it holds
+sup
+θ∈T1
+2π,h∈[−1,1]
+∥gk(θ, ·, h|·, ·)∥L1 ≤1 −C min{1, |k|2},
+(3.1.9)
+up to a constant C ∈(0, 1) not depending on k.
+Proof. To prove property (3.1.8) we have to iterate over (3.1.3) twice, that is
+φk(θ, t, h|θ′, h′)
+=
+gk(θ, t, h|θ′, h′) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)e2πi(t−t′)k·v(θ)gk(θ + π −2 arcsin(h′′), t′, h′′|θ′, h′)
++
+R t
+0 dt′ R 1
+−1 dh′′Q(t −t′, h|h′′)e2πi(t−t′)k·v(θ) R t′
+0 dt′′ R 1
+−1 dh′′′Q(t′ −t′′, h′′|h′′′)
+·e2πi(t′−t′′)k·v(θ+π−2 arcsin(h′′))φk(θ + 2π −2 arcsin(h′′) −2 arcsin(h′′′), t′′, h′′′|θ′, h′)
+,
+(3.1.10)
+28

@@ -1,0 +1,40 @@
+[11], which categorizes using two sorts of events: signal and background.
+A.
+Boosted Decision Tree (BDT)
+In this study, we depict three classiﬁers: MLP, LikelihoodD (Decorrelation), Boosted Decision
+Tree (BDT), and Likelihood. A selection in BDT A tree is a structure that resembles a tree and
+uses branching to show the many outcomes of a decision. Bypassing or failing to pass a condition
+(cut) on a certain node until a decision is made, an event is classiﬁed as either a signal or a
+background event. These cuts are located using the decision tree’s ”root node”. When minimum
+events (NEventsMin) are speciﬁed by the BDT algorithm, the node-splitting procedure becomes
+complete. The purity of the last nodes, or leaves determines their classiﬁcation. Whether p is
+greater or less than the given value determines the value for the signal or background, which is
+typically +1 for the signal and 0 or 1 for the background, for example, +1 if p > 0.5 and −1 if
+p < 0.5 [12]. All occurrences with a classiﬁer output y > ycut are labelled as a signal, while the
+remainder are categorised as background. The purity of the signal eﬃciency ϵsig,eff and background
+rejection (1−ϵbkg,eff) is assessed for each cut value [13]. The ADA-Boost algorithm reweights each
+misclassiﬁed event candidate. A reduced layout, known as multilayer perception (MLP), can also
+be used to speed up processing. An Artiﬁcial Neural Network (ANN) is made up of three diﬀerent
+types of layers: an input layer with nvar neurones and a bias neurone; many deep layers with
+a user-speciﬁed number of neurones (set in the HiddenLayers option) plus a bias node; and an
+output layer with weights assigned to each connection between two neurones.
+B.
+Likelihood Ratio
+The Likelihood ratio yL(j) for j the number of signal and background events is deﬁned by:
+yL(j) =
+LS(j)
+LS(j) + LB(j)
+(3)
+The candidate to be signal/background can be determined by:
+LS/B(j) =
+nvar
+Y
+i=1
+PS/B,i(xi(j))
+(4)
+Where PDF PS/B is for the ith input variable. The normalized PDF i is:
+Z −∞
+∞
+PS/B,i(xi)dxi = 1
+(5)
+7

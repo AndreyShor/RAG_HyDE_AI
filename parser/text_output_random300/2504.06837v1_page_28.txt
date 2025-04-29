@@ -1,0 +1,175 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+Proposition 5.8 (Strong compactness). Assume (4.A1) and let (cN, F N, JN) satisfy the a
+priori estimates (5.1).
+Then, there exists ρ ∈Lpcrit([0, T] × X) such that along a (not renamed) subsequence both
+˜ρN →ρ strongly in L1([0, T] × X) and ρN →ρ strongly in L1([0, T] × X).
+Furthermore, it holds ρ ∈AC([0, T]; M+(X) and ρN(t) ⇀∗ρ(t) weakly-∗in M+(X) for all
+t ∈[0, T].
+Proof. Lemma 5.3 implies that ˜ρN ∈L1([0, T]; Z), where Z := {ωu2 : u ∈H1(X)}. Since
+ω ∈L∞(X), we have the compact embedding Z ⋐L1(X). Combining this with Lemma 5.7,
+we obtain the existence of ρ ∈L1([0, T] × X) such that ˜ρN →ρ strongly in L1([0, T] × X) by
+applying the Aubin-Lions-Simon Lemma, [Sim86, Theorem 5].
+For the convergence of ρN, we compare it to ˜ρN and recall that UN
+k =
+r
+cN
+k
+wN
+k to derive
+∥˜ρN −ρN∥L1([0,T]×X) =
+ω
+
+˜ιN
+r
+cN
+wN
+2
+−ιNcN
+
+L1([0,T]×X)
+≤ω∗
+
+
+˜ιN
+r
+cN
+wN
+2
+−ιN
+cN
+wN
+
+L1([0,T]×X)
++
+ωιN
+cN
+wN −ιNcN
+
+L1([0,T]×X)
+≤ω∗(˜ιNUN
+k )2 −ιN(UN
+k )2
+L1([0,T]×X) + KE
+L1
+ω∗
+ω −ιNwN
+L∞([0,T]×X).
+The second summand on the right-hand side vanishes as N →∞by (4.2a). To control the ﬁrst
+summand, we ﬁrst employ (5.5) to obtain for all x ∈Td the auxiliary inequality
+ X
+k∈Zd
+N
+(hN
+k ± 11QN
+k )UN
+k
+!2
+=
+X
+k,l∈Zd
+N
+X
+m,n∈M
+(SN
+m−k fN
+m(x) ± SN
+−k fN
+m(x))(SN
+n−l fN
+n (x) ± SN
+−l fN
+n (x))UN
+k UN
+l
+=
+X
+k,l∈Zd
+N
+X
+m,n∈M
+SN
+−k fN
+m(x) SN
+−l fN
+n (x)(UN
+k+m ± UN
+k )(UN
+l+n ± UN
+l )
+=
+X
+k∈Zd
+N
+X
+m,n∈M
+SN
+−k fN
+m(x) SN
+−k fN
+n (x)(UN
+k+m ± UN
+k )(UN
+k+n ± UN
+k )
+≤2d X
+k∈Zd
+N
+X
+m,n∈M
+11QN
+k (x)(UN
+k+m ± UN
+k )(UN
+k+n ± UN
+k )
+≤2d X
+k∈Zd
+N
+X
+m∈M
+11QN
+k (x)|UN
+k+m ± UN
+k |2.
+We combine this with H¨older’s inequality to ﬁnd
+(˜ιNUN
+k )2 −ιN(UN
+k )2L1([0,T]×X) =
+
+ X
+k∈Zd
+N
+hN
+k UN
+k
+!2
+−
+X
+k∈Zd
+N
+11QN
+k (UN
+k )2
+
+L1([0,T]×X)
+=
+
+ X
+k∈Zd
+N
+hN
+k UN
+k
+!2
+−
+ X
+k∈Zd
+N
+11QN
+k UN
+k
+!2
+L1([0,T]×X)
+28

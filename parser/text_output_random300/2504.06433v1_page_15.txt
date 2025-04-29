@@ -1,0 +1,42 @@
+Deﬁnition 4.2 (Simpliﬁcation of states). Suppose we have an r-qubit register with qubits labeled
+1, . . . , r, a set S ⊆[r], and an r-qubit state |ψ⟩.
+a) Gate CSZ disappears on (or is turned oﬀby) |ψ⟩, if CSZ |ψ⟩= |ψ⟩.
+b) Gate CSZ simpliﬁes to CT Z on |ψ⟩, if CSZ |ψ⟩= CT Z |ψ⟩̸= |ψ⟩, for some T ⊊S.
+We say that CSZ simpliﬁes on |ψ⟩if either (a) or (b) hold.
+Observe that the two cases (a) and (b) in Deﬁnition 4.2 above are mutually exclusive, given S
+and |ψ⟩. Also observe that CSZ disappears on |ψ⟩if and only if ⟨x|ψ⟩= 0 for every computational
+basis state |x⟩such that the string x has 1’s in all positions in S. CSZ simpliﬁes to CT Z on |ψ⟩if
+and only if ⟨x|ψ⟩= 0 for every computational basis state |x⟩where x has a 0 in some position in
+S −T; equivalently, |ψ⟩factors into a tensor product of a |1⟩state of each qubit in S −T, along
+with some arbitrary state of the rest of the qubits.
+We will use Lemmas 3.8, 3.7, and 3.6 to prove the next lemma, which is the main lemma of this
+section.
+Lemma 4.3 (Entanglement Lemma). Suppose we have an r-qubit register as in Deﬁnition 4.2,
+and let S ⊆[r]. Let |ψ⟩be any state of the register, and let |ϕ⟩:= CSZ |ψ⟩. Then at least one of
+the following must hold:
+1. |ψ⟩is S-entangled,
+2. |ϕ⟩is S-entangled,
+3. CSZ simpliﬁes on |ψ⟩.
+Proof. Let {A, B} and {C, D} be two partitions of [r] such that all four sets have nonempty inter-
+section with S. Let |ψ⟩A and |ψ⟩B be arbitrary states of the qubits in A and B, respectively, and
+let |ψ⟩:= |ψ⟩A ⊗|ψ⟩B. Deﬁne |ϕ⟩:= CSZ |ψ⟩. Suppose that CSZ does not simplify on |ψ⟩. We will
+show that |ϕ⟩cannot be written as a tensor product of two states—one on the qubits in C and the
+other on the qubits in D. As C and D were chosen arbitrarily, this shows that |ϕ⟩is S-entangled,
+hence the lemma follows.
+The two partitions {A, B} and {C, D} lead to a 4-partition of [r] into sets A∩C, A∩D, B ∩C,
+and B ∩D, some of which may be empty. By rearranging qubits, we may assume WLOG that for
+some k, ℓ, m ∈N we have
+A ∩C = {1, . . . , k} ,
+A ∩D = {k + 1, . . . , k + ℓ} ,
+B ∩C = {k + ℓ+ 1, . . . , k + ℓ+ m} ,
+B ∩D = {k + ℓ+ m + 1, . . . , r} .
+Setting n := r −k −ℓ−m, we then have
+|A ∩C| = k ,
+|A ∩D| = ℓ,
+|B ∩C| = m ,
+|B ∩D| = n .
+By rearranging the qubits within these four sets if necessary, we may also assume that their in-
+tersections with S occur ﬁrst within each set. For example, A ∩C ∩S = {1, . . . , k1} for some
+0 ≤k1 ≤k, and we set k2 := k −k1; similarly for the other three sets. The full layout is shown in
+Figure 1.
+15

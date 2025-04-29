@@ -1,0 +1,173 @@
+7
+0
+32
+96
+64
+128
+Vertical pixel binning (px)
+0
+20
+40
+60
+Time (ms)
+(d)
+0
+256
+512
+768
+1024
+0
+20
+40
+60
+Time (ms)
+(a)
+Height of ROI (px)
+0
+256
+512
+768
+1024
+Width of ROI (px)
+0
+20
+40
+60
+Time (ms)
+(b)
+0
+256
+512
+768
+1024
+Height of ROI (px)
+0.0
+0.5
+1.0
+1.5
+2.0
+Time (ms)
+(c)
+Figure 5.
+Image acquisition. (a) Frame transfer and read-
+out time of a full-width image of various ROI heights (blue
+disks), excluding the exposure time, from EMCCD to CPU
+memory via the FGC. The measured values (blue disks) differ
+from the linear-scaling prediction (yellow dashed line) due to
+the finite transfer time from the FGC to the CPU memory.
+(b) Readout and transfer time of a full-height image of various
+ROI widths (blue disks), excluding the exposure time, with
+predicted values (yellow line). The steps correspond to powers
+of two of the width. (c) Difference between the measured and
+predicted times (blue circles). The transfer rate is estimated
+to be 1.43 GBps from a linear fit (blue line). (d) Readout and
+transfer time of a full-size image with vertical binning (blue
+disks). The predicted value (yellow line) follows an inverse
+power law of two. Horizontal binning does not change the
+acquisition time.
+B.
+Module 2 – Image processing and analysis
+The image processing module involves two steps. First,
+the mean weighted intensity at the location of each trap
+is calculated by deconvolving the image with a kernel de-
+fined by the point-spread function (PSF) associated with
+each trap. Second, the counts are thresholded to infer
+the presence or absence of an atom in each trap. The
+image processing time grows linearly with the number
+of traps (see Fig. 6a) and quadratically with the PSF
+box width (see Fig. 6b). Our current implementation is
+based on OpenMP, an open standard for parallel pro-
+gramming in shared-memory architectures.
+It exploits
+a multi-threaded method by parallelizing computations
+across distinct boxes, minimizing shared memory over-
+head. Under optimal conditions for initializing threads,
+this implementation achieves a deconvolution time of
+64 µs for a configuration of Nt = 32 × 32 = 1024 traps
+using a PSF defined over a box containing 7×7 = 49 px.
+However, our benchmarks show that the initialization
+overhead significantly increases during the reconfigura-
+tion process (Table I).
+Thresholding is a simple comparative operation that is
+nearly instantaneous as a result of our processor’s single
+instruction multiple data (SIMD) capabilities.
+0
+512
+1024
+1536
+2048
+Number of traps
+0
+30
+60
+90
+120
+Time (μs)
+Runtime (μs)
+(b)
+(a)
+Box size (px)
+1
+3
+5
+7
+0
+30
+60
+90
+120
+1x1
+3x3
+5x5
+7x7
+Figure 6.
+Image processing. (a) Processing time for ex-
+tracting the occupation state of a trap array of various sizes
+from a full-size image using the weighted filtering method.
+The time increases linearly with the number of traps and
+(b) quadratically with the side length of the squared-boxed
+filter. The discretized point-spread function is chosen as the
+weighted filter defined on a box of sizes 1 × 1 (blue disks),
+3 × 3 (yellow squares), 5 × 5 (green inverted triangles), and
+7 × 7 (purple right-rotated triangles) pixels.
+C.
+Module 3 – Problem solving
+We solve reconfiguration problems on chains using an
+improved implementation of the exact 1D algorithm [10,
+12], and on rectangular grids using an improved ver-
+sion and implementation of the red-rec algorithm [9, 12].
+These improved implementations outperform previous
+ones in both runtime and operational performance, ap-
+proaching the efficiency of the aro algorithm [10], which
+has also been sped up but not to a level suitable for real-
+time operations.
+The measured runtime of red-rec without batching
+scales as O(N 3
+tx) (see yellow line in Fig. 7a, b). Batching
+scales as O(n) where n is the solution length. Consider-
+ing a linear scaling of the solution length with respect to
+the problem size, the additional batching runtime can be
+upper bounded by a factor of O(N 2
+tx) (see orange line in
+Fig. 7a). When preparing a configuration of N T
+a = 32×32
+atoms, the measured runtime approaches 106(6) µs and
+180(9) µs without and with batching, respectively. To
+justify the use of CPU, we compare these results against
+those obtained for a parallel implementation of red-rec
+on the GPU (see green line in Fig. 7b). The runtime for
+the GPU implementation exhibits a finite initialization
+time of 7 µs and approximately linear scaling with the
+nearest power of two of Ntx. The use of a GPU might
+be justified for preparing configurations containing more
+than Nt = 42 × 42 = 1764 atoms.
+D.
+Module 4 – Waveform synthesis
+Waveform synthesis is done concurrently with wave-
+form streaming. The only runtime costs contributing to
+latency are the time needed to look up and upload two
+full segments of 32 waveforms from the lookup table and
+update them in the sequence memory of the AWG. These
+two segments are necessary to avoid underrun errors.
+Our waveform table implementation uses contiguous
+buffers, allowing access to a specific waveform by simply

@@ -1,0 +1,37 @@
+Paired and unpaired samples
+Our approach is related to CP under
+random effects Dunn et al. (2018). Similar to here, CP intervals are obtained
+from the samples of an underlying black-box generator but are not explicitly
+related to distribution distances. Ghosal and Matabuena (2023) provide a
+conformal algorithm for when the inputs and outputs are distributions. In
+their setup, however, each sample corresponds to a label, i.e. attributes and
+labels are paired. Outside the CP framework, techniques to address the 2-
+sample problem have been proposed in the statistical literature since 1939
+(Smirnov, 1939) and mostly in the non-parametric framework (Gretton et al.,
+2012). The only connection between CP and 2-sample tasks is a recent work
+on hypothesis testing (Hu and Lei, 2024) (see Section 1.1 for a technical
+comparison).
+CP for QC
+In QC, CP has been used only in Park and Simeone (2023),
+which is a direct application of Probabilistic CP Wang et al. (2022).
+In
+Park and Simeone (2023), the multiple-output setup is avoided because high-
+dimensional observables can be handled by performing several separate mea-
+surements Caro et al. (2022). The argument in Caro et al. (2022) relates
+to the generalization properties of Quantum ML algorithms. It is unclear
+whether this is a more fundamental property of Quantum Computing de-
+vices.
+Quantum Error Mitigation
+The problem of hardware noise is handled
+with QEM (Cai et al., 2023). Machine Learning (ML) methods have been
+used for QEM since 2020. Unlike us, ML-QEM often focuses on inferring
+distribution summaries, depends on the underlying error models and requires
+changing the target circuit (Harper et al., 2020; Liu and Zhou, 2020; Strikis
+et al., 2021; Wang et al., 2022; Canonici et al., 2024; Adeniyi and Kumar,
+2025).
+2
+Methods
+2.1
+The Bhattacharyya Coefficient (BC)
+The output of small QC hardware can be reproduced using classical com-
+puters, i.e. a simulator where all quantum operations are noise-free. In this

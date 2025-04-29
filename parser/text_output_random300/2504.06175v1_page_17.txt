@@ -1,0 +1,161 @@
+17
+Appendix G: Circuits for noise and distillation
+Here we present the circuits used in the distillation protocols of the main text, as well as the modifications to those
+circuits that enabled us to study them under various types of noise.
+|0⟩0
+H
+•
+Λp
+Nλ
+•
+|0⟩1
+•
+•
+i
+|0⟩2
+H
+•
+•
+•
+|0⟩3
+j
+t0
+t1
+t2
+(a) Two Bell distillation circuit with global depolarizing noise.
+|0⟩0 :
+H
+•
+Λp
+Nλ
+•
+|0⟩1 :
+•
+•
+i
+|0⟩2 :
+H
+•
+•
+•
+•
+•
+H
+k
+|0⟩3 :
+•
+•
+•
+•
+|0⟩4 :
+H
+•
+Λp
+•
+j
+|0⟩5 :
+•
+H
+l
+t0
+t1
+t2
+(b) Three Bell distillation circuit with global depolarizing noise.
+FIG. 11. Circuits for simulation of entanglement distillation with global depolarizing channel Nλ replacing the local depolarizing
+noise between t1 and t2 barriers in Fig. 3 of the main text.
+|0⟩
+|0⟩
+|0⟩
+|0⟩
+H
+H
+C1
+C2
+C†
+2
+C†
+1
+H
+H
+1
+3
+0
+2
+FIG. 12. Circuit for implementing recurrence under global depolarizing noise using mirror Clifford layers
+|0⟩0
+H
+•
+•
+· · ·
+•
+Pauli
+|0⟩1
+•
+•
+eiθ01
+•
+eiθ0n
+•
+Pauli
+|0⟩2
+H
+•
+•
+•
+eiθ11
+•
+eiθ1n
+Pauli
+|0⟩3
+eiθ20
+eiθ2n
+Pauli
+t0
+t1
+Wδt,1
+Wδt,n
+t2
+(a) Two bell creation with idling noise.
+|0⟩0
+H
+•
+•
+· · ·
+•
+•
+Pauli
+|0⟩1
+•
+•
+eiθ01
+•
+eiθ0n
+•
+i
+|0⟩2
+H
+•
+•
+•
+eiθ11
+•
+eiθ1n
+•
+Pauli
+|0⟩3
+eiθ20
+eiθ2n
+j
+t0
+t1
+Wδt,1
+Wδt,n
+t2
+(b) Z2B recurrence protocol with idling noise
+FIG. 13. Circuit(s) for the Z2B recurrence protocol with idling noise. In both circuits, two Bell pairs are created prior to time
+label t0, between t0 and t1 the first and second qubits are swapped and a delay is added from t1 to t2. The delay inteval t2 −t1
+is parametrized as nδt where δt is variable and fixed integer n is the number of times the ZZ sequence Wδt,k is applied. Control
+phase angles in each sequence are θjk = fk2πωjδt/n where 1 ≤k ≤n, 0 ≤j ≤2, fk = 1 if k < n/2 and −1 otherwise, ωj is the
+ZZ frequence between qubits j and j + 1. In Fig. 13a after time t2 Pauli basis measurements are carried out on each qubit to
+determine the Bell fidelity (see App. B for details). In Fig. 13b after t2, ZZ measurements are carried out on qubits 1 and 3
+while qubits 0 and 2 are measured in the Pauli basis for Bell fidelity estimation.

@@ -1,0 +1,24 @@
+Ref. Video
+MD [60]
+RAGME
+‘‘A person is riding a camel with the Pyramids as background.’’
+MD [60]
+RAGME
+‘‘A truck is driving past the Arc de Triomphe.’’
+Figure 8. Results for the motion transfer task. The top row displays the reference video, followed by a comparison of Motion Director
+(MD) [60] and our method using two distinct prompts (shown at the bottom). Our approach achieves qualitatively similar results with 8×
+fewer fine-tuning iterations.
+mantics from the retrieved videos - aligning with our goal of
+enhancing generated motion in a generalizable way. How-
+ever, for motion transfer, we can adapt our method accord-
+ingly. In practice, given a driving video, we overfit the con-
+troller network to that specific video to achieve the desired
+effect. Notably, the design of our architecture and pretrain-
+ing on WebVid-10M facilitate this adaptation process, mak-
+ing it more efficient compared to other methods that require
+fine-tuning on the target video. Compared to Motion Di-
+rector [60] (which relies on the same backbone video gen-
+erator), our method achieves similar performance while re-
+quiring eight times less fine-tuning (50 vs 400 iterations),
+demonstrating the efficiency of our RAG-first design.
+2

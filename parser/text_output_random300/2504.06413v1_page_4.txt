@@ -1,0 +1,129 @@
+GECCO ’25, July 14–18, 2025, Malaga, Spain
+Kölle et al.
+3.7
+Evolutionary Step
+During each generation, the GA refines the population to improve
+solutions. Offspring form the bulk of the new population and are
+created through crossover, where randomly selected parents are
+split, recombined, and mutated. This process introduces new genetic
+material, promoting diversity while preserving successful traits.
+Meanwhile, elites—top-performing candidates—advance directly to
+the next generation without changes, ensuring that high-fidelity
+solutions remain intact. To maintain diversity and prevent early
+convergence, a subset of immigrants is randomly generated and
+included in the population, offering new genetic variations that
+might otherwise not emerge.
+Mutations then refine candidates by applying minimal changes
+to their structure. In the change mutation, one quantum operation
+is substituted with another of the same length, ensuring that the
+circuit depth remains constant (Fig. 4). The delete mutation removes
+an operation to simplify the circuit (Fig. 5), while the add mutation
+introduces a new operation at a random position, increasing cir-
+cuit complexity (Fig. 6). Finally, the swap mutation exchanges two
+operations without altering their type (Fig. 7). This combination
+of offspring creation, elite preservation, immigrant introduction,
+and incremental mutations enables the GA to explore the solution
+space thoroughly while retaining strong candidates for subsequent
+iterations.
+S(wires = 3)
+CNOT(wires = [0,1])
+S(wires = 1)
+H(wires = 2)
+T(wires = 3)
+S
+S
+H
+S(wires = 3)
+CNOT(wires = [0,1])
+S(wires = 1)
+S(wires = 2)
+T(wires = 3)
+T
+S
+S
+T
+S
+Figure 4: An example of the change strategy. The modified
+operation is highlighted in orange.
+An experimental feature is adaptive mutation, which adjusts
+mutation parameters in response to average fitness, population
+diversity, and remaining generations. It encourages extensive ex-
+ploration early on, then converges toward stronger solutions as the
+optimization nears completion.
+3.8
+Island Model
+The island model is an optional feature that partitions the popu-
+lation into smaller, parallel subpopulations. Each island explores
+different regions of the solution space in isolation. During later
+generations, selective migration shares high-fidelity candidates
+between islands, boosting convergence toward globally optimal
+solutions. This parallel isolation also mitigates premature conver-
+gence by maintaining diverse subpopulations.
+S(wires = 3)
+CNOT(wires = [0,1])
+S(wires = 1)
+H(wires = 2)
+T(wires = 3)
+S
+S
+H
+S(wires = 3)
+CNOT(wires = [0,1])
+S(wires = 1)
+T(wires = 3)
+T
+S
+S
+T
+Figure 5: An example of the delete strategy. The removed
+operation is highlighted in orange.
+S(wires = 3)
+CNOT(wires = [0,1])
+S(wires = 1)
+H(wires = 2)
+T(wires = 3)
+S
+S
+H
+S(wires = 3)
+H(wires = 0)
+S(wires = 1)
+CNOT(wires = [2,1])
+T(wires = 3)
+T
+S
+S
+H
+T
+H(wires = 0)
+H
+Figure 6: An example of the add strategy. The newly inserted
+operation is highlighted in orange.
+S(wires = 3)
+CNOT(wires = [0,1])
+S(wires = 1)
+H(wires = 2)
+T(wires = 3)
+S
+S
+H
+S(wires = 3)
+H(wires = 0)
+S(wires = 1)
+CNOT(wires = [2,1])
+T(wires = 3)
+S
+S
+T
+H
+T
+Figure 7: An example of the swap strategy. The exchanged
+operations are highlighted in orange.
+3.9
+Quantum Circuit Optimization
+Fully random candidate creation can produce extraneous or cancel-
+ing operations. To address this, the environment includes a selective
+optimizer. It merges or removes redundant gates in each candidate’s
+circuit (e.g., converting two consecutive T gates to an S gate) during
+fitness evaluation. The best candidate also undergoes a final opti-
+mization step before deployment. This selective application retains

@@ -1,0 +1,86 @@
+10
+obtain
+S(BnE′)τ3 ≥S(BnE′)σ +
+√
+2ǫ log(|BnE′|) + h(
+√
+2ǫ)
+≥u((|ρ⟩⟨ρ|AR)⊗n, 0) +
+√
+2ǫ log(|BnE′|) + h(
+√
+2ǫ)
+= Ep(Bn : KnRn)σ +
+√
+2ǫ log(|BnE′|) + h(
+√
+2ǫ)
+(22)
+where in the ﬁrst line the entropy is with respect to the state σBnE′ = (MGn֒→E′ ⊗idBnKnRn)|σ⟩⟨σ|BnKnGnRn, that
+is E′ is obtained by applying a CPTP map acting on the environment system Gn of the channel N ⊗n. This line
+is due to Uhlmann’s theorem [6]: the state τ BnKnRn
+3
+has 1 −ǫ ﬁdelity with σBnKnRn, hence, there is a puriﬁcation
+V Gn֒→E′E′′ |σ⟩BnKnGnRn of the state σBnKnRn, which has 1 −ǫ ﬁdelity with the puriﬁed state τBnKnRnE′E′′
+3
+. By
+tracing out system E′′ the ﬁdelity only increases. hence, the ﬁrst line holds because τ3 is 2
+√
+2ǫ-close to σ in trace norm;
+then the inequality follows by applying the Fannes-Audenaert inequality. Finally the proposition follows by dividing
+the above inequality by n and taking the limit of n →∞and ǫ →0. The ǫ-terms vanish because the dimension of
+system E′ is bounded as explained in Remark 4.
+■
+Remark 10. Indeed for a general mixed input state ρAR, the optimal unassisted rate is lower bounded by E∞
+p (B :
+KR)σ. This lower bound can be obtained similarly to the lower bound we derive in Eq. (22). However, this rate cannot
+be achievable in the general case since this entanglement of puriﬁcation is the minimal possible entropy of systems
+BnE′, where E′ is obtained by applying a CPTP map on system E, as deﬁned in Deﬁnition 3, and system R′ which
+puriﬁes the source ρAR, and it is inaccessible to the encoder.
+Proposition 11. The optimal unassisted rate for the simulation of the identity channel id : A →A is equal to
+limǫ→0 limn→∞1
+nu(ρ⊗n, ǫ) = limn→∞1
+nu(ρ⊗n, 0) = S(CQ)ω.
+Proof. As explained in Sec. C below Theorem 16, there are unitary CPTP maps in both directions UKI : A →CNQ
+and R : CNQ →A which relate a state ρAR to its KI-decomposition ωCNQR. This implies that u((ρAR)⊗n, ǫ) =
+u((ωCNQR)⊗n, ǫ) since applying unitary CPTP maps do not change the entropy and only increases the ﬁdelity. Hence
+for N = id
+u((ρAR)⊗n, ǫ) = u((ωCNQR)⊗n, ǫ)
+=
+min
+Λ2:CNQ→CNQ
+Λ3:E→E′
+S(CnN nQnE′)τ3
+s.t.
+F((ωCNQR)⊗n, τ CnN nQnRn
+3
+) ≥1 −ǫ,
+where |τ3⟩CnN nQnE′E′′RnR′n = (UΛ3 ⊗idCnN nQnRnR′n)(UΛ2 ⊗idRn)(|ω⟩⊗n)CnN nQnRnR′n. Here, UΛ2 and UΛ3 are
+isometric extensions of Λ2 and Λ3, respectively. We obtain
+S(CnN nQnE′)τ3 = S(CnQn)τ3 + S(E′N n|CnQn)τ3
+≥nS(CQ)ω + S(E′N n|CnQn)τ3 +
+√
+2ǫn log(|C| · |Q|) + h(
+√
+2ǫ)
+= nS(CQ)ω −I(E′N n : Qn|Cn)τ3 + S(E′N n)τ3 +
+√
+2ǫn log(|C| · |Q|) + h(
+√
+2ǫ)
+≥nS(CQ)ω −nJǫ(ω) + S(E′N n)τ3 +
+√
+2ǫn log(|C| · |Q|) + h(
+√
+2ǫ)
+≥nS(CQ)ω −nJǫ(ω) +
+√
+2ǫn log(|C| · |Q|) + h(
+√
+2ǫ)
+(23)
+where the second line follows because τ3 is 2
+√
+2ǫ-close to ω in trace distance; then the inequality follows by applying
+the Fannes-Audenaert inequality. The third line is to the deﬁnition of the conditional mutual information. In the
+penultimate line Jǫ(ω) →0 as ǫ →0 as deﬁned and proven in [5, 7, 8] . By dividing by n and taking the limits, we

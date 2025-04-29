@@ -1,0 +1,119 @@
+9
+from Horndeski theory [66].
+Within the w(z) cold dark matter (CDM) framework,
+w(z) is discretized into N = 29 piecewise-constant seg-
+ments, w ≡{w1, w2, . . . , wN}, uniformly spaced in scale
+factor for z < 2.5. Additionally, an extra ‘wide’ bin
+wwide = −1 is assigned for z > 2.5 up to recombina-
+tion.4 Alongside these wi, we vary several cosmological
+parameters: ΩM, the current fractional matter density;
+Ωbh2, the physical baryon density; H0, the Hubble con-
+stant; and Mb, the absolute SNe magnitude (used only
+when supernova data are included).
+We place sufficiently broad flat priors on all param-
+eters,5 and explore the resulting parameter space using
+the Markov Chain Monte Carlo (MCMC) algorithm im-
+plemented in Cobaya [67]. At each step, we compute a
+total χ2 that combines contributions from both the data
+and the correlation prior. The prior term is given by
+χ2
+prior = DT
+w C−1
+Π Dw, where Dw ≡w −wfid. Follow-
+ing [63, 64, 68], we determine wfid at each MCMC step
+by averaging over neighboring w bins. The prior covari-
+ance CΠ is derived from Horndeski-based simulations [65]
+spanning a broad parameter space. Further technical de-
+tails are provided in the Supplemental Material.
+We validate our pipeline using mock datasets gener-
+ated for four dark energy models shown in Sec. XI in
+Supplemental Material, before applying to actual obser-
+vations. Fig. 3 (white curves and blue bands) illustrates
+the best-fit and 68% CL constraints on w(z) obtained
+from various data combinations. The upper row corre-
+sponds to DESI DR1 BAO data, and the lower row to
+DR2. In each row, the leftmost panel reports BAO-only
+constraints, while the other panels incorporate additional
+supernova datasets: PantheonPlus, Union3, and DESY5.
+In all cases, w(z) ̸= −1 is clearly indicated. Through-
+out the paper, we define the significance (i.e., the signal-
+to-noise ratio, SNR) of the reconstructed w(z) deviating
+from a specific model wmod via
+SNR2 ≡(w −wmod)T C−1
+w (w −wmod),
+(5)
+where Cw is the posterior covariance for the w bins. For
+the DR1-based reconstructions (panels A1–A4), the SNR
+of w ̸= −1 is 2.6, 3.9, 3.9, and 4.2, respectively. Switch-
+ing to the DR2 dataset yields comparable significance at
+2.6, 3.7, 4.3, and 4.5, respectively. It is interesting that
+the preference for deviations from ΛCDM when the SNe
+samples are included remained strong with the enhanced
+statistical power of DESI DR2.
+All dataset combinations exhibit a persistent pattern
+in w(z): w > −1 at z ≲0.2 and w < −1 at z ∼0.75,
+which is consistent with the results reported in compan-
+4 Allowing wwide to vary left it largely unconstrained by our data,
+and it showed minimal correlations with the other w bins. We
+therefore fix wwide = −1 for simplicity.
+5 Specifically, H0 ∈[20, 100], ΩM ∈[0.01, 0.99], w0 ∈[−3, 1], wa ∈
+[−3, 2], and wi ∈[−6, 4] (for i = 1, . . . , 29).
+ion DESI papers [44, 45]. Including supernova data high-
+lights this feature further, revealing pronounced oscilla-
+tions in w(z). These patterns remain stable and gain ad-
+ditional significance when DR1 BAO is replaced by DR2.
+The green bands—reconstructions using the CPL param-
+eterization—track the transition across w = −1 well and
+are broadly compatible with the non-parametric results,
+reinforcing the robustness of these conclusions.
+While the significance of w ̸= −1 stems from the re-
+duction in χ2 relative to ΛCDM, fully assessing the fit
+also requires determining the effective degrees of freedom
+(DoF) in the reconstructed w(z). This step is nontrivial
+because the correlation prior couples the w(z) bins. To
+address this, we perform a principal component analysis
+(PCA) [69] to decorrelate the prior and posterior inverse
+covariance matrices of w(z). Further technical details on
+the PCA procedure can be found in the Supplemental
+Material.
+Fig. 4 shows the PCA results for the reconstructed dark
+energy equation of state w(z). The left panels (A1–A4)
+plot the eigenvectors of the first few well-constrained
+modes, highlighting their redshift dependence, while the
+right panels (B1–B4) display the corresponding eigen-
+values λi for different dataset combinations. The PCA
+identifies independent modes constrained by the data.
+In panel A1 (BAO-only), the first principal component
+(PC1) is smooth and relatively featureless, indicating
+that BAO data alone primarily constrain a single domi-
+nant mode of w(z). By contrast, adding supernova data
+(panels A2–A4) produces additional constrained modes;
+PC2 and PC3 become more oscillatory, especially at low
+redshift, demonstrating that supernova observations sig-
+nificantly improve constraints on the redshift evolution
+of w(z).
+The right panels show the eigenvalues λi, which quan-
+tify the statistical significance of each mode (larger val-
+ues correspond to tighter constraints). In panel B1 (also
+BAO-only), four eigenvalue notably exceeds that of the
+correlation prior (green curve). When supernova datasets
+are incorporated (panels B2–B4), more modes become
+well constrained. Comparing DESI Data Release 1 (DR1;
+orange) and Data Release 2 (DR2; blue) eigenvalues re-
+veals that DR2 consistently achieves larger eigenvalues
+for the constrained modes, indicating stronger statistical
+power in the DR2 sample. This gain is most evident when
+supernova data are included, as the gap between the first
+few eigenvalues of DR1 and DR2 widens, showing that
+DR2 improves constraints across multiple modes of w(z).
+We further validate these findings by computing the effec-
+tive number of degrees of freedom Neff numerically with
+covariant principal component analysis (CPCA) [70], de-
+tailed in the Supplemental Material. The CPCA results
+align with the PCA, confirming the robustness of our as-
+sessment of how many independent modes of w(z) are
+constrained by the data.
+We can project w(z) onto the PC eigenmodes 1 +
+w(z) = P
+i γiei(z) where the corresponding eigenvalue
+λi of the covariance matrix represents the error of the

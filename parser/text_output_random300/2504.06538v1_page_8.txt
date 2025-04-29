@@ -1,0 +1,130 @@
+Here, F projects vectors onto the fusion basis, ensuring
+that generated actions follow the topological constraints
+of the task.
+Algorithm 1 OPAL Training
+1: Inputs:
+2:
+Dataset D = {(ot, At)}, each At = [P 1
+t , . . . , P K
+t ] where
+P
+k|P k
+t |= H
+3:
+Transformer architecture:
+4:
+VLM
+(PaliGemma-based),
+ActionExpert,
+TopologicalAttention(Mtopo)
+5:
+Flow-matching parameters: horizon H, step size δ, epochs N,
+etc.
+6: Define TopologicalAttention(Q, K, V ) :
+7:
+logits =
+QK⊤
+√
+dhead ⊙Mtopo
+8:
+Attn = softmax(logits) · V
+9: Training Loop:
+10: for epoch = 1 to N do
+11:
+Sample batch {(ot, At)} ⊂D
+12:
+for (ot, At) in batch do
+13:
+1. Sample τ ∼p(τ) (e.g. Beta)
+14:
+2. Create noisy Aτ
+t :
+aτ
+t′ = τ at′ +
+p
+1 −τ 2 ϵt′
+for t′ ∈[t, t+H−1].
+15:
+3. Form token blocks:
+[I1
+t ,. . . , In
+t , ℓt] | qt | [aτ
+t , . . . , aτ
+t+H−1]
+Use blockwise causal mask ( `VLM`block, `State`block, Àc-
+tion`block) with TopologicalAttention in each self-attention.
+16:
+4. Transformer forward pass:
+vθ(Aτ
+t , ot) ←ActionExpert
+
+. . .
+
+.
+17:
+5. Compute total loss:
+L(θ) = Lflow + λ1 Ltask + λ2 Lsmooth + λ3 Ltopo,
+where
+Lflow = E
+h
+∥vθ(Aτ
+t , ot) −u(Aτ
+t |At)∥2
+T
+i
+.
+18:
+6. Update parameters θ via backprop.
+19:
+7. Project mask Mtopo ←ΠT (Mtopo −α ∇MtopoL) to
+enforce pentagon/hexagon constraints.
+20:
+end for
+21: end for
+6
+Experiments
+6.1
+Benchmark Tasks and Evaluation Pro-
+tocol
+We evaluated OPAL against previous approaches (Octo
+[27], OpenVLA [15], and π0[2]) on 10 complex robotic
+manipulation tasks designed to test the models’ ability to
+follow natural language instructions in physical environ-
+ments. Our benchmark includes:
+• Box Building (Trossen Stationary): Constructing
+cardboard boxes from flat templates
+• To-go Box (Trossen Stationary): Assembling food
+containers with lids
+• Packing Eggs (Trossen Stationary):
+Carefully
+placing eggs into cartons
+• Laundry Folding (Trossen Stationary): Folding
+various fabric items
+• Table Bussing (UR5E): Clearing dishes and utensils
+from tables
+• Shirt Folding (Trossen Stationary): Precisely fold-
+ing shirts in retail pattern
+• Bussing Easy (UR5E): Simplified version of table
+clearing
+• Bussing Hard (UR5E): Complex variation with
+more items and constraints
+• Grocery Bagging (UR5E): Packing groceries in
+bags
+• Toast (Trossen Stationary): Preparing and making
+toast
+Performance was measured using Average Task Progress
+(ATP), a normalized metric [0,1] representing the percent-
+age of successful task completion. For each task, we con-
+ducted 25 trials per model and computed the mean ATP
+score.
+6.2
+Implementation Details
+Models were implemented using JAX and trained on 8
+NVIDIA A100s.
+We used the Adam optimizer with a
+learning rate of 3 × 10−4 and a batch size of 256. For
+OPAL, we set λ1 = 0.1, λ2 = 0.05, and λ3 = 0.2 in
+the training objective. The Runge-Kutta integration used
+a step size of δ = 0.25 with 4 integration steps during
+both training and inference.
+8

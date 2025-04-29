@@ -1,0 +1,34 @@
+Springer Nature 2021 LATEX template
+Human Activity Recognition using RGB-Event based Sensors
+13
+Fig. 3 The adaptive fusion module based on policy routing strategy, i.e., Modal Comple-
+mentary Fusion (MCF), Modal Discriminative Fusion (MDF), and Modal Specific Fusion
+(MSF).
+in Fig. 3, modal complementary fusion (MCF), modal discriminative fusion
+(MDF), and modal specific fusion (MSF) are considered. For RGB and event
+features (FR and FE), a detailed explanation will be provided below.
+1). Modal Complementary Fusion (MCF): When both features
+exhibit strong individual performance, we employ the concatenation method
+to seamlessly combine them, leveraging the complementary strengths of each
+modality. This fusion strategy allows for the effective integration of spatial and
+temporal information. The formula for this fusion process is as follows,
+F1 = Concat(FR, FE).
+(7)
+2). Modal Discriminative Fusion (MDF): Conversely, if the perfor-
+mance of either modality is suboptimal, we first identify the intersection
+between the two modalities through element-wise multiplication, which rep-
+resents the common features shared by both. We then subtract this common
+feature from each modality, effectively eliminating low-quality shared features.
+This approach ensures that only the unique, high-quality features from each
+modality contribute to the final representation, minimizing the impact of poor
+performance in either modality. The formula is as follows,
+F2 = Concat ((FR −FR ∗FE) , (FE −FR ∗FE)) .
+(8)
+3). Modal Specific Fusion (MSF): In scenarios where one modality
+performs well while the other does not, we initially concatenate the two modal-
+ities to form a combined feature representation. Following this, we employ a
+simple convolutional network, which is paired with a sigmoid activation func-
+tion, to learn and adaptively assign optimal weights to each modality based on
+their respective contributions. This approach enables a dynamic and weighted
+fusion of the modalities, allowing the network to emphasize the more infor-
+mative modality while mitigating the impact of the less effective one, thereby

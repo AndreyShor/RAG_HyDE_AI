@@ -1,0 +1,38 @@
+Figure 1:
+The Bloch sphere represents a qubit, |ψ⟩as the complex superpo-
+sition of two states, |ψ⟩= α|0⟩+ β|1⟩, with α = cos(θ/2), β = eiϕ sin(θ/2),
+|0⟩=
+ 1
+0
+
+, and |1⟩=
+ 1
+0
+
+. Measuring a qubit can only produce two outcomes,
+0 with probability α2 and 1 with probability β2, and destroys the superposi-
+tion (by setting either α or β to 0). If the qubit is entangled with another,
+measuring the first may affect the (unmeasured) state of the second. A quan-
+tum circuit consists of a series of matrix operators acting on |ψ⟨before it is
+measured.
+are computationally expansive and become unreliable for deep circuits, i.e.
+circuits with many qubits.
+Existing Machine Learning (ML) methods to
+improve them (Harper et al., 2020; Canonici et al., 2024) often rely on un-
+verifiable assumptions, e.g. the specific type of quantum noise affecting the
+device (Google, 2023; Van Den Berg et al., 2023; Rajeev, 2024; McEwen et al.,
+2022; Thorbeck et al., 2023). They also depend on the model architecture
+and training (Nguyen et al., 2021; Tindall et al., 2024; Patra et al., 2024)
+and have theoretical success guarantees only in the limit of infinite sam-
+ples (Zheng et al., 2023). Uncertainty estimation methods like Caro et al.
+(2022) or Park and Simeone (2023)mostly focus on Quantum ML applica-
+tions and can be hardly extended to more general tasks. In particular, it
+is unclear whether such Quantum ML approaches can directly estimate the
+output of a given s-qubit quantum device, which is a multivariate discrete
+distribution over Y = {0, 1}s. Using black-box ML methods for data-driven
+characterizations of QC hardware noise is a relatively new but promising
+idea. Martina et al. (2022) and Canonici et al. (2024) show that quantum
+noise is rich enough to provide a unique fingerprint of a QC machine. The
+result is obtained from real hardware data but for small circuits (4 qubits).
+Does the provided noise characterization still hold when the size of the cir-
+cuits increases, e.g. when s crosses the boundary of the so-called Quantum

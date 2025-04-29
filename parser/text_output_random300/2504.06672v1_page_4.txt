@@ -1,0 +1,96 @@
+"A cute dog is
+running on a
+green field"
+Retrival Mechanism (RM)
+Text-to-Video
+Model
+Output
+Video
+(a)
+(b)
+i-th block
+RAG Cross-Attention
+Temporal Self-Attention
+Spatial Self-Attention
+...
+...
+CLIP
+Temporal
+Enhancer
+T2V Model
+Figure 2. Pipeline of RAGME. (a) We show a general T2V pipeline with RAG capabilities. Given a textual prompt, we retrieve related
+videos from a database and use it to enhance the generation capabilities of a T2V model. (b) We detail the specific implementation. Each
+video frame from the retrieved videos is encoded using CLIP and then processed by a transformer temporal enhancer module to obtain the
+final conditioning vector. This vector is used to condition a T2V model through cross-attention layers. Each video is color-coded, with
+different frames represented by varying shades of the base color.
+• Spatial Attention blocks, which operate on the spatial di-
+mension treating each frame independently, the activation
+of the network are reshaped as xspatial ∈R(b·T )×(h·w)×dim.
+• Temporal Attention blocks, which operate solely on the
+temporal axis, the activation of the network are reshaped
+as xtemp ∈R(b·h·w)×T ×dim.
+In this work, we concentrate on the temporal attention
+blocks, as our primary goal is to enhance the temporal dy-
+namics of the generated video.
+Retrieval Mechanism (RM)
+The retrieval mechanism
+processes a query q and retrieve K samples form a database
+D. The retrieval is performed by minimizing a distance
+function d(q, ·) between the query and the other entries
+in the database. In practice, it is composed of three non-
+learnable blocks: the pre-trained text encoder ftxt, the pre-
+trained visual encoder fvis and an indexing mechanism
+findex. Following the previous works, we use CLIP to im-
+plement the visual and textual encoders.
+Our choice is
+motivated by three factors: (i) previous works on video-
+action recognition show that frame-wise CLIP encodings
+are powerful for the task, and can be used to recognize
+the action with high accuracy [1, 32, 34, 51] (ii) the em-
+bedding space is compact and reduces the dimensionality
+(dim = 512), with advantages in memory and computa-
+tional requirements, (iii) the shared textual-visual embed-
+ding space allows to search the database in a multi-model
+manner at inference time (i.e. using the prompt of the T2V
+model as the query for the retrival) [2].
+First, we preprocess the database D. For each video Xi,
+we encode the frames independently and compute the av-
+erage along the temporal dimension to aggregate the infor-
+mation. This results in a per-video representation, after L2
+normalization:
+xi =
+ 1
+T
+T
+X
+j=1
+∥fvis(Xi,j)∥2
+
+2.
+(3)
+Second, we efficiently store the compressed video repre-
+sentations in the index using the FAISS library [13]. Next,
+we search over the index, returning K samples from the
+database, which maximize the cosine similairty dcos with
+the query:
+Z = top-K
+Zj∈D
+dcos(q, Zj)
+(4)
+with Z = {Z0, . . . , ZK}, q /∈Z.
+During training, we compute the averaged temporal
+CLIP representation for the current video Xi as described
+in Eq. (3). Then, we search the dataset using Eq. (4), set-
+ting the query q = xi. Conversely, at test time, we encode
+the given textual prompt Ti using the CLIP textual encoder,
+i.e., ti = ∥ftxt(Ti)∥2. Finally, we leverage the multimodal
+nature of the CLIP latent space and retrieve from the dataset
+using Eq. (4), setting the query q = ti. We refer to Fig. 2
+(a) for a visual representation of the process.
+Note that, for the sake of generality, we assume the
+database to contain only videos, but the pipeline can be
+applied to text-video database as well. We explore other
+choices for the retrieval system and discuss the result in the
+Section 4. Lastly, we apply a deduplication strategy to pre-
+vent returning (multiple) similar elements in a dataset with
+4

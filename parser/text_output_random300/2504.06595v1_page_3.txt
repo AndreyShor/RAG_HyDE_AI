@@ -1,0 +1,247 @@
+3
+to a fully relaxed static framework configuration for a
+particular R with the equilibrium framework positions
+shifted by rH, reminiscent of the quasistatic NEB formu-
+lation. Therefore, we can view the final term in Eq. (11)
+as the dynamic correction to the static NEB result.
+At this point, we have a formal solution for the frame-
+work motion, having avoided solving Eq. (3) for an in-
+finitely large number of degrees of freedom. In fact, be-
+cause our main goal is the particle trajectory, we can
+focus only on framework atoms that are sufficiently close
+to the particle to exhibit a non-negligible force, making
+the size of r finite. Unfortunately, even with this simpli-
+fication, the expression for r involves a memory integral.
+Therefore, our next goal is to convert this expression into
+an approximate time-local form.
+We start by noting that, for a system containing A
+atoms per unit cell, the eigenvectors εj are
+εj =
+1
+√
+N
+
+
+
+
+
+eiL1·qj
+eiL2·qj
+...
+eiLN·qj
+
+
+
+
+⊗ηj ,
+(12)
+where N is the number of unit cells in the system, qj
+is the crystal momentum corresponding to the mode j,
+Ln is the coordinate of the nth unit cell, and ηj is a 3A-
+dimensional eigenvector of the dynamical matrix [27].
+To proceed,
+we assert that low-frequency,
+long-
+wavelength (small qj) modes play the dominant role
+in the response kernel in Eq. (10).
+This low-energy
+phonon dominance is due to suppressed coupling to high-
+frequency modes: the Ω2
+j in the denominator. Moreover,
+even though the number of modes grows with frequency
+due to the increasing phase space, their short wavelength
+makes them much more susceptible to destructive inter-
+ference. This assertion yields two consequences. First,
+we neglect the phase difference between all the unit cells
+close to the mobile ion and replace eiLn·qj →1 in εj.
+Second, the true form of the high-energy dispersion is
+unimportant, allowing us to linearize the spectrum.
+To linearize the spectrum, we start with the dynamical
+matrix
+D(q) = 1
+N
+X
+ab
+h
+↔
+m−1
+2
+↔
+V ↔
+m−1
+2
+i
+ab ei(La−Lb)·q
+≡
+X
+L
+h
+↔
+m−1
+2
+↔
+V ↔
+m−1
+2
+i
+L eiL·q
+(13)
+where
+h
+↔
+m−1
+2
+↔
+V ↔
+m−1
+2
+i
+ab are 3A × 3A blocks coupling unit
+cells at La and Lb. The last equivalence holds because of
+lattice periodicity so that
+h
+↔
+m−1
+2
+↔
+V ↔
+m−1
+2
+i
+ab depends on the
+difference La −Lb with
+h
+↔
+m−1
+2
+↔
+V ↔
+m−1
+2
+i
+L corresponding to
+the coupling block for two unit cells separated by vector
+L. Next, we write D(q) →D0(θ, ϕ) + q2D1(θ, ϕ), where
+θ and ϕ are the polar and azimuthal angles of q, respec-
+tively. The three zero-frequency eigenstates of D0(θ, ϕ)
+are then labeled by the angles and the acoustic branch in-
+dex u: ηu,θ,ϕ. Because the perturbation term q2D1(θ, ϕ)
+is second-order in q, the eigenstates ηu,θ,ϕ are unchanged
+up to the first order in q. The frequency, on the other
+hand, is q
+q
+η†
+u,θ,ϕD1(θ, ϕ)ηu,θ,ϕ ≡qvu,θ,ϕ, where vu,θ,ϕ is
+the direction-dependent speed of sound of the uth phonon
+branch. If D0(θ, ϕ) vanishes, ηu,θ,ϕ are the eigenstates of
+D1(θ, ϕ) and q
+q
+η†
+u,θ,ϕD1(θ, ϕ)ηu,θ,ϕ ≡qvu,θ,ϕ still holds.
+In the q →0 limit, all atoms in in unit cell move in
+the same direction with the same amplitude so that
+↔
+m−1
+2 εj ≈
+1
+√
+mN
+
+
+
+1
+↔
+3
+1
+↔
+3
+...
+
+
+
+| {z }
+K
+ψu,θ,ϕ ,
+(14)
+where m is the total mass of the unit cell, K is a column
+of NA copies of the 3×3 identity matrix 1
+↔
+3, and ψu,θ,ϕ is
+the three-dimensional phonon polarization vector. Using
+these simplifications, we write Eq. (10) as
+↔
+W(t) ≃KV/m
+8π3
+X
+u
+Z
+dqψu,θ,ϕψ†
+u,θ,ϕ
+cos (qvu,θ,ϕt)
+q2v2
+u,θ,ϕ
+KT
+= K
+X
+u
+Z Q
+0
+dq
+8π3ρ
+Z
+dSψu,θ,ϕψ†
+u,θ,ϕ
+cos (qvu,θ,ϕt)
+v2
+u,θ,ϕ
+KT
+≃K
+X
+u
+Z
+dS
+8π2ρψu,θ,ϕψ†
+u,θ,ϕ
+δ (t)
+v3
+u,θ,ϕ
+|
+{z
+}
+2Lδ(t)
+KT ,
+(15)
+where V is the unit cell volume, ρ = m/V is the material’s
+density, and dS denotes the integral over the solid angle.
+The maximum momentum Q is similar to the cutoff ap-
+pearing in the Debye model for a linearized spectrum. In
+the last line, we took the limit Q →∞to get the time-
+local expression. Physically, this approximation means
+that the relevant dynamics of the system are substan-
+tially slower than the fastest mode. The 3 × 3 matrix L
+gives the approximate time-local response in the linear-
+spectrum approximation.
+Inserting Eq. (15) into Eq. (11) and taking the time
+integral gives a time-local transcendental equation for r
+r ≈rH −
+↔
+V −1∇rU(r, R) + KLKT ∇r
+d
+dtU(r, R)
+= rH −
+↔
+V −1∇rU(r, R) −KL∇R
+d
+dtU(r, R) ,
+(16)
+where
+we
+used
+the
+fact
+that
+KT ∇rf(r, R)
+=
+∇rf(r, R)K = P
+jk ∇rj,kf(r, R) = −∇Rf(r, R) to re-
+place the gradient with respect to r applied on U. In

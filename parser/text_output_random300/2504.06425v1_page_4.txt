@@ -1,0 +1,60 @@
+4
+NEURAL NETWORK POLYCONVEXIFICATION
+that the existence of minimisers can not be guaranteed. From a numerical point of view, this
+lack of convexity poses several challenges including stability issues, non-convergence, and the
+development of oscillations in the simulation of boundary value problems, for this specific example
+see e.g. [BO12, BKN+24, KNP+24, KNM+22] where the relaxation was addressed by means of
+rank-one convexification.
+3. Polyconvexification of Isotropic Functions
+We now turn to our polyconvexification approach and introduce a reformulation in terms of
+the signed singular values of the deformation gradient, which is the basis for our neural-network
+design. For ease of notation, we drop the parameter dependence and restrict to functions
+W : Rd×d →R∞in this Section. The parameter-dependent formulation is given in direct analogy
+by adding the parameter vector ζ and considering the function W( · ; ζ).
+Assume the function W to be isotropic, we leverage the characterisation of isotropic functions
+via their signed singular values to reduce dimensionality in the representation. The problem of
+polyconvexification of an isotropic function can be reduced to the convexification of a function
+acting on the manifold characterised by the minors of the signed singular values. This formulation
+is advantageous in the numerical treatment of the problem since it is formulated for the space of
+signed singular values in Rd, instead of Rd×d, the domain of W, and hence reduces dimensionality
+in the representative grid, rendering it an efficient approach for computing the polyconvex
+envelope using conventional algorithms, see e.g. [NPPW24] and Section 6.3, or as in the scope of
+this work, for learning and predicting the polyconvex envelope via structure-preserving artificial
+neural networks.
+Let d ∈{2, 3} and let W : Rd×d →R∞be a function which maps (d × d)-matrices to real
+scalars or infinity. We are interested in the polyconvex envelope, denoted W pc, of the function
+W. The notion of polyconvexity relies on the minors of the matrices F ∈Rd×d. Given the
+determinant det(F) and the adjugate adj(F) of F, let
+(8)
+M(F) =
+(
+(F, det(F))
+if d = 2,
+(F, adj(F), det(F))
+if d = 3
+denote the minors of F, i.e. M(F) is a vector of dimension Kd = 5 if d = 2 and Kd = 19 if
+d = 3. A function V : Rd×d →R∞is said to be polyconvex if there exists a convex function
+G: RKd →R∞such that for all F ∈Rd×d,
+V (F) = G(M(F)).
+The polyconvex envelope W pc(F): Rd×d →R∞of W, defined by the pointwise supremum
+(9)
+W pc(F) = sup{V (F) | V : Rd×d →R∞polyconvex, V ≤W},
+is the largest polyconvex function below W.
+As we are interested in polyconvexity of isotropic functions, we make use of the results of
+[WP23]. We call W isotropic if and only if
+W(F) = W(R1FR2)
+for all F ∈Rd×d and all R1, R2 ∈SO(d) and we say that W is SO(d) × SO(d)-invariant in
+this case, where SO(d) denotes the special orthogonal group of (d × d)-matrices. In particular,
+isotropic functions can be characterised by the signed singular values of their arguments.
+Let 0 ≤σ1, . . . , σd ∈R denote the singular values of a matrix F ∈Rd×d. Then ν1, . . . , νd ∈R
+are called signed singular values of F, if they have the same absolute values as the singular values
+of F, i.e. up to permutation it holds |νi| = σi, and their signs satisfy sign(ν1·. . .·νd) = sign(det(F)).
+In this definition the signed singular values are only unique up to permutations in
+Πd =
+n
+P diag(ε) ∈O(d) | P ∈Perm(d), ε ∈{−1, 1}d, ε1 · . . . · εd = 1
+o
+,
+where diag refers to the diagonal matrix with entries given by the vector of its argument and
+Perm(d) ⊂{0, 1}d×d denotes the set of permutation matrices. In what follows, we denote by
+ν : Rd×d →Rd the signed singular value mapping assumed to be well-defined, e.g. by fixing the

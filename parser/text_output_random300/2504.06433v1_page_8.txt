@@ -1,0 +1,38 @@
+they must represent disjoint sets of variables. We deﬁne polyH,J : H ⊗J →C[{xs} ∪{yt}] to be
+the unique linear map such that
+polyH,J (|s⟩⊗|t⟩) = polyH(|s⟩) · polyJ (|t⟩) = xsyt
+for all s ∈{0, 1}k and t ∈{0, 1}ℓ. Since the variable sets {xs} and {yt} are disjoint, we have that
+polyH,J is one-to-one. It is also easily checked that for all u ∈H and v ∈J ,
+polyH,J (u ⊗v) = polyH(u) · polyJ (v) .
+Note that polyH,J is not the same as polyH⊗J ; the former maps to quadratic polynomials and
+the latter to linear polynomials. We can extend this idea to tensor products of several spaces (we
+will need two, three, and four), choosing disjoint sets of variables for each: For example, letting
+H1, H2, H3, H4 be spaces of k, ℓ, m, n qubits, respectively, we deﬁne
+polyH1,H2,H3,H4(|s⟩⊗|t⟩⊗|u⟩⊗|v⟩) = xsytzuwv
+(1)
+for all binary strings s, t, u, v of length k, ℓ, m, n, respectively, where {xs}, {yt}, {zu}, {wv} are dis-
+joint set of variables, and extend by linearity to all of H1 ⊗H2 ⊗H3, ⊗H4.
+3
+Irreducibility Results
+In this section we present results used to prove the Entanglement Lemma (Lemma 4.3), which in
+turn is used to prove our depth-2 QAC-circuit lower bound (Theorem 6.1). The results here may
+be of independent interest, however, and can potentially be used to prove stronger versions of the
+lemma and stronger circuit lower bounds. We state the lemmas for ﬁeld F = C, but they hold as
+well over any suﬃciently large ﬁeld.6
+Shpilka and Volkovich [SV10] gave a characterization of when a set I ⊆[n] is a union of sets
+from the variable-partition of f.
+Lemma 3.1 ([SV10, Lemma 3.2]). Let f ∈F[x] be a polynomial and let a ∈Fn be a justifying
+assignment of f. Then I ⊆[n] satisﬁes f(a) · f ≡f|xI=a · f|x[n]\I=a, if and only if I is a union of
+sets from the variable-partition of f.
+We will use the following consequence of Lemma 3.1.
+Corollary 3.2. Let f ∈F[x] be a polynomial. If there exists a justifying assignment a of f such
+that f(a) = 0, then f is indecomposable.
+Proof. For simplicity of notation let var(f) = [n]. Let a be any justifying assignment of f. Sup-
+pose f decomposes into f = gh, where g, h are non-constant and variable-disjoint. Let I = var(g).
+Then I ̸= ∅is the disjoint union of sets from the variable-partition of f and var(h) = [n]\I. Hence,
+by Lemma 3.1 we have
+f(a) · f ≡f|xI=a · f|x[n]\I=a.
+Because a is justifying, we have f|xI=a ̸≡0 and f|x[n]\I=a ̸≡0. Therefore f(a) · f ̸≡0, whence
+f(a) ̸= 0.
+6Some trivial modiﬁcations are needed for ﬁelds with characteristic 2 or 3.
+8

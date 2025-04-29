@@ -1,0 +1,67 @@
+2
+even without the issues in the limit of the error, the rate is multi-letter and hard to compute.
+The structure of the paper is as follows: At the end of this section, we brieﬂy introduce the notation used in this
+paper. In Section II we rigorously deﬁne the channel simulation model. We discuss a decoupling lemma in Sec III, and
+introduce two functionals, which characterize the simulation rates. We obtain the optimal simulation rates assuming
+that the parties share free entanglement and no entanglement in Sec IV and Sec V, respectively. We discuss our
+results in Sec VI. In the Appendix, we introduce and prove some lemmas that we apply throughout the paper.
+Notation. In this paper, quantum systems are associated with ﬁnite dimensional Hilbert spaces A, R, etc., whose
+dimensions are denoted by |A|, |R|, respectively. The von Neumann entropy is deﬁned as
+S(ρ) := −Tr ρ log ρ.
+Throughout this paper, log denotes by default the binary logarithm. The conditional entropy and the conditional
+mutual information, S(A|B)ρ and I(A : B|C)ρ, respectively, are deﬁned in the same way as their classical counterparts:
+S(A|B)ρ = S(AB)ρ −S(B)ρ, and
+I(A : B|C)ρ = S(A|C)ρ −S(A|BC)ρ
+= S(AC)ρ + S(BC)ρ −S(ABC)ρ −S(C)ρ.
+The ﬁdelity between two states ρ and ξ is deﬁned as F(ρ, ξ) = ∥√ρ√ξ∥1 = Tr
+q
+ρ
+1
+2 ξρ
+1
+2 , with ∥· ∥1 as the Schatten
+1-norm. ∥X∥1 = Tr |X| = Tr
+√
+X†X. It relates to the trace distance in the following well-known way [4]:
+1 −F(ρ, ξ) ≤1
+2∥ρ −ξ∥1 ≤
+p
+1 −F(ρ, ξ)2.
+(1)
+II.
+SETUP
+We assume that an arbitrary channel N : A →BK is given with all the associated dimensions speciﬁed, along with
+a state ρAR on the input and some reference system A and R. Let σBKR = (N ⊗idR)ρAR, and UN : A →BKG be
+the Stinespring dilation of N. We consider n copies of the state ρAR.
+We call the sender or the encoder Alice, and the receiver or the decoder Bob. We suppose that Alice and Bob
+initially share some entangled state |Φ⟩A0B0 in systems A0B0. Alice applies an encoding channel CAnA0→MKnA1
+n
+, and
+sends system M to Bob. Receiving M, Bob applies a decoding channel DMB0→BnB1
+n
+. We deﬁne
+νMKnRnA1B0
+n
+:= (CAnA0→MKnA1
+n
+⊗idRnB0)(ρAnRn ⊗|Φ⟩⟨Φ|A0B0),
+ξBnKnRnA1B1
+n
+:= (DMB0→BnB1
+n
+⊗idKnRnA1)(νMKnRnA1B0
+n
+).
+Furthermore, consider the Stinespring dilations U AnA0→MKnWAA1
+Cn
+and U MB0→BnWBB1
+Dn
+for the encoding and the
+decoding maps. We consider the following puriﬁcations for the states νn and ξn,
+|νn⟩MKnWARnR′nA1B0 := (U AnA0→MKnWAA1
+Cn
+⊗11RnR′nB0)(|ρ⟩AnRnR′n
+⊗|Φ⟩A0B0),
+|ξn⟩BnKnWAWBRnR′nA1B1 := (U MB0→BnWBB1
+Dn
+⊗11KnWARnR′nA1) |νn⟩MKnWARnR′nA1B0 .

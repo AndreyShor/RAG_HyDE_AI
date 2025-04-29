@@ -1,0 +1,61 @@
+Local structure of extremal points
+36
+Proof. Consider the expression (4.57) for the second directional derivative of Υb,g. We note that the
+deterministic term is bounded by a constant independent of everything else. Moreover, thanks to (G3),
+the term ∂2
+i,kgb has Gaussian tails uniformly over all i, k ∈[d] and x ∈Bb. Furthermore, we also
+note the field
+Bb ∋x 7→
+Z b
+0
+e−2sKi,k(e−sx)dBs −u
+b
+Z b
+0
+e−2sKi,k(e−sx)ds
+has uniform Gaussian tails uniformly over i, k ∈[d], x ∈Bb, and over the probability laws P0,u,b,
+for all b > 0 and u > −A. In particular, since the integral multiplying u/b in the above display is
+bounded uniformly over i, k ∈[d] and x ∈Bb, using Lemma 4.24, we get that there exist constants
+c1, c2 > 0 such that
+P0,u,b(Sej > η2/d) ≲1 ∧edj+c1 u
+b η2/de−c2η4/d ,
+thus proving the claim.
+We are now ready for the proof of Lemma 4.22.
+Proof of Lemma 4.22. For η ≥0, we define
+rη
+def= ⌊exp(η1/d)⌋,
+so that log rη ≈η1/d, and we also consider b ≥j > 0 and u ∈[b1/4, b3/4]. We split the proof into
+three distinct cases.
+Case 1: We begin by treating the following case:
+log rη ≥b
+2 .
+Let cλ > 0 be the constant introduced in Remark 4.25. Then, thanks to (4.58) and Lemma 4.26, there
+exists a constant c > 0 such that
+P0,u,b(|Dλ
+0,j(Υb,g)|−1 ≥η) ≤P0,u,b(Sej > cλη2/d) ≲edje−cη4/d .
+(4.60)
+which, in the regime log rη ≥b/2, is trivially bounded by a constant times (u/b)η−2.
+Case 2: We now consider the following case:
+j
+2 ≤log rη < b
+2 .
+Proceeding, as above, thanks to Lemma 4.26, it suffices to bound the following probability
+P0,u,b(Sej > cλη2/d, M0,b(Υb,g) ≤λ) .
+Recalling Definition 4.6 of the control variable Kb, on the event Kb ≥log rη, for b ≥0 sufficiently
+large, Lemma 4.10 provides the following bound
+P0,u,b(M0,b(Υb,g) ≤λ, Kb ≥log rη) ≲u
+b e−c(log η)2 ,
+for some constants c > 0. Hence, we can further restrict ourselves to the event {Kb < log rη}. We
+recall that on this event, for each l ∈[b −1]0, it holds that Oscl(B) ≤Θlog rη(l). In particular, this
+implies that
+sup
+i,k∈[d], x∈Bb
+
+Z b
+0
+e−2sKi,k(e−sx)dBs
+ ≲
+b−1
+X
+l=0
+e−2l Oscl(B) ≲(log η)2 .

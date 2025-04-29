@@ -1,0 +1,30 @@
+CAMulator
+Figure 2: Column-integrated heat content in CAMulator to different SST forcing scenarios. (Top panel) A 12-member
+CAMulator ensemble (teal) is compared to the CAM6 simulation (purple) using observed SSTs from 1979–2014.
+CAMulator successfully captures the long-term warming trend and interannual variability. To isolate the trend, the
+seasonal cycle has been removed by regressing out the six leading harmonics, and a 90-day rolling mean has been
+applied. The ensemble spread arises from stochastic kinetic energy backscatter (SKEBS) perturbations applied during
+the first 15 days of simulation. (Bottom panel) CAMulator forced with fixed year-2000 climatological SSTs produces
+a stable long-term simulation with no discernible trend, demonstrating that the model does not introduce artificial
+warming in the absence of an external forcing mechanism.
+long-term warming trend of total column-integrated heat content. Even though the emulator is initialized from weather
+states that then evolve dynamically at 6 hour time steps, it is still able to capture major modes of low-frequency internal
+variability while remaining on the correct trend trajectory. Thus, this serves as a semi-independent test of the emulator’s
+ability to reproduce climate-scale variability in a changing climate, despite the presence of the trend in the training
+data. To isolate this trend, the seasonal cycle was removed by regressing out the six leading harmonics, and a 90-day
+rolling mean was applied to the time series (Fig. 2a). The CAM6 simulation remains well within the ensemble spread
+of CAMulator, highlighting the ability of CAMulator to reproduce observed interannual variability. The CAMulator
+ensemble spread arises from the introduction of stochastic kinetic energy backscatter [SKEBS, e.g., Berner et al.,
+2009], which perturbs initial conditions over the first 15 days before allowing the system to evolve freely. We see an
+underestimation of total heat capacity in the period from 2003 to 2010 in CAMulator, however, CAM6 still largely sits
+within the ensemble spread. This discrepancy, is discussed further in “Model Deficiencies and Future Improvements".
+Figure 2b demonstrates the model’s behavior when forced with fixed year-2000 climatological SSTs. In this scenario,
+CAMulator maintains an indefinite stable rollout with no emergent trend, as the absence of external forcing in SSTs
+prevents any sustained warming signal. This suggests that while the model responds effectively to imposed SST trends,
+it does not generate spurious warming in the absence of a forcing mechanism, and is capable of indefinite fixed climate
+rollouts. We show an identical figure to Figure 2 in the supplemental material, but for total water path (Fig. S1) and find
+similar results.
+Notably, across all SST forcing scenarios—including cases where the simulations were forced with SSTs outside of the
+training distribution—CAMulator has exhibited no signs of numerical instability. To date, no model crashes with our
+final model configuration have been observed, highlighting its robustness in handling a range of climate conditions.
+7

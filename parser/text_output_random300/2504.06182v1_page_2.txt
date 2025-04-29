@@ -1,0 +1,121 @@
+2
+configuration system, and introduce a batching routine
+independent of the reconfiguration algorithm. Our ap-
+proach bridges the gap between two disparate fields: ex-
+perimental quantum sciences and graph theory, specif-
+ically combinatorial reconfiguration problems and com-
+binatorial optimization on graphs. We leverage graph-
+theoretic methods and provide formal proofs of conver-
+gence and complexity.
+We improve upon three previously introduced al-
+gorithms:
+the exact 1D algorithm for paths/chains,
+the redistribution-reconfiguration (red-rec) algorithm for
+grid-embedded geometries [20], and the assignment-
+reconfiguration-ordering (aro) algorithm for arbitrary
+graphs [21]. We study efficient implementations of red-
+rec using parallel execution on GPUs (Sec. III D). We
+then introduce the bird algorithm as a generalization of
+red-rec, specifically designed for grids (Sec. III E). We
+finally present a batching routine that optimizes the par-
+allel execution of displacement operations (Sec. IV), and
+quantify performance (Sec. V). These results may serve
+as subroutines or benchmarks for existing and future al-
+gorithms.
+II.
+ATOM RECONFIGURATION PROBLEMS
+We start by reviewing the key concepts and for-
+mal definitions related to atom reconfiguration prob-
+lems from both operational (Sec. II A) and graph-
+theoretic (Sec. II B) perspectives. We then formulate the
+atom reconfiguration problem as an optimization prob-
+lem (Sec. II C), where the objective is to find a solution
+that minimizes the distance along a path system. Famil-
+iar readers may directly jump to reconfiguration prob-
+lems (Sec. III), the batching routine (Sec. IV), or numer-
+ical cross-benchmarking results (Sec. V).
+A.
+Atom reconfiguration problems in practice
+Atom reconfiguration problems [13, 14, 20] seek to
+produce a control protocol that transforms a given ar-
+bitrary configuration C0 of N 0
+a atoms into a given tar-
+get configuration CT of N T
+a ≤N 0
+a atoms. A configura-
+tion of atoms is contained in an array of optical traps,
+A(V ), defined by its spatial arrangement or geometry,
+V = {⃗vj | ⃗vj = (vjx, vjy) ∈R2, 1 ≤j ≤Nt}, where Nt
+is the number of traps in the optical trap array. We fo-
+cus on square lattices (grids) of Nt = Ntx × Nty traps
+in the plane where vjx = x0 + jxδx and vjy = y0 + jyδy
+for 0 ≤jx ≤Ntx −1, 0 ≤jy ≤Nty −1, (x0, y0) is the
+origin of the array, and δx and δy are the grid spacing
+constants.
+The solution to an atom reconfiguration problem is
+a control protocol.
+The control protocol consists of a
+sequence of extraction-displacement-implantation (EDI)
+cycles that each extract, displace, and implant a sin-
+gle atom from one static trap to another using a sec-
+ondary array of dynamic traps.
+Each EDI cycle exe-
+cutes a sequence of elementary control operations that
+include elementary transfer operations and elementary
+displacement operations. A transfer operation extracts
+(implants) an atom from (into) a static trap into (from)
+a dynamic trap. An elementary displacement operation
+displaces a dynamic trap containing an atom from one
+static trap to another by an elementary displacement step
+δx or δy. Simply put, and given that we focus on grids,
+an elementary displacement step consists of moving a dy-
+namic trap containing an atom from some grid position
+to one of the (at most) four neighboring grid positions.
+Given an initial and a target configuration of atoms,
+the reconfiguration problem is solved, the control pro-
+tocol is executed, and a measurement is performed to
+check whether or not the updated configuration of atoms
+contains the target configuration. In the presence of loss,
+the reconfiguration problem might have to be solved mul-
+tiple times through multiple reconfiguration cycles un-
+til the target configuration is reached (success) or is no
+longer reachable (failure); failure occurs when more than
+N 0
+a −N T
+a atoms are lost.
+B.
+Atom reconfiguration problems on graphs
+Atom reconfiguration problems can be viewed as re-
+configuration problems on graphs [13, 20, 21]. A config-
+uration of indistinguishable atoms contained in an array
+of optical traps is represented as a collection of tokens
+placed on a subset of the vertices of a graph, G, where
+V (G) and E(G) denote the vertex set and edge set of
+G, respectively, with |V (G)| = n and |E(G)| = m. We
+assume that each graph is finite, simple, connected, and
+undirected (see Ref. [22] for standard graph terminol-
+ogy). For weighted graphs, we use wG : E(G) →N+ to
+denote the edge-weight function, where wG(e) is positive
+for all e = {u, v} = uv ∈E(G). In the following, we omit
+subscripts when the context is clear.
+A path in a graph G is a walk whose sequence of ver-
+tices comprises distinct vertices. A walk (of length ℓ) in
+G is a sequence of vertices in V (G), (v0, . . . , vℓ), such
+that vivi+1 ∈E(G) for all i ∈{0, . . . , ℓ−1}, where
+{v1, v2, . . . , vℓ−1} are the internal vertices of the walk.
+We define a cycle in G as a walk of length ℓ≥3 that
+starts and ends at the same vertex, v0 = vℓ, and whose
+internal vertices form a path. The weight of a path P
+in G is wG(P) = P
+e∈P wG(e). When the graph is un-
+weighted, or all of its edges have the same weight, in
+which case the graph is said to be uniformly weighted,
+then the weight of P is equal to the number of edges in
+P multiplied by the weight; the weight is assumed to be
+1 for unweighted graphs. For u, v ∈V (G), let Puv de-
+note a minimum-weight path from u to v. We say Puv
+is a shortest path from u to v and the distance from u
+to v, denoted by dG(u, v), is equal to the weight of Puv,
+i.e., dG(u, v) = wG(Puv).
+For unweighted graphs, the
+distance from u to v corresponds to the minimum num-

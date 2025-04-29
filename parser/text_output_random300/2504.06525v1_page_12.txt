@@ -1,0 +1,27 @@
+ 
+Figure 5. Bring humans to decide the trade-offs on the Pareto front | MOBO of tapping mode 
+on water droplet sample on mica substrate. Here the drive amplitude, setpoint amplitude, and I 
+Gain are chosen to be the controlling parameters. There are 20 initial random seeding points and 
+50 explorative active learning steps in this experiment, and the acquisition function of qNEHI is 
+used. A Tap300Al-G is used to optimize scan at 1 Hz in a 5 𝜇m area. a-b, the resulting a height 
+and b phase maps taken with the optimal parameters given by the MOBO process. c, after 20 
+seeding plus 50 explorative steps, different weights (0.1 to 2.0 with 0.1 increment) are multiplied 
+to the reward of phase before retraining the MOBO GP models. The new optimal controlling 
+parameter of drive amplitude, setpoint, and I gain are given by the qNEHI acquisition function at 
+each added weight. Here the updated optimal solutions are plotted in the drive amplitude vs. 
+setpoint space, showing how the optimal solution evolves with different emphasis on the phase 
+reward. d, a similar plot for added weight for the reward of trace. After the extra weights are added, 
+topography maps with new optimal controlling parameters are taken: e-i, the trace and retrace scan 
+lines of height and phase taken along the red dashed lines in a and b with optimal controlling 
+parameters predicted by e default weights on all the rewards, f weight of 0.5 for the reward of 
+phase, g weight of 1.5 for the reward of phase, h weight of 0.5 for the reward of trace, and i weight 
+of 1.5 for the trace. MOBO offers a way to optimize controlling parameters with control on how 
+much each reward will be improved quantitatively. Detailed controlling parameters used in this 
+figure are summarized in Table S1. 
+ 
+ 
+VII. 
+Conclusion 
+We demonstrate that Multi-Objective Bayesian Optimization effectively balances multiple 
+uncertain rewards, enabling FAIR (Findable, Accessible, Interoperable, and Reproducible) access 
+to high-quality and reproducible experimental results. Beyond optimizing system performance, 

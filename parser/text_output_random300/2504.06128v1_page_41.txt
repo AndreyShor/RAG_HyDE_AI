@@ -1,0 +1,172 @@
+SINGULARITY AND REGULARITY OF THE CRITICAL 2D SHF
+41
+Combining (5.33) with (5.32) then gives (5.31) with c :“ a{p1 ` a`{ηq.
+□
+Appendix A. Second moment computations
+We first prove Lemma 2.1 about Green’s functions. Then we prove Proposition 2.3 on the
+second moment of the point-to-plane partition function. Finally, we prove Theorem 2.5 on
+the variance of the averaged partition function, together with Propositions 2.7 and 2.8.
+Proof of Lemma 2.1. From (2.8), we see that Gpaq “
+1
+2π logp1 ` a´2q ` Op1q uniformly
+over a ą 0. This already proves the second equality in (2.9). To prove the first equality, we
+plug the first line of (2.3) into (2.5) to get
+RLpzq “
+"
+L
+ÿ
+n“1
+gnpzq
+*
+2 ¨ 1Z2
+evenpzq ` Op1q .
+(A.1)
+We can replace gnpzq “ gnp|z|q by gnp|z| ` 1q, because their difference is Opn´3{2q and can
+be absorbed in the Op1q term. We next write
+L
+ÿ
+n“1
+gnp|z| ` 1q “ 1
+L
+L
+ÿ
+n“1
+g n
+L
+´
+|z|`1
+?
+L
+¯
+“ G
+´
+|z|`1
+?
+L
+¯
+` ∆L
+´
+|z|`1
+?
+L
+¯
+where we set
+∆Lpxq :“
+L
+ÿ
+n“1
+ż n
+L
+n´1
+L
+␣
+g n
+L pxq ´ gtpxq
+(
+dt .
+It remains to show that ∆Lpxq “ Op1q is uniformly bounded for |x| “ |z|`1
+?
+L ě
+1
+?
+L.
+By direct computation we see that |Bugupxq| ď
+c
+u2 e´ |x|2
+cu for some c ă 8. Then, uniformly
+for |x| ě
+1
+?
+L, we can bound the term n “ 1 in ∆Lpxq by an absolute constant C ă 8:
+ż 1
+L
+0
+ˆ ż 1
+L
+t
+c
+u2 e´
+1
+cLu du
+˙
+dt “
+ż 1
+L
+0
+c
+u e´
+1
+cLu du “
+ż 1
+0
+c
+v e´ 1
+cv dv “: C ă 8 .
+For the terms n ě 2 in ∆Lpxq, we simply use |Bugupxq| ď
+c
+u2 to bound |g n
+L pxq´gtpxq| ď c
+t2 1
+L
+(because n
+L ´ t ď 1
+L) and we obtain, uniformly over x P R2,
+L
+ÿ
+n“2
+ż n
+L
+n´1
+L
+ˇˇg n
+L pxq ´ gtpxq
+ˇˇ dt ď c
+L
+L
+ÿ
+n“2
+ż n
+L
+n´1
+L
+1
+t2 dt “ c
+L
+ż 1
+1
+L
+1
+t2 dt ď c ă 8 .
+This completes the proof that |∆Lpxq| ď C ` c uniformly for L P N and |x| ě
+1
+?
+L.
+We finally prove (2.10), for which we may assume that z ‰ 0 and L is large enough. By
+the second line of (2.3), uniformly over |z|2 ď 2p1 ` t2qn we can write, for a suitable c ą 0,
+q2npzq “ gnpzq eOp p1`t2q2
+n
+q 2 1Z2
+evenpzq ě c e´ t4
+c
+n
+1Z2
+evenpzq ,
+hence, restricting the sum in (2.5) to n ě ¯npzq :“ r 1
+2p |z|2
+1`t2 ` 1qs, we get
+RLpzq ě
+L
+ÿ
+n“¯npzq
+c e´ t4
+c
+n
+ě
+ż L`1
+¯npzq
+c e´ t4
+c
+u
+du “ c e´ t4
+c log L ` 1
+¯npzq .

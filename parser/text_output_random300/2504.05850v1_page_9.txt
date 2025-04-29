@@ -1,0 +1,92 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+9
+Proof. We proceed as in the proof of Lemma 8. Open strings may now terminate at ˆz1 or at ˆz2. With
+(48) their value depends on z and z but not on the dimension D. This does not affect the argument in
+the proof of Lemma 8.
+□
+Example 11. For |α| = 1 we obtain Πα
+2 = {(∅, 1, ∅), (∅, ∅, 1)}. For the vectors ˆz1, ˆz2 the Gram matrix
+(ˆzi · ˆzj) is (see Equation (48))
+(52)
+
+1
+z+z
+2
+z+z
+2
+zz
+
+with determinant −(z −z)2/4. We read off the duals of Πα
+2 lifted to the graph algebra (see Example 9),
+G \
+(∅,1,∅) = −4zzG(α)ˆzα1
+1
++ 2(z + z)G(α)ˆzα1
+2
+(z −z)2
+,
+G \
+(∅,∅,1) = 2(z + z)G(α)ˆzα1
+1
+−4G(α)ˆzα1
+2
+(z −z)2
+,
+where we write G(α)ˆzα
+i for the graph G with an additional edge with propagator ˆzα
+i (i.e. an edge 01 or 0z
+with weight −1/2λ).
+Due to the dependence on z and z, the calculation of the duals is significantly more complicated than
+in the case of Πα
+0 and Πα
+1 . In HyperlogProcedures only the results up to |α| = 5 are calculated [23].
+Empirically, we find that for any α the denominators of the duals factorize into powers of z −z.
+Note, however, that dualizing graphs is not as efficient as in the previous sections because one obtains
+large sums and (more importantly) the spin zero expression cannot be expressed in terms of unlabeled
+graphs: There exists no identity that swaps internal and external vertices. Moreover, in many cases the
+scalar graphical functions suffer from higher order singularities. Nevertheless, dualizing is an important
+tool for calculating small graphical functions which cannot be calculated by other means (a kernel graph-
+ical function). The singularities in the individual terms can be handled with dimensional regularization.
+Dualizing ensures that every scalar coefficient fG,π(z) inherits the general properties of scalar graphical
+functions.
+In most cases, rather than expressing f α
+G(z) in terms of spin zero graphical functions, we try to construct
+f α
+G(z) from the empty graphical function (or a known kernel) by the following five operations:
+(1) elimination of two-point insertions using Section 5,
+(2) adding edges between external vertices,
+(3) permutation of external vertices,
+(4) product factorization,
+(5) appending an edge to the external vertex z.
+These operations are explained in the next sections.
+7. Identities for graphical functions
+7.1. Edges between external vertices. Edges between external vertices correspond to constant factors
+in the Feynman integral. The graphical function f α
+G(z) is multiplied by the propagator Qβ
+ν(zi, zj) of the
+external edge zizj. The spin changes accordingly; contraction of indices lowers the spin, otherwise the
+spin increases. The vector fG,π(z) in (50) is multiplied by a rectangular matrix.
+Example 12. Consider an edge of weight ν and spin 1 from 1 = z1 to z = z2. The propagator of such
+an edge in the coordinates (42) is
+Qβ
+ν(z) =
+ˆzβ
+2 −ˆzβ
+1
+((z −1)(z −1))λν+ 1
+2 .
+Assume the graphical function f α
+G(z) also has spin 1,
+f α1
+G (z) = f1(z)ˆzα1
+1
++ f2(z)ˆzα1
+2 ,
+such that f1(z) = fG,(∅,1,∅)(z) and f2(z) = fG,(∅,∅,1)(z). The vector (f1(z), f2(z))T has two components.
+If β = α1, so that the index α1 is contracted, then (see (48))
+f α1
+G (z)Qα1
+ν (z) = (z + z −2)f1(z) + (2zz −z −z)f2(z)
+2((z −1)(z −1))λν+ 1
+2
+.

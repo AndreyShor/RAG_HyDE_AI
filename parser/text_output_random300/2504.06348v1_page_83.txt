@@ -1,0 +1,126 @@
+where we have defined [Y α
+l,ζ]a = [Xζ,l]aα
+√π2a−1(a−1)!
+√
+Γ(l+2a−1
+2 ) , and implicitly defined cx,la through the polynomial
+expansion of the Laguerre polynomial L. To convert from G to ¯G, we use the definition of ˜G in Eq. (200).
+Explicitly,
+¯Gζ,l
+α (k) =
+(
+1
+maxp |Gζ,l
+α (k)||k|le−(¯rζ
+l |k|)2/2 P3
+a=1[Y α
+l,ζ]a
+Pa−1
+x=0 cx,la(¯rζ
+l |k|)2x
+|k(j)| ≤k∗
+l ∀j
+1
+dl |k|leγ∥k∥1−(¯rζ
+l |k|)2/2 P3
+a=1[Y α
+l,ζ]a
+Pa−1
+x=0 cx,la(¯rζ
+l |k|)2x
+otherwise.
+(228)
+Likewise, the equivalent definition for the local term for s ≥0 is given by Eq. (201):
+¯Gζ
+s(k) =
+(
+1
+cs e−(¯rζ
+loc|k|)2/4(¯rζ
+loc|k|)s
+|k(j)| ≤k∗
+s ∀j
+1
+ds eγ∥k∥1−(¯rζ
+loc|k|)2/4(¯rζ
+loc|k|)s
+otherwise,
+(229)
+and the definition for the local term for s = −1 is given by Eq. (202):
+¯Gζ
+−1(k) =
+(
+21−µe−(¯rζ
+loc|k|)2/4(¯rζ
+loc|k|)s
+|k(j)| ≤k∗
+s ∀j
+1
+ds eγ∥k∥1−(¯rζ
+loc|k|)2/4(¯rζ
+loc|k|)s
+otherwise.
+(230)
+We seek to carry out these state preparations jointly; i.e. to prepare a state proportional to |ς = 0, φ =
+0⟩| ¯Gζ,l
+α (kp2)⟩+ |ς = 1, φ = 0⟩| ¯Gζ
+s(kp2)⟩+ |ς = 1, φ = 1⟩| ¯Gζ
+−1(kp2)⟩, conditioned on registers containing l, α,
+ζ and s (and where the flag ς indicates whether we are implementing the nonlocal term or the local term,
+and the flag φ indicates whether we are implementing the s = −1 or s ≥0 piece of the local term). We
+outline the steps and corresponding costs to construct this state here:
+1. From p2, compute |kp2|2 to an ancilla register. If we take the worst-case from [29], Appendix C then
+the cost is 5
+2 ˜n+2n2+4bn for a b-bit approximation. However, we can pull out one of the multiplications
+(it would be most prudent to pick the biggest multiplicand) by a real number from this calculation
+and absorb it into the coefficient preparation of ¯rl
+ζ (or ¯rζ
+loc). The cost for this step is then estimated
+to be 5
+2 ˜n + 2n2 + 4bn −2nmax(nmax + b), where nmax = max(n1, n2, n3). This is also the cost that we
+assume for the preparation of |kP|2 for the kinetic term (but with n replaced with ¯n).
+2. Using the coefficients loaded in Sec. E.5.2, compute (¯rl
+ζ)2|kp2|2 to an ancilla register if ς = 0 and
+(¯rζ
+loc)2|kp2|2 if ς = 1 and s ̸= 0 with leading-order cost 2b2.
+3. If ς = 0, square the previous step out-of-place to evaluate (¯rl
+ζ)4|kp2|4, with cost b2
+2 . The addition of a
+control introduces a cost linear in b, which we omit.
+4. To evaluate Pa−1
+x=0 cx,la(¯rl
+ζkp2)2x, we make the following remarks (in analogy to [29], Sec VI D):
+(a) For a = 1, we only require the constant c0,l1 which can be copied down with zero cost.
+(b) For a = 2, we require c0,l2 + c1,l2(¯rl
+ζkp2)2 = c0,l2 −(¯rl
+ζkp2)2. This is a single controlled addition
+with cost 2b.
+(c) For a = 3, we require c0,l3 + c1,l3(¯rl
+ζkp2)2 + c2,l3(¯rl
+ζkp2)4 = c0,l3 + c1,l3(¯rl
+ζkp2)2 + (¯rl
+ζkp2)4.
+For the systems we consider, we only have α = 3 when l = 0. In this case, we must evaluate
+c0,03 + c1,03(¯rl
+ζkp2)2 + (¯rl
+ζkp2)4 = 15 −10(rl
+ζkp2)2 + (¯rl
+ζkp2)4. The cost is that of two controlled
+bit-shifts (to give 2(¯rl
+ζkp2)2 and 8(¯rl
+ζkp2)2, respectively) and three controlled b-bit additions, with
+total cost 8b.
+The total cost of this step is therefore 10b. If ς = 1, the coefficients cx,la = 0, and this summation
+evaluates to zero.
+5. The constants [Y α
+l,ζ]a were loaded using the QROM in Sec. E.5.2, multiplexed over ζ, l and α. Multi-
+plying by this constant to produce [Y α
+l,ζ]a
+Pa−1
+x=0 cx,la(¯rζ
+l |k|)2x has cost b2. Naively, we would need to
+evaluate this multiplication three times (once for each a). However, we can absorb a common factor
+into the preparation of the constants outside the summation in the expression for ¯G, and we therefore
+only have to evaluate two multiplications with total cost 2b2. If ς = 1, the multiplicand generated in
+the previous step is zero and therefore the output is zero.
+83

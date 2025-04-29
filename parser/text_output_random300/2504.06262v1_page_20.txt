@@ -1,0 +1,145 @@
+20
+Laser
+(532nm)
+0
+1
+2
+3
+4
+5
+·104
+0
+1
+2
+3 ·1010
+(a)
+(b)
+Figure 9 (a) Typical experimental set-up for thermo-optic
+medium from (Xu et al., 2015). The beam from a CW laser
+is sent into the nonlinear material.
+The sample is a cylin-
+drical tube filled with a solution of methanol and graphene
+nanoscale flakes. Top left: the typical non-local response of
+the medium obtained by numerical simulation of the diffusion
+equations from (Vocke et al., 2016). (b) Non-local Bogoliubov
+dispersion. Data are adapted from (Vocke, 2017) and corre-
+spond to a non-local length of σT = 118µm (red). The local
+dispersion relation is plotted in blue for comparison. K is the
+transverse wavevector k⊥and Ωis the Bogoliubov pulsation
+as defined in Eq. (43) and applied for non-local nonlinearity
+following Eq. (77). Ωis converted from m−1 to s−1 with the
+rescaling used in Eq. (31).
+Numerical calculations incorporating realistic beam
+profiles (such as Gaussian beams) and finite bound-
+ary conditions refine these approximations, providing in-
+sights into the spatial extent of thermal nonlinearities.
+The characteristic width σT is typically estimated nu-
+merically, and its accurate determination is essential to
+describe nonlinear optical effects accurately.
+Thermal nonlinearities have been studied in various
+liquids, with methanol and methanol-based solutions
+(such as methanol/graphene mixtures) being commonly
+used due to their strong negative thermo-optic coefficient.
+Unlike electronic Kerr nonlinearities, thermal nonlinear-
+ities exhibit response times on the millisecond to second
+scale. This allows to tune the effective photon-photon in-
+teraction as a function of time (Vocke et al., 2015). The
+experimental setup typically involves a bulk liquid sam-
+ple contained in a cylindrical cell with optical windows,
+through which a laser beam propagates, see Fig. 9(a).
+The absorption of light induces a temperature gradient,
+leading to a refractive index profile that mediates photon-
+photon interactions over macroscopic distances. In this
+case the Bogoliubov dispersion relation is strongly mod-
+ified by the non-locality.
+This has been measured by
+(Vocke et al., 2015) and analyzed by (Fontaine et al.,
+2020). A typical dispersion relation is shown in Fig. 9(b).
+D. Comparison between the platforms
+The different platforms are compared in the Table 2.
+We have selected typical experimental values from (Al-
+adjidi, 2023), (Boughdad, 2020) and (Vocke, 2017).
+Quantity
+Atom. Vap. Phot. Ref. Therm. Opt.
+n
+∼1
+∼2.4
+∼1.33
+λ (nm)
+780
+633
+532
+n2 (m2/W)
+∼10−6
+∼10−7
+∼10−10
+∆nmax
+5.10−5
+10−4
+10−6
+L (mm)
+10–200
+5–20
+10–200
+Transverse size
+5 mm
+2 mm
+10 mm
+ξ (µm)
+10-20
+3-6
+50-100
+zNL (mm)
+2-20
+0.5-5
+50-500
+˜z = L/zNL
+≤100
+≤40
+≤5
+Table II Typical parameters for the three nonlinear optical
+systems.
+Values are adapted from from: (Aladjidi, 2023),
+(Boughdad, 2020) and (Vocke, 2017).
+VI. EXPERIMENTAL AND NUMERICAL TECHNIQUES
+FOR FLUIDS OF LIGHT
+This section aims to describe the techniques used for
+paraxial fluids of light experiments and numerical sim-
+ulations. Several techniques are derived from nonlinear
+and quantum optics while others have been adapted from
+ultracold atomic quantum gases.
+A. Arbitrary state generation: SLM’s and DMD’s.
+The first step in fluid-of-light experiments is the prepa-
+ration of the initial state by controlling both its intensity
+and phase. A spatial light modulator (SLM) enables the
+generation of arbitrary classical optical states, providing
+independent manipulation of phase and amplitude. Typ-
+ically, an SLM modifies the phase of an incoming optical
+field pixel by pixel. Amplitude shaping is achieved in-
+directly by encoding a suitable wavefront pattern, such
+as a blazed grating, allowing the desired intensity pro-
+file to be isolated through spatial filtering in the Fourier
+plane. This filtering is commonly implemented with an
+iris placed at the focal point of a 4f-system. Several tech-
+nical details can be found for SLM and digital micromir-
+ror devices (DMD) in the work of (Popoff, 2024) and in
+the review written by (Gauthier et al., 2021).
+We note E(x, y) = a(x, y)eiϕ(x,y) the target field, with
+the normalized amplitude a ∈[0, 1]. The general problem
+is to find the phase function Ψ[a, ϕ](x, y) to be displayed
+on the SLM, that generates the target field after filtering
+in the Fourier plane. After reflection on the SLM, the in-
+cident electric field is multiplied by the transfer function:
+h[a, ϕ](x, y) = eiΨ[a,ϕ](x,y)
+=
+X
+j
+hj[a, ϕ](x, y) =
+X
+j
+cj(a)eijϕ,
+(92)
+with hj[a, ϕ] the jth term in the Fourier series expansion,
+and ck(a) the Fourier series coefficients. The x and y vari-
+ables have been dropped in the interest of brevity. With
+these definitions, the condition on c1 to retrieve the target

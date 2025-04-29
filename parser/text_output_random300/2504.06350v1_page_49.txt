@@ -1,0 +1,112 @@
+where
+Q↑
+(αk) =
+max
+V1,··· ,Vk
+
+Tr[ρAB
+V1 + V ∗
+1
+2
+]
+αk
+,
+(137)
+such that
+Tr[V ∗
+k Vk] ≤IB,
+V1 + V ∗
+1 ≥0,
+and
+ 
+I
+Vi
+V ∗
+i
+Vi+1+V ∗
+i+1
+2
+!
+≥0,
+where in the last constraint 1 ≤i ≤k −1.
+Brown et al. [86] showed that for each αk and any pair of ρ and σ, D(αk)(ρ||σ) ≥˜D(αk)(ρ||σ) Where
+˜D(α) denotes the sandwiched Renyi divergence [287] which result in H↑
+αk(A|B) ≤˜H↑
+αk(A|B) ≤H(A|B)
+for all α > 1 that can be used to compute lower bounds on the rates of various device-independent
+protocols.
+Both above methods improve upon the min-entropy method but neither has been shown to give tight
+bounds on the actual rate of a protocol and in general, there appears to be significant room for improve-
+ment. As such, the question remains as to whether one can give a computationally tractable method to
+compute tight lower bounds on the rates of protocols. To address this question, Brown et al. [288] derived
+a converging sequence of upper bounds on the relative entropy between two positive linear functionals on
+a von Neumann algebra and demonstrated how to use this sequence of upper bounds to derive a sequence
+of lower bounds on the conditional von Neumann entropy. The main technical result of their work is the
+following theorem
+Theorem 14. Assume that ρ and σ are two positive operators on a finite-dimensional Hilbert space
+and λ > 0 is such that ρ ≤λσ. Then for any m ∈N there exists a choice of t1, · · · tm ∈(0, 1] and
+ω1, · · · , ωm > 0 such that
+D(ρ||σ) ≤−cm
+−
+m−1
+X
+i=1
+ωi
+ti ln 2 inf
+Z Tr[ρ(Z + Z∗+ (1 −ti)Z∗Z] + tiTr[σZZ∗],
+(138)
+s.t.
+||Z||
+≤
+3
+2 max{ 1
+ti
+,
+λ
+1 −ti
+},
+(139)
+where cm = Tr[ρ](Pm
+i=1
+ωi
+ti ln 2 −
+λ
+m2 ln 2). As m →∞, the right-hand side of the above equality converges
+to D(ρ||σ).
+The theorem 14 provides a convergent sequence of upper bounds on the relative entropy in the form
+of an optimization problem and can turn into SDP lower bounds on the rate of DI protocols. For the
+case of DI-QKD and for the devices are constrained by quantum theory the following noncommutative
+polynomial optimization problem gives a lower bound H(A|E)
+cm + inf
+m−1
+X
+i=1
+ωi
+ti ln 2
+X
+a
+⟨ψ| Ma|x=xX∗(Za,i + Z∗
+a,i + (1 −ti)Za,iZ∗
+a,i + tiZa,iZ∗
+a,i |ψ⟩
+(140)
+such that
+X
+abxy
+cj
+abxy ⟨ψ| Ma|xMb|y |ψ⟩≥vj,
+(141)
+and [Ma|x, Nb|y] = [Ma|x, Z(∗)
+b,i ] = [Nb|y, Z∗
+a|i] = 0 where Ma|x and Nb|y are POVM elements of Alice and
+Bob measurements respectively which are bounded operators together with Za,i.
+By applying the NPA hierarchy [127], this optimization can be relaxed into a sequence of SDPs that
+yield a converging series of lower bounds on the optimal value. This, in turn, provides a lower bound
+on the protocol’s rate. When calculating key rates for DI-QKD, a significant improvement (below 0.8)
+in the minimum detection efficiency required to generate a secret key can be achieved, bringing it well
+within the capabilities of current device-independent experiments. Araujo et al. [289] adapt the same
+SDP hierarchy to the case of QKD with characterized devices.
+4.5. Upper bounds
+Up to this point, only the lower bounds on key rates have been explored for all the protocols mentioned.
+In this section, we address a different question:
+49

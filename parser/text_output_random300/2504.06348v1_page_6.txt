@@ -1,0 +1,53 @@
+to prepare good initial molecular states for subsequent use in a dynamics simulation. The idea of exact
+dynamical evolution has also been applied to other physically interesting problems. McArdle [43] proposed
+time-evolution to simulate a muon-resonance experiment and determine Hamiltonian interaction parameters
+that characterize a material. Rubin et al. [44] proposed and costed the quantum dynamical simulation of
+a nuclear projectile moving through a material which is modeled under the BO approximation, in order to
+determine the stopping power for inertial fusion target design by measuring the projectile kinetic energy
+over time. Motlaugh et al. [45] proposed and costed a quantum dynamical evolution of a specific vibronic
+Hamiltonian relevant to a class of photochemistry.
+Despite encouraging proposals and initial results, the study of FTQC algorithms for real-time quantum
+chemical dynamics has remained a fairly niche direction in quantum algorithmic research so far. Compared
+to quantum algorithms for ground state energy estimation, detailed algorithm instantiations and costing
+are generally unavailable. As discussed above, the multi-scale modeling required in the catalysis pipeline
+involves formidable challenges, with or without quantum computers, and there is little hope of providing a
+solution to the entire problem at once. Here we target specifically the most quantum-mechanical aspects
+of the pipeline, the study of reaction mechanisms involving bond reconfiguration. With this application
+in mind, we introduce a framework to target this problem, and a detailed analysis that includes all three
+core components of an end-to-end description: the preparation of initial states, the time-evolution, and the
+information extraction from a final state, schematically represented in Fig. 1. A summary of the challenges
+and our contributions is as follows:
+1. Initial state preparation pertinent to chemical dynamics invokes protocols like thermal state preparation
+to account for finite temperature effects. Algorithms for thermal state preparation are inefficient in the
+worst-case [46, 47, 48] or have a complexity that depends on parameters whose behavior has not been
+analyzed in chemical scenarios [49, 50, 51, 52, 53, 54, 55]. In fact, substantial work is needed to extend
+these algorithms from finite-dimensional/lattice systems to a chemical context. Ref. [41] suggested to
+initialize the quantum state at the initial time in Born-Oppenheimer approximation, exploiting the
+representation of nuclear motion in normal mode coordinates to prepare a nuclear wavefunction, but
+did not give an explicit construction. Here we provide such construction, while also discussing the role
+that kinematic degrees of freedom play, and introducing physically-motivated adjustments on the state
+preparation to simulate useful reaction processes, e.g., by mitigating the statistical rarity of reaction
+events via biasing.
+2. For time-evolution, two general strategies have been proposed. A brute-force approach involves evolu-
+tion under the Hamiltonian of all electrons and nuclei [41], which is nominally efficient but extremely
+impractical whenever bulk material properties of a catalyst or the role of a thermal bath must be
+included in the model, due to the large number of electrons and ions involved. That is, the number of
+degrees of freedom required to represent such physics of interest is overwhelming despite the efficient
+algorithmic scaling. Alternatively, it has been suggested that thermalization be included via dissipa-
+tive Markovian dynamics [42], although explicit constructions are not provided. It is nontrivial how
+bulk material properties and a physically representative thermalization model can be included via a
+Markovian master equation, and without an efficient construction of unitaries encoding the Lindbla-
+dian (e.g. via its jump operators [56]), one cannot claim efficiency. Here, we follow an alternative
+path to reducing degrees of freedom and introduce a partially tunable method to replace atoms with
+pseudoions, a new dynamical object that we propose, built using the well-known technique of pseu-
+dopotentials [57, 58, 59, 60].
+3. To extract information about reaction products encoded inside a quantum state, it was previously
+assumed that one has access to a unitary that, given access to any nuclear configuration, outputs a
+list of products [41], but the construction of such unitary was not specified. In the worst case, encod-
+ing information about how to classify nuclear configurations according to products compromises the
+efficiency of the algorithm. Here, we propose an efficient, practical algorithm to identify and count a
+limited number of chemical species (molecules, radicals, adsorbed species, etc.) in an exponentially
+large wavefunction via fingerprints. Fingerprints are simple functions of the nuclear coordinates, con-
+structed through classical machine learning techniques to efficiently classify molecular specifies. Weight
+information from the classically trained model is loaded onto the quantum computer and fingerprints
+6

@@ -1,0 +1,105 @@
+5
+3.436
+3.438
+3.44
+Frequency (GHz)
+-70
+-65
+-60
+-55
+-50
+-45
+ Transmission (dB)
+3.436
+3.438
+3.44
+Frequency (GHz)
+-200
+-100
+0
+100
+200
+ Phase (dego)
+Raw Data
+Filtered
+(a)
+(b)
+Raw Data
+Filtered
+Fig. 4. (a) Zoomed-in transmission spectrum (magnitude) of the device from
+Fig.3 showing the effect of filtering out the EM crosstalk and the triplet transits
+(red curve) on the raw data (black) (b) Effect of filtering on the phase response.
+In this device, the EM crosstalk has a far greater effect than the tt, but as we
+move towards impedance matched transducers and more complicated circuit
+elements, the situation is expected to be reversed.
+The effect of this spectral distortion on the ring resonator
+transfer function can be seen in Fig.4, which shows a zoomed-
+in spectral transmission of the pulley coupled device from
+Fig.3(a). The as-measured (raw data) spectral transmission is
+shown in black (Fig.4). By applying a notch filter of 100 ns
+width [14], centred at t = 0, we can remove the EM crosstalk.
+By further applying a series of notch filters (time gates) of
+200 ns width centred on the triple-transit peaks (labelled tt
+in Fig.3(b)), we can remove all the triplet transits from the
+data in the time domain before transforming back to the
+frequency domain. This filtered data, with the EM crosstalk
+and triple transits removed, is shown by the red curve labelled
+filtered in Fig. 4. One can clearly see that both the magnitude
+and the phase response are dramatically improved once the
+EM crosstalk is removed. Removing the triplet transits has
+a negligible effect in this case, but will become increasingly
+important in more complicated devices envisioned in future
+PnIC platforms. One feature of note is that the EM filtering
+has changed the spectral position of the resonator modes, seen
+most easily in Fig.4(a) by noting the location of the dips for
+the black and red curves. We believe this occurs because the
+EM background has a non-trivial phase profile, but we don’t
+quantitatively understand the shift, especially as the shift in
+frequency appears random, cf. the redshift for the first dip,
+negligible shift for the second and a blue shift for the third
+dip in Fig.4(a).
+IV. QUANTIFYING MULTIPATH INTERFERENCE
+While the discussion so far has focused on elucidating
+the temporal dynamics of GHz acoustic fields in PnICs by
+identifying the different features observable in the temporal
+transform of the VNA data, here we show that we can
+quantitatively model, with some simplifications, the scattering
+response of the device and extract the interface reflection
+coefficients that cause the multipath interference effects. As
+noted above, one of the main challenges [1] in scaling PnIC
+circuits from O(1) to O(10) spectral components in the near-
+term is minimizing these interface reflections.
+We return to the pulley coupled device shown in Fig.3(a)
+and re-plot the time domain transmission in Fig.5(b). In
+Fig.5(a), we graphically outline the different potential routes
+(numbered chronologically) the signal can take from transmit-
+ter to receiver and indicate the corresponding temporal delay
+for each path in Fig.5(b). It is important to keep in mind
+that the waveguide resonator junction functions as an acoustic
+beam splitter. Therefore, for instance the path labelled 3(a)
+in Fig.5(a), single waveguide transit and single ring transit, is
+actually traversed in the following order: the pulse propagates
+half the waveguide length, couples into the ring, completes a
+ring transit and couples back out into the waveguide wherein
+it traverses the second half of the waveguide. To illustrate
+another example, path 5 single waveguide transit and double
+ring transit starts out identical to path 3(a), but after the first
+ring transit, we are here tracking the pulse component that
+stays within the ring when it encounters the beam splitter,
+undergoes another transit of the ring and the couples out into
+the waveguide. The diagrams in Fig.5(a), especially those with
+ring transits involved should be interpreted in this schema.
+We can construct a simplified model of the system response
+(cf. Appendix A for further details) by noting, as a first approx-
+imation, that the complete time response trace is made by the
+same pulse shape taking different paths (with corresponding
+delays) from transmitter to receiver. This simplification allows
+us to use the measured first arriving pulse (the direct transit) as
+a template to generate the complete time response by adding
+the appropriate delay for each paths and the corresponding
+attenuation to fit the measured response (cf. Appendix A for
+details on the fitting procedure). Using the measured pulse
+response allows us to work around the problem of accounting
+for the spectral distortion introduced by the (transmit and
+receive) IDTs and the complex phase shifts at the waveguide
+taper interface. Measuring the excess attenuation between a

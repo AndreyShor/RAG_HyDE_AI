@@ -1,0 +1,119 @@
+9
+this end, we apply triangle inequality as follows
+1
+2
+(τ BmKmRm
+3
+)⊗k −(τ BmKmRm
+3
+)⊗k−1 ⊗(σBKR)⊗m + (τ BmKmRm
+3
+)⊗k−1 ⊗(σBKR)⊗m −(σBKR)⊗mk
+1
+≤1
+2
+(τ BmKmRm
+3
+)⊗k −(τ BmKmRm
+3
+)⊗k−1 ⊗(σBKR)⊗m
+1 + 1
+2
+(τ BmKmRm
+3
+)⊗k−1 ⊗(σBKR)⊗m −(σBKR)⊗mk
+1
+≤
+p
+1 −(1 −γm)2 + 1
+2
+(τ BmKmRm
+3
+)⊗k−1 ⊗(σBKR)⊗m −(σBKR)⊗mk
+1
+=
+p
+1 −(1 −γm)2 + 1
+2
+(τ BmKmRm
+3
+)⊗k−1 −(σBKR)⊗m(k−1)
+1,
+(19)
+We apply the above procedure for 1
+2
+(τ BmKmRm
+3
+)⊗k−1 −(σBKR)⊗m(k−1)
+1, and repeat this k −1 times and obtain
+1
+2
+(τ BmKmRm
+3
+)⊗k −(σBKR)⊗mk
+1 ≤k
+p
+1 −(1 −γm)2.
+From the above inequality and Eq. (16) we obtain the desired bound in Eq. (17). In this equation ǫk converges to 0
+as k grows. We already set m = k
+1
+4 , hence, by letting γm =
+1
+k2.25 the upper bound in Eq. (17) converges to 0 as k
+converges to ∞. The rate of the above protocol is S(BmE′)τ3 + ηk. Dividing this by m we obtain the rate
+1
+m (S(BmE′)τ3 + ηk) = 1
+mu(ρ⊗m,
+1
+k2.25 ) + ηk
+m .
+(20)
+Thus, the asymptotic rate of the above protocol is
+lim
+k→∞
+1
+m (S(BmE′)τ3 + ηk) = lim
+k→∞
+1
+mu(ρ⊗m,
+1
+k2.25 ) + lim
+k→∞
+ηk
+m
+= lim
+m→∞
+1
+mu(ρ⊗m, 1
+m9 ).
+(21)
+For the converse bound of the unassisted case, Eq. (5) is reduced to
+nQ(n, ǫ) ≥S(M)ν
+= S(BnWB)ξ
+≥u(ρ⊗n, ǫ),
+where the second line is due to the decoding isometry. The last line follows from Deﬁnition 3. We remind that the
+optimal qubit rate is deﬁned as limǫ→0 lim supn→∞infCn,Dn Q(n, ǫ). So, the converse follows from dividing both sides
+by n and taking the limit of n →∞and ǫ →0.
+■
+In general, it is not obvious if the converse and achievable rates of the above theorem are equal. Below, we provide
+examples for which the two rate are equal.
+Proposition 9. If we assume the input state ρAR is pure, as in [2], then the optimal unassisted simulation rate is
+limn→∞limǫ→0 1
+nu(ρ⊗n, ǫ) = limǫ→0 limn→∞1
+nu(ρ⊗n, ǫ) = limn→∞1
+nu(ρ⊗n, 0) = E∞
+p (B : KR)σ.
+Proof. We remind that for a pure state |ρ⟩AR
+u((|ρ⟩⟨ρ|AR)⊗n, ǫ) :=
+min
+Λ2:A→BK
+Λ3:E→E′
+S(BnE′)τ3
+s.t.
+F((σBKR)⊗n, τ BnKnRn
+3
+) ≥1 −ǫ,
+where |τ3⟩BnKnE′E′′Rn
+= (UΛ3 ⊗idBnKnRn)(UΛ2 ⊗idRn) |ρ⟩AnRn
+. Here, UΛ2 and UΛ3 are isometric extensions of Λ2
+and Λ3, respectively. By deﬁnition u((|ρ⟩⟨ρ|AR)⊗n, 0) ≥u((|ρ⟩⟨ρ|AR)⊗n, ǫ) holds for ǫ ≥0. For the other direction, we

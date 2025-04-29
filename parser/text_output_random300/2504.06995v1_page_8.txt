@@ -1,0 +1,146 @@
+8
+TABLE I. Spot size and pulse width measurements for MEMS
+scanner version 2, using CCD and APD (fiber) configurations.
+Spot Size [µm]
+CCD
+Fiber
+Pulse Width [µs]
+Wavelength (nm) 300K 300K 10 mK 300K
+10 mK
+365
+98.6
+7.86
+4.58
+385
+95.1
+8.36
+4.45
+530
+92.9
+7.01
+4.39
+625
+90.9 115.7
+7.71
+4.29
+660
+89.8
+99.7
+96.9
+6.67
+4.53
+740
+84.2
+7.16
+4.41
+810
+86.2
+5.23
+4.27
+940
+-
+5.41
+-
+970
+73.5
+6.14
+-
+V.
+ANGULAR SCAN SPEED
+In the previous sections, we explored some of the ef-
+fects on optical performance of departures from gaussian
+optics, and presented our timing measurements. Here, we
+explore the only notable temperature-dependent factor,
+which is the marked reduction in pulse duration between
+the warm and cold tests. The reduction in pulse width
+as a function of wavelength in the 10 mK data is entirely
+explained by the change in spot size observed with the
+CCD, meaning the pulse width change is not an optical
+effect, but a result of a change in MEMs mirror respon-
+sivity.
+During warm testing, we noted a marked variability in
+observed pulse duration that was not strongly correlated
+with any one variable. Pulse width tests were performed
+with the system on the bench, installed in the cryostat
+(first open and then under vacuum), and even as a func-
+tion of temperature during different stages of cooling to
+10 mK. The quoted warm pulse widths correspond to the
+shortest stable values observed between 4 K and 300 K.
+After cooling to 10 mK, the measured pulse widths de-
+creased by 20–50% for each wavelength, with the results
+for the lowest stable pulse widths at 300 K quoted in
+Table I. Rather than a gradual decrease, consistent with
+a continuous impedance change in the MEMS system,
+there was a discrete shift in performance when the sys-
+tem was heated from < 1 K to 4 K. We attribute this
+change to the aluminum control lines on the MEMs mir-
+ror going through their superconducting transition, re-
+sulting in increased drive bandwidth, as the RC network
+of the MEMs mirror becomes purely capacitive.
+We can use the detailed spot size measurements ac-
+quired with the 660 nm diode to back out the effective
+change in MEMs scan speed, removing the optical effects
+we have described earlier and compensating for any fo-
+cal length drift. The measured pulse width decreased by
+∼40%, i.e.
+far more than the observed ∼3% decrease
+in RMS spot size. For a more accurate comparison, we
+calculated the change in spot width along the scanning
+direction (X) without removing the effect of the output
+fiber. As seen in Figure 6, the result for 660 nm was a
+larger total decrease of ∼10%, still less than the observed
+decrease in pulse width. The remaining effect after com-
+pensating for the spot size change thus reflects the change
+in mirror speed.
+By comparing the the 660 nm pulse width to spot
+size in the scanning direction, we estimate linear scan
+speeds of 24.5 m/s warm and 31.6 m/s cold. Including
+the scanning lever arm (la = 84 mm), we convert these
+scan speeds to angular velocities of ξ ∼292 rad/s warm
+and 376 rad/s cold. Although full measurements were
+only done for 660 nm, the resulting scan speeds should
+be wavelength-independent.
+If we further assume that the mirror sweeps through its
+full angular range, we can estimate the effective oscilla-
+tion frequency the mirror attains during the drive signal
+and compare this to the resonant frequency quoted for
+the system when warm. From Appendix B, we find that:
+vmax = laξ = la2θmω
+(10)
+which implies for 2θm = 10 degrees = 0.175 rad an os-
+cillation frequency of ω/2π ∼265 Hz warm and 341 Hz
+cold. This result essentially implies we are driving the
+mirror as fast as mechanically possible.
+VI.
+DISCUSSION
+This paper presents detailed, device-agnostic char-
+acterization of an enhanced cryogenic MEMs steering
+and optical chopping system over the range 365 nm to
+970 nm. While the electrical and enclosure design is iden-
+tical to the original system described in Ref [14], we have
+demonstrated substantial improvements to the optical fo-
+cuser design. As a result, we expanded system capabili-
+ties by almost an order of magnitude in wavelength, and
+demonstrated spot sizes smaller than 100 µm across this
+entire range. We also demonstrated robust optical chop-
+ping capability across the majority of the spectral range
+with performance limited by the mechanical properties of
+the MEMs mirror and its demonstrated optical behavior.
+While not discussed in detail here thus far, one of the
+main advantages of this technique is the high degree of
+control fidelity achievable at practically zero power dissi-
+pation. For all of the measurements described in this pa-
+per, MEMs-related heating was typically negligible, and
+full-scale chopping modulation was retained as we added
+filtering to the MEMS control circuit.
+For these mea-
+surements, the observed heating is consistent with the
+expected heat load from optical absorption in the sys-
+tem and within the fibers, and did not correlate with
+movement speed or frequency.
+Forthcoming measure-
+ments using this second-generation MEMS scanning sys-
+tem with phonon-sensitive KIDs[16] and charge-sensitive
+superconducting devices should confirm the negligible
+thermal impact this versatile characterization technique
+has on real-world device performance.

@@ -1,0 +1,35 @@
+Physics-Constrained Neural Network for Metasurface Optical 
+Response Prediction 
+ 
+Hanieh Masoudian Saadabad1, Lingraj Kumar2, Reza Masoudian Saadabad3*, and Maja Colautti,3,4**        
+ 
+1 Payame Noor University, Mashhad, Iran 
+2 Dipartimento di Fisica e Astronomia, Università degli Studi di Firenze, Via G. Sansone 1, Sesto Fiorentino 50019, Italy 
+3 National Institute of Optics (CNR-INO), Via Nello Carrara 1, Sesto Fiorentino 50019, Italy 
+4 European Laboratory for Non-Linear Spectroscopy (LENS), Via Nello Carrara 1, Sesto Fiorentino 50019, Italy 
+ 
+*reza.masoudiansaadabad@ino.cnr.it 
+**colautti@lens.unifi.it 
+ 
+ 
+Abstract: A physics-constrained neural network is presented for predicting the optical response of 
+metasurfaces. Our approach incorporates physical laws directly into the neural network architecture 
+and loss function, addressing critical challenges in the modeling of metasurfaces. Unlike methods that 
+require specialized weighting strategies or separate architectural branches to handle different data 
+regimes and phase wrapping discontinuities, this unified approach effectively addresses phase 
+discontinuities, energy conservation constraints, and complex gap-dependent behavior. We 
+implement sine-cosine phase representation with Euclidean normalization as a non-trainable layer 
+within the network, enabling the model to account for the periodic nature of phase while enforcing 
+the mathematical constraint 𝑠𝑖𝑛2𝜑+ 𝑐𝑜𝑠2𝜑= 1. A Euclidean distance-based loss function in the 
+sine-cosine space ensures a physically meaningful error metric while preventing discontinuity issues. 
+The model achieves good, consistent performance with small, imbalanced datasets of 580 and 1075 
+data points, compared to several thousand typically required by alternative approaches. This physics-
+informed approach preserves physical interpretability while reducing reliance on large datasets and 
+could be extended to other photonic structures by incorporating additional physical constraints 
+tailored to specific applications. 
+ 
+1. Introduction 
+The interaction of light with matter at the nanoscale is a high interest research direction due to a 
+diverse range of potential applications from photodetection [1], and optical imaging [2], to 
+telecommunication [3] and quantum technology [4,5]. Among nanophotonic structures, metasurfaces 
+consisting of arrays of nanoantennas have attracted great interest for their ability to control light-

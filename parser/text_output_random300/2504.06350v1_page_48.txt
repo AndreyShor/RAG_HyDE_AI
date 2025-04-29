@@ -1,0 +1,123 @@
+4.4.2. Lower bounds on the conditional von Neumann entropy
+Tan et al. [286] approach the DI security problem with a universal computational toolbox that directly
+bounds the von Neumann entropy using the complete measurement statistics of a device-independent
+cryptographic protocol. Suppose that the protocol estimates parameters of the form lj = P
+abxy c(j)
+abxyp(ab|xy)
+for some coefficients cj
+abxy. These parameters could be Bell inequalities in a DI scenario. Thanks to the
+Naimark theorem, one can assume all measurements as projective measurements, Pa|x for Alice’s side
+and Pb|y for Bob’s side, in a higher but finite dimension space. The task is to find lower bounds on
+inf H(A0 | E) such that ⟨Lj⟩= lj where Lj = P
+abxy cabxyPa|x ⊗Pb|y and the infimum takes place over
+ψABE and any uncharacterized measurements. The central result of Tan et al. [286] is expressed as the
+following theorem
+Theorem 12. For a DI scenario, the minimum value of H(A0|E) subject to constraints ⟨Lj⟩= lj is
+lower-bounded by
+sup
+⃗λ
+
+
+
+
+X
+j
+λjlj −ln
+
+
+
+
+sup
+ρAB,Pa|x,Pb|y
+s.t. ⟨Lj⟩ρAB =lj
+⟨K⟩ρAB
+
+
+
+
+
+
+
+,
+(131)
+where
+K = T
+
+
+Z
+R
+dtβ(t)
+
+Y
+xy
+X
+ab
+eκabxyPa|x ⊗Pb|y
+
+2
+
+(132)
+with T[σAB] = P
+a(Pa|0⊗IB)σAB(Pa|0⊗IB) , β(t) = (π/2)(cos(πt)+1)−1, and κabxy = (1+it) P
+j λjc(j)
+abxy/2.
+The previous best bound on H(A0 | E) was established in [57] (see section4.3), where only the CHSH
+value was used instead of the full probability distribution. In contrast, the method proposed in Theorem
+12 directly bounds H(A0 | E) using the complete input-output distribution. This approach yields results
+that are comparable to or slightly better than the bound in [57]. It also demonstrates that in scenarios
+with limited detection efficiency, better bounds on H(A0 | E) can be achieved by considering the full
+distribution rather than relying solely on the CHSH value. This suggests that optimizing experimental
+parameters to maximize the CHSH value may not be the most effective strategy; instead, optimizing a
+different Bell value could lead to further improvements.
+The numerical results presented in [286] are very promising, providing significant improvements in the
+rates when compared to the min-entropy approach and also improving over the analytical results [57].
+However, the approach is relatively computationally intensive requiring the optimization of a degree 6
+polynomial in the simplest setting. To reduce the complexity, Brown et al. [86] take a different approach,
+defining a new family of quantum R´enyi divergences, the iterated mean (IM) divergences which for the
+sequence αk = 1 +
+1
+2k−1 for k ∈N is defined as
+D(αk)(ρ||σ) :=
+1
+αk −1 log Q(αk)(ρ||σ),
+(133)
+where
+Q(αk)(ρ||σ) =
+max
+V1,··· ,Vk,Z αkTr
+
+ρ(V1 + V ∗
+1 )
+2
+
+−(αk −1)Tr[σZ]
+(134)
+such that
+V1 + V ∗
+1 ≥0,
+V2 + V ∗
+2
+2
+≥V ∗
+1 V1,
+· · · ,
+Z ≥V ∗
+k Vk.
+(135)
+The crucial property that makes these divergences well-adapted for device-independent optimization is
+the fact that Q(αk)(ρ||σ) has a free variational formula as a supremum of linear functions in ρ and
+σ. Given a bipartite quantum state ρAB and a divergence D(αk)(ρ||σ) the corresponding conditional
+entropy can be defined as H↓
+αk = −D(αk)(ρρAB||IA ⊗ρB) together with its optimized version H↑
+αk =
+supσB −D(αk)(ρρAB||IA ⊗σB),then the following theorem gives an explicit characterization of H↑for the
+iterated mean divergences
+Theorem 13. (BFF method) For a bipartite state ρAB
+H↑
+αk(A|B)ρAB =
+1
+1 −αk
+log Q↑
+(αk),
+(136)
+48

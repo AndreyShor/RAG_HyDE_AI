@@ -1,0 +1,50 @@
+case, we can compare the noisy outcomes of the hardware with the corre-
+sponding ideal output. Let the ideal and noisy outputs be Ym ∈{0, 1}s and
+ˆYm ∈{0, 1}s, where s is the number of measured qubits and m = 1, . . . , Mshots
+indexes a single execution (shot) of the quantum machine.1 Ym and ˆYm can
+only take binary real values because a qubit collapses into a {0, 1} when it
+is measured. When s qubits of a circuit are measured the noisy and ideal
+outputs are a series of binary strings, interpreted as i.i.d. draws from two
+underlying multivariate distributions, PY and P ˆY , with support {0, 1}s. As
+the noisy device and the classical simulator run independently, there is no
+relationship between single samples from PY and P ˆY . For simplicity, we use
+the same index for the samples from ˆPY and P ˆY , even if a realization of
+Ym is not the label of a realization of ˆYm. In this setup, hardware noise is
+proportional to any distribution distance between PY and P ˆY .
+The fidelity of two quantum states is a quantification of their similarity,
+defined as the probability of identifying one state as the other. Its classical
+counterpart, for discrete random variables, is the Bhattacharyya Coefficient
+(Bhattacharyya, 1946),
+BC(Y, ˆY ) =
+X
+y∈Y
+q
+PY (y)P ˆY (y)
+(1)
+The BC is related to the Hellinger distance,
+d2
+H(Y, ˆY ) = 1
+2
+X
+y∈Y
+p
+PY (y) −
+q
+P ˆY (y)
+2
+and the Total Variation distance,
+dTV(Y, ˆY ) =
+X
+y∈Y
+∥PY (y) −P ˆY (y)∥
+(2)
+In particular, 1 −BC = d2
+H ≤dTV ≤
+√
+2 dH.
+Inequalities involving the
+Kullback–Leibler divergence, dKL = EP ˆY log PY
+P ˆY , can be found in (Sason,
+2015).
+1Y1, . . . , YM and ˆY1, . . . , ˆYM should be treated as random variables because of the in-
+trinsic Quantum Mechanics non-determinism.

@@ -1,0 +1,60 @@
+On Stochastic Variational Principles
+Archishman Saha
+Abstract
+The study of stochastic variational principles involves the problem of constructing fixed-endpoint and
+adapted variations of semimartingales. We provide a detailed construction of variations of semimartingales
+that are not only fixed at deterministic endpoints, but also fixed at first entry times and first exit times for
+charts in a manifold. We prove a stochastic version of the fundamental lemma of calculus of variations in the
+context of these variations. Using this framework, we provide a generalization of the stochastic Hamilton-
+Pontryagin principle in local coordinates to arbitrary noise semimartingales. For the corresponding global
+form of the stochastic Hamilton-Pontryagin principle, we introduce a novel approach to global variational
+principles by restricting to semimartingales obtained as solutions of Stratonovich equations.
+1
+Introduction
+Variational principles are ubiquitous in mechanical systems. At its heart, these principles involves finding a curve
+that extremizes an action integral among all curves with fixed endpoint conditions. While introducing noise
+in the framework of mechanics, one is naturally tempted to extend deterministic variational principles to the
+stochastic regime. Two distinct kinds of stochastic variational principles exist in the literature: the first involves
+a stochastic action obtained by perturbing a deterministic Lagrangian by external noise; see, for instance, Street
+and Takao [1], L´azaro-Cam´ı and Ortega [2], Bou-Rabee and Owhadi [5], Holm [19], Arnaudon et. al. [7], Cruzeiro
+et. al. [8] and Crisan and Street [20]. The second is a deterministic action, evaluated by averaging a stochastic
+integral obtained from a single deterministic Lagrangian acting on stochastic paths. This viewpoint is present,
+for instance, in the works of Yasue [15], Cipriano and Cruzeiro [3], Arnaudon and Cruzeiro [16], Arnaudon, Chen
+and Cruzeiro [18], Zambrini [17] and Huang and Zambrini [21]. This also provides a probabilistic interpretation
+of Feynman’s path integral approach to quantum mechanics and the reader is referred to Zambrini [22] for more
+details on this.
+In this paper we will focus on the first viewpoint. Here the action is defined via a Stratonovich integral. While
+the Stratonovich integral behaves well under coordinate transformations, it poses some analytic difficulties. As
+remarked in Emery [12], unlike Itˆo integrals, a dominated convergence theorem is not true for Stratonovich
+integrals. Thus, in general, it is not true that if (Γn) is a sequence of semimartingales that converge pointwise to
+a semimartingale Γ and are dominated by a locally bounded process then the Stratonovich integrals
+R
+Γn ◦dX
+converges almost surely to
+R
+Γ ◦dX for any semimartingale X uniformly on compacts in probability (ucp). This
+means that if Γ and X are real-valued semimartingales and {Γϵ} is a family of semimartingales such that Γ0,t = Γt
+and the maps ϵ 7→Γϵ,t(ω) are smooth for almost every sample point ω, then one cannot conclude directly that
+the Stratonovich integral
+R Γϵ−Γ
+ϵ
+◦dX converges ucp to
+R
+∂
+∂ϵ
+
+ϵ=0Γϵ ◦dX. To overcome this difficulty, we assume
+differentiability in terms of the semimartingale topology as opposed to ucp topology.
+Introducing stochasticity also leads to local and global difficulties in variational principles. The global issue
+involves fixing the final condition in the variational principle. In general, fixing a stochastic process to assume
+a certain distribution at a future time may lead to breakdown in adaptedness with respect to a given filtration.
+This leads to the problem of constructing fixed endpoint and adpated variations of a stochastic process Γ.
+Broadly, two distinct solutions exist to this problem in the literature. They differ in the choice of the final
+time in the variational principle. The first involves fixing a compact set K that contains the initial condition
+Γ0 = a, for some point a in the manifold, and fixing the final time to be the first exit time τK of Γ from K. One
+then defines a vector field X such that X vanishes on {a} ∪∂K and constructs a variational family that yields
+the variation δΓ = X(Γ). This ensures that δΓ equals 0 at t = 0 and at t = τK. This approach is present in the
+works of L´azaro-Cam´ı and Ortega [2] and Street and Takao [1]. While suited to the stochastic environment, it is
+not clear how this technique applies in the simpler deterministic set-up.
+1
+arXiv:2504.06411v1  [math-ph]  8 Apr 2025

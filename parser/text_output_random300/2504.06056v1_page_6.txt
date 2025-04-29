@@ -1,0 +1,132 @@
+PAGIONO
+An ionospheric activity index
+Dr.Paul.Kinsler@physics.org
+D.
+Fitting II: the power-law tails
+Although the G2E fitting performs well, it does not capture
+the behaviour at larger dTEC values, which – if sufficiently
+well-sampled – can be seen to follow a power-law behaviour.
+This indicates that these large-dTEC power-law tails are a true
+property of all or some of the data slices, albeit something
+which is only visible with large enough dTEC counts 2.
+Consequently, after a G2E fit is done, we also attempt a
+power-law fit to the difference between the data and the G2E
+fit, but only attempting the match in the dTEC range i.e. where
+the discrepancy is large enough (more than 75% of the average
+of data and fit). Note that although the tails do not always
+appear to have identical fall-offs in the positive and negative
+δEC directions (as is also the case for the exponential sub-fits),
+but to minimise the number of additional fitting parameters
+we only fit the sum of the positive and negative tails.
+This distribution-tail fitting function is only applied when
+dTEC values are greater than α7, and with the power-law fall-
+off parameter α8. and amplitude α9, is
+pT(δEC) = P(δEC)−p(δEC) = α9 |δEC|α8 H(|δEC| > α7),(7)
+where H is a Heaviside step function. The fitting process does
+not attempt to match this equation to the usual P(δEC), but
+instead matches a line to ln(P(δEC)) as a function of ln(δEC),
+and error bars on those log-log point positions are assumed to
+be the same.
+The results of such fits on available data indicate that the
+exponent of the fall-off α8 is not the same over all data slices,
+and it can and does vary, typically between values of -2 to -5.
+As noted in the introduction, distributions with such power-
+law tails do not always have finite moments, the problem be-
+ing worse for smaller exponents. This behaviour is why we
+here use this fitting process, despite its imperfections, rather
+than simply relying on moments such as average, variance,
+kurtosis, and so on.
+A further complication is that such power-law tails do not
+straightforwardly supply us with either width or amplitude pa-
+rameters, a point we address later in IV H. Furthermore, since
+the tail appears at a very different level of scale and signifi-
+cance, it is not easy to judge the importance of this feature3:
+is it somehow a key indicator, or an unimportant side effect?
+2 The reason for distributions containing large dTEC values is not clear al-
+though we believe it is most likely likely due to some physical process.
+However, it remains possible that some or all of the values result from tech-
+nical shortcomings in the RINEX data, or subtle errors introduced by the
+processing; although it is less clear why such issues might generate such
+long tailed distributions rather than simpler artifacts. In any case, here the
+Tail fits are handled separately, and their contributions to the overall widths
+are optional and checked on a case-by-case basis.
+3 Since we work with distributions of dTEC values automatically generated
+from ground station date, it is difficult to reliably attribute anomalous fea-
+tures to either physical or technical effects; especially given that either – or
+both – can be intermittent, rare, or non-periodic, and either case could also
+give rise to similar features. We do exclude some band pairs (i.e. L1IL6I,
+L1IL7I) since they seem never to produce usable distributions, and occa-
+sionally temporarily remove ground stations from the data if they seem
+to produce anomalous results (e.g. LAMA in early 2024). However, au-
+tomating such exclusions is challenging, and not unlikely to be fallible, so
+currently we rely on human observation of the outputs.
+E.
+Ionospheric activity and distribution widths
+A key output we aim for here is a simple aggregate iono-
+spheric activity index (or scale), which can inform on prop-
+agation disturbances likely to be experienced in a given area
+and over a given internal of time – and therefore on the corre-
+sponding impact.
+Since dTEC variances [45] can be correlated with scintil-
+lation measures, and our fitted distributions also have vari-
+ances (and standard deviations), we ensured that the fitted
+parameters for the widths are designed to ensure they cor-
+respond directly to the standard deviation of the distribu-
+tion (whether Gaussian or exponential).
+Then we take an
+amplitude-weighted average of the three width contributions
+(α1, α3, α5), whilst weighting the double-sided gaussian and
+the single-sided exponentials appropriately:
+WdT
+= 2α1α2+α3α4+α5α6
+α2+α4+α6
+(8)
+= 2
+α1α2
+α2+α4+α6 +
+α3α4
+α2+α4+α6 +
+α5α6
+α2+α4+α6
+= 2 ¯α1 + ¯α3 + ¯α5.
+(9)
+This weighted average is chosen so that the aggregate width
+is (or can be) dominated by the most significant component(s)
+of the fit function, and is not, for example, unduly affected by
+a very wide but very-low amplitude Gaussian component.
+F.
+Reference choice
+Our primary interest here is in recognising, predicting,
+or categorizing interesting, unexpected, or disruptive events.
+That is, we want to be able to flag up events or behaviours
+that are somehow different to a benign and quiet ionospheric
+background.
+However, the ionosphere is rarely “quiet” in any meaning-
+ful sense. For example, if we use the Potsdam KP index as
+an indicator for quiet conditions, note that on only three days
+between 2020–2022 was it zero, and on only three more was
+it its next-lowest value 0.3333. To this purpose, we consider
+only days 006 and 007 in 2022 as as our benchmark for rea-
+sonably quiet ionospheric conditions. Furthermore, the choice
+of quiet days in January, away from equinoctial conditions, is
+a way to increase sensitivity towards enhanced ionospheric
+activity at equatorial latitudes during equinoctial conditions.
+With this reference, we can then rate other days – or other
+data slices from other days with respect to this reference; all
+without having to invent, guess, or intuit some idealised or
+theoretical reference situation. We chose a relatively recent
+year (2022) since much earlier years – e.g. at the last solar
+minimum – do not provide the same data extent of data cov-
+erage in CDDIS.
+Nevertheless, even though these quietest KP days (with
+KP = 0) do have significantly less dTEC activity than most,
+there is still some, and there are still spatially or temporally
+localised features that can appear in the data. Thus as long
+as we are not interested in subtle distinctions (e.g. between
+“quiet” and “almost quiet”), and instead focus on more active
+ionospheric behaviour, our reference choice should be seen
+primarily as a pragmatic one, rather than an attempt at perfec-
+tion. In principle we might even dispense with the KP index as
+a proxy for quietness, and instead trawl all available data for
+relevant slices to find the minimal variation (in dTEC). How-
+6

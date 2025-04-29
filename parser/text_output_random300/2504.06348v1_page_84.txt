@@ -1,0 +1,92 @@
+6. Two additions are needed to complete the sum over a and to evaluate P3
+a=1[Y α
+l,ζ]a
+Pa−1
+x=0 cx,la(¯rζ
+l |k|)2x,
+with cost 2b.
+7. Unlike [29], we seek to prepare a state directly approximating the quantity Gζ,l
+α , rather than an upper
+bound to it. Unfortunately, this requires multiplying by |kp2|l for the nonlocal term. We have already
+prepared this for l = 2 in Step 1, but we have not prepared |kp2| in the case where l = 1. We compute
+this from the register containing |kp2|2 using a controlled square-root circuit from [104]. However,
+we make two adjustments: we substitute more efficient (i.e. Gidney [105]) base adders, and we count
+resources in Toffolis rather than Ts. Specifically for b-bit input, the algorithm in [104] has three parts:
+(i) an “initial subtraction” consisting of one adder with cost b; a “conditional addition” that consists
+of additions of 2(j + 1)-bit addends for j = 2 . . . b
+2 −1; a “remainder restoration” that uses a single
+controlled addition with cost 2b. The total cost is therefore 3b + P b
+2 −1
+j=2 2(j + 1) = b2
+4 + 7b
+2 −6.
+8. Multiplication by the prefactor |kp2|l requires a single controlled multiplication.
+The cost of the
+control is linear in b, which we omit. The primary contribution has cost b2. This completes the state
+preparation for the polynomial part of ¯Gζ,l
+α in Eq. (228).
+9. For the local term, we must construct (¯rζ
+loc)s|kp2|s from (¯rζ
+loc)2|kp2|2.
+Controlled on ς = 1 and
+s ̸= 2, we square-root this register out-of-place with cost given in Step 7. We then multiply (¯rζ
+loc)|kp2|
+with (¯rζ
+loc)2|kp2|2 in the case where s = 3, using a single multiplication with leading-order cost b2.
+For the s = −1 part, rather than compute the reciprocal we instead multiply the alternate side of the
+inequality test for rejection sampling by (¯rζ
+loc)|kp2| (i.e. we carry out a single multiplication conditioned
+on whether both φ = 1 and s = 1). The total cost for this step is therefore 5b2
+4 + 7b
+2 −6. This completes
+the state preparation for the polynomial part of ¯Gζ
+s in Eqs. (229) and (230).
+10. For the non-local term, we must check whether |k(j)
+p2 | = | P
+α pαb(j)
+α | ≤k∗
+l , for all j (where here, bα
+is the αth reciprocal lattice vector). Likewise for the local term, we must check the same condition
+against the precomputed coefficient k∗
+s. The coefficients k∗
+l and k∗
+s are precomputed and loaded using
+the QROM in Sec. E.5.2. Evaluating |k(j)
+p2 | requires three multiplications of an nj-bit component with
+a b-bit classical multiplicand (plus two additions). The cost for each multiplication is
+n2
+j
+2 + bnj. The
+total cost of evaluating |k(j)
+p2 | is therefore 1
+2 ˜n + bn + 2b. This must be carried out three times (one for
+each j), plus the cost of three inequality tests. The total cost is 3
+2 ˜n + 3bn + 9b.
+11. Dependent on both ς and the outcomes of the inequality tests in the previous step, we must multiply
+by an l- or s-dependent constant. Both of these families of coefficients are assumed to be precomputed
+classically and loaded using the QROM in Sec. E.5.2. In the worst case this step requires two controlled
+multiplications. Including the controls introduces a complexity linear in b, which we omit. The cost
+for this step is then 2b2.
+12. We must evaluate γ∥kp2∥1 = P
+j |k(j)
+p2 |. Each of these components have already been computed; the
+cost of this step is therefore the cost of two additions: 2b.
+13. If the flag in Step 9 indicates that the criterion is not satisfied ∀j, we must modify the argument
+to the exponential such that we evaluate γ∥kp2∥1 −(¯rζ
+l |kp2|)2/2 rather than −(¯rζ
+l |kp2|)2/2 for the
+nonlocal term (and likewise γ∥kp2∥1 −(¯rζ
+loc|kp2|)2/4 rather than −(¯rζ
+loc|kp2|)2/4 for the local term).
+This requires a single controlled subtraction with cost 2b.
+14. The preparation of the exponential part in all cases is achieved with QROM interpolation as described
+in [29], Sec. VI C. We assume the pessimistic cost derived there of 11
+4 b2 + 128.
+15. Multiplication of the exponential and polynomial parts to yield ¯Gζ,l
+α and ¯Gζ
+s has cost b2.
+The reference function ˜G is guaranteed to upper bound |G|, not just G, and the rejection sampling (in
+both success probability and circuit compilation) assumes that one is comparing ˜G with |G| (and that the
+appropriate phases are added after the rejection sampling procedure). Given that |Gζ,l
+α ⟩is stored as a signed
+84

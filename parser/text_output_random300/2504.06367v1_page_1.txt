@@ -1,0 +1,83 @@
+Constraining Mixed Dark Matter models with high redshift Lyman-alpha forest data
+Olga Garcia-Gallego1,2, Vid Iršič1,3,4,5,6,7
+, Martin G. Haehnelt1,2
+, Matteo Viel4,5,6,7,8
+, James S. Bolton9
+,
+1Kavli Institute for Cosmology, University of Cambridge,
+Madingley Road, Cambridge CB3 0HA, UK
+2Institute of Astronomy, University of Cambridge,
+Madingley Road, Cambridge CB3 0HA, UK
+3Center for Astrophysics Research, Department of Physics,
+Astronomy and Mathematics, University of Hertfordshire,
+College Lane, Hatfield AL10 9AB, UK
+4SISSA- International School for Advanced Studies,
+Via Bonomea 265, 34136 Trieste, Italy
+5INFN – National Institute for Nuclear Physics,
+Via Valerio 2, I-34127 Trieste, Italy
+6IFPU, Institute for Fundamental Physics of the Universe,
+via Beirut 2, 34151 Trieste, Italy
+7INAF, Osservatorio Astronomico di Trieste,
+Via G. B. Tiepolo 11, I-34131 Trieste, Italy
+8ICSC - Centro Nazionale di Ricerca in High Performance Computing,
+Big Data e Quantum Computing,
+Via Magnanelli 2, Bologna, Italy
+9School of Physics and Astronomy, University of Nottingham,
+University Park, Nottingham, NG7 2RD, UK
+This study sets new constraints on Cold+Warm Dark Matter (CWDM) models by leveraging the small-scale
+suppression of structure formation imprinted in the Lyman-𝛼forest. Using the Sherwood-Relics suite, we extract
+high-fidelity flux power spectra from simulated Lyman-𝛼forest data, spanning a broad range of cosmologies and
+thermal histories. This enables precise constraints on the warm dark matter (WDM) fraction, 𝑓WDM, and the
+mass of the WDM particle, 𝑚WDM. A key advancement of our analysis is the integration of a neural network
+emulator directly at the likelihood level, significantly accelerating Bayesian parameter inference. With new
+observations of high-redshift (𝑧= 4.2−5.0) quasar spectra from UVES and HIRES, we establish stringent upper
+limits: for 𝑚WDM = 1 keV, we find 𝑓WDM < 0.16 (2𝜎), with constraints loosening to 35%, 50%, and 67% for
+𝑚WDM = 2, 3, and 4 keV, respectively. Our results for pure WDM reaffirm the lower bounds of previous work.
+Crucially, we account for the fixed resolution of simulations and the impact of patchy reionization, demonstrating
+their minimal influence on mixed dark matter constraints. This robustness paves the way for tighter bounds with
+improved statistical samples in the future. Our findings suggest that CWDM models can naturally accommodate
+mild suppression of matter clustering in the high redshift Lyman-𝛼forest 1D flux power, potentially offering a
+resolution to some of the ongoing cosmological tensions at low redshifts, namely the 𝑆8 tension.
+PACS numbers:
+I.
+INTRODUCTION
+In the standard cosmological model, ΛCDM, cold non-
+baryonic dark matter with negligible primordial velocities con-
+stitutes approximately ΩCDM ≈0.26 of the total energy density
+of the Universe. This model provides a pivotal framework for
+galaxy formation theory, where the hierarchical merging of
+non-linear dark matter structures, or haloes, plays a key role in
+shaping the large-scale structure of the Universe. In this con-
+text, the ΛCDM paradigm accurately predicts the evolution of
+the matter power spectrum across cosmic time from CMB ob-
+servations [1], demonstrating remarkable success in matching
+observations down to scales comparable to the average spacing
+between galaxies (≈a few Mpc).
+At smaller scales, however, discrepancies arise between
+theoretical predictions from N-body simulations and obser-
+vational data. Some of these inconsistencies stem from the
+hierarchical nature of the theory. While the apparent mismatch
+in the number of dwarf galaxies in the Milky Way (Missing
+Satellites Problem, [2, 3]), has been largely resolved through
+new observations of faint satellites ([4]) and improved baryonic
+modelling in high-resolution simulations (e.g. [5, 6]), other
+tensions persist. The most significant among these is related
+to the amount of dark matter in the inner parts of galaxies
+(Cusp-Core Problem, [7]), particularly the challenge of ex-
+plaining the diverse rotation curves observed [8]. Moreover,
+while the dynamics of the most massive Milky Way satellites
+(Too-Big-To-Fail Problem, [9, 10]) are now better understood
+through updated cosmological simulations (e.g. [11, 12]), the
+situation remains unclear for satellites outside the vicinity of
+the Milky Way ([13]).
+Another key challenge of CDM (cold dark matter) on
+small scales involves the amplitude of matter density fluc-
+tuations, quantified by 𝜎8.
+The parameter combination
+𝑆8 = 𝜎8
+√︁
+Ωm/0.3 has given rise to the so-called 𝑆8 tension,
+where cosmic shear, galaxy clustering surveys, and their cross-
+correlation with CMB lensing (e.g. [14–20]) suggest lower
+values than those inferred from the CMB ([1]).
+arXiv:2504.06367v1  [astro-ph.CO]  8 Apr 2025

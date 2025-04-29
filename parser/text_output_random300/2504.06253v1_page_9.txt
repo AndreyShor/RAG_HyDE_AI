@@ -1,0 +1,44 @@
+Warm-Start QAOA via a Reduction to Max-Cut
+•
+9
+• Traveling Salesman Problem (TSP). This problem asks for the route between 5 points that are randomly
+placed onto [−1, 1]2 which visits each city exactly once while minimizing the distance.
+• Portfolio Optimization. This problem begins by simulating a set of stock prices over a fixed time duration,
+and then computing the covariance and mean return of each asset. The optimization then seeks to find the
+best combination of stocks to buy to simultaneously maximize the return, minimize the risk, and satisfy a
+predetermined budget constraint.
+• Maximum Independent Set (MIS). This problem begins with an unweighted, connected graph, and then
+aims to determine the largest set of verticies 𝑆such that no two elements of 𝑆share an edge. We study this
+problem on two different graph ensembles, the Erdős–Rényi (GNP) model and the Newmann-Watts-Strogatz
+(NWS) model.
+Visualizations of these problems are provided in Figure 1. A more detailed background of each problems is
+provided in Appendix B.
+To gauge the impact of vertex-at-top rotations, for the 𝐻Adj.
+𝐴
+warmstarts, we tested rotations on the first qubit,
+the last qubit, and none of the qubits. The choice of rotating the first qubit was chosen arbitrarily: since these
+problem instances are random, the distribution of the 𝑄matrix elements (of the corresponding QUBO) should
+be invariant under permutations of rows/columns. However, after transforming the problem into a Max-Cut
+instance, the last qubit will have a different structure due to it’s special role in the mapping in (8). The depth-0
+data in Appendix C provides empirical support for this.
+For all of the following problems, 1000 instances were generated and ran at depth 𝑝= 0 (see Appendix C)
+and 10 of those 1000 were selected to be run at depths 1 ≤𝑝≤5. Each problem is a QUBO in 16 variables with a
+corresponding 17-vertex corresponding graph.
+4
+Results
+Experimental parameters can be found in Appendix E.
+For 𝑝= 0, 1, . . . , 5, we present the data for the GW2 warmstart in Figure 3. Full Depth Data for GW3, BM2,
+and BM3 is provided in Figure 7. GW2 was selected as the representative warmstart because it obtained instance-
+specific approximation ratios and optimal sampling probabilities which were either comparable to or better than
+the other warmstarts considered.
+While both BM2 and BM3 perform comparable to the GW warmstarts in terms of their obtained instance-
+specific approximation ratio, they obtain significantly lower optimal sampling probabilities. This is likely due to
+the warmstarts finding relatively high cost solutions, but not necessarily optimal ones.
+Because the relaxation corresponding to the QUBO-Relaxed warmstart is not convex, there are no guaran-
+tees on its performance. We use a LFBBGs optimizer to estimate 𝑦𝑐, and vary the number of random initial
+conditions.7 To give a fair comparison between this warmstart and the others, we compare its performance with
+both 10 random initializations and 50 random initializations. As can be seen in the corresponding figures, there is
+a notable difference in performance between 50 and 10 initializations for certain problems.
+7Portfolio Optimization is actually a QUBO-Relaxed problem when relaxed, so we can solve for 𝑦𝑐directly using QUBO-Relaxed programming.
+Thus, the number of random initializations does not matter for Portfolio Optimization.
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

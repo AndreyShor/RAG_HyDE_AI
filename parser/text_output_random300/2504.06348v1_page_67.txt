@@ -1,0 +1,147 @@
+-12
+-6
+0
+6
+12
+0.
+0.2
+0.4
+0.6
+0.8
+ℓ= 0
+-12
+-6
+0
+6
+12
+0.
+0.2
+0.4
+0.6
+0.8
+ℓ= 1
+-12
+-6
+0
+6
+12
+0.
+0.2
+0.4
+0.6
+0.8
+_q
+ℓ= 2
+-12
+-6
+0
+6
+12
+0.
+0.2
+0.4
+0.6
+0.8
+_q
+ℓ= 3
+(a) Reference states ˜ϕs,k
+l
+(¯qs,k) (blue) and functions |ϕs,k
+l
+(¯qs,k)| (red)
+for the first four harmonic oscillator harmonics l = 0, 1, 2, 3.
+0
+10
+20
+30
+40
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+ℓ
+Success Probability for QHO states
+(b)
+Success
+probability
+using
+references
+˜ϕs,k
+l
+(¯qs,k) for functions |ϕs,k
+l
+(¯qs,k)| as a func-
+tion of the harmonic index l. The blue line
+is at 0.25, indicating the threshold for one
+round of amplification.
+Figure 10: Comparison of reference states and success probabilities for quantum harmonic oscillators.
+not an exhaustive list of all HGH-based pseudoions), where the 0.25, 0.095, 0.05 lines denote the threshold
+probabilities for 1, 2, 3 rounds of amplifications respectively, and where the blue, orange, green markers denote
+the l = 0, 1, 2 cases respectively, with the 3 points per color denoting the 3 eigenstates. Only in a few cases
+does the success probability fall below the 2 round threshold. The results suggest that with a little fine-tuning
+of the reference state parameters (by incorporating some α-dependence) to address low probability cases,
+one can always construct a Type I reference state above the 2 round threshold for all HGH pseudoions.
+This is what we assume in resource estimation. For the s ≥0 local terms, the success probabilities are
+0.45, 0.41, 0.36, 0.31 for s = 0, 1, 2, 3 respectively, and so only require 1 round of amplification.
+Quantum harmonic oscillator
+In non-dimensionalized shape coordinates ¯qs,k = √ωs,kqs,k, the single-mode eigenstates of a quantum har-
+monic oscillator in Eq. (73) has the target function,
+ϕs,k
+l
+(¯qs,k) = e−1
+2 (¯qs,k)2Hl(¯qs,k)
+(158)
+where Hl(x) is the l-th Hermite polynomial. We provide a 1-dimensional Type I reference function ˜ϕs,k
+l
+(¯qs,k)
+to explicitly construct the unitary U s,k
+l
+below Eq. (73) using rejection sampling,
+˜ϕs,k
+l
+(¯qs,k) =
+(
+max¯qk |ϕs,k
+l
+(¯qs,k)|
+for |¯qs,k| ≤¯q∗
+l
+dle−γl|¯qs,k|
+for |¯qs,k| > ¯q∗
+l
+(159)
+where, for l ≥1, the parameters γl = −
+1
+ϕs,k
+l
+(¯q∗
+l )
+∂ϕs,k
+l
+∂¯qs,k |¯qs,k=¯q∗
+l and dl = eαl ¯q∗
+l ϕs,k
+l
+(¯q∗
+l ) are given, respectively,
+by matching derivatives and values of the exponential tail dle−γl ¯qs,k and the target function ϕs,k
+l
+(¯qs,k) at
+the classical turning point ¯q∗
+l =
+√
+2l + 1. For l = 0, we use the same reference state with γ0 = −1
+2, d0 =
+π−1/4, ¯q∗
+0 = 1.
+The success probability is shown in Fig. 10 where we see that the first 40 harmonics l = 0, ..., 39 all
+require 1 round of amplitude amplification, which suffices for practical purposes relevant to this work.
+Should higher harmonics be desired, either one may use the same reference state with more rounds of
+amplification or alternatively construct a more refined reference, e.g. with more piecewise constant levels
+below the max value which works well for the internal region inside the classical turning points, to bring
+the success probability back above the 1 round threshold. As with all initial state preparation subroutines,
+this preparation only occurs once to initialize the time-evolution for a given problem instance, and hence the
+67

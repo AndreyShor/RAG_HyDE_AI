@@ -1,0 +1,194 @@
+5
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Bell Fidelity of ρ02
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Bell Fidelity of ρ13
+max(Fa −Fb, 0)
+0.00
+0.02
+0.04
+0.06
+0.08
+0.10
+0.12
+0.14
+(a) Increase in Bell fidelity, see eq. (3),
+using Z2B distillation on Bell states
+undergoing bit flip errors (1).
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Bell Fidelity of ρ02
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Bell Fidelity of ρ13
+max(Fa −Fb, 0)
+0.00
+0.02
+0.04
+0.06
+0.08
+(b) Increase in Bell fidelity, see eq. (5),
+using Z2B distillation on Bell states
+undergoing depolarizing noise (4).
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Bell Fidelity of ρ03 and ρ25
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Bell Fidelity of ρ14
+max(Fa −Fb, 0)
+0.00
+0.02
+0.04
+0.06
+0.08
+(c) Increase in Bell fidelity, see eq. (8), using
+ZX3B distillation on Bell states undergoing
+depolarizing noise (7).
+FIG. 2. Algebraically obtained increase in Bell fidelity by different distillation protocols. The x and y axes represent the Bell
+fidelity of the states prior to distillation while the color corresponds to the increase (if any) in fidelity upon distillation.
+|0⟩0
+H
+•
+Λp
+•
+|0⟩1
+•
+•
+i
+|0⟩2
+H
+•
+•
+Λq
+•
+|0⟩3
+Λq
+j
+t0
+t1
+t2
+(a) Two local Bell pairs are created, swapped to form
+non-local Bell pairs, and then distilled using the Z2B
+protocol (see Sec. III A 1 for additional details).
+|0⟩0 :
+H
+•
+Λp
+•
+|0⟩1 :
+•
+•
+i
+|0⟩2 :
+H
+•
+•
+•
+•
+•
+H
+k
+|0⟩3 :
+•
+•
+•
+Λq
+•
+|0⟩4 :
+H
+•
+Λp
+•
+Λq
+j
+|0⟩5 :
+Λq
+•
+H
+l
+t0
+t1
+t2
+(b) Three local Bell pairs are created, swapped to form
+non-local Bell pairs, and then distilled using the ZX3B
+distillation protocol (see Sec. III A 2 for additional details).
+FIG. 3. Circuits for entanglement distillation with quantum channels Λp and Λq inserted at various stages.
+error m we notice a decrease in r. On the other hand,
+if we fix the measurement error m, increasing the gate
+error g has two effects. First, it decreases the initial Bell
+fidelity Fb at q = 0 (i.e., the plot begins at a smaller Fb
+value) and also decreases the initial r value corresponding
+to that initial Bell fidelity. Second, it shrinks the interval
+of Fb values over which r > 1.
+In the second plot, Fig 4b, the two Bell pairs have
+unequal Bell fidelity, i.e., Λp in Fig. 3a is noisy with p ̸= 0.
+After the action of this noisy identity gate, the first Bell
+pair (across qubits 0 and 1) becomes more noisy than
+the second (across qubits 2 and 3) and Bell fidelity of the
+first Bell pair F1 is 2.5% lower than that of the second,
+F2. Salient features of the plot in Fig. 4b resemble those
+of Fig. 4a discussed above. The key difference is that for
+fixed g and m values the value of r in Fig. 4b are smaller
+than the corresponding values in Fig. 4a.
+In fact, we
+only see improvement in a small region where the gate
+and measurement errors are ≤1%.
+In Fig. 4c and 4d we focus on smaller gate and measure-
+ment errors, g = 1 × 10−2 or 5 × 10−3 and m = 5 × 10−2
+or 1 × 10−2. Here the Y axis is the percentage decrease
+in error, i.e.,
+ϵd = Fa −Fb
+1 −Fb
+× 100,
+(16)
+while the X axis is the initial Bell fidelity Fb. We ob-
+tain points along these axis by varying the waiting error
+q in Λq. Here, the initial Bell fidelity is typically greater
+than 0.9 and we notice a 10% −20% decrease in error
+by performing distillation on Bell pairs with equal Bell
+fidelity (see Fig. 4c). When the Bell pairs have unequal
+Bell fidelity, recurrence does not necessarily decrease the
+error for very high Bell fidelity but manages to decreases
+error as the initial Bell fidelities become smaller (see
+Fig. 4d). This observation is consistent with results in
+Fig. 2a which show that the range of initial Bell fideli-
+ties where distillation improves is narrow when the initial
+Bell fidelities are high.
+2.
+Three Bell Distillation
+Next, we simulate the ZX3B protocol using the circuit
+in Fig. 3b. This circuit prepares three Bell pairs, which
+we label as AA, BB, and CC, initialized on qubits 0−1,
+2 −3, and 4 −5, respectively.
+Next, the circuit adds
+noise to Bell states AA and CC via Λp. After the first
+barrier (labelled t0) a sequence of CNOT gates re-order
+the Bell pairs into ABCABC, such that one half of each
+Bell pair is separated from its other half by two qubits.

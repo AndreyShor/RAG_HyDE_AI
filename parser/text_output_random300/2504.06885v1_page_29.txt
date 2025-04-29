@@ -1,0 +1,131 @@
+D.2
+RealAmplitudes vs QAOA Ansatz (Hamiltonian agnostic vs informed)
+QAOA is popularly used for optimisation problems as it is Hamiltonian informed. The form of the
+QAOA circuit ansatz is:
+|ψ(β, γ)⟩=
+p
+Y
+k=1
+
+e−iβkHM e−iγkHC
+
+|+⟩⊗n
+(8)
+where, p is the number of layers.
+β = (β1, β2, . . . , βp) and γ = (γ1, γ2, . . . , γp) are variational
+parameters. HC is the problem Hamiltonian, which encodes the cost function of the optimisation
+problem and makes it Hamiltonian informed.
+HM is the mixer Hamiltonian, typically chosen as
+HM = Pn
+i=1 Xi, where Xi is the Pauli-X operator acting on the i-th qubit. |+⟩⊗n is the initial state,
+which is an equal superposition of all computational basis states [105].
+When comparing different ansatz in our hyperparameter search we found that the RealAmplitudes
+ansatz returned higher values of Ps (results in Figure 8e). The simple explanation for this is that the
+RealAmplitudes ansatz has more parameters and is therefore more expressive allowing it to find a state
+with good overlap with the ground state. But what happens if we increase the depth of QAOA so that
+it has the same number of parameters as the RealAmplitudes ansatz? At p = 2, for the 18 variable
+problem size, QAOA has just 4 independent parameters, but already has a depth of 58 gates, whereas
+the RealAmplitudes depth is 20 gates (these are the abstract circuits before transpilation). This is due
+to the fact that our problem Hamiltonian HC, is fully connected. Consequently, the QAOA circuit has
+full connectivity (a fully connected entanglement arrangement), implementation of which on the IBM
+QPU is possible only with the introduction of SWAP gates. Running and simulating these QAOA
+circuits at p = 2 can already take a long amount of time which makes increasing p quite infeasible.
+However, Ref. [106] shows QAOA can have good performance at p = 12 on a fully connected SK-
+problem. This is possible due to the concentration of parameters found with QAOA, where parameters
+at smaller problem sizes can be extrapolated to larger problem sizes. The power of QAOA is that it
+can perform well with a relatively small number of parameters at low depth which should allow scaling
+to larger problem sizes. Future work could further explore the practical implementation of QAOA,
+using concentration of parameters to scale to large, dense QUBOs.
+5
+0
+5
+10
+15
+20
+Energy
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+Probability
+Min QUBO Energy
+5.5
+5.0
+4.5
+4.0
+3.5
+3.0
+2.5
+Energy
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+Probability
+Min QUBO Energy
+0
+50
+100
+150
+200
+250
+Iterations
+4
+2
+0
+2
+Objective Value
+Min QUBO Energy
+Figure 13: 8 variable solved with VQE on the QPU. λ = 3, shots = 10,000, tol = 1e-1, RealAmplitudes ansatz,
+COBYLA, CVaR with α = 0.9, maxiters = 250.
+20
+10
+0
+10
+20
+Energy
+0.00
+0.05
+0.10
+0.15
+0.20
+Probability
+Min QUBO Energy
+20.5
+20.0
+19.5
+19.0
+18.5
+18.0
+17.5
+Energy
+0.0
+0.2
+0.4
+0.6
+Probability
+Min QUBO Energy
+0
+50
+100
+150
+200
+250
+Iterations
+20
+0
+20
+40
+Objective Value
+Min QUBO Energy
+Figure 14: 18 variable solved with VQE on the QPU. λ = 3, shots = 10,000, tol = 1, RealAmplitudes ansatz,
+COBYLA, CVaR with α = 0.4, maxiters = 250. 5 experiments are used for accumulated, renormalised distributions.
+The convergence plot is truncated at the minimum number of iterations required over the 5 experiments and the
+error bars are σ.
+29

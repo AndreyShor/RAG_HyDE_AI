@@ -1,0 +1,47 @@
+preserved, and the iterative nature of this method enables the model to propagate pre-
+dictions over longer horizons, albeit with potential accumulation of errors.
+2.6
+Metrics for Comparison
+Evaluating the performance of models in fluid dynamics requires reliable metrics that not
+only assess the accuracy of predictions but also provide insights into potential errors and
+variations. For such assessments, uncertainty quantification (UQ) has been implemented
+along with metrics such as the average Relative Root Mean Squared Error (RRMSE) to
+evaluate prediction reliability and measure the accuracy and robustness of the models.
+2.6.1
+Relative Root Mean Squared Error (RRMSE)
+RRMSE is a normalized version of Root Mean Squared Error (RMSE), providing a relative
+measure of error by comparing the model prediction deviations with the range or mean
+of the observed data. It is defined as:
+RRMSE =
+q
+1
+N
+PN
+i=1(yi −ˆyi)2
+¯y
+(17)
+where yi represents the observed values, ˆyi the predicted values, N the total number of
+samples, and ¯y the mean of the observed values. The average of which has been presented
+in the results section.
+RRMSE provides a relative error metric that is independent of the scale of the data,
+making it suitable for comparing models across different data sets or scales.
+Lower
+RRMSE values indicate higher prediction accuracy.
+2.6.2
+Uncertainty Quantification
+Accurate predictions in fluid dynamics are crucial, but it is equally important to quantify
+the uncertainties associated with these predictions to understand their reliability and
+robustness.
+Uncertainty quantification (UQ) allows the assessment of potential errors
+and variations in predictions, which is essential to make informed decisions in various
+fluid dynamics applications.
+In this analysis, UQ is performed by calculating the normalized error between the
+original tensor data and its reconstructed counterpart. The errors across each velocity
+component are quantified using probability density functions (PDFs), offering a statistical
+depiction of the uncertainties. This approach allows us to visualize and interpret error
+distributions effectively, highlighting the performance differences between the HOSVD
+and SVD methods. By analyzing these error distributions, areas can be identified where
+the models perform well and where improvements may be necessary, ultimately enhancing
+the predictive accuracy of our models.
+The normalized error for each velocity component is given by [53]:
+18

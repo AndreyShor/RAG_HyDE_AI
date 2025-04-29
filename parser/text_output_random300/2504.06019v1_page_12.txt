@@ -1,0 +1,60 @@
+3.
+Basic State Analysis
+To understand the behaviour of the model (under the dry adiabatic buoyancy
+non-dimensionalisation) with the boundary conditions specified in 2.1, a natural
+starting point is to calculate the basic state. Pauluis and Schumacher (2010) examine
+steady state solutions to their simple model of moist convection, and in both Vallis
+et al. (2019) and Oishi and Brown (2024) a “drizzle solution” of no motion is found
+for fixed temperature conditions, and saturated upper and lower boundary conditions.
+Here, the problem is similar to that of Vallis et al. (2019) and Oishi and Brown
+(2024), although the analysis is conducted for the idealised climate change set up of
+the Rainy-B´enard model with radiation and moist psuedoadiabatic upper boundary
+conditions (outlined in 2.1), and moreover the solution is here found analytically (as
+in Oishi and Brown (2024)). Once the basic state solution is known, the stability of
+the system can be understood by calculating CAPE and the linear stability of the
+system (from the basic state).
+The basic state we find is a z-dependent state of no motion (u = 0), which is
+time-independent (∂/∂t = 0). For the boundary conditions outlined in 2.1, the basic
+state solution consists of a lower unsaturated region with an upper saturated region.
+Dropping the hats, the basic state equations (for Pr = Sm = 1) are given by
+dϕ
+dz = b,
+(28)
+d2b
+dz2 = Ra1/2
+ 
+−γ q −qs
+τ
+H(q −qs) + r
+!
+,
+(29)
+d2q
+dz2 = Ra1/2 q −qs
+τ
+H(q −qs),
+(30)
+qs = eα(b−z).
+(31)
+By examining the system of ODEs, one can see that,
+(29) + γ(30) =⇒d2(b + γq)
+dz2
+= d2m
+dz2 = Ra1/2r.
+Upon applying the boundary conditions in 2.1, the buoyancy can be related to specific
+humidity throughout the domain by
+m ≡b + γq = msurf + Rz2/2 −Rz,
+(32)
+where R ≡Ra1/2r. It follows that (31) can be written as
+qs(q, z) = exp
+
+α(−γq + msurf + Rz2/2 −(R + 1)z)
+
+.
+(33)
+The basic state solution can be determined by solving (30), where qs(q, z) is given
+by (33). Due to the non-linear Heaviside function H, (30) must be solved separately
+in the unsaturated and saturated regions. These solutions are matched at the lifting
+condensation level (LCL) where z = zs and q∗= q(zs) = qs(zs). The matching
+conditions used at the LCL are continuity of b, q, and their first derivatives.
+12

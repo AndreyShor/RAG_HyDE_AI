@@ -1,0 +1,178 @@
+8
+combinations
+Z(0)
+1
+= Y(2) + Y(3) −2Y(4) ,
+Z(1)
+1
+= −4Y(1) + Y(2) + 3Y(3) −4Y(4) + 2Y(5) ,
+Z(2)
+1
+= −6Y(1) + 3Y(3) −2Y(4) + Y(5) ,
+Z(3)
+1
+= −2Y(1) + Y(3) ,
+(43)
+of the five independent hadronic spectral densities
+Y(i)(ω0, ω2).
+Concerning the second moment, we have
+M2 =
+4
+X
+p=0
+Z (|ω|max+ϵ)2
+0
+dω2 lim
+σ7→0
+dM (p)
+2 (σ)
+dω2
+,
+(44)
+with
+1
+¯
+M2
+dM (p)
+2 (σ)
+dω2
+=
+|ω|5−p
+Z ∞
+ωmin
+0
+−ϵ
+dω0 Θ(p)
+σ (ωmax −ω0) Z(p)
+2 (ω0, ω2), (45)
+the normalization given by
+¯
+M2 = 1
+Γ
+m7
+Ds G2
+F SEW
+960π4
+,
+(46)
+and the relevant hadronic spectral densities, which in this
+case are five, given by
+Z(0)
+2
+= 6(Y(2) + Y(3) −2Y(4)) ,
+Z(1)
+2
+= 2(−14Y(1) + 5Y(2) + 11Y(3) −16Y(4) + 10Y(5)) ,
+Z(2)
+2
+= −54Y(1) + 5Y(2) + 31Y(3) −30Y(4) + 30Y(5) ,
+Z(3)
+2
+= −10(4Y(1) −2Y(3) + Y(4) −Y(5)) ,
+Z(4)
+2
+= 5(−2Y(1) + Y(3)) .
+(47)
+Note that, in contrast to the total rate Γ, the first
+two lepton-energy moments do probe the parity-breaking
+form factor h(5) = Y(5)/|ω|.
+The
+connection
+between
+the
+differential
+moments
+dM (p)
+l
+(σ)/dω2, at fixed smearing parameter σ and for
+l = 1, 2, and the Euclidean correlators that we have com-
+puted on the lattice is obtained by using, once again, the
+representation given in Eq. (35) of the smearing kernels
+Θ(p)
+σ (ωmax −ω0). We have
+1
+¯
+Ml
+dM (p)
+l
+(σ)
+dω2
+= |ω|3+l−p
+lim
+N7→∞
+N
+X
+n=1
+g(p)
+n (N) ˆZ(p)
+l
+(an, ω2) ,
+(48)
+where the lattice correlators
+ˆZ(p)
+l
+(t, ω2) =
+Z ∞
+ωmin−ϵ
+dω0 e−ω0(mDst) Z(p)
+l
+(ω0, ω2) (49)
+are the Laplace transforms of the spectral densities de-
+fined in Eq. (43) for l = 1 and in Eq. (47) for l = 2. These,
+as well as the ones of Eq. (36) entering the calculation of
+Γ, can be easily computed as linear combinations of the
+five independent amputated correlators
+ˆY(i)(t, ω2) =
+Z ∞
+ωmin−ϵ
+dω0 e−ω0(mDst) Y(i)(ω0, ω2) . (50)
+The procedure that we used to extract these quantities
+from lattice correlators is discussed in section VI. Before
+doing that, however, we derive in the next section the
+asymptotic formulae that we use to study numerically the
+σ 7→0 extrapolations. These formulae will also motivate
+our choice of organizing the calculation in terms of the
+spectral densities Z(p)(ω0, ω2) and Z(p)
+l
+(ω0, ω2) and not
+in terms of the Y(i)(ω0, ω2).
+V.
+THE σ 7→0 ASYMPTOPTIC BEHAVIOUR
+In the previous two sections, in order to compute the to-
+tal rate and the lepton-energy moments on the lattice, we
+traded the compact ω0 phase-space integral for convolu-
+tions of the Z(p)(ω0, ω2) and Z(p)
+l
+(ω0, ω2) distributions
+with the smooth kernels Θ(p)
+σ (ωmax −ω0) and with the
+σ 7→0 limiting procedure. In order to understand how to
+perform numerically the required σ 7→0 extrapolations
+we now study the asymptotic behavior for small values
+of σ of the generic expression
+G(p)(σ) =
+Z ∞
+ωmin−ε
+dω0 Θ(p)
+σ (ωmax −ω0) Z(ω0)
+(51)
+in
+which
+G(p)(σ)
+can
+be
+either
+dΓ(p)(σ)/dω2
+or
+dM (p)
+l
+(σ)/dω2 and, correspondingly, Z(ω0) can be ei-
+ther Z(p)(ω0, ω2) or Z(p)
+l
+(ω0, ω2) (see Eqs. (33), (41),
+and (45)).
+As we are now going to explain, the behavior of G(p)(σ)
+for small values of σ is governed by the behavior of
+the distribution Z(ω0) for ω0 in a neighborhood of
+ωmax.
+A rigorous mathematical analysis of the possi-

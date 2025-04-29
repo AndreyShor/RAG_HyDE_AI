@@ -1,0 +1,66 @@
+4
+|q0⟩
+|q1⟩
+|q2⟩
+|q3⟩
+|a0⟩
+RX(θ)
+|a1⟩
+RX(θ)
+(a) Logical RX rotations
+|a0⟩
+|a1⟩
+|a2⟩
+RZ(θ)
+|a3⟩
+RZ(θ)
+(b) Logical RZ rotations
+|q0⟩
+|q1⟩
+|q2⟩
+|q3⟩
+|a0⟩
+|a1⟩
+|a2⟩
+|a3⟩
+|a4⟩
+RY (θ)
+|a5⟩
+RY (θ)
+(c) Logical RY rotations
+FIG. 2. Logical rotation gates implemented with the [[4,2,2]] encoding: (a) logical RX(θ), (b) logical RZ(θ) and (c) logical
+RY (θ) rotations. In each subfigure, the physical qubits are denoted by |qi⟩and the ancilla qubits are denoted by |ai⟩.
+cal vibrations. These types of noise are usually modelled
+by their impact on qubits; namely, thermal relaxation,
+where energy in the qubits dissipates as a result of in-
+teraction with the thermal environment, and dephasing,
+where the relative phase between quantum states starts
+randomising due to external EM fields, slow environmen-
+tal changes or noise in the control systems. For these
+experiments, we do not consider errors associated with
+state preparation or measurement read-out.
+As stabiliser codes can only detect and correct combi-
+nations of X and Z errors, we only consider X, Y and
+Z errors for our noise models, in the form of probabilis-
+tic gate noise and depolarising noise. This means that
+our noise models are inherently unable to capture the
+full range of noise and errors that might arise in physical
+NISQ systems. However, since our aim is to evaluate the
+effectiveness of the [[4,2,2]] stabiliser code in improving
+training outcomes, we only need to simulate noise that
+the code is theoretically capable of detecting.
+We implement the gate noise model with single-qubit
+“error” gates applied after each single-qubit gate, where
+there is a probability (or Pauli Error Rate), given by p
+(with 0 < p < 1), of either an X, Y or Z error occurring,
+and a 1−p chance of no error occurring. Additionally, we
+apply each single-qubit error gate after each 2-qubit gate,
+on the same qubits targeted by the 2-qubit gates. We also
+alter the Pauli Error Rate for 2-qubit gates so that it is
+double the error rate used for single-qubit gates, in order
+to better model the increased error rate for multi-qubit
+gates compared to single-qubit gates.
+Our environmental noise model is a highly simplified
+model that again consists of X,Y and Z errors. We inject
+Pauli errors into the system at regular intervals through-
+out the circuit, to each physical and ancilla qubit at the

@@ -1,0 +1,169 @@
+7
+and
+z(s) =
+
+
+z(s)
+k
+z(s)
+k−1
+...
+z(s)
+0
+
+
+∈Cn(k+1),
+eys :=
+
+
+bx((s−1)h)
+√k+1
+0
+...
+0
+−d1hb
+
+
+∈Cn(k+1),
+e1 :=
+
+
+(−1)k+1
+(−1)k
+...
+−1
+
+∈Rk+1.
+(21)
+Finally, we combine m steps in the procedure Eq. (10) together and obtain the entire linear system
+
+
+Wk(Ah)
+eT
+Wk(Ah)
+...
+...
+eT
+Wk(Ah)
+e1T ⊗In
+√k+1
+In
+√k+1
+−In
+In
+...
+...
+−In In
+
+
+|
+{z
+}
+=: Lm,k,p(Ah)
+
+
+z(1)
+z(2)
+...
+z(m)
+bx
+bx
+...
+bx
+
+
+=
+
+
+ey1
+ey0
+...
+ey0
+0
+0
+...
+0
+
+
+m blocks
+
+
+
+
+
+
+
+p blocks
+
+
+
+
+
+
+
+(22)
+where the vector bx is repeated p times to boost the success probability, and
+eT :=
+
+e1e1T 
+⊗In
+√
+k + 1
+,
+e1 :=
+
+
+1
+0
+...
+0
+
+∈Rk+1,
+ey1 :=
+
+
+x(0)
+√k+1
+0
+...
+0
+−d1hb
+
+
+∈Cn(k+1),
+ey0 :=
+
+
+0
+0
+...
+0
+−d1hb
+
+
+∈Cn(k+1).
+(23)
+In the following discussion, we use Lm,k,p(Ah) to refer to the coefficient matrix in the linear system given
+by Eq. (22). It is important to note that Lm,k,p(Ah) and Cm,k,p(Ah), as defined in Eq. (6), share the same
+block structure and block size.
+B.
+Upper bounds of condition number
+In this section, we provide upper bounds for the condition number of Lm,k,p(Ah), under the assumption
+that either A is Hermitian and negative semi-definite, or ∥Ah∥2 ≤1. The key step is to derive an upper
+bound for the inverse of Wk(Ah). The proofs of the relevant lemmas are provided in Appendices A 2 and
+A 3. To simplicity, we drop h in Wk(Ah) in these lemmas.
+Lemma III.3. The matrix Wk(A) is non-singular if and only if Dkk(A) is non-singular.
+Lemma III.4. Suppose A ∈Cn×n is Hermitian and negative semi-definite, then
+Wk(A)−1
+2 ≤
+p
+(k + 1)(4 log(k + 1) + 1).
+(24)
+Lemma III.5. Suppose A ∈Cn×n satisfies ∥A∥2 ≤1, then
+Wk(A)−1
+2 ≤2√e
+3 −e
+p
+(k + 1)(4 log(k + 1) + 1).
+Using the above lemmas, we derive upper bounds for the inverse and the condition number of Lm,k,p(Ah)
+in the following theorem, whose proof is given in Appendix A 4.

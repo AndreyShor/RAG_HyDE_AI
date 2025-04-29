@@ -1,0 +1,141 @@
+The impulse response of the LTSI system Σ is the
+operator-valued map G : R+ →B(U, Y) given by
+G(t) = C exp A(t)B.
+(14)
+The output of Σ is given by the convolution
+y(t) =
+Z t
+−∞
+G(t −τ)u(τ) dτ,
+(15)
+where we have assumed that z(−∞) = 0, i.e., the system is
+initially at rest. Since A, B and C are translation-invariant,
+their Fourier transforms
+ˆ
+A,
+ˆB and ˆC are multiplication
+operators with symbols
+ˆA,
+ˆB and ˆC. Consequently, the
+Fourier transform of (13) yields the family of LTI systems
+ˆΣω :
+
+
+
+d
+dt ˆzω(t) = ˆAωˆzω(t) + ˆBωˆuω(t),
+ˆyω(t) = ˆCωˆzω(t),
+(16)
+parametrized by the frequency variable ω ∈Rs. The Fourier
+transform ˆG(t) of G(t) is a multiplication operator with
+symbol ˆg(t) given by ˆgω(t) = ˆCωe ˆ
+Aωt ˆBω, where ˆgω is the
+impulse response of the LTI system ˆΣω. We assume that
+the symbols ˆA, ˆB and ˆC are continuous, so that ˆg(t) is
+continuous for all t ∈R+.
+The fact that an LTSI system can be viewed as a family
+of LTI systems greatly simpliﬁes its analysis. Indeed, many
+system theoretic properties of Σ can be veriﬁed pointwise
+by verifying the analogous property for all ˆΣω, ω ∈Rs, see,
+e.g., [16], [17]. This will be the overarching theme in this
+paper. With this in mind, as a natural generalization of the
+deﬁnition of relaxation for LTI systems, we deﬁne relaxation
+for LTSI systems as follows.
+Deﬁnition 1: The LTSI system Σ is of relaxation type if
+U = Y and the impulse response G is completely monotone.
+The impulse response G is completely monotone if its k-th
+strong derivative satisﬁes
+(−1)k dk
+dtk G(t) ≥0
+(17)
+for all t > 0 and k ∈R+. Since the Fourier transform
+is unitary, completely monotonicity of G is equivalent to
+complete monotonicity of ˆG. The latter is a multiplication
+operator, hence its properties can be inferred from its symbol,
+i.e., the impulse responses ˆgω, ω ∈Rs. Consequently,
+relaxation can be veriﬁed pointwise, as shown below.
+Theorem 1: The LTSI system Σ is of relaxation type if
+and only if the LTI system ˆΣω is of relaxation type for all
+ω ∈Rs.
+Proof: As shown in [15, Theorem 2.1.13], the semi-
+group exp(At) is strongly differentiable and the k-th strong
+derivative is given by exp(At)Ak for all t > 0 on the dense
+domain D(Ak) ⊂Z . Therefore, the impulse response G(t)
+is strongly differentiable with k-th strong derivative given by
+dk
+dtk G(t) = C exp(At)AkB
+(18)
+The Fourier transform of the latter is a multiplication oper-
+ator ˆGk(t) with continuous symbol ˆgk(t) given by
+ˆgk
+ω(t) = dk
+dtk ˆgω(t) = ˆCωe
+ˆ
+Aωt ˆAk
+ω ˆBω
+(19)
+Therefore, (−1)k ˆGk(t) ≥0 if and only if (−1)kˆgk
+ω(t) ≥0
+for all ω ∈Rs. Moreover, since the Fourier transform is
+unitary, (−1)k ˆGk(t) ≥0 if and only if (17) holds. Combining
+the latter two statements, it follows that G(t) is completely
+monotone if and only if ˆgω is completely monotone for all
+ω ∈Rs, which concludes the proof.
+Recall that LTI relaxation systems have state-space real-
+izations that are internally of relaxation type [14]. This is
+not necessarily true for LTSI relaxation systems, mainly due
+to the technical assumptions on the operators that deﬁne
+an LTSI system, see Remark 1. Whenever necessary, we
+avoid this issue by simply assuming that Σ is internally of
+relaxation type, deﬁned below.
+Deﬁnition 2: The LTSI system Σ is internally of relax-
+ation type if A ≤0 and B = C∗.
+Analogously to Theorem 1, we obtain the following char-
+acterization of internal relaxation.
+Theorem 2: The LTSI system Σ is internally of relaxation
+type if and only if the LTI system ˆΣω is internally of
+relaxation type for all ω ∈Rs.
+Proof: Since the Fourier transform is unitary, A ≤0
+and B = C∗if and only if ˆ
+A ≤0 and ˆB = ˆC∗. Since the
+symbols ˆA, ˆB, and ˆC of the multiplication operators ˆ
+A, ˆB
+and ˆC are continuous, ˆ
+A ≤0 and ˆB = ˆC∗if and only if
+ˆAω ≤0 and ˆBω = ˆC∗
+ω for all ω ∈Rs.
+We now go back to the diffusion equation as an example,
+after which we conclude this section with a couple of
+remarks.
+Example 1: As expected, diffusion is an example of LTSI
+relaxation. Indeed, note that the diffusion equation (2) is an
+LTSI system of the form (13) with A = α ∂2
+∂x2 and C = B
+given by the identity operator. We have already seen that the
+impulse response (6) is completely monotone for all ω ∈Rs,
+hence the diffusion equation is an LTSI system of relaxation
+type due to Theorem 1. Furthermore, it is well-known that
+the second-order differential operator
+∂2
+∂x2 is self-adjoint and
+nonpositive, hence the diffusion equation is an example of
+an LTSI system that is internally of relaxation type.
+Remark 1: It is easily seen that internal relaxation implies
+relaxation. For the converse, suppose that the LTSI system
+Σ is of relaxation type, hence, due to Theorem 1, the LTI
+system ˆΣω is of relaxation type for all ω ∈Rs. This means
+that ˆΣω has a state-space realization that is internally of
+relaxation type, i.e., ˆgω(t) = ¯B∗
+ωe ¯
+Aωt ¯Bω, where ¯Aω ≤0.
+Using this, we can deﬁne ¯
+A and ¯B as the translation-invariant
+operators whose Fourier transforms are the multiplicative
+operators with symbols ¯A and ¯B. Then, we can write G(t) =
+¯B∗exp( ¯
+At) ¯B so that G can be seen as the impulse response
+of an LTSI system that is internally of relaxation type. The
+issue here is that ¯
+A is not guaranteed to be the inﬁnitesimal
+generator of a C0-semigroup, and ¯B is not guaranteed to
+be bounded. Nevertheless, examples where these conditions

@@ -1,0 +1,85 @@
+and, except for the initial datum µ0, this equation involves only µt(x, θ, s = 0, h), that is, the probability density of
+the particles which collide at time t.
+The first contribution ˜µ0 can be understood again as the probability density of the particles whose first collision
+occurs at time t, while the second contribution F(µ)(t, x, θ, h) represents the probability density of the particles which
+have collided at least one time before time t.
+Therefore since F is a linear function of µ, we can formally write µt(x, θ, 0, h) as
+µt(x, θ, 0, h) = ˜µ0(x, θ, t, h) +
+∞
+X
+n=1
+Fn(˜µ0)(x, θ, t, h),
+where each term Fn(˜µ0)(x, θ, t, h) represents the probability density of the particles which have collided exactly n
+times before time t. Going back to (1.1.7), the advantage of such a representation is that it makes sense not only for
+regular initial data but for general L1 functions.
+In the previous equation four variables are involved: (x, θ, s, h), but by integrating µt with respect to x or (x, θ),
+one gets two new equations in the remaining variables.
+Averaging on the position x.
+By integrating µt with respect to x one gets
+
+∂µt
+∂t (θ, s, h) −∂µt
+∂s (θ, s, h) =
+R 1
+−1 dh′Q(s, h|h′)µt(θ + π −2 arcsin(h′), 0, h′)
+µt|t=0(θ, s, h) = µ0(θ, s, h)
+.
+(1.1.8)
+The same equation would appear by considering an initial datum which does not depend on x (of course this makes
+sense only for x ∈T2 and not for x ∈R2), that is, if µ0 does not depend on x, the same holds for µt at any time t. Of
+course, a solution of (1.1.8) admits also an alternative representation which does not include derivatives, that is,
+µt(θ, s, h) = µ0(θ, s + t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)µt′(θ + π −2 arcsin(h′), 0, h′), ,
+∀t ≥0,
+(1.1.9)
+with the same interpretation about the number of collision within time t as before.
+Averaging on both the position x and the velocity v(θ).
+Instead if one integrates both respect to x and to
+v, the final equation would be
+
+∂µt
+∂t (s, h) −∂µt
+∂s (s, h) =
+R 1
+−1 dh′Q(s, h|h′)µt(0, h′)
+µt|t=0(s, h) = µ0(s, h)
+,
+(1.1.10)
+also written for more general L1 initial data as
+µt(s, h) = µ0(s + t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)µt′(0, h′),
+∀t ≥0.
+(1.1.11)
+One can notice again that if the initial datum µ0 does not depend on x (or (x, θ)), neither does µt at any time t, and
+therefore the evolution of the probability density with respect to the remaining variables (s, h) is described by the
+equation (1.1.8) (respectively (1.1.10)). In [7, 14] it has been proven that the only equilibria states for the equation
+(1.1.10) in (s, h) are cE, for a constant c ∈R and E ∈L1([0, +∞) × [−1, 1]) introduced in Definition 1.2.
+Moreover, since we already observed that a generalized solution of the three kinetic equations above exists also for
+non regular initial data, we will use the following notation.
+Definition 1.3. A solution of equation (1.1.6) (respectively (1.1.8) and (1.1.10)) with initial datum µ0 ∈L1(T2 ×
+T1
+2π × [0, +∞) × [−1, 1]) or µ0 ∈L1(R2 × T1
+2π × [0, +∞) × [−1, 1]) (respectively µ0 ∈L1(T1
+2π × [0, +∞) × [−1, 1]) and
+µ0 ∈L1([0, +∞) × [−1, 1])) is a solution of (1.1.7) (respectively (1.1.9) and (1.1.11)).
+Further literature.
+Marklof-Strömbergsson [17] also provided asymptotic estimates (i.e., for s small and s large) for
+the kernel Q and the invariant measure E in any dimension d ≥2, and these bounds (relying on the explicit formulation
+of the transition kernel Q only in dimension d = 2) allowed to improve the estimates about the distribution of the
+free path length in (1.1.2). In [18] the authors also generalized these asymptotic estimates and the time evolution law
+(1.1.4) to the case of finite unions of lattices, while in [19] also the case of spherically symmetric finite-range potentials
+has been studied. Moreover Marklof-Tóth [20] proved a superdiffusive limit (with normalization factor √t log t instead
+of
+√
+t) for the continuous and discrete time displacement in any dimension d ≥2.
+5

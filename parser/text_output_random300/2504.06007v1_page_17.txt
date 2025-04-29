@@ -1,0 +1,116 @@
+CAMulator
+Open Science
+All figures in this manuscript can be reproduced using the scripts and notebooks available in the dedicated figure
+repository: CAMulator Figures GitHub.
+The CAMulator model itself is developed on the NSF NCAR CREDIT platform [Schreck et al., 2024] and is actively
+maintained. The specific branch used for climate simulations can be accessed here: NCAR CREDIT Climate Runs
+Branch.
+Appendix Material
+A
+Metric Calculations
+A.1
+Climatological RMSE
+The weighted annual climatological root mean squared error is calculated as:
+RMSE(ti, tl) =
+v
+u
+u
+t
+1
+NϕNλ
+Nϕ
+X
+i=1
+Nλ
+X
+j=1
+
+w(i)
+h
+CAM6(i, j) −CAMulator(i, j)
+i2
+(1)
+Where Nϕ and Nλ are the number of latitude (ϕ) and longitude (λ) grid cells, respectively. w (i) = cos(ϕi) is the
+latitude weighting coefficient, which is normalized such that P
+i w(i) = 1, the over bar indicates that each field was
+first averaged in time over the 30 year simulation run. Table A.1 shows the RMSE calculated for each single level
+variable.
+Short Name
+Long Name
+Units
+Globally Averaged RMSE
+PRECT
+Precipitation Rate
+mm/day
+0.5766
+CLDTOT
+Total Cloud Cover
+fraction
+0.0402
+CLDHGH
+High Cloud Cover
+fraction
+0.0391
+CLDLOW
+Low Cloud Cover
+fraction
+0.0340
+CLDMED
+Medium Cloud Cover
+fraction
+0.0296
+TAUX
+Zonal Wind Stress
+N/m²
+0.0110
+TAUY
+Meridional Wind Stress
+N/m²
+0.0055
+U10
+10m Wind Speed
+m/s
+0.3062
+QFLX
+Surface Moisture Flux
+kg/m²/s
+0.0474
+FSNS
+Net Solar Flux at Surface
+W/m²
+6.4269
+FLNS
+Net Longwave Flux at Surface
+W/m²
+2.6681
+FSNT
+Net Solar Flux at TOA
+W/m²
+5.8499
+FLNT
+Net Longwave Flux at TOA
+W/m²
+3.9247
+SHFLX
+Sensible Heat Flux
+W/m²
+2.1538
+LHFLX
+Latent Heat Flux
+W/m²
+5.4987
+Table 2: Spatial Root Mean Square Errors (RMSE) for climate variables, including their names, descriptions, and
+measurement units. The RMSE values represent the deviation of CAMulator’s 30-year climatological mean from the
+climatology of the base CAM6 simulation.
+A.2
+Atmospheric Heat Capacity
+The atmospheric heat capacity is calculated by integrated temperature in the vertical and taking a cosine-latitude
+weighted sum.
+Cp
+g
+Z P0
+P1
+T dP
+(2)
+Where Cp is the dry air specific heat capacity and is set to 1004 [Jkg−1K]−1
+17

@@ -1,0 +1,25 @@
+The New Frontier: Meso-scale All-atom Simulations
+Orb-v3’s most obvious application is replacing DFT in conventional workflows with a more
+efficient method with comparable accuracy and lower memory requirements. However, this
+merely enhances rather than transforms our simulation capabilities.
+Far more exciting is the possibility of applying Orb-v3 to study systems that have previously
+been impossible to simulate accurately due to the large number of atoms involved and the lack of
+existing accurately parameterized empirical forcefields [24]. Orb-v3 opens a new frontier where
+quantum mechanical accuracy can be maintained while exploring emergent phenomena arising
+from the collective behavior of thousands of atoms, such as crystal nucleation and growth
+[46], self-assembly of complex nanostructures such as metal organic frameworks [39], or phase
+diagrams of complex alloys [35].
+For example, in concurrent work [38], we have demonstrated the potential to study such mesoscale
+systems by simulating the carbonic anhydrase II enzyme. Using orb-v3-direct-inf-omat
+we simulate this enzyme under fully solvated conditions with no physical constraints using
+Langevin dynamics at 300 K. (See Figure 5). Despite being extremely out-of-distribution, and
+containing over 20,000 atoms, we do not observe unphysical behavior and the structure remains
+close to the original PDB structure throughout.
+While additional validation work remains to be done, the fact that Orb-v3 can provide long,
+stable simulations of a system so far outside the training data distribution is a strong indicator
+of the generality and potential of this new tool.
+Figure 5:
+Stable simulation of the Carbonic Anhydrase enzyme II system using
+orb-v3-direct-inf-omat for over 700 ps. The enzyme is depicted as its amino acid rep-
+resentation for visual clarity, but simulations use the full all-atom representation.
+10

@@ -1,0 +1,20 @@
+Figure A8: Visualization of activation functions: Top row (left to right): Sigmoid and
+Tanh. Bottom row (left to right): ReLU and Leaky ReLU.
+• Random Initialization: The weights are initialized randomly to break the sym-
+metry between the neurons, ensuring that different nodes learn different features.
+Without random initialization, all neurons in a layer would compute identical out-
+puts and gradients, rendering the network ineffective.
+• Scaling Weights: The weight values must be scaled appropriately based on the
+activation function used. For example:
+– For sigmoid and tanh functions, smaller weights (e.g., scaled by 0.01) help
+prevent activations from saturating, which can lead to vanishing gradients.
+– For ReLU activation functions, Xavier or He initialization is commonly used
+to maintain stable gradient magnitudes throughout the network.
+• Bias Initialization: Bias terms can typically be initialized to zero without causing
+symmetry issues as long as the weights are initialized randomly.
+By combining appropriate activation functions and careful initialization techniques,
+neural networks can effectively learn from data while avoiding common pitfalls, such as
+vanishing gradients or dead neurons. In this methodology, weight initialization has been
+implemented using the default strategy provided by TensorFlow/Keras. Specifically, for
+most layers, Keras applies the Glorot Uniform (Xavier Uniform) initializer for the weights
+58

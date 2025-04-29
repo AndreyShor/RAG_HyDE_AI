@@ -1,0 +1,43 @@
+3.3
+Probabilistic
+All triviality results presented thus far concern deterministic multipartite
+functions. Brassard et al. [5] found that this still applies when considering
+probabilistic multipartite computation.
+Theorem 7. In a world in which noisy non-local boxes which succeed more
+than 3+
+√
+6
+6
+≈90.8% exist, all probabilistic functions can be distributively com-
+puted.
+This lets us deﬁne the set of boxes that trivialize communication com-
+plexity.
+Corollary 2. Let Bcc = 4
+p
+2/3 ≈3.266, then all boxes P such that CHSH(P) >
+Bcc trivialize communication complexity.
+The CHSH value of a symmetric non-local box with probability of success
+3+
+√
+6
+6
+is 4
+p
+2/3 and using the depolarization protocol described in section 2.1,
+all boxes above CHSH value Bcc trivialize communication complexity.
+4
+Non-local Games
+All the results of this section are due to Cleve et al.[10], except for the ones
+of section 4.3. Those last are from Linden et al. [17].
+When playing a non-local game, Alice and Bob are space-like separated
+but allowed to share randomness. They are, however, allowed to elaborate a
+strategy beforehand. Alice and Bob respectively receive x ∈X and y ∈Y
+picked at random according to the probability distribution π. They must
+respectively output a ∈A and b ∈B. They win if V (a, b, x, y) = 1.
+Deﬁnition 9. A non-local game G = (X ×Y, A×B, π, V ) consists of a set of
+inputs X ×Y , a set of outputs A×B, a probability distribution π : X ×Y →
+[0, 1] and a predicate V : X × Y × A × B →{0, 1}.
+Next is deﬁned the best probability with which Alice and Bob can win a
+game when they are restricted to classical strategies, i.e., strategies that do
+not make use of non-locality.
+9

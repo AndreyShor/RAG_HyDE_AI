@@ -1,0 +1,78 @@
+During each pass scene (step 2), motion of the players and the ball is described by the system of ordinary
+differential equations (ODEs). That is, the state vector during the n-th pass scene ⃗un(tn), which consists of
+positions ⃗xj and velocities ⃗vj of agent j, evolves according to the following ODE system:
+T d⃗xB
+dtn
+=⃗dn
+B −⃗sn
+B,
+(1a)
+T d⃗xR
+dtn
+=⃗dn
+B −⃗sn
+R,
+(1b)
+τ d⃗xD
+dtn
+=
+h
+ζn ⃗dD,chase(tn) + (1 −ζn)⃗dD,wait(tn)
+i
+−⃗xD,
+(1c)
+and for i ∈{P, M},
+d⃗xi
+dtn
+=⃗vi,
+(1d)
+m d⃗vi
+dtn
+=⃗F return(⃗xi) + ⃗F viscous(⃗xi,⃗vi) + ⃗G(tn, ⃗un; ⃗θ,⃗λn),
+(1e)
+where tn ∈[0, T] denotes time within the n-th pass scene, ⃗sn
+B and ⃗sn
+R are the starting position of the ball and
+Receiver respectively, ⃗dn
+B is the destination of the ball, ζn ∈{0, 1} is an indicator of DF’s motion mode (either
+‘chase’ or ‘wait’), and ⃗dD,mode(tn) determines the velocity of DF at time tn according to its motion mode. Model
+parameters including T, τ and m are described in table 1. The dynamics of Passer and Mover [eqs. (1d) and
+(1e)] involve social forces ⃗F return(⃗xi), ⃗F viscous(⃗xi,⃗vi) and ⃗G(tn, ⃗un; ⃗θ,⃗λn). The returning force ⃗F return and the
+viscous force ⃗F viscous constitute the confinement mechanism to keep players inside the court. The remaining
+part ⃗G expresses hypotheses about players’ behaviour and interactions. For conciseness, we also denote the
+ODE system (1) as d⃗un/dtn = ⃗f(tn, un; ⃗θ,⃗λn). We highlight that ⃗f takes two types of parameters: constant
+model parameters ⃗θ and pass-specific parameters ⃗λn. The vector of model parameters ⃗θ, which includes T, τ
+and m, is constant throughout a game. In contrast, parameters in ⃗λn, such as ⃗sn
+B, ⃗dn
+B and ζn, may assume
+different values across pass scenes.
+Numerical integration of the ODE system [eq. (1)] in step 2 generates a time series of ⃗un(tn) for tn ∈[0, T].
+In step 3, termination conditions are checked, and the simulation is stopped if one of the conditions has been
+satisfied during the last pass scene. A game ends in one of three situations: DF intercepts the ball, the ball
+goes out of the court, or the maximum number of passes, which is 20, is reached. When no condition is fulfilled,
+the transition to the next pass scene takes place (step 4). Pass-specific parameters of the (n + 1)-th pass scene,
+such as the destination of the ball ⃗dn+1
+B
+and the DF’s motion mode ζn+1, are determined stochastically based on
+the state ⃗un and parameters ⃗λn of the n-th, i.e. preceding, pass scene. The initial condition for the (n + 1)-th
+pass scene also stochastically depends on the preceding pass scene. These steps from 2 to 4 are repeated until
+one of the termination conditions is satisfied. We refer readers to ‘Details on the dynamical model’ in Methods
+section for details on the model.
+Plausibility of the model
+To examine the plausibility of the model, we conducted a large number of simulations and compared their
+results with the empirical data. We sampled 15, 000 sets of parameter values randomly, and simulated 500
+games for each set of parameter values. As in the experiments, for each game, the temporal average of OF area
+was calculated to characterise the motion of the offensive team, and the number of successful passes was also
+recorded to measure the team performance. Their ensemble averages over 500 trials are depicted as black points
+in Fig. 3. We refer readers to ‘Generating simulated dataset’ in Methods section for details on data generation.
+The red and blue cross markers in the figure denote the empirical values of the high- and low-level teams. The
+simulation results covered the empirical values in terms of both the number of passes and the average OF area.
+Therefore, we argue that the simulation results suggest the plausibility of our model in terms of both the motion
+and the performance of a team. It is worth mentioning that not only the quantities measured here but also
+the dynamics during a simulated game (Supplementary Videos S1, S2, S3, and S4) visually resembled empirical
+tracking data (Supplementary Video S5).
+Effects of model parameters on the number of passes
+Taking advantage of the modelling approach, we examined determinants of strong performance, namely the
+larger number of passes, in our model. To analyse the influence of each model parameter on the number of
+passes, we conducted sensitivity analysis using the dataset visualised in Fig. 3. To be precise, we performed
+7

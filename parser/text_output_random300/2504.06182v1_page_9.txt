@@ -1,0 +1,125 @@
+9
+configurations to be centered within the grid, meaning
+the target configuration must form a subgrid centered in-
+side the input grid. We call it the bird algorithm because
+compared to the red-rec algorithm which locally inspects
+columns in pairs, the bird algorithm has a bird’s-eye view
+of the grid for redistributing atoms.
+Algorithm 2 – The bird algorithm
+Require: A grid graph, G = (V, E), representing a static
+trap array; an initial configuration of atoms represented
+as a set of source vertices, S ⊆V (G); and a target con-
+figuration of atoms represented as a set of target vertices,
+T ⊆V (G) (|S| ≥|T|).
+1: Compute the surplus for each column Ci, 0 ≤i < W,
+where surplus is σi = |S ∩V (Ci)| −|T ∩V (Ci)|;
+2: Solve columns with non-negative surplus using the exact
+1D algorithm;
+3: Let C be the leftmost column with negative surplus (∅if
+none exist);
+4: while C ̸= ∅do
+5:
+Build the generalized 1D problem instance;
+6:
+Identify the best atoms (and moves) to fill the target
+7:
+region of C using the generalized exact 1D algorithm;
+8:
+Execute the moves;
+9:
+Set C to leftmost unsolved column (∅if none exist);
+Similar to the red-rec algorithm, the bird algorithm
+starts by computing the surplus of each column, which
+can be zero, negative, or positive.
+Any column with
+a positive or zero surplus is deemed self-sufficient and
+is solved using the exact 1D algorithm (see Sec. III A).
+The moves required for each column are then saved and
+executed to modify the current input instance.
+Once
+there are no more unsolved columns with a positive or
+zero surplus, the bird algorithm focuses on the remain-
+ing columns with negative surplus. The key difference
+between the red-rec algorithm and the bird algorithm is
+in how these negative-surplus columns are handled.
+Drawback of the red-rec algorithm.
+The red-rec
+algorithm requires a receiver column to use all surplus
+tokens present in a donor column before receiving tokens
+from another donor column. This requirement to exhaust
+surplus tokens in a column before using other tokens may
+result in moving distant tokens when there are better
+options available.
+For example, consider a case where
+a column C1 has two missing tokens, and is near two
+columns C0 and C2, each having two surplus tokens, one
+near the target region and one far away another at the
+extremity of the reservoir region. In this case, the red-
+rec algorithm will match C1 with either C0 or C2, which
+results in moving one nearby token and one distant token.
+However, it is clearly more efficient for C1 to receive one
+nearby token from C0 and one nearby token from C2.
+Handling negative surplus columns with the
+bird algorithm.
+To address this drawback, the bird al-
+gorithm adopts a many-to-one strategy while solving neg-
+ative surplus columns instead of the one-to-one pairing
+strategy of red-rec. That is, when solving a column, the
+bird algorithm considers tokens in all the other columns
+at once, not just a single column.
+It does so by con-
+verting the many-to-one redistribution problem to a 1D
+problem where multiple tokens can occupy a single ver-
+tex. In other words, tokens that are in different columns
+and have the same distance to the target region of the col-
+umn being solved are logically treated as occupying the
+same vertex of that column. The tokens do not physically
+occupy the same vertex, but rather, it is only a logical
+mapping for the purpose of formulating the problem in
+1D. We solve this problem with our generalized exact 1D
+algorithm, which identifies the best tokens to move in
+our 1D array. We then map these tokens back to their
+original positions, determine their locations in the grid,
+and execute the moves.
+More specifically, we map tokens in different columns
+to the column being solved as follows. Assume that the
+algorithm is currently solving column C. Since our tar-
+get area is centered, a token in the reservoir region of
+column C′ ̸= C can be represented in any other column,
+with its location determined based on the distance be-
+tween C and C′, which we denote by dist(C, C′). That is,
+assuming that vertices in a column are indexed from top
+to bottom starting from 0, a token at vertex h in C will
+be equivalent (in terms of distance with respect to C’s
+target region) to an atom at vertex h + dist(C, C′) if it is
+in the top reservoir of C′, or h −dist(C, C′) if it is in the
+bottom reservoir of C′. This follows from the fact that the
+shortest distance to the target region is the Manhattan
+distance, since we need to cover the horizontal and the
+vertical distances. It follows that tokens in a downward
+diagonal originating from a vertex in the top reservoir
+of a column C are all equivalent and will hold the same
+position on that specific vertex (in the generalized 1D
+instance). Similarly, tokens in an upward diagonal origi-
+nating from a vertex in the bottom reservoir of a column
+C are all equivalent and will hold the same position on
+that vertex. If a token is picked from a vertex with sev-
+eral tokens, we use the token from the closest possible
+column as we are solving columns from left to right. As
+such, we guarantee that tokens moving from one column
+to another will not encounter any obstructions, as any
+token along the way will be closer to the specific trap we
+are looking to fill and would have been chosen instead.
+Complexity.
+Similarly to red-rec, running the (gen-
+eralized) exact 1D algorithm on a column of the grid
+requires O(√n · √n) = O(n)-time to solve the problem
+in the worst case. Hence, if all columns start with non-
+negative surplus, the bird algorithm solves the instance
+and produces the output in O(n√n)-time in the worst
+case. Since every iteration of the main loop reduces the
+number of unsolved columns by one, we can bound the
+number of iterations by the number of columns, i.e., √n.
+Every iteration consists of a grid traversal (O(n)-time),
+followed by the construction of a (generalized) exact 1D
+instance (O(n)-time), and concluded by a call to the gen-

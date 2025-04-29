@@ -1,0 +1,46 @@
+2
+Preliminaries
+Let n ∈N. We deﬁne [n] = {1, . . . , n} and for s = s1s2 · · · sn ∈{0, 1}n, we let wt(s) denote the
+Hamming weight of s, and ⊕s ∈{0, 1} the parity of s.
+wt(s) =
+n
+X
+k=1
+si
+⊕s = wt(s) mod 2
+In a slight abuse of notation, we use s also to denote the natural number in [0, 1, . . . , 2n −1]
+represented by s in binary. (The correct interpretation will be clear from the context.) The binary
+string of length n of all 1’s is denoted by 1n. If the length is clear from the context, we sometimes
+write just 1.
+Notation 2.1. Let n = n1 + n2.
+For binary strings s1 ∈{0, 1}n1 and s2 ∈{0, 1}n2, we let
+s = s1 ◦s2 ∈{0, 1}n be the concatenation of s1 with s2.
+2.1
+Algebraic Preliminaries
+For a ﬁeld F and variables x = (x1, x2, . . . , xn), let F[x] denote the ring of n-variate polynomials
+over F. For f ∈F[x], an assigment a = (a1, a2 . . . , an) ∈Fn, and a subset I ⊆[n], we deﬁne f|xI=a
+as the polynomial obtained from f by substituting ai for xi, for each i ∈I. Hence, f|xI=a is a
+polynomial in variables xj, for j ∈I = [n] \ I.
+We say that f ∈F[x] depends on variable xi, if there exists a ∈Fn such that f|x[n]\{i}=a is
+non-constant. Note that f|x[n]\{i}=a is univariate in variable xi. All variables that f depends on
+are denoted as var(f),
+var(f) = { i ∈[n] | f depends on xi } .
+An assignment a ∈Fn that witnesses that f depends on all variables in var(f) simultaneously is
+called a justifying assignment for f.
+Deﬁnition 2.2 (Justifying assignment). For f ∈F[x], a justifying assignment for f is an a ∈Fn
+such that fx[n]\{i}=a depends on xi, for all i ∈var(f).
+For ﬁxed f ∈F[x], justifying assignments are known to exist provided F is big enough [SV10],
+in particular in inﬁnite ﬁelds.
+Deﬁnition 2.3. A polynomial f ∈F[x] is decomposable if there exist nonconstant polynomials g, h
+over disjoint sets of variables such that f = gh. Otherwise f is indecomposable.
+Every polynomial f ∈F[x] factors uniquely (up to order and multiplication by nonzero elements
+of F) into indecomposable factors over pairwise disjoint sets of variables. Since the factorization
+of a polynomial is unique (up to the order of the factors), the same holds for the decomposition.
+Irreducibility implies indecomposability. The reverse implication holds for multilinear4 polynomials.
+Univariate polynomials are always indecomposable.
+A decomposition of f ∈F[x] induces a variable-partition of var(f) by the factors, where the sets
+correspond to the variables occurring in the indecomposable factors of f. Note that the partition
+is unique. By convention, we extend this partition to a partition of [n] by letting {i} be an element
+of the partition for all i ∈[n] \ var(f).
+4By “multilinear” we mean that each variable has degree at most 1.
+4

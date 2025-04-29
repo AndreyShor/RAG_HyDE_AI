@@ -1,0 +1,137 @@
+PAGIONO
+An ionospheric activity index
+Dr.Paul.Kinsler@physics.org
+width parameters, each with an amplitude weight, being for
+the one (double-sided) gaussian, and two one-sided exponen-
+tials. We then evaluate the combined weight using WdT and
+compute our logarithmic index as follows:
+LdT = 2 log2 (40WdT).
+(14)
+Here the factor of 40 inside the log sets our baseline width at
+0.025 to give an index of zero, and the multiplier 2 means that
+increments of 2 imply a doubling of WdT. The range spanned
+by the LdT index depends on the slice of data for which LdT
+is being evaluated. For a one hour slice based on one mag-
+netic latitude zone and all-longitudes, the typical variation is
+between 2 for ordinary quiet conditions, and 6 for with signif-
+icant activity; however for smaller slices (e.g. restricting to a
+single 30 degree longitude dodecant) the variation is greater
+– the lower value can drop below zero, and the highest value
+might exceed 8.
+To indicate both the typical level of activity as well as report
+on its extremes, we divide the dodecant set of longitude slices
+(and their computed LdT values) up into three parts We:
+(a) estimate a maximum by averaging the two largest LdT val-
+ues in the set,
+(b) estimate a minimum by averaging the two smallest LdT
+values in the set,
+(c) estimate a midpoint by averaging the remainder of the LdT
+values, i.e. the middle eight values.
+The result is that we can report the presence of large-scale
+irregularities forming in the ionosphere in some latitude band
+in terms of both a typical value (the average of the non-
+extreme values) and its likely maximum excursions. Note that
+if all dodecants fail to return a valid LdT, we simply use fewer
+values for the midpoint average; this eventuality is most com-
+mon in southern polar latitudes due to the sparse distribution
+of ground stations.
+On Figs. 6 and 8 we can see how this LdT index varies over
+time hour-by-hour, and how it varies between longitude dode-
+cants for high and low magnetic latitudes. Note that although
+plotted using this logarithmic index, these figures would, at a
+glance, look rather similar if the WdT width measure had been
+plotted instead.
+For the quiet day result shown on Fig. 6, notice that the
+variation in all “remainder” averaged LdT’s is only a factor
+of about two, and have a maximum LdT of about four; and
+that the spread between maximum/minimum markers is usu-
+ally relatively contained. Notwithstanding this general quiet
+behaviour, we can still see some outliers where LdT was high,
+notably at southern high latitudes (2s). The low activity levels
+seen on the map Fig. 7 generated for 11:00UTC on doy 006
+are in agreement with the LdT measures on Fig. 6. Of course,
+more detail could be brought out by altering the colour scale,
+but we retain our default so that this map can be compared
+directly to those with strong activity shown later in Fig. 9
+In stark contrast to those quiet day results, for the April
+2023 active days shown on Fig. 8, notice that on day 114, even
+the average (“remainder”) LdT for high northern latitudes (2n)
+decreases from about 8 down to 2, at high southern latitudes
+(2s) the trend is noisier but nevertheless varies from 10 down
+to 4 – i.e. both by a factor of about eight (23); whereas the
+change at equatorial latitudes is much smaller (about 2). Fur-
+ther, the maximum/minimum markers indicate considerable
+6.00
+6.25
+6.50
+6.75
+7.00
+7.25
+7.50
+7.75
+doy + H/24
+0
+5
+10
+LdT
+(2n)
+6.00
+6.25
+6.50
+6.75
+7.00
+7.25
+7.50
+7.75
+doy + H/24
+0
+5
+10
+LdT
+(0)
+6.00
+6.25
+6.50
+6.75
+7.00
+7.25
+7.50
+7.75
+doy + H/24
+0
+5
+10
+LdT
+(2s)
+FIG. 6.
+Log scale index LdT for our chosen quiet days in 2022
+006/007; showing variation by time (UT) and longitude dodecant
+for high northern magnetic latitudes (2n), low latitudes (0), and high
+southern magnetic latitudes (2s). Here we indicate the range in LdT
+activity by dividing the dodecant LdT widths up into three, the two
+maximum (averaged to give points ⋏), the two minimum (averaged
+to give points ⋎), and the remaining eight widths (averaged to give
+points •).
+FIG. 7.
+Sample map showing moderated dTEC variances accu-
+mulated over a not-untypical hour (11:00UTC) from the quiet day
+2022/006, and binned into staggered 5x5 degree pixels. Dark blue
+areas indicate no data, the darkest (near-black) regions indicate the
+smallest dTEC standard deviations σ, ranging through to white for
+dTEC σ > 1. Note that isolated bright white squares that sometimes
+appear on these automatically generated maps are typically due to
+difficult to filter data or processing artifacts.
+variation between different longitude dodecants. In Fig. 7 we
+show geographical activity maps timed at the apparent north-
+ern polar peak (21:00UTC doy 113) and then in its trailing dip
+at 03:00 on doy 115; these both show the widespread extent
+of GNSS-effective activity during those storms.
+However, although on Fig. 8 there looks to be a remarkable
+match between variation of KP and the LdT for high northern
+latitudes (2n), note that here KP does not provide a good in-
+dicator in other latitude bands – not even for high southern
+latitudes. Further, on Fig. 10 we show a similar comparison
+using recent data for the May 2024 storm, and in this case –
+as shown at at high northern latitudes – we can see that KP
+seems less convincing as a proxy for the GNSS-effective ac-
+10

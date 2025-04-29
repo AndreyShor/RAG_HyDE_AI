@@ -1,0 +1,82 @@
+Proof of Proposition 6.1
+66
+(1) It holds that
+sup
+z∈R
+h(z) < ∞
+and
+h(z) = O(ez)
+as z →−∞.
+(2) For any z ∈R and g ∈C(Rd) it holds that
+Fλ
+A,L,b(z, g) ≤h(z)F∗(g) .
+(3) There exists c > 0 such that for any δ ∈(0, 1) and g ∈C(Rd) satisfying
+sup
+x,y∈Rd, |x−y|≤ebδ
+|g(x) −g(y)| ≤1/4 ,
+it holds that
+F∗(g) ≤cδ−10 .
+(4) There exists c > 0 such that for any g1, g2 ∈C(Rd) satisfying
+∥g1 −g2∥∞
+def= sup
+x∈Rd|g1(x) −g2(x)| ≤1/8 ,
+it holds that
+|Fλ
+A,L,b(z, g1) −Fλ
+A,L,b(z, g2)| ≤c∥g1 −g2∥1/8
+∞h(z)F∗(g1) .
+Proof. The proof can be found in Appendix B.
+We are now in position to conclude the proof of Lemma 7.2, which as we see below follows by
+[Mad15, Theorem 5.6].
+Proof of Lemma 7.2. Thanks to Lemma 7.10, we have that for any λ > 0 and A, L, b ≥0, the
+function Fλ
+A,L,b : R × C(Rd) →R defined in (7.29) is “b-regular” in the sense of [Mad15]. Hence,
+thanks to [Mad15, Theorem 5.6], we have that for any ε > 0, for any s ≥0 sufficiently large
+satisfying (es + 1)(R + 1)−1 ∈N, there exists T ≥0 sufficiently large such that for any t ≥T and
+χ : [0, R]d →R satisfying the conditions in (6.6), it holds that
+|E(7.22) −C
+λ
+A,L,b ρχ([0, R]d)| ≤ερχ([0, R]d) ,
+with the constant C
+λ
+A,L,b defined as
+C
+λ
+A,L,b
+def= α
+Z ∞
+0
+zE[Fλ
+A,L,b(−z, gz
+b)]dz ,
+where we recall once again that α =
+√
+2/π and the field gz
+b is defined in (7.4). Hence, in order to
+conclude, it suffices to show that for all z ≥0 and g ∈C(Rd) it holds that Fλ
+A,L,b(−z, g) = Fλ
+A,L,b(z, g).
+To this end, we begin by observing that, thanks to Lemma 3.10, and recalling Definition 3.9 as well as
+(2.2), for all y ∈Rd, it holds that
+Υb(y) = −
+Z b
+0
+(1 −K(es−by))dYs(0) + Z
+0
+b(e−by) −
+√
+2d
+Z b
+0
+(1 −K(es−by))ds
+law= −
+Z b
+0
+(1 −K(e−sy))dYb−s(0) + Zb(y) −
+√
+2dab(y) .
+Hence, by applying the Cameron–Martin theorem (see Lemma C.1) with density exp(
+√
+2dYb(0) + db)
+to the process (Ys(0))s∈[0,b], using the equality in law (Bs)s∈[0,b]
+law= (−Bs)s∈[0,b], using the fact that

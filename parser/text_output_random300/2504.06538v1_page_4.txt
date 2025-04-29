@@ -1,0 +1,82 @@
+Figure 1: OPAL Model Workflow
+for multimodal understanding—integrating vision, lan-
+guage, and state inputs commonly observed in robotic sys-
+tems. The topological action head applies a filtering mask,
+Mtopo, which removes physically invalid solutions before
+producing embedded tensors W.
+Aτ
+t represents a "noisy" action sequence and is randomly
+generated after each new observation. The embedded ten-
+sors (W) are used as the new filtered observation set and
+combine with Aτ
+t to produce a vector field, vθ, that fol-
+lows the previous fusion rules obtained by Mtopo. vθ is
+trained prior to minimize topological loss, transforming
+noise distribution to action distribution while respecting
+topological constraints. The trained policy then conducts
+flow matching with Aτ
+t . Following this, Runge-Kutta in-
+tegration with 4 steps and step size δ=0.25 is used to trans-
+form the starting point into a coherent action sequence At.
+The value of Horizon (H) determines the amount of future
+actions generated and these are grouped into primitives
+(P k
+t ) for robotic controller execution.
+4.3
+Training and Workflow
+Open source datasets such as OXE as well as our own
+hardware dataset are used to generate the actions needed
+for specific task completion. These known At sequences
+are used to train the policy vθ and adjust weights θ until
+any action sequence (Aτ
+t ) can be filtered to only include
+physically accurate or topologically linked sequences, al-
+lowing for accurate flow matching.
+OPAL receives observation, Ot, in the form of camera
+images, language commands, and proprioception data.
+The transformer processes these through encoders as well
+as a randomly generated action sequence Aτ
+t .
+Mtopo-
+constrained attention creates a new W representation from
+these observations. The trained vector field, vθ, uses this
+new Ot to transform random noise to actions and Runge-
+Kutta integration samples the action trajectory generating
+action sequence At with horizon H=100. The robot exe-
+cutes some portion, m, of these actions (P k
+t ) and the envi-
+ronment changes. A new observation is collected (Ot +1)
+and the cycle repeats.
+This continuous update cycle allows OPAL to adapt to
+what’s actually happening in the environment rather than
+blindly following a predetermined plan. This allows the
+system to adapt to changes while maintaining physical
+consistency through the topological constraints at every
+step of the process.
+5
+Topological Attention
+Topological attention derives from mathematical for-
+malisms used to describe systems with non-trivial topo-
+logical properties. In such systems, local degrees of free-
+dom are subject to constraints that give rise to global topo-
+logical invariants. We adapt this mathematical framework
+to design a novel attention mechanism that enforces phys-
+ical constraints across action sequences in robotic control.
+In contrast to standard attention layers that learn uncon-
+strained relationships between tokens, our topological at-
+tention incorporates explicit physical plausibility via a
+masking mechanism Mtopo. This mask encodes “fusion
+rules” derived from topological quantum field theory, en-
+suring that only valid action transitions are given non-zero
+attention scores. Concretely, while classic multi-head at-
+tention might allow any token to attend to any other, topo-
+logical attention zeroes out attention weights for physi-
+cally impossible transitions—e.g., trying to lift an object
+before grasping it. This explicit constraint not only im-
+proves long-horizon coherence but also reduces the ef-
+fective dimensionality of the policy search space, leading
+to faster convergence and more robust zero-shot general-
+ization. By operating within a mathematically enforced
+manifold of feasible action sequences, topological atten-
+tion enforces real-world consistency from the ground up,
+4

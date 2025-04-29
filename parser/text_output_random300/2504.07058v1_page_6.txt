@@ -1,0 +1,64 @@
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+t
+Interior and boundary points
+sb
+tb
+int
+Figure 2: Training points (forward problem): The training set 𝑺consists of randomly chosen points. Red dots denote
+interior points, whereas green and blue dots correspond to temporal and spatial boundary points.
+2.4.4
+Data training points
+The data training set is defined as S𝒅=
+n
+𝑦𝒅
+𝑗
+o
+for 1 ⩽𝑗⩽𝑁𝒅, where 𝑦𝒅
+𝑗∈D′
+𝑇.
+2.5
+Neural Networks
+The PINN operates as a feed-forward neural network, as depicted in Fig. 5. Without an activation function, a
+neural network functions similarly to a multiple regression model. The activation function introduces non-linearity,
+enabling the network to learn and perform complex tasks. Examples of activation functions include sigmoid,
+hyperbolic tangent (tanh), and ReLU [21]. The network receives an input 𝑦= (𝑡, 𝑥) ∈D, and can be formulated as
+an affine transformation:
+𝑢𝜃(𝑦) = 𝐶𝐾◦𝜎◦𝐶𝐾−1 ◦. . . ◦. . . 𝜎◦𝐶1(𝑦).
+(2.21)
+Here, ◦denotes function composition, and 𝜎represents activation functions. For each layer 𝑘where 1 ⩽𝑘⩽𝐾,
+the transformation is given by:
+𝐶𝑘𝑧𝑘= 𝑊𝑘𝑧𝑘+ 𝑏𝑘,
+where
+𝑊𝑘∈R𝑑𝑘+1×𝑑𝑘, 𝑧𝑘∈R𝑑𝑘,
+and
+𝑏𝑘∈R𝑑𝑘+1.
+(2.22)
+To maintain consistency, we define 𝑑1 = ¯𝑑= 2𝑑+ 1, where 𝑑is the spatial dimension, and set 𝑑𝐾= 1 for the
+output layer. Structurally, the network consists of an input layer, an output layer, and 𝐾−1 hidden layers, subject
+to the condition 1 < 𝐾< N.
+Each hidden layer 𝑘, comprising 𝑑𝑘neurons, processes an input vector 𝑧𝑘∈R𝑑𝑘. The transformation begins
+with the linear mapping 𝐶𝑘, followed by the application of the activation function 𝜎. The total number of neurons
+in the network is given by 2𝑑+ 2 + P𝐾−1
+𝑘=2 𝑑𝑘.
+The set of network parameters, including weights and biases, is denoted as 𝜃= {𝑊𝑘, 𝑏𝑘}. Additionally, the
+weight parameters alone are represented as 𝜃𝑤= {𝑊𝑘} for all 1 ⩽𝑘⩽𝐾[33,34]. The parameters 𝜃belong to the
+space 𝜃′ ⊂R𝑃, where 𝑃represents the total number of parameters:
+𝑃=
+𝐾−1
+∑︁
+𝑘=1
+(𝑑𝑘+ 1) 𝑑𝑘+1.
+(2.23)
+6

@@ -1,0 +1,51 @@
+libraries to higher-order calculations offers a convenient method to distribute precision pre-
+dictions. To this end, the ploughshare project2 provides a central location to distribute such
+grids. Although the number of publicly available grids is still limited, steady progress is being
+made with interfaces to various parton-level Monte Carlo tools being implemented to make the
+production of such grids accessible to the general public.
+Below, we discuss some aspects of higher-order computations.
+2.1
+Parton distribution functions
+One of the key elements in improving the accuracy of theoretical predictions at the LHC lies
+in the determination of parton distribution functions (PDFs). PDFs are most commonly deter-
+mined by global fits to experimental data, taking into account the experimental errors in the
+data. The standard now is for the PDFs to be determined at NNLO QCD, although fits at
+NLO QCD and LO are still available. It is encouraged to use NLO QCD (or even NNLO QCD)
+PDFs where possible, even for computation of lower perturbative accuracy. The results of the
+global fits are central values for each flavor PDF, along with an estimate of the PDF uncertainty,
+dominated by the input experimental errors for the data included in the fit. The formalism used
+in the fit can either be Hessian [11, 12] or based on Monte Carlo replicas [13]. The number of
+data points included in the global PDF fits is typically of the order of 3000–4000 from a wide
+range of processes. Diagnostic tools, such as the L2 sensitivity [14], have been developed to
+allow a detailed examination of how the interplay between the different data sets used in global
+PDF fits determine both the PDFs and their uncertainties. Lattice gauge theory has reached a
+level of precision where information from such calculations has provided useful input for PDF
+determination, especially at large x [15]. This will continue to improve.
+In 2021-22, a benchmarking exercise was conducted using the CT18, MSHT20, NNPDF3.1/4.0
+PDFs, and a combination (PDF4LHC21 [16]) was formed, using Monte Carlo replicas generated
+from each of the three PDF sets. As the benchmarking exercise continued over the transition
+from NNPDF3.1 to NNPDF4.0, an updated version of 3.1 was used which utilized some of the
+key new data sets added to 4.0 (and already present in CT18 and MSHT20). PDF4LHC21
+PDF sets are available either in a 40 member Hessian format, or a 100 member Monte Carlo
+replica format. The PDF4LHC21 PDFs show a reduction in uncertainty from the combined
+PDFs determined in 2015, but perhaps not to the extent that may have been expected through
+the introduction of a variety of new LHC data. This is partially due to the central values of the
+three input PDFs not coinciding exactly, and partially because the tensions between the data
+sets that limit the resultant possible uncertainty.3 The PDF4LHC21 PDF sets are appropriate
+for use in general predictions for state-of-the-art calculations, and indeed the prior PDF4LHC15
+PDFs have been used in just that way.
+More recently, the ABMP PDFs were updated, with a emphasis on the impact of LHC
+top quark data [19].
+Many differential cross section measurements from the LHC have been included in the PDF
+determination. This was made possible by the NNLOQCD calculations of the relevant 2 →2
+matrix elements that have been discussed in past iterations of the wishlist. For use in calculations
+at N3LO, several of which are discussed here, nominally N3LO PDFs would be needed.
+As
+they are not yet available, NNLO PDFs are used in their stead with an unknown uncertainty
+introduced into the predictions as a result. This has a non-negligible impact on the Higgs cross
+section at N3LO through gluon–gluon fusion, for example. Indeed, this mis-match in order leads
+2https://ploughshare.web.cern.ch
+3Ref. [17] points out one problem that PDF fits may face is the bias that results from improper sampling in
+very large data spaces. The bias can not only result in an underestimate of the true uncertainty, but also an
+incorrect central PDF. An alternative perspective is provided by Ref. [18]
+4

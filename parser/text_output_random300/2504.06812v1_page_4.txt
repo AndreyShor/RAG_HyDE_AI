@@ -1,0 +1,166 @@
+4
+where ∥1 −F
+−1
+2
+Q CF
+−1
+2
+Q ∥∞≤1.
+If C = Q, then both
+inequalities become equalities.
+In particular, Eq. (17)
+can be tightened by maximizing the lower bound and
+minimizing the upper bound over POVMs {Eω}.
+The left-hand inequality in Eq. (17) is derived by using
+C ≤Q and Q = FQ + iG.
+To obtain the right-hand
+inequality, we use X−1
+2 Y X−1
+2 ≥0, valid for positive-
+semideﬁnite matrices X, Y : Taking X = FQ and Y =
+Q −C, we obtain −iF
+−1
+2
+Q GF
+−1
+2
+Q
+≤
+1 −F
+−1
+2
+Q CF
+−1
+2
+Q
+≤
+1,
+where ∥−iF
+−1
+2
+Q GF
+−1
+2
+Q ∥∞= ∥iF−1
+Q G∥∞.
+Imaginary part of the SCGT.— For pure states, the
+imaginary part of the QGT is reformulated as
+G(|ψθ⟩) = −2Ω(|ψθ⟩),
+(18)
+where Ω(|ψθ⟩) is the Berry curvature, with elements
+Ωij = ∂iAj −∂jAi, and A ≡A(|ψθ⟩) is the Berry connec-
+tion with Aj ≡i ⟨ψθ|∂jψθ⟩[7–9]. The form of Eq. (18)
+can be checked by [G(|ψθ⟩)]ij = 4Im[⟨∂iψθ|∂jψθ⟩]. The
+Berry curvature describes an eﬀective gauge ﬁeld in the
+parameter space, analogous to a ﬁctitious magnetic ﬁeld
+experienced during adiabatic evolution [59].
+Let us write A = P
+ω Aω with [Aω]j ≡i ⟨ψθ|Eω|∂jψθ⟩,
+where A is a real vector but Aω is not a real vector due
+to [Aω]∗
+j = [Aω]j −i∂jpω(θ). Since the imaginary part of
+the SCGT is [D(|ψθ⟩)]ij = 4Im[⟨∂iψθ|M(|ψθ⟩)|∂jψθ⟩], a
+direct calculation leads to
+D(|ψθ⟩) = −2i
+X
+ω
+A∗
+ωA⊤
+ω −AωA†
+ω
+pω(θ)
+,
+(19)
+where ∗, ⊤, and † respectively denote the complex conju-
+gation, the transposition, and the Hermitian (conjugate
+transpose). Using Eqs. (18, 19) and letting Ω= P
+ω Ωω
+with elements [Ωω]ij ≡∂i[Aω]j −∂j[Aω]i, we can express
+the gap as ∆≡G −D = P
+ω ∆ω, where ∆ω vanishes for
+a rank-one POVM.
+The integral of Ω(|ψθ⟩) over an oriented manifold S in
+the parameter space is known as the Berry phase [7]:
+φQ ≡1
+2
+Z
+S
+X
+i,j
+[Ω(|ψθ⟩)]ijdθi ∧dθj,
+(20)
+where ∧is the wedge (or exterior) product and dθi ∧dθj
+is an area element on S [11]. In particular, in the two-
+dimensional parameter space (m = 2), the Gauss–Bonnet
+theorem states that νQ = φQ/(2π) is always an integer,
+known as the ﬁrst Chern number, which serves as a topo-
+logical invariant [60–62].
+In analogy to Eq. (20), we can introduce
+φC ≡−1
+4
+Z
+S
+X
+i,j
+[D(|ψθ⟩, {Eω})]ijdθi ∧dθj.
+(21)
+We have that φC = φQ for any rank-one POVM {Eω},
+but φC ̸= φQ for general POVMs. Thus, νC ≡φC/(2π)
+cannot always be an integer, because the Gauss–Bonnet
+theorem cannot be applied in the integral at Eq. (21).
+As an example, consider a single-qubit state with θ =
+(ϑ, ϕ) for the intervals ϑ ∈[0, π] and ϕ ∈[0, 2π]: |ψθ⟩=
+sin(ϑ/2) |0⟩+ eiϕ cos(ϑ/2) |1⟩, where |0⟩and |1⟩are the
+eigenstates of the Pauli-z matrix with ±1 eigenvalues,
+respectively. In this case, Ωϑ,ϕ = sin(ϑ)/2 and νQ = 1.
+For the non-rank-one POVM with two outcomes {Eω =
+ε |ω⟩⟨ω| + (1 −ε)1/2} for ω = 0, 1 and a parameter ε ∈
+[0, 1], we obtain that νC(ε) = 1 −[(1/ε) −ε]arctanh(ε) ∈
+[0, 1], where νC(ε) monotonically increases for ε. This
+may suggest that νC can provide a lower bound to νQ in
+general.
+Conclusion.— In this manuscript, we have introduced
+the concept of semi-classical geometric tensor (SCGT) as
+a counterpart of the quantum geometric tensor (QGT)
+that explicitly includes POVM operators. The SCGT is
+gauge invariant and provides a lower bound to the QGT
+for general mixed states. In particular, the QGT and the
+SCGT coincide for pure states and rank-one POVMs,
+under suitable conditions that we precisely characterize.
+The SCGT proves a useful tool to derive both matrix
+and scalar multiparameter quantum information bounds,
+clarifying the gap between quantum and classical Fisher
+information matrices.
+Our results open several avenues for further research.
+First, our ﬁndings may advance toward the characteriza-
+tion of measurement incompatibility and the saturation
+problem of the quantum Cramér-Rao bound in multi-
+parameter quantum metrology [33, 34], recognized as a
+relevant open problem in quantum information [63]. Sec-
+ond, exploring the role of the SCGT or its real part could
+provide fresh insights into quantum information science,
+such as the theory of asymmetry [26] and operational
+frameworks based on the quantum Fisher information in
+thermodynamics [64] and quantum resource theories [65].
+Also, our results may be extended beyond SLD operators,
+and be related to generalized quantum speeds [66, 67]
+and susceptibilities [68]. Finally, beyond the theoretical
+interests of our ﬁndings, a practical challenge lies in the
+direct accessibility of the SCGT or its indirect estimation
+via experimental techniques.
+Acknowledgments.— We thank Tajima Hiroyasu, Au-
+gusto Smerzi,
+and Benjamin Yadin for discussions.
+S.I. acknowledges support from Horizon Europe pro-
+gramme HORIZON-CL4-2022-QUANTUM-02-SGA via
+the project 101113690 (PASQuanS2.1).
+J.Y. acknowl-
+edges support from Wallenberg Initiative on Networks
+and Quantum Information (WINQ). L.P. acknowledges
+support from the QuantERA project SQUEIS (Squeez-
+ing enhanced inertial sensing), funded by the European
+Union’s Horizon Europe Program and the Agence Na-
+tionale de la Recherche (ANR-22-QUA2-0006).
+* satoyaimai@yahoo.co.jp
+† jing.yang@su.se
+‡ luca.pezze@ino.cnr.it

@@ -1,0 +1,120 @@
+8
+D.
+The red-rec algorithm (parallel implementation)
+In this section, we describe how we parallelize our en-
+hanced red-rec algorithm using GPUs. A GPU can exe-
+cute a very large number of threads concurrently. These
+threads are grouped into thread blocks, where coordi-
+nation across threads within the same block is efficient,
+whereas coordination across different blocks introduces
+greater overhead.
+In our parallelization of the red-rec
+algorithm, we assign each thread block to reconfigure
+an entire column. Threads in the same block work to-
+gether to calculate the surplus of the column using a par-
+allel reduction operation [28], and to reconfigure the col-
+umn using our parallel exact 1D algorithm described in
+Sec. III B. Different blocks reconfigure different columns.
+To fully utilize the GPU hardware resources, we aim
+to execute as many thread blocks simultaneously as pos-
+sible. Hence, we must extract as many columns as pos-
+sible that can be reconfigured simultaneously. However,
+the sequential red-rec algorithm is designed to reconfigure
+the columns one after the other. To extract columns that
+can be reconfigured in parallel, we employ two strategies.
+First, we reconfigure columns with positive surplus at the
+beginning along with columns with zero surplus. Second,
+we extract a partial order of the columns with negative
+surplus and group together those that can be reconfig-
+ured independently.
+The rest of this section describes
+the details of our parallel implementation.
+Reconfiguring columns with non-negative sur-
+plus.
+In the sequential red-rec algorithm, columns with
+zero surplus are reconfigured first because they are nei-
+ther donors or receivers.
+On the other hand, columns
+with positive surplus are reconfigured during the main
+loop of the algorithm or at the end, after they have do-
+nated to the receiver columns they are paired with. In
+the parallel algorithm, to increase the number of columns
+that can be reconfigured simultaneously, we reconfigure
+both zero surplus and positive surplus columns from the
+outset. All the columns are reconfigured in parallel by
+different thread blocks.
+Reconfiguring columns with negative surplus.
+Once the columns with non-negative surplus have been
+reconfigured, the columns with negative surplus remain.
+In the sequential red-rec algorithm, the main loop of the
+algorithm repeatedly identifies the best donor-receiver
+pair, redistributes atoms across the pair, then recon-
+figures at least one of the columns in the pair.
+The
+redistribution-reconfiguration cycle is repeated until all
+negative surplus columns have been saturated. To paral-
+lelize such an inherently sequential algorithm, we observe
+that although identifying the pairs is a sequential process,
+actually solving the pairs via redistribution and reconfig-
+uration can sometimes be done in parallel. For example,
+consider the case where the first pair to be solved con-
+sists of columns a and b, and the second pair to be solved
+consists of columns c and d. Although we cannot identify
+that (c, d) is the second pair before identifying that (a, b)
+is the first pair, we can actually solve (a, b) and (c, d)
+independently once they have been identified. Hence, in-
+stead of identifying (a, b), solving (a, b), identifying (c, d),
+then solving (c, d), as the sequential algorithm does, we
+can identify (a, b) then (c, d) sequentially, and then solve
+them both in parallel.
+Of course, if the first pair was
+(a, b) and the second pair was (a, c), then they cannot
+be solved in parallel because they share a column. But
+still, if the third pair was (d, e), then it can be solved in
+parallel with (a, b) before (a, c) because it is independent
+of both.
+Based on this observation, our parallel red-rec algo-
+rithm reconfigures columns with negative surplus by se-
+quentially identifying the donor-receiver pairs and up-
+dating their surpluses but without immediately resolving
+them, constructing a partial order of the pairs, traversing
+the partial order to construct groups of pairs that can
+be solved independently, then finally solving the pairs
+in the same group in parallel. The process of identify-
+ing the groups of donor-receiver pairs to be executed in
+parallel is performed by a single thread block while the
+remaining thread blocks remain idle. Once that thread
+block is done, it broadcasts the grouping to the other
+thread blocks. The thread blocks then iterate through
+the groups, and for each group, solve the pairs in paral-
+lel, with each thread block solving a different pair. Note
+that in both the sequential and parallel algorithms, the
+pairs are identified according to the same rules, the re-
+ceivers are solved in the same way, and every token is
+guaranteed to move at most once. The concept of de-
+layed moves is also preserved.
+Single kernel implementation.
+Since we evaluate
+our implementation on small problem sizes, the overhead
+of calling a GPU kernel can be significant. To limit the
+impact of this overhead, we implement the entire parallel
+red-rec algorithm using a single GPU kernel. Doing so
+also allows frequently used data to remain in the GPU’s
+shared memory, avoiding the need to reload it from global
+memory across kernel calls.
+To enable a single-kernel
+implementation, each thread block must have enough
+threads to map each thread to a trap within a specific
+column or map each thread to a column. For this rea-
+son, we configure the kernel with W thread blocks each
+having max(H, W) threads, where H and W denote the
+height and width of the input graph, respectively.
+E.
+The bird algorithm
+In the section, we describe the newly-proposed bird al-
+gorithm (see Alg. 2). The bird algorithm is a heuristic
+algorithm that solves atom reconfiguration problems on
+grids. It achieves greater operational performance than
+the red-rec algorithm (Sec. III C). However, unlike red-
+rec, which can be adapted to handle arbitrary target con-
+figurations on grids, the bird algorithm requires target

@@ -1,0 +1,97 @@
+6
+NEURAL NETWORK POLYCONVEXIFICATION
+is then equal to L −1. The number of neurons in the ℓth layer is denoted by d(ℓ). In particular,
+d(0) denotes the number of inputs and d(L) the number of outputs.
+The system of weights is denoted by w(i,j)
+ℓ
+, with 1 ≤ℓ≤L, 0 ≤i ≤d(ℓ−1), 1 ≤j ≤d(ℓ). The
+weight w(i,j)
+ℓ
+is associated with the edge joining the ith neuron in the layer ℓ−1 to the jth
+neuron in the layer ℓ. The weights w(0,j)
+ℓ
+= b(j)
+ℓ
+are regarded as biases. The total number of
+weights in a feedforward network is PL
+ℓ=1 d(ℓ−1)d(ℓ).
+The inputs to the network are denoted by z(j)
+0 , with 1 ≤j ≤d(0). We denote by z(j)
+ℓ
+the
+output of the jth neuron in the layer ℓand z(j)
+L
+is the network output, with 1 ≤ℓ≤d(L), and
+we write z(0)
+ℓ
+= −1, the fake input linked to the bias. Consider the jth neuron in the layer ℓ.
+First, the neuron collects the information from the previous layer as a weighted sum, leading the
+preactivation, and then applies an activation function gℓon this quantity, as
+z(j)
+ℓ
+= gℓ
+
+
+d(ℓ−1)
+X
+i=1
+w(i,j)
+ℓ
+z(i)
+ℓ−1 −b(j)
+ℓ
+
+,
+or written compactly in the following matrix form
+Zℓ= gℓ(WℓZℓ−1 −Bℓ) ,
+where
+Zℓ= (z(1)
+ℓ, . . . , z(dℓ)
+ℓ
+)T ,
+Wℓ= (w(i,j)
+ℓ
+)i,j,
+Bℓ= (b(1)
+ℓ, . . . , b(dℓ)
+ℓ
+)T .
+Building on the characterisation of the (signed singular value) polyconvex envelope Φpc in
+Section 3, the goal is to construct a neural network approximation denoted by Φpc
+pred which
+rigorously preserves its physical properties. The architecture must ensure polyconvexity, meaning
+convexity with respect to the minors of the signed singular values. Additionally, it must satisfy
+the envelope inequality condition, enforcing the inequality Φpc ≤Φ as stated in (11). Finally, the
+network must respect the Πd-invariance as symmetry property of the function Φ. The following
+sections outline strategies to incorporate these characteristics of the function Φpc into the design
+of the neural network.
+4.2. Enforcing the Polyconvexity. In order to enforce the convexity in the minors m(ˆν) of
+the input vector ˆν, a particular class of neural networks is employed: the so-called Input Convex
+Neural Networks (ICNN) introduced in [AXK17]. In particular, in what follows, two variants
+of ICNN are presented: the fully input convex neural networks (FICNN) and the partially
+input convex neural networks (PICNN). Note that the illustrations already reflect the convexity
+with respect to the minors ˆm, i.e. the formulation to ensure polyconvexity. The change from
+the original input (ˆν, ζ) of the function Φpc to the input (m(ˆν), ζ) of the function hc, i.e. the
+transitioning from the signed singular values to the minors lifted signed singular values, can be
+interpreted as a hard-coded feature extracting layer in the overall network architecture.
+ˆm
+z1
+z2
+z3
+...
+zk
+W ( ˆm)
+0
+W (z)
+1
+W (z)
+2
+W (z)
+k−1
+W ( ˆm)
+1
+W ( ˆm)
+2
+W ( ˆm)
+k−1
+Figure 1. A fully input convex neural network (FICNN).

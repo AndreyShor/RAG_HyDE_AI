@@ -1,0 +1,52 @@
+Catastrophic Control Parameter βi(t)
+The catastrophic control parameter βi(t) is influenced by socioeconomic depri-
+vation, violence, and substance abuse:
+βi(t) = w1Di(t) + w2Vi(t) + w3SAbi(t)
+where w1, w2, w3 are weights reflecting the impact of deprivation, violence, and
+substance abuse, respectively.
+The pregnancy state yi(t) evolves according to the gradient of the potential
+function:
+dyi(t)
+dt
+= −∂V
+∂y = −y3
+i + αi(t)yi(t) + βi(t)
+Peer-group pressure influences contraceptive use and substance abuse. Let
+Ni represent the set of neighbors of agent Ai in the social network G. The
+influence on contraceptive use is modeled as:
+Ci(t + 1) = σ
+ 
+λ2 ·
+1
+|Ni|
+X
+j∈Ni
+Cj(t)
+!
+where σ(x) is the sigmoid function.
+Similarly, substance abuse evolves based on peer influence:
+SAbi(t + 1) = σ
+ 
+λ3 ·
+1
+|Ni|
+X
+j∈Ni
+SAbj(t)
+!
+The overall simulation evolves by updating the pregnancy state yi(t), contra-
+ceptive use Ci(t), and substance abuse SAbi(t) iteratively. Each agent’s state
+is influenced by the catastrophic control parameter βi(t), as well as peer-group
+pressure from its neighbors.
+Figure 2 shows simulations of the Agent-Based Model (ABM) applied to
+teenage pregnancy using the cusp catastrophe model. The model incorporates
+both non-catastrophic fertility factors—such as education and contraceptive
+use—and —catastrophic shocks—deprivation, violence, and substance abuse.
+Figure 2 illustrate the state of agents (teenagers) before and after the simulation,
+showing who became pregnant under varying socio-economic conditions.
+In the initial conditions (Figure 2 left), all agents (represented by blue
+markers) are in the non-pregnant state at the beginning of the simulation.
+The non-catastrophic fertility factors (X-axis) includes variables like education
+quality, parental guidance, and contraceptive use, which are generally preventive
+against teenage pregnancy. The catastrophic shocks (Z-axis), in turn, reflects
+12

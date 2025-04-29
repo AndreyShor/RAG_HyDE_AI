@@ -1,0 +1,120 @@
+5
+which can be derived using reflection positivity [21].
+Let us note that our approach shares similarities with
+Hamiltonian truncation (e.g. truncated conformal space ap-
+proach or TCSA) [67]. However, instead of diagonalizing the
+full Hamiltonian Hλ ≡Kd + Pd + λ ˆO, we diagonalize only
+the perturbation ˆO. This distinction arises from the fact that
+we are primarily interested in the instantaneous action of the
+perturbation rather than the deformation of the whole spec-
+trum in such theories. Nevertheless, if the perturbation in-
+duces a gap in the bulk, the eigenstates of ˆO can be used as
+a variational ansatz to approximate the ground state of the in-
+teracting theory [68–70], effectively neglecting the Kd + Pd
+term in the full Hamiltonian Hλ. In contrast, to produce a
+gapless theory in TCSA, the original Hamiltonian Kd + Pd is
+important to balance the perturbation λ ˆO, and the connection
+to our pinning flow becomes more obscure.
+III.
+SYMMETRY CONSTRAINTS
+The factorization channels that describe the pinning de-
+fect in the IR are further constrained by generalized global
+symmetries in the bulk CFT. In modern understanding, while
+local operators transform as ordinary charges of standard 0-
+form symmetry, extended defects transform in higher repre-
+sentations of the generalized symmetries (see e.g. [71–77]).
+Intuitively, such a representation contains information about
+the fusion of the topological symmetry defects with the (non-
+topological) defects and the topological junctions between
+them, subject to consistencies of isotopy invariance. To make
+the following discussion concrete and self-contained, we will
+focus on 2d, in which case the CFT symmetry is described in
+part by a fusion (sub)category C and the symmetry properties
+of general line defects are captured by a bimodule category
+M over C. Physically, the simple objects label indecompos-
+able defects, and include their cousins from fusion with the
+topological defects Li ∈C. As will explain below, the sym-
+metry properties of pinning defects are described by special
+bimodule categories. The generalization to higher dimensions
+is conceptually similar though the details are incomplete.
+We define a C-symmetric defect D to be such that it is trans-
+parent to, and thus commutes with, all topological defects
+Li ∈C,
+Li ◦D = D ◦Li .
+(III.1)
+The trivial defect is obviously C-symmetric, and so are the
+generalized pinning defects (I.1) as long as the defining lo-
+cal operator O commutes with Li. As we will see, the C-
+symmetric condition produces nontrivial constraints on the
+possible IR behaviors of the defects, analogous to what was
+found for symmetric RG flows in the bulk CFT [78], such as
+symmetry enforced degeneracies in the IR factorization.
+Let us offer some intuition behind this connection between
+defect and bulk symmetric RG flows as in Figure 1, which
+also gives another way to see the factorization phenomena we
+have proven in Section II. The pinning flow defined in the UV
+by (I.1) can be alternatively described by turning on the same
+T
+T
+h′ R
+ddxO(x)
+strip RG
+T
+T
+Tgap
+|ν⟩⟨ν|
+topological fusion
+resolve
+T
+T
+|Bν⟩⟨Bν|
+D = L
+ν
+|Bν⟩⟨Bν|
+defect RG
+T
+T
+D = eh
+R
+dd−1xO(x)
+FIG. 1: IR factorization of the pinning flow via the strip flow
+by resolution. Here it is assumed that strip flow of the CFT T
+ends in a gapped phase (orange region) described by TQFT
+Tgap with Cardy branes |ν⟩.
+operator O on a strip of thickness δ in the limit of δ/L ≪1
+where L is the typical size for a bulk observable (possibly with
+fine-tuning when the OPE of O generate more relevant oper-
+ators). If we follow the bulk RG flow on the strip (namely
+taking µδ ≫1 with µ as the scale of the flow) and suppose
+this flow gaps the bulk CFT, we conclude the strip region is
+effectively described by a TQFT Tgap. A TQFT can be cut-
+open by inserting a complete basis of Cardy branes |ν⟩and
+further fusing each of these topological boundaries onto the
+interface between T and Tgap produce a simple boundary con-
+dition |Bν⟩for the CFT T . Assuming that the orders of the
+limits commute, we conclude that the pinning defect in the IR
+is described by the factorized product
+D(O) =
+M
+ν
+|Bν⟩⟨Bν| ,
+(III.2)
+where ν labels the Cardy branes in the TQFT Tgap. The Cardy
+branes are in one-to-one correspondence with the vacua of the
+TQFT (that obey cluster decomposition) [79, 80], and these
+vacuum degeneracies are consequences of generalized anoma-
+lies for C. Here we see how such constraints translate to the
+pinning defects straightforwardly (in terms of the factorization
+channels).
+Note that in (III.2) we have not specified the conformal
+boundaries |Bν⟩, which depend on the interface between T
+and Tgap. These are known as RG interfaces and have been
+determined explicitly in the 2d Ising and tricritical Ising CFTs
+[68–70, 81]. We will see how to bootstrap this information
+efficiently in Section IV A with general criteria from mono-
+tonicity theorems and the C-symmetric condition.
+As a sanity check, the indecomposable C-bimodule cat-
+egory M labeling the conformal pinning defect should be
+orientation-reversal invariant
+M ∼= M ,
+(III.3)

@@ -1,0 +1,133 @@
+3
+the pulse duration essentially becomes determined by the
+collimator focal length alone.
+To accommodate the existing MEMs scanner footprint,
+the new reflective-optics design uses a Thorlabs MPD189-
+P01, 203.2 mm focal length off-axis parabolic mirror
+(OAP) as the primary focusing optic. A Thorlabs RC08
+reflective collimator of focal length fc = 33 mm and max-
+imum numerical aperture NA of 0.15 is used to focus the
+fiber output onto the OAP. The overall design yields a
+beam magnification factor M of:
+M = dout
+din
+= f0
+fc
+= 203.2
+33
+≈6.2.
+As configured, the new focusing unit provides a maxi-
+mum collimated beam size of 11 mm for input fibers 0.15
+NA or larger, which is approximately twice the diameter
+(dr = 4.6 mm) of our MEMS mirror (MirrocleTM model
+A8L2.2). As a result, the maximum lever arm for the
+new scanner design was set to approximately one-half
+the focal length of the OAP focuser.
+Using equation B5 in appendix B, we show that the
+effective beam spot size deff at the output port of the
+scanner is expected to scale as:
+deff ≈6.2
+q
+d2
+f + (1.22λ/(2NA))2.
+(1)
+Thus, a multi-mode input fiber of diameter df = 10 µm
+and NA ∼0.1 should produce a divergence-limited spot
+diameter deff ≈62 µm. If one includes diffraction ef-
+fects, the expected spot size increases to:
+d′
+eff ≈62µm
+p
+1 + (0.61λ · 106)2
+(2)
+This result satisfies our initial goal of adopting the path
+length geometry of our existing system to achieve 100 µm
+or smaller spot diameters in the optical regime at the
+location of the exit port. In comparison, the refractive
+system of Ref [14] achieved a spot size 170 µm, so we
+expect this new system to improve on that by a factor of
+just under 3.
+A second goal was to provide a scan range dscan
+> 20 mm.
+As shown in Equation B9 of Appendix B,
+the new collimation setup gives:
+dscan ≲49 mm
+
+dr
+4.6 mm
+ 
+θ
+θmax
+
+,
+(3)
+where θ is the beam deflection angle off the MEMS mirror
+(θmax ≈±5o) and dr is the MEMS mirror diameter (here,
+dr=4.6 mm).
+Both the scan range and spot size scale with the mag-
+nification factor, for fixed fiber and MEMS mirror spec-
+ifications. The chosen mirror offers an excellent combi-
+nation of size and range of deflection angle that, when
+coupled with the breadboard-based design of the scan-
+ner unit, yields small spot sizes for relatively large (and
+adjustable) scan ranges. Details about the trade-offs be-
+tween scan angle and spot size are described in more
+detail in Appendix B.
+B.
+Output Fiber Plate
+In contrast to Ref [14], the characterization data re-
+ported in this paper were obtained without a cryogenic
+detector payload, to best evaluate the MEMS scanner
+system alone. We considered a number of measurement
+approaches for the characterization work, including, e.g.,
+sweeping the beam across a pinhole much smaller than
+the beam diameter, etc. However, such approaches would
+require additional optics and add complexity and align-
+ment uncertainty during cryogenic cycling. In the end,
+we simply covered the output port with a precision plate
+that placed a 105 µm multi-mode fiber at the nominal
+center position of the scan field (see Figure 1). The di-
+ameter of the output fiber was selected to be as small
+as possible, while exceeding the expected cryogenic spot
+size of 60 µm.
+In our model, the output beam shape is treated as a
+convolution of the beam and output fiber profiles. As-
+suming a roughly Gaussian beam profile, the effective
+spot size of the focused beam at the scanner output plate
+should be:
+deff,meas =
+q
+d′2
+eff + d2
+fiber
+(4)
+≈122µm
+p
+1 + (0.31λ · 106)2
+(5)
+which is roughly 130 µm for a wavelength of λ = 625 nm.
+This value for the spot size is roughly double what we
+measure with a detector when looking at output light
+intensity vs. spot position, and would imply ∼twice the
+relevant sweep length value for pulsed beam calculations,
+as discussed in Section IV.
+III.
+BEAM SIZE MEASUREMENTS
+We conducted both warm (300 K) and cold (∼10 mK)
+measurements of the beam spot size to validate the design
+expectations summarized above.
+By design, the scan-
+ner performance is relatively insensitive to thermal con-
+traction effects, so we were able to perform most of the
+system characterization and optimization experiments at
+room temperature, rather than having to cool the unit
+after each small refinement was made to the design. Be-
+low, we document two types of room temperature beam
+size tests, where the scanner was either: (i) mounted on
+an optical bench, and the beam size measured using a
+CCD detector, or (ii) mounted in −situ in the (warm)
+cryostat and the beam size measured using an avalanche
+photodiode detector (APD). Unless otherwise noted, all
+bench-top tests were performed using the same models
+of input and output fibers as those used for the in −situ
+tests.

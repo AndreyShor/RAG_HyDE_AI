@@ -1,0 +1,80 @@
+Fig. 2: Overview of the proposed grasping pipeline using the physics-aware approach for safe cardboard box extraction
+2) Physical Reasoning: A Physics-informed Box Rela-
+tions Graph (BRG) derived from RGB-D data, coupled
+with physics simulation, to accurately model structural
+dependencies and predict potential box collapse during
+shelf-picking, ensuring safe and stable operation.
+3) Task Allocation: BRG-driven dynamic task partition-
+ing and assistance, allowing for adaptive role allocation
+and proactive support based on structural dependen-
+cies, enhancing collaborative efficiency.
+4) Experimental Validation: Validation of the framework
+through real-world shelf-picking experiments, includ-
+ing (a) Gesture-Guided Box Extraction, (b) Collabo-
+rative Shelf Clearing, and (c) Collaborative Stability
+Assistance, demonstrating its efficacy in complex sce-
+narios.
+The paper is structured as follows: Section II reviews related
+work in object retrieval, simulation-based planning, and
+physics-informed robotics. Section III details the proposed
+methodology, including the perception pipeline, simulation
+techniques, and decision-making framework. Experimental
+results are presented in Section IV, comparing the perfor-
+mance of the proposed approach in both simulation and real-
+world scenarios. Finally, Section V provides conclusions,
+discusses limitations, and outlines potential future research
+directions.
+II. RELATED WORK
+Human–robot collaboration (HRC) in warehouse environ-
+ments has gained significant attention due to its potential
+to enhance efficiency, safety, and adaptability in dynamic
+settings. Research in this field spans various aspects, includ-
+ing task optimization, anticipatory planning, and simulation-
+based reasoning.
+Optimizing order picking is a key challenge in warehouse
+automation. Zhao et al. [2] present an integrated framework
+that jointly addresses pod selection, robot scheduling, and
+manual picking, highlighting the importance of coordination
+between human workers and robotic systems. Empirical
+studies by Pasparakis et al. [3] and Jacob et al. [4] further
+demonstrate that well-designed HRC strategies not only
+improve productivity but also enhance safety in cluttered
+warehouse environments.
+A major challenge in shelf picking is the safe extraction
+of objects from unstable stacks. To mitigate risks, Motoda
+et al. [5] propose a bimanual manipulation planner based
+on collapse prediction, ensuring structural stability during
+retrieval. Their subsequent work on multi-step extraction [6]
+leverages object support relations to maintain pile integrity,
+while their shelf replenishment strategy [7] integrates object
+arrangement detection with collapse risk prediction. These
+works underscore the necessity of predictive reasoning in
+robotic extraction.
+Advancements in vision-based and simulation-driven ap-
+proaches have significantly improved robotic perception and
+action planning. Chen et al. [8] integrate deep reinforcement
+learning with computer vision for robust grasping, while
+Bejjani et al. [9] tackle the challenge of retrieving occluded
+objects from clutter. Complementarily, Zook et al. [10]
+introduce a real-to-sim pipeline that converts single RGB-
+D observations into digital twin environments, providing
+robots with simulation spaces for training reinforcement
+learning models. Ni and Qureshi [11] further refine motion
+planning by incorporating physics-informed neural networks,
+improving collision avoidance and path efficiency.
+In parallel, the integration of natural language interfaces
+is emerging as a promising direction in HRC. Long et al.
+[12] demonstrate that multi-modal large language models can
+effectively bridge robotic vision and language understand-
+ing, reducing the need for complex task-specific encoders.
+However, existing models remain unreliable for real-world
+deployment, and their reliance on cloud-based inference
+presents latency and scalability challenges.
+Foundational surveys provide additional insights relevant
+to our work. Bohg et al. [13] offer a comprehensive review
+of data-driven grasp synthesis methods, while Banerjee et al.
+[14] explore the integration of physical laws into computer
+vision, reinforcing the importance of embedding physics-
+based reasoning into robotic perception. Additionally, trust
+and transparency play a crucial role in effective HRC. Chen
+and Chan [15] review trust-aware shared control mecha-

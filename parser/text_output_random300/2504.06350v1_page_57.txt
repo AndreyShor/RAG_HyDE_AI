@@ -1,0 +1,92 @@
+General case of n > 2 different preparations [97]. Consider a given ensemble of states |ψx⟩n−1
+x=0 that Alice
+can prepare, and that Bob can perform binary measurements {B0|y, B1|y}n−1
+y=0 corresponds to projections
+onto the polarization states orthogonal to the states that Alice prepares. Alice randomly chooses a pair
+of integers r = (r0, r1) where 0 ≤r0 ≤r1 ≤n −1 and a bit k and sends the state |ψ⟩x=rk to Bob, who
+randomly chooses an integer y (0 ≤y ≤n −1) and performs the binary measurement {B0|y, B1|y}. If the
+outcome is b = 1, the round will be discarded, otherwise b = 0. Bob then asks Alice to reveal r. If y = r0
+or y = r1 Bob informs Alice that the round is conclusive otherwise it is aborted. The main assumption
+concerns the complex pairwise overlaps between preparation states, which is encompassed in the Gram
+matrix G, whose entries are given by Gij = ⟨ψi| ψj⟩.
+5.2.2. Security analysis
+Eve’s information about the secret bit k is bounded by assuming that the Gram matrix G of the set
+of encoding states is fully characterized and that the probabilities p(b|x, y) are perfectly estimated by
+Alice and Bob. There is no other restriction on the protocol, no bound on the dimension, and neither
+any characterization on the prepared states, transmission channel, or measurement device. To attack the
+protocol, Eve can correlate herself to the state Alice sent and design Bob’s measurement. Moreover, Eve
+can benefit from having a quantum memory. By denoting psucc as the probability that a round is not
+discarded, the asymptotic key rate is lower bounded by using the Devetak-Winter key rate formula and
+gives
+rRDI ≥[H(k|Eve, succ) −H(k|Bob, succ)]p(succ) ≥[−log2(pg(e = k|succ)) −h(Q)]p(succ).
+Here the second inequality comes from the fact that Bob’s entropy can be upper-bounded as H(k|Bob, succ) ≤
+h(Q) and Eve’s conditional entropy can be lower-bounded by conditional min-entropy Hmin(k|Eve, succ) =
+−log2(pg(e = k|succ)). pg(e = k|succ) is the maximal probability that Eve guess the bit k correctly,
+and is the only quantity that needs to be upper bounded to give a lower bound on rRDI, since the
+QBER Q and p(succ) can be extracted from the observed statistics p(b|x, y). The guessing probability
+pg(e = k|succ) = p(e=k,succ)
+p(succ)
+then can be upper bound by an upper bound on p(e = k, succ). In [97], it is
+shown that by using SDP an upper bound on p(e = x, succ) can be obtained.
+SDP method for upper bounding p(e = x, succ). Let us define the set {Si}s−1
+i=0 where its elements are
+monomials of the operators Bb|y and Ee|µ (Eve’s measurements). The ns × ns moment matrix Γ then
+can be defined as
+Γ =
+n−1
+X
+i,j=0
+Γxx′ ⊗|ex⟩⟨ex|
+(161)
+with the sub-blocks Γxx′ defined as Γxx′ = Ps−1
+i,j=0 ⊗| ˆej⟩⟨ˆej| where {|ex⟩}n−1
+x=0 ({|ˆei⟩}s−1
+i=0 ) is an orthonor-
+mal basis on Rn (Rs). If we define ΓST
+xx′ := ⟨ψx| S†T |ψ′
+x⟩(S, T ∈S), then the SDP upper bounding
+p(e = x, succ) is given by
+max
+Γ
+1
+(n −1)n2
+
+n
+2
+
+X
+r=0
+1
+X
+k=0
+n−1
+X
+y=0
+Γ
+B0|yErk|r
+rkrk
+(δy,r0 + δy,r1),
+such that
+ΓII
+xx′
+=
+⟨ψx| ψx′⟩= γxx′∀x, x′,
+(162)
+Γ
+IBb|y
+xx
+=
+p(b|x, y), ∀b, x, y
+tr(Γxx′Fk)
+=
+fk, k = 0, · · · ,
+Γ
+≥
+0
+The first condition is the overlap constraint between the sets of states. The second equation ensures
+that the moment matrix Γ is compatible with the observed correlation p(b|x, y). The matrices Fk and
+the coefficients fk are Hermitian and complex, respectively, and are defined to satisfy the constraints
+on the measurement operators for Bob and Eve.
+These constraints include positivity, completeness,
+commutativity [Mb|y, Ee|y] = 0, and the requirement that both Mb|y and Ee|y are projectors.
+57

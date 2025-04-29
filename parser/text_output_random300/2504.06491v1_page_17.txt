@@ -1,0 +1,78 @@
+3
+incident energy Ei is actually Ei + δ, where δ is some deviation that may be positive or negative. From the time of
+flight geometry, we can calculate the effect of this deviation δ on the detected ∆E from an elastic scattering event
+according to the function
+∆Ed(δ) = Ei
+
+
+ 
+d1
+d2
+−d1 + d2
+d2
+r
+Ei
+Ei + δ
+!−2
+−1
+
+.
+(3)
+At the CNCS instrument, d1=36.25 m and d2=3.75 m. Figure 3 below shows this relationship and the FWHM of δ
+given our chosen incident energy and chopper speed. Note that it is nearly linear in our regime of interest.
+FIG. 3.
+Detected ∆E as a function of incident neutron energy deviation δ according to Equation 3 given CNCS instrument
+geometry and incident neutron energy Ei=3.32 meV. The shaded region shows the reported FWHM for δ at the CNCS for the
+180Hz DD-chopper frequency used in our experiments.
+Alone, Equation 3 accounts for the “bleeding” of elastic Bragg features into the inelastic signal, but does not explain
+the chiral nature of the artifacts. This quality comes from the combination of Equations 2 and 3, which shows that
+a non-zero δ also affects the detected q position of elastic scattering events. Specifically, an elastic Bragg scattering
+event that should be detected at
+q = k(Ei)
+h
+(cos ϕ −1)ˆi + (sin ϕ −1)ˆj
+i
+(4)
+is instead detected at
+qd = k(Ei + δ)
+
+
+
+
+s
+1 −∆Ed(δ)
+Ei + δ cos ϕ −1
+
+ˆi +
+
+
+s
+1 −∆Ed(δ)
+Ei + δ sin ϕ −1
+
+ˆj
+
+.
+(5)
+Using Equations 3 and 5, one can model and track how this process contaminates the detected inelastic data. This is
+done in Panel (a) of Figure 9 for extraneous scattering from [1 0 0] and equivalent Bragg peaks at ℏω = [0.3, 0.5] meV.
+The intersection of the q = 0 centered circle and the arcs show where the strongest signal from Bragg peaks themselves
+appears and the arcs follow the streaking caused by the variance in δ. In the figure chiral artifacts from [2 0 0] equivalent
+Bragg peaks also appear, but these are not tracked.
+Thankfully, this explained artifact can be removed with the collection of two datasets at different temperatures and
+the use of the background subtraction method detailed in the Methods section. Relative to most scattering processes
+measured by neutrons, this effect is small in intensity. It only appears in this work because of the weak and diffuse
+nature of the signal we measure in our sample.
+STRUCTURE FACTOR MODELING AND WEIGHTED LEAST SQUARES ESTIMATION
+The model described in the main text estimates the momentum and energy dependent scattering according to the
+form
+Smag(q, ω) ≈α(ω)|F(q)|2
+ 
+1 + 2
+n
+X
+i=1
+ρi(ω)fi(q)
+!
+,
+(6)

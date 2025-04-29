@@ -1,0 +1,106 @@
+means it becomes harder for optimal parameters
+to be found. Ref. [43] discusses vanishing vari-
+ance in loss functions and defines barren plateaus,
+where the variance vanishes exponentially with
+the system size. Due to the limited connectiv-
+ity of current gate-based hardware, many SWAP
+gates may be needed for QUBO problems with
+high density. This can result in long circuits, the
+execution of which is limited by the gate times of
+the specific device. Long circuits also cause the
+effects of noise and decoherence to accumulate.
+We use VQE with the conditional value at a
+risk (CVaR) [44] as the objective function of the
+classical optimiser. In this case, instead of using
+the usual expectation value as the objective func-
+tion, which is the average energy of all the mea-
+sured bit strings, only a fraction of the best bit
+strings are used to calculate the average energy.
+This fraction is determined by the parameter α, a
+hyperparameter we tune in our experiments, with
+α = 1 corresponding to standard VQE without
+CVaR. Using CVaR can help convergence on the
+optimal parameters in fewer iterations [44,45].
+The convergence criteria, set for VQE with the
+COBYLA optimiser (from the SciPy library [46]),
+aim for objective values to stop varying within a
+certain tolerance and within a maximum num-
+ber of iterations dependent on the problem size.
+The COBYLA tolerance in the SciPy library is
+defined as a lower bound on the size of the trust
+region [47].
+We note here that setting stricter
+tolerance or convergence criteria could improve
+the VQE’s solution quality in exchange with sac-
+rificing its total runtime. A tolerance informed
+through hyperparameter search was found to con-
+sistently allow VQE and COBYLA to meet the
+convergence criteria before the maximum itera-
+tions were achieved. The number of maximum
+iterations must be selected based on the time fea-
+sibility of running many experiments. We show
+our convergence plots in Appendix D.
+Finally, quantum annealing generates a solu-
+tion to the given problem by adiabatically evolv-
+ing a given Hamiltonian to the quantum (tar-
+get) Hamiltonian that encodes the problem, in
+an attempt to reach the ground state of the sys-
+tem. Under the adiabatic theorem, if the system
+starts in the ground state of the initial Hamilto-
+nian (which is an easy to prepare state), it will
+track the instantaneous ground state if the Hamil-
+tonian varies sufficiently slowly with respect to
+other energy scales [48]. The duration of the an-
+nealing (typically in the range of nanoseconds to
+microseconds on a real QPU) is known as the an-
+nealing time. Longer annealing times increase the
+likelihood the state obeys the adiabatic principle
+but also worsens the effect of decoherence. Each
+quantum annealing device has a range of anneal-
+ing times that can be set, which is a hyperpa-
+rameter we optimise in our experiments. The fi-
+nal probability distribution is then sampled by
+making measurements of the final state.
+The
+number of anneals we apply and consequent mea-
+surements on the final state we call the number
+of shots in quantum annealing, as with VQE.
+Each shot produces a unique solution. The whole
+process we call an experiment, again similarly to
+VQE above. Both VQE and QA may sometimes
+prepare a sub-optimal final state, and we hence
+repeat experiments for these methods, as we dis-
+cuss further below.
+Due to the limited connectivity of real quantum
+annealing QPUs, which are usually based on su-
+perconducting circuits, variables must be mapped
+to multiple qubits, forming qubit ‘chains’.
+A
+chain is considered broken if the value of one of
+the qubits in the chain is inconsistent with the
+others (they should all be the same value as they
+represent the same variable). Chains are formed
+via ferromagnetic coupling among qubits, which
+requires a balance to be struck between increas-
+ing the chain strength, so that the chains are not
+broken, and having the coupling weak enough so
+that it does not influence the solutions found in
+the problem [49].
+The use of qubit chains in current non-fully
+connected architectures increases the number of
+qubits used for each variable of the problem by a
+quadratic factor, as compared to mapping single
+qubits to variables. This means that using quan-
+tum annealers currently available on the market
+either restricts us to solve problems that are not
+fully connected, or, as it is in our case, risks
+poorer performance when we go to larger prob-
+lem sizes [50]. The quantum annealing hyperpa-
+rameters we optimise are: (i) the chain strength
+and (ii) the annealing time.
+4.2
+Post-Selection
+The output of each algorithm described in the
+previous subsection is a collection of samples from
+an underlying probability distribution, which rep-
+7

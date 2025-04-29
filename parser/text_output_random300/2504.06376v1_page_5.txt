@@ -1,0 +1,60 @@
+XX:4
+Quantum Combine and Conquer
+and we need to prepare h states |S0⟩, |S1⟩, . . . , |Sh−1⟩where |Sj⟩is a uniform superposition
+of n/h consecutive elements in the array starting at index jn/h and h is a power of 2.
+Preparation of the |Sj⟩begins with a register storing an n-bit zero string |0n⟩, and another
+register large enough to store a point from the dataset, each of which we will call the index
+and data register respectively. The first step is to set the first log2 h bits of the index register
+to j. Next, take the remaining n −log2 h bits in the index register and prepare a uniform
+superposition state over the bitstrings of length n −log2 h. Finally, apply Uin on this state
+and the data register to prepare the superposition of n/h states starting from jn/h,
+|Sj⟩=
+1
+p
+n/h
+n/h−1
+X
+k=0
+|jn/h + k⟩Ij |pjn/h+k⟩Dj .
+(3)
+We summarize this process in Algorithm 1. Throughout this paper, we use Sj to represent
+the subset of S storing points in the j-th block, and |Sj⟩to be the quantum state that
+encodes this set, as seen in Equation (3).
+Algorithm 1 qPrep(j, h)
+Require: j: The index of the block to prepare; h: the number of blocks to partition into.
+Require: Global access to the unitary Uin that encodes the sorted data [d0, . . . , dn−1]
+1: Prepare two registers, initialized to |0n⟩Ij |0⟩Dj.
+2: Set the first log2 h bits of Ij to j
+3: Apply a Hadamard gate to each remaining qubits in Ij.
+4: Apply Uin to the pair of registers.
+5: return |Sj⟩, the state after the previous step as described in equation 3.
+The second quantum subroutine we use is a quantum max/min finding algorithm due to
+Durr and Hoyer [12]. This algorithm takes as input a Boolean function, f : D →{0, 1}, a
+comparator, ⪯, to maximize (or minimize) over, the index, j, of the block to perform the
+search over, and the total number of blocks, h. Our subroutine uses qPrep(j) to prepare the
+superposition state described in Theorem 1. This has the effect of applying the algorithm
+only to the points in block j, and allows us to search the block in ˜O(
+p
+n/h) time. Throughout
+the text, we use the signature, qMax/qMin(f, ⪯, j, h), when calling this function, and the
+output is an element of D or null if there are no elements such that f(d) = 1. The function
+f can be passed as, say, a classical circuit which can be converted to a quantum circuit.
+▶Theorem 1 (Quantum Maximum/Minimum Finding [12]). Let D = [d0, . . . , dn−1] be a list
+of n elements represented by w bits, and let S be the time required to prepare the state,
+|ψ⟩=
+1
+√n
+n
+X
+i=0
+|i⟩|di⟩,
+(4)
+and Q the time it takes to query a boolean function f : D →{0, 1}. Let M be the subset of
+D such that f(m) = 1 for all m ∈M. Also, let ⪯be some ordering of data values in the
+data register such that comparisons according to this ordering can be performed in O(log w)
+time. Then we can find the maximum (or minimum) value of M under the specified ordering
+in time S · Q · ˜O(√n).
+3
+Quantum Maxima Sets
+In this section, we present a quantum algorithm to solve the maxima set problem using
+the combine-and-conquer paradigm. In the maxima set problem, we are given a set, S, of

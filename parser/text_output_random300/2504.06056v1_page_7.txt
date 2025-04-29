@@ -1,0 +1,148 @@
+PAGIONO
+An ionospheric activity index
+Dr.Paul.Kinsler@physics.org
+ever, such a project is currently beyond our computational re-
+sources.
+In the next subsection we describe how we use the different
+fitted widths for different band pairs during this quiet refer-
+ence period to normalise out that difference, enabling us to
+treat all band pairs as effectively equivalent.
+G.
+Normalisation of dTEC values
+Recall that the code calculates TEC values from all possi-
+ble band-pair combinations received by any one ground sta-
+tion from any one satellite. These uncalibrated TEC estimates
+give rise to dTEC values that contain two significant sources
+of systematic bias. These biases need to be considered, and
+compensated for, and once this is done we can aggregate the
+compensated dTEC values into larger slices.
+Firstly, the geometry of the LOS between satellite and
+ground station may have an influence: notably, LOS paths at a
+lower angle traverse the ionosphere – and any irregularities in
+it – at an oblique angle, and thus spend a longer time (or dis-
+tance Lp) under its influence 4. This gives such signals more
+opportunity to accumulate time-dependent perturbations, thus
+potentially affecting the estimated dTEC.
+However, it is not straighforward to justify a specific com-
+pensation or correction method on physical grounds. For ex-
+ample, if the dTEC was largely due to one brief local event,
+then we should not expect to apply a correction; whereas if
+the final dTEC resulted from a diffusion-like process then the
+correction should be proportional to pLp; but if drift-like then
+the correction should be proportional to just Lp. Worse, dif-
+ferent receive events may produce dTEC values which have
+a diversity of histories, each containing a different contribu-
+tions from a variety of perturbation mechanisms. Accordingly
+in what follows we take a data-driven, distributional approach
+to ensure that the statistics of dTEC events at different path-
+angles match as closely as possible.
+Secondly, dTEC values computed on the basis of different
+band pairs may have different biases; and indeed if we fit data
+slices that only differ by their specification to different band
+pairs, we see fitted widths which can vary by up to a factor of
+two. This has a relatively straightforward fix – we can do band
+pair specific fits to our reference “quiet days” as discussed
+above, then use those to compute scalings for the raw dTEC
+values which we can apply before slicing and fitting the data.
+Nevertheless, although the band pair adjustments are ar-
+guably easiest to understand, by addressing the “path-angle”
+bias first it turns out that we also ameliorate the size of the
+necessary band pair adjustments. We now describe the two
+processes that enable us to treat the resulting corrected dTEC
+values are independent of both path-angle (or length) and band
+pair combination.
+4 We assumed earlier that our ionosphere could be approximated as a thin
+shell for the purposes of localizing an intersection on a coarse scale; but of
+course the ionosphere is not thin, and any signal will interact with it over
+some finite distance. Hence, this problem needs to be handled in order to be
+able to compare different dTEC values obtained from ray paths intersecting
+field-aligned irregularities in different ways.
+−4
+−3
+−2
+−1
+0
+0
+1
+2
+3
+4
+log(dTEC)
+log(count)
+−4
+−3
+−2
+−1
+0
+−3
+−2
+−1
+0
+1
+log(dTEC)
+log(count fraction)
+−4
+−3
+−2
+−1
+0
+−3
+−2
+−1
+0
+1
+log(dTEC)
+log(count fraction)
+FIG. 2.
+Histogram plots with different path-angles as different
+colours, plotted using coloured markers and logarithmic scales to
+improve visibility. On the left we see data for entirely uncorrected
+dTEC values and unnormalised histograms, in the centre we see it
+with normalised histogram data, and on the right with dTEC val-
+ues additionally scaled by C1.65.
+Over the most likely ranges of
+log(dTEC), i.e. roughly between 0.01 and 0.3, we see that the his-
+tograms for different C are now rather well matched. This data com-
+prises all that from our quiet 006/007 days in 2022, but the same
+behaviour was also seen for our notional “typical” day 319 in 2022,
+as well as the active days 113/114 in 2023.
+1.
+Path-angle correction
+Here we take a large set of data (i.e. our two quiet days),
+and create a set of dTEC frequency histograms distinguished
+only on the basis of path-angle. To define the path-angle bins
+we use the cosine of the intersection angle of the LOS path
+with the ionosphere (“path-cosine”, C), as taken to two dec-
+imal places (2dp). For the dTEC bins in each histogram we
+discretise at intervals of 0.005 TECU/s.
+If we overlay the resulting set of dTEC histograms we see
+that they are similar in form, but not identical – notably that
+they get wider as the path-cosine becomes smaller (see Fig.
+2). We found that multiplying the dTEC values at a given
+path-cosine by a power of that cosine can improve the sim-
+ilarity between different dTEC histograms. The best match
+was estimated to be at (or near) a power of η = 1.65, although
+the matching was not highly sensitive to the exact value of η.
+This means we will adjust the raw dTEC values to corrected
+ones, in analogy with mapping functions, as
+dTECcorrected = dTECrawCη.
+(10)
+The steps in the process to justify this correction mechanism
+are shown on Fig. 2, where we see that we can remove the
+bulk of path-angle effects for the important – and most fre-
+quent – range of binned dTEC values, i.e. those in the range
+0.01 and 0.3 TEC/s.
+It is interesting that the best match power η = 1.65 does
+not fall into any of the no-correction (where we would have
+η = 0), diffusion (η = 1
+2), or drift (η = 1) cases we sug-
+gested above. Indeed, it would seem that the η = 1.65 in-
+dicates that however irregularities in the ionosphere affect the
+eventual dTEC, the effect is enhanced at lower path-angles.
+This could be interpreted to mean that dTEC disturbances are
+more pronounced if passing through ionospheric irregulatities
+more horizontally, but reduced if the path is closer to vertical.
+Remember, however, that our η = 1.65 results from a statisti-
+cal comparison, and so can (or will) encompass the effects of
+many possible perturbation histories.
+7

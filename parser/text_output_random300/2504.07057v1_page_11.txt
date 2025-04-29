@@ -1,0 +1,45 @@
+ship-tracks. Instead, in our study, the age of a ship-track segment is determined by
+that of a matched virtual ship-track for which we have precise knowledge of its age,
+avoiding the presence of a ship-track head.
+Study region and time
+This study is conducted over the Northeast Pacific between 2009 and 2020. The
+geographic region is between (25 oN, 165 oW) and ( 60 oN, 110 oW) within around
+250 miles of the coast. We choose this area because of the availability of automated
+identification system (AIS) data and its coverage of stratocumulus decks off the coast
+of California and low clouds in the mid-latitudes associated with cyclones.
+Data
+The AIS data have native temporal resolution of one minute, but are subsampled to
+be hourly data because the reanalysis data do not have matching high time-resolution.
+We apply a few filters on the ship AIS data. Based on the length, width, draft and
+speed of individual ships, we ignore ships whose speed2·width·length <= 5×105m4s−2
+or speed2 · width · draft <= 5 × 104m4s−2 . This is done to reduce the amount
+of calculation needed to run the trajectory model for each ship since smaller ships
+are unlikely to produce a ship-track. After the filtering, we are left with more than
+6million ship samples. We ran the HYSPLIT model for these ships, each for 30 hours
+before local overpass time [48]. 323,253 of them are within Aqua MODIS granules
+for matching up with detected ship-tracks. MERRA-2 reanalysis meteorology fields
+[49]are used to advect virtual emissions by these ships to produce simulated ship-tracks
+using the HYSPLIT model. The MERRA-2 data are 3-hourly at a resolution of 0.5o
+X 0.625o. We compare results from MERRA-2 and ERA-5 and find their performance
+is very similar. Aqua MODIS collection 6.1 retrievals [50] are used in this study. We
+only include cloud properties retrievals of liquid cloud pixels.
+Virtual ship-tracks and ages of ship-track segments
+The details of the method can be found in Yuan et al. [23] and here we briefly
+recap the procedure. AIS data are first sub-sampled from native resolutions to hourly
+resolution. At each hour, we release an air parcel at the height of 950 hPa and use the
+HYSPLIT model to simulate its forward trajectory until the time of MODIS overpass.
+Each day, we simulate ships that within our study region and within 24 hours of
+MODIS overpassing time. We choose a cut-off of 24 hours because errors in reanalysis
+winds and trajectory modeling grow with time and we want to avoid simulated tracks
+suffer from excessive position errors while 24hours give us the full diel cycle. Once we
+obtain the simulated ship-tracks of each ship, we collocate them with available MODIS
+granules and keep only those that intersect with these granules that day.
+For each MODIS granule that has detected ship-tracks, we iterate through all
+detected ship-tracks and match them with simulated ship-tracks. We test a few con-
+ditions for matching, such as Frechet distance between the detected and simulated
+ship-tracks and maximum overlapping pixels between the two. We find the latter to
+be more versatile because both detected and simulated ship-tracks have intersect with
+each other, creating complex shapes that are difficult for Frechet distance method to
+be effective since we do not have the true order information on the detected ship-
+tracks. The age of each segment of a detected ship-track is determined to be that of the
+11

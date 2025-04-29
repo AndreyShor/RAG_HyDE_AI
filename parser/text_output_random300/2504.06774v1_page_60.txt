@@ -1,0 +1,52 @@
+A.3.5
+Hyperparameter Tuning
+The key hyperparameters, ranked by their influence on model training and generalization,
+are listed in Table A2 [47]. These parameters can be tuned using various approaches, with
+some of the most commonly applied methods being:
+• Grid Search: This is a systematic and exhaustive search where a predefined set
+of hyperparameter values is tested across all possible combinations, however, it is
+computationally expensive.
+• Random Search:
+This technique samples values randomly from a predefined
+range, enabling efficient exploration of the parameter space. Unlike a grid search,
+it does not evaluate all possible combinations, making it particularly useful when
+only a subset of hyperparameters significantly impacts model performance.
+• Coarse-to-Fine Adjustment: This begins with a broad search throughout the
+parameter space to identify promising regions, followed by finer searches within
+those regions to refine the values.
+• Bayesian Optimization: In this work, Bayesian optimization was employed for
+hyperparameter tuning. The optimization is performed using the Bayesian optimiz-
+ation class from Keras Tuner. Bayesian optimization leverages a Gaussian Process
+(GP) as a surrogate model to approximate the objective function and an acquisition
+function to guide sampling towards promising regions [60]. This approach efficiently
+balances exploration and exploitation, reducing the number of function evaluations
+needed to find the optimal solution.
+Hyperparameter
+Description
+Learning Rate
+Determines the step size during gradient descent. An optimal
+learning rate is crucial; a value that is too large can cause
+divergence, while a value that is too small leads to slow con-
+vergence.
+Batch Size
+Defines the number of training samples processed before up-
+dating model weights.
+Smaller batch sizes provide noisier
+but more frequent updates, whereas larger batch sizes yield
+smoother gradients.
+Number
+of
+Lay-
+ers and Units per
+Layer
+Specifies the network’s depth and capacity to learn complex
+patterns. Deeper networks can capture intricate relationships
+but require proper regularization to avoid overfitting.
+Regularization
+Strength (λ)
+Controls the penalty applied to the loss function, helping pre-
+vent overfitting by simplifying the model’s complexity.
+Table A2: Key hyperparameters and their impact on model performance.
+Efficient hyperparameter tuning is crucial for avoiding underfitting or overfitting. By
+prioritizing impactful parameters, such as the learning rate and batch size, and using
+60

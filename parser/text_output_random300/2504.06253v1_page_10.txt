@@ -1,0 +1,42 @@
+10
+•
+Bhattacharyya et al.
+The warmstarts were run with different vertex-at-top rotations, specifically first, last, and no rotation, as discussed
+in the previous section. A more in depth explanation is provided in Appendix C.
+4.1
+Aggregate Results
+All trends discussed can be seen in in Figure 3. The following results are all referring to the average values and
+standard deviations at 𝑝= 5.
+We use the results of our experiment to better understand the performance of
+• (1) GW2 based on vertex-at-top rotation choice.
+• (2) QUBO-Relaxed based on the number of initializations.
+• (3) GW2 Last rotation compared to that of QUBO-Relaxed.
+(1) For both metrics, the vertex on top rotation choices ranked in order of decreasing performance (for all
+problems except TSP) are last, first, and no rotation. The obtained optimal sampling probabilities/instance-specific
+approximation ratios for the last and first vertex on top rotations are often within ±0.25 standard deviations,
+whereas the obtained optimal sampling probabilities/instance-specific approximation ratios for the first vertex on
+top rotation and no rotation are typically not within ±0.25.
+These results provide further empirical support that when mapping QUBOs to Max-Cut problems, the ad-
+ditional degree of freedom added has a fundamentally different structure than the other variables, while also
+supporting the findings in [6] where it was shown that vertex-on-top rotations in general provide improved
+warmstarts.
+(2) In general, QUBO-Relaxed with 50 initializations slightly outperforms QUBO-Relaxed with 10 initializa-
+tions. This is to be expected, because the performance of the non-QUBO-Relaxed optimization is strongly
+dependent on the number of random initial conditions tested.
+Note that Portfolio Optimization is a special case of this warmstart, because the matrix of QUBO coefficients
+is itself negative semidefinite. As a result, solving the continous relaxation is a QUBO-Relaxed programming
+problem and can be solved efficiently. Thus, the only difference in obtained optimal sampling probabilities or
+instance-specific approximation ratios between different optimization runs is due to differences in the QAOA
+parameter optimization, not the number of initializations.
+At depth 𝑝= 5, both random QUBO problem types have average sampling probabilities within 0.25 for 50/10
+random initializations. Interestingly, the difference in obtained optimal sampling probability between 50 and
+10 initializations is largest for TSP and the MIS problems, both of which arise from constrained optimization
+problems. This suggests that constrained optimization problems are intrinsically more difficult to solve, and this
+structural difference is preserved when these problems are mapped to QAOA.
+50 and 10 initializations are within 0.25 standard deviations of each other for all problems.
+(3) In order give a fair comparison between the various GW2 vertex on-top rotation choices and different
+initializations for QUBO-Relaxed, we categorize each vertex on top rotation choice in terms of how it relates to
+the QUBO-Relaxed warmstart performance (in terms of average values):
+(↑) better than both QUBO-Relaxed with 50 initializations.
+(↔) between QUBO-Relaxed with 10 initializations and 50 initializations
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

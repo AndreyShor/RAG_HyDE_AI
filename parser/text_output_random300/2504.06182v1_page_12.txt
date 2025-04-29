@@ -1,0 +1,150 @@
+12
+system.
+We then discuss how to adapt the routine to
+handle specific constraints that may be imposed by the
+system or the problem input parameters.
+Input to the batching routine.
+Recall that once
+we solve a reconfiguration problem, the output is an or-
+dered list of unobstructed moves represented by a path
+system P = {P1, P2, . . . , Pk}, where each Pi ∈P for
+i ∈{1, . . . , k} is a path from vi
+0 to vi
+ℓi, which we denote
+by {vi
+0, vi
+1, vi
+2, . . . , vi
+ℓi}. Hence, an elementary displace-
+ment operation consists of moving a token from some
+vertex vi
+j to vertex vi
+j+1 along the edge {vi
+j, vi
+j+1} con-
+necting them in the path Pi. Instead of an ordered list
+of moves P, we assume that we are also given, in addi-
+tion to an unordered set P, a directed acyclic graph Γ
+representing the dependencies between the moves in P.
+In other words, the vertex set of Γ contains one vertex pi
+for each Pi ∈P and a directed edge from pi to pj exists
+if and only if Pi must be executed before Pj to avoid ob-
+structions. Requiring Γ to encode dependencies instead
+of simply ordering P allows for much greater freedom in
+the construction of batches.
+For most cases, Γ can be computed while the recon-
+figuration problem is being solved, regardless of the al-
+gorithm, and we therefore exclude it from our runtime
+analysis. For the exact 1D algorithm, Γ is easily infer-
+able since we can partition the moves into two disjoint
+sets of left moves and right moves (there are no edges
+in Γ between the two sets), as we describe in Sec. III A.
+The left (right) moves can be ordered from left (right) to
+right (left) using target vertices, and only moves that in-
+tersect along the path need to be connected in Γ. For the
+red-rec and bird algorithms, we follow the same strategy
+as in the 1D case when solving individual columns. We
+use an almost identical strategy when distributing atoms
+between columns. To keep the implementation simple,
+we force all the moves required for solving column Ci to
+occur after the moves required for column Cj whenever
+Ci is solved after Cj and solving Ci requires at least one
+vertex that was used for solving Cj. For aro, we implic-
+itly construct the graph Γ. Now, armed with P and Γ,
+we are ready to describe the batching routine.
+Batching algorithm.
+The batching algorithm (see
+Alg. 4) constructs batches iteratively, saving them in-
+side an ordered list B. After every iteration, it reduces
+the size of P by deleting at least one edge, guaranteeing
+termination after at most n2 iterations. In each itera-
+tion, we initialize an empty batch, B = ∅, to which we
+will add at most one elementary displacement operation
+(or equivalently one edge) from each P ∈P.
+Specif-
+ically, we consider each path in P whose vertex in Γ
+has no incoming edges, i.e., in-degree zero vertex in Γ.
+Let Q = {P1, P2, . . . , Pq} denote those paths. For each
+Pi ∈Q, we check whether {vi
+0, vi
+1} intersects with any set
+(edge) already added to B (note that they can only inter-
+sect on the second vertex). If no intersection is found, we
+proceed as follows. We let B = B∪{vi
+0, vi
+1}, we update Pi
+by deleting vi
+0 and the edge connecting it to vi
+1 (we denote
+this operation by Pi = Pi −{vi
+0} which we also assume
+renumbers the vertices starting from 0). If Pi now con-
+sists of a single vertex, we delete Pi from P and delete
+the vertex corresponding to Pi, i.e., pi, from Γ (edges
+incident to pi are also deleted, i.e., Γ = Γ −{pi}); inter-
+secting edges are ignored. Once no new edges of Q can
+be added to B, we have an inclusion-wise maximal set of
+elementary displacement operations that can be executed
+simultaneously, which we add to B, i.e., B = B ∪B. The
+algorithm terminates once all the edges of the path sys-
+tem have been added to some batch, i.e., when the path
+system (and the directed acyclic graph) become empty.
+Algorithm 4 – The batching routine
+Require: A tuple (G, S, T, P, Γ) where G = (V, E) is an n-
+vertex graph, S ⊆V (G) is the source configuration of
+tokens, T ⊆V (G) is the target configuration of tokens,
+|S| ≥|T|, P is a distance-minimizing path system, and Γ
+is a directed acyclic graph representing the unobstructed
+partial ordering of the moves in P;
+1: Let B = ∅;
+2: while P contains at least one edge do
+3:
+Compute Q = {P1, P2, . . . , Pq} the set of paths having
+4:
+in-degree 0 in Γ;
+5:
+Let B = ∅;
+6:
+for Pi ∈Q do
+7:
+Let e = {vi
+0, vi
+1};
+8:
+if ∀e′ ∈B we have e ∩e′ = ∅then
+9:
+Let B = B ∪e;
+10:
+Let Pi = Pi −{vi
+0} (renumber);
+11:
+if |V (Pi)| = 1 then
+12:
+Let P = P \ Pi;
+13:
+Let Γ = Γ −{pi};
+14:
+Let B = B ∪B;
+15: return B;
+Constrained batching.
+Algorithm 4 assumes no re-
+strictions are imposed by the control system. However,
+most control systems are limited in the types of simul-
+taneous moves that they can perform. For example, in
+the case of 2D grids, one might want to allow batches
+consisting only of atoms appearing contiguously along
+the same column (or row). Another constraint is that of
+directionality, i.e., a batch should consist of atoms mov-
+ing in the same direction in the grid (up, down, left, or
+right). As long as all constraints are what we call local,
+we can adapt our algorithm by augmenting the input tu-
+ple (G, S, T, P, Γ) with one extra parameter Λ, where Λ
+is a list of constraints we want to satisfy. We say that a
+constraint is local whenever it suffices to check whether
+it holds for (at most) every pair of elements in a batch.
+Then, as long as all constraints are local, the only mod-
+ification required in Alg. 4 is on Line 8, where we have
+to also verify that all constraints in Λ are satisfied. The
+current batching routine deployed on our system only
+allows batches consisting of tokens in the same column
+(row) and moving in the same direction

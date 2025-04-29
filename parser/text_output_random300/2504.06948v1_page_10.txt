@@ -1,0 +1,105 @@
+10
+• For matrix M1, its block-encoding UM1 should satisfy
+UM1|0⟩a
+1|j⟩k =
+(
+|0⟩a
+1 |(j + 1) mod (k + 1)⟩k ,
+j ̸= k,
+|1⟩a
+1 |(j + 1) mod (k + 1)⟩k ,
+j = k.
+The corresponding quantum circuit is shown in Fig. 1.
+|·⟩a
+1
+X
+|·⟩k
+•
+ADD
+Figure 1. A quantum circuit implementing the block-encoding of M1, denoted by UM1.
+The addition module performs (j + 1) mod (k + 1), which is a unitary operation. Thus, we can verify
+that
+⟨0|a
+1⟨i|kUM1|0⟩a
+1|j⟩k =
+
+
+
+
+
+0
+i ̸= (j + 1) mod (k + 1),
+0
+i = 0, j = k,
+1
+i = j + 1, j ̸= k.
+Therefore, UM1 is a (1, 1)-block-encoding of M1, and the gate complexity for implementing UM1 is
+O(log(k)).
+• For matrix M2, we have
+M2 =
+
+
+1
+0
+...
+0
+
+
+
+
+1
+√k+1
+1
+√k+1 · · ·
+1
+√k+1
+∗
+∗
+· · ·
+∗
+...
+...
+· · ·
+...
+∗
+∗
+· · ·
+∗
+
+.
+Since k+1 = 2k is a power of 2, the second matrix can be chosen as H⊗k, where H is the Hadamard gate.
+The block-encoding of the first matrix is straightforward to implement in quantum circuits. Therefore,
+the full block-encoding UM2 can be constructed using Lemma B.3, and the corresponding quantum
+circuit is shown in Fig. 2. It is a (1, 1)-block-encoding of M2, with gate complexity O(log(k)).
+|·⟩a
+1
+X
+X
+|·⟩k
+H⊗k
+Figure 2. A quantum circuit that implements the block-encoding of M2, denoted by UM2.
+• For matrix M3, note that |βj| < 1, and we can compute βj explicitly. In fact,
+βj =
+k −j + 1
+j(2k −j + 1),
+j = 1, . . . , k + 1.
+Thus, we can construct a quantum circuit to perform
+Oβ|0⟩a
+1|j⟩k =
+
+βk+1−j|0⟩a
+1 +
+q
+1 −β2
+k+1−j|1⟩a
+1
+
+|j⟩k, ∀j = 0, . . . , k,
+using a uniformly controlled rotation.
+This operation can be further simplified using the method
+proposed in [9, 35]. Specifically, we need k + 1 single-qubit gates and k + 1 CNOT gates. It follows
+that Oβ is indeed a block-encoding of M3, as
+⟨0|a
+1⟨i|kOβ|0⟩a
+1|j⟩k = δijβk+1−j.
+Setting UM3 = Oβ, we conclude that UM3 is a (1, 1)-block-encoding of M3 with gate complexity O(k).

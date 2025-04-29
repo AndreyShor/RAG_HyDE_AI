@@ -1,0 +1,162 @@
+CODASPY ’25, June 4–6, 2025, Pittsburgh, PA, USA
+Eric Wagner, Lennart Bader, Konrad Wolsing, and Martin Serror
+Vantage
+Benign
+Scenario
+Type
+Points
+Duration
+Attacks
+Events
+01-Basic
+train
+4
+12 h
+-
+7
+test
+4
+12 h
+17
+10
+02-Semiurban
+train
+6
+12 h
+-
+9
+test
+6
+12 h
+29
+10
+03-Rural
+test
+8
+12 h
+28
+8
+Table 1: Metadata of Sherlock’s scenarios.
+3.4
+Attacks
+There exist many paths for an attacker to get to a state where
+they have full control over one or multiple devices in a network.
+These approaches range from supply chain attacks over physical
+intrusions, such as breaching a substation to connect unauthorized
+devices, to the classic exploitation of vulnerabilities in existing de-
+vices. Some of these steps are not detectable by IIDSs (e.g., supply
+chain attacks) and others are device-specific (e.g., exploitation of
+devices). Therefore, we focus on the final phase of attacks that ac-
+tively impact the state of the power grid, either by injecting control
+commands, suppressing messaging, or manipulating measurements
+to provoke damaging reactions or hide critical conditions.
+Table 1 provides an overview of the three scenarios and their
+respective metadata. The attacks are executed consecutively within
+a single run, with clearly defined start and end points. Sufficient
+time is allocated between attacks to allow the system to recover to a
+stable state. Additionally, we include multiple extended attack-free
+periods in the test set to help minimize false alarms.
+Table 2 presents simple examples from the 01-Basic scenario
+of the four attack types covered by Sherlock. These attack types
+include denial-of-service (DoS), control command insertion inspired
+by the Industroyer attack that caused widespread blackouts in the
+Ukrainian power grid [10], and advanced false data injection attacks
+that distort the grid operator’s view of the grid state. The Control
+& Freeze attack further manipulates the grid in real-time. Detailed
+descriptions of all attacks, as well as maintenance events that may be
+mistakenly identified as attacks, are provided in the documentation.
+3.5
+Recommended Evaluation Metrics
+We recommend that researchers utilizing Sherlock for evaluating
+their IIDS primarily report three metrics: Detected Attacks, False
+Alarms, and Average Time to Detection (TTD). To calculate these
+metrics, we define an alarm as a continuous signalization of an
+attack by an IIDS. These metrics are then defined as follows:
+Detected Attacks. The absolute number of attacks during which
+an alarm starts. Alarms starting before the attack are considered
+false alarms. Alarms may start during a recovery phase while the
+system returns to normal operation. Such alarms should be ignored
+and neither count as detected attack nor as false alarm.
+False Alarms. The number of alarms that start during normal
+operations without an attack. Maintenance events should also be
+considered normal operation. One may indicate how many of the
+false alarms are triggered by such events.
+Average TTD. The average time in seconds from the start of an
+attack until the first alarm starts.
+Incorporating additional time-based metrics, such as eTa [17],
+and performance indicators, such as training and classification
+time, provide deeper insights into system capabilities. Note that
+Attack
+Type
+Start
+End
+Description
+DoS
+04:11:23
+04:13:30
+ARP spoofing attack against RTUs 127 and 128, interrupt-
+ing the MTU connection.
+Industroyer
+04:55:28
+04:58:34
+A secondary IEC 104 client connects to RTU 123 from
+compromized RTU 121 and issues control commands every
+3 s to disconnect circuit breakers 15 and 16, inducing a
+blackout at DSS 8 (Bus 5).
+Drift Off
+07:56:27
+08:06:26
+As MitM between the MTU and RTU 118, the attacker
+manipulates the voltage measurements regarding Bus 2 at
+DSS 5 to gradually increase to 1.37 (27 kV).
+Control &
+Freeze
+10:04:27
+10:13:45
+As MitM, the attacker learns measurement trends from
+multiple RTUs and continues to manipulate future mea-
+surements to match this trend after injecting control com-
+mands that gradually reduce the power infeed of Genera-
+tor 7, masking the command’s local effects.
+Table 2: Examples of the different attack types on 01-Basic.
+point-based metrics, such as F1-scores, are generally unsuitable for
+assessing time-aware IDSs [17] since such metrics insufficiently
+penalize false alarms and fail to account for scenarios where a brief
+alarm at the start of an attack yields artificially high scores.
+3.6
+Data Format and Extraction
+The Sherlock dataset primarily encompasses packet capture in
+three scenarios from different vantage points. Additionally, Sher-
+lock provides device logs, context information about events (main-
+tenance and attacks), data point mappings to human-readable iden-
+tifiers, and ground truth information about the power grid state.
+To enhance accessibility for researchers, we additionally convert
+the dataset into the IPAL [30] format, an abstract representation of
+network data specifically designed for intrusion detection research.
+Primarily, we focus on passively extracting the current state of
+the power grid from network traffic. Therefore, we log the initial
+system state and parse each intercepted IEC 104 packet to update
+this system state while mapping abstract Information Object Ad-
+dresses (IOAs) to human-readable identifiers. This observed state,
+recorded from a single vantage point, is logged every second. As
+a result, detection performance on the Sherlock dataset reflects
+what would be achieved in a passive, real-world deployment.
+4
+Challenges of IDSs in Power Grids
+Providing Sherlock in the IPAL format makes it more accessible to
+the research community. Additionally, it enables us to benchmark
+a range of existing IIDSs adapted to IPAL that promise domain-
+independent industrial intrusion detection. We tested five IIDSs on
+the Sherlock dataset and present the results in Sec. 4.1:
+PASAD [4] interprets a process value as a vector space and as-
+sesses the drift compared to the behavior observed during training.
+Invariant [12] automatically learns invariants of a process that
+should hold at all times and alerts if any invariant is violated.
+Seq2SeqNN [18] is a neural network trained to predict the next
+process state that alerts significant deviations from the prediction.
+SIMPLE [29] assesses process values’ plausibility based on ex-
+trema, changes, and distributions observed during training.
+GeCo [31] learns a state-space model of the entire process and
+alerts upon deviations from predicted behavior.
+Based on these results, we then identify the specific challenges
+of intrusion detection in the power grid domain in Sec. 4.2.

@@ -1,0 +1,98 @@
+PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY A, VOLUME 383, ISSUE 2289, 2025, DOI:10.1098/RSTA.2024.0146
+6
+To promote the generation of collaborative and complementary coverage plans that minimize work duplication the following
+constraint must be implemented: P
+n
+P
+m
+P
+τ ˆξn,m,˜p(t + τ|t) ≤1, ∀˜p. This constraint ensures that during the planning
+horizon each point p˜p is scheduled for coverage exactly once and by no more than one agent. In order to implement this
+constraint in a distributed fashion the agents generate their plans in a coordinated fashion and communicate their predicted
+plans to their peers. Specifically, agent n receives the latest plans denoted as ˙ξk,m,˜p(t + τ|t), ∀k < n from all agents earlier
+in the sequence (i.e., for k < n) and the previous predicted plans from all agents (i.e., k > n) later in the sequence i.e.,
+˙ξk,m,˜p(t −1 + τ|t −1), ∀k > n. Consequently, the generation of complimentary coverage plans is achieved with the constraint
+shown in Eq. (5i). The communication and information exchange protocol is further discussed in Sec. IVIV-A-IV-A3.
+Finally, the constraint in Eq. (5j) ensures that agent n avoids collisions with the object of interest (and various obstacles
+in the environment). The convex-hull of the object of interest O, is given by the intersection of |K| half-spaces (where K is
+the triangle mesh representing the surface area of O). Suppose that the ith half-space is associated with the plane equation
+dot(αi, x) = βi, i ∈{1, . . . , |K|}, x ∈E which divides the 3D space into two parts. A collision with the object of interest
+can be avoided with the following constraints:
+dot(αi, xp
+n(t + τ|t)) + Mon,i(t + τ|t) > βi, ∀τ, i,
+(7)
+|K|
+X
+i=1
+on,i(t + τ|t) ≤(|K| −1), ∀τ,
+(8)
+where M is a big positive constant, and on,i(t + τ|t) ∈{0, 1} is a binary variable which on activation (i.e., Eq. (7)) indicates
+that dot(αi, xp
+n(t+τ|t)) ≤βi holds for time-step t+τ|t. Because agent n is considered to collide with the object O at time-step
+t+τ|t (i.e., resides within the object’s convex hull) when dot(αi, xp
+n(t+τ|t)) ≤βi for all i the constraint in Eq. (8) ensures that
+the number of times on,i(t+τ|t) is activated at each time-step during the planning horizon is less than or equal to |K|−1. This
+condition is set to avoid collision. The constraints in Eq. (7) - (8) can be extended for multiple obstacles in the environment.
+The same principle can be applied for collision avoidance among the agents by making sure that the positional state of agent
+n must remain outside the convex hull defined by a certain safety area Ak(t + τ|t) of any other agent k (where k ̸= n and
+k ∈{1, . . . , N}). For instance, Ak(t + τ|t) could represent a convex area around xp
+k(t + τ|t) serving as an approximation of
+a spherical safety zone with a specific radius around the agent as described in our previous work [20]. Finally, the coverage
+mission concludes once every point p has been covered a condition met when ∃n ∈{1, . . . , N} : P
+˜p Qn(˜p) = |P|.
+2) Agent Guidance and Coverage Objective: Given the problem constraints discussed above and shown in Eq. (5b) - (5m)
+each agent n can generate non-myopic coverage plans (i.e., a sequence of camera states M n,m(t+τ|t), m ∈{1, . . . , |{Θ×Φ}|}
+along its predicted trajectory xn(t + τ|t)) by minimizing the objective function Jn = ηJguidance + Jcoverage which is composed
+of a guidance term as well as a coverage term defined respectively by Jguidance = ||xn(t + 1|t) −p⋆
+n||2
+2 and Jcoverage =
+PT −1
+τ=1
+P|{Θ×Φ}|
+m=1
+P|P|
+˜p=1 ˙ξn,m,˜p(t + τ + 1|t). Therefore, the following objective function is minimized:
+Jn = η||xp
+n(t + 1|t) −p⋆
+n||2
+2 −
+T −1
+X
+τ=1
+|{Θ×Φ}|
+X
+m=1
+|P|
+X
+˜p=1
+˙ξn,m,˜p(t + τ + 1|t).
+(9)
+where η is a tuning weight. The first term (i.e., Jguidance) is a sub-objective responsible for guiding agent n to its nearest
+unobserved point p⋆
+n. This ensures mission progress (avoiding deadlocks) especially in scenarios where no points of interest
+are reachable within the finite planning horizon. To determine this point at each time-step t agent n receives from all its peers
+their current positional states xp
+k(t|t), ∀k ̸= n, and computes p⋆
+n by solving the following assignment problem:
+ˆH = min
+H
+N
+X
+k=1
+| ˜
+P|
+X
+˜p=1
+C(k, ˜p)H(k, ˜p)
+(10)
+where k ∈{1, . . . , N} is the agent index, | ˜P| represents the total number of unvisited points of interest obtained from the
+record Q, C is a cost matrix containing the pairwise distances between the agents’ positional states and the unobserved points
+of interest, and H(k, ˜p) ∈{0, 1} is an assignment matrix with the property that each column and each row sum to one.
+Therefore, all agents n ∈{1, . . . , N} solve at each time-step t the same assignment problem shown in Eq. (10) to jointly find
+their closest unobserved points of interest to target next, i.e., by determining the optimal assignment matrix ˆH and identifying
+p⋆
+n from the nth row of ˆH.
+The second term (Jcoverage) maximizes the number of points predicted for coverage within the planning horizon. The binary
+variable ˙ξn,m,˜p(t+τ|t) signals whether agent n’s predicted trajectory covers a point of interest (˜p) at a future time-step (t+τ|t)
+with camera state m. Minimizing the negative of this variable optimizes the agent’s movement and camera controls to increase
+coverage.

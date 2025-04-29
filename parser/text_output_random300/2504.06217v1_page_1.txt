@@ -1,0 +1,93 @@
+Chernoff Information Bottleneck for Covert Quantum Target Sensing
+Giuseppe Ortolano1,2, Ivano Ruo-Berchera3, and Leonardo Banchi1,2
+1 Dipartimento di Fisica e Astronomia, Universit`a di Firenze,
+Via G. Sansone 1, I-50019 Sesto Fiorentino (FI), Italy
+2 Istituto Nazionale di Fisica Nucleare, Sezione di Firenze,
+via G. Sansone 1, I-50019 Sesto Fiorentino (FI), Italy and
+3Quantum metrology and nano technologies division,
+INRiM, Strada delle Cacce 91, 10153 Torino, Italy
+Target sensing is a fundamental task with many practical applications, e.g. in LiDaR and radar
+systems. Quantum strategies with entangled states can achieve better sensing accuracies with the
+same probe energy, yet it is often simpler to use classical probes with higher energy than to take
+advantage of the quantum regime. Recently, it has been shown that useful quantum advantage can
+be achieved in covert situations, where sensing has to be performed while also avoiding detection
+by an adversary: here increasing energy is not a viable stratagem, as it facilitates the adversary. In
+this paper we introduce a general framework to assess and quantify quantum advantage in covert
+situations. This is based on extending the information bottleneck principle, originally developed
+for communication and machine learning applications, to decision problems via the Chernoff infor-
+mation, with the ultimate goal of quantitatively optimizing the trade-off between covertness and
+sensing ability. In this context we show how quantum resources, namely entangled photonic probes
+paired with photon counting, greatly outperform classical coherent transmitters in target detection
+and ranging, while also maintaining a chosen level of covertness. Our work highlights the great
+potential of integrating quantum sensing in LiDAR systems to enhance the covert performance.
+I.
+INTRODUCTION
+Quantum sensing [1–3] is a highly active field of re-
+search that in recent years has offered many promising
+protocols with great potential for technological applica-
+tions [4–6]. Among those are quantum ranging [7–9] and
+detection [10–14], which have attracted a great amount of
+interest and have been investigated in great detail since
+the original proposal of quantum illumination [15, 16].
+This is due to the potentially groundbreaking advances
+that quantum resources can offer to LiDaR and radar sys-
+tems [17], and the consequent widespread applications.
+In the path to practical implementations some critical-
+ities remain open. Quantum information inspired proto-
+cols exploit a sequence of two modes, named signal and
+idler, in an entangled state, where the signal’s modes are
+addressed to the target region while the idler’s modes are
+retained locally for a final joint measurement with the
+back-reflected signal. One restriction is that the quan-
+tum advantage is found in a range of parameters which
+is seldom the one used in practical scenarios, namely the
+very low energy of the single mode irradiated towards
+the target and, at the same time a high thermal back-
+ground mixing with the signal. As a consequence, a large
+time-bandwidth product, i.e. large number of modes of
+the quantum source, is needed to achieve a meaningful
+signal-to-noise ratio, while in the classical case this is not
+a requirement [18, 19].
+A more natural application of quantum schemes can
+be found in covert sensing, which has just recently been
+explored [20–23]. Covert sensing explores the situation
+where probing has to be performed while avoiding detec-
+tion by an adversarial party. The requirement of covert-
+ness prevents the probing party from arbitrarily increas-
+ing the energy to reach a better performance, meaning
+that an energy constraint is inherent to the problem.
+Aside from the aforementioned constraints, quantum
+target sensing also requires a technologically demanding
+quantum memory to store the idler modes and phase-
+sensitive joint measurements.
+Some of those require-
+ments can be strongly relaxed if the quantum advan-
+tage is sought at a fixed type of measurement. In the
+optical regime, phase sensitive measurements are not ef-
+ficient in realistic contexts of remote sensing, affected by
+speckle noise from rough target, diffusing media and tur-
+bulence [24]. In fact, time-of-flight evaluations through
+intensity/photon counting measurements are nowadays
+the state of the art for Lidar applications, also prompted
+by the development of picoseconds time-resolved single-
+photon detectors [25, 26]. In this case, one could simply
+avoid to involve quantum memories or unpractical inter-
+ferometric setups.
+Motivated by the above challenges, here we develop a
+general approach to covert sensing based on the concept
+of Chernoff information bottleneck. The information bot-
+tleneck was historically introduced via entropic quantities
+and has a long history of applications [27]. In its standard
+formulation with two correlated random variables X, Y ,
+the information bottleneck method aims to find the best
+compression of X that still allows for an accurate recon-
+struction of Y , thus quantitatively introducing a trade-
+off between compression and accuracy.
+Quantum gen-
+eralizations of the information bottleneck principle have
+been applied to diverse problems, ranging from quan-
+tum communication [28] to quantum machine learning
+[29, 30]. Here we consider a different formulation based
+on the Chernoff information that is more suited to deci-
+sion problems, with the goal of quantitatively optimizing
+arXiv:2504.06217v1  [quant-ph]  8 Apr 2025

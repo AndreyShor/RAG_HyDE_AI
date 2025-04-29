@@ -1,0 +1,67 @@
+arXiv:2504.06837v1  [math.AP]  9 Apr 2025
+Discrete-to-continuum limit for
+nonlinear reaction-diﬀusion systems via
+EDP convergence for gradient systems
+Georg Heinze1, Alexander Mielke2, and Artur Stephan3
+1 Weierstrass Institute, Berlin, Germany, email: georg.heinze@wias-berlin.de
+2 Weierstrass Institute, Berlin, Germany, email: alexander.mielke@wias-berlin.de
+3 Technische Universit¨at Wien, Vienna, Austria, email: artur.stephan@tuwien.ac.at
+9 April 2025
+Abstract
+We investigate the convergence of spatial discretizations for reaction-diﬀusion systems
+with mass-action law satisfying a detailed balance condition. Considering systems on the
+d-dimensional torus, we construct appropriate space-discrete processes and show conver-
+gence not only on the level of solutions, but also on the level of the gradient systems
+governing the evolutions. As an important step, we prove chain rule inequalities for the
+reaction-diﬀusion systems as well as their discretizations, featuring a non-convex dissipa-
+tion functional. The convergence is then obtained with variational methods by building
+on the recently introduced notion of gradient systems in continuity equation format.
+1
+Introduction
+The aim of this work is to show convergence of spatial discretizations of a class of reaction-
+diﬀusion systems satisfying mass-action law. Considering ﬁnitely many species Xi with i ∈I =
+{1, . . . , i∗} undergoing ﬁnitely many reactions chemical reactions labeled by r ∈R := {1, . . . , r∗}
+and diﬀusing in a medium, the reaction-diﬀusion systems we are considering can in general be
+written as
+∂tρi = div(δiρi∇(log ρi+Vi)) +
+X
+r∈R
+
+kfw
+r
+Y
+¯ı∈I
+ραr
+¯ı
+¯ı
+−kbw
+r
+Y
+¯ı∈I
+ρβr
+¯ı
+¯ı
+
+(βr
+i −αr
+i ),
+ρi(0) := ρ0
+i .
+(1.1)
+where ρi = ρi(t, x) describes the concentration of species Xi. The parameters characterizing
+the diﬀusion are the diﬀusion coeﬃcients δi > 0 and additional continuous drift potentials Vi.
+The chemical reactions are prescribed by forward and backward reaction rates kfw
+r , kbw
+r
+> 0,
+r ∈R, and stoichiometric coeﬃcients αr
+i, βr
+i ∈(0, ∞) that describe the change of particles of
+diﬀerent type, say Xi, by the chemical reactions
+∀r ∈R :
+αr
+1X1 + · · · + αr
+i∗Xi∗⇋βr
+1X1 + · · · + βr
+i∗Xi∗.
+1

@@ -1,0 +1,129 @@
+demonstrate the feasibility of small QNLP pro-
+totypes.
+• Healthcare
+&
+Drug
+Discovery:
+SE(3)-
+equivariance
+for
+protein
+folding
+tasks,
+combined
+with
+quantum
+embeddings
+for
+certain subproblems like partial wavefunction
+optimization [48]. .
+Theory: Entanglement-Induced Curvature and Be-
+yond.. Beyond applications, a rich theoretical line
+of inquiry centers on entanglement-induced curva-
+ture in multi-qubit systems [10], exploring how
+quantum correlations shape the manifold geome-
+try in ways that do not exist in classical spaces.
+Researchers are investigating how to exploit these
+higher-dimensional curvatures for classification or
+generative modeling.
+Preliminary results suggest
+that certain entangled manifolds may separate com-
+plex data distributions more efficiently than classi-
+cal manifolds, though rigorous proofs of advantage
+remain an open challenge.
+Outlook.. Overall,
+geometric
+approaches
+are
+quickly
+becoming
+mainstream
+in
+ML,
+while
+quantum geometry is laying the foundation for
+next-generation quantum algorithms. The synergy
+between the two , geometric quantum machine
+learning
+,
+is poised for further growth,
+with
+promising avenues in NLP (QNLP), reinforcement
+learning,
+robotics,
+and beyond.
+As quantum
+hardware matures, one can expect new classes of
+hybrid algorithms that combine manifold-based
+feature extraction with quantum entanglement and
+interference, leveraging the best of both worlds.
+Next, we will delve deeper into how QML can be
+reframed as an extension of classical GML under a
+unified manifold perspective.
+3. Quantum Machine Learning: A More Ex-
+pressive Geometric Superset
+Section Overview. In this section, we broaden
+the geometric perspective into the quantum do-
+main,
+arguing that quantum machine learning
+(QML) is not merely an extension of geometric ma-
+chine learning (GML) but a superset of it.
+We
+show that QML preserves the foundational geomet-
+ric principles introduced earlier for classical sys-
+tems, yet leverages uniquely quantum phenomena ,
+superposition, entanglement, and the induced cur-
+vature of quantum state space , to achieve a richer,
+more expressive learning paradigm. In other words,
+every classical geometric model can be regarded as a
+special (commuting or separable) case of a quantum
+model, while quantum models inhabit a substan-
+tially larger state space with representational and
+computational capabilities unattainable in any clas-
+sical manifold. We ground this claim in the mathe-
+matics of quantum state space geometry, referenc-
+ing key tools like the Fubini -Study metric, Bures
+distance, quantum Fisher information, and the dy-
+namics on unitary group manifolds. Through illus-
+trative examples (e.g. variational quantum circuits
+as trajectories on curved manifolds and entangle-
+ment as a geometric warp of product spaces), we
+reinforce the thesis that QML provides a strictly
+more expressive framework built upon but going
+beyond classical geometric foundations.
+3.1. Geometric Structure of Quantum State Space
+Classical geometric machine learning typically
+operates on data manifolds or parameter spaces en-
+dowed with a Riemannian metric (e.g. the Fisher
+information metric for probabilistic models).
+In
+quantum machine learning, the analogous object is
+the quantum state space, which for a system with
+Hilbert space H is the set of density operators ρ
+(positive, unit trace operators on H). In the special
+case of pure states |ψ⟩∈H, this space reduces to
+the complex projective Hilbert space CPN−1 (with
+N = dim H), since physical states are rays |ψ⟩⟨ψ|
+up to a global phase.
+This quantum state space
+is naturally endowed with a Riemannian metric
+structure that generalizes classical manifold geom-
+etry. The fundamental distance measure between
+infinitesimally close quantum states is given by the
+Fubini -Study (FS) metric for pure states and
+the Bures metric for mixed states. The FS metric
+defines the line element on the projective manifold
+of pure states as:
+ds2
+FS = ⟨∂iψ | ∂jψ⟩dθidθj −⟨∂iψ | ψ⟩⟨ψ | ∂jψ⟩dθidθj ,
+(4)
+for a smoothly parametrized state |ψ(θ)⟩with co-
+ordinates θ = (θ1, θ2, . . . ). Equivalently, the Fubini
+-Study metric can be characterized as the invariant
+distance between nearby quantum states, satisfy-
+ing DFS(|ψ⟩, |ψ + dψ⟩)2 = 1 −|⟨ψ | ψ + dψ⟩|2. This
+metric is the quantum analogue of a Fisher infor-
+mation metric on a probability simplex; indeed, in
+the special case where all states under considera-
+tion commute (so that they are simultaneously di-
+6

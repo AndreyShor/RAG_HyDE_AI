@@ -1,0 +1,101 @@
+Preprint. Under review.
+features (QueryPhysicsInterfaces and QueryPhysicsFeatures). We describe our implemen-
+tation and selection strategy in Appendix E, but summarize key features below:
+• LLM-Assisted Semantic Code Search: To address the challenge of low-resource code
+generation, we create a RetrieveAnnotatedSnippets tool that allows the LLM to search
+the Annotated Library (Section 2) for syntactically correct code snippets relevant to a
+given step (eg: ‘Define the thermal...’ under ‘material’ in Figure 3, right panel, 3⃝).
+
+### Last Solution's Execution Feedback 0###
+model.component().create("comp1", true); -> Correct
+model.component("comp1").geom().create("geom1", 2); -> 
+Correct...
+model.study("std1").create("time", "Transient"); -> Correct
+model.study("std1").feature("time").set("tlist", 
+"range(0,0.1,190)"); -> Correct
+model.study("std1").run(); ->...Messages: The following 
+feature has encountered a problem: - Feature: Time-Dependent
+Solver 1 (sol1/t1) Undefined material property 'k' required 
+by Solid 1...
+model.result().numerical("ev1").set("coord", new String[]{"
+0.1", "0.3"}); -> Error: Exception:...Unknown property.
+ 
+- Property: coord
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+	_
+
+	
+	__	_
+
+
+
+ ­
+
+ ­
+
+	­
+
+
+
+ 
+
+
+
+
+
+­
+­
+1
+1
+2
+2
+3
+4
+4
+3
+Figure 3: The Evaluator’s feedback (left) is passed to the ToolLookupAgent, that calls tools
+and returns their concatenated output. Violet, on the left indicates that the Verifier Feed-
+back is returned by an LLM, and on the right, denotes the arguments chosen by the
+ToolLookupAgent to call the tools with. The numerical annotations highlight the corre-
+spondence between the errors and arguments.
+• Hybrid Evaluator Feedback: The API returns a ‘reply’ to each line of code in the parsed
+LLM solution. These messages indicate whether a line of code was correctly executed.
+We define the percentage of correctly executed parsed lines of code as ‘executability’.
+API messages alone, however, will not contain information about inconsistencies with
+the problem description, such as incorrect physical units. Thus, high executability does
+not guarantee alignment. To address this gap, we call a VerifierLLM to provide feedback
+(Figure 3, left panel) when executability crosses 90%. The API feedback provides a
+signal on syntactical correctness and the VerifierLLM provides a signal on alignment and
+completeness.
+• Analytical-Numerical Consistency: Several problems may allow a scientist to formulate
+an approximate analytical guess for the target value, even if a precise value may only
+be derivable numerically. Using this principle, the VerifierLLM sets an analytical guess
+at the start of the Multi-Turn experiment, given the problem description and compares
+the numerically computed target with the analytical guess.
+4
+Evaluation Metrics
+Reasoning correctly about the problem and issuing the right calls to operate the API poses
+a challenging task for even SOTA LLMs. Moreover, a model can only compute a correct
+target value if it could generate all the code to solve the problem successfully. This renders
+conventional execution-based code evaluation metrics such as the ‘pass@k’ metric (Chen
+et al., 2021; Kulal et al., 2019) challenging to apply to this setting, since most solutions are
+unable to completely solve the problem. Text-based similarity metrics, on the other hand,
+are confounded by the preponderance of boilerplate code and the functional equivalence
+of different code blocks (Appendix C.1). To address this challenge, we introduce a multi-
+faceted evaluation strategy that measures correctness even when a target value could not be
+computed (Table 1). Metrics denoted by † require execution of the API calls. We delineate
+the metrics here:
+5

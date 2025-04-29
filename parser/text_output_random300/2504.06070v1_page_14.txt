@@ -1,0 +1,50 @@
+Published as a conference paper at ICLR 2025
+APPENDIX
+A
+IMPLEMENTATION DETAILS
+In this section, we provide additional details on key aspects of the paper, including the Gradient
+Operator, Signed Distance Field (SDF), Mask Settings and Model Structure.
+For the gradient operator, we discuss its approximation and the associated errors, particularly in
+fluid-boundary interactions. To address these issues, we introduce specific masks—Mask1 for the
+first-order gradient operator and Mask2 for the second-order operator—to reduce these errors.
+The Signed Distance Field (SDF) helps define boundary points and enhances spatial understanding,
+which is crucial for handling irregular shapes and obstacles. The SDF also plays a key role in the
+boundary point identification process (Figure S1).
+Considering that the established mapping function in Eq. 8 is nonlinear and multiscale, our archi-
+tecture employs a structure similar to 3D U-Net to build complex mappings and multiscale features.
+These detailed approaches contribute to improving the accuracy and robustness of the overall pre-
+diction model.
+A.1
+GRADIENT OPERATOR
+Using the Navier-Stokes equations, we transform the partial derivative of concentration with respect
+to time into spatial gradient terms. For these gradient terms, we employ the second-order central
+difference method to achieve estimation. Letting x be an interior point with x −∆x and x + ∆x be
+points neighboring it to the left and right respectively:
+f (x + ∆x) = f(x) + ∆xf ′(x) + ∆x2 f ′′(x)
+2
++ ∆x3 f ′′′ (ξ1)
+6
+, ξ1 ∈(x, x + ∆x)
+f (x −∆x) = f(x) −∆xf ′(x) + ∆x2 f ′′(x)
+2
+−∆x3 f ′′′ (ξ2)
+6
+, ξ2 ∈(x, x −∆x) .
+(S1)
+Solving the linear system, we derive:
+f ′(x) ≈f (x + ∆x) −f (x −∆x)
+2∆x
+.
+(S2)
+To achieve better optimization results, we exclude gradients of boundary points from the training
+loss calculation.
+A.2
+SIGNED DISTANCE FUNCTION
+A signed distance field (SDF) measures the orthogonal distance from a given point x in a metric
+space to the boundary of a set Ω, with the sign determined by the location of x relative to Ω. Specif-
+ically: If x is inside Ω, the signed distance is positive. The distance decreases as x approaches the
+boundary of Ω. If x is outside Ω, the signed distance becomes negative. In essence, the signed
+distance field provides both a magnitude of the shortest distance to the boundary of the set and a
+sign indicating whether the point is inside or outside the boundary.
+Figure S1: An example of Signed distance function and Mask
+14

@@ -1,0 +1,119 @@
+5
+0
+1
+2
+3
+4
+5
+0
+20
+40
+60
+80
+100
+ESS
+two singular points
+repellor
+Cost-to-benefit ratio, b/c
+Threshold, T
+Fig. 4. Presence of singular strategies is shown as a function of the
+benefit-to-cost ratio parameter b/c and threshold parameter T for sig-
+moid benefit function B(τi) =
+b
+1+exp(−βsig(τi−T )). Parameter val-
+ues: n = 5 and βsig = 5.
+In particular, in the case of T = n, if a singular strategy
+exists, it must be a repellor (see Fig. 4). This finding aligns
+with the evolutionary outcomes observed in threshold PGG
+with discrete strategies [40].
+IV.
+SIMULATION RESULTS
+In this section, we provide individual-based simulations to
+verify the theoretical analysis presented above. Our simula-
+tions are carried out for populations with size N = 104 and
+run for 104 generations. In structured populations, individu-
+als are arranged on a 100 × 100 lattice with the von Neumann
+neighborhood and periodic boundary conditions and they in-
+teract with their k = 4 nearest neighbors. The initial trait
+value of each individual is randomly assigned from a Gaus-
+sian distribution around the initial investment, x0, with stan-
+dard deviation σ0 = 0.01. The birth rate of every individual
+is based on the average payoff of k + 1 games he/she partic-
+ipates in. For death-birth updating, an individual is randomly
+selected to die and then all neighbors compete for reproduc-
+tion. With a probability proportional to his/her birth rate, a
+neighbor manages to reproduce and place an offspring in the
+vacant position. Whenever an individual reproduces, the off-
+spring inherits the parental strategy. However, with proba-
+bility µ = 0.01 a mutation occurs and the strategy of the
+offspring is drawn from a Gaussian distribution around the
+parental strategy with standard deviation σmut = 0.01.
+We first present the evolutionary trajectory of the distribu-
+tion of investments over time for the linear benefit function,
+as depicted in Fig. 5. In Fig. 5(a), we examine the scenario
+where the benefit-to-cost ratio is below the critical coopera-
+tion threshold r∗predicted by adaptive dynamics. The results
+demonstrate that the investment distribution within the pop-
+ulation gradually declines to zero. In contrast, Fig. 5(b) il-
+lustrates the situation where the benefit-to-cost ratio exceeds
+r∗, revealing that cooperative investments evolve from an ini-
+tially low level to the maximum, ultimately reaching the state
+of pure cooperation.
+Figure 6 shows the evolutionary dynamics of the trait distri-
+bution for the saturating benefit function. Based on the theo-
+retical results, it is known that if the singular strategy exists, it
+must be an ESS. Therefore, in our simulations we consider the
+benefit-to-cost value at which the existence of singular strate-
+gies happens. We find that cooperative investments evolve
+toward the singular strategy. The distribution of cooperative
+investment in the population stabilizes around the ESS pre-
+dicted by adaptive dynamics (the gray dashed vertical line).
+Figure 7 further illustrates the evolution of the coopera-
+tive investment distribution over time when the sigmoid ben-
+efit function is utilized. In Fig. 7(a), cooperative investments
+evolve towards the singular strategy and stabilize near it, cor-
+responding to the ESS (the gray dashed vertical line). Fig-
+ure 7(b) and (c) depict the evolutionary trajectories when the
+threshold values are intermediate.
+It can be observed that
+when the initial distribution of cooperative investments is be-
+low the theoretically calculated repellor (the black dashed ver-
+tical line), cooperative investments evolve away from the re-
+pellor. Conversely, when the initial distribution exceeds the
+value of the repellor, the trait evolves towards the ESS and
+ultimately stabilizes near it. In the case of a larger threshold
+T (see Fig. 7(d)), if the initial investment is positioned to the
+left of the predicted singular strategy, cooperative investments
+gradually decrease to zero. In contrast, if it is positioned to the
+right of the singular strategy, cooperative investments evolve
+to its maximum value, consistent with the characteristics of
+the repellor.
+V.
+CONCLUSIONS
+In this paper, we have investigated the evolution of coop-
+erative investments in the spatial PGG with different benefit
+functions. By employing the pair approximation approach,
+we have derived the frequency dynamics of the mutant strat-
+egy. Subsequently, we have obtained the dynamical equations
+for these different benefit functions. For the PGG with the
+linear benefit function, we have found that there are no singu-
+lar strategies, and the evolutionary outcomes depend signifi-
+cantly on the benefit-to-cost ratio. Concretely, spatial adap-
+tive dynamics predict a benefit-to-cost threshold above which
+investments reach the maximum but below which they reach
+the minimum. Subsequently, we have identified a potential
+ESS when considering the saturating benefit function. Fur-
+thermore, for the PGG with the sigmoid benefit function, we
+have revealed that the evolutionary outcomes are closely as-
+sociated with the threshold T. When the threshold is small, a
+unique ESS emerges. For the intermediate threshold, both the
+ESS and repellor singular strategies can coexist. When T is
+large, it primarily corresponds to a unique repellor.
+This work continues along the lines of previous investi-
+gations considering continuous games with different bene-
+fit functions
+[24], but it specifically focuses on the PGG
+with group interactions rather than pairwise interactions. We
+have derived the mathematical conditions for the emergence
+of cooperation. Notably, we have observed that cooperation
+emerges in PGG at a lower benefit-to-cost threshold compared

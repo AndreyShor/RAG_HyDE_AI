@@ -1,0 +1,110 @@
+NNLO polarized PDFs with MHOU
+157
+The second term in Eq. (5.6), ΛintRint(θ), is a regularization term that enforces the lowest
+moments of polarized PDFs to be finite. This requirement follows from the assumption that the
+nucleon matrix element of the axial current is finite for each parton. Therefore, the small-x
+behavior of polarized PDFs must obey
+lim
+x→0 x∆f(x, Q2) = 0
+for f = g, Σ, T3, T8 ,
+(5.9)
+lim
+x→0 x2∆f(x, Q2) = 0
+for f = V3, V8 .
+(5.10)
+The first of these two conditions is fulfilled by construction for the polarized quark triplet and
+octet PDF combinations, given the choice of normalization made in their parametrization, see
+Eq. (5.4). The regularization term is therefore
+ΛintRint(θ) = Λint
+X
+f
+h
+x∆f
+
+xint, Q2
+int, θ
+i2
+for f = g, Σ ,
+(5.11)
+ΛintRint(θ) = Λint
+X
+f
+h
+x2∆f
+
+xint, Q2
+int, θ
+i2
+for f = V3, V8 ,
+(5.12)
+where Q2
+int = 1 GeV2 and xint = 10−5. The Lagrange multiplier Λint grows exponentially during
+the fit and reaches the maximum value Λint = 100 at maximum training length.
+The third term in Eq. (5.6), ΛposR(k)
+pos(θ), is enforces PDFs to lead to positive cross-sections. This
+implies that polarized PDFs are bound by their unpolarized counterparts for each parton f, for
+each x, and for each Q2 [366]
+|∆f(x, Q2)| ≤f(x, Q2) .
+(5.13)
+Whereas Eq. (5.13) is formally valid only at LO, it can be suitably used to enforce positivity
+bounds on polarized PDFs at all orders. This is justified by the following observation: NLO
+corrections to the positivity bounds only differ from its lowest order by an amount less than 10%
+in the small-x regions (x ∼10−2) while the positivity bounds in Eq. (5.13) is only significant at
+large-x, as for e.g. g1/F1 ∼x as x →0. Higher-order corrections to the positivity bounds are
+negligible in comparison to the size of the PDF uncertainties in regions where they are found to
+provide no constraints. The positivity regularization term is
+ΛposR(k)
+pos(θ) = Λpos
+X
+f
+n
+X
+i=1
+ReLU
+
+−Cf
+
+xi
+pos, Q2
+pos, θ
+
+,
+ReLU(t) =
+
+
+
+
+
+t
+if t > 0
+0
+if t ≤0
+,
+(5.14)
+where the function
+Cf
+
+xi
+pos, Q2
+pos, θ
+
+= f
+
+xi
+pos, Q2
+pos
+
+−
+∆f
+
+xi
+pos, Q2
+pos, θ
+ + σf
+
+xi
+pos, Q2
+pos
+
+,
+(5.15)

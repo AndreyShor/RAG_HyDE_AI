@@ -1,0 +1,168 @@
+A
+Existence and uniqueness in Lp.
+In this Appendix we focus on the existence and the uniqueness of the solution of the three equations (1.1.6), (1.1.8)
+and (1.1.10), meaning (1.1.7), (1.1.9) and (1.1.11) respectively, as in Definition 1.3. The main result we need is the
+following.
+Proposition A.1. Let X = R2 or X = T2 = R2/Z2, p ∈[1, +∞] and µ0 ∈∩T >0Lp(X×T1
+2π×[0, T]×[−1, 1]). Then the
+solution of the equation (1.1.6) (i.e. the solution of (1.1.7)) is unique in the class ∩T >0Lp(X × T1
+2π × [0, T] × [−1, 1]).
+Moreover for any T > 0 and at any time t > 0 it holds
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z T
+0
+ds
+Z 1
+−1
+dh|µt(x, θ, s, h)| ≤
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z T +t
+0
+ds
+Z 1
+−1
+dh|µ0(x, θ, s, h)|,
+(A.0.1)
+and if µ0 ∈L1(X×T1
+2π ×[0, +∞)×[−1, 1]) then also µt ∈L1(X×T1
+2π ×[0, +∞)×[−1, 1]) and the following properties
+hold
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh|µt(x, θ, s, h)|
+≤
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh|µ0(x, θ, s, h)|,
+(A.0.2)
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dhµt(x, θ, s, h)
+=
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dhµ0(x, θ, s, h).
+(A.0.3)
+Finally it holds
+∥µt∥Lp(X×T1
+2π×[0,T ]×[−1,1]) ≤C∥µ0∥Lp(X×T1
+2π×[0,t+T ]×[−1,1]) + C
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′∥µ0(·, θ′, t′, h′)∥Lp(X), (A.0.4)
+and therefore if µ0 ∈Lp(X × T1
+2π × [0, +∞) × [−1, 1]) also µt ∈Lp(X × T1
+2π × [0, +∞) × [−1, 1]) at any time t > 0 and
+∥µt∥Lp(X×T1
+2π×[0,+∞)×[−1,1]) ≤C∥µ0∥Lp(X×T1
+2π×[0,+∞)×[−1,1]) + C
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′∥µ0(·, θ′, t′, h′)∥Lp(X).(A.0.5)
+Moreover we have:
+• if µ0 ≥0 then µt ≥0 at any time t > 0,
+• if µ0 does not depend on x (or (x, θ)) neither µt does at any time t > 0, and the same properties hold without
+integrating with respect to x (or (x, θ)).
+Before proving Proposition A.1 let us recall that the existence and the uniqueness of the solutions have already been
+proved in [7, 14], as well as the fact that the L1 distance between two solutions is not increasing in time. Nevertheless,
+for self consistency of the paper we prove it, both because our proof is slightly different and because the main Lemma
+we need to prove it will be also useful for other results in this paper.
+Notice also that the quantity in (A.0.5) ensures that µt ∈Lp since for any p ∈[1, +∞] using Young inequality we
+get
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′∥µ0(·, θ′, t′, h′)∥Lp(X) ≤(4πt)1−1
+p ∥µ0∥Lp(X×T1
+2π×[0,t]×[−1,1]).
+Of course, a priori this does not ensure that {µt}t≥0 is bounded in Lp if p ̸= 1.
+Finally, let us stress that if µ0 does not depend on x (respectively on (x, θ)), the second summand in both (A.0.4)
+and (A.0.5) can be expressed as ∥µ0∥L1(T1
+2π×[0,t]×[−1,1]) (respectively as ∥µ0∥L1([0,t]×[−1,1])).
+An intermediate step to prove Proposition A.1.
+To prove Proposition A.1 we need an intermediate result. If
+we look at the equation (1.1.7) and we evaluate µt for s = 0 we get an equation which involves only µt(x, θ, s = 0, h)
+and µ0, that is
+µt(x, θ, 0, h) = µ0(x −v(θ)t, θ, t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)µt′(x −(t −t′)v(θ), θ + π −2 arcsin(h′), 0, h′).
+Therefore the crucial point is proving the existence and the uniqueness of µt(x, θ, 0, h), indeed it defines µt(x, θ, s, h).
+Therefore we first prove the following Lemma (where µt(x, θ, 0, h) is replaced by ρ(x, θ, t, h)) and µ0(x, θ, t, h) is
+replaced by µ(x, θ, t, h)). We write it in a more general way, since we will need it in a slightly different formulation.
+35

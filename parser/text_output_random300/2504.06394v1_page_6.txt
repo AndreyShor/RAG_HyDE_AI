@@ -1,0 +1,177 @@
+6
+toroidal coordinates via (Pedley 1980):
+
+
+ˆ𝑥=
+(𝑅+ ˆ𝑟cos 𝜃) cos ˆ𝑠
+𝑅,
+ˆ𝑦=
+(𝑅+ ˆ𝑟cos 𝜃) sin ˆ𝑠
+𝑅,
+ˆ𝑧=
+−ˆ𝑟sin 𝜃.
+(2.3)
+The negative sign in the last equation ensures that the orthonormal basis vectors {e𝑟, e𝜃, e𝑠}
+follow the right hand rule. We can now rewrite the Navier-Stokes equations (2.1) in component
+form. Writing the velocity vector as ˆu = ˆ𝑢e𝑟+ ˆ𝑣e𝜃+ ˆ𝑤e𝑠, the continuity equation becomes
+(see Pedley 1980, for example)
+𝜕ˆ𝑢
+𝜕ˆ𝑟+ ˆ𝑢
+ˆ𝑟+ 1
+ˆ𝑟
+𝜕ˆ𝑣
+𝜕𝜃+ 1
+ℎ
+𝜕ˆ𝑤
+𝜕ˆ𝑠−ˆ𝑣sin 𝜃
+𝑅ℎ
++ ˆ𝑢cos 𝜃
+𝑅ℎ
+= 0,
+(2.4)
+where ℎ= 1 + ˆ𝑟cos(𝜃)/𝑅is a scale factor. The momentum equations are (see Pedley 1980,
+for the equations expressed in an inertial frame):
+𝜌
+ 𝜕ˆ𝑢
+𝜕ˆ𝑡+ ˆ𝑢𝜕ˆ𝑢
+𝜕ˆ𝑟+ ˆ𝑣
+ˆ𝑟
+𝜕ˆ𝑢
+𝜕𝜃+ ˆ𝑤
+ℎ
+𝜕ˆ𝑢
+𝜕ˆ𝑠−ˆ𝑣2
+ˆ𝑟−ˆ𝑤2
+ℎ
+cos 𝜃
+𝑅
+−ˆΩ ˆ𝑤cos 𝜃−ˆΩ2𝑅ℎcos 𝜃
+
+= −𝜕ˆ𝑝
+𝜕ˆ𝑟+ 𝜇
+ˆ𝑟ℎ
+ ˆ𝑟
+ℎ
+𝜕
+𝜕ˆ𝑠
+ 𝜕ˆ𝑢
+𝜕ˆ𝑠−𝜕
+𝜕ˆ𝑟(ℎˆ𝑤)
+
+−1
+ˆ𝑟
+𝜕
+𝜕𝜃
+ ℎ
+ˆ𝑟
+𝜕
+𝜕ˆ𝑟(ˆ𝑟ˆ𝑣) −ℎ
+ˆ𝑟
+𝜕ˆ𝑢
+𝜕𝜃
+
+,
+(2.5a)
+𝜌
+ 𝜕ˆ𝑣
+𝜕ˆ𝑡+ ˆ𝑢𝜕ˆ𝑣
+𝜕ˆ𝑟+ ˆ𝑣
+ˆ𝑟
+𝜕ˆ𝑣
+𝜕𝜃+ ˆ𝑤
+ℎ
+𝜕ˆ𝑣
+𝜕ˆ𝑠+ ˆ𝑢ˆ𝑣
+ˆ𝑟+ ˆ𝑤2
+𝑅ℎsin 𝜃+ ˆΩ ˆ𝑤sin 𝜃+ ˆΩ2𝑅ℎsin 𝜃
+
+= −1
+ˆ𝑟
+𝜕ˆ𝑝
+𝜕𝜃+ 𝜇
+ℎ
+𝜕
+𝜕ˆ𝑟
+ ℎ
+ˆ𝑟
+ 𝜕
+𝜕ˆ𝑟(ˆ𝑟ˆ𝑣) −𝜕ˆ𝑢
+𝜕𝜃
+
+−𝜇
+ˆ𝑟ℎ2
+ 𝜕
+𝜕𝜃
+
+ℎ𝜕ˆ𝑤
+𝜕ˆ𝑠
+
+−ˆ𝑟𝜕2ˆ𝑣
+𝜕ˆ𝑠2
+
+,
+(2.5b)
+𝜌
+ 𝜕ˆ𝑤
+𝜕ˆ𝑡+ ˆ𝑢𝜕ˆ𝑤
+𝜕ˆ𝑟+ ˆ𝑣
+ˆ𝑟
+𝜕ˆ𝑤
+𝜕𝜃+ ˆ𝑤
+ℎ
+𝜕ˆ𝑤
+𝜕ˆ𝑠+ ˆ𝑢ˆ𝑤
+𝑅ℎcos 𝜃−ˆ𝑣ˆ𝑤
+𝑅ℎsin 𝜃
++𝑑ˆΩ
+𝑑ˆ𝑡(𝑅+ ˆ𝑟cos 𝜃) + ˆΩ ˆ𝑢cos 𝜃−ˆΩˆ𝑣sin 𝜃
+
+= −1
+ℎ
+𝜕ˆ𝑝
+𝜕ˆ𝑠+ 𝜇
+ˆ𝑟2
+𝜕
+𝜕𝜃
+ 1
+ℎ
+𝜕
+𝜕𝜃(ℎˆ𝑤) −ˆ𝑟
+ℎ
+𝜕ˆ𝑣
+𝜕ˆ𝑠
+
+−𝜇
+ˆ𝑟
+𝜕
+𝜕ˆ𝑟
+ ˆ𝑟
+ℎ
+ 𝜕ˆ𝑢
+𝜕ˆ𝑠−𝜕
+𝜕ˆ𝑟(ℎˆ𝑤)
+
+.
+(2.5c)
+Noting that the cupula is approximately thin (with an aspect ratio of around 0.25), we model
+it as a circular plate. We locate the cupula at arc length position ˆ𝑠= 0, and define its deflection
+by the function ˆ𝜂(ˆ𝑟, 𝜃, ˆ𝑡). As indicated above, our numerical simulations have shown that the
+deformation of the cupula is small compared to the tube radius, suggesting that strains are
+small and suggesting it is sufficient to use a linear equation. This small strain assumption
+will be confirmed in Section 2.4 through a scaling argument. Motivated by this linearity and
+the relatively slender geometry of the cupula, we further assume that the cupular deflection
+satisfies the linear plate equation, which in the rotating frame reads (see Howell et al. 2008)
+𝐵∇4 ˆ𝜂−𝑇∇2 ˆ𝜂+ 𝜌𝑠𝑡ℎ
+ 𝜕2 ˆ𝜂
+𝜕ˆ𝑡2 + 𝑅ℎd ˆΩ
+dˆ𝑡
+
+= Δ ˆ𝑝= ˆ𝑝(ˆ𝑟, 𝜃, ˆ𝑠= 2𝜋𝑅, ˆ𝑡) −ˆ𝑝(ˆ𝑟, 𝜃, ˆ𝑠= 0, ˆ𝑡). (2.6)
+where 𝐵= 𝐸𝑡3
+ℎ/[12(1 −𝜈2
+𝑠)] is the plate’s bending stiffness and 𝑇is the applied tension in
+the plate (which we assume is uniform and constant since deflections remain small compared
+to 𝑡ℎ). In this regime, the forcing for the cupular displacement is given by the pressure jump
+across the two sides of the cupula.
+We require boundary conditions for both the fluid problem (2.5) and the elastic prob-
+lem (2.6). The walls of the endolymph are assumed to have a no-slip condition, so that in

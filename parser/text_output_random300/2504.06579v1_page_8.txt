@@ -1,0 +1,59 @@
+CONTENTS
+8
+2.2.3. Matrix elements of superoperator eU(s)
+Using Eq. (15) in Eq. (11), we get
+eU(s) =
+
+(s+λ)I+iH×
+0 −λT1 −λ∆T
+−1 ,
+(21)
+which on expanding in powers of λ yields the Dyson series:
+eU(s) = eU0(s)
+h
+I+λ∆T eU0(s)+λ 2∆T eU0(s)∆T eU0(s)+...
+i
+,
+(22)
+where we have
+eU0(s) ≡
+
+(s+λ)I+iH×
+0 −λT1
+−1 .
+(23)
+Our quantity of interest, namely, the stay-put probability for level 1, is given by
+P1(t) = ⟨1|ρ(t)|1⟩,
+(24)
+which in the Laplace space reads as
+eP1(s) = ⟨1| eU(s)ρ(0)|1⟩,
+(25)
+on using Eq. (5). Note that we have
+ρ(0) = |1⟩⟨1|.
+(26)
+We thus need to compute the quantity
+⟨1| eU(s)ρ(0)|1⟩= ∑
+m1m2
+(11| eU(s)|m1m2)⟨m1|ρ(0)|m2⟩
+= (11| eU(s)|11)
+= (11| eU0(s)
+h
+I+λ∆T eU0(s)+λ 2∆T eU0(s)∆T eU0(s)+...
+i
+|11),
+(27)
+where we have used Eq. (22).
+Let us look at the physical interpretation of the different terms in the series in Eq. (27).
+The first term is (11| eU0(s)|11), which describes the evolution of the system starting from the
+“state" |11), where note that given the block structure of H×
+0 , see Eq. (20), and that the only
+non-zero element of T1 is (11|T1|11) = 1, the aforesaid evolution restricts the system within
+the 4×4 Hilbert space spanned by the states |11), |22), |12) and |21). The second term in the
+series reads as (11| eU0(s)λ∆T eU0(s)|11). From Eq. (17), we see that ∆T operates only within
+the 4×4 Hilbert space spanned by the states |22), |33), |23) and |32). Hence, ∆T eU0(s)|11)
+would take the system from the state |11) to the state |22) alone. This implies that we must
+have
+(11| eU0(s)λ∆T eU0(s)|11) = λ(11| eU0(s)|22)(22|∆T |22)(22| eU0(s)|11)
+= λ
+2 (11| eU0(s)|22)(22| eU0(s)|11).
+(28)

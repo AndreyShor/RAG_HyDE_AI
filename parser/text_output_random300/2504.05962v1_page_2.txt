@@ -1,0 +1,78 @@
+ 
+model [6] based on a 1D-convolutional autoencoder 
+architecture.  
+Because X-class flares are known to have particularly 
+significant impacts on the Earth, we tested our method 
+on recent data from the X1.3 flare observed in active 
+region (AR) 13663 in May 2024. Our analysis centered 
+on reconstructing Stokes V profiles due to their high 
+magnetic sensitivity 
+for examining the spatial 
+distributions of anomalous Stokes V spectra in 
+correlation with magnetogram images. 
+ 
+2. METHOD 
+2.1. Autoencoder 
+2.1.1. Model architecture 
+In deep learning, deep autoencoders are a powerful 
+model architecture designed for non-linear compression 
+tasks. Their core principle involves compressing data by 
+reconstructing the data through two main components: 
+the encoder and the decoder. The encoder reduces the 
+dimensionality of the input into a compact feature vector, 
+while the decoder expands this feature vector back to its 
+original dimensions.  
+To 
+facilitate 
+dimensional 
+reduction 
+and 
+reconstruction, both the encoder and decoder utilize 
+various neural network layers, such as fully connected 
+and convolutional layers. Our model uses 1D-
+convolutional 
+and 
+deconvolutional 
+layers, 
+complemented by pooling and upsampling layers, to 
+compress and reconstruct Stokes I and V spectra 
+efficiently. The architecture of the autoencoder model is 
+detailed in Figure 1. 
+2.1.2. Autoencoder as an anomaly detector 
+Due to their efficient compression capabilities, 
+autoencoders are used as anomaly detectors by learning 
+to reconstruct normal data and by identifying deviations 
+in reconstruction for anomalous data. The model is 
+initially trained on a normal dataset containing no 
+anomalies, allowing it to learn the underlying patterns 
+in the data. As a result, the autoencoder can reconstruct 
+any new normal data with minimal reconstruction error. 
+However, when the pre-trained model encounters 
+anomalous data that it has not seen before, it struggles 
+to achieve accurate reconstruction, leading to a 
+substantially higher reconstruction error. By analyzing 
+this error, we can distinguish anomalous data from 
+normal data. In our study, we apply this principle using 
+our compression model to detect unusual spectral 
+profiles in solar spectral data prior to flare events and 
+explore whether or not these spectra correlate with 
+actual flare-triggering regions in the spatial domain. 
+2.2. Dataset 
+Hinode/SP provides spectro-polarimetric (SP) map 
+data, capturing spatial images of Stokes I, Q, U, and V 
+for Fe I line pair profiles. Each pixel in the SP map 
+contains intensity values for I, Q, U, and V across 112 
+wavelength points, specifically covering the line centers 
+at 630.15 and 630.25 nm, as well as their continuums. 
+This study focused on Stokes I and V profiles, 
+representing the total intensity and the circular 
+Figure 1. Autoencoder architecture for spectral 
+compression. The blue, cyan, and green shades 
+represent 
+the 
+encoder, 
+bottleneck, 
+and 
+decoder 
+components, respectively. The layer/data shapes are 
+shown in parentheses following each layer name. 

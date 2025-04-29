@@ -1,0 +1,33 @@
+Deﬁnition 15. A non-local computation game (or NLC-game) of a function
+f is a XOR-game G = (X × Y, A × B, π, V ) where V : C × Z →{0, 1},
+Z = {x ⊕y|x ∈X, y ∈Y } and V (a ⊕b, x ⊕y) = 1 if a ⊕b = f(x ⊕y).
+Linden et al. showed that when considering such a model, neither classical
+nor quantum strategies can always win a given game.
+Theorem 11. Let G be a non-local computation game. Then
+ωC(G) = ωQ(G) < 1
+5
+Non-locality Distillation
+The motivation behind the study of non-locality distillation is the question
+of whether we can use a set of boxes to simulate the behaviour of a more
+non-local one. For example, can we use a set of n noisy PR-boxes to simulate
+the behaviour of a less noisy PR-box.
+Deﬁnition 16. A non-locality distillation protocol (NDP) consists of local
+operations performed by Alice and Bob on their respective ends of n boxes
+with a given CHSH value to simulate the input-output behaviour of a higher
+valued box.
+A non-locality distillation protocol N on n boxes P, denoted
+N n[P], consists of local operations performed on the boxes to simulate the
+input/output behaviour of a box P ′ = N n[P].
+Of course, for a distillation protocol to be useful we must have that the
+CHSH value of the box simulated by the protocol is greater than the CHSH
+value of the input boxes (i.e. CHSH(P ′) > CHSH(P)). However, we do
+not require that distillation is achieved for all families of boxes, because as
+we will soon see, this would be impossible.
+5.1
+Limits on Distillation Protocols
+This section contains upper bounds and impossibilities on non-locality distil-
+lation protocol. For example, the ﬁrst statement of theorem 12 asserts that
+no distillation protocol can create non-locality from locality. The results of
+this theorem were taken from [12].
+Theorem 12. For any non-locality distillation protocol N ,
+13

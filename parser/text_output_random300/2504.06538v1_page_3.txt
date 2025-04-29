@@ -1,0 +1,118 @@
+erated action sequences.
+The integration of diffusion models and flow matching
+techniques represents the current frontier in action gen-
+eration. UniSim [28] and NOD-TAMP [5] adapted dif-
+fusion models for action generation, while π0 [2] intro-
+duced a flow matching framework that offers better sam-
+ple efficiency. These generative approaches provide more
+flexible action distributions but lack the explicit physical
+constraints that govern real-world interactions.
+Despite these advances, significant challenges remain in
+generating physically consistent, long-horizon action se-
+quences for complex manipulation tasks.
+Current ap-
+proaches either rely on task-specific fine-tuning to achieve
+high performance or struggle with maintaining physical
+consistency across extended action sequences. Our work
+addresses these limitations through a principled topo-
+logical approach that enforces physical constraints while
+maintaining generalizability across diverse tasks.
+Building upon existing VLA frameworks [2, 27, 15], our
+model applies topological quantum field theories to ef-
+fectively constrain the action space to exclusively phys-
+ically consistent actions, thereby guaranteeing the fea-
+sibility of executing each generated plan.
+Our frame-
+work significantly enhances the efficacy of long-horizon
+robotic action planning compared to previous VLA mod-
+els [27, 15]. By integrating large language models [27]
+and flow matching techniques [2] with our novel topolog-
+ical quantum field theory approach, we provide a broadly
+generalizable mechanism for generating physically con-
+sistent, fluid action plans in robotic control systems. To
+our knowledge, our work demonstrates the most effec-
+tive solution for constraining robotic motion to a phys-
+ically feasible action space, yielding performance im-
+provements over existing solutions across all test metrics.
+2.1
+Topological Quantum Field Theory
+Topological quantum field theories (TQFTs) provide
+mathematical frameworks for describing systems where
+global properties remain invariant under certain transfor-
+mations. The Levin-Wen model [17] is a string-net for-
+malism that encodes topological constraints through lo-
+cal fusion rules.
+While these concepts have primarily
+been applied in quantum physics, we show that they pro-
+vide valuable insights for structuring action representa-
+tions in robotics. Our work represents the first application
+of string-net formalism to robotic control, establishing a
+connection between topological quantum field theory and
+robot learning.
+3
+Method
+3.1
+Formal Task Definition
+Let ot = [I1
+t , ..., In
+t , ℓt, qt] denote a multimodal observa-
+tion at time t, where Ii
+t represents the i-th RGB image
+(typically from base, left wrist, and right wrist cameras),
+ℓt is a language command, and qt encodes proprioceptive
+state information.
+Our objective is to model the conditional distribution
+p(At|ot), where At = [at, at+1, ..., at+H−1] represents
+a sequence of future actions over horizon H = 100. We
+structure this sequence hierarchically as:
+(1)
+At = [P 1
+t , P 2
+t , ..., P K
+t ]
+Where each primitive P k
+t = [ak,1
+t
+, ak,2
+t
+, ..., ak,m
+t
+] contains
+m detailed actions, maintaining H = K · m = 100.
+4
+The OPAL Model
+4.1
+Overview
+Our model builds upon previous approaches to unify lan-
+guage and vision encoders for robotic control. Specifi-
+cally, we adopt a vision language model backbone that
+processes tokens from both image and language modali-
+ties, as well as the proprioceptive robot state. In contrast
+to existing approaches, which rely solely on standard late
+fusion, we introduce a novel topological attention mecha-
+nism to impose explicit physical constraints during token
+fusion. This mechanism preserves the structural relation-
+ships and dynamics of the robot’s embodiment, thus im-
+proving the consistency and feasibility of action genera-
+tion.
+After encoding each modality, we employ a cross-
+attention fusion mechanism to integrate information
+across modalities:
+[H = MHAttn([Vis(I1
+t ), ..., Vis(In
+t ), Lang(ℓt), State(qt)])]
+(2)
+Where MHAttn is the multi-head attention (. This cross-
+modal fusion employs our novel topological attention
+mechanism, which enforces physical constraints during
+the information exchange between modalities. The result-
+ing representation H ∈R(nv·n+nℓ+1)×d forms a unified
+multimodal embedding that preserves the structural rela-
+tionships necessary for physically consistent action gen-
+eration.
+4.2
+Architecture
+OPAL resembles a hybrid multi-head architecture (Fig-
+ure 1).
+Transformer-based components are responsible
+3

@@ -1,0 +1,61 @@
+A Scalable Automatic Model Generation Tool for Cyber-Physical Network Topologies and Data Flows for Large-Scale
+Synthetic Power Grid Models
+XXX:21
+Fig. 26. Comparison of a 500-node network using Chung Lu(left), Havel Hakimi(center), and statistics-based
+algorithm(right).
+Table 7. Comparison of proposed statistics-based topology with Havel-Hakimi and Chung-Lu models.
+Case
+Topology
+𝐿𝑎𝑣𝑒
+𝑑𝑖𝑎𝑚𝑒𝑡𝑒𝑟
+Max
+(hops)
+(hops)
+Node
+Degree
+50-node
+Statistics-Based
+8.4
+24
+5
+Havel-Hakimi
+8.62
+22
+10
+Chung-Lu
+7.72
+22
+10
+SC (500)
+Statistics-Based
+12.54
+40
+8
+Havel-Hakimi
+27.6
+85
+69
+Chung-Lu
+27.04
+86
+43
+improved techniques and their validation for planning, detection, and response, to assess, avoid,
+and mitigate the potential impacts of adversarial actions on the grid.
+An algorithm for generating a comprehensive cyber-physical model was developed in SAM-GT,
+offering a versatile approach that can accommodate any power system model and transform it
+into a cyber-physical network, presenting the results in the form of a JSON file. The algorithm’s
+applicability and effectiveness are demonstrated through its implementation in three fictitious
+power systems: a 500-bus test case situated in South Carolina, a 2000-bus test case in Texas, and a
+10,000-bus test case on the Western United States. Each test case was modeled using three different
+network topologies such as star, radial, and statistics-based topology. One notable feature of this
+work is its generality, making it suitable for adaptation to a wide range of power system networks.
+To model the data flows, four different communication protocols are used in this current model as
+it can be easily altered for future use. We aim to improve the algorithm’s versatility by allowing users
+to specify communication protocols as input. This enhancement recognizes that communication
+protocols can vary based on the utility’s location and type, making it a valuable user-configurable
+feature. Another configurable feature should be the relay connections within a substation, partially
+determined by the substation topology.
+In future work, we plan to improve how utility control center locations are chosen and which
+substations are connected to them. When using the radial topology, we noticed that some generation
+substations are connected to multiple transmission substations. We can use this information to
+group all these substations under the same utility control center.

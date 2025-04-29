@@ -1,0 +1,102 @@
+GreenOx
+Cat
+Horse
+Lays
+RedOx
+RGB
+GT
+Ours
+GT
+Ours
+GT
+Ours
+GT
+Ours
+GT
+Ours
+Mesh and Normal 
+back view
+front view
+Figure 3. Qualitative results of captured datasets. For each sce-
+nario, the top row shows the input reference image, ground-truth
+mesh (obtained by painting and scanning), and corresponding nor-
+mals; the bottom row demonstrates our resolved results, including
+the rendered image and extracted mesh.
+method stands out in rendering out the higher-quality sur-
+face reconstruction. While multi-view consistency assump-
+tions tend to break down when dealing with glossy surfaces
+in certain scenes, our polarization setup allows for the ef-
+fective modeling of RGB information from various perspec-
+tives through polarization rendering, as denoted by Iout
+ϕpol ear-
+lier. This unique representation seamlessly integrates both
+the object’s normal vector and material properties, facilitat-
+ing the deduction of geometric characteristics and material
+properties within a unified framework. By progressively en-
+hancing the accuracy of Iout
+ϕpol through the minimization of
+rendering loss, we implicitly refine the accuracy of normal
+vector and subsequently elevate the quality of geometry.
+4. Experiment
+4.1. Datasets and Results
+To meet our requirements, we build a simple data acquisi-
+tion system using off-the-shelf products, which includes an
+RGB camera (SONY A6400 with 4K resolution) and a lin-
+ear polarizer, as shown in Fig. 1. We select several complex
+objects with varying materials, such as ceramics, metal, and
+plastic, see examples in Figs. 1 (RedOx) and 3 (GreenOx,
+NeuPIL
+Normal
+PhySG
+NVDR
+InvR Ref-NeuS NeRO
+Ours
+Cat
+Diffuse
+Specular
+GT
+N/A
+N/A
+N/A
+N/A
+Figure 4. Qualitative comparison with SOTA methods. Our ap-
+proach excels in reconstructing intricate features such as beard and
+tail segments, due to the advantage of the polarization information.
+Cat, Horse and Lays). In practice, we fix the orientation of
+polarizer across all the captured views and hold the device
+to collect images approximately evenly around the object,
+see example camera poses in Fig. 2. The multi-view im-
+ages are captured under uncontrolled indoor lighting envi-
+ronments, and about 40 images are enough for each object.
+In all cases, we first downsample the image by a factor of 4
+and apply COLMAP [23] to obtain the initial poses.
+Results tested on RedOx model and others are shown in
+Figs. 1 and 3. Note that, for a variety of different materials
+(ceramics, metal, etc.), with varying lighting conditions, our
+method still recovers the surface geometry reasonably well.
+Moreover, the fact that polarization cues behave differently
+for the diffuse and specular components greatly aid in un-
+derstanding material properties and facilitating radiance de-
+composition, which is an inherently ill-posed problem. As
+depicted in presented examples, our results reasonably sep-
+arate the diffuse and specular components. Additionally, the
+estimated polarimetric cues align with our intuition, i.e., the
+AoP is orthogonal for the diffuse and specular components,
+while the DoP is higher for the specular regions.
+4.2. Assessments against Counterparts
+Comparisons with non-polarization methods.
+We have
+conducted a comparison of our approach with several state-
+of-the-art radiance decomposition and surface reconstruc-
+tion methods.
+For instance, as depicted in Fig. 4, Neu-
+ralPIL [2] and PhySG [34] are the baseline methods of
+PANDORA [7], InvRender [35] accounts for indirect light-
+ing in the BRDF estimation and employs the Spherical
+Gaussian to represent direct or indirect lighting.
+NVD-
+iffRec [13] utilizes differentiable Monte-Carlo sampling
+sampling with a denoiser. Ref-NeuS [9] aims to reduce am-
+biguity by attenuating the effect of reflective surfaces, while
+NeRO [18] proposes to reconstruct the geometry and BRDF
+of objects with strong reflective appearances.

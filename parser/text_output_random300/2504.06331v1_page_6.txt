@@ -1,0 +1,142 @@
+A&A proofs: manuscript no. main
+get log10 MBH/M⊙= 8.83 ± 0.46, where most of the error comes
+from propagating the scatter of Eq. 2. This number is in line with
+previously reported estimation (Graham et al. 2015b).
+3.2. Single disky broad-line region with a spiral perturbation
+BLRs are often considered spherically symmetric and virialized.
+However, multiple observational results, mostly from reverbera-
+tion mapping campaigns, have proven this is not always the case
+(Eracleous et al. 1995; Bentz et al. 2010; Grier et al. 2017). This
+is especially true when emission lines deviate from pure Gaus-
+sianity (Zastrocky et al. 2024) as this is often tracing the pres-
+ence of sub-structures in the BLR clouds distribution or devia-
+tions from virial equilibrium (Pancoast et al. 2014). Even though
+the structure of the BLR has been typically investigated with
+velocity-resolved reverberation mapping, here we follow an ap-
+proach closer to that presented in Raimundo et al. 2020 on sin-
+gle epoch observations. Similarly to what is done in that work,
+we employ a nested sampling approach for the parameter esti-
+mation; however, instead of focusing on the BLR kinematics,
+we consider asymmetric deviation in its emissivity. Our semi-
+analytic model is based on Storchi-Bergmann et al. 2003a where
+asymmetric emission lines are modeled by introducing a spi-
+ral perturbation in a disk-like BLR rotating in circular Keple-
+rian motion around its SMBH. Such kind of perturbations are
+expected to arise in the self-gravitating part of accretion disks
+(Wang et al. 2022).
+In what follows, we summarize the main assumptions of the
+model “spiral model” hereinafter) that is described in detail in
+Sottocorno et al. (in prep.). The BLR is assumed to be on a razor-
+thin disk-like configuration whose axial symmetry is broken due
+to the presence of a spiral perturbation. Under these assumptions,
+the BLR emissivity profile reads:
+<
+ϵ(ξ, ϕ) = ξ−1 · exp
+−(ξ −ξc)2
+2σ2
+ξc
+
+(
+1+
+A
+2 exp
+"
+−4 log 2
+δ2
+(ϕ −ψ0)2
+#
++
+A
+2 exp
+"
+−4 log 2
+δ2
+(2π −ϕ + ψ0)2
+#)
+,
+(3)
+where ξ is the cylindrical radius normalized to the gravitational
+radius Rg = GMBH/c2, and ϕ is the azimuthal angle. ξc and σξc
+are the radial position and the extent of the bulk of the emissivity
+profile respectively, while A and δ define the relative intensity of
+the spiral perturbation with respect to the underground Gaussian
+emissivity and the azimuthal width of the spiral, respectively.
+Finally, ϕ −ψ0 denotes the azimuthal distance from the ridge of
+the spiral arm, where ψ0 = ϕ0 + log10 (ξ/ξsp)/ tan p. Here ϕ0 is
+the initial angular position of the spiral at the innermost radius
+of the spiral ξsp, while p is the spiral pitch angle.
+The emissivity profile of Eq. 3 differs from that assumed by
+Storchi-Bergmann et al. 2003b for a Gaussian multiplicative fac-
+tor in the radial dependence of the emissivity. This choice en-
+sures that the bulk of the BLR emissivity is localized close to the
+radius predicted by the luminosity-radius relation (Bentz et al.
+2009; Shen et al. 2024).
+The emission line profiles of the BLR are the emissivity-
+weighted sum of the contribution coming from each resolution
+element of the BLR scaled by a luminosity normalization pa-
+rameter LHβ (for the Hβ) and LHγ (for the Hγ). We assume each
+resolution element to emit as a Gaussian centered at the Hβ (or
+Hγ) Doppler-shifted wavelength and whose width is regulated
+by a broadening parameter, σλ. The Doppler shift of each reso-
+lution element is computed by assuming the BLR is inclined by
+an angle, i, with respect to line-of-sight.
+A summary of the model parameters together with the as-
+sumed priors and the best-fit parameters is reported in Tab. 2.
+We assumed either uniform or log-uniform priors for most of
+the parameters, except for the inclination angle which follows a
+uniform distribution for sin i. We allowed a maximum inclina-
+tion angle of π/4 since for a higher inclination angle, we do not
+expect to observe BELs due to the obscuration from the dusty
+torus. Moreover, we assume the BLR extending between 200
+and 18000 gravitational radii, which, in the case of a 108.8 M⊙
+BH, becomes from ≃0.006 pc to ≃0.58 pc. This number must
+be considered as an order of magnitude estimate of the BLR size
+since the gravitational radius is affected by the error propagation
+on the BH mass. Still, since the spiral model does not explicitly
+depend on the BH mass, the results regarding the appearance of
+PG 1302-102 BLR will remain unchanged.. Finally, since the
+Hβ and Hγ emission line might not necessarily be localized at
+the same distance from the SMBH and subject to the same dy-
+namics (Kuhn et al. 2024), we included different radial lengths,
+widths, and broadening parameters for the two lines.
+The spiral model presented here does not account for any-
+thing else besides a broad emission component at a chosen ref-
+erence wavelength (the Hβ and Hγ in our case). For this reason,
+in order to apply such a model directly to the spectrum presented
+in Fig. 1, we must account for all the sources of emission that
+are not associated with a broad component (“background model”
+hereinafter). Since the spiral model has a higher computational
+cost, to limit the number of iterations before reaching conver-
+gence we fixed the background model to the best fit obtained
+in Model 1 excluding the broad Gaussian contribution associ-
+ated with the Hβ, Hγ, and the very broad and redshifted compo-
+nent. Even with this approximation the overall parameter estima-
+tion required more than a week13 before reaching convergence.
+Therefore, in order to obtain a complete parameter estimation
+without excluding any data14in a reasonable amount of time, we
+followed the approach outlined in Rigamonti et al. 2022, 2023,
+implementing a GPU parallelization strategy for a much faster
+(few hundred times) computation of the likelihood function.
+The top panel of Fig. 3 shows the best-fit spiral model in
+black (see Tab. 2 for the estimated parameters) on top of the
+ESPRESSO data in gray. The gold line refers to the broad emis-
+sion from the spiral BLR, while all the other colors refer to the
+components of the background model that have been taken from
+Model 1. The bottom panel represents the residuals defined as
+(data-model)/error. Compared to Model 1, the spiral model pro-
+vides a better fit to the data, reducing the residuals both in the re-
+gion dominated by the Hβ and the Hγ. Notably, the spiral model
+is able to account for the excess at λ ≃5000Å giving a phys-
+ical interpretation to the very broad and very redshifted com-
+ponent included in Model 1. The same model, without chang-
+ing the overall geometrical structure15 of the BLR, improved the
+fit of the Hγ emission (see Sec. 4 for a more detailed discus-
+sion). Notably, even though we did not impose any prior relat-
+ing the scale radius, width, and broadening of the Hβ and Hγ
+13 On an 8-core machine equipped with 13th Gen Intel(R) Core(TM)
+i7-1355U.
+14 A possibility could have been to focus on the Hβ only reducing the
+analyzed wavelength range and the overall computational cost of the
+parameter estimation.
+15 We note that i, A, δ, ϕ0, and p are the same for the Hβ and Hγ.
+Article number, page 6 of 13

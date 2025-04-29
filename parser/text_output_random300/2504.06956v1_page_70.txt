@@ -1,0 +1,99 @@
+Proof of Proposition 6.1
+70
+This probability can be bounded by using Lemma 4.19, from which we deduce that is less than a
+constant times e−c
+√
+Lu/b, for some c > 0.
+Step 2: We now show how we can remove the indicator function regarding the quantityM0,b+1,b(Υu+x
+b
+).
+Fix x ∈[L/2, A + L] and u ∈[b1/4, b3/4]. Using again the fact that the quantity Fλ
+b,x−L,L(Υu+x
+b
+) is
+by definition bounded above by L, we need to estimate the following probability
+P0,u,b(M0,b+1,b(Υu+x
+b
+) > x −(A + L)) .
+Thanks to (K2), the seed covariance function K is supported in B(0, 1) and so, recalling the definition
+(4.1) of the field Φb, we have that, for all y ∈Rd with |y| > eb,
+Υu+x
+b
+(y) = −Bb + Zb(y) −
+√
+2db + gb,u+x(y) ,
+where we recall that Zb is the centred Gaussian field on Rd introduced in Definition 3.9. In particular,
+leveraging again on the fact that K is supported in B(0, 1), we have that for all x, y ∈Rd with |x|,
+|y| > eb,
+E[Zb(x)Zb(y)] =
+Z b
+0
+K(e−s(x −y))ds .
+In particular, this implies that the scaled field Zb(·)
+def= Zb(eb·) has the same covariance of the martingale
+approximation at level b of a ⋆-scale invariant field with seed covariance function K. Therefore, by
+rescaling space, the event {M0,b+1,b(Υb,g) > x −(A + L)} is equivalent to the event that
+{M0,1,0(Zb + gb,u+x(eb·)) −
+√
+2db > Bb + x −(A + L)} .
+Therefore, on the events {M0,1,0(gb,u+x(eb·)) < b1/4/2} and {Bb > b1/4}, using the same argument
+as in the proof of Lemma 4.3, we observe that, there exists a constants c > 0 such that, for any
+x ∈[0, A + L] and u ∈[b1/4, b3/4],
+P(M0,1,0(Zb) −
+√
+2db > b1/4/2 + x −(A + L)) ≲e−c(b1/4−(A+L)) .
+On the other hand, to treat the event {M0,1,0(gb,u+x(eb·)) ≥b1/4/2}, we can use the fact that the
+supremum over B1 \ B0 of gb,u+x(eb·) has uniform Gaussian tails, in order to obtain a similar
+(stronger) bound.
+Finally, the conclusion follows readily by combining the bounds provided in Steps 1 and 2.
+Finally, we need to prove that the function Fλ
+b,x−L,L in Gλ
+(7.38) can be replaced by Fλ
+k,x−L,L for some
+0 ≤k < b. To this end, for 0 ≤k < b, we define
+Gλ
+(7.40)
+def= α
+Z A+L
+L/2
+e
+√
+2d(x−L)
+Z b3/4
+b1/4
+e−u2
+2b
+√
+2πb
+(u + x)
+· E0,u,b
+h
+Fλ
+k,x−L,L(Υu+x
+b
+)1{M0,b(Υu+x
+b
+)≤λ}
+i
+dudx ,
+(7.40)
+and we claim the following lemma.
+Lemma 7.14. For any λ > 0, ε > 0 and A, L ≥0, there exist k ≥0 sufficiently large, and b ≥k
+sufficiently large such that
+|Gλ
+(7.40) −Gλ
+(7.38)| ≤ε .
+Proof. For 0 ≤k < b, we define the following event
+Ek,b
+def=
+b−1
+[
+j=k
+
+sup
+y∈Aj
+Υu+x
+b
+(y) ≥−a log(j)2
+
+,

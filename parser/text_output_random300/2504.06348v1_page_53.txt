@@ -1,0 +1,52 @@
+estimation in first quantization [29], but tackle real-time quantum evolution, a problem for which a more
+limited suite of classical methods is available and the threshold of classical simulability occurs at smaller
+problem sizes.30 Nonetheless, we expect that further algorithmic, compiling, and physics optimizations will
+be needed to determine scientifically interesting and cost-efficient dynamical problems for early-generation
+FTQC. For example, one may apply architectural optimizations based on active volume [92] in order to
+reduce compilation costs that are dominated by arithmetic, as was recently shown in the context of energy
+estimation [93].
+The present work is the most in-depth study of the potential of quantum computers to probe entirely
+new physical regimes via fully quantum mechanical calculations of a molecular system dynamics, with the
+aim to understand (and eventually better control) catalytic chemical processes at a fundamental level. We
+consider this as a milestone in a broader research effort, opening up a range of new venues that we broadly
+categorize into three themes: simulating other elementary processes, handling the computational issue of
+rare events, and the incorporation of additional physics.
+Regarding other elementary processes, in this manuscript, we have focused on studying bond reconfigu-
+ration/reaction mechanisms. However, the same concepts may be applied towards studying adsorption and
+desorption processes. Note that a number of techniques and heuristics coming from less accurate theories
+may be needed to accelerate the process so that the likelihood of an event is not too low, while retaining
+the ability to extrapolate the true rates and/or infer binding energies. A combination of adsorption, bond
+reconfiguration, and desorption forms the basic set of elementary processes that produces surface chemistry.
+Our exact quantum dynamical simulations on short timescales might aid in discovering the types of struc-
+tures that naturally occur due to the fully-coupled motion of electrons and pseudoions, although significant
+work must be done on how to best synergize our methods with existing classical methods.
+Concerning rare events, we indicated that if we simply initialize states according to thermodynamic
+considerations our quantum algorithm may display low reaction rates, i.e. small wavefunction amplitudes
+of states corresponding to non-trivial bond reconfigurations, since reaction events rely on fairly unlikely
+thermodynamic fluctuations. Luckily, the challenge of having to sample from rare events in not an issue
+specific to quantum algorithms, so one can take inspiration from classical techniques to mitigate this problem.
+We have already taken steps to avoid inactive configurations in Sec. 2.2, but more can be done to lift classical
+techniques into the quantum algorithm.
+Finally, in terms of additional physics, in this work we have only considered isolated quantum systems,
+with an ‘environment’ provided only by a limited number catalyst atoms mimicking the catalyst surface.
+Real chemical reactions, however, critically involve thermalization and require notions of temperature and
+pressure, thus necessitating further discussion of how to handle open system effects for realistic modeling.
+Furthermore, there is increasing scientific interest in photocatalysis and plasmonic catalysis (and also elec-
+trochemistry), which additionally require the inclusion of electromagnetic fields. Many reactions also involve
+radicals and open-shell species that play a crucial role in determining reaction rates. Some of these settings
+can be tackled within the framework described in this work or simple extensions thereof, but others (e.g.
+inclusion of open system dynamics) require considerable further modeling and algorithmic development that
+we leave to future work.
+Author contributions and acknowledgments
+Author and contribution lists are alphabetical. ML, BŞ, KS developed the initial state preparation, block-
+encoding algorithm, and quantum chemical identification (QCI) protocol. FJ developed the initial state
+preparation, provided guidance with chemical physics, developed the QCI protocol, and performed the
+classical simulations to validate QCI. SP performed the compilation of the algorithm. BŞ, KS performed
+the numerical resource estimation. KS envisioned and managed the project. All authors contributed to
+discussing, reading, and writing the manuscript. We particularly acknowledge helpful discussions with Arvin
+30Specifying a direct classical comparison is difficult since this type of exact dynamics simulation is seldom, if ever, considered
+in conventional quantum chemistry. However, as discussed at the end of Sec. 1.2, we note that full configuration-interaction
+real-time simulations with additional constraints such as the BO approximation as in [61] are still limited to just a few atoms
+and for a few femtoseconds. Furthermore, Ref. [61] remarks that allowing joint electron and nuclear motion would allow the
+study of charge transfer and chemical reactions, as we consider in this work.
+53

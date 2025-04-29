@@ -1,0 +1,40 @@
+curve) steadily decreasing throughout the training process. The blue dash-
+dotted and red dotted curves represent the minimal and the maximal loss
+function values, respectively, while the gray dashed curves are the plots of the
+25th and 75th percentiles of the loss distribution. The loss function values
+presented in Fig. 2 were taken only at the end of each training cycle. These
+observations suggest that an early stopping may not be an optimal strategy
+in this problem.
+This behavior may be attributed to the cyclical learning rate schedule.
+This behavior may be related also to the phenomenon of grokking [28], where
+an ensemble with the increasing number of neural networks undergoes a phase
+transition, shifting to signiﬁcantly lower loss values. As a result, while in-
+dividual networks may experience abrupt improvements, the ensemble as a
+whole exhibits a relatively smooth and continuous learning trajectory. How-
+ever, an additional research is required to explicitly demonstrate the eﬀect
+of grokking.
+The set of hyperparameters outlined in this section (but not limited to)
+controlling the machine learning process has been designed and carefully
+tested in the described above benchmark problem of extrapolating the ground
+state energy of the 2H nucleus supported by the Nijmegen II NN potential.
+2.2. Prediction processing
+Not all trained neural networks produce reasonable predictions, thus it
+is needed to establish selection criteria for networks in the ensemble. The
+selection process consists of three main stages [17, 18]: constructing a pre-
+diction array including results from diﬀerent model spaces, applying ﬁltering
+criteria to retain only reliable networks, and ﬁltering the outliers.
+Prediction array construction. The prediction array is obtained by generat-
+ing the results for model spaces Nu
+max + 2, Nu
+max + 4, ... , Nf
+max and the range
+of ℏΩvalues matching that of the training dataset. We use Nf
+max = 300 as
+the upper limit for the model space predictions.
+Selection criteria. To ensure the reliability and stability of the ensemble, we
+apply the following selection criteria:
+• “Soft” Variational Principle (for energies only): The predictions ob-
+tained with increasing Nmax at the same ℏΩvalues may exhibit minor
+violations of the variational principle due to numerical errors which are
+not exceeding 0.1 keV.
+7

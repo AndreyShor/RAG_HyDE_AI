@@ -1,0 +1,47 @@
+A Scalable Automatic Model Generation Tool for
+Cyber-Physical Network Topologies and Data Flows for
+Large-Scale Synthetic Power Grid Models
+SAMANTHA ISRAEL, SANJANA KUNKOLIENKAR, ANA GOULART, KATHERINE DAVIS,
+and THOMAS OVERBYE, Texas A&M University, USA
+Power grids and their cyber infrastructure are classified as Critical Energy Infrastructure/Information (CEII)
+and are not publicly accessible. While realistic synthetic test cases for power systems have been developed in
+recent years, they often lack corresponding cyber network models. This work extends synthetic grid models by
+incorporating cyber-physical representations. To address the growing need for realistic and scalable models that
+integrate both cyber and physical layers in electric power systems, this paper presents the Scalable Automatic
+Model Generation Tool (SAM-GT). This tool enables the creation of large-scale cyber-physical topologies for power
+system models. The resulting cyber-physical network models include power system switches, routers, and firewalls
+while accounting for data flows and industrial communication protocols. Case studies demonstrate the tool’s
+application to synthetic grid models of 500, 2,000, and 10,000 buses, considering three distinct network topologies.
+Results from these case studies include network metrics on critical nodes, hops, and generation times, showcasing
+SAM-GT ’s effectiveness, adaptability, and scalability.
+CCS Concepts: • Networks →Topology analysis and generation; Star networks; Hybrid networks;
+Cyber-physical networks; • Computer systems organization →Embedded and cyber-physical sys-
+tems.
+Additional Key Words and Phrases: Electric grid test cases, cyber-physical models, star, radial, statistics-based
+topology, topology generation, network modeling, cyber-physical model.
+1
+Introduction
+Electric grid models have been used for years to study how power systems function [25]. Models
+or test cases enable researchers to test new algorithms on power grid networks without the risk of
+interrupting the electricity supply to customers. The information is not publicly available since
+power grid data is considered critical infrastructure [4, 26]. Thus, fictitious electric grid models of
+varying sizes, also known as synthetic models, have been used for research.
+Over the past few decades, communication systems have been widely integrated into power
+systems, transforming them into more intelligent and sophisticated networks. The stable operation
+of power grids depends on various factors, including the interdependencies between subsystems,
+system parameters, and control mechanisms—many of which are influenced by the cybersecurity
+of communication and software systems.
+The synergy between cyber and power networks is undeniable; they represent two interconnected
+layers of the same system. Incorporating communication models, particularly for cybersecurity
+applications, is crucial for improving our understanding of power grid behavior and informing the
+development of new planning strategies. This is especially important in the context of high-impact,
+low-frequency events, such as communication-related failures and cyber threats.
+Cyber-physical models play a critical role in advancing cybersecurity research by enabling
+researchers to analyze communication nodes, protocols, and adversarial tactics. These models
+strengthen the resilience and robustness of modern power grids against evolving threats.
+Enhancing cyber-physical resiliency benefits a wide range of stakeholders, including utilities,
+Transmission Service Providers (TSPs), Independent System Operators (ISOs), and consumers. The
+Authors’ Contact Information: Samantha Israel, samantha.israel@tamu.edu; Sanjana Kunkolienkar, sanjanakunkolienkar@
+tamu.edu; Ana Goulart, goulart@tamu.edu; Katherine Davis, katedavis@tamu.edu; Thomas Overbye, overbye@tamu.edu,
+Texas A&M University, College Station, Texas, USA.
+arXiv:2504.06396v1  [eess.SY]  8 Apr 2025

@@ -1,0 +1,127 @@
+Thus,
+Z
+D
+𝑈𝜕𝑈
+𝜕𝑡𝑑𝑥⩽
+Z
+D
+𝑈𝑅(𝑈) 𝑑𝑥.
+(2.48)
+Applying the Linear Growth Condition,
+Z
+D
+𝑈𝑅(𝑈) 𝑑𝑥⩽𝐶
+Z
+D
+(1 + |𝑈|2) 𝑑𝑥.
+(2.49)
+Using Gronwall’s inequality,
+sup
+𝑡∈[0,𝑇]
+∥𝑈(𝑡)∥𝐿2(D)⩽𝑀.
+(2.50)
+Multiply equation (2.41) by |𝑈| 𝑝−2𝑈and integrate over D:
+Z
+D
+|𝑈| 𝑝−2𝑈𝜕𝑈
+𝜕𝑡𝑑𝑥= 1
+2
+Z
+D
+|𝑈| 𝑝−2𝑈𝜕2𝑈
+𝜕𝑥2 𝑑𝑥+
+Z
+D
+|𝑈| 𝑝−2𝑈𝑅(𝑈) 𝑑𝑥.
+(2.51)
+Using integration by parts and the Dirichlet boundary condition:
+Z
+D
+|𝑈| 𝑝−2𝑈𝜕2𝑈
+𝜕𝑥2 𝑑𝑥= −(𝑝−1)
+Z
+D
+|𝑈| 𝑝−2
+ 𝜕𝑈
+𝜕𝑥
+2
+𝑑𝑥⩽0.
+(2.52)
+Thus,
+Z
+D
+|𝑈| 𝑝−2𝑈𝜕𝑈
+𝜕𝑡𝑑𝑥⩽
+Z
+D
+|𝑈| 𝑝−2𝑈𝑅(𝑈) 𝑑𝑥.
+(2.53)
+Applying the exponential decay condition:
+Z
+D
+|𝑈| 𝑝−2𝑈𝑅(𝑈) 𝑑𝑥⩽𝐶
+Z
+D
+|𝑈| 𝑝−2𝑈𝑒−𝛼𝑈𝑑𝑥.
+(2.54)
+For large |𝑈|, the term
+|𝑈| 𝑝−1𝑒−𝛼𝑈⩽𝐶𝑒−𝛼𝑈/2.
+(2.55)
+Since 𝑒−𝛼𝑈/2 decays exponentially and dominates any polynomial growth, the integral remains bounded. Using
+Moser’s iteration,
+sup
+𝑡∈[0,𝑇]
+∥𝑈(𝑡)∥𝐿∞(D)⩽𝐶′𝑒−𝛽𝑡∥𝑈0∥𝐿2(D).
+(2.56)
+This proves that 𝑈remains strictly bounded in 𝐿∞with exponential decay.
+□
+Theorem 2.4. Suppose that the EFK equation satisfies the Lipschitz condition of Lemma Appendix E.7, and
+the neural network solution 𝑈preserves an energy dissipation law. Moreover, let 𝑈0 ∈𝐻2
+0(D), so that the energy
+dissipation property holds:
+𝐸(𝑈) ⩽𝐸(𝑈0).
+(2.57)
+Then, the solution 𝑈is bounded in the 𝐿∞-norm.
+Proof. The energy function in neural network 𝑈terms is defined as from eq (2.13):
+𝐸(𝑈) =
+Z
+D
+ 𝛾
+2 |∆𝑈|2+1
+2 |∇𝑈|2+1
+4(1 −𝑈2)2
+
+𝑑𝑥.
+(2.58)
+Differentiating 𝐸(𝑈) with respect to time:
+𝑑𝐸
+𝑑𝑡=
+Z
+D
+ 𝛾
+2
+𝑑
+𝑑𝑡|∆𝑈|2+1
+2
+𝑑
+𝑑𝑡|∇𝑈|2+1
+4
+𝑑
+𝑑𝑡(1 −𝑈2)2
+
+𝑑𝑥.
+(2.59)
+First term:
+𝑑
+𝑑𝑡|∆𝑈|2
+Since |∆𝑈|2= (∆𝑈)2, differentiation gives:
+𝑑
+𝑑𝑡|∆𝑈|2= 2∆𝑈· ∆𝑈𝑡.
+(2.60)
+Thus,
+𝑑
+𝑑𝑡
+𝛾
+2 |∆𝑈|2= 𝛾∆𝑈· ∆𝑈𝑡.
+(2.61)
+12

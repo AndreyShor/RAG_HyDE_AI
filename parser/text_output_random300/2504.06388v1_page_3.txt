@@ -1,0 +1,56 @@
+Elimination of spurious oscillations on photoemission spectra
+3
+results for simple potentials obtained via both projection techniques and the WOM. In
+Sec. 4, we apply the methods to the photoionization of metallic surfaces. Finally, Sec.
+5 summarizes our ﬁndings and outlines future directions for the systematic study of
+metal photoionization under ultrashort laser pulses. Unless otherwise stated, atomic
+units are used throughout.
+2. Theory
+2.1. Resolution of the time-dependent Schr¨odinger equation
+We consider the ionization of a one-dimensional system consisting of a single electron
+bound in a short-range potential V (z) and subjected to an external time-dependent
+electric ﬁeld.
+Within the dipole approximation, the time-dependent Schr¨odinger
+equation (TDSE) takes the form
+i ∂
+∂t|ψ(t)⟩= [H0 + Hint(t)] |ψ(t)⟩,
+(1)
+where the unperturbed Hamiltonian is H0 = p2/2 + V (z), with the ﬁrst term
+representing the kinetic energy of the electron, and the second term describing its
+interaction with an attractive potential that models, for example, an atom, molecule,
+or solid-state system.
+The term Hint(t) accounts for the interaction with the external ﬁeld. In the length
+gauge, this interaction is given by Hint(t) = zF(t), where F(t) is the time-dependent
+electric ﬁeld. Under the inﬂuence of this ﬁeld, an electron initially in a bound state
+|φi⟩may either be excited to another bound state |φn⟩with energy En, or ionized into
+the continuum, ending in a state |φk⟩characterized by asymptotic momentum k and
+energy E = k2/2.
+To numerically solve Eq. (1), we use the staggered leap-frog method [19, 20].
+This is a robust time propagation technique commonly applied in the simulation of
+atomic and molecular few-body dynamics [21]. The method provides an eﬃcient and
+stable approach for evolving the wavefunction under the inﬂuence of strong and time-
+dependent external ﬁelds.
+2.2. Projection onto stationary waves
+Once the TDSE [Eq. (1)] has been solved, the time-propagated wave function
+ψ(z, t) = ⟨z|ψ(t)⟩is available. After the conclusion of the electric pulse of duration
+τ, the electron is subject only to the inﬂuence of the time-independent potential V (z)
+Therefore, the kinetic energy is conserved, and the asymptotic momentum k is a good
+quantum number. We consider in this paper only symmetric short-range potentials,
+i.e., V (z) = V (−z). Hence, both bound φj(z) and continuum φk(z) eigenstates of the
+time-independent Hamiltonian H0 have deﬁnite parity, which means that they will
+be either even [φ(e)
+i (z) = φ(e)
+i (−z)] or odd [φ(o)
+i (z) = −φ(o)
+i (−z)]. The wave function
+ψ(z, τ) at the end of the interaction with the external force can be written as a linear
+combination of stationary eigenstates
+|ψ(τ)⟩=
+Nb
+X
+j
+aj|φj⟩+
+Z ∞
+−∞
+dk ak|φk⟩,
+(2)

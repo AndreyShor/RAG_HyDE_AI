@@ -1,0 +1,74 @@
+Published as a conference paper at ICLR 2025
+(b) Model
+(c) Discrete PDEs
+(a) Constraints
+C4
+C1
+C2
+C3
+D1
+D2
+D3
+M1
+M2
+Figure 9: Ablation experiments: (a) constraint, (b) model, and (c) discrete PDEs.
+Constraint Ablation. In our method, We introduced multiple constraints. We performed experi-
+ments by removing the physical and temporal constraints to evaluate the impact on performance.
+Besides, to validate whether the inclusion of pressure p is beneficial for prediction, we also designed
+an experiment: no Velocity-Pressure Constraint, which removes e1 in Eq. 12. Results in Figure 9
+(a) and Table 3 show that the inclusion of constraints and p is beneficial for prediction.
+Model Ablation. We introduced a correction network to refine the gradient operator. We conducted
+experiments to evaluate performance without this network. The results are shown in Figure 9 (b).
+The correction network notably improves accuracy, especially in later predicted frames.
+Discrete PDEs Ablation. In Eq. 4, the prediction operator use c(t′) to predict, which might be re-
+placed with c(tk). We conducted two sets of experiments: one where c(t′) replace c(tk) and another
+involving modifications to the prediction operator. The results, presented in Figure 9 (c), show that
+while these adjustments improve accuracy in the initial frames, the error increases significantly as
+the number of predicted frames increases.
+Better
+Better
+FNO
+UNO
+UFNO
+LSM
+HelmFluid
+PINP
+2D Model
+3D Model
+Figure 10: Comparison of GPU memory consumption and MAE
+Figure
+10
+illustrates
+our
+model’s performance during
+testing alongside its memory
+consumption.
+Our model
+employs a 3D structure in
+both 2D and 3D scenarios,
+this results in higher memory
+usage in 2D scenes.
+Con-
+versely, in 3D scenes, our
+model
+exhibits
+relatively
+lower memory usage.
+6
+CONCLUSION
+This paper introduces the Physics-Informed Neural Predictor (PINP) model, designed for predicting
+spatiotemporal evolution. The PINP model leverages latent multi-quantity modeling and integrates
+PDEs directly into the neural network framework, enabling enhanced understanding and accurate
+prediction of dynamical systems.
+A key feature of the PINP model is its ability to estimate latent physical quantities that are not
+directly observed in the data. This provides more comprehensive analysis of the physical processes
+underlying the observed dynamics. The model’s architecture embeds the governing PDEs, ensuring
+that physical constraints are adhered to during both training and prediction phases. This integration
+leads to improved consistency with physics, facilitating robust long-term forecasts.
+When evaluated against a range of baseline methods, the PINP demonstrates better prediction ac-
+curacy, particularly in its ability to extrapolate over extended temporal horizons and generalize spa-
+tially. This was confirmed through testing on multiple benchmark datasets, where PINP’s predictions
+aligned more closely with ground truth than those of competing approaches. In future research, we
+aim to expand the application of the PINP model to more complex and comprehensive tasks, ac-
+counting for other type of governing PDEs.
+10

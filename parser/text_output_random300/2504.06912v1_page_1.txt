@@ -1,0 +1,103 @@
+A modified-residue prescription to calculate dynamical correlation functions
+Igor Benek-Lins,1 Jonathan Discenza,1 and Saurabh Maiti1, 2
+1Department of Physics, Concordia University, Montr´eal, QC H4B 1R6, Canada
+2Centre for Research in Multiscale Modelling, Concordia University, Montr´eal, QC H4B 1R6, Canada
+(Dated: April 10, 2025)
+One of the challenges in using numerical methods to address many-body problems is the multi-
+dimensional integration over poles. More often that not, one needs such integrations to be evaluated
+as a function of an external variable.
+An example would be calculating dynamical correlations
+functions that are used to model response functions, where the external variable is the frequency.
+The standard numerical techniques rely on building an adaptive mesh, using special points in the
+Brillouin zone or using advanced smearing techniques. Most of these techniques, however, suffer
+when the grid is coarse. Here we propose that, if one knows the nature of the singularity in the
+integrand, one can define a residue and use it to faithfully estimate the integral and reproduce all the
+resulting singular features even with a coarse grid. We demonstrate the effectiveness of the method
+for different scenarios of calculating correlation functions with different resulting singular features,
+for calculating collective modes and densities of states. We also present a quantitative analysis of
+the error and show that this method can be widely applicable.
+CONTENTS
+I. Introduction
+1
+II. The modified-residue prescription
+2
+A. Demonstration of the prescription
+3
+B. Incorporation with other prescriptions
+4
+III. Examples
+5
+A. Spectral functions
+5
+B. Collective modes
+6
+C. Density of states
+6
+IV. Error analysis
+7
+A. Constraint on the sub-interval size
+7
+B. The order of integration and taking imaginary
+part
+9
+V. Conclusion
+9
+A. Integration in the singular sub-interval
+10
+References
+10
+I.
+INTRODUCTION
+A response from a D-dimensional quantum system
+(D ∈{1, 2, 3}), quite generally, involves integration over
+their Brillouin zones (BZs).
+In metallic systems, the
+integration region is often restricted to the Fermi sur-
+face, which still forms a D −1 dimensional manifold (for
+D ≥2). Most of these integrations involve integration
+of singularities resulting from a pole or a line/surface
+of poles, which makes the calculation computationally
+very expensive, especially if one also needs to account for
+many-body effects [1–4]. This problem has been long rec-
+ognized and has led to many prescriptions that help with
+the cost of computation without compromising on the re-
+sult’s accuracy. These include exploiting special points
+in the BZ [5, 6], using the tetrahedron method over BZ
+points [7–12], using adaptive mesh in the BZ [13–15],
+and using advanced smearing/broadening methods [16–
+18], to name a few.
+When studying response functions, there are two main
+types of singularities of interest. One is that in the inte-
+grand, and the other is that in the integral. The singular
+– or nonanalytic – features that result from the integra-
+tion also carries useful information about the properties
+of the system [19–22]. In many cases, the resulting sin-
+gular features are the result of many-body effects and are
+not easily captured using the prescriptions listed above.
+The major issue is that all of these approaches help im-
+prove ab initio methods.
+When calculating a two-body spectral function of a
+new quantum ground state, such as a superconductor,
+the universal low-energy properties are not directly de-
+pendent on the original lattice and BZ parameters. In
+such problems, the computation of the ground state it-
+self is so expensive that one has to coarsely discretize
+the Fermi surface and the computation is done using a
+fixed ‘grid’ of values.
+Techniques based on functional
+renormalization group (fRG) [23–25] and random-phase
+approximation (RPA) [26, 27] are good examples that
+illustrate this.
+This discretization makes the subsequent computation
+of a dynamical response function (that is a function of
+an external frequency ω) not amenable to the automated
+adaptive algorithms as there is no longer the freedom to
+add more intermediate grid points without re-doing the
+already expensive many-body ground-state calculation.
+In order to be able to model responses from such mate-
+rials, it would be beneficial to have a method that can
+accurately handle the singularities of the integrand and
+reproduce singular features of the resulting integral, all
+with the original coarse mesh used to obtain the ground
+state.
+arXiv:2504.06912v1  [physics.comp-ph]  9 Apr 2025

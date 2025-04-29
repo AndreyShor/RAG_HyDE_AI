@@ -1,0 +1,90 @@
+Diffuse
+Specular
+Normal
+PANDORA / Ours
+Input
+PANDORA / Ours / GT
+AoP
+DoP
+(a)
+(b)
+s0
+Figure 6. Results of Owl and Gnome models. (a) Comparison of
+the estimated AoP and DoP. (b) Comparison of the estimated ge-
+ometry and radiance decomposition. For Owl model, the average
+PSNR/SSIM on 10% held-out test set between the estimated re-
+sults of s0 and the corresponding ground-truth are 24.46/0.8756
+(ours) and 25.07/0.8972 (PANDORA). The PSNR/SSIM of
+which on Gnome model are 28.13/0.9274 and 28.43/0.9378.
+Comparisons with polarization methods.
+Tested on the
+synthetic data, both visualized results (Fig. 5) and quanti-
+tative comparison (Tab. 2) reveal that our method achieves
+comparable performance with SOTAs. Using Bust model as
+an example, we present the ground-truth diffuse and specu-
+lar components, as well as normals and environment map.
+Next, we study the raw data collected by PANDORA [7]
+(Owl and Gnome), as shown in the leftmost column of
+Fig. 6(a). These datasets are obtained by acquiring raw im-
+ages with a dedicated polarization camera equipped with
+SONY IMX250MZR sensor [25]. After demosaicing, the
+raw image could be decomposed into four polarization im-
+ages with different polarizing angles of 0◦, 45◦, 90◦, and
+135◦. In the following experiments, we use the image with
+the polarizer’s angle of 135◦as input and leverage our ap-
+proach to implicitly reconstruct the Stokes vectors and other
+information. For each case, we randomly select 90% of the
+images for training. The results are shown in Fig. 6.
+It is noteworthy that, in PANDORA, the AoP and DoP
+are directly calculated from the captured data and are used
+as ground truths. In contrast, our approach generates inter-
+mediate outputs from the network, and our results can also
+nicely interpret the polarization states. Furthermore, since
+polarization is closely related to surface geometry and ma-
+terial properties, better estimated polarization cues result in
+high-quality decomposed diffuse and specular components,
+Normal
+Diffuse
+Specular
+N/A
+w/o pol
+(Ref-NeRF)
+w/o pol
+(Ref-NeRF)
+w/o pol and
+diffuse only
+(VolSDF)
+N/A
+w/o pol and
+diffuse only
+(VolSDF)
+Figure 7. Ablation study. For each example, the top row depicts
+the results obtained by excluding polarization cues during render-
+ing. Additionally, we exclusively focus on the diffuse components,
+and the corresponding outcomes are presented in the middle row.
+The bottom row showcases our outputs.
+such as the tummy of the Owl and the beard of the Gnome.
+4.3. Analysis
+Ablation study.
+As shown in Fig. 7, we conduct two ab-
+lation studies for validation, such as, the effectiveness of
+polarization cues and the consideration of specular compo-
+nents. We first replace the polarized rendering as described
+in Sec. 8 with the normal volume rendering. This design
+choice is actually an enhanced variant of Ref-NeRF [27].
+Secondly, we compute the RGB loss between the ren-
+dered diffuse radiances, by removing the specular compo-
+nent during rendering, and the ground truth, this is actually
+VolSDF [33] with mask supervision used as a baseline.
+Based on the reconstruction results, such as the top case
+of Fig. 7, where the surface exhibits distinct specular re-
+gions, without polarization cues, the network faces chal-
+lenges in accurately learning distinctive features, leading to
+less precise surface geometry. Despite this, our method still
+demonstrates robustness in capturing surface details, even
+in regions with prominent specular components.
+On the other hand, the final radiance decomposition re-
+sults demonstrate that polarization cues can aid the network
+in better approximating true diffuse and specular compo-
+nents. In general, to ensure the consistency across multiple
+views, the network tends to focus on learning the diffuse

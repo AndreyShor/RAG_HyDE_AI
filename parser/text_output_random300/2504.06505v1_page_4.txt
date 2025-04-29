@@ -1,0 +1,49 @@
+ 
+4 
+ 
+𝑃!"(𝑹) = & 𝛿(ℳ(𝒓) −𝑹)𝑃##(𝒓)𝑑𝒓, 
+(1) 
+where 𝑹 represents the CG coordinates, ℳ(𝒓) is the mapping operator that projects AA configurations 
+onto the CG space, and 𝑃##(𝑟) is the equilibrium distribution of the AA system. Since the equilibrium 
+distribution of the CG system is connected to the CG potential through relationship 𝑃!"(𝑹) ∝𝑒$ &'(𝑹), 
+where 𝛽=
++
+,!-, one can achieve thermodynamic consistency by optimizing the CG potential 𝑈(𝑹). 
+Methods like force matching,2, 3, 24 and relative energy minimization (REM)19, 25, 26 have been developed as 
+the prototype methods for this aim.   
+While thermodynamic consistency ensures the model preserves the statistical mechanics of the 
+reference atomistic system, such as free energy landscapes and ensemble-averaged observables, it does not 
+ensure the accurate reproduction of dynamical properties.4 To address this, we introduce the principle 
+of dynamic consistency, requiring the CG model to preserve the temporal evolution of the AA system. This 
+is defined as: 
+ 
+𝑃!"(𝑹𝟏:𝑻) = & 2 𝛿(ℳ(𝒓𝒕) −𝑹𝒕)
+-
+23+
+𝑃##(𝒓𝟏:𝑻)𝑑𝒓𝟏:𝑻, 
+(2) 
+where 𝑅+:- ≡{𝑅+, ⋯, 𝑅-} and 𝑟+:- ≡{𝑟+, ⋯, 𝑟-} separately represent the CG and AA trajectory over 
+𝑇 timesteps, and 𝑃!"(𝑹𝟏:𝑻) and 𝑃##(𝒓𝟏:𝑻) are trajectory ensembles (path probability distributions) of CG 
+and AA atom systems.  
+In the context of bottom-up CG simulation, AA simulation trajectories are collected as the reference 
+data, which approximate the trajectory ensemble  𝑃##(𝒓𝟏:𝑻). The trajectory ensemble of the CG model can 
+also be collected by propagating the system forward in time according to dynamical equations such as 
+Brownian dynamics or Langevin dynamics. To obtain the optimal parameters, one minimizes the 
+discrepancy between two ensembles by minimizing the chosen distance metric between two distributions. 
+For example, using the Kullback–Leibler as the distance metric,27 one can follow the parameters 𝜃,  
+ 
+𝜃4 = argmax
+5
+𝐷,6(𝑄5(𝑅+:-) ∥𝑃789(𝑅+:-) ) 
+(3) 
+However, optimizing the model parameters 𝜃 to align between the two ensembles according to Eq. 
+(3) is impractical. First, trajectory ensembles reside in a high-dimensional space, making the direct 
+computation of pairwise distance matrices infeasible. Second, the dependence of the trajectory ensemble 
+on the model parameters is highly nonlinear, necessitating specialized optimization algorithms to efficiently 
+explore the parameter space. 
+To address these challenges, we adopt an adversarial training framework, which provides an 
+efficient solution for aligning trajectory distributions. In particular, the use of a Generative Adversarial 
+Network (GAN) enables the model to learn the underlying distribution of high-dimensional data without 
+explicitly computing high-dimensional distances.22 The conventional adversarial approach consists of a 
+generator, which produces synthetic samples, and a discriminator, which distinguishes between the 
+generated and target ensemble samples. Through this adversarial learning process, the generator iteratively 

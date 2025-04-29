@@ -1,0 +1,171 @@
+where the expression in parenthesis is a unitary operator with the same form as that in the Coulomb term
+(c.f. Eq. (89),(90)). The particle index register preparation routine is
+PREP2|0⟩=
+1
+√ηval
+ηval
+X
+i=1
+|i⟩⊗
+1
+qPηion
+I=1 λ ˜V I
+loc
+ηion
+X
+I=1
+q
+λ ˜V I
+loc|I⟩
+(99)
+where
+λ ˜V I
+loc =
+3
+X
+s=−1
+X
+c∈{0,1}
+2π(¯rζI
+loc)3
+Ω
+rπ
+2 |cζI
+s |λζI,s
+loc ,
+(100)
+λζI,s
+loc =
+X
+q∈G0
+e−(|kq|¯r
+ζI
+loc)2/2(|kq|¯rζI
+loc)2s.
+(101)
+The expression before the parenthesis in Eq. (98), and therefore the amplitudes necessary for PREP, only
+depend on I through the pseudoion type ζI. For both the local and non-local interaction terms, we first load
+the ion type, indexed on I, using a QROM |I⟩|0⟩7→|I⟩|ζI⟩(this shared cost is accounted for in the cost for
+the non-local term). The state preparations below are then controlled on the register encoding ζI. For the
+BEloc routine we perform an LCU with the preparation,
+PREPloc|0⟩|ζI⟩=
+1
+q
+λ ˜V I
+loc
+3
+X
+s=−1
+X
+q∈G0
+X
+c∈{0,1}
+s
+2π(¯rζI
+loc)3
+Ω
+rπ
+2 |cζI
+s |e−(|kq|¯r
+ζI
+loc)2/2(|kq|¯rζI
+loc)2s|s, sgn(cζI
+s ), q, c⟩|ζI⟩,
+using a sequence of controlled unitaries PREPloc = PREPloc,2 · PREPloc,1 where their actions are
+PREPloc,1|0⟩|ζI⟩=
+1
+q
+λ ˜V I
+loc
+3
+X
+s=−1
+X
+c∈{0,1}
+s
+2π(¯rζI
+loc)3
+Ω
+rπ
+2 |cζI
+s |λζI,s
+loc |s, sgn(cζI
+s ), c⟩|ζI⟩,
+(102)
+PREPloc,2|0⟩|s⟩|ζI⟩=
+1
+q
+λζI,s
+loc
+X
+q∈G0
+q
+e−(|kq|¯r
+ζI
+loc)2/2(|kq|¯rζI
+loc)2s|q⟩|s⟩|ζI⟩.
+(103)
+The SELECT for the local term is given by,
+SELloc =
+3
+X
+s=−1
+X
+q∈G0
+X
+c∈{0,1}
+|s, sgn(cζI
+s ), q, c⟩⟨s, sgn(cζI
+s ), q, c| ⊗U loc
+(s,sgn(c
+ζI
+s ),q,c),
+(104)
+U loc
+(s,sgn(c
+ζI
+s ),q,c) =
+X
+p∈G,P∈G
+(−1)c(p−q/∈G∨P+q/∈G)+sgn(c
+ζI
+s )|p −q, P + q⟩⟨p, P|,
+(105)
+where the unitaries U loc are very similar to that of the Coulomb case (c.f. Eq. (96)), but additionally include
+the accumulation of sgn(cζI
+s ) in the phase. The total rescaling factor of then becomes,
+λVloc = ηval
+ηion
+X
+I=1
+λ ˜V I
+loc = ηval
+ηion
+X
+I=1
+3
+X
+s=−1
+4π(¯rζI
+loc)3
+Ω
+rπ
+2 |cζI
+s |
+X
+q∈G0
+e−(|kq|¯r
+ζI
+loc)2/2(|kq|¯rζI
+loc)2s.
+(106)
+The subroutine PREPloc,1 is a state preparation of 5 elements (the c variable sum just gives a |+⟩state). We
+achieve this with coherent alias sampling; see App. E.4.2. The dominant preparation cost is from PREPloc,2,
+which invokes quantum rejection sampling as described in Ref. [75] with Type I and Type III reference states
+discussed in App. C. However, we note that the structure of this state is very similar to other states that
+we seek to prepare; in particular, Eq. (103) is a state that looks similar to Eq. (113) for the non-local term.
+We reduce costs by combining these preparations; i.e. we use a single unitary state preparation routine to
+prepare the reference state for the non-local and local term; here, careful conditioning on the term selection
+register and the register containing |s⟩flags which sub-case is appropriate and prepares the correct reference
+state in the correct branch. See App. E.5.3 for a detailed construction.
+37

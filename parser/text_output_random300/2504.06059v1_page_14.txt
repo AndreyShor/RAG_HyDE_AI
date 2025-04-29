@@ -1,0 +1,89 @@
+14
+[10] S. A. Fldzhyan, M. Y. Saygin, and S. P. Kulik, Opti-
+mal design of error-tolerant reprogrammable multiport
+interferometers, Optics Letters 45, 2632 (2020).
+[11] T. G. de Brugi`ere and S. Martiel, Shallower cnot circuits
+on realistic quantum hardware, ACM Transactions on
+Quantum Computing 6, 1 (2025).
+[12] S. A. Kutin, D. P. Moulton, and L. Smithline, Compu-
+tation at a distance, Chic. J. Theor. Comput. Sci. 2007
+(2007).
+[13] T. G. De Brugi`ere, M. Baboulin, B. Valiron, S. Martiel,
+and C. Allouche, Gaussian elimination versus greedy
+methods for the synthesis of linear reversible circuits,
+ACM Transactions on Quantum Computing 2, 1 (2021).
+[14] A. Borel, Linear algebraic groups, Vol. 126 (Springer
+Science & Business Media, 2012).
+[15] B. A. Bell and I. A. Walmsley, Further compactifying
+linear optical unitaries, Apl Photonics 6 (2021).
+[16] J. Mills and R. Mezher, Mitigating photon loss in lin-
+ear optical quantum circuits: classical postprocessing
+methods outperforming postselection, arXiv preprint
+arXiv:2405.02278 (2024).
+[17] D. J. Brod, E. F. Galv˜ao, A. Crespi, R. Osellame,
+N. Spagnolo, and F. Sciarrino, Photonic implementa-
+tion of boson sampling: a review, Advanced Photonics
+1, 034001 (2019).
+[18] D. A. Miller, Perfect optics with imperfect components,
+Optica 2, 747 (2015).
+[19] R. Burgwal, W. R. Clements, D. H. Smith, J. C. Gates,
+W. S. Kolthammer, J. J. Renema, and I. A. Walms-
+ley, Using an imperfect photonic network to implement
+random unitaries, Optics Express 25, 28236 (2017).
+[20] R. Hamerly,
+S. Bandyopadhyay, and D. Englund,
+Asymptotically fault-tolerant programmable photonics,
+Nature Communications 13, 6831 (2022).
+[21] S. P. Kumar, L. Neuhaus, L. G. Helt, H. Qi, B. Morri-
+son, D. H. Mahler, and I. Dhand, Mitigating linear op-
+tics imperfections via port allocation and compilation,
+arXiv preprint arXiv:2103.03183 (2021).
+[22] S. Bandyopadhyay, R. Hamerly, and D. Englund, Hard-
+ware error correction for programmable photonics, Op-
+tica 8, 1247 (2021).
+[23] G. H. Golub and C. F. Van Loan, Matrix computations
+(JHU press, 2013).
+[24] D. Su, I. Dhand, L. G. Helt, Z. Vernon, and K. Br´adler,
+Hybrid spatiotemporal architectures for universal linear
+optics, Physical Review A 99, 062301 (2019).
+[25] S. P. Kumar and I. Dhand, Unitary matrix decompo-
+sitions for optimal and modular linear optics architec-
+tures, Journal of Physics A: Mathematical and Theo-
+retical 54, 045301 (2021).
+[26] H. de Guise, O. Di Matteo, and L. L. S´anchez-Soto,
+Simple factorization of unitary transformations, Physi-
+cal Review A 97, 022328 (2018).
+[27] I. Dhand and S. K. Goyal, Realization of arbitrary dis-
+crete unitary transformations using spatial and internal
+modes of light, Physical Review A 92, 043813 (2015).
+[28] B. Go, C. Oh, L. Jiang, and H. Jeong, Exploring
+shallow-depth boson sampling: Toward a scalable quan-
+tum advantage, Physical Review A 109, 052613 (2024).
+[29] A. Bouland, D. Brod, I. Datta, B. Fefferman, D. Grier,
+F. Hernandez, and M. Oszmaniec, Complexity-theoretic
+foundations of bosonsampling with a linear number
+of modes, Arxiv pre-print
+(2023), arXiv:2312.00286
+[quant-ph].
+[30] J. Renema, V. Shchesnovich, and R. Garcia-Patron,
+Classical simulability of noisy boson sampling, arXiv
+preprint arXiv:1809.01953 (2018).
+[31] L. Lov´asz, J. Pelik´an, and K. Vesztergombi, Discrete
+mathematics: elementary and beyond (Springer Science
+& Business Media, 2003).
+Appendix A: Proof of the depth complexity of Boson sampling with long-range MZIs
+Let V ∈Cm×n be our target isometry. In the special case where we couple MZIs, the greedy algorithm can be
+simplified as follows:
+• assign to each row i of V the label
+pi = min
+j
+V [i, j] ̸= 0.
+If no such label exists then pi = n + 1.
+• group rows with same labels two by two. For simplification, if row i < n has label pi > i then we fix pi = i.
+This will ensure us in the end that the nonzero part of the matrix is on the first n rows.
+• Let i, j, i < j be such two rows with label pi. Apply an long-range MZI between modes i and j to zero the
+entry V [j, pi].
+• repeat steps 1-3 until V is diagonal.
+Overall, the whole process can be summarized by a sequence of integer arrays (Tk)k, each Tk being of size n + 1,
+where Tk[i] gives the number of rows with label i at step k of the process.
+A detailed example with m = 10, n = 4 is represented in Figure 11 with values of the Tk given.

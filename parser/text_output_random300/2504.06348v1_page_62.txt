@@ -1,0 +1,166 @@
+Reorganizing the expression by polynomial degree,
+hloc
+I (|kq|¯rI
+loc) = 4π(¯rI
+loc)3
+Ω
+rπ
+2 e−(|kq|¯rI
+loc)2/2
+3
+X
+s=−1
+cI
+s(|kq|¯rI
+loc)2s,
+(149)
+we have the coefficients,
+cI
+−1 = −
+r
+2
+π
+ZPI
+I
+¯rI
+loc
+, cI
+0 = CI
+1 + 3CI
+2 + 15CI
+3 + 105CI
+4, cI
+1 = −CI
+2 −10CI
+3 −105CI
+4, cI
+2 = CI
+3 + 21CI
+4, cI
+3 = −CI
+4,
+which is the same as Eq. (38) with coefficients in Eq. (40). The local term has the simple physical intuition
+of momentum exchange between the electron and the pseudoion with elements that dependent only on the
+magnitude of the electron momentum of the state (similar to the Coulomb interaction), with both a Coulomb-
+like term (s = −1) dominating at |kq| < 1 and polynomial terms (s ≥0) dominating at |kq| > 1, all under
+a Gaussian envelope. Note that for simulation purposes on a finite plane wave basis set, the pseudoion
+momentum after exchange is required to be present in the basis.
+Non-local term
+Using the matrix elements given in Eqs. (7) and (11),
+⟨r2, R2|V i,I
+NL|r1, R1⟩=
+lmax
+X
+l=0
+l
+X
+m=−l
+3
+X
+a,b=1
+⟨r2, R2|ζI,l,m
+a
+⟩BI,l
+a,b⟨ζI,l,m
+b
+|r1, R1⟩δR1,R2,
+we move to the plane wave basis in electrons,
+V i,I
+NL =
+Z
+r1,r2
+Z
+R1,R2
+|r2, R2⟩⟨r2, R2|V i,I
+NL|r1, R1⟩⟨r1, R1|i,I
+=
+X
+p1,p2∈G
+Z
+R
+lmax
+X
+l=0
+l
+X
+m=−l
+3
+X
+a,b=1
+BI,l
+a,b⟨p2, R|ζI,l,m
+a
+⟩⟨ζI,l,m
+b
+|p1, R⟩|p2, R⟩⟨p1, R|i,I.
+(150)
+Using the plane wave expansion eikp·r = 4π P∞
+l=0
+Pl
+m=−l iljl(|kp|r)Y m
+l ( ˆ
+kp)Y m
+l (ˆr)∗with jl denoting the
+spherical Bessel functions, and the orthonormality of spherical harmonics
+R π
+θ=0
+R 2π
+ϕ=0 sin θdθdϕY m
+l (θ, ϕ)Y m′
+l′ (θ, ϕ)∗=
+δll′δmm′,31
+⟨p, R|ζlm
+a ⟩:=
+Z
+r
+⟨p|r⟩⟨r, R|ζlm
+a ⟩=
+Z
+r
+1
+√
+Ω
+eikp·rζl
+a(|r −R|)Y m
+l (\
+r −R) = 4π
+√
+Ω
+(¯rI
+l )
+3
+2 ileikp·RY m
+l (ˆkp)gl
+a(|kp|¯rI
+l )
+(151)
+where we define a real “radial” function gl
+a(|kp|¯rI
+l ) and explicitly evaluate the integral,
+31We use the convention for spherical harmonics as,
+Y m
+l
+(θ, ϕ) = (−1)m
+s
+(2l + 1)
+4π
+(l −m)!
+(l + m)! P m
+l (cos θ)eimϕ
+P m
+l (x) = 2l(1 −x2)m/2
+l
+X
+k=m
+k!
+(k −m)! xk−m
+ l
+k
+ 
+l+k−1
+2
+l
+
+where the second line defines the associated Legendre polynomials without the Condon-Shortley phase to avoid double-counting
+the phase (m = 0 yields the standard Legendre polynomials).
+62

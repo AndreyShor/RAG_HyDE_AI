@@ -1,0 +1,199 @@
+To this purpose, notice that since ˜µ0 ∈L2, one can choose Nε > 0 such that ˜µ0 is well approximated by its Fourier
+series with respect to the L2 norm, that is,
+
+˜µ0 −
+X
+|k|≤Nε
+˜µk
+0ek
+
+L2(T2×T1
+2π×[0,+∞)×[−1,1])
+≤
+ε
+√
+4πT
+,
+ek(x) := e−2πik·x.
+A priori this approximation should be valid only in L2(T2) and depending on (θ, s, h), but since the convergence of
+the sum of the squared Fourier coefficients to the L2 norm of a function is monotone, the estimate holds also in
+L2(T2 × T1
+2π × [0, +∞) × [−1, 1]).
+Moreover, if ˜µ0 is supported in T2 × T1
+2π × [0, T] × [−1, 1] (whose measure is 4πT), then the same do its Fourier
+coefficients. Thus, since the L1 norm of a solution is not increasing, one can estimate
+(3.2.4)
+≤
+
+˜µt −
+X
+|k|≤Nε
+˜µk
+t ek
+
+L1(T2×T1
+2π×[0,+∞)×[−1,1])
++
+
+X
+|k|≤Nε
+˜µk
+t ek −⟨˜µ0⟩
+2π E
+
+L1(T2×T1
+2π×[0,+∞)×[−1,1])
+≤
+
+˜µ0 −
+X
+|k|≤Nε
+˜µk
+0ek
+
+L1(T2×T1
+2π×[0,+∞)×[−1,1])
++
+X
+0<|k|≤Nε
+˜µk
+t ek
+
+L1(T2×T1
+2π×[0,+∞)×[−1,1])
++
+˜µ(0,0)
+t
+−⟨˜µ0⟩
+2π E
+
+L1(T2×T1
+2π×[0,+∞)×[−1,1])
+≤
+√
+4πT
+
+˜µ0 −
+X
+|k|≤Nε
+˜µk
+0ek
+
+L2(T2×T1
+2π×[0,+∞)×[−1,1])
++
+X
+0<|k|≤Nε
+˜µk
+t
+
+L1(T1
+2π×[0,+∞)×[−1,1])
++
+˜µ(0,0)
+t
+−⟨˜µ0⟩
+2π E
+
+L1(T1
+2π×[0,+∞)×[−1,1])
+≤
+ε + C
+X
+0≤|k|≤Nε
+∥˜µk
+t ∥L1(T1
+2π×[0,+∞)×[−1,1])
+t + 1
++
+C
+X
+0≤|k|≤Nε
+∥˜µk
+t ∥L1(T1
+2π×[ t
+4 ,+∞)×[−1,1])
+≤
+2ε,
+if t is large enough (depending on Nε). In the last but one inequality we have used Theorems 1.1 and 1.2 with p = 1.
+Therefore the convergence in (3.2.6) for p = 1 is proved.
+Step 2B: we aim to use (3.2.6) to prove it for p (which is finite but eventually different from 1). To this purpose,
+we interpolate the Lp norm by using L1 and L∞, as follows.
+(3.2.4)
+=
+˜µt −⟨˜µ0⟩
+2π E
+
+Lp(T2×T1
+2π×[0,+∞)×[−1,1])
+≤
+˜µt −⟨˜µ0⟩
+2π E
+
+1−1
+p
+L∞(T2×T1
+2π×[0,+∞)×[−1,1])
+˜µt −⟨˜µ0⟩
+2π E
+
+1
+p
+L1(T2×T1
+2π×[0,+∞)×[−1,1])
+,
+and since the second factor is vanishing by the previous step (3.2.6), it is sufficient to prove that the first one is
+bounded. But it is, indeed by using first triangle inequality and then (A.0.5) of Proposition A.1, one gets
+˜µt −⟨˜µ0⟩
+2π E
+
+L∞(T2×T1
+2π×[0,+∞)×[−1,1])
+≤
+∥˜µt∥L∞(T2×T1
+2π×[0,+∞)×[−1,1]) +
+
+⟨˜µ0⟩
+2π E
+
+L∞(T2×T1
+2π×[0,+∞)×[−1,1])
+≤
+C ∥˜µ0∥L∞(T2×T1
+2π×[0,+∞)×[−1,1])
++
+C
+Z
+T1
+2π
+dθ
+Z t
+0
+ds
+Z 1
+−1
+dh∥˜µ0(·, θ, s, h)∥L∞(T2)
++
+∥˜µ0∥L1(T2×T1
+2π×[0,+∞)×[−1,1])
+≤
+C ∥˜µ0∥L∞(T2×T1
+2π×[0,+∞)×[−1,1])
++
+C
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh∥˜µ0(·, θ, s, h)∥L∞(T2)
++
+∥˜µ0∥L1(T2×T1
+2π×[0,+∞)×[−1,1])
+=:
+C(˜µ0) < +∞by (3.2.2).
+32

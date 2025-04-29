@@ -1,0 +1,102 @@
+testing views (as shown in Fig. 8). The main reason for this
+issue is that each Gaussian has constant normal material
+parameters and leads to a uniform color across the entire
+Gaussian for given view and light directions. This constant
+radiance is against the fact that a Gaussian might cover dif-
+ferent pixels that may have varying colors. We illustrate this
+observation in Fig. 2. Furthermore, these works model indi-
+rect illumination without considering physical constraints,
+leading to unnatural indirect lighting, which remains un-
+changed even under novel lighting conditions.
+In this paper, we aim at a more capable representation for
+appearance modeling and a physically-based model for in-
+direct lighting to enhance both novel view synthesis (NVS)
+and relighting quality.
+Inspired by the flat shading and
+interpolated shading in the domain of computer graphics,
+we propose a novel Gaussian representation that general-
+izes the per-Gaussian constant material to allow spatially-
+varying material. We refer to the former as the Constant
+Gaussian and the latter as the Spatially-varying Gaussian
+(SVG). The key feature of our Spatially-varying Gaussian
+is that it allows for different normal and material proper-
+ties at distinct representative locations, leading to a more
+powerful representation ability than the Constant Gaussian.
+Based on the Spatially-varying Gaussian, we design an in-
+verse rendering framework called SVG-IR, which consists
+of two key components. First, we introduce a novel render-
+ing scheme for SVGs, known as SVG splatting, analogous
+to vertex/fragment shading in computer graphics. Second,
+we incorporate a physically-based indirect lighting model
+into our SVG-IR framework by explicitly modeling light
+transport across different bounces, leading to a more rea-
+sonable decoupling of lighting and materials, as well as en-
+abling indirect lighting with novel light sources. As a re-
+sult, our SVG-IR framework enhances both NVS and re-
+lighting quality, outperforming state-of-the-art NeRF-based
+methods by 2.5 dB in peak signal-to-noise ratio (PSNR)
+and surpassing Gaussian-based methods by 3.5 dB in the
+relighting task, maintaining a real-time rendering speed. To
+summarize, our contributions include:
+• a
+novel
+representation—Spatially-varying
+Gaus-
+sian—capable of encoding spatially-varying material
+attributes on single primitive, enhancing representation
+ability,
+• a new inverse rendering framework—SVG-IR—built
+upon the Spatially-varying Gaussian representation, im-
+proving both NVS and relighting quality, and
+• a physically-based indirect lighting model, which explic-
+itly models light transport, resulting in more natural and
+realistic lighting.
+BRDF Lobe
+Shading Normal
+Gaussian Vertex Normal
+Shading Point
+Gaussian Vertex
+Target
+Spatially-varying Gaussian
+Constant Gaussian
+Figure 2. Illustration of two Constant Gaussians and Spatially-
+varying Gaussians fitting a distribution of BRDFs. As Spatially-
+varying Gaussians allow spatially-varying parameters, a single
+Gaussian can have different BRDF lobes at different places, lead-
+ing to a more flexible representation compared to the Constant
+Gaussian.
+2. Related Work
+2.1. Neural Inverse rendering
+Inverse rendering focuses on recovering material, geome-
+try and lighting conditions from multi-view images. Sev-
+eral methods [2, 14, 28, 31, 32, 37] try to decompose
+lighting and material building upon the geometric formu-
+lation and volume rendering with NeRF [22]. Neural re-
+flectance field [2] introduces BRDF and lighting in NeRF.
+PhySG [32] further refines the lighting model by using
+spherical Gaussians with incorporated SDFs for more pre-
+cise geometry reconstruction. Next, several works have fo-
+cused on modeling indirect illumination and visibility. In-
+vRender [36] models indirect illumination by utilizing the
+neural radiance field. TensoIR [13] improves indirect light-
+ing efficiency with a compact tri-plane representation for
+ray tracing. NeILF [28] and NeILF++ [31] represent in-
+coming light as a neural incident light field.
+NeILF++
+further combines VolSDF [29] with NeILF, incorporating
+inter-reflections for enhanced performance.
+2.2. Gaussian splatting and relighting
+Recently, 3DGS [17] introduced discretized explicit 3D
+Gaussian representations for scene modeling, leverag-
+ing differentiable rasterization for real-time rendering and
+achieving impressive results in the NVS task. However,
+the original 3DGS struggles to produce smooth and natu-
+ral normals due to the lack of geometric constraints. Ex-
+isting methods try to resolve this problem by utilizing 2D
+Gaussians as primitive [4, 9] or modeling a more accurate
+opacity field [30]. Better geometric representations facili-
+tate applications like IR.
+IR methods based on Gaussian splatting have emerged
+by incorporating BRDF into the attributes of Gaussians [7,
+12, 20, 24]. Considering the illumination modeling, exist-
+ing methods [7, 12, 20, 24] utilize one-step ray tracing or

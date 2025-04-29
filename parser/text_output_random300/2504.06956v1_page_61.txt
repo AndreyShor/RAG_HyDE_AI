@@ -1,0 +1,100 @@
+Proof of Proposition 6.1
+61
+≤E
+Z
+[0,R]d
+1{m∈Dλ
+R }
+|Dλ
+R|
+
+1 −exp
+
+−
+Z
+[0,R]d Fγ,t(x)1{Yχ
+t (x)−dt≤−A+λ}µχ
+γ,t(dx)
+
+dm
+
+= E
+
+1 −exp
+
+−
+Z
+[0,R]d Fγ,t(x)1{Yχ
+t (x)−dt≤−A+λ}µχ
+γ,t(dx)
+
+.
+If Fγ,t(·) were a deterministic, t-independent function, then the conclusion would follow by a direct
+application of [MRV16, Proposition 4.1]. However, by following the proof of [MRV16, Proposition 4.1],
+the same conclusion holds also in our more general setting by using (W1) and (W4).
+For A ≥0, we introduce the quantity
+E(7.17)
+def= E
+Z
+[0,R]d
+1{m∈Dλ
+R }1{Yχ
+t (m)−dt≥−A}
+|Dλ
+R|
+(1 −GR)dm
+
+.
+(7.17)
+The upshot of Lemma 7.5 is that for any ε > 0, we can find A ≥0 sufficiently large such that for any
+s ≥0 sufficiently large satisfying (es + 1)(R + 1)−1 ∈N, there exists T ≥0 sufficiently large such
+that for any t ≥T and χ : [0, R]d →R satisfying the conditions in (6.6),
+E
+
+1 −exp
+
+−
+Z
+[0,R]d Fγ,t(x)µχ
+γ,t(dx)
+
+−E(7.17)
+ ≤ερχ([0, R]d) .
+Therefore, in what follows we we can just focus on the expectation E(7.17) for a fixed A ≥0.
+7.2.2
+Path constraint
+We now want to exclude the points m ∈[0, R]d such that Yχ
+t (m) −dt ≥−A with an unlikely path
+[0, t] ∋s 7→Ys(m). To this end, for A, L, z ≥0, we consider the set of functions
+Sz,A,L
+t
+def=
+n
+ϕ : R+
+0 →R :
+sup
+s∈[0,t]
+ϕ(s) ≤z,
+sup
+s∈[t/2,t]
+ϕ(s) ≤z + dt + L, ϕ(t) ≥z + dt −A
+o
+.
+0
+t
+2
+t
+z
+z + dt + L
+z + dt −A
+Figure 3: A typical path in Sz,A,L
+t
+.
+Lemma 7.6 ([MRV16, Lemma 5.1]). For any ε > 0 and A ≥0, there exists L ≥0 sufficiently
+large such that for any s ≥0 sufficiently large satisfying (es + 1)(R + 1)−1 ∈N, there exists T ≥0
+sufficiently large such that for any t ≥T and χ : [0, R]d →R satisfying the conditions in (6.6), it
+holds that
+P(∃m ∈[0, R]d such that Yχ
+t (m) −dt ≥−A and Y·(m) ̸∈Sχ(m),A,L
+t
+) ≤ερχ([0, R]d) .

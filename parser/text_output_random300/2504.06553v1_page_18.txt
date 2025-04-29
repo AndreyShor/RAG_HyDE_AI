@@ -1,0 +1,195 @@
+Setting the derivative (29) to zero then gives us,
+0 = p(sk−1){log(p(sk|sk−1)
+p(sk)
+)
++βDKL(p(tk|sk)||p(tk|sk−1))
++β
+n
+X
+i=k+1
+X
+si
+p(si|sk)DKL(p(ti|si)||p(ti|sk−1))
++ ˜λ(sk−1)}
+(32)
+Defining Z = exp [˜λ(sk−1)], we have that
+p(sk|sk−1) = p(sk)
+Z
+exp[−βDKL(p(tk|sk)||p(tk|sk−1))
+−β
+n
+X
+i=k+1
+X
+si
+p(si|sk)DKL(p(ti|si)||p(ti|sk−1))]
+(33)
+This corresponds to the iterative algorithm given in (4).
+11. Tutorial on the Hierarchical Information
+Bottleneck
+In this section, we provide a brief tutorial on H-IB in the
+form of an easy example. Given two tasks: T = {Γ, Ω},
+three subtasks: U = {A, B, C}, and four items: O =
+{p, q, r, s}, we want to assign each of 5 primitives X to an
+item, each item to a subtask, and each subtask to a task, and
+we are given the probability of how likely an observation
+might be that of an item P (O|X), the probability that an
+item might be relevant for a subtask P (U|O), and finally
+the probability that a subtask might be relevant for a task
+P (T |U). For this exercise, the conditional probabilities are
+given in Table 6, Table 7, and Table 8 respectively. We treat
+each observation as identical and independent, so P (X)
+takes a uniform distribution p(X = x) = 0.2 ∀x ∈X.
+Note that the columns of conditional probability tables sum
+to one since these are probability mass functions.
+Our goal is to find clusters SO, SU, and ST where
+the assignments to the clusters are given by P (SO|X),
+P (SU|SO), P (ST |SU).
+We initialize (τ
+=
+0) these
+conditional probabilities as Kronecker delta distributions
+and apply H-IB. We start from the object level to find
+Pτ=1(SO|X). We start the iterative updates with the sec-
+ond and third equations of (4):
+p0(so) =
+X
+x∈X
+p(x)p0(so|x), ∀so ∈SO
+(34)
+p0(x|so) = p(so|x)p(x)
+p(so)
+, ∀(x, so) ∈X × SO
+(35)
+p0(o|so) =
+X
+x∈X
+p(o|x)p(x|so), ∀(o, so) ∈O × SO
+(36)
+x1
+x2
+x3
+x4
+x5
+p
+0.7
+0.6
+0.1
+0.1
+0.1
+q
+0.1
+0.1
+0.1
+0.1
+0.6
+r
+0.1
+0.2
+0.1
+0.1
+0.2
+s
+0.1
+0.1
+0.7
+0.7
+0.1
+Table 6.
+Conditional Probability Table P (O|X)
+p
+q
+r
+s
+A
+0.8
+0.2
+0.1
+0.1
+B
+0.1
+0.7
+0.1
+0.1
+C
+0.1
+0.1
+0.8
+0.8
+Table 7.
+Conditional Probability Table P (U|O)
+A
+B
+C
+Γ
+0.9
+0.1
+0.2
+Ω
+0.1
+0.9
+0.8
+Table 8.
+Conditional Probability Table P (T |U)
+The expression to compute Pτ=1(SO|X) given in (47)
+(also the first equation of (4)) requires some manipulation:
+p0(su|x) =
+X
+so∈SO
+p0(su|so)p0(so|x), ∀(su, x) ∈SU ×X (37)
+p0(st|x) =
+X
+su∈SU
+p0(st|su)p0(su|x), ∀(st, x) ∈ST × X (38)
+p(u|x) =
+X
+o∈O
+p(u|o)p(o|x), ∀(u, x) ∈U × X
+(39)
+p0(u|so) =
+X
+x∈X
+p(u|x)p0(x|so), ∀(u, so) ∈U × SO
+(40)
+p0(t|x) =
+X
+u∈U
+p0(t|u)p0(u|x), ∀(t, x) ∈T × X
+(41)
+p0(t|so) =
+X
+x∈X
+p0(t|x)p0(x|so), ∀(t, so) ∈T × SO
+(42)
+p0(x|su) = p0(su|x)p(x)
+p0(su)
+, ∀(x, su) ∈X × SU
+(43)
+p0(x|st) = p0(st|x)p(x)
+p0(st)
+, ∀(x, st) ∈X × ST
+(44)
+p0(u|su) =
+X
+x∈X
+p(u|x)p0(x|su), ∀(u, su) ∈U × SU
+(45)
+p0(t|st) =
+X
+x∈X
+p(t|x)p0(x|st), ∀(t, st) ∈T × ST
+(46)
+Finally, we can plug in the values to (47) to obtain
+p1(so|x) = p(so)
+Z
+exp[−βDKL(P (O|SO = so) ||P (O|X = x))
+−β
+X
+su∈SU
+p(su|x)DKL(P (U|SU = su) ||P (U|X = x))
+−β
+X
+st∈ST
+p(st|x)DKL(P (T |ST = st) ||P (T |X = x))]
+(47)
+7

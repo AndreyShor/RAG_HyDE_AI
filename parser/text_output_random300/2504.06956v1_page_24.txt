@@ -1,0 +1,113 @@
+Local structure of extremal points
+24
+Now, we consider the function ζ : R+
+0 →R+
+0 given by
+ζ(s)
+def= C[1 + log(C + s)]2 ,
+where C is the constant appearing in the definition of Rk which, without any loss of generality, we can
+assume to be large enough so that ζ is increasing and concave on R+
+0 . Then on the event {Bk = z}
+for some z ∈R, again by possibly enlarging the constant C in the definition of ζ, thanks to the Markov
+property of the Brownian bridge, it holds that
+P0,u,b
+b−1
+\
+j=k
+{Bj ≥−1 −Rk(j)}
+ Gk
+
+≤Pz,u,b−k
+b−1
+\
+j=k
+{Bj ≥−ζ(j)}
+
+.
+Now, thanks to Lemma A.10, we have that
+Pz,u,b−k
+b−1
+\
+j=k
+{Bj ≥−ζ(j)}
+
+≲Pz,u,b−k
+
+inf
+s∈[0,b−k](Bs + 2ζ(k + s)) ≥0
+
+,
+(4.19)
+where the implicit constant is independent of everything else. Since by definition one has Oscj(B) ≤
+Θk(j) on the event Ek, for all j ∈[k]0, we can assume that
+z ∈[−ζ(k), (k + 1)(log(k + 1))2] .
+We let ak
+def= ζ(k) ∨((k + 1)(log(k + 1))2). Since the probability on the right-hand side of (4.19) is
+increasing in z ∈R, we can estimate this probability for z ∈[ak, 3ak]. It follows from Proposition A.5
+that
+sup
+z∈[ak,3ak]
+Pz,u,b−k
+
+inf
+s∈[0,b−k](Bs + 2ζ(k + s)) ≥0
+
+≲a2
+k
+u
+b −k .
+(4.20)
+We note that the presence of a2
+k instead of ak in the above expression – as one might expect from
+Proposition A.5 – is due to the first summand in the error term (A.9). Furthermore, we observe that a
+direct application of Lemma A.7 shows that the remaining summands in the error term (A.9) can be
+bounded uniformly over all k ∈[b −1] and z ∈[ak, 3ak].
+Therefore, combining the previous considerations, so far we have proved that on the event Ek, it holds
+that
+P0,u,b
+b−1
+\
+j=k
+{Bj ≥−1 −Rk(j)}
+ Gk
+
+≲a2
+k
+u
+b −k .
+On the other hand, thanks to Cauchy–Schwartz’s inequality and arguing as in the proof of Lemma 4.8,
+we have that P(Ek ∩Ak) ≤e−c1(log k)2p
+P0,u,b(Ak), for some constant c1 > 0. Hence, by absorbing
+the factors a2
+k and b/(b −k) inside the exponential, we obtain that there exists a constant c2 > 0 such
+that
+P0,u,b
+
+Kb = k,
+b−1
+\
+j=k
+{Bj ≥−1 −Rk(j)}, Ak
+
+≲u
+b e−c2(log k)2p
+P0,u,b(Ak) ,
+from which the conclusion follows. Finally, the proof of (4.18) can be done similarly and hence is
+omitted.
+In what follows, we also require the following version of Lemma 4.10, where the endpoint of the
+Brownian bridge is constrained to be less than b1/4.
+Lemma 4.11. Let A > 0 be fixed. There exists a constant c > 0 such that for λ > 0, for all b ∈N
+sufficiently large, u ∈[−A, b1/4], k ∈[b −1], and any event Ak ∈Gk,
+P0,u,b
+
+Kb = k,
+b−1
+\
+j=k
+{Bj ≥−λ −Rk(j)}, Ak
+
+≲1
+√
+b
+e−c(log k)2p
+P0,u,b(Ak) .

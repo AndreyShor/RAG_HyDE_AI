@@ -1,0 +1,37 @@
+Preprint. Under review.
+Figure 5: Screenshot of the graphical user interface for the correctly solved problem in
+Figure 1.
+**GEOMETRY:** * The domain is a cylindrical section defined by:
+• Inner radius: 0.02 m
+• Outer radius: 0.1 m
+• Height: 0.14 m
+* The geometry represents a 2D cross-section of this cylinder, with the width corre-
+sponding to the difference between the inner and outer cylindrical surfaces.
+**LOADING:** * A constant heat flux of 5e5 W/m2 is applied to the inner cylindrical
+surface, between z = 0.04 m and z= 1 m. The remaining portion of the inner cylindrical
+surface is insulated.
+**BOUNDARY CONDITIONS:** * The outer cylindrical surface, top surface, and
+bottom surface have a uniform temperature of 273.15 [K].
+**MATERIAL PROPERTIES:** * Thermal conductivity (k): 52 W/(m·K)
+**ELEMENT TYPES:** The analysis can utilize 2D axisymmetric heat transfer ele-
+ments.
+**MESHES:** The default mesh can be used.
+**OUTPUT:** The analysis should determine the temperature in Kelvins [K] (Kelvins
+are the default units) at a specific point on the inner cylindrical surface:
+* Radial Coordinate (r): 0.04 m * Axial Coordinate (z): 0.04 m
+Export the table with the value to OUTPUT PATH/output.txt
+Plan:
+## Implementing the 2D Axisymmetric Steady-State Heat Conduction in a Cylinder
+in COMSOL Multiphysics:
+**1. Model Setup:**
+* **New Model:** Start COMSOL Multiphysics and create a new model.
+* **Space Dimension:** Select ”2D Axisymmetric”.
+* **Physics Interface:** Select ”Heat Transfer > Heat Transfer in Solids (ht)”.
+* **Study Type:** Choose ”General Studies > Stationary”.
+**2. Geometry Definition:**
+* **Rectangle:** Create a rectangle representing the cross-section of the cylinder:
+* Width: 0.08 m
+* Height: 0.14 m
+* Corner Position: (r, z) = (0.02, 0) m
+* **Point:**
+16

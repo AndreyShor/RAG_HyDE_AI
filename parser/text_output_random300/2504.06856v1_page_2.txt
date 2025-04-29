@@ -1,0 +1,106 @@
+As an alternative, we consider cascaded diffusion models
+that guide the images in RGB space rather than latent space.
+Our solution follows the pipeline of cascaded models. First,
+we generate a coarse texture using SDS guidance with a
+low-resolution model. Then we refine the texture using
+SDS guidance with a super-resolution model. Below, we
+summarize our main contributions.
+• We study the limitations of Score Distillation Sampling
+when applied to latent diffusion models. Our analysis indi-
+cates that the optimal solutions of the algorithm include
+images outside of the natural image domain.
+• Motivated by our analysis, we introduce a texture synthesis
+approach using Score Distillation Sampling with cascaded
+diffusion models. The proposed approach mimicks the
+diffusion model architecture and acts in two stages. The
+first stage generates a coarse texture, while the second
+stage improves overall quality of the texture obtained at
+the first stage.
+• We show that our approach outperforms state-of-the-art
+optimization based texture synthesis solutions on the Obja-
+verse dataset. Score Distillation Sampling in pixel space al-
+lows omitting additional regularizers required in previous
+works. Additionally, we report the scaling performance of
+our method with the diffusion model size, the impact of
+lighting conditions used during training, and the role of
+physically based textures.
+2. Related Work
+Generating high-quality textures for 3D objects is a long-
+standing challenge in computer graphics and machine learn-
+ing. Early approaches are based on category-specific genera-
+tive models, such as generative adversarial networks (GANs)
+like Texture Fields [28], SPSG [11], LTG [42], and Textu-
+rify [36]. These methods often struggle with limited gen-
+eralization and required extensive manual adjustments. Re-
+cent advances in large-scale text-to-image diffusion mod-
+els [32, 33] transform texture synthesis, allowing more flexi-
+ble and realistic results. However, different approaches vary
+in how they leverage diffusion models to incorporate 3D
+information and ensure global texture consistency.
+Diffusion-based texture generation. A significant part of
+recent works formulates texture generation as an iterative
+inpainting process using depth-conditioned diffusion models.
+Text2Tex [6], TEXTure [31], and Paint3D [43] generate tex-
+tures by synthesizing single-view images and progressively
+refining the texture using different object views. Although
+these zero-shot approaches allow for training-free genera-
+tion, they often struggle with seams at visibility boundaries
+and suffer from baked-in lightning artifacts, leading to global
+inconsistencies. To mitigate these issues, some methods in-
+troduce additional refinement steps: Text2Tex employs an in-
+painting diffusion model for post-processing, while Paint3D
+refines textures directly in UV space. TexDreamer [22] fol-
+lows a different approach by directly generating a UV texture
+map using a fine-tuned diffusion model, avoiding the need
+for iterative view synthesis and improving consistency across
+the surface.
+An alternative strategy to address inconsistency is to in-
+troduce additional structures to enforce coherence between
+views. SyncMVD [21] tackles this by generating each view
+independently while employing a synchronization module
+that aligns outputs in every denoising step of the diffusion
+model. Similarly, TexFusion [5] suggest a module that ag-
+gregates multi-view object predictions into a unified latent
+texture representation, iteratively refining it throughout the
+diffusion process to ensure consistency across the entire
+object.
+Another approach, inspired by MVDream [34], leverages
+consistent multi-view image generation as an initialization
+step for texture synthesis. Meta 3D TextureGen [2] follows
+this idea by generating four consistent views, which are
+projected onto a 3D surface to form an initial texture for sub-
+sequent refinement in UV space. MVPaint [8] extends this
+pipeline by introducing a spatial-aware 3D inpainting stage
+between projection and UV refinement, further enhancing
+coherence across different object views.
+Optimization-based methods. Optimization-based tech-
+niques refine a texture by optimizing an objective function
+that evaluates rendered views. Early approaches such as
+CLIP-Mesh [26] and Text2Mesh [24] use differentiable ren-
+dering and CLIP [30] as a guidance signal to iteratively
+update texture parameters. However, these methods often
+produce blurry textures due to the lack of high-frequency
+details.
+More recent works incorporate diffusion models to
+improve texture optimization.
+Latent-Paint [23], Fanta-
+sia3D [7], and Paint-it [41] combine differentiable rendering
+with the Score Distillation Sampling (SDS) technique [29],
+distilling knowledge from a diffusion model to refine tex-
+tures. While this approach enhances realism, it often suf-
+fers from color oversaturation and high-frequency artifacts.
+FlashTex[13] mitigates some of these issues by employing a
+fine-tuned multi-view model to generate an initial textured
+view of the object, followed by an optimization stage using
+L2-loss and SDS for refinement. In this work, we continue
+the line of work employing SDS. However, we attribute some
+of the artifacts to the underlying latent diffusion model and
+propose using a pixel-space model. Aiming at physically-
+plausible textures, we use a text-to-image model pretrained
+on natural images and resort from using synthetic data for
+multi-view model adaptation.
+PBR texture generation. Most of the works discussed
+above generate only RGB, yielding limited photo-realism.
+The works of Fantasia3D, Paint-it, and FlashTex propose
+to synthesize more advanced physically based textures [4],
+which are able to mimic different materials and look real-

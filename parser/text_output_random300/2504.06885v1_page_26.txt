@@ -1,0 +1,98 @@
+10
+20
+Chain Strength
+0.05
+0.10
+0.15
+Ps
+(a) λ = 1
+0
+10
+20
+Chain Strength
+0.00
+0.05
+0.10
+0.15
+Ps
+(b) λ = 2
+10
+20
+Chain Strength
+0.00
+0.05
+0.10
+Ps
+(c) λ = 3
+0
+1000
+2000
+Annealing time (ns)
+0.16
+0.18
+Ps
+(d)
+Figure 9: The 18-variable problem hyperparameter search for quantum annealing using minor embedding.
+The
+optimal chain strength and λ parameters were found by varying the chain strength for λ = [1, 3]. A chain strength
+of 3 with λ = 1 was used for the annealing time search in Figure 9d.
+Method
+Ps
+Ps Post-
+Selection
+AR Post-
+Selection
+User
+Runtime (s)
+QPU Time
+(s)
+Brute
+Force
+N/A
+N/A
+N/A
+N/A
+N/A
+Simulated
+Annealing
+0.894 ± 0.006
+0.903 ± 0.005
+0.903 ± 0
+1.09 ± 0.004
+N/A
+VQE MPS
+0.008 ± 0.01
+0.041 ± 0.05
+0.172 ± 0
+343 ± 40
+N/A
+VQE
+QPU
+0.008
+0.038
+0.188
+4.14 × 104
+1.88 × 103
+Quantum
+Annealing
+0.047 ± 0.05
+0.094 ± 0.09
+0.295 ± 0.1
+5.42 ± 1
+2.77 ± 1
+Random
+Sampling
+0 ± 0
+0 ± 0
+0 ± 0
+0.001 ± 0
+N/A
+Table 3: The performance metric results for our different methods on the 32 variable problem. The standard deviation
+error is included. Note: only 1 repeat with VQE on the QPU was possible and a brute force solution was not obtained
+as the search space is too large. The hyperparameters used for simulated annealing were: λ = 3, the temperature
+range was set at β = [0.1, 10] with 1000 iterations (sweeps) and number of repeats = 1000. Quantum annealing:
+λ = 1, chain strength = 4, the annealing time = 1600 ns and the number of shots = 1000. For VQE: λ = 3, with
+the RealAmplitudes, using CVaR α = 0.4, COBYLA with tol = 1, and shots = 10000. For random sampling λ = 5
+and 1000 samples were used. Note: the MPS solver was used as 32 qubit simulation with the state vector solver is
+computationally expensive.
+26

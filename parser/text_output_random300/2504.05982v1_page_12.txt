@@ -1,0 +1,47 @@
+> 200 with the optimal CV but decreases with increasing θ, and is close to 1 with poor CVs.
+For each CV, we added Poisson resetting at the optimal resetting rate on top of MetaD and
+plotted the speedups with orange triangles. The speedup decreases with θ at a much slower
+rate, and even poor CVs provide speedups close to that of the optimal CV. This result shows
+that SR can be an alternative or complementary method to CV optimization.
+Ref.39 gives two molecular examples that show the same qualitative behavior. First, the
+transition between two metastable states of alanine tetrapeptide was accelerated using three
+diﬀerent CVs, based on internal dihedral angles. For deﬁnitions of the angles, see Ref.39 The
+φ3 dihedral angle, which is the optimal CV for the transition, provides a speedup of more
+than four orders of magnitude, and resetting does not give additional acceleration. The ψ3
+angle, a suboptimal CV, provides a speedup by two orders of magnitude, which is doubled
+when adding SR at the optimal resetting rate. Lastly, φ2 is an extremely poor CV, providing
+a speedup of less than an order of magnitude without SR. But, by resetting, the speedup
+becomes close to that achieved by ψ3. As another example, the folding of the chignolin
+mini protein (Figure 4) was enhanced using two CVs.
+A CV based on harmonic linear
+discriminant analysis85 provided speedups of two orders of magnitude, and resetting further
+increased the speedup by a factor of ∼1.5. A CV based on the C-alpha root-mean-square
+deviation (RMSD) from a folded conﬁguration provided speedups of ∼10 without resetting,
+but > 100 with SR.
+To better understand the cause of this trend, we plot the survival function for alanine
+tetrapeptide in Figure 3(b). The unbiased FPT distribution (top left) is indeed exponential
+(Note that the survival function of an exponential distribution is linear on a semi-log scale).
+The COV=1, and resetting cannot be used as a standalone method. However, the bias of
+MetaD disturbs the dynamics and changes the FPT distribution dramatically. Biasing along
+φ3, the distribution decays much faster than exponential, and the COV is < 1 (top right).
+With ψ3, the distribution has an exponential tail but decays faster at short times, and the
+COV=1.2 (bottom left), which leads to acceleration by resetting. With the poorest CV,
+φ2, the distribution is much broader (notice the diﬀerent range of the x-axis) and we ﬁnd
+COV=3.1, explaining the great acceleration by resetting in this case.
+We expect resetting to have a similar inﬂuence on additional CV-based enhanced sampling
+methods apart from MetaD. The reason is that CV-based methods accelerate the exploration
+of phase space by ﬂattening the free energy surface.
+While this lowers energy barriers,
+resulting in accessible transitions between metastable states, it can also encourage sampling
+of high-energy regions of phase space away from the barrier, which are often not interesting
+or even nonphysical. Simulations with suboptimal CVs are particularly susceptible to this.
+Resetting can help avoid this by returning the system to local minima. As resetting is known
+to be particularly useful for ﬂat landscapes, it naturally compensates for this drawback.
+We note that when resetting MetaD simulations, all the bias is zeroed. In addition, we
+emphasize that, when combining SR with enahnced sampling methods, it is much easier
+to know whether resetting is favorable and what rates to use than for the standalone case.
+Since transitions are fast in comparison to unbiased simulations, it is easier to sample them
+without resetting and estimating the COV. Given several trajectories without resetting, a
+practitioner may evaluate the MFPT under any resetting rate through Equations 2 or 4,
+with no computational cost. Resetting can then be used to expedite additional sampling.
+12

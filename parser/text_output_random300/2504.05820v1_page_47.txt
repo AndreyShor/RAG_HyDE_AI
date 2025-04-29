@@ -1,0 +1,57 @@
+Tools and methodology
+33
+FKi
+
+as(Q), aem(Q), µR
+Q , µF
+Q
+
+= Gi
+
+as(Q), aem(Q), µR
+Q
+
+⊗
+X
+j
+Eij
+
+as(Q), as(Q0), µF
+Q
+
+,
+(2.2)
+where the convolutions are performed in the discretized x-space and the sums run over the
+flavor space. FKi denotes the FK-table, Gi denotes the grid computed with a suitable generator,
+Eij the DGLAP operator and fi the PDF evaluated at the arbitrary fitting scale Q0. µF and
+µR are the unphysical factorization and renormalization scales. By doubling all the flavor
+and x-space indices Eq. (2.1) can be generalized for the hadronic observables which depends
+quadratically on PDFs. During this procedure, there is no loss of generality, if the interpolation
+grid used for the conversion of the analytic convolutions is sufficiently dense. Moreover, since
+PDFs are non-perturbative objects, they are usually represented in terms of discrete grids [115],
+called LHAPDF grids.
+With the definition of Eqs. (2.1) and (2.2) in mind, in the following sections we explain the
+features of the two codes used to compute the DGLAP operators, EKO (Section 2.1.1), and the
+DIS grids, Yadism (Section 2.1.2). Finally, in Section 2.1.3 we outline how these programs are
+integrated in a unique framework, called Pineline which is able to produce all the theoretical
+calculation needed for a PDF fit.
+2.1.1. EKO
+In this section, we highlight the most relevant features of EKO the PDF evolution library adopted
+to produce the result of Chapters 3 to 5 as well as a number of additional works [6, 11, 19]. We
+refer to [8] for a more extensive presentation.
+EKO solves the DGLAP evolution equations Eq. (1.60) in Mellin space allowing for simpler
+solution algorithms (both iterative and approximated). Yet, it provides result in momentum
+fraction space to allow an easy interface with existing generator codes.
+EKO computes evolution kernel operators (EKO) which are independent of the initial boundary
+conditions but only depend on the given theory settings. The operators can thus be computed
+once, stored on disk and then reused in the actual application. This method can significantly
+speed-up when PDFs are repeatedly being evolved, as it is customary in PDF fits.
+EKO is open-source, allowing easy interaction with users and developers. The project comes
+with a clean, modular, and maintainable codebase that guarantees easy inspection and ensures
+it is future-proof. We provide both a user and a developer documentation.
+EKO currently implements solution up to approximate N3LO QCD, which are provided with two
+different approximations (see also Section 4.1), and up to NNLO in QED with mixed QED⊗QCD
+corrections.
+EKO correctly treats intrinsic heavy quark distributions, required for studies of the heavy
+quark content of the nucleon (cf. Chapter 3). While the treatment of intrinsic distributions
+in the evolution equations is mathematically simple, as they decouple in a specific basis,

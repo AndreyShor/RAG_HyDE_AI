@@ -1,0 +1,106 @@
+9
+[29] G. E. Blonder, M. Tinkham, and T. M. Klapwijk, Tran-
+sition from metallic to tunneling regimes in supercon-
+ducting microconstrictions: Excess current, charge im-
+balance, and supercurrent conversion, Physical Review
+B 25, 4515 (1982).
+[30] J. S. Lee, B. Shojaei, M. Pendharkar, A. P. McFadden,
+Y. Kim, H. J. Suominen, M. Kjaergaard, F. Nichele,
+H. Zhang, C. M. Marcus, and C. J. Palmstrøm, Trans-
+port Studies of Epi-Al/InAs Two-Dimensional Electron
+Gas Systems for Required Building-Blocks in Topological
+Superconductor Networks, Nano Letters 19, 3083 (2019).
+[31] H. J. Suominen, J. Danon, M. Kjaergaard, K. Flens-
+berg, J. Shabani, C. J. Palmstrøm, F. Nichele, and C. M.
+Marcus, Anomalous Fraunhofer interference in epitax-
+ial superconductor-semiconductor Josephson junctions,
+Physical Review B 95, 035307 (2017).
+Supplementary Materials
+VI.
+FLOQUET THEORY APPLIED TO SNS
+JUNCTION
+To simulate the Josephson junction studied experimen-
+tally, we consider an SNS junction of the proximitized
+InAs two-dimensional electron gas (2DEG) as shown
+in Fig. 1(a).
+The system is described by the time-
+dependent Bogoliubov-de Gennes Hamiltonian H(t) =
+1
+2
+R
+drΨ†(r)H(t)Ψ(r) written in terms of the Nambu
+spinor ˆΨ(r) =
+h
+ˆψ↑(r)
+ˆψ↓(r)
+ˆψ†
+↓(r) −ˆψ†
+↑(r)
+iT
+, and
+with
+H(t) = HNτz + Re[∆(t)]τx −Im[∆(t)]τy,
+(3)
+where
+HN = −
+ℏ2∇2
+2m∗+ µ(y) + iα (σy∂x −σx∂y)
+
+.
+(4)
+The Pauli matrices σx,y,z and τx,y,z act on the spin
+and particle-hole spaces, respectively. The Rashba spin-
+orbit coupling is represented by α, and m∗is the effec-
+tive mass. The chemical potential µ(y) = µSCΘ(|y| −
+WN/2)+µJΘ(WN/2−|y|) has a value µSC in the super-
+conducting region and µJ inside the junction. Similarly,
+we write the pairing potential as ∆(t) = ∆indΘ(|y| −
+WN/2) exp[iΘ(y)ϕ(t)], where ∆ind is the induced gap in
+the 2DEG and ϕ(t) = 2eVJt/ℏis the time-dependent
+phase difference between the two superconducting leads,
+determined by the Josephson voltage VJ across the junc-
+tion, as shown in Fig. 3(a).
+Since the Hamiltonian is time-periodic with period T =
+2π/ω related to the Josephson frequency ω = 2eVJ/ℏ, we
+can use the Floquet theory to write the Hamiltonian in
+the Fourier harmonic space [10], with matrix elements
+given by
+HF
+mn = −mℏωδmn +
+Z T
+0
+dtei(m−n)ωtH(t),
+(5)
+where m, n ∈Z. Using Eq. (5) we find that the matrix
+representation for the Floquet Hamiltonian in the Fourier
+basis labeled by m, n is given by
+HF =
+
+
+
+
+...
+V
+0
+V † H0 −mℏω
+V
+0
+V †
+...
+
+
+
+,
+(6)
+with H0
+=
+HNτz + ∆indΘ(y + WN/2)τx,
+V
+=
+∆indΘ(WN/2−y)(τx +iτy)/2 and V † = ∆indΘ(WN/2−
+y)(τx −iτy)/2.
+To probe the time-averaged density of states in the
+junction, we must diagonalize the Floquet Hamiltonian
+numerically.
+By using the Floquet theory, we get the
+Hamiltonian of Eq. (6), which is dimensionally larger

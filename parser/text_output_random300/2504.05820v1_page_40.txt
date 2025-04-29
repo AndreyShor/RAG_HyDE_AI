@@ -1,0 +1,47 @@
+26
+Scattering Protons
+all logarithmic corrections as they are provided by DGLAP evolution, but it does not contain any
+power-like heavy quark corrections m2/Q2 which may be phenomenological important in certain
+regions of the kinematic phase space. ZM-VFNS usually generates unphysical discontinuities
+where the scale Q equals any of the heavy quark masses. However, as all the power suppressed
+corrections are neglected all the perturbative calculations simplify significantly.
+The FONLL scheme.
+A more refined prescription is the FONLL scheme [106], presented
+in Ref. [107] for DIS observables, with a more recent implementation provided in [5]. The
+FONLL scheme enhances the fixed order calculation by the resummation of the pseudo-collinear
+logs, which can become arbitrary large. The procedure can be applied either to one or more
+heavy quark thresholds, and generalization to the polarized case are possible, provided that
+the massive calculation are available [12]. In practice, one combines FFNSnf and FFNSn1 + 1
+while taking care of the double counting and define
+F FONLL(Q2, m2
+h) = F (nf)(Q2, m2
+h) + F (nf+1)(Q2) −F (nf∩nf+1)(Q2, m2
+h)
+(1.103)
+where the intersection operation ∩indicate the overlap between the two schemes.
+Calculations performed in a decoupling scheme with nf light quarks retain the full dependence
+on the heavy quark mass and include the contribution of heavy quarks at a fixed perturbative
+order (FFNSnf). Calculations performed in a scheme in which the heavy quark is treated as
+massless (FFNSn1 +1), and endowed with a PDF that satisfies perturbative matching conditions,
+resums logarithms of Q2/m2
+h to all orders through the running of the coupling and the evolution
+of PDFs, but does not include terms that are suppressed as powers of m2
+h
+Q2 . In the r.h.s of
+Eq. (1.103), each component obeys factorization and is thus given by a convolution between
+a PDF f and a coefficient function C, given in the corresponding scheme. The intersection
+coefficient is given by Eq. (1.100) and contains only the massive pseudo-collinear terms and
+has to be convolved with an nf PDF set. This construction reduces to the decoupling calculation
+for Q2 ≈m2
+h and to the massless one for Q2 ≫m2
+h.
+When computing Eq. (1.103) multiple approaches are possible: in the original publication
+[107], all the terms are rewritten analytically in the FFNSnf + 1 scheme such that a single
+PDF convolution is needed. However, this approach is not optimal at higher orders where
+the matching condition expressions become more involved and their explicit inversion can be
+complex; in Ref. [5] we show how Eq. (1.103) can be implemented more easily evolving the
+different PDFs in their respective schemes and joining the different pieces only at structure
+function level. The latter method is also more straightforward to extend in case of multiple
+thresholds (charm and bottom), where the procedure is applied iteratively, while the method of
+Ref. [107] would require re-expressing the massive scheme PDFs into massless scheme PDFs
+twice.

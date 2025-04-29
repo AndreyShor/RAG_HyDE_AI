@@ -1,0 +1,88 @@
+5
+by another round of Qiskit-L3 optimization. The final op-
+timized circuit has 20 two-qubit gates, and we verified that
+the aforementioned circuit optimization steps do not lead
+to any loss in energy.
+2.
+Reducing the number of Hamiltonian terms
+The Hamiltonian of the system contains terms to be mea-
+sured.
+In general, the number of terms in a molecular
+Hamiltonian scales as D4, where D is the number of spin-
+orbitals in the problem, and thus at most as many circuits
+to measure. Carrying out this exercise on quantum hard-
+ware would lead to error accumulation. Hence, we group
+qubit-wise commuting Pauli terms in the Hamiltonian, and
+each such set is termed as a clique. Every term is analyzed
+qubit-wise and suitable gates are applied to each qubit so as
+to rotate the state to the shared eigenbasis of the qubit-wise
+commuting terms.
+Thus, a single unitary is constructed
+for a set of commuting terms. This drastically reduces the
+number of circuit evaluations. In this work, cliques that
+contribute equally to the energy are grouped under super-
+cliques, and we measure a clique from the superclique set.
+We find that 551 terms get grouped into 111 cliques, and
+111 cliques are grouped under fewer supercliques, of which
+only 6 of them contribute non-negligibly to the energy bud-
+get. We pick the top 3 supercliques for our quantum hard-
+ware computations. The energy that we obtain with all of
+the resource reduction steps is −3.588074 Ha, which is less
+than the HF energy (−3.570995 Ha) by 17.079 milliHa. It
+is this small value of correlation energy that we seek to cap-
+ture on a NISQ era quantum computer. The details of the
+supercliques are given in Table I.
+III.
+RESULTS AND DISCUSSIONS
+We first begin with the computational settings of the
+IonQ Forte-I hardware during the time of executing our
+target jobs: Average one-qubit gate fidelity: 99.98%, aver-
+age two-qubit gate fidelity: 99.28%, and readout fidelity:
+99.17%. We note here that the reason for concerning our-
+selves more with two-qubit gate count over the one-qubit
+ones is due to the fact that the two-qubit gate fidelities are
+the lowest when compared with one-qubit gate or readout
+fidelities, and thus have a big impact on the final results.
+Furthermore, T1 = 100 seconds, T2 = 1 second (not to be
+confused with the coupled cluster excitation operators ˆT1
+and ˆT2), one-qubit gate duration = 130 microseconds, two-
+qubit gate duration = 970 microseconds, and readout dura-
+tion = 150 microseconds. For all of our calculations, we use
+4000 shots, include error mitigation (debiasing [50]), and
+for the reported results in this work, we average over 5 rep-
+etitions for the dominant clique (clique 0), and 6 for the
+Figure 3.
+Quantum hardware results (with error mitigation)
+for the ground state energy (in units of Ha) using our resource
+optimized MRUCC-VQE circuit with optimal parameters and
+by considering three supercliques.
+other two (cliques 6 and 16). We also note that, the error
+in measurement of clique 0 is substantially larger than the
+error in measurement of clique 6 and clique 16 indicating
+the presence of relative error from the hardware side which
+seems to be dependent on the magnitude of value to be
+captured. See Figure 3 for reference.
+Upon executing the aforementioned tasks on the Forte-I
+device, we implement a post-selection strategy for clique 0,
+where only the bitstrings that conserve the particle num-
+ber are retained in our final results.
+We note that this
+technique can be applied to Pauli terms which are only
+in computational basis [51].
+Figure 3 represents the ac-
+tive space energy after error mitigation (for all cliques) and
+post-selection (only for clique 0). The error in the active
+space energy from the hardware is 11.61% with respect to
+the expectation value of same Hamiltonian evaluated using
+the statevector backend. When we account for the contribu-
+tions from nuclear repulsion and core energies, the error in
+total energy is 2.69%. The total energy itself is −15.052701
+Ha (the HF energy is −15.452333 Ha, the one-parameter
+VQE with dominant parameter yields −15.472073 Ha, en-
+ergy after accounting for only three dominant supercliques
+is −15.469413 Ha, and the full VQE energy is −15.538919
+Ha).
+However, when we go beyond the precision in the
+total ground state energy and check the amount of corre-
+lation energy that our computation has captured, that is,
+E−EHF , where E is the computed energy with the reduced

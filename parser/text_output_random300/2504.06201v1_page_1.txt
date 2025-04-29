@@ -1,0 +1,47 @@
+ 
+1 
+Quantum Annealing for Combinatorial Optimization: A 
+Benchmarking Study 
+ 
+Authors: Seongmin Kim1,4, Sang-Woo Ahn2, In-Saeng Suh4, Alexander W. Dowling3,*, 
+Eungkyu Lee2,*, and Tengfei Luo1,* 
+ 
+1Department of Aerospace and Mechanical Engineering, University of Notre Dame; Notre Dame, 
+Indiana 46556, United States. 
+2Department of Electronic Engineering, Kyung Hee University; Yongin-Si, Gyeonggi-do 17104, 
+Republic of Korea. 
+3Department of Chemical and Biomolecular Engineering, University of Notre Dame; Notre Dame, 
+Indiana 46556, United States. 
+4National Center for Computational Sciences, Oak Ridge National Laboratory, Oak Ridge, 
+Tennessee 37830, United States. 
+*Corresponding author. Email: adowling@nd.edu, eleest@khu.ac.kr, and tluo@nd.edu 
+ 
+ 
+Quantum annealing (QA) has the potential to significantly improve solution quality and reduce 
+time complexity in solving combinatorial optimization problems compared to classical 
+optimization methods. However, due to the limited number of qubits and their connectivity, the 
+QA hardware did not show such an advantage over classical methods in past benchmarking studies. 
+Recent advancements in QA with more than 5,000 qubits, enhanced qubit connectivity, and the 
+hybrid architecture promise to realize the quantum advantage. Here, we use a quantum annealer 
+with state-of-the-art techniques and benchmark its performance against classical solvers. To 
+compare their performance, we solve over 50 optimization problem instances represented by large 
+and dense Hamiltonian matrices using quantum and classical solvers. The results demonstrate that 
+a state-of-the-art quantum solver has higher accuracy (~0.013%) and a significantly faster 
+problem-solving time (~6,561×) than the best classical solver. Our results highlight the advantages 
+of leveraging QA over classical counterparts, particularly in hybrid configurations, for achieving 
+high accuracy and substantially reduced problem solving time in large-scale real-world 
+optimization problems. 
+ 
+Keywords: quantum advantage, quantum-classical hybrid algorithm, quantum annealing, 
+combinatorial optimization, benchmarking study 
+ 
+ 
+Introduction 
+Quantum computers mark a paradigm shift to tackle challenging tasks that classical computers 
+cannot solve in a practical timescale1,2. The quantum annealer is a special quantum computer 
+designed to solve combinatorial optimization problems with problem size-independent time 
+complexity3-5. This unique quantum annealing (QA) capability is based on the so-called adiabatic 
+process6,7. During this process, entangled qubits naturally evolve into the ground state of a given 
+Hamiltonian to find the optimal vector of binary decisions for the corresponding quadratic 
+unconstrained binary optimization (QUBO) problem8-10. The adiabatic theorem of quantum 
+mechanics ensures that QA identifies the optimal solution regardless of the size and landscape of 

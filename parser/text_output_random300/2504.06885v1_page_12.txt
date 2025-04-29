@@ -1,0 +1,124 @@
+Method
+Ps
+Ps Post-
+Selection
+AR Post-
+Selection
+User
+Runtime (s)
+QPU Time
+(s)
+Brute
+Force
+1
+N/A
+N/A
+2.2 ± 0.03
+N/A
+Simulated
+Annealing
+0.993 ± 0.003
+0.994 ± 0.003
+0.994 ± 0
+0.339 ± 0.001
+N/A
+VQE
+State
+Vector
+0.319 ± 0.1
+0.695 ± 0.2
+0.826 ± 0.01
+38.5 ± 7
+N/A
+VQE
+QPU
+0.183 ± 0.07
+0.595 ± 0.1
+0.761 ± 0.08
+(2.54 ± 0.4) ×
+103
+941 ± 200
+Quantum
+Annealing
+0.189 ± 0.02
+0.398 ± 0.03
+0.626 ± 0.03
+2.54 ± 0.08
+0.399 ± 0.08
+Random
+Sampling
+0.0004±0.0005
+0.104 ± 0.1
+0.235 ± 0.2
+0.001 ± 0
+N/A
+Table 1: The performance metric results for our different methods on the 18 variable problem. All metrics are given
+as mean values, with the standard deviation error included. Table 2 in Appendix C contains the same data with the
+inclusion of the SE error. The hyperparameters used are as stated in the caption of Figure 3.
+post-selected distribution for quantum annealing
+is closer to the optimal solution than random
+sampling but further from it than simulated an-
+nealing. This distribution includes energies that
+are not optimal, which is reflected in the AR met-
+ric.
+In Table 1 it can be seen that the QPU time
+for quantum annealing only makes up a fraction
+of the user runtime. In Appendix E we dissect the
+user runtime and show that the majority of this
+is coming from the embedding procedure (Figure
+19a). This motivates us to explore more efficient
+embedding techniques, which we do in the next
+section as well as solving larger sizes of QUBO.
+5.1.1
+Scaling to larger problem sizes: Quantum
+Annealing
+We now discuss how quantum annealing runtime
+scales as a function of problem size.
+The time
+spent by quantum annealing on each problem in-
+stance is partly determined by the number of an-
+neals (shots) and the annealing time. The num-
+ber of anneals is chosen so that our results are
+statistically significant, and the annealing time
+is found through hyperparameter optimisation.
+Figure 5 displays the user runtime for simulated
+annealing and quantum annealing (with two dif-
+ferent embedding techniques) as a function of the
+number of QUBO variables, N.
+The quantum
+annealing embedding technique used for the re-
+sults in the previous section was minor embed-
+ding, D-Wave’s default mapping scheme, which
+is a heuristic method.
+An alternative embed-
+ding technique, ‘clique embedding’ [58], can be
+used for QUBO problems where the QUBO graph
+forms a ‘clique’, which means that it has full
+connectivity (100% density). Clique embedding
+is an algorithm that runs in polynomial time in
+the worst case [58–60], which has uniform chain
+lengths (or close to uniform) [59].
+We observe
+near-constant scaling with clique embedding in
+Figure 19a. At larger problem sizes this may start
+to grow polynomially.
+As discussed previously, the primary contribu-
+tor to the user runtime of quantum annealing us-
+ing minor embedding is the embedding time, de-
+tailed in Appendix E and explicitly shown in Fig-
+ure 19a. As problem size increases, the required
+average qubit chain length also increases, shown
+in Figure 19c. Consequently, the heuristic minor
+embedding technique must explore more mapping
+possibilities, leading to poor scaling.
+This can
+also explain the large standard deviation error
+bars observed in Figure 5: there is more vari-
+ability possible when the minor heuristic embeds
+larger problems and requires longer qubit chains.
+A new embedding is found each time the minor
+heuristic is performed, which can give variable
+performance in terms of time and quality of so-
+lution.
+In future work, the minor embeddings
+12

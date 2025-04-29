@@ -1,0 +1,84 @@
+Fig. 3: CDF of the max-min SE for K = 30 UEs.
+TABLE II: Average computational time in seconds.
+K
+SDP-ADMM
+SEA [8]
+15
+0.6
+8.6
+30
+2.1
+17.8
+achieve more than 10 times reduction in computational time
+as compared to the state-of-the-art SEA utilizing CVX and
+attains the same SE performance. As for the dense scenario of
+K = 30 UEs, the proposed algorithm brings an 88 % reduction
+in computational time while achieving a small improvement
+in SE.
+V. CONCLUSIONS
+This paper addresses the MMF multicast optimization prob-
+lem in a massive MIMO system. We develop a fast SDP-
+ADMM algorithm that can achieve a near-global optimal
+rank-1 beamforming solution to this NP-hard problem. The
+proposed solution relies on the SEA to extract a rank-1
+solution from the output of the SDP. A novel problem reformu-
+lation and penalization scheme is proposed that is specifically
+tailored for our SDP-ADMM implementation. The distinction
+of the proposed algorithm is that it is applicable to a wide-class
+of optimization problems where SDR is utilized and a low-
+rank solution is desirable. Compared to standard SDP solvers,
+SDP-ADMM attains similar SE performance with about 10
+times reduction in computational time. Numerical results show
+the robustness of the proposed SDP-ADMM algorithm where
+it maintains its performance for different simulation settings
+without the need for ADMM parameter tuning.
+REFERENCES
+[1] E. Bj¨ornson, J. Hoydis, and L. Sanguinetti, “Massive MIMO networks:
+Spectral, energy, and hardware efficiency,” Foundations and Trends in
+Signal Processing, vol. 11, no. 3-4, pp. 154–655, 2017.
+[2] M. Zaher, ¨O. T. Demir, E. Bj¨ornson, and M. Petrova, “Learning-based
+downlink power allocation in cell-free massive MIMO systems,” IEEE
+Transactions on Wireless Communications, vol. 22, no. 1, pp. 174–188,
+2023.
+[3] G.-W. Hsu, B. Liu, H.-H. Wang, and H.-J. Su, “Joint beamforming for
+multicell multigroup multicast with per-cell power constraints,” IEEE
+Transactions on Vehicular Technology, vol. 66, no. 5, pp. 4044–4058,
+2016.
+[4] N. D. Sidiropoulos, T. N. Davidson, and Z.-Q. Luo, “Transmit beam-
+forming for physical-layer multicasting,” IEEE transactions on signal
+processing, vol. 54, no. 6, pp. 2239–2251, 2006.
+[5] E. Karipidis, N. D. Sidiropoulos, and Z.-Q. Luo, “Quality of service
+and max-min fair transmit beamforming to multiple cochannel multicast
+groups,” IEEE Transactions on Signal Processing, vol. 56, no. 3,
+pp. 1268–1279, 2008.
+[6] L. Zhou, L. Zheng, X. Wang, W. Jiang, and W. Luo, “Coordinated
+multicell multicast beamforming based on manifold optimization,” IEEE
+Communications Letters, vol. 21, no. 7, pp. 1673–1676, 2017.
+[7] M. Sadeghi, L. Sanguinetti, R. Couillet, and C. Yuen, “Reducing
+the computational complexity of multicasting in large-scale antenna
+systems,” IEEE Transactions on Wireless Communications, vol. 16,
+no. 5, pp. 2963–2975, 2017.
+[8] M. Zaher, E. Bj¨ornson, and M. Petrova, “Near-optimal cell-free beam-
+forming for physical layer multigroup multicasting,” in Proc. IEEE
+Global Communications Conference (GLOBECOM), pp. 1–6, 2024.
+[9] M. Dong and Q. Wang, “Multi-group multicast beamforming: Optimal
+structure and efficient algorithms,” IEEE Transactions on Signal Pro-
+cessing, vol. 68, pp. 3738–3753, 2020.
+[10] E. Chen and M. Tao, “ADMM-based fast algorithm for multi-group mul-
+ticast beamforming in large-scale wireless systems,” IEEE Transactions
+on Communications, vol. 65, no. 6, pp. 2685–2698, 2017.
+[11] A. Konar and N. D. Sidiropoulos, “Fast approximation algorithms for a
+class of non-convex QCQP problems using first-order methods,” IEEE
+Transactions on Signal Processing, vol. 65, no. 13, pp. 3494–3509, 2017.
+[12] C. Zhang, M. Dong, and B. Liang, “Ultra-low-complexity algorithms
+with structurally optimal multi-group multicast beamforming in large-
+scale systems,” IEEE Transactions on Signal Processing, 2023.
+[13] Z.-Q. Luo, W.-K. Ma, A. M.-C. So, Y. Ye, and S. Zhang, “Semidefinite
+relaxation of quadratic optimization problems,” IEEE Signal Processing
+Magazine, vol. 27, no. 3, pp. 20–34, 2010.
+[14] S. Boyd, N. Parikh, E. Chu, B. Peleato, J. Eckstein, et al., “Distributed
+optimization and statistical learning via the alternating direction method
+of multipliers,” Foundations and Trends® in Machine learning, vol. 3,
+no. 1, pp. 1–122, 2011.
+[15] M. Grant and S. Boyd, “CVX: Matlab software for disciplined convex
+programming, version 2.1.” https://cvxr.com/cvx, Mar. 2014.

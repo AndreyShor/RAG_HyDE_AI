@@ -1,0 +1,31 @@
+14 
+ 
+TM and 0.0247 for Si–TE. This performance discrepancy directly reflects the underlying spectral 
+behavior that Ti spectra exhibit smooth, broadband intensity variations with minimal resonant 
+structure, allowing PCA-based linear regression to effectively capture the index-dependent 
+variation. In contrast, Si spectra are dominated by sharp Mie-type resonances that make the 
+intensity shift nonlinearly with index, making them less compatible with global linear modeling. 
+Figure 7(b) illustrates the fold enhancement in MSE obtained by transitioning from the best 
+single-feature linear model to full-spectrum PCA-based regression. The Ti–TM dataset shows a 
+6065-fold reduction in error, followed by Ti–TE with a 598.8-fold improvement. For the Si–TE 
+and Si–TM datasets, the enhancements are more modest (22.8 and 4.3-fold, respectively), 
+reflecting the fact that much of the predictive information in resonance-dominated spectra is 
+already concentrated in a small number of well-aligned peak features. 
+Figure 7(c) shows the baseline MSEs of the best individual peak predictors: 0.4017 for Ti–TM, 
+0.0628 for Ti–TE, 0.0294 for Si–TM, and 0.5629 for Si–TE. Notably, while Si–TM yields the 
+lowest single-feature error among the four, its full-spectrum model improves only marginally. This 
+suggests that, despite spectral richness, the nonlinear behavior of its intensity variation limits the 
+effectiveness of linear PCA-based modeling. In contrast, Ti-based datasets benefit substantially 
+from this approach due to their linear and distributed spectral response. 
+To validate the use of linear regression, a comparison was performed using multiple machine 
+learning algorithms, including Lasso, support vector regression, random forest, and gradient 
+boosting, on the Ti–TE dataset. Linear regression achieved the lowest MSE and was therefore 
+selected for all four datasets to ensure consistency and interpretability. Although the comparison 
+was limited to a representative dataset, the spectral behavior and resulting trends across 
+configurations confirm the appropriateness of the chosen model. 
+Figure 8 presents the residual plots of the full-spectrum principal component regression (PCR) 
+models across all four datasets, plotted as the difference between the predicted and true target 
+variables against the true target values (index samples from 1.3 to 1.4 with 0.01 steps mapped onto 
+1 to 101 with 1 seps). These visualizations offer a direct interpretation of prediction error 
+distributions and provide further insight into the compatibility between spectral behavior and linear 
+modeling. 

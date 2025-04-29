@@ -1,0 +1,55 @@
+Published as a conference paper at ICLR 2025
+PINP:
+PHYSICS-INFORMED
+NEURAL
+PREDICTOR
+WITH LATENT ESTIMATION OF FLUID FLOWS
+Huaguan Chen1, Yang Liu2, Hao Sun1,∗
+1Gaoling School of Artificial Intelligence, Renmin University of China, Beijing, China
+2School of Engineering Science, University of Chinese Academy of Sciences, Beijing, China
+Emails: huaguanchen@ruc.edu.cn; liuyang22@ucas.ac.cn; haosun@ruc.edu.cn
+ABSTRACT
+Accurately predicting fluid dynamics and evolution has been a long-standing chal-
+lenge in physical sciences. Conventional deep learning methods often rely on the
+nonlinear modeling capabilities of neural networks to establish mappings between
+past and future states, overlooking the fluid dynamics, or only modeling the ve-
+locity field, neglecting the coupling of multiple physical quantities. In this paper,
+we propose a new physics-informed learning approach that incorporates coupled
+physical quantities into the prediction process to assist with forecasting. Central
+to our method lies in the discretization of physical equations, which are directly
+integrated into the model architecture and loss function. This integration enables
+the model to provide robust, long-term future predictions. By incorporating phys-
+ical equations, our model demonstrates temporal extrapolation and spatial gener-
+alization capabilities. Experimental results show that our approach achieves the
+state-of-the-art performance in spatiotemporal prediction across both numerical
+simulations and real-world extreme-precipitation nowcasting benchmarks.
+1
+INSTRUCTION
+The prediction and analysis of fluid dynamics play a crucial role across many fields of science. Fluid
+phenomena span a wide range of scales, from macroscopic atmospheric circulation to microscopic
+intracellular transport, underscoring the complexity and significance of fluid motion. However, noisy
+data, experimental limitations, and the inaccessibility of physical quantities present substantial chal-
+lenges in learning the underlying dynamical systems and accurately predicting future fluid evolution.
+These challenges primarily arise for two reasons. First, latent physical quantities are inherently
+difficult to obtain. For example, the advection and diffusion of substances within fluid flows are
+governed by the Navier-Stokes (NS) equations, which couple multiple variables—such as velocity,
+pressure, and concentration—into a complex, interdependent system. Capturing real-time data, like
+velocity and pressure, without interference is highly challenging. Successful approaches usually rely
+on supervised learning for these quantities, but such data is not easy to obtain in practical scenarios.
+While the HFM (Raissi et al., 2020) has made notable progress by inferring latent physical quantities
+from PDEs and observed concentration data, it still falls short of predicting future fluid evolution.
+Second, the complexity of the NS equations presents a substantial obstacle. These nonlinear equa-
+tions couple multiple physical quantities, making the direct prediction of future fluid behavior nearly
+impossible. A promising approach is the use of neural operators, which predict future physical fields
+based on past observations without explicitly solving the NS equations (Li et al., 2020; Tran et al.,
+2023; Wang et al., 2024). These models leverage the powerful nonlinear approximation capabilities
+of neural networks to map past fluid states to future. However, the absence of physical constraints
+often limits their interpretability and generalization ability. Another approach involves approximat-
+ing and simplifying the NS equations through methods like kernel methods or other theorems and
+applying neural networks to estimate the fluid velocity field. By combining the estimated velocity
+field with simplified equations, these methods attempt to predict future fluid behavior (Deng et al.,
+2023; Xing et al., 2024). However, these methods lack intuitive clarity, and focusing solely on the
+velocity field overlooks the complex multivariable coupling intrinsic to the NS equations.
+∗Corresponding author
+1
+arXiv:2504.06070v1  [cs.LG]  8 Apr 2025

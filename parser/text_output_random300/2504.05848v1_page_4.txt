@@ -1,0 +1,209 @@
+4
+III.
+CLOCK WITH GENERIC SPECTRUM
+A.
+The generalized quantum clock
+We consider here again the clock as a quantum system
+described by d = p + 1 energy states |En⟩and En energy
+levels with n = 0, 1, 2, ..., p, but we do not assume an
+equally-spaced energy spectrum. In this case we can not
+ﬁnd a subset of p + 1 time states (3) that are orthogonal
+but we can make progress by requiring that the ratios
+(En −E0)/(E1 −E0) are rational numbers. Thus we can
+write:
+En −E0
+E1 −E0
+= Cn
+Bn
+(21)
+where Cn and Bn are integers with no common factors.
+We deﬁne rn = r1Cn/Bn for n > 1, with r1 the lowest
+common multiple of the values of Bn with n > 1, and we
+take r0 = 0. In this framework the values rn are integers
+for all n ≥0. Now we redeﬁne
+T =
+2πℏr1
+E1 −E0
+(22)
+and then
+En = E0 + rn
+2πℏ
+T .
+(23)
+In this framework, we introduce again the z + 1 time
+states:
+|τm⟩=
+1
+√p + 1
+p
+X
+n=0
+e−iℏ−1Enτm |En⟩
+(24)
+with τm = τ0 +
+T
+z+1m. These states still satisfy the reso-
+lution of the identity, indeed we have:
+z
+X
+m=0
+|τm⟩⟨τm| =
+1
+p + 1
+(
+z
+X
+m=0
+p
+X
+n=0
+p
+X
+k=0
+e−iℏ−1(En−Ek)τm |En⟩⟨Ek|
+)
+=
+1
+p + 1
+(
+z
+X
+m=0
+p
+X
+n=0
+p
+X
+k=0
+e−i 2π
+T (rn−rk)τm |En⟩⟨Ek|
+)
+=
+1
+p + 1
+
+
+
+z
+X
+m=0
+X
+n=k
+|En⟩⟨En| +
+X
+n̸=k
+z
+X
+m=0
+e−i 2π
+T (rn−rk)τm |En⟩⟨Ek|
+
+
+.
+(25)
+Replacing the expression of τm in the second term on the right-hand side of the equation (25), we obtain:
+z
+X
+m=0
+|τm⟩⟨τm| =
+1
+p + 1
+
+
+
+z
+X
+m=0
+X
+n=k
+|En⟩⟨En| +
+X
+n̸=k
+z
+X
+m=0
+e−i 2π
+T (rn−rk)(τ0+m
+T
+z+1 ) |En⟩⟨Ek|
+
+
+
+=
+1
+p + 1
+
+
+
+z
+X
+m=0
+X
+n=k
+|En⟩⟨En| +
+X
+n̸=k
+ei 2π
+T (rn−rk)τ0
+z
+X
+m=0
+e−i(rn−rk) 2πm
+z+1 |En⟩⟨Ek|
+
+
+.
+(26)
+For (En −E0)/(E1 −E0) rational, and thus rn −rk an
+integer, we have
+X
+n̸=k
+ei 2π
+T (rn−rk)τ0
+z
+X
+m=0
+e−i(rn−rk) 2πm
+z+1 |Ei⟩⟨Ek| = 0
+(27)
+because Pz
+m=0 e−i(rn−rk) 2πm
+z+1 = (z + 1)δn,k.
+Equation
+(26) thus becomes:
+p + 1
+z + 1
+z
+X
+m=0
+|τm⟩⟨τm| = 1.
+(28)
+We can ensure rn −rk is not a multiple of z +1 by taking
+z + 1 > rp, that is the largest value for rn. This implies
+that, in this new scenario, the generalized quantum clock
+is only described by the POVM, where the z + 1 non-
+orthogonal elements are given by p+1
+z+1 |τm⟩⟨τm|.
+As in the previous Section, since z is lower-bounded,
+we can take the limit z →∞, deﬁning the time states as
+|t⟩=
+1
+√p + 1
+p
+X
+n=0
+e−iℏ−1Ent |En⟩
+(29)
+where t ∈[t0, t0 + T ]. The clock is here described by the
+POVM generated with the operators p+1
+T
+|t⟩⟨t| dt and the
+resolution of the identity reads
+p + 1
+T
+Z t0+T
+t0
+dt |t⟩⟨t| = 1.
+(30)
+To conclude the paragraph we emphasize that this frame-
+work allow us to use any generic (discrete) clock Hamil-

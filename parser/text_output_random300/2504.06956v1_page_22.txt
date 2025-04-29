@@ -1,0 +1,101 @@
+Local structure of extremal points
+22
+Lemma 4.9 (Approximation by a Brownian motion). There exists a constant C > 0 such that for all
+b ∈N ∩{∞} and all j ∈[b −1], on the event {Kb < b},
+ sup
+x∈Aj
+Υb,g(x) + Bj
+ ≤RKb(j) ,
+(4.12)
+where Rk(j)
+def= C(1 + Θk(j)).
+Proof. Let b ∈N, j ∈[b −1], and x ∈Aj. Now, recalling (4.5), we can write
+Υb,g(x) = −Bj −
+Z b
+j
+(1 −K(e−sx))dBs + Zj(x) + Zj,b(x) −
+√
+2dab(x) + gb(x) ,
+where we used the fact that thanks to (K2), the function K is supported in B(0, 1). In particular, using
+the triangle inequality, this implies that
+ sup
+x∈Aj
+Υb,g(x) + Bj
+ ≤sup
+x∈Aj
+
+Z b
+j
+(1 −K(e−sx))dBs
+ +
+ sup
+x∈Aj
+Zj(x) −mj
+
++
+ sup
+x∈Aj
+Zj,b(x)
+ + sup
+x∈Aj
+|
+√
+2dab(x) −mj| +
+ sup
+x∈Aj
+gb(x)
+ .
+Now, on the event {Kb < b}, by Definition 4.6 of the control variable Kb and by Lemma 4.5, there
+exists a constant C > 0 such that the last four terms on the right-hand side of the above display are
+bounded from above by a quantity of the form C(1 + ΘKb(j)). Therefore, it remains to check that a
+similar bound also holds for the first term. Again, by Definition 4.6 of Kb, this follows by a simple
+computation. Indeed, we have that
+sup
+x∈Aj
+
+Z b
+j
+(1 −K(e−sx))dBs
+ ≲ej+1
+b−1
+X
+m=j
+e−m Oscm(B) ≤ej+1
+b−1
+X
+m=j
+e−mΘKb(m) ,
+where the implicit constant is independent of everything else. The quantity on the right-hand side of
+the above display can be clearly bounded by a quantity of the form C(1 + ΘKb(j)), for some constant
+C > 0. Hence, the estimate in (4.12) follows. Finally, we note that if b = ∞, then the proof is
+completely analogous.
+We record here some useful inclusions that are immediate consequences of Lemma 4.9 and will be
+used several times in the remainder of this section. In particular, recalling the notation introduced
+in (3.3) and (3.4), and using the same notation as in the previous lemma, for each λ > 0, thanks to
+(4.12), one can see that for all b ∈N and k ∈[b −1], the following inclusions hold
+{Kb < b} ∩{M0,b(Υb,g) ≤λ} ⊆
+b−1
+\
+j=1
+{Bj ≥−λ −RKb(j)} ,
+(4.13)
+{Kb < b} ∩
+b−1
+\
+j=k
+{Bj ≥λ + RKb(j)} ⊆{M0,b,k(Υb,g) ≤λ} .
+(4.14)
+Similar inclusions hold also for the field Υ∞. Indeed, thanks to (4.12), for all b ∈N and k ∈[b −1],
+we have that
+{K∞< ∞} ∩{M0,b(Υ∞) ≤λ} ⊆
+b−1
+\
+j=1
+{Bj ≥−λ −eReKb(j)} ,
+(4.15)
+{K∞< ∞} ∩
+b−1
+\
+j=k
+{Bj ≥λ + eReKb(j)} ⊆{M0,b,kΥ∞) ≤λ} .
+(4.16)

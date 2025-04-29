@@ -1,0 +1,166 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+and its dual discretization operator
+˜ι∗
+N(ϕi)k = Nd
+Z
+QN
+k
+X
+m∈M
+SN
+−m ϕi(x) SN
+−k fN
+m(x) dx.
+The duality of ˜ιN and ˜ι∗
+N follows by a direct calculation:
+Z
+Td ϕi˜ιNUN
+i dx =
+X
+k∈Zd
+N
+X
+m∈M
+UN
+i,k+m
+Z
+QN
+k
+ϕi(x) SN
+−k fN
+m(x) dx
+=
+X
+k∈Zd
+N
+X
+m∈M
+UN
+i,k
+Z
+QN
+k−m
+ϕi(x) SN
+m−k fN
+m(x) dx =
+X
+k∈Zd
+N
+X
+m∈M
+UN
+i,k
+Z
+QN
+k
+SN
+−m ϕi(x) SN
+−k fN
+m(x) dx
+= 1
+Nd
+X
+k∈Zd
+N
+UN
+i,k Nd
+Z
+QN
+k
+X
+m∈M
+SN
+−m ϕi(x) SN
+−k fN
+m(x) dx = 1
+Nd
+X
+k∈Zd
+N
+˜ι∗
+N(ϕi)kUN
+i,k.
+To understand the usage of the functions fN
+m better it is useful to deﬁne the functions
+hN
+0 (x) =
+X
+m∈M
+SN
+mfN
+m(x)
+and
+hN
+k = SN
+−k hN
+0 .
+Then, all hN
+k are piecewise polynomial and continuous, and the simple interpolation formula
+˜uN
+i = ˜ιNUN
+i
+=
+X
+k∈Zd
+N
+UN
+i,khN
+k
+holds. The following properties of fN
+m and hN
+k will be used in the sequel without further speci-
+ﬁcation:
+fN
+m(x) ∈[0, 1],
+Z
+Td fN
+m(x) dx =
+1
+(2N)d,
+X
+m∈M
+fN
+m(x) = 11QN
+0 (x),
+(5.5a)
+hN
+m(x) ∈[0, 1],
+Z
+Td hN
+k (x) dx = 1
+Nd,
+X
+k∈Zd
+N
+hN
+k (x) = 1 on Td,
+(5.5b)
+∥∇hN
+m∥L∞≤N,
+∥∇hN
+m∥L1 ≤Cd,
+hN
+k (x) ≥1
+2d SN
+1
+21d 11QN
+k (x),
+(5.5c)
+where we denoted 1d = (1, . . . , 1) ∈Rd. The next results shows that the concentrations cN
+enjoy a higher integrability as the one obtained from the uniform bound KE for EN. For this
+we use the bound KS
+diﬀin (5.2d) and a suitable Galiardo-Nirenberg interpolation applied to ˜uN.
+We ﬁrst show that ∇˜uN is uniformly bounded in L2([0, T] × Td), which is a consequence of the
+fact that SN,diﬀ(cN) is in fact a quadratic form in UN.
+Lemma 5.3 (Spatial regularity). Let cN satisfy the a priori estimates (5.2d). Then, we have
+ZZ
+ΩT
+|∇˜uN|2 dx dt ≤
+4
+3
+d−1KS
+diﬀ
+δ∗ω∗
+23

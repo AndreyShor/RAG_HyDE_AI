@@ -1,0 +1,111 @@
+8
+SUPPLEMENTAL MATERIALS
+(APPENDICES)
+In the Supplemental Material accompanying this Letter, we provide a rigorous derivation of the entropy decom-
+position formula and the fluctuation relation, utilizing the probability flow equivalence technique and tools from
+stochastic analysis. Additionally, we include detailed algorithms for computing entropy production rates, as well as
+comprehensive explanations of the two examples discussed in the main text.
+Entropy production decomposition formula
+Let F (r), ηth(t), and ηact(t) be defined as in the Langevin equation of the Letter. The solution process r(t) of the
+Langevin equation
+dr(t)/ dt = F (r(t))/Γ + ηth(t) + ηact(t),
+(S.1)
+is not differentiable, which necessitates justification for the relationship
+⟨˙r | r, t⟩= J(r, t)/P(r, t).
+(S.2)
+To address this, consider any vector-valued test function ϕ(r(t)) and any finite interval T > 0. The current velocity
+V (r(t), t) =
+F (r(t))/Γ −Dth∇log P(r(t), t) +
+Z 1
+0
+dθ
+Z
+ν( dz)zP(r(t) −θz, t)
+P(r(t), t)
+(S.3)
+is shown to satisfy the following calculation:
+*Z T
+0
+ϕ(r(t)) ⋄dr(t)
++
+=
+*Z T
+0
+dt (ϕ(r(t)) · F (r(t))/Γ + ϕ(r(t)) ⋄ηth(t) + ϕ(r(t)) ⋄ηact(t))
++
+(using SDE Eqn. )
+=
+*Z T
+0
+dt
+n
+ϕ(r(t)) · F (r(t))/Γ + ϕ(r(t)) · ηth(t) + tr[Dth∇ϕ(r(t))]
+(Marcus to Itˆo)
++ϕ(r(t)) · ηact(t)} +
+X
+0≤t≤T
+Z 1
+0
+dθ∆r(t) · ϕ(r(t) + θ∆r(t)) −∆r(t) · ϕ(r(t))
++
+(Marcus to Itˆo and Taylor’s exanpsion for the second term)
+=
+*Z T
+0
+dt {ϕ(r(t)) · F (r(t))/Γ + tr[Dth∇ϕ(r(t))]} +
+X
+0≤t≤T
+Z 1
+0
+dθ∆r(t) · ϕ(r(t) + θ∆r(t))
++
+
+zero expectation for integral of Brownian white noise and
+Z T
+0
+ϕ(r(t)) · ηact(t) −
+X
+0≤t≤T
+∆r(t)ϕ(r(t)) = 0
+
+
+=
+Z
+dr(t)
+Z T
+0
+dt {ϕ(r(t)) · F (r(t))/Γ + tr[Dth∇ϕ(r(t))]} P(r(t), t)
++
+Z
+dr(t)
+Z T
+0
+dt
+Z 1
+0
+dθ
+Z
+ν( dz)zϕ(r(t) + θz)P(r(t), t)
+(the density of r(t) is P(r(t), t))
+=
+Z
+dr(t)
+Z T
+0
+dtϕ(r(t)) · {F (r(t))/Γ −Dth∇log P(r(t), t)} P(r(t), t)
+(integrating by parts)
++
+Z
+dr(t)
+Z 1
+0
+dθ
+Z
+ν( dz)zϕ(r(t))P(r(t) −θz, t)
+P(r(t), t)
+P(r(t), t)
+(change of variables)
+≡
+Z
+dr(t)ϕ(r(t)) · V (r(t), t)P(r(t), t)
+(by the definition of V (r, t)),

@@ -1,0 +1,142 @@
+5
+0
+1
+2
+χC
+(a1)
+anisotropic s-wave
+nodal
+A1g
+RSum
+mRes
+Quadrature
+(a2)
+nodeless
+B1g
+RSum
+mRes
+Quadrature
+(a3)
+B2g
+RSum
+mRes
+Quadrature
+0
+2
+4
+6
+8
+ω/∆0
+0
+1
+2
+χC
+(b1)
+0
+2
+4
+6
+8
+ω/∆0
+(b2)
+0
+2
+4
+6
+8
+ω/∆0
+(b3)
+FIG. 2.
+The residue prescription and different singularities.
+A comparison of RSum and mRes for χC(ω), with
+∆θ = ∆0 + ∆1 cos(4θ) for C ∈{A1g, B1g, B2g} and the same number of subdivisions, N = 40. The exact calculation, obtained
+from quadrature, is shown as dashed lines. The top panel is for the nodal anisotropic s-wave case, ∆1 > ∆0, whilst the bottom
+panel is for the nodeless case, ∆1 < ∆0. The prescription is capable of effectively reproducing the many different types of
+singularities.
+III.
+EXAMPLES
+In this section, we demonstrate some practical exam-
+ples where we show the applicability and the improved
+performance of this prescription. As before, in all these
+cases, the exact calculation is performed using an adap-
+tive quadrature routine. We then compare how well the
+results computed using the RSum and the mRes methods
+converge to it for a fixed number of sub-intervals. The
+comparisons will be between the Riemann sum and the
+residue prescription. While it should be sufficient to stick
+to the results of Fig. 1 and move on to error analysis, we
+think that it is beneficial to show how convincingly our
+method correctly captures the slopes, jumps and singu-
+larities of the integrated results in diverse scenarios.
+A.
+Spectral functions
+Let us return to the evaluation of Eq. (7). We chose
+this function as it is sufficiently complex to display vari-
+ous spectral features in terms of (i) different power laws
+in the limit ω →0, (ii) the presence or absence of sin-
+gular peaks at various ω’s and (iii) even the presence
+of discontinuous step jumps. In this subsection, we will
+demonstrate that our prescription covers all these differ-
+ent singular cases and faithfully reproduces the expected
+curve while significantly outperforming the rectangle rule
+for the same mesh size.
+Let us also take this opportunity to explain the physi-
+cal nature of the response function χC(ω), Eq. (7). This
+function captures the Raman scattering cross-section
+from a 2D superconductor with order parameter ∆θ. The
+choices for C represent the orthogonal channels in which
+the contributions from the fermionic scattering can be
+broken down into. Different channels can be accessed by
+appropriately selecting the polarization of the incident
+and scattered light in the Raman experiment. The re-
+sponse χC, by itself, is insufficient to reproduce the real
+physical response as this expression does not account for
+the many-body effects. Nevertheless, it forms a build-
+ing block of the full many-body-corrected response and,
+hence, it becomes important to compute χC accurately.
+We refer the reader to the extensive literature on this
+subject for more information [33–37].
+The choice of ∆θ = ∆0 cos(2θ), that was used in
+Fig. 1, actually corresponds to a so-called d-wave super-
+conductor (best example being the cuprate superconduc-
+tors [38, 39]). However, we have other materials such as
+0.0
+2.5
+5.0
+7.5
+10.0
+ω/∆0
+0
+2
+4
+6
+8
+10
+12
+14
+χA1g
+(a)
+RSum
+N=12
+N=24
+N=32
+N=64
+N=128
+N=256
+N=512
+0.0
+2.5
+5.0
+7.5
+10.0
+ω/∆0
+(b)
+mRes
+FIG. 3. Faster convergence of mRes. Side-by-side com-
+parison of the (a) RSum and (b) mRes prescription for dif-
+ferent numbers of subdivisions N.
+We see that the latter
+converges already for a very low (even an order of magnitude
+lower) value of N. Here, we show the nodeless anisotropic s-
+wave case and the responses are shifted such that the dashed
+horizontal lines mark the zeros.

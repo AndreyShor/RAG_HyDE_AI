@@ -1,0 +1,53 @@
+Preprint. Under review.
+• Relative Error| Strict: Only 4 solutions passed the strict cut, i.e. computed a valid
+target AND a relative error of less than 10%. The mean relative error over this
+subset is 2.15% ± 1.89%.
+Over the larger set of 11 problems for which any solution was computed, the mean relative
+error is 296% ± 200%, where the error bars denote the standard error on the mean.
+In Python, and particularly with popular ‘in-distribution’ packages like numpy and scipy,
+the difficulty of generating syntactically correct code is minimal. However, now the LLM
+must define and implement the equations describing the physics and the mesh from scratch
+and configure its own solver settings as it can no longer import pre-verified physics modules
+and automatic solvers as in the engineering simulation software. Thus the bottleneck has
+now shifted from generating executable code, to being able to achieve the desired numerical
+precision, since in only 4 cases the LLM was able to compute a value within 10% of the
+desired target. The emergence of commercial softwares like COMSOL Multiphysics®,
+Ansys®(Ansys, Inc.) and Abaqus®FEA (Dassault Syst`emes) arose from the challenge of
+solving complex engineering problems with general purpose languages, and to fulfil the
+need for already validated physics modules, numerical precision and automatic solvers.
+H
+Prompts
+H.1
+Single Query Prompts
+ModelSpecs | One-Shot
+You are an experienced COMSOL engineer. You must solve the problem to compute
+the desired TARGET QUANTITY by generating COMSOL JAVA API code. The
+model creation line “‘Model model = ModelUtil.create(”Model”);”’ has already been
+generated and you should not repeat this line. All lines of code must begin with
+‘model.‘
+You must not generate any ‘model.sol...‘ solver code but should ensure that your
+‘model.study...‘ block ends with a ‘model.study(”std1”).run();‘. This will automati-
+cally create and run the default solver for the problem. Use the example provided
+below to infer how to format your response and generate COMSOL code. ===
+EXAMPLE 0:
+PROBLEM DESCRIPTION: ## Stress Analysis of an Elliptic Membrane
+**ANALYSIS TYPE:**
+* Linear elastic, Plane Stress.
+**GEOMETRY:**
+* The domain is a quarter of an elliptical membrane.
+* The outer curved edge is defined by the equation: (x/3.25)2 + (y/2.75)2 = 1
+* The inner curved edge is defined by the equation: (x/2)2 + y2 = 1
+* Thickness: 0.1 meters (uniform throughout)
+* Labeled points: * Bottom Left Corner, Point O: (x = 2.0, y= 0)
+**LOADING:**
+* Uniform outward pressure of 10 MPa is applied on the outer curved edge, normal
+to the boundary. * The inner curved edge is unloaded.
+**BOUNDARY CONDITIONS:**
+* Left Edge: Symmetry about the y-axis, implying zero displacement in the x-
+direction. * Bottom Edge: Symmetry about the x-axis, implying zero displacement in
+the y-direction.
+**MATERIAL PROPERTIES:**
+* Isotropic: The material properties are the same in all directions. * Young’s Modulus
+(E): 2.1 x 1011 Pa * Poisson’s Ratio (ν): 0.3
+**ELEMENT TYPES:**
+29

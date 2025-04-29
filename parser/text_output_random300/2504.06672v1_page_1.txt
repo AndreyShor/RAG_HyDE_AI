@@ -1,0 +1,104 @@
+RAGME: Retrieval Augmented Video Generation for Enhanced Motion Realism
+Elia Peruzzo1,*
+Dejia Xu2
+Xingqian Xu3,4
+Humphrey Shi3,4
+Nicu Sebe1
+1University of Trento
+2UT Austin
+3SHI Labs @ Georgia Tech & UIUC
+4Picsart AI Research
+Abstract
+Video generation is experiencing rapid growth, driven by
+advances in diffusion models and the development of bet-
+ter and larger datasets. However, producing high-quality
+videos remains challenging due to the high-dimensional
+data and the complexity of the task. Recent efforts have
+primarily focused on enhancing visual quality and address-
+ing temporal inconsistencies, such as flickering. Despite
+progress in these areas, the generated videos often fall short
+in terms of motion complexity and physical plausibility, with
+many outputs either appearing static or exhibiting unreal-
+istic motion. In this work, we propose a framework to im-
+prove the realism of motion in generated videos, exploring
+a complementary direction to much of the existing litera-
+ture. Specifically, we advocate for the incorporation of a
+retrieval mechanism during the generation phase. The re-
+trieved videos act as grounding signals, providing the model
+with demonstrations of how the objects move. Our pipeline
+is designed to apply to any text-to-video diffusion model,
+conditioning a pretrained model on the retrieved samples
+with minimal fine-tuning. We demonstrate the superiority
+of our approach through established metrics, recently pro-
+posed benchmarks, and qualitative results, and we highlight
+additional applications of the framework.
+1. Introduction
+Text-to-video (T2V) generation is rapidly advancing, with
+large-scale models trained on vast datasets achieving in-
+creasingly impressive results. Notably, SORA [7] has estab-
+lished a new state-of-the-art, showcasing the remarkable po-
+tential of massive data and computational scaling. However,
+a significant limitation of current models lies in the realism
+and motion complexity of the objects in the output results.
+The generated videos often result in static scenes with sim-
+plistic or physically implausible motion [61]. Some works
+tackle this issue by improving the data curation pipeline
+[3] or proposing a different architecture that scales better
+with the computation [36]. However, all these models seem
+*Corresponding author: elia.peruzzo@unitn.it. Code avail-
+able at: https://github.com/helia95/ragme.
+0.74
+0.76
+0.78
+0.80
+0.82
+0.84
+0.86
+Cosine Similarity (
+)
+250
+300
+350
+400
+450
+500
+550
+600
+FVD (
+)
+Base
+RagMe
+FreeInit
+RagInit
+FVD vs Cosine Similarity
+Figure 1. We evaluate the Fr´echet Video Distance (FVD) using the
+captions and videos from the validation set of the WebVid10M [1]
+dataset. We plot it against the cosine similarity with respect to the
+retrieved examples in the DINOv2 embedding space. Ideally, the
+best model should produce high-quality videos (indicated by low
+FVD) while avoiding direct copying from the grounding examples
+(indicated by low cosine similarity).
+to suffer from similar failure cases, suggesting that scaling
+data and computing power are not sufficient to solve the
+problem.
+In this work, we explore a complementary approach,
+i.e., incorporating grounding information to guide the net-
+work toward a more realistic and plausible motion.
+We
+propose a retrieval augmented generation (RAG) pipeline
+– a technique that has demonstrated impressive results in
+Natural Language Processing (NLP) [29, 41].
+However,
+it remains underutilized in computer vision, particularly in
+video generation. We retrieve (real) examples from an ex-
+ternal database to guide the model and enhance the tempo-
+ral dynamics of the generated samples. We term our method
+RAGME, Retrieval Augmented Generation for Motion En-
+hancement.
+Our approach is inspired by the related tasks of video
+editing and motion transfer [14, 35, 39, 58]. In these set-
+tings, the goal is to synthesize an output video given one
+(or more) input video and a prompt describing the edit.
+The input videos are crucial for preserving motion, serv-
+1
+arXiv:2504.06672v1  [cs.CV]  9 Apr 2025

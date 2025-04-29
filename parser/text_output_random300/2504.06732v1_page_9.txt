@@ -1,0 +1,140 @@
+9
+there is some dependency between these parameters, thus
+making it even harder to tune the system into a region
+of parameter space hosting true PMMs.
+ACKNOWLEDGMENTS
+This work was supported as a part of NCCR SPIN,
+a National Centre of Competence in Research, funded
+by the Swiss National Science Foundation (grant num-
+ber 225153).
+This project received funding from the
+European Union’s Horizon 2020 research and innovation
+program (ERC Starting Grant, Grant Agreement No.
+757725).
+DATA AVAILABILITY
+The data and code underpinning the results of this
+work is available in the following Zenodo repository:
+10.5281/zenodo.15180571.
+Appendix A: Zeeman energy on the middle QD and
+larger Zeeman energy
+In this section we adapt Eq. (2b) as follows:
+∆Z,j =
+(
+∆Z
+if j even,
+∆Z,S
+if j odd,
+(A1)
+i.e., we introduce a non-zero Zeeman energy on the super-
+conducting QDs. Furthermore, we increase the Zeeman
+energy on the normal QDs.
+We consider the minimal
+chain (N = 2) and find that false PMMs exist in systems
+with ∆Z,S/∆= 0.4 and ∆Z/∆= 2.0, see Fig. 8. The ra-
+tio of true to false PMMs behaves qualitatively the same
+as for the data shown in the main text, where ∆Z,S = 0
+and ∆Z/∆= 0.8.
+Appendix B: Finite on-site Coulomb interaction
+In the main text, we set U = 0 and could consequently
+use the BdG formulation of the Hamiltonian defined in
+Eq. (1) for the long and infinite chain limits [73].
+In
+this formulation, the topological invariant is defined as a
+Pfaffian.
+In Ref. [1], the Majorana number M(H) = ±1 was
+introduces. Having M(H) = −1 (+1) means that the
+system is in the topological (trivial) phase and it is de-
+fined as
+P[H(L1 + L2)] = M(H)P[H(L1)]P[H(L2)],
+(B1)
+where P[H(L)] is the particle number parity of the
+ground state of the Hamiltonian H(L) that describes a
+system of length L with periodic boundary conditions.
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+Mth
+0.0
+0.5
+1.0
+# true PMMs
+# PMMs
+(d)
+Eex, th/
+=
+0.1
+0.2
+1
+1
+topo inv.
+0
+1
+2
+t/
+0.0
+0.2
+0.4
+SOI/
+(a)
+0
+1
+2
+t/
+(b)
+0
+1
+2
+t/
+(c)
+0
+250
+500
+# PMMs
+FIG. 8.
+Classification of true and false PMMs in a minimal
+chain with ∆Z/∆= 2 and ∆Z,S/∆= 0.4, see Eq. (A1). This
+figure and its interpretation are equivalent to Figs. 5(j) and 6,
+but with different Zeeman energies. The larger Zeeman en-
+ergy on the normal QDs and non-zero Zeeman energy on the
+superconducting QDs do not lead to any qualitative differ-
+ence.
+The threshold values for panels (a)-(c) are the same
+as for Figs. 6(a)-(c), respectively, and the threshold values
+for panel (d) are the same as for Fig. 5(j), except for Eex,th,
+whose values are given in the legend.
+It is shown in Ref. [1] that in noninteracting systems,
+the Majorana number is equivalent to the topological in-
+variant derived from the Pfaffian. However, if U > 0,
+the system is interacting, and therefore, the Pfaffian can
+no longer be used to calculate the topological invari-
+ant. Nevertheless, Eq. (B1) remains valid [1]. We set
+L1 = L2 ≡L, thus Eq. (B1) becomes P[H(2L)] =
+M(H)P[H(L)]2 = M(H). However, the length L should
+be big compared to the MBS localization length, thus re-
+quiring DMRG [96–98] for systems with U > 0.
+This
+is problematic since DMRG fares badly with periodic
+boundary conditions [97], taking much longer to con-
+verge.
+Thus, even with DMRG, we keep L relatively
+short, which may lead to misclassifications. To double-
+check we also calculate ∆E(∆Z) in a longer chain using
+DMRG in a system with open boundary conditions, as
+was done in Ref. [73]. We emphasize that this does not
+guarantee the absence of misclassifications, but we as-
+sume that there is not a statistically significant number
+of them.
+In this Appendix, we set U/∆= 100, then continue
+as in the main text, i.e., we randomly choose a point in
+the (∆Z/∆, t/∆, ΦSOI) parameter space and use the opti-
+mization algorithm described in Appendix D of Ref. [72]
+to tune µN and µS. We then check if the state satisfies
+the TR condition given in Eq. (8). If they do, then we
+calculate the Majorana number M according to Eq. (B1)
+to determine whether the state is a true or false PMMs.
+The conclusions are qualitatively the same as for U = 0
+in the main text, see Fig. 9.

@@ -1,0 +1,57 @@
+kinetic term rescaling factors scales with a lower power of η than the rescaling factors for the interactions
+(see Eq. (143)). Third, the largest contribution (∼40 −50%) comes from the Coulomb interactions between
+valence electrons which (see App. D) scales like the maximum momentum exchange Q in G0. In contrast,
+the cost from Coulomb interactions between pseudoions is significantly smaller as it scales with the cutoff
+Λtrunc and, importantly, not with the maximum momentum Q in G
+0. Fourth, the local and non-local terms
+capture a relatively modest fraction of the total rescaling, determined by the structure of the interactions
+and HGH parameters, and the scaling becomes independent of the basis size in the limit of a large basis, due
+to the Gaussian decay in momentum (see App. D). We also provide per-particle-pair rescaling factors for
+the local and non-local terms in Table 8. While there is no steadfast rule, loosely speaking, a higher valence
+electron count for a pseudoion increases its per-particle-pair rescaling factors.
+In Fig. 7, we analyze the Toffoli cost of each call to the block-encoding unitary, Usa, in terms of its
+constituent components corresponding to the Hamiltonian terms. Note that the quantum circuit as a whole
+is designed such that gates common to the block-encoding of all Hamiltonian terms are performed only once
+to reduce cost. These common gates are accounted for as a ‘shared’ cost and do not necessarily perform
+operations relevant to any single Hamiltonian term (such as calculating the relevant matrix elements into
+registers), but do account for the gates which combine block-encodings of different Hamiltonian terms via
+LCU, and also for repeated Hamiltonian parts (e.g. SWUP operations). Furthermore, Vel and V PI
+ion, and
+Tel and Tion use common gates, e.g., computing |q|2 and |k|2, respectively, and hence the circuits block-
+encoding these parts are designed optimally with shared gate costs. For the instances we studied, it is clear
+that the dominant cost per call is caused by the operations relevant solely to the non-local term, attributed
+to arithmetic and reference state preparation (in roughly equal proportion) for implicit quantum rejection
+sampling. The next leading cost contribution is from the shared circuitry as explained above, the majority
+of which is attributed to SWUPs.
+We note that our block-encoding, both the mathematical expressions they are based on and implementa-
+tion principles considered, differ from those in the literature. This results in substantially improved rescaling
+factors for the non-local term, and a mild increase in cost of block-encoding of the iterate. Overall, in any
+algorithm where the iterate is called a certain number of times, such as O(λ|t|) in a time-evolution or O(λ/ϵ)
+in energy estimation, this can lead up to an order of magnitude improvement. We compare our rescaling
+factors for a selection of pseudoions in Table 8, to Ref. [29]’s results (see Table VII of Ref. [29]). We observe
+a ∼30 −180× factor of improvement for the per electron-ion pair rescaling factor of the non-local terms.
+While it is not straightforward to explain this improvement as a product of distinct improvements, an expla-
+nation that sheds light to it is as follows. First, the mathematical expression we use for the operator given
+as in Eq. (108) differs from the one used in Ref. [29] (see Eq. (25)). Ref. [29]’s block-encoding expresses
+the non-local term as a sum over momentum exchange in order to easily conform to the same structure as
+the block-encoding of the Coulomb term. Doing so then allows all of the potential terms to share the same
+SELECT operation. However, this comes with the cost of performing an additional LCU over momentum
+exchange, which does not appear in the original mathematical form. This major difference, combined with
+our use of a diagonalized form of the non-local term discussed in Sec. 5.1.5, leads to ∼8 −17× improvement
+- compare the values in Table 8 and Ref. [29]’s Table (V) or Table (VI). Furthermore, we use implicit quan-
+tum rejection sampling (QRS) rather than explicit QRS in our block-encodings, and with optimal reference
+functions tailored to the target functions. This can lead to an additional factor of ∼5 −10× improvement
+as also observed in Ref. [29]’s values in their Table (VI) vs. Table (VII). On the other hand, our compilation
+per block-encoding costs approximately ∼3 −5× more. This is expected and mostly due to the fact that
+we perform implicit QRS in our block-encoding rather than explicit QRS as in Ref. [29]. Furthermore, our
+block-encoding of the local term differs from Ref. [29]’s only in terms of using implicit QRS rather than
+explicit QRS, although, in this case, our rescaling factors are similar. These considerations eventually lead
+to approximately an improvement of ∼4 −6× if QPE were to be implemented, for the three instances
+PdCO3 × 3, PtCO2 × 2, AlN(wurzite) in Ref. [29].28
+We note that it is possible that the block-encoding for the non-local terms to be further improved with
+different ways of partitioning the full non-local interaction or potentially improving the subroutines involved
+in the current block-encoding; however, we leave this for future work, especially in light of the fact that
+28Note that our block-encoding includes pseudoions and electrons as compared to just electrons, which does also increase our
+cost. However, even with the inclusion of pseudoion degrees of freedom and their corresponding interactions with themselves
+and the electrons, we still achieve a significant performance gain.
+51

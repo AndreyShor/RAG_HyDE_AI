@@ -1,0 +1,43 @@
+ 
+3 
+matching technique, which incorporates fictitious particles to capture both short- and long-term dynamical 
+properties.14, 15 A more recent study by Xie and E parameterized the memory kernel via a data-driven Mori-
+Zwanzig framework, leveraging a variational principle to systematically extract non-Markovian effects 
+directly from AA trajectories.16 
+ 
+It should be noted that the development of machine learning (ML) models also enables the direct 
+learning of the dynamics of partially observed molecular systems.17-19 Compared to machine learning 
+emulators, which directly learn surrogate models for molecular dynamics, physics-based CG models have 
+intrinsic advantages: they enforce physical constraints and generalize better across conditions outside the 
+training data 20. Therefore, it is valuable to investigate how to ensure that a CG model generates realistic 
+dynamical trajectories . 
+ 
+Recent advances in generative artificial intelligence (AI) offer a promising route for overcoming 
+the challenge of building dynamically consistent CG models. In particular, adversarial training, a 
+framework widely used in generative modeling, has demonstrated success in learning high-dimensional 
+probability distributions.21, 22 The fundamental idea behind adversarial learning is to iteratively improve a 
+generator by using a discriminator that distinguishes between generated and reference samples. This 
+principle naturally extends to CG modeling, where the goal is to match the trajectory ensemble from a 
+generator (here, a CG model) to that of the AA model. Inspired by the adversarial-residual-coarse-graining 
+(ARCG) approach introduced by Durumeric and Voth,23 we apply an adversarial learning framework to 
+dynamically match CG trajectories with their AA counterparts, leveraging neural networks as 
+discriminators to optimize the CG parameters. 
+ 
+In this work, we introduce an adversarial training strategy to construct CG models with dynamic 
+consistency across regimes such as Brownian or Langevin dynamics. Unlike traditional methods that rely 
+on manually selected kinetic features, our approach directly matches entire trajectory ensembles. To 
+enhance computational efficiency, we further investigate the choice of maximum stable time step for 
+simulations, balancing accuracy with computational cost. 
+ 
+The remainder of this paper is structured as follows. Section II provides the theoretical background 
+of the adversarial training framework and outlines the methodological implementation, including the neural 
+network architectures used for the discriminator and generator. Section III presents the application of our 
+approach to a model molecular system and evaluates its performance in recovering both equilibrium and 
+dynamical properties. Finally, Section IV discusses broader implications, potential extensions to more 
+complex systems, and the role of this framework in parameterizing position-dependent diffusion 
+coefficients and memory kernels. 
+ 
+II. Theory and Methods 
+In bottom-up CG modeling, the thermodynamic consistency3 is described as the requirement for 
+the distribution of CG conformations to reproduce the marginal equilibrium distribution of the all-atom 
+system when projected onto the coarse-grained representation.  That is: 

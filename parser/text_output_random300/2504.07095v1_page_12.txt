@@ -1,0 +1,54 @@
+Task Name
+Humanoid-Walk
+Hopper-Hop
+Horizon
+1000
+1000
+Table V. The minimum step limitation required for zero-shot
+learning in two additional tasks.(1000 is typically the default step
+limit in reinforcement learning simulation environments.)
+in MyoSuite (where actions in this case form a second-
+order dynamic system, causing the overall system to violate
+the Markov property), we directly used the motor-tendon
+model. Specifically, we obtained the force on each tendon
+and learned its effect on joint states.
+F. Experimental Settings for Residual Flow
+Penalty
+To ensure the penalty term is on the same scale as the orig-
+inal reward, we use the log probability density of the cur-
+rent state under the flow-based model as the penalty term
+and add it directly to the original reward. To normalize the
+penalty term within the range of [−1, 1], we apply a sigmoid
+function with a custom inflection point and then subtract 1.
+This transformation ensures that the penalty term is appro-
+priately scaled for reinforcement learning.
+Thus, the final reward function is given by:
+R = Roriginal + Rpenalty
+(9)
+where the penalty term Rpenalty is defined as:
+Rpenalty = σ
+log P(s) −τ
+α
+
+−1
+(10)
+where log P(s) is obtained using the normalizing flow
+model as:
+log P(s) = log Pbase(x) + log | det J|
+(11)
+with:
+x, log | det J| = f −1(s)
+(12)
+where:
+• f −1 is the inverse transformation of the normalizing flow
+model,
+• Pbase(x) is the probability density function of the base dis-
+tribution (e.g., Gaussian),
+• J is the Jacobian matrix of the transformation,
+• σ(x) =
+1
+1+e−x is the sigmoid function,
+• τ is the custom inflection point,
+• α is a scaling factor.
+Figure II. Offline cheetah run.
+2

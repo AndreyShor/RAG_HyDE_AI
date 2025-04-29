@@ -1,0 +1,42 @@
+spent near the barrier is much shorter. In Ref.,41 we estimated the mean DTT for the folding
+of chignolin from accelerated simulations using either MetaD, MetaD + SR, and MetaD +
+ISR. All three methods exhibit similar errors, less than an order of magnitude, with speedups
+of up to 60, 300, and 950 for MetaD, MetaD + SR, and MetaD + ISR, respectively. In this
+case, MetaD + ISR is the most advantageous, providing the highest acceleration with similar
+accuracy as the other methods.
+6
+Looking forward
+Standard and informed resetting showed promising results for enhanced sampling of molecu-
+lar simulations, either as a standalone method or in combination with MetaD. In this section,
+we would like to discuss and suggest future developments that would broaden its capabilities.
+First, resetting can be combined with other enhanced sampling methods besides MetaD.
+If the COV under the inﬂuence of the enhanced sampling method is greater than unity,
+there is a ﬁnite resetting rate that will lower the MFPT. As we explained in Section 4.2,
+we anticipate enhanced sampling methods that rely on the deposition of external bias, such
+as Gaussian accelerated MD,11 Adiabatic free energy dynamics,9,10 or OPES,12,13 to beneﬁt
+from resetting similarly to MetaD. It would be interesting to see how other approaches, such
+as replica exchange or transition path sampling, would beneﬁt from future combinations.
+Apart from acceleration, resetting provides inference of kinetic properties, such as the
+MFPT and the mean DTT. However, new methods need to be developed for the inference of
+thermodynamic properties, such as free energy diﬀerences or free energy surfaces. Inference
+methods for thermodynamic properties would be a welcomed addition to the toolset of the
+method, making it more versatile and attractive to use. As a starting point, Poisson resetting
+is proven to lead to a non-equilibrium steady state, with a known relation to the propagator
+without resetting.43
+Another promising direction for future development is informed resetting. In Ref.,41 we
+considered simple step-functions as resetting protocols. This approach did not exploit the
+whole potential of incorporating information, as the resetting rate can be any function of
+all degrees of freedom of the system. Together with the framework (see Equations 7-11) to
+estimate the MFPT under any adaptive resetting protocol given some sampled trajectories
+without resetting (Section 3.2), we envision automatic optimization of the resetting protocols,
+which can be updated on-the-ﬂy with additional sampling. Very recently, we represented the
+resetting protocol by neural network and optimized it to minimize the MFPT using Equation
+11 as a loss function.76 A few other examples of learning how to reset have emerged recently
+in a diﬀerent context,99 and we anticipate this to be an exciting forefront of the ﬁeld.
+7
+Conclusions
+To conclude, resetting is an easy-to-use method that can be employed either as a stan-
+dalone tool or in combination with any other enhanced sampling technique. It accelerates
+the sampling of slow ﬁrst-passage events while providing accurate estimations of the ﬁrst-
+passage kinetics. Standard resetting requires minimal prior knowledge of the studied system.
+18

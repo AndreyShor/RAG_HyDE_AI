@@ -1,0 +1,19 @@
+Fig. 1 A) example scene of MODIS 2.1µm reflectance image where ship-tracks can be seen. B)
+detected ship-tracks are plotted in black lines with one example track marked with read ’X’. C)
+mask of the detected ship-track and 30-pixel long segments that make up the track. The age of each
+segment is plotted. The ship-track and control pixels on both sides are plotted in this figure.
+The examples in Figure 1 illustrate how our method works. Figure 1A shows a
+MODIS reflectance image. The detected ship-tracks in Figure 1A are shown as shapes
+enclosed by black lines in Figure 1B. Figure 1B also shows virtual ship-tracks and
+their ages coded in color. Detected tracks have good matches with some of the virtual
+tracks. The age of each segment of a matched ship-track is the same as the age of
+corresponding virtual tracks. The control and polluted cloud pixels for each segment
+are shown in Figure 1C for one matched track, and they are used to calculate cloud
+adjustments inside a segment. It is important to note that many virtual ship-tracks
+lack corresponding detected tracks for a few possible causes. For example, only small
+fraction of ships produce detectable ship-tracks [8, 16, 17, 26]; Detected ship-tracks
+may have no corresponding virtual tracks due to errors in reanalysis wind, or their age
+is longer than one day [20, 27], our time limit for simulated tracks; background cloud
+conditions may not be favorable for ship-track detection due to overlapping clouds
+and cloud type [8, 17].
+4

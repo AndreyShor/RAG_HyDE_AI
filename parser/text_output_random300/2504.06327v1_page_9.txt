@@ -1,0 +1,268 @@
+Physics-informed KAN PointNet
+6. Results and discussion
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Prediction of velocity u (m/s)
+0.20
+0.15
+0.10
+0.05
+0.00
+0.05
+0.10
+0.15
+0.20
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Prediction of velocity v (m/s)
+0.3
+0.2
+0.1
+0.0
+0.1
+0.2
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Prediction of pressure p (Pa)
+0.2
+0.1
+0.0
+0.1
+0.2
+0.3
+0.4
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Prediction of temperature T (K)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Ground truth of velocity u (m/s)
+0.20
+0.15
+0.10
+0.05
+0.00
+0.05
+0.10
+0.15
+0.20
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Ground truth of velocity v (m/s)
+0.3
+0.2
+0.1
+0.0
+0.1
+0.2
+0.3
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Ground truth of pressure p (Pa)
+0.2
+0.1
+0.0
+0.1
+0.2
+0.3
+0.4
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Ground truth of temperature T (K)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Absolute error of velocity u (m/s)
+0.01
+0.02
+0.03
+0.04
+0.05
+0.06
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Absolute error of velocity v (m/s)
+0.02
+0.04
+0.06
+0.08
+0.10
+0.12
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Absolute error of pressure p (Pa)
+0.005
+0.010
+0.015
+0.020
+0.025
+0.030
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Absolute error of temperature T (K)
+0.02
+0.04
+0.06
+0.08
+0.10
+0.12
+Figure 3: The first set of examples comparing the ground truth and predictions of the physics-informed KAN PointNet for
+the velocity, pressure, and temperature fields. The Jacobi polynomial used has a degree of 2, with 𝛼= 𝛽= −0.5. Here,
+𝑛𝑠= 0.5.
+6.1. General analysis
+6.1.1. Visual comparison and overall outcomes
+To begin with, we consider the setup of PI-KAN-PointNet, where the degree of the Jacobi polynomial is set to
+2, and 𝛼= 𝛽= −0.5 (i.e., the Chebyshev polynomial), with 𝑛𝑠= 0.5. The error analysis of this configuration for
+simultaneously solving the inverse problem over 135 geometries (𝑚= 135) is reported in the second column of Table
+2. As observed, the average relative pointwise error (𝐿2 norm) for the velocity, pressure, and temperature fields, as
+well as the temperature on the surface of the inner cylinder, is below 10.9%. Specifically, this error for the pressure and
+temperature fields remains under 3%. Moreover, PI-KAN-PointNet successfully estimates the unknown temperature
+on the surface of the inner cylinder, with a maximum relative pointwise error (𝐿2 norm) of less than 1%.
+As a few examples, the velocity, pressure, and temperature fields for domains with inner cylinders in the shapes of
+an octagon, heptagon, and nonagon are visualized in Fig. 3, Fig. 4, and Fig. 5, respectively. In each of these figures, the
+predictions by PI-KAN-PointNet, the numerical solver solution (serving as the ground truth), and the corresponding
+absolute pointwise error are shown. This visual comparison demonstrates a good agreement between the predicted
+and ground truth solutions. The maximum error for all variables occurs near or on the surface of the inner cylinders.
+This is primarily due to the fact that, across different domains in the dataset, the most significant geometric variations
+occur along the inner surface. Moreover, from a mathematical perspective, since the temperature at the surface of the
+inner cylinder is unknown in the defined inverse problem, the temperature variable exhibits the highest error along this
+surface. This local temperature error propagates to the surface of the inner cylinder at the velocity and pressure fields
+as well, given that these variables are coupled (see Eqs. 1–3).
+To better understand the effects of the inner cylinders’ geometry on the performance of PI-KAN-PointNet, we
+plot the absolute pointwise errors for the domains where the maximum and minimum relative pointwise errors of
+each quantity occur in Fig. 6. Interestingly, the maximum error for all variables occurs in the domain where the inner
+cylinder has a hexagonal shape. Conversely, the minimum error for all variables is observed in the domain where the
+inner cylinder has a nonagonal shape. This observation demonstrates that sharper corners introduce greater challenges
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 9 of 25

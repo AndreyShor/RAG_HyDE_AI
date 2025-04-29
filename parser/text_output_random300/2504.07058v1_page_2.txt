@@ -1,0 +1,59 @@
+Low-grade brain tumors also have low cellular density and tend not to metastasize to other organs. As cell density
+increases, hypoxia may develop, resulting in metabolic alterations, including genomic instability. This hypoxic
+reaction may accelerate tumor progression and can eventually lead to malignancy [43]. A crucial application
+of the Fisher–Kolmogorov equation lies in the modeling of brain tumor dynamics [23]. The study employs the
+interpolating element-free Galerkin (IEFG) method for numerical simulation, offering a meshless approach that
+effectively handles complex tumor growth patterns. Various methods have been developed for the EFK equation,
+including the interpolating element-free Galerkin (IEFG) method [23], finite difference and second-order schemes
+for 2D FK equations [29], [28], and a Fourier pseudo-spectral method [31]. The direct local boundary integral
+equation method was applied by [24], and an error analysis of IEFG was conducted by [1]. Meshfree schemes
+using radial basis functions were introduced by [30], and a meshless generalized finite difference method was
+developed by [27]. Recent developments include adaptive low-rank splitting [57], finite element analysis [3], and
+superconvergence analysis of FEMs [41].
+Deep learning has become an essential technique for addressing the curse of dimensionality, making it a critical
+tool in modern technology and cutting-edge research over recent years. Deep learning techniques are particularly
+well-suited for approximating highly nonlinear functions by employing multiple layers of transformations and
+nonlinear functions. These methods, advanced statistical learning, and large-scale optimization techniques have
+become increasingly reliable for solving nonlinear and high-dimensional partial differential equations (PDEs). The
+universal approximation theorem, demonstrated by Cybenko [11], Hornik et al. [22], Barron [6], and Yarotsky [52],
+shows that deep neural networks (DNNs) can approximate any continuous function under specific conditions. This
+makes DNNs highly suitable for use as trial functions in solving PDEs. One common technique involves minimizing
+the residual of the PDE by evaluating it at discrete points, often called collocation points. Several algorithms have
+been developed based on deep learning, with some of the most prominent being Physics-Informed Neural Networks
+(PINNs) and deep operator networks such as Deeponets and their variants. PINNs, first introduced by Raissi et
+al. [44], have proven highly effective in addressing high-dimensional PDEs. Their mesh-free nature and ability
+to solve forward and inverse problems within a single optimization framework make them particularly powerful.
+Extensions to this algorithm have been proposed in works such as [25], [26], [47], [36] and [53], with libraries such
+as [32] developed to facilitate solving PDEs using PINNs. Furthermore, domain decomposition methods have been
+applied to PINNs by [17]. Despite their success, challenges remain in training these models, as highlighted by [50],
+who explored these difficulties using the Neural Tangent Kernel (NTK) framework. Mishra and Molinaro analyzed
+the generalization error of PINN-based Algorithms for forward [35] and inverse problems [34] across various linear
+and nonlinear PDEs. Mishra and his collaborators also derived error bounds [14], [13], [33], [4] and also introduced
+weak PINNs (wPINNs) for estimating entropy solutions to scalar conservation laws [15]. [4] conducted numerical
+experiments and derived generalized error bounds for nonlinear dispersive equations, including the KdV-Kawahara,
+Camassa-Holm, and Benjamin-Ono equations, using PINN-based algorithms. The study by [56] examines the
+boundedness and convergence properties of neural networks in the context of PINNs. The recent work of [46]
+explores the numerical analysis of PINNs. Recent studies have introduced a range of promising deep learning
+approaches, as seen in [51], [18], [5], [39], [19] and [48]. [45] has applied PINN for tumor cell growth modeling using
+differential equation for montroll growth model, verhulst growth model. [55] determined individualized parameters
+for a reaction-diffusion PDE framework describing glioblastoma progression using a single 3D structural MRI
+scan. [54] analyzed the movement of molecules within the human brain using MRI data and PINNs.
+The contribution of the work is following: This study proposes a deep learning framework to model glioblastoma
+progression by solving the Burgess and extended Fisher–Kolmogorov equations, effectively capturing tumor growth
+in both forward and inverse problem settings. The Physics-Informed Neural Network (PINN) based architecture is
+designed to achieve precise approximations of low-grade tumor dynamics. The residual and the corresponding
+loss function approximation are derived. The proposed approach establishes a strong theoretical foundation by
+formulating a rigorous generalized error bound, which is expressed in terms of training and quadrature errors.
+Additionally, a rigorous proof of the boundedness and convergence of the neural network is provided, verifying
+the theoretical validity of the neural network approximation. Numerical experiments are conducted for both
+forward and inverse problems in linear and nonlinear cases. Extensive computational results, supported by
+statistical analyses, demonstrate the method’s effectiveness and accuracy. These findings highlight the potential of
+PINN algorithms as powerful tools for simulating low-grade tumors, providing a reliable framework for modeling
+glioblastoma progression.
+This paper is structured as follows: Section 2 presents the mathematical formulation and methodology, including
+the problem definition, PINN framework, governing equations, quadrature techniques, neural network design,
+residual computation, loss functions, optimization approach, generalization error estimation, and the stability and
+convergence of multilayer neural networks. Section 3 details numerical experiments and validates the proposed
+approach. Section 4 provides a theoretical measure of errors. Finally, Section 5 summarizes the key findings. An
+appendix is included for proofs and lemmas.
+2

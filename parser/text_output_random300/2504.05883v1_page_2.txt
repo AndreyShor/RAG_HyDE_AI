@@ -1,0 +1,70 @@
+PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY A, VOLUME 383, ISSUE 2289, 2025, DOI:10.1098/RSTA.2024.0146
+2
+whereas the authors in [3] use exact cellular decomposition to cover polygonal planar regions with a UAV agent equipped
+with a downward facing camera. Regarding the use of multiple UAVs for this problem, the work in [4] proposes an artificially
+weighted spanning tree algorithm for distributed coverage in planar regions involving multiple UAV agents. The authors
+in [5] propose a spatiotemporal clustering-based coverage method for multiple heterogeneous UAV agents also for planar
+environments. Other works such as [6] have focused on the aspect of energy efficiency in multi-UAV coverage planning. The
+approach in [7] uses mathematical programming techniques to design coverage paths that guide a team of UAV agents to cover
+a specified area of interest in the minimum amount of time. A UAV-centric cooperative coverage planning methodology is
+introduced in [8] utilizing the simulated annealing algorithm. This approach considers the sensing and operational capabilities
+of each UAV, their starting positions, and the designated no-fly zones. Additionally, [9] outlines a multi-UAV strategy for
+2D terrain coverage focusing on reducing the overall completion time by ensuring a balanced workload distribution among
+the UAVs. Meanwhile, [10] proposes a cell decomposition algorithm for multi-UAV area coverage which employs regular
+hexagons to optimize the coverage process. The work in [11] investigates the multi-UAV coverage problem for 3D structures
+of interest and proposes a centralized sampling-based heuristic approach which combines the set-covering problem and the
+vehicle-routing problem. The resulting set-covering vehicle routing problem is then solved with a genetic algorithm. The work
+in [12] investigates the problem of 3D coverage using multiple UAV agents framing it as an offline path planning problem.
+The study proposes a heuristic approach based on potential fields, solved using the finite elements method.
+Despite numerous coverage planning approaches proposed in the literature, a dominant solution for enabling autonomous
+multi-agent coverage planning in realistic 3D environments has yet to emerge. Current state-of-the-art methods primarily
+focus on 2D terrain coverage [13], neglecting the complexity of 3D objects. Moreover, they often presuppose that UAVs are
+equipped with fixed, uncontrollable sensors (e.g., downward-facing cameras) [14] disregarding the simultaneous optimization of
+the UAVs’ kinematics and camera control inputs during the planning phase. This simplification notably reduces the complexity
+of coverage planning essentially transforming it into a path-planning problem [15]. Furthermore, many of the coverage planning
+techniques rely on simple geometric patterns (e.g., back-and-forth, zig-zag, and spiral motions) and utilize heuristics for area
+coverage [1], [12] which are not optimal, do not effectively generalize to 3D environments, or require centralized controllers
+[11], [16]. Finally, while distributed coverage planning methods have been explored to leverage the capabilities of multiple
+autonomous agents, these tend to yield myopic and greedy paths [17], [18] rather than collaborative, look-ahead coverage
+trajectories.
+III. PROBLEM FORMULATION
+A. Agent Dynamical Model
+We consider a collaborative team of N autonomous networked aerial agents (i.e., UAVs) represented by n ∈{1, . . . , N}
+evolving within a finite 3D environment denoted as E ⊂R3. These agents, with states xn = [xp
+n, xv
+n]⊤, ∀n are characterized
+by discrete-time dynamics composed of position (xp
+n ∈R3) and velocity (xv
+n ∈R3) components which are described by the
+discrete-time state-space model:
+xn(t + 1) = Axn(t) + Bun(t), ∀t, n ∈{1, . . . , N},
+(1)
+where xn(t) represents the state of the nth agent at time step t, and un(t) ∈R3 signifies the control input. This input denotes
+the applied force to the nth agent, enabling movement in a desired direction and at a certain speed. The state transition matrix
+A, and the input matrix B are given by: A =
+13×3
+∆T × 13×3
+03×3
+(1 −ϵ) × 13×3
+
+, and B =
+
+03×3
+∆T
+m × 13×3
+
+respectively, where ∆T is
+the sampling interval, ϵ is the air drag coefficient, and m denotes the agent’s mass which without loss of generality in this
+work is assumed to be the same for all agents. Moreover, the constant matrices 13×3 and 03×3 denote the 3-by-3 identity
+and zero matrices respectively. In this work it is assumed that all agents maintain a wireless communication link with all their
+peers i.e., for exchanging information, and devising collaborative coverage plans. However, this assumption can be relaxed,
+and the role of communication is further discussed in Sec. V.
+B. Agent Sensing Model
+We consider that each agent n is outfitted with a rotating camera to monitor its environment as illustrated in Fig. 1(a). The
+camera’s finite field of view (FOV) is represented as a regular right pyramid, featuring four triangular sides and a rectangular
+base. The optical center of the camera is aligned directly above the centroid of this rectangular base. The parameters defining the
+camera’s FOV in our model are denoted by (cl, cw, cr), where cl and cw correspond to the length and width of the rectangular
+base respectively and cr represents the pyramid’s height indicating the range of the FOV. Subsequently, the camera’s field of
+view (FOV) can be manipulated in three-dimensional space by instructing the camera controller to perform two sequential
+elemental rotations i.e., initially it rotates by an angle θ ∈Θ ⊂[0, π) about the y−axis and then it undergoes a rotation
+by ϕ ∈Φ ⊂[0, 2π) around the z−axis where Θ and Φ are finite sets denoting the admissible camera rotation angles. As a

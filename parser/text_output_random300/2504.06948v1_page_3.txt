@@ -1,0 +1,60 @@
+3
+matrix encoding uses a block lower bidiagonal form, the matrix encoding for the Padé relies on a block
+upper Hessenberg form.
+• The condition number of the Padé approximation encoded matrix L is estimated, which plays a crucial
+role in the complexity analysis of the algorithm. Additionally, we propose the block-encoding of the
+Padé approximation encoded matrix, along with its detailed quantum circuit implementations.
+• We analyze the overall complexities of the proposed quantum algorithm, including both the oracle query
+complexity and the quantum gate complexity. When A is Hermitian and negative semi-definite, our
+analysis relaxes the common restriction ∥Ah∥2 ≤1 found in other related works [5, 7, 13, 32], where
+h represents the time step. Compared to other methods in the first category, the proposed algorithm
+outperforms them both theoretically and numerically.
+Overall, our proposed quantum algorithm and the corresponding analysis address linear autonomous ODEs.
+Extensions to the non-autonomous and/or mildly nonlinear ODEs are feasible using similar techniques as
+those in [5, 10, 11, 13].
+The complexity analysis for the extended algorithm will need to be rederived
+accordingly, and the dependence on parameters requires further investigation.
+The rest of the paper is organized as follows. In Sec. II, we briefly review the method proposed in [7]. Section
+III introduces the linear system encoding via Padé approximation, analyzes the condition number of the linear
+system, and details the block-encoding of the linear system. Section
+IV presents the complexity analysis
+of the proposed algorithm. In Sec. V, we compare our method to the one based on Taylor approximation
+[7, 13, 32] and the LCHS-based method [2, 3] theoretically. Moreover, numerical experiments are conducted
+to illustrate the advantages of our method over the method based on Taylor approximation. Finally, Sec. VI
+concludes the paper with a discussion on future directions.
+II.
+PRELIMINARIES
+Consider a linear differential equation of the form:
+(
+dx
+dt = Ax(t) + b,
+t ∈[0, T],
+x(0) = x0,
+(3)
+where A ∈Cn×n and b ∈Cn are time-independent. When A is non-singular, the solution is given by
+x(t) = exp(At)x(0) + (exp(At) −In) A−1b,
+t ∈[0, T].
+In order to prepare the quantum state |x(T)⟩=
+x(T )
+∥x(T )∥2 , reference [7] approximates the exponential function
+exp(·) by its truncated Taylor series
+Tk(z) :=
+k
+X
+j=0
+zj
+j! .
+Given a suitable number of time steps m ∈N+ and the time step size h = T/m, the following procedure is
+used to approximate x(T):
+x(h) ≈Tk(Ah)x(0) + (Tk(Ah) −In) A−1b =: bx(h),
+x(2h) ≈Tk(Ah)bx(h) + (Tk(Ah) −In) A−1b =: bx(2h),
+...
+x(mh) ≈Tk(Ah)bx ((m −1)h) + (Tk(Ah) −In) A−1b =: bx(T).
+(4)
+Then, reference [7] shows that each step of the above procedure can be encoded into a linear system. The
+s-th step of the above procedure is encoded in the following linear system:
+(
+Mk(Ah)z(s) = ys,
+bx(sh) −(1T ⊗In)z(s) = 0,
+∀s = 1, . . . , m,
+(5)

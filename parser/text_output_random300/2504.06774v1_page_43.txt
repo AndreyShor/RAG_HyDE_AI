@@ -1,0 +1,33 @@
+(a) HOSVD
+(b) SVD
+v
+v
+v
+Figure 27: Comparison of the predicted temporal evolution of normal velocity components
+for (a) HOSVD (left column) and (b) SVD (right column) across different LSTM archi-
+tectures for the experimental wake flow. From top to bottom: LSTM 1 Dense, LSTM 2
+dense, and LSTM Time-Distributed.
+by 22% for 20 modes and 18.1% for 50 modes. This underscores HOSVD’s greater effect-
+iveness in capturing flow dynamics under noisy conditions in complex flow fields.
+Modes
+HOSVD (RRMSE %)
+SVD (RRMSE %)
+Streamwise
+Normal
+Streamwise
+Normal
+20
+6.9
+42
+8.7
+64
+50
+9.3
+55.9
+11
+74
+Table 16: Comparison of RRMSE values (%) for HOSVD and SVD with added noisy
+modes in the training data.
+The results obtained sufficiently demonstrate the superiority of HOSVD over SVD in
+modeling flow dynamics across all test cases. For the laminar datasets, the LSTM 1 dense
+43

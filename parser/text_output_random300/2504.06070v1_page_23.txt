@@ -1,0 +1,64 @@
+Published as a conference paper at ICLR 2025
+Real
+t = 20
+t = 40
+t = 60
+t = 80
+t = 100
+Without
+Correction
+Network
+Normal
+Figure S7: An example comparing the results of our model with those obtained after removing the
+Correction Network.
+Table S9: Comparison of Evaluation Metrics on the SEVIR dataset under Different Physical Loss
+Configurations
+Method
+MSE (1e-3) CSI-M CSI-219 CSI-181 CSI-160 CSI-133 CSI-74 CSI-16
+Lowered Physical Loss Weight
+4.0305
+0.3662
+0.0781
+0.1724
+0.2213
+0.3402
+0.6563
+0.7288
+No Physical Loss
+4.0092
+0.3569
+0.0674
+0.1541
+0.2081
+0.3274
+0.6547
+0.7299
+PINP (this work)
+4.1684
+0.3800
+0.0989
+0.1952
+0.2448
+0.3573
+0.6556
+0.7279
+E.4
+PHYSICAL LOSS ANALYSIS ON THE SEVIR DATASET.
+The nowcasting scenario may not strictly adhere to the NS equations. However, we believe that
+incorporating the NS equations helps to capture the motion characteristics of nowcasting.
+We conducted the following experiments: (1) Lowered the physical loss weight (weight = 0.1) while
+keeping other settings unchanged. (2)Removed the physical loss entirely.
+The results are showned on Table S9, which demonstrate that while nowcasting processes do not
+strictly adhere to the NS equations, these equations effectively capture certain underlying motion
+characteristics. When the physical loss weight is reduced, loosening the constraints, the MSE de-
+creases. However, this relaxation comes at the cost of reduced ability to model essential motion
+features, as reflected in the decline of the CSI.
+F
+ADDITIONAL RESULTS
+In this section, we provide additional details on the experimental results presented in the main text.
+This includes supplementary results for multi-physical quantity inference (Figure S9, Figure S10),
+a comparison between our predicted velocity field and the velocity field predicted by NowcastNet
+Figure S11, a detailed comparison between our method and baselines on the 2D fluid data (Figure
+S12, Figure S13), 2D smoke data (Figure S14), 3D smoke data (Figure S15, Figure S16), and SEVIR
+data (Figure S17, Figure S18).
+23

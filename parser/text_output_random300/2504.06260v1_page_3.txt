@@ -1,0 +1,58 @@
+Preprint. Under review.
+2
+Datasets and Tasks
+FEABench Gold
+The benchmark problems are derived from tutorials in the COMSOL
+Multiphysics® Application Gallery and are often based on established validation problems
+or other sources (eg: Melnik & Willatzen (2003); National Agency for Finite Element Methods
+& Standards (Great Britain) (1990)). The input is a natural language problem description
+with a specific target quantity that needs to be computed (Figure 1). The problems span a
+range of real world / mathematical systems including heat transfer in objects, modeling a
+stock option using the Black-Scholes Equation and eigenfrequency analysis of a quantum
+dot and a beam. Each entry consists of the following main fields:
+• Model Specifications: A complete description of the task, including geometry, material
+properties, physics specifications, initial/boundary conditions, and the output to be
+computed. This field is intended to be general enough to be relevant to other softwares
+or approaches, but is unambiguous about details such as material properties.
+• Selection Information: An engineer would typically identify spatial information like
+geometric selections (points, boundaries, and domains) using the Graphical User
+Interface (GUI). We provide this field as a substitute for images for LLMs and agents
+without the ability to receive visual input from the GUI. This information is valid as
+long as the agent chooses to construct the geometry in COMSOL Multiphysics®in a
+manner that is reasonably similar to the construction of the ground truth (GT) geometry.
+• Plan: Step-by-step instructions to solve the problem using COMSOL Multiphysics®.
+• Target Description: A brief phrase describing the quantity that needs to be computed.
+• Target Value: The correct value of the target physical quantity.
+• Ground Truth Code: Lines of COMSOL Multiphysics®API calls that can be executed
+to build a model that successfully computes the target value.
+• Model Tree: Executing COMSOL Multiphysics®calls can be regarded as modifying a
+tree with certain predefined branches such as geometry and physics. The model generated
+by executing code can thus be represented in a condensed form as a model tree (see
+Appendix B.1.3). This is a high-level lossy representation of a solution path, as the code
+cannot be exactly recovered from the model tree.
+Converting tutorials to verifiable benchmark problems requires ensuring that an artifact can
+be computed from it, generating inputs and the GT solution and verifying that it computes
+the correct target value (Appendix B).
+FEABench Large
+We further evaluate SOTA LLMs on a larger dataset consisting of 200
+COMSOL Multiphysics® Application Gallery tutorial problems. Since these are algorithmi-
+cally parsed from tutorials, and most tutorials are for demonstrative purposes, the tasks
+are not structured so as to export a verifiable numerical artifact. They may instead instruct
+the user to generate specific plots or compute tables. The input consists of a field termed
+‘Plan’, which corresponds to the Modeling Instructions in the tutorial. This specifies explicit
+instructions (similar in nature to the Plan field in FEABench Gold). We additionally save
+the ground truth API calls in ‘Code’ after running some preprocessing steps on the ground
+truth API calls, in order to resemble the format of the code in FEABench Gold.
+Annotated Library
+We additionally generate a set of 768 annotated code snippets, by
+querying an LLM (Gemini-1.5-Flash) to translate code blocks to natural language summaries.
+Unlike the previous two datasets described, we do not use this for evaluation. This is used
+to retrieve snippets in our agent system.
+2.1
+Tasks
+We propose two task variants for LLMs to solve under FEABench Gold: (1) the ModelSpecs
+task, in which the input description for each problem consists of the Model Specifications
+and Selection Information fields and, (2) The Plan task, in which the input description
+consists of the Plan field. In both cases the LLM agent is expected to return a solution
+that should consist of the API calls that solve the problem, similar to Ground Truth Code.
+3

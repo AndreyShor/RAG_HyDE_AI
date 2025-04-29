@@ -1,0 +1,47 @@
+9
+Under standard conditions the cupula is neutrally buoyant, so that the solid density is
+𝜌𝑠= 1000 Kg·m−3.
+The most challenging parameters to identify are 𝐵and 𝑇. We can infer the value of the
+bending stiffness from the results of Selva et al. (2009), who suggest an extremely low value
+of the Young’s modulus, 𝐸∼5 Pa. Other authors quote simply an estimate for the bending
+stiffness, 𝐵∼10−10 N m (Rabbitt & Damiano 1992). Since the cupula is difficult to access
+and measure, determining the pretension 𝑇is significantly more challenging and typically
+requires detailed experiments. However, incorporating 𝑇> 0 adds no additional complexity
+to our method of solution, and so we retain it for completeness; the effect of this tension is
+characterized through the inverse bendability parameter, 𝑏= 𝐵/(𝑇𝑎2) (Davidovitch et al.
+2011). We refer to the limit 𝑏→∞as the plate regime and 𝑏→0 as the membrane regime.
+In terms of the motion, usual ranges of operation for humans are ¤Ω0 ∼1 s−2 and T can be
+anywhere between 0.01 and 10 seconds. We are now in a position to make informed estimates
+of the sizes of the dimensionless groups appearing in (2.12)-(2.13). Both the Stokes number
+and the relative stiffness 𝜅depend on the forcing time scale T. In particular, St ≪1 for
+T > 1, but the Stokes number may be large for faster movements. Similarly, 𝜅can acquire a
+large range of values. More usefully, the plate’s inertia 𝜚< 10−3 for all physical values of
+T and hence may be safely neglected if required. Similarly, the reduced Reynolds number,
+𝜖2Re ≈10−3 and fluid inertia may be neglected. Given the uncertainty in the modulus of the
+cupula itself, we note only that the inverse bendability, 𝑏= 𝐵/(𝑇𝑎2), is expected to be large.
+The size of the dimensionless groups discussed above will inform our choices when
+neglecting terms in the governing equations (2.11)-(2.12). In particular, we will exploit the
+smallness of 𝜖to neglect terms of order 𝜖2Re, and the smallness of 𝜚to neglect inertial terms
+in the plate equation (2.13). The last simplification is particularly useful as it will allow us
+to simplify spatio-temporal PDEs into two sets of ODEs.
+We now turn to consider in more detail the behaviour of the model for the typical parameter
+values already discussed. Given the broad range of values that may be taken by the Stokes
+number, we begin by considering slow movement (i.e. large T) in§ 3, and thus neglect terms
+of size St. This will allow us to derive a reduced order equation (an ODE) for the deflection
+of the cupula that can be compared to numerical results in §4. However, in §5 we consider
+fast movements with finite Stokes numbers, leading to an integro-differential equation for the
+deflection of the cupula. Both the relative stiffness 𝜅and the inverse bendability 𝑏are treated
+as independent parameters. In particular, recalling that 𝜅is a key parameter, capturing the
+relative timescales of the imposed motion and the cupular relaxation, a main objective of our
+analysis will be to investigate how variations in 𝜅give rise to different solution regimes.
+3. Asymptotic solution for negligible Stokes number
+Motivated by the small value of the Stokes number St = 𝑎2/(𝜈T) ∼10−2 for natural
+movement timescales, T ∼1 sec, in this section we assume the Stokes number is negligibly
+small and solve the coupled system (2.12) asymptotically, expanding the solution in powers
+of the small aspect ratio 𝜖. To this end we introduce the following formal expansions
+𝑢(𝑟, 𝜃, 𝑠, 𝑡) = 𝑢0(𝑟, 𝜃, 𝑠, 𝑡) + 𝜖𝑢1(𝑟, 𝜃, 𝑠, 𝑡) + 𝜖2𝑢2(𝑟, 𝜃, 𝑠, 𝑡) + · · ·
+𝑣(𝑟, 𝜃, 𝑠, 𝑡) = 𝑣0(𝑟, 𝜃, 𝑠, 𝑡) + 𝜖𝑣1(𝑟, 𝜃, 𝑠, 𝑡) + 𝜖2𝑣2(𝑟, 𝜃, 𝑠, 𝑡) + · · ·
+𝑤(𝑟, 𝜃, 𝑠, 𝑡) = 𝑤0(𝑟, 𝜃, 𝑠, 𝑡) + 𝜖𝑤1(𝑟, 𝜃, 𝑠, 𝑡) + 𝜖2𝑤2(𝑟, 𝜃, 𝑠, 𝑡) + · · ·
+𝑝(𝑟, 𝜃, 𝑠, 𝑡) = 𝑝0(𝑟, 𝜃, 𝑠, 𝑡) + 𝜖𝑝1(𝑟, 𝜃, 𝑠, 𝑡) + 𝜖2𝑝2(𝑟, 𝜃, 𝑠, 𝑡) + · · ·
+𝜂(𝑟, 𝜃, 𝑡) = 𝜂0(𝑟, 𝜃, 𝑡) + 𝜖𝜂1(𝑟, 𝜃, 𝑡) + 𝜖2𝜂2(𝑟, 𝜃, 𝑡) + · · ·
+(3.1)

@@ -1,0 +1,76 @@
+Physics-informed KAN PointNet
+where 𝐻represents the square enclosure and the inner cylinder is specified with the space 𝑊. The square domain has
+a side length 𝐿.
+Consider a hot cylinder with a surface temperature 𝑇ℎsituated within a cold square enclosure with a surface
+temperature 𝑇𝑐. The buoyancy force induces natural convection, with the solution to the energy equation (Eq. 3)
+contributing to the source term of the momentum conservation equation (Eq. 2) via the Boussinesq approximation
+[112]. Consequently, the velocity and temperature fields are coupled in the governing PDEs (Eqs. 1–3). According to
+the Boussinesq approximation [112], the forcing terms are given by:
+𝑓𝑥= 0,
+(5)
+𝑓𝑦= 𝜌𝐺𝛽(𝑇−𝑇ref),
+(6)
+where 𝐺denotes the magnitude of gravitational acceleration, 𝛽represents the thermal expansion coefficient, and 𝑇ref
+is the reference temperature. The Rayleigh number (𝑅𝑎) is calculated as:
+𝑅𝑎=
+𝜌2𝑐𝑝𝐺𝛽(𝑇ℎ−𝑇𝑐)𝐿3
+𝜅𝜇
+,
+(7)
+and the Prandtl number (𝑃𝑟) is given by:
+𝑃𝑟=
+𝑐𝑝𝜇
+𝜅.
+(8)
+We formulate the inverse problem as follows: given velocity boundary conditions on all boundaries, temperature
+boundary conditions solely on the outer hot surface, and limited measurements of velocity, temperature, and pressure
+fields at sensor locations, the goal is to reconstruct the complete velocity, temperature, and pressure fields at specific
+inquiry points, with a particular interest in determining the temperature distribution on the surface of the inner cylinder.
+Mathematically, this constitutes an ill-posed problem.
+3. Kolmogorov-Arnold network (KAN) layer
+In this section, we explain the Kolmogorov-Arnold Network (KAN) layer framework. For clarity, let us consider a
+KAN with a single hidden layer. The input to the network is a vector 𝐫of size 𝑑input, and the output is a vector 𝐬of size
+𝑑output. In this configuration, the relationship between the input and output in the one-layer KAN is expressed as:
+𝐬𝑑output×1 = 𝚽𝑑output×𝑑input𝐫𝑑input×1,
+(9)
+where the matrix 𝚽𝑑output×𝑑input is structured as follows:
+𝚽𝑑output×𝑑input =
+⎡
+⎢
+⎢
+⎢
+⎢⎣
+𝜓1,1(⋅)
+𝜓1,2(⋅)
+⋯
+𝜓1,𝑑input(⋅)
+𝜓2,1(⋅)
+𝜓2,2(⋅)
+⋯
+𝜓2,𝑑input(⋅)
+⋮
+⋮
+⋱
+⋮
+𝜓𝑑output,1(⋅)
+𝜓𝑑output,2(⋅)
+⋯
+𝜓𝑑output,𝑑input(⋅)
+⎤
+⎥
+⎥
+⎥
+⎥⎦
+,
+(10)
+where each element 𝜓(𝑧) is defined as:
+𝜓(𝑧) =
+𝑛
+∑
+𝑖=0
+Λ𝑖𝑃(𝛼,𝛽)
+𝑖
+(𝑧),
+(11)
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 4 of 25

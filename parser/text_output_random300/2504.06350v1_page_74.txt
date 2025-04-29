@@ -1,0 +1,60 @@
+link, such as phase or polarization fluctuations, can prohibit the creation of high-quality entanglement.
+Once created, the entangled state begins to deteriorate due to a number of possible decoherence processes.
+The quality of the memory can be quantified by the coherence time T2, which is the time during which
+phase coherence of the quantum state can be maintained. T2 also determines the maximum separation
+distance L between the nodes, since the coherence must be maintained long enough for the BSM station
+to communicate to the nodes, and subsequent measurements at A and B to occur. That is, L << vT2,
+where v is the velocity of light in the optical link. A coherence time of 10ms has been recently observed
+for Rubidium atoms, allowing for a link distance over 100km [469].
+Thus, developing good quantum memories, resulting in increased T2, is crucial for increasing sepa-
+ration distance between nodes, while maintaining high CHSH violation and QBER. Entangled quantum
+memories will also play a crucial role in quantum repeaters, required for quantum networking and es-
+tablishing long-distance entanglement (see Ref. [470] for a comparison of decoherence times of candidate
+platforms and Ref. [471] for a review of quantum networks with neutral atoms).
+Event-ready setups can be divided into two main categories: those that use two photons as heralds
+and those with a single-photon herald. A double-herald setup requires one photon from each node A
+and B to arrive at the BSM station (see Fig. 18b). The BSM relies on two-photon interference, which is
+inherently robust to phase instability [472] (low optical decoherence), but is less efficient, as it requires
+the emission, arrival and detection of two photons. Thus, if the overall efficiency to detect a single photon
+at the BSM is η, the double-herald setup has efficiency ∼η2. Event-ready entangled states have been
+generated over tens of km of optical fibers with atomic ensembles [473] and single atoms [474].
+To improve efficiency, single-photon event-ready setups can be employed. These again require entan-
+glement between the node system and a photonic system, however in this case the state is of the form
+|ψ0⟩|1⟩± |ψ1⟩|0⟩, where |ψj⟩are states of the node system, and |n⟩are n-photon Fock states. This
+scheme has the advantage in that the relevant events are those where only one of the nodes emits a
+photon. When the two optical channels are combined at a beam splitter, so that one cannot determine
+which node emitted the photon, a detection in either output results in an entangled state at A and B
+(see Fig. 18c). Using single-photon events increases the event rate (efficiency ∼η), but requires optical
+phase stability to attain high-quality entanglement [475–479].
+Event-ready schemes are probabilistic, and entanglement generation attempts can only be retried after
+a time interval that permits two-way communication between the devices and the BSM setup, creating
+a balance between distance, node decoherence and generation rate. If the distance is too large, then
+decoherence sets in at the node qubits before successful heralding can be confirmed. One important
+figure of merit is the ratio between the entanglement generation rate rent and the decoherence rate rdec,
+known as the “link efficiency ηlink = rent/rdec [476]. When ηlink is on the order of unity or better,
+then entanglement can be created faster than it is destroyed, which can be used to create entangled
+nodes deterministically. This was achieved in Ref. [476] by delivering a separable state in the cases when
+entanglement generation fails. More specifically, entanglement creation was attempted repeatedly, and
+when entanglement was heralded successfully, it was stored for use at the end of the time window. If
+all attempts failed, then a separable state was delivered at the end of the time window. This results
+in a state of the form ρdet = psuccessρsuccess + pfailρfail. If ρdet has a fidelity greater than 1/2 with a
+maximally entangled state (for 2 × 2 systems), then the system delivers entanglement deterministically
+at the given time intervals.
+Event-ready schemes can be used to eliminate the importance of the optical link inefficiency in CHSH
+violation, but the entanglement generation rate diminishes exponentially with distance due to the at-
+tenuation during light propagation to the BSM. Moreover, most quantum memories emit photons in the
+visible or near-IR regime, where attenuation can be 1-2 orders of magnitude larger than the telecom
+bands.
+A solution to this problem is through quantum frequency conversion to the telecom window
+using difference-frequency conversion with an intense pump pulse [480, 481], which has been used to
+establish entanglement across distances of tens of kilometers for spin systems [482] and atomic ensem-
+bles [473, 474, 483].
+Nodes consisting of absorptive quantum memories [484, 485], can be entangled in a similar scheme
+using entangled photons from SPDC. Here each node consists of a memory that is coupled to an SPDC
+source, so that a single photon can be absorbed, while the other photon is sent to the BSM station.
+Similar to the single-photon event-ready schemes, if one cannot determine which node produced the
+photon detected at the BSM, the result is a pair of entangled nodes. In comparison to single-qubit nodes
+discussed above, here the non-degenerate frequencies of the SPDC photons can be tuned such that one
+photon is produced at the required frequency for level transition in the memory, and the other at telecom
+wavelengths for optimal transmission in the optical link to the BSM.
+74

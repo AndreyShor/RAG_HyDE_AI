@@ -1,0 +1,41 @@
+CAMulator
+Figure 4: Zonal mean and spatial bias analysis of key climate variables. The top row (panels a–c) displays the zonal
+mean values for (a) precipitation rate (PRECT, mm/day), (b) near-surface air temperature (TREFHT, K), and (c) zonal
+wind component (U, m/s), comparing simulations from CAMulator (teal) and CAM6 (purple). Reanalysis products
+(GPCP [1981-2010] and ERA5 [1979-2010]) are shown shown in grey dash. The bottom row (panels d–f) presents
+the corresponding spatial biases (CAMulator - CAM) for (d) PRECT, (e) TREFHT, and (f) U, highlighting regional
+differences. Biases are computed as the annual mean differences between the two simulations and are visualized using
+a diverging colormap (red: CAMulator > CAM, blue: CAMulator < CAM)
+the general structure of the CAM6 patterns and remain within the expected range of variability over a 30-year simulation
+Simpson et al. [2020]. Notably, geopotential height is not directly predicted by CAMulator; rather, it is reconstructed by
+summing thicknesses across half-model levels to account for temperature and moisture variations between grid cells.
+The fact that CAMulator successfully reproduces the spatial structure of Z500 anomalies suggests that the physical
+coherence between surface pressure (PS), temperature (T), and total moisture (Qtot) has been well preserved, lending
+credibility to the model’s internal consistency.
+3.3.1
+PNA & NAO
+3.3.2
+ENSO Precipitation Response
+ENSO is the dominant mode of tropospheric climate variability on interannual timescales, exerting a strong influence
+on global precipitation patterns [e.g., Philander, 1983, Dai and Wigley, 2000, Chapman et al., 2021]. To assess how
+well CAMulator replicates the ENSO-related precipitation response, we analyze composite precipitation differences (El
+Niño minus La Niña) for the eight strongest ENSO events, identified based on absolute Niño3.4 SST anomalies over
+DJF and compare the response to CAM6 (Fig. 6a–b).
+Both models capture the characteristic precipitation enhancements in the central and eastern Pacific, particularly near
+the International Date Line. However, CAMulator exhibits a slightly muted response in this region, a difference that
+may be attributable to internal variability. Notably, this muted response is consistent with the slight under representation
+of the PNA and NAO modes, suggesting a potential model tendency to underpredict low-frequency variability, which is
+notable in another ML-based climate model Cresswell-Clay et al. [2024]. The precipitation derived from ENSO-driven
+teleconnections over North America are well captured, with drier conditions over the southern U.S. and wetter conditions
+in the Pacific Northwest. Similarly, the Maritime Continent response aligns closely between the models, indicating that
+CAMulator effectively represents the large-scale precipitation shifts associated with ENSO. Examining the patterns
+in Figure 6 using a cosine latitude weighted Pearson correlation, we see a precipitation pattern correlation of 0.935
+between CAM6 and CAMulator. Overall, CAMulator successfully reproduces the spatial patterns of the CAM6 ENSO
+precipitation response, showing strong qualitative agreement.
+3.4
+Extremes and Precipitation
+Beyond representing mean climate and large-scale modes of variability, a climate model’s ability to simulate extreme
+events is a crucial measure of its fidelity. Extremes (e.g. heatwaves, heavy precipitation events, or droughts) shape
+ecosystems, infrastructure resilience, and societal vulnerability. These high-impact phenomena arise from nonlinear
+interactions between atmospheric and oceanic processes, making their accurate representation a stringent test of a
+9

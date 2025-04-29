@@ -1,0 +1,142 @@
+In the plane-wave basis, the Hamiltonian terms given in Eq. (1) take the following form:
+Tel =
+ηel
+X
+i=1
+
+X
+p∈G
+|kp|2
+2
+|p⟩⟨p|i
+
+,
+(27)
+Tion =
+ηion
+X
+I=1
+
+X
+P∈¯
+G
+|kP|2
+2MI
+|P⟩⟨P|I
+
+,
+(28)
+Vel = 2π
+Ω
+ηel
+X
+i̸=j=1
+
+
+
+
+X
+p,p′∈G,q∈G0
+p−q,p′+q∈G
+1
+|kq|2 |p −q⟩⟨p|i ⊗|p′ + q⟩⟨p′|j
+
+
+
+,
+(29)
+Vion = 2π
+Ω
+ηion
+X
+I̸=J=1
+
+
+
+
+X
+P,P′∈¯
+G,Q∈¯
+G0
+P−Q,P′+Q∈¯
+G
+ZIZJ
+|kQ|2 |P −Q⟩⟨P|I ⊗|P′ + Q⟩⟨P′|J
+
+
+
+,
+(30)
+Vel−ion = −4π
+Ω
+ηel
+X
+i=1
+ηion
+X
+I=1
+
+
+
+
+X
+p∈G,P∈¯
+G,q∈G0
+p−q∈G,P+q∈¯
+G
+ZI
+|kq|2 |p −q⟩⟨p|i ⊗|P + q⟩⟨P|I
+
+
+
+,
+(31)
+where the expressions are obtained by calculating matrix elements via integrals involving plane-wave basis
+states given in Eq. (15), and where
+|kp|2 =
+3
+X
+α,β=1
+pαpβ(bα · bβ)
+(32)
+is obtained by expressing the physical momenta kp, KP in terms of the integer labels p, P via Eq. (19). Note
+that, for the special case of a cubic lattice, bα =
+2π
+Ω1/3 ˆaα and so |kp| = 2π|p|
+Ω1/3 .
+3.2
+Valence electrons and pseudoions
+In Sec. 2.1 we described how the quantum simulation of dynamics with pseudoions is governed by the modified
+Hamiltonian in Eq. (3). Here we describe that modified Hamiltonian in the plane-wave basis. Moving to the
+pseudoion description:
+• The electronic kinetic energy and electron-electron interaction (Eq. (27) and Eq. (29)) are simply
+modified by replacing the number of electrons ηel with the chosen number of valence electrons ηval.
+• The nuclear kinetic energy (Eq. (28)) is left unchanged.
+• The ion-ion interaction in Eq. (30) is modified in two ways. First, for each ion I we replace the atomic
+numbers ZI with ZPI
+I
+= ZI −ηcore,I, as described in Eq. (2), where ηcore,I = ηel,I −ηval,I. Second,
+we introduce a cutoff Λtrunc and the associated basis set Gtrunc (and momentum exchange set G
+0
+trunc)
+which is constructed identically to G (and ¯G0) around Eq. (18) with P max
+α
+replaced by P trunc
+α
+< P max
+α
+.
+This is consistent with the assumption that pseudoions interact among themselves as point-charges
+of atomic number ZPI
+I , which is only valid as a far-field approximation. It would be inconsistent to
+consider pseudoion-pseudoion interactions in the near-field (i.e. resolved by high momenta), as then
+the notion of pseudoions itself breaks down.
+• Finally, the electron-ion interaction in Eq. (31) has a highly nontrivial modification. As we have seen in
+Eq. (9), Vel−ion is replaced by V PI
+el−ion = Pηion
+I=1
+Pηval
+i=1(V i,I
+loc + V i,I
+NL), with the definitions in Eq. (10)-(11).
+18

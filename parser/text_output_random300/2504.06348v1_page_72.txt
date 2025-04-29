@@ -1,0 +1,104 @@
+where the first term comes from the SWAPs and the rest from the indexing. Given that we must swap up
+pairs of electrons and ions, the total cost is
+2nηval + 2¯nηion + 2(ηval −1) + 2(ηion −1),
+(170)
+We consider an uncompute with the same cost. The additional cost of controlling SELECTs to indicate
+which term in the block encoding to apply is included in the costs in the sections below.
+E.2
+The kinetic term T = Tel + Tion
+E.2.1
+PREP0 (Kinetic)
+The initial preparation is of the state
+PREP0|0⟩=
+s
+λTel
+λTel+Tion
+ ηval
+X
+i=1
+|i⟩+
+s
+λ ˜Tion
+λTel
+ηion
+X
+I=1
+r
+1
+MI
+|I⟩
+!
+.
+(171)
+Let the state |ϕT
+η ⟩∝Pη
+¯I=1
+q
+1
+¯
+M ¯
+I |¯I⟩, where ¯I is a composite index that runs over electrons and ions
+¯I = 1, . . . ηval, ηval + 1, . . . ηval + ηion and where ¯
+M¯I is the normalized mass of particle ¯I (defined so that
+¯
+M¯I = 1 for indices corresponding to electrons, and that ¯
+M¯I =
+λ ˜
+Tel
+λTion MI for ions). We assume that bM-bit
+approximants to the quantities
+1
+√¯
+M ¯
+I have been loaded, indexed on ¯I, using the QROM in App. E.5.2. The
+preparation of |ϕT
+η ⟩is then carried out by rejection sampling against a uniform reference state
+1
+√η
+Pη
+¯I=1 |¯I⟩.
+The cost of preparing the reference state from Eq. (167) is 2⌈log(η)⌉+ 2bT −8, for some user-specified
+precision bT . The cost of the inequality test is dictated by the precision with which one requires to prepare
+the target state. It is shown in [75], Lemma 2.11 that preparing a sampling state that is uniform with
+MT ≥
+2
+ϵT amplitudes suffices to prepare a target to within precision ϵT (we also assume that MT is chosen
+to be a power of two to simplify preparation costs). The inequality test then requires ⌈log 2
+ϵT ⌉Toffolis and
+an equal number of ancillae. The output of the inequality test must be amplified; the success probability is
+Psucc =
+sPη
+¯I=1
+1
+M ¯
+I
+η
+=
+s
+ηval + Pηion
+I=1
+1
+MI
+η
+≥
+rηval
+η ,
+(172)
+and so we can guarantee one round of amplification provided at least half the particles are electrons. This
+requires three calls to both the inequality test and the USP. We must also add a single control for term
+selection. This can be achieved by (i) controlling the inequality test (doubling its cost); and (ii) adding a
+controlled USP to uncompute the reference state (with cost 7⌈log(η)⌉+ 2bT −6). The total cost is therefore
+6⌈log 2
+ϵT ⌉+ 13⌈log(η)⌉+ 8bT −30.
+E.2.2
+Preparing the reference state for |kp|2
+We consider the same approach given as in Ref. [29]; i.e. to prepare a uniform reference state (discussed in
+Sec. VII C therein). The cost of USP is given in Eq. (167), with d = maxp |kp|2 for electrons (or equivalently
+d = maxP |kP|2 for ions). The reference state for ions should be encoded over a larger number of amplitudes
+than for electrons. To achieve this, we check whether ¯I ≤ηval by applying an inequality test to the particle
+index register (the output of this inequality test flags whether we are encoding an electron or an ion). The
+inequality test has cost ⌈log(η)⌉, and can be uncomputed using only Cliffords. We then apply two different
+USPs controlled on this flag. Assuming that the register encoding |kp|2 is of size b, and that of |kP|2 is of
+size ¯b, the cost for each controlled USP is 7b + 2bk −6 and 7¯b + 2bk −6, respectively. The total cost is then
+⌈log(η)⌉+ 7b + 7¯b + 4bk −12, for some precision bk.
+72

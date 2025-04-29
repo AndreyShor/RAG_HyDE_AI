@@ -1,0 +1,46 @@
+evaluate the MFPT at any rate r = r∗+ ∆r. To do so, we simply treat the coordinates Xj
+i
+of the trajectories with resetting as described above for unbiased trajectories and substitute
+r = ∆r in Equation 7.
+4
+Applications of resetting in molecular simulations
+4.1
+Resetting as a standalone method
+We established that standard resetting accelerates ﬁrst-passage processes for which the COV
+of the FPT distribution is larger than unity. In which processes should we expect it to hap-
+pen? To gain intuition, we next describe several systems where such broad FPT distributions
+emerge, and resetting proved useful.
+Resetting is particularly eﬃcient in ﬂat landscapes.53,77,78 We expect it to accelerate
+processes where the free energy barriers are moderate and entropy plays a signiﬁcant role
+in the dynamics.
+Then, the system explores nonreactive regions of phase space for long
+periods, resulting in trajectories with long FPTs. Occasionally resetting to a reactive region,
+where rapid transition to product is possible, can reduce the MFPT. For example, consider
+the modiﬁed Faradjian-Elber potential of Figure 2(a).14,39,41 It is a two-dimensional model,
+consisting of two metastable states separated by an energy barrier of 12 kBT at x = 0 for
+most y-coordinate values, where kB is the Boltzmann constant and T is the temperature. It
+has a narrow saddle only 3 kBT high at y = 0, near the minima of the basins. The basins are
+very broad, such that a diﬀusing particle starting from one of the minima may spend much
+time in nonreactive regions away from the saddle (|y| ≫0). The COV for transitions from
+one minimum to the other basin is ∼1.23. Poisson resetting at the optimal resetting rate
+gives a speedup of ∼15,39 which is deﬁned as the ratio of the MFPT without and with SR.
+Often, barriers are much higher than kBT. In a classical two-state scenario with a high
+barrier as in the Kramers’ problem,79 the FPT distribution is exponential: the COV is
+exactly 1 and resetting cannot accelerate transitions. However, this simpliﬁed picture often
+only holds at long timescales. When the initial state is composed of several sub-states, the
+rate of transitions can vary before reaching local equilibrium within the initial state. This is
+demonstrated in the three-state model of Figure 2(b).40,80 We initiate the particle in state
+A and are interested in transitions over a ∼10 kBT barrier to the global minimum of state
+B. The particle can also overcome a ∼6 kBT barrier to reach a nonreactive state I. The
+system reaches thermal equilibrium between states A and I after ∼1.5 ns, after which the
+FPT distribution decays exponentially, with a MFPT of ∼130 ns. But, before reaching
+equilibrium, the rate of events is faster, and sharp resetting with a timer of 1.15 ns gives a
+speedup close to 6 over simulations without resetting.40
+We conclude that SR is eﬃcient as a standalone method when there are multiple metastable
+states, or when the energy barriers are relatively low. Proteins are characterized by rugged
+free energy surfaces that often ﬁt these criteria.81–83 As an example, Figure 2(c) presents
+the free energy surface of a nine-residues alanine peptide in solution, along two CVs: the
+end-to-end distance and the mean distance of three H-bonds-forming sites.84 Notice that the
+scale of the color bar is diﬀerent from that in panels (a) and (b). We recognize 4 metastable
+states, marked with white dashed lines. Representative conﬁgurations of the states are given
+9

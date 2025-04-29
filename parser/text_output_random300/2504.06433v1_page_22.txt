@@ -1,0 +1,106 @@
+G(1)
+0
+...
+...
+...
+target |0⟩
+G(0.5)
+0
+G(1.5)
+0
+|ψb⟩
+G(0.5)
+1
+G(1.5)
+1
+G(0.5)
+2
+G(1.5)
+2
+|0⟩⊗(n−2) ⊗|α⟩
+G(0.5)
+3
+G(1.5)
+3
+G(0.5)
+m+n
+G(1.5)
+m+n
+=
+...
+G(1.5)
+0
+G(0.5)
+0
+|ϕ⟩{0}
+G(1.5)
+1
+G(0.5)
+1
+|ϕb⟩{1,2}
+G(1.5)
+2
+G(0.5)
+2
+G(1.5)
+3
+G(0.5)
+3
+|ϕ⟩B
+G(1.5)
+m+nG(0.5)
+m+n
+Figure 2: The portion of a typical circuit C before layer 2. The top line is qubit 0 (the target).
+|ψb⟩on qubits 1 and 2 turns G(1)
+0
+oﬀ. Here, G(1)
+0
+is depicted as touching all qubits, but this need
+not be the case.
+and |ϕ′
+b⟩on either side of layer 2 both separate at {{0}, {0}}, and in particular, both states are
+S-separable.
+Now applying Lemma 4.4 (with C := {0} and D := {0}) we get that on state |ϕb⟩, G(2)
+0
+either
+(1) disappears, (2) simpliﬁes to C{0}Z, or (3) simpliﬁes to C{0}∩SZ. Case (3) is impossible because
+the target is not pass-through by Lemma 6.6 and so its state is a proper superposition of |0⟩and |1⟩
+at layer 2. Thus there are only two possibilities for G(2)
+0
+given b: either G(2)
+0
+disappears or simpliﬁes
+to C{0}Z, which is the 1-qubit Z-gate. Therefore only two ﬁnal states of the target are possible on
+initial state |ψ′
+b⟩:
+|b⟩=
+(
+G(2.5)
+0
+|ϕ⟩{0}
+if G(2)
+0
+disappears on |ϕb⟩,
+G(2.5)
+0
+Z |ϕ⟩{0}
+otherwise.
+If follows that G(2)
+0
+must disappear for one of b’s values—say b0—but not the other one. Thus we
+have that G(2)
+0
+disappears on state |ϕb0⟩= |ϕ⟩{0} ⊗|ϕb0⟩{1,2} ⊗|ϕ⟩B. Noting that |ϕb0⟩separates
+at {{0, 1, 2}, B}, we now apply Lemma 4.6 (with A := {0, 1, 2}) to see that G(2)
+0
+disappears — and
+hence |b⟩= G(2.5)
+0
+|ϕ⟩{0} — on |ϕ⟩{0} ⊗|ϕb0⟩{1,2} ⊗|σ⟩B for any state |σ⟩B ∈HB. That implies
+that the ﬁnal state of the target does not depend on the input qubit 3, and so C cannot weakly
+compute ⊕n.
+We are now ready to prove Theorem 6.1. The idea of the proof is to show that G(2)
+0
+must “act
+classically” on most of the input qubits.
+22

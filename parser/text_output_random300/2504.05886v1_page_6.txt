@@ -1,0 +1,119 @@
+6
+including a phase diagram, and snapshots of the system’s
+final configuration at the selected state points. Note that
+if a species dies out (no remaining individuals) then no
+new particles of that species can be born, so the number
+of species in the system can never increase.
+The resulting phase diagram features three distinct
+phases which are called fixation (only one species is
+present at the final time), coexistence (three species are
+present) and extinction (all sites are empty). As in [7], it
+is not possible that two species survive at long times since
+one of them will always dominate the other, which leads
+to either fixation or extinction. The total density ρtotal
+is also indicated: this is zero in the extinction phase.
+The fixation phase occurs for large movement rate
+λ and small death probability pω.
+Since the system
+is symmetric, the species that survives in this phase
+is completely random. Reducing the movement rate λ
+favours the coexistence phase, in which spiral patterns
+appear, characterised by a length scale that grows with
+λ. This is the same behaviour observed in the RPS model
+of [7, 34, 39], consistent with the fact that our model re-
+duces to theirs on setting pω = 0.
+(In that case, the
+fixation phase also has ρX = 1 for the surviving species.)
+On increasing pω, the behaviour changes qualitatively
+because the death process favours the extinct state. In-
+deed for pω ≳10−3, one still has the coexistence phase
+for small λ, but increasing λ leads to extinction instead of
+fixation. As noted above, the reason is that if only a sin-
+gle species survives (fixation phase) then all particles will
+end up hungry, reducing their reproduction rate. Then
+the whole population tends to collapse into the extinct
+state. This illustrates how the combination of the death
+process and the hunger levels leads to a more complex
+ecosystem, where different species rely on each other for
+survival. Increasing the death rate also tends to disrupt
+the spiral patterns, compare snapshots IV, V, and VI in
+Fig. 3. Eventually, the system fragments into irregular
+clusters of each species [67–69].
+B.
+Transitions between coexistence and
+fixation/extinction phases
+The transition between coexistence and fixation phases
+has been the focus of many previous studies [7, 33, 34, 39,
+70]. The length scale of the spiral patterns grows with λ
+until it becomes system-spanning (see snapshots IV, III,
+II, and I in Fig. 3). Moreover, these spirals are associated
+with oscillations in species’ populations, and for system-
+spanning spirals, these oscillations are large enough that
+one species may die out. This leads to an explosion in
+the population of its prey species, which then wipes out
+the remaining species (its prey). This leads to fixation.
+Note however that since the number of species can
+never increase,
+the coexistence phase is necessarily
+“metastable”: for fixed system size and with sufficiently
+long simulation, the system will eventually end up in the
+fixation phase [7, 33, 34, 39]. Nevertheless, the transition
+between coexistence and fixation is well-defined in the
+limit of large system size, where it can be characterised
+via the scaling with L of the time to reach fixation [33].
+However, the inherent metastability of the coexistence
+phase must be borne in mind when analysing simulation
+behaviour, this will become clear in later Sections.
+In contrast to the coexistence-fixation transition, the
+transition to an extinct state is not present in the RPS
+model of [7, 33, 34, 36, 39]. (This transition relies on the
+death process and the hunger levels.)
+Unsurprisingly,
+increasing the death probability pω tends to reduce the
+total population: this eventually collapses because dilute
+systems make it increasingly hard for particles to find
+prey, leading to hunger, reduced reproduction and hence
+extinction. Another interesting effect of increased pω is
+the loss of coherence in the spiral pattern (panels V and
+VI in Fig. 3).
+The same transition (from coexistence to extinction)
+also appears on increasing mobility λ at fixed pω. As in
+for the coexistence-fixation transition, it is also impor-
+tant that increased mobility leads to longer-ranged spa-
+tial correlations and large fluctuations, so that species
+are more likely to die out via random fluctuations. To
+understand the shape of the phase boundary, we recall
+that the time step τ depends on λ in the results of Fig. 3,
+so fixing pω does not correspond to a fixed rate ω, due
+to (6). Lines of fixed ω are shown in blue in Fig. 3, these
+indicate that transition from coexistence to extinction
+takes place at a death rate ω = ωx that is between 0.01
+and 0.1, depending weakly on λ. This indicates that the
+most important control parameters of the model are ra-
+tios of rates, for example ω/µ sets the balance between
+reproduction and spontaneous death (note that µ = 1 is
+constant in Fig. 3). In later Sections we keep a fixed time
+step τ so it is equivalent to fix either ω or pω.
+IV.
+LEARNING BY A “SMART” SPECIES
+A.
+Motivation
+The central question of this work is how a privileged
+(smart) species can adjust its behaviour, in order to max-
+imise its population. (Specifically, we adjust the param-
+eters λA, σA, ϕ as well as adopting different strategies
+when choosing the preferred direction D∗.)
+In princi-
+ple, this question could be addressed in simulation by
+scanning the various parameters.
+Instead, we adopt a
+different approach based on reinforcement learning (RL).
+The method is detailed below: as usual in RL, the main
+idea is that we mostly run simulations at parameters that
+have previously been found to be good, but this is sup-
+plemented by exploratory searching, to find other regions
+of parameter space that might be even better.
+A priori, this method seems promising for two reasons:
+Firstly, we expect it to be more efficient than parameter
+scanning, in the context of our simulation study. Sec-
+ondly, it may mimic the mechanisms by which organisms

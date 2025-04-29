@@ -1,0 +1,129 @@
+PAGIONO
+An ionospheric activity index
+Dr.Paul.Kinsler@physics.org
+match a set of fitting functions to the distribution based on a
+frequency histogram of the set of dTEC values. These cannot
+fit all of the dTEC distributions we see to very high accuracy,
+but they encapsulate most typical features, and give us access
+to estimations for true width properties of the distributions.
+This finite width measure can be straightforwardly converted
+into an index, whilst the full set of fitting parameters can be
+used to monitor the variation in distribution properties with
+ionospheric conditions.
+C.
+Comparison: LdT vs KP, Dst, and ROTI
+In contrast to indices such as KP, Dst, and ROTI variants,
+our index has a number of advantageous features, as we will
+show in more detail below. Firstly, and like ROTI, it is based
+on direct indicators of the ionospheric state, namely TEC es-
+timates resulting from the disturbances to GNSS signals. Sec-
+ondly, and in contrast to current applications of ROTI, LdT is
+based on a statistical or distributional approach, and so with-
+out additional assumptions it can be applied equally well to
+any dataset of TEC values (e.g., smaller regional networks, or
+denser global networks) – however they might be divided or
+localised in time, space, or by other criteria. Thirdly, the vari-
+ance approach of ROTI has a specific technical shortcoming
+– we will see below that distributions of dTEC values have
+power-law tails, and therefore are not always guaranteed to
+have finite variances.
+As a result our LdT index is well placed to characterise L-
+band ionospheric propagation disturbances that can affect ser-
+vices and operations reliant upon GNSS.
+III.
+METHODS & ALGORITHMS
+The LdT index that we will introduce later in Section VI
+is derived from a characterisation measure for ionospheric
+disturbances, and that is based on the slant TEC (τEC) com-
+puted from the GNSS carrier phases, and its temporal rate of
+change delta-TEC (dTEC, δEC). The method used to con-
+struct the dTEC statistics starts with an ionospheric char-
+acterization tool the Python programming language (Python
+Software Foundation, https://www.python.org/), with supervi-
+sory scripts written for the Bash shell program and command
+language (GNU, https://www.gnu.org/software/bash), and the
+steps followed are as outlined in detail in the Supplementary
+Material. It analyses a set of RINEX (Receiver Independent
+Exchange Format, https://igs.org/wg/rinex/) files that span ei-
+ther hours or days worth of data, and uses the GNSS sig-
+nal properties listed to estimate Total Electron Content (TEC)
+along each signal path through the ionosphere, and then also
+that estimate’s variation over time. With data from over 300
+ground stations available on an on-going basis from CDDIS
+[39], and all four GNSS constellations (providing over 130
+satellites), a reasonable global coverage can be achieved. Key
+steps, methods, and assumptions are these:
+(a) the data source is the 30 second interval RINEX v3 files
+from CDDIS,
+(b) the ionosphere is taken to be a thin surface at 350km alti-
+tude, and the inferred TEC or dTEC values are taken to be
+on the line-of-sight intersection on this surface between
+the ground station and the selected satellite position;
+(c) a Melbourne-Wubbena algorithm is used to flag cycle-slip
+events where signal disruption indicates that TEC (and
+hence dTEC) should be discarded as unreliable.
+(d) subsequently, a normalisation process is applied to align
+dTEC values obtained from different signal pairs and ele-
+vation angles,
+(e) and the dTEC values are binned and histograms are fitted
+to parameterise the distributions for display and analysis.
+A.
+Ionosphere
+For simplicity we assume a thin ionosphere at a specified
+altitude (default 350km), so that any ‘line of sight’ signal be-
+tween a satellite and a ground station will cross it (intersect
+it) at a well localized intersection point (i.e. the “ionospheric
+pierce point”, IPP) [40, 41]. However, since the 350km as-
+sumption itself introduces uncertainty, at a later stage we will
+pixelize the results – i.e. assign each result to some fairly
+coarse angular (latitude and longitude) range. As a result, on
+the scales considered, the “thin ionosphere” assumption has
+minimal effect.
+Since we know the locations of the ground stations, and can
+predict the locations of the satellites based on their navigation
+data, the properties of any signals sent and received can be
+used in an attempt to characterize the behaviour of the iono-
+sphere at the intersection point. Here we use the geometry-
+free combination from two frequency bands, to infer the iono-
+spheric slant TEC [32] along the signal path. In standard TEC
+units (TECU), and at epoch tk, we have that
+TEC(tk) ≃
+1
+40.3
+f 2
+1 f 2
+2
+f 2
+1 −f 2
+2 [λ1L1(tk)−λ2L2(tk)],
+(1)
+where L1 and L2 are carrier phases associated with signal
+frequencies of f1 and f2; and likewise λ1 and λ2 are their
+wavelengths. TEC is measure in el/m2, with TECU being
+1016el/m2.
+Note that this equation generally neglects any
+residual error term, ambiguities, biases, and receiver noise.
+We then assume that we can use the change in time of that
+inferred slant TEC, i.e.
+its rate of change dTEC (linearly
+rescaled into units of TECU/s). as a measure of the variation
+in ionospheric properties (due to ionospheric irregularities) at
+or near where the signal intersected it. In what follows we
+focus primarily on these dTEC values to attempt a character-
+isation of the ionosphere state, either globally, or as localised
+in time and space.
+B.
+Processing and initial analysis
+From an input of GNSS data in the form of RINEX files,
+the primary output is essentially columns of data specifying
+TEC or dTEC values, their location, time, and station-satellite
+pair, as well as the signal band combination used. For a one-
+day dataset comprised of 30s intervals, as downloaded from
+CDDIS [39, 42], these can easily encompass several tens of
+millions of data points (typically 55-60M), which can then be
+filtered at will, and analysed or visualised as convenient.
+For a single day, uncompressed dTEC filesizes are about 6-
+7GB in size. The time taken to generate these dTECs is about
+one hour on 36-core workstation, although subsequent analy-
+sis steps – which are not so easy to parallelize – take a similar
+3

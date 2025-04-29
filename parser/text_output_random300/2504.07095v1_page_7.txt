@@ -1,0 +1,75 @@
+(a) Zero-Shot Reacher-Easy
+(b) Zero-Shot Reacher-Hard
+(c) Zero-Shot Cartpole-Balance
+(d) Zero-Shot Acrobot-SwingUp
+(e) Zero-Shot Cheetah-Run
+(f) online Cheetah-Run
+predictions, creating a continuous loop. However, this ap-
+proach inherently involves frequent interactions with the
+real environment, making it challenging to reduce the num-
+ber of real-world interactions. MoSim adopted a similar
+training strategy: every 100 real environment steps, a batch
+of data was sampled from the replay buffer to train the
+model. For the subsequent 100 steps, the model used sam-
+pled states from the replay buffer as initial states to predict
+one step ahead and train the policy. With this training strat-
+egy, MoSim outperformed DreamerV33 within the 500k
+time step limit on the cheetah task 3c.To provide a contrast,
+we used a pre-trained MoSim model as the world model,
+which was pre-trained on random data. In this case, the
+model predicted one step ahead in each step but was never
+updated with new data. As shown in Figure II, while the
+model initially showed improvement, the prediction quality
+eventually declined because the world model failed to gen-
+eralize to the current data distribution, ultimately leading to
+a collapse in training performance.
+Although MoSim demonstrated strong performance on
+the cheetah task with an on-policy training strategy, we be-
+lieve that few-shot learning remains a promising and worth-
+while direction to pursue. Achieving purely zero-shot per-
+formance on locomotion tasks is nearly impossible, as the
+data distribution can vary significantly across different poli-
+cies and training stages. Additionally, the model’s predic-
+tive capabilities are inherently limited in such tasks. Thus,
+leveraging real data to assist training can be essential. Few-
+shot learning provides a feasible and meaningful solution,
+as it significantly reduces the need for interactions with
+the real environment, thereby improving data efficiency and
+3All DreamerV3 reinforcement learning results reported in this pa-
+per are obtained directly from the open-source implementation of the
+DreamerV3 baseline provided in the TD-MPC2 repository:
+https:
+//github.com/nicklashansen/tdmpc2
+making the approach more practical for complex tasks.
+3.7. Let Model Know When It Doesn’t Know
+To address the issue mentioned in Section 3.4 where perfor-
+mance degrades during later stages of training due to distri-
+bution shift, our aim is to enable the model to recognize
+when it is uncertain, allowing exploration to avoid areas
+where the world model tends to generalize poorly and pro-
+duce inaccurate predictions. Specifically, we use a residual
+flow with a Gaussian base distribution to fit the distribution
+of the MoSim training set. We then incorporate the proba-
+bility density of each data point as a penalty term in the re-
+inforcement learning reward. In this way, when a data point
+has a low probability density under the residual flow (indi-
+cating that the world model is unfamiliar with that region
+of data, i.e., it has encountered a distribution shift), then the
+policy is discouraged from taking that action. As shown in
+the figure3e , after adding the penalty term to the reward,
+the zero-shot Cheetah training reward (without the penalty
+term) no longer declines after a period of training and even
+achieves a higher score compared to the original maximum.
+This result provides an initial indication and potential future
+direction for addressing the distribution shift.(A detailed ex-
+planation of this method is provided in the Appendix F.)
+3.8. How Predictive Capacity Affects RL
+To explore the impact of the predictive capacity of the world
+model on reinforcement learning, we compare the final per-
+formance of policies trained with different prediction hori-
+zons: 10, 50, and 100. As shown in Figure 6, the results in-
+dicate that as the prediction horizon decreases, the final per-
+formance of the policy also decreases. This highlights the
+importance of the prediction capacity of the world model
+for reinforcement learning.
+7

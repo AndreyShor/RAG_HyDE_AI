@@ -1,0 +1,115 @@
+12
+for pphys = 0.005, we find that when panc = 0.0025, the
+physical state fidelity is 0.89 and the mean final training
+accuracy is 0.82 ± 0.07, whereas when panc = 0.004, the
+physical state fidelity is 0.82 and the mean final training
+accuracy is 0.83 ± 0.02. The similarity in final training
+accuracy despite clear difference in physical state fidelity
+is most likely from using only 10 samples to determine
+mean training accuracy and standard deviation.
+Finally, we note that for both noise models, ancilla fi-
+delities are lower than physical fidelities at the same error
+rates. This is because there are more gate operations ap-
+plied to the ancilla register than physical register, and
+thus a higher chance of both gate errors and a greater
+level of simulated environmental noise in the ancilla reg-
+ister. The ancilla register thus accumulates more errors
+than the physical register under both noise models.
+3.
+Error Detection and State Fidelities
+We show the impact of error detection on the mean
+physical and ancilla fidelities in Figures 8 and 9, respec-
+tively, under the gate noise model and with varying Pauli
+Error Rates on both registers. While there is slight im-
+provement in ancilla fidelity after one round of syndrome
+extractions, likely from removing the errors that would
+have otherwise propagated from the physical to ancilla
+register, the application of more syndrome extractions to
+the physical qubits has minimal effect on ancilla fideli-
+ties. Additionally, we notice that the physical fidelities
+also plateau after approximately one set of syndrome ex-
+tractions, and lower mean ancilla fidelities are associated
+with lower mean physical fidelities, at their respective
+plateaus. These observations support our earlier asser-
+tion that ancilla errors impact the physical qubits in ways
+that cannot be detected by the [[4,2,2]] stabiliser code.
+More fundamentally, the Pauli errors that originate in
+the ancilla register and are propagated to the physical
+register through entangling gates may not remain Pauli
+errors when they reach the physical qubits. It is these
+non-Pauli errors that the stabiliser code is unable to de-
+tect effectively, resulting in a maximum mean physical
+qubit fidelity that can be reached even with error de-
+tection, and consequently a maximum mean training ac-
+curacy. We also observe very similar trends under the
+environmental noise model.
+We identified the ancilla fidelities corresponding to
+the threshold Pauli Error Rates we established earlier:
+panc = 0.003 and panc = 0.004. Since ancilla fidelities
+tend to stabilise and plateau after one round of syndrome
+extractions, we determined the threshold ancilla fidelities
+by averaging the fidelity measurements taken at 1, 2, 3,
+and 5 rounds of syndrome extractions, which should all
+be close to the true ancilla fidelity at the threshold error
+rate. Table II reports the mean ancilla and physical fi-
+delities we measured in this way from the 4000-shot simu-
+lations, at ancilla error rates slightly above, equal to, and
+slightly below the thresholds. We included some ancilla
+error rates more than once, with different physical Pauli
+Error Rates. We generally find that the ancilla fidelities
+remain roughly the same despite differences in the physi-
+cal Pauli Error Rates. This is because after one round of
+syndrome extractions is applied, the vast bulk of the im-
+pact from the errors in the physical register is removed,
+leaving non-Pauli errors that cannot be removed.
+We
+conclude from our results that the thresholds for mean
+ancilla fidelities that correspond to the Pauli Error Rate
+thresholds are 0.85 and 0.83, for the gate noise model and
+the environmental noise model, respectively. The corre-
+sponding proportion of states with fidelities near 0 and
+1 at the thresholds are 12% and 82% for the gate noise
+model, and 14% and 82% for the environmental noise
+model.
+It is important to highlight that these threshold fideli-
+ties and Pauli Error Rates are dependent on the mod-
+els we have used in this study. For different noise mod-
+els and a different VQC, we cannot guarantee that the
+threshold fidelities and error rates will remain in the same
+ballpark. However, our insights about how errors inter-
+act and propagate between ancilla and physical registers,
+their limiting effect on error correction schemes and the
+existence of a threshold error rate for ancilla qubits (and
+associated ancilla fidelity) are highly relevant to the gen-
+eral implementation of VQCs with error correcting codes
+on both NISQ devices and fault-tolerant devices. Any
+QEC implementation that relies on ancilla qubits for en-
+coding and is limited in the type of error it can detect
+and correct, will have a limiting error rate for which er-
+ror correction cannot effectively protect the training and
+prediction processes. This limit is in addition to the limit
+accounted for by the Threshold Theorem.
+V.
+CONCLUSIONS
+Through classical simulations of a 2-qubit VQC im-
+plemented with the [[4,2,2]] code, we have demonstrated
+that applying QEC can improve QML training accuracies
+in noisy environments, proving that even in a non-fault
+tolerant setting, QEC is useful for practical QML imple-
+mentations. However, the effectiveness of error correction
+is limited by the error rate of ancilla qubits. We can de-
+fine a threshold ancilla error rate such that the QEC code
+can reliably guarantee a reasonable final training accu-
+racy if the ancilla error rate is below the threshold, and
+such that above the threshold, training accuracies may
+be poor and quite variable.
+Under our gate noise and environmental noise mod-
+els, respectively, we determined this threshold to be
+panc = 0.003 and panc = 0.004, for a desired minimum
+training accuracy of 0.90.
+The ancilla fidelities corre-
+sponding to these error rates are 0.85 and 0.83, respec-
+tively. The threshold error rate for the gate noise model
+compares favourably to the lowest single-qubit gate er-
+ror rates exhibited by a NISQ device of 0.15%. Under
+a more complex noise model with both gate noise and

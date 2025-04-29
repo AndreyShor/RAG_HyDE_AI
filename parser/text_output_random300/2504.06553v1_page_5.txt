@@ -1,0 +1,116 @@
+similarity of greater than 0.8 to form the input S0 to H-IB.
+The multi-level abstraction of the tasks corresponds to the
+task hierarchy such that T1 corresponds to the items in sub-
+tasks, T2 corresponds to the subtasks, and T3 corresponds
+to the high-level tasks. To account for the irrelevant parts of
+the scene, we augment our task hierarchy with a null task
+that consists of a single null action step with items: "item"
+and "thing" [19], shown as the gray diamonds in Fig. 3a.
+H-IB takes
+as input
+the conditional
+probabilities
+P (T1|S0), P (T2|S0), and P (T3|S0).
+We compute these
+using the text embeddings of the items in the task hier-
+archy and the embeddings of the nodes in the primitives
+layer [30].
+For T1, we compute the cosine-similarities
+scores between each embedding ft, t ∈T1 and embedding
+fs, s ∈S0 and use the softmax function to obtain P (T1|S0).
+From this, we can compute the conditional probability of
+the subtasks P (T2|S0) for t2 ∈T2 and s ∈S0.
+p(t2|s) =
+X
+t1∈T1
+p(t2|t1)p(t1|s)
+(6)
+and the conditional probability of the tasks P (T3|S0)
+p(t3|s) =
+X
+t2∈T2
+p(t3|t2)p(t2|s)
+(7)
+The conditional probabilities are computed bottom-up
+and do not require the sentence embeddings for the subtask
+or task descriptions. This is in-line with the Markov chain
+assumption made when deriving for the H-IB iterations.
+We solve H-IB with β = 10 and with a min iteration of
+10 and a max iteration of 1000 or until convergence, defined
+as Cτ −Cτ+1 < 10−8. The output H-IB are the probabili-
+ties P (S1|S0), P (S2|S1), and P (S3|S2). Each conditional
+probability encodes a soft mapping from layer i to layer i+1
+(i.e., the probability that an element in layer i is a child of
+an element in layer i + 1). We take the arg max of the con-
+ditional probabilities to obtain the inter-layer edges, corre-
+sponding to the highest probability mapping, between the
+primitives layer to the items, the items to the subtasks, and
+the subtasks to the tasks, respectively. We also map scene
+graph nodes to the highest probability task, subtask, or item
+in the task hierarchy by taking the arg max of P (Tk|Sk).
+Intuitively, this step takes a set of primitives and funnel
+them through the task hierarchy to obtain a 3D scene graph
+that is aligned with the task hierarchy (Fig. 3a).
+Top-Down Pruning. In some cases, H-IB produces mul-
+tiple nodes associated to the same task entity (i.e., task, sub-
+task, or item). In this step, we first merge any overlapping
+scene graph nodes associated to the same task entity and
+then discard irrelevant nodes top-down, as shown in Fig. 3b.
+To do this, we define confidence as the probability of a node
+s given the task entity t: p(s|t). This can be easily computed
+from p(t|s), obtained from H-IB, along with p(s) and p(t).
+Task Hierarchy
+Null 
+Task
+(a) Bottom-Up Construction
+Task Hierarchy
+Null 
+Task
+(b) Top-Down Pruning
+Task Hierarchy
+Null 
+Task
+(c) Task Spatial Update
+Task Hierarchy
+Null 
+Task
+LLM
+(d) Task Hierarchy Refinement
+Figure 3.
+ASHiTA’s Scene Hierarchy and Task Update steps. The task
+hierarchy is on the left with diamond-shaped nodes representing the task
+entities. The scene graph is on the right, with circles marking the task-
+aligned scene graph nodes and green boxes marking the primitives layer.
+(a) Bottom-Up Construction: Starting from an initial task hierarchy, we
+perform H-IB and use the result to construct a 3D scene graph. (b) Top-
+Down Pruning: We perform pruning using the probabilities obtained from
+H-IB and also prune nodes related to the null tasks. (c) Spatial Update:
+Using the scene graph, we can update the spatial locations of the tasks,
+subtasks, and items. (d) Hierarchy Refinement: With the suggested items
+given by H-IB, we query the LLM to refine the task hierarchy.
+Starting from the top of the task hierarchy, for each task,
+we compare all the associated nodes of the task and only
+keep the node with the highest confidence, pruning away all
+other nodes and their descendants (e.g. the deleted blue cir-
+cles and its subtask and item nodes in Fig. 3b). We repeat
+this for the subtasks, and then also the items. Additionally,
+we prune all nodes and their descendants that are associated
+with the null task (e.g. deleted gray circles in Fig. 3b), as
+they are considered irrelevant to the given tasks. Lastly, we
+prune the primitives such that for each scene graph node
+on the items layer, we retain only the primitive with the
+highest confidence along with the primitives that intersect
+this highest confidence primitive. After pruning, we assign
+a bounding box and centroid to the item-associated scene
+graph node based on the union of the remaining primitives.
+4.3. Task Update
+The task hierarchy has to be both spatially localized (i.e.,
+each subtask should be executed at a location in the map),
+and environment-aware (i.e., the task should reference ele-
+ments in the environment). Hence, our task update consists
+of two steps: spatial update and hierarchy refinement.
+Spatial Update.
+Initially, the task entities are not
+grounded, hence do not have any spatial information. Once
+a task entity in the task hierarchy is aligned with a scene
+5

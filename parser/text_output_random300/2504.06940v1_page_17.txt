@@ -1,0 +1,136 @@
+17
+Continue on from Theorem III.5, we can then give a bound in terms of distance between quantum states.
+Theorem III.7 (State Distance Bound for Grover Gate). Consider a univariate random variable X with
+• |E [X]| ⩽ε;
+• E
+
+X 2
+⩽s2
+0
+where ε ⩽s0 ⩽1
+3. Consider the Grover gate G on random variable θ = 2 arctan
+
+1
+2 JXK 1
+λε
+
+with λ =
+5
+4−5s2
+0 , we claim
+that for N ∈N
+GN |1⟩−eiNE[X] |1⟩
+
+2
+⩽1.7983s2
+0 +
+7.480
+1 −1.25s2
+0
+s0ε +
+3.1588Nεs2
+0
+1 −1.25s2
+0
+2
+(82)
+Proof. Theorem III.5 tells us that G has eigenvalue eiα with eigenket |α⟩, where α ∈(−π, π], such that
+• |α −E [X]| ⩽3.1588s2
+0
+1−1.25s2
+0 ε ;
+• |⟨α|1⟩|2 ⩾1 −1
+4
+
+1.7983s2
+0 + 7.480s0
+ε
+1−1.25s2
+0
+
+.
+Consider the projection of |1⟩onto |α⟩, ⟨α|1⟩|α⟩. By triangle inequality we know that
+GN |1⟩−eiNE[X] |1⟩= |∆1⟩+ |∆2⟩+ |∆3⟩
+(83)
+where
+
+
+
+
+
+
+
+
+
+
+
+|∆1⟩= GN |1⟩−GN ⟨α|1⟩|α⟩= GN |1⟩−eiNα ⟨α|1⟩|α⟩
+|∆2⟩= eiNα ⟨α|1⟩|α⟩−eiNE[X] ⟨α|1⟩|α⟩
+|∆3⟩= eiNE[X] ⟨α|1⟩|α⟩−eiNE[X] |1⟩
+(84)
+Or, to simplify a bit:
+
+
+
+
+
+
+
+|∆1⟩= GN (|1⟩−⟨α|1⟩|α⟩)
+|∆2⟩=
+
+eiNα −eiNE[X]
+⟨α|1⟩|α⟩
+|∆3⟩= eiNE[X] (⟨α|1⟩|α⟩−|1⟩)
+(85)
+It is thus easy to see that |∆1⟩⊥|∆2⟩and |∆3⟩⊥|∆2⟩. Combined we can use triangular inequality to bound:
+GN |1⟩−eiNE[X] |1⟩
+
+2
+⩽
+
+|∆1⟩
+ +
+|∆3⟩
+
+
+2
++
+|∆2⟩
+2
+⩽4δ +
+3.1588Nεs2
+0
+1 −1.25s2
+0
+2
+⩽1.7983s2
+0 +
+7.480
+1 −1.25s2
+0
+s0ε +
+3.1588Nεs2
+0
+1 −1.25s2
+0
+2
+(86)
+where we used the fact that
+|∆1⟩
+ =
+|∆3⟩
+ ⩽δ and
+|∆2⟩
+ =
+eiNα −eiNE[X] |⟨α|1⟩| ⩽N|α −E [X] |
+√
+1 −δ ⩽3.1588Nεs2
+0
+1 −1.25s2
+0
+(87)
+Eq. (86) is exactly our conclusion.
+Theorem III.7 and Remark III.7 presented a primitive that serves the same purpose as the “Directional Mean
+Oracle” in Ref. [5], except there are no truncations and the fact that the deviation from eiNE[X] cannot be made
+arbitarily small. This would eventually results in a different multivariate mean value estimator in Sec. IV A.

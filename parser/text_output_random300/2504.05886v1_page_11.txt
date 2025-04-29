@@ -1,0 +1,175 @@
+11
+sparse case, ω = 0.015
+crowded case, ω = 0.005
+Symmetric (null)
+(σA, λA) = (1.0, 1.0)
+(σA, λA) = (1.0, 1.0)
+Non-directional
+(σA, λA) = (0.6, 1.6)
+(σA, λA) = (0.2, 0.4)
+E
+(σA, λA, ϕE) = (0.6, 1.6, 1.0)
+(σA, λA, ϕE) = (0.4, 1.8, 2.75)
+S
+(σA, λA, ϕS) = (0.6, 1.6, 2.75)
+(σA, λA, ϕS) = (0.2, 0.4, 1.0)
+H
+(σA, λA, ϕH) = (0.6, 1.6, 0.0)
+(σA, λA, ϕH) = (0.2, 0.4, 0.0)
+C
+(σA, λA, ϕC) = (0.6, 1.6, 0.0)
+(σA, λA, ϕC) = (0.2, 0.4, 0.75)
+E & S
+(σA, λA, ϕE, ϕS) = (0.6, 1.6, 1.25, 1.75) (σA, λA, ϕE, ϕS) = (0.4, 1.8, 2.75, 0.0)
+E & H
+(σA, λA, ϕE, ϕH) = (0.6, 1.6, 1.00, 0.0)
+(σA, λA, ϕE, ϕH) = (0.4, 1.8, 2.75, 0.0)
+E & C
+(σA, λA, ϕE, ϕC) = (0.6, 1.6, 1.00, 0.0)
+(σA, λA, ϕE, ϕC) = (0.4, 1.8, 2.75, 0.0)
+TABLE III. Optimal parameters for different strategies.
+0
+500
+1000
+1500
+2000
+e
+°20
+°15
+°10
+°5
+0
+5
+10
+T (e)
+E & S
+E & C
+E & H
+(b)
+0
+500
+1000
+1500
+2000
+e
+°25
+°20
+°15
+°10
+°5
+0
+5
+T (e)
+E & S
+E & C
+E & H
+(a)
+0
+10
+20
+30
+k
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+ΩA
+E & S
+E & C
+E & H
+0
+10
+20
+30
+k
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+ΩA
+E & S
+E & C
+E & H
+(c)
+(d)
+FIG. 8.
+(a) Integrated reward T (e) for mixed strategies
+with pω = 0.015.
+The data is shown as the average of 10
+runs. (b) Evolution of ρA for RL runs starting from a pre-
+learned value function at (σA = 1.0, λA = 1.0, ϕ = 0) with
+pω = 0.015. (c,d) Similar data to (a,b) at pω = 0.005.
+sion (ϕ2 = 0). In the sparse case, the mixed evasion &
+spreading strategy does improve the A population, but
+the other mixed strategies again revert to pure evasion.
+Table III summarises the optimal state points found by
+RL, for the various strategies.
+B.
+Interpretation of learned strategies
+We discuss the results of Fig. 7 and Tab. III. We first
+compare the symmetric case (A behaves identically to
+B, C) with the non-directional case (σA, λA are optimised
+but particles have no directional preferences) and we fo-
+cus on the sparse situation (pω = 0.015). Tab. III shows
+that it is desirable for A to move faster than the other
+species (λA > 1) but consume less prey (σA < 1). We ex-
+plain below (Sec. VI) that this reduced σA results in more
+hungry particles and hence reduced reproduction rate,
+but this apparent reduction in fitness is counteracted by
+the “survival of the weakest” effect [6, 10, 36, 53, 81],
+which is typical for systems with cyclic dominance. The
+key insight is that reduced predation by A enhances the
+population of species B, and this species in turn predates
+on C, reducing their population. Recalling that C acts in
+turn as a predator for A, this effect tends to also enhance
+ρA. This effect is apparent throughout Fig. 7 because the
+optimised parameters always lead to reduced C popula-
+tions, reducing the amount of predation on species A.
+Comparing symmetric and non-directional strategies
+for the crowded case, the optimal parameters now have
+strongly reduced σA, which again facilitates survival of
+the weakest. (In this situation, the optimal λA is reduced
+with respect to the other species, which is opposite to the
+sparse case.)
+Turning to pure directional strategies, there is a sig-
+nificant improvement over non-directional strategies in
+the sparse case, with both evasion and spreading prov-
+ing effective. (Recall that evasion corresponds to mov-
+ing away from predators, while spreading corresponds to
+moving into empty space.) The survival-of-the-weakest
+effect hints that predation plays an important role in de-
+termining A’s population, so it is not surprising that eva-
+sion of predators is also effective. The role of spreading
+is not so clear-cut but we recall that particles can only
+reproduce if empty space is available, so this strategy
+naturally increases the net rate of reproduction. In the
+crowded case, the evasion strategy provides a marginal
+benefit, although the population of the predator (C) be-
+comes very low. If the C dies out then the ecosystem will
+collapse: we do observe that the A population has quite
+large fluctuations, indicated by the error bar in Fig. 7,
+see also Sec. VI, below.
+Note that the strategy of hunting prey is never ef-
+fective: optimal strategies always have ϕH = 0.
+This
+can also be rationalised via survival of the weakest since
+hunting prey reduces the B population, which allows the
+predator population C to grow, eventually harming A.
+The clustering strategy (movement of A particles towards
+others of the same species) has no benefit in the sparse
+case but does have a positive effect in the crowded case.
+This is likely due to A particles shielding each other from
+predators (there is at most one particle per site so a high
+local density of A’s tends to reduce the density of C’s).
+As noted above, survival-of-the-weakest achieves a
+large A population by suppressing their predators
+(species C): however, if the C population falls too low
+then a random fluctuation may cause them to die out, in
+which case the ecosystem collapses and all species become
+extinct. This effect is illustrated in Fig. 9 which shows

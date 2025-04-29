@@ -1,0 +1,174 @@
+Lemma A.1. Let X = R2 or X = T2 = R2/Z2, T > 0, p ∈[1, +∞] and µ ∈Lp(X × T1
+2π × [0, T] × [−1, 1]). Then
+there exists a unique ρ ∈Lp(X × T1
+2π × [0, T] × [−1, 1]) such that
+ρ(x, θ, t, h) = µ(x −tv(θ), θ, t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)ρ(x −(t −t′)v(θ), θ + π −2 arcsin(h′), t′, h′). (A.0.6)
+Moreover for any t ≤T we have
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh|ρ(x, θ, t′, h)|E(t −t′, h) ≤
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh|µ(x, θ, t′, h)|,
+(A.0.7)
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dhρ(x, θ, t′, h)E(t −t′, h) =
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dhµ(x, θ, t′, h).
+(A.0.8)
+Lastly, there exists a constant C > 0 such that
+∥ρ(·, θ, t, h)∥Lp(X)
+≤
+∥µ(·, θ, t, h)∥Lp(X) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)∥µ(·, θ + π −2 arcsin(h′), t′, h′)∥Lp(X)
++
+C
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′∥µ(·, θ′, t′, h′)∥Lp(X).
+(A.0.9)
+Moreover the following properties hold:
+• if µ ≥0 then ρ ≥0,
+• if µ does not depend on x (or (x, θ)) neither does ρ and (A.0.7) and (A.0.8) hold also without integrating with
+respect to x (or (x, θ)).
+Before proving the Lemma, let us stress that if µ does not depend on x (respectively on (x, θ)), (A.0.9) can be
+expressed by substituting the norm ∥∥Lp(X) with the modulus.
+Proof. Since the proof technique does not depend on whenever X = R2 or X = T2, p ∈[1, +∞], we prove this result
+only in the case X = R2 and p ∈[1, +∞).
+To prove the existence of such ρ in the equation (A.0.6) we use the Contraction Theorem being careful that the
+integral of the function Q(t, h|h′) in the domain {(t, h) : 0 ≤t ≤T, h ∈[−1, 1]} is exactly 1 (and not < 1) as soon as
+T ≥
+1
+1−|h′| (see (B.2.1)). Therefore we split R2 × T1
+2π × [0, +∞) × [−1, 1] in
+
+R2 × T1
+2π × [ k
+2, k+1
+2 ) × [−1, 1]
+	
+k∈N: we
+define
+Ma,b := R2 × T1
+2π × [a, b) × [−1, 1],
+and we find step by step ρ as a function L1(M
+k
+2 , k+1
+2
+∧T ), for k = 0, 1, . . . , ⌊2T⌋, going on by induction on k. We only
+prove the inductive step because it has no substantial differences from the basic step k = 0. Therefore, for t ∈[ k
+2, k+1
+2 ),
+we write the equation (A.0.6) splitting the integral with respect to t′ in two summands
+ρ(x, θ, t, h)
+=
+µ(x −tv(θ), θ, t, h) +
+Z
+k
+2
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)ρ(x −(t −t′)v(θ), θ + π −2 arcsin(h′), t′, h′)
++
+Z t
+k
+2
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)ρ(x −(t −t′)v(θ), θ + π −2 arcsin(h′), t′, h′),
+that is, supposing that we have already defined ¯ρ as the solution of (A.0.6) for any t ∈[0, k
+2), we denote
+F
+:
+Lp(M
+k
+2 , k+1
+2
+∧T ) →Lp(M
+k
+2 , k+1
+2
+∧T )
+F[ρ](x, θ, t, h)
+:=
+µ(x −tv(θ), θ, t, h) +
+Z k/2
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)¯ρ(x −(t −t′)v(θ), θ + π −2 arcsin(h′), t′, h′)
++
+Z t
+k/2
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)ρ(x −(t −t′)v(θ), θ + π −2 arcsin(h′), t′, h′).
+This map preserves the periodicity in θ and therefore it makes sense for θ ∈T1
+2π. It preserves also the periodicity
+respect to x, and therefore the argument works also when X = T2.
+36

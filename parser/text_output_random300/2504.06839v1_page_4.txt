@@ -1,0 +1,106 @@
+The kinetic theory for the periodic Lorentz gas in the Boltzmann-Grad limit.
+Going back to (1.0.4),
+one may also ask whether it is possible to obtain such a kinetic equation in the periodic case. The answer is no:
+using the heavy tail of the distribution of the free path length, Golse [10] proved that in any dimension d ≥2 there
+exists an initial datum µin : Td × Sd−1 →[0, +∞) such that if the obstacles are balls of radius ε
+1
+d−1 located in Zd,
+no subsequence of the densities {µ t
+ε }ε (with initial datum µin) can converge to the solution of the linear Boltzmann
+equation.
+In [6, 7] the authors obtained an equation, rigorously derived in [14], for the time evolution of the limiting density.
+We restate it in dimension d = 2, even if in [14] any dimension d ≥2 has been considered. Denoting by µin the
+limiting probability density of the initial data, the equation writes as
+
+∂µt
+∂t (x, v, s, h) + v · ∇xµt(x, v, s, h) −∂µt
+∂s (x, v, s, h) =
+R 1
+−1 dh′Q(s, h|h′)µt(x, R[θ(h′)]v, 0, h′)
+µt(x, v, s, h)|t=0 = µin(x, v)E(s, h)
+.
+(1.1.4)
+Let us comment the above expression. The key argument used by the authors to understand the time evolution of the
+Boltzmann-Grad limit of a probability density on the phase space was to extend the phase space itself by adding the
+couple (s, h) =(time to the next collision, impact parameter of the next collision) defined before. Indeed the random
+flight (Xt, Vt)t≥0 in the Boltzmann-Grad limit obtained in [14] is not a Markov process (in (x, v)), therefore it is not
+possible to find a memoryless equation for the limiting density µt(x, v). Thus, the probability measure on the new
+expanded phase space R2 × S1 × [0, +∞) × [−1, 1] is to be understood as the probability of having at time t position
+x and velocity v, hitting the next obstacle within time s (i.e., at time t + s) and with impact parameter h.
+There are still some quantities to be commented in (1.1.4). One of them is E, that is, the invariant probability
+measure for the time evolution of the density in (s, h), obtained as
+Definition 1.2.
+E(s, h) :=
+Z ∞
+s
+ds′
+Z 1
+−1
+dh′Q(s′, h|h′).
+Lastly R[θ(h′)] rotates a vector v = (cos θ, sin θ) ∈S1 by angle θ(h′) = π −2 arcsin(h′), that is
+R[θ(h′)]v = (cos(θ + θ(h′)), sin(θ + θ(h′))).
+Let us stress, finally, that in the previous equation x can be a point in T2 or in R2. This ambiguity comes from the
+obstacles’ lattice being periodic.
+The time evolution equation (1.1.4) raises the problem of studying the long time behavior of the solution µt.
+To begin with, let us notice that one can introduce randomness also in the new parameters (s, h), getting thus the
+following equation for the time evolution of a density
+
+∂µt
+∂t (x, v, s, h) + v · ∇xµt(x, v, s, h) −∂µt
+∂s (x, v, s, h) =
+R 1
+−1 dh′Q(s, h|h′)µt(x, R[θ(h′)]v, 0, h′)
+µt(x, v, s, h)|t=0 = µ0(x, v, s, h)
+.
+(1.1.5)
+For our purpose using θ ∈T1
+2π := R/(2πZ) as a parameter is more comfortable rather than v ∈S1, therefore hereafter
+we will denote
+µ(x, θ, s, h) := µ(x, v(θ), s, h)
+if
+v(θ) = (cos θ, sin θ),
+and writing µt as a function of θ instead of v, the equation (1.1.5) writes as
+
+∂µt
+∂t (x, θ, s, h) + v(θ) · ∇xµt(x, θ, s, h) −∂µt
+∂s (x, θ, s, h) =
+R 1
+−1 dh′Q(s, h|h′)µt(x, θ + π −2 arcsin(h′), 0, h′)
+µt(x, θ, s, h)|t=0 = µ0(x, θ, s, h)
+.(1.1.6)
+In [14] existence and uniqueness for the solutions of (1.1.6) have been proved, as well as the fact that the L1 distance
+between two solutions is non increasing in time. As pointed out by the authors, a solution of (1.1.6) can be represented
+by
+µt(x, θ, s, h)
+=
+µ0(x −tv(θ), θ, s + t, h)
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)µt′(x −(t −t′)v(θ), θ + π −2 arcsin(h′), 0, h′),
+(1.1.7)
+so that the solution turns out to be the sum of two contributions: the first one can be understood as the probability
+density of the particles which collide for the first time at time t, while the second one represents the probability density
+of the particles which have collided at least one time before time t. Moreover, if we evaluate the equation (1.1.7) at
+s = 0 we get
+µt(x, θ, 0, h) = µ0(x −tv(θ), θ, t, h)
+|
+{z
+}
+=:˜µ0(x,θ,t,h)
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)µt′(x −(t −t′)v(θ), θ + π −2 arcsin(h′), 0, h′)
+|
+{z
+}
+=:F(µ)(x,θ,t,h)
+,
+4

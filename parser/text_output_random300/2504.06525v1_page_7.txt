@@ -1,0 +1,39 @@
+to the repulsive regime. The transition is characterized by a sudden phase drop from above to 
+below the free-air phase. Only setpoints exceeding this threshold—corresponding to the attractive 
+mode—are included in the optimization, as illustrated in Figure 2c-d. 
+To initialize the MOBO model, 10 random seeding points are sampled from the safe parameter 
+space to train the Gaussian process (GP) models. During active learning iterations, the three reward 
+functions are computed and averaged over five neighboring real-time trace and retrace scan lines. 
+Subsequently, three separate GPs are trained to model these reward functions as a function of the 
+control parameters: drive amplitude, setpoint, and integral gain (I gain). From these models, the 
+acquisition function q-Noisy Expected Hypervolume Improvement (q-NEHI) [50, 51] is computed 
+to guide the optimization process. A reference point is selected in the hyperparameter reward space 
+at a fixed distance below the maximum of each reward, allowing q-NEHI to quantify the potential 
+improvement in hypervolume across the parameter space. 
+At each iteration, a Pareto front is computed with respect to the reference point, and the next 
+experimental parameters are selected by maximizing q-NEHI. The optimization process continues 
+until either the maximum number of iterations is reached or the hypervolume improvement 
+converges. Post-analysis of the MOBO trajectory (Figure 2e) and the hypervolume gain curve 
+(Figure 2f) suggest that optimal solutions are typically identified within approximately 10 
+exploration steps. Upon completion of the optimization, a full topography scan is conducted using 
+the optimized parameters to validate the quality of the final scan. 
+ 
+IV. 
+Analysis of the Pareto front  
+The Pareto scatter plots in Figure 3a-c confirm that the height difference reward exhibits a 
+trivial Pareto point with the probe-sample distance reward, as indicated by the green arrow. The 
+competition between the phase reward and the other two rewards appears less pronounced, as 
+evidenced by the relatively small variations in the phase reward across most of the scattered points 
+in Figure 3g-i. This limited variation arises because only a small fraction of pixels (~3%) contribute 
+to the phase reward, primarily at step edges, which significantly diminishes its influence in the 
+optimization process. 
+Although there is a set of controlling parameters that can maximize both the reward of height 
+difference and the reward of tip-sample distance as labeled by the green arrow in Figure 3a, it does 
+not maximize the reward of phase. Instead, the final optimal solution pointed by the red arrow has 
+slightly better reward of phase as shown in Figure 3b-c and verified by less phase pixels below the 
+free-air phase in Figure 3f compared to Figure 2e. The Pareto front scatter plots further illustrate 
+that to reach this optimal solution, indicated by the red arrow, MOBO sacrifices the tip-sample 
+distance reward in the trade-off between the reward of height difference and the reward of tip-
+sample distance, as indicated by the red arrow laying in the lower right of Figure 3a. This choice 
+agrees with human heuristics that the tip-sample distance could be affected by the tilt of the sample 
+and thus less relevant to the overall scan quality compared to the reward of height difference.  

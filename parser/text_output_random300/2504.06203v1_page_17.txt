@@ -1,0 +1,102 @@
+17
+and elaborate on its non-factorizing IR behavior in our framework as described in the main text.
+This defect already exposes a problem at the level of the matrix elements for ˆO (B.1). In fact, the following integral
+⟨ϕ2(x)| ˆO|ϕ(y)⟩= 2
+Z
+dd−1⃗z
+1
+(x −y)d−2
+1
+(|⃗x −⃗z|2 + x2
+d)
+d−2
+2 ,
+(E.2)
+suffers from IR divergence. This divergence is related to the presence of vacuum moduli in the free scalar field (which fix the
+boundary condition at infinity). One could resolve this issue by performing an appropriate subtraction of these contributions, but
+doing so would render the operator ˆO non-self-adjoint.
+A possible way to circumvent this problem is to study the defect on the cylinder Rτ × Sd−1, where we define
+ˆO =
+Z
+dSd−1ϕ(⃗x, τ = 0) .
+For explicitness let us focus on 3d (the extension to general d is straightforward). By canonical quantization,
+ϕ(⃗x, τ) =
+∞
+X
+l=0
+l
+X
+m=−l
+Yl,m(⃗x)
+ˆa†
+m,leωlτ + ˆam,le−ωlτ
+√2ωl
+,
+h
+ˆal,m, ˆa†
+l′,m′
+i
+= δll′δmm′ ,
+ωl = l + 1
+2 ,
+(E.3)
+where Yl,m denotes the S2 spherical harmonics, we have
+ˆO = ˆa0 + ˆa†
+0 ,
+(E.4)
+which commutes with all other operators ˆal,m and whose spectral decomposition is given by
+ˆO =
+Z
+dλ
+Y
+l>0,|m|≤l
+dαl,m λ|λ, αl,m⟩⟨λ, αl,m| ,
+ˆO|λ, αl,m⟩= λ|λ , αl,m⟩,
+ˆal,m|λ, αl,m⟩= αl,m|λ, αl,m⟩.
+(E.5)
+Thus, for any element |ψ⟩∈H, by completeness, we have
+⟨ψ|ψ⟩=
+Z
+dλ
+Y
+l>0,|m|≤l
+dαl,m ⟨ψ|λ, αl,m⟩⟨λ, αl,m|ψ⟩.
+(E.6)
+Since the measure of λ is flat, we have that the weak limit of |λ⟩is zero,
+w-lim
+λ→∞|λ⟩= 0 ,
+(E.7)
+which produces an ill-defined non-conformal limit (correlation functions with ϕ(x) diverge as xd →∞) and the lack of IR
+factorization. Let us stress that, in comparison to the general discussion in (II.10), for this particular case, any choice of |e⟩∈H
+would never give us the flat measure (due to the flat moduli preserved by the defect). Consequently, we have to enlarge the range
+of integration in the spectral decomposition from finite range to infinite, which produces the above exotic behavior.
+Appendix F: The ill-defined defect “one-point” functions
+A careful reader might note that, from the definition of Ishibashi (and defect) state via the weak limit (see around (II.5)), some
+correlation functions are ill-defined in the presence of a defect, even for normalizable states. This is not surprising, since we
+know that Ishibashi states are non-normalizable, and by the Riesz representation theorem [58] we must conclude that correlation
+functions involving Ishibashi states cannot be defined for all states in the Hilbert space H. Here we give a simple example in the
+N-S quantization [53] since this is our choice of frame in the main text. We will also illustrate the same phenomena in the more
+familiar radial quantization.
+Let us consider a scalar primary operator ϕ with scaling dimension ∆, which satisfies the following two-point function and
+Ishibashi state condition
+⟨ϕ(x)ϕ(y)⟩=
+1
+(x −y)2∆,
+⟨⟨ϕ|ϕ(x)⟩= 1
+x∆
+d
+.
+(F.1)
+We define the following state
+|Fϕ⟩=
+∞
+X
+n=2
+ϕ
+
+xi = 0, xd = (n log n)
+1
+∆
+
+|0⟩.
+(F.2)

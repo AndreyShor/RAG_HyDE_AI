@@ -1,0 +1,38 @@
+advanced techniques like Bayesian optimization, the model’s ability to generalize to unseen
+data is enhanced.
+A.3.6
+Debugging Deep Learning Models
+Debugging plays a pivotal role in ensuring the reliability and robustness of deep learning
+models. Unlike traditional software debugging, addressing issues in neural networks often
+requires identifying subtle problems related to data, architecture, hyperparameters, and
+optimization strategies.
+This section outlines key aspects of debugging deep learning
+models, supported by systematic techniques and tools to enhance model performance and
+reliability.
+Key Aspects of Debugging:
+Debugging neural networks involves a wide range of
+activities, from ensuring data consistency to diagnosing architectural inefficiencies. The
+following key aspects are critical for this process [47]:
+Data and Preprocessing:
+Data quality and consistency are fundamental to the success
+of deep learning models. Debugging in this context focuses on the following:
+• Input Data Inspection: Ensuring that input data are properly normalized and
+scaled while avoiding distortions that could mislead the model.
+• Consistency Across Splits: Verifying that training, development, and test sets
+share the same distribution. Mismatched distributions can lead to biased evaluations
+and poor generalization.
+Monitoring Loss and Metrics:
+Loss curves and evaluation metrics provide valuable
+insights into model performance during training. This includes:
+• Loss Curves: Monitoring training and development loss curves helps identify po-
+tential issues such as diverging or plateauing trends, often caused by inappropriate
+learning rates or initialization strategies.
+• Evaluation Metrics: Comparing performance in the dev and test sets allows the
+detection of overfitting or underfitting, ensuring the model generalizes well to unseen
+data.
+Gradient Checking:
+Gradient checking is a numerical technique for validating the
+accuracy of backpropagation implementations. By comparing analytical gradients (com-
+puted during backpropagation) with numerical approximations, the method ensures that
+gradient computation is error-free, especially when using custom layers or loss functions.
+61

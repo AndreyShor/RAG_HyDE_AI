@@ -1,0 +1,91 @@
+Mitigating decoherence in molecular spin qudits
+Leonardo Ratini,1, 2, ∗Giacomo Sansone,1, 2, ∗Elena Garlatti,1, 2, 3
+Francesco Petiziol,4 Stefano Carretta,1, 2, 3, † and Paolo Santini1, 2, 3, ‡
+1Universit`a di Parma, Dipartimento di Scienze Matematiche, Fisiche e Informatiche, I-43124 Parma, Italy
+2INFN–Sezione di Milano-Bicocca, gruppo collegato di Parma, 43124 Parma, Italy
+3Consorzio Interuniversitario Nazionale per la Scienza e Tecnologia dei Materiali (INSTM), I-50121 Firenze, Italy
+4Institut f¨ur Theoretische Physik, Technische Universit¨at Berlin, Hardenbergstrasse 36, 10623 Berlin, Germany
+Molecular nanomagnets are quantum spin systems potentially serving as qudits for future quan-
+tum technologies thanks to their many accessible low-energy states.
+At low temperatures, the
+primary source of error in these systems is pure dephasing, caused by their interactions with the
+bath of surrounding nuclear spins degrees of freedom. Most importantly, as the system’s dimen-
+sionality grows going from qubits to qudits, the control and mitigation of decoherence becomes
+more challenging. Here we analyze the characteristics of pure dephasing in molecular qudits under
+spin-echo sequences. We use a realistic description of their interaction with the bath, whose non-
+Markovian dynamics is accurately computed by the cluster correlation expansion technique. First,
+we demonstrate a necessary and sufficient condition to prevent the decay of coherence with time,
+also introducing a parameter to quantify the deviation from such ideal condition. We illustrate this
+with two paradigmatic systems: a single giant spin and a composite antiferromagnetic spin system.
+We then advance a proposal for optimized nanomagnets, identifying key ingredients for engineering
+robust qudits for quantum technologies.
+I.
+INTRODUCTION
+Quantum computation is a milestone with the poten-
+tial to revolutionize various fields, from materials design
+to the optimization of complex processes. The hardest
+challenge in achieving practical quantum advantage lies
+in mitigating noise-induced errors. Even the most mature
+platforms, such as those based on superconducting trans-
+mon qubits or trapped ions, belong to the category of
+noisy intermediate scale quantum (NISQ) devices. These
+systems are constrained by limited relaxation (T1) and
+dephasing (T2) times, which restrict the number of quan-
+tum gates that can be reliably executed due to error accu-
+mulation. Consequently, minimizing the depth of quan-
+tum circuits is critical for implementing algorithms effec-
+tively on NISQ devices. For example, in quantum compu-
+tation, different algorithms [1–3], such as the Variational
+Quantum Eingensolver (VQE) [4, 5], have been proposed
+to address electronic structure problems. Despite signif-
+icant efforts to minimize the resource requirements for
+implementing this algorithm [6–9], simulating challeng-
+ing prototypical systems remains out of reach. To over-
+come noise-related limitations and achieve fault-tolerant
+quantum computation, the implementation of quantum
+error correction (QEC) is necessary. The core principle
+of QEC is expanding the Hilbert space beyond the con-
+ventional two-dimensional space of a single qubit. This
+is achieved by replacing two-level qubits with more com-
+plex logical units composed of multiple physical qubits
+[10]. However, this approach is significantly limited by
+∗These authors contributed equally to this work.
+† stefano.carretta@unipr.it
+‡ paolo.santini@unipr.it
+the large resource demands of multi-qubit codes, partic-
+ularly due to the necessity of non-local gates operating
+on distinct physical units, which makes QEC highly chal-
+lenging [11]. This difficulty motivates the exploration of
+alternative paradigms for implementing QEC. One such
+approach involves expanding the Hilbert space by en-
+coding the logical qubit into a multi-level physical sys-
+tem (qudit) [12–15]. Whether applied to QEC, quantum
+computation, or quantum simulation, one of the primary
+advantages of qudits over traditional qubits lies in their
+ability to reduce the number of distinct physical units
+and two-body gates required for operations. This is be-
+cause certain quantum operations that necessitate mul-
+tiple gates in qubit-based systems can often be executed
+with just a single gate in qudit-based systems [16, 17].
+As a result, qudits not only lower the overall gate count
+but also enhance computational efficiency, making them
+a promising alternative for scalable quantum information
+processing.
+In this regard, molecular spin systems and more specif-
+ically molecular nanomagnets (MNMs), represent an at-
+tractive platform due to the presence of many low-energy
+spin states, both nuclear and electronic ones, which can
+be exploited to encode and process quantum information.
+Additionally, they can be efficiently controlled using elec-
+tromagnetic pulses in the microwave or radio frequency
+range [18, 19]. The availability of these additional degrees
+of freedom has recently led to the suggestion of encoding
+qubits with embedded QEC within single molecules [20–
+22]. From a chemical point of view, the easiest way to
+implement this concept is provided by a spin-S ion, char-
+acterized by 2S+1 states. Similarly, giant-spin nanomag-
+nets offer an analogous configuration, as their low-energy
+spectrum effectively maps onto an effective spin-S sys-
+tem. Increasing the value of S expands the number of
+energy levels that can be exploited.
+arXiv:2504.06057v1  [quant-ph]  8 Apr 2025

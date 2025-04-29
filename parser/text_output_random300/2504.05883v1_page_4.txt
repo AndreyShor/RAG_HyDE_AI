@@ -1,0 +1,94 @@
+PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY A, VOLUME 383, ISSUE 2289, 2025, DOI:10.1098/RSTA.2024.0146
+4
+τ|t), ϕn(t + τ|t)}, n ∈{1, . . . , N} over a rolling finite planning horizon τ ∈{1, . . . , T} of length T time steps (i.e., predict
+the agents’ states T time steps into the future), which optimize each agent’s individual coverage objective function, denoted
+as Jn and shown in Eq. (5a), subject to a set of kinematic, sensing, and coverage planning constraints that aim to generate
+complementary coverage trajectories as detailed in Eq. (5b) through Eq. (5m). In model predictive control, a longer planning
+horizon improves the optimality of results by considering a more extended future period but increases computational complexity,
+while a shorter horizon reduces computational demands at the expense of potentially suboptimal control actions.
+Problem (P1) - Coverage Controller of Agent n:
+arg min
+{un(t+τ|t), θn(t+τ|t), ϕn(t+τ|t)}
+Jn = ηJguidance + Jcoverage
+(5a)
+subject to: τ ∈{1, . . . , T}
+xn(t + τ|t) = Axn(t + τ −1|t) + Bun(t + τ|t)
+∀τ
+(5b)
+xn(t|t) = xn(t|t −1)
+∀τ
+(5c)
+M n,m(t + τ|t) = ˜
+M n,m + xp
+n(t + τ|t)
+∀τ, m
+(5d)
+ξn,m,˜p(t + τ|t) = 1 ⇐⇒p ∈ConvHull [M n,m(t + τ|t)]
+∀τ, m, ˜p
+(5e)
+|{Θ×Φ}|
+X
+m=1
+µn,m(t + τ|t) = 1
+∀τ,
+(5f)
+¯ξn,m,˜p(t + τ|t) = ξn,m,˜p(t + τ|t) ∧µn,m(t + τ|t)
+∀τ, m, ˜p
+(5g)
+ˆξn,m,˜p(t + τ|t) ≤¯ξn,m,˜p(t + τ|t) + Qn(˜p) +
+N
+X
+k̸=n=1
+Qk(˜p)
+∀τ, m, ˜p
+(5h)
+˙ξn,m,˜p(t + τ|t) ≤ˆξn,m,˜p(t + τ|t) +
+(5i)
+X
+k<n
+X
+m
+X
+τ
+˙ξk,m,˜p(t + τ|t) +
+X
+k>n
+X
+m
+X
+τ
+˙ξk,m,˜p(t −1 + τ|t −1)
+∀˜p
+xp
+n(t + τ|t) /∈ConvHull[O]
+∀τ
+(5j)
+xn(t + τ|t) ∈X, un(t + τ|t) ∈U
+(5k)
+ξn,m,˜p(t + τ|t), ¯ξn,m,˜p(t + τ|t), ˆξn,m,˜p(t + τ|t), ˙ξn,m,˜p(t + τ|t) ∈{0, 1}
+(5l)
+µn,m(t + τ|t), Qn(˜p) ∈{0, 1}, ˜p ∈{1, . . . , |P|}, m ∈{1, . . . , |{Θ × Φ}|}
+(5m)
+In Problem (P1), at each time-step t agent n plans collaborative finite-length look-ahead coverage trajectories xn(t+τ|t), τ ∈
+{1, . . . , T} which aim at optimizing the coverage of the points of interest P inside the planning horizon. The notation xn(t′|t)
+denotes the predicted agent state at time-step t′ ≥t which was computed at time-step t. Therefore, the coverage planning
+problem is thus solved iteratively over multiple time-steps t in a rolling horizon fashion where the first set of predicted control
+inputs in the sequence {un(t + 1|t), θn(t + 1|t), ϕn(t + 1|t)}, n ∈{1, . . . , N} is executed in the next time-step the agents
+move to their new states and the optimization process shown above repeats for the next time-step over a shifted planning
+horizon until all points P are covered.
+Instead of addressing a large centralized optimization problem where all required information is sent to a central station
+that subsequently determines the control inputs for each agent as suggested in [16] we break down the multi-agent coverage
+problem into smaller sub-problems that each agent can solve autonomously. Problem (P1) ensures that the control actions
+undertaken by one agent are consistent with those of all other agents in the team taking into account any interlinked coverage
+constraints between agents during the decision-making process. This is achieved through a coordination procedure [19] where
+agent n acquires the most recent plans from all preceding agents i < n in the sequence and also gathers the projected plans
+from subsequent agents i > n who have yet to finalize their latest plans.
+In this approach the computational complexity of the proposed distributed coverage controller is decoupled from the number
+of collaborative agents, as opposed to a centralized formulation which becomes computationally intractable as the number of
+agents increases. In addition, we should point out that although this approach necessitates constant communication among the
+agents it enables the creation of complementary predictive look-ahead coverage plans that minimize the duplication of work. It
+is important to note that in certain application scenarios such as monitoring critical infrastructure structural inspection and area
+coverage for emergency response constant communication among the team of agents is crucial not only for operational efficiency
+but also for safety and security purposes. For example, in search-and-rescue operations once a victim is located, the discovering
+agent must quickly relay this information to the rest of the team which can then coordinate to provide assistance. Nevertheless,
+it is possible to relax the assumption of constant communication. In such cases, agents can opportunistically exchange plans

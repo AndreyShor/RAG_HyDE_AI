@@ -1,0 +1,32 @@
+Figure 7: Distribution of formation energies per atom (eV/atom) for 10,000 generated structures before
+(unrelaxed) and after (relaxed) structural optimization using Orb-v2. The histogram shows the frequency
+of structures across different formation energies.
+IrHfO4
+RuSmO2
+IrTa2O5
+IrTiO4
+IrTaO4
+IrHoO2
+IrTi2SO4
+IrAlO4
+Figure 8: Density of states (DOS) for generated materials with the first atom conditioned on the DOS of Ir
+from IrO2. The blue curve represents the ground truth target DOS. The orange curve represents the DOS
+of the first atom in each generated material, predicted using the forward GNN model. The green curve
+represents the DOS of the first atom computed via DFT. The first atom’s element type is highlighted in red
+in the composition.
+alignment with target properties. The model demonstrates remarkable versatility across constrained gener-
+ation tasks, including masked generation, initialization from template materials, and atom-type constraints,
+enabling precise and fine-grained control over the generated structures. Additionally, through a large-scale
+screening approach, DOSMatGen effectively identifies stable candidate materials with complex electronic
+properties such as those of IrO2. The ability to balance structural validity, property alignment, and com-
+positional diversity positions DOSMatGen as a valuable tool for a wide range of materials discovery tasks,
+guided by the physically important objective of the electronic structure. Finally, it is worth noting that
+DOSMatGen is property-agnostic and can be readily adapted to other electronic and even spectroscopic
+properties, including 1D X-ray diffraction (XRD) spectra, angle-resolved photoemission spectra (ARPES),
+X-ray absorption spectra (XAS) among others, as well as 2D images such as scanning transmission electron
+microscopy (STEM) images.
+5
+DATA AVAILABILITY
+The authors declare that all data, materials, and code supporting the results reported in this study are avail-
+able at the following repository: https://github.com/Fung-Lab/DOSMatGen.
+9

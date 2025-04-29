@@ -1,0 +1,56 @@
+Preprint. Under review.
+FEABench: Evaluating Language Models on Multiphysics
+Reasoning Ability
+Nayantara Mudur2,1∗
+Hao Cui1
+Subhashini Venugopalan1
+Paul Raccuglia1
+Michael P. Brenner1,2
+Peter Norgaard1
+1Google Research
+2Harvard University
+{vsubhashini,praccu,mbrenner,pnorgaard}@google.com
+nmudur@g.harvard.edu
+Abstract
+Building precise simulations of the real world and invoking numerical
+solvers to answer quantitative problems is an essential requirement in engi-
+neering and science. We present FEABench, a benchmark to evaluate the
+ability of large language models (LLMs) and LLM agents to simulate and
+solve physics, mathematics and engineering problems using finite element
+analysis (FEA). We introduce a comprehensive evaluation scheme to inves-
+tigate the ability of LLMs to solve these problems end-to-end by reason-
+ing over natural language problem descriptions and operating COMSOL
+Multiphysics®, an FEA software, to compute the answers. We additionally
+design a language model agent equipped with the ability to interact with
+the software through its Application Programming Interface (API), examine
+its outputs and use tools to improve its solutions over multiple iterations.
+Our best performing strategy generates executable API calls 88% of the
+time. LLMs that can successfully interact with and operate FEA software to
+solve problems such as those in our benchmark would push the frontiers
+of automation in engineering. Acquiring this capability would augment
+LLMs’ reasoning skills with the precision of numerical solvers and advance
+the development of autonomous systems that can tackle complex problems
+in the real world. The code is available at FEABench .
+1
+Introduction
+Several works have demonstrated the significant potential of large language models
+(LLMs) in scientific and mathematical domains (Lewkowycz et al., 2022; Yang et al., 2024b;
+Hendrycks et al., 2021; Rein et al., 2023; Trinh et al., 2024; Kumarappan et al., 2024; Chung
+et al., 2025). However, existing work has largely focused on analytical mathematical and
+scientific reasoning skills or the ability to generate code in general purpose programming
+languages (Tian et al., 2024; Jimenez et al., 2023). Addressing the degree of complexity
+required in numerical simulation-intensive science and engineering workflows – which re-
+quires the composition of scientific reasoning with the ability to operate simulation software
+– remains an outstanding challenge. Many quantitative tasks that form the cornerstone of
+these workflows require numerical analysis performed with sophisticated computational
+modeling software. For example, the development of a smartphone requires detailed mod-
+eling of the mechanical, thermal, and electrical behaviors of its many subcomponents. Finite
+element analysis (FEA) (eg: Courant et al. (1994)) software develops approximate solutions
+to the underlying partial differential equations for a physical system, by building discretiza-
+tions (or meshes) over geometries. The resulting equations are then solved numerically. The
+vast real-world relevance of FEA to domains like mechanical, biomedical and aerospace
+engineering, consumer electronics, manufacturing, and scientific research has given rise
+to software such as COMSOL Multiphysics®(COMSOL Multiphysics®, b; Multiphysics,
+∗Work mainly done as a student researcher at Google Research.
+1
+arXiv:2504.06260v1  [cs.AI]  8 Apr 2025

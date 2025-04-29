@@ -1,0 +1,45 @@
+with endogenous threshold in the next subsection.
+5.3
+Continuous-time process with endogenous barrier
+Let’s now consider the model with endogenous threshold, which we again formulate in con-
+tinuous time and in close analogy to (17) above. For constants eµ ∈R, σ > 0, and ε ∈(0, 1),
+we consider the process10
+d log Φτ = −eµ dτ + σ dWτ,
+if Φτ ≥ε E
+
+Φτ
+ Φτ > 0
+
+,
+Φτ = 0,
+otherwise,
+(28)
+where again Wτ is a standard Brownian motion. The goal of this subsection is to demon-
+strate that the process in (28) leads to a long-term behavior of the endogenous threshold,
+ε E [Φτ | Φτ > 0], that is equivalent to our previous exogenous threshold ǫ ατ with parameter
+α such that we obtain β = 1 for small ε. The following theorem formalizes that result.
+Theorem 5 Consider the continuous-time process Φτ deﬁned in (28) with parameters eµ ∈R,
+σ > 0 and ε ∈(0, 1). Assume that at time τ = 0 the process starts at a non-random initial
+value Φ0 = φ0 > 0, let ξτ := ε E[Φτ | Φτ > 0] be the value of the threshold implied by the
+time-evolution of the process, and let c0 := φ0 ε/(1 −ε) and α := exp
+
+σ2
+1−ε −eµ
+
+. Then, we
+have:
+lim
+τ→∞
+log(ξτ/c0)
+τ
+= log α.
+We previously introduced ξτ and α diﬀerently, but within the endogenous threshold model
+here, we now deﬁne them as in Theorem 5, in terms of this process and its parameters. The
+proof is provided in the appendix, but given the discussion in the previous subsection, the
+result is unsurprising: In the long run, the threshold follows
+ξτ ≈c0 ατ,
+10For the results in this section, the sign of eµ is inconsequential. In fact, through rescaling, we could
+normalize the process to satisfy eµ = 0 and σ = 1 without any loss of generality from a purely mathematical
+perspective. However, in the context of a physical branching process, as described in Sections 3 and 4, we
+have eµ > 0, meaning that the process log Φτ exhibits a negative drift.
+35

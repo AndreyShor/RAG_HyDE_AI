@@ -1,0 +1,33 @@
+A Scalable Automatic Model Generation Tool for Cyber-Physical Network Topologies and Data Flows for Large-Scale
+Synthetic Power Grid Models
+XXX:17
+Regarding the generation times for the cyber-physical topologies in this use case, the star topology
+is noted to be the quickest to produce, attributed to its simpler generation algorithm. It’s important
+to clarify that the recorded times for running the program are taken after all distances between
+substations have been computed and the necessary CSV files are prepared. Initially, the program
+calculates the distances between substations for a given case. Once these distances are established,
+subsequent run times of the program are markedly reduced.
+ACLs are shown in Table 5, where the total configurations per case are determined. There is
+no difference between topologies because each case has the same number of BAs, UCCs, and
+substations per topology. This gives the user an idea of the level of complexity when setting up
+and configuring the cyber system for any given power system.
+Fig. 8. 500 bus grid
+Fig. 9. 2k bus grid
+Fig. 10. 10k bus grid
+5.3
+Wide Area Network
+The star, radial, and statistics-based WAN topologies for the 500-bus synthetic power network are
+shown in Fig. 11, Fig. 12, and Fig. 13, respectively. In these figures, the yellow nodes show the
+location of UCCs, the blue nodes show the transmission substation locations, the green nodes show
+the generation substations and the single red node is the BA. Similarly, Fig. 15, Fig. 16, and Fig. 17
+show the same for the 2000-bus synthetic power network on the footprint of Texas.
+Of note is the significant modification of the original statistics-based algorithm in [24]. The
+original code that generates the statistics-based topology provides the optimal cyber network for
+any given power network. The cyber network generated from that algorithm does not contain
+geographical information for the cyber nodes, whereas the power network includes geographical
+Fig. 11. Star Topology
+Fig. 12. Radial Topology
+Fig. 13. Statistics-based Topology
+Fig. 14. Cyber-physical network connection between UCCs and their respective substations for the 500-bus
+model on the footprint of South Carolina. The green dots are generation substations, the blue dots are
+transmission substations, the red dots are UCCs and the yellow dot is the BA.

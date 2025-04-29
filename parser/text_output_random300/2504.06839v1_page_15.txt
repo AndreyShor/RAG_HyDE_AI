@@ -1,0 +1,126 @@
+Finally we got
+|tφ(θ, t, h|h′)| ≤AJ + α∥φ∥L∞(c2 + cc′
+2)
+α −1
++ αdCφ
+T
+∀t ≤T,
+therefore the inequality holds also for the supremum, that is
+Cφ
+T ≤AJ + α∥φ∥L∞(c2 + cc′
+2)
+α −1
++ αdCφ
+T
+⇒
+Cφ
+T ≤
+AJ + α∥φ∥L∞(c2+cc′
+2)
+α−1
+1 −αd
+∀T > 0,
+i.e.
+sup
+(θ,t,h|h′)∈T1
+2π×[0,+∞)×[−1,1]2 |tφ(θ, t, h|h′)| ≤
+AJ + α∥φ∥L∞(c2+cc′
+2)
+α−1
+1 −αd
+,
+which concludes.
+Thus, if we assume that both Lemmas 2.2 and 2.3 hold, we can prove Proposition 2.1.
+Proof of Proposition 2.1.
+Proof. The function φ in the statement of Proposition 2.1 is exactly the function φ defined by Lemma 2.1, which
+satisfies therefore the estimate in Lemma 2.4, that contains in turn exactly the estimate we needed to the statement.
+We now go back to the proofs of Lemmas 2.2 and 2.3.
+Proof of Lemma 2.2.
+Proof. We make three steps.
+Step 1: Let us prove that, by taking E(2) from Definition 1.6, the function φ defined through equation (2.1.1) of
+Lemma 2.1 satisfies the following equality
+φ(θ, t, h|h′)
+=
+f(θ, t, h|h′) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)f(θ + π −2 arcsin(h′′), t′, h′′|h′) −1
+2π E(2)(t, h)
++
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′′′φ(θ′, t′, h′′′|h′)f(θ −θ′, t −t′, h|h′′′).
+(2.1.13)
+We begin by noticing that if we iterate twice the map defining φ in Lemma 2.1 (that is, by looking at the right hand
+side of (2.1.1) and substituting the whole right hand side in φ inside the integral), we get
+φ(θ, t, h|h′)
+=
+f(θ, t, h|h′) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)f(θ + π −2 arcsin(h′′), t′, h′′|h′)
+(2.1.14)
+−
+1
+2π E(t, h) −1
+2π
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)E(t′, h′′)
+(2.1.15)
++
+R t
+0 dt′ R 1
+−1 dh′′Q(t −t′, h|h′′)
+R t′
+0 dt′′ R 1
+−1 dh′′′Q(t′ −t′′, h′′|h′′′)
+·φ(θ + 2π −2 arcsin(h′′) −2 arcsin(h′′′), t′′, h′′′).
+(2.1.16)
+Now we can write better the terms in (2.1.15) by using E(2) by Definition 1.6, indeed property (B.2.3) of Lemma B.3
+states that
+(2.1.15) = −1
+2π E(2)(t, h).
+As for the term in (2.1.16), we can change again the integration order (before we integrate with respect to (t′′, h′′′, h′′)
+and then with respect to t′), and then we exchange the names of the variables (this time only t′′ with t′). This way
+we obtain
+(2.1.16)
+=
+R t
+0 dt′ R 1
+−1 dh′′′ R 1
+−1 dh′′φ(θ + 2π −2 arcsin(h′′′) −2 arcsin(h′′), t′, h′′′|h′)
+·
+R t−t′
+0
+dt′′Q(t −t′ −t′′, h|h′′)Q(t′′, h′′|h′′′)
+=
+R t
+0 dt′ R 1
+−1 dh′′′ R θ+3π−2 arcsin(h′′′)
+θ+π−2 arcsin(h′′′)
+dθ′φ(θ′, t′, h′′′|h′) ∂h′′
+∂θ (θ −θ′, h′′′)
+·
+R t−t′
+0
+dt′′Q(t −t′ −t′′, h|h′′(θ −θ′, h′′′))Q(t′′, h′′(θ −θ′, h′′′)|h′′′),
+with h′′(θ −θ′, h′′′) as in Definition 1.7. Now we change variables
+θ + 2π −2 arcsin(h′′′) −2 arcsin(h′′) = θ′,
+15

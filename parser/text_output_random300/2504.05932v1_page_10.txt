@@ -1,0 +1,102 @@
+3.2
+Integration constants
+Once we compute the zeroth moment ϕ0 from Volin’s recursive algorithm described in Section 2,
+we would like to obtain higher moments ϕℓusing the differential equation (35). As was already
+mentioned, a solution ϕℓto this differential equation has two free parameters and in this section
+we will discuss how to fix them.
+We recall that the differential equation (35) is written in terms of derivatives with respect
+to B, and we would like to rewrite this expression in terms of v derivatives. From the definition
+of the v coupling in (24), we easily find
+dv
+db = −2v2
+1 −v.
+(42)
+The chain rule then leads to the following equivalent differential equation:
+4v4
+(1 −v)2
+
+ϕ′′
+ℓ−ϕ′′
+0
+ϕ′
+0
+ϕ′
+ℓ
+
+= 2ℓ(2ℓ−1)ϕℓ−1
+π2 ,
+(43)
+where prime denotes derivative with respect to v.
+We assume the following perturbative ansatz for the moments3
+ϕ(0)
+ℓ
+=
+1
+π2ℓ+1
+1
+v2ℓ+2
+X
+k≥0
+φ(0)
+ℓ,kvk.
+(44)
+We cannot prove that ϕ(0)
+ℓ
+has a regular power series expansion in v without log v terms, but
+this is compatible with all the terms we calculated from Volin’s method and justified a posteriori
+by comparing to the numerical solution of the problem.
+The leading behaviour in v can be deduced e.g. from expanding the leading order term
+2π
+
+x −
+√
+x2 −B2
+
+of the bulk ansatz for large x, see also the footnote at (10). When plugging
+this expression in (43), we obtain the following constraint between the perturbative coefficients:
+φ(0)
+ℓ,k =
+1
+2(2ℓ−k)(2ℓ+ 2 −k)φ(0)
+0,0
+" k
+X
+j=1
+(j −2)(2ℓ+ 2 + j −k)(2ℓ+ 2j −k)φ(0)
+0,jφ(0)
+ℓ,k−j
+−ℓ(2ℓ−1)
+2
+ k
+X
+j=0
+(k −j −2)φ(0)
+ℓ−1,jφ(0)
+0,k−j −2
+k−1
+X
+j=0
+(k −j −3)φ(0)
+ℓ−1,jφ(0)
+0,k−1−j
++
+k−2
+X
+j=0
+(k −j −4)φ(0)
+ℓ−1,jφ(0)
+0,k−2−j
+!#
+.
+(45)
+Note that this result is only valid under the condition k ̸= 2ℓand k ̸= 2ℓ+ 2, which corresponds
+to the coefficients of 1/v2 and v0 in the perturbative expansion of ϕ(0)
+ℓ. These two coefficients
+are precisely the two integration constants for solutions to the differential equation (43). One
+way to partially address this issue, as discussed in [7], is to consider (45) with ℓ7→ℓ+ 1 and
+3We denote the perturbative coefficients of ϕ(0)
+ℓ
+in the coupling v as φ(0)
+ℓ,k to avoid confusion with the notation
+introduced in (6) for the coefficients of the same quantity in the coupling g.
+10

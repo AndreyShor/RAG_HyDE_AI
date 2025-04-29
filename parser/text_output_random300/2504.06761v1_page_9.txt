@@ -1,0 +1,46 @@
+Constructing wall turbulence
+9
+y
+x
+z
+0
+1
+0.5
+y
+(a)
+(b)
+(c)
+Figure 4. Structure and statistics of the synthetic wall-attached turbulence (SWAT) for Re𝜏= 1000. (a)
+Visualization of vortex surfaces in SWAT, displaying hierarchically attached vortex packets with spanwise
+meandering features. The vortex surfaces are colour-coded according to the wall distance. (b,c) Comparison
+of (b) mean velocity and (c) Reynolds stress profiles between SWAT and DNS data. Symbols represent DNS
+data from Lee & Moser (2015), while solid lines in matching colours represent SWAT. The gray area marks
+a strictly logarithmic region (Marusic et al. 2013), defined as 3Re1/2
+𝜏
+< 𝑦+ < 0.15Re𝜏.
+Our primary objective is to determine whether such vortex assemblies can faithfully
+reproduce the mean velocity profile of wall turbulence, particularly the scaling law in the
+logarithmic region, which is fundamental to the physics of wall turbulence. Figure 4(b)
+presents the mean velocity profile of SWAT, obtained through ensemble-averaging. Com-
+pared to DNS data, the SWAT model accurately captures the mean velocity distribution
+across different wall distances in turbulent flow. It is important to emphasize that no pre-
+averaged flow data from numerical simulations or experiments were used in the construction
+of SWAT.
+In the near-wall region (with the wall unit 𝑦+ < 5), the velocity profile is primarily
+determined by the imposed damping function in (2.12), which controls the flow in the
+viscous sublayer. In the logarithmic region (𝑦+ > 30), the emergence of the log law in
+the mean velocity profile arises entirely from the collective contribution of all the hairpin
+vortices, without any explicit enforcement. The buffer layer (5 < 𝑦+ < 30) provides a smooth
+transition between the viscous sublayer and the logarithmic region, further validating the
+self-consistent nature of the synthetic turbulence model.
+. Reynolds stresses characterize the momentum transfer induced by turbulent eddies.
+Figure 4(c) compares the Reynolds stress components obtained from SWAT with those from
+DNS of channel flow. The SWAT effectively reproduces the Reynolds stress distributions
+across different wall-normal locations, demonstrating the expected anisotropic characteristics
+of wall turbulence. The components ⟨𝑣2⟩, ⟨𝑤2⟩, and ⟨𝑢𝑣⟩exhibit strong agreement with
+DNS data, indicating that the vortex structures incorporated in SWAT capture key features
+of momentum transfer. The gray region in figures 4(b,c) highlights the strictly logarithmic
+region, defined as 3Re1/2
+𝜏
+< 𝑦+ < 0.15Re𝜏(Marusic et al. 2013), based on higher-order
+statistical considerations. Within this region, the streamwise component ⟨𝑢2⟩successfully

@@ -1,0 +1,55 @@
+than [316]. Lu et al. [317] introduced an MDI-QKD protocol addressing modulation errors, achieving high
+performance despite X basis imbalances and asymmetric channel transmittances. Yin et al. [318, 319]
+removed encoding state characterization assumptions, demonstrating practicality and tolerance for high
+loss and errors over 160 km. Hwang et al. [320] improved phase error estimation, and Zhou et al. [321]
+extended uncharacterized qubit protocols to weak coherent sources using decoy-state methods. Kang et
+al. [322, 323] developed protocols with uncharacterized coherent states under collective attacks. Li et
+al. [324] proposed the CHSH-MDI-QKD protocol to mitigate state preparation assumptions, using the
+CHSH inequality and decoy states [325] to enhance accuracy in single-photon yield estimation, though
+increased parameter estimation complexity limited its effectiveness.
+Finite-key analysis. Finite-key analysis of MDI-QKD was first conducted in [326] and [316], where they
+derived secure bounds under the influence of statistical fluctuations in relative frequency. This analysis
+applies to practical detectors with low efficiency and highly lossy channels. Their study demonstrates the
+possibility of achieving secure transmission over distances exceeding 10 kilometers with a success rate of
+1010 outcomes, making it directly applicable in practical implementations. However, when the number
+of successful outcomes falls below 108, achieving a nonzero key rate becomes impossible.
+Both studies mentioned above focused on security assessments against specific types of attacks. The
+first study to explore security proofs within the finite-key regime against general attacks and to satisfy
+the composability definition was conducted by Curty et al. [327]. They utilized the principles of large de-
+viation theory, specifically employing a multiplicative form of the Chernoff bound, for critical parameter
+estimation. This step was crucial in demonstrating the feasibility of implementing MDI-QKD over long
+distances and within a reasonable timeframe. Their findings demonstrated that even with the technol-
+ogy available at the time, an MDI-QKD protocol could be realized without the need for high-efficiency
+detectors. Importantly, they showcased the potential for long-distance MDI-QKD protocols, extending
+up to approximately 150 kilometers, for finite-sized data sets ranging from 1012 to 1014 signals. This
+achievement was made possible using practical signal sources, such as WCPs.
+5.3.2. Decoy-state measurement-device-independent QKD
+The sources used in MDI-QKD must be trusted, necessitating a complete characterization of the
+source. Commonly, weak coherent sources replace perfect single-photon sources, though they remain
+susceptible to photon number splitting (PNS) attacks due to multiphoton fractions [328]. To counteract
+this, the decoy-state method, as proposed in [312], has been adapted for MDI-QKD to estimate single-
+photon contributions efficiently. Wang et al. [329] further optimized this by employing three-intensity
+decoy states, which addressed basis-dependent coding errors. Subsequent enhancements, such as vacuum
+and weak decoy states by Sun et al. [330], showed improved performance but highlighted the limitations
+of certain methods. Advances continued with modified coherent states introduced by Li et al. [331],
+reducing multiphoton distributions and enhancing key rates. Techniques to refine single-photon yield
+and phase error estimation, as demonstrated by Zhu et al. [332] and Ding et al. [333], increased the
+accuracy of MDI-QKD parameters and extended secure transmission distances. Other studies, such as
+those by Mao et al. [334], explored new decoy-state frameworks that surpassed prior methods, further
+enhancing both distance and key rates.
+Incorporating heralded single-photon sources (HSPS) offers notable benefits, including reduced dark
+count rates and lower QBER [335]. Wang et al. [336] showed that combining triggered and non-triggered
+events in HSPS-based protocols enhances both key rates and transmission distances. Subsequent works
+[337] applied biased decoy-state schemes with HSPS, yielding superior results for small datasets. Similarly,
+Zhou et al. [338], introduced passive decoy methods to spontaneous parametric down-conversion (SPDC)
+sources, to minimize side-channel leaks and improve performance compared to weak coherent states.
+While SPDC sources offer advantages, challenges such as spectral entanglement were addressed by Zhan
+et al. [339], underscoring the need for high-purity sources.
+Optimization of decoy-state parameters has played a pivotal role in enhancing MDI-QKD protocols.
+Techniques such as local search algorithms [340], with statistical fluctuation considerations [341], and
+advanced joint constraints [342] have significantly improved key rates and extended transmission dis-
+tances. Additionally, protocols integrating memory-assisted techniques [343] and asynchronous designs
+[344] further push the boundaries of MDI-QKD capabilities. Asymmetric protocols [345] and reference-
+frame-independent methods [346] address practical challenges like channel asymmetry and misalignment,
+making MDI-QKD more adaptable for real-world applications.
+61

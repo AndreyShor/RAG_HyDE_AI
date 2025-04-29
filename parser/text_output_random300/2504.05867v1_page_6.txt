@@ -1,0 +1,130 @@
+6
+high-frequency end of the spectrum from influencing the
+fit, as described by Equation (7). The REDFIT analy-
+sis detected prominent peaks at frequencies of ∼0.00128
+day−1 (781 ± 160 days) in the γ-ray lightcurve (see the
+left panel of Figure 5) and ∼0.00132 day−1 (757 ± 160
+days) in the optical lightcurve (see the right panel of Fig-
+ure 5). The uncertainties in the periods were estimated
+using the methodology described in Section 3.1.
+4. GAUSSIAN PROCESS MODELING
+The observed variability in AGN is inherently stochas-
+tic. The AGN light curves can be well described by the
+stochastic processes, also known as Continuous Time
+Autoregressive Moving Average [CARMA(p, q)] pro-
+cesses (B. C. Kelly et al. 2014), defined as the solutions
+to the stochastic differential equation:
+dpy(t)
+dtp
++ αp−1
+dp−1y(t)
+dtp−1
++ ... + α0y(t) =
+βq
+dqϵ(t)
+dtq
++ βq−1
+dq−1ϵ(t)
+dtq−1
++ ... + β0ϵ(t),
+(7)
+where, y(t) represents a time series, ϵ(t) is a contin-
+uous time white noise process, and α∗and β∗are the
+coefficients of autoregressive (AR) and moving average
+(MA) models, respectively. Here, p and q are the order
+parameters of AR and MA models, respectively.
+The simplest model is a continuous autoregressive
+[CAR(1)] model, also known as the Ornstein-Uhlenbeck
+process. It is a popular red noise model (B. C. Kelly
+et al. 2009; S. Koz lowski et al. 2009; C. L. MacLeod
+et al. 2012; J. J. Ruan et al. 2012; Y. Zu et al. 2013; J.
+Moreno et al. 2019; C. J. Burke et al. 2021; H. Zhang
+et al. 2022, 2023; A. Sharma et al. 2024b; H. Zhang et al.
+2024; A. Sharma et al. 2024c), usually referred to as the
+Damped Random Walk (DRW) model, described by the
+following differential equation:
+ d
+dt +
+1
+τDRW
+
+y(t) = σDRW ϵ(t)
+(8)
+where τDRW and σDRW are the characteristic damp-
+ing time-scale and amplitude of the DRW process, re-
+spectively.
+The mathematical form of the covariance
+function of the DRW model is defined as
+k(tnm) = a · exp(−tnm c),
+(9)
+where tnm = |tn −tm| denotes the time lag between
+measurements m and n, with a = 2σ2
+DRW and c =
+1
+τDRW .
+The power spectral density (PSD) of the DRW model is
+defined as:
+S(ω) =
+r
+2
+π
+a
+c
+1
+1 + ( ω
+c )2
+(10)
+The DRW PSD has a form of Broken Power Law
+(BPL), where the broken frequency fb corresponds to
+the characteristic damping timescale τDRW =
+1
+2πfb .
+In the best-fit parameters estimation of the DRW
+model for both light curves, we employed the Markov
+chain Monte Carlo (MCMC) algorithm provided by the
+emcee6 package (D. Foreman-Mackey et al. 2013). For
+the modeling, we employed the EzTao7 package, which
+is built on top of celerite8. In this study, we generated
+the distributions of the posterior parameters by running
+10000 steps as burn-in and 20000 as burn-out.
+5. PROBE THE SIGNIFICANCE
+AGN emissions exhibit stochastic variability and are
+well characterized by red noise.
+The combination of
+red noise, characteristic nature, and uneven sampling
+in the light curve can lead to spurious peaks in the pe-
+riodogram. Therefore, it is crucial to evaluate the sig-
+nificance of any periodic signals detected in the light
+curves. In the estimation of significance, we employed
+two different approaches.
+The periodogram is usually represented as a power
+spectral density (PSD) of a form P(ν) ∼Aν−β, where
+the temporal frequency is represented by ν and β > 0
+represents the spectral slope. In the first approach, to
+calculate the statistical significance of the periodic fea-
+ture, we employed the approach developed by D. Em-
+manoulopoulos et al. (2013). The methodology involved
+modeling the observed PSD using a power-law model.
+For that, we employed DELightcurveSimulation9 code,
+which involved randomizing the amplitude and phase
+of the Fourier components, each mimicking the charac-
+teristics of the original data, including the best-fitting
+power-law model slope and similar properties in terms
+of flux distribution. We performed a Monte Carlo simu-
+lation, generating 5 × 104 synthetic light curves for each
+case.
+The simulations were based on the best-fitting
+power-law model slopes (β = 0.48±0.16 for γ-rays light
+curve and β = 1±0.16 for ASAS-SN light curve) utiliz-
+ing their flux distribution properties respectively. Each
+simulated light curve for both cases mimics the underly-
+ing properties of the original light curves. After that, we
+generated the Lomb-Scargle periodogram of each simu-
+lated light curve as we did for both original light curves.
+To estimate the significance level of the dominant peak
+in original LSPs, we calculated the 84th, 97.5th, 99.85th,
+and 99.995th percentiles of the 50000 simulated LSP for
+6 https://emcee.readthedocs.io/en/stable/
+7 https://eztao.readthedocs.io/en/latest/index.html
+8 https://celerite.readthedocs.io/en/stable/
+9 https://github.com/samconnolly/DELightcurveSimulation

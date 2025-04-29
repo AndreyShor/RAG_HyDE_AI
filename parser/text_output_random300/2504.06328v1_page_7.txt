@@ -1,0 +1,126 @@
+agonalizable as classical probability distributions),
+the FS/Bures metric reduces to the classical Fisher
+metric. Conversely, the Bures metric (defined on
+the space of density matrices) is a full quantum
+generalization of the Fisher metric and, when re-
+stricted to pure states, is identical to the Fubini
+-Study metric. By construction, the Bures distance
+between two density operators ρ and σ is given by
+DB(ρ, σ) =
+r
+2
+
+1 −Tr
+p
+ρ1/2 σ ρ1/2
+,
+(5)
+which for pure states ρ = |ψ⟩⟨ψ|, σ = |ϕ⟩⟨ϕ|
+simplifies to DB(|ψ⟩, |ϕ⟩) =
+p
+2(1 −|⟨ψ|ϕ⟩|).
+In-
+finitesimally, DB induces the Riemannian metric
+gB
+µν on state space. The quantum Fisher infor-
+mation (QFI) matrix Jµν is closely related, being
+defined as Jµν = Tr[ρ LµLν+LνLµ
+2
+], where Lµ are
+the symmetric logarithmic derivative operators for
+parameter θµ. Importantly, Jµν is proportional to
+the Bures metric: one can show Jµν = 4 gB
+µν. In
+the pure-state case, this yields the useful relation
+that the QFI is four times the Fubini -Study met-
+ric tensor. Intuitively, the quantum Fisher infor-
+mation quantifies the statistical distinguishability
+of infinitesimally close quantum states (under opti-
+mal quantum measurement), analogous to how the
+Fisher information does for classical probability dis-
+tributions; a larger QFI (or FS metric) means the
+state |ψ(θ)⟩changes more rapidly in Hilbert space
+with a change in parameters θ, indicating greater
+model expressivity or sensitivity.
+These geometric tools formalize how quantum
+state space is a curved manifold richer than its
+classical counterpart.
+For a classical N-outcome
+probability distribution (mixed state diagonal in a
+fixed basis), the space of probabilities is a simplex
+of dimension N −1, which when equipped with
+the Fisher metric has constant curvature but rel-
+atively simpler topology (essentially, it is isometric
+to a portion of an N-sphere in many cases).
+By
+contrast, the manifold of quantum states (even re-
+stricting to pure states of an N-dimensional sys-
+tem) is the complex projective space CPN−1, a
+K¨ahler manifold with nonzero holomorphic curva-
+ture.
+In concrete terms, a single qubit (N = 2)
+has state space CP1, topologically a 2-sphere (the
+Bloch sphere) of constant positive curvature.
+A
+classical bit, on the other hand, has only two pure
+states (0 or 1) and a one-dimensional continuum
+of probabilistic mixtures between them; effectively
+a line interval (with Fisher metric having infinite
+curvature at the ends).
+Thus, even at the level
+of a single bit/qubit, the quantum state space is
+a superset: the Bloch sphere contains the classical
+probability line as a geodesic segment (the diago-
+nal mixed states), but also includes an equatorial
+circumference of genuinely quantum superposition
+states with no classical analog. The distance be-
+tween two non-orthogonal qubit states on the Bloch
+sphere (given by the FS angle or Bures distance) re-
+flects a quantum notion of similarity that reduces
+to classical Hellinger distance when states are diag-
+onal, but in general accounts for phase and ampli-
+tude differences that classical metrics cannot cap-
+ture.
+3.2. Superposition
+and
+Entanglement:
+Beyond
+Classical Manifolds
+Two hallmark quantum phenomena, superposi-
+tion and entanglement, endow the state space
+with an expressive structure far beyond that of
+classical geometric manifolds.
+Superposition im-
+plies that a quantum system can exist in a coher-
+ent linear combination of basis states, rather than
+just probabilistic mixtures.
+Geometrically, a su-
+perposition |ψ⟩= α|0⟩+ β|1⟩(for a qubit) is a
+distinct point on the Bloch sphere that is not on
+the line connecting |0⟩and |1⟩(which would cor-
+respond to their classical mixture). Instead, such
+a state lies on the surface of the sphere, at a fi-
+nite Fubini -Study distance from any classical basis
+state. The ability to form superpositions leads to
+interference phenomena: if we move along a path
+in state space that loops around, the final state
+can exhibit a phase (a geometric Berry phase) that
+has no counterpart in classical probability theory.
+In differential-geometric terms, the quantum state
+space carries not only a Riemannian metric (FS)
+but also a symplectic structure (associated with the
+imaginary part of the quantum geometric tensor),
+reflecting the presence of phase as an extra degree
+of freedom. This additional structure (encapsulated
+in the quantum geometric tensor’s Berry curvature)
+means that the space of quantum states is ‘twisted’
+in a way classical manifolds of probability distribu-
+tions are not. No classical machine learning model
+defined on a simple Euclidean or Riemannian mani-
+fold of features can reproduce this effect of quantum
+phase interference without effectively simulating a
+higher-dimensional complex representation.
+Entanglement further amplifies the divergence
+between quantum and classical geometries.
+In a
+7

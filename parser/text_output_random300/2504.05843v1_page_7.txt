@@ -1,0 +1,182 @@
+This allows us to write one Pfaffian differential equation
+∂y e = My . e
+(37)
+for every outer parameter.
+Guessing the most suitable basis is an art. Nonetheless, bilinears of the various denominators do seem
+natural and turn out to be very useful, see also [6]. In our off-shell one-loop box example, a near ideal choice
+is
+
+1
+p5 p6
+,
+1
+(1 −t)p6
+,
+1
+(1 −s)p5
+,
+1
+(1 −s)p6
+,
+1
+(1 −t)(1 −s), 1
+p5
+, 1
+p6
+
+ds dt ,
+(38)
+where the first form yields the (undifferentiated) box integral (13) up to normalisation. The last three entries
+are as in our first level basis (19) although they now carry both differentials. All the masters have simple poles
+only in s, t apart from the scaling at infinity, which may be of order 0. In particular, with this basis only the
+two leading orders of the expansion around poles are solicited which substantially reduces the computational
+load. The decomposition is very quick on a laptop also for the derivatives of the master integrals.
+The resulting matrix of second level intersection numbers is
+Ct = −D−1
+t
+C′
+t D−1
+t
+(39)
+with the diagonal matrix
+Dt = diag
+
+(z −¯z)ρ, (1 −z)(1 −¯z), z¯z, (1 −z)(1 −¯z), δ(γ + 2ρ)
+δ + γ + 2ρ, z¯z(γ + 2ρ), (z + ¯z −z¯z)(γ + 2ρ)
+
+(40)
+and the core part
+C′
+t =
+
+
+
+
+
+
+
+
+
+
+
+
+2
+0
+0
+0
+0
+0
+0
+0
+−
+ρ−δ
+δ(γ+ρ)(γ+2ρ)
+0
+0
+1
+δ+γ+2ρ
+0
+1
+ρ
+0
+0
+γ+ρ
+δ(δ−ρ)(γ+2ρ)
+1
+δ(γ+2ρ)
+1
+δ+γ+2ρ
+γ+ρ
+ρ(δ−ρ)
+0
+0
+0
+1
+δ(γ+2ρ)
+δ−ρ
+δ(γ+ρ)(γ+2ρ)
+1
+δ+γ+2ρ
+0
+1
+ρ
+0
+1
+δ+γ+2ρ
+1
+δ+γ+2ρ
+1
+δ+γ+2ρ
+1
+−
+δ
+δ+γ+2ρ
+δ
+δ+γ+2ρ
+0
+0
+γ+ρ
+ρ(δ−ρ)
+0
+−
+δ
+δ+γ+2ρ
+δρ+2γ2+6γρ+3ρ2
+ρ(δ−ρ)
+−1
+0
+1
+ρ
+0
+1
+ρ
+δ
+δ+γ+2ρ
+−1
+−2γ+3ρ
+ρ
+
+
+
+
+
+
+
+
+
+
+
+
+.
+(41)
+Once again the coordinate dependence factors out!
+The matrices Mz, M¯z for the Pfaffian equations are given in the supplemental material as they are somewhat
+bulky due to the parameters γ, δ, ρ. We observe that they go into each other under the exchange z ↔¯z and
+that they obey the integrability condition
+∂zM¯z −∂¯zMz −MzM¯z + M¯zMz = 0 .
+(42)
+which guarantees that integrating, say, the z equation first and substituting the result into the ¯z condition will
+yield a z-independent ordinary differential equation on ¯z.
+Next, let us rescale γ →γ ϵ, δ →δ ϵ, ρ →ρ ϵ yielding matrices M ′
+z, M ′
+¯z. The ϵ dependence of these
+rescaled matrices is linear. What is more, their constant part is diagonal:
+M ′
+z|ϵ →0 = −∂z log diag{z −¯z, 1 −z, z, 1 −z, 1, z, z + ¯z −z¯z}
+(43)
+and the same with z ↔¯z. These lowest order equations imply [6] that our seven masters have the rational
+denominators
+d = {z −¯z, (1 −z)(1 −¯z), z¯z, (1 −z)(1 −¯z), 1, z¯z, z + ¯z −z¯z} .
+(44)
+These are exactly as in (40) implying that the second level intersection matrix becomes coordinate independent
+upon rescaling the master integrals accordingly. On the Pfaffian matrices that induces the transformation
+M ′
+z →Nz = A−1(M ′
+zA −∂zA) ,
+A = diag(d)−1
+(45)
+and similarly for the ¯z equation. The matrices Nz, N¯z are homogeneous of degree one in ϵ so that we now
+have canonical equations wrt. this parameter. They can be iterated as in [18, 6].
+To find the starting values for this process we inspect the singularities of the differential-stripped forms in
+(38). Asserting that the values of the coordinates z, ¯z are sufficiently generic the denominators p5, p6 will have
+7

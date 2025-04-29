@@ -1,0 +1,32 @@
+introduce separate architectural branches to handle different data regimes [39–41]—both of which 
+add complexity—our physics-constrained network achieves good performance across all regimes with 
+a single, unified architecture and a constant weighting strategy. Physical principles like energy 
+conservation are directly incorporated into both the neural network architecture and loss functions 
+leading to accurate predictions without violating physical laws. Unlike purely data-driven methods, 
+this approach reduces the hypothesis space by incorporating physical constraints, allowing for more 
+reliable generalization from small training dataset. Generalization refers to the model’s ability to 
+accurately predict new, unseen data with different structural parameters and optical properties. We 
+address the challenging phase behavior dependent on gap size, the distance between nanostructures 
+in metasurface array. The physics-informed approach effectively incorporates physical domain 
+knowledge into the neural network. By incorporating physical laws, the model could inherently 
+accommodate the complex behaviors by encoding electromagnetic principles instead of attempting 
+to learn them only from data. Furthermore, rather than direct phase angle prediction, we employed 
+a sine-cosine representation for handling the phase wrapping challenge to guaranty smooth 
+transitions in phase values, in particular at boundaries like 0 and 2𝜋. Conventional machine learning 
+models treat these points as distant values rather than the same physical states, and thus create 
+artificial errors compromising prediction accuracy. Previous studies have taken varied approaches to 
+addressing this phase discontinuities. Jiang et al. [38] attempted direct phase prediction despite 
+recognizing the difficulties introduced by discontinuities at the 0/2π boundaries. An et al.  [42] tackled 
+this issue by designing two separate neural networks to predict the real and imaginary components of 
+the transmission coefficient, from which the phase and amplitude were later derived. In contrast, our 
+method directly accounts for the circular nature of phase data within a single, unified network by 
+incorporating a sine-cosine representation with Euclidean normalization as a non-trainable layer. This 
+approach ensures physically meaningful outputs while reducing network complexity compared to 
+multi-network architectures. Our method utilizes a Euclidean distance-based loss function in the sine-
+cosine space, effectively capturing the circular nature of phase values. This ensures a physically 
+meaningful error metric while preventing discontinuity issues. 
+2. Physics-Constrained Neural Network Framework 
+2. 1 Dataset Characteristics 
+We use two datasets (Dataset A with 1075 data points and Dataset B with 580 data points) obtained 
+by finite element method (FEM) simulations of the optical response of a metasurface with single 
+nanodisk in the unit cell. Dataset A combines all data points from Dataset B with additional simulation 

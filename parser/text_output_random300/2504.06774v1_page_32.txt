@@ -1,0 +1,30 @@
+(a) Ground Truth
+(b) HOSVD
+(b) SVD
+Y
+X
+X
+Y
+X
+X
+Y
+X
+X
+Figure 17: (a) Ground truth normal velocity components at t = 528. (b) Comparison
+of the predicted normal velocity components for HOSVD (left column) and SVD (right
+column) across different LSTM architectures. From top to bottom: predictions for LSTM
+with 1 Dense, 2 Dense, and Time-Distributed architectures.
+ing to significant deviations and loss of critical flow features. However, the LSTM 2 dense
+and the time-distributed SVD model show improved stability, capturing the overall flow
+dynamics better than the 1 dense architectures. The HOSVD-based LSTM 2 dense ar-
+chitecture performs the best in this scenario, underscoring the advantages of HOSVD in
+providing a more faithful representation of the flow field. The spanwise velocity results
+highlight the complexities of accurately capturing the intricate flow physics in regions of
+near-zero velocities.
+The RRMSE values for the 3D cylinder case are summarized in Tables 11, 12, and 13.
+Across all LSTM architectures, HOSVD consistently outperforms SVD, demonstrating
+its superior ability to capture the underlying flow dynamics with reduced error. Notably,
+for the spanwise components where HOSVD maintains a significant advantage over SVD
+by over 8%. Error values are particularly higher for the spanwise velocity component,
+where the predominance of very low and near zero velocities in most of the domain
+32

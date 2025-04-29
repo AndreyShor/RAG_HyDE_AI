@@ -1,0 +1,113 @@
+1
+Equivalent Circuit Modeling of a Lumped-element Loaded Metasurface
+under Arbitrary Incidence and Polarization
+Athanasios Nousiou, Nikolaos V. Kantartzis, and Alexandros Pitilakis
+Abstract—In recent years, Reconfigurable Intelligent Surfaces (RIS)
+have emerged as a key technology for next-generation communication,
+offering real-time and dynamic control over electromagnetic wave char-
+acteristics. The scattering of an RIS unit cell can be effectively modeled
+using an equivalent circuit model (ECM) of a lumped RLC-loaded meta-
+surface. However, existing ECMs, particularly those with square patches,
+often fail to generalize beyond specific configurations or integrate lumped
+elements, limiting their practical applicability to single polarization or
+normal incidence. In this work, we propose a simple yet robust ECM that
+accurately predicts the spectral response while maintaining adaptability
+across varying design parameters, including polarization, arbitrary angles
+of incidence, and physical dimensions of lumped elements. Our approach
+is built incrementally, starting from a 1×1 unit cell as the fundamental
+structure and extending to 2×1 and 2×2 cell configurations. The 2×2
+cell structure allows for multifunctionality and reconfigurability in dual
+independent polarizations. These capabilities facilitate the realization of
+vector holographic metasurfaces. Validation with full-wave simulations
+demonstrates strong agreement, highlighting the efficiency and robustness
+of our model. This work lays the foundation for simplified and effective
+RIS modeling and optimization in advanced communication systems.
+Index Terms—Metasurface, microwaves, mmWaves, propagation, RIS,
+scattering
+I. INTRODUCTION
+M
+ETASURFACES are engineered 2D materials composed of
+subwavelength-scale particles that, when properly designed,
+enable precise control over electromagnetic wave properties such as
+amplitude, phase, reflection, and polarization [1], [2]. Reconfigurable
+Intelligent Surfaces (RIS), a subset of metasurfaces, dynamically ma-
+nipulate wavefronts in real time, creating programmable environments
+that enhance wireless communication [3]–[5]. RIS technology is cen-
+tral to next-generation systems like 5G and 6G, addressing traditional
+system limitations by improving performance, energy efficiency, and
+cost-effectiveness [6], [7]. Beyond telecommunications, metasurfaces
+have applications in sensing, imaging, and stealth, demonstrating their
+broad scientific impact.
+Despite the disruptive potential of RIS, the metasurface unit
+cell design and analysis still relies heavily on full-wave numeri-
+cal simulation [8]. Thus, a key challenge is the development of
+generalized equivalent circuit models (ECMs) for metasurfaces with
+reconfigurable lumped elements, like varactor diodes. Existing ECMs
+[9]–[13], often structure-specific and limited to a single polarization
+(TE or TM) and/or to normal incidence, restrict broader applicability.
+While full-wave simulations (FWS) provide high accuracy, ECMs
+remain essential for intuitive understanding, rapid tuning, and initial
+design optimization. The absence of a simple yet accurate ECM
+hinders efficient development of versatile RIS structures.
+This work addresses this necessity by introducing a simplified
+yet comprehensive ECM for metasurfaces composed of square patch
+grids with lumped elements ‘loading’ the gaps, accommodating both
+TE and TM polarizations at oblique incidence angles. The ECM
+builds upon transmission line (TL) theory and incorporates the
+dispersive surface impedance of the patterned and loaded metallic
+Authors are with the School of Electrical and Computer Engineering, Aris-
+totle University of Thessaloniki, 54124 Greece (email: athanous@ece.auth.gr;
+kant@auth.gr; alexpiti@auth.gr).
+layers. Our model integrates key parameters such as unit cell period,
+substrate properties, patch gaps, lumped element values (resistance
+and capacitance) and physical dimensions, incidence angle, and polar-
+ization. Balancing simplicity and accuracy, it maintains a resonance-
+frequency error below 20% between analytical and simulated results
+which holds for oblique incidence angles up to 60◦, corresponding
+to the practical range in most applications. While designed for a
+specific grid type, this framework extends to more complex unit cells,
+accelerating RIS design. Importantly, our approach systematically
+evolves from fundamental (1 × 1 cell [14]) to advanced (2 × 2
+cell [15]) structures, without relying on parameter retrieval or fitting
+from measurements or FWS and circuit simulators. The versatile unit
+cell architectures we study support multi-functionality (simultaneous
+amplitude and phase control), reconfigurability (independent tuning
+of unit cells), and dual polarization (independent responses along x
+and y axes). operation These features pave the way for the streamlined
+design of vector holographic metasurfaces [16] for advanced wireless
+applications.
+The paper is structured as follows: Following this introduction,
+Section II presents the unit cell architectures considered in this
+work and outlines the analytical tools used to model their response
+in progressively more complex configurations. Section III contains
+the comparison of ECM and FWS predicted responses for various
+metasurface functionalities. Section IV holds the conclusion and
+future prospects of this work.
+II. ARCHITECTURE AND METHODOLOGY
+A. Unit Cell Architecture
+The reflective metasurfaces studied in this work consist of a peri-
+odic repetition of subwavelength elements on a grounded dielectric
+substrate, where geometrical shapes (e.g., squares, crosses, rings)
+determine electromagnetic wave manipulation. By selecting element
+shapes, arrangement, and substrate properties, metasurfaces control
+the scattered wave magnitude and phase. Similar control is achievable
+by integrating tunable elements, like varactors or varistors [8], while
+maintaining the same geometry. Some simple yet flexible designs,
+Fig. 1, include unit cells with the following configurations:
+• 1 × 1 Cell: Square patch grid connected by lumped elements in
+one or two lateral dimensions; ideal for dual-polarization control
+but only for global tuning (suffers from cross-talk between
+adjacent cells in individual tuning).
+• 2 × 1 Cell: Pairs of patches connected by a lumped element in
+one dimension; minimizes aforementioned cross-talk but affords
+control in one plane only.
+• 2 × 2 Cell: Extension of the 2 × 1 configuration in two
+dimensions; allows for independent control in two planes.
+By tuning the resistance and capacitance of the lumped loads,
+desired amplitude and phase characteristics can be achieved, pro-
+vided adjacent cells exhibit minimal coupling. These values can be
+implemented using tunable varistors and varactors, enabling real-
+time dynamic control. This precision allows metasurfaces to shape
+reflected wavefronts for applications like beam steering, focusing, and
+interference pattern generation. Additionally, incorporating different
+arXiv:2504.06501v1  [physics.optics]  9 Apr 2025

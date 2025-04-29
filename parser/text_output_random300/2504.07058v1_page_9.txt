@@ -1,0 +1,92 @@
+methods. Additionally, second-order optimization strategies, including different versions of the BFGS algorithm,
+may be employed. The objective is to determine the optimal neural network solution 𝑢∗= 𝑢𝜃∗using the training
+dataset. The process begins with an initial parameter set ¯𝜃∈𝜃′, and the corresponding network output 𝑢¯𝜃,
+residuals, loss function, and gradients are computed iteratively. Ultimately, the optimal solution, denoted as
+𝑢∗= 𝑢𝜃∗, is obtained through PINN. The local minimum in Eq. (2.33) is approximated as 𝜃∗, yielding the deep
+neural network solution 𝑢∗= 𝑢𝜃∗, which serves as an approximation to 𝑢in low grades tumors models.
+The hyper-parameters used in numerical experiments are summarized in Table 1. The PINN framework for
+solving the low grades tumors models follows the methodologies outlined in [4,33–35]. The illustration in Fig. 5
+represents the PINN framework. Below, Algorithm 2.1 is presented for forward problems, while Algorithm 2.2
+addresses inverse problems:
+Table 1: The configurations of hyper-parameters and the frequency of retraining utilized in ensemble training for PINN.
+Experiments
+𝐾−1
+¯𝑑
+𝜆
+𝜆reg
+𝑛𝜃
+3.1.1
+4
+20
+0.1, 1, 10
+0
+4
+3.1.2
+4
+20
+0.1, 1, 10
+0
+10
+3.1.3
+4
+20
+0.1, 1, 10
+0
+4
+3.1.4
+4
+20
+0.1, 1, 10
+0
+12
+3.1.5
+4
+32
+0.1, 1, 10
+0
+10
+3.2.1
+4
+16
+0.1, 1, 10
+0
+10
+3.2.2
+4
+20
+0.1, 1, 10
+0
+10
+3.2.3
+4
+24, 36, 42
+0.1, 1, 10
+0
+10,10,4
+Algorithm 2.1. The PINN framework is employed for estimating low-grade tumors in forward
+problems
+Inputs: Define the computational domain, problem data, and coefficients for the low grade tumor models. Specify
+quadrature points and weights for numerical integration. Choose a gradient-based optimization method for
+training the neural network.
+Aim: Develop a PINN approximation 𝑢∗= 𝑢𝜃∗for solving the model.
+Step 1: Select the training points following the methodology described in Section 2.4.
+Step 2: Initialize the network with parameters ¯𝜃∈𝜃′ and compute the following: neural network output 𝑢¯𝜃Eq. (2.21),
+PDE residual Eq. (2.25), boundary residuals Eq. (2.27), loss function Eq. (2.31), Eq. (2.33), and gradients
+required for optimization.
+Step 3: Apply the optimization algorithm iteratively until an approximate local minimum 𝜃∗of Eq. (2.33) is obtained.
+The trained network 𝑢∗= 𝑢𝜃∗serves as the PINN solution for the tumor growth models.
+Algorithm 2.2. The PINN framework is employed for estimating low-grade tumors in s inverse
+problems
+Inputs: Define the computational domain, problem data, and coefficients for the low-grade tumor model. Specify
+quadrature points and weights for numerical integration.
+Choose a suitable non-convex gradient-based
+optimization method.
+Aim: Construct a PINN approximation 𝑢∗= 𝑢𝜃∗to estimate the solution 𝑢of low grade tumor models for inverse
+problems.
+Step 1: Select training points according to the methodology outlined in Section 2.4.
+Step 2: Initialize the neural network with parameters ¯𝜃∈𝜃′ and compute the following components: neural network
+output 𝑢¯𝜃Eq. (2.21), PDE residual Eq. (2.25), data residuals Eq. (2.28), loss function Eq. (2.32), Eq. (2.33),
+and gradients for optimization.
+Step 3: Apply the optimization algorithm iteratively until an approximate local minimum 𝜃∗of Eq. (2.33) is reached.
+The trained network 𝑢∗= 𝑢𝜃∗serves as the PINN solution for the low-grade tumor model.
+9

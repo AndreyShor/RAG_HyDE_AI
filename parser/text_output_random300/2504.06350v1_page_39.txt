@@ -1,0 +1,79 @@
+To close the locality loophole (see Sec. 2.4.2), in Ref. [51] strict isolation of the quantum nodes
+was applied together with other strategies.
+This isolation was achieved by physically distancing the
+trapped ion qubits from the optical fiber link after heralding entanglement, thereby reducing potential
+coupling to the outside environment. Additionally, they employed techniques to scramble the qubit states
+post-measurement, further minimizing any risk of information leakage, thus ensuring that the protocol’s
+security remains intact against various adversarial attacks. Instead, in Ref. [53] spatial separation be-
+tween the two parties was adopted and used independent random number generators (RNG) to close the
+measurement-dependence loophole. This setup minimizes the risk of any local hidden variable theory
+influencing the outcomes, reinforcing the validity of the loophole-free Bell test.
+3.11. DI-QKD memory loopholes
+We discussed the theoretical security proofs and the experiments on (fully)-DI-QKD. However, to
+satisfy the definition of universal composable security the theory demands many different devices at each
+run to close memory attack loophole, i.e. a leakage of information due to correlated subsequent outputs
+[62, 206]. This is experimentally critical. Suppose that Alice and Bob have only one device each. Then
+a memory attack is possible: the protocol is run on day i, generating Ki
+A = Ki
+B
+, while informing Eve on day i = 1 of the hash functions used by Alice for postprocessing. Eve can
+instruct the devices to proceed as follows.
+On day 2, Eve modulates ρc
+AB where c is a classical ancilla to carry new instructions to the device in
+Alice’s lab as discussed in collective attacks in QT. These instructions tell the device the hash functions
+used on day 1, allowing Eve to compute K1
+A = K1
+B. The classical ancillae also instruct the device to
+bias the protocol for randomly selected inputs by producing specified bits from this secret key as outputs
+for example by programming the device to announce one key bit of day 1 as an output of some specified
+input. If any of these selected outputs are among those announced in the parameter estimation step, Eve
+learns the corresponding bits of day 1’s secret key. But, Alice or Bob might abort the protocol any day,
+thus, by waiting long enough, Eve can program them to communicate some or all information about their
+day 1 key to obtain N secret bits from day 1 and then program it to abort on the day N + 2 since from
+this day Alice and Bob do not have any secret key available. This type of attack is called an abort attack
+and cannot be detected until it is too late. To defend against these attacks (i) all quantum data and
+public communication come only from Alice, even if, Eve can still program Alice’s device to leak K1
+A or
+Ki
+A, i = 1, 2, . . . via the abort attack; (ii) encrypt cQ with some initial preshared seed randomness, even
+if fails if an abort attack involves communication with multiple users who may not be trustworthy; (iii)
+additional independent measurement devices close memory attack loophole, but leave open the imposter
+attack [62].
+4. Mathematical techniques for advanced security proofs
+In the previous section, we studied the secure protocol for generating a secret K and its associated security
+proof as an independent module, analyzing lower bounds on Eve’s uncertainty or randomness for specific
+attacks (individual, collective, and coherent) to establish security proofs. Here, we delve into advanced
+techniques and mathematical methods for constructing such proofs in real-world settings.
+4.1. Entropy accumulation theorem
+Assuming the device operates under the iid assumption imposes unrealistic constraints, as it disregards
+the possibility of classical or quantum internal memory and any time-dependent behavior. To ensure
+security in the most general case, we must go beyond the iid assumption by considering a raw key, where
+each segment is generated sequentially, with the outcome of round i depending on all previous rounds
+j ∈[1, i −1]. This means the i-th round reflects not only its direct outcome but also the influence of all
+prior events. The framework for this generalization is the Entropy Accumulation Theorem (EAT) [82].
+Let us begin with some key definitions required for a formal description of EAT.
+Definition 16 (Conditional smoothed min-entropy [84]). Given a density operator ρAB and ε ∈[0, 1],
+the ε-smooth min-entropy of A conditioned on B is
+Hε
+min(A | B)ρAB = −log
+inf
+˜ρ∈Bε(ρAB)
+inf
+σB∈B(HB) ∥˜ρ
+1
+2
+ABσ
+−1
+2
+B
+∥2
+∞,
+(106)
+Bε(ρB) = {˜ρ|˜ρ ≻0, Tr˜ρ < 1,
+q
+1 −||√ρAB
+p
+˜ρ||2
+1 ≤ε}.
+(107)
+39

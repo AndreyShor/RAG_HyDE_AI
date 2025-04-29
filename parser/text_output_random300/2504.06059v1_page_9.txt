@@ -1,0 +1,198 @@
+9
+3
+1
+5
+2
+0
+4
+0
+3
+1
+5
+2
+4
+(a) Partial sorting network to sort 1
+label.
+3
+1
+5
+2
+0
+4
+0
+0
+3
+1
+5
+2
+4
+1
+4
+2
+5
+3
+(b) Partial sorting network to sort 2
+labels.
+3
+1
+5
+2
+0
+4
+0
+0
+1
+3
+5
+2
+4
+1
+4
+5
+3
+2
+1
+3
+5
+2
+(c) Partial sorting network to sort 3
+labels.
+FIG. 6: Partial sorting networks to sort the first k labels only, k = 1..3.
+3
+5
+7
+0
+1
+2
+4
+6
+3
+0
+5
+7
+1
+2
+4
+6
+1
+2
+5
+7
+0
+1
+3
+2
+5
+4
+7
+6
+0
+1
+2
+3
+4
+5
+6
+7
+3
+2
+5
+4
+FIG. 7: Block sorting network. Each blue box is a
+sorting network that sorts a block of labels. Green
+boxes are universal interferometers.
+they rely on other encodings (for instance polarization).
+Using our framework we can design sorting networks
+that combine several smaller interferometers. To per-
+form universal computations we propose to sort the la-
+bels by blocks. An example is given in Fig. 7 with 8
+modes and blocks of 2 modes. Each blue interferometer
+on 4 modes creates two sorted blocks of labels. The ar-
+rangement of the blue interferometers follows a sorting
+network on 4 modes. Ultimately we need to sort the
+labels within each block with universal interferometers
+in green.
+With
+an
+m-mode
+computation
+and
+k
+blocks
+of size p (assuming m
+=
+kp),
+the network has
+k(k −1)/2 interferometers on 2p modes arranged as an
+interferometer-circuit of depth k and k interferometers
+on p modes counting as an interferometer-circuit of
+depth 1.
+Any 2p-mode universal interferometer can be used to
+sort the block of labels. This gives a global circuit with
+k(k −1)
+2
+2p(2p −1)
+2
++ k p(p −1)
+2
+≈m2
+MZIs and an MZI-depth of
+k × 2p + p = 2m + p.
+3
+1
+2
+5
+0
+4
+2
+5
+0
+5
+1
+2
+1
+3
+0
+2
+4
+5
+1
+0
+3
+2
+4
+0
+2
+3
+4
+5
+FIG. 8: Diamond design on 6 modes for block sorting
+the labels.
+Note that the depth and the number of components
+have doubled compared to the standard scheme.
+To improve the number of components, we use smaller
+interferometers to sort the blocks of labels. We want
+to separate the labels into two blocks: the ones with
+lowest values and the ones with highest values. This is
+illustrated in Fig 7 by the wire labels. The labels within
+a block do not need sorting until the very end. We can
+use the diamond design shown in Fig 8 for 6 modes to
+do this partial sorting.
+One can see this design as a
+sequence of diagonal layers, each one moving one label
+from the lower block to the upper one. This new 2p-
+mode interferometer has p2 MZIs and depth 2p−1. The
+total number of MZIs required for universality becomes
+k(k −1)
+2
+p2 + k p(p −1)
+2
+= m(m −1)
+2
+which is optimal. The MZI-depth is now
+
+2 −1
+p
+
+m + p
+which is not asymptotically optimal unless p = 1.

@@ -1,0 +1,41 @@
+1.
+Introduction
+Modeling the intricacies of complex fluid flows is essential for applications in numerous
+natural and industrial processes. Advancements in numerical and computational tech-
+niques have transformed the study of fluid flows, enabling precise simulations of phenom-
+ena ranging from laminar to turbulent regimes. However, achieving high-fidelity fluid flow
+simulations using numerical methods, such as Computational Fluid Dynamics (CFD), of-
+ten incurs a substantial computational cost. Conventional CFD methodologies, such as
+direct numerical simulation (DNS) and large-eddy simulation (LES), involve solving com-
+plex problems with high-dimensional systems but are computationally expensive [1, 2, 3].
+These methods often require substantial computational resources and extensive processing
+times to generate high-dimensional data, making them a difficult option to employ for
+many real-world applications.
+To address these challenges, researchers have increasingly turned to machine learn-
+ing (ML) techniques and reduced order models (ROMs), which have shown remarkable
+success in learning complex patterns and temporal dynamics from data. ML algorithms,
+particularly deep learning (DL) models with artificial neural networks (ANN), can process
+vast amounts of data to identify underlying structures and predict future states. Convo-
+lutional Neural Networks (CNNs) and Long Short-Term Memory (LSTM) networks are
+two prominent ML optimization architectures that have been adeptly employed in vari-
+ous applications, including image recognition, time-series forecasting, and, more recently,
+fluid dynamics. Each offers unique advantages that address the specific challenges inher-
+ent in fluid flow prediction. LSTMs are effective in capturing long-term dependencies in
+sequential data [4]. In fluid dynamics, LSTMs are utilized to capture and predict the
+temporal evolution of flow patterns and dynamic behaviors over time. Their ability to
+process sequential data makes them particularly effective for handling the temporal com-
+plexities of fluid flows, such as those seen in turbulent wake dynamics or oscillatory jet
+flows. CNNs are particularly effective for classification and image recognition tasks [5].
+The strengths of CNNs in feature extraction and pattern recognition make them highly
+suitable for applications in the field of fluid mechanics [6]. Using their capacity to identify
+local patterns, such as vortices or boundary layer structures, CNNs provide an essential
+tool for analyzing the spatial characteristics of fluid flows. For example, Guastoni et al.
+[7] used CNNs to predict wall-bounded turbulence, achieving substantial improvements in
+predictive accuracy over traditional methods. Drikakis and Sofos [8] explored how deep
+neural networks can model turbulent flows, showcasing the ability to capture intricate
+flow patterns that traditional methods may miss. Similarly, Vinuesa et al. [9] discussed
+in their paper how ML techniques have been used to improve the modeling of turbulence
+and the overall performance of computational fluid dynamics (CFD) simulations. They
+highlighted that ML approaches can efficiently handle the complex, high-dimensional data
+typical in fluid mechanics, providing significant advances in predictive accuracy and com-
+2

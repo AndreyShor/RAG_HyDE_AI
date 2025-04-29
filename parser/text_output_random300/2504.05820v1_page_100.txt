@@ -1,0 +1,39 @@
+86
+Evidence for Intrinsic charm in the proton
+In doing so we determined the distributions of charm quarks and antiquarks assuming equality
+of the intrinsic (scale-independent) charm and anticharm PDFs, i.e. the vanishing of the charm
+valence PDF
+c−(x, Q2) = c(x, Q2) −¯c(x, Q2) .
+(3.8)
+Nevertheless, the valence charm PDF c−(x, Q2) must have vanishing integral over x at all scales
+Q2, because the proton does not carry the charm quantum number, but the PDF itself may well
+be nonzero, as it happens for the strange valence PDF s−= s −¯s. Indeed, a non-vanishing
+charm valence component is always generated, like for any other quark flavor, by perturbative
+QCD evolution [261]. However, any perturbatively generated valence charm component is tiny
+in comparison to all other PDFs, including those of heavy quarks. Hence, any evidence of a
+sizable valence charm PDF is a definite sign of its intrinsic nature. Model calculations [128,
+247], while in broad agreement on the shape of total intrinsic charm PDF, widely differ in
+predictions for the shape and magnitude of the intrinsic valence charm component. Model
+calculations of intrinsic charm complemented with input from lattice QCD [262] also predict a
+non-vanishing valence component.
+Here we investigate this issue by performing a data-driven determination of the intrinsic valence
+charm PDF of the proton, based on the same methodology as in [1] (cf. Sections 3.1.1 and 3.2).
+We generalize the NNPDF4.0 PDF determination by introducing an independent parametrization
+of the charm and anticharm PDFs, determine them from a global QCD analysis (Section 3.3.1),
+and subtract the perturbatively generated contributions by transforming all PDFs to the 3FNS in
+which perturbative charm vanishes so any residual charm PDF is intrinsic.
+We find a non-zero charm valence PDF, with a positive valence peak for x ∼0.3, whose local
+significance is close to two sigma. We demonstrate the stability of this result with respect to
+theoretical, dataset, and methodological variations (Section 3.3.2). In Section 3.3.3 we conclude
+proposing two novel experimental probes to further scrutinize this asymmetry between charm
+and anticharm PDFs: D-meson asymmetries in Z+c-jet production at LHCb, and flavor-tagged
+structure functions at the upcoming EIC.
+3.3.1. The valence charm PDF
+Also in this study we follow the NNPDF4.0 methodology, theory settings and dataset [109]
+(Section 2.2), the only modifications being related to the independent parametrization of the
+charm valence PDF. Firstly, the neural network architecture is extended with an additional
+neuron in the output layer in order to independently parametrize c−(x, Q0), Eq. (3.8), at the
+PDF parametrization scale Q0 = 1.65 GeV. In the default PDF basis (“evolution basis”, see
+Eq. (1.61)) this extra neuron is taken to parametrize the valence non-singlet combination
+V15 = (u−+ d−+ s−−3c−). In an alternative basis (“flavor basis”) it instead parametrizes ¯c:
+so in both cases the valence component is obtained by taking linear combinations of the neural

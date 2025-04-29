@@ -1,0 +1,250 @@
+28
+and their substitution yields the desired results
+[ K, zn
+j ] =
+X
+q,k
+Aqkδqjnzkzn−1
+j
+−
+X
+q,k
+¯Aqkδqjnz−1
+k zn+1
+j
+= n
+X
+k
+Ajkzkzn−1
+j
+−n
+X
+k
+¯Ajkz−1
+k zn+1
+j
+[ K, ℓn
+j ] =
+X
+q,k
+Aqk(δqj(n + 1)zkℓn−1
+q
+−δjkzn+1
+k
+ℓ−1
+q ) −
+X
+q,k
+¯Aqk(δqj(n −1)z−1
+k ℓn+1
+q
++ δjkzn−1
+k
+ℓ1
+q)
+= (n + 1)
+ X
+k
+Ajkzk
+
+ℓn−1
+j
+−zn+1
+j
+ X
+q
+Aqjℓ−1
+q
+
+−(n −1)
+ X
+k
+¯Ajkz−1
+k
+
+ℓn+1
+j
+−zn−1
+j
+ X
+q
+¯Aqjℓ1
+q
+
+= (n + 1)
+ X
+k
+Ajkzk
+
+ℓn−1
+j
+−(n −1)
+ X
+k
+¯Ajkz−1
+k
+
+ℓn+1
+j
+−zn+1
+j
+ X
+k
+Akjℓ−1
+k
+
+−zn−1
+j
+ X
+k
+¯Akjℓ1
+k
+
+.
+As mentioned in the main text, it is also useful to simplify calculations to restrict the general symmetry generator
+S to one where ξ and ϕ1, ..., ϕN are periodic functions, allowing us to expand them in Fourier series:
+ξ(t, z) =
+X
+p∈ZN
+εp(t)zp ,
+ϕℓ(t, z) =
+X
+p∈ZN
+φℓp(t)zp ,
+with
+zp =
+N
+Y
+j=1
+zpj
+j .
+This assumption and some notation simplifications lead to
+[U, S] −U[ξ] U =
+X
+p
+h
+U, εp(t)zp∂t
+i
++
+X
+ℓ,p
+h
+U, φℓp(t)zp∂ℓ
+i
+−
+ X
+p
+U
+h
+εp(t)zpi
+U .
+After some manipulations using Lem. S9 and simplifications, one finds
+[U, S] −U[ξ(t, z)] U =
+X
+ℓ,p
+˙φℓp(t)zp∂ℓ+
+X
+ℓ,p,j,k
+φℓp(t)(Ajk[zk∂j, zp∂ℓ] −¯Ajk[z−1
+k z2
+j ∂j, zp∂ℓ])
+−
+X
+p
+ 
+˙εp(t) + εp(t)
+X
+r,s
+pr(Arsz−1
+r zs −¯Arszrz−1
+s )
+!
+zp X
+j,k
+(Ajkzk −¯Ajk¯zkz2
+j )∂j .
+The commutation relations are explicitly given by
+[zk∂j, zp∂ℓ] = pjzp−ej+ek∂ℓ−δkℓzp∂j
+and
+[z−1
+k z2
+j ∂j, zp∂ℓ]
+= pjzp+ej−ek∂ℓ+ δkℓzp+2ej−2ek∂j −2zp+ej−ekδjℓ∂j .
+Substituting these commutation relations into the infinitesimal condition yields, after simplifications,
+[U, S] −U[ξ(t, z)] U =
+X
+ℓ,p
+˙φℓp(t)zp∂ℓ+
+X
+ℓ,p,j,k
+φℓp(t)Ajkpjzp−ej+ek∂ℓ−
+X
+ℓ,p,j
+φℓp(t)Ajℓzp∂j
+−
+X
+ℓ,p,j,k
+φℓp(t) ¯Ajkpjzp+ej−ek∂ℓ−
+X
+ℓ,p,j
+φℓp(t) ¯Ajℓzp+2ej−2eℓ∂j + 2
+X
+ℓ,p,k
+φℓp(t) ¯Aℓkzp+eℓ−ek∂ℓ
+−
+X
+p
+ 
+˙εp(t) + εp(t)
+X
+r,s
+pr(Arsz−1
+r zs −¯Arszrz−1
+s )
+!
+zp X
+j,k
+(Ajkzk −¯Ajk¯zkz2
+j )∂j .
+From there, let’s simplify again the equations to extract the determining equations. First,
+[U, S] −U[ξ(t, z)] U =
+X
+ℓ,p
+˙φℓp(t)zp∂ℓ+
+X
+ℓ,p,j,k
+φℓp(t)Ajkpjzp−ej+ek∂ℓ−
+X
+ℓ,p,j
+φℓp(t)Ajℓzp∂j
+−
+X
+ℓ,p,j,k
+φℓp(t) ¯Ajkpjzp+ej−ek∂ℓ−
+X
+ℓ,p,j
+φℓp(t) ¯Ajℓzp+2ej−2eℓ∂j + 2
+X
+ℓ,p,k
+φℓp(t) ¯Aℓkzp+eℓ−ek∂ℓ
+−
+X
+p,j,k
+˙εp(t)Ajkzp+ek∂j +
+X
+p,j,k
+˙εp(t) ¯Ajkzp+2ej−ek∂j
+−
+X
+p,j,k,r,s
+prεp(t)ArsAjkzp−er+es+ek∂j +
+X
+p,j,k,r,s
+prεp(t)Ars ¯Ajkzp−er+es−ek+2ej∂j
++
+X
+p,j,k,r,s
+prεp(t) ¯ArsAjkzp+er−es+ek∂j +
+X
+p,j,k,r,s
+prεp(t) ¯Ars ¯Ajkzp+er−es−ek+2ej∂j .

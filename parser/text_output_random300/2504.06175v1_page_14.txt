@@ -1,0 +1,121 @@
+14
+[54] A. Ambainis and D. Gottesman, The minimum distance
+problem for two-way entanglement purification, IEEE
+Transactions on Information Theory 52, 748 (2006).
+[55] P. W. Shor and J. A. Smolin, Quantum error-correcting
+codes need not completely reveal the error syndrome
+(1996), arXiv:quant-ph/9604006 [quant-ph].
+Appendix A: Notation
+Let {|0⟩, |1⟩} denote the standard basis of a qubit
+Hilbert space H (sometimes called the Z basis), |±⟩:=
+(|0⟩± |1⟩)/
+√
+2 denote the so-called Hadamard basis, and
+H := |+⟩⟨0| + |−⟩⟨1| represent the Hadamard gate.
+Let X = |0⟩⟨1| + |0⟩⟨1|, Y
+= i|0⟩⟨1| −i|0⟩⟨1|, and
+Z = |0⟩⟨0|−|1⟩⟨1|, together with the 2×2 identity, I, de-
+note the Pauli matrices P. Any two square matrices P, Q
+are said to commute when PQ = QP and anti-commute
+when PQ = −QP. Note any two Pauli matrices either
+commute or anti-commute.
+The qubit X-dephasing (bit flip) channel,
+Dq(ρ) = (1 −q)ρ + qXρX,
+(A1)
+applies the Pauli X operator with probability 0 ≤q ≤
+1/2. The qubit depolarizing channel,
+Λp(ρ) = (1 −p)ρ + p
+3(XρX + Y ρY + ZρZ),
+= (1 −4
+3p)ρ + 4p
+3 Tr(ρ) I
+2,
+(A2)
+applies Pauli X, Y, and Z operators with equal proba-
+bility p/3 and the identity operator I with probability
+1 −p where 0 ≤p ≤1. We use I to denote the identity
+channel, I(ρ) = ρ for all operators ρ.
+The fidelity of a two-qubit density operator ρ with the
+maximally entangled state,
+|ϕ⟩= (|00⟩+ |11⟩)/
+√
+2,
+(A3)
+is what we call the Bell fidelity, F := ⟨ϕ|ρ|ϕ⟩.
+The
+Bell fidelity can be estimated directly from Pauli mea-
+surements (see App. B). We refer to 1 −F as the infi-
+delity with the Bell state (A3). The two-qubit CNOT
+gate with 0th qubit as control and first qubit as target is
+CNOT01 = |0⟩⟨0| ⊗I + |1⟩⟨1| ⊗X.
+The tensor product of Pauli matrices P on n-qubits is
+sometimes called a Pauli string. We use a compressed
+notation to represent such a string by suppressing the
+identity matrix and using subscript to denote the system
+label. For instance with n = 3 we denote Z ⊗I ⊗X by
+Z0X2.
+Appendix B: Direct Bell fidelity estimation
+A two-qubit state, ρ, has Bell fidelity,
+F = ⟨ϕ|ρ|ϕ⟩= 1
+4(1 + ⟨ZZ⟩ρ + ⟨XX⟩ρ −⟨Y Y ⟩ρ)
+(B1)
+where ⟨N⟩ρ := Tr(Nρ). The Bell fidelity can be com-
+puted by measuring expectation value of ZZ, XX, and
+Y Y operators. To compute ⟨ZZ⟩ρ one may measure each
+qubit of ρ in the Z basis, obtain probabilities pij for mea-
+surement outcome corresponding to basis |ij⟩and then
+evaluate ⟨ZZ⟩ρ = 2(p00 + p11) −1.
+Expectation values for XX and Y Y can be computed
+in an analogous manner by measuring qubits in the X
+and Y basis instead of Z. Thus, to measure the Bell fi-
+delity this way one does three different measurement ex-
+periments, one for each Pauli measurement basis. Given
+a circuit for measuring a qubit in the Z basis one can
+measure in the X and Y basis by applying H and H ·S†,
+respectively, prior to measuring in the Z basis, where
+S = diag(1, −i) is
+√
+Z.
+Appendix C: A general protocol for distillation
+Both recurrence and the ZX3B protocols in Sec. II of
+the main text can be viewed as special cases of those
+in [54, 55]. These distillation protocols can be viewed in
+a unified way using a slightly different notation as follows.
+Let HAi and HBi each be a qubit Hilbert space, Hi :=
+HAi⊗HBi be a two-qubit Hilbert space, HA := ⊗n
+i=1HAi
+and HB := ⊗n
+i=1HBi each be n-qubit Hilbert spaces, and
+ρAB be a 2n-qubit state. To distill a single two-qubit
+state from ρAB one applies some unitary U = UA⊗UB to
+ρAB then post-selects for agreement on Z measurements
+made on 2(n −1) qubits. Let the unmeasured system be
+labeled 0. To describe the post-selected state consider
+T = I0 ⊗L where I0 is the identity on H0, L = ⊗n−1
+i=1 Pi,
+and Pi = |00⟩⟨00| + |11⟩⟨11| is a projector defined on Hi.
+The post-selection succeeds with probability
+pa = Tr(TUρU †T †)
+(C1)
+and results in a state
+ρ′ = 1
+pa
+Tri̸=0(TUρU †T †),
+(C2)
+where the partial trace is over all spaces Hi except i = 0.
+The fidelity of the post-selected state is
+F = Tr(ρ′ϕ).
+(C3)
+Appendix D: Distilled fidelity calculation
+As explained at the end of Sec. II, the recurrence pro-
+tocol post-selects away errors on qubits 2 and 3 that anti-
+commute with Z2Z3. This idea can be used to compute
+the final fidelity Fa in (5) and acceptance probability ps
+in (6). In Fig. 1a, suppose
+ρ02 = I ⊗Pp(ρ)
+and
+ρ13 = I ⊗Pq(ρ),
+(D1)
+where Pp(ρ) := pIρ+pxXρX+pyY ρY +pzZρZ is a qubit
+Pauli channel, each pi ≥0, and P
+i∈{I,x,y,z} pi = 1. The

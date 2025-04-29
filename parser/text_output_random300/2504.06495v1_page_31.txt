@@ -1,0 +1,40 @@
+where the Ut are i.i.d. standardized shocks.
+Over many time steps, the cumulative sum
+Pt
+s=1 Us becomes approximately normal due to the central limit theorem, and more precisely,
+the path of Xt (linearly interpolated) converges in distribution to a Brownian motion with
+drift:
+Xt ≈X0 −µt + σWt,
+where Wt denotes standard Brownian motion.
+This approximation becomes increasingly
+accurate as t grows, provided the process is not absorbed.
+While the truncation mechanism introduces complications, we again argue that the spe-
+ciﬁc implementation of the trunction — whether discrete or continuous — does not aﬀect
+our main results. Consequently, the continuous-time model remains a valid approximation
+to the discrete-time process, even in the presence of truncation. The fact that both models
+yield the same limiting behavior in Theorems 2 and 3 provides strong ex post justiﬁcation
+for this approximation.
+More general truncation mechanisms
+The truncation criterion adopted in this paper — eliminating a branch when its squared am-
+plitude φt(b) falls below a deterministic threshold ξt — is admittedly a stylized simpliﬁcation.
+More broadly, the small-signal truncation mechanism should be viewed not as fundamental,
+but as an emergent feature of deeper underlying dynamics (e.g. a fundamentally discrete
+evolution, as previously suggested). In any case, we argue that the precise physical imple-
+mentation of truncation is not essential for the emergence of the Born rule.
+For example, one natural extension is to allow the truncation threshold to vary randomly
+over time:
+Xt =
+
+
+
+
+
+Xt−1 −µ + σUt,
+if Xt−1 −µ + σUt ≥log(Et),
+−∞,
+otherwise,
+(23)
+where Et are i.i.d. positive random variables independent of Ut.
+If we parameterize the
+random barrier as log(Et) = log ǫ+Vt, where log ǫ = E log(Et), then we expect the asymptotic
+30

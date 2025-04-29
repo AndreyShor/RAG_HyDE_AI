@@ -1,0 +1,125 @@
+3
+computing angles which implement the target unitary.
+An m-mode interferometer is said to be universal if
+any unitary in U(m), the set of unitaries of dimension
+m, can be implemented.
+Since the structure is fixed, an integrated universal
+m-mode interferometer can only be optimal in the
+worst-case scenario. Whilst some unitaries in U(m) can
+be implemented with a smaller interferometer, some
+can’t. Still, we can extend the notion of optimality to
+the compilation process when one wants to compute
+the angles required to implement a given unitary.
+A
+depth-optimal compiler would return the shallowest
+implementation within the interferometer, with the
+following layers set to the identity. Whilst these layers
+will nevertheless be executed on the chip, they can be
+useful for mitigating errors [16].
+B.
+Boson Sampling
+Boson sampling is the task of sampling from the out-
+put distribution of an m mode interferometer imple-
+menting a Haar random unitary with n input photons
+[1].
+There is strong evidence that performing boson
+sampling on n > 50 photons with n << m is sufficient
+to reach quantum utility [17]. Without loss of general-
+ity we can assume that our n input photons enter the
+first n modes. To implement boson sampling, the in-
+terferometer only needs to implement the images of the
+first n creation operators. In other words, given those
+images in a m × n matrix V , any unitary U ∈U(m)
+implementable by the interferometer such that
+U
+
+In
+0m−n,n
+
+= V
+(1)
+is a valid implementation of the desired boson
+sampling experiment.
+An m-mode interferometer is
+said to be universal for n-photon boson sampling if for
+any set of n orthonormal columns V ∈Cm×n there
+exists an operator U implementable on the chip such
+that Eq. 1 holds.
+C.
+Unitary decomposition schemes
+Here we review previous decomposition schemes. We
+assume perfect beamsplitters. For works on imperfect
+beamsplitters, we refer the readers to, e.g., [10, 18–22].
+1.
+QR-based schemes
+Schemes based on the QR decomposition [23] work
+by zeroing the entries of U sequentially until one is
+left with a triangular matrix.
+One MZI is sufficient
+U
+2
+1
+4
+1
+5
+1
+3
+1
+5
+2
+4
+2
+3
+2
+5
+3
+4
+3
+5
+4
+FIG. 2: The process to zero an arbitrary U using
+Reck’ scheme. Each box/MZI has two numbers i, j
+giving the entry Uij that is zeroed with this block.
+Once all MZIs have been applied, U is diagonal and
+can be synthesized with a layer of phase-shifters.
+to zero an arbitrary entry of U based on Property 1.
+Therefore one can construct a circuit composed of
+MZIs to progressively zero the entries of U.
+If the
+zeroing is done in a good order, in the sense that one
+zeroing does not break the zeroing of another entry,
+this performs a QR decomposition of U.
+Triangular unitary matrices are diagonal, so once U
+is triangular, a layer of phase-shifters can reduce U
+to the identity.
+Taking the inverse of the operations
+gives a valid circuit for implementing U.
+Up to the
+diagonal matrix of m parameters implemented by the
+layer of phase-shifters, a unitary matrix of size m is
+parameterized by m(m −1) real parameters.
+As our
+MZIs have two phase-shifters, m(m−1)/2 are necessary
+for universality. Regarding the depth, at most m −1
+non-overlapping MZIs can be executed in two time
+steps, so the optimal MZI depth for a universal chip is
+2m(m−1)
+2(m−1) = m.
+Two main strategies for zeroing the entries of U are
+proposed in the literature:
+• Reck et al.’s scheme [8] zeroes all the elements of
+one column of U at a time. The process is repre-
+sented in Fig 2. This scheme requires m(m−1)/2
+MZIs, and the depth is 2m−3. This is optimal in
+number of MZIs but not in depth.
+• Clements et al.’s scheme [9] is described by the cir-
+cuit in Fig. 3. Each diagonal layer of MZIs is used
+to zero one subdiagonal of U and we alternate be-
+tween operations on the rows and the columns of
+U to do the zeroing in a shallow way. The layer of
+phase-shifters needed to implement the diagonal,
+initially between the left and right circuits, can be
+postponed to the end of the circuit using commu-
+tation rules. Inverting and merging the left and
+right circuits gives an circuit which is optimal in
+both the number of components and depth.

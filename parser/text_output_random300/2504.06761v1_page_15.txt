@@ -1,0 +1,54 @@
+Constructing wall turbulence
+15
+streamwise velocity near the wall. Spectral analysis confirms a 𝑘−1 energy scaling at large
+scales, consistent with DNS results. Moreover, SWAT demonstrates the ability to capture
+higher-order dynamics, such as even-order velocity moments. While the model successfully
+reproduces many key features, some discrepancies suggest avenues for further improvement,
+such as refining the representation of inner-outer interaction dynamics (Marusic et al. 2010)
+to enhance the accuracy of large-scale motions and their coupling with near-wall structures.
+Beyond its physical accuracy, our method provides a practical advantage by enabling
+the rapid generation of initial conditions for wall turbulence at any Reynolds number
+within arbitrary computational domains – without requiring additional data. This capability
+significantly reduces computational costs in the early stages of simulations, whether for DNS
+or LES, while ensuring statistical and structural consistency with real turbulence.
+Looking ahead, this framework offers exciting possibilities for extending wall turbulence
+modeling to more complex geometries and rough surfaces, providing a powerful tool for
+advancing turbulence research and improving turbulence models. Future work will focus
+on assessing the framework in more canonical wall-bounded flows, such as the turbulent
+boundary layer and pipe flow. These well-characterized cases offer critical benchmarks for
+testing accuracy and robustness, laying the groundwork for applications to more complex
+flow scenarios. Additionally, the ability to rapidly generate turbulence conditions makes it
+well-suited for integration into adaptive and dynamic simulation environments. This could
+benefit a range of applications, including aircraft aerodynamics, weather modeling, and
+industrial flow simulations, where turbulence conditions frequently change.
+Appendix A. Sensitivity analysis of model parameters for synthetic wall
+turbulence
+In this appendix, we analyze the sensitivity of the constant parameters introduced in §2 for
+SWAT, specifically the core variation coefficient 𝐶𝜎in (2.5) and the circulation coefficient
+𝐶Γ in (2.10).
+Figures 9(a,b) illustrate the sensitivity of the mean velocity profile and Reynolds stresses to
+variations in the core variation coefficient, tested at 𝐶𝜎= 0.1, 0.3, 0.5. The results indicate
+that both the mean velocity and Reynolds stress profiles remain largely insensitive to changes
+in this parameter, and we select 𝐶𝜎= 0.3 for our model.
+For the circulation coefficient, we perform a sensitivity analysis for 𝐶Γ = 1.5, 2.0, 2.5, as
+shown in figures9(c,d). Since the induced velocity of each hairpin vortex scales proportionally
+with the circulation coefficient, i.e., Δ𝑈( 𝑗)
+𝑖
+∝Γ( 𝑗)
+𝑖
+∝𝐶Γ, variations in 𝐶Γ primarily affect
+the Reynolds stress components, particularly the slope of ⟨𝑢2⟩in the logarithmic region. In
+contrast, the influence on the mean velocity profile is relatively minor. Therefore, careful
+selection is necessary to accurately reproduce velocity moments in SWAT velocity fields.
+Based on these observations, we set 𝐶Γ = 2.0, for the cases across different Reynolds
+numbers, ensuring an optimal match with the mean velocity and Reynolds stress profiles.
+Appendix B. Contributions of individual hierarchies to statistical profiles
+In this appendix, we analyze the influence of vortex packets at different hierarchies and
+superstructures on the overall statistical properties. Specifically, we quantify how individual
+hierarchical contributions shape the mean velocity profile using the velocity defect
+˜𝑈𝑑,𝑖= ˜𝑈𝑜,𝑖−
+
+ ˜𝑈𝑖
+
+,
+(B 1)

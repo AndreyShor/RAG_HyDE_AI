@@ -1,0 +1,51 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+OLIVER SCHNETZ
+Abstract. The theory of graphical functions is generalized from scalar theories to theories with spin,
+leading to a numerator structure in Feynman integrals. The main part of this article treats the case of
+positive integer spin, which is obtained from spin 1/2 theories after the evaluation of γ traces.
+As an application (in this article used mainly to prove consistency and efficiency of the method), we
+calculate Feynman periods in Yukawa-ϕ4 (Gross-Neveu-Yukawa) theory up to loop order eight.
+1. Introduction
+Originally, the theory of graphical functions was developed to analyze the number theory of Feyn-
+man periods in four-dimensional ϕ4 theory [4, 15, 17]. The results, using the Maple implementation
+HyperlogProcedures [23], led to the discovery of a connection between quantum field theory (QFT) and
+motivic Galois theory, the coaction conjectures [11, 8, 9].
+Later, in order to handle full QFTs, the theory of graphical functions was extended to non-integer
+dimensions [18]. The result of this extension was the calculation of the ϕ4 beta function up to loop order
+seven in the minimal subtraction scheme [21]. The field anomalous dimension was calculated up to eight
+loops.
+In 2021, a collaboration with Michael Borinsky led to the extension of graphical functions to even
+dimensions ≥4 [2]. Application to six-dimensional ϕ3 theory showed that the number content of ϕ3
+theory is similar (or equal) to the number content of ϕ4 theory.
+This supports the optimistic hope
+that the geometry behind the number content of ϕ4 theory is universal for all renormalizable QFTs. In
+Section 11 of this article we will see that an extension of ϕ4 theory to fermions via a three-point Yukawa
+interaction does not seem to enlarge the number content. It is important to note that there exist strong
+indications from a tool called the c2-invariant that the number content of Feynman integrals from non-
+renormalizable theories with vertex degrees ≥5 is vastly more generic than that of ϕ4 theory [16, 6, 19].
+So, from a mathematical point of view, the conjectured sparsity of QFT numbers is quite mysterious.
+In addition, complete calculations in six-dimensional ϕ3 theory became possible and led to record-
+breaking six-loop results for the beta and gamma functions [1, 22, 25].
+After these breakthroughs, it seemed desirable to generalize the theory of graphical functions to the-
+ories with positive spin. Such theories have a numerator structure in the Feynman integrands, which
+significantly increases the complexity. The main tool in this context is integration by parts (IBP) with
+the Laporta algorithm (see, e.g., [27] and the references therein). The IBP method is very powerful, but
+scales very badly with the loop order. In fact, in ϕ4 theory, IBP is not helpful, but in ϕ3 theory, IBP can
+be used effectively. In a suitable setup, at high loop orders, the theory of graphical function (which is
+inherently IBP-free) is a valuable addition to the pool of QFT calculation methods.
+In this article, we present the fundamental theory of graphical functions with positive spin. An early
+version of this article is [24].
+This article contains corrections, proofs, more results and many more
+examples. In particular, the new Section 11 on Yukawa-ϕ4 theory is the first application of graphical
+functions outside spin zero.
+Algorithms and results will be included in upcoming versions of HyperlogProcedures [23].
+Acknowlegements
+The author is supported by the DFG-grant SCHN 1240/3-1. He thanks Sven-Olaf Moch for discussions
+and encouragement. The author also thanks Simon Theil who contributed to an early version of this
+work.
+2. Propagators
+In dimension
+(1)
+D = 2λ + 2 > 2
+1
+arXiv:2504.05850v1  [hep-th]  8 Apr 2025

@@ -1,0 +1,165 @@
+λ ˜V I
+loc
+λ ˜V I
+NL
+λ ˜V I
+loc
+λ ˜V I
+NL
+λ ˜V I
+loc
+λ ˜V I
+NL
+λ ˜V I
+loc
+λ ˜V I
+NL
+H1
+8.03
+(8.17)
+0
+(0)
+Al3
+13.39
+(13.81)
+12.74
+(12.59)
+Cu1
+1.24
+(1.38)
+2.93
+(2.92)
+Ir9
+20.66
+(21.92)
+30.61
+(30.18)
+B3
+10.68
+(11.09)
+6.23
+(6.23)
+Si4
+14.03
+(14.59)
+15.39
+(15.21)
+Cu11
+15.03
+(16.56)
+74.18
+(74.29)
+Ir17
+37.01
+(39.38)
+49.88
+(49.13)
+C4
+17.10
+(17.66)
+9.52
+(9.52)
+Fe8
+9.35
+(10.46)
+54.95
+(54.87)
+Pd10
+17.20
+(18.60)
+33.01
+(32.85)
+Pt10
+22.58
+(23.98)
+31.23
+(30.73)
+N5
+25.33
+(26.03)
+13.55
+(13.55)
+Fe16
+38.62
+(40.85)
+89.56
+(91.16)
+Pd18
+49.08
+(51.59)
+34.16
+(33.88)
+Pt18
+38.60
+(41.11)
+46.72
+(45.91)
+O6
+35.08
+(35.91)
+18.23
+(18.27)
+Ni10
+12.85
+(14.25)
+68.71
+(68.71)
+W6
+9.88
+(10.72)
+19.63
+(19.29)
+F7
+45.89
+(46.87)
+23.41
+(23.58)
+Ni18
+44.83
+(47.34)
+76.04
+(76.61)
+W14
+28.94
+(30.90)
+45.44
+(44.83)
+Table 8: Rescaling factors per pair of electron-pseudoion with the first (second) column for the local (non-
+local) terms. In each cell, the top number is the exact value and the bottom number in parenthesis is an
+approximate bound computed as per the discussion in App. D. Note that the numbers technically vary for
+a given problem instance but the differences in practice are often negligible (a few percent or less).
+the leading rescaling cost arises from electron-electron Coulomb interactions. Finally, we reiterate that our
+rescaling and overall costs are significantly lower than an all-electron block-encoding, due to the use of
+pseudoions to reduce both particle number and basis size, and by a judicious choice of cutoffs.
+8
+Conclusion
+In this work, we developed a general and practical end-to-end framework to simulate the real-time quantum
+dynamics of chemical systems, including fully-interacting (beyond Born-Oppenheimer approximation) elec-
+tronic and nuclear degrees of freedom, in first quantization with a plane wave basis. To achieve this, we first
+introduced the notion of a pseudoion, which combines chemically inactive (core) electrons and the nucleus
+into a single point-like ionic object with an effective charge, lifting the well-known 1−body pseudopotentials
+from quantum chemistry literature to 2-body interaction terms. Second, we provide an initial state prepara-
+tion protocol, taking into account physical accuracy and algorithmic costs, in order to efficiently and flexibly
+initialize the quantum state across all motional degrees of freedom - molecular translations, rotations, vibra-
+tions, and electronics. Third, to evolve the initial state in time, we construct an efficient block-encoding of
+a Hamiltonian comprising interacting pseudoions and valence (chemically active) electrons, heavily utilizing
+quantum rejection sampling methods [75]. Finally, we develop a new paradigm for information extraction via
+Quantum Chemical Identification (QCI), wherein we classically develop and validate chemical fingerprints for
+molecular identification based on a combination of physical intuition and machine-learning techniques, and
+show how to implement the fingerprints coherently on the quantum computer utilizing amplitude estimation
+for efficient readout. We stress that we make no physical approximations in our time-evolution besides the
+use of a finite plane-wave basis and the general usage of pseudoions.29
+The substantial methodological and technical effort to develop this general framework via a detailed
+analysis of chemical physics, as well as construction and optimization of the quantum circuits involved, is
+illustrated through quantum resource estimates for 3 classes (a total of 7 specific problem instances) of
+problems. These involve both molecular/cluster systems and extended systems discussed in Sec. 2.4, with a
+detailed cost analysis presented in Sec. 7. We find costs in the range 1011 −1014 Toffolis per femtosecond
+of evolution, depending on the use-case (recall that the timescale for bond reconfiguration in chemistry
+can range from femtoseconds to picoseconds).
+To these, one needs to add a multiplicative overhead of
+approximately the inverse square-root of the reaction yield (probability of desired chemical products) -
+hence we stress the importance of porting classical biasing techniques to the quantum algorithm. These
+resource estimates are encouraging, since they are not entirely different from those expected from energy
+29Other spatially-localized or hybrid bases are certainly directions to consider in the future, although this might require
+careful consideration as to how localized bases will evolve in time during the evolution.
+52

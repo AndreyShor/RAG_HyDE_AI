@@ -1,0 +1,124 @@
+with pmax
+α
+∈Z denoting the electronic momentum cutoff. Similarly, we label the nuclear momentum eigen-
+states by P = (P1, P2, P3), where each Pα ∈Z lives in the set
+Gα := [−P max
+α
+, P max
+α
+],
+G = ¯G1 × G2 × G3,
+(18)
+with P max
+α
+∈N denoting the nuclear momentum cutoff.
+The integer labels p, P index the electron and ion momentum eigenvalues kp, KP given by
+kp =
+3
+X
+α=1
+pαbα,
+KP =
+3
+X
+α=1
+Pαbα,
+(19)
+where bα are the reciprocal lattice vectors along directions α = 1, 2, 3, that define the full computational
+reciprocal lattice. The reciprocal lattice vectors {bα} are constructed from the real-space lattice vectors {aα}:
+b1 = 2π
+Ωa2 × a3,
+b2 = 2π
+Ωa3 × a1,
+b3 = 2π
+Ωa1 × a2,
+(20)
+where the reciprocal lattice volume is ¯Ω= | det(B)| = (2π)3
+Ω, with B as a matrix with columns {bα}3
+α=1.
+Hence, the simulation takes place in the plane-wave basis labeled by {p}p∈G, {P}P∈G.
+The elements of Gα are stored using nα qubits in a signed momentum representation giving the max
+value of the momentum integers as pmax
+α
+= 2nα−1 −1.9 The total number of qubits per electron is therefore
+n =
+3
+X
+α=1
+nα,
+nα = ⌈log2(pmax
+α
++ 1)⌉+ 1.
+(21)
+We choose an approximate maximum momentum Λ, and set each pmax
+α
+such that10
+Λ ≈pmax
+α
+|bα|,
+for α = 1, 2, 3.
+(22)
+One may choose anisotropic cutoffs, i.e., Λ1, Λ2, Λ3, if desired (as we do in Sec. 2.4). The interaction terms
+in the Hamiltonian of interest will involve a momentum exchange that has twice the range of the momentum
+values defined in G. For this we define a new set
+q ∈G0 := G0
+1 × G0
+2 × G0
+3,
+G0
+α := [−2pmax
+α
+, 2pmax
+α
+]\{0},
+(23)
+where zero-momentum differences are neglected to avoid singularities in the interaction.
+A completely analogous discussion holds for nuclei. We shall repeat it to introduce the relevant notation.
+The elements of Gα are stored using nα qubits in a signed momentum representation giving the max value
+of the momentum integers as P max
+α
+= 2¯nα−1 −1. The total number of qubits per nucleus is therefore
+¯n =
+3
+X
+α=1
+¯nα,
+¯nα = ⌈log2(P max
+α
++ 1)⌉+ 1.
+(24)
+Each P max
+α
+is chosen with the approximate maximum momentum as before,
+¯Λ ≈P max
+α
+|bα|.
+(25)
+Similarly, the nuclear momentum exchange is given by,
+Q ∈¯G0 := ¯G0
+1 × ¯G0
+2 × ¯G0
+3,
+¯G0
+α := [−2P max
+α
+, 2P max
+α
+]\{0},
+(26)
+9The signed representation has pα = (−1)pα,nα−1 Pnα−2
+r=0
+2rpα,r where pα,r ∈{0, 1} is the r-th bit of pα. The label pα = −0
+indexes an unphysical redundant state not present in Gα. Hence, |Gα| = 2nα −1 = 2pmax
+α
++ 1 and |G| = Q3
+α=1 |Gα|.
+10In practice, we choose Λ and compute pmax
+α
+= Λ/|bα| which, in general, is a floating point number. Using Eq. (21), we
+compute the integer number of qubits and then recompute the integer pmax
+α
+as shown above Eq. (21). This then gives the
+“true” cutoffs, which are in general anisotropic, and larger than Λ due to the ceiling in Eq. (21). When quoting the instances
+in Sec. 2.4, we list these true cutoffs.
+17

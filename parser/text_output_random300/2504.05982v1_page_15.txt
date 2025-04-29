@@ -1,0 +1,31 @@
+Figure 5: (a) An illustration of MFPT inference procedure through ﬁtting ⟨τ⟩r. The MFPT
+at simulated resetting rate r∗, the predicted MFPT at r > r∗, the ﬁt of ⟨τ⟩r, and the
+estimated unbiased MFPT are presented with an orange star, green circles, blue dashed line,
+and pink rhombus, respectively. The true ⟨τ⟩r is plotted with a gray line. (b) An illustration
+of a survival function (gray line) with an exponential decay with rate k at t > t′, with
+t′ < T ∗. Times t′ and T ∗are marked with blue and green dashed lines, respectively. A linear
+ﬁt to log (S(t)) at t′ < t < T ∗is plotted with an orange dashed line. (c) An illustration of
+a rescaled survival function in MetaD simulations (orange) that deviates from the unbiased
+survival (gray). A linear ﬁt (blue) of log (S(t)) at times t < t′ (marked with a black dotted
+line) follows the unbiased survival function.
+use the total expectation theorem to express the unbiased MFPT as
+⟨τ⟩= (1 −S(T ∗)) ⟨τ|τ ≤T ∗⟩+ S(T ∗)⟨τ|τ > T ∗⟩,
+(12)
+where ⟨τ|τ ≤T ∗⟩is the conditional MFPT of trajectories with FPT < T ∗and ⟨τ|τ > T ∗⟩
+is the conditional MFPT of trajectories with FPT > T ∗. We note that both S(T ∗) and
+⟨τ|τ ≤T ∗⟩are directly sampled in simulations with sharp resetting.
+To evaluate ⟨τ|τ > T ∗⟩, we assume the survival function has some distinctive tail at
+times larger than some t′ < T ∗, as illustrated in Figure 5(b). Since simulations with sharp
+resetting sample the unbiased survival at times < T ∗, the tail is sampled without bias at
+times t′ < t < T ∗. We evaluate ⟨τ|τ > T ∗⟩from the behavior of the tail: For instance, if
+we assume an exponential tail with rate k, we can extract k from the survival function and
+estimate
+⟨τ|τ > T ∗⟩= T ∗+ k−1.
+(13)
+This can be easily done with a linear ﬁt to the logarithm of the survival function, as illustrated
+in Figure 5(b). As another example, if we assume a power-law decay, i.e, S(t > t′) ∝t−α
+with some α > 1, we can estimate
+⟨τ|τ > T ∗⟩= αT ∗
+α −1.
+(14)
+15

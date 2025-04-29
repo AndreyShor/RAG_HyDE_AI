@@ -1,0 +1,121 @@
+graph node, the task entity is grounded, and we update the
+spatial information of the task entity and its descendants ac-
+cordingly, as sketched out in Fig. 3c. The position of a task
+entity is the centroid of the aligned scene graph node. The
+radius of a task entity is defined as the distance from the
+node to its nearest neighbor for the tasks and subtasks, or
+the Euclidean norm of its bounding box dimension for the
+items. This spatial approximation is accounted for in the
+input conditional probabilities for the next round for H-IB,
+as we will discuss below.
+Hierarchy Refinement. The purpose of this step is to
+update the subtasks and items in the task hierarchy to ac-
+count for primitives that are not fully aligned to the task
+hierarchy during Scene Hierarchy Update (Sec. 4.2), shown
+as the dark green boxes in Fig. 3d. This is done by track-
+ing the subtasks and the primitives that are assigned to the
+subtasks during bottom-up construction (Fig. 3a), but are
+pruned during the top-down step (Fig. 3b). Recall that each
+primitive includes a visual embedding (Sec. 4.1). The Word
+Generator takes in these primitives and passes them through
+a word bank —an LLM-generated list of household items—
+and finds the items with the highest CLIP similarities. The
+output is a list of items present in the environment that can
+be used for each subtask. For each subtask, we query an
+LLM (Chat-GPT-4o-mini) to come up with a score be-
+tween 0 and 1 for each item on the suggested list.
+"Give me the probability values of each item
+in the list <suggestion> being required for
+the action: <subtask>.
+We add the items with a score higher than a defined
+threshold rs to the subtask, otherwise the suggested item
+is stored to query for new subtasks. Then, for each task,
+we collect the remaining suggested items not incorporated
+by its subtasks, and query an LLM for the likelihood scores
+in a similar manner, but with respect to the task. We collect
+the items with scores above a defined threshold rt and query
+the LLM for additional subtasks as follows,
+"Given the previous steps for <task>, add ad-
+ditional steps that involves only the follow-
+ing items: <suggested-items>.
+Make sure
+that the same item does not appear in more
+than one step."
+The new subtasks are then added to the task hierarchy
+and incorporated in the next scene hierarchy update. This
+process is shown in Fig. 3d. In our experiments, we set
+rs = rt = 0.8 as the relevance threshold.
+Spatially-Informed Conditional Probability.
+After
+task entities are grounded, they include spatial attributes,
+which need to be accounted for when computing the condi-
+tional probabilities for H-IB (Sec. 4.2). We define a spatial
+Method
+s-acc (%)
+t-acc (%)
+3D-VisTA [52]
+25.3
+10.3
+PQ3D [53]
+24.4
+9.7
+ASHiTA
+28.71
+12.13
+ASHiTA + Txt Emb.
+65.4
+39.33
+GPT w/ GT labels [50]
+75.9
+52.1
+Table 1.
+Evaluation of sequential grounding using the SG3D HM3DSem
+dataset with ground truth 3D instance segmentation. Trials with knowledge
+of the ground truth object labels are highlighted.
+conditional probability for primitive si and task entity t,
+ps(si|t) = η
+(
+1
+d < r
+exp (−(d −r)2/r2)
+d ≥r;
+(8)
+where η is a normalization constant, d is the distance of a
+primitive to the item task entity, and r is the radius of the
+spatial attribute. We can then compute
+ps(tk|si) = ps(si|tk)p(tk)/p(si)
+(9)
+and define the new distribution as
+p(tk|si) = ps(tk|si)pe(tk|si)/
+X
+k
+(ps(tk|si)pe(tk|si))
+(10)
+where pe is the embeddings-based conditional probability
+discussed in Sec. 4.2. These distributions are then used in
+the next round of the H-IB.
+5. Experiments
+In this section, we first evaluate the more straightfor-
+ward case where the high-level tasks are already broken
+down into subtasks.
+We verify that ASHiTA is able to
+ground these given tasks and subtasks to objects in the
+scene (Sec. 5.1).
+Next, we evaluate the main contribu-
+tion of this paper: the automatic generation of a task hi-
+erarchy grounded in a 3D scene graph given a high-level
+task (Sec. 5.2).
+To justify the design choices made in
+ASHiTA, we also perform an ablation study on the vari-
+ous components of ASHiTA (Sec. 5.3). Lastly, we qual-
+itatively demonstrate the performance of ASHiTA in real-
+world scenes given various high-level tasks (Sec. 5.4).
+5.1. Grounding Evaluation
+We evaluate ASHiTA’s ability to ground subtasks to ob-
+jects in the scene using the HM3DSem [47] test scenes with
+annotated task decomposition and grounding given by the
+SG3D dataset [50], which contains 890 high-level tasks dis-
+tributed across 35 HM3DSem scenes.
+To adapt ASHiTA for this evaluation, we use the given
+tasks and subtasks and generate an item for each subtask
+6

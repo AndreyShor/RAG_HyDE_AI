@@ -1,0 +1,41 @@
+Springer Nature 2021 LATEX template
+Human Activity Recognition using RGB-Event based Sensors
+17
+challenging enough. (e). Occlusion: In the real world, human activities can be
+occluded commonly and this challenge is also considered in our dataset.
+4.2 Data Collection and Statistic Analysis.
+The HARDVS 2.0 dataset is collected with a DAVIS346 event camera
+whose resolution is 346 × 260. A total of five persons are involved in the data
+collection stage. From a statistical perspective, our dataset contains a total of
+107, 646 paired video sequences and 300 classes of common human activities.
+We split 60%, 10%, and 30% of each category for training, validating, and test-
+ing, respectively. In total, the number of videos in the training, validating, and
+testing subsets are 64526, 10734, and 32386, respectively. With the aforemen-
+tioned characteristics, we believe our HARDVS 2.0 dataset will be a better
+evaluation platform for the neuromorphic classification problem, especially for
+the human activity recognition task. We carefully consider the aforementioned
+protocols when recording videos, ensuring that the unique characteristics of
+challenging scenarios are fully captured. A direct comparison with existing
+classification benchmark datasets can be found in Table 1 and Fig. 1. We also
+give a visualization of partial categories and video clips of the HARDVS 2.0
+dataset, as displayed in Fig. 4.
+5 Experiment
+5.1 Dataset and Evaluation Metric
+In this study, we evaluate our proposed model using two RGB-Event human
+activity recognition datasets: PokerEvent [44] 2 and our newly introduced
+HARDVS 2.0. The PokerEvent dataset is designed for recognizing character
+patterns on poker cards. It comprises 114 classes and contains 24,415 RGB-
+Event samples captured using a DVS346 event camera. The dataset is split
+into training and testing subsets, with 16,216 samples for training and 8,199
+samples for testing. We use the widely adopted evaluation metrics of top-1
+and top-5 accuracy for comparison with other methods.
+5.2 Implementation Details
+Our proposed framework can be optimized in an end-to-end manner. The learn-
+ing rate and weight decay are set as 0.001 and 0.0001, respectively. The SGD
+is selected as the optimizer and trained for a total of 30 epochs. In our imple-
+mentations, a total of 24 multi-modal HCO blocks are stacked as our backbone
+network like vHeat-B [32]. We redesign a new modality-specific continuous
+frequency value embedding and add an adaptive multi-modal fusion method
+based on the routing mechanism. Besides, we select 8 event frames as the input
+by following other benchmarked baselines. Our code is implemented using
+2https://github.com/Event-AHU/SSTFormer

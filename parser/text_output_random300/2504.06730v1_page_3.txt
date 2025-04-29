@@ -1,0 +1,98 @@
+0
+1
+Type II
+Type I
+Type III
+Type II
+Type II
+time
+SCW sorting algorithm
+Fig. 1. Schematic representation of the SCW sorting algorithm, modiﬁed from [3]. Three event classes are displayed: (Type II) are two hits within the deﬁned
+coincidence window frame (gray dotted), resulting in an accepted coincidence. (Type I) is rejected as only one hit is detected, (Type III) is rejected as more
+than two hits are registered.
+e+
+positron
+e-
+electron
+³
+tracer
+γ
+511 KeV
+photons
+γ
+crystal
+Input S: detector hits
+time
+crystal
+Label Y: event coincidences
+S
+×
+×
+×
+×
+×
+×
+×
+×
+×
+×
+×
+w1,3
+w1,1
+w2,4
+w2,1
+Y
+Fig. 2. Overview of PETNet’s coincidence detection process. Left: functional principle of PET – detection of photons emitted through annihilation of the
+β+ tracer particles with tissue electrons using a ring of scintillating crystals. Center: input spike trains of detector hits and corresponding coincidences (gray
+dotted box). Right: PETNet, a supervised denoising spiking neural network with LIF neurons.
+events [11], [12]. A schematic overview of this process is
+depicted in Figure 2. More formally, we consider the hits to
+be a sparse binary event spike train X ∈{0, 1}C×T where
+C is the crystal count and T the number of discretized time
+steps. Based on this input spike train, we want to predict an
+output spike train S ∈{0, 1}C×T for a given X as close as
+possible to a label Y ∈{0, 1}C×T. Y is 1 if and only if two
+crystals c1 and c2 have a coinciding photon hit. Note that c1
+and c2 will often be spatially opposite of one another, but do
+not necessarily have to be. In the following we will generally
+use the subscripts c and t to denote a crystal or time-step of
+X, S and Y respectively.
+B. Multi-objective Loss Function
+Na¨ıvely, it is reasonable to assume that we can model the
+above stated problem by minimizing the crystal- and time-
+step-wise binary cross-entropy loss between the network’s
+prediction S and the targets Y . Practically, this is infeasible
+and will not lead to convergence due to the label sparsity.
+To facilitate model training, we require a loss metric that
+incentivizes the correct number of output spikes per crystal,
+while also ensuring a correct arrival time of said spikes. Hence,
+we propose the LP ET Net loss function as the weighted sum
+of two separate, but not independent factors as follows for a
+spike-train-label-pair S, Y :
+LP ET Net(S, Y ) = aLΓ(S, Y ) + bL∆(S, Y ),
+(4)
+where a and b are scalar hyperparameters weighting the
+individual loss contributions. To explain both terms LΓ and
+L∆in details, we need to introduce a helper function that
+identiﬁes the set of spike timing indices for a given spike
+train:
+I1(X) = {t|∃x(t) ∈X : x(t) = 1}
+(5)
+For easier readability, we will deﬁne IS = I1(S) and IY =
+I1(Y ) to be sets of spike timing indices of the prediction and
+the labels respectively. Then, the spike count loss LΓ is the
+sum of all crystal-wise mean-squared-errors of the cardinalities
+of the spike index sets:
+LΓ(S, Y ) =
+C
+X
+c=1
+MSE (|IS,c|, |IY ,c|)
+(6)
+= 1
+C
+C
+X
+c=1
+(|IS,c| −|IY ,c|)2
+(7)

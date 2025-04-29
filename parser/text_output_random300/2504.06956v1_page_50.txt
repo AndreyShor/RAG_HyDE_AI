@@ -1,0 +1,109 @@
+The joint Laplace functional
+50
+holds. For any function χ : [0, R]d →R such that
+min
+x∈[0,R]d χ(x) ≥
+1
+8
+√
+2d
+log s ,
+max
+x∈[0,R]d χ(x) ≤log t ,
+sup
+x,y∈[0,R]d,
+|x−y|≤s−1
+|χ(x) −χ(y)|
+|x −y|1/3
+≤1 ,
+(6.6)
+one has that,
+E
+
+exp
+
+−
+Z
+[0,R]d Fγ,t(x)e−γχ(x)µγ,t(dx)
+
+−1 −ea⋆Tγρχ([0, R]d)
+ ≤ερχ([0, R]d) .
+Note that our definition of ρχ includes no analogue of the term −γ−1 log θ appearing in [MRV16,
+Equation 3.11]. This is because this term can simply be absorbed into the error term by making s
+sufficiently large.
+6.2
+Convergence of the small scales
+We are now ready to state and the prove the following result in which, roughly speaking, we compute
+the Laplace functional of the measure µγ,s,t defined in (6.4). Before proceeding, we introduce the
+following definition.
+Definition 6.2. We say that a function χ : [0, 1]d →R is scaled-admissible if for all ε > 0, there
+exists R0 ≥1 such that edsρχ(BR,s) ≤ε for all s ≥0 sufficiently large and for all R ≥R0 such that
+(es + 1)(R + 1)−1 ∈N.
+We have the following key result.
+Lemma 6.3. Let ε > 0. Then, for s ≥0 sufficiently large, for t > s sufficiently large, and for any
+scaled-admissible function χ : [0, 1]d →R in the sense of Definition 6.2, such that
+min
+x∈[0,1]d χ(x) ≥
+1
+8
+√
+2d
+log s ,
+max
+x∈[0,1]d χ(x) ≤log t ,
+sup
+x,y∈[0,1]d,
+|x−y|≤e−ss−1
+|χ(x) −χ(y)|
+|x −y|1/3
+≤es/3 ,
+(6.7)
+one has that,
+E
+
+exp
+
+−eds
+Z
+[0,1]d Fγ,t(x)e−γχ(x)µγ,s,t(dx)
+
+≥exp
+
+−(ea⋆+ ε)edsTγρχ([0, 1]d)
+
+−ε ,
+E
+
+exp
+
+−eds
+Z
+[0,1]d Fγ,t(x)e−γχ(x)µγ,s,t(dx)
+
+≤exp
+
+−(ea⋆−ε)edsTγρχ([0, 1]d)
+
++ ε ,
+where ea⋆> 0 is the constant introduced in Proposition 2.17.
+Proof. For R ≥1, s ≥0 such that (es +1)(R+1)−1 ∈N, we consider the decomposition of the cube
+[0, 1]d given in (6.3). We also consider t > s and a function χ : [0, 1] →Rd satisfying conditions
+(6.6). In order to lighten the notation, we define
+E(6.8)
+def= E
+
+exp
+
+−eds
+Z
+[0,1]d Fγ,t(x)e−γχ(x)µγ,s,t(dx)
+
+.
+(6.8)
+We write the integral over [0, 1]d appearing inside E(6.8) as the following sum
+Z
+BR,s
+Fγ,t(x)e−γχ(x)µγ,s,t(dx) +
+Z
+∪i∈[I]Ai
+Fγ,t(x)e−γχ(x)µγ,s,t(dx) ,

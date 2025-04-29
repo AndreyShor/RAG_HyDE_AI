@@ -1,0 +1,49 @@
+21
+Definition 10 (d-separation). A path p in a DAG is said to be d-separated (or blocked) by a set of nodes D if at least
+one of the following conditions holds:
+(i) p contains a chain X →Y →Z or fork X ←Y →Z such that the middle node Y is in D, or
+(ii) p contains an inverted fork (or collider) X →Y ←Z such that the middle node Y is not in D and such that
+no descendant of Y is in D.
+A set D is said to d-separate B from C if and only if D blocks every path from a node in B to a node in C.
+Lemma 5 (Equivalent Markov conditions, [77, Theorem 3.27], see also [76, Lemma 1]). Let p(V1, . . . , Vn) be the joint
+distribution of random variables V1, . . . , Vn (as always, in this work, with respect to a product measure). Then the
+following three statements are equivalent:
+(i) Recursive form: p(V1, . . . , Vn) admits the factorization
+p(V1, . . . , Vn) =
+n
+Y
+j=1
+p(Vj| PAj),
+(E1)
+where the notation p(Vj| PAj) is understood as p(Vj) if PAj is empty.
+(ii) Local (or parental) Markov condition: for every node Vj we have
+I[Vj; NDj | PAj] = 0,
+(E2)
+i.e., it is conditionally independent of its non-descendants (except itself), given its parents.
+(iii) Global Markov condition:
+I[B; C|D] = 0
+(E3)
+for all three sets B, C, D of nodes for which B and C are d-separated by D.
+In the following, we will make extensive use of the notion of compatibility of a distribution with a Bayesian network,
+which we define as follows.
+Definition 11. Let p be a distribution over a set of variables W, and let G be a Bayesian network with nodes V such
+that W ⊆V . Then, the distribution p is said to be compatible with G if
+I[B; C|D] = 0
+(E4)
+for all three sets B, C, D ⊆W of nodes for which B and C are d-separated by D.
+Note that the conditions given by eq. (E4) are those global Markov conditions with respect to G which only involve
+variables of p. Compatibility of p with G thus means that the Markov conditions implied by G for the variables of p
+hold.
+2.
+d-separation conditions for percept-action loops
+One may initially be tempted to think that the Bayesian network depicted in Figure 9b is compatible with any
+Φ = (ϕ(j|i))j,i with i ∈W ×M and j ∈Y ×Z (see Figure 9a) in the sense that all local Markov conditions implied by
+Figure 9b hold for any distribution pW XY Z(w, x, y, z) = ϕ(y, z|w, x)pW X(w, x). Figure 9b implies (by d-separation)
+conditional independence of Y and Z given their parents, that is,
+I[Y ; Z|W, X] = 0.
+(E5)
+This condition, however, is easily shown to be violated by a channel which produces correlation independent of the
+values of W and X. For instance, let ϕ(0, 0|w, x) = ϕ(1, 1|w, x) = 1/2 for all w ∈W and x ∈M and where 0, 1 ∈Y,
+0, 1 ∈Z. Then, eq. (E5) is clearly not fulfilled.
+The problem related to Figure 9b can be solved with a little sleight of hand: We introduce an additional variable
+V = Y Z, defined as the joint channel output, as depicted in Figure 9c [78]. This is by no means the only way to

@@ -1,0 +1,103 @@
+Main results
+11
+Consider the Rn-valued random variable Zγ such that, for each i ∈[n], the i-th component Zγ,i is
+given by
+Zγ,i
+def= a
+γ
+√
+2d
+⋆
+Z
+Rd exp(γ(Ψ(y) + Wi(y)))dy .
+(2.12)
+Let (xj, wj)j∈N ⊆Rd ×[0, ∞] be an arbitrary enumeration of the atoms of the Poisson point measure
+ηγ[µγc] as introduced in Definition 1.5. Consider the collection of measures (µγ,i)i∈[n] constructed
+as follows
+µγ,i(dx)
+def=
+X
+j∈N
+Zγ,i,jwjδxj ,
+∀i ∈[n] ,
+where (Zγ,i,j)j∈N is a collection of i.i.d. copies of Zγ,i, independent of ηγ[µγc]. Then, the sequence
+of measures (µγ,t,i)i∈[n] converges σ(X)-stably to the collection of measures (µγ,i)i∈[n] as t →∞.
+Remark 2.15. Let Zγ be the random variable defined by
+Zγ
+def=
+Z
+Rd exp(γ(Ψ(y)))dy .
+Then, as follows from the proof of Proposition 2.17 below, we have E[Z
+√
+2d/γ
+γ
+] < ∞. In particular,
+this implies that Zγ is almost surely finite.
+Remark 2.16. Theorem C is significantly more general than [MRV16, Theorem 2.2]. For instance,
+taking n = 1 and W1,· = 0, we not only recover Theorem 1.6 but also obtain a relatively explicit
+representation for the multiplicative constant appearing in front of the limiting measure. Indeed, the
+constant c appearing in [MRV16, page 646] is given by
+c = a
+γ
+√
+2d
+⋆
+E[Z
+√
+2d/γ
+γ
+]
+γ
+√
+2d .
+For γ >
+√
+2d, we define the constant β(d, γ) by letting
+β(d, γ)
+def= Γ(1 −
+√
+2d/γ)
+√
+2d/γ
+.
+(2.13)
+Theorem C is a direct consequence of the following result, the proof of which is given in Section 6.4,
+where we compute the joint Laplace transform of the collection of measures (µγ,t,i)i∈[n]. In what
+follows, for a measure ν on Rd and a function f : Rd →R, we write ν(f) to denote the integral of f
+against ν.
+Proposition 2.17. Consider the same setting described in Theorem C. Consider the mapping
+Tγ : (C+
+c (Rd))n →C+
+c (Rd) defined by
+Tγ[f1, . . . , fn](·)
+def= E
+ n
+X
+i=1
+fi(·)
+Z
+Rd exp(γ(Wi(y) + Ψ(y)))dy
+
+√
+2d
+γ 
+.
+(2.14)
+Then, for all (φ, (fi)i∈[n]) ∈C∞
+c (Rd) × (C+
+c (Rd))n, the following limit holds
+lim
+t→∞E
+
+exp(i⟨X, φ⟩)
+n
+Y
+i=1
+exp(−µγ,t,i(fi))
+
+= E
+h
+exp(i⟨X, φ⟩) exp(−ea⋆µγc(Tγ[f1, . . . , fn]))
+i
+,
+where ea⋆= β(d, γ)a⋆> 0 with a⋆as defined in (2.11).

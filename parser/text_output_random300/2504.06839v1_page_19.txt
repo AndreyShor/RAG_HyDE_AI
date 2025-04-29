@@ -1,0 +1,198 @@
+Now we have to bound from below the quantity (2.1.21). To this end, we observe that since Q ≤
+6
+π2 , then
+Q(2)(t, h′|h′′)
+=
+Z t
+0
+dt′
+Z 1
+−1
+dh′′′Q(t −t′, h′|h′′′)Q(t′, h′′′|h′′) ≤
+Z t
+0
+dt′
+Z 1
+−1
+dh′′ 36
+π4 = 72
+π4 t,
+(2.1.22)
+and therefore turning back to (2.1.21) we have
+Z 1
+0
+dt
+Z 1
+−1
+dh′E(2)(t, h′)
+=
+Z 1
+0
+dt
+Z 1
+−1
+dh′
+Z ∞
+t
+dt′
+Z 1
+−1
+dh′′Q(2)(t′, h′|h′′)
+=
+Z ∞
+0
+dt′
+Z 1
+−1
+dh′
+Z 1
+−1
+dh′′Q(2)(t′, h′|h′′) min{1, t′}
+=
+Z 1
+0
+dt′
+Z 1
+−1
+dh′
+Z 1
+−1
+dh′′Q(2)(t′, h′|h′′)t′
++
+Z ∞
+1
+dt′
+Z 1
+−1
+dh′
+Z 1
+−1
+dh′′Q(2)(t′, h′|h′′)
+|
+{z
+}
+=2−
+R 1
+0 dt′ R 1
+−1 dh′ R 1
+−1 dh′′Q(2)(t′,h′|h′′) by property (B.1.4)
+=
+2 −
+Z 1
+0
+dt′
+Z 1
+−1
+dh′
+Z 1
+−1
+dh′′
+Q(2)(t′, h′|h′′)
+|
+{z
+}
+≤72
+π4 t′ thanks to (2.1.22)
+(1 −t′)
+≥
+2 −
+Z 1
+0
+dt′
+Z 1
+−1
+dh′
+Z 1
+−1
+dh′′ 72
+π4 t′(1 −t′)
+=
+2 −288
+π4
+1
+6 = 2 −48
+π4 > 1,
+and this concludes the proof of property (2.1.18) (that is Step 1).
+Now we go back to the second step.
+Step 2:
+we want to prove that
+sup
+h∈[−1,1]
+Z
+0<f h≤c
+2π E(2) dθdtdh′E(2) −−−→
+c→0 0.
+This is very easy to prove, indeed if this property did not hold, there would be ε > 0, a sequence cn ∈[0, 1
+n] and
+another sequence hn ∈[−1, 1] such that
+ε ≤
+Z
+0<f hn≤cn
+2π E(2) E(2).
+If hnk was a subsequence of {hn} converging to ¯h, then
+E(2)10<f hnk ≤
+cnk
+2π −−−−−→
+k→+∞E(2)10<f ¯h≤0 = 0 almost always (θ, t, h′),
+moreover E(2)10<f hnk ≤
+cnk
+2π ≤E(2), and therefore this can not occur for dominated convergence of {E(2)10<f hnk ≤
+cnk
+2π }k.
+Step 3:
+conclusion. We go back to the expression we got before Step 1, and plugging in it Step 1 and Step 2
+we get
+f h −c
+2π E(2)
+L1
+≤
+1 −2c
+ 1
+2π
+Z
+f h>0
+dθdtdh′E(2) −1
+
+|
+{z
+}
+≥C:=1−48
+π4 >0∀h∈[−1,1] by using Step 1
++2c
+Z
+dθdtdh′
+0<f h≤c
+2π E(2)E(2)
+|
+{z
+}
+≤C
+2 for c≤¯c<<1∀h∈[−1,1] by Step 2
+≤
+1 −cC for c << 1,
+and this proves the thesis.
+2.2
+Proof of Theorem 1.1.
+Now we have all the intermediate results that we need to prove Theorem 1.1.
+Proof. Let us begin by proving the first statement (1.1.13) of the Theorem, that is, that for any function µ0 ∈
+L1 ∩Lp(T1
+2π × [0, +∞) × [−1, 1]) it holds
+µt −⟨µ0⟩
+2π E
+
+Lp(T1
+2π×[0,+∞)×[−1,1])
+≤
+C
+∥µ0∥L1(T1
+2π×[0,+∞)×[−1,1]) + ∥µ0∥Lp(T1
+2π×[0,+∞)×[−1,1])
+t + 1
++
+C
+h
+∥µ0∥L1(T1
+2π×[t/4,+∞)×[−1,1]) + ∥µ0∥Lp(T1
+2π×[t/4,+∞)×[−1,1])
+i
+19

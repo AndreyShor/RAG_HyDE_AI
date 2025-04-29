@@ -1,0 +1,50 @@
+for some partition {T1, T2} of T such that T1 contains qubits 2 and 3 and T2 contains qubit
+4.
+We then have that |ϕx0⟩separates at {T ∪T1, T2}.
+By Lemma 4.6, either G(2)
+0
+disappears
+on |ϕ⟩T ⊗|ϕx0⟩T1 ⊗|σ⟩T2 for any |σ⟩T2 ∈HT2 or G(2)
+0
+disappears on |σ⟩T∪T1 ⊗|ϕx0⟩T2 for any
+|σ⟩T∪T1 ∈HT∪T1. In the former case, the ﬁnal target value does not depend on input qubit 4; in
+the latter, it does not depend on input qubits 2 or 3. In either case, C cannot compute ⊕n.
+Remark 6.10. The condition that all the ancilla qubits are initially |0⟩in Theorem 6.1 can be
+relaxed to allow for a more general initial ancilla state, provided the overall initial state of the
+circuit separates at {T, T1 ∪T2} and at {T ∪T1, T2}. That is, C cannot |α⟩-compute ⊕n for any
+|α⟩such that
+0n+1
+⊗|α⟩separates at {T, T1 ∪T2} and at {T ∪T1, T2}.
+Remark 6.11. Theorem 6.1 also holds for depth-2 circuits that include Gη-gates as in Eq. (14),
+and the value of η need not be the same for each gate.
+6.1
+Further Research
+Our techniques currently work for depth 2, but obviously, we would like to prove limitations on
+QAC-circuits of higher depth. We hope the entanglement lemma (Lemma 4.3) will be useful for
+depth 3 and beyond, however.
+Lemma 5.3 is stronger than needed for the current results; by
+committing clusters of input qubits to certain states, we can turn oﬀCZ-gates through more than
+two layers. These two lemmas as well as Lemma 4.6 provide powerful tools for dealing with QAC-
+circuits of higher depth. By simplifying a circuit in the right way, one hopes to reduce its eﬀective
+depth, and this in turn may lead to an inductive proof of the limitations of such circuits.
+More speciﬁcally, Lemma 4.3 may be useful for depth 3 and beyond because it disallows many
+diﬀerent circuit topologies for QAC-circuits computing parity. For example, the following circuit
+topology is impossible for simulating parity (or any classical reversible function for that matter)
+cleanly unless the middle gate simpliﬁes:
+1
+2
+3
+4
+5
+6
+(Here only the CZ-gates are shown; the single qubit gates are suppressed.) The reason is that, for
+any classical input, the state on the far left is completely separable, and so the state immediately
+after the ﬁrst layer is {2, 3, 4}-separable (separating at {{1, 2, 3}, {4, 5, 6}}). If the middle gate does
+not simplify, then by the lemma, the state |ψ⟩immediately to its right must be {2, 3, 4}-entangled.
+Now assuming a clean simulation, the state on the far right is completely separable, and so running
+the circuit backwards from the right, we see that |ψ⟩must be {2, 3, 4}-separable (separating at
+{{1, 2}, {3, 4, 5, 6}}). This is a contradiction.
+Finally, we note that the techniques used to prove that parity cannot be computed by classical
+AC0-circuits (i.e., random restrictions and switching lemmas) are not necessarily needed or even
+relevant here, because fanout is taken for granted in the classical case, unlike in the quantum case.
+24

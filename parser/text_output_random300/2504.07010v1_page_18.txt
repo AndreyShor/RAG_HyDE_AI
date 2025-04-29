@@ -1,0 +1,42 @@
+Lemma 1 of Barber et al. (2023) for a discussion about the tightness of the
+bound. □
+After training bc and calibrating a CP algorithm with |An −bc(ˆYn)|, the
+prediction intervals for the BC become
+CN+1 = [bc(ˆYN+1) −qα, bc(ˆYN+1) + qα]
+(40)
+qα = infq
+( N
+X
+n=1
+1(|BCn −bc(ˆYn)| ≤q) ≥⌈(1 −α)(N + 1)⌉
+)
+(41)
+and, under the assumptions of Lemma 2.6, have approximate (1−α) coverage
+Prob(BC(YN+1, ˆYN+1) ∈CN+1) ≥(1 −α) −max
+n {|µn −bc(ˆYn)|}
+(42)
+In the experiments, we use bc(Z) = arg ming E∥A −g(Z)∥2, where Z =
+(ˆE(ˆY ), ˆE(ˆY ⊗ˆY T)) are the first and empirical second moments of ˆYn.
+3
+Experiments
+We ran a synthetic experiment to assess the accuracy of the proposed BC
+estimator and used simulated and real quantum hardware data to validate the
+prediction of the CP algorithm. A summary of how we applied the methods
+described in Section 2.5 in practice is given in the following section 3.1.
+3.1
+Pipeline
+Given a quantum machine, e.g.
+ibm kyiv at IBM (2025), we proceed as
+follows.
+1. Use the quantum machine to run N classically tractable circuits and
+collect the corresponding noisy outputs, ˆYnm, n = 1, . . . , N and m =
+1, . . . Mshots.
+2. Use a classical simulator to run the same N circuits and collect the cor-
+responding noise-free outputs, Ynm, n = 1, . . . , N and m = 1, . . . Mshots.
+3. Compute the BC for all n = 1, . . . , N.
+4. Split the data set according to the circuit sizes, sn, e.g. we let Itrain =
+{n : sn < smax}N
+n=1, smax = arg maxn{sn}N
+n=1 and Ical = {n : sn =
+smax}N
+n=1.

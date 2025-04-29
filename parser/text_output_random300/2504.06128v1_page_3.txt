@@ -1,0 +1,76 @@
+SINGULARITY AND REGULARITY OF THE CRITICAL 2D SHF
+3
+parameter ϑ Ó ´8 can always be analysed by studying the directed polymer partition
+functions in the quasi-critical regime.
+1.1. Briefing on the Critical 2D SHF. To make sense of the two-dimensional sto-
+chastic heat equation (SHE), we need to first perform a regularisation on small spatial scales
+(ultraviolet cutoff) and then take a suitable limit. The regularisation can be accomplished in
+different ways. One way is to consider the mollified SHE
+Btuε “ 1
+2∆uε ` βε ξεpt, xquε,
+(1.1)
+where ε ą 0 is the spatial scale of regularisation, jp¨q is a smooth probability kernel on R2
+and jεpxq “ ε´2jpx{εq is its scaled version, while ξε :“ jε ˚ ξ is the spatial mollification of
+the white noise ξ.
+Another way is to discretize space and time. Namely, the white noise ξ is replaced by a
+family of i.i.d. random variables ω “ pωpn, xqqnPN,xPZ2 with law P and expectation E, and
+Erωs “ 0 ,
+Erω2s “ 1 ,
+D β0 ą 0 :
+λpβq :“ log Ereβωs ă 8
+@β P r0, β0s .
+(1.2)
+Replacing derivatives in (SHE) by suitable difference operators, the solution can be expressed
+in terms of the (point-to-point) partition functions of the directed polymer model:
+ZβN
+M,Npy, xq “ E
+„
+e
+řN´1
+n“M`1tβNωpn,Snq´λpβNqu 1tSN“xu
+ˇˇˇˇ SM “ y
+ȷ
+,
+(1.3)
+where E is the expectation with respect to the 2D simple symmetric random walk S “
+pSnqně0. More precisely, the diffusively rescaled plane-to-point partition functions (with
+Zeven :“ t2n : n P Zu and Z2
+even :“ tpx, yq P Z2 : x ` y P Zevenu)
+upNqpt, xq :“
+ÿ
+yPZ2
+even
+ZβN
+0,Ntpy,
+?
+Nxq,
+pt, xq P 1
+N Zeven ˆ
+1
+?
+N
+Z2
+even,
+(1.4)
+is the analogue of uεpt, xq and solves a version of (SHE), discretised on spatial scale 1{
+?
+N
+and time scale 1{N, with initial condition upNqp0, ¨q ” 1.
+It was first shown in [CSZ17] that on the intermediate disorder scale
+βN “ ˆβ
+c
+π
+log N ,
+the directed polymer partition functions upNqpt, xq undergo a phase transition (with critical
+value ˆβc “ 1) in two different senses:
+‚ For each pt, xq P r0, 1q ˆ R2, upNqpt, xq converges to a log-normal limit if ˆβ ă 1 and
+converges to 0 if ˆβ ě 1;
+‚ The centered and rescaled field β´1
+N pupNqpt, xq ´ 1q converges for ˆβ ă 1 to a Gaussian
+limit that solves the additive SHE (or Edwards-Wilkinson equation)
+Btv “ 1
+2∆v `
+d
+ˆβ2
+1 ´ ˆβ2 ξ,
+where the noise strength diverges as ˆβ Ò 1.

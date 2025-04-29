@@ -1,0 +1,175 @@
+3
+in the control software. The controlled-phase gate arises nat-
+urally from the dispersive coupling between the transmon and
+the photonic qubit, with the interaction time serving as a tun-
+able control parameter. Each layer introduces seven varia-
+tional parameters, and it can be proved that a single layer is
+sufficient to prepare an arbitrary two-qubit state from a given
+input state.
+However, due to the limited bond dimension,
+achieving arbitrary N + 1-qubit states across N layers is not
+always feasible. Nevertheless, this limitation enhances effi-
+ciency by focusing on the relevant subspace of quantum states
+necessary for the problem at hand.
+Given the presence of noise in the quantum system, im-
+plementing an effective error mitigation strategy is crucial.
+Previously, zero-noise extrapolation has been employed by
+stretching gate time, i.e., changing the coherent interaction
+strengths, to scale the effective noise strengths in each quan-
+tum gate [18]. In contrast, our approach differs by injecting
+noise through the direct control of the dominant decoherence
+rates in our system, which we refer to as analog error miti-
+gation. This approach is widely applicable to various experi-
+mental systems, as certain coherent interaction strengths may
+not be adjustable in practice. Specifically, we achieve this by
+modifying the longitudinal relaxation time T1 and the trans-
+verse relaxation time T ∗
+2 of the transmon qubit. The evolution
+of the quantum state (ρ) under the coherent Hamiltonian H
+and noises can be described by the Lindblad master equation:
+˙ρ = −i[H(t),ρ]+λL (ρ),
+(2)
+where λ is the noise strength and L is the Lindblad superop-
+erator that describes the decoherence processes. By treating
+the noises as perturbations to the quantum evolution, the ex-
+pectation value of an observable of interest E(λ) can be ex-
+panded as a power series around its zero-noise value E∗[16–
+18]:
+E(λ) = E∗+
+n
+∑
+k=1
+akλ k +O(λ n+1),
+(3)
+where ak are coefficients that depend on the specific details of
+the noise model and the observable being measured. By ex-
+perimentally obtaining the expectation values E(ciλ) at dif-
+ferent noise levels ciλ, where ci are scaling factors, we can
+extrapolate back to the zero-noise value E∗.
+III.
+RESULTS
+In our experiments, the dominant source of noise is the lon-
+gitudinal relaxation of the transmon qubit. The storage cavity
+has a longitudinal relaxation time that is an order of magni-
+tude longer than that of the transmon qubit, while its trans-
+verse relaxation is mainly induced by the transmon qubit due
+to their dispersive coupling. Given that T ∗
+2 > T1 for the trans-
+mon qubit, the longitudinal relaxation of the transmon is the
+dominant factor. Therefore, we focus on mitigating the ex-
+cited state damping noise Γ1 of the transmon to suppress the
+leading imperfections.
+0.88
+0.84
+0.80
+0.76
+Fidelity
+25
+20
+15
+10
+5
+0
+Ωef/2π (kHz)
+ H
+ H
+ Id
+ Id
+30
+25
+20
+15
+10
+5
+T2 (µs)
+25
+20
+15
+10
+5
+0
+Ωef/2π (kHz)
+30
+25
+20
+15
+10
+5
+T1 (µs)
+25
+20
+15
+10
+5
+0
+Ωef/2π (kHz)
+ Ref
+s
+s
+s
+s
+(a)
+(b)
+(c)
+(d)
+g 0
+e 0
+f ,0
+g 1
+|0
+|1
+|2
+|3
+ Ref
+s
+s
+s
+s
+|0
+|1
+|2
+|3
+ef
+Ω
+Ωf0g1
+ ,
+ ,
+ ,
+∗
+Γr
+FIG. 2. (a) Schematic of the qubit noise injection technique, where
+a strong drive Ωf0g1 is applied between the |f,0⟩qr and |g,1⟩qr states
+to control the damping rate of the transmon qubit via the low-quality
+factor readout cavity. (b) Longitudinal relaxation time T1 and (c)
+transverse relaxation time T ∗
+2 of the transmon qubit as a function of
+the drive amplitude Ωef for different Fock states in the storage cav-
+ity. (d) Gate fidelity of the Hadamard gate and identity gate as a
+function of Ωef. The gate fidelity is defined as the fidelity of the
+Pauli transfer matrix, obtained via process tomography in the exper-
+iment. The green data represent the gate fidelity when no pump is
+applied (Ωf0g1 = 0), while the blue data show the fidelity with Ωf0g1
+activated. The diamonds indicate the parameter c = 2.2, where both
+gate fidelity and coherence time degrade by the same factor.
+To address this, we implement a noise injection method to
+the transmon qubit by directly controlling its damping rate
+through the introduction of an additional population relax-
+ation channel.
+By leveraging the low-quality factor read-
+out cavity [37, 38], as shown in Fig. 2(a), we apply a weak
+drive with an amplitude Ωef that is resonant with the transi-
+tion between the |e,0⟩qr state and the |f,0⟩qr state, facilitat-
+ing the transfer of population from the first excited state of
+the transmon to the second excited state |f⟩. Here, |e,0⟩qr
+represents the joint quantum state of the composite transmon
+qubit-readout cavity system, as indicated by the subscripts.
+Subsequently, relaxation from the second excited state of the
+transmon to the ground state is realized by inducing a decay
+from the |f,0⟩qr state to |g,1⟩qr through a strong drive with an
+amplitude Ωf0g1 applied to the transition between them. Ben-
+efiting from the Purcell effect, the readout cavity has a rel-
+atively large decay rate Γr, and the induced relaxation chan-
+nel is approximately a Markovian process when the condition
+Ωef ≪Ωf0g1 ≪Γr is satisfied. Therefore, this setup effectively
+introduces additional damping noise to the computational ba-
+sis states |g⟩and |e⟩of the transmon qubit, with the added

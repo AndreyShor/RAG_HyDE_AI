@@ -1,0 +1,35 @@
+5 
+2.3 SPAD-DCS system and noise calculation 
+As reported earlier20, the SPAD sensor ATLAS, with embedded on-chip autocorrelation 
+computation optimized for DCS applications, has demonstrated deep and high-speed CBF 
+monitoring. In this work, we operated ATLAS in the ensemble DCS mode, where all 128×128 
+macropixels (each composed of 4×4 micropixels) were combined and averaged to output 31 lag 
+times of the light intensity ACF. The pixel clock (PixClk) was set to 25 MHz, corresponding to a 
+lag time range of 1.28–39.68 µs, enabling deeper/faster flow information capture. The iteration 
+number was set to 4096, corresponding to an integration time of 5.24 ms. We used a continuous-
+wave laser source (DL785-100-S, 785 nm, 100 mW, CrystaLaser) coupled with a multimode 
+optical fiber (MMF, M143L01, Ø600 µm, 0.22 NA, Thorlabs) to illuminate tissues. The detector 
+fiber (MMF, M59L01, Ø1000 µm, 0.50 NA, Thorlabs) tip was placed 23 mm from the SPAD chip, 
+the optimal distance for maximizing speckle contrast20. Both fibers were held by a custom 3D-
+printed probe, maintaining a 35 mm separation. The overall system setup is illustrated in Fig. 1. 
+We processed SPAD ACF data using single-exponential fitting, a simplified model commonly 
+preferred for real-time measurements. The analytical normalized light intensity ACF can be 
+simplified to a single-exponential decay function at a small 𝜏𝜏 range44,45: 
+𝑔𝑔2(𝜏𝜏) = 1 + 𝛽𝛽𝑒𝑒−2𝜏𝜏/𝜏𝜏𝑐𝑐,
+(7) 
+where 𝜏𝜏𝑐𝑐 is the decorrelation time. The reciprocal of 𝜏𝜏𝑐𝑐, known as the decorrelation speed, is 
+directly proportional to blood flow rate and can be used to quantify blood flow changes13. In the 
+following sections, we compare cerebral perfusion measured by DL and fitting methods through 
+comparing rCBFi measured with the DL model and the relative change in single-exponential 
+fitting-recovered decorrelation speed. 
+ 
+Fig. 1 The SPAD-DCS system setup. The 785 nm continuous wave laser was coupled into a multi-mode fiber 
+(MMF, M143L01, Ø600 µm, 0.22 NA, Thorlabs), the scattered photons was collected by another MMF (M59L01, 
+Ø1000 µm, 0.50 NA, Thorlabs). The output of the SPAD array was received by an Opal Kelly FPGA board 
+(XEM7310-A200) and transferred to the PC through a USB 3.0 cable. The on-chip computed ACF is sent to the 
+trained DL model for real-time CBFi/rCBFi display. 
+We applied this system to a healthy human adult (male, 29 years old) at the resting-state to collect 
+the baseline autocorrelation. The probe was secured to the participant’s forehead using an 
+adjustable Velcro strap to ensure stability and comfort. The test was repeated five times, recording 
+1000 ACF frames per session, yielding a total of 5,000 baseline samples for noise estimation. We 
+use 𝑋𝑋(𝜏𝜏) to represent the collected data. To prevent overestimation of noise due to pulsatile CBF 

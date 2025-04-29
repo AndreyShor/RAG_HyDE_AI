@@ -1,0 +1,47 @@
+Springer Nature 2021 LATEX template
+4
+Human Activity Recognition using RGB-Event based Sensors
+have reached performance saturation; for instance, Wang et al. [30] achieved a
+recognition accuracy of 97.08% on DvsGesture [20]. As a result, there remains
+a strong demand in the research community for a large-scale, real-world human
+activity recognition benchmark dataset.
+In this paper, we propose a large-scale RGB-Event benchmark dataset
+called HARDVS 2.0 to address the problem of the lack of real RGB-Event data
+for human activity recognition. Specifically, our proposed HARDVS 2.0 dataset
+includes over 100, 000 video clips, each lasting approximately 5 to 10 seconds,
+recorded with a DAVIS346 event camera. It covers 300 categories of human
+activities in daily life, such as drinking, riding a bike, sitting down, and washing
+hands. To ensure diversity, the dataset incorporates a variety of factors, includ-
+ing multi-view perspectives, varying illumination conditions, motion speeds,
+dynamic backgrounds, occlusion, flashing light, and photographic distance. To
+the best of our knowledge, HARDVS 2.0 is the first realistic, large-scale, and
+challenging benchmark multi-modal dataset for human activity recognition in
+real-world, uncontrolled environments. A comparison of existing recognition
+datasets with our HARDVS 2.0 is shown in Fig. 1 (a).
+Based on our newly proposed multi-modal dataset HARDVS 2.0, we design
+a novel framework for Multi-Modal visual Heat Conduction Operation based
+HAR task, termed MMHCO-HAR. Inspired by the physics-informed heat
+conduction and the success of the heat conduction operation-based vision
+model [31, 32], in this work, we propose a novel multi-modal heat conduction
+operation framework for efficient activity recognition, termed MMHCO-HAR.
+Specifically speaking, we first adopt a stem network to transform the input
+RGB frames and event streams into corresponding feature embeddings. The
+multi-modal heat conduction blocks are proposed to fuse the dual features, the
+key module of which is the multi-modal Heat Conduction Operation (HCO)
+layer. In our implementation, we adopt the multi-modal DCT-IDCT layer to
+integrate RGB and event embeddings and incorporate the heat conductivity
+coefficient via FVEs (Frequency Value Embeddings) into this module adap-
+tively. Then, we design three different feature fusion strategies for various
+feature combinations in diverse situations and utilize a policy routing network
+to select a fusion strategy adaptively, aiming to alleviate the issue of imbal-
+anced multi-modal learning. A simple schematic diagram of our framework is
+visualized in Fig. 1 (b).
+To sum up, the main contributions of this paper can be summarized as the
+following three aspects:
+• We propose a large-scale benchmark dataset for RGB-Event based human
+activity recognition, termed HARDVS 2.0. To the best of our knowledge, it
+is the first large-scale multi-modal dataset for HAR, which contains 300 cat-
+egories of everyday real-world actions with a total of 107,646 paired videos
+covering various challenging scenarios.
+• We propose a multi-modal heat conduction-based backbone network
+for human activity recognition. Our RGB-Event HAR framework achieves

@@ -1,0 +1,67 @@
+Resampling property and independence from the threshold
+40
+5
+Resampling property and independence from the threshold
+The main goal of this section is to present some results concerning the fields eΥλ and Ψλ introduced
+in Theorem A and Definition 2.7, respectively. In particular, in Section 5.1, we prove some key
+technical results related to the field eΥλ. Then, in Section 5.2, we establish the “resampling property”
+of the field eΥλ, as stated in Proposition 2.9, from which Proposition 2.11 follows directly. Finally, in
+Section 5.3, we establish the independence of certain quantities of interest from λ. In particular, we
+prove Proposition 2.13.
+5.1
+Some technical results
+The main goal of this section is to establish a result concerning the limiting “shape field” Υλ introduced
+in Theorem A, which will play a crucial role in the proof of some of our main theorems. Specifically,
+the main goal of this section is to prove the following lemma.
+Lemma 5.1. There exists a countable set Λc ⊆R+ such that for each λ, θ ∈Λ = R+ \ Λc it holds
+that
+P(M(eΥλ) = θ) = 0 .
+(5.1)
+Moreover, for all λ, θ ∈Λ, it holds that
+P(|{x ∈Rd : eΥλ(x) −M(eΥλ) = −θ}| > 0) = 0 .
+(5.2)
+Furthermore, for each λ1 ̸= λ2 ∈Λ such that λ2 < λ1, the field eΥλ2 has the same law of the field eΥλ1
+conditioned on the event M(eΥλ1) ≤λ2.
+Remark 5.2. It follows from the proof of Lemma 5.1 that we may (and will) assume that, for any
+λ, θ ∈Λ, the identities (5.1) and (5.2) hold also with M(eΥλ) replaced by M0,k(eΥλ) for some fixed
+k ≥0.
+In order to prove Lemma 5.1, we need to introduce some notation. We begin by defining the following
+space
+X
+def= {(b, ϕ) : b ∈R+
+0 ∪{∞}, ϕ ∈C(Rd, R ∪{−∞})} .
+We equip the space X with the pseudometrics dX and dX defined as follows
+dX((b1, ϕ1), (b2, ϕ2))
+def= |e−b1 −e−b2| +
+∞
+X
+k=1
+2−k
+
+1 ∧
+sup
+x∈Bk∩Bb1∧b2
+|ϕ1(x) −ϕ2(x)|
+
+,
+dX((b1, ϕ1), (b2, ϕ2))
+def= |e−b1 −e−b2| + sup
+x∈Rd|χb1(x)ecϕ1(x) −χb2(x)ecϕ2(x)| ,
+where c = c(d)
+def=
+√
+2/d, and for each b ∈R+
+0 ∪{∞}, χb : Rd →R is a smooth function such that
+χb(x) = 1 for all |x| ≤eb and χb(x) = 0 for all |x| ≥eb + 1.
+For each λ > 0, we let Aλ ⊆X be the set defined as follows
+Aλ
+def= {(b, ϕ) ∈X : M0,b(ϕ) ≤λ} .
+Furthermore, we define the collection of measures (νb,λ)b>0 and the measure ν∞,λ as follows
+νb,λ
+def= c⋆,λ
+√
+b Law[(b, Υb)]|Aλ
+and
+ν∞,λ = Law[(∞, eΥλ)] ,
+where ·|Aλ denotes the restriction to the subspace Aλ, and c⋆,λ is the constant introduced in
+Theorem B.

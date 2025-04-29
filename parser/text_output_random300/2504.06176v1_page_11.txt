@@ -1,0 +1,124 @@
+A Self-Supervised Framework for Space Object Behaviour Characterisation.
+11
+Figure 9: Example light curves from the GMV GRIAL mo-
+tion finetuning dataset.
+(A-F) Six grouped motions are la-
+belled into classes. (A) YAW (grouped) YAWXC, YAWXS.
+The Yaw motions represent the satellite pointing its X axis to
+nadir, compensating for either optical distortion (XC), or max-
+imising solar array lighting (XS). (B) SAFE (grouped) SAFEX,
+SAFEZ. The Safe motions represent celestial North pole point-
+ing, with either its’ X (SAFEX) or Z axis (SAFEZ) pointing
+to the Sun. (C) Tumbling, representing uncontrolled/complex
+rotation. (D) SPIN, representing simpler axial rotation. (E) IN-
+ERTIAL, fixed pointing, and (F) SUN, representing the space
+object’s X axis pointing to the sun, with Y to the celestial North
+pole, differentiated from SAFEZ by an X-axis phase angle.
+including the VAE sampling, (as opposed to standard autoen-
+coding), we create a continuous, structured latent space that
+enables generation of novel data points through interpolation
+and sampling. For decoding, we use a standard feed forward
+network with the architecture shown in (Equation 2).
+Perceiver-VAE =
+
+Encoder:
+Input
+Fourier Encoding
+−−−−−−−−−−−−→Encoded Position
+Latent Array
+Cross-Attention, FF
+−−−−−−−−−−−−−→Updated Latents
+Updated Latents
+Self-Attention
+−−−−−−−−−−→Processed Latents
+Processed Latents −→µ, log σ2
+z = µ + ε · exp(0.5 · log σ2)
+o
+reparam.
+Decoder:
+z −→Reconstruction
+(1)
+Where
+Decoder =
+
+Linear(dlatent →512)
+LayerNorm →ReLU
+Linear(512 →1024)
+LayerNorm →ReLU
+Linear(1024 →doutput)
+(2)
+3.3
+Pre-training strategy
+We pre-trained our Perceiver-VAE model using a multi-task
+self-supervised learning approach.
+For this we incorporated
+three objectives: reconstruction, masking, and forecasting. The
+reconstruction task trained the model to encode and decode
+whole light curves, establishing the foundations for latent space
+representation. At the same time, the masking task required
+the model to predict randomly masked segments of input se-
+quences, encouraging our model to learn contextual relation-
+ships within the light curve. Finally, the forecasting task trained
+the model to predict future sequence values, promoting the cap-
+ture of temporal dynamics and enabling forecasting at inference
+time. We combined these learning objectives by summing indi-
+vidual mean squared error loss components for each task, com-
+bined with a KL divergence term (weight α0.001) to regularise
+the latent space (Equation 3. This combined otpimisation en-
+abled the model to learn rich representations of light curve char-
+acteristics while maintaining a structured latent space suitable
+for generation and interpolation.
+Ltotal = Lrecon + αLKL + Lmask + Lforecast,
+(3)
+where:
+Lrecon = 1
+N
+N
+X
+i=1
+(xi −ˆxi)2,
+(4)
+Lmask = 1
+Nm
+X
+i∈M
+(xi −ˆxm
+i )2,
+(5)
+Lforecast = 1
+Nf
+X
+i∈F
+(xi −ˆx f
+i )2.
+(6)
+LKL = −1
+2
+d
+X
+j=1
+(1 + log σ2
+j −µ2
+j −σ2
+j).
+(7)
+The total loss (Equation 3) combines four components: The
+reconstruction loss (Lrecon, Equation 4) measures the Mean
+Square Error (MSE) between the original inputs xi and recon-
+structed outputs ˆxi across all N data points.
+The masking loss (Lmask, Equation 5) calculates MSE on a sub-
+set of masked inputs (M), where ˆxm
+i represents reconstructions
+of deliberately masked elements, encouraging the model to in-
+fer missing data from context.
+The forecasting loss (Lforecast, Equation 6) computes MSE on
+future time steps (F), where ˆx f
+i represents predicted values for
+future time points, training the model to extrapolate temporal
+patterns.
+The KL divergence loss (LKL, Equation 7) regularises the la-
+tent space by ensuring the learned distribution (parameterised
+by mean µj and variance σ2
+j across d latent dimensions) ap-
+proximates a standard normal distribution, weighted by hyper-
+parameter α.

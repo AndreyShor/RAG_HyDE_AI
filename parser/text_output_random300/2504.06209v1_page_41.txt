@@ -1,0 +1,111 @@
+41
+Mt
+At
+St
+Mt+1
+At+1
+St+1
+Mt−1
+At−1
+St−1
+Mt+2
+At+2
+St+2
+Mt−2
+At−2
+St−2
+Mt+3
+At+3
+Mt−3
+At−3
+St−3
+FIG. 25. Bayesian network for a memoryless environment channel (corollary 2) with colorized d-separation (blue d-separates
+red and green) used in the proof of Theorem 10.
+From now on, let env be the memoryless environment considered in lemma 10. Then, the second term vanishes
+because of d-separation, I [A0:tS0:t; St|MtAt] = 0, depicted in Figure 25. Further, for the environment under consid-
+eration we have by lemma 10,
+⟨I [At; St|Mt]⟩t = 0 ⇔⟨H (At|Mt)⟩t = 0.
+(G63)
+In particular, we have just seen that the left-hand side of eq. (G63) is the condition for an agent to be a.m. predictive.
+Then, since there exist agents which remember their actions perfectly in the Ces`aro sense, i.e., they fulfill the right-
+hand side of eq. (G63), such agents are also a.m. predictive.
+For example, take Mt = At for all t ∈N0.
+Thus,
+A
+→
+←env
+pred ̸= ∅.
+Using the expression for work capacity derived for memoryless environments, see lemma 9, after some straightfor-
+ward algebra we obtain for the env under consideration [83]:
+Cwork(env) = 1
+2 ln
+3
+4 + 1
+√
+2
+
+> 0.
+(G64)
+Further, the extractable work of any a.m. predictive agent is (by eq. (G12) and the linearity of the Ces`aro limit)
+W(agtMpred
+→
+←env) = ⟨H (At|Mt)⟩t −⟨H (St|Mt)⟩t
+(G65)
+= −⟨H (St|Mt)⟩t ≤0.
+(G66)
+Since Cwork(env) > 0, it follows that A
+→
+←env
+eff
+∩A
+→
+←env
+pred = ∅.
+Next, we show that A
+→
+←env
+eff
+∩A
+→
+←env
+mea = ∅for the particular environment channel under consideration. For all agent
+models in A
+→
+←env
+mea we have
+W(agtMmea
+→
+←env) = ⟨H(At|Mt) −H(St|Mt)⟩t
+(G67)
+= ⟨H(At|Mt)⟩t −⟨H(St|Mt)⟩t
+(G68)
+= log |A| −⟨H(St|Mt)⟩t ,
+(G69)
+In the following we will determine ⟨H(St|Mt)⟩t by showing that ⟨H(St|Mt)⟩t = ⟨H(St)⟩t which then is easily computed
+for the environment under consideration.
+First note that we have ⟨I [St; At; Mt]⟩t ≥0 since
+⟨I [At; Mt; St]⟩t = ⟨I [Mt; St] −I [Mt; St|At]⟩t
+(G70)
+= ⟨I [Mt; St]⟩t
+(G71)
+≥0,
+(G72)
+since I [Mt; St|At] = 0 is a d-separation (shown for t = 0 in Figure 22).
+Further, since for all agent models in
+A
+→
+←env
+mea ⟨H(At|Mt)⟩t = log |A| takes its maximum value and since H(At|Mt) ≤H(At) ≤log |A| (see Supplemental
+Material A2), we have ⟨H(At|Mt)⟩t = ⟨H(At)⟩t and thus ⟨I [At; Mt]⟩t = 0. Then, we have
+0 = ⟨I [At; Mt]⟩t
+(G73)
+= ⟨I [At; Mt|St]⟩t + ⟨I [At; Mt; St]⟩t .
+(G74)
+The first term is nonnegative by the nonnegativity of conditional mutual information, the second term by eq. (G72).
+Thus, both terms must vanish individually. With this, using a decomposition into information atoms we find
+⟨H(St|Mt)⟩t = ⟨H(St) −I [St; At; Mt] −I [St; Mt|At]⟩t
+(G75)
+= ⟨H(St)⟩t −⟨I [St; At; Mt]⟩t
+(G76)
+= ⟨H(St)⟩t .
+(G77)

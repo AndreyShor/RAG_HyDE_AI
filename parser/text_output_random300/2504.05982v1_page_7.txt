@@ -1,0 +1,46 @@
+resetting rate and assess the optimal rate, providing the highest acceleration. It is worth
+noting that sharp resetting is guaranteed to provide acceleration equal to or higher than any
+other resetting protocol when performed using the optimal resetting timer T.74
+We acknowledge that sampling ﬁrst-passage events without resetting for transitions be-
+tween metastable states that are separated by high free energy barriers can be very challeng-
+ing for standard MD simulations, due to the long timescales. When considering applying
+resetting as a standalone method, we assume some trajectories are already available to esti-
+mate the COV.
+In addition, one can sample trajectories with an initial guess of resetting rate r∗. An
+approach that we found useful5 is to start with a rate that is on the same order of magnitude,
+but slighty larger, than a rough estimate of the reciprocal of the MFPT. It often provides
+some acceleration, and we then optimize the resetting rate in the following way: In the
+case of Poisson resetting, one ﬁrst evaluates the Laplace transform of the FPT distribution
+fr∗(τ) under resetting rate r∗through Equation 3. Then, the MFPT under any resetting
+rate r = r∗+ ∆r is given by a generalization of Equation 2,5
+⟨τ⟩r = 1 −˜fr∗(∆r)
+∆r ˜fr∗(∆r)
+.
+(6)
+In the case of sharp resetting, we note that the segments between restarts exactly sample
+the survival function without resetting up to the chosen time duration T ∗. As Equation 4
+only requires the survival up to the resetting time, one can use the sampled trajectories to
+assess the MFPT for any timer T < T ∗. Both approaches predict whether using higher rates
+than the initial guess will lead to higher acceleration without additional sampling.
+Finally, we stress that all the equations above hold for a general stochastic process,
+and particularly simulations which employ enhanced sampling techniques.
+In that case,
+estimating the COV is easier. Given a few samples, even with suboptimal collective variables,
+one can estimate the COV and use Equations 2 and 4 to ﬁnd a beneﬁcial resetting rate, with
+zero computational cost. As we will explain in detail in Section 4.2, we believe a combined
+approach is often the most useful approach.39 Detailed examples of all of these use cases will
+be given in Setion 4.
+3.2
+Adaptive resetting
+In standard resetting, the resetting times are independent of the progress of the stochastic
+process. However, higher accelerations can be achieved by incorporating information on the
+state of the system into the resetting rate, e.g., by measuring the distance from the target
+state in CV space.41,75 We call such state- and, possibly, time-dependent resetting protocols
+adaptive resetting. By employing an adaptive resetting rate r (X), one can avoid undesired
+restarts when the system is close to the target, or encourage frequent restarts when getting
+stuck in undesirable metastable states away from the target. Here and onward, X stands
+for the coordinates of the system, either Cartesian or in a low-dimensional CV space.
+The key diﬃculty in employing state-dependent resetting is that the general theory of
+SR we just reviewed does not hold for state-dependent resetting. It stems from the fact
+that, unlike in standard resetting, samples of the FPT distribution are insuﬃcient, and
+7

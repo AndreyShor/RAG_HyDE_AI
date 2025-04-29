@@ -1,0 +1,50 @@
+XXX:8
+Israel et al.
+3.4
+Modeling Data Flows
+Before the network topology is developed and the firewalls are configured, the data flows be-
+tween the different cyber nodes in the WAN need to be identified. These data flows represent the
+applications or services running at each node and the data they exchange. The data consists of mea-
+surements and commands transmitted between the substation and the UCC and between the UCC
+and the BA. The data can have many formats, depending on the application-layer communication
+protocol. These protocols are usually encapsulated in TCP/IP packets. Including the data flows in
+our model is essential because if a link or node fails due to a physical problem or a cyber attack,
+the impacted nodes can be observed.
+Fig. 4 illustrates the WAN nodes, e.g., substation, UCC, and BA, and the data flows between them.
+In each node, specific cyber components communicate with each other based on the network archi-
+tecture and data flows described in [9]. The cyber components have assigned protocols depending
+on their function. The current model assumes the following four communication protocols:
+• Inter-Control Center Communications protocol (ICCP) [13] is used for communication
+between control centers and a regulatory agency (balancing authority). For example, one
+of the roles of the regulatory is to communicate with utilities and make sure the power
+grid’s voltage and frequency remain stable. It operates over a wide area network. Balancing
+authorities can read values and send grid operation commands to utilities. Typically, the
+utility has an ICCP server configured to send periodic ICCP reports to the balancing
+authority.
+The 2,000-bus use case, which is a synthetic model of the Texas’ power grid, has one balancing
+authority called Electric Reliability Council of Texas (ERCOT). All market participants in
+the Texas grid report to ERCOT using ICCP protocol[5].
+• Distributed Network Protocol 3 (DNP3) is an industrial control system (ICS) protocol
+designed for SCADA systems. A typical scenario for DNP3 is for the SCADA master to
+read values and send commands to field devices in the substation. Inside the substation, we
+assume the communication between the outstation node and the Real-Time Automation
+Controller (RTAC) also uses DNP3 protocol.
+• Secure Hypertext Transfer Protocol (HTTPS) can be used inside a substation and between
+substation and the utility control center. A typical scenario would be for a substation to have
+a local web-based server that can transfer encrypted data to the human-machine interface
+(HMI) host in the utility control center. Details of this data flow can be found in [9].
+• Structured Query Language (SQL) is a database protocol for uploading or retrieving sub-
+station data from the outstation to the local database, which the web server can access.
+Another scenario is that utilities use SQL databases located for example in a demilitarized
+zone where utility managers or even customers can monitor the utility’s data, such as load
+or power generation.
+In the proposed model in this work, firewalls are strategically positioned at substations, UCCs,
+and BAs to monitor and regulate network traffic. A firewall acts as a barrier that filters both inbound
+and outbound communications within the network. For instance, a firewall located at a substation
+might be configured with a rule that specifically allows incoming DNP3 requests from the utility
+control center. This configuration is illustrated in Fig. 4, where the model incorporates rules defined
+by the firewall Access Control Lists (ACLs).
+4
+Algorithm
+This section describes how the proposed tool, SAM-GT, generates the cyber topology given any
+electric grid model. Fig. 5, provides an overview of the algorithm which is mainly divided into two

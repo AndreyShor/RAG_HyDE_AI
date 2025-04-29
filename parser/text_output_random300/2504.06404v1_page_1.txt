@@ -1,0 +1,110 @@
+ 
+ 
+Physical spline for denoising object trajectory data by 
+combining splines, ML feature regression and model 
+knowledge 
+ 
+Jonas Torzewski  
+Torc Robotics 
+Stuttgart, Germany 
+jonastorzewski@web.de 
+ 
+ 
+ 
+ 
+Abstract— This article presents a method for estimating the 
+dynamic driving states (position, velocity, acceleration and 
+heading) from noisy measurement data. The proposed approach 
+is effective with both complete and partial observations, producing 
+refined trajectory signals with kinematic consistency, ensuring 
+that velocity is the integral of acceleration and position is the 
+integral of velocity. Additionally, the method accounts for the 
+constraint that vehicles can only move in the direction of their 
+orientation. The method is implemented as a configurable python 
+library that also enables trajectory estimation solely based on 
+position data. Regularization is applied to prevent extreme state 
+variations. A key application is enhancing recorded trajectory 
+data for use as reference inputs in machine learning models. At the 
+end, the article presents the results of the method along with a 
+comparison to ground truth data. 
+I. INTRODUCTION  
+A key factor in the success of autonomous driving is the 
+availability of high-quality recorded data to train, develop and 
+validate virtual drivers. To enhance data quality, it is common 
+practice to apply post-processing methods to recorded datasets. 
+Compared to online processing, post-processing benefits from 
+greater computational resources and is not subject to causality 
+constraints. One example of a post-processing method that is 
+exclusively used offline is the forward-backward Kalman filter, 
+which estimates states by sequentially processing data in both 
+forward and backward time directions (for further details, see 
+[1]). 
+Various types of filters exist, as summarized in Table 1. Some 
+filters are designed solely to smoothen data, while others ensure 
+consistency with physical models. 
+TABLE I.  
+DIFFERENT DENOISING ALGORITHMS 
+Type of model 
+Causal/ Not causal 
+causal 
+Not causal 
+Model free, with 
+object list 
+Low pass filters 
+Polynom fitting, spline 
+fitting, Centered low 
+pass filters 
+Model based with 
+object list 
+Kalman filter, Moving 
+horizon estimation 
+Forward backward 
+Kalmanfilter, physical 
+spline (focus of this 
+paper) 
+Raw sensor data 
+Sensor fusion, Neural 
+nets, 
+point 
+cloud 
+clustering 
+Training clustering 
+over multiple time 
+stamp forward 
+backwards 
+ 
+In this paper we combine model knowledge with spline fitting 
+techniques. Thus, we name the method of this paper physical 
+spline. The result is a parameterized model of trajectories of 
+objects. The parameters of the model are determined by 
+optimization. The optimization is carried out such that one point 
+of the estimated/denoised trajectory depends on both past and 
+future data, i.e. the optimization is not causal. This improves 
+the results compared to a forward backwards iteration with a 
+similar model. The advantage comes at the expense of a more 
+complex derivation and higher computation time. To 
+implement the approach online we would have to implement 
+the method as a moving horizon estimator relying only on past 
+measurement data. 
+II. PROBLEM STATEMENT 
+The goal of the method proposed in this paper is to improve the 
+trajectory data of recorded objects. Each object is reported in a 
+stationary frame with respect to the surface of the earth. The 
+frames are 2D and tangential to the surface of the earth. The 
+origin of each frame is fixed to a specific latitude and longitude 
+value. The object representation is illustrated by (Fig. 1). 
+ 
+Fig. 1. This figure illustrates how trajectory data is assumed to be given for 
+denoising. Specifically, we assume the data to be in a plane (x, y). Additionaly, 
+the heading angle ψ of each object is given. For certain use cases derivatives of 
+(x, y, ψ) are also given. 
+The output of the algorithm we propose consists of 
+differentiable functions x(t), y(t) and ψ(t), where x(t) and y(t) 
+represent the position of the object in the plane and ψ(t) denotes 
+its orientation. The functions shall be determined to be most 
+plausible given some model assumptions and the measured 
+data. The main focus of this article is on determining the 
+functions x(t) and y(t). At the end of the paper the concept will 
+be extended for determining ψ(t). 
+ 
+GitHub: https://github.com/jonasTorz/physical_spline  

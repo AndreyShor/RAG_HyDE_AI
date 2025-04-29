@@ -1,0 +1,68 @@
+Deﬁnition 6.3. We will say that a 1-qubit gate U is semiclassical if its 2 × 2 matrix represen-
+tation with respect to the computational basis has two entries that are 0. Equivalently, U |0⟩is a
+computational basis state up to a phase factor.
+Observe that a 1-qubit unitary gate U is semiclassical if and only if U ∗is semiclassical.
+Deﬁnition 6.4. In a depth-d QAC-circuit, if the 1-qubit gate G(d+1/2)
+0
+in layer d + 1
+2 of the target
+is semiclassical, then we say that the target is pass-through.
+Lemma 6.5. For any n ≥1 and d ≥2, let C be a depth-d QAC-circuit that |α⟩-computes ⊕n, for
+some state |α⟩. If C’s target is either pass-through or does not encounter a multiqubit CZ-gate on
+layer d, then there exists a depth-(d −1) QAC-circuit that |α⟩-computes ⊕n.
+Proof. Fix an initial ancilla state |α⟩that witnesses C |α⟩-computing ⊕n. For any classical input
+x combined with |α⟩, the ﬁnal state of the target (qubit 0 after layer d + 1/2) is |b⟩unentangled
+with any other qubits, where b := ⊕x. We have two cases:
+Case 1: C’s target does not encounter a multiqubit CZ-gate on layer d.
+G(d)
+0
+is then
+a 1-qubit gate—either I or Z. Thus the ﬁnal target state is not aﬀected by any other non-target
+gates beyond layer d −1. Let C′ be the depth (d −1) circuit obtained by removing all these gates
+and collapsing G(d−1/2)
+0
+, G(d)
+0 , and G(d+1/2)
+0
+into a single gate. The ﬁnal state of the target is thus
+the same with C′ as with C, and so C′ |α⟩-computes ⊕n.
+Case 2: C’s target is pass-through.
+Since qubit 0 is pass-through by assumption, the target
+just after layer d is in an unentangled computational basis state |ϕb⟩that equals
+
+G(d+1/2)
+0
+∗
+|b⟩
+up to a phase factor (which can be absorbed by the state of the other qubits). Thus if G(d)
+0
+is
+a multiqubit CZ-gate, it either disappears or simpliﬁes to a CZ-gate not acting on the target,
+depending on b. In either case, the (unentangled) state of the target is unchanged across layer d.
+Let C′ be the depth-(d −1) circuit obtained from C by removing all gates on layer d, removing all
+non-target gates on layer d + 1/2, and combining G(d+1/2)
+0
+with G(d−1/2)
+0
+. Then C′ |α⟩-computes
+⊕n.
+The following lemma is a corollary to Lemma 6.5.
+Lemma 6.6. In any depth-2 QAC-circuit weakly computing ⊕n for n ≥2,
+G(2)
+0
+is a multiqubit
+CZ-gate, and the target is not pass-through.
+Proof. By Lemmas 6.2 and 6.5.
+In the sequel, we assume that C is an (n+m+1)-qubit depth-2 QAC-circuit weakly computing ⊕n
+for some n ≥3 (cf. Deﬁnition 2.7). By Lemma 6.6, G(2)
+0
+= CSZ for some set S that includes the
+target and at least one other qubit, and the target is not pass-through. The next few lemmas
+restrict the topology of C further.
+Lemma 6.7. No gate on layer 1 can touch more than two input qubits.
+Proof. Suppose some layer 1 gate touches at least three input qubits. WLOG, G(1)
+1
+= CT Z for
+some T such that {1, 2, 3} ⊆T. We let |α⟩be the initial state of the m ancilla qubits. We consider
+two cases and apply Lemma 5.3 to each:
+20

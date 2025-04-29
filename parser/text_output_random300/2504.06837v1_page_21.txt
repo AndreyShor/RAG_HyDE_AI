@@ -1,0 +1,63 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+Remark 4.10 (L∞bounds via bounding boxes). It can be easily checked that the proofs given
+below hold for general stoichiometric vectors αr and βr, if we know that the discrete solutions
+cN are bounded uniformly in L∞. Indeed, in this case the limit solution ρ is also bounded in
+L∞and we can set pcrit = ∞and check that all proofs work similarly.
+We highlight this fact since for several classes of reaction-diﬀusion systems there exist so-
+called positively invariant regions in the sense of [Smo94, Cha. 14§B]. In the simplest case such
+a region is a rectangular set, also called bounding box:
+B :=
+Y
+i∈I
+
+0, bi
+ :=
+
+c ∈[0, ∞)I  0 ≤ci ≤bi for all i ∈I
+	
+.
+Positive invariance means that solutions starting inside a region (i.e. c(t, x) ∈B) remain inside
+the region for all t > 0. In the case of a box the invariance follows, if for c ∈∂B the reaction
+vector R(c) points inwards, i.e., ci = 0 implies Ri(c) ≥0 and ci = bi implies Ri(c) ≤0.
+Consider a reaction systems where all reactions are of the type αiXi ⇋βıXı which is
+additionally in detailed balance for w = (wi)i∈I. Then, it can be shown that B = Q
+I[0, wi] is
+indeed a bounding box. Often there is a family of detailed-balance equilibria w, which then allow
+for arbitrary large bounding boxes.
+5
+Proof of convergence
+The aim of this section is to prove Theorem 4.7, the convergence of the discrete gradient
+systems to the continuum gradient system. We split the section in two parts, ﬁrst focusing on
+the compactness in Section 5.1, before establishing the lower limit in Section 5.2.
+To show compactness, we rely on the N-uniform L∞-bound for the energies and the N-
+uniform bound of the dissipation functionals to obtain suitable a priori estimates for the em-
+bedded discrete concentrations ρN = ιNcN. We introduce a new and eﬃcient method to show
+equi-integrability of the ﬂuxes F N and JN in Proposition 5.5. Finally, an argument based on
+the Aubin-Lions-Simon lemma allows us to derive strong compactness of ρN in Proposition 5.8.
+One of the biggest advantages of our approach is its ability of handling non-convex dependencies
+on ρN of the dissipation functionals.
+The lower limit inequalities are then obtained for each rate and each slope term, inde-
+pendently, relying either on Ioﬀe’s liminf theorem or, for the diﬀusive rate, on a dualization
+argument.
+Throughout this section, we ﬁx a time horizon T > 0 and denote by ΩT := [0, T] × Td the
+parabolic cylinder.
+5.1
+Compactness
+We start our considerations from the N-uniform L∞-bound on the energies and the N-uniform
+bound on the dissipations. We introduce the explicit constants KA
+x that will make it easier to
+see the inﬂuence of the diﬀerent bounds throughout the section.
+We start with the a priori bounds
+KE := sup
+N∈N
+sup
+t∈[0,T]
+EN(cN(t)) < ∞,
+(5.1a)
+KD := sup
+N∈N
+DN(cN, F N, JN) < ∞.
+(5.1b)
+21

@@ -1,0 +1,57 @@
+harvesting protocol.
+4.1
+Entanglement measures
+For a state ρAB in the space of states in the Hilbert space of the combined system, an entanglement measure, denoted as
+E(ρAB ), is defined as a mapping from the space of states to the set of non-negative real numbers (R+). The entanglement
+measure must satisfy the following conditions: E(ρAB ) = 0 if ρAB represents a separable state. Additionally, E(ρAB)
+should not, on average, increase under local operations and classical communications (LOCC). Measuring entanglement
+is a broad and dynamic area of research in its own right, with many different approaches suggested for quantifying
+it. The entanglement of formation, intended to assess the resources needed for creating a particular entangled state,
+is recognized as one of the most fundamental measures [90]. Since the entanglement of formation rises monotonically
+with the concurrence, determining the concurrence C of the detectors’ final state suffices to measure the amount of
+entanglement between them [90]. It provides a bound on the entanglement. The concurrence is defined by
+C[ρAB] := max[0, λ1 −λ2 −λ3 −λ4],
+(73)
+where the λs are the square roots of the eigenvalues of ρAB ˜ρAB in decreasing order. Here, ˜ρAB is defined as (σy ⊗
+σy)ρ∗
+AB(σy ⊗σy), and σy represents the usual Pauli matrix. Substituting the λs for the reduced density matrix ρAB,
+shown in (60), in Eq.(73) one obtains [11; 13]
+C[ρAB] = 2 max[0, |M| −
+p
+LAALBB] + O(λ4).
+(74)
+Other forms of quantum correlations, such as quantum discord, which quantifies the overall quantumness of correla-
+tions, also play an important role in relativistic quantum information. We also compute the quantum mutual information,
+which measures the total correlation between two probes. For a quantum bipartite system, it is defined to be the relative
+entropy between ρAB and ρA ⊗ρB [11; 13; 91]
+I[ρAB] := S(ρAB|ρA ⊗ρB) = S(ρA) + S(ρB) −S(ρAB).
+(75)
+Here S(..) denotes the von Neumann entropy, and it is given by the following expressions: S(ρAB) = −TrAB(ρAB log ρAB),
+S(ρA) = −TrA(ρA log ρA), and S(ρB) = −TrB(ρB log ρB). By expanding Eq. (75) for mutual information to the leading
+order in terms of the coupling strength λ, one gets
+I[ρAB] = L+ log L+ + L−log L−−LAA log LAA −LBB log LBB + O(λ4)
+(76)
+where,
+L± = 1
+2(LAA + LBB ±
+p
+(LAA −LBB)2 + 4LABLBA).
+(77)
+In the next subsection, we compute the mutual information, and the concurrence for two UDW detectors kept along a
+given trajectory.
+4.2
+Vacuum correlations outside the horizon
+In the context of a free scalar field in Minkowski spacetime, when we choose to decompose the state space into plane-
+wave modes, the overall Hilbert space takes the form of a direct product of infinitely countable harmonic oscillator state
+spaces, each corresponding to a distinct mode k. Consequently, the resultant state appears as a product state rather than
+an entangled one. However, an alternative approach involves utilizing a tensor product of two-mode squeezed (TMS)
+states in pairs of Rindler modes, which gives rise to entangled Rindler wedges. Additionally, one can also represent the
+quantum field’s state as a path-ordered or time-ordered exponential operator, acting on local degrees of freedom at each
+point in space, using variational ans¨atze like continuous matrix-product states (cMPS) and the continuous multiscale
+entanglement renormalization ansatz (cMERA) [92; 93]. Such an approach allows for the interpretation of the vacuum
+state as a multipartite entangled state [94]. There could be multiple possible choices based on the natural choice for the
+Hilbert space decomposition, which depends upon the reference frame. Hence, the entanglement harvested by the detector
+is also expected to depend upon trajectory. In this section and the subsequent ones, we delve into the entanglement
+characteristics of the multipartite entangled state, employing the assistance of two Unruh-DeWitt (UDWs) detectors
+positioned at distinct locations and following various trajectories.
+19

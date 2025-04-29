@@ -1,0 +1,65 @@
+Local structure of extremal points
+39
+Proof. We do not provide a detailed proof of this lemma, as it closely follows that of Lemma 4.22.
+Instead, we outline the necessary modifications to that proof.
+First, in the regime log rη ≥b/2, we can proceed exactly as in the proof of Lemma 4.22. Regarding
+the regime log rη < b/2, it suffices to use Lemma 4.11 in place of Lemma 4.10 to restrict to the event
+{Kb < log rη}. Similarly, we obtain that the probability on the left-hand side of (4.6) is bounded
+above by a multiple of b−1/2√P(E1), when b ≥0 is large enough.
+Hence, it remains to bound P0,u,b(E2) appearing on the left-hand side of the first line in (4.66). To this
+end, arguing as in the proof of [BL18, Lemma 4.16] and using (A.2), we observe that the probability
+on the right-hand side of the second line in (4.66) can be bounded from above by
+P0,u,b
+b−1
+\
+j=1
+{Bj ≥−λ −2Rlog rη(j)}
+
+≲P0,u,b
+
+inf
+s∈[0,b] Bs ≳−(log b)2
+
+≲b−5/8 ,
+where, to derive the last inequality, we used the fact that u ≤b1/4. Finally, since we are in the regime
+log rη < b/2, it follows that b−5/8 is at most a multiple of b−1/2η−1/(8d). Combining this with the
+bound in (4.68) completes the proof of (4.69). To conclude, we note that (4.70) follows immediately
+from (4.69).
+Finally, we also have the following result.
+Lemma 4.28. For λ > 0 and for b > 0 sufficiently large, it holds that
+E0,u,b[|Dλ
+0,b(Υb,g)|−1] ≲
+(
+bd2 ,
+if u ∈[b3/4, b2d] ,
+(u/b)2d ,
+if u > b2d .
+Proof. We begin by recalling that, for r > 0, the quantity Sr is defined in (4.56). Furthermore, we
+also recall that, thanks to Remark 4.25, for all η > 0, it holds that
+P0,u,b(|Dλ
+0,b(Υb,g)|−1 ≥η) ≤P0,u,b(Seb > cλη2/d) ,
+for some constant cλ > 0 depending only on λ. We divide the proof into two disjoint cases.
+Case 1: We begin by considering the case u ∈[b3/4, b2d]. In this case, using Lemma 4.26, there exist
+constants c1, c2, c3 > 0 such that, for any b > 0 sufficiently large,
+E0,u,b[|Dλ
+0,b(Υb,g)|−1] ≤bd2 +
+Z ∞
+bd2 P0,u,b(Seb > cλη2/d)dη
+≲bd2 + edb
+Z ∞
+bd2 ec1 u
+b η2/d−c2η4/ddη
+≲bd2 + edb
+Z ∞
+bd2 e−c3η4/ddη ≲bd2 .
+Case 2: We now focus on the case u > b2d. Proceeding similarly to the previous case, we obtain that
+there exist constants c1, c2, c3 > 0 such that, for any b > 0 sufficiently large,
+E0,u,b[|Dλ
+0,b(Υb,g)|−1] ≲(u/b)2d + edb
+Z ∞
+(u/b)2d ec1 u
+b η2/d−c2η4/ddη
+≲(u/b)2d + edb
+Z ∞
+(u/b)2d e−c3η4/ddη ≲(u/b)2d ,
+which completes the proof.

@@ -1,0 +1,89 @@
+quadrature amplitude modulations were mutually entangled, and CV equivalent of the BBM92 protocol
+for discrete variables was implemented. This scheme is secure against memory-free attacks performed on
+Bob’s untrusted detector, that is, attacks that are independent of Bob’s previous measurement, and secure
+against Trojan-horse attacks on the source that usually threaten electro-optical modulators commonly
+used in Gaussian-modulation QKD protocols. A hybrid scheme where Alice uses a Gaussian-modulated
+coherent state while Bob uses a two-mode squeezed state was studied in [440].
+A 1SDI-QKD protocol using high-dimensional time-energy entanglement was proposed in Ref. [441].
+The security of this scheme was established by applying the entropic uncertainty relation introduced in
+[442] against coherent attacks. Their numerical results demonstrate that the protocol achieves higher
+bit rates per two-photon coincidence count while requiring lower detection efficiencies compared to the
+original 1SDI-QKD protocol (achieving a key rate with ηA = 50%). This improvement stems from the
+limitation imposed by photon information efficiency in the original 1SDI-QKD protocol, which restricted
+the key generation rate to no more than 1 bit per coincidence. Encoding information in high-dimensional
+photonic degrees of freedom proves to be an efficient approach for overcoming this limitation.
+5.5.2. Generalized 1SDI-QKD and Quantum Secret Sharing
+In 2017, Kogias et.al. [443] tackled the problem by considering the protocol as a generalized 1SDI-
+QKD problem for a continuous-variable version of QSS [444].
+They started with the simplest case
+involving three parties, Alice, Bob, and Charlie. Alice is fully trusted and shares the secret using a
+three-mode continuous-variable entangled-state. She keeps one mode and sends the other modes to the
+untrusted players, Bob and Charlie, through individual unknown quantum channels. In this way, the
+protocol can be seen as a generalized 1SDI-QKD protocol from Alice (trusted part) to Bob and Charlie as
+untrusted players. Alice is assumed to perform two homodyne measurements of two canonically conjugate
+quadratures ˆx and ˆp, and her goal is to establish a unique secret key, not with Bob’s or Charlie’s individual
+measurements (as in standard two-party QKD), but with a collective (nonlocal) degree of freedom for
+Bob and Charlie that strongly correlates with one of Alice’s quadratures (XA for example). Alice sends
+a sufficient number of states to the players and in each run, they randomly choose measurements and
+measure their parts, and collect the outcomes Xi and Pi. In the next step, all parties announce their
+measurements and keep the data originating from correlated measurements, using it for extracting a
+secret key.
+The final bound on the asymptotic key rate to provide unconditional security against general attacks
+of an eavesdropper, and against arbitrary (individual) cheating methods of both Bob and Charlie, which
+include the announcement of faked measurements and general attacks of Bob on Charlie’s system and of
+Charlie on Bob’s system, can be written as
+r ≥−log(e
+q
+VXA| ¯
+X max{VPA|PC, VPA|PB}),
+(176)
+where
+VXA| ¯
+X =
+Z
+d ¯Xp( ¯X)(⟨X2
+A⟩¯
+X −⟨XA⟩2
+¯
+X),
+(177)
+and ¯X is Bob and Charlie’s collective degree of freedom that strongly correlated with Alice’s quadrature
+XA.
+While the resource behind the standard 1SDI-QKD is known to be (bipartite) steering, one could
+suspect a similar connection with the case of multi-player QSS, which is indeed the case for the case of
+Gaussian measurements [445]. For a generic Gaussian (n + m)-mode state ρAB of a bipartite system,
+composed of a subsystem A (for Alice) of n modes and a subsystem B (for Bob) of m modes, one can
+define a steering measure as [446]
+GA→B(σAB) = max
+
+0, 1
+2 ln
+det A
+det σAB
+
+= max{0, S(A) −S(σAB)},
+(178)
+where σAB =
+ A
+C
+CT
+B
+
+is the covariant matrix of the state ρAB 16. This measure has an operational
+meaning in 1SDI-QKD. For a two-mode entangled Gaussian state with covariance matrix σAB, the key
+rate can be readily expressed in terms of the B →A Gaussian steerability of σAB [439], yielding
+r ≥max{0, GB→A + ln 2 −1}.
+(179)
+16Any Gaussian state ρAB is fully specified, up to local displacements, by its covariance matrix σAB with the elements
+σij = Tr[{ ˆ
+Ri, ˆ
+Rj}ρAB] and ˆR = (ˆxA
+1 , ˆpA
+1 , · · · , ˆxA
+n , ˆpA
+n , ˆxB
+1 , ˆpB
+1 , · · · , ˆxB
+m, ˆpB
+m)T
+69

@@ -1,0 +1,108 @@
+10
+VI.
+A SHALLOW GAUSSIAN ELIMINATION
+FRAMEWORK FOR BOSON SAMPLING
+INTERFEROMETER DESIGN
+In Section V we showed how to minimize the
+number of MZIs for boson sampling, and how to
+design universal interferometers by coupling smaller
+interferometers.
+Here we combine these to explore
+circuits that can perform boson sampling with several
+coupled interferometers.
+We make the following two assumptions. First, we
+assume that we have access to universal interferometers
+acting on k modes for some integer 2 ≤k ≤m. Based
+on the QR decomposition we know that they can
+transform any k × k matrix into a triangular one.
+Secondly, we are free to permute arbitrarily the modes
+when coupling interferometers together.
+Being able to perform unitary transformations on ar-
+bitrary sets of modes make it possible to design shal-
+lower circuits for boson sampling. Given a rectangular
+matrix V ∈Cm×n representing a boson sampling exper-
+iment on m modes with n photons, the following greedy
+algorithm, inspired from [13], constructs a shallow lin-
+ear optical circuit implementing V :
+1. assign to each row i of V a label pi such that
+pi = minj V [i, j] ̸= 0. If no such label exists then
+pi = n + 1.
+2. sort the labels in ascending order and permute the
+modes accordingly.
+3. define istart = min(mini pi = pi+1, n −k)
+4. starting from the mode istart, group the modes by
+k. For one such group
+gj = [istart + jk, istart + (j + 1)k[
+look at the smallest label qj = mini∈gj pi. If qj ̸=
+n + 1 consider the submatrix
+Wj = V [gj, qj : min(qj + k, n)].
+5. based on the QR decomposition, compute a uni-
+tary Uj such that UjWj is triangular, synthesize
+Uj and add it to the circuit on the corresponding
+modes.
+6. repeat steps 1-5 until V is diagonal.
+Each iteration of the loop can only increase the
+number of zero elements in V .
+Once V
+is upper
+triangular it will also be diagonal and the synthesis is
+complete. The inverse of the computed circuit gives a
+valid implementation of V . This process is shown in
+Fig. 9.
+The minimum MZI-depth is obtained in the case k =
+2, i.e, when we only couple single MZIs together.
+Theorem 4. Given layers of MZIs with arbitary con-
+nectivity, any non adaptive m-mode n-photon linear op-
+tical algorithm can be executed with a linear optical cir-
+cuit of MZI-depth O(n + log(m)).
+Proof. See Appendix A.
+This improves the O(n log(m)) scheme proposed by
+Aaronson and Arkhipov [1, Theorem 45] which, to our
+knowledge, is the shallowest analytical scheme in the
+literature with nonlocal MZIs.
+The work of [28] proposes a long range MZI architec-
+ture and provides numerical evidence that O(log(m))
+depth of this architecture suffices to mimic relevant
+properties of the Haar measure on U(m), and conse-
+quently that boson sampling with average-case hard-
+ness could be performed at this depth with this ar-
+chitecture. In contrast, Theorem 4 shows that we can
+do any m-mode transformation acting on n photons in
+O(n+log(m)) depth. Notably this means we can exactly
+sample outputs of linear optical circuits whose unitaries
+are chosen from the Haar measure over U(m).
+Note that O(mn) MZIs are necessary to implement an
+arbitrary n-photon m-mode experiment (see Section V)
+and at most m/2 MZIs can be executed in one time-
+step.
+Hence, the minimum depth required to imple-
+ment any unitary is O(n). When n = 1, the synthesis
+process essentially consists in zeroing m −1 coefficients
+of a vector. We can only half the number of nonzeros
+coefficients at each time step, resulting in a necessary
+O(log2(m)) depth. These two lower bounds give strong
+evidence that the depth complexity of Theorem 4 is the
+best achievable.
+VII.
+OPTIMIZING THE TOTAL
+TRANSMISSION IN BOSON SAMPLING
+EXPERIMENTS
+In the following we perform a numerical analysis of
+coupled interferometer designs for boson sampling. We
+show that with the scheme described in Section VI we
+can study the optimal chip-size for a given MZI loss
+and coupling loss. To reach a quantum computational
+advantage we likely need to perform boson sampling
+with n ≈50 photons. Here we arbitrarily work with
+n = 48.
+Total transmission.
+Our metric of interest is the
+total transmission of the interferometer.
+This relates
+directly to the probability of success of the experiment,
+where success means that no photon is lost. Let:
+• ηmzi be the transmission of one MZI,
+• ηc be the chip-to-chip coupling transmission,
+• k the chip size,
+• dm,n the depth, as an interferometer-based circuit,
+to perform the greedy algorithm on a matrix of

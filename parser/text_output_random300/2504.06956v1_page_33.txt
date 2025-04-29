@@ -1,0 +1,120 @@
+Local structure of extremal points
+33
+we have that k ≈ec
+√
+L. As usual, we can assume that we are on the event {Kb < k}, otherwise the
+conclusion follows trivially by Lemma 4.10. In particular, on the event {Kb < k}, by Lemma 4.9 (see
+also (4.13)), it suffices to estimate the probability of the following event
+b−1
+\
+j=1
+{Bj ≥−λ −Rk(j)},
+inf
+s∈[0,b] Bs < −L
+
+.
+(4.47)
+To this end, we start by noticing that thanks to Lemma A.11, there exists a constant c > 0 such that,
+P0,u,b
+b−1
+\
+j=1
+{Bj ≥−λ −Rk(j)},
+b−1
+[
+j=k
+{Bj ≤λ + Rk(j)}
+
+≲u
+b e−c
+√
+L .
+Hence, we can now assume that we are on the complement of the giant union appearing in the
+probability on the left-hand side of the above display, i.e., we need to estimate the probability of the
+following event
+b−1
+\
+j=1
+{Bj ≥−λ −Rk(j)},
+b−1
+\
+j=k
+{Bj > λ + Rk(j)},
+inf
+s∈[0,b] Bs < −L
+
+.
+(4.48)
+For each j ∈[b −1]0, we introduce the process (W j
+s )s∈[j,j+1] given by
+W j
+s
+def= ((j + 1) −s)Bj + (s −j)Bj+1 −Bs ,
+∀s ∈[j, j + 1] .
+The process W j has the law of standard Brownian bridge indexed by times in the interval [j, j + 1].
+Moreover, the collection (W j)j∈[b−1]0 is independent of the values (Bj)j∈[b]0. Now, we note that by
+definition of k, for all j ∈[k]0, it holds that λ + Rk(j) ≤L/2. In particular, this fact implies that, on
+the first event, the last two events in (4.48) are contained in the following union of events
+ k[
+j=0
+n
+sup
+s∈[j,j+1]
+|W j
+s | ≥L/2
+o
+∪
+b−1
+[
+j=k
+n
+sup
+s∈[j,j+1]
+|W j
+s | ≥λ + Rk(j) + L
+o
+.
+(4.49)
+For the first event in (4.49), using the independence of the collection (W j)j∈[b−1]0 from the values
+(Bj)j∈[b]0, the Gaussian tails of the supremum of a standard Brownian bridge, arguing as in the proof
+Lemma 4.10, there exists a constant c > 0 such that
+k
+X
+l=0
+P0,u,b
+b−1
+\
+j=1
+{Bj ≥−λ −Rk(j)},
+sup
+s∈[l,l+1]
+|W l
+s| ≥L/2
+
+≲u
+b e−c
+√
+L .
+Finally, regarding the second event in (4.49), using again the independence mentioned above, and the
+Gaussian tails of the supremum of a standard Brownian bridge, we have that thanks to Lemma 4.10,
+there exists a constant c > 0 such that
+b−1
+X
+l=k
+P0,u,b
+b−1
+\
+j=1
+{Bj ≥−λ −Rk(j)},
+sup
+s∈[l,l+1]
+|W l
+s| ≥λ + Rk(l) + L
+
+≲u
+b e−c
+√
+L .
+Therefore, by combining all the bounds we have established so far, the claim follows.
+We now state and prove the following results which provides a decay of the field Υb,g on the event that
+the supremum of such a field is bounded by one.

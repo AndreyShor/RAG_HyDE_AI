@@ -1,0 +1,58 @@
+A Geometric-Aware Perspective and Beyond:
+Hybrid Quantum-Classical Machine Learning Methods
+Azadeh Alavia,1,∗, Hossein Akhoundib,1, Fatemeh Kouchmeshkib, Mojtaba Mahmoodianc, Sanduni
+Jayasinghec, Yongli Rena, Abdolrahman Alavib,∗
+aSchool of Computing Technology, RMIT University, Melbourne, Australia
+bPattern Recognition Pty. Ltd., Melbourne, Australia
+cSchool of Civil Engineering, RMIT University, Melbourne, Australia
+Abstract
+Geometric Machine Learning (GML) has shown that respecting non-Euclidean geometry in data spaces
+can significantly improve performance over naive Euclidean assumptions. In parallel, Quantum Machine
+Learning (QML) has emerged as a promising paradigm that leverages superposition, entanglement, and
+interference within quantum state manifolds for learning tasks. This paper offers a unifying perspective by
+casting QML as a specialized yet more expressive branch of GML. We argue that quantum states, whether
+pure or mixed, reside on curved manifolds (e.g., projective Hilbert spaces or density-operator manifolds),
+mirroring how covariance matrices inhabit the manifold of symmetric positive definite (SPD) matrices or
+how image sets occupy Grassmann manifolds. However, QML also benefits from purely quantum properties,
+such as entanglement-induced curvature, that can yield richer kernel structures and more nuanced data
+embeddings.
+We illustrate these ideas with published and newly discussed results, including hybrid classical -quantum
+pipelines for diabetic foot ulcer classification and structural health monitoring. Despite near-term hardware
+limitations that constrain purely quantum solutions, hybrid architectures already demonstrate tangible ben-
+efits by combining classical manifold-based feature extraction with quantum embeddings. We present a
+detailed mathematical treatment of the geometrical underpinnings of quantum states, emphasizing parallels
+to classical Riemannian geometry and manifold-based optimization. Finally, we outline open research chal-
+lenges and future directions, including Quantum Large Language Models (LLMs), quantum reinforcement
+learning, and emerging hardware approaches, demonstrating how synergizing GML and QML principles can
+unlock the next generation of machine intelligence.
+Keywords:
+Quantum Machine Learning, Geometric Machine Learning, Riemannian Geometry,
+Information Geometry, Variational Quantum Circuits
+1. Introduction
+Machine Learning (ML) has proven remarkably
+successful across domains, from computer vision
+to natural language processing, and from recom-
+mender systems to biomedical analysis.
+Histori-
+cally, most ML approaches rely on the assumption
+that data points live in a flat Euclidean space Rd,
+where inner products and norms are simple dot-
+products and ℓ2 distances. However, over the last
+∗Corresponding author
+Email addresses: azadeh.alavi@rmit.edu.au (Azadeh
+Alavi ), admin@pr2aid.com (Abdolrahman Alavi)
+two decades, it has become increasingly clear that
+many real-world data modalities exhibit geometric
+structures that deviate substantially from the flat,
+Euclidean assumption [6, 5, 17]. Examples include
+covariance matrices in computer vision [1], diffu-
+sion tensors in neuroimaging [2], and Grassmann
+manifolds underlying subspace-based face or activ-
+ity recognition [3, 4]. These objects reside on non-
+Euclidean manifolds, where classical Euclidean op-
+erations, such as linear interpolation or Euclidean
+distance, can be ill-defined or geometrically mis-
+leading.
+To address these challenges, researchers intro-
+April 10, 2025
+arXiv:2504.06328v1  [quant-ph]  8 Apr 2025

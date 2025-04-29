@@ -1,0 +1,78 @@
+NNLO polarized PDFs with MHOU
+159
+Figure 5.3: Diagrammatic representation of the K-fold algorithm used for the hyperparameter opti-
+mization. Similar to Ref. [109, Fig. 3.5] but now accounting for the PDF replicas distribution, when
+computing the loss L(χ2)
+hopt of Eq. (5.16). See also Ref. [367] for further details.
+the p-fold datasets for all the replicas Nrep and averaged. χ2
+PDF,p includes contributions from
+the PDF uncertainties, added in quadrature to the experimental covariance matrix. For each
+replica k, it is defined via
+χ2(k)
+PDF,p(θ) = 1
+np
+X
+i,j∈p
+
+D(0)
+i
+−T (k)
+i
+(θ)
+ 
+cov(exp) + cov(PDF)
+−1
+ij
+
+D(0)
+j
+−T (k)
+j
+(θ)
+
+,
+(5.17)
+where we have left the dependence on ˆθ implicit.
+The algorithm proceeds iterating over ntrials hyperparameter configurations ending up with an
+array of losses computed according to Eq. (5.16). In principle, one would like to select the
+optimal hyperparameter set ˆθ
+⋆such that
+ˆθ
+⋆= arg min
+ˆθ∈ˆΘ
+
+L
+(χ2
+pdf)
+hopt
+ˆθ
+
+,
+(5.18)
+however, due to the flexibility of the NN the set of parameters might not be unique as there
+exists different models leading to an equal description of the unseen folds. Thus, to further
+discriminate our hyperparameter space we can introduce and additional loss function. For
+example, we can evaluate the standard deviation of χ2
+PDF,p over the replica sample in units of
+the data uncertainty on the left-out folds. We then define a second hyperoptimization loss
+L(φ2)
+hopt
+ˆθ
+
+≡
+
+
+1
+nfolds
+nfolds
+X
+p=1
+φ2
+χ2p
+ˆθ
+
+
+
+−1
+,
+(5.19)

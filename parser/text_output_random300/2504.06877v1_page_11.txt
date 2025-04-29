@@ -1,0 +1,87 @@
+SciPost Physics
+Submission
+Vd(t)
+ϕr
+dc bias φ0
+Lr
+Cr
+Cp
+vi
+Zp, Tp
+vo
+Figure 5: Schematic of a circuit. An LC circuit is driven through a Josephson junction
+and probed through a capacitively coupled transmission line.
+Table 1: Parameters of the circuit presented in Fig. 5, used for calculations.
+Cr
+Lr
+∆l
+∆r
+RJ
+Ts
+637 fF
+1.59 nH
+0.2 meV
+0.2 meV
+30 kΩ
+0.2 K
+allow us to neglect any nonlinear effects in the dynamics of the LC-circuit induced by the
+junction [51, 58, 59]. We also assume that the drive frequency of the junction is highly off-
+resonant Ω≫ωr = 1/
+p
+LrCr. This condition allows us to neglect the off-resonant Josephson
+current related to the driving field as well as frequency conversion of the microwave field in
+the resonator. Thus, the dynamics of the resonator flux degree of freedom φr is governed by
+the following equation:
+Cr ¨φr(t) +
+t
+Z
+−∞
+YJ,0(t −t′;ϕ0, V0,Ω) ˙φr(t′) dt′ + φr(t)
+Lr
+= −˜IJ(t;ϕ0, V0,Ω),
+˜IJ(t;ϕ0, V0,Ω) = iξ∗(t)
+4
+exp
+iϕd(t)
+2
+
+−iξ(t)
+4
+exp
+
+−iϕd(t)
+2
+
+.
+(23)
+Here, we assume that the noise component of the current (see Eq. (11)) is not affected by the
+flux degree of freedom φr of the LC-circuit but only by the external drive (16). The solution
+of this equation can be expressed through the retarded Green’s function of the resonator:
+φr(t) =
+t
+Z
+−∞
+GR
+r,0(t −t′;ϕ0, V0,Ω)˜IJ(t′;ϕ0, V0,Ω) dt′,
+(24)
+Fourier image of which is given by
+GR
+r,0(ω;ϕ0, V0,Ω) =
+Lr
+ω2LrCr + iωLrYJ,0(ω;ϕ0, V0,Ω) −1.
+(25)
+We also define the Keldysh Green’s function of the LC-circuit as a flux-flux correlator
+GK
+r (t, t′;ϕ0, V0,Ω) = −i
+ħh
+
+φr(t)φr(t′)
+
+=
++∞
+X
+n=−∞
+e−inΩtGK
+r,n(t −t′;ϕ0, V0,Ω),
+(26)
+11

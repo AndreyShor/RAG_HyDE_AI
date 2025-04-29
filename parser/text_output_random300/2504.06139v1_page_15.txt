@@ -1,0 +1,40 @@
+5.2.1
+Forster, Winkler, Wolf Protocol
+The ﬁrst non-locality distillation protocol for non-local boxes was discovered
+by Forster, Winkler and Wolf (FWW)[14]. Their protocol is fairly simple, it
+uses the parity of the output of the initial boxes as output.
+F n[P C
+ǫ ](x, y)
+1. On inputs x and y, input x and y into all n boxes;
+2. Let ai and bi be the outputs of the ith box, output a = Ln
+i=1 ai and
+b = Ln
+i=1 bi.
+This protocol achieves distillation.
+Theorem 14. For n > 1 and 0 < ǫ < 1/2, CHSH(F n[P C
+ǫ ]) = 3−(1−2ǫ)n >
+3 −(1 −2ǫ) = CHSH(P C
+ǫ ).
+Perhaps interestingly, Peter Hoyer and Jibran Rashid showed in unre-
+leased work that when restricted to input x and y into all boxes, the FWW
+protocol is optimal.
+5.2.2
+Brunner, Skrzypczyk Protocol
+This protocol, introduced in [6], operates on two boxes. Unlike the FWW
+protocol which brings correlated value to a CHSH value of 3 in the asymptotic
+limit, the Brunner Skrzypczyk protocol brings then to the CHSH value of 4 in
+the asymptotic limit. Which means they cross the communication complexity
+bound Bcc, increasing the class of correlations that trivialize communication
+complexity.
+B2[P C
+ǫ ](x, y)
+1. Input x, y into ﬁrst box;
+2. Let a1 and b1 be the outputs of the ﬁrst box, input x · a1 and y · b1 into
+second box;
+3. Let a2 and b2 be the outputs of the second box, output a = a1 ⊕a2 and
+b = b1 ⊕b2.
+Theorem 15. For 0 < ǫ < 1, CHSH(B2[P C
+ǫ ]) = 3ǫ −ǫ2 + 2 > 2(ǫ + 1) =
+CHSH(P C
+ǫ ).
+15

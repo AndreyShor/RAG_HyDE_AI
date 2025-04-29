@@ -1,0 +1,201 @@
+(iii) If p ∈L =⇒Eve knows a0, a1, b0, b1
+(iv) If Alice and Bob would observe p = pNL =⇒Eve cannot be correlated (perfect monogamy [55]
+To mimic p of Eq. (41) observed by Alice and Bob, Eve’s optimal attack pE with entries {p(abe|xyz)}
+from Eq. (40) then consists of the combination of extreme points with the minimal pNL = 1−pL = 2v −1
+(see Fig. 2c):
+pE =
+4
+X
+j=1
+1
+X
+r=0
+pr
+jℓr
+j + pNLpNL, with
+4
+X
+j=1
+1
+X
+r=0
+pr
+j = pL.
+(46)
+We label the Eve input z ∈{1, . . . , 9} 7→{vi} with {vi} ∈{ℓr
+j} ∪{pNL} which provides the following
+knowledge e ∈{(a, b), (a, ?), (?, ?)} at given x and y. Then, resulting marginal probability distribution
+p(ab|xy) = P
+e p(abe|xyz) reads as
+ab\xy
+00
+01
+10
+11
+00
+pNL
+2
++ P
+j̸=4 p0
+j
+pNL
+2
++ P
+j̸=3 p0
+j
+pNL
+2
++ p0
+1 + p0
+3 + p1
+4
+p0
+1
+01
+p0
+4
+p0
+3
+p1
+2
+pNL
+2
++ p1
+2 + p0
+3 + p1
+4
+10
+p1
+4
+p1
+3
+p0
+2
+pNL
+2
++ p0
+2 + p1
+3 + p0
+4
+11
+pNL
+2
++ P
+j̸=4 p1
+j
+pNL
+2
++ P
+j̸=3 p1
+j
+pNL
+2
++ p1
+1 + p1
+3 + p0
+4
+p1
+1
+(47)
+CHSH protocol. – From the bipartite distribution p(ab|xy) in (47) the best procedure to extract the secret
+key is unknown. The CHSH protocol [30, 56] is a good candidate because it provides high correlations
+between Alice and Bob and reduces Eve’s information. From (47) we see that Alice and Bob are highly
+anticorrelated only for x = y = 1. It is therefore natural to devise the following procedure that transforms
+these anticorrelations into correlations (see tutorial [18]).
+1) Distribution and parameter estimation – Alice and Bob repeat the measurement procedure in many
+instances and use some of their results to compute the BI in S∗of Eq. (12) as estimation of the fraction
+pNL of intrinsically nonlocal correlation.
+2) Pseudosifting – Alice reveals x = 0 or x = 1 and Bob without announcing the value of y, if
+(x, y) = (1, 1) =⇒b 7→¯b. The anticorrelation becomes correlations and the distribution p(ab|xy) in Eq.
+(47) is updated to p(ab|x = 0, y = k) and p(ab|x = 1, y = k) conditioned to the knowledge of x and
+outcome probability p(y = k) = ξk.
+ab
+x = 0, p(y = k) = ξk
+00
+pNL
+2
++ p0
+1 + p0
+2 + ξ0p0
+3 + ξ1p0
+4
+01
+ξ1p0
+3 + ξ0p0
+4
+10
+ξ1p1
+3 + ξ0p1
+4
+11
+pNL
+2
++ p1
+1 + p1
+2 + ξ0p1
+3 + ξ1p1
+4
+ab
+x = 1, p(y = k) = ξk
+00
+pNL
+2
++ ξ0p0
+1 + ξ1p1
+2 + p0
+3 + p1
+4
+01
+ξ1p0
+1 + ξ0p1
+2
+10
+ξ1p1
+1 + ξ0p0
+2
+11
+pNL
+2
++ ξ0p1
+1 + ξ1p0
+2 + p1
+3 + p0
+4
+(48)
+To maximize Eve’s uncertainty ξk = 1/2. An interesting property for the pseudosifting about all the
+eight local points is that Alice’s outcome a from Eq. (43) is always known to Eve because x is publicly
+announced, and if one ℓprovides the knowledge of b to Eve for x = 0, the same point leaves Eve ignorant
+for x = 1 and vice-versa. For example, given Eve’s strategy in (46) she knows (a, b) if she sent out
+ℓ0
+1 (with probability p0
+1) and Alice announces x = 0, then ∀y ∈{0, 1} =⇒b = 0. In this case, Eve’s
+uncertainty on Bob’s symbol is null, we write it as H(b|E = ℓ0
+1, x = 0) = 0. But if Eve sent out ℓ0
+1 and
+Alice announces x = 1, then y = 0 =⇒b = 0 and y = 1 =⇒¯b = 1. Since Eve does not know y the
+uncertainty is maximum H(b|E = ℓ0
+1, x = 1) = 1. Because of pseudosifting, she does not know if Bob’s
+outcome is b = 0 or ¯b = 1 and at the same time, the outcomes are correlated a = b when x = y = 1.
+3) Classical processing – the details depend on whether one considers one-way postprocessing “error
+correction and privacy amplification”, efficient in terms of secret key rate or two-way postprocessing “ad-
+vantage distillation”, inefficient for small errors but tolerating larger errors. The two cases are discussed
+separately in 3.4.1.
+No-signalling uncertainty relation. Given the above distributions p(ab|x = 0, y = k) and p(ab|x = 1, y =
+k) in Eq.(48), then p(a ̸= b|0) = 1
+2(p0
+3 +p1
+3 +p0
+4 +p1
+4) ≡eAB|0 and p(a ̸= b|1) = 1
+2(p0
+1 +p1
+1 +p0
+2 +p1
+2) ≡eAB|1
+(with ξk = 1/2). Then Eve’s uncertainty on b is the conditional Shannon entropy (see Sec. 3.4.1):
+H(B|E, X) =
+X
+e
+P(E = e, X = x)H(b|E = e, X = x) = 1 −2eAB|x+1,
+(49)
+22

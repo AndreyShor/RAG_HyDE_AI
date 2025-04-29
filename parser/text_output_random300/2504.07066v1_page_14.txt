@@ -1,0 +1,136 @@
+14
+parameters as:
+tαβ(R′) = tαβ(UR),
+(32)
+where R
+′=ma′+nb′+lc′ is the new real-space lattice vec-
+tor in the rotated coordinate system. With open bound-
+ary conditions along c′, the hopping matrix elements of
+real-space slab Hamiltonian along the R
+′
+3=(s −s′)c′ can
+be written as:
+t′
+N·s+α,N·s′+β(R′
+∥) = tαβ(R′
+∥+ (s′ −s)c′)
+(33)
+where s and s′ are the layer indices for the slab model.
+The reciprocal-space Hamiltonian of the slab model via
+a Fourier transform,
+ˆHslab(k∥) =
+X
+R′
+∥
+X
+α,β
+t′
+α,β(R′
+∥)eik||·R′
+1,2c†
+α,k∥cβ,k∥,
+(34)
+where k|| are the in-plane crystal momenta. Denoting the
+Hamiltonian matrix of ˆHslab as Hslab(k||), we construct
+the π-junction Hamiltonian Hc′ as,
+Hc′(k||) =
+ 
+Hslab(k||) −µ
+−isgn(s −sπ)∆0σy
+isgn(s −sπ)∆0σy
+µ −HT
+slab(−k||)
+!
+,
+(35)
+where µ is the chemical potential and ∆0 represents the
+strength of the s-wave superconducting pairing. sπ de-
+fines the location of the pairing domain.
+B.
+2M-WS2
+Our first system of interest is the 2M phase of WS2.
+This van der Waals compound has recently attracted
+significant research attention for intrinsically combining
+electronic band topology and superconductivity [70]. The
+superconducting transition temperature of 2M-WS2 is
+reported to be Tc ≈8.8 K at ambient pressure, one
+of the highest among transition metal dichalcogenides.
+Above Tc, multiple angle-resolved photoemission spec-
+troscopy studies have revealed the existence of a Dirac
+surface state at the Fermi level [70–73], consistent with
+the first-principles band simulations [74–76]. Below Tc,
+non-split zero-bias peaks (ZBPs) in the scanning tunnel-
+ing spectroscopy (STM) are found to show up around the
+Abrikosov vortex cores [19, 20]. While observing ZBPs in
+2M-WS2 is consistent with a MZM interpretation, other
+non-topological origins of ZBPs cannot be easily ruled
+out. This motivates us to clarify this puzzle for 2M-WS2
+from an ab initio computational perspective.
+As shown in Fig. 6 (a), 2M-WS2 crystallizes under the
+space group C2/m (No. 12). Our choice of optimized
+lattice constants are a = 12.87˚A, b = 3.22˚A, c = 5.27˚A,
+with the axial angles α=γ=90◦, and β=112.9◦, which
+agrees well with experimental results [70].
+There are
+two monoclinic monolayers in one unit cell, which holds
+the distorted octahedral building blocks as the monolayer
+1T′-WTe2 [77] and 1T′-WSe2 [78]. These two 1T′ mono-
+layers stack along the a direction to form a bulk crystal,
+thus preserving the inversion symmetry P. This config-
+uration is different from the well-known Td phase with
+Weyl fermions [79].
+Our calculation of the electronic band structure with
+FPLO is shown in Fig. 6 (b), where we have included
+the spin-orbital coupling (SOC) effect.
+We have used
+Gamma-centered k meshes of 21×21×21 and the conver-
+gence criteria for the density and energy are set to 10−6
+and 10−8, respectively. Specifically, we find two electron-
+like pockets at Γ and L points and one hole pocket around
+Y point, where our notation of high symmetry points is
+given in Fig. 6 (c). We consider a continuous yet energet-
+ically curving band gap between conduction and valence
+bands in the BZ and calculate the occupied-band parity
+products for all TRIMs. The Z2 topological indices are
+found to be (1; 000), consistent with calculations in the
+literature [70].
+We now construct a set of symmetry-conserving
+MLWF from the GGA Bloch wave functions by FPLO.
+The projected basis of the MLWF involves 20 d-orbitals
+of two W atoms and 24 p-orbitals of four S atoms. There-
+fore, the Wannier model h0(k) for 2M-WS2 consists of 44
+bands, whose symmetry properties have been compre-
+hensively confirmed. With the iterative Green’s function
+method [80], the (100) and (001) surface dispersions are
+shown in Fig. 6 (d) and (e), respectively. In particular,
+the (100) surface shows a single Dirac cone at Γ point
+around the Fermi level, which is in excellent agreement
+with prior ARPES results [71, 73]. Interestingly, we also
+find a second Dirac surface state at Γ, slightly below the
+Fermi level, which we attribute to the band inversion at
+the Y point between the two topmost valance bands. Due
+to the energetic proximity, the two Dirac cones anticross
+when dispersing away from Γ. As shown in Fig 6 (e),
+the (001) surface also features a gapless surface state, as
+expected from the nontrivial Z2 topology of the system.
+In experiments, STM studies of vortices were per-
+formed on the cleaved (100) surface. Therefore, we need
+to study the CdGM physics of a [100]-directional vor-
+tex tube, or equivalently a π-junction along either [001]
+or [010] direction. We have constructed a BdG model,
+dubbed H[001](k∥), which describes a π-junction geom-
+etry with Na unit cells along [001].
+We find that the
+simulation results have converged when the pairing am-
+plitude is 30 meV and below. Thus, we use ∆0 = 10 meV
+as the default pairing amplitude in all our simulations of
+2M-WS2, with which the localization length of the An-
+dreev bound states is around 3 nm. As a result, we set
+the junction size to be Na = 500, or equivalently 263 nm,
+to avoid any finite-size effect.
+Upon diagonalizing H[001], we map out µ-dependent
+energy gap distributions for 2M-WS2 along N-Γ-N and
+Y-Γ-Y, as plotted in Figs. 6 (f) and (g), respectively.
+In particular, we are looking for gap-closure points in
+the (k, µ)-space that suggest quantum critical points of
+JT. For example, there exist two gapless nodes in Fig. 6

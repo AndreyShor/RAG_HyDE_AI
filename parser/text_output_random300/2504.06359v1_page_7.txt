@@ -1,0 +1,105 @@
+7
+check failure.
+They can repeat this method for arbitrary many times.
+Thanks to the no-cloning theorem, leaking one of the se-
+crets will not expose any other historical shared secrets
+because no one can keep a record of the historical pho-
+tons.
+We may have realized that this method can be used to
+transmit any message b rather than random b; and this
+method generally works in any quantum protocol that
+involves photon transmission.
+If Alice wants to send an arbitrary message m, to fur-
+ther secure the communication, Alice can use a post-
+quantum symmetric key encryption scheme (e.g.
+AES
+[27]) to encrypt the message into a psuedorandom ci-
+phertext b, then use b as the state section string.
+V.
+CONCLUSIVE GENERAL SOLUTION
+We have shown quantum cover communication in con-
+crete protocols. Note that these methods are not limited
+to the discussed protocols, they can be applied to a broad
+range of protocols, providing a general solution to quan-
+tum covert communication.
+Speciﬁcally, the method on BB84 can be applied to all
+quantum communication protocols that involve a (pub-
+lic) parameter estimation phase similar to BB84. For ex-
+ample, E91 [20], DL04 [25], and many more. The method
+on DL04 can be applied to almost all quantum commu-
+nication protocols that involve photon sending and re-
+turning. The method for subsequent covert communica-
+tion can be applied to almost all quantum communication
+protocols that involve photon sending.
+Now we summarize the methods and conclude a gen-
+eral solution to quantum cover communication that
+works for most (if not all) quantum protocols that in-
+volve photons sending and/or returning.
+The controller is deﬁned as:
+Controller V: It is a quantum computer that
+bans classical public key cryptography and post-
+quantum public key cryptography, and controls
+quantum cryptography by demanding three secret
+strings from the photon sender: the basis selection
+string a, the state selection string b, and the Bell
+state selection string c (if the protocol originally
+uses entangled photons).
+The solution to quantum covert communication under
+this controller includes three stages:
+1. Quantum Covert Key Distribution: Using en-
+tangled photons similar to the revised DL04 (re-
+gardless of whether the protocol originally uses en-
+tangled photons).
+2. Subsequent Quantum Covert Key Distribu-
+tion: Setting the state selection string to be the
+new secret intended to distribute, and the basis
+selection string to be the common key shared via
+stage 1.
+3. Quantum Covert Communication: Setting the
+state selection string to be the message itself or
+the ciphertext of the message encrypted by a post-
+quantum symmetric key encryption scheme using a
+key shared via stage 1 or 2, and the basis selection
+string to be (another) key shared via stage 1 or 2.
+As we analyzed earlier, with the use of entangled pho-
+tons, any third party, including Colin, will not be able
+to detect covert communication, even if he requires the
+sender to use pre-agreed strings a, b, and c. The pho-
+ton sender can still use diﬀerent strings a′, b′, and c′ to
+achieve covert communication and attribute all unusual
+changes to Eve. Unless Colin can control any Eve or pre-
+dict the behaviors of any Eve, he is not expected to have
+any advantage in solidifying the existence of covert com-
+munication. This completes our discussion of quantum
+covert communication.
+[1] M. A. Nielsen and I. L. Chuang, Quantum computation
+and quantum information (Cambridge university press,
+2010).
+[2] M. R. Garey and D. S. Johnson, Computers and in-
+tractability, Vol. 174 (Freeman San Francisco, 1979).
+[3] M. Sipser, Introduction to the Theory of Computation,
+3rd ed. (Course Technology, Boston, MA, 2013).
+[4] W. K. Wootters and W. H. Zurek, A single quantum
+cannot be cloned, Nature 299, 802 (1982).
+[5] A. Einstein, B. Podolsky, and N. Rosen, Can quantum-
+mechanical description of physical reality be considered
+complete?, Physical Review 47, 777 (1935).
+[6] C. H. Bennett and S. J. Wiesner, Communication via
+one-and two-particle operators on Einstein-Podolsky-
+Rosen states, Physical Review Letters 69, 2881 (1992).
+[7] W. Heisenberg, ¨Uber den anschaulichen Inhalt der quan-
+tentheoretischen Kinematik und Mechanik, Zeitschrift
+f¨ur Physik 43, 172 (1927).
+[8] W. H. Zurek, Decoherence, einselection, and the quan-
+tum origins of the classical, Reviews of Modern Physics
+75, 715 (2003).
+[9] D. Dieks, Communication by EPR devices, Physics Let-
+ters A 92, 271 (1982).
+[10] W. Diﬃe and M. E. Hellman, New directions in cryp-
+tography, in Democratizing Cryptography: The Work of
+Whitﬁeld Diﬃe and Martin Hellman (2022), pp. 365–390.
+[11] R. L. Rivest, A. Shamir, and L. Adleman, A method
+for obtaining digital signatures and public-key cryptosys-
+tems, Communications of the ACM 21, 120 (1978).
+[12] P. W. Shor, Algorithms for quantum computation: dis-
+crete logarithms and factoring, in Proceedings 35th An-

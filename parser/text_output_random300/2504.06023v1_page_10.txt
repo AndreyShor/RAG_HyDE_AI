@@ -1,0 +1,178 @@
+10
+Here, erfc(x) in Eq. (59) is the complementary error function.
+By appropriately choosing the parameter α > 0, the compu-
+tation of νe3dtf(r, L) via Eqs. (58) to (60) becomes efficient
+for any r. Clearly, as α increases, the far-field contribution
+becomes more significant, while as α decreases, the near-field
+contribution dominates.
+However, for convenience in deriving exact results, it is ad-
+vantageous to express νe3dtf entirely as a Fourier-space series.
+To achieve this, the real-space series in νR(r) is transformed
+into an equivalent Fourier-space representation,
+∞
+X
+n
+erfc(α|r + nL|)
+|r + nL|
+=
+π
+α2L3 +
+∞
+X
+n̸=0
+1 −e−π2n2/(αL)2
+πn2L
+ei2πn·r/L.
+(61)
+Consequently, νR(r) + νF(r) reduces to Eq. (5), i.e.,
+νR(r) + νF(r) = ξ
+L +
+∞
+X
+n̸=0
+ei2πn·r/L
+πn2L
+,
+(62)
+where ξ is the constant independent of r[14],
+ξ = π
+β2 + 2β
+√π −
+∞
+X
+n̸=0
+erfc(βn)
+n
+−
+∞
+X
+n̸=0
+e−π2n2/β2
+πn2
+.
+(63)
+Here we have introduced the dimensionless parameter β =
+αL > 0, the dimensionless vector s = (s1, s2, s3) and its
+magnitude s = |s| =
+p
+s2
+1 + s2
+2 + s2
+3. In deriving Eq. (62),
+no specific value is assumed for α. However, since the ex-
+pression is now entirely written as a Fourier-space series, one
+may regard Eq. (62) as being fully determined by the far-field
+contribution, corresponding to the limit α →∞.
+The truncation schemes commonly employed in the
+literature[38–40] correspond to the following explicit expres-
+sions for wcd(r),
+w1(r) = erfc(r/σ)
+r
+,
+(64)
+w2(r) = 1
+r −1
+8rc
+
+15 −10r2
+r2c
++ 3r4
+r4c
+
+,
+(65)
+and
+w3(r) = 1
+r −
+1
+16rc
+
+35 −35r2
+r2c
++ 21r4
+r4c
+−5r6
+r6c
+
+,
+(66)
+where σ is the screening length and rc is the cutoff distance.
+Both σ and rc play the role of the length scales for wj(r). For
+a fixed dimensionless parameter s, it is evident that w1(sσ),
+w2(src), and w3(src) all scale inversely with their length
+scales.
+The three-dimensional Fourier transforms of these
+functions are related to the Fourier transform of the Coulomb
+interaction via
+ˆwj(k) = 4π
+k2
+h
+1 + ˆdj(k)
+i
+,
+(67)
+where
+ˆd1(k) = −e−k2σ2/4,
+(68)
+ˆd2(k) = 153kc cos kc −(3 −k2
+c) sin kc
+k5c
+,
+(69)
+and
+ˆd3(k) = 105(15 −k2
+c)kc cos kc −(15 −6k2
+c) sin kc
+k7c
+. (70)
+Here, kc = krc in Eqs. (69) and (70). These Fourier trans-
+forms have been derived previously [51]. Under PBC, the ef-
+fective pairwise interactions follow Eq. (21),
+νj(r, L) = τj + 1
+L3
+∞
+X
+n̸=0
+ei2πn·r/L ˆwj(2πn/L),
+(71)
+where the constant term τj is given by
+τj = lim
+r→0
+1
+r −wj(r)
+
++ 1
+L3 lim
+k→0 ˆwj(k)
+(72)
+yielding explicitly,
+τ1 =
+2
+√πσ + πσ2
+L3 ,
+(73)
+and
+τ2 = 2πr2
+c
+7L3 + 15
+8rc
+;
+τ3 = 2πr2
+c
+9L3 + 35
+16rc
+.
+(74)
+These constant terms play a crucial role in ensuring that the ef-
+fective pairwise interactions dominate over the bare Coulomb
+interaction. The behaviors of νj(r, L) are qualitatively sim-
+ilar to those shown in Fig. 2. Notably, none of the effective
+interactions—ν1(r, L), ν2(r, L), and ν3(r, L)—exhibit scal-
+ing behavior [Eq. (32)] under the condition that the param-
+eters σ and rc are fixed and independent of L. However, if
+these length scales were assumed to be linearly proportional
+to L, the scaling property of Eq. (32) would be restored.
+[1] S. W. de Leeuw, J. W. Perram, and E. R. Smith, “Simulation of
+electrostatic systems in periodic boundary conditions. i. lattice
+sums and dielectric constants,” Proc. R. Soc. London, Ser. A
+Math. Phys. Sci. 373, 27–56 (1980).

@@ -1,0 +1,85 @@
+Local structure of extremal points
+19
+4.2.1
+Decomposition across annuli
+We begin by defining the following sets
+A0
+def= B1
+and
+Aj
+def= Bj+1 \ Bj,
+∀j ∈N .
+With this notation in place, for all b ∈N ∪{∞} and x ∈Bb, the field Φb in (4.1) can be conveniently
+rewritten as follows
+Φb(x) = −
+Z b
+0
+(1 −K(e−sx))dBs +
+b−1
+X
+j=0
+Zj(x)1{x∈Aj} +
+b−1
+X
+j=0
+Zj,b(x)1{x∈Aj} ,
+(4.5)
+where the fields Zj and Zj,b are as in Definition 3.9. For every b ∈N ∪{∞} and j ∈[b −1]0, we
+aim to control the tails of the suprema of the fields Zj and Zj,b over Aj. This will be the content of
+the next two lemmas.
+4.2.2
+Controlling the tails
+Recall the definition (2.1) of the recentering constants mj.
+Lemma 4.3. There exists a constant c > 0 such that for all j ∈N, it holds that
+P
+ sup
+x∈Aj
+Zj(x) −mj
+ ≥η
+
+≲e−cη ,
+∀η ≥0 .
+Proof. For j ∈N and η ≥0, the probability in the lemma statement is equivalent to
+P
+
+sup
+x∈B1\B0
+Zj(ejx) −mj
+ ≥η
+
+.
+(4.6)
+On the other hand, since by (K2) the seed covariance function K is supported in B(0, 1), we have that
+for all x, y ∈B1 \ B0, it holds that
+E[Zj(ejx)Zj(ejy)] =
+Z j
+0
+K(es(x −y))ds .
+In other words, the field Zj(ej·) restricted to the annulus B1 \ B0 has the same law as the martingale
+approximation at level j of a ⋆-scale invariant field with seed covariance kernel K. Hence, if the
+annulus B1 \ B0 in (4.6) is replaced by the d-dimensional unit box [0, 1]d, then this tightness
+result is well-known, see e.g. [DRSV14a,Mad15,Aco14]. To deduce the tightness of supremum of
+(Zj(ej·))j∈N over the annulus B1 \ B0 from the one over the box [0, 1]d, one can simply note that
+B1 \ B0 contains and is contained in a box of order one.
+Regarding the field Zj,b, we have the following bound on its supremum over annuli of radii smaller
+than j.
+Lemma 4.4. There exists a constant c > 0 such that for b ∈N ∪{∞}, j ∈[b −1]0, and l ∈[j]0, it
+holds that
+P
+
+sup
+x∈Al
+Zj,b(x) ≥η
+
+≲e−ce2(j−l)η2 ,
+∀η ≥0 .
+Proof. The result follows by a standard application of Fernique’s majorizing criterion (Lemma C.3)
+and Borell-TIS inequality (Lemma C.2). We only detail the case b = ∞, as the case b ∈N is
+completely analogous. Fix j ∈N and l ∈[j] and note that the probability in the statement equals
+P
+
+sup
+x∈B1\B0
+Zj,∞(elx) ≥η
+
+.

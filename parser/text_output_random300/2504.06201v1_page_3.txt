@@ -1,0 +1,47 @@
+ 
+3 
+Results 
+We present a benchmarking study on combinatorial optimization problems representing real-world 
+scenarios, e.g., materials design, characterized by dense and large QUBO matrices (Fig. S1). These 
+problems are non-convex and exhibit a highly complex energy landscape, making it challenging 
+and time-consuming to identify accurate solutions. Classical solvers, such as integer programming 
+(IP), simulated annealing (SA), steepest descent (SD), tabu search (TS), parallel tempering with 
+isoenergetic cluster moves (PT-ICM), perform well for small-scale problems. However, they are 
+often relatively inaccurate for larger problems (problem size ³ 1,000; Fig. 1a). In particular, SD 
+and TS show low relative accuracy compared to other solvers. The combination of PT and ICM 
+leverages the strengths of both techniques: PT facilitates crossing energy barriers, while ICM 
+ensures exploration of the solution space, effectively covering broad and diverse regions. This 
+makes PT-ICM particularly effective for exploring complex optimization spaces and enhancing 
+convergence toward the global optimum46,47. However, the performance of PT-ICM can be 
+problem-dependent48. While it can work well for sparse problems, its effectiveness decreases for 
+denser problems46. Consequently, although SA, and PT-ICM perform better than SD and TS, they 
+also fail to find high-quality solutions for large-scale problems.  
+ 
+To address these limitations, QUBO decomposition strategies can be employed to improve the 
+relative accuracy. For example, integrating QUBO decomposition with classical solvers (e.g., SA–
+QBSolv and PT-ICM–QBSolv) improves their performance. Nonetheless, these approaches often 
+remain insufficient for handling massive problems effectively, particularly considering problem-
+solving time (Fig. 1b), which will be further discussed in the following. On the other hand, 
+quantum solvers provide excellent performance for solving these dense and large-scale problems 
+representing real-world optimization scenarios. Although QA can perform excellently for small 
+problems, it has difficulty solving large and dense QUBOs due to the limited number of qubits 
+(5,000+) and connectivity (15). Several prior studies reported that QA may not be efficient since 
+it cannot effectively handle dense and large QUBOs due to hardware limitations23,53,54. However, 
+when it runs with the QUBO decomposition strategy (i.e., QA–QBSolv), large-scale problems (n 
+≥ 100) can be effectively handled. Furthermore, hybrid QA (HQA), which integrates quantum and 
+classical approaches, also can solve large-scale problems efficiently. As a result, the quantum 
+solvers consistently identify high-quality solutions across all problem sizes (Fig. 1a).  
+ 
+Computational time is also a critical metric for evaluating solver performance. Classical solvers 
+exhibit rapidly increasing solving times as problem sizes grow, making them impractical for large-
+scale combinatorial optimization problems (Fig. 1b). While SD and TS are faster than other 
+classical solvers, their relative accuracies are low, as can be seen in Fig. 1a. It is worth noting that 
+the SA, and PT-ICM solvers struggle to handle problems with more than 3,000 variables due to 
+excessively long solving time or computational constraints (e.g., memory limits). Although the IP 
+solver is faster than SA and PT-ICM, its solving time increases greatly with problem size. The 
+QUBO decomposition strategy significantly reduces computational time, yet quantum solvers 
+remain faster than their classical counterparts across all problem sizes. For instance, for a problem 
+size of 5,000, the solving time for HQA is 0.0854 s and for QA–QBSolv is 74.59 s, compared to 
+167.4 s and 195.1 s for SA–QBSolv and PT-ICM–QBSolv, respectively, highlighting superior 
+efficiency of the quantum solvers. 
+ 

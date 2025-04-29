@@ -1,0 +1,33 @@
+13 
+in Sec. 2.4, CBFi was varied by ±25% and ±50% relative to the baseline. The results were 
+visualized using bar graphs, as shown in Fig. 8. The bar heights represent the mean of the recovered 
+data, and the error bars indicate the interquartile range (25th to 75th percentile) to facilitate visual 
+comparison of central trends while minimizing distortion from non-Gaussian distributions. Fig. 8 
+(a) shows that the proposed DL model exhibits greater sensitivity to CBFi changes across all 
+variation levels, although the sensitivities of both methods remain below 100%. The DL model 
+achieves an average CBFi sensitivity of 87.1%, compared to 55.4% for single-exponential fitting. 
+Fig. 8 (b) presents the recovered CBF changes using the DL model and single-exponential fitting. 
+The DL model provides more accurate relative change recovery than fitting, with an average 
+relative flow recovery error 5.8%, compared to 19.1% for fitting, calculated using Eq. (11). And 
+both methods underestimated the true values, which is consistent with the results in Fig. 7. 
+Additionally, in Fig. 8 (a) and (b), the error bars at different 𝐷𝐷𝑏𝑏_𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏 variation levels indicate that 
+the DL model has a lower standard deviation than fitting when 𝐷𝐷𝑏𝑏_𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏 is smaller than the 
+baseline. However, the opposite trend is observed when 𝐷𝐷𝑏𝑏_𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏 is larger than the baseline. This 
+suggests that the proposed DL model’s estimates are more consistent (lower variance) at low flows, 
+but become more variable at high flows compared to fitting. This is likely because at very high 
+flow rates, the correlation decay is extremely fast, nearing the edge of the measured lag range, 
+making the network extrapolate more. 
+ 
+Fig. 8 (a) and (b) Bar charts showing the recovered brain sensitivity and relative change in response to CBFi 
+variation for single-exponential fitting and DL models. The error bars represent the 25th and 75th percentiles of the 
+recovered data, providing an interquartile range-based measure of variability. 
+3.4 Model’s ability to separate extracerebral blood flow confounder 
+We also quantified the recovered CBFi sensitivity to SBFi changes using Eq. (10), with results 
+presented in Fig. 9 (a). The proposed DL model exhibits a scalp sensitivity comparable to single-
+exponential fitting, with average values of 12.7% and 10.0%, respectively. For rCBFi recovery, 
+both methods demonstrate similar accuracy, with an average error of 4.6% for the DL model and 
+3.8% for fitting, calculated using Eq. (11). These results indicate that both approaches have similar 
+effectiveness in minimizing the influence of the extracerebral layer when recovering CBF changes. 
+However, the error bars in both figures indicate that the proposed DL model exhibits a slightly 
+larger standard deviation compared to single-exponential fitting, suggesting the DL estimates are 
+a bit more variable with changing scalp flow. 

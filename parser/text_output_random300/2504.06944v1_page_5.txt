@@ -1,0 +1,46 @@
+ 
+5
+before and after filling with the ScannerPro app on an iPad Pro (6th generation). A horizontal 
+“fill line” was placed along the inside of the regolith bin using white tape, in order to maintain a 
+consistent volume and separation from the pipe exit. For PSI measurements at higher bulk 
+densities, the regolith simulant was evenly sprinkled above the “fill line” and bulk density was 
+then increased using a 12V electronic vibration motor affixed to the side of the aluminum 
+regolith bin, opposite the clear acrylic splitter plate. With the entire regolith bin shaking, 
+mechanical vibrations at rates between 20-40 Hz were used for various durations between 5 – 
+300 seconds, in order to compact the regolith simulants so that the surface was even with the 
+horizontal “fill line”, resulting in higher bulk densities.  
+The density of each regolith simulant was directly measured inside the regolith bin, prior 
+to PSI flow measurements, using gamma-ray spectroscopy. Adapting the techniques developed 
+by Santo & Tsuji (1977), a custom, removable, gamma-ray spectroscopy setup was used to non-
+destructively measure the attenuation of gamma-rays through the regolith bin and regolith 
+sample prior to each run. This setup used a 10 μCi sample of radioactive Cesium-137 to emit 
+gamma-rays that could be measured using a 3.8 cm x 3.8 cm NaI(Tl) crystal gamma ray 
+scintillation detector (with a detectable range up to 10,000 keV), separated by a vertical 
+translation stage (with 0.1 cm markings). Before taking sample measurements, background 
+gamma ray spectra were taken at a fixed separation distance (without the sample or regolith 
+bin), as well as with the empty aluminum regolith bin and regolith bin with regolith simulant 
+inside. Gamma-ray spectra were recorded using an observation time of 600 seconds and bin 
+width of 0.0001 keV, before being analyzed using the Pulse Recorder and Analyzer (PRA) 
+software, and curve fitting with a 3-5 term gaussian applied to the characteristic monatomic 
+spectral feature near 662 keV for radioactive Cesium-137 in Matlab. This removable, gamma-
+ray, density measuring setup was calibrated by measuring samples of LHS-1, LMS-1, LHS-1D, 
+and 40-80 µm glass beads at known densities (from mass and volume) in both a small-scale 
+regolith container, as well as an aluminum regolith bin of identical scale and design. For all 
+measurements, a minimum of 3 separate spectra, with observation times of 600s, were taken 
+for each density and averaged. 
+After sample preparation and density measurements, non-reacting flow of compressed 
+air was initiated using a 12V switch, connected to the electronic solenoid valve, with 
+corresponding pressure and mass flow measurements measured in-line. The exhaust flow was 
+then split by the clear acrylic splitter plate so the side profile of PSI crater development could 
+be recorded using a GoPro Hero 7 camera with a frame rate set to 60 and 240 fps. The splitter 
+plate has a 2.5 cm beveled edge, which angles away from the regolith bin at a 45 deg angle, and 
+a straight edge on opposite side as shown in Figure 2, to reduce any disturbances to the 
+impinged surface flow as much as possible. Monitoring crater formation with various regolith 
+simulants at a set bulk density, video tracking of the crater shape and ejected material was 
+completed using image analysis techniques developed in Python to determine the crater depth 
+(H), crater width (w), and crater volume (V) as a function of time throughout the PSI event. This 
+image analysis technique leveraged edge detection for extracted frames to trace the outline of 
+the crater shape and depth over time, as shown in Figure 3. Similar crater depth tracing was 
+performed manually using Engauge Digitizer software for each run, examining frames every 0.5 
+seconds, to confirm the correct output of the automated Python edge detection analysis. By 
+placing scale bars and a grid pattern on the front of the regolith box, crater depth was 

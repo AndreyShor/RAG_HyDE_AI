@@ -1,0 +1,65 @@
+4
+•
+Bhattacharyya et al.
+2.1.1
+From QUBOs to Max-Cut Problems. Given the QUBO associated with matrix 𝑄∈R𝑛×𝑛, the 𝑛+ 1 adjacency
+matrix 𝐴given by
+𝐴𝑖,𝑗= −𝑄𝑖,𝑗
+𝐴𝑛,𝑖=
+∑︁
+1≤𝑗≤𝑛
+𝑄𝑖,𝑗
+𝐴𝑛,𝑛= 0,
+(7)
+has the property that if 𝑥𝑖= 1
+2 (1 −𝑦𝑖𝑦𝑛),
+𝑦𝑇
+
+−1
+4𝐴
+
+𝑦+ 1
+4sum(𝑄) = 𝑥𝑇𝑄𝑥.
+(8)
+A derivation of this mapping can be found in Appendix A.
+The graph with adjacency matrix 𝐴is called the corresponding graph of 𝑄. The corresponding graph allows
+for QUBOs to be mapped to Max-Cut problems. A similar mapping was mentioned in [17].
+2.1.2
+Max-Cut Relaxations. The benefit of mapping QUBOs to Max-Cut problems is that we can make use of
+well-known relaxations.
+Relaxing the Max-Cut cost function (3, with 𝐽= −𝐴/4) by introducing 𝑌𝑖∈R𝑘with ∥𝑌𝑖∥= 1 is given by
+−1
+4
+∑︁
+1≤𝑖,𝑗≤𝑛
+𝐴𝑖,𝑗𝑦𝑖𝑦𝑗→−1
+4
+∑︁
+1≤𝑖,𝑗≤𝑛
+𝐴𝑖,𝑗
+
+𝑌𝑇𝑌
+
+𝑖,𝑗,
+(9)
+where 𝑌is a matrix with columns 𝑌𝑖. The Goemans Williamson GW relaxation [7] is derived from the special
+case where 𝑘= 𝑛. In this case, 𝑌𝑇𝑌is a positive semidefinite symmetric matrix with unit diagonal. If we replace
+the matrix 𝑌𝑇𝑌with a general matrix 𝑀, then the relaxed QUBO is
+−1
+4 max
+𝑀∈S𝑛tr(𝐴𝑀),
+where S𝑛is the set of positive semidefinite symmetric matricies with unit diagonals.
+Notably, this optimization problem is QUBO-Relaxed, and can thus be exactly solved [18]. Given a solution 𝑀,
+we find the Cholesky decomposition 𝑀= 𝑌𝑇𝑌. If we let 𝑘= 2 or 𝑘= 3, then we obtain the Burer-Monteiro BM
+relaxations, BM2 and BM3 respectively [19].
+In the case of the BM2 relaxation, we can express each column vector 𝑌𝑖in polar coordinates, i.e., 𝑌can be
+parameterized it in terms of 𝜃∈[0, 2𝜋)𝑛, giving
+𝑌𝑖= [cos(𝜃𝑖), sin(𝜃𝑖)]𝑇.
+(10)
+Likewise for BM3 relaxation, each𝑌𝑖can be expressed in spherical coordinates, i.e., we can take𝑌and parameterize
+it in terms of 𝜃∈[0, 𝜋]𝑛,𝜙= [0, 2𝜋)𝑛, giving
+𝑌𝑖= [sin(𝜃𝑖) cos(𝜙𝑖), sin(𝜃𝑖) sin(𝜙𝑖), cos(𝜃𝑖)]𝑇.
+(11)
+Unlike the GW relaxation, solving for 𝑌is no longer a QUBO-Relaxed problem. Instead we use randomized
+stochastic perturbations with (step size 𝜂) to solve this problem as in [5, 6].
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

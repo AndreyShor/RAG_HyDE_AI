@@ -1,0 +1,139 @@
+Preprint. Under review.
+
+model.component().create("comp1", true);
+model.component("comp1").geom().create("geom1", 3);
+model.component("comp1").mesh().create("mesh1");
+model.component("comp1").geom("geom1").create("r1", "Rectangle"); 
+-> Messages: The requested geometry operation is unknown or  
+ 
+cannot be created in this context. 
+model.component("comp1").geom("geom1").feature("r1").set("pos", 
+new double[]{0.02, 0}); -> Messages: Unknown feature. Tag: r1
+model.component("comp1").geom("geom1").feature("r1").set("size", 
+new double[]{0.08, 0.14}); -> “”
+model.component("comp1").geom("geom1").run();
+model.component("comp1").material().create("mat1", "Common");
+model.component("comp1").material("mat1").propertyGroup().create(
+"def", "Constants");
+model.component("comp1").material("mat1").propertyGroup("def").se
+t("thermal_conductivity", "52[W/(m*K)]");
+model.component("comp1").physics().create("ht", 
+"HeatTransferInSolids", "geom1"); -> Messages: Unknown physics 
+ 
+interface.
+model.component("comp1").physics("ht").feature("temp1").set("T0", 
+"273.15[K]"); -> Messages: Unknown feature. Tag: ht
+model.component("comp1").physics("ht").create("hf1", "HeatFlux", 
+2); -> “”
+model.component("comp1").physics("ht").feature("hf1").selection()
+.set(3); -> “”
+model.component("comp1").physics("ht").feature("hf1").set("q0", 
+"5e5[W/m^2]"); -> “”
+model.component("comp1").mesh("mesh1").create("map1", "Map");
+model.component("comp1").mesh("mesh1").feature("size").set("hauto
+", 4);
+model.component("comp1").mesh("mesh1").run();
+model.study().create("std1");
+model.study("std1").create("stat", "Stationary");
+model.study("std1").feature("stat").setSolveFor("/physics/ht", 
+true); -> Messages: /physics/ht is not a valid path of a model  
+ 
+entity.
+model.study("std1").run();
+model.result().numerical().create("pev1", "EvalPoint");
+model.result().numerical("pev1").set("expr", new String[]{"T"});
+model.result().numerical("pev1").set("unit", new String[]{"K"});
+model.result().numerical("pev1").set("descr", new 
+String[]{"Temperature"});
+model.result().numerical("pev1").set("geom", "geom1"); -> 
+Messages: Unknown property. Property: geom
+model.result().numerical("pev1").set("x", 0.04); -> Messages:  
+ 
+Unknown property. Property: x
+model.result().numerical("pev1").set("y", 0.04); -> Messages:  
+ 
+Unknown property. Property: y
+model.result().table().create("tbl1", "Table");
+model.result().table("tbl1").comments("Point Evaluation 1");
+model.result().numerical("pev1").set("table", "tbl1");
+model.result().numerical("pev1").setResult();
+model.result().table("tbl1").save("OUTPUT_PATH/output.txt");
+
+model.component().create("comp1", true);
+model.component("comp1").geom().create("geom1", 2);
+model.result().table().create("tbl1", "Table");
+model.component("comp1").geom("geom1").axisymmetric(true);
+model.component("comp1").mesh().create("mesh1");
+model.component("comp1").geom("geom1").create("r1", "Rectangle");
+model.component("comp1").geom("geom1").feature("r1").set("pos", 
+new double[]{0.02, 0});
+model.component("comp1").geom("geom1").feature("r1").set("size", 
+new String[]{"0.08 [m]", "0.14"});
+model.component("comp1").geom("geom1").create("pt1", "Point");
+model.component("comp1").geom("geom1").feature("pt1").set("p", new 
+String[]{"0.02 0.02", "0.04 0.1"});
+model.component("comp1").geom("geom1").run();
+model.component("comp1").physics().create("ht", "HeatTransfer", 
+"geom1");
+model.component("comp1").physics("ht").create("temp1", 
+"TemperatureBoundary", 1);
+model.component("comp1").physics("ht").feature("temp1").selection(
+).set(2, 5, 6);
+model.component("comp1").physics("ht").create("hf1", 
+"HeatFluxBoundary", 1);
+model.component("comp1").physics("ht").feature("hf1").selection().
+set(3);
+model.result().table("tbl1").comments("Point Evaluation 1");
+model.component("comp1").physics("ht").feature("solid1").set("k_ma
+t", "userdef");
+model.component("comp1").physics("ht").feature("solid1").set("k", 
+new int[][]{{52}, {0}, {0}, {0}, {52}, {0}, {0}, {0}, {52}});
+model.component("comp1").physics("ht").feature("solid1").set("rho_
+mat", "userdef");
+model.component("comp1").physics("ht").feature("solid1").set("Cp_m
+at", "userdef");
+model.component("comp1").physics("ht").feature("temp1").set("T0", 
+"273.15[K]");
+model.component("comp1").physics("ht").feature("hf1").set("q0_inpu
+t", "5e5");
+model.study().create("std1");
+model.study("std1").create("stat", "Stationary");
+<model.sol block>
+model.result().dataset().create("rev1", "Revolve2D");
+model.result().dataset().create("cpt1", "CutPoint2D");
+model.result().numerical().create("pev1", "EvalPoint");
+model.result().numerical("pev1").set("probetag", "none");
+<model.sol block>
+model.result().dataset("rev1").label("Revolution 2D");
+model.result().dataset("rev1").set("startangle", -90);
+model.result().dataset("rev1").set("revangle", 225);
+model.result().dataset("cpt1").set("pointx", 0.04);
+model.result().dataset("cpt1").set("pointy", 0.04);
+model.result().numerical("pev1").set("data", "cpt1");
+model.result().numerical("pev1").set("table", "tbl1");
+model.result().numerical("pev1").setResult();
+model.result().table("tbl1").save("OUTPUT_PATH/output.txt");
+Figure 8: Comparing a Ground Truth code with the LLM-generated code. The ochre-colored
+lines or arguments in the GT code demarcate lines or arguments that were modified or
+absent in the LLM generated code. The green (red) lines in the LLM-generated code denote
+lines that were (were not) executable. The arrows against the red lines show the abbreviated
+API message returned for each non-executable line.
+The problem statement for each problem is in Appendix H.3, with the Model Specifica-
+tions and the Target Description fields used to substitute the problem description and tar-
+get description placeholders respectively. As in the experiments in COMSOL Multiphysics®,
+the LLM needs to generate the code that solves the problem, and export the target value
+and the target units to an ‘output.txt‘ file. We then apply the patch containing the code and
+the output, and evaluate the output. We used a budget limit of $1 per problem. Note, in this
+setup, we evaluate the last ‘output.txt‘ file. If the agent’s attempt at solving the problem
+terminates because it exceeds the cost limit, the ‘output.txt‘ file will correspond to the last
+code that the agent successfully executed solution in the loop, and not the last version of the
+code.
+Although the environment contains FEniCSx, which is likely better suited to solving FEA
+problems, we explicitly instructed the agent to use only numpy and scipy. We made this
+choice since preliminary tests revealed that the agent also failed to generate executable
+FEniCSx code due to breaking changes in the package.
+We evaluate the following metrics:
+• Valid Target: As in Section 4, this is the number of problems for which the LLM
+judged the computed output to be valid i.e. consistent with the target description
+and units. 11/15 solutions had a valid target.
+28

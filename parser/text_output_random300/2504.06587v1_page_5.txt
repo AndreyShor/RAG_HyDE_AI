@@ -1,0 +1,118 @@
+SigChord: Sniffing Wide Non-sparse Multiband Signals for Terrestrial and Non-terrestrial Wireless Networks
+MobiSys ’25, June 23–27, 2025, Anaheim, California, US
+𝑁
+𝑃
+…
+𝑁
+𝐹
+Prepend 
+[CLS] token
+Embedding 
+process
+Linear layer
+Predict spectrum 
+occupancy
+Encoder layer
+Encoder layer
+Figure 6: The architecture for spectrum sensing.
+sensing as a multi-label binary classification task to predict sub-
+band occupancy. The true spectrum occupancy is represented by a
+vector of length 𝐿, where the 𝑗-th element indicates whether the
+𝑗-th sub-band is occupied. The spectrum sensor, shown in Figure 6,
+consists of two Transformer encoder layers and a linear layer. To
+reduce complexity, a learnable [CLS] token of dimension 𝑑𝑚𝑜𝑑𝑒𝑙
+is prepended to the embedding, independent of the input. After
+passing through the encoders, the hidden state of the [CLS] token
+is fed to the linear layer, activated by Sigmoid to produce the output
+ˆ𝑆∈(0, 1)𝐿, where ˆ𝑆𝑗denotes the occupancy probability of the 𝑗-th
+sub-band.
+After data-driven spectrum sensing, we use ˆ𝑆for rule-based
+signal recovery. ˆ𝑆indicates the occupied sub-bands, i.e., the non-
+zero rows of the spectrum matrix 𝑋. This enables identification
+of the contributing rows of 𝑋and columns of 𝐴in Eq. (1). Let
+𝑆= {𝑗| ˆ𝑆𝑗> 𝜃}, where 𝜃∈(0, 1) is the threshold. We select the
+columns of 𝐴and rows of 𝑋corresponding to 𝑆, denoted as 𝐴𝑆
+and 𝑋𝑆. In the noise-free case, this gives 𝑌= 𝐴𝑆𝑋𝑆. If |𝑆|< 𝑃, the
+equation becomes overdetermined, and 𝑋𝑆can be solved via least
+squares. Our recovery algorithm is presented Algorithm 1. Note
+that the condition |𝑆|≤𝑃aligns with the non-blind Landau rate.
+With 𝑃ADCs sampling at 𝐵/𝐿, the total sampling rate is 𝑃
+𝐿𝐵, and
+the total occupied bandwidth is |𝑆|
+𝐿𝐵. Hence, |𝑆| ≤𝑃satisfies the
+Landau rate limit.
+The spectrum sensing and sub-band signal recovery granularity
+of SigChord is 𝐵/𝐿, determined by the sampling rate of each low-
+speed ADC in multi-coset sampling. To achieve finer granularity,
+each single ADC can be logically treated as 𝑘alternating ADCs,
+each sampling at 𝐵/(𝑘𝐿). By reorganizing the measurement matrix
+𝐴and results𝑌, this refinement could enhance granularity to 𝐵/(𝑘𝐿)
+without hardware modifications.
+3.3
+Protocol Identification
+This model identifies the protocol in each sub-band and forwards
+signal frames with intact headers to the header decoding model, fil-
+tering out those without. Let 𝑋𝑆∈C|𝑆|×𝑁represent the frequency-
+domain signals in the selected sub-bands. Each row of 𝑋𝑆under-
+goes an inverse Fourier transform to the time domain, denoted
+as 𝑥(𝑗)
+𝑏𝑏∈C1×𝑁, 𝑗= 1, 2, . . . , |𝑆|, which are then processed in par-
+allel by the protocol identification model. Structurally, each 𝑥(𝑗)
+𝑏𝑏
+Algorithm 1: Transformer-based sub-Nyquist signal re-
+covery
+Input: multi-coset samples 𝑦∈C𝑃×𝑁, measurement matrix
+𝐴∈C𝑃×𝐿, the spectrum sensing model
+𝑓: C𝑃×𝑁→(0, 1)𝐿, threshold 𝜃∈(0, 1).
+Output: spectrum matrix 𝑋𝑆for the occupied sub-bands.
+Require: |{𝑗| ˆ𝑆𝑗> 0}| ≤𝑃.
+1 Predict occupied sub-bands ˆ𝑆←𝑓(𝑦) ;
+2 Predict the support set 𝑆←{𝑗| ˆ𝑆𝑗> 𝜃} ;
+3 Select columns of 𝐴corresponding to 𝑆as 𝐴𝑆;
+4 Transform 𝑦to the measurement result 𝑌;
+5 Solve 𝑋𝑆←arg min ˜𝑋∥𝑌−𝐴𝑆˜𝑋∥2.
+𝑁
+1
+…
+𝑁
+𝐹
+Query token
+Embedding 
+process
+Linear layers
+Recovered signal 
+on sub-bands
+Identify protocol
+To header decoder
+Encoder layer
+Encoder layer
+Decoder layer
+Figure 7: The architecture for protocol identification.
+can be treated as an extreme case of multi-coset sampling with
+only one low-speed ADC. This allows the preprocessing steps from
+Section 3.1 to be applied directly, where 𝑃= 1 in this case. The
+protocol identification model is illustrated in Figure 7. In addition to
+its classification role, this model also functions as a feature extrac-
+tor for the subsequent header decoding model, which is primarily
+based on decoder layers. To enable effective feature sharing with
+the header decoding model, we use a combination of Transformer
+encoder and decoder layers rather than an encoder-only structure
+as in the spectrum sensor. The model processes the embedded 𝑥(𝑗)
+𝑏𝑏
+features through two encoder layers and correlates them with a
+learnable query token as a substitute for the [CLS] token. This
+query token is unrelated to the input and serves as a part of the
+model’s learnable parameters. The decoder layer applies attention
+mechanism between the query token and encoder output to ex-
+tract global signal features, which are then classified via two linear
+layers. The dimension of the hidden linear layer is set to 𝑑𝑚𝑜𝑑𝑒𝑙
+with GELU activation, layer normalization and a dropout rate of 0.1.
+The output from the final linear layer is activated by Softmax. To
+account for signal frames in sub-bands lacking intact headers and
+therefore undecodable, a dedicated no-header class is included in
+the classification. Additionally, the encoder features are forwarded
+to the header decoding model for feature fusion.
+3.4
+Header Decoding
+This module is responsible for decoding signal frames with intact
+protocol headers to retrieve open fields from the physical layer

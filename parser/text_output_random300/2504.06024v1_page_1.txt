@@ -1,0 +1,39 @@
+AriaQuanta: A Quantum Software for Quantum
+Computing
+A. Cheraghi 1 and H.Davoodi Yeganeh∗2
+1,2Quantum Research Center, Shahid Sattari University of Aeronautical Sciences and
+Technology, Tehran, Iran
+1,2AriaQuanta Quantum Computing Center, Tehran, Iran
+Abstract
+We introduce AriaQuanta, a powerful and flexible tool for designing, simulating, and implement-
+ing quantum circuits. This open-source software is designed to make it easy for users of all experience
+levels to learn and use quantum computing. The first version includes a compiler for implementing
+various quantum circuits and algorithms. Additionally, parametric circuits allow for the implemen-
+tation of variational quantum algorithms, and various noise models are available for simulating noisy
+circuits. We performed numerous numerical simulations on AriaQuanta in various applications, in-
+cluding quantum algorithms and noisy circuits. The results, compared with popular counterparts,
+demonstrate the high performance of AriaQuanta.
+Keyword: Quantum Computing, Quantum programing, quantum software, quantum platform
+1
+Introduction
+Quantum computers, utilizing the principles of quantum physics, can solve problems that classical com-
+puters cannot. In recent years, experimental quantum computing has made remarkable progress [1, 2],
+demonstrating quantum supremacy and quantum advantages [3, 4, 5, 6]. The applications of quantum
+computers span a wide range of fields, including mathematics, machine learning, medicine, finance, and
+economics[7, 8, 9]. Consequently, they have garnered significant attention over the past decade [10, 11].
+To solve a problem using quantum computing, the problem is first defined, followed by the design of a
+quantum circuit and algorithm to address it. Quantum hardware or a quantum simulator can be used
+to run and test a quantum algorithm, necessitating the availability of quantum software (quantum com-
+piler). Currently, quantum hardware is accessible via the cloud and can be utilized with a software stack.
+Quantum compilers generally convert high-level languages into hardware instructions to execute a quan-
+tum algorithm [12, 13]. Recently, the development of quantum software tools has accelerated, resulting
+in numerous quantum software packages available from various platforms and sources. Popular quantum
+software includes Cirq [14], Qiskit [15], ProjectQ [16], and PennyLane [17]. For a comprehensive review
+of quantum software, see refs [18, 19, 20]. Most quantum programming tools have been developed for
+research purposes in simulating quantum circuits and algorithms. Although a few of these tools have
+been used for real implementations on quantum hardware, the majority remain focused on theoretical
+applications. Here, we introduce an open-source quantum software platform designed to simulate quan-
+tum circuits and algorithms. AriaQuanta is a quantum programming language implemented in Python,
+∗corresponding author: h.yeganeh@ut.ac.ir, h.yeganeh@ariaquanta.com
+1
+arXiv:2504.06024v1  [quant-ph]  8 Apr 2025

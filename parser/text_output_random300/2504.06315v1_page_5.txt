@@ -1,0 +1,214 @@
+dPaorta
+dt
+=
+1
+Caorta
+ (PLV −Paorta)S aorta
+RLV −Raorta,1
+−Qaorta2eye −Qaorta
+!
+(2.1)
+dQaorta
+dt
+=
+1
+Laorta
+(Paorta −Pbody −Raorta,2Qaorta)
+(2.2)
+dPbody
+dt
+=
+1
+Cbody
+(Qaorta −Qbody)
+(2.3)
+dQbody
+dt
+=
+1
+Lbody
+(Pbody −PVC −RbodyQbody)
+(2.4)
+dPVC
+dt
+=
+1
+CVC
+ 
+(Qbody + Qeye2VC) −(PVC −PRV)S VC
+RVC
+!
+(2.5)
+dVRV
+dt
+= (PVC −PPA)S VC
+RVC
+−(PRV −PPA)S PA
+RRV + RPA
+(2.6)
+dPPA
+dt
+=
+1
+CPA
+ (PRV −PPA)S PA
+RRV + RPA
+−Qlungs
+!
+(2.7)
+dQlungs
+dt
+=
+1
+Llungs
+(Ppa −Plungs −Rlungs,1Qlungs)
+(2.8)
+dPlungs
+dt
+=
+1
+CPA
+(Qlungs −QPV)
+(2.9)
+dQPV
+dt
+=
+1
+LPV
+(Plungs −PPV −RlungsQPV)
+(2.10)
+dPPV
+dt
+=
+1
+CPV
+ (PPV −PLV)S PV
+RPV
+−QPV
+!
+(2.11)
+dVLV
+dt
+= (PPV −PLV)S PV
+RPV
+−(PLV −Paorta)S aorta
+RLV + Raorta,1
+(2.12)
+dQaorta2eye
+dt
+=
+1
+Laorta2eye
+(Paorta −Paorta2eye −Raorta2eye,1Qaorta2eye)
+(2.13)
+dPaorta2eye,1
+dt
+=
+1
+Caorta2eye
+ 
+Qaorta2eye −Paorta2eye,1 −Paorta2eye,2
+Raorta2eye,2
+!
+(2.14)
+dPeye
+dt
+=
+1
+Ceye
+ Paorta2eye,2 −Peye
+Reye,1
+−Peye −Peye2VC
+Reye,2
+!
+(2.15)
+dPCRAin
+dt
+=
+1
+CCRAin
+ Paorta2eye,2 −PCRAin
+RCRAin,1
+−PCRAin −PCRA,1
+RCRAin,2 + RCRA,1a
+!
+(2.16)
+dPCRA,1
+dt
+=
+1
+CCRA,1
+ PCRAin −PCRA,1
+RCRAin,2 + RCRA,1a
+−
+PCRA,1 −Part
+RCRA,1b + RCRA,2a + RCRA,2b + Rart,1
+!
+(2.17)
+dPart
+dt
+=
+1
+Cart
+ 
+PCRA,1 −Part
+RCRA,1b + RCRA,2a + RCRA,2b + Rart,1
+−
+Part −Pven
+Rart,2 + Rcap,1 + Rcap,2 + Rven,1
+!
+(2.18)
+dPven
+dt
+=
+1
+Cven
+ 
+Part −Pven
+Rart,1 + Rcap,1 + Rcap,2 + Rven,1
+−
+Pven −PCRV,2
+Rven,2 + RCRV,1a + RCRV,1b + RCRV,2a
+!
+(2.19)
+dPCRV,2
+dt
+=
+1
+CCRV,1
+ 
+Pven −PCRV,2
+Rven,2 + RCRV,1a + RCRV,1b + RCRV,2a
+−PCRV,2 −PCRVout
+RCRV,2b + RCRVout,1
+!
+(2.20)
+dPCRVout
+dt
+=
+1
+CCRVout
+ PCRV,2 −PCRVout
+RCRV,2b + RCRVout,1
+−PCRVout −Peye2VC,1
+RCRVout,2
+!
+(2.21)
+dPeye2VC
+dt
+=
+1
+Ceye2VC
+ Peye2VC,1 −Peye2VC,2
+Reye2VC,1
+−Qeye2VC
+!
+(2.22)
+dQeye2VC
+dt
+=
+1
+Leye2VC
+(Peye2VC,2 −Pvc −Reye2VC,2Qeye2VC)
+(2.23)
+5

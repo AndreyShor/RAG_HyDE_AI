@@ -1,0 +1,133 @@
+10
+Acknowledgments:
+This work was funded (S.M.) by
+the Natural Sciences and Engineering Research Council
+of Canada (NSERC) Grant No. RGPIN-2019-05486 and
+partially (I.B.-L.) via the NSERC’s QSciTech CREATE
+programme. Also, this research was enabled in part by
+the computing resources provided by Calcul Qu´ebec and
+the Digital Research Alliance of Canada.
+J.D. was in
+Concordia University when the initial results of the work
+were obtained.
+Appendix A: Integration in the singular sub-interval
+For completeness, we note the specific form of the func-
+tional S that enters the modified-residue term used to
+compute the bare Raman response.
+Specifically, from
+the local asymptotic form of s(ω, θ) = 1/
+p
+ω/2|∆θ| −1
+identified in Eq. (8) and for η →0, we need
+Sm(ω) =
+Z θm
+θm−1
+1
+r
+ω
+2|∆θ| −1
+dθ .
+(A1)
+As argued in the main text, this integration is only
+really relevant in the singular sub-interval where ω ∼
+2|∆θ|. It is then desirable to remove the modulus sign
+by choosing s(ω, θ) = 1/
+p
+[ω/(2∆θ)]2 −1 and
+Sm(ω) =
+Z θm
+θm−1
+1
+s ω
+2∆θ
+2
+−1
+dθ .
+(A2)
+Since the interval [θm−1, θm) is small, one can perform
+the expansion ∆θ = ∆¯θm + vm(θ −¯θm), where vm ≡
+∂θ∆¯θm. The above two forms of s(ω, θ) lead to (in the
+end-point prescription):
+Sm(ω) =
+
+
+
+
+
+
+
+2∆¯θm
+vm
+q
+Am −vm[θm−1 −¯θm]/∆¯θm −
+q
+Am −vm[θm −¯θm]/∆¯θm
+
+for s(ω, ¯θm) =
+1
+√Am
+,
+∆¯θm
+vm
+q
+A2,m −2vm[θm−1 −¯θm]/∆¯θm −
+q
+A2,m −2vm[θm −¯θm]/∆¯θm
+
+for s(ω, ¯θm) =
+1
+p
+A2,m
+,
+(A3)
+where Am = ω/(2|∆¯θm|)−1 and A2,m = [ω/(2∆¯θm)]2−1.
+This formally poses a problem near the stationary points
+where vm = 0, but the sample points can be chosen to
+be misaligned with the stationary points, which takes
+care of the numerical ambiguity. However, observe that
+if ω ̸= 2|∆θm| then the smallness of θm−θm−1 and/or vm
+would render both the above forms to Sm(ω)/s(ω, ¯θm) =
+[θm −θm−1]. This demonstrates that irrespective of the
+choice of representation of s(ω, θ), the intervals are al-
+ways appropriately weighted.
+[1] H. Bruus and K. Flensberg, Many-body Quantum Theory
+in Condensed Matter Physics: An Introduction, Oxford
+graduate texts (Oxford University Press, 2004).
+[2] A. Altland and B. Simons, Condensed Matter Field The-
+ory, 3rd ed. (Cambridge University Press, 2023).
+[3] G. D. Mahan, Condensed Matter in a Nutshell, In a nut-
+shell (Princeton University Press, 2011).
+[4] P. R. C. Kent and G. Kotliar, Toward a predictive theory
+of correlated materials, Science 361, 348 (2018).
+[5] D. J. Chadi and M. L. Cohen, Special Points in the Bril-
+louin Zone, Physical Review B 8, 5747 (1973).
+[6] H. J. Monkhorst and J. D. Pack, Special points for
+Brillouin-zone integrations, Physical Review B 13, 5188
+(1976).
+[7] P. E. Bl¨ochl, O. Jepsen, and O. K. Andersen, Im-
+proved tetrahedron method for Brillouin-zone integra-
+tions, Physical Review B 49, 16223 (1994).
+[8] M. Kawamura, Y. Gohda, and S. Tsuneyuki, Improved
+tetrahedron method for the Brillouin-zone integration ap-
+plicable to response functions, Physical Review B 89,
+094515 (2014).
+[9] E. Assmann, P. Wissgott, J. Kuneˇs, A. Toschi, P. Blaha,
+and K. Held, woptic: Optical conductivity with Wan-
+nier functions and adaptive k-mesh refinement, Com-
+puter Physics Communications 202, 1 (2016).
+[10] D. Guterding and H. O. Jeschke, An efficient GPU algo-
+rithm for tetrahedron-based Brillouin-zone integration,
+Computer Physics Communications 231, 114 (2018).
+[11] ´E. Canc`es, V. Ehrlacher, D. Gontier, A. Levitt, and
+D. Lombardi, Numerical quadrature in the Brillouin zone
+for periodic Schr¨odinger operators, Numerische Mathe-
+matik 144, 479 (2020).
+[12] M. Ghim and C.-H. Park, Converging tetrahedron
+method calculations for the nondissipative parts of spec-
+tral functions, Phys. Rev. B 106, 075126 (2022).
+[13] J. Henk, Integration over two-dimensional Brillouin zones
+by adaptive mesh refinement, Physical Review B 64,
+035412 (2001).
+[14] J. Kaye, S. Beck, A. Barnett, L. Van Mu˜noz, and O. Par-
+collet, Automatic, high-order, and adaptive algorithms
+for Brillouin zone integration, SciPost Physics 15, 062

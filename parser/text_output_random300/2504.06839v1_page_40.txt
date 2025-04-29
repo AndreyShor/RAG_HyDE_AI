@@ -1,0 +1,167 @@
+Step 3:
+let us prove that, up to another constant C′ > 0, the following estimate holds
+∥β(·, θ, t, h)∥Lp(X) = F(θ, t, h) ≤C′
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′′
+Z 1
+−1
+dh′′∥µ(·, θ′, t′, h′)∥Lp(X),
+∀(θ, t, h) ∈T1
+2π ×[0, +∞)×[−1, 1].
+To this purpose, also define
+˜F(θ, t, h) :=
+F(θ, t, h)
+R
+T1
+2π dθ′ R t
+0 dt′ R 1
+−1 dh′∥µ(·, θ′, t′, h′)∥Lp(X)
+,
+and notice that the quantity above is well defined, since if the denominator is zero, then the same holds for the
+numerator. To prove this claim, suppose that
+R
+T1
+2π dθ′ R T
+0 dt′ R 1
+−1 dh′∥µ(·, θ′, t′, h′)∥Lp(X) = 0, then by (A.0.20) we have
+F(θ, t, h) ≤
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′|f(θ −θ′, t −t′, h|h′) −c
+2π E(2)(t −t′, h′)|F(θ′, t′, h′),
+∀t ≤T,
+and therefore denoting, for c small enough, d := suph∈[−1,1] ∥f(·, ·, h|·) −
+c
+2πE(2)∥L1 < 1 the constant provided by
+Lemma 2.3, if t ≤T one gets
+F(θ, t, h)
+≤
+∥F∥L∞(T1
+2π×[0,T ]×[−1,1])
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′|f(θ −θ′, t −t′, h|h′) −c
+2π E(2)(t −t′, h′)|,
+⇒
+∥F∥L∞(T1
+2π×[0,T ]×[−1,1]) ≤d∥F∥L∞(T1
+2π×[0,T ]×[−1,1]),
+⇒
+∥F∥L∞(T1
+2π×[0,T ]×[−1,1]) = 0 since d < 1.
+Now that we know that ˜F is finite, by noticing that the denominator in the definition of ˜F is increasing with respect
+to t, by (A.0.20) we get
+˜F(θ, t, h)
+≤
+C +
+R
+T1
+2π dθ′ R t
+0 dt′ R 1
+−1 dh′|f(θ −θ′, t −t′, h|h′) −
+c
+2πE(2)(t −t′, h′)|
+·
+F (θ′,t′,h′)
+R
+T1
+2π dθ′′ R t
+0 dt′′ R 1
+−1 dh′′∥µ(·,θ′′,t′′,h′′)∥Lp(X)
+≤
+C +
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′|f(θ −θ′, t −t′, h|h′) −c
+2π E(2)(t −t′, h′)| ˜F(θ′, t′, h′).
+Now fix T > 0: if t ≤T, using again d := suph∈[−1,1] ∥f(·, ·, h|·) −
+c
+2πE(2)∥L1 < 1 provided by Lemma 2.3, by the
+previous inequality we have
+˜F(θ, t, h)
+≤
+C + ∥˜F∥L∞(T1
+2π×[0,T ]×[−1,1])
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′|f(θ −θ′, t −t′, h|h′) −c
+2π E(2)(t −t′, h′)|
+≤
+C + ∥˜F∥L∞(T1
+2π×[0,T ]×[−1,1])d,
+⇒
+∥˜F∥L∞(T1
+2π×[0,T ]×[−1,1]) ≤C + ∥˜F∥L∞(T1
+2π×[0,T ]×[−1,1])d,
+⇒
+∥˜F∥L∞(T1
+2π×[0,T ]×[−1,1]) ≤
+C
+1 −d,
+∀T > 0
+⇒
+∥˜F∥L∞(T1
+2π×[0,+∞)×[−1,1]) ≤
+C
+1 −d,
+that is, going back to the definition of F and ˜F, one gets
+∥β(·, θ, t, h)∥Lp(X) = F(θ, t, h) ≤
+C
+1 −d
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′∥µ(·, θ′, t′, h′)∥Lp(X),
+that is the content of Step 3. Combining the previous estimate with (A.0.13) we can conclude the proof of (A.0.9).
+When studying the dependance on x, a slightly different version of Lemma A.1 is needed, and we recall it below.
+Lemma A.2. Let k ∈R2, k ̸= (0, 0), T > 0, p ∈[1, +∞] and µ ∈Lp(T1
+2π × [0, T] × [−1, 1]; C). Then there exists a
+unique ρ ∈Lp(T1
+2π × [0, T] × [−1, 1]; C) such that
+ρ(θ, t, h) = µ(θ, t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)e2πi(t−t′)k·v(θ)ρ(θ + π −2 arcsin(h′), t′, h′).
+40

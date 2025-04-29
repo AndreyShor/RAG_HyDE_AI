@@ -1,0 +1,21 @@
+(a) HOSVD
+(b) SVD
+u
+u
+u
+Figure 19: Comparison of the predicted temporal evolution of streamwise velocity com-
+ponents for (a) HOSVD (left column) and (b) SVD (right column) across different LSTM
+architectures for the 3D cylinder flow. From top to bottom: LSTM 1 Dense, LSTM 2
+Dense, and LSTM Time-Distributed.
+all LSTM architectures. Although general error trends remain centered around zero, in-
+creased spread indicates higher variability in the predictions. The error distributions for
+SVD tend to show slight asymmetry, particularly in the streamwise and normal com-
+ponents, suggesting that SVD struggles more with capturing complex flow structures
+compared to HOSVD. Even among the SVD models, the LSTM 2 dense architecture
+shows the best results for UQ, with sharper peaks and relatively narrower distributions
+compared to the corresponding architectures, indicating better performance.
+3.2.3
+Case: Turbulent Flow Past a Circular Cylinder
+This final data set poses several challenges typical of experimental data. Turbulent flows,
+inherently chaotic and multi-scale, are difficult to predict accurately, especially with added
+35

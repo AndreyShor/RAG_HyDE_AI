@@ -1,0 +1,43 @@
+in the Excel sheet, popana.xlsx, uploaded as part of the data repository.
+It can be seen that, for all occupied (restricted) molecular orbitals in the ground
+state, and for all occupied α molecular orbitals except the distorted 4s one in the
+excited state, Mulliken’s Ar-contributions are sensible. However, for the unoccupied
+4s molecular orbital in the ground state and the occupied distorted 4s in the excited
+state, Mulliken’s Ar-contributions are strongly negative, which means we cannot use
+this scheme to say anything meaningful about the molecular orbitals of interest to us.
+We must therefore seek a more sensible alternative decomposition scheme. The main
+issue that these schemes must deal with is the balanced treatment of the cross terms
+that are ignored in Mulliken’s scheme. One attempt is that by Stout and Politzer[20]
+(see also Section 3.9.6 of the Multiwfn manual), but this turns out to be even worse
+than Mulliken’s, as seen in the even more negative Ar-contributions in both the
+ground and excited 4s molecular orbitals.
+Other attempts include the use of Becke’s weighting function[21] (see also Section
+3.9.8 of the Multiwfn manual) and Hirshfeld’s atomic charge[22] (see also Section 3.9.1
+of the Multiwfn manual). However, both of these methods rely on a numerical real-
+space integration scheme for the electron density and give very small Ar-contributions
+for both the ground and excited 4s molecular orbitals, which is clearly inconsistent
+with the fact that the coefficients for these molecular orbitals contain relatively much
+larger values for the basis functions centred on the Ar atom compared to those for
+the basis functions centred on the C atoms of the cage.
+Fortunately, there exists an alternative by Ros and Schuit[23], C-squared population
+analysis (SCPA), that makes use of the coefficients directly (rather than via numerical
+real-space integrations) and that also ensures that the atom contributions are never
+negative (see also Section 3.9.5 of the Multiwfn manual). The Ar-contributions to the
+ground and excited 4s molecular orbitals in the SCPA scheme now appear sensible.
+The ground unoccupied 4s molecular orbital has ∼92.17% contribution from the argon
+atom, which means that there is only ∼7.83% of mixing with all the carbon atoms on
+the cage. On the other hand, the excited occupied and distorted 4s molecular orbital
+only has ∼13.38 % contribution from the argon atom, indicating that there is now
+significant mixing with the cage.
+8 Orbital symmetry considerations
+In the main paper, we note that we used QSYM2[24] to extract the symmetry com-
+ponents of the excited state. The following approach was adopted when assessing the
+symmetry decompositions.
+By applying the projection operator
+ˆPΓ = dΓ
+|G|
+X
+ˆg∈G
+χΓ(ˆg)∗ˆg
+(1)
+11

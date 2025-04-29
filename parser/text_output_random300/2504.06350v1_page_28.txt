@@ -1,0 +1,85 @@
+ˆP(a, b|x, y, Vp) = p(a, b|x, y)ωab/pVp and the quantum side information can be represented by ρ ˆ
+ABE|Vp =
+ωab |ab⟩⟨ab| ⊗ρE
+AB. Therefore, the lower bound of Eq. (71) reads
+r ≥pVp[Hmin( ˆAx|E, pVp) −H( ˆAx|By, pVp)],
+(66)
+where H( ˆAx|By, pVp) is the cost of one-way error correction from Alice to Bob.
+By optimizing the entangled state shared between Alice and Bob, along with the measurement settings
+η∗= 0.685. This marks a significant improvement over the previous security proofs in Refs [57, 208, 209].
+However, a coherent attack was reported in 2023 [238], demonstrating that coherent attacks are stronger
+than collective ones in this protocol.
+3.7.2. CHSHc protocol - deterministic key basis
+CHSHc protocol is the same as CHSH protocol (Sec. 3.4), but under quantum collective attacks. A
+variant allows Bob’s choices y ∈{0, 1} (or y ∈{0, 1, 2} as in E91 3.2 and [64])
+so that A0 = B1 = σz, B2 = σx, A1,2 = (σz ± σx)/
+√
+2. Again, in CHSHc protocol [54, 57], the raw
+key is extracted from the pair (x, y) = (0, 1), and QBER = Q = p(a ̸= b|01) (from Eq. (4)).
+Security proof (1 way). – For one-way classical post-processing under collective attacks, rather than Eq.
+(50), an asymptotic (N →∞) lower bound of the key rate is the Devetak-Winter expression
+r ≥rDW = I(A0 : B1) −χ(B1 : E) = 1 −h(Q) −q −(1 −q)χ0
+(67)
+with χ(B1 : E) is the Holevo quantity between Eve and Bob defined in terms of von Neumann entropy
+S = −Tr(ρ log ρ) as
+χ(B1 : E1) = S(ρE) −1
+2
+X
+b1=±
+S(ρE|B1),
+(68)
+with the lower bound χ0 = χ0(S) obtained in the following proof.
+Proof. The mutual information I(A0 : B1) = 1 −h(Q) is computed assuming uniform marginals. Eq.
+(68) can be tightly upper–bounded (Sec. 4.3) by the binary entropy h
+χ(B1 : E) ≤h
+1
+2 + 1
+4
+p
+S2 −4
+
+≡χ0,
+(69)
+where S > 2 of Eq. (11) is computed on ρAB (e.g. from 2b S = 2
+√
+2p = 2
+√
+2(1 −2Q) and Q = 1
+2 −p
+2)
+that bounds Eve’s information in χ. Generalization 1. If Eve has some probability q of making a correct
+guess on the choice of measurement settings (a flag f = 1) so that she fixes a priori the players’ outcomes
+engineering S′ = 4q + (1 −q)S (otherwise her guess is uncorrelated, f = 0), then Eq. (69) becomes
+χ(B1 : E) ≤q + (1 −q)χ0 [239].
+To take into account the detection loophole, the key rate in Eqs (67) and (69) must be computed
+on ˆp rather than the ideal p (with ηA = ηB = 1) as discussed in Eq. (25) of Sec. 2.4.1, therefore for
+ηA = ηB = η, Q = η(1 −η) and S = 2
+√
+2η2 + 2(1 −η)2 ( ⟨A0⟩= ⟨B0⟩= 0 in Eq. (26)) and q = 0.
+One–way security proof for CHSHc protocol shows r > 0 =⇒η > 0.924. A variant of CHSHc protocol
+that
+instead of A0 = {Ma|0}1
+a=0 assume A0 = {Ma|0}3
+a=0 reduces η∗= 0.909 [240]. Ref. [241] shows an
+analogue of Eq.(69) for coherent attacks with memoryless measurement devices.
+Generalization 2. If Bob applies the preprocessing T of Eq.(50) ( Sec. 3.5, or Ref. [233, 216])
+generating a new raw key T(KB) by flipping each bit independently with probability p before the
+post-processing then Eq. (69) becomes [208]
+χ(B1 : E) = χ0 −h
+ 
+1 +
+p
+1 −p(1 −p)(8 −S2)
+2
+!
+,
+(q = 0).
+(70)
+Including the artificial noise to KB damages both the correlation between Alice and Bob and the
+correlation to Eve. However, since the possibility of generating a key depends on the difference between
+the strengths of these correlations, the net effect is positive. This improvement is already known in the
+BB84, where the tolerable QBER increases from 11% (T = id) to 12.4% (T = fp) with a 13% of relative
+improvement[242]. In the CHSHc protocol, the critical efficiency lowers from η∗= 0.909 to η∗= 0.832
+with an improvement of 78%.
+This represents an improvement compared to the efficient post-processing method described in [240].
+28

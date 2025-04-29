@@ -1,0 +1,90 @@
+Fukuzawa, Goodrich, and Irani
+XX:3
+Input point set assumptions
+Runtime
+Sadakane, Sugawara, and Tokuyama [32]
+Unsorted, arbitrary point set
+˜O(h√n)
+Wang and Zhou [36]
+Unsorted, arbitrary point set
+˜O(h√n)
+Lanzagorta and Uhlmann [23,24]
+Small h, uniformly distributed points
+˜O(
+√
+nh)
+This work
+Sorted, arbitrary point set
+˜O(
+√
+nh)
+Table 1 A summary of quantum algorithms to compute the convex hull of a set of n points,
+where the output has h edges. The algorithms all assume access to a data loading unitary.
+any quantum state as a weighted sum of these classical basis states,
+|Ψ⟩=
+2n−1
+X
+j=0
+αj |j⟩.
+(1)
+If at least two αj in the above are nonzero, we say the state is in superposition. A
+measurement of the state |Ψ⟩will collapse the state to |j⟩with probability |αj|2. The
+measurement is destructive in the sense that once it is collapsed, there is no way to go back
+to |Ψ⟩without running the circuit to prepare that state. The state where all αj =
+1
+√
+2n can
+be prepared by a circuit of depth 1.
+We will assume an input model where the input data [p0, p1, . . . , pn−1] is accessible by
+a unitary Uin that maps an index i to the corresponding element in the array pi. Since
+quantum operations must be reversible, it is standard to model the action of this unitary by
+using an index and data register as |i⟩|0⟩
+Uin
+→|i⟩|pi⟩. We can use linearity to examine the
+action of this unitary to a state in superposition
+Uin
+
+
+2n−1
+X
+j=0
+1
+√
+2n |j⟩|0⟩
+
+=
+2n−1
+X
+j=0
+1
+√
+2n (Uin |j⟩|0⟩) =
+1
+√
+2n
+2n−1
+X
+j=0
+|j⟩|pj⟩,
+(2)
+from which the data point pj can be retrieved with probability |αj|2 upon measurement of
+the index register. Therefore, in this model, we assume that a quantum state representing a
+distribution of our inputs is preparable in time proportional to the time it takes to prepare
+the distribution. A transformation from the n-bit zero string |0n⟩to a uniform superposition
+over all n-bit strings can be accomplished by a depth 1 circuit where a Hadamard gate is
+applied to each qubit in parallel.
+Much of the existing literature on this subject assumes access to multiple copies of the
+state in (2). Our assumption of access to Uin is at least as strong of an assumption as having
+multiple copies of the state. At the same time, it is a standard assumption for states in
+the form of (2) are generated using access to a unitary like Uin. We therefore compare the
+performance of our algorithm against the existing literature under equal access to Uin, and
+we summarize the performance of each in Table 1 under this model.
+Quantum Subroutines.
+In this section we discuss the two primary quantum sub-
+routines that will be used throughout the paper. The quantum computing components of
+our algorithms are limited to invocations of these subroutines, and the remainder of the
+algorithms are done through classical post-processing.
+The first subroutine is for preparing superposition states of subsets of points.
+Our
+algorithms use the fact that the data S = [p0, p1, . . . , pn−1] is encoded as a sorted list in Uin,
+SoCG 2025

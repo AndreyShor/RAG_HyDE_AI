@@ -1,0 +1,106 @@
+Render
+PSNR: 36.760
+PSNR: 34.843
+PSNR: 36.463
+PSNR: 39.049
+PSNR: 35.904
+PSNR: 42.077
+PSNR: 30.272
+PSNR: 21.519
+PSNR: 27.306
+PSNR: 28.431
+PSNR: 29.247
+PSNR: 35.091
+PSNR: 25.068
+PSNR: 19.8122
+PSNR: 28.316
+PSNR: 27.605
+PSNR: 28.446
+PSNR: 36.248
+PSNR: 30.200
+PSNR: 24.754
+PSNR: 32.957
+PSNR: 31.113
+PSNR: 31.913
+PSNR: 38.087
+GT
+TensoIR
+GS-IR
+Ours
+GT
+TensoIR
+GS-IR
+Ours
+Relighting
+Albedo
+Relighting
+Figure 6. Qualitative comparison on TensoIR Synthetic and ADT datasets. Our method can provide more detailed relighting results than
+NeRF-based methods. And we alleviate the artifacts of Gaussian-based methods with better decoupling of material and illumination. More
+results are shown in the supplementary material.
+Table 1. Comparison of relighting performance measured by PSNR↑, SSIM↑and LPIPS↓on the TensoIR Synthetic and Aria Digital Twin
+dataset. Numbers in red represent the best performance, while orange numbers denote the second best. Our method not only surpasses
+existing Gaussian-based approaches but also outperforms previous NeRF-based methods. Furthermore, we maintain the fast training speeds
+of Gaussian-based methods.
+NeRF-based
+Gaussian-based
+MII [37]
+TensoIR [14]
+GSshader [11]
+GS-IR [20]
+RelightGS [7]
+Ours
+PSNR/ SSIM / LPIPS PSNR/ SSIM / LPIPS
+PSNR/ SSIM / LPIPS PSNR/ SSIM / LPIPS PSNR/ SSIM / LPIPS PSNR/ SSIM / LPIPS
+TensoIR
+Armadillo 33.65 /0.9519/0.0643 34.41 /0.9753/0.0449
+22.76 /0.9143/0.0716 29.39 /0.9204/0.0778 32.67 /0.9488/0.0697 35.01 /0.9629/0.0539
+Ficus
+24.02 /0.9156/0.0758 24.30 /0.9466/0.0680
+24.16 /0.9432/0.0468 25.45 /0.8934/0.0794 29.02 /0.9399/0.0430 31.13 /0.9543/0.0284
+Hotdog
+28.91 /0.9156/0.0945 27.88 /0.9322/0.1160
+18.02 /0.8782/0.1279 21.58 /0.8899/0.1244 22.19 /0.9072/0.1127 30.02 /0.9527/0.0649
+Lego
+24.45 /0.8513/0.1462 27.54 /0.9249/0.0936
+14.61 /0.7920/0.1294 22.33 /0.8389/0.1141 26.52 /0.8875/0.0988 28.19 /0.9141/0.0765
+Mean
+27.76 /0.9086/0.0952 28.53 /0.9448/0.0806
+19.89 /0.8819/0.0939 24.69 /0.8857/0.0989 27.60 /0.9209/0.0811 31.10 /0.9460/0.0558
+ADT
+Airplane
+31.48 /0.9770/0.0252 32.63 /0.9810/0.0324
+24.81 /0.9569/0.0333 28.63 /0.9558/0.0396 31.18 /0.9801/0.0283 35.98 /0.9845/0.0191
+Birdhouse 29.58 /0.9208/0.0837 31.59 /0.9551/0.0841
+23.14 /0.9276/0.0531 25.11 /0.9006/0.0813 31.05 /0.9544/0.0551 31.85 /0.9592/0.0489
+Gargoyle
+29.16 /0.9360/0.0567 30.42 /0.9609/0.0394
+24.47 /0.9512/0.0356 27.78 /0.9496/0.0334 33.97 /0.9770/0.0203 36.25 /0.9837/0.0146
+Calculator 28.73 /0.9422/0.0546 27.66 /0.9549/0.0604
+19.74 /0.8906/0.0818 26.26 /0.9323/0.0492 32.07 /0.9715/0.0285 33.56 /0.9795/0.0226
+Mean
+29.74 /0.9440/0.0551 30.58 /0.9630/0.0541
+23.04 /0.9316/0.0510 26.95 /0.9346/0.0509 32.84 /0.9707/0.3180 34.69 /0.9765/0.0275
+Training
+6h
+5h
+0.5h
+0.5h
+1h
+1h
+6. Results
+6.1. Evaluation setup
+Dataset.
+To evaluate the capabilities on NVS and re-
+lighting of our method, we conduct experiments on both
+synthetic and real-world datasets. For synthetic datasets,
+we benchmark on the commonly used TensoIR Syn-
+thetic datasets [14] and our collected relighting datasets
+of four real world scanned objects from Aria Digital Twin
+(ADT) [23]. This dataset will be released. And the real-
+world datasets include DTU [10] and MipNeRF360 [1]. Re-
+sults on more datasets including NeRF Synthetic [22] and
+NeILF++ [31] are in the supplementary material.
+Methods for comparison.
+We selected representative
+NeRF-based inverse rendering methods MII [37], Ten-
+soIR [14], as well as recent GS-based methods, such as GS-

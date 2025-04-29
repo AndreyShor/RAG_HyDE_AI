@@ -1,0 +1,53 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+assumptions on our reaction coeﬃcients. The proof of our convergence result is carried out in
+Section 5. Here, we ﬁrst derive the compactness, before showing the claimed liminf-estimate.
+Finally, Section 6 contains the detailed proofs of the chain rules inequality ﬁrst for discrete and
+then for the continuous reaction-diﬀusion systems.
+2
+Abstract strategy
+To improve clarity, before challenging the reader with the notation of our concrete problem, we
+ﬁrst present on a formal and abstract level the strategy of our work.
+2.1
+Gradient systems with explicit abstract gradient mappings
+We begin by introducing a quintuple (X, Y, G, E, R∗), called a gradient system. This notion is
+a small modiﬁcation of gradient systems in continuity equation format introduced in [PeS23].
+The elements of the gradient system are two pairs of base spaces X = (Xdom, Xtar), Y =
+(Y dom, Y tar), where Xdom, Y dom are Borel subsets of a Euclidean space, and Xtar, Y tar are Eu-
+clidean spaces. Test functions over these spaces are linked by an abstract linear gradient map G :
+C∞
+c (Xdom, Xtar) →C∞
+c (Y dom, Y tar), with dual G∗: (C∞
+c (Y dom, Y tar))∗→C∞
+c ((Xdom, Xtar))∗,
+which is sometimes called process-space to tangent map. Here, for Z ∈{X, Y } the dual pairing
+is deﬁned as usual by
+∀φ ∈C∞
+c (Zdom, Ztar)
+∀µ ∈(C∞
+c (Zdom, Ztar))∗: ⟨φ, µ⟩Z := ⟨φ, µ⟩:=
+Z
+Zdom φ · dµ,
+with · denoting the canonical inner product in the Euclidean space Ztar.
+The fourth element of the quintuple is a lower semicontinuous (lsc) energy functional
+E : M+(Xdom, Xtar) →R ∪{∞}, where M+(Xdom, Xtar) denotes the set of Xtar-valued,
+component-wise non-negative Radon measures. The ﬁnal element is a dual dissipation potential
+R∗: M+(Xdom, Xtar) × C(Y dom, Y tar) →[0, ∞], which, by deﬁnition, is lsc and non-negative
+with R∗(ρ, 0) = 0, and satisﬁes for all ρ ∈M+(Xdom, Xtar) that ξ 7→R∗(ρ, ξ) is convex.
+Fixing an arbitrary time horizon T > 0 and an initial datum ρ0 ∈M+(Xdom, Xtar), the gra-
+dient system (X, Y, G, E, R) induces on [0, T] an evolution equation, the gradient ﬂow equation
+∂tρ = G∗∂ξR∗(ρ, −GDE(ρ)),
+(2.1a)
+ρ(0) = ρ0,
+(2.1b)
+where DE denotes the variational derivative of E and ∂ξR∗denotes the convex subdiﬀerential
+of R∗(ρ, ·).
+By specifying R∗and E, the gradient system contains more information than the gradient-
+ﬂow equation. Indeed, it is well-known that the same gradient-ﬂow equation can be derived
+from diﬀerent gradient systems, each corresponding to a diﬀerent physical setting, see [Mie23].
+Before further discussing the link between gradient ﬂow and gradient system, we comment
+on the relation of the presented notion of gradient ﬂow with other notions.
+Remark 2.1 (Link to other notions of gradient ﬂow). The presented notion is heavily inﬂuenced
+by the gradient systems in continuity equation format introduced in [PeS23], the only diﬀerence
+5

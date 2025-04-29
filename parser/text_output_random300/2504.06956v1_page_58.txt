@@ -1,0 +1,108 @@
+Proof of Proposition 6.1
+58
+Moreover, we define the constant Cλ
+A,L,b > 0 by letting
+Cλ
+A,L,b
+def= α
+Z ∞
+0
+zE[Fλ
+A,L,b(z, gz
+b)]dz ,
+(7.7)
+where we recall that α =
+√
+2/π.
+We are now ready to state the following key lemma whose proof is given in Section 7.2.
+Lemma 7.2. For any λ > 0, R ≥1, and ε > 0, there exist 0 ≤A < L sufficiently large such that there
+exists b0 > 0 and s0 > 0 sufficiently large, such that for any s ≥s0 satisfying (es + 1)/(R + 1) ∈N
+and any b ≥b0, there exists a sufficiently large T ≥0 such that for all t ≥T and any function
+χ : [0, R]d →R satisfying the conditions in (6.6), it holds that
+E
+
+1 −exp
+
+−
+Z
+[0,R]d Fγ,t(x)e−γχ(x)µγ,t(dx)
+
+−Cλ
+A,L,b ρχ([0, R]d)
+ ≤ε ρχ([0, R]d) ,
+where we recall that the measure ρχ is defined in (6.5).
+Remark 7.3. We emphasise that in the statement of Lemma 7.2, the conditions (6.6) on the function
+χ : [0, R]d →R depends on s.
+Thanks to Lemma 7.2, to prove Proposition 6.1 it suffices to derive an explicit expression for the
+constant Cλ
+A,L,b defined in (7.7) as the cutoff parameters are taken to infinity, and then show that this
+expression coincides with Tγ defined in (6.1), up to a multiplicative constant. To this end, for A,
+L ≥0 and 0 ≤k < b, recalling that α =
+√
+2/π, we define the constant Cλ,new
+A,L,k,b by letting
+Cλ,new
+A,L,k,b = α
+Z A+L
+L/2
+e
+√
+2d(x−L)
+Z b3/4
+b1/4
+e−u2
+2b
+√
+2πb
+(u + x)
+· E0,u,b
+h
+Fλ
+k,x−L,L(Υu+x
+b
+)1{M0,b(Υu+x
+b
+)≤λ}
+i
+dudx ,
+(7.8)
+where, for each x ∈R, k > 0, and L > 0, we set
+Fλ
+k,x,L
+def=
+1 −exp(−
+R
+Bk Fγ(y) exp(γ(Φ(y) −x))dy)
+|Dλ
+k,0(Φ)| ∨L−1
+,
+(7.9)
+where we emphasise that the only difference from Fλ
+k,x, as defined in (7.1), is the presence of the
+maximum in the denominator. Note that, with a slight abuse of our previous notation, we have
+absorbed the expectation with respect to the field gu+x
+b
+into the expectation E0,u,b.
+We can now state the second key lemma of this section whose proof is given in Section 7.3.
+Lemma 7.4. For any λ > 0, ε > 0, and A ≥0, there exists L ≥0 sufficiently large, such that there
+exists k0 ≥0 for which, for all k ≥k0, there exists b0 ≥0 sufficiently large such that for all b ≥b0, it
+holds that
+|Cλ
+A,L,b −Cλ,new
+A,L,k,b| ≤ε .
+The proof of Proposition 6.1 follows by combining Lemmas 7.2 and 7.4.
+Proof of Proposition 6.1. Let R ≥1 and λ ∈Λ, where we recall that the set Λ is introduced in
+Lemma 5.1. For any ε > 0, thanks to Lemmas 7.2 and 7.4, by taking the involved parameters large
+enough as specified in the statements of the aforementioned lemmas, we have that
+E
+
+1 −exp
+
+−
+Z
+[0,R]d Fγ,t(x)µχ
+γ,t(dx)
+
+−Cλ,new
+A,L,k,bρχ([0, R]d)
+ ≤ερχ([0, R]d) .

@@ -1,0 +1,43 @@
+Springer Nature 2021 LATEX template
+Human Activity Recognition using RGB-Event based Sensors
+7
+module for feature aggregation, the current problems in event camera pattern
+recognition are solved. Li et al. [14] propose a new pattern recognition frame-
+work that integrates semantic labels, RGB frames, and event streams, utilizing
+pre-trained large-scale visual language models to address the semantic gap
+and small-scale backbone network issues present in existing methods. TSC-
+Former proposed by Wang et al. [45], which is a relatively lightweight CNN
+and Transformer model. By bridging the Transformer module and interactive
+feature fusion module, it achieves the capture of large-scale global relation-
+ships between RGB-E modalities while maintaining a simple model structure.
+For all that, the above studies have been evaluated primarily on the power-
+ful global modeling capability of the Transformer network. However, due to
+the quadratic complexity of the attention mechanism, especially when multi-
+modal data are input, it will impose a heavy computational burden on the
+network during both the training and testing phases.
+2.3 Biology and Physics Inspired Models
+Convolutional neural networks (CNNs) are widely adopted and applied
+across various visual tasks [46–48]. To overcome the inherent limitation of
+CNNs, which have a local receptive field, a milestone visual Transformer [49]
+network was developed to create a global receptive field for images. However,
+Transformers are often constrained by the quadratic complexity of their atten-
+tion mechanisms. As a result, visual Mamba models [50, 51], which are based
+on state space models and offer linear complexity, have gained popularity for
+a range of visual tasks. Despite their efficiency, the parallelization of the selec-
+tive scanning mechanism in Mamba lacks interpretability on GPUs and fails to
+deliver optimal performance. In addition to the various popular neural network
+models mentioned above, biology and physics-inspired visual network models
+have also been widely explored. Spiking Neural Networks(SNNs) [52, 53] aim
+to bridge the gap between neuroscience and machine learning by using models
+that best fit the mechanisms of biological neurons for computation, closer to
+the mechanisms of biological neurons for simple visual applications [54]. Diffu-
+sion Models [55, 56] inspired by non-equilibrium thermodynamics, the theory
+first defines the Markov chain of diffusion steps to slowly add random noise
+to the data and then learns the reverse diffusion process. QB-Heat [57] uti-
+lizes the heat conduction equation for self-supervised learning, especially in
+the field of image feature learning. vHeat [32] treats image patches as heat
+sources and computes their correlation as the diffusion of thermal energy. The
+high computational efficiency and the global receptive field are achieved. In
+this paper, we design a novel multi-modal human activity recognition method
+based on the heat conduction model with physical principles, which has high
+interpretability and lower complexity.

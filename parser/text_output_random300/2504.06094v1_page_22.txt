@@ -1,0 +1,74 @@
+Since xm,n is an element of D′
+m,n ∩Cm,n, we have elements
+xm,n,i,j ∈End(Ui ⊗X[a,b] ⊗Uj)
+for i ∈Irr(Ca−n,a−1) and j ∈Irr(Cb+1,b+n) such that xm,n is a diagonal representation of the
+elements xm,n,i,j, in the sense that we have
+xm,n =
+X
+i,j,α,β
+(vα ⊗idX[a,b] ⊗wβ)xm,n,i,j(v∗
+α ⊗idX[a,b] ⊗w∗
+β),
+where uα : Ui →X[a−m,a−1] and wβ : Uj →X[b+1,b+n] are maximal mutally orthogonal families
+of isometries.
+Now, if we have ia−m = ia and ib+n = ib+1, we can take the distinguished indexes (both
+denoted 0) correspoding to the tensor units of the tensor categories Ca−m,a = Ca,a and Cb+1,b+n =
+Cb+1,b+1. Let us ﬁrst consider the case where we can ﬁnd strictly increasing sequences (mk)k
+and (nk)k satisfying the above. We then set xk = xmk,nk and xk,0 = xmk,nk,0,0. Our goal is to
+show that xk,0 becomes close enough to xk for big k.
+Put
+yk = xk −idX[a−mk,a−1] ⊗xk,0 ⊗idX[b+1,b+nk],
+yk,i,j = xmk,nk,i,j −idUi ⊗xk,0 ⊗idUj.
+We want to check the convergence ∥yn∥→0. Since for every i and j End(Ui ⊗X[a,b] ⊗Uj)
+is a ﬁnite dimensional C∗-algebra, the operator norm and the 2-norm induced by the categor-
+ical trace are equivalent. Since the indexing sets Irr(Ca−n,a−1) and Irr(Cb+1,b+n) for i and j
+respectively are ﬁnite, it is enough to check the 2-norm convergence
+tr(y∗
+k,i,jyk,i,j) →0
+for all i and j.
+Observe that
+(6.1)
+trX[a−mk,b+nk]((idX[a−mk,a−1] ⊗c ⊗idX[b+1,b+nk])xk) = trX[a,b](cxk,0)
+(c ∈End(X[a,b])).
+Indeed, consider the ‘one-sided’ conditional expectations
+En : A →A[n,∞),
+E′
+n : A →A(−∞,n]
+obtained analogously as E∞
+m,n. By the triviality of the center of A[b+1,∞), given c ∈End(X[a,b]),
+we have Eb+1(cx) = z1A for the scalar z representing the left hand side of (6.1). This means
+that
+(trX[a−mk,b] ⊗id)((idX[a−mk,a−1] ⊗c ⊗idUj)xk, ,j) = zidUj
+holds for any j, where xk, ,j denotes the diagonal representation of xk,i,j for the diﬀerent i.
+Repeating the same argument to the left with E′
+a−1(cx), we obtain the claim.
+As a consequence of the above observation, it follows that
+tr(x∗
+k,i,j(idUi ⊗xk,0 ⊗idUj))) = tr((idUi ⊗x∗
+k,0 ⊗idUj)xk,i,j) = tr(x∗
+k,0xk,0).
+This in turn implies
+tr(y∗
+k,i,jyk,i,j) = tr(x∗
+k,i,jxk,i,j) −tr(x∗
+k,0xk,0).
+For any α and β,
+x∗
+k,i,jxk,i,j = (u∗
+α ⊗idX[a,b] ⊗w∗
+β)x∗
+kxk(uα ⊗idX[a,b] ⊗wβ).
+Deﬁning
+δk = ∥x −xk∥, δ′
+k = ∥x∗x −(x∗x)k∥,
+for (x∗x)k := E∞
+mk,nk, we have limk δk = limk δ′
+k = 0. By the submultiplicativity of the norm and
+the contractivity of E∞
+mk,nk, we have ∥x∗
+kxk−x∗x∥≤2δk. We thus get ∥x∗
+kxk−(xx∗)k∥≤2δk+δ′
+k.
+Using
+trUi⊗X[a,b]⊗Uj((xx∗)k,i,j) = trX[a,b]((xx∗)k,0,
+22

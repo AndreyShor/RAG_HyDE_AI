@@ -1,0 +1,25 @@
+Figure 2: Evolutions of loss functions during training on the 6Li ground state energy
+datasets with N u
+max = 18. Left panel: evolutions of two diﬀerent networks during the
+training; right panel: median loss function of the network ensemble (green solid curve),
+minimal (blue dash-dotted curve) and maximal (red dotted curve) loss function values,
+25th and 75th percentiles of the loss distribution (gray dashed curves).
+beginning of the training and decreases during the training. This forms a
+decaying sawtooth pattern of the learning rate with large values providing a
+rough convergence and smaller values providing the ﬁne tuning of the neural
+network.
+The batch size is ﬁxed at the length of training set to balance com-
+putational eﬃciency and convergence speed.
+The loss function is deﬁned
+as the mean-square deviation ensuring minimization of the discrepancy be-
+tween predicted and actual values. The training process is conducted over
+106 epochs. Additional details of the training can be found in Refs. [17, 18].
+Training each neural network for 106 epochs may seem excessive; however,
+even over such an extended period, the loss function exhibits rapid changes
+within a small number of optimization steps occurring unpredictably at any
+stage, as illustrated in Fig. 2 (left panel) where we present evolutions of two
+diﬀerent networks during the training on the same datasets with Nu
+max = 18.
+Moreover, the right panel of Fig. 2 demonstrates that the ensemble as a
+whole continues to improve with the median loss function value (green solid
+6

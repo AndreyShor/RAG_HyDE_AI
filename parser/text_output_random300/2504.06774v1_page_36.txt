@@ -1,0 +1,22 @@
+(a) HOSVD
+(b) SVD
+v
+v
+v
+Figure 20: Comparison of the predicted temporal evolution of normal velocity compon-
+ents for (a) HOSVD (left column) and (b) SVD (right column) across different LSTM
+architectures for the 3D cylinder flow.From top to bottom: LSTM 1 Dense, LSTM 2
+Dense, and LSTM Time-Distributed.
+noise from measurement devices. The presence of noise can obscure critical flow structures
+and increase the complexity of prediction models. A total of 4000 snapshots are available,
+of which the last 1000 have been utilized for training and validation purposes using the
+80-20 split.
+Given the presence of noise in the experimental data set, the ground truth data have
+been cleaned and reconstructed to enhance their fidelity and have only been used for
+the comparison of the results. The training of both the HOSVD and SVD-based models
+has been performed using the noisy dataset.
+Figure 23 illustrates the original noisy
+velocity components of the experimental wake flow at t = 3828 and the cleaned and
+reconstructed components using SVD. Since only 5 modes have been used, it is only
+possible to predict the evolution of the coherent flow structures. The cleaning process
+36

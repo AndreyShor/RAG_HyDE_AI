@@ -1,0 +1,144 @@
+and, similarly,
+Z ∞
+0
+⟨u(−t), y(t)⟩U dt =
+Z
+Rs
+Z ∞
+0
+⟨ˆuω(−t), ˆyω(t)⟩dtdω
+(26)
+where we have used Fubini’s theorem to interchange the
+order of integration. The right-hand sides of (25) and (26)
+are equal because of (24), hence the left-hand sides are also
+equal, which concludes the proof.
+The right-hand side of (23) can be seen as the inner
+product between past input and future output. In fact, it is
+the quadratic functional obtained from the Hankel operator
+of the system, i.e., the operator that maps the past input
+to the future output. We formalize this in the next section.
+Before we do that, we illustrate the results of this section
+with the diffusion equation and then conclude with a couple
+of remarks.
+Example 2: In Example 1, we saw that the diffusion
+equation (2) is an LTSI system that is internally of relaxation
+type. The state and output of this system are equal, hence,
+due to Theorem 4, it is impedance passive with the well-
+known energy storage E(t) =
+R
+R y(t, x)2 dx of the diffusion
+equation. In particular, (23) reduces to
+Z
+R
+y(0, x)2 dx =
+Z ∞
+0
+Z
+R
+u(−t, x)y(t, x) dxdt,
+(27)
+which, due to Plancherel’s theorem, is equivalent to
+Z
+R
+|ˆy(0, ω)|2 dω =
+Z ∞
+0
+Z
+R
+ˆu(−t, ω)ˆy(t, ω)∗dωdt,
+(28)
+Note that the future output y(t, x), t ≥0, is the solution of
+the diffusion equation (2) for u(t, x) = 0, t ≥0, and initial
+condition y(0, x). Therefore, in the frequency domain, we
+have that ˆy(t, ω) = ˆg(t, ω)ˆy(0, ω), where
+ˆy(0, ω) =
+Z 0
+−∞
+ˆg(−t, ω)ˆu(t, ω) dt
+(29)
+Multiplying the latter by ˆy(t, ω)∗and rearranging yields
+|ˆy(0, ω)|2 =
+Z ∞
+0
+ˆu(−t, ω)ˆy(t, ω)∗dt
+(30)
+where we used the fact that ˆg(t, ω) is real and, thus,
+ˆy(t, ω)∗= ˆg(t, ω)ˆy(0, ω)∗
+(31)
+Integrating both sides of (30) yields (28), hence the energy
+storage of the diffusion equation can be determined the past
+input, which conﬁrms the result of Theorem 4.
+Remark 3: LTSI relaxation systems are not necessarily
+impedance passive. To see this, suppose that the LTSI system
+Σ is of relaxation type, hence, due to Theorem 1, the
+LTI system ˆΣω is of relaxation type and, thus, passive for
+all ω ∈Rs. This implies that there exist ˆQω ∈Cn×n,
+ˆQω ≥0, ω ∈Rs, such that (21) holds, but it does not
+imply that supω∈Rs∥ˆQω∥< ∞. It is argued in [16] that
+cases where such boundedness conditions are violated are
+artiﬁcial mathematical constructs rather than real physical
+examples. This is because at large frequencies, the dominant
+mechanism in physical systems is dissipation, i.e., the LTI
+system ˆΣω becomes “more stable” as ω →∞.
+Remark 4: In some references [18], [19], the deﬁnition of
+impedance passivity requires the storage to be strictly posi-
+tive rather than merely nonnegative. In fact, it is sometimes
+assumed [20] that the storage is the squared norm of the state.
+These deﬁnitions coincide with the deﬁnition in this paper if
+we further impose that Q > 0 such that ∥z∥Q =
+p
+⟨Qz, z⟩
+deﬁnes a norm on the state space Z. In any case, Theorem 4
+shows that LTSI systems that are internally of relaxation type
+are impedance passive even under these modiﬁed deﬁnitions.
+VI. THE HANKEL OPERATOR AND RELAXATION
+In this subsection, we will show that relaxation can be
+characterized via the Hankel operator. In particular, we will
+show that an exponentially stable LTSI system is of relax-
+ation type if and only if its Hankel operator is self-adjoint
+and nonnegative. Consequently, the Hankel operator of an
+LTSI relaxation system is cyclically monotone and, thus, the
+gradient of a closed convex functional, which coincides with
+the (impedance) passive storage of Theorem 4.
+The Hankel operator of the LTSI system Σ is the linear
+operator H : D(H) →L2(R+, Y) given by
+(Hv)(t) =
+Z
+R+
+G(t + τ)v(τ) dτ
+(32)
+where D(H) ⊂L2(R+, U). The Hankel operator maps past
+inputs to future outputs in the sense that the input given
+by u(t) = v(−t) for t ≤0 and u(t) = 0 for all t > 0,
+results in the output given by y(t) = (Hv)(t) for all t ≥0.
+The domain of H is nontrivial only if the system is stable.
+Here, we will assume that Σ is exponentially stable, i.e., there
+exists constants M, α > 0 such that ∥exp(At)∥≤Me−αt
+for all t ∈R+, see [15, Section 4.1] for details. Then, we
+obtain the following theorem.
+Theorem 5: If the LTSI system Σ is exponentially stable,
+then the Hankel operator H extends to a bounded linear
+operator from L2(R+, U) to L2(R+, Y).
+Proof: Note that exp(A(t+τ)) = exp(At) exp(Aτ) by
+deﬁnition of a semigroup, hence
+(Hv)(t) = C exp(At)
+Z
+R+
+exp(Aτ)Bv(τ) dτ.
+(33)
+Let the linear operator B∞: L2(R+, U) →Z be given by
+(B∞v)(t) =
+Z
+R+
+exp(Aτ)Bv(τ) dτ
+(34)
+and the linear operator C∞: Z →L2(R+, Y) by
+(C∞z)(t) = C exp(At)z
+(35)
+The operators B∞and C∞are known as the extended
+controllability and observability maps, respectively, see [15,
+Section 6.4] for details. They are well-deﬁned and bounded
+if Σ is exponentially stable, hence H = C∞B∞is a bounded
+linear operator from L2(R+, U) to L2(R+, Y).
+In [3], it is shown that a stable LTI system is of relaxation
+type if and only if its Hankel operator is self-adjoint and

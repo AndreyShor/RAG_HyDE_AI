@@ -1,0 +1,134 @@
+2
+compare its performance and relative advantages with
+respect to IBU.
+This paper is organized as follows. Section II briefly
+introduces machine learning-based unbinned unfolding
+with OmniFold.
+The T2K dataset used for numerical
+results is described in Sec. III. Our methods for testing
+different approaches are documented in Sec. IV. Numer-
+ical results are presented in Sec. V, and the paper ends
+with conclusions and outlook in Sec. VI.
+II.
+UNBINNED UNFOLDING WITH
+OMNIFOLD
+Unfolding methods using neural networks and other
+machine learning tools process continuous data and are
+thus naturally unbinned [18–20].
+As these tools can
+also process high-dimensional feature spaces, unfolding
+many observables simultaneously is readily accommo-
+dated. Existing approaches are based on likelihood-ratio
+estimation with machine learning classifiers [21–23] or are
+based on direct likelihood-estimation with generative ma-
+chine learning tools [24–36]. The last couple of years has
+seen the first unbinned cross-section studies in ep using
+H1 data [37–40] and in pp using data from LHCb [41],
+ATLAS [42, 43], STAR [44, 45], and CMS [46, 47]. Since
+all of the existing experimental results use the OmniFold
+method, we focus on that technique here.
+OmniFold is an iterative, two-step procedure that is
+illustrated in Fig. 1.
+In the first step, the detector-
+level simulated data are reweighted to match the ob-
+served data.
+Then, these weights are ‘pulled back’ to
+the particle level by assigning the weight obtained from
+the detector level in the first step. Events that do not
+pass the detector-level event selection are assigned the
+average weight for a given particle-level phase space re-
+gion either at the end of the unfolding or at each it-
+eration (comparisons described below). This pull back
+induces a new spectrum at particle level, but since the
+detector response is stochastic, the resulting reweight-
+ing is not a proper function of the particle-level phase
+space. The second step of OmniFold reweights the start-
+ing particle-level simulation to this induced simulation
+from the pulled back weights. This weighting function
+is a proper function of the particle-level phase space by
+definition. One can then ‘push forward’ these weights to
+the detector level and repeat the entire process. Iterating
+a finite number of times is a form of regularization, and
+there are a number of metrics that can be used to decide
+when to stop. The final result of the unfolding is a set of
+particle-level simulated events and a corresponding set of
+event weights.
+While the reweighting can be performed with any
+method, the algorithm is unbinned when based on ma-
+chine learning classifiers. Interpreting classifiers as like-
+lihood ratio estimators, sometimes called the “likelihood
+ratio trick”, is well-known in statistics [48, 49] and has
+been frequently used in particle physics [50].
+Detector-level MC
+Simulation
+Nature
+Detector-level
+Data
+Particle-level
+Particle-level MC
+Truth
+Pull 
+Weights
+Push 
+Weights
+Step 1: 
+Reweight Sim. to Data
+Step 2: 
+Reweight Gen.
+RAPGAP
+DJANGOH
+PYTHIA
+GEANT
+Geant4
+NEUT, 
+GENIE, …
+n
+ν
+ℓ
+p
+n
+ν
+ℓ
+p
+?
+FIG. 1: An illustration of the OmniFold method applied
+to T2K data and simulation. Step 1 compares
+simulated detector events to the data and provides a
+reweighting of the detector-level events. Step 2
+compares generator events against themselves to
+provide reweighting of the true particle-level events.
+III.
+T2K PUBLIC DATASET
+This paper utilizes a public simulated T2K dataset
+based on a previous analysis of T2K ND280 near detector
+data [51], which was a measurement of charged-current
+νµ events that produce zero pions in the final state (re-
+ferred to as the CC0π topology) on a hydrocarbon target.
+The same dataset or subsets of it have been used in other
+related T2K publications [6, 52, 53].
+The public sim-
+ulated dataset represents signal and select background
+events in both truth and reconstructed space along with
+associated systematic uncertainties for the flux, detector,
+and neutrino interaction models. The simulated dataset
+covers T2K runs 2, 3, 4 and 8 in neutrino mode beam run-
+ning and contains events corresponding to 17.24 × 1021
+protons on target, roughly a factor of 20 more than the
+data statistics analyzed in Ref. [51]. The ND280 sim-
+ulation uses the neut package [54–56] to generate neu-
+trino interactions in the detector, geant4 [57] for par-
+ticle propagation and energy deposition, and a custom
+package to simulate the detector electronics response.
+ND280 comprises a number of sub-detectors installed
+inside the refurbished UA1/NOMAD magnet, which pro-
+vides a 0.2 T field used to measure the charge and
+momentum of particles.
+The inner tracker region of
+ND280 uses three time projection chambers (TPCs) in-
+terleaved with two plastic scintillator fine-grained detec-
+tors (FGDs), and is surrounded by an electromagnetic
+calorimeter. The FGDs each contain 1.1 tons of target
+mass for neutrino interactions and provide tracking of
+the charged particles coming from the interaction vertex,
+while the TPCs provide momentum and particle identi-
+fication. The dataset used here is focused on neutrino

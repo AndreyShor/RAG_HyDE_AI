@@ -1,0 +1,98 @@
+2
+FIG. 1. Various types of artificial spin ice arranged on an (a) square,
+(b) Kagome, (c) brickwork, (d) pinwheel, (e) Santa Fe, (f) Tetris,
+(g) tripod, (h) ferroquadrupolar lattice, (i) polymeric nano-scaffold,
+(j) diamond-lattice, and (k) trilayer square lattice. The SEM images,
+starting from brickwork to the trilayer square lattice are adapted from
+Refs. [13–21]. Typical lateral dimensions of individual elements are
+300×80 nm2.
+tion techniques for fabricating ASI samples and controlling
+their microstates. Sections VI, VII, and VIII delve into vari-
+ous static and dynamic measurement methods, supported by
+recent experimental findings on magnetization dynamics in
+ASIs, spanning from 2D to 3D systems, and extending to neu-
+romorphic computing applications in ASI. Finally, Section IX
+offers a summary of the article and discusses potential future
+directions in the field.
+II.
+THEORETICAL BACKGROUND
+The magnetic configurations of ferromagnetic nanoislands
+in ASI and their collective dynamics are governed by the
+Landau-Lifshitz-Gilbert (LLG) equation1,2,
+d ⃗M
+dt = −|γ|(⃗M × ⃗He f f )+ α
+Ms
+ 
+⃗M × d ⃗M
+dt
+!
+(1)
+Here, the first term represents the precessional term, while
+the second term represents the damping term. In this context,
+γ is the electron gyromagnetic ratio, M is the magnetization,
+Ms is the saturation magnetization, and α is a phenomenolog-
+ical dimensionless magnetic damping parameter. This form
+assumes that α ≪1, as is typically the case for systems of
+practical interest. Typically, the effective field contributions
+used in ASIs are1,
+⃗Hef f = ⃗HEx + ⃗HAni + ⃗HBias + ⃗HD,
+(2)
+which includes exchange (HEx), intrinsic anisotropy origi-
+nating from crystalline spin-orbit coupling or from material
+structures such as layering, interfaces, or grain structures
+(HAni), an applied external field (HBias), and nonlocal magne-
+tostatic (e.g., dipolar) fields (HD). The LLG equation, Eq. (1),
+subject to the effective field equation, Eq. (2), is generally a
+system of coupled nonlinear partial differential equations. An-
+alytical solutions are typically found in cases where the mag-
+netostatic field is simplified, e.g., in the thin film limit where it
+reduces to a local field29. Consequently, numerical techniques
+are often required in order to solve the LLG equation. There
+are semi-analytical models30,31 and numerical tools like mi-
+cromagnetic simulations for solving the LLG equation in ASI
+structure1, which we discuss in the following.
+III.
+MICROMAGNETICS
+The investigation of magnetization dynamics of ASIs
+through micromagnetic simulations has unveiled a significant
+revelation: the existence of effective magnetic monopoles
+within ASIs induces notable alterations in the ferromag-
+netic resonance spectrum32. Subsequent experimental anal-
+yses have not only corroborated these findings but also
+identified distinctive magnodynamic signatures, offering in-
+sights into the underlying physics of ASIs and their potential
+applications25,31. This underscores the indispensable role of
+micromagnetic simulations as a vital tool for comprehending
+and forecasting novel phenomena within ASIs, thereby ad-
+vancing our understanding and exploration of these intriguing
+materials1. Therefore, in the following, we present a brief
+review of micromagnetic simulation techniques to simulate
+magnetization dynamics in ASIs.
+Classical electromagnetic theory postulates that the sponta-
+neous magnetization is an intrinsic property of ferromagnetic
+(FM) materials, which imparts a magnetic moment to even
+the minutest volume of a material. Initially approached in a
+somewhat empirical fashion, the concept of spontaneous mag-
+netization found its first comprehensive explanation through
+the pioneering work of Weiss, who introduced the molecular
+field postulate. This postulate was later refined by Heisen-
+berg, who, employing the principles of quantum mechanics,
+replaced the notion of the molecular field with the concept of
+exchange forces. According to Heisenberg’s theory, these ex-
+change forces strive to align the spins of magnetic entities,
+counteracted by the disruptive influence of thermal energy,
+which tends to misalign them. Nonetheless, this theory lacks
+explicit directionality regarding magnetization as it only relies
+on neighboring spins being parallel33.
+Observations under constant temperature, viewed through
+microscopes, reveal a curious phenomenon: while magneti-
+zation remains uniform, its orientation varies across different
+regions, unless either a magnetic field is applied or the ma-
+terial’s size falls below a critical threshold. This tendency
+for ferromagnetic thin films to organize into domains, each
+with uniform magnetization but differing orientations, points
+towards the formation of a demagnetized state, as initially
+postulated by Weiss. The domain theory advanced by Weiss
+effectively rationalizes such observations, yet it becomes ap-
+parent that the presence and dimensions of domains are sig-
+nificantly influenced by anisotropy forces within magnetic

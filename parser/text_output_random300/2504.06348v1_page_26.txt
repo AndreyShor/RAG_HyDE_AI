@@ -1,0 +1,93 @@
+4.4
+Algorithm for initial state preparation
+4.4.1
+Quantum algorithm for initial state preparation
+We present a quantum algorithm to prepare the initial state ansatz in Eq. (62). The classical precomputations
+required for the input are reviewed in Sec. 4.4.2. For each of the S molecular species, the pseudoion DoFs
+are described in their respective natural product basis
+|Rs
+CoM⟩⊗|Ss⟩⊗|qs⟩,
+s = 0, . . . , S
+(66)
+where |Rs
+CoM⟩are eigenstates of the CoM position operator, |Ss⟩is a basis of L2(RP3) (square integrable
+functions with, for example, coordinates being Euler angles), and |qs⟩= |qs,1, ..., qs,3ηs
+ion−6⟩is the basis of
+vibrational normal modes for each species s (for linear molecules there are 2 rotations, and a shape basis
+|qs⟩= |qs,1, ..., qs,3ηs
+ion−5⟩). All of these basis components are suitably discretized. The discretization used
+in the initial state preparation is not the same as the plane wave discretization used in the simulation, and
+so requires a discussion of “grid-matching” in Sec. 4.4.2.
+Translations
+The translational state is the launched Gaussian wavepacket,
+|ψCoM
+¯Rs, ¯Ps,σs⟩=
+X
+Rs
+CoM
+1
+(2πσ2s)3/4 ei ¯Ps·Rs
+CoMe
+−
+1
+4σ2s
+P3
+i=1(Rs
+CoM−¯Rs)2
+|
+{z
+}
+ftrans(Rs
+CoM)
+|Rs
+CoM⟩,
+(67)
+where, as before, ¯Rs, ¯Ps, σs are the reaction-geometry-specified mean position, mean momentum, and spatial
+uncertainty of the wavepacket. We have taken the spatial uncertainty σs to be equal in all directions. Each
+of the three components of Rs
+CoM takes values on a uniform cubic grid with ntrans qubit discretization per
+dimension (corresponding to Ntrans = 2ntrans points per direction). This state can be created using O(ntrans)
+gates by known methods such as quantum rejection sampling as discussed in Ref. [75]. In practice, this cost
+will be dwarfed by the rest of the algorithm and is hence neglected.
+Rotations
+The ground state of the rigid rotor Hamiltonian is the uniform superposition over all rotational configurations
+(Ref. [72], Problem 11-2) and hence it is rotationally invariant. We use an extrinsic Euler angle representation
+of SO(3) rotations with angles α, γ ∈[−π, π), β ∈[0, π] such that a general rotation can be written as
+S(α, β, γ) = Sˆa(α)Sˆb(β)Sˆa(γ) where Sˆn(θ) is the 3d matrix for a rotation of angle θ about axis ˆn, and ˆa,ˆb
+are any two independent axis. Classically, uniform sampling over SO(3) can be accomplished by generating
+uniform random variables u1, u2, u3 ∈[−1, 1] and creating (α, β, γ) = (πu1, cos−1(u2), πu3). We mimic this
+spirit for state preparation. Let USP(a, b; n) be a unitary that creates from the n qubit all zeroes state a
+uniform superposition over 2n states labeling a uniform discretization of the interval [a, b):
+USP(a, b; n)|0⟩=
+1
+√
+2n
+2n−1
+X
+j=0
+
+j(b −a)
+2n
+
+.
+(68)
+For a nrot qubit resolution in each Euler angle we obtain,
+|grot
+s ⟩= USP(−π, π; nrot)|0⟩⊗USP(−1, 1; nrot)|0⟩⊗USP(−π, π; nrot)|0⟩
+=
+X
+cos β∈unrot[−1,1]
+X
+α,γ∈unrot[−π,π)
+1
+Nrot
+| {z }
+frot(α,cos β,γ)
+|α, cos β, γ⟩,
+(69)
+where Nrot = 23nrot/2, and un[a, b) denotes the set of 2n points obtained by uniform discretization of the
+corresponding interval [a, b).
+For linear molecules, there are only 2 unique angles and so we just omit
+preparation of the γ angle above. This state preparation only involves 3nrot Hadamard gates, whose cost is
+completely negligible.
+26

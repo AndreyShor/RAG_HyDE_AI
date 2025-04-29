@@ -1,0 +1,55 @@
+2 
+ 
+Introduction 
+Predicting protein stability changes upon single-point mutations is a longstanding 
+challenge in computational biology1–3, with significant implications in drug design, 
+enzyme engineering, and understanding disease mechanisms4. Protein stability is 
+typically quantified by measuring the Gibbs free energy change (ΔG) between the 
+folded and unfolded states as 
+ 
+𝛥𝐺= 𝐺𝐹−𝐺𝑈  
+ 
+ 
+ 
+ 
+ [1] 
+ 
+However, mutations can dramatically alter this delicate balance. Destabilizing 
+mutations are often linked to diseases5, such as cancer6, while stabilizing mutations 
+can enhance protein function and resilience, especially in industrial and therapeutic 
+settings7,8. 
+From the experimental point of view, the measure of interest is the difference of the 
+unfolding free energy between the mutated and wild-type proteins (ΔΔG), calculated 
+as 
+ 
+𝛥𝛥𝐺= (𝐺𝐹(𝑚) −𝐺𝐹(𝑤)) −(𝐺𝑈(𝑚) −𝐺𝑈(𝑤))   
+ 
+ 
+[2] 
+ 
+where m and w stands for mutant and wild-type (Fig. 1) 
+ 
+𝑃𝐹(𝑤) + 𝑃𝑈(𝑚) ⇌
+𝑃𝐹(𝑚) + 𝑃𝑈(𝑤)   
+ 
+ 
+[3] 
+ 
+Where P represents the concentration of the protein either in the wild-type (w) or 
+mutant (m) forms both in the folded (F) or unfolded (U) states. It can be noticed that 
+this kind of “reaction” corresponds to that used in Free-Energy Perturbation (FEP) 
+calculations9,10,  a widely-used method to calculate ΔG differences in molecular 
+modeling and drug design. 
+ 
+The folding free energy difference between two protein variants depends on both the 
+folded and unfolded states of each sequence. Studies using molecular dynamics,  
+based on Alchemical Free Energy Perturbation10,11, have demonstrated that 
+accurately modeling the unfolded state is crucial for achieving high predictive 
+performance11, though such approaches require computationally expensive 
+methods. Similar statistical-mechanics approaches describing the contribution of the 
+unfolded-state have been presented by Bastolla and coworkers12–14. 
+ 
+In recent years, deep learning-based approaches have significantly advanced the 
+field of protein stability prediction. Despite their success, these models require 
+substantial computational resources and are sometimes inaccessible for routine or 
+high-throughput applications2. 

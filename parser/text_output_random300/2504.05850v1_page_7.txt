@@ -1,0 +1,129 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+7
+Proof. As in the proof of Lemma 4 we consider {1, . . . , |α|} as vertex set of a graph Γ. For any π ∈Πα
+1
+the edges of Γ are the pairs of π0, while the elements in π1 are isolated vertices. We obtain a graph
+with vertex degree ≤1. The graph of π1 ∪π2 with π1, π2 ∈Πα
+1 has vertex degree ≤2. Loops in π1 ∪π2
+contribute a factor of D to the bilinear form, whereas (after relabeling the indices) open strings contribute
+by
+ˆzα1
+1 gα1,α2gα2,α3 · · · gαi−1,αi ˆzαi
+1
+= ˆzα1
+1 ˆzα1
+1
+= ∥ˆz1∥2 = 1.
+Let L(π1, π2) be the number of loops in the graph of π1 ∪π2. We get (as in the proof of Lemma 4)
+⟨π1, π2⟩1 = DL(π1,π2). In particular, ⟨π, π⟩1 = D|π0|. If π1 ̸= π2 with π0
+1 ̸= ∅̸= π0
+2, the degree of ⟨π1, π2⟩1
+is strictly smaller than min(|π0
+1|, |π0
+2|). If π0
+1 = ∅or π0
+2 = ∅, the graph of π1 ∪π2 has no loops and we
+get ⟨π1, π2⟩1 = 1. If we arrange this partition into the first slot, the matrix of ⟨·, ·⟩1 has first column and
+row 1 and in all other columns and rows strictly the highest powers of D on the diagonal. Therefore,
+det(⟨π1, π2⟩1) has leading coefficient 1 in D and thus is non-zero. The claim follows.
+□
+For even spin |α| one can proceed as in the period case and split the |α| vertices into |α|/2 upper vertices
+and |α|/2 lower vertices. This promotes every π ∈Πα
+1 to an element in the rook-Brauer algebra which
+is also semisimple for generic parameter D [13]. The bilinear form ⟨·, ·⟩1 is the trace in the rook-Brauer
+algebra.
+By Lemma 8 every partition π ∈Πα
+1 has a dual ˆπ = ˆπ(α) in the vector space of formal sums of
+partitions with coefficients in Q(D),
+(36)
+⟨πi, ˆπj⟩1 = δi,j,
+πi ∈Πα
+1 , ˆπj ∈⟨Πα
+1 ⟩Q(D).
+By linearity we extend ˆπ to gˆπ0zˆπ1
+1
+yielding
+(37)
+gπ0
+i ˆz
+π1
+j
+1 gˆπ0
+j ˆz
+ˆπ1
+j
+1
+= δi,j.
+From (30) we hence obtain
+(38)
+PG,π = Aα
+G(0, ˆz1) gˆπ0 ˆzˆπ1
+1
+= Aα
+G(0, ˆz1) gˆπ0Qˆπ1
+ν01(0, ˆz1),
+where we define gˆπ0Qˆπ1
+ν01(0, ˆz1) in analogy to gˆπ0zˆπ1
+1
+in (29). We choose ν01 as in (31) to ensure that
+G ∪01 is a period graph. More precisely, G gˆπ0Qˆπ1
+ν01(0, ˆz1) is a linear combination of graphs with total
+spin 0. In particular, the vertices 0 and 1 can be chosen freely when calculating its period (see Lemma 3)
+so that we can drop the labels in G gˆπ0Qˆπ1
+ν01(0, ˆz1). Extending the period to the graph algebra, we obtain
+(compare (24))
+(39)
+PG,π = PGˆπ.
+Substitution into (30) gives the two-point function as sum over propagators with spin zero Feynman
+period coefficients,
+(40)
+Aα
+G(0, z1) = ∥z1∥−2λN(G) X
+π∈Πα
+1
+PGˆπ gπ0 ˆzπ1
+1
+=
+X
+π∈Πα
+1
+PGˆπ gπ0Qπ1
+N(G)(0, z1).
+With this formula one can eliminate any two-point insertion in a Feynman integral by a sum over prop-
+agators in numerator form (2) with coefficients which are a product of a Feynman period and metric
+tensors.
+Example 9. We write G(α)gπ0(α)Qπ1(α)
+ν01
+for the spin 0 graph that is G(α) contracted with gπ0(α) and
+edge 01 of spin π1(α) and weight ν01 as in (31). For |α| = 1, we get G[
+(∅,1) = G(α1)Qα1
+ν01.
+For |α| = 2 we have Πα
+1 = {({12}, ∅), (∅, 12)} and
+G \
+({12},∅) = G(α)gα1,α2Qν01 −G(α)Qα1,α2
+ν01
+D −1
+,
+G \
+(∅,12) = −G(α)gα1,α2Qν01 + D G(α)Qα1,α2
+ν01
+D −1
+.
+For |α| = 3 we have Πα
+1 = {({12}, 3), ({13}, 2), ({23}, 1), (∅, 123)}. We obtain
+G \
+({12},3) = G(α)gα1,α2Qα3
+ν01 −G(α)Qα1,α2,α3
+ν01
+D −1
+,
+G \
+(∅,123) = −G(α)gα1,α2Qα3
+ν01 −G(α)gα1,α3Qα2
+ν01 −G(α)gα2,α3Qα1
+ν01 + (D + 2)G(α)Qα1,α2,α3
+ν01
+D −1
+,
+plus two cyclic permutations of the first equation. Results up to |α| = 10 are in [23].

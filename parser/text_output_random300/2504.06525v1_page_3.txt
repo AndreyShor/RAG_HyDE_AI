@@ -1,0 +1,24 @@
+SPM is an essential tool for investigating materials and nanoscale phenomena. Among its 
+various imaging and functional spectroscopy modes, tapping mode (TM) is the most widely used 
+[39-44]. However, achieving high-quality SPM images requires extensive tuning of microscope 
+parameters, demanding significant time and expertise [45-47]. Automating the optimization of 
+SPM at an expert level not only ensures standardized and reproducible high-quality imaging but 
+also aligns with the principles of Findability, Accessibility, Interoperability, and Reusability 
+(FAIR), making high-quality SPM data more broadly available to the scientific community. 
+In this work, we explore the application of multi-objective Bayesian optimization (MOBO) 
+to autonomous experimentation in SPM. We demonstrate that MOBO effectively balances 
+multiple uncertain reward functions, ensuring FAIR (Findable, Accessible, Interoperable, and 
+Reproducible) access to high-quality experimental data. Furthermore, MOBO provides insights 
+into the interdependencies among different reward functions and facilitates human-in-the-loop 
+decision-making by enabling researchers to tailor trade-offs along the Pareto front for specific 
+experimental goals. We illustrate these concepts through the automated optimization of tapping 
+mode in SPM, where three reward functions are derived from either the underlying physics of the 
+system or heuristic criteria. Our results show that MOBO rapidly optimizes control parameters, 
+yielding high-quality and reproducible scans. Additionally, analysis of the Pareto front offers 
+deeper insight into the relationships between competing rewards and provides a framework for 
+integrating human expertise into the decision-making process. 
+ 
+ 
+Figure 1. Rewards design for MOBO of tapping mode in SPM | a, reward of traces is designed 
+to quantify how well the trace and retrace scan lines are aligned. This reward is expected to favor 
+large drive amplitude and small setpoint parameters. b, reward of distance is designed to assess 

@@ -1,0 +1,135 @@
+Render
+SVG-IR Framework      (Sec. 4.2)
+Loss
+GT
+Vertex Shading
+𝒄𝒊
+{𝑴}
+Vertex Colors
+𝑣
+𝒄𝒊
+𝟐
+𝒄𝒊
+𝟑
+𝒄𝒊
+𝟏
+𝒄𝒊
+𝟎
+𝑢
+Fragment Shading
+Physically-based 
+Lighting
+(Sec. 4.3)
+Spatially-varying Gaussian Splatting
+Vertex 
+Material Attributes
+𝒂𝒊
+{𝑴}, ∆𝑁𝒊
+{𝑴}, 𝑟𝒊
+{𝑴}
+Spatially-varying Gaussian representation                    
+                   (Sec. 4.1)
+𝛴𝑖, 𝜇𝑖, 𝑐𝑖, α𝑖
+Pre-trained
+Gaussian Attributes
+Figure 3. Overview of our framework. We propose a novel SVG-IR framework. Within this framework, we introduce a Spatially-
+varying Gaussian representation capable of spatially variability with material attributes. We employ SVG splatting, analogous to vertex
+and fragment shading in the traditional triangle rendering pipeline, to leverage the improved appearance capability of SVGs. Additionally,
+we present a physics-based lighting model that enforces additional physical constraints to facilitate the decoupling of lighting and material
+properties.
+Next, we provide details of Gaussian fragment shading.
+During rasterization, we compute the coordinates u, v in the
+tangent space of Gaussian surfel[5] i corresponding to pixel
+u in the screen space:
+di = J−1
+pr (u −ui) ,
+(6)
+(u, v) =
+di
+S[: 2] + δ ,
+(7)
+where di is the displacement from the pixel center to the
+Gaussian center in the tangent space, J−1
+pr is the Jacobian
+of the inverse mapping from a pixel in the image space to
+the tangent space of each Gaussian and δ is an offset (set as
+0.1).
+In practice, we compute pixel’s color by bilinear interpo-
+lation, followed by alpha blending:
+ci = BilinearInterp(c{M}
+i
+, u, v),
+C =
+n
+X
+i=0
+ciαiTi.
+(8)
+Inverse rendering framework. With established Gaussian
+primitives and their rendering scheme, we build our multi-
+stage inverse rendering framework, as shown in Fig. 3.
+Firstly, given multiple views, we utilize Gaussian Sur-
+fels [5] to optimize Gaussian attributes as the initialization.
+Then, we construct Spatially-varying Gaussians with at-
+tributes (Σi, µi, ci, oi) inherited from the pre-trained Gaus-
+sians and the material attributes of Gaussian vertices (i.e.,
+a{M}
+i
+, r{M}
+i
+, ∆N {M}
+i
+). Our framework optimizes the at-
+tributes of the Gaussian vertices. Using SVG splatting, we
+render the images and compute the corresponding loss func-
+tions to guide the optimization.
+4.3. Physically-based Illumination
+A key of decomposing materials and lighting is the illu-
+mination model, including both direct lighting and indi-
+rect lighting, particularly for scenes with occlusions. Exist-
+ing GS-based IR methods model the indirect illumination
+Ours
+Relightable 3DGS
+GS-IR
+×2
+Render with indirect illumination only
+GT
+Figure 4. The results of rendering using only indirect lighting. We
+multiplied the brightness of the right half by two for better view-
+ing. GS-IR fails to capture the effects of light reflections from ob-
+jects as it only models brightness. Meanwhile, Relightable 3DGS
+lacks supervision for indirect lighting, leading to unnatural results.
+In contrast, our physically-based lighting model produces more
+natural rendering results.
+with trainable SHs which learn either the residual light-
+ing [6, 20, 24] or the residual colors [11].
+While these
+unconstrained manner improves NVS quality, the indirect
+lighting is unnatural, due to the lack of physical constraints.
+We address this issue by introducing physically-based illu-
+mination.
+In our SVG-IR, we compute the global illumination for
+each Gaussian vertex in the Gaussian vertex shading. Given
+a Gaussian vertex x, and view direction ωo, its radiance
+Lo(x, ωo) is defined by the rendering equation [15]:
+Lo(x, ωo) =
+Z
+Ω
+f(x, a, r, ωi, ωo)Li(x, ωi)(ωi · n)dωi,
+(9)
+where Ωis the upper hemisphere of the Gaussian defined
+by geometry normal N g
+i , f is the Disney Principled BRDF,
+a is albedo, r is roughness, ωi is the incident direction and
+n is the shading normal of the shading point x.
+We solve the above integral by uniformly sampling K di-
+rections within Ω, and then compute the incoming radiance
+Li(x, ωi) along each direction. Here, Li(x, ωi) is computed
+per Gaussian, instead of per Gaussian vertex, as the incom-
+ing radiance in a small region tends to be similar. Li(x, ωi)
+can be separated as
+Li(x, ωi) = Ldir
+i (x, ωi)V (x, ωi) + Lind
+i
+(x, ωi),
+(10)

@@ -1,0 +1,80 @@
+Illusion Spaces in VR: The Interplay Between Size and Taper Angle Perception in Grasping
+CHI ’25, April 26-May 1, 2025, Yokohama, Japan
+Controller
+Physical Object
+Optitrack Cameras
+Optitrack Markers
+Virtual scene (before grasping)
+Virtual scene (grasping)
+Figure 2: Figures showcasing the experimental setup. Left: the study apparatus, including the participant’s seating position,
+Optitrack setup for object tracking, and physical object markers. Right: the virtual view before grasping (highlighting the red
+center line) and during grasping.
+3.2
+Apparatus
+All the physical objects were 3D printed with polylactic acid (PLA).
+Their weight was controlled to be roughly identical despite a range
+of geometries by adjusting the printing density (67.98𝑔± 0.26𝑔).
+We used a Meta Quest 3 HMD with the Optitrack motion capture
+system for tracking the hand motion and the cubes. Seven Prime
+13W cameras were placed around the table and set at a tracking
+frequency of 240Hz (see Fig. 2). We designed rigid tracking bodies
+of different shapes to incorporate the tracking markers which were
+attached to the physical cubes and participants’ index finger and
+thumb. These rigid bodies were uniform in weight and did not in-
+terfere with the participants’ range of motion or object interactions
+(they were mounted above the objects to be grasped). The VR scene
+was built in Unity 2022 on a laptop PC (13th Gen Intel i9-13900HK
+2.60GHz, 32.0GB RAM, NVIDIA GeForce RTX 4090 GPU, Windows
+11 Pro). FinalIK by Rootmotion [42] was used as inverse kinematic
+model for finger motions as a Unity asset.
+3.3
+Hand Rendering
+We applied resized grasping techniques similar to those used in a
+previous study by Bergström et al. [6] to render the hand model.
+In the virtual scene, only the index finger and thumb were ani-
+mated on the hand. The positions of the participant’s hand, index
+finger and thumb were captured with motion capture system and
+streamed into Unity. The distance of the index finger and thumb
+to be rendered in the virtual scene 𝐷𝑣was calculated based on the
+scaling ratio between the width of the virtual cube and the physical
+cube 𝑆𝑣/𝑆𝑝, where 𝑆𝑣is the size of the virtual cube and 𝑆𝑝is the size
+of the physical cube. The virtual hand was resized by the method
+to have a distance 𝐷𝑣between the virtual index finger and thumb:
+𝐷𝑣= 𝐷𝑝× (𝑆𝑣/𝑆𝑝)
+(1)
+where 𝐷𝑝is the distance between index finger and thumb in real
+world.
+The inverse kinematic model was then used to render the motion
+of the finger joints based the new index finger tip and thumb tip
+positions. While previous work applied the finger distance changes
+during the reach motion [6], we applied the real-time scaling algo-
+rithm to the hand across the whole grasping from the beginning of
+each task to avoid participants noticing finger distance changing
+when approaching the objects.
+3.4
+Experimental Procedure
+Upon recommendation from our local ethics committee, the par-
+ticipants were limited to being in VR for one hour. Considering
+the workload of grasping 207 cubes and responding to questions,
+we divide the task between two participants. Therefore, for each
+pair of participants, the 207 combinations of grasping objects were
+randomised and split into two parts (103 and 104 grasps).
+Participants used their right hands to grasp the physical objects
+while looking at the virtual objects in the VR headset. Similarly to
+previous studies [8], we asked questions that were rendered in the
+virtual scene: “Is the virtual cube smaller or larger than the physical
+cube?” and “Is the virtual cube less tilted or more tilted than the
+virtual cube?”. Participants responded to these questions with a
+controller held in their left hand.
+To perform the task, participants were asked to reach and grasp
+the object on the red lines on the middle height level of the two tilted
+faces - this ensured the participants grasped on the sides with the
+taper angle and the widths were controlled here. The participants
+then lifted the object and answered the questions while holding
+the object. The two questions were presented at the same time and
+the participants could answer them in any order. After answering
+both questions they could put down the object and move their
+right hands back to the edge of the table, at which point the virtual
+scene would reset. During this time, the researchers replaced the
+physical objects even when the physical objects didn’t change. The
+participants could rotate the object to observe it but they were not

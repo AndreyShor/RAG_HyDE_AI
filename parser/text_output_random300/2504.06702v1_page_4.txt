@@ -1,0 +1,161 @@
+4
+so-called inner iterations. Choosing Nin relatively small
+ensures that configurations that quickly decrease in
+energy are preferred.
+The log leads to a wider range
+in f values for all individual agents, making the choice
+of α in the exponential weighting less stringent.
+The
+same behavior can in principle be achieved by leaving
+f = J(X, zNin) and taking α a higher value. This case is
+useful when (a good approximation) of Eg is not known.
+Alternatively, we could choose
+f = J(X, zNin) −ν
+∇zJ(X, zNin)
+ ,
+(5)
+for some regularizer ν > 0. Here, we actively optimize
+for the pulse gradient of J to be large so that further
+optimization of the pulses will yield better results.
+The added benefit is that the algorithm prioritizes
+large-valued
+gradients,
+avoiding
+configurations
+with
+large regions of flat pulse-energy landscape, so-called
+barren plateaus [20, 21].
+If there is minimal variation
+in the f-values among the agents, potentially due to
+the occurrence of barren plateaus, the consensus-based
+algorithm may struggle to identify advantageous new
+configurations, leading to stagnation in the algorithm’s
+progress for small diffusion coefficient σ > 0.
+Algorithm 1: Configuration optimization
+input : z(k)
+0,0, X(k)
+0
+, Htarg, ϕ0, Nout,Nagents, Nin, Nfinal
+output: X(k)
+Nout, z(k)
+Nout,Nfinal, J(X(k)
+Nout, z(k)
+Nout,Nfinal)
+// Configuration Optimization
+// Outer Loop
+for n = 0 to Nout do
+for k = 0 to Nagents do
+// Inner Loop
+for l = 0 to Nin do
+z(k)
+n,l+1 = z(k)
+n,l −γ∇zJ(X(k)
+n , z(k)
+n,l );
+end
+calculate J(X(k)
+n , z(k)
+n,Nin);
+end
+calculate vf according to (3);
+draw normal random variables N n,k;
+X(k)
+n+1 = X(k)
+n
+−λ(X(k)
+n
+−vf)∆τ
+.
++
+√
+2σ|X(k)
+n
+−vf|N n,k√
+∆τ;
+end
+// Final Energy Determination
+for k = 0 to Nagents do
+for l = 0 to Nfinal do
+z(k)
+Nout,l+1 = z(k)
+Nout,l −γ∇zJ(X(k)
+Nout, z(k)
+Nout,l);
+end
+calculate J(X(k)
+Nout, z(k)
+Nout,Nfinal);
+end
+return X(k)
+Nout, z(k)
+Nout,Nfinal, J(X(k)
+Nout, z(k)
+Nout,Nfinal);
+Lastly, we comment on the scalability of the method. For
+pulse optimization, it is known that significantly more in-
+ner iterations are required when scaling up the number
+of qubits, mainly due to the larger dimensional control
+space [14]. For our method, we find that the number of
+outer iterations does not need to be increased with the
+number of qubits, as the configuration is encoded per
+agent rather than per qubit. It is likely that for an in-
+creasing number of qubits more agents are necessary as
+the dimensionality of the configuration space increases
+[33]. Because of the classical computational intensity of
+testing for a large number of qubits, this is outside the
+scope of this work.
+Lastly, our CBO algorithm offers
+a large advantage in terms of parallelization on current
+era neutral atom computers for two reasons.
+First, in
+a neutral atom system both the atom preparation and
+measurement take significantly more time compared to
+the evolution of the qubits [1]. Second, despite the fact
+that many atoms can be prepared on one chip, simulta-
+neous control of these atoms is often limited to a few [34].
+In our algorithm, all agents can be initialized and mea-
+sured together, but evolved individually. This parallelizes
+the time-consuming preparation and measurement, while
+also satisfying the need to control only a few atoms si-
+multaneously.
+III.
+RESULTS
+In this section, we present several examples to illustrate
+the performance of our configuration optimization using
+the consensus algorithm and provide comparisons with
+suitable random configuration counterparts.
+Unless
+stated
+otherwise,
+the
+hyperparameters
+for
+position
+optimization are taken as (α, λ, σ, ∆τ) = (4, 0.4, 0.1, 0.5).
+These have empirically shown to lead to well-optimized
+configurations over a large scale of problems (see
+Sec. III C). The generation of the initial configurations
+is specified in App. A, after which Nout = 20 outer
+iterations of the CBO algorithm are performed to
+produce the final configurations X(Nout). Pulses zl are
+encoded as step functions with 100 equidistant steps
+between t = 0 and t = 1. In order to assess our method
+on many different problems, we sample random target
+Hamiltonians Htarg = P
+i αiPi with αi ∼Unif[0, 1] and
+Pi respectively random coefficients and random Pauli
+strings.
+Here, each Pauli string has a 20% chance of
+being selected. By picking the coefficients and strings in
+this way, ground energies are found around a magnitude
+of 101, resulting in Htarg closely resembling realistic
+molecular Hamiltonians as expressed in atomic units
+[35]. We will often consider a problem solved, once an
+energy error of 10−3 has been achieved, corresponding
+to the chemical accuracy measured in Hartree [36]. For
+all simulations, we will take the interaction strength
+coefficient C3,6 = 1 in arbitrary units (see App. B). All
+subsequent pulse strengths and interatomic distances are
+expressed in terms of this interaction energy coefficient.
+Note that for other units, time can always be rescaled
+by the Schr¨odinger equation (1) so that C3,6 = 1.

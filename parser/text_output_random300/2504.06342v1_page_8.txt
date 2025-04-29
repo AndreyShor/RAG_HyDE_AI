@@ -1,0 +1,122 @@
+8
+where 𝜏cool is the cooling timescale computed via
+the cooling algorithm (detailed in §2.6), and 𝜏dyn is
+the dynamical timescale determined by the min-
+imum of the local free-fall time and rotational
+timescale:
+𝜏dyn = min(𝜏ff, 𝜏rot),
+(16)
+where
+𝜏ff ≡
+√︄
+3𝜋
+32𝐺𝜌,
+(17)
+𝜏rot ≡
+√︂
+𝑟𝜕Φ(𝑟)
+𝜕𝑟
+,
+(18)
+with Φ(𝑟) being the gravitational potential. The
+star formation rate is then given by:
+¤𝑀SF = 𝜖SF 𝜌
+𝜏SF
+.
+(19)
+The model evolution is primarily driven by stellar
+mass loss and SNe Ia rates associated with the initial
+stellar distribution. Following (Ciotti & Ostriker
+2012), we express the stellar mass loss as a piece-
+wise function:
+Δ𝑀=
+
+
+0.945𝑀TO −0.503M⊙,
+if 𝑀TO < 9M⊙
+𝑀TO −1.4M⊙,
+if 𝑀TO ≥9M⊙
+,
+(20)
+where the stellar turn-off mass 𝑀TO follows the
+relation:
+log 𝑀TO
+M⊙
+= 0.0558
+
+log
+𝑡
+1 yr
+2
+−1.338 log
+𝑡
+1 yr+7.764.
+(21)
+We note that while star formation and evolution
+models in the literature exhibit considerable vari-
+ation in parameters and criteria, we have deliber-
+ately adopted a simplified prescription. This ap-
+proach minimizes free parameters and maintains
+the idealized nature of the simulation, facilitating
+focused investigation of AGN feedback effects in a
+controlled environment.
+2.5. Supernova feedback physics
+In MACER2D, supernova feedback was imple-
+mented as thermal energy injection proportional
+to the local SN event rate.
+Without identifying
+individual SN events, the energy injection was spa-
+tially smoothed, acting as an extra heating term in
+the energy equation of the hydrodynamic simula-
+tion. While computationally efficient, this simpli-
+fied approach did not accurately capture the effects
+of discrete supernova explosions, such as shock
+propagation and turbulence generation in the ISM
+and CGM driven by individual events. MACER3D
+significantly improves upon this by implementing
+a more sophisticated model of supernova feedback
+with state-of-the-art prescriptions.
+First, we model supernovae as discrete events.
+Given their independent nature, we use a Pois-
+son distribution to determine the probability of SN
+events occurring:
+𝑃(𝑁SN; 𝜇SN) =
+𝑒−𝜇SN𝜇𝑁SN
+SN
+𝑁SN!
+,
+(22)
+where 𝜇SN is the expected number of SN events
+per unit time in a given region, and 𝑃(𝑁SN; 𝜇SN)
+gives the probability of observing 𝑁SN events. The
+expectation value 𝜇SN in a given time step Δ𝑡is
+determined by the sum of the volume-integrated
+type Ia and type II SNe rates:
+𝜇SN = (𝑅II + 𝑅Ia) Δ𝑡,
+(23)
+where 𝑅II and 𝑅Ia are the type II and type Ia SN
+rates, respectively, which are adopted from Ciotti
+& Ostriker (2012):
+𝑅II =
+𝜖II
+𝜏II𝑀II,ZAMS
+∫𝑡
+0
+¤𝑀SF(𝑡′)𝑒−𝑡−𝑡′
+𝜏II d𝑡′,
+(24)
+where 𝜖II = 0.1234 is the type II SN efficiency, re-
+flecting the fraction of stellar mass from 9 – 120 M⊙
+progenitors undergoing core collapse, 𝜏II = 2 ×
+107 yr the characteristic type II SN timescale, and
+𝑀II,ZAMS = 21.34 M⊙the IMF-averaged ZAMS
+mass of type II SN progenitors. The type Ia SN
+rate is given by:
+𝑅Ia(𝑡) = 𝑅0ℎ2 𝐿B
+𝐿B⊙
+
+𝑡
+13.7 Gyr
+−𝑠
+yr−1,
+(25)

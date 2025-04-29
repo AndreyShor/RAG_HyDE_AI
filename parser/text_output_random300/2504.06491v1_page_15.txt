@@ -1,0 +1,53 @@
+Supplementary Material for: Identifying Universal Spin Excitations in Spin-1/2
+Kagome Quantum Spin Liquid Materials
+Aaron T. Breidenbach,1, 2, ∗Arthur C. Campello,1, 3, ∗Jiajia Wen,1 Hong-Chen
+Jiang,1 Daniel M. Pajerowski,4 Rebecca W. Smaha,1, 5 and Young S. Lee1, 3, †
+1Stanford Institute for Materials and Energy Sciences,
+SLAC National Accelerator Laboratory, Menlo Park, CA 94025, USA
+2Department of Physics, Stanford University, Stanford, CA 94305, USA
+3Department of Applied Physics, Stanford University, Stanford, CA 94305, USA
+4Neutron Scattering Division, Oak Ridge National Laboratory, Oak Ridge TN 37830, USA
+5Department of Chemistry, Stanford University, Stanford, CA 94305, USA‡
+(Dated: April 10, 2025)
+SHIELDING FACTOR DETERMINATION
+The Methods section mentions that to accurately subtract background contributions from Helium and CYTOP from
+our data sets, we empirically estimate a shielding factor parameter. Here, we define this parameter in more detail and
+explain precisely how we estimate it to derive our processed data. For each temperature at which we measured data,
+we made three measurements: One on the entire sample assembly – with the crystals, CYTOP adhesive, and Helium
+in the background, one on a “dummy” sample – a sample without crystals but with a nearly matching amount of
+CYTOP – and background Helium, and one with no sample in the beam path and only Helium. For clarity, we call
+these measurements, respectively, M[Sample + He + CYTOP], M[He + CYTOP], and M[He]. We also let D[Sample]
+be our best estimate of the data only from the crystal sample.
+In theory, one would imagine that subtracting M[He + CYTOP] from M[Sample + He + CYTOP] would yield a
+good estimate of D[Sample]. Unfortunately, this approach does not account for the effect of neutrons being shielded
+from the CYTOP by the sample itself. For this reason, practical background subtraction for all temperatures is best
+approached with the model
+D[Sample] = M[Sample + He + CYTOP] −β M[He + CYTOP] −(1 −β)M[He],
+(1)
+where β is a “self-shielding factor” parameter. Note that for all choices of β, the He signal is fully accounted for. This
+only changes the amount of the CYTOP-only signal that is subtracted from M[Sample + He + CYTOP] to estimate
+D[Sample].
+Empirically, we find that the CYTOP signal is strongest in the elastic line: i.e. where there is zero energy transfer.
+Figure 1 shows this elastic signal from CYTOP integrated along the [H 0 0] and equivalent directions measured at
+T=1.7 K. It also shows D[Sample] estimated with various shielding factors. It is clear that in the β = 0 case the
+CYTOP is under-subtracted – as it is ignored completely – but in the β = 1 case there is over-subtraction of the
+CYTOP signal. By examining plots like these, we found choices for β that minimized CYTOP signals for all data sets.
+For T=1.7 K and T=40 K data, the best choice was clearly β=0.71. The noisiness of the T=150 K data made this
+parameter much harder to estimate, but it was chosen to be β = 1.75, although all values in the range β ∈[1.5, 2.0]
+seemed reasonable. Note that the dummy sample for the 150K background was taken in a slightly different geometry,
+which is why we have β > 1; normally physical constraints would govern 0 < β < 1 for a dummy sample in the same
+geometry and the same amount of CYTOP. The figure below reproduces Figure 3 with the T=150 K cut reflecting
+this shielding factor uncertainty, which results in higher error bars.
+ORIGIN OF CHIRAL DETECTOR ARTIFACTS IN UNPROCESSED SCATTERING DATA
+Figure 9 in Extended Data shows the steps of processing the incoming CNCS data. The raw data in panel (a)
+shows strong scattering features at [1 0 0] and equivalent positions. These appear as “streaks” of a chiral nature and
+∗These authors contributed equally to this work
+† youngsl@stanford.edu
+‡ Present
+address:
+National
+Renewable
+Energy
+Laboratory,
+Golden, CO 80401, USA
+arXiv:2504.06491v1  [cond-mat.str-el]  8 Apr 2025

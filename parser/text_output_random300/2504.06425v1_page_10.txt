@@ -1,0 +1,53 @@
+10
+NEURAL NETWORK POLYCONVEXIFICATION
+4.5. Implementation and Hyperparameters. The neural network architectures are imple-
+mented using PyTorch, and all the trainings are performed on an Intel® CoreTM i7-8700 machine,
+using only one core at a base frequency of 3.20 GHz.
+The input data of the neural networks consist of the minors m(ˆν) ∈Rkd of the signed singular
+values ˆν along with additional parameters ζ ∈Rp depending on the definition of the function Φ,
+i.e. the input data consists of vectors (m(ˆν), ζ) ∈Rkd+p. The target values correspond to the
+evaluation of the polyconvex envelope Φpc at the points ˆν and the parameters ζ, expressed as
+Φpc(ˆν; ζ). In summary, the learning data (gathering both training and validation data) consists
+of tuples of the form (m(ˆν), ζ, Φpc(ˆν; ζ), Φ(ˆν; ζ)) containing the input features, the target value
+Φpc(ˆν; ζ), and the value of the function Φ(ˆν; ζ), which is necessary for the evaluation of the loss
+function (15).
+In all the numerical examples, we design the neural network architectures to be as small as
+possible while maintaining high predictive accuracy. Indeed, preliminary numerical experiments
+have shown that increasing the number of layers or neurons of the neural networks presented
+below does not necessarily improve prediction performance; on the contrary, it may even degrade
+them. Also, we aim to use the smallest dataset size that ensures accurate predictions, while
+making training computationally efficient and feasible on a standard laptop, which has been
+achieved thanks to several investigations. We employ the ReLU activation function in all hidden
+layers, as it satisfies the convexity condition required by ICNN. The output layer consists of a
+single neuron with a linear activation function. Numerical experiments indicate that selecting
+ReLU as the convex activation function enhances learning efficiency and improves predictive
+accuracy compared to the Softplus function, another commonly employed activation function
+in ICNNs. Besides, [CSZ19, HCTC21] prove universal approximation theory of PICNN when
+ReLU, as well as Softplus, activation functions are used.
+The weights W (z) which belong to the convex part of the network are initialised from a normal
+distribution N(0.1, 0.1) with 0.1 mean and 0.1 standard deviation, and then projected onto R+.
+Also, after each training step, the weights W (z) are projected onto the R+ halfspace to ensure
+their positiveness. This projection, essentially to ensure the positivity of the weights, is a crucial
+step. The naive application of ReLU for weight clipping can result in zero entries in the weight
+matrices and would waste approximation potential. For this projection, a shifted version of
+ReLu, i.e. x →max(x, 0) + ε with the small offset ε = 10−6 is employed. This initialisation
+and projection strategy has shown better performance compared to a uniform distribution, and
+projections using exponential or Softplus functions. The other weights are initialised from a
+uniform distribution U(−1/√n, 1/√n) with n the input size and all the biases are initialised to
+0.
+We employ the ADAMAX optimiser with a learning rate of η = 0.001, a batch size of 128,
+with the data shuffled at each epoch to improve model generalisation, and a patience of 10,
+i.e. the training process is stopped if no improvement of the validation error is achieved for 10
+successive epochs. The training and validation errors are computed with the loss function (15).
+The hyperparameters λineq and λsym involved in L have been determined by performing several
+preliminary tests with different parameter values for λineq and λsym. In each numerical example
+presented below, the given values of the (λineq, λsym) achieved the best training performance and
+predictions.
+To obtain more reliable numerical results, for each example, we conduct ten runs of training,
+using the same training and validation data. The variations arise solely from the initialisation
+of model weights and the stochastic nature of data loading during training, since a shuffle is
+used. The numerical results presented are obtained by averaging the outputs of the ten network
+realisations.
+5. Mathematical Benchmark Examples
+To show the potential of the introduced approximation approaches by the property-preserving
+neural networks as introduced Section 4, we consider well-known examples in the context of

@@ -1,0 +1,51 @@
+Theorem 9. Let G be a XOR-game. Then
+ωQ(G) −τ(G)
+ωC(G) −τ(G) ≤KG
+where KG is Grothendeick’s constant.
+Grothendeick’s constant KG is the smallest number such that, for all
+integers N ≥2 and all N × N real matrices M, if
+
+X
+i,j
+M(i, j)aibj
+ ≤1
+for all numbers a1, . . . , aN, b1, . . . , bN in [−1, 1], then
+
+X
+i,j
+M(i, j)⟨ui|vj⟩
+ ≤KG
+for all unit vectors |u1⟩, . . . , |uN⟩, |v1⟩, . . . , |vN⟩in Rn for any n.
+The exact value of Grothendieck’s constant is not known, but it is known
+to satisfy
+1.6769 ≤KG ≤
+π
+2 log(1 +
+√
+2) ≈1.7822.
+Finally, the coming result upper bounds the maximum quantum winning
+probability by a function of the maximum classical winning probability.
+Theorem 10. Let G be a XOR-game. Then
+ωQ(G) ≤
+(
+γ1ωC(G)
+if ωC(G) ≤γ2
+sin2( π
+2ωC(G))
+if ωC(G) > γ2,
+where γ1 and γ2 are the solution to the equation π
+2 sin(πγ2) =
+sin2( π
+2 γ2)
+γ2
+= γ1.
+γ1 ≈1.1382 and γ2 ≈0.74202.
+4.3
+Non-local Computation
+Consider the scenario in which Alice and Bob wish to distributively compute
+a function whose input is also distributed. Alice and Bob respectively receive
+bit strings x and y and they must output single bits a and b such that
+a ⊕b = f(x ⊕y). What is particular in this type of non-local game is that
+neither of the players learn anything about the input since the individual bits
+of x and y are uniformly distributed from Alice and Bob’s perspective.
+12

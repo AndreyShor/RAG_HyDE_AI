@@ -1,0 +1,40 @@
+XXX:18
+Israel et al.
+Fig. 15. Star Topology
+Fig. 16. Radial Topology
+Fig. 17. Statistics-based Topology
+Fig. 18. Cyber-physical network connection between UCCs and their respective substations for the 2k-bus
+model on the footprint of Texas. The green dots are generation substations, the blue dots are transmission
+substations, the red dots are UCCs, and the yellow dot is the BA.
+information in its substations. To determine which cyber node belongs to which substation or its
+corresponding power node, the algorithm from [24] is modified. In this modification, the centroid
+of the generated cyber network is overlaid on top of the centroid of the power network. Then,
+the cyber network is rotated to find the Euclidean norm of the distance between each cyber node
+and the power node. The cyber network is rotated on top of the power network to minimize the
+Euclidean norm of all nodes. The overlay with the minimum value of the Euclidean norm is selected
+to align the cyber nodes with their corresponding substations in the power network. This approach
+allows adding geographic information to the cyber nodes and overlays the cyber topology onto the
+power system topology.
+5.4
+Local Area Network
+Based on the cyber models in [30], the Local Area Network (LAN) inside one of the substations is
+illustrated in Fig. 19. This example substation has two buses, which are represented by the two
+relays. The nodes are color-coded by node type: routers are pink, firewalls are gold, switches are
+deep violet, hosts are green, and relay controllers are lavender.
+The layout of nodes and links inside a substation is consistent across the different test cases
+with the same components used in substations and control centers, as seen in Fig. 19 and Fig. 20.
+Each node in these figures has attributes such as utility ID, substation ID, label, and their respective
+VLAN.
+5.5
+Comparison with related work
+A related work that develops cyber-physical communication networks from a specified power
+grid model is the algorithm and software tool presented in [19]. This tool constructs a topology
+that mirrors our statistics-based approach, applying it across the power grids of several European
+countries. It specifically models transmission substations within the 380–400 kV high-voltage
+transmission network.
+In Table 6, there is an attempt to contrast this cyber-physical model generation tool with the
+approach in [19]. While there are many areas where the two approaches complement each other,
+the focus here is particularly on wide area network topologies and the types of data (data flows)
+that occur within a substation, as well as between substations, control centers, and regulatory
+agencies. For instance, the model generates various network topologies, including star, radial, and
+statistical, whereas the referenced work only supports a statistical topology. Additionally, in the

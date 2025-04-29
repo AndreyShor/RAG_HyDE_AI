@@ -1,0 +1,71 @@
+Preprint. Under review.
+When executed in the COMSOL Multiphysics®API during evaluation, a correct solution
+will export a table containing a computed value that should match the Target Value. We
+note that both task inputs i.e. the Model Specifications along with the Selection Information,
+or Plan are independently self-sufficient problem formulations for the LLM to solve using
+the API. The Model Specifications field most closely resembles a naturally occurring real-
+world problem description. We conduct experiments primarily on FEABench Gold, unless
+specified otherwise.
+
+
+
+	
+
+
+
+	
+Solution N
+
+
+	
+
+
+
+
+
+		
+
+	
+
+	
+	 
+	
+
+­	
+
+­
+	
+Solution N-1
+Figure 2: An overview of the agent and environment design.
+3
+Approach
+We first consider a baseline (non-interactive) setting where the LLM generates code without
+the ability to execute it. The COMSOL Multiphysics®API provides several ‘physics inter-
+faces’ that describe different physics systems and phenomena. A user or LLM needs to
+select the correct interface and create and modify features under it, in order to implement
+the physics of the problem. We consider two prompting strategies for both task variants. (1)
+The first prompting strategy involves a One-Shot prompt where the model is given one full
+input and solution example. (2) The second strategy, PhyDoc In-Context, includes the list
+of valid physics interfaces and features under them in addition to the one-shot example. To
+further address the challenge of correctly operating the simulation software, we build an
+agentic system that interacts with the software, and uses tools to improve its solution.
+3.1
+A Multiphysics Reasoning Agent
+Recent work has sought to explore the space of designing optimal Agent-Computer Inter-
+faces (Yang et al., 2024a; Wang et al., 2024b) primarily for software engineering. However,
+these frameworks (see Appendix A for a discussion of related work) are tailored to codebase
+navigation and bash execution: utilities crucial to software development, but of limited
+relevance to engineering simulation environments. We design a multi-agent system that
+interacts with the COMSOL Multiphysics®API, as well as tools (or specialized functions).
+The system is equipped with an Evaluator whose feedback is used to compute a ‘fitness’
+for each solution. This is used to track the best solutions. The ControllerAgent calls
+a CorrectorSubAgent that proposes the next solution given the ‘current’ code and feed-
+back, execution history and the result of tool calls. It in turn delegates tool calls to the
+ToolLookupAgent. To minimize failures or longer-than-desired chains of calls, we adopt
+an algorithmic sequence of agent calls except within the ToolLookupAgent. An initial set of
+20 samples are generated using PhyDoc In-Context and the best solutions are corrected
+for 20 steps (see Appendix C.2 for details). The best of all solutions is then identified
+and evaluated. The tool registry consists of a retriever tool RetrieveAnnotatedSnippets,
+a tool that queries the API to return a dictionary of properties under a specified node
+QueryModelTreeProperties and two tools that return the list of valid physics interfaces and
+4

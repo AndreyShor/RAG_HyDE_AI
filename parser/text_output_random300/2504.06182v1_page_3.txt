@@ -1,0 +1,121 @@
+3
+ber of edges required to get from u to v (by convention,
+we set the distance to infinity when u and v belong to
+different components).
+Even though some of our algorithms, e.g., the aro al-
+gorithm [21], were designed for general (positive) edge-
+weighted graphs, here we mostly focus on (unweighted)
+path/chain graphs
+and (unweighted) grid graphs
+to
+achieve the claimed improvements in running time. An
+n-path graph is a graph on n vertices with vertex set
+{vi | 0 ≤i ≤n−1} and edge set {vivi+1 | 0 ≤i ≤n−2}.
+A (W × H)-grid graph is a graph on n = W × H vertices
+with vertex set {(x, y) | 0 ≤x ≤W −1, 0 ≤y ≤H −1},
+for W, H ∈N+. Two vertices v = (x, y) and v′ = (x′, y′)
+(v ̸= v′) are adjacent in a grid graph, and thus connected
+by an edge, if and only if |x −x′| + |y −y′| ≤1. We use
+W to denote the width of a grid graph, which we also
+refer to as the number of columns. Similarly, we use H
+to denote the height of a grid graph, which we also refer
+to as the number of rows.
+In addition to the graph G, the atom reconfiguration
+problem requires defining the initial (source) and desired
+(target) configurations of atoms. The traps containing
+the atoms in the source and target configurations are
+identified as subsets of vertices S ⊆V (G) and T ⊆V (G),
+respectively. We assume that |S| ≥|T| since, otherwise,
+the problem does not admit a solution. Note that S and
+T need not be disjoint. Each vertex in S has a token on
+it. We aim to select a subset S⋆of S and move the tokens
+in S⋆along the edges of the graph so that all vertices in T
+eventually contain tokens, with the constraint that each
+vertex in the graph contains at most one token after every
+elementary displacement operation. The selection of S⋆
+and the selection of the edges along which the tokens are
+to be moved are done in a way that minimizes a mixed
+objective function (see Sec. II C).
+Here, a move of token τi (1 ≤i ≤|S⋆|) from vertex u
+to vertex v, which is equivalent to a sequence of elemen-
+tary displacement operations, is unobstructed whenever
+τi is on u and the selected path P (discussed formally in
+the next section) from u to v in G associated with τi is
+free of tokens (except for τi); otherwise, we say that the
+move is obstructed and call each token τj (j ̸= i) on P an
+obstructing token. If we attempt to move a token along
+a path that is not free of tokens, then we say that this
+move causes a collision. Because a collision induces the
+loss of the colliding atoms, moves that cause collisions
+are replaced by sequences of moves that do not cause
+collisions. Indeed, if the move of token τi from u to v
+along P is obstructed, then, assuming v is not occupied
+by a token, we can always replace the move of τi by a se-
+quence of unobstructed moves involving the obstructing
+tokens [21]. A solution to an atom reconfiguration prob-
+lem is thus a (partially-ordered) sequence of moves to be
+executed in order, such that each move is unobstructed
+at the time of its execution, and all vertices in T contain
+tokens after all moves are executed.
+C.
+Solving atom reconfiguration problems
+Two natural metrics to minimize while solving atom
+reconfiguration problems are the total number of ele-
+mentary displacement, which is equivalent to the total
+distance traversed by atoms, and the total number of
+displaced atoms. The latter provides a lower bound on
+twice the number of transfer operations, since each dis-
+placed atom must be extracted and implanted at least
+once.
+Intuitively, minimizing these metrics translates
+into a smaller probability of loss and, consequently, a
+higher probability of success. Computing solutions that
+minimize both metrics simultaneously cannot be done
+efficiently due to the intrinsic computational complex-
+ity of the problem [21].
+Moreover, computing a solu-
+tion that minimizes the number of displaced atoms is an
+NP-complete problem [23], and is therefore unlikely to
+admit efficient, i.e., polynomial-time, (exact) algorithms.
+This statement remains true even when instances are re-
+stricted to unweighted grid graphs [23].
+Fortunately, finding solutions that minimize the to-
+tal number of displacements is possible in polyno-
+mial time.
+Solving this problem requires first pair-
+ing/matching/assigning each vertex vt ∈T with a dis-
+tinct vertex vs ∈S, such that the sum of distances be-
+tween the vertices of each pair is minimized. In other
+words, each target vertex in T must be paired with a dis-
+tinct source vertex from S, with the goal of minimizing
+the sum of distances.
+There are several possible approaches for computing
+such a pairing of vertices; we now discuss those ap-
+proaches that are relevant to atom reconfiguration prob-
+lems on grids. Starting with a graph G and S, T ⊆V (G),
+we construct an edge-weighted bipartite graph H. This
+bipartite graph has a vertex set that is partitioned into
+two sets such that no edge connects two vertices within
+the same set. We denote this bipartition by (L = S, R =
+T). For every vertex vs ∈L and every vertex vt ∈R,
+we add the edge vsvt to E(H) and we let wH(vsvt) =
+dG(vs, vt), i.e., the weight of the edge in H is equal to
+the distance between vs and vt in G (with vs possibly
+equal to vt in which case the distance/weight is zero).
+Given a set of edges M ⊆E(H), we say M is a matching
+whenever no vertex of H belongs to more than one edge
+in M. We use V (M) to denote the vertices belonging to
+edges of M and we say that M saturates a vertex-subset
+Q whenever Q ⊆V (M). For edge-weighted graphs, we
+define w(M) = P
+e∈M w(e) and we say M is a minimum-
+weight (or distance-minimizing) matching (saturating Q)
+whenever there exists no matching M ′ in H (saturating
+Q) with w(M ′) < w(M). Clearly, we require a matching
+to saturate a specific vertex subset (in our case, T) and
+whenever we mention a minimum-weight matching we as-
+sume that T is saturated. It can be shown that comput-
+ing the required pairing between vertices in S and vertices
+in T is equivalent to finding a minimum-weight match-
+ing M in H that saturates T. Several polynomial-time
+algorithms are known for computing such a matching,

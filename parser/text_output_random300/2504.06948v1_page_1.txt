@@ -1,0 +1,55 @@
+An improved quantum algorithm for linear autonomous differential equations
+via Padé approximation
+Dekuan Dong,1, ∗Yingzhou Li,1, 2, † and Jungong Xue1, ‡
+1School of Mathematical Sciences, Fudan University
+2Shanghai Key Laboratory for Contemporary Applied Mathematics
+(Dated: April 10, 2025)
+We propose a novel quantum algorithm for solving linear autonomous ordinary differential equa-
+tions (ODEs) using the Padé approximation. For linear autonomous ODEs, the discretized solution
+can be represented by a product of matrix exponentials. The proposed algorithm approximates
+the matrix exponential by the diagonal Padé approximation, which is then encoded into a large,
+block-sparse linear system and solved via quantum linear system algorithms (QLSA). The detailed
+quantum circuit is given based on quantum oracle access to the matrix, the inhomogeneous term, and
+the initial state. The complexity of the proposed algorithm is analyzed. Compared to the method
+based on Taylor approximation, which approximates the matrix exponential using a k-th order Tay-
+lor series, the proposed algorithm improves the approximation order k from two perspectives: 1) the
+explicit complexity dependency on k is improved, and 2) a smaller k suffices for the same precision.
+Numerical experiments demonstrate the advantages of the proposed algorithm comparing to other
+related algorithms.
+I.
+INTRODUCTION
+Quantum computing, which fundamentally differs from classical computing, leverages quantum mechanics
+to perform computations using quantum states and quantum gates. For many problems, quantum computing
+offers a theoretical advantage over classical computing. In certain cases, quantum algorithms executed on
+quantum computers can achieve exponential speedup compared to their classical counterparts [15, 34, 37].
+Solving large-scale ordinary differential equations (ODEs) is one such problem where quantum algorithms
+show significant potential.
+Solving large-scale ODEs is a fundamental problem in science, with numerous real-world applications across
+various domains, including weather and climate prediction, chemical reaction modeling, fluid dynamics, and
+finance, such as option pricing models, etc. ODEs can generally be divided into two categories: linear ODEs
+and nonlinear ODEs. In each category, ODEs can further be divided into autonomous and non-autonomous
+ODEs. A general first-order linear ODEs admit,
+(
+dx
+dt = A(t)x(t) + b(t),
+t ∈[0, T],
+x(0) = x0,
+(1)
+where A(t) ∈Cn×n is a matrix or discretized operator, b(t) ∈Cn is the inhomogeneous term, x0 ∈Cn
+is the initial state, n is the dimension of the system, and T is a final time. When both A(t) and b(t) are
+time-independent, i.e., A(t) = A and b(t) = b, the ODE system (1) is referred to as a first-order autonomous
+ODE system. Given suitable quantum oracles to access A, b, and x0, the goal of this paper is to design an
+efficient quantum algorithm that produces a quantum state that is ϵ-close to the final state |x(T)⟩=
+x(T )
+∥x(T )∥2 .
+Many quantum algorithms for solving linear ODEs (1) have been proposed in the past decades. These
+algorithms can be grouped into three categories: a) discretized time steps with Quantum Linear System Al-
+gorithm (QLSA); b) time-ordered integral form with Linear Combination of Hamiltonian Simulation (LCHS);
+c) Schrödingerization with Hamiltonian simulation. The first category differs from the latter two categories
+in its use of Hamiltonian simulation. Methods in the first category rely on Hamiltonian simulation underlying
+∗dkdong21@m.fudan.edu.cn
+† yingzhouli@fudan.edu.cn; The research was supported in part by NSFC under grant 12271109, STCSM under grant 22TQ017
+and 24DP2600100, and SIMIS under grant SIMIS-ID-2024-(CN).
+‡ xuej@fudan.edu.cn; The research was supported in part by the National Science Foundation of China Grant 12171101 and
+the Laboratory of Mathematics for Nonlinear Science, Fudan University.
+arXiv:2504.06948v1  [quant-ph]  9 Apr 2025

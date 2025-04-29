@@ -1,0 +1,169 @@
+PAGIONO
+An ionospheric activity index
+Dr.Paul.Kinsler@physics.org
+6.00
+6.25
+6.50
+6.75
+7.00
+7.25
+7.50
+7.75
+doy + D/12
+0.025
+0.050
+0.075
+0.100
+WdT
+Equatorial (0)
+mid-North (1n)
+mid-South (1s)
+hi-North (2n)
+hi-South (2s)
+(a)
+6.00
+6.25
+6.50
+6.75
+7.00
+7.25
+7.50
+7.75
+doy + S/12
+0.025
+0.050
+0.075
+0.100
+WdT
+(b)
+FIG. 3. The globally-aggregated weighted widths WdT shown hour-
+by-hour for the two quiet days in 2022, i.e. 006, 007. In (a) we bin
+the dTEC events in two-hour slices “D” by UTC, but in (b) we show
+them by local/solar time two-hour slices “S”. Widths are indicated
+for each magnetic latitude zone individually, and smaller markers
+indicate widths based on poorer fits to the data.
+310
+312
+314
+316
+318
+doy + D/12
+0.1
+0.2
+WdT
+Equatorial (0)
+mid-North (1n)
+mid-South (1s)
+hi-North (2n)
+hi-South (2s)
+(a)
+310
+312
+314
+316
+318
+doy + S/12
+0.1
+0.2
+WdT
+(b)
+FIG. 4. The globally-aggregated weighted widths WdT shown hour-
+by-hour for a ten-day period in November 2022. In (a) we bin the
+dTEC events in two-hour slices by UTC, but in (b) we show them by
+local/solar time. Although these plots contain a great wealth of detail,
+here we only intend them to indicate general trends and behaviours.
+The take-home message here is simply the increased regularity and
+periodicity of the local time data slices, especially at low latitudes.
+Widths are indicated for each magnetic latitude zone individually and
+smaller symbols indicate poorer fits.
+LT version also moderates the effect of the uneven geographic
+sampling.
+Notably, we see here that the LT classification is likely to be
+invaluable when (e.g.) making predictions based on day/night
+cycles. However, the recasting into LT does obscure tempo-
+rally localised events (e.g. in 2022 doy 311 on Fig. 4, and
+2023 doys 113/114 on Fig. 5 ) are obscured.
+This use of local time aggregation is most useful when look-
+ing at a global picture, but it is also possible to break down that
+coverage into magnetic latitude and longitudes, as we do in the
+next section. However, it is also possible to disassemble the
+distribution widths themselves into their gaussian, exponen-
+tial, or power-law subcomponents. Such detailed breakdowns
+will be discussed elsewhere, but in the following we will con-
+centrate on latitude and longitude divisions, and in a log scale
+index based on the fitted widths that will aid end-user inter-
+pretation.
+110
+112
+114
+116
+118
+doy + D/12
+0.1
+0.2
+WdT
+Equatorial (0)
+mid-North (1n)
+mid-South (1s)
+hi-North (2n)
+hi-South (2s)
+(a)
+110
+112
+114
+116
+118
+doy + S/12
+0.1
+0.2
+WdT
+(b)
+FIG. 5. The globally-aggregated weighted widths shown hour-by-
+hour for an active ten-day period in April 2023. In (a) we bin the
+dTEC events in two-hour slices by UTC, but in (b) we show them
+by local time. Although these plots contain a great wealth of de-
+tail, the take-home message here is simply the increased regularity
+and periodicity of the local time data slices, Widths are indicated for
+each magnetic latitude zone individually, and smaller symbols indi-
+cate poorer fits. especially at low latitudes.
+VI.
+LOG-SCALE INDEX: LdT
+Although it is scientifically interesting to look at a very
+detailed breakdown of the dTEC statistics, what a forecaster
+or end-user will want to know is arguably restricted to two
+things: how bad is it (was it) in general, and what was it like
+at worst? The distinction is relevant since GNSS-effective ac-
+tivity tends to be localised, all-longitude averages typically
+contain large regions of low activity even on active days, thus
+meaning an average measure does not represent the actual
+strength of the disruption where it was strongest. Accordingly,
+although an average activity measure is nevertheless useful,
+we also would like to know the maximum, albeit being under
+the caution that relying on a single fitted width might some-
+times be misleading and that some longitudes have better cov-
+erage than others. Further, since we are now interested in tem-
+porally localised behaviour, here we show results based data
+arranged by UTC and not by local time, although this is not a
+requirement for computing an LdT measure.
+Although the combined width measures WdT or WdT∗are
+scientifically useful, being in units of dTEC/s, for more gen-
+eral usage it is likely that a logarithmic scale, could pro-
+vide a better summary for any wider audience. This is be-
+cause logarithmic scales can encompass a wider range of ac-
+tivity without a similarly wide range of values, where the
+wide range provides detail unnecessary and distracting for the
+non-specialist. Further, careful choice of scaling can reduce
+our new logarithmic“LdT” activity measure (defined below) to
+easily-quotable integer values, removing the need to quote ac-
+tivity using decimals, such as we would have to do if quoting
+WdT values.
+As noted above, choosing appropriate scalings will help
+make the LdT values more user-friendly. Here we pick a scale
+intended to have a minumum value of 0 – except, possibly,
+under extremely quiet conditions – and which increments by
+2 for each doubling in width. Note, however, that here any
+"user experienced effects" most directly related to our dTEC
+index will be positioning error and scintillation strength; but
+this index has not yet been formally calibrated against those.
+We saw previously that the G2E fitting process returns three
+9

@@ -1,0 +1,148 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+2
+we define the spin k propagator Qα
+ν (x, y) = Qα1,...,αk
+ν
+(x, y) in numerator form by
+(2)
+α1, . . . , αk
+Qα
+ν (x, y) =
+ν
+x
+y
+α1, . . . , αk
+ν
+(−1)k
+x
+y
+(yα1 −xα1) · · · (yαk −xαk)
+∥y −x∥2λν+k
+.
+=
+=
+We use the multi-index notation α = α1, . . . , αk with k = |α| throughout the article.
+Note that we adopt a convention where the orientation is given by end point minus initial point. This
+is customary in mathematics, while in QFT one more often uses initial point minus end point. Both
+conventions differ by a minus sign for odd k.
+We also define a differential form of the propagator Qν;α(x, y) = Qν;α1,...,αk(x, y) where the indices
+are subscripts,
+(3)
+ν; α
+Qν;α(x, y) =
+x
+y
+ν; α
+(−1)k
+x
+y
+ν −k
+2λ
+∂α1
+y · · · ∂αk
+y
+x
+y
+∂α1
+y · · · ∂αk
+y
+1
+∥y −x∥2λν−k .
+=
+=
+=
+The subscript ν ∈R refers to the scaling weight ∥x∥−2λν of Qα
+ν (x) and of Qν;α(x). We say that the
+weight of the edge from x to y is ν,
+(4)
+NQα
+ν = NQν;α = ν.
+A propagator may have indices which are repeated twice (but not more often). We use Einstein’s sum
+convention that double indices are summed over (from 1 to D) without explicitly writing the sum symbol.
+We also assume that α is only defined up to permutations, so that α becomes a multi-set with a maximum
+of two repetitions of each entry. Changing the orientation of a propagator line results in a minus sign for
+odd |α|.
+We work in Euclidean signature so that the metric tensor becomes a Kronecker delta,
+gαi,αj = δαi,αj.
+So, e.g., gα1,α1 = δα1,α1 = D for every single index α1. For conceptual reasons, we use the symbol g and
+not δ for the metric.
+The propagator Qν;α is connected to the momentum space propagator via a Fourier transformation
+(5)
+Z
+RD
+pα1 · · · pαk
+∥p∥2µ
+eix·p
+dDp
+2DπD/2 = ∂α1 · · · ∂αk
+ik
+Z
+RD
+eix·p
+∥p∥2µ
+dDp
+2DπD/2 = Γ(λ + 1 −µ)
+4µikΓ(µ)
+Q1+ 1+k/2−µ
+λ
+;α(0, x).
+A chain of two propagators with multi-indices α and β can hence be expressed as a single propagator,
+Z
+RD Qν;α(x, y) Qµ;β(y, z) dDy
+πD/2 =
+Γ
+
+1 + |α|
+2 + λ(1 −ν)
+
+Γ
+
+1 + |β|
+2 + λ(1 −µ)
+
+Γ
+
+λ(ν + µ −1) −1 −|α|+|β|
+2
+
+Γ
+
+2 + |α|+|β|
+2
++ λ(2 −ν −µ)
+
+Γ
+
+λν −|α|
+2
+
+Γ
+
+λµ −|β|
+2
+
+Qν+µ−1−1
+λ ;α,β(x, z),
+(6)
+whenever the right-hand side exists. Note that we used differential propagators to obtain a simple formula
+for the propagator chain.
+In the numerator form (2), double edges can be combined to a single edge
+(7)
+Qα
+ν (x, y) Qβ
+µ(x, y) = Qαβ
+ν+µ(x, y)
+for any multi-labels α and β. Moreover, repeated indices can be dropped in Qα
+ν (x, y),
+(8)
+Qα1,α1,α2,...,αk
+ν
+(x, y) = Qα2,...,αk
+ν
+(x, y).
+In differential form, the reduction of double indices is more subtle. By explicit differentiation we get for
+α = α1, α1, α2, . . . , αk,
+(9)
+Qν;α1,α1,α2,...,αk(x, y) = (|α| −2λν)(|α| −2λ(ν −1))Qν;α2,...,αk(x, y),
+if ν ̸= 1 + |α|
+2λ .

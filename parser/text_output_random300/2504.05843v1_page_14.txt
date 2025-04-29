@@ -1,0 +1,56 @@
+swapped over the ensuing sums we can iterate the process because the Euler integrand consists of the same
+elements as the original summand, so rational functions to some power and Γ functions [5]. The number of
+integrations depends on the sequence of the counters being summed over: with a bit of luck many of the steps
+yield low-dimensional integrals or even geometric sums. The final multiple Euler integrals can at times directly
+be evaluated in terms of multiple polylogarithms.
+It is possible to incorporate polygamma functions into the formalism — by way of example Γ[z] ψ[z] =
+∂α|α = 0 Γ[z + α] — and leaving that differentiation to the very end assuming that it commute over both,
+summations and integrations. Similarly, higher poles in the Mellin-Barnes representation may be dealt with
+introducing further parameters. The re-summation into Euler integrals is apparently not hindered by such
+regulator parameters as we call them in the main text, although their presence may significantly increase the
+number of integrations.
+In general, expanding the Euler integrands in these parameters and integrating afterwards is not a well-
+defined procedure, as our two examples show. Therefore one is faced with the problem of solving rather general
+Euler integrals, see eg. (13) already for the off-shell one-loop box. To this end we employ intersection theory
+for hypergeometric functions. This allows us to derive Pfaffian systems of first order differential equations on
+the Euler integrals. The latter are apparently always of canonical form [18] implying that one can solve them
+in terms of iterated integrals.
+From a two-parameter MB representation of the one-loop box [9] we found a two-parameter Euler rep-
+resentation. We studied the latter by bivariate intersection theory [8]. For the double box we were able to
+construct a two-parameter MB representation (50) as well, based on the Cheng-Wu trick [19] and heavy use of
+the barnesRoutines.m package [20] to integrate out superfluous MB parameters by Barnes’ lemmata. Several
+four-fold parametric derivatives of sums over residues now need to be determined. We first took these sums as
+they arise from picking residues and translated them into four-fold Euler integrals. Following the algorithm of
+[8] the associated four-layer intersection theory problem can indeed be solved and integrated, and we confirm
+the known answer for the double box [9]. On the one hand this is quite spectacular to see, on the other the
+computational effort is considerable. The most complicated step is the inversion of the matrix of level four
+intersection numbers, a dense 9 × 9 matrix containing five regulator parameters.
+Yet, we are not really interested in the full, undifferentiated sum of residues including the regulators, but
+rather in specific Taylor components. It is possible to shift the two parameters affecting the denominator Γ
+functions in (52), (57) without changing the Taylor components in question. This yields a bivariate intersection
+theory problem with one regulators less which can be solved effortlessly yielding the same result. In this exam-
+ple — just as intended in [8] — intersection theory very efficiently replaces the IBP technique in decomposing
+integrals in terms of a basis of masters, and the ensuing construction of Pfaffian differential equations.
+Prospectively, many steps of these computations can be automated, e.g.
+the construction of series of
+residues for multi-dimensional MB representations, cf. [21], and selecting the best suited of the associated
+Euler integrals. This paper thus possibly hints at a new approach to the evaluation of Feynman graphs. A
+pivotal input is a fairly low-dimensional MB representation, which is, of course, hard to obtain.
+A problem more inherent to intersection theory is the construction of bases. For n-parameter Euler integrals
+the basic idea is to choose monomials 1/(p1...pn) involving any n rational factors present in the Euler integrand.
+The monomials can have more a less constituents if some of their factors involve several integration variables;
+we may also add simple numerators in that case. As yet there is no definite prescription. Nevertheless, with
+a little hindsight one quickly finds a basis so that
+• only the lowest layers of the Taylor expansion around any pole are solicited,
+• the connections beyond the first level do not contain higher poles,
+• a rescaling of the masters by denominators depending on the kinematic invariants/outer variables makes
+the intersection numbers constant, i.e. their core part only depends on the regulator parameters. As
+a test, their determinants should cleanly fall apart into factors involving outer variables and others
+consisting of regulators.
+Rescaling all regulator parameters by a common scale ϵ (which plays the rˆole of a dimensional regulator) a
+good choice of basis implies that the equations will be canonical wrt. ϵ and can be solved in terms of iterated
+integrals3. In our two examples Goncharov polylogarithms [11, 12] are sufficient. The result is a Laurent series
+in terms of the regulators. Picking the desired components we match the expressions in [9, 10].
+3In preliminary studies we have occasionally seen weight drop on some masters, which is related to off-diagonal elements at ϵ0
+in the Pfaffian matrices.
+14

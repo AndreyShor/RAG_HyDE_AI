@@ -1,0 +1,46 @@
+Proof. We deﬁne an assignment for the w-variables such that P gets projected to the x- and
+z-variables and fulﬁlls the assumptions from Lemma 3.3. Then we can conclude that P is inde-
+composable.
+Let u0 ̸= 1 and v0 be such that du0,v0 ̸= 0. For r = 0, 1, 2 deﬁne
+bv(r) =
+
+
+
+
+
+1,
+for v = v0,
+r,
+for v = 1,
+0,
+otherwise.
+Deﬁne du(r) = du,v0 + rdu,1. Then we have
+T2(z, b(r)) =
+X
+u
+du(r) zu.
+We next show that there is an r ∈{0, 1, 2} such that T2(z, b) fulﬁlls the assumption in Lemma 3.3,
+i.e., du0(r) ̸= 0 and d1(r) ̸= 0:
+• For r = 0, we have du0(0) = du0,v0 ̸= 0 by assumption. If d1(0) = d1,v0 ̸= 0, then r = 0 works.
+• So suppose now that d1,v0 = 0. Then we consider r = 1. We have d1(1) = d1,1 ̸= 0 by
+assumption. If du0(1) = du0,v0 + du0,1 ̸= 0, then we may choose r = 1.
+• So suppose now that d1,v0 = 0 and du0(1) = 0. Then we consider r = 2. We still have
+d1(2) = 2d1,1 ̸= 0. And now also du0(2) = du0,v0 + 2du0,1 = du0,1 = −du0,v0 ̸= 0.
+For this r, deﬁne du = du(r) and b = b(r) and
+P ′(x, z) = P(x, z, b) .
+(8)
+Then P ′ is an indecomposable polynomial by Lemma 3.3.
+Assume that P is decomposable. That is, we can write P = gh for non-constant polynomials g, h
+on disjoint set of variables. By (8), we conclude that
+P ′(x, z) = g|w=b h|w=b.
+Since P ′ is indecomposable, it follows that one of the two factors is constant, say g|w=b. Hence, g
+depends only on w-variables, g ∈F[w]. Thus we can write
+P(x, z, w) = g(w) h(x, z, w) .
+(9)
+Deﬁne similarly as above for w an assignment b′ for z such that T2(b′, w) fulﬁlls the assumption
+in Lemma 3.3. Then
+P ′′(x, w) = P(x, b′, w)
+is an indecomposable polynomial by Lemma 3.3. But by (9) we have
+P ′′(x, w) = g(w) h(x, b′, w),
+a contradiction.
+11

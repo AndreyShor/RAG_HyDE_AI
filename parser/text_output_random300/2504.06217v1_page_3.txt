@@ -1,0 +1,161 @@
+3
+states ρ⊗M
+i=0,1. In this work we will mostly use the clas-
+sical Chernoff information between probability distribu-
+tions defined as the result of photon-counting measure-
+ments, motivated by the choice of comparing the quan-
+tum and classical performance in realistic remote sensing
+at optical frequencies, as discussed in the introduction.
+However, the formalism can be trivially extended to use
+ξQ rather than ξ.
+Alice’s target sensing task, in the general case, can be
+expressed as an m−hypoteses test.
+For a given probe
+state ρ0, Alice will measure the returning state ρA and
+define hypothesis H(A)
+j
+, with
+H(A)
+j
+: ρA
+?= ρj,
+j = 1, ..., m,
+(4)
+where ρj = Ej,κ,µB(ρ0) is one of the possible returning
+signals after the interaction with the target.
+The re-
+turning state depends on the hypothesis index j, on the
+reflectance κ of the target and on the total number of
+background photons µB.
+After probing the target with M copies (bandwidth),
+where Alice sends ρ⊗M
+0
+and receives ρ⊗M
+j
+, in the asymp-
+totic regime, M ≫1, the probability p(A)
+err that Alice
+guesses the wrong hypothesis decays exponentially as
+p(A)
+err ≃e−Mξ(A), where the multi-hypothesis decay rate
+ξ(A) (both quantum and classical) is found in terms of
+that of the closest hypotheses in the set [36, 37]:
+ξ(A) = min
+i,l
+h
+ξ(H(A)
+i
+, H(A)
+l
+)
+i
+.
+(5)
+On the other side, Eve faces a target detection task
+with no control on the states and the bandwidth, which
+are chosen by Alice. This binary problem is defined by
+the hypotheses:
+H(E)
+0
+: ρ
+?= ρB,
+H(E)
+1
+: ρ
+?= Ej,1−κ,µB(ρ0),
+(6)
+where ρ is the state being measured. In hypothesis H(E)
+0
+Eve receives a background state ρB, while in hypothe-
+sis H(E)
+1
+she receives the scattered input probe from Al-
+ice. Note that H(E)
+1
+is independent on the index j. Eve’
+best performance will be then characterized by the rate:
+ξ(E) := ξ(H(E)
+0
+, H(E)
+1
+).
+B.
+Chernoff Information Bottleneck
+Having defined the Chernoff information for the tasks
+performed by both parties, Alice and Eve, we can define
+the covert information, IC, as the quantity:
+IC(d, S) := max
+ξ(E)≤d ξ(A),
+(7)
+where the maximization is over the probe states ρ0 ∈S,
+under the constraint that Eve’s Chernoff information is
+limited by d. In other words, by formalizing the covert
+target detection problem as the maximization in Eq.(7),
+we implicitly define a bottleneck on the related Chernoff
+information of Alice and Eve. Different values of IC(d, S)
+are possible depending on the chosen set of probe states.
+The problem (7) defines a constrained optimization
+and its solution by KKT conditions [38] can by found
+from the saddle points of the Lagrangian LC:
+LC := ξ(A) −βξ(E),
+(8)
+with β ≥0.
+In the Lagrangian formulation, the op-
+timization is still with respect to the probe states in
+a given subset S, but the dependence on the con-
+straint d is lost.
+Nonetheless, from the stationary
+points of the Lagrangian one obtains the optimal β-
+dependent rates ξ(A/E)
+∗
+(β) and can plot the parametric
+curve (ξ(E)
+∗
+(β), ξ(A)(β)). Such curve is monotonically in-
+creasing as a higher ξ(E) allows a higher rate ξ(A). There-
+fore, there exists a single value of β, that we call βd, such
+that ξ(E)
+∗
+(βd) = d. The optimal rate achievable by Alice
+under the constraint (7) is then IC = ξ(A)
+∗
+(βd).
+Our choice of IC in Eq. (7) is motivated by the op-
+erational meaning of the Chernoff information as the
+exponential decay rate of the probability of error, in
+the asymptotic limit of M ≫1 of transmission repe-
+titions/modes, perr ∼exp(−ξM).
+Let us fix the total
+number of photons sent to the target during sensing to
+µT = µM, where µ is the mean number of photons of
+each transmission. Setting the parameter d in Eq.(7) to
+be d ≪1/M, imposes the condition ξ(E)M ≪1, mean-
+ing that exp(−ξ(E)M) approaches 1. In other words, we
+may insure covertness, namely p(E)
+err
+→1/2 where Eve
+is close to a random guess, in the asymptotic regime by
+imposing a condition dependent on the band (M). This
+argument outlines how the available band is an impor-
+tant resource in covert sensing tasks as well as the total
+number of photons.
+It is often complex to explicitly compute the covert
+information (7) for the most general class of probe states,
+namely when S is the full Hilbert space.
+Therefore, we may fix the class of probe states that Al-
+ice can send, e.g. squeezed states or coherent states, and
+compute the resulting Chernoff informations ξ(A) and
+ξ(E). We will mostly focus on two possible choices, the
+“classical” set SC of coherent states and the “quantum”
+set SQ of entangled signal and idler states. We will claim
+quantum advantage whenever IC(d, SQ) > IC(d, SC) for
+the same d, namely whenever ξ(A) is strictly larger with
+entangled inputs than with coherent states, despite not
+exceeding the constraint ξ(E) ≤d. However, such advan-
+tage is not necessarily useful. To quantify the usefulness,
+we also define the effective Chernoff information as
+∆ξ := ξ(A) −ξ(E).
+(9)
+We now claim that any ∆ξ > 0 is necessary for “effec-
+tive” covert sensing, as it means that Alice can recover
+information at a greater rate than Eve.

@@ -1,0 +1,142 @@
+One-bounce Indirect Illumination
+When Relighting
+Physically-based 
+Illumination
+𝐋dir
+𝒙
+𝒙′
+𝐋dir
+−𝜔i
+𝐋dir
+𝐋dir
+−𝜔i
+𝒙′
+V  𝐋ind
+𝐋ind
+s
+𝐋ind
+,
+Secondary 
+Gaussian
+Figure 5. Illustration of the physically-based illumination and our
+one-bounce relighting method when relighting.
+where Ldir is the direct illumination from the environment
+map, V is the visibility and Lind is our physically-based
+indirect illumination respectively.
+Physically-based Indirect illumination with raytracing.
+With the pre-trained Gaussian attributes in the initialization,
+we have the geometry and radiance field (although not re-
+lightable). Besides estimating visibility by ray tracing the
+same as Relightable 3DGS [6], we compute the indirect in-
+coming radiance Lind
+i
+by ray tracing in the learned radiance
+field.
+Specifically, we consider the Gaussians as ellipses,
+where the axis lengths are scaled by a factor of three. We
+then construct a bounding volume hierarchy (BVH) over el-
+lipses to accelerate ray tracing. For each Gaussian, we uni-
+formly sample K directions on its upper hemisphere. For
+each sampled direction, we emit a ray starting from the
+Gaussian center x with direction ωk
+i and query the Gaus-
+sians along the ray using the BVH. Then, we accumulate
+the transmittance T as Eqn. (3) and the radiance along each
+ray as Lind:
+V (x, ωi) =
+(
+0,
+T ≤ε,
+1,
+T > ε,
+(11)
+Lind
+i
+(x, ωi) =
+n
+X
+l=0
+clαlTl,
+(12)
+where visibility to the environment map V is determined by
+T and ε is a threshold, set as 0.8 in practice. Lind(x, ωi) is
+the indirect radiance accumulated from Gaussian radiance
+field, cl and αl is the radiance field color and transparency
+of Gaussian l. Next, the radiance of Gaussian vertex is com-
+puted by Eqn. (9).
+4.4. Relighting with SVG-IR
+The learned indirect illumination from previous works [6,
+11, 20, 24] is specifically designed for the lighting condi-
+tions present during training. As a result, it cannot be used
+for relighting under new lighting conditions. In this section,
+we will show how to utilize our trained model for relighting
+in novel light environments.
+The indirect incoming radiance in Eqn. (12) can not be
+used directly, as it’s learned under the training light. There-
+fore, we replace Lind
+i
+in Eqn. (12) with one-bounce indirect
+illumination for relighting, as shown in Fig. 5.
+For that, we query the Gaussian intersected with the ray
+at each direction, so called secondary Gaussian, and the in-
+coming radiance Lind
+i
+(x, ωi) at Gaussian vertex x is equiv-
+alent to the outgoing radiance Lo(x′, −ωi) of Gaussian k
+from −ωi:
+Lind
+i
+(x, ωi) = Lo(x′, −ωi)
+=
+K
+X
+i=0
+2πf ′(x′, a′, r′, ωk
+i , −ωi)Ldir(x′, ωk
+i )V (x′, ωk
+i ),
+(13)
+where f ′ represents the interpolated BRDF of vertices on
+Gaussian k. Finally, the radiance of Gaussian vertex is com-
+puted by Eqn. (10) and Eqn. (9). This allows us to obtain
+dynamic indirect illumination under the new light source.
+We show more implementation details in the supplementary
+material.
+5. Implementation details
+5.1. Radiance consistency loss
+We observe that the indirect incoming radiance, obtained
+through ray tracing in the radiance field, can serve as a su-
+pervision for the outgoing radiance of secondary Gaussians
+along the sampled K directions. This provides additional
+guidance from extra viewpoints. However, performing one-
+bounce ray tracing for all Gaussians along the K directions
+is costly. We only sample one direction near the specular
+reflection for each Gaussian j. The supervision is applied
+as follows:
+Lrc = |Lind
+i
+(xj, ωk
+i ), Lind′
+i
+(xj, ωk
+i )|,
+(14)
+where Lind′
+i
+is the outgoing radiance of the secondary Gaus-
+sian on direction ωk
+i . For more details, please refer to the
+supplementary material.
+5.2. Training details
+We train our model using Adam optimizer [18] by the uti-
+lizing the losses as
+L =λ1L1 + λssimLssim + λrcLrc
+λnLn + λs,aLs,a + λs,rLs,r + λreg,nLreg,n,
+(15)
+where L1 and Lssim is L1 loss and SSIM loss between ren-
+dered image and ground truth, Lrc is the radiance consis-
+tency loss in Sec. 5.1, Ln is one minus cosine similarity
+between normal and pseudo normal, Ls,a and Ls,r are TV-
+loss on albedo and roughness, Lreg,n is L2 regular term of
+normal offsets ∆N M. More details are in the supplemen-
+tary.

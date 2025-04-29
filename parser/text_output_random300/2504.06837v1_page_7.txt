@@ -1,0 +1,73 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+By the Fenchel equivalence, this implies that (2.3) holds a.e. on [0,T]. Plugging this into CE
+(2.2) shows that (2.1) holds. The opposite direction from (2.1) to L(ρ, j) = 0 with j from (2.1)
+is obvious.
+Of course, we will make these arguments rigorous for the reaction-diﬀusion systems under
+consideration.
+2.2
+Convergence of gradient systems
+Having introduced abstract gradient systems and brieﬂy discussed the energy-dissipation prin-
+ciple, we now want to discuss, on an abstract level, our strategy for obtaining the convergence
+of gradient ﬂows.
+To this end, consider a family of approximating gradient systems (XN, YN, GN, EN, R∗
+N)N∈N
+inducing CEN, DN, and LN as before. As a ﬁrst step, one proves that each (XN, YN, GN, EN, R∗
+N)
+satisﬁes a chain rule inequality and an energy-dissipation principle.
+Next, one shows that
+for each N ∈N and each initial datum ρ0
+N with EN(ρ0
+N) < ∞there exists a solution pair
+(˜ρN, ˜N) ∈CEN with ˜ρN(0) = ρ0
+N and LN(˜ρN, ˜N) = 0.
+Our aim is to connect the approximating gradient systems with a limit gradient system
+(X, Y, G, E, R∗) inducing CE, D, and L. For this, one has to show that (X, Y, G, E, R∗) also
+satisﬁes chain rule inequality and energy-dissipation principle.
+To establish the link, a candidate curve that might be a solution for the limit system
+needs to be obtained by applying a compactness argument to the family of prelimit solutions
+(˜ρN, ˜N)N∈N. However, the diﬀerent gradient systems are deﬁned over diﬀerent base spaces,
+hence a uniﬁed space is needed in which compactness can be realized. To this end, one constructs
+an embedding operator ιN : M+(Xdom
+N
+, Xtar
+N ) →M+(Xdom, Xtar) and a discretization operator
+ι∗
+N : C∞
+c (Xdom, Xtar) →C∞
+c (Xdom
+N
+, Xtar
+N ) such that for all ϕ ∈C∞
+c (Xdom, Xtar) it holds
+⟨ιNρN, ϕ⟩X = ⟨ρN, ι∗
+Nϕ⟩XN.
+For the ﬂuxes one constructs ιN,G : M+(Y dom
+N
+, Y tar
+N ) →M+(Y dom, Y tar) such that for all
+ϕ ∈C∞
+c (Xdom, Xtar) it holds
+⟨ιN,GjN, Gϕ⟩Y = ⟨jN, GNι∗
+Nϕ⟩YN.
+Since the continuity equation is understood in the sense of distributions, this implies that
+(ρN, jN) ∈CEN if and only if (ιNρN, ιN,GjN) ∈CE.
+Now it is possible to prove that for each family (ρN, jN)N∈N with (ρN, jN) ∈CEN and
+supN∈N supt∈[0,T] EN(ρN(t)) < ∞as well as supN∈N DN(ρN, jN) < ∞, there exists (ρ, j) ∈CE
+with E(ρ(0)) < ∞and D(ρ, j) < ∞such that (along a subsequence) (ιNρN, ιN,GjN) ⇀∗(ρ, j).
+In particular, such a limit (˜ρ, ˜) exists for the family (˜ρN, ˜N)N∈N.
+Next, one shows that for each family (ρN, jN)N∈N satisfying the a priori bounds as before
+and each limit (ρ, j) of the embedded family, we have the liminf estimates
+lim inf
+N→∞DN(ρN, jN) ≥D(ρ, j)
+and
+lim inf
+N→∞EN(ρN(t)) ≥E(ρ(t))
+∀t ∈[0, T].
+(2.4)
+Notice that this inequality relates the dissipation functionals of the non-embedded curves with
+the limiting dissipation functional of the limiting curve.
+In particular, (2.4) holds for the
+previously obtained family of solutions (˜ρN, ˜N)N∈N and each of its limits (˜ρ, ˜).
+7

@@ -1,0 +1,102 @@
+31
+Lemma S10 (Time evolution of peripheral oscillators in the frame of their source is a symmetry).
+If there is a source oscillator with natural frequency ωs and it has outgoing edges toward r > 1 disjoint subgraphs
+whose vertex sets are denoted by W1, ..., Wr, then the Koopman generators of the subgraphs in the rotating frame of
+the source,
+Sη = Kη −iωsLη
+0 ,
+η ∈{1, ..., r} ,
+(S95)
+are generators of Lie symmetries, where Kη = P
+j∈Wη
+P
+k∈V(Ajkzk −¯Ajk¯zkz2
+j )∂j with V = {s} ∪W1 ∪... ∪Wr and
+Lη
+0 = P
+j∈Wη zj∂j.
+Proof. The existence of a source connected to disjoint subsets implies that the Koopman generator splits as
+K = Ks +
+r
+X
+τ=1
+Kτ = iωszs∂s +
+r
+X
+τ=1
+X
+j∈Wτ
+X
+k∈V
+(Ajkzk −¯Ajk¯zkz2
+j )∂j .
+(S96)
+Lemma S8, stated in z-coordinates on the N-torus, implies that satisfying the commutation relations [K, Sη] = 0 for
+all η is a sufficient condition for the present lemma to hold. Now, as illustrated in Fig. S5, each subgraph W1, . . . , Wr
+has a certain fraction of vertices contained in R1, . . . , Rr that receive from the source. The generator of the source
+Ks only acts on the phase of these oscillators and it is convenient to split the generators related to the subgraphs as
+Kτ = KRτ + KWτ ,
+τ ∈{1, ..., r} ,
+where KRτ = P
+j∈Rτ (Ajszs −¯Ajs¯zsz2
+j )∂j and KWτ = P
+j,k∈Wτ (Ajkzk −¯Ajk¯zkz2
+j )∂j. Hence,
+[K, Sη] = [ iωszs∂s + Pr
+τ=1(KRτ + KWτ ) , KRη + KWη −iωsLη
+0 ] .
+Using bilinearity and keeping only the nontrivial commutators yields
+[K, Sη] = iωs[zs∂s, KRη] −iωs[KRη + KWη, Lη
+0] .
+But clearly, one also finds [KWη, Lη
+0] = 0 with the commutation relations of Lem. S9 (or the intuition that Lη
+0 is the
+dilatation symmetry generator for Wη and thus commutes with KWη) and [KRη, Lη
+0] = P
+k∈Rη[KRη, zk∂k]. Hence,
+[K, Sη] = iωs( P
+j∈Rη[zs∂s , (Ajszs −¯Ajs¯zsz2
+j )∂j] −P
+j,k∈Rη[(Ajszs −¯Ajs¯zsz2
+j )∂j, zk∂k] ) .
+On the one hand, the first term is
+X
+j∈Rη
+[zs∂s , (Ajszs −¯Ajs¯zsz2
+j )∂j] =
+X
+j∈Rη
+(Ajszs + ¯Ajs¯zsz2
+j )∂j .
+On the other hand, the commutation relation [ ℓm
+j , ℓn
+k ] = δjk(n −m) ℓm+n
+j
+of Lem. S9 implies that the second term is
+X
+j,k∈Rη
+[(Ajszs −¯Ajs¯zsz2
+j )∂j, zk∂k] =
+X
+j,k∈Rη
+(Ajszs[ℓ−1
+j , ℓ0
+k] −¯Ajs¯zs[ℓ1
+j, ℓ0
+k]) =
+X
+j∈Rη
+(Ajszs + ¯Ajs¯zsz2
+j )∂j .
+Consequently, [K, Sη] = 0 for all η ∈{1, ..., r}, so each Sη is indeed a Lie symmetry generator of the Kuramoto
+dynamics.
+Remark S28. For r = 1, the symmetry generator is S = K −iωsL0 and hence, S is linearly dependent on K and L0.
+This means that the symmetry generator does not enable the creation of a new constant of motion in the way we do
+in Thm. 3 of the main text.
+In the next theorem, we use the possible coexistence of the symmetry generators in the last lemma and the conserved
+cross-ratios (Thm. S12) to generate new functionally independent constants of motion.
+Theorem S29 (Thm. 3 of the paper). Consider that the Kuramoto model in Def. (S1) has a symmetry generator Sη
+as defined in Eq. (S95) related to the subgraph Wη and the source oscillator s.
+A. If four vertices a, b, c, d ∈V \ {s} have
+(A1) a unique incoming edge with weight As from s;
+(A2) identical natural frequencies ω;

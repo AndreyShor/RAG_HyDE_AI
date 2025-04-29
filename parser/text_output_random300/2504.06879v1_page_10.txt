@@ -1,0 +1,40 @@
+The initial set of model parameters is created at random from the interval bounds specified for each parameter,
+beginning with a random seed. This will create a family of curves, resulting in an increase in MAPE and convergence
+time to the best solution.
+After a thousand iterations and thorough observations of the trend of phase shifts and potential, we can decrease
+the sample space for the parameters so that computation time for parameter optimization is reduced while the error
+between expected and computed phase shifts is lowered.
+The advantage of the Genetic algorithm is that it scans across a large no of possible curves while tending to
+converge towards the final potential.
+The optimal model parameters for single channels are shown in the Table 1.
+During optimization, it was
+discovered that the values of parameter V2 approach zero or are in the order of 10−5. As a result, we have omitted
+the value of V2 from the table because it consistently tends to zero across all channels.
+The obtained inverse potential using these optimized parameters and corresponding phase shifts are plotted in
+Fig.(1, 2) for single ℓ−channels.
+For the P state, data is available from 6 MeV and consists of several disparate values, as shown in the Fig.1. The
+generated interaction potential represents the best feasible optimal solution. The quality of the fits is substantially
+energy dependent, therefore it tries to match the largest phase shift possible.
+In the case of 3P0, the data shows a discontinuous pattern at 6- 8 MeV . Beyond 8 MeV , the obtained SPS
+corresponds well to the expected data. Because phase shifts exhibit a declining trend with negative values, the
+potential curve can be seen to be repulsive.
+For the 3P1 state, the phase shift initially increases before gradually decreasing to negative values. This slight
+initial rise in phase shift results in a shallow potential well with a depth of approximately 4.5 MeV .
+Likewise, for the 3P2 state, a potential well with a depth of 7.21 MeV is observed. Additionally, the presence
+of a Coulomb barrier arises due to the repulsive interaction, which corresponds to the characteristic increasing and
+decreasing behavior of the phase shift.
+For the D-state, data has been obtained from Schmelzbach et al. for the energy range of 3 to 5.8 MeV and from
+Jenny et al. for 6 to 14 MeV . To accurately capture the resonances in 3D2 and 3D3, it is essential to consider the
+low-energy data from 3 to 6 MeV , as the resonances occur within this range. With the exception of the 6–8 MeV
+region, where there is a small disagreement due to discontinuity in the expected data, 3D2 phase shifts match the
+experimental data quite well. The phase shifts remain consistently positive, indicating an attractive interaction.
+The obtained inverse potential for 3D2 is purely attractive, with a depth of Vd = 57.54 MeV at a distance of
+rd = 1.1 fm.
+For 3D3, phase shifts decrease from 3 to 14 MeV , while data below 3 MeV is extrapolated using the Genetic
+Algorithm. As a result of this precise extrapolation of the measured phase shifts, the resonance obtained in 3D3
+matches the experimental ones. This demonstrates how efficient, adaptable, and stable the algorithm is. As a result,
+the generated inverse potential for 3D3 exhibits a depth of potential Vd of 69.83 MeV at a distance of 0.94 fm, as
+illustrated in Fig. 2.
+Multi channel scattering: For α −d scattering up to 14 MeV , coupling exist only for J = 1. The interaction
+between the two states within this channel is governed by the degree of coupling, represented by the mixing
+10

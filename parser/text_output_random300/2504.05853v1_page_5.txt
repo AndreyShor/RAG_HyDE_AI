@@ -1,0 +1,61 @@
+NOTES ON COLOR REDUCTIONS AND γ TRACES
+5
+= N
+= N 2 −1
+
+N −1
+N
+
+=
+2N
+=
+−1
+N
+=
+−N
+=
+N
+=
+Figure 5. Reductions of small cycles (also see Figure 3).
+2.3. The reduction algorithm. An efficient algorithm for color reduction first searches for the smallest
+cycle in the graph. If the number of vertices in this cycle (the girth of the graph) is ≤3 and the cycle is
+not an oriented triangle, then we use (10) for reduction.
+If the girth of the graph is ≥3 and all triangles are oriented, then we search for a non-oriented edge
+that connects two oriented chains and use (9). The graph loses two fundamental vertices. The number of
+independent cycles decreases by one or the graph disconnects. The color factors of disconnected graphs
+factorize.
+If none of the previous reductions is possible, then we search for the smallest non-oriented cycle (it
+still may have oriented edges). If the cycle has an oriented edge, then we use the first identity in Figure 3
+to reduce an adjoint vertex in the cycle. The number of adjoint vertices in the cycle decreases by one. In
+one term the cycle also shrinks by an edge. We go back to the elimination of non-oriented edges between
+oriented chains.
+If all smallest non-oriented cycles have only non-oriented edges, then we use (4) to convert one adjoint
+vertex in the cycle into a sum of two oriented triangles (also see Proposition 8). The number of vertices
+in the original cycle (and also hG) increases by one. But now the cycle has an oriented edge and can be
+reduced.
+The algorithm terminates if every graph in the reduction is a union of oriented chains and cycles,
+possibly with external non-oriented half-edges. For a connected vacuum graph with at least one vertex,
+every term in the reduction is a collection of oriented self-loops.
+The algorithm tries (whenever possible) to avoid producing a large number of terms by eliminating
+adjoint vertices with (4). It also quickly reduces hG so that one obtains a bootstrap algorithm. This is
+particularly powerful in the case of vacuum graphs (graphs with no external half-edges). For such graphs,
+the result is in Z[N, N −1] and can be cached for small hG. Also, for a given hG the number of vacuum
+graphs is much smaller than the number of graphs with external half-edges. This double effect (simple
+results and few graphs) allows one to cache all vacuum graphs with hG ≤11 which are not amenable to
+reductions in (10). This algorithm has been implemented in HyperlogProcedures [10].
+Example 4. Nontrivial vacuum graphs with four loops and their reductions are in Figure 6.
+The color reduction of any graph with external half-edges can be represented as a sum of vacuum
+graphs by completing the graph in various ways, see Example 5. This gives a linear system which can
+easily be solved for a small number of external half-edges. Using completion for many external half-edges
+has the drawback that hG increases and the method becomes less powerful. In this case, direct reduction
+is more efficient.
+Example 5. Consider the following examples for the reduction of a color graph G, see Figure 7.
+(1) If G has two non-oriented external half-edges, the reduction has the form RG(N)i,j = rG(N)δi,j,
+where ij is the non-oriented edge between the external half-edges. Closing the edge gives the graph
+G0 with reduction polynomial RG0(N). From δ2
+i,j = N 2 −1 we get
+(11)
+RG(N)i,j = RG0(N)
+N 2 −1 δi,j.
+(2) If G has two oriented external half-edges, the reduction has the form RG(N)a,b = rG(N)δa,b,
+where ab is the oriented edge between the external half-edges. Closing the edge gives the graph G0

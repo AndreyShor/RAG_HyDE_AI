@@ -1,0 +1,167 @@
+Physics-informed KAN PointNet
+Equilateral octagon, 𝛼= 𝛽= −0.5
+3
+2
+1
+0
+1
+2
+3
+ (rad)
+0.90
+0.92
+0.94
+0.96
+0.98
+1.00
+1.02
+Temperature (K)
+Polynomial degree = 2
+Polynomial degree = 3
+Polynomial degree = 4
+Polynomial degree = 5
+Ground Truth
+Equilateral octagon, polynomial degree = 2
+3
+2
+1
+0
+1
+2
+3
+ (rad)
+0.96
+0.97
+0.98
+0.99
+1.00
+1.01
+Temperature (K)
+=
+=
+0.5
+=
+= 0.5
+=
+= 1
+2
+=
+= 2
+= 2
+= 2
+Ground Truth
+Equilateral heptagon, 𝛼= 𝛽= −0.5
+3
+2
+1
+0
+1
+2
+3
+ (rad)
+0.86
+0.88
+0.90
+0.92
+0.94
+0.96
+0.98
+1.00
+Temperature (K)
+Polynomial degree = 2
+Polynomial degree = 3
+Polynomial degree = 4
+Polynomial degree = 5
+Ground Truth
+Equilateral heptagon, polynomial degree = 2
+3
+2
+1
+0
+1
+2
+3
+ (rad)
+0.92
+0.94
+0.96
+0.98
+1.00
+Temperature (K)
+=
+=
+0.5
+=
+= 0.5
+=
+= 1
+2
+=
+= 2
+= 2
+= 2
+Ground Truth
+Equilateral nonagon, 𝛼= 𝛽= −0.5
+3
+2
+1
+0
+1
+2
+3
+ (rad)
+0.92
+0.94
+0.96
+0.98
+1.00
+1.02
+Temperature (K)
+Polynomial degree = 2
+Polynomial degree = 3
+Polynomial degree = 4
+Polynomial degree = 5
+Ground Truth
+Equilateral nonagon, polynomial degree = 2
+3
+2
+1
+0
+1
+2
+3
+ (rad)
+0.985
+0.990
+0.995
+1.000
+1.005
+1.010
+Temperature (K)
+=
+=
+0.5
+=
+= 0.5
+=
+= 1
+2
+=
+= 2
+= 2
+= 2
+Ground Truth
+Figure 7: Temperature distributions predicted by the physics-informed KAN PointNet along the surface of the cylinder for
+the octagon with Ω = 31◦(first row), the heptagon with Ω = 6◦(second row), and the nonagon with Ω = 26◦(third row),
+shown for different Jacobi polynomial degrees (first column) and various values of 𝛼and 𝛽in the Jacobi polynomials (second
+column). Here, 𝑛𝑠= 0.5 is used. The angle 𝜃is defined with reference to the positive 𝑥-axis and increases counterclockwise
+(or decreases clockwise). See Table 1 and the text for the definition of Ω.
+for PI-KAN-PointNet. Additionally, we observe that the pressure variable exhibits local errors on both the inner and
+outer boundaries. This is because no pressure boundary condition is imposed in the loss function (see Eq. 30), as
+pressure is an implicit variable in the Navier-Stokes equations [123]. Beyond the mathematical and physical reasoning
+behind the relatively higher local errors at the boundaries, this observation can also be interpreted from a computer
+graphics perspective. Considering the original application of PointNet for three-dimensional point cloud segmentation
+[41], boundary points of an object are among the critical points, meaning that they contribute most significantly to
+the geometric features learned by the network through a max-pooling operation (see, e.g., Fig. 7 and Fig. 17 of Ref.
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 12 of 25

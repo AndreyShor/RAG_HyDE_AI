@@ -1,0 +1,136 @@
+5
+Exposure
+Frame Transfer
+Readout
+Deconvolution & Thresholding
+Solving & Batching
+Waveform lookups
+Waveform uploads
+Sequence configuration
+Streaming
+I
+II
+III
+IV
+V
+Figure 4.
+Runtime.
+A graphical representation of the
+typical runtime for executing each of the five modules in the
+preparation of a 32×32 atom configuration using red-rec. The
+primary timing bottleneck is image acquisition.
+Waveform
+uploads occur concurrently with waveform streaming.
+step (5), while another directs the previous failsafe step
+to the next control step (6). Streaming begins by updat-
+ing the idle step to point to the first control step, while
+additional segments are concurrently uploaded to fill the
+next control steps (7). Pointers are continuously updated
+after each segment upload (8-11). This process continues
+until all control segments have been uploaded, at which
+point the last control step is directed back to the idle
+step, restoring idle status at the end of the reconfigu-
+ration cycle.
+The minimum achievable latency is thus
+the time required to upload the first two segments, plus
+the sequence memory updates necessary to transition the
+AWG out of the idle state.
+III.
+RUNTIME PERFORMANCE
+To characterize the runtime performance of our sys-
+tem, we measure the computational runtime for each step
+of a typical reconfiguration cycle (Table I, Fig. 3). While
+unit tests are performed out of loop, measurement times
+are taken in-loop; we have confirmed that the in-loop
+results are consistent with the out-of-loop results. The
+measured values are compared against their theoretical
+estimates whenever possible.
+We specify a reconfiguration problem by the geometry
+and size of the static trap array, as well as the number
+of atoms in the desired center-compact configuration. A
+problem instance is defined by randomly sampling N T
+a
+atoms in a trap array of Nt = Ntx × Nty traps.
+We
+typically choose Ntx =
+p
+N T
+a and Nty = 2Ntx, as they
+achieve a baseline success probability of ¯p = 0.5 in the
+absence of loss when the loading efficiency is ϵ = 0.5.
+We perform our runtime benchmarking analysis us-
+ing synthetic images. When triggered by the AWG, the
+EMCCD camera acquires an image with its mechanical
+shutter closed.
+Since the image consists only of back-
+ground noise, the image processing module extracts a
+binary array of zeros.
+This array is then replaced by
+the expected occupation state, which was computed by
+pre-solving the atom reconfiguration problem in an out-
+of-loop step. Pre-solving the various problem instances
+in this way avoids the need to execute a random num-
+ber generator during runtime benchmarking, thereby pre-
+venting any disturbance to the processor. After solving a
+thousand randomly sampled problem instances, we com-
+pute the mean and standard deviation of the runtime
+distribution obtained for each step and module of the
+reconfiguration process.
+The runtime values are reported in Table I for three
+typical reconfiguration problems.
+Given that the aro
+algorithm is too slow for real-time operations [12] and
+that the runtime of bird is comparable to the one of red-
+rec [12], we focus on benchmarking runtime performance
+for red-rec.
+The first problem is preparing a center-
+compact chain of atoms.
+The two other problems are
+preparing a center-compact configuration of atoms in a
+rectangular grid of atoms using an improved version of
+the red-rec algorithm [9, 12]. We now analyze these re-
+sults for each step of the reconfiguration cycle.
+A.
+Module 1 – Image acquisition
+The image acquisition module involves four key steps.
+First, the sensor is exposed for a predefined exposure
+time following an external trigger. Second, the primary
+photoelectrons are vertically transferred from the expo-
+sure region to the storage region. Third, the accumulated
+charges in each pixel are sequentially amplified and dig-
+itized. Fourth, the digitized counts are transferred from
+the camera to the processor via the FGC.
+The exposure time is set by the user to unambigu-
+ously distinguish between the presence and absence of
+an atom in a single-shot image.
+This setting balances
+the number of photons collected from individual atoms
+against background noise. The photon count from atoms
+is influenced by the scattering rate of the atoms, the
+collection efficiency of the optical imaging system, and
+the detection efficiency of the camera [15] . The scatter-
+ing rate, in turn, is proportional to the intensity of the
+near-resonant excitation light, which, in lossless imaging
+scenarios, must be carefully managed to avoid ejecting
+atoms from their traps due to heating. Background pho-
+ton contributions stem from cosmic rays, charge-induced
+counts, which are affected by charge-shifting speed, as
+well as stray light sources and unfiltered cooling, trap-
+ping, and imaging light.
+The discrimination threshold
+also depends on the gain and readout noise of the analog-
+to-digital converter. Here, we set the exposure time to a
+typical lossless imaging value of 20 ms.
+The vertical transfer and readout times of the camera
+frame depend on the characteristics of the camera sen-
+sor [7, 16, 17].
+Our EMCCD has a CCD201-20 frame
+transfer, electron multiplying CCD sensor with an ac-
+tive exposure area of 1024 × 1024 px and a pixel size
+of 13 × 13 µm.
+The total sensor has dimensions of
+1056 × 2069 pixels in the horizontal and vertical direc-
+tions, respectively.
+In the vertical direction, the 2069
+pixels are partitioned from top to bottom into 5 dark ref-
+erence rows, 1 transition row, an image section of 1024

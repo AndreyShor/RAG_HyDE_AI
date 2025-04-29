@@ -1,0 +1,97 @@
+Basic distillation with realistic noise
+Vikesh Siddhu,1 Erick Winston,1 David C. McKay,1, ∗and Ali Javadi-Abhari1, †
+1IBM Quantum, IBM T.J. Watson Research Center, Yorktown Heights, NY 10598, USA
+Entanglement distillation is a key component of modular quantum computing and long-range
+quantum communications. However, this powerful tool to reduce noise in entangled states is difficult
+to realize in practice for two main reasons. First, operations used to carry out distillation inject
+noise they seek to remove. Second, the extent to which distillation can work under realistic device
+noise is less well-studied. In this work, we both simulate distillation using a variety of device noise
+models and perform distillation experiments on fixed-frequency IBM devices. We find reasonable
+agreement between experimental data and simulation done using Pauli and non-Pauli noise models.
+In our data we find broad improvement when the metric of success for distillation is to improve
+average Bell fidelity under effective global depolarizing noise, or remove coherent errors, or improve
+the Bell fidelity of mildly degraded Bell pairs. We pave the way to obtain broad improvement from
+distillation under a stricter, but practically relevant, metric: distill non-local Bell pairs with higher
+fidelity than possible to obtain with other available methods.
+Our results also help understand
+metrics and requirements for quantum devices to use entanglement distillation as a primitive for
+modular computing.
+I.
+INTRODUCTION
+Entanglement is an important non-classical resource
+used in quantum computation and communication. How-
+ever, this resource depletes due to noise that inevitably
+affects physical systems. This noise may be removed us-
+ing entanglement distillation (also called purification) [1,
+2]. At a high level, entanglement distillation entangles
+many copies of lower fidelity Bell states such that we can
+post-select on a subspace to obtain higher fidelity Bell
+pairs. Therefore, this basic technique generally requires
+a high throughput of Bell pairs and its simplest variants
+are non-deterministic.
+However, via enough rounds of
+distillation and consumption of Bell pairs, one can hope
+to achieve high fidelities [3] (see also recent work [4]). In
+the context of quantum error correction (QEC) [5, 6] and
+quantum compilation [7], high fidelity Bell pairs can en-
+able measurement and (gate) teleportation. When pass-
+ing states through certain channels, distillation can even
+outperform QEC for communication [2].
+There is a vast body of work dedicated to entangle-
+ment distillation [8–23]. From a theoretical perspective,
+understanding the best rates for distilling entanglement
+and methods for achieving these rates in practice is an
+important area of study. In practice, entanglement distil-
+lation plays a central role in both long-distance quantum
+communication [3, 24, 25] and scaling quantum compu-
+tation, for instance using modular architectures [26, 27].
+A variety of studies aim at optimizing protocols in these
+settings [28–31].
+Due to its importance, a variety of prior experiments
+on various physical platforms including optical [32–39],
+trapped ion [40], solid state [41] , and superconducting
+[42] qubits have reported entanglement distillation. Such
+∗dcmckay@us.ibm.com
+† ali.javadi@ibm.com
+proof-of-concept studies have opened the way for using
+entanglement distillation not only in quantum networks
+but also modular architectures for quantum computing.
+However, a variety of challenges exist in understanding
+the role distillation can play in practice, both in-terms of
+finding appropriate distillation protocols that can be im-
+plemented, and the efficacy of using distillation protocols
+over other strategies for distributing Bell pairs given the
+noise in the hardware components implementing these
+protocols.
+Carrying out distillation on devices can be non-trivial
+and analyzing it requires care for noise sources different
+from those considered in a large part of entanglement
+distillation literature. For instance, a number of theoret-
+ical studies assume that the entangled states experience
+independent identically distributed (iid) noise (typically
+Pauli noise). Furthermore, many assume noiseless gates,
+measurements, and ancilla. In practice, entangled states
+experience non-iid noise. For instance, the natural way
+to create two non-local Bell pairs may add noise differ-
+ently to each pair [43].
+This noise need not be Pauli
+noise [44], for instance most qubits have a non-negligible
+T1 time, which is a non-Pauli error. The gates used to
+carry out entanglement distillation also add noise. Mea-
+surements done during or after distillation are also noisy
+and, typically, of long duration. These measurement er-
+rors not only affect the distillation protocol, but also the
+protocols used to certify how well distillation works. Fi-
+nally, error-free ancillas, used in certain nested schemes
+for distillation, need not be available either.
+In this work, we numerically and experimentally ex-
+plore entanglement distillation on IBM’s superconduct-
+ing qubits. In our numerical exploration we include noise
+on both the Bell pairs being distilled and the compo-
+nents (two-qubit gates and measurements) carrying out
+this distillation. For local Pauli noise we report gate and
+measurement noise parameters for three different distil-
+lation protocols to improve the Bell fidelity of noisy Bell
+pairs (with possibly unequal initial Bell fidelity).
+For
+arXiv:2504.06175v1  [quant-ph]  8 Apr 2025

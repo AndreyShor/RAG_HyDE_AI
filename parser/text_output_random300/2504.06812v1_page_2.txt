@@ -1,0 +1,143 @@
+2
+Eq. (2) vanishes, i.e., if FC(̺θ)=FQ(̺θ), then G(̺θ)=0.
+This suggests that the CFIM can coincide with the QFIM
+only if the underlying Riemannian structure of the quan-
+tum state space is locally ﬂat (namely, with zero mean
+Uhlmann curvature).
+In other words, the information
+about the parameters hidden in the symplectic structure
+(described by the imaginary part of the QGT) remains in-
+accessible through the probabilities of measurement out-
+comes. This highlights the challenge in providing a geo-
+metric tensor that encompasses nontrivial real and imagi-
+nary parts for general POVM operators and fully recovers
+the QGT within appropriate limiting scenarios.
+In this manuscript, we address this puzzling discrep-
+ancy by introducing the positive-semideﬁnite Hermitian
+matrix C(̺θ) ≡C(̺θ, {Eω}) with elements
+[C(̺θ)]ij =
+X
+ω
+[χω,i(θ)]∗χω,j(θ)
+pω(θ)
+,
+(5)
+where χω,i(θ) ≡tr(̺θEωLi) and [χω,i(θ)]∗= tr(̺θLiEω)
+is the conjugation of χω,i(θ).
+Here, C(̺θ) is de-
+ﬁned for general states ̺θ and explicitly depends on
+the POVM {Eω}.
+Due to the relation Re[χω,i(θ)] =
+[∂ipω(θ)], Eq. (5) provides a generalization of Eq. (3) that
+includes nontrivial imaginary parts. In the main text, we
+focus on regular POVM operators such that pω(θ) > 0
+for the sake of simplicity, while null POVM operators
+such that pω(θ) = 0 are discussed in Appendix A, where
+our main results are also recovered.
+For pure states, Eq. (5) has a structure analogue to
+Eq. (1) (shown in Appendix B):
+[C(|ψθ⟩)]ij = 4 ⟨∂iψθ|[M(|ψθ⟩) −|ψθ⟩⟨ψθ|]|∂jψθ⟩,
+(6)
+where M(|ψθ⟩) ≡M(|ψθ⟩, {Eω}):
+M(|ψθ⟩) =
+X
+ω
+1
+pω(θ)Eω |ψθ⟩⟨ψθ| Eω.
+(7)
+Furthermore, Eq. (6) shares with the QGT the prop-
+erty of gauge invariance: C(|ψ′
+θ⟩) = C(|ψθ⟩) for |ψ′
+θ⟩=
+eiαθ |ψθ⟩, where αθ is a global phase depending on θ
+(shown in Appendix C). The structural analogy with
+Eq. (1) and the gauge invariance property suggest re-
+ferring to Eq. (5) as a semi-classical geometric tensor
+(SCGT), namely a counterpart of the QGT depending
+on the speciﬁc POVM.
+In the following, we show that Eq. (5) enables deriving
+nontrivial bounds in multiparameter quantum informa-
+tion theory. First, the SCGT provides a lower bound to
+the QGT for general mixed states [Observation 1], which
+is always saturable for pure states. Next, the SCGT leads
+to a lower bound to the QFIM [Observation 2]. Also, the
+SCGT oﬀers the characterization of closeness between the
+QFIM and CFIM [Observation 3] as well as measurement
+incompatibility. Finally, the SCGT yields a counterpart
+of the Berry phase that involves POVM operators.
+Lower bound to the QGT.— Let us present and prove
+one of the main results of this manuscript:
+Observation 1. For a general state ̺θ, consider Q(̺θ)
+in Eq. (2) and C(̺θ) in Eq. (5). It holds that
+C(̺θ) ≤Q(̺θ).
+(8)
+The above inequality between Hermitian matrices means
+z†C(̺θ)z ≤z†Q(̺θ)z for any complex vector z.
+Proof. For any z ∈Cm, we write
+z†C(̺θ)z =
+X
+ω
+1
+pω(θ)|tr(̺θEω ˜L)|2,
+(9)
+where ˜L =
+P
+i ziLi.
+Letting X
+= √Eω√̺θ and
+Y
+=
+√Eω ˜L√̺θ and applying the Cauchy-Schwarz
+inequality |tr(X†Y )|2 ≤tr(XX†)tr(Y Y †) yields that
+|tr(̺θEω ˜L)|2 ≤pω(θ)tr(Eω ˜L̺θ ˜L†). Inserting this into
+Eq. (9) and using P
+ω Eω =
+1, we obtain Eq. (8). Since
+|tr(̺θEω ˜L)|2 ≥0, we directly obtain that C(̺θ) ≥0.
+Let us discuss the saturation of the inequality (8). For
+pure states, C(|ψθ⟩) = Q(|ψθ⟩) holds for every rank-
+one POVM {Eω = |πω⟩⟨πω|}, where Eω is not neces-
+sarily projective (namely, EωEω′ = δω,ω′Eω does not
+necessarily hold).
+This can be seen by noticing that
+Eω |ψθ⟩⟨ψθ| Eω = pω(θ)Eω for Eω = |πω⟩⟨πω| and thus
+M(|ψθ⟩) in Eq. (7) becomes the identity matrix for any
+|ψθ⟩. The consequence of this saturation will be elabo-
+rated in the next section.
+For general mixed states and regular POVM operators,
+C(̺θ) = Q(̺θ) holds if and only if there exists a rank-one
+POVM {Eω = |πω⟩⟨πω|} such that
+⟨πω| ⊗⟨πω| (Li ⊗
+1 −
+1 ⊗Li) |ψx,θ⟩⊗|ψy,θ⟩= 0, (10)
+holds for all i, ω, x, y, where |ψx,θ⟩is the eigenstate of
+̺θ. It is straightforward to see that Eq. (10) is veriﬁed
+for pure states since |ψx,θ⟩= |ψy,θ⟩= |ψθ⟩. The proof
+of Eq. (10) is shown in Appendices D and E. The satu-
+ration condition in the null-POVM case is discussed in
+Appendix F.
+Tighter lower bound to the QFIM.— Let us decompose
+the SCGT into real and imaginary parts: Re[C(̺θ)] ≡
+FC(̺θ) + I(̺θ) and Im[C(̺θ)] ≡D(̺θ), where I(̺θ) ≡
+I(̺θ, {Eω}) and D(̺θ) ≡D(̺θ, {Eω}) have elements
+[I(̺θ)]ij =
+X
+ω
+Im[χω,i(θ)]Im[χω,j(θ)]
+pω(θ)
+,
+(11a)
+[D(̺θ)]ij =
+X
+ω
+ξω,ij(θ) −ξω,ji(θ)
+pω(θ)
+,
+(11b)
+ξω,ij(θ) ≡Re[χω,i(θ)]Im[χω,j(θ)].
+(11c)
+In general, I(̺θ) and D(̺θ) are nonzero matrices, while
+D(̺θ) = 0 holds in the single-parameter case (m = 1).
+For more expressions for pure states and unitary trans-
+formations, see Appendix G.
+We can present our second main result:

@@ -1,0 +1,89 @@
+Since ηY
+l is localized to the right of ηX
+k , it commutes with the adjoint of ⟨ηX
+k |f(ξX
+i )⟩and therefore
+⟨ηY
+l | ⟨ηX
+k |f(ξX
+i )⟩˜g(ηY
+s )⟩= ⟨ηX
+k |f(ξX
+i )⟩⟨ηY
+l |˜g(ηY
+s )⟩.
+After summing over k we have that
+β ◦Ω(f ⊗g)(ηX
+t ⊗ηY
+s ) =
+X
+i,j
+X
+l
+ηY
+l ⊗f(ξX
+i ) ⟨ηY
+l |g(ξY
+j )⟩⟨ξY
+j |ηY
+s ⟩⟨ξX
+i |ηX
+t ⟩.
+Finally, since ˜g(ηY
+s ) is positively localized, then
+β ◦Ω(f ⊗g)(ηX
+t ⊗ηY
+s ) =
+X
+i
+X
+l
+ηY
+l ⟨ηY
+l |˜g(ηY
+s )⟩⊗f(ξX
+i ) ⟨ξX
+i |ηX
+t ⟩= ˜g(ηY
+s ) ⊗˜f(ηX
+t ),
+which proves the assertion.
+□
+5. Comparison with the Drinfeld center
+5.1. Fully faithful embedding into the center. Our next goal is to show that the category
+of DHR bimodules over a net satisfying Conditions 5.6 and charge-transporter generation 4.10
+can be realized as the Drinfeld center of an appropriate C∗-tensor category. The ansatz again
+comes from the correspondence between the regular half braiding Zreg and the basic construction
+B1. Recall that when C is a fusion category, Zreg is an algebra in Z(C) such that the category
+of Zreg-modules in Z(C) is equivalent to C. The forgetful functor Z(C) →C corresponds to the
+free module functor Z 7→Zreg ⊗Z.
+Lemma 5.1. Given X, Y ∈DHR(A•), the restriction
+cY−: X−⊠A−Y−→Y−⊠A−X−
+of the DHR braiding β is natural in Y for A−-bimodule maps and natural in X for A-bimodule
+homomorphisms.
+Proof. Let T : Y−→Y ′
+−be a homomorphism of A−-bimodules. Let F1 < F2 be regions in
+(−∞, −1], and pick bases (ξi)i ⊂X, (ηj)j ⊂Y localized in F1 and F2, respectively. Then,
+by Proposition 4.6, when (η′
+k)k ⊂Y ′ is a basis localized in F2, the coeﬃcients ⟨η′
+k|T(ηj)⟩
+belong to A[−b,−1] for some b. By arranging F1 to be disjoint from [−b, −1], we can follow the
+same argument as the naturality of braiding for A-bimodule homomorphisms [Jon24, Theorem
+3.13].
+□
+Remark 5.2. If we try to apply A−-bimodule homomorphisms to X, the above argument breaks
+down in the following way: T(ξi) would be supported in [−a, −1] that contains F2, and the
+argument of [Jon24, Theorem 3.13] does not carry over.
+To simplify the notation, we will write C for C−from now on.
+Proposition 5.3. The functor F−induces a braided monoidal functor
+˜F : DHR(A•) →Z(C),
+X 7→(X−, c).
+Proof. For X ∈DHR(A•), we assign as a half braiding the restriction cY−: X−⊠A−Y−→
+Y−⊠A−X−of the braiding on DHR(A•). By Lemma 5.1 this is a well-deﬁned assignment. The
+monoidal structure of F−induces a monoidal structure on ˜F. Finally, to see that ˜F is braided
+notice that the braiding in Z(C) is deﬁned via the half braiding (3.1). But, by construction,
+the half braiding of an object X−in Z(C) comes from the braiding in DHR(A•).
+□
+Proposition 5.4. Suppose that A• satisﬁes charge-transporter generation 4.10. Then the func-
+tor ˜F is fully faithful.
+15

@@ -1,0 +1,71 @@
+32
+FIG. S5. Illustration of a graph with symmetry generators S1, ..., Sr from Lem. S10.
+(A3) and one, two or three of them belong to Wη,
+then both the cross-ratio cabcd and Sη[cabcd] are conserved and functionally independent.
+B. If three vertices u, v, w ∈V \ {s} have
+(B1) a unique incoming edge with weight As from s;
+(B2) identical natural frequencies ω = ωs −2 Im(As);
+(B3) and one or two of them belong to Wη
+then both the cross-ratio csuvw and Sη[csuvw] are conserved and functionally independent.
+Proof. A. Condition (A1) implies that the four vertices are mutually disconnected (Ajk = 0 for all j, k ∈{a, b, c, d}
+with j ̸= k) as they can only have an incoming edge from the source. Therefore, condition (1) from Thm. S12 is
+satisfied. Condition (A1) also highlights that the weights of these incoming edges are all equal to As, meaning that
+condition 2 of Thm. S12 holds. Then, condition 3 of Thm. S12 is also fulfilled from condition (A2) and the fact that
+Ajk = 0 for all j, k ∈{a, b, c, d} with j ̸= k. Altogether, Thm. S12 guarantees that K[cabcd] = 0, that is, cabcd is a
+constant of motion. Lemma S10 shows that Sη = Kη −iωsLη
+0 is a symmetry generator and condition (A3) ensures
+that Sη[cabcd] is not zero. Therefore, KSη[cabcd] = SηK[cabcd] = 0, i.e., Sη[cabcd] is a new nontrivial constant of motion.
+Since Kη depends on the source’s state zs, Sη and Sη[cabcd] also do. Therefore, Sη[cabcd] is functionally dependent of
+cabcd, which only depends on za, zb, zc, zd.
+B. Conditions (B1) and (B2) imply that all the conditions of Thm. S12 are fulfilled and hence, csuvw is conserved.
+Then, condition (B3) guarantees that Sη[csuvw] is not zero and similarly to the part A of the proof, Sη[csuvw] is
+conserved. If there are vertices other than u, v or w belonging to Wη, then Sη[csuvw] is functionally independent of
+csuvw. If only one or two vertices among u, v or w are in Wη, the symmetry generator Sη can take the 6 different
+forms
+(
+Sx
+η = (i(ωx −ωs)zx + Axszs −¯Axs¯zsz2
+x)∂x
+x ∈Wη ∧x ∈{u, v, w}
+Sxy
+η
+= (i(ωx −ωs)zx + Axszs −¯Axs¯zsz2
+x)∂x + (i(ωy −ωs)zy + Ayszs −¯Ays¯zsz2
+y)∂y
+x, y ∈Wη ∧x, y ∈{u, v, w} ,
+where Sxy
+η
+= Syx
+η
+and x ̸= y. The constants of motion csuvw and Sη[csuvw] are functionally independent if the rank
+of the Jacobian matrix
+J =
+ 
+∂csuvw
+∂zs
+∂csuvw
+∂zu
+∂csuvw
+∂zv
+∂csuvw
+∂zw
+∂Sη[csuvw]
+∂zs
+∂Sη[csuvw]
+∂zu
+∂Sη[csuvw]
+∂zv
+∂Sη[csuvw]
+∂zw
+!
+is 2, where Sη is either Su
+η , Sv
+η, Sw
+η , Suv
+η , Suw
+η , or Svw
+η . For the six Jacobian matrices, lengthy but straightforward
+calculations enable showing that their rank is 2 (see proof thm3 partB.wls on GitHub for symbolic calculations).
+Remark S30. A priori, one could hope to generate new constants of motion from the class of symmetry generators in
+Lem. S10 and monomial eigenfunctions. However, if there is a subgraph with vertex set M supporting a monomial
+eigenfunction, it must be a source and there is no way to make Sη act on only a subset of M. More precisely, M can

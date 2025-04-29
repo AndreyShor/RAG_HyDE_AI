@@ -1,0 +1,177 @@
+PAGIONO
+An ionospheric activity index
+Dr.Paul.Kinsler@physics.org
+does not greatly affect our analysis. However, the resulting
+motion does impinge on the size of ionosperic features we
+might resolve, and on how we might detect their temporal
+behaviour or motion. Notably, since the TEC estimates are
+not strictly comparable because they result from different sig-
+nal paths, by comparing them we are neither probing solely
+temporal properties nor solely spatial properties of any iono-
+spheric disturbances, but a combination of both.
+9.
+dTEC digests
+Before creating our digests (histogram summaries) we filter
+and rescale the raw dTEC values in a variety of ways.
+First, we usually filter the dTEC events so as to avoid
+horizon and/or multipath complications due to signal receives
+made at low angles. However, rather than use an angle-based
+ad hoc rule such as “ignore all receives less than 20 degrees
+above the horizontal” we looked at the dTEC values as a func-
+tion of angle and made a cut at the point where error rates
+(cycle slips, drop outs, etc) rose above about third; but whose
+exact value was chosen so the the cut-off conveniently lies at
+an intersection cosine with the ionosphere of exactly 0.4. As
+it happens, our chosen cutoff is similar to the 20 degree one,
+although we had not set that as a criteria.
+Second, as discussed in Sec. IV G 1, we corrected the dTEC
+values for the geometry of their LOS path through the iono-
+sphere according to our data-driven proceedure.
+Third, and as discussed in Sec.
+IV G 2, we normalised
+dTEC values based on band pair, according to the different
+properties (widths) seen for their respective dTEC distribu-
+tions for our selected quiet days (2022/006 and 007). A full
+table of scalings is given in III, comparing the path-angle cor-
+rected scalings against those computed without such correc-
+tions.
+Appendix: B: Distributions and fits
+Particularly at low dTEC event counts, the dTEC his-
+tograms can show a wide variety of feature, not all of which
+are captured by our standard G2E fitting function. However,
+as the sample counts increased, the histograms do tend to
+match the G3E form ever more closely, although unexpected
+features are still possible. Here we show a range of dTEC his-
+tograms for increasing event counts achieved by choosing data
+slices with increasing data aggregation. These automatically
+generated diagnostics, shown here as Figs. 11, 12, 13, are
+shown here to indicate the general nature of the distributions
+fitted, and not because they contain specific and interesting
+results.
+In particular, Fig. 11 shows results for slices populated with
+only hundreds of dTEC events/values, and these only hint at
+the variety of time, space, and band-dependent distributions
+that exist within the whole dataset. Note that although they are
+indeed noisy and erratically sampled, the distributions never-
+theless can have their own distinct characters according to the
+contingencies involved in generating the dTEC values that go
+into their shape. As we move to higher event counts, as indi-
+cated e.g. on Fig. 12, we see the variety averaged out, albeit
+still with the G2E fitting model still performing sucessfully
+even into the poorly sampled wings of the distributions.
+Band Pair
+Norm, C1.65
+Norm, C0
+L1CL2C
+0.9733
+0.9916
+L1CL6C
+0.9562
+1.1750
+L1DL5D
+1.0368
+1.0208
+L1DL7D
+0.9448
+1.1287
+L1LL2L
+0.9446
+1.0681
+L1PL2P
+0.9791
+1.0218
+L1PL5P
+1.0286
+1.2900
+L1WL2W
+0.9258
+1.3930
+L1XL2X
+0.9458
+0.9486
+L1XL5X
+0.9804
+1.1574
+L1XL6X
+0.9724
+1.1125
+L1XL7X
+0.9751
+1.1882
+L1XL8X
+0.9823
+1.2262
+L2IL6I
+1.0481
+1.1051
+L2IL7I
+1.1010
+1.2655
+L2XL5X
+0.9656
+0.7951
+L2XL6X
+1.0637
+1.2381
+L2XL7X
+1.0694
+1.3680
+L5DL7D
+0.9126
+0.7010
+L5IL7I
+0.9353
+0.3533
+L5QL7Q
+0.8363
+0.7689
+L5QL8Q
+0.9605
+0.6405
+L5XL6X
+0.9590
+1.3883
+L5XL7X
+0.9570
+0.6475
+L5XL8X
+0.9756
+0.5477
+L6IL7I
+1.0775
+0.6781
+L6XL7X
+0.9589
+0.9798
+L6XL8X
+0.9656
+1.1232
+L7QL8Q
+0.9498
+0.6579
+L7XL8X
+0.9861
+0.4797
+TABLE III. Computed dTEC normalisation scalings for the 30 band-
+pairs used to calculate TEC and dTEC values, as based on aggre-
+gated data from the KP “quiet” days 006 and 007 of 2022. The
+dTEC values for each individual band-pair were scaled (or not) de-
+pending on the path-angle correction specified, then combined into a
+histogram/distribution the G2E fitting applied, and a G2E weighted
+width calculated. This was then taken as a ratio against the weighted
+G2E width for all band-pairs.
+Further, note that some distributions have a core dominated
+by the Gaussian component, but others are instead dominated
+by the exponential parts; at low numbers of dTEC events (e.g.
+n < 1000) there is considerable variation.
+As already described, when the data is not divided finely,
+so that slices might e.g. combining all lpair data, or all lonc
+data, this means that event counts can easily exceed 10 or 100
+thousand, and indeed reach up to approximately 50 million for
+a whole day. Consequently the wider tails of the distributions
+became significantly sampled, and the discussed power-law
+fall-off is revealed, as seen on Fig. 13. However, the G2E
+fitting typically remained effective – albeit not perfect – at
+matching the dominant core and wings of the dTEC distribu-
+tion.
+ii

@@ -1,0 +1,58 @@
+Cryptographic hardware and software in use today has been developed under a set of industry stan-
+dards that help maintain a consistent and high level of security across different systems and networks. This
+involves defining industry-wide guidelines, best practices, compliance and regulatory criteria, as well as
+interoperability parameters. In the US, standards for IT equipment are produced by National Institute of
+Standards and Technology (NIST) as Federal Information Processing Standards (FIPS) and approved by
+the Secretary of Commerce. In Europe, the International Organization for Standardization (ISO) devel-
+oped the Common Criteria standard (ISO/EN 15408) (http://www.commoncriteriaportal.org/index.cfm).
+These standards provide a mechanism for certification of IT and security devices.
+QKD equipment, protocols and methods need to be standardized, so that they can be certified for use
+by government agencies and/or third parties. Standardization should be realized with QKD protocols
+and security proofs that closely match the real-world conditions of the QKD implementation. While
+almost all QKD systems in operation today implement some form of device-dependent prepare and
+measure QKD, these efforts are equally important to the future deployment of DI-QKD in that they will
+accelerate its adoption as the relevant technology comes to maturity, since many of the technical issues
+related to integration, interoperability and standardization will have already been solved at least partially.
+Government security agencies have noted the need for standardization of QKD before the technology can
+considered for adoption on a broad scale [505–507]. This includes developing protocols for connectivity
+and interoperability, so that QKD systems can be linked with cryptographic key management systems and
+the application layer. These standards not only ensure quality and security, but ensure that equipment
+from different future vendors can interoperate together, and are important to establish an industry supply
+chain by defining interfaces and technical specifications for components and modules in various systems
+or distributed networks.
+The successful deployment of QKD testbeds and proof-of-concept integration with cybersecurity hard-
+ware demonstrated that QKD technology and networking was sufficiently advanced for the standardiza-
+tion process to begin. In 2008, the European Telecommunications Standards Institute (ETSI) created the
+industry specification group for QKD (ISG-QKD) [538], which has produced recommendations regard-
+ing QKD architecture, use cases, certification, security proofs and assurances, integration into standard
+optical networks, interoperability and interfacing, among other topics [539]. Notably, in 2023 a Common
+Criteria Protection Profile for QKD was recently published (GS QKD 016), which “will help manufactur-
+ers to submit pairs of ‘prepare and measure’ QKD modules for evaluation under a security certification
+process. Such modules can be used by telecom operators and enterprises in securing their networks with
+the knowledge that certified products have been subjected to the scrutiny of a formal security evalu-
+ation process” [540]. The International Organization for Standardization (ISO) and the International
+Electrotechnical Commission (IEC) have developed the ISO/IEC 23837 series, which specifies security
+requirements, testing procedures, and evaluation methods for quantum key distribution (QKD) mod-
+ules [541, 542]. This series is structured under the framework of the ISO/IEC 15408 series, commonly
+referred to as the Common Criteria for Information Technology Security Evaluation. By establishing
+rigorous standards and assessment methods, the objectives of the ISO/IEC 23837 series are the security
+and reliability of QKD technologies for practical and secure implementations. These standards were de-
+veloped under subcommittee 27 of joint technical committee (JTC) 1 (Information security, cybersecurity
+and privacy protection) [543]. In 2024, a ISO/IEC JTC on quantum technologies was established [544].
+The International Telecommunications Union (ITU) have also published documents containing definitions
+and recommendations in the ITU-T Y.3800 series (quantum communication) and ITU-T X.1700 series
+(QKD networds). An overview of standardization processes and documents can be found in Ref. [108],
+and on the organization websites [539, 543–545]. The certification of MDI-QKD devices has been studied
+in Ref. [546], in which it is noted that similarities between these findings and ETSI GS QKD 016 sug-
+gest that a generic framework could be created to permit certification of various implementations and
+protocols, including MDI-QKD.
+6.4.2. Quantum key distribution network architecture
+Part of the challenge of implementing real-world QKD is determining how this new quantum layer will
+integrate into the existing cybersecurity infrastructure. The field tests realized over the last two decades
+have been important in accelerating this integration. A number of authors have discussed network layer
+architectures for QKD systems [501, 547–549, 107, 108], and similar models have appeared in technical
+recommendations by international agencies, such as the ITU (documents Y.3800-Y.3805) [545].
+Fig. 19 shows a simplified illustration of a QKD network architecture containing only three users,
+similar to the model put forth in Recommendation ITU-T Y.3800 [550]. The network consists of a QKD
+layer, a key management layer, a QKD control layer and the application layer. The users reside in the
+79

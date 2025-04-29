@@ -1,0 +1,84 @@
+Main results
+9
+since the field eΥλ is itself defined by a singular conditioning proving this fact would require additional
+effort. Since our main result does not require ruling out the existence of bad values, we will not
+investigate this fact further. In any case, we have to exclude at most countably many points, so Λ is
+dense.
+Definition 2.7. For λ ∈Λ, we let Ψλ be the field on Rd uniquely characterised by the fact that, for all
+F ∈Cb(C(Rd)),
+E[F(Ψλ)] ∝E
+"
+F(τx⋆eΥλ)e
+√
+2deΥλ(x⋆)
+R
+Rd e
+√
+2deΥλ(x)1{eΥλ(x)≥eΥλ(x⋆)−λ}dx
+#
+,
+(2.8)
+where x⋆= argmax{eΥλ(x) : x ∈Rd} and the proportionality constant is chosen in such a way that
+E[1] = 1.
+Remark 2.8. The fact that the proportionality constant in the previous definition lies in (0, ∞) is
+proved in Lemma 5.6.
+We now state the following key “resampling property” of the field eΥλ, whose proof is given in
+Section 5.2.
+Proposition 2.9. For each λ ∈Λ and for all F ∈Cb
+loc(C(Rd)), it holds that
+E[F(eΥλ)] = E
+R
+Rd F(τx eΥλ)e
+√
+2deΥλ(x)1{eΥλ(x)≥eΥλ(x⋆)−λ}dx
+R
+Rd e
+√
+2deΥλ(x)1{eΥλ(x)≥eΥλ(x⋆)−λ}dx
+
+,
+(2.9)
+where we recall that x⋆= argmax{eΥλ(x) : x ∈Rd}.
+Remark 2.10. In fact, Proposition 2.9 is quite general and applies to a large class of Gaussian fields
+of the form Φ −ηa where Φ is centred with E[(Φ(x) −Φ(y))2] = a(x −y). In particular, one can
+replace the field eΥλ in (2.9) by a drifted, conditioned Brownian motion. Specifically, for λ > 0 and
+η ≥0, let (Xλ,η
+t
+)t∈R be a two-sided Brownian motion with drift t 7→−η|t| for t ∈R, conditioned to
+remain below λ at all times. When η > 0 this is a condition that happens with positive probability,
+while the case η = 0 can be covered by a limiting procedure, yielding a two-sided three-dimensional
+Bessel process. Furthermore, consider the set
+Aλ,η
+def=
+
+t ∈R : Xλ,η
+t
+≥sup
+s∈R
+Xλ,η
+s
+−λ
+
+,
+and let ρλ,η be the (random) probability measure on Aλ,η defined as follows
+ρλ,η(dt)
+def=
+eηXλ,η
+t
+R
+Aλ,η eηXλ,η
+s
+ds
+1{t∈Aλ,η}dt .
+Then, if t⋆is a point sampled from the probability measure ρλ,η, we have the identity in law
+(Xλ,η
+t+t⋆−Xλ,η
+t⋆)t∈R
+law= (Xλ,η
+t
+)t∈R ,
+which we were unable to find in the existing literature. Note that, in particular, when η = 0, the
+probability measure ρλ,0 is the uniform measure on Aλ,0.
+Now, returning to our setting, we observe that, thanks to Proposition 2.9, an alternative way to
+characterise Ψλ is by inverting (2.8). More precisely, we have the following result, whose proof is
+given in Section 5.2.

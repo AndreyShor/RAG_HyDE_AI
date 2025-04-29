@@ -1,0 +1,121 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+3
+For ν = 1 + |α|/2λ we obtain a Dirac δ distribution,
+(10)
+Q1+ |α|
+2λ ;α1,α1,α2,...,αk(x, y) = −
+4
+Γ(λ)∂α2
+y · · · ∂αk
+y δD(x −y).
+Upon integration, such an edge will contract.
+The transition from Qν;α to Qα
+ν can be calculated by iterative application of partial differentiation.
+For any single index β and α = α1, . . . , αk we obtain
+(11)
+∂β
+y Qα
+ν (x, y) =
+k
+X
+i=1
+δβ,αiQα1,...,αi−1,αi+1,...,αk
+ν+ 1
+2λ
+(x, y) −(2λν + k)Qβ,α
+ν+ 1
+2λ (x, y).
+The left-hand side of (11) may be considered as a mixed numerator differential propagator Qα
+ν+1/2λ;β.
+Solving (11) for the last term on the right-hand side lowers the number of upper indices. This gives rise
+to a bootstrap algorithm for the conversion from numerator form to differential form. We arrange all
+spin k −2j, j = 0, 1, . . . , ⌊k/2⌋propagators built from subsets of indices in α into a vectors Qk
+ν and Qν,k
+for numerator and differential forms, respectively. Then, the transformation matrix T k
+ν ,
+(12)
+Qν,k = T k
+ν Qk
+ν,
+between the vectors Qk
+ν and Qν,k is triangular (for a suitable arrangement of the entries). The diagonal
+entries of T k
+ν are (−2)k−2jΓ(λν + k/2 −j)/Γ(λν −k/2 + j) for j = 0, . . . , ⌊k/2⌋.
+Example 1. For k = 0, we trivially have T 0
+ν = (1). For k = 1 (see k = 0 in (11)), we have Qν;α1(x, y) =
+(−2λν + 1)Qα1
+ν (x, y), yielding T 1
+ν = (−2λν + 1). For k = 2 we have
+Qν;α1,α2(x, y) = 4λν(λν −1)Qα1,α2
+ν
+(x, y) −2(λν −1)gα1,α2Qν(x, y)
+leading to the transition matrix
+T 2
+ν =
+ 4λν(λν −1)
+−2(λν −1)gα1,α2
+0
+1
+
+.
+Let 0 be the origin in RD and let ˆz1 be a fixed, constant unit vector, ∥ˆz1∥= 1. We obtain Qα
+ν (0, ˆz1) =
+(−1)|α|Qα
+ν (ˆz1, 0) = ˆzα1
+1 · · · ˆzαk
+1 . For any vector x ∈RD, we use the anti-symmetry of the propagator
+to define Qν;α(x, 0) = (−1)|α|Qν;α(0, x) and Qν;α(x, ˆz1) = (−1)|α|Qν;α(ˆz1, x).
+For the definition of
+Qν;α(0, ˆz1) = (−1)|α|Qν;α(ˆz1, 0) we use the transition matrix T k
+ν . In general, both propagators depend
+on ν.
+Example 2. From Example 1 we obtain Qν;α1(0, ˆz1) = (−2λν + 1)ˆzα1
+1
+and Qν;α1,α2(0, ˆz1) = 4λν(λν −
+1)ˆzα1 ˆzα2 −2(λν −1)gα1,α2.
+3. Feynman integrals
+Consider an oriented graph G whose edges are labeled by the same indices as the propagators (weight
+and spin). Let V ext
+G
+be a set of external vertices z0, z1, . . . , z|V ext
+G
+|−1 and V int
+G
+be a set of internal vertices
+x1, . . . , x|V int
+G |. We define the Feynman integral AG(z0, . . . , z|V ext
+G
+|−1) as the integral
+(13)
+Aα
+G(z0, . . . , z|V ext
+G
+|−1) =
+Z
+RD
+dDx1
+πD/2 · · ·
+Z
+RD
+dDxV int
+G
+πD/2
+Y
+xy∈EG
+Qxy(x, y),
+where the product is over all edges e = xy ∈EG. For each edge we have Qe = Qαe
+νe for an edge in
+numerator form and Qe = Qνe;αe for an edge in differential form. We assume that G is such that the
+integral exists. Typically, on the right-hand side some (or all) indices are contracted, so that the indices
+of the propagators form a larger set than α.
+The scaling weight of the graph G in D = 2λ + 2 dimensions is the superficial degree of divergence
+(14)
+NG =
+X
+e∈EG
+νe −λ + 1
+λ
+V int
+G .
+The existence of (13) only depends on the scaling weights of G and its subgraphs, so that we can refer
+to spin zero, Proposition 11 in [2], for convergence.

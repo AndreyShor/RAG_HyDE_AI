@@ -1,0 +1,72 @@
+18
+that are sensitive to such noise. The channels in these detectors should have two features: continuous recordings
+and a large number of samples per second (sps), such as 20, 40, 80, or 100. We have picked 362 points: Chile (7),
+Argentina (17), Iceland (7), Indonesia, Malaysia, and Australian External Territories close to them (36), Nepal and
+India (130), and the state of California in the USA (165). All of them are located near significant human clusters like
+metropolis or big cities (Santiago, Reykjavik, Singapore, Kathmandu, Los Angeles). The list of stations is taken from
+the IRIS website [61] and is available on the project GitHub repository [58] in the file “gmap-stations.txt”. We have
+chosen two time-ranges of the data gathered from the stations. The first was from 1 January to 31 January 2015, and
+the second was from 1 March to 22 April 2017. Both ranges have been divided into 24-hour periods. Once we have
+the data, we eliminate the instrumental response by applying a 1–15 Hz filter to account for the environmental noise.
+Then, we eliminate the linear tendency and resample the data to four samples per second to have homogeneity in the
+data. All of this is possible thanks to the Python module Obspy [60]. After preprocessing 4.9 GB of raw data, we got
+2050938429 bits of the seed.
+Appendix B: Discretization
+As we have already introduced in Section IV F, the seismic data are in the form of a sequence of floating point
+numbers. To obtain the binary sequence, that is needed for our randomness test and also for any modern cryptographic
+application, we are using various discretization methods. In the following, we define the five discretization methods
+in detail.
+Definition B.1 (discretizeEarthDataEvents1). Let d = (di)n
+i=1 be a sequence of the input file values where n is the
+number of these values. Then the discretized binary sequence s = (si)n
+i=1 is defined as
+si :=
+(
+0 : di ≥0
+1 : di < 0
+.
+(B1)
+Definition B.2 (discretizeEarthDataEvents2). Let d = (di)n
+i=1 be a sequence of the input file values where n is the
+number of these values. Then the discretized binary sequence s = (si)n
+i=1 is defined as
+si :=
+(
+0 : di ≥Ed
+1 : di < Ed
+(B2)
+where
+Ed :=
+nP
+i−1
+di
+n
+(B3)
+is the average value of the sequence d.
+Definition B.3 (discretizeEarthDataEvents3). Let d = (di)n
+i=1 be a sequence of the input file values where n is the
+number of these values. Then the discretized binary sequence s = (si)n
+i=1 is defined as
+si :=
+(
+0 : |di| ≥E|d|
+1 : |di| < E|d|
+(B4)
+where
+E|d| :=
+nP
+i−1
+|di|
+n
+(B5)
+is the average value of the absolute values of the sequence d.
+Definition B.4 (discretizeEarthDataEvents4). Let d = (di)n
+i=1 be a sequence of the input file values where n is the
+number of these values. Then the discretized binary sequence s = (si)n
+i=1 is defined as
+si :=
+(
+0 : di+1 ≥di
+1 : di+1 < di
+.
+(B6)

@@ -1,0 +1,40 @@
+7.1
+Arbitrary Input or Output Size
+Consider boxes with binary inputs, but with outputs taken from arbitrary
+ﬁnite sets. Let dx denote the number of inputs and da the number of outputs
+on Alice’s side, similarly dy denotes the number of inputs and db the number
+of outputs on Bob’s side. Such boxes correspond to deﬁnition 1 but where x ∈
+{0, . . . , dx−1}, y ∈{0, . . . , dy−1}, a ∈{0, . . . , da−1} and b ∈{0, . . . , db−1}.
+We will refer to these as generalized boxes.
+7.1.1
+d-Output Boxes
+The class of generalized boxes with dx = dy = 2 form a polytope P described
+by Barrett et al. [1]. It’s dimension is 4dadb −2da −2db. So if da = db = d,
+the dimension is 4d2 −4d and when d = 2 we ﬁnd the dimension of the
+non-signalling polytope of section 2.
+They also found that the non-local vertices of this polytope are all equiv-
+alent under reversible local operations. A result analogous to the fact that
+all non-local vertices of the two-input two-output polytope are equivalent to
+the PR-box.
+Theorem 17. Every non-local vertex of P is equivalent under reversible local
+operations to
+P(a, b|x, y) =
+(
+1/k
+if (b −a) ≡xy
+mod k
+0
+otherwise.
+for some k ∈{2, . . . , min{da, db}} where x, y ∈{0, 1} and a, b ∈{0, . . . , k −
+1}.
+Actually, for every k, the box described above is a representative of an
+equivalence class of non-local vertices.
+When da = db = k = d, this box violates the d-dimensional generalization
+of the CHSH inequality [11] up to it’s algebraic maximum. We will refer to
+such boxes as d-output boxes.
+7.1.2
+d-Input Boxes
+Jones and Masanes [15] characterized the set of generalized boxes for da =
+db = 2 and arbitrary dx and dy. Every class of non-local vertices for a given dx
+and dy is represented by a box parameterized by two integers gx ∈{2, . . . , dx}
+18

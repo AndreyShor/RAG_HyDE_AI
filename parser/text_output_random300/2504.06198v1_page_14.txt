@@ -1,0 +1,111 @@
+Early Warning Signs for SPDEs with Red Noise
+= Op
+ 
+M1
+X
+k1=1
+M1
+X
+k2=1
+a(p)
+1,k1,1a(p)
+1,k2,2Re
+
+−λ(p)
+1
+−(k1+k2−1)
+
+!
+= Op
+
+Re
+
+−λ(p)
+1
+−(2M1−1)
+.
+3.4
+Considerations on scaling laws and autocorrelation as an EWS
+In the previous subsections, the scaling laws of the time-asymptotic variance along various modes are considered for p →0−and
+κ →0+. In such limits, the EWS are shown to display different behaviours depending on the assumption of the spectrum of the
+linear drift operator in the SPDE that defines u. As a concrete example, if the boundary noise does not perturb the solution along
+the critical mode, the system may not exhibit CSD. The correlation of u and ξj for j ∈{0, 1} and, in the case of boundary noise, the
+degeneracy of the stochastic component imply that the effect of the stochastic perturbation on ξj on u is not trivial. Fortunately,
+the simple form of the linear operator B0(p) in (3.1), (3.5) and (3.7) enables the study of the problem along its eigenmodes.
+We consider first the limit p →0−. In (2.2), the spectrum of A0(p) is discrete for any p ≤0 and the EWS displays hyperbolic
+rate of divergence along the sensible eigenfunction e(p)
+1
+∗of its adjoint in Theorem 3.1. Furthermore, the EWS along the sensible
+generalized eigenfunctions e(p)
+1,k
+∗of A0(p)∗indicate a faster scaling law depending on their rank k. Through the biorthogonality
+of the generalized eigenfunctions of A0(p) and A0(p)∗we know that the the projection of g ∈H1 on e(p)
+1,k
+∗is equivalent to the
+coefficient of g on the e(p)
+1,M1−k+1, for any k ∈{1, . . . , M1}. This is intended in the sense that for M ∈N>0 and
+g =
+M
+X
+i=1
+Mi
+X
+k=1
+ci,ke(p)
+i,k,
+then it holds
+D
+g, e(p)
+i,k
+∗E
+= ci,Mi−k+1
+for any i ∈{1, . . . , M}, k ∈{1, . . . , Mi} and p ≤0. As a result, the time-asymptotic covariance along e(p)
+1,k1
+∗and e(p)
+1,k2
+∗refers to
+the time-asymptotic covariance of the oscillations of the coefficients of ud, the solution of (2.2), along e(p)
+1,M1−k1+1 and e(p)
+1,M1−k2+1.
+This observable collects also the oscillations along e(p)
+1,j1 and e(p)
+1,j2 for j1 ∈{M1 −k1 + 2, . . . , M1} and j2 ∈{M1 −k2 + 2, . . . , M1}.
+This is implied by the fact that oscillations along e(p)
+1,k imply further perturbations along the mode e(p)
+1,k−1 for any k ∈{2, . . . , M1},
+as shown in (2.3).
+The limit in (2.4) is different in nature from the previous case. The absence of eigenfunctions entails that there are no preferred
+directions along which the EWS captures the bifurcation. As shown in Corollary 3.4, the shape of the spectrum can dampen the
+EWS and hinder the scaling law of the time-asymptotic variance. Furthermore, for a non-differentiable f, the EWS is silenced or
+assumes a logarithmic rate of divergence. In applications, the first case corresponds to the crossing of the bifurcation threshold
+being unnoticed by the EWS.
+The system (2.5) displays a similar scaling law to (2.2). Nonetheless, the noise perturbation is filtered by (A0 −q)D(p), an operator
+often unknown in applications. As such, its dependence on p can affect the scaling law of the EWS and hinder the divergence
+of the observable. Conversely, the operator D(p) is known for simple models [6, 19] and may not be dependent on p. A related
+example is described in the section to follow.
+The limit κ →0+ implies the (at most) hyperbolic divergence of the EWS in (2.2), (2.4) and (2.5). Such a behaviour is entailed
+by the structure of B0(p) in (3.1), (3.5) and (3.7), respectively. While in the limit p →0−, at most only one eigenvalue tends to
+the imaginary axis, in this case, an infinite number of real eigenvalues tend simultaneously to 0−along an equivalent number of
+eigenfunctions. The assumptions of Q1, or Λ(p) in the case of (2.5), imply that the corresponding scaling law is captured along a
+large set of modes in H1.
+The resemblance of the scaling laws in the limit p →0−of the time-asymptotic variance of the models (2.2), (2.4) and (2.5)
+compared to the corresponding deterministic models perturbed by white noise [6, 7] indicates that it should be possible to also
+consider other observables, in analogy to the situation for finite-dimensional dynamics with white noise. Under the assumption of
+discrete spectrum, a natural example is the time-asymptotic autocorrelation, which is known to behave as an exponential function
+if studied along eigenmodes. We consider the case of (2.2). Then, we construct the time-asymptotic autocovariance with lag time
+τ > 0 as the operator V τ
+∞in H1 × H1 such that
+
+v1
+v2
+
+, V τ
+∞
+
+w1
+w2
+
+H1×H1
+= lim
+t→∞Cov (⟨u(·, t + τ), v1⟩+ ⟨ξ1(·, t + τ), v2⟩, ⟨u(·, t), w1⟩+ ⟨ξ1(·, t), w2⟩) ,
+14

@@ -1,0 +1,117 @@
+20
+F. CARAVENNA, R. SUN, AND N. ZYGOURAS
+Exploiting first the scaling relation (3.13) with ϑ replaced by ϑ ´ log a and a “ t´1, and
+then the monotonicity of fractional moments (3.2), we obtain for all t ě 1
+E
+“
+Z ϑ
+t
+`
+UBp0,Rq
+˘α‰
+“ E
+“
+Z ϑ`log t
+1
+`
+UBp0,R{
+?
+tq
+˘α‰
+ď E
+“
+Z ϑ
+1
+`
+UBp0,R{
+?
+tq
+˘α‰
+.
+Applying (1.10) with δ “
+R
+?
+t, we see that At :“ Z ϑ
+1
+`
+UBp0,R{
+?
+tq
+˘
+Ñ 0 in distribution as
+t Ñ 8. The random variables pAtqtě1 are bounded in L1, because ErAts “ 1, hence by
+uniform integrability we obtain ErAα
+t s Ñ 0 for any α P p0, 1q, which completes the proof.
+□
+3.4. Improved convergence and regularity of the SHF. Theorem 1.7
+entails that, almost surely, Z ϑ
+t
+P C´ε for every ε ą 0, hence Theorem 1.5 follows (delta
+measures δx in Rd are in Cγ only for γ ď ´d, hence Z ϑ
+t is non-atomic).
+The rest of this subsection is devoted to the proof of Theorem 1.7. We first recall the
+definition of negative Hölder spaces (see [FM17, Section 2] or [CZ20, Section 12] for more
+details). Let us introduce some notation in any dimension d P N.
+‚ Let C8
+c denote the family of smooth and compactly supported functions φ : Rd Ñ R.
+‚ For r P N0 “ t0, 1, 2, . . .u, let Cr
+c denote the family of compactly supported functions
+of class Cr, for which we define
+}φ}Cr :“
+max
+r1,...,rdPN0 : r1`...`rdďr }Br1
+1 ¨ ¨ ¨ Brd
+d φ}8 .
+‚ Let Br denote the family of functions φ P C8
+c supported on Bp0, 1q with }φ}Cr ď 1.
+‚ Given a function φ : Rd Ñ R, we denote by φλ
+x its λ-scaled version centred at x:
+φλ
+xp¨q :“ λ´d φ
+`
+λ´1p ¨ ´ xq
+˘
+for x P Rd, λ ą 0 .
+Definition 3.4 (Negative Hölder spaces). Given γ ă 0, the negative Hölder space Cγ
+is the family of linear functionals T : C8
+c Ñ R with the following property: for any K P N,
+there is a constant cK ă 8 such that
+|Tpφλ
+xq| ď cK λγ
+@x P Bp0, Kq, λ P p0, 1s, φ P Br,
+(3.16)
+where r “ rpγq :“ t´γ ` 1u (any integer r ą ´γ would yield an equivalent definition).
+Any distribution T P Cγ can be canonically extended (by continuity) from C8
+c to Cr
+c , for
+any integer r ą ´γ, hence we can consider Tpφq for φ P Cr
+c . In order to prove that T P Cγ,
+it turns out that it is enough to check property (3.16) for a finite family of 2d well-chosen
+test functions φ P Cr
+c : a so-called wavelet basis [FM17, Section 2], which we denote by
+ϕ
+and
+␣
+ψpiq(
+1ďiă2d
+(which satisfy
+ş
+Rd ψpiqpxq dx “ 0) .
+(3.17)
+(The details of such functions are immaterial for our goals.)
+This yields a convenient criterion for a sequence pT ω
+N qNPN of random distributions to be
+tight in the Hölder space Cγ with γ ă 0 (in the spirit of the classical Kolmogorov moment
+criterion for γ ą 0). The following is a special case of [FM17, Theorem 2.30].
+Theorem 3.5 (Tightness criterion for negative Hölder spaces). Fix γ ă 0 and an
+integer r ą ´γ. Let tϕ, ψpiq : 1 ď i ă 2du be a Cr
+c wavelet basis in Rd, see (3.17).
+Let pT ω
+N qNPN be a sequence of random linear forms on Cr
+c , that is, for every ω in a
+probability space pΩ, A, Pq and every N P N, we have a linear functional T ω
+N : Cr
+c Ñ R, such
+that ω ÞÑ T ω
+N pφq is a random variable for every φ P Cr
+c .

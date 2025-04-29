@@ -1,0 +1,107 @@
+Resampling property and independence from the threshold
+41
+Remark 5.3. The reason we introduced the “stronger” pseudometric dX is that the boundaries of
+the set Aλ are not disjoint in (X, dX) for different values of λ. In contrast, in (X, dX), we have
+∂XAλ1 ∩∂XAλ2 = ∅for any λ1, λ2 > 0 with λ1 ̸= λ2. This fact will play an important role in what
+follows.
+Lemma 5.4. For each λ > 0, the collection of measures (νb,λ)b>0 converges weakly in (X, dX) to
+ν∞,λ as b →∞.
+Proof. Let (∞, eΥλ) be sampled from ν∞,λ, and with a slight abuse of notation, let (b, eΥb,λ) be sampled
+from νb,λ. Thanks to Theorem A, we know that νb,λ converges weakly to ν∞,λ in (X, dX) as b →∞.
+This fact implies that we can find a coupling between the sequence ((b, eΥb))b>0 and (∞, eΥλ) such that
+lim
+b→∞E[dX((b, eΥb,λ), (∞, eΥλ))] = 0 .
+(5.3)
+Therefore, to obtain the desired result, we need to check that the same limit holds if we replace the
+pseudometric dX in the above display with the pseudometric dX. In particular, it suffices to show that
+lim
+b→∞E
+
+sup
+x∈Rd|χb(x)eceΥb,λ(x) −eceΥλ(x)|
+
+= 0
+To this end, we let 0 ≤j ≤b, and we note that
+sup
+x∈Rd|χb(x)eceΥb,λ(x) −eceΥλ(x)| ≤sup
+x∈Bj
+|eceΥb,λ(x) −eceΥλ(x)| +
+sup
+x∈Rd\Bj
+|χb(x)eceΥb,λ(x) −eceΥλ(x)| .
+The fact that the limit as b →∞of the expectation of the first term on the right-hand side of the above
+display goes to zero follows from (5.3). Hence, it remains to show that the expectation of the second
+term on the right-hand side of the above display also tends to zero as b →∞, followed by j →∞.
+Thanks to Lemmas 4.12 and 4.20, it holds that
+lim
+j→∞lim
+b→∞E
+
+sup
+x∈Bb\Bj
+eceΥb,λ(x)
+
+= 0 ,
+lim
+j→∞E
+
+sup
+x∈Rd\Bj
+eceΥλ(x)
+
+= 0 .
+Therefore, recalling that χb(x) = 0 for all |x| ≥eb + 1, it remains to check that
+lim
+b→∞E
+
+sup
+|x|∈[eb,eb+1)
+eceΥb,λ(x)
+
+= 0 .
+(5.4)
+In particular, thanks to Lemma 4.12, for b ≥0 large enough, by recalling the definition (4.2) of the
+field Υb and since, by (K2), the function K is supported in B(0, 1), the expectation on the left-hand
+side of the above display is bounded above by a multiple of
+√
+bE
+
+sup
+|x|∈[eb,eb+1)
+ecΥb(x)1{M0,b(Υb)≤λ}
+
+≤
+√
+bE
+
+e−c(Bb+
+√
+2db)
+sup
+|x|∈[eb,eb+1)
+ecZb(x)
+
+=
+√
+bec2b/2−
+√
+2dcbE
+
+sup
+|x|∈[eb,eb+1)
+ecZb(x)
+
+,
+(5.5)
+and thus, we are left with the task of bounding the expectation in the final term of the above display.
+To achieve this, we start by noting that, by the Borell-TIS inequality (Lemma C.2) and Fernique’s
+majorizing criterion (Lemma C.3), for any y ∈Rd such that B(y, 1) ⊆Rd \ Bb, it holds that
+P
+
+sup
+x∈B(y,1)
+|Zb(x)| ≥η
+
+≲e−η2
+2b ,
+∀η ≥0 .

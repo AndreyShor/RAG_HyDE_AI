@@ -1,0 +1,71 @@
+where λ > 0 is the rescaling factor, and |G⟩a is a normalized quantum state in the ancillary Hilbert space Ha.
+We construct the block-encodings such that Usa has the additional property of being self-inverse, U 2
+sa = I.
+Then, one can directly construct a so-called walk operator or iterate Wsa as
+Wsa = [Is ⊗(2 |G⟩⟨G|a −Ia)]Usa.
+(78)
+This is the basic building block of Hamiltonian simulation algorithms based on quantum signal processing
+(QSP), which have optimal asymptotic scaling with simulation time t and error δ [24, 62]:
+O(λt + log 1/δ).
+(79)
+Most of the challenge in constructing the algorithm is then finding a block-encoding Usa of H with (a)
+Scaling λ as close as possible to the theoretical optimal value λ = ∥H∥and (b) An efficient quantum circuit
+implementation. In Sec. 5.1 we present the block-encoding constructions, while in Sec. 5.2 we review how to
+use the block-encodings to devise a state-of-the art QSP-based Hamiltonian simulation algorithm.
+5.1
+Quantum circuits for block-encodings
+In this section, we give detailed block-encoding circuits for all of the terms of the pseudoion Hamiltonian in
+the plane wave basis: the kinetic terms Tel + Tion of Eqs. (33),(34) in Sec. 5.1.2; Coulomb terms Vel + V PI
+ion of
+Eqs. (35),(36) in Sec. 5.1.3; the local term V PI
+loc with elements given in Sec. 5.1.4 (Eq. (38)); and the non-local
+term V PI
+NL with elements given in Sec. 5.1.5 (Eq. (39)).
+Combining these block-encodings with a linear combination of unitaries (LCU) approach yields a block-
+encoding of the full Hamiltonian, leading to a total rescaling factor given as
+λ = λTel+Tion + λVel+Vion + λVloc + λVNL.
+(80)
+where the rescaling factors for each of the terms are given by Eq. (87),(97),(106), and (117) respectively, and
+where we drop the superscript PI for brevity. In the simplest LCU setting, the cost of block-encoding the full
+Hamiltonian is the sum of the cost of individual block-encodings with some additional two-qubit gates for
+the controlled logic used in combining the block-encodings. However, we further optimize the compilation of
+these quantum circuits by identifying common subroutines between the block-encodings of different terms
+and invoking them only once with appropriate control logic gates, thereby reducing the overall resource cost.
+We make heavy use of quantum rejection sampling as discussed in Ref. [75] for several underlying state
+preparations.
+5.1.1
+Combining block-encodings of individual terms
+The block-encoding circuit proceeds as shown in Fig. 3:
+1. A first 4-qubit register is introduced, with a one-hot unary encoding of 4 possible “branches’ (|0⟩for
+the kinetic terms, |1⟩for the Coulomb terms, |2⟩for the local term and |3⟩for the non-local term). We
+apply a unitary PREPterms on this register, that sets up an LCU to correct for the term-dependent
+block-encoding prefactors and sum over the terms:
+PREPterms|0⟩=
+1
+√
+λ
+p
+λTel+Tion|0⟩+
+p
+λVel+Vion|1⟩+
+p
+λVloc|2⟩+
+p
+λVNL|3⟩
+
+.
+(81)
+2. A second register is introduced, labeling valence electrons i, j and pseudoions I, J.
+We introduce
+unitaries PREPp, for p = 0, 1, 2, 3, acting on this register. These unitaries set up an LCU to adjust (i, j)
+and (I, J)-dependent weights for each term p and sum over particles (or particle pairs). Specifically,
+we apply
+PREPel,ion =
+3
+X
+p=0
+|p⟩⟨p| ⊗PREPp,
+(82)
+where the control is on the first register, and PREPp acts on the second register. Expressions for each
+PREPp are given in the following sections, where we focus on each term p separately.
+32

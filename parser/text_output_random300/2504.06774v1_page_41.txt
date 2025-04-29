@@ -1,0 +1,24 @@
+(a) Ground Truth
+(b) HOSVD
+(b) SVD
+Y
+X
+X
+Y
+X
+X
+Y
+X
+X
+Figure 25: (a) Ground truth normal velocity components at t = 3828. (b) Comparison
+of the predicted normal velocity components for HOSVD (left column) and SVD (right
+column) across different LSTM architectures. From top to bottom: predictions for LSTM
+with 1 Dense, 2 Dense, and Time-Distributed architectures.
+show the best performance, with the narrowest error distribution. The LSTM 1 dense
+architecture also demonstrates strong performance, but the streamwise velocity is not
+centered at the zero error line.
+In contrast, SVD-based models display broader error distributions across all LSTM
+architectures, indicating higher variability and reduced reliability in the predictions. The
+peaks are less pronounced compared to HOSVD, and the tails of the distributions extend
+further, suggesting that SVD struggles to capture the intricate flow features. The stream-
+41

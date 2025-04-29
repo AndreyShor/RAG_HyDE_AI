@@ -1,0 +1,132 @@
+CODASPY ’25, June 4–6, 2025, Pittsburgh, PA, USA
+Eric Wagner, Lennart Bader, Konrad Wolsing, and Martin Serror
+may be missed, network-based intrusion detection could be com-
+promised, and a strategically positioned attacker could manipulate
+data at individual vantage points. To address these issues, intrusion
+detection systems should incorporate multiple vantage points while
+minimizing communication overhead between them.
+Challenge 4 – Vantage Points
+To ensure reliable intrusion detection, multiple vantage points
+should be considered while minimizing the resulting communi-
+cation overhead.
+Multiple vantage points can also help in localizing and under-
+standing the origin of an anomaly. In addition to confirming that
+these effects are due to a cyberattack, IIDSs should ideally assist
+in localizing the attack’s origin. While actionability is, in general,
+desirable for IIDSs [11], power grids span vast geographical ar-
+eas, making it time-consuming to travel between substations and
+investigate potential signs of an attack (e.g., compromised devices).
+Challenge 5 – Actionability
+IIDSs should not only detect attacks but also aid in understanding
+and pinpointing their origin, facilitating a quick resolution.
+Finally, different intrusion detection mechanisms are required to
+detect attacks as reliably as possible [20]. Process-aware intrusion
+detection can quickly identify anomalous behavior, even in the
+absence of changes in network traffic, such as when a supply chain
+attack compromises an RTU that confirms but does not execute
+commands. In contrast, network-based mechanisms may detect
+the attachment of new devices to the network (e.g., by observing
+unexpected ARP requests), thereby identifying attacks before they
+manipulate the process. Meanwhile, host-based mechanisms may
+detect manipulated firmware in advance.
+Challenge 6 – Multi-layer Intrusion Detection
+A holistic surveillance of power grids is only achievable by com-
+bining process-aware, network-based, and host-based intrusion
+detection. These approaches should ideally complement and sup-
+port each other to enhance detection performance.
+5
+Conclusion
+We present the Sherlock dataset to advance research on process-
+aware intrusion detection in power grids. The dataset encompasses
+three scenarios of realistically sized power grids, passively cap-
+turing network traffic at multiple vantage points during normal
+operations and periods influenced by cyberattacks. We extract pro-
+cess state information using human-readable data point identifiers
+in the IPAL format. This format also facilitates testing and valida-
+tion, as demonstrated by our evaluation of five general-purpose
+industrial intrusion detection methods on the dataset. Our initial
+findings identify six key challenges for intrusion detection research
+for power grids, such as overlapping cyclic behaviors based on time
+of day, season, and weather, which complicate the identification of
+benign characteristics. We envision that the Sherlock dataset will
+assist the research community in tackling these challenges in the
+future and thus contribute to the security of critical infrastructures.
+Acknowledgments
+This paper was supported by the EDA Cyber R&T project “Cyber
+Electromagnetic Resilience Evaluation on Replicated Environment
+(CERERE)”, funded by Italy and Germany.
+References
+[1] Chuadhry Mujeeb Ahmed et al. 2017. WADI: A Water Distribution Testbed for
+Research in the Design of Secure Cyber Physical Systems. In WS on Cyber-Physical
+Systems for Smart Water Networks.
+[2] Chuadhry Mujeeb Ahmed and Nandha Kumar Kandasamy. 2021. A Compre-
+hensive Dataset from a Smart Grid Testbed for Machine Learning Based CPS
+Security Research. In CPS4CIP. Cham.
+[3] Tejasvi Alladi et al. 2020. Industrial control systems: Cyberattack trends and
+countermeasures. Comput. Commun. 155 (2020).
+[4] Wissam Aoudi et al. 2018. Truth Will Out: Departure-Based Process-Level Detec-
+tion of Stealthy Attacks on Control Systems. In ACM CCS.
+[5] Lennart Bader. 2024. PowerOwl: A Deterministic Heuristical Approach for Power
+Grid Modeling. https://powerowl.org, last accessed: December 13, 2024.
+[6] Lennart Bader et al. 2023. Comprehensively Analyzing the Impact of Cyberattacks
+on Power Grids. In IEEE EuroS&P.
+[7] Amaury Beaudet et al. 2020. Process-Aware Model-based Intrusion Detection
+System on Filtering Approach: Further Investigations. In IEEE ICIT.
+[8] Partha P Biswas et al. 2019. A Synthesized Dataset for Cybersecurity Study of
+IEC 61850 based Substation. In IEEE SmartGridComm.
+[9] Mauro Conti et al. 2021. A Survey on Industrial Control System Testbeds and
+Datasets for Security Research. IEEE Commun. Surv. Tutor. 23, 4 (2021).
+[10] ESET Research. 2022.
+Industroyer2: Industroyer reloaded.
+https://www.
+welivesecurity.com/2022/04/12/industroyer2-industroyer-reloaded/
+[11] Sandro Etalle. 2017. From Intrusion Detection to Software Design. In ESORICS.
+[12] Cheng Feng et al. 2019. A Systematic Framework to Generate Invariants for
+Anomaly Detection in Industrial Control Systems.. In NDSS.
+[13] Federal Office for Information Security (BSI). 2023. The State of IT Security in
+Germany in 2023.
+https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/
+Publications/Securitysituation/IT-Security-Situation-in-Germany-2023.html.
+[14] Federal Office for Information Security (BSI). 2024. The State of IT Security in
+Germany in 2024.
+https://www.bsi.bund.de/SharedDocs/Downloads/EN/BSI/
+Publications/Securitysituation/IT-Security-Situation-in-Germany-2024.html.
+[15] Brendan Galloway and Gerhard P. Hancke. 2013. Introduction to Industrial
+Control Networks. IEEE Commun. Surv. Tutor. 15, 2 (2013).
+[16] Jonathan Goh et al. 2016. A Dataset to Support Research in the Design of Secure
+Water Treatment Systems. In CRITIS.
+[17] Won-Seok Hwang et al. 2022. "Do You Know Existing Accuracy Metrics Overrate
+Time-Series Anomaly Detections?". In ACM/SIGAPP SAC.
+[18] Jonguk Kim et al. 2020. Anomaly Detection for Industrial Control Systems Using
+Sequence-to-Sequence Neural Networks. In ESORICS Workshops. Springer.
+[19] Dominik Kus et al. 2022. A False Sense of Security? Revisiting the State of
+Machine Learning-Based Industrial Intrusion Detection. In ACM CPSS.
+[20] Olav Lamberts et al. 2023. SoK: Evaluations in Industrial Intrusion Detection
+Research. Journal of Systems Research (2023).
+[21] Steffen Meinecke et al. 2020. SimBench—A Benchmark Dataset of Electric Power
+Systems to Compare Innovative Solutions Based on Power Flow Analysis. Energies
+13, 12 (2020).
+[22] Vetrivel S. Rajkumar et al. 2023. Cyber Attacks on Power Grids: Causes and
+Propagation of Cascading Failures. IEEE Access 11 (2023).
+[23] Martin Serror et al. 2021. Challenges and Opportunities in Securing the Industrial
+Internet of Things. IEEE Transactions on Industrial Informatics 17, 5 (2021).
+[24] Hyeok-Ki Shin et al. 2020. HAI 1.0: HIL-based Augmented ICS Security Dataset.
+In CSET.
+[25] Kai Strunz et al. 2006. Developing Benchmark Models for Integrating Distributed
+Energy Resources. In Power Engineering Society General Meeting.
+[26] Riccardo Taormina et al. 2018. Battle of the Attack Detection Algorithms: Disclos-
+ing Cyber Attacks on Water Distribution Networks. Journal of Water Resources
+Planning and Management 144, 8 (2018).
+[27] Leon Thurner et al. 2018. Pandapower—An Open-Source Python Tool for Con-
+venient Modeling, Analysis, and Optimization of Electric Power Systems. IEEE
+Transactions on Power Systems 33, 6 (2018).
+[28] David E. Whitehead et al. 2017. Ukraine Cyber-induced Power Outage: Analysis
+and Practical Mitigation Strategies. In CPRE.
+[29] Konrad Wolsing et al. 2022. Can Industrial Intrusion Detection Be SIMPLE?. In
+ESORICS.
+[30] Konrad Wolsing et al. 2022. IPAL: Breaking up Silos of Protocol-dependent and
+Domain-specific Industrial Intrusion Detection Systems. In RAID.
+[31] Konrad Wolsing et al. 2025. GeCos Replacing Experts: Generalizable and Com-
+prehensible Industrial Intrusion Detection. In USENIX Security.
+[32] Sven Zemanek et al. 2022. PowerDuck: A GOOSE Data Set of Cyberattacks in
+Substations. In CSET.

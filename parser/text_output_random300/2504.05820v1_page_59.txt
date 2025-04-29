@@ -1,0 +1,41 @@
+Tools and methodology
+45
+mg5_aMC@NLO
+APPLgrid
+MATRIX
+fastNLO
+VRAP
+yadism
+EKO
+pinefarm
+PineAPPL grids
+FK-tables
+operators
+pineko
+...
+experimental
+          data
+pinecards
+Figure 2.7: The Pineline architecture. Arrows in the picture indicate the flow of information (together
+with the execution order), and the orange insets on other elements indicate an interface to PineAPPL
+(notice EKO not having it). In particular, magenta blocks above Pinefarm are the grid providers [145,
+144, 142, 143, 7, 111, 112, 146].
+we standardize them into a common format, called pinecard. These are used together with
+the theory parameters as inputs for various grid generators which are manged by Pinefarm
+a unique Python package working as a front-end. Such interface is still work in progress,
+nevertheless, among others Pinefarm is able to run Mg5aMC@NLO [142, 143], MATRIX [144],
+nnlojet [145] allowing to compute predictions for numerous scattering processes. Once the
+grid is available, Pineko, another package dedicated to the final construction of FK-tables, can
+extract the details of the needed DGLAP operator and run the EKO library. Finally, it will also
+take care of combining the grid and the operator into the final FK-table.
+All the components of the pipeline are open source and the code is available in on GitHub at:
+• PineAPPL: https://github.com/NNPDF/pineappl
+• Pineko: https://github.com/NNPDF/pineko
+• Pinefarm: https://github.com/NNPDF/pinefarm
+It is important to emphasize that this set of tools does not depend on the NNPDFfitting method-
+ology and can be used in general for any (polarized) hadronic function fitting.
+2.2. The NNPDF methodology
+The problem of determining PDFs can be seen from the statistical point of view as a regression
+problem. In fact, from a finite set of experimental datapoints, we are trying to reconstruct a set
+of real functions defined in the domain f(x, Q0) : (0, 1] →R+ at the scale Q0 fixed. The Fast
+Kernel technology, allows us to efficiently map the dependent variables, i.e. the cross-section

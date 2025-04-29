@@ -1,0 +1,94 @@
+Learning global control of underactuated systems with Model-Based
+Reinforcement Learning
+Niccol`o Turcato1, Marco Cal`ı1, Alberto Dalla Libera1, Giulio Giacomuzzo1, Ruggero Carli1 and Diego Romeres2
+Abstract— This short paper describes our proposed solution
+for the third edition of the ”AI Olympics with RealAIGym”
+competition, held at ICRA 2025. We employed Monte-Carlo
+Probabilistic Inference for Learning Control (MC-PILCO), an
+MBRL algorithm recognized for its exceptional data efficiency
+across various low-dimensional robotic tasks, including cart-
+pole, ball & plate, and Furuta pendulum systems. MC-PILCO
+optimizes a system dynamics model using interaction data,
+enabling policy refinement through simulation rather than
+direct system data optimization. This approach has proven
+highly effective in physical systems, offering greater data
+efficiency than Model-Free (MF) alternatives. Notably, MC-
+PILCO has previously won the first two editions of this
+competition, demonstrating its robustness in both simulated
+and real-world environments. Besides briefly reviewing the
+algorithm, we discuss the most critical aspects of the MC-
+PILCO implementation in the tasks at hand: learning a global
+policy for the pendubot and acrobot systems.
+I. INTRODUCTION
+This report outlines our team’s implementation of a Rein-
+forcement Learning (RL) approach to address the third ”AI
+Olympics with RealAIGym” competition at ICRA 20251,
+based on the RealAIGym project [1]. Specifically, we em-
+ployed Monte-Carlo Probabilistic Inference for Learning
+Control (MC-PILCO) [2], a Model-Based (MB) RL algo-
+rithm known for its exceptional data efficiency in various
+low-dimensional benchmarks, including cart-pole, ball &
+plate, and Furuta pendulum systems, both in simulation and
+real-world environments. Notably, MC-PILCO also secured
+victory in the first two editions of this competition [3],
+[4], [5]. MC-PILCO leverages interaction data to optimize
+a system dynamics model. Instead of directly optimizing the
+policy using system data, it refines the policy by simulating
+the system, enhancing data efficiency. Considering physical
+systems, this approach can be highly performing and more
+data-efficient than Model-Free (MF) solutions. Examples of
+MC-PILCO applications and derivations have been reported
+in [6], [7], [8], [9].
+This paper is organized as follows: Section II introduces
+the goal and the settings of the competition. Section III
+presents the MC-PILCO algorithm for global policy training.
+Section IV reports the experiments that have been performed,
+finally Section V concludes the paper.
+1Department of Information Engineering, University of Padova, Italy.
+2Mitsubishi Electric Research Laboratories, Cambridge, MA, USA
+Correspondence to turcatonic@dei.unipd.it
+1https://ai-olympics.dfki-bremen.de/
+Compared to the solutions proposed in the first two
+editions, the solution proposed for this competition integrates
+a new type of incremental training (Section III-B), which
+aims at developing a global controller for the system.
+II. COMPETITION OVERVIEW
+This challenge focuses on a two-degrees-of-freedom (2-
+DoF) underactuated pendulum system, as described in [10],
+which can be set in two configurations. In the first con-
+figuration—known as the Pendubot—the joint connected to
+the base is actuated, while the second joint is passive. In
+the second configuration—referred to as the Acrobot—the
+first joint is passive, and the second is actuated. For both
+configurations, the objective is to design a controller capable
+of performing swing-up and stabilizing the pendulum at
+its unstable equilibrium point. Due to the underactuated
+nature of both systems, this task presents significant control
+challenges.
+The systems are simulated using a fourth-order Runge-
+Kutta integrator at a rate of 500 Hz over a time horizon of
+T = 60 s. The competition is structured in two stages. The
+first stage—the simulation stage—evaluates the controllers in
+a simulated environment. In the second stage—the hardware
+stage—teams test their controllers on the physical system,
+with the option to retrain learning-based approaches.
+Since the ultimate goal is to develop a global policy,
+controllers are tested by randomly initializing the system
+from various points in the state space at random times.
+The competition winners are determined based on both the
+performance and reliability of their submitted controllers.
+III. LEARNING A GLOBAL POLICY WITH MC-PILCO
+This section first reviews MC-PILCO, secondly it dis-
+cusses its application to learn a global policy for the un-
+deractuated double pendulum.
+A. MC-PILCO
+MC-PILCO is a Model-Based policy gradient algorithm.
+Gaussian Processes (GPs) are used to estimate system dy-
+namics and long-term state distributions are approximated
+with a particle-based method.
+Consider a system with evolution described by the
+discrete-time unknown transition function f : Rdx × Rdu →
+Rdx:
+xt+1 = f(xt, ut) + wt,
+(1)
+arXiv:2504.06721v1  [cs.RO]  9 Apr 2025

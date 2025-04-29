@@ -1,0 +1,25 @@
+ 
+Figure 2. Safe seeding and stopping criteria | a-b, MOBO of tapping mode on silicon calibration 
+grating sample with 100 nm deep trenches. Here the drive amplitude, setpoint amplitude, and I 
+Gain are chosen to be the controlling parameters to optimize. There are 10 initial random seeding 
+points and 50 explorative active learning steps in this experiment, and the acquisition function of 
+q-Noisy Expected Hypervolume Improvement (qNEHI) is used to determine the next parameters 
+to try at each step. A fresh Tap300Al-G is used to optimize scan at 1 Hz in a 20 𝜇m area. a-b, the 
+resulting a height and b phase maps taken with the optimal parameters given by the MOBO 
+workflow. c-d, safe seeding with force-distance measurement. c, the threshold setpoints at 
+different drive amplitudes are derived from corresponding FD curves as the intersection setpoint 
+between phase-setpoint curve and the free-air phase in d. The measured threshold setpoints are 
+interpolated in the full drive amplitude range and only setpoints greater than the threshold setpoints 
+are considered as safe parameters. e, trajectory of MOBO exploration projected from 3D parameter 
+space to the drive amplitude vs. setpoint 2D space with the I gain set to be its optimal value of 
+66.78. Color map represents the iteration number of steps connected by dashed lines with 
+corresponding colors. f, hypervolume gain curve at different iteration steps for the MOBO 
+workflow. The dashed gay lines separate the initial seeding steps from the active learning steps.  
+ 
+III. 
+Optimization process 
+The effectiveness of MOBO and its corresponding Pareto front analysis are first demonstrated 
+on a silicon calibration grating sample from Oxford Instruments Asylum Research, as shown in 
+Figure 2a-b. Before optimization, a safe seeding process is implemented to ensure robust 
+exploration of the parameter space. This process begins with a series of force-distance 
+measurements to identify the threshold setpoints at which the system transitions from the attractive 

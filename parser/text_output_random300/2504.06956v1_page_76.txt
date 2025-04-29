@@ -1,0 +1,116 @@
+Brownian bridge above a curve
+76
+=
+r
+2
+π
+Z ζ(b)
+ζ(0)
+Z b
+ζ−1(z)
+√
+bz(u + z)e−(bz+us)2
+2bs(b−s)
+(s(b −s))3/2
+dsdz ,
+(A.12)
+where here, we assumed that ζ is invertible. This is not restrictive since the general case can be
+obtained by a standard approximation argument. We now bound the inner integral in (A.12) by
+splitting the interval of integration around ζ−1(z) ∨b/2. We note that,
+Z ζ−1(z)∨b/2
+ζ−1(z)
+√
+bz(u + z)e−(bz+us)2
+2bs(b−s)
+(s(b −s))3/2
+ds ≤23/2(u + z)z
+b
+Z ∞
+ζ−1(z)
+e−z2
+2s
+s3/2 ds
+≤8(u + z)
+b
+z
+p
+ζ−1(z)
+≤16u
+b
+z
+p
+ζ−1(z)
+,
+(A.13)
+where in order to get the last inequality we used that fact that for b ≥1 sufficiently large, it holds
+that z/u < 1, uniformly over u ∈[bι, b3/4] and z ∈[ζ(0), ζ(b)]. Similarly, again by taking b ≥1
+sufficiently large, we have that
+Z b
+ζ−1(z)∨b/2
+√
+bz(u + z)e−(bz+us)2
+2bs(b−s)
+(s(b −s))3/2
+ds ≤
+Z b
+b/2
+√
+bz(u + z)e−(bz+us)2
+2bs(b−s)
+(s(b −s))3/2
+ds
+≤23/2(u + z)z
+b
+Z ∞
+0
+e−(z+u)2
+16s
+s3/2
+ds
+≤27/2√πz
+b .
+(A.14)
+Therefore, plugging the estimates (A.13) and (A.14) into (A.12), for b ≥1 sufficiently large, it holds
+that
+P0,u,b(−ζ(Tb) < Mb < −ζ(0)) ≤
+r
+2
+π
+u
+b
+Z ζ(b)
+ζ(0)
+
+16z
+p
+ζ−1(z)
++ 27/2√π z
+u
+
+dz
+≤16u
+b
+Z b
+0
+ζ(z)ζ′(z)
+√z
+dz + ζ(b)2
+u
+
+.
+where to go from the first to the second line, we also performed the change of variables z 7→ζ−1(z).
+Proof of Proposition A.5. We begin by noting that, thanks to (A.2), it holds that
+Px,u,b(τ−ζ > b) ≤Px,u,b(τ0 > b) + Px,u,b(τ0 ≤b < τ−ζ) ≤2xu
+b
++ Px,u,b(τ0 ≤b < τ−ζ) .
+Therefore, our task is now to find a suitable upper bound for the probability on the right-hand side of
+the above display. To this end, using again (A.2), we note that
+Px,u,b(τ0 ≤b < τ−ζ) ≤Px,u,b(τ0 ≤b/2, τ−ζ > b) + Px,0,b/2(τ−ζ(0) > b/2)
+≤Px,u,b(τ0 ≤b/2, τ−ζ > b) + 4(x + ζ(0))ζ(0)
+b
+≤Px,u,b(τ0 ≤b/2, τ−ζ > b) + 8x2
+b
+,
+where to obtain the bound in the first line, we observed that the probability that the first time the
+Brownian bridge from x to u in time b hits 0 is after time b/2 is bounded above by the probability
+that the Brownian bridge from x to 0 in time b/2 stays above height −ζ(0). Therefore, from now on,

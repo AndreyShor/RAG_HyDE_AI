@@ -1,0 +1,36 @@
+Warm-Start QAOA via a Reduction to Max-Cut
+•
+21
+left. This is likely due to the constraint terms in the latter, which results in states satisfying the constraints having
+comparatively large 𝛼values, even if they are not optimal.
+E
+Experimental Parameters
+All code used to generate data is available at [34].
+Warmstart info
+QUBO-Relaxed
+BM𝑘
+GW𝑘
+• 𝜀= 0.1
+• 𝑦𝑇𝑄𝑦was
+optimized
+using
+L-
+BFGS-B
+algorithm.
+•
+100iterations
+• 50
+initial
+conditions
+• 𝜂= 0.05
+• 50 random
+bases sam-
+pled
+All QAOA runs were done as follows:
+• The parameters were optimized using COBYLA.
+• For each circuit, the QAOA optimization loop was ran 10 times, each time with a different starting initial-
+ization of the parameters. If 𝑝= 1, these were drawn uniformly. If 𝑝> 1, 9 of the 10 initializations were
+drawn uniformly and the other was the best performing (cost wise) initial parameters from depth 𝑝−1.
+• The final output of a circuit was the optimized parameters (out of the set of 10) with the largest cost.
+• All simulations were computed with a custom QAOA simulator based on [35].
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

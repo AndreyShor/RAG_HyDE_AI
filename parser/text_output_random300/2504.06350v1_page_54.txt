@@ -1,0 +1,66 @@
+by estimating the CHSH inequality. Moreover, the witness I3 can be used to distinguish between bits
+and qubits. If the dimension witness W satisfy the following condition
+Cd < W ≤Qd,
+(153)
+where Cd and Qd are the classical and quantum bounds respectively, for dim HA = d. Specifically, suppose
+Alice’s device creates d–dimensional quantum systems, a value W > Cd means that it becomes infeasible
+to replicate the quantum data table using d–dimensional classical systems, or equivalently quantum states
+emitted by Alice’s device that are orthogonal to Bob’s measurements. The inability to replicate the data
+table using d–dimensional classical systems, witnessed by W > Cd, confirms that Eve cannot access the
+full information about the system. Relaxing the assumption on the dimension would enable Eve to use
+a classical system with sufficient higher dimensions to reproduce such a table.
+To prove the security of SDI-QKD in
+[94], following the geometrical method in [58], the authors
+utilize a dimensional witness as the main tool to assess the security of SDI-QKD. Consider that Alice’s
+device prepares qubits and is limited to four specific preparations (N = 4), denoted by two bits, a0
+and a1, while Bob’s device can perform two binary measurements, and they can evaluate the correlators
+Ea0a1,y. They can evaluate a dimension witness of the form
+S = E00,0 + E00,1 + E01,0 −E01,1 −E10,0 + E10,1 −E11,0 −E11,1 ≤2.
+(154)
+Applying this dimension witness to the states and measurements of the BB84 protocol yields S = 2,
+demonstrating the insecurity of the BB84 scheme. However, this conclusion is not limited to BB84, and
+in fact any protocol that utilizes the same states and measurements as BB84, such as the SARG protocol
+[301], is also insecure when viewed from this perspective. Rather, to obtain a positive key rate in the SDI
+scenario, Bob must perform measurements in a basis that is rotated with respect to the BB84 bases, as
+will be discussed below.
+Security of SDI-QKD. A secret key can be extracted if a positive value for the key rate r = I(A :
+B) −I(A : E) is obtained, where I(A : X) = P
+j 1 −h(PX(ayj)) represents the mutual information.
+Consequently, the sufficient condition for security is expressed as follows:
+I(A : B) > I(A : E) =⇒PB > PE,
+where PX = 1
+2(pX(a0) + pX(a1)) denotes the average probability of party X correctly guessing when
+Alice sends the state ρa0a1, based on the two random bits a0 and a1 that she generates. By evaluating
+Bob’s success probability, it can be established that PB is a function of S as given by:
+PB = S + 4
+8
+.
+Now, consider the following scenario: Alice receives an n-bit string as input, and Bob is tasked with
+guessing the value of a function from the set {Fn}n (where {Fn}n represents all Boolean functions on
+n-bit strings) after receiving s qubits from Alice. The average probability of Bob’s success is bounded
+above by:
+Pn ≤1
+2
+ 
+1 +
+r
+2s −1
+2n −1
+!
+.
+For n = 2, the optimal probability of guessing a function Fn or its negation is equivalent. Thus, when
+Alice sends a single qubit to Bob (s = 1), we have:
+PB(a0) + PB(a1) + PB(a0 ⊕a1) ≤3
+2
+
+1 + 1
+√
+3
+
+,
+which also holds when Bob collaborates with Eve. By utilizing the relationships PBE(ai) ≥PB(ai) and
+PBE(ai) ≥PE(ai), along with the inequality:
+PBE(a0 ⊕a1) ≥PBE(a0, a1) ≥PBE(a0) + PBE(a1) −1,
+one can derive the following equation:
+PBE(a0) + PBE(a1) + PBE(a0 ⊕a1) ≥2PB(a0) + 2PE(a1) −1.
+54

@@ -1,0 +1,146 @@
+6
+can even further enlarge the allowed history length by
+choosing supremum instead of the previous maximum.
+ϵ ≤sup
+n∈N
+sup
+h∈N
+max
+sn−h+1,...,sn+1∈{0,1}
+P(Sn+1 = sn+1|Sn = sn, . . . , Sn−h+1 = sn−h+1) −1
+2
+ .
+(7)
+One who is very careful about the technical details could
+argue that the definition is not fully formally correct since
+we do not have random variables that describe history
+longer than that produced by the source. We allow our-
+selves for such simplification of notation, assuming that
+if the history length is too large, the previous random
+variables do not influence the randomness distribution.
+In the next, final step of our preliminary formula trans-
+formations, we will change the order of the supremum,
+obtaining
+ϵ ≤sup
+h∈N
+sup
+n∈N
+max
+sn−h+1,...,sn+1∈{0,1}
+P(Sn+1 = sn+1|Sn = sn, . . . , Sn−h+1 = sn−h+1) −1
+2
+ .
+(8)
+Let us now define a sequence of variables ϵh when h de-
+notes history length (number of variables in the proba-
+bility condition) using the following formula
+ϵh := sup
+n∈N
+max
+sn−h+1,...,sn+1∈{0,1}
+P(Sn+1 = sn+1|Sn = sn, . . . , Sn−h+1 = sn−h+1) −1
+2
+
+(9)
+For now, let us assume that we have a way to estimate
+values of the ϵh sequence for some ”reasonable” range
+of history lengths h. We will devote the whole Section
+IV B to the problem of how to estimate ϵh. Then we can,
+with some additional arguments, define ϵ value using ϵh
+sequence in the following way.
+ϵ ≤sup
+h∈N0
+ϵh
+(10)
+Although the above definition is correct, it creates two
+big challenges in the theoretical part of this study. The
+first one is that, because of the finite nature of the esti-
+mation, we have only access to a finite sequence of ϵh for
+some h ∈{0, . . . , hmax}, not the infinite one needed in
+the above formula. At first glance, we could think that
+this problem can be resolved by estimating the value of
+ϵ by some ˜ϵ given by a similar formula
+˜ϵ =
+max
+h∈{0,...,hmax} ϵh.
+(11)
+Unfortunately, here we encounter the second of the
+biggest drawbacks. That is the fact that using the maxi-
+mum is a poor solution since the quality of the estimation
+of ϵh drops down drastically with the increase of h. For
+that reason, we need to come up with a new replacement
+for the above formula.
+We will do it in Section IV D
+and Section IV E. But before that, we will first devote
+the next Section IV B to the justification of how ϵh are
+estimated.
+B.
+Calculating epsilons for given history length
+In this section, we will discuss how to estimate epsilons
+for the given history length denoted as ϵh. Let us begin
+by recalling the definition of the ϵh already stated in the
+previous section.
+ϵh := sup
+n∈N
+max
+sn−h+1,...,sn+1∈{0,1}
+P(Sn+1 = sn+1|Sn = sn, . . . , Sn−h+1 = sn−h+1) −1
+2
+
+(12)
+We will start by rewriting the formula using the definition
+of conditional probability, obtaining that
+ϵh := sup
+n∈N
+max
+sn−h+1,...,sn+1∈{0,1}
+
+P(Sn+1 = sn+1, Sn = sn, . . . , Sn−h+1 = sn−h+1)
+P(Sn = sn, . . . , Sn−h+1 = sn−h+1)
+−1
+2
+ .
+(13)
+Then, in the numerator and the denominator, we have
+probabilities of some random variables.
+Since we only
+have access to a single realization of the probability dis-
+tribution (output from a potential ϵ-SV-Source device)
+we do not have direct access to those probabilities. We
+will use substring frequencies in the sequence we investi-
+gate to estimate them. This estimation is defined in the
+following way.
+˜ϵh ≈max
+vh
+
+|s|vh
+n−h
+|s|v′
+h
+n−h+1
+−1
+2
+
+(14)
+where s is a finite binary string produced by the device
+that we are testing, maximum over vh is taken over all
+possible binary strings of the length h, and |s|vh counts
+the number of occurrences of string vh in the sequence
+s.
+Furthermore, v′
+h is the sub-string of the string vh
+obtained by removing the first bit. The main idea here
+is that, since we do not have access to probabilities or
+arbitrarily many samples from this distribution we will
+treat each bit in tested string s as the “current one“ (sn+1
+in Eq. (1) for a given n) and look at its recent history
+(a few previous bits in the sequence). In that approach,
+|s|vh counts all occurrences of some string vh in sequence
+s, where vh represents “current” bit and its history and
+|s|v′
+h counts all occurrences of the string v′
+h in sequence s,
+where v′
+h represents history bits without the “current” bit
+itself. Ofcourse, the above means that |s|v′
+h = 0 implies

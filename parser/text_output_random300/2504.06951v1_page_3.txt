@@ -1,0 +1,61 @@
+is sufficient. However, as stressed in the conclusions, the natural setting would require either d > 1 or r > 1.
+Definition 1. (Singular Value and Eigenvalue Distribution of a Matrix-Sequence). Let {An}n be a matrix-
+sequence, with An of size dn, and let ψ : D ⊂Rt →C be a measurable function defined on a set D with
+0 < µt(D) < ∞.
+• We say that {An}n has an (asymptotic) singular value distribution described by ψ, and we write
+{An}n ∼σ ψ, if
+lim
+n→∞
+1
+dn
+dn
+X
+i=1
+F(σi(An)) =
+1
+µt(D)
+Z
+D
+F(|ψ(x)|) dx,
+∀F ∈Cc(R).
+• We say that {An}n has an (asymptotic) spectral (or eigenvalue) distribution described by ψ, and we
+write {An}n ∼λ ψ, if
+lim
+n→∞
+1
+dn
+dn
+X
+i=1
+F(λi(An)) =
+1
+µt(D)
+Z
+D
+F(ψ(x)) dx,
+∀F ∈Cc(C).
+• If ψ describes both the singular value and eigenvalue distribution of {An}n, we write {An}n ∼σ,λ ψ.
+When {An}n ∼λ ψ, the function ψ is referred to as the eigenvalue (or spectral) symbol of {An}n.
+2.1
+Zero-distributed sequences
+Zero-distributed sequences are defined as matrix-sequences {An}n such that {An}n ∼σ 0. The following
+theorem, taken from [14], provides a useful characterization for detecting this type of sequence. We use the
+natural convention 1/∞= 0.
+Theorem 1. Let {An}n be a matrix-sequence, with An of size dn and let p ∈[1, ∞], with ∥X∥p being the
+Schatten p norm of X, that is the lp norm of the vector its singular values. Let ∥· ∥= ∥· ∥∞be the spectral
+norm. Then
+• {An}n ∼σ 0 if and only if An = Rn + Nn with rank(Rn)/dn →0 and ∥Nn∥→0 as n →∞;
+• {An}n ∼σ 0 if there exists p ∈[1, ∞] such that ∥An∥p/d1/p
+n
+→0 as n →∞.
+2.2
+Unilevel scalar Toeplitz matrices
+Given n ∈N, a matrix of the form
+[Ai−j]n
+i,j=1 ∈Cn×n,
+with entries Ak ∈C, k ∈[−(n −1), . . . , n −1], is called Toeplitz matrix.
+Given a matrix-valued function f : [−π, π] →C belonging to L1([−π, π]), the n-th Toeplitz matrix associated
+with f is defined as
+Tn(f) := [ ˆfi−j]n
+i,j=1 ∈Cn×n,
+3

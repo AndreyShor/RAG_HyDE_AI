@@ -1,0 +1,39 @@
+(a) Graph associated to W
+(b) Graph associated to ˜
+W
+Figure 1: The example of two matrices W, ˜
+W with ρ(ΛW) = ρ(Λ ˜
+W) = 1, resulting in the Schur stable FJ-MM model for 0 < β < 1
+(i.e., ρ(Λ([1 −β]W + [β] ˜
+W)) < 1). The colored nodes correspond to set ˆV = {i : λii < 1}.
+3.2
+Numerical Examples
+Next, we focus on the equilibrium achieved by the FJ-MM model and compare it with that of the original FJ
+model through numerical simulations. This analysis suggests potential strategies for steering the network’s global
+equilibrium toward a desired state by appropriately designing (or facilitating) multi-hop interactions.
+In the following examples we refer to a typical Barbell graph, obtained by connecting two copies of a complete
+graph by an edge (refer to Fig. 2 for examples). As initial condition, we consider the two complete graphs as two
+polarized communities, with opinion fixed to 0 and 1, respectively.
+Figure 2: Examples of Barbell Graphs
+All the nodes are assumed to be fully open to social influence (i.e. λii = 1), except for those ones for which is
+differently specified. For the FJ-MM model we will refer in particular to the setting of Use Case 1, that is, W = W 2.
+Example 1. Consider a Barbell graph3 with 6 nodes. We start from a polarized initial condition, s.t. nodes in
+{1,2,3} are fixed to 0 and {4,5,6} to 1. We set λ33 = λ44 = 0, whereas other λii = 1, and [β] = 0.8I6. Under this
+configuration, the FJ model maintains polarization at equilibrium, whereas the FJ-MM model reduces it, leading to
+a more balanced equilibrium. In Fig. 3, the colormap and labels represent the nodes’ equilibrium opinions.
+A formal way to measure polarization is to measure how far we are from the state of complete neutrality. One
+of such measures is the polarization index [50], defined as P = (¯x−x∗)⊤(¯x−x∗)
+n
+, where ¯x is the equilibrium opinions
+vector and x∗= ¯x⊤1/n is its mean value. In the next example, we compute the polarization index as a function of
+the rescaling parameter β in the network. For simplicity, we assume that βi = β0 for all i ∈V, meaning that agents
+assign equal total weight to past opinions.
+Example 2. Consider a Barbell graph with 10 nodes. Assume that the initial opinions are polarized as in the
+previous example, with one clique’s opinions set to 0 and the other set to 1. Moreover, the agents at the endpoints
+of the connecting edge are completely stubborn (i.e., λii = 0), while the remaining agents are maximally susceptible
+(i.e., λii = 1) and [β] = β0I, where β0 is changing. Figure 4 displays P as a function of β0. Our findings indicate
+that as β0 increases – thereby enhancing the influence of secondary neighbors – the polarization becomes weaker.
+3Henceforth, for each graph specified below, we construct the matrix W under the assumption that every agent assigns equal weight
+to all of its neighbors.
+Consequently, all nonzero entries in each row of W are identical and correspond one-to-one with the arcs
+emanating from that node.

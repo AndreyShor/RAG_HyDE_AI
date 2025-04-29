@@ -1,0 +1,65 @@
+13
+The conditional mutual information inherits a chain rule from entropy, which can be written as
+I [X0:n; Y |Z] =
+n−1
+X
+t=0
+I [Xt; Y |ZX0:t] .
+(A9)
+The chain rule for mutual information is obtained by dropping Z on both sides. Often, we will use the chain rule for
+a single step:
+I[W; XY |Z] = I[W; X|Z] + I[W; Y |XZ].
+(A10)
+The measures of information defined so far are all nonnegative and can be interpreted based on (conditional) surprise,
+respectively its averaged version, (conditional) entropy. For a consistent treatment of multiple random variables, it is
+convenient to extend the definition of (conditional) mutual information to more than two arguments. The so-called
+multivariate mutual information or interaction information [62, 63] can be defined inductively via
+I[Xi; . . . ; Xj; Xk] := I[Xi; . . . Xj] −I[Xi; . . . ; Xj|Xk],
+(A11)
+and similarly conditional interaction information via
+I[Xi; . . . ; Xj; Xk|Xl] := I[Xi; . . . Xj|Xl] −I[Xj; . . . ; Xj|XlXk].
+(A12)
+However, it should be noted that multivariate mutual information of three or more variables can assume negative
+values which makes it difficult to interpret [63].
+b.
+Information diagrams
+The properties of Shannon’s basic measures of information such as entropy and mutual information bear a resem-
+blance to set theory. It has been shown that one can establish a one-to-one correspondence between these measures of
+information and a (signed) measure on sets [64, 65]. We write X1, . . . , Xn to denote random variables, and ˜
+X1, . . . , ˜
+Xn
+for the corresponding sets. The union of sets ˜
+Xi∪· · ·∪˜
+Xj corresponds to the joint entropy H (Xi, . . . , Xj), the intersec-
+tion of sets ˜
+Xi∩· · ·∩˜
+Xj corresponds to the multivariate mutual information I [Xi; . . . ; Xj], and the set difference ˜
+Xi\ ˜
+Xj
+corresponds to the conditional entropy H (Xi|Xj). Conditional mutual information I [Xi . . . Xj; Sk . . . Sl|Cn . . . Cm]
+corresponds then to
+
+( ˜
+Xi ∪· · · ∪˜
+Xj) ∩( ˜
+Sk ∪· · · ∪˜Sl)
+
+\ ( ˜
+Cn ∪· · · ∪˜
+Cm). This correspondence allows us to represent
+the relations between measures of information in terms of Venn diagrams, whose primary sets correspond to the
+entropies of single random variables. One example of such an information diagram is given in Figure 7.
+H(X|Y, Z)
+H(Y |X, Z)
+H(Z|X, Y )
+X
+Y
+Z
+I[X; Z|Y ]
+I[Y ; Z|X]
+I[X; Y |Z]
+I[X; Y ; Z]
+FIG. 7.
+An example of an information diagram.
+An information diagram illustrates the relations between (conditional)
+entropies and (conditional) mutual information.

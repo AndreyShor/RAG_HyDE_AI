@@ -1,0 +1,174 @@
+4
+∆13 = E3 −E1 −ω) and indirect path 1 →2 →3(Laser
+1 (1 →2): Ω12, the detuning ∆12 = E2 −E1 −ω(1) and
+Laser 2 (2 →3): Ω23, the detuning ∆23 = E3−E2−ω(2)).
+The laser parameters are calibrated as follows: The
+laser operates with a Rabi frequency of Ω13 = 2π ×
+10MHz and a detuning of ∆13 = 2π × 5MHz.
+Two
+additional lasers are employed, with the first exhibiting
+Ω12 = 2π × 8MHz and ∆12 = −2π × 3MHz, while the
+second features Ω23 = 2π × 6MHz and ∆23 = 2π ×
+4MHz. Dynamic control is implemented via an acousto-
+optic modulator (AOM), enabling laser intensity adjust-
+ments with 10 ns resolution for precise system modula-
+tion.
+Using Rabi frequency Ωand detuning ∆as co-
+ordinates, construct a circular critical region:m(Ω, ∆) =
+p
+(Ω−Ωc)2 + (∆−∆c)2 −R where Ωc = Ω13,∆c = ∆13
+(parameters corresponding to the direct path) and Ring
+radius is R = 0.5 ×Ω13, and we obtain dynamic path
+modulation by (as shown in Fig.2): direct path 1 →3:
+Straight path (Ω(t), ∆(t)) = (Ω13 · t/T, ∆13 · t/T) and
+indirect path 1 →2 →3: Nonlinear parameterization to
+encircle the ring region:
+Ω(t) = Ω12 · sin(πt/T) + Ω23 · sin(2πt/T)
+(31)
+∆(t) = ∆12 · cos(πt/T) + ∆23 · cos(2πt/T)
+(32)
+An effective two-level Hamiltonian (neglecting transient
+occupation of the intermediate state 2) is
+H(Ω, ∆) = Ω
+2 σx + ∆
+2 σz
+(33)
+and Berry curvature is
+F(Ω, ∆) = 1
+2
+Ω· ∆
+(Ω2 + ∆2)3/2
+(34)
+The total phase of quantum state evolution
+γ = 2πνqua +
+Z T
+0
+⟨ψ|i∂t|ψ⟩dt
+(35)
+Furthermore, we calculate the fidelity:
+F = 1 −
+δγ
+2π
+2
+,
+δγ ∝
+Z T
+0
+(δλ)2dt
+(36)
+Consider the correlation of noise and estimate the over-
+all phase of the 53 atomic system [11],
+δγtotal
+∝
+p
+N + ρN(N −1)δγ
+≈
+16.5δγ,whereN
+=
+53, ρ
+=
+0.1(moderate correlation).
+Accumulation of corre-
+lated noise leads to fidelity attenuation Freal ≈1 −
+( 16.5×10−4π
+2π
+)2 ≈0.9993. Therefore, by controlling noise
+sources to design paths that bypass intermediate states,
+high fidelity levels are maintained.
+The dynamic control of the system is achieved through
+an acousto-optic modulator (AOM), which enables pre-
+cise adjustment of the laser intensity with a time resolu-
+tion, thereby facilitating the dynamic modulation of Ω(t).
+Two lasers are simultaneously locked to an ultra-stable
+F-P cavity to achieve phase locking. To characterize the
+topological response of the system, Ramsey interferom-
+etry is employed to measure the geometric phase differ-
+ence across different paths, verifying the equivalence of
+quasi-topological numbers. Furthermore, quantum state
+tomography is utilized to reconstruct the density matrix
+through fluorescence imaging, allowing for direct obser-
+vation of the path evolution process.
+By reconstructing the parameter space and imple-
+menting dynamic modulation, we demonstrate the strict
+equivalence of the quasi-topological numbers for the 1 →
+2 →3 and 1 →3 paths in the Rydberg atomic sys-
+tem.
+This is achieved by designing a circular critical
+region in the parameter space, which forces the indirect
+path to encircle the same topological charge as the di-
+rect path.
+The nonlinear parameterization of the sys-
+tem is realized through the cooperative modulation of the
+dual lasers, ensuring the equivalence of path projections.
+Finally, the quasi-topological number νqua ≈1/(2π) is
+verified through numerical calculations and experimental
+measurements of the Berry curvature integration. This
+scheme provides an experimentally verifiable blueprint
+for topological quantum control on the Rydberg atomic
+platform.
+νqua drive high-fidelity quantum computing and AGP
+fitting—The introduction of the counterdiabatic (CD)
+protocol can correct a non-adiabatic computational pro-
+cess with rapidly changing parameters back into an adi-
+abatic process. Under AGP corrections, the topological
+properties of non-closed parameter paths reduce the sys-
+tem’s dependence on environmental stability.
+As long
+as we can manipulate the initial and final states of quan-
+tum bit evolution, we can design noise-resistant and high-
+fidelity geometric quantum gates based on the aforemen-
+tioned theoretical framework.
+Considering a parameter space as a compact manifold
+X, where the boundary ∂X corresponds to controllable
+experimental constraints, the quasi-topological number
+is expressed as follows νqua =
+1
+2π
+R
+S−Sref F ∈Z, where
+S, Sref represent the open path and reference path, re-
+spectively. We obtain the total phase of quantum state
+evolution
+γ = 2πνqua
+| {z }
+geo
++
+Z T
+0
+⟨ψ|i∂t|ψ⟩dt
+|
+{z
+}
+dyn
+(37)
+, with the dynamic phase already suppressed by AGP.
+Furthermore, we calculate the fidelity:
+F = 1 −
+δγ
+2π
+2
+,
+δγ ∝
+Z T
+0
+(δλ)2dt
+(38)
+We numerically verify the fidelity in a one-dimensional
+Kitaev chain.
+First, we present the Hamiltonian in
+real-spaceHreal = −µ P
+j c†
+jcj −t P
+j(c†
+jcj+1 + h.c.) +
+∆P
+j(cjcj+1 + h.c.) and momentum-space for the one-
+dimensional Kitaev model.
+H(k) =
+
+−(µ + 2t cos k)
+i∆sin k
+−i∆sin k
+µ + 2t cos k
+
+(39)

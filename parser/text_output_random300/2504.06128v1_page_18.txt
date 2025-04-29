@@ -1,0 +1,118 @@
+18
+F. CARAVENNA, R. SUN, AND N. ZYGOURAS
+ErLpω, xqαs “ 0. By Fatou’s Lemma
+ErLpω, xqαs ď lim inf
+nÑ8
+E
+“
+Z ϑ,ω
+t
+`
+UBpx,δnq
+˘α‰
+(3.6)
+and it remains to estimate the RHS. To this end, we exploit the monotonicity of fractional
+moments (3.2) by replacing ϑ with ϑ1
+δ Ó ´8 and applying the log-normality (1.12). Let us
+fix a parameter ϱ P p0, 8q.
+‚ We rewrite the log-normality (1.12) by renaming δϱ
+ϑ “ e
+1
+2 ϱ ϑ as δ, i.e. expressing
+ϑ “ ´ 1
+ϱ log 1
+δ2 as a function of δ, so that (1.12) becomes
+Z
+´ 1
+ϱ log 1
+δ2
+t
+`
+UBpx,δq
+˘
+d
+ÝÝÝÑ
+δÓ0
+eNp0,σ2q´ 1
+2 σ2
+with
+σ2 “ logp1 ` ϱq .
+(3.7)
+We note that this weak convergence also implies convergence of fractional moments,
+because the LHS of (3.7) is bounded in L1 (recall that ErZ ϑ
+t pdxqs “ dx).
+‚ If we set ϑ1
+δ :“ ´ 1
+ϱ log 1
+δ2 Ñ ´8 as δ Ó 0, then we can apply the monotonicity of
+fractional moments (3.2) with φ “ UBpx,δq to estimate the RHS of (3.6).
+Overall, we obtain for any fixed α P p0, 1q
+@ϱ P p0, 8q :
+ErLpω, xqαs ď E
+”`
+eNp0,σ2q´ 1
+2 σ2˘αı
+“ e
+1
+2 pα2´αqσ2
+“
+1
+p1 ` ϱq
+αp1´αq
+2
+,
+where in the last equality we plugged in the value of σ “ logp1 ` ϱq from (3.7). Since
+αp1 ´ αq ą 0 for α P p0, 1q, letting ϱ Ñ 8 we finally obtain ErLpω, xqαs “ 0.
+□
+3.2. Log-normality of the SHF. We prove Theorem 1.2 on the log-normality of
+the SHF. More precisely we deduce it from the corresponding result for directed polymers,
+see Theorem 1.8 (which we prove in Section 4).
+To this end, recalling the uniform distribution on continuum and discrete balls, see (1.8)
+and (1.23), from the convergence in distribution (1.20), we obtain
+@x P R2, δ ą 0:
+Zβcrit
+N
+tN
+`
+UBpx
+?
+N,δ
+?
+Nq
+˘
+d
+ÝÝÝÝÝÑ
+NÑ8
+Z ϑ
+t
+`
+UBpx,δq
+˘
+.
+(3.8)
+Strictly speaking we cannot plug UBpx,δqp¨q as a test function into (1.20), because it is not
+continuous. However, for any ε ą 0, we can approximate φεp¨q ď UBpx,δqp¨q ď ψεp¨q with
+continuos functions φε, ψε such that 0 ď ψεp¨q ´ φεp¨q ď 1Aεp¨q, where we define the annulus
+Aε :“ Bpx, δ ` εqzBpx, δ ´ εq. Replacing UBpx,δqp¨q by φε or ψε in (1.20), we commit an
+error in L1 which is Opεq, i.e. the Lebesgue measure of Aε. This justifies (3.8).
+Proof of Theorem 1.2. We fix t ą 0, x P R2, ϱ P p0, 8q and define δϑ :“ e
+1
+2 ϑ as in (1.11).
+It suffices to prove the convergence in distribution (1.12) when ϑ ranges in an arbitrary
+negative sequence ϑk “ ´|ϑk| Ñ ´8, which we fix henceforth. Introducing the shorthands
+Yk :“ Z ϑk
+t
+`
+UBpx,δϱ
+ϑkq
+˘
+,
+Y :“ eNp0,σ2q´ 1
+2 σ2
+with
+σ2 “ logp1 ` ϱq ,
+we need to show that Yk Ñ Y in distribution. It suffices to fix any bounded and continuous
+function Φ : R Ñ R and to prove that
+lim
+kÑ8 ErΦpYkqs “ ErΦpY qs .
+(3.9)

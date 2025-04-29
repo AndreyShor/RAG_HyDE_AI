@@ -1,0 +1,40 @@
+(B) At time τ = 0, a quantum measurement occurs, causing a discrete branching event:
+X0 = log(∆) + Xpast
+0
+,
+where ∆= δB, and B is a discrete random variable uniformly distributed over {1, . . . , K},
+indexing the K possible measurement outcomes. Each outcome k is associated with
+a branching ratio δk ∈(0, 1), with PK
+k=1 δk = 1.
+In terms of the original process
+Φτ = ατ exp(Xτ), this branching step corresponds to Φ0 = ∆· Φpast
+0
+.
+(C) After the measurement, the process Xτ continues to evolve forward in time for τ > 0
+according to (18), using the same parameters µ and σ (so that µ/σ2 = 1). We assume
+that the pre-measurement process (Xpast
+τ
+: τ < 0), the measurement outcome B, and
+the post-measurement process (Xτ : τ > 0) are all mutually independent.
+Under this setup, we now examine the distribution of measurement outcomes conditional on
+survival until time τ, as τ →∞.
+Corollary 1 Let the setup be as described in (A), (B), and (C), with ﬁxed branching weights
+δk ∈(0, 1). Then:
+lim
+τ→∞P(B = k | Xτ ̸= −∞) = δk.
+Given our earlier discussion and results, this corollary should be unsurprising.
+However,
+there is a subtle shift in perspective: In Theorem 3 we computed the large τ limit of the
+survival probability P(Xτ ̸= −∞| X0 = x0), which, in the context of the measurement setup
+here, corresponds to P(Xτ ̸= −∞| B = k), since each outcome k determines the initial value
+X0 = log(δk) + Xpast
+0
+. Here, by contrast, we are interested in the probability of a particular
+measurement outcome B = k conditional on survival. To relate these two perspectives, we
+apply Bayes’ rule:
+P(B = k | Xτ ̸= −∞) =
+P(Xτ ̸= −∞| B = k) · P(B = k)
+PK
+j=1 P(Xτ ̸= −∞| B = j) · P(B = j)
+.
+37

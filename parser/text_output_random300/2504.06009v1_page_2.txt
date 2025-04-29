@@ -1,0 +1,135 @@
+type of energy storage element—RC or RL circuits—which
+represent canonical examples of LTI relaxation systems [8].
+These classical results naturally extend to spatially dis-
+tributed systems by considering an inﬁnite transmission line
+composed of resistors and capacitors periodically arranged
+along a spatial axis. Figure 1 illustrates the schematic of
+such an inﬁnite distributed RC transmission line. Taking the
+spatial discretization interval ∆x →0, this discrete electri-
+cal network is precisely governed by the one-dimensional
+diffusion equation [9], i.e.
+C ∂
+∂tV (t, x) = 1
+R
+∂2
+∂x2 V (t, x) + I(t, x),
+(1)
+where V (t, x) is the voltage across the capacitor and I(t, x)
+is the applied current at time t and position x. Introducing
+the variables y(t, x) = V (t, x), u(t, x) = I(t, x)/C, and the
+diffussion coefﬁcient α = 1/RC, the latter simpliﬁes to the
+standard (heat) diffusion equation
+∂
+∂ty(t, x) = α ∂2
+∂x2 y(t, x) + u(t, x).
+(2)
+The explicit solution of (2), see, e.g., [10], is given by the
+convolution
+y(t, x) =
+Z t
+−∞
+Z ∞
+−∞
+g(t −τ, x −ξ)u(τ, ξ) dξdτ
+(3)
+where g is the so-called heat kernel given by
+g(t, x) =
+1
+√
+4παt
+e−x2
+4αt .
+(4)
+The heat kernel clearly exhibits the relaxation property spa-
+tially. In particular, Figure 2a illustrates the spatial proﬁle of
+(4) at various times t. It shows the relaxation property, as the
+spatial proﬁle ﬂattens monotonically towards equilibrium as
+t increases. However, Figure 2b shows the kernel’s temporal
+behavior at a ﬁxed location, highlighting that the kernel is
+not a completely monotone function in time, as one might
+expect from a classical LTI relaxation system.
+This apparent discrepancy is resolved by examining the
+spatial Fourier transform of the diffusion equation (2), which
+yields the inﬁnite family of decoupled LTI systems
+∂
+∂t ˆy(t, ω) = −αω2ˆy(t, ω) + ˆu(t, ω)
+(5)
+parameterized by the frequency variable ω. The impulse
+response of the latter is given by
+ˆg(t, ω) = e−αω2t.
+(6)
+In this frequency domain representation, each mode ω in-
+dividually deﬁnes an LTI system whose impulse response
+R∆x
+R∆x
+R∆x
+R∆x
+C∆x
+C∆x
+C∆x
+C∆x
+Fig. 1: Distributed RC line circuit.
+is completely monotone in time. Thus, the diffusion equa-
+tion deﬁnes an inﬁnite-dimensional system that can be de-
+composed into an inﬁnite family of ﬁnite-dimensional LTI
+relaxation systems.
+The diffusion process provides a clear physical connection
+from classical relaxation theory to its inﬁnite-dimensional,
+spatially extended counterpart. This is further reinforced by
+the recent work [11], where it is explicitly demonstrated that
+the spatial discretization of the diffusion equation leads to a
+ﬁnite-dimensional LTI relaxation system. In this paper, we
+will extend the theory of LTI relaxation systems to a class
+of LTSI system, with the diffusion process as a canonical
+example of an LTSI relaxation system.
+(a)
+x
+t = 1
+t = 2
+t = 5
+t = 20
+(b)
+t
+x = 0
+x = 0.5
+x = 1
+x = 2
+Fig. 2: Plots of the heat kernel (4) at various times (a) and various
+locations (b).
+III. NOTATION AND PRELIMINARIES
+We use mostly standard notation. We denote the sets
+of nonnegative real numbers and integers by R+ and Z+,
+respectively. We denote the inner-product on a (complex)
+Hilbert space X by ⟨·, ·⟩X and the induced norm by ∥·∥X.
+We omit the subscript if X = Cn or there is no risk of
+ambiguity. We denote the Banach space of bounded linear
+operators from X to another Hilbert space Y by B(X, Y),
+and the operator norm by ∥·∥. We use the shorthand notation
+B(X, X) = B(X). We also consider unbounded linear
+operators A : D(A) →Y, where D(A) ⊂X is the domain
+of A. We say that A is densely deﬁned if D(A) ⊂X is
+dense. If A is densely deﬁned, then it has an adjoint A∗:
+D(A∗) →X, where D(A∗) ⊂Y is closed. We say that A
+is self-adjoint if D(A) = D(A∗) and ⟨Ax, y⟩= ⟨x, Ay⟩for
+all x, y ∈D(A). We say that a self-adjoint A is nonnegative
+if ⟨Ax, x⟩≥0 for all x ∈D(A), and we write A ≥0 to
+indicate that A is self-adjoint and nonnegative.
+A. Square integrable functions and the Fourier transform
+We denote the Hilbert space of square integrable functions
+from a domain X to a Hilbert space X by L2(X, X), where
+⟨f, g⟩L2(X,X ) =
+Z
+X
+⟨f(x), g(x)⟩X dx
+(7)
+The Fourier transform of a function f : Rs →Cn is the
+function ˆf : Rs →Cn given by
+ˆf(ω) =
+1
+√
+2π
+Z
+Rs e−j⟨ω,x⟩f(x) dx,
+(8)
+It is well-known [12] that the Fourier transform converges for
+absolutely integrable functions. Due to Plancherel’s theorem,

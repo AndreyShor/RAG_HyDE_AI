@@ -1,0 +1,105 @@
+7
+details of these parity check matrices are presented in
+Table I while, for the sake of comparison, the storage for
+each matrix is described by the red points in the bot-
+tom panel. We see that the results are very close to the
+predicted values for Msparse. Finally, in Appendix C, we
+examine the behaviour of the protocols in terms of losses
+when one considers diﬀerent values for block size, suc-
+cessful EC probability, and digitization.
+V.
+CONCLUSION
+Small device detectors and IoT device networks play a
+crucial role in modern society, enabling real-time moni-
+toring, automation, and seamless connectivity across var-
+ious sectors, including healthcare, smart cities, indus-
+trial automation, and environmental monitoring. Their
+ability to collect and process vast amounts of data en-
+hances eﬃciency, reduces human intervention, and sup-
+ports decision-making in critical applications. However,
+as these devices become deeply integrated into daily life,
+their security is of paramount importance. Cyber threats
+targeting IoT networks can lead to privacy breaches,
+unauthorized surveillance, or even large-scale disruptions
+in infrastructure, posing risks to public safety and eco-
+nomic stability.
+It is paramount then to search for robust solutions
+against cyber threats for these devices: one of the main
+candidates is QKD oﬀering an information-theoretic se-
+curity advantage. Since these devices operate at short
+distances, such as within a room, a house, or a ware-
+house, CV-QKD which has an advantage in this regime
+and especially the GMCS protocols can provide higher se-
+cret key rates. In particular, by using non-binary LDPC
+codes in a practical implementation of such a protocol,
+the parties exploit the high mutual information between
+their continuous variables.
+However, this is quite challenging due to the increased
+requirements of the data post-processing stage in compu-
+tational power or storage, not to mention implementing
+a QKD protocol on such constrained devices in the ﬁrst
+place. Therefore, in order to investigate the performance
+under those circumstances, one needs to develop rigor-
+ous theoretical tools. Here we have combined a compos-
+able security proof taking into account the main stages
+of the data post-processing of a QKD protocol with a
+tight bound for EC adapting it to the non-binary LDPC
+regime.
+This allows us to predict optimal secret key perfor-
+mance in terms of reconciliation eﬃciency and leakage
+and match this performance to operational code rates
+for given signal-to-noise ratios and error correction suc-
+cess probabilities.
+Based on this, we developed a tool
+that models the encoding storage requirements for a non-
+binary LDPC EC associated with the given secret key
+rate performance.
+We combined a composable security framework for the
+secret key rate of the GMCS protocols with a ﬁnite-size
+tight bound for one-way EC leakage of non-binary LDPC
+dependent on the given SNR and successful EC proba-
+bility.
+Through this tool, one can theoretically calcu-
+late the code rate for close to optimum performance and
+the dimensions of the associated parity-check matrix. In
+turn, one may calculate the storage requirements of the
+EC encoding process, which is crucial, for example, for
+the implementation of CV-QKD with constraint devices.
+Note here that optimum leakage means optimum value
+for storage.
+CODE AND NUMERICAL IMPLEMENTATION
+The majority of the numerical results and plots in this
+manuscript were produced using custom Python code de-
+veloped for the calculation of tight leakage bounds in the
+context of non-binary LDPC codes. This code represents
+a central technical contribution of the present work and
+is publicly available at: eqclabs/tight_bound_leakage.
+The three red data points in Fig. 3 were obtained using an
+independent implementation, as referenced in the main
+text.
+All simulations were performed on nodes of the
+Viking High Performance Computing cluster at the Uni-
+versity of York, equipped with a 2-core AMD EPYC3
+7643 processor and 12 GB of memory. All repositories
+are released under the Apache License 2.0 and include
+documentation to support reproducibility.
+ACKNOWLEDGEMENTS
+P.P. thanks Juan Vieira Giestinhas and Alex Mounto-
+giannakis for insightful discussions, and the high perfor-
+mance compute facility, the Viking cluster, of the Uni-
+versity of York.
+This work is supported, in part, by
+EPSRC and DSIT TMF-uplift: CHEDDAR: Communi-
+cations Hub For Empowering Distributed ClouD Com-
+puting Applications And Research (EP/X040518/l), and
+(EP/Y037421/l). S.P. acknowledges support from EP-
+SRC and UKRI, via the Integrated Quantum Networks
+(IQN) Research Hub (EP/Z533208/1).
+[1] C. H. Bennett and G. Brassard, Quantum cryptog- raphy:
+Public key distribution and coin tossing, Int. Conf. on
+Computers, Systems & Signal Processing, Ban- galore,
+India, Dec 9-12, 1984. Also at Theor. Comput. Sci. 560,
+7 (2014).
+[2] N. Gisin, G. Ribordy, W. Tittel, and H. Zbinden, Quan-
+tum Cryptography, Rev. Mod. Phys. 74, 145 (2002).
+[3] V. Scarani, H. Bechmann-Pasquinucci, N. J. Cerf, M.

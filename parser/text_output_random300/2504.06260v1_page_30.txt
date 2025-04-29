@@ -1,0 +1,58 @@
+Preprint. Under review.
+* Plane stress: The analysis assumes the membrane is thin and subjected to in-plane
+loading.
+**MESHES:**
+* A mapped quadrilateral mesh over the entire Quarter-Symmetry Domain.
+**OUTPUT:**
+* The analysis aims to calculate the tangential edge stress (σyy) at point O.
+Export the table containing this value to OUTPUT PATH/output.txt.
+SELECTION IDENTITIES:
+DOMAINS: Quarter-symmetry membrane: Domain 1
+BOUNDARIES: Left edge, Symmetry Boundary Condition: Boundary 1
+Bottom edge, Symmetry Boundary Condition: Boundary 2
+Outer Curved Edge, Boundary Load: Boundary 4
+POINTS:
+O: Point 3
+TARGET QUANTITY to be computed: Tangential stress (σyy) at point O in Pa. Export
+the table containing this value to OUTPUT PATH/output.txt.
+ANSWER:
+java ```
+model.component ().create (" comp1", true);
+model.component ("comp1").geom().create (" geom1", 2);
+model.component ("comp1").mesh().create (" mesh1 ");
+model.component ("comp1").geom(" geom1 ").create ("e1", "Ellipse ");
+model.component ("comp1").geom(" geom1 ").feature ("e1").set(" semiaxes
+", new double []{3.25 , 2.75});
+model.component ("comp1").geom(" geom1 ").feature ("e1").set(" angle",
+90);
+model.component ("comp1").geom(" geom1 ").create ("e2", "Ellipse ");
+model.component ("comp1").geom(" geom1 ").feature ("e2").set(" semiaxes
+", new int[]{2, 1});
+model.component ("comp1").geom(" geom1 ").feature ("e2").set(" angle",
+90);
+model.component ("comp1").geom(" geom1 ").create ("dif1", "Difference ")
+;
+model.component ("comp1").geom(" geom1 ").feature ("dif1").selection ("
+input").set("e1");
+model.component ("comp1").geom(" geom1 ").feature ("dif1").selection ("
+input2 ").set("e2");
+model.component ("comp1").geom(" geom1 ").run();
+model.component ("comp1").geom(" geom1 ").run("fin");
+model.component ("comp1").selection ().create ("sel1", "Explicit ");
+model.component ("comp1").selection ("sel1").geom(" geom1", 0);
+model.component ("comp1").selection ("sel1").set (3);
+model.component ("comp1").selection ("sel1").label ("O");
+model.component ("comp1").material ().create ("mat1", "Common ");
+model.component ("comp1").material ("mat1").propertyGroup ().create ("
+Enu", "Young 's modulus and Poisson 's ratio ");
+model.component ("comp1").material ("mat1").propertyGroup ("Enu").set
+("E", "2.1 e11");
+model.component ("comp1").material ("mat1").propertyGroup ("Enu").set
+("nu", "0.3");
+model.component ("comp1").physics ().create (" solid", "SolidMechanics
+", "geom1");
+model.component ("comp1").physics (" solid ").create ("sym1", "
+SymmetrySolid", 1);
+model.component ("comp1").physics (" solid ").feature ("sym1").selection
+().set(2);
+30

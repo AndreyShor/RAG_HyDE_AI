@@ -1,0 +1,271 @@
+TABLE III
+A COMPARISON OF THE PERFORMANCE OF THE PROPOSED ALGORITHM AND ALGORITHMS FROM LITERATURE ON THE BATADAL DATASET.
+No.
+Reference
+Approach
+S
+ST T D
+SCLF
+F1
+TPR
+TNR
+PPV
+TP
+FP
+TN
+FN
+1
+Proposed
+hTDC-AE
+0.9765
+0.9974
+0.9555
+0.9176
+0.9165
+0.9944
+0.9187
+-
+-
+-
+-
+2
+[28], [22]
+B1
+0.9701
+0.9650
+0.9752
+0.9700
+0.9533
+0.9970
+0.9873
+388
+5
+1677
+19
+3
+[23]
+Enh. AE
+0.9571
+0.9556
+0.9587
+0.9167
+0.9459
+0.9714
+0.8891
+385
+48
+1628
+22
+4
+[21]
+Edge AE
+0.9534
+0.9701
+0.9469
+0.9253
+0.9056
+0.9913
+0.9215
+-
+-
+-
+-
+5
+[29]
+QDA
+0.9495
+0.9584
+0.9406
+0.8981
+0.9091
+0.9721
+0.8873
+370
+47
+1635
+37
+6
+[30], [22]
+B2
+0.9491
+0.9580
+0.9402
+0.8813
+0.9214
+0.9590
+0.8446
+375
+69
+1613
+32
+7
+[31], [22]
+B3
+0.9267
+0.9360
+0.9174
+0.9057
+0.8378
+0.9970
+0.9855
+341
+5
+1677
+66
+8
+[29]
+MD
+0.9165
+0.9069
+0.9260
+0.8920
+0.8722
+0.9798
+0.9126
+355
+34
+1648
+52
+9
+[29]
+Ensemble
+0.9142
+0.8998
+0.9286
+0.8856
+0.8845
+0.9727
+0.8867
+360
+46
+1636
+47
+10
+[32]
+OS-ELM
+0.9100
+0.9400
+0.8800
+0.8060
+0.8080
+0.9520
+0.8040
+329
+80
+1602
+78
+for enhancing system responsiveness in practice. Notably, our
+model outperforms the leader of the BATADAL challenge
+without relying on specific domain knowledge, making it a
+more generalizable solution. Furthermore, our method main-
+tains the same time complexity as conventional autoencoders
+while reducing the number of fully connected layers from
+three to two compared to the benchmark. This simplification
+not only streamlines the architecture but also contributes to a
+greener, more sustainable model with lower computational
+requirements.
+Our algorithm is highly flexible and can be integrated
+into any autoencoder for anomaly detection in systems where
+physical data or deterministic processes are expected. We aim
+to move beyond conventional statistical fitting of non-linear
+functions, contributing to the broader challenge of guiding
+neural networks to learn generalizable and interpretable
+abstractions that embed meaningful, process-driven relation-
+ships.
+Future work will focus on studying the theoretical foun-
+dations of this method and testing it on simpler systems with
+known analytical solutions. This will allow us to validate the
+relationships between static and dynamic features in the latent
+space and explore whether consistent laws emerge between
+deterministic nodes. Such investigations could provide deeper
+insights into the system’s dynamics and further study the
+interpretability of the TDC-informed models.
+ACKNOWLEDGEMENTS
+This work was funded by the European Union’s Horizon Re-
+search and Innovation Programme under GA No. 101119681
+(project ResilMesh) and by the Austrian Security Research
+Programme KIRAS of the Federal Ministry of Finance (BMF)
+under GA No. FO999905309 (project SeRWas)
+REFERENCES
+[1] M. Somma, T. Gallien, and B. Stojanovic, “Anomaly Detection in Com-
+plex Dynamical Systems: A Systematic Framework Using Embedding
+Theory and Physics-Inspired Consistency,” Feb. 2025, arXiv:2502.19307
+[cs].
+[2] N. Tuptuk, P. Hazell, J. Watson, and S. Hailes, “A Systematic Review
+of the State of Cyber-Security in Water Systems,” Water, vol. 13, no. 1,
+p. 81, 2021.
+[3] S. Ikeda, “Two More Cyber Attacks on US Water Supply Highlights
+Concerns About Vulnerabilities, but Sensational Headlines Sometimes
+Overstate the Threat to Public Safety,” Jun. 2021, publisher: CPO
+Magazine. [Online]. Available: https://www.cpomagazine.com/cyber-s
+ecurity/two-more-cyber-attacks-on-us-water-supply-highlights-concern
+s-about-vulnerabilities-but-sensational-headlines-sometimes-overstate-t
+he-threat-to-public-safety/
+[4] J.
+Magill,
+“U.S.
+Water
+Supply
+System
+Being
+Targeted
+By
+Cybercriminals,”
+2021,
+publisher:
+Forbes.
+[Online].
+Available:
+https://www.forbes.com/sites/jimmagill/2021/07/25/us-water-suppl
+y-system-being-targeted-by-cybercriminals/?sh=6547957628e7
+[5] F. Bajak and M. Levy, “Hackers target Iran, Israel, and water utilities:
+Critical infrastructure under threat,” AP News, Dec. 2023. [Online].
+Available: https://apnews.com/article/hackers-iran-israel-water-utilities
+-critical-infrastructure-cisa-554b2aa969c8220016ab2ef94bd7635b
+[6] P. Smith, “South staffs water attack,” SCADAfence Blog, Aug. 2022.
+[Online]. Available: https://blog.scadafence.com/south-staffs-water-att
+ack
+[7] J. Wolfe, “Veolia’s municipal water division suffers ransomware
+cyberattack,”
+WaterWorld,
+Jan.
+2024.
+[Online].
+Available:
+https:
+//www.waterworld.com/water-utility-management/article/14304119/veo
+lias-municipal-water-division-suffers-ransomware-cyberattack
+[8] A. Alqudhaibi, M. Albarrak, A. Aloseel, S. Jagtap, and K. Salonitis,
+“Predicting Cybersecurity Threats in Critical Infrastructure for Industry
+4.0: A Proactive Approach Based on Attacker Motivations,” Sensors,
+vol. 23, no. 9, p. 4539, 2023.
+[9] A. Alshamrani, S. Myneni, A. Chowdhary, and D. Huang, “A Survey
+on Advanced Persistent Threats: Techniques, Solutions, Challenges,
+and Research Opportunities,” IEEE Communications Surveys Tutorials,
+vol. 21, no. 1, pp. 1851–1877, 2019.
+[10] B. Stojanovi´c, K. Hofer-Schmitz, and U. Kleb, “APT datasets and attack
+modeling for automated detection methods: A review,” Computers
+& Security, vol. 92, p. 101734, May 2020. [Online]. Available:
+https://www.sciencedirect.com/science/article/pii/S0167404820300213
+[11] S. Siami-Namini, N. Tavakoli, and A. Siami Namin, “A Comparison
+of ARIMA and LSTM in Forecasting Time Series,” in 2018 17th
+IEEE International Conference on Machine Learning and Applications
+(ICMLA), Dec. 2018, pp. 1394–1401.
+[12] S. Siami-Namini, N. Tavakoli, and A. S. Namin, “The Performance
+of LSTM and BiLSTM in Forecasting Time Series,” in 2019 IEEE
+International Conference on Big Data (Big Data), Dec. 2019, pp. 3285–
+3292.
+[13] Y. Wei, J. Jang-Jaccard, W. Xu, F. Sabrina, S. Camtepe, and M. Boulic,
+“LSTM-Autoencoder-Based Anomaly Detection for Indoor Air Quality
+Time-Series Data,” IEEE Sensors Journal, vol. 23, no. 4, pp. 3787–3800,
+Feb. 2023, conference Name: IEEE Sensors Journal.
+[14] S. Longari, D. H. Nova Valcarcel, M. Zago, M. Carminati, and S. Zanero,
+“CANnolo: An Anomaly Detection System Based on LSTM Autoen-
+coders for Controller Area Network,” IEEE Transactions on Network
+and Service Management, vol. 18, no. 2, pp. 1913–1924, Jun. 2021.
+[15] H. D. Nguyen, K. P. Tran, S. Thomassey, and M. Hamad, “Forecasting
+and Anomaly Detection approaches using LSTM and LSTM Autoen-
+coder techniques with the applications in supply chain management,”
+International Journal of Information Management, vol. 57, p. 102282,
+Apr. 2021.
+[16] S. Cai, Z. Mao, Z. Wang, M. Yin, and G. E. Karniadakis, “Physics-

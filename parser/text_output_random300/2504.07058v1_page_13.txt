@@ -1,0 +1,102 @@
+Second Term:
+𝑑
+𝑑𝑡|∇𝑈|2 Expanding |∇𝑈|2 as P𝑑
+𝑖=1(𝜕𝑥𝑖𝑈)2, differentiation gives:
+𝑑
+𝑑𝑡|∇𝑈|2= 2∇𝑈· ∇𝑈𝑡.
+(2.62)
+Thus,
+𝑑
+𝑑𝑡
+1
+2 |∇𝑈|2= ∇𝑈· ∇𝑈𝑡.
+(2.63)
+Applying integration by parts:
+Z
+D
+∇𝑈· ∇𝑈𝑡𝑑𝑥= −
+Z
+D
+(∆𝑈)𝑈𝑡𝑑𝑥.
+(2.64)
+Third Term:
+𝑑
+𝑑𝑡(1 −𝑈2)2 Using the chain rule:
+𝑑
+𝑑𝑡(1 −𝑈2)2 = −4𝑈(1 −𝑈2)𝑈𝑡.
+(2.65)
+Thus,
+𝑑
+𝑑𝑡
+1
+4(1 −𝑈2) = −𝑈(1 −𝑈2)𝑈𝑡.
+(2.66)
+Substituting into 𝑑𝐸
+𝑑𝑡,
+𝑑𝐸
+𝑑𝑡=
+Z
+D
+
+𝛾∆𝑈· ∆𝑈𝑡−(∆𝑈)𝑈𝑡−𝑈(1 −𝑈2)𝑈𝑡
+
+𝑑𝑥.
+(2.67)
+Rewriting:
+𝑑𝐸
+𝑑𝑡=
+Z
+D
+𝑈𝑡
+
+𝛾∆2𝑈−∆𝑈−𝑈(1 −𝑈2)
+
+𝑑𝑥.
+(2.68)
+If 𝑈satisfies the evolution equation (2.10):
+𝑈𝑡= −(𝛾∆2𝑈−∆𝑈−𝑈(1 −𝑈2)),
+(2.69)
+substituting into 𝑑𝐸
+𝑑𝑡gives:
+𝑑𝐸
+𝑑𝑡=
+Z
+D
+−(𝛾∆2𝑈−∆𝑈−𝑈(1 −𝑈2))2𝑑𝑥.
+(2.70)
+Since the integrand is non-positive,
+𝑑𝐸
+𝑑𝑡⩽0.
+(2.71)
+Thus, 𝐸(𝑈) is non-increasing, ensuring energy dissipation and stability of the system.
+𝐸(𝑈) ⩽𝐸(𝑈0).
+(2.72)
+Using Poincar´e’s inequality in the energy dissipation property,
+∥𝑈∥𝐿2⩽𝐶1
+𝛾∥𝑈0∥𝐿2.
+(2.73)
+An application of the Sobolev embedding theorem then gives
+∥𝑈∥𝐿∞⩽𝐶1
+𝛾∥𝑈0∥𝐿2.
+(2.74)
+Thus, 𝑈is uniformly bounded in 𝐿∞, completing the proof.
+□
+2.9.2
+Convergence of multilayer neural network
+This section establishes 𝐿2 bounds and analyzes the convergence of the multilayer neural network 𝑈𝑛for both
+models. From 2.2.1
+D(𝑈𝑛) = f.
+(2.75)
+Additionally, assume that for each f ∈𝑌∗, a unique solution 𝑢∈𝑋∗exists for (2.14), subject to approximate
+boundary and initial conditions given by
+B(𝑈𝑛) = 𝑈𝑛
+𝑏
+on 𝜕D,
+𝑈𝑛(0, 𝑥) = 𝑈𝑛
+0
+on D.
+(2.76)
+Here, B represents a boundary operator, 𝑈𝑛
+𝑏is the prescribed boundary data, and 𝑈𝑛
+0 denotes the initial condition.
+13

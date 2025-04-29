@@ -1,0 +1,48 @@
+A Scalable Automatic Model Generation Tool for Cyber-Physical Network Topologies and Data Flows for Large-Scale
+Synthetic Power Grid Models
+XXX:7
+3.2
+Modeling Utility Control Centers (UCCs) and Balancing Authorities (BAs)
+In synthetic power networks, geographical data is typically associated with substations, whereas
+information about UCCs or BAs is often considered administrative and not crucial for power
+flow analyses. Nevertheless, the critical role of communication networks connecting substations,
+UCCs, and BAs necessitates the inclusion of UCC and BA locations within the analytical model.
+The methodology introduced in this paper initially establishes the positions of the UCC and BA.
+Subsequently, it integrates the communication model details and allocates data flows to each UCC
+and BA.
+As the goal is to construct a realistic yet fictional network topology, the location of a UCC is
+inferred from the latitude and longitude of the substations. This is achieved through 𝑘-means
+clustering, which calculates the centroids of substations. The value of 𝑘, representing the number
+of clusters, is determined by user input. For example, in the 500-bus grid model, the number of
+UCCs is 4, that is 𝑘= 4. The position of the regulatory agency or BA also needs to be determined.
+A BA’s role is to ensure the generated power meets the consumers’ load. A BA also controls the
+power grid’s frequency, to keep it stable around the nominal frequency (e.g., 60 Hz in the US). The
+model uses a user input for the number of BAs. The location of the BA is decided based on the
+clustering of the UCCs. The BA is placed within the clusters by calculating the centroid of the UCC
+locations.
+The UCCs and BAs contain routers, firewalls, and ethernet switches. Since the UCC oversees its
+substations, it employs a SCADA system to remotely monitor and control them. The hosts in the
+UCC include an EMS, a Human Machine Interface (HMI), and a dedicated host to exchange data with
+the BA. The UCC also has a firewall connected to the corporate network, but this communication
+network has not been added to our model. The LAN for all UCCs and BAs is shown in Fig. 2,
+irrespective of the choice of topology.
+3.3
+Modeling Substations
+Information on substations is obtained from the power network data. The location is determined
+by the latitude and longitude contained in the CSV file. On the communication side, the LAN inside
+the substations is defined as indicated in Fig. 2, which is the same for all the substations in the
+network. They differ in the number of relays and, hence, the connections of relays to the relay
+controller. Each substation is connected to the UCC’s SCADA system or other substations (in the
+case of radial/statistics-based topology) through a router and a firewall.
+The assumption is that each substation has two LANs. In Fig. 2, considering the transmission or
+generation substation, the network on the right of the firewall can be viewed as an administrative
+network. It includes two hosts, a local database, and a local web server that stores power system
+data. The network on the left of the firewall is the Operational Technology (OT) network with
+an outstation host and several relays, depending on the number of buses in the substation. This
+network also has a relay controller and one outstation host.
+For simplicity, it is assumed that the relay controller combines the functions of a Remote Ter-
+minal Unit (RTU) device. The choice of communication link connecting substations to other sites
+depends on factors like latency, location, security, and cost. Various technologies, such as cellular
+modems, microwave links, and fiber optics, can be employed. Each link connecting the cyber
+elements has attributes such as link type, distance, bandwidth, and protocol to represent the diverse
+communication methods used by utilities.

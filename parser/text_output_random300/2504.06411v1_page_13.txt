@@ -1,0 +1,146 @@
+Ξ(qt, vt, pt) =
+ Z  
+∂
+∂q|T
+t
+ 
+L ◦dX0
+t +
+k
+X
+i=1
+
+Li −
+D
+p|T
+t , Vi(q|T
+t )
+E
+◦dXi
+t
+!
+−◦dp|T
+t
+!
+,
+Z  
+p|T
+t −∂L
+∂v|T
+t
+!
+◦dX0
+t ,
+Z  
+◦dq|T
+t
+−v|T
+t
+◦dX0
+t −
+k
+X
+i=1
+Vi(q|T
+t ) ◦dXi
+t
+!
+Since the Stratonovich integral commutes with time changes we have Ξ(ΓAt) = Ξ(Γ)At for any continuous time
+change t 7→At. Then, given a (K, T)-deformation of Γ, we have
+Z τ h
+K+τ (h,e)
+K
+τ h
+K
+D
+δΓ|T , ◦dΞ(Γ|T )
+E
+= 0
+for every (K, T)-deformation ϵ 7→Γϵ of Γ. By Lemma 3.3 ◦dΞ(Γ|T ) = 0 in ]]τ h
+K0, τ h
+K0 + τ (h,e)
+K0
+[[. This implies that
+◦dq|T
+t
+= v|T
+t
+◦dX0
+t +
+k
+X
+i=1
+Vi(q|T
+t ) ◦dXi
+t
+◦dp|T
+t
+=
+∂
+∂q|T
+t
+ 
+L ◦dX0
+t +
+k
+X
+i=1
+
+Li −
+D
+p|T
+t , Vi(q|T
+t )
+E
+◦dXi
+t
+!
+ 
+p|T
+t −∂L
+∂v|T
+t
+!
+◦dX0
+t = 0
+in ]]τ h
+K0, τ h
+K0 + τ (h,e)
+K0
+[[. This completes the proof.
+Remark 4.2. If X0 = t then the second equation is the Legendre transform pt = ∂L
+∂vt . Also note that if Xi = 0 for
+all i = 1, · · · , k then the stochastic implicit Euler-Lagrange equations reduce to the deterministic Euler-Lagrange
+equations.
+4.2
+The Intrinsic Form of the Stochastic Hamilton-Pontryagin Principle
+We will now focus on the intrinsic form on the stochastic Hamilton-Pontryagin principle.
+We introduce an
+additional assumption here, namely that our semimartingales are obtained as solutions of Stratonovich equations
+on manifolds. To motivate this, we recall that in case of the deterministic Hamilton’s principle, given a regular
+Lagrangian L ∈C∞(TQ) there exists a second order vector field ZL such that the integral curves of ZL project
+to solutions of the Euler-Lagrange equations (see Theorem 7.3.3 in Marsden and Ratiu [11]). Thus, for regular
+Lagrangians, finding a critical point of the action functional corresponds to selecting a particular vector field in
+X (TQ). We will extend this idea to the stochastic case as well, namely, we will show that under the assumption
+that a semimartingale solves a Stratonovich equation, finding a critical point of SX corresponds to selecting a
+particular Stratonovich operator.
+Let (e0, · · · , ek) be a basis of Rk+1. Let M be any regular submanifold of PQ and PrT M, PrM, etc. denote
+the maps in (6) restricted to M. Given any Stratonovich operator S ∈Strat(Rk+1, M), any semimartingale
+X = (X0, · · · , Xk) in Rk+1 and a solution ΓX of ◦dΓ = S(X, Γ) ◦dX, from Eq. (8) we have
+SX(ΓX) =
+Z T
+0
+G ◦dΓX −
+k
+X
+j=0
+Z T
+0
+Ej(ΓX) ◦dXj.
+Given x ∈Rk+1, y ∈M and j ∈{0, · · · , k}, suppose zj ∈TTM, PrT M = Sx,ej(y) and TPrM = wy, for some
+wy ∈TM. Then
+dEj(wy) = dEj ◦TPrM(zj) = (PrM)∗dEj(Sx,ej)(zj).
+Now let ϵ 7→ΓXϵ be any deformation of ΓX and Zj be any TTM-valued semimartingale such that TPrM(Zj) =
+δΓX and PrT M(Zj) = Sx,ej(ΓX). Then
+dEj(δΓX) = (PrM)∗dEj(SX,ej(ΓX))(Zj)
+13

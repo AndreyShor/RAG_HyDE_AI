@@ -1,0 +1,69 @@
+9 
+Table 3 Baseline flow, physiological and optical parameters at 785 nm of the four-layer model simulation. 
+ 
+Layer 
+Layer thickness 
+(mm) 
+𝜇𝜇𝑎𝑎 (mm-1) 
+𝜇𝜇𝑠𝑠
+′ (mm-1) 
+𝐷𝐷𝑏𝑏 (mm2/s) 
+four-layer slab 
+Scalp 
+3 
+0.019 
+0.726 
+1 × 10−6 
+Skull 
+7 
+0.014 
+0.946 
+8 × 10−8 
+CSF 
+2 
+0.001 
+0.002 
+1 × 10−8 
+Brain 
+∞ 
+0.020 
+1.210 
+6 × 10−6 
+We use 𝐷𝐷𝑏𝑏_𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏 and 𝐷𝐷𝑏𝑏_𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠 to represent the Brownian diffusion coefficients in brain and scalp, 
+respectively. We first simulated a pulsatile waveform of 𝐷𝐷𝑏𝑏_𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏 while gradually increasing 
+𝐷𝐷𝑏𝑏_𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠 to show the model's performance in recovering the 𝐷𝐷𝑏𝑏_𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏 waveform as well as its 
+ability to identify the influence of 𝐷𝐷𝑏𝑏_𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠. For the simulations, 𝐷𝐷𝑏𝑏_𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏 ranges from 3×10-6 
+mm2/s to 9×10-6 mm2/s follows a pulsatile pattern, while the 𝐷𝐷𝑏𝑏_𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠 gradually increases from 
+5×10-7 mm2/s to 1.5×10-6 mm2/s. Other parameters remain the same as in the baseline condition, 
+and one level of noise (middle) was added to the simulated data as described previously. For 
+CBFibaseline recovery, we simulated 100 noise-added data samples under the baseline condition 
+(Table 3). The mean values of the recovered CBFi from the DL model and the decorrelation speed 
+measured using single-exponential fitting across the 100 data samples were used as the baseline 
+for calculating relative cerebral perfusion changes, respectively. rCBFi was calculated as rCBFi =
+CBFi/CBFibaseline
+7,27. 
+To quantify CBFi sensitivity, 𝐷𝐷𝑏𝑏_𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏 was varied by ±25% and ±50% relative to the baseline, 
+while maintaining 𝐷𝐷𝑏𝑏 in other layers constant. Similarly, 𝐷𝐷𝑏𝑏_𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠𝑠 was varied by ±25% and ±50% 
+relative to the baseline while keeping 𝐷𝐷𝑏𝑏 in other layers constant, allowing us to evaluate the 
+model’s CBFi measurement sensitivity to scalp BFi (SBFi) changes. At each perturbation level, 
+100 noise-added datasets were generated. The sensitivity is defined as49: 
+𝑆𝑆=
+(CBFi −CBFi0)
+CBFi0
+(𝐷𝐷𝑏𝑏−𝐷𝐷𝑏𝑏0)
+𝐷𝐷𝑏𝑏0
+,
+(10) 
+where CBFi and CBFi0 represent the recovered CBFi under perturbed and baseline conditions, 
+respectively, 𝐷𝐷𝑏𝑏 and 𝐷𝐷𝑏𝑏0 denote the simulated brain or scalp Brownian coefficient at perturbation 
+and baseline conditions. For the fitting method, the numerator of Eq. (10) is replaced by the change 
+in decorrelation speed. Ideally, a measured CBFi sensitivity close to 100% is preferred, as it 
+indicates accurate detection of cerebral blood flow changes. Conversely, a measured CBFi 
+sensitivity to SBFi changes close to 0% suggests that the model is robust against SBFi variations, 
+minimizing confounding effects from extracerebral blood flow. 
+We also calculated the recovered rCBF error by DL and fitting, calculated using below equation: 
+𝜖𝜖= (rCBF −𝑟𝑟𝐷𝐷𝑏𝑏) × 100%,
+(11) 
+where rCBF represents the percentage error in recovered relative flow change. 
+ 
+ 

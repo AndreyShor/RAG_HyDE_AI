@@ -1,0 +1,57 @@
+4.3
+Proof of the separation lemma for CLE
+In what follows, we aim to prove Lemma 4.3 concerning the quality Qε(Ls), and then use it to prove
+the main separation result, i.e. Proposition 4.1. We begin by establishing some key ingredients,
+and we then complete the proof of separation in the end.
+Let M := ⌊log2(r/ε)⌋(≥1 by assumption). Set r0 := ε. For all 1 ≤i ≤M, let ri := 2iε, and
+let A(i) := E2(ε, ri; Bri+1) be the local arm event. Let e
+A(i) ⊆A(i) be the stable arm event that
+there are exactly two clusters C1 and C2 in Lri+1 across the annulus Aε,ri, and for each j = 1, 2,
+Cj contains a subcluster of Lri that crosses Aε,ri−1.
+(4.8)
+The following lemma upper bounds P(A(i)) by a combination of P( e
+A(i)) and P(A(i −1)),
+which can be roughly regarded as a kind of stability result on arm events. This stability result
+is an additional technicality in the proof of Lemma 4.3, compared to those we proved in [13]. It
+turns out to be quite important to make the recursive procedure (4.12) work (which is a standard
+step in the proof of separation lemma). It is worth putting this lemma in the first place in order
+to emphasize its importance. The other two ingredients Lemma 4.9 and Lemma 4.10 are more
+standard (although additional complexities emerge due to the convoluted definition of quality),
+which are indeed analogous to Lemma 4.5 and Lemma 4.4 in [13], respectively.
+Lemma 4.8. There is a constant c > 0 such that the following holds. For all δ > 0, there exists a
+constant b(δ) > 0 such that for all i ≥2,
+P(A(i)) ≤b(δ) P( e
+A(i)) + δc P(A(i −1)).
+(4.9)
+Proof. Let ¯
+A(i) ⊆A(i) be the event that there are exactly two crossing clusters of Aε,ri in Lri+1.
+By the BK inequality (similar to (3.1)), we have P(A(i)) ≲P( ¯
+A(i)). Hence, it suffices to show (4.9)
+for ¯
+A(i) in place of A(i). First, we explore all the loops in Lri, and let Λ0 := Λ(Bε, Lri). On the
+event ¯
+A(i), we can find two loops γ1 and γ2 in Lri+1 that both intersect Λ0 and ∂Bri, and they
+belong to two different crossing clusters in Lri+1, which are denoted by C1 and C2 below. For each
+j = 1, 2, we check if Cj satisfies the condition (4.8).
+Case (1). We first consider the case that both C1 and C2 do not satisfy (4.8). Given C1 and C2,
+all the other clusters in Lri+1 that intersect Bε are contained in Bri−1 with some positive probability,
+which is assumed now. Then, we have Λ0 ⊂Bri−1, and γ1 and γ2 are a pair of non-intersecting
+loops that intersect Λ0 and cross Ari−1,ri. In fact, this is just a continuous analogue of the discrete
+event ¯E2, which we already dealt with in Lemma 5.8 of [13]. Using a similar Markovian exploration
+therein with Lemma 4.4 as an input now, we can show the result as follows (we refer the reader to
+the proof of Lemma 5.8 of [13] for details). With a positive cost, one can modify the loops γ1 and γ2
+such that they are contained in Bri, well-separated at scale 1.5 ri−1, and they retain the connection
+(i.e., the refreshed crossing clusters in Lri containing them are disjoint and cross Aε,ri−1). After
+this modification, we can extend the two crossing clusters to scale ri by using two loops in Lri+1
+that intersect ∂Bri. This implies e
+A(i), and it only costs a positive constant because the refreshed
+crossing clusters are well-separated now. We conclude P( ¯
+A(i)) ≲P( e
+A(i)) in this case.
+Case (2). Next, we consider the case that (4.8) is true for C1 but not for C2. We can further
+assume that there is a subcluster C′
+1 of Lri that crosses Aε,ri−1 with dist(C′
+1, ∂Bri) ≤δri, and hooked
+by γ1. Otherwise, we are in a similar situation as case (1): two loops crossing A(1−δ)ri,ri that make
+clusters in B(1−δ)ri connect to ∂Bri. Note that the multiplicative constant now depends on δ, which
+16

@@ -1,0 +1,39 @@
+instances of materials with free-atom like states serves as an illuminating test for the capability of this model
+to generalize well to rare cases in the training dataset.
+Figure 3: A visual representation of the three constrained generation tasks. (1) Masked generation: a
+single atom of the structure is conditioned on Ni’s DOS, while the remaining atoms are left unconditioned.
+(2) Template guided generation: Instead of complete random initialization, use an existing material as a
+template. A subset of the template material’s atoms is then conditioned on Ni’s DOS. (3) Fixed atom type
+generation: a single atom of the structure is conditioned on Ni’s DOS, but with its atom type held fixed
+(e.g., pre-defined as Co).
+3.2.1
+MASKED GENERATION
+In the masked generation task, we seek to match the target DOS for an arbitrary subset of atoms, while
+allowing the DOS of the unconditioned atoms to vary freely, thereby enabling the generation of diverse
+structures that still meet the specified constraints. Effectively, we are generating new local atomic envi-
+ronments which yield the same desired DOS, which still come together to form a stable crystal structure.
+Constraining only a subset of atoms rather than the entire material also allows for greater diversity in the
+generated structures, without compromising on the overall goal of finding materials with free-atom like
+states. We begin the generation procedure at starting timestep T = 1000, where AT , XT and LT are
+sampled from their respective prior distributions. In the masked generation case, we constrain the number
+of atoms to the set Natoms ∈{4, 5, 6, 7}, though this can be readily changed as needed. For each value of
+Natoms, we condition the first atom using Ni’s DOS from Au3Ni, while leaving the remaining atoms uncon-
+ditioned. We then generate 50 candidate structures for each Natoms and select a representative structure to
+visualize its first atom’s DOS with the ground truth in Fig. 4.
+NiKNSr
+NiHo2N2
+NiCd2Pd2S
+NiBr2I3Mn
+Figure 4: Density of states (DOS) for generated materials with Natoms ∈{4, 5, 6, 7}. The orange curve
+represents the DOS of the first atom in each generated material, conditioned on Ni’s DOS from Au3Ni
+(shown in blue). The element type of the first atom is indicated in red. Visualizations of all structures are
+of a 2 × 2 × 2 supercell.
+As shown in Fig. 4, the ground truth DOS of the nickel atom in Au3Ni features a centralized sharp peak.
+Similarly, the four selected generated materials, each with a different Natoms, also exhibit a centralized sharp
+peak near the ground truth. While the first atom in each generated material is explicitly conditioned on the
+reference Ni DOS, the other atoms are free to adopt different element types and locations. Consequently,
+the majority of the generated structures end up with Ni for the conditioned atom (even though it is not
+explicitly specified), while the other atoms in the unit cell end up with many diverse compositions. This test
+therefore successfully demonstrates the ability of DOSMatgen to recreate the Ni electronic structure within
+Au3Ni in novel materials are dramatically different from the original reference material.
+6

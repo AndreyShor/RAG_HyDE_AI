@@ -1,0 +1,51 @@
+The joint Laplace functional
+49
+1
+1
+Re−s
+Re−s
+e−s
+e−s
+Figure 2: A diagram illustrating the decomposition of the cube [0, 1]d used in the proof of Lemma 6.3, in
+the case d = 2. For R ≥1, we suppose that along each edge of the d edges of [0, 1]d, there are exactly
+(es + 1)(R + 1)−1 smaller closed boxes, which are drawn in white and that we enumerate by (Ai)i∈[I], for
+some I ∈N. For each i ∈[I], the box Ai has side length equal to Re−s. The shaded region is the buffer
+zone BR,s = [0, 1]d \ ∪i∈[I]Ai. By construction, the buffer zone separates the smaller cubes by a distance
+of at least e−s.
+where (Ai)i∈[I] and BR,s are as described in the caption of Figure 2.
+The reason why the decomposition (6.3) turns out to be useful is due to the short-range correlation
+properties of the fields Xt and Wt. Indeed, since we are assuming that the seed covariance function K
+satisfies condition (K2), as we have observed in Section 3.3, for 0 ≤s < t, it holds that Xs,t(x) and
+Xs,t(y) are independent for |x −y| > e−s. Similarly, thanks to (W3), for 0 ≤s < t, we have that
+(Wi,t(x))i∈[n] and (Wi,t(y))i∈[n] are independent for |x −y| > e−s.
+As mentioned earlier, the idea is to split the field X into two scales. Roughly speaking, we first focus
+on the small scales conditioned on the large scales. More precisely, we consider the sequence of
+measures (µγ,s,t)0≤s<t on Rd, defined as follows,
+µγ,s,t(dx)
+def= (t −s)
+3γ
+2
+√
+2d e(t−s)(γ/
+√
+2−
+√
+d)2eγXs,t(x)−γ2
+2 (t−s)dx ,
+(6.4)
+The role of the large scales is played by a deterministic5 function χ : Rd →R. Given a function χ,
+we define the measure ρχ by letting
+ρχ(dx)
+def= χ(x)e−
+√
+2dχ(x)dx .
+(6.5)
+We now have all the necessary ingredients to state the following key proposition, which is a
+generalisation of [MRV16, Proposition 3.2]. The key difference is that we allow Fγ,t to take the
+general form given in (6.1), rather than restricting it to be a constant. More importantly, we explicitly
+identify the multiplicative constant C(γ) that appears in the statement of [MRV16, Proposition 3.2].
+The proof of this proposition is postponed to Section 7.
+Proposition 6.1. Fix ε > 0, let Fγ and Tγ be as in (6.1), and consider the constant ea⋆> 0 introduced
+in Proposition 2.17. Then, for all s > 0 large enough and for all t ≥s large enough, the following
+5At this level, we are assuming that we are conditioning on the large scales. That is why, we are thinking of the large scales
+as being described by a deterministic function.

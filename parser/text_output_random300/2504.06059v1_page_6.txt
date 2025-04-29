@@ -1,0 +1,180 @@
+6
+Therefore, one can apply the procedure with differ-
+ent subsets of the interferometer, check if synthesis is
+possible, and output the shallowest circuit that works.
+Given an ending layer of the interferometer we will
+also show that the procedure will output the shallowest
+circuit possible ending at this layer, if synthesis is
+possible. This means we only need to iterate through
+all possible ending layers, which results in an overhead
+linear in the size of the interferometer.
+To prove Theorem 2, we restate it in terms of
+sorting networks.
+We focus on the labels P of the
+modes using the Bruhat decomposition of U.
+The
+input interferometer is equivalent to a network of
+“mixers” (one for each MZI) where each mixer can
+freely swap the labels of the two wires on which it is
+applied. If the circuit has k MZIs, there are 2k possible
+scenarios leading to a set of possible permutations P.
+We write S = {σK | K ∈[0, 1]k} the set of reachable
+permutations where Ki = 1 if the i-th mixer swaps the
+labels, Ki = 0 otherwise.
+The procedure consists in applying a sorting network
+given by the reverse of the MZI circuit.
+During this
+process, each MZI will apply a conditional SWAP and
+locally sort the labels of two wires. The process is illus-
+trated in Fig 5. Theorem 2 is true if this procedure can
+always reduce P to the identity for any possible P ∈S.
+In other words we want to prove the following theorem:
+Theorem 3. Given a mixing network of k mixers and
+S the set of reachable permutations from this network.
+For any σ ∈S, the sorting network given by the reverse
+of the mixing network reduces σ to the identity permu-
+tation.
+Proof. By induction on the number of mixers. The re-
+sult is true for the empty mixing network. Now suppose
+4
+7
+5
+3
+2
+1
+0
+6
+4
+4
+4
+4
+4
+4
+4
+4
+3
+3
+3
+3
+3
+3
+3
+7
+7
+7
+7
+7
+7
+7
+5
+5
+5
+5
+5
+5
+5
+5
+2
+2
+2
+2
+2
+2
+2
+2
+3
+0
+0
+0
+0
+0
+0
+0
+0
+1
+1
+1
+1
+1
+1
+1
+1
+6
+6
+6
+6
+6
+6
+6
+6
+7
+FIG. 4: Sorting network for 8 wires. Each box is a
+conditional swap. For this particular input, red boxes
+do not perform a swap and correspond to identity MZI
+in the resulting circuit. Green boxes apply a swap and
+correspond to non trivial MZI.
+the result is true for mixing networks with k mixers.
+We consider a mixing network of k + 1 mixers, and a
+permutation σK = [σ1, σ2, ..., σk+1] ∈S from its set of
+reachable permutations. Without loss of generality, we
+assume that the last mixer is applied on the first two
+wires of the networks. Following the procedure, we ap-
+ply a conditional swap on the first two wires, giving a
+permutation
+σ′ = [σ′
+1, σ′
+2, ...]
+with
+σ′
+1 = min(σ1, σ2), σ′
+2 = max(σ1, σ2).
+With an abuse of notation we refer to σK[1:k] to the
+permutation given by the first k mixers of the sorting
+network. σ′ only differs from σK[1:k] on the values of
+the first two entries, as those entries are the only ones
+that have been modified, first by the last mixer of the
+mixing network, then by the first conditional swap of
+the sorting network. We distinguish two cases:
+• (σK[1:k])1 < (σK[1:k])2, this means that σ′ =
+σK[1:k] and σ′ is reachable from a mixing network
+with k mixers,
+• (σK[1:k])1 > (σK[1:k])2, this means that at some
+point in the mixing network there exists a mixer
+that swapped the labels (σK[1:k])1 and (σK[1:k])2.
+Let’s assume this is the j-th mixer for some j.
+Inverting the operation of this mixer (therefore
+bitflipping Kj) will act as a change of variables:
+it will replace (σK[1:k])1 with (σK[1:k])2 and vice
+versa because the action of the mixing network
+0
+1
+2
+3
+4
+Mixing network
+Sorting network
+0
+1
+2
+3
+4
+0
+1
+2
+3
+4
+FIG. 5: The mixing network corresponds to an MZI
+circuit implementing unitary U. Each box potentially
+applies a SWAP gate on the labels, depending on the
+values of the angles of the MZI and on the unitary on
+which the MZI is applied. Shown is a possible scenario
+where σ[1,1,1,0,0,1,1] = [1, 2, 0, 4, 3] (reading the boxes
+left to right, top to bottom). In the Bruhat
+decomposition of U, we recover the labels of the wires
+in P. Then a sorting network corresponding to the
+reverse of the mixing network is applied. Green boxes
+are where SWAPs are made, red boxes are identity.
+Note that this is not the symmetric of the mixing
+network. Our result shows that for any scenario in the
+mixing network, the sorting network will always sort
+back the labels.

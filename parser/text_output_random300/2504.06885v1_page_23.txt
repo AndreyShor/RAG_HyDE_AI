@@ -1,0 +1,80 @@
+algorithms solving this problem see the survey in [92]. It has been shown that tabu search heuristics
+achieve better performance than simulated annealing and greedy randomised search [93]. Also, the
+variable neighbourhood search heuristic performs better than tabu search for sparse initial graphs,
+such as ours.
+A different approach in modeling the problem is taken in [25], which requires us to double the
+number of qubits. Here only the so-called ‘dangling bonds’, which an atom is connected to a vacancy,
+increase the energy of the structure and therefore its instability. Now, if we are asked to remove a
+specific number of atoms (a condition not enforced by the authors of [25]), the goal is to find which
+atoms, when removed, cause the minimum number of dangling bonds. The graph theoretical problem
+is therefore slightly different. Again we have a graph G(V, E), with |V | = N with vertices representing
+sites and the edges the carbon lattice, and again A represents the set of vacancies. Again the problem
+is to find a partition of V into two fixed sized sets A and A, but the goal now is to minimise the
+number of elements e ∈E for which e ∩A ̸= ∅and e ∩A ̸= ∅(in other words the edges that connect
+one member of A with one member of A, are minimized). This is the well-studied minimum bisection
+problem (MBP), known to be NP-Hard for general graphs [94,95]. A typical formulation of the problem
+is to choose k = ⌊N/2⌋. In the special case of 3−regular graphs, such as our hexagonal carbon lattice
+with boundary conditions, it has been proven that the MBP problem is hard to even approximate [96].
+We think that this is a very promising version of the problem to be considered in future work.
+B
+Hyperparameter Search
+Our hyperparameter search finds the set of parameters for each algorithm which return the highest
+probability of sampling the ground state. The hyperparameter optimisation is a grid-based search,
+conducted by defining feasible search spaces and checking different combinations of values. Other,
+more rigorous strategies for hyperparameter optimisation exist, such as random search and Bayesian
+optimisation. Use of these methods could yield better hyperparameters. Results are plotted for each
+algorithm in Figures 6, 7, 8, 9. Hyperparameters for VQE on the QPU were informed by VQE on
+the state vector solver. Other schemes exist to find the optimal penalty terms. A more systematic
+approach is explored in Ref. [97] for finding these terms.
+(0.0001, 1)
+(0.0001, 10)
+(0.0001, 100)
+(0.0001, 1000)
+(0.001, 1)
+(0.001, 10)
+(0.001, 100)
+(0.001, 1000)
+(0.01, 1)
+(0.01, 10)
+(0.01, 100)
+(0.01, 1000)
+(0.1, 1)
+(0.1, 10)
+(0.1, 100)
+(0.1, 1000)
+ range
+0.980
+0.985
+0.990
+0.995
+1.000
+Ps
+(a)
+2
+4
+6
+8
+10
+0.00
+0.25
+0.50
+0.75
+1.00
+Ps
+(b)
+102
+104
+Number of Sweeps
+0.6
+0.7
+0.8
+0.9
+1.0
+Ps
+(c)
+Figure 6: The 18 variable problem hyperparameter search for simulated annealing testing different values of β, number
+of sweeps and penalty coefficient λ. The β range value was first found while holding λ fixed (λ = 2) and number of
+sweeps = 1000. Setting λ = 3 was found to improve the Ps found while changing the β range, results of which are
+plotted in Figure 6a. The λ parameter plot used β = [0.1, 10] and 1000 sweeps. The optimal number of sweeps was
+confirmed using λ = 3 and β = [0.1, 10].
+23

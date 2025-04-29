@@ -1,0 +1,196 @@
+This holds because
+√
+1 −h′′2
+2
+Z t
+0
+dt′Q(t −t′, h|h′′)Q(t′, h′′|h′)
+=
+√
+1 −h′′2
+2
+Z
+t
+2
+0
+dt′
+Q(t −t′, h′|h′′)
+|
+{z
+}
+≤
+C
+t−t′+1 ≤2C
+t+2 by (B.1.1)
+Q(t′, h′′|h)
++
+√
+1 −h′′2
+2
+Z t
+t
+2
+dt′Q(t −t′, h|h′′)
+Q(t′, h′′|h)
+|
+{z
+}
+≤
+C
+t′+1 ≤2C
+t+2 by (B.1.1)
+≤
+C
+√
+1 −h′′2
+t + 2
+"Z
+t
+2
+0
+dt′Q(t′, h′′|h) +
+Z t
+t
+2
+dt′Q(t −t′, h′|h′′)
+#
+≤
+C
+√
+1 −h′′2
+t + 2
+[Π(h′′|h) + Π(h′|h′′)]
+≤
+C
+√
+1 −h′′2
+t + 2
+6
+π2 max
+1
+ε, log 2 −log(1 −|h′′|)
+2(1 −ε)
+
+,
+where in the last inequality we used Lemma B.4.
+Therefore
+√
+1 −h′′2
+2
+Z t
+0
+dt′Q(t −t, h|h′′)Q(t′, h′′|h′) ≤C
+p
+1 + |h′′|
+p
+1 −|h′′|
+t + 2
+6
+π2 max
+1
+ε, log 2 −log(1 −|h′′|)
+2(1 −ε)
+
+,
+which proves the thesis since the function √x log x is bounded around 0.
+Lastly, (B.3.8) follows from property (B.3.7), indeed
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)f(θ + π −2 arcsin(h′′), t′, h′′|h′)
+=
+Z
+t
+2
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′) f(θ + π −2 arcsin(h′′), t′, h′′|h′)
+|
+{z
+}
+≤C by (B.3.7)
++
+Z t
+t
+2
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′) f(θ + π −2 arcsin(h′′), t′, h′′|h′)
+|
+{z
+}
+≤
+C
+t′+1 ≤2C
+t+2 by (B.3.7)
+≤
+C
+Z ∞
+t
+2
+dt′
+Z 1
+−1
+dh′′Q(t′, h|h′′)
+|
+{z
+}
+=E( t
+2 ,h)≤
+C
+t
+2 +1 by Lemma B.2
++ 2C
+s + 2
+Z
+t
+2
+0
+dt′
+Z 1
+−1
+dh′′Q(t′, h|h′′)
+|
+{z
+}
+≤1
+≤
+C′
+s + 2.
+Properties of gk.
+Lastly, we are going to state some properties of the function gk introduced in Definition 1.9.
+Lemma B.6. For k ∈R2, k ̸= (0, 0), the function gk : T1
+2π × [0, +∞) × [−1, 1] × T1
+2π × [−1, 1] →C by Definition 1.9
+has the following properties: for any (θ, t, h|θ′, h′) it holds
+|gk(θ, t, h|θ′, h′)| ≤
+C
+t + 1,
+(B.3.9)
+
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)e2πi(t−t′)k·v(θ)gk(θ + π −2 arcsin(h′′), t′, h′′|θ′, h′)
+ ≤
+C
+t + 1,
+(B.3.10)
+∥gk(θ, ·, h|·, ·)∥L1 ≤1 −C′ min{1, |k|2}
+∀(θ, h) ∈T1
+2π × [−1, 1],
+(B.3.11)
+where C > 0 and C′ ∈(0, 1) do not depend on k ∈R2, θ ∈T1
+2π or h ∈[−1, 1].
+Proof. The properties (B.3.9) and (B.3.10) follow immediately from Definitions 1.9 and 1.8 of gk and f, indeed by
+definition it holds
+|gk(θ, t, h|θ′, h′)| ≤f(θ −θ′, s, h|h′),
+and since the estimates (B.3.7) and (B.3.8) apply to f the proof of the first two statements is concluded.
+51

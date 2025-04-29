@@ -1,0 +1,155 @@
+Benchmarks
+Data Coverage
+Modality
+Explanation
+Annotation
+Structured
+Knowlege
+Dynamic
+Evaluation
+Level
+#Instances
+#Images
+Question Type
+MMBench [22]
+Low-order
+3.2K
+-
+MC
+I+T
+✗
+✗
+✗
+MMIU [25]
+Low-order
+11.6K
+77K
+MC, Open
+I+T
+✗
+✗
+✗
+MMT-Bench[49]
+Low-order
+31.2K
+31.2K
+MC
+I+T
+✗
+✗
+✗
+EMMA [13]
+College
+2.7K
+3K
+MC, Open
+I+T
+✗
+✗
+✗
+MMMU [50]
+College
+11.5K
+12.3K
+MC, Open
+I+T
+✗
+✗
+✗
+DrawEduMath [5]
+K12-Math
+44K
+2.3K
+Open
+I+T
+✓
+✗
+✗
+MDK12-Bench
+K-12
+141.3K
+105.2K
+MC, Fill, T/F, Open
+T, I+T
+✓
+✓
+✓
+Table 1. Comparison between our MDK12-Bench and existing multimodal reaonsing benchmarks. MDK12-Bench includes more
+comprehensive data and question coverage. The systematic knowledge structuring and dynamic test-time augmentation also provide more
+reliable and fair evaluation of MLLMs. T: Text; I: Image. MC: multiple-choice; Open: open-ended; Fill: fill-in-the-blank; T/F: true or false;
+Low-order reasoning: commonsense, image quality judgement, relation, attribute reasonings, etc.
+systematically evaluating the knowledge coverage, reason-
+ing, and problem-solving abilities of MLLMs.
+As shown in Table 1 and Fig. 1, our MDK12-Bench con-
+sists of 141.3K reasoning questions and spans 6 reasoning-
+oriented K-12 disciplines: Mathematics, Physics, Chem-
+istry, Biology, Geography, and Information Science. For
+each discipline, we provide fine-grained annotations includ-
+ing difficulty levels, instance-level key knowledge points,
+and detailed answer explanations. With cross-year parti-
+tions, the MDK12-Bench allows various breakdown anal-
+yses, cross-validations, and dynamic updates. Moreover,
+the instance-level key knowledge point annotation is linked
+with our constructed knowledge tree, enabling deeper model
+performance analysis at each knowledge level. Compared
+to existing benchmarks, our MDK12-Bench potentially pro-
+vides a more systematic evaluation of MLLMs’ multimodal
+reasoning capabilities in real-world academic tasks.
+In addition, current reasoning model evaluations are typi-
+cally static, which can be biased due to data contamination,
+i.e., test items appearing in the MLLM’s large-scale training
+data. To address this, we introduce a novel dynamic evalua-
+tion framework that automatically transforms both the tex-
+tual and visual parts of questions via different bootstrapping
+strategies, including word substitution, paraphrasing and
+question type, permuting for textual bootstrapping and im-
+age expansion, color shift, and style transfer for visual boot-
+strapping. Based on MDK12-Bench’s diverse content, this
+dynamic framework offers a more robust and fair platform
+for evaluating high-order multimodal reasoning in MLLMs.
+We evaluate various classic and state-of-the-art MLLMs
+on our MDK12-Bench using the proposed dynamic eval-
+uation method. Extensive experiment results demonstrate
+that large models trained with reasoning-related data, such
+as Gemini2.0-flash-thinking and QVQ-72B, generally per-
+form better than the smaller common models. It has also
+been proven that model performance under the dynamic
+evaluation setting can face more challenges than the original
+benchmarks. Our contributions are summarized as follows:
+• A Comprehensive Multi-Discipline Benchmark. We
+present MDK12-Bench, a systematically curated, large-
+scale K12-based benchmark supporting the comprehensive
+evaluation of the reasoning capability of MLLMs.
+• A Dynamic Evaluation Framework. A practical frame-
+work mitigating data contamination and providing flexible
+multimodal data transformation to challenge MLLMs with
+bootstrapped unseen data.
+• A Comprehensive Leaderboard. We provide a detailed
+analysis of current MLLMs in our leaderboard. Our stud-
+ies suggest that both our subsets and dynamic evaluation
+benchmark challenge the reasoning capabilities of cur-
+rent MLLMs, showing that our work can support a robust
+platform for evaluating reasoning-oriented models and
+challenging future artificial general intelligence attempts.
+2. Related Works
+MLLM Reasoning.
+Based on the rapid advances of
+Large Language Models (LLMs) [1, 40, 42], multimodal
+LLMs (MLLMs) have emerged to address complex mul-
+timodal tasks, including interleaved image-text generation
+[3, 28, 40, 40, 42, 55]. Recent studies have also proposed
+domain-specific MLLMs utilizing multimodal pretraining,
+vision instruction tuning, and reinforcement learning, such
+as Math-LLaVA [36] and MultiMath [32] for mathematical
+tasks, and Med-Flamingo [26], LLaVA-Med [20], and Med-
+MoE [16] in the biomedical domain. Furthermore, methods
+like Chain-of-Thought (CoT) prompting [45], iterative boot-
+strapping techniques and reinforce learning [54], such as
+STaR [52], Quiet-STaR [51] and DeepSeek-E1 [12], have
+further improved interpretability and response quality.
+MLLM Evaluation.
+With the rapid advancement of
+MLLMs, various benchmarks have been proposed to assess
+their performance [24, 25, 35, 53]. However, most bench-
+marks focus primarily on fundamental perceptual skills,
+and lack the evaluation of expert-level domain knowledge

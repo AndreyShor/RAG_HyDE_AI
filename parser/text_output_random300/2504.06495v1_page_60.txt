@@ -1,0 +1,68 @@
+given by
+X0 = Xpast
+0
++ log(δk),
+so the density of X0 is
+fX0(x) = 1
+σ2 · 1x≥log(δkǫ) · exp
+
+−x −log(δkǫ)
+σ2
+
+.
+# Survival probability: Let pτ(x) denote the survival probability from initial condition x.
+For the Brownian motion with drift described in (18), this probability for large τ is:
+pτ(x) ∼2(x −log ǫ)
+σ
+√
+2πτ
+exp
+
+−µ2τ
+2σ2
+
+,
+for x > log ǫ.
+Using the condition µ/σ2 = 1, and therefore µ = σ2, this simpliﬁes to:
+pτ(x) ∼2(x −log ǫ)
+σ
+√
+2πτ
+exp
+
+−σ4τ
+2σ2
+
+= 2(x −log ǫ)
+σ
+√
+2πτ
+exp
+
+−σ2τ
+2
+
+.
+# Conditional density: Using Bayes’ rule, the survival-conditioned density of X0 given
+both Xτ ̸= −∞and B = k is:
+fX0|Xτ ̸=−∞,B=k(x) =
+fX0(x) · pτ(x)
+R ∞
+log(δkǫ) fX0(y) · pτ(y) dy
+∝fX0(x) · pτ(x)
+∝exp
+
+−x −log(δkǫ)
+σ2
+
+· (x −log ǫ)
+= (x −log ǫ) · exp
+
+−x −log(δkǫ)
+σ2
+
+,
+for x ≥log(δkǫ). Here, ∝indicates proportionality up to a constant factor independent of
+x; that is, we are describing the shape of the density function before normalization. Next,
+we deﬁne y = x −log(ǫ) as the excess above the absorption threshold. Then our density
+59

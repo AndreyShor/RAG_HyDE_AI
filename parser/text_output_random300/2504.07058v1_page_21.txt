@@ -1,0 +1,117 @@
+𝑁int
+𝑁sb
+𝑁sb
+𝐾−1
+¯𝑑
+𝜆
+E𝑇
+Training Time/s
+2048
+512
+512
+4
+20
+1
+0.0008
+36
+2048
+512
+512
+4
+20
+1
+0.001
+36
+Table 5: Best-Performing PINN Configuration for Section 3.1.4.
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.000
+0.002
+0.004
+0.006
+0.008
+0.010
+0.012
+u
+Predicted, t = 0.01.
+Predicted, t = 0.02.
+Predicted, t = 0.03.
+Predicted, t = 0.04.
+Predicted, t = 0.05.
+Predicted, t = 0.06.
+(a) Prediction
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.00
+0.01
+0.02
+0.03
+0.04
+0.05
+u
+Predicted, t = 0.01.
+Predicted, t = 0.02.
+Predicted, t = 0.03.
+Predicted, t = 0.04.
+Predicted, t = 0.05.
+Predicted, t = 0.06.
+(b) Prediction
+Figure 11: Predicted plot with 𝛾= 0.01.
+3.1.5
+2D extended Fisher–Kolmogorov equation
+In this study, we focus on the 2D nonlinear EFK equation.
+𝑢𝑡+ 𝛾∆2𝑢−∆𝑢+ 𝑢3 −𝑢= 𝑔(𝑡, 𝑥, 𝑦)
+in
+(0,𝑇] × D
+(3.15)
+𝑢(0, 𝑥, 𝑦) = sin(𝜋𝑥) sin(𝜋𝑦)
+in
+D
+(3.16)
+𝑢= 𝑓1,
+∆𝑢= 𝑓2
+on
+(0,𝑇] × 𝜕D.
+(3.17)
+The exact solution to equation (3.15) is sin(𝜋𝑥) sin(𝜋𝑦) exp(−𝑡). The source term 𝑔can be derive from exact
+solution. The subsequent plots compare the exact and predicted solutions, shown in both contour and 3D surface
+formats. Figures 12 and 14 provide graphical comparisons of the approximate solutions obtained using PINN and
+the exact solution for 𝛾= 0.01, displayed as 3D visualizations at 𝑡= 0 and 𝑡= 1. The results confirm that the
+PINN-based approximation aligns closely with the exact solution, demonstrating its stability. Additionally, Fig.
+14 depicts the contour plot at 𝑡= 1. Table 7 reports the relative error E𝑟
+𝐺and training error E𝑇, alongside the
+chosen hyper-parameters.
+𝑁int
+𝑁tb
+𝑁sb
+𝐾−1
+¯𝑑
+𝜆
+E𝑇
+E𝑟
+𝐺
+Training Time/s
+8192
+2048
+2048
+4
+32
+1
+0.001
+0.0007
+650
+Table 6: Best-Performing PINN Configuration for Section 3.2.1.
+3.2
+Inverse Problems
+The inverse problems for both models are discussed as follows:
+21

@@ -1,0 +1,61 @@
+and assuming all the above events occur, we see that mri+1(u1) ≥u2 for some constants u1, u2 > 0.
+Therefore, by the FKG inequality ([21, Theorem 20.4]), we obtain that
+P(mri+1(u1) ≥u2) ≥ρ c8(ρ) c9(ρ) c10 P(Q(ri) ≥ρ),
+which implies Lemma 4.10 immediately, with u = u1 ∧u2.
+Proof of Lemma 4.3. Let u be the constant from Lemma 4.10. By Lemma 4.6, we have P(E2(ε, r)) ≲
+P(A(M)). Hence, we only need to show that
+P(A(M)) ≲P(Q(rM) ≥u),
+(4.10)
+which combined with the fact that P(Q(rM) ≥u) ≲P(Q(r) ≥u) (since r
+2 < rM ≤r) would finish
+the proof of Lemma 4.3.
+Let G be the event that all clusters in Lε have diameter smaller than ε/100, which occurs with
+probability at least c1. By definition, if we consider the loop configuration Lε on the event G,
+we have mε(1/4) ≥a1 for some constant a1 > 0, which implies Q(ε) ≥a2 := 1/4 ∧a1. Using
+Lemma 4.10 repeatedly, we obtain that
+P(Q(rM) ≥u) ≥v(a2) v(u)M−1 P(G) ≥c1 v(a2) v(u)M−1.
+(4.11)
+For all i ≥2, by Lemma 4.9, for any θ > 0, there exists ρ(θ) > 0 such that
+P( e
+A(i)) ≤P(Q(ri) ≥ρ) + P(0 < Q(ri) < ρ, e
+A(i))
+≤P(Q(ri) ≥ρ) + θ P(A(i −1)),
+which combined with Lemma 4.8 implies that
+P(A(i)) ≤b(δ) P(Q(ri) ≥ρ) + (b(δ) θ + δc)P(A(i −1)).
+Iterating the above inequality, we obtain
+P(A(M)) ≤
+M−2
+X
+i=0
+b(δ) (b(δ) θ + δc)i P(Q(rM−i) ≥ρ) + (b(δ) θ + δc)M−1.
+(4.12)
+Applying Lemma 4.10 again, we have
+P(Q(rM−i) ≥ρ) ≤v(ρ)−1 P(Q(rM−i+1) ≥u)
+≤v(ρ)−1 v(u)−i+1 P(Q(rM) ≥u).
+(4.13)
+Plugging (4.11) and (4.13) into (4.12),
+P(A(M)) ≤P(Q(rM) ≥u)
+ 
+b(δ) v(u)
+v(ρ)
+M−2
+X
+i=0
+b(δ) θ + δc
+v(u)
+i
++ (b(δ) θ + δc)M−1
+c1 v(a2) v(u)M−1
+!
+.
+We first choose δ sufficiently small to satisfy δc ≤v(u)/4, and for this δ we take θ to be small
+enough such that b(δ) θ ≤v(u)/4. Hence, b(δ) θ+δc
+v(u)
+≤1/2, and (4.10) follows. This completes the
+proof of Lemma 4.3.
+Proof of Proposition 4.1. By Lemma 4.3 and noting that E2(ε, r) ⊂E2(ε, r/2), we have P(Q(r/2) ≥
+u) ≥c P(E2(ε, r)). Hence, it suffices to show that P(E2(ε, r) ∩G2(ε, r)) ≥c P(Q(r/2) ≥u). But
+this follows immediately by using a similar construction of loops as in the proof of Lemma 4.10,
+combined with a similar argument as in the proof of Lemma 3.3 to control the size of all other
+clusters. We omit the details for brevity.
+21

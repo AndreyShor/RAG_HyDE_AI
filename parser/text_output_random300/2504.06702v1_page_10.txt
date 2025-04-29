@@ -1,0 +1,73 @@
+10
+Appendix A: Position Initialization
+Here, we describe the generation of initial configurations. As the tweezer positions are given in the 2D plane, a
+configuration X for m qubits is given by X = [x1, . . . xm] ∈Rm×2. The qubits are placed randomly within a box
+[−Rmax, Rmax]2, where the qubit positions get resampled whenever the euclidean distance between any two qubits
+is below Rmin > 0.
+The first atom can thus be placed anywhere in [−Rmax, Rmax]2 and each subsequent atom
+will be repeatedly placed at random in [−Rmax, Rmax]2 until it is at least distance Rmin from the already placed atoms.
+As mentioned in Sec. III, configurations tend to contract under the consensus algorithm. This leads to lower in-
+teratomic distances and thus facilitates more entanglement.
+Therefore, it is not entirely fair to compare initial
+configurations to the final ones. By only varying the target Hamiltonian Htarg, we get a large collection of similar
+problems. We can find the kernel density estimate of interatomic distances to get the gold curve in Fig. 6. We can then
+optimize for a new Rmin and Rmax to get a distribution of interatomic distances (Fig. 6 green) that most resembles
+that of the final configurations (Fig. 6 gold). This is done by minimizing the Kullback-Leibler divergence [41] between
+the two distributions.
+Appendix B: Rydberg neutral atoms
+This section introduces basic Rydberg physics to identify what control pulses and especially interactions can look like
+for this system, as discussed in Sec. III. This will yield both the control Hamiltonian Hc[z] depending on the pulses,
+and the interaction Hamiltonian HV [X] depending on the configuration, see (1). We consider a neutral atom quantum
+computing platform consisting of individual neutral atoms trapped in optical tweezers, where the electronic states
+encode for the qubit manifold [42]. Generally, three states are considered for neutral atom systems, a well-isolated
+manifold consisting of the ground state |g0⟩and a meta-stable state |g1⟩, as well as an auxiliary Rydberg state |r⟩
+used for interaction.
+Single qubit rotations on qubit j between states |a⟩and |b⟩are facilitated by a laser interacting with the atom to
+realize the Hamiltonian [28, 42]
+Hab
+j
+= Ωab,j(t)
+2
+
+eiφab,j(t)|a⟩j⟨b|j + e−iφab,j(t)|b⟩j⟨a|j
+
+−∆b,j(t)|b⟩j⟨b|j.
+On atom j, Ωab,j(t) denotes the coupling strength, φab,j(t) the phase of the coupled laser, and ∆b,j(t) = ωab,j(t)−˜ωab
+the detuning of the laser frequency ωab,j(t) from the energy level difference ˜ωab. In current Rydberg systems, one has
+less control over φ than over Ωand ∆, [43], and subsequently we set φ = 0. For our systems, we assume transitions
+|g0⟩↔|g1⟩and |g1⟩↔|r⟩. This renders control pulses z(t) ∈{Ωg0g1,j(t), ∆g1,j(t), Ωg1gr,j(t), ∆gr,j}. Notice that having
+both coupling and detuning allows full control on the Bloch sphere of each individual qubit, allowing rotational control
+[44]. For all pulse optimizations in this work, we consider full control over all coupling strengths Ωj and detunings
+∆j available in this system.
+The Rydberg states |r⟩are highly excited states that have a passive ‘always-on’ interaction, which is described by
+a configuration-dependent Hamiltonian HV [X] [28] as a Van der Waals interaction (VdW) [45] or a Dipole-Dipole
+(Dip.) interaction (where g1 needs to be chosen as another Rydberg state), depending on the specific Rydberg states
+chosen [42]
+HV,VdW[X] =
+m
+X
+i=1
+m
+X
+j>i
+C6
+∥xi −xj∥6 |rr⟩ij⟨rr|ij,
+HV,Dip.[X] =
+m
+X
+i=1
+m
+X
+j>i
+C3
+∥xi −xj∥3
+
+|g1r⟩ij⟨rg1|ij + |rg1⟩ij⟨g1r|ij
+
+.
+where ∥xi −xj∥is the interatomic distance between atoms i and j and C3,6 is an interaction coefficient. The VdW
+interaction |rr⟩ij⟨rr|ij shifts the energy level of the doubly excited state scaling with ∥xi −xj∥6. For close enough
+atoms, this shift becomes high enough that the doubly excited state becomes unadressable, resulting in a so-called
+Rydberg-blockade [46].
+For gg-qubits (ground-ground) we make the identification |0⟩= |g0⟩, |1⟩= |g1⟩, and the Rydberg state is used as
+an auxiliary state interacting via VdW interactions. The state space now becomes that of a qutrit with dimension

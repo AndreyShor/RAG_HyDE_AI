@@ -1,0 +1,94 @@
+A Self-Supervised Framework for Space Object Behaviour Characterisation.
+4
+Figure 3: Training curves for a VAE-Perceiver model trained on
+the MMT-9 light curve dataset. Training and Validation losses
+decrease from >approximately 0.015 to 0.0011 and 0.0012 re-
+spectively. The KL Divergence of the latent distribution ini-
+tially increases, before plateauing at approximately 0.85. Val-
+idation loss decreases to a similar plateau, without the initial
+first epoch decrease.
+tion minimises the discrepancy between reconstruction and in-
+put data, the loss values can be interpreted directly as an error
+score. For our pre-training, the average validation error score
+was approximately 0.012%.
+2.2
+Flagging of anomalous Space Objects in the MMT-9
+Dataset during pre-training.
+Using a held-out test portion of the MMT dataset, we examined
+the highest and lowest reconstruction error samples (Tables 1-
+2). Among the highest reconstruction error test samples (Table
+1), we found a mixture of satellites and rocket bodies, some
+appearing frequently in the pre-training data.
+For example,
+light curves from EGS (AJISAI) occur 1064 times in the MMT
+dataset, yet four light curves appear in the ten highest recon-
+struction error. Similarly, light curves from GLOBSTAR M092
+and CZ-3 R/B (occurring 285 and 269 times respectively) also
+showed high reconstruction errors. This challenges the intu-
+itive assumption that objects appearing more frequently would
+be easier for the model to reconstruct. One possible explana-
+tion is that these light curves represent atypical behaviour for
+those particular space objects. For the lowest reconstruction er-
+ror samples (Table 2), we again find a mixture of satellites and
+rocket bodies, with one example of debris. Unlike the highest
+reconstruction errors, these typically had fewer appearances in
+the pre-training data (ranging from 9-153).
+2.3
+Analysis of pre-training early-flagged Space Objects
+To understand the nature of these highest/lowest reconstruction
+error curves, we manually inspected them (as shown in Figure
+4). The ten highest reconstruction error curves were all highly
+periodic (Figure 4 A-J), with frequent large changes in maxima
+and minima. In contrast, the lowest error curves were substan-
+tially more linear (Figure 4 K-T). Whilst most were monotonic,
+panels K, P, T showed small deviations from this pattern.
+Highly periodic curves typically represent rapid tumbling be-
+haviour of the space object as highlighted by [15]. Conversely,
+linear curves indicate objects with smaller attitude changes or
+highly regular morphology.
+This analysis supports our pre-
+sumption that tumbling behaviours in the highest reconstruction
+errors likely represent atypical SO behaviour. Thus, frequent
+appearances in training data help the model flag what consti-
+tutes unusual behaviour for particular objects.
+2.4
+Light curve forecasting
+An additional output from pre-training is forecasting future
+lightcurve states from past states. By including forecasting as
+a self supervised task (see Section 3.3for details), our model
+learns a latent space corresponding to different timecourse por-
+tions, enabling inference time predictions without fine-tuning.
+Analysing the same held out test dataset used in Section 2.2, we
+computed the MSE forecasting loss after masking out the final
+25% of the timecourse (see Equation 6). Across approximately
+20,000 curves, the mean forecasting error was 7.7e−4, with a
+standard error of 7.6e−4.
+To examine the difference in a high/low forecasting error, we
+visualised the three lowest and highest errors (Figure 5 top and
+bottom rows respectively). In both cases, the general trends of
+the light curve were well forecasted (Figure 5 red-dotted line).
+For the lowest error samples, our model accurately predicted
+future values with minimal deviation from ground truth. For
+the highest error samples (predominantly high-frequency pe-
+riodic curves), the model captured patterns well but struggles
+with exact magnitude prediction of these features (Figure 5.
+This forecasting ability demonstrates that our model has
+learned meaningful temporal relationships in light curve dy-
+namics unsupervised. Across all the self-supervised learning
+(SSL) tasks, the reconstruction errors suggest our model has
+learned rich representations decodable to various light curve
+types and can potentially identify anomalies. However, making
+definitive claims remains challenging with unlabelled data, as
+the exact events/behaviours causing normal/anomalous patterns
+are unclear. While step changes might represent manoeuvres
+or morphological features, validating these hypotheses requires
+supervised learning or physical modelling. Therefore, we next
+examined fine-tuning with a synthetic, labelled dataset.
+2.5
+Fine-tuning for anomaly detection
+Obtaining real observational data of satellites with known
+anomalies is extremely challenging, as the full set of possi-
+ble anomalies is not well understood or catalogued, and organ-
+isations are opaque about anomalous space object behaviour
+for national security/commercial reasons. To address this data
+gap, we produced a synthetic dataset for fine-tuning using the

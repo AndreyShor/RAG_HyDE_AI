@@ -1,0 +1,43 @@
+Springer Nature 2021 LATEX template
+8
+Human Activity Recognition using RGB-Event based Sensors
+2.4 Benchmark Datasets for HAR
+As listed in Table 1, we compared existing benchmark datasets based on
+event cameras for human activity recognition tasks. The early datasets listed
+in the table are either limited in the number of samples or synthetic datasets,
+which makes it difficult to reflect the characteristics of event cameras. For
+example, the N-Caltech101 [58] and N-MNIST [58] datasets were recorded
+using an ATIS camera and contain 101 and 10 classes, respectively. Addition-
+ally, Bi et al. [19] transformed popular HAR datasets into simulated event
+streams, including HMDB-DVS [19, 23], UCF-DVS [19, 24], and ASLAN-
+DVS [25], thereby expanding the available dataset pool for HAR. However,
+these simulated event datasets do not fully capture the advantages of event
+cameras, such as performance under low light conditions or during fast motion.
+There are also four real-world event datasets for classification: DvsGesture [20],
+N-CARS [59], ASL-DVS [19], and PAF [60], but they are constrained by fac-
+tors such as limited scale, category diversity, and scene variation. Concretely,
+these datasets contain only 11, 2, 24, and 10 classes, respectively, and rarely
+account for challenging factors like multi-view perspectives, motion dynamics,
+or visual noise. Recently, some relatively large real-world HAR datasets have
+also emerged, i.e., the PokerEvent [44] and Dailydvs-200 [61]. These datasets
+not only include tens of thousands of video sequences but also feature 114 and
+200 activity categories, respectively. Building on this trend, we introduce a
+larger (100K samples) and more diverse (300 classes) real-world RGB-Event
+camera based human activity recognition dataset, named HARDVS 2.0. Our
+proposed dataset comprehensively includes various human activities in real
+life through indoor/outdoor shooting, fully reflecting the multiple challenge
+attributes mentioned above. We believe that the HARDVS 2.0 dataset will
+further promote the development of event cameras in the field of HAR.
+3 Methodology
+In this section, we will introduce a novel Heat Conduction-based human
+activity recognition method, termed MMHCO-HAR. Firstly, we give a prelim-
+inary introduction of physical heat conduction and its visual adaptation vHeat
+model. Then, an overview of our designed RGB-Event human activity recog-
+nition framework is introduced. After that, we describe the input encoding of
+RGB and event streams utilized in this work. Then, we delve into the details
+of our network architecture and loss functions. More details of each module
+will be described in the following sub-sections, respectively.
+3.1 Preliminaries: A Physics-Inspired Heat Conduction
+Model
+Heat conduction has always been a classic problem in physics, which usually
+occurs in solids, liquids, and gases, but the thermal diffusivity varies among

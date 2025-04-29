@@ -1,0 +1,48 @@
+are generated with the software described in Refs. [41–46]. The signal Σ+ →pµ+µ−
+decay is generated according to a PHSP model and weighted to reproduce the SM dimuon
+invariant-mass predicted spectrum [2,3]. Simulated samples are weighted to reproduce
+the multiplicity distribution observed in data.
+Two sources of background remain after the offline selection: the combinatorial
+background, composed from random associations of tracks present in the event; and the
+Λ background, consisting of genuine Λ →pπ−decays where the pion is misidentified as
+a muon, combined with a third unrelated track identified as a muon. No other kinds of
+background contribute, owing mainly to the very small energy of 39.8 MeV available in the
+Σ+ →pµ+µ−reaction. Misidentified decays from other hadrons also do not contribute.
+Background from four- or more-body final states with unreconstructed particles could
+contribute, but would not peak in the mpµ+µ−distribution and thus is included in the
+combinatorial background. Finally, background including duplicate tracks from the same
+particle hits is rejected offline with a requirement on the minimum angle between each pair
+of tracks. Additional details on the background sources are reported in Appendix A.1.
+To further reduce the background, a multivariate classifier is devised based on a
+Boosted Decision Tree (BDT) algorithm [47,48] implemented in the TMVA toolkit [49,50].
+This BDT algorithm combines different kinematic and geometric variables. The BDT
+is trained using the signal simulated sample and the data sidebands as a proxy for
+combinatorial background considering candidates in the mass range mpµ+µ−< 1173 MeV/c2
+or 1205 < mpµ+µ−< 1400 MeV/c2. Under the pπ−hypothesis, a veto on the pµ−mass is
+applied in both samples around the known Λ mass value [38] (Λ veto) to enforce training
+against combinatorial background only. To avoid overtraining, the k-folding technique [51],
+with k = 9, is applied. The BDT output ranges from zero, for background-like candidates,
+to unity, for signal-like candidates; the corresponding distributions for signal simulation
+and data are shown in the Supplemental Material [52]. The data is divided into a sample
+with the Λ veto and its complementary sample, consisting mostly of the Λ background,
+where the BDT distribution is seen to be very similar for both background sources. The
+same BDT classifier is applied to a sample of “same-sign” Σ+ →pµ+µ+ candidates in
+data, where a signal would have to violate lepton-number conservation, verifying that fake
+structures in the background are not created in either the mpµ+µ−or mµ+µ−distributions.
+The final selection is based on the BDT output, the muon and proton particle-
+identification variables [53], and the width of the Λ veto window. Criteria on these
+variables are optimised on a four-dimensional grid to give the largest significance, defined
+as NS/√NS + NB, where NS is the expected signal and NB the expected background yield.
+The NS estimate is based on a preliminary fit to data after tight selection criteria are
+applied along with the signal efficiency obtained from simulation. The NB estimate is
+the sum of two contributions: one obtained from a fit to the mpµ+µ−sidebands for the
+combinatorial background; and another to estimate the residual Λ background based
+on a fit to the mpπ−distribution without the Λ veto (±10 MeV/c2 around the known Λ
+mass [38]).
+The mpµ+µ−distribution for candidates satisfying the final selection criteria is shown in
+Fig. 1, in which a clear peak at the Σ+ mass is observed with a small residual background.
+An extended unbinned maximum-likelihood fit [54] is performed to the selected candidates.
+The signal component is described by a Hypatia function [55], with the z parameter fixed
+to zero. The remaining parameters are obtained from a fit to the simulated sample and
+fixed in the fit to data, while the peak position and resolution parameters are left free to
+3

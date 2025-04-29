@@ -1,0 +1,121 @@
+2
+A major open question in cosmology is whether both of
+these problems could be solved by baryonic physics (e.g. [21–
+27]) or dark matter models beyond the Standard Model (e.g.
+[28–34]).
+Proper modeling of the former, however, is computation-
+ally challenging, and while the physics of galaxy formation is
+understood in broad terms, many of the underlying baryonic
+processes, such as feedback mechanisms, remain poorly con-
+strained [35–39]. As such, exploring alternative dark matter
+models is further motivated by two primary considerations:
+(1) the absence of a viable dark matter candidate within the
+Standard Model of particle physics; (2) no direct detection has
+been achieved thus far, after a decade of experiments aimed
+at detecting either of the two most popular CDM candidates:
+WIMPs (LHC), and axions (ADMX, [40]).
+From a particle physics perspective, the simplest extension
+of the Standard Model is to accommodate a heavy or sterile
+neutrino that can explain the mechanism facilitating neutrino
+oscillations [41]. Sterile neutrinos can be produced via ac-
+tive neutrinos oscillations in the early Universe, as proposed
+by [42]. They would be the prototype for Warm Dark Matter
+(WDM), an hypothetical thermal relic dark matter particle that
+decouples earlier and is more massive than Standard Model
+neutrinos, initially proposed in [43–45]. Such a dark matter
+candidate has a non-negligible primordial velocity distribu-
+tion at the time of decoupling, and can consequently escape
+small gravitational perturbations, suppressing structure for-
+mation on scales smaller than their free-streaming length, 𝜆fs,
+which is inversely proportional to the WDM particle mass.
+For WDM particle masses of the order of a few keV, the free-
+streaming length roughly corresponds to the size of a dwarf
+galaxy. WDM follows the same bottom-up structure formation
+as CDM, making it a promising candidate to address small-
+scale challenges while preserving the successes of CDM at
+larger scales. The most recent constraint from cosmological
+analysis on this model excludes thermal relics lighter than 5.7
+keV (2𝜎) [46].
+For this reason, the interest in a hybrid model that in-
+terpolates between CDM-like and WDM cosmology has re-
+emerged.
+The Cold+Warm Dark Matter (CWDM) model
+was first introduced by [47–50].
+The model is parame-
+terized by the fraction of the warm (lighter) counterpart,
+𝑓WDM = ΩWDM/ΩM; and its particle mass 𝑚WDM, which has
+the same properties as in a pure WDM cosmology.
+In some variants of the production mechanism of sterile
+neutrinos, the resulting velocity dispersion of the hypotheti-
+cal particle consists of cold and warm components [51, 52].
+Within this framework, a structured dark matter sector could
+exist, featuring components in the keV and GeV mass regimes,
+making sterile neutrinos viable candidates for CWDM [53].
+Such a dual-component nature of dark matter has also been
+proposed for axions [33], reinforcing the motivation to inves-
+tigate CWDM.
+The free-streaming property of CWDM can be constrained
+observationally from the Lyman-𝛼forest, a powerful cosmo-
+logical probe of matter density fluctuations in the weakly non-
+linear regime through the high redshift and underdense IGM.
+In the past, the Lyman-𝛼forest has been used, combined with
+CMB data, to constrain the matter power spectrum (e.g. [54–
+56]), nature of dark matter [57–62], and to test physics beyond
+the Standard Model using the 3D correlation function to mea-
+sure the scale of Baryon Acoustic Oscillations (e.g. [63–68]).
+At the scales of interest for the dark matter models, the
+Lyman-𝛼forest is influenced by two key factors: the ther-
+mal evolution of the intergalactic medium (IGM) (e.g., [69])
+and the underlying dark matter density field, which drives
+structure formation through gravitational interactions (e.g.,
+[46, 70]). Consequently, accurately interpreting observations
+of the Lyman-𝛼forest at these scales requires hydrodynamic
+simulations to model the complex gas dynamics. These simu-
+lations have facilitated detailed comparisons between the struc-
+tures predicted by the CDM paradigm and those observed in
+the Lyman-𝛼forest down to the Jeans scale ([71]), while also
+incorporating the free-streaming properties of dark matter. In
+the past, constraints on the mass 𝑚WDM have been obtained by
+comparing simulations with QSO data sets of different resolu-
+tion and signal-to-noise ratios (S/N). This comparison is usu-
+ally done within a Bayesian framework by interpolating in the
+parameter space where simulations are available ([58, 60, 72–
+74]) , which become unfeasible as the dimensionality of the
+inference problem increases.
+Instead, surrogate models or
+emulators can be used based on Gaussian process interpola-
+tion ([75–80]), or a supervised neural network interpolator
+([81, 82]), demonstrating significant inference speedup. The
+data used to carry out this comparison has included, in in-
+creasing order of resolution, the SDSS and the Baryon Oscil-
+lation Spectroscopic Survey (BOSS) (e.g., [60, 83]), X-Shooter
+(e.g., [58]) and MIKE (LCO) (e.g. [72]), HIRES (Keck) and
+UVES (VLT) (e.g. [46]). The higher-resolution data provides
+stronger bounds on 𝑚WDM by probing the small scales where
+the suppression occurs.
+Beyond pure WDM, [84] first suggested a preference for
+𝑓WDM < 0.7 mixed models by reinterpreting Lyman-𝛼forest
+and X-ray data in the presence of sterile neutrinos.
+Later,
+[52] combined the WMAP5 and Lyman-𝛼(SDSS) data to
+constrain 𝑓WDM < 0.35 for the minimum mass of their prior
+range 𝑚WDM ∼1 keV in the case of thermally decoupled
+candidates. [83] found that a mass as light as 𝑚WDM > 0.7 keV
+is allowed if 𝑓WDM < 0.15. [85] combined Planck, BAO and
+Milky Way satellites data to constrain 𝑓WDM < 0.29 for masses
+in the range 1-10keV. [86] used N-body similations and model
+the effect of baryons on top to predict allowed mixed models
+to which weak lensing and galaxy clustering power spectra
+upcoming data will be sensitive to.
+In this work, we update previous constraints on CWDM
+models using high-𝑧Lyman-𝛼forest measurements that are
+sensitive to matter clustering to 2x as small separations as any
+previous attempts, 𝑘∼20 ℎMpc−1 [126]; and a set of hy-
+drodynamical simulations that include the effect of a heavy
+and a light thermal dark matter particle in structure formation
+including full gas physics. We compare the synthetic spec-
+tra to the data in a Bayesian inference framework. Since the
+grid of simulations spans a high-dimensional parameter space,
+we efficiently sample the likelihood by implementing a neu-
+ral network emulator. We perform a variety of analyses that
+incorporate numerical correction due to a fixed resolution of

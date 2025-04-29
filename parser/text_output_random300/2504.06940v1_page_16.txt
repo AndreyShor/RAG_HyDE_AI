@@ -1,0 +1,207 @@
+16
+Theorem III.5 (Theorem III.2 Packaged). Consider a univariate random variable X with
+• |E [X]| ⩽ε;
+• E
+
+X 2
+⩽s2
+0
+where ε ⩽s0 ⩽1
+3. Consider the Grover gate G on random variable θ = 2 arctan
+
+1
+2 JXK 1
+λε
+
+with λ =
+5
+4−5s2
+0 , it has an
+eigenvalue eiα with eigenvector |α⟩, where α ∈(−π, π], such that
+• |α −E [X]| ⩽3.1588s2
+0
+1−1.25s2
+0 ε ;
+• |⟨α|1⟩|2 ⩾1 −1
+4
+
+1.7983s2
+0 + 7.480s0
+ε
+1−1.25s2
+0
+
+.
+Proof. Note that tan θ
+2 = 1
+2 JXK 1
+λε . By Cauchy-Schwarz Inequality we find:
+E [X] −E
+h
+JXK 1
+λε
+i ⩽E
+hX −JXK 1
+λε
+
+i
+⩽E
+h
+|X| 1|X|> 1
+λε
+i
+⩽
+s
+E
+
+X 2
+P
+
+|X| > 1
+λε
+
+(77)
+With Markov inequality applied to X 2 we find:
+P
+
+|X| > 1
+λε
+
+⩽E
+
+X 2
+1
+λε
+⩽(λε)2s2
+0
+(78)
+Combining Eqs. (77 and 78) we obtain:
+E [X] −E
+h
+JXK 1
+λε
+i ⩽λs2
+0ε
+(79)
+Thus, it is easy to see the following three results:
+• ∀k ∈Ω
+tan θk
+2
+ ⩽
+1
+4λ
+1+λs2
+0
+1
+2 (1+λs2
+0)ε;
+• E
+
+tan2 θ
+2
+
+⩽1
+4s2
+0;
+• E
+
+tan θ
+2
+
+⩽1
+2(1 + λs2
+0)ε;
+By picking λ =
+5
+4−5s2
+0 ∈[1.25, 1.452) we make
+4λ
+1+λs2
+0 = 5. Then, Theorem III.4 holds with parameters (ε, s0, λ)
+replaced with (min
+ 1
+2(1 + λs2
+0)ε, 1
+2s0
+	
+, 1
+2s0, 5). The min function is placed in the event that (1+λs2
+0)ε > s0, in which
+case we still have E
+
+tan θ
+2
+
+⩽1
+2s0 by Cauchy-Schwarz inequality, and also ∀k ∈Ω
+tan θk
+2
+ ⩽
+1
+5 1
+2 (1+λs2
+0)ε ⩽
+1
+5s0 .
+Note that 1
+2(1 + λs2
+0)ε = 1
+2
+ε
+1−1.25s2
+0 . Theorem III.4 says there is a solution α such that
+α −2E
+
+tan θ
+2
+ =
+α −E
+h
+JXK 1
+λε
+i ⩽2c
+1
+2(1 + λs2
+0)ε
+
+=
+cε
+1 −1.25s2
+0
+(80)
+where we take c = 1.9088s2
+0 ⩾7.635( 1
+4 s2
+0)
+1+( 1
+4 s2
+0) . Combined with Eq. (79), we find
+|α −E [X]| ⩽
+
+c
+1 −1.25s2
+0
++ λs2
+0
+
+ε ⩽3.1588εs2
+0
+1 −1.25s2
+0
+(81)
+Moreover, let the corresponding eigenstate (with eigenvalue eiα for G be |α⟩with norm 1, the theorem also states
+that |⟨α|1⟩|2 ⩾1 −δ, where δ = 1
+4
+
+1.7983s2
+0 + 7.480s0
+ε
+1−1.25s2
+0
+
+. We can verify that the above derivation process is
+still valid in the event that (1 + λs2
+0)ε > s0.
+Remark III.6 (Constructing Grover Gate). Given O(1) access to a quantum experiment (and its inverse) to the
+random variable X, by Remark II.35 we can construct a quantum experiment for θ. By Definition II.36 we can
+construct the phase oracle for θ which gives us access to G discussed in Theorem III.5

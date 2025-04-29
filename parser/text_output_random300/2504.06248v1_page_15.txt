@@ -1,0 +1,105 @@
+7
+B.
+Monomials as constants of motion
+Having a monomial eigenfunction zµ implies the existence a constant of motion of the form zµe−iµ⊤ωt. If µ⊤ω = 0,
+the time dependence disappears, which is convenient when making a change of variables. This is, however, a rather
+specific case, because the powers of monomial eigenfunctions are determined by the weight matrix, thus restricting
+the natural frequencies satisfying the orthogonality condition. In the more general case, it is possible to combine
+eigenfunctions with nonzero eigenvalues to obtain constants of motion with no time dependence, as presented in the
+following lemma.
+Lemma S5. Let the Kuramoto model in Lem. S3 have natural frequencies ω = (ω1 · · · ωN) and Koopman generator K.
+Suppose that K admits 1 ≤q ≤N functionally independent monomial eigenfunctions zµ1, . . . , zµq, where µρ ∈RN for
+each 1 ≤ρ ≤q, whose corresponding eigenvalues are given by the vector λ = (iµ⊤
+1 ω · · · iµ⊤
+q ω)⊤. If all eigenvalues
+are nonzero, then there are q −1 functionally independent monomial constants of motion zν1, . . . , zνq−1, defined by
+the matrix equation (ν1 · · · νq−1) = (µ1 · · · µq)O where O is a real q × (q −1) matrix having linearly independent
+columns orthogonal to λ.
+Proof. Denote ψρ(z) = zµρ for all ρ ∈{1, ..., q}. Since z ∈TN, these q monomials are non-vanishing eigenfunctions
+of K. Moreover, since the eigenfunctions are also assumed to be functionally independent, the vectors µ1, . . . , µq are
+linearly independent and thus span a q-dimensional subspace in RN.
+Now, it is known that the product of non-vanishing eigenfunctions yields an eigenfunction with sums of eigenval-
+ues [26, Proposition 5]. Explicitly, for any real numbers a1, ..., aq,
+K
+" q
+Y
+ρ=1
+ψaρ
+ρ
+#
+=
+ q
+X
+η=1
+aηλη
+!
+q
+Y
+ρ=1
+ψaρ
+ρ .
+Then, Qq
+ρ=1 ψaρ
+ρ is a constant of motion if and only if the new orthogonality condition a⊤λ = 0 is met. This condition
+is nontrivial since, by assumption, no component of λ is zero. Clearly, in this case, the imaginary part of λ lies in Rq
+and has a (q−1)-dimensional orthogonal complement. This implies that we can find q−1 linearly independent vectors
+aτ = (aτ1 · · · aτq)⊤∈Rq, for τ ∈{1, . . . , q −1}, that are orthogonal to λ. Since monomials of linearly independent
+powers are functionally independent, there are q −1 constants of motion having the form
+Ψτ(z) =
+q
+Y
+ρ=1
+ψaτρ
+ρ
+(z) =
+q
+Y
+ρ=1
+
+zaτρ(µρ)1
+1
+· · · zaτρ(µρ)N
+N
+
+=
+N
+Y
+j=1
+z
+Pq
+ρ=1(µρ)jaτρ
+j
+= zντ ,
+τ ∈{1, ..., q −1},
+where ντ = Uaτ with U = (µ1 · · · µq). Altogether, the vectors ν1, . . . , νq−1, which define the monomial constants
+of motion, satisfy the matrix equation (ν1 · · · νq−1) = UO, where O = (a1 · · · aq−1). The latter is a real q × (q −1)
+matrix with linearity independent columns satisfying O⊤λ = 0, and the lemma follows.
+Remark S9. The above lemma remains valid if the condition “all eigenvalues are nonzero” is replaced by “at least
+one eigenvalue is nonzero.” However, in this case, some eigenfunctions zµρ are themselves constants of motion,
+and thus some of the resulting constants of motion zντ may factor through them — that is, they include terms
+like zµρ as multiplicative factors. As a result, the two sets of constants of motion become functionally dependent.
+The condition that all eigenvalues are nonzero therefore ensures the cleanest setting, where the only functionally
+independent constants of motion are precisely the monomials zντ .
+C.
+Basic examples for Theorem 1 and the conservation of monomials
+Example S10. Consider a (sink) directed star of five Kuramoto oscillators such that
+˙z1 = iω1z1 + (A12z2 −¯A12¯z2z2
+1) + (A13z3 −¯A13¯z3z2
+1) + (A14z4 −¯A14¯z4z2
+1) + (A15z5 −¯A15¯z5z2
+1)
+˙zk = iωkzk ,
+k ∈{2, 3, 4, 5}.
+Clearly, the last four equations readily inform that z2, z3, z4, z5 are q = 4 monomial eigenfunctions with respective
+eigenvalues λ = (iω2 iω3 iω4 iω5) (let’s assume they are not zero). From Lem. S5, those eigenfunctions can be
+combined to obtain 3 functionally independent constants of motion. For example, zω3
+2 z−ω2
+3
+, zω4
+3 z−ω3
+4
+and zω5
+4 z−ω4
+5
+is
+a set of independent constants of motion, along with the time-dependent integral z5e−ω5t.

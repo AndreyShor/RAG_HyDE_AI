@@ -1,0 +1,129 @@
+12
+Finally, the third quadratic term is minimized when no
+branching is present and thus penalizes cases where three
+or more bonds meet at the same lattice site. Combining
+this constraint with the first one, i.e., that the number of
+active bonds is equal to the number of sites, implies that
+each site has exactly two incident bonds and is, therefore,
+part of a closed chain.
+Thus, minimizing all three terms simultaneously yields
+a binary encoding of self-assembled polymers that sat-
+isfy the physical requirements of being space-filling, self-
+avoiding, and exclusively consisting of closed chains. No-
+tice that the number of closed chains is not fixed and is
+determined by the self-assembly combinatorics.
+The ground states of the QUBO Hamiltonian of eq. 21,
+which by construction correspond to HN = 0, are thus
+in one-to-one correspondence with the configurations of
+maximally-dense melts of rings.
+A schematic representation of the Γ−and Γ⌞of a
+ground state solution of HN is shown in Fig. 6.
+For
+clarity, the illustrated case is for a two-dimensional 4 × 4
+lattice.
+QUBO-based sampling for a bending energy interval
+As noted in connection with eq. 13, a natural parame-
+ter for profiling the density of states W is the total num-
+ber of corner turns, nc. This quantity is proportional to
+the total curvature and, hence, is the conjugate variable
+of the bending rigidity. In the ground state manifold HN,
+nc can be directly computed from the number of active
+Γ⌞variables in the ground states of HN:
+nc =
+X
+⟨ijk⟩
+Γ⌞
+ijk .
+(23)
+The
+intervalled
+sampling
+required
+to
+reconstruct
+W(nc) can thus be achieved by adding to HN a quadratic
+term proportional to:
+Hs =
+
+X
+⟨ijk⟩
+Γ⌞
+ijk −¯nc −
+m
+X
+k=1
+2k
+
+
+2
+.
+(24)
+In fact, minimizing HN + AHs with A > 0 allows for
+sampling states in the interval ¯nc ≤nc ≤¯nc + 2m−1.
+Repeating the sampling procedure for overlapping in-
+tervals covering the entire range of nc, and applying the
+reconstruction method of section 1, one can obtain the
+full profile of the density of states W().
+Ring melt composition versus bending rigidity
+The composition of the self-assembled rings melts is
+conveniently characterized in terms of the average num-
+ber of self-assembled rings at fixed temperature and
+bending rigidity, ⟨Nrings⟩βκb.
+We recall that the num-
+ber of chains in self-assembling polymer systems can
+be controlled with extrinsic design parameters, such
+as monomer density, and intrinsic ones, such as the
+monomers’ bonding volume [91]. In our case, the former
+is fixed by the space-filling conditions, while the latter is
+varied via the bending rigidity.
+We computed ⟨Nrings⟩βκb using eq. 13 after identifying
+⟨O⟩nc with the average number of rings per each admis-
+sible value of nc, ⟨Nrings⟩nc.
+Fig. 7 illustrates the resulting profile of ⟨Nrings⟩βκb,
+obtained by averaging five independent reconstructions.
+The shaded band denotes the estimated statistical error
+on the average profile, which is typically smaller than
+0.6% except for βκb < 4.
+8
+6
+4
+2
+0
+2
+4
+6
+8
+b
+3
+4
+5
+6
+7
+8
+9
+Nrings
+FIG. 7.
+Average number of self-assembled rings as
+a function of the reduced bending rigidity βκb. The
+results are for a canonically equilibrated ring melt filling a
+5 × 5 × 4 cubic lattice. The data points represent the average
+Plink computed from 4 reconstructions and the shaded bands
+indicate the standard error of the mean. The considered range
+of βκb spans from −8 to +8, i.e.
+from strongly favoured
+to strongly suppressed corner turns. Across this range, the
+average number of rings is non-monotonic, having a minimum
+at βκb ∼1.5.
+For βκb > 4, ⟨Nrings⟩βκb≫0 plateaus at about 6.5. In
+this regime of large bending rigidity, typical configura-
+tions of the ring melt correspond to nested stacked rings,
+which typically involves approximately 7 rings on 5×5×4
+space-filled lattice, as illustrated in Fig. 2e.
+For βκb < −4, instead, ⟨Nrings⟩plateaus to about 9.
+This larger asymptotic value reflects the fact that, when
+chain turns are favored, the rings are smaller and hence
+more numerous, as shown in Fig. 2b.
+Fig. 7 shows that in between two asymptotic values
+⟨Nrings⟩βκb is minimum for βκb ∼1.7, where it is slightly
+smaller than 3. A typical configuration for such extremal
+case is shown in Fig. 2g-h.

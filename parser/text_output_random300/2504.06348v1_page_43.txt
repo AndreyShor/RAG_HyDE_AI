@@ -1,0 +1,62 @@
+Hence, we will need δ′ + δBE|t| = δ. For example, we may choose δ′ = δ/2, which can be achieved with
+|τ|e
+2
++ log
+
+2c
+δ
+
++ 2
+(130)
+applications of ˜Usa which hence requires,
+δBE =
+δ
+2|t|.
+(131)
+This guarantees that the output block-encoding is δ-close to e−iHt, while in practice we expect much less
+stringent requirements will arise, due to error cancellations.
+In practice, there are multiple sources of inaccuracy in the compilation that lead to an imperfect block
+encoding. Indeed, some are highlighted in the tables in Section 5.1; all the parameters listed in red are
+adjustable parameters that constitute finite bit-precision for floating-point operations. In the resource esti-
+mates that follow, we try to provide an apples-to-apples comparison with [29] by adopting the same fixed
+prescription for precision of arithmetic and uniform state preparation. In principle, however, one should con-
+struct a more detailed error propagation and find the choice of parameters that minimizes the computational
+resources while satisfying a total error of no more than δBE. We leave this to future work.
+6
+Quantum chemical identification
+Recalling from Sec. 2.3 that the fingerprints are described in terms of pseudoion spatial geometry, consider
+an expansion of the wavefunction in the position basis,
+|ψ⟩=
+X
+R1,...,Rηion,r
+ψ(R1, ..., Rηion, r)|R1, ..., Rηion, r⟩,
+with r collectively denoting all electron coordinates, over which we shall perform no computation. We define
+a unitary UXα that performs a coherent implementation of the fingerprint-based species counter CXα on the
+coordinates (see Sec. 2.3) and writes the result in an auxiliary register encoding non-negative integers:
+U Xα
+c
+|ψ⟩|0⟩=
+X
+R1,...,Rηion,r
+ψ(R1, ..., Rηion, r)|R1, ..., Rηion, r⟩|CXα(R1, . . . , Rηion)⟩.
+Performing the counts for all listed chemical species UX = QM
+α=1 UXα provides the desired species identifi-
+cation.
+6.1
+Validating Example
+As a concrete example, we show in this section how the quantum chemical identification (QCI) procedure
+is implemented for a specific subreaction that often plays a rate-limiting step for the WGS reaction – the
+dissociative adsorption of CO2 into CO and atomic oxygen on a catalytic surface. We pick an Ir(100) surface
+for our simulation, as previous investigations based on density-functional theory (DFT) show that this surface
+has one of the smallest barriers for CO2 dissociation [83].
+6.1.1
+Molecular fingerprinting
+We first identify the desired molecules – or, more broadly, chemical species Xα – that shall be identified
+by our fingerprinting approach, as discussed in Sec. 2.3.
+For this simple reaction, it suffices to build a
+fingerprinting for CO2 and CO. We must first find computationally inexpensive functions which, given a
+set of pseudoionic positions x = (R1, ..., Rηion), output the features FXα(x) as defined in Eq. (13). We
+first estimate the potential energy EXα(x) of Xα at various ionic configurations x close to the equilibrium
+structure. For that, we perform tight-binding calculations using the xTB package [84] within the GFN2-xTB
+molecular parameterization [85]. For each molecule of interest, we sample a variety of ionic configurations
+43

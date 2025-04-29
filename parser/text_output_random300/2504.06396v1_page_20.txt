@@ -1,0 +1,37 @@
+XXX:20
+Israel et al.
+5.5.1
+Statistics-based approach. The study in [19] conducted a comparative analysis of their
+statistics-based topology against two established graph-generation models: Havel-Hakimi and
+Chung-Lu [29]. In alignment with their methodology, these models are also employed as benchmarks
+for evaluating the statistics-based topology across two test cases involving 50-bus and 500-bus
+networks, as shown in Fig. 25 and 26. The graphical representations illustrate that the proposed
+topology achieves reduced average path lengths due to enhanced node interconnectivity. This
+comparison is quantified in Table 7, which details the network metrics for both 50 and 500 node
+cases. Notably, the benefits of the proposed topology, characterized by decreased network delays
+and increased routing flexibility, become more pronounced as the network size expands. These
+results underscore the superiority of the proposed statistics-based topology in representing cyber-
+networks.
+The Chung-Lu algorithm generates random graphs that align with a given expected degree
+sequence, making it particularly relevant for power grids where nodes—such as substations, genera-
+tors, or loads—exhibit specific connectivity patterns. These patterns must be precisely replicated in
+synthetic networks to accurately simulate real-world behaviors. The Chung-Lu model simplifies the
+creation of graphs by connecting nodes randomly, with the connection probability between any two
+nodes being proportional to the product of their expected degrees. In contrast, the Havel-Hakimi
+algorithm is employed to produce graphs that exactly match a specified degree sequence. This
+accuracy is crucial for power grids, where the exact number of connections per node is essential
+for maintaining system realism.
+However, these algorithms do not account for clustering, community structure, or other higher-
+order network properties typical of real-world networks, such as those found in power grid utilities.
+Graphs generated with a random structure may be adequate for analyzing smaller networks but
+do not accurately reflect the geographical or functional constraints of actual large-scale power
+systems. Consequently, our proposed statistics-based topology introduces real-world utility-based
+metrics to capture the complexities of power grid networks accurately.
+Fig. 25. Comparison of a 50-node network using Chung Lu, Havel Hakimi, and statistics-based algorithm.
+6
+Conclusions
+Realistic high-fidelity cyber-physical system models are important for understanding and improving
+the security of large-scale electric power systems. Machine readable and simulation/emulation-
+capable complete models can greatly enhance capabilities for defense of critical infrastructures, by
+improving coordinated engineering assessments of the system leading to heightened situational
+awareness and decision-making at all stages of an event life cycle. This is crucial for promoting

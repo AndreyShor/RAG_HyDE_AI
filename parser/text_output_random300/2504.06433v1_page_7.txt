@@ -1,0 +1,47 @@
+Depending on the context, we can interpret G(ℓ)
+S
+as acting on the space HS or on the entire
+space, where it is then the tensor product of G(ℓ)
+S
+with the identity operator on the rest of the
+qubits.
+Deﬁnition 2.6. If G is an n-qubit unitary operator and C is a quantum circuit on n + m qubits
+for some m ≥0, we say that C cleanly simulates G if, for all x ∈{0, 1}n,
+C(|x⟩⊗|0m⟩) = (G |x⟩) ⊗|0m⟩.
+So particularly, when the ancilla qubits are initially all 0, they are returned to being all 0 at
+the end. We end this section by deﬁning ways a quantum circuit computes a classical 1-output
+function.
+Deﬁnition 2.7. Let f : {0, 1}n →{0, 1} be a Boolean function, for some n ≥1. Let |α⟩∈Hm be
+an m-qubit state, for some m ≥0. A quantum circuit C on 1 + n + m qubits |α⟩-computes f if,
+for all x ∈{0, 1}n, there exists an (n + m)-qubit state |ϕx⟩such that
+C(|0⟩⊗|x⟩⊗|α⟩) = |f(x)⟩⊗|ϕx⟩.
+We say that C computes f if C |0m⟩-computes f.
+We say that C weakly computes f if there exists |α⟩∈Hm such that C |α⟩-computes f.
+When using a quantum circuit to |α⟩-compute a function f as in Deﬁnition 2.7, we label the
+qubits of C with numbers from 0 to n + m, with qubit 0 being the target, qubits 1, . . . , n the input
+qubits, and the qubits n + 1, . . . , n + m the ancilla qubits. Note that for |α⟩-computing f, we do
+not make any “cleanliness” restrictions; we assume that the target starts in state |0⟩and ancilla
+qubits start in state |α⟩and that the non-target qubits end in an arbitrary state.
+Clearly, any circuit that cleanly simulates ⊕k also computes ⊕k, and any circuit computing ⊕k
+also weakly computes ⊕k. Recall that we do not count the target qubit (qubit 0) as an input qubit,
+even though one could plausibly do this for the parity function.
+2.3
+Representing Quantum States by Polynomials
+Fix a k ≥1 and let H be a k-qubit Hilbert space. H has dimension 2k with computational basis
+{|s⟩: s ∈{0, 1}k} whose elements are indexed by binary strings of length k. For each such basis
+state |s⟩we introduce a unique formal variable xs and deﬁne polyH(|s⟩) := xs.
+The choice of
+the letter x is not important and will depend on H. We extend polyH to all of H by linearity,
+yielding a unique linear map polyH : H →C[{xs : s ∈{0, 1}k}] so that, for any v ∈H, writing
+v = P
+s∈{0,1}k αs |s⟩for some coeﬃcients αs ∈C, we have
+polyH(v) =
+X
+s∈{0,1}k
+αsxs .
+(Here, C[S] is the ring of polynomials over variables in the set S.)
+The map polyH is clearly
+one-to-one, and its image is the set of homogeneous degree-1 polynomials in C[{xs}].
+Given a k-qubit Hilbert space H and an ℓ-qubit space J , let xs := polyH(|s⟩) and yt :=
+polyJ (|t⟩) for all s ∈{0, 1}k and t ∈{0, 1}ℓ. The letters x and y are not important except that
+7

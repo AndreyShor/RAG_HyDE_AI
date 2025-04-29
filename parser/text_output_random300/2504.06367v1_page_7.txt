@@ -1,0 +1,125 @@
+7
+𝑘-cross Fold Validation
+Fold 1
+Fold 2
+Fold 3
+Fold 4
+...
+Fold 10
+Training
+Validation
+ 
+im
+✓1
+✓2
+✓3
+✓6
+...
+h(1)
+1
+h(1)
+2
+h(1)
+3
+h(1)
+4
+h(1)
+120
+...
+h(2)
+1
+h(2)
+2
+h(2)
+3
+h(2)
+4
+h(2)
+120
+...
+h(3)
+1
+h(3)
+2
+h(3)
+3
+h(3)
+4
+h(3)
+120
+...
+ˆ
+Pk, 1
+ˆ
+Pk, 2
+ˆ
+Pk, 16
+...
+−!✓=
+T0
+zi, γzi, ⌧zi
+e↵, u0zi,
+m−1
+WDM, fWDM)
+hl
+j = σ(b l
+j + Pn
+i=1w l
+i,jx l−1
+i
+)
+FIG. 4: Illustration of the emulator building process used in this work. Left: 𝑘-fold cross-validation. Right: Neural network trained on each
+fold 𝑖∈[1,10]. We first extract the training set from the total input and output data to perform a 𝑘-fold cross-validation as shown on the left.
+Each fold is divided into 10 subsets, 9 are used to train the neural network model depicted on the right, while the remaining one is used as a
+validation set to monitor the convergence. We feed the cosmological model parameters −→𝜃in the input blue layer. The hidden layers are shown
+in gray. For hidden neuron 𝑗in layer 𝑙with 𝑛= 6 input parameters, the inputs to each node are combined in the weighted linear combination
+ℎ𝑖𝑗shown on top in gray, where −→𝑏is the bias vector and w is the weight matrix, such that 𝜙= [−→𝑏, w], 𝑥𝑙−1 are the outputs from the previous
+layer, and 𝜎is the so termed activation function, which permits non linear relations between the input and the output. This step results in 10
+models validated on different subsets of the training data. Then, we feed the unseen test data into each model and average the predictions across
+all the emulators. The output are the power spectrum values in 16 𝑘-bins shown in red, corresponding to the output layer. Note that this is
+repeated for the 3 redshift bins, 𝑧= 4.2, 4.6, 5.0, of the data.
+2.0
+1.5
+1.0
+log10 (k [km
+1 s])
+0.990
+0.995
+1.000
+1.005
+1.010
+Predicted/True
+z = 4.2
+2.0
+1.5
+1.0
+log10 (k [km
+1 s])
+z = 4.6
+2.0
+1.5
+1.0
+log10 (k [km
+1 s])
+z = 5.0
+1 fold
+10 folds
+-1.0%
+-0.5%
+0.0%
+0.5%
+1.0%
+Percentage
+FIG. 5: Characterising the performance of the neural network emulator with the predicted versus true power spectra ratio distribution on the
+test set before and after performing 𝑘-fold cross-validation. Lighter blue and red regions correspond to the 95% confidence intervals for one
+fold (before cross-validation) and for ten folds (after cross-validation), respectively. The same applies to the darker shaded regions, which
+correspond to the 68% confidence interval. The median of the distribution is shown as well as a solid line. Perfect recovery is indicated by the
+gray dashed line.
+a different subset of the mock spectra. We build our neural
+network model using PyTorch in Python, which enables GPU
+execution. Before training, we apply min-max normalization
+to rescale the input data, ensuring that −→𝜃∈[0,1], while the out-
+put (labels) undergo a logarithmic transformation. These pre-
+processing steps mitigate data variability, thereby enabling the
+network to learn more efficiently. We perform cross-validation
+for several hyperparameter combinations and, after monitor-

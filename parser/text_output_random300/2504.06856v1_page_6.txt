@@ -1,0 +1,139 @@
+Size
+FID
+KID
+Runtime
+(↓)
+(↓)
+(×10−3, ↓)
+(seconds, ↓)
+Text2Tex
+2.5B
+21.3
+4.1
+549
+Paint-it
+1B
+25.2
+6.7
+892
+FlashTex
+1.3B
+29.0
+9.5
+280
+CasTex (M)
+400M
+24.9
+5.6
+45
+CasTex (M+L)
+1.6B
+23.2
+5.0
+628
+CasTex (XL)
+4.3B
+22.8
+4.4
+174
+CasTex (XL+L)
+5.5B
+20.5
+3.1
+710
+Table 1. Comparison of FID and KID scores for different text-
+to-texture generation methods. Notably, even with the smallest
+diffusion model, our method outperforms optimization-based base-
+lines. As expected, the super-resolution stage improves the re-
+sults for both stages. Surprisingly, in our evaluation, the older
+back-projection-based method outperforms the optimization-based
+method and is only rivaled by our largest setup. We use NVIDIA
+A100 80GB for time measurements and generate textures with a
+resolution of 1024x1024 pixels.
+It addresses the limitations of previous methods by fine-
+tuning the model used for guidance on multi-view 3D data
+with controlled lighting. Again, all of the baselines are based
+on latent diffusion models for texture synthesis.
+To evaluate the quality of generated textures, we com-
+puted the Frechet Inception Distance (FID) [15] and Kernel
+Inception Distance (KID) [3] metrics on a subset of the
+Objaverse dataset [12]. Specifically, we adopted the same
+curated subset used in Text2Tex [6], which includes 410
+high-quality textured meshes from 225 distinct categories.
+This subset was originally filtered to exclude meshes with
+simplistic or inconsistent textures, category mismatches, and
+over-triangulated or scanned objects. All methods generated
+textures for the same set of untextured 3D meshes using
+identical text prompts, then each textured mesh is rendered
+from 20 fixed viewpoints at a resolution of 512 × 512 with a
+white background using Blender [10]. We provide a detailed
+evaluation setup in Appendix A, where we specify the most
+critical rendering parameters (e.g., lighting configuration,
+render engine, etc.) to ensure accurate comparisons.
+5.2. Main Results
+Automated quality assessment. We report FID and KID
+scores in Table 1. Our smallest single-stage setup outper-
+formed the two optimization-based approaches. The two-
+stage cascaded diffusion approach achieved the best perfor-
+mance, outperforming all baselines. We illustrate the two
+stages in Figure 6 and provide additional illustrations in Ap-
+pendix C. The second stage significantly refines textures,
+enhancing fine-grained details and coherence.
+Notably, the weak performance of FlashTex on the bench-
+mark is the result of the limited generalization abilities of
+the Light ControlNet proposed by the authors. To our sur-
+FID
+KID
+(↓)
+(×10−3, ↓)
+CasTex (diffuse map only)
+21.8
+4.0
+CasTex
+20.5
+3.1
+Table 2. Ablation of Physically Based Rendering (PBR) compo-
+nents. Optimizing the full set of PBR components improves texture
+quality compared to synthesizing only the diffuse map.
+prise, Text2Tex delivered competitive results. Even though
+the method is the oldest baseline, the back-projected photo-
+realistic images lead to photo-realistic textures and renders.
+Our method also achieves competitive synthesis times,
+with the two-stage variant completing generation in 12 min-
+utes per mesh – comparable to baselines while delivering bet-
+ter quality. For time-constraint applications, the single-stage
+variant generates plausible textures in just 3 minutes, offer-
+ing a compelling trade-off between computational efficiency
+and texture realism, making it suitable for time-constraint
+applications.
+User preference study. In addition, we conduct a human
+study to compare the perceptual quality of our generated tex-
+tures against baseline methods. The evaluation is conducted
+by professional assessors, asked to make a decision between
+two rendered textures given a textual prompt. The decision
+is made according to the texture quality and textual align-
+ment. For each pair, three responses are collected, and the
+final result is determined by majority voting. For evaluation,
+we use 256 random objects from the previously mentioned
+Objaverse subset.
+As shown in Figure 5, our two-stage approach outper-
+forms all the baselines. Figure 4 presents a qualitative com-
+parison of our method with the three baseline approaches.
+The comparison against our single-stage approach confirms
+that the second stage is highly effective for further texture
+refinement.
+Also, we provide the results of our method using the
+smaller version of DeepFloyd-IF that contains 400M pa-
+rameters. We observe that our method still outperforms
+competing works.
+Overall, our method achieves impressive quality, effec-
+tively producing detailed, seamless, and high-fidelity tex-
+tures, as further confirmed by quantitative results.
+5.3. Ablation study
+We conducted a series of experiments to understand the role
+of the key design choices in our approach.
+Do the PBR components improve the texture synthesis?
+PBR components enable the modeling of complex visual ef-
+fects like reflections and material properties, avoiding baked-
+in lighting and improving realism.
+We compare our full PBR-based approach with a base-

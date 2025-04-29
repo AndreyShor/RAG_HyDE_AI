@@ -1,0 +1,185 @@
+4
+in which Podd(M) reflects detection of leakage into the
+odd-parity states modeled as
+Podd(M) = 1
+2
+ 
+1 −A exp
+ 
+−
+M 2
+2M 2
+σ,odd
+!!
+(7)
+where M is the number of MS(θ) gates applied, A is a
+fit parameter that allows for a finite SPAM offset, and
+Mσ,odd is the Gaussian standard deviation representing
+leakage rate into the odd-parity subspace.
+With this, we can model the dephasing of the Rabi
+oscillation within the even-parity subspace with an addi-
+tional Gaussian decay envelope:
+P|11⟩(M, θ) = Peven(M)
+2
+×
+
+1 −exp
+
+−
+M 2
+2M 2σ,even
+
+cos(θM)
+
+(8)
+and
+P|00⟩(M, θ) = Peven(M)
+2
+×
+
+1 + exp
+
+−
+M 2
+2M 2σ,even
+
+cos(θM)
+
+(9)
+where Mσ,even is the standard deviation of the Gaus-
+sian decay envelope.
+We first fit the measured values of Podd according to
+Eq. 7, then fit P|11⟩to Eq. 8. For θ = π
+2 , π
+8 , and π
+32 we find
+Mσ,odd = 83(3), 157(4), and 179(2) gates and Mσ,even =
+12.9(5), 19.8(8), and 48 (1) gates, respectively.
+We note that these decay envelopes do not fully repli-
+cate the actual behavior of the system.
+In particular
+at high numbers of repeated gates, the Gaussian decay
+overestimates the decay of the even parity states. Like-
+wise, there is no clear relation between the odd decay
+profile and the even decay profiles. This suggests this
+phenomenological model is not fully representative of all
+of the potential limiters: decoherence, dephasing, ampli-
+tude fluctuations, heating, and axial motion. Regardless,
+there is a trend for increasing coherence with decreasing
+θ.
+IV.
+LIGHT SHIFTS AND FRAME ROTATIONS
+Due to the significant laser powers required to achieve
+these MS(θ) gates, it is imperative that we are cognizant
+of the light shifts that result. Light shifts induce addi-
+tional energy splittings on the qubit levels as a result
+of the Autler-Townes, or AC Stark, effect. In particu-
+lar, these additional energy splittings on the qubit levels
+will affect the precession of the qubit relative to the bare
+rotating frame leading to phase errors in the gate if un-
+compensated. In this section, we discuss the sources of
+our light shifts during the MS(θ) gate and our methods
+for cancellation.
+0
+5
+10
+15
+20
+25
+30
+35
+40
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Detection Probability
+a)
+|11
+|01  or |10
+|00
+P|11 (M)
+Podd(M)
+P|00 (M)
+0
+10
+20
+30
+40
+50
+60
+70
+80
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Detection Probability
+b)
+|11
+|01  or |10
+|00
+P|11 (M)
+Podd(M)
+P|00 (M)
+0
+20
+40
+60
+80
+100
+120
+140
+M, Gate Number
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Detection Probability
+c)
+|11
+|01  or |10
+|00
+P|11 (M)
+Podd(M)
+P|00 (M)
+FIG. 3: Repeated applications of the MS gate show less
+dephasing per gate for small θ. Ideal performance would
+show oscillation between |00⟩and |11⟩in steps of
+θ = π
+2 , π
+8 , and
+π
+32 for variable gate number (M) for the
+a), b) and c), respectively.
+A.
+Origin of Light Shifts
+The typical, second-order, light shift is largely min-
+imized by our choice of wavelength for the Raman
+laser [30].
+However, we use a frequency comb to gen-
+erate Raman transitions, and thus a significant con-
+tribution from fourth-order light shifts remains [31].
+These fourth-order light shifts may be understood as de-
+tuned two-photon Raman coupling. This coupling occurs
+both between the usual qubit states (|F = 0, mF = 0⟩
+and |F = 1, mF = 0⟩) and due to state coupling from
+|F = 0, mF = 0⟩to the |F = 1, mF = ±1⟩Zeeman sub-
+levels in the 2S1/2 hyperfine manifold.
+The dominant
+contribution to fourth-order light shifts during the MS
+gate in our system is from the detuned two-photon drive
+of the qubit carrier transition, and thus, we will only
+consider these here. As the effective Raman Rabi rate is
+approximately Ωeff ≈2π × 125 kHz and the radial mo-
+tional mode frequencies range from 2 to 2.5 MHz, fourth-
+order shifts of |Ω2
+eff/4δ| ≈2π × 2 kHz are expected from
+the rf tones driving the red and blue sideband.
+Since

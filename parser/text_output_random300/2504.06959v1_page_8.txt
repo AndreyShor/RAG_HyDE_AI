@@ -1,0 +1,121 @@
+8
+There are 6 independent fit parameters in the model (5
+for 2-port ring resonator). These parameters, following the
+nomenclature of [16], are: (i) the ring single-pass amplitude
+transmission coefficient a related to the attenuation coefficient
+α [cm−1] as a2 = e−α2πR with R the ring radius; (ii, iii)
+the self-coupling coefficients at the two waveguide resonator
+interfaces for an add-drop device, r1 and r2. For the point
+coupled ring resonators, by symmetry r1 = r2 and we also
+assume the coupling is lossless, hence k2
+i + r2
+i = 1 with k the
+cross-coupling (waveguide to ring) coefficient; (iv) an effective
+increase in waveguide length, leff = lwg + δl, to account
+for the (slight) difference in vg in straight waveguide and the
+curved ring sections; (v) effective length of IDT region lidt;
+and finally (vi) the interface (power) reflection coefficient R.
+These parameters are determined using the algorithm below:
+Algorithm 1 Parameter Estimation from Time-Domain
+Response
+Input: Ring Radius R, Waveguide Length lwg, Transmission
+Spectrum
+Output: a, r1, r2, leff, lidt, R
+1: Calculate vg from the measured cavity FSR
+2: Fit the magnitude of peaks 1d and nr to estimate initial
+values of a, r1, r2
+3: while 1d and tt1 are not aligned in time do
+4:
+Increase δl
+5:
+Update leff = lwg + δl
+6: end while
+7: while model and measured peaks are not aligned in time
+do
+8:
+Increase lidt
+9: end while
+10: Estimate R by minimizing:
+min
+R≥0 F(R)
+11: return a, r1, r2, leff, lidt, R
+As discussed in the main text, the interface reflection coef-
+ficient (R) can be extracted by comparing the ratio between
+the received signal power of a ring transit and its associated
+triplet transit. For drop port R, this is done numerically by
+minimizing a function F(R), subject to constraint R ≥0,
+defined as follows for a representative case:
+min
+R≥0 F(R) = min
+R≥0
+
+ˆ
+Ptt1
+ˆ
+P1r
+−|ℓ1 + ℓ2 + ℓ3|2
+,
+(2)
+Here, we extract R by comparing the signal amplitude of a
+direct ring transit and the associated triplet transits, shown in
+Fig.8.
+ˆ
+Ptt1 and
+ˆ
+P1r denote the measured peak powers of tt1
+and 1r (cf. Fig.2(b)), respectively. The (amplitude) excess loss
+terms (ℓ1, ℓ2 and ℓ3) and the propagation loss α, associated
+with the triplet transits are defined as (path lengths being
+identical, we ignore the phase):
+ℓ1 =
+q
+e−α·lwg · r2
+2 · R
+(3a)
+ℓ2 =
+q
+e−α·lwg · r2
+1 · R
+(3b)
+ℓ3 =
+p
+e−α·lwg · r1 · r2 · R
+(3c)
+α = −2 ln(a)
+Lrt
+,
+(3d)
+where Lrt is the roundtrip length of the ring, and we make
+the assumption that propagation loss extracted from the rings
+is identical to the straight waveguide loss.
+The key with bounding the value of R using this procedure
+is to ensure one accounts for all possible paths from transmitter
+to receiver. For the drop port device, the excess loss terms (ℓ1,
+ℓ2 and ℓ3) listed in eqn.3 above correspond to the additional
+losses accumulated by three different permutations of the
+signal path comprising a triple waveguide and a half ring
+transit, vs the signal path corresponding to peak 1r (cf. Fig.2).
+The paths are outlined explicitly in Fig.8 and involve both
+clockwise and counterclockwise traversal of the ring on the
+way from transmitter to receiver IDT. These three permutations
+represent distinct contribution to overall loss in Eq.2 only
+when r1 ̸= r2. Also, when limR→0, the triple transit peaks
+disappear.
+1
+2
+3
+4
+Fig. 8. Schematic representation of the paths used to estimate R by taking
+the power ratio between a ring transit and its associated triplet transit. Path 1
+is the first drop-port ring traversal and corresponds to Peak 1r. Paths labelled
+2–4 correspond to the three permutations of the signal path comprising triple
+waveguide and half ring transit. Signals from Paths 2-4 arrive in-phase but
+may have different signal strength (if r1 ̸= r2). Note that the parasitic paths
+involve both clockwise and counterclockwise ring transits on the way from
+transmitter to receiver IDT.
+Once the valid paths (within the time/distance constraint)
+are identified, the cumulative effect of each path on the output
+signal is calculated. For each path, the cumulative phase shift
+is determined by summing the individual contributions from
+each segment (edge) in the path. The total phase shift for a
+given path is computed as:

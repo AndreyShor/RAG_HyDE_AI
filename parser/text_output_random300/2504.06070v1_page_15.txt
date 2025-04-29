@@ -1,0 +1,53 @@
+Published as a conference paper at ICLR 2025
+1
+1
+1
+2
+2
+2
+2
+1
+1
+1
+1
+1
+1
+1
+: mask1
+: mask2
+Figure S2: Mask1 and Mask2.
+In this paper, we define Ωas the set of external boundaries and obstacle boundaries. Since no fluid
+flows through the obstacles, we do not assign negative values to the points inside the obstacles;
+instead, we set them to zero.
+In addition to providing richer spatial information, the directed distance field helps us identify
+boundary points. As mentioned earlier, to achieve better optimization results, we exclude the gra-
+dients of boundary points from the training loss calculation. While boundary points on the external
+boundary are easy to identify, determining the boundary points for internal obstacles, especially
+those with irregular shapes, is more challenging. This problem can be addressed using the directed
+distance field. We define the orthogonal distance from point x to the boundary of set Ωas d. Points
+with a distance less than M from the boundary are considered boundary points. Therefore, the set
+of boundary points is given by {x|d(x) ≤M, ∀x}.
+Figure S1 illustrates an example, including the definition of distance(left) and the setting of the loss
+at boundary points to zero(right).
+A.3
+MASK SETTINGS
+The specific boundary handling is illustrated in Figure S2. Since the gradient operator in Formula
+S2 introduces approximations, these approximation errors become more pronounced during fluid-
+boundary interactions. To reduce such errors, we employ a masking approach. For first-order gradi-
+ent operators, we define Mask1:
+Mask1 := {x|d(x) ≤2.5, ∀x}.
+(S3)
+and for second-order gradient operators, we define Mask2:
+Mask2 := {x|d(x) ≤3.5, ∀x}.
+(S4)
+This helps ensure better handling of boundary interactions and minimizes the impact of approxima-
+tion errors in fluid simulations.
+A.4
+MODEL STRUCTURE
+The model adopts a recurrent prediction structure, utilizing a sliding window approach for fore-
+casting. Each time, it predicts one frame based on the previous four frames and incorporates the
+predicted frame into the window for subsequent predictions. The prediction architecture for each
+step is illustrated in Figure 2.
+In Figure 2, we use Physical Inference Neural Network to establish the mapping function from
+past data to the physical quantities at time t′. Considering that the established mapping function is
+15

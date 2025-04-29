@@ -1,0 +1,93 @@
+through lifting 1-body pseudopotentials to 2-body electron-pseudoion interactions. We may also expect that
+pseudoion interactions better suited to describe dynamical problems may be introduced in the future. The
+plan ahead is as follows:
+• Prepare a suitable initial state for reactants and catalyst, justified by appropriate physical and chemical
+arguments, as well as considerations of algorithmic efficiency (Sec. 4).
+• Describe the algorithm for the evolution under the pseudoion Hamiltonian in Eq. (3) (Sec. 5).
+• Describe the molecular identification algorithm to be used to extract information about the reaction
+products (Sec. 6).
+Remark on cutoffs
+We have introduced three different momentum cutoffs: Λ, Λ for the electrons, pseudoions, and Λtrunc < Λ
+only for the pseudoion-pseudoion interaction V PI
+ion.
+The first two cutoffs determine the size of the qubit
+registers associated to each electron and pseudoion and hence appear in all the Hamiltonian terms except
+V PI
+ion. For this latter case, we replace the naive Λ with Λtrunc which functionally truncates the momentum
+sums to exclude unphysical parts of the Hamiltonian (that would never be relevant in physical situations)
+in order to reduce the resources. As is the convention in quantum-chemistry simulations with plane waves,
+one may associate an energy, in Hartree, to the electron cutoff EΛ = 1
+2Λ2. Typically, electronic structure
+problems converge well with EΛ ∼50Ha, and so Λ ∼10 [71]. For pseudoion wavefunctions to be resolved
+spatially, since they are significantly more massive than electrons (and hence more localized), we estimate
+– by approximating low-lying quantum harmonic oscillator states with plane waves as a rough surrogate
+model for bound ions (not shown) – that Λ ∼3Λ is required as a conservative estimate to ensure critical
+nuclear phenomena, such as proton delocalization, are not missed in the dynamics.
+Finally, in physical
+situations we expect pseudoions to be separated ≳2a0. Inspired by this, we choose to resolve interactions
+between pseudoions up to ≲1a0, although a different choice could be made based on the desired resolution.
+Converting to a momentum cutoff, this gives Λtrunc ∼1. These cutoff considerations are used to define our
+problem instances in Sec. 2.4.
+In this work, the hard cutoffs abruptly truncate the momentum set for the Coulomb interactions (Vel, V PI
+ion).
+There is no fundamental obstacle in alternatively considering replacing 1/r with a softened interaction.12
+Consider for example erf(r/a)/r where a determines the scale where the short-distance divergence is soft-
+ened, just as is seen in the s = −1 term of V PI
+loc. In effect, the hard cutoff Λtrunc is replaced by the softened
+interaction with parameter a while keeping Λ as the momentum set for pseudoions. Intuition suggests that
+numerical convergence for physical scenarios might be easier with such a softened interaction as well. This
+investigation is left for future work.
+4
+Initial state construction
+We construct an initial state that is both physically representative in the chemical context of interest (e.g.
+understanding bond reconfiguration/reaction mechanism) and efficient to construct on an quantum computer.
+Towards this end, we will be inspired by a Hamiltonian constructed by following the standard approach that
+incorporates the BO approximation. However, we will evolve the initial state under the fully quantum-
+mechanical pseudoion Hamiltonian in Eq. (3) for all t > 0. We leave exploring settings where the initial
+state preparation requires inclusion of some non-BO terms to future work. We shall also follow the guideline
+drawn in Sec. 2.2 (and App. B). With this premise, we start with the full Hamiltonian in Eq. (1).
+H = −1
+2
+ηel
+X
+i=1
+∇2
+i −
+ηion
+X
+I=1
+1
+2MI
+∇2
+I+1
+2
+ηel
+X
+i̸=j
+1
+|ri −rj|+1
+2
+ηion
+X
+I̸=J
+ZIZJ
+|RI −RJ|−
+ηel
+X
+i=1
+ηion
+X
+I=1
+ZI
+|ri −RI|.
+(42)
+12Any radially-symmetric interaction f(r), can be moved into the plane-wave basis with a 3d Fourier transformation, which,
+for computational ease, can be expressed as a Hankel transform of order 1/2 denoted H1/2{·}(k) with k = |k|, f(k) =
+4π
+q
+π
+2
+1
+√
+k H1/2{f(r)√r}(k).
+20

@@ -1,0 +1,45 @@
+arXiv:2504.07068v1  [quant-ph]  9 Apr 2025
+Quantum Reverse Shannon Theorem Revisited
+Zahra Baghali Khanian1, 2, 3 and Debbie Leung3, 2
+1Technical University of Munich, 85748 Garching, Germany
+2Perimeter Institute for Theoretical Physics, Ontario, Canada, N2L 2Y5
+3Institute for Quantum Computing, University of Waterloo, Ontario, Canada, N2L 3G1
+Reverse Shannon theorems concern the use of noiseless channels to simulate noisy ones. This is
+dual to the usual noisy channel coding problem, where a noisy (classical or quantum) channel is
+used to simulate a noiseless one. The Quantum Reverse Shannon Theorem is extensively studied by
+Bennett and co-authors in [IEEE Trans. Inf. Theory, 2014]. They present two distinct theorems,
+each tailored to classical and quantum channel simulations respectively, explaining the fact that
+these theorems remain incomparable due to the fundamentally diﬀerent nature of correlations they
+address. The authors leave as an open question the challenge of formulating a uniﬁed theorem that
+could encompass the principles of both and unify them. We unify these two theorems into a single,
+comprehensive theorem, extending it to the most general case by considering correlations with a
+general mixed-state reference system. Furthermore, we unify feedback and non-feedback theorems
+by simulating a general side information system at the encoder side.
+I.
+INTRODUCTION
+The classical “reverse Shannon theorem” was established and proven in 2002 in [1] as a dual to Shannon’s capacity
+theorem. This theorem states that for any channel N with capacity C, if the sender and receiver share an unlimited
+supply of random bits, then an expected Cn + o(n) uses of a noiseless binary channel are suﬃcient to simulate n
+uses of the channel N. The essence of this theorem is that, in the presence of shared randomness, the asymptotic
+properties of a classical channel can be characterized by a single parameter: its capacity. A quantum generalization
+of the reverse Shannon theorem is formulated and extensively studied in [2]. They consider shared entanglement
+as the quantum counterpart of shared randomness and obtain the optimal quantum simulation rates under diﬀerent
+structures and available resources: free entanglement, restricted entanglement, tensor power input states, arbitrary
+input states, and feedback and non-feedback simulation models. (Additional study with diﬀerent techniques can be
+found in [3].)
+One of the questions that remained open in [2] is the diﬀerent treatment of the classical and quantum cases. In
+this paper, we address this problem by considering tensor power mixed input states shared between the encoder and
+a reference system. This not only uniﬁes the classical and quantum models but also extends them to the most general
+quantum case. We also unify the coherent feedback and non-feedback models and extend it to the most general case
+by preserving an arbitrary system at the encoder side. In the presence of free entanglement, we fully characterize the
+optimal simulation rate in terms of a quantity that resembles the entanglement-assisted capacity [1]. Considering the
+general mixed-state case comes with its own complications, as properties used in analyzing pure quantum states, such
+as the monogamy of entanglement, are not applicable to mixed states. Without the assistance of entanglement, we
+obtain converse and achievability bounds, which involve similar quantities but diﬀer in the limit taken for the error.
+It is not obvious whether these bounds match in general, but we provide various examples for which the two bounds
+are equal.
+We introduce two functionals a(ρ, γ) and u(ρ, γ) of a quantum state ρ and an error γ. The ﬁrst functional has
+properties such as sub-additivity and continuity, and it fully characterizes the assisted simulation rates. The second
+functional is more complex, and it characterizes the simulation rate in the unassisted model.
+Even for partially
+classical input states, it can evaluate to the entanglement of puriﬁcation, which is not known to be additive. Hence,

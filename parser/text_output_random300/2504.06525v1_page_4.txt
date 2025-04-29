@@ -1,0 +1,52 @@
+how close the tip is to the sample surface. This one is computed based on the absolute height of 
+the probe and usually favors small setpoins. c, reward of phase is defined to reflect how well the 
+scanning is kept in the attractive mode. It’s computed by counting how many phase pixels are in 
+the attractive mode with values above the free-air phase and usually favors small drive amplitudes 
+and large setpoints. Here the expected distribution of rewards is only shown in the drive amplitude 
+vs. setpoint space for easier visualization. d, phase as a function of tip-sample distance in theory. 
+When the tip is very far from the sample surface, the phase stays close to the free-air phase 
+(indicated by the red horizontal dashed line). When the probe gets closer and interacts with sample 
+surface in the attractive mode, the phase remains above the free-air phase. When the probe is so 
+close to the sample surface that it’s working in repulsive mode, the phase will be below the free-
+air phase. e, expected Pareto scatter plot for reward of trace and reward of distance. The control 
+parameters that give good alignment of trace and retrace are expected to give small tip-sample 
+distance. Therefore, the expected Pareto front collapses into a trivial Pareto point. f-g, the reward 
+of phase is competing with the reward of trace and reward of distance in the parameter space. Thus, 
+there are expected trade-offs between them. The cartoons on the axes of e-g show the physical 
+meaning of the extremes of each reward.  
+ 
+II. 
+Define multiple objectives/rewards for the tapping mode SPM 
+To define reward functions suitable for optimizing tapping mode across a diverse range of 
+materials, environments, and scales, we focus on identifying common features of high-quality TM 
+scans. First, the trace and retrace of the height channel should be in close agreement and ideally 
+follow the sample's true height profile. However, since the ground-truth sample height profile is 
+generally inaccessible, we define a second key characteristic: the probe should be positioned as 
+close to the sample as possible to minimize the tip-sample distance. Finally, the phase values 
+should consistently remain above the free-air phase (Figure 1d) to ensure scanning occurs in the 
+attractive regime [47-49]. Operating in this regime reduces tip-sample interactions, thereby 
+lowering the risk of tip and sample damage. 
+Reward 1 = −log (Σ𝑖
+|ℎ𝑡𝑟𝑎𝑐𝑒−ℎ𝑟𝑒𝑡𝑟𝑎𝑐𝑒|
+(ℎ𝑡𝑟𝑎𝑐𝑒+ ℎ𝑟𝑒𝑡𝑟𝑎𝑐𝑒)𝑁)  
+(1) 
+ 
+ 
+Reward 2 = −log (Σ𝑖
+𝑁𝜃<𝜃𝑓𝑟𝑒𝑒
+𝑁
+) 
+(2) 
+ 
+ 
+Reward 3 = −log(ℎ𝑚𝑖𝑛−ℎ𝑔𝑙𝑜𝑏𝑎𝑙 𝑚𝑖𝑛) 
+(3) 
+ 
+ 
+Reward 4 = −log(Σ𝑖
+(2 − 𝑃(ℎ𝑡𝑟𝑎𝑐𝑒 , ℎ𝑟𝑒𝑡𝑟𝑎𝑐𝑒))
+N
+) 
+(4) 
+where ℎ𝑡𝑟𝑎𝑐𝑒 and ℎ𝑟𝑒𝑡𝑟𝑎𝑐𝑒 are the trace and retrace height scan lines, 𝑁 is the total number of 
+pixels in the trace and retrace scan lines, 𝑁𝜃<𝜃𝑓𝑟𝑒𝑒is the number of pixels in the phase scan lines 

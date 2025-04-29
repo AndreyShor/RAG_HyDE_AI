@@ -1,0 +1,192 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+8
+6. Three-point functions and the definition of graphical functions
+A three-point function has three external vertices 0 = z0, z1, and z2. By scaling all internal variables
+we obtain
+(41)
+Aα
+G(0, z1, z2) = ∥z1∥−2λNGAα
+G(0, z1/∥z1∥, z2/∥z1∥).
+To define the graphical function of G we use the coordinates (in a suitably rotated coordinate frame)
+(42)
+ˆz1 =
+z1
+∥z1∥=
+
+
+
+
+
+
+
+1
+0
+0
+...
+0
+
+
+
+
+
+
+
+,
+ˆz2 =
+z2
+∥z1∥=
+
+
+
+
+
+
+
+Re z
+Im z
+0
+...
+0
+
+
+
+
+
+
+
+.
+Note that ˆz2 is normalized by the length of z1 and hence not a unit vector in general. With (42) we
+obtain
+(43)
+f α
+G(z) = Aα
+G(0, ˆz1, ˆz2).
+Alternatively, we may express the invariants
+(44)
+∥z2 −z0∥2
+∥z1 −z0∥2 = zz,
+∥z2 −z1∥2
+∥z1 −z0∥2 = (z −1)(z −1)
+in terms of the complex variable z and its complex conjugate z.
+With these identifications we can
+equivalently define the graphical function of G as the function f α
+G(z) that fulfills the equation
+(45)
+Aα
+G(0, z1, z2) = ∥z1∥−2λNGf α
+G(z).
+The Feynman integral Aα
+G(0, ˆz1, ˆz2) is a linear combination of products of the metric g and the vectors
+ˆz1, ˆz2. To express this linear combination, we proceed in analogy to the previous sections and define a
+partition of the spin index set α = {α1, . . . , α|α|} into π0
+1, . . . , π0
+N, π1, π2, where the sets π0
+i = {π0
+i1, π0
+i2}
+are pairs. The slots π1 and π2 may have any number of elements. We always distinguish between π0, π1,
+and π2, see Section 5. Let Πα
+2 be the set of all these partitions. The set Πα
+2 has
+(46)
+|Πα
+2 | = 2|α| + 1
+1!
+|α|
+2
+
+2|α|−2 + 1
+2!
+|α|
+2, 2
+
+2|α|−4 + . . . =
+⌊|α|
+2 ⌋
+X
+j=0
+|α|!
+(|α| −2j)!j!2|α|−3j
+elements. For π ∈Πα
+2 we use the shorthand
+(47)
+gπ0 ˆzπ1
+1 ˆzπ2
+2
+= gπ0
+11,π0
+12 · · · gπ0
+N1,π0
+N2 ˆzπ1
+1
+1 · · · ˆzπ1
+m
+1
+ˆzπ2
+1
+2 · · · ˆzπ2
+n
+2
+for the corresponding expansion into products of g, ˆz1, and ˆz2 (where 2N + m + n = |α|).
+Using (42), we can express the scalar products ˆzα1
+i ˆzα1
+j , i, j ∈{1, 2} in terms of z and z,
+(48)
+ˆzα1
+1 ˆzα1
+1
+= 1,
+ˆzα1
+1 ˆzα1
+2
+= z + z
+2
+,
+ˆzα1
+2 ˆzα1
+2
+= zz.
+With the above notation we obtain
+(49)
+f α
+G(z) =
+X
+π∈Πα
+2
+fG,π(z)gπ0 ˆzπ1
+1 ˆzπ2
+2 ,
+with an analogous expansion for Aα
+G(0, z1, z2) from Equation (45).
+In the following we often consider the graphical function f α
+G(z) as a vector with components fG,π(z),
+(50)
+f α
+G(z) ↔(fG,π(z))π∈Πα
+2 .
+Note that f α
+G(z) depends via ˆz1, ˆz2 on the orientation of the coordinate system, while the vector
+(fG,π(z))π∈Πα
+2 does not. We can use any orientation of the coordinate system (and in particular (42)) to
+determine the scalar functions fG,π(z).
+It is possible to follow the previous sections and express f α
+G(z) in terms of spin zero graphical functions
+by dualizing π ∈Πα
+2 and lifting ˆπ to the graph algebra with coefficients in Q(D, z, z). In particular, we
+define the bilinear form
+(51)
+⟨π1, π2⟩2 = gπ0
+1 ˆzπ1
+1
+1 ˆzπ2
+1
+2 gπ0
+2 ˆzπ1
+2
+1 ˆzπ2
+2
+2
+∈Q[D, z, z],
+for π1, π2 ∈Πα
+2 .
+Lemma 10. The bilinear form ⟨·, ·⟩2 is nondegenerate.

@@ -1,0 +1,47 @@
+Remark 4.5. Lemmas 4.3 and 4.4 hold not just for a CZ-gate but for any r-qubit gate Gη deﬁned
+for all x = x1 · · · xr ∈{0, 1}r as
+Gη |x⟩:=
+(
+η |x⟩,
+if x = 1r,
+|x⟩,
+otherwise,
+(14)
+where η ∈C satisﬁes |η| = 1 and η ̸= 1. One just replaces the “ −2” in Eq. (13) with “ + (η −1).”
+We will also need the next routine lemma, which says that if CSZ disappears on some tensor
+product state |ψ⟩A ⊗|ψ⟩B, then one of the states |ψ⟩A or |ψ⟩B completely ensures that CSZ
+disappears. More precisely, we have the following:
+Lemma 4.6. Let r and S ⊆[r] be as in Lemma 4.3 and let {A, B} be a partition of [r] Suppose
+CSZ disappears on |ψ⟩A ⊗|ψ⟩B, for some states |ψ⟩A ∈HA and |ψ⟩B ∈HB. Then either CSZ
+disappears on |ψ⟩A ⊗|ϕ⟩B for all states |ϕ⟩B ∈HB, or CSZ disappears on |ϕ⟩A ⊗|ψ⟩B for all states
+|ϕ⟩A ∈HA.
+Proof. Let H1,A, H1,B, and H1 be the subspaces of HA, HB, and Hr = HA∪B, respectively, that
+are spanned by those basis vectors corresponding to strings with 1’s in all the positions in S ∩A,
+S ∩B, and S, respectively. We can write
+|ψ⟩A = α |1⟩A + β |1⊥⟩A ,
+|ψ⟩B = γ |1⟩B + δ |1⊥⟩B ,
+where α, β, γ, δ ∈C and |1⟩A is a unit vector in H1,A and |1⊥⟩A is unit vector in the orthogonal
+complement of H1,A in HA (spanned by the basis states that include at least one 0 in a position in
+S ∩A). Similarly for |1⟩B and |1⊥⟩B. We then have
+|ψ⟩A ⊗|ψ⟩B = αγ |1⟩+ u ,
+where |1⟩is a unit vector in H1 and u is some vector in its orthogonal complement H⊥
+1 . |ψ⟩A⊗|ψ⟩B
+turns oﬀCSZ if and only if it is in H⊥
+1 , i.e., iﬀαγ = 0. If α = 0, then |ψ⟩A = |1⊥⟩A up to a phase
+factor, which implies |ψ⟩A ⊗|ϕ⟩B ∈H⊥
+1 for any |ϕ⟩B ∈HB. Similarly if γ = 0.
+5
+Pure Parity States
+Deﬁnition 5.1 (Subspace Pb). Given r ≥1 and b ∈{0, 1}, we deﬁne the subspace Pb of Hr to be
+the space spanned by {|x⟩| x ∈{0, 1}r ∧⊕x = b}.
+Clearly, dim P0 = dim P1 = 2r−1, and Hr is the direct sum of P0 and P1.
+Deﬁnition 5.2 (Parity of a State). Given an r-qubit state |ψ⟩∈Hr and b ∈{0, 1}, we say that
+|ψ⟩has pure parity b if |ψ⟩∈Pb. We say that |ψ⟩is a pure parity state if |ψ⟩has pure parity b for
+some b ∈{0, 1}.
+Every classical state (i.e., computational basis state) is clearly a pure parity state, and the
+tensor product of pure parity states on disjoint sets of qubits is itself a pure parity state. If a
+quantum circuit C weakly computes ⊕n for some n, witnessed by an initial state |ψ⟩of the ancilla
+qubits (cf. Deﬁnition 2.7), then setting the input qubits to a state with pure parity b must result
+in an output of the form |b⟩⊗|ϕ⟩for some state |ϕ⟩of the non-target qubits (|ϕ⟩may depend on
+the state of the input qubits). In particular, the ﬁnal state separates at {{0}, {0}}.
+18

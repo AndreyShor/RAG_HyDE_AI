@@ -1,0 +1,48 @@
+Springer Nature 2021 LATEX template
+12
+Human Activity Recognition using RGB-Event based Sensors
+features through IDCT2D. The formulas can be defined as follows,
+Rout = IDCT2D(DCT2D(XR)e−k(ω2
+x+ω2
+y)t),
+Eout = IDCT2D(DCT2D(XE)e−k(ω2
+x+ω2
+y)t).
+(6)
+which are similar to the form of Formula 3. After that, we resort to the routing
+mechanism of the policy network to achieve adaptive feature fusion.
+3.3.3 Modality-specific Continuous FVEs
+The vHeat model introduced in [32] is tailored to process a single modality
+input while emulating the phenomenon of heat conduction within a homo-
+geneous material (unimodal). Within this architecture, the Frequency Value
+Embeddings (FVEs) are strategically initialized at each stage of the heat
+blocks, serving a role similar to that of position embeddings in visual Trans-
+formers without the frequency domain context. Given the challenge of handling
+multi-modal inputs, our approach must be adapted to account for the complex
+dynamics of heat transfer between two distinct materials, each representing a
+different modality, where their thermal diffusivity values differ significantly.
+To bridge this gap, in this paper, modality-specific continuous FVEs are
+proposed to accomplish this objective. Our methodology begins with the
+independent random initialization of Visible Frequency Value Embeddings
+(VFVEs) and event Frequency Value Embeddings (EFVEs) for the two modal-
+ities. Subsequently, these embeddings are fused with the respective modal
+representations of RGB images and event streams. This fusion process yields
+tailored FVEs explicitly customized for each modality, thereby addressing the
+diverse properties inherent to different data types. Concurrently, a key obser-
+vation we made was the arbitrary initialization of FVEs in the original vHeat
+design, which inadvertently led to a disconnect among blocks across stages
+due to their lack of interactivity. To address this limitation, we further design
+a mechanism to ensure that the FVEs in each subsequent stage are no longer
+reinitialized. Instead, they are propagated forward from the preceding stage via
+a convolutional projection layer. This innovative strategy not only ensures that
+each modality retains its individual thermal diffusivity k, reflecting its unique
+modal characteristics, but also significantly bolsters the interaction between
+FVEs across successive stages. By doing so, our enhanced multi-modal HCO
+model facilitates the cross-modal dynamical heat condution, ultimately leading
+to improved recognition performance in multi-modal settings.
+3.3.4 Policy Routing Strategy-guided Multi-modal Fusion
+Considering that different modalities have distinct characteristics, imbal-
+anced multi-modal is an inevitable issue in multi-modal learning, which can
+result in suboptimal performance. Therefore, employing different fusion meth-
+ods under various different conditions is reasonable. In this work, we propose
+three different fusion strategies to adapt to different situations. As shown

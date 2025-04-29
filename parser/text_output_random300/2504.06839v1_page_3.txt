@@ -1,0 +1,100 @@
+1.1
+The periodic Lorentz Gas
+From now on, in this introduction we will assume 0 < ε < 1
+2, the obstacles’ centers c to be located in εZd and to have
+radius rε := ε
+d
+d−1 . Therefore the available region where a particle can move is
+Zε := {x ∈Rd : dist(x, εZd) ≥ε
+d
+d−1 }.
+(1.1.1)
+This way, the free path length of a particle moving in Zε according to (1.0.1) and (1.0.2) can be defined as
+τε(x, v) := inf{t > 0 : x + tv ∈∂Zε},
+(x, v) ∈Zε × S1.
+The setting where the gas is to be studied for fixed time t > 0 is exactly (1.1.1), indeed this condition ensures that
+the obstacles’ density is ≃1/εd. Therefore, since a circular tube (of radius ε
+d
+d−1 , that is the obstacles’ radius) around
+the line drawn by trajectory in the time interval [0, t] has volume ≃(ε
+d
+d−1 )d−1t = tεd, the mean obstacles number hit
+before time t is ≃tεd · 1/(εd) = t. Thus, in this setting the mean free path length should have order 1 as ε →0 (see
+for example Dumas-Dumas-Golse [8] and Golse [11]). Nevertheless, an equivalent (and perhaps more common) setting
+considered in literature involves placing the obstacles in Zd (instead of εZd), making them have radius ε
+1
+d−1 (instead
+of ε
+d
+d−1 ) and studying the dynamics at times t/ε (instead of t).
+The distribution of the free path length in the Boltzmann-Grad limit.
+In the Boltzmann-Grad limit of the
+periodic Lorentz gas, Bourgain-Golse-Wennberg [3] and Golse-Wennberg [12] proved that, if one denotes by A/B the
+quotient of A with respect to the equivalence relation x ∼y ⇔x −y ∈B, being νε is the uniform probability measure
+on Zε/(εZd) × Sd−1, then
+Φε(t) := νε{(x, v) ∈Zε/(εZd) × Sd−1 : τε(x, v) > t} ≃
+1
+td−1 ,
+(1.1.2)
+where f ≃g means that there exists a constant C > 0 such that C−1g ≤f ≤Cg, and such a constant in the above
+inequality does not depend on ε. In other words, Φε is the probability that the free path length is larger than t: in
+dimension d = 2, (1.1.2) makes clear that the mean free path length is not finite if the average is computed with
+respect to νε. Instead, it is if one substitutes νε with another probability measure concentrated on the boundary of
+the obstacles (see [8]).
+In dimension d = 2, a result related to (1.1.2) was obtained by Caglioti-Golse [5], indeed the authors provided the
+exact asymptotic behavior (for large t) of the limit, as ε →0, of Φε, i.e.
+lim
+t→+∞t lim
+ε→0
+1
+| log ε|
+Z
+1
+4
+ε
+dr
+r Φr(t) = 2
+π2 .
+Boca-Zaharescu [1] strenghtened their method obtaining exact estimates for limε→0 Φε(t) (that is, the limiting distri-
+bution of the free path length) at any fixed time t ≥0.
+Then, Caglioti-Golse [6, 7], Marklof-Strömbergsson [15] and Bykovskii-Ustinovin [4] found an explicit expression
+for the transition kernel Q in dimension d = 2, that is
+Definition 1.1.
+Q(s, h|h′) := 6
+π2
+
+
+
+
+
+1
+0 ≤s ≤
+1
+1+h,
+1
+s −(1+h′)
+h−h′
+1
+1+h < s ≤
+1
+1+h′ ,
+0
+s < 0 or s >
+1
+1+h′ ,
+if |h′| ≤h,
+(1.1.3)
+and the definition extends to all h, h′ ∈[−1, 1] by using the symmetries
+Q(s, h|h′) = Q(s, h′|h) = Q(s, −h| −h′).
+That is the Boltzmann-Grad limit of the (infinitesimal) probability that the next obstacle will be hit in time s and
+with impact parameter h, conditioning the impact parameter of the previous collision to be h′. The impact parameter
+h is defined for finite ε > 0 as h := sin( d
+v′nx), with v′ the velocity after the next collision and nx the exterior normal
+to the obstacle in the impact site x. This way, the limiting probability that the next obstacle will be hit in time t
+writes as a function of the transition kernel Q.
+The stated results about the structure of the transition probability Q hold for (x, v) randomly distributed on
+Zε × S1 with a probability density absolutely continuous with respect to Lebesgue measure instead of being uniformly
+distributed on Zε/(εZ2) × S1. Moreover, in [16] the authors also provided a definition for the impact parameter h
+and for the kernel Q for dimensions d ≥3: their results involve all the dimensions d ≥2 but Q has not an explicit
+formulation for all the times s for dimensions d ̸= 2.
+3

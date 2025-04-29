@@ -1,0 +1,104 @@
+argue that, an off-the-shelf RGB camera equipped with a
+linear polarizer can already effectively acquire the required
+data, thereby greatly reducing the system cost.
+Our approach employs a single captured polarization
+image per view as input and builds upon the polarimetric
+BRDF (pBRDF) model [1], which explicitly models the re-
+lation between polarization states of outgoing radiance and
+surface properties. To represent the object’s geometry, we
+utilize the neural implicit surface, that enables us to query
+the signed distance values and surface normals at any scene
+points. With scene coordinates, surface normals, and view
+directions as input, we employ separate radiance networks
+to represent the diffuse and specular radiances. These ra-
+diances form the basis for computing polarization states,
+which are depicted by the Stokes vectors and computed us-
+ing the pBRDF model. Finally, the polarized images are
+rendered using volume rendering given the Stokes vectors
+at sampled scene points and the angle of polarizer. By min-
+imizing the rendering loss between the rendered polarized
+images and the input polarized images, we recover neural
+radiance fields and surface properties. Importantly, the po-
+larizer angle, which is typically unknown without complex
+calibration procedures, can be optimized along with the net-
+works. Results tested on both public datasets and real cap-
+tured data (Sec. 4) demonstrate the effectiveness and robust-
+ness of our approach (see the example in Fig. 1). The main
+contributions are as follows:
+• We devise an cost-effective setup for acquiring polariza-
+tion images by integrating an off-the-shelf RGB camera
+with a linear polarizer, eliminating the need for labor-
+intensive calibration and reducing the overall cost.
+• We are the first to leverage a single polarization image
+per view, in conjunction with neural radiance fields and
+fundamental physical principles, to enable the end-to-end
+polarization rendering.
+• Experimental results demonstrate that our method well
+handles non-Lambertian components, leading to high fi-
+delity geometry and radiance decomposition.
+2. Related Work
+We will next discuss only the methods of radiance decom-
+position and geometry recovery for glossy/specular objects
+using Neural Radiance Fields (NeRF) [20].
+Glossy and specular surface reconstruction.
+Recent at-
+tempts such as Zhang et al. [34] and Boss et al. [2] aim
+to address this ill-posed problem by decomposing the spec-
+ular reflectance with the estimated BRDF. Guo et al. [11]
+split a scene into transmitted and reflected components, that
+are modeled with separate neural radiance fields. Verbin et
+al. [27] consider spatially-varying scene properties and pa-
+rameterize the outgoing radiance with the directional encod-
+ing of the reflected radiance. Yan et al. [30] extend this idea
+to dynamic scenes with a masked guided deformation field.
+Xu et al. [29] leverage an image-based rendering pipeline
+to reconstruct depth and reflection, and then select adjacent
+views for plausible coherent renderings. Kopanas et al. [16]
+propose a neural warp field to model catacaustic trajecto-
+ries of reflections, which enables efficient point splatting-
+based rendering for complex specular effects.
+Although
+better rendering effects can be obtained, these methods of-
+ten ignore the quality of geometry [32, 38]. Reconstruc-
+tion results can be refined by balancing the importance of
+regions with different surface properties, such as adaptive
+reflection-aware photometric loss [9]. Liu et al. [18] pro-
+pose to utilize two individual networks to encode the radi-
+ance of direct and indirect lights, respectively, which are se-
+lected subject to an estimated occlusion probability during
+rendering. Such a representation efficiently accommodates
+accurate surface reconstruction of reflective objects.
+Shape from Polarization (SfP).
+Traditional SfP requires
+consideration of multi-view consistency, and constraints on
+the continuity and smoothness of the mesh surface to ad-
+dress the singularities in angle and phase caused by polar-
+ization, for better reconstruction [6, 8, 24, 36, 37]. Recent
+years have witnessed significant advancements of volume
+rendering based methods in resolving the shape [3, 4, 12,
+14, 17, 22, 26, 31]. To be specific, Dave et al. [7] pro-
+pose the pioneering work and first incorporate polarization
+cues into the neural radiance field and train the network
+using polarization states instead of original color informa-
+tion. This approach naturally facilitates decomposition of
+radiance into diffuse and specular components, leading to
+improved geometries. However, accurately characterizing
+polarization information often requires precise rotation and
+calibration of the polarizer mounted in front of the cam-
+era, which can be a tedious task and limits practical utiliza-
+tion. Although emerging snapshot polarization image sen-
+sors (e.g., Sony IMX250MZR on-chip polarizer [25]), allow
+for the acquisition of multi-directional polarized images in
+a single capture, the cost of such devices makes them im-
+practical for personal use. To bypass the drawbacks of both
+approaches, we utilize only an RGB camera and a linear
+polarizer to establish an efficient yet low-cost acquisition
+scheme, eliminating the need for tedious pre-calibration.
+3. Method
+3.1. Overview of Reconstruction Pipeline
+We aim to reconstruct the geometry and appearance of
+a glossy object from a set of posed polarization images
+{Ik
+ϕpol}, where the angle of the polarizer filter ϕpol is un-
+known. The entire pipeline, depicted in Fig. 2, consists of
+three main steps. To commence, we randomly select multi-

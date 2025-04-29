@@ -1,0 +1,59 @@
+12
+X m−l :=×
+m
+i=l X, that is, values that are tuples xl:m := (xl, xl+1, ..., xm−1).[59] If m = l + 1, then Xl:m is equivalent
+to a single variable from {Xt|t ∈N0}, so we simply write Xl and xl. The variable X can be considered as the limiting
+case where l = 0 and m goes to infinity.
+The notation for distributions associated to the stochastic process X and to sequences of variables Xl:m follow the
+same conventions: pX denotes a distribution for X and pX(x) denotes the probability that X takes as its value the
+sequence x := (x0, x1, ...) ∈X N0; similarly for pXl:m and pXl:m(xl:m). In the cases where l and m are “close”, we
+sometimes represent the tuples of variable explicitly. For example, in the case of m = l + 2, instead of pXl:m, we write
+pXl,Xl+1. In particular, this allows us to consider the distribution over one part of the subsequence, when the other
+part takes some value. For example, if pXl,Xl+1 is known, we can consider the distribution over Xl that results if Xl+1
+takes the value xl+1, which we denote by pXl,Xl+1=xl+1.
+2.
+Information theory
+For an introductory treatment on information theory, see [29], for a measure-theoretic treatment, see [60].
+a.
+Basic definitions
+Let X be a random variable with distribution pX. The Shannon entropy quantifies the uncertainty associated with
+pX as
+Hp (X) :=
+X
+i∈X
+pX(i)sp(i)
+(A1)
+where sp(i) := −log2 pX(i) is known as the surprise of obtaining outcome X = i [44] (see [61] for an elegant axiomatic
+derivation), and the sum runs over all i ∈X such that pX(i) ̸= 0. If it is clear from context which distribution p is
+used to compute entropy, we drop the index and simply write H (X).
+Let X and Y be random variables with joint distribution pXY . The conditional entropy of X given Y is defined as
+H (X|Y ) :=
+X
+i∈X,j∈Y
+pXY (i, j) sp(i|j),
+(A2)
+where sp(i|j) := −log pX|Y (i|j) denotes the conditional surprise of obtaining outcome x given that y has been
+observed.
+Entropy obeys the chain rule of entropy
+H (X0:n) =
+n−1
+X
+t=0
+H (Xt|X0:t)
+(A3)
+where, if t = 0, H (Xt|X0:t) is given by H (X0).
+The mutual information I [X; Y ] of random variables X and Y is defined as
+I [X; Y ] := H (X) −H (X|Y ) ,
+(A4)
+which, with the chain rule of entropy eq. (A3), can be written in the symmetric form
+I [X; Y ] = H (XY ) −H (Y |X) −H (X|Y ) .
+(A5)
+The Conditional mutual information is then simply defined via the conditional entropy as
+I [X; Y |Z] := H (X|Z) −H (X|Y Z) ,
+(A6)
+or equivalently in a symmetric form:
+I [X; Y |Z] = H (XY |Z) −H (Y |XZ) −H (X|Y Z) .
+(A7)
+We say that X and Y are conditionally independent if I [X; Y |Z] = 0. In fact, I [X; Y |Z] = 0 iff
+pXY |Z = pX|ZpY |Z.
+(A8)

@@ -1,0 +1,98 @@
+Low-Complexity SDP-ADMM for Physical-Layer
+Multicasting in Massive MIMO Systems
+Mahmoud Zaher, and Emil Bj¨ornson
+{mahmoudz, emilbjo}@kth.se
+Department of Computer Science, KTH Royal Institute of Technology, Sweden
+Abstract—There is a demand for the same data content from
+several user equipments (UEs) in many wireless communication
+applications. Physical-layer multicasting combines the beamform-
+ing capability of massive MIMO (multiple-input multiple-output)
+and the broadcast nature of the wireless channel to efficiently
+deliver the same data to a group of UEs using a single trans-
+mission. This paper tackles the max-min fair (MMF) multicast
+beamforming optimization, which is an NP-hard problem. We
+develop an efficient semidefinite program-alternating direction
+method of multipliers (SDP-ADMM) algorithm to find the near-
+global optimal rank-1 solution to the MMF multicast problem in
+a massive MIMO system. Numerical results show that the pro-
+posed SDP-ADMM algorithm exhibits similar spectral efficiency
+performance to state-of-the-art algorithms running on standard
+SDP solvers at a vastly reduced computational complexity. We
+highlight that the proposed ADMM elimination procedure can be
+employed as an effective low-complexity rank reduction method
+for other problems utilizing semidefinite relaxation.
+Index Terms—Multicast, downlink beamforming, convex opti-
+mization, semidefinite relaxation, ADMM, massive MIMO.
+I. INTRODUCTION
+Massive MIMO (multiple-input multiple-output) technology
+has emerged as a key enabler for wireless communication
+systems, offering significant gains in spectral efficiency (SE)
+[1], [2]. By deploying many antennas at the base station
+(BS), massive MIMO facilitates effective beamforming and
+spatial multiplexing, which can greatly boost the desired
+signal quality of multiple user equipments (UEs). Through
+beamforming, physical-layer multicasting can simultaneously
+deliver the same information to multiple UEs within a cover-
+age area using a single transmission. This approach mitigates
+the problem of co-channel interference and is particularly
+beneficial to efficiently utilize network resources [3].
+Physical-layer multicasting can support a wide range of
+applications in modern wireless communication networks. For
+instance, mobile network operators can leverage it for video
+streaming of live events to multiple subscribers, providing a
+cost-effective alternative to traditional unicast-based content
+delivery. Other applications of multicasting include videocon-
+ferencing as well as broadcasting of machine learning models
+in federated learning applications, where multiple UEs need to
+receive the same data stream. Another use case is emergency
+broadcast systems where critical information needs to be
+disseminated rapidly to a large audience, ensuring efficient
+and timely communication.
+This work was supported by the FFL18-0277 grant from the Swedish
+Foundation for Strategic Research.
+A foundational framework for physical-layer multicasting
+is presented in [4], introducing quality of service (QoS) and
+max-min fair (MMF) designs for a single-cell single-group
+multicast scenario, where the QoS level ensures a minimum
+received SNR for all UEs, and MMF aims to maximize
+the lowest received SNR. This concept was later expanded
+in [5] to include multiple co-channel multicast groups. The
+problem was proven to be NP-hard, and approximate solutions
+were derived using semidefinite relaxation (SDR). In [4], [5],
+different randomization strategies were proposed to extract
+near-optimal rank-1 beamforming solutions from higher-rank
+semidefinite program (SDP) output. However, as the number of
+transmit antennas and UEs grow, the approximation accuracy
+deteriorates significantly [4]–[6]. Note that a rank-1 beam-
+forming solution, where the BS transmits a single multicast
+signal using spatial multiplexing, represents a practical choice
+due to its ease of implementation compared to a higher-rank
+transmission.
+Recent studies have introduced different iterative opti-
+mization techniques to address the QoS and MMF multi-
+cast problems. In [6], the authors formulate a coordinated
+MMF multicast problem in a multicell network, where each
+BS serves a single UE group, and solve it using paramet-
+ric manifold optimization. The study in [3] proposes three
+different algorithms for the MMF problem under per-cell
+power constraints with joint beamforming across cooperating
+BSs. Among these, the difference-of-convex approximation
+(DCA) algorithm demonstrates superior SE while achieving
+lower computational complexity compared to traditional SDR
+methods with randomization. The DCA algorithm is built
+upon the successive convex approximation (SCA) framework,
+which represents the state-of-the-art in multicast beamforming
+optimization. A two-layer beamforming scheme is introduced
+in [7], where the first layer suppresses multicast inter-group
+interference, and the second layer utilizes SCA to maximize
+the SNR of the decoupled multicast groups. In [8], we propose
+a successive elimination algorithm (SEA) that relies on SDR
+followed by iterative elimination of higher-rank solutions to
+extract a near-optimal rank-1 solution to the MMF multicast
+problem. Additionally, the authors in [9] present alternative
+formulations for the QoS and MMF problems, leveraging the
+optimal multicast beamforming structure, which provides a
+reduction in computational complexity when the number of
+BS antennas is much greater than the number of UEs.
+A common approach in the prior literature [10]–[12] is
+arXiv:2504.06090v1  [eess.SP]  8 Apr 2025

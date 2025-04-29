@@ -1,0 +1,88 @@
+Table S1: Hyperparameters
+Hyperparameter
+Value
+Wave Function
+Determinants Ndet
+4
+Cutoff c
+(non-)covalent interactions
+5 a0
+ionization/singlet-triplet gap
+3 a0
+Cutoff cn
+20 a0
+Hidden dim d
+256
+Edge MLP widths
+[16, 8]
+Edge number of Gaussians d0
+32
+Jastrow factor MLP widths
+[256, 256]
+Number of registers Nreg
+16
+Register dimensions dreg
+16
+Number of envelopes per nucleus
+8
+Pseudopotential
+ECP
+ccECP
+Nquad, Li – Ne
+4
+Nquad, Na – Ar
+6
+Nquad, K – Kr
+12
+Batch size Nwalker
+4096
+Optimization
+Steps
+50.000
+Learning rate
+0.1
+1+
+t
+10000
+Damping λ
+0.001
+Spring decay η
+0.99
+Local energy clipping
+5 MAE
+Clipping statistic
+Median
+Spin operator gradient norm
+2
+MCMC
+Target acceptance ratio
+50 %
+Number of steps
+2nel
+Number of global moves
+20
+Pretraining
+Basis set
+ccecp-ccpvdz
+Steps
+2000
+Optimizer
+Adam
+Learning rate
+1
+1+
+t
+1000
+the experimental energies shifts the experimental relative energies by +0.55 mEh and −0.2 mEh, respectively.
+L
+Hyperparameters
+If not explicitly stated, experiments in this study use the hyperparameters provided in Tab. S1.
+Notable
+hyperparameters are the cutoff c that we investigate in App. A and the number of optimization steps.
+In
+general, one needs to increase the number of optimization steps with the system size.
+M
+Tables of energies
+In the following, we list all energy estimates from Fig. 3. Tab. S3 lists the interaction energies for the S22
+dataset, Tab. S4 for the benzene dimer, Tab. S2 for the n-acenes, and Tab. S6 for ferrocene.
+19

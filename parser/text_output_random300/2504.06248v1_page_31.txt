@@ -1,0 +1,67 @@
+23
+2. incoming edges from the vertices outside {a, b, c, d} in the graph, i.e.,
+Wak = Wbk = Wck = Wdk,
+∀k ∈{1, ..., N} \ {a, b, c, d} ;
+(S77)
+3. natural frequencies, i.e.,
+ωa = ωb = ωc = ωd ;
+(S78)
+Proof. When the phase lags are zero, A = 1
+2(σW + i diag(ω)). In this case, the first two conditions of Thm. S12,
+which only involve non-diagonal terms of A, coincide with the first two conditions stated in the corollary. Using the
+explicit form of the third condition in Thm. S12, that is,
+ωa −σWkaa sin αkaa = ωb −σWkbb sin αkbb = ωc −σWkcc sin αkcc = ωd −σWkdd sin αkdd ,
+where kj takes any value within {a, b, c, d} \ {j} for j ∈{a, b, c, d}, the sine terms vanish due to the zero phase lags.
+This directly yields ωa = ωb = ωc = ωd, as stated in the third condition of the corollary.
+Remark
+S20.
+The
+latter
+corollary
+was
+also
+verified
+with
+symbolic
+calculations
+in
+Matlab
+(sym-
+bolic calculations theorem.m) and in Mathematica (KMK constants of motion.nb).
+Corollary S21. Let SN denote an undirected binary star graph with N vertices. Then, S5 is the smallest such graph
+for which a cross-ratio is a constant of motion in the Kuramoto model (1) with zero phase lags.
+Proof. The cross-ratio involves 4 vertices and the stars S1 (trivial graph), S2 (path), or S3 (path) are readily excluded.
+For N = 4, denote the core by a and the periphery by {b, c, d} without loss of generality. The core is connected to
+all vertices in the periphery, so in particular, Wab = 1. However, Wcb = 0 ̸= Wab and thus the first condition in
+Corollary S19 is not satisfied.
+For N = 5, let the core be labeled e and the periphery {a, b, c, d}. The first condition is readily satisfied since there
+is no edge between the peripheral vertices in Corollary S19. The second condition in Corollary S19 is also satisfied
+since Wae = Wbe = Wce = Wde = 1. Setting the natural frequencies of the vertices a, b, c, d to be identical, the
+Kuramoto model on the star S5 admits the cross-ratio cabcd as a constant of motion by Corollary S19.
+Remark S22. In the directed case, the smallest star that admits a conserved cross-ratio is composed of 4 vertices, as
+shown in Fig. S3.
+IV.
+LIE SYMMETRIES AND THE GENERATION OF NEW CONSTANTS OF MOTION
+The concept of symmetry for differential equations has a long story that has flourished from the work of Sophus
+Lie to the work of Emmy Noether. Below, we only present very briefly the theory for ordinary differential equations
+in order to present the symmetry criterion under Koopman’s perspective and dive quickly into its application to the
+Kuramoto model. For more details, the reader is invited to visit Refs. [60, 72, 84–89] and in particular, the great
+book of Peter Olver [60] that includes pertinent historical remarks, reproducible examples, and crucial theorems for
+general differential equations. The theorem of interest for us is based on the concept of prolongation of a vector field
+and gives us the necessary and sufficient conditions to have a symmetry group. Without giving the details, it is stated
+as follows.
+Theorem S23 (Theorem 2.71 [60]). Let ∆(x, u(n)) = 0 be a nondegenerate system of ℓdifferential equations. A
+connected local group of transformations G acting on an open subset M ⊂X × U is a symmetry group of the system
+if and only if
+pr(n) v[∆ν(x, u(n))] = 0 ,
+ν ∈{1, ..., ℓ} ,
+whenever
+∆(x, u(n)) = 0 ,
+(S79)
+for every infinitesimal generator v of G.
+Remark S24. The function ∆from the n-jet space X × U (n) to Rℓis considered to be smooth in its arguments [60,
+p.96]. Moreover, it is also assumed that the infinitesimal generator v and its prolongations act on the space of smooth
+functions, a fact that we will use later. Finally, we refer to p.20-22 of Ref. [60] for the definition of a connected local
+group of transformations.
+In the next subsection, we use this general result for first-order ordinary differential equations and show that the
+infinitesimal criterion (S79) is elegantly written in terms of the Koopman generator.

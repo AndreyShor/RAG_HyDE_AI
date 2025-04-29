@@ -1,0 +1,169 @@
+10
+V (2)
+V (1)
+V (3)
+V (4)
+a1
+a2
+O
+ξ
+FIG. 8. Hybridization matrix elements between the origin of
+the c-layer (denoted as O) and diﬀerent neighboring cell of the
+f-layer, represented as the blue lines with arrows. The origin
+for the c-layer will move along the x-axis while the f-layer
+and thus target positions (location of arrow) are unchanged,
+then the distances will change accordingly. The hybridization
+matrix elements are cut-oﬀby planar distance ξ (say
+√
+3a)
+shown in as the gray circle in the ﬁgure.
+V(−1,0);δx;η,η′ = V(0,−1);δx;η,η′ = F(dn=(−1,0);δx;η,η′) ≡V (2)
+η,η′
+(A8)
+V(1,−1);δx;η,η′ = V(−1,1);δx;η,η′ = F(dn=(1,−1);δx;η,η′) ≡V (3)
+η,η′
+(A9)
+since
+dn=(1,0);δx;η,η′ = dn=(0,1);δx;η,η′
+=1
+2
+q
+[−3 + (ǫη −ǫη′) + 2δx]2 + 3 + 4a2z ≡d(1)
+(A10)
+dn=(−1,0);δx;η,η′ = dn=(0,−1);η,η′
+=1
+2
+q
+[3 + (ǫη −ǫη′) + 2δx]2 + 3 + 4a2z ≡d(2)
+(A11)
+dn=(1,−1);δx;η,η′ = dn=(−1,1);δx;η,η′
+=1
+2
+q
+[(ǫη −ǫη′) + 2δx]2 + 12 + 4a2z ≡d(3)
+(A12)
+In addition, we need to consider one hybridization el-
+ement for the next nearest neighbor sites since we are
+moving the c-layer along the x-axis
+V(1,1);δx;η,η′ = F(dn=(1,1);δx;η,η′) ≡V (4)
+η,η′
+(A13)
+with
+dn=(1,1);δx;η,η′ = 1
+2
+q
+[−6 + (ǫη −ǫη′) + 2δx]2 + 4a2z ≡d(4)
+(A14)
+2.
+Hamiltonian matrix elements
+Using the Fourier transformation
+ˆc⃗rσ =
+1
+√
+N
+X
+k
+eik·⃗rˆckσ,
+(A15)
+the Hamiltonian matrix elements can be expressed as
+hη,η′(k)
+=e−ikx[ 1
+2 (ǫη−ǫη′)+δx]
+× [V (0)
+η,η′ + (eik·⃗a1 + eik·⃗a2)V (1)
+η,η′ + (e−ik·⃗a1 + e−ik·⃗a2)V (2)
+η,η′
++ (eik·(⃗a1−⃗a2) + e−ik·(⃗a1−⃗a2))V (3)
+η,η′ + eik·(⃗a1+⃗a2)V (4)
+η,η′]
+(A16)
+with
+fk = eikx(1 + e−ik·⃗a1 + e−ik·⃗a2) .
+(A17)
+Then, using the slave-boson method, the Hamiltonian
+matrix in k-space can be written as
+Hkσ =
+
+
+0
+−tfk
+rAhAA
+rBhAB
+−tf ∗
+k
+0
+rAhBA
+rBhBB
+rAh∗
+AA rAh∗
+BA
+E0 + λA
+−tfrArBfk
+rBh∗
+AB rBh∗
+BB −tfrArBf ∗
+k
+E0 + λB
+
+
+(A18)
+In order to numerically solve problem eﬃciently, the
+above Hamiltonian is rewritten as two-by-two block ma-
+trix
+Hkσ =
+
+Hcc Hcf
+Hfc Hff
+
+(A19)
+The two diagonal block elements are
+Hcc =
+
+0
+−tfk
+−tf ∗
+k
+0
+
+(A20)
+and
+Hff =
+
+E0 + λA
+−tfrArBfk
+−tfrArBf ∗
+k
+E0 + λB
+
+(A21)
+for the c-layer and f-layer, respectively.
+They remain
+unchanged during the shifting.
+While the oﬀ-diagonal
+blocks Hfc = H∗
+cf take the form
+Hcf =
+
+rAhAA rBhAB
+rAhBA rBhBB
+
+.
+(A22)
+For several special shift points (see Fig 9), we have sim-
+pler expressions for this sub-matrix as detailed in the
+following.
+a.
+δx = 0
+This is the A-A stack pattern:
+Hδx=0
+cf
+=
+
+rAV1
+rBV2fk
+rAV2f ∗
+k
+rBV1
+
+.
+(A23)

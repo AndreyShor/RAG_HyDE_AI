@@ -1,0 +1,129 @@
+The amplitude amplification step involves performing an algorithm in which all previous unitaries are
+called a number Ncoh of times. To bound this number we note that it suffices to take (Theorem 12, [90])
+√s/Ncoh ∼ϵs, which means
+Ncoh = O(s−1/2ϵ−1).
+(141)
+The overall cost of this procedure is then scaling in the worst case as
+O
+|S|Cinit + Calgo
+√sϵ
+
+.
+(142)
+As we are expecting that Cinit ≪Calgo, this coherent averaging procedure is expected to be much more
+efficient than standard in most cases, if we can afford the longer depth of the resulting circuit.
+The quadratically improved scaling compared to the classical counterpart (solution 1) may still be a
+limiting factor in practice. If, for a reaction of interest, we have for example s ∼10−6, this will still give a
+103× overhead to the algorithmic cost. This is why it is crucial to implement appropriate biasing techniques
+to avoid ballooning costs, as discussed in Sec. 2.2.
+7
+Quantum Resource Estimates
+In this section, we first present asymptotic quantum resource estimates for all parts of our algorithm in terms
+of the various simulation parameters. We use ˜O to denote big-O notation which hides multiplicative and
+additive polylogarithmic factors in the basis size |G| (or |G|, etc.) and inverse approximation error 1/δ. We
+then present detailed quantum resource estimates for the time-evolution part - by far the dominant cost - of
+our quantum algorithm for various problem instances.
+Asymptotic Cost Analysis
+The cost of our initial state preparation in a worst case scenario, as analyzed in Sec. 4.4, scales as ˜O(ηval|G|+
+ηion|G|) with the two terms arising from using data lookup tables to load the classically-computed (one to
+few determinants) electron state and to implement the pseudoion coordinate transformation, respectively.
+In practice, however, the linear scaling in terms of |G| can be improved further, especially if one can exploit
+structure that allows fitting the data lookup tables to more efficiently computable functions, and by employing
+more efficient state preparation techniques.
+Time-evolution requires, as per Eq. (130), calling the iterate O(|τ|+log(1/δ)) many times, where |τ| = λ|t|
+for a time t (expressed as a real number in atomic units) with rescaling factor λ, and where δ is the
+approximation error for time-evolution. We shall use the approximate bounds on the rescaling factors from
+App. D, and consider a cubic lattice for ease of analysis (see relations under Eq. (32)) such that the maximum
+momentum K associated to basis set G scales as K ∼
+
+|G|
+Ω
+1/3
+(and similarly for all other sets G, G0, G
+0
+trunc
+with maximum momenta ¯K, Q, Qtrunc respectively). We then have that the total rescaling factor scales as,
+λ ∼˜O
+
+ηval
+|G|
+Ω
+2/3
++ ηion
+|G|
+Ω
+2/3
++ η2
+val
+|G0|
+Ω
+1/3
++ η2
+ion
+ 
+|G
+0
+trunc|
+Ω
+!1/3
++ ηvalηion
+
+
+(143)
+where the first two terms arise from Tel, Tion, the second two terms arise from Vel, V PI
+ion, and the last term
+arises from V PI
+loc, V PI
+NL (which have the same scaling), respectively.
+Furthermore, asymptotically, the cost
+of implementing the iterate is given by ˜O(ηval) and ˜O(ηion) (e.g.
+due to SWUPs) with basis scaling ∼
+polylog(|G|). Hence, recalling that η = ηval + ηion, the asymptotically dominant expression for the Toffoli
+cost of time-evolution is given as,
+Cost(e−iHt) ∼˜O
+
+(|t| + log(1/δ))η
+
+ηval
+|G|
+Ω
+2/3
++ ηion(|G|
+Ω)2/3 + η2
+val
+|G0|
+Ω
+1/3
++ η2
+ion
+ 
+|G
+0
+trunc|
+Ω
+!1/3
++ ηvalηion
+
+
+
+
+∼˜O
+
+(|t| + log(1/δ))
+h
+η1/3(ηval|G|2/3 + ηion|G|2/3) + η2/3(η2
+val|G0|1/3 + η2
+ion|G
+0
+trunc|1/3) + ηηvalηion)
+i
+∼˜O
+
+(|t| + log(1/δ))
+h
+η4/3|G|2/3 + η2/3η2
+val|G|1/3 + ηηvalηion)
+i
+.
+(144)
+48

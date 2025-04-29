@@ -1,0 +1,21 @@
+(a) HOSVD
+(b) SVD
+v
+v
+v
+Figure 14: Comparison of the predicted temporal evolution of normal velocity compon-
+ents for (a) HOSVD (left column) and (b) SVD (right column) across different LSTM
+architectures. From top to bottom: LSTM 1 Dense, LSTM 2 dense, and LSTM Time-
+Distributed.
+Further analysis is conducted on the performance of the predictive models by evaluat-
+ing uncertainty quantification for the HOSVD and SVD approaches. UQ provides insights
+into the reliability of the predicted snapshots.
+Figure 15 presents the UQ results for the velocity components across the LSTM archi-
+tectures. In general, HOSVD demonstrates more concentrated error distributions around
+zero compared to SVD. For instance, in the 1 dense and 2 dense architectures, the HOSVD
+error distributions exhibit narrower and more peaked profiles, indicating reduced vari-
+ability and higher prediction reliability. The HOSVD-based LSTM 2 dense and time-
+distributed models show the best results with both the components following a normal
+distribution profile and a probability of about 80% for 0 error. In contrast, SVD displays
+wider and skewed error distributions, suggesting slightly lower accuracy and consistency
+29

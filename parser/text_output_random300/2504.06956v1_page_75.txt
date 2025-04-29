@@ -1,0 +1,111 @@
+Brownian bridge above a curve
+75
+Now, using the bound (A.5) and the fact that ζ(s) = o(s1/4) as s →∞(since ι ∈(0, 1/8)), we obtain
+that
+Z b/2
+x4
+ζ′(s)Px,u,b(τ0 ≥s)ds ≤x
+Z ∞
+x4 ζ′(s)
+2x
+s +
+8
+s1/4
+
+ds
+≤2x
+Z ∞
+x4 ζ(s)
+ x
+s2 +
+1
+s5/4
+
+ds .
+Therefore, the conclusion follows by combining all the previous estimates.
+A.3
+Brownian bridge above a negative curve
+Proposition A.5. For ι ∈(0, 1/8), let ζ : R+
+0 →R+
+0 be a continuous and non-decreasing function
+such that ζ(0) > 1 and ζ(s) = o(sι) as s →∞, and let x > ζ(0). Then, for all b ≥1 sufficiently
+large and u ∈[bι, b3/4], it holds that
+Px,u,b(τ−ζ > b) ≤(1 + eδ)2xu
+b
+,
+where
+eδ = 4
+x
+u + 4ζ(b)2
+xu
++ 4eρ(x)
+x
+
+.
+(A.9)
+where, recalling the definition (A.7) of the function ρ, the function eρ : R+
+0 →R+
+0 is defined as follows
+eρ(x) = ρ(x) + 2ζ(x2)2
+x
++
+Z ∞
+x2
+ζ(s)2
+s3/2 ds .
+(A.10)
+The proof of Proposition A.5 is based on the following lemma.
+Lemma A.6. For ι ∈(0, 1/8), let ζ : R+
+0 →R+
+0 be a continuously differentiable and non-decreasing
+function such that ζ(0) > 1 and ζ(s) = o(sι) as s →∞. Then, for all b ≥1 sufficiently large and
+u ∈[bι, b3/4], it holds that
+P0,u,b(τ−ζ > b) ≤16u
+b
+
+ζ(0) +
+Z b
+0
+ζ(z)ζ′(z)
+√z
+dz + ζ(b)2
+u
+
+.
+Proof. Recalling the notation introduced in the statement of Lemma A.2, we begin by noting that
+P0,u,b(τ−ζ > b) ≤P0,u,b(τ−ζ(0) > b) + P0,u,b(−ζ(Tb) < Mb < −ζ(0)) .
+(A.11)
+The first probability on the right-hand side can be bounded by using (A.2) as follows
+P0,u,b(τ−ζ(0) > b) ≤2ζ(0)(ζ(0) + u)
+b
+≤4u
+b ζ(0) ,
+where here we assumed that b ≥1 is taken large enough so that ζ(0)/u < 1 uniformly over all
+u ∈[bι, b3/4]. Concerning the second probability on the right-hand side of (A.11), using (A.4) of
+Lemma A.2, we have that
+P0,u,b(−ζ(Tb) < Mb < −ζ(0)) =
+r
+2
+π
+Z b
+0
+Z −ζ(0)
+−ζ(s)
+√
+b(−z)(u −z)e−(−bz+us)2
+2bs(b−s)
+(s(b −s))3/2
+dzds
+=
+r
+2
+π
+Z b
+0
+Z ζ(s)
+ζ(0)
+√
+bz(u + z)e−(bz+us)2
+2bs(b−s)
+(s(b −s))3/2
+dzds

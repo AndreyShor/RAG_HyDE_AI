@@ -1,0 +1,116 @@
+5
+nm × thickness nm. The magnitude (|⃗M|) of the magnetiza-
+tion vector within each cuboid is assumed to be constant. The
+equilibrium magnetization [⃗M ≡⃗M(θ, φ)] state for a given
+geometry under the application of global external field is ob-
+tained using the gradient descent method (GDM). The GDM
+method is based on the assumption that a physical system will
+evolve along a path that minimizes the total energy of a given
+system.
+The above stipulated process is iterated until the ˆM ×( ˆM ×
+⃗Hef f ) = ⃗Bef f /µo < 0.1 A/m, where the total internal effec-
+tive field can be obtained by using the formula
+⃗Hef f = −
+∂ETot
+∂⃗M
+
+(in SI units).
+(13)
+OOMMF provides functionality for storing both local and
+global magnetization values, as well as local demagnetization
+field values. These local quantities can be visualized as a func-
+tion of spatial coordinates using the OOMMF graphics viewer
+module or the open-source OOMMF Tools module44,45. Dy-
+namic magnetization simulations can be performed using
+OOMMF in conjunction with user-developed postprocessing
+scripts. The steps for calculating the FMR frequency under a
+given external magnetic field are as follows:
+1. Determine the equilibrium magnetization configuration
+for a given external field using the energy minimization
+method described earlier.
+2. Introduce a Gaussian magnetic field pulse perpendicu-
+lar to the film plane, with a full width at half maximum
+(FWHM) of a few picoseconds (e.g., 2.5 ps) and an am-
+plitude of a few millitesla (e.g., 5 mT). After applying
+the pulse, the system relaxes dynamically according to
+the LLG equation. A map of the local magnetization
+can be then recorded in ∆t steps (for example 20 ps)
+for a total time duration of T. The frequency resolution
+of the simulated ferromagnetic resonance spectra can
+be written as ∆f = 1
+T . The stored data for the mag-
+netization ⃗M ≡⃗M(x,y,z,ti) can then be read out into
+MATLAB matrix or Numpy format45 and Fourier trans-
+formed. The local power density, (i.e., the squared am-
+plitude for each pixel) can be integrated over the whole
+geometry to yield the global power density. Also, the
+local power densities can be mapped for each frequency
+to show the inhomogeneous distribution of the power
+absorbed for the corresponding frequency.
+Apart from OOMMF, other open-source (e.g., Mumax346)
+and proprietary micromagnetic simulations packages47 have
+been successfully utilized for simulating FM nanostructures
+and interested readers are referred to Ref. [47] for a list of
+these simulation packages.
+IV.
+NANOFABRICATION
+Fabricating sub-micron 2D and 2.5D ASIs for magnetiza-
+tion dynamics measurements, composed of metallic magnetic
+films like Ni81Fe19, often involves positioning them at a nomi-
+nal distance of 50 nm or less from each other. Techniques such
+as electron beam lithography (EBL)25,31 and deep ultraviolet
+lithography4 with lift-off methods are commonly employed
+for the fabrication of these intricate nanostructures. Of these,
+EBL with lift-off stands out as a preferred method, primar-
+ily for its ability to create prototypes of arbitrary periodic and
+aperiodic shapes without the need for mask blanks, thus ex-
+pediting the fabrication process. Moreover, EBL facilities are
+widely accessible at research universities, further enhancing
+its appeal.
+EBL systems utilized in the fabrication of ASI samples
+are typically either converted scanning electron microscope
+(SEM) systems [Fig. 3(a)] or standalone EBL systems. Con-
+verted SEM systems are typically limited to a 30 keV ac-
+celeration voltage, whereas standalone EBL systems rou-
+tinely operate at 100 keV. Standalone EBL systems capital-
+ize on higher accelerator voltages to achieve finer resolu-
+tion in thicker resists by exploiting reduced forward scatter-
+ing and longer-range back scattering for higher primary elec-
+tron energies48. Notably, bilayer resist-based lift-off processes
+often exhibit lower resolution compared to single-layer resist
+techniques49,50.
+The initial phase in crafting magnetic nanostructures in-
+volves applying a mask that responds to electrons of specific
+energies from the EBL instrument. This mask, known as the
+e-beam resist (ER), comprises a solid polymer that is typically
+dissolved in a liquid solvent for spin coating and is sensitive
+to the incoming electron beam. Upon interaction with the ER,
+the primary electron, or secondary electrons, either excites or
+ionizes atoms in the polymer. These processes trigger chem-
+ical reactions within the ER, leading to its categorization as
+either positive or negative ER, based on the beam’s effect. For
+positive ER, the incident beam prompts chain-scission reac-
+tions, breaking polymer chains into smaller fragments, thus,
+reducing the molecular weight and enhancing solubility in the
+developer solvent. Conversely, negative ER undergoes cross-
+linking reactions, increasing molecular weight and reducing
+solubility in the developer. Consequently, positive ER dis-
+solves in exposed areas, leaving behind the unexposed regions
+to form the desired pattern53,54.
+The performance of an ER is evaluated based on several pa-
+rameters: a) Tone: Dictates the portion of ER removed during
+development, determining whether the ER is positive or neg-
+ative. b) Sensitivity: Determines the required dose required
+to expose the ER. It is typically measured in primary elec-
+tron charge per area but can also be measured in energy per
+volume. c) Resolution: Specifies either the minimum feature
+size or the minimum pitch achievable with a particular resist.
+d) Contrast: Describes the change in the rate of resist devel-
+opment with dose. e) Etch Resistance: Determines the ER’s
+resistance to chemical or physical etching. Two widely used
+positive ERs for the fabrication of ASI include:
+Polymethylmethacrylate (PMMA): Renowned for its high
+resolution (2-20 nm)55, PMMA exhibits high contrast but low
+sensitivity and resistance to dry etching53. Due to its low sen-
+sitivity, PMMA demands a higher dose for effective clearing.
+A bilayer resist approach is often used with PMMA in which

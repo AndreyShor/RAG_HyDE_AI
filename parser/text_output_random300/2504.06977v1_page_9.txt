@@ -1,0 +1,73 @@
+9
+Because the resonant interaction is between Rydberg atoms and KRb molecules, the Rydberg excitation linewidth
+should not depend on the Rb atom density in the low atom density regime (∼1010/cm3) [37]. We experimentally
+tested this by measuring the Rydberg excitation linewidths at different Rb atom densities. To do this, we removed
+part of the Rb atoms inside the cloud with a microwave adiabatic rapid passage (ARP) pulse that transferred these
+Rb atoms to the |F = 2, mF = 2⟩state, which was subsequently expelled by a resonant laser pulse. Meanwhile, we
+kept the highest achievable KRb density of 4.29 × 1011/cm3 and the atoms and molecules on resonance as we varied
+the Rb density. Overall, we found that the Rydberg excitation linewidth does not depend on the Rb density, as shown
+in Fig. 7.
+SUPPLEMENTARY MATERIALS SECTION B: THEORY OF THE INTERACTION DYNAMICS
+Dynamics under the dipole-dipole Hamiltonian
+We modeled the energy exchange between a Rydberg atom and a KRb molecule by treating both species as
+point dipoles interacting under the dipole-dipole Hamiltonian. We evaluated the operators over a basis composed
+of the tensor product of the subspaces for the molecule and the atom. The molecular subspace was spanned by the
+rigid rotor eigenstates {|N, MN⟩(N = 0, 1) (−N ≤MN ≤N)}. The atomic subspace was spanned by the basis
+{|L, mL, S = 1/2, mS⟩(L = 1, 2) (−L ≤mL ≤L) (mS = ±1/2)}. Within this basis, the matrix element of the dipole
+operator for the molecule can be evaluated with,
+⟨N ′MN′|dq
+m|NMN⟩=d0(−1)MN′p
+(2N ′ + 1)(2N + 1)
+ N ′
+1
+N
+−MN ′ q MN
+ N ′ 1 N
+0
+0
+0
+
+,
+(2)
+where d0, the permanent dipole moment of KRb molecules, is 0.57 Debye [33]. Similarly, the atomic dipole operator
+in the coupled basis |n, J, MJ, L, S⟩can be evaluated as [38],
+⟨n′, J′, M ′
+J, L′, S′|dq
+a|n, J, MJ, L, S⟩= eδSS′(−1)L′+S′+J+1p
+(2J + 1)(2J′ + 1)
+L′ J′ S′
+J
+L
+1
+
+⟨n′, L′, J||da||n, L, J⟩
+(3)
+with,
+⟨n′, L′, J′||da||n, L, J⟩= (−1)L′p
+(2L + 1)(2L′ + 1)
+L′ 1 L
+0
+0 0
+ Z ∞
+0
+Rn′,L′,J′(r)rRn,L,J(r)r2dr
+(4)
+where Rn,L is the radial wavefunction for the Rydberg state, and q ranges from -1 to 1, corresponding to the different
+spherical components of the dipole vector operator. Given that we are interested in operators represented by the
+uncoupled basis, we use the appropriate Clebsch-Gordan coefficients to go from the coupled to the uncoupled basis.
+In addition to the dipole-dipole coupling, the total Hamiltonian also includes the individual molecule and atom
+terms,
+H0 = HDD + Hatom + Hmol.
+(5)
+Because rotation is the only relevant degree of freedom for the molecules,
+Hmol = BN2 = 2π × 2.227 GHz × |N = 1⟩⟨N = 1|,
+(6)
+where B is the rotational constant of KRb molecules [33], and the second equality is evaluated in the chosen molec-
+ular subspace. Within this approximation, we ignored the hyperfine structure within each rotational state as their
+interaction strengths are on the order of 0.1 MHz, and are much weaker than the average dipolar interactions be-
+tween Rydberg atoms and molecules. Therefore, we assumed different MN projections in the N = 1 manifold to be
+energetically degenerate in the following calculations.
+The atomic Hamiltonian includes the Coulombic, spin-orbit, Stark, and Zeeman terms, all of which were explicitly
+included in the calculations because their energy scales are greater than the dipolar coupling. We used the ARC
+Rydberg package [36] to calculate the Rydberg atom eigenstate energies and decompositions by diagonalizing the
+Hamiltonian in the coupled basis with n ranging from 96 to 100 and L from 0 to 10, respectively. We used this larger

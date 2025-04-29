@@ -1,0 +1,96 @@
+Preprint. Under review.
+
+	
+	
+	
+
+
+	
+
+
+
+
+
+	 ­
+
+
+ 
+
+
+	  
+
+	
+	
+			
+
+	
+
+ _­
+
+	
+
+
+
+	­­­­
+
+		
+
+	
+
+
+	
+
+
+
+
+ 	
+­
+ 	
+
+
+	
+
+	
+	
+ 
+Figure 1: Left: Illustrative abbreviated example of Model Specifications for one of the heat
+transfer problems. Right: Distribution of FEABench Gold problems by physics domain.
+1998), that are indispensable to modeling complex systems with the interplay of non-trivial
+geometries, and multiple physical phenomena.
+Despite the potential impact, the application of LLMs to engineering simulation tasks like
+FEA remains largely unexplored. In this paper, we begin to bridge this gap by measuring
+the ability of LLMs and LLM-agents to build models and solve engineering problems using
+finite element analysis.
+Our contributions are the following:
+• We introduce a benchmark intended for LLM and agentic research on engineering
+simulation, a novel domain for LLM benchmarks. The benchmark consists of (1)
+FEABench Gold: 15 manually verified problems, in addition to (2) FEABench Large:
+a larger set of 200 algorithmically parsed tasks. The problems in FEABench Gold are
+(a) quantitatively verifiable, that is, if solved completely and correctly, a desired target
+value will be computed and exported to a table, (b) manually confirmed to have input
+problem descriptions that are self sufficient and do not omit information necessary to
+solve the problem (c) manually verified to be solvable, i.e. we confirmed that if the steps
+to model the problem are followed faithfully in COMSOL Multiphysics® the desired
+target value is computed. The target values are expected to be largely independent of
+the modeling software. The LLM’s objective is to read the problem specification and
+operate COMSOL Multiphysics®by generating a sequence of Java calls to its API that
+would build the model and compute the target. The skills this requires include (1) code
+generation in a low-resource setting, (2) inferring spatial dimensions and representing
+objects as compositions of geometrical primitives, (3) making correct and consistent
+physics reasoning decisions (e.g.: boundary conditions and properties).
+• We further define two versions of the tasks in FEABench Gold– ModelSpecs and Plan ,
+to probe different versions of task complexity.
+• We introduce a holistic automated evaluation strategy with intermediate metrics that
+seek to measure different facets of ‘distance to a correct solution’. We benchmark
+different SOTA LLMs on their baseline (single-turn) performance with these metrics.
+• Finally, we design an interface in which an LLM can interact with the COMSOL
+Multiphysics® API and with specialized auxiliary functions and and build an agent
+that uses execution feedback to improve its solution over multiple turns.
+We selected COMSOL Multiphysics®as the framework for our benchmark because it is
+extensively used for commercial engineering analysis as well as scientific research and
+supports a wide range of physics models. The FEA workflow is relatively canonical, the
+reasoning approach for modeling is similar to other FEA software, and problems typically
+involve a shared conceptual breakdown into a sequence of steps that involve defining 1)
+Geometry, 2) Material properties, 3) Physics, 4) Mesh 5) Numerical Analysis and Solver
+settings, and 6) Postprocessing (details in Appendix D.2).
+2

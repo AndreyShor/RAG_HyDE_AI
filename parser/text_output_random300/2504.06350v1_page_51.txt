@@ -1,0 +1,54 @@
+Figure 14: Figure from [296]. Geometry formulation of the CC attack.
+One implication of this bound is that all PPT states satisfy the CHSH inequality, resulting in a zero device-
+independent key rate for CHSH-based protocols. This, in turn, proves the revised Peres conjecture for
+such protocols. It is important to note that while there exist bound entangled states from which a private
+key can be distilled in device-dependent protocols, these states are useless for DI-QKD in CHSH-based
+protocols. Furthermore, for CHSH-based protocols, they show that the convex hull of above-mentioned
+bounds is a tighter upper bound on the device-independent key rates.
+Upper bounds based on convex-combination attacks. Farkas et al.
+[70] studied the problem of upper
+bounding the key rate of a DI-QKD problem by applying a convex combination attak.
+In a convex
+combination attack, Eve distributes local deterministic correlations with certain probabilities that give
+rise to a local correlation pL
+AB(a, b|x, y) with overall probability qL, and a nonlocal quantum correlation
+pNL
+AB(a, b|x, y) with probability 1 −qL. Eventually, the observed correlation of Alice and Bob takes the
+form
+pAB(x, y) = qLpL
+AB(a, b|x, y) + (1 −qL)pNL
+AB(a, b|x, y),
+(147)
+Since Alice and Bob announce their inputs for every round, Eve knows their outcomes in all rounds in
+which she distributes a local correlation, so to gain more information about key, she should maximize
+qL for the given observed correlation (147). By denoting e as the classical variable representing Eve’s
+knowledge which e = (a, b) when a local correlation was distributed and e =? for the cases of nonlocal
+correlations was distributed. The corresponding joint probability of (147) distribution among Alice, Bob,
+and Eve is then written as
+pABE(x, y, e) = qLpL
+AB(a, b|x, y)δe,(a,b) + (1 −qL)pNL
+AB(a, b|x, y)δe,?,
+(148)
+where δ is the Kronecker delta. Then, the following bound on the key rate can be obtained
+r ≤
+X
+x,y
+pxyIxy(A : B ↓E),
+(149)
+where pxy is the probability of Alice and Bob choosing the settings x and y and Ixy(A : B ↓E) is the
+intrinsic information of the distribution (148) which is defined as I(A, B ↓E) = minE→F I(A : B|F)
+where I(A : B|F) is the conditional mutual information and the minimization is taken over all stochastic
+maps E →F that map the variable E to a new variable F such that the alphabet size of F is at most
+that of E.
+The upper bound (149) resulted from a well-established result in classical cryptography that the asymp-
+totic rate extractable from a distribution pABE(a, b, f) is bounded by intrinsic information [295].
+Additionally, Farkas et al. [70] investigate the problem by applying the upper bound on a standard pro-
+tocol implemented on a two-qubit Werner state with visibility v using an arbitrary number of projective
+measurements. They showed that for a range of visibilities for which the Werner state is nonlocal the
+upper bound on the key rate is zero. This means that nonlocal quantum states exist that can not be
+used for standard DI-QKD with projective measurements. Therefore, the bell nonlocality is generally
+insufficient for the security of standard device-independent quantum key distribution protocols.
+To find the maximum value of qL in (147), Lukanowski et al. [296] provided a geometric interpretation of
+the CC attack, which describes its optimization in terms of a linear program for determining the tightest
+upper bound on the key rate. A given correlation p(a, b|x, y) represents a point within the probability
+51

@@ -1,0 +1,68 @@
+Local structure of extremal points
+27
+Lemma 4.13. For all k ∈N, ε > 0, and λ > 0, there exists δ ∈(0, λ) such that for all b ≥k
+sufficiently large and η ∈{0, δ}, it holds that
+P0,u,b(M0,k(Υb,g) ≥λ −δ + η, M0,b(Υb,g) ≤λ + η) ≤εu
+b .
+(4.25)
+Similarly, for all k ∈N, ε > 0, and λ > 0 there exists δ ∈(0, λ) such that for all b ≥k sufficiently
+large and η ∈{0, δ}, it holds that
+P(M0,k(Υ∞) ≥λ −δ + η, M0,b(Υ∞) ≤λ + η) ≤ε 1
+√
+b
+.
+(4.26)
+Proof. The strategy for the proof of this lemma is quite similar to the strategy developed for the proof
+of Lemma 4.10. We will provide the proof only for the case η = 0, as the case η = δ is completely
+analogous. We fix k ∈N, ε > 0, and λ > 0. For δ ∈(0, λ/2), we begin by observing that, thanks to
+Lemmas 4.9, 4.10, and A.11, it holds that
+P0,u,b(M0,b,k(Υb,g) ≥λ −δ , M0,b(Υb,g) ≤λ) ≲k−1
+16 u
+b ,
+and so, if k > b/2 the claim follows by taking b > 0 large enough. Hence, from now on, we can focus
+on the regime k < b/2. Thanks to Lemma 4.10, by choosing l > l0 for some l0 = l0(ε) > k, we can
+assume that we are on the event {Kb ≤l} with Kb from Definition 4.6. Now, for δ ∈(0, λ/2), we
+observe that thanks to (4.13),
+{M0,k(Υb,g) ≥λ −δ, M0,b(Υb,g) ≤λ, Kb ≤l}
+⊆
+
+M0,k(Υb,g) ∈[λ −δ, λ],
+b−1
+\
+j=l
+{Bj ≥−λ −Rl(j)}, Kb ≤l
+
+.
+(4.27)
+Thanks to (4.9), on the event {Kb ≤l}, by possibly taking l > l1 for some l1 = l1(ε, δ) > l0, we can
+assume that the event on the right-hand side in (4.27) is contained in
+{M0,k(Υl,g) ∈[λ −2δ, λ + 2δ]} ∩
+ b−1
+\
+j=l
+{Bj ≥−λ −Rl(j)}
+
+.
+These two events are conditionally independent given σ(Bl). In particular, on the event {Bl = z} for
+some z ≥−λ −Rl(l), the first conditional probability is equal to
+P0,z,l(M0,k(Υl,g) ∈[λ −2δ, λ + 2δ]) .
+Now, thanks e.g. to [PT79, Theorem 3.1], we observe that by choosing δ = δ(ε, k) < λ/4 sufficiently
+small, it holds that
+sup
+z≥−1−Rl(l)
+P0,z,l(M0,k(Υl,g) ∈[λ −2δ, λ + 2δ]) ≤ε .
+(4.28)
+To be precise, we cannot directly apply [PT79, Theorem 3.1] since Υl,g(0) = 0. However, this issue
+can be easily overcome by noting that, by taking η = η(ε) > 0 sufficiently small, it holds that
+sup
+z≥−1−Rl(l)
+P0,z,l
+
+sup
+x∈B(0,η)
+Υl,g(x) ≥λ/2
+
+≤ε ,
+To obtain (4.28), we note that the variance of the field Υl,g over the annulus Bk \ B(0, η) can be
+uniformly lower bounded by a quantity depending on η. Therefore, by [PT79, Theorem 3.1], the
+density with respect to the Lebesgue measure of the supremum of the field Υl,g over the annulus

@@ -1,0 +1,160 @@
+3
+from i) the bandwidth of the local oscillator and from ii)
+the resolution of a LO shaper or a multipixel detector,
+the channel bandwidth in a dense wavelength division
+multiplexer (DWDM), etc.
+Regarding the coupling, CM is the largest linear cou-
+pling strength at the waveguide-array design operat-
+ing frequency ωh/2, and fj(ω) are the elements of the
+coupling profile ⃗f.
+Considering coupling only between
+nearest-neighbor waveguides, a linear waveguide array
+–Equation 1 with g = 0– presents spatial linear super-
+modes ˆBk, i.e.
+propagation eigenvectors [35].
+These
+eigenvectors form a basis and are represented by an or-
+thogonal matrix M ≡M(⃗f) with real elements Mk,j.
+The linear supermodes are the same for signal and idler
+frequencies as long as the coupling profile does not change
+in the considered bandwidth ⃗f ̸= ⃗f(ω). We consider a
+SPDC bandwidth ∆SPDC where this condition holds and
+discuss the validity of this assumption in the Appendix.
+The individual modes of the waveguides and the linear
+supermode basis are thus related by ˆBl
+k = PN
+j=1 Mk,j ˆ
+Al
+j.
+These supermodes are orthonormal PN
+j=1 Mk,jMk′,j =
+δk,k′, with a spectrum of eigenvalues λk ≡λk(CM, ⃗f).
+λk is the propagation constant of the kth linear super-
+mode. Recent developments have broken the monolithic
+structure of integrated optical lattices enabling the mod-
+ification of coupling constant profiles on demand [36, 37].
+To simplify the analysis we order the modes in L blocks
+composed of N spatial modes in given frequency bands
+centered at ωl with the following indices respectively for
+the individual and linear spatio-spectral supermodes:
+j = j + (l −1)N,
+k = k + (l −1)N,
+with {j, k} = 1, . . . , N and N ≡N × L [38]. The indices
+are ordered using l: for l = 1 we have j(k) = 1, . . . , N,
+for l = 2 we have j(k) = N + 1, . . . , 2N, etc. The linear-
+supermode transformation is then
+ˆBk =
+N
+X
+j=1
+Mk,j ˆ
+Aj,
+with M a block diagonal matrix with elements Mk,j ≡
+Mk,j. Using slowly-varying linear supermode amplitudes
+ˆBk = ˆBk e−iλkz the following propagation equation is ob-
+tained straightforwardly
+d ˆBk
+dz = ig
+p
+Ph
+N
+X
+k′=1
+Lk,k′(z) ˆB†
+k′,
+(2)
+where k and k′ are two spatio-spectral modes coupled
+by a function L(z) with elements given by Lk,k′(z) =
+˜Lk,k′(z) ˜Ll,l′(z), where
+˜Lk,k′(z) =
+N
+X
+j=1
+Mk,jMk′,jηj e−i(λk+λk′)z,
+(3)
+˜Ll,l′(z) =
+ZZ
+dωsdωiξl(ωs)ξl′(ωi)Ω(ωs + ωi)ei∆β(ωs,ωi)z.
+(4)
+L(z) is a complex matrix which gathers all the informa-
+tion about the spatio-spectral shape of the pump and
+the phasematching.
+The symmetric complex matrices
+˜Lk,k′ and ˜Ll,l′ couple respectively the spatial linear su-
+permodes and the frexel modes and, as we show below,
+propagation couples both. Note the outstanding symme-
+try between the two expressions with a change of basis,
+a pump function and a phasematching function.
+Remarkably, unlike broadband frequency modes, frex-
+els preserve local multiplication. If the resolution of the
+frexel basis ∆−1
+F is large enough, the frequency-dependent
+functions are approximately constant within each frexel,
+and we can approximate Ω(ωs + ωi) and ∆β(ωs, ωi) by
+their frexel versions
+Ωl,l′ =
+ZZ
+dωsdωiξl(ωs)ξl′(ωi)Ω(ωs + ωi),
+(5)
+∆βl,l′ =
+ZZ
+dωsdωiξl(ωs)ξl′(ωi)∆β(ωs, ωi),
+(6)
+such that ˜Ll,l′(z) ≈Ωl,l′ei∆βl,l′z.
+This coarse-grained
+description of the spectral functions can be used to get
+insight about the dynamics of the full system although
+analytical calculations rigorously hold only for (4).
+The symmetries of the supermodes enable solving Eq.
+(2) analytically for any gain regime with suitable pump
+profiles [39–41].
+However, in the general case, we can
+solve it in the low gain regime where space-ordering ef-
+fects can be neglected [42]. Hence, the formal solution to
+Equation (2) at given z is written as
+ ⃗B(z)
+⃗B†(z)
+
+= exp
+
+Γ(z)
+
+0
+f(z)
+f∗(z)
+0
+  ⃗B(0)
+⃗B†(0)
+
+,
+(7)
+with ⃗B ≡( ˆB1, . . . , ˆBk, . . . , ˆBN)T , Γ(z) = g√Phz the total
+nonlinear amplitude and f(z) the normalized joint spatio-
+spectral amplitude (JSSA), with elements given by
+fk,k′(z) = ηk,k′
+ZZ
+dωsdωiξl(ωs)ξl′(ωi)Ω(ωs + ωi)
+× sinc(∆β(ωs, ωi) −(λk + λk′)
+2
+z) ei
+∆β(ωs,ωi)−(λk+λk′ )
+2
+z,
+(8)
+with ηk,k′ = PN
+j=1 Mk,jMk′,jηj. fk,k′(z) couples pairs of
+spatio-spectral modes k and k′ and, in particular, the
+sinc function couples spatial and spectral DOF. Thus,
+the spectral features of the waveguides, the evanescent
+coupling profile as well as the spatial and spectral shape
+of the pump enable engineering the JSSA. Note that this
+matrix contains all information about individual-mode
+correlations in the DV regime (Γ(z) <<) through a sim-
+ple change of basis in the spatial DOF [22].
+Under the high resolution approximation for frexels of
+Eqs.
+(5)-(6), Eq.
+(8) is separable into spatio-spectral
+pump and phasematching functions as
+fk,k′(z) ≈αk,k′Φk,k′(z),
+(9)

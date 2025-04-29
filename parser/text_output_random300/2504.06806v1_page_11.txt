@@ -1,0 +1,51 @@
+11 
+solution and within the field of the protein. From another perspective, this approach 
+approximates the free energy of the unfolded state as the sum of independent 
+contributions from each amino acid. Physically, these contributions may arise from 
+the conformational entropy of both the side chain and main chain, as well as their 
+interactions with the solvent. Under this approximation, all terms disappear except 
+for the contributions of the wild-type and mutated amino acids, significantly 
+simplifying the calculation. 
+ 
+ 
+Input encoding 
+We encode the mutation in the sequence as a twenty-elements array, one element 
+for each of the natural amino acids, and we encode their occurrence (O) as -1 for the 
+wild-type amino acid and +1 for the substitution. 
+ 
+The modified expression to calculate ΔΔG is then expressed as a linear combination 
+of the original-method score (S) for the wild-type and the mutated protein: 
+ 
+𝛥𝛥𝐺= 𝑎0(𝑆(𝑚) −𝑆(𝑤)) + ∑
+𝑎𝑖𝑂𝑖
+20
+𝑖=1
+   
+ 
+ 
+[7] 
+ 
+the first term represents the original method's (scaled) output and the second term 
+represents the pseudo-ΔΔG of solvation for the amino acids involved in the mutation 
+(the data-driven MBC). 
+The first term 𝑆(𝑥) thus corresponds to the ΔΔG predicted by the original method, 
+while the second term depends on amino acid-related parameters. 
+It should also be observed that equation [7], being antisymmetric by definition, 
+preserves the antisymmetry in the prediction of the original methods, if present. 
+The 21 coefficients for the linear model above can be easily derived via a simple 
+linear regression with respect to the training set. 
+ 
+Similarly, the MBC(Rose) correction is computed as a two-parameter linear 
+combination of the original-method score (S) and Rose-scale delta  
+ 
+𝛥𝛥𝐺= 𝑎0(𝑆(𝑚) −𝑆(𝑤)) + 𝑎1(𝑅(𝑚) −𝑅(𝑤))  
+ 
+[8] 
+ 
+where 𝑅(𝑚) ∧𝑅(𝑤) are the values of the Rose scale for the mutated- and wild-type 
+amino acid respectively. 
+ 
+Measures of performance 
+To evaluate the performance of the methods in the regression task, we compared 
+the predicted (p) and experimental (e) values of the variation of unfolding free energy 
+change upon mutation (ΔΔG). The standard scoring values calculated in our 

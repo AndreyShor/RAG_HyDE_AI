@@ -1,0 +1,73 @@
+print(’\ncounting
+measurement
+on the
+result :\n’, counts)
+print(’\ nprobability
+of each
+state :\n’, probability )
+plot_histogram (counts)
+plot_histogram ( probability)
+3.5
+Quantum algorithm
+Quantum algorithms refer to methods that utilize the principles of quantum computing to solve complex
+mathematical problems more efficiently. These algorithms leverage physical properties such as quantum
+entanglemet and superposition to perform calculations. Currently, the Grover[21], Shor[22], Deutsch-
+Jozsa[23], and Bernstein–Vazirani[24] algorithms and Phase estimation, Fourier transform, and inverse
+Fourier protocols have also been defined. have been implemented in AriaQuanta. Additionally, the Varia-
+tional Quantum Eigensolver(VQE)[25], and Quantum Approximate Optimization Algorithm(QAOA)[26]
+algorithms have been implemented for use in NISQ devices.
+The number of available algorithms is
+expected to increase in future versions.
+Furthermore, based on the definition of noise, the effects of
+noise can be observed in these algorithms.
+To use them, simply call the algorithm class as from
+AriaQuanta.algorithms import. Listing 6 shows the example code for implement Deutsch-Jozsa
+algorithm.
+Code6. Deutsch
+Jozsa
+Algorithm
+from
+AriaQuanta.aqc.circuit
+import
+Circuit
+from
+AriaQuanta.algorithms
+import
+dj
+from
+AriaQuanta.aqc. visualization
+import
+CircuitVisualizer
+from
+AriaQuanta.aqc.circuit
+import
+Circui
+1 n_qubits = 4
+2 qc_dj = dj(n_qubits , is_constant =False) # number of qubits
+and
+constant/balanced
+3 qc_dj.run ()
+4 measurement , measurement_index , probabilities = qc_dj.measure ()
+# Analyze
+the
+result
+5 measurement_n_qubits = measurement[1:n_qubits+1]
+6 if
+measurement_n_qubits == ’0’ * n_qubits:
+7
+output = " measurement = " + measurement_n_qubits + ", Function
+is
+constant"
+8 else:
+output = "measurement = " + measurement_n_qubits + ", Function
+is
+balanced"
+4
+AriaQuanta’s performance
+This section evaluates the performance of Ariaquanta and compares it with other popular quantum
+simulators: Qiskit, Cirq, ProjectQ, and Pennylane. Ariaquanta’s capabilities are assessed based on several
+criteria, including execution speed, accuracy, and the ability to handle different quantum algorithms. Our
+analysis includes benchmarking tests where the same set of quantum gates, variational quantum circuit,
+noisy circuit and algorithms are executed on each simulator. For performance comparison, we used a
+device equipped with Intel(R) Corei7-7500U CPU, running Ubuntu 22.04.05. To evaluate the performance
+7

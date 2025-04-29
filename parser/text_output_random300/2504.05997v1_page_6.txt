@@ -1,0 +1,53 @@
+6
+IV.
+DISCUSSION
+This short note provides two simple proofs of the universality of IQP-QCBM when hidden (ancillary) qubits are used. This
+provides additional motivation to study these models as generative modes in near-term quantum computing. We, however,
+highlight that the purpose of this construction is theoretical, and should not be used as a suggestion to use large numbers of
+hidden units in practice. Since we deal with exponential outcome spaces, universality requires dealing with exponentially many
+trainable parameters, and in our construction, increasing the register size by a factor of 3. The latter in general would cause
+a quicker decay of gradients, and the prior makes the setting immediately intractable. Furthermore, fully universal models are
+often a bad idea as they likely lead to signiﬁcant overﬁtting1. This work does further clarify the role and potential of using more
+complicated diagonal encoding operations, and additional hidden qubits as structural parameters which can be used to balance
+expressivity, overﬁtting, and trainability.
+V.
+ACKNOWLEDGEMENTS
+VD, HW, and AK acknowledge the support from the Dutch National Growth Fund (NGF), as part of the Quantum Delta
+NL programme. VD acknowledges support from the Dutch Research Council (NWO/OCW), as part of the Quantum Software
+Consortium programme (project number 024.003.03). This project was also co-funded by the European Union (ERC CoG,
+BeMAIQuantum, 101124342).
+[1] E. Recio-Armengol, S. Ahmed, and J. Bowles, Train on classical, deploy on quantum: scaling generative quantum machine learning to a
+thousand qubits, arXiv preprint arXiv:2503.02934 (2025).
+[2] E.
+Recio-Armengol
+and
+J.
+Bowles,
+Iqpopt: Fast optimization of instantaneous quantum polynomial circuits in jax
+(2025),
+arXiv:2501.04776 [quant-ph].
+[3] J.-G. Liu and L. Wang, Differentiable learning of quantum circuit born machines, Physical Review A 98, 10.1103/physreva.98.062324
+(2018).
+[4] M. Benedetti, D. Garcia-Pintos, O. Perdomo, V. Leyton-Ortega, Y. Nam, and A. Perdomo-Ortiz, A generative modeling approach for
+benchmarking and training shallow quantum circuits, npj Quantum Information 5, 10.1038/s41534-019-0157-8 (2019).
+[5] D. Shepherd and M. J. Bremner, Temporally unstructured quantum computation, Proceedings of the Royal Society A: Mathematical, Physical and En
+[6] M. J. Bremner, R. Jozsa, and D. J. Shepherd, Classical simulation of commuting quantum computations implies collapse of the polynomial
+hierarchy, Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences 467, 459–472 (2010).
+[7] N.
+Le
+Roux
+and
+Y.
+Bengio,
+Representational
+power
+of
+restricted
+boltzmann
+machines
+and
+deep
+belief
+networks,
+Neural Computation 20, 1631 (2008).
+1 What overﬁtting means in generative modelling is a subtle issue which we do not discuss here.

@@ -1,0 +1,102 @@
+DreamerV3[9]), and 100 steps (for long-term prediction).
+The world model is required to predict continuously for the
+specified horizon, given the initial state and the action se-
+quence. For models that require a warm-up period to ini-
+tialize latent variables and achieve better performance, our
+benchmark provides a certain number of ground truth steps
+as a condition before evaluation.
+Finally, we compute the mean squared error loss between
+the model’s predictions and the ground truth over the entire
+segment as a measure of prediction accuracy.
+2.3. Multi-Stage Training.
+To fully utilize the model architecture proposed in Sec-
+tion 2.1, we introduce a training strategy called multi-stage
+training. We first train the predictor without incorporating
+the corrector, assuming that it should capture the smooth,
+non-abrupt components of robotic dynamics, such as iner-
+tia, effects of gravity, and elastic forces. Once the predic-
+tor converges, we freeze it and train the corrector on top
+of it. At this stage, the corrector focuses on modeling the
+abrupt and unmodeled dynamics, attempting to bridge the
+gap between the actual dynamics and the smooth dynam-
+ics captured by the predictor. For more complex robots, we
+employ multiple correctors to perform stepwise refinement,
+with each one addressing the non-smooth dynamics that the
+previous level struggles to handle.
+Compared to training the entire large network jointly
+from the start, multistage training process allows the model
+to first capitalize on the advantages of inductive biases to
+quickly learn the simpler and more fundamental parts of the
+task. Subsequently, the corrector, which lacks strong in-
+ductive biases, handles the more complex and task-specific
+components. Ablation studies in Section 3 demonstrate that
+models trained with the multistage training strategy achieve
+faster training speeds and improved final performance.
+3. Results
+We evaluated MoSim in five robotic environments from
+the DM Control suite[20], as well as two additional envi-
+ronments: Panda[21], a robotic arm operating in a three-
+dimensional space, and Go2[21, 22], a quadruped robot.
+We designed experiments to compare its predictive perfor-
+mance against current state-of-the-art world models, both
+in state space and latent space. The results demonstrate that
+MoSim achieved significant improvements in predictive ca-
+pacity compared to previous world models. Additionally,
+we integrated MoSim into model-free algorithms, trans-
+forming them into model-based approaches, demonstrating
+that MoSim can be easily adapted to various model-free al-
+gorithms. Furthermore, we implemented zero-shot learning
+in specific tasks using MoSim-based reinforcement learning
+(RL) algorithms, enabling reinforcement learning without
+any real-world data, and explored the potential of few-shot
+learning in more complex tasks.
+To provide a clear understanding of the model naming
+conventions used in our experiments, the suffix “-r” indi-
+cates models trained on random datasets, where at each
+step, the action is independently sampled uniformly from
+the action space, “-e” denotes models trained on experience
+datasets from Dreamer’s replay buffer, and “-rm” refers to
+MoSim trained using a multistage approach on random data.
+3.1. Raw State Space Evaluation
+We first compare the predictive capabilities of Dream-
+erV3, whose backbone network is the Recurrent State-
+Space Model (RSSM)[23], a variant of recurrent neural net-
+works, with those of MoSim.
+RSSM Baseline. We trained RSSM in two ways: one fol-
+lowing the original DreamerV3 training method, and the
+other for an ablation experiment, following the same train-
+ing approach as MoSim. We provided RSSM with 1-step
+and 5-step ground truth as initial conditions, based on our
+observation that the RSSM requires several initialization
+steps to prepare its latent variables, for better predictions.
+Generalization Ability. As mentioned in the Introduction,
+we found that models trained on data collected in a random
+manner exhibit higher prediction accuracy and better gener-
+alization ability. We trained and compared both models(-r
+and -e) on datasets collected using both methods, and the
+results in Table 2 of the ablation experiments highlighted
+the superiority of the random data collection approach.
+Training Method Comparison. We compared the impact
+of two different training methods on the results, demonstrat-
+ing the effectiveness of the multistage training approach in
+terms of both time efficiency and overall performance.
+In Table 1, We categorize the tasks into easy and hard,
+where easy tasks generally have smoother dynamics, mak-
+ing them more suited for predictor-based solutions. In these
+cases, we did not use the multistage training approach. On
+the other hand, hard tasks exhibit non-smooth dynamics,
+where multistage training significantly outperforms stan-
+dard end-to-end training in terms of final performance. As
+illustrated in Figure 4, the multistage approach also im-
+proves training efficiency and stability. Overall results in-
+dicate that MoSim consistently outperforms DreamerV3
+across both easy and hard tasks, demonstrating its superior
+capability in handling diverse dynamics.
+3.2. Latent Space Evaluation
+MoSim also exhibits strong prediction accuracy in the latent
+space of TD-MPC2. We utilized the signal task pre-trained
+TD-MPC2 model and leveraged its encoder to encode our
+predicted states into their latent space. We trained MoSim
+using tdmpc policy data and compared it against the model
+that generated the training and test data (TD-MPC2) in table
+4

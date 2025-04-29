@@ -1,0 +1,122 @@
+Realization and Calibration of Continuously Parameterized Two-Qubit Gates on a
+Trapped-Ion Quantum Processor
+Christopher G. Yale,1, ∗Ashlyn D. Burch,1, † Matthew N. H. Chow,1, 2, 3, ‡ Brandon P.
+Ruzic,1 Daniel S. Lobser,1 Brian K. McFarland,1 Melissa C. Revelle,1 and Susan M. Clark1
+1Sandia National Laboratories, Albuquerque, New Mexico 87123
+2Department of Physics and Astronomy, University of New Mexico, Albuquerque, New Mexico 87131, USA
+3Center for Quantum Information and Control, CQuIC, University of New Mexico, Albuquerque, New Mexico 87131, USA
+(Dated: April 9, 2025)
+Continuously parameterized two-qubit gates are a key feature of state-of-the-art trapped-ion quan-
+tum processors as they have favorable error scalings and show distinct improvements in circuit per-
+formance over more restricted maximally entangling gatesets. In this work, we provide a comprehen-
+sive and pedagogical discussion on how to practically implement these continuously parameterized
+Mølmer-Sørensen gates on the Quantum Scientific Computing Open User Testbed (QSCOUT), a
+low-level trapped-ion processor. To generate the arbitrary entangling angles, θ, we simply scale the
+amplitude of light used to generate the entanglement. However, doing so requires careful consid-
+eration of amplifier saturation as well as the variable light shifts that result. As such, we describe
+a method to calibrate and cancel the dominant fourth-order effects, followed by a dynamic vir-
+tual phase advance during the gate to cancel any residual light shifts, and find a linear scaling
+between θ and the residual light shift. Once, we have considered and calibrated these effects, we
+demonstrate performance improvement with decreasing θ. Finally, we describe nuances of hardware
+control to transform the XX-type interaction of the arbitrary-angle Mølmer-Sørensen gate into a
+phase-agnostic and crosstalk-mitigating ZZ interaction.
+I.
+INTRODUCTION
+Trapped-ion quantum computers have grown in size,
+complexity,
+and performance metrics over the past
+decade, with flagship systems now exhibiting two-qubit
+gate fidelities greater than 0.998 and register sizes in ex-
+cess of 30 qubits [1, 2]. One of the workhorses of these
+processors is the two-qubit entangling Mølmer-Sørensen
+(MS) gate, proposed in 1999 [3, 4], and experimentally
+demonstrated in 2003 [5]. It has now become the most
+prevalent entangling operation available in many com-
+mercial trapped-ion quantum processors [6–9] as well as
+academic and national laboratory efforts [10–12].
+The
+two-qubit MS gate finds application in a wide array
+of complex quantum algorithms for simulation and op-
+timization protocols, but also has a potential role in
+quantum networking applications [13], error correction
+schemes [14], quantum metrology [15], and quantum ma-
+chine learning [16].
+While work has been done to im-
+prove the effective implementation of this gate in experi-
+ment [17–21], both stochastic and coherent errors still re-
+main limitations to gate fidelity, and therefore it is vital
+to understand how to best calibrate against error sources
+that limit qubit coherence and gate operation times.
+Here, we provide a pedagogical discussion of the cali-
+bration of a two-qubit arbitrary-angle MS gate. In par-
+ticular, we discuss pulse shaping and motional mode se-
+∗These authors contributed equally; cgyale@sandia.gov
+† These authors contributed equally; Present address: Oak Ridge
+National Laboratory, Oak Ridge, Tennessee 37831, USA
+‡ These authors contributed equally; Present address: HRL Lab-
+oratory, LLC, Malibu, California 90265, USA
+lection, the approach used to generate arbitrary amounts
+of entanglement, and the impact and mitigations for light
+shifts that arise during the interaction. The MS gate is
+based on a transverse Ising-type interaction, where the
+unitary for the gate may be written:
+UMS(θ, ϕ) = exp
+
+−iθ
+2 (ˆσϕ,i ⊗ˆσϕ,j)
+
+(1)
+where θ is the rotation angle, i and j are ion-label indices,
+and ˆσϕ = cos(ϕ)ˆσx + sin(ϕ)ˆσy is a rotation about the
+equatorial Bloch-sphere axis defined by phase ϕ, where ˆσx
+and ˆσy are the usual Pauli operators. The typical imple-
+mentation of the gate is a maximally entangling Clifford
+operation occurring at a θ = π
+2 rotation, i.e. MS(π/2).
+In many noisy intermediate-scale quantum, or NISQ,
+computing applications, generating arbitrary amounts
+of entanglement is favorable as gate error tends to de-
+crease with decreasing gate angle [1, 6]. These variable-
+angle gates, MS(θ) where θ ∈[0, π/2], are particu-
+larly useful for decomposing arbitrary unitary operations
+via Cartan’s KAK decomposition [22]. This decomposi-
+tion means any arbitrary two-qubit SU(4) unitary can
+either be broken down into three MS(π/2) or broken
+into three MS(θ) [23–25]. Clear performance improve-
+ments have been demonstrated when compiling circuits
+via an arbitrary-angle entangling gateset rather than a
+more limited gateset with only maximally entangling
+gates [25].
+The experiments detailed here are performed on
+the
+Quantum
+Scientific
+Computing
+Open
+User
+Testbed
+(QSCOUT)
+located
+at
+Sandia
+National
+Laboratories
+[12].
+The
+QSCOUT
+register
+con-
+sists
+of
+a
+linear
+chain
+of
+171Yb+
+ions
+whose
+hyperfine
+states
+2S1/2 |F = 0, mF = 0⟩(|0⟩)
+and
+arXiv:2504.06259v1  [quant-ph]  8 Apr 2025

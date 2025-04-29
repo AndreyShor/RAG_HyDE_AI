@@ -1,0 +1,53 @@
+A Self-Supervised Framework for Space Object Behaviour Characterisation.
+2
+Figure 1: Graphical structure of the paper. First, in Section 2.1 we describe pre-training our Foundation Model with a large unla-
+belled dataset of real light curves. We encode these into a rich latent representation with a Perceiver-VAE architecture, updating
+these representations based on three self supervised learning (SSL) tasks: Reconstruction, Forecasting, and Masking. We next
+analyse the results of pre-training, which includes pre-flagging of anomalies based on reconstruction difficulty (Sections 2.2-2.3,
+and forecasting quality of the model (2.4. Following this, we descibe fine-tuning our rich representations for two downstream
+tasks: a) anomaly prediction (Section 2.5, and b) motion prediction (Section 2.6). Finally, we demonstrate further utility of our
+representations by generating de novo datasets according to a particular motion type (Section 2.7).
+ing space objects that are behaving in an unusual way, such
+as motions, manoeuvres, or those that are performing atypi-
+cal functions. Characterising these atypical behaviours can be
+done through simulation of space object observations, but this
+is challenging, due to imperfect physical models and compu-
+tational cost. Therefore, a Foundation model for SDA should
+be able to perform anomaly detection, integrating real observa-
+tions with physical models in a computationally efficient way.
+Foundation Models are typically pre-trained on large datasets
+to learn some compressed rich, general latent representation
+of the data distribution. They are then fine-tuned for specific
+tasks by further using those latent representations, for example,
+classifying them according to a small amount of labelled data.
+Whilst in pre-training, the goal is usually to keep the optimisa-
+tion task relatively unconstrained to encourage general features
+to be learned, we can still make architectural decisions to build
+in anomaly detection from the ground up through the use of
+Variational Autoencoder (VAE) components.
+VAEs are generative models which are trained by learning to
+reconstruct the input data from a sampling of the learned la-
+tent space [9]. They provide a simple and intuitive way to per-
+form anomaly detection, as they inherently produce a recon-
+struction error at inference. This error is the difference between
+the model’s reconstruction of an input and the actual input. If
+a specific data point is unusual compared to the training data,
+or is not well represented in the training data, it will produce
+a high reconstruction error, suggesting anomalous behaviour
+or properties. Unsupervised models with Variational Autoen-
+coders (VAEs) have been used extensively as anomaly detec-
+tors, (for a recent review in the context of solar images see the
+Introduction in [10]).
+Whilst VAEs offer an effective anomaly detection mechanism,
+they still need integration into a broader neural network frame-
+work to effectively process complex, high dimensional space
+object data. Transformer architectures are an attractive choice
+here, due to their ability to capture long range dependencies
+in sequential data.
+When choosing a Transformer architec-
+ture, there are numerous variants with respective strengths and
+weaknesses. For example, conventional transformer-based neu-
+ral networks perform the computationally costly full self at-
+tention mechanism between all the inputs.
+This means that
+standard transformers scale poorly with larger dataset sizes.

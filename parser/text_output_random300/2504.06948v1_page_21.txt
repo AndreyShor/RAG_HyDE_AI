@@ -1,0 +1,120 @@
+21
+0
+10
+20
+30
+40
+50
+-20
+-10
+0
+10
+20
+30
+40
+Solution Error (log10)
+Taylor
+Padé
+0
+10
+20
+30
+40
+50
+0
+5
+10
+15
+20
+Condtion Number (log10)
+Taylor
+Padé
+0
+10
+20
+30
+40
+50
+0
+0.05
+0.1
+0.15
+0.2
+0.25
+0.3
+Success Probability
+Taylor
+Padé
+Figure 12. Comparison of the relative solution error, condition number, and success probability Psucc as m increases,
+between the method based on Padé approximation and the method based on Taylor approximation.
+depends on the quantities max0≤t≤T ∥x(t)∥2 and C(A), while the LCHS method depends on ∥b∥2T. When
+β = 2/3, both methods exhibit the same dependence on precision, but the overall complexity is determined
+by the specific choice of A, b, and x0.
+B.
+Numerical comparison
+In this section, we present numerical experiments to compare our method with the method based on
+Taylor approximation.
+1.
+Numerical result of scenario I
+Experiment 1: Let T = 30, k = 9, p = 1,
+A =
+
+
+−2
+1
+0
+0
+0
+1
+−2
+1
+0
+0
+0
+1
+−2
+1
+0
+0
+0
+1
+−2
+1
+0
+0
+0
+1
+−2
+
+,
+and
+x0 = b =
+
+
+1
+1
+1
+1
+1
+
+.
+We construct Cm,k,1(Ah) and Lm,k,1(Ah), and solve the corresponding linear systems for different values of
+m. The results, including relative solution error, condition number, and the success probability Psucc, are
+shown in Fig. 12.
+The left figure demonstrates that the method based on Padé approximation can achieve high relative
+accuracy with a relatively small m, while the method based on Taylor approximation requires a much larger
+m to achieve similar accuracy. The middle figure reveals that the condition number of our newly proposed
+method is at a low level for all values of m, while the condition number of the Taylor approximation-based
+method can become extremely large if m is not large enough. This observation aligns with our theoretical
+analysis. The right figure compares the success probability Psucc. The method based on Padé approximation
+achieves high success probabilities for smaller values of m, while the success probabilities of both methods
+converge to nearly the same value as m increases sufficiently.
+In summary, the first experiment demonstrates that the method based on Taylor approximation becomes
+unstable when m is not large enough, while the method based on Padé approximation provides satisfactory
+results even for relatively small m.
+Experiment 2: The advantage of our newly proposed method becomes more pronounced as the time interval
+length T increases. To demonstrate this, we fix the accuracy ϵ = 10−10 and the approximation order k = 9,
+and investigate how the optimal choice m∗(the smallest m required to achieve the desired accuracy) changes
+with T for both methods. With the parameters k = 9, p = 1, and m = m∗, we construct and solve the
+corresponding linear systems. We also compute the condition number and success probability Psucc for these
+linear systems. The results are shown in Fig. 13.

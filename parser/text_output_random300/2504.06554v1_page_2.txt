@@ -1,0 +1,117 @@
+2
+R
+Q
+S
+DE
+θ
+H
+H
+1
+( )
+X θ
+H
+5
+( )
+X θ
+2
+(
+)
+Z θ
+3
+(
+)
+Z θ
+6
+(
+)
+Z θ
+7
+(
+)
+Z θ
+4
+θ
+N
+g
+Q:
+S:
+0
+H
+(b)
+(a)
+FIG. 1. (a) Schematic of the experimental device. The device consists of a transmon qubit (Q) dispersively coupled to a high-quality factor
+storage cavity (S) and a low-quality factor readout cavity (R). The transmon qubit serves as the reusable qubit, with real-time feedback enabling
+reset after each iteration. The storage cavity functions as the mediating qubit, facilitating quantum entanglement due to its longer lifetime.
+The readout cavity plays crucial roles in both measurement and error mitigation. (b) Circuit diagram of the VQE. We utilize one reusable
+qubit and one mediating qubit to execute N layers of a parameterized circuit. The circuit is specifically tailored for our experimental setup,
+serving as the variational ansatz and efficiently representing an N + 1-qubit quantum state as an MPS with small bond dimensions. Since
+measurement can only be performed on the transmon qubit, the information in the storage cavity is decoded (DE) to the transmon qubit before
+measurement. The Hadamard gate in the dashed-lined box is used selectively to sample the expectation values of different Pauli operators in
+the target Hamiltonian.
+II.
+PRINCIPLE AND EXPERIMENTAL SETUP
+As shown in Fig. 1(a), we experimentally implement a
+qubit-efficient VQE algorithm using a superconducting quan-
+tum processor. The quantum system consists of a transmon
+qubit (Q) dispersively coupled to a high-quality factor storage
+cavity (S) [31–34]. The quantum algorithm is realized by a
+sequence of single-qubit gates and two-qubit gates, driven by
+the interactions between the transmon qubit and the storage
+cavity. The Hamiltonian, including the driving term, can be
+written as:
+H = −χqsa†aσz/2+Ωq(t)σ+ +Ω∗
+q(t)σ−+Ωs(t)a† +Ω∗
+s(t)a,
+(1)
+where σz, σ+, σ−denote the Pauli operators of the transmon
+qubit, a (a†) is the annihilation (creation) operator acting on
+the photonic state in the storage cavity, χqs represents the coef-
+ficient of the dispersive coupling, and Ω∗
+q(t) and Ω∗
+s(t) are the
+complex drive amplitudes applied to the transmon qubit and
+the storage cavity, respectively. The transmon qubit serves
+as the reusable qubit, with its computational basis defined by
+the ground state |g⟩and excited state |e⟩. The storage cav-
+ity provides the photonic qubit, with its basis states defined
+by the vacuum state |0⟩s and single photon number state |1⟩s.
+Given the longer lifetime of the photonic qubit compared to
+the transmon qubit, the photonic qubit effectively mediates
+quantum entanglement throughout the quantum circuit. The
+transmon qubit is readout via a stripline cavity, as denoted by
+R in Fig. 1(a), which plays a crucial role in the error mitigation
+techniques applied in this experiment.
+Our experimental system manifests the simplest two-qubit
+quantum system, while allowing the implementation of gen-
+eral quantum algorithms through a qubit-efficient approach.
+This approach leverages the reuse of the transmon qubit
+throughout the process of VQE algorithm [21], drawing in-
+spiration from tensor network representations, particularly
+MPS [35, 36]. By efficiently compressing quantum state in-
+formation while preserving accuracy, this technique enables
+the simulation of larger systems with fewer qubits. In contrast
+to traditional VQE methods, which typically require a direct
+one-to-one mapping between qubits and quantum states, the
+qubit-efficient approach reinitializes and reuses qubits at dif-
+ferent stages of the computation, with mediating qubits pre-
+serving the necessary entanglement between subsystems. The
+MPS framework limits the bond dimension, which controls
+the amount of entanglement captured, effectively balancing
+the available qubit resources with the complexity of the quan-
+tum state.
+As shown in Fig. 1(b), the qubit-efficient VQE algorithm
+is represented by N layers of a parameterized circuit imple-
+mented on S and Q to generate an N +1-qubit state, with the
+detailed configuration of each layer shown in the inset. The
+gates in this circuit are specifically tailored to our hardware.
+Single-qubit gates on the transmon qubit are executed via res-
+onant drives, with each gate parameterized by the amplitude
+and phase of the complex driving field Ω∗
+q(t). Operations on
+the photonic qubit, defined within the Fock state basis, are im-
+plemented with the assistance of the transmon qubit, requiring
+more intricate control on the composite system. Specifically,
+the Hadamard gate on the photonic qubit is implemented us-
+ing a numerically optimized pulse, while the phase gate is per-
+formed by adjusting the phase of Ω∗
+s(t) through frame changes

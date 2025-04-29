@@ -1,0 +1,65 @@
+a Neumann boundary condition such that f(1)(˜x = ˜xk) = uN,bc, we have ( ˜D(k) · fNcheb)(˜x =
+˜xk) = uN,bc, where ˜D(k) is the k-th row of the matrix ˜D.
+The boundary conditions we have implemented are: I) Dirichlet condition, with U(r =
+0, t) = R(r = 0, t) = 0 and Γ(r = 0, t) = 1.
+II) Neumann condition with the pressure
+gradient vanishing at the outer boundary of the grid, ρ′(rmax, t) = 0, to approach the FLRW
+background solution and help prevent reflections from density waves. Additionally, K′(r =
+0, t) = 0 ensures the regularity of the evolution at the center. To implement these boundary
+conditions at the points k = 0, Ncheb, we directly modify the values of the fields at the
+boundary points. For the case (II) we simply do:
+uk,new = uk +
+1
+˜Dk,k
+(uN,bc −˜D(k) · fNcheb),
+(4.11)
+where uk,new represents the new value of the field at fNcheb(˜x = ˜xk) such that fulfills the
+Neumann condition.
+On the other hand, for initial data close to its critical threshold or for sharp profiles,
+large gradients will develop during the numerical evolution, for which more refinement in
+the specific domain where the gradients are developed would be convinient.
+To manage
+these cases, we have implemented a fixed mesh refinement procedure following [74]. This
+procedure consists of using overlapping Chebyshev grids to increase the number of points
+in regions where large gradients develop. For this purpose, we split the domain into several
+grids that we denote with index l: ˜xk,l, ˜Dl, with N(l)
+cheb points in each l grid. This requires
+imposing boundary conditions across the domain to propagate the information during the
+numerical evolution. To achieve this, in this work, we enforce continuity of the field values
+and their derivatives: f(˜xN(l)cheb,l) = f(˜x0,l+1) and f(1)(˜xN(l)cheb,l) = f(1)(˜x0,l+1) across the
+domains.
+uN(l)
+cheb,l = u0,l+1 =
+1
+˜D(N(l)
+cheb,N(l)
+cheb),l −˜D(0,0),l+1
+ ˜D(0),l+1 · fN(l+1)
+cheb −˜D(N(l)
+cheb),l · fN(l)
+cheb
++ ˜D(N(l)
+cheb,N(l)
+cheb),l fN(l)
+cheb(˜xN(l)
+cheb,l) −˜D(0,0),l+1fN(l+1)
+cheb (˜x0,l+1)
+
+.
+(4.12)
+This worked well for our purposes.
+Finally, the numerical accuracy of our simulation is
+checked using the Hamiltonian constraint equation. Eq.(2.25).
+5
+Numerical results
+In the following subsections, we show the numerical results of our study using the curvature
+profiles ζ from Eq.(3.15). While we usually consider a perfect fluid with a constant equation
+of state w in the analytical equations, our numerical study focuses on the case of a radiation-
+dominated Universe with w = 1/3.
+5.1
+Time-evolution of the gravitational collapse
+We study the dynamics of different hydrodynamic variables, in particular R, U, ρ, M, and
+Γ, as well as the time evolution of the compaction function C, the compactness 2M/R, and
+the expansion of the congruences Θ±. We consider three different scenarios: PBH formation
+from type-II fluctuations without the formation of a bifurcated trapping horizon (leading to
+– 12 –

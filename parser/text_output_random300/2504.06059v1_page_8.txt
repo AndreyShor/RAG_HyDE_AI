@@ -1,0 +1,85 @@
+8
+Scheme
+Circuit
+Number of MZIs
+MZI-depth
+Reck et al. [8]
+No photon
+No photon
+No photon
+No photon
+No photon
+nm −n(n+1)
+2
+(optimal)
+m + n −2
+(non optimal)
+Clements et al. [9]
+No photon
+No photon
+No photon
+No photon
+No photon
+≈m2−n2+2mn
+4
+(non optimal)
+m
+(optimal)
+Our work
+No photon
+No photon
+No photon
+No photon
+No photon
+nm −n(n+1)
+2
+(optimal)
+m
+(optimal)
+TABLE I: Extension of Reck’s and Clements’ schemes for n-photon m-mode Boson sampling and comparison
+with our own proposal. For Reck and Clements’ circuits, the black boxes are the MZIs that are removed by eye
+from the original scheme as they never encounter a photon.
+• Adding another label: If we want to sort a third
+label, we need to add a superdiagonal layer of
+conditional swaps like in Fig 6c.
+Starting from
+a circuit sorting k labels, adding a superdiagonal
+layer lets us sort one label among the first n −k
+ones. Necessarily, one of them belongs to the first
+k + 1 labels. We move it to the first wire with our
+newly added layer of conditional swaps. Then the
+remaining circuit is a sorting network for k labels,
+it will sort the remaining unsorted k first labels.
+During this process, the originally k + 1-th sorted
+label cannot be moved outside the first k+1 wires.
+Overall we have sorted the first k + 1 labels.
+To sort n labels, we need
+m −1 + m −2 + . . . + m −n = mn −n(n + 1)
+2
+MZIs, which is optimal. The depth of the circuit is m,
+which is one unit more than the lower bound. Provided
+that n << m, which is the case in boson sampling ex-
+periments, this new scheme provides a substantial re-
+duction in the number of linear optical components,
+from O(m2) to O(mn), at the expense of potentially
+inducing unbalanced loss across the modes.
+B.
+Coupling multiple interferometers
+Whilst integrated photonics allows for large numbers
+of components on-chip, this is not unbounded. There
+is an upper limit on the size of interferometer manufac-
+turable, which depends on the modal confinement, the
+length of the phase-shifters, and the size of the chip.
+To reach the size of interferometers required for tasks
+like boson sampling, one can consider the networking of
+many smaller integrated interferometers. This affords
+us layers of arbitrary but fixed connectivity, as the fi-
+bres connections can in-principle couple any mode to
+any other. This comes at the cost of needing to couple
+between chips, which induces loss. The fibre links will
+also be susceptible to phase instability.
+Combining several smaller chips to the design of a
+larger chips is not new and relative works can be found
+in [25, 27]. Some limitations of these works are that
+they either rely on special linear optical components
+that may not be easy to implement in practice, or

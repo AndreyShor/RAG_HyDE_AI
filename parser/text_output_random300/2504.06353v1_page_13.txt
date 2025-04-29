@@ -1,0 +1,55 @@
+In this equation, Cr is the leading colour factor (so, for example Cr = CF for the the
+Drell-Yan soft, hard, and Iqq matching coefficient, whilst Cr = TF for the Iqg matching
+coefficient), and θn+1 is varied by an amount of O(1). For beam functions one varies it
+between ±1, for (colour-singlet production) hard functions one does the same but at the
+level of the Wilson coefficient C, and for the dijet soft functions one varies it between ±2
+(roughly speaking, this is because the single soft function ‘talks to’ two beam functions).
+The total uncertainty is determined by adding the uncertainties from individual TNPs in
+quadrature.
+Here we do not want to shift our central NnLL′ predictions, but rather to generate
+an alternative uncertainty band for these predictions. Thus, we only include and vary the
+TNP terms for the boundary terms and anomalous dimensions, omitting the step where
+the terms determined from the RGE are included. In essence, we are then simply taking
+the fundamental pieces of the resummation formula at NnLL′, and adding a term which
+is a coefficient multiplied by αn+1
+s
+to each (or αn+2
+s
+in the case of Γ), which is supposed
+to represent the collection of terms appearing at the next order in perturbation theory.
+Each coefficient is then varied by an appropriate amount centred on zero to determine the
+uncertainty band. We did check at the NLL′ level that the ‘shift’ in the central prediction
+from including the terms determined from the RGE was in any case smaller than the final
+TNP uncertainty band presented below, and expect the same to hold true at NNLL′. Note
+that since we do not want to shift the central predictions, we also maintain the NnLO
+PDFs and central NnLL′ profile scales in our NnLL′ predictions.
+4.3.2
+NLL′ Implementation
+The TNPs we need here are boundary constants related to the 2-loop factorization functions
+{I(c)
+qq , I(c)
+qg , S(c), H(c)} and the anomalous dimensions {Γq
+2, γq
+S1, γq
+B1} (note that although we
+write H(c), the TNP is implemented at the level of the Wilson coefficient). The c superscript
+indicates that these are boundary conditions. We do not have a nuisance parameter for the
+hard anomalous dimension γH as it is set by RG consistency. Several of these quantities are
+actually functions of the jet radius R, but here we simply fix R = 0.5 and do not concern
+ourselves with the R-dependence. The beam function matching coefficients I(c)
+qq and I(c)
+qg
+should also be functions of z, but we also ignore this for the corresponding TNPs, taking
+them to be constant in z.
+At NLL′ we actually know how big the TNP variations ‘should be’ since we have the
+actual results for the NNLL′ resummation ingredients. We can adjust the range of variation
+of each TNP from the ‘default’ of section 4.3.1 such that its maximum magnitude corre-
+sponds to the actual value of the NNLL′ ingredient. For the I(c)
+qq/qg matching coefficients,
+we adjust the maximum size of the TNP so that the convolution of this with the PDFs is
+of the same size as the convolution of the actual NNLO matching coefficient with the PDF,
+for typical x values probed in the Drell-Yan process. At this point we are of course forcing
+the TNP variations to be reasonable and cover the difference between the NLL′ and NNLL′
+predictions ‘by hand’ using information from the NNLL′ order. The idea here is to take
+some lessons from this exercise to use at NNLL′ (where we don’t know the ingredients at
+– 12 –

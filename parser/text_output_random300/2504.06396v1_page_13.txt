@@ -1,0 +1,51 @@
+A Scalable Automatic Model Generation Tool for Cyber-Physical Network Topologies and Data Flows for Large-Scale
+Synthetic Power Grid Models
+XXX:13
+This metric is applied for all the routers in our network because distance measured in the
+number of hops is usually applied to count the number of routers in the path between
+source and destination nodes. In terms of network performance such as delays, it is best
+practice to reduce the number of hops. For network reliability and cybersecurity resilience,
+it is desirable to have alternate paths to reach the destination.
+(2) Network Diameter (𝑑) is the greatest distance in number of hops between two nodes. This
+metric finds the shortest paths between all pairs of distinct nodes and selects the maximum
+value, as in Eq. 2.
+𝑑= 𝑚𝑎𝑥[𝑑(𝑥,𝑦)]|𝑥= 1, 2, ...,𝑛,𝑦= 1, 2, ...,𝑛,𝑥≠𝑦
+(2)
+This metric is also applied only to routers. Network diameter indicates the longest path in
+the WAN, which is also a performance metric.
+(3) Node Degree metric quantifies the number of connections each node has, with a lower
+node degree being preferable because it indicates a node is connected to a smaller amount
+of links. In communication networks for power systems, a lower node degree means a less
+critical node. On the other hand, a high node degree means potential bottlenecks or Points
+of Failure. For example, if a critical router is the target of a cyber attack, such as a Denial
+of Service (DoS), the communication between several substations and control center will
+be impacted. A DoS can impede traffic flow between nodes, by either slowing down the
+transmission of packets or stopping the traffic. In order to evaluate and compare the network
+efficiency and resilience of different WAN topologies, the average, minimum, and maximum
+node degrees of routers are documented across the three use cases and topologies.
+(4) Number of Links (𝑚) counts the number of links for all nodes in the generated network
+models. It is an essential metric because increasing the number of network links reduces path
+length, latency, and congestion. Yet, this expansion increases infrastructure costs and creates
+higher node degrees. Achieving an optimal link count requires balancing performance gains
+with cost and node connections.
+(5) Number of Nodes (𝑛) counts all the nodes in all the Local Area Networks in NetworkX, or
+internal nodes, such as the total number of switches, routers, hosts, and so on. This metric
+gives us an idea of the size of our network, i.e., in terms of the number of network assets it
+has.
+(6) Network Density (𝐷) refers to the number of links𝑚relative to the total number of possible
+links between all 𝑛nodes. A denser network indicates there are more connections among
+nodes. This metric takes into consideration all the nodes and links the model generates.
+Assuming the network is an undirected graph, Eq. 3 is used to calculate the network density.
+𝐷=
+2𝑚
+𝑛(𝑛−1)
+(3)
+(7) Generation Time shows the time it takes the algorithm to generate the CPPS model. This
+time is measured in three pieces of the code: the JSON generation program, the NetworkX
+visualization program, and the file that checks the metrics. This is collected while the code
+runs for different test cases to verify how the generation time increases with the size of
+the power system test case. It is plotted in Fig. 7 to help estimate the time it would take for
+other test cases of different sizes to run.
+(8) ACL Count quantifies the number of access control lists (ACLs) configured within the
+network. This count is taken for each high-level node, providing insight into the complexity
+of data flows and the configuration of firewalls, as depicted in Fig. 4.

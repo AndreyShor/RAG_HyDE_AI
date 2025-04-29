@@ -1,0 +1,118 @@
+21
+contribution, as indicated by Eq. (S-87) and Eq. (S-88). With this mind, we first deform the z2-contour from Cγ to
+Cγ,d2. In this deformation, one can confirm that the z2-contour does not pass the pole of 1/(c1−c2−2γ). Subsequently,
+we deform the z1-contour to Cγ,d1 with d1 > d2. Note that the z1-contour passes the pole of 1/(c1 −c2 −2γ) at z1 = α2,
+which satisfies Re [α2] > d1/4γ√τ. This pole contribution can be evaluated as
+∫Cγ,δ2
+dz2
+2πiz2
+et ˜ε′2 × θ(Re [α2] −d1/4γ√τ) × f(z2),
+(S-97)
+where ˜ε′
+2 is defined as ˜ε′
+2 ∶= ˜ε2∣γ→2γ, θ(x) is the step function, and f(z2) is some function that is time-independent
+and irrelevant for the following discussion. In the above equation, the exponential term et˜ε′
+2 is of order one only
+when z2 = O (1/√τ) along the contour. However, in this case, it follows that θ(Re[α2] −d1/4γ√τ) = 0 from d1 > d2
+and Eq. (S-89). Thus, the pole contribution is exponentially small, and we can neglect it. Eventually, by setting
+z1 = Z1/4γ√τ and z2 = Z2/4γ√τ, we perform the saddle point method around z1 = 0 and z2 = 0,
+˜q2(t) = 4√τ ∫
+i∞+d1
+−i∞+d1
+dZ1
+2πi ∫
+i∞+d2
+−i∞+d2
+dZ2
+2πi
+eZ2
+1+Z2
+2
+(Z1 + Z2)2(Z2 −Z1)
+(S-98)
+= 2√τ ∫
+i∞+d2
+−i∞+d2
+dZ2
+2πi [∫
+i∞+d1
+−i∞+d1
+dZ1
+2πi −∫
+i∞+d′
+1
+−i∞+d′
+1
+dZ1
+2πi ]
+eZ2
+1+Z2
+2
+(Z1 + Z2)2(Z2 −Z1)
+(S-99)
+= −
+√τ
+2 ∫
+i∞+d2
+−i∞+d2
+dZ2
+2πi
+e2Z2
+2
+Z2
+2
+(S-100)
+= −1
+√
+2
+√τ
+π .
+(S-101)
+Here, d′
+1 is some constant which satisfies 0 < d′
+1 < d2, and we use the residue theorem in the third line.
+VII.
+NUMERICAL SCHEME FOR THE VARIANCE AND CUMULANT GENERATING FUNCTION
+We provide a numerical scheme to obtain the variance and cumulant generating function. In numerical simulations,
+we consider the finite lattice ΛL = {x ∈Z∣−L < x ≤L}.
+The variance is given by Eq. (S-75) with
+q1(t) =
+∑
+−L<y≤0<x≤L
+⟨x∣eLt[∣y⟩⟨y∣]∣x⟩,
+(S-102)
+q2(t) =
+∑
+−L<y1<y2≤0<x1<x2≤L
+⟨x1,x2∣eLt[∣y1,y2⟩⟨y1,y2∣]∣x1,x2⟩.
+(S-103)
+Using the duality (see A in Sec. II for the duality), one has
+q1(t) =
+∑
+0<x≤L
+⟨DW∣nx∣DW⟩
+(S-104)
+q2(t) =
+∑
+0<x1<x2≤L
+⟨DW∣nx1nx2∣DW⟩,
+(S-105)
+where we define the domain wall state as ∣DW⟩∶= a†
+−L+1⋯a†
+0∣0⟩. From Eq. (S-2), the cumulant generating function
+χ(λ,t) for ρa = 1 and ρb = 0 can be written as
+χ(λ,t) = log Tr[eλNReLt[∣DW⟩⟨DW∣]].
+(S-106)
+We numerically calculate Eqs. (S-104), (S-105), and (S-106).
+We utilize the unitary unravelling of the GKSL equation [59, 88] to performe efficient numerical simulations. The
+unravelled dynamics are described by the following stochastic Schr¨odinger equation,
+id∣ψt⟩= Hdt∣ψt⟩+ ∑
+j
+(
+√
+4γnjdW j
+t −2iγnidt)∣ψt⟩,
+(S-107)
+where dW j
+t represents the standard increment of the Wiener process with expectation values, E[dW j
+t ] = 0 and

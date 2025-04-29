@@ -1,0 +1,74 @@
+to extract the secret key.
+An important condition must be satisfied for the security of rDI-QKD. This condition is captured in the
+following theorem [251].
+Theorem 7. Long-range quantum correlation as defined in 15 is necessary for the security of rDI-QKD.
+Proof. The proof can be done by contradiction. Let us consider that Alice and Bob only generate the
+SRQ correlation of the form (78), then Eve can perform the parent POVM N = {Nλ} on the public
+channel between R and B. Since Eve can keep a copy of the classical outcome λ, the correlation between
+A and B was factorized when conditioned on Eve’s information, i.e. p(a, b|x, y, λ) = p(a|x, λ)p(b|y, λ),
+implying that no secure key can be extracted between A and B when only an SRQ correlation exists in
+the protocol.
+General behavior of Eavesdropper in rDI-QKD. Based on the location of the relay R, the device T, and
+the source, two situations can be considered: first, consider them as being outside Alice’s and Bob’s labs
+and in full control of the eavesdropper, and the second option is to assume that the relay R and the device
+T are all situated in Alice’s lab by imposing the condition that they cannot arbitrarily communicate their
+private input to Alice’s device. Clearly, security in the first case also implies security in the second case
+since in the first case, the eavesdropper has more power. The protocol in [251] considered the first case in
+which Eve has the measurement device T that performs a measurement Tz = {Tc|z} that acts jointly on
+the subsystems B and E when s = 0, as this is the most general thing she can do to simulate the honest
+correlation between A and T. Considering this behavior for Eve, the secret key rate can be calculated
+using the method explained in section 4.2.1.
+3.8.3. Mermin-Peres Magic Square Game-based DI-QKD
+In 2023, Zhen et al. [71] proposed a DI-QKD protocol based on the Mermin-Peres Magic Square
+Game (MPG) [196, 195]. The Mermin-Peres Magic Square Game is as follows [196, 195]: There are two
+players, Alice and Bob, who are forbidden to communicate with each other. In each round of the game, a
+referee generates two random “trits” x, y ∈{0, 1, 2} and sends index x to Alice and index y to Bob. Alice
+and Bob then reply to the referee with [ax
+0, ax
+1, ax
+2] and [by
+0, by
+1, by
+2] under the conditions that ax
+2 = ax
+0 + ax
+1
+and by
+2 = by
+0 + by
+1 ⊕1. The winning condition is when ax
+i=y = by
+j=x. After the game, the referee decides
+whether Alice and Bob win or not according to the average winning probability
+ω = 1
+9
+X
+x,y
+p(ax
+y = by
+x|x, y)
+(105)
+where p(ax
+y = by
+x|x, y) is the winning probability of Alice and Bob with respect to (x, y). The MPG
+DI-QKD in [71] is based on the fact that for all classical strategies ω ≤8
+9 and since all classical strategies
+are equal to local hidden variables, then ω ≤8
+9 is actually a Bell inequality that some quantum strategies
+can violate [252, 253].
+In the protocol, Alice and Bob initially generate data by playing the MPG. They announce their inputs
+and record the overlapped bits. To estimate parameters, Alice communicates to Bob which part of the
+bits serves as raw keys, with the remaining part of the bits announced to play the MPG. If the average
+winning probability estimated from the announced data is less than an expected value, they abort the
+protocol; otherwise, they perform data reconciliation on raw keys to obtain the final keys. They provided
+the security analysis of the protocol against collective attacks in the asymptotic scenario and showed
+that if ω > 0.9575, it generates higher secret keys than the CHSH-based protocol for ρp of Fig. 2b with
+p > 0.978 (η = 1) or η ≥0.982 (p = 1). Later in [254], this protocol is generalized to the finite-round
+regime under general attacks.
+Parallel DI-QKD. The protocols discussed so far generate p = {p(ab|xy)}abxy sequentially where each
+run a bipartite state ρ is shared. Theoretically, a parallel execution is equivalent if the devices receive
+all inputs x, y simultaneously, and return the outputs a, b at once. The security proof is still possible
+[255], but higher-dimensional entanglement is required. This is technologically more challenging than
+sequential methods. The key finding shows that assuming perfect private randomness and trusted classical
+computation, Bell nonlocality alone can ensure the generation of shared keys of any length.
+37

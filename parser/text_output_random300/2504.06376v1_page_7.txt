@@ -1,0 +1,31 @@
+XX:6
+Quantum Combine and Conquer
+Figure 2 An example instance of maxima set where n = 32 and h = 8 solved using our quantum
+combine-and-conquer algorithm. Consecutive blocks of points are colored in alternating purple and
+green, and the set T of tallest points in each group is circled. The maxima set of T is indicated
+using solid circles, whereas tallest points that are dominated are circled in dotted lines. To illustrate
+an example of the conquer step, we focus attention on the group S2 which is highlighted in orange.
+In this group, the tallest y coordinate is indicated by T2, and R2 is the y coordinate of the tallest
+point to the right of this group. Thus, the only points that need to be processed are the two points
+not bound by any blue box. The points that are found in this local check are circled in green.
+Figure 3 A demonstration of Algorithm 2 where we iteratively search for the maxima point
+within block j given Tj and Rj. The left shows the state of the first iteration, and all points shown
+are the contents of block j except for the one labeled Rj. Points are green if they are not dominated
+by Tj or Rj and thus return 1 to the Boolean function f. Among these points, we search for the
+lexicographic maximum point q and set this to be the new right boundary for the next iteration.
+The first q to be discovered in the above instance is marked in blue. This is repeated until there are
+no remaining green points.
+Finally, the case where h is unknown can be handled using an approach where we start
+with a small estimate of h, then repeat the procedure using h = 2h if we discover more than
+h points. Thus, the running time forms a geometric sum that is ˜O(
+√
+nh). See Algorithm 3.
+▶Theorem 2. There is a quantum algorithm for finding the maxima set of a presorted set
+of n points in the plane in ˜O(
+√
+nh) time, where h is the size of the output.
+Proof. The Grover searches for the tallest points in each block takes ˜O(h
+p
+n/h) = ˜O(
+√
+nh)

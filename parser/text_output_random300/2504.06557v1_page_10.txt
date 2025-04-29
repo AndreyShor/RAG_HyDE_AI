@@ -1,0 +1,26 @@
+－10－ 
+ 
+ Edge generation: In (a) market, (b) power, and (c) gift economies, two nodes 
+are randomly selected from the node list at each step, and two directed edges are 
+generated between those nodes. In (d) the concession economy, to match the edge 
+generation speed with other economic modes, two pairs of nodes were randomly 
+selected at each step, and one directed edge was generated for each pair. 
+ Edge deletion: If we continued to generate edges, all economic modes would 
+approach a complete graph, and the differences in their properties would disappear. 
+Therefore, a mean degree (or total degree = number of nodes × mean degree) was set, 
+and an edge was deleted if the mean degree of the graph exceeds the set degree. The 
+failure of exchange was simulated in (a) the market and (b) power economies, and the 
+failure of reciprocity was simulated in (c) the gift economy, and the edges were deleted 
+randomly. In (d), the concession economy oblivion is simulated over time, and the 
+oldest edges were deleted first. 
+Based on the above, Fig 2 shows the calculation flow of the network models 
+corresponding to the four economic modes. For the flow of (a) the market economy on 
+the far left, calculations can be made by following the branch shown by the dotted lines 
+for (b) power, (c) gift, and (d) concession economies. In the initial setting, the number 
+of nodes 𝑛, the mean degree 𝑘𝜇, the maximum number of steps 𝑡𝑚𝑎𝑥, and the graph 
+𝑔(1) at 𝑡= 1 are set. 𝑔(1) is a graph with no edges (the adjacency matrix is zero). 
+At step 𝑡 in the calculation flow, for each of the four economic modes, the selection 
+from the node list, the rewriting of the node list (in the case of (a) market and (b) power 
+economies), and the generation of edges, the deletion of edges (if the mean degree 
+exceeds 𝑘𝜇), and the drawing of the graph 𝑔(𝑡) are sequentially performed. These 
+steps are repeated until the number of steps reaches 𝑡𝑚𝑎𝑥. 

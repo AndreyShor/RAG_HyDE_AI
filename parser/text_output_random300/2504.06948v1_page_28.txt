@@ -1,0 +1,197 @@
+28
+where we make the variable substitution l = j −i in the third equality, and r = s + l in the last equality.
+Thus, we have
+k
+X
+j=1
+k+1
+X
+i=1
+f
+W −1
+ij
+ =
+2
+Dkk(−λ)
+k−1
+X
+r=0
+
+
+k
+X
+j=1
+min{j−1,r}
+X
+l=max{0,r+j−k}
+βr+1 · · · βk−j+l+1
+βr−l+1 · · · βk−j+1
+
+β1 · · · βrλr
+(A5)
+Next, we give an upper bound for the inner summation, which can be written as
+k−r
+X
+j=1
+min{j−1,r}
+X
+l=0
+βr+1 · · · βk−j+l+1
+βr−l+1 · · · βk−j+1
++
+k
+X
+j=k−r+1
+min{j−1,r}
+X
+l=r+j−k
+βr+1 · · · βk−j+l+1
+βr−l+1 · · · βk−j+1
+.
+(A6)
+For the first term in (A6), we have r ≤k −j, and thus
+βr+1 · · · βk−j+l+1
+βr−l+1 · · · βk−j+1
+= βr+1 · · · βk−j+1 · · · βk−j+l+1
+βr−l+1 · · · βr+1 · · · βk−j+1
+≤βk−j+2 · · · βk−j+l+1
+βr−l+1 · · · βr
+≤
+βk−j+2
+βr
+l
+≤
+
+r
+k −j + 2
+l
+,
+∀l ≥1,
+where we use the assumption that βj/βi ≤i/j ≤1 for all 1 ≤i ≤j ≤k in the last two inequalities. Note
+that the inequality also holds for l = 0. Therefore, we obtain
+min{j−1,r}
+X
+l=0
+βr+1 · · · βk−j+l+1
+βr−l+1 · · · βk−j+1
+≤
+min{j−1,r}
+X
+l=0
+
+r
+k −j + 2
+l
+≤
+∞
+X
+l=0
+
+r
+k −j + 2
+l
+=
+k −j + 2
+k −j −r + 2.
+For the second term in (A6), we have r > k −j.
+Using the assumption that βj/βi ≤i/j ≤1 for all
+1 ≤i ≤j ≤k again, we get
+βr+1 · · · βk−j+l+1
+βr−l+1 · · · βk−j+1
+≤
+ βr+1
+βk−j+1
+k−j+l−r+1
+≤
+k −j + 1
+r + 1
+k−j+l−r+1
+.
+Thus, we have
+min{j−1,r}
+X
+l=r+j−k
+βr+1 · · · βk−j+l+1
+βr−l+1 · · · βk−j+1
+≤
+min{j−1,r}
+X
+l=r+j−k
+k −j + 1
+r + 1
+k−j+l−r+1
+=
+min{j−1,r}+k−j−r
+X
+l=0
+k −j + 1
+r + 1
+l+1
+≤
+∞
+X
+l=0
+k −j + 1
+r + 1
+l+1
+= k −j + 1
+r + j −k .
+Then, the summation in (A6) is upper bounded by
+k−r
+X
+j=1
+k −j + 2
+k −j −r + 2 +
+k
+X
+j=k−r+1
+k −j + 1
+r + j −k ≤(k + 1)
+k−r
+X
+j=1
+1
+k −j −r + 2 + r
+k
+X
+j=k−r+1
+1
+r + j −k
+=(k + 1)
+1
+2 + · · · +
+1
+k −r + 1
+
++ r
+
+1 + · · · + 1
+r
+
+≤(k + 1) log(k −r + 1) + r(1 + log r)
+≤(k + 1) (log (r(k −r + 1)) + 1)
+≤(k + 1)
+ 
+log
+k + 1
+2
+2
++ 1
+!
+≤2(k + 1) log(k + 1).
+(A7)
+Substituting this bound into (A5), we obtain
+k
+X
+j=1
+k+1
+X
+i=1
+f
+W −1
+ij
+ ≤4(k + 1) log(k + 1)
+Pk−1
+r=0 drλr
+Dkk(−λ)
+≤4(k + 1) log(k + 1).

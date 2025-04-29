@@ -1,0 +1,107 @@
+Proof of Proposition 6.1
+60
+7.2
+Proof of Lemma 7.2
+In this subsection, we prove Lemma 7.2 by reducing the joint Laplace transform of µγ,t to a more
+manageable quantity through a series of reduction steps, following the strategy developed in [MRV16]
+with some non-trivial modifications. To streamline this process, we introduce some shorthand
+notations. We fix for the reminder of this section R ≥1. For a function χ : [0, R]d →R, we introduce
+the sequence of measures (µχ
+γ,t)t≥0 on Rd defined as follows,
+µχ
+γ,t(dx)
+def= e−γχ(x)µγ,t(dx) ,
+where we recall that µγ,t is the regularised and normalised supercritical GMC measure as defined in
+(1.9). For t > 0 and a function χ : Rd →R, we introduce the fields Yt and Yχ
+t on Rd, as well as the
+constant dt by setting
+Yt(x)
+def= Xt(x) −
+√
+2dt ,
+Yχ
+t (x)
+def= Yt(x) −χ(x) ,
+dt
+def= −
+3
+2
+√
+2d
+log t ,
+(7.13)
+so that the measure µχ
+γ,t introduced above can be written as
+µχ
+γ,t(dx) = eγ(Yχ
+t (x)−dt)+dtdx .
+For λ > 0, recalling the definition (6.1) of the random function Fγ,t and the notation introduced in
+(3.2), only for this section, we let
+GR
+def= exp
+
+−
+Z
+[0,R]d Fγ,t(x)µχ
+γ,t(dx)
+
+,
+MR
+def= MR(Yχ
+t ) ,
+Dλ
+R = Dλ
+R(Yχ
+t ) ,
+(7.14)
+and for a subset D ⊆[0, R]d, we use GD to denote the same quantity as above, but with [0, R]d
+replaced by D. With this notation in hand, we note that we can write
+E[1 −GR] = E
+Z
+[0,R]d
+1{m∈Dλ
+R }
+|Dλ
+R|
+(1 −GR)dm
+
+,
+(7.15)
+where here we used the fact that |Dλ
+R| is almost surely positive.
+7.2.1
+High value constraint
+We start with the following lemma, which essentially states that only the points where the field attains
+sufficiently high values contribute to the integral on the right-hand side of (7.15).
+Lemma 7.5. For any λ > 0 and ε > 0, there exists a constant A ≥0 sufficiently large such that for
+any s ≥0 sufficiently large satisfying (es + 1)(R + 1)−1 ∈N, there exists T ≥0 sufficiently large
+such that for any t ≥T and χ : [0, R]d →R satisfying the conditions in (6.6), it holds that
+E
+Z
+[0,R]d
+1{m∈Dλ
+R }1{Yχ
+t (m)−dt≤−A}
+|Dλ
+R|
+(1 −GR)dm
+
+≤ερχ([0, R]d) .
+(7.16)
+Proof. We start by observing that on the event {m ∈Dλ
+R, Yχ
+t (m) −dt ≤−A}, it holds that
+Yχ
+t (x) −dt ≤−A + λ ,
+∀x ∈[0, R]d .
+Therefore, using this fact, we obtain that
+E
+Z
+[0,R]d
+1{m∈Dλ
+R }1{Yχ
+t (m)−dt≤−A}
+|Dλ
+R|
+(1 −GR)dm
+

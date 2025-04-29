@@ -1,0 +1,49 @@
+of theory, within the Q-Chem 5.4 package[61], with the aid of the maximum overlap
+method (MOM)[21, 22] (see following section) to maintain the core–hole during the
+DFT calculation. The ground state structural and charge transfer calculations of Fig.
+3 were carried out with the Vienna Ab initio Simulation Package (VASP) [62], under
+periodic boundary conditions and within the plane-wave projector augmented-wave
+(PAW) method [63]. The Ag(111)-(2
+√
+3 × 2
+√
+3)R30°-C60 structures were optimized
+using the local spin density approximation (LSDA) with a force tolerance of 0.01
+eV˚A−1 and an electronic convergence criterion of 10−6 eV. The energy cut-off was
+set to 500 eV, and a Monkhorst-Pack k-point grid of 3 × 3 × 1 was used to sample
+the Brillouin zone. Electronic charges associated with individual atoms, utilized in
+the calculations of charge transfer, were derived using Bader analysis[64]. The atomic
+visualisations were generated using the Open Visualisation Tool (OVITO)[65]. As
+described in the S.I., a variety of other DFT methods and adsorption geometries were
+employed to determine the Ar-Ag(111) separation but each provided poorer agreement
+with the NIXSW measurements than the LSDA approach.
+The maximum overlap method (MOM).
+The MOM provides an efficient approach for calculating excited states by modifying
+the orbital selection step in the SCF procedure and targeting solutions with non-
+Aufbau occupations from a ground state reference set of molecular orbitals[21, 66].
+By employing a simple orbital overlap-based criterion, the MOM prevents the varia-
+tional collapse to the lowest energy solution. The MOM begins with an initial set of
+molecular orbitals (MOs) generated from the ground-state configuration of the sys-
+tem. Excitations are then introduced by modifying the occupation patterns, typically
+replacing one or more occupied orbitals with virtual orbitals. At each SCF iteration,
+the MOM algorithm applies an overlap metric to select the occupied orbitals that are
+most similar to the target orbitals from the previous iteration, guiding the SCF solver
+towards the intended excited state. In this work, we first calculated the electronic
+structure of Ar@C60 at the PBE/6-31++G** level of theory to identify the relevant
+Ar-based 2p and 4s molecular orbitals.We then constructed an initial guess for the
+target excited state of this system by promoting an electron from one of the occupied
+Ar-based 2p molecular orbitals to the unoccupied Ar-based 4s molecular orbital. Sub-
+sequently, we used the MOM to relax the occupied molecular orbitals while staying
+as close as possible to the initial pattern.
+Supplementary information.
+An extensive Supplementary Information file cover-
+ing the following aspects of the work is available: circumventing beam damage; valence
+band photoemission for bulk Ar@C60; comparison of Ar 2p core-level photoemis-
+sion and Ar 2p →4s X-ray absorption spectra; fitting Auger-Meitner decay spectra;
+comparison of photoemission lineshapes for bulk and monolayer Ar@C60 samples;
+Doniach-Sunjic asymmetry; raw on-resonance decay spectra for multilayer and mono-
+layer Ar@C60 coverage; population analysis: Ar and C contributions to the excited
+state; orbital symmetry decomposition; comparison with time-dependent DFT; rela-
+tivistic considerations; Z+1 approximation and ground state K@C60; and additional
+DFT calculations for determination of the Ar-Ag(111) separation.
+14

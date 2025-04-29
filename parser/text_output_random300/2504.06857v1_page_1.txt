@@ -1,0 +1,101 @@
+Machine Learning-Assisted Unfolding for Neutrino Cross-section Measurements
+R. G. Huang,1 A. Cudd,2 M. Kawaue,3 T. Kikawa,3 B. Nachman,1 V. Mikuni,1 and C. Wilkinson1
+1Lawrence Berkeley National Laboratory, Berkeley, CA 94720, USA
+2University of Colorado Boulder, Boulder, CO 80309, USA
+3Kyoto University, Department of Physics, Kyoto, Japan
+(Dated: April 10, 2025)
+The choice of unfolding method for a cross-section measurement is tightly coupled to the model
+dependence of the efficiency correction and the overall impact of cross-section modeling uncertain-
+ties in the analysis. A key issue is the dimensionality used in unfolding, as the kinematics of all
+outgoing particles in an event typically affect the reconstruction performance in a neutrino detector.
+OmniFold is an unfolding method that iteratively reweights a simulated dataset, using machine
+learning to utilize arbitrarily high-dimensional information, that has previously been applied to
+proton-proton and proton-electron datasets. This paper demonstrates OmniFold’s application to a
+neutrino cross-section measurement for the first time using a public T2K near detector simulated
+dataset, comparing its performance with traditional approaches using a mock data study.
+I.
+INTRODUCTION
+Unfolding is a general term for removing the im-
+pact of a measuring device from a measurement [1, 2].
+In the context of cross-section measurements in high-
+energy physics, this can be thought of as the deconvo-
+lution of detector smearing and efficiency effects, neces-
+sary to present data in a way which does not require
+detailed information about the particle detector to inter-
+pret. Neutrino cross-section measurements typically use
+binned unfolding methods and a small number of dimen-
+sions to present results. Most current results are single-
+dimensional, but multi-dimensional results of up to three
+dimensions have been extracted [3]. A simple, but repre-
+sentative formula used to extract a binned cross section
+dσ/dxi as a function of the true kinematic variable x
+is [4]:
+dσ
+dxi
+=
+P
+j eU −1
+ij (Nj −Bj)
+ΦνT∆xiϵi
+(1)
+where Nj (Bj) is the number of selected (predicted back-
+ground) events in reconstructed bin j, Φν is the total
+integrated flux, T is the number of target nuclei, ∆xi is
+the width of the true bin i (or area/volume for multi-
+dimensional extractions), ϵi is the selection efficiency,
+and eU −1
+ij
+is the unfolding matrix. The unfolding matrix
+is a regularized inverse of the matrix Uij that encapsu-
+lates the effects of detector smearing. The efficiency and
+the detector smearing are closely related, and in some
+formulations the efficiency correction is absorbed into
+the smearing matrix. A number of unfolding methods
+have been explored in neutrino physics [5–7], between
+which the most important differences are how the result
+is regularized and how the potential for bias that regu-
+larization introduces is handled [4, 8]. One of the most
+commonly used unfolding methods in neutrino physics,
+as in high-energy physics more generally, is D’Agostini
+unfolding [9, 10], also known as Iterative Bayesian Un-
+folding (IBU)1. This method has been independently de-
+scribed multiple times [11–13] and is known in other
+fields by other names, such as Lucy-Richardson decon-
+volution [14, 15].
+Experimental data from neutrino experiments have
+a number of unique challenges:
+they typically suffer
+from low statistics; detector volumes are large with non-
+uniform detector efficiency and smearing; they use rela-
+tively low-fidelity, high-threshold detectors; and, system-
+atic uncertainties are generally large. These issues couple
+to the unfolding problem in complex ways, which risks de-
+grading the quality of extracted results. Because the de-
+tector smearing and efficiency depend on a large number
+of variables, expressing a smearing matrix with a small
+number of dimensions implicitly integrates over all of the
+other relevant variables. This integration relies not only
+on the detector model in the simulation, but is convolved
+with a prediction for how signal events will be distributed
+in those variables, leading to model-dependence and the
+potential for bias [4, 8]. Additionally, by expressing the
+result in a small number of dimensions, the result loses
+much of the richness of the original data, particularly as
+the binning must be determined in advance using sim-
+ulation studies. Experiments often extract results in a
+number of variables, but generally without correlations
+between the different variables. This has presented diffi-
+culties in the use of these measurements, although meth-
+ods have been proposed to overcome this problem [7].
+Additionally, the challenges of unfolding have led to dis-
+cussions of whether to unfold data at all, both in neutrino
+physics [16] and more generally [17].
+New unfolding methodologies are possible using ma-
+chine learning, many of which naturally generalize to
+high-dimensional spaces, and a number of approaches
+have been explored [18–20]. In this work, we apply the
+OmniFold unfolding method [21, 22] to a publicly avail-
+able simulated dataset from the T2K experiment and
+1 Although this is somewhat of a misnomer, as it is a fully frequen-
+tist method [11].
+arXiv:2504.06857v1  [hep-ex]  9 Apr 2025

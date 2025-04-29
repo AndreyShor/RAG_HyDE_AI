@@ -1,0 +1,48 @@
+100
+The Path to aN3LO Parton Distributions
+include MHOUs in the PDF uncertainty. With PDFs determined from the same global dataset
+and using the same methodology at four consecutive perturbative orders it is now possible to
+assess carefully perturbative stability and provide a reliable uncertainty estimation.
+Outline.
+In Section 4.1 we construct an approximation to the N3LO splitting functions based
+on all known exact results and limits. We compare it with the MSHT approximation [303] as
+well as with the more recent approximation of Refs. [292, 298, 299, 300]. In Section 4.2 we
+discuss available and approximate N3LO corrections to hard cross-sections: specifically, DIS
+coefficient functions, including a generalization to this order of the FONLL [107, 104] method
+for the inclusion of heavy quark mass effects, and the DY cross-section. In Section 4.3 we
+present the main results of this chapter, namely the aN3LO NNPDF4.0 PDF set. We discuss
+in detail perturbative convergence before and after the inclusion of MHOUs, and results are
+compared to those of the MSHT group [303]. Finally, a first assessment of the impact of aN3LO
+PDFs on DY and Higgs production is presented in Section 4.4.
+4.1. Approximate DGLAP N3LO evolution
+Having introduced DGLAP evolution in Section 1.3.2, in this section we proceed to the construc-
+tion and implementation of aN3LO evolution. We first describe our strategy to approximate
+the N3LO evolution equations, the way this is used to construct aN3LO anomalous dimensions
+and splitting functions, and to estimate the uncertainty in the approximation and its impact on
+theory predictions. We then use this strategy to construct an approximation in the non-singlet
+sector, where accurate results have been available for a while [292], and benchmark it against
+these results. We then present our construction of aN3LO singlet splitting functions, examine
+our results, their uncertainties and their perturbative behavior. We next describe our implemen-
+tation of aN3LO evolution and study the impact of aN3LO on the perturbative evolution of PDFs.
+Finally, we compare our aN3LO singlet splitting functions to those of the MSHT group and to
+the recent results of [298, 299, 300].
+4.1.1. Construction of the approximation
+The approximation of N3LO DGLAP splitting functions (Eq. (1.60)) is more conveniently
+performed in Mellin space, where the kernels are called anomalous dimensions (Eq. (1.74)).
+At N3LO there are seven independent contributions: three in the non-singlet sector, γns,± and
+γns,s, and four in the singlet sector, γqq,ps, γqg, γgq, and γgg. In turn, each of these anomalous
+dimensions can be expanded according to
+γij(N, as(µ2)) = asγ(0)
+ij (N) + a2
+sγ(1)
+ij (N) + a3
+sγ(2)
+ij (N) + a4
+sγ(3)
+ij (N) + O
+
+a5
+s
+
+.
+(4.1)

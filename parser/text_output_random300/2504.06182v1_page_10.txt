@@ -1,0 +1,111 @@
+10
+eralized exact 1D algorithm (O(n)-time). Putting it all
+together, the bird algorithm can solve the reconfiguration
+problem on a √n × √n-grid in time O(n√n), matching
+the running time of red-rec asymptotically.
+F.
+The aro algorithm
+The
+assignment-rerouting-ordering
+(aro)
+algo-
+rithm [21] exploits exact and heuristic subroutines to
+solve atom reconfiguration problems on general graphs
+with a mixed objective function involving both the total
+number of displacement operations and the total number
+of displaced atoms. Compared to the red-rec and bird
+algorithms which are designed for grids, aro does not
+impose any restrictions on the input graph and the sets
+S and T.
+It typically achieves better performance in
+terms of minimizing the total number of displacement
+operations and displaced atoms but requires a longer
+runtime. In this paper, we propose an improved version
+of the aro algorithm that decreases the running time of
+two of its subroutines.
+Original aro algorithm.
+The original aro algo-
+rithm proposed in Ref. [21] consists of three main sub-
+routines:
+1. The assignment subroutine computes a minimum-
+weight matching M that saturates T by running a
+matching algorithm on the bipartite graph H con-
+structed from the source vertices, target vertices,
+and the distances between them. As a result, every
+target vertex is paired with a source vertex while
+minimizing the sum of distances between the pairs.
+Using M, an initial path system P is constructed
+by computing an arbitrary shortest path in G be-
+tween every matched pair of vertices in M using
+breadth-first search. Both M and P are distance-
+minimizing, i.e., wH(M) = wG(P).
+2. The
+distance-preserving
+rerouting
+subroutine
+heuristically attempts to decrease the number of
+displaced tokens by modifying the paths in P. The
+output of the subroutine is a new path system
+P′ such that w(P′) ≤w(P) and P′ potentially
+displaces fewer atoms than P. In the following, we
+assume that the subroutine replaces P with P′, so
+that P from here on refers to the updated path
+system.
+3. The ordering subroutine computes a partial order-
+ing of the paths to ensure that executing the associ-
+ated moves in this order guarantees that each token
+moves at most once while avoiding collisions. The
+reason why it is possible for the ordering subroutine
+to compute a partial ordering is not immediately
+obvious. In fact, not all path systems admit such
+an ordering. However, one of our key results pre-
+sented in Ref. [21] states that any (valid) path sys-
+tem P can be transformed in polynomial time into
+a (valid) path system P′ such that w(P′) ≤w(P)
+and the graph induced on the edges of P′, which
+we denote by GP′, is a forest, i.e., a graph with no
+cycles (we call such a path system a cycle-free path
+system).
+The original aro algorithm has two major bottlenecks:
+1. In the assignment subroutine, the basic implemen-
+tation of the Hungarian method [24] runs in time
+O(n3) to compute a distance-minimizing matching
+between sources and targets. This implementation
+comes with the additional requirement that, before
+applying the Hungarian method, we must construct
+an edge-weighted bipartite graph H = (L ∪R, E′)
+(as described in Sec. II C), with L = S, R = T,
+and where the weight of an edge in H is set to the
+distance between the corresponding vertices in G.
+2. In the ordering subroutine, the cycle-breaking pro-
+cedure constitutes a main bottleneck since, as
+shown in Ref. [21], the bulk of the work in the origi-
+nal aro algorithm is the design of an efficient proce-
+dure to transform any path system into a cycle-free
+path system without increasing the weight.
+Our proposed improved aro algorithm aims to address
+these two bottlenecks.
+Improved aro algorithm.
+The improved aro algo-
+rithm (see Alg. 3) begins by computing shortest paths be-
+tween vertices in S and T, similar to the original aro algo-
+rithm. It then computes a distance-minimizing matching
+between sources and targets to generate a path system
+P.
+However, unlike the original aro algorithm, which
+uses the Hungarian method, the improved aro algorithm
+reduces the problem of finding a distance-minimizing
+matching to the minimum-cost maximum-flow (MCMF)
+problem when the graphs are unweighted.
+MCMF is
+more efficient than the Hungarian method for graphs
+where the number of edges is linear in the number of
+vertices, such as the planar graphs we are interested in.
+If the graph induced by the edges of P, GP = (V, E),
+is a forest, it immediately generates a partially-ordered
+list of displacement operations with the required proper-
+ties and terminate (see Ref. [21] for a proof of existence
+of such an ordering).
+Otherwise, it constructs a valid
+distance-minimizing path system that is cycle-free using
+an improved cycle-breaking procedure.

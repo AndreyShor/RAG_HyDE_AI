@@ -1,0 +1,114 @@
+5.1.2
+Kinetic term: Tel + Tion
+We begin from Eq. (33),(34) and express the kinetic term in a convenient per-particle form,
+T = Tel + Tion =
+ηval
+X
+i=1
+T i +
+ηion
+X
+I=1
+T I
+(83)
+where the operator T i (or T I) acting on the i-th electron register (or I-th pseudoion register) is defined to
+be
+T i =
+X
+p∈G
+|kp|2
+2
+|p⟩⟨p|,
+T I =
+X
+P∈G
+|kP|2
+2
+|P⟩⟨P|.
+(84)
+The BEkin,el, BEkin,ion routines in Fig. 3 utilize explicit quantum rejection sampling [75] to block-encode the
+diagonal matrix in Eq. (84) with rescaling factors for electrons and ions respectively
+λ ˜Tel := max
+p∈G
+|kp|2
+2
+,
+λ ˜Tion := max
+P∈G
+|kP|2
+2
+.
+(85)
+The particle index register preparation routine is
+PREP0|0⟩=
+1
+p
+λTel+Tion
+ q
+λ ˜Tel
+ηval
+X
+i=1
+|i⟩+
+q
+λ ˜Tion
+ηion
+X
+I=1
+r
+1
+MI
+|I⟩
+!
+,
+(86)
+where λTel+Tion = λTel + λTion with λTel = λ ˜Telηval, λTion = λ ˜Tion
+Pηion
+I=1
+1
+MI . The simplest (albeit perhaps
+not the cheapest) approach implementing PREP0 is to also use rejection sampling, but with a classically-
+precomputed set of coefficients proportional to M
+−1
+2
+I
+loaded as part of the QROM discussed as part of the
+interaction term (see App. E.5.2). Given the loaded data, rejection sampling with a uniform reference state
+is good enough; the state in Eq. (86) is close to uniform given that most of the particles are electrons and
+that their corresponding amplitudes are all equal and significantly larger than the nuclear terms. While the
+precise success probability, and therefore the number of rounds of amplitude amplification, depends on the
+particle masses, we make the conservative assumption that a single round of amplitude amplification will
+suffice. We must also include the cost of adding a control to this preparation from the term selection register
+in Eq. (82). The construction is similar to [29]:
+1. Controlled on the momentum register |p1⟩(or |P1⟩for the pseudoion) that has been appropriately
+selected by the SWUP, compute |kp1|2 (or |kP1|2 for the ions) to a second register.
+2. Create a uniform state
+1
+√
+M
+PM
+m=1 |m⟩and perform an inequality test that checks m maxp∈G |kp|2 ≤
+M|kp1|2 (m maxP∈G |kP|2 ≤M|kP1|2 for the pseudoion) and for all m passing the test outputs a flag
+|0⟩indicating the desired subspace.
+3. Uncompute the uniform state. As the kinetic term is implemented before the interaction term, do not
+uncompute |kp1|2; we reuse it as part of that block encoding.
+The total rescaling factor for the kinetic term becomes,
+λTel+Tion = ηval max
+p∈G
+|kp|2
+2
++
+ηion
+X
+I=1
+1
+MI
+max
+P∈G
+|kP|2
+2
+.
+(87)
+The cost for preparing |kp|2 is included in Table 6 (and App. E.5.4). All costs specific to the kinetic term
+are included in Table 3.
+34

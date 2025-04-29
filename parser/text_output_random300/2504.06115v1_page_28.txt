@@ -1,0 +1,61 @@
+for all i = 1, . . . , r and ⃗y = Cki+1. The set of all such tuples ⃗x(i), i = 1, . . . , r in Pk1 ×. . .×Pkr
+is called the kernel K(A) and [65, Proposition 1.1] states that K(A) is non-empty if and only
+if the hyperdeterminant Det A of A vanishes. The hypermatrix A[n, m] of format (k1 + 1) ×
+. . . × (kn−1 + 1) × (kn+1 + 1) × . . . × (kr + 1) with entries
+A[n, m]i1,...,ir−1 = Ai1,...,in,m,in+1,...,ir−1 ,
+(5.11)
+is called the m-th slice in the n-th direction of A.
+While a general method to calculate hyperdeterminants in terms of a so-called Cayley-
+Koszul complex has been developed in [65], again building on earlier work by Cayley, it is
+sometimes possible to calculate hyperdeterminants using the so-called Schl¨aﬂi trick. In the
+case of a hypermatrix A of format 2 × n × n, one introduces an auxiliary variable X and
+deﬁnes the n × n matrix
+eA = xA[1, 1] + A[1, 2] .
+(5.12)
+The hyperdeterminant of A is then the discriminant of the polynomial det eA in x.
+Hyperdeterminants of format 2 × 2 × 2
+As an example, consider the Segre embedding
+σ : P1 × P1 × P1 ֒→P7 corresponding to a hypermatrix A of format 2 × 2 × 2. We denote the
+homogeneous coordinates on the factors of X = P1 ×P1 ×P1 respectively by [p1 : p2], [x1 : x2]
+and [y1 : y2]. The entries As,i,j of A provide homogeneous coordinates on the dual projective
+space and the intersection of the corresponding hyperplane with X takes the form
+I = { fA(⃗p, ⃗x, ⃗y) = 0 } ⊂X ,
+fA(⃗p, ⃗x, ⃗y) =
+X
+s,i,j
+As,i,jpsxiyj .
+(5.13)
+The Schl¨aﬂi trick for the case n = 2 gives the hyperdeterminant
+Det A =A2
+1,2,2A2
+2,1,1 −2A1,2,1A1,2,2A2,1,2A2,1,1 −2A1,1,2A1,2,2A2,2,1A2,1,1
++ 4A1,1,2A1,2,1A2,2,2A2,1,1 −2A1,1,1A1,2,2A2,2,2A2,1,1 + A2
+1,2,1A2
+2,1,2
++ A2
+1,1,2A2
+2,2,1 + A2
+1,1,1A2
+2,2,2 −2A1,1,2A1,2,1A2,1,2A2,2,1
++ 4A1,1,1A1,2,2A2,1,2A2,2,1 −2A1,1,1A1,2,1A2,1,2A2,2,2
+−2A1,1,1A1,1,2A2,2,1A2,2,2 .
+(5.14)
+We observe, that this is the determinant of the symmetric 2 × 2 matrix A, with entries
+Ai,j =
+X
+σ1,σ2∈S2
+sgn(σ1)sgn(σ2)Ai,σ1(1),σ2(1)Aj,σ1(2),σ2(2) ,
+(5.15)
+where S2 is the group of permutations of {1,2}, such that
+Det A =
+X
+σ1∈S2
+2
+Y
+i=1
+sgn(σ1)
+X
+σ2,σ3∈S2
+sgn(σ2)sgn(σ3)Ai,σ2(1),σ3(1)Aσ1(i),σ2(2),σ3(2) .
+(5.16)
+– 26 –

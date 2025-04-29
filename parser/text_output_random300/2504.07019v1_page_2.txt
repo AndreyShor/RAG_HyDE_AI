@@ -1,0 +1,89 @@
+2
+FIG. 1. Solution of the non-Hermitian Kondo model using NH-NRG. (a) Phase diagram in the (JR, JI) plane, showing the
+numerically-exact boundary (black line) separating SC (blue) and LM (orange) phases. Red dot-dashed line shows the Bethe
+ansatz result [25] which is valid for |J| ≲0.25 and agrees perfectly with NH-NRG in that regime (see inset). (b,c) RG flow of
+the NH-NRG complex eigenvalues EN with iteration number N, showing the real and imaginary parts in the top and bottom
+panels, for representative systems in the SC and LM phases. (d,e) Reversion of eigenvalue RG flow in the Argand plane for an
+LM system (J = 0.1 −0.5i). N increases in the direction of the arrows towards the Hermitian Kondo fixed point value (green
+point). Shown for different representative states in (d) and (e). NH-NRG calculations performed for Λ = 3 and Nk = 400.
+In this Letter, we introduce the non-Hermitian numer-
+ical renormalization group (NH-NRG) method, which is
+fully non-perturbative, and can be applied to a wide
+range of Kondo or Anderson-type impurity models and
+their variants. With no restriction on coupling strength,
+we uncover the full phase diagram of the NH Kondo
+model (Fig. 1a), showing that at weak-to-moderate cou-
+pling, the scenario of Ref. [25] exactly pertains. However,
+for stronger dissipation (larger values of JI) we find re-
+entrant Kondo behavior; whereas the LM phase is found
+to terminate entirely beyond a critical value of JR. Unlike
+the Bethe ansatz and other methods such as conformal
+field theory that rely on linear dispersion [42, 44], NH-
+NRG works with equal ease for any bath DOS. We apply
+NH-NRG to a NH pseudogap Kondo model, showing that
+the lower-critical dimension of the Hermitian model [45]
+is shifted by finite JI, and an entirely new stable fixed
+point appears that is fundamentally non-Hermitian.
+Non-Hermitian NRG.– Here we generalize the stan-
+dard NRG methodology to treat NH quantum impurity
+problems. Although the basic algorithm proceeds along
+similar lines to Wilson’s original formulation for Hermi-
+tian systems [40, 41], incorporating NH physics involves
+additional challenges. Below we describe the key points,
+but full technical details and validation checks are given
+in the End Matter and Supplemental Material [46].
+In the standard NRG procedure for the Kondo model,
+the first step is to logarithmically discretize the free
+conduction electron bath and map it to a 1d Wilson
+chain (WC). This is done by dividing up the density
+of states ρ(ω) into intervals according to the discretiza-
+tion points ±DΛ−n, where Λ > 1 is the NRG dis-
+cretization parameter and n = 0, 1, 2, 3, .... The continu-
+ous electronic density in each interval is replaced by a
+single pole at the average position with the same to-
+tal weight, yielding ρdisc(ω).
+We then map ˆHbath →
+ˆHWC = P∞
+n=0
+P
+σ(ϵnf †
+nσfnσ +tnf †
+nσfn+1σ +tnf †
+n+1σfnσ)
+with the real parameters {ϵn} and {tn} chosen such
+that the local density of states at orbital f0σ to which
+the impurity couples is precisely ρdisc(ω).
+Due to the
+logarithmic discretization [40], the WC parameters de-
+cay asymptotically as ∼DΛ−n/2.
+We now define a
+sequence of Hamiltonians ˆHN comprising the impurity
+and the first N chain sites, satisfying the recursion rela-
+tion ˆHN = ˆHN−1 + ˆTN where ˆTN = P
+σ(ϵNf †
+NσfNσ +
+tN−1f †
+N−1σfNσ + tN−1f †
+NσfN−1σ). The sequence is ini-
+tialized by ˆH0 = J ˆSi · ˆS0 [47] and the full (discretized)
+model is obtained as N →∞. Starting from the impu-
+rity, we build up the chain by successively adding WC
+sites using this recursion. At each step N, the Hamilto-
+nian ˆHN is diagonalized, and only the Nk lowest energy
+states are retained to construct the Hamiltonian ˆHN+1
+at the next step. In such a way, we focus on progres-
+sively lower energy scales with each iteration. The higher
+energy states can be discarded at each step due to the
+energy-scale separation down the chain. The RG charac-
+ter of the problem can be seen directly in the evolution
+with N of the many-particle NRG energy levels of ˆHN.
+This is done by specifying the NRG energies EN with
+respect to the ground state energy of that iteration, and
+then rescaling by a factor ΛN/2, so that the Nk retained
+states at each step always span the same energy range.
+Importantly, the NRG energy levels flow between fixed
+points (e.g. from LM to SC). The calculation scales lin-
+early in N, and the stable fixed point is reached after
+a finite number of steps. NRG is thus able to capture
+an exponentially-wide range of energy scales, from the
+bandwidth D down to the Kondo temperature TK.

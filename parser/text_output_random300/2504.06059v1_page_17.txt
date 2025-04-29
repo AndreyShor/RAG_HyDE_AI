@@ -1,0 +1,219 @@
+17
+Tk+1[i] =
+1
+2k+1
+k + 1
+i
+
+m + Sk[i] −Sk[i −1]
+2
++
+k+1
+X
+l=2
+1
+2l ·
+
+
+min(l,i)
+X
+j=0
+l −1
+j
+
+−
+l −1
+j −1
+
+Sk+1−l[i −j]
+
+
+=
+1
+2k+1
+k + 1
+i
+
+m +
+k+1
+X
+l=1
+1
+2l ·
+
+
+min(l,i)
+X
+j=0
+l −1
+j
+
+−
+l −1
+j −1
+
+Sk+1−l[i −j]
+
+
+and the formula is true for k + 1.
+We can now prove a formula concerning the sum Pn−1
+i=0 Tk[i].
+Lemma 2. Let k be any integer,
+n−1
+X
+i=0
+Tk[i] =
+n−1
+X
+i=0
+1
+2k
+k
+i
+
+· m +
+n−1
+X
+i=0
+k
+X
+l=i+1
+1
+2l ·
+l −1
+i
+
+· Sk−l[n −i −1].
+(A3)
+Proof. We only need to show
+n−1
+X
+i=0
+k
+X
+l=1
+1
+2l ·
+
+
+min(l,i)
+X
+j=0
+l −1
+j
+
+−
+l −1
+j −1
+
+Sk−l[i −j]
+
+=
+n−1
+X
+i=0
+k
+X
+l=i+1
+1
+2l ·
+l −1
+i
+
+· Sk−l[n −i −1].
+Starting from the left-hand side, the proof essentially relies on a change of variable such that the most internal
+sum does not depend on the values of S anymore. This gives
+n−1
+X
+i=0
+k
+X
+l=1
+1
+2l · Sk−l[i]
+min(l,n−i−1)
+X
+j=0
+l −1
+j
+
+−
+l −1
+j −1
+
+and the internal telescopic sum simplifies to
+n−1
+X
+i=0
+k
+X
+l=1
+1
+2l · Sk−l[i] ·
+
+l −1
+min(l, n −i −1)
+
+.
+A final change of variable gives
+n−1
+X
+i=0
+k
+X
+l=1
+1
+2l · Sk−l[n −i −1] ·
+ l −1
+min(l, i)
+
+and we get rid of the terms l < i + 1 because the binomial coefficient is always zero.
+Using Lemma 2 we derive an upper bound on Pn−1
+i=0 Tk[i]. Using the fact that Sk[i] ≤1 we get
+n−1
+X
+i=0
+Tk[i] ≤
+n−1
+X
+i=0
+1
+2k
+k
+i
+
+· m +
+n−1
+X
+i=0
+k
+X
+l=i+1
+1
+2l ·
+l −1
+i
+
+.
+Using the fact that
+k
+X
+l=i+1
+1
+2l ·
+l −1
+i
+
+≤1
+2
+∞
+X
+l=0
+1
+2l ·
+l
+i
+
+we recognize the generating function of
+yi
+(1−y)i+1 with y = 1/2 such that we can finally conclude that

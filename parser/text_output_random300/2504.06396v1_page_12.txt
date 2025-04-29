@@ -1,0 +1,63 @@
+XXX:12
+Israel et al.
+Area Network, utility, substation and regulatory objects need some type of address. For this reason,
+they are configured as Internet Protocol (IP) networks, with an IP version 4 address and subnetwork
+mask, as defined by the attribute networklan. This IP configuration allows us to segment a utility
+into Operational Technology (OT) network, routing network, and corporate network. These three
+types of networks are collectively known as the SuperNet network. SAM-GT’s ability to create
+cyber and physical objects allows us to model nodes and links with specialized functions. Each
+function is relevant to the type of network the node belongs to; for example, an OT network would
+have specialized nodes such as relays and relay controllers. Once all the objects are created, the
+algorithm outputs all the elements with their attributes into a JSON file.
+4.2.3
+Visualizing Network and Validating Metrics. After SAM-GT generates the JSON files, it
+creates graphs to enhance the visualization of the cyber-physical network. The graphs are plotted
+using NetworkX software tool, with JSON files as inputs. It generates two graphs: an external view
+that represents the wide area network, and an internal view that represents the local area networks
+inside substations, control center, and balancing authority. The results of these WAN and LAN
+views are presented in Sections 5.3 and 5.4.
+Algorithm 1: Create Substation Objects and Assign Utilities
+1 Function create_substations (𝑆𝑢𝑏𝑠𝑡𝑎𝑡𝑖𝑜𝑛𝑠_𝑙𝑖𝑠𝑡)
+2
+for substation 𝑠𝑢𝑏in 𝑆𝑢𝑏𝑠𝑡𝑎𝑡𝑖𝑜𝑛𝑠_𝑙𝑖𝑠𝑡do
+3
+Create an instance of Substation class 𝑠𝑢𝑏(classify as trans. or gen. station).
+4
+Populate instance 𝑠𝑢𝑏with node objects of cyber classes
+5
+[shown in Fig. 6]
+6
+nodes ←[‘cyberphysicalNodes’, ‘cyberNodes’].
+7
+links ←[Based on the topologies in Fig. 2]
+8
+populate_cyber_information()
+9
+Output 𝑠𝑢𝑏data into JSON files.
+10
+end
+11
+Group substation instances into 𝑁clusters (or utilities) using 𝑘-means clustering based
+on the latitude and longitude of substations. Assign centroids to utilities. Consider 𝑁
+from the 𝑠𝑒𝑡𝑡𝑖𝑛𝑔𝑠.𝑖𝑛𝑖file.
+12 end
+5
+Results and Validation
+5.1
+Metrics for Analysis
+Metrics are chosen to compare and determine which network topologies are efficient and reli-
+able [17]. The metrics used in this paper are relevant to researchers who study the performance,
+resilience, and cybersecurity of these communication network topologies, as detailed next:
+(1) Average Path Length (𝐿𝑎𝑣𝑒) is the average distance, measured in the number of hops,
+between two nodes in the network. All links are considered to have a cost of one; in other
+words, no weights are assigned to the links. All distances 𝑑(𝑥,𝑦) are calculated as the
+shortest distance between nodes 𝑥and 𝑦. The sum of all these shortest distances is divided
+by the total number of nodes 𝑛, as in Eq. 1.
+𝐿𝑎𝑣𝑒=
+Í𝑛−1
+𝑥=1
+h Í𝑛
+𝑦=𝑥+1 𝑑(𝑥,𝑦)
+i
+𝑛
+(1)

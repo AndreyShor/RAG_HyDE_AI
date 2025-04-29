@@ -1,0 +1,194 @@
+So we get
+f h −c
+2π E(2)
+L1
+=
+Z
+f h> c
+2π E(2) dθdtdh′f h −c
+2π
+Z
+f h> c
+2π E(2) dθdtdh′E(2)
+−
+Z
+f h≤c
+2π E(2) dθdtdh′f h + c
+2π
+Z
+f h≤c
+2π E(2) dθdtdh′E(2)
+=
+Z
+dθdtdh′f h
+|
+{z
+}
+=1 by (B.3.6) of Lemma B.5
+−2
+Z
+f h≤c
+2π E(2) dθdtdh′f h
+|
+{z
+}
+≥0
+−
+c
+
+
+2
+2π
+Z
+f h> c
+2π E(2) dθdtdh′E(2) −
+1
+2π
+Z
+dθdtdh′E(2)
+|
+{z
+}
+=2 by (B.2.6) of Lemma B.3
+
+
+≤
+1 −2c
+"
+1
+2π
+Z
+f h> c
+2π E(2) dθdtdh′E(2) −1
+#
+=
+1 −2c
+ 1
+2π
+Z
+f h>0
+dθdtdh′E(2) −1
+
++ 2c
+Z
+0<f h≤c
+2π E(2) dθdtdh′E(2).
+Now we first prove that the second of these three summands (when divided by 2c) is uniformly negative for h ∈[−1, 1],
+and then we prove that the third one is infinitesimal more than linearly when c →0.
+Step 1: Let us prove that
+inf
+h∈[−1,1]
+1
+2π
+Z
+f h>0
+dθdtdh′E(2) −1 > 0.
+(2.1.18)
+The easier way to prove this is by finding a domain
+Ω⊆{(θ, t, h′) : t ≥0, h ∈[−1, 1], θ ∈[2 arcsin(h′) −3π, 2 arcsin(h′) −π]} ,
+where each f h is positive (we are abusing a little bit the notation, treating f h as if it were defined where θ ∈
+[2 arcsin(h) −3π, 2 arcsin(h) −π]). To find such a domain, we notice that
+∂h′′(θ, h′)
+∂θ
+> 0∀θ ∈(2 arcsin(h′) −3π, 2 arcsin(h′) −π), h′ ∈[−1, 1],
+(2.1.19)
+that is, the Jacobian determinant does not affect the region where f h is positive. We also observe that for t ∈(0, 1)
+we have
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0 < t ≤1
+2 ⇒
+R t
+0 dt′ Q(t −t′, h|h′′)
+|
+{z
+}
+= 6
+π2 since t−t′≤1
+2
+Q(t′, h′′|h′)
+|
+{z
+}
+= 6
+π2 since t′≤1
+2
+= 36
+π4 t > 0,
+1
+2 ≤t < 1 ⇒
+R t
+0 dt′Q(t −t′, h|h′′)Q(t′, h′′|h′)
+≥
+R 1
+2
+t−1
+2 dt′ Q(t −t′, h|h′′)
+|
+{z
+}
+= 6
+π2 since t−t′≤1
+2
+Q(t′, h′′|h′)
+|
+{z
+}
+= 6
+π2 since t′≤1
+2
+= 36
+π4 (1 −t) > 0.
+(2.1.20)
+Combining the properties (2.1.19) and (2.1.20), we get
+f h(θ, t, h′) > 0 for any t ∈(0, 1), θ ∈(2 arcsin(h′) −3π, 2 arcsin(h′) −π), h, h′ ∈[−1, 1].
+Therefore if we define
+Ω:= {(θ, t, h′) : t ∈(0, 1), h′ ∈[−1, 1], θ ∈(2 arcsin(h′) −3π, 2 arcsin(h′) −π)} ,
+we obtain
+1
+2π
+Z
+f h>0
+dθdtdh′E(2)
+≥
+1
+2π
+Z
+Ω
+dθdtdh′E(2)
+=
+1
+2π
+Z 1
+0
+dt
+Z 1
+−1
+dh′
+Z 2 arcsin(h′)−π
+2 arcsin(h′)−3π
+dθE(2)(t, h′)
+=
+Z 1
+0
+dt
+Z 1
+−1
+dh′E(2)(t, h′).
+(2.1.21)
+18

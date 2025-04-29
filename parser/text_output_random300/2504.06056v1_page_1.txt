@@ -1,0 +1,97 @@
+PAGIONO
+An ionospheric activity index
+Dr.Paul.Kinsler@physics.org
+LdT: An ionospheric activity index based on distributions in GNSS-derived TEC rates of change
+Paul Kinsler∗and Biagio Forte†
+Department of Electronic and Electrical Engineering University of Bath, Bath BA2 7AY, United Kingdom
+(Dated: Wednesday 9th April, 2025)
+The Earth’s ionosphere forms part of the solar-terrestrial environment, in synergy with other parts such as
+magnetosphere and plasmasphere. The state of the ionosphere is determined by the spatial distribution and
+temporal evolution of its electron density, and it varies in response to “space weather” – the variation of the
+solar-terrestrial environment due to the combination of solar activity and geomagnetic conditions. Notably, the
+radio waves used in satellite telecommunications suffer variation in their propagation time delays due to the
+dispersive nature of the ionospheric plasma.
+Many aspects of our societies now depend upon satellite telecommunications, such as those requiring Global
+Navigation Satellite Systems (GNSS), which offer precise satellite-based positioning, navigation, and timing.
+GNSS is based on radio waves that propagate through the ionosphere and in addition to delays, experience
+more complicated propagation effects caused by inhomogeneities in the spatial and temporal electron density
+distribution in the Earth’s ionosphere.
+Scales and indices that summarise the state of the solar-terrestrial environment due to solar activity and geo-
+magnetic conditions already exist. However, the response of the ionosphere to active geomagnetic conditions, its
+geoeffectiveness, and its likely impact on systems, services, and operations reliant upon ionosphere-traversing
+radio waves are not encapsulated by these state-of-the-art indices. This difficulty is due to a range of reasons:
+the intrinsic day-to-day variability even during quiet space weather conditions, persistent seasonal patterns,
+and because radio wave measurements of the ionosphere depend upon the signal frequency as well as wider
+propagation effects.
+Here we develop a novel index that both relies on and describes the state of the ionosphere during specific
+space weather conditions. It is based on the estimate of ionospheric propagation disturbances in GNSS signals,
+and it is able to characterise together the spatial and temporal evolution of ionospheric propagation disturbances
+(hence, ionospheric irregularities) in near real time. For the first time, this new ionospheric scale encapsulates
+day-to-day variability, seasonal patterns in the ionosphere, and the geo-effective response of the ionosphere to
+disturbed space weather conditions. Whilst this method was developed on the basis of data publicly available
+from the International GNSS Service (IGS), it can be expanded to any other GNSS network. It is intended that
+this new scale will be utilised by agencies providing space weather services, as well as by service operators to
+appreciate the current conditions in the ionosphere, thus informing their operations.
+I.
+INTRODUCTION
+The Earth’s ionosphere is part of the solar-terrestrial envi-
+ronment, and responds to space weather conditions in syn-
+ergy with the plasmasphere and the magnetosphere [1]. Such
+forcing from space weather conditions (typically) originates
+in solar events such as flares and coronal mass ejections. In
+this article, we present an index (LdT) that can be applied on
+wide range of spatial and temporal scales, and encapsulates
+this ionospheric variability based on how the ionosphere af-
+fects GNSS radio signals.
+The ionosphere is characterised by the presence of free
+electrons and ions (a plasma) and their behaviour is subject
+to the effects of geomagnetic field, neutral winds, and electric
+fields. The ionospheric plasma distribution layers with alti-
+tude as different processes dominate, and continually varies
+in response to different solar and geomagnetic conditions;
+for example, from a day-to-day variability to more intense
+changes driven by active space weather conditions.
+One way to characterise the ionosphere is by specifying
+how its electron density varies with altitude, latitude, longi-
+tude, and time. These properties of the electron density pro-
+file can and are measured using ionosondes, incoherent scatter
+radars, in-situ satellite probes, as well as indirectly by observ-
+ing propagation effects on satellite radio signals.
+Because the ionosphere is a plasma, its particular state
+affects the propagation of radio waves, notably those with
+∗https://orcid.org/0000-0001-5744-8146; Dr.Paul.Kinsler@physics.org
+† https://orcid.org/0000-0003-1682-1930
+frequencies between VLF and C band.
+Thus as the solar-
+terrestrial conditions affect the ionosphere, the concommittant
+spatial and temporal variability of its electron density distribu-
+tion, together with the presence of inhomogeneities (or irreg-
+ularities), affect radio propagation.
+Indeed, the state of the ionosphere is already appreciated in
+near-real time on a global scale by means of maps of the Total
+Electron Content (TEC) and its rate of change (of TEC, hence
+ROTI) [2–15]. These maps are estimated from a global net-
+work of GNSS monitoring stations and are provided by the
+International GNSS Service, although these are also cross-
+validated by a range of approaches provided by different Insti-
+tutions [16–19]. Here, TEC maps provide insights on the over-
+all distribution of ionisation in response to current solar and
+geomagnetic conditions, whereas ROTI maps provide an indi-
+cation of irregularities forming in different regions. This “ir-
+regularity detection” occurs since irregularities along a given
+ray propagation path introduce temporal fluctuations in the re-
+ceived phase and intensity of GNSS radio waves.
+A particular signature is intensity scintillation, or short-
+term variations in the received intensity leading to severe sig-
+nal fading. This is caused by ionospheric irregularities form-
+ing over spatial scales smaller than the Fresnel scale, i.e. ap-
+proximately of the order of 400 m at GNSS frequencies in the
+ionospheric F region. In contrast, phase fluctuations are in-
+duced by irregularities with spatial scales both smaller and
+larger than the Fresnel scale. This implies that the rate of
+change of TEC and the ROTI are sensitive to a wider range of
+irregularities: from larger to smaller spatial scales, as opposed
+to the narrower range of scales affecting intensity scintillation
+[20].
+1
+arXiv:2504.06056v1  [physics.space-ph]  8 Apr 2025

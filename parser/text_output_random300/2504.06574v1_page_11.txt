@@ -1,0 +1,69 @@
+Methods
+Ball possession game experiments
+Participants
+Twelve male college football players were divided into two groups: the high-level group (N = 5;
+age: 22.2±0.3 years, height: 176.6±4.3cm, weight: 70.1±9.0kg) and the low-level group (N = 7; age: 20.9±3.0
+years, height: 172.3±5.8cm, weight: 69.3±5.3kg). All participants had over 10 years of competitive experience.
+Participants trained according to their respective groups, engaging in six days of training per week, with each
+session lasting approximately two hours.
+All participants were healthy, without any muscular dysfunction
+or surgical/medical conditions.
+The purpose of the study and the risks associated with participation were
+thoroughly explained to the participants, and informed consent was obtained prior to the study. The study
+design was approved by an ethics review board (the Ethics Committee in National Institute of Fitness and
+Sports in Kanoya for human experimentation, #11-101) and conducted in accordance with the Declaration of
+Helsinki.
+Experimental design
+All measurements were conducted indoors on artificial turf (Grand Grass HD, Mizuno).
+For both groups, the task involved ball possession training within a square court with 6 m on each side, with
+three offensive players (OFs) and one defensive player (DF), as depicted in Fig. 5. OFs were instructed to
+complete 20 passes, with a maximum of two touches per player, while preventing DF from intercepting the ball.
+DF was tasked with intercepting the ball from OFs or kicking it out of the court before OFs could complete 20
+consecutive passes. The trial ended when OFs completed 20 passes, DF intercepted the ball, or the ball went
+out of the bounds. At the end of each trial, one OF and DF were substituted, and the next trial commenced.
+Measurement of players’ location
+Position data on (x, y)-coordinate for each player were measured with
+local positioning system (ZXY Sports Tracking, Chyronhego, New York, USA) at a sampling frequency of 20 Hz.
+A belt with a sensor (approx. 20 g) was attached to each player. To prevent the belt from shifting during a
+trial, it was secured to their training wear with safety pins.
+Calculation of the area formed by the three offensive players
+The area among the three OFs was
+calculated from the coordinates of the three OFs. The data were processed with Matlab (Mathworks R2021,
+New York, USA). An exemplary video recording of the experiment and the visualised tracking data are available
+as Supplementary Video S5.
+Details on the dynamical model
+Step 2 (Fig. 2 b) in our model concerns the dynamics during a single pass scene. We denote the positions of
+Receiver and the ball at the start of the n-th pass scene by ⃗sn
+R and ⃗sn
+B, respectively. We also introduce the
+destination of the n-th pass ⃗dn
+B, i.e. the position of the ball when this pass scene ends as long as the game is not
+terminated. During the n-th pass scene, the ball runs from ⃗sn
+B to ⃗dn
+B. Since Receiver must reach the ball at the
+end of this pass scene, Receiver moves from ⃗sn
+R to ⃗dn
+B. We note that the final positions of the ball and Receiver
+coincide. For each pass scene, DF chooses one of the two motion mode: ‘chase’ and ‘wait’. When ‘wait’, DF
+remains centred among OFs during the pass scene. When ‘chase’, on the other hand, DF attempts to intercept
+the pass by chasing the ball. Passer and Mover can move more freely than other players, since they need not to
+reach the ball. In the model, their motion is driven by social forces [55], which describe a player’s interactions
+with other players and environment. A major constraint on their motion is that they must remain within, or
+at least in the vicinity of, the court during a game. We designed two social forces to confine Passer and Mover
+within the court. While the confinement mechanism must keep players from leaving the court, it should have
+little influence on the dynamics inside the court, since players are likely to care about the court boundary only
+when they are at the periphery. This requirement made it challenging to design the confinement mechanism.
+The dynamics of the five agents described so far are represented by the system of ODEs (1).
+The motion of DF is governed by eq. (1c). Binary parameter ζn ∈{0, 1} represents the motion mode, with
+ζn = 0 corresponding to ‘wait’. The destination of DF at time t is either ⃗dD,chase(t) or ⃗dD,wait(t). When DF
+‘chases’ the ball, the destination is in the middle of the ball and Receiver:
+⃗dD,chase(t) := ⃗xR(t) + ⃗xB(t)
+2
+.
+(2)
+When DF ‘waits’ for an opportunity, the destination is the incentre of the triangle formed by OFs:
+⃗dD,wait(t) := ∥⃗xR(t) −⃗xM(t)∥⃗xP(t) + ∥⃗xP(t) −⃗xM(t)∥⃗xR(t) + ∥⃗xR(t) −⃗xP(t)∥⃗xM(t)
+∥⃗xR(t) −⃗xM(t)∥+ ∥⃗xP(t) −⃗xM(t)∥+ ∥⃗xR(t) −⃗xP(t)∥
+.
+(3)
+11

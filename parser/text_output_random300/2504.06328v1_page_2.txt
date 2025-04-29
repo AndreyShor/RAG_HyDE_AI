@@ -1,0 +1,109 @@
+duced Geometric Machine Learning (GML): meth-
+ods that operate intrinsically on non-Euclidean
+structures by respecting the underlying Rieman-
+nian (or more general) geometry. Early milestones
+include learning on the manifold of Symmetric Pos-
+itive Definite (SPD) matrices [2, 1], the Grass-
+mannian of linear subspaces [3, 4], and statisti-
+cal manifolds with Fisher information metrics [5].
+By endowing data with a manifold-aware distance
+or kernel, GML can significantly improve perfor-
+mance in classification, clustering, and regression
+tasks. For instance, tasks such as object detection
+using covariance descriptors [1] and diffusion ten-
+sor image registration [2] exemplify how Rieman-
+nian approaches outperform naive vector-space em-
+beddings.
+These advances have led to a broader
+paradigm of geometric deep learning [6], where
+the notion of respecting data geometry extends to
+graphs, hyperbolic spaces, Lie groups, and more.
+Parallel to GML, the field of Quantum Comput-
+ing has also grown rapidly since the mid-1990s.
+Landmark algorithms like Shor’s factorization [41]
+and Grover’s search prompted the question of
+whether learning tasks might also be accelerated
+or enhanced by quantum effects.
+Over the past
+decade, Quantum Machine Learning (QML) has
+evolved from a niche topic into a flourishing re-
+search area [7, 9, 8]. QML explores ways to encode
+classical data into quantum states, perform quan-
+tum transformations (unitary evolutions, measure-
+ments), and train parametric quantum circuits for
+classification, regression, and generative modeling.
+As quantum hardware has progressed from proof-
+of-concept to the so-called Noisy Intermediate-Scale
+Quantum (NISQ) devices, interest in QML algo-
+rithms that can run on near-term hardware has in-
+tensified [7, 8].
+Although early QML research often emphasized
+potential computational speedups, a less-heralded
+but equally important aspect is its geometric un-
+derpinnings.
+Quantum states naturally reside in
+curved spaces: pure states belong to complex pro-
+jective Hilbert spaces (endowed with the Fubini -
+Study metric), while mixed states form a manifold
+of density operators equipped with distances like
+the Bures or quantum Fisher metric [10, 11]. From
+this vantage point, QML can be viewed as a spe-
+cific branch of Geometric ML in which the mani-
+fold of interest is governed by quantum-mechanical
+constraints such as unitary transformations, entan-
+glement, and interference. In other words, the same
+motivations that led to GML, the realization that
+data might lie on intrinsically curved spaces, ap-
+ply even more strongly in quantum settings, since
+entangled states can exhibit elaborate geometric
+structures not easily captured by classical mani-
+folds.
+Despite the conceptual parallels, classical GML
+and QML have largely evolved in separate silos.
+On one hand, the GML literature has developed
+sophisticated algorithms for optimizing on SPD
+manifolds and Grassmannians, often with applica-
+tions in computer vision, robotics, medical imag-
+ing, and finance [17, 4, 1, 2]. On the other hand,
+QML studies frequently focus on hardware imple-
+mentations, quantum circuit design, or quantum
+information-theoretic properties like entanglement
+entropy, often without explicitly linking these to
+well-established differential geometry tools.
+As
+a result, potential synergies, for instance, using
+Riemannian optimization on the density-operator
+manifold or employing classical manifold-based fea-
+tures prior to quantum embeddings, are only begin-
+ning to emerge [15, 16].
+Why Now?. Two factors make this unification es-
+pecially timely. First, NISQ hardware constraints
+call for hybrid architectures that blend classical pre-
+processing with quantum transformations to maxi-
+mize performance under limited qubits and noisy
+gates [7, 8].
+Classical GML has a long history
+of effectively managing high-dimensional or struc-
+tured data, so it is natural to combine, for example,
+SPD-based or Grassmann-based feature extraction
+with quantum kernels. Second, as QML matures, a
+deeper theoretical understanding of how quantum
+states form a Riemannian manifold can guide al-
+gorithmic design, akin to how classical GML lever-
+ages differential geometry for robust optimization
+and kernel design [5, 11].
+Contributions of This Work.. In this paper, we aim
+to bridge these fields more explicitly by:
+1. Unifying Framework: Demonstrating that
+QML can be seen as a geometry-centric exten-
+sion of classical GML. We present the math-
+ematical parallels between Riemannian mani-
+folds like Sym+(n) and quantum state mani-
+folds, highlighting how fidelity-based distances
+and quantum kernels mirror classical manifold-
+based kernels (Section 3).
+2. Empirical Insights: We consolidate recent
+work, including our own, on hybrid classical
+-quantum pipelines.
+Specifically, we discuss
+2

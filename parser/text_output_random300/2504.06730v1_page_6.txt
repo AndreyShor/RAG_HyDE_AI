@@ -1,0 +1,171 @@
+TABLE II
+PERFORMANCE COMPARISON OF PETNET TRAINED WITH DIFFERENT LOSS FUNCTIONS ON THE CLINICAL PET SCANNER DATASET WITH THE
+TRADITIONAL SCW APPROACHES. THE TOP VALUES CORRESPOND TO TRAINING RUNS INCLUDING GEOMETRIC FEATURES, THE BOTTOM VALUES WERE
+ACHIEVED WITHOUT GEOMETRIC FEATURES. PREDICTION METRICS AND INFERENCE RUNTIME WERE EVALUATED ON THE 10 000 SAMPLE HOLD OUT
+TEST SET.
+Method
+TP
+FP
+FN
+F1
+Precision
+Time[min]
+incl. geo.
+SCW
+7618
+828
+266
+0.933
+0.902
+63.91
+SNN LΓ
+7032
+1083
+864
+0.878
+0.867
+3.67
+SNN LΓ + 0.1L∆,MSE
+7324
+595
+572
+0.926
+0.925
+3.70
+SNN LΓ + 0.1L∆,Chamfer
+7324
+595
+572
+0.926
+0.925
+3.67
+w/o geo.
+SNN LΓ
+6718
+1575
+1180
+0.830
+0.810
+3.53
+SNN LΓ + 0.1L∆,MSE
+7576
+439
+322
+0.952
+0.945
+3.45
+SNN LΓ + 0.1L∆,Chamfer
+7576
+439
+322
+0.952
+0.945
+3.47
+TABLE III
+PERFORMANCE COMPARISON OF PETNET TRAINED WITH DIFFERENT LOSS FUNCTIONS ON THE SAFIR DATASET WITH THE TRADITIONAL SCW
+APPROACHES. THE TOP VALUES CORRESPOND TO TRAINING RUNS INCLUDING GEOMETRIC FEATURES, THE BOTTOM VALUES WERE ACHIEVED WITHOUT
+GEOMETRIC FEATURES. PREDICTION METRICS AND INFERENCE RUNTIME WERE EVALUATED ON THE 10 000 SAMPLE HOLD OUT TEST SET.
+Method
+TP
+FP
+FN
+F1
+Precision
+Time [min]
+incl. geo.
+SCW
+1776
+128
+264
+0.901
+0.933
+880.41
+SNN L∆+ 0.1LΓ,MSE
+1712
+277
+336
+0.848
+0.861
+36.70
+SNN L∆+ 0.1LΓ,Chamfer
+1712
+277
+336
+0.848
+0.861
+36.19
+w/o geo.
+SNN L∆+ 0.1LΓ,MSE
+1675
+232
+373
+0.847
+0.878
+30.64
+SNN L∆+ 0.1LΓ,Chamfer
+1675
+232
+373
+0.847
+0.878
+30.78
+and the fraction of undetected spikes respectively. Using these
+values we also compute the F1 scores as the harmonic mean
+of precision (T P/(T P + FP)) and recall (T P/(T P + FN)).
+For all rates we allow a possible timing delay of ±40 time
+steps. Furthermore, we evaluate the inference time required to
+predict coincidence hits.
+F. Results
+Table II shows prediction metrics and inference runtimes
+of the SNN trained on different loss functions in comparison
+to the classical SCW algorithm, evaluated on 10 000 samples
+of the hold out test set. SNNs were run on a single NVIDIA
+A100 GPU, while the SCW algorithm ran on two 38-core Intel
+Xeon Platinum 8368 processors.
+A number of interesting observations can be made. For one,
+LΓ+L∆,MSE and LΓ+L∆,Chamfer yield superior prediction
+metrics compared to LΓ, underlining the importance of the
+proposed multi-objective loss function. Moreover using either
+L∆,MSE or L∆,Chamfer to account for timing yields the exact
+same prediction values. However, using L∆,Chamfer resulted
+in three times longer training times compared to L∆,MSE.
+We conclude that the second summation term in eq. (11)
+can be neglected and that there exists a symmetry between
+prediction and target. We further observe that adding the
+detector geometry as a feature improves prediction accuracy
+for LΓ, but not for LΓ + L∆,MSE and LΓ + L∆,Chamfer. In
+fact it slightly worsen predictive performance, but speeds up-
+convergence in terms of number of epochs until early stopping
+activates, c.f. Table I. Our most important ﬁnding, however, is
+that SNNs trained on loss functions that account for timing
+are able to outperform the classical algorithm coincidence
+detection, while also computing approximately 20 times faster.
+Given that our multi-objective loss function with timing
+outperforms using simply count loss LΓ w.r.t. prediction
+accuracy, we train an SNN on the SAFIR dataset using
+only the combined loss functions LΓ + L∆,MSE and LΓ +
+L∆,Chamfer and compare results to the classical approach.
+Prediction metrics and inference runtime, evaluated on the
+10 000 sample hold out test set, are listed in Table III. Again,
+L∆,MSE and L∆,Chamfer yield the exact same results. Using
+the geometry as an additional feature marginally improves
+prediction accuracy, while reducing the number of epochs
+to convergence, thus yielding faster training. Unlike for the
+clinical dataset, SNN prediction accuracy is not able to beat the
+classical SCW algorithm. We hypothesize that this is caused
+by 1) non-optimal hyperparameters of the model, since we
+only adapted those optimized on the clinical dataset; and 2) a
+lower number of training samples compared to the number of
+trainable parameters in the model. However, the difference in
+inference time becomes even more pronounced on this larger
+dataset, with the SCW algorithm taking ≈36 times longer to
+evaluate 10 000 samples.
+Our results also show the inability of an LSTM architecture
+to address the posed problem. Even though both the training
+and validation loss converged in our tests, the model failed to
+predict any coincidence pairs. Both F1 score and Precision
+remained at 0.0 throughout the entire training. Looking at the
+evolution of T P, FP and FN compared to the number of
+true coincidences in Figure 4, it becomes clear that the model
+simply learns to set more and more output values to zero,
+na¨ıvely reducing the loss by driving into a local minimum,

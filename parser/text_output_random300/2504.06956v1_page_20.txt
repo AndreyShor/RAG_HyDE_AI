@@ -1,0 +1,76 @@
+Local structure of extremal points
+20
+A simple computation based on (K1) – (K2) yields that, for all x, y ∈B1 \ B0, it holds that
+E[|Zj,∞(elx) −Zj,∞(ely)|2] ≤2
+Z ∞
+0
+(1 −K(e−(s+j−l)(x −y)))ds ≲|x −y|2 .
+(4.7)
+Therefore, an immediate application of Fernique’s majorizing criterion (Lemma C.3) shows that
+E
+
+sup
+x∈B1\B0
+Zj,∞(elx)
+
+≲1 ,
+for some universal implicit constant. The conclusion then follows by Borell-TIS inequality (Lemma C.2)
+and thanks to the fact that
+sup
+x∈B1\B0
+E[Zj,∞(elx)2] =
+Z ∞
+0
+(1 −K(e−(s+j−l)x)2)ds ≲e−2(j−l) ,
+where, once again, we used (K1) – (K2), and the implicit constant is independent of the quantities of
+interest. Finally, we remark that the cases j = 0 and j ∈N with l = 0 can be treated similarly.
+Lemma 4.5. There exists a constant c > 0 such that for all b ∈N ∪{∞} and j ∈[b −1], it holds
+that
+sup
+x∈Aj
+|
+√
+2dab(x) −mj| ≤c +
+3
+2
+√
+2d
+log(j) .
+Proof. Fix b ∈N and j ∈[b −1]. Then, thanks to (K2), we have that, uniformly over all x ∈Aj,
+there exists a constant c > 0 such that
+|
+√
+2dab(x) −
+√
+2dj| =
+
+Z b
+j
+(1 −K(e−sx))ds
+ ≤c .
+The conclusion follows by recalling the exact expression for mj given in (2.1). The case b = ∞and
+j ∈N can be treated analogously.
+4.2.3
+Control variables
+In what follows, given j ∈N0 and a function f : R+
+0 →R, we introduce the following notation,
+Oscj(f)
+def=
+sup
+s∈[j,j+1]
+f(s) −
+inf
+s∈[j,j+1] f(s) .
+For j, k ∈N0, we define
+Θk(j)
+def= [ log(1 + (k ∨j))]2 .
+(4.8)
+For b ∈N ∪{∞}, we now introduce the control variable Kb which will play an instrumental role in
+our analysis.
+Definition 4.6. For b ∈N ∪{∞}, we let Kb be the smallest k ∈[b −1]3 such that:
+(1) For each j ∈[b −1]03, it holds that Oscj(B) ≤Θk(j).
+(2) For each j ∈[b −1], it holds that |supx∈Aj Zj(x) −mj| ≤Θk(j).
+(3) For each j ∈[b −1]0 and l ∈[j]0, it holds that supx∈Al Zj,b(x) ≤e−(j−l)/2Θk(j).
+(4) If b ̸= ∞, for each j ∈[b −1]0, it holds that supx∈Aj|gb(x)| ≤e−(b−j)/2Θk(j).
+If no such Kb exists, then we set Kb = b.
+3With a slight abuse of notation, if b = ∞, then [b −1] = N and [b −1]0 = N0.

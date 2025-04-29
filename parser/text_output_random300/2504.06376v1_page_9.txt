@@ -1,0 +1,53 @@
+XX:8
+Quantum Combine and Conquer
+can be described as a union of the polygonal chains that form the upper hull UH(S) and
+lower hull LH(S) of the points, where UH(S) (resp., LH(S)) is the set of edges of CH(S)
+with positive (negative) normals. For completeness, we provide a description of a classical
+divide-and-conquer algorithm for computing UH(S) in appendix D, which divides S into
+a left set, S1, and right set, S2, and recursively finds UH(S1) and UH(S2). Then it finds
+the tanget segment bridge between UH(S1) and UH(S2) and prunes away the points under
+the bridge, resulting in an algorithm running in O(n log n) time. By a well-known point-line
+duality, which we also review in an appendix, the bridge edge can be found by a solving a
+two-dimensional linear program; see, e.g., [11,29,33].
+▶Lemma 3 (see, e.g., [11, 29, 33]). Given a vertical line L, and a set S of n points in a
+plane, one can determine the edge e of UH(S) that intersects L (or that no such edge exists)
+by finding the highest point of intersection between O(n) halfplanes.
+If we use linear-time 2D linear programming for the bridge-finding step, then the running
+time for this classical divide-and-conquer algorithm is O(n log n), even if the points are sorted
+by x-coordinate. Kirkpatrick and Seidel [22] show that this classical running time can be
+improved to O(n log h) by performing the bridge-finding step before the (recursive) conquer
+steps. Likewise, our quantum convex hull algorithm also performs this combine step before
+the conquer steps, but avoids recursion.
+Before we give our algorithm, let us review another well-known classical algorithm for
+computing a two-dimensional convex hull—the Jarvis march algorithm; see, e.g., [11,30,33].
+In this algorithm, we start with a point, p, known to be on the convex hull, such as a point
+with smallest y-coordinate. Then, we find the next point on the convex hull in a clockwise
+order, by a simple linear-time maximum-finding step. We iterate this search, winding around
+the convex hull, until we return to the starting point. Since each iteration takes O(n) time,
+this algorithm runs in O(nh) time. Lanzagorta and Uhlmann [24] describe a quantum assisted
+version of the Jarvis march algorithm that runs in ˜O(h√n) time, which we review in an
+appendix.
+Let S be a set of n points in the plane sorted lexicographically. For simplicity of expression,
+let us assume that the points have distinct x-coordinates and we are interested in computing
+the upper hull, UH(S), of S. As in our maxima set algorithm, let us assume for now
+that we know the value of h, the number of points on the upper hull of S to simplify the
+presentation. We divide S into h blocks, S0, S1, . . . , Sh−1, of size O(n/h) each by vertical
+lines, L1, L2, . . . , Lh−1, arranged left-to-right. This is achieved by using Algorithm 1 to
+partition the input.
+At a high level, our quantum combine-and-conquer upper hull algorithm first computes
+all the bridge edges that are intersected by one of the vertical lines, Li. This amounts to the
+combine step of our quantum combine-and-conquer algorithm. Each of these bridge edges
+belong to the upper hull of S; hence, there are at most h such bridges. Importantly, we show
+how to compute all these bridges in ˜O(
+√
+nh) time. Each block of points, Sj, has O(n/h)
+points, and, of course, there may be remaining upper hull points to compute for each such Sj
+(between points of tangency for the bridges computed in the combine step). Note that the
+conquer step for block Sj will return in O(1) time if Sj does not contain any endpoints of a
+bridge edge or if it contains a single point where two bridge edges meet. See Figure 5 showing
+the edges that come from the combine step and the edges that come from the conquer step.
+To compute the remaining convex hull points, then, we perform a modified quantum
+Jarvis march for each subset, Sj, which runs in time ˜O(hj
+p
+n/h) time, where hj is the
+number of additional upper hull points found for Sj. Thus, the total time for this second

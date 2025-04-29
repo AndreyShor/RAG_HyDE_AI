@@ -1,0 +1,82 @@
+NEURAL NETWORK POLYCONVEXIFICATION
+17
+6.2. Normalisation by a Splitting Approach. At this stage, the incremental energy density
+Φ depends on d + 1 parameters and shows significant variation over the parameter domain ˆνk and
+αk. This pronounced separation between function curves is a challenge for neural networks as it
+hinders efficient learning. Large gaps between function values can prevent smooth interpolation
+and generalisation, making it difficult to capture underlying patterns during training - unless
+a large amount of data is used, which becomes intractable even in two spatial dimensions.
+Although Φ depends only on d + 1 parameters, the parameter ˆνk requires a discretisation as fine
+as the discretisation for the argument ˆνk+1 since they play a similar role, making the learning
+computationally infeasible.
+To overcome these difficulties, we take advantage of the structure of the pseudo-time incremental
+energy density function. The function Φ from (19) can be expressed as
+Φ(ˆνk+1; ˆνk, αk) = ˜Φ(ˆνk+1; αk) + Φshift(ˆνk, αk),
+where ˜Φ: Rd × R →R∞and Φshift : Rd × R →R∞are defined as
+(21)
+˜Φ(ˆνk+1; αk) := φ(ˆνk+1, p(ˆνk+1; αk))
++ p(ˆνk+1; αk) D(p(ˆνk+1; αk)) −αk D(αk) −D(p(ˆνk+1; αk)) + D(αk)
+and
+Φshift(ˆνk, αk) := −φ(ˆνk, αk),
+respectively. It should be stressed that the function Φshift is independent of ˆνk+1, hence only
+dependent on the parameters and constant in the convexification argument ˆνk+1. Assuming
+the function φ0 is normalised in the sense that inf ˆν φ0(ˆν) = φ0(1d) = 0, the function ˜Φ
+is also normalised, i.e. inf ˆνk+1 ˜Φ(ˆνk+1; αk) = ˜Φ(1d) = 0, where 1d ∈Rd denotes the vector
+containing only ones. Consequently, the polyconvex envelope of Φ can be obtained from the
+polyconvexification of the function ˜Φ by
+(22)
+Φpc(ˆνk+1; ˆνk, αk) = ˜Φpc(ˆνk+1; αk) + Φshift(ˆνk, αk).
+Therefore, ˜Φpc should be the focus of an approximation by a neural network or a standard
+algorithm. Note that this normalisation is domain independent, and just relies on the split (22),
+considering the contribution Φshift as a shift. Removing the dependence on the previous time
+step ˆνk reduces the polyconvexifaction problem to a one-parameter-dependent family, making
+the learning feasible. In what follows, the neural networks are trained to predict the function
+˜Φpc and the function Φpc is recovered a posteriori by applying the shift Φshift as stated in (22).
+6.3. Numerical Approximation of the Polyconvex Envelope. For the isotropic damage
+model considered in this section, i.e. Φ from (19), there is no closed form analytical formulation
+of the polyconvex envelope available. This is why, for the computation of the target values the
+polyconvex envelopes are approximated numerically utilising the algorithm for isotropic functions
+based on a linear programming approach presented in [NPPW24]. For this approximation
+procedure, the pointwise characterisation of the polyconvex envelope Φpc at ˆν ∈Rd by the
+optimisation problem
+(23)
+Φpc(ˆν) = inf
+(kd+1
+X
+i=1
+ξi Φ(νi)
+ ξi ∈[0, 1], νi ∈Rd,
+kd+1
+X
+i=1
+ξi = 1,
+kd+1
+X
+i=1
+ξi m(νi) = m(ˆν)
+)
+is employed. For an algorithmic approximation of this problem, consider a discretisation of the
+signed singular value space by a point cloud, denoted by Σδ = {ν1, . . . , νNδ} ⊂Rd, a possible
+choice is the structured lattice Σδ = δ Zd ∩[−r, r]d, for lattice size δ and discretisation radius
+r. The lifting of this point cloud m(Σδ) can be employed to turn the nonlinear optimisation
+problem (23) into the following linear program
+(24)
+Φpc
+δ (ˆν) = min
+( Nδ
+X
+i=1
+ξi Φ(νi)
+ ξi ≥0,
+Nδ
+X
+i=1
+ξi = 1,
+Nδ
+X
+i=1
+ξi m(νi) = m(ˆν)
+)
+,
+which can be efficiently solved numerically using standard algorithms for linear programming. The
+overall procedure is referred to as signed singular value polyconvexification by linear programming

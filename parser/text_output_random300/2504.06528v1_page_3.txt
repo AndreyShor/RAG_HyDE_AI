@@ -1,0 +1,130 @@
+3
+GPU without involving the operating system, thereby
+speeding up the transfer and reducing timing jitter. This
+approach eliminates the latency associated with CPU-
+mediated transfers, which would otherwise introduce bot-
+tlenecks and degrade real-time performance.
+B.
+Module 2 – Image processing
+The image processing module converts the list of dig-
+itized counts into a list of binary occupation numbers,
+indicating whether each trap is occupied or not. To ex-
+tract the occupation number of each trap, the module
+first computes the mean count intensity over a finite box
+region using a weighted mask chosen as the used-defined
+normalized point-spread function specified for each trap.
+This point-spread function has a discretized Gaussian-
+like profile.
+The module then solves a binary classifi-
+cation problem using the thresholding method, assign-
+ing the presence of an atom if the mean count inten-
+sity exceeds the threshold value. The threshold is chosen
+to maximize the discrimination probability between the
+presence and absence of an atom by minimizing the prob-
+ability of erroneous assignments [11]. This module can
+be readily extended to tasks such as quantum state es-
+timation and correlation extraction, which are essential
+for implementing adaptive protocols.
+C.
+Module 3 – Problem solving
+The problem-solving module solves an atom reconfig-
+uration problem using an efficient implementation of an
+atom reconfiguration algorithm, including red-rec [9, 12],
+aro [10, 12], or bird [12]. The algorithm returns a par-
+tially ordered list of elementary displacement operations
+which are represented by source and destination indices
+for each move. The batching routine [12] translates this
+list into an ordered list of batched displacement oper-
+ations, where the operations within each batch are exe-
+cuted simultaneously. Each translated batched operation
+is associated with a pre-computed waveform stored in a
+lookup table on the memory of the processor (CPU or
+GPU).
+D.
+Module 4 – Waveform synthesis
+The waveform synthesis module translates the se-
+quence of control operations into a sequence of waveforms
+that can be streamed on the AWG. Real-time synthe-
+sis of these waveforms requires evaluating and summing
+trigonometric functions, a process that is time-consuming
+unless specific optimizations are employed.
+One approach is to sum elementary waveforms fetched
+from a pre-computed database. Another approach is to
+synthesize the waveform in the Fourier domain and then
+convert it back to the temporal domain using the Fast
+Fourier Transform.
+Here, we use a look-up table that
+stores precomputed waveforms for each batched control
+operation from the problem-solving module.
+This ap-
+proach minimizes computational overhead and enables
+efficient reuse of waveforms when working under condi-
+tions where they remain unchanged.
+The waveform synthesis module fetches the digitized
+waveforms using the table keys associated with a list of
+batched control operations. These digitized waveforms
+are then copied to local memory buffers for subsequent
+uploading to the onboard memory of the AWG.
+Each
+normalized,
+discretized
+waveform,
+˜y(t)
+=
+y(t)/ max (y(t)), is evaluated over the finite interval [0, T]
+with a step size of ∆t = 1/fs, where fs is the sampling
+rate of the AWG. The duration of the waveform is set to
+achieve a desired frequency resolution ∆f, e.g., T = 10 µs
+for ∆f = 100 kHz.
+Each waveform is computed as
+the normalized sum of elementary discretized waveforms,
+y(t) = P
+j yj(t), where each elementary waveform is a si-
+nusoidal function, yj(t) = αj sin(2πνjt + ϕj), defined by
+its amplitude αj, frequency νj, and phase ϕj. When op-
+erating the AWG on multiple channels, the discretized
+waveforms (1D arrays of samples) for each channel must
+be interleaved into a single multi-channel waveform. The
+frequency determines the position of traps, whereas the
+amplitude determines the trap depth. The amplitudes
+and phases are typically optimized to minimize spatial
+inhomogeneity in trapping parameters while maximizing
+diffraction efficiency [2].
+The lookup table contains both static and dynamic
+waveforms, depending on whether the parameters are
+time-dependent or not. Static waveforms hold atoms in
+place, while dynamic waveforms perform transfer and dis-
+placement operations. Dynamic waveforms are defined
+by time-dependent parameters, yj(t) = αj(t) sin(ϕj(t)),
+where dϕj(t)/dt = νj(t) is the instantaneous frequency.
+Minimizing atom loss during dynamic operations re-
+quires smoothly connecting parameters between neigh-
+boring frequency tones. A typical approach to ensuring
+a smooth connection involves nulling the first few deriva-
+tives of the amplitude function at the waveform bound-
+aries and ensuring continuous phase connection, e.g., by
+choosing α′
+j(0) = α′′
+j (0) = 0, α′
+j(T) = α′′
+j (T) = 0 ϕj(T) =
+ϕj(0) modulo 2π, ϕ′
+j(0) = 2πνj, ϕ′
+j(T) = 2πνj+1, and
+ϕ′′
+j (0) = ϕ′′
+j (T) = 0. While some waveforms, cannot sat-
+isfy all the conditions above simultaneously, the equal-
+ity signs can be relaxed by allowing some error toler-
+ance. Our system includes implementations of Tanh, cu-
+bic spline, and Erf as transition functions, with the choice
+determined by experimental optimization.
+The size of the lookup table stored on the processor
+memory depends on the dimensions and the size of prob-
+lem. For example, when solving 1D reconfiguration prob-
+lems and restricting displacement operations to contigu-
+ous blocks of traps moving forward and backward by a
+single step, the total number of continuous block dis-
+placement waveforms is Ntx(Ntx −1) ∼O(N 2
+tx). Further-
+more, when solving 2D problems on grids using red-rec,

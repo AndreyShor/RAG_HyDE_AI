@@ -1,0 +1,60 @@
+ 
+8 
+information of each node; or in other words, the system is automatically divided into segments, and each 
+node learns a representation that best summarizes the information of each segment for the downstream tasks.   
+In our experience, for simplicity, the learning process is typically applied to systems with fixed 
+sizes and timesteps. However, the design of the classifier model ensures its adaptability, allowing it to be 
+trained and applied to systems of varying sizes (e.g., different numbers of water molecules) and different 
+timesteps or even various time resolutions, accommodating data collected from diverse simulations.  
+Interaction potential network: We directly employed NequIP architecture as the potential network. 
+Unlike the classifier network, the graph representation in the potential network encodes only the relative 
+displacements between CG beads in the edge features, while the node features represent the types of CG 
+beads. In our specific case of a one-bead model for water molecules, all CG beads belong to the same type, 
+resulting in a constant node feature in the first layer of the GNN. To prevent CG beads from coming 
+excessively close to one another, a repulsive potential of the form (𝑟@ 𝑟
+⁄ )<𝑆(𝑟)was incorporated into the 
+network, ensuring physical plausibility and stability in the simulations. Here 𝑟 is the pairwise distance,  
+𝑟@ = 2 Å,  and 𝑆(𝑟) is the cutoff function with the form33: 
+ 
+𝑆(𝑟) =
+⎩
+⎨
+⎧
+1,                                                            𝑟< 𝑟GB
+        (𝑟H:2
+<
+−𝑟<)<(𝑟H:2
+<
++ 2𝑟< −3𝑟GB
+< )<
+(𝑟H:2
+<
+−𝑟GB
+< )A
+,       𝑟GB < 𝑟< 𝑟H:2  
+0,                                                                 𝑟> 𝑟H:2 ,
+ 
+ 
+ (7) 
+ 
+where 𝑟GB = 2.2 Å and 𝑟H:2 = 2.4 Å. 
+Training Details: 
+Stabilizing the adversarial training. The training process for dynamic matching methods faces significant 
+instabilities, primarily due to two factors. First, the adversarial training framework, while powerful, is 
+inherently unstable because the generator and discriminator are optimized simultaneously with competing 
+objectives. This often leads to oscillatory behavior or divergence in the optimization process. To mitigate 
+this, we introduced a self-supervised discriminator 34 that leverages auxiliary tasks to provide more robust 
+and stable gradient signals. In our case, given the embedded nodes, with a fraction of them being randomly 
+masked, a predictive network is optimized to predict the two properties of the system: (1) The relative 
+positions of CG beads to their neighbors (i.e., the edge feature) and (2) the position shifts the masked nodes. 
+With this self-supervised task, the learned features are forced to contain both structure information and 
+dynamic information. In other words, the network learns both the thermodynamic and dynamical principles 
+of both systems, instead of focusing on a single aspect,  and uses that to determine whether the input 
+trajectories are from the AA or CG simulations.  
+Second, the dynamics of the model are highly sensitive to variations in the parameters 𝜃, resulting 
+in large gradients that destabilize training. To ameliorate the unstable gradient issue, we employed partial 
+backpropagation,35, 36 a technique that prevents overly aggressive gradient updates by truncating 
+backpropagation in a defined number of steps, thereby maintaining a more stable optimization process. 
+Empirically, we observed that the gradients of potential parameters increased dramatically as the timestep 
+increased, while the gradient of other parameters remained within a reasonable range. This aggressive 
+update of the potential parameters often resulted in excessively large forces or unphysical interactions, 

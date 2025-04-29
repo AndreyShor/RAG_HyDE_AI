@@ -1,0 +1,66 @@
+Local structure of extremal points
+23
+−Bt
+−Bt + Rk(t)
+−Bt −Rk(t)
+t
+Figure 1: The blue curve represents a standard Brownian motion −B run up to time b. The light blue
+region around the Brownian motion is the area enclosed between the curves [0, b] ∋t 7→−Bt −Rk(t) and
+[0, b] ∋t 7→−Bt + Rk(t) for some 0 ≪k ≪b. Roughly speaking, Lemma 4.9 states that, with high
+probability, for any j ∈[b −1], the supremum of the field Υb,g(x) in the annulus Aj lies on the vertical
+segment at t = j within the light blue region.
+4.3
+Some technical lemmas
+In this subsection we collect some technical results that are need for the proofs of Proposi-
+tions 4.1 and 4.2. Before proceeding, we emphasise that all the following lemmas have an analogous
+counterpart in [BL18, Section 4]. We begin with the following lemma, which is a slightly augmented
+version of [BL18, Lemma 4.20], adapted to our setting. For its statement, given k ∈N0, we use the
+notation
+Gk
+def= σ((Bs)s≤k, Z∞) .
+Lemma 4.10. There exists a constant c > 0 such that for λ > 0, for all b ∈N sufficiently large,
+u ∈[b1/4, b3/4], k ∈[b −1], and any event Ak ∈Gk,
+P0,u,b
+
+Kb = k,
+b−1
+\
+j=k
+{Bj ≥−λ −Rk(j)}, Ak
+
+≲u
+b e−c(log k)2p
+P0,u,b(Ak) .
+(4.17)
+Similarly, there exists a constant ec > 0 such that for λ > 0, for all b ∈N sufficiently large, k ∈[b−1],
+and any event Ak ∈Gk,
+P
+
+K∞= k,
+b−1
+\
+j=k
+{Bj ≥−λ −eRk(j)}, Ak
+
+≲1
+√
+b
+e−ec(log k)2p
+P(Ak) .
+(4.18)
+Proof. For simplicity, and without loss of generality, we set λ = 1. The proof of this lemma follows
+a similar approach to the proof of [BL18, Lemma 4.20]. We start with the proof of (4.17). Given
+b ∈N and k ∈[b −1], we let Ek be the event that the conditions in Definition 4.6 hold for all j ∈[k]
+(or j ∈[k]0) with Θk(j), but at least one of these conditions is not satisfied if Θk(j) is replaced by
+Θk−1(j). We note that Ek ∈Gk and that {Kb = k} ⊂Ek by definition of Kb. Hence, the probability
+on the left-hand side of (4.17) can be bounded from above by
+E0,u,b
+
+1Ek∩AkP0,u,b
+b−1
+\
+j=k
+{Bj ≥−1 −Rk(j)}
+ Gk
+
+.

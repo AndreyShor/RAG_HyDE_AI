@@ -1,0 +1,31 @@
+7 
+ 
+ 
+Fig.2 Comparison of Pearson correlation Coefficient obtained on S461 dataset between the original 
+method (pink bar) and its adjusted version with Mass-Balance Correction, using bothMBC(dd) (green 
+bar) and Rose scale (blue bar). ddMMBC_only represents the prediction made using only the fitted 
+mutation coefficients without incorporating a method.  *KD25 and *Rose26  and are the scale difference 
+values without any fitting. 
+ 
+Generalization of the Mass-Balance Correction Across Different Methods 
+ 
+Reeves and Kalyaanamoorthy30 recently highlighted that structure-based and 
+sequence-based PLMs can be linearly combined to improve the performance, 
+indicating that these two methodological classes provide complementary information. 
+They further noted that “...PSLMs can be reliably augmented with physicochemical 
+properties to exceed the median performance of the benchmark stability predictor..”. 
+This aligns with our model, since 
+ 
+𝛥𝛥𝐺= (𝐺𝐹(𝑚) −𝐺𝐹(𝑤)) −(𝐺𝑈(𝑚) −𝐺𝑈(𝑤)) = 𝛥𝛥𝐻𝐹−𝑇𝛥𝛥𝑆𝐹  
+ 
+[5] 
+ 
+Thus, it is reasonable to think that both sequence and structure-based terms 
+correspond to the ΔΔG term for the unfolded and folded states, respectively.  
+Additionally, the molecular volume and the solvent-accessible surface area (SASA) 
+play a crucial role in estimating the solvation energy changes (a large part of ΔΔS𝐹) 
+when a molecule interacts with a solvent. This concept has been widely applied in 
+different implicit solvation models, such as the GBSA family of models31,32.  
+From this perspective, the MBC can be seen as a proxy of this information. Our 
+model provides a simple, yet effective, way to estimate the Gibbs free energy 
+difference between wild-type and mutated proteins in their unfolded states. 

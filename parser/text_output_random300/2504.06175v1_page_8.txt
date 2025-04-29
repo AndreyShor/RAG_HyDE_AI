@@ -1,0 +1,125 @@
+8
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Bell Fidelity at t1
+1.00
+1.05
+1.10
+1.15
+1.20
+Final/ max (Initial Fidelity)
+F2/F1 =1.0
+(g, m) =(0.1 , 0.05)
+(g, m) =(0.1 , 0.01)
+(g, m) =(0.05 , 0.05)
+(g, m) =(0.05 , 0.01)
+(g, m) =(0.01 , 0.05)
+(g, m) =(0.01 , 0.01)
+(a) Equal input Bell fidelities
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Bell Fidelity at t1
+0.95
+1.00
+1.05
+1.10
+1.15
+Final/ max (Initial Fidelity)
+F2/F1 =1.1
+(g, m) =(0.1 , 0.05)
+(g, m) =(0.1 , 0.01)
+(g, m) =(0.05 , 0.05)
+(g, m) =(0.05 , 0.01)
+(g, m) =(0.01 , 0.05)
+(g, m) =(0.01 , 0.01)
+(b) Unequal input Bell fidelities
+FIG. 6. Results from simulation of recurrence Z2B with global depolarizing noise. Fractional change in Bell fidelity plotted
+against input Bell fidelity. Each curve has a different gate and measurement error. The two plots look at symmetric and
+asymmetry input Bell pairs.
+tillation protocol is similar to that of recurrence shown
+in Fig. 6 and described in Sec.III B 1. However the value
+of r is typically higher than those in the corresponding
+plots on Fig. 6 (see App. H for plots on Fig. 15).
+IV.
+EXPERIMENTAL RESULTS AND DEVICE
+NOISE
+Given the simulations of the previous sections, we now
+want to consider distillation protocols on a real device.
+We run experiments on a 127 qubit device with fixed
+frequency qubits and fixed coupling, an IBM Eagle de-
+vice ibm kyiv. For the purposes of these experiments we
+consider smaller sections of the device with linear connec-
+tivity and run each experiment in parallel across different
+sections of the device in order to obtain more statistics
+on noise. For more device details see Appendix E.
+For each circuit we estimate the fidelity of the Bell
+state using direct fidelity estimation by measuring three
+circuits (see App. B for more).
+However, this scheme
+does have measurement error. In contrast to [42], here we
+choose to not correct for measurement errors due to issues
+that can cause potentially non-physical and or unexpect-
+edly high fidelities (see, e.g., discussion in Ref. [48]). Our
+experimental results thus provide a good lower bound on
+the Bell fidelities.
+A.
+Two Bell distillation experiment with global
+depolarizing noise
+Following from the discussion on Sec. III B, first, we ex-
+perimentally study the recurrence protocol under global
+depolarizing noise. This global depolarizing channel Nλ
+is implemented using layers of two-qubit Clifford circuits.
+The first half of such a circuit is composed of multiple
+applications of a length-k random sequence of two-qubit
+Clifford gates and the second half is the inverse of the
+first half. This inverse is simply the mirror image of the
+first half and these layers are called mirror Clifford lay-
+ers [49] (see Fig. 12 in App. G for an example of such a
+circuit with two layers in the first half).
+These measurements are carried out on a set of four
+adjacent qubits on a device. On 13 such sets we carry
+out the experiment outlined above for different fixed
+k ∈{0, 2, 4, 6, 8, 10, 12}.
+For each k we obtain an av-
+erage of 13 sets of the before and after distillation Bell
+fidelities along with the acceptance probability for distil-
+lation. These are plotted in Fig. 7. In Fig. 7a we plot
+the acceptance ratio as a function of the initial Bell fi-
+delity. The dots represent points from the experiment
+while the straight line is obtained from numerics.
+In
+Fig. 7b we plot the ratio r as a function of the initial
+Bell fidelity prior to global depolarizing noise. The blue
+dots represent data while the orange curve represents the
+theoretically expected curve. This theoretical curve from
+eq. (13) assumes noiseless gates and measurement. There
+is fairly good agreement between the theory curves and
+the experiment data, particularly considering the x-axis
+is subject to systematic error due to measurement error
+and the theory calculation assumes the distillation circuit
+is perfect. This demonstrates that under some conditions
+on the device we can see an improvement due to distilla-
+tion, however the improvement arises from a systematic
+procedure to degrade the Bell pairs via global depolar-
+izing noise. Furthermore, high fidelity Bell pairs do not
+improve in this experiment.
+B.
+Two Bell distillation experiment with idle noise
+Here we consider a more natural experiment, create a
+Bell pair and wait a time t for the Bell fidelity to decay
+under device T1/T2 noise and then measure (note we ap-
+ply a standard echo sequence to remove low frequency
+noise). These T1/T2 noise channels are not simply Pauli
+channels and they are not an effective error obtained from

@@ -1,0 +1,105 @@
+• The use of a Gibbs objective function [79] fol-
+lows similar logic to that of CVaR, where the
+objective function is formed using the Gibbs
+exponent.
+• Recursive QAOA [80], which iteratively re-
+duces the problem size by fixing variables.
+• Other techniques include: filtering VQE [81],
+adaptive VQE (ADAPT-VQE) [82] and the
+generative quantum eigensolver (GQE) [83].
+Techniques also exist for quantum annealing,
+such as reverse annealing [84], using different an-
+nealing schedules and the variational adiabatic al-
+gorithm [85]. The effect of applying error mitiga-
+tion techniques on both platforms could also be
+explored further. However, implementing all of
+these techniques to see improvements in perfor-
+mance was beyond the scope of this work and we
+leave this as a future research direction.
+We also note that simulation of quantum an-
+nealing is possible using path integral Monte
+Carlo (PIMC) methods [86,87], which may be of
+use for verifying small-scale quantum annealing
+solutions in future studies.
+Ideally, we want to find instances of QUBO
+that are hard for classical techniques but suited to
+quantum algorithms and hardware. What makes
+classes of QUBO hard for algorithms in general is
+an open question. Certainly, solution degeneracy,
+which dictates the number of local minima in the
+cost function landscape is a contributing factor
+[88, 89]. Through our study, we can make some
+observations about what makes QUBOs hard to
+solve on quantum devices: QUBO density, which
+relates to device connectivity and, for quantum
+annealing, the total energy range of the problem
+which corresponds to preferred penalty terms and
+limits the annealing rate. Other fertile areas for
+future work could focus on constrained optimi-
+sation [61, 62], optimisation problems with sym-
+metries [72] and multi-variable to qubit encod-
+ing [74,75].
+Quantum
+hardware
+is
+constantly
+improv-
+ing, with many companies producing ambitious
+roadmaps promising more and high-quality phys-
+ical qubits, and early steps towards quantum er-
+ror correction. We leave finding potential speed-
+ups to future experimental works and hope that
+they can follow our framework for analysing the
+performance of different methods when solving
+optimisation problems.
+Finally, we would like to stress that this pa-
+per is not intended to be a complete compari-
+son of gate-based devices and quantum anneal-
+ing. It is rather a framework for the comparison
+of ‘end-to-end’ approaches to solving optimisa-
+tion problems. Our framework compares whole
+approaches to solving a problem, including the
+algorithm and hardware platform, and does not
+focus on the hardware alone.
+Acknowledgements
+The authors would like to thank Bruno Camino,
+Stefan Woerner, Andrew King and Robert Cum-
+ming for useful discussions, and Vincent Graves
+for proof-reading the manuscript.
+Code Availability
+The code used to generate the experimental re-
+sults will be uploaded to a public GitHub repos-
+itory in due course.
+Author Contributions
+Phalgun Lolur conceived and planned the project.
+Kieran McDowall (KM) carried out the investiga-
+tion. KM and Theodoros Kapourniotis analysed
+and interpreted the results with support from
+Chris Oliver. Konstantinos Georgopoulos was re-
+sponsible for overall supervision of the work. KM
+prepared the manuscript which was then proof-
+read and revised by all authors.
+References
+[1] P. A. M. Dirac.
+Quantum mechanics of
+many-electron systems. Proceedings of the
+Royal Society of London. Series A, Con-
+taining Papers of a Mathematical and Phys-
+ical Character,
+123(792):714–733,
+1929.
+Proceedings of the Royal Society of Lon-
+don. Series A: 123, 714-733.
+[2] R. P. Feynman.
+Simulating physics with
+computers. In Feynman and computation,
+pages 133–153. cRc Press, 2018. Feynman
+and Computation: 133-153.
+[3] R.
+Barends
+et
+al.
+Digital
+quantum
+simulation of fermionic models with a
+16

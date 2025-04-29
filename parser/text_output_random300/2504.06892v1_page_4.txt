@@ -1,0 +1,132 @@
+4
+with single qudit’s observables. Overall, qudits allow us
+to eliminate the need for optimization over the hyperpa-
+rameters of the VQC and to explore the Hilbert space in
+a uniform way. The latter strategy seems the best option
+for the dataset under study, being unstructured.
+IV.
+QAES FOR EMBEDDING THE CLASSICAL
+FEATURES ON VQCS
+In this work, we rely on the QAE model to pre-process
+classical data in a way that is compatible with VQCs.
+Originally introduced in earlier research [9], a QAE in-
+corporates the quantum feature map of the VQC under
+study into the bottleneck layer of a classical autoencoder.
+This design bridges classical and quantum techniques,
+providing a compact and meaningful representation of
+the input data.
+The QAE operates similarly to a traditional autoen-
+coder. Given an input dataset X ∈RM×K, where M is
+the number of samples and K is the number of features,
+the encoder compresses the data into a smaller latent
+space. Mathematically, this can be expressed as:
+Z = fenc(X; θenc),
+(5)
+where Z ∈RM×D, and fenc represents the encoder func-
+tion parameterized by weights θenc.
+In the QAE, the
+latent features Z are then passed through a quantum
+feature map, which is implemented as a unitary transfor-
+mation:
+ˆU = exp
+
+−i
+D
+X
+j=1
+zjˆgj
+
+.
+(6)
+The quantum feature map is tightly related to the VQC’s,
+reproducing its encoding layer. Technically, the feature
+map embeds the latent representation into the Hilbert
+space, encoding the data into unitary matrices. The uni-
+tary operator in (6) is then applied to the ground state
+of the VQC circuit, |0⟩. The real and imaginary values
+of the complex amplitudes of the resulting vector, are
+passed onto the decoder, which reconstructs the original
+data, as ˜X, using classical layers. The model is trained
+to minimize the reconstruction error, typically measured
+using the mean squared error (MSE):
+L = 1
+M
+M
+X
+i=1
+∥Xi −˜Xi∥2.
+(7)
+By minimizing L, the QAE ensures that the compressed
+(D < K) or uncompressed ( D > K) representation re-
+tains the most relevant features of the input data.
+V.
+CLASSIFICATION RESULTS VIA HYBRID
+CLASSICAL-QUANTUM ML PIPELINES
+After presenting the basic elements of the VQC and
+QAE models, we proceed to employ them for the multi-
+class classification task described in Section II. We keep
+the first part of the ML pipeline intact and feed the K-
+plets of features into a QAE for pre-processing and then
+to a single qudit VQC (see Fig.
+1 (b)).
+This hybrid
+model yields results comparable to those of the deep NN
+(Table I). To ensure the integrity of the model, we also
+construct two secondary models and present their clas-
+sification outcomes. Specifically, the additional models
+are: a) a qudit VQC without QAE, and b) a VQC made
+of qubits assisted by QAE.
+A.
+QAE–qudit VQC model
+Let us consider a qudit in the state |ψ⟩= Pd−1
+k=0 ck |k⟩
+and describe the measurement process of an observable
+ˆO with eigenstates the vectors of the computational basis
+and d eigenvalues all different to each other. According to
+the axioms of quantum mechanics, the measurement out-
+come related with the eigenvector |k⟩occurs with proba-
+bility |ck|2. We aim to solve a classification problem with
+9 labels and it is natural to consider a qudit with d = 9
+and associate each measurement outcome and its related
+probability with one of the nine classes. The data being
+unstructured guide us to employ all D = 80 generators
+of the SU(9) symmetry group and explore the Hilbert
+space of the qudit in a uniform way. We describe the
+basic VQC unit by the unitary operation:
+ˆU(⃗ϕl, ⃗x) = exp
+
+−i
+D
+X
+j=1
+xjϕj
+l ˆgj
+
+,
+(8)
+where xj the classical features and ϕj
+l the trainable
+weights of this VQC unit. This way we choose the sim-
+plest and most compact form for the VQC putting to-
+gether the variational and encoding parts. In order to
+increase the expressivity of the circuit we repeat the ba-
+sic VQC unit, (8), 8 times, re-uploading this way the
+features with different weights. The total VQC contains
+a total number of 640 ϕ parameters and it is described
+by the unitary operator:
+ˆUV QC = ˆU(⃗ϕ8, ⃗x) . . . ˆU(⃗ϕ1, ⃗x).
+(9)
+As initial state for the qudit we consider its ground state
+|0⟩.
+The final step involves training the VQC to identify
+the optimal weights ϕ in the circuit (9) achieving the best
+classification outcomes for the train data. However, one
+may observe that the circuit is designed to accommodate
+D = 80 features xj, while each data point is assigned
+K = 5 features via tsfresh-XGBoost models. We address
+this discrepancy and further enhance the classification
+results by incorporating a pre-processing of K-plets of
+features via a QAE.
+Pre-processing of data via QAE: The aim of the QAE
+is to produce D = 80 (redundant) features xj needed for
+the VQC (9), for each K-plet of features, with K = 5.

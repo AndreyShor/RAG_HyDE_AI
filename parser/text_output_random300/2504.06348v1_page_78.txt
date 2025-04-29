@@ -1,0 +1,138 @@
+E.5.2
+PREPNL,1
+The state PREPNL,1|0⟩is given by
+PREPNL,1|0⟩|ζ⟩=
+1
+q
+˜V I
+NL
+lmax
+X
+l=0
+3
+X
+α=1
+r
+4π
+Ω(¯rζ
+l )3(2l + 1)Dζ,l
+α λGζ,l
+α |l⟩|α⟩|ζ⟩.
+(199)
+We note that the coefficients Dζ,l
+α and λGζ,l
+α only depend on I insofar as they depend on the nuclear species
+ζ. Note in principle that Dζ,l
+α
+can have negative values and therefore the amplitudes of this state can be
+complex. However, we make the simplifying assumption that the entries are positive; negative entries can be
+remedied by including phase gates at the end of the preparation with negligible cost. Given this assumption,
+we prepare this state using coherent alias sampling. Given that ζ, l and α are in unary, we first have to
+convert to binary and contiguize into a single index. For a system with Z ion species, the contiguized index
+runs from 1 to 9Z in the worst case. The conversion can be done with just Cliffords, and the contiguization
+requires no more than 2Z Toffolis (for two Z-bit adders). The steps for the alias sampling then proceed as
+follows:
+1. Prepare a uniform superposition over 9Z amplitudes with cost 2⌈log(9Z)⌉+2bα,l −8 for some precision
+bα,l.
+2. Use a QROM to load alt values and keep probabilities with a cost of 9Z Toffolis. We also use this
+QROM to load b-bit approximants to the precomputed coefficients θζ,l
+α
+as needed in Sec. E.5.3, and
+the coefficients [Y α
+l,ζ]a,
+1
+bζ,l
+α , γζ,l
+α
+and
+1
+maxp |Gζ,l
+α (|kp|¯rζ
+l )| as needed in Sec. E.5.4.
+3. For keep probabilities with bkeep bits, apply an inequality test with cost bkeep.
+4. Conditioned on the flag from the inequality test, swap the alt values using ⌈log(9Z)⌉Toffolis.
+The total cost for the alias sampler is 11Z+3⌈log(9Z)⌉+2bα,l+bkeep−8. The subroutine is cheap enough that
+we just assume doubling the cost to include uncomputation. As for qubits, ⌈log(9Z)⌉+ bkeep are necessary
+for the QROM and bkeep for the inequality test.
+E.5.3
+Preparation of the reference state |ψ ˜
+G⟩
+We aim to use rejection sampling to prepare the spherically-symmetric 3D state |ψG⟩= P
+p Gζ,l
+α (|kp|¯rζ
+l )|p⟩
+with amplitudes Gζ,l
+α (|kp|¯rζ
+l ) = P3
+a=1 Xζ,l
+αagl
+a(|kp|¯rζ
+l ). Fixing the signs sgn(GI,l
+α (|kp|¯rζ
+l )) is done at a later
+stage and discussed in Sec. E.5.4. We therefore define a reference state |ψ ˜
+G⟩= P
+p ˜Gζ,l
+α (kp)|p⟩such that,
+for all p, ˜Gζ,l
+α ≥|Gζ,l
+α (|kp|¯rζ
+l )| (but chosen such that the state with amplitudes ˜Gζ,l
+α is easier to prepare than
+Gζ,l
+α itself). Specifically, for the non-local interaction term we choose ˜Gζ,l
+α as
+˜Gζ,l
+α (kp) =
+(
+maxp |Gζ,l
+α (|kp|¯rζ
+l )|
+for p ∈♢:= {p : |k(j)
+p ¯rζ
+l | ≤(k∗)ζ,l
+α ∀j}
+dζ,l
+α e−γζ,l
+α ||kp¯rζ
+l ||1
+for p ∈G\♢
+(200)
+where the parameters maxp |Gζ,l
+α (|kp|¯rζ
+l ))|, (k∗)ζ,l
+α , dζ,l
+α
+and γζ,l
+α
+are classically precomputed (see Table 9).
+We have used the notation k(j)
+p
+= P3
+a=1 pab(j)
+a , where b(j)
+a
+is the jth component of the ath reciprocal lattice
+vector, and the index-free symbol G to denote the space of all valid momenta. Note also that, while the
+target function is a function of the 2-norm of kp (and throughout we have used the shorthand |kp| = ∥kp∥2),
+the reference state’s dependence comes in the exponent and rather depends on ∥kp∥1 = P
+j |k(j)
+p |. Example
+reference functions are shown in Fig. 8. We combine the reference state preparation here with the local
+interaction term. For the local term with s ≥0, we choose
+˜Gζ
+s≥0(kp) =
+(
+cζ
+s,
+for p ∈♢:= {p : |k(j)
+p ¯rζ
+l | ≤(k∗)ζ
+s ∀j}
+dζ
+se−γζ
+s ∥kp¯rζ
+l ∥1,
+for p ∈G \ ♢,
+(201)
+78

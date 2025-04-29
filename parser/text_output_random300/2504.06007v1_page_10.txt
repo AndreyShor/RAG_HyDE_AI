@@ -1,0 +1,21 @@
+CAMulator
+Figure 5: Regression of the anomalous Z500 field on the leading principal during DJF for the PNA region (left column,
+20°–85°N, 120°E–120°W) and the NAO (right column, 20°–80°N, 90°W–40°E) over the years 1979–2014. Results are
+shown for CAMulator (top row) and CAM6 (bottom row). The explained variance of each mode is shown in the top
+right of each panel
+model’s physical consistency and predictive skill. Machine learning models, particularly those trained to minimize mean
+squared error, often struggle to capture extremes because they tend to favor the mean state over rare, high-magnitude
+events. However, CAMulator does not exhibit a strong tendency to underpredict extremes. We hypothesize that this may
+be due to its training methodology, which is limited to two prediction time steps (out to 12 hours), allowing it to better
+preserve variability. Supporting this, CAMulator’s kinetic energy and potential temperature spectra (see Supplemental
+Fig. 1S) show minimal smoothing at smaller spatial scales, a common issue in data-driven models [see, Rasp et al.,
+2024] that can lead to weakened variability.
+Figure 7 presents the annual maximum 6-hourly 2m temperature and precipitation at each grid point for CAM6 and
+CAMulator, with differences shown in the bottom row. Overall, CAMulator successfully captures the spatial patterns
+of extreme events, but some notable biases emerge. For 2m temperature, CAMulator overpredicts Arctic extreme
+temperatures, particularly in regions dominated by sea ice and land ice. This bias is expected, as CAMulator lacks
+explicit sea-ice and land-ice interactions—a limitation that will be addressed in future versions. For precipitation,
+CAMulator underpredicts extremes in the deep tropics while overpredicting them in the mid-latitudes. Notably, the
+region off the coast of Japan exhibits a strong positive bias in extreme precipitation, suggesting that CAMulator may be
+overestimating the intensity of tropical cyclones in this region.
+10

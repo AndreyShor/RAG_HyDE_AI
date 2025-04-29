@@ -1,0 +1,44 @@
+on the BC between ˆYN+1 and YN+1 produced by a Split-CP algorithm is an
+upper bound obeying
+Prob
+
+BC(YN+1, ˆYN+1) ≥Qα
+
+≥1 −α
+(6)
+Qα = sup
+q
+( N
+X
+n=1
+1(BC(Yn, ˆYn) ≥q) ≥nα
+)
+(7)
+nα = ⌈(1 −α)(N + 1)⌉
+(8)
+The bound marginal validity holds when the data generating distribution of
+the calibration and test sets, {(Yn, ˆYn)}N
+n=1 and (YN+1, ˆYN+1), are exchange-
+able. In this case, (6) is guaranteed by the definition of the empirical quantile
+of exchangeable samples. See Lemma 1 of Tibshirani et al. (2019) for a sim-
+ple proof of the quantile lemma and Vovk et al. (2005) or Angelopoulos and
+Bates (2021) for a smooth introduction to CP.
+Central to any CP algorithm is a scoring function, or conformity score,
+A, which measures the quality of an output given the corresponding label.
+In our case,
+An = BC(ˆYn, Yn),
+n = 1, . . . N
+(9)
+In practice, (6) is obtained by finding an upper bound for AN+1(Y ) =
+BC(ˆYN+1, Y ), where Y represent any sN+1- dimensional random variable
+within distance Qα from the unknown ideal output, YN+1.
+2.5
+BC conformal extrapolation
+Let Z1, . . . , ZN and ZN+1 be the features of N quantum circuits that can be
+simulated on a classical machine and a large circuit that can not. The N
+tractable circuits are run on quantum hardware and a classical simulator to
+produce ˆYnm and Ynm, where n = 1, . . . , N and m = 1 . . . , Mshots. The N + 1-
+th circuit can not be simulated classically but can be run on the quantum
+hardware to obtain ˆY(N+1) m, m = 1 . . . , Mshots. As the (N+1)-th circuit may
+be much more noisy than the others the conformity scores An = BC(Yn, ˆYn),
+n = 1, . . . , N and AN+1 = BC(YN+1, ˆYN+1) may be non-exchangeable. In

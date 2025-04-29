@@ -1,0 +1,163 @@
+gl
+a(|kp|¯rI
+l ) :=
+1
+(¯rI
+l )
+3
+2 Al
+a,I
+Z ∞
+0
+drr2rl+2(a−1)e
+−1
+2 ( r
+¯rI
+l
+)2
+jl(|kp|r)
+=
+1
+(¯rI
+l )
+3
+2 Al
+a,I
+√π2a−3
+2 |kp|l(¯rI
+l )2(a+l+ 1
+2 ) Γ[a + l + 1
+2]
+Γ[l + 3
+2]
+1F1(a + l + 1
+2; l + 3
+2; −1
+2(|kp|¯rI
+l )2)
+
+= e−1
+2 (|kp|¯rI
+l )2(|kp|¯rI
+l )l
+
+
+√π2a−1(a −1)!
+q
+Γ(l + 2a −1
+2)
+L
+l+ 1
+2
+a−1(1
+2(|kp|¯rI
+l )2)
+
+,
+(152)
+where Γ(z) is the gamma function and
+1F1(i; j; z) is Kummer’s confluent hypergeometric function that can
+be expressed in terms of generalized Laguerre polynomials as
+Γ(1 −i)Γ(j)
+Γ(j −i)
+Lj−1
+−i (z) = 1F1(i; j; z).
+Employing Kummer’s transformation
+1F1(i; j; z) = ez 1F1(j −i; j; −z) with i = (l + 1
+2) + a, j = (l + 1
+2) + 1,
+z = −1
+2(k¯rI
+l )2 yields the final result where the term in parenthesis is a degree 2(a −1) polynomial of |kp|¯rI
+l .
+The normalization of the g-function is
+R ∞
+0
+dkk2gl
+a(k)2 =
+π
+2 . Putting everything together and moving to
+plane waves in pseudoions yields,32
+V i,I
+NL =
+X
+p1,p2,P∈G
+P+p1−p2∈G
+lmax
+X
+l=0
+l
+X
+m=−l
+3
+X
+a,b=1
+(4π)2(¯rI
+l )3
+Ω
+Y m
+l (ˆkp2)gl
+a(|kp2|¯rI
+l )BI,l
+a,bgl
+b(|kp1|¯rI
+l )Y m
+l (ˆkp1)∗|p2, P+p1−p2⟩⟨p1, P|i,I.
+Using the addition theorem 2l+1
+4π Pl(ˆx · ˆy) = Pl
+m=−l Y m
+l (ˆy)Y m
+l (ˆx)∗, we obtain Eq. (39) (reproduced below),
+V i,I
+NL =
+X
+p1,p2,P∈G
+P+p1−p2∈G
+3
+X
+a,b=1
+lmax
+X
+l=0
+4π
+Ω(¯rI
+l )3(2l + 1)gl
+a(|kp2|¯rI
+l )BI,l
+a,bgl
+b(|kp1|¯rI
+l )Pl(ˆkp1 · ˆkp2)|p2, P + p1 −p2⟩⟨p1, P|i,I.
+(153)
+The intuition is that, under the constraint of total momentum conservation between pseudoion and electron,
+the matrix element connecting electron states p1 →p2 has “radial” dependence on momenta through the
+overlap of their respective g-functions (G-functions in the diagonalized version in Eq. (108)) and “angular”
+dependence through the Legendre polynomials Pl, i.e.
+ˆkp1 · ˆkp2 is the cosine of the angle between the
+momenta of the two states. Our block-encoding procedure in Sec. 5.1.5 exploits this structure.
+B
+Detailed physical justification for initial states
+We utilize well-known results in physics to further justify our choice of initial state.
+Solids
+Many metals are qualitatively described by Fermi liquid theory (Ch. 15 of [94]), which, in short, states that
+electrons in solids can be treated as effective non-interacting fermionic quasiparticles. For metals, typical
+Fermi temperatures TF are between 104 −105K (Table 2.1 of [95]). With common operating temperatures
+of many chemical reactions on the order of a few hundred K, we are often in the regime T ≪TF. Employing
+the Sommerfeld expansion (Ch. 7 of [96]) for a metal with N ions, the electronic energy and heat capacity
+at constant volume becomes,
+Eel(T ≪TF) ≈3
+5NkBTF
+
+1 + 5
+12π2( T
+TF
+)2 + ...
+
+,
+CV,el(T ≪TF) ≈π2
+2 NkB( T
+TF
+).
+(154)
+32The original Ref. [60] (and subsequent work in Ref. [29]) shows a factor (−1)l. We believe this is erroneous since the factor
+il in Eq. (151) cancels in Eq. (150) due to conjugation since both bra and ket present.
+63

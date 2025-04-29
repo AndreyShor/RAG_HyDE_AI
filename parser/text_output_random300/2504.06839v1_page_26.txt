@@ -1,0 +1,140 @@
+3
+The long time evolution of a density depending on (x, θ, s, h).
+In this Section we want to prove Theorems 1.2, 1.3 and 1.4, which we recall below for clarity. Theorem 1.2 states that
+if the Fourier coefficients of a solution of (1.1.7) with initial datum µ0 are defined as
+µk
+t (θ, s, h) :=
+Z
+R2 dxe2πik·xµt(x, θ, s, h),
+k ∈R2,
+if the solution is defined for x ∈R2, and as
+µk
+t (θ, s, h) :=
+Z
+T2 dxe2πik·xµt(x, θ, s, h),
+k ∈Z2,
+if the solution is defined for x ∈T2, then there exists a constant C > 0 (depending on Q and not on p or k) such that
+for any k ∈R2, k ̸= (0, 0)
+µk
+t
+
+Lp ≤
+C
+min{1, |k|6}
+∥µk
+0∥L1 + ∥µk
+0∥Lp
+t + 1
++ ∥µk
+0∥L1(T1
+2π×[ t
+4 ,+∞)×[−1,1]) + ∥µk
+0∥Lp(T1
+2π×[ t
+4 ,+∞)×[−1,1])
+
+.
+while the constant C > 0 above does not depend on k or p. When not specified, the L1 and Lp norms are taken where
+the coefficients are defined, that is T1
+2π × [0, +∞) × [−1, 1].
+On the torus T2, this result combined with Theorem 1.1 implies Theorem 1.3, that is, under suitable conditions
+on µ0, if p is finite
+µt −⟨µ0⟩
+2π E
+
+Lp(T2×T1
+2π×[0,+∞)×[−1,1])
+−−−−→
+t→+∞0,
+and the same result holds for the weak-∗convergence in L∞.
+Lastly, on R2, Theorem 1.2 implies that µt −−−−→
+t→+∞
+0 (Theorem 1.4) in a very weak sense (of course not in L1
+because the total mass is preserved).
+3.1
+Long time behavior of Fourier coefficients
+The first goal is to prove Theorem 1.2. To this purpose we make several steps. First we characterize the time evolution
+of a particular Fourier coefficient: by multiplying equation (1.1.7) times e2πik·x and integrating with respect to x ∈T2
+(or x ∈R2) we get
+µk
+t (θ, s, h)
+=
+e2πitk·v(θ)µk
+0(θ, s + t, h)
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)e2πi(t−t′)k·v(θ)µk
+t′(θ + π −2 arcsin(h′), 0, h′),
+(3.1.1)
+and evaluating the obtained result at s = 0 we obtain
+µk
+t (θ, 0, h) = e2πitk·v(θ)µk
+0(θ, t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)e2πi(t−t′)k·v(θ)µk
+t′(θ + π −2 arcsin(h′), 0, h′). (3.1.2)
+As in the case without dependance on the variable x, the long time behavior of µk
+t (θ, s, h) is fully characterized by the
+long time behavior of µk
+t (θ, s = 0, h), which is what we are going to study.
+Writing µk
+t as a linear function of µk
+0.
+As in the case k = (0, 0), which is what we studied in Section 2, we
+want to separate the dependance on µk
+0 in order to get more precise estimates. In particular, what we need to prove
+Theorem 1.2 is the following result.
+Proposition 3.1. Let µ0 ∈L1(T2 × T1
+2π × [0, +∞) × [−1, 1]) (or µ0 ∈L1(R2 × T1
+2π × [0, +∞) × [−1, 1])) and let
+{µk
+t } be the Fourier coefficients of the solution of (1.1.7) defined in (1.1.15). For any k ∈Z2, k ̸= (0, 0) (respectively
+k ∈R2, k ̸= (0, 0)) there exists a function φk : T1
+2π × [0, +∞) × [−1, 1] × T1
+2π × [−1, 1]
+L∞
+−−→C such that µk
+t (θ, 0, h)
+writes as a linear function of µk
+0 and an affine function of φk as
+µk
+t (θ, 0, h)
+=
+e2πitk·v(θ)µk
+0(θ, t, h)
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)e2πi(t−t′)k·v(θ)e2πit′k·v(θ+π−2 arcsin(h′))µk
+0(θ + π −2 arcsin(h′), t′, h′)
++
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′φk(θ, t −t′, h|θ′, h′)e2πit′k·v(θ′)µk
+0(θ′, t′, h′),
+and moreover there exists a constant C depending only on Q (and not on k) such that
+|φk(θ, t, h|θ′, h′)| ≤
+C
+min{1, |k|6}(t + 1)
+∀(θ, t, h|θ′, h′) ∈T1
+2π × [0, +∞) × [−1, 1] × T1
+2π × [−1, 1].
+26

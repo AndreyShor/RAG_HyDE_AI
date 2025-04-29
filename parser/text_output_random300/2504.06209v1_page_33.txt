@@ -1,0 +1,86 @@
+33
+called the output distribution. Note that the upper bound in eq. (G1) can be positive, negative, or zero. In particular,
+if the expected extracted work W is negative, realizing the isothermal process requires work, if it is positive, work
+can be gained.
+If an agent implements an isothermal process such that the expected extracted work equals the upper bound in
+eq. (G1), we say that the agent is Landauer efficient, in reference to Landauer’s bound on the erasure of one bit,
+which is a special case of eq. (G1).
+Based on the assumption that eq. (G1) holds, we will derive an upper bound on the work an agent agtM can expect
+to extract by undergoing a percept-action loop with an environment env.
+Let agtM →
+←env =
+
+Θagt, pagt
+M0A0, νenv
+S|A
+
+be a percept-action loop with identical action and percept alphabets A = S
+and memory alphabet M of the agent.
+Then, based on eq. (G1), the work an agent can expect to extract by
+implementing Θagt in between rounds (channel uses) t and t + 1 is upper bounded by
+Wt→t+1 ≤H (At+1, Mt+1) −H (St, Mt) .
+(G3)
+Taking the Ces`aro limit (for a definition, see eq. (A14)), we find an upper bound on the expected extracted work per
+round:
+⟨Wt→t+1⟩t ≤⟨H (At+1, Mt+1) −H (St, Mt)⟩t .
+(G4)
+It is convenient to regroup terms in the Ces`aro sum on the right-hand side of this expression:
+⟨H (At+1, Mt+1) −H (St, Mt)⟩t = lim
+n→∞
+1
+n
+n−1
+X
+t=0
+[H (At+1, Mt+1) −H (St, Mt)]
+(G5)
+= lim
+n→∞
+1
+n
+ 
+H (A0, M0) +
+n−1
+X
+t=0
+[H (At+1, Mt+1) −H (St, Mt)]
+!
+(G6)
+= lim
+n→∞
+1
+n
+ n−1
+X
+t=0
+[H (At, Mt) −H (St, Mt)]
+!
+(G7)
+= ⟨H (At, Mt) −H (St, Mt)⟩t
+(G8)
+where in eq. (G6) we added H (A0, M0) inside the Ces`aro limit which does not change the result because it vanishes
+as n →∞.
+Then, we can rewrite the argument of the Ces`aro limit using twice the definition of conditional entropy:
+H (At, Mt) −H (St, Mt) = H (At|Mt) + H (Mt) −H (St|Mt) −H (Mt)
+(G9)
+= H (At|Mt) −H (St|Mt) .
+(G10)
+We define
+Wt(agtM →
+←env) := H (At|Mt) −H (St|Mt)
+(G11)
+as the extractable work for round t and
+W(agtM →
+←env) := ⟨H (At|Mt) −H (St|Mt)⟩t
+(G12)
+as the work rate, the a.m. extractable work (both in units of kBT ln 2).
+2.
+Existence of Landauer-efficient agents
+The bound on expected extracted work for a single isothermal implementation of a transition matrix, eq. (G1), can
+be reached using efficient protocols. These protocols typically have idealized requirements such as arbitrary energy
+functions or infinite timescales; see for example [19] for a protocol based on over-damped Brownian motion in a
+controllable energy landscape.
+In the following we will outline, for any percept-action loop agtM →
+←env and provided that such idealized protocols
+are available, how an implementation for agtM can be found which extracts all a.m. extractable work, eq. (G12) using
+only finite memory. Such agents will be called Landauer efficient.

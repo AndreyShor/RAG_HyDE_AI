@@ -1,0 +1,138 @@
+Supplementary Material for
+Computing Canonical Averages with Quantum and Classical
+Optimizers: Thermodynamic Reweighting for QUBO Models of
+Physical Systems
+Francesco Slongo1 and Cristian Micheletti1
+1Scuola Internazionale Superiore di Studi Avanzati (SISSA), Via Bonomea 265, I-34136 Trieste, Italy.
+(Dated: April 10, 2025)
+1.
+SOLUTION OF THE SELF-CONSISTENT
+EQUATIONS FOR W
+We adopted an iterative procedure to solve the
+self-consistent relation for W of eq. (10) the main
+text, which we rewrite here more conveniently as:
+W(E) =
+P′
+j
+nj(E)
+gj
+
+1−W (E)
+Zj
+
+P′
+k
+Nk
+Zkgk
+
+1−W (E)
+Zk
+ =
+P′
+j
+nj(E) Zj
+gj(Zj−W (E))
+P′
+k
+Nk
+gk(Zk−W (E))
+,
+(S1)
+where:
+Zj =
+X
+Emin(j)≤E≤Emax(j)
+W(E) ,
+(S2)
+and the W array is subject to the normalization con-
+dition:
+X
+E
+W(E) = 1 ,
+(S3)
+The prime in eq. S1 indicates that the sum is re-
+stricted to intervals that include E.
+In the following we shall use a superscript (i) to
+indicate the W and Z arrays at the ith iteration step,
+i.e., W (i)(E) and Z(i)
+j . Additionally, we shall assume
+that W (i)(E) = 0 in correspondence of energy bins
+where no states have been observed.
+A.
+Iterative procedure
+With the above proviso, the density of states is
+initialized to a trial profile W (0)(E), such as the one
+obtained with the procedures discussed in subsec-
+tions C and D. The jth element of the correspond-
+ing Z array, Z(0)
+j
+is then calculated from eq. S2 using
+W (0)(E) in place of W(E).
+At the ith iteration step the W array elements
+are updated with a relaxation procedure based on
+eq. S1:
+W(E)(i+1) = (1−α) W (i)(E)+α
+P′
+j
+nj(E) Z(i)
+j
+gj
+
+Z(i)
+j
+−W (i)(E)
+
+P′
+k
+Nk
+gk
+
+Z(i)
+k −W (i)(E)
+ .
+(S4)
+where the mixing coefficient α ∈(0 : 1) is small
+enough to ensure convergence.
+Next, the newly
+computed W(E)(i+1) are rescaled by a normaliza-
+tion factor to satisfy eq. S3. Finally, the normalized
+W (i+1) array is used to compute the updated Z ar-
+ray:
+Z(i+1)
+j
+=
+X
+Emin(j)≤E≤Emax(j)
+W (i+1)(E) ,
+(S5)
+The maximum usable values of the mixing param-
+eter α depend on the number of energy bins in the
+intervals and the dynamic range of the W elements
+in the intervals, as discussed below. In practical im-
+plementations, we found that the convergence rate
+of the procedure is improved by nesting the updates
+of eqs. S4 and S5 within a damped update of an
+auxiliary Z array, see subsection D.
+B.
+Stability of the fixed point solution
+We now consider the stability of the iterative pro-
+cedure, showing that its fixed point is an attractor.
+We shall indicate the fixed point solutions of eqs. S1–
+S3 with a ∗superscript, i.e. W ∗and Z∗. In addition,
+we shall set all gs equal to 1 for clarity, equivalent
+to assuming that histogrammed data have been re-
+sampled with a stride sufficiently large to remove
+correlations.
+Consider a perturbed density of states, f
+W, ob-
+tained by modifying the fixed point solution in cor-
+respondence of a single energy value, ¯E,
+f
+W(E) =
+(
+W ∗(E) + ∆W
+for E = ¯E,
+W ∗(E)
+otherwise,
+(S6)
+arXiv:2504.07094v1  [quant-ph]  9 Apr 2025

@@ -1,0 +1,37 @@
+(a) Ground Truth
+(b) HOSVD
+(b) SVD
+Y
+X
+X
+Y
+X
+X
+Y
+X
+X
+Figure 18: (a) Ground truth spanwise velocity components at t = 528. (b) Comparison
+of the predicted spanwise velocity components for HOSVD (left column) and SVD (right
+column) across different LSTM architectures. From top to bottom: predictions for LSTM
+with 1 Dense, 2 Dense, and Time-Distributed architectures.
+leads to extremely high relative errors. In such a case, RRMSE is not a good way to
+evaluate the model; rather, the focus should be on the UQ curves presented below. While
+differences between LSTM architectures remain small, the 2 dense model achieves the
+best performance for the HOSVD approach, followed by the time-distributed architecture.
+Despite the advantages of HOSVD, achieving high accuracy in this component remains a
+challenge due to the inherent complexity of three-dimensional flow dynamics.
+Architecture
+HOSVD (%)
+SVD (%)
+LSTM 1 Dense
+3.1
+4
+LSTM 2 Dense
+1.5
+3.1
+LSTM Time-Distributed
+1.6
+2.3
+Table 11: RRMSE values for HOSVD and SVD across LSTM architectures for the stream-
+wise velocity component of the 3D cylinder flow.
+33

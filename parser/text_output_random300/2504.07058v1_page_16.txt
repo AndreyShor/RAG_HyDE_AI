@@ -1,0 +1,69 @@
+Differentiating both sides gives:
+|∆𝑅(𝑈𝑛)|⩽𝐶𝑒−𝜁|𝑈𝑛| |∆𝑈𝑛|.
+(2.107)
+Taking the 𝐿2(D)-inner product with ∆𝑈𝑛, We obtain:
+
+∆𝑅(𝑈𝑛), ∆𝑈𝑛
+⩽𝐶
+Z
+D
+𝑒−𝜁|𝑈𝑛| |∆𝑈𝑛|2𝑑𝑥.
+(2.108)
+Since 𝑒−𝜁|𝑈𝑛| is strictly decreasing, there exists a constant 𝐶0 > 0 such that:
+𝑒−𝜁|𝑈𝑛| ⩽𝑒−𝜁∥𝑈𝑛∥𝐿∞⩽𝑒−𝜁𝐶0.
+(2.109)
+Thus, we get:
+
+∆𝑅(𝑈𝑛), ∆𝑈𝑛 ⩽𝐶1𝑒−𝜁𝐶0 ∥∆𝑈𝑛∥2
+𝐿2(D).
+(2.110)
+This leads to the energy inequality:
+𝑑
+𝑑𝑡∥∆𝑈𝑛∥2
+𝐿2(D)⩽−𝜆∥∆𝑈𝑛∥2
+𝐿2(D),
+(2.111)
+where 𝜆= 𝐶1𝑒−𝜁𝐶0 is positive. Applying Gr¨onwall’s inequality, we conclude:
+∥∆𝑈𝑛(𝑡)∥𝐿2(D)⩽∥∆𝑈𝑛(0)∥𝐿2(D)𝑒−𝜆𝑡.
+(2.112)
+Thus, ∥∆𝑈𝑛∥𝐿2(D) decays exponentially over time.
+Taking the time derivative of both sides of the Burgess equation, multiplying by 𝑈𝑛
+𝑡, and applying Gr¨onwall’s
+inequality, we obtain the boundedness of 𝑈𝑛
+𝑡. Combining this with the Aubin-Lions compactness theorem and
+the uniform boundedness of {𝑈𝑛}, {∆𝑈𝑛}, and {𝜕𝑡𝑈𝑛}, there exists a subsequence of {𝑈𝑛}𝑛∈N (still denoted by
+{𝑈𝑛}𝑛∈N), which converges to some function
+𝑈∈𝐶([0,𝑇]; 𝐻1(D)) ∩𝐿2([0,𝑇]; 𝐻2(D)).
+(2.113)
+Moreover, 𝑈𝑛converges strongly to 𝑈in 𝐿2(D). By the Arzel`a-Ascoli theorem, 𝑈𝑛uniformly converges to 𝑈in
+D.
+□
+To establish the convergence of the EFK equation, we follow the approach used for the Cahn-Hilliard equation
+in [56].
+Theorem 2.6. Under the assumptions of Lemma Appendix E.4 and nonlinear term 𝐹satisfies Appendix E.7,
+there exists a unique solution 𝑢∈𝐻2(D) ∩𝐻4(D) to the EFK equation 2.10. Moreover, if the sequence {𝑈𝑛} is
+uniformly bounded and equicontinuous, then the neural network approximation 𝑈𝑛converges strongly to 𝑢in 𝐿2(D).
+Furthermore, 𝑈𝑛uniformly converges to 𝑢in D.
+Proof. The proof is provided in Appendix E.3.
+□
+3
+Numerical Experiments
+The PINN algorithms (2.1) and (2.2) were implemented using the PyTorch framework [40].
+All numerical
+experiments were conducted on an Apple Mac-Book equipped with an M3 chip and 24 GB of RAM. Several
+hyper-parameters play a crucial role in the PINN framework, including the number of hidden layers 𝐾−1, the width
+of each layer, the choice of activation function 𝜎, the weighting parameter 𝜆in the loss function, the regularization
+coefficient 𝜆reg in the total loss and the optimization algorithm for gradient descent. The activation function 𝜎is
+chosen as the hyperbolic tangent (tanh), which ensures smoothness properties necessary for theoretical guarantees
+in neural networks. To enhance convergence, the second-order LBFGS optimizer is employed. For optimizing the
+remaining hyper-parameters, an ensemble training strategy is used, following the methodology in [4,33–35,37]. This
+approach systematically explores different configurations for the number of hidden layers, layer width, parameter 𝜆,
+and regularization term 𝜆reg, as summarized in Table 1. Each hyper-parameter configuration is tested by training
+the model 𝑛𝜃times in parallel with different random weight initializations. The relative 𝐿2 error and training loss
+are denoted as E𝑟
+𝐺and E𝑇, respectively. The configuration that achieves the lowest training loss is selected as the
+optimal model. Numerical experiments have been conducted with a maximum of 5000 LBFGS iterations.
+3.1
+Forward Problem
+The forward problems for both models are discussed as follows:
+16

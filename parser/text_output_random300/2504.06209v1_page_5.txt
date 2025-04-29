@@ -1,0 +1,117 @@
+5
+FIG. 4.
+An agent agt interacting with the cascade of two
+environment channel env1 and env2.
+τothers ≪τprotocol ≪τinfo. The protocol has access to a
+work reservoir for storing (or retrieving) work.
+Under these assumptions, it can be shown [7, 8] that,
+similar to equilibrium thermodynamics, the second law
+of thermodynamics sets an upper bound on the ex-
+pected amount of work extractable from a system with
+information-bearing degrees of freedom X. This upper
+bound is a state function, known as the nonequilibrium
+free energy, F = U −kBT ln 2 H(X), where U is the
+memory system’s internal energy, kB is the Boltzmann
+constant. Note that we refer to the work as expected be-
+cause it is the work that can be expected to be extracted
+on average based on the available knowledge about the
+input state pX.
+In addition, in order to focus on the energetic limits of
+information processing alone, we assume that the inter-
+nal energy landscape over information-bearing degrees of
+freedom is flat and remains unchanged before and after
+executing the isothermal protocol, i.e., the internal en-
+ergy U does not contribute to the extractable work. Such
+a memory model is also known as an information reser-
+voir [37]. Then, the second law yields an upper bound
+on the expected extractable work W:
+W ≤H (Xout) −H (Xin) ,
+(14)
+from implementing Φ on X, mapping Xin to Xout. Here
+and throughout, all work expressions are understood to
+be in units of kBT ln 2.
+The upper bound in eq. (14), imposed by the second
+law, is tight in the sense that it can, in principle, be sat-
+urated with protocols under idealized conditions. Con-
+crete examples of such protocols are given in [16, 17, 19].
+While our work is primarily concerned with the fun-
+damental limits imposed by the second law, it should
+be noted that more realistic and resource-constrained
+assumptions can be incorporated [38–41].
+Within our
+framework, this is most easily achieved when the ex-
+tractable work can still be expressed through a state
+function, such as in [40], by replacing F with the new
+state function.
+With this, the work rate, i.e., the asymptotically ex-
+pected work per round that an agent model agtM can
+extract using the environment channel env is (see Sup-
+plemental Material G 1 for a derivation)
+W(agtM →
+←env) = ⟨(H (At|Mt) −H (St|Mt))⟩t ,
+(15)
+with the Ces´aro limit ⟨•⟩t defined in eq. (10). The ex-
+istence of work rate is not guaranteed for arbitrary pro-
+cesses, as it is possible that the Ces´aro limit in eq. (15)
+Environment Channel env
+Cwork(env)
+Noiseless
+0
+Memoryless Invariant
+max
+pA0
+
+H(S0) −H(A0)
+
+Unifilar Product
+log |A| −h(S)
+TABLE I. Work capacity for different classes of environment
+channels (see eq. (18) for a definition of h(S) and Supplemen-
+tal Material G 3 for a proof).
+does not exist [42]. Note, however, that here the limit
+exists because the global Markov chain of the percept-
+action loop is asymptotically well-behaved (see Supple-
+mental Material B for details). We then arrive at the
+following
+Definition 5. The work capacity Cwork of an envi-
+ronment channel env is defined as
+Cwork(env) :=
+max
+agtM∈A→
+←env W(agtM →
+←env).
+(16)
+where A
+→
+←env denotes the set of all agent models which can
+interact with env.
+Intuitively, the work capacity captures the maximum
+rate at which an agent—optimally tailored to the envi-
+ronment channel—can expect to extract work, based on
+the second law of thermodynamics.
+The existing pro-
+tocols for implementing transition matrices [16, 17, 19]
+can be leveraged to construct optimal protocols for the
+agent model agtM which maximizes eq. (16), making it,
+in principle, saturable (see Supplemental Material G 2 for
+details).
+Returning to the question posed at the beginning of
+this section, the energetic limits of agents, in terms of
+work rate, are determined by the work capacity of the
+environment channel.
+Next we will provide some general properties of work
+capacity:
+Theorem 3. For any environment channel env = νenv
+S|A,
+work capacity Cwork(env) has the following properties:
+(i) (Existence) Cwork(env) exists,
+(ii) (Bounds) 0 ≤Cwork(env) ≤ln |S|,
+(iii) (Subadditivity under channel cascade, see Figure 4)
+Cwork(env2 ◦env1) ≤Cwork(env1) + Cwork(env2).
+See Supplemental Material G 3 for a proof. Note that
+the bounds in Theorem 3 follow from the canonical
+bounds on Shannon entropy.
+Due to the Ces´aro limit, work capacity is generally
+difficult to compute. However, for special classes of envi-
+ronment channels, the expression for work capacity sim-
+plifies, as shown in Table I.

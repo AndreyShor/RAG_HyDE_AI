@@ -1,0 +1,124 @@
+PAGIONO
+An ionospheric activity index
+Dr.Paul.Kinsler@physics.org
+However, a limitation in the current approach to ROTI maps
+lies in their consideration of an average ROTI value in each
+map pixel. The typical discrete pixelization of the globe over a
+hypothetical screen at F-region altitudes (e.g., 350 km) there-
+fore covers an area much greater than the size of any indi-
+vidual disturbance, so that the averaging greatly reduces the
+sensitivity to geometry-dependent propagation disturbances,
+and hence to the presence of irregularities in any given pixel.
+Various approaches to improving the sensitivity to distur-
+bances, and the detection of irregularities have been sug-
+gested: for example, the GIX [10, 21], a probabilistic descrip-
+tion [20] as well as others [22–28]. However, an index capa-
+ble of summarising how the state of the ionosphere evolves
+in space and time (e.g. in response to specific space weather
+conditions) similarly to indices such as KP [29] or Dst [30, 31]
+is difficult to obtain. This is because of the dispersive nature
+of the ionosphere, the ever-changing temporal and spatial dif-
+ferences in the ionosphere state, and the sparsity of the obser-
+vations available.
+We introduce here a method that estimates the spatial
+variability of propagation disturbances by using the GNSS-
+derived rate of change of TEC (dTEC) evaluated over the IGS
+network. A statistical characterisation of dTEC values and a
+best-fit to their probability density functions allow us to de-
+rive an index that encapsulates the state of the ionosphere in a
+given region and over a given interval of time. This indicates
+whether or not irregularities may be present, and the magni-
+tudes of the propagation disturbances associated with them.
+Results obtained from case studies chosen to cover a range
+of geomagnetic conditions indicate that whilst describing the
+day-to-day ionospheric variability, the new scale can iden-
+tify deeper and geo-effective modifications occurring in the
+ionosphere in response to changing geomagnetic and space
+weather conditions.
+II.
+MOTIVATION
+Using GNSS signals as a means of characterising the iono-
+sphere has been a field of interest for decades; typically using
+deduced total electron concentrations (TEC) to map onto and
+inform large physics-based models of the ionosphere; but here
+we focus on the fluctuations in TEC as a useful indicator in it-
+self.
+Since inhomogeneities in the spatial distribution of the
+ionospheric plasma density form due to instability processes
+[1], they necessarily go on to affect the GNSS observables
+on a range of temporal and spatial scales. Thus the pseudo-
+ranges and carrier phases measured by a GNSS receiver can
+show both short-time and long-term temporal fluctuations; as
+resulting from signal propagation through the various scales
+of ionospheric plasma irregularities [6, 7, 32–37].
+To an end-user, the practical effect of these fluctuations in
+GNSS observables is typically an increased positioning error,
+or in more extreme cases, a loss of (usable) GNSS signals.
+With an ability to forecast the prevalence of propagation dis-
+turbances in a given region and over a given interval of time
+– ideally as summarized in a simple index – this would al-
+low systems and services to adopt suitable countermeasures
+that limit the impact of degraded GNSS availability on their
+operations [20, 38].
+A.
+Existing Indices
+There are are a range of geomagnetic indices currently in
+widespread use, but none of these have a direct relationship
+to the ionospheric state. The most notable is KP, which is
+based on combined magnetometer measurements from a spe-
+cific set of ground locations; AP is a daily averaged version
+of Kp; and then Dst is based on an estimate of the globally
+symmetrical equatorial electrojet (“ring current”) in the mag-
+netosphere. Whilst these indicate the presence of geomagnetic
+disturbances capable of modifying the global state of the iono-
+sphere, they are not sensitive to geoeffectiveness in the iono-
+spheric response to active geomagnetic conditions. Moreover,
+these indices are not easily related to ionospheric propagation
+effects that can impact services and operations reliant upon
+satellite telecommunications, such as GNSS.
+Perhaps most similar in basis to our proposed index are
+ROTI (the rate of TEC index) and other ROTI-like indica-
+tors [21], which also characterise rates of change in TEC, and
+therefore are actually indicators for the state of the ionosphere.
+These are based on the variance of changes in TEC, and a typ-
+ical ROTI is computed using a sliding window (of a specific
+customary duration) over the time series of TEC data, where
+the ROTI itself is based on the variance about the average
+TEC within that window. This windowing average technique
+is used to help remove unwanted trends from the data, such as
+that due to geometry (e.g. elevation angle) of the satellite to
+ground station raypath, or other slow background changes also
+considered irrelevant to the disturbances of interest. However,
+ROTI is generally computed for specific latitude and longitude
+pixels, in order to create time-dependent maps of ionospheric
+disturbances; and there is as yet no widely agreed mechanism
+to merge these spatially localised results into a single regional
+or global number, although various proposals exist (see e.g.
+[9, 17, 26].
+B.
+LdT index
+In contrast, the LdT index focusses on the statistical prop-
+erties of temporal changes in TEC (“dTEC”) as an indicator
+in its own right. By characterising a reference data set rep-
+resenting the minimal or “quiet” behaviour of the ionosphere
+– as characterised by GNSS signals – we can then appreciate
+the conditions implied during more active ionospheric peri-
+ods. Further, by analysing and normalising signal data from
+all GNSS band pairs, as divided into both temporal and spatial
+intervals, we can investigate how these affect the assessment
+and reporting of the ionospheric state. For this purpose we
+use “dTEC” as an abbreviation for the change in TEC per sec-
+ond, as computed by tracking signals between each satellite-
+ground station pair, and based on 30 second interval data.
+A key point is that although it might be tempting to charac-
+terise the dTEC distributions obtained via GNSS using mea-
+sures such as average, variance, kurtosis, and higher order mo-
+ments; we see in the data that the distributions contain power-
+law tails that become visible at large dTEC values. In some
+cases, the power exponent indicating the tail’s fall-off is low
+enough so that some of these moments become infinite. So al-
+though one can compute any moment from the sampled data,
+a reliable relationship between that computation and that of
+the underlying distribution is not always guaranteed.
+Accordingly, instead of computing moments we instead
+2

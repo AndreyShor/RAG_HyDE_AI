@@ -1,0 +1,87 @@
+the original protocol; (ii) relax the protocol by considering the collective-attacks assumption to alter its
+structure and enhance the key rate. However, despite the drop in n ∼[106, 107] the required number of
+rounds remains impractically large.
+Entropy accumulation theorem with improved second order. EAT theorem provides tight bounds only at
+the first order. The second-order term can be improved in many protocols of interest, where the entropy
+is estimated by testing positions with probability O(n−1). Since ν1 ∝∥∇fmin ∥∞∝O(n), this gives
+ν1
+√n ≫tn. Ref. [263] show the correction, Hε
+min(Kn
+1 | Sn
+1 E) ≥nt −(ν1
+√n + ν2), with ν2, a functions
+of ε, the maximum dimensions of the systems Ki (dK), and the variance of the function f. This further
+improvement contributes to reducing n.
+4.2. Generalized entropy accumulation theorem
+EAT is incompatible with prepare-and-measure protocols because it assumes Markovianity, where
+side information ρsi, once output, cannot be updated so that the total side information is in ρESn. But
+in prepare-and-measure protocols, Eve intercepts ρi at the i-th round and updates her side information
+ρS1,...,Si so that the total side information is higher than the one in ρESn
+1 . Although Markovianity allows
+estimating the smoothed min-entropy from a single round, it conflicts with the dynamic nature of side
+information in prepare-and-measure scenarios. For these protocols, to apply EAT one must first convert
+the protocol to an Entanglement-based one.
+To illustrate what could happen without markovianity,
+consider a case where Ki is classical and no side information is output in the first n −1 rounds. Consider
+the side information of the last round in ρSn that contains a copy of the systems An which can be passed
+along during the process in the systems Ri. Then, Hϵ
+min = 0 while for the previous n −1 rounds, each
+single-round entropy bound that only considers the system Ki and Si can be positive. To address these
+issues, the Generalized Entropy Accumulation Theorem (GEAT) replaces the Markov condition with a
+natural non-signalling condition between past outputs and future side information [25].
+Definition 21. (non-signal process) Given M a sequential process from 17. It is non-signal if
+∀Mi
+∃Ri : Ei−1 →Ei CPTP s.t
+TrKiRi ◦Mi = Ri ◦TrRi−1.
+(112)
+Let us consider the systems Ri−1 and RiKi as the inputs and outputs on “Alice’s side” of Mi, and
+Ei−1 and Ei as the inputs and outputs on Eve’s side, then Eq. (112) states that the marginal of the output
+on Eve’s side cannot depend on the input on Alice’s side. This is exactly the non-signaling condition of
+Eq. (7) in non-local quantum games.
+Theorem 9. Given a non-signal sequential process M = ⃝n
+i=1Mi with Mi : Ri−1Ei−1 →RiKiCiEi (see
+fig. 12) such that the output state is ρ|ω = M(ρin), an affine min-tradeoff f such that t = min f(p(ω)),
+ε ∈(0, 1), α ∈(1, 3
+2), then
+Hϵ
+min(Kn|En)ρ|ω ≥n
+ 
+t −α −1
+2 −α
+ln 2
+2 V 2 −
+α −1
+2 −α
+2
+K′(α)
+!
+−g(ϵ) −α log p(ω)
+α −1
+,
+(113)
+where p(ω) is the probability of observing event ω, and
+g(ϵ) = −log(1−
+p
+1 −ϵ2),
+V = log(2d2
+A+1)+
+p
+2 + ∆f,
+K′(α) = (2 −α)3 ln3(2β + e2)
+6(3 −2α)3 ln 2
+2
+α−1
+2−α (β+log dA)
+(114)
+with dA = maxi dAi, ∆f = Varf and β = log dA + Max(f) −MinΣ(f)
+The GEAT deals with a sequence of channels Mi that can update both the internal memory register
+Ri and the side information register Ei (subject to the no-signalling condition of Eq.(112)), while EAT
+sequential channels do not update from each round the side information in the next rounds. As a result,
+GEAT is strictly more general than the EAT [25]. The B92 protocol and BB84 decoy-state protocol,
+lacking direct conversion to an entanglement-based form, cannot use EAT for security proof but it is
+based on GEAT [264, 265].
+Before (G)EAT the security proof bounds utilized de Finetti-type theorems combined with the QAEP,
+but with several drawbacks: (i) applicable only under specific assumptions regarding the symmetry of
+the protocols robust only against specific attacks; (ii) limited in the practically finite-size analysis; (iii)
+limited in a device-independent context. Entropy Accumulation Theorem (EAT) [82, 263, 266] applied
+42

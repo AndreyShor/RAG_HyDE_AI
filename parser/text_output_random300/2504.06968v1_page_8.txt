@@ -1,0 +1,53 @@
+Methods
+Fermi data analysis. The GBM consists of 12 sodium iodides (NaI) detectors (8 keV−1 MeV)
+and two bismuth germanate (BGO) detectors (20 keV−40 MeV)25, which has three different data
+types: continuous time (CTIME), continuous spectroscopy (CSPEC) and time-tagged event (TTE).
+The CTIME data include eight energy channels and have a finer time resolution of 64 ms. The
+CSPEC data include 128 energy channels, with a time resolution of 1.024 s. The TTE data consits
+of individual detector events, each tagged with arrival time, energy (128 channels), and detector
+number25. We download the GBM data of GRB 221023A from the public science support center
+at the official Fermi Website https://heasarc.gsfc.nasa.gov/FTP/fermi/data/
+gbm/triggers/2022/bn221023862/.
+We extracted spectrum by using the TTE data from the brightest (with the smallest angle
+between this detector and the source object) two NaI detectors (n0, n1) and one BGO detectors
+(b0). The light curves were extracted using the GBM Data Tools49. The spectral analysis of the
+Fermi-GBM data was performed using the Bayesian approach package, namely the Multi-Mission
+Maximum Likelihood Framework (3ML)50. We selected the GBM spectrum over 8 −900 keV
+and 0.3 −30 MeV for NaI detectors and BGO detector, respectively. In order to avoid the iodine
+K-edge at 33.17 keV 25, we ignore the data for the 30 −40 keV energy ranges . The background
+spectrum from the GBM data was extracted from the CSPEC data with two time intervals before
+and after the prompt emission phase and modeled with a polynomial function of order 0 −4
+(Selected background time intervals: -130 −-10 s, 100 −200 s). We have used the Bayesian fitting
+method for the spectral fitting, and the sampler is set to the dynesty-nested. And we accounted for
+intercalibration constant factors among NaI and BGO detectors.
+Spectral fitting. Figure 1 presents the light curves for GRB 221023A at different energy band.
+We subdivided the light curve into five intervals labeled A (0 −5 s), B (5 −8 s), C (8 −30 s), D
+(30 −36 s) and E (36 −60 s), respectively, which were separated by red dashed vertical lines. We
+fit the corresponding spectra using the empirical Band function4, formulated as follows:
+NBand(E) = K
+
+
+
+(
+E
+100 keV)αexp(−E(2+α)
+Ep
+),
+( if E < (α −β) Ep
+2+α).
+h
+(α−β)Ep
+(2+α)100 keV
+iα−β
+exp(β −α)(
+E
+100 keV)β,
+( if E ≥(α −β) Ep
+2+α).
+(1)
+where K is the normalization of Band spectrum, α and β are the low and high-energy photon
+spectral indices, respectively. E is the observational photon energy, and Ep is the peak energy of
+the νFν spectrum. The maximum values of the marginalized posterior probability densities and
+the corresponding 1σ uncertainties for each parameter of the Band model in each time interval are
+presented in Table 1.
+8

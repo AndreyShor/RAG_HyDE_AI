@@ -1,0 +1,123 @@
+2
+This is what is addressed in this work. We prescribe a
+method to calculate these dynamical response functions
+from an integrand that is only ‘available’ at points of
+a coarse grid. We emphasize that in condensed-matter
+systems, the new ground state can be non-commensurate
+with the lattice [28, 29] and, hence, it is not possible to
+choose the special points of the BZ a priori, as required
+by some of the above methods. To be definite, we are
+interested in computing integrals of the type
+χ(ω) =
+Z
+dDk
+(2π)D I(⃗k, ω),
+(1)
+where D is the spatial dimension, the k-integration is
+over the BZ, and the integrand I(⃗k, ω) contains a line or
+a surface of poles at different ⃗k values. We will assume
+that I(⃗k, ω) is only available at a coarse set of ⃗k-points.
+Our solution to the problem of accuracy stems from
+recognizing the nature of the singularity in the inte-
+grand.
+It has been known that it is possible to ex-
+tract the asymptotic form of the singularity of the in-
+tegrand [19, 20, 22] in multidimensional integrals. This
+singularity is usually not a simple pole. However, analo-
+gous to an integration around a simple pole, we use the
+knowledge of the asymptotic singularity to introduce an
+integration scheme based on the ‘residue’ of this modified
+pole. We call this the modified-residue prescription. The
+modified-residue serves as the weight needed to sum over
+the coarse set of points to reproduce an accurate result.
+We demonstrate the validity of the method by calculating
+several response functions of anisotropic superconductors
+that are relevant to Raman scattering and their density of
+states. In particular, we show that it provides an order-
+of-magnitude improvement in the error when compared
+with a Riemann sum over the ⃗k points (which is often
+the only resort). We argue that if one knows the nature
+of the singularity, this prescription can be effectively in-
+corporated with other general integration methods such
+as the method of quadratures.
+In Sec. II, we derive and state the modified-residue
+prescription and demonstrate its validity with a quick
+example.
+In Sec. III, we demonstrate the use of our
+prescription on spectral functions that are used in the
+Raman response of superconductors, in a related many-
+body collective mode problem and in the calculation of
+the density of states. In Sec. IV, we quantify the error of
+the prescription and explain an interesting characteristic
+of our prescription: it outperforms the standard routines
+up to a minimum threshold size of the grid.
+We ex-
+plain this behaviour and show that the threshold is at an
+impractically small grid size, rendering this prescription
+useful in almost all practical scenarios. Finally, in Sec. V,
+we summarize our findings and discusses the scope for fu-
+ture use of this method. In Appendix A, we discuss the
+specific form of the residue that is used in the text.
+II.
+THE MODIFIED-RESIDUE PRESCRIPTION
+Let us start with a function χ(ω) that is obtained after
+a 1D integration:
+χ(ω) =
+Z b
+a
+dx I(ω, x),
+(2)
+where the integrand I has an integrable singularity at
+x = x∗∈[a, b). Since such a singularity is fast varying,
+it can be well approximated by a local asymptotic form
+s(ω, y) such that I(ω, x) = R(ω, x)s(ω, x −x∗) in the
+neighbourhood of the singularity at x = x∗. This local
+asymptotic form can always be deduced, even if the inte-
+grand itself is obtained from a separate integration (see,
+e.g., [22], which discusses such a method).
+The value
+R(ω, x∗) is nothing but limx→x∗I(ω, x)/s(ω, x −x∗) and
+can be called as the ‘residue’ of the singularity s(ω, y).
+This is a generalization of the conventional residue from
+a simple pole where s(y) = 1/y and we refer to it as a
+‘modified residue’.
+We can then identify R(ω, x) ≡I(ω, x)/s(ω, x −x∗) as
+the (modified) residue function that takes on the value
+of the residue at x = x∗. Of course, note that R(ω, x),
+by construction, is a slow varying function relative to
+s(ω, x −x∗) near x = x∗. With these new definitions, we
+can then evaluate Eq. (2) as
+χ(ω) =
+Z x∗−δ/2
+a
+dx I(ω, x) +
+Z x∗+δ/2
+x∗−δ/2
+dx
+I(ω, x)
+| {z }
+R(ω,x)s(ω,x−x∗)
++
+Z b
+x∗+δ/2
+dx I(ω, x)
+≈
+Z x∗−δ/2
+a
+dx I(ω, x) + R(ω, x∗)
+Z x∗+δ/2
+x∗−δ/2
+dx s(ω, x −x∗)
+|
+{z
+}
+S(ω,x∗)
++
+Z b
+x∗+δ/2
+dx I(ω, x),
+(3)
+where δ is a suitable value that controls the size of the
+sub-interval over which the singular part is to be inte-
+grated over. In the second line, we have used the fact
+that the residue R(ω, x) is slowly varying and pulled it

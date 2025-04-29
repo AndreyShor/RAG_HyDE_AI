@@ -1,0 +1,192 @@
+and therefore as a function of s the expression in (B.2.8) is bounded, and moreover, thanks to (B.2.3), we have
+Z ∞
+s
+ds′
+Z 1
+−1
+dhE(n)(s′, h)
+=
+Z ∞
+s
+ds′
+Z 1
+−1
+dhE(n−1)(s′, h)
+|
+{z
+}
+≤
+c′
+n−1
+s
++
+Z ∞
+s
+ds′
+Z 1
+−1
+dh
+Z s′
+0
+ds′′
+Z 1
+−1
+dh′Q(n−1)(s′ −s′′, h|h′)E(s′′, h′).
+Now since we can apply again the inductive hypothesis to the first of the previous two summands, we look at the
+second one, which we rewrite as
+Z ∞
+s
+ds′
+Z 1
+−1
+dh
+Z s′
+0
+ds′′
+Z 1
+−1
+dh′Q(n−1)(s′ −s′′, h|h′)E(s′′, h′)
+=
+Z ∞
+0
+ds′′
+Z 1
+−1
+dh′E(s′′, h′)
+Z ∞
+max{s′′,s}
+ds′
+Z 1
+−1
+dhQ(n−1)(s′ −s′′, h|h′),
+=
+Z s
+0
+ds′′
+Z 1
+−1
+dh′E(s′′, h′)
+Z ∞
+s
+ds′
+Z 1
+−1
+dhQ(n−1)(s′ −s′′, h|h′)
+|
+{z
+}
+=E(n−1)(s−s′′,h′)
++
+Z ∞
+s
+ds′′
+Z 1
+−1
+dh′E(s′′, h′)
+Z ∞
+s′′ ds′
+Z 1
+−1
+dhQ(n−1)(s′ −s′′, h|h′)
+|
+{z
+}
+=1 by (B.1.4)
+=
+Z s
+0
+ds′′
+Z 1
+−1
+dh′E(s′′, h′)E(n−1)(s −u, h′) +
+Z ∞
+s
+ds′′
+Z 1
+−1
+dh′E(s′′, h′)
+=
+Z s/2
+0
+ds′′
+Z 1
+−1
+dh′ E(s′′, h′)
+|
+{z
+}
+≤1
+E(n−1)(s −s′′, h′) +
+Z s
+s/2
+ds′′
+Z 1
+−1
+dh′E(s′′, h′) E(n−1)(s −s′′, h′)
+|
+{z
+}
+≤1
++
+Z ∞
+s
+ds′′
+Z 1
+−1
+dh′E(s′′, h′)
+≤
+Z ∞
+s/2
+ds′′
+Z 1
+−1
+dh′E(n−1)(s′′, h′) +
+Z ∞
+s/2
+ds′′
+Z 1
+−1
+dh′E(s′′, h′) +
+Z ∞
+s
+ds′′
+Z 1
+−1
+dh′E(s′′, h′)
+≤
+2c′
+n−1 + 2C + C
+s
+by inductive hypothesis and with C derived by (B.2.2).
+This concludes the proof of Lemma B.3.
+B.3
+Properties of Π, f and gk.
+In this Subsection we want to prove some properties of the functions written above.
+Properties of Π.
+Let us begin with Π: Π is not finite for any choice of h and h′, indeed Π(1| −1) = +∞, but we
+can prove that Π diverges logarithmically (at most).
+Lemma B.4. For any ε ∈(0, 1), the transition kernel Π in Definition 1.4 satisfies
+Π(h|h′) ≤6
+π2 max
+1
+ε, log 2 −log(1 −|h|)
+2(1 −ε)
+
+.
+Proof. We prove this property case by case (the cases which we are going to consider are not necessarily disjoints).
+Let us begin with the following case:
+If h and h′ have the same sign (hh′ ≥0), then Π(h|h′) ≤6
+π2 .
+(B.3.1)
+To prove inequality (B.3.1) we can notice that, since the hypothesis is symmetric in h and h′, we can restrict to the
+case h ≥h′ ≥0, where we have
+Π(h|h′) = 6
+π2
+log(1 + h) −log(1 + h′)
+h −h′
+= 6
+π2
+1
+1 + ξ , ξ ∈[h′, h] ⊆[0, 1] ⇒Π(h|h′) ≤6
+π2 .
+48

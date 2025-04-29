@@ -1,0 +1,47 @@
+17 
+information. In short, there is a trade-off between brain sensitivity and the model’s ability to isolate 
+extracerebral confounders in our current system. 
+Regarding noise characterization in SPAD experiments, our approach provides an approximate 
+representation of real noise. Noise levels can vary based on the detection region and source power, 
+which means that including a broader range of noise levels would improve robustness to 
+experimental variations. However, due to computational constraints, only three noise levels were 
+incorporated into our dataset. Additionally, 𝜌𝜌 was fixed at 35 mm for subject-specific calibration, 
+and the optical properties (𝜇𝜇𝑎𝑎 and 𝜇𝜇𝑠𝑠
+′) in the extracerebral layer were fixed. Expanding the range 
+of ρ and sampling more extensively across other model parameters would enable broader coverage 
+of application scenarios using the proposed method, supporting both longitudinal studies and inter-
+subject comparisons. We also applied a min-max scaling to both experimental and simulated data. 
+This ensured matching ranges but could alter the shape of the ACF curve slightly (caused by noise), 
+effectively introducing a small systematic difference between how labels were generated and how 
+experimental data appear. In future work, more sophisticated normalization or data augmentation 
+strategies could be explored to bridge this gap. 
+During the lunch test, we observed slight fluctuations in recovered rCBFi curves across different 
+test phases. Since these tests were conducted separately at different time points, variations in noise 
+due to hardware instability may have contributed to these fluctuations. Factors such as slight 
+differences in probe positioning, applied pressure, and detected photon count across trials could 
+affect measurements as well. Besides, the SPAD array is highly sensitive to movement, vibration, 
+breathing, and airflow in the test environment, all of which could introduce measurement 
+instability. Increasing the number of noise levels in future studies may help address this issue. 
+Moving forward, we will implement additional noise levels and optimize probe design to reduce 
+motion and pressure variations in real-world applications. This data-driven approach can be further 
+enhanced by incorporating additional measurement modes (e.g., multi-distance or time-resolved 
+DCS) to provide the model with richer information for separating tissue layers. 
+The proposed SPAD-DCS integrated with DL method can be a complementary to TD-DCS, it 
+achieves blood flow discrimination in the computational domain rather than the hardware domain. 
+This could be pitched as a cost-effective solution compared to full TD systems. Furthermore, our 
+method holds the ability to non-invasively monitor cerebral blood flow with high temporal 
+resolution has broad neurophotonics implications. Competing modalities (fMRI, PET) are too slow 
+or impractical for continuous monitoring. Traditional DCS is promising but struggled with 
+accuracy at deep layers. The contributions of this work (layer-aware DL model + high-SNR SPAD) 
+address those limitations head-on, bringing DCS closer to a viable neuro-monitoring tool for brain 
+health. For example, real-time bedside monitoring in neurocritical care, neurovascular coupling 
+studies, or augmented neuroimaging combined with functional near-infrared spectroscopy 
+(fNIRS). 
+ 
+ 
+5 
+Conclusion 
+In this work, we demonstrated the feasibility and advantages of using a DL model based on the 
+two-layer DCS analytical model, combined with a SPAD sensor for CBFi monitoring. The 
+proposed DL model significantly improves CBFi sensitivity and rCBFi accuracy while exhibiting 
+a comparable ability to an early-lag single-exponential fitting in minimizing superficial layer 

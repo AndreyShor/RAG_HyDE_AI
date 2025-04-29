@@ -1,0 +1,55 @@
+The second approach involves constructing a variation by parallel transporting a deterministic curve v(t) in
+the tangent space of a such that v(0) = v(T) = 0 for some T > 0, along the process Γ. This is used in case of
+geodesically complete manifolds, for instance, in the works of Arnaudon, Chen and Cruzeiro [18] for Lie groups,
+and Huang and Zambrini [21] for compact manifolds. The adaptedness of the variation is ensured by placing
+future conditions only on deterministic objects. Note that in this approach the final time is fixed and independent
+of the process. A related approach which considers a fixed final time is the use of Malliavin calculus. We refer
+the interested reader to Cruzeiro et. al. [8] for more details. While this approach does not involve choosing a
+compact set and it accounts for a deterministic final time T, it involves more structure on the manifold.
+Fixing the final time t = T in the stochastic setting leads to local problems. To elaborate on this, first consider
+the case of deterministic Euler-Lagrange equations. Recall that the proof of the equivalence of Hamilton’s principle
+and Euler-Lagrange equations in manifolds, using partial derivatives of the form ∂L
+∂q and ∂L
+∂˙q (see, for instance,
+Marsden and Ratiu [11], Theorem 8.1.3 and its proof) proceeds in local coordinates, by dividing the curve q(t)
+into a finite number of segments, each of which lies in a chart. For any chart U such that U has a non-empty
+intersection with the curve q(t), one can find a time interval [t0, t1] such that q(t) lies in U for t ∈[t0, t1]. Roughly
+speaking, global fixed endpoint problems, with fixed initial and final times, lead to local fixed endpoints problems
+with fixed inital and final times.
+But this is not the case if one considers a semimartingale Γ instead of a deterministic curve. Spatial localization
+of a semimartingale in charts leads to temporal localization within stopping times. This means that if U ⊆M is a
+chart, the first hitting time of Γ in U and the first exit time from U are (random) stopping times. Thus, globally
+considering a fixed endpoint problem with a final time T > 0 does not lead to fixed endpoint problems locally
+with a fixed final time. Therefore, should we want to do local computations with fixed endpoint conditions it is
+necessary that we construct variations that vanish at t = 0, t = T, as well as at the first hitting time and the
+first exit time. The first two conditions are necessary since U may contain the initial condition, or the exit time
+from U may exceed T.
+A main objective of this paper is to introduce variations of semimartingales that vanish not only at initial
+and final deterministic times but also at the first hitting and exit times for a chart in a manifold. This allows us
+to do variational principles in local coordinates on a manifolds.
+We also describe a novel method for working with variational principles globally on manifolds. We exploit
+the fact that Stratonovich equations on manifolds are determined by Stratonovich operators and these are deter-
+ministic generalizations of vector fields. By restricting the action integral to solutions of Stratonovich equations
+and assuming the noise to be an arbitrary semimartingale, we reformulate the problem of finding critical points
+of a stochastic action to determining a Stratonovich operator. Since the Stratonovich operator is a deterministic
+object, this suggests that the problem is solvable by deterministic arguments. We demonstrate that this is indeed
+the case, and in fact, this method allows us to bypass some of the complications that arise in the local case while
+working globally.
+This paper is structured as follows: after reviewing some terminologies and notations from stochastic calculus
+in Section 2, we introduce variations of semimartingales in Section 3. We prove a stochastic analogue of the
+fundamental lemma of the calculus of variations as well for Stratonovich integrals, especially taking into account
+variations that vanish at the first hitting and exit times for a chart. In Section 4 we turn our focus on the stochastic
+Hamilton-Pontryagin principle. The stochastic Hamilton-Pontryagin principle was formulated by Bou-Rabee and
+Owhadi [5] and studied more recently by Street and Takao [1]. As an application of the variational framework
+developed in Section 3, a proof of the local form of the stochastic Hamilton-Pontryagin principle is presented.
+This generalizes the Hamilton-Pontryagin principle formulated in [1] to arbitrary noise semimartingales. Then we
+discuss the intrinsic form of the stochastic Hamilton-Pontryagin principle by working at the level of Stratonovich
+operators.
+2
+Notations and Terminologies from Stochastic Calculus
+We will always consider continuous semimartingales defined on a probability space (Ω, F, P). If S, T are pre-
+dictable stopping times then we define
+[[S, T]] = {(ω, t) ∈Ω× [0, ∞) | S(ω) ≤t ≤T(ω)}
+[[S, T[[ = {(ω, t) ∈Ω× [0, ∞) | S(ω) ≤t < T(ω)}
+]]S, T]] = {(ω, t) ∈Ω× [0, ∞) | S(ω) < t ≤T(ω)}
+2

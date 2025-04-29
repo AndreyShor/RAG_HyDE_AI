@@ -1,0 +1,286 @@
+F is a contraction with respect to the Lp norm, with Lp := Lp(M
+k
+2 , k+1
+2
+∧T ), indeed by Young inequality (2.2.8),
+one has
+∥F[ρ] −F[ρ′]∥p
+Lp
+=
+Z
+R2 dx
+Z
+T1
+2π
+dθ
+Z
+k+1
+2
+∧T
+k
+2
+dt
+Z 1
+−1
+dh
+
+R t
+k/2 dt′ R 1
+−1 dh′Q(t −t′, h|h′)
+·(ρ −ρ′)(x −(t −t′)v(θ), θ + π −2 arcsin(h′), t′, h′)
+
+p
+=
+Z
+R2 dx
+Z
+T1
+2π
+dθ
+Z
+k+1
+2
+∧T
+k
+2
+dt
+Z 1
+−1
+dh
+
+Z t
+k/2
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)(ρ −ρ′)(x, θ, t′, h′)
+
+p
+≤
+Z
+R2 dx
+Z
+T1
+2π
+dθ
+Z
+k+1
+2
+∧T
+k
+2
+dt
+Z 1
+−1
+dh
+Z t
+k/2
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)|ρ −ρ′|p(x, θ, t′, h′)(1 −E(t −k
+2, h))p−1,
+and now let us notice that one can define
+CE := min
+
+E(t, h) : t ∈
+
+0, 1
+2
+
+, h ∈[−1, 1]
+
+> 0,
+in such a way to get by the previous computations
+∥F[ρ] −F[ρ′]∥p
+Lp
+≤
+(1 −CE)p−1
+Z
+R2 dx
+Z
+T1
+2π
+dθ
+Z
+k+1
+2
+∧T
+k
+2
+dt′
+Z 1
+−1
+dh′|ρ −ρ′|p(x, θ, t′, h′)
+Z
+k+1
+2
+∧T
+t′
+dt
+Z 1
+−1
+dhQ(t −t′, h|h′)
+=
+(1 −CE)p−1
+Z
+R2 dx
+Z
+T1
+2π
+dθ
+Z
+k+1
+2
+∧T
+k
+2
+dt′
+Z 1
+−1
+dh′|ρ −ρ′|p(x, θ, t′, h′)
+
+1 −E
+k + 1
+2
+∧T −t′, h′
+
+≤
+(1 −CE)p∥ρ −ρ′∥p
+Lp,
+and therefore we can use the Contraction Theorem on F to extend ρ to R2 × R × [ k
+2, k+1
+2
+∧T) × [−1, 1].
+The same argument proves the uniqueness, indeed if ρ1 and ρ2 are solutions of the equation (A.0.6), with ρ ∈
+L1(R2 × T1
+2π × [0, T] × [−1, 1]), and if we suppose to have already established that ρ1 = ρ2 in the space M0, k
+2 ∧T (by
+induction on k), the same steps as before lead to
+∥F[ρ1] −F[ρ2]
+|
+{z
+}
+=ρ1−ρ2
+∥
+Lp(M
+k
+2 , k+1
+2
+∧T ) ≤(1 −CE)∥ρ1 −ρ2∥
+Lp(M
+k
+2 , k+1
+2
+∧T )
+⇒
+CE∥ρ1 −ρ2∥
+Lp(M
+k
+2 , k+1
+2
+∧T ) ≤0,
+and therefore ρ1 = ρ2 also in the space M
+k
+2 , k+1
+2
+∧T .
+Hereafter, since we have already proved existence and uniqueness, we will denote again X = R2 or X = T2.
+To prove now property (A.0.7) we simply apply the triangle inequality in the integral defining ρ and for any t ≤T
+we get
+|ρ(x, θ, t, h)|
+≤
+|µ(x −tv(θ), θ, t, h)|
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)|ρ(x −(t −t′)v(θ), θ + π −2 arcsin(h′), t′, h′)|,
+Therefore, by looking at the right hand side and changing variables x −tv(θ) →x in the first summand and x −(t −
+t′)v(θ) →x, θ + π −2 arcsin(h′) →θ in the second one, we get
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh|ρ(x, θ, t′, h)|
+≤
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh |µ(x, θ, t′, h)|
++
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh
+Z t′
+0
+dt′′
+Z 1
+−1
+dh′Q(t′ −t′′, h|h′)|ρ(x, θ, t′′, h′)|,
+(A.0.10)
+and since the second summand (A.0.10) can also be written as
+(A.0.10)
+=
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′′
+Z 1
+−1
+dh′|ρ(x, θ, t′′, h′)|
+Z t
+t′′ dt′
+Z 1
+−1
+dhQ(t′ −t′′, h|h′)
+=
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh′|ρ(x, θ, t′, h′)|(1 −E(t −t′, h′)),
+37

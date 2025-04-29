@@ -1,0 +1,92 @@
+Tools and methodology
+47
+• statistical, which arise due to random fluctuation of the finite number of samples collected
+during a measurement. The statistical fluctuations in repeated observations of the same
+process, are, by definition, uncorrelated in different kinematic bin.
+• systematics, originating from the procedure adopted during the data taking, as well as
+due to the design and calibration of the apparatus. Examples of systematic uncertainties
+include trigger efficiency, the signal selection efficiency, the beam polarization uncertainty,
+the luminosity uncertainty or the jet reconstruction uncertainties. Such uncertainties are
+generally correlated in all the different kinematic bins.
+While statistical uncertainties are are generally additive and depend on the number of observed
+events (a naive scaling suggest ≈1/√Nc), the estimation of systematics require ad-hoc analysis
+and, generally, it is a non-trivial procedure. Depending on the setup used for their determination,
+systematics can be either additive either multiplicative. Given a set of measurements i =
+1 . . . Ndat obtained with k = 1 . . . Nrep observations, of the same phenomenon x(k)
+i
+, we assume
+the data to follow a Gaussian distribution given by
+G(x(k)
+i
+) ∝exp
+h
+−(x(k)
+i
+−σi) covij (x(k)
+j
+−σj)
+i
+,
+(2.11)
+where the expectation value σi is given by the average of all the observation Nrep and covij is
+the total experimental covariance matrix defined via
+covij =
+1
+Nrep
+X
+x(k)
+i
+x(k)
+j
+−σiσj .
+(2.12)
+Specifically, measurements are presented in terms of the best values σi accompanied by a
+number of uncertainties sm
+i for each bin. As Eq. (2.12) is not practically useful, we have to
+reconstruct the experimental covariance matrix via:
+Cexp
+ij
+= δijsstat
+i
+sstat
+j
++
+X
+ssys,add
+i
+ssys,add
+j
++
+X
+ssys,mult
+i
+ssys,mult
+j
+σiσj,
+(2.13)
+where sm
+i are split in: statistical sstat
+i
+, additive systematic ssys,add
+i
+and multiplicative systematics
+ssys,mult
+i
+. In case bin uncertainties are not symmetric, they are symmetrized with a standard
+procedure and shifting the corresponding central value by
+si = s+
+i + s−
+i
+2
+,
+σi →σi + s+
+i −s−
+i
+2
+.
+(2.14)
+Finally, we can note that in the l.h.s of Eq. (2.13), multiplicative uncertainties are multiplied
+with the best value of the measurements σi. This can originate the D’Agostini bias [148],
+which might lead to a systematic underestimation of the underlying best fitting theory (PDF)
+estimate. To avoid this, we substitute in Eq. (2.13), σi with a theoretical prediction of the value
+Ti obtained with consistent parameters and a pre-determined PDF [149].

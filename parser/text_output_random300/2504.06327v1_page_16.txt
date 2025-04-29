@@ -1,0 +1,53 @@
+Physics-informed KAN PointNet
+consists of several fully connected (FC) layers, where the output of one layer serves as the input to the next. If the input
+to an FC layer is 𝐫, then the output 𝐬of this layer is computed as
+𝐬𝑑output×1 = 𝜎(𝐖𝑑output×𝑑input𝐫𝑑input×1 + 𝐛𝑑output×1),
+(31)
+where 𝐖and 𝐛are the weight matrix and bias vector of the FC layer, respectively. 𝑑input and 𝑑output are defined similarly
+to Sect. 3. The activation function of the FC layer, denoted by 𝜎, is set to the hyperbolic tangent function, defined as
+tanh(𝛾) = 𝑒2𝛾−1
+𝑒2𝛾+ 1.
+(32)
+It is important to note that since Eqs. 2–3 contain a second-order derivative term, the activation function must be twice
+differentiable for this specific application in physics-informed PointNet with shared MLPs. Further details about the
+PIPN architecture can be found in Refs. [20, 40].
+6.2.2. PI-KAN-PointNet versus physics-informed PointNet with MLPs
+To ensure a fair comparison between PI-KAN-PointNet and physics-informed PointNet with MLPs, we consider
+two configurations of these models such that the number of trainable parameters is approximately equal in both.
+Alternatively, fairness in comparison may also be considered in terms of training time (i.e., equal computational cost).
+To achieve this, we use PI-KAN-PointNet with a Chebyshev polynomial (𝛼= 𝛽= −0.5) of degree 2 and set 𝑛𝑠= 0.5.
+In physics-informed PointNet with MLPs, we set 𝑛𝑠= 0.85. Under these parameter choices, the number of trainable
+parameters is approximately 666880 for PI-KAN-PointNet and 639611 for physics-informed PointNet with MLPs.
+The results of simultaneously solving the inverse problem on 135 geometries (𝑚= 135) using both models are
+presented in Table 4. The minimum loss achieved by PI-KAN-PointNet is approximately 3.04 × 10−4, whereas for
+physics-informed PointNet with MLPs, it is 3.73 × 10−4. Additionally, PI-KAN-PointNet reaches this minimum loss
+100 epochs earlier than physics-informed PointNet with MLPs (2238 vs. 2324), while the required training time per
+epoch remains nearly identical (154 s vs. 156 s). The loss evolution during training for both models is shown in the
+left panel of Fig. 9, where PI-KAN-PointNet exhibits significantly fewer fluctuations compared to physics-informed
+PointNet, demonstrating greater stability.
+Based on the information tabulated in Table 4, the average relative pointwise error (𝐿2 norm) of the velocity,
+pressure, and temperature fields predicted by both models is of the same order of accuracy. However, PI-KAN-
+PointNet’s prediction of the temperature on the surface of the inner cylinder is significantly more accurate than that of
+physics-informed PointNet with MLPs, with average relative errors of approximately 0.5% and 1.4%, respectively.
+These results highlight the capability of KANs compared to MLPs. For a more detailed analysis, the temperature
+distribution on the surface of an inner cylinder with an octagonal shape is plotted in the right panel of Fig. 9. As shown
+in Fig. 9, the prediction of physics-informed PointNet with shared MLPs is always less than 1 because the hyperbolic
+tangent activation function restricts the output range to [−1, 1]. This limitation reduces the flexibility of the network
+and results in less accurate predictions. In contrast, since the activation function in PI-KAN-PointNet is learnable, it
+can better approximate the ground truth of 1, as it is not constrained by a fixed output range. Additionally, this flexibility
+allows PI-KAN-PointNet to provide more accurate predictions for the sharp corners of the octagonal shape compared
+to physics-informed PointNet with MLPs.
+A more detailed examination of the data in Table 4 reveals that PI-KAN-PointNet predicts the 𝑢-component of
+the velocity vector slightly more accurately than physics-informed PointNet with MLPs. On the other hand, physics-
+informed PointNet with MLPs provides slightly more accurate predictions for the 𝑣-component of the velocity vector,
+pressure, and temperature field across the entire domain. Given these trends, determining which model demonstrates
+superior performance is essential. We argue that PI-KAN-PointNet is more successful, as it achieves a lower minimum
+loss compared to physics-informed PointNet with MLPs. Note that the objective of both networks is to minimize the
+loss function (Eq. 30). From an engineering and practical perspective, the exact solutions of the velocity, pressure, and
+temperature fields are unknown. Therefore, the model yielding the smallest loss function values is expected to be more
+reliable.
+6.3. Lightweight alternative architecture for physics-informed KAN PointNet
+Kashefi [65] proposed PointNet with KAN for classification and segmentation of 3D point clouds and demonstrated
+that, while PointNet with KAN achieves the same performance as PointNet with MLPs, it requires a relatively shallower
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 16 of 25

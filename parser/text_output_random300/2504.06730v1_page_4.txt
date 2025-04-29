@@ -1,0 +1,146 @@
+The timing loss L∆can be expressed in a multitude of
+ways. Two possible choices are either the crystal-wise mean-
+squared error or, alternatively, the Chamfer distance [13] of
+the predicted and labeled spike timings. In other words, this
+loss component measures the average number of time steps
+between an output spike and its next closest label spike and
+additionally the inverse direction for the Chamfer loss:
+L∆,MSE(S, Y ) =
+C
+X
+c=1
+MSE (IS,c, IY ,c)
+(8)
+=
+C
+X
+c=1
+
+X
+s∈IS,c
+min
+y∈IY ,c ∥s −y∥2
+2
+
+
+(9)
+L∆,Chamfer(S, Y ) =
+C
+X
+c=1
+
+X
+s∈IS,c
+min
+y∈IY ,c ∥s −y∥2
+2
+(10)
++
+X
+y∈IY ,c
+min
+s∈IS,c ∥y −s∥2
+2
+
+
+(11)
+C. Modeling Detector Geometry
+The geometrical arrangement of scintillator crystals in a
+PET scanner is essential in detecting coincidence pairs. In
+principle a spiking neural network should be able to infer
+said geometry automatically given enough training data. Yet,
+we may shorten training times and possibly obtain better
+predictive performance if we pass this a priori knowledge
+explicitly into the network as additional input. One possible
+modeling approach is to introduce an additional geometric
+feature for every crystal that spikes if the crystal opposite has
+detected a particle hit. To account for non-centered tracers,
+close-by crystals may equally spike in a parametric distance
+w. A graphical representation is depicted in Figure 3. More
+formally, we can deﬁne a geometry spiking function G by
+creating a Dirichlet window [14] as follows:
+Gc,t,w =
+
+
+
+
+
+1
+if ∃i ∈{−w, ..., w} :
+Smod(c+i+C/2,C),t = 1
+0
+otherwise.
+(12)
+where i signiﬁes the index of the opposite crystals and all
+of them are arranged ascending in a ring. Then, the extended
+input X∗to the spiking neural network becomes:
+X∗=
+
+X
+Gc,t,w ◦X
+
+∈{0, 1}2C×T.
+(13)
+IV. EXPERIMENTAL EVALUATION
+A. Datasets
+We investigate the feasibility of SNNs particle coincidence
+detection on simulation data with known ground truth. We
+consider two application use cases. The Clinical dataset mod-
+els a setting with a low number of C = 240 crystals and low
+tracer activity, resulting in a small number of input spikes.
+This conﬁguration is common in clinical monolithic crystal
+PET scanners such as [15]. The SAFIR dataset represents a
+pre-clinical setting with a large number of C = 2880 crystals
+and high activity akin to
+[4]. In both cases, we decompose
+a singular long time series of detector hits, as it would occur
+in practice, into a large set of shorter disjoint spike-trains for
+training, that spans T = 2000 discrete time steps in arbitrary
+units. The data was generated in a Monte Carlo fashion akin
+to GATE algorithms [16] as follows:
+1) a discrete number of decay-events is uniformly randomly
+distributed over the total number of time-steps based on
+the tracer activity,
+2) for each event two target positions are designated at
+random, with the only constraint being that they are
+spatially opposite each other (with a potential shift of
+±2 crystals to emulate a limited spatial resolution), and
+3) spikes are generated at each of these positions with a
+set probability; if both target positions for a given event
+generate a spike, the target event and its corresponding
+positions will be marked in the label data
+. Hence, every sample consists of inputs X and targets Y
+with dimensions C × T , where X contains binary encoded
+detector hits in crystals c ∈C at time t, and Y contains one-
+hot encoded coincidence photons in crystals c′ ∈c at time
+t. To investigate the impact of using the detector geometry
+as additional input feature, each sample was enriched by
+the geometric features as described in
+Section III-C. In
+this conﬁguration, the second half of the input neurons is
+utilized to provide geometric information to the net, high-
+lighting positions opposite of the original event to emphasize
+potential coincidence-pairs. For each of the two use cases,
+a total number of 60 000 samples was generated, both with
+and without detector geometric features. We further generated
+a reduced dataset, consisting of 8 000 samples, generated
+in the low-activity clinical PET scanner setting with only
+T = 1000 time steps. This dataset was utilized for initial
+testing and hyperparameter optimization, since it requires less
+computational resources and shorter training times compared
+to the full dataset. All data is publicly available and may be
+freely used for reproduction or related experiments1.
+B. Computational Environment
+We ran all experiments on a distributed-memory, paral-
+lel hybrid supercomputer. Each of the compute nodes is
+equipped with two 38-core Intel Xeon Platinum 8368 proces-
+sors at 2.4 GHz base and 3.4 GHz maximum turbo frequency,
+512 GB local memory, a local 960 GB NVMe SSD disk,
+two network adapters and four NVIDIA A100-40 GPUs with
+40 GB memory connected via NVLink. Inter-node commu-
+nication uses a low-latency, non-blocking NVIDIA Mellanox
+InﬁniBand 4X HDR interconnect with 200 Gbit/s per port.
+All experiments have been implemented in Python 3.9.1,
+PyTorch 2.0.1 [17] using CUDA 11.8 and snnTorch
+0.7.0 [18]. For data-parallel training, we utilized PyTorch’s
+1https://github.com/Helmholtz-AI-Energy/PETNet

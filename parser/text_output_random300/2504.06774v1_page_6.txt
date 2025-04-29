@@ -1,0 +1,36 @@
+cases with different levels of complexity. This work seeks to optimize LSTM architectures,
+analyzing factors such as layers, number of neurons, learning rate, and other key para-
+meters to better understand their impact on modeling the intricate temporal dynamics
+of fluid flows. This analysis is crucial for identifying how deep these architectures need
+to be to effectively model the intricate spatio-temporal dynamics of fluid flows. The per-
+formance of the enhanced ROM has been evaluated in complex fluid dynamics problems
+involving both numerical and experimental data. These test cases include a range of fluid
+flow scenarios that encompass turbulent and laminar flows.
+In addition to introducing this novel methodology, this article also serves as a guide
+for building autoregressive models using DL architectures. This guide is designed to as-
+sist beginners and intermediate users interested in developing hybrid ROMs for temporal
+forecasting. The article compiles essential information on data preprocessing, dimension-
+ality reduction, network design, debugging, and training strategies, offering step-by-step
+insights. Furthermore, it tries to consolidate best practices from experienced developers.
+To the authors’ knowledge, this is the first practical guide dedicated to developing physics-
+based hybrid ROMs aimed at accelerating CFD simulations while maintaining high pre-
+dictive accuracy.
+Figure 1: Combination of modal decomposition and neural network for Hybrid ROM.
+The article has been divided into four sections.
+Section 2 includes the developed
+methodology combining SVD and HOSVD with deep learning architectures. Section 3
+introduces the cases and discusses the results obtained.
+Conclusions are presented in
+Section 4.
+2.
+Methodology
+This section outlines the development of a hybrid ROM that integrates SVD and HOSVD
+with LSTM architectures to improve predictive accuracy and computational efficiency.
+Both decomposition techniques have been implemented separately and compared. De-
+termining the appropriate network depth is essential, as deeper networks can model com-
+plex patterns but risk overfitting when data is limited, whereas shallower networks may
+fail to capture intricate fluid flow dynamics. Choosing optimal hyperparameters, such
+as learning rate, batch size, and sequence length, is another hurdle, as these parameters
+greatly impact model performance and often require extensive experimentation to fine-
+tune. The selection of the number of neurons per layer is equally important as too few
+6

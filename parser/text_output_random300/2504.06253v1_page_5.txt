@@ -1,0 +1,64 @@
+Warm-Start QAOA via a Reduction to Max-Cut
+•
+5
+2.2
+QAOA
+Given a depth 𝑝, mixing Hamiltonian 𝐻𝐵, and a cost Hamiltonian 𝐻𝐶, the Quantum Approximate Optimization
+Algorithm (QAOA) (see [1]) produces a state |𝜓(𝛽,𝛾)⟩parametrized by 𝛽,𝛾∈R𝑝as
+|𝜓⟩=
+𝑝
+Ö
+𝑚=1
+𝑒−𝑖𝛽𝑚𝐻𝐵𝑒−𝑖𝛾𝑚𝐻𝐶|𝜓init⟩.
+(12)
+Here, the initial state |𝜓init⟩is always taken to be a separable state, i.e. |𝜓init⟩can be expressed as
+|𝜓init⟩=
+𝑛
+Ì
+𝑗=1
+|𝜓𝑗⟩,
+(13)
+where 𝑛is the number of qubits and each |𝜓𝑗⟩is a single qubit state.
+Following the convention of “QAOA-warmest” from [5], we choose 𝐻𝐵to be a seperable Hamiltonian where
+|𝜓init⟩is the maximum eigenvalue eigentstate of 𝐻𝐵. This can be constructed as
+𝐻𝐵=
+𝑁−1
+Ê
+𝑗=0
+(𝑥𝑗𝑋+ 𝑦𝑗𝑌+ 𝑧𝑗𝑍),
+(14)
+where (𝑥𝑗,𝑦𝑗,𝑧𝑗) are the bloch sphere coordinates for the (single qubit) state |𝜓𝑗⟩.
+The goal of QAOA is to estimate the maximimum energy eigenstate of 𝐻𝐶by solving for 𝛽∗,𝛾∗, where
+𝛽∗,𝛾∗= arg max
+𝛽,𝛾∈R𝑝⟨𝜓(𝛽,𝛾)|𝐻𝐶|𝜓(𝛽,𝛾)⟩.
+(15)
+Assuming that the depth 𝑝QAOA ansatz is sufficiently expressive, the maximal eigenstate of 𝐻𝐶will approxi-
+mately be |𝜓(𝛽∗,𝛾∗)⟩.
+In fact, [5] showed that2, just like standard QAOA, if 𝐻𝐵is constructed as above (where 𝐸max is the maximum
+eigenvalue of 𝐻𝐶), the following result holds,
+lim
+𝑝→∞⟨𝜓(𝛽∗,𝛾∗)|𝐻|𝜓(𝛽∗,𝛾∗)⟩= 𝐸max,
+(16)
+as long as none of the qubits in |𝜓init⟩lie at the poles of the Bloch sphere.
+2.2.1
+Encoding QUBOs and Max-Cut Problems. Given 𝑥∈{0, 1}𝑛,𝑦∈{−1, 1}𝑛and symmetric 𝑄, 𝐽∈R𝑛×𝑛, we
+can construct the 𝑛-qubit states
+|𝜓(𝑥)⟩=
+𝑛−1
+Ì
+𝑚=0
+|𝑥𝑖⟩,
+|𝜓(𝑦)⟩=
+𝑛−1
+Ì
+𝑚=0
+
+𝑦𝑖+ 1
+2
+
+.
+(17)
+2The theorems by [5] specifically prove this limit in the case that 𝐻𝐶is the Max-Cut cost Hamiltonian; however, by going through the
+proofs, it is clear that the argument holds for any diagonal cost Hamiltonian (e.g. cost Hamiltonians that arise from classical combinatorial
+optimization problems.)
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

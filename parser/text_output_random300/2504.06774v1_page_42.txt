@@ -1,0 +1,21 @@
+(a) HOSVD
+(b) SVD
+u
+u
+u
+Figure 26: Comparison of the predicted temporal evolution of streamwise velocity com-
+ponents for (a) HOSVD (left column) and (b) SVD (right column) across different LSTM
+architectures for the experimental wake flow. From top to bottom: LSTM 1 Dense, LSTM
+2 dense, and LSTM Time-Distributed.
+wise velocity component is not centered at zero. Notably, the results for the SVD-based
+LSTM time-distributed architecture are relatively better, with a more pronounced peak
+and reduced variability compared to the other SVD architectures. However, even in this
+case, SVD falls short of the precision exhibited by HOSVD.
+To further assess the robustness of HOSVD, noisy modes were introduced in the train-
+ing set. Simulations were carried out using 20 modes and 50 modes. While the RRMSE
+values for the streamwise velocity component follow similar trends as obtained with 5
+modes, owing to its stronger flow features, the normal velocity component warrants closer
+attention. This component comprises very low-velocity regions, and even a small amount
+of noise will have a considerable impact. The RRMSE values reported in Table 16 demon-
+strate that HOSVD exhibits superior performance over SVD, where the error is reduced
+42

@@ -1,0 +1,100 @@
+A Self-Supervised Framework for Space Object Behaviour Characterisation.
+7
+Figure 5: Test light curves with the latter 25% of the timecourse
+masked at inference. Our Perceiver-VAE was trained with sev-
+eral self-supervised tasks —including a forecasting loss (see
+Section 3.3 for details). This means that at inference, the fu-
+ture state of a light curve can be predicted by the pre-trained
+model. Top row: the lowest three forecasting mean squared
+error test samples. Bottom row: the highest three forecast-
+ing mean squared error test samples. Qualitatively, the original
+signal (turquoise) and known values (cyan) are aligned. In the
+lowest error samples, the forecasted values also align well with
+the original signal, capturing the dynamics well. In the highest
+error samples, the general trends of the masked regions are suc-
+cessfully forecasted, but the magnitude of the peaks/troughs in
+the signal is not fully captured.
+variety of SOs in this set, including several satellites (Figure 8
+A, B, E, H, J, L). All of these satellites except the light curve
+belonging to FLOCK 4P 6 (Figure 8 E) exhibited ’J’ shaped
+curves, which simulations suggest may represent glinting from
+a highly reflective surface aligning with the sun [20]. We also
+detected light curves belonging to debris (Figure 8 C, D, G), all
+displaying prominent ’U’ shaped profiles i.e., where the min-
+ima in magnitude is approximately in the middle of the obser-
+vation. Finally, we identified three other distinct light curve
+motifs (Figure 8 red dotted outlines): abrupt changes in magni-
+tude which presented as peaks (Figure 8 E), step changes (Fig-
+ure 8 F), or highly periodic variation (Figure 8 K).
+2.6
+Fine-tuning for motion prediction
+We also fine-tuned on a separate dataset with ground-truth mo-
+tions, simulated by the GRIAL simulator from GMV [21]. Ex-
+ample light curves from this dataset are visualised in Figure 9,
+here we briefly summarise the dataset. The GMV dataset is a
+simulated dataset of 22,009 light curves of Sentinel-3A sim-
+ulated under 10 different motion laws as seen from 30 differ-
+ent ground stations. These motions can be grouped into three
+distinct behaviours: First, Sun oriented: SafeX, SafeZ (where
+the Space Object’s X/Z axis points to the Sun respectively, and
+Y initially points to the celestial North pole, and the X/Z ro-
+tates respectively), and Sun (X-axis points to Sun, Y-axis to
+Celestial North pole, differentiated from Safe by a varied X-
+axis phase angle.
+Next, Earth oriented motions: YAWXC,
+YAWZC, YAWXS, YAWZS (where X/Z indicates the Space
+Object’s nadir pointing axis, and C/S indicates whether the ob-
+ject’s motion is compensating (C) for optical distortion, or (S)
+maximising solar array lighting). Finally, the dataset also con-
+tains labelled general motions less related to satellite function:
+Tumbling (uncontrolled/complex rotation of the SO), Spin (ro-
+tation around a single axis), Inertial pointing (where the SO has
+a fixed orientation relative to the J2000 reference frame). To
+fine-tune our pre-trained Perceiver-VAE, we first group simi-
+lar motions together, as domain expert manual inspection be-
+tween e.g., different yaw axial motions is a substantially more
+challenging task than distinguishing between different motions
+altogether (e.g., tumbling/sun pointing). After fine-tuning for
+100 epochs, our motion classification tuned Foundation model
+could classify held out light curves with 82.74% accuracy, with
+an average ROC-AUC of 0.95 (Table 3). There was inter-class
+variation in the fine-tuned classifier’s performance. For exam-
+ple, both tumbling and spin show high performance, with pre-
+cision of approximately 0.97 and 0.90 respectively. Similarly,
+these classes also showed high recall, both with approximately
+0.93. In contrast, inertial has high precision (0.86) but low re-
+call (0.33).
+2.7
+Synthetic data generation
+Alongside anomaly detection and attitude mode prediction, we
+can test the utility of our learned embeddings in producing syn-
+thetic data.
+The generation of useful and representative training datasets
+for Space Object (SO) behavioural analysis presents us with
+several challenges. First, real-world observations are limited
+by various constraints, such as telescope location, atmospheric
+conditions etc. Because of this, collecting datasets which are
+comprehensive across all the various operational modes, ma-
+noeuvres and possible anomalous behaviours requires an unre-
+alistic amount of observation time and resource use. Simula-
+tors can partially address these challenges but are often con-
+strained by computational costs and the reliability of the under-
+lying physical model.
+For these reasons, a method of generating a large amount of
+diverse physically possible synthetic light curves would sub-
+stantially enhance training datasets for downstream SDA tasks.
+Whilst several numerical light curve simulators exist (e.g., we
+use two distinct software to produce fine-tuning light curves in
+this study), producing light curves numerically often requires a
+large amount of priors and a long time to simulate. For exam-
+ple CASSANDRA produces approximately 1000 light curves
+per hour of simulation. In contrast, producing novel synthetic
+light curves from the Perceiver-VAE model only requires de-
+coding the learned latent vectors, which is computationally
+undemanding. This process scales easily, and our initial un-
+optimised tests presented below generate approximately 40,000
+light curves per hour.
+If we first recall, that by training a Variational Autoencoder, we
+are encoding a latent space that is continuous, sampling from
+this, then decoding the samples. In addition to enforcing a well-
+structured latent space, this continuity also implies a function-

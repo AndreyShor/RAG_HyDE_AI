@@ -1,0 +1,69 @@
+NEURAL NETWORK POLYCONVEXIFICATION
+5
+order of the entries according to the magnitude of the absolute values and assuming positivity of
+the entries up on only one entry, i.e. assigning the sign of the determinant to a single fixed entry.
+It is possible to identify the set of isotropic functions W : Rd×d →R∞with the set of Πd-
+invariant functions Φ: Rd →R∞, i.e. Φ(ˆν) = Φ(Sˆν) for all ˆν ∈Rd and all S ∈Πd.
+The
+identifications are given by
+(10)
+W(F) = Φ(ν(F))
+and
+Φ(ˆν) = W(diag(ˆν))
+for all F ∈Rd×d and for all vectors ˆν ∈Rd.
+In analogy to the definition of polyconvexity based on the minors M defined in (8), we
+introduce the notion of polyconvexity for the mapping Φ by defining a lifting of the ˆν argument
+to a higher dimensional space. For d ∈{2, 3}, we define kd := 2d −1 that is kd = 3 if d = 2 and
+kd = 7 if d = 3 and the mapping m: Rd →Rkd by
+m(ˆν) =
+(
+(ˆν1, ˆν2, ˆν1 ˆν2)
+if d = 2,
+(ˆν1, ˆν2, ˆν3, ˆν2 ˆν3, ˆν3 ˆν1, ˆν1 ˆν2, ˆν1 ˆν2 ˆν3)
+if d = 3.
+We call m(ˆν) the vector of minors of ˆν ∈Rd; in the literature, this vector is also referred to as
+elementary polynomials. A Πd-invariant function Ψ is called (signed singular value) polyconvex
+if there exists a convex function g: Rkd →R∞such that Ψ = g ◦m, see [WP23, Theorem 1].
+The (signed singular value) polyconvex envelope of Φ is defined in an analogous way to the
+(d × d)-case by
+(11)
+Φpc(ˆν) = sup{Ψ(ˆν) | Ψ: Rd →R∞polyconvex , Ψ ≤Φ}.
+The same identifications as in (10) also hold for the polyconvex envelopes, [NPPW24, Re-
+mark 2.2], i.e.
+(12)
+W pc(F) = Φpc(ν(F))
+and
+Φpc(ˆν) = W pc(diag(ˆν)).
+Motivated by the identification (12), we restrict ourselves to the approximation of Φpc. According
+to [NPPW24, Corollary 2.5], the polyconvex envelope Φpc of Φ can be obtained by
+(13)
+Φpc(ˆν) = hc(m(ˆν)),
+where hc is the convex envelope of the function h acting in the lifted signed singular value space
+and defined by
+h: Rkd →R∞,
+x 7→
+(
+Φ(ˆν)
+if x = m(ˆν),
+∞
+else.
+The relation (13) transforms the polyconvexification problem of Φ into a convexification problem
+of the function h in the lifted signed singular value space. Compared to the polyconvexification
+problem in the d × d setting, this formulation reduces the dimensionality of the convexification
+manifold from d × d to d, as shown in [NPPW24], thereby enabling an efficient numerical
+treatment.
+4. Properties-Preserving Neural Networks
+In what follows, we aim for the approximation of Φpc : Rd × Rp →R by a neural network
+denoted by Φpc
+pred : Rd × Rp →R. This is done by approximating the convex envelope of the
+parameter dependent function h: Rkd × Rp →R∞, i.e. hc from (13). Note that we restrict the
+function Φpc and the output of the neural network Φpc
+pred to be finite valued. To simplify notation,
+in some formulas we denote the minors of the signed singular values as ˆm := m(ˆν).
+4.1. Neural Network: Theoretical Framework. An artificial neural network [Cal20] is
+a mathematical model defined as a composition of functions, which are themselves defined
+as composition of other functions. This model can be conveniently represented as a network
+structure. In what follows, we present the basic notions regarding layers, weights, inputs and
+outputs of a general neural network.
+We denote the layer number by the superscript ℓ∈{0, . . . , L}, where ℓ= 0 denotes the input
+layer, ℓ= 1 the first hidden layer and ℓ= L the output layer. The total number of hidden layers

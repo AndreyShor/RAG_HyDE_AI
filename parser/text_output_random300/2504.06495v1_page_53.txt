@@ -1,0 +1,39 @@
+# Convergence of survival probabilities: Let
+P (d)(t, x, ǫ) := P(X(ǫ)
+t
+̸= −∞| X(ǫ)
+0
+= x),
+P (c)(τ, x, ǫ) := P(Xτ ̸= −∞| X0 = x).
+Note that X(ǫ)
+t
+̸= −∞if and only if the process remains above the barrier up to time t, and
+similarly for the continuous-time case. Deﬁne the stopping time:
+τ (ǫ) := inf{t ≥0 : X(ǫ)
+t
+< log(ǫ)},
+¯τ (ǫ) := ǫ · τ (ǫ) = inf{τ ≥0 : Y (ǫ)(τ) < log(ǫ)}.
+Then P (d)(t, x, ǫ) = P(¯τ (ǫ) > ǫ t | X(ǫ)
+0
+= x). Since Y (ǫ) ⇒X in the Skorokhod topology and
+X has continuous sample paths, the map y 7→inf{τ ≤T : y(τ) < log(ǫ)} is continuous at
+almost every path of X. This convergence requires that the initial condition x > log(ǫ) lies
+suﬃciently above the barrier. Speciﬁcally, we must assume that
+x −log(ǫ) ≫ǫ,
+so that the process does not become absorbed immediately in the discrete-time setting, and
+the FCLT approximation remains valid over the time interval [0, τ]. The same applies to xa
+and xb in the survival probability ratio considered below.
+Thus, by the continuous mapping theorem (see Billingsley, 1999, Theorem 13.6; also
+Whitt, 2002, Ch. 13), we obtain:
+lim
+ǫ→0 P (d)(τ/ǫ, x, ǫ) = P (c)(τ, x, ǫ),
+for all ﬁxed τ > 0 and x > log(ǫ).
+# Taking the limit: Set τ := ǫ t and consider
+P (d)(t, xa, ǫ)
+P (d)(t, xb, ǫ) = P (d)(τ/ǫ, xa, ǫ)
+P (d)(τ/ǫ, xb, ǫ).
+By the argument above, this ratio converges to
+P (c)(τ,xa,ǫ)
+P (c)(τ,xb,ǫ) as ǫ →0.
+Finally, under the
+52

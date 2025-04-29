@@ -1,0 +1,106 @@
+CHSH protocol (in quantum theory) vs. BB84. – Alice and Bob share a quantum state of two qubits,
+agreeing on specific measurements, while Eve distributes quantum states and holds a purification. A
+bound on the achievable secret key rate is derived using a formalism different from that previously
+discussed. The CHSH protocol is shown to be equivalent to the BB84 protocol with added classical
+preprocessing, having the same robustness to noise. However, BB84 achieves a higher secret key rate at
+low error rates but cannot be used for device-independent proofs, as its security becomes compromised
+if the Hilbert space dimensionality is unknown.
+3.5. CHAIN Protocol – against individual no-signalling attacks
+The CHAIN protocol [216] from 2006 considers the Werner state ρ of fig. 2b with P+ = |ϕ+⟩⟨ϕ+|
+the maximally entangled state shared by Alice and Bob who randomly and independently measure re-
+spectively Ax = Xx for x = 0, 1, 2 with probability q, (1 −q)/2, (1 −q)/2 and By = Xy for y = 0, 1 with
+probability q′, 1 −q′. Each binary measurement Xi is defined as
+Xi = {|v±
+Xi⟩⟨v±
+Xi|} with |v±
+Xi⟩= |0⟩+ eiθXi |1⟩s.t.
+(
+(θA0, θA1, θA2) = ( π
+4 , 0, π
+2 )
+(θB0, θB1) = ( π
+4 , −π
+4 ).
+(56)
+After all the n measurements, Alice and Bob reveal their choices {xk}n
+k=1 and {yk}n
+k=1 and if
+(i) x ∈{1, 2} =⇒compute from Eq.(12)S¯∗= 2 −
+√
+2p
+(
+≥1
+p ∈L
+≥0
+p ∈NS
+(ii) (x, y) = (0, 1) =⇒uncorrelated =⇒rejected
+(iii) (x, y) = (0, 0) =⇒correlated ⟨C⟩ρ = P(a0 = b0) −P(a0 ̸= b0) = p =⇒raw key
+(57)
+finishing with information reconciliation and privacy amplification.
+In Eve’s strategy [216], for each
+Aice’s measurement, there might be predetermined (D) output a of x such that p(a|x) = δa,λA(x) as
+in Eq. (57) or uniformly random (R) p(a|x) = P
+b p(ab|xy) = 1/2 when CHSH is computed as in Eq.
+(57). Similarly for Bob. If y = 0 is (D), then all the measurements are (D). Eve’s strategies can be
+classified as in Tab. 2 into three sets, according to whether (x, y) = (0, 0) yields predetermined (D) or
+uniformly random outcomes (R). For each strategy a bound on ⟨S¯∗⟩and ⟨C⟩is computed, as well as, the
+conditional entropies H(A|E), H(B|E) describing Eve’s ignorance on the raw key, and the conditional
+mutual information I(A : B|E).
+Strategies
+S¯∗
+⟨C⟩ρ
+H(A|E)
+H(B|E)
+I(A : B|E)
+p1
+(D,D)
+≥1
+≤1
+0
+0
+0
+p2
+(D,R)
+≥0
+0
+0
+1
+0
+p3
+(R,R)
+≥0
+≤1
+1
+1
+1
+Table 2: Eve’s extremal strategies for (x, y) = (0, 0) with probability pi (details in [216]).
+Theorem 2. Proof of security – the secret key rate r is
+√
+2p −1 −h
+1 + p
+2
+
+= rCK ≤r ≤I↓≤⟨C⟩ρ −S¯∗= (1 +
+√
+2)p −2.
+(58)
+1. lower–bounded by privacy amplification with one-way communication protocols via S¯∗of Eq. (12).
+The equality r = rCK is attained if Eve saturates the inequalities of Tab. 2. Without noise r|p=1≥
+√
+2 −1 ≃0.414 and r = 0 for p = 0.9038;
+2. upper–bounded by intrinsic information I↓using two-way key distillation protocols [225]
+For p = 2/(1 +
+√
+2) ≃0.8284 =⇒r ≤I↓= 0, however CHSH is violated for p ≥0.7071 always with
+I↓> 0 [226].
+Proof. 1) From Tab. 2, I(B : E) ≤I(A : E) then the privacy amplification goes from Bob to Alice,
+thus Csiszar–K¨orner condition becomes r = I(A : B) −I(B : E). The mutual information is I(A : B) =
+1 −h( 1+p
+2 ), where h is the binary entropy and
+I(B : E) = H(B) −
+3
+X
+k=1
+pkHk(B|E) = p1 ≤S¯∗, where H(B) = 1.
+(59)
+25

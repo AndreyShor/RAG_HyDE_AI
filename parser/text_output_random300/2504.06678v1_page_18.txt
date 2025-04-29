@@ -1,0 +1,35 @@
+10
+14
+NUMERICAL ERROR ANALYSIS FOR MULTI-QUBIT SYSTEMS
+The Berry curvature directly contributes to the friction term and suppresses topological decoherence. For a system
+of N qubits, correlated noise introduces cross-talk errors. The total infidelity is bounded by
+1 −Ftotal ≤N(1 −Fsingle) +
+N
+2
+
+ρδγ2,
+where ρ is the noise correlation strength. Numerical simulations with ρ = 0.1 show that Ftotal > 0.997 for N = 50,
+consistent with experimental observations in Rydberg atom arrays.
+Assuming Ornstein-Uhlenbeck noise ⟨δλ(t)δλ(t′)⟩= σ2e−|t−t′|/τ, the fidelity correction becomes:
+F = 1 −
+σ2T
+2π
+2 
+1 + 2τ
+T (1 −e−T/τ)
+
+.
+For a 50-qubit system, Monte Carlo simulations (Fig.
+S3) show Ftotal ≥0.997 under σ = 0.01, validating the
+scalability of our protocol.
+The transient population of the 5P state is bounded by:
+P2(t) =
+
+Z t
+0
+Ω12(t′)Ω23(t′)ei(∆12−∆23)t′dt′
+
+2
+< 10−4,
+as verified by Floquet simulations (Fig. S4). This confirms the effectiveness of nonlinear parameterization in sup-
+pressing intermediate-state leakage.

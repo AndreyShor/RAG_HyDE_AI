@@ -1,0 +1,28 @@
+Figure A3: Uncertainty quantification (UQ) results for HOSVD with LSTM 3 Dense
+architecture.
+and the near-field structures, while the remaining modes predominantly capture noise or
+uncorrelated events. These higher-order modes contain small-scale flow structures that
+are difficult to predict accurately.
+Also, the number of snapshots retained in the snapshot matrix significantly influences
+the noise content in the POD modes. Increasing the number of snapshots leads to more
+noise accumulation in modes 3, 4, and 5, making it harder for the method to extract
+clean, coherent structures. This accumulation suggests that for large datasets, applying
+HOSVD instead of SVD may provide better noise filtering and improved mode separation.
+The evolution of the first ten POD mode coefficients from the turbulent experimental
+cylinder dataset has been plotted below in Figure A6. 500 snapshots were used to create
+the snapshot matrix. The trend followed by the temporal coefficients is in good agreement
+with the previous description. In modes 2 and 3, it is possible to identify a periodic
+behavior. The complexity of these temporal patterns increases for the remaining modes.
+For modes higher than 6, the noise component becomes very strong.
+A.3
+Key Considerations for Developing Deep Learning Models
+While some information has already been provided earlier in the paper, this section
+provides a detailed discussion of the key considerations for developing a deep learning
+(DL) model.
+A.3.1
+Data Management
+Beyond dividing data into training, validation, and test sets, other critical factors must
+also be considered. The other main points of focus while designing these sets should be
+the following:
+• Consistency Across Dev and Test Sets: It should be ensured that the dev
+53

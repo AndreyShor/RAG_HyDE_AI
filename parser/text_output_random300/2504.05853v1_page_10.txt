@@ -1,0 +1,76 @@
+NOTES ON COLOR REDUCTIONS AND γ TRACES
+10
+In the following lemma we summarize more properties of γ products and γ traces.
+Lemma 10. We sum over iterated indices and assume that the dimension D is not an odd integer. Then
+(1)
+(29)
+γβSnγβ = (−1)n(D −2n)Sn −4
+X
+1≤k<ℓ≤n
+(−1)n+k+ℓδαk,αℓSk,ℓ
+n .
+(2)
+(30)
+Tr Sn =
+(Pn
+k=2(−1)kδα1,αkTr S1,k
+n
+if n even,
+0
+if n odd.
+(3)
+(31)
+Tr Sn = Tr ˜Sn.
+Proof. (1) We substitute (24) for γαkSk−1 = γαkγα1 · · · γαk−1 into the first equation of (25) yielding
+γβSnγβ = (−1)n(D −2)Sn + 2
+n
+X
+k=2
+(−1)n−k(−1)k−1Sn + 4
+X
+1≤k<ℓ≤1
+(−1)n−ℓ+k−1δαk,αℓSk,ℓ
+n .
+The first sum is −2(n −1)(−1)nSn and the result follows.
+(2) For even n we use (24) for Sn = γα1S1
+n. The result follows from the cyclicity of the trace.
+For odd n the proof is by induction over n. The case n = 1 is (22). For n ≥3 we use (29) which
+simplifies by induction and by cyclicity of the trace to DTr Sn = −(D −2n)Tr Sn. Because D is not odd,
+we have D ̸= n and the result follows.
+(3) If n is odd, then (31) is trivial. For even n we use induction over n. For n = 2 the result follows
+from the cyclicity of the trace. For n ≥4 we use (30) for γα1γαn · · · γα2. We obtain by induction
+Tr ˜Sn =
+n
+X
+k=2
+(−1)kδα1,αn+2−kTr S1,n+2−k
+n
+.
+After k 7→n + 2 −k the result follows from (30).
+□
+The algorithm for calculating Tr Sn is evident. If n is odd, then Tr Sn = 0. Otherwise, we search for
+the smallest r (if existent) such that Sn or any of its cyclic permutations has a sequence γβγβ1 · · · γβrγβ
+for distinct β, β1, . . . , βr in {α1, . . . , αn}. We simultaneously reduce all cases with r = 0, 1, see (28). For
+r ≥2, we use (29) for an iterative reduction. If r does not exist because all γ matrices in the trace have
+distinct indices, then we use (30). In this case, the formula for a complete reduction is universal for a
+fixed number n of γ matrices. This allows us to cache all results up to n = 16. Moreover, we use (21)
+and (29) to order γ products without trace.
+One can further improve the algorithm by caching all γ traces that are not amenable to the first
+reduction step with r = 0, 1. In this approach, reduction with (26) insead of (29) can be preferable
+because the former generates less terms. This has not (yet) been implemented.
+In a QFT with γ matrices in vertices, we benefit from the fact that in a single ferminon loop, half of
+the gamma matrices are contracted. At loop order ℓwe are left with 2ℓindices that are not contracted.
+In the case of several fermion loops, it is important to start with the evaluation of the trace with the
+smallest number of uncontracted indices. There exists a loop with ≤2ℓuncontracted indices, so that the
+degree in Kronecker δ’s is always ≤ℓ.
+We tested the Maple implementation HyperlogProcedures [10] by calculating the traces in Feynman
+graphs that contribute to the photon propagator. The average computation time on a single core of an
+office PC is approximately two minutes for ℓ= 6 loops and 30 minutes for ℓ= 7. For graphs with ℓ≤5,
+the calculation is nearly instant.
+References
+[1] M. Borinsky, J.A. Gracey, M.V. Kompaniets, O. Schnetz, Five loop renormalization of ϕ3 theory with appli-
+cations to the Lee-Yang edge singularity and percolation theory, Phys. Rev. D 103, 116024 (2021).
+[2] M. Borinsky, O. Schnetz, Graphical functions in even dimensions, Comm. in Number Theory and Physics 16, No.
+3, 515-614 (2022).
+[3] P. Cvitanović, Group theory for Feynman diagrams in non-Abelian gauge theories, Phys. Rev. D 14, No. 6, 1536-1553
+(1976).

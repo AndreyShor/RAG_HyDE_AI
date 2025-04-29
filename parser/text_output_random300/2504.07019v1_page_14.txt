@@ -1,0 +1,38 @@
+S4
+FIG. S1. Illustration of alternate truncation schemes for NH-NRG on the non-interacting (Ud = 0) NH AIM (also known as the
+non-Hermitian RLM). The plots are analogous to those in Fig. E1 of the main text, and the same parameters are used. Top
+row panels (a) show truncation to the lowest Nk states ordered by Im(EN); bottom row panels (b) show a hybrid scheme in
+which the ‘ground state’ with lowest Re(EN) is first subtracted, and then states are sorted by magnitude, |EN −Egs
+N |. NH-NRG
+results as red-diamonds, exact diagonalization results as black circle points.
+and similarly
+⟨N + 1; r|L
+d fN+1σ |N + 1; r′⟩R
+d
+=
+X
+m,m′,s
+M σ
+mm′ U L
+N+1(r; m, s)†U R
+N+1(r′; m′, s)
+(S.27)
+Thus, we have all of the ingredients to proceed to the next step. In this way, the entire chain can be built up orbital
+by orbital, starting from ˆH0, which one explicitly constructs ‘by hand’ in the initialization step.
+Without truncation, the Fock space would of course grow by a factor of four at each iteration. However, due to the
+exponentially-decaying Wilson chain parameters, we have a scale separation from iteration to iteration that motivates
+a truncation to just the Nk lowest-lying states at each iteration, meaning that the computational complexity of the
+NH-NRG calculation scales linearly with N rather than exponentially. Of course, with complex eigenvalues EN at
+each step, there is a subtlety about what is meant by ‘lowest lying’, and there are several truncation schemes that one
+could envision. The simplest, and the one that is closest to that employed in regular Hermitian NRG, is to truncate to
+the lowest Nk eigenstates ordered by Re(EN). This turns out to be the most numerically stable and accurate scheme,
+which we have confirmed reproduces correctly the exact results of exact diagonalization in the non-interacting limit.
+These issues are explored in more detail in the following sections.
+S.III.
+ALTERNATIVE TRUNCATION SCHEMES
+S.III.A.
+Non-Hermitian resonant level model
+In the main text, we presented results for strongly-correlated quantum impurity problems obtained by NH-NRG
+using a truncation scheme (‘LowRe’) in which the lowest Nk states were kept at each step, sorted by Re(EN). In the
+End Matter we presented some justification for that, by consideration of the non-interacting limit of the AIM (Ud = 0),
+also known as the ‘resonant level model’ (RLM). Being quadratic, the RLM can be solved exactly by diagonalizing

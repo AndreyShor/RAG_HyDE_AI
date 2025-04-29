@@ -1,0 +1,110 @@
+tively changes our entire problem from QUBO to
+a hard-constrained DkS optimisation problem.
+We could equally reduce the search space for
+our variational quantum methods in the con-
+strained case using a space-restricting ansatz [61–
+63] or quantum Zeno dynamics [64]. We could
+also consider constrained quantum annealing [65].
+Another strategy to reduce the search space is to
+consider symmetrically equivalent structures only
+once.
+With VQAs, for example, this could be
+done with a symmetry respecting gate-set [66].
+Returning to our results, we observe polyno-
+mial time scaling for simulated annealing. This is
+not surprising as NP-hard problems have subsets
+of instances that can be solved in polynomial-
+time by heuristic algorithms [67, 68]. These re-
+sults highlight the importance of selecting QU-
+BOs which are hard to solve using common clas-
+sical methods in order to fully stretch quantum
+computing methods.
+For quantum annealing, the theoretical time
+scaling is bounded by the adiabatic limit, which
+depends on how the energy gap ∆min between
+the ground state and first excited state of the
+annealing Hamiltonian closes with system size.
+This places upper limits on the computational
+complexity of problems that can be addressed.
+For first order quantum phase transitions, the an-
+nealing rate is bound exponentially with system
+size. For second order quantum phase transitions,
+the annealing rate is instead bound polynomially
+with system size [69]. Therefore, the best scaling
+we can expect from quantum annealing is poly-
+nomial time, which we see experimental evidence
+of with clique embedding.
+5.2
+VQE Results
+Turning now to the other quantum method we
+considered, we see from the distributions in Fig-
+ure 3 that both VQE on the state vector solver
+and on the QPU have small probability of sam-
+pling large energies, although the distributions do
+skew ‘to the left’ compared to naive random sam-
+pling.
+When comparing VQE on the QPU to the state
+vector solver we can see that the state vector
+solver has higher Ps. This is due to VQE on the
+QPU sampling higher energies more often, which
+is likely a result of noise. Otherwise, their dis-
+tributions match well. Noise can alter the shape
+of the cost function landscape, introducing false
+minima or saddle points. The classical optimiser
+for VQE on the QPU could be getting stuck in
+these local minima, failing to converge on the
+global minima exactly.
+Post-selection improves
+Ps for both the state vector solver and the QPU
+through removal of these higher energies.
+A feature of the results in Table 1 is that VQE
+has a large standard deviation error, σ, associ-
+ated with the Ps metric.
+As discussed, σ cap-
+tures the inconsistency in convergence with the
+classical optimiser in VQE. Convergence heavily
+depends on the initial starting point of the cir-
+cuit parameters, which is randomly set for each
+repetition. Sometimes these starting parameters
+are unfavourable, perhaps close to local minima,
+and result in VQE struggling to find the global
+minima.
+Inspection of the time metrics in Table 1 re-
+veals that the user runtime for VQE state vector
+simulation is more than 17 times longer than that
+of simulated annealing. VQE on the QPU has a
+user runtime which is over 2 orders of magnitude
+larger than the state vector simulation.
+Only
+∼40% of this time is made up of QPU time.
+The rest of this user runtime is coming from clas-
+sical processes, such as: compilation and classical
+optimiser time.
+Strategies to reduce this user runtime could in-
+clude using a less-optimised transpilation search
+at the expense of solution quality. Another re-
+cent technique introduced by IBM is fractional
+gates [70].
+Fractional gates are essentially new
+native gates which remove the need for RZZ(θ)
+and RX(θ) rotation gates to be decomposed into
+many native gates. This can reduce circuit depth
+significantly.
+Our initial experimentation re-
+vealed that they can reduce the user runtime by
+up to a factor of two.
+Another technique that
+can be used to reduce gate depth is AI transpi-
+lation [71]. As discussed in Section 4, less strict
+convergence criteria would result in less iterations
+(and shorter user runtime), again sacrificing so-
+lution quality.
+As we did for QA, we now explore solving dif-
+ferent sizes of our QUBO problem with VQE on
+the QPU.
+5.2.1
+Scaling to larger problem sizes: VQE QPU
+Performing a scaling analysis for VQE on a real
+QPU proved challenging, primarily due to run-
+time increases as the problem size is scaled up.
+14

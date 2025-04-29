@@ -1,0 +1,73 @@
+27
+B.
+Meticulous Estimator
+The problems we just discussed also hints to a valid solution to get rid of the polynomial overhead in d.
+By
+converting the univariate mean value estimator in Algorithm 3 to a quantum circuit, one can obtain a unitary that
+approximates eiN⟨⃗u,E[ ⃗X]⟩arbitrarily close with few assumptions.
+By Remark III.12 and Theorem II.43, with O(n) access to the quantum experiment of some univariate random
+variable X, for some random variable X, variance bound σ0 ⩾0, mean bound 0 ⩽ε0 ⩽1
+3σ0, and 0 < δ < 1, we can
+construct unitary U on H′
+Ω⊗Houtput with:
+U |0⟩|0⟩=
+X
+j∈Ω′
+√qj |λj⟩|yj⟩
+(137)
+where Ω′ is some probability space corresponding measurements results during the execution of the algorithms, yj
+corresponds to instances of a random variable y. Thus U “output” a mean value estimate in the sense of the following
+lemma,
+Lemma IV.6 (Quantizing the Constrained Classical Univariate Estimator, Algorithm 3). For y, Ω′ that we just
+defined above, if the random variable X satisfy:
+• Var X ⩽σ2
+0.
+• E [X] ⩽ε0 ⩽1
+3σ0
+The unitary we constructed satisfy
+PΩ′
+h
+|y −E[X]| ⩽σ0
+n
+i
+⩾1 −δ
+(138)
+where PΩ′ indicates that the probability is taken over Ω′.
+Given some integer N, we can also generate a phase operator Q that converts output register’s value into a phase:
+Q |z⟩= eiNz |z⟩.
+(139)
+From these unitaries we construct:
+V = U † (I ⊗Q) U
+(140)
+The claim is that V approximates a phase oracle to produce eiNE[X], as found in the following theorem.
+Theorem IV.7 (Approximating the Phase Unitary using Quantum Subroutine). Given some small constant ξ > 0,
+N ∈N+, σ0 ⩾0. We feed to U with parameters (n, σ0, ε0, δ) replaced with
+l
+3Nσ0
+2ξ
+m
+, σ0, ε0, 1
+9ξ2
+, and we feed in N to
+construction of Q.
+Then, when the random variable X satisfy:
+• Var X ⩽σ2
+0.
+• E [X] ⩽ε0 ⩽1
+3σ0
+We find:
+V |0⟩|0⟩−eiNE[X] |0⟩|0⟩
+ ⩽ξ
+(141)
+Proof. Consider only the action of (I ⊗Q)U, it produces a state:
+|ψ⟩= (I ⊗Q)U |0⟩|0⟩=
+X
+j∈Ω′
+√qjeiNyj |λj⟩|yj⟩
+(142)
+We want this state to be:
+|φ⟩= (I ⊗Q)U |0⟩|0⟩=
+X
+j∈Ω′
+√qjeiNE[X] |λj⟩|yj⟩
+(143)

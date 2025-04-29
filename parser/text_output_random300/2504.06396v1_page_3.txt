@@ -1,0 +1,50 @@
+A Scalable Automatic Model Generation Tool for Cyber-Physical Network Topologies and Data Flows for Large-Scale
+Synthetic Power Grid Models
+XXX:3
+• SAM-GT is scalable and validated with three synthetic power networks ranging from 500
+to 10,000 buses.
+• The models are created by SAM-GT include high-fidelity representation of the following:
+– Communication protocols;
+– Cyber devices such as firewalls and forwarding rules, routers and their internet protocol
+(IP) configurations, and Ethernet switches;
+– Special types of hosts found in utilities such as computers that host Human Machine
+Interface (HMI) or SCADA master or database applications;
+– Cyber-physical devices such as relays and relay controllers depending on the number
+of buses in a substation as configured by the user.
+• The process of creating the models is automated and configurable. This allows users to
+generate and test different large-scale realistic cyber-physical power system models un-
+der different network topologies, such as star, radial, and a statistics-based topology, and
+configure the number of control centers and balancing authorities. It also allows users to
+generate and test impacts of varying model features including different network topologies
+and substation layouts on system performance metrics.
+This paper is organized as follows. Section 2 presents an overview of electric and cyber-physical
+synthetic models. Section 3 describes the communication model. Section 4 presents the process of
+creating the cyber-physical network. Section 5 compares statistics of the 500, 2,000 and 10,000-bus
+models, and discusses our findings and related work. This paper is concluded in Section 6.
+2
+Existing Test Cases and Models
+This section is divided into two subsections: the first provides an overview of synthetic electric
+grid test cases, while the second reviews cyber-physical test cases.
+2.1
+Electric Grid Models and Test Cases
+Protecting power infrastructure is a priority for many countries, as they view their power grid net-
+works as essential to national growth and security. Consequently, the components and architecture
+of an active power grid are often kept confidential. Test cases have historically played a role in
+evaluating new algorithms in power system research. Some of these test cases are available in the
+IEEE format [1, 20]. These test cases are often small; they have fewer buses and lack geographical
+information. Although these test cases have contributed significantly to seminal research, there is
+a growing need to study electrical networks on a larger scale, better mimicking real-world power
+grids. Several large-scale test cases have emerged in the past decade[2, 3, 10, 21, 23]. Since these
+cases have fictitious information, they are called synthetic electric grids. Their goal is to mimic
+the behavior of a real-world power system network, relevant data, such as geographic locations
+and population density, are extracted from census information to guide the creation of realistic
+synthetic grids.
+The electric grid models contain information about the power network: buses with loads, gener-
+ators, and transmission lines connecting these buses. The synthetic networks used in this work
+can be found at [16]. This repository’s power system test cases contain a few hundred to 80,000
+buses associated with substations containing geographical information. While the algorithm in
+this paper to build a cyber-physical model can be applied to a power grid synthetic model of any
+size, the results are shown for three synthetic cases as described below, also seen in Fig.1:
+• the 500-bus case on the footprint of South Carolina: This case has 500 buses, 90 generators,
+206 loads, and 468 transmission lines. It has a total of 208 substations. For this case, the
+assumption made in this paper is that it has 4 utilities and 1 balancing authority.

@@ -1,0 +1,56 @@
+a pivotal role in the production of the majority of all manufactured goods today [1]. Industrial catalysts are
+heavily used for petroleum refining, synthesis of base chemicals (e.g., ammonia, ethylene, methanol), and
+petrochemicals production. Faced with growing energy demand from industrial catalysts and the growing
+need for clean fuels to replace fossil-based fuels, major research efforts are underway to pursue lower-cost,
+earth-abundant, and environmentally sustainable classes of catalysts, including electrochemical catalysts
+(e.g. for electrolysis, fuel cells, etc.), and photocatalysts and plasmonic photocatalysts (e.g. for green H2
+production, pollutant degradation, etc.). Organocatalysts and biocatalysts are also being investigated for
+both biotechnological applications (e.g. synthetic biology) and non-biological applications such as fuels pro-
+duction, plastics degradation, and pharmaceutical production. Catalyst formulations are diverse, ranging
+from metals and metal oxides to zeolites, transition metal complexes, metal-organic frameworks, and other
+organic compounds [2, 3, 4, 5, 6, 7].
+In the ubiquitous case of heterogeneous catalysis [8], a reaction pathway typically involves three elemen-
+tary processes at the atomic level: (1) Reactant molecules are adsorbed onto the catalyst surface (2) Bonds
+of the reactant molecules are reconfigured through key intermediate states (often called transition states)
+(3) Newly reconfigured products desorb from the surface. Each of these processes individually, along with
+surface diffusion to and from the catalytically active surface sites, are constantly occuring and modeled at
+the ensemble-level by a microkinetic model of the system, whose rate constants are typically derived from
+the underlying statistical-mechanics of the system, e.g. the Eyring rate from transition state theory which
+relates the reaction temperature and the free energy difference of an elementary process to a kinetic rate.1
+The design and development of catalysts that are both reactive and selective is an extremely challenging
+problem. The physics involved spans a wide range of spatiotemporal scales and requires a delicate interplay
+of angstrom/nanometer scale quantum dynamics for elementary atomic-level processes over fast timescales,
+and micro/mesoscopic scale statistical mechanics/kinetics over slow timescales. Conventional studies [9, 8]
+of heterogenous catalysis rely on chemical intuition to construct reaction networks that specify the relevant
+chemical species and their elementary reaction processes, with the energy barriers required to compute the
+corresponding rate constants given by approximate electronic structure calculations. Microkinetic models are
+then developed for the reaction network and either evolved in time to predict ensemble dynamics or solved
+for steady-state ensemble properties. This First-Principles Micro Kinetic (FPMK) [9] modeling procedure
+is both partially heuristic and cumbersome. To complicate matters further, for a full reactor model of a
+catalytic reaction, local FPMK models must be coupled to macroscopic transport models that govern the
+heat and mass flows determining the local environment conditions throughout the reactor.
+At the atomic scale, the fundamental challenge is accurate computational modeling of the quantum be-
+havior of electrons and ions [10]. The current catalysis simulation pipeline gives an atomic-scale description
+of elementary chemical processes utilizing various computational tools. For example, most catalytic studies
+utilize density-functional theory (DFT), a formally exact formalism for computing the total ground-state elec-
+tronic energy which depends primarily on the charge density ρ(r). DFT maps the real, strongly-interacting
+electronic problem to an effective weakly-interacting problem – the Kohn-Sham system. However, this map-
+ping critically depends on a quantity, the exchange-correlation functional, which can only be approximated
+in practice [11]. While DFT can accurately give relative structural energies, vibrational frequencies, and
+formation energies, it is typically less accurate when dealing with heterogeneous systems and bond recon-
+figuration, which involve a higher degree of electronic correlation. More accurate methods that explicitly
+capture the correlated nature of the electronic wavefunctions, such as quantum chemistry expansions and
+quantum Monte Carlo, can address some of these shortcomings and are sometimes utilized for catalytic
+studies, although are often limited to smaller systems due to their higher computational complexities and
+difficulty in describing chemical bond reconfiguration [12, 13]. Besides the challenges of accurately comput-
+ing the electronic structure, one must couple electronic motion with atomic motion to accurately describe
+realistic chemical physics. A common approach is to utilize the Born-Oppenheimer (BO) approximation,
+which decouples these degrees of freedom, and even allows one to treat the atomic motion classically. This
+allows one to more straightforwardly perform BO molecular dynamics (MD) simulations, which address the
+evolution of atoms when electrons are approximately always in an instantaneous lowest-energy configuration.
+Clearly, this approximation fails precisely when there is feedback between the electronic and atomic degrees
+1In transition state theory, the Eyring rate k for an elementary process involves the Gibbs free energy difference ∆GTS
+between the initial state and the transition state of that process, k = κ(T) kBT
+h e−∆GTS/kBT where κ(T) ≤1 is a transmission
+coefficient (Eq. 4.26 in [8]) dependent on the temperature T, h is Planck’s constant, and kB is Boltzmann’s constant.
+3

@@ -1,0 +1,123 @@
+11
+tracting the white noise power corresponding to the mean of
+the noise distribution, which dominates the measurement at
+high 𝑘values. [46] fitted the noise data for each redshift bin,
+as estimated by [69], to a log-normal distribution. To assess
+whether the noise flux power may be underestimated in the
+data, [46] added an additional term to the theoretical model,
+which accounts for deviations from the mean of the noise dis-
+tribution. We model the noise in the same way, including an
+extra parameter with log-normal priors, 𝐴𝑧𝑖
+noise, alongside the
+power spectra predicted by the emulator as given by Eq. 4 in
+[46]. This analysis excludes pure thermal relics with 𝑚WDM <
+3.82 keV (2𝜎), in agreement with [46].
+Moreover, we recover the same behavior for 𝐴𝑧𝑖
+noise, which
+remains largely insensitive to 𝑚WDM−1 (that is, the free-
+streaming effect), while exhibiting a correlation with the ther-
+mal parameters 𝑇0𝑧𝑖and 𝑢0𝑧𝑖. This correlation with the IGM
+temperature favors hotter models (see Table II), whereas its
+anti-correlation with 𝑢0𝑧𝑖suggests a preference for later reion-
+ization, implying smaller heat injection. Importantly, we ob-
+tain mean values for the posteriors of 𝐴𝑧=4.2
+noise
+= 0.72+0.98
+−0.34,
+𝐴𝑧=4.6
+noise = 1.19+1.61
+−0.85, and 𝐴𝑧=5.0
+noise = 1.19+1.65
+−0.78, suggesting that
+the noise in the data might indeed be underestimated. Com-
+pared to [46], the 1𝜎error is broader, primarily due to the large
+uncertainty in 𝑇0𝑧𝑖, which allows for a very warm IGM temper-
+ature, thereby weakening constraints on the WDM mass. The
+preference towards less heat injected (lower 𝑢0) is particularly
+noticeable at 𝑧= 4.6, as shown in Figures 9 and 10.
+Regarding CWDM constraints, we find that the upper
+bounds on 𝑓WDM decrease by up to 25% (see Figure 11),
+yielding very similar results to those obtained in the scale-
+cut analysis as described in Subsection V B.
+D.
+Effect of mass resolution
+Our emulator provides an averaged prediction of the abso-
+lute binned flux power spectrum, as described in Section IV A.
+Assuming that the box size and mass resolution corrections
+are independent of the parameters in our flux models, we ap-
+ply these corrections a posteriori, that is, after obtaining the
+predicted flux power spectrum from the emulator. This cor-
+responds to the default analysis resulting in the fit shown in
+Figure 8.
+However, this simplified method does not account for the
+fact that the mass resolution correction depends on thermal
+parameters. The missing small-scale perturbations in the flux
+power spectrum are influenced by the initial perturbations in
+this regime. These perturbations contribute to the formation of
+small-scale structures, which are smoothed out in models with
+more cumulative injected heat (higher 𝑢0). As a result, models
+where the hydrodynamic response naturally suppresses small-
+scale perturbations tend to be more numerically converged,
+leading to a smaller resolution correction. This effect was ex-
+plored in [46], which allowed this work to impose even tighter
+constraints on dark matter free-streaming. We re-compute the
+models and find that scenarios with earlier reionization re-
+quire a correction that is about 5% smaller than that required
+for colder models. This refined resolution correction is de-
+noted as 𝑅𝑠cdm (𝑢0). In practice, we also apply this correction
+a posteriori, interpolating in 𝑢0𝑧𝑖on the fly during sampling.
+We find that including the thermal dependence in the mass
+resolution tightens the posteriors in the thermal parameter
+space while broadening the contours in the dark matter pa-
+rameter space, ultimately leading to weaker constraints on
+𝑚WDM and 𝑓WDM. This conclusion holds for the default Gaus-
+sian 𝑇0 priors, and when including 𝑢0 −𝑇0 priors on top of
+the default prior, with the latter exhibiting only a slightly re-
+duced constraining power in the high 𝑚WDM−1 regime due to
+the posteriors in 𝑢0 −𝑇0 being confined to the envelope of the
+simulations. For a pure WDM cosmology, we obtain a lower
+bound of 𝑚WDM > 4.66 keV for 𝑓WDM = 1 when accounting for
+the thermal dependence of mass resolution, similar to bounds
+found by [46]. The constraints on 𝑓WDM and fixed mass bins
+become weaker by 5-10% (Figure 11).
+E.
+Effect of patchy correction
+We account for the effect of patchy reionization on the de-
+fault analysis by repeating the inference using a new set of
+emulators trained on models that include the patchy correction
+described in Section III D. With default thermal priors, we
+find that the data tends to prefer cold models with very low 𝑢0
+values. This was observed in [46], and occurs due to patchy-
+corrected models showing less structure at the small scales as
+a result of the peculiar velocity field structure [115]. These
+models therefore match a very late end of reionisation, even-
+tually becoming unphysical. If we impose a 𝑢0 −𝑇0 prior, the
+posterior still shifts to lower values but within the envelope of
+simulations, leaving more room for dark matter free-streaming.
+The bounds on WDM now become 𝑚WDM > 5.86 keV, with
+little change of ≤5% on mixed models.
+Adding the thermal-dependent resolution correction shifts
+the posterior in the other direction, since resolution correction
+increases flux power at small scales, increasing with decreas-
+ing heat injected during reionization.
+As a result, slightly
+warmer IGM temperatures are allowed with 𝑢0, specially at
+high 𝑧, pushing the lower bound. As a result the constraints
+slightly weaken to 𝑚WDM > 5.11 keV with the 𝑢0 −𝑇0 prior,
+and to a lesser extent (𝑚WDM > 5.39 keV) with the 𝜏CMB
+prior. We show this behavior in orange for the analysis with
+thermal priors using 𝜏CMB, patchy and a thermal-dependent
+resolution correction in Figure 7. We further note that the 𝜒2
+does not change noticeably compared to the default analysis
+when both patchy and 𝑅𝑠cdm are modeled (see Table II). The
+CWDM constraints, as shown in Figure 11, are stronger than
+the other analyses and comparable to the default one. From
+the 2𝜎contour in Figure 6, the patchy + 𝜏CMB + 𝑅𝑠cdm (𝑢0)
+orange model is more inflated than the fiducial model towards
+high 𝑚WDM−1, yielding slightly weaker constraints at the fixed
+mass bins shown in Figure 11. In general, the difference with
+respect to other analyses is more noticeable in the intermedi-
+ate mass bin, 𝑚WDM = 3 keV, corresponding to the region in
+Figure 6 where the degeneracy between 𝑓WDM and 𝑚WDM−1 is
+stronger. While these models incorporate physical effects ap-
+plied a posteriori, the resulting constraints remain unchanged,

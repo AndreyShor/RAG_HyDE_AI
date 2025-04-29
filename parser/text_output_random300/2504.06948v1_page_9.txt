@@ -1,0 +1,118 @@
+9
+• An (α, d)-block-encoding of A is available, which is denoted by UA.
+Before constructing the block-encoding, we summarize the total cost in the following theorem.
+Theorem III.8. Given an (α, d)-block-encoding of A, there exists a (4 · max{αh, 1}, d + 5)-block-encoding
+of Lm,k,p(Ah). The gate complexity is
+O (k + poly log (m · k)) ,
+(29)
+and it requires one query to the block-encoding of A.
+Compared to the block-encoding presented in [32], ours is simpler, with both the normalization factor
+and the number of additional qubits being independent of k and m. With minor modifications, the block-
+encoding proposed in this paper can also be applied to Cm,k,p(Ah), which shares a similar block structure
+to Lm,k,p(Ah).
+We begin by constructing the block-encoding for the case h = 1 and α = 1, and will later generalize it for
+arbitrary h > 0 and α ≥∥A∥2. To start, we rewrite the matrix as a sum of two matrices:
+Lm,k,p(A) =
+
+
+W
+...
+W
+In
+√k+1
+−In
+In
+...
+...
+−In In
+
+
++
+
+
+O
+eT
+O
+... ...
+eT
+O
+e1T ⊗In
+√k+1
+On
+On On
+...
+...
+On On
+
+
+=: L1 + L2,
+(30)
+where we use W to represent Wk(A) for simplicity. Note that the nonzero components of eT are confined to
+its first block row, which equals e1T ⊗In
+√k+1 , allowing us to express L2 as a tensor product. In the following two
+subsections, We will discuss the block-encoding of L1 and L2, and thus the block-encoding of Lm,k,p(A) can
+be implemented using LCU (Linear Combination of Unitaries).
+1.
+Block-encoding of L1
+The first term L1 can be written as
+L1 =
+
+W
+B
+
+,
+where W, B ∈Rmn(k+1)×mn(k+1), and explicitly
+W = Im ⊗W ,
+B =
+
+
+1
+√k+1
+−1
+1
+... ...
+−1 1
+
+⊗In.
+(31)
+The matrix W can be decomposed as
+W = M1 ⊗In + M2 ⊗In + M3 ⊗A,
+where
+M1 =
+
+
+0
+1
+0
+... ...
+1
+0
+
+,
+M2 =
+
+
+1
+√k+1
+1
+√k+1 · · ·
+1
+√k+1
+0
+0
+...
+...
+0
+0
+
+,
+M3 =
+
+
+0
+βk
+...
+β1
+
+.
+We now consider the block-encoding for M1, M2, and M3:

@@ -1,0 +1,48 @@
+• Brute Force (torch.cdist, torch.topk) - matrix multiplication based nearest neigh-
+bors, where all pairwise distances are computed, before the topk are selected. This is
+extremely memory intensive with a lot of wasted computation for large systems. However,
+as the problem is embarrassingly parallel, this can work effectively in practice.
+• cuml.neighbors.NearestNeighbors(algorithm="rbc") - GPU accelerated ball tree im-
+plementation of nearest neighbors.
+Figure 6 demonstrates that for consistently good performance across a variety of system sizes, the
+graph construction method must be adaptive. For small system sizes, the overhead of GPU based
+graph construction is too high; for slightly larger system sizes, brute force matrix multiplication
+based GPU routines offer the best performance, and at very large system sizes, memory
+considerations require the use of a combination of GPU acceleration and algorithmic efficiency.
+In certain scenarios, for mesoscale simulations, a practitioner may come full circle, choosing
+nearest neighbor implementations which are CPU compatible (at the cost of performance), in
+order to relieve pressure on accelerator memory - this can again change the equation for which
+method is optimal for a given simulation.
+Orb-v2’s graph featurization used a fixed (3 × 3 × 3) supercell expanded from a central unit
+cell. The correctness of this approach depends on the max neighbors, radius cutoff and the
+size of the minimum unit cell dimension. Instead, we now construct the supercell dynamically,
+computing the minimum number of unit cell tilings in a given cell direction to ensure correct
+graph construction.
+Appendix E:
+Energy conservation
+While most experimental observables are predicted from simulations that are performed at
+constant temperature and/or pressure, there are some workflows which rely on constant
+energy dynamics. In those scenarios, it is important to evolve the dynamics of the system
+using continuous and conservative forces. Within Orb-v3, the only model that satisfies these
+constraints rigorously is orb-v3-conservative-inf, and Figure 7 demonstrates this for an
+arbitrary system in the MPtraj dataset. While orb-v3-conservative-20 still computes the
+forces as gradient of the energy, the neighbor limit per atomic environment implies that small
+discontinuities are going to be present, and these give rise to non-energy-conserving behavior.
+The orb-v3-direct-inf model does exhibit rigorously continuous forces but as they are not
+computed as the gradient of a scalar, they are non-conservative. Finally, orb-v3-direct-20 is
+both non-conservative and exhibits small discontinuities in the forces, and this naturally gives
+rise to the largest energy drift.
+Appendix F:
+Thermal conductivity calculations
+We observe that the prediction error for thermal conductivities (as measured by the SRME) is
+somewhat dependent on the step size used by Phonopy in its finite difference approximation to
+the higher-order derivatives of the PES; this has been reported by other authors as well [40]. In
+addition, the evaluation is observed to depend on the floating point precision used to evaluate
+the forces – see Figure 8. To identify exactly which part of the calculation is causing this, we ran
+a mixed precision experiment in which the geometry relaxation is performed in low precision
+while the subsequent force evaluations are performed in high precision. Figure 8 shows that
+this approach achieves essentially the same accuracy as running the whole experiment in
+high precision, which indicates that the loss in accuracy at reduced precision is not related to
+failures in the geometry optimizations but instead relates to a breakdown of the finite difference
+approximations whenever forces are evaluated in low precision.
+16

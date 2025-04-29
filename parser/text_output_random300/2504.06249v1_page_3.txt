@@ -1,0 +1,60 @@
+ant, then the recovered distribution from ST will be periodic E(3)-invariance [35]. The overall objective for
+training the joint diffusion model on A, X and L is
+LS = λALA + λXLX + λLLL,
+(1)
+where λ represents the corresponding weight given to each individual loss component. The full diffusion
+objectives can be found in Appendix A.
+2.3
+CLASSIFIER-BASED GUIDANCE
+Guided diffusion models typically generate structures S from the conditional distribution p(S|y), where y
+represents the target label or condition. In classifier-based guidance [33], this is achieved by leveraging
+Bayes’ Rule to guide the diffusion process:
+∇St log pt(St|y) = ∇St log pt(St) + ∇St log pt(y|St),
+(2)
+where the gradient of the log conditional probability ∇St log pt(St|y) at timestep t given the condition
+y can be decomposed into two terms: ∇St log pt(St) and ∇St log pt(y|St). The first term corresponds
+to the unconditional generative model, which guides the generation of St and is generally approximated
+via a neural network fθ(St, t). The second term represents the gradient from a time-dependent classifier,
+which estimates how likely St is to match the condition y and is approximated by a separate neural network
+gϕ(y|St, t). In practice, because the unconditional model and the classifier are separate neural networks,
+we train them independently.
+2.4
+CLASSIFIER-FREE GUIDANCE
+In contrast to classifier-based guidance, classifier-free guidance [34] integrates the conditional generation
+directly into the diffusion model by training a single neural network for both conditional and unconditional
+models. Instead of learning the unconditional score function ∇St log pt(St) independently, classifier-free
+guidance learns the unconditional and conditional distributions jointly:
+∇St log pt(St, c),
+c =
+∅
+with probability puncond
+y
+else
+(3)
+where puncond is some probability for unconditional generation, set as a hyper-parameter. During sampling,
+the mixed score function becomes (1 + ω)∇xt log pt(xt, y) −ω∇xt log pt(xt, ∅), where ω is the guidance
+strength. In practice, we project y into the same space as the node representations, and combine them
+through element-wise addition. In our experiments, we let puncond = 0.2 and ω = 1.
+2.5
+DATASET
+Our training dataset for the denoising neural network, which we henceforth refer to as “MP DOS,” com-
+prises of 50,790 inorganic crystal structures curated from the Materials Project repository [36]. The tar-
+get property is the atom-level density of states (DOS), with each atom in every structure labeled by its
+corresponding DOS. The MP DOS dataset is divided into training, testing, and validation splits in a
+0.6:0.2:0.2 ratio, with only the training split used to train the denoising network, as well as the forward
+model in classifier-based guidance.
+3
+RESULTS
+3.1
+CONDITIONAL GENERATION
+We first evaluate the two diffusion model guidance strategies—classifier-based and classifier-free using the
+testing split of the MP DOS dataset. At the initial timestep t = T of generation, we specify the number
+of atoms and the DOS while randomly sampling atom types AT , fractional coordinates XT , and lattice
+matrix LT from their respective prior distributions p(AT ), p(XT ) and p(LT ). In other words, our goal is
+to reconstruct the entire testing split of the MP DOS dataset using the atom-level DOS as the conditional
+input. In addition to T = 1000, which represents generation from fully randomized initialized structures,
+we perform additional experiments by generating structures from timesteps T = 200 and T = 500. These
+cases involve partially noisifying the original testing split structures using their forward noising processes
+(see Appendix A). As the timestep decreases, more structural information from the original data is retained,
+leading to generated structures that more closely resemble those in the testing split.
+3

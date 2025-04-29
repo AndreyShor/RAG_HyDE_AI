@@ -1,0 +1,135 @@
+MobiSys ’25, June 23–27, 2025, Anaheim, California, US
+Jinbo Peng, Junwen Duan, Zheng Lin, Haoxuan Yuan, Yue Gao, and Zhe Chen
+Spectrum 
+sensor
+Signal 
+classifier
+Header 
+decoder
+Multi-coset
+sampling
+Signal 
+recovery
+…
+…
+0110…
+1011…
+Input:
+Output:
+Figure 4: Signal processing pipeline of SigChord
+3
+System Design
+SigChord consists of a low-cost sub-Nyquist sampling frontend and
+a signal analysis backend. Firstly, SigChord utilizes multi-coset sub-
+Nyquist sampling to alleviate the burden on the sniffing frontend.
+Secondly, the backend must handle complex sequential analysis
+tasks from limited sub-Nyquist samples. That is, we need to effec-
+tively predict the spectrum occupancy in order to enable smoother
+signal recovery path through non-blind recovery. And we need
+to effectively capture signal features from time-series data in or-
+der to classify, compensate, demodulate and finally decode signals.
+To this end, SigChord employs Transformer-based modules for
+their proven strengths in semantic analysis [67–69]. Besides, the
+well-established and optimized tool-chains for Transformers could
+enhance the availability and deployment efficiency of SigChord.
+The backend of SigChord comprises three submodules: spectrum
+sensing, protocol identification, and header decoding. The spectrum
+sensing module identifies occupied sub-bands from sub-Nyquist
+IQ-sampled data. With this information, SigChord recovers signals
+from limited sub-Nyquist samples and provides downstream models
+with separated signals. The protocol identification module classi-
+fies frames with intact headers, filtering out those without, while
+the header decoding module calibrates, demodulates, and decodes
+physical layer packet headers. The overall pipeline is illustrated
+in Figure 4. With a modular and software-based design, the back-
+end could run flexibly on PCs, servers, or even the cloud, reducing
+SigChord’s reliance on resource-limited devices. Additionally, the
+modular architecture ensures flexible integration and extension for
+new protocols.
+3.1
+Sub-Nyquist Sampling and Preprocess
+The sub-Nyquist sampling frontend of SigChord utilizes multi-coset
+sampling, which employs a multiplexer and multiple low-speed
+ADCs with unique time delays to sample the signal in parallel. Let
+the multiband signal be 𝑥(𝑡) = P
+𝑗𝑥𝑗(𝑡), where 𝑥(𝑡) is band-limited
+within [−𝐵/2, 𝐵/2]. The Nyquist rate for sampling 𝑥(𝑡) is 𝐵. The
+low-speed ADCs operate at 𝐵/𝐿. multi-coset sampling employs
+𝑃ADCs (𝑃≪𝐿), so the total sampling rate becomes 𝑃/𝐿of the
+Nyquist rate. The samples are captured as 𝑦∈C𝑃×𝑁, with the 𝑗-th
+ADC’s samples given by
+𝑦𝑗,𝑛= 𝑥
+𝑛𝐿+ 𝑐𝑗
+𝐵
+
+,
+𝑛= 1, 2, . . . , 𝑁
+(3)
+where 𝑐𝑗is the unique offset for the 𝑗-th ADC, and 𝑁is the number
+of samples per ADC. Applying Fourier transform to Eq. (3), we get
+the compressed sensing model 𝑌= 𝐴𝑋, where 𝑌∈C𝑃×𝑁is the
+transformed samples, 𝐴∈C𝑃×𝐿is the measurement matrix formed
+by Fourier bases determined by the offsets 𝑐𝑗, and 𝑋∈C𝐿×𝑁is the
+spectrum matrix to be recovered. Detailed discussions can be found
+in [5, 70], and we omit them here for brevity.
+Instead of relying on CS methods, we incorporate a data-driven
+Transformer with rule-based signal recovery. The Transformer
+layer processes a sequence of high-dimensional token vectors using
+an attention mechanism, where each token is correlated with oth-
+ers, producing a new token sequence. The standard Transformer
+architecture includes encoders and decoders: the encoder applies
+self-attention to the input sequence, producing an output sequence
+of the same length, while the decoder uses attention to correlate
+the existing features (e.g., encoder features) with new query to-
+kens, generating an output sequence matching the query length.
+Each Transformer layer distributes the attention mechanism across
+multiple heads, allowing attention from diverse perspectives.
+To process IQ samples with a Transformer, previous methods in-
+clude reshaping [66, 71], linear embeddings [71], and convolutional
+neural networks (CNN) [72] for Nyquist sampled data. Given the
+severe aliasing in sub-Nyquist samples, we adopt reshaping and a
+3-layer MLP for nonlinear embedding, in seek of both effectiveness
+and efficiency, as shown in Figure 5. Given the multi-coset samples
+𝑦∈C𝑃×𝑁, we transpose and unfold 𝑦into 𝑧∈R𝑁×2𝑃such that
+𝑧𝑗,2𝑘+1 +𝑖𝑧𝑗,2𝑘+2 = 𝑦𝑘,𝑗, where 𝑖is the imaginary unit. Longer input
+sequences to Transformer significantly increase memory and pro-
+cessing demands, therefore, we further reshape 𝑧into 𝑧′ ∈R
+𝑁
+𝐹×2𝑃𝐹,
+where 𝐹is the folding factor to group IQ samples into patches and
+reduce the input sequence length.
+We then feed 𝑧′ into the MLP. The MLP consists of 3 linear layers
+with Gaussian Error Linear Units (GELU) activation and dropout
+after each of the first 2 layers. Chosen for its smooth non-linearity,
+GELU improves gradient flow and enhances model expressiveness
+compared to ReLU. The input feature size is 2𝑃𝐹, and the output
+sizes are 2𝑑𝑚𝑜𝑑𝑒𝑙, 2𝑑𝑚𝑜𝑑𝑒𝑙, and 𝑑𝑚𝑜𝑑𝑒𝑙, respectively. Each layer
+includes layer normalization. Positional embeddings are added to
+the output. Each subsequent module in SigChord is equipped with
+its own reshaping and a 3-layer MLP for IQ sample embedding.
+3.2
+Spectrum Sensing and Signal Recovery
+As discussed, accurate spectrum sensing below twice the Landau
+rate allows breaking the sampling limit in [5]. We uniformly di-
+vide the spectrum into 𝐿sub-bands, corresponding to the rows of
+the spectrum matrix 𝑋in Eq. (1). SigChord formulates spectrum
+𝑁
+𝑃
+𝑑𝑚𝑜𝑑𝑒𝑙
+𝑁
+𝐹
+…
+Transpose & unfold
+3-layer MLP
+Sub-Nyquist 
+embedding
+𝑁
+𝐹
+2𝑃𝐹
+…
+…
+𝐹
+2𝑃
+𝐹
+Reshape
+Figure 5: The embedding process of SigChord.

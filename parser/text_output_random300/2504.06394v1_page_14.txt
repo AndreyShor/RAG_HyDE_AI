@@ -1,0 +1,73 @@
+14
+modulus is increased, making the cupula stiffer to the point that 𝜅≫1, the flow ceases to be
+symmetric.
+We emphasize that although symmetry breaking arises from the breakdown of the
+asymptotic ordering between the first and second terms in the series, this does not imply a
+loss of asymptotic ordering in the higher-order terms. The symmetry breaking results from a
+catastrophic cancellation in the leading-order term, while the first correction remains O(𝜖),
+and the subsequent terms are expected to retain their anticipated scaling—indicating that the
+series remains well-behaved. We confirm this in the next section by numerically solving the
+full nonlinear problem (2.1).
+To estimate the critical of 𝜅where the transition occurs, we may write Δ𝑝0 = 𝐴𝑒2𝜋𝑖𝑡+ 𝑐.𝑐.
+and 𝑓(𝑡) = 𝐵𝑒2𝜋𝑖𝑡+ 𝑐.𝑐., with 𝐴, 𝐵∈C,and seek the range of 𝜅for which Δ𝑝is in phase
+with 𝑓. Direct substitution into (3.9a) yields
+𝐴= −𝜋
+8𝐼4
+𝐵
+2𝜋𝛼(𝑏)𝑖+ 𝜅/(16𝐼4) .
+(3.18)
+Therefore, the transition change occurs at 𝜅𝑐= 32𝐼4𝛼(𝑏). For 𝜅< 𝜅𝑐the phase difference
+between 𝐴and 𝐵is more than 𝜋
+4 , and it will be less than 𝜋
+4 for 𝜅> 𝜅𝑐. When the phase
+difference is small the response is roughly in phase with the forcing 𝑓(𝑡), and vice-versa.
+3.2.1. Sample head rotation
+To visualize the different regimes we have identified above, we solve the equation for the
+pressure jump (3.9a) with a specific choice for the forcing 𝑓(𝑡). While many forms of 𝑓(𝑡)
+could be considered, we are motivated by a clinical head manoeuvre that may be thought of
+as modelling a slow rotation of the head from right to left. Although other clinical models
+are described by high-order polynomials (Boselli et al. 2009, 2013), we choose a particular
+form that facilitates an analytical solution of the equations, namely:
+𝑓(𝑡) = d𝐹
+d𝑡=
+(
+sin 2𝜋𝑡
+𝑡∈(0, 1)
+0
+𝑡> 1.
+(3.19)
+Solving for the pressure gradient through (3.12) yields
+−Δ𝑝= 𝛽
+∫𝑡
+0
+𝑓(𝜏)𝑒−𝛾𝜅(𝑡−𝜏)d𝜏=
+(
+𝛽2𝜋𝑒−𝛾𝜅𝑡+𝛾𝜅sin 2𝜋𝑡−2𝜋cos 2𝜋𝑡
+𝛾2𝜅2+4𝜋2
+𝑡< 1,
+2𝜋𝛽
+4𝜋2+𝛾2𝜅2 𝑒−𝛾𝜅𝑡(1 −𝑒−𝛾𝜅)
+𝑡> 1.
+(3.20)
+Here, 𝛽= 𝜋/[8𝐼4𝛼(𝑏)] and 𝛾= 𝜅/[16𝛼(𝑏)𝐼4]. The cupular deformation, which in this
+regime is proportional to the pressure jump, is plotted in the left panel of Figure 5 for
+different values of 𝜅, from which we can clearly see the transition from Δ𝑝tracking the
+angular velocity 𝐹(𝑡) for small 𝜅to tracking the angular acceleration 𝑓(𝑡) for large 𝜅, as
+expected from the preceding analysis. There is an interesting transition region for 𝜅∼1,
+where we can see an “overshoot” region at the end of the manoeuvre that has not decayed.
+This is not the case for either of the limiting regions, where the pressure jump (and cupular
+displacement) is identically zero after the completion of the head turn.
+In Figure 5(b) we compare how similar the response is to either the angular velocity or the
+angular acceleration by computing the correlation between the respective functions; for two
+functions 𝑓(𝑡) and 𝑔(𝑡), this correlation is defined as
+𝑅( 𝑓, 𝑔) =
+∫𝑇
+0
+𝑓(𝑡)𝑔(𝑡) d𝑡
+∫𝑇
+0
+𝑓(𝑡)2 d𝑡·
+∫𝑇
+0 𝑔(𝑡)2 d𝑡
+1/2 .
+(3.21)

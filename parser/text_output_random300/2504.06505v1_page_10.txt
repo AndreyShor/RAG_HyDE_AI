@@ -1,0 +1,33 @@
+ 
+10 
+ 
+FIG. 3. Comparison of coarse-grained (CG) models run with Brownian dynamics and all-atom (AA) simulations. 
+Each panel shows results from two CG models initialized with different parameters, represented in orange and green. 
+(A) Radial distribution function; (B) Three-body correlation; (C) Mean squared displacement. The results from the 
+AA simulations are displayed in blue. Transparent curves indicate results from the initial models, while solid curves 
+represent those from the trained models.  
+ 
+The dynamical property that we focused on was the mean squared displacement (MSD) of the COM 
+of each water molecule, which is defined as: 
+ 
+𝑀𝑆𝐷(𝑡) = 〈|𝑹(𝑡) −𝑹(0)|<〉. 
+(10) 
+The MSD of the CG models is compared against the AA reference data in Fig. 3(c) (Brownian dynamics) 
+and 4(c) (Langevin dynamics). Initially, the MSD profiles of the unoptimized CG models deviate markedly 
+from the AA simulations, reflecting discrepancies in dynamic behavior. After optimization with the 
+dynamic matching framework, the CG models exhibit MSD curves that align closely with the AA 
+benchmarks. This agreement confirms that the CG models not only reproduce structural correlations (as 
+seen in RDFs/ADFs) but also accurately capture the diffusion dynamics of the AA system. Notably, the 
+length of trajectories used for training (0.4 ps) is shorter than the longest lag time shown in Fig. 3(c) and 
+4(c) (4.0 ps). The training length in fact only goes a relatively small way into the transition to the diffusive 
+regime. This demonstrates that the optimized CG models can extrapolate essential dynamical features of 
+the reference system – even when trained on limited short-time data – while retaining predictive accuracy 
+at longer timescales. 
+ 
+For the system studied here, we observed no significant difference in the ability of CG models to 
+reproduce dynamical properties – regardless of whether Brownian or Langevin dynamics was employed. 
+This suggests that, for simple systems like water, the choice of dynamics equation of CG simulations has 
+minimal impact on capturing diffusive behavior. However, we anticipate that the selection of dynamics 
+(e.g., inertial vs. overdamped) may lead to divergent dynamical behavior in CG models of more complex 
+systems, such as polymers, biomolecules, or biomolecular assemblies. A systematic investigation of these 
+effects lies beyond the scope of this work and will be explored in future studies. 

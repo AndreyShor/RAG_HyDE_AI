@@ -1,0 +1,105 @@
+S2
+However, note that (UL(R))†UL(R) ̸= I since the left and right sets themselves are not orthonormal.
+Importantly, for bi-orthonormal systems the identity can be resolved as,
+1 =
+X
+j
+|ϕj⟩⟨ϕj|RL .
+(S.8)
+One issue with the bi-orthonormalization procedure is that it requires a non-degenerate eigenspectrum [1]. In gen-
+eral, degeneracies can arise in three ways: (i) due to symmetries of the system; (ii) accidental degeneracies; and (iii)
+emergent degeneracies. For degeneracies due to exact symmetries of the bare Hamiltonian, the solution is to label
+states by their associated conserved quantum numbers and block-diagonalize the Hamiltonian separately in each quan-
+tum number subspace. A bi-orthonormal basis can then be defined separately in each block and different degenerate
+components of a symmetry multiplet are treated independently. For accidental degeneracies, often numerical error
+even at machine precision level is sufficient to distinguish states and eliminate problems with bi-orthonormalization.
+These issues were discussed in a different context for NRG calculations in Ref. [3]. We note that the procedure is
+stabilized by simply using 128-bit precision numerics, which is typically enough to distinguish accidental degeneracies,
+which are of course always approximate in practice. Another simple solution is to add to the Hamiltonian a physi-
+cally inconsequential disorder perturbation of very small magnitude, which has the effect of lifting the degeneracies.
+Finally, in the context of quantum impurity problems, we note that low-energy fixed points can have larger emergent
+symmetries than the bare model Hamiltonian. For example the one-channel, spin- 1
+2 anisotropic Kondo model has an
+isotropic strong coupling stable fixed point [4]; whereas the two-channel Kondo model has a large emergent SO(8)
+symmetry at its critical point [5]. In these cases, one might expect additional degeneracies that cannot be separated
+into distinct quantum number blocks. However, these emergent symmetries only pertain asymptotically after very
+many NRG iterations, and at low energies. In practice, the degeneracies near the fixed point are always approximate
+and again, the use of high-precision numerics solves the problem.
+S.II.
+ITERATIVE CONSTRUCTION AND DIAGONALIZATION IN NH-NRG
+In the following we assume that left and right vectors of NH matrices are bi-orthonormal. The NRG procedure is
+defined by the recursion relation,
+ˆHN+1 = ˆHN + ˆTN+1
+(S.9)
+which is initialized by ˆH0, consisting of the impurity degrees of freedom and the Wilson chain ‘zero’ orbital. Here the
+operator ˆTN+1 = ˆT a
+N+1 + ˆT b
+N+1 + ˆT c
+N+1 is defined by,
+ˆT a
+N+1 = ϵN+1
+X
+σ
+f †
+N+1σfN+1σ
+;
+ˆT b
+N+1 = tN
+X
+σ
+f †
+NσfN+1σ
+;
+ˆT c
+N+1 = tN
+X
+σ
+f †
+N+1σfNσ
+(S.10)
+At step N + 1 of the iterative diagonalization process, we add on the new Wilson chain site |k⟩N+1, where the index
+k = {0, −1, +1, 2} labels the four possible configurations of that site, |k⟩N+1 = {|−⟩, |↓⟩, |↑⟩, |↑↓⟩} respectively. Since
+the part of the Hamiltonian describing the Wilson chain is Hermitian, the left and right eigenstates for the isolated
+Wilson orbital |k⟩N+1 are equal and so we do not specify a L, R superscript. At this step we need to construct the
+Hamiltonian matrix Hb
+N+1 with the following matrix elements,
+[Hb
+N+1]kr,k′r′ = ⟨N + 1; k; r|L
+b ˆHN+1 |N + 1; k′; r′⟩R
+b
+(S.11)
+where the b subscript denotes that these are basis states (rather than eigenstates), which are decomposed as,
+|N + 1; k; r⟩L(R)
+b
+= |k⟩N+1 ⊗|N; r⟩L(R)
+d
+(S.12)
+for left(right) basis states. The latter are given in terms of the left(right) eigenstates in the diagonal representation
+(d subscript) of the previous iteration, denoted |N; r⟩L(R)
+d
+. Therefore, these satisfy ˆHN |N; r⟩R
+d = EN(r) |N; r⟩R
+d and
+⟨N; r|L
+d ˆHN = ⟨N; r|L
+d EN(r) where EN(r) are the complex eigenvalues of the previous iteration.
+We therefore have four terms to compute from Eqs. (S.9), (S.10):
+⟨k|N+1 ⟨N; r|L
+d ˆHN |k′⟩N+1 |N; r′⟩R
+d ,
+(S.13)
+⟨k|N+1 ⟨N; r|L
+d ˆT a
+N+1 |k′⟩N+1 |N; r′⟩R
+d ,
+(S.14)
+⟨k|N+1 ⟨N; r|L
+d ˆT b
+N+1 |k′⟩N+1 |N; r′⟩R
+d ,
+(S.15)
+⟨k|N+1 ⟨N; r|L
+d ˆT c
+N+1 |k′⟩N+1 |N; r′⟩R
+d .
+(S.16)

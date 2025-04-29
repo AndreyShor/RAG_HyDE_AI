@@ -1,0 +1,60 @@
+we note that that quantum communication systems might also find use as dual-purpose devices. For
+example, as large-scale quantum sensors capable of vibrational sensing [522], which could also motivate
+investment, development and deployment.
+Compatibility. For over thirty years, the data capacity of fiber-optical communications has increased by a
+factor of ten every four years. The demand for increased capacity has not subsided, leading to even more
+optical intensity within the fibers as channel density increases. QKD will most likely need to coexist with
+classical data transmission in the same telecommunications network infrastructure. Moreover, to avoid
+loss of capacity, a QKD channel should not occupy much more bandwidth than a classical one. This
+is a considerable challenge, since noise from Raman scattering of light from the classical data channel,
+in which photons in the optical fiber are scattered inelastically, can contaminate a quantum signal. We
+note that Raman noise is not such an issue for CV-QKD, since the local oscillator used in homodyne
+detection acts as a mode filter, thus eliminating a large part of the Raman background [523, 524]. Several
+methods have been proposed to mitigate this problem for DV-QKD. One method to minimize Raman
+noise, demonstrated as early as 1997 [525], is to employ a quantum signal with shorter wavelength,
+such as the telecommunications O-band (∼1260 −1360nm), with the classical channels in the C-band
+(∼1530 −1565nm) or L-band (∼1565 −1625nm).
+In this way, the Raman noise is less prevalent.
+This approach has allowed QKD with keyrates of 4.5 kbps and 5.1 kbps for O-band quantum signals co-
+propagating and counter-propagating with 3.6 Tbps C-band classical (∼21 dBm), over a 66km commercial
+backbone network [526]. An MDI-QKD session was realized in a deployed link of about 25km, resulting
+in a positive key rate with up to about 45dB of link loss, when the quantum signal (@1310nm) was
+multiplexed with classical telecommunications signals at 10 Gb/s (@ 1550 nm) and 10Mb/s (∼1510
+nm) [425]. Recently, a quantum link sending one O-band photon of an entangled pair through 47km of
+fiber with 18dBm of classical signal (C-band) was demonstrated [527], also showing improved performance
+for wavelengths less than 1300nm. A similar setup was recently used for quantum teleportation coexistent
+with classical communications [528]. Despite the difficulties due to Raman noise, wavelength-division
+multiplexing (WDM) has been used to implement QKD in C-band channels coexisting with 100Gb/s
+the encrypted classical channel (C-band) in a metrolpolitan network [513]. A possible way to minimize
+Raman noise is to use hollow-core fiber, which also reduces noise arising from nonlinear effects. Noise
+reduction of roughly 35dBm compared to standard SMF28 fiber has been observed in QKD trials [529].
+Another route for coexistence of classical and quantum signals is space division multiplexing (SDM),
+where multiple spatial modes are used as communication channels. SDM, involving new types of optical
+fiber, is currently seen as a necessary step to solve the current capacity crunch in optical fiber com-
+munications [530]. Multi-core optical fibers contain several single-mode cores within the same cladding
+material, and can be used to transmit independent classical and quantum signals [531–533]. Other types
+of specialty fibers, such as few-mode fibers and ring-core fibers, can support multiple transverse modes,
+which can each function as an independent channel. Propagation of quantum and classical signals in
+these fibers is currently being investigated for future communications infrastructure [534, 108].
+Concerning DI-QKD specifically, Raman noise presents a considerable obstacle for deployment in
+commercial fibers along with classical data channels.
+Quantum process tomography of the effect of
+Raman noise on DV QKD protocols has shown that it can be accurately described by a depolarizing
+channel for both co-propagating and counter-propagating signals [535], where the degree of depolarization
+is a function of fiber link length. Since depolarization reduces and can destroy entanglement, it is most
+likely that DI-QKD will require a dedicated standard fiber, or one of the more advanced noise-reduction
+solutions involving specialty fiber mentioned above. The second observation that is typically made about
+the compatibility concerns integration and interoperability with existing cybersecurity hardware and
+protocols. In this regard, QKD has already been integrated with various cybersecurity protocols, including
+IPSec, TLS, Kerberos, AES, etc, as briefly discussed above. We will further discuss interoperability in
+the next section.
+6.4.1. Standardization and Interoperability
+In addition to the scientific and technical challenges of realizing QKD in real-world conditions, there is
+also a need for coordinated effort towards standardization and interoperability to enable the integration
+of QKD into practical security services [536]. As QKD is an evolving technology, there are additional
+challenges ranging from immediate concerns, such as ensuring the security and interoperability of trusted
+relay-based QKD networks to medium- and long-term considerations like the large-scale integration of
+quantum and classical telecommunications networks, expanding the applications of QKD, and scaling up
+the network using quantum repeaters. Moreover, the global deployment of QKD may employ multiple
+types of links (fiber, free space) depending on the type of network and application [537].
+78

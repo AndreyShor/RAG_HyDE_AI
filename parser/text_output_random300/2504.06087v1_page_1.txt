@@ -1,0 +1,89 @@
+Accurate Ab-initio Neural-network Solutions to
+Large-Scale Electronic Structure Problems
+Michael Scherbela1*, Nicholas Gao2*, Philipp Grohs1,3, and Stephan G¨unnemann2
+1Faculty of Mathematics, University of Vienna, Oskar-Morgenstern-Platz 1, A-1090 Vienna, Austria
+2Department of Computer Science & Munich Data Science Institute, Technical University of Munich
+3Johann Radon Institute for Computational and Applied Mathematics, Austrian Academy of Sciences,
+Altenbergerstrasse 69, 4040 Linz, Austria
+*Equal contribution, order determined by coin flip
+Abstract
+We present finite-range embeddings (FiRE), a novel wave function ansatz for accurate large-scale ab-initio
+electronic structure calculations. Compared to contemporary neural-network wave functions, FiRE reduces
+the asymptotic complexity of neural-network variational Monte Carlo (NN-VMC) by ∼nel, the number of
+electrons. By restricting electron-electron interactions within the neural network, FiRE accelerates all key
+operations – sampling, pseudopotentials, and Laplacian computations – resulting in a real-world 10× accel-
+eration in now-feasible 180-electron calculations. We validate our method’s accuracy on various challenging
+systems, including biochemical compounds, conjugated hydrocarbons, and organometallic compounds. On
+these systems, FiRE’s energies are consistently within chemical accuracy of the most reliable data, includ-
+ing experiments, even in cases where high-accuracy methods such as CCSD(T), AFQMC, or contemporary
+NN-VMC fall short.
+With these improvements in both runtime and accuracy, FiRE represents a new
+‘gold-standard’ method for fast and accurate large-scale ab-initio calculations, potentially enabling new
+computational studies in fields like quantum chemistry, solid-state physics, and material design.
+1
+Introduction
+Solving the electronic Schr¨odinger equation unlocks
+the computational analysis of molecular and mate-
+rial properties and structures. Unfortunately, its so-
+lution, the ground-state electronic wave function, is
+only known analytically for the simplest of systems.
+Consequently, approximations trade off computational
+efficiency and accuracy on various scales depending
+on the problem, its properties, and the computational
+budget.
+Some methods, such as Density Functional
+Theory (DFT), scale favorably with system size but
+fail to predict experiments for strongly correlated sys-
+tems.
+Other methods, such as Coupled Cluster, of-
+ten correctly predict experiments, but their computa-
+tional cost increases dramatically with the number of
+electrons nel, e.g., O(nel7) for CCSD(T). Furthermore,
+applying these highly accurate methods frequently re-
+quires expert knowledge in choosing basis sets, initial-
+ization, active spaces, and optimization parameters,
+even for small systems.
+In theory, Variational Monte Carlo (VMC) promises
+both a favorable runtime by scaling only O(nel3) per
+step in the number of electrons nel, and being easy to
+apply, as it directly parametrizes the real-space elec-
+tron wave function Ψ : Rnel×3 →R [1].
+However,
+conventional VMC has long been touted in practice
+as a low-accuracy method that may only be used as
+initial guesses for accurate simulations like diffusion
+Monte Carlo [2].
+This fundamentally changed with
+the recent advent of neural-network VMC (NN-VMC),
+which use a neural-network ansatz for the wave func-
+tion. Due to the superior expressive power of neural
+networks compared to classical ansatze, NN-VMC fre-
+quently achieves the to-date most accurate energies for
+small molecules. However, this gain in accuracy comes
+at the price of an increased cost of O(nel4) per step,
+which severely limits the system sizes for which the
+method is computationally tractable [3].
+The slow-
+down arises because contemporary neural wave func-
+tions do not support two critical operations that are
+needed in VMC: (1) efficient Laplacian calculations,
+which are necessary for energy evaluation, and (2) wave
+function updates if few electrons are moved, which are
+crucial for sampling and pseudopotentials. Thus, there
+exists a clear gap between both flavors as conventional
+VMC is scalable but inaccurate, and NN-VMC is slow
+but accurate. The purpose of this paper is to signifi-
+cantly narrow this gap, as we will now describe.
+In conventional VMC, one typically chooses a Slater-
+Jastrow wave function
+Ψ(r) = J (r) det [Φ(r)]
+(1)
+where a symmetric Jastrow factor J : Rnel×3 →R is
+multiplied with a Slater determinant det[Φ(r)], which
+enforces fermionic antisymmetry. For readability, we
+have omitted spin and limited the model to a single
+determinant. In the absence of a backflow [4, 5], the
+orbital matrix Φ(r) = [Φil(r)]nel
+i,l=1 ∈Rnel×nel consists
+1
+arXiv:2504.06087v1  [physics.comp-ph]  8 Apr 2025

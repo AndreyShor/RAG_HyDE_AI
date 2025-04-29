@@ -1,0 +1,75 @@
+A
+B
+C
+D
+C
+D
+S
+S
+S
+S
+k1
+k2
+k
+ℓ1
+ℓ2
+ℓ
+m1
+m2
+m
+n1
+n2
+n
+r
+Figure 1: The most general partitioning of [r] into intersections of the sets A, B, C, D, S. Some
+intersections may be empty.
+The constraint that each of A, B, C, D intersects S implies that the quantities k1 + ℓ1, m1 + n1,
+k1 +m1, and ℓ1 +n1 are all positive. By swapping the roles of C and D if necessary, we may further
+assume that k1 and n1 are both positive.
+We now consider four cases: (1) ℓ1 > 0 and m1 > 0; (2) ℓ1 = 0 and m1 > 0; (3) ℓ1 > 0 and
+m1 = 0; (4) ℓ1 = m1 = 0. Cases (2) and (3) are essentially the same case, because one can be
+converted to the other by simultaneously swapping the roles of A and B and swapping the roles of
+C and D. Thus we can ignore Case (3) without loss of generality.
+Case (1):
+In this case, A ∩C ∩S, A ∩D ∩S, B ∩C ∩S, and B ∩D ∩S are all nonempty. Let
+HAC, HAD, HBC, HBD be the spaces on qubits in A ∩C, A ∩D, B ∩C, B ∩D, respectively. Then
+|ψ⟩A ∈HAC ⊗HAD and |ψ⟩B ∈HBC ⊗HBD. We can then write |ψ⟩A and |ψ⟩B uniquely as
+|ψ⟩A =
+X
+s∈{0,1}k
+X
+t∈{0,1}ℓ
+cs,t |s⟩⊗|t⟩,
+|ψ⟩B =
+X
+u∈{0,1}m
+X
+v∈{0,1}n
+du,v |u⟩⊗|v⟩,
+where the cs,t and du,v are coeﬃcients in C. Then using Notation 2.1 conventions,
+|ψ⟩= |ψ⟩A ⊗|ψ⟩B =
+X
+s,t,u,v
+cs,tdu,v |s⟩⊗|t⟩⊗|u⟩⊗|v⟩
+=
+X
+s,t,u,v
+cs,tdu,v |s1 ◦s2⟩⊗|t1 ◦t2⟩⊗|u1 ◦u2⟩⊗|v1 ◦v2⟩.
+(12)
+Applying CSZ to |ψ⟩ﬂips the sign of each term where s1, t1, u1, v1 (corresponding to the positions
+in S) are all 1’s. Thus
+|ϕ⟩= CSZ |ψ⟩=
+X
+s,t,u,v
+cs,tdu,v |s1 ◦s2⟩⊗|t1 ◦t2⟩⊗|u1 ◦u2⟩⊗|v1 ◦v2⟩
+−2
+X
+s2,t2,u2,v2
+cs,tdu,v |1 ◦s2⟩⊗|1 ◦t2⟩⊗|1 ◦u2⟩⊗|1 ◦v2⟩
+(13)
+Using Eq. (1), we then get
+polyHAC,HAD,HBC,HBD(|ψ⟩) =
+X
+s,t,u,v
+cs,tdu,v xsytzuwv = T1T2 ,
+16

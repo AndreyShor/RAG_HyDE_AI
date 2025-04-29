@@ -1,0 +1,43 @@
+2. Compute kp1 · kp2 and |kp1||kp2| to ancilla registers. For the former, we inherit the procedure and
+costs from Ref. [29], App. C. Specifically, the cost of computing the dot product is 5
+2 ˜n + 3n2 + 4bn.
+The cost of calculating |kp1||kp2| is just the cost of a single multiplication, b2, as both multiplicands
+have already been computed previously.
+3. If l = 2, square kp1 ·kp2 and |kp1||kp2|. The cost of two squarings is b2, using Eq. D37 from Ref. [106].
+The inclusion of a single control introduces a complexity linear in b, which we omit.
+4. Prepare a uniform superposition over m = 1, . . . , M basis states. We assume that M is a power of two,
+and therefore this step has no cost.
+5. Prepare the righthand side of Eq. (232) by multiplying the m register by |kp1||kp2| if l = 1 and by
+|kp1|2|kp2|2 if l = 2. The correct power is computed for l = 1 and l = 2 given step 3. We therefore
+need only a single multiplication, controlled on l ̸= 0. The multiplication has cost b2, and the inclusion
+of a single control introduces a complexity linear in b, which we omit.
+6. Compute the quantity 3(kp1 ·kp2)2−|kp1|2|kp2|2 to an ancilla register, when l = 2. Note that we don’t
+care what is computed to this ancilla register for other values of l, so we can carry out an uncontrolled
+evaluation. The subtraction has cost b. Multiplication by the constant 3 has cost 2b.
+7. Evaluate the lefthand side of Eq. (232) by multiplying kp1 · kp2 by M if l = 1 or 3(kp1 · kp2)2 −
+|kp1|2|kp2|2 by M if l = 2.
+Two multiplications has cost 2b2.
+The inclusion of a single control
+introduces a complexity linear in b, which we omit.
+8. Carry out the inequality test. This has cost as given in App. E.5.5.
+9. Uncompute the arithmetic in the substeps above.
+The total cost of the arithmetic (substeps 1, 2, 3, 5, 6, 7) is
+5˜n + 5n2 + 8bn −2nmax(nmax + b) + 21
+4 b2 + 13
+2 b −6.
+(233)
+While we could maintain intermediate ancilla registers and uncompute with reduced cost, we make the pes-
+simistic assumption that the uncomputation is as expensive as the computation. Note that, as in Sec. E.5.4,
+the rejection sampling is strictly with respect to |Pl| rather than Pl. However, we compute Pl, carry out the
+inequality test without the sign bit, and then fix up the phase by applying a Pauli Z to the sign bit after
+the rejection sampling. We require ancilla registers for (kp1 · kp2)2, |kp1||kp2|, |kp1|2|kp2|2, m|kp1|2|kp2|2,
+3(kp1 ·kp2)2 −|kp1|2|kp2|2, and [3(kp1 ·kp2)2 −|kp1|2|kp2|2]M. These have cost 2b, 2b, 3b, 2b+2 and 3b+2,
+respectively. The total ancilla count for the arithmetic is therefore 11b + 4.
+E.5.7
+Nuclear momentum
+Sec. 5.1.5 requires that we add to the nuclear momenta P →P+p1−p2. We carry this out with one addition
+and one subtraction (which costs the same as an addition). Register |P⟩,is the largest, with ¯n qubits, so we
+incur a total cost of 2¯n. Each addition requires ¯n ancillas. We also explicitly flag if P + p1 −p2 ∈G. As
+noted in [91], Sec. II D, the carry-out bits from the arithmetic above already encode this overflow (and so
+no additional checking is required).
+86

@@ -1,0 +1,87 @@
+11
+-3.5
+-3.0
+-2.5
+-2.0
+Energy (a.u.)
+2.0
+1.5
+1.0
+0.5
+0.0
+ Simulation
+ 2nd-order
+ 1st-order 
+-1.8
+-1.6
+-1.4
+-1.2
+Energy (a.u.)
+2.0
+1.5
+1.0
+0.5
+0.0
+ Simulation
+ 2nd-order
+ 1st-order
+-1.1
+-1.0
+-0.9
+-0.8
+-0.7
+Energy (a.u.)
+2.0
+1.5
+1.0
+0.5
+0.0
+ Simulation
+ 2nd-order
+ 1st-order
+a
+b
+c
+c
+c
+c
+FIG. 8. Simulation results for the ground-state energy across varying noise amplification factors c, with transverse field intensity fixed at
+J = 0.5. Panel (a) corresponds to a 2-spin system, (b) to a 3-spin system, and (c) to a 4-spin system. The blue dots represent the optimized
+ground-state energy for c values ranging from 0.0 to 2.0. The first-order extrapolations (red solid lines) are based on the data points for c = 1.0
+and c = 2.0. The second-order extrapolations (green solid lines) utilize the data points for c values including 1.0, 1.2, ..., up to 2.0.
+curacy of quantum operations and the stability of results over
+time. We monitor the coherence of the transmon qubit over
+time. Figure 7 tracks T1 of the transmon qubit without the
+controlled damping as a reference, comparing it to the reduced
+T1 values for each Fock state. Over a period of 16 hours,
+the system exhibits small drift, with the intrinsic T1 increas-
+ing from 20 µs to 25 µs, while the reduced T1 also shows a
+slight increase. Although the ratio between them does not re-
+main perfectly constant, the method demonstrates reasonable
+robustness. Furthermore, in this experiment, we implement
+a fast initialization method on the storage cavity to improve
+the reliability of error mitigation and reduce susceptibility to
+coherence variations.
+VII.
+NUMERICAL SIMULATION
+We perform numerical simulations that replicate the ex-
+perimental sequence using experimentally calibrated Hamil-
+tonian parameters. We iterate the entire process 200 times
+using the simultaneous perturbation stochastic approximation
+algorithm [11, 39] and compare the results with our experi-
+mental data. The optimized ground state energies are calcu-
+lated for systems with varying spin numbers (N = 2,3,4) at a
+fixed transverse field intensity of J = 0.5, considering differ-
+ent noise amplification factors c, as shown in Fig. 8.
+A second-order polynomial fit is conducted on the simu-
+lated data across noise amplification factors c ranging from
+1.0 to 2.0, yielding an extrapolated value that closely approx-
+imates the simulated zero-noise energy. In accordance with
+the experimental procedure, a first-order extrapolation is also
+performed on the simulated data. The discrepancy observed
+between the first-order extrapolated results and the simulated
+zero-noise energy highlights the impact of higher-order noise
+effects.
+This observation underscores the need for higher-
+order extrapolation methods to achieve more accurate noise
+mitigation in quantum simulations.

@@ -1,0 +1,48 @@
+Preprint. Under review.
+* In the r field, type 0.02 0.02
+* In the z field, type 0.04 0.1
+**3. Definitions:** * **Boundaries:** Define selections for the following boundaries:
+* **Inner Cylinder Surface:** Left edge of the rectangle
+* **Outer Cylinder Surface:** Right edge of the rectangle
+* **Top Surface:** Top edge of the rectangle
+* **Bottom Surface:** Bottom edge of the rectangle
+**4. Physics Settings:** * **Heat Conduction, Solid:**
+* For the Thermal Conductivity (k), choose User defined, and type 52 W/(m.K).
+* Under Thermodynamics Solid, choose User defined for Cp and rho.
+* Domain Selection:** Select all domains or Domain 1.
+* **Boundary Conditions:**
+* **Temperature:**
+* In the Temperature section, type 273.15 [K] for T0.
+* Select Boundaries 2, 5 and 6.
+* **Heat Flux:**
+* Apply a ”Heat Flux” boundary condition with a constant value q0 of 5e5 W/m2.
+* Select Boundary 3.
+**5. Meshing:**
+* **Mesh Creation:** Use the default mesh.
+**7. Study Settings:**
+* **Solver Configuration:** Use default solver settings for the ”Stationary” study.
+**8. Analyzing Results:**
+* **Temperature at Target Point:**
+* Create a ”Cut Point 2D” dataset at this location first and then use that dataset in the
+point evaluation:
+* Locate the Point Data section under Cut Point 2D and type R = 0.04 m, Z = 0.04 m
+* Use a ”Point Evaluation” feature to evaluate the temperature (in K) at the target
+point.
+* Export the table containing this value to OUTPUT PATH/output.txt.
+Selection Information:
+DOMAINS: Thermal Conductivity applies to the entire geometry, all domains, or
+Domain 1.
+BOUNDARIES: * The temperature setting T 0 = 273.15 [K] applies to Boundaries 2, 5
+and 6.
+* The constant heat flux applies to Boundary 3.
+Target Description: Temperature at the location R = 0.04 m, Z = 0.04 m in K.
+Target Value: 333
+Target Units: K
+Ground Truth Code:
+model.component ().create (" comp1", true);
+model.component ("comp1").geom().create (" geom1", 2);
+model.component ("comp1").geom(" geom1 ").axisymmetric(true);
+...
+model.component ("comp1").physics ().create ("ht", "HeatTransfer", "
+geom1");
+17

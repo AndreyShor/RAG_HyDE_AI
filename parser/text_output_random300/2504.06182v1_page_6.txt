@@ -1,0 +1,118 @@
+6
+that ∆i is the difference between the number of sources
+and the number of targets in G[0, i]. Hence, we compute
+∆i for each vertex by performing a parallel prefix sum
+operation [28].
+Next, the thread associated with each target vertex
+searches for the two closest source vertices that belong
+to the same level. Specifically, for each target vertex vq,
+a thread searches for vp and vr such that p < q < r, ∆p =
+∆q = ∆r, and there exists no source vertex in between
+vp and vr that is at the same level as vq. We avoid a
+standard linear search by making use of the previously
+computed vertex levels to leap over sections of the path.
+For example, if a thread looking for a vertex at level s
+has reached a vertex whose level is s-k, then it can leap
+over k vertices because the vertex at level s must be at
+least k vertices away.
+Once each thread has found the independent sub-
+problems associated with its target vertex, the follow-
+ing step is to guarantee that the sub-problems do not
+interact, i.e., no tokens have to move between the cor-
+responding sub-paths. This step can be done based on
+the computation of profits as described in the algorithm
+of Karp and Li [26].
+Once the independent and non-
+interacting sub-problems have been found, they are all
+solved in parallel. Finally, each thread associated with a
+source vertex indicates (by setting a bit in global mem-
+ory) whether the corresponding token/atom is going to
+move.
+C.
+The red-rec algorithm (serial implementation)
+The redistribution-reconfiguration (red-rec) algorithm
+is a heuristic algorithm that solves atom reconfiguration
+problems on grids [20].
+In this paper, we propose an
+improved version of the red-rec algorithm that leverages
+the improved 1D reconfiguration algorithm, a new redis-
+tribution strategy, and delayed moves. Before describing
+our improved algorithm, we first review the original al-
+gorithm and its implementation.
+The original red-rec algorithm.
+The original red-
+rec algorithm [20] runs on a grid graph G, where we as-
+sume n = W × H = √n × √n. Since G is planar, we
+assume a grid-like planar embedding of the graph in our
+notation and discussion. We use Ci and Rj to denote
+the graphs induced on the vertices in the i-th column
+and j-th row of G, respectively. In the planar embed-
+ding, we assume that the rows are indexed from bottom
+to top (starting from 0) and the columns are indexed
+from left to right (also starting from 0). The vertices of
+a column (or a row) induce a path. We are also given
+a set S ⊆V (G) of source vertices, each occupied by a
+token, and a set T ⊆V (G) of target vertices, such that
+|S| ≥|T|. We assume that the target configuration T
+is always centered and compact, i.e., the target config-
+uration is a W × H′-subgrid centered inside the input
+grid (in the planar embedding of the input grid), where
+H′ < H. We call the subgrid the target region and we
+call the remaining parts (above/below the target region)
+the (top/bottom) reservoir region. We note that the red-
+rec algorithm can be adapted to handle arbitrary target
+configurations, but we omit the details here, as the re-
+quired changes are highly non-trivial and provide very
+little additional insights.
+The first step of the original red-rec algorithm com-
+putes the surplus of each column, where the surplus
+can be either negative or positive.
+In particular, for
+each column Ci, 0 ≤i < W, we have surplus equal to
+σi = |S ∩V (Ci)| −|T ∩V (Ci)|. The elementary displace-
+ment operations required to solve every column with a
+surplus of zero are computed using the exact 1D algo-
+rithm (Sec. III A). These operations are executed to mod-
+ify the current input instance and subsequently added to
+the output, i.e., the input instance is modified into an
+instance where all said columns are solved and the asso-
+ciated moves are appended to the solution (to the partial
+order of output moves). We refer to these three sequen-
+tial steps as solving a column. For a column with a neg-
+ative surplus, we refer to the surplus as the distance to
+saturation. When the surplus changes from negative to
+zero, we say the column becomes saturated. Therefore,
+every column must be saturated; otherwise, the problem
+cannot be solved.
+Once there are no more unsolved columns with a sur-
+plus equal to zero, the algorithm enters the main loop.
+In each iteration of the main loop, we pair a donor col-
+umn, i.e., a column with positive surplus, with a receiver
+column, i.e., a column with negative surplus, so as to en-
+able the exchange/redistribution of tokens between the
+two columns. This process is repeated as long as there
+exists a column with negative surplus. Whenever a col-
+umn becomes saturated, it is solved using a 1D recon-
+figuration algorithm. Finally, when the loop terminates,
+any unsolved column is guaranteed to have non-negative
+surplus and is therefore solved using the 1D algorithm.
+Improved red-rec algorithm.
+We now describe
+our improved version of red-rec (see Alg. 1) whose im-
+plementation achieves greater operational and runtime
+performance. This improved version retains most of the
+core features and ideas used in the earlier version [20],
+with two major improvements.
+The first major improvement is a new approach for
+the computation of trajectories for tokens that are redis-
+tributed from a donor column to a receiver column. Un-
+like the previous version of red-rec, where a brute-force
+approach was used, we cast this “redistribution” prob-
+lem as a 1D problem and solve it using the exact 1D al-
+gorithm. Consider a donor-receiver pair (Di, Rj), where
+we now use Di to denote a donor column (at index i) and
+Rj to denote a receiver column (at index j). First, we
+know, by design, that all columns between i and j must
+be solved (before Di and Rj are paired together) and
+therefore the reservoir region between i and j is empty,
+allowing the free movement of tokens from donor to re-

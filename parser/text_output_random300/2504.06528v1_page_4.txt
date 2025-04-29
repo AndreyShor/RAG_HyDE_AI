@@ -1,0 +1,118 @@
+4
+the size of the lookup table scales as O(Ntx(Nty)2). This
+scaling can be understood by considering that the num-
+ber of columns is Ntx, and the number of block displace-
+ment waveforms necessary to solve each column during
+the reconfiguration step is Nty(Nty −1). For the redistri-
+bution steps performing displacement operations along
+rows, the number of interleaved displacement waveforms
+is 2Nty(Ntx −1), given Nty rows and 2(Ntx −1) elemen-
+tary displacement waveforms per row. These waveforms
+are supplemented by an additional Nty(Nty −1) transfer
+waveforms for extracting and implanting blocks within
+each column.
+E.
+Module 5 – Waveform streaming
+The waveform streaming module relies on the AWG
+playing waveforms and distributing them to the AODs
+through a chain of analog filters and high-power ampli-
+fiers. The AWG can be operated in either first in, first
+out (FIFO) mode or sequence mode. In FIFO mode, the
+AWG streams waveforms from a memory buffer that is
+continuously populated by the processor. To avoid buffer
+underrun errors, the processor must upload waveforms
+faster than they are streamed; however, due to unpre-
+dictable timing jitter in waveform generation and data
+transfer, the relevant time scale is not the mean upload
+time but the worst-case upload time.
+This constraint
+amplifies the trade-off between speed (latency) and ro-
+bustness (throughput).
+Optimizing the system for ro-
+bustness requires choosing a large buffer, which increases
+the minimum achievable latency. Although our system
+is specified for FIFO-mode operation at the maximum
+sampling rate, we have had limited success in operat-
+ing in this mode due to buffer underrun errors resulting
+from timing jitter from the processor. Consequently, we
+choose to operate in sequence mode.
+In sequence mode, the AWG streams a sequence of
+waveforms saved in the data memory of the AWG based
+on a list of instructions encoded in the sequence memory.
+The data memory is a physical memory buffer of size 232
+bytes, which can contain up to 231 samples with 2 bytes
+per sample. For a sample rate of 6.24·106 samples per sec-
+ond, the buffer can store more than 6 seconds of stream-
+ing time. This buffer can be partitioned into a maximum
+of 4096 segments. We choose the size of each segment
+to contain a buffer of 32 waveforms.
+This size is cho-
+sen to minimize the possibility of underrun based on the
+waveform uploading runtime (see Fig. 8 and Sec. III E).
+A key feature of the AWG is its ability to upload data
+to all buffer segments during streaming, except for the
+one currently playing. The sequence memory consists of
+4,096 step registers, each programmable to play a spe-
+cific data segment and jump to the next step based on
+user-defined conditions. This sequence memory can be
+dynamically updated while the AWG is streaming wave-
+forms. However, if the currently playing step is updated,
+the changes will not take effect immediately; instead,
+(1)
+(2)
+(3)
+(4)
+(5)
+(6)
+START
+(7)
+(8)
+(9)
+(10)
+(11)
+Figure 3.
+Sequence memory. The sequence memory of
+the AWG is segmented into an idle step (not shown), a se-
+quence of control steps (circles), and a sequence of failsafe
+steps (squares). Each control step points to a failsafe step,
+which loops back to itself, ensuring atoms remain trapped in
+case of a timing underrun error. Waveform segments (blue
+disks) associated with each control step are continuously up-
+loaded to the data memory. Directional pointers are updated
+when the waveform segments associated wit the next control
+step has been filled. The reconfiguration cycle starts when the
+first two control steps have been filled by triggering a jump
+from the idle step to the first control step.
+they will be applied after a non-deterministic number
+(geq1) of playbacks of the step.
+When initializing the AWG, we partition the data
+memory into multiple segments, each associated with a
+specific waveform type. First, we define an idle segment
+containing a static waveform that keeps all traps on to re-
+tain the atoms. Second, we define a failsafe segment with
+a similar static waveform to maintain the atoms in their
+traps in the event of a timing underrun error. Third, we
+allocate multiple equally sized control segments to host
+the dynamic waveforms responsible for transfer and dis-
+placement operations. These segments are dynamically
+updated throughout the reconfiguration cycle. Finally,
+we define a double-sized control segment to store all nec-
+essary waveforms for reconfiguration when the total num-
+ber of waveforms is less than twice the segment size.
+We partition the sequence memory into an idle step,
+control steps, and failsafe steps (see Fig. 3). Each control
+step is paired with a corresponding failsafe step to detect
+and identify the occurrence of a timing underrun error.
+The idle step is configured to play the idle segment and
+continuously loops back to itself. Each control step, in-
+cluding the double-sized control step, is associated with
+its respective control segment and points to an individual
+failsafe step. Each failsafe step plays the failsafe segment
+and loops back to itself, ensuring atoms remain trapped
+in case of a timing underrun error. After each reconfig-
+uration cycle, the sequence memory is reset to its initial
+state while performing image acquisition.
+To initiate the reconfiguration cycle, we first pre-
+upload two segments to the data memory of the AWG
+(2-4). Next, we update the sequence memory: one up-
+date directs the previous control step to the next control

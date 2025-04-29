@@ -1,0 +1,42 @@
+148
+NNLO polarized PDFs with MHOU
+oped in [152, 151, 6], whereby MHOUs are treated through a theory covariance matrix
+determined by scale variations.
+3. We deploy the machine-learning methodology developed in [109]. All aspects of the
+parametrization and optimization (such as the neural network architecture or the choice
+of minimization algorithm) are now selected through a hyperparameter optimization
+procedure [334], which consists in an automated scan of the space of models.
+Outline.
+The structure of the chapter is as follows. In Section 5.1 we review the type of
+experimental measurements adopted in our fit of polarized PDFs together with the setting used
+to compute the corresponding theoretical predictions. We continue in Section 5.2 discussing
+the fitting methodology, along with the newer hyperoptimization algorithm adopted to select
+the optimal fit setup. In Section 5.3 we conclude highlighting the most relevant feature of our
+new PDFs sets.
+5.1. Experimental and theoretical input
+In this section, we present the experimental and theoretical input entering the NNPDFPOL2.0
+determination. We first introduce the dataset, describing the details of each measurement and
+the computational tools used to obtain the corresponding theoretical predictions. We then
+discuss their perturbative accuracy and specifically the way in which we account for MHOUs.
+5.1.1. The NNPDFPOL2.0 dataset
+The NNPDFPOL2.0 parton set is based on measurements of three different polarized observables:
+the structure function g1 in polarized inclusive lepton-nucleon DIS; the longitudinal single-
+spin asymmetry AW ±
+L
+for W ±-boson production in polarized proton-proton collisions; and the
+longitudinal double-spin asymmetry A1−;2−jet
+LL
+for single-inclusive jet and dijet production in
+polarized proton-proton collisions. The definition of these observables can be found, e.g., in
+[38, Sec. 3], and in [335, Sec. 6.2.2]. We review the measurements that we include for each of
+these observables in turn.
+polarized inclusive DIS structure function. We include measurements performed by the EMC [336],
+SMC [337, 338], and COMPASS [339, 340] experiments at CERN, by the E142 [341],
+E143 [342], E154 [343], and E155 [344] experiments at SLAC, by the HERMES exper-
+iment at DESY [345, 346], and by the Hall A [347, 348, 349] and CLAS [350, 351]
+experiments at JLab. All of these experiments provide data for the polarized inclusive DIS
+structure function g1, reconstructed from the longitudinal double-spin asymmetry (see,
+e.g. [38, Sec. 2.1] for details), except SMC low-x, E155, Hall A, and CLAS, which instead
+provide data for g1 normalized to the unpolarized inclusive structure function F1. The
+details of the measurements, including their kinematic coverage in the proton momentum
+fraction x and virtuality Q2, are summarized in Table 5.1.

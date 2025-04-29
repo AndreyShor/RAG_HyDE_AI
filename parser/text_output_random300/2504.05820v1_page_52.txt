@@ -1,0 +1,65 @@
+38
+Tools and methodology
+10−5
+10−4
+10−3
+10−2
+10−1
+100
+x
+−0.001
+0.000
+0.001
+0.002
+0.003
+0.004
+0.005
+rel. distance to ID
+g(x)
+exa
+exp
+10−5
+10−4
+10−3
+10−2
+10−1
+100
+x
+−4
+−3
+−2
+−1
+0
+1
+2
+3
+4
+×10−6
+V (x)
+Figure 2.4: Relative distance of the product of two opposite NNLO EKOs and the identity matrix, in
+case of exact inverse and expanded matching (see Eq. (2.4)) when crossing the bottom threshold scale
+µb = 4.92 GeV. The plot setting are as in Fig. 2.1.
+initial PDF is purely perturbative, it vanishes naturally below the mass threshold scale after
+having applied the inverse matching.
+2.1.2. Yadism
+In this section, we present Yadism, the software library developed for the calculation of DIS
+observables. To date, Yadism has already been used in various papers. Specifically, it has been
+used to evaluate neutrino structure functions in Refs. [15, 124], and to compute of polarized
+structure functions in Ref. [12] (cf. Chapter 5). Furthermore, Yadism has been adopted by the
+NNPDF collaboration, who has used it in their most recent papers [11, 6, 3] (cf. Chapters 3
+and 4). We refer to [7] for a more extensive presentation.
+Yadism differs from other QCD codes such as APFEL [118], APFEL++ [125], HOPPET [126], and
+Qcdnum [127] in several ways.
+Yadism includes most of the currently available results in literature, specifically it allows for
+the computation of polarized and unpolarized structure functions up to N3LO in QCD (cf.
+Section 4.2.1). Thanks to its modular design, the library can be easily extended as the results of
+new computations become available.
+Yadism provides both renormalization and factorization scale variations consistently [6] and
+both can be implemented at any order. The currently implemented coefficients allow performing
+renormalization scale variations up to N3LO and factorization scale variations up to NNLO.
+Instead, N3LO factorization scale variations can be included through the EKO evolution code
+(Section 2.1.1).
+Yadism can, together with EKO, be used to construct general-mass variable flavor number
+schemes using coexisting PDFs with different numbers of active flavors [5]. This can avoid
+the perturbative expansion of the evolution kernel as is done in the construction of the FONLL
+scheme [107].

@@ -1,0 +1,158 @@
+3
+neglecting non-factorizable electro-weak corrections, the
+hadronic and leptonic parts do not interfere with each
+other, the contribution to the differential rate (for each
+combination of flavors) can be written in terms of the
+contraction between the leptonic tensor Lαβ(pℓ, pν) =
+4
+
+pα
+ℓpβ
+ν + pβ
+ℓpα
+ν −gαβpℓ· pν + iϵαβγδ(pℓ)γ(pν)δ
+
+and the
+hadronic tensor
+Hµν(p, ω) = (2π)4
+2mDs
+⟨Ds(p)|J†
+µ(0) δ4(P −ω) Jν(0)|Ds(p)⟩,
+(1)
+where P is the QCD four-momentum operator.
+Using
+special relativity, H can be decomposed in terms of five
+independent spectral-densities form-factors which, in the
+reference-frame of the Ds meson, are functions of ω0 and
+of ω2. From these, one can construct three linear com-
+binations, Z(0), Z(1), and Z(2), that enter the expression
+of the differential decay rate integrated over the lepton
+energy. Denoting the upper integration-limit for ω0 as
+ωmax, one has
+1
+¯Γ
+dΓ
+dω2 = 1
+¯Γ
+2
+X
+p=0
+dΓ(p)
+dω2 =
+=
+2
+X
+p=0
+|ω|3−p
+Z ωmax
+0
+dω0 (ωmax −ω0)p Z(p)(ω0, ω2), (2)
+where ¯Γ = m5
+DsG2
+FSEW/(48π4), GF = 1.1663788(6) ×
+10−5 GeV−2 [34] is the Fermi constant and SEW = 1.013
+accounts for the logarithmic electroweak correction [35]
+and for QED threshold corrections1 [36].
+It is convenient to express the integral of Eq. (2) as
+lim
+σ7→0
+Z ∞
+0
+dω0Θ(p)
+σ (ωmax −ω0)Z(p)(ω0, ω2),
+(3)
+where the kernels Θ(p)
+σ (x) = xpΘσ(x) are obtained by
+introducing a “smoothed” version of the Heaviside func-
+tion θ(x), depending on a smearing parameter σ and
+such that limσ7→0 Θσ(x) = θ(x).
+Indeed, the hadronic
+tensor of Eq. (1), and therefore its linear combinations
+Z(p)(ω0, ω2), cannot be directly computed on the lattice.
+It is possible, instead, to compute the (amputated) corre-
+lator ⟨Ds(p)|T{J†
+µ(t, x) Jν(0)}|Ds(p)⟩at discrete values
+of the Euclidean times t = an, where a is the lattice
+spacing. From this [1, 21], by taking the required linear
+1 QED threshold corrections are different in the ¯us channel. How-
+ever, in [1] we show that Γ¯us is negligible at the current level of
+accuracy.
+combinations, one gets the three correlators
+ˆZ(p)(t, ω2) =
+Z ∞
+0
+dω0 e−mDsω0t Z(p)(ω0, ω2) ,
+(4)
+which
+are
+in
+fact
+the
+Laplace
+transform
+of
+the
+Z(p)(ω0, ω2) distributions. The calculation of the Ds in-
+clusive decay rate Γ is then reduced to the problem of
+establishing a connection between Eq. (3) and Eq. (4).
+The problem can be addressed in a mathematically well-
+defined, systematically improvable way through the HLT
+method of Ref. [18]. The basic idea consists in relying on
+the Stone-Weierstrass theorem to represent the smooth
+kernels of Eq. (3) according to
+Θ(p)
+σ (ωmax −ω0) = lim
+N7→∞
+N
+X
+n=1
+g(p)
+n (N) e−amDsω0 n ,
+(5)
+i.e. on the basis-functions given by the exponentials ap-
+pearing in Eq. (4) with coordinates given by the vector
+of the coefficients g(p).
+These coefficients are fixed by
+minimizing a linear combination of the so-called “norm”
+and “error” functionals. The norm functional measures
+the distance between the exact kernel Θ(p)
+σ (ωmax −ω0)
+and its approximation according to the r.h.s. of Eq. (5)
+at finite N. The error functional, originally introduced
+by Backus and Gilbert [31], is defined in terms of the
+covariance matrix of the correlators ˆZ(p) evaluated at fi-
+nite lattice spacing. Thus, the HLT algorithm improves
+on the classical Backus-Gilbert method by using a desired
+smearing kernel as input, and is designed to provide an
+optimal trade-off between the “accuracy” and the “pre-
+cision” of the numerical solution to the problem.
+By using the coefficients g(p) obtained through the HLT
+algorithm, the differential decay rate can be obtained ac-
+cording to
+1
+¯Γ
+dΓ
+dω2 =
+2
+X
+p=0
+|ω|3−p lim
+σ7→0 lim
+N7→∞
+N
+X
+n=1
+g(p)
+n (N) ˆZ(p)(an, ω2) .
+(6)
+Similar formulae can be introduced for the leptonic mo-
+ments Mn (defined by weighting the differential decay
+rate with the n−th power of the lepton energy and nor-
+malizing by the total rate) and the associated differential
+quantities dMn/dω2 (see Sec. IV of Ref. [1]).
+We have computed the relevant Euclidean correlators on
+a set of ensembles of lattice QCD gauge field configura-
+tions produced by the Extended Twisted Mass Collab-
+oration (ETMC) [37–40]: they were generated includ-
+ing the dynamical effects of two (mass-degenerate) light
+quark flavors, the strange quark, and the charm quark,

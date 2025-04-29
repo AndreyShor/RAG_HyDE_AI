@@ -1,0 +1,93 @@
+Because we use this system as a simple benchmark system, we have not re-optimized the geometry for each
+geometry and spin state. Thus, these energy differences may change when considering fully relaxed geometries.
+Convergence of CCSD(T) calculations is nontrivial for this system due to strong spin contamination in unre-
+stricted Hartree Fock calculations. We find that only when using unrestricted Kohn Sham orbitals as a reference
+state –where spin contamination is much less severe – does CCSD(T) converge to the correct solution.
+4
+6
+8
+10
+12
+14
+16
+number of carbon atoms
+0
+10
+20
+30
+40
+50
+60
+70
+80
+Etwisted −Eplanar [mEh]
+C4H4
+C6H4
+C8H4
+C12H4
+C16H4
+−15
+−10
+−5
+0
+∆−∆CCSD(T) [mEh]
+PBE0 CCSD(T) / CBS
+PBE0 D3BJ / TZ
+FiRE, c = 3a0
+Figure S2: Cumulenes: energy difference between twisted and planar geometry of cumulenes of increasing
+length, comparing our approach (FiRE) to CCSD(T) and density functional theory using the PBE0-functional.
+C
+Model ablations
+We investigate the importance of crucial hyperparameters of our neural wave function beyond the cutoff radius
+c. For this, we investigate the singlet-triplet gap in naphthalene as in Fig. 3c. We compare four models, our
+standard FiRE with hyperparameters as defined in App. L, one with only a single determinant Ndet = 1, one
+with 16 determinants Ndet = 16, and one without the attention Jastrow factor from Sec. 4.2. The absolute
+energy for both states and the relative energy independence on the optimization steps are shown in Fig. S3.
+While enlarging the number of determinants to 16 improves absolute energies, convergence is slower, and the
+relative energy takes longer to converge. Notably, FiRE accurately reconstructs the relative energy between
+the two states within 50k optimization steps, even with a single determinant. Crucially, the attention Jastrow
+factor is important in accurately reconstructing the relative energy.
+0
+20000
+40000
+Optimization step
+−61.59
+−61.58
+−61.57
+−61.56
+Energy [Ha]
+Singlet
+0
+20000
+40000
+Optimization step
+−61.49
+−61.48
+−61.47
+−61.46
+Triplet
+0
+20000
+40000
+Optimization step
+0.100
+0.102
+0.104
+0.106
+0.108
+Triplet - Singlet
+default
+1 determinant
+16 determinants
+no Attention Jastrow
+exp
+Figure S3: Ablation study on the network architecture.
+D
+Measuring speedups
+To test the effect of these speed-ups in practice, we compare the runtime of our ansatz against FermiNet [2],
+Psiformer [6] and LapNet [7]. For all three architectures we use the implementations in the LapNet codebase
+and use the forward Laplacian to accelerate kinetic energy computations [7]. We use cumulenes, fully double-
+bonded hydrocarbon chains of the form CH2 Cn CH2 as test systems.
+We determine the runtime of all
+components required for a single optimization step: MCMC sampling, calculation of the kinetic energy, and
+15

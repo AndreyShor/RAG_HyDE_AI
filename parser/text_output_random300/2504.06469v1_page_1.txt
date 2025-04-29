@@ -1,0 +1,99 @@
+AI-Assisted Transport of Radioactive Ion Beams
+S. Lopez-Caceres and D. Santiago-Gonzalez
+Physics Division, Argonne National Laboratory, Lemont, Illinois, USA
+Beams of radioactive heavy ions allow researchers to study rare and unstable atomic nuclei,
+shedding light into the internal structure of exotic nuclei and on how chemical elements are formed
+in stars. However, the extraction and transport of radioactive beams rely on time-consuming expert-
+driven tuning methods, where hundreds of parameters are manually optimized. Here, we introduce
+a system that uses Artificial Intelligence (AI) to assist in the radioactive beam transport process.
+We apply our methodology to real-life scenarios showing advantages when compared with standard
+tuning methods. Our method can be extended to other radioactive beam facilities around the world
+to improve operational efficiency and enhance scientific output.
+Particle accelerators continue to lead the way in sci-
+entific discovery and technological innovation, deepening
+our understanding of the universe, and driving advances
+that benefit society.
+By providing beams of particles,
+these accelerator facilities enable scientists to explore
+the fundamental building blocks of matter and unravel
+the mysteries of the cosmos. However, constructing and
+operating these accelerators is a complex undertaking,
+making them some of the most sophisticated scientific
+systems in existence.
+Among these, facilities that produce radioactive ion
+beams (RIBs), see for example Refs. [1–9], play a pivotal
+role.
+They allow researchers to study rare and unsta-
+ble atomic nuclei, shedding light into the internal struc-
+ture of exotic nuclei and on how elements are formed
+in stars [10]. However, the standard processes for RIB
+production and transport rely on expert-driven manual
+methods that are both time-consuming and labor inten-
+sive, which can limit research productivity.
+In this Letter, we introduce a system that uses Arti-
+ficial Intelligence (AI) to assist in the radioactive beam
+transport process. We present results from applying our
+methodology to real-life scenarios where the observable
+quantity to maximize is the activity from beta decay of
+stopped radioactive ions and where electrostatic devices
+are used to transport the beam. We also discuss the re-
+sults and advantages when compared with standard tun-
+ing methods, and suggest that our method could be ap-
+plied to similar radioactive beam facilities worlwide.
+Since our method for AI-assisted radioactive beam
+transport was tested and implemented at the Californium
+Rare Isotope Breeder Upgrade (CARIBU) [3] at Argonne
+National Laboratory, in the following paragraphs we oc-
+casionally refer to elements in that RIB facility. When
+possible, we discuss our method in general terms.
+At Argonne National Laboratory, the radioactive beam
+source plays a crucial role in advancing nuclear research
+as part of the Argonne Tandem-Linac Accelerator Sys-
+tem (ATLAS). Since 2008, this source has been produc-
+ing beams of radioactive heavy ions through the spon-
+taneous fission of Californium-252 (252Cf). These beams
+enable scientists to conduct groundbreaking experiments
+in nuclear structure, nuclear astrophysics, and national
+security.
+To support this vital scientific work, the facility pro-
+vides nearly 2,500 hours (approximately 100 days) of
+beam time per year to researchers from around the world.
+Each segment of the beamline comprises 5 to 15 variables
+that must be precisely coordinated to guide ions from the
+source to the experimental target station.
+With more
+than 20 beamline segments, this configuration results in
+a parameter space involving roughly 200 variables.
+Currently, only experienced scientists, who have de-
+voted considerable time to mastering these adjustments,
+perform the tuning to achieve optimal transmission effi-
+ciencies. While the scientific output has been significant,
+this manual approach poses limitations. Automating the
+tuning process could greatly enhance the facility’s op-
+erational efficiency and scientific productivity by reduc-
+ing the time and effort required for beam adjustments.
+Moreover, because this tuning must be repeated when-
+ever the beam is lost or switched to a different ion species,
+the demand on limited staff becomes even more pressing.
+Implementing automation would not only alleviate these
+challenges but also provide the flexibility needed to sup-
+port a broader range of experiments and advancements
+in nuclear science.
+Given these technical challenges, the use AI applica-
+tions, and in particular Machine Learning (ML) meth-
+ods [11, 12], hold the potential to achieve complete au-
+tomation of beam extraction, delivery, and optimization
+of related instruments. The aim of the work presented
+here is to automate radioactive beam tuning using ML
+techniques. Specifically, the use of Bayesian Optimiza-
+tion (BO) for control and tuning of beam elements. Al-
+though the underlying theory of this optimization ap-
+proach is not new [13], computational advances and open-
+source software libraries [14–16] have only recently ma-
+tured enough to consider practical applications.
+Bayesian Optimization is most effective in problems
+where the relation between variables is unknown or ex-
+pensive to evaluate. A proxy model of probabilistic na-
+ture, Gaussian Process (GP) [17], acts as a surrogate
+to describe the functional relationship between param-
+arXiv:2504.06469v1  [physics.acc-ph]  8 Apr 2025

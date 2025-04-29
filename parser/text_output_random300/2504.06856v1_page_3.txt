@@ -1,0 +1,116 @@
+istic under different lighting. We asses a similar approach
+to generation of PBR textures with a different generative
+model.
+3. Preliminaries
+In our work, we rely on a pretrained text-to-image model
+to generate textures. To apply a model designed for im-
+age generation to a different task, we use Score Distillation
+Sampling (SDS). Next, we describe the algorithm and the
+rendering algorithm required to apply it.
+3.1. Score Distillation Sampling for Gradient Based
+Generation
+SDS gained popularity in text-to-3D setup. In [29], the
+authors consider a differentiable rendering mechanism that
+produces a random view of a 3D model. In particular, they
+parameterize the model with a volumetric radiance field and
+render it using random lighting and camera position. SDS
+leverages a pretrained text-to-image diffusion model to guide
+the model parameters with gradient descent. Crucially, the
+mild assumptions on the rendering algorithm allow one to
+apply the method to other differentiable image generation
+mechanisms. In later works, Score-Distillation Sampling
+was successfully applied to other rendering functions and
+image parameterizations such as Gaussian Splatting [9, 37,
+40], vector graphics [14, 39], and image rasterization with
+physically-based shading [7, 20, 41].
+SDS defines gradients used to update the parameter
+θ ∈Θ.
+Assume a mapping x0 = g(θ, z) that takes
+the parameter and a random variable c and produces an
+image x0. Given a diffusion process with noisy images
+xt = √¯αtx0 + √1 −¯αtϵ at time t and scale-parameter
+¯αt, the approach leverages a pretrained diffusion model
+ϵϕ(xt; y, t) to define a pseudo-objective used to update x0.1
+The pseudo-objective ˆxt
+0 =
+xt−√1−¯αtϵϕ(xt,t,y)
+√¯αt
+estimates
+the appearance of the rendered image x0 based on a noisy
+sample xt with a single step diffusion model prediction.
+The resulting gradient is estimated as follows:
+∇θLSDS(θ) = Et,ϵ,c
+
+w(t)(x0 −ˆxt
+0)∂x0(θ, c)
+∂θ
+
+,
+(1)
+where w(t) is an adjustable scalar weight parameter. Note
+that [29] formulate the method in noise prediction ϵ-terms,
+while we introduce the equivalent formulation in x0-terms.
+On the one hand, the gradient is essentially the mean-
+squared loss gradient E
+
+w(t)∥x0 −ˆxt
+0∥2
+with the omit-
+ted dependence of ˆxt
+0 on θ.
+On the other hand, the
+analysis in [29] demonstrates that the procedure mini-
+mizes LSDS(θ) = Et,c KL (q(xt | t)∥pϕ(xt | y, t)) using
+the score ϵϕ(xt; y, t) = ∇xt log pϕ(xt | y, t).
+1Throughout the paper, we assume that the diffusion model ϵϕ incorpo-
+rates the condition y through classifier-free guidance.
+Originally, SDS was applied to a pixel-space diffusion
+model that generates low-resolution images. However, pre-
+trained pixel-space models are less common, and, as a result,
+applications of the method were primarily focused on latent
+diffusion models (LDMs). These models approximate the
+distribution of the low-dimensional embeddings of a high-
+resolution images rather than the images itself. Crucially,
+the mapping enc(·) that produces the embedding is differ-
+entiable, as a result, can be considered as a component of a
+function generating an image:
+glatent(θ, c) = enc(gpixel(θ, c)).
+(2)
+The potential advantage of latent diffusion models is the abil-
+ity to guide high-resolution images compared to pixel-space
+models. At the same time, it requires additional resources
+to run forward and backward passes of the encoder network.
+In Section 4, we analyze other implications of applying SDS
+in latent space rather than pixel space.
+3.2. Differentiable Physically Based Shading
+Our texture synthesis approach applies SDS in a setting,
+where g(θ, z) renders an image of a fixed 3D model given
+a set of texture parameters θ and a random camera position
+and scene lighting specified by z. For rendering, we follow
+the pipeline proposed by [27].
+In particular, we take a differentiable rasterization al-
+gorithm based on the Nvdiffrast library by [19]. For tex-
+tures, we adopt the Disney-physically based material model
+from [4], allowing us to incorporate the obtained textures
+into popular graphics engines without further modifications.
+The texture θ = (θd, θr, θm, θn) consists of a diffuse com-
+ponent θd ∈Rh×w×3, a roughness map θr parameterizing a
+specular lobe and a metalness factor θm used to interpolate
+between plastic and metallic appearance. Finally, a normal
+map θn stores surface normal information, allowing to sim-
+ulate additional geometric detail even within low-polygon
+models.
+To model lighting we incorporate cube environment map
+with a split sum approximation for the outgoing radiance
+integral approximation [16].
+4. Methodology
+In the following section, we start with a motivating example
+and then describe the proposed method. The overall scheme
+is illustrated in Figure 1.
+4.1. Limitations of Score Distillation Sampling for
+Latent Diffusion Models
+In this section, for latent diffusion models, we argue that the
+procedure is prone to producing samples with artifacts due
+to the ill-posed nature of the task.
+Following the common practice, we convey the analy-
+sis on a task of image generation. Specifically, we use a

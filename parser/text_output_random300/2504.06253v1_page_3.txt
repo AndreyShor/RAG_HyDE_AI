@@ -1,0 +1,55 @@
+Warm-Start QAOA via a Reduction to Max-Cut
+•
+3
+2
+Background
+2.1
+Quadratic Combinatorial Optimization Problems
+Here we only consider two types of (quadratic) problems. Given a symmetric matrix 𝑄∈R𝑛×𝑛the associated
+Quadratic Unconstrained Binary Optimzation (QUBO) problem is [10, 11]
+max
+𝑥∈{0,1}𝑛𝑥𝑇𝑄𝑥
+(1)
+Notice that this structure allows for linear terms as well because for 𝑥∈{0, 1}𝑛, 𝑥2
+𝑖= 𝑥𝑖for all 𝑖= 1, 2, . . . ,𝑛, and
+hence,
+𝑥𝑇𝑄𝑥+ 𝜇𝑇𝑥= 𝑥𝑇(𝑄+ diag(𝜇))𝑥.
+(2)
+Likewise for a symmetric matrix 𝐽∈R𝑛×𝑛the corresponding Ising Problem is
+max
+𝑦∈{−1,1}𝑛𝑦𝑇𝐽𝑦.
+(3)
+With this definition, Ising problems, unlike QUBOs, do not allow for linear terms.
+Ising problems are closely related to the Ising model studied in physics, which is a statistical model for spin
+couplings in ferromagnetic materials [12, 13].1
+Here we define a well-studied combinatorial optimization problem: (weighted) Max-Cut [14–16] where the
+objective is to partition the vertices of a weighted graph into two disjoint groups so that the sum of the weights
+of the edges between the groups is maximized. More formally, given a graph 𝐺= (𝑉, 𝐸) with weighted adjacency
+matrix 𝐴, Max-Cut can be written as the following maximization problem:
+max
+𝑦∈{−1,+1}𝑛𝐶(𝑦),
+(4)
+with,
+𝐶(𝑦) = 1
+4
+∑︁
+1≤𝑖,𝑗≤𝑛
+𝐴(1 −𝑦𝑖𝑦𝑗),
+(5)
+where the elements of {−1, 1}|𝑉| are referred to as cuts with corresponding cut-value of 𝐶(𝑦).
+This differs by a constant value from the Ising problem associated with −𝐴/4,
+𝐶(𝑦) = 𝑦𝑇
+
+−1
+4𝐴
+
+𝑦+ 1
+4sum(𝐴).
+(6)
+We call the Ising problem associated with −𝐴/4 the Max-Cut problem for graph 𝐺.
+The (instance-specific) cut ratio of 𝑦is given by
+𝛼(𝑦) =
+𝐶(𝑦) −min𝑦∈{−1,1}𝑛𝐶(𝑦)
+max𝑦∈{−1,1}𝑛𝐶(𝑦) −min𝑦∈{−1,1}𝑛𝐶(𝑦) .
+1In the context of physical systems, the addition of a linear term would correspond to the introduction of an external magnetic field.
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

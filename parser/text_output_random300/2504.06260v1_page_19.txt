@@ -1,0 +1,54 @@
+Preprint. Under review.
+AMG, heat transfer variables (ht)
+Incomplete LU
+batches
+datasets
+Study 1//Solution 1
+Cut Point 2D 1
+evaluations
+Point Evaluation 1
+tables
+Table 1
+plots
+exports
+B.2
+FEABench Large
+The input field in FEABench Large is the ‘Modeling Instructions’ section of the tutorial. The
+output field is the code in the first run function of the exported Java file of the built COMSOL
+Multiphysics®model with the following postprocessing steps applied: we append to the
+last line of each ‘study’ code block in the model with a model.study("study tag").run();
+where ”study tag” will typically be “std1” or “std2”, and remove the block of ‘solver’ code.
+While the choice of including the code only in the first run function might make the mapping
+between instructions and lines of code less one to one in problems with more than one
+run function, this choice makes this dataset and the style of code resemble the constraints
+in FEABench Gold. We make the ‘study / solver’ changes because the ‘model.sol’ code
+consists of a larger block of automatically populated lines that bear little resemblance to
+no resemblance to the original problem specification, and often correspond to a single
+‘Compute’ step in the GUI. Adding the ‘.run();’ line prompts COMSOL Multiphysics®to use
+its default solver best configured to solve the problem depending on the physics and nature
+of the analysis performed. This is also a pattern guiding our prompt design across tasks.
+The prompt used for this experiment is similar to the Plan One-Shot prompt.
+C
+Evaluation Details
+C.1
+Baseline Evaluation Metric: Code Similarity Score
+A Code Similarity score was also measured for each solution. This is a text-based similarity
+score between the solution and the GT code. We report this metric as a baseline measure of
+code similarity, and to further motivate our introduction of domain-specific metrics.
+We used the difflib (Python Software Foundation) package to compute a score between 0
+and 1 as a measure of string similarity, using the ratio of the lengths of the longest matched
+subsequences to the ratio of the lengths of strings being compared. Code Similarity reflects
+this score between the generated code and the ground truth code. It is not surprising
+that this metric has the least variation across experiments and models since significantly
+different blocks of code might yield the same answer. The preponderance of boilerplate
+syntax, along with the fact that two different code blocks could generate equivalent model
+subtrees, are factors that contribute to the lack of meaningful variation of this metric across
+experiments. As a specific example, a model.study("std1").run(); will leverage COMSOL
+Multiphysics®’s default numerical solver for the problem. However, this could also be
+represented explicitly using large blocks of model.sol("sol1")... lines in the Ground Truth
+Code field.
+C.2
+Executability
+The LLM output is first parsed to identify the block with Java API calls, and further parsed
+to pythonize the lines (Appendix D.1). This filters out lines that are not code or cannot
+19

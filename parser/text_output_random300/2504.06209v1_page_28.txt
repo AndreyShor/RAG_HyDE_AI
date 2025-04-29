@@ -1,0 +1,49 @@
+28
+Mt
+Mj
+At+1:j+1St:j
+A0:t+1S0:t
+Aj+1Sj
+FIG. 14. Information diagram used in the proof of Lemma 8. Relevant information atoms are labeled.
+Rewriting the left-hand side using the chain rule for mutual information in the form of eq. (A10) with W = Aj+1Sj,
+X = MtAt+1:j+1St:j, Y = A0:t+1S0:t and Z = Mj gives
+I [MtA0:j+1S0:j; Aj+1Sj|Mj] = I [MtAt+1:j+1St:j; Aj+1Sj|Mj] + I[A0:t+1S0:t; Aj+1Sj|MtMjAt+1:j+1St:j].
+(F18)
+Since the left-hand side vanishes (eq. (F17)), the nonnegativity of mutual information implies that both terms on the
+right-hand side must independently vanish; in particular, I[A0:t+1S0:t; Aj+1Sj|MtMjAt+1:j+1St+j] = f = 0. Further,
+since eq. (F15) and eq. (F16) imply l = 0, we can then write
+I [A0:t+1S0:t; Aj+1Sj|MtAt+1:j+1St:j] = f + l = 0
+(F19)
+for all j > t. Together, this then completes the proof of eq. (F10) for all j ≥t.
+Applying the chain rule of mutual information (eq. (A9)) to eq. (F10) yields
+∞
+X
+j=t
+I [A0:t+1S0:t; Aj+1Sj|MtAt+1:j+1St:j] = I [A0:t+1S0:t; At+1:∞St:∞|Mt] = 0.
+(F20)
+Further, by the chain rule of mutual information ( eq. (A10)) we have
+0 = I [A0:t+1S0:t; At+1:∞St:∞|Mt]
+(F21)
+= I [A0:t+1S0:t; St:∞|Mt] + I [A0:t+1S0:t; At+1:∞St:∞|MtAt+1:∞] .
+(F22)
+Now, by the nonnegativity of mutual information, each summand ion the right-hand side must vanish individually.
+In particular, (I [A0:t+1S0:t; St:∞|Mt] = 0 which concludes the proof of the lemma.
+The previous lemma can be used to show that definition 12 reduces to the condition given in eq. (F1) in the case
+where the global process is stationary and the environment is modeled by a product environment channel. A stochastic
+process is said to be stationary if its distribution pX admits [33, p.87]
+pXn:m = pXn+t:m+t
+(F23)
+for all n, t ∈N0 and m > n where pXn:m is obtained from pX through marginalization.
+Theorem 6. Let agtM →
+←env be such that the joint process MAS of actions, percepts, and agent memory is stationary.
+Then, agtM is a.m. predictive, i.e.,
+⟨I[A0:t+1S0:t; St|Mt]⟩t = 0
+(F24)
+if and only if
+I[A0:t+1S0:t; St:∞|Mt] = 0
+∀t ∈N0.
+(F25)
+If in addition env is a product channel (definition 8), agtM is a.m. predictive if and only if
+I[S0:t; St:∞|Mt] = 0
+∀t ∈N0.
+(F26)

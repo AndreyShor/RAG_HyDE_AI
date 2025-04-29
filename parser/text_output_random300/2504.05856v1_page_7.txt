@@ -1,0 +1,118 @@
+Müller-Bravo et al.: SNe Ia NIR Analysis with PCA
+from Fe II and Co II to the Y and H bands could possibly ex-
+plain the relation between the C0 and C1 components seen for
+these bands (see Fig. 3). However, a caveat with these simula-
+tions is that they are not fully non-LTE (Collins et al. 2022),
+which would produce more realistic results.
+In the next section, we will explore correlations between
+light-curve parameters and PCA components to help disentan-
+gle the effects of different physical properties.
+6.3. Comparison to light-curve parameters
+To have a better understanding about the physics behind each
+of the PCA components, we proceed to compare them against
+different light-curve parameters. We calculate the linear relation
+for each pair of parameters, by using the Pearson correlation co-
+efficient (ρ) and p-value. The values of ρ range from −1, com-
+pletely anti-correlated, to 1, completely correlated, where 0 is
+no correlation. The p-value tells the probability of the null hy-
+pothesis (slope of the linear relation being equal to zero) being
+true. Commonly, if the p-value is below 0.05, the null hypothesis
+is discarded. We use Monte-Carlo sampling (1000 realizations)
+from the light-curve parameters and their respective uncertain-
+ties to propagate the errors into ρ and the p-value. We assume
+no uncertainty for the PCA coefficients (p0 and p1) as PCA does
+not propagate uncertainty.
+6.3.1. NIR peak absolute magnitude
+In the top and bottom panels of Fig. 4, relations between the
+NIR peak absolute magnitudes5, and the first two PCA compo-
+nents (p0 and p1) are presented. No correlations are found for
+the J6 and H bands, although the Y band shows a significant but
+relatively weak correlation. If SNe Ia were to be true standard
+candles in the NIR, no correlations would be expected between
+their peak brightness and other light-curve parameters, which is
+what the J and H band show. However, the Y band, being closer
+to the optical wavelengths than the other two bands, is likely not
+as homogeneous around first NIR peak. The standardization of
+the Y band is studied in Sect. 6.6.
+6.3.2. Color-stretch, sBV
+In the top panels of Fig. 5, we show the relation between p0 and
+sBV for each of the NIR bands. sBV works as a tracer of the time
+when the iron-group elements recombine (Fe iii→Fe ii; appendix
+of Galbany et al. 2023). If this were to be true, we would ex-
+pect very strong correlations between these parameters. Indeed,
+it can be seen that both J and H bands show strong correlations
+between sBV and p0, but the Y band does not. However, the latter
+shows a strong correlation between sBV and p1, while the other
+two bands do not (see bottom panels of Fig. 5). As sBV corre-
+lates with MNi, this is evidence in favour of our interpretation in
+Sect. 6.2. Additionally, Lu et al. (2023) already showed that sBV
+can successfully capture the NIR light-curve shape of SNe Ia.
+However, it is worth noting that this parameter does not corre-
+late with all PCA components, so the NIR variability may be
+more complex than one could expect. A caveat in this compar-
+ison is that the the SNooPy NIR templates, used for correcting
+the light curves (Sect. 4), are based on the sBV parameter, so a
+5 Assuming a cosmology with Ωm = 0.3, Ωλ = 0.7 and H0 =
+70 km s−1 Mpc−1.
+6 The correlation for p1 in the J band is driven by a single data point,
+at the bottom left.
+completely independent comparison is not possible as the PCA
+and sBV were linked from the start.
+6.3.3. Optical peak absolute magnitude
+It is known that the light curves of SNe Ia are primarily powered
+by the decay of 56Ni (Colgate & McKee 1969). Hence, their peak
+bolometric brightness is proportional to the MNi produced in the
+explosion (known as Arnett’s rule; Arnett 1982). As most of the
+luminosity (∼85%) of SNe Ia is emitted at optical wavelengths
+(Maguire 2017), the optical luminosity at peak can be used as a
+proxy for MNi (e.g. Stritzinger et al. 2006). We found a correla-
+tion between the optical peak absolute magnitudes (BV bands)
+and p1 for the Y band and p0 for the J band. This is shown in
+Fig. 6. These correlation aligns with our analysis from Sect. 6.2,
+where C1 describes the contribution of MNi for the Y band and C0
+for the J band, although no correlation was found for the H band.
+It is possible that MNi could have less influence towards redder
+wavelengths given the diminishing strength and significance of
+the correlation from Y to H.
+6.4. Comparison to host-galaxy properties
+It has been known for over a decade that the environment in
+which SNe Ia reside affects their peak optical brightness, where
+SNe in more massive environments are brighter, on average,
+compared to those in less massive hosts, after standardization
+(e.g. Kelly et al. 2010; Lampeitl et al. 2010; Sullivan et al. 2010).
+However, whether this dependence is mainly due to external fac-
+tors, such as dust (Brout & Scolnic 2021), or other intrinsic ef-
+fects (e.g. Ginolin et al. 2024), is still under debate.
+NIR observations of SNe Ia can provide clues on this mat-
+ter as these wavelengths are less affected by dust extinction. In
+fact, it has already been shown in recent years that the NIR peak
+brightness of SNe Ia does depend on the environment in which
+they reside (e.g. Uddin et al. 2020; Ponder et al. 2021; Uddin
+et al. 2024), most likely implying that dust is not the dominat
+mechanism behind this relation. However, to our knowledge, the
+effect of the environment on the NIR light curves beyond first
+peak has not been explored yet, which can give us new insight
+on the physics of these transients.
+In this work, we use previous estimates of the host-galaxy
+masses from the literature. Uddin et al. (2024) provides host-
+galaxy masses for the entire CSP sample (CSP-I and CSP-
+II), which represents a large fraction of the samples used (see
+Sect. 5.1). In addition, Ponder et al. (2021) estimated host-galaxy
+masses for several SNe from different surveys and others from
+the literature. Although they also include CSP-I, we prioritize
+the values from Uddin et al. (2024) for consistency. Finally, Pe-
+terson et al. (2024) provide values for the DEHVILS sample.7
+Although different studies estimate host masses with different
+methods, they usually agree relatively well.
+In Fig. 7, the relation between host-galaxy stellar mass,
+log10(M/M⊙), and p0 is shown. Although no correlation is found,
+a possible lack of SNe with faint J-band secondary peak in low-
+mass hosts is apparent. However, this could be due to a bias
+given the relatively small number of SNe in the sample. Addi-
+tionally, no clear trend is found with p1, implying that the en-
+vironment has no visible effect on the secondary NIR peak of
+7 Erik Peterson was kind enough to share with us the host-galaxy
+masses, including uncertainties, estimated with Prospector (Leja et al.
+2017; Johnson et al. 2021), as those in Peterson et al. (2024) do not
+include these uncertainties.
+Article number, page 7 of 16

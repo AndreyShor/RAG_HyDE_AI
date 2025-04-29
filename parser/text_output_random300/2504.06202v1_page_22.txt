@@ -1,0 +1,46 @@
+4.4
+Equivalence between different four-arm events
+We start by showing the following up-to-constants estimate.
+Lemma 4.11. For κ ∈(8/3, 4], we have
+P(E1(ε, r)) ≲P(E2(ε, r)) ≲P(E1(2ε, r)).
+Proof. We first show that P(E2(ε, r)) ≲P(E1(2ε, r)). Let Ξ be the set of loops in LD that stay in
+Aε,2ε and surround Bε. Since the measure of such loops is bounded from below uniformly in ε,
+there is a universal constant c > 0 such that
+P(Ξ = ∅) ≤c P(Ξ ̸= ∅).
+(4.14)
+Note that E2(ε, r) is equivalent to E2(ε, r)(LD \ Ξ) ∩{Ξ = ∅}, where the notation E2(ε, r)(LD \ Ξ)
+means that LD \ Ξ satisfies E2(ε, r). By the independence of Ξ and LD \ Ξ, we obtain that
+P(E2(ε, r)) = P(E2(ε, r)(LD \ Ξ) ∩{Ξ = ∅}) = P(E2(ε, r)(LD \ Ξ)) P(Ξ = ∅).
+(4.15)
+Combining (4.14) with (4.15), and noting that E2(ε, r)(LD \ Ξ) ∩{Ξ ̸= ∅} implies E1(2ε, r), we have
+P(E2(ε, r)) ≤c P(E2(ε, r)(LD \ Ξ)) P(Ξ ̸= ∅) ≤c P(E1(2ε, r)).
+Next, we show the harder direction P(E1(ε, r)) ≲P(E2(ε, r)). The general proof idea is very
+similar to the proof of locality for arm events. Hence, we will only sketch the key idea, and refer to
+Section 5.2 in [13] for the corresponding details in the discrete setting. Note that there are different
+cases for E1(ε, r), as shown in Figure 1.1. But all of them can be tackled in a very similar way. To
+fix idea, we will focus on the middle case with C-shape, i.e., there are two pairs of crossings of the
+loop γ in Aε,r that are not connected by the intersection of γ with Br. We denote this event by
+EC
+1 (ε, r). On the event EC
+1 (ε, r), we first explore all the loops in Br to check if there are clusters
+made by these loops that cross Aε,r/2. If there are at least two of them, then we end up with
+E2(ε, r/2; Br). By Proposition 4.1, it is easy to see that P(E2(ε, r/2; Br)) ≲P(E2(ε, r)). Hence, we
+only need to consider the following two cases, belonging to EC
+1 (ε, r) \ E2(ε, r/2; Br).
+• Case (1). No cluster of Lr across Aε,r/2. There are two different ways to realize the event
+EC
+1 (ε, r). First, assume there are two Brownian loops γ1 and γ2 crossing Ar/2,r such that each
+γi contains an excursion ηi inside Br that are connected to two different clusters C1 and C2
+inside Br/2, respectively, and Λ(η1 ∪C1, Lr) does not intersect η2 ∪C2. Note that we allow
+γ1 and γ2 to intersect away from η1 and η2. Now, we view each excursion ηi as a pair of
+Brownian paths from r/2 to r: by Lemma 4.4 with j = k = 2, we see that the ending parts of
+these excursions are away from each other inside Lr. Hence, we can resample the remaining
+parts of γi \ ηi for both i = 1, 2 such that they stay inside local regions around the ending
+points of ηi, respectively, and the loops γ1 and γ2 after resampling are also away from each
+other inside Lr. Finally, by resampling all the remaining loops in LD \ (Lr ∪{γ1, γ2}) such
+that the clusters formed by them are sufficiently small, we end up with E2(ε, r). Since every
+resampling procedure only costs some positive constant (independent of ε), we conclude this
+case. Next, we assume that there is a Brownian loop eγ that contains two disjoint excursions
+eη1 and eη2, which are connected to two clusters C1 and C2 inside Br/2 as before, and satisfy the
+same condition, where the only difference is that both excursions come from the same loop.
+22

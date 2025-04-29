@@ -1,0 +1,204 @@
+24
+as |G| = N d.
+Now we obtain the following results:
+• By Lemma IV.1 we find that
+P⃗u∈G
+"
+Var
+D
+⃗u, ⃗X
+E
+⩾
+
+1
+120d
+1
+4
+2#
+⩾2e−10
+(118)
+• Using Hoeffding’s inequality similar as in Lemma IV.1, since
+1
+|G|
+P
+⃗u∈G
+D
+⃗u, E
+h
+⃗X
+iE
+= 0, we know that
+P⃗u∈G
+hD
+⃗u, E
+h
+⃗X
+iE
+⩾2.5
+√
+dε
+i
+⩾2e−12.5dε2
+dε2
+= 2e−12.5
+(119)
+where we also note that 2.5
+√
+dε ⩽
+1
+360d
+1
+4 .
+Using union bound, we know that for at least 1 −2(e−10 + e−12) ⩾1 −9.83 × 10−5 of all ⃗u ∈G, we must have:
+•
+D
+⃗u,
+⃗
+E [X]
+E
+< 2.5
+√
+dε ⩽
+1
+360d
+1
+4 ;
+• Var
+D
+⃗u, ⃗X
+E
+<
+
+1
+120d
+1
+4
+2
+which implies that
+D
+⃗u, E
+h
+⃗X
+iE2
+<
+
+1
+360d
+1
+4
+2
++
+
+1
+120d
+1
+4
+2
+=
+ √
+10
+360d
+1
+4
+2
+.
+In this case, Theorem III.7 holds with (ε, s0) replaced by
+
+2.5
+√
+dε,
+√
+10
+360d
+1
+4
+
+. So we find:
+GN
+⃗u |1⟩−ei⟨⃗u,E[ ⃗X]⟩|1⟩
+
+2
+⩽4.166 × 10−3
+(120)
+where we used the fact that N ⩽2 × 16π
+ε , so we plug in Nε ⩾36π × 2.5
+√
+d.
+When ⃗u is not nice enough and our assumptions no longer hold we use a generous bound:
+GN
+⃗u |1⟩−eiN⟨⃗u,E[ ⃗X]⟩|1⟩
+
+2
+⩽4
+(121)
+Combine Eqs. (117, 120, and 121) we obtain:
+∥|φ′⟩−|φ⟩∥⩽4.166 × 10−3 + 9.83 × 10−5 × 4 ⩽4.56 × 10−3 <
+ 1
+12
+2
+(122)
+This result, combined with Theorem II.41, Corollary II.42 more specifically, implies that for each l, at the end of
+phase estimation step, µ′
+ℓsatisfy
+∀α ∈[d]
+P
+
+(µ′
+ℓ)α
+2π
+−E [X α]
+2π
+ > 4
+N
+
+⩽1
+3
+(123)
+Because we have picked N ⩾16π
+ε
+we know
+4
+N ⩽
+1
+4πε. Thus, for all α ∈[d],
+P
+(µ′
+ℓ)α −E [X α]
+ > 1
+2ε
+
+= P
+
+(µ′
+ℓ)α
+2π
+−E [X α]
+2π
+ > 1
+4π ε
+
+⩽P
+
+(µ′
+ℓ)α
+2π
+−E [X α]
+2π
+ > 4
+N
+
+⩽1
+3
+(124)
+That is, the subroutine returns an accurate estimate with
+P
+(µ′
+ℓ)α −E [X α]
+ ⩽1
+2ε
+
+⩾2
+3
+(125)
+By taking Theorem II.44, with parameter δ replaced by our δ
+d we obtain:

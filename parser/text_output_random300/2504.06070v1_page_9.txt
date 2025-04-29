@@ -1,0 +1,155 @@
+Published as a conference paper at ICLR 2025
+Table 2: Comparison of prediction performance on SEVIR. The test metrics are MSE(↓) and CSI(↑).
+For clarity, the best result is shown in bold and the second best result is underlined.
+Method
+MSE (1e-3) CSI-M CSI-219 CSI-181 CSI-160 CSI-133 CSI-74 CSI-16
+ConvLSTM (2015)
+4.0082
+0.3490
+0.0340
+0.1441
+0.2003
+0.3274
+0.6574
+0.7293
+PredRNN (2022)
+4.0383
+0.3382
+0.0155
+0.1203
+0.1880
+0.3252
+0.6551
+0.7283
+SimVP (2022a)
+3.8508
+0.3567
+0.0709
+0.1496
+0.1997
+0.3212
+0.6562
+0.7424
+Earthformer (2022b)
+4.4029
+0.3585
+0.0661
+0.1663
+0.2163
+0.3400
+0.6428
+0.7196
+NowcastNet (2023)
+3.8883
+0.3743
+0.0803
+0.1811
+0.2351
+0.3515
+0.6635
+0.7339
+PINP (this work)
+4.1684
+0.3800
+0.0989
+0.1952
+0.2448
+0.3573
+0.6556
+0.7279
+Real
+ConvLSTM
+PredRNN
+SimVP
+Earthformer
+NowCastNet
+PINP
+10 min
+20 min
+30 min
+40 min
+50 min
+60 min
+0-16
+16-31
+31-59
+59-74
+74-100
+100-133
+133-160
+160-181
+181-219
+219-255
+Figure 8: Comparison of results on the SEVIR dataset.
+SEVIR. The Storm EVent ImageRy (SE-
+VIR) dataset (Veillette et al., 2020) con-
+tains meteorological events across the
+United States between 2017 and 2019.
+For nowcasting, we use the NEXRAD
+radar composite of Vertically Integrated
+Liquid (VIL), which covers an area of 384
+km × 384 km with a spatial resolution of
+1 km and a temporal interval of 5 minutes.
+Following Gao et al. (2022b), we evaluate
+nowcasting by predicting VIL for up to 60
+minutes (12 frames) based on 65 minutes
+of past VIL data (13 frames). We down-
+sample the resolution to 96 × 96.
+As shown in Table 2, while our model
+does not lead in MSE or low CSI met-
+rics, it achieves the best results in the aver-
+age CSI and high CSI metrics, highlight-
+ing its potential in extreme precipitation
+prediction. Figure 8 presents an compari-
+son of our model against other baselines.
+In nowcasting, the NS equations are not
+strictly satisfied. This test evaluates the
+model’s predictive performance and ro-
+bustness to noise under conditions where
+these equations are not fully obeyed.
+Appendix B presents more details, including the generation methods, data scale, details of SEVIR
+and the evaluation metrics for the test results. Details regarding the training setup, hyperparameter
+configuration, and multi-loss function training can be found in Appendix C. Further baseline results
+and physical field inference results can be found in Appendix F.
+5
+ABLATION STUDIES
+Table 3: Ablation Experiment Setup and Results
+Ablation Studies Setting
+MAE
+MSE
+Constraint
+C1. Normal
+0.0209 0.0057
+C2. no Physical Constraint
+0.0272 0.0089
+C3. no Temporal Constraint
+0.0293 0.0108
+C4. no Velocity-Pressure Constraint 0.0262 0.0087
+Model
+M1. Normal
+0.0209 0.0057
+M2. no Correction Network
+0.0316 0.0098
+Discrete PDEs
+D1. Normal
+0.0107 0.0003
+D2. changing Discrete PDEs
+0.0197 0.0010
+D3. replacing c(t′) with c(tk)
+Inf
+Inf
+We conduct ablation experi-
+ments on constraints,
+model
+components, and the discrete
+PDEs Predictor.
+Results are
+shown in Table 3, while Figure
+9 illustrates the change in MSE
+with the frame under different
+ablation experiments. The leg-
+ends (e.g., C1, M1, D1) in Fig-
+ure 9 correspond to the ablation
+case labels in Table 3. Details
+for these ablation experiments can be found in Appendix E.
+9

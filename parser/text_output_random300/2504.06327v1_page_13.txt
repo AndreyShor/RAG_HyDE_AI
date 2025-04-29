@@ -1,0 +1,91 @@
+Physics-informed KAN PointNet
+𝛼= 𝛽= −0.5
+0
+500
+1000
+1500
+2000
+2500
+Epoch
+10
+3
+10
+2
+10
+1
+100
+101
+Loss
+Polynomial degree = 2
+Polynomial degree = 3
+Polynomial degree = 4
+Polynomial degree = 5
+Polynomial degree = 6
+Polynomial degree = 2
+0
+500
+1000
+1500
+2000
+2500
+Epoch
+10
+3
+10
+2
+10
+1
+Loss
+=
+= 0
+=
+=
+0.5
+=
+= 0.5
+=
+= 1
+2
+=
+= 2
+= 2
+= 2
+Figure 8: Loss evolution of the physics-informed KAN PointNet for different Jacobi polynomial degrees (left) and for
+various values of 𝛼and 𝛽in the Jacobi polynomials (right). Here, 𝑛𝑠= 0.5 is used.
+[41]). This structure then leads to a situation where these points are also among the most challenging to classify in part
+segmentation [41]. A similar trend is observed in the context of the present study.
+6.1.2. Effect of Jacobi polynomial degree
+To investigate the effect of the Jacobi polynomial degree, we fix 𝑛𝑠= 0.5 and 𝛼= 𝛽= −0.5 while varying the
+polynomial degree from 2 to 6. The results of this investigation appear in Table 2. According to the average relative
+pointwise error (𝐿2 norm) listed in Table 2, the general trend is that increasing the Jacobi polynomial degree leads to
+a higher relative error. This observation can be explained as follows. Increasing the polynomial degree for data fitting
+results in an oscillatory polynomial due to Runge’s phenomenon (see e.g., Refs. [124, 125, 126, 127]). This effect can
+also be observed in the first column of Fig. 7, where the temperature distribution along the inner surfaces is plotted
+for inner cylinders in the shapes of an octagon, heptagon, and nonagon. As shown in Fig. 7, the highest local error
+occurs at sharp corners and worsens as the degree of the Jacobi polynomial increases. Furthermore, Fig. 7 indicates
+that a Jacobi polynomial degree of 2 exhibits the best performance and provides the most accurate predictions. Note
+that we do not show the results for the Jacobi polynomial of degree 6 in Fig. 7 due to its extreme oscillatory behavior
+compared to other polynomials. Shukla et al. [67] reported a similar observation when they used Physics-Informed
+Chebyshev–KAN [67] with high-order Chebyshev polynomials for solving forward and inverse problems.
+It is important to explain the motivation behind increasing the order of the polynomial. The rationale is that, as
+the polynomial order increases, the number of trainable parameters grows, with the expectation that the network’s
+predictive ability may improve. At the very least, there was hope that a trade-off might exist between the effects of
+Runge’s phenomenon and the enhanced learning capacity of high-order Jacobi polynomials. However, our observations
+indicate that the negative effect of Runge’s phenomenon completely dominates, outweighing any potential benefits.
+Note that increasing the degree of the Jacobi polynomial increases the number of trainable parameters, requiring more
+GPU memory and computational resources while also increasing the training time per epoch. Consequently, a higher
+polynomial degree not only imposes greater computational costs and GPU memory usage but also leads to increased
+error. Thus, the strategy of increasing the polynomial degree proves to be inefficient and fragile in the framework of
+PI-KAN-PointNet for solving inverse problems.
+It should be noted that this negative effect arises because we solve an inverse problem using a physics-informed
+machine learning framework within the category of weakly supervised learning. In this framework, the loss function is
+designed to enforce agreement with sensor measurements. Imposing such constraints introduces oscillatory behavior
+when a high-order polynomial is used. In contrast, [64] demonstrated that KA-PointNet, which combines KAN and
+PointNet in a supervised learning framework, does not exhibit Runge’s phenomenon. For instance, as shown in Fig.
+20 of Kashefi [64], the pressure predictions on the surface of the cylinder remain stable even for a polynomial order of
+6. The author of Ref. [64] did not investigate higher orders due to limitations in GPU memory.
+Based on the information provided in Table 2, increasing the polynomial degree generally leads to a higher
+minimum loss achieved during the training (although for a polynomial degree of 3, the minimum loss is slightly lower
+than that of a polynomial degree of 2). This trend also explains the increase in error due to the implementation of
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 13 of 25

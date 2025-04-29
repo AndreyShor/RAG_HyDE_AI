@@ -1,0 +1,40 @@
+The NCSM basis states are constructed as Slater determinants of single-
+particle harmonic oscillator wave functions. The NCSM parameters are the
+oscillator energy ℏΩand the size of the model space, characterized by the
+maximum number of excitation quanta Nmax allowed for in the calculation.
+The NCSM basis functions for a nucleus with A nucleons include all possible
+combinations of nucleons with total oscillator quanta ranging from Nmin to
+Nmin + Nmax, where Nmin is the minimal oscillator quanta allowed for the
+nucleus as dictated by the Pauli exclusion principle.
+The NCSM results are exact in the limit Nmax →∞.
+However, the
+dimensionality of the many-body basis grows exponentially with increasing
+Nmax, which restricts calculations with a reasonable precision, even on mod-
+ern supercomputers, to light nuclei with mass numbers A ≲20. Therefore,
+developing robust methods for extrapolating results to inﬁnitely large model
+spaces remains a pressing challenge.
+Most extrapolation methods developed to date [3, 4, 5, 6, 7, 8, 9, 10]
+lack rigorous theoretical justiﬁcation limiting their applicability. The most
+theoretically grounded approach [10] involves localizing the poles of the S-
+matrix for bound states.
+Machine learning oﬀers a promising alternative for addressing this prob-
+lem. This direction is also of independent interest as an application of the
+machine learning to extrapolation problems requires the development of novel
+algorithms and theoretical approaches, opening new avenues for research.
+The ﬁrst study of the machine learning extrapolation of variational cal-
+culation results to the inﬁnite model space was presented in Ref. [11]. The
+extrapolation method of Ref. [11] (ISU) involves training an ensemble of ar-
+tiﬁcial neural networks to predict the target observable (e. g., energy E, rms
+point-proton radius rp, etc.) based on a set of calculations of a nucleus of
+interest performed within the NCSM. Each neural network is a single-layer
+perceptron. The inputs are the NCSM parameters, Nmax and ℏΩ, while the
+outputs are the NCSM results for the observable of interest obtained with
+these input parameters. The trained neural networks are used to predict the
+results at very large values of Nmax where the convergence of the NCSM cal-
+culations is supposed to be achieved. Later a similar approach was employed
+for the NCSM result extrapolations in Refs. [12, 13].
+There is an alternative machine learning approach TUDa to the extrapo-
+lation of NCSM calculations developed in Refs. [14, 15]. Instead of training
+neural networks for each particular nucleus, TUDa suggests an universal
+neural network ensemble trained on NCSM results for light nuclei where a
+2

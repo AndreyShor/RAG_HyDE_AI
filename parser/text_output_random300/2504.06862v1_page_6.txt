@@ -1,0 +1,53 @@
+6
+Appendix A: The demographic process
+As explained in the main text, the demographic process in interdependent networks involves three steps within each
+"generation".
+• First, an internetwork failure due to detachment: each node failing in network A causes the detachment of ℓ
+other nodes from the GCC of A, with probability Pℓ.
+• Second, due to dependency, the events in A lead to ℓ+ 1 failures of nodes in network B. The failure of these
+nodes does not cascade back, since their dependent nodes have already collapsed.
+• What cascade back is the effect of the m extra nodes that are detached from the GCC of B due to these ℓ+ 1
+failures.
+Therefore, if m1, m2, ...mℓ+1 are the number of B nodes that detach from the GCC due to the failure of nodes
+1..ℓ+ 1, the total number of "descendants" of a single node in A is m = P
+i=1,ℓ+1 mi. In other words, the number of
+offspring satisfies:
+P1→m =
+∞
+X
+ℓ=0
+P A
+1→ℓP B
+ℓ+1→m,
+(A1)
+where P A and P B denote the detachment probabilities in networks A and B, respectively. Throughout this paper, we
+assume that the two networks are statistically identical, thus P A = P B. In Eq. (A1), P1→m (without a superscript)
+represents the probability of m being the overall number of offspring per individual, that is, m is the number of nodes
+in network A, for instance, that fail due to the back reaction from network B in the next iteration of the cascading
+failure.
+Appendix B: Preparing interdependent networks at their critical state
+In this paper, we report results such as the probability of failure as a function of the initial number of failing nodes,
+for two interdependent networks at criticality. In this section, we explain the setup of the numerical experiment,
+specifically how to prepare two interdependent networks at their critical state.
+We first considered a single network, A, and attacked it with a certain probability, p.
+Following the attack,
+we randomly removed one node from the GCC and recorded ℓ, the number of nodes that subsequently became
+disconnected from the GCC due to this removal (see Appendix A). By repeating this process multiple times, we
+obtained a reliable average for the value of ℓ. We then used a bisection search method to identify the p-value where
+ℓis approximately equal to one. For an ER network with a mean degree of k = 5, this occurs around p = 0.35.
+Once the value of p for which ℓ= 1 was identified, network B was created by duplicating network A. Each node in
+network A was then connected to a (randomly picked) node in network B via a dependency link, thereby forming a
+pair of interdependent networks at their critical point.
+Appendix C: Neutral dynamics
+In the main text, we utilized several features of the neutral process, particularly the probability of the process
+surviving until time t and the population size, nt, conditioned on survival. These results have been derived by many
+authors (see, e.g., [23]). Here, we provide a brief summary of the relevant formulas.
+First, the chance of the lineage of a single individual to survive for t generations. For a population of n independent
+individuals, each having birth rate b and death rate d, the corresponding master equation is,
+dPn
+dt
+= −(b + d)nPn + b(n −1)Pn−1 + d(n + 1)Pn+1,
+(C1)
+where Pn(t) is the chance to find n individuals at time t. The dynamics is neutral if b = d, and a natural choice of a
+generation time is b = d = 1. In such a case, the distribution of the total number of offspring per individual (i.e., the
+number of offspring it generates before its death) is geometric, P1→ℓ= 1/2ℓ+1, with mean one and variance is σ2 = 2.

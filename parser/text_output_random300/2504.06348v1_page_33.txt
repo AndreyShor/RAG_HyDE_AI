@@ -1,0 +1,52 @@
+Figure 3: High level circuit for block-encoding the Hamiltonian HPI in Eq. (3). Note that we have shown
+the block-encoding of the kinetic terms individually for conceptual clarity in viewing the target registers,
+but they are jointly block-encoded (and equivalently for the Coulomb terms).
+3. Apply SWUPel, a unitary that controlled on the i, j labels of the second register, swaps the ith and 1st
+electron momentum registers, and swaps the jth and 2nd electron momentum registers. Then apply
+SWUPion, a unitary that controlled on the I, J labels of the second register swaps the Ith and 1st
+pseudoion momentum registers, and swaps the Jth and 2nd pseudoion momentum registers.
+4. Conditioned on label p from the first register, apply on the first two electron and the first two pseudoion
+momentum registers, the block-encoding of the single or two-particle versions of the kinetic, Coulomb,
+local and non-local terms, as indicated in Fig. 3. Note that these block-encodings bring in further
+ancilla qubits that are not represented.
+5. Uncompute the controlled SWUPs, and all of the state preparation unitaries.
+The resulting unitary acts as H/λ on the momentum registers, when conditioned on the qubits of the first
+two registers as well as the ancilla flags in each of the block-encoding pieces being |0⟩. The costs for the
+shared subroutines across all block-encoding terms are given in Table 2.
+Routine
+Toffoli gates
+Ancilla qubits
+Reference
+PREPterms
+3bP + 3
+2
+App. E.1.1
+SWUPel
+2nηval + 2ηval −4
+0
+App. E.1.2
+SWUP†
+el
+2nηval + 2ηval −4
+0
+App. E.1.2
+SWUPion
+2¯nηion + 2ηion −4
+0
+App. E.1.2
+SWUP†
+ion
+2¯nηion + 2ηion −4
+0
+App. E.1.2
+PREP†
+terms
+3bP + 3
+2
+App. E.1.1
+Table 2: The resource costs for the subroutines shared across all terms in the block encoding, assuming the
+compilation scheme in App. E.1. The parameters n and ¯n were introduced in Eq. (21) and (24), respectively,
+ηion is the total number of pseudoions and ηval the total number of valence electrons. The parameters in red
+(defined in Appendix E) are tunable, and must be chosen to satisfy an overall error budget for the block
+encoding.
+33

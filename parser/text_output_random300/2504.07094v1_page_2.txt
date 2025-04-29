@@ -1,0 +1,125 @@
+2
+temperature.
+The approach is not restricted to computing energy-
+like expectation values and is, in principle, applicable
+to computing canonical averages of any order parame-
+ter. Accordingly, the method can be advantageously used
+on physical systems that are more tractable in QUBO
+form than in the native representation.
+For such sys-
+tems, combining the intervalled QUBO-based sampling
+and reweighting scheme can significantly advance the
+characterization of the canonical equilibrium properties
+beyond state-of-the-art sampling methods such as real-
+space Monte Carlo.
+We demonstrate this by considering space-filling melts
+of ring polymers. The system is, at one time, of broad in-
+terest in soft matter physics as well as a paradigm of the
+challenges of real-space sampling due to rapidly increas-
+ing autocorrelation times with system size and density.
+We show that our approach enables the first systematic
+characterization of inter-molecular linking of the rings
+as a function of their bending rigidity, revealing a non-
+monotonic relationship.
+The findings highlight the method’s potential for pro-
+viding breakthrough insights for QUBO-based physical
+models. They also motivate expanding the range of phys-
+ical models mapped in QUBO form, where one could
+further harness the rapid development of optimization
+platforms using quantum algorithms and hardware.
+I.
+MULTI-HISTOGRAM REWEIGHTING FOR
+QUBO
+A.
+Targeting QUBO-based sampling at energy
+intervals
+We consider a QUBO-based encoding of a discrete
+physical system, represented by a Hamiltonian H whose
+ground states are in one-to-one correspondence with the
+admissible configurations of the physical system. As in
+eq. 1, H can include up to quadratic interactions of the
+variables σ, which take values 0 or 1. Throughout this
+manuscript, we interchangeably refer to the σs as binary
+or spin variables, although in quantum computing con-
+texts the latter term is commonly reserved for variables
+taking values ±1.
+We further assume that the energy E of the physical
+system – distinct from the QUBO Hamiltonian H – can
+be written as a linear combination of the spin variables
+with integer coefficients:
+E = E0 + ∆E
+X
+i
+aiσi
+(2)
+where the ais can also be null. Writing the physical en-
+ergy in the form of eq. 2 may require introducing suitable
+ancilla spin variables [48]. Without loss of generality, in
+the following, we will set E0 = 0 and ∆E = 1 unless
+otherwise stated. Specific examples for Ising and lattice
+polymer models will be discussed in Sections I D and II.
+Plain QUBO-based sampling can be directed and re-
+stricted to single values of the discrete physical energy by
+complementing H0 of eq. 1 with a quadratic constraint
+that penalizes deviations of E from ¯E:
+H (σ) = H0(σ) + A
+ X
+i
+aiσi −¯E
+!2
+,
+(3)
+with A > 0. Because the added constraint is quadratic, H
+is still a QUBO Hamiltonian. Its ground states manifold
+now provides a one-to-one coverage of the microcanonical
+ensemble at energy ¯E.
+In principle, this energy targeting could be repeated for
+all admissible values of ¯E. However, even doing so would
+not enable the calculation of canonical averages since the
+necessary knowledge of the entropic weight of states at
+different energies can be gained only by targeting E in-
+tervals spanning multiple energy levels rather than just
+a single value of ¯E.
+To direct the QUBO-based sampling to a specific en-
+ergy interval, we extend the space of spin variables to
+include a set of so-called slack variables, s1, s2, ..., sm.
+These variables are incorporated into a quadratic con-
+straint that generalizes the one of eq. 3:
+H (σ) = H0(σ) +
+ X
+i
+aiσi −¯E −
+m−1
+X
+k=0
+2ksk
+!2
+.
+(4)
+Minimizing the above Hamiltonian enables the uniform
+sampling of microstates across the energy interval Emin ≤
+E ≤Emax, where Emin = ¯E and Emax = ¯E + (2m −1).
+Systematically varying ¯E allows for covering the energy
+spectrum of the physical system in its entirety.
+B.
+Density of states from energy-intervalled
+sampling
+The energy histograms obtained by sampling multiple
+overlapping energy intervals contain, in principle, suf-
+ficient information to reconstruct the density of states,
+W(E), of the physical system. However, W(E) cannot be
+reconstructed with standard weighted histogram analy-
+sis methods [49–51]. This is because weighted histogram
+methods are conceived for samples drawn from numer-
+ous Boltzmann or Boltzmann-like ensembles, a condi-
+tion fundamentally different from our approach. In our
+framework, minimizing eq. 4 yields samples that lack
+Boltzmann-like statistical weights and, especially, are re-
+stricted to preassigned energy intervals of given widths
+and boundaries.
+We use variational principles to derive a generalized
+weighted histogram analysis framework to recover W(E)
+in this new context. This new method uses data sam-
+pled from multiple staggered energy intervals to opti-
+mally reconstruct W(E) with gapless coverage of the en-
+ergy range of interest.

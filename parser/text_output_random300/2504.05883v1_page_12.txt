@@ -1,0 +1,56 @@
+PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY A, VOLUME 383, ISSUE 2289, 2025, DOI:10.1098/RSTA.2024.0146
+12
+this work requires a coordinated optimization sequence to be performed among the agents, which can potentially limit its
+applicability with large teams. Another limitation of the proposed technique is the dependence of the results on the agents’
+order of execution. This issue arises from the way the centralized problem was broken down and approximated with a distributed
+formulation. Essentially, by evaluating all possible permutations of the agents’ execution order, the centralized solution can be
+recovered. However, this is computationally intractable, which is why we proposed this distributed approach. Future research
+should explore whether, in certain scenarios, there is an opportunity to adopt an intelligent strategy to determine the optimal
+sequence of agent execution, and prioritize the development of algorithms that are inherently scalable and capable of handling
+large numbers of UAVs without sacrificing performance. There are several avenues to explore here including learning-based
+techniques [30], as well as planning without coordination by allowing some degree of work duplication as shown in our
+previous work [31].
+b) Autonomy and Decision Making: A crucial aspect of future UAV swarms is their ability to operate autonomously in
+complex and unknown environments while making intelligent and optimal decisions. This involves not only navigating through
+unfamiliar terrain but also determining the most efficient way to accomplish a given task while rapidly adapting to new
+information and changing conditions. One of the limitations of the proposed approach is the requirement of a known world
+model, which is essential for designing optimal coverage plans using the current methodology. Specifically, the proposed
+method requires prior knowledge of the 3D environment and points of interest, as well as pre-computed light-path propagation
+constraints. However, this information may not be available in many scenarios where UAV-based search is needed, such as search
+and rescue in natural disaster zones or inside collapsed buildings. Currently, state-of-the-art swarm systems are divided between
+model-based and model-free planning methodologies [27]. Model-based methodologies [28] rely on predefined environmental
+models for optimized planning, offering efficiency but lacking adaptability to changes. In contrast, model-free techniques like
+sampling-based approaches [15] adapt to unknown or dynamic environments, providing flexibility but lacking optimality. The
+proposed methodology can be extended to handle dynamic and unknown environments by employing a two-stage approach: first,
+building a world model through environmental mapping and scene reconstruction, and then utilizing this model for planning.
+This two-stage approach has been explored in our previous work [32] with a swarm of heterogeneous agents, demonstrating
+promising results. However, to enhance swarm system performance, future research should focus on creating more integrated or
+hierarchical planning techniques that can synergistically leverage the benefits of both model-based and model-free approaches.
+Additionally, integrating machine learning techniques [33] and other artificial intelligence methodologies [34], [35] can enhance
+the swarm’s ability to learn from experience, improve its performance over time, and handle complex decision-making.
+c) Robustness and Fault Tolerance: Robustness with respect to modelling errors and measurement noise, as well as fault
+tolerance with respect to hardware malfunctions is paramount for UAV swarm systems.. To operate effectively in real-world
+environments, swarms must be resilient to unpredictable conditions, varying weather, and hardware malfunctions. Future
+research should focus on developing advanced robust and fault-tolerant algorithms that enable the swarm to dynamically adapt
+to UAV losses, malfunctions, and uncertainty. Additionally, incorporating machine learning techniques could allow UAVs to
+predict potential failures and proactively adjust their behavior to prevent mission-critical consequences. While this work did not
+study robustness and fault tolerance, our previous research on fault-tolerant coverage planning under non-Gaussian disturbances
+[36] can provide valuable insights for future directions. Additionally, recent advancements in these fields, as highlighted in
+[37], offer further potential avenues for exploration.
+Swarm systems, with their potential to revolutionize various fields, offer a promising solution to complex challenges that
+traditional centralized systems struggle to address. While significant strides have been made, numerous challenges remain to
+fully harness their potential. By addressing the challenges discussed above, swarm systems can become indispensable tools for
+solving a wide range of real-world problems.
+VII. CONCLUSION
+This study introduces a coverage control framework that allows a group of distributed autonomous agents to collaboratively
+plan look-ahead coverage plans over a rolling finite planning horizon, targeting the coverage of designated areas on a 3D
+object’s surface. Formulated as a distributed model predictive control problem, the proposed approach optimizes the movement
+and visual control inputs of each agent, incorporating constraints to minimize overlapping work among agents. By integrating
+visibility determination through light-path propagation constraints, the controller can anticipate which areas of the object will
+be visible based on projected future positions of the agents. This is achieved by transforming non-linear visibility assessments
+constraints into logical constraints using binary variables within a mixed-integer programming framework. The effectiveness of
+this approach is validated both in simulation environments and through real-world UAV inspections of architectural structures.
+VIII. ACKNOWLEDGEMENTS
+This work is supported by the European Union’s Horizon 2020 research and innovation programme under grant agreement
+No 739551 (KIOS CoE), and from the Government of the Republic of Cyprus through the Cyprus Deputy Ministry of Research,
+Innovation and Digital Policy.

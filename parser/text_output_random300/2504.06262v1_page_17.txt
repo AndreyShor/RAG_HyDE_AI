@@ -1,0 +1,105 @@
+17
+Figure 7 Dependency of n2 (a) and Isat (b) as a function of
+the beam waist w0. Orange dots are experimental data in ru-
+bidium vapor. Blue dots are numerical model using (Aladjidi
+et al., 2024). The fits provide the scalings described in the
+main text.
+Besides, due to optical pumping and to the transit time
+of the atoms in the beam, the beam size plays a crucial
+role in this saturation intensity which can therefore be
+noted Isat(∆, w0). As described in (Aladjidi, 2023) and
+shown in Fig. 7, Isat(∆, w0) varies as 1/w0 while n2 is
+proportional to w0. Instead of describing the refractive
+index n as n = n0 + n2I, a more realistic description
+incorporates the saturation term in the form:
+n = n0 + n2(∆, w0)
+n0
+I
+1 + I/Isat(∆, w0).
+(79)
+A direct consequence of this saturation term is that the
+speed of sound obtained within the Bogoliubov perturba-
+tion theory (see Section II.E) gets modified as predicted
+by (Huynh et al., 2024):
+cs =
+√n2I
+1 + I/Isat
+.
+(80)
+c. Linear losses
+The linear susceptibility also includes an
+imaginary part, that leads to absorption. As discussed
+already, this is of critical importance when setting the
+trade-off on the laser detuning between high losses (near
+resonance) and low nonlinearity (far from resonance).
+Within the two-level atoms model this is given by a lin-
+ear imaginary term in the NLSE that scales as N/∆2.
+As we will see in Section V.A.4, in the same model, χ(3)
+scales as N/∆3. This would imply that for a constant
+transmission (N/∆2 = constant), it is advantageous to
+reduce both N and |∆| to maximize χ(3). This simple ar-
+gument is actually not true in practice for warm vapors
+since these scalings are only valid far detuned from reso-
+nance. As already mentioned, a description of rubidium
+vapor should consider (at least) three atomic levels and
+account for the transit time of atoms through the laser
+beams, which affects the average atomic response due to
+optical pumping (Bord´e et al., 1976). The optimal de-
+tuning and temperature are therefore dependent on the
+beam’s transverse size and should be optimized for each
+experiment.
+4. How to use alkali vapors ?
+Hot atomic vapors provide a versatile and tunable plat-
+form for realizing paraxial fluids of light.
+As we will
+see, it has been used in many different experiments but
+it requires a careful implementation to take full benefit
+of this versatility. Importantly, in the simple case of a
+single near resonant laser, the nonlinearity arises from
+the third-order susceptibility χ(3), which, as derived in
+Eq. (73), follows the scaling at large detuning:
+ℜ
+
+χ(3)
+∝N
+∆3 .
+(81)
+This scaling is particularly favorable for experimental
+control.
+The atomic density is directly related to the va-
+por pressure of the atomic species, which follows the
+Clausius-Clapeyron relation. For rubidium, an accurate
+empirical model is provided by (Nesmeianov, 1963), giv-
+ing the equilibrium vapor pressure PRb in torr as a func-
+tion of temperature:
+log10 PRb = 15.88 −4529
+T
++ 0.000586 T −2.99 log10 T,
+(82)
+for temperatures satisfying T ≥312 K (liquid phase).
+Below the melting point, a different set of coefficients ap-
+plies (Alcock et al., 1984), but for typical experimental
+conditions, this formula is sufficient. The atomic density
+N is then given by the ideal gas law: N = PRb
+kBT , where kB
+is the Boltzmann constant. Fig. 6(c) presents the atomic
+density of a rubidium vapor for typical experimental val-
+ues.
+To develop intuition about the atomic density, we
+provide reference values at two typical temperatures. At
+T = 300 K, the rubidium vapor pressure is approximately
+PRb ∼10−7 Pa, corresponding to an atomic density of
+N below 1016 atoms/m3. In contrast, at T = 400 K, the
+density increases dramatically to N ∼1019 atoms/m3.
+This represents a change of more than three orders
+of magnitude over a temperature range of just 100 K,
+highlighting the strong exponential dependence of N on
+T. This sensitivity makes temperature a highly effective
+control parameter for tuning the interaction strength in
+fluids-of-light experiments.
+Conversely, the inverted cubic dependence on detun-
+ing (see Figure 6b) offers a flexible means to control both
+the magnitude and sign of the nonlinearity (McCormick
+et al., 2003).
+A red-detuned laser (∆< 0) will lead
+to repulsive photon-photon interaction (self-defocusing),

@@ -1,0 +1,86 @@
+Fig. 9: Overview of box selection based on pointing gesture
+training, 10% validation, 10% test). To improve performance
+across varying box rotations, training data was augmented
+with random rotations (-90° to 90°). Training, conducted on
+a system equipped with an RTX 3070 Ti (8GB VRAM),
+Intel i7-11700K processor, and 64GB RAM, achieved a test
+mAP of 0.87, with consistent validation performance. Sepa-
+rately, a YOLOv11n-seg model was fine-tuned for pointing
+recognition using a custom dataset of 156 manually labeled
+images with similar training settings as the previous model,
+yielding a mAP of 0.82. This pointing model provides initial
+segmentation masks for user interaction.
+D. Results
+Firstly, to assess the system’s accuracy in interpreting
+human interaction, we conducted 10 trials using shelf images
+with varying box configurations. In each trial, a participant
+was asked to select a specific box first by pointing, and
+then by providing a verbal description. The system’s box
+selection was recorded for both input modalities. The results
+of these experiments can be seen in table I and table II and
+an overview of the pointing recognition based box selection
+and verbal clue based box selection can be seen in figures 9
+and 10.
+Fig. 10: Overview of box selection based on verbal clues
+Secondly, to validate our proposed Human-Robot Collabo-
+ration Framework, we conducted experiments covering three
+different scenarios:
+TABLE I: Pointing Gesture Recognition Results
+Exp. No.
+Ground Truth Box ID
+Selected Box ID
+Success
+1
+3
+3
+✓
+2
+2
+2
+✓
+3
+5
+5
+✓
+4
+4
+4
+✓
+5
+1
+2
+✗
+TABLE II: Verbal Clue Interpretation Results
+Exp. No.
+Verbal Clue
+Ground Truth ID
+Selected ID
+Success
+1
+Third from left
+3
+3
+✓
+2
+Small blue
+2
+4
+✗
+3
+Box with label
+3
+5
+✗
+4
+Box near top
+4
+4
+✓
+5
+Box in middle
+1
+1
+✓
+1) Gesture-Guided Box Extraction: In this simplest
+scenario, a human indicates a target box—often by
+Fig. 11: Overview of the gesture-guided box extraction scenario

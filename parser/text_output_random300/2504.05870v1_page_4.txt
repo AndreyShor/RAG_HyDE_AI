@@ -1,0 +1,54 @@
+In physical scenarios, a full set of initial conditions at a single point is rarely the case. Rather,
+we often find boundary conditions that are fixed (e.g. pinning to surface defects), free (e.g. end
+of nematic region) or mixed (e.g. end of patterned surface region). In such cases uniqueness of
+the solution to eq. (5) is not a priori guaranteed, however could be derived locally by means of the
+shooting method or similar tools. Many systems [20–22,27] indeed show multi-stability of solutions.
+Equations (4) can be derived using calculus of variations from a simple free energy functional (see
+Appendix A). In addition to eq. (4a) as its Euler-Lagrange equation, such analysis gives the exact
+form of the boundary term; disclination lines that end on a free boundary must do so perpendicularly
+to the boundary. Additionally, it allows addressing the second variation to verify the stability of
+disclination paths, which we use in the following.
+Inverse problem
+After solving equilibrium paths given surface patterns, we naturally turn to the inverse problem.
+Given a plane curve Γ, can we design a cell with suitably chosen surface patterns θt and θb, such
+that disclination line will emerge in the shape of Γ? This question can be answered promptly by
+reading eq. (4a) backwards. For a given curve Γ, κ is known and eq. (4a) can simply be solved
+algebraically for ∆θ, thus for θt and θb. This algorithm is not only simple but also very much
+degenerate, since ∆θ is determined only on the curve Γ itself. Therefore, multiple surface patterns
+may give rise to the same given curve Γ [18,23].
+We thus turn to describe a system whose force balance equations eq. (4) depend on a parameter
+β. For each value of β, we obtain a unique spray (eq. (5)) and its associated geodesics. Now, given
+a set of plane curves {Γβ}, we aim to find a single pair of surface patterns θt and θb, that will
+realize each curve Γβ at the corresponding value of the parameter β. We represent the input family
+of desired plane curves with an auxiliary function B(x, y), whose level sets are the target curves:
+Γβ =
+
+(x, y) ∈R2 | B(x, y) = β
+	
+.
+(6)
+This notation implicitly assumes that Γβ that belong to different β are mutually non-intersecting
+(except for isolated singular points, which we handle later). In many cases this assumption is not
+necessary, and intersecting curves can be achieved for different values of β, however since it makes
+the formalism simpler we assume it for clarity. We now turn to write equations (4) in terms of the
+input function B(x, y) and (algebraically) solve them for θt/b (Fig. 2).
+Force balance.
+We interpret β as some physical parameter which alters the force equation.
+Changing β can represent changes in the system parameters, e.g. the temperature, or a relative 2D
+rigid transformation between the two plates which we denote by Lβ. Since for every β the path Γβ
+is at equilibrium, we write eq. (4a) for all values of β:
+λ(β)κ(Γβ) + f
+∆θ(β, LβΓβ) = 0.
+(7)
+We rewrite eq. (7) in terms of B(x, y) to explicitly extract the balance at each x, y position:
+f
+∆θ(B, LB(x, y)) = −λ(B)κ(x, y).
+(8)
+The curvature κ(x, y) can be explicitly written as a function of position using B
+κ(x, y) = σ B2
+xByy −2BxByBxy + B2
+yBxx
+(B2x + B2y)3/2
+,
+(9)
+4

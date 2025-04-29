@@ -1,0 +1,130 @@
+The joint Laplace functional
+53
++ E
+
+exp
+
+−eds
+Z
+BR,s
+Fγ,t(x)e−γχ(x)µγ,s,t(dx)
+
+−1 .
+On the other hand, we also have the trivial inequality
+E(6.8) ≤E
+
+exp
+
+−eds
+Z
+∪i∈[I]Ai
+Fγ,t(x)e−γχ(x)µγ,s,t(dx)
+
+.
+Hence, to conclude it suffices to combine Steps 1 and 2.
+6.3
+Convergence of the large scales
+The main goal of this subsection is to compute the conditional Laplace functionals of the random
+measures (µγ,t)t≥0 conditioned on the σ-field Fs defined in (1.5). Heuristically speaking, we want to
+get the expectations appearing in the statement of Lemma 6.3 to be of order one, and so we want
+to absorb some normalisation factor r(s) into µγ,s,t. Proceeding formally for the moment, given a
+function χ : [0, 1]d →R satisfying the conditions in the statement of Lemma 6.3, we consider the
+function eχ : [0, 1]d →R such that, for all x ∈[0, 1]d,
+e−γχ(x) = e−dsr(s)e−γeχ(x) ,
+so that, by Lemma 6.3 with n = 1, W1,· = 0, and θ1 = 1, the following approximate identity holds
+E
+
+exp
+
+−
+Z
+[0,1]d r(s)e−γeχ(x)µγ,s,t(dx)
+
+≈E
+h
+exp
+
+−cedsρeχ−log(r(s))/γ+ds/γ([0, 1]d)
+i
+.
+for some constant c > 0. Now recalling the definition (6.5), it is easily seen that to get something of
+order one on the right-hand side of the above expression, we need to choose r(s) such that
+eds−
+√
+2d
+γ dsr(s)
+√
+2d
+γ |log(e−dsr(s))| ≈1
+which is achieved by setting
+r(s) = eds−γs
+√
+d/2s−
+γ
+√
+2d .
+In particular, this suggests to define the measure eµγ,s,t
+def= r(s)µγ,s,t which is given by
+eµγ,s,t(dx) = s−
+γ
+√
+2d eγs
+√
+2d
+2 (t −s)
+3γ
+2
+√
+2d et(γ/
+√
+2−
+√
+d)2eγXs,t(x)−γ2
+2 tdx .
+(6.12)
+Given R ≥1, s ≥0, a function χ : [0, R]d →R, we define the measure
+ρχ,s(dx)
+def= e−
+√
+2dχ(x)
+√
+d/2 + χ(x)
+s
++ log s
+√
+2ds
+
+dx .
+(6.13)
+Definition 6.4. We say that a function χ : [0, 1]d →R is admissible if for all ε > 0, there exists
+R0 ≥1 such that ρχ,s(BR,s) ≤ε for all s ≥0 sufficiently large and for all R ≥R0 such that
+(es + 1)(R + 1)−1 ∈N.
+It is immediate to check that Lemma 6.3 for the measure eµγ,s,t can be stated as follows.
+Corollary 6.5. Let ε > 0. Then, for s ≥0 sufficiently large, for t > s sufficiently large, and for any
+admissible function χ : [0, 1]d →R in the sense of Definition 6.4, such that
+min
+x∈[0,1]d χ(x) ≥log s
+8
+√
+2d
+−
+√
+2ds
+2
+,
+max
+x∈[0,1]d χ(x) ≤log t −
+√
+2ds
+2
+−log s
+√
+2d
+,
+sup
+x,y∈[0,1]d,
+|x−y|≤e−ss−1
+|χ(x) −χ(y)|
+|x −y|1/3
+≤es/3 ,
+(6.14)

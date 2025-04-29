@@ -1,0 +1,87 @@
+22
+0
+10
+20
+30
+40
+50
+0
+10
+20
+30
+40
+50
+Taylor
+Padé
+0
+10
+20
+30
+40
+50
+0
+200
+400
+600
+800
+1000
+Taylor
+Padé
+0
+10
+20
+30
+40
+50
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+Success Probability
+Taylor
+Padé
+Figure 13. Comparison of the minimum choice of m for both methods under the same accuracy requirement, with
+varying time interval length T. The condition number and success probability Psucc of the corresponding linear system
+at these values of m are also compared.
+From the results, we observe that the method based on Padé approximation consistently outperforms the
+method based on Taylor approximation, with the gap growing more significant as T increases. A smaller
+m∗directly benefits the block-encoding of the linear operator, since the gate complexity in Eq. (29) depends
+on m. Moreover, the query complexity of the QLSA is linearly dependent on the condition number of the
+corresponding linear system, so a smaller condition number significantly improves the solving process. In
+this experiment, we set p = 1. However, to further boost the success probability Psucc, a suitable choice
+of p > 1 could be employed for both methods. A larger success probability in the p = 1 case implies that
+the corresponding method requires a smaller p to achieve the desired success probability. Furthermore, the
+condition number of Lm,k,p(Ah) and Cm,k,p(Ah) depends linearly on the parameter p, and thus the efficiency
+of QLSA is thus also linearly dependent on p.
+The first two experiments compare the two methods using a specific choice of matrix A. However, since all
+Hermitian matrices are unitarily diagonalizable, the results from these experiments capture the behavior of
+all Hermitian and negative semi-definite matrices. These results support our theoretical analysis for this class
+of matrices: the condition number and success probability of the proposed method remain well-controlled,
+even when m ≪∥AT∥2.
+Experiment 3: The set of Hermitian and negative semi-definite matrices is a subset of the broader class
+of matrices whose eigenvalues have negative real parts. Within this broader class, the method based on
+Padé approximation is also expected to outperform the method based on Taylor approximation. However,
+providing a theoretical analysis for this more general case is challenging. To investigate this further, we
+conduct a numerical comparison between the two methods on matrices from this broader class.
+Let ϵ = 10−10, k = 9, p = 1 and x0 = b = [1, 1, 1, 1, 1]T . We generate one hundred matrices A ∈C5×5
+randomly, where each matrix’s eigenvalues have negative real parts. For each matrix A and each time interval
+T = 1, . . . , 50, we determine the smallest value of m that achieves the desired accuracy ϵ, denoted by m∗.
+With the parameters k = 9, p = 1, and m = m∗, we construct the corresponding linear systems and compute
+the condition number and success probability for each linear system. Finally, we calculate the mean value
+and standard deviation over the one hundred samples. The results are plotted in Fig. 14.
+The results in Fig. 14 demonstrate that the Padé approximation-based method consistently outperforms
+the Taylor approximation-based method across all three compared metrics, on average. Notably, the gap
+between the two methods widens as T increases.
+This experiment highlights that the proposed method
+remains more efficient for a broader class of matrices.
+2.
+Numerical result of scenario II
+Experiment 4: In scenario II, we always choose m = ⌈∥AT∥2⌉. Therefore, it suffices to compare the two
+methods for the case where T = 1 and ∥A∥2 = 1.
+In this experiment, we set m = p = 1, x0 = b =
+[1, 1, 1, 1, 1]T , and generate one hundred matrices A ∈C5×5 with eigenvalues having negative real parts and
+spectral norm equal 1. For each A and a required precision ϵ, we determine the smallest k that achieves the
+required precision, denoted by k∗. With parameters m = p = 1 and k = k∗, we construct the corresponding

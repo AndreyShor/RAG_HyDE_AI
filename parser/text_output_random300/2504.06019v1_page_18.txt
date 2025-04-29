@@ -1,0 +1,94 @@
+can be reduced to the eigenvalue problem,
+−iσˆu = −ikx ˆϕ +
+1
+Ra1/2
+ d2
+dz2 −k2
+ˆu,
+(36)
+−iσˆv = −iky ˆϕ +
+1
+Ra1/2
+ d2
+dz2 −k2
+ˆv,
+(37)
+−iσ ˆw = −dˆϕ
+dz + ˆm −γˆq +
+1
+Ra1/2
+ d2
+dz2 −k2
+ˆw,
+(38)
+−iσ ˆm = −ˆwd ¯m
+dz +
+1
+Ra1/2
+ d2
+dz2 −k2
+ˆm,
+(39)
+−iσˆq = −ˆwd¯q
+dz −ˆq −α ¯qsˆb
+τ
+n
+H(¯q −¯qs) + (¯q −¯qs)dH(¯q −¯qs)
+o
++
+1
+Ra1/2
+ d2
+dz2 −k2
+ˆq,
+(40)
+−d ˆw
+dz = ikxˆu + ikyˆv,
+(41)
+with boundary conditions
+ˆm(0) = 0,
+ˆq(0) = 0,
+ˆu(0) = 0,
+(42)
+ˆ
+dm
+dz (1) = 0,
+n
+1 + αγqs(1)
+o
+ˆq(1) −αqs(1) ˆm(1) = 0,
+ˆu(1) = 0.
+(43)
+Note that k2 ≡k2
+x + k2
+y, and, a first order Taylor expansion is used to express
+q′
+s ≈α¯qsb′. In this formulation, we have replaced ˆb with ˆm to implement the upper
+moist pseudoadiabatic boundary conditions. The second boundary condition in
+equation (43) is equivalent to q = qs. We solve the eigenvalue problem numerically
+using the Dedalus framework (Burns et al. 2020). The eigenvalue problem given by
+equations (36) - (43) is for a smooth approximation of the Heaviside function, which
+allows H to be Taylor-expanded (about ¯q−¯qs). We approximate H(x) = 1
+2(1+erf(kx))
+with k = 103 so that, dH(x) =
+k
+√πe−(kx)2. Including this dH term is essential for
+accurately predicting the onset of convection for non-linear simulations which use a
+smooth approximation of the Heaviside function.
+The first step in the solving the EVP is to calculate the numerical basic state
+solution (for smooth H). The numerical basic state solution is obtained by using
+Dedalus to solve the non-linear boundary value problem (given by equations (28) -
+(31)), with the analytical solution as an initial guess (to speed up convergence).
+To compute the critical Rayleigh number (Rac), we first calculate the basic
+state for smooth H (numerically) for a given Rayleigh number (Ra). The numerical
+basic state solution is obtained by using Dedalus to solve the non-linear boundary
+value problem (given by equations (28) - (31)), with the analytical solution as an
+initial guess (to speed up convergence). We then solve the eigenvalue problem for
+a range of wavenumbers, k =
+q
+k2x + k2y, and determine kmax which maximises the
+growth rate (ℑ(σ)). We adjust Ra iteratively, and repeat the above method, until the
+absolute value of the maximum growth rate is less than a tolerance, which we take to
+be 10−8. The pair (Ra, kmax) which satisfies these conditions determines the critical
+Rayleigh number, Rac, and the critical wavenumber, kc.
+18

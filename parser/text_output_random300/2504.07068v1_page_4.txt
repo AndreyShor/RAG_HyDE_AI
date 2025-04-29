@@ -1,0 +1,71 @@
+4
+regularized rate limm→∞1
+mu(ρ⊗m,
+1
+m9 ) is achievable. Moreover, any achievable quantum rate is lower bounded as
+limγ→0 limm→∞1
+mu(ρ⊗m, γ).
+Deﬁnition 3. For γ ≥0, a state ρAR and a CPTP map N : A →BK deﬁne
+a(ρ, γ) :=
+inf
+Λ1:A→BK
+1
+2I(B : RR′)τ1
+s.t.
+F(σBKR, τ BKR
+1
+) ≥1 −γ,
+u(ρ, γ) :=
+inf
+Λ3:E→E′
+inf
+Λ2:A→BK S(BE′)τ3
+s.t.
+F(σBKR, τ BKR
+2
+) ≥1 −γ,
+where σBKR = (N ⊗idR)ρAR, the maps Λ1,2,3 are CPTP, and Λ1 : A →BK, Λ2 : A →BK, UΛ2 : A ֒→BKE is
+an isometric extension of Λ2, with E as an environment system, Λ3 : E →E′ where the choice of E′ is part of the
+optimization, and the states in the above quantities are deﬁned as
+τ BKRR′
+1
+:= (Λ1 ⊗idRR′)
+
+|ρ⟩⟨ρ|ARR′
+τ BKR
+2
+:= (Λ2 ⊗idR)
+
+|ρ⟩⟨ρ|ARR′
+τ BKE′R
+3
+:= (Λ3 ⊗idBKR)
+
+(UΛ2 ⊗11R)|ρ⟩⟨ρ|ARR′(UΛ2 ⊗11R)†
+,
+with the state |ρ⟩ARR′
+a puriﬁcation of ρAR and τ BKR
+1
+= Tr R′τ BKRR′.
+These functions are deﬁned for a given channel N, however, we drop the dependency on the channel for the simplicity
+of the notation.
+Remark 4. The inﬁmums in the above deﬁnition are attainable, and therefore they can be replaced with minimums.
+The ﬁrst optimization is over a compact set of CPTP maps with bounded input and output dimensions. In the second
+optimization, system E is an environment system of the map Λ2, which is bounded as |E| ≤|A| · |B| · |K|. Also, the
+von Neumann entropy is a concave function of states. Therefore, the inﬁmum is attained by an extremal CPTP map
+Λ3 : E →E′. The input dimension of Λ3 is bounded, therefore, the number of the operators in the Kraus representation
+of an extremal Λ3 with input dimension E, is |E|. This implies that the dimension of system E′ is bounded as well.
+IV.
+ENTANGLEMENT-ASSISTED SIMULATION
+In this section, we obtain that the optimal entanglement-assisted qubit rate is equal to a(ρAR, 0) (where “a” stands
+for the assisted rate). So, we ﬁrst prove various properties of this function, which we apply to obtain the optimal rate.
+The entanglement-assisted qubit rate means that we allow the encoder and the decoder to consume entanglement at
+any rate.
+Lemma 5. The function a(ρ, γ) in Deﬁnition 3 has the following properties:
+1. It is a non-increasing function of γ.
+2. It is convex in γ, i.e., a(ρ, λγ1 + (1 −λ)γ2) ≤λa(ρ, γ1) + (1 −λ)a(ρ, γ2).
+3. It is subadditive, i.e. a(ρ1 ⊗ρ2, γ) ≥a(ρ1, γ) + a(ρ2, γ).
+4. It is continuous for all γ ≥0.
+We prove this lemma in the appendix section B.
+Theorem 6. The optimal entanglement-assisted rate for the simulation of the channel N : A →BK is equal to
+a(ρAR, 0) where this function is deﬁned in Deﬁnition 3.

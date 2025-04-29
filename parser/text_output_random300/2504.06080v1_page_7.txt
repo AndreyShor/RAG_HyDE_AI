@@ -1,0 +1,94 @@
+By inspecting Eq. (2.7) we ﬁnd the usual BRST breaking (cf. [20, 21, 23]) in D-
+dimension located in the evanescent kinetic term of the right-handed fermions,
+SD (S0) = SD
+Z
+dDx Lcl
+
+= b∆≡
+Z
+dDx gT a
+Rijca
+"
+ψi
+ ←
+b/∂PR +
+→
+b/∂PL
+!
+ψj
+#
+,
+(2.15)
+which can be interpreted in terms of Feynman rules as the vertex,
+d∆
+p2
+ψi
+p1
+ψj
+ca
+= gT a
+Rij( b/p1PR + b/p2PL).
+(2.16)
+3
+Determining the ﬁnite two-loop counterterms and non-
+Abelian obstacles
+This section serves as a brief discussion of our approach to determining the spurious
+symmetry breaking and restoring the symmetry via counterterms. For a thorough account
+see Ref. [17]. The main focus will be to highlight diﬀerences stemming from non-Abelian
+interactions. The structure constants are no longer zero, which e.g. makes for interaction
+terms between ghosts and gauge bosons. Although this has been the case for related works
+in non-Abelian models at one-loop as well, some of these complications appear ﬁrst at the
+two-loop level, while others are technical issues due to the necessity of implementing the
+external source operators in computer calculations. We shall begin with a brief exposition
+of Slavnov-Taylor identities and the quantum action principle which are our means of
+quantifying and computing the symmetry breaking while also allowing us to shed light
+on some non-Abelian aspects. In the second part we explain how we implemented both
+the breaking ∆-vertices and external ﬁelds in FeynArts.
+3.1
+Slavnov-Taylor identities and the quantum action principle in DReg
+The appropriate tool for studying BRST symmetry in the renormalized theory is the
+Slavnov-Taylor identity, which expresses BRST invariance on the level of 1PI Green func-
+tions. The ultimate Slavnov-Taylor identity required to hold after renormalization is
+LIM
+D→4 SD(ΓDRen) = 0,
+(3.1)
+where the limit includes setting evanescent objects to zero.
+Here the Slavnov-Taylor
+operator is deﬁned as
+S(ΓDRen) =
+Z
+d4x δΓDRen
+δKφ
+δΓDRen
+δφ
+,
+(3.2)
+where we follow the notation of Ref. [17] for the 1PI quantum eﬀective action Γ, and
+where φ and Kφ denote the quantum ﬁelds and the sources introduced in Eq. (2.13),
+respectively. We further introduce a linearized Slavnov-Taylor operator,
+bD = sD+
+Z
+dDx δS(D)
+0
+δGaµ
+δ
+δρaµ + δS(D)
+0
+δψjβ
+δ
+δRjβ
++ δS(D)
+0
+δψiα
+δ
+δRiα
++ δS(D)
+0
+δca
+δ
+δζa + δS(D)
+0
+δca
+δ
+δχa , (3.3)
+6

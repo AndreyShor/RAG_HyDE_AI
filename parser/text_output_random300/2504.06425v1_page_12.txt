@@ -1,0 +1,81 @@
+12
+NEURAL NETWORK POLYCONVEXIFICATION
+...
+...
+Input
+ˆm
+10 neurons
+ReLU
+20 neurons
+ReLU
+1 neuron
+Linear
+ν1
+ν2
+ν1ν2
+Positive
+weights
+Positive
+weights
+0
+20
+40
+60
+10−3
+10−2
+Epochs
+Loss
+Training Loss
+Validation Loss
+Figure 3. Left: Network architecture for Kohn–Strang–Dolzmann example.
+Right: Learning curves based on the loss function L from (15) for a single
+network initialisation.
+−1
+−0.5
+0
+0.5
+1
+0
+0.5
+1
+1.5
+2
+ν1
+Φ(ν1, 0)
+Φpc(ν1, 0)
+Φpc
+pred(ν1, 0)
+±σ
+(a) Cross-section along the (ν1, 0)-axis.
+−1
+−0.5
+0
+0.5
+1
+0
+1
+2
+3
+ν1
+Φ(ν1, ν1)
+Φpc(ν1, ν1)
+Φpc
+pred(ν1, ν1)
+±σ
+(b) Cross-section along the (ν1,ν1)-axis.
+Figure 4. Comparison of the predicted polyconvex envelope Φpc
+pred (averaged
+over ten network realisations) and the analytical polyconvex envelope Φpc for
+the Kohn–Strang–Dolzmann function along two cross-sections. The standard
+deviation of the ten predictions is marked by σ.
+where two one-dimensional cross-sections of the predicted polyconvex envelope are depicted.
+It is important to note that the neural network successfully captures the kink of the function
+Φpc at the point (0, 0) with high accuracy.
+Further, it is notable that the neural network
+based approximation captures the nonconvexity along the diagonal cross-section of the envelope,
+rendering it a consistent polyconvex function. It is observable that the standard deviation σ of
+the different network realisations is quite negligible when it comes to the approximation accuracy.
+Specifically, the neural network implemented in this example contains 365 parameters, comprising
+both weights and biases. With the same number of parameters using the conventional approach,
+it would only be possible to store 19 × 19 grid values, and then approximate the value at any
+point by interpolation. While this standard method remains feasible for simple cases, it can

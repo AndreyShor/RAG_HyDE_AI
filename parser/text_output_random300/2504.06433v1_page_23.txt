@@ -1,0 +1,65 @@
+Proof of Theorem 6.1. Suppose C is a depth-2 QAC-circuit that computes ⊕n for some n ≥4. By
+Lemma 6.6, C’s target is not pass-through, and G(2)
+0
+= CSZ for some S that contains 0 and at least
+one other qubit. If some CZ-gate touches the target on layer 1, then let T be such that G(1)
+0
+= CT Z;
+otherwise, set T := {0}. By Lemma 6.8, T can include at most one input qubit. (T may contain
+any number of ancilla qubits, however.) We can assume WLOG that T ∩{2, . . . , n} = ∅. For any
+x ∈{0, 1}n−1, deﬁne the initial state
+|ψx⟩:= |0⟩⊗|0⟩⊗|x⟩⊗|0⟩⊗m
+obtained by setting input qubit 1 to |0⟩and the rest of the input qubits to |x⟩(and the target and
+all ancilla qubits to |0⟩). Note that |ψx⟩is the tensor product of 1-qubit states and hence separates
+at every partition of the qubits. Let
+|ϕx⟩:= G(1.5)G(1)G(0.5) |ψx⟩
+be the result of running the state |ψx⟩through layers 0.5–1.5 of the circuit. It is evident that |ϕx⟩
+separates at {T, T }.
+Claim 6.9. Given initial state |ψx⟩for x ∈{0, 1}n−1,
+G(2)
+0
+either disappears or simpliﬁes to
+CS∩TZ.
+Proof of the Claim. If S ⊆T we are done, so assume S ̸⊆T. By assumption, running C on |ψx⟩
+results in a state of the form |bx⟩⊗|τ⟩, where bx := ⊕x and |τ⟩∈H{0} is some state of the non-
+target qubits. Running this state backwards through layer 2.5 as in the proof of Lemma 6.8, we get
+that the state |ϕ′
+x⟩of the qubits just after layer 2 separates at {{0}, {0}} and hence is S-separable.
+Likewise, |ϕx⟩is also S-separable. By Lemma 4.4, either G(2)
+0
+disappears on |ϕx⟩or simpliﬁes to
+CS∩AZ for some subset A of one of the four sets T, T, {0}, {0}. Since C’s target is not pass-through
+by Lemma 6.6, we can assume 0 ∈A, and thus A ⊆S ∩T. This implies the weaker statement that
+G(2)
+0
+simpliﬁes to CS∩T Z on |ϕx⟩in the case where G(2)
+0
+does not disappear.
+Since |ϕx⟩separates at {T, T}, we can write
+|ϕx⟩= |ϕ⟩T ⊗|ϕx⟩T ,
+where |ϕ⟩T ∈HT does not depend on x and |ϕx⟩T ∈HT . From the Claim it follows that, given
+initial state |ψx⟩, the qubits in T do not entangle with any other qubits on layer 2 of the circuit
+and so can only be in one of two possible ﬁnal states after layer 2.5:
+|τx⟩T =
+(
+G(2.5)
+T
+|ϕ⟩T
+if G(2)
+0
+disappears on |ϕx⟩,
+G(2.5)
+T
+(CS∩T Z) |ϕ⟩T
+if G(2)
+0
+does not disappear on |ϕx⟩,
+unentangled with any other qubits. Since |τx⟩determines the ﬁnal target value, it must change
+according to ⊕x (because T includes the target), there must exist an x0 ∈{0, 1}n−1 such that G(2)
+0
+disappears on |ϕx0⟩. Fix such an x0.
+By Lemma 6.7, input qubits 2, 3, 4 cannot all be touched by the same gate on layer 1. Without
+loss of generality, we can assume that qubit 4 does not share a layer-1 gate with qubits 2 and 3.
+This means that we can decompose |ϕx0⟩further:
+|ϕx0⟩= |ϕ⟩T ⊗|ϕx0⟩T1 ⊗|ϕx0⟩T2
+23

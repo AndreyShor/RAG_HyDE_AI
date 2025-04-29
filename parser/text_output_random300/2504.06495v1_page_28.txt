@@ -1,0 +1,44 @@
+One concrete generalized discrete time branching model
+To illustrate that our framework can accommodate more general forms of randomness beyond
+the stylized model of Section 3, we now present a branching model in which the transition
+multipliers ∆t are generated as pseudorandom numbers over time. This allows us to simulate
+a more interesting branching process with K = 2 branches in each period, a value of K that
+was not allowed in Section 3 since it violated the non-lattice condition.
+We rely on a well-known class of pseudorandom number generators based on modular
+arithmetic to produce a deterministic branching structure that well-approximates true ran-
+domness.
+Speciﬁcally, we use a linear congruential generator (LCG) of the form xn+1 =
+(a · xn) mod p, where p is a large prime and a is a primitive root modulo p. Normalizing by
+p yields values that approximate independent draws from the uniform distribution on [0, 1].
+This method is simple and widely used, with standard choices including p = 231−1, a = 16807
+(Park and Miller 1988), or for higher precision, p = 261 −1, a = 6364136223846793005
+(O’Neill 2014).
+Using such numbers for p and a, we generalize the basic branching model in (6) with
+K = 2 as follows:
+φt(b) =
+
+
+
+
+
+δt(b) φt−1(b1, . . . , bt−1)
+if δt(b) φt−1(b1, . . . , bt−1) ≥ξt ,
+0
+otherwise,
+δt(b) = ct(b)
+p
+,
+ct(b) =
+
+
+
+
+
+[a · ct−1(b1, . . . , bt−1)] mod p
+if bt = 2 ,
+p −1 −{[a · ct−1(b1, . . . , bt−1)] mod p}
+if bt = 1 ,
+with initial values speciﬁed by φ0 > 0 and c0 = 1. The key diﬀerence to the basic model in (6)
+is that the ﬁxed δk ∈[0, 1] branching ratios were replaced with branch-speciﬁc ratios δt(b) ∈
+[0, 1], which are generated from the pseudo-random LCG process ct(b) ∈{0, 1, 2, . . . , p −1}.
+27

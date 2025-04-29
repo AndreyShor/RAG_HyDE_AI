@@ -1,0 +1,81 @@
+20
+NEURAL NETWORK POLYCONVEXIFICATION
+αk = 0.25
+αk = 2.75
+αk = 6.00
+0
+1
+2
+3
+4
+5
+-4
+-3
+ν1
+Φ((ν1, ν1); ˆνk, αk)
+Φpc
+δ ((ν1, ν1); ˆνk, αk)
+Φpc
+pred((ν1, ν1); ˆνk, αk)
+±σ
+0
+1
+2
+3
+4
+5
+0
+1
+ν1
+0
+1
+2
+3
+4
+5
+0
+1
+ν1
+Figure 11. Comparison of the polyconvex envelopes Φpc
+pred (averaged over ten
+network realisations) and Φpc
+δ
+for the Saint Venant–Kirchhoff model with
+ˆνk = [2.5, 2.5] and for αk ∈{0.25, 2.75, 6.00}. Plotted is the cross-section along
+the diagonal axis. The standard deviation of the ten predictions is marked by
+σ.
+Once again, this number of parameters remains smaller than the storage required for only three
+polyconvex envelopes on a 100 × 100 grid.
+6.5. Numerical Results for the Two-Dimensional Neo-Hookean Model. We consider
+the function Φ from (19) in the neo-Hookean based formulation, i.e. ψ0 from (3) is chosen
+and the material parameters are set as before. We aim for the representation of the function
+˜Φpc : Rd × R+ →R, i.e. the polyconvex envelope of the normalised version (21), by a neural
+network.
+6.5.1. Network Architecture and Learning Data. In this example, we implement a PICNN where
+each path consists of three hidden layers with 30, 60 and 60 neurons, respectively. The convex
+input, denoted by ˆm, represents the minors of the signed singular values ˆνk+1, i.e. m(ˆνk+1), while
+the nonconvex input, denoted as ζ, corresponds to the parameter αk. The learning domain for
+ˆνk+1 is defined as [νmin, νmax]2 with νmin = 0.01 and νmax = 18, while the learning domain for
+the parameter αk is [0, α∞]. For the learning dataset, the set of points in the signed singular
+value space is obtained by discretising each axis as follows [νmin : 0.01 : 2] ∪[2 : 0.05 : νmax],
+so that the grid is refined around the minimum, leading to a 518 × 518 grid, and we choose
+the set of learning values αk as Iαk = {0, 0.1, . . . , 1.5, 1.7, 2, 2.5, 3, 3.5, 4}, i.e. 22 values. These
+discretisations lead a learning dataset of 5,903,128 points. From this dataset, 70% of the samples
+are randomly assigned to the training set, while the remaining 30% constitute the validation
+set. The target values Φpc
+δ
+are computed with the SVPC LP algorithm. The computation of
+the target values takes 4700 CPU hours. Figure 12 illustrates the target values along the axis
+(ν1, ν1). For the loss function, we choose the penalty parameters λineq = 1 and λsym = 1.
+6.5.2. Numerical Results. On average, for a single realisation, the training process requires 2.14
+h ± 28 minutes to complete 44 ± 10 epochs. The final training error is 6.83 × 10−5 ± 2.38 × 10−5,
+while the validation error reaches 7.30 × 10−5 ± 3.74 × 10−5. The learning curves for one of these
+realisations are presented in Figure 12.
+Figure 13 illustrates the relative errors between the predictions and the polyconvex envelopes
+computed by the SVPC LP algorithm for different values of αk, including values that are outside
+the training domain. These errors are computed on a uniform 100 × 100 discretisation of the
+domain [νmin, νmax]2. Across all considered parameter sets, the errors remain consistently low,
+ranging between 1% and 2%. In particular, it is important to note that the hypothesis stating
+that the energies become independent of αk for αk ≥α∞is verified and validates our choice of
+α∞= 4. Additionally, Figure 14 provides an example of re-shifted predictions, i.e. application of
+(22). It has to be noted that the predictions are in good agreement with the polyconvex envelopes

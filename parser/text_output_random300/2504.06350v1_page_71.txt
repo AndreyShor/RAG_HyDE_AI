@@ -1,0 +1,55 @@
+real-world deployment. However, DI-QKD requires satisfactory demonstration of Bell non-locality over
+long distances, and as such introduces demanding technical requirements, in particular related to the
+distance limitations (signal loss requires advanced quantum technology such as quantum repeaters) and
+high efficiency (high-quality detectors, sources, devices) required to achieve reasonable key rates.
+In this section we discuss the current outlook towards real-world implementation of DI-QKD, focusing
+on the current promising experimental platforms, technical challenges, and possible solutions. In Section
+6.4, we discuss the efforts towards real-world deployment of QKD in general, including efforts towards
+standardization, interoperability, and integration into cybersecurity and network architecture, since future
+implementation of DI-QKD will most likely benefit from most of this groundwork. When possible, we
+highlight specific or unique challenges that DI-QKD will likely encounter on the road to real-world
+deployment.
+6.1. Bell loopholes in the DI-QKD scenario
+Conclusive Bell tests must be performed with space-like separation between measurement processes,
+as discussed in Section 2.4.2. However, this is not a requirement for DI-QKD, since to be able to guarantee
+the security we must ensure that the users stations do not leak any information to an adversary Eve,
+even at sub-luminal velocity. From Eve’s point of view it is most likely much easier to install a backdoor
+that sends information from a user’s devices to her station, rather than make them communicate with
+each other to fake a Bell inequality violation.
+Thus, DI-QKD calls for complete isolation of the measurement stations, involving shielding–electromagnetic
+or otherwise–to avoid broadcasting of any type of signal related to measurement basis choices and out-
+comes. In addition, whether the quantum systems are photonic or stationary, the users stations are con-
+nected by a photonic channel, which in principle opens a backdoor for side-channel attacks using external
+light sources, as has been exploited for fake Bell violations [142], in QKD [10–15] and QRNGs [455, 456].
+To isolate the users stations, a switch or shutter mechanism should be used to block the optical channel
+after the relevant optical signal has passed, and before the measurements are performed. In a recent
+DI-QKD implementation with trapped ions, this was achieved by shifting the ions out of the focal point
+of the collection lens, thus decoupling them from the optical link, and also scrambling the quantum state
+after measurement, so that the state after measurement (and thus the measurement result) could not be
+determined by a third party probing the ions [51].
+Another difference between Bell and DI-QKD scenario lies in the memory loophole (see Section 3.11.).
+The ability of the devices to remember the inputs and outcomes of the previous rounds to be used in
+the future has been proved to be of very little consequence for Bell inequalities already in Ref. [457].
+For DI-QKD, on the other hand, memory attacks pose a very serious threat [62, 206].
+While some
+countermeasures against them are possible, there is no known method of full protection.
+The experimental loophole which is of crucial importance for both Bell and DI-QKD scenarios is
+the detection efficiency loophole, which currently is the main problem in experimental realizations and
+implementations, as we address in the next section.
+6.2. Detection efficiency and channel losses
+The issues of detection efficiency and channel losses are intimately related in determining the perfor-
+mance characteristics of a DI-QKD link. In both all-photonic setups and those with stationary qubits,
+the efficiency in which photons can be detected at a distant measurement station is a critical metric in
+determining the overall performance characteristics of the system.
+The overall detection efficiency of a photon can be expressed as η = ηcηℓηmηd, where ηc is the coupling
+efficiency from the source to the optical link (ex: optical fiber), ηℓis the transmission efficiency of the
+optical link, ηm is the efficiency of the measurement device, and ηd is the quantum efficiency of the
+detector.
+The efficiencies ηc, ηm and ηd depend upon specific characteristics of the source, the optical compo-
+nents of the measurement device and detectors. For example, losses can range from near zero up to a few
+dB in the case of coupling from an optical source into an optical fiber 17. While bulk optical components
+such as (polarizing or non-polarizing) beam splitters can present very low losses ≤0.5% (∼0.02dB),
+fiber-based components can have losses up to a few dB. State-of-the-art commercial superconducting
+single-photon detectors typically have ηd ≤0.85, but efficiencies reaching over 0.95 have been reported
+17Here we give in efficiency in terms of probability, and losses in terms of dB. For loss L, one has η = 10−L/10.
+71

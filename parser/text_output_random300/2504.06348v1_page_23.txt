@@ -1,0 +1,89 @@
+4.2.2
+Rigid-rotor approximation
+The ion Hamiltonian in Eq. (52) is historically the starting point of a lengthy analysis of translational,
+rotational, and vibrational modes [73, 74, 72]. Here we primarily follow the geometrical construction of
+Ref. [74] and incorporate some aspects of Ref. [72]. Conceptually, our goal is to perform, for each species s,
+a coordinate transformation in R3ηs
+ion:
+Rs 7→(Rs
+CoM, Ss, Qs
+1, ..., Qs
+3ηs
+ion−6
+|
+{z
+}
+Qs
+)
+(53)
+such that the operator Eq. (52) factorizes into three approximately independent sets of terms on:
+• The 3 translational CoM DoF denoted by Rs
+CoM,
+• The 3 (or 2 for linear molecules, 0 for periodic substrates or isolated atoms) rotational DoF around
+axes Ss passing through the CoM,
+• The remaining 3ηs
+ion −6 (or 3ηs
+ion −5 for linear molecules, 3ηs
+ion −3 for periodic substrates, 0 for isolated
+atoms), which represent the remaining DoF denoted by Qs.
+The space of Qs, formally defined as the quotient of R3ηs
+ion by the special Euclidean group for non-linear
+molecules,14 will be called shape space, even though it also a includes a degree of freedom measuring the
+overall size or scale of the system. For example, shape space for a water molecule consists of the bond angle,
+the ratio of OH bond lengths, and the overall scale or size (e.g. the CoM moment of inertia). Alternatively,
+we may choose the bond angle and the two OH bond lengths. While separating out the 3 CoM translational
+coordinates is straightforward, as discussed in Sec. 4.1.2,15 fully separating the rotations and shape degrees
+of freedom (molecular vibrations) is not possible.
+The “translation-reduced configuration space”, R3ηs
+ion−3, obtained after separation of the CoM degrees of
+freedom, can be mathematically endowed with the structure of a principal fiber bundle, with the base space
+being shape space and the fiber space being the SO(3) group manifold,16 parameterized by 3 Euler angles
+that specify the rotational orientation of the molecule. The Hamiltonian is a Hermitian operator defined
+using a section of the fiber bundle, where a section is a suitably continuous choice of reference orientation
+for rotations at each shape point, i.e. a choice of a fiber point at each base point, often called the body
+frame. This is a gauge choice which determines the form of the Hamiltonian, although the total energy is
+gauge-invariant.
+We want to use the fiber bundle structure with a well-chosen gauge in order to maximally decouple
+rotation and shape interactions. In this spirit, the Hamiltonian can be thought of as a sum of three terms: a
+term that depends on the base point/shape and its change, measuring the vibrational energy of the molecule;
+a term that depends on the change in the displacement along the fiber from the reference section, measuring
+the energy in overall rotation; and a coupling term between the base and fiber, measuring the the rotational-
+vibrational interaction energy. We want to choose a gauge/section in which the latter term is small relative
+to the former terms, particularly near the equilibrium configuration of the molecule. A historically successful
+choice is the Eckart gauge (or Eckart frame), which is a choice of section given by 3 linear conditions,
+FEck(Rs) =
+X
+I∈Is
+RI × Rs,0
+I
+= 0,
+(54)
+14For linear molecules, the symmetry group of rigid body rotations and translations is the subgroup of SE(3) that fixes an
+axis of rotation.
+15We can also use 3ηs
+ion −3 Jacobi coordinates ρα such that the kinetic energy becomes,
+Tion = −
+X
+I∈Is
+1
+2MI
+∇2
+I = −
+1
+2Ms
+tot
+∇2
+CoM −
+3ηs
+ion−3
+X
+α=1
+1
+2µα
+∇2
+α,
+where µα are suitably defined reduced masses based on the choice of ρα. The Jacobi coordinates are theoretically cleaner since
+they explicitly separate the CoM with no mass polarization term and leave the form of the kinetic energy unchanged. See
+Ref. [74].
+16Recall this is RP3, the 3-sphere with antipodal points identified.
+23

@@ -1,0 +1,50 @@
+ 
+6 
+optimization problem. This QUBO then describes the optimization space, enabling the 
+identification of the optimal state with the best performance30,31. 
+ 
+Methods to Solve a QUBO 
+Various methods have been proposed to solve QUBO problems. For our benchmarking study, we 
+consider seven representative methods: QA, hybrid QA (HQA), integer programming (IP), 
+simulated annealing (SA), steepest descent (SD), tabu search (TS), parallel tempering with 
+isoenergetic cluster moves (PT-ICM). Below, we provide a brief introduction to each of the solvers 
+used in solving combinatorial optimization problems:  
+ 
+Quantum Annealing and Hybrid Quantum Annealing 
+QA starts with a superposition state for all qubits, which has the lowest energy state of the initial 
+Hamiltonian (𝐻+). In the annealing process, the system evolves toward the lowest energy state of 
+the final Hamiltonian (also called a problem Hamiltonian, 𝐻,) by minimizing the influence of the 
+initial Hamiltonian. The measured state at the end of the annealing is supposed to be the ground 
+state of 𝐻,, which can be expressed as the following equation32,33: 
+ 
+ 
+𝐻(𝑡/𝑡-) =  𝐴(𝑡/𝑡-)𝐻+ + 𝐵(𝑡/𝑡-)𝐻, 
+(3) 
+ 
+Here, 𝑡 is the elapsed annealing time, and 𝑡- is the total annealing time. Equation (3) evolves from 
+𝐴(𝑡/𝑡-) = 1, 𝐵(𝑡/𝑡-) ≈0 at the beginning of the annealing (𝑡/𝑡- = 0) to 𝐴(𝑡/𝑡-) ≈0, 𝐵(𝑡/
+𝑡-) = 1 at the end of the annealing (𝑡/𝑡- = 1). Sufficiently slow evolution from 𝐻+ to 𝐻, enables 
+the quantum system to stay at the ground state, which leads to the identification of the optimal 
+solution of a given combinatorial optimization problem3,34. We use D-Wave Systems’ quantum 
+annealer (Advantage 4.1) to solve the problems using QA, and we set the number of reads for QA 
+to 1,000 with a total annealing time of 20 µs. We select the best solution corresponding to the 
+lowest energy state found among 1,000 reads.  
+ 
+The D-Wave Ocean software development kit (SDK, ver. 3.3.0) provides many useful libraries, 
+which include quantum or classical samplers such as the QA, HQA, SA, SD, and TS. They allow 
+us to solve QUBO problems22,35,36. We employ these samplers, which are implemented in the D-
+wave Ocean SDK, for the benchmarking study. Classical or QA solvers often benefit from 
+decomposition algorithms to identify a high-quality solution (i.e., an optimal solution or a good 
+solution close to the global optimum) for large QUBO problems. Hence, the decomposition of a 
+QUBO matrix into sub-QUBOs is very useful when the size of QUBO matrix is larger than the 
+physical volume of a sampler (i.e., QUBO size > physical number of qubits in QA or memory 
+capacity of a classical computer). We employ the QBSolv package implemented in D-wave Ocean 
+SDK for QUBO decomposition. The QBSolv splits a QUBO matrix into smaller QUBO matrices, 
+and each of them is sequentially solved by classical or QA solvers. This algorithm enables us to 
+handle a wide range of complex real-world problems21,22,37. The size of the decomposed QUBOs 
+is set to 30 unless otherwise specified. HQA (Leap Hybrid solver), developed by D-Wave systems, 
+also decomposes large QUBO into smaller subproblems well-suited for QA’s QPU, and then 
+aggregates the results27,38. The detailed algorithm of HQA, however, is not publicly released. We 
+utilize a D-Wave sampler (dwave-system 1.4.0) for SA, SD, and TS with a specified number of 
+reads (1,000) and default settings for other parameters. Furthermore, we employ D-Wave hybrid 
+framework for PT-ICM. 

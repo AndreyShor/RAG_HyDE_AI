@@ -1,0 +1,86 @@
+the eavesdropper.
+The key rate, accounting for finite-size effects, is expressed as:
+rfinite = n
+N (r −∆(n)) ,
+(167)
+where n represents the number of signals used for key preparation, N is the total number of exchanged
+signals, and r denotes the asymptotic key rate. The correction function ∆(n) is employed to compensate
+for the utilization of the Holevo function in the context of a finite number of signals. It is a function that
+relies on the number of signals used for key preparation (n) and the probability of error associated with
+the privacy amplification procedure ϵP A (∆(n) ∼
+q
+1
+n log2(2/ϵP A)).
+Numerical results indicate that under realistic conditions and considering finite-size effects, CV-MDI-
+QKD is viable for metropolitan distances within experimental constraints. In particular, a total number
+of signals exchanged in the range of N = 106 to 109 is sufficient to achieve a high key rate of 10−2 bits
+per use over metropolitan distances, even in the presence of excess noise of approximately 0.01.
+For the protocol considering collective attacks, the CV-MDI-QKD protocol with an asymmetric struc-
+ture and finite-size effects can securely transmit over approximately 86 km under ideal reconciliation
+efficiency and optimal modulation variance conditions for n = 1010 block size. When the reconciliation
+efficiency is 96.9%, the maximum transmission distance achievable is approximately 75 km.
+Lupo et al.
+[361] studied the security proof for coherent attacks.
+The advantage of their study
+compared to the previous ones is that the correlations between Alice and Bob are generated through
+the variable Z announced by the relay which allows Alice and Bob to do parameter estimation with a
+negligible amount of public communication. Therefore, the whole raw key can be exploited for both
+parameter estimation and secret-key extraction. They first investigated the security against collective
+attacks by presenting an improved estimation of the conditional smooth min-entropy obtained by applying
+a new entropic inequality and found the following lower bound on the secret-key rate:
+rfinite ≥r −
+1
+√n∆AEP(2
+3pϵs, d) + 1
+n log(p −2
+3pϵs) + 1
+n2 log(2ϵ),
+(168)
+where p is the probability of successful error correction, ϵs is the smoothing parameter entering the
+smooth conditional min-entropy and ∆AEP(δ, d) is a function of dimensionality d (∆AEP(δ, d) ≤4(d +
+1)
+p
+log(2/δ2)).
+The secret key rate for coherent attacks can be modified by applying the results of [387] as
+rfinite ≥n −k
+k
+r∞−
+√
+n −k
+n
+∆AEP(2
+3pϵs, d) + 1
+n log(p −2
+3pϵs) + 2
+n log(2ϵ) −2
+n log
+K + 4
+4
+
+,
+(169)
+where k is the number of signals used for the energy test and K ∼n. Based on numerical examples,
+it is in principle possible to generate a secret key against the most general class of coherent attacks
+for block sizes of the order of 107–109, depending on loss and noise.
+In particular, this composable
+security analysis confirms that CV-MDI protocols allow for high QKD rates on the metropolitan scale,
+supporting the results of the asymptotic analysis of Pirandola et al. [101]. The viability of utilizing the
+entire raw key for both parameter estimation and key extraction was later demonstrated by Lupo et
+al. [388]. Their work CV-MDI-QKD revealed that parameter estimation in this scheme can be achieved
+with minimal public communication, as correlations are postselected by the central relay. Consequently,
+the public variable announced by the relay encompasses all the information regarding the correlations
+between Alice and Bob, making it sufficient, along with the local data, to estimate the covariance matrix.
+This crucial discovery eliminates the trade-off between the secret key rate and the accuracy of parameter
+estimation in the finite-size regime of CV-QKD. Similar results are presented in [389, 390].
+Non-Gaussian postselection, such as virtual photon subtraction from a coherent state source, improves
+CV-QKD protocols by enhancing secret key rates and tolerating excess noise over longer distances [391,
+392]. Zhao et al. [393] and Ma et al. [394] demonstrated its application in coherent-state CV-MDI-
+QKD, optimizing performance through Alice’s photon subtraction with carefully chosen parameters while
+maintaining protocol security. Kumar et al. [395] showed that photon subtraction on two-mode squeezed
+coherent states extends transmission distances up to 68 km but reduces key rates compared to vacuum
+states.
+Practical applications, such as photon subtraction over fiber-to-water channels [396], further
+validate this approach. Recently, Papanastasiou et al. [397] and Ghalaii et al. [398] analyzed composable
+finite key generation, demonstrating secure CV-MDI QKD over free-space optical links under realistic
+conditions.
+64

@@ -1,0 +1,234 @@
+Physics-informed KAN PointNet
+temperature (𝑟temperatureobs
+𝑖
+) are respectively defined as follows:
+𝑟continuity
+𝑖
+=
+1
+𝑀1
+𝑀1
+∑
+𝑘=1
+( 𝛿̃𝑢𝑘
+𝛿𝑥𝑘
++ 𝛿̃𝑣𝑘
+𝛿𝑦𝑘
+)2
+,
+(21)
+𝑟momentum𝑥
+𝑖
+=
+1
+𝑀1
+𝑀1
+∑
+𝑘=1
+(
+𝜌
+(
+̃𝑢𝑘
+𝛿̃𝑢𝑘
+𝛿𝑥𝑘
++ ̃𝑣𝑘
+𝛿̃𝑢𝑘
+𝛿𝑦𝑘
+)
++ 𝛿̃𝑝𝑘
+𝛿𝑥𝑘
+−𝜇
+(
+𝛿
+𝛿𝑥𝑘
+( 𝛿̃𝑢𝑘
+𝛿𝑥𝑘
+)
++
+𝛿
+𝛿𝑦𝑘
+(𝛿̃𝑢𝑘
+𝛿𝑦𝑘
+))
+−𝑓𝑥
+𝑘
+)2
+,
+(22)
+𝑟
+momentum𝑦
+𝑖
+=
+1
+𝑀1
+𝑀1
+∑
+𝑘=1
+(
+𝜌
+(
+̃𝑢𝑘
+𝛿̃𝑣𝑘
+𝛿𝑥𝑘
++ ̃𝑣𝑘
+𝛿̃𝑣𝑘
+𝛿𝑦𝑘
+)
++ 𝛿̃𝑝𝑘
+𝛿𝑦𝑘
+−𝜇
+(
+𝛿
+𝛿𝑥𝑘
+(𝛿̃𝑣𝑘
+𝛿𝑥𝑘
+)
++
+𝛿
+𝛿𝑦𝑘
+(𝛿̃𝑣𝑘
+𝛿𝑦𝑘
+))
+−𝑓𝑦
+𝑘
+)2
+,
+(23)
+𝑟energy
+𝑖
+=
+1
+𝑀1
+𝑀1
+∑
+𝑘=1
+(
+𝜌
+(
+̃𝑢𝑘
+𝛿̃𝑇𝑘
+𝛿𝑥𝑘
++ ̃𝑣𝑘
+𝛿̃𝑇𝑘
+𝛿𝑦𝑘
+)
+−𝜅
+𝑐𝑝
+(
+𝛿
+𝛿𝑥𝑘
+(
+𝛿̃𝑇𝑘
+𝛿𝑥𝑘
+)
++
+𝛿
+𝛿𝑦𝑘
+(
+𝛿̃𝑇𝑘
+𝛿𝑦𝑘
+)))2
+,
+(24)
+𝑟velocityBC
+𝑖
+=
+1
+𝑀2
+𝑀2
+∑
+𝑘=1
+((̃𝑢𝑘−𝑢𝑘
+)2 + ( ̃𝑣𝑘−𝑣𝑘
+)2)
+,
+(25)
+𝑟temperatureouter-BC
+𝑖
+=
+1
+𝑀3
+𝑀3
+∑
+𝑘=1
+(
+̃𝑇𝑘−𝑇𝑘
+)2
+,
+(26)
+𝑟velocityobs
+𝑖
+=
+1
+𝑀4
+𝑀4
+∑
+𝑘=1
+((̃𝑢𝑘−𝑢𝑘
+)2 + ( ̃𝑣𝑘−𝑣𝑘
+)2)
+,
+(27)
+𝑟pressureobs
+𝑖
+=
+1
+𝑀5
+𝑀5
+∑
+𝑘=1
+( ̃𝑝𝑘−𝑝𝑘
+)2 ,
+(28)
+𝑟temperatureobs
+𝑖
+=
+1
+𝑀5
+𝑀5
+∑
+𝑘=1
+(
+̃𝑇𝑘−𝑇𝑘
+)2
+,
+(29)
+where 𝑀1 is the number of interior points of 𝑖. 𝑀2 denotes the number of points located on the inner and outer
+boundaries of 𝑖, while 𝑀3 exclusively indicates the number of points placed on the outer boundaries of 𝑖. 𝑀4 is the
+number of sensors located in the computational domain to measure the velocity values, sparsely. 𝑀5 is similarly defined
+for the temperature and pressure. Obviously, 𝑀1 + 𝑀2 = 𝑁. In this study, we use a fixed value for 𝑀1, 𝑀2, 𝑀3, 𝑀4,
+and 𝑀5 and over all 𝑖. Note that while 𝑀1, 𝑀2, 𝑀3, 𝑀4, and 𝑀5 could conceptually vary from one point cloud to
+another, 𝑁has to be fixed over all 𝑖. The solutions obtained by PI-KAN-PointNet are shown by (̃𝑢, ̃𝑣, ̃𝑝, ̃𝑇), whereas
+the ground truth obtained by a numerical solver, lab experiment, or analytical solutions are indicated by (𝑢, 𝑣, 𝑝, 𝑇).
+The PI-KAN-PointNet loss function is specified as a combination of the residuals introduced above summed over all
+𝑉𝑖(1 ≤𝑖≤𝑚). We indicate the automatic differentiation operator by 𝛿computed using the PyTorch software [111].
+In line with the definition of the inverse problem in Sect. 2, the corresponding loss function () is expressed as:
+= 1
+𝑚
+𝑚
+∑
+𝑖=1
+(𝑟continuity
+𝑖
++ 𝑟momentum𝑥
+𝑖
++ 𝑟
+momentum𝑦
+𝑖
++ 𝑟velocityBC
+𝑖
++ 𝑟velocityobs
+𝑖
++ 𝑟pressureobs
+𝑖
++ 𝑟energy
+𝑖
++𝑟temperatureouter-BC
+𝑖
++ 𝑟temperatureobs
+𝑖
+).
+(30)
+Note that no boundary condition is specified for the pressure in the loss function (Eq. 30).
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 7 of 25

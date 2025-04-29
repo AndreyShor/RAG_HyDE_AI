@@ -1,0 +1,117 @@
+10
+Spallation Neutron Source.
+Spectra were measured at
+sample temperatures T=1.7 K, T=40 K, and T=150 K
+with incident neutron energy Ei=3.32 meV over 360◦
+scans in the HK0 scattering plane.
+The chopper fre-
+quency used was 180Hz.
+Two separate background measurements were per-
+formed; one with just an empty can of Helium and an-
+other on dummy aluminimum sample plates coated with
+the same mass CYTOP as that of the true sample holder.
+These two background datasets were subtracted from the
+crystal data using an empirically derived self-shielding
+factor. This factor governs only the relative subtraction
+of the CYTOP signature to the helium and was deter-
+mined empirically via a method outlined in the Supple-
+mentary Information.
+Following this step, we used a background subtraction
+technique introduced by Helton et al. [9]. This approach
+utilizes the oddness of χ′′(ω) with respect to ω and the
+fact that S(q, ω) = [1 + n(ω)] χ′′(q, ω), where n(ω) is
+the Bose occupation factor. Since the time of flight based
+CNCS spectrometer measures scattering events that both
+transfer energy to and from the crystals (positive and
+negative energy scattering events respectively), we can
+exploit this oddness to clean the data of all temperature-
+independent background features. With such data taken
+at two temperatures TL and TH the method can be de-
+scribed by the equation set
+S(q, +ω, TL) =S(q, +ω, TL) −S(q, +ω, TH)
+−1 + n(ω)
+1 + n(−ω)[S(q, −ω, TL) −S(q, −ω, TH)],
+S(q, +ω, TH) =S(q, −ω, TL) −S(q, −ω, TH).
+(3)
+As is detailed in the Supplementary Information, the
+largest parasitic background in our measured inelastic
+data arises from elastic brag peaks "bleeding" into the
+inelastic data due to the finite energy width of the beam;
+this effect is especially prominent at low energy transfers.
+However, as the elastic Bragg Peaks are nearly temper-
+ature independent in strength, this method yields mag-
+netic scattering dominated S(q, ω) data sets at two tem-
+peratures. Finally, the data underwent D6 symmetriza-
+tion, yielding sets on which all analyses were performed.
+Figure 7 in the Supplementary information shows these
+processing steps for the T=1.7 K dataset.
+Additional data at higher energy transfers were taken
+with an incident neutron energy of Ei =12 meV (see Fig-
+ure 11 in Extended Data). The aforementioned empty
+can and CYTOP backgrounds were measured and ac-
+counted for. However, the Ei =12 meV data were only
+measured at T = 1.7 K, thus the background subtraction
+technique of Helton et al. [9], as discussed above, was not
+performed.
+C.
+Empirical Structure Factor Modeling
+Fitting the scattering data to the equal-time structure
+factor of Equation 1 involved treating energy-integrated
+contours as images and performing weighted linear re-
+gressions of q-dependent regressors.
+This process first
+involved finding the squared magnetic form factor |F(q)|2
+and calculating fi(q) for the crystal in the HK0-plane for
+each bond. To match the pixel resolution of the scatter-
+ing data, we transformed these functions into images of
+the same dimensions. To enhance the accuracy of this
+model, we added 5◦FWHM azimuthal Gaussian “blur-
+ring” to these images – centered at q=0 – to account for
+the ∼5◦crystal coalignment error measured in the elastic
+scattering.
+From here, we employed weighted least squares (WLS)
+linear regressions, with the weight of each pixel inversely
+proportional to its squared measurement error.
+These
+regressions, with heteroscedasticity-consistent standard
+errors and assuming independence of α with ρi but not
+between ρi terms, yielded the parameter estimates shown
+in Figure 4. Further details on the mechanics of this WLS
+approach appear in the Supplementary Information.
+D.
+DMRG Calculations
+We
+employ
+density-matrix
+renormalization
+group
+(DMRG) [49] to study the ground state properties
+of the kagome lattice J1-J2 Heisenberg model with
+Dzyaloshinskii-Moriya (DM) interaction which is defined
+by Equation 2 in the main text. Here, ⃗Si is the spin-1/2
+operator on site i and the first term denotes spin cou-
+plings between first-nearest (J1) and second-nearest (J2)
+neighboring sites, respectively. The DM interaction orig-
+inates from relativistic spin-orbit coupling and is nonzero
+when lattice inversion symmetry is absent. In this study,
+we focus on the z-axis component of the DM interaction
+Dij = Dzˆz using the convention defined in Lee et al. [37].
+In the present study, we take the lattice geometry to be
+cylindrical with periodic and open boundary conditions
+in the e1 and e2 directions, respectively. Here, e1 = (1, 0)
+and e2 = (1/2,
+√
+3/2) (in term of unit cells) denote the
+two basis vectors of the kagome lattice.
+We focus on
+cylinders with width W and length L, where L and W
+are the number of unit cells (and 2L and 2W are the
+number of sites) along the e1 and e2 directions, respec-
+tively. Following Yan et al. [17], we refer the cylinders to
+as YC −2W, with total number of sites N = 3 × L × W.
+For a natural connection to two dimensions, we con-
+sider “square-like" cylinders YC-8 and YC-12 with width
+W = 4 −6 and length L = 2W. We perform up to 50
+sweeps and keep up to m = 8000 states with typical trun-
+cation errors ϵ ≈7 × 10−7 for YC-8 and ϵ ≈5 × 10−6 for
+YC-12 cylinders.

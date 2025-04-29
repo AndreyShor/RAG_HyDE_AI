@@ -1,0 +1,42 @@
+42
+Tools and methodology
+It can be shown that the transformation can be applied a posteriori to an already computed
+interpolation grid.
+Target mass corrections.
+While the DIS factorization is usually derived for the scattering
+of two massless particles, it is possible to account for the finite mass of the scattering target
+through target mass corrections [140, 141, 12]. These corrections become relevant for either
+small virtualities or large Bjorken-x. They can be implemented as an additional convolution,
+and we provide several approximations (corresponding to higher twist expansions) following
+Ref. [140].
+Flavor Number scheme.
+Flavor number schemes provide a prescription to resolve the ambigu-
+ous treatment of heavy quark masses (see also Section 1.4.2). Generally, to achieve a faithful
+description of experimental data at scales roughly around the heavy quarks mass Q ∼mh,
+quarks should be treated fully massive. However, in the region where Q ≫mh, quarks should
+be considered massless. In Yadism we allow for 3 different schemes. Only one single heavy
+quark is allowed at each time.
+• Fixed flavor number scheme (FFNSnf). The FFNSnf, is defined as a configuration
+with a fixed number of flavors at all scales, i.e. all quark masses are fixed to be either light
+(up to nf), heavy (nf + 1) or decoupled (above nf + 1).
+• Zero mass-variable flavor number scheme (ZM-VFNS). In the ZM-VFNS all quark
+masses in the calculations are either light or decoupled. The number of light quarks
+nf is not fixed, but instead varies with the number of active flavors depending on the scale
+of the process, i.e. nf(Q2). Specifically, nf = 3 below mc and this increases as the heavy
+quark thresholds are crossed, i.e. Q > mh, after which the corresponding heavy quark is
+treated to be light.
+• Asymptotic fixed flavor number scheme (FFNSn(0)
+f ). The FFNSnf(0) is similar to
+the FFNSnf, but retains only the logarithmic corrections, i.e. it does not contain any power-
+like heavy quark corrections m2/Q2. The FFNSnf(0) is constructed as the overlap between
+FFNSnf and ZM-VFNS and can be used to construct a VFNS flavor number schemes.
+Yadism does not provide explicitly the FONLL scheme, but all the necessary ingredients FFNSnf,
+FFNSn(0)
+f , and ZM-VFNS are available.
+We now provide representative comparisons on the different prescriptions used to treat heavy
+quark masses in order to underline their relevance in the different kinematic regions. In all
+the subsequent comparisons, we adopt a fixed boundary condition defined as a PDF set at a
+given scale µF = µ0. Evolution of the boundary condition, including changing of the number
+of active flavors, is performed using EKO. First, in Fig. 2.5, we compare the ZM-VFNS and
+FFNS3 coefficient functions as a function of Q2. We expect both calculations to differ more
+in the low-Q2 region and progressively reach better agreement towards the large-Q2 region.

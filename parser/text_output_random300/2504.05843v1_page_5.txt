@@ -1,0 +1,99 @@
+Then the number of solutions to the simultaneous conditions ˆωs = 0 = ˆωt indicates the number of master
+integrals [17]. In our example there are seven.
+The decomposition will require two steps: we first single out one of the integrations to start with, say, in
+the variable s. Regarding any form ϕL as some coefficient only depending on t and a one-form in s, we should
+be able to express it in terms of a basis of master one-forms w.r.t. s. Here the relevant number of masters is
+given by the number of zeroes of the first condition in (18) only. In our application there will be three masters
+{e1, e2, e3} which are one-forms in s. We will choose
+
+ds
+(1 −t)(1 −s), ds
+p5
+, ds
+p6
+
+.
+(19)
+Note that the second and third masters have simple poles only in both parameters s, t. In view of the second
+integration step in the variable t we have introduced the denominator factor 1 −t into the first factor. Such
+dLog masters are desirable to limit the computational effort, see below.
+If anything works, it must be so that
+ϕL =
+3
+X
+i = 1
+(ϕ′
+L(t)i dt) ∧ei ,
+ϕR =
+3
+X
+j = 1
+hj ∧(ϕ′
+R(t)j dt)
+(20)
+where hi are three right masters. It is not necessary to have equal left and right forms but it will be most
+convenient to identify the two bases.
+The pairing (in our case a 3 × 3 matrix)
+Cs = ⟨ei|hj⟩
+(21)
+of intersection numbers is defined as follows: we determine the total set of poles {s1 . . . sk} in s (these may
+depend on outer variables as well as t) coming from the collection of denominators. For each pole we replace
+s →sm +x with a new variable x in which we Taylor expand. The covariant derivative wrt. to s is defined by
+the partial derivative acting under the integral, where the effect of the differentiation on w creates a connection
+term:
+∇s = ∂v + ˆωs
+(22)
+We next define a potential for every ei in a neighbourhood of a pole sm: let us write ei = ˆei ds, so as in
+the beginning of the section hatting expresses the omission of the differential. Assuming the expansion of
+ˆei|s = sm+x to start at a minimal power minm −1 and that we can truncate at some maximum maxm we define
+the potential as
+ψi,m =
+maxm
+X
+n = minm
+c(n)
+i
+xn
+(23)
+and solve
+(∂s + ˆωs|s = sm+x) ψi,m = ˆei|s = sm+x
+(24)
+comparing the coefficients of the Taylor expansion of the two sides from minm −1 to maxm −1. Finally, the
+intersection number is:
+Cs =
+k
+X
+m = 1
+res|s = sm ψi,m ˆhj|s = sm+x
+(25)
+It follows that maxm + 1 is the negative of the minimal order of ˆhj in the region m. It is advisable to choose
+the masters such that the range of powers in the potentials is minimised. In practice this implies to prefer
+masters with simple poles only. We emphasise that the pole at infinity has to be taken account by the rule
+s →1/x because the problem is projective in nature. These arguments point at dLog masters as the preferred
+choice.
+For a basis of masters, Cs will be invertible. In our example, the inverse C−1
+s
+is nicer than Cs itself:
+C−1
+s
+= −
+1
+γ + δ Ds
+
+
+γδ
+δρ
+δρ
+δρ
+−(δ + γ + ρ)ρ
+−ρ2
+δρ
+−ρ2
+−(δ + γ + ρ)ρ
+
+Ds
+(26)
+with the diagonal matrix
+Ds = diag{1 −t, t z¯z, 1 −t(z + ¯z −z¯z)} .
+(27)
+5

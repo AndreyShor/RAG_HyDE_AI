@@ -1,0 +1,55 @@
+ 
+5 
+require much shorter time to solve QUBO problems with the development of the quantum 
+hardware with more qubits and better qubit connectivity.  
+ 
+ 
+Discussion 
+This work comprehensively compares state-of-the-art QA hardware and software against several 
+classical optimization solvers for large and dense QUBO problems (up to 10,000 variables, fully 
+connected interactions). The classical solvers struggled to solve large-scale problems, but their 
+performance can be improved when combined with the QUBO decomposition method (i.e., 
+QBSolv). Nevertheless, they become inaccurate and inefficient with increasing problem size, 
+indicating that classical methods can face challenges for complex real-world problems represented 
+by large and dense QUBO matrices. On the contrary, HQA performs significantly better than its 
+classical counterparts, exhibiting the highest accuracy (~0.013% improvement) and shortest time 
+to obtain solutions (~6,561× acceleration) for 10,000 dimensional QUBO problems, demonstrating 
+‘Quantum Advantage’ for large and dense QUBO problems. Pure QA and QA with the QUBO 
+decomposition method still exhibit limitations in solving large problems due to the current QA 
+hardware limitations (e.g., number of qubits and qubit connectivity). However, we anticipate that 
+QA will eventually reach the efficiency of HQA with the ongoing development of the quantum 
+hardware. Thus, we expect QA to demonstrate true ‘Quantum Advantage’ in the future. 
+ 
+ 
+Methods  
+Definition of a QUBO  
+QA hardware is designed to efficiently solve combinatorial optimization problems that are 
+formulated with a QUBO matrix, which can be given by28,29: 
+ 
+ 
+𝑦= $ $ 𝑄!,#𝑥!𝑥#
+$
+#%!
+$
+!%&
+  
+(1) 
+ 
+where 𝑄!,# is the i-th row and j-th column real-number element of the QUBO matrix (𝐐), which is 
+an 𝑛× 𝑛 Hermitian, i.e., 𝐐∈ℝ'×', and 𝑥! is the i-th element of a binary vector 𝒙 with a length of 
+𝑛, i.e., 𝒙∈0, 1$. Q!,# is often referred to as a linear coefficient for i = j and a quadratic interaction 
+coefficient for i ≠ j.  The objective of QA is to identify the optimal binary vector of a given QUBO, 
+which minimizes the scalar output y as29: 
+ 
+ 
+𝒙∗= argmin
+*
+ y 
+(2) 
+ 
+In optimization problems, the linear coefficients correspond to cost or benefit terms associated 
+with individual variables, while the quadratic coefficients represent interaction terms or 
+dependencies between pairs of variables. These coefficients can be learned using machine learning 
+models, such as the factorization machine (FM), trained on datasets containing input structures 
+and their corresponding performance metrics. By mapping these learned coefficients into a QUBO 
+formulation, we effectively represent an energy function of a material system or other real-world 

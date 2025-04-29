@@ -1,0 +1,54 @@
+Springer Nature 2021 LATEX template
+Human Activity Recognition using RGB-Event based Sensors
+9
+different substances. The vHeat [32] model transfers the heat conduction effect
+to visual tasks. In a two-dimensional image area, using point (x, y) as the heat
+source and the thermal diffusivity is k (where k > 0), at time t, its temperature
+can be expressed as u(x, y, t). The general solution of the heat conduction
+equation can be expressed as,
+u(x, y, t) = F−1( ef(ωx, ωy)e−k(ω2
+x+ω2
+y)t),
+(1)
+where F−1 denote the inverse Fourier Transform, ef(ωx, ωy) is the represen-
+tation of the initial conditions in the frequency domain, and (ωx, ωy) denote
+the corresponding spatial frequency variables. e−k(ω2
+x+ω2
+y)t is a decay factor
+that decreases with increasing time t, reflecting the diffusion of thermal energy
+over time. Furthermore, in the case of 2D visual images, the formula 1 can be
+written as,
+U t = F−1(F(U 0)e−k(ω2
+x+ω2
+y)t),
+(2)
+where U 0 and U t denote the input features of given image patches and the
+output features. Since image patches exist in discrete form and are rectangles
+constrained by boundary conditions, two-dimensional discrete cosine transform
+(DCT) and two-dimensional inverse discrete cosine transform (IDCT) can be
+used instead of the Fourier transform and inverse discrete Fourier transform.
+Finally, the solution of the heat conduction equation in visual 2D images can
+be expressed as,
+U t = IDCT2D(DCT2D(U 0)e−k(ω2
+x+ω2
+y)t).
+(3)
+The above preliminaries provide a brief overview of heat conduction from
+a physical to a visual perspective. For a more detailed explanation of the
+background of the dynamic heat conduction, please refer to Non-equilibrium
+thermodynamics [62] and vHeat [32].
+3.2 Overview
+As shown in Fig. 2, we propose a novel heat conduction-based multi-
+modal learning framework for efficient and effective RGB-Event based human
+activity recognition. Concretely, we first adopt a stem network to transform
+the input RGB frames and event streams into corresponding feature embed-
+dings. Then, the multi-modal HCO blocks are proposed to achieve RGB and
+event feature learning and interaction simultaneously. The core operation
+is the DCT-IDCT transformation network equipped with modality-specific
+continuous Frequency Value Embeddings (FVEs). After that, we explore a
+multi-modal fusion method with a policy routing mechanism to facilitate adap-
+tive feature fusion. Finally, a classification head is employed to obtain the
+recognition results. Compared with existing mainstream multi-modal fusion
+algorithm frameworks, such as Transformer, our adoption of the computation-
+ally less complex heat conduction model achieves high accuracy while offering
+better computational efficiency and physical interpretability. Additionally, our

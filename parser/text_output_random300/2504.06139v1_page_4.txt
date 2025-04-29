@@ -1,0 +1,50 @@
+versa:
+X
+b
+P(a, b|x, y) =
+X
+b
+P(a, b|x, y′) = P A(a|x)
+∀a, x, y, y′ and
+X
+a
+P(a, b|x, y) =
+X
+a
+P(a, b|x′, y) = P B(b|y)
+∀b, x, x′, y.
+It is signalling if it is not non-signalling.
+Non-signalling correlations can be of many types. Of the boxes with this
+property, we ﬁnd ones that can be implemented with classical theory, quan-
+tum theory or even super-quantum theory. Since the class of non-signalling
+correlations include quantum and classical ones, we may deﬁne a box as be-
+ing non-local in the same way some quantum correlations are non-local. A
+box is said local if the output on one side depends only on the input on the
+same side. Local correlations can be simulated with only shared randomness
+by non-communicating participants.
+Deﬁnition 3. A box P is local if it can be written as
+P(a, b|x, y) =
+X
+i
+λiP A
+i (a|x)P B
+i (b|y)
+where λi ≥0 and P
+i λi = 1. A box is non-local if it is not local.
+In essence, deﬁnition 3 says that any local box is a convex combination
+of local boxes.
+This is in accordance with the fact that the set of local
+correlations form a polytope[1] with the vertices being deterministic boxes
+(i.e. boxes with output uniquely determined).
+Now that we have deﬁned what is non-locality, it would be useful to be
+able to quantify it. The value deﬁned next is taken from the Clauser-Horne-
+Shimony-Holt inequality (or CHSH inequality)[9] which give an upper bound
+on local correlations. This inequality was designed as an application of Bell’s
+famous theorem[3], but became a measure of non-locality. It was originally
+stated with expectation values of measurements of quantum system. We give
+a more information theoretical description from [14].
+Deﬁnition 4. Let Xxy(P) = P(00|xy) + P(11|xy) −P(01|xy) −P(10|xy).
+The CHSH value of box P is
+CHSH(P) = max
+xy |Xxy(P) + Xx¯y(P) + X¯xy(P) −X¯x¯y(P)|
+4

@@ -1,0 +1,70 @@
+forward pass. It does however induce subtle discontinuities in the PES, which induces a modest
+performance penalty for certain workflows.
+Confidence Head. Inspired by Alphafold’s [10] per-residue 1DDT-C𝛼(pLDDT) scores, we add
+a confidence head to Orb-v3 which produces an intrinsic binned confidence measure. See main
+text for full explanation.
+Workflow considerations
+Several common computational chemistry workflows implicitly assume either strict conservatism
+or roto-equivariance. For instance, line-search-based optimization algorithms assume strict
+energy-force consistency and Phonopy’s is_plusminus=‘auto’ displacement generator assumes
+strict roto-equivariance. It is important for users to be aware of these assumptions, and consider
+alternative approaches in order to obtain the best performance when using non-invariant,
+non-conservative models.
+In the case of Phonopy’s displacement generator, its default behavior is to exploit rota-
+tional/translational symmetry of crystal space groups in its finite difference approximations,
+which is mathematically invalid when using a non-invariant potential.
+Fortunately, these limitations can often be sidestepped via a more rigorous choice of settings
+(is_plusminus=True in Phonopy) or alternative algorithms (non-line-search based optimizers
+such as FIRE). When no workaround is possible, as may be the case for strict energy conservation
+in NVE molecular dynamics, then we recommend using more architecturally constrained
+models, like orb-v3-conservative-inf.
+Appendix D:
+Efficient graph construction
+100
+1K
+5K
+10K
+50K
+100K
+Number of atoms
+10
+1
+10
+2
+10
+3
+Time (ms)
+20 neighbors
+100
+1K
+5K
+10K
+50K
+100K
+Number of atoms
+inf neighbors
+0
+25
+50
+75
+100
+125
+0
+25
+50
+75
+100
+125
+GPU memory (GB)
+knn_scipy
+knn_brute_force
+knn_brute_force (GPU memory)
+knn_cuml_rbc
+knn_cuml_rbc (GPU memory)
+Figure 6: Timing (left axis) and GPU memory use (right axis) for a variety of KNN graph
+creation for varying periodic system sizes and number of neighbors. Of particular note is the
+cuml library, which includes memory efficient graph construction methods for nearest neighbors
+computatation on GPU.
+Figure 6 shows a variety of graph construction methods:
+• scipy.spatial.KDTree - A CPU only implementation of a kd-tree. [4]
+15

@@ -1,0 +1,148 @@
+3
+We will use the following notation. The index j labels
+the energy intervals, defined by Emin(j) ≤E ≤Emax(j).
+The total number of microstates sampled for the jth in-
+terval is indicated by Nj = P
+E nj(E), where nj(E) is
+the number of microstates with energy E sampled for
+interval j.
+The above quantities can be related to the density of
+states via:
+⟨nj(E)⟩
+Nj
+=
+( W (E)
+Zj ,
+if Emin(j) ≤E ≤Emax(j).
+0,
+otherwise.
+(5)
+where the ⟨⟩brackets denote the average over various
+realizations (sampling runs) and:
+Zj =
+X
+Emin(j)≤E≤Emax(j)
+W(E)
+(6)
+Thus, by inverting the relationship of eq. 5 one has
+that the ratio nj(E)/Nj provides an estimator of W(E)
+up to a multiplicative constant.
+Note that an independent estimator for W(E) can be
+obtained for each of the intervals covering the same en-
+ergy level, E. These independent estimates can be com-
+bined into an optimal weighted average:
+W(E) =
+′
+X
+j
+αj(E)nj(E)
+Nj
+Zj ,
+(7)
+where the prime indicates that the sum is restricted to
+intervals that include E. For our purposes, the optimal
+αs are those minimizing the error on the weighted sum.
+The variational calculation yields:
+αj ∝
+1
+δnj(E)2 · N 2
+j
+Z2
+j
+,
+(8)
+and the proportionality coefficient is fixed by the con-
+straint P′
+j αj = 1.
+Assuming that the microstates in each interval are
+sampled uniformly and using binomial statistics argu-
+ments, the variance of nj(E) can be written as:
+δnj(E)2 = gj⟨nj(E)⟩
+
+1 −⟨nj(E)⟩
+Nj
+
+(9)
+where the factor gj = 1 + 2τj accounts for the pos-
+sible finite autocorrelation time, τj, of the microstate
+sampling process [52]. When samples are uncorrelated,
+e.g. when obtained from independent quantum annealing
+runs, then gj = 1.
+Combining expressions of eqs. 5, 8 and 9 yields:
+W(E) =
+P′
+j
+nj(E)
+gj
+
+1−W (E)
+Zj
+
+P′
+k
+Nk
+Zkgk
+
+1−W (E)
+Zk
+ .
+(10)
+Note that the density of states can be reconstructed only
+up to a multiplicative constant, which can be set by im-
+posing the normalization condition:
+X
+E
+W(E) = 1 .
+(11)
+The sought Ws in the desired energy range are ob-
+tained by treating eq. 10 as a set of self-consistent equa-
+tions to be solved iteratively. The procedure, its algorith-
+mic formulation and convergence are presented in Sup-
+porting Information Section S1.
+From the reconstructed W(E) profile, the canonical
+expectation value of a generic observable, O, at temper-
+ature T can be obtained via thermodynamic reweighting
+[51, 53]:
+⟨O⟩T =
+P
+E⟨O⟩E W(E)e−βE
+P
+E W(E)e−βE
+(12)
+where β = (kB T)−1 and ⟨O⟩E and ⟨O⟩T are the averages
+of O at fixed energy E and temperature T, respectively.
+Again, the mentioned summand-sorting procedure may
+be necessary for numerical precision.
+We note that, though the optimally weighted averaging
+of eq. 8 is inspired by conventional histogram reweight-
+ing methods [49–51], the two reconstruction approaches
+are fundamentally different. In the conventional case, re-
+covering the density of states requires undoing the Boltz-
+mann weight of overlapping histograms, collected at dif-
+ferent temperatures, covering the energy range of in-
+terest. The position and width of the histograms can-
+not be enforced a priori because they are system- and
+temperature-dependent and hence need to be chosen
+through tentative or pre-conditioning runs. Instead, in
+our scheme, the sampling can be expressly directed at
+user-defined energy intervals of desired width position,
+thus facilitating the coverage of the energy range of in-
+terest.
+C.
+Error analysis
+To estimate the errors of the reconstructed W(E), we
+resort to a block-like analysis that makes it straightfor-
+ward to account for the correlations between the njs, Zs,
+and Ws. For simplicity, we assume that all addressed
+energy intervals are covered with the same ”sampling
+depth,” Nj = N, and that the sampled states are un-
+correlated (τj = 0).
+For each interval, we subdivide
+the samples into s blocks of equal size, N/s. Next, we
+carry out s reconstructions of the density of states, using
+for each interval the first block, then the second, and so
+on, obtaining a total of s independent (normalized) pro-
+files, W1(E), W2(E), . . . , Ws(E). The final W profile and
+its statistical uncertainty are obtained by computing the
+mean of the Wi=1,...,s and the associated statistical error
+for each value of E.

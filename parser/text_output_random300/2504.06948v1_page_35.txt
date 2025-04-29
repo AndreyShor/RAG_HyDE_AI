@@ -1,0 +1,91 @@
+35
+• If we assume A is Hermitian and negative semi-definite, we can apply Lemma III.4 and Lemma A.7 to
+obtain a quite tight bound on the terms within the max{·} operator. We have
+W −1
+2 ≤
+p
+(k + 1)(4 log(k + 1) + 1),
+ e
+ET W −1
+2 ≤
+√
+5k + 1.
+Since ∥eV ∥2 ≤1, we can further bound
+ eV e
+ET W −1
+2 ≤
+ eV
+
+2
+ e
+ET W −1
+2 ≤
+ e
+ET W −1
+2 .
+For k ≥3, we obtain
+max
+n
+∥W −1∥2,
+ eV e
+ET W −1
+2 ,
+ e
+ET W −1
+2 ,
+√
+k + 1
+o
+≤3
+p
+k log k.
+Moreover, in the case where A is Hermitian and negative semi-definite, we have C(A) = 1, leading to
+L−1
+2 ≤6(m + p)
+p
+k log k.
+Finally, the condition number satisfies
+κ ≤3(m + p)
+p
+k log k (6 + ∥Ah∥2) .
+• If A is an arbitrary matrix, but we choose m = ⌈∥AT∥2⌉such that ∥Ah∥2 ≤1, we can apply
+Lemma III.5 and Lemma A.8 to obtain the following bounds
+W −1
+2 ≤2√e
+3 −e
+p
+(k + 1)(4 log(k + 1) + 1)
+ e
+ET W −1
+2 ≤
+√e +
+2e
+3 −e
+ √
+2k + 1.
+Since ∥eV ∥2 can also be bounded by a constant, we conclude
+L−1
+2 = O
+
+C(A)(m + p)
+p
+k log k
+
+.
+Finally, the condition number satisfies
+κ = O
+
+C(A)(m + p)
+p
+k log k
+
+.
+Appendix B: Definition and Lemmas for block-encoding
+Definition B.1 (block-encoding). Given an n-qubit matrix A ∈CN×N with N = 2n, if we can find α, ϵ ∈R+,
+and an (m + n)-qubit unitary matrix UA such that
+∥A −α (⟨0m| ⊗IN) UA (|0m⟩⊗IN)∥2 ≤ϵ,
+then UA is called an (α, m, ϵ)-block-encoding of A. In particular, if the block-encoding is exact, i.e., ϵ = 0,
+then UA is referred to as an (α, m)-block-encoding of A.
+Lemma B.2. Suppose A ∈CN1×N1 , and B ∈CN2×N2, where UA is an (α1, m1)-block-encoding of A and UB
+is an (α2, m2)-block-encoding of B. Then, the tensor product UA ⊗UB is an (α1α2, m1 + m2)-block-encoding
+of A ⊗B.

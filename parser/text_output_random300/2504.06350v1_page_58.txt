@@ -1,0 +1,91 @@
+Case study: Ideal qubit protocol. As an example [97], consider the case where Alice prepares states from
+a set of n single-qubit states {|ψx⟩}n−1
+x=0, where
+|ψx⟩= cos
+θ
+2
+
+|0⟩+ ei πx
+n sin
+θ
+2
+
+|1⟩,
+for a given θ. In the presence of loss and noise, the Gram matrix and the probability distribution for this
+set of states are given by:
+Gij = cos2
+θ
+2
+
++ ei 2π(i−j)
+n
+sin2
+θ
+2
+
+,
+and
+p(b = 0|x, y) = ζ
+λ
+2 + (1 −λ) sin2(θ) sin2
+π(x −y)
+n
+
+,
+where λ ∈[0, 1] is the noise parameter, modeled as a depolarizing channel, and ζ ∈(0, 1] represents the
+loss, modeled by a binary erasure channel with erasure probability 1 −ζ.
+By optimizing over θ, for different QBERs (Q) and values of n, the raw key rate as a function of the
+transmission ζ can be derived. In their calculations, Ioannou et al. [97] demonstrated that the lower
+bound of the key rate asymptotically approaches zero as ζ →1
+n. This is considered optimal because at
+ζ →1
+n, Eve can compromise security by intercepting the states sent by Alice and manipulating Bob’s
+detector based on her outcome and Bob’s input. Therefore, for any prepare-and-measure protocol, the key
+rate becomes zero for ζ ≤1
+n. Furthermore, the proposed protocol surpasses the B92 protocol (a specific
+case of the proposed protocol with n = 2 and fixed θ = π
+4 ) in terms of both transmission efficiency and
+noise tolerance. Similarly, BB84 is also outperformed by a qubit-based RDI protocol using three states.
+5.2.3. SDI protocols based on other assumptions
+In addition to the previously mentioned protocols, it is possible to introduce other SDI protocols
+based on alternative constraints. A prerequisite for developing any DI or SDI protocol is to examine
+the set of available correlations under the given assumptions. In light of this, Himbeeck et al. [306]
+introduced a general framework for SDI prepare-and-measure scenarios and modified it to account for a
+physical constraint, namely, the mean value of an observable. This results in a restriction on the quantum
+messages ρx, which can be expressed as a constraint on the corresponding mean values Hx = tr(Hρx) of
+the observable.
+More specifically, Himbeeck et al. [306] considered two types of constraints on the mean values of H.
+The first, called the max-average assumption, assumes upper bounds on the mean values:
+Hx = tr(Hρx) =
+X
+λ
+pλtr(Hρλ
+x) ≤ωx,
+∀x.
+(163)
+For example, if H is the photon-number operator, one can trust that, for all states ρx emitted by
+the source, the mean photon numbers Hx are below a certain threshold. If the states emitted by the
+source (Alice) vary from run to run according to some random parameter λ, the max-average assumption
+only bounds the mean value averaged over all possible values of Hx|λ = tr(Hρx|λ). However, it does not
+constrain the maximum values of Hx|λ, which could, in principle, be arbitrarily high. To address this, a
+stronger assumption, known as the max-peak assumption, was introduced:
+max
+λ
+Hx|λ = max
+λ
+tr(Hρλ
+x) ≤ωx,
+∀x.
+(164)
+Again, if H is the photon-number operator, this second condition still allows fluctuations in photon
+numbers within each state. It does not imply truncation of the Fock space, as the constraint only imposes
+a bound on the mean values tr(Hρλ
+x) of H for each ρλ
+x. In particular, the states may still have non-zero
+amplitudes in any number-basis states.
+The max-average assumption has the advantage of being verifiable externally by testing the average
+emitted states without requiring knowledge of the internal workings of the source. On the other hand,
+verifying the max-peak assumption typically depends on modeling the source. Its primary advantage
+is that it is more restrictive and can certify useful properties that would not be certified under the
+max-average assumption.
+58

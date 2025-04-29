@@ -1,0 +1,114 @@
+4
+2.2. ASAS-SN
+All-Sky Automated Survey for Supernovae (ASAS-
+SN; B. J. Shappee et al. (2014); C. Kochanek et al.
+(2017)) is a global network of 24 telescopes that has
+been continuously scanning the extragalactic sky since
+2012. ASAS-SN’s limiting magnitude of V∼16.5 - 17.5
+and g∼17.5 - 18.5 depending on lunation.
+ASAS-SN
+camera’s field of view (FOV) is 4.5 deg2, and the pixel
+scale and FWHM are 8
+′′.0 and ∼2 pixels, respectively.
+For this study, we collected both bands’ observations
+through the ASAS-SN Sky Patrol (V2.03; (B. J. Shappee
+et al. 2014; K. Hart et al. 2023)).
+3. PERIODICITY SEARCH
+We adopted various methodologies in search of a po-
+tential periodic signal in the γ-ray and optical light
+curves of blazar ON 246. Figure 1 illustrates the weekly
+binned γ-ray light curve along with optimal Bayesian
+Block representation (top panel) and an ASAS-SN op-
+tical light curve in the bottom panel.
+The utilized methodologies include the Lomb-Scargle
+periodogram (LSP), Weighted Wavelet Z-Transform
+(WWZ), and a first-order autoregressive model (AR(1))
+in this QPO investigation. A detailed description and
+the observed findings from all the utilized methods are
+given in the following section 3.1, 3.2.
+3.1. Lomb-Scargle Periodogram
+The Lomb-Scargle periodogram (LSP) (N. R. Lomb
+1976; J. D. Scargle 1979) is one of the most widely used
+approaches in the literature to identify any potential pe-
+riodic signal in a time series. In which a sinusoidal func-
+tion fits the time series using the least square method.
+This approach is capable of handling the non-uniform
+sampling in the time series data efficiently by reducing
+the impact of noise and gaps and providing a precise
+measurement of the identified periodicity. In this study,
+we used the GLSP package to compute the Lomb-Scargle
+(LS) power. The expression of LS power is given as J. T.
+VanderPlas (2018):
+PLS(f) = 1
+2
+PN
+i=1 xi cos(2πf(ti −τ))
+2
+PN
+i=1 cos2(2πf(ti −τ))
++
+PN
+i=1 xi sin(2πf(ti −τ))
+2
+PN
+i=1 sin2(2πf(ti −τ))
+
+(1)
+where, τ is specified for each f to ensure time-shift
+invariance:
+3 http://asas-sn.ifa.hawaii.edu/skypatrol/
+τ =
+1
+4πf tan−1
+ PN
+i=1 sin (4πfti)
+PN
+i=1 cos (4πfti)
+!
+(2)
+where, we selected the minimum frequency (fmin) and
+maximum frequency (fmax) in temporal frequency range
+as 1/T and 1/2∆T, respectively, and here T and ∆T
+represent the total observation time frame and the time
+difference between two consecutive points in the light
+curve, respectively.
+The LSP analysis reveals prominent peaks at frequen-
+cies of ∼0.00134 day−1 (746±68 days) in the γ-ray LSP
+(see Figure 2) and ∼0.00132 day−1 (757 ± 106 days) in
+the optical LSP (see Figure 3). Both peaks have a local
+significance level exceeding 99.73%. The uncertainty on
+the observed period is estimated by fitting a Gaussian
+function to the dominant LSP peak, and the obtained
+half-width and half maxima (HWHM) value is used as
+an uncertainty on period. The distribution of LS power
+as a function of frequency is given in Figure 2.
+3.2. Weighted Wavelet Z-Transform
+In contrast to the LSP approach, the Weighted
+Wavelet Z-transform (WWZ) (G. Foster 1996) emerges
+as a powerful, robust, and widely used method in astro-
+nomical studies to identify any potential periodic pat-
+tern in irregularly sampled light curves.
+The WWZ
+method incorporates wavelet analysis, enhancing the
+LSP’s capabilities by providing better localization of pe-
+riodic signals in both temporal and spectral space. In
+studying the evolution of a periodic signal over time,
+this approach emerges as a powerful tool, enabling us to
+identify and characterize the nature of a periodic signal.
+In this study, we adopted the abbreviated Morlet ker-
+nel that has the following functional form (A. Gross-
+mann & J. Morlet 1984):
+f[ω(t −τ)] = exp[iω(t −τ) −cω2(t −τ)2]
+(3)
+and the corresponding WWZ map is given by,
+W[ω, τ : x(t)] = ω1/2
+Z
+x(t)f ∗[ω(t −τ)]dt
+(4)
+where, f ∗is the complex conjugate of the wavelet ker-
+nel f, ω is the frequency, and τ is the time-shift. This
+kernel acts as a windowed DFT, where the size of the
+window is determined by both the parameters ω and a
+constant c. The resulting WWZ map offers a notable
+advantage; it not only identifies dominant periodicities
+but also provides insights into their duration over time.

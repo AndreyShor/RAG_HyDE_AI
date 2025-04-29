@@ -1,0 +1,127 @@
+3
+such that the matrix elements in decay kinematics ex-
+pressed in terms of Q2, t and u don’t have any explicit
+imaginary parts. In decay kinematics we find
+s > 0,
+t > 0,
+u > 0.
+(7)
+There are three distinct matrix elements required for
+the production of a Higgs boson and a parton in the
+collision of two partons. We refer to this configuration as
+scattering region .
+g(−k1) + g(−k2) →H(q) + g(k3),
+g(−k1) + q(−k2) →H(q) + q(k3),
+q(−k1) + ¯q(−k2) →H(q) + g(k3).
+(8)
+We obtain the associated matrix elments by crossing the
+decay matrix elements and permuting of external mo-
+menta.
+Exchanging quarks and anti-quarks leaves the
+interfered matrix elements invariant and all other con-
+figurations can simply be obtained by re-labeling of the
+momenta. In the scattering region, we find that
+s > 0,
+t < 0,
+u < 0.
+(9)
+For convenience, we introduce the variables ˆt = −t and
+ˆu = −u with which we express our scattering matrix
+elements in the scattering region.
+The main results of this Letter are the scattering ma-
+trix elements M(n)
+X
+through three loops, n ∈{0, 1, 2, 3}.
+Through two loops we perform our computation for QCD
+with nf massless quark flavors and general color gauge
+group of SU(Nc). In the case of the three-loop ampli-
+tudes, we limit our computation to the generalized lead-
+ing color limit. In this limit we treat the number of col-
+ors Nc and flavors nf as large and neglect contributions
+suppressed by powers of 1/N 2
+c .
+This generalized lead-
+ing color limit has shown to be a highly effective ap-
+proximation for similar scattering amplitudes [60, 75],
+as can be easily understood from the fact that it para-
+metrically approximates matrix elements up to O(10%)
+corrections. Specifically, this implies that we include the
+coefficients of the terms proportional to any one of the
+factors {N 6
+c , N 5
+c nf, N 4
+c n2
+f, N 3
+c n3
+f} when all three external
+partons are gluons and {N 5
+c , N 4
+c nf, N 3
+c n2
+f, N 2
+c n3
+f} other-
+wise. Our results are expressed in terms of a Laurent
+expansion in the dimensional regulator ϵ including all
+terms required for a N3LO computation of the discussed
+scattering and decay processes. The coefficients of these
+expansions are expressed in terms of ratios of polynomi-
+als and generalized polylogarithms [76] of our kinematic
+variables.
+CALCULATION
+We generate the Feynman diagrams for our scattering
+amplitudes with qgraf [77]. We compute gauge invariant
+scattering amplitudes in conventional dimensional regu-
+larization using tensor decomposition (see for example
+refs. [48, 52, 58, 78, 79]) through two loops and interfer-
+ences of tree and three-loop scattering amplitudes. We
+use our in-house Mathematica and C++ packages to com-
+pute our amplitudes, including contracting the Lorentz
+and color indices. Then, we express all the squared am-
+plitudes as linear combinations of scalar integrals and
+classify them in terms of integral families. We utilize the
+package CalcLoop [80] to fully exploit external symmetry
+among Feynman integrals. Once we identified a minimal
+set of Feynman integrals that can no longer be reduced
+by symmetry relations of the external and loop momenta,
+we employ Integration-By-Part (IBP) identities [81–83]
+by virtue of the Laporta algorithm [83] to reduce our in-
+tegrals to a set of so-called master integrals. This step
+represents one of the most challenging portions of our
+computation due to the high degree of complexity of the
+integrals involved in this problem. Specifically, the inte-
+gral reduction code Blade [84] developed by one of the
+authors incorporates the cutting edge of IBP reduction
+technology enabling us to achieve our results. This in-
+cludes the block-triangular form [85, 86], improved seed-
+ing [84, 87], the spanning-sector reduction algorithm [84],
+and the finite field technique [88] implemented within
+FiniteFlow [89].
+To compute the residual set of master integrals we
+make use of the method of differential equations [90–94]
+and relate them to a basis of so-called canonical master
+integrals [94]. In particular, a large portion of canonical
+three-loop integrals was identified in refs. [51, 95–98] and
+we relate our master integrals to the canonical results in
+the literature. In addition, we identified canonical one-
+loop and two-loop integrals as well as master integrals in
+two additional three-loop families that we could not iden-
+tify in the literature. We checked the existing results for
+canonical differential equations. For the remaining mas-
+ter integrals we find a canonical set of master integrals
+using algorithmic methods [99]. We compute boundary
+conditions for the differential equations using the meth-
+ods of for example refs. [100–102] and confirm existing re-
+sults in the decay region. We solve the canonical master
+integrals in terms of Chen iterated integrals [103] and in-
+sert them into our newly computed scattering amplitudes
+in the decay region. Next, we rewrite the remaining iter-
+ated integrals in terms of multiple polylogarithms [76] us-
+ing methods outlined for example in refs. [104–109]. The
+functions appearing in these scattering amplitudes were
+studied in some detail in ref. [51]. The multiple polylog-
+arithms can readily be evaluated using public software,
+see for example ref. [110, 111]. To obtain results for am-
+plitudes in the scattering region we cross the external
+particles accordingly and analytically continue our func-
+tions.

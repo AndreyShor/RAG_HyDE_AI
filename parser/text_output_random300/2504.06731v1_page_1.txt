@@ -1,0 +1,47 @@
+FJ-MM: The Friedkin-Johnsen Opinion Dynamics Model
+with Memory and Higher-Order Neighbors
+Roberta Raineria,b, Lorenzo Zinoa and Anton Proskurnikova ∗
+April 10, 2025
+Abstract
+The Friedkin-Johnsen (FJ) model has been extensively explored and validated, spanning applications in
+social science, systems and control, game theory, and algorithmic research.
+In this paper, we introduce an
+advanced generalization of the FJ model, termed FJ-MM which incorporates both memory effects and multi-
+hop (higher-order neighbor) influence.
+This formulation allows agents to naturally incorporate both current
+and previous opinions at each iteration stage. Our numerical results demonstrate that incorporating memory
+and multi-hop influence significantly reshapes the opinion landscape; for example, the final opinion profile can
+exhibit reduced polarization. We analyze the stability and equilibrium properties of the FJ-MM model, showing
+that these properties can be reduced to those of a comparison model–namely, the standard FJ model with a
+modified influence matrix. This reduction enables us to leverage established stability results from FJ dynamics.
+Additionally, we examine the convergence rate of the FJ-MM model and demonstrate that, as can be expected,
+the time lags introduced by memory and higher-order neighbor influences result in slower convergence.
+1
+Introduction
+Agent-based opinion dynamics modeling is a rapidly advancing field that attracts researchers from social sciences,
+economics, physics, engineering, and beyond; see [1–5] for comprehensive reviews of its history and recent devel-
+opments. The most studied models in engineering and mathematical literature rely on iterative opinion averaging
+as the key driving force of opinion formation, a mechanism originating from pioneering work on social power [6]
+and studies on rational consensus [7,8]. Recent experiments confirm a tendency toward opinion averaging in small
+groups [9], medium-size groups [10], and large-scale online communities [11]. The central element of an averaging-
+based model is a weighted digraph of social influence, which can be static or co-evolve with opinions. This digraph
+depicts social ties among individuals and quantifies the weights each agent assigns to those they are connected with.
+Individuals (nodes in the graph) update their opinions by taking the weighted average of the opinions of adjacent
+nodes, with updates occurring simultaneously or asynchronously [3].
+The Friedkin-Johnsen (FJ) model
+The Friedkin-Johnsen (FJ) model [12] is a seminal and extensively studied model of opinion formation, naturally
+extending the French-DeGroot iterative averaging dynamics. In addition to the weighted influence digraph, the FJ
+model assigns each agent a constant innate opinion, factored into each opinion update iteration. Originally defined
+as the agent’s initial opinion [12], the innate opinion can also be shaped by the agent’s prejudices or some other
+sources of information, such as social media. The strength of an agent’s “anchorage” to their innate opinion is
+regulated by an additional parameter, interpreted as the agent’s susceptibility to social influence [1]; some studies
+interpret this constant as a measure of conformity under group pressure [13]. While remaining linear, the FJ model
+can result in diverse distributions of final opinions, ranging from consensus to multimodal polarized states [1].
+In recent years, the FJ model has been studied from systems and control [14–16], game-theoretic [17, 18], and
+algorithmic [19–21] perspectives; a number of experiments have been conducted to validate it [9, 12, 22–24]. The
+FJ model has been extended to describe dynamics of multidimensional opinions on interrelated topics [25] and the
+dynamics of expressed versus private opinions [26].
+∗a Department of Electronics and Telecommunications, Politecnico di Torino, Turin, Italy; b Department of Mathematical Sciences
+“G.L. Lagrange”, Politecnico di Torino, Turin, Italy. Email: {roberta.raineri,lorenzo.zino}@polito.it, anton.p.1982@ieee.org.
+A shortened version of this preprint will appear in the proceedings of the European Control Conference 2025.
+arXiv:2504.06731v1  [eess.SY]  9 Apr 2025

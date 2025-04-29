@@ -1,0 +1,127 @@
+8
+10−4
+10−2
+100
+Normalised RMSE
+(a1)
+a
+b
+c
+d-wave
+A1g
+a
+b
+c
+RSum
+mRes
+(b1)
+anisotropic s-wave
+nodeless
+B1g
+a
+b
+c
+RSum
+mRes
+(c1)
+nodal
+B2g
+a
+b
+c
+RSum
+mRes
+10−4
+10−2
+100
+Normalised RMSE
+(a3)
+a
+b
+c
+(b3)
+a
+b
+c
+(c3)
+a
+b
+c
+102
+103
+Number of subdivisions N
+10−4
+10−2
+100
+Normalised RMSE
+(a2)
+a
+b
+c
+102
+103
+Number of subdivisions N
+(b2)
+a
+b
+c
+102
+103
+Number of subdivisions N
+(c2)
+a
+b
+c
+FIG. 6. Error analysis. Normalized root mean square error (RMSE) for all the comparisons between the RSum and mRes
+methods presented before. The cuts a, b and c are at the same value of N’s in all the plots, namely 64, 128 and 512. The
+corresponding responses are shown as insets for reference. We see that in every case the mRes approach yields a smaller RMSE
+for lower N. The non-universal critical N beyond which the RSum performs better is found only for a relatively large N.
+x∗−δ0
+2
+x∗
+x∗+ δ0
+2
+x
+0.0
+0.5
+1.0
+I(ω, x)
+(a)
+x∗−δ0
+2
+x∗
+x∗+ δ0
+2
+x
+(b)
+x∗−δ0
+2
+x∗
+x∗+ δ0
+2
+x
+(c)
+FIG. 7. A lower bound on the sub-interval size. The coloured region represents the natural spread δ0 of a singularity at
+x = x∗. This scale is non-universal and depends on the nature of the singularity. The blue region represents the spread of the
+singular sub-interval which depends on the choice of δ, which is reduced across panels. When δ ≳δ0, mRes correctly integrates
+the singularity. For δ < δ0, we introduce the grey regions that we wish to avoid. In this region the singularity is medium-varying
+and is not accounted for in the mRes prescription. At the same time, the narrowing of the singular sub-interval (blue) also
+indicates that we do not adequately pick up the correct contribution from the singularity, leading to an underperformance of
+the mRes prescription. The avoidance of the gray regions and the narrowing of blue regions set a lower limit to the interval
+size δ which are delimited here by the dashed vertical lines.
+idea is illustrated. In these sub-intervals (shown in gray),
+our approximation of slow-varying I(ω, x) breaks down
+leading to incorrect weights for the intervals.
+This is
+the source of the prescription eventually underperform-
+ing compared to the Riemann sum for larger N – that is,
+as δ →0.
+Unfortunately, there is not a universal scheme to iden-
+tify a ‘critical’ length of the sub-interval δ0 as different
+singularities have different ranges over which they need
+to be integrated over. Fortunately, however, this is not
+usually a concern as it is encountered only at large N’s,
+where the use of conventional integration routines would
+be sufficient to obtain good results. We remind the reader
+that this is a prescription designed to help improve the
+results when the mesh is coarse.

@@ -1,0 +1,38 @@
+2.2
+Large-scale devices
+A qubit can assume a dense infinity of states (all points in the Bloch sphere
+represented in Figure 1) and is described by a complex-valued wave function,
+ψ, usually encoded as a vector in an infinite-dimensional Hilbert space. Sim-
+ulating a quantum circuit requires computing the transformations induced
+by the circuit’s logical gates on ψ. Classical simulations become infeasible
+when the number of interacting qubits in the circuit increases. The Quantum
+Supremacy regime is defined by the set of tasks that can only be completed
+in finite time by quantum devices, i.e. would have nearly infinite complexity
+on a classical machine (Preskill, 2012). Current quantum computers are far
+beyond this limit (DeCross et al., 2024). Intuitively, however, the boundary
+has no physical meaning and depends only on the available (classical) com-
+putational power compared with the circuit’s complexity, depth, and size,
+i.e. the number of interacting qubits. This argument justifies
+Assumption 2.1. A quantum system’s behavior may depend on its physical
+features, the environment in which is run, and its initial state, but not on
+whether it can be simulated on a classical machine.
+The requirement informally guarantees we can extrapolate a device noise
+characterization across the boundaries Quantum Supremacy regime. Under
+Assumption 2.1 we can model the noisy output of a QC device as
+ˆY ∼Y + εnoise(Z),
+Z = ϕ(ˆY )
+(3)
+where Z ∈Z is a general set of features describing the device and can be
+extracted from P ˆY through a suitable feature map, ϕ. If εnoise is smooth
+enough Buritic´a and Engelke (2024), we can use ML to extrapolate the gap
+between the ideal and noisy outputs of a classically intractable device by com-
+paring the ideal and noisy outputs of smaller devices. In practice, knowing
+or modeling the physical data-generating process underlying (3) is challeng-
+ing, especially because εnoise depends on partly unpredictable interactions
+between a quantum machine and the environment or the hardware defects.
+In this sense, black-box ML systems like CP are ideal because they rely
+on minimal assumptions and apply to any black-box input-output system.
+Assuming εnoise(Z) = ε0g(Z), where ϵ0 depends on the quantum machines
+where the circuit is run but not on the circuit size, we show how to adapt
+a standard Split-CP algorithm to produce prediction intervals that are valid
+even when calibration and test set do not come from the same distribution.

@@ -1,0 +1,141 @@
+6
+FIG. 5. A memoryless invariant environment with binary per-
+cept and action alphabets, A = S = {0, 1}. The transition
+labels follow the scheme percept | action
+: transition proba-
+bility. The transition on the left (right) corresponds to action
+“0” (respectively, “1”).
+For noiseless environment channels [43], where At = St
+for all t ∈N0, the agent can predict a percept precisely
+to the extent that it has remembered its previous action,
+turning the tradeoff between actions and percepts into
+a zero-sum situation: H (At|Mt) −H (St|Mt) = 0, and
+work capacity vanishes.
+For
+memoryless
+invariant
+environment
+channels,
+where νS|A(s|a) = Q∞
+t=0 ϕ (st|at) with the same ϕ for all
+t ∈N0, we show that the absence of memory in the envi-
+ronment allows one to reduce the optimization over agent
+models in eq. (16) to an optimization over a single action.
+For example, consider an environment env, as displayed
+in Figure 5, with binary percept and action alphabets,
+A = S = {0, 1}, and with transition matrix Φenv given
+by its coefficients ϕenv(j|0) = δ0,j and ϕenv(j|1) = 1/2
+for j = 0, 1. For this environment, we find
+Cwork(env) = 1
+2 ln
+3
+4 + 1
+√
+2
+
+≃0.272 bits,
+(17)
+which, in units of kBT ln 2, is the work capacity of env.
+It can be reached by a memoryless agent which in every
+round takes action 0 with probability 1/
+√
+2.
+For unifilar product environment channels, percepts
+are not influenced by actions. Consequently, to maximize
+the expression in eq. (15), the optimal strategy is to max-
+imize H(At|Mt), which corresponds to choosing actions
+that are independent, identically distributed, and uni-
+formly random. Crucially, the agent must not retain any
+information about its action in its memory. This results
+in H(At|Mt) = log |A|.
+The second term in the work
+capacity expression, as shown in Table I, is the entropy
+rate of the percept process S,
+h (S) := lim
+n→∞
+H (S0:n)
+n
+,
+(18)
+which was introduced by Shannon as the average uncer-
+tainty per symbol in a stochastic process [44]. It is also
+known, from the information-processing second law [45],
+that this entropy rate (in units of kBT ln 2) represents
+the maximum rate of expected extractable work from a
+stochastic process [46].
+V.
+WORK-EFFICIENT AGENT MODELS
+Finding agents that achieve work capacity is challeng-
+ing, as it requires solving a nonlinear optimization prob-
+lem (eq. (16)). However, for certain classes of environ-
+ments, design principles for work-efficient agent models
+FIG. 6. Set diagrams illustrating the relationships between
+different classes of agent models:
+those with maximum-
+entropy actions (mea), those which are predictive (pred), and
+those that are work-efficient (eff). (a) (b) Applies to the mem-
+oryless invariant environment channel shown in Figure 5 (see
+Theorem 5).
+Unlike the tape setting, this environment in-
+volves feedback, forming a genuine percept-action loop.
+can be established. For a given environment env, three
+subsets of the set of all agent models play a central role:
+• A
+→
+←env
+mea : the set of random-action agent models. In
+the Ces`aro limit, these agents randomize their ac-
+tions without retaining memory of them, yielding
+⟨H(At|Mt)⟩t = ln |A|. The subscript mea stands
+for maximum entropy actions.
+• A
+→
+←env
+pred :
+the set of a.m. predictive agent models,
+which satisfy the a.m. predictive criterion (see Def-
+inition 3).
+• A
+→
+←env
+eff
+: the set of work-efficient agent models, whose
+work rate equals the work capacity (eq. (16)) of the
+environment.
+We now extend the results of Boyd et al. for station-
+ary processes [17] by utilizing our framework—along with
+the definitions of a.m. predictive and work-efficient agent
+models—to encompass all processes that can be gener-
+ated by an environment, not just stationary ones:
+Theorem 4. For any unifilar product environment chan-
+nel env,
+A
+→
+←env
+eff
+= A
+→
+←env
+mea ∩A
+→
+←env
+pred .
+(19)
+See Figure 6a for a set diagram illustrating the the-
+orem.
+The proof (see Supplemental Material G 4) re-
+lies on the expression for work capacity in unifilar prod-
+uct environments given in Table I. The assumption of
+unifilarity ensures, by Theorem 1, that (finite) predictive
+agent models exist.
+This result establishes two design
+principles for work-efficient agents interacting with a po-
+tentially nonstationary percept process: (i) randomizing
+actions without retaining memory of them and (ii) em-
+ploying predictive memory. These two principles can be
+directly linked to the two terms of the work rate, eq. (15),
+where the first principle ensures that H(At|Mt) is maxi-
+mized and the second principle ensures that H(St|Mt) is
+minimized.
+A natural question then arises: what happens when
+actions influence future percepts—that is, in genuine

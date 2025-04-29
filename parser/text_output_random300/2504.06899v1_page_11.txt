@@ -1,0 +1,128 @@
+11
+is needed in more than one ϵh). Furthermore, we use low-
+level bit operation on substrings rather than calculating
+each substring frequency separately to improve efficiency
+even more.
+The last part is responsible for calculating the final
+value of ϵ.
+We implemented two families of weighted
+averages described in Section IV E. Namely, exponential
+average (see Eq. (24)) and polynomial average (see Eq.
+(26)). Here, the calculation is performed in a separate
+function, so it is easy to modify it or create a new one.
+Therefore, any function that is coherent with the form
+described in Section IV C can be used, although we rec-
+ommend one that fulfills at least part of the axioms de-
+scribed in Section IV D.
+VI.
+RESULTS
+Let us now discuss the efficiency of the seismic appara-
+tus in generating partially random bits. This is an impor-
+tant problem since the previous approach via heartbeat
+suffered from low rates for natural reasons. The size of
+raw data downloaded from a particular apparatus may
+heavily depend on its location. We thus focus on the av-
+erage size of filtered data from a package of raw data of
+fixed size.
+Our detailed analysis first focuses on the noise, and
+the results are organized as follows. The tables I–V show
+values of ˜ϵh approximated as in equation 15 for every dis-
+cretization (see Appendix B). Each of the tables refers to
+different numbers of preprocessed data: 1 Mb, 10 Mb,
+100 Mb, 1 Gb, 1.5 Gb, respectively. The symbol of three
+vertical dots means that for these values ˜ϵh = 1
+2, so in the
+tables h ranges from 0 to the minimal value of h for which
+˜ϵh = 1
+2. In the last row, there are values of ϵ defined in
+equation 23. To make the analysis of data easier the val-
+ues from the last row are plotted both as a function of
+number of preprocessed bits (figures 1, 2) and discretiza-
+tion types (figures 3, 4). Additionally, in the table VI
+there are values of ˜ϵh and ϵ for every number of prepro-
+cessed bits for discretization 5 and the table VII gathers
+all values of ϵ from the tables I–V for clear comparison.
+The last table VIII shows results for data obtained from
+deep and strong earthquakes that we refer to as events
+to distinguish them from the noise ones described above.
+The first study of values from tables I–V reveals a sig-
+nificant difference in values of ˜ϵh for the discretization
+3. Comparing to the other discretizations, their values
+are greater, although the value of ˜ϵh gains 1
+2 for longer
+history length h. This concludes that applying the third
+discretization makes randomness weaker. As one see in
+Appendix B, bits are assigned according to the relation
+of the absolute value of the real numbers to the average
+value of the absolute values of the sequence. However, in
+such a way, some part of the information is lost, which
+causes the observed effect.
+The next observation is that values of ˜ϵh for the first
+and the second discretization are very close to each other.
+Discretization type
+h
+1
+2
+3
+4
+5
+0 0.0005690 0.0005660 0.1315510 0.0003220 0.0002130
+1 0.0345043 0.0344991 0.1593988 0.1420655 0.1714941
+2 0.1226864 0.1226757 0.1904835 0.3518887 0.2669886
+3 0.2037178 0.2037109 0.2237833 0.3707880 0.3080776
+4 0.2742169 0.2742294 0.2505766 0.4137014 0.3337402
+5 0.3102384 0.3102700 0.2677215 0.4336691 0.3458401
+6 0.3508916 0.3508916 0.2850156 0.4532433 0.3811881
+7 0.3815717 0.3815717 0.3018971 0.4655244 0.4166667
+8 0.4322034 0.4322034 0.3216523 0.5000000 0.5000000
+9 0.4636364 0.4636364 0.3401715
+...
+...
+10 0.5000000 0.5000000 0.3587355
+11
+...
+...
+0.3774831
+12
+0.3946779
+13
+0.4112256
+14
+0.4411765
+15
+0.5000000
+...
+...
+ϵ 0.2502840 0.2502825 0.3157751 0.2501605 0.2501060
+TABLE I. Values of ˜ϵh approximated as in Eq. (15). Histories
+h have length ranging from 0 to the first one for which ˜ϵh = 1
+2.
+Results are obtained from 1 Mb of preprocessed data, i.e.,
+1 Mb bits that are the output of discretization. The types
+of discretization 1–5 as defined in Section IV F are given in
+corresponding columns.
+Notice that in the first discretization, the reference point
+of the values of the binary sequence is 0, and in the sec-
+ond discretization, it is the mean value of the sequence
+of real numbers from the input file (see Appendix B).
+The method used to preprocess the seismic data (based
+on Fourier’s transformation) causes this real numbers se-
+quence to oscillate around 0. Hence the mean value is
+near 0, which makes, in consequence, both discretizations
+outputs practically the same.
+The last but not least remark is that ϵ for all discretiza-
+tion except the third one, as mentioned before, converges
+to the same value close to 0.25. This fact leads to the
+conclusion that ground motion, which has both artificial
+(noise) and natural (earthquakes) origins, is a Santha-
+Vazirani source with ϵ ≈0.25.
+We observe similar properties in the events case (deep
+and strong earthquakes) presented in Table VIII.
+VII.
+DISCUSSION
+In this article, we have contributed to the field of weak
+randomness analysis in three ways.
+We have first de-
+veloped the mathematical framework for estimation of
+quality weakly random sources. We have focused on ver-
+ifying if a given source can be treated as the so called

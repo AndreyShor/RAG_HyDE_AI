@@ -1,0 +1,132 @@
+5
+nets around the probe would increase the signal-to-noise
+by inducing a higher magnetic field in the sample.
+ACKNOWLEDGMENTS
+Alex Newman’s Ph.D studentship is funded by an EP-
+SRC iCASE award to UKNNL (United Kingdom National
+Nuclear Laboratory).
+This work received funding from
+the National Nuclear Laboratory’s Science and Technology
+programme (Decontamination and Decommissioning Core
+Science). Stuart Graham’s Ph.D studentship is funded by
+DSTL (the Defence Science and Technology Laboratory).
+This work is also supported by Innovate UK grant
+10003146, EPSRC grant EP/V056778/1, EPSRC Impact
+Acceleration Account (IAA) award and the EPSRC Q-
+BIOMED Hub EP/Z533191/1.
+We thank the NHS for
+their help with this project, in particular Stuart Robertson
+and Joseph Hardwicke at the University Hospitals Coven-
+try and Warwickshire (UHCW) for insightful discussions
+throughout the project. We also thank Douglas Offin from
+the National Nuclear Laboratory for useful conversations
+throughout this project.
+Appendix A: 2D scans line profile fitting
+All 2D scans were summed together to determine where
+the average signal strength was across all scans. Due to the
+dipole shape of the signals, the 2D gradient of the image
+in the X direction was used to determine the centre of the
+dipole feature by finding the position where the gradient
+was the most negative. The X and Y coordinates of this
+point were used to draw a line profile vertically and hori-
+zontally through each of the individual 2D scans for each
+concentration. This then highlighted that, again due to the
+dipole nature of the signal, the vertical line profile passed
+through the centre of the dipole where there was no sig-
+nal change. The decision was made then to only use the
+horizontal line profile.
+For each line profile, a linear baseline between the first
+and last data point was subtracted. This helped remove
+any any linear trend related to slow changes in signal over
+the scan that are caused by temperature changes or slowly
+varying magnetic fields.
+This also helped remove large
+static background field gradients across the line profile.
+After the line profile was processed, a Gaussian deriva-
+tive function of the form
+f(x) = −A(x −µ)
+σ2
+e−(x−µ)2
+2σ2
++ c,
+(A1)
+where A is the peak amplitude, µ is the peak position or
+zero crossing point, σ is the standard deviation or width of
+the peak and c is a signal offset.
+The difference between the maximum and minimum val-
+ues of the fit was taken as the the signal amplitude (A2).
+This value was divided by the standard deviation of the
+line profile data to find the SNR (A3).
+fa = f(xmax) −f(xmin),
+(A2)
+SNR =
+fa
+noise.
+(A3)
+The error on the SNR values was taken to be the sum
+of squares of the relative error of the signal amplitude and
+the signal noise,
+σSNR = SNR ×
+sσfa
+fa
+2
++
+σnoise
+noise
+2
+,
+(A4)
+where σfa is the error of the signal amplitude and σnoise
+is the error of the signal standard deviation.
+Firstly the error of the signal amplitude was found by
+using the square root of the sum of the squares of the error
+of the fit at the x position of the maximum and minimum
+values.
+σfa =
+q
+σ2
+f(xmax) + σ2
+f(xmin)
+(A5)
+The error of the fitting function was found using the
+square root of the sum of squares of the partial derivative
+of the fitting function with respect to each parameter
+∂A =
+ ∂f
+∂AσA
+2
+,
+(A6)
+∂µ =
+∂f
+∂µσµ
+2
+,
+(A7)
+∂σ =
+∂f
+∂σ σσ
+2
+,
+(A8)
+∂c =
+∂f
+∂c σc
+2
+,
+(A9)
+σf =
+p
+∂A + ∂µ + ∂σ + ∂c.
+(A10)
+The 95% confidence intervals of the fitting parameters
+were used as the errors for each parameter.
+Appendix B: Signal vs height line profile fitting
+Five height line profiles (line profiles moving in the z
+direction away from the sample) were taken for each con-
+centration. Firstly each of the five height line profiles was
+baselined by subtracting the last data point, the signal fur-
+thest from the sample, from the line profile. The baselined
+data was then fitted with a power law function of the form
+f(x) = a + bxc,
+(B1)

@@ -1,0 +1,85 @@
+Equating quantum imaginary time evolution, Riemannian gradient flows, and
+stochastic implementations
+Nathan A. McMahon,1, 2, ∗Mahum Pervez,3 and Christian Arenz3, †
+1⟨aQaL⟩Applied Quantum Algorithms, Leiden University, Netherlands
+2LIACS, Leiden University, Netherlands
+3School of Electrical, Computer, and Energy Engineering, Arizona State University, Tempe, Arizona 85281, USA
+We identify quantum imaginary time evolution as a Riemannian gradient flow on the unitary
+group. We develop an upper bound for the error between the two evolutions that can be controlled
+through the step size of the Riemannian gradient descent which minimizes the energy of the system.
+We discuss implementations through adaptive quantum algorithms and present a stochastic Rie-
+mannian gradient descent algorithm in which each step is efficiently implementable on a quantum
+computer. We prove that for a sufficiently small step size, the stochastic evolution concentrates
+around the imaginary time evolution, thereby providing performance guarantees for cooling the
+system through stochastic Riemannian gradient descent.
+Introduction – Imaginary time evolution (ITE) is a
+powerful classical method for determining properties of a
+many-body Hamiltonian H. For example, various quan-
+tum Monte Carlo methods [1] aim to find the spec-
+tral characteristics of H by solving the time imaginary
+Schr¨odinger equation [2] whose normalized solution is
+given by the state
+|ψ(β)⟩=
+e−βH |ψ0⟩
+∥e−βH |ψ0⟩∥,
+(1)
+where β is the “imaginary time” and |ψ0⟩is the initial
+state of the system. The appeal of such methods is the
+fact that if the initial state has non-zero overlap with the
+ground state |E0⟩of H, i.e. ⟨ψ0| E0⟩̸= 0, then under suf-
+ficiently long evolution times β the state |ψ(β)⟩is given
+by |E0⟩.
+Due to the exponential overhead in implementing
+imaginary time evolution on classical computers, over
+the last years there has been a growing interest in de-
+veloping quantum algorithms that aim to create the ITE
+state (1) on a quantum computer. Such methods face
+the challenge that the evolution e−βH that leads to the
+state (1) is not unitary, and therefore not directly im-
+plementable with unitary gates on a quantum device.
+Several approaches [3–13] have been proposed to over-
+come this challenge by designing unitary evolutions that
+approximate |ψ(β)⟩. For instance, the quantum imagi-
+nary time evolution algorithm [3–10] and its probabilistic
+modifications [11, 12] Trotterize ITE to approximate each
+Trotter step by a unitary that is identified through classi-
+cal optimization. Similarly, in variational approaches to
+ITE [14, 15] classical optimization routines are used in
+conjunction with a quantum computer to optimize a pa-
+rameterized quantum circuit that prepares |ψ(β)⟩. While
+these algorithms are often powerful heuristics, quantum
+algorithms that implement ITE with performance guar-
+antees remain scarce in the literature.
+∗n.a.mcmahon@liacs.leidenuniv.nl
+† carenz1@asu.edu
+Figure 1.
+Schematic representation of the correspondence
+between imaginary time evolution (ITE) described by e−βH
+and Riemannian gradient descent (RGD) minimizing the en-
+ergy of the system. A unitary evolution e−∆βgradJ (red) is
+created by the retraction (green) of the Riemannian gradi-
+ent gradJ with respect to a cost function J where ∆β is the
+step size. We show that the error between the ITE state and
+the state |ϕ1⟩created through one step of RGD is of the order
+O(∆β−2) (Lemma 1). Building upon this, we prove that after
+n steps the state |ϕn⟩approximates the ITE state with an er-
+ror O(∆β) (Theorem 1). We use this observation to develop a
+stochastic Riemannian gradient descent algorithm (gray line)
+whose evolution concentrates around ITE (Theorem 2).
+In this work, we address this challenge by identifying
+ITE as a Riemannian gradient flow [16–20] on the uni-
+tary group, which can be implemented through adaptive
+quantum algorithms [19–26] on quantum computers. The
+relationship between ITE and gradient flows has been ob-
+served before in the literature [27] and has recently been
+leveraged [28] to provide fidelity bounds for ground state
+preparation and energy minimization. Here, we derive
+rigorous bounds for implementing the full ITE, thus pro-
+viding performance guarantees for implementing the ITE
+state for generic imaginary evolution times β and for con-
+vergence to excited states (when ⟨ψ0|E0⟩= 0).
+We first prove that the state created by the unitary
+evolution that describes the Riemannian gradient flow
+can be made arbitrarily close to the ITE state |ψ(β)⟩.
+This is achieved by appropriately choosing the step size
+arXiv:2504.06123v1  [quant-ph]  8 Apr 2025

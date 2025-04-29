@@ -1,0 +1,65 @@
+We label the discrete lattice Z with objects in C, so that we have a sequence (in)n∈Z of indexes
+in S. For a, b ∈Z denote Ca,b = Cia,ib. We ﬁx a sequence of composable 1-cells Xn ∈Cn,n+1
+ﬁtting into the following diagram of 0- and 1-cells:
+· · ·
+in
+in+1
+· · ·
+Xn
+Given an interval [a, b] ⊂Z, we deﬁne
+X[a,b] = Xa ⊗Xa+1 ⊗· · · ⊗Xb,
+and consider the ﬁnite-dimensional C∗-algebras A[a,b] = End(Xa ⊗· · ·⊗Xb), and the AF algebra
+A = lim
+−→
+[a,b]
+A[a,b]
+with respect to the inclusions
+A[a,b] →A[a−1,b+1],
+f 7→idXa−1 ⊗a ⊗idXb+1.
+Assumption 6.1. We choose (Xn)n so that A has the trivial center.
+Deﬁnition 6.2. Let X = {Xn}n∈Z be a sequence of composable 1-morphisms in C. The net of
+algebras A• based on X is of strong generation iﬀthere exists r > 0 such that for every interval
+[a, b] of length larger than r we have Y ≤X[a,b] for any simple Y ∈Ca,b.
+Note that, under strong generation, the C∗-algebras of the form A[a,∞) and A(−∞,a] have
+trivial center. Indeed, given two minimal central projections z, z′ of A[a,b] (which correspond
+to simple objects in Ca,b), the generating property implies that there is an element a ∈A[a,b+r]
+such that zaz′ is nontrivial. This implies that there is no nontrivial ideal in A[a,∞), see for
+example [Dav96, Section III.4].
+6.1. Longo–Roberts type recognition for C∗-algebraic models. Let us recall a variation
+of the Longo–Roberts realization of C∗-tensor categories [LR97], in the framework of 2-categories
+and bimodules. It will be used later to show that our model satisﬁes algebraic Haag duality
+From now on we let (Xn)n∈Z be a sequence of composable 1-morphisms as above, having the
+strong generation property with parameter r.
+Proposition 6.3. Given two integers a < b with b −a ≥r, the natural inclusion
+A[a,b] →(A(−∞,a−1] ∨A[b+1,∞))′ ∩A
+is surjective.
+Proof. We look at the ﬁnite dimensional C∗-algebras
+Cm,n = End(X[a−m,b+n])
+(n = 0, 1, . . .)
+and their subalgebras
+Dm,n = End(X[a−m,a−1]) ⊗CidX[a,b] ⊗End(X[b+1,b+n]).
+Given m′ > m and n′ > n, we take the conditional expectation
+Em′,n′
+m,n : Cm′,n′ →Cm,n,
+x 7→(trX[a−m′,a−m−1] ⊗id ⊗trX[b+n+1,b+n′])(x).
+We then have Em′′,n′′
+m,n
+|Cm′,n′ = Em′,n′
+m,n
+for yet bigger m′′ and n′′, and get a limit conditional
+expectation E∞
+m,n : A →Cm,n.
+Let us ﬁx x ∈(A(−∞,a−1] ∨A[b+1,∞))′ ∩A, and set xm,n = E∞
+m,n(x) so that we have x =
+limm,n→∞xm,n (in norm). We want to create a sequence xk in A[a,b] that still converges to x.
+Observe that xm,n ∈D′
+m,n ∩Cm,n. Indeed, Dm,n is in the multiplicative domain of E∞
+m,n and if
+γ ∈Dm,n, it also follows that γx = xγ, since by assumption x ∈(A(−∞,a−1] ∨A[b+1,∞))′ ∩A.
+Thus
+γxm,n = γE∞
+m,n(x) = E∞
+m,n(γx) = E∞
+m,n(xγ) = E∞
+m,n(x)γ = xm,nγ.
+21

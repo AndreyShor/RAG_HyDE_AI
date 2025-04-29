@@ -1,0 +1,79 @@
+Published as a conference paper at ICLR 2025
+(B, C, T, H,W)
+3D Conv Block
+Spatial Down
+(B, 24, T, H,W)
+3D Conv Block
+Spatial Down
+3D Conv Block
+Spatial Down
+3D Conv Block
+(B, 48, T, H/2,W/2)
+(B, 96, T, H/4,W/4)
+Spatial Down
+3D Conv Block
+(B, 192, T, H/8,W/8)
+Spatial Up
+(B, 384, T, H/16,W/16)
+3D Conv Block
+(B, 384, T, H/8,W/8)
+3D Conv Block
+Spatial Up
+3D Conv Block
+3D Conv Block
+Spatial Up
+3D Conv Block
+3D Conv Block
+Spatial Up
+3D Conv Block
+(B, 192, T, H/4,W/4)
+(B, 96, T, H/2,W/2)
+(B, 48, T, H,W)
+3D Conv Block
+Linear
+(B, 2, 1, H,W)
+: Concat
+3D Conv Block
+Linear
+Batch
+Norm3d
+3×3×3
+Conv
+Spectral
+Norm
+Batch
+Norm3d
+3×3×3
+Conv
+Spectral
+Norm
++
+ReLU
+× 2
+Permute
+Linear
+Permute
+Spatial Down
+Spatial Up
+MaxPool3d
+(1, 2, 2)
+Upsample
+(1, 2, 2)
+Figure S3: Detailed structure of our model, using the complex mapping from c(≤t), ψ to u(t′) as
+an example.
+nonlinear and multiscale, our architecture employs a structure similar to 3D U-Net to build complex
+mappings and multiscale features.
+We present the detailed structure of our model, using the complex mapping from c(≤t), ψ to u(t′)
+as an example (Figure S3). The structures of the remaining mapping functions are similar to this.
+A.5
+NOWCASTNET SETTING AND RESULT
+It is important to note that NowcastNet utilizes a deterministic prediction model (Evolution network)
+combined with a probabilistic generative model (GAN). Given that this is a deterministic prediction
+task, the Evolution network outperforms the combined generative model (GAN) in most evaluation
+metrics. In the main text, we selected the best prediction results from the deterministic model. In
+this section, we provide the complete results.
+B
+DATA AND EVALUATION
+In this section, we provide a detailed explanation of the data and evaluation metrics, including details
+such as the data generation method, data scale, and the specifics of the prediction tasks.
+16

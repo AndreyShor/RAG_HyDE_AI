@@ -1,0 +1,104 @@
+Sym+(n) lies on the Riemannian manifold of SPD
+matrices, aligning nicely with subsequent quantum
+embedding steps.
+Quantum Embedding and Hybrid Architecture.. We
+next project or reshape Z as needed and normalize
+the resulting vector for amplitude encoding into a
+quantum state. This ensures that data geometry
+(via SPD) is retained upon entering the quantum
+subsystem. The overall pipeline (Fig. 1) has:
+1. A few classical neural network layers to han-
+dle basic transformations, possibly reducing di-
+mension or extracting coarse features.
+2. A quantum circuit component, implemented
+in a framework like PennyLane, that acts on
+amplitude-encoded vectors.
+This circuit can
+consist of parameterized single-qubit rotations
+(e.g., Rx, Ry, Rz gates) and entangling gates
+(e.g., CNOTs).
+3. A final classical post-processing layer to map
+the quantum circuit’s measurement outputs to
+the 1017-dimensional predicted response.
+Figure 1: Schematic of our hybrid quantum-classical SHM
+pipeline. SPD matrices (or vectors derived from them) feed
+into a variational quantum circuit. Post-measurement classi-
+cal layers map qubit measurements to the high-dimensional
+FEM response.
+(Placeholder: Replace with actual circuit
+image.)
+Experimental Evaluation.. We tested multiple con-
+figurations—varying how many classical layers pre-
+ceded or followed the quantum subsystem—to find
+an optimal balance between classical feature engi-
+neering and quantum expressivity. Table 1 summa-
+rizes key outcomes.
+Discussion
+and
+Results.. Notably,
+the
+SPD-
+Enhanced Hybrid approach, which combines poly-
+nomial feature expansion, SPD matrix formation,
+and a quantum circuit, achieved an MSE of 3.1 ×
+10−4, the best among the tested methods. This con-
+firms that aligning data with Riemannian geometry
+Table 1: Performance Comparison of Different Models on
+SHM Data
+Model
+MSE
+R2 Score
+Classical (No Quantum)
+8.9 × 10−3
+0.9329
+Classical-Quantum Hybrid
+9.6 × 10−4
+0.9614
+Quantum-Classical Hybrid
+4.7 × 10−4
+0.9844
+SPD-Enhanced Hybrid
+3.1 × 10−4
+0.9876
+(SPD) can preserve important structural correla-
+tions, which quantum embeddings then exploit.
+By embedding SPD-based features into a varia-
+tional quantum circuit, we leverage entanglement
+and interference effects in a manner that classical
+MLPs alone struggle to replicate.
+Crucially, the
+pipeline can handle the large (7 →1017) dimen-
+sion shift more gracefully by distributing complex-
+ity across both manifold-based preprocessing and
+quantum transformations.
+Implications for Real-Time SHM.. Our results un-
+derscore that hybrid QML frameworks, guided by
+GML principles, are not mere theoretical constructs
+but can indeed boost performance for real-world en-
+gineering tasks such as bridge FEM. Although we
+used a quantum simulator here, the approach is de-
+signed to transfer to NISQ or future fault-tolerant
+quantum devices, offering a potentially scalable
+route to real-time structural health monitoring.
+Tie-Back to Geometric-Quantum Synergy.
+In summary, our SHM experiments underscore the
+key role of SPD manifold geometry when combined
+with quantum embeddings. By constructing SPD
+matrices from FEM-based sensor data and then
+exploiting quantum transformations, we leverage
+both classical manifold structure and entanglement-
+driven expressivity. These findings are consistent
+with the central thesis of this paper: that respect-
+ing non-Euclidean geometry within quantum ML
+pipelines can provide a demonstrable advantage,
+even when hardware constraints limit us to hybrid
+simulations.
+4.2. Diabetic Foot Ulcer (DFU) Classification
+Diabetic Foot Ulcers (DFUs) pose a significant
+challenge in healthcare, given the risk of complica-
+tions such as infection and ischaemia that can lead
+to amputation. As part of our investigation into ge-
+ometric quantum-classical learning, we developed a
+DFU classification pipeline that integrates a modi-
+fied Xception network with a variational quantum
+12

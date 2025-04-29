@@ -1,0 +1,105 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+Hence, g is concave if and only if A(γ) is positive semi-deﬁnite. However, we have
+b · A(γ)b =
+X
+i∈I
+γib2
+i −
+ X
+i∈I
+γibi
+2
+≥
+X
+i∈I
+γib2
+i −
+ X
+¯ı∈I
+γ¯ı
+  X
+i∈I
+γibi
+
+=
+
+1 −
+X
+¯ı∈I
+γ¯ı
+ X
+i∈I
+γib2
+i .
+Hence, P
+¯ı∈I γ¯ı ≤1 implies the desired concavity.
+However, considering the function t →
+g(tc) = tλcγ gives λ = P
+¯ı∈I γ¯ı, and concavity implies λ ≤1.
+Putting the above results together, we can now prove Theorem 4.8.
+Proof of Theorem 4.8. The proof is performed in several steps. First, we regularize and shift
+the density by a positive constant and show the chain rule for that situation. Then follows the
+harder part of estimating the limits. For this we rely on Proposition 6.3.
+1. Step (Regularization):
+We note that from the bound on the energy and dissipation, the
+curve t 7→ρ(t) is absolutely continuous with values in (W1,∞(X))∗and it has a Lebesgue density
+ρ dx for almost all t ∈[0, T]. Furthermore, we have ρ ∈Lpcrit([0, T] × X), f ∈L1(0, T, Ydiﬀ),
+j ∈L1([0, T] × Yreact) by Proposition 5.8 and Proposition 5.5. Given σ > 0 and a molliﬁer
+(kε)ε>0, we deﬁne the component-wise shifted and regularized trajectory
+ρε,σ := (ρ + σ) ∗kε,
+and correspondingly the regularized ﬂuxes f ε := f ∗kε and jε := j ∗kε. Clearly, (ρε,σ, f ε, jε) ∈
+CE, where we have used that for the reactions the stoichiometric matrix Γ∗commutes with the
+molliﬁcation. Moreover, we have
+ρε,σ →ρ in L1([0, T] × X),
+jε →j in L1([0, T] × Ydiﬀ),
+f ε →f in L1([0, T] × Yreact).
+2. Step (Chain rule for regularized curve):
+Now, we show that for ﬁxed ε, σ > 0 the
+trajectory t 7→E(ρε,σ(t)) is absolutely continuous and satisﬁes the upper chain rule. For this,
+we ﬁrst note that there is a constant Mε > 0 such that ∥ρε,σ∥L∞([0,T]×Td) ≤Mε and we have
+ρε,σ ≥σ > 0. To show absolute continuity, we ﬁx s, t ∈[0, T], and since on [σ, Mε + σ] the
+Boltzmann function [σ, Mε + σ] ∋r 7→λB(r) ∈[0, ∞) is Lipschitz continuous, i.e., there is
+Lσ,ε > 0 such that ∀r1, r2 ∈[σ, Mε + σ] :
+|λ′
+B(r1) −λ
+′
+B(r2)| ≤Lσ,ε|r1 −r2|, we compute
+E(ρε,σ(t)) −E(ρε,σ(s)) ≤
+X
+i∈I
+Z
+Td |λB(ρε,σ
+i (t)) −λB(ρε,σ
+i (s)| dx
+≤Lσ,ε
+X
+i∈I
+Z
+Td |ρε,σ
+i (t) −ρε,σ
+i (s)| dx = Lσ,ε
+X
+i∈I
+Z
+Td |ρε
+i(t) −ρε
+i(s)| dx.
+The molliﬁer kε is a test function in C∞
+c
+with a (possibly bad) Lipschitz constant Cε, which
+implies
+E(ρε,σ(t)) −E(ρε,σ(s)) ≤CεLσ,ε∥ρ(t) −ρ(s)∥(W 1,∞)∗.
+Hence, t 7→E(ρε,σ) is absolutely continuous, and we obtain by the diﬀerentiability of r 7→λB(r)
+on [σ, Mε + σ] that
+d
+dtE(ρε,σ(t)) =
+X
+i∈I
+Z
+Td log(ρε,σ
+i (t)/ωi)∂tρε,σ
+i (t) dx = ⟨log(ρε,σ(t)/ω), (−divf ε(t) + Γ∗jε(t))⟩
+= ⟨∇log(ρε,σ(t)/ω), f ε(t)⟩+ ⟨Γ log(ρε,σ(t)/w), jε(t)⟩,
+38

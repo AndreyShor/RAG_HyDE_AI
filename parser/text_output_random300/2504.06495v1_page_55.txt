@@ -1,0 +1,46 @@
+B
+Proof of Theorems 4 and 5
+Proof of Theorem 4.
+# Shift the process: Let Yτ := Xτ −log(ǫ), so that Yτ evolves
+on [0, ∞) and satisﬁes
+dYτ = −µ dτ + σ dWτ,
+with absorption at 0.
+# Doob’s h-transform: To condition on survival, we apply Doob’s h-transform (see e.g.
+Karatzas and Shreve 1991, Chapter 5.4) using a positive harmonic function h solving L h = 0,
+where L = −µ d
+dy + σ2
+2
+d2
+dy2 is the inﬁnitesimal generator of Yτ.
+The exponential function
+h(y) = e
+2µ
+σ2 y satisﬁes this equation.
+# Conditioned process and its stationary distribution: Under the h-transform, the
+conditioned process has generator
+Lhf(y) = µ d
+dyf(y) + σ2
+2
+d2
+dy2f(y),
+corresponding to a Brownian motion with drift +µ and diﬀusion coeﬃcient σ. As is well
+known (see, e.g., Karlin and Taylor 1981, Chapter 15), this process admits a unique station-
+ary distribution on [0, ∞), which is exponential with rate µ/σ2.
+# Shift back: Returning to Xτ = Yτ + log(ǫ), the limiting conditional distribution of Xτ
+has density
+fX(x) = µ
+σ2 exp
+n
+−µ
+σ2(x −log(ǫ))
+o
+,
+x ≥log(ǫ).
+This is what we wanted to show. We note that the harmonic function above has exponential
+rate 2µ/σ2, but the stationary density of the conditioned process has rate µ/σ2. This reﬂects
+the diﬀerence between the reweighting function in the h-transform and the long-run behavior
+of the resulting (drifted) process.
+Proof of Theorem 5.
+We study the asymptotic growth of the self-consistent threshold
+ξτ := ε · E[Φτ | Φτ > ξτ],
+54

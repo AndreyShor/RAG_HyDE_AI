@@ -1,0 +1,112 @@
+5
+given by 𝑓WDM. We show in the right plot of Figure 2 the
+distinct suppression patterns of mixed CWDM models relative
+to CDM. In particular, these hybrid models can remain light
+as long as 𝑓WDM is small, resulting in a weaker suppression of
+the matter power spectrum at slightly larger scales.
+However, CWDM models with stronger suppression at
+larger scales also show less suppression at small scales, com-
+pared to pure WDM models. This is shown for a collection
+of hand-picked models in the color gradient of Figure 2. For
+such models we find that the Lyman-𝛼forest data in this work
+constrain both the scale of the small-scale suppression, and the
+shape of the transfer function around the suppression scale.
+B.
+Flux power spectrum models
+The synthetic Lyman-𝛼forest spectra, specifically the op-
+tical depth field (𝜏), can be computed by extracting the infor-
+mation on neutral hydrogen number density, temperature and
+peculiar velocity contained in each pixel in the box along the
+different lines-of-sight. These are parallel to the boundaries
+of the box and have 𝑁bins = 2048 number of bins with width
+𝛿𝑥= 𝐿box/𝑁bins. We extract 𝑁LOS = 5000 lines-of-sight and
+compute the flux (𝐹= 𝑒−𝜏) field for each. The perturbations
+in flux, 𝛿F = 𝐹/ ¯𝐹−1, are characterized by the 1D flux power
+spectrum, 𝑃F(𝑘) = 𝐿−1
+box⟨𝛿F𝛿∗
+F⟩, where ¯𝐹is the mean transmit-
+ted flux calculated as an average of the flux field across all the
+pixels extracted from a simulation at each redshift. We repeat
+this for the three redshift bins used in our analysis.
+Without post-processing, the number of models that we
+have established are spanned by the allowed WDM parame-
+ters, 𝑚WDM = [1,2,3,4] keV and 𝑓WDM = [0.125,0.25,0.5,1.0].
+These add up to 16 WDM cosmologies + 1 from CDM ( 𝑓WDM
+= 0). As described above, for each cosmology, we run 12 sim-
+ulations, each one with different thermal history, characterized
+by the evolution of the cumulative injected heat into the IGM
+at mean density (𝑢0(𝑧)). This amounts to 17×12 = 204 models
+per redshift bin.
+There are two steps involved in post-processing these sim-
+ulations before inferring our cosmology from the flux power
+spectra models. First, we exploit the temperature dependence
+of the recombination coefficient 𝛼HII ∝T−0.72 in the Lyman-𝛼
+forest regime to isolate the impact of the instantaneous temper-
+ature of the gas on the power spectrum. We do this by rotating
+and translating the 𝑇−𝜌plane of simulation parameters as has
+been done in previous work (e.g. [69], [46]), recalculating the
+𝜏field for a range of 𝑇0, 𝛾values. In this way, we obtain flux
+models for a combination of 𝑇0 ∈[5000, 14000] K spaced by
+1000 K, and 𝛾∈[0.9, 1.8] in steps of 0.1.
+In the second step we assume photo-ionization equilibrium,
+where 𝜏∝Γ−1
+HI . A common approach for handling uncertain-
+ties in ΓHI or more general the UV background is to adjust the
+mean flux ¯𝐹derived from the simulated spectra to match the
+observed measurements of effective optical depth 𝜏eff. This is
+done by rescaling the 𝜏field, with ¯𝐹defined as ¯𝐹= 𝑒−𝜏eff. This
+method is preferred over direct rescaling of ΓHI because the
+mean transmitted Lyman-𝛼flux is measurable ([100–102]),
+providing valuable prior knowledge of 𝜏eff to calibrate sim-
+ulations and infer physically motivated posteriors on model
+parameters.
+After post-processing, the total number of models span a
+grid of 15 × 10 × 10 × 204 models = 306000 parameter
+values.
+In Figure 3, we show the relative ratio of these simulated
+flux power spectrum for WDM and CWDM cosmologies to
+the reference CDM simulation at 𝑧= 4.2 and for a fixed thermal
+history (𝑢0 = 8.14 eV,𝑇0 = 10700 K, 𝛾= 1.2) and the mean flux
+( ¯𝐹) is fixed such that the effective optical depth matches that of
+[69], i.e. 𝜏eff ≡−ln ¯𝐹= 𝜏effB. One can see that the suppression
+in power at small scales (high 𝑘values) is enhanced for WDM
+models with lower 𝑚WDM. This agrees with what one expects
+for a lighter DM particle that has a larger free streaming length.
+The magnitude of the suppression increases as the larger free
+streaming strength suppresses structure at even larger scales.
+This can also be seen in the behaviour of the power spectrum for
+different 𝑓WDM values, namely, the smaller 𝑓WDM, the weaker
+the effect on the power spectrum, eventually recovering CDM.
+The 1𝜎uncertainties from [69] are also shown to illustrate the
+sensitivity of the data to the WDM models. The sensitivity is
+higher for "hotter" dark matter models, whereas the "colder"
+dark matter models differ by less than the error margin, making
+it difficult for the data to distinguish between them effectively.
+C.
+Mass resolution and box size correction
+Prior to performing the inference, we test whether the mod-
+els extracted from simulations are able to resolve the Lyman-𝛼
+forest structure by running numerical convergence tests. The
+two relevant parameters are 𝐿box and 𝑁p ([103–105]). The
+first parameter sets the number of 𝑘-modes on large scales and
+influences all scales due to non-linear coupling between the
+modes. When 𝐿box is kept fixed, the smallest resolvable scale
+is governed by the particle number, 𝑁p.
+Following [46], we splice together the flux power from large
+and small box size simulations, 𝐿box = 40 and 10 ℎ−1 Mpc,
+varying 𝑁p = [10243, 5123] ([106]). We check that [69] is
+sensitive only to the intermediate splicing regime. Therefore,
+we correct the flux power spectra obtained with our reference
+simulation 𝑃20,1024 by using the ratio of a simulation with bet-
+ter resolution, 𝑃10,1024, and an equally limited resolution as
+the reference, 𝑃10,512, 𝑅𝑠= 𝑃10,1024/𝑃10,512, where 𝑅𝑠is the
+mass resolution correction. These models are shown in Table
+I in [46].
+Furthermore, the finite box size naturally introduces a trunca-
+tion of the flux power spectrum at large scales but also affects
+the small scales. This systematic is corrected with the box
+size correction from the ratio 𝑃40,2048/𝑃20,1024. As shown in
+[46], the correction at the low-𝑘modes is at the level of 3-5%.
+We further check that the effect of mean flux rescaling in post-
+processing on the box size correction is ≤0.5%. Therefore, we
+correct our models at fixed mean flux corresponding to 𝜏effB.

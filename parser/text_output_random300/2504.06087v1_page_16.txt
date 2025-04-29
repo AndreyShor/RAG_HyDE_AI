@@ -1,0 +1,84 @@
+potential evaluation of effective core potentials (ECP) and spin operators. The two key runtimes are Tupd, the
+time required to update the wave function after a single electron move (Fig. 2a), and Tkinetic, the time required
+to compute the kinetic energy (Fig. 2b). The total runtime Ttot per step is then given as
+Ttot = Tsampling + Tkinetic + TECP + Tspin
+(S1)
+Tsampling = Tfull wf + Nsweeps nel Tupd
+(S2)
+TECP = nel Nquad Tupd
+(S3)
+Tspin = nel
+2 Tupd
+(S4)
+where in our experiments Nsweeps = 2 is the number of Monte Carlo steps per electron, and Nquad = 4 is the
+number of quadrature points for estimating the non-local ECP. For FermiNet, Psiformer, and LapNet, the time
+for a wave function update Tupd equals the time for a full wave function evaluation Tfull wf, whereas for our
+approach Tupd ≪Tfull wf. We use a batch size of 4096 samples on a single A100 GPU. For larger systems where
+not all samples fit into memory, we use the largest possible batch size per operation and method and scale
+the runtime accordingly. To compare the empirical scaling of various methods, we fit the power laws of the
+form T ∼nelη. We also compute energies for these cumulenes up to C16H4 and compare them to CCSD(T) in
+App. B, finding good agreement.
+E
+Low-rank updates in S+ operator
+To ensure pure states when comparing singlet and triplet states, we use the S+ loss from Li et al. [5]. There, in
+addition to minimizing the energy, we seek to minimize
+PS+ = (⟨S+Ψ|S+Ψ⟩)2
+(S5)
+⟨S+Ψ|S+Ψ⟩=
+N↓
+N↑+ 1EρΨ
+
+Rβ(r)2
+,
+(S6)
+Rβ(r) = 1 −
+N↑
+X
+α=0
+Ψ(πα,β(r))
+Ψ(r)
+(S7)
+where πα,β is the permutation operator swapping the αth electron with the βth electron. Evaluating the wave
+function ratio involves evaluating the wave function with two electrons being permuted. The gradient of the
+PS+ is given by
+∇θPS+ = 2P+EρΨ [2 (Rβ(r) −P+) ∇θ ln Ψ(r) + ∇θRβ(r)]
+(S8)
+Thanks to our local embeddings, we can efficiently compute this update to the wave function by only updating
+the electrons’ embeddings within a c radius of either swapped electron. We efficiently compute the gradients
+of Rβ through our local updates in two parts. Let ϑ denote the cached intermediate variables for our low-rank
+updates. We decompose the gradient
+∇θRβ(r) = ∂Rβ(r)
+∂θ
++ ∂Rβ(r)
+∂ϑ
+∂ϑ
+∂θ .
+(S9)
+By aggregating ∂Rβ
+∂ϑ for all swaps first, we avoid repeated backward passes for the gradient computation.
+F
+Non-hermitian operator gradients in Spring
+We generally precondition gradients with Spring as in Eq. (14), though, this requires that the unpreconditioned
+gradient ∇θL of some loss L can be written as ∇θL = ¯O
+∂L
+∂ln Ψ like the energy gradient where
+∂E
+∂ln Ψ = EL(r) −
+EρΨ [EL(r)]. While any gradient of a hermitian operator can be written this way, it does not hold for non-
+hermitian operators like the S+ operator due to the derivative through Rβ in Eq. (S8). Thus, we would like to
+apply the general natural gradient update rule
+δ = EρΨ
+
+∇θ ln ρΨ∇θ ln ρΨ
+T −1 ˜δ
+(S10)
+for some general gradient ˜δ. For a finite batch size, this can be written as
+δ = ( ¯O ¯O
+T )−1˜δ
+(S11)
+which may be non-invertible if ¯O ¯O
+T is not full-rank. Thus, one adds a damping factor to ensure invertibility
+δ = ( ¯O ¯O
+T + λI)−1˜δ.
+(S12)
+16

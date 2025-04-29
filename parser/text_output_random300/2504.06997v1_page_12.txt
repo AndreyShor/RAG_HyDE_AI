@@ -1,0 +1,21 @@
+12 
+ 
+Fig. 6 Pulsatile CBFi waveform recovered from the test dataset, with a smoothing function applied (default method: 
+moving average, span=ceil(0.1×length(𝑥𝑥))). The green line represents the CBFi waveform estimated by the DL 
+model, the red curve denotes the simulated brain 𝐷𝐷𝑏𝑏 ground truth, and the blue line corresponds to the simulated 
+scalp 𝐷𝐷𝑏𝑏. 
+Fig. 7 presents the recovered rCBFi using the proposed DL model alongside the relative change in 
+decorrelation speed measured by single-exponential fitting. The results indicate that both the DL 
+model and the fitting method can capture the relative change in the ground truth rCBFi, with the 
+DL model providing a closer match to the ground truth than single-exponential fitting. 
+Additionally, both methods show an increasing trend in recovered relative changes as SBFi 
+increases, suggesting that they are influenced by SBFi variations. The quantitative analysis and 
+comparison of these recovered relative blood flow changes is provided in Sections 3.3 and 3.4. 
+ 
+Fig. 7 Recovered relative CBF changes using the DL model and single-exponential fitting on the simulated dataset, 
+with a smoothing function applied. The green line represents the relative change in CBFi estimated by the DL 
+model, the blue line corresponds to the relative change in decorrelation speed measured by single-exponential 
+fitting, and the red line denotes the simulated ground truth. 
+3.3 Model’s brain sensitivity compared with single-exponential fitting 
+In this section, we quantified the model’s brain sensitivity calculated using Eq. (10). Baseline CBFi 
+was obtained using the mean value of the recovered CBFi from 100 noise-added data. As described 

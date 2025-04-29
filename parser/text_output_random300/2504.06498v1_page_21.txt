@@ -1,0 +1,51 @@
+where ˆS and ˆK are the spin operators for 15N and total 1H nuclei, respectively, and 𝐽is the scalar
+coupling constant. The interaction with the feedback magnetic field is modeled as:
+ˆ𝑉(𝑡) = −𝐺ext · 𝐵OPM(𝑡−𝜏) · (𝛾15N ˆ𝑆y + 𝛾1H ˆ𝐾y),
+(S3)
+where 𝐺ext is the (external) feedback gain, 𝜏F is the externally applied the feedback delay, and
+𝛾15N, 𝛾1H are gyromagnetic ratios of 15N and 1H nuclei, respectively. Consequently, we define
+𝐵ext = 𝐺ext · 𝐵OPM. The field emitted from the sample as measured by an OPM, 𝐵OPM(𝑡) can be
+derived from the sample’s magnetization 𝑀(𝑡):
+𝐵OPM(𝑡) = −𝜇0
+3
+𝑟3
+𝑑3 𝑀(𝑡).
+(S4)
+Here, 𝑑= 12.45 mm is the distance between the sensor cell and sample, and 𝑟= 4.2 mm is the
+radius of the sample. The magnetization of the system 𝑀(𝑡) (would be along the 𝑦-axis due to the
+uniaxial nature of zero-field scalar maser) is calculated as,
+𝑀(𝑡) = ⟨𝛾15N ˆ𝑆y + 𝛾1H ˆ𝐾y⟩(𝑡) · ℏ𝑁A · 𝐶,
+(S5)
+where 𝐶= 967 mM is the [15N]-ACN concentration, and ⟨·⟩= Tr( ˆ𝜌(t)·) denote the quantum
+expectation value.
+Relaxation.
+The relaxation superoperator incorporates intramolecular dipolar interactions, in-
+termolecular interactions, and paramagnetic effects. Intramolecular relaxation is modeled using a
+rotational diffusion approach for a symmetric top, with tunneling and spinning diffusion times of
+0.135 ps and 3 ps, respectively. Details of the calculation method will be published elsewhere.
+Intermolecular effects and paramagnetic contributions (e.g., dissolved oxygen) are treated via a
+random fluctuating field model (37):
+ˆ𝐻RF(𝑡) = −
+∑︁
+𝑗=𝑥,𝑦,𝑧
+
+𝛾15N 𝐵𝑁j(𝑡) ˆ𝑆j + 𝛾1H 𝐵𝐾j(𝑡) ˆ𝐾j
+
+(S6)
+where 𝐵𝑁𝑗(𝑡) and 𝐵𝐾𝑗(𝑡) are random fields along orthogonal axes. Their correlations satisfy:
+1
+2
+∫∞
+−∞
+𝑑𝑡
+′𝛾2
+1H𝐵𝐼𝑗(𝑡)𝐵𝐼′ 𝑗′ (𝑡−𝑡
+′) = 1
+𝑇𝑠
+𝛿𝑗𝑗′𝐶𝐼𝐼′,
+(S7)
+with 𝐶𝐼𝐼′ = 1 for 𝐼= 𝐼
+′ and 2/3 otherwise based on the assumption that the noise field applied
+on 15N and 1H spins are partially correlated. The calculation of the corresponding relaxation
+superoperator is based on the work (38).
+S4

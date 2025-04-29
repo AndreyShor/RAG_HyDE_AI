@@ -1,0 +1,47 @@
+best fit the given data while generalizing effectively to unseen data, thereby improving prediction accuracy and
+overall model performance.
+Optimization algorithms [30] enable models to learn from data, adapt to complex patterns, and produce accurate
+predictions by adjusting model parameters. The choice of an optimization method significantly affects the efficiency
+and convergence of a machine learning model, making it a crucial decision during the model development process.
+To construct the inverse potential directly from the available experimental data, we optimize the parameters of
+the reference potential using a meta-heuristic algorithm inspired by natural selection and evolution. The machine-
+learning-based genetic algorithm iteratively refines parameter sets to minimize the error between predicted and
+experimental values by reducing the cost function[31]. It begins with a population of feasible solutions and evolves
+to new solution sets at each iteration, aiming to improve fitness and achieve optimal performance.
+Steps:
+• Initialisation: Arrays of projectile energies Elab in the laboratory frame and the corresponding scattering
+phase shifts δ(E) are given as input for analysis. The variation of scattering phase shifts δ(E) as a function
+of energy E provides insight into emergent resonances through the analysis of the slope’s behavior. Ranges
+are defined for the model parameters of the reference potential to narrow the optimization space and focus on
+a specific region. To improve convergence, previously obtained parameter sets can be included in the initial
+population, using past solutions to make the search for the global optimum more efficient.
+• Genetic Algorithm[32]: The Process starts with the creation of a random population of parameters that
+represent possible solutions of the optimization routine.
+Each generation involves selecting of candidate
+solution based on their fitness. Their fitness is determined based on the cost function, i.e. Mean Absolute
+Percentage Error. MAPE between the simulated and experimental SPS is computed as
+MAPE = 1
+N
+N
+X
+i=1
+|δexp
+i
+−δsim
+i
+δexp
+i
+| × 100
+(18)
+The solution with lower MAPE values are selected for reproduction, where genetic operators such as crossover
+and mutation create new offspring. This process of selection, cross-over, and mutation continues over mul-
+tiple generations, refining the model parameters to minimize the cost function and improve the fit to the
+experimental data.
+• Potential Determination: The reference potentials for each parameter produced by the parent class are calcu-
+lated. Following this, the parameter ranges are adjusted to ensure that the resulting inverse potential aligns
+with physical constraints and meets the specified conditions. Within this framework, our machine-learning-
+based heuristic algorithm employs the phase equation that governs the scattering process to optimize and
+adjust the potential parameters.
+• Numerical Solution of Phase Equation: To compute the simulated scattering phase shifts (SPS), denoted as
+δl one solves the phase equation numerically using the fifth-order Runge-Kutta (RK-5) method. This solution
+8

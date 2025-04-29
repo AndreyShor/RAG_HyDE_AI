@@ -1,0 +1,106 @@
+2.2. The Navascu´es-Pironio-Acin hierarchy
+The Navascu´es-Pironio-Ac´ın (NPA) hierarchy is a systematic approach to check if p = p(ab|xy) =
+Tr(ρMa|xNb|y) ∈Q \ L [127, 128]. It provides a sequence of increasingly tighter outer approximations to
+the set of quantum correlations Q1 ⊇· · · Qk ⊇· · · ⊇Q, where each k–th level in the hierarchy defines
+the following semidefinite programming (SDP) relaxation:
+maximize{φ| Tr ΓkJi = 0, Tr ΓkΦi = pi, Γk −φ1 ≥0, Γ ⪰0}
+(14)
+where Ji and Φi are linked to the moment matrix Γk, which encodes the constraints derived from quantum
+mechanics: (i) Definition of the moment matrix Γk – for a given level k in the hierarchy,
+Γk
+i,j = Tr ρ(τ k
+i )†τ k
+j ,
+τ 1 = {1, Ma|x, Nb|y}abxy,
+τ k+1 = {τ k, τ k
+i τ 1
+j }ij
+where τ k = {τ k
+i } is the set of monomials of measurement operators up to degree k, e.g., consisting of
+products like Ma|xNb|y or Ma′|xMa|x. The size of Γ grows with k, encompassing higher-order correlations
+between measurement operators.
+(ii) Constraints – The condition Tr ΓkJi = 0 and Tr ΓkΦi = pi with opportune J and Φ suitably rewrite
+the constraints that p ∈Qk only if ∃Γ ⪰0 with p = {pi}i and (similarly for Nb|y)
+Ma|xMa′|x = δa,a′1,
+X
+a
+Ma|x = 1,
+[Ma|x, Nb|y] = 0.
+These constraints are incorporated into the structure of Γ, imposing relations between the matrix elements
+and reducing the affine subspace of the possible correlations.
+(iii) Feasibility – If a feasible Γ that solve the SPD problem exists at level k, then p ∈Qk is “k-
+quantum”, meaning it can be approximated by a quantum behaviour up to k–th hierarchy level.
+If
+p ∈Qk+1 =⇒p ∈Qk since Γk is a sub-matrix of Γk+1. In the limit limk→∞Qk = Q, therefore if
+p /∈Q =⇒∃k s.t. the problem is unfeasible.
+In practice, the NPA hierarchy offers a tractable approximation of the quantum set via a sequence of
+SDPs, each solvable by efficient algorithms, though the computational cost increases with the level k. For
+many applications, low levels (e.g., k = 2 or 3) already yield tight enough bounds. Intermediate levels,
+such as τ 1+AB = τ 1∪{M x
+a N y
+b }abxy, are also commonly used. Replacing the objective function φ with any
+linear function of the elements in τ k, the NPA hierarchy becomes a powerful computational tool—e.g.,
+for estimating min-entropy in security proofs (see Sec. 4). Additional methods for DI applications are
+discussed in [129–131] and in the SDP review [132].
+2.3. Self-testing
+In particular cases, DI–protocols not only identify p ∈Q \ L, but from the behaviours p can also infer
+the input state and measurements realization R = (| ˜ψ⟩AB , ˜
+MA|X, ˜NB|Y ) adopted in the experiment up
+to some local invariance Φ (Fig. 2a). When this is possible, we say that the behaviours self-test the
+realization, p
+self-test
+7→
+Φ(R) [133, 49].
+Definition 2. Let identically and independent distributed (iid) p = {pAB|XY (ab|xy)} ≡pab|xy with
+locality and measurement-dependence loophole closed (sec. 2.4), then ∀dim B(HA), dim B(HA)
+Σ : p
+self-test
+7→
+( ˜ψAB, ˜
+MA|X, ˜NB|Y ) =⇒∃|Σ−1( ˜ψAB, ˜
+MA|X, ˜NB|Y ) = ⟨˜ψ| ˜
+MA|X ⊗˜NB|Y | ˜ψ⟩= pAB|XY (15)
+up to some gauge of freedom characterized by the following local invariance Φ = ΦA ⊗ΦB:
+(i)
+˜
+MA|x 7→U ˜
+MA|xU †, ˜NB|y 7→V ˜NB|yV †, | ˜ψ⟩7→U ⊗V | ˜ψ⟩
+(ii) Given |ψ⟩ABE ∈HABE, {MA|x}x ∈B(HA), {NB|y}y ∈B(HB), exists
+Φ : HAB 7→H ˜
+A ¯
+A ˜
+B ¯
+BE s.t. |ψ⟩AB 7→|ψ⟩˜
+A ˜
+B |junk⟩¯
+A ¯
+BE
+(16)
+and
+ΦA : B(HA) 7→B(H ˜
+A ⊗H ¯
+A)
+ΦB : B(HB) 7→B(H ˜
+B ⊗H ¯
+B)
+Ma|x
+ΦA
+7→˜
+Ma|x ⊗1 ¯
+A
+Nb|y
+ΦB
+7→˜Nb|y ⊗1 ¯
+B
+(17)
+such that
+(ΦA ⊗ΦB ⊗idE)(M x
+a ⊗N y
+b ⊗1E |ψ⟩ABE) = ( ˜
+Ma|x ⊗˜Nb|y | ˜ψ⟩˜
+A ˜
+B) ⊗|junk⟩¯
+A ¯
+BE .
+(18)
+11

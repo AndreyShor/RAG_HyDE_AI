@@ -1,0 +1,62 @@
+The reference potential is defined as
+U(r) =
+
+
+
+
+
+
+
+
+
+
+
+U0 = V0 + D0[e−2α0(r−r0) −2e−α0(r−r0)],
+if r ≤X1
+U1 = V1 + D1[e−2α1(r−r1) −2e−α1(r−r1)],
+if X1 < r < X2
+U2 = V2 −D2[e−2α2(r−r2) −2e−α2(r−r2)],
+if r ≥X2
+(1)
+where U0 represents the short-range interaction, U1 represents the intermediate range, including the Coulomb
+interaction, and the third term U2 used in an inverted form to account for the long decay tail of Coulomb at large
+distances, describes the scattering behaviour of charged systems. X1 and X2 represent the boundary points for the
+3 Morse function defined at three different regions.
+To ensure the smoothness of the potential at these boundary points, the functions and their derivative must be
+continous at X1 and X2. That is:
+Ui|Xi = Ui+1|Xi
+(2)
+dUi
+dr |Xi = dUi+1
+dr
+|Xi
+(3)
+where i takes values 1 & 2.
+Each Morse function consists of four parameters- V, D, α, and r. Thus, the reference potential includes a total of 14
+parameters, including X1 and X2, which need to be optimized. By applying four boundary conditions, four of these
+parameters can be determined, reducing the number of free model parameters to 10. Consequently, the reference
+model represents a family of curves defined by ten adjustable parameters. These relationships between variables
+maintain consistency and reduce the number of free parameters in the model. These parameters are optimized
+using the Physics-Informed Machine Learning (PIML) paradigm through inverse scattering, employing the variable
+phase approximation.
+2.2
+Phase Function Method:
+In order to solve the inverse scattering problem, the Phase Function Method (PFM) offers a straightforward and
+effective method for reconstructing the unknown potential from scattering data. In PFM, the Schrodinger equation(a
+linear homogeneous equation of the second order) [23], is reformulated into a first-order non-linear Riccati equation,
+which evolves with the radial coordinate and directly relates the scattering phase shifts to the potential [24]. At
+each point, the phase equation represents the scattering phase shift corresponding to the potential, providing insight
+into the influence of different regions of the potential.
+The Schrodinger wave equation for a spinless particle with energy E and orbital angular momentum ℓundergoing
+scattering is given by
+ℏ2
+2µ
+ d2
+dr2 +
+
+k2 −ℓ(ℓ+ 1)
+r2
+
+uℓ(k, r) = V (r)uℓ(k, r)
+(4)
+4

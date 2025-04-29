@@ -1,0 +1,29 @@
+Another challenge is how to handle phase discontinuities. As phase values have a periodic nature, it 
+produces artificial discontinuities at 0/2𝜋 boundary that do not correspond to physical reality. 
+Machine learning models treat these points as distant values rather than the same physical states, and 
+thus create artificial errors compromising prediction accuracy. A regression model without physics 
+knowledge thus struggles to handle this periodic nature of phase, often penalizing the model with 
+large errors near the boundaries.  
+We formulate this problem as a physics-constrained regression task that predicts the amplitude and 
+phase of transmitted light from metasurface using the structural parameters. Our neural network 
+model handles both gap regimes and respects the circular nature of phase values. The model 
+maintains physical consistency, particularly energy conservation principle constraining amplitude 
+values, and the mathematical constraint that enforces that the sine and cosine components of any 
+valid phase angle 𝜑 satisfy 𝑠𝑖𝑛2𝜑+ 𝑐𝑜𝑠2𝜑= 1. 
+2.2 Overall Architecture  
+As shown in Figure II, our neural network accepts input parameters that represent the material and 
+geometric properties of the metasurface unit cell. It follows a structure with multiple dense layers, 
+starting with a wide layer of 256 neurons that gradually decreases in width (layers of 128, and 64 
+neurons) to extract relevant features. The network is then divided into two specialized output paths: 
+amplitude branch, and phase branch. Before these branches, we included dense layers of 32 neurons 
+serving as feature extractors for each output. Batch normalization followed by ReLU activation are 
+applied to all dense layers to ensure fair contribution of all features throughout the network’s layers 
+and non-linear capabilities. It is worth mentioning that we employed dropout layers (rate= 0.1) after 
+the first two layers to avoid overfitting during training process. 
+We used different activation functions for the branches based on their underlying physics: 
+1- Amplitude branch uses a sigmoid activation function constraining outputs to the physically 
+meaningful range of [0 , 1]. 
+2- Phase branch uses a tanh (hyperbolic tangent) activation function constraining outputs to [-1 , 1] 
+that enable one to handle phase wrapping using sine and cosine components. 
+ 
+ 

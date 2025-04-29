@@ -1,0 +1,164 @@
+p(sn|tn) =
+X
+sk∈Sk
+X
+sk−1∈Sk−1
+p(sn|sk)p(sk|sk−1)p(sk−1|s0)p(s0|tn)
+(22)
+Taking the derivative of the conditional distributions
+with respect to p(s1|o) . . . p(sk|sk−1),
+δp(s1)
+δp(s1|s0) = p(s0)
+(23)
+δp(s1|t1)
+δp(s1|s0) = p(s0|t1)
+(24)
+δp(sn)
+δp(sk|sk−1) = p(sn|sk)p(sk−1)
+(25)
+δp(sn|tn)
+δp(sk|sk−1) = p(sn|sk)p(sk−1|s0)p(s0|tn)
+(26)
+Substituting in the expressions (25) and (26) into the
+derivative of the Lagrangian (16),
+δL
+δp(sk|sk−1)
+=p(sk−1){log(p(sk|sk−1)
+p(sk)
+)
++
+X
+sk+1
+p(sk+1|sk)log(p(sk+1|sk)
+p(sk+1) )
++
+n
+X
+i=k+2
+{
+X
+si−1
+p(si−1|sk)
+X
+si
+p(si|si−1)log(p(si|si−1)
+p(si)
+)}
+−(n −1)
+−β{
+X
+tk
+p(tk)p(sk−1|o)p(o|tk)[log(p(sk|tk)) + 1]
+−p(sk−1)[log(p(sk)) + 1])}
+−β
+n
+X
+i=k+1
+{
+X
+ti
+p(ti)
+X
+si
+p(si|sk)p(sk−1|s0)p(s0|ti)[log(p(si|ti)) + 1]
+−
+X
+si
+p(si|sk)p(sk−1)[log(p(si)) + 1])} + λ(sk−1)
+(27)
+We can rewrite p(tk)p(sk−1|o)p(o|tk) as
+p(tk)p(sk−1|tk) = p(sk−1)p(tk|sk−1)
+(28)
+which allows us to simplify (27) further as,
+δL
+δp(sk|sk−1)
+=p(sk−1){log(p(sk|sk−1)
+p(sk)
+)
++
+X
+sk+1
+p(sk+1|sk)log(p(sk+1|sk)
+p(sk+1) )
++
+n
+X
+i=k+2
+X
+si−1
+p(si−1|sk)
+X
+si
+p(si|si−1)log(p(si|si−1)
+p(si)
+)
+−(n −1)
+−β
+X
+tk
+p(tk|sk−1)log(p(sk|tk)
+p(sk) )
+−β
+n
+X
+i=k+1
+X
+ti
+X
+si
+p(si|sk)p(ti|sk−1)log(p(si|ti)
+p(si) )}
++ λ(sk−1)
+(29)
+Notice that the Kullback–Leibler divergence naturally
+emerges from the β terms with some algebraic manipula-
+tion,
+p(ti|sk−1)log(p(si|ti)
+p(si) ) = −DKL(p(ti|sk−1)||p(ti|si))
++
+X
+ti
+p(ti|sk−1)log(p(ti|sk−1
+p(ti)
+))
+(30)
+Let us define ˜λ(sk−1) to group the terms that are not
+dependent on sk,
+˜λ(sk−1) = λ(sk−1)
+p(sk−1) −(n −1)
++
+X
+sk+1
+p(sk+1|sk)log(p(sk+1|sk)
+p(sk+1) )
++
+n
+X
+i=k+2
+X
+si−1
+p(si−1|sk)
+X
+si
+p(si|si−1)log(p(si|si−1)
+p(si)
+)
+−β
+X
+ti
+p(ti|sk−1)log(p(ti|sk−1)
+p(ti)
+))
+−β
+n
+X
+i=k+1
+X
+si
+X
+ti
+p(ti|sk−1)log(p(ti|sk−1)
+p(ti)
+))}
+(31)
+6

@@ -1,0 +1,117 @@
+10
+the quantum states instead of mixed states).
+We use
+the error-free physical and ancilla states at the end of
+the logically-encoded circuit, just before measurement,
+as the ideal states to compare all other states to.
+We report only the absolute values of fidelities in this
+study. This is because we used probabilities to calculate
+expectation values during the training process, so any
+negative amplitudes just before measurement disappear
+and do not impact training.
+1.
+State Fidelity Distributions
+To determine state fidelity distributions under varying
+error rates and levels of error detection, we simulated the
+logically-encoded circuit with 4000 shots, using each of
+the four possible inputs as initial states for 1000 shots
+each.
+The analysis revealed roughly bimodal distribu-
+tions, with peaks at 1.0 and 0.0 and a small proportion
+of intermediate fidelities1.
+The distributions remain approximately bimodal for
+all error rates, with higher error rates producing more fi-
+delities near 0 (and between 0 and 1), and fewer fidelities
+close to 1. As shown in Figure 7, applying error detection
+improves the proportion of fidelities near 1 by removing
+the states with errors from the distribution. The near-
+bimodality of the distributions suggests that errors in
+physical or ancilla qubits will often yield states orthogo-
+nal to the correct state, which we suggest is due to the
+nature of the errors consisting of only bitflips and phase-
+flips. Bitflips in particular are far more likely to create
+orthogonal states from flipping at least one of the qubits
+in the system. For example, if the physical qubit state
+was originally forming the logical |00⟩L state, the only
+non-orthogonal state that can result from bitflips is the
+original state itself. Additionally, rotation gates will pre-
+serve the orthogonality of the errored state relative to the
+correct state, as rotations are unitary operations. Phase
+flips will have a smaller and less predictable impact on
+state fidelities, but in theory could create both orthogo-
+nal and non-orthogonal states, adding to the number of
+states with fidelities near 0 and introducing states with
+fidelities between 0 and 1. Both bitflips and phase flips
+occurring on ancilla qubits will spread to the physical
+qubits without necessarily preserving orthogonality, lead-
+ing to physical qubit states with intermediate fidelities
+(and vice versa).
+1 In the following discussions, we will occasionally use the Gaussian
+mean and standard deviation to characterise the fidelity distribu-
+tion, as higher proportions of fidelities at or near 0 are sufficiently
+captured by the mean (through a reduction in the mean) and
+standard deviation (through an increase in the spread). It is this
+bimodality at the two extremes that produces the greater vari-
+ability (and consequently, non-monotonicity) in the final training
+accuracies in Figures 5 and 6 at the highest ancilla error rates,
+as higher error rates produce more (physical and ancilla) states
+with fidelities near 0. Example distributions for physical state
+fidelities with p = 0.01 and fanc = 1 are illustrated in Figure 7.
+2.
+Pauli Error Rates and State Fidelities
+Table I presents the mean fidelities (and standard de-
+viations) for ancilla and physical qubits under differing
+Pauli Error Rates and without error correction, calcu-
+lated from the previously mentioned 4000-shot simula-
+tions. Since the fidelity distributions are non-Gaussian,
+we report both the mean (and standard deviation2) and
+the fraction of fidelities below 0.02 or above 0.98. Addi-
+tionally, we provide the corresponding mean final training
+accuracies (with standard deviations) calculated from 10
+independent training runs, each initiated with a unique
+random seed.
+Our results reveal several noteworthy trends and ob-
+servations. Firstly, ancilla and physical qubit fidelities
+are primarily affected by their own Pauli Error Rates,
+but are slightly impacted by the error rate of the other
+qubit register. For example, when the physical error rate
+is non-zero and the ancilla error rate is zero, the an-
+cilla fidelities still fall below 1.0, as physical qubit errors
+can propagate to ancilla qubits through the CNOT gates.
+We observe this also in the gate noise model, when the
+physical and ancilla error rate is 0.001, the proportion of
+fidelities where Fanc > 0.98 is 0.91 (with ¯Fanc = 0.93),
+but when the physical error rate is increased to 0.010
+while keeping ancilla error rate the same, the proportion
+of fidelities with Fanc > 0.98 is reduced to 0.65 (with
+¯Fanc = 0.89). Increasing the ancilla error fraction also
+reduces the physical state fidelities, despite no change in
+physical error rates.
+Secondly, the mean final training accuracy is not es-
+pecially robust to reductions in the physical state fideli-
+ties, which matches with our earlier observation that the
+training accuracies are impacted by even low levels of
+noise. To achieve an accuracy above 0.95, the mean phys-
+ical state fidelity needs to be at or higher than roughly
+0.953, corresponding to approximately 93−94% of states
+with F > 0.98 and 3 −4% with F < 0.02. Apart from
+reducing the mean training accuracy, errors will also in-
+crease its standard deviation by increasing the number of
+very low fidelity states that occur during training. The
+training accuracies follow a much more Gaussian distri-
+bution than the fidelities, as many states are used to
+train the model, which tends to average out the impact
+of errors on training.
+We expect to find that under both noise models, the
+training accuracy should follow the physical state fideli-
+ties at the end of the circuit very closely, as it is the phys-
+ical state that is fed to the algorithm for optimisation.
+However, our results slightly deviate from this expecta-
+tion.
+For example, in the environmental noise model,
+2 The standard deviations imply fidelity ranges that exceed the
+maximum value of 1, which is due to the non-Gaussianity of the
+fidelity distributions.
+3 The fidelity requirements for reaching high accuracies are depen-
+dent on the model and application; some implementations may
+not require such high fidelities.

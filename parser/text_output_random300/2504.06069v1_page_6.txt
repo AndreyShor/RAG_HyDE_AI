@@ -1,0 +1,23 @@
+ 
+Figure II: Graphical representation of the physics-constrained neural network. 
+ 
+ 
+2.3 Physics-Informed Elements 
+In this section we discuss the physical constraints embedded in the network architecture and loss 
+function.  
+Sine - Cosine Representation for Phase Wrapping 
+Phase prediction in the modelling of metasurface optical response presents important challenges 
+compared to standard regression problems because of cyclic nature of phase values. The main 
+challenge in direct phase prediction methods is discontinuities at the boundaries like 0 and 2𝜋. For 
+instance, phase values of 0.1𝜋 and 1.99𝜋 seem numerically far apart, but they are close values in the 
+circular phase space because 0 and 2𝜋 represent a same phase. Such a discontinuity creates artificial 
+gradients during training process which do not reflect the physical nature of the problem. 
+To address this issue, we used a physics-informed representation in which phase branch of the 
+network is decomposed into two output nodes: its sine and cosine components. Rather than directly 
+predicting phase angle 𝜑, our network simultaneously predicts sin(𝜑) and cos⁡(𝜑) using hyperbolic 
+tangent (tanh) activation functions for both components. This activation function naturally constrains 
+outputs to the range of [-1 , 1] which is perfectly matched with the range of sine and cosine functions. 
+This sine-cosine representation offers several advantages. Unlike direct phase prediction, sine/cosine 
+functions eliminate discontinuities at the boundaries because they produce same values for phases 
+like 0 and 2𝜋. This representation also maps any phase angles differing by 2𝜋 (e.g., 𝜑 and 𝜑+ 2𝜋) to 
+identical points. Thus, the network does not need to learn that they are the same physical states as 

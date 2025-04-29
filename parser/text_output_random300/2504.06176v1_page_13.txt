@@ -1,0 +1,121 @@
+A Self-Supervised Framework for Space Object Behaviour Characterisation.
+13
+where Lclass = −1
+m
+m
+X
+i=1
+[yi log(ˆyi) + (1 −yi) log(1 −ˆyi)].
+(9)
+Where the classification loss employs binary cross-entropy
+across m samples, measuring the discrepancy between true la-
+bels yi and predicted probabilities ˆyi.
+Equation 8 ensures that the model maintains the ability to re-
+construct the fine-tuning data whilst making a classification
+based on the latent space.
+Note that some fine-tuning ap-
+proaches remove decoding from the optimisation completely,
+just optimising the cross entropy loss between the latent vari-
+ables and the class labels. However, in our case, we use this
+multi-task fine-tuning setup to reduce the risk of catastrophic
+forgetting of the model’s ability to reconstruct, forecast and
+generate synthetic data.
+3.4.1
+Anomaly Detection Fine-tuning:
+During fine-tuning for anomaly detection, we optimised the
+combined loss function (Equation 8) using Adam with a learn-
+ing rate of 1e−4. This approach allowed the model to learn dis-
+criminative features for anomaly detection while preserving re-
+construction capabilities. We implemented stratified data split-
+ting to handle class imbalance and evaluated performance using
+both classification accuracy and ROC AUC.
+3.5
+Motion Prediction Fine-tuning:
+For motion prediction fine-tuning, we adapted our pre-trained
+Perceiver-VAE to classify satellite motion patterns from light
+curves. We again implemented stratified class-balanced sam-
+pling to handle the uneven distribution of motion types in the
+fine-tuning data. To improve generalization, we applied a learn-
+ing rate scheduler that reduced the rate by half when the vali-
+dation loss plateaued for 10 epochs.
+3.6
+Synthetic Data Generation
+To explore the latent space and synthetic data generation capa-
+bilities of our model, we implemented a neighbourhood sam-
+pling approach. For synthetic data generation, our objective is
+to sample the latent space in a way that produces meaningful
+variations of a reference curve while preserving its class iden-
+tity.
+Here we use the fine-tuned motion prediction classifier to gen-
+erate a set of high confidence ’query’ curves. The algorithm
+first identifies some reference curves above a given confidence
+threshold (0.9) for a requested motion class e.g., tumbling.
+Then, it uses these to index the learned latent space of the
+model, and samples around that latent space by adding Gaus-
+sian noise to the highest activating neurons. These perturbed
+latent vectors are processed through the decoder to reconstruct
+synthetic light curves that represent variations within the same
+motion class.
+To enhance visual quality and reduce high-
+frequency artifacts, we applied Gaussian smoothing (σ = 2.0)
+to the reconstructed signals.
+4
+Outlook
+Our work is the first to demonstrate that a VAE architecture can
+effectively learn meaningful representations from light curve
+data and be fine-tuned for multiple downstream tasks including
+detecting anomalous space object behaviour and motion predic-
+tion. We have also shown that our approach scales well to large
+datasets while maintaining computational efficiency, which is
+critical considering the rapidly growing amount of Space Ob-
+ject data.
+Here, we developed a two-stage approach, first
+through unsupervised pre-training, whereby the model learns
+rich features which aid reconstruction of real light curves. Then
+we performed supervised fine-tuning, which leverages those
+features for both anomaly classification, reaching 88% accu-
+racy with a 0.9 ROC AUC score, and attitude mode motion
+classification, achieving 82.7% test accuracy, with 0.95 ROC
+AUC scores. Additionally, we demonstrate that the same archi-
+tectural framework and approach can simultaneously achieve
+multiple space object behavioural analysis goals (i.e., anomaly
+detection, attitude mode classification, and synthetic data gen-
+eration), provided that the representations learned during pre-
+training are diverse and rich, and that these are coupled with
+high-fidelity fine-tuning simulation data. Although in this study
+we identify several predicted anomalous light curve modes,
+some present clearly anomalous behaviour (e.g., rapid tum-
+bling), while for others the underlying behaviour is less clear.
+Systematic cataloguing and analysis of simulation conditions
+that lead to these various curve morphologies would allow us
+to verify whether particular erroneous space object dynamics
+produce these curves (e.g., in Fig 8C, F).
+From this work, several key directions for further development
+emerge.
+Firstly, development of robust quantitative bench-
+marks for AI synthetic data. Whilst our approach encourages
+plausibility in the generated curves through reference-based
+sampling, systematic evaluation frameworks are needed to val-
+idate produced synthetic data beyond visual inspection/sense
+checks. For example, these frameworks could assess statistical
+distribution matching between real and AI generated datasets,
+and evaluate like-for-like comparisons in downstream tasks
+trained on real data, numerically simulated data, and/or data
+generated through our approach (i.e., generative AI data). Fi-
+nally, physics-informed neural networks (PINNs) could be used
+to quantify physical plausibility. Briefly, these networks com-
+bine a data loss term with a physics loss term. For example,
+for light curves this might be a reflectivity model as outlined in
+[20]. At inference time, a well-trained PINN will give a good
+indicator as to whether a synthetically generated light curve is
+obeying the underlying physics due to the value of the physics
+loss term.
+Another key direction is privacy and security considerations.
+As generative AI (and therefore also synthetic data) becomes
+more prevalent in SDA, privacy/security need to be consid-
+ered to ensure that if a model is pre-trained on sensitive light
+curves that they cannot be extracted from the resulting fine-
+tuned model at inference time. Additionally, the quality of a
+self-supervised model like ours is dependent on the quality of
+both the pre-training and fine-tuning data. If models such as
+these are to be integrated into critical Space Domain/Situational

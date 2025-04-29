@@ -1,0 +1,124 @@
+Space-averaged non-equilibrium Green’s function approach for quantum transport in 3D
+6
+3. Representative Applications for FV-NEGF
+To verify the capability of our FV-NEGF method,
+we consider electron transport through a 3D core-clad
+nanowire. The nanowire consists of a silicon (Si) core
+with a cross-sectional area of 2×2 nm2 in the yz-plane,
+embedded in a silicon dioxide (SiO2) cladding with a
+2 nm thickness. Here, the wire extends from 0 to 12 nm
+along the x-axis. The [100] crystal orientation of Si is
+aligned along the z-axis. Thus, the effective masses in
+the Si core are defined as m∗
+z = 0.9 (longitudinal) and
+m∗
+x,y =0.2 (transverse). For the SiO2 cladding, we set
+m∗
+x,y,z = 0.5 (isotropic). The conduction band offset
+between Si and SiO2, U, is set to 3.1 eV . In Figs. 3(a)
+and (b), we show our cross-sectional FV mesh and m∗
+z
+distribution in the 3D domain. Here, the number of
+0
+0.5
+1
+1.5
+2
+E (eV)
+0
+2
+4
+6
+8
+T(E)
+𝐸! = 0.59
+𝐸" = 1.02
+𝐸# = 1.10
+𝐸$ = 1.36
+𝐸% = 1.60
+𝐸& = 1.79
+𝐸' = 0.33
+(b)
+𝑚!∗
+𝑚#
+(a)
+(c)
+Figure 3:
+(a) Cross-sectional FV mesh.
+The dots
+on the circumference are boundary dots.
+(b) The
+ratio m∗
+z/me in 3D as an example for non-isotropic
+space-dependent material properties. (c) Transmission
+function evaluated by FV-NEGF. FE method in 2D is
+used to calculate cross sectional modes shown as inset
+color plots. FE mesh is also plotted as an inset.
+2D cells in the yz-plane is 900, and along the x-axis
+there are 40 grid spaces. Quantum transport study is
+then carried out by a home-built recursive NEGF code.
+In Fig. 3(c), we plot the transmission function, T(E),
+for a limited energy range such that seven steps are
+included. We remind readers that the current-voltage
+characteristic of a quantum wire at low temperature
+follows T(E) which shows the typical step-like increase
+(conductance step) as the electron energy (E) (bias
+voltage) increases. Each conductance step corresponds
+to the involvement of a new cross-sectional mode in
+the transport.
+Transport modes can be evaluated
+by solving the Schr¨odinger equation with the same
+input parameters in the 2D cross-sectional domain
+(closed system).
+In addition, seven cross-sectional
+modes and corresponding eigenenergies are calculated
+with the finite-element method and plotted as insets
+in Fig. 3(c).
+It is clear that the onset of the steps
+aligns with the eigenenergies denoted by Ei, thereby
+confirming the correctness of the methodology and its
+numerical implementation. The LDOS(E) distribution
+in the cross-sectional yz-plane resembles the mode
+distributions shown in Fig. 3(c) (data not displayed for
+brevity). Here, we refrain from quantifying the electron
+density, as our analysis does not involve sweeping
+the source-drain electrochemical potentials.
+For the
+second example, we introduce two 0.5 nm thick SiO2
+separator layers (barrier) in the yz-plane.
+In this
+configuration, the left and right 1D wires (each 2 nm
+long) connect to a central 2 nm isolated quantum
+dot (0DEG), forming a 1DEG-0DEG-1DEG system,
+as shown in Fig. 4(a). Here, we modify the meshing
+style along the x-axis, such that grid space becomes
+much finer (0.125 nm) in the area between the two
+barriers. The transport characteristics of this system
+can be understood as follows: (I) electrons tunnel from
+the cross-sectional modes of the left 1DEG into the
+bound states of the 0DEG (a fully confined region),
+then into the right 1DEG (or vice versa), following
+parallel tunneling mechanism.
+(II) peaks in T(E)
+are expected near the 0DEG eigenenergies, but their
+broadening and energy shifts depend on the barrier
+properties between the 1DEG wires and the 0DEG
+(dot), following resonant tunneling mechanism. Here,
+due to the high potential barrier, the broadening can be
+very small, requiring a fine energy grid (dE) to resolve
+the resonant peaks accurately. To address this, we have
+used the FE method in 3D and numerically compute
+the first six bound states of the 0DEG, as shown in
+Fig. 4 (b) and (c). We then adopt much finer dEs near
+these energies.
+In fact, we intentionally choose thin
+separators (0.5 nm) to induce slight broadening in the
+resonance peaks. In Fig. 4(d) (I) and (II), resonance
+peaks in T(E) are depicted with high resolution. The
+resonance energy shifts can be obtained by subtracting
+the eigenenergies shown in Fig. 4(c) from the resonance
+energies presented in Fig. 4(d) (I) and (II). These shifts
+are on the order of a few tens of meV. In addition,
+doubly degenerate levels (at E4 = E5 and E6 = E7)
+split when the 0DEG is connected to the 1DEGs on
+the right and left. The local density of state (LDOS)

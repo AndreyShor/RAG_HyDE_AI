@@ -1,0 +1,41 @@
+• if CHSH(P) ≤2 then CHSH(N [P]) ≤2;
+• if P is a box whose correlations are achievable by quantum mechanics,
+then CHSH(N [P]) ≤2
+√
+2;
+• if CHSH(P) < 4 then CHSH(N [P]) < 4.
+It is important to understand that the second statement of theorem 12 ap-
+plies only to correlations that can be obtained by measurements on quantum
+states. As we will see in section 5.2.1, some protocols bring boxes of CHSH
+value near 2 and brings them to 3 > 2
+√
+2, but these cannot be simulated by
+measurements on quantum states.
+Short[19] proved the impossibility of distillation protocols operating on
+two copies of noisy PR-boxes.
+Theorem 13. Two copies of a noisy PR-box cannot be distilled. For any
+Pǫ = ǫP P R + (1 −ǫ)P P R, there is no N 2 such that CHSH(N 2[Pǫ]) >
+CHSH(Pǫ).
+His proof, which applies to more general frameworks than just non-local
+boxes, works by showing that the probability that the protocol simulates
+a PR-box as a function of the same probability for the initial boxes is a
+polynomial of degree two in the original probability. He then shows a set of
+constraints that no polynomial of degree two can satisfy.
+5.2
+Known Distillation Protocols
+In this section, we consider only protocols achieving distillation of correla-
+tions outside the quantum set.
+All known distillation protocols are applied to the same family of boxes,
+termed correlated non-local boxes by Brunner and Skrzypczyk[6]. Correlated
+non-local boxes are of the form P C
+ǫ
+= ǫP P R + (1 −ǫ)P C where P C is the
+fully correlated box P C(ab|xy) = 1/2 if a⊕b = 0. Correlated non-local boxes
+have a CHSH value of 2(ǫ + 1) > 2. What characterizes these boxes is their
+bias towards correlated outputs, i.e. a ⊕b = 0. This means that when the
+box outputs uncorrelated bits, you are assured that it has output the correct
+answer. Both protocols presented here will make use of this fact.
+Non-locality distillation protocols can however be applied to any box of
+the non-signalling polytope. Whether a protocol distills or not a given box
+depends on its joint probability distribution.
+14

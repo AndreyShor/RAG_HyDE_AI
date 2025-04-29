@@ -1,0 +1,89 @@
+Define XN ∼Bin(N + 1, 1/2) and write J = XN −N
+2 −1. Use the binomial probability mass function
+(pmf) BinProb,
+BinProb(XN = k) =
+N + 1
+k
+
+1
+2N+1 ,
+so that (3.16) becomes
+νN(E) = 2
+X
+{XN |
+2(XN −N
+2 −1)
+N
+∈E}
+(2(XN −N
+2 −1) + 1)2
+N + 1
+BinProb(XN).
+Consider ϵ > 0 arbitrary and let E ⊂[0, 1] be a measurable set such that E ∩[0, ϵ] = ∅. We deduce that
+2J
+N ∈E
+=⇒
+XN ∈
+N(ϵ + 1) + 2
+2
+, N + 1
+
+.
+As a result,
+BinProb
+2(XN −N
+2 −1)
+N
+∈E
+
+≤BinProb
+
+XN ≥N(ϵ + 1) + 2
+2
+
+≤exp
+−( Nϵ+1
+N+1 )2 N+1
+2
+3
+
+= exp
+
+−(Nϵ + 1)2
+6(N + 1)
+
+,
+(3.17)
+where, in the second inequality, we have exploited Chernoff’s inequality for the binomial distribution [19,
+Theorem 4.4]. To derive this, consider µ = N+1
+2
+and p = 1/2, so that on account of the standard Chernoff
+inequality with 0 < δ < 1, we find
+BinProb(XN ≥(1 + δ)µ) ≤e−δ2
+3 µ.
+If XN ∼Bin(N + 1, 1/2), then µ = N+1
+2 , so that for the choice δ = (a −µ)/µ with a = (N(ϵ + 1) + 2)/2
+one indeed obtains (3.17), as certainly 0 < δ < 1. The inequality (3.17) implies that the pmf BinProb
+concentrates around zero, as N →∞, as long as E is bounded away from zero.
+It follows that for all E with E ∩[0, ϵ] = ∅, and for N sufficiently large,
+νN(E) ≤2(N + 1)e−(Nϵ+1)2/6(N+1).
+(3.18)
+As a result, (νN)N converges setwise to the Dirac mass concentrated at zero. Since the measure µS2 does
+not depend on N, the same statement holds true for KN = νN ×
+1
+4πµS2, i.e. (KN)N converges setwise to
+δ0 ×
+1
+4πµS2. This shows the validity of (ii).
+We are finally in a position to prove (3.7). To this avail, we notice that P ◦hCW
+0
+is uniformly continuous.
+Hence, given ε > 0 there is δ > 0 such that for all u, u′ ∈[0, 1] and e(Ω), e(Ω′) ∈S2, for which ||ue(Ω) −
+u′e(Ω′)|| < δ, it holds
+|P(hCW
+0
+(u · e(Ω)) −P(hCW
+0
+(u′ · e(Ω′))| < ε.
+(3.19)
+9

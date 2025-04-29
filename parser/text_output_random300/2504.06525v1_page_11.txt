@@ -1,0 +1,30 @@
+For instance, in Figure 5, we first perform a MOBO-driven optimization of tapping mode on a 
+water droplet sample, yielding three GP models that predict the distribution of the three rewards 
+across the 3D parameter space. Typically, the acquisition function is computed based on the 
+predictions and uncertainties of these GP models to determine the optimal control parameters. 
+However, MOBO enables dynamic reweighting of rewards, allowing the acquisition function to 
+favor particular rewards by adjusting their relative importance. 
+Figure 5c-d illustrates how modifying the weight of the phase reward and height difference 
+reward influences the optimal solution in the 2D parameter space. The corresponding scan lines 
+(Figure 5e-i) demonstrate that decreasing the weight of the phase reward has minimal impact on 
+the height and phase scan lines. This is consistent with the observed clustering of solutions in the 
+lower left of Figure 5c, suggesting that a steep gradient in the parameter space leads to substantial 
+hypervolume changes with small parameter shifts. This effect arises from the saturation of the 
+phase reward: once all phase pixels remain above the free-air phase, further improvements become 
+marginal. In contrast, increasing the weight of the phase reward (Figure 5g) effectively lowers the 
+phase at the expense of reduced alignment between the height trace and retrace. 
+Altering the weight of the height difference reward has a more pronounced effect on scan 
+quality. As shown in Figure 5h, decreasing its weight lowers the phase value by increasing the 
+probe-sample distance, but this comes at the cost of significantly worse alignment between trace 
+and retrace. Conversely, increasing the height difference reward weight (Figure 5i) pushes the 
+probe closer to the sample surface, resulting in only marginal improvements in trace-retrace 
+alignment while negatively impacting the phase reward—evidenced by phase pixels transitioning 
+from the attractive to the repulsive mode. 
+Thus, MOBO allows for quantitative and controlled adjustments to optimization objectives, 
+aligning outcomes with human preferences. More importantly, these modifications are made with 
+explicit quantification of their impact on scan quality, providing an objective measure of trade-
+offs between rewards. Traditionally, human operators adjust control parameters based on intuition 
+and empirical experience to achieve desired scan properties. With MOBO, instead of manually 
+tuning individual parameters, operators can now directly specify which aspect of the scan to 
+improve by adjusting the corresponding reward weights in a systematic and data-driven manner. 
+ 

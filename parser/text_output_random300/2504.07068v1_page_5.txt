@@ -1,0 +1,64 @@
+5
+Proof. The proof of the direct part (achievability of the rate) is as follows.
+Let Λ1 : A →BK be the optimal
+CPTP map in Deﬁnition 3 at γ = 0. Let UΛ1 : A →BKE be the corresponding Stinespring dilation isometry of
+Λ1 : A →BK. Alice applies UΛ1 to each copy of the state ρAR. Then, the overall puriﬁed state is
+|τ1⟩BKERR′
+= (UΛ1 ⊗11RR′) |ρ⟩ARR′
+,
+where |ρ⟩ARR′
+is a puriﬁcation of ρAR, and R and R′ are inaccessible reference systems. Note that by deﬁnition
+Tr ER′τ1BKERR′ = τBKR. Then Alice and Bob apply QSR to n copies of the pure state τBKERR′
+1
+to send system Bn
+from Alice to Bob with systems KnEn as the side information systems of Alice. The rate of this protocol is equal
+to a(ρ, 0) = 1
+2I(B : RR′)τ1 + ηn. After implementing this protocol, the state shared by Alice and Bob is ǫn close
+to (|τ1⟩BKERR′
+)⊗n. Tracing out systems EnR′n only increases the ﬁdelity, hence, this protocol achieves the rate of
+a(ρ, 0) = 1
+2I(B : RR′)τ1 + ηn and preserves the 1 −ǫn ﬁdelity with the state (τ BKR)⊗n. By Theorem 15, ηn and ǫn
+vanish as n grows very large.
+In the following, we obtain the converse bound. For any protocol with block length n and error ǫ
+S(M)ν + S(B0)Φ ≥S(MB0)ν
+= S(BnWBB1)ξ
+≥S(BnWB)ξ + S(B1)ξ −nδ(n, ǫ)
+≥S(BnWB)ξ + S(B1)Φ −nδ(n, ǫ) −nδ1(n, ǫ),
+(5)
+where the second line is due to applying the decoding isometry. The third line follows from Lemma 2. The last line
+follows from the decodability: the output state on system B1 is 2
+√
+2ǫ-close to the original state Φ in trace norm;
+then the inequality follows by applying the Fannes-Audenaert inequality, where δ1(n, ǫ) = 1
+n
+√
+2ǫ log(|A1|) + 1
+nh(
+√
+2ǫ).
+From the above, we obtain
+nQ(n, ǫ) + nE(n, ǫ) = S(M)ν + S(B0)Φ −S(B1)Φ
+≥S(BnWB)ξ −nδ(n, ǫ) −nδ1(n, ǫ),
+(6)
+where nE(n, ǫ) = S(B0)Φ −S(B1)Φ. Moreover, we obtain the following
+S(M)ν ≥S(M|KnWAA1)ν
+= S(MKnWAA1)ν −S(KnWAA1)ν
+= S(AnA0)ρ⊗Φ −S(KnWAA1)ν
+= S(An)ρ + S(A0)Φ −S(KnWAA1)ν
+= S(RnR′n)ρ + S(A0)Φ −S(KnWAA1)ν
+= S(RnR′n)ρ + S(A0)Φ −S(BnWBRnR′nB1)ξ
+≥S(RnR′n)ρ + S(A0)Φ −S(BnWBRnR′n)ξ −S(B1)ξ
+≥S(RnR′n)ρ + S(A0)Φ −S(BnWBRnR′n)ξ −S(B1)Φ −nδ1(n, ǫ),
+where the third line is due to the deﬁnition of the encoding isometry. The ﬁfth and sixth lines follow since the states
+|ρ⟩ARR′
+and |ξn⟩BnKnWAWBRnR′nA1B1 are pure. The penultimate line follows from subadditivity of entropy. The last
+line follows from the decodability: the output state on system B1 is 2
+√
+2ǫ-close to the original state Φ in trace norm;
+then the inequality follows by applying the Fannes-Audenaert inequality, where δ1(n, ǫ) = 1
+n
+√
+2ǫ log(|A1|) + 1
+nh(
+√
+2ǫ).

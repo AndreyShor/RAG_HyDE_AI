@@ -1,0 +1,90 @@
+Physics-informed KAN PointNet
+Table 5
+Performance comparison of physics-informed PointNet with KAN encoder and MLP decoder and physics-informed PointNet
+with MLP encoder and KAN decoder for predicting the velocity, pressure, and temperature fields across 135 geometries.
+In KANs, the Jacobi polynomial degree is set to 2, with 𝛼= 𝛽= −0.5 and 𝑛𝑠= 0.5. In MLPs, 𝑛𝑠= 1.0. || ⋅||𝑉represents
+the 𝐿2 norm over the entire domain 𝑉and || ⋅||Γ denotes the 𝐿2 norm over the inner cylinder surface.
+Physics-informed PointNet with
+Physics-informed PointNet with
+KAN encoder and MLP decoder
+MLP encoder and KAN decoder
+Average ||̃𝑢−𝑢||𝑉∕||𝑢||𝑉
+1.25273E−1
+8.62143E−2
+Maximum ||̃𝑢−𝑢||𝑉∕||𝑢||𝑉
+1.45714E−1
+9.63481E−2
+Minimum ||̃𝑢−𝑢||𝑉∕||𝑢||𝑉
+1.10891E−1
+7.54883E−2
+Average || ̃𝑣−𝑣||𝑉∕||𝑣||𝑉
+9.02736E−2
+8.85543E−2
+Maximum || ̃𝑣−𝑣||𝑉∕||𝑣||𝑉
+1.11110E−1
+1.02025E−1
+Minimum || ̃𝑣−𝑣||𝑉∕||𝑣||𝑉
+7.55460E−2
+7.46082E−2
+Average || ̃𝑝−𝑝||𝑉∕||𝑝||𝑉
+2.73488E−2
+2.98410E−2
+Maximum || ̃𝑝−𝑝||𝑉∕||𝑝||𝑉
+3.22359E−2
+3.24039E−2
+Minimum || ̃𝑝−𝑝||𝑉∕||𝑝||𝑉
+2.25765E−2
+2.76343E−2
+Average || ̃𝑇−𝑇||𝑉∕||𝑇||𝑉
+2.52252E−2
+2.21639E−2
+Maximum || ̃𝑇−𝑇||𝑉∕||𝑇||𝑉
+3.09241E−2
+2.82095E−2
+Minimum || ̃𝑇−𝑇||𝑉∕||𝑇||𝑉
+1.98086E−2
+1.80277E−2
+Average || ̃𝑇−𝑇||Γ∕||𝑇||Γ
+1.05230E−2
+3.46168E−3
+Maximum || ̃𝑇−𝑇||Γ∕||𝑇||Γ
+1.30571E−2
+5.33721E−3
+Minimum || ̃𝑇−𝑇||Γ∕||𝑇||Γ
+5.91177E−3
+2.56398E−3
+Minimum loss achieved
+4.58812E−4
+1.25308E−4
+Training time
+23.0
+25.49
+per epoch (s)
+Number of epochs to
+2396
+2498
+reach the minimum loss
+Regarding the prediction of the temperature field on the surface of the inner cylinder as an unknown boundary
+condition in the inverse problem, the average relative error (𝐿2 norm) of the predicted quantity is approximately 0.346%
+and 1.052% using the first and second models, respectively. Additionally, an example of these predictions is visually
+presented in the right panel of Fig. 13. Similar to the discussion in Sect. 6.2.2 regarding the temperature distribution
+in Fig. 9, the learnable activation function in KAN layers provides greater flexibility compared to the fixed hyperbolic
+activation function in MLP layers. Since the first model employs KAN layers in the decoder, which is responsible
+for mapping the geometric features to the velocity, pressure, and temperature fields, it achieves better performance
+compared to the second model, which utilizes MLP layers in its decoder. The second reason for the success of the first
+model can be outlined as follows. The encoder is primarily responsible for extracting the geometric features of the
+point clouds. As shown in Fig. 1, a max pooling operation is applied at the end of the encoder to construct the vector
+of global features. When using MLP layers with the hyperbolic tangent activation function, the score of each point is
+constrained within the range [−1, 1], leading to a more consistent comparison when computing the maximum values.
+In contrast, when KAN layers are used in the encoder, there is no restriction on the output range. Consequently, the
+distribution of scores among the point clouds may become uneven, and after applying the max pooling operator, the
+global features may not represent the geometric features as accurately as in the case of MLP layers.
+At the end of this subsection, it is worthwhile noting that if we compare the physics-informed PointNet model,
+containing an encoder built on shared MLP layers and a decoder built on shared KAN layers, with those models
+consisting entirely of KAN layers discussed in the previous sections, particularly those listed in Table 2 and Table 3,
+the results reveal that the combined MLP-KAN model provides more accurate predictions for the velocity (especially
+the 𝑢-component) and temperature fields while achieving the lowest loss among the compared models. Therefore, we
+suggest using the physics-informed PointNet with shared MLP layers as the encoder and shared KAN layers as the
+decoder as the optimal model.
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 19 of 25

@@ -1,0 +1,157 @@
+34
+where N is a nilpotent matrix. Moreover, defining eV = −
+1
+√k+1W −1 (e1 ⊗In), and e
+E = e1 ⊗In, we obtain
+−W −1 eT =
+
+−
+1
+√
+k + 1W −1 (e1 ⊗In)
+ 
+e1T ⊗In
+
+= eV e
+ET .
+With these notations, we can express the inverse of L as
+L−1 =
+m+p
+X
+j=0
+N jD−1,
+where N j for all j ≥1 is a j-th block sub-diagonal matrix. The blocks in this sub-diagonal are given by
+
+
+
+
+eV e
+ET j
+, · · · ,
+
+eV e
+ET j
+, −e
+ET 
+eV e
+ET j−1
+, · · · , −e
+ET , In, · · · , In,
+1 ≤j ≤m
+−e
+ET 
+eV e
+ET m
+, · · · , −e
+ET , In, · · · , In,
+j > m.
+The spectral norm of L−1 can be bounded as follows:
+L−1
+2 ≤
+m+p
+X
+j=0
+N jD−1
+2 ,
+where
+N jD−1
+2 ≤max
+
+
+eV e
+ET l
+W −1
+
+2
+,
+ e
+ET 
+eV e
+ET l
+W −1
+
+2
+,
+√
+k + 1
+0 ≤l ≤m
+
+,
+for all 0 ≤j ≤m + p. Since eV is proportional to the first block column of W −1, we obtain
+e
+ET eV = [Dkk(Ah)]−1
+
+
+k
+X
+j=0
+dj(Ah)j
+
+= [Dkk(Ah)]−1 Nkk(Ah) = Rkk(Ah).
+Substituting this into N j, we derive
+
+eV e
+ET j
+= eV
+
+e
+ET eV
+j−1 e
+ET =
+
+Ik+1 ⊗[Rkk(Ah)]j−1
+eV e
+ET ,
+where, in the second equality, we interchange the multiplication order of Rkk(A) and eV . For l ≥1, we obtain
+the following bounds
+
+
+eV e
+ET l
+W −1
+
+2
+≤
+[Rkk(Ah)]l−1
+2
+ eV e
+ET W −1
+2 ,
+ e
+ET 
+eV e
+ET l−1
+W −1
+
+2
+≤
+[Rkk(Ah)]l−1
+2
+ e
+ET W −1
+2 .
+Since m and k satisfy the condition
+I −Rl
+kk(Ah) exp(−lAh)
+
+2 ≤1 for all 1 ≤l ≤m, there is a uniform
+bound
+[Rkk(Ah)]l
+2 ≤2 · C(A),
+∀l = 1, . . . , m,
+where C(A) = supt∈[0,T ] ∥exp(At)∥2. Thus, we derive the bound for ∥L−1∥2:
+∥L−1∥2 ≤2 · C(A)(m + p) max
+n
+∥W −1∥2,
+ eV e
+ET W −1
+2 ,
+ e
+ET W −1
+2 ,
+√
+k + 1
+o
+.
+(A16)
+Up to this point, no special properties of A have been assumed.

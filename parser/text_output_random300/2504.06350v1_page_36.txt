@@ -1,0 +1,61 @@
+ρ
+B
+T
+A
+R
+x
+a
+z
+c
+s
+y
+b
+Figure 11: rDI-QKD Protocol: Alice (A) and Bob (B) aim to establish a secret key over a long distance using the routed
+Bell setting. The relay (R) receives an input s ∈0, 1 and, based on its value, sends the particle from the source to either
+the nearby device T (s = 0) or the distant device B (s = 1).
+to the Pauli operators σz and σx. In this case, Eq. (78) becomes equivalent to a steering scenario in which
+Bob’s states are remotely prepared by A1 measurements, i.e., the assemblage ρA1|θ admits a LHV model
+of the form ρA1|θ = P
+λ p(a1|θ, λ)ρλ. If one can show that ρA1|θ does not admit such a model, then it
+exhibits steering and thus belongs to the set Mqqq. Consequently, the violation of any steering inequality
+certifies that the full correlations are genuinely quantum. The complete proof of this theorem in [250]
+uses such steering inequalities to derive Eq. (103).
+If S0 = 2
+√
+2, and A1 perform all real projective qubit measurements of the form cθσz + sθσx, then
+C = T = ηl where ηl is the transmission rate of the LP link (see section 6.2). Putting these together,
+there is a violation of the inequality (103) that happens when
+C = ηl > 2
+π sin (πηl
+2 ),
+(104)
+which can be satisfied for any ηl > 0. As a result, the routed Bell inequality expressed in 6 can be violated
+for arbitrary transmission ηl > 0, offering a dramatic advantage in terms of robustness to loss compared
+to standard Bell tests. Even when the source and detectors are not ideal but sufficiently reliable, quantum
+nonlocal correlations can still be established for arbitrarily low transmission, provided that the number
+of measurement settings on A1 (nA1) satisfies condition nA1 > 1
+ηl .
+rDI-OKD: DI-QKD based on the routed Bell test. The routed Bell scenario introduced in 3.8.2 exhibits
+features that enhance its applicability to DI-QKD and, in certain cases, provides advantages over standard
+Bell tests. For example, the BB84 correlations, which can be generated from a maximally entangled two-
+qubit state by performing measurements in the σx and σz bases, can be reproduced classically in a
+standard Bell setup which makes these correlations unsuitable for standard DI-QKD. However, their
+quantum nature can be demonstrated in a routed Bell scenario by performing random CHSH tests in
+the (A, T) configuration. Consider the case in 9 where A and T are two devices close to the source and
+the device B is located far from the source and the purpose is to establish a key between A and B. As
+in standard DI-QKD, all components including the relay R are untrusted. The only assumption is that
+they obey certain no-signaling constraints preventing them from signaling arbitrarily to each other.
+Unlike standard DI-QKD, some particles emitted from the source are routed to the testing device T
+instead of B. The output of these cases always contributes to parameter estimation and can not be used
+to generate a key.
+The rDI-QKD protocol introduced in [251] as follows: in each round of the protocol, Alice generates
+independent random variable Xi ∈X and si ∈{0, 1} and feed them to her device A and the relay R,
+respectively. Based on the value of si, two cases can occur:
+1. si = 0: Bob’s quantum particle is routed to T, in this case, Alice generates a random variable Z
+and feeds it to T. She records the output variable Ai and publicly announces Si.
+2. si = 1 : Bob’s quantum particle is routed to B where Bob generates a random variable Yi ∈Y,
+feeds it on his device, and records the output Bi.
+After all rounds, Alice and Bob check the date for which si = 0 to see if they violate a routed Bell
+inequality. On the other hand, they agree on a subset of the rounds to generate the raw key. Finally, if the
+test of violating a routed Bell inequality is passed, they apply error correction and privacy amplification
+36

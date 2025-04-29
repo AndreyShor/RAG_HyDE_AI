@@ -1,0 +1,83 @@
+NQG III - Two-Centre Problems, Whirlpool Galaxy and Toy Neutron Stars
+48
+S(x, t) = ˜St(Φ(x)),
+˙Φt(x) = ∇S(Φt(x), t).
+More properly this should be taken to define Φs with Φs=0 = id, s ∈(0, t), t ∈(0, T), T
+sufficiently small.
+Of course Φt ceases to be a diffeomorphism when det(DΦt(x)) = 0, i.e.
+det
+ ∂
+∂x0
+x(x0(x, t), t)
+
+= 0,
+i.e. when classical paths focus at a point forming caustics. We assume this does not
+happen for 0 < t < T, for a global T, called the caustic time. We then have the result:
+Theorem 5.2. (Elementary formula). Given that the no-caustic condition holds with a
+caustic time T > 0, then for all t ∈[0, T),
+uσ(x, t) = exp
+
+−S(x, t)
+σ2
+
+E
+(
+T0(Y σ
+t )
+ 
+−1
+2
+t
+Z
+0
+△S(Y σ
+s , t −s)ds
+!)
+,
+where
+dY σ
+s = −∇S(Y σ
+s , t −s)ds + σdBs,
+Y σ
+0 = x, s ∈[0, t].
+Proof. Define the local martingale,
+Mt = exp
+
+−1
+2σ2
+t
+Z
+0
+|∇S(Y σ
+s , t −s)|2ds + 1
+σ
+t
+Z
+0
+∇S(Y σ
+s , t −s).dBs
+
+.
+Assume S(x, t) is suitably differentiable to allow us to apply Itˆo’s formula which gives,
+σ
+t
+Z
+0
+∇S(Y σ
+s , t −s).dBs = S0(Y σ
+t ) −S(x, t)
++
+t
+Z
+0
+
+|∇S(Y σ
+s , t −s)|2 + ∂
+∂tS(Y σ
+s , t −s) −σ2
+2 △S(Y σ
+s , t −s)
+
+ds.
+Thus, from the Girsanov-Cameron-Martin theorem for the change of measure applied
+to the Feynman-Kac formula,

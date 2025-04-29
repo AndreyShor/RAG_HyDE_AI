@@ -1,0 +1,57 @@
+2
+NEURAL NETWORK POLYCONVEXIFICATION
+[Bar05, EBG13, BEG15].
+However, these methods are often subject to the curse of high-
+dimensionality, since they require the mesh-based discretisation of the (d×d)-dimensional space of
+deformation gradients. Polyconvexification algorithms further increase the dimensionality because
+they perform the convexification in the minors space of the deformation gradient. For isotropic
+functions, this dimensionality can be reduced by characterising the polyconvexity via signed
+singular values, as in [WP23] (see [NPPW24] for a corresponding polyconvexification algorithm).
+However, despite their efficiency, these algorithms remain resource and time consuming, especially
+when d = 3. As a result, conventional relaxation algorithms are often impractical for engineering
+applications that require iterative computations and multi-query evaluations of the polyconvex
+hull for varying parameter values.
+For example, frameworks such as the isotropic pseudo-time incremental damage model intro-
+duced in [BO12] involve a (d × d + 1)-parameter dependent family of convexification problems,
+consisting of the deformation gradient and the internal variable from the previous time step that
+captures the material history (see Section 2). Such parameter dependence introduces additional
+dimensionality as the material parameter ζ can vary at any material point in Ω. This requires the
+polyconvex envelope to be computed from scratch for each parameter configuration, resulting in
+a (d × d + p)-dimensional problem. Overall, the accurate approximation of polyconvex envelope
+for parameter-dependent energy densities is of great importance for the practical application of
+computational relaxation techniques.
+To overcome the computational challenges of conventional relaxation schemes and make them
+practically feasible, we propose a neural network-based approach that compresses the parameter-
+dependent polyconvex envelope into the parameters of a small-scale artificial neural network
+that incorporates intrinsic properties of the polyconvexification problem into its architecture.
+Our method exploits a design that encodes polyconvexity by combining a feature extraction
+layer, which computes the minors function based on a signed singular value characterisation
+of isotropic functions, with Input Convex Neural Networks (ICNNs). In addition, symmetry
+properties and upper-bound relationships are systematically enforced during training through
+penalty terms in the loss functional, ensuring that the network satisfies the necessary physical
+and mathematical constraints. This tailored approach not only speeds up the approximation
+of the polyconvex envelope, but also increases the reliability of the approximations in practical
+engineering applications.
+Recent advances in neural networks, particularly through the development of ICNNs [AXK17],
+have enabled architectures that enforce convexity in energy density functions, a key requirement
+for accurate material modelling. For example, [AAF22, AF23] use ANNs to learn constitutive laws
+from stress-strain data, while preserving fundamental principles of solid mechanics through ICNNs
+that ensure material stability. Similarly, [KFM+22] and [KOMFW22] propose machine learning
+based constitutive models for finite deformation and electro-mechanically coupled behaviour
+respectively, using ICNNs to enforce hyperelasticity, anisotropy and polyconvexity. In [LKK+23],
+a neural network-based hyperelastic constitutive model is introduced that inherently satisfies
+standard constitutive conditions using ICNNs, while [VRPB25] designs multi-scale heterogeneous
+structures with spatially varying microstructures by incorporating physical principles such as
+polyconvexity, objectivity and thermodynamic consistency. More recently, [GKWM25] introduced
+convex signed singular value neural networks (CSSV-NN) for isotropic hyperelastic energy
+formulations, enabling the prediction of polyconvex hulls. Unlike [GKWM25], which learns
+polyconvex hulls directly from the function, our approach aims to learn polyconvex envelopes,
+potentially parameter-dependent, from reference envelopes obtained either analytically or via
+established algorithms. Other work has also explored ANNs for modelling the behaviour of
+mechanically sound materials without using ICNNs [LK23, FJB+21, TSRT22, TCT22, CG22].
+The remaining parts of this paper are structured as follows. In Section 2 we introduce a
+leading engineering application by presenting a parameter-dependent family of energy densities
+arising from an isotropic damage problem. In Section 3 we recall the signed singular value
+formulation of the polyconvex envelope for isotropic functions, while Section 4 introduces the
+properties preserving neural networks that enforce polyconvexity, symmetries and the upper bound
+relation. Finally, Sections 5 and 6 provides numerical examples including both mathematical

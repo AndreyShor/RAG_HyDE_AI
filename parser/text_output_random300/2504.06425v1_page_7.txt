@@ -1,0 +1,103 @@
+NEURAL NETWORK POLYCONVEXIFICATION
+7
+4.2.1. Fully input convex neural networks (FICNN). The model illustrated in Figure 1 defines a
+neural network over the input ˆm using the recurrence for i = 0, . . . , k −1,
+zi+1 = gi(W (z)
+i
+zi + W ( ˆm)
+i
+ˆm + bi),
+where zi denotes the layer activations (with z0 = 0 , W (z)
+0
+≡0) and gi are nonlinear activation
+functions. The overall network evaluation reads
+Φpc
+pred(ˆν) := hc
+pred( ˆm; θ) = zk,
+where hc
+pred is the neural network approximation of the function hc defined in (13) and depends
+on θ = {W ( ˆm)
+0:k−1, W (z)
+1:k−1, b0:k−1}, the parameter vector collecting the weights and biases.
+Proposition 4.1. The function Φpc
+pred is polyconvex, that is hc
+pred( · ; θ) is convex in ˆm, i.e. the
+minors m(ˆν) of the signed singular values vector ˆν, provided that all W (z)
+1:k−1 are non-negative
+and all activation functions gi are convex and non-decreasing.
+The proof follows from the fact that non-negative sums of convex functions are also convex,
+and that the composition of a convex and nonconvex decreasing function is also convex. The
+constraint that the gi are convex and non-decreasing is not particularly restrictive, since current
+nonlinear activation functions such as the ReLU or Softplus activation functions already satisfy
+this constraint. A review of convex activation functions is presented in [WWS23].
+ζ
+ˆm
+u1
+u2
+...
+uk−1
+z1
+z2
+...
+zk−1
+zk
+˜W0
+˜W1
+˜W2
+˜Wk−2
+W ( ˆm)
+0
+W (z)
+1
+W (z)
+2
+W (z)
+k−1
+Figure 2. A partially input convex neural network (PICNN), coloured weights
+need to be non-negative to ensure convexity of the network in ˆm.
+4.2.2. Partially input convex neural networks (PICNN). The previous model, i.e. FICCN, provides
+convexity over the entire input of the neural network, which may in fact be a restriction on the
+allowable class of models. Furthermore, this full joint convexity is unnecessary in the setting
+where the convexity is required only over some inputs. This is why we present the partially input
+convex neural networks (PICNN), as introduced in [AXK17], which are convex over only some
+inputs of the network. The k-layer PICCN architecture (Figure 2) is defined by the recurrence
+for i = 0, . . . , k −1,
+ui+1 = ˜gi
+
+˜Wiui + ˜bi
+
+,
+zi+1 = gi
+
+W (z)
+i
+
+zi ◦max([W (zu)
+i
+ui + b(z)
+i ], 0)
+
++ W ( ˆm)
+i
+
+ˆm ◦[W ( ˆmu)
+i
+ui + b( ˆm)
+i
+]
+
++ W (u)
+i
+ui + bi
+
+,
+with u0 = ζ, z0 = 0 and W (z)
+0
+= 0 and
+Φpc
+pred(ˆν; ζ) := hc
+pred( ˆm; ζ; θ) = zk
+denotes the overall evaluation of the network. Moreover, hc
+pred is the neural network approximation
+of the function hc defined in (13) and depends on θ, the parameter vector collecting the weights
+and biases. The ui ∈Rni and zi ∈Rmi denote the hidden units for the ζ-path and ˆm-path,

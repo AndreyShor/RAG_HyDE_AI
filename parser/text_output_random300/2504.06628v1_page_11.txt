@@ -1,0 +1,199 @@
+11
+forward time, time-reversal probability flow, and time-reversal trajectories are given by:
+rd(ti+1) =rd(ti) +
+p
+2Dth∆W (ti) +
+F (r(ti+1))
+Γ
++
+Z 1
+0
+dθ
+Z
+ν( dz)z P(rd(ti+1) −θz, ti+1 | rd(ti), ti)
+P(rd(ti+1), ti+1 | rd(ti), ti)
+
+∆t + o(∆t)
+˜rpfd(ti+1) =˜rpfd(ti) +
+p
+2Dth∆W (ti) +
+
+−F (˜rpfd(ti+1))
+Γ
++ 2Dth∇log P(˜rpfd(ti+1), T −ti+1)
+−2
+Z 1
+0
+dθ
+Z
+ν( dz)z P(˜rpfd(ti+1) −θz, T −ti+1)
+P(˜rpfd(ti+1), T −ti+1)
++
+Z 1
+0
+dθ
+Z
+ν( dz)z
+˜Ppfd(˜rpfd(ti+1) −θz, ti+1 | ˜rpdf(ti), ti)
+˜Ppfd(˜rpfd(ti+1), ti+1 | ˜rpfd(ti), ti)
+#
+∆t + o(∆t)
+˜rd(ti+1) =˜rd(ti) +
+p
+2Dth∆W (ti) +
+
+−F (˜rd(ti+1))
+Γ
++ 2Dth∇log P(˜rd(ti+1), T −ti+1)
++
+Z 1
+0
+dθ
+Z
+ν( dz)z P(˜rd(ti+1) −θz + z, T −ti+1)
+P(˜rd(ti+1) −θz, T −ti+1)
+˜Pd(˜rd(ti+1) −θz, ti+1 | ˜rd(ti), ti)
+˜Pd(˜rd(ti+1), ti+1 | ˜rd(ti), ti)
+#
+∆t + o(∆t).
+(S.12)
+Using these schemes, the short-time estimates for the transition probability densities are given by:
+Pd[r(ti+1), ti+1 | r(ti), ti] =
+1
+p
+(2π)d∆t
+exp
+
+−
+
+r(ti+1) −r(ti)
+∆t
+−F (r(ti+1))
+Γ
+−
+Z 1
+0
+dθ
+Z
+ν( dz)z Pd(r(ti+1) −θz, ti+1 | r(ti), ti)
+Pd(r(ti+1), ti+1 | r(ti), ti)
+
+2
+∆t
+4Dth
++ o(∆t)
+)
+,
+˜Ppfd[r(ti+1), ti+1 | r(ti), ti] =
+1
+p
+(2π)d∆t
+exp
+
+−
+
+r(ti+1) −r(ti)
+∆t
++ F (r(ti+1))
+Γ
+−2Dth∇log P(r(ti+1), T −ti+1)
+−
+Z 1
+0
+dθ
+Z
+ν( dz)z
+˜Ppfd(r(ti+1) −θz, ti+1 | r(ti), ti)
+˜Ppfd(r(ti+1), ti+1 | r(ti), ti)
++2
+Z 1
+0
+dθ
+Z
+ν( dz)z P(r(ti+1) −θz, T −ti+1)
+P(r(ti+1), T −ti+1)
+
+2
+∆t
+4Dth
++ o(∆t)
+)
+˜Pd[r(ti+1), ti+1 | r(ti), ti] =
+1
+p
+(2π)d∆t
+exp
+
+−
+
+r(ti+1) −r(ti)
+∆t
++ F (r(ti+1))
+Γ
+−2Dth∇log P(r(ti+1), T −ti+1)
+−
+Z 1
+0
+dθ
+Z
+ν( dz)z P(r(ti+1) −θz + z, T −ti+1)
+P(r(ti+1) −θz, T −ti+1)
+P(r(ti+1) −θz, ti+1 | r(ti), ti)
+P(r(ti+1), ti+1 | r(ti), ti)
+
+2
+∆t
+4Dth
++ o(∆t)
+)
+.
+(S.13)
+Recalling the L´evy–Fokker–Planck equation, Eq. (S.10), the transition densities of the three types of systems can
+similarly be transformed into continuity equations via the probability flux method we established. Consequently, their
+corresponding entropy production can be defined in the same manner as previously introduced. The only distinction
+lies in replacing the original probability distribution with the transition density, and substituting the L´evy jump
+measure with the corresponding new jump measure. Thus, we have the following L´evy score functions:
+SL,r(ti)(r, t) := −
+Z 1
+0
+dθ
+Z
+ν( dz)z
+˜Ppfd(r −θz, t | r(ti), ti)
+˜Ppfd(r, t | r(ti), ti)
+≃−
+Z 1
+0
+dθ
+Z
+ν( dz)z P(r −θz, t | r(ti), ti)
+P(r, t | r(ti), ti)
+,
+SL(r, T −t) := −
+Z 1
+0
+dθ
+Z
+ν( dz)z P(r −θz, T −t)
+P(r, T −t)
+,
+˜SL,r(ti)(r, t) := −
+Z 1
+0
+dθ
+Z
+ν( dz)z P(r −θz + z, T −t)
+P(r −θz, T −t)
+˜Pd(r −θz, t | r(ti), ti)
+˜Pd(r, t | r(ti), ti)
+≃−
+Z 1
+0
+dθ
+Z
+ν( dz)z P(r −θz + z, T −t)
+P(r −θz, T −t)
+P(r −θz, t | r(ti), ti)
+P(r, t | r(ti), ti)
+,
+(S.14)

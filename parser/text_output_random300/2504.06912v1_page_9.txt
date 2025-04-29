@@ -1,0 +1,134 @@
+9
+−2
+−1
+0
+1
+2
+E/∆0
+0.0
+1.5
+3.0
+4.5
+6.0
+7.5
+9.0
+10.5
+g/ν0
+(a)
+N=24
+N=32
+N=48
+N=64
+N=96
+N=128
+N=192
+−2
+−1
+0
+1
+2
+E/∆0
+(b)
+FIG. 8. Order of taking the imaginary part. Density
+of states of (a) d-wave and (b) nodeless anisotropic s-wave
+superconductors computed using the mRes prescription where
+the imaginary part in Eq. (9) was taken before applying the
+prescription. The result should be insensitive to the order of
+taking the imaginary part; which they are for larger N, vide
+Figs. 5(a2) and (b2). Since Eq. (9) is ln-divergent, the results
+for low values of N differ whilst still being an improvement
+over the RSum method, vide Figs. 5(a1) and (b1).
+B.
+The order of integration and taking imaginary
+part
+We have seen in the examples above that it is the imag-
+inary part of the integral that maps to the physical re-
+sponse. In principle, there is a question whether the or-
+der of taking the imaginary part and the integration are
+interchangeable. The short answer is yes. This is guar-
+anteed by the fact that the regulator η keeps everything
+finite, in which case the order of operations commute.
+Although the exact result (limit of N →∞) is the same
+when computed in either ordering, it requires some care
+when making an estimate with a discrete sum. And this
+is of concern to us because our objective is to achieve
+acceptable results in coarser grids.
+To this effect, if the integral that led to I(ω, θ) is con-
+vergent at the upper limit of the integration, then once
+again we would not have to worry about the order of ac-
+tions. However, if the integral is divergent at the upper
+limit in the real part (the imaginary part still has to be
+convergent as it is the physical result), at low N’s this
+divergence may not effectively cancel itself out and can
+lead to relatively worse performance if we retain both
+real and imaginary parts in the prescription, taking the
+imaginary part only of the final result.
+This can be improved by explicitly taking the imag-
+inary part of I(ω, θ) right from the beginning.
+In our
+example for Raman scattering I ∼
+R Λ dε /ε2 ∼1/Λ →0
+for Λ →∞and, hence, the order of taking imaginary
+parts do not matter. However, for the example of the
+density of states, we have I ∼
+R Λ dε /ε ∼ln(Λ) →∞for
+Λ →∞. We exemplify this in Fig. 8, where we show the
+results of computing the density of states by first taking
+the imaginary part of the response function and then ap-
+plying the mRes method. Whilst for low N’s, the order
+of taking the imaginary part produces different results,
+vide Figs. 5(a2) and (b2), the result is still in the vicinity
+of the expected result and an improvement over RSum.
+V.
+CONCLUSION
+We have presented a numerical prescription to calcu-
+late integrals that have a singular integrand, which can
+also result in singular features after integration. What
+sets it apart from other available prescriptions is that it
+handles and reproduces the singular features without the
+need of an adaptive mesh while outperforming conven-
+tional methods on a coarse grid. This scenario is common
+to many practical calculations, particularly of dynamical
+correlation functions, where the number of subdivisions
+cannot be made arbitrarily small due to the computa-
+tional cost of the problem. In such scenarios, a Riemann
+sum prescription to carry out integrations becomes the
+only possibility for performing the integration.
+Our prescription offers a way to better estimate the
+true result even with limited grid points.
+We demon-
+strated its validity in a number of scenarios. We calcu-
+lated the dynamical correlation functions that are rel-
+evant for Raman scattering from superconductors for
+various structures of the order parameter and also to
+a density-of-states calculation. We demonstrated its ef-
+fectiveness even in a realistic calculation of the Raman
+response including many-body effects that result in col-
+lective modes.
+We also identified the two primary limitations of this
+method. First, one needs to know the nature of singular-
+ity of the integrand. The second, is that there is a lower
+limit to the size of the sub-interval beyond which it stops
+outperforming the conventional prescriptions. The for-
+mer limitation is not really limiting given recent advances
+in theory [22] that allow us to infer the local asymptotic
+forms of singularities. The latter is also shown to only
+be a limitation for impractically small sub-interval sizes.
+These considerations allow for a rather wide applicability
+of this technique. We also resolved a potential issue with
+divergent integrals where the order of taking imaginary
+part and doing the integration could matter.
+Looking ahead, on the materials-science front, we
+believe that this prescription can improve analyses of
+anisotropic superconductors using not only Raman spec-
+troscopy, but also infrared spectroscopy and THz pump-
+probe spectroscopy, where similar correlation functions
+are needed to model the response. One can also foresee
+the incorporation of this scheme into techniques based on
+fRG and on generalized RPA to calculate response func-
+tions after computing the ground states (which is what
+they are usually set-up to do). On the numerical side, one
+can investigate a possible incorporation into the Monte
+Carlo techniques of integration and possibly extend sim-
+ilar singularity-based integration to higher dimensional
+integrals.

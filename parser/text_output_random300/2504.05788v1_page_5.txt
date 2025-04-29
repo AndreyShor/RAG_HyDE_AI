@@ -1,0 +1,162 @@
+Space-averaged non-equilibrium Green’s function approach for quantum transport in 3D
+5
+2.3. Applying boundary conditions and reducing
+FV-NEGF to the transport domain
+Fig. 2 shows a schematic picture of a nanowire where
+we use it as an instrumental tool to illustrate the
+implementation of different boundary conditions. The
+south, north, top, and bottom faces must be treated
+with the zero Dirichlet boundary condition, while the
+west and east faces must be treated with the open
+boundary condition. Before reducing [A] to a finite-
+sized matrix for the reduced domain, we need to
+impose the Dirichlet boundary condition on the non-
+open boundary faces.
+Left 
+contact
+Right 
+contact
+Transport domain
+1 2 3 4 …
+Σ!
+Σ"
+Y
+X
+Z
+Supercells
+Figure 2:
+Schematics of a 3D domain resembling
+a nanowire which is discretized into nonuniform
+rectangular control volumes.
+Outermost cells on
+western and eastern faces must be subjected to the
+open boundary condition while the Dirichlet boundary
+condition must be imposed to the rest of outermost
+cells indicated by red dots.
+The zero Dirichlet boundary condition is applied
+to Eq. (12) in two steps: (I) by eliminating any term
+in the set {aS, aN, aB, aT } relevant to the faces with
+Dirichlet boundary condition, from the off-diagonal,
+(II) by modifying the same term within the diagonal
+term (aP ) by aS,N = Γs,n/(δy+,−
+s,n ∆Y ) and aB,T =
+Γb,t/(δz+,−
+b,t ∆Z). Here, the values for Γ∗at Dirichlet
+boundaries (Γs,n,b,t ) are known, and therefore there
+is no need to evaluate them by the harmonic mean.
+Details regarding the implementation of Dirichlet
+boundary condition can be found in Ref. [38]. Thus,
+handling the closed boundary condition essentially
+reduces to correcting the six vectors of a-coefficients.
+We stress that the above equation is still for the
+semi-infinite domain.
+To handle the open boundary
+conditions on the western and eastern faces, the total
+domain should be partitioned into semi-infinite left
+and right contacts, along with the reduced transport
+domain (i.e., the channel). Then the infinite matrix
+equation [A][G] = [∆V ]−1 can be rewritten as the
+following partitioned equation:
+
+AL
+ALC
+O
+ACL
+AC
+ACR
+O
+ARC
+AR
+ GL
+GLC GCR
+GCL
+GC
+GCR
+GRL GRC
+GL
+
+=
+
+∆VL
+O
+O
+O
+∆VC
+O
+O
+O
+∆VR
+−1
+. (14)
+Focusing on the central column of G, we can arrive at
+three equations for GLC, GC, and GRC. Using matrix
+algebra the first and third matrix equations can be
+combined into the second equation as
+
+AC −ACLA−1
+L ALC −ACRA−1
+R ARC
+
+GC =[∆VC]−1.(15)
+It is conventional to define the left and right self-
+energies as ΣL =ACLA−1
+L ALC and ΣR =ACRA−1
+R ARC,
+respectively, such that above relation can be written as
+[AC −ΣL −ΣR][GC][∆VC] = [1].
+(16)
+We refer to A−1
+L,R as the contact Green’s function.
+Note that ∆VL and ∆VR did not appear in Eq. (16).
+Computing
+the
+full
+contact
+Green’s
+function
+is
+intractable as the contact Hamiltonian can be very
+large.
+We can further divide the transport domain into
+a set of supercells, marked by integers in Fig. 2. Here,
+a supercell is defined as the collection of all control
+volumes sharing the same x-coordinate, xP .
+In the
+same way, we can divide the contact domains into a
+set of supercells, although they are not shown in Fig.
+2.
+This extra division allows us to make full use of
+the concept of the contact surface Green’s function,
+gL,R, in evaluating ΣL,R.
+Surface Green’s function
+essentially imply that one only needs a few blocks of the
+contact Green’s functions to evaluate the self-energy
+matrices.
+Then, the equation for the non-vanishing
+blocks of the self-energies can be expressed as: [ΣL]11 =
+A1,0 gL A0,1, and [ΣR]NN =AN,N+1 gR AN+1,N. Here,
+A01 [AN+1,N] represents the coupling Hamiltonian
+between the last [first] supercell of the left [right]
+contact and the first [last] supercell of the channel.
+The supercell arrangement for FV-NEGF has two other
+major advantages as: (I) it allows the implementation
+of the Sancho-Rubio method [42] to speed up the
+evaluation of gL and gR, (II) it enables employing
+the direct recursive algorithm [43, 44], which should
+be implemented to make full 3D quantum transport
+simulations computationally practical.
+If we define
+[GC] = [GC][∆VC], the final matrix form of the
+retarded Green’s function becomes identical to the
+conventional FD-NEGF or TB-NEGF formulation.
+While this may appear trivial, the construction of
+[AC −ΣL−ΣR] by the FV method is non-trivial due to
+the enforcement of conservation laws at all local mesh
+interfaces. The remainder of the quantum transport
+theory—including the evaluation of observables such
+as the transmission function (terminal current) and
+local density of states (charge distribution) in terms
+of the retarded GR, advanced GA, and lesser (G<)
+Green’s functions—remains unchanged. We therefore
+omit further theoretical details here, as they can be
+found elsewhere [45].

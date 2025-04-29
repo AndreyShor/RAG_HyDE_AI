@@ -1,0 +1,86 @@
+17
+cmt project 2004–2010:
+Centroid-moment tensors for
+13,017 earthquakes, Physics of the Earth and Planetary
+Interiors 200-201, 1 (2012).
+[53] Z. Duputel, L. Rivera, H. Kanamori, and G. Hayes,
+W phase source inversion for moderate to large earth-
+quakes (1990–2010), Geophysical Journal International
+189, 1125 (2012), https://academic.oup.com/gji/article-
+pdf/189/2/1125/17364534/189-2-1125.pdf.
+[54] T. Lecocq, S. P. Hicks, K. Van Noten, K. van Wijk,
+P. Koelemeijer, R. S. M. De Plaen, F. Massin, G. Hillers,
+R. E. Anthony, M.-T. Apoloner, M. Arroyo-Sol´orzano,
+J. D. Assink, P. B¨uy¨ukakpınar, A. Cannata, F. Can-
+navo, S. Carrasco, C. Caudron, E. J. Chaves, D. G. Corn-
+well, D. Craig, O. F. C. den Ouden, J. Diaz, S. Donner,
+C. P. Evangelidis, L. Evers, B. Fauville, G. A. Fernandez,
+D. Giannopoulos, S. J. Gibbons, T. Girona, B. Grecu,
+M. Grunberg, G. Het´enyi, A. Horleston, A. Inza, J. C. E.
+Irving, M. Jamalreyhani, A. Kafka, M. R. Koymans,
+C. R. Labedz, E. Larose, N. J. Lindsey, M. McKin-
+non, T. Megies, M. S. Miller, W. Minarik, L. Moresi,
+V. H. M´arquez-Ram´ırez, M. M¨ollhoff, I. M. Nesbitt,
+S. Niyogi, J. Ojeda, A. Oth, S. Proud, J. Pulli, L. Re-
+tailleau, A. E. Rintam¨aki, C. Satriano, M. K. Savage,
+S. Shani-Kadmiel, R. Sleeman, E. Sokos, K. Stamm-
+ler, A. E. Stott, S. Subedi, M. B. Sørensen, T. Taira,
+M. Tapia, F. Turhan, B. van der Pluijm, M. Vanstone,
+J. Vergne, T. A. T. Vuorinen, T. Warren, J. Wassermann,
+and H. Xiao, Global quieting of high-frequency seismic
+noise due to covid-19 pandemic lockdown measures, Sci-
+ence 369, 1338–1343 (2020).
+[55] J. Ojeda and S. Ruiz, Seismic noise variability as an indi-
+cator of urban mobility during the covid-19 pandemic in
+the santiago metropolitan region, chile, Solid Earth 12,
+1075–1085 (2021).
+[56] W. Rudin, Principles of Mathematical Analysis, Interna-
+tional series in pure and applied mathematics (McGraw-
+Hill, 1976).
+[57] K. Knopp, Theory and Application of Infinite Series,
+Dover Books on Mathematics (Dover Publications, 1990).
+[58] M.
+Stankiewicz,
+M.
+Czechlewski,
+O.
+Sakarya,
+and
+K. Horodecki, SVTest Software, https://github.com/
+DQI-UG/EarthSV (2024).
+[59] IRIS seismological service, https://ds.iris.edu/gmap
+(2018), accessed: 2025-03-29.
+[60] M. Beyreuther, R. Barsch, L. Krischer, T. Megies,
+Y. Behr, and J. Wassermann, Obspy: A python tool-
+box for seismology, Seismological Research Letters 81,
+530–533 (2010).
+[61] IRIS seismological service, https://service.iris.edu
+(2018), accessed: 2025-03-29.
+Appendix A: Data
+In this section, we will describe in more detail how we obtained and processed the data used in this work. Note
+that the data are free and available in the databases we detail.
+1.
+Seismic events
+For earthquake data, first, we obtain a list of seismic events using the Global CMT catalog [51, 52]. We searched the
+catalog for events with moment magnitudes between Mw = 6.0 and Mw = 7.0 and depths between 30 km and 1000 km
+between 1976 and 2021. We saved this information in a file for later use within the format of “CMTSOLUTIONS”,
+saving 2218 events. We then extract the necessary information for each earthquake, such as location, initial time,
+and magnitude. Once we have the necessary information, we downloaded the seismic signal of each earthquake using
+MassDownloader from the Obspy module [60]. In particular, we downloaded all the available stations from the IRIS
+seismological service [61]. This procedure takes close to 170 hours and allows us to download data from 1729 events
+that contain information about 7114 stations and 426710 data files.
+Second, we process the data; this means taking the instrumental response of the data using an Obspy module,
+which allows us to transform the data from counts to physical magnitudes; then, we apply a detrend to eliminate
+the linear tendency, decimate, and interpolate the signal to have two samples per second, and cut the signal in the
+period designed. Given the number of files, we divided the work into multiple jobs (eleven), obtaining displacement,
+acceleration, and velocity data for two different time windows mentioned in the main text. This process took around
+177 hours. Then, we concatenated (united) the files from the previous division and obtained six files corresponding
+to two types of time windows for each type of signal displacement, acceleration, and velocity.
+Finally, we removed broken lines (lines with non-numerical values) from the files. The first time window, includ-
+ing the body wave, contains 284282034 lines (numerical values) and has a file size of 7249134442 B. The second
+time windows corresponding to the surface waves contain 520407646 lines (numerical values) and have a file size of
+13270355887 B.
+2.
+Noise
+Apart from its natural origin, ground vibration can be caused by external events such as human or animal movement,
+traffic, etc. From seismic stations placed around the world, we have chosen a subset of apparatuses with detectors

@@ -1,0 +1,135 @@
+3
+The following paragraphs provide the basic mathematical
+framework for these physical entities and their associated
+gates. Since a qudit with d = 2 is equivalent to a qubit,
+this allows for an easy transition to the well-known qubit
+case.
+As a mathematical entity a qudit state ‘lives’ in the d-
+dimensional Hilbert space which is spanned by the eigen-
+states of the Hamiltonian of the system. Let us denote
+by {|k⟩}d−1
+k=0 such a set of normalized eigenstates and we
+refer to this set as the computational basis of the qudit.
+Then one can express a generic qudit state:
+|ψ⟩=
+d−1
+X
+k=0
+ck |k⟩,
+(1)
+by the complex amplitudes ci’s over the computational
+basis, being constrained by the normalization condition
+Pd−1
+k=0 |ck|2 = 1.
+Let us consider the full su(d) algebra for the system,
+spanned by D = d2 −1 generators {ˆgi}.
+For d = 2
+these generators can be identified with the Pauli opera-
+tors while for d = 3 with the Gell-Mann operators. Em-
+ploying the generators, we can conveniently express the
+most general unitary operator ˆU applied to a qudit as:
+ˆU(⃗ϕ) = e−i PD
+j=1 ϕj ˆgj,
+(2)
+where we have ignored the global phase of ˆU and ϕj
+are angles forming the vector ⃗ϕ = {ϕ1, . . . , ϕD}.
+Eq.
+(2) also permits us to straightforwardly define a multi-
+parametrized gate with a set of parameters ⃗ϕ. One step
+further, we can employ (2) to construct parametrized
+gates with a single parameter, which are commonly used
+in VQCs. If we define ϕ =
+qP
+j ϕ2
+j as well as a nor-
+malized real vector ⃗n = ⃗ϕ/ϕ, then we can generate a
+parametrized gate as:
+ˆR⃗n(ϕ) = e−iϕ⃗n.⃗ˆg,
+(3)
+where ⃗ˆg = {ˆg1, . . . , ˆgD}. Two-qudit (parametrized) gates
+can be build in a similar way to single qudit gates but
+now one needs to replace the generators ˆgi in (2) by ten-
+sor products of generators, i.e., ˆgi ⊗ˆgj, of the two qudit
+subsystems.
+As for qubits, measurable quantities on a qudit are
+described by operators represented by d × d Hermitian
+matrices. In this work for simplicity we employ observ-
+ables with non-degenerate spectrum.
+With the introduced elements, one can construct a
+VQC made of qudits, similar to qubits, by using mul-
+tiple qudits as registers, along with single- and two-qudit
+gates, as well as parameterized gates. In this work, we
+focus on using VQCs as QNNs, and in the next subsec-
+tion, we explain the additional components necessary for
+a VQC to serve this purpose.
+A.
+VQCs as QNNs
+VQCs are one of the main models of QML, perform-
+ing the functions of classical NNs in the quantum domain.
+Once the ansatz, i.e., gates and architecture, is chosen for
+a VQC, there are four further key points to address for it
+to function as a QNN: embedding classical features, per-
+forming read-out via measurements, constructing a loss
+function, and applying classical optimization methods for
+training.
+There are four main methods [2] for performing the
+embedding of classical features ⃗x = {x1, . . . , xm} in a
+VQC: basis, amplitude, Hamiltonian and angle encoding.
+While amplitude encoding is the most efficient in terms of
+qubit resources, angle encoding is the most widely used.
+In this work we use parametrized angle encoding as:
+ˆU = e−i Pm
+j=1 xjϕj ˆgj .
+(4)
+By inserting trainable parameters ⃗ϕ = {ϕ1, . . . , ϕm} in
+the embedding part of the circuit, one can explore a big-
+ger class of quantum feature maps: ⃗x →
+ψ(⃗x, ⃗ϕ′)
+E
+where
+ψ(⃗x, ⃗ϕ′)
+E
+the state-output of the quantum circuit. The
+vector ⃗ϕ′, as compared to ⃗ϕ, includes also the additional
+parameters of the variational part of the VQC. Finally,
+we exercise the regular practice of re-uploading [4, 14]
+the classical features more than once in the VQC. Re-
+uploading in a VQC increases the non-linearity of the
+quantum feature map, imitating the effect of hidden lay-
+ers in NNs.
+As for quantum computation, VQC’s output state
+ψ(⃗x, ⃗ϕ′)
+E
+, must be “collapsed” via measurement in order
+to derive classical information from it. To do this, one
+must first select the observable(s) ˆO to be measured. The
+procedure
+evolving via the VQC and performing mea-
+surement(s) needs to be repeated multiple times to es-
+timate the expectation value(s),
+D
+ψ(⃗x, ⃗ϕ′)
+ ˆO
+ψ(⃗x, ⃗ϕ′)
+E
+.
+This expectation value is the main input to the chosen
+loss function which is then optimized using a classical al-
+gorithm. In the common case where a classical gradient
+descent method is employed for loss minimization, addi-
+tional measurements are required to estimate the gradi-
+ent [15].
+In this work, we employ a VQC consisting of a sin-
+gle qudit. The potential advantages of replacing qubits
+with qudits in quantum technologies have been explored
+in several theoretical studies (see for instance [16–18]),
+while advancements in qudit technology, particularly in
+the field of photonics [19–22], have been accelerated. Our
+main reason for using a qudit instead of multiple qubits is
+that it simplifies the circuit design, eliminating the need
+to optimize the placement of entangling and single-qubit
+gates.
+In a qudit, all operations, as described in (2),
+can be considered local and treated on an equal footing.
+Similarly, there is no need to combine measurement out-
+comes from multiple qubits; instead, we can directly work

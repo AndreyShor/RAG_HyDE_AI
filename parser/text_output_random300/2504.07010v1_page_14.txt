@@ -1,0 +1,56 @@
+Under this assumption, we can prove the following
+Lemma 2.3. Let Sn = ϕ(ˆYn), n = 1, . . . , N + 1 be defined as in Assumption
+2.2 and assume BC(Yn, ˆYn) ∼N(Sn, 1) for all n = 1, . . . , N +1 with Sn = s1
+for n = 1, . . . , ¯n, Sn = s2 > s1 for n = ¯n + 1, . . . , N, and SN+1 = s3 > s2
+Then, if |s3 −s1| <
+1
+40, and
+|s3 −s1| >
+N −n
+N −¯n + 1|s2 −s1|
+(18)
+the validity gap defined in (10) is reduced by discarding the first ¯n samples.
+Proof of Lemma 2.3 Let An = BC(Yn, ˆYn), n = 1, . . . N + 1. Under the
+Lemma assumptions, the validity gap of Barber et al. (2023) becomes
+gap =
+PN
+n=1 wndTV (An, AN+1)
+1 + PN
+n=1 wn
+= γ
+2
+¯n|s1 −s3| + (N −¯n)|s2 −s3|
+N + 1
+(19)
+where γ = 1
+5 as shown in Devroye et al. (2018). The claim is obtained by requiring
+¯n
+N + 1|s1 −s3| +
+¯n
+N + 1|s2 −s3| <
+N −¯n
+N −¯n + 1|s1 −s2|
+(20)
+□
+In the experiments, we let Sn = s(Zn) be the number of qubits in the n-th
+circuit, n = 1, . . . , N + 1 and assume the total variation distance between
+the corresponding BCs grows linearly in |Sn −Sn′|. In this case, the validity
+gap can be reduced if
+PN
+n=1 |Sn −SN+1|
+1 + N
+> min
+smin∈R
+PN
+n=1 1(Sn > smin)|Sn −SN+1|
+1 + PN
+n=1 1(Sn > smin)
+(21)
+While searching for smin ∈R requires trying N + 1 values and is always
+feasible, smin is not guaranteed to fulfil (21) if the range of available circuit
+sizes is limited, however.
+In our experiments, we let smin be the second
+largest circuit size in the calibration set.
+Calibration samples associated
+with smaller sizes are discarded or used to fit the shift model described in
+the next paragraph.

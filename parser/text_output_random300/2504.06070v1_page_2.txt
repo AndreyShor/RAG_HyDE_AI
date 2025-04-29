@@ -1,0 +1,56 @@
+Published as a conference paper at ICLR 2025
+(a) Temporal extrapolation
+(b) Spatial generalization
+(c) Latent physical quantities Estimation
+Training
+Testing
+Training
+Testing
+Predict
+Predict
+Latent physical quantities
+Figure 1: Model has the following capabilities: (a) Temporal extrapolation, (b) Spatial generaliza-
+tion, (c) Latent physical quantities Estimation.
+In this paper, we propose the Physics-Informed Neural Predictor, a new approach designed to address
+the challenges outlined above. For fluid dynamics prediction, we discretize the NS equations in both
+time and space, incorporating them into model architecture and loss functions. Neural networks are
+employed to establish a mapping function from past measurement (observed data) to both interme-
+diate observed quantities and latent physical variables, enabling predictions through the discretized
+NS equations. Unlike methods that solely establish mappings between past and future states or focus
+only on velocity modeling, our approach estimates multiple physical quantities (e.g., velocity and
+pressure) to assist in the prediction. To ensure the physical validity of the estimated physical quan-
+tities, we impose both physical and temporal constraints. By explicitly modeling physical quantities
+and incorporating the NS equations into the model, our method inherently possesses interpretability
+and enhances the extraction of latent fluid dynamics from observed data. This integration further
+improves the model’s temporal extrapolation and spatial generalization capabilities in prediction.
+To evaluate the effectiveness of the proposed method, we conducted a comparative study against
+several state-of-the-art models for predicting future observed data. The evaluation was performed
+using both numerically simulated 2D and 3D datasets, as well as real-world nowcasting benchmarks.
+The predictive accuracy of the models was quantitatively assessed across various scenarios.
+Experimental results demonstrate that our approach achieves SOAT performance in predicting ob-
+served data, while simultaneously estimating multiple latent physical quantities for interpretability,
+and exhibiting better temporal extrapolation and spatial generalization capabilities (Figure 1).
+In summary, our main technical contributions align to tackle the key challenges, given by:
+1) Estimation of Multiple Physical Quantities and Assisted Prediction: We estimate latent
+physical quantities, which can assist in the prediction of observable physical quantities and
+serve as interpretable evidence to support our predictions.
+2) Temporal Extrapolation and Spatial Generalization: Our model demonstrates the ability
+to extrapolate beyond the training steps and generalize across varying spatial domains.
+3) Superior Performance: Our model consistently achieves SOTA performance across a wide
+array of benchmark tests, including synthetic and real-world datasets (both 2D and 3D).
+2
+RELATED WORK
+Modeling fluid flows has always been a significant challenge. Since it is typically impossible to cal-
+culate explicit solutions for NS equations, scientists have developed numerous numerical methods
+to address this problem, such as the finite element method (Donea & Huerta, 2003), finite difference
+method (Godunov & Bohachevsky, 1959), finite volume method (Jasak, 1996), and spectral method
+(Orszag, 1979). However, these numerical methods heavily rely on initial conditions, which are
+often difficult to obtain in practical applications. Moreover, numerical methods face high computa-
+tional costs, especially when dealing with complex and variable scenarios and large computational
+domains. The complexity of modeling and the lengthy computation times render numerical meth-
+ods impractical in such cases. In recent years, the development of deep learning technologies has
+provided new possibilities for solving this problem. Based on whether latent physical quantities are
+modeled, we can broadly categorize these approaches into the following methods.
+Neural Operator methods. This category of methods primarily leverages the powerful nonlinear
+modeling capabilities of neural networks to approximate the complex mapping between inputs and
+2

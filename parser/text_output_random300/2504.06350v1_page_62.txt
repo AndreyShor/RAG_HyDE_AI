@@ -1,0 +1,68 @@
+5.3.3. High-dimensional measurement-device-independent QKD
+So far, all mentioned protocols were for two-dimensional encoding systems using Z and X bases.
+In this section, we review protocols developed for higher dimensions. Chau et al. [347] introduced the
+protocol which they called the mother-of-all QKD protocol and its MDI variants for qudits, including
+the round-robin differential phase protocol [348] and the Chau15 protocol [349]. However, these were
+experimentally infeasible due to challenges in realizing high-dimensional Bell states. Hwang et al. [350]
+proposed a d-dimensional MDI-QKD protocol, proven secure under the condition of zero QBER. Jo
+et al. [351] proposed a three-dimensional MDI-QKD (3d-MDI-QKD) protocol with mutually unbiased
+bases (MUBs) comprising time and energy bases [352]. Bell state measurements in 3d-MDI-QKD use
+nine maximally entangled states in a three-dimensional bipartite system, enabling a secret key rate of
+˜r ≥log2 3−2Q−2h(Q), where Q represents state error rate. This protocol achieves higher secret key rates
+than the original MDI-QKD for low transmission losses, suitable for short-distance communication, but
+faces feasibility challenges in realizing high-dimensional Bell state measurements with linear optics [353].
+Sekga et al. [354] introduced a qutrit-based MDI-QKD protocol employing biphotons and Mach-Zehnder
+interferometers, achieving significant secret key rates for moderate distances. Dellantonio et al. [355]
+extended QKD to generalized Z and X bases in d dimensions, demonstrating unconditional security with
+improved performance in low dark-count scenarios. Cui et al. [356] proposed a high-dimensional MDI-
+QKD protocol utilizing hyper-encoded qudits with polarization and spatial-mode degrees of freedom,
+yielding a fivefold improvement in secret key rates.
+This was further extended by Yan et al.
+[357]
+and Li et al. [358] to multi-degree-of-freedom encoding. The limitations of long-distance QKD due to
+decoherence prompted solutions like quantum repeaters, as discussed by Erkilic et al. [359]. Their MDI-
+QKD protocol surpasses the PLOB bound [360] using high-dimensional states optimized for increased
+key rates at shorter distances, though these advantages diminish with greater transmission distances due
+to photon loss.
+5.3.4. Continuous-variable measurement-device-independent QKD
+While two-dimensional discrete protocols can achieve long-distance communication, they often suffer
+from low key rates, making them unsuited for metropolitan network requirements. A solution to this
+challenge can be found in adopting continuous-variable (CV) systems. One significant advantage of a
+CV-QKD protocol is its compatibility with standard telecommunication technology, particularly because
+it does not rely on single-photon sources, which are the most vulnerable to attacks in discrete-variable
+QKD (DV-QKD) protocols. Another significant advantage is that, in a typical QKD protocol, users
+often need to allocate a portion of their raw data to estimate communication channel parameters, such
+as the error rate. This results in a trade-off between the secret key rate and the accuracy of parameter
+estimation in the finite-size regime. However, it has been demonstrated that this constraint does not apply
+to continuous variable QKD. In continuous variable QKD, the entire set of raw keys can be utilized for
+both parameter estimation and secret key generation without compromising security [361]. In addition,
+CV-QKD systems might be more suitable to coexist with classical data transmission in optical fibers,
+since the local oscillator required for homodyne detection can act as a mode filter, reducing classical
+Raman noise from the quantum signal.
+As such, there is considerable interest in continuous-variable MDI-QKD (CV-MDI-QKD). The first
+CV-MDI-QKD protocols were originally introduced by Pirandola et al. [101], Li et al. [362] and Ma et
+al. [363]. The protocol operates as follows: Alice and Bob randomly prepare coherent states, denoted as
+|α⟩and |β⟩, respectively, where the amplitudes α and β are modulated by Gaussian distributions with
+zero mean and sufficiently large variances. These prepared states are then sent to an intermediary party
+(Charlie) for measurement. To establish secret correlations, Charlie performs a CV Bell measurement
+and communicates the outcomes to Alice and Bob. This Bell measurement is executed by mixing the
+incoming modes using a balanced beamsplitter. The measurement corresponds to the quadrature op-
+erators ˆ
+q−= (ˆqA −ˆqB)/
+√
+2 and ˆ
+p+ = (ˆpA + ˆpB)/
+√
+2, and the classical outcomes are combined into a
+complex variable denoted as γ = (q−+ ip+)/
+√
+2. The most general eavesdropping strategy involves a
+joint attack encompassing both Charlie’s measurement device and the two communication links, namely
+Alice-Charlie and Charlie-Bob. Since the protocol is based on Gaussian modulation and the detection
+of Gaussian states, the optimal eavesdropping technique employs a Gaussian unitary approach [364]. By
+introducing a reconciliation efficiency factor denoted as ϵ ≤1, the secret key formula can be modified as
+follows:
+r := ϵI(A : B) −IE.
+(166)
+where IE is the upper bound on Eve’s information.
+62

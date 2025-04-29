@@ -1,0 +1,147 @@
+2
+• Class 3-5:
+Increased power levels of coexisting
+classical signals using 4 Lasers & EDFA
+• Class 6-8: Different degrees of attenuation on the
+quantum link.
+The QBER/SKR data points are provided in sequen-
+tial time steps, and thus, for each class, we have a long
+time-series of data. The goal was to develop a system
+that diagnoses the status of a QKD link in real-time, us-
+ing only the latest N QBER and SKR data provided by
+the system. To achieve this, we created N-plets of data
+from the long time-series. We used 80% of these N-plets,
+with N = 10, for training, while the remaining N-plets
+were kept as test data. In the last column of Table I, we
+report the total number of N-plets acquired experimen-
+tally for each class.
+To classify a test or new N-plet of data, a supervised
+learning model must first be trained. We built [8] such
+a modelan ML pipelineby assembling tsfresh [12], XG-
+Boost [13], and a deep NN model, as shown in Fig. 1 (a).
+The first component, tsfresh, extracts various statisti-
+cal, frequency-domain, and model-based features from
+the raw time series data (N-plets). From the k extracted
+features, which are numerous (k = 1500 for N = 10), it
+is necessary to extract the most important for the clas-
+sification task under study. For the selection of the K
+most important ones, we first train an XGBoost model
+using all the (labeled) train data. After this step, each
+N-plet of QBER/SKR data is ‘mapped’ to K-plet with
+the values of these features estimated via tsfresh. In the
+final step, we use the (labeled) K-plets to train a deep
+NN with 3 hidden layers (K × 128 × 256 × 128 × 9) and
+ReLU activation functions. The output layer of the NN
+provides the probabilities for classifying an input data
+point, train, or test, into one of the nine classes.
+We set K = 5 and in Table I we report the classification
+results from the ML pipeline ( Fig. 1 (a)) for the test
+QKD/SKR data. In the following sections, we gradually
+build a hybrid (quantum-classical) model by replacing
+the deep NN in the pipeline with a VQC, as illustrated
+in Fig. 1 (b).
+TABLE I: Metrics evaluating the classification results of the
+classical ML model schematically described in Fig. 1 (a). The
+hyperparameters of the ML model are chosen as N = 10 and
+K = 5.
+Class #
+Precision Recall F1-Score
+# Data
+0
+0.89
+1.00
+0.94
+4064
+1
+1.00
+0.10
+0.18
+395
+2
+0.71
+0.62
+0.66
+466
+3
+0.98
+0.95
+0.96
+392
+4
+0.94
+0.97
+0.96
+2070
+5
+1.00
+0.89
+0.94
+353
+6
+0.97
+1.00
+0.98
+1067
+7
+1.00
+0.97
+0.99
+1529
+8
+1.00
+1.00
+1.00
+1629
+Accuracy
+0.94
+Macro Average
+0.94
+0.83
+0.85
+Top K features
+according to
+XGboost
+QBER & SKR
+Time Series of
+N data points
+Time
+Value
+TSFresh
+NN
+QAE
+QNN
+Classification
+Classification
+a)
+b)
+FIG. 1: (a) A schematic view of the ML pipeline suggested
+and tested in [8]. The aim is to classify the state of a QKD
+link, i.e., the impairments on the quantum channel, by feeding
+to the ML pipeline the last N QKD/SKR data.
+(b) The
+modified hybrid ML pipeline that we test in the current work.
+III.
+VQCS MADE OF QUDITS
+In circuit-based quantum computation, qubits serve as
+computational units, quantum gates implement the pro-
+cessing, and projective measurements are used to extract
+the outcomes.
+Due to considerations related to quan-
+tum error correction, the allowed operations are typi-
+cally restricted to a universal set of gates, such as the
+set formed by the Hadamard, Phase, and CNOT gates.
+VQCs are quantum circuits which also include tunable
+quantum gates. The parameterized gates within the cir-
+cuit allow it to explore a range of quantum computational
+models. This class of models is defined by the ansatz of
+the circuit, which refers to the choice of parameterized
+gates, fixed gates, and the architecture of the circuit.
+A qubit describes the state of a discrete degree of free-
+dom in a quantum system, which is quantized and yields
+two distinct outcomes when measured. Qudits, on the
+other hand, refer to quantum systems that provide d dis-
+tinct outcomes upon measurement and naturally gener-
+alize the concept of qubits.
+In this work, for reasons
+explained later in this section, we choose to use a VQC
+built from a qudit, rather than using multiple qubits.

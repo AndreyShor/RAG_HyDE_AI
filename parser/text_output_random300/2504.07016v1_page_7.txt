@@ -1,0 +1,47 @@
+The special solutions we use for v1 and v2 are provided by Hubeny in [35]. These solutions take
+the form Φ(ϕ)Θ(θ), where:
+Φ(ϕ) = linear combination of sin(mϕ) and cos(mϕ),
+Θ(θ) = (1 + m cos θ)
+1 −cos θ
+1 + cos θ
+m/2
+,
+with m ∈Z as a free parameter. By selecting specific values of m for v1 and v2, we solve for the
+spherical harmonic coefficients up to order l = 4. Recovering coefficients for a general spherical
+harmonic expansion by this method remains an open question, but we note that using Hubeny’s
+solutions in (1.5) provides infinitely many conditions for the coefficients of the expansion.
+1.3
+Recovering f from A using inversion of δA
+Finally, we address the reconstruction of not just the perturbation δf(z), but the entire metric
+function f(z), under the assumption that f remains close to unity (|f(z) −1| ≪1). This recon-
+struction is enabled by the explicit inversion formula (1.3) in dimension 3 and its higher-dimensional
+generalizations (3.33) and (3.39).
+The statement of the problem is the following: given the minimal surface area function r 7→
+Af(r), associated with an unknown metric function f ≈1, we aim to reconstruct f(z) entirely from
+the boundary data Af. The key insight is the first-order approximation
+Af −Af=1 = δA + O(|f −1|2),
+(1.6)
+where δA is the linearized area variation induced by the perturbation δf = 1−f. Since Af −Af=1 is
+known from boundary measurements, the inversion formula for δf yields a first-order approximation
+of 1 −f(z) in terms of this observable difference.
+While (1.6) captures the leading-order behavior, higher-order corrections O(|f −1|2) must
+be incorporated for an accurate reconstruction. To achieve this, we propose an iterative scheme
+inspired by the implicit function theorem:
+1. Initialization: Begin with the trivial AdS metric f0(z) ≡1.
+2. Iterative Update: At each step n, refine the estimate via
+fn+1(z) = fn(z) −(DA|f=1)−1(Afn −Af),
+(1.7)
+where (DA|f=1)−1 is the inverse operator provided by our explicit linearized inversion formula
+(1.3), Afn is the area data for minimal surfaces computed for fn, and Af is the given area
+data.
+3. Convergence: The iteration proceeds until fn converges, reconstructing the full nonlinear
+metric f(z).
+This method is particularly suited for low-temperature black hole metrics (1.4) (where zH ≫1),
+as they remain perturbatively close to AdS. We discuss convergence criteria, numerical implemen-
+tation, and broader implications in Section 5.
+2
+Bulk reconstruction
+In this work, we investigate the problem of recovering bulk geometric deformations from correspond-
+ing variations in boundary entanglement entropy. Specifically, we address the bulk reconstruction
+problem at the linearized (perturbative) level, working to first order around a fixed background
+– 7 –

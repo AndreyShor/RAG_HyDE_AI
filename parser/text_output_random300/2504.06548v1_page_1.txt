@@ -1,0 +1,81 @@
+Artificial Spin Ice: A Tutorial on Design and Control of Geometry,
+Microstate, Magnon Dynamics & Neuromorphic Computing
+Rawnak Sultana,1 Amrit Kumar Mondal,1 Vinayak Shantaram Bhat,1 Kilian Stenning,2, 3 Yue Li,4 Daan
+M. Arroo,5, 3 Aastha Vasdev,4, 6 Margaret R. McCarter,7, 8 Lance E. De Long,7 J. Todd Hastings,7 Jack C.
+Gartside,2, 3, 9 and M. Benjamin Jungfleisch1, a)
+1)Department of Physics and Astronomy, University of Delaware, Newark, DE 19716,
+USA
+2)Blackett Laboratory, Imperial College London, London, UK
+3)London Centre for Nanotechnology, Imperial College London, London, United Kingdom
+4)Materials Science Division, Argonne National Laboratory, Lemont, IL 60439, USA
+5)Department of Materials, Imperial College London, Exhibition Road, London SW7 2AZ,
+United Kingdom
+6)Department of Electrical and Computer Engineering, University of Kentucky, Lexington, KY 40506,
+USA
+7)Department of Physics and Astronomy, University of Kentucky, Lexington, KY 40506,
+USA
+8)Advanced Light Source, Lawrence Berkeley National Laboratory, Berkeley, CA 94720,
+USA
+9)Institute for Materials Research, Tohoku University, Sendai, Japan
+(Dated: 10 April 2025)
+Artificial spin ice, arrays of strongly interacting nanomagnets, are complex magnetic systems with many emergent
+properties, rich microstate spaces, intrinsic physical memory, high-frequency dynamics in the GHz range and compati-
+bility with a broad range of measurement approaches. This tutorial article aims to provide the foundational knowledge
+needed to understand, design, develop, and improve the dynamic properties of artificial spin ice (ASI). Special em-
+phasis is placed on introducing the theory of micromagnetics, which describes the complex dynamics within these
+systems, along with their design, fabrication methods, and standard measurement and control techniques. The article
+begins with a review of the historical background, introducing the underlying physical phenomena and interactions
+that govern artificial spin ice. We then explore standard experimental techniques used to prepare the microstate space
+of the nanomagnetic array and to characterize magnetization dynamics, both in artificial spin ice and more broadly in
+ferromagnetic materials. Finally, we introduce the basics of neuromorphic computing applied to the case of artificial
+spin ice systems with goal to help researchers new to the field grasp these exciting new developments.
+I.
+INTRODUCTION
+Artificial spin ice (ASI)1–5 systems are arrays of lithograph-
+ically fabricated two- (2D) or three-dimensional (3D) nano-
+magnets arranged in periodic or aperiodic lattices, providing
+a unique platform to study exotic magnetic states not found
+in natural materials. Initially conceived as a mesoscopic ana-
+log to magnetically frustrated rare-earth pyrochlores6,7 - crys-
+talline counterparts to water ice8 – ASI has since evolved
+into a rich and independent field of study. These arrays are
+typically modeled as interacting binary Ising-like macrospins
+within nanoislands, or vortex states. ASI enables the explo-
+ration of phenomena such as geometrical frustration, emer-
+gent magnetic monopoles and antimonopoles connected by
+Dirac strings, and phase transitions.
+These systems also
+show immense promise as reprogrammable magnonic crys-
+tals, where the coherent and collective excitation of spin
+waves (SWs) serves as information carriers9–12.
+Unlike electromagnetic (EM) waves, SWs exhibit much
+slower propagation velocities and significantly shorter wave-
+lengths (on the micro- to nanometer scale) at the same fre-
+quency, making them an ideal fit for nanotechnology. This
+a)Electronic mail: mbj@udel.edu
+compatibility opens pathways for on-chip data transfer and
+GHz frequency information processing while reducing power
+dissipation. Given these advantages, the study of magnetiza-
+tion dynamics in various 2D- and 2.5D- (multilayer 2D sys-
+tems, defined as 2.5D in this tutorial) ASI geometries – such
+as square, kagome, shakti, Tetris, Santa Fe, brickwork lat-
+tices and so on – as well as in 3D ASI systems, have gained
+increasing attention (Fig. 1)13–27. These dynamics are influ-
+enced by factors like thermal fluctuations, external magnetic
+fields, and the material properties of the spin-ice lattice. These
+studies offer insights into both exotic fundamental physics and
+applied functionality, positioning ASI systems as promising
+candidates for reconfigurable magnonic circuits and neuro-
+morphic computing platforms due to their non-linearity and
+fading memory characteristics28.
+In this tutorial article, we explicitly discuss the magnetiza-
+tion dynamics in ASI and how their rich magnetization states
+make them a promising candidate for realizing functional
+magnonic devices. Figure 2 illustrates the various branches of
+ASI research based on magnetization dynamics, focusing on
+both fundamental physics and potential applications. This tu-
+torial article is organized into nine sections. Sections I, II, and
+III introduce the concept of ASI, its theoretical background,
+and the micromagnetic approach used to study magnetization
+dynamics in ASI. Sections IV and V cover key nanofabrica-
+arXiv:2504.06548v1  [cond-mat.mes-hall]  9 Apr 2025

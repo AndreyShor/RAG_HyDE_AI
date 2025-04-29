@@ -1,0 +1,88 @@
+A Multi-Modal Interaction Framework for Efficient Human-Robot
+Collaborative Shelf Picking
+Abhinav Pathak1,2,†, Kalaichelvi Venkatesan2, Tarek Taha1 and Rajkumar Muthusamy1,†,∗
+Abstract— The growing presence of service robots in human-
+centric environments, such as warehouses, demands seamless
+and intuitive human-robot collaboration. In this paper, we
+propose a collaborative shelf-picking framework that combines
+multimodal interaction, physics-based reasoning, and task di-
+vision for enhanced human-robot teamwork.
+The framework enables the robot to recognize human point-
+ing gestures, interpret verbal cues and voice commands, and
+communicate through visual and auditory feedback. Moreover,
+it is powered by a Large Language Model (LLM) which
+utilizes Chain of Thought (CoT) and a physics-based simulation
+engine for safely retrieving cluttered stacks of boxes on shelves,
+relationship graph for sub-task generation, extraction sequence
+planning and decision making. Furthermore, we validate the
+framework through real-world shelf picking experiments such
+as 1) Gesture-Guided Box Extraction, 2) Collaborative Shelf
+Clearing and 3) Collaborative Stability Assistance.
+I. INTRODUCTION
+The rapid integration of robotic systems into human-
+centric environments, such as warehouses and logistics cen-
+ters, has fundamentally altered the landscape of Human-
+Robot Collaboration (HRC). While robots bring unparalleled
+precision, endurance, and strength, humans contribute indis-
+pensable dexterity, adaptability, and decision-making capa-
+bilities. However, achieving seamless and intuitive collabo-
+ration remains a significant hurdle. Current robotic systems
+often operate within rigid frameworks, demanding precise,
+pre-defined instructions that hinder natural interaction. This
+disconnect creates a substantial barrier to effective teamwork,
+especially in dynamic and unstructured environments where
+human intuition and adaptability are paramount. Specifically,
+robots struggle to interpret the nuances of human intent,
+requiring specialized commands and limiting natural com-
+munication.
+Beyond the challenge of interpreting human intent, robotic
+systems also exhibit a significant deficiency in understanding
+their physical surroundings. This lack of physical reasoning
+manifests in an inability to accurately predict how objects
+interact, particularly in complex scenarios like shelf picking.
+For instance, robots often fail to recognize the intricate
+relationships between stacked boxes, leading to potential
+instability and collapse when attempting to remove specific
+items. This failure to comprehend the physical dynamics of
+their environment underscores a critical gap in their ability
+to operate safely and effectively in cluttered spaces.
+†Equal contribution. ∗Corresponding Author.
+1Robotics
+Lab,
+Dubai
+Future
+Labs,
+Dubai,
+UAE.
+Email:
+rajkumar.muthusamy@dubaifuture.gov.ae
+2Birla Institute of Technology and Science, Pilani, Dubai Campus, UAE
+Fig. 1: Collaborative Shelf Picking: This illustration depicts a
+mobile manipulator robot powered by a LLM and a novel physics-
+based reasoning engine collaborating with the human in real-time
+To overcome the limitations of current robotic systems
+and enable truly collaborative human-robot interaction, we
+introduce a new collaborative shelf-picking framework that
+goes beyond present robotic technology to support inter-
+action between humans and robots. The framework can
+handle multi-modal inputs consisting of verbal commands,
+natural language and gestures and can also communicate
+back via auditory and visual feedback. Additionally, it is
+powered by a LLM with chain-of-thought reasoning along
+with a novel physics reasoning engine that enables it to
+plan a safe extraction sequence that prevents box collapse
+and collisions. Building upon our prior work [1] on real-
+to-simulation pipelines for extraction sequence planning, we
+extend the concept from physics-based reasoning to further
+analyze box relationships and support structures, enhancing
+safety and stability. The system delivers proactive assis-
+tance, dynamic task allocation, and transparent information
+exchange, resulting in safer and more efficient operations.
+Key contributions include:
+1) Multimodal Integration: A collaborative shelf-picking
+framework that integrates multimodal interactions
+(gesture, natural language) and provides real-time au-
+ditory and visual feedback, powered by an LLM with
+Chain-of-Thought (CoT) and physics-informed reason-
+ing, enabling intuitive human-robot alignment.
+arXiv:2504.06593v1  [cs.RO]  9 Apr 2025

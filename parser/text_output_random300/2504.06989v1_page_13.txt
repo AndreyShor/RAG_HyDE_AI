@@ -1,0 +1,113 @@
+13
+with ∮dz2n ∶= ∏2n
+j=1 ∮∣zj∣=r2n−j dzj/2πizj. Here, ϕ and E are given in and below Eq. (S-33), and in ϕ, we specify ∣z⟩as
+∣z⟩∶= (−1)n(n−1)/2
+2n
+n
+⊗
+j=1
+[∣↓⟩2j−1∣↑⟩2j −∣↑⟩2j−1∣↓⟩2j].
+(S-43)
+In the contour integrals, we set r to be sufficiently small: r ≪1, so that all poles of 1/(sj −sk −2γ) with respect to
+zj lie outside the zj-contour if j < k.
+Remark. The theorem is valid for γ ∈C. We conjecture that the theorem holds for n ≥3 as well. At least when
+γ = 0, one can easily prove the theorem for general n.
+Proof of Eq. (S-42). Our proof consists of the following two steps;
+(a) RHS of Eq. (S-42) satisfies Eq. (S-38),
+(b) RHS of Eq. (S-42) satisfies the initial condition, Eq. (S-40).
+Step (a). This can be proved by noting the fact that e−iE(z)tϕ(x;a∣z) is the solution of Eq. (S-38) from the Bethe
+ansatz [79, 80].
+Step (b).
+Since the Bethe wave function ϕ(x;a∣z) satisfies ϕ(xP;aP∣z) = sign(P)ϕ(x;a∣z) for P ∈S2n,
+ψ(2n)
+t
+(xP;aP∣y) also satisfies
+ψ(2n)
+t
+(xP;aP∣y) = sign(P)ψ(2n)
+t
+(x;a∣y).
+(S-44)
+Hence, we assume that x1 ≤⋯≤x2n in ψ(2n)
+t
+(x;a∣y) without loss of generality. We define I(P) for P ∈S2n as
+I(P) ∶= sign(P)∮dz2ne−iE(z)t⟨a∣zP⟩
+2n
+∏
+j=1
+zxj
+P (j)
+n
+∏
+j=1
+z−yj
+2j−1z−yj
+2j .
+(S-45)
+Then, it follows that ψ(2n)
+t
+(x;a∣y) = ∑P ∈S2n I(P). We first prove the following lemma.
+Lemma 1. Define the set F2n as
+F2n ∶= {P ∣P ∈S2n, P −1(2j −1) < P −1(2j) for j = 1,⋯,n}.
+(S-46)
+Then, T(P) ∶= ∑k1,⋯,kn=0,1 I(Πk1
+1,2⋯Πkn
+2n−1,2nP) for P ∈F2n can be expressed as
+T(P) = 2nsign(P)∮dz2ne−iE(z)t⟨a∣zP⟩∣z1↔z2,⋯,z2n−1↔z2n ×
+2n
+∏
+j=1
+zxj
+ΠP (j)
+n
+∏
+j=1
+z−yj
+2j−1z−yj
+2j
+s2j−1 −s2j
+s2j−1 −s2j −2γ
+(S-47)
+with Π ∶= Π1,2⋯Π2n−1,2n.
+Proof of Lemma 1. From the definition of ∣z⟩in Eq. (S-43), it follows that
+Y2j−1,2j(λ)∣z⟩= [1 −
+2λ
+λ −2γ ]∣z⟩.
+(S-48)
+Using the above relation, one can express I(P1) for P1 ∶= Πk2
+3,4⋯Πkn
+2n−1,2nP as follows,
+I(Π1,2P1) = −sign(P1)∮dz2ne−iE(z)t⟨a∣zP1⟩∣z1↔z2
+2n
+∏
+j=1
+zxj
+Π1,2P1(j)
+n
+∏
+j=1
+z−yj
+2j−1z−yj
+2j
++2sign(P1)
+2n
+∏
+j=1∮dz2ne−iE(z)t⟨a∣zP1⟩∣z1↔z2
+2n
+∏
+j=1
+zxj
+Π1,2P1(j)
+n
+∏
+j=1
+z−yj
+2j−1z−yj
+2j
+s1 −s2
+s1 −s2 −2γ .
+The quantity ⟨a∣zP1⟩∣z1↔z2 does not have the term 1/(s1 −s2 −2γ) because it holds that P −1
+1 (1) < P −1
+1 (2). Therefore,
+in the first term of the above equation, one can change the radius of the z1(2)-contour to ∣z1(2)∣= r2n−2(1), respec-
+tively. After this change, we exchange the variables z1 ↔z2 in the first term. Under this exchange, one finds that

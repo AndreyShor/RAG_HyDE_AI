@@ -1,0 +1,128 @@
+level-two trigger such as those employed in particle detection
+experiments, as [33] details as well. There, SNN’s have been
+studied in relation to their ability to detect high-pT events at
+the Large Hadron Collider, a related approach to PETNet’s
+attempt to detect coincident particle events in PET.
+A key concept in current applications of SNNs is that
+of
+spike-encoding. Existing
+software
+packages
+such
+as
+snntorch [18] differentiate between three separate methods;
+rate-encoding, in which input features are represented as
+spike frequencies, latency-encoding, in which input features
+determine the arrival time of individual spikes, and delta-
+modulation, where spikes indicate the temporal change of
+input features. As a result, common loss functions target one or
+several aspects of these encodings. Examples for classiﬁcation
+tasks include cross-entropy-spike-count loss, encouraging the
+correct class to ﬁre at all times, while suppressing all others.
+Equally, cross-entropy-temporal loss, which similarly encour-
+ages the correct class to ﬁre before all others. Alternatively,
+losses such as the mean-squared-error-membrane loss target
+the output layer’s membrane potentials instead of the spike
+count. Recently, more sophisticated methods such as the Infor-
+mation Maximization Loss presented by [34] aim to improve
+SNNs with insights into Information theory.
+VI. CONCLUSION
+In this work we present PETNet, a spiking neural network
+architecture for coincidence photon detection in positron emis-
+sion tomography. PETNet introduces a novel multi-objective
+loss function which accounts for spike counts and timing
+jointly. It further provides a method to model the a-priori
+known detector geometry using window functions. Our eval-
+uations on simulation data from two application use-cases
+demonstrate that PETNet can yield a prediction accuracy
+surpassing the state-of-the-art analytical approach while dras-
+tically reducing computation time.
+Our approach provides a proof of concept with promising
+initial results, indicating that utilizing SNNs for coincidence
+detection in PET is a path worth pursuing. On a broader
+scale, our work highlights the potential of SNNs to be used as
+efﬁcient level two trigger mechanisms such as those utilized
+in various particle detectors, with coincidence detection in
+PET being merely a specialized example. Future research
+could focus on many more such applications across the ﬁeld
+of particle physics. One advantage worth noting is that the
+SNN approach allows deployment for real time prediction
+during scan time. The potential deployment of SNNs on
+low-power neuromorphic hardware [35] enables integration
+of the algorithm directly into the detector ring for on-board
+prediction with minimal computational requirements. This
+could drastically reduce data transfer between the scanner
+and the ofﬂine compute infrastructure, since only registered
+coincidences need to be transmitted. Moreover, the online
+prediction can be used for iterative image reconstruction, and
+thus the option to stop the scan prematurely when sufﬁcient
+image quality is reached.
+Our study reveals current challenges in real world appli-
+cations of SNNs. Although SNNs utilize, in theory, sparse
+computations, current software implementations still operate
+on dense matrix-matrix multiplication, making the algorithm
+vastly inefﬁcient and causing the need for large scale com-
+putational resources. As this goes against the overarching
+promise of SNNs being highly energy-efﬁcient, future work
+requires truly sparse implementations of tensor computations.
+Nonetheless, our results demonstrate the great potential of
+SNNs for efﬁcient modeling of sparse, binary, time-resolved
+data.
+REFERENCES
+[1] K. Roy, A. Jaiswal, and P. Panda, “Towards spike-based machine
+intelligence with neuromorphic computing,” Nature, vol. 575, no. 7784,
+pp. 607–617, 2019.
+[2] L. Deng, Y. Wu, X. Hu, L. Liang, Y. Ding, G. Li, G. Zhao, P. Li,
+and Y. Xie, “Rethinking the performance comparison between snns and
+anns,” Neural networks, vol. 121, pp. 294–307, 2020.
+[3] J. F. Oliver, I. Torres-Espallardo, R. Fontaine, S. Ziegler, and M. Rafecas,
+“Comparison of coincidence identiﬁcation techniques for high resolution
+pet,” in 2008 IEEE Nuclear Science Symposium Conference Record.
+IEEE, 2008, pp. 4732–4735.
+[4] C. Ritzer, R. Becker, A. Buck, V. Commichau, J. Debus, L. Djambazov,
+A. Eleftheriou, J. Fischer, P. Fischer, M. Ito, P. Khateri, W. Lustermann,
+M. Ritzert, U. R¨oser, M. Rudin, I. Sacco, C. Tsoumpas, G. Warnock,
+M. Wyss, A. Zagozdzinska-Bochenek, B. Weber, and G. Dissertori,
+“Initial characterization of the saﬁr prototype pet-mr scanner,” IEEE
+Transactions on Radiation and Plasma Medical Sciences, vol. 4, no. 5,
+pp. 613–621, 2020.
+[5] L. Lapicque, “Recherches quantitatives sur l’excitation electrique des
+nerfs,” Journal of Physiology and Pathology, vol. 9, pp. 620–635, 1907.
+[6] K. Yamazaki, V.-K. Vo-Ho, D. Bulsara, and N. Le, “Spiking neural
+networks and their applications: A review,” Brain Sciences, vol. 12,
+no. 7, p. 863, 2022.
+[7] J. Ding, B. Dong, F. Heide, Y. Ding, Y. Zhou, B. Yin, and X. Yang,
+“Biologically inspired dynamic thresholds for spiking neural networks,”
+Advances in Neural Information Processing Systems, vol. 35, pp. 6090–
+6103, 2022.
+[8] J. H. Lee, T. Delbruck, and M. Pfeiffer, “Training deep spiking neural
+networks using backpropagation,” Frontiers in neuroscience, vol. 10, p.
+508, 2016.
+[9] Y. Wu, L. Deng, G. Li, J. Zhu, and L. Shi, “Spatio-temporal backpropa-
+gation for training high-performance spiking neural networks,” Frontiers
+in neuroscience, vol. 12, p. 331, 2018.
+[10] E. O. Neftci, H. Mostafa, and F. Zenke, “Surrogate gradient learning
+in spiking neural networks: Bringing the power of gradient-based opti-
+mization to spiking neural networks,” IEEE Signal Processing Magazine,
+vol. 36, no. 6, pp. 51–63, 2019.
+[11] G. Bellec, D. Salaj, A. Subramoney, R. Legenstein, and W. Maass,
+“Long short-term memory and learning-to-learn in networks of spiking
+neurons,” Advances in Neural Information Processing Systems, vol. 31,
+2018.
+[12] M. Ciurletti, M. Traub, M. Karlbauer, M. V. Butz, and S. Otte, “Signal
+denoising with recurrent spiking neural networks and active tuning,” in
+International Conference on Artiﬁcial Neural Networks. Springer, 2021,
+pp. 220–232.
+[13] H. Fan, H. Su, and L. J. Guibas, “A Point Set Generation Network for
+3D Object Reconstruction from a Single Image,” in Proceedings of the
+2017 IEEE Conference on Computer Vision and Pattern Recognition
+(CVPR).
+IEEE, 2017, pp. 605–613.
+[14] J. A. Fessler and B. P. Sutton, “Nonuniform fast fourier transforms using
+min-max interpolation,” IEEE transactions on signal processing, vol. 51,
+no. 2, pp. 560–574, 2003.
+[15] P. R. Mendes, P. Bruyndonckx, M. C. Castro, Z. Li, J. M. P´erez, and
+I. S. Mart´ın, “Optimization of a monolithic detector block design for
+a prototype human brain pet scanner,” in 2008 IEEE Nuclear Science
+Symposium Conference Record.
+IEEE, 2008, pp. 4927–4930.

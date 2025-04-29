@@ -1,0 +1,119 @@
+The joint Laplace functional
+51
+and we divide the proof into three main steps. In the first step, we show that the integral over the
+buffer-zone can be made arbitrarily small by choosing s > 0 large enough and t ≥s large enough.
+In the second step, we provide, upper and lower bound for the integral over the region given by
+the union of the small squares. Finally, in the third step, we show how to combine everything to
+obtain the desired result. We remark that the proof strategy follows similar lines to the proof of
+[MRV16, Lemma 3.1].
+Step 1: In this first step, we show that for any ε > 0, there exist R ≥1 large enough such that for all
+s > 0 large enough satisfying (es + 1)(R + 1)−1 ∈N, and t ≥s large enough, it holds that
+1 −E
+
+exp
+
+−eds
+Z
+BR,s
+Fγ,t(x)e−γχ(x)µγ,s,t(dx)
+
+≤ε .
+(6.9)
+By making the change of variables x 7→esx, using the scaling relation (3.9), and thanks to (W1) and
+(W2), we obtain that the expectation on the left-hand side of (6.9) is equal to
+E
+
+exp
+
+−
+Z
+esBR,s
+Fγ,t−s(x)eγχ(e−sx)µγ,t−s(dx)
+
+.
+Next, we note that there exists J ∈N and a sequence of points (xj)j∈[J] ⊂Rd such that
+esBR,s =
+[
+j∈[J]
+(xj + [0, 1]d) ,
+d+2
+\
+i=1
+(xji + [0, 1]d) = ∅, ∀j1 ̸= . . . ̸= jd+2 ∈[J] .
+(6.10)
+Therefore, using the inequality 1 −Q
+j∈[J] aj ≤P
+j∈[J](1 −aj), which is valid for (aj)j∈[J] ⊂[0, 1],
+and the translation invariance of Xt−s, as well as (W2), we obtain that
+1 −E
+
+exp
+
+−
+Z
+esBR,s
+Fγ,t−s(x)eγχ(e−sx)µγ,t−s(dx)
+
+≤1 −E
+
+exp
+
+−
+X
+j∈[J]
+Z
+xj+[0,1]d Fγ,t−s(x)eγχ(e−sx)µγ,t−s(dx)
+
+= E
+
+1 −
+Y
+j∈[J]
+exp
+
+−
+Z
+xj+[0,1]d Fγ,t−s(x)eγχ(e−sx)µγ,t−s(dx)
+
+≤
+X
+j∈[J]
+
+1 −E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t−s(x)eγχ(xj+e−sx)µγ,t−s(dx)
+
+.
+(6.11)
+Since by assumption the function χ satisfies all the conditions in (6.7), one can readily check that the
+function χ(xj +e−s ·) satisfies all the conditions in (6.6), for all j ∈[J]. Therefore, by Proposition 6.1,
+for any ε > 0, for all s > 0 large enough satisfying (es + 1)(R + 1)−1 ∈N, and for all t ≥s large
+enough, we have that the expectation in (6.11) satisfies the following inequality, for all j ∈[J],
+1 −E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t−s(x)eγχ(xj+e−sx)µγ,t−s(dx)
+
+≤(ea⋆+ ε)Tγedsρχ(e−s·)(xj + [0, 1]d) .
+Hence, plugging the right-hand side of the previous expression into (6.11), making the change of
+variables x 7→xj + e−sx, and using the assumptions (6.10) on the sequence of points (xj)j∈J, we
+obtain that
+1 −E
+
+exp
+
+−
+Z
+esBR,s
+Fγ,t−s(x)eγχ(e−sx)µγ,t−s(dx)
+
+≤(d + 2)(ea⋆+ ε)Tγedsρχ(BR,s) ,
+Since, we are assuming that χ is scaled-admissible in the sense of Definition 6.2, the quantity
+edsρχ(BR,s) can be made arbitrarily small by taking s ≥0 and R ≥1 large enough.

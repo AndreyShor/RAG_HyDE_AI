@@ -1,0 +1,109 @@
+3
+B.
+Exact universality
+Lemma 2. Let the total quantum system consist of m + n qubits, where the quantum state is prepared using an IQP circuit,
+speciﬁed by diagonal matrix D(θ) = P
+x∈{0,1}m
+P
+y∈{0,1}n eiθx,y|x⟩⟨x|⊗|y⟩⟨y| with the ﬁnal layer of Hadamard gates omitted.
+Then, the reduced density matrix ρ2 of the second, n-qubit, subsystem is given by
+ρ2 = 1
+2m
+X
+k∈{0,1}m
+|ψk⟩⟨ψk|,
+(8)
+where each state |ψk⟩takes the form
+|ψk⟩=
+1
+√
+2n
+X
+y∈{0,1}n
+eiθk,y|y⟩,
+(9)
+and the phases θk,y are trainable parameters of the IQP circuit.
+Proof.
+ρ1+2 = D(θ)H⊗(m+n)|0⟩⊗(m+n)⟨0|⊗(m+n)H⊗(m+n)D†(θ) =
+1
+2m+n
+X
+x,x′∈{0,1}n
+X
+y,y′∈{0,1}m
+ei(θx,y−θx′,y′ )|x⟩|y⟩⟨x′|⟨y′|
+(10)
+Reduced density matrix for the second subsystem:
+ρ2 =
+X
+k∈{0,1}n
+1
+2m+n
+X
+x,x′∈{0,1}m
+X
+y,y′∈{0,1}n
+ei(θx,y−θx′,y′ )⟨k|x⟩⟨x′|k⟩⊗|y⟩⟨y′| =
+=
+X
+y,y′∈{0,1}n
+
+
+1
+2m+n
+X
+k∈{0,1}m
+ei(θk,y−θk,y′ )
+
+|y⟩⟨y′| =
+= 1
+2m
+X
+k∈{0,1}m
+
+
+1
+√
+2n
+X
+y∈{0,1}n
+eiθk,y|y⟩
+
+
+|
+{z
+}
+|ψk⟩
+
+
+1
+√
+2n
+X
+y′∈{0,1}n
+e−iθk,y′ ⟨y′|
+
+= 1
+2m
+X
+k∈{0,1}m
+|ψk⟩⟨ψk|
+(11)
+In the below we use tilde to denote bitstrings specifying states which are strings of Pauli-X eigenstates.
+Lemma 3. For any quantum state |ψk⟩= α|˜s1⟩+ β|˜s2⟩where ˜s1, ˜s2 ∈{+, −}n, there exist parameter setting θ in the state
+deﬁned in Eq. (9), such that ⟨˜s1|ψk⟩= |α|2.
+Proof. We prove it in two steps. We say a normalized quantum state is a UMA (uniform magnitude) state if it has all amplitudes
+of the same absolute value (with respect to the computational basis). Note that all states which are strings of X eigenstates are
+UMA.
+Next, note that for all probabilities p ∈[0, 1], there exist α, β such that α|+⟩+ β|−⟩is UMA. To see this, deﬁne
+|+θ⟩=
+1
+√
+2(|0⟩+ eiθ|1⟩)
+and compute
+|⟨+|+θ⟩|2 = cos2(θ/2).
+The right-hand side can attain all possible p values.
+Now we claim: if α and β are such as above, then for all strings |˜s1⟩and |˜s2⟩of X eigenstates, the state
+|ψ⟩= α |˜s1⟩+ β |˜s2⟩
+is UMA.
+If ˜s1 = ˜s2, then the claim is trivial as we can set p = 1.

@@ -1,0 +1,46 @@
+4
+(b) Coordinate system
+(c) Side view
+Cupula
+Endolymph
+Endolymph
+(a) Top view
+Figure 2: Problem setup. (a) Plan view of a semicircular canal showing the
+spatially-varying canal radius, 𝑎(𝑠), and the cupula (shaded in grey), which is situated in
+the enlarged portion, or utricle. (b) Schematic of the chosen coordinate system. (c) Close
+up of the region around the cupula, highlighting the cupula’s thickness, 𝑡ℎ, and its
+attachment to the canal walls via the ‘crista’ (black region). (The toroidal flow is shown
+schematically here to allow the zoom in on the cupula.)
+endolymph is assumed to be an incompressible Newtonian fluid of dynamic viscosity 𝜇and
+density 𝜌. The elastic, gel-like cupula occupies a thin region (shown in grey in fig. 2) and has
+density 𝜌𝑠, Young’s modulus 𝐸, thickness 𝑡ℎand Poisson ratio 𝜈𝑠. The cupula is assumed to
+occupy the entire cross-section of the canal, as can be seen in Figure 2(c), where the solid
+cupula is shaded in yellow and the liquid endolymph is shaded in blue. (The region shaded
+in black represents a structure called the crista which attaches the cupula to the canal wall.
+However, the azimuthal size of the crista will not appear directly in this work.)
+2.1. Equations for the bulk
+The Navier–Stokes equations for the dimensional fluid velocity ˆu and pressure ˆ𝑝in the
+co-rotating frame are given by (Landau & Lifshitz 1987)
+∇· ˆu = 0,
+(2.1a)
+𝐷ˆu
+𝐷ˆ𝑡+ 𝜕ˆ𝛀
+𝜕ˆ𝑡× ˆx + 2 ˆ𝛀× ˆu + ˆ𝛀× ( ˆ𝛀× ˆx) = −∇ˆ𝑝+ 𝜇∇2 ˆu.
+(2.1b)
+Here, the first of the extra terms on the left hand side is the Euler force, the second term is the
+Coriolis force and the final additional term is the centrifugal force, each due to the imposed
+rotation. The fluid is assumed to satisfy the no-slip condition at the edges of the walls, so that
+ˆu(ˆ𝑟= ˆ𝑎(ˆ𝑠)) = 0 for 𝑠∈(0, 2𝜋𝑅). Motivated by the small strains in the cupula (Selva et al.
+2009), it is modeled as a linearly elastic material, satisfying the steady Navier equations:
+∇· ˆ𝝉= 0,
+(2.2)
+alongside a linear Hookean constitutive law relating stress ˆ𝝉and the strains. Finally, we
+model the fluid structure interaction at the cupula-endolymph boundary in the usual way,
+imposing continuity of velocity and stress (Gkanis & Kumar 2006).
+2.2. Numerical simulations
+The system of equations (2.1)-(2.2) was simulated in COMSOL for different values of the
+Young’s modulus of the cupula and with a Poisson ratio 𝜈𝑠= 0.3. We impose a simple
+sinusoidal forcing, given by ˆΩ(ˆ𝑡) = Ω0 sin(2𝜋𝑡/𝑡typ), with Ω0 = 1rad/s and 𝑡typ = 1 s. The
+geometrical parameters are 𝑎= 1.6 × 10−4 m, 𝑅= 3.2 × 10−3 m and 𝑡ℎ= 0.8 × 10−4 m
+(Daocai et al. 2014).
+Focus on Fluids articles must not exceed this page length

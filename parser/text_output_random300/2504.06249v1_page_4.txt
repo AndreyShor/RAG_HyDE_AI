@@ -1,0 +1,89 @@
+To compare the DOS of generated structures with the ground truth conditioning data, we trained a separate
+surrogate model that predicts atom-level DOS from input crystal structures. We first evaluate the conditional
+generation by calculating the mean absolute errors (MAEs) between generated structures’ DOS and the
+ground truth DOS. In particular, we let y denote the ground truth DOS used to condition the generation
+process. We define ˆy as the predicted DOS from the ground truth structures, and ˆygen as the predicted DOS
+from the generated structures. Table 1 presents the MAEs comparing: (1) y with ˆygen, and (2) ˆy with ˆygen.
+We observe that both MAE (ˆygen, y) and MAE (ˆygen, ˆy) increase as the starting timestep T of the diffusion
+process becomes greater. This aligns with the fact that as T increases, less information of the original crystal
+structures is retained, making the diffusion process more reliant on generating high-quality structures from
+pure noise. Consequently, the generated structures are more prone to deviate further from the ground truth,
+leading to higher errors in the predicted DOS.
+When comparing classifier-based and classifier-free guidance, we observe from Table 1 that classifier-free
+guidance consistently achieves better performance. The difference in error between the two strategies is
+relatively small at T = 200, which is expected, as the model retains enough information from the original
+ground truth structures to enable both models to denoise more effectively to the ground truth structures,
+and resulting in lower values of both MAE (ˆygen, y) and MAE (ˆygen, ˆy). However, at the starting timestep
+T = 1000, where no information from the original structures is present, the performance of classifier-
+based guidance deteriorates significantly. Specifically, when compared to that at T = 200, MAE (ˆygen, y)
+at T = 1000 increases from 0.114 to 0.268, representing a 135% increase, while MAE (ˆygen, ˆy) rises
+from 0.068 to 0.256, marking a 276% increase. In contrast, classifier-free guidance exhibits significantly
+lower MAE increases from timestep T = 200 to T = 1000: a 17.6% rise in MAE (ˆygen, y) and a 79.6%
+increase in MAE (ˆygen, ˆy). In particular, the forward surrogate model’s own error, MAE (ˆy, y), is 0.096.
+This indicates that even at T = 1000, classifier-free guidance generates structures that align with the target
+DOS reasonably well with an MAE of 0.120. Additionally, at T = 1000, 314 out of 10,158 structures
+generated with classifier-based guidance fail to even map to a valid crystal graph for the forward surrogate
+model, highlighting its inferior performance compared to classifier-free guidance.
+T = 200
+T = 500
+T = 1000
+MAE (ˆygen, y) MAE (ˆygen, ˆy)
+MAE (ˆygen, y) MAE (ˆygen, ˆy)
+MAE (ˆygen, y) MAE (ˆygen, ˆy)
+Classifier
+0.114
+0.068
+0.200
+0.182
+0.268†
+0.256†
+Classifier-free
+0.102
+0.049
+0.109
+0.065
+0.120
+0.088
+Table 1: Mean absolute errors (MAEs) of density of states (DOS) comparing structures generated using
+classifier-based and classifier-free guidance. ˆygen is the DOS predicted from generated structures, ˆy is the
+DOS predicted from ground truth structures and y is the target DOS from test set. Comparisons are made
+across three different denoising timesteps, T ∈{200, 500, 1000}, with T = 1000 representing generation
+from fully random initializations. †: 314 out of 10,158 generated structures were excluded due to errors in
+constructing the crystal graph. The forward surrogate model’s intrinsic error, MAE (ˆy, y), is 0.096.
+T = 200
+T = 500
+T = 1000
+Struct. Match % Comp. Match %
+Struct. Match % Comp. Match %
+Struct. Match % Comp. Match %
+Classifier
+63.5
+73.8
+4.23†
+6.01
+0.07‡
+2.95
+Classifier-free
+81.6
+94.4
+42.0
+73.0
+14.7
+58.7
+Table 2:
+Structure match rate and composition match rate for structures generated using classifier-
+based and classifier-free guidance, compared to the test set.
+The structure match rate is the percent-
+age of structures satisfying the tolerances (stol=0.5, angletol=10, ltol=0.3) using pymatgen’s
+StructureMatcher. The composition match rate is the percentage of structures whose compositions
+perfectly match those of the test set. Comparisons are made across three different denoising timesteps,
+T ∈{200, 500, 1000}, with T = 1000 representing generation from fully random initializations. †/‡:
+9/372 out of 10,158 generated structures were excluded due to timeouts during metric calculation.
+In Table 2, we evaluate the performance of the conditional generation using (1) structure match rate and
+(2) composition match rate. The structure match rate quantifies the percentage of generated structures
+that are geometrically similar to the ground truth structures, as determined by the StructureMatcher
+algorithm from pymatgen within specified tolerances [22, 37]. The composition match rate represents
+the percentage of generated structures that exactly match the ground truth structures in terms of chemical
+composition. From Table 2, we observe that as T increases, both structure and composition match rates
+decreases, highlighting that higher amount of noise during the generation process result in structures that
+4

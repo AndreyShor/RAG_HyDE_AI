@@ -1,0 +1,42 @@
+Attempts to account for this spectral intensity by fitting an additional, shifted normal
+Auger-Meitner contribution arising from a small residual contribution from the first
+Ar@C60 monolayer directly bonded to the Ag(111) substrate (see Section 6 below)
+were not successful. Our motivation in attempting to introduce this contribution was
+informed by our sample preparation strategy: depositing the argon endofullerene onto
+a cold substrate significantly limits molecular mobility and it is very unlikely that
+the film grows in a simple layer-by-layer mode. Indeed, the slow rate of decay of the
+Ag 3d and Ag(111) valence band photoemission intensity as a function of deposition
+time would point to significant islanding, with regions of the first chemisorbed mono-
+layer remaining exposed up to high molecular coverages. (There is an appreciable
+Ehrlich–Schwoebel barrier (∼120 meV) for C60 diffusion[11].)
+However, a number of observations led us to discount the possibility of a residual con-
+tribution to the multilayer/bulk spectra arising from the monolayer: (i) as discussed
+in the main paper and Section 6 below, there is a significant, 1.25 eV, shift in the
+kinetic energies of the normal Auger-Meitner peaks for the endofullerene monolayer
+as compared to the bulk film. The normal Auger-Meitner intensity in the 29 – 30 eV
+binding energy range is not in line with this shift; (ii) as discussed in the following
+section, there is a very clear binding energy difference in the C 1s and Ar 2p core-level
+emission for the monolayer vs the bulk film that would produce a strong shoulder in
+the spectra should the monolayer make more than a negligible contribution. We did
+not observe a shoulder of this type in the multilayer specta; and (iii) the monolayer
+Auger-Meitner emission has a slightly higher on-resonance energy than that for the
+bulk film (245.4 eV vs 245.3 eV), out of line with the behaviour of the spectral
+intensity in the 29-30 eV binding energy (on resonance) range.
+There is one final key point on the subject of fitting the decay spectra that we would
+like to raise. Given the large number of constrained parameters, uncertainties that
+are returned via the standard approach, i.e. diagonalisation of the covariance matrix
+produced via the non-linear least squares fitting routine (which we implemented using
+the Python LMFIT package), are often significantly underestimated (and, moreover,
+assume normally distributed errors.) In order to provide a more robust estimate of the
+uncertainties, we therefore allowed the parameters to vary by a small amount about
+their constrained values and employed a Monte Carlo/bootstrapping approach to
+explore the fitness landscape. For decay spectra close to resonance (i.e. those excited
+with photon energies within ± 100 meV of the on-resonance value of 245.3 eV), we
+estimate that the value of τD can be determined to an uncertainty of approximately
+5%. Outside of this photon energy range, the signal-to-noise ratio is appreciably
+larger and the estimated uncertainties consequently significantly larger (up to 10%).
+Fig.S4 shows the variation in τD as a function of photon energy around the resonance
+condition. There is a monotonic decrease in the delocalization time across the reso-
+nance, which we have fitted with a simple linear dependence. The magnitude of the
+uncertainties does not justify a more sophisticated/higher order fitting function.
+5

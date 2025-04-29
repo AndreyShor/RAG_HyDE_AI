@@ -1,0 +1,108 @@
+9
+DETAILS OF THE NUMERICAL IMPLEMENTATION
+Numerical approaches to solving the Kadanoff–Baym equations are covered in great detail in, e.g., [93, 94, 134]. Mathemati-
+cally, the problem amounts to solving a set of coupled nonlinear Volterra integro-differential equations:
+y′
+i(t) = Φi[t, y(t)] +
+Z
+D∈[t0,t]
+ds Ki[t, s, y(s)] ≡gi(t, y) ,
+y(t0) = y0.
+(S.19)
+Note that the Bethe–Salpeter-type equations (S.9) have a similar form, albeit with y′
+i(t) ≡0 on the left-hand side. We solve these
+equations numerically using the iterative Heun’s scheme,
+predictor :
+y(0)
+n+1 = yn + ∆t g(tn, yn) ,
+corrector :
+y(k+1)
+n+1 = yn + ∆t
+2
+h
+g(tn, yn) + g(tn+1, y(k)
+n+1)
+i
+,
+(S.20)
+and employing the trapezoidal rule to compute the memory integrals. The correction step is iterated until the desired convergence
+is reached. A measure of convergence for given tolerances is
+ϵ(k)
+n+1 =
+y(k+1)
+n+1 −y(k)
+n+1
+p
+atol + rtol ·
+y(k+1)
+n+1
+p
+,
+(S.21)
+where ∥·∥p denotes the standard Lp-norm, with p = 2 chosen in this work. The step is accepted if ϵ(k)
+n+1 < 1. For all data
+presented, we used atol = 10−8 and rtol = 10−6. The timestep for all plots except Fig. 2(b) was taken as ∆t = 0.25 in units of
+ω0. The points in Fig. 2(b) were evaluated on a coarser grid with timestep ∆t = 0.4 instead. In all cases, the evolution time
+was fixed to τevol = 400, corresponding to Nt = 1600 timesteps for the finer lattice and Nt = 1000 timesteps for the coarser
+lattice, respectively. Note that ∆t is much smaller than any other timescale (ω−1
+0 , λ−1, etc.) in the problem, which implies that all
+relevant physical processes were resolved.
+SPIN CORRELATION FUNCTIONS
+In this work, we restrict ourselves to spatially homogeneous states. In this case, it is suggestive to work in Fourier space:
+fk =
+X
+j
+eik·j fj ,
+fj = N−1 X
+k
+e−ik·j fk .
+(S.22)
+To capture the antiferromagnetic nature of the Rydberg interaction, we then introduce even and odd sublattices, denoted by A
+and B, respectively. Consequently, correlation functions involving spatial dependence will carry sublattice indices: Ga, Dχχ
+k,ab,
+Dχϕ
+a , where a, b ∈{A, B}. In addition, the original Brillouin zone is replaced by two magnetic (or reduced) Brillouin zones, each
+twice as small as the original one. For a two-dimensional square lattice with unit lattice spacing, the reciprocal basis of the
+reduced Brillouin zone (RBZ) is spanned by the vectors G1 = (π, π)T and G2 = (π, −π)T. The map back to the original Brillouin
+zone is given by
+Dχχ
+k = 1
+2
+
+Dχχ
+AA,k + e−ik·r0Dχχ
+AB,k + eik·r0Dχχ
+BA,k + Dχχ
+BB,k,
+k ∈RBZ ,
+Dχχ
+AA,q + e−ik·r0Dχχ
+AB,q + eik·r0Dχχ
+BA,q + Dχχ
+BB,q,
+q ≡k −G ∈RBZ ,
+(S.23)
+where r0 is the displacement vector between the two sublattices, which for the simple square lattice with unit lattice spacing can
+be chosen as either (1, 0)T or (0, 1)T.
+As discussed in [93], the HS correlator can be readily mapped to a connected spin correlation function:
+˜Dχχ
+ij (t, t′) ≡Dχχ
+ij (t, t′) −iVijδC(t −t′) = VimVjl
+X
+σ,σ′
+⟨TC ˆsz
+m,σ(t) ˆsz
+l,σ′(t′)⟩c ≡VimVjl
+X
+σ,σ′
+Czz
+ml,σσ′(t, t′) .
+(S.24)
+Going to momentum space, the expression takes a particularly simple form in the limit Ns →1: Czz
+k (t, t′) = ˜Dχχ
+k (t, t′)/V2
+k.
+Decomposing the nonsingular part ˜Dχχ
+k (t, t′) of the HS propagator as shown in (S.13) then allows one to extract spectral and
+statistical properties of the spin degrees of freedom and thus probe for their thermalization using the generalized fluctuation-
+dissipation relation, as discussed in the main text. It is worth noting that, despite what Eq. (S.24) might naively suggest, the

@@ -1,0 +1,37 @@
+(2023), the noisy and noise-free outputs considered here are associated with
+the predictions and labels of a standard ML task because they are unpaired.
+Except for Hu and Lei (2024), the problem of evaluating unpaired samples,
+often referred to as the 2-sample problem, has not been addressed in the CP
+literature. Hu and Lei (2024), likely the only existing work applying CP to a
+two-sample task, focuses on hypothesis testing for conditional distributions.
+Our conceptual framework and ratio-based conformity score are similar but
+allow us to estimate continuous quantities (instead of a binary decision rule)
+and establish a clear link between the density-ratio conformity score and the
+target distribution divergences. Moreover, we focus on a specific case of con-
+ditional distributions where a heuristic ordering of the object space can be
+established in terms of a device’s size and depth.
+Non-exchangeability.
+In a QC real-world application, the outputs of clas-
+sically tractable and intractable devices may be statistically different. As we
+focus on small quantum machines when we train and calibrate the CP al-
+gorithms and intractable systems at test time, calibration and test sets are
+not exchangeable in our application. Non-exchangeability issues have been
+widely addressed in the CP literature (Barber et al., 2023). We propose two
+conceptually different new approaches inspired by the two common strate-
+gies used in CP to mitigate distribution shifts, sample reweighting (Bostr¨om
+and Johansson, 2020; Guan, 2023) and calibration training (Papadopoulos
+et al., 2008; Colombo and Vovk, 2020; Colombo, 2024). The proposed ap-
+proaches are general and apply to any situations where training, calibration,
+and test sets come from different realizations of a smooth multivariate meta-
+distribution, e.g. when P(Y |X = x) ̸= P(Y |X = x′).
+Sample reweighting.
+In the QC setup, non-exchangeability can be ex-
+pected to vary as a function of specific feature summaries, e.g. the classical
+computational complexity required to simulate a system. Our first mitigation
+approach consists of selecting training and calibration samples after ranking
+the data according to their complexity. The strategy can be viewed as an
+extreme application of the Mondrian CP algorithm of Bostr¨om and Johans-
+son (2020). In particular, it is different from the distribution drift setup, e.g.
+Gibbs and Candes (2021), where predictions become increasingly accurate
+as time passes (allowing asymptotic regret bounds). We show how choosing
+the ranking function and a threshold reduces the expected undercoverage of

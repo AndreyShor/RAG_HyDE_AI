@@ -1,0 +1,47 @@
+a new loop γ′
+2. Note that γ′
+2 ⊂Bri makes A(i −1) occur, and γ′
+2 ∩γ3 ̸= ∅makes A(i)
+occur.
+By requiring all the other clusters made by the remaining unexplored loops in Lri+1 to have
+diameter smaller than δri/100 (which occurs with positive probability depending only on δ),
+we conclude P( ¯
+A(i)) ≤b(δ) P( e
+A(i)) in this case.
+• Case (2b): There is a ball B2δri(z) with z ∈∂Bri such that B2δri(z) ∩C′
+1 ̸= ∅and (C′
+1 ∪
+B2δri(z)) ∩Λ(η2 ∪J(2δri), Lri) ̸= ∅. In this case, there exists a point w ∈J, measurable with
+respect to Lri ∪{γ2}, such that the following event occurs
+H(z, w) := {either B2δri(z) or B2δri(w) is not surrounded by any loop in Lri+1}.
+To be more precise, we will choose the previous possible z, w to be the ones that are closest to
+the rightmost point (ri, 0). On the one hand, we have the uniform estimate that P(H(z, w)) ≤
+δc for some constant c > 0 (by considering surrounding loops inside dyadic annuli). On the
+other hand, we note that Lri ∪{γ2} already makes the occurrence of two crossing clusters of
+Aε,ri−1, and hence, by slightly adapting the proof of Lemma 4.6, we can resample the loops
+in Lri ∪{γ2} with some positive cost such that A(i −1) happens. Combined, we obtain an
+upper bound δc P(A(i −1)) in this case.
+Combining the estimates in all the above cases, we conclude the proof of Lemma 4.8.
+Recall that the extension probability ms(δ; ε, Ls) and the quality Qε(Ls) were defined in (4.2)
+and (4.3), respectively. In what follows, ε is considered as fixed, so we drop it from the notation,
+and we write ms(δ) := ms(δ; ε, Ls) and Q(s) := Qε(Ls) for any ε ≤s ≤r, for simplicity. Note that
+both ms(δ) and Q(s) are measurable with respect to the loop soup Ls in Bs.
+Lemma 4.9. For all θ > 0, there exists ρ(θ) > 0 such that for all i,
+P(0 < Q(ri) < ρ, e
+A(i)) ≤θ P(A(i −1)).
+Proof. We first sample Lri such that both A(i −1) and 0 < Q(ri) < ρ occur. To realize e
+A(i), there
+exists a δ-good pair of loops (γ1, γ2) inside the collection Lri+1 \ Lri for some δ > 0, which extend
+two clusters in Lri across Aε,ri−1 to ∂Bri disjointly. We first assume that (γ1, γ2) is not ρ-good at
+scale ri, that is, (4.1) fails to hold for any pair of excursions (η1, η2) in Bri extracted from (γ1, γ2).
+As we already argued in case (2b) of the proof of Lemma 4.8, the probability that Bρri(z) with
+z ∈∂Bri is not surrounded by a loop in Lri+1 is bounded by ρc. Hence, the probability that the
+previous event holds for all endpoints z of η1 and η2 (which is implied by e
+A(i)) is uniformly bounded
+by 4ρc, which gives the desired upper bound in this case. On the other hand, since Q(ri) < ρ, we
+have mri(ρ) < ρ by (4.3). Therefore, the probability of existence of a ρ-good pair of loops is smaller
+than ρ. This finishes the proof, by picking θ = 4ρc + ρ.
+Lemma 4.10. There is a constant u > 0 such that the following holds. For any ρ > 0, there is a
+constant v(ρ) > 0 such that for all i,
+P(Q(ri+1) ≥u) ≥v(ρ) P(Q(ri) ≥ρ).
+18

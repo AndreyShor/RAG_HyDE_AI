@@ -1,0 +1,70 @@
+Published as a conference paper at ICLR 2025
+Figure S4: The configuration chart for data generation settings.
+Smoke 3D. We extend the 2D smoke dataset to a 3D setting, considering the process of smoke
+ascending and expanding in a confined 3D space with a resolution of 64 × 64 × 64. The boundary
+is defined as a cube, and the location of the smoke source varies between the training and test sets.
+The data used in the experiments consists only of concentration data.
+Similar to the fluid dataset, we use a strategy where the model predicts the next four frames based
+on the initial four frames during the training phase. In the testing phase, the model is required to
+predict up to 10 frames using the first four frames. We used FactFormer (Li et al., 2023a) to generate
+340 sets of data for training. Different data has varying smoke source location.
+SEVIR. Storm Event Imagery (SEVIR) (Veillette et al., 2020) is a dataset encompassing thousands
+of meteorological events, including various storms, lightning strikes, and precipitation events in the
+United States from 2017 to 2019. Each event is documented with image sequences covering a 4-
+hour period over a 384 km × 384 km area. The dataset includes data from five sensors: satellite
+imagery, infrared (water vapor), infrared (window), NEXRAD radar composites of Vertically Inte-
+grated Liquid (VIL), and lightning data. All sensors provide data with a spatial coverage of 384 km
+× 384 km and a temporal resolution of 5 minutes.
+For nowcasting, we selected the NEXRAD radar VIL composites. The VIL data has a spatial reso-
+lution of 1 km and is recorded at 5-minute intervals. Following the approach of Gao et al. (2022b),
+we use 65 minutes of VIL data (13 frames) to predict up to 60 minutes ahead (12 frames) for pre-
+cipitation nowcasting. Due to computational limitations, we downsample the spatial resolution to
+96×96. This downsampled dataset includes 35,718 training samples, 9,060 validation samples, and
+12,159 test samples.
+The data overview is presented in Table S2, including spatial resolution, number of training samples,
+and training and testing setup.
+B.2
+EVALUATION METRICS
+In the simulated data evaluation, MSE and MAE are used as the evaluation indexes. In the real data
+evaluation, for the adjacent precipitation prediction index, we follow Veillette et al. (2020), and use
+the Critical Success Index (CSI) to evaluate the prediction quality.
+Given predictions {bxn,t,h,w} and corresponding ground truth {xn,t,h,w}, bxn,t,h,w, xn,t,h,w ∈R,
+n = 1, . . . , N, t = 1, . . . , T, h = 1, . . . , H, w = 1, . . . , W, the above-mentioned metrics can be
+calculated as follows:
+MSE =
+1
+NTHW
+N
+X
+n=1
+T
+X
+t=1
+H
+X
+h=1
+W
+X
+w=1
+∥xn,t,h,w −bxn,t,h,w∥2
+2
+MAE =
+1
+NTHW
+N
+X
+n=1
+T
+X
+t=1
+H
+X
+h=1
+W
+X
+w=1
+∥xn,t,h,w −bxn,t,h,w∥1 .
+(S5)
+For the inferred and predicted latent physical quantities, referring to Kochkov et al. (2021), we
+quantitatively evaluate them by calculating the Correlation.
+18

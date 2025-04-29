@@ -1,0 +1,103 @@
+Figure 4: Circuit for block-encoding the non-local term V i,I
+NL in Eq. (108). The notation Pl refers to the
+computation of the Legendre polynomial in Step 2 below. Note that we have slightly modified the circuit
+relative to the prescription in the text so that it is manifestly self-inverse.
+We divide this into a sequence of two unitaries as PREPNL = PREPNL,2 · PREPNL,1, with action
+PREPNL,1|0⟩|ζI⟩=
+1
+q
+˜V I
+NL
+lmax
+X
+l=0
+3
+X
+α=1
+r
+4π
+Ω(¯rζI
+l )3(2l + 1)DζI,l
+α
+λG
+ζI ,l
+α
+|l⟩|α⟩|ζI⟩,
+(112)
+PREPNL,2|l⟩|α⟩|0⟩|ζI⟩=
+1
+q
+λG
+ζI ,l
+α
+X
+p2∈G
+GζI,l
+α (|kp2|¯rζI
+l )|l⟩|α⟩|p2⟩|ζI⟩.
+(113)
+Here λG
+ζI ,l
+α
+= P
+p2∈G |GζI,l
+α (|kp2|¯rζI
+l )|2, whose value is precomputed classically, and incorporated into
+the quantum algorithm with appropriate data loading subroutines. The state in Eq. (112) is prepared
+using coherent alias sampling. The state in Eq. (113) is prepared using rejection sampling (Ref. [75]),
+in combination with the equivalent reference state for the local term (see Type I reference state in
+App. C). More specifically, for the non-local term we use rejection sampling to prepare a state with
+amplitudes proportional to |GζI,l
+α | and then we manually add signs to the parts of the domain where G
+becomes negative (note that the functions G are real-valued by definition). The relevant piece of the
+quantum circuit operates in the following order:
+(a) Conditioned on l, α, ζI, prepare a reference state
+|ψ ˜
+G⟩∝
+X
+p2∈G
+˜GζI,l
+α (kp2¯rζI
+l )|p2⟩,
+(114)
+for some function ˜GζI,l
+α
+≥|GζI,l
+α | everywhere in the domain.
+(b) Conditioned on l, α, ζI, p2, compute an approximation to the function | ¯GζI,l
+α (kp2¯rζI
+l )⟩, where
+¯GζI,l
+α (kp2¯rζI
+l ) = |GζI,l
+α (|kp2|¯rζI
+l )|/ ˜GζI,l
+α (kp2¯rζI
+l ), to an ancilla register.
+(c) Prepare a uniform superposition over m = 1 . . . M amplitudes (we assume that M is a power of
+two).
+(d) Use an inequality test to set an ancilla to 0 when m ≤M|GζI,l
+α (|kp2|¯rζI
+l )|/ ˜GζI,l
+α (kp2¯rζI
+l ) (and to
+1 otherwise).
+(e) Use oblivious amplitude amplification to amplify the zero branch of the flag.
+(f) Flip the sign of the resultant state for each kp2 where GζI,l
+α (|kp2|¯rζI
+l ) < 0.
+2. Then, given that we have the registers p1 (the system register) and p2 (an ancilla register that is created
+with PREP in the first step), we apply the block-encoding of the diagonal matrix whose elements are
+the values of the Legendre polynomials.
+This operation is controlled only on l. Namely, it is the
+block-encoding of
+Pl =
+X
+p1,p2∈G
+Pl
+ kp2 · kp1
+|kp1||kp2|
+
+|p2⟩⟨p2| ⊗|p1⟩⟨p1|.
+(115)
+39

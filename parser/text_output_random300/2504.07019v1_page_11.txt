@@ -1,0 +1,69 @@
+Supplemental Material for
+Non-Hermitian Numerical Renormalization Group:
+Solution of the non-Hermitian Kondo model
+Phillip C. Burke1, 2 and Andrew K. Mitchell1, 2
+1School of Physics, University College Dublin, Belfield, Dublin 4, Ireland
+2Centre for Quantum Engineering, Science, and Technology, University College Dublin, Dublin 4, Ireland
+In this Supplemental Material we provide supporting information and data.
+• In Section S.I, we discuss some basic properties of non-Hermitian (NH) systems.
+• In Section S.II, we provide the complete derivation of the iterative construction of the Hamiltonian used in the
+non-Hermitian numerical renormalization group (NH-NRG) method.
+• In Section S.III, we illustrate alternative truncation schemes for the NH-NRG procedure.
+• In Section S.IV, we provide additional eigenvalue flow diagrams for the NH Anderson Impurity Model (AIM).
+• In Section S.V, we discuss the evolution of the Kondo temperature TK.
+S.I.
+NON-HERMITIAN SYSTEMS
+Before jumping into the iterative construction procedure used in NH-NRG, we first provide a brief discussion of
+NH matrices which will come in useful later. See also Refs. [1, 2] for discussions of bi-orthogonal quantum mechanics.
+For an NH system, for which ˆH ̸= ˆH†, the left and right eigenvectors are defined such that,
+ˆH |Ej⟩R = λj |Ej⟩R
+,
+ˆH† |Ej⟩L = λ∗
+j |Ej⟩L
+(S.1)
+⟨Ej|R ˆH† = ⟨Ej|R λ∗
+j
+,
+⟨Ej|L ˆH = ⟨Ej|L λj.
+(S.2)
+Although the left and right eigenvectors are not individually orthonormal, they may form a bi-orthogonal basis if the
+eigenspectrum is non-degenerate. In the following we assume this property, which can be defined as,
+⟨Ei|Ej⟩LR = δij .
+(S.3)
+Here we have also bi-normalized the basis. We note that a bi-orthonormal basis is not the default output for left
+and right eigenvectors from most standard numerical eigensolvers (e.g. via Python, Julia, or Fortran) and so the
+bi-normalization typically has to be done manually.
+To bi-normalize the left and right eigenvectors, we first compute the overlaps,
+LRj = ⟨Ej|Ej⟩LR ,
+(S.4)
+and then, provided the corresponding left and right eigenvectors are non-orthogonal, we rescale the vectors,
+|Ej⟩R →|Ej⟩R
+p
+LRj
+,
+|Ej⟩L →|Ej⟩L
+p
+LRj
+∗,
+(S.5)
+which ensures ⟨Ej|Ej⟩LR = 1.
+Assuming bi-orthonormality now, an NH matrix ˆH can be decomposed in terms of its left and right eigenvectors,
+ˆH
+=
+X
+j
+λj|Ej⟩⟨Ej|RL
+,
+⟨Ej|L ˆH |Ek⟩R = δjkλj .
+(S.6)
+With some bi-normalized basis |ϕj⟩L(R) of left(right) states, we can construct the Hamiltonian matrix Hϕ with
+elements [Hϕ]ij = ⟨ϕi|L ˆH |ϕj⟩R. Numerical diagonalization of this matrix yields UR HE (UL)† = Hϕ where [HE]ij =
+δijλj and the columns of the matrices UR and UL contain the right and left eigenvectors. It follows that,
+(UL)†UR = I
+;
+tr
+
+(UL)†UR
+= dim(H) .
+(S.7)
+arXiv:2504.07019v1  [cond-mat.str-el]  9 Apr 2025

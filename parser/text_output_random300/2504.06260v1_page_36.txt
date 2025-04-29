@@ -1,0 +1,55 @@
+Preprint. Under review.
+CODE:
+java ```
+model.component ().create (" comp1", true);
+model.component ("comp1").geom().create (" geom1", 2);
+model.component ("comp1").mesh().create (" mesh1 ");
+model.component ("comp1").physics ().create ("spf", "FluidFlow", "
+geom1");
+model.study().create ("std1");
+model.study("std1").create ("stat", "Stationary ");
+model.study("std1").feature ("stat").setSolveFor ("/ physics/spf",
+true);
+model.study("std1").run();
+model.component ("comp1").geom(" geom1 ").insertFile (" fname.mph", "
+geom1");
+model.component ("comp1").geom(" geom1 ").run("fin");
+model.param().label(" Geometrical Parameters ");
+model.param().create ("par2");
+model.param("par2").set("Re", "100");
+model.param("par2").descr ("Re", "Reynolds number ");
+model.param("par2").set("rho0", "1e3[kg/mˆ3]");
+model.param("par2").descr ("rho0", "Density ");
+...
+```
+EXECUTION HISTORY: CURRENT EXECUTION FEEDBACK:
+model.component ().create (" comp1", true); -> Correct
+model.component ("comp1").geom().create (" geom1", 2); -> Correct
+model.component ("comp1").mesh().create (" mesh1 "); -> Correct
+model.component ("comp1").physics ().create ("spf", "FluidFlow", "
+geom1"); -> Error: Exception com.comsol.util.exceptions.
+FlException: Unknown Interface
+Messages:
+Unknown Interface
+- Interface: FluidFlow
+...
+The following information may be useful to you:
+RELEVANT INFORMATION: -
+NEW CODE: The Interface ‘FluidFlow‘ is not a valid physics interface. LaminarFlow
+is a valid COMSOL physics interface. I will replace FluidFlow with LaminarFlow
+and return the entire code block.
+java ```
+model.component ().create (" comp1", true);
+model.component ("comp1").geom().create (" geom1", 2);
+model.component ("comp1").mesh().create (" mesh1 ");
+model.component ("comp1").physics ().create ("spf", "LaminarFlow", "
+geom1");
+model.study().create ("std1");
+model.study("std1").create ("stat", "Stationary ");
+model.study("std1").feature ("stat").setSolveFor ("/ physics/spf",
+true);
+model.study("std1").run();
+model.component ("comp1").geom(" geom1 ").insertFile (" fname.mph", "
+geom1");
+model.component ("comp1").geom(" geom1 ").run("fin");
+36

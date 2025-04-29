@@ -1,0 +1,166 @@
+3
+equality is related to the rate of heat dissipation in the
+medium
+˙q(t) = F (r) ⋄˙r ≡kBT ˙sm,
+(10)
+where we identify the exchanged heat with an increase in
+entropy of the medium sm at temperature T = DthΓ/kB.
+The last term in the second equality of (9) corresponds
+to the entropy increase caused by the active fluctuation
+˙sact(t) =
+R 1
+0 dθ
+R
+ν( dz)zP(r −θz, t)
+DthP(r, t)
+⋄˙r.
+(11)
+Then Eq. (9) is naturally written as a dynamic balance
+equation for the trajectory-dependent total entropy pro-
+duction
+˙stot(t) =
+˙ssys(t) + ˙sm(t) + ˙sact(t)
+=
+−∂tP(r, t)
+P(r, t)
+
+r(t)
++
+J(r, t)
+DthP(r, t)
+
+r(t)
+⋄˙r,(12)
+which is our first central result. The first term on the
+right-hand side signifies a change in P(r, t), due to relax-
+ation from a nonstationary initial state P(r, 0) ̸= P s(r).
+Upon averaging, the total entropy production rate ˙stot
+has to be non-negative as required by the second law.
+This ensemble average proceeds in two steps. First, we
+average over all trajectories of (4) that pass a given po-
+sition r at time t leading to ⟨˙r | r, t⟩= J(r, t)/P(r, t) =
+V (r, t), see Supplemental Material for the derivation de-
+tail. Second, with
+R
+dr∂tP(r, t) = 0 due to total proba-
+bility conservation, averaging over all r with P(r, t) leads
+to
+˙Stot(t) ≡
+⟨˙stot(t)⟩=
+Z
+dr |J(r, t)|2
+DthP(r, t)
+=
+Z
+dr|V (r, t)|2P(r, t)/Dth ≥0,
+(13)
+where the equality “=0” holds in equilibrium only. Aver-
+aging the increase in entropies of the medium and active
+fluctuation along similar lines leads to
+˙Sm(t) ≡⟨˙sm(t)⟩= ⟨F (r) ⋄˙r⟩/(kBT )
+=
+Z
+drF (r) · V (r, t)P(r, t)/(kBT ),
+(14)
+˙Sact(t) ≡⟨˙sact(t)⟩=
+*R 1
+0 dθ
+R
+ν( dz)zP(r −θz, t)
+DthP(r, t)
+⋄˙r
++
+=
+Z
+dr
+R 1
+0 dθ
+R
+ν( dz)zP(r −θz, t)
+DthP(r, t)
+· V (r, t)P(r, t),
+(15)
+where SL(r, t) := −
+R 1
+0 dθ
+R
+ν( dz)zP (r−θz,t)
+P (r,t)
+is the L´evy
+score function [43]. Hence upon averaging, the increase in
+entropy of the system itself becomes ˙Ssys(t) ≡⟨˙ssys(t)⟩=
+˙Stot(t) −˙Sm(t) −˙Sact(t). The foundation of this result
+is that we have obtained entropy production (or annihi-
+lation) along a single stochastic trajectory in Eq. (12),
+splitting it up into a medium part, a system part, and an
+active fluctuation part. These new developed concepts
+facilitate the discussion of fluctuation theorems.
+Fluctuation theorem—For Langevin dynamics driven
+solely by Gaussian white noise, fluctuation theorems
+arise from the transformation properties of the trajec-
+tory weight under time reversal, which associated with
+the reversed trajectory ˜r(t) = r(T −t), see e.g.
+[42].
+For a given initial condition r0 ≡r(0) = ˜r(T) ≡˜rT and
+final condition rT ≡r(T) = ˜r(0) ≡˜r0, the ratio of the
+probabilities of the forward path, P[r(t) | r0], and of the
+backward path, ˜P[˜r(t) | ˜r0], can be readily calculated
+for Langevin systems with only Gaussian thermal noise
+using the path integral representation [42, 48].
+For system described by (4), the time reversal process
+˜r(t) is governed by [49, 50]:
+d˜r(t)
+dt
+=
+−F (˜r(t))/Γ + 2Dth∇log P(˜r(t), T −t)
++˜ηth(t) + ˜ηact(t),
+(16)
+where ˜ηth(t) is the Gaussian white noise with the same
+statistical property of ηth(t), ˜ηact is the compound Pois-
+son process with time- and state-dependent L´evy mea-
+sure ˜νT −t(r, dz) dt := P (r+z,T −t)
+P (r,T −t) ν( dz) dt. The explicit
+definition of the path integral representation for r(t) of
+(4) and ˜r(t) of (16) becomes infeasible [51, 52]. To ad-
+dress this, we slice the trajectory r(t) into discrete time
+intervals, i.e., 0 = t0 ≤t1 ≤· · · ≤tn = T. To see how
+time reversal matters, we “redefine” the system entropy
+as ssys(t) = −log ˜P(x(t), t) for a trajectory {x(t)}t∈[0,T ].
+Furthermore, the transition densities, P(r, t|ri, ti) and
+˜P(r, t|ri, ti), can similarly be transformed into continu-
+ity equations via the probability flux method we used
+before. Thus we can define the forward and backward
+transition densities-based L´evy scores as:
+SL,r(ti)(r, t) := −
+Z 1
+0
+dθ
+Z
+ν( dz)z P(r −θz, t | r(ti), ti)
+P(r, t | r(ti), ti)
+,
+˜SL,r(ti)(r, t) := −
+Z 1
+0
+dθ
+Z
+˜νT −t(r, dz)z
+˜P(r −θz, t | r(ti), ti)
+˜P(r, t | r(ti), ti)
+.
+(17)
+This generalization reveals a local-global statistical cor-
+respondence that bridges the global statistical descrip-
+tion and local dynamical behavior of the system. From
+a mathematical perspective, the probability distribution
+P(r, t) is the marginalization of the transition densi-
+ties over all initial conditions, P(r, t) =
+R
+driP(r, t |
+ri, ti)P(ri, ti). Hence, the transition density-based L´evy
+score function captures the conditional, path-dependent
+dynamics of the system (4),
+while the probability
+distribution-based definition in (15) reflects its global
+statistical behavior. Physically, this correspondence em-
+beds dynamical information from transition densities

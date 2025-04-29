@@ -1,0 +1,224 @@
+10
+0
+500
+1000
+1500
+2000
+e
+°15
+°10
+°5
+0
+5
+10
+T (e)
+E
+S
+C
+H
+0
+500
+1000
+1500
+2000
+e
+°15.0
+°12.5
+°10.0
+°7.5
+°5.0
+°2.5
+0.0
+2.5
+5.0
+T (e)
+E
+S
+C
+H
+ase64="/ZQ4uhoe3Iq6UJWOmtxEGU1
+Fltc=">AB6nicbVDLSgNBEOyNrxh
+fUY9eBoMQL2FXJHoMevEY0TwgWcLsp
+DcZMju7zMwKIeQTvHhQxKtf5M2/cZL
+sQRMLGoqbrq7gkRwbVz328mtrW9sb
+uW3Czu7e/sHxcOjpo5TxbDBYhGrdkA
+1Ci6xYbgR2E4U0igQ2ApGtzO/9YRK8
+1g+mnGCfkQHkoecUWOlhzI97xVLbsW
+dg6wSLyMlyFDvFb+6/ZilEUrDBNW64
+7mJ8SdUGc4ETgvdVGNC2YgOsGOpB
+FqfzI/dUrOrNInYaxsSUPm6u+JCY20
+HkeB7YyoGeplbyb+53VSE17Ey6T1K
+Bki0VhKoiJyexv0ucKmRFjSyhT3N5K
+2JAqyoxNp2BD8JZfXiXNi4pXrVTvL0
+u1myOPJzAKZTBgyuowR3UoQEMBvAM
+r/DmCOfFeXc+Fq05J5s5hj9wPn8AjD
+2NVQ=</latexit>(a)
+(c)
+0
+5
+10
+15
+20
+k
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+ΩA
+E
+S
+C
+H
+0
+5
+10
+15
+20
+k
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+ΩA
+E
+S
+C
+H
+c
+bVDLSgNBEOyNrxhfUY9eBoMQL2FXJHoMevEY0TwgWcLspDcZMju7zMwKIeQTvHhQxKtf5M2/cZLsQRMLGoqbrq7gkRwbVz328mtrW9sbuW3Czu7e/sHxcOj
+po5TxbDBYhGrdkA1Ci6xYbgR2E4U0igQ2ApGtzO/9YRK81g+mnGCfkQHkoecUWOlh3Jw3iuW3Io7B1klXkZKkKHeK351+zFLI5SGCap1x3MT40+oMpwJnBa6
+qcaEshEdYMdSPU/mR+6pScWaVPwljZkobM1d8TExpPY4C2xlRM9TL3kz8z+ukJrz2J1wmqUHJFovCVBATk9nfpM8VMiPGlCmuL2VsCFVlBmbTsG4C2
+/vEqaFxWvWqneX5ZqN1kceTiBUyiDB1dQgzuoQwMYDOAZXuHNEc6L8+58LFpzTjZzDH/gfP4AjcKNVg=</latexit>(b)
+(d)
+FIG. 6.
+(a) The integrated reward T (e) obtained in each
+episode as a function of episodes for different (pure) strategies
+at pω = 0.015. The data is shown as the average of 10 runs.
+(b) Evolution of ρA for RL runs starting from a pre-learned
+value function at (σA = 1.0, λA = 1.0, ϕ = 0) with pω = 0.015.
+(c,d) Similar data to (a,b) at pω = 0.005.
+truncate the sum accordingly. Note that T (e) depends
+on the value estimates, as well as the state points that
+are visited during the episode. The value of T (e) fluctu-
+ates between episodes because the Sk are stochastic, but
+there is no net drift. See Fig. 6(a), which is obtained for
+the four pure directional strategies by running the whole
+algorithm 10 times and averaging the results for T (e).
+In addition Fig. 6(b) illustrates the operation of the
+ϵ-greedy policy. We take the learned ˆϱ from a previous
+run of the RL algorithm; then we initialise the system
+at S = (σA, λA, ϕ) = (1, 1, 0) and run a single episode,
+computing the population ρA of species A at the end
+of each step. This procedure is repeated averaged over
+10 independent runs (always starting with the same pre-
+learned value estimates ˆϱ).
+The results show that the
+greedy policy successfully increases the population of the
+smart species, via parameter optimisation. Figs. 6(c,d)
+demonstrate convergence and successful optimisation for
+a smaller value of pω, demonstrating the robustness of
+the method.
+V.
+RESULTS – OPTIMAL STRATEGIES
+A.
+Optimisation by RL
+The RL algorithm yields value estimates ϱ from which
+we infer the (estimated) optimal state point
+S∗= arg max
+S
+ˆϱ(S) .
+(19)
+In this Section, we explore the optimal state points that
+are obtained when optimising parameters for the various
+directional strategies introduced in Sec. II D. We consider
+two different death rates pω = 0.015 and pω = 0.005,
+to show the robustness of our method and investigate
+the environment dependence of adaptive strategies. The
+Null
+Non
+Directional
+E
+S
+H
+C
+E&S
+E&H
+E&C
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+ΩX
+Null
+Non
+Directional
+E
+S
+H
+C
+E&S
+E&H
+E&C
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+ΩX
+u
+7zMwKIeQTvHhQxKtf5M2/cZLsQRMLGoqbrq7gkRwbVz328mtrW9sbuW3Czu7e/sHxcOjpo5TxbDBYhGrdkA1Ci6xYbgR2E4U0igQ2ApGtzO/9YRK81g+mnGCfkQHkoecUWOlhzI97xVLbsWdg6wSLyMlyFDvFb+6/ZilEUrDBNW647mJ8SdUGc4ETgvdVGNC2YgOsGOpBFqfzI/dUrOrNInYaxsS
+UPm6u+JCY20HkeB7YyoGeplbyb+53VSE17Ey6T1KBki0VhKoiJyexv0ucKmRFjSyhT3N5K2JAqyoxNp2BD8JZfXiXNi4pXrVTvL0u1myOPJzAKZTBgyuowR3UoQEMBvAMr/DmCOfFeXc+Fq05J5s5hj9wPn8AjD2NVQ=</latexit>(a)
+(b)
+FIG. 7.
+(a) Optimised steady-state population densities for
+different survival strategies at pω = 0.015 averaged over 5
+simulations, labelled according to Fig. 2. The E&S strategy
+yields the highest ρA. Error bars show the standard error of
+the mean. (b) Optimised steady state population densities for
+different survival strategies at pω = 0.005. The evade strategy
+yields the highest ρA.
+larger death rate pω = 0.015 leads to a lower total pop-
+ulation density so we refer to this as the sparse case; the
+other value pω = 0.005 is the crowded case.
+As above, we fix a pure directional strategy for the A
+particles and perform three-parameter optimisation for
+S = (σA, λA, ϕ). We repeat this procedure for the four
+possible directional strategies (Sec. II D) as well as for the
+non-directional strategy (ϕ = 0). For each strategy, we
+identify the corresponding S∗and we perform MC simu-
+lations (without further learning) to estimate the species’
+populations ⟨ρX⟩for X = A, B, C. We also consider the
+symmetric (“null”) case in which species A behaves iden-
+tically to B, C, that is (σA, λA, ϕ) = (1, 1, 0).
+Results are shown in Fig. 7, the densities obtained in
+each case are averaged over 5 simulations. (All of these
+systems remained in the coexistence state throughout,
+there was no extinction or fixation.) The learned (opti-
+mised) strategies generically lead to larger ρA than the
+symmetric (null) case, as they should. (The Figure also
+shows results for mixed strategies, these are discussed
+below.) Among pure strategies, spreading leads to the
+largest ρA in the sparse case (pω = 0.015).
+For the
+crowded case, the picture is less clear-cut: the evasion
+strategy has the largest mean population but the other
+pure-directional strategies perform similarly well, as does
+the non-directional one.
+As well as pure strategies (hunt, evade, etc), we also
+consider mixed strategies that combine evasion with
+other characteristics.
+Fig. 8 demonstrates convergence
+for this four-parameter optimisation, analogous to Fig. 6.
+One sees from Fig. 7 that for the crowded case, the op-
+timal strategy found by RL always reverts to pure eva-

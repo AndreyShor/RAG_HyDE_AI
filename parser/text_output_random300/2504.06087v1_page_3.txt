@@ -1,0 +1,162 @@
+100
+140
+200
+300
+500
+valence electrons
+10−3
+10−2
+10−1
+runtime [sec]
+a)
+wavefunction update
+Ferminet: O(n2.2)
+Psiformer: O(n2.1)
+Lapnet: O(n2.0)
+Naive FiRE: O(n1.8)
+FiRE: O(n1.3)
+100
+140
+200
+300
+500
+valence electrons
+10−1
+100
+101
+102
+103
+b)
+kinetic energy
+Ferminet: O(n2.8)
+Psiformer: O(n3.1)
+Lapnet: O(n2.5)
+Naive FiRE: O(n2.4)
+FiRE: O(n1.7)
+100
+140
+200
+300
+500
+valence electrons
+100
+101
+102
+103
+c)
+total optimization step
+Ferminet: O(n3.1)
+Psiformer: O(n3.1)
+Lapnet: O(n2.9)
+Naive FiRE: O(n2.6)
+FiRE: O(n2.3)
+Fermi-
+net
+Psi-
+former
+Lap-
+Net
+Naive
+FiRE
+FiRE
+0
+20
+40
+60
+80
+100
+120
+140
+160
+d)
+15×
+16×
+15×
+12×
+1×
+total for 200 val. electrons
+Sampling
+Ekin
+ECP
+S+
+Figure 2: Runtime for cumulene chains of varying length. Runtimes for equivalent batch size of 4096 on
+a single A100 GPU. FiRE models use a cutoff c = 3a0 a) Time required to update the wave function Ψ after
+single-electron move. b) Time required to compute the kinetic energy ∆Ψ. c) Total time per optimization step.
+d) Breakdown of the runtime of a single optimization step for different architectures.
+perset of Slater-Jastrow wave functions as J may rep-
+resent any many-body Jastrow factor depending on all
+electrons within the cutoff. As c →∞, Nri →{rj}i̸=j
+approaches the fully-connected limit and we recover
+contemporary neural wave functions (Eq. (3)). To cap-
+ture electron correlation beyond the cutoff, we intro-
+duce a novel global attention-based Jastrow factor, de-
+tailed in Sec. 4.2.
+We show in Sec. 2.1 that FiRE speeds up all relevant
+aspects of NN-VMC by O(nel), in particular sampling
+from the wave function, evaluating its energy and en-
+ergy gradient, and evaluating non-local operators re-
+quired for effective core potentials (ECPs), or spin-
+related quantities as visualized in Fig. 1.
+In Sec. 2.2, we demonstrate the accuracy of our ap-
+proach by applying it to various challenging systems,
+such as non-covalent interactions, large hydrocarbons,
+and organometallic compounds.
+We find that even
+small cutoffs yield highly accurate wave functions, and
+compared to existing NN-VMC approaches, we obtain
+more accurate relative energies at a fraction of com-
+putational cost. On several of these systems, we find
+FiRE to accurately reconstruct experimental results,
+even obtaining better predictions than ‘gold-standard’
+methods like CCSD(T) or AFQMC.
+As we can now scale NN-VMC to unprecedented sizes,
+we analyze the convergence rates of NN-VMC both in
+system sizes and optimization steps in Sec. 2.3. Inter-
+estingly, we observe consistent convergence rates across
+different systems.
+2
+Results
+2.1
+Improved runtime
+Computing the embeddings h for fully connected archi-
+tectures scales as O(nel2) due to the pairwise electron-
+electron interactions and is typically the computational
+bottleneck for medium-sized molecules. However, eval-
+uating the determinant, which scales O(nel3), deter-
+mines the asymptotic scaling of the wave function.
+Thus, replacing a fully connected embedding with our
+finite-range embedding (FiRE) does not change the
+asymptotic scaling and only provides modest speedups
+as shown in Fig. 2d, where we compare this ‘Naive
+FiRE’ against state-of-the-art neural wave functions.
+The key advantage of FiRE is that its sparsity enables
+us to speed up two critical operations that determine
+the actual scaling of VMC: updating Ψ(r) after moving
+a small number of electrons and computing the Lapla-
+cian ∆Ψ.
+Several operations of a VMC optimization require wave
+function updates, i.e., evaluating Ψ(r′) when Ψ(r) is
+known, and r′ differs from r in only a few electrons’
+positions. This occurs during Monte Carlo sampling,
+where new electron coordinates r′ are proposed at each
+Markov Chain step via single-electron updates from
+r.
+Wave function updates are also necessary when
+evaluating non-local parts for effective core potentials
+(ECPs) and spin-operators, such as S2 [18] or S+ [19].
+In all three cases, a single optimization step typically
+requires O(nel) updates, yielding the naive asymptotic
+per-step cost of O(nel4). However, when using FiRE,
+we can exploit that moving a single electron affects
+only the embeddings and orbitals of electrons in its old
+and new neighborhood. Instead of fully recomputing
+all orbitals, we only recompute the affected electrons
+(see Fig. 1a) and, instead of naively computing the de-
+terminant nel ×nel, we use low-rank updates scaling as
+O(nel2), as shown in Sec. 4.3. These low-rank updates
+reduce the scaling of our updates by O(nel). Fig. 2a
+shows that we can obtain similar speedups in prac-
+tice: While for previous neural wave functions comput-
+ing a wavefunction update empirically scales between
+Tupd ∼nel2.0 and Tupd ∼nel2.2, FiRE only grows as
+3

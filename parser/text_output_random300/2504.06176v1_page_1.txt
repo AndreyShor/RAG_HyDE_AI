@@ -1,0 +1,72 @@
+A Self-Supervised Framework for Space Object Behaviour
+Characterisation.
+April 9, 2025
+Ian Groves1, Andrew Campbell2, James Fernandes3, Diego Rodriguez3, Paul Murray2, Massimiliano Vasile4, and
+Victoria Nockles1
+1Defence AI Research Centre, Defence & National Security, The Alan Turing Institute, UK
+2Department of Electronic and Electrical Engineering, University of Strathclyde, UK
+3GMV, UK
+4Aerospace Centre of Excellence, University of Strathclyde, UK
+Abstract
+Foundation Models, which leverage large neural networks pre-trained on unlabelled data before fine-tuning
+for specific tasks, are increasingly being applied to specialised domains. Recent examples include ClimaX
+for climate and Clay for satellite Earth observation, but a Foundation Model for Space Object Behavioural
+Analysis has not yet been developed. As orbital populations grow, automated methods for characterising space
+object behaviour are crucial for space safety. Here, we present a Space Safety and Sustainability Foundation
+Model focusing on space object behavioural analysis using light curves. To build our Foundation Model, we
+implemented a Perceiver-Variational Autoencoder (VAE) architecture, pre-trained with self-supervised recon-
+struction and masked reconstruction on 227,000 light curves from the MMT-9 observatory. The VAE enables
+anomaly detection, space object motion prediction, and generation of synthetic light curves. We fine-tuned the
+model for anomaly detection & motion prediction using two independent light curve simulators (CASSAN-
+DRA and GRIAL respectively), using CAD models of boxwing, Sentinel-3, SMOS, and Starlink platforms.
+Our pre-trained model achieved a reconstruction mean squared error of 0.009, identifying potentially anoma-
+lous light curves through reconstruction difficulty. After fine-tuning, the model scored 88% and 82% accuracy,
+with 0.90 and 0.95 ROC AUC scores respectively in both anomaly detection and motion mode prediction (e.g.,
+sun-pointing, spin, tumbling etc.). Analysis of high-confidence anomaly predictions on real data revealed dis-
+tinct patterns including characteristic object profiles and satellite glinting. The motion mode prediction model
+successfully differentiated between various movement behaviours such as sun-pointing, spin, and tumbling.
+Our work demonstrates how self-supervised learning can simultaneously enable anomaly detection, motion
+prediction, and synthetic data generation from rich representations learned in pre-training. More broadly, our
+work supports space safety and sustainability through automated monitoring and simulation capabilities.
+Keywords Space Object Behavioural Analysis, Space Foundation Model, Self-Supervised Learning, Light curve anomaly
+detection, Space Situational Awareness (SSA), Space Foundation Models, Generative AI
+1
+Introduction
+The number of objects launched is growing rapidly, with 159
+worldwide launches in 2000 versus 2849 in 2024 [1]. This
+growth underscores the need for methods for automated and
+efficient monitoring of space objects, which is crucial to soci-
+etal function and national security e.g., critical communications
+& position/navigation/timing [2]. In addition to national se-
+curity, monitoring of Space Objects has substantial economic
+considerations, e.g., the financial service sector is reliant on
+precise time synchronisation enabled by satellites [3]. This in-
+crease in space resident objects is coupled with significantly
+larger datasets collected from modern sensors, tracking ob-
+jects both from ground-based sensors and space-space sensors
+[4, 5]. Traditional methods for Space Object Behavioural Anal-
+ysis (SOBA) rely on arduous manual inspection, or numerical
+methods requiring a large amount of priors. Machine learning
+and Artificial Intelligence techniques offer promising new pos-
+sibilities to analyse these growing datasets. For example, Foun-
+dation Models, whereby large neural networks are (pre-)trained
+to learn general principles of unlabelled data, are emerging as
+a powerful approach for pattern recognition in large, unstruc-
+tured datasets. They have demonstrated performance in mul-
+tiple natural language and text-based tasks, e.g., writing and
+coding. However, Foundation Models that integrate sensor data
+with physics-based models, are still in their infancy, as there
+are less publicly available datasets and input/output data types
+are less intuitive than natural language. Nevertheless, domain-
+specific Foundation models are proving effective in specialised
+use-cases such as ClimaX [6] for climate/weather prediction,
+and Clay for Earth Observational data [7]. These examples
+show that the general principles of learning spatiotemporal rela-
+tionships between datapoints are readily transferable and useful
+outside of natural language and programming.
+However, there is little current exploration on the best neu-
+ral network architectures and training strategies for FMs for
+more specialised datasets/applications, and to our knowledge
+this is yet to be done for Space Domain Awareness (SDA).
+Of principal interest in SDA is anomaly detection, i.e., detect-
+arXiv:2504.06176v1  [cs.LG]  8 Apr 2025

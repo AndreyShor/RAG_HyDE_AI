@@ -1,0 +1,124 @@
+7
+gree of directional persistence is necessary to form loops
+wide enough to be threadable. On the other hand, while
+a large stiffness does produce configurations that could
+be threadable, it also suppresses configurational entropy,
+and hence it is not optimally conducive to linking.
+The generality and robustness of the nonmonotonicity
+of Plink(βκb) is indicated by the fact that it does not
+depend on whether the number of self-assembled rings is
+allowed to fluctuate or is set equal to 3 or more rings by
+a posteriori selection, see Appendix B and Fig. S1.
+This behavior has not been previously reported or ob-
+served in polymer systems at large. The result signifi-
+cantly advanced the understanding of how bending rigid-
+ity influences the topological entanglement of polymer
+systems. Previous studies have been limited to single,
+isolated polymers, where the only possible form of topo-
+logical entanglement is intra-chain (i.e., knotting), which
+is also unimodal with respect to bending rigidity [90]. In-
+terestingly, we found an analogous knotting property for
+rings that are not isolated but are part of self-assembled
+melts, as shown in Appendix B. The shared unimodality
+of both linking and knotting probabilities reveals a previ-
+ously unrecognized connection and common microscopic
+basis between the intra- and inter-ring entanglements in
+spite of their otherwise very distinct nature.
+We expect that the unimodality of Plink, here estab-
+lished for a maximally dense system of ring melts, ought
+to manifest more broadly, e.g., at partial space-filling and
+in various realizations of supramolecular self-assemblies
+or topologically-unrestricted ring polymers. The applica-
+tive potential of the result to boost the inherently low
+yield of molecular interlockings in supramolecular self-
+assemblies [64, 67]. Our results indicate that a judicious
+design of the bending rigidity of the circular elements
+could afford considerable latitude for tuning and max-
+imizing the concatenation probability. For instance, in
+the case of Olympic gels assembled from individually cir-
+cularizable linear DNAs [83], two such control parameters
+would be the ionic strength/valency of the solution and
+the DNA length, which can influence the effective rigid-
+ity by modulating the DNA persistence length and the
+number of Kuhn lengths, respectively.
+III.
+APPLICATION TO QUANTUM
+ANNEALERS
+Compared to conventional sampling methods, such as
+Monte Carlo of molecular dynamics with real-space poly-
+mer representations, the QUBO formulation can offer
+significant speedups with both classical and quantum
+optimizers.
+This advantage was demonstrated in ref.
+[33], which examined the computational cost of sam-
+pling space-filling ring melts with minimum curvature
+as a function of the system size (total ring length), N.
+For ad hoc optimized real-space sampling, the computa-
+tional cost scaled as N 5.4, while QUBO-based sampling
+improved the scaling to N 3.7 with classical annealers and
+to N 3.2 with hybrid classical-quantum ones.
+12
+13
+14
+15
+16
+17
+18
+nc
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+W(nc)
+               Reference, ground truth
+Classical-quantum hybrid sampling
+Q1
+Q2
+Q3
+mean
+FIG. 3.
+Validation of the density of states recon-
+structed from classical-quantum hybrid sampling of a
+ring melt filling a 3×3×2 lattice. The reconstruction (or-
+ange histograms) was computed from samples obtained with
+the D-wave hybrid sampler, using a sampling depth d = 50 for
+each of the 4 intervals of length 4 (m = 2) spanning the entire
+range of curvature values, 12 ≤nc ≤18. The ground truth
+normalized density of states was obtained by exhaustive enu-
+meration of all possible states. The box plots represent the
+probability distribution of 500 independent reconstructions
+obtained via unbiased sampling of the exhaustively enumer-
+ated set, using the same intervals and depth d as with the
+hybrid sampler. Q1, Q2 and Q3 mark the first, second (me-
+dian), and third quartiles, respectively. The whiskers extend
+to the furthest data points within 1.5 IQR of the box edges,
+where IQR is the interquartile range (Q1 to Q3).
+The implications are twofold.
+On the one hand,
+QUBO-based sampling of soft matter can already be ad-
+vantageous on classical machines, for which computing
+power is widely available. On the other hand, as the size
+and power of quantum machines continue to advance, in-
+tegrating quantum annealers and QUBO-based models
+could become a relevant and performative tool for phys-
+ical systems where real-space MC schemes are hindered
+by the rapid growth of autocorrelation times with system
+size.
+Towards these prospective applications, we used the
+D-Wave implementation of quantum annealers to assess
+their potential for reconstructing the density of states
+without biases arising from fair-sampling issues [43, 46,
+47].
+For such proof of concept demonstration, we consid-
+ered ring melts in a 3 × 3 × 2 cuboid. This system size
+was chosen because it is sufficiently large to feature hun-
+dreds of distinct states across a certain curvature range,
+12 ≤nc ≤18. At the same time, the entire conforma-
+tional ensemble can be explored with exhaustive enumer-
+ation methods, which we leveraged to establish the exact
+density of states and the statistical confidence intervals
+of its reconstructions at a given sampling depth.
+For the reconstruction, we used m = 2 slack variables

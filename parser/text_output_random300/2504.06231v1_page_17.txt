@@ -1,0 +1,50 @@
+0
+20
+40
+60
+80
+100
+time [ps]
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+energy drift [eV/atom]
+orb-v3-conservative-inf
+orb-v3-conservative-20
+orb-v3-direct-inf
+orb-v3-direct-20
+Figure 7: Total energy during NVE dynamic simulations as a function of time, for the various
+Orb-v3 models. Only orb-v3-conservative-inf is truly energy-conserving, so this model is to
+be recommended whenever calculating physical properties based on constant energy dynamics.
+Appendix G:
+MDR benchmark and mechanical properties
+This Section gives an overview of the computational details that are involved in the evaluation of
+models on the phonon MDR benchmark and on the mechanical property benchmark (Table 2).
+For the phonon MDR, we use Phonopy to generate displacements and compute the (second-order)
+force constants. Before applying displacements, atomic positions and unit cell components are
+first optimized using a combination of the FIRE optimizer and a FrechetCellFilter from the
+Atomic Simulation Environment (ASE) [6]. We use a displacement magnitude of 0.01 Å and
+is_plusminus=True to generate displacements, and a default 𝑞-mesh of [20,20,20]. Free energy,
+entropy, and heat capacity were evaluated at 300 K based on the obtained force constants.
+For the bulk and shear moduli, we sub-sampled 1,000 materials from the full benchmark datasets
+to limit the total time required for its evaluation. Before applying the strain displacements,
+atomic positions and unit cell components were optimized using a combination of the FIRE
+optimizer and a FrechetCellFilter from the Atomic Simulation Environment (ASE) [6]. We
+use strain magnitudes of [-0.1, -0.05, 0.05, 0.1] for the normal (diagonal) components, and [-0.02,
+-0.01, 0.01, 0.02] for the off-diagonal components as we found this to yield the best agreement
+with the PBE reference values across all models (though it is possible that there is some level
+of error cancellation involved here). After applying strain to the optimized unit cell, atomic
+positions were optimized at fixed unit cell, as per the original MP protocol.
+Appendix H:
+Distillation for direct models
+As stated in the main text, we find that distillation-based training with conservative teachers
+promotes more accurate force-derivatives for our direct mpa models. Such distillation is not
+required when training direct models on omat, suggesting that some unique quirk of the
+mpa force distribution causes degradation (and this quirk is absent in the conservative model
+predictions we distill from).
+Identifying the exact nature of this "quirk", and understanding whether or not it exists in
+17

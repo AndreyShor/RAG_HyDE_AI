@@ -1,0 +1,180 @@
+"Quick bathroom cleaning": {
+    "1": {
+        
+"items": "cleaning supplies",
+        
+"description": "Grab cleaning supplies from the closet." 
+     },
+    "2": {
+        
+"items": "toilet brush, toilet",
+        
+"description": "Use the toilet brush on the toilet."
+    },
+    "3": {
+        
+"items": "cloth",
+        
+"description": "Wipe down surfaces with a cloth."
+    },
+    "4": {
+        
+"items": "trash bag",
+        
+"description": "Empty the trash bin into the bag."
+    }
+}
+"Quick bathroom cleaning.": {
+    "1": {
+        
+"items": "towel rack",
+        
+"description": "Walk to the towel rack and grab the towel."
+    },
+    "2": {
+        
+"items": "sink",
+        
+"description": "Wipe down the sink with the towel."
+    },
+    "3": {
+        
+"items": "tissue box",
+        
+"description": "Wipe the tissue box with the towel."
+    },
+    "4": {
+        
+"items": "towel rack",
+        
+"description": "Place the towel back on the towel rack."
+    },
+    "5": {
+        
+"items": "window",
+        
+"description": "Walk to the window to air out the bathroom."
+    }
+}
+"Quick bathroom cleaning": {
+"1": {
+        
+"items": "toilet",
+        
+"description": "Use the toilet brush on the toilet."
+    },
+    "2": {
+“items”: “sink”,
+        
+"description": "Clean the sink with a cloth and disinfectant."
+     },
+    "3": {
+“items”: “towel rack”,
+        
+"description": "Wipe down the towel rack to remove grime."
+    },
+    "4": {
+“items”: “tiles”,
+        
+"description": "Scrub the tiles to remove stains.",
+        },
+}
+Initial Task Hierarchy
+Final Task Hierarchy 
+Reference Task Hierarchy 
+(a) Initial task hierarchy, final ASHiTA generated task hierarchy, and the reference task hierarchy from [50].
+"Quick bathroom cleaning": {
+    
+"1": {
+        
+"items": "toilet",
+        
+"description": "Use the toilet brush on the toilet."
+    
+},
+}
+Task Hierarchy
+Quick Bathroom 
+Cleaning
+toilet
+Suggestions: “door”, “sink”, “towel rack”, “tiles”
+(b) Task hierarchy and scene graph after first iteration.
+"Quick bathroom cleaning": {
+"1": {
+        
+"items": "toilet",
+        
+"description": "Use the toilet brush on the toilet."
+    
+},
+    
+"2": {
+“items”: “sink”,
+        
+"description": "Clean the sink with a cloth and disinfectant."
+},
+    
+"3": {
+“items”: “towel rack”,
+        
+"description": "Wipe down the towel rack to remove grime."
+    
+},
+    
+"4": {
+“items”: “tiles”,
+        
+"description": "Scrub the tiles to remove stains.",
+        },
+}
+Task Hierarchy
+Quick Bathroom 
+Cleaning
+toilet
+sink
+tiles
+tiles
+(c) Task hierarchy and scene graph after second iteration.
+Figure 10.
+ASHiTA with two iterations for the high-level task of "Quick bathroom cleaning". (b) From the initial hierarchy, only the toilet is successfully
+grounded in the generated scene graph. From this iteration, the suggestions of "door", "sink", "towel rack", and "tiles" are generated. These suggestions are
+used to update the task hierarchy, successfully recovering part of the human-annotated reference task hierarchy (recall that our evaluation is object-centric,
+as discussed in Sec. 5).
+8. Qualitative Examples
+8.1. SG3D Hierarchical Task Analysis
+We include some qualitative examples of ASHiTA with the
+SG3D [50] high-level tasks in the HM3DSem [47] dataset.
+In Fig. 7, ASHiTA is given a single high-level task of "mea-
+sure weight", and is able to correctly identify the scale.
+Note that ASHiTA is an object-centric approach and does
+not refine or evaluate on the specific description of the sub-
+tasks. In Fig. 6 we show ASHiTA at a larger scale in a
+kitchen and a dining room for "set dining table for a meal",
+ASHiTA comes up with reasonable subtasks and identified
+relevant items associated with the task. Lastly, in Fig. 8, the
+task given is "watch late-night show on TV", ASHiTA also
+mostly identifies the correct subtasks and items. A few mis-
+takes are: selecting the TV in the neighboring dining room
+instead of the bedroom, and associating the non-item word
+"channel" to the bed. Note that ASHiTA is also able to clus-
+ter the two primitives (green) together for the "couch" item.
+8.2. Detailed Example of ASHiTA
+In this section, we demonstrate in detail the alternating it-
+erations of ASHiTA with specific examples from the SG3D
+dataset. In Fig. 10 we show the comparison between the ini-
+tial task hierarchy given to ASHiTA, the final task hierarchy,
+and the reference task hierarchy from SG3D [50] alongside
+two iterations of ASHiTA. In the first iteration, only the sub-
+task related to the toilet is grounded in the scene graph, but
+incorporating the suggestions from this iteration, the task
+hierarchy is refined and we end up with four grounded sub-
+tasks.
+In Fig. 11 we give ASHiTA the task of "inspect
+the cleanliness of the utility area". With three iterations,
+ASHiTA is able to incorporate a more complete grounded
+set of relevant objects and subtasks.
+8.3. Rooms and Objects
+While ASHiTA is not designed to recover traditional geo-
+metric structures such as room layouts that other prior scene
+graph construction approaches do [12, 15, 45], with a spe-
+2

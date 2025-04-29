@@ -1,0 +1,113 @@
+Proof of Proposition 6.1
+56
+where we used the fact that Xu is Fsn-measurable since by assumption u < sn. On the one hand,
+Lemma 6.7 implies that the following convergence holds almost surely
+lim
+n→∞lim
+t→∞E
+ n
+Y
+i=1
+exp(−µγ,t,i(fi))
+ Fsn
+
+= exp(−ea⋆µγc(Tγ)) .
+(6.19)
+On the other hand, the martingale convergence theorem implies that the following convergence holds
+almost surely
+lim
+n→∞E
+h
+exp(−ea⋆µγc(Tγ))
+ Fsn
+i
+= E
+
+exp(−ea⋆µγc(Tγ))
+ σ(X)
+i
+= exp(−ea⋆µγc(Tγ)) .
+(6.20)
+Therefore, since the right-hand side of (6.19) coincides with the right-hand side of (6.20), we obtain
+that uniformly over u ≥0, it holds that
+lim
+t→∞
+E
+
+exp(i⟨Xu, φ⟩)E
+ n
+Y
+i=1
+exp(−µγ,t,i(fi)) −exp(−ea⋆µγc(Tγ))
+ Fsn
+ = 0 .
+Thanks to the dominated convergence theorem and the fact that Xu converges to X as u →∞almost
+surely in H−κ(Rd), one has
+lim
+u→∞E
+hexp(i⟨X, φ⟩) −exp(i⟨Xu, φ⟩)
+
+i
+= 0 ,
+and the conclusion follows.
+We now show how the proof of Theorem C follows directly.
+Proof of Theorem C. Thanks to Lemma 3.8, it suffices to show that the following joint convergence
+in distribution holds in H−κ
+loc (Rd) × (M+(Rd))n for some κ > 0,
+(X, (µγ,t,i)i∈[n]) ⇒(X, (µγ,i)i∈[n]) .
+By Lemma 3.4, it suffices to verify that for all (φ, (fi)i∈[n]) ∈C∞
+c (Rd) × (C+
+c (Rd))n, it holds that
+lim
+t→∞E
+
+exp(i⟨X, φ⟩)
+n
+Y
+i=1
+exp(−µγ,t,i(fi))
+
+= E
+
+exp(i⟨X, φ⟩)
+n
+Y
+i=1
+exp(−µγ,i(fi))
+
+.
+Furthermore, by Proposition 2.17, it suffices to establish that
+E
+
+exp(i⟨X, φ⟩)
+n
+Y
+i=1
+exp(−µγ,i(fi))
+
+= E
+h
+exp(i⟨X, φ⟩) exp(−ea⋆µγc(Tγ))
+i
+,
+(6.21)
+where, as before, to simplify the notation, we have omitted the dependence of Tγ on (fi)i∈[n].
+Recalling the definition of the collection of measures (µγ,i)i∈[n] given in the statement of Theorem C,
+one can use formula (3.5) to check that
+E
+ n
+Y
+i=1
+exp(−µγ,i(fi))
+ σ(X)
+
+= exp(−ea⋆µγc(Tγ)) ,
+thus yielding (6.21), which completes the proof.
+7
+Proof of Proposition 6.1
+The main goal of this section is to prove Proposition 6.1, and it is structured as follows. In Section 7.1,
+we introduce some notation and state Lemmas 7.2 and 7.4, which are the two main technical lemmas
+used in the proof of Proposition 6.1. We then show how the proof of Proposition 6.1 follows from the
+two aforementioned lemmas and Propositions 4.1 and 4.2. The remaining part of the section is then
+devoted to the proof of Lemmas 7.2 and 7.4. In particular, in Section 7.2, we prove Lemma 7.2, while
+in Section 7.3, we prove Lemma 7.4.

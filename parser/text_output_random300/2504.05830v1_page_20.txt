@@ -1,0 +1,70 @@
+Springer Nature 2021 LATEX template
+20
+Human Activity Recognition using RGB-Event based Sensors
+Table 4 Component Analysis on our HARDVS 2.0 Dataset. MSC denotes
+modality-specific continuous FVEs; PRF denotes policy routing based fusion method
+vHeat
+MSC
+PRF
+acc/top-1
+acc/top-5
+✓
+52.3
+60.2
+✓
+✓
+52.8
+61.1
+✓
+✓
+52.7
+60.7
+✓
+✓
+✓
+53.2
+62.1
+Table 5 Ablation Studies of Input modalities on HARDVS 2.0 dataset.
+# Input modalities
+acc/top-1
+acc/top-5
+1. RGB frame only
+49.2
+53.8
+2. Event streams only
+51.2
+57.5
+3. Both RGB frame and Event streams
+53.2
+62.1
+too many frames increases the risk of overfitting, as the model may focus on
+redundant or noisy features.
+• Analysis of Input Resolution.
+Next, we analyze the effect of input
+image resolution on the model’s recognition accuracy, as illustrated in Fig. 5
+(b). The results show that the model achieves optimal performance when the
+input resolution is set to 224 × 224. Interestingly, increasing the resolution to
+256×256 not only introduces a heavier computational burden but also leads to
+a decline in recognition accuracy, which is counterintuitive. We attribute this
+performance drop to the fixed receptive field of the network. As the input res-
+olution increases, the receptive field covers a smaller proportion of the image,
+limiting the network’s ability to effectively capture and predict foreground
+targets across different scales. This scale mismatch hinders the model’s capac-
+ity to extract meaningful features, ultimately resulting in reduced accuracy.
+To address this issue, we align the input image resolution with the network’s
+receptive field size throughout this study, ensuring balanced feature extraction
+and optimal recognition performance.
+• Analysis of the Input modalities.
+As shown in Table 5, we further
+analyze the impact of different input modalities on human activity recogni-
+tion tasks. Interestingly, when using only event data as input, the recognition
+accuracy surpasses that of using only RGB data. This result suggests that our
+HARDVS 2.0 dataset effectively capitalizes on the strengths of event-based
+data, demonstrating that in many scenarios, event data can outperform tradi-
+tional RGB data. This finding underscores the advantages of event cameras,
+particularly in capturing dynamic scenes or handling challenging lighting con-
+ditions. Moreover, when both RGB and event data are combined as input, the
+recognition accuracy improves even further, achieving a 2% increase in top-
+1 accuracy compared to using only unimodal event data. This highlights the
+complementary nature of RGB and event modalities and the effectiveness of
+multi-modal fusion in enhancing human activity recognition performance.

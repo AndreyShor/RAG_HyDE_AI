@@ -1,0 +1,51 @@
+20
+•
+Bhattacharyya et al.
+C
+Depth 0 Data
+Given a warmstart and a corresponding |𝜓init⟩, at depth 0 we have (for 𝐻, 𝐸min, 𝐸max),
+𝛼= ⟨𝜓init|𝐻|𝜓init⟩−𝐸min
+𝐸max −𝐸min
+P =
+∑︁
+|𝜙⟩
+|⟨𝜙|𝜓init⟩|2
+where
+⟨𝜙|𝐻|𝜙⟩= 𝐸max.
+(40)
+Because 𝛼for the optimal depth-𝑝parameters can only increase with 𝑝, depth-0 results are a useful heuristic
+for estimating the relative performance of warmstart techniques [6]. In particular, we are interested in how the
+choice of vertex-at-top rotation qubit affects the obtained (𝛼, P). A natural assumption would be that there are 3
+unique distributions (𝛼, P) dependent on the choice of vertex-at-top rotation:
+(1) vertex-at-top rotation on any of the qubits except the last qubit,
+(2) vertex-at-top rotation on the last qubit,
+(3) and no vertex-at-top rotation.
+Figure 5 contains a datatable with the frequency at which each choice of vertex at top rotation maximizes either
+𝛼or P. Outliers are indicated, and notably only appear in the data for vertex-at-top rotations applied to the last
+qubit or when no vertex-at-top rotation is applied.
+Based on this assumption, it is sufficient to study 3 vertex-at-top rotation choices, with each each corresponding
+to one of these 3 distributions. As in Section 4.1.4, we consider vertex-at-top rotations on the First, Last, and
+None of the qubits.
+Figure 6 contains a datatable with the mean and standard deviation for 𝛼, P for each warmstart with each
+of these vertex-at-top rotation options.
+D
+𝛼Distributions
+The instance-specific approximation ratio (𝛼) is a convenient metric because it is normalized to [0, 1] for all
+problems. However, the distribution of 𝛼over states is problem dependent.
+More formally, we want to consider the continuous random variable 𝜶∼𝑃(𝛼) given by
+𝜶=
+𝑋𝑇A𝑋−min𝑥∈{−1,1}𝑛𝑥𝑇A𝑥
+max𝑥∈{−1,1}𝑛𝑥𝑇A𝑥−min𝑥∈{−1,1}𝑛𝑥𝑇A𝑥,
+(41)
+where (for a given problem type) A is a random matrix sampled by obtaining the adjacency matrix of the
+corresponding graph of a randomly generated problem instance, and 𝑋is a random element of {−1, 1}𝑛with
+uniform distribution.
+To quantify the dependence of the distribution on problem type, we estimated the probability distribution
+𝑃(𝛼) for each problem (Figure 4). For each problem instance, 𝛼was computed for each of the 217 computational
+basis states, yielding a total of 1000·217 samples for each problem type. The unit interval was then divided into 101
+uniformly spaced sub-intervals. The probability density of 𝛼was approximated to be piecewise constant on each
+of these sub-intervals, with value equal to the number of 𝛼samples in the interval divided by the 1000/101 · 217
+(the product of the width of the subinterval-intervals with the total number of samples).
+The most notable feature of these distributions (besides their problem dependence) is that the distribution for
+the Random QUBOs is symmetric, whereas the distributions for TSP, Portfolio Optimization, and MIS are skewed
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

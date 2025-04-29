@@ -1,0 +1,139 @@
+A&A proofs: manuscript no. main
+2
+1
+0
+1
+2
+p0 (Y)
+8.5
+9.0
+9.5
+10.0
+10.5
+11.0
+11.5
+log(M/M⊙)
+ρ = 0.06 ± 0.02
+p-value = 0.76 ± 0.10
+2
+1
+0
+1
+2
+p0 (J)
+8.5
+9.0
+9.5
+10.0
+10.5
+11.0
+11.5
+log(M/M⊙)
+ρ = 0.37 ± 0.09
+p-value = 0.23 ± 0.12
+2
+1
+0
+1
+2
+p0 (H)
+8.5
+9.0
+9.5
+10.0
+10.5
+11.0
+11.5
+log(M/M⊙)
+ρ = 0.45 ± 0.14
+p-value = 0.25 ± 0.17
+Fig. 7: Comparison between host-galaxy stellar mass, log10(M/M⊙) and p0. The vertical dashed line marks p0 = 0.0, dividing the
+SN Ia sample at the mean, while the horizontal lines mark log10(M/M⊙) = 10, commonly used for splitting SNe Ia samples into
+high- and low-mass hosts.
+6.6. NIR light-curve standardization
+Following the correlation found between Y-band peak absolute
+magnitude (MY) and the PCA components (see Sect. 6.3.1), we
+proceed to test the standardization of the Y-band light curves
+of SNe Ia by adding correction parameters for the estimation of
+distances:
+µSN = (mY + α × p0 + β × p1) −MY,
+(2)
+where mY is the Y-band peak apparent magnitude, and α and
+β are nuisance parameters. We follow a similar procedure as in
+Galbany et al. (2023), but fix H0 = 70 km s−1 Mpc−1 and fit for M
+and σint (SN intrinsic scatter), with the addition of α and β. Since
+H0 is fixed, distances from the calibrating SNe are not needed to
+anchor the y-axis in the Hubble diagram to break the degeneracy
+between H0 and M.
+Figure 13 shows the corner plot of the Markov-chain Monte-
+Carlo (MCMC) posterior distributions of the fitted parameters
+used for building the Y-band Hubble diagram with standard-
+ization (Fig. 14). The addition of standardization parameters is
+favoured by around 3σ and 2σ significance for p0 and p1, re-
+spectively. Additionally, by correcting the light curves, σint is
+reduced from 0.21 mag to 0.17 mag.
+While the standardization in the Y band is favoured, the J and
+H bands do not present any improvements with the addition of
+other parameters, reflecting their uniformity. The standardization
+using the PCA components from the NIR color curves is studied
+in Appendix B.
+7. Summary & Conclusions
+In this work, we have gathered a sample of 47, 36 and 25 SNe Ia
+with well-sampled YJH-band light curves, respectively, to an-
+alyze their variability with PCA, a common machine-learning
+technique. SNe Ia were selected from various sources, includ-
+ing the CSP, CfAIR2, RATIR, and DEHVILS surveys, as well
+as some objects from the literature. Each selected object has
+at least five NIR photometric epochs in any band, with cover-
+age spanning from the first to the second peak. The light curves
+were corrected for K-correction and Milky Way extinction using
+SNooPy, then interpolated with PISCOLA to achieve continuous
+rest-frame coverage.
+When decomposing the NIR light curves, each indepen-
+dently, using three PCA components (C0, C1 and C2) explains
+∼90% of the variability, with the first component explaining
+around 50% of it. The C0 component of the J and H bands (C1
+for the Y band) shows that brighter secondary peaks also occur
+at later epochs, and vice versa. With a somewhat opposing ef-
+fect, the C1 component of the H band (C0 for the Y band) shows
+that brighter secondary peaks occur at earlier epochs, while this
+component mainly just contributes to the brightness for the J
+band. A possible explanation for the NIR bands to show differ-
+ent dominant behaviors is that the PCA components could be
+tracing different physical properties, such as the effect of MNi,
+metallicity or MFe on the time of recombination of iron-group
+elements, and, subsequently, on the secondary peak. When com-
+paring to observations and theoretical models, a difference in the
+elements abundance is seen for the different wavelengths ranges
+each of the bands probes, possibly explaining some of the differ-
+ences seen with the PCA components.
+When comparing the PCA coefficients (p0 and p1) against
+different light-curve parameters, some interesting trends are
+found. The NIR peak absolute magnitude correlates with p0 for
+the Y band, which could imply some correlation between sec-
+ondary peak brightness and MNi. However, the same correlations
+are not seen for the J and H bands. Nonetheless, the optical peak
+brightness, which can be used as a proxy for MNi, correlates with
+p1 for the Y band and p0 for the J band, suggesting a possible di-
+minishing influence of MNi in the secondary peak towards redder
+wavelengths.
+We also compared the PCA coefficients against host-galaxy
+properties, in particular, stellar mass and color excess, but found
+no clear correlations. However, we cannot say whether the envi-
+ronment does not affect the secondary NIR peak. A larger sample
+and, in particular, a comparison with other host-galaxy proper-
+ties, such as star formation rate and metallicity, would be needed
+to draw a strong conclusion.
+The PCA decomposition was also applied on the NIR color
+curves of the SNe Ia, where over 50% of the variance is ex-
+plained by the first component (C0). Although the physical in-
+terpretation of these is more complex, we still compared them
+against light-curve properties. We found correlations between
+the C0 component and peak optical brightness (i.e. MNi) for
+all the NIR colours, showing that SNe with larger amounts
+of MNi have redder NIR colors. When comparing to the same
+host properties as before, we found a tentative correlation with
+log10(M/M⊙), where SNe Ia with redder NIR colors are found
+on less massive galaxies (potentially more metal-poor) environ-
+ments. The comparison against E(B −V)host shows some corre-
+Article number, page 10 of 16

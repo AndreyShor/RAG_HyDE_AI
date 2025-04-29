@@ -1,0 +1,35 @@
+Fig. 2: A comparison of the ratio of the aN3LO PDF luminosities to the NNLO PDF luminosities
+for MSHT20 and NNPDF4.0 and for their combination (4HXWG) for gg (left) and q¯q (right).
+ing/benchmarking, as was done for PDF4LHC21 (and before that PDF4LHC15). It may be
+necessary to include a fraction of the differences observed between NNLO and aN3LO PDFs as
+an additional source of uncertainty. The impact of NLL small-x resummation corrections on the
+PDFs, especially those of the gluon, may notably alter the low-x behavior in kinematic regions
+where N3LO effects may also be important (and partially orthogonal to those resulting from
+low-x resummation). QED effects have been included in global PDF fits for some time, and the
+impact can be as large as in going from NNLO to approximate N3LO [29].
+2.2
+Development in amplitude and loop integral techniques
+Computing fixed-order amplitudes for scattering processes remains a key obstacle to producing
+precise predictions for the LHC and HL-LHC. For ease of presentation, we divide the computa-
+tion of multi-loop amplitudes into two broad categories:
+1. Obtaining the amplitudes and simplifying (reducing) them,
+2. Calculating the integrals which appear in the amplitudes.
+In the previous wishlist [1], to which we refer the interested reader, we described the state of
+the art of each of these categories in some detail. Here we only briefly highlight a selection of
+the most interesting recent advances in this area since the last wishlist. Thorough reviews of
+formal developments in the calculation of scattering amplitudes can be found in Ref. [30]. A
+modern introduction to techniques for computing multi-loop Feynman integrals can be found
+in Ref. [31]. Further details on recent developments can be found in the SAGEX review [32,33]
+and Snowmass White Paper [34].
+The use of integration-by-parts (IBP) identities [35–37], Lorenz invariance (LI) [38], and
+dimension shift relations [39, 40] remains a critically important technique in modern loop cal-
+culations, but also presents a major bottleneck. Several efficient codes exist to facilitate their
+use, including: Air [41], Fire [42–45] (recently updated in Ref. [46]), LiteRed [47, 48], Re-
+duze [49, 50], and Kira [51–53]. The Blade reduction package [54] aims to reduce the total
+time to obtain a reduction by generating block-triangular IBP systems, which can be orders
+of magnitude smaller than traditional tools. The NeatIBP tool [55] uses syzygy and module
+intersection techniques to provide IBP systems in which the propagator degrees are limited. The
+use of finite field techniques, as implemented in FireFly [56,57], FiniteFlow [58] and various
+private codes [59], has widely been adopted to accelerate the reduction to master integrals. The
+RatRacer package [60] can be used to further speed up the use of finite fields by separating the
+7

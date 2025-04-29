@@ -1,0 +1,96 @@
+4
+If not, let j be the ﬁrst position where (˜s1)j ̸= (˜s2)j. We can assume j = 1. If not, we can swap the ﬁrst and j-th qubit - this
+state will be UMA if and only if |ψ⟩was UMA.
+So without loss of generality, we can write:
+|ψ⟩= α|+⟩|˜s′
+1⟩+ β|−⟩|˜s′
+2⟩.
+and it will sufﬁce to prove this is an UMA state. If ˜s′
+1 = ˜s′
+2, we are done as |ψ⟩factorizes, and the tensor product of a UMA
+state (on the ﬁrst qubit by previous analysis) and another UMA state is UMA.
+If ˜s′
+1 ̸= ˜s′
+2, deﬁne U as the (n −1)-qubit diagonal unitary such that
+|˜s′
+2⟩= U|˜s′
+1⟩.
+Note that U is a diagonal unitary with ±1 on the diagonal. Deﬁne the Hadamard-controlled-U:
+hcU = |+⟩⟨+| ⊗In−1 + |−⟩⟨−| ⊗U.
+Note that: (1)
+hcU(α|+⟩|˜s′
+1⟩+ β|−⟩|˜s′
+1⟩) = |ψ⟩,
+and (2) hcU is a block matrix with blocks (I + U)/2 on the diagonal and (I −U)/2 on the antidiagonal.
+Note that in each row, we have only one non-zero element. So this is a permutation matrix. For a permutation matrix U, it
+holds that |ψ⟩is UMA if and only if U|ψ⟩is UMA.
+So since
+α|+⟩|˜s′
+1⟩+ β|−⟩|˜s′
+1⟩
+is UMA by previous analysis, so is |ψ⟩.
+Next, we present the two key probability distribution decomposition lemmas in the language of probability vectors, i.e.,
+vectors p = (pj)j, P
+j pj = 1, pj ≥0, encoding the probability of the measurement of each of the bitstrings (indexed by j).
+We will say a (probability) vector is k-sparse if it has at most k non-zero entries.
+Lemma 4. Every N-dimensional probability vector p can be expressed as a uniform mixture of N 3-sparse probability vectors.
+That is, there exists a set {q(i)}i of N 3-sparse probability vectors such that
+p =
+X
+i
+1
+N q(i).
+Proof. We give a constructive proof by showing there exists an allocation matrix Q ∈RN×N of p such that the column sum
+P
+i Qij = pj and the row sum P
+j Qij = 1/N, which is also 3-row-sparse. The 3-sparse probability vectors are the rows of the
+Q, i.e., q(i)/N is the ith row of Q. We assume p1 ≤p2 ≤· · · ≤pN w.l.o.g. Let k be the smallest index such that pk+1 ≥1/N.
+Note k = 1 if the distribution is uniform and can be as large as N −1, but not N.
+The general idea is that we ﬁrst allocate p1, . . . , pk to the ﬁrst k diagonal entries of Q. Since p1 ≤p2 ≤· · · ≤pk ≤1/N, we
+have some capacity left on each row, and hence we can further try to spread out pk+1 to the ﬁrst k rows. After pk+1 is fully
+spread out, we proceed with pk+2 and so on. Note that whenever the ﬁrst rows are out of capacity, we will proceed using the
+remaining N −k rows. The matrix Q can be constructed and veriﬁed with the following three steps.
+Step 1: Initialization. Q =
+
+Q0 0
+0
+0
+
+, Q0 =
+
+
+p1
+0
+· · ·
+0
+0
+p2 · · ·
+0
+...
+...
+...
+...
+0
+0
+· · · pk
+
+.
+Step 2: Iterate over ℓ= k + 1, . . . , N. For each iteration, we spread out pℓto the ℓcolumn of Q as follows. For i running from
+1 to N, we set
+Qiℓ= min
+ 1
+N −
+X
+j
+Qij, pℓ−
+X
+α
+Qαℓ
+
+.
+(12)
+Note that, N −1 −P
+j Qij is the remaining capacity of row i (recall each row sums to 1/N) and pℓ−P
+α<i Qαℓis the residual
+of pℓafter spreading it over the ﬁrst i −1 row. Two indicator functions check if a row is out of capacity or pℓis completely
+spread out.

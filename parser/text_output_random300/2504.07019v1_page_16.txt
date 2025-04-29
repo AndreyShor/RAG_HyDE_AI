@@ -1,0 +1,32 @@
+S6
+FIG. S3. Non-Hermitian Anderson impurity model (Ud = 0.3, ϵd = −0.15, Λ = 3, Nk = 400, 128-bit precision): Eigenvalue RG
+flow diagrams as Im(V ) is made more negative, showing (a) SC phase; (b) LM phase; and (c) re-entrant SC phase.
+the Hamiltonian in the single-particle sector (an (N + 2) × (N + 2) matrix at step N), and then constructing the
+4N+2 many-particle states as simple product states from these – a trivial combinatorial exercise. As such, the full
+eigenspectrum of the NH-NRG Hamiltonian ˆHN can be obtained by exact diagonalization for essentially any N of
+interest, without any truncation, in this non-interacting limit. On the other hand, NH-NRG works in precisely the
+same way independently of Ud and so the interacting AIM and non-interacting RLM are treated identically from an
+algorithmic point of view. The non-interacting RLM therefore provides a stringent check of our NH-NRG results.
+Fig. E1(a) confirmed that truncation by lowest Re(EN) correctly reproduces the exact eigenvalues at each step, for the
+retained states. One can also truncate by keeping the lowest Nk states at each step, sorted by the absolute magnitude
+|EN|, as shown in Fig. E1(b) – although in practice we found this to be less numerically stable. We dub this scheme
+‘LowMag’.
+In Fig. S1 we consider two other truncation schemes. In the top row panels (a) we show truncation (‘LowImag’)
+to the lowest Nk states ordered by Im(EN), which targets a different set of kept states. While this method works
+initially, after a few steps it starts to break down. For N = 5 we see that the NH-NRG eigenvalues no longer match
+those from exact diagonalization.
+In the bottom row panels Fig. S1(b), we use a hybrid scheme (‘LowReMag’) in which the ‘ground state’ with the
+lowest Re(EN) is first subtracted, and then states are ordered by their magnitude, |EN −Egs
+N |. This truncation scheme
+also works very well and seems to be both accurate in reproducing the results of exact diagonalization, as well as
+being numerically stable.
+In both cases we plot the rescaled many-particle eigenvalues, comparing NH-NRG (red diamonds) with exact
+diagonalization (black circle points).
+S.III.B.
+Free Wilson chain with imaginary potentials
+As a further demonstration, we consider NH-NRG for the free Wilson chain (no impurity). We introduce non-
+Hermiticity to the Wilson chain by using complex Wilson chain potentials. Specifically, we choose ϵn = −itn, where
+tn are the usual Wilson chain hopping parameters for a metallic flat band with bandwidth D = 1 as before. For the
+Hermitian symmetric flat-band Wilson chain, ϵn = 0, so introducing imaginary potentials down the chain simulates
+a kind of open Wilson chain where each site is subject to dissipation and the states have a finite lifetime. This
+setup can be treated in NH-NRG very simply – in practice we project out the impurity by setting Ud = V = 0 and

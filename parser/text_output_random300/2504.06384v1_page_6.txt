@@ -1,0 +1,175 @@
+6
+10
+5
+10
+6
+10
+−8
+10
+−6
+10
+−4
+10
+−2
+10
+0
+Secret Key Rate (bits/use)
+0
+5
+10
+15
+20
+SNR/ V (SNU)
+10
+5
+10
+6
+0.7
+0.8
+0.9
+ζ/R
+∗
+code
+10
+5
+10
+6
+0.00
+0.05
+0.10
+ eakage (MB)
+0
+5
+10
+n (×10
+5
+)
+10
+5
+10
+6
+N
+0
+2
+4
+6
+M
+∗
+sparse
+ (MB)
+FIG. 3:
+In the ﬁrst panel, we plot the secret key rate of
+Eq. (20) (black line) for the Gaussian modulation protocol
+with coherent states and homodyne detection in direct recon-
+ciliation against N. We set dB = 0.02. We have optimized
+over V and n/N. The rest of the parameters, settings and
+lines are the same as in Fig. 1. With red ink, we plot the
+points included in Table I of the corresponding Msparse, i.e.,
+the actual storage needed for these sparse matrices after cre-
+ating them in CRS format using the GMCS simulation library
+in [62].
+combine tools developed in previous studies to charac-
+terize the requirements in storage during one-way EC
+and especially the encoding part which is executed by
+one of the parties. Note that the DR protocol is advan-
+tageous in this regime because it can give higher rates
+for smaller block size and can support lightweight and
+agile transmitters responsible for the EC encoding while
+the bulkier receivers can be better suited for computa-
+tionally intensive tasks such as the EC decoding in an
+assymetric scenario: for example, a network of small sen-
+sors transmitting to a central processing unit.
+The syndrome creation, i.e., encoding process, is the
+less diﬃcult part of the one-way EC with LDPC codes. In
+contrast, the decoding process is rather demanding and
+can be eﬀectively handled by larger stations rather than
+a constrained device. In such an asymmetric scenario in
+terms of computational power, for an appropriate loss
+tolerance, the party operating through the constrained
+10
+5
+10
+6
+10
+−8
+10
+−6
+10
+−4
+10
+−2
+10
+0
+Secret Key Rate (bits/use)
+0
+5
+10
+15
+20
+SNR/ V (SNU)
+10
+5
+10
+6
+0.7
+0.8
+0.9
+ζ/R
+∗
+code
+10
+5
+10
+6
+0.00
+0.05
+0.10
+ eakage (MB)
+0
+5
+10
+n (×10
+5
+)
+10
+5
+10
+6
+N
+0
+2
+4
+6
+M
+∗
+sparse
+ (MB)
+FIG. 4: In the ﬁrst panel, we plot the secret key rate of
+Eq. (20) (black line) for the Gaussian modulation protocol
+with coherent states and homodyne detection in RR against
+N. We have set the loss to 0.02 dB. The rest of the parame-
+ters, settings and lines are the same as in Fig. 1. We observe
+here, that we need a larger block size in order to obtain a
+secret key rate compared to the DR protocol in Fig. 3. This
+is because the DR protocol oﬀers higher rates than the RR
+protocol in the low loss regime.
+device is the transmitter and also the encoder during
+EC. This describes the DR protocol. In this setting, one
+can exploit the trade-oﬀbetween limitations in robust-
+ness against losses with the mitigation of computational-
+power requirements.
+Then, one still needs to check the compatibility with
+storage requirements for the parity check matrix as the
+main aspect of the EC encoding procedure. In partic-
+ular, the amount of leakage calculated in Eq. (10) that
+achieves a speciﬁc performance in terms of secret key
+rate in Eqs. (20) can be mapped to the associated LDPC
+code rate in Eq. (26) and, in turn, to the dimensions
+of the related parity-check matrices that give the asso-
+ciated leakage. Then we can predict the related storage
+requirements by Eq. (30).
+In Fig. 3, we can see the behaviour of M ∗
+sparse against
+the block-size. For speciﬁc block sizes, we have created
+the parity check matrices for the corresponding encod-
+ing process in EC and stored them in sparse form. The

@@ -1,0 +1,57 @@
+Warm-Start QAOA via a Reduction to Max-Cut
+•
+17
+Proof. Expanding equation (29) by seperating the terms out that depend on 𝑦𝑛gives,
+𝐽𝑛,𝑛𝑦𝑛,𝑛+ 2
+∑︁
+0≤𝑖<𝑛
+𝐽𝑖,𝑗𝑦𝑖𝑦𝑛+
+∑︁
+0≤𝑖,𝑗<𝑛
+𝐽𝑖,𝑗𝑦𝑖𝑦𝑗+ 𝑐
+= 1
+4sum(Q) + 1
+4
+∑︁
+0≤𝑖,𝑗<𝑛
+𝑄𝑖,𝑗𝑦𝑖𝑦𝑗−1
+2
+∑︁
+0≤𝑖,𝑗<𝑛
+𝑄𝑖,𝑗𝑦𝑖𝑦𝑛,
+(30)
+from which it clearly follows that
+𝐽𝑖,𝑗= 1
+4𝑄𝑖,𝑗
+𝐽𝑛,𝑖= −1
+4
+∑︁
+0≤𝑗<𝑛
+𝑄𝑖,𝑗
+𝐽𝑛,𝑛= 0
+𝑐= 1
+4sum(𝑄).
+(31)
+□
+Equation (8) is a trivial corollary of this lemma.
+B
+Problem Instances Background
+B.1
+Random QUBOs
+Random QUBO problem instances are obtained by randomly generating symmetric matrices 𝑄∈R16×16. The
+elements of the upper-triangle of 𝑄(i.e. 𝑄𝑖𝑗with 𝑖≤𝑗) are decided by taking independent samples from a fixed
+distribution; we consider two choices for the distribution below:
+• the (continuous) uniform distribution on [−1, 1], and
+• the (discrete) uniform distribution on {−1, 1}.
+The remaining elements of each matrix 𝑄(i.e. 𝑄𝑖𝑗with 𝑖> 𝑗) are then uniquely determined due to the requirement
+that 𝑄be symmetric.
+B.2
+Travelling Salesman
+Given a graph 𝐺= (𝑉, 𝐸) with adjacency matrix 𝐴, the Travelling Salesman Problem (TSP) [21] is finding the
+Hamiltonian cycle of 𝐺with the smallest total edge weight. Because the Hamiltonian Cycle problem is itself
+NP-Hard [22], the TSP problem is NP-Hard as well. Expansions of TSP have applications to various applications
+such as Vehicle Routing [23], Disaster Retrieval [24], and Equitable Routing [25].
+Following [26], we focus on the case of fully connected symmetric TSP, corresponding to complete undirected
+graphs. A given sequence of vertices can be encoding using binary decision variables 𝑥∈{0, 1}|𝑉|2, where (for
+0 ≤𝑖,𝑡< |𝑉| ) 𝑥|𝑉|𝑡+𝑖:= 𝑥𝑡,𝑖= 1 if and only if vertex 𝑖is visited at time 𝑡. The optimal sequence of vertices for a
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

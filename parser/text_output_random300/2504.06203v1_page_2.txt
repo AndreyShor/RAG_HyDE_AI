@@ -1,0 +1,134 @@
+2
+cisely define generalized pinning field defects and prove their
+IR factorizations in Section II.
+The factorization property enables us to determine the long-
+distance dynamics of such defects by leveraging the full spec-
+trum of conformal boundary conditions, thereby rendering the
+problem significantly more tractable. For example, as we dis-
+cuss in Section IV B, this elucidates the conjectured factoriza-
+tion of the 3d O(N) CFT induced by the O(N)-symmetric
+surface mass term in terms of known boundary conditions
+and also yields nontrivial predictions for more general sur-
+face mass deformations. As another example, the conformal
+boundary conditions of Virasoro minimal models in 2d were
+classified long time ago. However limited results are avail-
+able for conformal (non-topological) line defects except for
+those in the Ising CFT. In Section IV A, we analyze a large
+class of 2d pinning defects defined as in (I.1), demonstrating
+how factorization together with the monotonicity g-theorem
+and symmetry constraints allow us to completely nail down
+the IR conformal defect.
+In general, the symmetries of the CFT restrict the possible
+factorization channels in (I.3). In particular, anomalies of the
+symmetries preserved by the defect will force degeneracies in
+the direct sum, as we discuss Section III, and they play an
+important role in solving the pinning defects in 2d minimal
+models with examples in Section IV A and Appendix A.
+As mentioned before, these generalized pinning defects are
+ubiquitous in CFT and thus it would be interesting to study
+their applications, as probes of strongly coupled systems. For
+instance, quantum chromodynamics (QCD) with a sufficiently
+large number of massless fermion flavors (within the confor-
+mal window) admit nontrivial Caswell-Banks-Zaks type fixed
+points [32, 33]. Notably, the fermion mass operator ¯ψψ is con-
+jectured to have a scaling dimension that interpolates between
+2 and 3, varying from the strongly-coupled to the weakly-
+coupled ends of the conformal window [34–36]. Our results
+predict the existence of nontrivial factorized interfaces in con-
+formal QCD, arising from the corresponding pinning field
+flows, and may provide new ways for testing conjectures re-
+garding the endpoint of the conformal window. Furthermore,
+when viewed as an extended operator at fixed time, gener-
+alized pinning defects have been employed to model local
+quantum channels, capturing the effects of local decoherence
+and weak measurement on quantum critical states (see e.g.
+[37, 38]). It would be interesting to explore the implications
+of our findings on the universality classes of such quantum
+channels. Finally, in CFTs with holographic duals, it would be
+interesting to investigate the dual description of codimension-
+one pinning defects, which may correspond to factorizing ge-
+ometries involving new end-of-the-world branes [39–43].
+The generalized pinning defects considered here are de-
+fined by defect RG flows from the trivial defect triggered by
+bulk local scalar operators. Immediate generalizations include
+such flows on more general topological defects, and triggered
+by more general operators, such as spinning local operators
+and even operators attached to nontrivial topological lines (see
+previous related works [44–50] in 2d). A further generaliza-
+tion amounts to considering RG flows on a slab, a fattened
+version of our setup here, and reduce to our setup when the
+intermediate phase in the slab is gapped in the IR. It will be
+interesting to understand general properties of such flows and
+the long distance behavior of the resulting defects.
+II.
+FACTORIZATION
+The main goal of this section is to prove the factorization
+property for generic pinning flows,
+D ≡lim
+h→∞
+h
+eh ˆ
+Oi
+ren = |B⟩⟨B| ,
+(II.1)
+where |B⟩is a linear combination of Ishibashi states which are
+in one-to-one correspondence with scalar primary operators in
+the CFT [51]. This linear combination is further constrained
+by locality, and gives rise to a Cardy state in 2d [52]. For this
+reason, we will also refer to |B⟩as a Cardy state in general di-
+mensions. As will soon become evident, the primary task lies
+in rigorously defining each component of (II.1). By generic,
+we mean the flow does not preserve any extra symmetry and
+towards the end of the section we will discuss cases with extra
+symmetry, and how (II.1) is modified accordingly.
+For convenience, we will work in the Euclidean flat space
+with coordinates {⃗x, xd} such that the defect is planar and
+located at xd = 0. We first define the CFT Hilbert space H at
+xd = 0 in the N-S quantization [53] as spanned by
+|ϕf⟩=
+X
+a
+Z
+Rd
++
+ddx fa(x) ϕa(x)|0⟩,
+fa : Rd
++ →C , (II.2)
+where ϕa(x) are normalized primary operators of dimension
+∆a with smearing factors fa on the half space xd > 0, and
+the index a may also include spin indices. The inner product
+with scalar operators ϕa in (II.2) reads
+⟨ϕf|ϕg⟩=
+X
+a
+Z
+Rd
++
+ddx ddy
+f ∗
+a(x)ga(y)
+(|⃗x −⃗y|2 + (xd + yd)2)∆a ,
+(II.3)
+and the generalization with spinning operators is obvious. The
+smearing factors fa are constrained such that |ϕf⟩∈H has a
+finite norm, namely ||ϕf|| ≡
+p
+⟨ϕf|ϕf⟩< ∞, and the Hilbert
+space H is complete with respect to this norm.
+Next we define the space to which the Ishibashi states be-
+long, since they are not normalizable and therefore do not re-
+side in the Hilbert space H. We first consider a dense sub-
+space Φ ⊂H (i.e. its closure ¯Φ = H) spanned by finite linear
+combinations of primary operators and their descendants. We
+then introduce the dual space Φ′, consisting of all continuous
+linear functionals on Φ and equipped with the weak topology
+[54, 55]. The full structure is captured by a Gelfand triple
+(also known as a rigged Hilbert space) [54, 55],
+Φ ⊂H ⊂Φ′ .
+(II.4)
+Explicitly, an element |I⟩∈Φ′ is defined by the weak limit of
+elements in H, namely |I⟩= w-lim
+n→∞|In⟩as below,
+∃|In⟩∈H : ∀|ψ⟩∈Φ , lim
+n→∞⟨ψ|In⟩= ⟨ψ|I⟩.
+(II.5)

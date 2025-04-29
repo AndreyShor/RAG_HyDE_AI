@@ -1,0 +1,51 @@
+7 
+information was not available. For this demonstration study, patients from race groups with less 
+than 20 patients were removed (American Indian or Alaska Native, N = 3; Native Hawaiian/Other 
+Pacific Islander, N = 2). Patients from the groups of ‘More than one race’ (N = 58) and ‘Not 
+reported’ (N = 29) were also removed due to the lack of data available for their SDOH category 
+of race. After these exclusions, our study had a final dataset of 1,571 unique patients (Table 1). 
+Table 1: Demographic characteristics (i.e., SDOH demographic correlate subgroups) of the patients in the 
+study. Percentages do not add to 100% due to rounding. Maximum age listed as ‘>89> when the maximum 
+patient age in a subgroup was greater than 89 years old.  
+Sex 
+Race 
+Number (%) 
+Age at imaging, years 
+(median, range) 
+Female 
+Asian 
+8 (<1) 
+31 [21, 77] 
+Male 
+Asian 
+16 (1) 
+57 [18, >89] 
+Female 
+Black/African American 
+631 (40) 
+64 [18, >89] 
+Male 
+Black/African American 
+693 (44) 
+42 [20, 81] 
+Female 
+White 
+85 (5) 
+55 [18, >89] 
+Male 
+White 
+138 (8) 
+63 [19, >89] 
+ 
+2.2 Determination of phenogroups 
+In this demonstration study, we used a deep learning model that has been previously 
+described33 to predict the likelihood of pneumonia for the standard and soft tissue chest 
+radiographs for each patient. In this study, these likelihoods were used as surrogate features to 
+describe the radiomic phenotypes of the lung parenchyma in these ‘normal’ patients. First, 
+surrogate features were calculated directly from the two types of chest radiographs (regular and 
+soft-tissue acquisitions) using the deep learning model (Figure 3). Second, the surrogate features 
+derived from each image type were projected via unsupervised principal component analysis 
+(PCA)34,35 in anticipation of future workflows that might include more than two features (e.g., 
+more than two quantitative values extracted from images). Third, Hotelling’s t-squared statistic36 
+was calculated and served as the single numerical output for each patient. This value served as the 
+overall ‘parenchymal score’, i.e., R, the radiomic phenotype for each patient. Lastly, unsupervised 

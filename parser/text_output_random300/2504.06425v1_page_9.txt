@@ -1,0 +1,81 @@
+NEURAL NETWORK POLYCONVEXIFICATION
+9
+with
+Lmse = 1
+N
+N
+X
+i=1
+(Φpc
+i
+−Φpc
+pred,i)2,
+the classical mean square error, and
+Lineq =
+N
+X
+i=1
+max{Φpc
+pred,i −Φi, 0}2,
+where N is the size of the learning data, Φpc
+pred is the neural network prediction of the polyconvex
+envelope, and Φpc is the target value to be approximated. The subscript i denotes the evaluation
+of these functions at the ith learning input data point given as tuple of the form (m(ˆν), ζ). The
+parameter λineq ≥0 is the so-called penalty parameter, which determines how the two terms are
+weighted against each other and determines how strongly the network should be penalised if the
+prediction lies above Φ. In this work, we used this strategy which has the advantage of not being
+intrusive, i.e. no modification of the neural network architecture is required.
+4.4. Enforcing the Πd-Symmetry. The function Φ from (10) is subject to the invariance of
+Πd, and the same holds for Φpc from (12), that is it holds
+Φpc(π(ˆν)) = Φpc(ˆν)
+for all π ∈Πd, as discussed in Section 3. Consequently, this symmetry should be preserved by a
+neural network approximation.
+As for the upper bound relation in Section 4.3.3, the symmetry of the prediction can be
+imposed in a weak sense by penalisation. To achieve this, a custom loss function which penalises
+more severely if the prediction of the neural network is not symmetric during the training
+process is designed. By minimising this loss function, the network should ultimately achieve
+symmetric predictions. Building upon the previously defined loss function (14) (keeping the same
+notations), already facilitating the upper bound relation, we add a term for the penalisation of
+the non-symmetry, leading to the loss function defined by
+(15)
+L = Lmse + λineq Lineq + λsym Lsym
+with
+Lsym =
+1
+#Πd −1
+X
+π∈Πd
+1
+N
+N
+X
+i=1
+
+Φpc
+pred,i(ˆν) −Φpc
+pred,i(π(ˆν))
+2
+,
+where the normalisation constant is motivated by the fact that the term corresponding to π = id
+does not contribute to the overall loss. The parameter λsym ≥0 is the penalty parameter, which
+determines how strongly the network should be penalised if the network is not symmetric with
+respect to the inputs. In addition, symmetry is further fostered by data augmentation. We
+incorporate symmetric data in the dataset, i.e. for a given point ˆν, the points π(ˆν) for π ∈Πd
+are also included in the dataset.
+Remark 4.4 (Symmetry a posteriori). The symmetry can also be enforced a posteriori, see for
+example [GKWM25], in which the symmetry is realised by averaging over all input permutations
+in the symmetry group
+¯Φpc
+pred(ˆν) =
+1
+#Πd
+X
+π∈Πd
+Φpc
+pred(π(ˆν)).
+This method has the advantage of ensuring output symmetry in ¯Φpc
+pred without modifying the neural
+network architecture. However, this requires multiple evaluations of Φpc
+pred and the approximation
+Φpc
+pred is not necessarily symmetric.

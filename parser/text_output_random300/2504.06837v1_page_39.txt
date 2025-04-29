@@ -1,0 +1,117 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+which by integrating in time leads to
+E(ρε,σ(t)) −E(ρε,σ(s)) =
+Z t
+s
+⟨∇log(ρε,σ(r)/ω), f ε(r)⟩+ ⟨Γ log(ρε,σ(r)/w), jε(r)⟩dr.
+Here, we have used the chain rule with the nice test function ∇log(ρε,σ(r)/w). In particular,
+by Legendre duality we obtain
+E(ρε,σ(t)) −E(ρε,σ(s)) = −
+Z t
+s
+⟨∇log(ρε,σ(r)/ω), −f ε(r)⟩+ ⟨Γ log(ρε,σ(r)/w), −jε(r)⟩dr
+≥−
+Z t
+s
+Rdiﬀ(ρε,σ, f ε) + Sdiﬀ(ρε,σ) + Rreact(ρε,σ, jε) + Sreact(ρε,σ) dr.
+Hence, it follows the chain rule inequality for the regularized curve that L[s,t](ρε,σ, f ε, jε) ≥0.
+3. Step (Limit σ →0 and ε →0):
+First, we observe that convergence of the energies is
+clear due to the convexity. Hence, it suﬃces to show that
+lim sup
+σ→0
+lim sup
+ε→0
+Z t
+s
+Rdiﬀ(ρε,σ, f ε) dτ ≤
+Z t
+s
+Rdiﬀ(ρ, f) dτ,
+lim sup
+σ→0
+lim sup
+ε→0
+Z t
+s
+Sdiﬀ(ρε,σ) dτ ≤
+Z t
+s
+Sdiﬀ(ρ) dτ,
+lim sup
+σ→0
+lim sup
+ε→0
+Z t
+s
+Rreact(ρε,σ, jε) dτ ≤
+Z t
+s
+Rreact(ρ, j) dτ,
+lim sup
+σ→0
+lim sup
+ε→0
+Z t
+s
+Sreact(ρε,σ) dτ ≤
+Z t
+s
+Sreact(ρ) dτ.
+We will treat all four estimates and also the convergences σ →0 and ε →0 separately. In each
+term we will consider the limit ε →0 ﬁrst, sending σ →0 afterwards.
+3a (Diﬀusive terms):
+The rate term Rdiﬀas well as the slope term Sdiﬀare convex function-
+als. Hence, the upper limit bound for ε →0 follows by Jensen’s inequality (see e.g. [AGS08,
+Lem. 8.1.10]) together with ∇ρε
+i ⇀∇ρi, jε
+r ⇀jr in L1([0, T]) and ρε
+i ⇀ρi. For the limit
+σ →0, we simply observe that ρi + σ ≥ρi which implies that
+|fi|2
+ρi+σ ≤|fi|2
+ρi . Moreover, we have
+∇√ρi + σ =
+√ρi
+√ρi+δ∇√ρi ≤∇√ρ. This proves the desired estimate for the diﬀusive terms, both
+the slope and the rate term.
+3b (Reactive rate term):
+The limit ε →0 was shown in Proposition 6.3, where we now
+rely on Assumption (4.A2) with p = pcrit. For the limit σ →0, we again use the monotonicity
+of the perspective function, to get the pointwise bound in the integrand
+C
+
+jr
+
+q
+(ρi + σ)α (ρ + σ)β
+i
+
+≤C
+
+jr
+
+q
+ρα
+i ρβ
+i
+
+.
+3c (Reactive slope term):
+We use the general fact that a continuous function Φ : RI →R
+satisfying the growth estimate |Φ(u)| ≤C(1+|u|)r deﬁnes via u 7→Φ◦u a (strongly) continuous
+Nemitskii operator from Lrq(Ω) into Lq(Ω) for all q ≥1.
+The reactive slope is the sum Sreact = P
+r∈R Sr with
+Sr(ρ) = 2κr
+ZZ
+ΩT
+
+ω(βr−αr)/2ραr −2ρ(αr+βr)/2 + ω(αr−βr)/2ρβr
+dx dt =: S1
+r (ρ) + S2
+r (ρ) + S3
+r (ρ).
+39

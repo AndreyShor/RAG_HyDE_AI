@@ -1,0 +1,78 @@
+3.4
+Running quantum circuits
+Once the qubits are prepared and the quantum gates are added to the circuit, the circuit must be
+executed, and the results displayed. In AriaQuanta, there are two ways to run the circuit. As discussed
+in the section 2, we consider two architectures: simplified and general. In the simplified architecture, the
+circuit is executed using the command qc.run(). After running the circuit, we can obtain the following
+outputs using the command qc.measure(): (i) The probability and probability diagram of the states,
+(ii) The final state of the system, and (iii) The index of the final state. Listing 4 shows the example code
+for running quantum circuits in simplified approach.
+Code4. Running
+quantum
+circuits
+from
+AriaQuanta.aqc. gatelibrary
+import H, X
+from
+AriaQuanta.aqc.circuit
+import
+Circuit , sv_to_probabilty
+import
+numpy as np
+qc = Circuit(2)
+qc |
+H(0) | CX(0,1)
+qc.run ()
+measurement = qc.measure_all ()
+print("\ nmeasurement
+result: ", measurement )
+print("\nstate
+vector: ", qc.statevector )
+print("\ndensity
+matrix: ", qc. density_matrix )
+probability = sv_to_probabilty (qc.statevector , plot=True)
+print("\ nprobability : ", probability )
+Generally, circuit running is performed using the backend. In this case, a circuit can be executed multiple
+times in parallel or in series. Additionally, we can specify whether the code is executed on the CPU or
+GPU or QPU. The output can be a state vector, a density matrix, or a probability distribution of states.
+In Ariaquanta, these tasks are handled by the simulator, which is defined in the backend. Note that any
+desired qubit can be measured in this case (with classical bit), and the number of circuit executions can
+be divided arbitrarily. In other words, it can be specified how many executions are run in parallel for
+each of the n executions in each step. Listing 5 shows the example code for running quantum circuits in
+general approach.
+Code5. Running
+quantum
+circuits
+in
+general
+approach
+from
+AriaQuanta.aqc. gatelibrary
+import *
+from
+AriaQuanta.aqc.circuit
+import
+Circuit
+from
+AriaQuanta.aqc.measure
+import
+MeasureQubit
+from
+AriaQuanta.backend.simulator
+import
+Simulator
+from
+AriaQuanta.backend.result
+import
+plot_histogram
+from
+AriaQuanta.aqc.noise
+import
+BitFlipNoise
+qc = Circuit(3)
+qc |
+H(0) | CX(0,1) | H(2) | BitFlipNoise (0.1,0) | MeasureQubit ([0,1])
+sim = Simulator ()
+result = sim.simulate(qc , 1000 , 1)
+counts , probability = result.count ()
+6

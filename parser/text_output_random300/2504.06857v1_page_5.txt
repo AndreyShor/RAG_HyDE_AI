@@ -1,0 +1,98 @@
+5
+proton was not reconstructed or because no proton was
+kicked out at truth level.
+While OmniFold is an unbinned procedure, we must
+choose some binning of the variables for final evaluation
+and comparison against classical binned techniques. The
+two-dimensional binning of the muon kinematics is sum-
+marized in Tab. I, and the binning of the STVs is sum-
+marized in Tab. II. For each of these binnings, we extract
+a differential cross section from the unfolded result and
+compare against the true cross sections used to generate
+the data.
+In the OmniFold approach, we have the freedom to
+choose all of our inputs independently of the observables
+we wish to inspect in the end. We define three varia-
+tions that we refer to as UniFold, MultiFold, and Om-
+niFold in the same way as Ref. [21], distinguished by
+which observables are provided as inputs in each case.
+UniFold is effectively an unbinned version of IBU, with
+the only kinematic input being a single observable we
+are trying to unfold. Correspondingly, we run four sepa-
+rate instances of UniFold: one for each of the observables
+used in evaluation of the unfolding performance. Multi-
+Fold takes as input (pµ, cos θµ, pp, δpT, δαT, δϕT), which
+directly includes all of the observables that we are in-
+terested in and allows for the simultaneous unfolding of
+all of them.
+OmniFold has the most general inputs2,
+using just the kinematics of the muon and leading pro-
+ton (pµ, cos θµ, ϕµ, pp, cos θp, ϕp). The STVs can be de-
+rived from these inputs, but we can expect they would
+be more difficult to learn compared to MultiFold. We re-
+fer to these three variations collectively as the OmniFold
+method or approach, since they all operate on the same
+principles.
+During training and evaluation of the classifiers used
+in the OmniFold method, the momentum variables are
+log-transformed to mitigate the effects of long tails and
+then standardized to a mean of 0 and standard devia-
+tion of 1. In events where one of the input variables is
+missing, either because it is missing at truth level or be-
+cause of a failed reconstruction, a value of 0 is used for
+the missing quantity. For any particular setup, we use
+the same kinematic variables in both step 1 (reweight-
+ing of detector-level events) and step 2 (reweighting of
+truth-level events) of the OmniFold procedure, although
+this is not necessary in general [39]. In addition, in step
+1 for each case we also include the detector sample infor-
+mation, and in step 2 we include the event’s truth-level
+interaction topology information, both of which are de-
+scribed in Sec. III. These labels are one-hot encoded for
+input.
+The OmniFold method is formally agnostic to the spe-
+cific classifier architecture; for this work, we use a simple
+2 These are the most general inputs given what is provided in
+the available dataset, but a more detailed dataset would allow
+the use of an even wider phase space, potentially including all
+true/reconstructed particles.
+FIG. 3: Comparison of χ2 performance for the
+unfolded differential cross section as a function of
+(pµ, cos θµ) with OmniFold using different sizes for the
+neural networks that serve as the classifiers in the
+method. Networks that are too small lack the ability to
+fully learn the high-dimensional likelihood ratio and
+result in worse unfolding performance, but performance
+also flattens out once additional network capacity
+becomes extraneous.
+dense neural network with 4 hidden layers of 100 nodes
+each, using LeakyReLU activation functions for the hid-
+den nodes and a sigmoid activation for the final output.
+The network is implemented with Keras [62] in Tensor-
+flow v2.9.0 [63] and trained with the Adam optimizer
+[64]. We use an initial learning rate of 1 × 10−4, a batch
+size of 1024, and a 80/20 training/validation split of the
+available events. The training includes an early stopping
+patience of 15 epochs, restoring the model weights that
+gave the best validation loss afterwards. We performed
+a coarse scan of the training parameters and did not find
+significant improvement from other values. However, we
+did find that an insufficiently large neural network size
+resulted in notable degradation of the performance, as
+one would expect when the network loses the capability
+to properly learn the likelihood ratio between the data
+and simulated distributions. A comparison of the per-
+formance with different network sizes is shown in Fig.
+3.
+The final choice of 4 hidden layers with 100 nodes
+each was chosen as a point beyond which expanding the
+network size further had no obvious benefit.
+To serve as a benchmark of a typical conventional un-
+folding approach, we perform an unfolding of each ob-
+servable of interest with a binned version of the OmniFold
+method, which with perfect training is mathematically
+equivalent to IBU [21, 65]. In this setup, which we call
+IBU-UniFold, we follow the OmniFold reweighting pro-
+cedure, but for each event we provide only the bin index
+for the observable in question instead of actual kinematic
+information. The bin index is provided as one-hot en-

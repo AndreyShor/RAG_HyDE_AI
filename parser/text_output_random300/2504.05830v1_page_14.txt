@@ -1,0 +1,46 @@
+Springer Nature 2021 LATEX template
+14
+Human Activity Recognition using RGB-Event based Sensors
+improving overall performance. This process can be expressed as,
+F3 = Concat(wR ∗FR, wE ∗FE),
+wR, wE = σ(Conv(Concat(FR, FE))).
+(9)
+where wR and wE denote the adaptively optimal weights, σ is the Sigmoid
+activation function.
+Regarding the three optional fusion methods discussed above, previous
+approaches typically involve manually setting a fixed threshold to evaluate
+the quality of each modality and making a selection accordingly. In contrast,
+this work explores the use of a policy network for adaptive selection, thereby
+eliminating the need for introducing additional hyperparameters. Concretely,
+our policy network is built using Multilayer Perceptrons (MLPs), which map
+the features extracted from the multi-modal HCO layer to F ∈RB×3. Here,
+B represents the batch size and 3 indicates the number of possible selection
+paths. To maintain differentiability during the network’s backward process, we
+employ the Gumbel-Softmax [63] technique to obtain the one-hot vector rep-
+resentations. By optimizing the network, it is possible for the policy network
+to dynamically route a suitable path for multi-modal fusion, thereby achiev-
+ing a better performance while eliminating the need for redundant manual
+configuration.
+3.4 Classification Head & Loss Function
+Following the processing through multi-modal HCO blocks, we can achieve
+a robust multi-modal feature representation. Then, we input the fused features
+into the classification head to realize activity recognition. In particular, we
+initially acquire features Fout ∈RB×C by applying a LayerNorm layer and
+average pooling layer. Subsequently, the features are mapped to the predicted
+scores ˆyi ∈RB×C′ through a linear layer, where C′ is the number of action
+categories. Finally, we calculate the cross entropy loss between the predicted
+results and the ground truth labels, which can be formulated as,
+L = −1
+N
+N
+X
+i=1
+yi log ˆyi + (1 −yi) log(1 −ˆyi).
+(10)
+where ˆyi is the predicted scores and yi is the ground truth.
+4 HARDVS 2.0 Benchmark Dataset
+4.1 Protocols
+We aim to provide a good platform for the training and evaluation of
+multi-modal RGB-Event human activity recognition. When constructing the
+HARDVS 2.0 benchmark dataset, the following attributes/highlights are con-
+sidered: 1). Large-scale: As we all know, large-scale datasets play a very

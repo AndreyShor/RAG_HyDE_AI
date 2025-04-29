@@ -1,0 +1,34 @@
+the columns of the temporal modes matrix ˆT are partitioned into two smaller matrices
+used for training and development/testing of the predictive model. The dimensions of
+these matrices are N × Ttrain (training) and N × Ttest (test/development), where the total
+number of temporal snapshots T satisfies:
+Ttrain + Ttest = T.
+(11)
+Figure 3: Snapshots used for training and development in the predictive models.
+A key step to ensure consistent and unbiased learning during the training and de-
+velopment phases is to normalize the data to optimize neural network performance. It
+ensures that input features are standardized, which can significantly improve the efficiency
+and stability of the training process. One of the primary reasons for normalization is to
+address issues arising from the differing scales of the input features. Without normaliza-
+tion, features with large value ranges can dominate those with smaller ranges, resulting
+in elongated cost function contours [47].
+Among the various normalization techniques, two of the most commonly used meth-
+ods are Min-Max normalization and Z-score normalization [48]. In this work, Z-score
+normalization has been employed for preprocessing. The input tensor is normalized by
+subtracting its mean and dividing by its standard deviation:
+X norm = X −µ
+σ
+(12)
+where X represents the input tensor, µ, and σ are the mean and the standard deviation,
+respectively.
+This method is particularly effective for handling features with outliers or when fea-
+tures are on different scales. Maintaining standardized input ranges enhances model gen-
+eralization on unseen data, ultimately balancing feature scales and improving the training
+stability and convergence speed of the neural network. More on normalization techniques
+can be found in the papers by Hetherington et al. [33] and Corrochano et al. [49].
+2.4.1
+Rolling Window Approach
+The rolling window method is a widely used technique in time series analysis and forecast-
+ing, particularly effective for capturing temporal dependencies and trends in sequential
+data [1, 50, 51]. The implemented sequence generator utilizes a rolling window approach
+15

@@ -1,0 +1,43 @@
+Orb-v3: atomistic simulation at scale
+Benjamin Rhodes*, Sander Vandenhaute*, Vaidotas Šimkus, James Gin,
+Jonathan Godwin, Tim Duignan, Mark Neumann
+{ben,mark}@orbitalmaterials.com
+Orbital Materials
+We introduce Orb-v3, the next generation of the Orb family of universal interatomic
+potentials. Models in this family expand the performance-speed-memory Pareto frontier,
+offering near SoTA performance across a range of evaluations with a ≥10× reduction
+in latency and ≥8× reduction in memory. Our experiments systematically traverse this
+frontier, charting the trade-off induced by roto-equivariance, conservatism and graph sparsity.
+Contrary to recent literature, we find that non-equivariant, non-conservative architectures
+can accurately model physical properties, including those which require higher-order
+derivatives of the potential energy surface.
+This model release is guided by the principle that the most valuable foundation models for
+atomic simulation will excel on all fronts: accuracy, latency and system size scalability. The
+reward for doing so is a new era of computational chemistry driven by high-throughput
+and mesoscale all-atom simulations.
+*equal contribution
+Simulation-based computational chemistry is undergoing a remarkable transition. For several
+decades, the field has relied on the success of density functional theory (DFT) [1] and other
+approximate solutions to the Schrödinger equation—a framework that has unlocked unprece-
+dented insights into the electronic structure and physical properties of matter. However, the
+computational cost, typically scaling as 𝑂(𝑁3) or more, is prohibitive for large systems and has
+become a bottleneck that limits the use of DFT in high-throughput predictive simulations. Uni-
+versal Machine Learning Interatomic Potentials (MLIPs) represent a new paradigm, promising
+ab initio accuracy for a wide range of chemistries at enlarged spatio-temporal scales.
+MLIP design is broadly composed of two tracks. The first track is concerned with universality;
+how can we learn an accurate single potential for all chemical systems? This requires large-scale
+dataset creation efforts [5, 16, 20, 41, 43], model-building [12, 11, 34, 29, 28, 20, 23, 40, 37] and
+rigorous evaluations [32, 26, 33, 48, 41, 43]. The second track is concerned with scalability; how
+can we model realistic systems in some of the most important applications - bio-materials,
+chemical reactions or enzymatic processes? This requires more efficient all-atom architectures
+[28, 30, 41] and coarse-grained potentials [15, 19]. A grand challenge for the field is to unite these
+two tracks, and deliver a universal model, usable by material scientists and biochemists alike,
+that can accurately simulate novel systems across several orders of spatio-temporal magnitude.
+In this technical report, we introduce the Orb-v3 series of models: universal and scalable all-atom
+models at various points on the performance-speed-memory Pareto frontier. At one end of
+this spectrum are smooth, conservative potentials with a high degree of roto-equivariance
+induced by a new gradient-based regularization scheme called equigrad. Such models excel
+in performance, predicting vibrational, thermodynamic and mechanical properties with high
+precision. At the other end of the spectrum are non-conservative models with a sparser atomic
+1
+arXiv:2504.06231v1  [cond-mat.mtrl-sci]  8 Apr 2025

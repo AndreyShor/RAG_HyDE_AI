@@ -1,0 +1,149 @@
+12
+|·⟩a
+1
+RY (θ1)
+|·⟩a
+1
+H
+•
+H
+|·⟩a
+1
+UM5
+UM4
+|·⟩k+m
+|·⟩n
+Figure 6. A quantum circuit that implements the block-encoding of B, denoted by UB.
+Combining the block-encoding of W and B, we obtain a (3, d+3)-block-encoding of L1 with gate complexity
+O(k + log(m · k)). The corresponding quantum circuit is shown in Fig. 7.
+|·⟩1
+•
+|·⟩a
+d+3
+UW
+UB
+|·⟩k+m+n
+Figure 7. A quantum circuit that implements the block-encoding of L1, denoted by UL1.
+2.
+Block-encoding of L2
+The second term L2 in Eq. (30) can be written as
+L2 =
+
+Im
+Om
+
+⊗eT
+
+·
+
+
+
+
+
+
+
+0
+1
+1
+0
+... ...
+1
+0
+
+⊗In(k+1)
+
+
+
+
+=: L(1)
+2 L(2)
+2
+,
+where
+eT =
+1
+√
+k + 1
+
+
+(−1)k+1 (−1)k · · · −1
+0
+0
+· · ·
+0
+...
+...
+· · ·
+...
+0
+0
+· · ·
+0
+
+⊗In =: M6 ⊗In,
+and
+M7 :=
+
+Im
+Om
+
+.
+Similar to M2, we have
+M6 =
+
+
+1
+0
+...
+0
+
+
+
+
+(−1)k+1
+√k+1
+(−1)k
+√k+1 · · ·
+−1
+√k+1
+∗
+∗
+· · ·
+∗
+...
+...
+· · ·
+...
+∗
+∗
+· · ·
+∗
+
+
+Since k + 1 = 2k, we have (−1)k+1 = 1, and the following observation.
+Remark III.9. The second row of H⊗k is of the form
+h
+1
+√k+1
+−1
+√k+1 · · ·
+1
+√k+1
+−1
+√k+1
+i
+.
+Using this observation, we can express M6 as
+M6 =
+
+
+1
+0
+...
+0
+
+
+
+H⊗(k−1) ⊗(XH)
+
+.

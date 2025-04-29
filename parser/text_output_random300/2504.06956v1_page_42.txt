@@ -1,0 +1,110 @@
+Resampling property and independence from the threshold
+42
+Consequently, thanks to the union bound, we get that
+P
+
+sup
+|x|∈[eb,eb+1)
+|Zb(x)| ≥η
+
+≲eb(d−1)−η2
+2b ,
+∀η ≥0 .
+(5.6)
+Next, observing that for any non-negative random variableX it holds that E[ecX] = 1+c
+R ∞
+0
+ecxP(X >
+x)dx, we can write
+E
+
+sup
+|x|∈[eb,eb+1)
+ecZb(x)
+
+= 1 + c
+Z ∞
+0
+ecηP
+
+sup
+|x|∈[eb,eb+1)
+Zb(x) ≥η
+
+dη .
+In particular, for k > 0, using the fact that η2 ≥2kη −k2, we have that
+Z ∞
+0
+ecη(1 ∧eb(d−1)−η2
+2b )dη ≤
+Z k
+0
+ecηdη +
+Z ∞
+k
+ecη+b(d−1)−kη
+b + k2
+2b dη
+≤keck +
+b
+k −cbeck+b(d−1)−k2
+2b ,
+provided that k > bc. It is natural to choose k such that k2/(2b) = b(d −1), i.e., k = b√2(d −1)
+which is indeed greater than bc since c =
+√
+2/d < √2(d −1). Therefore, recalling (5.6) and
+combining the previous observations, we conclude that
+E
+
+sup
+|x|∈[eb,eb+1)
+ecZb(x)
+
+≲be
+√2(d−1)cb .
+Therefore, by plugging the previous bound into (5.5), we showed that the expectation in (5.4) is
+bounded above by a multiple of
+E
+
+sup
+|x|∈[eb,eb+1)
+eceΥb,λ(x)
+
+≲b
+3
+2 ebc(c/2+√2(d−1)−
+√
+2d) →0
+as
+b →∞,
+where, recalling that c =
+√
+2/d, we have used the fact that c/2 + √2(d −1) −
+√
+2d ≤0.
+We are now ready to prove the following intermediate result.
+Lemma 5.5. There exists a countable set Λ
+c ⊆R+ such that, letting Λ = R+ \ Λ
+c, for each n ∈N
+and λ ∈Λ ∩(0, n], it holds that ν∞,λ = ν∞,n|Aλ.
+Proof. Thanks to Lemma 5.4, we know that for each λ > 0, the sequence (νb,λ)b>0 converges weakly
+to ν∞,λ in (X, dX). Moreover, for all n ∈N, λ ∈(0, n], and b > 0, we have that νb,λ = νb,n|Aλ.
+We note that there exists a countable set Λ
+c
+n ⊆(0, n] such that for all λ ∈(0, n] \ Λ
+c
+n, it holds that
+νb,λ converges weakly to ν∞,n|Aλ in (X, dX). Indeed, this follows from the uniqueness of the weak
+limit and the fact that the sets (∂XAλ)λ∈(0,n] are disjoint, implying that ν∞,n can assign positive
+mass to at most countable many of them. Therefore, the conclusion follows by setting Λ
+c = ∪n∈NΛ
+c
+n
+and noting that a countable union of countable sets remains countable.
+We are now ready to prove Lemma 5.1
+Proof of Lemma 5.1. We begin by observing that an immediate consequence of Lemma 5.5 is that for
+each λ1 ̸= λ2 ∈Λ such that λ2 < λ1, the field eΥλ2 has the same law of the field eΥλ1 conditioned on
+the event M(eΥλ1) ≤λ2.
+For θ > 0, we introduce the set Sθ,1 ⊆X by letting
+Sθ,1
+def= {(∞, ϕ) ∈X : M(ϕ) = θ} .

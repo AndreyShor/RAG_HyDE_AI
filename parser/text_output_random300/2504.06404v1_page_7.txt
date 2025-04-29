@@ -1,0 +1,88 @@
+drops of towards the end. The reason for that is that the 
+measurements are no longer surrounded and backed up by 
+additional data from both sides. 
+ 
+Fig. 6. Smoothed state variables and raw recorded trajectorie. Top left x-y 
+brids eye plot, top right longitudinal velocity, middle left heading, middle right 
+longitudinal acceleration, bottom left lateral acceleration. 
+ 
+Fig. 7. raw, physical spline optimized and ground truth ppk object track. Top 
+left and right shows the x-y birds eye plot, middle right the longitudinal velocity, 
+middle left the heading, bottom right the longitudinal acceleration and bottom 
+left the lateral acceleration 
+B. Upsampling and object track reconstruction 
+For Certain data sources we only have position measurements. 
+We can run the physical spline with positions only and the 
+regularization parameters to sample on another time vector and 
+create velocities and accelerations. 
+C. Data Compression 
+With the physical spline the whole trajectory is described by the 
+parameter vector. By only storing the parameter vector we can 
+recreate the hole trajectory. 
+VII. NUMERICAL NOTES/CHALLENGES 
+Most of the computational costs occur for building up the 
+matrix and evaluating the basis functions. Solving the lgs itself 
+is fast in comparison. 
+ 
+Typically, we want to add many measurements at once to the 
+optimization Problem, thus we should vectorize the evaluation 
+of the basis function, such that a complete time vector can be 
+handed at once. The return should be a Matrix. One dimension 
+is for different timestamps and the other for the different basis 
+functions (or derivative or other formulations from the dyadic 
+products above) 
+ 
+r
+𝑓%(𝑡%)
+…
+𝑓&(𝑡%)
+⋮
+⋱
+⋮
+𝑓<(𝑡C)
+…
+𝑓&(𝑡C)
+s 
+𝑄# = & 𝑐8 ⋅𝑞8
+9 ⋅𝑞8 
+𝑞8 = h𝑓%(𝑡8) … 𝑓&(𝑡8)i = 𝑘𝑡ℎ−𝑟𝑜𝑤. 
+(27) 
+To build up the Matrix we must sum up the dyadic products of 
+the rows. To do this more efficiently we can use the following 
+theorem (28) 
+𝐴⋅𝐵= & 𝑐D,8 ⋅𝑟E,8
+&
+8F(
+ 
+(28) 
+Where cA,k are the columns of A and rB,k are the rows of B, while 
+N denotes the number of columns of A (the same as the number 
+of rows of B, such that the multiplication could be performed) 
+[6]. Now we can just multiply the matrix from (27) with its 
+transposed. 
+VIII. CONCLUSION AND EXTENSIONS 
+The achieved results can be scaled and achieve good outcomes. 
+For possible extensions we could add equality and inequality 
+constraints to the quadratic optimization to enforce a specific 
+behavior.  
+We could also use a nonlinear more complex model that keeps 
+the idea of the physical meaning of the basis functions. We 
+could also use a model that estimates the heading at the same 
+time. The more complex models would require working with 
+iterative solvers like gradient descent. 
+REFERENCES 
+ 
+[1] Long Xu, Kemao Ma, Hongxia Fan, “Unscented Kalman Filtering for 
+Nonlinear State Estimation with Correlated Noises and Missing 
+Measurements” in Springer, 2018 
+[2] Ludwig Fahrmeir, Thomas Kneib,  Stefan Lang, “Modelle, Methoden und 
+Anwendungen (Statistik und ihre Anwendungen)” in Springer 2009 
+[3] Hartmut Prautzsch , Wolfgang Boehm , Marco Paluszny, “Bézier and B-
+Spline Techniques (Mathematics and Visualization)” in Springer , 2002 
+[4] Zdenek Dostál, “Optimal Quadratic Programming Algorithms: With 
+Applications to Variational Inequalities”  in Springer Optimization and Its 
+Applications, 23, Band 23. 2009 
+[5] Douglas A. Allan, James B. Rawlings, Moving Horizon Estimation in  
+Handbook of Model Predictive Control  2019. 
+[6] https://mathoverflow.net/questions/450983/name-for-a-sum-of-dyadic-
+vector-products 29.11.2024 

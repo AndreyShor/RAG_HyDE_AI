@@ -1,0 +1,171 @@
+the term in the left hand side of the inequality containing (A.0.10) gets deleted and we obtain
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh|ρ(x, θ, t′, h)|E(t −t′, h′) ≤
+Z
+X
+dx
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh|µ(x, θ, t′, h)|
+∀t ≤T.
+The same steps prove property (A.0.8) (without the modulus and therefore without the triangle inequality).
+Lastly, µ ≥0 implies ρ ≥0 because the map F preserves also the positivity of the argument and the space of non
+negative L1 functions is complete with respect to L1 norm (and therefore the Contraction Theorem can be applied in
+this space). The same holds for the dependance on x and on (x, θ), where the same argument works.
+We finally have to prove (A.0.9). To this purpose, we split ρ in the sum of three contributions, that is
+ρ(x, θ, t, h)
+=
+β(x, θ, t, h) + µ(x −tv(θ), θ, t, h)
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)µ(x −(t −t′)v(θ) −t′v(θ + π −2 arcsin(h′)), θ + π −2 arcsin(h′), t′, h′),
+(A.0.11)
+with β satisfying
+β(x, θ, t, h)
+=
+R t
+0 dt′ R 1
+−1 dh′Q(t −t′, h|h′)
+R t′
+0 dt′′ R 1
+−1 dh′′Q(t′ −t′′, h′|h′′)
+·µ(x′, θ + 2π −2 arcsin(h′) −2 arcsin(h′′), t′′, h′′)
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)β(x −(t −t′)v(θ), θ + π −2 arcsin(h′), t′, h′),
+(A.0.12)
+where x′ := x −(t −t′)v(θ) −(t′ −t′′)v(θ + π −2 arcsin(h′)) −t′′v(θ + 2π −2 arcsin(h′) −2 arcsin(h′′)).
+By applying integral Minkowski’s inequality to (A.0.11), one gets
+∥ρ(·, θ, t, h)∥Lp(X)
+≤
+∥β(·, θ, t, h)∥Lp(X) + ∥µ(·, θ, t, h)∥Lp(X)
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)∥µ(·, θ + π −2 arcsin(h′), t′, h′)∥Lp(X),
+(A.0.13)
+and therefore we can conclude the proof if we estimate ∥β(·, θ, t, h)∥Lp(X).
+Our first purpose is Step 1: we want to prove that if
+G(θ, t, h)
+:=
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′∥µ(·, θ′, t′, h′)∥Lp(X)f(θ −θ′, t −t′, h|h′),
+with f as in Definition 1.8, then
+∥β(·, θ, t, h)∥Lp(X)
+≤
+G(θ, t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)G(θ + π −2 arcsin(h′), t′, h′)
++
+2 c
+2π
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh′G(θ, t′, h′)
++
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′|f(θ −θ′, t −t′, h|h′) −c
+2π E(2)(t −t′, h′)|∥β(·, θ′, t′, h′)∥Lp(X).
+(A.0.14)
+To get this, notice that by using integral Minkowski’s inequality in the definition of β (A.0.12) and changing then the
+integration order, we get
+F(θ, t, h) := ∥β(·, θ, t, h)∥Lp(X)
+≤
+
+R t
+0 dt′ R 1
+−1 dh′Q(t −t′, h|h′)
+R t′
+0 dt′′ R 1
+−1 dh′′Q(t′ −t′′, h′|h′′)
+·µ(θ + 2π −2 arcsin(h′) −2 arcsin(h′′), t′′, h′′)∥Lp(X)
++
+
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)β(·, θ + π −2 arcsin(h′), t′, h′)
+
+Lp(X)
+≤
+R t
+0 dt′ R 1
+−1 dh′Q(t −t′, h|h′)
+R t′
+0 dt′′ R 1
+−1 dh′′Q(t′ −t′′, h′|h′′)
+·∥µ(·, θ + 2π −2 arcsin(h′) −2 arcsin(h′′), t′′, h′′)∥Lp(X)
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)∥β(·, θ + π −2 arcsin(h′), t′, h′)∥Lp(X)
+=
+G(θ, t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)F(θ + π −2 arcsin(h′), t′, h′).
+38

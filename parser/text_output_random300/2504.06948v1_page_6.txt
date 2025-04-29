@@ -1,0 +1,199 @@
+6
+To combine the linear systems from Eq. (13) and Eq. (14), we begin by rewriting Eq. (13) as follows
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+z(s)
+0
+= v,
+
+
+β1Ah In
+...
+...
+βqAh
+In
+−In
+· · ·
+−In
+−In
+
+
+
+
+z(s)
+0
+z(s)
+1
+...
+z(s)
+q
+
+
+=
+
+
+−d1hb
+0
+...
+0
+−bx((s −1)h)
+
+
+,
+(16)
+which symbolically treats v as an unknown and bx((s−1)h) as a known component. Next, combining Eq. (14)
+with the second system from Eq. (16), we obtain the following unified system
+
+
+In
+In
+· · ·
+In
+In βqAh
+...
+...
+In
+β1Ah
+−α1Ah In
+...
+...
+−αpAh
+In
+−In
+· · ·
+−In
+−In In
+
+
+
+
+z(s)
+q
+z(s)
+q−1
+...
+z(s)
+0
+= v
+ez(s)
+1...
+ez(s)
+p
+bx(sh)
+
+
+=
+
+
+bx((s −1)h)
+0
+...
+−d1hb
+n1hb
+0
+...
+0
+
+
+.
+(17)
+Since the diagonal Padé approximation (p = q) is usually preferred over the off-diagonal cases (p ̸= q) [33],
+we consider the case p = q = k in the rest of the paper. We present the following finding, whose proof is
+provided in Appendix A 1.
+Lemma III.2. In the case when p = q = k, we have z(s)
+j
+= (−1)j ez(s)
+j
+for all j = 1, . . . , k and s = 1, . . . , m.
+Using Lemma III.2, we can omit the computation of the terms ez(s)
+j , simplifying the linear system in Eq. (17)
+to
+
+
+In
+In
+· · ·
+In
+In
+βkAh
+...
+...
+In β1Ah
+(−In)k+1 (−In)k · · ·
+−In
+In
+
+
+
+
+z(s)
+k
+z(s)
+k−1
+...
+z(s)
+0
+bx(sh)
+
+
+=
+
+
+bx((s −1)h)
+0
+...
+0
+−d1hb
+0
+
+
+.
+(18)
+To ensure that the norm of the coefficient matrix in Eq. (18) is bounded independent of k, we multiply
+both the first and the last block rows of the matrix by the factor
+1
+√k+1. This modification also benefits the
+block-encoding and the condition number of the final linear system. With this modification, the s-th step
+Eq. (11) of the procedure is encoded into the following linear system
+(
+Wk(Ah)z(s) = eys,
+bx(sh)
+√k+1 + e1T ⊗In
+√k+1 z(s) = 0,
+(19)
+where
+Wk(Ah) :=
+
+
+1
+√k+1In
+1
+√k+1In · · ·
+1
+√k+1In
+In
+βkAh
+...
+...
+In
+β1Ah
+
+
+(20)

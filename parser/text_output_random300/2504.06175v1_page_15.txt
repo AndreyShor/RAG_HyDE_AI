@@ -1,0 +1,169 @@
+15
+collection of the Pauli errors not caught by recurrence are
+detailed in Table I. In this table, the first column denotes
+errors on qubits 2 and 3 that commute with Z2Z3, and
+are thus not post-selected away by recurrence, the sec-
+ond column denotes the probability of these errors, and
+the third column denotes the effective error after post-
+selection on qubit labelled 2. Setting px = py = pz = p/3
+and qx = qy = qz = q/3 and summing the entries in the
+second column gives the acceptance probability ps (6)
+while summing those entries in the second column where
+the effective error is I2 and normalizing by ps gives the
+Bell fidelity of the distilled state Fa (5).
+Error Probability Transformed Error
+I
+pIqI
+I2
+Z3
+pIqz
+Z2
+X2X3
+pxqz
+X2
+X2Y3
+pxqy
+Y2
+Y2X3
+pyqx
+Y2
+Y2Y3
+pyqy
+X2
+Z2
+pzqI
+Z2
+Z2Z3
+pzqz
+I2
+TABLE I. Accepted errors by recurrence and their ef-
+fect: Pauli error not post-selected away by recurrence (see
+Sec. II A), their probability, and their effect on the final dis-
+tilled Bell pair.
+For the ZX3B distillation protocol, we may derive the
+acceptance probability ps in (9) and Bell fidelity upon
+acceptance Fb in (8) using a procedure analogous to the
+one above. Suppose in Fig. 2c
+ρ03 = I ⊗Pp(ρ),
+ρ14 = I ⊗Pq(ρ),
+and
+ρ25 = I ⊗Pr(ρ).
+(D2)
+then we list the collection of errors not caught by the
+ZX3B distillation protocol in Table II. In this table,
+the first, second and third column represent the ac-
+cepted errors (those which commute with both Z3Z4Z5
+and X4X5), their probability and their effect on qubit
+3 after qubits 4 and 5 are measured, respectively. Set-
+ting px = py = pz = rx = ry = rz = p/3, and
+qx = qy = qz = q/3 and summing the entries in the sec-
+ond column gives the acceptance probability, ps in (9),
+while summing the entries in the second column corre-
+sponding to no error (I) in the third and normalizing by
+ps gives the fidelity after distillation, Fa in (8).
+Appendix E: Device Overview
+Experiments were carried out on IBM’s fixed-frequency
+transmon superconducting processor, ibm kyiv. This is a
+127 qubit chip with qubits arranged in a heavy-hexagonal
+lattice which reduces cross-talk with reasonable over-
+head in circuit layout mapping. This processor is from
+Error
+Probability Transformed Error
+I
+pIqIrI
+I3
+X4X5
+pIqxrx
+I3
+Z4Z5
+pIqzrz
+Z3
+Y4Y5
+pIqyry
+Z3
+X3X5
+pxqIrx
+X3
+X3X4
+pxqxrI
+X3
+X3Z4Y5
+pxqzry
+Y3
+X3Y4Z5
+pxqyrz
+Y3
+Z3
+pzqIrI
+Z3
+Z3X4X5
+pzqxrx
+Z3
+Z3Z4Z5
+pzqzrz
+I3
+Z3Y4Y5
+pzqyry
+I3
+Y3X5
+pyqIrx
+Y3
+Y3X4
+pyqxrI
+Y3
+Y3Z4Y5
+pyqzry
+X3
+Y3Y4Z5
+pyqyrz
+X3
+TABLE II. Accepted errors by ZX3B and their effect: Pauli
+error not post-selected away by the ZX3B protocol (see
+Sec. II B), their probability, and their effect on the final dis-
+tilled Bell pair.
+IBM’s Eagle processor family which use the echoed cross-
+resonance gate for its entangling gate and features mul-
+tiplexed readout. To support the higher qubit count, the
+chip features multi-layer wiring with care taken to reduce
+the effects of quantum and classical cross-talk. This ar-
+chitecture results in a median T1 and T2 of 276 µs and 122
+µs respectively and median ECR gate error and readout
+error of 1.1×10−2 and 6.0×10−3 respectively. Tables III,
+IV, V, and VI give error parameters for specific qubits
+on which distillation experiments and simulation were
+discussed in the main text.
+Qubit T1 (µs) T2 (µs) Measurement Error
+0
+257.944 323.573
+6.5 ×10−3
+1
+477.815 224.595
+9.1 ×10−3
+2
+263.123 123.047
+4.3 ×10−3
+3
+260.839 232.639
+4.6 ×10−3
+Qubit 1 Qubit 2 ZZ Rate (Hz)
+ECR Error
+0
+1
+-52860.4
+7.75153 ×10−3
+1
+2
+-55319.3
+10.3203 ×10−3
+2
+3
+-45908
+4.2953 ×10−3
+TABLE III. Single qubit and two-qubit error rates from
+ibm kyiv last updated on 2024-05-14 at 07:45:06 UTC used
+for simulation of recurrence Z2B.
+Measurement delay is
+1.24µs.
+The CNOT error rate is taken to be the ECR er-
+ror rate and kept the same when role of target and control
+qubits is reversed.

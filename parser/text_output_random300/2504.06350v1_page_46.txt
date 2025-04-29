@@ -1,0 +1,104 @@
+only the observables A1, A2, B1, B2 measured by the devices
+CHSH correlation bound [210]
+|⟨¯A1 ⊗B⟩| ≥
+p
+S2/4 −1
+asymmetric CHSH correlation bound [210]
+|⟨¯A1 ⊗B⟩| ≥Eα(Sα)
+Two-basis correlation bound [270]
+p⟨¯A1 ⊗B⟩2 + (1 −p)⟨¯A2 ⊗B′⟩2 ≥Ep(S)2
+where
+Eα(Sα) =
+
+
+
+
+
+
+
+q
+S2α
+4 −α2,
+if |α| ≥1,
+s
+1 −
+
+1 −
+1
+|α|
+r
+(1 −α2)
+
+S2α
+4 −1
+2
+,
+if |α| < 1.
+(122)
+and Ep(S)2 is the solution of a polynomial optimization problem of five real varables which for the case
+p = 1
+2 can be solved analytically [270].
+By combining the aforementioned correlation bounds with the entropy bounds, one can derive device-
+independent bounds on conditional entropy. For instance, by integrating the BB84 bound with the CHSH
+correlation bound, the bound in 121 can be obtained.
+Similarly, using the asymmetric CHSH correlation bound within the BB84 noisy preprocessing framework,
+the bound from [210] can be derived:
+H(Aq
+1|E) ≥fq(Eα(Sα)),
+(123)
+Moreover, by combining the CHSH correlation bound with BB84, incorporating noisy preprocessing
+and bias, the following bound is obtained [270]:
+H(Aq
+1|E) ≥gq(|⟨A1⟩|,
+p
+S2/4 −1),
+(124)
+Finally, if we denote ˜Ep(S)2 as any lower bound on Ep(S)2, another bound can be expressed as [270]:
+H(Aq
+X|XE) ≥fq( ˜Ep(S)),
+(125)
+where ˜Ep(S) is defined as ˜Ep(S) =
+q
+˜Ep(S)2.
+Since the obtained bounds are convex, they can be extended to give fully device-independent bounds in
+arbitrary dimensions.
+4.3.2. Entropy Bound for multiparty DI cryptography
+Ribeiro et al. [273] and Grasselli et al. [274] extended DI protocols to multipartite scenarios by
+proposing a DI conference key agreement (DI-CKA) among N parties. The security of their protocol relies
+on the violation of a Mermin-Ardehali-Belinskii-Klyshko (MABK) inequality [275–277], a generalization
+of the CHSH inequality. Specifically, they focused on the three-party case involving Alice, Bob, and
+Charlie. In this context, the MABK inequality is expressed as:
+m = ⟨M3⟩= Tr[M3ρ]
+Cl
+≤2
+GME
+≤
+2
+√
+2
+Q
+≤4,
+(126)
+where M3 = A0 ⊗B0 ⊗C1 + A0 ⊗B1 ⊗C0 + A1 ⊗B0 ⊗C0 −A1 ⊗B1 ⊗C1 is the MABK operator. Here,
+Ax, By, and Cz represent Alice’s, Bob’s, and Charlie’s observables, respectively. A violation beyond the
+GME threshold implies that the parties share a genuine multipartite entangled (GME) state.
+They derived the following bound on the conditional entropy as a function of the observed MABK
+violation m :
+H(A0|E) ≥1 −h
+ 
+1
+2 + 1
+2
+r
+m2
+8 −1
+!
+.
+By proving that this bound on the conditional entropy of a party’s outcome is tight at the GME threshold,
+it can be concluded that genuine multipartite entanglement is essential to ensure the privacy of a party’s
+random outcome in any device-independent protocol based on the MABK inequality.
+Grasselli et al. [278] advance the field by deriving tight analytical bounds on entropy as a function of the
+violation of the Holz inequality, a multipartite generalization of the CHSH inequality introduced in [77].
+The Holz inequality was specifically designed for DI-CKA protocols. In the tripartite case, the inequality
+takes the form:
+46

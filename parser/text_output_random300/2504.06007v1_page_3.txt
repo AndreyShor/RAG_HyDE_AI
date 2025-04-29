@@ -1,0 +1,155 @@
+CAMulator
+Table 1: Description of input and predicted variables for CAMulator. Variables are categorized as input-only (static and
+dynamic forcing), input/output (prognostic), and output-only (diagnostic). ∗Qtot is a sum of all column moisture—both
+vapor and condensed: Qtot = Specific Humidity + Grid Box Snow Amount + Grid Box Rain Amount. TOA = Top of
+Atmosphere.
+Variable
+Description
+Units
+Levels
+Category
+Input Variables (Forcing)
+Static Forcing (Time-Invariant Input)
+Surface Geop.
+Surface Height
+m²/s²
+Single Level
+Input
+Land-Sea Mask
+Land Mask
+Unitless
+Single Level
+Input
+Dynamic Forcing (Time-Varying Input)
+SOLIN
+Incoming Solar Radiation
+J/m²
+Single Level
+Input
+SST
+Sea Surface Temperature
+K
+Single Level
+Input
+Prognostic Variables (Input and Output)
+U
+Zonal Wind
+m/s
+32 Levels
+Input/Output
+V
+Meridional Wind
+m/s
+32 Levels
+Input/Output
+T
+Temperature
+K
+32 Levels
+Input/Output
+∗Qtot
+Specific Total Water
+kg/kg
+32 Levels
+Input/Output
+PS
+Surface Pressure
+Pa
+Single Level
+Input/Output
+TREFHT
+Near-Surface Air Temperature
+K
+Single Level
+Input/Output
+Diagnostic Variables (Output Only)
+PRECT
+Accumulated Precipitation
+m
+Single Level
+Output
+CLDTOT
+Total Cloud Cover
+Fraction
+Single Level
+Output
+CLDHGH
+High Cloud Cover
+Fraction
+Single Level
+Output
+CLDLOW
+Low Cloud Cover
+Fraction
+Single Level
+Output
+CLDMED
+Medium Cloud Cover
+Fraction
+Single Level
+Output
+TAUX
+Zonal Wind Stress
+N/m²
+Single Level
+Output
+TAUY
+Meridional Wind Stress
+N/m²
+Single Level
+Output
+U10
+10m Wind Speed
+m/s
+Single Level
+Output
+QFLX
+Surface Moisture Flux
+m
+Single Level
+Output
+FSNS
+Net Solar Flux at Surface
+J/m²
+Single Level
+Output
+FLNS
+Net Longwave Flux at Surface
+J/m²
+Single Level
+Output
+FSNT
+Net Solar Flux at TOA
+J/m²
+Single Level
+Output
+FLNT
+Net Longwave Flux at TOA
+J/m²
+Single Level
+Output
+SHFLX
+Sensible Heat Flux
+J/m²
+Single Level
+Output
+LHFLX
+Latent Heat Flux
+J/m²
+Single Level
+Output
+Flux-form variables (see bold variables in Table 1) and precipitation are treated as 6-hour accumulated quantities and
+rescaled so that downward fluxes are positive. Flux-form variables are essential for estimating sources and sinks in the
+atmospheric moisture and energy budgets. Precipitation (PRECT) represents the total precipitation leaving the column,
+including both parameterized and large-scale rain and snow. Prognostic variables are stored as 6-hourly averages. The
+prognostic variable Qtot represents the total water content in the model column, including vapor and condensed phases:
+specific humidity, as well as snow and rain that are present within the column.
+Both static and dynamic forcing variables are included as input. Surface geopotential represents topography, while a
+land-sea mask distinguishes between ocean and land grid points to ensure accurate surface-atmosphere interactions.
+The model is also provided with dynamically forced (changing in time) variables, including sea surface conditions and
+incoming solar radiation, updated every 6 hours. The model predicts the next atmospheric state using only the previous
+time step (t), following an autoregressive formulation: t →t + ∆t.
+All variables, except for the Land-Sea Mask, undergo z-score normalization, where the mean and standard deviation are
+computed based on the training data period (1979–2010). The Land-Sea Mask represents the fraction of land within
+each grid cell, with values ranging between 0 and 1, and is left unnormalized.
+3

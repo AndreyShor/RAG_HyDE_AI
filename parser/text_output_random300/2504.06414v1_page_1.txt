@@ -1,0 +1,52 @@
+QUANTIZED ARTIFICIAL NEURAL NETWORKS IMLEMENTED WITH 
+SPINTRONIC STOCHASTIC COMPUTING 
+Saadi Sabyasachi1, Walid Al Misba1, Yixin Shao2, Pedram Khalili Amiri2 and Jayasimha Atulasimha1, 3* 
+1 Department of Mechanical and Nuclear Engineering, Virginia Commonwealth University, Richmond, VA 23284, USA. 
+2 Department of Electrical and Computer Engineering, Northwestern University, Evanston, IL 60208, USA. 
+3 Department of Electrical and Computer Engineering, Virginia Commonwealth University, Richmond, VA 23284, USA. 
+ 
+Abstract—An Artificial Neural Network (ANN) inference involves matrix vector multiplications that require a 
+very large number of multiply and accumulate operations, resulting in high energy cost and large device footprint. 
+Stochastic computing (SC) offers a less resource-intensive ANN implementation with minimal accuracy loss. Random 
+number generators (RNG) are required to implement SC in hardware. These can be realized through stochastic-
+magnetic tunnel junctions (s-MTJ), where the energy barrier to switch between the “up” and “down” states is designed 
+to be small, enabling thermal noise to generate a random bit stream. While s-MTJs have previously been used to 
+implement SC-ANNs, these studies have been limited to architectures with continuously varying (i.e., analog) 
+weights. In this work, we study the use of SC for matrix vector multiplication with quantized synaptic weights and 
+quantized outputs. We show that a quantized SC-ANN, implemented by using experimentally obtained s-MTJ 
+bitstreams and using a limited number of discrete quantized states for both weights and hidden layer nodes in an ANN, 
+can effectively reduce time (latency) and energy consumption in SC compared to an analog implementation, while 
+largely preserving accuracy. We implemented quantization with 5 and 11 quantized states, along with SC configured 
+with stochastic bitstream lengths of 100, 200, 300, 400, and 500 on neural networks with one hidden layer and three 
+hidden layers. Inference was performed on the MNIST dataset for both training with SC and without SC. Training 
+with SC provided better accuracy for all cases. For the shortest bitstream of 100 bits, the highest accuracies were 92% 
+for one hidden layer and over 96% for three hidden layers. The overall system attained its peak accuracy of 96.82% 
+using a 400-bit stochastic bitstream with three hidden layers. Our investigations demonstrate 9× improvement in 
+latency to implement neuron activations and 2.6× improvement in energy consumption using the quantized SC 
+approach compared to a similar s-MTJ based ANN architecture without quantization.  
+Keywords—quantization deep neural networks, stochastic computing, magnetic tunnel junctions (MTJ). 
+*Corresponding author: jatulasimha@vcu.edu 
+ 
+I. 
+INTRODUCTION 
+Artificial Neural Networks (ANN) require a tremendous volume of computations which presents a challenge in 
+implementing deep neural networks (DNNs) on edge devices where resources are at a premium. There has been 
+substantial research in recent years [1], [2] to reduce the latency, power, and number of circuit components to implement 
+efficient and reliable DNNs. One approach is to incorporate stochastic computing (SC) for inference on edge devices 
+[3], [4]. In SC-based ANN, inputs, activations and tunable parameters such as weights are represented by a bitstream 
+of “1”s and “0”s having a specific probability of observing “1”. Matrix vector multiplications, the large computational 
+loads of ANN,  are replaced by probabilistic mathematics in SC, thus greatly reducing the hardware resources otherwise 
+utilized in conventional computing based approaches [5], [6]. Several implementations of neural networks employing 
+SC- multilayer perceptron (MLP) [7], [8], radial basis function NNs [9], convolutional neural networks (CNN) [10], 
+deep belief networks (DBN) [11], and recurrent neural networks (RNN) [12] report competitive accuracy with 
+significantly lower hardware cost and energy consumption [13]. Furthermore, SC remains an attractive choice for 
+specific image processing tasks, such as, local image thresholding [14], low-precision real-time image processing [15] 
+or kernel density approximation [16] due to faster and lower power implementation [17].   
+ 
+Efficient application of SC-ANN on edge devices relies on generating random numbers in an energy-efficient manner. 
+Semiconductor (CMOS) circuits such as 32-bit linear feedback shift register (LFSR) can generate pseudo-random 
+number which requires more than 1000 transistors making it resource-intensive [18]. In addition, non-volatile memory 
+(NV) based technologies including phase change memory (PCM) [19], resistive random access memory (RRAM) [20] 
+are being explored, along with the use of  magneto resistive random access memory (MRAM) bits such as magnetic 
+tunnel junctions (MTJs) [17]. MTJ is an attractive choice as it can generate stochastic bitstreams with compact design 
+and low power [21]. Furthermore, MTJs are integrated with CMOS circuits in state-of-the-art semiconductor 

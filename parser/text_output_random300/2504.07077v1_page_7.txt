@@ -1,0 +1,66 @@
+FIG. 4. The figure depicts the deviation of mitigated energy expectation value for the BH molecule from the
+ideal value in two different training scenarios. The purple plot represents the deviation of mitigated energy
+when ideal expectation values are used as targets in training data and the green plot represents the deviation
+of mitigated energy when sequential error mitigated expectation values are used as the targets for the training
+set Mitigated results on (left) fake-Melbourne machine and (right) fake-Guadalupe machine.
+Algorithm
+Time Complexity
+GCN forward pass
+O(ln2k + l|E|k)
+GCN backward pass
+O(ln2k + l|E|k)
+Regressor forward pass
+O(lrnkr)
+Regressor backward pass
+O(lrnkr)
+TABLE I. Time and space complexity analysis of for-
+ward and backward pass.
+III.
+RESULTS AND DISCUSSIONS:
+To demonstrate the working of the GNM (shown in
+Fig. 2), we test it on two different molecules and two dif-
+ferent devices with diverse noise profiles. Since the model
+is not based on the variational principle, the estimated
+expectation value can go below the ideal value. With the
+advent of modern gate error suppression techniques, such
+as dynamic decoupling and gate twirling, fluctuations in
+measurement can be greatly suppressed. In a simulation
+protocol, this can be approximated by using a fixed seed
+value to represent an averaged sampling statistics which
+we have chosen to use throughout this work. In this ar-
+chitecture, we train an ML model with circuits composed
+of single and double excitations to predict noiseless ex-
+pectation values using noisy ones. The GNM model is
+developed using PyTorch38 and PyTorch Geometric. For
+GNN, we use Graph Convolution Networks. The details
+of graph encoding and feature construction are found in
+the Methodology section.
+In the training data, labels
+are generated sequentially using the reference error mit-
+igation strategy which uses VQE as a subroutine and is
+implemented using Qiskit- Nature39. The one- and two-
+body integrals are imported from PySCF40. The second-
+quantized fermionic operators are transformed into qubit
+operators by using Jordan-Wigner encoding41. All the
+noise models used are derived from fake IBM Quantum
+hardware. We mainly use noise models imported from
+fake backends of two quantum devices: ibmq Melbourne
+and ibmq Guadalupe having 14 and 16 qubits respec-
+tively.
+The model is trained separately for each bond
+length using the Adam optimizer with 100 epochs. Due
+to a limited number of data in the training set, batch size
+is taken as 1.
+To illustrate the functionality of the GNM, our initial
+testing focuses on the H4 molecule where we symmetri-
+cally stretch all the H −H bonds. In STO-3G basis H4
+has 4 electrons in 8 spin-orbitals. From the findings de-
+picted in Fig. 3, it becomes evident that the optimized
+energy difference for full circuit between the noisy and
+corresponding noiseless scenarios ranges from approxi-
+mately 1 Eh to 0.32 Eh on the ibmq-Melbourne machine
+and from 0.48 Eh to 0.3 Eh on the ibmq-Guadalupe ma-
+chine. However, when considering the mitigated energy
+compared to the noiseless energy, the difference is con-
+fined within 12 mEh on the ibmq-Melbourne machine
+7

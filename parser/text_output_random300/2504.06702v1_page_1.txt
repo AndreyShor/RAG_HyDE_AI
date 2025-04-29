@@ -1,0 +1,71 @@
+Consensus-based qubit configuration optimization for variational algorithms on
+neutral atom quantum systems
+R.J.P.T. de Keijzer,1, 2, ∗L. Y. Visser,3, 2 O. Tse,3, 2 and S.J.J.M.F. Kokkelmans1, 2
+1Department of Applied Physics and Science Education,
+Eindhoven University of Technology, P. O. Box 513, 5600 MB Eindhoven, The Netherlands
+2Eindhoven Hendrik Casimir Institute, Eindhoven University of Technology,
+P. O. Box 513, 5600 MB Eindhoven, The Netherlands
+3Department of Mathematics and Computer Science, Eindhoven University of Technology,
+P. O. Box 513, 5600 MB Eindhoven, The Netherlands
+(Dated: April 10, 2025)
+In this work, we report an algorithm that is able to tailor qubit interactions for individual vari-
+ational quantum algorithm problems. Here, the algorithm leverages the unique ability of a neutral
+atom tweezer platform to realize arbitrary qubit position configurations [1]. These configurations
+determine the degree of entanglement available to a variational quantum algorithm via the inter-
+atomic interactions. Good configurations will accelerate pulse optimization convergence and help
+mitigate barren plateaus. As gradient-based approaches are ineffective for position optimization
+due to the divergent R−6 nature of neutral atom interactions, we opt to use a consensus-based
+algorithm to optimize the qubit positions. By sampling the configuration space instead of using
+gradient information, the consensus-based algorithm is able to successfully optimize the positions,
+yielding adapted variational quantum algorithm ansatzes that lead to both faster convergence and
+lower errors. In this work, we show that these optimized configurations generally result in large
+improvements in the system’s ability to solve ground state minimization problems for both random
+Hamiltonians and small molecules.
+INTRODUCTION
+The goal of a variational quantum algorithm (VQA) is
+to construct a parametrized unitary U that maps an
+initial state |ψ0⟩to a final state |ψ(T)⟩minimizing some
+cost function f [2]. This is performed by optimizing the
+parameters θ in parameterized unitaries U[θ], such that
+|ψ(T)⟩= U[θ]|ψ0⟩.
+Generally, gate-based variational
+quantum algorithms will try to create a universal gate
+ansatz that is in theory able to find a minimizer for
+any f [3]. Such ansatzes include the hardware-efficient
+ansatz [4] and the qubit coupled cluster ansatz (QCC) [5].
+However, these ansatzes often require a multitude of
+gates and large depths to realize specific unitaries.
+Especially in the NISQ era [6], these large-depth circuits
+can lead to low fidelities that inhibit the rendering of the
+unitary. Recent work suggests using a problem-inspired
+ansatz rather than a universal one [7–10].
+This could
+lead to lower depths and faster convergence in finding
+optimal parameters θ. In quantum chemistry, VQAs are
+used to find the ground state of some molecular target
+Hamiltonian Htarg by minimizing a function of the
+form f = ⟨ψ(T)|Htarg|ψ(T)⟩. Work on problem-inspired
+ansatzes for these problems includes the UCCSD ansatz
+based on the annihilation and creation operators of
+electronic orbitals [10], and the ADAPT-VQE ansatz
+which tries to gain the most correlation energy for the
+least number of parameters [7].
+We refer to Ref. [11]
+for a recent comprehensive overview on gate-based
+∗Corresponding author: r.j.p.t.d.keijzer@tue.nl
+problem-inspired ansatzes.
+Another approach to in-
+crease the expressibility of evolution is to go from a
+gate-based algorithm to a pulse-based algorithm, where
+the parameters θ take the form of physical control
+functions z, such as laser intensities or electrical currents
+[12, 13]. These have demonstrated the ability to realize a
+larger class of unitaries in less running time, mitigating
+errors, and increasing fidelity [14].
+Figure 1. CBO of 5-qubit positions Xα. On the right side,
+through the consensus based algorithm, the gold traps Xa
+shift more to the blue traps Xb than vice versa, since f(Xb) <
+f(Xa). Left side shows analogous case for f(Xb) > f(Xa).
+Positions of traps generated via SLM, and pulses z executed
+through qubit lasers.
+arXiv:2504.06702v1  [quant-ph]  9 Apr 2025

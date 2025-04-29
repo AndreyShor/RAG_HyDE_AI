@@ -1,0 +1,59 @@
+NNLO polarized PDFs with MHOU
+155
+made of the gluon PDF ∆g and of five independent quark flavor PDF combinations: the singlet
+∆Σ, the non-singlet sea ∆Ti, and the non-singlet valence ∆V, ∆V3. These PDF combinations
+are defined as in Eq. (1.61). The parametrization scale is Q2
+0 = 1.0 GeV2; PDFs are then evolved
+to the scale of the physical processes by means of DGLAP equations, see Section 5.1. Because
+the available piece of experimental information is sensitive to an asymmetry between ∆s and
+∆¯s only very mildly, we assume ∆s(x, Q2
+0) = ∆¯s(x, Q2
+0). Differences between ∆s and ∆¯s may
+occur for Q2 > Q2
+0 at NNLO and beyond, because higher-order QCD corrections make the two
+distributions evolve differently. This effect is however very small. Finally, we assume that charm
+is completely generated from gluon splitting through parton evolution, therefore we set to zero,
+and do not parametrize, a possible intrinsic charm component at the parametrization scale Q2
+0.
+Concerning the parametrization form, we choose a feed-forward neural network with six output
+nodes, each of which corresponds to an element of the basis defined in Eq. (5.2). The neural
+network architecture and activation function are determined according to the hyperparameter
+optimization procedure delineated in Section 5.2.3. The output of the neural network is then
+related to the polarized PDFs as
+x∆f(x, Q2
+0, θ) = A∆fx1−α∆f (1 −x)β∆f NN∆f(x, θ) ,
+(5.3)
+where ∆f denotes each element of the chosen basis, A∆f is a normalization factor, α∆f and
+β∆f are preprocessing exponents, and NN∆f(x, θ) is the output of the neural network, which
+depends on weights and biases, collectively denoted as θ.
+The normalization factor A∆f is equal to one for all PDFs but the non-singlet triplet and octet
+PDF combinations, ∆T3 and ∆T8, for which we define
+A∆T3 = a3
+Z 1
+xmin
+dx ∆T3(x, Q2
+0)
+−1
+and
+A∆T8 = a8
+Z 1
+xmin
+dx ∆T8(x, Q2
+0)
+−1
+;
+(5.4)
+here a3 and a8 are the baryon octet decay (scale-independent) constants whose experimental
+values are [365]
+a3 = 1.2756 ± 0.0013
+and
+a8 = 0.585 ± 0.025 .
+(5.5)
+The integrals in Eq. (5.4) are computed each time the parameters θ change, assuming xmin =
+10−4. For each replica, the values of a3 and a8 are random numbers sampled from a Gaussian
+distribution with mean value and standard deviation equal to the corresponding experimental
+central value and uncertainty, Eq. (5.5). Enforcing Eq. (5.4) therefore corresponds to requiring
+that SU(2) and SU(3) flavor symmetries are exact up to the experimental uncertainties quoted
+in Eq. (5.5).
+Finally, the preprocessing exponents α∆f and β∆f, which are needed to speed up optimization,
+are determined by means of an iterative procedure, firstly introduced in [38]. Specifically,

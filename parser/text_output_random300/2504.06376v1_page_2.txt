@@ -1,0 +1,41 @@
+Fukuzawa, Goodrich, and Irani
+XX:1
+Figure 1 A two-dimensional convex hull.
+Asymptotically fast classical convex hull algorithms are output sensitive, meaning
+that their running times depend on both the input size, n, and output size, h, and there
+are well-known examples that run in O(n log h) time; e.g., see Kirkpatrick and Seidel [22],
+Chan [7], and Afshani, Barbay, and Chan [1]. In this paper, we are interested in studying
+how to efficiently adapt classical output-sensitive divide-and-conquer algorithms, e.g., for
+convex hull and related problems, to quantum computing models.
+Additional Related Work.
+There is considerable interest in quantum algorithms
+for solving computational geometry problems. Sadakane, Sugawara, and Tokuyama [32]
+give a quantum convex hull algorithm that runs in ˜O(h√n) time,1 and this time bound
+is also achieved by Wang and Zhou [36]. Note that if h = n, as can occur, for instance,
+with points distributed on a circle or parabola, then these algorithms run in ˜O(n3/2) time,
+which is significantly slower than the best classical algorithms. Furthermore, the above
+quantum algorithms make use of a quantum input data model that assumes that the points
+are provided in superposition. Many of the procedures require sampling as well, meaning
+that the algorithms require multiple copies of these input states. We present the algorithm
+in a standard quantum query model that allows for an even comparison with the existing
+literature on the subject. In this model, we assume the existence of an oracle that returns
+the item in the queried index. For completeness, Cortese and Braje [10] showed that there
+exists a quantum circuit which can take classical data and implement this oracle, with
+the cost of a logarithmic overhead if the circuit construction time is excluded. Lanzagorta
+and Uhlmann [23, 24] also describe a quantum convex hull algorithm running in ˜O(h√n)
+time, which, in their case, is a quantum implementation of the well-known Jarvis march
+convex hull algorithm using Grover search for the inner loop; see, e.g., [11, 16, 29, 30, 33].
+They also describe an algorithm that runs in ˜O(
+√
+nh) time, but this result only applies
+when h is small and the points are chosen uniformly at random from a bounded convex
+region. In addition to this quantum prior work, there is a well-developed body of prior
+work in classical computing models for computing convex hulls where the points are given
+pre-sorted in lexicographic order; see, e.g., Ghouse and Goodrich [13], Hayashi, Nakano, and
+Olarlu [18], Berkman, Schieber, and Vishkin [5], Nakano [27], Goodrich [15], and Nakagawa,
+Man, Ito, and Nakano [26]. The question we seek to answer in this paper is whether it is
+possible to leverage this assumption in the quantum setting and obtain asymptotically faster
+output-sensitive algorithms in the model where the input point set is pre-sorted but with no
+other assumptions about the distribution of points.
+1 We use ˜O(f(n)) to denote O(f(n) logc n), for some constant c ≥0.
+SoCG 2025

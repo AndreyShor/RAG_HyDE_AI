@@ -1,0 +1,124 @@
+Stage I
+Stage II
+Figure 6. Textures after the first and the second stage.
+FID
+KID
+(↓)
+(×10−3, ↓)
+Text2Tex
+21.3
+4.1
+CasTex (Text2Tex init, kd frozen)
+21.3
+4.2
+CasTex (Text2Tex init, kd trained)
+20.5
+3.9
+Table 3.
+Ablation study of initializing our second stage with
+Text2Tex outputs to generate PBR textures. The results show that
+allowing the diffuse map (kd) to be optimized during our second
+stage leads to significant improvements in both FID and KID met-
+rics, while keeping the diffuse map frozen maintains the same FID
+but slightly increases KID. This suggests that our approach can
+effectively serve as an enhancement module for existing texture
+generation methods.
+FID
+KID
+(↓)
+(×10−3, ↓)
+Paint-it (Paint-it envlight)
+25.2
+6.7
+Paint-it (proposed envlight)
+24.5
+6.4
+CasTex (Paint-it envlight)
+23.3
+5.5
+CasTex (proposed envlight)
+20.5
+3.1
+Table 4. Ablation of environment lighting. We discovered that
+environmental lighting may play a crucial role in the plausibility
+of resulting physically-based textures. The default environmental
+lighting map in Paint-it presents an even gray lighting across all
+directions. The difference between a specular and a rough diffuse
+surface with such lighting is barely distinguishable. Instead, we
+propose an environmental lighting map with a single pronounced
+light source and augment lighting with horizontal rotations.
+inconsistencies. In contrast, when we allow diffuse map
+optimization (kd trained), our approach achieves significant
+improvements in both metrics, yielding the best FID and
+KID. This demonstrates that enabling diffuse map refine-
+ment allows our method to correct lighting artifacts and
+better harmonize the entire PBR material set, highlighting
+the potential of our approach as a versatile enhancement
+module for various texture generation pipelines.
+How does environment lighting affect results? Among
+recent works, Paint-it is the most similar to ours, as it also re-
+FID
+KID
+Runtime
+(↓)
+(×10−3, ↓)
+(seconds, ↓)
+CasTex (DIP, XL)
+23.2
+4.6
+229
+CasTex (XL)
+22.8
+4.4
+174
+CasTex (DIP, XL+L)
+21
+3.8
+862
+CasTex (XL+L)
+20.5
+3.1
+710
+Table 5. Deep Image Prior ablation. Even though DIP plays a
+crucial role in texture synthesis with latent diffusion models, for the
+cascaded diffusion models the induced regularization is obsolete
+and slightly reduces the resulting scores. Also DIP-based variants
+are more time-consuming, while all experiments generate textures
+at 1024×1024 resolution.
+lies solely on SDS-based optimization. Unlike our approach,
+their rendering algorithm uses a brighter, uniform lighting
+environment map, whereas our setup combines a pronounced
+light source and a weaker ambient lighting component.
+To understand the effect of environment lighting on SDS-
+based optimization, we evaluate both Paint-it’s lighting setup
+and our alternative configuration. As shown in Table 5,
+Paint-it achieves better results when using our lighting setup,
+slightly improving its FID and KID. Similarly, our methods
+performance degrades with Paint-it’s environment lighting.
+We hypothesize that, unlike uniform lighting, a single pro-
+nounce light source allows to highlight specular components
+of the PBR texture during training. The hypothesis and the
+above observations agree with the results from [13].
+DIP versus explicit parameterization. Following the ap-
+proach of our closest competitor, Paint-it, we integrate Deep
+Image Prior (DIP) [38] into our method and evaluate its im-
+pact on texture optimization (see Section 4.1 for details). As
+shown in Table 5, our DIP-based variant achieves results
+comparable to our standard explicit parameterization ap-
+proach but performs slightly worse in both FID and KID
+metrics while being significantly slower.
+Since explicit
+parameterization already delivers strong results and works
+faster, the added complexity of DIP does not offer a clear
+advantage in our framework.
+6. Conclusion
+In this work, we proposed an optimization-based texture
+synthesis approach based on cascaded diffusion models. We
+motivated the design with an analysis indicating the limita-
+tions of latent diffusion models. Our method improves upon
+recent optimization-based texture synthesis approaches in
+terms of automated metrics and user study. Even though our
+model benefits from using physically-based textures, we still
+observed baked-in lighting and occasional inconsistencies
+between a texture and the corresponding model geometry.
+Future work may address the baked-in lighting artifacts of

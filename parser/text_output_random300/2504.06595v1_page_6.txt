@@ -1,0 +1,125 @@
+6
+Unit cell
+Head-on
+Single coupling
+...
+...
+...
+...
+50 x 50 x 50 lattice
+(periodic boundary)
+FIG. 2. Schematic of the transport model. In a cubic lattice
+of 50×50×50 masses with periodic boundary conditions, the
+mobile particle interacts via a head-on collision with a single
+mass (shown here as part of a unit cell). We numerically solve
+for the motion of the mobile particle and the single mass, and
+use these trajectories to validate the time-local equation.
+the pairwise term,
+we use the simplest physically-
+motivated form: a screened Coulomb interaction U(x) =
+U0 exp(−|x|/λ)/|x| that gives the correct diverging be-
+havior as the separation goes to zero. In ab initio NEB
+calculations using periodic boundary conditions, the in-
+teraction between image charges becomes negligible with
+supercells larger than a few unit cells in each direc-
+tion.
+This observation indicates that a realistic inter-
+action must be screened on a comparable length scale—
+unscreened Coulomb interactions are too long-range.
+IV.
+TIME-LOCALITY VALIDATION
+Once we derived the approximate time-local solution
+for r [Eq. (16)], we wanted to test how reasonable its pre-
+dictions were. To this end, we considered a cubic system
+described in Sec. III composed of 50 × 50 × 50 masses
+with periodic boundary conditions and rH = ˙rH = 0.
+With the framework at rest and undeformed, the mo-
+bile particle was launched towards one of the framework
+masses along one of the edges of a cubic unit cell, set to
+interact only with its target framework mass, as shown in
+Fig. 2. We then evolved the system using the full set of
+equations of motion (full EOM) in Eqs. (2) and (3) using
+the fifth order Runge-Kutta method, recording the po-
+sitions and velocities of the particle and the interacting
+mass. To assess the validity of the time-local approxi-
+mation, we compare the “full EOM” trajectory r (the
+left-hand side of Eq. (16)) to the “time-local” trajectory:
+the right-hand side of Eq. (16) calculated by inserting the
+“full EOM” r and R.
+When we restrict our attention to a single framework
+mass, Eq. (16) simplifies dramatically. In fact, because
+L and
+↔
+W 0(0) are diagonal and the particle moves along
+a high-symmetry direction, we need to consider only a
+single component of the displacement vector, leading to
+r = −wU ′(r −R) + lU ′′(r −R)
+
+˙r −˙R
+
+,
+(25)
+where w and l are the diagonal elements of
+↔
+W 0(0) and
+L, respectively.
+As a benchmark for the time-local approximation, we
+numerically calculated “full EOM” trajectories for sev-
+eral parameter values.
+For those parameters where a
+clear scale exists in common materials, we chose a rep-
+resentative value, while for other parameters, we chose
+multiple values to illustrate deviations from the “full
+EOM” solutions.
+We used an interaction amplitude
+U0 = 14000 meV, corresponding the mobile and frame-
+work ions carrying charges of about 1e. For the screen-
+ing length, we used one of two values:
+λ = 1/5 ˚A
+or λ = 1/2 ˚A so that U(a) ≈1.4 × 10−3 meV or
+U(a) ≈11.6 meV, respectively. We also checked the po-
+tential energy difference between two mobile particle po-
+sitions: in the middle of the unit cell and in the middle of
+one of the faces. This difference gave a rough estimate of
+the potential barrier that the particle needs to overcome
+to move from one unit cell to another. For λ = 1/5 ˚A,
+∆U ≈0.654 meV −0.098 meV = 0.556 meV and for
+λ = 1/2 ˚A, ∆U ≈401.4 meV −242.1 meV = 159.3 meV.
+The latter energy barrier is similar to typical values found
+in ionic conductors, so λ = 1/2 ˚A represents a typical ma-
+terial, while the former barrier is unrealistically low, so
+λ = 1/5 ˚A represents a pathological extreme.
+We set the starting speed of the mobile particle to ei-
+ther 2 ˚A/ps or 10 ˚A/ps, giving a total of four simulation
+runs. For each run, the particle was initialized 24λ away
+from the interacting mass. The resulting trajectories of
+the interacting mass obtained from the “full EOM” solu-
+tion are shown in Fig. 3(a)–(d) as the light blue curves.
+In these trajectories, we see two primary trends. First,
+for the same interaction profile, faster-moving particles
+produce a larger maximum deflection, as expected. On
+the other hand, at a given initial speed, the maximum
+deflection decreases with increasing interaction width.
+Physically, for a very narrow potential, the mobile par-
+ticle delivers an impulse to the framework mass and
+bounces off before the rest of the framework has time to
+respond. Consequently, during the brief time period of
+contact between the two objects, the framework mass be-
+haves like a free mass. Conversely, if the potential is very
+wide, the particle exerts a smaller force on the framework
+mass over a longer period of time, allowing the neighbor-
+ing framework masses to respond and provide a restoring
+force. This result is consistent with Eq. (25), where a
+wider potential corresponds to a smaller derivative of U,
+decreasing the magnitude of r.
+After computing the positions and velocities of the par-
+ticle and the framework mass, we insert them into the
+right-hand side of Eq. (25) and plot the resultant “time-
+local” solutions r, shown as green curves, along with the
+“full EOM” results.
+Naturally, because the time-local
+formula predicts a deflection only when the mobile par-
+ticle exerts force on the mass, the curve does not exhibit
+the oscillations observed in the full solution. Except for
+the most pathological case, in Fig. 3(a), both the magni-
+tude of the deflection and its time dependence are similar

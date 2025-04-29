@@ -1,0 +1,32 @@
+Springer Nature 2021 LATEX template
+Human Activity Recognition using RGB-Event based Sensors
+11
+Fig. 2 An overview of our proposed MMHCO-HAR framework for RGB-Event based
+human activity recognition (HAR). A multi-modal visual heat conduction model is intro-
+duced to effectively integrate data from both RGB and event modalities to achieve robust
+HAR. Specifically, we propose modality-specific continuous Frequency Value Embeddings
+to capture the unique characteristics of each modality and enhance information interaction
+between multi-modal heat conduction blocks. Additionally, we introduce a policy routing
+based fusion method to adaptively fuse multi-modal information, ensuring optimized per-
+formance across diverse scenarios.
+X′′
+E = Linear(X′
+E ∗SiLU(Linear(ZE))),
+X′
+E = LN(MMHCO(XE)),
+(5)
+where XE denotes the event feature after the first linear layer and preparing
+to input a multi-modal HCO layer like XR. The MMHCO block is visualized
+in the bottom right corner of Fig. 2.
+After the processing of the depth-wise convolutional layer and linear layer,
+we can obtain the input XR of RGB modality and XE of event modality,
+respectively. Particularly, DCT2D and IDCT2D are the core operations of the
+MMHCO layer. The multi-modal features are passed through the DCT2D to
+output features in the frequency domain. Physically, the thermal diffusivity
+of different materials is different. Therefore, we design modality-specific Fre-
+quency Value Embeddings (FVEs) to predict the different thermal diffusivity
+k. Subsequently, the RGB and event features in the frequency domain will be
+multiplied by the coefficient decay matrix e−k(ω2
+x+ω2
+y)t respectively, and then
+the frequency domain features will be converted back to the time domain

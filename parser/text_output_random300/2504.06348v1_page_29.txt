@@ -1,0 +1,83 @@
+where |0⊥⟩is an unnormalized state orthogonal to the projection onto the zero state of the first qubit. The
+rescaling factor is λs
+det = P
+α |cs
+α(Rs,0)| and the state can be amplified to near unity. Since there are usually
+only a few non-zeros coefficients, this rescaling is fairly benign in practical settings (λs
+det ≤√ndet in the
+worst case) and the number of amplitude amplification rounds, which scales as O(λdet), is limited. A final
+quantum Fourier transform (QFT) can be used to move to the plane-wave basis.
+Pseudoion coordinate transformation
+Defining the full set of pseuodion normal coordinates Ξs = (Rs
+CoM, Ss, qs) for a species s and the function
+f(Ξs, ls) = ftrans(Rs
+CoM)frot(αs, cos βs, γs)fvib(qs, ls),
+(76)
+for ease, we have so far constructed the initial state (suppressing the species superscript),
+|ΨPI
+0 ⟩=
+X
+Ξ,l
+f(Ξ, l)|Ξ⟩|l⟩.
+We must transform from the normal mode basis |Ξ⟩to the plane-wave basis |P⟩= |P1, ..., Pηs
+ion⟩. Denoting
+the inverse Fourier transform of the plane wave basis (for pseudoions) as |R⟩= |R1, ..., Rηs
+ion⟩, we use a sparse
+oracle Ocoord that provides an injective map Ξ →R via Ocoord|Ξ⟩= |R⟩, constructed from a classically-
+computed table that utilizes a grid matching description (see Sec. 4.4.2). This requires data loading with
+a cost O(ηs
+ion|G|) in the worst case. By an argument similar to the one made for electrons, this cost is a
+subleading contribution in the overall cost of the algorithm. Performing the coordinate change, we obtain
+(Ocoord ⊗I)
+X
+Ξ,l
+f(Ξ, l)|Ξ⟩|l⟩=
+X
+Ξ,l
+f(Ξ(R), l)|R(Ξ)⟩|l⟩≡
+X
+R,l
+˜f(R, l)|R⟩|l⟩
+where ˜f(R, l) := f(Ξ(R), l). We then perform a Quantum Fourier Transform to move to the plane-wave
+basis |P⟩,
+|ΨPI
+0 ⟩=
+X
+P,l
+f0(P, l)|P⟩|l⟩,
+where f0 and ˜f are related by Fourier transform. This completes the construction of the approximate initial
+state in the desired basis as needed for time-evolution.
+4.4.2
+Classical precomputations
+We describe the classical pre-processing that must be performed in order to provide the requisite information
+to construct the initial state.
+Potential Energy Surface analysis and shape coordinates
+We first find an appropriate minimum of the ground-state potential energy surface (PES) for fixed s, Es(Rs),
+where Rs = {RI}I∈Is represents configurations of the chemical species described under the BO approxi-
+mation Eq. (50). This can be accomplished, for example, by constructing the appropriate electronic energy
+gradients by repeatedly computing approximate electronic energies for fixed pseudoion positions with a con-
+ventional method such as DFT, and using gradient descent or other standard optimization techniques to find
+a minimum Rs,0 = {Rs,0
+I }I∈Is. Expanding the PES to second order around the equilibrium configuration
+(the minimum),
+Es(Rs) ≈Es(Rs,0) + 1
+2
+3ηs
+ion
+X
+j,j′=1
+(Rs
+j −Rs,0
+j )∂2Es(Rs)
+∂Rs
+j∂Rs
+j′
+|
+{z
+}
+Fs
+jj′
+|Rs=Rs,0(Rs
+j′ −Rs,0
+j′ ),
+29

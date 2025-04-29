@@ -1,0 +1,66 @@
+4 
+where 𝛼𝛼𝑗𝑗
+2 = ൫𝐷𝐷𝑗𝑗𝑠𝑠2 + 𝜇𝜇𝑎𝑎,𝑗𝑗+ 2𝑣𝑣𝜇𝜇𝑠𝑠,𝑗𝑗
+′ 𝑘𝑘0
+2𝐷𝐷𝑏𝑏,𝑗𝑗൯/𝐷𝐷𝑗𝑗, 𝑣𝑣 is the light speed, 𝑧𝑧𝑏𝑏= 2𝐷𝐷1(1 + Reff)/(1 −
+Reff). The Fourier inversion of Eq. (3) is 
+𝐺𝐺1
+1(𝜌𝜌, 𝑧𝑧, 𝜏𝜏) = 1
+2𝜋𝜋න𝐺𝐺෨1,1(𝑠𝑠, 𝑧𝑧, 𝜏𝜏)𝑠𝑠𝐽𝐽0(𝑠𝑠𝑠𝑠)d𝑠𝑠
+∞
+0
+,
+(4) 
+where 𝐽𝐽0 is the zeroth order Bessel function of the first kind10,36. 
+The normalized electric field temporal ACF, 𝑔𝑔1(𝜏𝜏), is related to the normalized light intensity 
+ACF, 𝑔𝑔2(𝜏𝜏), through the Siegert equation37: 
+𝑔𝑔2(𝜏𝜏) = 1 + 𝛽𝛽|𝑔𝑔1(𝜏𝜏)|2,
+(5) 
+where 𝛽𝛽 depends on the laser stability, coherence length, and the number of speckles detected34. 
+The experimentally measured light intensity ACF can be calculated as: 
+𝑔𝑔2(𝜏𝜏) = 〈𝐼𝐼(𝑡𝑡)𝐼𝐼(𝑡𝑡+ 𝜏𝜏)〉
+〈𝐼𝐼(𝑡𝑡)〉2
+,
+(6) 
+where 〈… 〉 denotes the average over the integration time 𝑇𝑇𝑖𝑖𝑖𝑖𝑖𝑖, and 𝐼𝐼(𝑡𝑡) is the measured light 
+intensity fluctuation. By fitting the measured light intensity ACF to the analytical solution, the BFi 
+(𝛼𝛼𝐷𝐷𝑏𝑏) can be extracted. 
+2.2 Training dataset preparation 
+The clean training dataset was generated using the two-layer DCS analytical model. Based on 
+previous studies10,38, we varied only the dominant parameters of the model. Specifically, we varied 
+the brain 𝜇𝜇𝑎𝑎 and 𝜇𝜇𝑠𝑠
+′, the extracerebral layer thickness, and the extracerebral layer 𝐷𝐷𝑏𝑏 (𝐷𝐷𝑏𝑏_𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒) and 
+brain 𝐷𝐷𝑏𝑏 (𝐷𝐷𝑏𝑏_𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏), while keeping other parameters constant. The brain 𝜇𝜇𝑎𝑎 varied linearly from 
+0.005 to 0.025 mm-1 with a step size of 0.005 mm-1, and the brain 𝜇𝜇𝑠𝑠
+′ varied from 0.9 to 1.3 mm-1 
+(the step size: 0.1 mm-1). The extracerebral layer thickness varied from 8 to 15 mm (the step size: 
+1 mm). 𝐷𝐷𝑏𝑏_𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏 varied linearly from 5×10-7 to 5×10-5 mm2/s with a step of 5×10-7 mm2/s (100 
+steps). Each 𝐷𝐷𝑏𝑏_𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏 corresponded to 20 steps of 𝐷𝐷𝑏𝑏_𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒𝑒 , with the extracerebral-to-brain 𝐷𝐷𝑏𝑏 
+fraction ranging from 0.05 to 0.3. This relationship was estimated from previous reports39,40. In 
+total, we simulated 400,000 clean 𝑔𝑔2 data (5×5×8×100×20). The 𝐷𝐷𝑏𝑏, physiological and optical 
+properties for the two-layer analytical model were adopted from previous studies10,14,38,39,41–43, to 
+ensure a thorough coverage of relevant ranges. 𝜌𝜌 was fixed at 35 mm, 𝛽𝛽 was assumed to be 0.5, 
+and the lag time 𝜏𝜏 ranged from 1.28 to 39.68 µs (step size: 1.28 µs) to align with the hardware 
+settings (see Sec. 2.3). We fixed 𝛽𝛽 as a constant because scaling the 𝑔𝑔2 curve to the same range 
+will eliminate the influence of 𝛽𝛽 variance at a given flow rate. As a result, it is unnecessary to vary 
+𝛽𝛽 to account for potential hardware instability (see Sec. 2.3 for details). The parameter 
+configurations are summarized in Table 1. 
+Table 1 Simulation parameters for the two-layer analytical model. 
+Tissue type 
+𝝁𝝁𝒂𝒂 (mm-1) 
+𝝁𝝁𝒔𝒔
+′ (mm-1) 
+Tissue thickness 
+(mm) 
+𝑫𝑫𝒃𝒃 (mm2/s) 
+Extracerebral layer 
+0.019 
+0.86 
+(8, 15) 
+(0.05, 0.3) × 𝐷𝐷𝑏𝑏_𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏𝑏 
+Brain 
+(0.005, 0.025) 
+(0.9, 1.3) 
+∞ 
+(5×10-7, 5×10-5) 
+ 

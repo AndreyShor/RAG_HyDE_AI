@@ -1,0 +1,118 @@
+6
+coded input, in addition to one-hot encoded information
+about the sample ID in step 1 and topology ID in step 2
+like what was provided in the other OmniFold methods.
+The use of IBU-UniFold allows us to have a background
+treatment equivalent to what is used in the OmniFold
+methods, which makes direct comparison of the perfor-
+mance between methods more straightforward. This is
+in contrast with the background subtraction techniques
+typically used for IBU, which are different enough that
+the results and uncertainties are complicated to compare
+against those from OmniFold.
+As an additional benchmark, we also run a binned vari-
+ation that we call Binned UniFold. This differs from IBU-
+UniFold only in that we provide the bin information via
+the value of the bin center in the corresponding kinematic
+phase space instead of as one-hot encoded bin indices. In
+principle, there is no change in the amount of provided
+information between the Binned UniFold setup and the
+IBU-UniFold setup. However, providing bin centers re-
+sults in the classifier needing to smoothly interpolate be-
+tween adjacent bins in the phase space, which can make
+training more difficult compared to the one-hot encoded
+case.
+Background subtraction and efficiency corrections
+do not require explicit treatment with the OmniFold
+method. Instead, these are implicitly [22] applied when
+we obtain the reweighted generator events, which can
+be individually identified as being signal or background
+and passing selection cuts or not. Different options are
+available for technical details of how to handle selection
+cuts during the OmniFold procedure, the impact of which
+we discuss further in Sec. V. For evaluation of the per-
+formance, all results are converted into differential cross
+sections using the same bins.
+We run 50 iterations of each of the unfolding proce-
+dures, so that their convergence rates can be compared
+and a smaller cutoff on the number of iterations can be
+imposed later to serve as the regularized final result. In
+order to mitigate uncertainties from the stochastic nature
+of the neural network training process, we run 5 trials of
+each OmniFold procedure using different random train-
+ing/test splits of the events shown to the neural network
+each time.
+The reweighting factors from the resulting
+networks are then averaged to obtain the unfolded re-
+sult.
+V.
+PERFORMANCE AND RESULTS
+A.
+Convergence Criteria
+To evaluate performance, we calculate the CC0π (sig-
+nal) differential cross sections in the chosen kinematic
+bins. For the single transverse variables, we impose an
+additional requirement that the proton have a minimum
+momentum of 450 MeV at truth level, which is roughly
+the proton reconstruction threshold in the ND280 detec-
+tor [6]. We calculate a metric χ2 = (⃗µ −⃗x)⊺Σ−1(⃗µ −⃗x)
+for each of the binned differential cross sections in truth
+space, using the unfolded result obtained from each of
+the methods.
+The vectors ⃗µ are the mean binned re-
+sults for the observable in question over the 500 simu-
+lated pseudo-experiments with the previously described
+systematic and statistical variations, and the covariance
+matrix Σ is obtained from the spread of results over those
+same pseudo-experiments. The vectors ⃗x are the truth-
+level differential cross sections for the data that we have
+created as the unfolding target.
+The χ2 comparison of the OmniFold results against the
+truth-level data as a function of number of iterations of
+the unfolding procedure is shown in Fig. 4. For the pur-
+poses of this study where we wish to compare the bias
+and uncertainties between methods, we choose an itera-
+tion number at which the χ2 curve has flattened out to be
+considered the converged result, leaning towards a larger
+number of iterations to minimize bias. We choose a cutoff
+of 20 iterations for IBU-UniFold and 45 iterations for the
+OmniFold methods. However, this is not a feasible ap-
+proach for a real data analysis, since it relies on knowing
+the truth-level target distribution. Furthermore, it relies
+on having a particular binning in mind already, which is
+potentially at odds with the general promise of the Omni-
+Fold method allowing for unbinned unfolding of multiple
+observables simultaneously.
+As one possibility for an unbinned convergence crite-
+rion, we note that the OmniFold method functions by
+reweighting each individual event after each iteration.
+When the result is converged, running further iterations
+should only result in random jitter of the event weights
+instead of any significant changes. We propose consider-
+ing the weight change per event averaged over the last N
+iterations, for some choice of N. As the result converges,
+the distribution of these weight changes should approach
+a Gaussian centered at 0 with some characteristic width
+determined by the problem. A sample of how these dis-
+tributions look for N = 5 in our dataset is shown in
+Fig. 5. While here we have not imposed a quantitative
+metric for convergence from these distributions, qualita-
+tively, it is clear that the distributions at larger numbers
+of iterations are closer to the expected distribution of
+a converged result than the ones at smaller numbers of
+iterations.
+One more issue that impacts the convergence rate is
+the question of efficiency treatment with the OmniFold
+method, which is worth explicit discussion.
+Broadly
+speaking, there are two options: including efficiency ef-
+fects during unfolding or applying them afterwards. In
+the first case, we would include truth events that have no
+reconstructed counterpart during the step 2 reweighting
+of OmniFold, simply applying either a pull weight of 1
+or some other average weight for those events. In the
+second case, we would exclude these truth events with
+failed reconstructions from the iterative procedure com-
+pletely, but reintroduce them when evaluating the final
+result. In this case, they would receive a reweighting fac-
+tor that is an extrapolation by the classifier trained from

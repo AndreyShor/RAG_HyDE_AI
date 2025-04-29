@@ -1,0 +1,129 @@
+Physics-informed KAN PointNet
+0
+500
+1000
+1500
+2000
+2500
+Epoch
+10
+3
+10
+2
+10
+1
+Loss
+Physics-informed PointNet with KAN
+Physics-informed PointNet with MLP
+3
+2
+1
+0
+1
+2
+3
+ (rad)
+0.93
+0.94
+0.95
+0.96
+0.97
+0.98
+0.99
+1.00
+1.01
+Temperature (K)
+Physics-informed PointNet with KAN
+Physics-informed PointNet with MLP
+Ground Truth
+Figure 9: Comparison of loss evolution (left) and temperature distribution prediction along the cylinder surface for the
+octagon with Ω = 31◦(right) between the physics-informed PointNet with KAN and the physics-informed PointNet with
+MLP. In physics-informed PointNet with KAN, the Jacobi polynomial degree is set to 2, with 𝛼= 𝛽= −0.5 and 𝑛𝑠= 0.5. In
+physics-informed PointNet with MLP, 𝑛𝑠= 0.85. The angle 𝜃is defined with reference to the positive 𝑥-axis and increases
+counterclockwise (or decreases clockwise). See Table 1 and the text for the definition of Ω.
+global 
+feature
+Shared KAN (𝑛𝑠× 128)
+Shared KAN (𝑛𝑠× 1024)
+shared
+shared
+Shared KAN (𝑛𝑠× 128, 𝑛PDE)
+𝑛𝑠× 1024
+Input
+shared
+𝑁× 2
+𝑁× 𝑛𝑠× 128
+𝑁× 𝑛𝑠× 1024
+𝑁× 𝑛PDE
+Output
+𝑁× 𝑛𝑠× 1152
+Max pool
+𝒙1
+𝒙2
+.
+.
+.
+.
+𝒙𝑁
+⋯
+𝑋1
+𝑋2
+𝑋𝑚
+Spatial coordinates
+ of 𝑚 geometries
+𝛿
+𝛿𝑥
+𝛿
+𝛿𝑦
+𝛿
+𝛿𝑥
+𝛿
+𝛿𝑥
+𝛿
+𝛿𝑦
+𝛿
+𝛿𝑦
+Automatic
+differentiation
+Physics-informed
+ loss function
+𝒙1
+𝒙2
+.
+.
+.
+.
+𝒙𝑁
+𝒙1
+𝒙2
+.
+.
+.
+.
+𝒙𝑁
+Figure 10: Architecture of the lightweight PI-KAN-PointNet. In this study, we set 𝑛𝑠= 1. Other components are defined
+similarly to the caption of Fig. 1.
+network (see Fig. 1 of Ref. [65]) compared to PointNet with shared MLPs (see Fig. 2 and Fig. 9 of Ref. [41]). More
+specifically, Kashefi [65] showed that using just two layers of shared KANs in the encoder and a single layer of shared
+KAN in the decoder is sufficient for the part segmentation task of three-dimensional point sets. This finding motivates us
+to investigate whether a shallower and more lightweight PI-KAN-PointNet can achieve comparable accuracy. However,
+the answer to this question likely depends on the dataset size. Intuitively, deeper neural networks may be necessary for
+large datasets. Nevertheless, we first aim to answer this question in the context of the current dataset. To this end, we
+consider an alternative architecture of PI-KAN-PointNet, which is shown in Fig. 10. Specifically, we use shared KAN
+layers with Chebyshev polynomials of degree 2, defined by 𝛼= 𝛽= −0.5, and set 𝑛𝑠= 1. As illustrated in Fig. 10, the
+input first passes through a shared KAN layer, converting it into an intermediate feature space of size 128. These local
+features are then processed by a second shared KAN layer, expanding them into a higher-dimensional space of size
+1024. A max pooling operation extracts a global feature representing the entire point cloud, which is then expanded to
+match the number of points. The final combined feature, comprising local features of size 128 and a global feature of
+size 1024, undergoes another shared KAN layer to reduce the feature size to 128. A final shared KAN layer predicts
+the velocity, pressure, and temperature fields. Batch normalization is applied after each KAN layer, except for the last
+one.
+The results indicate that the average relative pointwise error (𝐿2 norm) for the 𝑢-component of velocity is
+1.23189E−1, while for the 𝑣-component, it is 9.09591E−2. The pressure field exhibits an average relative error of
+2.96761E−2, and the temperature field achieves an average relative error of 2.51027E−2. Additionally, the temperature
+error measured specifically on the surface of the inner cylinder is 1.81828E−2. The minimum loss achieved is
+6.80781E−4, and the training time per epoch is 7.6 s. Compared to the performance of full PI-KAN-PointNet presented
+in Table 1, although the computational cost per epoch for the lightweight PI-KAN-PointNet is significantly lower, as
+expected, the minimum loss—and consequently, the error in predicting the desired fields—increases. This effect is
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 17 of 25

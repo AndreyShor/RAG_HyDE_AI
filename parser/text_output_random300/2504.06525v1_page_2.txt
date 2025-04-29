@@ -1,0 +1,40 @@
+I. 
+Introduction 
+ 
+Automated scientific discovery is rapidly emerging as a transformative research paradigm, 
+reshaping experimental methodologies through the integration of automated instrumentation, AI-
+driven decision-making, and multi-tool workflows [1, 2]. This evolution ranges from the 
+automation of individual scientific instruments [3-5] to the full-scale integration of experimental 
+platforms within self-driving laboratories [6-17]. By enabling autonomous hypothesis testing, 
+adaptive experimentation, and real-time optimization, these systems have the potential to 
+significantly accelerate discoveries across various scientific domains [18-21]. 
+A fundamental requirement for active discovery workflows is the definition of optimization 
+targets or reward functions that drive the iterative learning process [18]. These reward functions 
+form the foundation of autonomous workflows, guiding experimental decisions and facilitating 
+interoperability among multiple tools in complex research environments. Designing effective 
+reward functions is particularly critical in applications that involve multi-objective trade-offs, such 
+as materials synthesis [7, 14, 18, 22, 23], high-throughput screening [24], and imaging [5, 25]. 
+However, in many cases, reward functions are inherently uncertain or probabilistic. For 
+instance, in thin-film growth, Raman line intensities may be converted into a scoring metric [26]. 
+In automated experimentation involving scanning probe microscopy (SPM) and scanning 
+transmission electron microscopy, uncertainty is introduced through complex measurement 
+processes [27-32]. In most cases, rather than using a single reward function to define the desired 
+experimental outcome, multiple rewards provide a more natural and intuitive framework for 
+human operators. Typically, each reward function captures a distinct aspect of the desired result, 
+making multi-objective optimization particularly valuable for complex, expensive black-box 
+optimization problems. These problems arise in diverse fields, including scientific experimentation 
+[33], materials discovery [15, 34], and hyperparameter tuning in machine learning [35-37].  
+Multi-Objective Bayesian Optimization (MOBO) provides an effective approach to 
+optimizing multiple, potentially conflicting objectives while efficiently navigating the parameter 
+space. It leverages Gaussian processes (GP) to model both the mean and uncertainty of expensive 
+objective functions. An acquisition function is then used to balance exploration and exploitation, 
+guiding the selection of subsequent experimental parameters to maximize overall performance. 
+Rather than identifying a single optimal solution, MOBO seeks to determine a set of trade-
+off solutions, forming a Pareto front [35, 36, 38]. On Pareto front, no solution can be improved in 
+one objective without incurring a cost in another. When two reward functions have overlapping 
+optimal parameter regions, as illustrated in Figure 1a-b, their Pareto front collapses to a single 
+point in parameter space, resulting in a trivial Pareto solution as shown in Figure 1e. Conversely, 
+if the optimal parameters for two rewards differ, trade-offs become necessary, leading to a non-
+trivial Pareto front, as depicted in Figure 1f-g. Notably, even if two rewards share an overlapping 
+optimal solution, introducing a third reward with distinct optimal parameters necessitates trade-
+offs among all three rewards in the joint Pareto front. 

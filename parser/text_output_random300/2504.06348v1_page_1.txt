@@ -1,0 +1,59 @@
+A comprehensive framework to simulate real-time chemical
+dynamics on a fault-tolerant quantum computer
+Felipe H. da Jornada1, Matteo Lostaglio2, Sam Pallister2, Burak Şahinoğlu2, and Karthik I.
+Seetharam∗2
+1Department of Materials Science and Engineering, Stanford University, Stanford, CA
+94305, USA
+2PsiQuantum, 700 Hansen Way, Palo Alto, CA 94304
+April 10, 2025
+Abstract
+We present a comprehensive end-to-end framework for simulating the real-time dynamics of chemical
+systems on a fault-tolerant quantum computer, incorporating both electronic and nuclear quantum de-
+grees of freedom. An all-particle simulation is nominally efficient on a quantum computer, but practically
+infeasible. Hence, central to our approach is the construction of a first-quantized plane-wave algorithm
+making use of pseudoions.
+The latter consolidate chemically inactive electrons and the nucleus into
+a single effective dynamical ionic entity, extending the well-established concept of pseudopotentials in
+quantum chemistry to a two-body interaction. We explicitly describe efficient quantum circuits for initial
+state preparation across all degrees of freedom, as well as for block-encoding the Hamiltonian describing
+interacting pseudoions and chemically active electrons, by leveraging recent advances in quantum rejec-
+tion sampling to optimize the implementations. To extract useful chemical information, we first design
+molecular fingerprints by combining density-functional calculations with machine learning techniques,
+and subsequently validate them through surrogate classical molecular dynamics simulations. These fin-
+gerprints are then coherently encoded on a quantum computer for efficient molecular identification via
+amplitude estimation. We provide an extensive analysis of the cost of running the algorithm on a fault-
+tolerant quantum computer for several chemically interesting systems. As an illustration, simulating
+the interaction between NH3 and BF3 (a 40-particle system) requires 808 logical qubits to encode the
+problem, and approximately 1011 Toffoli gates per femtosecond of time evolution. Our results establish
+a foundation for further quantum algorithm development targeting chemical and material dynamics.
+Contents
+I - Framework
+2
+1
+Introduction
+2
+1.1
+Modeling catalysis on a classical computer . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+2
+1.2
+Quantum computing for chemical dynamics . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+2
+Designing in-silico quantum dynamical simulation of chemical reactions
+7
+2.1
+Dynamical degrees of freedom and pseudoions . . . . . . . . . . . . . . . . . . . . . . . . . . .
+7
+2.2
+Physically salient and algorithmically efficient quantum state preparations . . . . . . . . . . .
+10
+2.3
+Chemical species identification
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+12
+2.4
+Results for a sequence of increasingly challenging applications . . . . . . . . . . . . . . . . . .
+14
+∗Lead author, karthik@psiquantum.com
+1
+arXiv:2504.06348v1  [quant-ph]  8 Apr 2025

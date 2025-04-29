@@ -1,0 +1,21 @@
+(a) HOSVD
+(b) SVD
+u
+u
+u
+Figure 13: Comparison of the predicted temporal evolution of streamwise velocity com-
+ponents for (a) HOSVD (left column) and (b) SVD (right column) across different LSTM
+architectures. From top to bottom: LSTM 1 Dense, LSTM 2 dense, and LSTM Time-
+Distributed.
+ground truth. The differences between HOSVD and SVD are minimal, with both methods
+achieving a high degree of temporal accuracy across all architectures.
+In terms of the LSTM architectures themselves, all three configurations—1 dense, 2
+dense, and time-distributed perform robustly, demonstrating their ability to accurately
+capture the flow dynamics when paired with robust dimensionality reduction techniques.
+The results emphasize that even relatively simple architectures, when optimized with ap-
+propriate hyperparameters such as learning rate, batch size, and sequence length, can
+achieve competitive results. This finding highlights the importance of proper parameter
+selection and demonstrates that increasing model complexity does not always yield sig-
+nificant improvements, especially when a simpler network can already provide sufficient
+predictive accuracy.
+28

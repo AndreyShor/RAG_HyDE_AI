@@ -1,0 +1,124 @@
+2
+from the density matrices of the final state. Thereby, we
+derive and present local approximations (locally constant
+field (LCFA) and locally monochromatic (LMA)) of the
+density matrix that can be employed in numerical simula-
+tions and benchmark these approximations against direct
+evaluation of full QED result in a plane wave pulse back-
+ground. We consider mono-energetic photons as well as a
+two-stage scenario where photons are produced via non-
+linear Compton scattering before colliding with a second
+laser pulse to create pairs.
+The paper is organised as follows. In Sec. 2, the the-
+oretical model is presented and information on the local
+approximation is given. In Sec. 3 the numerical results
+for the mono-energetic (Sec 3.1) and the two-stage set-
+up (Sec 3.2) are presented and discussed. The paper is
+concluded in Sec. 4. Appendix A gives technical details
+of the spin quantisation used, and Appendix B gives fur-
+ther details about calculation of the spectrum from the
+Compton photon source.
+II.
+THEORETICAL MODEL
+In the NBW process, a photon in the initial state is
+converted to an electron and a positron in the final state.
+We represent this with state vectors:
+|in⟩= |γ; ℓ, ε⟩;
+|out⟩=
+ [e
+−; p, σ] , [e
++; q, ς]
+E
+,
+where a photon with momentum ℓand polarisation ε is
+converted to a spin-entangled two-particle state compris-
+ing an electron with momentum p and spin state σ and a
+positron with momentum q and spin state ς as depicted
+in Fig. 1. The in and out states are related via the scat-
+Figure 1. The nonlinear Breit-Wheeler process with momen-
+tum and polarisation labels of each particle. The double solid
+lines represent fermionic Volkov states and the interlinked cir-
+cles denote the emitted particles are entangled.
+tering operator, ˆS:
+|out⟩= ˆS |in⟩.
+To investigate the spin entanglement between the elec-
+tron and positron, we formulate the spin correlation den-
+sity matrix, ρb = |out⟩⟨out| by tracing out their momen-
+tum states:
+ρb = 1
+Pb
+Z V d3p
+(2π)3
+V d3q
+(2π)3
+
+⟨e−; p, +|
+⟨e−; p, −|
+
+⊗
+
+⟨e+; q, +|
+⟨e+; q, −|
+
+ˆS|γ; ℓ, ε⟩⟨γ; ℓ, ε| ˆS†
+|e−; p, +⟩|e−; p, −⟩
+⊗
+|e+; q, +⟩|e+; q, −⟩
+(1)
+normalised with the total probability Pb
+Pb =
+X
+σ,ς=±
+Z V d3p
+(2π)3
+V d3q
+(2π)3
+ (⟨e
+−; p, σ| ⊗⟨e
++; q, ς|) ˆS |γ; ℓ, ε⟩
+
+2
+,
+(2)
+so that Tr(ρb) = 1. The 4 × 4 density matrix ρb con-
+tains the full information of the paired particles’ spin
+states.
+By partially tracing over the spin freedom of
+the positron (electron), the spin density matrix of elec-
+tron (positron) can be acquired as ρ−= Trς(ρb,σ,ς;σ′,ς)
+(ρ+ = Trσ(ρb,σ,ς;σ,ς′)) [63].
+It is a principle feature of
+entanglement that the full denstiy matrix ρb cannot in
+general be factorised into a direct product ρ+ ⊗ρ−of
+density matrices of each independent particle. Further-
+more, we emphasise that the selection of spin quantum
+axis is arbitrary and whilst it can change the expression
+for the components of the density matrix, it cannot affect
+the prediction of any physical results (see the discussion
+in Appendix. A).
+The degree of the spin entanglement can be assessed by
+calculating an entanglement witness; in this work we use
+the concurrence, C, for this purpose. The concurrence
+can be written [27, 64]:
+C = max(0, √e1 −√e2 −√e3 −√e4)
+(3)
+where ej for j ∈{1, 2, 3, 4} are the eigenvalues, ranked in
+order of decreasing magnitude, of the auxiliary matrix
+R = ρb (σ2 ⊗σ2) ρ∗
+b (σ2 ⊗σ2) ,
+(4)
+with ρ∗
+b a matrix having entries equal to the complex
+conjugate of the corresponding entries in ρb and σ2 is the
+second Pauli matrix. The concurrence satisfies 0 ≤C ≤
+1: if C = 1, the quantum state is maximally entangled; if
+C = 0 the state is not entangled and the density matrix
+can be factorised.
+A.
+Polarised NBW in pulsed plane waves
+The NBW process forms a scientific aim of upcom-
+ing experiments that collide high energy photons with a
+high power laser pulse such as the LUXE experiment [51].
+Because the typical energies of photons available in such
+set-ups are ∼O(GeV) and the frequency of laser pho-
+tons ∼O(eV), the centre-of-mass energy of a collision

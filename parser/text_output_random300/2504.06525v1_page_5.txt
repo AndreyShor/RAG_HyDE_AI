@@ -1,0 +1,34 @@
+below (repulsive mode) the free phase angles, ℎ𝑚𝑖𝑛 is the lowest probe position of 𝑖𝑡ℎ trace and 
+retrace height lines while ℎ𝑔𝑙𝑜𝑏𝑎𝑙 𝑚𝑖𝑛 is the global lowest probe position computed based on all 
+the acquired scan lines, 𝑃(ℎ𝑡𝑟𝑎𝑐𝑒 , ℎ𝑟𝑒𝑡𝑟𝑎𝑐𝑒) is Pearson correlation between ℎ𝑡𝑟𝑎𝑐𝑒 and ℎ𝑟𝑒𝑡𝑟𝑎𝑐𝑒 to 
+quantify the similarity between them. All the components inside log operator are capped 
+minimally to the logarithmic constant e. 
+Building on these considerations, we define three rewards to quantify these characteristics 
+based on real-time scanning data. Reward 1 (height difference) measures the agreement between 
+the trace and retrace lines, computed as the normalized absolute difference between them. Reward 
+2 (distance) quantifies probe-sample proximity using the absolute height of the probe. Reward 3 
+(phase) detects the transition between attractive and repulsive scanning modes, calculated as the 
+fraction of time the phase remains above the free-air phase. Reward 4 is a different way of 
+quantifying the agreement between trace and retrace and we will use MOBO to evaluate which of 
+the reward 1 and 4 is better at distinguishing good scans from bad ones. 
+Each of these rewards plays a distinct role in optimizing TM scans. The distance reward 
+encourages the probe to remain close to the sample surface rather than oscillating in free space. 
+The height difference reward further refines this proximity by ensuring that the probe closely 
+follows the surface topography. Meanwhile, the phase reward prevents excessive probe-sample 
+contact that could push the system into the repulsive mode. Consequently, the height difference 
+reward favors a combination of high drive amplitude and low setpoint, as illustrated in Figure 1a. 
+The distance reward assigns higher values to configurations with a low setpoint, as shown in Figure 
+1b. In contrast, the phase reward promotes lower drive amplitudes and higher setpoints, as depicted 
+in Figure 1c. 
+As a result, the height difference and distance rewards are expected to share an overlapping 
+optimal solution, leading to a trivial Pareto point (Figure 1e). However, the phase reward competes 
+with both the height difference and distance rewards, necessitating trade-offs among them, as 
+demonstrated in Figure 1f-g. 
+ 
+Parameter space – Drive amplitude, Setpoint amplitude, and I Gain. 
+Here we choose the drive amplitude, setpoint amplitude, and integral (I) gain as the controlling 
+parameters to optimize. The range of drive amplitude is chosen according to the safe-seeding 
+routine to be 0 to 100 nm as shown in Figure 2, with setpoint ranging from 0.1 % to 90 % of the 
+free-air amplitudes. I gain in the PI loop extents from 30 to 200, chosen according to human 
+heuristic about the SPM system used in this work. 
+ 

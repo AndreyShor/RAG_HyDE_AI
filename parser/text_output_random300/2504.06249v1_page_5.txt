@@ -1,0 +1,47 @@
+deviate further from the ground truth. Comparing the two guidance strategies, classifier-free guidance
+consistently demonstrates superior performance. At timestep T = 1000, it maintains a structure match rate
+of 14.7% and a composition match rate of 58.7%, significantly outperforming classifier-based guidance’s
+match rates of 0.07% and 2.95%, respectively.
+In Fig. 2, we present the distribution of formation energies per atom for the structures generated in Table 1
+at T = 1000. Structure relaxation and formation energy calculations for all structures are performed using
+Orb-v2 [38], an accurate and efficient universal machine learning force field (MLFF). The ground truth
+distribution corresponds to the original 10,158 structures from the test set. The results in Fig. 2 show that
+structures generated with classifier-free guidance closely match the ground truth distribution of formation
+energies, exhibiting significant overlap. Notably, the majority of these structures—relaxed or unrelaxed—
+have formation energies below 0 eV/atom, indicating a reasonable range of thermodynamic stability. In
+contrast, structures generated with classifier-based guidance are noticeably shifted toward higher forma-
+tion energies and deviate further from the ground truth distribution. The distribution plots for structures
+generated at T = 200 and T = 500 are provided in Appendix B.
+(a) Classifier-based guidance
+(b) Classifier-free guidance
+Figure 2: Distribution of formation energies per atom (eV/atom) for structures conditionally generated at
+T = 1000 using (a) classifier-based guidance and (b) classifier-free guidance. All generated structures are
+relaxed using the Orb-v2 interatomic potential. The ground truth distribution corresponds to the formation
+energies of the original test set structures, with all energies predicted using Orb-v2.
+From Table 1 and 2, it is clear that classifier-free guidance consistently outperforms classifier-based guid-
+ance. It achieves lower MAEs across all starting timesteps, and maintains significantly higher structure and
+composition match rates at T = 1000. While classifier-free guidance excels in generating structures that
+align closely with the ground truth both structurally and compositionally, it is important to recognize that
+such strong alignment can be a double-edged sword. On one hand, it naturally leads to structures which
+match better to the desired DOS, which is central to our conditional generation approach. On the other
+hand, this convergence towards the ground truth structures may come at the cost of reduced diversity in
+the generated structures, which would be detrimental to the goal of finding novel materials. Based on our
+evaluation, we find the classifier-free version of DOSMatGen yields good agreement with the desired DOS
+while having a moderate match rate which is neither too high nor too low, making it suitable for materials
+discovery tasks. Next, we will apply DOSMatGen to three different types of constrained generation tasks
+to further assess the model.
+3.2
+CONSTRAINED GENERATION
+Here, we evaluate DOSMatGen’s ability to achieve fine-grained control over atomic structure generation by
+applying targeted constraints to a specific subset of atoms within a single structure. Classifier-free guidance
+is utilized in all constrained generation. The three constrained generation tasks are 1) masked generation,
+2) template guided generation and 3) fixed atom type generation. A visual representation of the three con-
+strained generation tasks is shown in Fig. 3. For demonstration, we employ the nickel DOS from Au3Ni1
+as the target DOS for conditional generation across all three tasks. Au3Ni is chosen as a characteristic ex-
+ample of an alloy where the minority element, Ni in this case, exhibits “free-atom like” (d-)states which are
+sharply localized in energy. Materials with sites exhibiting free-atom like states can have unique physical
+and chemical properties, including in applications towards catalysis [39, 40, 41, 42]. Prior studies have
+shown that free-atom like states can induce strong chemisorption and facile bond activation, though ma-
+terials which exhibit this property can be relatively rare. Therefore, using DOSMatGen to generate other
+1Materials Project ID: mp-976806.
+5

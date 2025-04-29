@@ -1,0 +1,114 @@
+6
+tematic error, and the success probability γsuc reduced.
+Finally, error correction and privacy amplification can be
+applied independently to each pair of users/keys, just as
+in a typical QKD protocol.
+B.
+Bases Match
+In the combined protocol of Section IV, the Bases
+Match scenario (excluding detection Types 3 and 4) con-
+tributes to 1/4 of the key sequence for each pair of users.
+When treated as an independent protocol, the probabil-
+ities of successful detection and erroneous outcomes are
+shown in Fig. 4. The security proof for the Bases Match
+protocol would require an extension of the proofs in [6] to
+accommodate three users. This extension is quite com-
+plex, as it would require treating the protocol as a QCKA
+protocol [12].
+However, we have deliberately structured the proto-
+col (see Tables I-II, IV-V) so that systematic errors only
+affect the bit strings of users B1 and B2, with user A serv-
+ing as the reference. If we focus solely on the systematic
+error and exclude other sources of noise or eavesdropping
+on Alice’s signal, the error correction and hashing proce-
+dures from [11] can be applied to mitigate the impact of
+this systematic error. Under this assumptionthat Alice’s
+signal experiences no noise or eavesdroppingthe formula
+in [11] can also be used to estimate the SKR for this part
+of the protocol.
+VI.
+DISCUSSION
+In this work, we developed a QKD protocol designed
+to serve three users in a pairwise manner. The protocol
+is built upon the MDI framework, offering several ad-
+vantages, including its centralized configuration with a
+central MU and a star topology for the users.
+A key
+benefit of our protocol is that it significantly reduces the
+discard rate caused by bases mismatchby almost a fac-
+tor of twowhen compared to a straightforward approach
+involving three separate MUs.
+However, several open questions remain. The comple-
+tion of the security proof for the protocol is still pending,
+and further investigation is needed to assess its resilience
+against noise, detector imperfections, and other practi-
+cal limitations. Additionally, it would be valuable to ex-
+plore whether this protocol can be simplified or extended
+to accommodate more users, or if the single-MU design
+presents any inherent bottlenecks. These aspects provide
+important directions for future research in the develop-
+ment of scalable and secure QKD protocols.
+Appendix A: Bases Mismatch: tables for (YXY,
+XYX) and (XYY, YXX) bases triplets
+In the main text we provide the Tables I-II, for XXY,
+YYX, XXX and YYY bases triplets. In Tables IV-V we
+provide the information for the rest of the triplets. The
+calculations have been performed using basic elements of
+quantum optics [13].
+Acknowledgements
+This work was supported by European Unions Hori-
+zon Europe research and innovation program under grant
+agreement No.101092766 (ALLEGRO Project) and Hel-
+las QCI project co-funded by the European Union un-
+der the Digital Europe Programme grant agreement
+No.101091504.
+[1] C. H. Bennett and G. Brassard, Theoretical Computer
+Science (1984).
+[2] H.-K. Lo, M. Curty, and B. Qi, Phys. Rev. Lett.
+108, 130503 (2012), URL https://link.aps.org/doi/
+10.1103/PhysRevLett.108.130503.
+[3] Y. Liu, Z.-W. Yu, W. Zhang, J.-Y. Guan, J.-P. Chen,
+C. Zhang, X.-L. Hu, H. Li, C. Jiang, J. Lin, et al., Phys.
+Rev. Lett. 123, 100505 (2019), URL https://link.aps.
+org/doi/10.1103/PhysRevLett.123.100505.
+[4] S. Wang, Z.-Q. Yin, D.-Y. He, W. Chen, R.-Q. Wang,
+P. Ye, Y. Zhou, G.-J. Fan-Yuan, F.-X. Wang, W. Chen,
+et al., Nature Photonics (2022), URL https://doi.org/
+10.1038/s41566-021-00928-2.
+[5] Z. Pei, Z. Hongyi, W. Weijie, and M. Xiongfeng, Na-
+ture Communications 13 (2022), ISSN 2041-1723, URL
+https://doi.org/10.1038/s41467-022-31534-7.
+[6] K. Tamaki, H. K. Lo, C. H. F. Fung, and B. Qi, Physical
+Review A 85 (2012).
+[7] G. Murta, F. Grasselli, H. Kampermann, and D. Bru,
+Advanced
+Quantum
+Technologies
+3
+(2020),
+ISSN
+2511-9044,
+URL
+http://dx.doi.org/10.1002/qute.
+202000025.
+[8] G. Carrara, G. Murta, and F. Grasselli, Physical Review
+Applied 19 (2023), ISSN 2331-7019, URL http://dx.
+doi.org/10.1103/PhysRevApplied.19.064017.
+[9] A. Pickston, J. Ho, A. Ulibarrena, F. Grasselli, M. Proi-
+etti,
+C. L. Morrison,
+P. Barrow,
+F. Graffitti,
+and
+A. Fedrizzi, npj Quantum Inf 9 82 (2023), URL https:
+//doi.org/10.1038/s41534-023-00750-4.
+[10] X. Hua, M. Hu, and B. Guo, Entropy 24 (2022), ISSN
+1099-4300,
+URL
+https://www.mdpi.com/1099-4300/
+24/6/841.
+[11] R. Matsumoto, Physical Review A 76 (2007).
+[12] K. Chen and H.-K. Lo, Quantum Information and Com-
+putation 7, 689 (2007).
+[13] U. Leonhardt, Measuring the Quantum State of Light
+(Cambridge University Press, 1997), 1st ed.

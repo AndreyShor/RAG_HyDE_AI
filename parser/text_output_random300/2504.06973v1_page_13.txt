@@ -1,0 +1,140 @@
+Johanna Müller-Horn et al.: HIP 15429: a newborn Be star on an eccentric binary orbit
+10
+1
+100
+mass ratio q = Md/Ma
+101
+102
+orbital period P [d]
+fully
+non-conservative
+fully conservative
+initial
+conditions
+final period
+= 0.0
+= 0.5
+= 0.7
+= 0.9
+Fig. 12: Period vs. mass ratio evolution models for HIP 15429
+assuming isotropic re-emission. The estimated present-day pe-
+riod is shown as the grey dashed line, the range of tested initial
+parameters of the pre-mass transfer system are indicated as the
+grey-shaded region. Theoretical tracks for the case of fully (non-
+) conservative mass transfer are shown as (dashed) dotted black
+lines. They are chosen to match the estimated present-day bi-
+nary properties. Coloured lines indicate binary evolution models
+computed with varying initial periods, mass ratios and mass ac-
+cretion efficiencies β, see models M3a to M3d in Table G.1. Time
+evolves from left to right, with the left-most point representing
+the initial values.
+This yields a minimum companion mass of MBe,dyn ≥7.0 M⊙,
+assuming a stripped star mass of MB,spec = 0.69 M⊙and would
+imply an RV semi-amplitude of KBe ≤7.5 km/s.
+All three mass constraints (spectroscopic, evolutionary, dy-
+namical) and the inclination dependence of the inferred dynami-
+cal companion mass are illustrated in Fig. 11. Note that the min-
+imum implied dynamical mass is slightly higher than the evolu-
+tionary luminosity-based mass estimate. This suggests that the
+system is probably observed close to edge-on, and that the Be
+star is less luminous in the optical than expected for its mass.
+This could be due to recent accretion or self-absorption from a
+circumstellar disk, or the star could be slightly inflated, with a
+lower temperature and larger inferred radius compared to typical
+main-sequence stars, possibly as a result of recent mass transfer
+(Kippenhahn & Meyer-Hofmeister 1977; Lau et al. 2024).
+8. Evolutionary history
+We aim to constrain both the properties of the progenitor sys-
+tem and the future evolution of the HIP 15429 binary. To do so,
+we created binary evolution models for the system using the 1D
+stellar evolution code Modules for Experiments in Stellar Astro-
+physics (MESA; Paxton et al. 2011, 2013, 2015, 2018, 2019;
+Jermyn et al. 2023, version 24.03.1). In a small grid of models,
+we varied initial masses, mass ratios, and initial orbital periods
+trying to match the current observed values. A detailed descrip-
+tion of the simulation setup can be found in Appendix G.
+We denote the initial parameters of the simulated binary
+stars with the subscript "initial" and refer to the post-mass trans-
+fer properties of the stripped and Be stars with the subscripts
+"stripped" and "Be". The donor and accretor stars are indicated
+with the suffixes "d" and "a", respectively. The present-day prop-
+erties of the stripped and Be stars were extracted at the model
+step after mass transfer where the difference between the simu-
+lated and observed effective temperature of the stripped star was
+minimized. At any point during the evolution, we define the bi-
+nary mass ratio as q ≡Md/Ma. Since the donor star is initially the
+more massive one, we have qinitial > 1.
+In response to the changing mass ratio, the system’s orbital
+period evolves. We computed mass transfer during Roche-lobe
+overflow using the implicit mass transfer approach proposed by
+Kolb & Ritter (1990) and adopted the α, β, γ, δ formalism as
+described in Tauris & van den Heuvel (2006). We chose to set
+α, γ, δ to zero and tested different values of the parameter β, that
+is, the fraction of mass lost from the vicinity of the accretor as a
+fast wind. This scenario, known as isotropic re-emission (Tauris
+& van den Heuvel 2006; van den Heuvel et al. 2017), is a com-
+mon assumption in binary stable mass transfer modelling and has
+been proposed as the evolutionary channel also for other stripped
+star + Be star binaries (e.g., HR6819, Bodensteiner et al. 2020a).
+However, the actual physics underlying binary mass transfer and
+angular momentum loss remain highly uncertain. Our models do
+not include tides, rotation or its related effects (e.g., rotational
+mixing, rotation-limited accretion), allowing the accretion effi-
+ciency to be treated as a free parameter4. Under the assumption
+of circular orbits and for a constant mass transfer efficiency, the
+period evolution can be analytically derived by solving the equa-
+tion of angular momentum balance (Soberman et al. 1997). In
+the limit of fully conservative mass transfer, that is β = 0.0, the
+period as a function of mass ratio is given by
+P
+Pinitial
+=
+ qinitial
+q
+!3  
+1 + q
+1 + qinitial
+!6
+.
+(3)
+Using the estimated current values of P ≈221 d and q ≲0.14,
+this implies an initial period of less than 30 d, assuming an ini-
+tial mass ratio of qinitial ≤2.0. For fully non-conservative mass
+transfer (β = 1.0), the period evolution is described by
+P
+Pinitial
+=
+ qinitial
+q
+!3  
+1 + q
+1 + qinitial
+!−2
+exp (3 (q −qinitial)) .
+(4)
+In this case, a lower initial period is required to match the ob-
+served values. The evolution of the period for both mass transfer
+regimes is illustrated in Fig. 12, along with four MESA models
+for intermediate values of β and initial periods ranging from 5
+to 30 d. To avoid unstable mass transfer and common envelope
+evolution that result in short-period systems, the initial mass ra-
+tio must be comparable to or smaller than a critical value, on the
+order of qcrit ≈4.0 (Temmink et al. 2023).
+We first iterated through a grid of initial masses for the donor
+star from 4 to 7 M⊙. We found that an initial mass of approx-
+imately Md,initial = 5.5 M⊙reproduces the estimated luminos-
+ity, temperature, and surface gravity of the stripped star. Fixing
+the initial mass of the primary star to 5.5 M⊙, we then com-
+puted a second set of models and chose values for β and Ma,initial
+such that the final mass of the Be star matched our estimate of
+Ma,Be ≈6 −8 M⊙. Given that the current mass of the compan-
+ion star is Ma,Be = Ma,initial + (1 −β)(Md,initial −Md,stripped), this
+requires less conservative mass transfer for higher initial masses
+of the companion. The parameter values for all models are sum-
+marised in Table G.1 in the Appendix.
+4The evolution of the stripped star, which is the primary focus of
+our models, is not expected to be significantly affected by rotation (Göt-
+berg et al. 2018). However, we note that this simplification introduces
+substantial uncertainties in the envelope structure of the Be star (e.g.,
+Ramachandran et al. 2023).
+Article number, page 13 of 28

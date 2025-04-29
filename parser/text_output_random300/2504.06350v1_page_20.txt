@@ -1,0 +1,90 @@
+In fact, ax, by are the unit vectors along the quantization axes chosen by Alice and Bob respectively. na, nb
+are the Eve’s one with ρ(na, nb) describing her attack. The security is implied by the fact that element
+of reality implies local correlations. Other possible advanced attacks introduce delayed measurements
+that degrade the state’s purity, hence exposing Eve’s actions.
+Thus, the protocol shows that when
+S(p) > 2 the matching orientations allow Alice and Bob to generate a secure key (p ∈Q \ L). Note that,
+BI violation certifies entanglement without assuming any Hilbert space and guarantees security beyond
+quantum correlations, i.e. p ∈NS\Q. Indeed, in the next section we will discuss how Eve could perfectly
+eavesdrop on such information by preparing λ = P
+i ciλi, a postquantum deterministic and local state
+[207, 30] that allows any p ∈NS. But a BI violation with λi must imply p /∈L. On the other hand,
+any λ such that p /∈L but deterministic as Eve would desire implies p /∈NS, admitting faster than light
+signaling [212] (see discussion in Fig. 5d).
+3.3. BHK05 – against collective no-signalling attacks
+Eve, with control of the source and the fabrication of Alice and Bob’s devices, for her collective attack
+prepares a postquantum state λ so that she keeps a subsystem for her and 2n subsystems where at each
+run Alice and Bob share a singlet state [207]. Alice and Bob randomly choose respectively Ai = Xri
+A and
+Bi = Xri
+B for ri
+A, ri
+B ∈{0, . . . , N −1} where Xr = {Π0
+r, Π1
+r} is a dichotomic measurement with projectors
+Πi
+r = Ur |i⟩⟨i| U †
+r with Ur = e−i πr
+2N σy and i = 0, 1. They announce their bases over a public classical
+channel after all the measurements are performed. Given n = MN 2 with M ∈N, the protocol continues
+if
+2MN ≤
+n
+X
+i=1
+X
+c=0,±1
+Mi,
+Mi = |{j : Aj = Xi, Bj = Xi+c}|.
+(37)
+| · | is the cardinality. The outcomes remain confidential only for one specific pair, (As, Bs) = (Xs, Xs+c),
+where c ∈{−1, 0, 1}. The outcomes for all other pairs (Aj, Bj), with j = 1, . . . , s −1, s + 1, . . . , Mi,
+are revealed. The protocol is aborted if there exists any pair (Aj, Bj) = (Xj, Xj+c) where the outcome
+is not anticorrelated, as this would indicate a potential man-in-the-middle attack on the communica-
+tion. If no such uncorrelated pair is found, the secret bit is defined by the outcomes as = ¯bs of the
+unrevealed pair (As, Bs). The state λ defines measurement probabilities P λ
+ABE where A = {A1, . . . , An},
+B = {B1, . . . , Bn} are the players’ choices and E = {E1} is the time independent12 Eve’s collective
+measurement that she performs after all the players’ measurements. Then for any partition A = A1 ∪A2,
+B = B1 ∪B2 and E = E1 ∪E2 the no–signalling in Eq. (7) imposes pλ
+A1B1E1 = pλ
+A1B1E1|A2B2E2. It
+signifies that she cannot prepare two physical systems in a joint state such that a local measurement on
+one system may transfer information to another, distinct system.
+Proof of security – Let (Aj, Bj) the random choice obtained with probability 1/N 2 with outcome
+(aj, bj). The following BI (similar to chained BI [214, 151])
+tλ
+j (p) =
+1
+3N
+X
+c=−1,0,1
+N−1
+X
+i=0
+pλ(aj ̸= bj|Aj = Xi, Bj = Xi+c)
+(
+≤1 −
+2
+3N
+p ∈L
+= 1 −O(1/N 2)
+p /∈L.
+(38)
+For N ≫1 yields tλ
+j |NS\L> tλ
+j |L computed respectively via Eqs. (13) and (8). This BI violation upper–
+bounds Eve’s knowledge.
+Lemma 2. For ϵ > 0 let a postquantum state λ that determines the probability P λ(pass) > ϵ. The
+protocol pass =⇒pλ(as ̸= bs|pass) > 1 −1/(2MNϵ).
+Lemma 3. Given the lemma 2, the no-signaling condition and the chain rule for conditional probability
+=⇒1 −1/(2MNϵ) < ts.
+Theorem 1. Eve’s knowledge, i.e. the probability that she can correctly guess the secret bit, by measuring
+her subsystem gives ts ≤1 −δδ′/(3N) < 1 −1/(2MNϵ) for N ≫1.
+Proof. By contradiction, suppose that Eve gets an outcome e0 with probability δ > 0 such that P λ(as =
+b, bs = ¯b|As = Xk, Bs = Xk+c, e0) > (1 + δ′)/2. Then, it is straightforward that conditioned only on the
+12Eve’s measurement options and their outcome probabilities stay constant over time, preventing her from dynamically
+adapting her strategy to compromise the security.
+If not, the theory would be pathological even if no-signaling is still
+satisfied [213]
+20

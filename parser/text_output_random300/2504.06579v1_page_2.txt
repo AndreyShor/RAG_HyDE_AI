@@ -1,0 +1,67 @@
+CONTENTS
+2
+Contents
+1
+Introduction
+2
+2
+Our model system and its analysis
+5
+2.1
+The model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+5
+2.2
+Analysis of the stay-put probability . . . . . . . . . . . . . . . . . . . . . . .
+6
+2.2.1
+Matrix elements of superoperator T . . . . . . . . . . . . . . . . . .
+6
+2.2.2
+Matrix elements of superoperator H×
+0
+. . . . . . . . . . . . . . . . .
+7
+2.2.3
+Matrix elements of superoperator eU(s)
+. . . . . . . . . . . . . . . .
+8
+2.2.4
+Matrix elements of superoperator eU0(s) . . . . . . . . . . . . . . . .
+9
+2.2.5
+Checking our results on stay-put probability for a few limiting cases .
+11
+2.2.6
+Numerical results on stay-put probability
+. . . . . . . . . . . . . . .
+12
+3
+Conclusion
+12
+4
+Acknowledgments
+15
+1. Introduction
+Isolated quantum systems evolve coherently according to the Schrödinger equation [1]. A
+central focus in contemporary quantum research concerns study of open quantum systems [2]
+and in particular the issue of how coupling a quantum system to an external environment
+affects quantum coherence and introduces the undesirable effects of decoherence [3,4]. This
+question is especially relevant in the context of quantum technology [5], and has gained further
+importance thanks to recent experimental advances in atomic, molecular, and optical systems
+that allow for controlled investigation of nonequilibrium dynamics of open quantum many-
+body systems [6–10].
+There are two primary approaches to studying the dynamics of an open quantum system,
+in the Schrödinger picture. The more conventional method involves formulating an effective
+description for the time evolution of the density operator of the system via a quantum master
+equation, typically in the form of the so-called Lindblad equation [2, 11, 12]. This approach
+relies on several uncontrolled approximations, such as assuming weak coupling between the
+system and the environment, as well as a clear separation of time scales between the intrinsic
+dynamics of the system and that of the environment. The second approach is motivated
+by standard experimental protocols, wherein the evolution of a quantum system alternates
+between intervals of effective isolation and intervals during which environmental interactions
+affect its dynamics. A common example is shot noise, which randomly disrupts the unitary
+evolution of the system [13, 14]. This type of dynamics is modeled as unitary evolution
+interrupted at random times by non-unitary evolution due to interactions with the environment.
+As a result, the system undergoes a sequence of unitary evolutions that are stochastically
+modulated over time [15–22]. In this framework, no assumptions are required regarding the
+strength of the coupling to the environment, and the approximation of time-scale separation

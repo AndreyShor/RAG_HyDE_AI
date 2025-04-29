@@ -1,0 +1,31 @@
+Figure 4: Representative conﬁgurations of three metastable states of the chignolin mini
+protein – folded, misfolded, and unfolded (from left to right, respectively). The crimson
+cartoon represents the backbone of the protein, while the white, gray, blue, and red spheres
+represent hydrogen, carbon, nitrogen, and oxygen atoms, respectively.
+4.3
+Informed resetting
+In standard SR, the timing of resetting events is completely decoupled from the state of the
+system. It is one of the advantages of resetting as an enhanced sampling method: limited
+prior knowledge is needed, and no CVs are required. However, it also means that restarts
+sometimes occur very close to the target.
+Greater accelerations can clearly be achieved
+by avoiding such undesirable restarts. In informed stochastic resetting (ISR), we exploit
+information on the progress of the process by incorporating an adaptive, state-dependent
+resetting protocol, resulting in higher speedups.
+Ref.41 ﬁrst demonstrated the potential of informed resetting for accelerating molecular
+simulations. There, a simple form of state-dependent resetting was considered: when it is
+time for a resetting event, the system is restarted only if the value of a chosen CV is greater
+than some predeﬁned threshold. We ﬁrst studied the modiﬁed Faradjian-Elber potential of
+Figure 2(a). Using ISR as a standalone method, and choosing the x-axis as CV, provided a
+speedup of > 50 over simulations without resetting. Using the same CV and threshold, but
+combining ISR with MetaD, gave a speedup of ∼700. Even when using a very poor CV
+(corresponding to the rightmost points in Figure 3(a)), the speedup remained > 200.
+We also employed informed resetting to accelerate conformational changes in chignolin
+in explicit water. We focused on transitions from a misfolded state to the native, folded
+state. Most trajectories ﬁrst unfold before reaching the native state, but some rapidly reach
+it directly from the misfolded state (representative conﬁgurations of the folded, misfolded,
+and unfolded states are given in Figure 4). By resetting only when unfolding, the MFPT is
+decreased by 15 % even without MetaD. Introducing bias along the RMSD-based CV, MetaD
+gives speedups of ∼60 when used as a standalone method. Adding standard SR increases
+the speedup up to ∼300, but ISR increases it up to ∼950.
+13

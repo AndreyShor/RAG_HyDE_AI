@@ -1,0 +1,125 @@
+3
+III.
+REALIZATION OF ARBITRARY-ANGLE
+GATES
+With our waveform and mode choice determinations,
+we now turn our attention to the ability to generate ar-
+bitrary amounts of entanglement. From the Hamiltonian
+shown in Eq. 2, it can be seen that choice of laser in-
+tensity, laser detuning δk, and gate duration (which re-
+spectively determine the Rabi drive frequency Ωi, the
+interaction strength, and interaction time τ) can be used
+separately or together to set θ. In this work, we apply
+an amplitude scaling factor to the laser intensity to vary
+θ. Specifically, we apply the scaling factor to the global
+beam AOM while keeping the IA beam pulse shape and
+size fixed. We note this approach is similar to Ref. [6],
+in which they applied an overall scale factor to the inten-
+sity of the applied laser light and found a roughly linear
+relationship between gate error and gate angle. Alterna-
+tively, Ref. [1] describes an approach in which detuning
+and gate duration were varied together for gates with
+θ > 0.075π, whereas for θ < 0.075π, only laser intensity
+was varied. It should be noted that a similar roughly lin-
+ear relationship was found between gate error and angle
+despite the different methodologies.
+A.
+Saturation Response of Acousto-Optic
+Modulator
+To make full use of the available optical power, for
+MS(π/2), we drive the global beam AOM such that the
+peak of the Gaussian pulse shape may require an applied
+RF amplitude that approaches the peak diffraction effi-
+ciency of the AOM. Thus, it can introduce distortion as
+the AOM has a nonlinear saturation response. However,
+we calibrate this response and apply the appropriate cor-
+rection.
+The optical response of the AOM to an RF drive is
+given by [28]:
+I1 ∝sin2
+π
+2
+a
+asat
+
+,
+(3)
+where I1 is the intensity of the first-order diffracted beam,
+a is a unitless software scaling value for the RF ampli-
+tude, and asat is the corresponding scaled RF amplitude
+at which the AOM response saturates. As Ωis propor-
+tional to the square root of the intensity, we write down
+the equation with proportionality constant Ξ:
+Ω(a) = Ξ sin
+π
+2
+a
+asat
+
+.
+(4)
+To calibrate asat and Ξ, we initialize in the |0⟩state and
+perform a Rabi oscillation with fixed t while sweeping a.
+The resulting data is fit to
+P1 = 1
+2 (1 −exp(−Ω(a)t/ξ) cos(Ω(a)t))
+(5)
+0
+25
+50
+75
+100
+125
+150
+175
+200
+a, RF Amplitude (a.u.)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+P1, |1  Detection Probability
+q0
+FIG. 2: The RF amplitude (a) applied to the global
+beam AOM is varied and the resulting Rabi oscillation
+fit to Eq. 5 in order to determine saturation parameters.
+Uncertainty interval shown is a 1σ Wilson score and are
+roughly the size of the points.
+where P1 is the probability of detecting the ion in state
+|1⟩, ξ is an exponential decay constant to account for
+dephasing of the Rabi oscillation. Example data for this
+fit using a gate duration of t = 50 µs is shown in Fig. 2,
+where we find asat = 188.5(6) and Ξ = 2π × 73.6(1) kHz.
+Uncertainty on these parameters is the square root of the
+diagonal elements of the covariance matrix from the fit.
+The asat parameter is a device-specific parameter re-
+lated to the RF response of each specific AOM. For the
+global beam AOM, we find it to be relatively stable for
+a given frequency, so we recalibrate it infrequently. The
+Ξ parameter, on the other hand, is related to the optical
+power in both legs of the Raman transition, and the op-
+tical powers of each beam are recalibrated frequently due
+to gradual beam misalignment and optical degradation.
+B.
+Sequential Applications of MS(θ)
+To confirm our scaling methodology is accurate, we
+perform repeated applications of the gate at various an-
+gles (θ = π/2, π/8, and π/32) and observe the population
+transfer between |00⟩and |11⟩. We note that the gates
+described here are the fully calibrated versions including
+the light shift cancellation described in Section IV. From
+these oscillatory population transfer measurements, we
+can estimate the scaling of gate error vs θ. As shown
+in Fig. 3, we prepare in the |00⟩state and drive oscilla-
+tions between the even-parity states (|00⟩and |11⟩), with
+leakage to odd-parity states (|01⟩and |10⟩). As discussed
+in [29], the amplitude oscillations of the even parity states
+and overall gate fidelity will follow a Gaussian decay when
+looping over multiple gates as there can be random shifts
+in the applied laser frequency.
+We model the probability of detecting even-parity
+states Peven according to
+Peven(M) = 1 −Podd(M)
+(6)

@@ -1,0 +1,78 @@
+Introduction
+4
+Remark 1.4. There is also an equivalent deterministic normalisation, called “Seneta–Heyde normali-
+sation”, which produces the same limiting measure µγc up to a deterministic multiplicative constant,
+namely
+µSH
+γc,t(dx) =
+√
+teγc Xt(x)−γc2
+2 tdx
+(1.8)
+converges weakly in probability to
+√
+2/π µγc as t →∞[JSW19, Pow21]. In the present article,
+unless otherwise stated, we always refer to the critical GMC as the one obtained using the derivative
+normalisation (1.7).
+In the low temperature or supercritical regime, i.e. γ > γc, the GMC exhibits atomic behaviour under
+suitable renormalisation, with the locations and masses of the atoms dictated by the extremal statistics
+or near maximum values of the fields Xt. In the continuum, the only available mathematical result we
+are aware of is [MRV16], where Madaule, Rhodes, and Vargas show that for γ > γc, the sequence of
+random measures
+µγ,t(dx) = t
+3γ
+2
+√
+2d et(γ/
+√
+2−
+√
+d)2eγXt(x)−γ2
+2 tdx ,
+(1.9)
+converges weakly in law as t →∞to a nontrivial purely atomic limiting measure µγ whose law
+was previously conjectured in [DRSV14a] and can be characterised explicitly in terms of the law of
+the critical GMC µγc. In order to describe this limiting measure, it is convenient to introduce the
+following notation which will be used throughout the paper.
+Definition 1.5. For γ > γc and a non-negative, locally finite Borel measure ν on Rd, we let ηγ[ν] be
+the Poisson point measure on Rd × R+
+0 with intensity measure given by ν(dx) ⊗z−(1+γc /γ)dz. We
+also define the integrated atomic random measure with parameter γ and spatial intensity ν as the
+random purely atomic measure Pγ[ν] on Rd given by
+Pγ[ν](dx)
+def=
+Z ∞
+0
+z ηγ[ν](dx, dz) .
+With this notation in place, we can state the main result of [MRV16] more precisely.
+Theorem 1.6 ([MRV16, Theorem 2.2]). For any γ > γc, there exists a constant cγ > 0 such that the
+sequence of random measures (µγ,t)t>0 defined in (1.9) converges weakly in the topology of vague
+convergence to cγPγ[µγc] as t →∞, where µγc is the critical GMC.
+1.1
+Overview of the main results
+Building on Theorem 1.6, the main goal of the present article is to gain a deeper understanding of the
+convergence behaviour of supercritical GMC measures as t →∞. A natural approach is as follows:
+instead of simply taking the limit as t →∞of µγ,t defined in (1.9), we consider the measure-valued
+stochastic processes (µγ,t+s)s≥0 as t →∞. As we will see below, this procedure yields a limiting
+stochastic process (νγ,s)s≥0, and our goal is to investigate its nature1.
+Remark 1.7. A helpful way to interpret the role of the process (νγ,s)s≥0 is through an analogy with
+the CLT. Consider a collection (Xn)n∈N of i.i.d. centred random variables with unit variance, and
+let Sn
+def= Pn
+k=1 Xk. The CLT tells us that n−1/2Sn converges in law to a standard normal random
+variable as n →∞. On the linear time scale, the normalised sums quickly settle into a “stable”
+distribution. However, if we switch to a logarithmic time scale, we can capture how the marginals at
+different times evolve together. More precisely, for every t ≥0, define Yt
+def= ⌊et⌋−1/2S⌊et⌋. Then,
+the process (Yt+s)s≥0 converges in the finite-dimensional sense to a stationary Ornstein–Uhlenbeck
+process (Us)s≥0 as t →∞. Intuitively, this follows since, for fixed s ≥0, it holds that
+Yt+s =
+S⌊et⌋
+p
+⌊et+s⌋
++ S⌊et+s⌋−S⌊et⌋
+p
+⌊et+s⌋
+≈e−s/2Yt + (1 −e−s)1/2Y′
+t ,
+1If the convergence in Theorem 1.6 was in probability, then the process νγ,s would necessarily be constant in s.

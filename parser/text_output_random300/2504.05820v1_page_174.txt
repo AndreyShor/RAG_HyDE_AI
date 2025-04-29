@@ -1,0 +1,64 @@
+160
+NNLO polarized PDFs with MHOU
+where the metric that probes the second moment of the PDF distribution is given by
+φ2
+χ2p = ⟨χ2
+p [T (∆ffit) , D]⟩rep −χ2
+p [⟨T (∆ffit)⟩rep, D] .
+(5.20)
+Eq. (5.20) measures the PDF uncertainties on the scale of the data uncertainties, the preferred
+extrapolation to the non-fitted p-th fold is the one with the largest uncertainties, ie. with small
+values of Eq. (5.19).
+In summary, given a set of successful models and their corresponding L
+(χ2
+pdf)
+hopt , we then select
+the best one as follows. We evaluate the standard deviation, Σχ2, of χ2(k)
+PDF,k over the replicas
+corresponding to the fit minimizing Eq. (5.16). We use this value to define a selection range:
+R :
+hˆθ
+⋆, ˆθ
+⋆+ Σχ2
+i
+,
+with
+ˆθ
+⋆= arg min
+ˆθ∈ˆΘ
+
+L
+(χ2
+pdf)
+hopt
+ˆθ
+
+.
+(5.21)
+We select the sought-for optimal set of hyperparameters as the one yielding to the lowest value
+of L(φ2)
+hopt within the range R. 1 The specific values and the found optimal hyperparameter for
+our polarized fits are listed in the following paragraph.
+Hyperparameters for NNPDFPOL2.0.
+We perform a scan of ntrials = 200 possible configura-
+tions, distributed across four A100 Nvidia GPUs. We opt for Nrep = 60 replicas and nfolds = 4.
+The dataset partitions are chosen such that each fold is representative of the global dataset in
+terms of both kinematic coverage and process types. We consider hyperoptimization of different
+parameters: the NN architecture, the type of optimizer, the clipnorm and the value of the
+learning rate, which are varied as reported in Table 5.4. The distribution of the loss estimators
+L(χ2)
+hopt for each of these trial models is displayed in Fig. 5.4. Many model exhibit a similar
+value of the loss function, closer to the minimum, indicating that there exists many different
+methodology configuration leading to equally performing fits. If this proves the flexibility of our
+fitting methodology, it also implies that an accurate hyperoptimization is essential to determine
+methodological PDF uncertainties in our framework. On contrary, the spread of the second
+momentum estimator L(φ2)
+hopt is more pronounced suggesting that some of these models, despite
+achieving good description of the data, do not generalize in a conservative way, leading to a
+poor description of the unseen fold. Our selection criteria, based on both estimators aim to
+balance the presence of equally performing hyperparameter configuration selecting the optimal
+model leading to the largest PDF uncertainties given the available data.
+1Let us note that, other model selection criteria are possible. For example, for each final PDF replica one can choose
+a different model among the ones in R, or weight their probability to according to L(φ2)
+hopt. We plan to investigate
+the effect of these choices in future studies.

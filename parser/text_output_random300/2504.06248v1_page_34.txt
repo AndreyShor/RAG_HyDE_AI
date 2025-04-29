@@ -1,0 +1,91 @@
+26
+henceforth considering that all sums run from 1 to N. Given some observable f ∈O, the expression can be rearranged
+to yield
+[U, v]f = U[ξ]∂tf +
+X
+i
+( ˙ϕi +
+X
+j
+∂jϕi Fj −ξ ˙Fi +
+X
+j
+ϕj∂jFi)∂if .
+From the definition of the Koopman generator (S82), the relation ∂tf = U[f] −P
+i Fi∂if holds and implies
+[U, v]f = U[ξ]U[f] +
+X
+i
+( ˙ϕi −∂tξ Fi +
+X
+j
+∂jϕiFj −
+X
+j
+FiFj∂jξ −ξ ˙Fi −
+X
+j
+ϕj∂jFi)∂if .
+Writing ∂tξ Fi as P
+j( ˙ξδij)Fj explicitly gives a sum over the N equations of the infinitesimal symmetry condition:
+[U, v] = U[ξ]U +
+X
+i
+( ˙ϕi +
+X
+j
+(∂jϕi −˙ξδij)Fj −
+X
+j
+∂jξFjFi −ξ ˙Fi −
+X
+j
+ϕj∂jFi)∂i .
+On the one hand, if the N infinitesimal conditions of symmetry in Eqs. (S85) are satisfied, then
+[U, v] −U[ξ]U = 0 .
+On the other hand, if [U, v] −U[ξ]U = 0, then
+X
+i
+( ˙ϕi +
+X
+j
+(∂jϕi −˙ξδij)Fj −
+X
+j
+∂jξFjFi −ξ ˙Fi −
+X
+j
+ϕj∂jFi)∂i = 0 .
+But each term of the sum over i is independent, meaning that Eqs. (S85) are satisfied and thus completing the
+proof.
+Remark S27. When ξ(t, u) = 0, the infinitesimal condition of symmetry is simplified to the simple form
+[U, v] = 0 .
+B.
+Basic symmetries of the Kuramoto model
+The Koopman generator of the Kuramoto dynamics on functions of time and z ∈TN is
+U = ∂t + K = ∂t +
+N
+X
+j,k=1
+(Ajkzk −¯Ajk¯zkz2
+j )∂j ,
+whose correspondence with the Koopman generator in terms of the phases (real variables) is made in subsection I B.
+The most general infinitesimal generator of (potential) symmetries is
+S = ξ(t, z)∂t +
+N
+X
+ℓ=1
+ϕℓ(t, z)∂ℓ.
+(S86)
+Adapting Lem. S8 for coordinates of time and the N-torus, it is necessary and sufficient that the generator S satisfies
+[U, S] −U[ξ(t, z)] U = 0 .
+(S87)
+It is easy to verify that
+S1 = iL0 ,
+S2 = K ,
+S3 = f(t)U
+are Lie symmetries of the Kuramoto dynamics. Note that the time translation generator ∂t is obtained with U −K
+and is a symmetry generator, as expected of any autonomous dynamical system. In fact, denoting S = Sξ + Sϕ
+with Sξ = ξ(t, z)∂t and Sϕ = PN
+ℓ=1 ϕℓ(t, z)∂ℓ, the infinitesimal criterion for the Kuramoto model becomes [U, Sϕ] −
+U[ξ(t, z)] K = 0, that is, the form of the condition for autonomous dynamical systems.

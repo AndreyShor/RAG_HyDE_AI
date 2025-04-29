@@ -1,0 +1,191 @@
+2
+II.
+BASICS ON COMPOSITE SYSTEMS
+The Hilbert space of a composite quantum system is
+the tensor product of the Hilbert spaces of the involved
+systems, see, e.g., Ref. [48]. For bipartite systems, we
+call them system A and B. To create operators in the full
+Hilbert space that act only on a single component, one
+has to take the tensor product of the operator acting on
+the subspace of interest, i.e., ˆA and ˆB, with the identity
+operators 1A and 1B corresponding to the components
+that are to be unchanged, ˆA⊗1B and 1A⊗ˆB. In a matrix
+representation the tensor product ⊗is also called Kro-
+necker product or matrix direct product. If there is no
+interaction between systems A and B, the Hamiltonian
+of the composite system is given by the system Hamilto-
+nians ˆHA and ˆHB via the Kronecker sum
+ˆH = ˆHA ⊕ˆHB = ˆHA ⊗1B + 1A ⊗ˆHB.
+(1)
+Note that the Kronecker sum is distinct from the direct
+sum of two matrices, despite both often being denoted
+by the same symbol ⊕.
+Equation (1) also pertains to the Liouvillian of a com-
+posite quantum system without interaction as well as to
+the Liouvillian of a single system if quantum jumps are
+ignored, see the supplemental information of Ref. [49], for
+example. Moreover, Hamiltonians as in Eq. (1) appear
+naturally in two- or higher-dimensional non-Hermitian
+lattices [50] and for evolution matrices of higher-order
+operator moments [51].
+III.
+AN ILLUSTRATIVE EXAMPLE
+For illustration purpose, we first introduce a simplified
+setting given by a dimensionless toy model. Consider a
+system A with a 2-dimensional Hilbert space and a 2 × 2
+Hamiltonian at a second-order EP in the given basis
+ˆHA =
+
+0 1
+0 0
+
+.
+(2)
+Such an Hamiltonian can appear in optical microdisks
+and microrings with fully asymmetric backscattering [52].
+The eigenvalue is 0 with algebraic multiplicity of 2 and
+the eigenstate is |ψA⟩= (1, 0)T with geometric multiplic-
+ity of 1; the superscript T indicates the transpose. Now,
+we consider a system B with, for simplicity, exactly the
+same Hamiltonian ˆHB = ˆHA at an EP of order 2 having
+eigenvalue 0 and eigenstate |ψB⟩= (1, 0)T.
+The composite system with Hamiltonian in Eq. (1) is
+equivalent to the one in Ref. [47] but computationally
+more convenient.
+Does the composite system contains
+an EP? And if, what is its order? The answer given in
+Ref. [47] is 4 and there is a simple and seemingly safe
+argument for it (which, however, has not been used in
+Ref. [47]): Each of the Hamiltonians ˆHA and ˆHB possess
+exactly one eigenstate (the geometric multiplicity is 1),
+|ψA⟩and |ψB⟩, and therefore the only tensor product to
+form is
+|ψEP⟩= |ψA⟩⊗|ψB⟩=
+
+
+
+1
+0
+0
+0
+
+
+.
+(3)
+As a result, the geometric multiplicity is 1.
+Together
+with an algebraic multiplicity of 4 (all eigenvalues are
+zero) this indicates an EP of order 4. However, direct
+calculation of the Hamiltonian in Eq. (1) proves that this
+hasty conclusion is incorrect,
+ˆH =
+
+
+
+0 1 1 0
+0 0 0 1
+0 0 0 1
+0 0 0 0
+
+
+.
+(4)
+The eigenvalues are 0 with algebraic multiplicity of 4 and
+there are two eigenstates
+|ψEP⟩=
+
+
+
+1
+0
+0
+0
+
+
+, |ψ0⟩=
+
+
+
+0
+−1
+1
+0
+
+
+
+(5)
+up to a phase factor and normalization. The additional
+eigenstate |ψ0⟩is not a tensor product of the EP eigen-
+states of system A and B, in fact it is a (maximally)
+entangled state. The geometric multiplicity is therefore
+equal to 2. To investigate this further, we employ the
+unitary matrix
+ˆU :=
+
+
+
+
+0
+1
+√
+2 −1
+√
+2 0
+1
+0
+0
+0
+0
+1
+√
+2
+1
+√
+2
+0
+0
+0
+0
+1
+
+
+
+
+(6)
+to transform the Hamiltonian ˆH in Eq. (4) to a Jordan
+normal form
+ˆU ˆH ˆU † =
+√
+2
+
+
+
+
+0 0 0 0
+0 0 1 0
+0 0 0 1
+0 0 0 0
+
+
+
+.
+(7)
+This clearly demonstrates that the composite system ex-
+hibits a more complex degeneracy (see for such complex
+degeneracies also Refs. [45, 53–55]) consisting of a third-
+order EP and a separate eigenstate, each with a zero
+eigenvalue. The result is consistent with Ref. [51] which
+does not consider composite quantum systems but evo-
+lution matrices of higher-order operator moments of the
+form as in Eq. (1) with ˆHA = ˆHB at a second-order EP.
+It is worth taking a moment to think through the orig-
+inal argument of Ref. [47] for the order of the EP in
+the composite system. To do so, consider the perturbed
+Hamiltonians
+ˆHA =
+ 
+0 1
+ε 0
+!
+= ˆHB.
+(8)

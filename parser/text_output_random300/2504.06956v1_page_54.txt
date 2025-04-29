@@ -1,0 +1,170 @@
+The joint Laplace functional
+54
+one has that,
+E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t(x)e−γχ(x)eµγ,s,t(dx)
+
+≥exp
+
+−(ea⋆+ ε)Tγρχ,s([0, 1]d)
+
+−ε ,
+(6.15)
+E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t(x)e−γχ(x)eµγ,s,t(dx)
+
+≥exp
+
+−(ea⋆−ε)Tγρχ,s([0, 1]d)
+
++ ε .
+(6.16)
+where ea⋆> 0 is the constant introduced in Proposition 2.17.
+Remark 6.6. The previous lemma entails almost directly that the measure eµγ,s,t converges to an
+integrated atomic random measure with parameter γ and spatial intensity given by the Lebesgue
+measure dx, i.e, up to multiplicative constants and recalling the notation introduce in Definition 1.5,
+to Pγ[dx]. To see this, it suffices to take the function χ to be of constant order. Then, taking first the
+limit when t →∞and then the limit when s →∞, the “log corrections” appearing in (6.13) vanish,
+and one can read off the Laplace functional associated to measure described above. Since we don’t
+need this fact in the sequel of the proof, we refrain from giving further details.
+In the next lemma we compute the conditional Laplace functionals of the measures (µγ,t)t≥0.
+Lemma 6.7. There exists a diverging sequence (sn)n≥0 of non-negative real numbers such that,
+almost surely,
+lim
+n→∞lim
+t→∞E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t(x)µγ,t(dx)
+  Fsn
+
+= exp
+
+−ea⋆Tγµγc([0, 1]d)
+
+,
+(6.17)
+where ea⋆> 0 is the constant introduced in Proposition 2.17, and µγc is the critical GMC.
+Proof. In order to prove the result, we rely on Corollary 6.5. In particular, we want to take the function
+χ : [0, 1]d →R in that corollary in such a way that exp(−γχ(x))eµγ,s,t(dx) = µγ,t(dx), which forces
+us to take
+χ(·) = −Xs(·) −log s
+√
+2d
++
+√
+2ds
+2
+.
+(6.18)
+Now, a simple computation yields that, for χ as in (6.18),
+ρχ,s(dx) = µγc,s(dx) ,
+where here we recall (1.7). For ε > 0, s ≥0, R ≥1 such that (es + 1)(R + 1)−1 ∈N, and χ as in
+(6.18), we consider the following events
+E1
+s
+def=
+
+min
+x∈[0,1]d χ(x) ≥log s
+8
+√
+2d
+−
+√
+2ds
+2
+
+,
+E2
+s
+def=
+
+max
+x∈[0,1]d χ(x) ≤19
+√
+2ds
+2
+−log s
+√
+2d
+
+,
+E3
+s
+def=
+
+sup
+x,y∈[0,1]d,
+|x−y|≤e−ss−1
+|χ(x) −χ(y)|
+|x −y|1/3
+≤es/3
+
+,
+E4
+s,R
+def= {ρχ,s(BR,s) ≤ε} .
+We also define the event Es,R
+def= ∩3
+i=1Ei
+s ∩E4
+s,R and we note that
+E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t(x)µγ,t(dx)
+Fs
+
+≥E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t(x)µγ,t(dx)
+
+1Es,R
+Fs
+
+,
+E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t(x)µγ,t(dx)
+Fs
+
+≤E
+
+exp
+
+−
+Z
+[0,1]d Fγ,t(x)µγ,t(dx)
+
+1Es,R
+Fs
+
++ 1Ec
+s,R ,
+where the second inequality is simply due to the fact that the map x 7→e−x is bounded by one, for all
+x ≥0. Moreover, we observe that, by definition, on the event Es,R, the function χ defined in (6.18)

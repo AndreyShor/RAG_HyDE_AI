@@ -1,0 +1,98 @@
+II - Algorithm
+16
+3
+Hamiltonians in plane-wave basis
+16
+3.1
+Electrons and nuclei . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+16
+3.2
+Valence electrons and pseudoions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+18
+4
+Initial state construction
+20
+4.1
+Kinematics
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+21
+4.2
+Approximate molecular Hamiltonian for initial state preparation
+. . . . . . . . . . . . . . . .
+22
+4.3
+Form of the initial state . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+25
+4.4
+Algorithm for initial state preparation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+26
+5
+Quantum simulation of time evolution using pseudoions
+31
+5.1
+Quantum circuits for block-encodings . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+32
+5.2
+Time-evolution . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+40
+6
+Quantum chemical identification
+43
+6.1
+Validating Example
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+43
+6.2
+Sampling and coherent sampling
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+45
+7
+Quantum Resource Estimates
+48
+8
+Conclusion
+52
+III - Appendices
+61
+A Basis change from real space to plane waves
+61
+B Detailed physical justification for initial states
+63
+C Reference states for quantum rejection sampling
+65
+C.1 Type I (Constant with exponential tail) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+65
+C.2 Type II (Power-law ladder)
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+68
+C.3 Type III (Power-law ladder with exponential tail) . . . . . . . . . . . . . . . . . . . . . . . . .
+68
+D Approximate rescaling factor bounds
+68
+E Compilation of the block encoding
+71
+E.1
+Subroutines shared across the block encoding . . . . . . . . . . . . . . . . . . . . . . . . . . .
+71
+E.2
+Kinetic term
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+72
+E.3
+Coulomb terms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+73
+E.4
+Local interaction term . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+75
+E.5
+Non-local interaction term . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+77
+Framework
+1
+Introduction
+1.1
+Modeling catalysis on a classical computer
+Our ability to analyze and manipulate chemical reaction pathways underpins modern technology, from ma-
+terial science to chemical engineering and biochemistry. In particular, chemical reactions utilizing a catalyst
+- a substance that facilitates a reaction without being consumed - is crucial to the global economy, playing
+2

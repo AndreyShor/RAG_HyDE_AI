@@ -1,0 +1,26 @@
+and initializes biases to zero. This method ensures that the variance of activations remains
+stable across layers during training.
+A.3.4
+Bias and Variance Tradeoff
+The performance of a deep learning model is often dictated by its ability to balance bias
+and variance. Bias refers to errors introduced due to overly simplistic models, leading
+to underfitting, where the model struggles to capture the patterns in the training data.
+Conversely, variance refers to errors caused by excessive sensitivity to fluctuations in
+training data, leading to overfitting, where the model performs well in the training set
+but poorly on unseen data [59].
+Diagnosing these issues involves evaluating the training and development (dev) set
+errors. The most common types are listed below [47]:
+• High training error and comparable dev error: Indicates high bias or un-
+derfitting. This occurs when the model is not complex enough to capture the data
+patterns effectively.
+• Low training error but high dev error: Suggests high variance or overfitting.
+The model fits the training data too closely but fails to generalize to new data.
+• High training error with even higher dev error: Reflects both high bias and
+high variance, where the model is neither learning the training data nor generalizing
+well.
+Strategies to address these issues include increasing model complexity (e.g., adding layers
+or units) to mitigate high bias. Applying regularization or gathering more data can help
+to reduce variance.
+Figure A9: Illustration of different model errors from left to right: high bias (underfitting),
+high variance (overfitting), and a combination of both.
+59

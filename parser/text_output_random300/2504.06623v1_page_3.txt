@@ -1,0 +1,184 @@
+3
+Bose gas model, we need to have a single particle quan-
+tum spectrum whose density of states ρ(ϵ) grows also as
+ρ(ϵ) ∼exp[C0 ϵ2] for large ϵ.
+The quantum potential that leads to ρ(ϵ) ∼eC0 ϵ2: As
+a warm up, let us first discuss two well known simple
+examples: (i) a d-dimensional harmonic oscillator with
+V (r) = r2 and (ii) a d-dimensional box of size Ld. In
+case (i), the single particle energies are given by ϵ =
+Pd
+j mj (up to a constant and in suitable units) where
+mj = 0, 1, 2 . . . are the quantum numbers. Consequently,
+ρ(ϵ) =
+∞
+X
+mj=0
+δ
+
+ϵ −
+d
+X
+j=1
+mj
+
+.
+(13)
+Taking a Laplace transform with respect to ϵ and carry-
+ing out the sums one finds trivially
+˜ρ(s) =
+Z ∞
+0
+ρ(ϵ) e−s ϵ dϵ ∼s−d
+as
+s →0 ,
+(14)
+leading to the well known density of states for a d-
+dimensional harmonic oscillator
+ρ(ϵ) ∼ϵd−1
+as
+ϵ →∞.
+(15)
+The example (ii), i.e., the d-dimensional box can be
+solved in a similar way by noting that in this case
+ϵ = Pd
+j=1 m2
+j (in suitable units where L = 1).
+Pro-
+ceeding as in case (i), it is easy to show that for the
+d-dimensional box
+ρ(ϵ) ∼ϵd/2−1
+as
+ϵ →∞.
+(16)
+In both examples, ρ(ϵ) grows algebraically for large ϵ.
+To estimate ρ(ϵ) for a general confining central poten-
+tial V (r) in d dimensions, we can use the semi-classical
+Bohr-Sommerfeld quantization formula which gives an
+accurate estimate for large ϵ.
+To make this estimate,
+it is convenient to work with the cumulative density of
+states up to level ϵ, i.e., N(ϵ) =
+R ϵ
+0 ρ(ϵ′) dϵ′. Then the
+integrated density of states scales as N(ϵ) ∼[n(ϵ)]d in
+d-dimensions, where n(ϵ) is the quantum number (ra-
+dial) associated to the energy level ϵ. The latter can be
+estimated from the Bohr-Sommerfeld quantization rule
+(again in appropriate units)
+Z ∞
+0
+p
+ϵ −V (r) dr ≈n(ϵ) ∼[N(ϵ)]1/d .
+(17)
+It is easy to check that this general result reproduces
+correctly the exact estimate in Eq. (15) for the harmonic
+oscillator case V (r) = r2, as well as the result in Eq.
+(16 ) for the box case where V (r) = 0. Now, we want
+ρ(ϵ) ∼eC0 ϵ2. This means, up to pre-exponential factors,
+N(ϵ) ∼eC0ϵ2. Substituting this on the right hand side
+(rhs) of Eq. (17) gives for large ϵ
+Z ∞
+0
+p
+ϵ −V (r) dr ≈eC0 ϵ2/d .
+(18)
+A little inspection shows that a potential V (r) that re-
+produces the rhs of (18) is of the form
+V (r) ∼B
+√
+ln r
+as
+r →∞,
+(19)
+where the prefactor B can be determined as follows. We
+substitute this ansatz on the left hand side of (18) and
+make a change of variable B
+√
+ln r = ϵ y. Consequently
+the left hand side (lhs) of (18) reads
+Z eϵ2/B2
+0
+p
+ϵ −V (r) dr = 2 ϵ5/2
+B2
+Z 1
+0
+p
+1 −y y eϵ2y2/B2 dy .
+(20)
+For large ϵ, the dominant contribution to the integral
+over y comes from the vicinity of y = 1 and one can
+easily show that up to inconsequential factors
+Z eϵ2/B2
+0
+p
+ϵ −V (r) dr ≈eϵ2/B2
+as
+ϵ →∞.
+(21)
+Comparing it to the rhs of (18) fixes the prefactor B =
+p
+d/C0 uniquely. Hence, the required potential to pro-
+duce Ω(E) ∼eC0 E2 for large E is given by
+V (r) ≈
+r
+d
+C0
+ln r
+as
+r →∞.
+(22)
+Eigenfunctions in a potential α
+p
+ln |x|: The potential
+in Eq. (22) grows extremely slowly with distance from
+the origin. It may be questioned if a potential increas-
+ing as slowly as the square root of the logarithm is even
+confining and hence has discrete eigenvalues. In other
+words, are the eigenfunctions sufficiently localised and
+square integrable? We now show that they are indeed
+localised and for simplicity, we just show this in d = 1.
+Generalization to higher dimensions is straightforward.
+We then consider a single quantum particle in one di-
+mension in a potential V (x) = α
+p
+ln |x| with α > 0. The
+eigenfunction ψϵ(x) associated to an eigenvalue ϵ satisfy
+the Schr¨odinger equation
+−ℏ2
+2m
+d2ψϵ(x)
+dx2
++ V (x) ψϵ(x) = ϵ ψϵ(x) .
+(23)
+where V (x) = α
+p
+ln |x|. According to the WKB approx-
+imation, a good estimate of the symmetric wave function
+for x > 0 can be expressed as
+ψϵ(x) ≈C+
+exp
+h
+i
+ℏ
+√
+2m
+R x
+0
+p
+ϵ −V (x′) dx′i
+p
+2m (ϵ −V (x))
+,
+(24)
+where C+ is a constant.
+The real line is thus divided
+into a ”classically allowed” region where V (x) < ϵ, and a
+”classically forbidden” region where V (x) > ϵ. The two
+regions are separated by the ”turning point” xc given by
+ϵ = α
+p
+ln |xc|, i.e.,
+xc = exp(ϵ2/α2) .
+(25)

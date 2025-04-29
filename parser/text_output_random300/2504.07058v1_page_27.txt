@@ -1,0 +1,136 @@
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+y
+0.00
+0.04
+0.08
+0.12
+0.16
+0.20
+0.24
+0.28
+0.32
+0.36
+(a) Exact
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+y
+0.00
+0.04
+0.08
+0.12
+0.16
+0.20
+0.24
+0.28
+0.32
+0.36
+(b) Predicted
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+y
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+u
+Exact, t=1
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+(c) Exact
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+y
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+u
+Predicted, t=1
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+(d) Predicted
+Figure 20: The exact and predicted solutions at 𝑇= 1, with 𝛾= 0.0001 and 𝛽= 0.01.
+4
+Discussions
+This section presents the statistical analysis of the first and last experiments, conducted using RStudio software.
+Figures 21 and 22 provide an overall comparison. Figures 22a, 21b and 21c illustrate the variation in training
+error, 𝐿2 error and relative 𝐿2 error, respectively, across different neuron counts (12, 16, 20 and 24) over multiple
+LBFGS iterations (500, 1000 and 5000). Outliers are highlighted with red circles in the 𝐿2 and relative 𝐿2 error
+plots. Additionally, Figure 21d presents a bar plot comparing the 𝐿2 and relative 𝐿2 errors for the best-performing
+configuration, corresponding to the maximum LBFGS iterations (5000). These visualizations provide insights into
+training behavior, error convergence, and the impact of hyperparameter selection. Similarly, Figures 22a, 22b
+and 22c depict the variation in training error, 𝐿2 error and relative 𝐿2 error for the last experiment, considering
+neuron counts of 16, 20, 24 and 28 over the same LBFGS iterations. Outliers are again highlighted with red
+circles in the 𝐿2 and relative 𝐿2 error plots. Figure 22d presents a bar plot comparing the 𝐿2 and relative 𝐿2
+errors for the best-performing configuration at 5000 LBFGS iterations. These visualizations facilitate the analysis
+of training behavior, error convergence, and the influence of hyperparameter selection across experiments. The
+analysis highlights how the number of neurons affects different error types. Increasing the LBFGS iterations leads
+to error reduction. Notably, an outlier in the relative error E𝑟
+𝐺is observed at 500 LBFGS iterations for different
+neuron counts.
+27

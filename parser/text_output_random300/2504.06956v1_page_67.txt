@@ -1,0 +1,140 @@
+Proof of Proposition 6.1
+67
+Pz(Bb ∈dx) = (2πb)−1/2e−(x−z)2/(2b)dx, and finally the fact that a time reversed Brownian bridge
+is still a Brownian bridge but with starting and final point swapped, we obtain that
+Fλ
+A,L,b(−z, g) =
+1
+√
+2πb
+Z A+L
+0
+e
+√
+2d(x−L)e−(x−z)2
+2b
+Ex,z,b
+h
+Fλ
+b,x−L(Υb,g)
+· 1{infs∈[0,b] Bs≥0}1{M0,b+1,b(Υb,g)<x−(A+L)}1{M0,b(Υb,g)≤λ}
+i
+dx .
+Therefore, the conclusion follows since the right-hand side of the previous display coincides with
+Fλ
+A,L,b(z, g) as desired.
+7.3
+Proof of Lemma 7.4
+The main goal of this section is to prove Lemma 7.4. As in the previous case, the proof follows a
+sequence of reduction steps, allowing us to transition from Cλ
+A,L,b to Cλ,new
+A,L,k,b. Each of these reduction
+steps forms a lemma within this section. Recalling the definition (7.7) of the constant Cλ
+A,L,b, it is
+convenient to introduce the function Gλ
+A,L,b : C(Rd) →R given by
+Gλ
+A,L,b(g)
+def= α
+Z ∞
+0
+zFλ
+A,L,b(z, g)dz .
+(7.30)
+By plugging the expression (7.6) for the function Fλ
+A,L,b into the right-hand side of (7.30), and doing
+a change of variables, we get that the expectation of Gλ
+A,L,b(gz
+b) is equal to
+Gλ
+(7.31)
+def= α
+Z A+L
+0
+e
+√
+2d(x−L)
+Z ∞
+−x
+e−u2
+2b
+√
+2πb
+(u + x)E0,u,b
+h
+Fλ
+b,x−L(Υu+x
+b
+)
+· 1{M0,b+1,b(Υu+x
+b
+)≤x−(A+L)}1{infs∈[0,b] Bs≥−x}1{M0,b(Υu+x
+b
+)≤λ}
+i
+dudx ,
+(7.31)
+where we recall that Υz
+b = Υb + gz
+b, where gz
+b is the field introduced in (7.4). As before, with a slight
+abuse of our previous notation, we have absorbed the expectation with respect to the field gu+x
+b
+into
+the expectation E0,u,b. In what follows, we will implicitly use the fact – previously noted in the proof
+of Proposition 6.1 – that the field gz
+b satisfies (G1) – (G3) uniformly over all z ≥0. In particular, all
+the results derived in Section 4 remain valid for the field Υz
+b uniformly over all z ≥0.
+The goal is now to simplify the quantity Gλ
+(7.31) into a more manageable form through a sequence of
+reduction steps. We begin with Lemma 7.11, where we show that the integral over u is concentrated
+around
+√
+b. Next, in Lemma 7.12, we establish that Fλ
+b,x−L can be replaced by its truncation at a
+large values. Afterward, in Lemma 7.13, we show that the two first two indicator functions on the
+second line in (7.31) can be removed. Finally, in Lemma 7.14, we show that Fλ
+b,x−L can be replaced
+by Fλ
+k,x−L for some k ≪b.
+7.3.1
+Reduction steps
+We can now begin reducing Gλ
+(7.31) to a more manageable quantity. To this end, we start by defining
+Gλ
+(7.32)
+def= α
+Z A+L
+0
+e
+√
+2d(x−L)
+Z b3/4
+b1/4
+e−u2
+2b
+√
+2πb
+(u + x)E0,u,b
+h
+Fλ
+b,x−L(Υu+x
+b
+)
+· 1{M0,b+1,b(Υu+x
+b
+)≤x−(A+L)}1{infs∈[0,b] Bs≥−x}1{M0,b(Υu+x
+b
+)≤λ}
+i
+dudx ,
+(7.32)
+where we emphasise that the only difference between Gλ
+(7.32) and Gλ
+(7.31) is the domain of integration
+in the u variable.
+Lemma 7.11. For any λ > 0, ε > 0, and A, L ≥0, there exists b ≥0 sufficiently large such that
+|Gλ
+(7.32) −Gλ
+(7.31)| ≤ε .

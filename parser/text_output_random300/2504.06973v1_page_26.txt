@@ -1,0 +1,134 @@
+A&A proofs: manuscript no. main
+Table G.1: Overview of binary evolution models computed with MESA.
+Md,initial
+Ma,initial
+Pinitial
+β
+Md,stripped
+Ma,Be
+P
+M1
+4.0 M⊙
+3.6 M⊙
+12 d
+0.0
+0.72 M⊙
+6.9 M⊙
+277 d
+M2
+5.0 M⊙
+4.5 M⊙
+8 d
+0.7
+0.88 M⊙
+5.7 M⊙
+263 d
+M3
+5.5 M⊙
+5.0 M⊙
+8 d
+0.7
+0.99 M⊙
+6.3 M⊙
+247 d
+M4
+6.0 M⊙
+5.4 M⊙
+8 d
+0.7
+1.12 M⊙
+6.8 M⊙
+230 d
+M5
+7.0 M⊙
+4.2 M⊙
+8 d
+0.7
+1.37 M⊙
+8.0 M⊙
+197 d
+M3a
+5.5 M⊙
+2.8 M⊙
+30 d
+0.0
+1.00 M⊙
+7.3 M⊙
+275 d
+M3b
+5.5 M⊙
+3.9 M⊙
+12 d
+0.5
+0.99 M⊙
+6.1 M⊙
+224 d
+M3c
+5.5 M⊙
+5.0 M⊙
+8 d
+0.7
+0.99 M⊙
+6.3 M⊙
+247 d
+M3d
+5.5 M⊙
+5.2 M⊙
+5 d
+0.9
+0.97 M⊙
+5.6 M⊙
+189 d
+Notes. Columns list the model index, initial stellar masses and periods, mass accretion efficiency, masses and periods during the stripped star
+phase. The first set of models is computed with varying primary star masses. For the second set of models with indices 3a - 3d, Md,initial is fixed to
+5.5 M⊙.
+Fig. E.1: Estimating rotational and macroturbulent line broad-
+ening of the stripped star. Comparison between the disentangled
+spectrum (grey) and a PoWR model atmosphere around the Si III
+4552 Å line for the narrow-lined stripped star. Shaded regions
+indicate estimated uncertainties, calculated as the standard devi-
+ation of the flux residuals between the observed spectra and the
+disentangled spectrum. The model spectra were calculated with
+different values for rotation and macroturbulent velocities that
+are given in the legend.
+tial mass, a higher overshooting efficiency results in a larger con-
+vective core on the main sequence and in turn a larger He core.
+Semi-convective mixing is modelled with semi-convective coef-
+ficient αSC = 10, following Schootemeijer et al. (2019); Klencki
+et al. (2020). We include thermohaline mixing (Kippenhahn et al.
+1980) with the standard thermohaline coefficient αTH = 1 but we
+do not expect thermohaline mixing to have a significant impact
+on the stellar structure of the stripped stars (e.g., Götberg et al.
+2018).
+Binary interaction and mass transfer during Roche-lobe
+overflow are handled using the implicit mass transfer approach
+proposed by Kolb & Ritter (1990). The parameters α, β, δ and
+γ as described in Tauris & van den Heuvel (2006) control the
+efficiency of mass transfer. We initially ran our simulations at
+a coarser resolution and then tested numerical convergence by
+Fig. E.2: Estimating rotational broadening of the broad-lined Be
+star. The disentangled spectrum of the broad-lined companion
+star around the He I 4026 Å line is shown in grey. Shaded re-
+gions indicate estimated uncertainties, calculated as the standard
+deviation of the flux residuals between the observed spectra and
+the disentangled spectrum. Over-plotted are simulated spectra
+from the Tlusty library with Teff = 17 kK and log g = 4.0. The
+model spectra have been broadened using a fixed macroturbulent
+velocity of 50 km/s and differing rotation velocities; the best fit
+value of vrot,Be = 270 ± 70 km/s and ±2 −σ uncertainties.
+increasing the mesh and time resolution for the final models, en-
+suring that the results remained qualitatively consistent.
+The MESA EOS is a blend of the EOSs OPAL (Rogers &
+Nayfonov 2002), SCVH (Saumon et al. 1995), FreeEOS (Ir-
+win 2004), HELM (Timmes & Swesty 2000), PC (Potekhin &
+Chabrier 2010), and Skye (Jermyn et al. 2021).
+Radiative opacities are primarily from OPAL (Iglesias &
+Rogers 1993, 1996), with low-temperature data from Fergu-
+son et al. (2005) and the high-temperature, Compton-scattering-
+dominated regime from Poutanen (2017). The electron conduc-
+tion opacities are from Cassisi et al. (2007) and Blouin et al.
+(2020).
+Nuclear reaction rates are from JINA REACLIB (Cyburt
+et al. 2010), NACRE (Angulo et al. 1999), and additional tab-
+ulated weak reaction rates Fuller et al. (1985); Oda et al. (1994);
+Article number, page 26 of 28

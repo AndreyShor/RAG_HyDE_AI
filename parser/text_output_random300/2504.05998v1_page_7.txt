@@ -1,0 +1,85 @@
+1
+Supplemental material for “Can gravity mediate the transmission of quantum information?”
+Andrea Mari1, Stefano Zippilli1, David Vitali1
+1 Physics Division, School of Science and Technology, Università di Camerino, 62032 Camerino, Italy
+S.I.
+ANALYTIC SOLUTION ASSUMING A QUADRATIC GRAVITATIONAL INTERACTION POTENTIAL
+Our starting point is the system of quantum Langevin equations (11) introduced in the main text. Defining the array of
+annihilation operators r(t) = (a1(t), b1(t), a2(t), b2(t))⊤and the array of noise operators w(t) = (ain1(t), bin1(t), ain2(t), bin2(t))⊤, the
+Langevin equations (11) can be written in matrix form as:
+dr(t)/dt = Ar(t) + Bw(t),
+A = −
+
+κ
+2
+ig 0
+0
+ig
+γ
+2
+0 iλ
+0
+0
+κ
+2
+ig
+0 iλ ig
+γ
+2
+
+,
+B = diag( √κ, √γ, √κ, √γ).
+(S.1)
+We now apply the Fourier transform O(ω) =
+1
+√
+2π
+R ∞
+−∞dteiωtO(t) to all bosonic operators. In the frequency domain, the differential
+equation becomes −iωr(ω) = Ar(ω) + Bw(ω), whose solution is:
+r(ω) = −(A + iω)−1Bw(ω).
+(S.2)
+In particular, the third row of the above equation can be written as:
+a2(ω) = ˜α1(ω)ain1(ω) + ˜β1(ω)bin1(ω) + ˜α2(ω)ain2(ω) + ˜β2(ω)bin2(ω),
+(S.3)
+where
+˜α1(ω) = √κ
+ig2λ
+det{A + iω} ,
+(S.4)
+˜β1(ω) = √γgλ(iω −κ/2)
+det{A + iω} ,
+(S.5)
+˜α2(ω) = √κg2γ/2 −ig2ω + κγ2/8 −iκγω/2 + κλ2/2 −κω2/2 −iγ2ω/4 −γω2 −iλ2ω + iω3
+det{A + iω}
+,
+(S.6)
+˜β2(ω) = √γg−ig2 −iκγ/4 −κω/2 −γω/2 + iω2
+det{A + iω}
+.
+(S.7)
+Using the input-output relation (4), we obtain the output field of the second cavity
+aout2(ω) = α1(ω)ain1(ω) + β1(ω)bin1(ω) + α2(ω)ain2(ω) + β2(ω)bin2(ω),
+(S.8)
+where
+α1(ω) = √κ ˜α1(ω),
+β1(ω) = √κ˜β1(ω),
+α2(ω) = √κ ˜α2(ω) −1,
+β2(ω) = √κ˜β2(ω).
+(S.9)
+One can check that P
+i |αi(ω)|2 + |βi(ω)|2 = 1, ensuring aout2(ω) satisfy the bosonic commutation rules as expected.
+Now, we identify the term α1(ω)ain1(ω) in Eq. (S.8) as the input “signal” and we cast the remaining three terms into a single
+effective environmental mode:
+aE(ω) := β1(ω)bin1(ω) + α2(ω)ain2(ω) + β2(ω)bin2(ω)
+p
+1 −|α1(ω)|2
+.
+(S.10)
+The normalization factor in the denominator of the above equation ensures aE(ω) obeys the canonical commutation rules of a
+bosonic mode. Its quantum state is a thermal state with ⟨aE(ω)⟩= 0 and ⟨[aE(ω)]†aE(ω′)⟩= N(ω)δ(ω−ω′), which is completely
+characterized by the effective mean occupation number:
+N(ω) = |β1(ω)|2 + |β2(ω)|2
+1 −|α1(ω)|2
+NT.
+(S.11)

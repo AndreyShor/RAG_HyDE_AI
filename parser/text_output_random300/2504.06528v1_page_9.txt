@@ -1,0 +1,93 @@
+9
+as well as the duration of each waveform. Further reduc-
+ing waveform time involves a tradeoff between shorter
+durations and small probability of atom loss during dis-
+placement and transfer operations.
+Our system architecture can be readily be adapted
+to build feedback control systems using different devices
+for different applications. For example, EMCCD camera
+can be replaced by a CMOS camera, the processor by
+a field-programmable gate array (FPGA), and the AOD
+by a spatial light modulator or digital micromirror de-
+vice. Moreover, our system can readily be used for appli-
+cations other than solving reconfiguration problems in-
+cluding optimizing and stabilizing optical intensity and
+trap depth, applying atom-selective control pulses, imple-
+menting variational algorithms and optimal control pulse
+synthesis, as well as adaptive protocols for metrology and
+quantum error correction [6, 18, 19].
+The key advantages of this system are its low cost,
+its flexibility in integrating new devices and applications,
+and its ease of programming. It is also compatible with
+GPUs that enable fast matrix multiplications, parallel
+computing applications, and auto-differentiation. How-
+ever, it suffers from its dependence on an operating sys-
+tem, which prevents the implementation of deterministic
+timing, as provided by FPGAs and real-time operating
+systems.
+Our source code is open-source licensed and is available
+for use in a public repository.
+V.
+ACKNOWLEDGMENT
+We acknowledge contributions from Sailesh Bechar,
+Brooke MacKenzie Dolny, Zefei Ou, Jessica Bohm,
+Zhiqian (Jessie) Ding, Zewen (Wendy) Lu, Laurent
+Zheng, and Xiang Wen (Evan) Yu. This research was
+funded thanks in part to CFREF.
+[1] H. Kim, W. Lee, H.-g. Lee, H. Jo, Y. Song, and J. Ahn,
+Nature Communications 7, 13317 (2016).
+[2] M. Endres, H. Bernien, A. Keesling, H. Levine, E. R.
+Anschuetz,
+A.
+Krajenbrink,
+C.
+Senko,
+V.
+Vuletic,
+M. Greiner, and M. D. Lukin, Science 354, 1024 (2016).
+[3] D. Barredo, S. de L´es´eleuc, V. Lienhard, T. Lahaye, and
+A. Browaeys, Science 354, 1021–1023 (2016).
+[4] D. Bluvstein, H. Levine, G. Semeghini, T. T. Wang,
+S. Ebadi, M. Kalinowski, A. Keesling, N. Maskara,
+H. Pichler, M. Greiner, et al., Nature 604, 451 (2022).
+[5] K. Singh, C. E. Bradley, S. Anand, V. Ramesh, R. White,
+and H. Bernien, Science 380, 1265 (2023).
+[6] D. Bluvstein, S. J. Evered, A. A. Geim, S. H. Li,
+H. Zhou, T. Manovitz, S. Ebadi, M. Cain, M. Kalinowski,
+D. Hangleiter, et al., Nature 626, 58 (2024).
+[7] S. Wang, W. Zhang, T. Zhang, S. Mei, Y. Wang, J. Hu,
+and W. Chen, Phys. Rev. Appl. 19, 054032 (2023).
+[8] H. J. Manetsch, G. Nomura, E. Bataille, K. H. Leung,
+X. Lv, and M. Endres, (2024), arXiv:2403.12021 [quant-
+ph].
+[9] B. Cimring, R. El Sabeh, M. Bacvanski, S. Maaz,
+I. El Hajj,
+N. Nishimura,
+A. E. Mouawad,
+and
+A. Cooper, Phys. Rev. A 108, 023107 (2023).
+[10] R. El Sabeh, J. Bohm, Z. Ding, S. Maaz, N. Nishimura,
+I. El Hajj, A. E. Mouawad, and A. Cooper, Phys. Rev.
+A 108, 023108 (2023).
+[11] A. Cooper, S. Maaz, A. E. Mouawad, and N. Nishimura,
+Algorithmica 86, 3284 (2024).
+[12] F. Afiouni, R. E. Sabeh, N. Nishimura, I. E. Hajj, A. E.
+Mouawad, and A. Cooper, (2025), arXiv:2503.xxxxx.
+[13] A. Mullan, Camera Link - High Speed Camera Connec-
+tion, Tech. Rep. (Oxford Instruments Andor Ltd, 2020).
+[14] A. Mullan, High Speed Connection of Cameras Using
+USB, Tech. Rep. (Oxford Instruments Andor Ltd, 2020).
+[15] Y. R. P. Sortais, H. Marion, C. Tuchendler, A. M.
+Lance, M. Lamare, P. Fournet, C. Armellin, R. Mercier,
+G. Messin, A. Browaeys, and P. Grangier, Phys. Rev. A
+75, 013406 (2007).
+[16] CCD201-20 Datasheet, Teledyne e2v (2019), version 7.
+[17] N. Schwegler, Towards Low-Latency Parallel Readout
+of Multiple Trapped Ions, Master’s thesis, ETH Z¨urich
+(2018).
+[18] Y. Kurman, L. Ella, N. Halay, O. Wertheim, and Y. Co-
+hen, (2024), arXiv:2412.00289 [quant-ph].
+[19] B. Barber, K. M. Barnes, T. Bialas, O. Bu˘gdaycı, E. T.
+Campbell, N. I. Gillespie, K. Johar, R. Rajan, A. W.
+Richardson, L. Skoric, C. Topal, M. L. Turner, and A. B.
+Ziad, Nature Electronics 8, 84 (2025).

@@ -1,0 +1,186 @@
+Appendix
+A. Architecture
+(a) Residual Network
+(b) Residual Block
+Figure I. Network architecture of residual networks.
+Basic NN
+Layers
+Input Shape
+Output Shape
+Residual Network
+Fully-connected layer
+(B, Dinput)
+(B, Dh)
+Activation
+(B, Dh)
+(B, Dh)
+Residual Blocks
+(B, Dh)
+(B, Dh)
+Fully-connected layer
+(B, Dh)
+(B, Doutput)
+MLP
+Fully-connected layer
+(B, Dinput)
+(B, Dh)
+Activation
+(B, Dh)
+(B, Dh)
+Hidden Fully-connected Blocks
+(B, Dh)
+(B, Dh)
+Fully-connected layer
+(B, Dh)
+(B, Doutput)
+Table I. Basic NNs
+Module
+Basic NN
+Input Shape
+Output Shape
+Position Encoder (M)
+Residual Network
+(B, Dq)
+(B, Dv × (Dv + 1)/2)
+Rearrange
+(B, Dv × (Dv + 1)/2)
+(B, Dv, Dv)
+State Encoder (B)
+Residual Network
+(B, Dq + Dv)
+(B, Dv)
+Action Encoder (τ)
+MLP
+(B, Da)
+(B, Dv)
+Corrector
+Residual Network
+(B, Dq + Dv + Da)
+(B, Dv)
+Table II. MoSim Modules
+Model Size
+Position
+Encoder
+State
+Encoder
+Action
+Encoder
+Correctors
+NB
+Dh
+NB
+Dh
+NB
+Dh
+NC
+NB
+Dh
+Small
+3
+64
+3
+64
+1
+32
+1
+5
+64
+Medium
+3
+64
+3
+64
+3
+32
+1
+5
+128
+Large
+3
+128
+3
+128
+3
+128
+3
+5
+128
+Table III. MoSim Parameters
+For the position encoder and state encoder in the pre-
+dictor, as well as the corrector, we use residual networks
+as shown in Figure Ia, with the residual block design illus-
+trated in Figure Ib. For the action encoder in the predictor,
+we use a standard MLP composed of multiple linear layers
+and activation layers. In the position encoder, the output
+vector of length n(n + 1)/2 (where n is the dimension of
+velocity) from the residual network is rearranged into an
+Prediction Horizon
+Cheetah
+Reacher
+Acrobot
+Panda
+Hopper
+Humanoid
+Go2
+DreamerV3
+16
+16
+16
+16
+16
+16
+16
+MoSim
+60
+>1000
+99
+>1000
+51
+42
+200
+Table IV. Prediciton Horizon
+n×n lower triangular matrix L, and the symmetric positive
+definite matrix M is then obtained by computing LLT .
+The number of correctors can be adjusted based on the
+complexity of the task. We use one corrector for most tasks,
+while two correctors are used for the humanoid task.
+The specific architectural parameters of the models are
+detailed in Tables I, II, and III, in which B refers to batch
+size, Dinput, Doutput, Dh, Dq, Dv, Da respectively refer to
+dimension of input, output, latent variable, position, veloc-
+ity, action.
+B. Experimental Details for Latent Evaluation
+In subsection 3.2, we compared the predictive capabilities
+in the latent space of MoSim and TD-MPC2 using expert
+data, as described in the main text. For the comparison on
+random data in table4, we still used the provided TD-MPC2
+checkpoints, since training TD-MPC2 on random data leads
+to a meaningless latent space.
+In this experiment, 1 step for MoSim is equivalent to
+control step * action repeat. Here, the con-
+trol step refers to the duration of a single action in terms of
+physics timesteps in the DM Control environment, while the
+action repeat follows the default TD-MPC setting of 2. For
+example, in the Humanoid environment (control step
+= 5, action repeat = 2), 1 step actually requires us
+to recursively predict 2 * 5 = 10 physical steps, for ex-
+perience evaluation, we set action repeat = 1, control step =
+1.
+C. Prediction Horizon
+To more directly demonstrate the improvement in MoSim’s
+prediction capability, Table IV uses the MSE loss of Dream-
+erV3 at a 16-step prediction horizon as a reference.
+It
+presents the prediction horizon at which MoSim achieves
+the same loss, providing a more intuitive measure of
+MoSim’s predictive performance.
+D. Zero-Shot Learning Requirements
+In subsection3.4, we explored the minimal step limitation
+required to achieve zero-shot learning. We additionally pro-
+vide the requirements for two more tasks. The results are
+shown in Table V.
+E. MyoSuite Dataset Prediction Results
+We also conducted predictions on the MyoSuite dataset.
+To satisfy MoSim’s assumption of the Markov prop-
+erty, instead of directly using the muscle-tendon model
+1

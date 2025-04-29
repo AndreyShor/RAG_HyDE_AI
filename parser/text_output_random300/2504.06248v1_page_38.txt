@@ -1,0 +1,71 @@
+30
+D.
+Determining matrix and its singular vectors as symmetry generator coefficients
+Let’s search for state-space symmetries, i.e., those where ξ(t, z) = 0.
+In such case, the determining equations
+become an infinite-dimensional system of ordinary differential equations
+˙φℓp(t) =
+X
+k
+[Aℓkφkp(t) + ¯Aℓkφkp−2eℓ+2ek(t) −2 ¯Aℓkφℓp−eℓ+ek(t)]
++
+X
+j,k
+(pj −1 + δjk) ¯Ajkφℓp−ej+ek(t) −
+X
+j,k
+(pj + 1 −δjk)Ajkφℓp+ej−ek(t) ,
+where ℓ∈{1, ..., N} and p ∈ZN. One notices that it forms an infinite-dimensional linear system of equations and
+that only the coefficients related to the monomials of the same total degree are dependent over one another. We
+can thus treat the different total degrees separately. However, we can seek a specific symmetry generator that has a
+finite number of nonzero coefficients (φℓp(t))ℓ,p. Consider that the nonzero coefficients are such that p is in a finite
+subset P ⊂ZN including d := N · #P coefficients. For some ordering of (ℓ, p), the determining equations become an
+overdetermined linear system of differential-algebraic equations described by
+˙φ = M φ ,
+(S91)
+0 = N φ ,
+(S92)
+where we name M the differential determining matrix and N the algebraic determining matrix, as they entirely
+determine the possibility of having a generator of symmetry or not. As one should expect, M and N solely depend
+upon the elements of the complex weight matrix A. The differential determining matrix M is a d×d matrix, while N
+is a r × r matrix where r is the number of equations such that ˙φℓp(t) = 0 for p /∈P. The algebraic equations appear
+since there are shifts of coefficients in these determining equations that yield nonzero coefficients.
+The solvability of Eqs (S91-S92) is questionable since it is generally strongly overdetermined. Yet, we know that
+for a set P containing sufficient p’s of total degree one, there are at least two solutions (L0 and K). In fact, if ˙φ = 0,
+then the following recurrence relations hold:
+0 =
+X
+k
+h
+Aℓkφkp + ¯Aℓkφkp−2eℓ+2ek −2 ¯Aℓkφℓp−eℓ+ek +
+X
+j
+(pj −1 + δjk) ¯Ajkφℓp−ej+ek −
+X
+j
+(pj + 1 −δjk)Ajkφℓp+ej−ek
+i
+.
+(S93)
+In matrix form,
+D(A) φ = 0
+(S94)
+where D(A) is a m × d (m > d) complex rectangular matrix depending on the elements of a complex square matrix
+A with imaginary diagonal and φ is a complex vector of dimension m × 1. Under what conditions on A does the
+overdetermined system D(A) φ = 0 admit nontrivial solutions? The last equation means that the nullspace of D(A)
+must have a dimension greater or equal to one (the nullspace always contains the null vector, but if it only contains
+0, its dimension is 0). By the rank-nullity theorem [93],
+dim(nullspace(D(A))) = N · #P −rank(D(A)) ,
+and thus, in order to have a symmetry, the following inequality must be satisfied:
+rank(D(A)) < N · #P .
+In other words, the multiplicity of the zero singular value for D(A) must be greater or equal to 1. The singular vectors
+associated with singular value 0 are the coefficients of the symmetry generator.
+E.
+Proof of Theorem 3: Symmetry-generated constants of motion
+Using diverse matrices A for N = 4 and N = 5, we performed symbolic and numerical calculations (see GitHub,
+koopman-kuramoto/symbolic/symmetries) to obtain the associated determining matrices D(A), their singular value
+decomposition and from the singular vectors with zero singular value, symmetry generators. In such way, we inferred
+a class of symmetry generators that enable the creation of new constants of motion in the Kuramoto model on graph.
+This subsection is devoted to the proof of Thm. 3 (Thm. S29) on these symmetry-generated constants of motion. To
+that end, we first introduce a lemma that specifies the conditions (see Fig. (S5)) under which the Kuramoto model
+admits such symmetry generators, along with their explicit form.

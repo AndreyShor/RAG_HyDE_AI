@@ -1,0 +1,90 @@
+MDI-
+QKD
+Encoding
+Variants
+Phase-
+Encoding
+Time-Bin
+Encoding
+Protocol
+Exten-
+sions
+Decoy-
+State
+MDI-
+QKD
+Coherent-
+State
+MDI-
+QKD
+Higher-
+Dimensional
+variants
+Practical
+Imple-
+menta-
+tions
+Fiber-
+Based
+MDI-
+QKD
+Free-
+Space
+MDI-
+QKD
+Advanced
+Variants
+Twin-
+Field
+QKD
+Asymmetric
+MDI-
+QKD
+Network
+MDI-
+QKD
+Figure 15:
+Hierarchical overview of MDI-QKD advancements.
+5.3. Measurement-device-independent QKD
+The purpose of SDI-QKD is to eliminate the most serious possible hardware vulnerabilities at the
+expense of a minimum of security assumptions. The measurement devices and detectors used in QKD
+present considerable opportunities for side-channel attacks by Eve, in particular, due to the fact that
+Eve can both probe and/or manipulate the measurement system using external light, allowing her to
+determine measurement settings, blind a detector, or force a detector to “click”. To combat this type of
+attack, Lo et al. proposed the idea of measurement-device-independent QKD (MDI-QKD) in 2012 [96].
+Since it’s introduction, many variants and improvements of MDI-QKD have been proposed, a summary
+of which is shown in Fig. 15. In the following sections, we present an brief overview of MDI-QKD.
+5.3.1. Original MDI-QKD Protocol
+The main idea of the original MDI-QKD scenario [96] is sketched in Fig. 16. For simplicity, consider
+first that Alice and Bob each send a single photon to Charlie, who implements a linear-optical Bell-state
+measurement (BSM), which can be described by measurement operators Π+, Π−, Π0 (see also Fig. 18).
+Here Π± is a rank-one projector onto one of the Bell states |ψ±⟩= (|H⟩A |V ⟩B ± |V ⟩A |H⟩B)/
+√
+2, where
+H and V are the rectilinear polarization states. Π0, on the other hand, is a rank-two projector onto the
+remaining two Bell states. When Alice and Bob prepare their pulses in either the H or V polarization
+state, a successful BSM (“Π±” results) indicates that their pulses were prepared in orthogonal states.
+In the ideal scenario, they have an error rate of zero. These events can be used to generate a shared
+key–say–by defining HA ≡“0” and VA ≡“1”, where Bob will flip all of his bits so that their bit strings
+are correlated. When the photons are prepared with diagonal polarization (states A, D in Fig. 16), a
+detection of the state ψ−(ψ+) occurs only when orthogonally (parallel) polarized pulses were prepared.
+An error in this case corresponds to detection events Π+ (Π+) when orthogonal (the same) diagonal
+polarization states are sent. With the error rates for both bases, post-processing steps similar to BB84
+can be realized.
+Remarkably, the same logic can be applied to the case when Alice and Bob use weak coherent pulses
+(WCP) [96]. To fully realize MDI-QKD, the pulses are prepared in one of the four polarization states,
+determined by random bit strings held by Alice and Bob, and then sent to Charlie, who publicly announces
+the results when the BSM is successful. Alice and Bob subsequently post-select their data, retaining only
+the outcomes with a successful BSM, and the same preparation bases were used. The data corresponding
+to the diagonal basis is used for assessing bit and phase error rates.
+If the error rates fall below a
+predetermined threshold, Alice and Bob proceed with classical error correction and privacy amplification
+processes to obtain a secure key; otherwise, they terminate the protocol. Most notably, MDI-QKD does
+not require a trusted measurement apparatus. To see this, notice that a successful BSM event ψ± does
+not provide any information about whether Alice and Bob prepared HA, VB (= secret bit value 0) or
+VA, HB (= secret bit value 1), and moreover there is no basis selection at the measurement device, so no
+information can be acquired if Eve somehow probes the BSM station. In addition, forcing BSM detectors
+to click, or announcing false results will inevitably lead to errors when diagonal states are sent.
+Thus, MDI-QKD effectively mitigates all potential detector side channels, and in fact, the BSM station
+can be implemented by an untrusted third party and completely under Eve’s control. However, one still
+59

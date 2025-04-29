@@ -1,0 +1,25 @@
+(a) Ground Truth
+(b) HOSVD
+(b) SVD
+Y
+X
+X
+Y
+X
+X
+Y
+X
+X
+Figure 11: (a) Ground truth streamwise velocity components at t = 428. (b) Comparison
+of the predicted streamwise velocity components for HOSVD (left column) and SVD (right
+column) across different LSTM architectures. From top to bottom: predictions for LSTM
+with 1 Dense, 2 Dense, and Time-Distributed architectures.
+components are summarized in Tables 9 and 10. In the streamwise direction, HOSVD
+demonstrates improved predictive accuracy over SVD in the 1 dense, 2 dense, and time-
+distributed architectures. For the normal component, error values are generally higher
+due to the presence of large zero regions in the flow field.
+Since the model predicts
+these values with machine error, it increases the RRMSE. But for both the decomposition
+techniques and across all the architectures, the RRMSE values are quite similar, with
+HOSVD maintaining a slight advantage over SVD.
+26

@@ -1,0 +1,53 @@
+Use Case 2 (Secondary Neighbors, Alternative Weighting). The previous scenario assumes that, when weighting
+the opinion along the walk i →j →k, agent i knows the weight wjk assigned by j to k and uses it to compute ˜wik.
+Alternatively, if wjk is private to j, it is natural to assign equal weights to all secondary neighbors accessible through
+j, with their sum proportional to wij—the more trust i places in j, the greater the weight assigned to opinions
+relayed by j. For multiple walks between i and k, it is natural to assume that their total weight ˜wik is proportional
+to Pn
+j=1 wijbjk, where bjk is the entry of the binary adjacency matrix for G[W]. Hence, it is natural to choose
+˜W = D−1WB in (6), where D = [WB1] is the diagonal matrix such that ˜W stochastic.
+Use Case 3 (Social Inertia). A possible explanation for the inclusion of the previous opinion vector x(t −1) is
+social inertia and status quo bias [45], which leads agents to be reluctant to change their beliefs and behaviors. To
+accommodate this effect, one can choose ˜W = I in (6).
+Use Case 4 (Recent Memory Influence). From the social psychology literature it is known that agents do not
+immediately forget their neighbors’ previous opinion (i.e. recent memory) [46]. Consequently, we may consider
+W (1) = [1 −β]W
+,
+W (2) = [β]W,
+where β ∈[0, 1]n is a rescaling factor s.t. 1 −βi is the importance that node i assigns to the updated opinion and
+βi reflects their reliance on the previous one.
+Finally, we note that the general FJ-MM model can accommodate various other scenarios; for example, ˜W
+in (4) could be a convex combination of the matrices from use cases 2–4, capturing the combined effects of multi-
+hop influence, inertia, and memory.
+The FJ-MM model (5) also applies to cases where memory is caused by
+communication lag: agents receive messages from others with a one-step lag, while their own opinions remain
+up-to-date. Formally, in this specific scenario, we can define W (1) = diag(W) and W (2) = W −diag(W).
+3
+Asymptotic Stability Criterion
+In what follows, we employ the concept of a comparison FJ system, which is a standard FJ system (2) defined with
+a specific stochastic matrix of influence, specifically W (1) + W (2).
+Definition 2. Given the FJ-MM model (5), its comparison FJ system is defined as
+x(t + 1) = ¯Ax(t) + (I −Λ)s,
+¯A := Λ
+
+W (1) + W (2)
+.
+(7)
+Remark 3. The concept of the comparison system extends naturally to the case L > 2; in this setting, the com-
+parison model (7) generalizes the dynamical model introduced in [33]. In (7), the matrices W (ℓ) can be arbitrary
+substochastic matrices whose sum is stochastic, and need not correspond to weighted walk matrices as in [33]. Unlike
+the comparison model – which is a standard FJ model with a modified weight matrix – the FJ-MM captures influence
+time lags arising from multi-hop and memory effects.
+It is noteworthy that in the proposed FJ-MM model, W (2) captures the influence of past node opinions, meaning
+that opinions at time t + 1 are influenced by those at t −1. As a result, the model deviates from the one in [33],
+which can instead be reformulated as an original FJ model with a modified weight matrix.
+3.1
+Stability Criteria
+We now focus on the update dynamics introduced in (5) and examine its asymptotic behavior, establishing conditions
+for the existence of a unique equilibrium and convergence to it. Leveraging results from positive systems theory [47],
+we show that the comparison system (7) characterizes the asymptotic stability of the FJ-MM and its unique
+equilibrium. We start with a technical lemma [25,43,48] about the Schur stability of the FJ model.
+Lemma 1. Given a diagonal matrix 0 ≤Λ ≤I and a row-stochastic matrix ˆW, ρ(Λ ˆW) < 1 if and only if, given G
+the graph associated to matrix ˆW, the subset of nodes such that λii < 1 is non-empty and globally reachable.
+Theorem 1. The following statements are equivalent:
+(i) the FJ-MM (5) is exponentially stable;

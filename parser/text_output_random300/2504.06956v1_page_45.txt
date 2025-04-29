@@ -1,0 +1,118 @@
+Resampling property and independence from the threshold
+45
+Hence, since as we have already observed the integral over x in (5.8) is bounded above, we have that
+the difference
+E
+Z
+Bk
+F(τxΥb)e
+√
+2d(Υb(x)−M0,b(Υb))1{Υb(x)≥Mx,b(Υb)−λ}
+R
+Bk(x) e
+√
+2d(Υb(y)−My,b(Υb))1{Υb(y)≥My,b(Υb)−λ}dy
+dx1{M0,b(Υb)≤λ}
+
+−E
+Z
+Bk
+F(τxΥb)e
+√
+2d(Υb(x)−M0,j(Υb))1{Υb(x)≥M0,j(Υb)−λ}
+R
+Bk(x) e
+√
+2d(Υb(y)−M0,j(Υb))1{Υb(y)≥M0,j(Υb)−λ}dy
+dx1{M0,b(Υb)≤λ}
+
+is bounded by a positive constant times the following probability
+P(M0,2b(Υb) ̸= M0,j(Υb), M0,b(Υb) ≤λ) .
+By using Lemmas 4.9, 4.10 and a version of Lemma A.11 for Brownian motions (see e.g. [BL18,
+Lemma 4.18]), we have that
+lim
+j→∞lim sup
+b→∞
+√
+b P(M0,2b(Υb) ̸= M0,j(Υb), M0,b(Υb) ≤λ) = 0 .
+Step 2: We note that on the event {M0,j,k/2(Υb) < M0,j(Υb) −λ}, it holds that
+Z
+Bk
+F(τxΥb)e
+√
+2d(Υb(x)−M0,j(Υb))1{Υb(x)≥M0,j(Υb)−λ}
+R
+Bk(x) e
+√
+2d(Υb(y)−M0,j(Υb))1{Υb(y)≥M0,j(Υb)−λ}dy
+dx
+=
+R
+Bk/2 F(τxΥb)e
+√
+2d(Υb(x)−M0,j(Υb))1{Υb(x)≥M0,j(Υb)−λ}dx
+R
+Bk/2 e
+√
+2d(Υb(y)−M0,j(Υb))1{Υb(y)≥M0,j(Υb)−λ}dy
+.
+Therefore using this fact, we have that the difference
+E
+Z
+Bk
+F(τxΥb)e
+√
+2d(Υb(x)−M0,j(Υb))1{Υb(x)≥M0,j(Υb)−λ}
+R
+Bk(x) e
+√
+2d(Υb(y)−M0,j(Υb))1{Υb(y)≥M0,j(Υb)−λ}dy
+dx1{M0,b(Υb)≤λ}
+
+−E
+R
+Bk/2 F(τxΥb)e
+√
+2d(Υb(x)−M0,j(Υb))1{Υb(x)≥M0,j(Υb)−λ}dx
+R
+Bk/2 e
+√
+2d(Υb(y)−M0,j(Υb))1{Υb(y)≥M0,j(Υb)−λ}dy
+1{M0,b(Υb)≤λ}
+
+is bounded by a finite positive constant times the following probability
+P(M0,j,k/2(Υb) ≥M0,j(Υb) −λ, M0,b(Υb) ≤λ) .
+Once again, by using Lemmas 4.9, 4.10 and [BL18, Lemma 4.18], we have that
+lim
+k→∞lim sup
+b→∞
+√
+b P(M0,j,k/2(Υb) ≥M0,j(Υb) −λ, M0,b(Υb) ≤λ) = 0 .
+Step 3: To conclude, we observe that, since F ∈Cb
+loc(C(Rd)), the mapping
+C(Rd) ∋ϕ 7→
+R
+Bk/2 F(τxϕ)e
+√
+2d(ϕ(x)−M0,j(ϕ))1{ϕ(x)≥M0,j(ϕ)−λ}dx
+R
+Bk/2 e
+√
+2d(ϕ(y)−M0,j(ϕ))1{ϕ(y)≥M0,j(ϕ)−λ}dy
+depends on the values of ϕ inside a compact subsets of Rd. Furthermore, since λ ∈Λ, the set of
+discontinuities of the above mapping is assigned measure zero by the law of the field eΥλ in C(Rd) (see
+Remark 5.2). Hence, by combining (5.8) and Steps 1 and 2, by taking the limit as b →∞, and using
+Theorems A and B, we obtain that
+E[F(eΥλ)] = lim
+k→∞lim
+j→∞E
+R
+Bk/2 F(τx eΥλ)e
+√
+2deΥλ(x)1{eΥλ(x)≥M0,j(eΥλ)−λ}dx
+R
+Bk/2 e
+√
+2deΥλ(y)1{eΥλ(y)≥M0,j(eΥλ)−λ}dy
+
+,

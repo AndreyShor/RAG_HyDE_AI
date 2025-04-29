@@ -1,0 +1,113 @@
+arXiv:2504.06812v1  [quant-ph]  9 Apr 2025
+Semi-classical geometric tensor in multiparameter quantum information
+Satoya Imai*,1 Jing Yang†,2 and Luca Pezzè‡1
+1QSTAR, INO-CNR, and LENS, Largo Enrico Fermi, 2, 50125 Firenze, Italy
+2Nordita, KTH Royal Institute of Technology and Stockholm University,
+Hannes Alfvéns vag 12, 106 91 Stockholm, Sweden
+(Dated: April 10, 2025)
+The quantum geometric tensor (QGT) captures the variations of quantum states with parameters,
+serving as a central concept in modern quantum physics. Its real part, the quantum Fisher informa-
+tion matrix (QFIM), has a measurement-dependent counterpart that links statistics to distinguisha-
+bility. However, an analogous extension for the QGT is hindered by the fundamental inaccessibility
+of its imaginary part through measurement probabilities. Here we introduce a counterpart to the
+QGT that includes measurement operators, termed the semi-classical geometric tensor (SCGT). We
+show that the SCGT provides a lower bound to the QGT that is tight for pure states. Moreover,
+we use the SCGT to derive sharp multiparameter information bounds and discuss extensions of the
+Berry phase.
+Introduction.— The geometric properties of quantum
+states play a fundamental role in understanding physical
+phenomena at the heart of modern physics and technol-
+ogy. A central concept is the quantum geometric tensor
+(QGT) [1, 2]. For a pure state |ψθ⟩parameterized by
+m variables θ = (θ1, . . . , θm), the QGT is deﬁned as the
+Hermitian and positive-semideﬁnite matrix Q(|ψθ⟩) with
+elements
+[Q(|ψθ⟩)]ij = 4 ⟨∂iψθ|(1 −|ψθ⟩⟨ψθ|)|∂jψθ⟩,
+(1)
+where |∂iψθ⟩≡∂i |ψθ⟩and ∂i ≡∂/∂θi. A notable prop-
+erty of the QGT is its invariance under gauge transforma-
+tions: Q(|ψ′
+θ⟩) = Q(|ψθ⟩) for |ψ′
+θ⟩= eiαθ |ψθ⟩, where αθ
+depends on θ arbitrarily. This invariance allows the QGT
+to characterize quantum states in a projective Hilbert
+space, where a global phase is irrelevant.
+The real part of the QGT is known as the Fubini-Study
+metric [3–6], while its imaginary part is an antisymmetric
+second-rank tensor known as Berry curvature [7–9]. The
+integral of the Berry curvature over an oriented manifold,
+called the Berry phase [7, 10, 11], can be observed in var-
+ious topological and quantized phenomena, such as the
+Aharonov–Bohm eﬀect [12, 13] and the quantum anoma-
+lous Hall eﬀect [14–16].
+The QGT has proved central
+for the characterization of quantum systems in terms of
+ﬁdelity susceptibility [17–20], also the study of various
+quantum materials [21, 22], and has been experimentally
+measured in several systems [23–25]. In quantum infor-
+mation, the QGT has been shown to be the asymptotic
+conversion rate in the resource theory of asymmetry [26].
+For a general mixed state, a possible generalization of
+the QGT is based on the symmetric logarithmic deriva-
+tive (SLD) operator [27].
+The SLD, denoted as Li ≡
+Li(̺θ), is a Hermitian operator deﬁned by the relation
+∂i̺θ = (1/2)(Li̺θ + ̺θLi) with tr(̺θLi) = 0. The SLD-
+based QGT is given by [6]:
+[Q(̺θ)]ij = tr(̺θLiLj).
+(2)
+For pure states, this reduces to Eq. (1), since Li(|ψθ⟩) =
+2(|∂iψθ⟩⟨ψθ| + |ψθ⟩⟨∂iψθ|).
+The real part, Re[Q(̺θ)] ≡FQ(̺θ) is the quantum
+Fisher information matrix (QFIM) [28]. It describes the
+inﬁnitesimal change of Bures distance [29] between ̺θ
+and ̺θ+δθ following an incremental change of θ in the
+multiparameter space [30–32]. The inverse F−1
+Q
+sets the
+ultimate sensitivity bound, called the quantum Cramér-
+Rao bound [27], for the joint estimation of m unknown
+parameters θ, serving as a benchmark in multiparam-
+eter quantum metrology [33, 34]. For single-parameter
+(m = 1) unitary encoding, the scalar quantum Fisher in-
+formation has been related to entanglement properties of
+̺θ [35–39], see also Refs. [40, 41] for investigations in the
+m ≥2 scenario. The imaginary part, Im[Q(̺θ)] ≡G(̺θ),
+is a SLD-based generalization of the Berry curvature,
+known as mean Uhlmann curvature [6, 42].
+Interest-
+ingly, G has been associated with measurement incom-
+patibility [43] as well as with saturation conditions of the
+quantum Cramér-Rao bound in multiparameter quantum
+estimation [44, 45].
+Since Eqs. (1, 2) depend solely on the quantum state,
+a natural question arises: Can the QGT have a non-
+trivial counterpart that explicitly includes measurement
+operators?
+In quantum mechanics, a generalized mea-
+surement is described by a set of positive operator-valued
+measure (POVM) operators, {Eω}, where 0 ≤Eω ≤
+1
+and P
+ω Eω =
+1 for ω being a possible measurement
+outcome with probability pω(θ) = tr(̺θEω) as given
+by the Born rule [46].
+It is known that the QFIM
+has a natural measurement-dependent counterpart: the
+classical Fisher information matrix (CFIM), FC(̺θ) ≡
+FC(̺θ, {Eω}), with elements
+[FC(̺θ)]i,j =
+X
+ω
+[∂ipω(θ)][∂jpω(θ)]
+pω(θ)
+,
+(3)
+where the sum runs over all measurement outcomes.
+An essential result is the inequality [32, 34, 47, 48]:
+FC(̺θ) ≤FQ(̺θ),
+(4)
+which holds for all POVM operators and quantum states.
+However, Eq. (4) is saturated under optimal measure-
+ment conditions [47, 48] only if the imaginary part of

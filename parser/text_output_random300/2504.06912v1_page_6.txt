@@ -1,0 +1,126 @@
+6
+0
+1
+2
+3
+ω/∆0
+0
+1
+2
+3
+4
+5
+˜χB1g
+(a1)
+032
+048
+064
+096
+N
+128
+RSum
+0
+1
+2
+3
+ω/∆0
+(a2)
+mRes
+0
+1
+2
+3
+ω/∆0
+0
+1
+2
+3
+4
+5
+˜χB1g
+(b1)
+032
+048
+064
+096
+N
+128
+RSum
+0
+1
+2
+3
+ω/∆0
+(b2)
+mRes
+FIG. 4. Collective-mode scenario. Side-by-side comparison of the Raman response of a two-band nodeless anisotropic
+s-wave superconductor when accounting for many-body effects in scenarios where a Bardasis–Schrieffer phase collective mode
+is present. These manifest as sharp features in response functions. Panels (a) correspond to a situation where we do not have
+any sharp collective modes as is evidenced by the large-N plots, while the panels (b) correspond to a situation where we do
+have a sharp collective mode. As is evident, in the low-N scenario it is difficult to disentangle spurious peaks from peaks due
+to collective modes in the RSum prescriptions – (a1) and (b1), but is more readily done in mRes prescription – (a2) and (b2).
+The shaded regions represents the spread of anisotropy of the order parameters.
+the Fe-based pnictides and chalcogenides [40, 41], where
+the structure of the order parameter may take the form
+∆θ = ∆0 +∆1 cos 4θ. This order-parameter structure al-
+lows for two scenarios: (i) ∆1 > ∆0, which is referred to
+as the nodal case where the order parameter reaches zero
+at certain angles; and (ii) ∆1 < ∆0, which is referred to
+as the nodeless case, as the order parameter is finite for
+all angles, but is anisotropic. These are referred to as the
+anisotropic s-wave order parameters. The form of I(ω, θ)
+and s(ω, θ) associated with them remain the same as be-
+fore, but with the use of the appropriate ∆θ. In Fig. 2, we
+show the comparison of the RSum and the mRes meth-
+ods for different choices of C ∈{A1g, B1g, B2g}, which
+changes the number and the location of the singular fea-
+tures. The panels (a) correspond to the nodal order pa-
+rameter and the panels (b) to the nodeless one.
+In Fig. 3, we present the scenario from Fig. 2(b1) but
+comparing the RSum and the mRes prescription for dif-
+ferent values of N. The faster convergence of the residue
+prescription is evident.
+B.
+Collective modes
+Owing to the potential high cost of increasing the num-
+ber of sub-intervals, it is beneficial to keep this number
+low. However, as we saw in Fig. 3, we run into the risk of
+introducing spurious peaks in the response that will mis-
+guide the inference drawn from the calculation. We can
+demonstrate this issue by performing a calculation for
+a simple model that calculates the full Raman response
+with many-body interactions using the prescriptions out-
+lined in Refs. [37, 42–45].
+The relevant detail for the present work is that al-
+though we need the same steps to calculate χC as before,
+this is then followed by many recursive steps that ef-
+fectively realize the many-body renormalizations. These
+steps involve inverting matrices of rank of the order of
+the mesh size. The numerical cost for such a calculation
+can scale uncomfortably quickly with N. In fact, this is
+one of the reasons why there are few studies exploring
+the Raman response from arbitrarily anisotropic super-
+conductors [46].
+In Fig. 4, we compare the results for the full Ra-
+man response computed with the RSum and the mRes
+prescriptions for different N in the presence of col-
+lective modes, resulting in the presence of sharp and
+broad features in the converged result. The sharp one
+is a coherent Bardasis–Schrieffer collective mode [47]
+of the system which provides crucial insight into the
+electronic properties of the material – in this case, on
+the strength of sub-leading competing pairing symmetry
+channels [42, 43, 47, 48] – and is induced by many-body
+interactions. As is evident from the panels of the figure,
+for a low N, the distinction between the collective-mode
+feature and the spurious ones is not clear. Importantly, a
+clear distinction is achieved faster when using the mRes
+prescription [49]
+C.
+Density of states
+We can provide a further example of a response func-
+tion where the improvement of the results using the mRes
+method can also be demonstrated. Let us consider the
+calculation of the density of states of a superconductor
+with an anisotropic order parameter ∆θ [50]. The den-
+sity of states per unit area of such a 2D superconductor

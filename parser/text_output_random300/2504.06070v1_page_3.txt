@@ -1,0 +1,58 @@
+Published as a conference paper at ICLR 2025
+outputs, thereby enabling predictions based on past fluid data(Rao et al., 2023). For example, Deep-
+ONet (Lu et al., 2021a), which is derived from the universal approximation theorem, employs a
+branch-trunk architecture. FNO (Li et al., 2020) approximates the integral operator by employing
+linear transformations in the Fourier space. U-FNO (Wen et al., 2022) and U-NO (Rahman et al.,
+2022) enhance FNO with U-shaped multi-scale frameworks. Geo-FNO (Li et al., 2023b) handles
+complex geometries by transforming irregular input physical domains into latent spaces with uni-
+form grids. F-FNO (Tran et al., 2023) improves FNO through separable spectral layers and residual
+connections. Additionally, MWT (Gupta et al., 2021) introduces a multiwavelet-based neural oper-
+ator. LSM (Wu et al., 2023) decomposes complex nonlinear operators into multiple base operators,
+using neural spectral blocks to solve high-dimensional PDEs. However, these methods do not ex-
+plicitly model latent physical quantities, leading to a lack of physical interpretability. Overlooking
+the fluid dynamics, they perform poorly in temporal extrapolation and spatial generalization.
+Latent physical quantity modeling methods. This category of methods is based on existing NS
+equations and explicitly models the required physical quantities, such as velocity, for fluid predic-
+tion. One approach is to directly incorporate the NS solutions as parameters of the deep model and
+formalize the constraints, e.g., PDEs, corresponding initial and observed data, as a loss function
+(Raissi et al., 2019; 2020; Lu et al., 2021b). enabling the inference of latent physical quantities from
+observed data. However, this method is not effective for predicting future fluid behavior. Another
+approach is to approximate and simplify NS equations and estimate the fluid velocity field, then
+use the velocity field and the simplified equations to predict future fluid behavior. For instance,
+Zhang et al. (2022) initially provided estimates using an optical flow predictor constrained by the
+NS equations. DVP (Deng et al., 2023) combines vortex particles with a vortex-to-velocity dynam-
+ics mapping to capture complex flow dynamics. HelmFluid (Xing et al., 2024) integrates learned
+Helmholtz dynamics to generate future fluid behavior. However, this method does not achieve ex-
+plicit incorporating of the NS equations, lacking intuitiveness. In addition, since fluid dynamics is
+a complex system involving the coupling of multiple physical quantities, models that rely solely on
+the velocity field have inherent limitations.
+3
+PHYSICS-INFORMED NEURAL PREDICTOR
+Let us consider a scenario: the transport of dye in water. The dye is transported and diffused with the
+flow of water, and it does not affect the flow of the water. Under normal temperature and pressure,
+water approximately satisfies the incompressible Navier-Stokes equations. We aim to predict the
+future evolution of the dye concentration only based on observed dye concentration data, while also
+estimating the unobserved velocity and pressure fields of the water as interpretable evidence.
+Figure 2 illustrates the overall architecture of our PINP model. Herein, the dye flows from left to
+right through a pipe with obstacles. The observed data includes dye concentration c and spatial
+information ψ. Using these observed data, and based on a physics-informed neural network, we
+simultaneously estimate the concentration field at time t′, as well as the underlying velocity and
+pressure fields which are unmeasured. With these inferred fields and the Discrete PDEs Prediction
+Network, we can predict the concentration field ˆc′ for the next time step.
+In the Discrete PDEs Prediction Network, we construct the predictor using discretized PDEs. Since
+this discretization naturally introduces numerical errors, we use a correction network to refine the
+predicted concentration field, resulting in the final prediction ˆc′. Additionally, the simultaneously
+estimated velocity and pressure fields at time t′ serve as interpretable evidence.
+Notation. Throughout the paper, ∇= ∇x denotes spatial gradients, ˙c =
+dc
+dt time derivatives,
+∇· u = tr(∇u) divergence, and · tensor inner product. k ∈{1, 2, ..., N} denotes the k-th frame,
+tk the time of k-th frame, and ∆t the time interval between tk and tk+1.
+3.1
+DISCRETIZATION PDES
+We considered the transport of a passive scalar c(x, t) ∈RH×W by a flow velocity field u(x, t) ∈
+R2×H×W . The passive scalar is advected by the flow and diffused but has no dynamical effect on
+the fluid motion itself, which satisfies the incompressible NS equations:
+˙c(x, t) = −u(x, t) · ∇c(x, t) + Pe−1∇2c(x, t),
+(1)
+3

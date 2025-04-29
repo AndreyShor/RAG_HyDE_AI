@@ -1,0 +1,44 @@
+4. Discussion
+Using our modiﬁcation [17, 18] of the machine learning method proposed
+in Ref. [11], we perform extrapolations to the inﬁnitely large model space of
+the NCSM results for energies E and rms point-proton rp, point-neutron rn,
+and point-nucleon (matter) rm radii of the 6He nucleus in the ground state
+and in the three lowest states of the 6Li nucleus. The NCSM calculations
+were performed using the Daejeon16 NN interaction in model spaces up
+to Nmax = 18.
+The training datasets for the neural networks consist of
+the NCSM parameters Nmax and ℏΩalongside with corresponding computed
+values of E (or rp, rn, or rm).
+The key innovation of our method is the training of an ensemble of arti-
+ﬁcial neural networks based on a preprocessing of training data, ﬁltering
+trained networks according to rigorous selection criteria, and performing
+statistical post-processing of the accepted predictions.
+The extrapolation
+algorithm is implemented using Python with open-source machine learning
+libraries, including Keras [22], TensorFlow [23], and TensorFlow Addons [27].
+The predictions for the ground state energies of 6Li and 6He exhibit a
+good convergence. By extrapolations utilizing the largest training dataset
+including the NCSM results in model spaces up to Nu
+max = 18 we obtain
+E(6Li) = −32.036 ± 0.003 MeV and E(6He) = −29.429+0.007
+−0.005 MeV. The pre-
+diction uncertainties are comparable to the numerical accuracy of NCSM
+calculations (1 keV) and do not exceed the uncertainties of the machine
+learning extrapolations ISU-a, ISU-b and TUDa. However, as it was shown
+in Refs. [17, 18], at all values of Nu
+max, our extrapolation results lie systemat-
+ically higher than those of ISU-a including the uncertainties. This suggests
+that diﬀerent machine learning extrapolation approaches may lead to sys-
+tematically diﬀerent results. It is interesting that our prediction for the 6Li
+ground state energy is consistent with the ISU-b prediction which uncertainty
+is, however, nearly an order of magnitude larger. Notably, due to the larger
+number of trained and selected neural networks in our study, the statistical
+reliability of our predictions is higher than those of ISU-a and ISU-b. The
+convergence trends of the TUDa approach for the energies is similar to ours
+but the ﬁnal TUDa result suggests less binding of the 6Li nucleus and does
+not overlap with ours accounting for the uncertainties.
+The prediction uncertainty for rms point-proton, point-neutron and point-
+nucleon (matter) radii is slightly larger, approximately 1%, yet the overall
+convergence remains satisfactory.
+Our results for the radii of 6He are in
+14

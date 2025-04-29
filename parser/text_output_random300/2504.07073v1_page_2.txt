@@ -1,0 +1,128 @@
+A&A proofs: manuscript no. main
+it impacts our understanding of the formation and evolution of
+compact objects, and our predictions for compact object merg-
+ers, which are now routinely observed by gravitational wave de-
+tectors like LIGO/VIRGO (Abbott et al. 2023, and references
+therein).
+In recent decades, extensive observing programs utilizing
+various ground-based and space telescopes have gathered multi-
+wavelength and multi-epoch spectroscopic data of hot stars in
+the Galaxy (GAL; Z⊙, Fe-group = 0.014; Magg et al. 2022) and in
+the low-metallicity environments of the Large Magellanic Cloud
+(LMC; ZLMC, Fe-group = 1/2 Z⊙, Fe-group; Vink et al. 2023) and
+Small Magellanic Cloud (SMC; ZSMC, Fe-group = 1/7 Z⊙, Fe-group;
+Vink et al. 2023). These data have been analyzed in several liter-
+ature studies using state-of-the-art stellar atmosphere codes, pro-
+viding stellar and wind parameters. By leveraging these compre-
+hensive datasets, we aim to develop an updated mass-loss pre-
+scription, broadly applicable to hot stars with UV-driven winds
+and across a wide range of metallicities.
+Section 2 of this paper describes the sample of hot stars used
+in this study and outlines the selection criteria applied. The re-
+sulting mass-loss prescription is presented in Sect. 3. A detailed
+comparison to commonly used mass-loss recipes and the impli-
+cations of adopting our updated mass-loss prescription in stellar
+evolution models are discussed in Sect. 4. Finally, a summary of
+our findings is provided in Sect. 5.
+2. Method
+2.1. Parametrizing stellar mass-loss rates
+Castor, Abbott, & Klein (1975, hereafter CAK) established the
+first theoretical framework for radiatively driven stellar winds.
+In their zero-sound speed approximation, they can express the
+mass-loss rate as
+˙M ∝α (1 −α)(1−α)/α k1/αΓ1/α
+e
+(1 −Γe)−(1−α)/α ,
+(1)
+with Γe = κeL/(4πcGM) being the electron scattering, or clas-
+sical Eddington parameter. The quantities k and α are so-called
+(line-)force multiplier parameters which have inherent temper-
+ature and metallicity dependencies (see, e.g., table 3 in Puls
+et al. 2000). For most stars, the radiative force arising from line
+opacities is crucial to overcome gravity and launch the stellar
+wind, meaning that the line opacity cannot be ignored in a de-
+scription of radiation-driven mass loss. While the parametric
+CAK description already simplifies the inherent complexity of
+the radiative force, the further dependencies of the force mul-
+tiplier parameters prevent any straightforward analytic descrip-
+tion1. Moreover, the validity of the CAK description is limited
+and for example, does not incorporate WR stars. Formally, the
+full complexity of the line force can be encapsulated in a Γrad
+quantity including the full flux-weighted opacity, but while Γe
+can be reasonably determined and is often approximately con-
+stant in the relevant part of the stellar atmosphere, Γrad instead is
+a radially strongly varying function and thus not handy for any
+empirically calibrated prescription.
+Given these considerations, we choose a Γe-dependence for
+our ˙M-description. For stars that are not close to the Eddington
+limit (Γe ≪1), the mass-loss rate’s dependence on the Eddington
+factor can be further simplified to
+˙M ∝Γn
+e .
+(2)
+1 The famous “cooking recipe” in Kudritzki et al. (1989) requires nu-
+merical iteration and thus is hardly used in current evolution modeling.
+Within this approximation, the information on the metallicity
+dependence included in the full line opacities or the force mul-
+tiplier parameters is lost. To remedy this shortcoming, we use
+the well-established fact that hot star winds are driven by UV-
+radiation pressure on metal ions, in particular the line-rich ions
+of iron and the iron-group elements. Consequently, the mass-loss
+rate is expected to depend on the abundances of the iron group
+elements Sc, Ti, V, Cr, Mn, Fe, Co, and Ni (ZFe-group), meaning
+that ˙M gets weaker as the metallicity decreases.
+As an approach for developing an empirical description, use-
+ful for implementation in stellar evolution calculations, we as-
+sume that the mass-loss rates of hot stars can be expressed by a
+power-law description depending only on Γe and ZFe-group
+˙M ∝Γn
+e Zm
+Fe-group.
+(3)
+The metallicity exponent, m, is constrained by empirical and the-
+oretical efforts to be between m ≈0.5 – 1.6 (see also Sect. 4.1).
+In many empirical studies of massive stars, mass-loss rates
+are often presented only as a function of luminosity, whereas
+stellar mass and surface H abundance are not considered. This
+simplification is only valid when comparing stars within specific
+evolutionary subgroups (e.g., main-sequence stars, supergiants)
+that have similar luminosity-to-mass ratios and surface hydrogen
+abundances. However, such relations can deviate by several or-
+ders of magnitude when applied to stars in different evolutionary
+states.
+2.2. Sample selection
+Over the past decades, numerous studies have focused on the
+spectral analysis of hot, massive stars and the determination of
+their mass-loss rates. While we cannot rule out systematic biases,
+e.g., due to additional physics not covered in the current genera-
+tion of atmosphere models, we assume within this work that the
+current spectroscopic analysis methods derive accurate measure-
+ments of the mass-loss rates within a reasonable uncertainty aris-
+ing from approximations and assumptions made within the 1D
+stellar atmosphere codes. Recently, Sander et al. (2024) demon-
+strated that the derived stellar parameters for the same star using
+different non-local thermodynamic equilibrium (non-LTE) stel-
+lar atmosphere codes are in good agreement. Therefore, to min-
+imize systematic biases, we include in our sample only spectro-
+scopic studies that use established non-LTE stellar atmosphere
+codes. Despite this, these studies cannot be used indiscriminately
+when aiming to derive a robust empirical mass-loss relation. To
+mitigate systematic differences, our selected sample adheres to
+the following criteria:
+1. A star must be sufficiently hot (Teff ≳12 kK) to be properly
+in the regime of radiation-driven winds.
+2. The distance to a star must be well-determined to ensure ac-
+curate luminosity estimates. This means that we require for
+bright Galactic targets that their distance is known via clus-
+ter associations, and for fainter Galactic targets their previous
+distance estimates have to agree with Gaia parallaxes.
+3. The analysis of a star must employ a non-LTE stellar atmo-
+sphere code that includes iron line blanketing (PoWR, CM-
+FGEN, and Fastwind).
+4. Stars are excluded if their wind-line variability differs from
+the natural variability expected in OB stars, yielding differ-
+ences in the mass-loss rates larger than 50% (Massa et al.
+2024).
+5. Stars suspected to belong to binary or multiple systems but
+analyzed as single stars are excluded.
+Article number, page 2 of 18

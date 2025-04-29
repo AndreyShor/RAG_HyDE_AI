@@ -1,0 +1,43 @@
+Supplementary Materials 
+ 
+I. 
+Introduction to Multi-objective Bayesian Optimization  
+The Pareto front is the set of non-dominated solutions in the objective space, meaning no other 
+solution is strictly better in all objectives at the same time. For example, in the two-objective 
+maximizing problem shown in Figure S1, a point in the hyperparameter (reward) space is a Pareto 
+point, also called non-dominated point, if and only if there are no other points on its right 
+horizontally and there are no other points on its top vertically. When the two rewards have 
+overlapping optimal solutions, their Pareto front will collapse into a trivial Pareto point, as shown 
+in Figure S1d. Once the two rewards have different optimal parameters, there will be trade-offs 
+involved on the nontrivial Pareto front as shown in Figure S1e-f.  
+Reward 1 = exp(−(𝑥1 −0.35)2 −(𝑥2 −0.65)2)
+−exp(−(𝑥1 −0.65)2 −(𝑥2 −0.35)2) 
+(5) 
+ 
+ 
+Reward 2 = exp(−(𝑥1 −0.35)2 −(𝑥2 −0.35)2)
+−exp(−(𝑥1 −0.65)2 −(𝑥2 −0.65)2) 
+(6) 
+ 
+ 
+Reward 3 = −Reward 1 
+(7) 
+Here 𝑥1 and 𝑥2 both range from 0 to 1. 
+In the MOBO process, the measured Pareto front is computed based on all the measured reward 
+values. In the meantime, multiple individual GPs are used to predict the distribution and 
+uncertainty of each reward in the whole experiment parameter space, based on which the 
+acquisition function can be calculated. In the example of qNEHI, the expected hypervolume gain 
+is computed in the hyperparameter space, considering the expected improvement in each reward 
+and their corresponding uncertainty in the parameter space. Therefore, as shown in Figure S1d-f, 
+the next set of parameters to try is determined by maximizing such expected hypervolume 
+improvements (rewards gain), or equivalently how far the new measurement can push Pareto front 
+away from the reference point to the “upper right” according to GP predictions.  
+In Figure S1, we show the distribution of Pareto front in the hyperparameter (reward) space in 
+panel e, and parameter space in panel g for reward 1 vs. reward 2 MOBO problem. Notably, the 
+Pareto front appears as an arc connecting the maximums of reward 1 and 2 along their overlapping 
+gradient direction.  
+We subsequently examine the effect of the two different ways of biasing the MOBO choice in 
+the acquisition function. Here we take 50 random seeding points in the 𝑥1 −𝑥2 parameter space 
+and then modify the acquisition function to give different predictions on the optimal solutions. In 
+Figure S1h, we show the consequence of shifting the reference point. When the reference point is 
+along the diagonal line (ref 1 in Figure S1e), the resulting optimal solution locates in the middle 

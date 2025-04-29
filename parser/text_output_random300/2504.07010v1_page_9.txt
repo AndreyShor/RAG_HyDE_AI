@@ -1,0 +1,57 @@
+2.3
+Empirical BC approximation
+The dimensionality of the n-th distribution’s support, sn, is the number of
+qubits measured in the n-th circuit. In Figure 2, sn = 2 because only q2
+and q3 are measured. As the number of qubit measurements grows, e.g. for
+d > 5, computing the BC explicitly becomes expansive or unfeasible be-
+cause of the sum over all possible output configurations, P
+y∈Yn ∼O(2sn).
+Moreover, the explicit form of the distribution densities, P ˆY and PY , is usu-
+ally unknown and depends on the quantum dynamics of the qubits inside
+the circuit with and without hardware noise. While Quantum Mechanics
+and the circuit layout may be used to obtain a theoretical estimate of PY ,
+modeling P ˆY would require including system-specific Noise Error Models for
+all device disturbances. A data-driven option is to estimate the densities
+from the available samples using flexible enough ML algorithms, e.g. deep
+models or Kernel Density Estimation (KDE). Nonparametric estimators like
+KDE are assumption-free but rely on the careful choice of the bandwidth
+and become unstable in high dimensions. Parametrized models, e.g. Neural
+Networks, may be misspecified and never capture substantial details of the
+distributions (even for an infinite sample size). Our estimation strategy is
+hyperparameter-free and independent from the dimensionality of the distri-
+bution support. The idea is to replace straightforward density estimations
+with a more constrained but stable density-ratio estimation Sugiyama et al.
+(2012). The need to estimate a density ratio is shared with other works,
+e.g. Tibshirani et al. (2019) or Hu and Lei (2024), and is closely related to
+CP conditional validity (see Section 2.5 for more details). Our motivation
+for using a density-ratio estimator comes from a direct manipulation of the
+conformity score, A = BC(Y, ˆY ). More explicitly,
+BC =
+X
+y∈Y
+q
+PY (y)P ˆY (y) =
+X
+y∈Y
+P ˆY (y)
+s
+PY (y)
+P ˆY (y)
+(4)
+∼
+1
+Mshots
+Mshots
+X
+m=1
+s
+pY (ˆYm)
+p ˆY (ˆYm)
+= E ˆY
+q
+ˆr(ˆY )
+(5)
+where ˆr(ˆY ) ∼pY ( ˆYm)
+p ˆY ( ˆYm) is an empirical estimation of the ratio between the two
+densities evaluated and E ˆY (ˆr(ˆY )) its empirical expectation obtained from
+the available noisy samples, {Yn1, . . . , YnMshots}. We refer to Sugiyama et al.

@@ -1,0 +1,41 @@
+agent based mathematical model of teenage pregnancy. Section 4 discusses
+potential applications and Section 5 concludes. The Python code to replicate
+the results of the simulations of the cusp catastrophe-agent based model of
+teenage pregnancy is in the appendix at the end of this document.
+The next section outlines the nonlinear fertility catastrophe model in detail.
+Section 3 shows its application within an agent-based mathematical framework
+for modeling teenage pregnancy. In Section 4, other potential applications of
+the model are discussed, and Section 5 provides concluding observations. The
+Python code used to replicate the simulation results for the cusp catastrophe-
+agent based model of teenage pregnancy is included in the appendix at the end
+of this document.
+2
+A Nonlinear Fertility Catastrophe Model
+The fertility catastrophe model is based on the fold function proposed by Thom
+(1972). In the fold function, the states s of FΨ(s) are defined by the variables
+ξ and the parameters Ψ, hence FΨ(s) := F(ξ, Ψ) in the cusp model, and the
+function F(ξ, Ψ) is equal to:
+F(ξ, Ψ) = ψ1ξ4 −ψ2ξ2 + ψ3ξ
+(1)
+In equation 1, the variable ξ represents the state of the dynamical system,
+while the control parameters Ψ = {ψ1, ψ2, ψ3} influence the dynamics of the
+system. Changes in latent control parameters Ψ give rise to various geometric
+forms in the state variable ξ. These control parameters capture the dynamic
+changes of a system from a stable state to a sudden catastrophic situation, as
+discussed in Renfrew (1978) and Saunders (1980). The derivative with respect
+to the time of the states ξ gives rise to the deterministic dynamical equation:
+∂ξ
+∂t = −∂V (ξ; α, β)
+∂ξ
+(2)
+In equation 2, the changes of ξ across time t are captured by the function
+V (ξ; α, β), hence the function V (ξ; α, β) is a time-dependent version of the
+fold function F(ξ, Ψ) in equation 1, with the control parameters in the original
+model of Equation 1 now equal to ψ1 = 1/4, ψ2 = 1/2β, ψ3 = −α:
+−V (ξ; α, β) = αξ + 1
+2βξ2 −1
+4ξ4,
+(3)
+In the function V (ξ; α, β) the control parameters α and β affect the dynamics
+of ξ. The equilibrium points are a function of the control parameters α and
+3

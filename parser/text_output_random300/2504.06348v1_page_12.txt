@@ -1,0 +1,59 @@
+resources. Furthermore, note that the initial thermal state can be biased, e.g., by removing certain vibrational
+energies/states which are known from independent arguments or simulations to lead to little or no products.
+Electronic Motion
+From known physical reasoning about energy scales for molecules and extended phases including metals,
+semiconductors, and insulators, electrons can be considered to be approximately in their ground state for a
+fixed equilibrium configuration of the ions (see App. B). That is, at the initial time the electronic excitations
+for reactants and the catalyst are not thermally relevant. This is in line with most conventional quantum
+chemistry approaches which, for the most part, focus on electronic ground states. We stress again that this
+assumption is only made at the initial time - electronic excitations are included at all t > 0. Hence, we
+initialize the electronic ground state in the equilibrium ionic positions for all chemical species.6
+2.3
+Chemical species identification
+In order to define an end-to-end quantum algorithm, we need to decide what data of interest is to be extracted
+from the coherently encoded output of the simulation. A common approach is that this is chosen to be one of
+a handful of observables (most commonly, just energy) which are the same across a large swathe of use-cases.
+Here, instead, we suggest to construct observables tailored to each specific instantiation of the problem at
+hand.
+In this spirit, we propose quantum chemical identification (QCI), a methodology for identifying a set
+of chemical species in a wavefunction of a chemical dynamics simulation.
+Examples of chemical species
+can include free molecules, adsorbed surface species, free radicals, etc., depending on the chemical scenario
+of interest.
+The protocol consists of three steps.
+First, fingerprint functions for each chemical species
+are classically pre-computed. Second, the collection of fingerprint functions for a reaction are classically
+compiled to form species counter functions. Third, the species counter functions are efficiently implemented
+on a quantum computer using coherent arithmetic and logic. The output is chemical species counts entangled
+to each ionic configuration in the wavefunction, which may be easily measured or further processed. Notably,
+the proposed QCI protocol only utilizes ionic information to indicate and count chemical species. However,
+it is most certainly a fruitful line of future work to consider species identification and extraction of other
+observables based on joint electronic and ionic quantum information.
+Classification
+Consider chemical species (e.g. molecules or ions) X1, . . . , XM consisting of nX1, . . . nXM ions, respectively.
+To each Xα we associate the configuration space of its constituent ions, R3nXα . We define an associated
+configuration indicator function for Xα as,
+IXα : R3nXα →{0, 1}
+that takes configurational information and outputs a binary classification – whether the configuration rep-
+resents molecule Xα or not.
+This indicator is obtained using classical computational techniques. As a practical example, we could
+compute
+IXα(x) = Θ(∆>
+Xα −EXα(x))Θ(EXα(x) −∆<
+Xα)
+(12)
+where Θ is the Heaviside step function, EXα(x) is the energy of a configuration x ∈R3nXα and ∆<
+Xα, ∆>
+Xα
+are suitably chosen energy thresholds such that energy values within the interval [∆<
+Xα, ∆>
+Xα] indicate the
+presence of Xα. Appropriate classical computational techniques (e.g. DFT) may be used to compute the
+configuration energy over a relevant subset of R3nXα . The lower threshold ∆<
+Xα can, for example, be a local
+minimum in the potential energy surface, while the upper bound ∆>
+Xα can, for example, be the approximate
+6We have implicitly assumed the electronic ground state of the chemical species is non-degenerate. As per Sec. 14.5.4 in [70],
+the large majority of stable molecules have non-degenerate ground states. For exceptional cases with degeneracy, the user may
+specify what appropriate state from the ground state manifold to prepare.
+12

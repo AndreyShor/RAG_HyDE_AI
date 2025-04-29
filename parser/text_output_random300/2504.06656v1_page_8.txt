@@ -1,0 +1,56 @@
+One signiﬁcant ﬂaw in the projective likelihood classiﬁer is that it doesn’t employ correlation
+between the discriminating input variables. The realistic method results in a loss of performance
+and fails to oﬀer an accurate analysis.
+C.
+Likelihood with Decorrelation (LikelihoodD)
+One signiﬁcant ﬂaw in the projective likelihood classiﬁer is that it does not employ correlation
+between the discriminating input variables. The realistic method results in a loss of performance
+and fails to oﬀer an accurate analysis. When variable correlation is present, even other classiﬁers
+perform poorly. The training sample was quantiﬁed using linear correlation, which calculated the
+square root of the covariant matrix. Consequently, the (symmetric) covariance matrix supplied by
+TMVA is diagonalised.
+D = ST CS ⇐= C
+′ = S
+√
+DST
+(6)
+Here D is the diagonal matrix, while S denotes the symmetric matrix The beginning variable x is
+multiplied by the inverse of C
+′, to determine the linear decorrelation.
+x 7−→(C
+′)−1x
+(7)
+Only linearly coupled and Gaussian-distributed variables have full decorrelation.
+D.
+Multilayer Perceptron (MLP)
+Each connected neuron in an artiﬁcial neural network (ANN) has a unique weight. There are
+n2 possible neurons given a set of n input variables. The so-called multilayer perceptron, which has
+a simpliﬁed layout, can also be employed to expedite processing. There are three diﬀerent types
+of layers in the network. The input layer has nvar neurons and a bias neuron; the output layer has
+yANN; and several deep levels have a user-speciﬁed number of neurons (set in the HiddenLayers
+option) plus a bias node. The neuron response function (ρ) is split into a neuron activation function
+a synopsis function (κ), as well as a neuron activation function (α) so that ρ = α.κ. In the case
+of a neural network with one hidden layer, a tangent hyperbolic activation function, and no bias
+nodes, it leads to the classiﬁer response:
+yANN = tanh
+j=1
+X
+n
+y(2)
+j ω(2)
+i,1
+
+= tanh
+ nh
+X
+j=1
+tanh
+nvar
+X
+j
+xiω(1)
+i,j ω(2)
+i,1
+
+(8)
+8

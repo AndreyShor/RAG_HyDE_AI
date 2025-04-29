@@ -1,0 +1,155 @@
+0
+20
+40
+60
+80
+100
+optimization step [k]
+230
+235
+240
+245
+250
+255
+260
+265
+ionization potential [mEh]
+Experiment
+B3LYP / TZ
+PBE0 / CBS
+DLPNO-CCSD(T) / CBS
+CCSD(T) / DZ
+CCSD(T) / FPA
+a)
+FiRE, c = 3a0
+0
+2
+4
+6
+8
+10
+MAE vs. conventional best estimate [mEh]
+No (T):
+CCSD/CBS
++DMRG
+No CBS:
+CCSD(T)/TZ
++DMRG
+No DMRG:
+CCSD(T)/CBS
+FiRE, c = 5a0
+11.1
+4.3
+2.4
+1.3
+HC
+HS
+HFe
+HFe2
+−50
+−25
+0
+25
+E −Emean [mEh]
+conventional
+best estimate
+b)
+Figure 4: Organometallic compounds: a) Ionization potential of chloroferrocene as a function of optimiza-
+tion steps. b) Mean absolute error for protonation of iron-sulfur complex for conventional methods and FiRE.
+Inset: relative energies of 3 protonation sites vs HC site.
+account for larger bond lengths between the iron and
+sulfur cores. Relativistic effects are part of the corre-
+lation consistent effective core potentials (ccECP) [39]
+used throughout this work.
+Unlike CCSD(T), FiRE
+does not require any corrections and still agrees with
+Zhai et al.’s compound estimate within chemical ac-
+curacy, with a mean absolute error of only 1.3 mEh,
+outperforming CCSD(T)/CBS which has a mean ab-
+solute error of 2.4 mEh.
+With 180 electrons, this is
+not only the largest NN-VMC calculation done so far
+but also demonstrates the generality of FiRE even in
+cases where CCSD(T)/CBS does not achieve chemical
+accuracy.
+Overall, we demonstrated that FiRE accurately de-
+scribes non-covalent interactions, singlet-triplet gaps,
+and ionization potentials on various systems. At this
+accuracy, it is unclear whether the remaining errors
+are due to errors in references, e.g., CCSD(T) errors,
+comparing 0 K gas phase to experimental conditions,
+or structural relaxations which may affect relative en-
+ergies [33].
+2.3
+Convergence rates for NN-VMC
+Our ability to optimize neural wave functions for such
+large systems enables us to study the scaling behavior
+of NN-VMC for the first time.
+When analyzing the
+errors in absolute energies for acenes (Sec. 2.2) and cu-
+mulenes (App. B), as a function of system size nel and
+number of optimization steps t, we find good agreement
+with a power law of the form
+E(t, nel) −E(∞, nel) ∝t−αnel
+β,
+(7)
+as depicted in Fig. 5. Interestingly, we find similar ex-
+ponents of α ≈1 and β ≈2.3 across systems. Some
+recent theoretical work on convergence rates of VMC
+has also obtained polynomial convergence in the num-
+ber of steps, although at lower rates [40, 41]. While
+their analysis is not directly applicable to our setting,
+we give a short comparison in App. J. Extrapolating
+from our empirical rates, to reach a given error in ab-
+solute energy, the number of optimization steps needs
+to scale as t ∼nel
+β
+α ≈nel2.3.
+103
+104
+105
+optimization step t
+10−4
+10−3
+10−2
+10−1
+100
+(E −E∞) [mEh]
+(E −E∞) ∼t−0.8 n2.4
+el
+a)
+cumulenes
+Singlet
+Triplet
+power-law ﬁt
+103
+104
+105
+optimization step t
+10−2
+10−1
+100
+(E −E∞) [mEh]
+(E −E∞) ∼t−1.0 n2.3
+el
+b)
+acenes
+Singlet
+Triplet
+power-law ﬁt
+0
+20
+40
+60
+80
+100
+120
+nel
+Figure 5:
+Convergence rates for neural wave
+functions: Absolute energy error as a function of op-
+timization steps for molecules of increasing size: a)
+cumulenes b) acenes. For both systems, the optimiza-
+tion curves are well approximated by a powerlaw with
+similar exponents.
+6

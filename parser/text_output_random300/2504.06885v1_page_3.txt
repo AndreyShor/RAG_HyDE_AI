@@ -1,0 +1,108 @@
+18 atom lattice is encoded as a fully-connected
+QUBO and executed on quantum annealers. In
+our work we execute this on larger lattice sizes,
+using quantum annealers as well as gate-based
+quantum computers and classical methods. An-
+other related piece of work [25] studies a slightly
+different formulation of the problem where the
+goal is to minimise the number of dangling bonds
+(i.e. connections between vacancies and carbon
+atoms in the lattice), again executed on a quan-
+tum annealer. The same DkS problem as in [6]
+has also been investigated in a biology-inspired
+test-case [26] on randomised bipartite graphs,
+where the topology of the D-Wave device is iden-
+tified as the main limitation for applying it on
+quantum hardware.
+Ref. [5] provides a comprehensive review of
+the current state of quantum optimisation, high-
+lighting the challenges and future prospects of
+the field. The review outlines best practices for
+making fair comparisons when solving optimisa-
+tion problems with different methods. The au-
+thors showcase recent publications where optimi-
+sation problems with varying numbers of qubits
+and problem connectivity (known as density) are
+solved using VQAs, comparing each solution’s
+quality through the approximation ratio metric.
+The most common problem connectivity involves
+3-regular graphs (where each node is connected
+to three others), which aligns well with quantum
+hardware layouts.
+Studies that explore higher
+qubit counts typically maintain this low problem
+connectivity.
+Increasing connectivity for larger
+qubit systems requires additional SWAP gates,
+leading to increased hardware noise.
+However,
+Refs. [27–30] all consider Sherrington-Kirkpatrick
+problems with 100% density, which can be refor-
+mulated as QUBO problems. These studies em-
+phasize both the challenge and the importance
+of choosing standardised metrics to ensure that
+benchmarks are fair and results are comparable.
+The chosen set of metrics must fully capture the
+diverse behaviors of different algorithms.
+Our
+work applies the best practices outlined in this re-
+view to a particular problem, which stands out in
+terms of qubit count and high density compared
+to the other highlighted studies.
+We achieve a
+competitive mean approximation ratio with VQE
+on a QPU relative to the results reported in Table
+IV of Ref. [5]. While Ref. [5] primarily focuses on
+gate-based algorithms, we also address questions
+regarding how QAAs can be fairly compared to
+variational gate-based methods.
+Other studies [31,32] compare QAAs and gate-
+based variational methods for specific use-cases.
+However, a comprehensive study that includes
+time comparisons, solution quality, and scaling
+analysis has yet to be conducted. A recent pa-
+per [33] compares the Quantum Approximate Op-
+timisation Algorithm (QAOA) to quantum an-
+nealing and claims that QAOA, when run on a
+real gate-based device, can outperform quantum
+annealing on a 5-regular max-cut graph problem.
+On the other hand, Ref. [34] argues that these
+comparisons could be seen as ambiguous, explain-
+ing that the reported results from QAOA were
+enhanced by post-selection.
+These studies fur-
+ther highlight the need for transparent and fair
+benchmarking.
+3
+Problem Formulation
+We are focusing on the problem of finding the
+minimum energy of defective graphene structures.
+This problem is discussed in more detail in Ap-
+pendix A. We model the system as an N-site
+hexagonal structure, as shown visually in Figure
+1 (N = 18 in this example). The first graphene
+structure explored is a 3 × 3 supercell, a unit cell
+containing two carbon atoms repeated in a 3 × 3
+arrangement, which corresponds to an 18 variable
+QUBO. We also investigate other n × n super-
+cells, which translate to QUBOs of varying size.
+Each (binary) QUBO variable represents a site
+containing either a carbon atom or a vacancy.
+Each of the carbon atoms in Figure 1 can be
+removed, creating a vacancy that results in the
+breaking of carbon-carbon bonds. The breaking
+of these bonds increases the energy of the sys-
+tem’s ground state configuration. The energy in-
+crease depends on where the vacancies are intro-
+duced. In particular, and following Ref. [6], the
+energy of the system depends only on the number
+of remaining carbon-carbon bonds. In this model
+we impose periodic boundary conditions, making
+this structure a 3-regular graph. The supercell’s
+2D geometry is maintained for all configurations.
+The optimisation problem is, therefore, trans-
+lated to finding the lowest energy configuration of
+the system, subject to the constraint of a certain
+number of vacancies. We work with three vacan-
+cies, the highest studied in Ref. [6], treating this
+3

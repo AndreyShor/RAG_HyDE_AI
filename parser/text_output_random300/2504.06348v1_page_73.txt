@@ -1,0 +1,154 @@
+E.2.3
+SELT
+We compute the quantity |kp|2 (and likewise |kP|2) once to an ancilla register, to be shared across both the
+kinetic and interaction terms (for the latter, see App. E.5.4). The cost of this preparation is included in the
+interaction term. Given the preparation of a uniform reference state in App. E.2.2, SELT then reduces to
+a single inequality test as discussed in Sec. 5.1.2. The register encoding |kP|2 (and |kp|2) is of size ¯b and b,
+respectively, hence the cost is b + ¯b Toffolis.
+E.3
+The Coulomb terms Vel, V PI
+ion
+E.3.1
+PREP1 (Coulomb)
+We aim to prepare a state |ϕV ⟩(where we drop the superscript PI for brevity on the ion charges ZI), defined
+as
+|ϕV ⟩∝
+
+
+q
+λ ˜Vel
+ηval
+X
+i̸=j=1
+|i, j⟩+
+q
+λ ˜Vion
+ηval+ηion
+X
+I̸=J=ηval+1
+p
+ZIZJ|I, J⟩
+
+.
+(173)
+To prepare |ϕV ⟩(up to entanglement with junk), we first prepare a state
+|˜ϕV ⟩∝
+
+
+ηval
+X
+i=1
+|i⟩+ λ1/4
+Vion
+λ1/4
+Vel
+ηval+ηion
+X
+I=ηval+1
+p
+ZI|I⟩
+
+⊗
+
+
+ηval
+X
+j=1
+|j⟩+ λ1/4
+Vion
+λ1/4
+Vel
+ηval+ηion
+X
+J=ηval+1
+p
+ZJ|J⟩
+
+.
+(174)
+For readability in the proceeding compilation, we absorb the prefactor
+λ1/2
+Vion
+λ1/2
+Vel
+into the coefficients ZI and ZJ.
+For atomic numbers ZI let κ = ηval + Pηion
+I=1 ZI = Pη
+¯I=1 Z¯I, where
+Z¯I =
+(
+1
+¯I = 1, .., ηval,
+Z¯I−ηval
+¯I = ηval + 1, ..., ηval + ηion.
+(175)
+Note that κ = 2ηval for charge-neutral systems. Then we (i) first prepare a uniform superposition over
+values z = 1 . . . κ (with cost 2⌈log κ⌉+ 2bκ −8); (ii) using a QROM, load ¯I for all Z¯I−1 < z ≤Z¯I. This
+generates the state we want, up to entanglement with junk. To see this note that the state after the USP is
+transformed to
+1
+√κ
+κ
+X
+z=1
+|z⟩7→
+1
+√κ
+κ
+X
+z=1
+|z⟩|¯I(z)⟩=
+η
+X
+¯I=1
+Z ¯
+I
+X
+z=Z ¯
+I−1
+|z⟩|¯I(z)⟩.
+(176)
+But ¯I(z) is a constant for all Z¯I−1 < z ≤Z¯I, and so rearranging and dropping the z argument gives
+η
+X
+¯I=1
+Z ¯
+I
+X
+z=Z ¯
+I−1
+|z⟩|¯I(z)⟩=
+η
+X
+¯I=1
+p
+Z¯I|¯I⟩
+
+
+1
+p
+Z¯I
+Z ¯
+I
+X
+z=Z ¯
+I−1
+|z⟩
+
+=
+η
+X
+¯I=1
+p
+Z¯I|¯I⟩|junk¯I⟩.
+(177)
+Of course, it would be unnecessarily costly to use a QROM that indexes over all values z = 1 . . . κ with
+cost κ given that the majority of the loaded values are just equal to the index itself (because Z¯I = 1 provided
+that ¯I ≤ηval). Instead, we (i) copy the index value to the output register using CNOTs (with zero cost); (ii)
+subtract ηval from the index register (with cost ⌈log η⌉−2); (iii) use a QROM over κ −ηval indices to fix up
+the incorrect values by loading z ⊕¯I(z) (with cost κ −ηval); (iv) add ηval back into the index register (with
+cost ⌈log η⌉−2). The total cost of this part is then κ −ηval + 2⌈log η⌉−4. Note that this must be repeated
+twice: once for ¯I and once for ¯J.
+The simplest way to add a control to the preparation of |ϕV ⟩for the term selection in Eq. (81) is to
+control the QROM here. In the case where the control is off and the QROM is not applied, the |¯I⟩register
+73

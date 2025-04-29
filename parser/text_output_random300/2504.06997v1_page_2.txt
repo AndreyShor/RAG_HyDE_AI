@@ -1,0 +1,45 @@
+2 
+1 
+Introduction 
+Cerebral blood flow (CBF) is a critical biomarker for brain health and function, supporting 
+cognitive and neurological processes1. Existing techniques, such as transcranial Doppler 
+ultrasound (TCD) is non-invasive but relies on experienced operators and is limited to larger 
+arteries2. Functional magnetic resonance imaging (fMRI) and positron emission tomography 
+(PET), on the other hand, are bulky and provide only ‘snapshot’ observations; they are not suitable 
+for bedside applications3,4. In contrast, diffuse correlation spectroscopy (DCS) offers non-invasive, 
+continuous, high-temporal-resolution CBF index (CBFi) measurements at the bedside5. DCS 
+analyzes light intensity fluctuations caused by red blood cell movement using the autocorrelation 
+function (ACF), given by 𝑔𝑔2 = 〈𝐼𝐼(𝑡𝑡)𝐼𝐼(𝑡𝑡+ 𝜏𝜏)〉/〈𝐼𝐼(𝑡𝑡)〉2, to assess blood flow dynamics6,7. 
+Over the past two decades, DCS has evolved from continuous-wave (CW-DCS) to time-domain 
+(TD-DCS) and frequency-domain (FD-DCS) variants8,9. Analytical models for complex tissue 
+structures have advanced from semi-infinite homogeneous medium to two-layer and the three-
+layer models10,11. These developments have expanded DCS applications in brain health evaluation, 
+neurovascular studies, cancer diagnosis, and therapy evaluation3. 
+Traditionally, DCS maps measured 𝑔𝑔2 curves to the semi-infinite model, allowing real-time CBFi 
+measurements12. However, this model underestimates CBFi and is susceptible to extracerebral 
+layer interference13. Attempts to improve CBFi sensitivity by fitting 𝑔𝑔2 at short correlation times 
+with the semi-infinite analytical model or increasing the source-detector separation (ρ) often 
+reduce signal-to-noise ratio (SNR) and lead to inaccurate CBFi estimates14. There is a trade-off 
+between the detection depth and SNR15. While advanced DCS variants such as pathlength-resolved 
+DCS or TD-DCS can mitigate this issue, their complexity limits widespread adoption16,17. 
+Multichannel DCS (MDCS) improves SNR by an order of magnitude, enabling deeper blood flow 
+measurement18,19. For example, the ATLAS SPAD sensor developed by the University of 
+Edinburgh achieves ρ~5 cm20. In addition, the two-layer and three-layer analytical models enhance 
+CBFi sensitivity and enable separation of cerebral and extracerebral blood flow but require 
+multiple predefined parameters for fitting (e.g., layer thickness and optical properties). If these 
+parameters are mis-specified, significant errors may occur21–23. Additionally, these models are 
+computationally intensive, limiting real-time application24. Integrating MDCS with multi-layer 
+analytical models could enable more accurate CBFi estimation. However, advanced data 
+processing techniques are required to overcome the existing limitations. 
+Deep learning (DL) has emerged as an efficient technique for DCS data processing in multiple 
+studies25–29. It has demonstrated improved speed and robustness compared to traditional curve-
+fitting approaches24,25. For example, Poon et al. achieved 23-fold speed improvement25, and Li et 
+al. showed LSTM could improve BFi accuracy27. Nakabayashi et al. did explore an LSTM to 
+separate shallow vs deep flow in a two-layer flow phantom, underlining the community’s interest 
+in accounting for layers30. However, to date these DL models have been trained mostly on the 
+semi-infinite homogeneous (single-layer) analytical data, Monte Carlo simulations, or phantom 
+experimental data, which are not suitable for CBFi recovery. To our knowledge, no prior 
+publication has utilized training data from the two-layer DCS analytical model. The two-layer 
+analytical model can accurately recover CBFi and relative CBFi (rCBFi) than the semi-infinite 
+model while requiring fewer parameters than the three-layer model22, making it an ideal candidate 
+for training dataset generation. 

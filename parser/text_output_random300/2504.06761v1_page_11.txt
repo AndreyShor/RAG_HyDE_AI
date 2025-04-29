@@ -1,0 +1,50 @@
+Constructing wall turbulence
+11
+figure 5(b), the one-dimensional energy spectrum of the synthetic turbulence at 𝑦+ = 3.9𝑅𝑒1/2
+𝜏
+exhibits the 𝑘−1 scaling in the low-wavenumber (large-scale) region, consistent with the
+energy distribution observed in canonical wall turbulence. This agreement highlights SWAT’s
+capability to resolve the dominant energy-containing motions that govern turbulent transport
+processes in the logarithmic region.
+The hairpin-vortex-based SWAT model also captures the higher-order dynamics character-
+istic of wall-bounded turbulence. Conventional synthetic turbulence models often rely on ad
+hoc parameter tuning to match first- or second-order statistics, yet they frequently overlook
+the higher-order statistical complexity. The SWAT framework overcomes this limitation
+by embedding physically meaningful vortical structures that naturally encode multiscale
+interactions and nonlinear dynamics. As shown in figure 5(c), SWAT accurately reproduces
+the logarithmic scaling of even-order statistical moments of streamwise velocity fluctuations,
+⟨[(𝑢−⟨𝑢⟩)/𝑢𝜏]2𝑝⟩1/𝑝, with respect to the distance from the wall within the logarithmic
+sublayer (Meneveau & Marusic 2013).
+3.3. Towards higher Reynolds numbers
+The nature of coherent structures in high-Reynolds-number wall turbulence remains a topic
+of active debate (Wu & Moin 2009; Smits et al. 2011; Eitel-Amor et al. 2015). A central
+question is whether simple hairpin vortices can still provide an adequate modeling framework
+at extremely high Reynolds numbers. This poses a fundamental challenge for our model, as
+the increasing complexity of turbulence may demand a more sophisticated representation of
+vortex interactions and energy transfer mechanisms.
+To investigate this, we generate synthetic wall turbulence at progressively higher Reynolds
+numbers, specifically at 𝑅𝑒𝜏= 2000, 5200, and 10000. Across this range, SWAT consistently
+demonstrates its ability to accurately reproduce the mean velocity profile throughout the
+near-wall, buffer, and logarithmic regions in figures 6(a,c,e). This agreement underscores the
+model’s ability to capture the key statistical features of turbulent boundary layers, even at
+very high Reynolds numbers.
+Regarding the Reynolds stress distribution, all second-order moments exhibit the ex-
+pected logarithmic behavior in the log-law region across all tested Reynolds numbers in
+figures 6(b,d,f). Compared to DNS data, SWAT effectively captures the ⟨𝑤2⟩and ⟨𝑢𝑣⟩
+components, which are crucial for characterizing turbulence anisotropy and momentum
+transfer. Additionally, the model successfully replicates the logarithmic growth trends of the
+peak values of ⟨𝑢2⟩and ⟨𝑣2⟩with increasing Reynolds number (Lozano-Dur´an & Jim´enez
+2014; Lee & Moser 2015), although the growth rate is slightly overestimated. These results
+indicate that SWAT remains a robust framework for modeling the statistical properties of
+wall turbulence across a broad range of Reynolds numbers.
+4. Application of SWAT in initializing simulations of wall turbulence
+Due to the statistical and structural consistency of our synthetic turbulence with real
+turbulence, it provides an efficient and cost-effective alternative for initializing numerical
+simulations. This approach eliminates the need for extensive computational resources
+otherwise required to wait for the flow to transition and fully develop. This advantage is
+particularly beneficial in high-fidelity simulations such as DNS of channel flow, where
+computational resources are often a limiting factor.
+To generate synthetic channel turbulence, hierarchical hairpin vortex packets are indepen-
+dently constructed on both the upper and lower walls. For the channel flow configuration,
+the boundary layer height is set to half the channel height, 𝛿= 𝐿𝑦/2. Hairpin vortices of
+varying hierarchical levels are introduced at each wall, preserving essential features such as

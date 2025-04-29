@@ -1,0 +1,83 @@
+FIG. 3. The figure depicts the deviation of mitigated energy expectation value for the H4 molecule from the
+ideal value in two different training scenarios. The purple plot represents the deviation of mitigated energy
+when ideal expectation values are used as targets in training data and the green plot represents the deviation
+of mitigated energy when sequential error mitigated expectation values are used as the targets for the training
+set Mitigated results on (left) fake-Melbourne machine and (right) fake-Guadalupe machine.
+Lδ(Y, f(X)) =
+(
+1
+2(Y −f(X))2,
+if |Y −f(X)| ≤δ,
+δ(|Y −f(X)| −1
+2δ),
+otherwise.
+(11)
+Where f(X) is the mitigated prediction and Y is the
+ideal/SREM value (from the snippets) used as a target
+to calculate the loss. Here δ is a hyper-parameter de-
+termining where the loss transitions from quadratic to
+linear behavior. In our case, δ is defined by analyzing
+the mean square error between ideal/SREM values of the
+snippets and the corresponding noisy expectation values
+δESREM
+α
+= |ESREM
+α
+−Eα|2 and δEideal
+α
+= |Eideal
+α
+−Eα|2
+for α indicating 1, 2, 3-parameter snippet circuits from
+the training set to handle the outliers.
+The choice of
+the loss function is based on the fact that with a given
+circuit, sampling cost scales exponentially with respect
+to its depth implying eventual intractability in mitigat-
+ing associated errors36.
+Giving less weightage to such
+non-shallow circuit expectation values which show large
+deviation δESREM
+α
+when SREM values are used as labels
+or δEideal
+α
+when ideal values are used as labels ensures the
+proper handling of outliers.
+3.
+Complexity analysis of the model
+Time and Space complexity of GCN: For matrices
+A ∈Ra×b and B ∈Rb×c, matrix multiplication AB has a
+time complexity of O(abc). We use pytorch geometric to
+implement the GCN. PyTorch Geometric first computes
+the matrix multiplication of Zg of H(l)
+g
+and W (l)
+g .
+To
+compute S, they use coordinate form edge index matrix
+of size 2 × |E| and store the normalization coefficient in
+a separate matrix called norm. The computation of SZg
+is what involves the so-called "message passing" and ag-
+gregation. So it’s done in a two-step process. The first
+step is a dense matrix multiplication between matrices
+of size n × n and n × k.
+So the time complexity be-
+comes O(n·n·k). The second step matrix multiplication
+of n × n and n × k will have a similar time complex-
+ity. In practice, it is computed using a sparse operator,
+such as the PyTorch scatter function. The activation is
+simply an element-wise function with a O(n) complex-
+ity. Considering the neighborhood aggregation of each
+node, over l layers the total time complexity becomes
+O(ln2k + l|E|k). Backward pass also has a similar time
+complexity of O(ln2k+l|E|k). More details can be found
+in37. The overall time and space complexity of the GCN
+model is described in the table below:
+Time and Space complexity of Regressor: The
+regressor uses a simple feed-forward neural network given
+by the Eq. 9 and Eq. 10. The matrix multiplication of
+X and W has a time complexity of O(v ·1·kr) = O(nkr).
+Adding the activation layer leads to the total time com-
+plexity of O(lrnkr + lrn) ≈O(lrnkr) for lr layers.
+6

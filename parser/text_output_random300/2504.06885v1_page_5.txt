@@ -1,0 +1,101 @@
+the constraint and have an incorrect number of
+vacancies.
+When plotting the problem graph associated
+with our matrix Q, we obtain a fully connected
+graph.
+This graph is constructed by adding
+edges between nodes for every Qi,j ̸= 0, j > i.
+Note that the graph is fully-connected despite the
+atoms not being bonded in an all-to-all structure;
+this is because the constraint term in Equation 4
+adds in extra on-site and coupling energy terms.
+To solve the problem on quantum hardware, the
+graph must be embedded on physical qubits using
+classical techniques, as described in Appendices
+D and E. This is one of the major challenges in
+general when solving combinatorial optimisation
+problems using quantum computing approaches.
+4
+Methodology
+for
+Multi-Algorithm
+Benchmarking
+Having specified our problem, we discuss the
+methods and benchmarks we employ.
+We con-
+sider three classical techniques for solving our op-
+timisation problem: brute force, simulated an-
+nealing and random sampling. On the quantum
+side, we use two algorithms: VQE, executed both
+on a state vector solver and a quantum process-
+ing unit (QPU), and quantum annealing imple-
+mented on a QPU. Figure 2 provides a schematic
+overview of the key principles underlying each
+method. To understand the methodology and so-
+lutions from different hardware platforms and al-
+gorithms it is important to establish performance
+metrics which fairly reflect the capabilities of each
+device and algorithm and that are device and
+algorithm agnostic.
+Firstly, the differences be-
+tween each method are highlighted, along with
+their limitations. Then, the role of post-selection
+is discussed and, finally, we outline the chosen
+metrics and motivation for their use.
+4.1
+Algorithms and Parameters
+Classical brute force simply involves generating
+all possible solutions to the QUBO problem, cal-
+culating their associated energy, and then select-
+ing the optimal ones. Note that we could ‘hard-
+encode’ the constraint on the total number of
+vacancies in our calculation by restricting the
+search space to those configurations that respect
+the constraint.
+However, we focus on develop-
+Brute Force
+Exhuastive search
+x = (101101...)
+Exact solution
+x
+Objective Function
+Simulated Annealing
+VQE
+U(θ)
+Objective
+Update              
+Solution
+Adiabatic evolution
+Energy
+Quantum Annealing
+Random Sampling
+0
+0
+Energy
+Probability
+0
+1
+0
+Figure 2: Visual representation of the methods used in
+this work, as described in the main text.
+ing a general framework for the multi-algorithm
+benchmarking of QUBO optimisation, where the
+constraint is incorporated as a penalty term as
+described above. Therefore, in order to ensure a
+fair comparison, we treat all methods in the same
+way and do not employ extra steps to enforce the
+constraint. Brute force is an exact method, so we
+know the minimum energy returned will be 100%
+accurate for our model. The major drawback of
+brute force is the time it takes to exhaustively
+produce all possible solutions, which grows expo-
+nentially with the size of the configuration space
+we are searching (e.g. [38]).
+Simulated annealing [23] is a probabilistic
+method which draws analogies from the heating
+and intentional slow cooling of physical systems,
+such as metals, to avoid structural defects. The
+cost function is used to compare the current so-
+lution against a newly selected one, and improve-
+ments on the former are selected. Solutions that
+5

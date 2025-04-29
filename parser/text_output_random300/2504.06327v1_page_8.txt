@@ -1,0 +1,56 @@
+Physics-informed KAN PointNet
+Table 1
+Overview of the 135 generated geometries (𝑚= 135). The symbol Ω denotes the counterclockwise rigid rotation of space
+𝑊around its geometric center.
+Shape of 𝑊
+Side length
+Ω (variation in orientation)
+Number of data
+Equilateral nonagon
+0.365 × sin 𝜋
+9 × csc 𝜋
+7 m
+1◦, 2◦, ⋯, 39◦, 40◦
+40
+Equilateral octagon
+0.8(
+√
+2 −1) m
+1◦, 2◦, ⋯, 44◦, 45◦
+45
+Equilateral heptagon
+0.365 m
+1◦, 2◦, ⋯, 49◦, 50◦
+50
+5. Computational setup
+We define the square enclosure as 𝐻∶= [−1 m, 1 m] × [−1 m, 1 m] with the side length 𝐿of 2 m. Zero-velocity
+Dirichlet conditions are applied at all boundaries. We set the density (𝜌), thermal expansion coefficient (𝛽), gravitational
+acceleration (𝐺), specific heat (𝑐𝑝), and hot temperature (𝑇ℎ) to 1.00, while the cold temperature (𝑇𝑐) and reference
+temperature (𝑇ref) are set to 0.00. The dynamic viscosity (𝜇) and thermal conductivity (𝜅) are both set to 2
+√
+2×10−2.5.
+All units used in this study are expressed in the International System of Units (SI). This parameter set results in a
+Rayleigh number of 𝑅𝑎= 105 and a Prandtl number of 𝑃𝑟= 1.0. We consider three different shapes for 𝑊: equilateral
+heptagon, equilateral octagon, and equilateral nonagon. To expand the range of geometries, we also rotate the inner
+cylinders. Details of the generated geometries are provided in Table 1. A total of 135 geometries are generated. For
+the point clouds 𝑉𝑖(1 ≤𝑖≤𝑚), we set 𝑁= 5000, 𝑀1 = 4340, 𝑀2 = 660, 𝑀3 = 492, 𝑀4 = 105, and 𝑀5 = 130. A
+similar data set was used by Kashefi and Mukerji [20].
+Due to computational constraints, we were limited to a maximum batch size of 7. Consequently, we set the batch
+size parameter, , to 7 for this study. The Adam optimizer [117] is employed with hyperparameters set to 𝛽1 = 0.9,
+𝛽2 = 0.999, and ̂𝜖= 10−8. For a comprehensive understanding of the mathematical definitions of 𝛽1, 𝛽2, and ̂𝜖, one
+may refer to Ref. [117]. We use a constant learning rate of 0.0005 and iterate for 2500 epochs. We report the results at
+the iteration where the minimum loss is obtained during these 2500 epochs. From an engineering perspective, this is
+reasonable because iterations cannot continue indefinitely due to limited computational resources.
+We deploy 105 sensors inside the domains and 25 sensors on the surface of the inner cylinders, as depicted in Fig.
+2. Sensors inside the domains (shown as green triangles in Fig. 2) measure velocity, pressure, and temperature, while
+sensors on the inner surfaces (shown as red squares in Fig. 2) measure only pressure and temperature. The placement
+of 25 sensors on the inner cylinder surface and 25 sensors surrounding the cylinder is slightly adjusted according to
+the cross-sectional shape, while the remaining 80 sensors are fixed across all the geometries.
+For generating sparse data at virtual sensor locations and validating the results obtained by PI-KAN-PointNet, we
+use one of our high-fidelity finite element numerical solvers. This solver has been previously employed in the literature
+[118, 119, 120, 121, 122]. Note that the point clouds used are a subset of the grid vertices from finite element meshes
+employed by the numerical solver.
+Figure 2: Examples of sensor locations for three domains. Green triangles represent sensors measuring velocity, pressure,
+and temperature, whereas red squares represent sensors measuring only pressure and temperature.
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 8 of 25

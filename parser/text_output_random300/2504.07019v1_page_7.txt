@@ -1,0 +1,58 @@
+7
+FIG. E1. Validation of NH-NRG method for the non-interacting AIM with Ud = 0. The full set of complex eigenvalues are
+constructed from exact diagonalization of ˆHN and shown in the Argand plane for N = 2, 3, 4, 5 as the black circle points. NH-
+NRG results are shown as the red diamond points: the min(Nk, 4N+2) retained states match precisely with the exact results.
+Top row (a) shows NH-NRG truncation scheme ‘LowRe’ in which the lowest Nk states sorted by Re(EN) are kept. Bottom row
+(b) shows an alternative truncation scheme ‘LowMag’ where states are sorted by |EN|. Shown for Λ = 3, Nk = 1024, ϵd = 0,
+V = 0.1 −0.08i. Eigenvalues rescaled by ΛN/2 are plotted with respect to the ‘ground state’ of that iteration.
+flow, provided Nk was sufficiently large. Overall, trunca-
+tion by lowest Re(EN) is preferred due to advantageous
+stability and accuracy with respect to Nk, and less fre-
+quent need for high-precision numerics.
+Validation and benchmarking of method.– The NH-
+NRG method for the AIM works with equal ease for
+any interaction strength Ud.
+In particular, the NH-
+NRG algorithm works exactly the same for the trivial
+case Ud = 0 as for the nontrivial interacting case with
+Ud > 0.
+For Ud = 0 we can also simply diagonal-
+ize the single-particle Hamiltonian matrix and then con-
+struct the many-particle states from these. Thus in this
+limit we can exactly diagonalize the full impurity-and-
+Wilson-chain composite system without any truncation
+or approximation. This provides a stringent check on our
+NH-NRG results by direct comparison.
+Our results of this testing are shown in Fig. E1 for the
+Ud = 0 AIM (also known as the resonant level model) in
+which a non-interacting impurity is coupled to the usual
+(flat-band) Wilson chain of N +1 sites. We compare NH-
+NRG results (red diamond points) with Nk = 1024 kept
+states, and exact diagonalization of the tight-binding
+model (black circle points). In the latter we construct
+the full 4N+2 dimensional Fock space. Complex eigen-
+values of ˆHN are plotted for different N in the Argand
+plane in Fig. E1. Top row (a) shows results for the trun-
+cation scheme ‘LowRe’ in which the Nk states with the
+lowest Re(EN) are retained; whereas the bottom row (b)
+is for the ‘LowMag’ scheme where the Nk states with the
+lowest |EN| are instead kept. Although a different set of
+states in the NH-NRG calculation is retained in either
+case, these accurately match with the corresponding ex-
+act diagonalization results from the tight-binding chain.
+We note that the NH-NRG results for N = 5 in panel
+(b) are highly degenerate, with the Nk = 1024 retained
+states giving only three distinct eigenvalues. The kept
+eigenvalues in (a) are far less degenerate. In the case of
+high degeneracy, which poses a challenge for numerical
+diagonalization and bi-orthonormalization of NH matri-
+ces, we add a physically inconsequential on-site disorder
+to the Wilson chain of width 10−7 which lifts the degen-
+eracy. This precaution was not required for any of the
+interacting models studied, which do not possess such
+high degeneracies.
+Additional examples of different truncation schemes
+and benchmarking for different non-interacting models
+are provided in the Supplemental Material [46]. We have
+also checked that our NH-NRG code reproduces the re-
+sults of standard NRG when ˆH0 is Hermitian.

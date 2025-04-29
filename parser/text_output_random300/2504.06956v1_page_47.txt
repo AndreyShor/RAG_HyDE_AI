@@ -1,0 +1,75 @@
+Resampling property and independence from the threshold
+47
+Lemma 5.7. For any λ1, λ2 ∈Λ such that λ2 ≤λ1, it holds that
+c⋆,λ2 = c⋆,λ1P(M(eΥλ1) ≤λ2) .
+Proof. Let λ1, λ2 ∈Λ such that λ2 ≤λ1. Recalling (2.6), we have that
+c⋆,λ2 = lim
+k→∞E[Bk1{Bk∈[k1/6,k5/6]}1{M0,k(Υ∞)≤λ2}] .
+Hence, for fixed k ≥0, by conditioning on the value of Bk, the right-hand side of the above display
+admits the following representation,
+1
+√
+2πk
+Z k5/6
+k1/6 ue−u2
+2k P0,u,k(M0,k(Υ∞) ≤λ2, M0,k(Υk) ≤λ1)du ,
+(5.11)
+where here we used the fact that λ2 < λ1. Now, by employing a standard entropic repulsion
+argument that have been used several times in Section 4 (see e.g. the proof of Lemma 4.20), for all
+u ∈[k1/6, k5/6], one has that
+lim
+j→∞lim sup
+k→∞
+k
+uP0,u,k(M0,k,j(Υk) > λ2, M0,k(Υk) ≤λ1) = 0 .
+This fact implies that, for 0 ≤j ≤k, we can just focus on the following probability
+P0,u,k(M0,j(Υk) ≤λ2, M0,k(Υk) ≤λ1) .
+In particular, since λ1, λ2 ∈Λ (see also Remark 5.2), we can apply Propositions 4.1 and 4.2 with
+F(Υk) = 1{M0,j(Υk)≤λ2} to obtain that
+c⋆,λ2 = lim
+j→∞lim
+k→∞P0,u,k(M0,j(Υk) ≤λ2, M0,k(Υk) ≤λ1)
+1
+√
+2πk
+Z k5/6
+k1/6 ue−u2
+2k du
+= c⋆,λ1P(M(eΥλ1) ≤λ2) ,
+from which the conclusion follows.
+We now have all the necessary ingredients to verify that the constant a⋆, defined in (2.11), is
+independent of λ ∈Λ. More precisely, for λ > 0, we let
+a⋆,λ
+def=
+α c⋆,λ
+γ E[
+R
+Rd e
+√
+2dΨ(x)1{Ψ(x)≥−λ}dx]
+,
+then we have the following result.
+Lemma 5.8. For any λ1, λ2 ∈Λ, it holds that a⋆,λ1 = a⋆,λ2.
+Proof. Let λ1, λ2 ∈Λ such that λ2 ≤λ1. Then, thanks to Lemma 5.7, we have that
+a⋆,λ2 =
+α c⋆,λ1P(M(eΥλ1) ≤λ2)
+γ E[
+R
+Rd e
+√
+2dΨ(x)1{Ψ(x)≥−λ2}dx]
+(5.12)
+Now, using Proposition 2.11, along with the fact that, by construction, M(Ψ) = 0, we have that
+P(M(eΥλ1) ≤λ2) = E[
+R
+Rd e
+√
+2dΨ(x)1{Ψ(x)≥−λ2}dx]
+E[
+R
+Rd e
+√
+2dΨ(x)1{Ψ(x)≥−λ1}dx]
+.
+Hence, substituting the right-hand side of the above display into the expression (5.12) for a⋆,λ2, the
+conclusion follows readily.

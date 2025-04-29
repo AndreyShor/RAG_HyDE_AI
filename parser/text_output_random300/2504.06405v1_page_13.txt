@@ -1,0 +1,47 @@
+To further evaluate the amount of binding thiol onto the surface, the resulting suspension was 
+transferred to a 50 ml centrifuge tube and centrifuged at 8,000 rpm for 15 min to drive the 
+nanoparticles to sediment. The supernatant solution was withdrawn using a transfer pipette, 
+enough ethanol was added to bring the total volume of the suspension back to 50 ml, and the 
+mixture was vigorously shaken and centrifuged again. This process was repeated so that three 
+centrifuge steps were performed. The washed nanoparticles (thiol-ZnO) were then dried at vacuum 
+oven under 60 °C overnight. Finally, the dried particles were weighed and dissolved using 
+trifluoroacetic acid (TFA), and ¹H-NMR analyzed the resulting solution to determine the amount 
+of EDT with a calibration curve to ensure accurate quantification.  
+ 
+Preparation of programmable multiple-modulus gel   
+Samples for the experiment were prepared by adding 2100 mg of ZnO to 15 mL DMF by 
+ultrasound for 20 seconds and allowed to rest for 30 mins. Then, TTT (20 mmol, 4990 mg, 5.74 
+mL), EDT (30 mmol, 5460 mg, 4.89 mL) and Et4NBF4 (1.5 mmol, 325 mg) were added to the 
+reaction mixture in a U shape PTFE tunnel sealed with two slides at ends. In this case, multiple 
+electric fields were achieved by fixing the position of parallel electrodes separately while 
+delivering AC voltage in different configuration across the sample. Three pairs of electrodes with 
+configured voltages (4, 12, and 8 Vrms from left to right at 500 Hz) at different positions. 
+ 
+ 
+Preparation of Electro-adhesive  
+In a typical experiment, 210 mg of ZnO was dispersed in 0.5 mL DMF by ultrasound for 20 
+seconds and allowed to rest for 30 mins. Two thiol-ene monomers, TTT (2 mmol, 499 mg, 0.574 
+mL) and EDT (3 mmol, 546 mg, 0.489 mL) and Et4NBF4 (0.05 mmol, 10.8 mg) were added to the 
+reaction mixture in a polypropylene vial.  Finally, 30 uL of mixture was directly employed to ITO 
+coated glass which wired with the power sources (AC power supply). A series of 2 AA batteries 
+(3 V) were used to supply as DC power source. 
+ 
+Electric field simulation with Python 
+The electric field within the thiol-ene solution is numerically simulated using python, based on 
+Jacobi relaxation. With the electric potential of the electrodes and far fields fixed, the potential 
+field is iteratively updated based on the surrounding fields from the last iteration. The solution to 
+the electrostatic potential Laplace’s equation is achieved after thousands of iterations. The thiol-
+ene solution was simulated as two-dimensional because it is homogeneous along the vertical axis. 
+In the simulation, six electrodes are placed on the long edges of the solution, with fixed voltages 
+which are the maximum voltage from the applied AC power. Relaxation time of the electric field 
+is at the scale of nano-seconds, which is much faster than the period of the AC power (0.5 ms), so 
+that a simulation with fixed voltage represents a moment of the AC circuit and all the other 
+moments are only different by the amplitude. The simulated solution follows the shape and size of 
+the experimental settings strictly. A grid of 0.1mm is set to achieve high resolution. First the 
+electric potential for each grid point is simulated with Jacobi relaxation, and then the electric field 
+is calculated based on the potential difference of the neighboring positions. The code of this 
+simulation can be found at https://github.com/imechaozhang/Thiol-ene-electric-field-simulaiton. 
+Only the magnitude of electric fields is shown in Fig. 4c because the direction of the electric field 
+does not make a difference for the nanoparticles in the solution. In the logarithm plot in Fig. 4c, 
+the electric field is incremented by 1 V/m in order to take the logarithm values.  
+ 

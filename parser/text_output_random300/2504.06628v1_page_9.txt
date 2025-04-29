@@ -1,0 +1,128 @@
+9
+where ∆r(t) = r(t) −r(t−), and the Marcus integrals are converted to Itˆo integrals using standard techniques [S1,
+Theorem 4.4.28]. The remaining derivation for the entropy production decomposition formula will follow the same
+way in the Letter.
+Fluctuation theorem and irreversibility
+We now utilize the framework of stochastic analysis to derive the fluctuation theorem. We rewrite the Langevin
+equation (S.1) as the form of stochastic differential equation
+dr(t) =F (r(t))
+Γ
+dt +
+p
+2Dth dWt +
+Z
+zN( dt, dz),
+(S.4)
+with initial probability distribution r(0) ∼P0(r) and Wt is a standard Brownian motion in Rd, and N( dt, dz) is an
+independent Poisson random measure. Its L´evy measure is given by ν( dz) dt (state-independent for N).
+The probability density P(r, t) describe the distribution of r(t) at time t, and it satisfies the following L´evy-Fokker–
+Planck equation:
+∂tP(r, t) = −∇·
+F (r)
+Γ
+P(r, t)
+
++ Dth△P(r, t) +
+Z
+ν( dz) (P(r −z, t) −P(r, t)) .
+Now we consider the probability flow in backward time, as ˜P(r, t) := P(r, T −t), it satisfies
+∂tP(r, T −t) =∇·
+F (r)
+Γ
+P(r, T −t)
+
+−Dth△P(r, T −t) −
+Z
+ν( dz) (P(r −z, T −t) −P(r, T −t))
+= −∇·
+−F (r)
+Γ
++ 2Dth∇log P(r, T −t)
+
+P(r, T −t)
+
++ Dth△P(r, T −t)
+−2
+Z
+ν( dz) (P(r −z, T −t) −P(r, T −t)) +
+Z
+ν( dz) (P(r −z, T −t) −P(r, T −t))
+= −∇·
+−F (r)
+Γ
++ 2Dth∇log P(r, T −t) −2
+Z
+ν( dz)
+Z 1
+0
+dθz P(r −θz, T −t)
+P(r, T −t)
+
+P(r, T −t)
+
++ Dth△P(r, T −t) −
+Z
+ν( dz) (P(r −z, T −t) −P(r, T −t))
+= −∇·
+−F (r)
+Γ
++ 2Dth∇log P(r, T −t) −2
+Z
+ν( dz)
+Z 1
+0
+dθz P(r −θz, T −t)
+P(r, T −t)
+
+˜P(r, T −t)
+
++ Dth△˜P(r, t) +
+Z
+ν( dz)
+
+˜P(r −z, t) −˜P(r, t)
+
+,
+which is also a L´evy–Fokker-Planck equation that governs the evolutions of a stochastic process rpf(t) as
+drpf(t) =
+−F (rpf)
+Γ
++ 2Dth∇log P(rpf, T −t) −2
+Z 1
+0
+dθ
+Z
+ν( dz)z P(rpf −θz, T −t)
+P(rpf, T −t)
+
+dt
++
+p
+2Dth dWt +
+Z
+zN( dt, dz),
+rpf(0) ∼˜P(r, 0) = P(r, T),
+(S.5)
+where Wt and N( dt, dz) are identical to those of (S.4) in distribution, see also [S2]. It is important to see that, the
+process rpf(t) only shares the same probability flow with the one of r(t) of (S.4) backward in time. When the active
+noise vanishes, this process rpf(t) is indeed the time reversal process ˜r(t) := r(T −t) of r(t), however for general
+active fluctuation systems, they are not the same in path space while only share the same probability flows. When
+we consider the system (S.4) start at its steady state, the associated backward flow process (S.5) turns into
+drpf(t) =
+−F (rpf)
+Γ
++ 2Dth∇log P s(rpf) −2
+Z 1
+0
+dθ
+Z
+ν( dz)z P s(rpf −θz)
+P s(rpf)
+
+dt
++
+p
+2Dth dWt +
+Z
+zN( dt, dz), rpf(0) ∼P s(r).
+(S.6)

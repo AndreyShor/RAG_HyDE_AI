@@ -1,0 +1,40 @@
+and c tip-sample distance vs. phase. The color scale represents the iteration steps in the MOBO. 
+The height difference shows collaborative behavior with the reward of tip-sample distance. In 
+contrast, the reward of phase shows competing behavior with the reward of height difference and 
+reward of tip-sample distance. d-f, characteristic scan trace and retrace lines of height and phase 
+for d pressing too hard, e pressing slightly too hard, and f the optimal solution. The colored outline 
+matches the colored arrows in a-c to show their corresponding location on the Pareto scatter plot. 
+g-i, the predicted distribution of g height difference, h tip-sample distance, and i phase rewards in 
+the drive amplitude vs. setpoint space at the 50th step in the MOBO of the calibration grating 
+sample in Figure 2. Detailed controlling parameters used in this figure are summarized in Table 
+S1. 
+ 
+V. 
+Pareto front tests the definition of the reward 
+In Figure 4, instead of employing the three rewards introduced in Figures 1 and 2 within the 
+MOBO process, a fourth reward is introduced to demonstrate how the Pareto front can be leveraged 
+to validate the definition of rewards. In addition to absolute height difference, the Pearson 
+correlation between trace and retrace scan lines—referred to as the similarity reward—can be used 
+to quantify their alignment. 
+The resulting Pareto scatter plot between the height difference reward and the similarity reward 
+in Figure 4c highlights that height difference is a more effective metric for quantifying the 
+alignment of trace and retrace scan lines. This conclusion is based on two key observations. First, 
+the height difference reward exhibits a larger span compared to the similarity reward, allowing it 
+to contribute more significantly to hypervolume gain and thus carry greater weight in trade-offs 
+with other rewards. In contrast, the similarity reward's narrow range of variation makes it less 
+influential in the acquisition function, leading to its underrepresentation in the optimization 
+process. Second, the similarity reward is clustered predominantly around a value of –1, despite the 
+MOBO process exploring a broad range of scan qualities. In contrast, the height difference reward 
+is smoothly distributed across its full range, further demonstrating its superior ability to capture 
+variations in trace-retrace alignment. 
+A well-defined reward function for scan quality should exhibit both a broad dynamic range, 
+ensuring its contribution to hypervolume improvement, and a well-separated, continuous 
+distribution, allowing for effective differentiation of scan qualities. The Pareto scatter plot thus 
+serves as a valuable tool for evaluating the effectiveness of different reward definitions. 
+The Pareto scatter plots of the remaining three rewards (Figure 4d-f) further illustrate trade-
+offs in the water droplet system. Notably, the height difference reward shares similar optimal 
+parameters with the phase reward, as evidenced by their collective behavior in Figure 4e—where 
+height difference can be maximized with minimal compromise in phase reward. This relationship 
+is further corroborated by Figure S2c and S2e. Consequently, the tip-sample distance reward is 
+sacrificed in the optimization trade-off to maximize overall hypervolume improvement, as 
+indicated in Figure 3d. 

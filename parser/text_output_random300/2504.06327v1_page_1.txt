@@ -1,0 +1,59 @@
+Physics-informed KAN PointNet: Deep learning for simultaneous
+solutions to inverse problems in incompressible flow on numerous
+irregular geometries
+Ali Kashefia,∗, Tapan Mukerjia
+aStanford University, Stanford, 94305, CA, USA
+A R T I C L E I N F O
+Keywords:
+Kolmogorov-Arnold networks
+PointNet
+Physics-informed deep learning
+Inverse problems
+Irregular geometries
+Steady state incompressible flow
+A B S T R A C T
+Kolmogorov-Arnold Networks (KANs) have gained attention as a promising alternative to
+traditional Multilayer Perceptrons (MLPs) for deep learning applications in computational
+physics, especially within the framework of physics-informed neural networks (PINNs). Physics-
+informed Kolmogorov-Arnold Networks (PIKANs) and their variants have been introduced and
+evaluated to solve inverse problems. However, similar to PINNs, current versions of PIKANs are
+limited to obtaining solutions for a single computational domain per training run; consequently,
+a new geometry requires retraining the model from scratch. Physics-informed PointNet (PIPN)
+was introduced to address this limitation for PINNs. In this work, we introduce physics-informed
+Kolmogorov-Arnold PointNet (PI-KAN-PointNet) to extend this capability to PIKANs. PI-
+KAN-PointNet enables the simultaneous solution of an inverse problem over multiple irregular
+geometries within a single training run, reducing computational costs. We construct KANs using
+Jacobi polynomials and investigate their performance by considering Jacobi polynomials of
+different degrees, as well as special cases such as Legendre polynomials, Chebyshev polynomials
+of the first and second kinds, and Gegenbauer polynomials, in terms of both computational
+cost and prediction accuracy. As a benchmark test case, we consider natural convection in a
+square enclosure with a cylinder, where the cylinder’s shape varies across a dataset of 135
+geometries. We compare the performance of PI-KAN-PointNet with that of PIPN (i.e., physics-
+informed PointNet with MLPs) and observe that, with approximately an equal number of
+trainable parameters and similar computational cost, PI-KAN-PointNet provides more accurate
+predictions. Finally, we explore the combination of KAN and MLP in constructing a physics-
+informed PointNet. Our findings indicate that a physics-informed PointNet model employing
+MLP layers as the encoder and KAN layers as the decoder represents the optimal configuration
+among all models investigated.
+1. Introduction and motivation
+Physics-informed Neural Networks (PINNs), first introduced by Raissi et al. in 2019 [1], are increasingly recognized
+as a valuable tool for solving inverse problems in diverse scientific and industrial domains. These include solid
+mechanics [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], both incompressible and compressible flow
+[19, 20, 21, 22, 23, 1, 24, 25, 26, 27], chemistry [28, 29], heat transfer [20, 30, 31], and flow in porous media [32, 33, 34].
+The central idea behind PINNs for inverse problems is to train a neural network to minimize both the residuals of the
+governing partial differential equations and the distance between the solution provided by the neural network and sparse
+observational data at sensor locations in specific norms such as the Euclidean norm. Additional constraints, such as
+boundary or initial conditions, may also be incorporated into this optimization process. The choice of the neural network
+architecture in PINNs significantly influences the performance and capability of PINN models. A prevalent choice is the
+fully connected neural network [3, 2, 35, 36, 37, 38]. However, a notable limitation of using fully connected networks
+is that they are generally suited to solving inverse problems for a single specific geometry. For each new geometry,
+the network must be retrained from the ground up, which incurs significant computational costs. This challenge is
+particularly pronounced when exploring a broad range of geometric parameters for optimizing industrial designs. The
+issue of high computational expense in such scenarios was addressed by [39, 20, 40]. To resolve this issue, Kashefi and
+Mukerji [20] introduced Physics-informed PointNet (PIPN). In PIPN, instead of using a fully connected neural network,
+∗Corresponding author
+kashefi@stanford.edu (A. Kashefi); mukerji@stanford.edu (T. Mukerji)
+ORCID(s): 0000-0003-0014-9051 (A. Kashefi); 0000-0003-1711-1850 (T. Mukerji)
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 1 of 25
+arXiv:2504.06327v1  [cs.LG]  8 Apr 2025

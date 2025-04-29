@@ -1,0 +1,89 @@
+description of 3ηs
+ion coordinates Rs rather than the abstract shape coordinates used for theoretical clarity in
+Sec. 4.2, giving rise to explicit formulae for the shape coordinates.22
+The dominant (classical) cost in the PES analysis is finding the equilibrium configuration, since QR
+decomposition and diagonalization of force matrix for a range of typical molecules/clusters ηs
+ion ∼1 −100
+is negligible (scaling as O((ηs
+ion)3) classically). However, equilibrium configurations for many molecules are
+either already known, or very good guesses are known leading to fast convergence. In practice, these classical
+computations are routine and are not of practical concern.
+Grid Matching
+The initial state is prepared in the set of normal coordinates Ξs discretized as discussed in Sec. 4.4.1.
+We must perform a coordinate transformation mapping coordinates Ξs →Rs where Rs are the original
+3ηs
+ion Cartesian coordinates of the chemical species discretized on a spatial grid given by the inverse Fourier
+transformation of the finite plane wave basis defined in Sec. 3. Noting that ∆Rs
+αI =
+1
+√MI
+P3ηs
+ion−6
+k=1
+es
+αI,kqs,k,
+we explicitly write the Euclidean transformation,
+¯Rs
+αI := Rs
+CoM,αI +
+X
+α
+Ss
+αβ
+
+Rs,0
+αI +
+1
+√MI
+3ηs
+ion−6
+X
+k=1
+es
+βI,kqs,k
+
+
+where Ss
+αβ are the elements of the 3D rotation matrix formed from the Euler angles in Ss. The coordinates
+¯Rs
+I take values on a non-Euclidean spatial grid distinct from the uniform spatial grid Rs
+I. We classically
+precompute a map R to suitably assign each value of ¯Rs
+I to a unique value Rs
+I, in order to injectively
+match every point of the discretized Ξs coordinates to a point of the discretized Rs coordinates. This R
+is required as part of the definition of the preparation oracle Ocoord used in the initial state preparation.
+Given a sufficient resolution on each grid we expect the physical realism of the initial state to be not very
+sensitive to this choice of assignment.23 Once a solution is obtained, it is loaded on the quantum computer
+at a cost of O(ηs
+ion|G|) quantum operations. More broadly, the quantum state preparation is agnostic to the
+grid matching prescription and ultimately the choice is left to the user.
+In summary, the classical pre-processing required for the initial state preparation are as follows.
+• The classically-computed (e.g.
+using DFT) approximate electronic wavefunction at equilibrium is
+required to prepare the electronic state.
+• The angular frequencies ωs,k =
+p
+fs,k are required to prepare the truncated thermal state of vibrations.
+• The motional information about the vibrational modes ˆes
+k and the grid-matching prescription R :
+¯Rs
+I →Rs
+I are required to classically compute the map Ξs →Rs that is loaded as the oracle Ocoord.
+5
+Quantum simulation of time evolution using pseudoions
+In this section, we describe the quantum algorithm for simulating time-evolution using the Hamiltonian with
+pseudoions. The core piece of time evolution algorithm is the (unitary) block-encoding of the pseudoion
+Hamiltonian H. This is a unitary Usa, acting on the extended Hilbert space Hsa = Hs ⊗Ha, where the
+subscripts s and a denote the system and the required ancilla space, respectively. Usa is constructed such
+that it satisfies
+H
+λ = ⟨G|Usa|G⟩a
+(77)
+22As mentioned in Sec. 2.2, substrates (slabs) do not have rotational modes and so for these species, we just omit the rotation
+vectors and perform the calculation as before. The result will be 3ηs
+ion −3 shape coordinates instead.
+23For example, we could (classically) map each point from normal to Cartesian coordinates, divide each coordinate by the
+lattice spacing and round up or down to find a representative on the lattice. This may map two shape coordinates into the
+same lattice representative, so a separate subroutine should be introduced to resolve the clashes.
+31

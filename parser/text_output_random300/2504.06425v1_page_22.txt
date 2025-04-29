@@ -1,0 +1,76 @@
+22
+NEURAL NETWORK POLYCONVEXIFICATION
+αk = 0.25
+αk = 0.75
+αk = 1.25
+0
+5
+10
+15
+-23
+-22
+-21
+ν1
+Φ((ν1, ν1); ˆνk, αk)
+Φpc
+δ ((ν1, ν1); ˆνk, αk)
+Φpc
+pred((ν1, ν1); ˆνk, αk)
+±σ
+0
+5
+10
+15
+-8
+-7
+ν1
+0
+5
+10
+15
+-3
+-2
+ν1
+Figure 14. Comparison of the polyconvex envelopes Φpc
+pred (averaged over ten
+network realisations) and Φpc
+δ
+for the neo-Hookean model with ˆνk = [9, 9] and
+for αk ∈{0.25, 0.75, 1.25}. Plotted is the cross-section along the diagonal axis.
+The standard deviation of the ten predictions is marked by σ.
+computed by the SVPC LP algorithm from Section 6.3. For comparison, the computation of one
+polyconvex envelope on a 100 × 100 grid using the SVPC LP algorithm takes 8.1 hours on one
+CPU while its prediction via neural networks takes only 0.2 seconds. As previously, the neural
+network implemented in this example contains 26,121 parameters, comprising both weights and
+biases. Once again, this number of parameters remains smaller than the storage required for
+only three polyconvex envelopes on a 100 × 100 grid. These aspects once again emphasise the
+benefits of using a neural network based representation of the polyconvex envelope for parameter
+dependent families of functions for applications in engineering problems.
+7. Conclusion
+We have demonstrated the effectiveness of a neural network design in predicting polyconvex
+envelopes with high accuracy and computational efficiency. Our results show that such neural
+networks can generalise well beyond the learning dataset, enabling fast, multi-query evaluations
+and real-time computations. Moreover, we have introduced a splitting strategy which decouples
+the isotropic damage problem from the previous time step state, thereby improving the feasibility
+and robustness of the training process. Future research will focus on extending this framework to
+predict not only the polyconvex envelopes but also their derivatives as well as the incorporation
+of determinant constraints into the neural networks, as relevant for engineering applications in
+computational mechanics. The results presented in this paper pave the way for complex material
+simulations in real engineering contexts.
+Acknowledgement
+Many of the ideas in this paper were initially formulated and tested during Helena Althoff’s
+Master’s thesis [Alt24], and her contributions have been important in their refinement. Fruitful
+discussions with Daniel Balzani and Maximilian K¨ohler are gratefully acknowledged, and some
+ideas are the result of joint discussions with David Wiedemann.
+References
+[AAF22]
+F. As’ad, P. Avery, and C. Farhat. A mechanics-informed artificial neural network approach in
+data-driven constitutive modeling. International Journal for Numerical Methods in Engineering,
+123(12):2738–2759, 2022.
+[AF98]
+G. Allaire and G. Francfort. Existence of minimizers for non-quasiconvex functionals arising in
+optimal design. Annales de l’Institut Henri Poincar´e C. Analyse Non Lin´eaire, 15(3):301–339, 1998.
+[AF23]
+F. As’ad and C. Farhat. A mechanics-informed deep learning framework for data-driven nonlinear
+viscoelasticity. Computer Methods in Applied Mechanics and Engineering, 417:Paper No. 116463, 19,
+2023.

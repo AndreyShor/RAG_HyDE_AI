@@ -1,0 +1,109 @@
+do not improve on the current cost function eval-
+uation are also selected with a probability de-
+termined by a temperature parameter as a way
+of combating getting stuck in local sub-optimal
+minima.
+The temperature parameter is set to
+gradually tend to zero, which means fewer worse
+evaluations will be accepted over time [39].
+Many of the methods that we employ here in-
+volve hyperparameters whose values must be set.
+Our hyperparameter search finds the set of pa-
+rameters for each method that return the highest
+probability of sampling the ground state. A hy-
+perparameter search could be performed aiming
+to optimise performance with respect to another
+metric such as runtime. Our hyperparameter op-
+timisation is a grid-based search, conducted by
+defining feasible search spaces and checking dif-
+ferent combinations of values. The results of the
+hyperparameter search for all methods in this sec-
+tion are provided in Appendix B.
+Simulated annealing provides a probabilistic fi-
+nal solution with a number of samples equal to
+the number of times it is repeated. Limitations
+of simulated annealing include the fact that the
+temperature parameter range and the rate of its
+decrease must be carefully set. If the rate of de-
+crease is too fast, the algorithm may get stuck
+in local minima; if the rate of decrease is too
+slow, the algorithm could take too long to con-
+verge due to bouncing around the energy land-
+scape. The simulated annealing hyperparameters
+we optimise are: (i) the temperature range and
+(ii) the number of iterations (sweeps).
+The final classical method we consider is ran-
+dom sampling. It randomly selects a particular
+binary vector out of all possible bit strings x of
+N bits (like in brute force, we do not exclude
+from our search space the solutions that have an
+incorrect number of vacancies) and evaluates its
+energy with respect to the cost function.
+This
+means that each binary vector has probability
+1/2N of being sampled. This is, of course, not
+uniform with respect to energy as multiple bit-
+strings can have the same energy. Random sam-
+pling provides a useful baseline for solving QU-
+BOs with probabilistic methods, as it uses no
+technique that exploits the problem structure to
+improve the probability of finding good solutions.
+Turning to our quantum methods, VQE pre-
+pares a parameterised trial wavefunction,
+or
+ansatz, |ψ(θ)⟩, where θ is a set of parameters that
+can be tuned by changing circuit parameters, to
+approximate the ground state of a quantum sys-
+tem. The quantum system’s Hamiltonian, ˆH, is
+set to correspond to the classical cost function
+Equation 1 upon mapping of the binary variables
+to Ising spins and subsequent quantisation. Mea-
+surements are taken over multiple executions of
+the same circuit, to estimate the energy expecta-
+tion value. Each execution of the same circuit and
+subsequent measurement we call a shot.
+Moti-
+vated by the variational principle, a classical opti-
+miser then adjusts circuit parameters to minimize
+the energy expectation value, ⟨ψ(θ)| ˆH |ψ(θ)⟩, of
+the Hamiltonian ˆH with respect to the variational
+quantum state |ψ(θ)⟩.
+Each cycle of updating the circuit parameters
+and estimating energy expectation is called an
+iteration. The algorithm keeps iterating this pro-
+cess until either the convergence criteria are met
+based on a tolerance parameter or the maximum
+number of iterations is reached. This approach of
+using a quantum resource to prepare and manip-
+ulate a quantum state within a classical loop is
+known as hybrid quantum computing. After con-
+vergence, the final circuit can be sampled (again
+for the same number of shots as each previous it-
+eration) to obtain a probability distribution over
+the classical bitstring representations [40]. The
+number of solutions obtained with VQE is equal
+to the number of shots, which is set to ensure shot
+noise remains negligible. The whole process de-
+scribed here constitutes an experiment. As in our
+other methods, there are a number of hyperpa-
+rameters whose values must be chosen. For VQE,
+these are (i) the choice of ansatz, (ii) the tolerance
+of the classical optimiser, (iii) the maximum num-
+ber of iterations for the classical optimiser, and
+(iv) the CVaR α parameter (described shortly).
+Note that in this work, we use both IBM quantum
+hardware and a noiseless classical simulator.
+Some of the known limitations of VQE (and
+VQAs in general) are their iterative nature and
+their execution time [41].
+The iterative nature
+means that the classical (optimiser) part of the
+algorithm is susceptible to getting stuck in local
+minima and not converging on the global min-
+ima. This susceptibility is heightened when we
+consider VQE in the presence of noise and when
+considering systems of many qubits.
+We know
+that the addition of noise can cause the vari-
+ance of the cost function to decrease [42] which
+6

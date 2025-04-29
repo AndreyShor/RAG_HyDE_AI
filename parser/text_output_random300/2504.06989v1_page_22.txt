@@ -1,0 +1,36 @@
+22
+E[dW j
+t dW k
+t ] = δj,kdt, and the multiplicative noise is understood in the Itˆo convention. Here, we denote the ensemble
+average over the Wiener process by E. Using the properties of the Wiener process, one can verify that the time
+evolution of E[∣ψt⟩⟨ψt∣] obeys GKSL equation, Eq. (1) in the main text.
+Since the generator of the time evolution for the unraveled state is quadratic, and the initial condition is pure
+gaussian state ∣DW⟩, one can apply the Wick’s theorem [112] for each unraveled state. In particular, we have the
+determinant representation of χ(λ,t) [10],
+χ(λ,t) = log E[det[δj,k + (eλ −1)⟨ψt∣a†
+jak∣ψt⟩]L
+j,k=1].
+(S-108)
+Thus, we only need to calculate ⟨ψt∣a†
+jak∣ψt⟩. To compute ⟨ψt∣a†
+jak∣ψt⟩numerically, we employ the following numerical
+scheme [59, 87, 88]. Due to the quadratic nature of the time evolution, the unraveled state can be always written as
+∣ψt⟩=
+0
+∏
+k=−L+1
+⎡⎢⎢⎢⎢⎣
+L
+∑
+j=−L+1
+Uj,k(t)a†
+j
+⎤⎥⎥⎥⎥⎦
+∣0⟩
+(S-109)
+with the normalization condition U †U = 1. Then one has ⟨ψt∣a†
+jak∣ψt⟩= (UU †)∗
+j,k. Furthermore, from Eq. (S-107), we
+have U(t + dt) = e−i√4γdWte−ihdtU(t) with hj,k ∶= −δj+1,k(1 −δk,−L+1) −δj−1,k(1 −δk,L) and (dWt)j,k ∶= δj,kdW j
+t . This
+provides the update rule for U(t) in our numerical simulations.

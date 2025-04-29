@@ -1,0 +1,41 @@
+A.3.3
+Activation Functions and Initialization
+Deep learning models are dependent on well-structured architectures and proper initial-
+ization to achieve effective learning. While the design of the neural network provides the
+framework, initialization plays a pivotal role in ensuring the stability and efficiency of the
+optimization process. This subsection discusses the core components of neural networks,
+focusing on the importance of activation functions and initialization techniques.
+Activation Functions:
+Activation functions are essential for introducing nonlinearity
+into a neural network, enabling it to model complex relationships [58]. Without them, a
+network would only compute linear transformations, regardless of its depth, limiting its
+ability to capture non-linear patterns in data. The most common activation functions
+are:
+• Sigmoid Function: The sigmoid activation function produces values between 0
+and 1. However, it suffers from the vanishing gradient problem, especially in deeper
+networks, as gradients become exceedingly small for large positive or negative input
+values, thereby slowing down training.
+• Tanh Function: The hyperbolic tangent (tanh) function produces outputs between
+-1 and 1, centering activations around zero. This property often results in faster
+convergence during training compared to the sigmoid function. Nonetheless, tanh
+also experiences the problem of vanishing gradients in very deep networks, which
+limits its effectiveness.
+• ReLU (Rectified Linear Unit): The ReLU activation function, defined as max(0, z),
+has become the most widely used activation function for hidden layers due to its
+computational efficiency and simplicity. However, it is prone to the "dead neuron"
+problem, where neurons stop updating weights because gradients become zero for
+negative inputs.
+• Leaky ReLU: To address the limitations of ReLU, the Leaky ReLU function in-
+troduces a small gradient for negative inputs. This variation mitigates the dead
+neuron issue, allowing the network to learn more robustly.
+As mentioned earlier, the choice of activation function often depends on the task
+and the network architecture.
+ReLU is typically the default for hidden layers due to
+its efficiency, while sigmoid or tanh may be employed in specific cases, such as binary
+classification tasks or when centering activations around zero is beneficial.
+Initialization:
+Initialization is critical to ensure that a neural network starts training
+on the right track. Proper initialization prevents problems such as vanishing or explo-
+sion gradients, which can severely hamper learning in deep networks. Key aspects of
+initialization include [47]:
+57

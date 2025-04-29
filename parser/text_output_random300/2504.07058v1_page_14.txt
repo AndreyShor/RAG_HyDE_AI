@@ -1,0 +1,95 @@
+Theorem 2.5. Let 𝑈𝑛
+0 ∈𝐻1
+0(D) be the initial neural network approximation of the Burgess equation. Under the
+assumptions of lemma Appendix E.5, there exists a unique solution 𝑢∈𝐻1(D) ∩𝐻2(D) to the Burgess equation.
+Assume that the Burgess equation satisfies the Lipschitz condition given in Appendix E.6, and that the sequence {𝑈𝑛}
+is uniformly bounded in 𝐿2([0,𝑇]; 𝐻1(D)). Then, the approximate solution 𝑈𝑛satisfies the following properties:
+1. Strong convergence in 𝐿2: 𝑈𝑛→𝑢strongly in 𝐿2(D).
+2. Uniform convergence: 𝑈𝑛converges uniformly to 𝑢in D.
+Suppose 𝑈𝑛satisfies the PDE in a bounded domain D with homogeneous Dirichlet boundary conditions:
+𝜕𝑈𝑛
+𝜕𝑡
+= 1
+2∆𝑈𝑛+ 𝑅(𝑈𝑛),
+(2.77)
+where the reaction term 𝑅(𝑈𝑛) satisfies one of the following conditions:
+1. Linear Growth Condition:
+|𝑅(𝑈𝑛)|⩽𝐶(1 + |𝑈𝑛|),
+for some constant 𝐶> 0.
+(2.78)
+Under this condition, there exists a constant 𝑀> 0 such that:
+sup
+𝑡∈[0,𝑇]
+∥𝑈𝑛(𝑡)∥𝐿2(D)⩽𝑀.
+(2.79)
+2. Exponential decay condition:
+|𝑅(𝑈𝑛)|⩽𝐶𝑒−𝜆|𝑈𝑛|,
+for some constants 𝐶> 0, 𝜆> 0.
+(2.80)
+In this case, 𝑈𝑛exhibits moderate decay properties, ensuring:
+• Boundedness in 𝐿2(D),
+Under the above assumptions, the sequences {𝑈𝑛} and {∆𝑈𝑛} remain uniformly bounded in 𝐿2(D) and 𝐻2(D),
+respectively.
+Proof. To prove that the sequence {𝑈𝑛} is uniformly bounded in 𝐿2(D), we use energy estimates. The sequence
+𝑈𝑛satisfies the PDE:
+𝜕𝑈𝑛
+𝜕𝑡
+= 1
+2∆𝑈𝑛+ 𝑅(𝑈𝑛),
+(2.81)
+in a bounded domain D with homogeneous Dirichlet boundary conditions. Taking the 𝐿2(D)-inner product with
+𝑈𝑛, we obtain:
+ 𝜕𝑈𝑛
+𝜕𝑡,𝑈𝑛
+
+=
+ 1
+2∆𝑈𝑛,𝑈𝑛
+
++
+
+𝑅(𝑈𝑛),𝑈𝑛
+.
+(2.82)
+Using integration by parts and the boundary condition 𝑈𝑛= 0 on 𝜕D, we get:
+
+∆𝑈𝑛,𝑈𝑛
+= −∥∇𝑈𝑛∥2
+𝐿2(D).
+(2.83)
+Thus, the equation simplifies to:
+𝑑
+𝑑𝑡∥𝑈𝑛∥2
+𝐿2(D)= −∥∇𝑈𝑛∥2
+𝐿2(D)+2
+
+𝑅(𝑈𝑛),𝑈𝑛
+.
+(2.84)
+Bounding the Reaction Term We consider the two different reaction term conditions. Linear Growth Condition
+|𝑅(𝑈𝑛)|⩽𝐶(1 + |𝑈𝑛|).
+(2.85)
+Applying H¨older’s inequality:
+
+𝑅(𝑈𝑛),𝑈𝑛
+⩽𝐶
+Z
+D
+(1 + |𝑈𝑛|)|𝑈𝑛|𝑑𝑥.
+(2.86)
+Thus,
+
+𝑅(𝑈𝑛),𝑈𝑛
+⩽𝐶
+
+∥𝑈𝑛∥2
+𝐿2(D)+∥𝑈𝑛∥𝐿2(D)
+
+.
+(2.87)
+Using Young’s inequality, for some constant 𝐶1:
+∥𝑈𝑛∥𝐿2(D)⩽1
+2 ∥𝑈𝑛∥2
+𝐿2(D)+𝐶1.
+(2.88)
+14

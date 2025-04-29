@@ -1,0 +1,85 @@
+A&A proofs: manuscript no. main
+10
+1
+100
+101
+102
+103
+period [d]
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+eccentricity
+HIP 15429
+  
+O/Be star + bloated stripped star
+Be star + subdwarf
+main-sequence star/white dwarf + subdwarf
+post-common envelope binary
+Fig. 15: Period-eccentricity diagram for known post-mass transfer binaries. Recently discovered bloated stripped star binaries with
+O/Be companions (Shenar et al. 2020; El-Badry & Quataert 2021; Villaseñor et al. 2023; Ramachandran et al. 2024; Pauli et al.
+2022) are indicated with red diamond markers. These include the parameter values for HIP 15429 determined in this work (Müller-
+Horn et al. 2025). Be + subdwarf binaries with known orbital parameters are shown with light blue triangles (Mourard et al. 2015;
+Chojnowski et al. 2018; Peters et al. 2008, 2013; Klement et al. 2022, 2024; Wang et al. 2023). We plot the short-period subdwarf
+binaries compiled by Edelmann et al. (2005) and Kupfer et al. (2015) and long-period (> 500 d orbits) subdwarf binaries discovered
+by Deca et al. (2012); Barlow et al. (2013); Vos et al. (2012, 2013, 2017) with dark blue triangles. Likely post-common envelope
+binaries with white dwarf or main sequence stars analysed by Yamaguchi et al. (2024) are shown with yellow stars.
+As in the phase-dependent mass transfer scenario, it remains un-
+clear why HIP 15429 exhibits higher eccentricity compared to
+other binaries with similar periods and CBDs.
+9.3. Inefficient tidal dissipation
+An alternative explanation for the current eccentricity of
+HIP 15429 is inefficient tidal dissipation, where rapid mass
+transfer left insufficient time for full orbital circularisation. Evi-
+dence from post-common envelope binaries, composed of main-
+sequence stars with white dwarf companions (Yamaguchi et al.
+2024, see also Fig. 15), and millisecond pulsars with massive
+white dwarf companions (e.g., Lorimer et al. 2015), indicates
+that systems with high mass loss rates often retain moderate to
+high eccentricities, suggesting incomplete tidal circularisation
+(Glanz & Perets 2021).
+9.4. Kozai-Lidov Cycles
+The presence of a third star in a hierarchical triple system can
+significantly affect the evolution of a binary. Secular three-body
+dynamics, specifically Lidov-Kozai cycles, can induce periodic
+variations in the eccentricity and inclination of the inner and
+outer orbits through angular momentum exchange (von Zeipel
+1910; Kozai 1962; Lidov 1962; Harrington 1968). While the
+semi-major axes remain constant due to the conserved orbital
+energy, these cycles depend on the mutual inclination between
+the orbits (Toonen et al. 2016). Initially derived for triples with
+outer companions in circular orbits, the Kozai-Lidov effect was
+later extended to eccentric outer orbits, where more chaotic dy-
+namics may arise (see Naoz 2016, for a review on the eccentric
+Kozai-Lidov effect).
+Given that approximately 50% of B-type stars belong to
+triple- or higher-order systems (Moe & Di Stefano 2017; Offner
+et al. 2023), we investigated whether a triple system could ex-
+plain the orbital eccentricity of HIP 15429. We used the Python
+package rebound (Rein & Liu 2012) to simulate in a sim-
+ple model the dynamical evolution of the B+Be binary, as-
+suming a hierarchical triple configuration. We employed the
+IAS15 integrator, which is well-suited for high-eccentricity or-
+bits and ensures energy conservation to machine precision (Rein
+& Spiegel 2015). The simulations varied the mass (0.1–5, M⊙,
+log-uniformly spaced in 15 steps), period (10, 20, and 50 times
+the inner period), and inclination (45–90◦in 5◦steps) of the
+outer companion. The inner binary was initialised with param-
+eters consistent with observations and circular orbits, assuming
+tidal circularization during mass transfer. The outer orbit was
+also assumed to be circular. The simulations covered 105 years,
+which approximately corresponds to the estimated time since the
+end of the mass transfer phase. The results indicate that a triple
+system could excite the observed eccentricity, albeit with a low
+likelihood. However, the limited parameter space explored, cau-
+tions against strong conclusions.
+In Fig. 16, the colour map shows the maximum eccentric-
+ity achieved by the inner binary due to interaction with an outer
+companion, as a function of the companion’s mass and inclina-
+tion, with a fixed period ratio of 10 (Pout ≈2200 d). The white
+dotted line marks where the inner binary’s eccentricity exceeds
+Article number, page 16 of 28

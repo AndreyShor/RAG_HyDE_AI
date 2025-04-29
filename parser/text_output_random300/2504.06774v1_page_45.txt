@@ -1,0 +1,40 @@
+the 3D cylinder and for both the components in the experimental and 2D cylinder cases
+for the SVD-based models. SVD-based models decompose the original dataset, but they
+do not explicitly model temporal dependencies like HOSVD. The time-distributed model
+helps reconstruct more effectively by applying transformations uniformly to each output
+across each time step, thereby improving forecasting accuracy. Comparisons were also
+drawn with another architecture developed with an additional dense layer (Appendix A1)
+without substantial improvements. This suggests that increasing the depth of the network
+beyond certain layers does not provide any significant advantage in terms of accuracy and
+performance. Adding additional layers should be avoided to minimize computational costs
+unless they provide a significant performance improvement.
+4.
+Conclusion
+The developed models have demonstrated how integrating HOSVD with LSTM archi-
+tectures enables the development of efficient and reliable hybrid ROMs for fluid flow
+prediction. By combining advanced dimensionality reduction techniques with sequential
+deep learning, this work addresses the challenges of capturing complex spatio-temporal
+dynamics across a range of laminar and turbulent flow cases, including 2D cylinder, 3D
+cylinder, and experimental wake flows.
+The results presented above highlight the superiority of HOSVD over SVD in both pre-
+dictive accuracy and robustness. HOSVD effectively preserves the multidimensional struc-
+ture of the data, allowing for more accurate reconstruction of key flow features while min-
+imizing errors. This is particularly evident in turbulent data sets, where SVD struggled
+to model chaotic and nonlinear dynamics, as shown by broader error distributions and
+higher RRMSE values. Across all data sets, HOSVD consistently achieved narrower UQ
+distributions, indicating greater reliability and confidence in the predictions. In the cur-
+rent implementation of HOSVD, all spatial modes are retained, and only the temporal
+dimension is reduced. While this preserves the full spatial variability, it limits the de-
+noising and compression advantages that HOSVD offers. In future work, mode selection
+across all tensor dimensions will be explored, taking advantage of HOSVD’s ability to
+retain different numbers of modes per direction.
+The study also investigated the interplay between network depth, complexity, and
+predictive performance, focusing on determining the optimal complexity required for ef-
+fective optimization. Simpler LSTM architectures with a single dense layer demonstrated
+sufficient capability to model the flows, effectively capturing periodic patterns while main-
+taining computational efficiency. Although these simple architectures produced reasonable
+predictions, incorporating an additional dense layer improved the network’s ability to rep-
+resent the inherent non-linearities and chaotic dynamics of such data sets. The additional
+dense layer expands the network’s representational capacity, enabling it to better capture
+intricate flow patterns. These findings emphasize the necessity of tailoring the network
+45

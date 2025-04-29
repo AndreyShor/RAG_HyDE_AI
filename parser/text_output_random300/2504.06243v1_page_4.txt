@@ -1,0 +1,61 @@
+We will be computing correlation functions in an excited state. Since the path integral naturally
+computes in-out correlation functions, the Keldysh procedure accommodates in-in correlation func-
+tions by taking a time contour that runs forward and then backward, so that we start and end
+on the same initial state. It is standard to denote the field on the upper branch of the contour
+(running forwards in time) by Φ+ and the field on the lower branch by Φ−, so the Lagrangian
+becomes L(Φ+) −L(Φ−), see e.g., [18]. The Green’s function becomes a two-by-two matrix of
+Green’s functions. After a field rotation,
+ϕ = 1
+2(Φ+ + Φ−) ,
+η = Φ+ −Φ−,
+(2.2)
+the Lagrangian becomes,
+L = ∂η∂ϕ −λ
+3!(ηϕ3 + 1
+4η3ϕ) ,
+(2.3)
+and the Keldysh and retarded Green’s functions take the form, respectively,
+GK
+k = ⟨ϕ∗
+kϕk⟩= 2πδ(k2)(nk + 1
+2) ,
+GR
+k = ⟨ϕ∗
+kηk⟩=
+i
+k2 + iϵk0
+,
+(2.4)
+where we are using relativistic notation, k2 = k2
+0 −k2. The interaction term with one η field
+is referred to as the classical interaction vertex, as it survives in the classical limit, while the
+interaction term with η3 is the quantum interaction vertex.
+We assume that we are in a state that is time-independent and Gaussian, in which mode k has
+occupation number nk ∼|k|−γ, with nk ≫1. When computing the Keldysh Green’s function from
+the free action, it is the boundary conditions at the initial time that establish the (nk +1/2) factor
+appearing in the expression. From the form of the correlators (2.4), we can assign the following
+dimensions (in momentum space) to ϕ and η, which we denote by ∆ϕ, ∆η, respectively: 1
+∆ϕ = −γ + D + 2
+2
+,
+∆η = γ −D −2
+2
+,
+momentum space . (2.5)
+Scaling dimensions are more commonly written in position space, and are related to the momentum
+space dimensions through ∆→D −∆, giving the position space dimensions,
+∆ϕ = D −γ −2
+2
+,
+∆η = γ + D −2
+2
+,
+position space .
+(2.6)
+As a consistency check, setting γ = 0 recovers the standard (vacuum) scaling dimensions, while
+for general γ we have ∆ϕ + ∆η = D −2, which is necessary from (2.3).
+1We are dropping the 1/2 in the Keldysh Green’s function, since we are assuming nk ≫1. The appearance of D
+in the dimension is because of the momentum conserving delta function i.e., what is really meant by the correlator
+is ⟨ϕ∗
+kϕp⟩= nkδ(k2)δD(k−p).
+3

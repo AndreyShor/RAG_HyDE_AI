@@ -1,0 +1,82 @@
+Relation between SDI and DI. Just as the violation of a Bell inequality in the DI case tells us that
+the measured system cannot have a classical description, the violation of a dimension witness in the
+SDI case tells us that the communicated system cannot be a classical bit. In both cases, violation of
+the classical bound is a necessary (though not always sufficient) condition, with the difference residing
+in the form of the inequalities.
+Finding the correspondence between these two objects is equivalent
+to finding the correspondence between the scenarios.
+A typical bell inequality I can be written as
+I = P
+a,b,x,y αa,b,x,yP(a, b|x, y).
+Using the relation p(a, b|x, y) = p(a|x, y)p(b|a, x, y), then I can be
+rewritten as P
+a,b,x,y αa,b,x,yp(a|x, y)p(b|a, x, y).
+By considering a as an input of Alice (x′ = (x, a)),
+p(a|x, y) can be seen as the part of Alice’s input is a. Since in the parameter estimation phase of the
+protocol the inputs are chosen according to a uniform distribution, we set P(a|x, y) = 1
+A, where A is the
+size of the alphabet of a. Then, the Bell inequality I takes the form of a dimension witness. Using this
+method, the method for going from SDI to DI and vice versa was introduced in [303]. For going from SDI
+to DI, Alice’s input x must be divided into a pair comprising a setting and an outcome. Let us consider
+the SDI randomness generation (based on n →1 quantum random access code q) where Alice input x′ is
+a collection of n independent bits a0, · · · , an−1. For this case, Alice’s input can be divided into pairs of
+outcome a = a0 and setting x = (a1, · · · , an−1) and a family of Bell inequalities can be obtained which
+they were found useful to implement entanglement-assisted random access codes works in DI randomness
+and DI-QKD protocols. The other side is also possible and one can show a DI protocol can be converted
+to SDI protocol. The example of this conversion was also shown in [303].
+Using a similar approach, Woodhead et al. [304] demonstrated that the fundamental bound on Alice’s
+min-entropy in the DI setting also applies to the semi-DI setting. They achieved this by utilizing the
+PM version of the CHSH correlator, defined as S = 1
+2
+P
+abxy(−1)a+b+xyP(b|axy), instead of Eq. (11).
+This result helps bring the semi-DI setting, where security proofs are still lacking, more in line with the
+established security results for DI-QKD.
+5.2. Receiver-device-independent QKD
+Ioannou et al. introduced another prepare-and-measure SDI-QKD protocol [305], where the sender’s
+device is partially trusted, while the receiver’s device is treated as a black box. They called these proto-
+cols “receiver-device-independent quantum key distribution (RDI-QKD).” The main assumption in RDI
+protocols is to bound the pairwise (possibly complex) overlaps between the various states prepared by
+Alice, denoted as γij = ⟨ψi| ψj⟩. The states |ψx⟩represent the quantum systems prepared by Alice’s
+devices or, more generally, the states of all systems outside Alice’s lab, conditioned on her applying the
+preparation sequence labeled by x. If Alice’s states are mixed, their purifications must also satisfy the
+overlap bounds. These bounds prevent any side-channel from leaking additional information about x to
+Eve. No characterization of the receiver’s (Bob’s) device is required, and no fair-sampling assumption is
+made. As a result, these protocols are resilient to attacks where Eve controls Bob’s device.
+5.2.1. Protocols
+Simplest protocol. In the simplest protocol, given a key bit k, Alice prepares one of two possible states
+by setting x = k. using a coherent state |α⟩with two possible polarization states |ϕx⟩= cos θ
+2 |H⟩+
+eiπx sin θ
+2 |V ⟩, she prepares one of the following states (x = 0, 1)
+|ψx⟩= |α cos θ
+2⟩
+H |α sin
+θ
+2
+
+eiπx⟩
+V
+.
+(158)
+The overlap between two preparation is given by ⟨ψ1| ψ0⟩= e−2|α|2 sin2 θ and the main assumption is
+then written as
+γ = ⟨ψ1| ψ0⟩≥C,
+(159)
+where C is a parameter chosen by the user.
+Bob, then, performs a measurement of the polarization states. For y = 0 (y = 1), he projects the incoming
+signal to |ϕ⊥
+0 ⟩(|ϕ⊥
+1 ⟩). If he gets a click, then the round is conclusive and he outputs b = 0, otherwise, the
+round is inconclusive and he outputs b = 1 and the round will be discarded during sifting. In the case of
+an ideal channel without noise and loss, the following statistics will be observed by Alice and Bob
+p(b = 0|x, y) = 1 −e−|α|2 sin (θ)2 sin ( π(x−y)
+2
+)
+2
+,
+(160)
+which is nonzero only when x ̸= y.
+Therefore, the raw key can be constructed after removing the
+inconclusive rounds, by Bob flipping all his bits.
+56

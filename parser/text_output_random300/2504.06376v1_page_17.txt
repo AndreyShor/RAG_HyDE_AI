@@ -1,0 +1,32 @@
+XX:16
+Quantum Combine and Conquer
+Figure 6 An example of point-line duality for the convex hull problem. The left configuration is
+the primal plane containing the points of interest in green, and the lines containing the convex hull
+in purple. The solid portions are edges of the convex hull, and we would like to find the edge that
+intersects the blue vertical line L. As mentioned, each point p with coordinate (px, py) in the primal
+plane maps to a line y = pxx −py in the dual plane and vice versa. An example of this mapping is
+shown in black in the right configuration. The purple lines containing the upper hull of the points in
+the primal plane map to the lower envelope of the lines in the dual plane indicated by purple dots.
+the remaining points to find the point r such that the angle formed between (p, q) and
+(q, r) is maximized. In the quantum implementation, each iteration is performed using a
+Grover maximum-finding search [16], which runs in ˜O(√n) time. Thus, in this quantum
+implementation, we perform h Grover searches for the point maximizing the angle until we
+find the starting point. For completion, we summarize this method in Algorithm 10 and
+characterize its performance in Lemma 8.
+Algorithm 10 QuantumJarvisMarch(Uin)
+Require: Uin: a unitary that encodes the data [d0, . . . , dn−1]
+1: Prepare a superposition of the indices and data using Uin.
+2: Find an edge of the convex hull (ps, pc).
+3: Let pf = ps denote our starting (and final) convex hull point.
+4: while pc ̸= pf do
+5:
+Grover search for the point pr that maximizes the angle between (ps, pc) and (pc, pr).
+6:
+Add pr to the set of output convex hull points for S.
+7:
+Let (ps, pc) = (pc, pr).
+▶Lemma 8 (Lanzagorta and Uhlmann [24]). Let S be a set of m points. The convex hull of
+S in the clockwise direction can be computed in ˜O(h√m) time using a quantum computer,
+where h is the number of points on the convex hull.
+In our quantum convex hull algorithm, we use a method similar to this quantum Jarvis
+march algorithm as a subroutine, albeit in a non-standard way.

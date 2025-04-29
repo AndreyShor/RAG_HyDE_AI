@@ -1,0 +1,128 @@
+1
+2
+3
+4
+5
+6
+7
+8
+0
+1
+crystal
+G2,t,3
+Dirichlet window
+time
+crystal
+Input: detector hits
+time
+crystal
+Input: geometry spikes
+Fig. 3. Visualization of the explicit geometry modeling. Left: Dirichlet window (orange) for a detector with C = 8 crystals, a hit at crystal c = 2 (blue) and
+window size w = 1. Center: time-resolved detector hits. Right: corresponding time-resolved geometry spikes.
+TABLE I
+HYPERPARAMETERS AND TRAINING CONFIGURATION OF THE SNN. nepochs IS THE NUMBER OF EPOCHS UNTIL EARLY STOPPING ACTIVATED. LΓ IS
+THE COUNT LOSS AND L∆ARE TIMING LOSSES, I.E. L∆,MSE AND L∆,Chamfer. B IS THE LOCAL BATCH SIZE PER GPU.
+Dataset
+nin
+Layers
+nhidden
+lr
+nepochs
+B
+GPUs
+LΓ
+LΓ + L∆
+Clinical
+240
+1
+368
+2.454e-3
+19
+31
+64
+8
+with geometry
+480
+1
+368
+2.454e-3
+18
+11
+64
+8
+SAFIR
+2880
+1
+4416
+2.454e-3
+-
+26
+8
+64
+with geometry
+5760
+1
+4416
+2.454e-3
+-
+12
+8
+64
+DistributedDataParallel class with OpenMPI 4.1.
+The source code for the implementation is publicly available2.
+C. SNN Architecture
+We use a standard fully-connected SNN model architecture
+with C input and output neurons and nlayer hidden layers
+of size nhidden. For the dataset with additional geometric
+features, the number of input neurons is 2C. We trained
+the individual weights as well as the decay constant α for
+each LIF-neuron. We used 50 000 samples of each dataset for
+training, with an 80:20 split for training and validation data,
+while keeping the remaining 10 000 samples as a hold-out
+test-set for our ﬁnal performance evaluation.
+Optimization of the hyperparameters nlayer, nhidden and the
+learning rate lr was conducted on the reduced dataset using the
+parallel genetic algorithm propulate [19]. Since evaluation
+of the population individuals of the optimization indicated no
+correlation between batch size B and predictive performance,
+we set the batch size to the maximum number of samples to
+ﬁt on a single GPU. Hyperparameter optimization is a time
+consuming task, requiring immense amounts of compute and
+energy [20], [21]. Therefore we refrained from optimizing
+hyperparameters for the SAFIR dataset and instead, scaled the
+number of hidden neurons according to the same fraction with
+respect to the number of crystals determined for the clinical
+dataset, while keeping the number of hidden layers and the
+learning rate identical.
+We trained the SNN model using the different loss functions
+described in Section III-B, with weighting factors a = 1,
+2https://github.com/Helmholtz-AI-Energy/PETNet
+b = 0.1, using the Adam optimizer [22] and the identiﬁed
+training conﬁguration listed in Table I. Due to the large data
+size, we utilize data-parallel training to speed-up training and
+enabling feasible runtimes [23]. We employ early stopping on
+the F1 score with a patience of three for a maximum number
+of 50 epochs. F1 was chosen as a stopping criterion instead
+of the validation loss because we observed a double descent
+behavior [24] in the loss, attributed to the two factor nature of
+our combined loss functions.
+D. Comparison to LSTM
+To contrast our PETNet SNN to widely used traditional
+ANNs, we additionally trained an LSTM on the Clinical
+dataset to predict coinciding photons pairs. For better com-
+parability we maintained the same parameter count for both,
+i.e., the LSTM contained a single hidden layer with 240 nodes.
+We also used the same settings for training as for the SNN,
+running 30 epochs using the Adam optimizer with a learning
+rate of lr = 2.454 × 10−3. The LSTM is also trained on the
+MSE spiking loss (LΓ) only, in a data-parallel fashion on eight
+A100 GPUs with a local batch size of 64 samples per GPU.
+The results are depicted in Figure 4
+E. Metrics
+We evaluate PETNet’s predictive performance on common
+classiﬁcation metrics for the identiﬁcation of coincidence
+pairs. Due to the high class imbalance, we are particularly
+interested in the true-positive (T P), false-positive (FP) and
+false-negative (FN) rates or, in other words, the fraction of
+correctly detected coincidence spikes in the prediction, the
+number of faulty additional spikes without matches in the label

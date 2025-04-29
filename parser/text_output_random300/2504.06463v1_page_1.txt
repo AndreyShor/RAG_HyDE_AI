@@ -1,0 +1,69 @@
+AstroClearNet: Deep image prior for multi-frame astronomical image
+restoration
+Yashil Sukurdeepa,∗, Fausto Navarrob, Tamás Budavária,c,d
+aDepartment of Applied Mathematics and Statistics, Johns Hopkins University, Baltimore, 21218, MD, USA
+bJohns Hopkins University, Baltimore, 21218, MD, USA
+cDepartment of Computer Science, Johns Hopkins University, Baltimore, 21218, MD, USA
+dDepartment of Physics and Astronomy, Johns Hopkins University, Baltimore, 21218, MD, USA
+Abstract
+Recovering high-fidelity images of the night sky from blurred observations is a fundamental problem in
+astronomy, where traditional methods typically fall short. In ground-based astronomy, combining multiple
+exposures to enhance signal-to-noise ratios is further complicated by variations in the point-spread function
+caused by atmospheric turbulence. In this work, we present a self-supervised multi-frame method, based on
+deep image priors, for denoising, deblurring, and coadding ground-based exposures. Central to our approach
+is a carefully designed convolutional neural network that integrates information across multiple observations
+and enforces physically motivated constraints. We demonstrate the method’s potential by processing Hyper
+Suprime-Cam exposures, yielding promising preliminary results with sharper restored images.
+Keywords:
+deep generative prior, ground-based astronomy, astronomy image processing
+1. Introduction
+The latest ground-based astronomical surveys,
+such as the Hyper Suprime-Cam (HSC) survey [1]
+and the upcoming Legacy Survey of Space and Time
+(LSST) from the Rubin Observatory [2], are designed
+to capture exposures of vast portions of the night sky.
+These surveys rely heavily on high-resolution ground-
+based telescopes that produce massive datasets, ne-
+cessitating substantial processing before meaningful
+scientific analysis can occur. In particular, imaging
+distant and faint celestial objects as part of these
+large-scale surveys requires advanced image process-
+ing algorithms to maximize the extraction of reliable
+and useful information.
+A key challenge when developing such algorithms
+lies in addressing atmospheric blur, an unwanted
+but inevitable consequence of ground-based obser-
+vations. The process of mitigating this blur, known
+as deconvolution, is particularly complex due to the
+high noise levels, wide dynamic range, and various
+artifacts present in the exposures. Our work tack-
+les the challenge of multi-frame astronomical image
+∗Corresponding author: Yashil Sukurdeep
+yashil.sukurdeep@jhu.edu
+restoration, focusing on combining multiple noisy
+and blurry exposures to produce a sharp, unified
+latent image of the night sky.
+1.1. Related work
+Past approaches for multi-frame image restoration
+in the field of astronomy include lucky imaging [3],
+coaddition [4], maximum likelihood estimation [5, 6],
+and streaming methods [7, 8, 9, 10, 11].
+These
+techniques must carefully balance the effective in-
+tegration of data from multiple observations, while
+managing noise levels and blur across exposures.
+More recently, several machine learning and deep
+learning frameworks have achieved viable results
+in a variety of difficult inverse imaging problems,
+including image restoration. One such approach in-
+volves training a convolutional neural network in a
+supervised manner to deblur images by performing
+spatial convolution with a large inverse kernel [12].
+Other methods use neural networks to enhance or
+post-process the outputs of classical image restora-
+tion methods, such as Wiener or Richardson-Lucy
+deconvolution, which rely on undoing the blur in the
+Fourier domain [13, 14]. These traditional methods
+Preprint submitted to Astronomy and Computing
+April 10, 2025
+arXiv:2504.06463v1  [astro-ph.IM]  8 Apr 2025

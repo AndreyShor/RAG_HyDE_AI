@@ -1,0 +1,69 @@
+a total of 7,043 distinct customers. The dataset is publicly available on Kaggle. Among the fea-
+tures, categorical variables include gender, SeniorCitizen, Partner, Dependents, PhoneService,
+MultipleLines, InternetService, OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport,
+StreamingTV, StreamingMovies, Contract, PaperlessBilling, PaymentMethod, and Churn. The
+numerical features are tenure, MonthlyCharges, and TotalCharges. Due to a high correlation
+coefficient (0.83) between tenure and TotalCharges, the latter was removed from the analysis.
+Additionally, PhoneService was eliminated due to high multicollinearity (VIF 12), and Month-
+lyCharges was removed after reevaluating VIF scores (VIF 6). The customerID feature was also
+excluded as it does not contribute to model learning.
+Figure 1 Explained Variance Ratio with Elbow Point
+Elbow Point Index: 23
+Explained Variance Ratio at Elbow Point:
+8.126234391114803e-33
+Cumulative Explained Variance at Elbow Point:
+1.0000000000000002
+Following preprocessing, cat-
+egorical features were one-
+hot encoded, resulting in
+a
+total
+of
+42
+columns.
+The dataset exhibited sig-
+nificant
+class
+imbalance,
+with
+1,869
+instances
+in
+the minority ’Yes’ class
+and 5,174 in the majority
+’No’ class.
+Due to sim-
+ulator limitations, we re-
+tained all minority class
+instances and performed
+undersampling on the ma-
+jority class, yielding a bal-
+anced
+dataset
+of
+3,738
+records.
+To
+determine
+the
+opti-
+mal number of principal
+components,
+we
+plotted
+the explained variance ra-
+tio against the number of
+components. The elbow point, identified at 23 components, is shown in Figure 1.
+For modeling, we employed various machine learning algorithms, including Logistic Regression,
+K-Nearest Neighbors (KNN), Support Vector Machines (SVM), and ensemble methods such as
+Random Forest, LightGBM, AdaBoost, and CatBoost. Logistic Regression was used as a baseline
+model due to its interpretability and effectiveness in binary classification. KNN was included for
+its instance-based learning approach, while SVM was selected for its ability to handle complex
+decision boundaries. The ensemble models were incorporated to leverage multiple weak learners
+and enhance predictive performance.
+Finally, quantum data encoding techniques were integrated into the workflow, employing basis
+encoding, angle encoding, and amplitude encoding. These methods facilitated the representation
+of classical data in quantum states, enabling the application of quantum computing principles to
+the churn prediction task. The quantum-enhanced models were evaluated in a hybrid quantum-
+classical pipeline, comparing their performance against classical counterparts.
+6

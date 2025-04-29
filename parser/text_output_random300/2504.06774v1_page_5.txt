@@ -1,0 +1,42 @@
+[27, 1]. Abadía-Heredia et al. [1] introduced a hybrid ROM that integrates POD with
+CNN and LSTM networks to predict fluid flow in complex scenarios. Their model signific-
+antly reduced computational time from tens of hours to a few minutes while maintaining
+accuracy and demonstrated the potential of combining POD with deep learning architec-
+tures to obtain efficient and accurate fluid dynamics predictions. This hybrid approach
+leverages the strengths of both methodologies to model complex, non-linear interactions
+within the flow field. In addition, Abadía-Heredia et al. [28] presented hybrid ROMs that
+integrate SVD with neural networks and compared these with purely deep learning-based
+predictive ROMs, which use autoencoders (AEs) for dimensionality reduction. The study
+demonstrated that hybrid ROMs are more robust and require fewer snapshots for training
+while maintaining accuracy across different cases, including turbulent flows. Furthermore,
+hybrid ROMs offer greater generalizability by allowing neural network architectures to re-
+main consistent as they reduce the data to a few dominant POD modes. Le Clainche
+et al. [27] demonstrated that the combination of machine learning with DMD effectively
+captures the main flow instabilities and energy-producing mechanisms in turbulent flows,
+resulting in accurate long-term predictions of wall-shear stress. San and Maulik [29] ap-
+plied artificial neural networks (ANN) in conjunction with POD for real-time prediction of
+flow fields, showcasing the potential of hybrid ROMs in fluid dynamics. In another study,
+Xu et al. [30] proposed a hybrid model that integrates POD with advanced deep learning
+models, including LSTM and CNN networks, for fluid flow prediction. The model used
+POD to extract dominant spatial modes from high-dimensional flow data, significantly
+reducing computational complexity. The reduced temporal coefficients were then fed into
+the LSTM and CNN models for sequential forecasting. All of these studies clearly high-
+light the advantages of integrating modal decomposition techniques with DL models for
+forecasting in the domain of fluid mechanics.
+In this work, we present a novel hybrid ROM model that integrates High-Order Singu-
+lar Value Decomposition (HOSVD) [31] with different LSTM architectures to predict flow
+field solutions. HOSVD significantly improves the traditional SVD by extending its cap-
+abilities to multi-way data arrays (tensors). The main advantage of using SVD/HOSVD
+is that data is reorganized into matrices, allowing it to work with a reduced quantity of
+data. This provides a comprehensive framework for dimensionality reduction that can
+capture the flow physics and patterns within the data. This work builds on the found-
+ational work of Abadía-Heredia et al.
+[1], which integrated POD with deep learning
+models. The methodology involves applying HOSVD to the temporal data to extract the
+dominant modes, which are then used as input to neural networks for temporal evolution
+prediction. This approach enhances the dimensionality reduction process, leading to more
+accurate and efficient temporal predictions. Another objective is to explore the design
+of LSTM-based deep learning architecture. By constructing and testing various LSTM
+architectures with different levels of complexity, the objective is to understand the rela-
+tionship between architectural depth and the predictive performance required for various
+5

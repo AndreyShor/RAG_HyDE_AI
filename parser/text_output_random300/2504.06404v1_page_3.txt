@@ -1,0 +1,265 @@
+IV. OPTIMIZATION FOR PARAMETER DETERMINATION 
+To determine the parameter vector 𝑤 for a given set of 
+measurements the problem is formulated as a quadratic 
+optimization problem (further details see [4]). The following 
+equations  
+𝑞(𝑤) = & 𝑞#(𝑤) 
+ 
+𝑞: 𝑜𝑣𝑒𝑟 𝑎𝑙𝑙 𝑐𝑜𝑠𝑡 𝑓𝑢𝑛𝑐𝑡𝑖𝑜𝑛 
+𝑞#: 𝑠𝑢𝑏𝑐𝑜𝑠𝑡 𝑡ℎ𝑎𝑡 𝑤𝑎𝑠 𝑎𝑑𝑑𝑒𝑑  
+𝑡𝑜 𝑡ℎ𝑒 𝑜𝑣𝑒𝑟𝑎𝑙𝑙 𝑐𝑜𝑠𝑡 
+𝑤: 𝑝𝑎𝑟𝑎𝑚𝑒𝑡𝑒𝑟 𝑣𝑒𝑐𝑡𝑜𝑟 
+(6) 
+∇𝑞(𝑤) = & ∇𝑞#(𝑤) = 0 
+ 
+ 
+show the structure of the cost function and the gradient that 
+needs to be set to zero in order to solve it. 
+Since the optimization problem to determine w is assumed 
+to be quadratic the gradient of q(w) can be written as Matrix 
+times weight vector plus a vector 
+∇𝑞(𝑤) = & 𝑄# ⋅𝑤−𝑏# = 0 
+𝑞: overall cost function 
+𝑄#: Matrix of the cost fcn j 
+𝑏#: vector of the cost fcn j 
+𝑤: parameter vector 
+(7) 
+& 𝑄#
+_`a
+)
+⋅𝑤= & 𝑏#
+_`a
+*
+. 
+ 
+Based on this structure different matrices 𝑄j and vectors 𝑏j  
+are determined and added to the overall matrix 𝑄 and vector 𝑏. 
+Not all of the following elements that contribute to Q and b are 
+needed at the same time. The idea is that we can add multiple of 
+them to the optimization problem and they contribute via their 
+corresponding Matrix Qj and vector bj . 
+The next steps are to derive the following costs and add them 
+to the optimization. Specifically, the cost is decomposed as 
+ 
+𝑞(𝑤)
+= 𝑞123,),24(𝑤)
++ 𝑞56728,)9(𝑤)
++ 𝑞:6;-,4*(𝑤)
++ 𝑞7;)6+;7,123,),24(𝑤)
++ 𝑞724*,)<-,4;7,123,),24(𝑤)
++ 𝑞;1+,2+,,+6*<7;+,3;),24(𝑤). 
+ 
+(8) 
+A. L2 Norm to fit positions, velocities and accelerations  
+In order to consider position, velocities and acceleration 
+measurements, we add up the squared differences between 
+measurement values and the predicted values of the model. 
+Each measurement can be weighted individually by a factor 𝑐𝑖  
+𝑞&'((𝑤) = 1
+2 = 𝑐) ⋅(𝑓(𝑡)) −𝑓))%
+*
+)
+= 1
+2 = 𝑐) ?@= 𝑓!(𝑡)) ⋅𝑤!
++
+!
+A −𝑓)B
+%
+*
+)
+ 
+= 1
+2 = 𝑐) @(𝑓,(𝑡))
+…
+𝑓+(𝑡))) ⋅D
+𝑤,
+⋮
+𝑤+
+F −𝑓)A
+%
+*
+)
+ 
+∇𝑞&'((𝑤) = = 𝑐) @(𝑓,(𝑡))
+…
+𝑓+(𝑡))) ⋅D
+𝑤,
+⋮
+𝑤+
+F −𝑓)A ⋅D
+𝑓,(𝑡))
+⋮
+𝑓+(𝑡))
+F
+*
+)
+ 
+= = 𝑐) D
+𝑓,(𝑡))
+⋮
+𝑓+(𝑡))
+F (𝑓,(𝑡))
+…
+𝑓+(𝑡)))
+*
+)HIIIIIIIIIIJIIIIIIIIIIK
+-!"#
+⋅D
+𝑤,
+⋮
+𝑤+
+F −= 𝑐) ⋅𝑓) D
+𝑓,(𝑡))
+⋮
+𝑓+(𝑡))
+F
+*
+)HIIIIIJIIIIIK
+.!"#
+. 
+ 
+(9) 
+With the same approach the matrices and vectors for 
+velocities and acceleration follow to 
+= 𝑐) @
+𝑓̇,(𝑡))
+⋮
+𝑓̇+(𝑡))
+A (𝑓̇,(𝑡))
+…
+𝑓̇+(𝑡)))
+*
+)HIIIIIIIIIIJIIIIIIIIIIK
+-$%&
+⋅D
+𝑤,
+⋮
+𝑤+
+F −= 𝑐) ⋅𝑓̇) @
+𝑓̇,(𝑡))
+⋮
+𝑓̇+(𝑡))
+A
+*
+)HIIIIIJIIIIIK
+.$%&
+. 
+(10) 
+And for the acceleration to  
+= 𝑐) @
+𝑓̈,(𝑡))
+⋮
+𝑓̈+(𝑡))
+A (𝑓̈,(𝑡))
+…
+𝑓̈+(𝑡)))
+*
+)HIIIIIIIIIIJIIIIIIIIIIK
+-'((
+⋅D
+𝑤,
+⋮
+𝑤+
+F −= 𝑐) ⋅𝑓̇) @
+𝑓̈,(𝑡))
+⋮
+𝑓̈+(𝑡))
+A .
+*
+)HIIIIIJIIIIIK
+.'((
+ 
+(11) 
+In the following the weight of an individual Point will not be 
+written for each equation. 
+B. Splitting into longitudinal and lateral error 
+Often the required longitudinal and lateral accuracy is 
+different. Typically, the lateral accuracy must be higher, because 
+that decides if an object is on the lane or not. Also, the 
+measurement quality can be better for lateral positions, because 
+the lane is known and printed on the road and can be used as 
+reference for lateral positions. 
+Thus, we want to have the option to weigh lateral and 
+longitudinal errors individually. To keep the structure of the 
+optimization problem the same we use a known heading at each 
+measurement point and rotate into the object coordinate system. 
+The resulting error functions are  
+ 
+ 
+!𝑥#
+𝑦#% = ! cos(𝜓)
+sin(𝜓)
+−sin(𝜓)
+cos(𝜓)% ⋅1𝑥
+𝑦2 
+ 
+𝑒/'0 = 
+cos(𝜓)) ⋅𝑥(𝑡)) + sin(𝜓)) ⋅𝑦(𝑡)) 
+−(cos (𝜓)) ⋅𝑥) −sin(𝜓)) ⋅𝑦)) 
+ 
+𝑒*+, = 
+−sin(ψ-) ⋅𝑥(𝑡)) + cos(𝜓)) ⋅𝑦(𝑡)) 
+−(−sin(𝜓)) ⋅𝑥) + cos(𝜓)) ⋅𝑦)). 
+(12) 
+ 
+The resulting cost functions are 
+1
+2 R 𝑒*./,)
+1
+)
+= 1
+2 R Scos(𝜓)) ⋅R 𝑤2,3 ⋅𝑓2,3(𝑡))
+2
++ sin(𝜓)) ⋅R 𝑤2,4 ⋅𝑓2,4(𝑡))
+2
+)
+−(cos(𝜓)) ⋅𝑥) + sin(𝜓)) ⋅𝑦)) V 
+1
+2 R 𝑒*+,,)
+1
+)
+= 1
+2 R S−sin(𝜓)) ⋅R 𝑤2,3 ⋅𝑓2,3(𝑡))
+2
++ cos(𝜓)) ⋅R 𝑤2,4 ⋅𝑓2,4(𝑡))
+2
+)
+−(−sin (𝜓)) ⋅𝑥) −cos(𝜓)) ⋅𝑦)) V. 
+(13) 
+Doing the same procedure as above the resulting matrices Qj 
+and bj are 
+ 
+Longitudinal: 
+ 
+𝑞) =
+⎝
+⎜⎜⎜
+⎛
+cos(𝜓)) ⋅𝑓#,2
+⋮
+cos(𝜓)) ⋅𝑓0,2
+sin(𝜓)) ⋅𝑓#,3
+⋮
+sin(𝜓)) ⋅𝑓0,3⎠
+⎟⎟⎟
+⎞
+     
+ 
+ 
+ 
+(14) 
+𝑄) = 𝑐) ⋅𝑞) ⋅𝑞)
+4 
+ 
+𝑏) = 𝑐) ⋅(cos(𝜓)) ⋅𝑥) + sin(𝜓)) ⋅𝑦))
+⋅𝑞) 
+ 
+𝑄) = 𝑐) ⋅𝑞) ⋅𝑞)
+4 
+ 
+𝑏) = 𝑐) ⋅(−sin(𝜓)) ⋅𝑥) + cos(𝜓)) ⋅𝑦))
+⋅𝑞) 
+ 
+ 
+ 
+ 

@@ -1,0 +1,219 @@
+2.2
+Model parameterization and numerical methods
+In this section, we outline the key physiological parameters used in the model, including their baseline values for the
+numerical simulations. We start by providing in Table 1 a list of the model state variables, together with the associated
+initial conditions employed in the simulations.
+Next, parameters are categorized into cardiovascular system, heart system, ocular hemodynamics, and cardiovascular-
+ocular connections and listed in Table 2. These parameters influence the dynamics of blood flow and pressure, as well
+as the resistance and compliance in different vascular compartments. The initial conditions and parameter values in
+this study have been calibrated to ensure baseline flow and pressure consistency in the ocular system. To establish
+reliable estimates for vascular resistances, preliminary computations were performed under steady-state conditions.
+Table 1: Summary of model state variables.
+CRA=Central Retinal Artery; CRV=Central Retinal Vein.
+Variable
+Description
+Initial condition
+Units
+Reference
+Cardiovascular
+Paorta
+aortic pressure
+90.1
+mmHg
+[2]
+Pbody
+body pressure
+70.5
+mmHg
+[2]
+PVC
+vena cava pressure
+3.32
+mmHg
+[2]
+PPA
+pulmonary artery pressure
+13.4
+mmHg
+[2]
+Plungs
+lungs pressure
+13.3
+mmHg
+[2]
+PPV
+pulmonary vein pressure
+11.2
+mmHg
+[2]
+Qaorta
+aortic flow rate
+8.89
+ml/s
+[2]
+Qbody
+body flow rate
+67.3
+ml/s
+[2]
+Qlungs
+lungs flow rate
+0.78
+ml/s
+[2]
+QPV
+pulmonary vein flow rate
+23.8
+ml/s
+[2]
+VRV
+vena cava volume
+105
+ml
+[2]
+VLV
+left ventricle volume
+112
+ml
+[2]
+Eye-Heart Coupling
+Paorta2eye,1
+aorta-to-eye pressure
+80.25
+mmHg
+This work
+PCRAin
+CRA pressure
+70.2
+mmHg
+This work
+PCRVout
+CRV pressure
+8.57
+mmHg
+This work
+Peye
+eye pressure
+65.5
+mmHg
+This work
+Peye2vc,2
+eye-to-vena cava pressure
+4.52
+mmHg
+This work
+Qeye2vc
+eye-to-vena-cava flow rate
+0.15
+ml/s
+This work
+Qaorta2eye
+aorta-to-eye flow rate
+0.15
+ml/s
+This work
+Ocular Circulation
+PCRA,1
+CRA pressure
+43.5
+mmHg
+[10]
+Part
+arteriole pressure
+35.5
+mmHg
+[10]
+Pven
+venule pressure
+21.8
+mmHg
+[10]
+PCRV,2
+CRV pressure
+18.9
+mmHg
+[10]
+Table 2: Summary of model parameters.
+CRA=Central Retinal Artery; CRV=Central Retinal Vein.
+Symbol
+Description
+Value
+Units
+Reference
+Cardiovascular system
+Raorta,1
+aortic resistance
+3.751 · 10−3
+mmHg s / ml
+[2]
+Raorta,2
+aortic resistance
+6.93 · 10−2
+mmHg s / ml
+This work
+Rbody
+body resistance
+1.0
+mmHg s / ml
+[2]
+Rvc
+vena cava resistance
+3.751 · 10−3
+mmHg s / ml
+[2]
+Rpa
+pulmonary artery resistance
+3.751 · 10−3
+mmHg s / ml
+[2]
+Rlungs,1
+lungs resistance
+3.376 · 10−2
+mmHg s / ml
+[2]
+Rlungs,2
+lungs resistance
+0.1013
+mmHg s / ml
+[2]
+Rpv
+pulmonary vein resistance
+3.751 · 10−3
+mmHg s / ml
+[2]
+Caorta
+aortic compliance
+0.22
+ml / mmHg
+[2]
+Cbody
+body compliance
+1.46
+ml / mmHg
+[2]
+Cvc
+vena cava compliance
+20.0
+ml / mmHg
+[2]
+Cpa
+pulmonary artery compliance
+9.0 · 10−2
+ml / mmHg
+[2]
+Clungs
+lungs capacitance
+2.67
+ml / mmHg
+[2]
+Cpv
+pulmonary vein capacitance
+46.7
+ml / mmHg
+[2]
+Laorta
+aortic fluid inertance
+8.25 · 10−4
+mmHg s2 / ml
+[2]
+6

@@ -1,0 +1,90 @@
+18
+•
+Bhattacharyya et al.
+given TSP problem corresponds to the 𝑥which minimizes9
+𝐶(𝑥) = 𝐶dist(𝑥) + 𝜆𝐶penalty(𝑥)
+=
+∑︁
+0≤𝑖,𝑗<|𝑉|
+𝐴𝑖,𝑗
+∑︁
+0≤𝑡<|𝑉|
+𝑥𝑡,𝑖𝑥(𝑡+1),𝑗
++ 𝜆
+∑︁
+0≤𝑡<|𝑉|
+©­
+«
+1 −
+𝑛−1
+∑︁
+0≤𝑖<|𝑉|
+𝑥𝑡,𝑖ª®
+¬
+2
++ 𝜆
+∑︁
+0≤𝑖<|𝑉|
+©­
+«
+1 −
+∑︁
+0≤𝑡<|𝑉|
+𝑥𝑡,𝑖ª®
+¬
+2
+(32)
+Penalty terms are included to ensure that the vertex sequence is indeed a Hamiltonian cycle (i.e. that every
+vertex is visited exactly once and there is exactly one vertex for each timestep). The constant 𝜆∈R is a Lagrange
+multiplier. To ensure that the Hamiltonian cycle constraints are satisfied we require 𝜆> max(𝐴𝑖,𝑗).
+The cost function can be further improved by eliminating rotational symmetry. To do so, we fix 𝑥0 = 1 and define
+˜𝑥∈{0, 1}(|𝑉|−1)2 so that (for 0 ≤𝑖,𝑡< |𝑉| −1)
+˜𝑥(|𝑉|−1)𝑡+𝑖:= ˜𝑥𝑡,𝑖= 𝑥(𝑡+1),(𝑖+1).
+(33)
+Re-expressing 𝐶in terms of ˜𝑥
+𝐶(𝑥) = ˜𝐶( ˜𝑥) = ˜𝐶dist( ˜𝑥) + 𝜆˜𝐶penalty( ˜𝑥)
++
+∑︁
+0≤𝑖<|𝑉|−1
+𝐴0,𝑖( ˜𝑥0,𝑖+ ˜𝑥(|𝑉|−2),𝑖)
+=
+∑︁
+0≤𝑖,𝑗<|𝑉|−1
+𝐴𝑖,𝑗
+∑︁
+0≤𝑡<|𝑉|−1
+˜𝑥𝑡,𝑖˜𝑥(𝑡+1),𝑗
++ 𝜆
+∑︁
+0≤𝑡<|𝑉|−1
+©­
+«
+1 −
+𝑛−1
+∑︁
+0≤𝑖<|𝑉|−1
+˜𝑥𝑡,𝑖ª®
+¬
+2
++ 𝜆
+∑︁
+0≤𝑖<|𝑉|−1
+©­
+«
+1 −
+∑︁
+0≤𝑡<|𝑉|−1
+˜𝑥𝑡,𝑖ª®
+¬
+2
+.
+(34)
+Because this function is quadratic in the entries of ˜𝑥, we can define a a QUBO10with 𝑄∈R(|𝑉|−1)2×(|𝑉|−1)2
+˜𝑥𝑇𝑄˜𝑥= −˜𝐶( ˜𝑥)
+(35)
+To generate problem instances, we sampled points {𝑝𝑖}0≤𝑖<5 uniformly from [−1, 1]2 and set 𝐴𝑖,𝑗in the adjacency
+matrix 𝐴to be the Euclidean distance from 𝑝𝑖to 𝑝𝑗, i.e., 𝐴𝑖,𝑗= ∥𝑝𝑖−𝑝𝑗∥2. The Lagrange multiplier 𝜆was set to
+𝜆= 1.1 max(𝐴𝑖,𝑗).
+9Here 𝑥|𝑉|,𝑖= 𝑥0,𝑖i.e. periodicity is enforced by construction.
+10The minus sign comes from the fact that we defined QUBOs as maximization problems.
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

@@ -1,0 +1,37 @@
+Chapter 2.
+Tools and methodology
+This chapter is based on Ref. [109] and my result presented in Refs. [10, 8, 7, 6].
+Perturbative QCD can be used to describe the behavior of high energy scattering processes
+involving hadrons as we have outlined in the previous chapter.
+This approach relies on
+the factorization theorem which allows to separate the perturbative from non-perturbative
+contributions by absorbing the latter into quantities such as Parton Distribution Functions
+(PDFs). Unfortunately, beyond the framework of lattice QCD, the functional form of PDFs
+is not computable from first principles. The most common approach to overcome this issue
+entails parametrizing PDFs at a common given scale Q0 and, by using DGLAP evolution, fitting
+them to experimental high energy data. Historically, the first parametrizations of PDFs relied
+on fixed functional forms, while in the NNPDF approach, adopted in this thesis, PDFs are
+obtained by training a neural network, which can approximate any continuous function as
+dictated by the Universal Approximation Theorem [110]. During a PDF fit, different sources of
+uncertainties arise and have to be consistently propagated. These uncertainties, which can have
+both experimental and theoretical origins, will provide a bound on our PDFs estimate, which
+can systematically limit the accuracy of further computations that make use of such PDFs. It
+is then clear that, to achieve accurate predictions for future colliders, as HL-LHC or EIC, both
+accurate pQCD calculations and reliable statistical tools have to be adopted for PDF extraction.
+In this chapter, we review the tools, assumptions and settings used within the NNPDF framework
+to fit PDFs and which constitute the starting setup used to derive the results presented in the
+next Chapters 3 to 5. Let us remark that the theoretical tools presented in the first section are
+independent of and decoupled from the NNPDF methodology, which is outlined in the second
+and third parts of the chapter. In particular, the former have also been adopted in other works
+which are not directly related to PDF fitting.
+Outline.
+This chapter covers three rather independent topics, which are collected here to
+give a unitary description of the common working environment adopted during the studies of
+Chapters 3 to 5.
+In Section 2.1, we describe the tools used to produce theory predictions of DIS and hadronic
+observables, able to constrain PDFs. In particular, we describe two open-source code EKO Sec-
+tion 2.1.1 and Yadism Section 2.1.2 adopted respectively to perform DGLAP evolution and
+computing DIS coefficients. In Section 2.2, we summarize the treatment of uncertainties (both
+experimental and theoretical) during our PDF fits and outline the common aspects of the
+fitting methodology adopted both for polarized and unpolarized fits. Finally, we conclude, in
+31

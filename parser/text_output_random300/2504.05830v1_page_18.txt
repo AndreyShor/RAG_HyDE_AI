@@ -1,0 +1,94 @@
+Springer Nature 2021 LATEX template
+18
+Human Activity Recognition using RGB-Event based Sensors
+Table 2 Results on the HARDVS 2.0 dataset (RGB+Event).
+No.
+Algorithm
+Publish
+Backbone
+Top-1
+Top-5
+#01
+C3D [70]
+ICCV-2015
+3D-CNN
+50.9
+56.5
+#02
+TSM [71]
+ICCV-2019
+ResNet-50
+52.6
+62.1
+#03
+X3D [72]
+CVPR-2020
+ResNet
+47.4
+51.4
+#04
+TimeSformer [73]
+ICML-2021
+ViT
+51.6
+58.5
+#05
+SSTFormer [44]
+arXiv-2023
+SNN-Former
+53.0
+60.1
+#06
+SAFE [14]
+PR-2024
+VLM
+50.1
+56.1
+#07
+ESTF [33]
+AAAI-2024
+ResNet-Former
+49.9
+55.8
+#08
+Vision Mamba [50]
+ICML-2024
+Mamba
+51.8
+59.5
+#09
+Ours
+-
+Multi-modal HCO
+53.2
+62.1
+Python based on the PyTorch [69] framework, and the experiments are con-
+ducted on a server with CPU Intel(R) Xeon(R) Gold 5318Y CPU @2.10GHz
+and GPU RTX3090s. More details can be found in our source code.
+5.3 Comparison with Other SOTA Algorithms
+• Results on HARDVS 2.0 Dataset.
+We first report the experimental
+results on the HARDVS 2.0 dataset. The comparison methods include CNN-
+baed (C3D [70], TSM [71], X3D [72]), Transformer-based (TimeSformer [73],
+SSTFormer [44], ESTF [33]), Large visual-language model-based (SAFE [14]),
+and Mamba-based (Vision Mamba [50]). Instead, we explore a physical visual
+model based on heat conduction in this work. In addition to strong inter-
+pretability, we can see an extraordinary performance in the human activity
+recognition task, achieving 53.2% on top-1 accuracy. Specifically, compared
+to the visual mamba model that has achieved great success in the field of
+vision, our improved visual heat conduction model surpasses it by +1.4% on
+the top-1 accuracy. Furthermore, we also beat the Transformer-based methods
+like SSTFormer and ESTF thanks to the multi-modal HCO. Meanwhile, we
+also surpassed the SAFE method, which uses a Large visual-language model
+(LVLM) in the visual recognition tasks. Compared with the above outstanding
+methods, we can demonstrate the superiority of our proposed approach.
+• Results on PokerEvent [44] Dataset. PokerEvent is a special recogni-
+tion dataset that records the poker cards’ character patterns by a DAVIS346
+camera. As shown in Table 3, we compare the experimental results on the Pok-
+erEvent dataset with other methods. Obviously, our method surpasses previous
+mainstream algorithms like TSM [71], TAM [74], SSTFormer [44], to a certain
+extent, achieving 57.4% on the top-1 accuracy. Consequently, the prominent
+performance is achieved on the PokerEvent dataset due to the modality-specific
+continuous FVEs and policy routing based fusion method. This implies that
+the heat conduction multi-modal model based on physical prior is effective for
+conventional visual recognition tasks.

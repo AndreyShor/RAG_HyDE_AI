@@ -1,0 +1,62 @@
+2
+FIG. 1.
+Cascading failures in interdependent networks conceptualized as a birth-death process.
+Panel (a)
+depicts two networks, A and B, interconnected by dependency links (green) alongside internal connectivity links (black). When
+a node fails, it topples down (in the same network) all the nodes it disconnects from GCC. Additionally, each failed node also
+causes the dependent node in the parallel network to fail, leading to a cascading effect. For instance, the failure of node 1A
+(marked with red X) results in the detachment of 2A from the GCC, causing the failure of nodes 1B and 2B due to dependency.
+Consequently, 3B becomes detached from the GCC of network B, which cascades back to topple 3A. Thus the failure of 1A leads
+to the failure of 3A in the subsequent iteration. Panel (b): while single networks exhibit a continuous phase transition (red) in
+which the likelihood of a node being part of the GCC (P∞) continuously diminishes to zero, interdependent networks undergo
+an abrupt transition (blue) due to cascading failures. At p = ˜p (Panel (c)), the cascade of failures involves a long-lasting
+plateau, where damage stays relatively constant over several iterations. Panel (d): The cascading failure dynamics mirrors a
+birth-death process, wherein each failed node [like 1A in panel (a)] has a given number of offspring (like 3A) in the subsequent
+iteration. When p > ˜p the mean offspring count, m, is less than one, resulting in an exponential decay of the demographic
+process and network survival. Conversely, for p < ˜p, m > 1 leading to exponential damage growth and a swift collapse. At
+p = ˜p, m = 1 during the plateau, and the dynamics is neutral
+independent, and its time evolution is governed solely by
+demographic noise. Because n ≪N, the GCC undergoes
+a prolonged plateau, in which P∞is almost fixed (Figure
+1(c)). This plateau phase may end in extinction, in which
+case nt = 0 and the network survives. However, if the
+process persists long enough, the GCC becomes thinner
+and more fragile, m increases above one, the population
+of failed nodes starts growing faster and the network col-
+lapses.
+Let us provide an approximate expression for the devi-
+ation from neutrality as the process goes on. t is defined
+as the number of iterations since the beginning of the
+plateau, so at t = 0 the chance to be on the infinite
+cluster is P∞(t = 0), the number of failed nodes is n0
+and the mean number of offspring m(t = 0) = 1. The
+number of nodes that fail in the t-th iteration is nt, and
+Mt = Pt
+k=0 nt is the total number of nodes that fail
+until t.
+Therefore, P∞(t) = P∞(0) −Mt/N.
+As long
+as Mt ≪N we can implement the linear approximation
+and assume m(t) = 1 + CMt/N, where C ≡dm/dP∞
+evaluated at P∞(t = 0).
+To simulate such a demographic process, we start with
+initial values n0 = M0. For each individual in n0, we
+randomly draw a number mi of descendants for the ith
+individual from a truncated power-law distribution with
+mean 1+CM/N (see Appendix D for full details). In the
+next iteration, the population is n1 ≡Pn0
+i=1 mi. We then
+update M0 to M1 = M0 + n1 and iterate the process un-
+til it either terminates (i.e., when nt = 0) or the network
+collapses, which can be approximated by the condition
+Mt = (˜p −pc)N. Such simulations are significantly sim-
+pler and faster than emulating dependent networks and
+their dynamics.
+Monitoring the giant component of a
+random network is computationally costly, requiring the
+tracking of all node and edge connections at each step.
+In contrast, simulating the dynamics of a neutral popu-
+lation only involves drawing n random deviates at each
+step.
+In order to demonstrate the effectiveness of our ap-
+proach, we will use it to understand how the collapse

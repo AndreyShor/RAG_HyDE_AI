@@ -1,0 +1,114 @@
+also serve as inspiration for other end-to-end deep
+learning image restoration techniques [15].
+All of these supervised approaches rely on col-
+lections of labeled training data, which is a major
+impediment for their adoption in the field of astron-
+omy, where ground truth observations are costly to
+acquire. This motivates the need for unsupervised
+deep learning approaches for astronomical image
+restoration.
+Prominently, the method of deep image priors,
+a self-supervised technique that was introduced by
+Ulyanov et al. [16], represents one such avenue. As
+part of this approach, a so-called “hourglass” image
+generator network is used to parametrize the map-
+ping from a randomly initialized vector to a single
+degraded image. This mapping can be leveraged to
+perform a variety of image processing tasks, such as
+denoising, in-painting, artifact removal, and super-
+resolution, among others. The framework has been
+extended to perform blind image deconvolution with
+natural images [17, 18]. Yet, such techniques remain
+absent from the astronomy community.
+1.2. Contributions
+Inspired by the aforementioned deep learning ap-
+proaches for image restoration, and in particular
+by deep image priors, we develop a novel unsuper-
+vised method for multi-frame astronomical image
+restoration, dubbed AstroClearNet. As part of our
+approach, we solve for a sharp, noise-free latent
+image of the night sky by using information from
+multiple noisy and blurry co-registered exposures of
+a given region of the sky.
+In particular, we model the latent image as a func-
+tion of the multiple noisy and blurry exposures, and
+parametrize this function using a carefully-designed
+neural network with learnable parameters. By learn-
+ing the parameters of the network and exploiting the
+regularizing effect imposed by the network’s archi-
+tecture, AstroClearNet yields a latent image which
+corresponds to a maximum a posteriori (MAP) esti-
+mate for a given statistical model of the exposures,
+as outlined in Section 3.1.
+Our approach is unique in that rather than find-
+ing a latent image for a single degraded observation,
+we combine information from multiple exposures
+of the same part of the sky in order to generate
+a single, common latent image. As a result, the
+neural network architecture proposed in this paper,
+which is relatively simple and contains few learnable
+parameters, is suited to processing batches of expo-
+sures of the sky, akin to imaging data produced by
+modern ground-based surveys.
+To demonstrate the effectiveness and performance
+of AstroClearNet, we conducted tests using a set
+of Hyper Suprime-Cam (HSC) exposures, which
+serve as a precursor to forthcoming imaging data
+from the Rubin Observatory. The results are highly
+promising, indicating that the method is well-suited
+for integration into processing pipelines for studies
+with ground-based astronomical imaging data.
+2. Modeling the imaging data
+We begin by outlining the setup for our method.
+Modern astronomical surveys produce datasets con-
+sisting of calibrated, co-registered, high-resolution
+exposures of the same region of the sky, which we
+denote as y={y(1), . . . , y(n)}. For each t = 1, . . . , n,
+the image y(t) ∈Rd is represented as a d-dimensional
+column vector, corresponding to a noisy, blurry ob-
+servation captured at time t, whose pixel values are
+denoted as y(t)
+i
+for i = 1, . . . , d. To simplify nota-
+tion, we present the mathematical framework in this
+paper for images represented as one-dimensional
+arrays (column vectors). Nonetheless, all models,
+derivations, and algorithms can be readily adapted
+and have been implemented for two-dimensional
+image arrays.
+We note that the pixel values y(t)
+i
+represent pho-
+ton counts measured at each pixel in each exposure.
+Along with these measurements, we also obtain aux-
+iliary data on the variability and usability of each
+pixel value. In particular, we are given correspond-
+ing standard deviations σ(t)
+i , and hence variances
+v(t)
+i
+.= (σ(t)
+i )2, for these measurements. Additionally,
+each exposure is accompanied by a mask, denoted
+as m = {m(1), . . . , m(n)}. The masks are binary ar-
+rays indicating whether specific pixel values in the
+exposures are valid measurements. Specifically, for
+each t=1, . . . , n and i=1, . . . , d, the mask entries
+are defined as follows:
+m(t)
+i
+.=
+(
+1,
+if y(t)
+i
+is an acceptable measurement,
+0,
+otherwise.
+Moreover, we are given point-spread functions
+(PSFs), denoted as f ={f (1), . . . , f (n)}. For each
+t=1, . . . , n, the PSF f (t) ∈Rd′ is a d′-dimensional
+column vector (where d′ < d) that represents the
+convolution kernel (or blur) associated with expo-
+sure y(t). These PSFs are typically derived from
+2

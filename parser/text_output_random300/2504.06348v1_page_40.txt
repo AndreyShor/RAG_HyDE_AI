@@ -1,0 +1,69 @@
+This contributes a rescaling factor of 1, given that it is a diagonal operator with maximum diagonal
+element 1. We prepare this block encoding using explicit (in the nomenclature of Ref. [75]) rejection
+sampling with a uniform reference state. See Fig. 4. However, we structure the arithmetic for rejection
+sampling in a way that we avoid having to compute a division to evaluate the argument to the Legendre
+polynomial. Specifically, we can prepare a uniform superposition over m = 1 . . . M basis states and
+then check the inequalities
+
+
+
+
+
+M ≥m,
+l = 0
+(kp1 · kp2)M ≥|kp1||kp2|m,
+l = 1
+[3(kp1 · kp2)2 −|kp1|2|kp2|2]M ≥2|kp1|2|kp2|2m,
+l = 2.
+(116)
+Rearranging the above inequalities recovers the correct inequality test for the Legendre polynomial.
+The arithmetic to prepare the input quantities to the inequality test can be broken down as follows:
+(a) Compute kp1 · kp2 and |kp1||kp2| to ancilla registers.
+(b) If l = 2, square kp1 · kp2 and |kp1||kp2|.
+(c) Prepare a uniform superposition over m = 1 . . . M basis states.
+(d) Prepare the right hand side of Eq. (116) by multiplying the m register by |kp1||kp2| if l = 1, and
+by 2|kp1|2|kp2|2 if l = 2.
+(e) Instantiate a register in computational basis state |M⟩.
+(f) Compute the quantity 3(kp1 · kp2)2 −|kp1|2|kp2|2.
+(g) Evaluate the left hand side of Eq. (116) by multiplying M by kp1 · kp2 if l = 1 or by 3(kp1 ·
+kp2)2 −|kp1|2|kp2|2 if l = 2.
+(h) Carry out the inequality test.
+(i) Uncompute the arithmetic in the substeps above.
+3. We add p1 to the pseudoion momentum P.
+4. We swap the system register where p1 is encoded and the ancilla register where p2 is encoded.
+5. We subtract p2 from the pseudoion momentum P and (not shown) flag an ancilla qubit with |0⟩if
+P + p1 −p2 ∈G, and with |1⟩otherwise.
+6. Finally, controlled on ζI, we apply (PREPNL)† on the (now) ancilla register where p1 is encoded.
+The costs for each of the steps and substeps above are derived in Appendix E.5 and collated in Table 6. The
+total rescaling factor is
+λVNL = ηval
+ηion
+X
+I=1
+λ ˜V I
+NL = ηval
+ηion
+X
+I=1
+lmax
+X
+l=0
+3
+X
+α=1
+4π
+Ω(¯rζI
+l )3(2l + 1)|DζI,l
+α
+|
+X
+p2∈G
+|GζI,l
+α (|kp2|¯rζI
+l )|2
+(117)
+5.2
+Time-evolution
+We perform Hamiltonian simulation via quantum signal processing (QSP). A summary of the method and
+the resource cost in terms of number of calls to the iterate is given below.
+40

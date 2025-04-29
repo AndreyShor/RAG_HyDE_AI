@@ -1,0 +1,165 @@
+10
+the Riemannian gradient [H, |χ(γ)
+k−1⟩⟨χ(γ)
+k−1|]. For any anti-hermitian operator X we have ⟨ϕk−1| X |χ(γ)
+k−1⟩+ c.c. =
+⟨ϕk−1| X |ϕk−1⟩+ ⟨ϕk−1| X |∆(γ)
+k−1⟩+ c.c. = ⟨ϕk−1| X |∆(γ)
+k−1⟩+ c.c., since ⟨ϕk−1| X |ϕk−1⟩is an imaginary quantity
+when X = −X†. Therefore, we obtain
+
+d
+dsEγ⟨∆(γ)
+k |∆(γ)
+k ⟩
+
+s=0
+=
+Eγ ⟨ϕk−1| [H, |ϕk−1⟩⟨ϕk−1| −|χ(γ)
+k−1⟩⟨χ(γ)
+k−1|] |∆(γ)
+k−1⟩+ c.c.
+
+=
+Eγ ⟨ϕk−1| [H, |∆(γ)
+k−1⟩⟨ϕk−1| + |χ(γ)
+k−1⟩⟨∆(γ)
+k−1|] |∆(γ)
+k−1⟩+ c.c.
+ ≤8∥H∥∞Eγ[η(γ)2
+k−1] = K,
+(49)
+where in the final line, we expressed the difference |χ(γ)
+k−1⟩⟨χ(γ)
+k−1| −|ϕk−1⟩⟨ϕk−1| = |∆(γ)
+k−1⟩⟨ϕk−1| + |χ(γ)
+k−1⟩⟨∆(γ)
+k−1|
+in terms of |∆(γ)
+k−1⟩. We use the Lagrange form of the remainder to determine R. Since ∥g(γ)
+k ∥∞≤2D∥H∥∞and
+∥Gk∥∞≤2∥H∥∞we have
+
+d2
+ds2 Eγ⟨∆(γ)
+k |∆(γ)
+k ⟩
+ =
+Eγ ⟨ϕk−1| e−sGk(G2
+k + 2Gkg(γ)
+k
++ g(γ)2
+k
+)esg(γ)
+k
+|χ(γ)
+k−1⟩+ c.c
+
+(50)
+≤32D2∥H∥2
+∞.
+(51)
+We thus obtain the recursion relation
+Eγ[η(γ)2
+k
+] ≤Eγ[η(γ)2
+k−1]A + B
+(52)
+where A = 1 + 8∆β∥H∥∞and B = 16D2∆β2∥H∥2
+∞, which yields after n steps the upper bound
+Eγ[η(γ)2
+n
+] ≤2∆β∥H∥∞D2 
+e8β∥H∥∞−1
+
+.
+(53)
+By Jensen’s inequality we have established the first part of Lemma 2. The second part can be established using the
+Chebyshev inequality that states that for a random variable X, the probability of being more than ˜δ away from the
+mean is upper bounded by
+Pr
+h
+|X −E[X]| > ˜δ
+i
+≤Var(X)
+˜δ2
+⇒
+Pr
+h
+X −E[X] > ˜δ
+i
+≤Var(X)
+˜δ2
+.
+(54)
+Considering the random variable η(γ)
+n
+we we thus have
+Pr
+h
+η(γ)
+n
+> Eγη(γ)
+n
++ ˜δ
+i
+≤Var(η(γ)
+n )
+˜δ2
+⇒
+Pr
+h
+η(γ)
+n
+> ˜bn + ˜δ
+i
+≤Var(η(γ)
+n )
+˜δ2
+≤2∆β∥H∥∞D2
+˜δ2
+
+e8β∥H∥∞−1
+
+(55)
+which completes the proof.
+We go on to use Lemma 2 to establish an upper bound the for he average fidelity error Eγ[ε(γ)
+n ] where ε(γ)
+n
+=
+1 −| ⟨ψ(β)| χ(γ)
+n ⟩|2 is the fidelity error between a random state created through SRGD and the ITE state.
+Theorem 2: The average fidelity error ¯εn = Eγ[ε(γ)
+n ] after n steps of SRGD with step size ∆β = β
+n is upper
+bounded by
+bn = 9
+2
+p
+2∆β∥H∥∞D
+
+e8β∥H∥∞−1
+ 1
+2 ,
+(56)
+for sufficiently large n. For any δ > 0, the probability that a random state will give rise to a fidelity error greater
+than bn + δ is upper bounded by
+Pr(ε(γ)
+n
+> bn + δ) ≤8∆β∥H∥∞D2
+δ2
+
+e8β∥H∥∞−1
+
+(57)
+Proof : We first note that
+ϵn = ∥|ψ(β)⟩−|ϕn⟩∥=
+p
+2 −2Re(⟨ψ(β)|ϕn⟩) ≤
+p
+2(1 −|⟨ψ(β)|ϕn⟩|)
+⇒
+|⟨ψ(β)|ϕn⟩| ≥1 −ϵ2
+n
+2 ,
+(58)

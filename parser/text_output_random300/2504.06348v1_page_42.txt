@@ -1,0 +1,71 @@
+by setting
+r(τ, δ) =
+|τ|e
+2
++ log
+c
+δ
+
+,
+(124)
+where c = 4(
+√
+2πe
+1
+13 )−1 ≈1.47762.24 A recent result [27] has shown how to apply Generalized QSP [26] to
+construct a circuit that applies:
+• The controlled unitary |0⟩⟨0| ⊗Wsa + |1⟩⟨1| ⊗W †
+sa, r(λt, δ) many times;
+• r(λt, δ) single qubit rotations, whose cost is negligible (comparatively speaking);
+• The unitary |0⟩⟨0| ⊗W †
+sa + |1⟩⟨1| ⊗I and the unitary |0⟩⟨0| ⊗I + |1⟩⟨1| ⊗Wsa once.
+The resulting circuit implements a block-encoding of an operator Xt satisfying
+∥Xt −e−iHt∥≤δ.
+(125)
+The circuit uses 1 auxiliary qubit. Note that W †
+sa = Usa[Is ⊗(2 |G⟩⟨G|a −Ia)], so we can control between
+Wsa and W †
+sa by simply controlling the reflection operator on the ancilla:
+|0⟩⟨0| ⊗Wsa + |1⟩⟨1| ⊗W †
+sa = (|0⟩⟨0| ⊗Is ⊗Ra + |1⟩⟨1| ⊗Is ⊗Ia)(I ⊗Usa)(|0⟩⟨0| ⊗Is ⊗Ia + |1⟩⟨1| ⊗Is ⊗Ra),
+where Ra = 2|G⟩⟨G|a −Ia. Hence, the aforementioned circuit block-encoding Xt requires
+|τ|e
+2
++ log
+c
+δ
+
++ 2
+(126)
+applications of the unitary Usa (two of which are controlled on the ancilla qubit, i.e., |0⟩⟨0| ⊗Usa and
+|1⟩⟨1| ⊗Usa, and the rest are simply Usa), together with singly-controlled reflections on the ancilla qubits
+whose cost is negligible compared to the cost of Usa.25
+Furthermore, there are additional gates needed
+for synthesizing the single-qubit rotations on the QSP’s ancilla qubit, which are again negligible, although
+determining the angles may require a potentially challenging classical precomputation. Hence, in our resource
+estimates in Sec. 7 we only account for the cost of the repeated application of Usa.
+5.2.2
+Starting from an imperfect block-encoding of H
+In the discussion presented so far, we have assumed access to an exact block-encoding Usa of H/λ. As in
+Ref. [62], let us now lift this assumption and assume that we access instead a unitary ˜Usa which block-encodes
+an operator ˜H/λ with
+∥˜H −H∥≤δBE.
+(127)
+Applying the procedure discussed in the previous subsection with Usa replaced by ˜Usa, we block-encode an
+operator ˜Xt such that
+∥˜Xt −e−i ˜
+Ht∥≤δ′.
+(128)
+with a number of applications of ˜Usa as in Eq. (126).
+Now, using the triangle inequality, the previous
+inequality, and Lemma 50 in Ref. [82],
+∥˜Xt −e−iHt∥≤∥˜Xt −e−i ˜
+Ht∥+ ∥e−i ˜
+Ht −e−iHt∥≤δ′ + |t|∥˜H −H∥≤δ′ + δBE|t|.
+(129)
+24We note that the upper bound on the degree of the Jacobi-Angers expansion required is likely an overestimate, as an
+asymptotic analysis suggests that the constant prefactor of the term scaling with τ may be improved from e/2 to 1 [81].
+However, the non-asymptotic extension is nontrivial and rigorous results are not available.
+25Note also that the cost of a singly-controlled Usa is almost as the cost of Usa with no control, due to the fact that the
+control only needs to be implemented for the Select or the Swap parts of the block-encodings of each Hamiltonian term.
+42

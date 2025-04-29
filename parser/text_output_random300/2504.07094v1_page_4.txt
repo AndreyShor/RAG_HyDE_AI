@@ -1,0 +1,117 @@
+4
+D.
+Validation
+To validate the QUBO-based reconstruction of W(E),
+we applied it to an exactly solvable physical system. To
+this end, we considered the Ising model on the L × L
+square lattice with uniform nearest-neighbour spin inter-
+actions and periodic boundary conditions. For even L,
+the density of states can be calculated exactly with the
+recursive enumeration method of ref.
+[54]. Because the
+energy of the system is solely determined by the number
+of parallel neighboring spins, 2nq, we used nq as the nat-
+ural variable for profiling W, and mapped the admissible
+configurations on the QUBO model detailed in Appendix
+A.
+The admissible range of nq is bound by 0 and L2, corre-
+sponding respectively to the antiferromagnetic and ferro-
+magnetic states. W(nq) is unimodal and symmetric with
+respect to the midpoint nq = L2/2. W is minimum at
+the boundaries, where the ferromagnetic and antiferro-
+magnetic states account for two configurations each, and
+is maximum at the midpoint.
+For a stringent validation, we considered the 12 × 12
+Ising system (L = 12), where the ”dynamic range” of
+W spans across more than 40 orders of magnitude, mak-
+ing it impossible to recover the entire profile of W(nq)
+with simple sampling schemes. For the reconstruction,
+we used m = 1, 2, and 3 slack variables, corresponding
+to nq intervals of width 2, 4, and 8, respectively, and sam-
+pled the ground state manifold using a parallel tempering
+scheme (see Supporting Information S2). We leveraged
+the unbiassed nature of classical parallel tempering-based
+optimizations to decouple the validation of the recon-
+struction method from potential external biases. These
+include those that can arise from, e.g. fair-sampling issues
+in quantum optimizers[43, 46, 47],and out-of-equilibrium
+effects in classical annealers[42].
+As illustrated in Appendix A, the reconstructed pro-
+files are practically indistinguishable from the exact one
+at all ms, and the observed agreement is remarkably con-
+sistent throughout the broad range spanned by W, de-
+spite its wide dynamic range. Furthermore, the reported
+data demonstrate that the block analysis provides a reli-
+able and unbiased estimate of the statistical uncertainty
+of the reconstructed W.
+II.
+APPLICATION: ADDING BENDING
+RIGIDITY TO RING POLYMER MELTS
+We now apply the approach to characterize the topo-
+logical entanglement in equilibrated melts of semiflexible,
+topologically unrestricted ring polymers. The canonical
+sampling of such a system is challenging for conventional
+approaches based on real-space representations, such as
+molecular dynamics or Monte Carlo simulations. Con-
+sequently, no results are available for how knotting and
+linking probabilities change with the rings’ bending rigid-
+ity.
+These questions are relevant across diverse contexts,
+from biology and physical chemistry to material sci-
+ence and soft matter physics.
+For instance, polymer
+ring melts are key reference systems for understanding
+the unique features of the multiscale genome organi-
+zation [55–57], and how topoisomerase enzymes influ-
+ence it [58, 59].
+Additionally, modern interpretations
+of density-induced phase transitions in liquids are re-
+lated to entanglements of closed paths along the chemical
+bonds of the system [60, 61]. Dense systems of circular
+molecules are also crucial for prospective realization of
+topological meta-materials, including Olympic gels and
+self-assembled molecular chainmails [62–69]. Finally, in
+soft matter contexts, melts of rings polymers are at the
+heart of ongoing endeavors to understand anomalous re-
+laxation dynamics and response to shear flow [70], aging
+of active topological glasses [71], and how it is affected
+by both chain density and topology [71–74].
+The computational challenges in tackling these systems
+arise from their high packing density[75]. The latter dra-
+matically hinders the physical relaxation of the chains,
+making it computationally prohibitive to obtain uncor-
+related equilibrated samples using molecular dynamics
+simulations. An analogous slowing down affects Monte
+Carlo simulations, too.
+By employing non-local (non-
+physical) moves, Monte Carlo methods can often speed
+up the sampling compared to molecular dynamics. How-
+ever, the acceptance rate of such non-local moves drops
+significantly with increasing system density, again due to
+steric clashes. The problem is exacerbated when going
+from fully flexible to semi-rigid and finally to rigid rings.
+These challenges affect continuum and lattice polymer
+models alike.
+A.
+QUBO-based reconstruction of the density of
+states
+Prompted by these considerations, we addressed the
+entanglement of canonically equilibrated self-assembled
+melts of lattice ring polymers for arbitrary values of their
+bending rigidity κb. We adopted the QUBO-based for-
+mulation of lattice polymers introduced in refs. [29, 33],
+which enables the sampling of self-assembled ring melts
+on regular and irregular lattices, and considered the strin-
+gent case of ring melts that fill cubic lattices of N sites.
+As detailed in Appendix B, the QUBO Hamiltonian
+for such systems can be formulated in terms of two types
+of Ising-like binary variables attached respectively to in-
+dividual lattice edges and pairs of incident edges meeting
+at π/2 angles. The two sets of variables are introduced
+to keep track of (i) the lattice edges that are occupied by
+the bonds of the self-assembled rings and (ii) the number
+of corner turns of the rings, nc.
+Note that on hypercubic lattices, as in the considered
+case, nc is proportional to the total curvature of the ring
+melt up to a π/2 factor. It is thus the parameter of choice
+for the density of states, W(nc), required to compute the

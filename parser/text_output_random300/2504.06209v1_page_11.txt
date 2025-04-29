@@ -1,0 +1,65 @@
+11
+SUPPLEMENTAL MATERIAL
+This Supplemental Material provides the full mathematical framework in a self-contained way, allowing it to be
+read from start to finish like a technical paper. The main text motivates and further explains the results, and puts
+them in the context of existing literature.
+Contents
+A. Some background on probability and information theory
+11
+1. Notation for random variables and stochastic processes
+11
+2. Information theory
+12
+a. Basic definitions
+12
+b. Information diagrams
+13
+c. Entropy rate
+14
+B. Finite-state Markov chains
+14
+C. Finite-alphabet finite-state hidden Markov channels
+17
+D. Percept-action loops
+18
+E. Markov conditions for percept-action loops
+20
+1. Bayesian networks and d-separation
+20
+2. d-separation conditions for percept-action loops
+21
+3. Existing approaches to the information theory of percept-action loops
+25
+F. Maximally predictive agent models
+26
+G. The extractable work in percept-action loops
+32
+1. Derivation of work capacity
+32
+2. Existence of Landauer-efficient agents
+33
+3. Definition and properties of work capacity
+34
+4. Efficient agent models
+38
+Appendix A: Some background on probability and information theory
+1.
+Notation for random variables and stochastic processes
+In this section, we establish some of the notation relating to random variables and stochastic processes used
+throughout the sequel. Random variables will be denoted by capital letters in standard font, i.e. X, Y, Z, etc. The set
+of values that each random variable can take, also called an alphabet, will be denoted by capital letters in calligraphic
+font, i.e. the alphabet for X is X. In this work, we consider finite alphabets and occasionally also countably infinite
+products of finite alphabets. The elements of these alphabets, at times referred to as symbols, will be denoted by
+lower-case letters, i.e. the random variable can take value x ∈X. Probability distributions associated to the random
+variable X will be denoted by pX with pX(x) denoting the probability that X takes value x. The subscript may be
+omitted when the variable to which the distribution refers is clear.
+Given two alphabets Y and Z related to random variables Y and Z respectively, we can consider a new random
+variable X that takes values in X := Y × Z. That is, X takes values x = (y, z) where y ∈Y and z ∈Z. Composite
+random variables of this type can be constructed from any number of constituent variables, which will be useful for,
+e.g., the treatment of stochastic processes below.
+For the purposes of this work, a discrete-time stochastic process is given by a set of variables {Xt|t ∈N0} where,
+for each t, the variable Xt takes values in the same (finite) alphabet X. This assumption simplifies measure-theoretic
+treatments such as those in, e.g., [33]. Pursuant to the paragraph above, we can associate a new random variable, de-
+noted X, to the stochastic process, which takes values in X N0 :=×t∈N0 X. That is, X takes values that are sequences
+(x0, x1, ...) with each xt ∈X. It will also be convenient to consider random variables associated to subsequences in
+the following way. Let l, m ∈N0 such that l < m. We then define Xl:m to be the random variable that takes values in

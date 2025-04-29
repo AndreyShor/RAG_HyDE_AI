@@ -1,0 +1,113 @@
+10
+of a weak source of randomness. It has less structure than
+an SV source, and additionally, every SV source is also
+a min-entropy source but not necessarily the other way
+around. Although in most applications, the approach to
+these two kinds of sources is fundamentally different, in
+our case of randomness estimation, we do not need any
+important modifications. We will summarize this in the
+following remark, preceded by an observation of multiple
+runs of the device.
+Observation 2 (Indistingushability of multiple run of
+the device). There is no difference between k subsequent
+runs of the device, each generating n bits and one long
+run generating kn bits.
+Remark IV.2 (Estimating randomness of the min-en-
+tropy sources (Hmin)). In the context of min-entropy
+sources, we can distinguish two types, the standard one-
+shot and the so-called block min-entropy source.
+The
+block min-entropy source can be seen as a generalization
+of the SV source where we do not have separate single
+bits with history but a whole small sequence of bits with
+other sequences of bits as its history. In this case, our
+mathematical formulation and, through this, our soft-
+ware, can be modified to count frequencies of whole k
+bit sequences where k is the size of a block in the block
+min-entropy source.
+Although this modification is not
+currently implemented, it only requires changes in the
+frequency-counting part and does not heavily influence the
+rest of the software when various epsilons are counted.
+We should additionally mention here that with the in-
+crease in the block size, the required number of bits for
+a reasonable estimation of some history lengths increases
+drastically.
+Finally, when working with one-shot min-
+entropy sources, the estimation method cannot be differ-
+ent from the one described above for block min-entropy
+sources (see Observation 2).
+V.
+SVTEST SOFTWARE
+This section summarizes our SVTest Software’s ar-
+chitecture;
+the user can find further details in the
+“README.md” file of our SVTest Software [58].
+The program consists of three main stages: in the first
+stage, it uses two programs to download seismic data
+from accessible sources [59] and outputs a .mseed file; in
+the second stage, a program transforms the data from
+“.mseed” format to “.ascii” format, and finally, in the
+third stage a program estimates the randomness param-
+eters (ϵh and final ϵ) from the “.ascii” input.
+The first program of the first stage takes a list of seis-
+mic stations written in a “.txt” file, transforms it into the
+form required by the second program, and writes it in an-
+other “.txt” file. After this step, the software executes
+the second program, in which the user enters parame-
+ters determining the downloaded data and saves it in a
+“.mseed” file, the standard format for exchanging seismic
+data.
+Later, in the second stage, we transform the down-
+loaded data to a file more suitable for randomness source
+modeling; we proceed in two steps: We create separate
+“.ascii” files for every channel of every selected station
+and then aggregate the whole set of files into one “.ascii”
+file.
+In the third stage, the program written in C language
+inputs data from the previous “.ascii” file and calculates
+the ϵ parameter of the potential SV source. This program
+provides the user with a few clear options to choose from:
+(a) discretization method IV F,
+(b) the method of counting ϵ IV E,
+(c) history length IV B, and
+(d) the number of lines taken from the final “.ascii”
+file, equivalently to setting the number of initial
+seed bits.
+In the next section we will describe in more detail the
+part of the program associated with the third stage since
+it is one of the main results of this work.
+A.
+Core of the SVTest program
+The goal of this program is to first estimate the se-
+quence of values ϵh for the given history length h and
+then estimate from them the final value of ϵ. The whole
+program is based on the mathematical background dis-
+cussed in Section IV.
+The first step is to load all input data into memory to
+allow further fast computations. Although this version
+does not support live streaming of data as an input, such
+a use case can be resolved by storing streamed data and
+dividing them into appropriate big parts to use in the
+software. If these parts are big, then the estimation error
+should be negligible.
+The second part uses one of the discretization methods
+to obtain a bit sequence from the real number sequence
+used as the input data. Our software implements a few
+different methods of discretization described in Section
+IV F and Appendix B. Furthermore, each discretization
+is implemented as a separate function so it is easy to
+modify it or create a new one without the need to change
+the other parts of the software. It could be useful if one
+would like to use the software to test some other source
+that requires some specific form of discretization. Finally,
+if the data is already in the binary format, discretization
+could be omitted.
+The next part is the most crucial one: We estimate
+the sequence of values ϵh for the given history length h
+described in Section IV B (according to the formula given
+in Eq. (14)). The above is done by calculating the fre-
+quencies of appropriate sub-strings.
+Since this part is
+the most computationally demanding, it is highly opti-
+mized by calculating each frequency only once (even if it

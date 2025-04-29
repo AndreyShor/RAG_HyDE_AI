@@ -1,0 +1,96 @@
+28
+−1.0
+−0.5
+0.0
+0.5
+1.0
+r
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Cupular deformation η (normalized)
+Deformation of cupula (numerical)
+E = 105 Pa
+E = 104 Pa
+E = 103 Pa
+E = 102 Pa
+b →∞, clamped
+b →∞, pinned
+b →0
+−0.5
+0.0
+0.5
+1.0
+Axial dist. normalized by half thickness, 2s
+th
+0.975
+0.980
+0.985
+0.990
+0.995
+1.000
+Longitudinal deformation (normalized)
+Longitudinal cupular deformation
+E = 105 Pa
+E = 104 Pa
+E = 103 Pa
+E = 102 Pa
+102
+103
+104
+105
+Young’s modulus, E [Pa]
+10−8
+10−7
+10−6
+Maximum deformation [m]
+Cupular deformation scales with E
+∼E−1 slope
+Figure 12: Numerically obtained deformation of the solid material at ˆ𝑡= 0.25 s,
+normalized by the maximum deformation. Left panel: deformation along the direction
+perpendicular to the canal centre-line (in the model’s coordinate system this is along 𝑟).
+We plot the membrane limit, 𝑏→0 (dashed black line) and the plate limit 𝑏→∞(dotted
+line) for comparison. Middle panel: deformation in the direction parallel to the centreline
+(i.e. along 𝑠). Note the small change in deformation along 𝑠, suggesting a plate equation
+model that only tracks the deformation of the centre of the cupula is appropriate. Right
+panel: deformation at the centre of the cupula plotted as a function of the Young’s
+modulus.
+solution of the plate case (𝑏→∞) with pinned boundary conditions. This solution does not
+match the numerical solution either, even if it has a finite gradient at the boundary. Following
+physical intuition and previous work (Rabbitt & Damiano 1992), we have opted to present
+the clamped solution in the main text.
+In the left panel fig. A we plot the normalized deformation, and we observe all curves
+collapse. This indicates the deformation regime is linear and motivates the use of a linear
+plate equation in the theoretical model of the main text. In the second plot, we see that
+the deformation only varies by around 2% in the direction parallel to the centreline. Again,
+this is consistent with the use of a linear plate equation where only the deformation of the
+centre plane of the cupula is tracked. (The forcing used to generate Figure 12 is that given
+by (3.19).) Finally, we note that the magnitude of the deformation is inversely proportional
+to the stiffness 𝐸, as can be seen in Figure 12 (right panel).
+Appendix B. Numerical procedure for integro-differential equations
+When the Stokes number of the flow is no longer negligible, the deformation of the cupula
+satisfies (5.7), which is a Volterra integro-integral equation(Polianin & Manzhirov 1998),
+and so may be solved numerically using the trapezoidal method. For small values of the
+Stokes number this solution procedure requires an increasingly fine temporal discretization,
+making the problem computationally intensive. Therefore, an alternative numerical scheme
+is required.
+Integral equations with exponential Kernels can be transformed into systems of ODEs by
+introducing additional variables (Wazwaz 2011); although the kernel K(𝑥, St) in (5.7) is not
+strictly exponential, it may be seen as a linear combination of exponential Kernels. To this
+end, we may define a sequence of auxiliary variables
+𝑧𝑛(𝑡) =
+1
+St𝜆2𝑛
+∫𝑡
+0
+
+𝑓(𝑡) + 𝜅
+2𝜋Δ𝑝0
+
+𝑒−𝜆2
+𝑛/St(𝑡−𝜏) d𝜏,
+𝑛= 0, . . . , 𝑁−1.
+(B 1)

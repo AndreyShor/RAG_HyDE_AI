@@ -1,0 +1,103 @@
+28
+We can see that U † |φ⟩= eiNE[X] |0⟩|0⟩. So:
+V |0⟩|0⟩−eiNE[X] |0⟩|0⟩
+ = ∥|ψ⟩−|φ⟩∥
+(144)
+Square on both side of Eq. (144) and plug in definitions in Eqs. (142 and 143) we obtain:
+V |0⟩|0⟩−eiNE[X] |0⟩|0⟩
+
+2
+=
+
+X
+j∈Ω′
+√qj
+
+eiNyj −eiNE[X]
+|λj⟩|yj⟩
+
+2
+=
+X
+j∈Ω′
+qj
+
+eiNyj −eiNE[X]2
+(145)
+where we used the fact that λj are orthogonal vectors.
+By Lemma IV.6, we know that for at least 1 −δ of all times
+eiNyj −eiNE[X] ⩽N |yj −E [X]| ⩽Nσ0
+n
+(146)
+For the other situations we can use a generous bound of
+eiNyj −eiNE[X] ⩽2
+(147)
+Combined we obtain
+V |0⟩|0⟩−eiNE[X] |0⟩|0⟩
+
+2
+⩽4δ +
+Nσ0
+n
+2
+(148)
+If we plug in δ = 1
+9ξ2 and n ⩾3Nσ0
+2ξ , we will produce a bound:
+V |0⟩|0⟩−eiNE[X] |0⟩|0⟩
+
+2
+⩽2
+2
+3ξ
+2
+⩽ξ2
+(149)
+thus completing the proof.
+But what’s the cost of V ? Here we see that while the time complexity becomes trivial, the space complexity will
+be dominated by the number of quantum subroutines being called, i.e., the number of phase estimations as what we
+have been tracking throughout Sec. III C.
+Theorem IV.8 (Cost of Phase Unitary from Quantizing Classical Univariate Estimator). The unitary V using
+parameters given in Theorem IV.7 costs O
+l
+Nσ0
+ξ
+m
+log 1
+χ
+
+in terms of accesses to quantum experiments. It also needs
+to allocate O
+
+log
+l
+Nσ0
+ξ
+m 
+log log
+l
+Nσ0
+ξ
+m
++ log 1
+ξ
+
+entangled quantum registers for quantum experiments alone. 13
+Proof. By Remark III.12 and Theorem II.43, we can translate the complexities found in Theorem III.11 accordingly
+to here. Notice that the quantum subrountine in the hybird algorithm is essentially phase estimation, so the number
+of phase estimations called translate into the number of registers needed for the quantized circuit.
+With accesses to V we can construct a multivariate mean value estimator by running phase estimation:
+Theorem IV.9 (Correctness of Algorithm 7). When ⃗X, with covariance matrix Σ, satisfy
+• tr Σ ⩽σ0;
+•
+E
+h
+⃗X
+i
+2 ⩽ε0 ⩽
+2
+15
+√
+10Dσ0;
+13 Similarly as how we define big-O notation with δ present in Footnote 3, we only care about the limit χ →0 when using big-O notation,
+this means that when appearing inside big-O, we may set, say, χ < c < 1 for some constant c.

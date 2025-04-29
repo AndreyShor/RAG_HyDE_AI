@@ -1,0 +1,44 @@
+1 
+Cerebral blood flow monitoring using a deep learning 
+implementation of the two-layer DCS analytical model with a 
+512×512 SPAD array 
+ 
+Mingliang Pan,a Chenxu Li,a Yuanzhe Zhang,a Alan Mollins,a Quan Wang,a Ahmet T. 
+Erdogan,b Yuanyuan Hua,b Zhenya Zang,a Neil Finlayson,b Robert K. Henderson,b David 
+Day-Uei Lia,* 
+aUniversity of Strathclyde, Department of Biomedical Engineering, Glasgow, UK 
+bUniversity of Edinburgh, School of Engineering, Integrated Nano and Micro Systems (IMNS), Edinburgh, UK 
+ 
+Abstract 
+Significance: Multi-layer (two- and three-layer) diffuse correlation spectroscopy (DCS) models improve cerebral 
+blood flow index (CBFi) measurement sensitivity and mitigate interference from extracerebral tissues. However, their 
+reliance on multiple predefined parameters (e.g., layer thickness, optical properties) and high computational load limits 
+their feasibility for real-time bedside monitoring. 
+Aim: To develop a fast, accurate DCS data processing method based on the two-layer DCS analytical model, enabling 
+real-time cerebral perfusion monitoring with enhanced brain sensitivity. 
+Approach: We employed deep learning (DL) to accelerate DCS data processing. Unlike previous DCS networks 
+trained on single-layer models, our network learns from the two-layer DCS analytical model, capturing extracerebral 
+vs. cerebral dynamics. Realistic noise was estimated from subject-specific baseline measurements using a 512×512 
+SPAD array at a large source-detector separation (35 mm). The model was evaluated on test datasets simulated with 
+a four-layer slab head model via Monte Carlo (MC) methods and compared against conventional single-exponential 
+fitting. An in-vivo brain activity experiment was also conducted to assess the real-world performance. 
+Results: The proposed method bypasses traditional curve-fitting, achieved real-time monitoring of CBF changes at 
+35 mm separation for the first time with a DL approach. Validation on MC simulations shows superior accuracy in 
+relative CBFi estimation (5.8% error vs. 19.1% for fitting) and significantly enhanced CBFi sensitivity (87.1% vs. 
+55.4%). Additionally, our method minimizes the influence of superficial blood flow and 750-fold faster than single-
+exponential fitting in a realistic scenario. In-vivo testing further validated the method’s ability to support real-time 
+cerebral perfusion monitoring and pulsatile waveform recovery. 
+Conclusions: This study demonstrates that integrating DL with the two-layer DCS analytical model enables accurate, 
+real-time cerebral perfusion monitoring without sacrificing depth sensitivity. The proposed method enhances CBFi 
+sensitivity and recovery accuracy, supporting future deployment in bedside neuro-monitoring applications. 
+ 
+Keywords: diffuse correlation spectroscopy, deep learning, SPAD, cerebral blood flow, brain activity monitoring 
+ 
+*David Day-Uei Li, E-mail: David.li@strath.ac.uk 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,86 @@
+Figure 5: Schematic representation of the PINN framework.
+2.8
+Estimation on Generalization Error
+Let the spatial domain be D = [0, 1]𝑑, where 𝑑denotes the spatial dimension. This section focuses on obtaining an
+accurate estimation of the generalization error, also referred to as the total error, for the trained neural network
+𝑢∗= 𝑢𝜃∗. This result arises from the application of the PINN algorithms 2.1 and 2.2. The error can be expressed
+as follows:
+E𝐺:= ©­
+«
+𝑇Z
+0
+1Z
+0
+|𝑢(𝑡, 𝑥) −𝑢∗(𝑡, 𝑥)|2𝑑𝑥𝑑𝑡ª®
+¬
+1
+2
+.
+(2.34)
+This approach is outlined in [33], [4], [34] and [35]. This section provides an estimation of the generalization error,
+as defined in equation (2.34), based on the training error. For the abstract PDE equation (2.14), the generalization
+error is analyzed by expressing it in terms of the training error, which is defined as follows:
+(E𝑖𝑛𝑡
+𝑇)2 =
+𝑁𝑖𝑛𝑡
+∑︁
+𝑛=1
+𝑤𝑖𝑛𝑡
+𝑛|ℜ𝑖𝑛𝑡,𝜃∗|2,
+(E𝑠𝑏
+𝑇)2 =
+𝑁𝑠𝑏
+∑︁
+𝑛=1
+𝑤𝑠𝑏
+𝑛|ℜ𝑠𝑏,𝜃∗|2,
+(E𝑡𝑏
+𝑇)2 =
+𝑁𝑡𝑏
+∑︁
+𝑛=1
+𝑤𝑡𝑏
+𝑛|ℜ𝑡𝑏,𝜃∗|2,
+(E𝑑
+𝑇)2 =
+𝑁𝒅
+∑︁
+𝑛=1
+𝑤𝒅
+𝑛|ℜ𝒅,𝜃∗|2.
+(2.35)
+For the EFK equation, we modify E𝑠𝑏
+𝑇
+as in [4]:
+(E𝑠𝑏
+𝑇)2 =
+𝑁𝑠𝑏
+∑︁
+𝑛=1
+4
+∑︁
+𝑖=1
+𝑤𝑠𝑏
+𝑛|ℜ𝑠𝑏𝑖,𝜃∗|2.
+(2.36)
+The training error can be directly computed a posteriori using the loss function equation (2.33). Additionally,
+the following assumptions on the quadrature error are required, similar to equations (2.33) and (2.32). For any
+function ℎ∈𝐶𝑘(D), the quadrature rule, defined using quadrature weights 𝑤𝑡𝑏
+𝑛at points 𝑥𝑛∈S𝑡𝑏for 1 ⩽𝑛⩽𝑁𝑡𝑏,
+satisfies the bound
+
+Z
+D
+ℎ(𝑥)𝑑𝑥−
+𝑁𝑡𝑏
+∑︁
+𝑛=1
+𝑤𝑡𝑏
+𝑛ℎ(𝑥𝑛)
+
+⩽𝐶𝑡𝑏
+𝑞𝑢𝑎𝑑(∥ℎ∥𝐶𝑘)𝑁−𝛼𝑡𝑏
+𝑡𝑏
+.
+(2.37)
+10

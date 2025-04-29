@@ -1,0 +1,94 @@
+26
+Figure 16 Left: Phase of the initial state containing two same-
+sign vortices. Right: Zoomed-in view of the central region at
+˜z = 120. The red and green curves represent the trajectories
+of the two vortices as a function of ˜z. The data were obtained
+in a rubidium vapor.
+I. Electronic feedback loop
+As discussed in Section VI.H, using the dimensionless
+form of the NLSE enables us to interpret light propa-
+gation in a nonlinear medium as an effective temporal
+evolution. However, the maximum evolution ˜z = z/zNL
+remains limited by the physical length L of the medium
+and the value of the nonlinear length zNL.
+While, in
+principle, one could extend L to increase the effective
+propagation time, a more fundamental constraint arises
+from absorption: as light travels through the medium, its
+intensity decreases exponentially, eventually limiting the
+length L.
+To overcome these limitations, Fleischer et al. (2003)
+proposed a digital feedback loop technique. The concept
+involves capturing both the intensity and phase of the
+optical field at the output of the medium, and using a
+SLM, to recreate this exact same field at the input (us-
+ing the technique described in Subsection VI.A. A pair of
+SLMs can also be used for independent control of ampli-
+tude and phase (see for instance Ferreira et al. (2024b)).
+By iterating this process, one can artificially extend the
+effective propagation length, enabling the observation of
+longer dynamics without being worried by absorption.
+This technique was recently implemented successfully
+by Ferreira et al. (2024b) to study the evolution of a
+planar dark soliton. As shown in Fig. 17, the feedback
+loop was repeated six times, effectively multiplying the
+observable evolution time by a factor of six compared to
+the propagation in a single-pass photorefractive crystal.
+A similar technique is used in optical fiber with a recir-
+culating loop instead of a SLM (Copie et al., 2023).
+However, the electronic feedback approach faces a ma-
+jor challenge due to the accumulation of noise in the mea-
+sured and reconstructed fields (see Section VI.A and Sec-
+tion VI.C). Since each loop reuses the previous output,
+any imperfections or measurement noise are reinjected
+and amplified with each iteration.
+This accumulation
+quickly leads to instabilities in the dynamics, currently
+limiting the method to fewer than ten iterations in prac-
+tice.
+Figure 17 Figure adapted from (Ferreira et al., 2024b). Ex-
+perimental feedback loop to observe the snake instability in a
+dark soliton stripe in 2D. From left to right: intensity images
+after 1,2,5,6 loops. Copyright (2025) by the American Physi-
+cal Society.
+Despite this limitation, the electronic feedback loop
+represents an interesting tool to explore nonlinear optical
+dynamics beyond the physical constraints of the medium.
+For example, it could be used to simulate a periodic mod-
+ulation of the system by changing the parameters of the
+nonlinearity between each iteration and therefore simu-
+late Floquet-like physics.
+J. Modern tools for numerical simulations of the NLSE
+Numerous effects that are observed in the experi-
+ments go beyond the perturbative analytical treatment
+described before.
+This limits the available analytical
+tools for understanding the experimental results even in
+the mean field approximation. Progress with optimized
+solver on the CPU (Stagg, 2016) or more modern special-
+ized graphical processing units (GPU) (Aladjidi et al.,
+2024) allows for an efficient implementation of numerical
+schemes.
+To numerically solve the NLSE a typical approach is
+to use split-step spectral methods (Javanainen and Ru-
+ostekoski, 2006). Space and time are discretized, with
+uniform adimensional spacing δx, δy and δz, with the
+integrated equation reading:
+E(z + δz) = E(z)eiδz(D+N)E(z).
+(111)
+• D is the kinetic energy operator, best applied in
+Fourier space where ∇2 transforms into a multi-
+plication by −(kδr)2 (or −sin(kδr)2, see (Sunaina
+et al., 2018)).
+• N is the potential operator. It also contains the
+nonlinear term in case of the NLSE.
+The D and N operators do not commute, and it is
+not possible to multiply the two exponentials to get an
+exact result.
+Instead an approximate solution can be
+used (Javanainen and Ruostekoski, 2006):
+eiδz(D+N) = ei δzN
+2 eiδzDei δzN
+2
++ O(δz3).
+(112)

@@ -1,0 +1,149 @@
+Figure 17 presents a graphical comparison of the approximate solutions obtained using PINN and the exact solution
+for the model represented by Eq. (3.23). The results indicate that the PINN-based approximation aligns closely
+with the exact solution, validating its stability. Additionally, Fig. 17a illustrates the variation in tumor cell density
+over time 𝑡. A three-dimensional visualization comparing the PINN and exact solutions is provided in Fig. 17b.
+Furthermore, Table 8 presents the relative error E𝑟
+𝐺and training error E𝑇alongside the chosen hyper-parameters.
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+u
+Exact, t = 0.0.
+Predicted, t = 0.0.
+Exact, t = 0.25.
+Predicted, t = 0.25.
+Exact, t = 0.5.
+Predicted, t = 0.5.
+Exact, t = 0.75.
+Predicted, t = 0.75.
+Exact, t = 1.
+Predicted, t = 1.
+(a) Exact and Predicted solution at different t
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+t
+0.0
+0.2
+0.4
+0.6
+0.8
+Exact
+Exact
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+t
+0.0
+0.2
+0.4
+0.6
+0.8
+Prediction
+Prediction
+0.2
+0.4
+0.6
+0.8
+(b) Exact and Predicted surface plot
+Figure 17: Exact and predicted solution of model at 𝛾= 0.0001.
+𝑁
+𝐾−1
+¯𝑑
+𝜆
+E𝑇
+E𝑟
+𝐺
+Training Time (s)
+6144
+4
+20
+0.1
+0.0008
+0.0002
+60
+Table 8: Best-Performing PINN Configuration for Section 3.2.2.
+3.2.3
+2D extended Fisher–Kolmogorov equation:
+The 2D equation has following exact solution [3] [24] :
+exp(−𝑡) exp
+
+−(𝑥−0.5)2
+𝛽
+−(𝑦−0.5)2
+𝛽
+
+.
+The source term is derived from the exact solution. The model is solved for different parameter values over time.
+Both the exact and predicted solutions are presented in contour and 3D surface formats, as shown in the following
+sub-figures. Figures 18, 19, and 20 present a graphical comparison of the approximate solutions obtained using
+PINN and the exact solution for varying values of 𝛽, displayed as contour plots and 3D visualizations. The results
+show that the PINN-based approximation closely matches the exact solution, confirming its stability. Additionally,
+Fig. 17a illustrates the changes in tumor cell density over time 𝑡. Table 9 reports the relative error E𝑟
+𝐺and training
+error E𝑇along with the selected hyper-parameters.
+𝛽
+𝑁
+𝐾−1
+¯𝑑
+𝜆
+E𝑇
+E𝑟
+𝐺
+Training Time (sec.)
+1
+12288
+4
+24
+0.1
+0.0003
+0.0002
+550
+0.1
+12288
+4
+36
+1
+0.002
+0.0009
+700
+0.01
+6144
+4
+42
+1
+0.02
+0.01
+483
+Table 9: Best-Performing PINN Configuration for Section 3.2.3.
+25

@@ -1,0 +1,126 @@
+where ϵ(k) = k mod 2. At this point, we should stress that in order to capture non-perturbative
+contributions, the resolvent should be of a trans-series form. However, the ansatz above only
+captures the perturbative part. Of course, we could extend it by adding contributions that are
+exponentially suppressed by powers of e−2πB, but the inverse Laplace transform would mix non-
+perturbative orders, making the analysis very complicated. Instead, we borrow results from the
+non-perturbative solution of the O(3) model [16] and reinstate the non-perturbative corrections
+in Section 4. Thus in this section we calculate ϕℓonly up to the non-perturbative corrections.
+The comparison between the bulk and edge regions is done for the inverse Laplace transform
+of the resolvent:
+¯R(s) =
+1
+2πi
+Z i∞
+−i∞
+eszR
+
+B + z
+2
+
+dz.
+(11)
+In the bulk region, we expand (10) in powers of small z and apply the inverse Laplace transform
+to each term of the expansion. After massaging the resulting expressions, we obtain the following
+result for the resolvent in the bulk region:
+¯RB(s) = −2π
+√
+B
+∞
+X
+j=0
+Γ(3
+2)
+Γ(j + 1)Γ(3
+2 −j)
+s−j−3
+2
+Γ(−j −1
+2)(4B)−j
++
+√
+B
+√s
+∞
+X
+m=0
+∞
+X
+n=−m
+n+m+1
+X
+t=0
+B−msn[log(4Bs)]tVc[n, m, t] ,
+(12)
+where
+Vc[n, m, t] =
+n+m+1
+X
+k=t
+m
+X
+j=max(0,−n)
+cn+j,m−j,kF[n, t, k, j] ,
+(13)
+and
+F[n, t, k, j] = 2−2j(−1)t
+Γ(k + 1)
+Γ(j + 1)Γ(t + 1)Γ(k −t + 1)
+× dk−t
+dxk−t
+"
+Γ(−x −n + 1
+2 −j)
+Γ(−x + n + 1
+2)Γ(−x −n + 1
+2 −2j)
+ 
+1 +
+2jϵ(k)
+−n −x + 1
+2 −2j
+!#
+x=0
+,
+(14)
+which now takes a similar form as the one worked out for the O(3) model in [14]. Note that the
+first sum in (12) corresponds to the explicitly known leading order term −2π
+√
+x2 −B2 in (10).
+We can bring this term to a form, that resembles the second sum in (12) and finally write the
+inverse Laplace transform of the resolvent in the bulk region as
+¯RB(s) =
+√
+B
+√s
+∞
+X
+m=0
+∞
+X
+n=−m−1
+n+m+1
+X
+t=0
+B−msn[log(4Bs)]t
+×
+n+m+1
+X
+k=t
+m
+X
+j=max(0,−n−1)
+ˆcn+j,m−j,kF[n, t, k, j] .
+(15)
+Here we introduced the generalised coefficients ˆc. The first term of (12) is captured by extending
+the sums to include n + j = −1 with the coefficients ˆc−1,0,0 = −2π and ˆc−1,a,b = 0 for a ̸= 0 or
+b ̸= 0.
+Edge region.
+In the edge region, the resolvent can be parametrized based on the leading order
+Wiener–Hopf type solution of the integral equation [11] as
+¯R(s) = ΦB(s)
+1
+s + QB(s)
+
+,
+(16)
+5

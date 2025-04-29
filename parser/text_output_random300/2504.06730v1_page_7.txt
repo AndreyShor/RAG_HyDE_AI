@@ -1,0 +1,148 @@
+0
+10
+20
+0.02
+0.04
+0.06
+0.08
+0.1
+Epoch
+Chamfer Loss
+Train loss
+Test loss
+0
+10
+20
+0
+500
+1,000
+1,500
+2,000
+Epoch
+Count
+True positives
+True hits
+0
+10
+20
+500
+1,000
+1,500
+2,000
+Epoch
+Count
+False positives
+True hits
+0
+10
+20
+500
+1,000
+1,500
+2,000
+Epoch
+Count
+False negatives
+True hits
+0
+10
+20
+30
+0.08
+0.09
+0.1
+Epoch
+MSE Loss
+Train loss
+Test loss
+0
+10
+20
+30
+0
+2,000
+4,000
+6,000
+8,000
+Epoch
+Count
+True positives
+True hits
+0
+10
+20
+30
+0
+1
+2
+3
+·108
+Epoch
+Count
+False positives
+True hits
+0
+10
+20
+30
+7,200
+7,400
+7,600
+7,800
+Epoch
+Count
+False negatives
+True hits
+Fig. 4. Loss and evaluation metrics TP , F P and F N compared to the ground truth over the course of training for PETNet and the SAFIR dataset (top)
+and for the LSTM baseline model and the Clinical dataset (bottom).
+unable to extract meaningful patterns. We observed similar
+behavior for small-scale experiments with the binary cross
+entropy (BCE) loss and the combined loss with L∆, as well
+as for an LSTM network with two hidden layers. Beyond the
+LSTM, we attempted to perform comparisons of PETNet to
+other architectures, such as a regular fully connected ANN.
+However, due to the large amounts of required memory, e.g.,
+at least 2 000×1 000 input features for the SAFIR cases, this
+approach is practically infeasible.
+V. RELATED WORK
+This section reviews existing ANN/deep-learning methods
+used in the ﬁeld of PET, and provides a brief overview of
+SNN methods relevant to our work.
+A. Neural Networks in PET
+PET imaging consist of an intricate multi-step process,
+many parts of which have recently been revisited under the
+lens of deep-learning methods. Many existing approaches cen-
+ter around utilizing ANNs for the reconstruction of PET im-
+ages as an alternative to existing iterative algorithms [25]. To
+name a few examples, [26] address the topic of PET-imaging
+artifacts caused by photon attenuation via utilizing a deep-
+learning based method capable of converting non-corrected
+images to corrected ones. [27] demonstrate a method to track
+the intrinsic dose distribution during proton-therapy using a
+cGAN-based deep learning framework. [28] utilize a CNN
+as a computer-aided-diagnostics tool to classify brain images
+of potential Alzheimer’s patients post image acquisition. [29]
+investigate the low-level intrinsics of PET-instrumentation,
+implementing an ANN on a Field-Programmable-Gate-Array
+(FPGA) to determine the arrival time of gamma-rays with
+increased accuracy. [30] provide an extensive overview of
+various further topics in PET that have been addressed using
+AI, among them improvements in the energy- and timing-
+resolution of the detector front-end and de-noising approaches
+for low-dose data acquisitions. Notably, the ﬁeld lacks neural
+approaches addressing the problem of coincidence sorting
+with [31] being the only exception. They compare a single-
+hidden-layer fully-connected neural network with existing
+PET-coincidence search techniques. In contrast to our work,
+however, the network was used to classify pairs of single
+events as coincident or not on a case by case basis similar
+to existing classical approaches. The detection efﬁciency is
+signiﬁcantly lower and a continuous prediction mode like
+PETNet’s SNN is not possible.
+B. Spiking Neural Networks
+Spiking neural networks are inherently time-variant, and
+the various forms of spiking neuron models are sensitive
+to coincident spike events by design. [32] investigate this
+behavior for the spike-response neuron model, and present
+an application with regards to face recognition. This property
+of SNN’s makes their application a potential candidate as a

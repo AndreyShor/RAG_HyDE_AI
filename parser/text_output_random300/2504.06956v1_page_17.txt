@@ -1,0 +1,70 @@
+Local structure of extremal points
+17
+Furthermore, for 0 ≤s < t, we let Zs,t be the field on Rd given by
+Zs,t(·)
+def=
+Z t
+s
+Z
+Rd(K(e−r(· −y)) −K(e−r·)K(e−ry))e−dr
+2 ξ′(dy, dr) ,
+(3.11)
+with the notational convention that Z0,t = Zt.
+We observe that, for any x, y ∈Rd and s, t ≥0, it holds that
+E[Z∞(x)Z∞(y)] =
+Z ∞
+0
+(K(e−r(x −y)) −K(e−rx)K(e−ry))dr ,
+(3.12)
+E[Zs(x)Zt(y)] =
+Z s∧t
+0
+(K(e−r(x −y)) −K(e−rx)K(e−ry))dr .
+(3.13)
+It is straightforward to check that the field Zt(·) converges weakly in law with respect to the local
+uniform topology in C(Rd) to Z∞(·) as t →∞(see e.g. [Mad15, Proposition 2.4]).
+We also record here a decomposition result for ⋆-scale invariant fields originally stated in [DRSV14a]
+and which can be proved by standard computation of covariances.
+Lemma 3.10 ([DRSV14a, Lemma 16]). For z ∈Rd, the field (Xt(x))t≥0,x∈Rd admits the following
+decomposition
+Xt(x) =
+Z t
+0
+K(er(x −z))dXr(z) + Zz
+t (x) ,
+∀t ≥0 , ∀x ∈Rd ,
+where (Zz
+t (x))t≥0,x∈Rd is a centred Gaussian field independent of (Xt(z))t≥0 and with the following
+covariance structure,
+E[Zz
+s(x)Zz
+t (y)] =
+Z s∧t
+0
+(K(er(x −y)) −K(er(x −z))K(er(y −z)))dr ,
+∀s, t ≥0, ∀x, y ∈Rd .
+We emphasise that for all t ≥0, it holds that Z0
+t(e−t·)
+law= Zt(·), where Zt is the field introduced in
+Definition 3.9.
+4
+Local structure of extremal points
+The main goal of this section is to prove Theorems A and B. We emphasise that the arguments
+for the proofs of these two theorems are inspired by and follow similar lines to the proofs of
+[BL18, Theorems 2.3 and 2.4].
+This section is structured as follows. In Section 4.1, we introduce the precise setup and state a slightly
+stronger version of Theorems A and B. In Section 4.2, we explain how to convert the statement about
+the supremum of the field being less than λ into a condition on the driving process to stay above a
+polylogarithmic curve. In Section 4.3, we collect some technical lemmas that are needed for the proof
+of the main theorems, while their proofs are contained in Section 4.4.
+4.1
+Setup and statement of results
+Recalling Definition 3.9, for b ∈N ∪{∞}, we introduce the field Φb on Rd given by
+Φb(·)
+def= −
+Z b
+0
+(1 −K(e−s·))dBs + Zb(·) ,
+(4.1)
+where (Bs)s≥0 is a standard Brownian motion independent of the space-time white noise ξ′ used in
+the definition of the field Zb introduced in Definition 3.9. We observe that the field Φb defined in (4.1)

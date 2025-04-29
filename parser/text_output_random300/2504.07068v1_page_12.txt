@@ -1,0 +1,57 @@
+12
+the general mixed-state compression of [5, 7] and the visible compression of mixed-state ensembles considered in [9]
+by constraining N to be an identity channel and the input ρAR to be fully classical, respectively
+We deﬁne two functionals in Deﬁnition 3 and show that they characterize the simulation rates for all models,
+irrespective of constraints. We prove that the optimal entanglement-assisted rate for the simulation of the channel
+N : A →BK is equal to a(ρAR, 0). This is a quantity depends only on a single copy of the input state ρAR and
+channel N. For the unassisted simulation, we prove a rate limm→∞1
+mu(ρ⊗m,
+1
+m9 ) is achievable, and the lower bound
+limγ→0 limm→∞1
+mu(ρ⊗m, γ) holds. Even though we could not prove these two rates are equal in general, we provide
+multiple examples that these two bound match and can be simpliﬁed to single-letter quantities.
+Several directions remain open for further exploration. One immediate avenue is to investigate whether the unas-
+sisted rate functional u(ρ, γ) admits a tighter or more computable characterization, potentially leading to a deeper
+understanding of the regularization behavior. Another promising direction is to consider local error instead of global
+error criterion or more generally a rate-distortion model. Finally, an open question left by our work is determining
+the resource trade-oﬀbetween shared randomness, shared entanglement, and quantum communication. In our model,
+we only consider shared entanglement and quantum communication; including shared randomness as an additional
+resource completes the picture from a resource-theoretic perspective.
+Acknowledgments. ZBK was supported by the Marie Skłodowska-Curie Actions (MSCA) European Postdoctoral
+Fellowships (Project 101068785-QUARC) and the Ada Lovelace Postdoctoral Fellowship at Perimeter Institute for
+Theoretical Physics. DL received support from NSERC discovery grant and NSERC Alliance grant under the project
+QUORUM. ZBK and DL, ia the Perimeter Institute, are supported in part by the Government of Canada through the
+Department of Innovation, Science and Economic Development and by the Province of Ontario through the Ministry
+of Colleges and Universities.
+Appendix A: Proof of Lemma 2
+Proof. From the ﬁdelity criterion we obtain
+1 −ǫ ≤F
+
+σBnKnRn ⊗|Φ⟩⟨Φ|A1B1, ξBnKnRnA1B1
+n
+
+≤F
+
+|Φ⟩⟨Φ|A1B1, ξn
+A1B1
+=
+q
+⟨Φ| ξA1B1
+n
+|Φ⟩
+≤
+rξA1B1
+n
+
+∞,
+(A1)
+where the second line is due to monotonicity of the ﬁdelity under partial trace. The last line follows from the deﬁnition
+of the operator norm. Now, consider the Schmidt decomposition of the state |ξn⟩BnKnWAWBRnR′nA1B1 with respect
+to the partition BnKnWAWBRnR′n : A1B1, i.e.
+|ξn⟩BnKnWAWBRnR′nA1B1 =
+X
+i
+p
+λi |vi⟩BnKnWAWBRnR′n
+|wi⟩A1B1 .

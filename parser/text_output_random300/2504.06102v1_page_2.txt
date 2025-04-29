@@ -1,0 +1,114 @@
+CODASPY ’25, June 4–6, 2025, Pittsburgh, PA, USA
+Eric Wagner, Lennart Bader, Konrad Wolsing, and Martin Serror
+At the same time, the successful attacks on the Ukrainian power
+grid in 2015 and 2016, as well as the attempted attack in 2022, un-
+derscore the devastating impact of such incidents and highlight the
+interest of powerful adversaries exploiting these weaknesses [28].
+Meanwhile, the German Federal Office for Information Security
+(BSI) reported over 200 cyber incidents against the Germany energy
+sector between 2023 and 2024 [13, 14].
+With this paper, we introduce Sherlock, a comprehensive dataset
+specifically designed for process-aware, as well as network-based,
+intrusion detection. Sherlock was recorded using the co-simulator
+Wattson [6], which can simulate power grids while concurrently
+emulating their corresponding Information and Communication
+Technologies (ICT) networks. Wattson has been validated against
+a physical power grid, ensuring its accuracy, and supports both em-
+ulated network components and hardware-in-the-loop integration.
+Furthermore, it provides a safe research environment for replicat-
+ing both routine operations and real-world cyberattacks. These
+features make it an ideal tool for collecting representative, diverse,
+and reproducible datasets for intrusion detection research.
+We passively capture network traffic from critical vantage points
+across three scenarios (denoted as 01-Basic, 02-Semiurban, and
+03-Rural) during simulations spanning 35 days. For two networks,
+we provide labeled attack-free and attack datasets, while for the
+third, only attack data is available. This approach promotes research
+into the generalizability and transferability of detection methods, a
+critical goal given the expense and complexity of retraining intru-
+sion detection systems with clean training data for each network.
+Captured traffic is post-processed using the IPAL toolset [30] to
+generate time-series data representing the system’s physical state.
+This abstraction layer enhances dataset accessibility and decouples
+it from region-specific communication protocols.
+The IPAL representation enables us to evaluate the detection
+performance of five IIDSs [4, 12, 18, 29, 31], which claim domain
+generalizability. This evaluation reveals six challenges in power
+grid networks that current process-aware intrusion detection mech-
+anisms struggle to address, ranging from handling thousands of
+data points to accommodating long-term process variations.
+2
+Related Work
+Conti et al. [9] identifies 23 public datasets for cybersecurity re-
+search in ICS networks. However, most lack process data and some
+rely on IIDSs explicitly learning from captured attack samples,
+which limits their ability to detect novel attacks or variations [19].
+Among these, only five datasets of decent quality incorporate pro-
+cess data, yet none represent power grid scenarios at realistic scales.
+The SWaT dataset [16] captures process data from a scaled-
+down water treatment plant, featuring 36 physical attacks exe-
+cuted as machine-in-the-middle (MitM) attacks over 11 days. Its
+single-execution attacks and focus on physical modifications limit
+its generalizability. The WADI dataset [1] focuses on water distri-
+bution, incorporating 14 attacks over 16 days with more physical
+measurement points but fewer process stages than SWaT. Similarly,
+the BATADAL dataset [26], based on a simulated water distribution
+network, samples data at hourly intervals, spanning a year with
+14 attacks but offering coarser granularity. The HAI dataset [24]
+covers different stages of power generation processes. It features 50
+diverse attacks of varying complexity. Finally, the EPIC dataset [2]
+focuses on a small power grid scenario with data collected from
+Intelligent Electronic Devices (IEDs) monitoring electrical param-
+eters. While it includes both network and process data, its attack
+scenarios are limited to malicious reconfigurations of devices.
+Current datasets in the power grid domain [2, 8, 32] focus on
+network-based attacks and do either not include attacks against
+the physical process or do not even accurately reflect the physical
+process. Thus, large-scale power grid scenarios are not covered
+by existing datasets. Moreover, there remains a general lack of
+datasets that combine both network and process data, feature com-
+plex, multi-stage attacks, and are grounded in realistic, scalable
+scenarios. Sherlock should fill this gap.
+3
+The Sherlock Dataset
+The Sherlock dataset aims to address gaps left by existing datasets,
+providing a valuable resource for assessing intrusion detection
+methods in power grids. Beyond this goal, Sherlock is designed
+to support broader research into power grid cybersecurity and the
+practical deployment of IIDSs in realistic network environments.
+The following sections detail our testbed setup and provide an in-
+depth overview of the Sherlock dataset. Additional information is
+available on the Sherlock website at https://sherlock.wattson.it/.
+3.1
+Testbed Setup
+The backbone of our testbed is the Wattson simulator [6]. Watt-
+son is an open-source power grid co-simulator, i.e., it emulates
+realistic network traffic among power grid devices while simu-
+lating the power grid. Wattson uses PowerOwl [5] to model the
+power grid, which offers steady-state power flow calculations based
+on pandapower [27] and emulates its communication network sup-
+porting switches, routers, and hosts with lightweight namespaces,
+based on Docker containers, and with virtual machines in Linux.
+Wattson uses tc for traffic control to configure delays, jitter, band-
+width, and packet-loss for each individual link. The communication
+between the control center and substations is performed using the
+IEC 60870-5-104 (IEC 104) protocol.
+For our scenarios, we focus on future-oriented settings with a
+significant fraction of substations being digitized, i.e., they digitally
+transmit measurements and—if applicable—support the remote exe-
+cution of control commands. For each scenario, we include load and
+optional generation profiles to control the behavior of these assets
+during the evaluation. Wattson performs a real-time co-simulation
+with a 14x accelerated power profile, i.e., evaluating 12 h of network
+traffic reflects the power generation and usage patterns over an en-
+tire week. To reduce complexity, we abstract from protective relays
+as intrusion detection should alert before they trigger. The Sher-
+lock dataset is composed of network captures from mirror ports at
+switches that were identified as key vantage points, enriched with
+logs from individual hosts and services, additional context informa-
+tion, process ground-truth information, control center events, and
+documentation. Our online documentation presents the details of
+the different scenarios, vantage points, and grid values.
+For Sherlock, we extract all relevant information passively,
+aligning with a non-invasive deployment strategy well-suited for
+real-world power grid networks. The alternative of active polling

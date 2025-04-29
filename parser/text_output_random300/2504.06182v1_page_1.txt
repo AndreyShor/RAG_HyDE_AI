@@ -1,0 +1,102 @@
+Efficient algorithms to solve atom reconfiguration problems. III. The bird and
+batching algorithms and other parallel implementations on GPUs
+Fouad Afiouni,1, 2 Remy El Sabeh,3 Naomi Nishimura,3
+Izzat El Hajj,1 Amer E. Mouawad,1, 3 and Alexandre Cooper4, 5, ∗
+1Department of Computer Science, American University of Beirut, Lebanon.
+2School of Electrical and Computer Engineering, Purdue University, USA.
+3David R. Cheriton School of Computer Science, University of Waterloo, Canada.
+4Institute for Quantum Computing, University of Waterloo, Canada.
+5Department of Physics and Astronomy, University of Waterloo, Canada.
+We present efficient implementations of atom reconfiguration algorithms for both CPUs and GPUs,
+along with a batching routine to merge displacement operations for parallel execution. Leverag-
+ing graph-theoretic methods, our approach derives improved algorithms that achieve reduced time
+complexity and faster operational running times. First, we introduce an enhanced version of the
+redistribution-reconfiguration (red-rec) algorithm, which offers superior operational and runtime
+performance. We detail its efficient implementation on a GPU using a parallel approach. Next, we
+present an optimized version of the assignment-reconfiguration-ordering (aro) algorithm, specifically
+tailored for unweighted grid graphs. Finally, we introduce the bird algorithm to solve reconfiguration
+problems on grids, achieving performance gains over both red-rec and aro. These algorithms can be
+used to prepare defect-free configurations of neutral atoms in arrays of optical traps, serve as sub-
+routines in more complex algorithms, or cross-benchmark the operational and runtime performance
+of new algorithms.
+They are suitable for realizing quantum circuits incorporating displacement
+operations and are optimized for real-time operation on increasingly large system sizes.
+I.
+INTRODUCTION
+Configurations of individual neutral atoms in arrays
+of optical traps provide a versatile platform for quan-
+tum information processing [1, 2]. These atoms can be
+displaced in space to deterministically prepare defect-
+free configurations of atoms with specific geometries [3–5]
+and continuously replenish atoms from a separate reser-
+voir [6–8]. Moreover, these atoms encode quantum in-
+formation in their internal degrees of freedom, which are
+effectively decoupled from their external degrees of free-
+dom over relevant time scales.
+This decoupling allows
+atoms to be spatially displaced with minimal loss while
+maintaining coherence among internal states, thereby en-
+abling the creation of entangled gates between distant
+atoms [9], the partitioning of computational tasks into
+separate spatial regions [10], and the efficient realization
+of algorithms and protocols requiring non-local spatial
+connectivity [11, 12].
+Finding the set of displacement operations to trans-
+form an arbitrary initial configuration into a target con-
+figuration requires solving atom reconfiguration problems
+using efficient atom reconfiguration algorithms [13, 14].
+These algorithms seek to minimize metrics such as the
+number of displaced atoms and the total displacement
+distance, both of which correlate with atom loss. These
+algorithms can be further improved using batching rou-
+tines, which seek to perform displacement operations in
+parallel while satisfying hardware constraints [15, 16].
+Various reconfiguration algorithms, based on exact,
+∗alexandre.cooper@uwaterloo.ca
+TABLE I. Comparison of reconfiguration algorithms, specify-
+ing the geometry of their input graph of size n, their target
+atom configuration, and their improved time complexities.
+Algorithm
+Graph
+Configuration
+Complexity
+exact 1D
+Paths/Chains
+Arbitrary
+O(n2)
+red-rec [20]
+Grids
+Arbitrary
+O(n√n)
+aro [21]
+Grids
+Arbitrary
+O(n4)
+bird
+Grids
+Center-compact
+O(n√n)
+approximation, and heuristic methods, have been devel-
+oped and experimentally realized [14–21]. While these al-
+gorithms have been primarily designed with operational
+considerations in mind, there remains a need for fur-
+ther development of efficient algorithms derived from first
+principles, such as those based on graph theory. Estab-
+lishing formal theoretical foundations would help identify
+bounds on reconfiguration performance while enabling
+the evaluation of different algorithms and their hardware
+implementations.
+There is also a growing need for formal results in two
+main areas. First, efficient algorithms and their imple-
+mentations on typical processors, such as central process-
+ing units (CPUs) and graphics processing units (GPUs),
+are required. This includes improving the time complex-
+ity of algorithms by restricting the search to specific prob-
+lem instances. Second, batching routines are needed to
+combine displacement operations for parallel execution,
+ideally in a way that is decoupled from the atom recon-
+figuration algorithms.
+In this paper, we establish formal results on atom re-
+configuration algorithms (see Table I), quantify their op-
+erational and runtime performance on a low-latency re-
+arXiv:2504.06182v1  [quant-ph]  8 Apr 2025

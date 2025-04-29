@@ -1,0 +1,56 @@
+Therefore, to truly ensure security at the paranoid level under QKD necessitates addressing an addi-
+tional layer of scrutiny: the independence from underlying devices [16]. This prerequisite gave rise to the
+concept of Device-Independent Quantum Key Distribution (DI-QKD). DI-QKD, and its slightly more
+lenient version, Semi-Device-Independent (SDI) QKD, ensure security based solely on the principles of
+quantum mechanics, without dependence on the specifics of the hardware used. Thus, potential vul-
+nerabilities or backdoors due to device malfunctions or imperfections are eliminated, providing a robust
+mechanism for secure communication.
+1.2. From classical to quantum cryptography
+Classical cryptography is broadly categorized into two main types: secret (or symmetric) key cryptog-
+raphy and public-key (asymmetric) cryptography. In secret key cryptography, a single key is employed
+for both encrypting and decrypting messages, exemplified by the one-time pad (OTP) [17, 18] or the
+Advanced Encryption Standard (AES) [19]. The OTP can achieve perfect information-theoretic security
+against adversaries with unlimited computational power, as discussed in Ref. [4]. Moreover, the threat of
+quantum attacks on AES requires only doubling the size of the key to achieve equivalent levels of security
+[20]2. The primary challenge with symmetric cryptography lies in the secure distribution of the secret
+key prior to communication.
+Public-key cryptography, such as the Diffie-Hellman [2] and RSA [3] protocols, circumvents this issue
+by employing a pair of keys for each participant: a public key, which can be shared openly, and a
+private key, which remains confidential. This enables Alice to encrypt a message using Bob’s public key,
+ensuring that only Bob can decrypt it with his private key. This eliminates the need to exchange secret
+keys in advance. Importantly, public-key cryptography also provides a mean for authentication: Bob
+can sign a message with his private key, and Alice (or anyone) can use the public key to confirm that
+it was indeed signed by Bob. From a practical standpoint, public-key systems are slower in that they
+require larger keys and more communication between users, compared to symmetric encryption. Thus,
+in current communication protocols such as Transport Layer Security (TLS), for example, a public-key
+method is used for authentication and key exchange in an initial handshaking session, while subsequent
+data encryption employs symmetric encryption.
+Nowadays, the security of many public key ciphers is built on the computational difficulty of math-
+ematical problems like integer factorization or the discrete logarithm problem, making it potentially
+vulnerable to advances in quantum computing. Notably, algorithms capable of solving these problems in
+polynomial time on a quantum computer have already been proposed [22, 23]. It is thus through quantum
+mechanics that Facta lex inventa fraus is realized, through the emergence of quantum computing as a
+significant threat, (the fraus) to the security of current public key cryptography. Still, quantum physics
+itself offers a new and robust set of laws (lex) through QKD, capable of providing unconditionally secure
+key distribution in theory.
+1.3. Standard Quantum Key Distribution
+1.3.1. Theoretical security of QKD
+To introduce standard prepare and measure QKD, we specifically elaborate the BB84 protocol [18] or
+conjugate coding [24], sketched in Fig. 1b. A general protocol for prepare-and-measure (PM) QKD can
+be found in Box 1.
+Step 1 –(Data generation) Alice prepares eigenstates of σz or σx bases (red or blue of Fig. 1) and
+attached them with a classical register. Then the classical-quantum preparation is
+ψCAiQi = 1
+4
+X
+ai,xi∈{0,1}
+|xiai⟩⟨xiai| ⊗Hxi |ai⟩⟨ai| Hxi,
+(1)
+where the first system corresponds to her classical register, storing values of classical bits xi, ai ( xi, ai ∈
+{0, 1}). The second system is the quantum state ψQi, which she sends to Bob. Here H is the Hadamard
+matrix, such that H0 = 1 is identity.
+Bob is unaware of Alice’s input xi, so he randomly selects a measurement basis yi and obtains result
+bi (Here yi, bi ∈{0, 1}). To each result he attaches a random classical bit Ti, so that with probability
+2Known quantum attacks on AES use Grover’s search algorithm, which provides quadratic speedup [21]. Thus, to achieve
+“quantum-safe” security equivalent to AES256 (256 key bits) under classical attacks requires upgrading to AES512.
+4

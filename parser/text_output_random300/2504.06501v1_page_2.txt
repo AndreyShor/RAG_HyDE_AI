@@ -1,0 +1,186 @@
+2
+s
+wLFE
+w
+s
+D
+h
+D
+x
+y
+z
+Dielectric
+Tunable LFE (series RC)
+s
+w
+D
+2D
+s
+h
+εr,sub
+εr,sub
+w
+D
+2D
+2D
+εr,sub
+(a)
+(b)
+(c)
+h
+2x2 Cell
+2x1 Cell
+1x1 Cell
+PEC
+Fig. 1. Schematic evolution of the unit cell considered in this work: (a) 1×1,
+(b) 2 × 1 and (c) 2 × 2 configurations. Geometric parameters are annotated
+while the series-RC loads are modeled as lumped face elements (LFE).
+lumped elements along the two lateral axes, x and y in Fig. 1, enables
+independent control of the two linear polarizations in 1 × 1 and
+2×2 cell configurations. More complex functionalities such as beam
+steering, require tuning and clustering into supercells [14], whereas
+simpler functions like plane-wave absorption and polarization con-
+version rely on global tuning.
+B. Transmission Line Modeling
+The design process begins with theoretical modeling to guide
+parameter selection, leveraging ECM and TL modeling (TLM) ap-
+proaches [16], [17]. Geometric parameters—such as unit cell period,
+patch gaps, substrate material, and thickness—are initially defined
+based on the ECM/TLM model. Patch size is chosen to align with
+the operating frequency, while substrate properties are adjusted for
+optimal resonance. Resistance and capacitance values are selected
+for accurate frequency tuning. Following this, FWS using established
+commercial software (CST and HFSS) refine and validate the design
+[8]. This work focuses on square elements for their simplicity and
+isotropic response, assuming perfect electrical conductors (PEC) with
+zero thickness for further simplification.
+The chosen unit cell architecture can be efficiently modeled using
+TLM: Dielectric slabs are modeled as short TL segments whose
+characteristic impedance and propagation constant depend on their
+permittivity and on the incident wavevector k and polarization,
+decomposed in transverse electric (TE) and transverse magnetic (TM)
+planes; note that k incorporates the information of the the plane
+wave direction in 3D space and the harmonic frequency. Patterned
+conductor layers are modeled by an equivalent complex surface
+admittance Ysurf or impedance Zsurf = 1/Ysurf, which is computed
+by approximate dispersive ECMs; ground planes are equivalent to
+short-circuits. This TLM approach is depicted in Fig. 2 and its validity
+is excellent for substrates with electric thickness above λ/4 below
+which near-field coupling progressively diminishes the TLM-ECM
+accuracy.
+The input impedance of the unit cell beyond the input plane is
+a function of various parameters including the operating frequency,
+angle of incidence, polarization, geometry and lumped loading:
+Zin = Zin (f, θ, pol., geom., Zlumped) .
+(1)
+Knowing Zin, the reflection coefficient can be calculated via the
+relation
+Γ = Zin −ZTL,inp
+Zin + ZTL,inp = YTL,inp −Yin
+YTL,inp + Yin ,
+(2)
+where ZTL,inp is the characteristic impedance of the “input” TL
+that feeds the structure. More generally speaking, the characteristic
+kt
+xy
+z
+PEC
+Zsurf
+Transmission Line Model (z-dir): k, pol.
+βTL,sub
+θ1
+θ1
+βTL,inp
+k,pol.
+(a)
+(b)
+inc.
+reﬂ.
+Z surf
+β,ZTL,sub
+ZTL,inp
+Zin
+εr,sub
+ε    = 1
+r,inp
+kt
+h
+Fig. 2. (a) Oblique incidence of a plane wave on the unit cell of a metasurface
+composed of a loaded patch grid sitting on the interface of air and a PEC-
+backed dielectric substrate; the 3D wavevector k contains harmonic frequency
+and direction information while the polarization can be either TE or TM; the
+angles θ1,2 are computed by Snell’s law. (b) Equivalent TLM used to compute
+the unit cell’s reflection coefficient; note that the loaded patch grid is represent
+by an ECM-derived Zsurf while the TL characteristic impedance depend on
+k in the medium and polarization.
+impedance of a plane wave traveling in this equivalent z-directed TL
+under oblique incidence is given by:
+ZTL =
+( η0
+√εr cos θ,
+TM pol.
+η0
+√εr sec θ,
+TE pol.
+(3)
+where η0 ≈377 Ωis the characteristic impedance of vacuum; in
+normal incidence, ZTL matches the bulk medium wave impedance;
+for lossy dielectrics, the Imag{εr} leads to absorption.
+In the absence of the patterned metallic layer (Zsurf = ∞in
+Fig. 2), the input impedance is simply the short-circuit (ground-plane)
+transformed by an h-long TL, where h is the substrate thickness, i.e.,
+Zin = Zsub,GND = jZTL,sub tan(βTL,subh).
+(4)
+In this expression, βTL,sub =
+p
+k2
+sub −k2
+tan is the propagation constant
+along the TL, where ksub = k0√εr,sub and ktan = kinp sin θ1 =
+ksub sin θ2; the latter is Snell’s law, which can be rewritten in its most
+usual form as √εr,inp sin θ1 = √εr,sub sin θ2; in this framework it is
+used to compute the plane wave direction θ2 in the substrate when
+the incidence angle θ1 and the refractive indices of the cladding and
+substrate are known.
+C. ECM for Unloaded Patch-Grid
+The most crucial part in the above methodology is the broadband
+surface impedance of the patterned metallic layer. When simulated
+or measured data are available, retrieval methods can be used [18].
+In this work, we aim to develop a simple yet accurate enough
+analytical ECM for the surface impedance which can then guide
+FWS-based optimization, if needed. Unless otherwise stated, the
+plane of incidence required to distinguish the two orthogonal linear
+polarizations (TE and TM) matches one of the two principal planes,
+xz or yz in Fig. 1.
+Starting from the 1 × 1 cell, Fig. 1(a), we note that in the absence
+of loading (e.g., Rseries →∞), the dispersive patch-grid impedance
+can be computed by the high-impedance surface ECM developed in
+[19]: When the patch grid is embedded within two not-too-different
+different dielectric media, we can consider an equivalent bulk medium
+of effective permittivity given by εr,eff = (εr,1+εr,2)/2, where εr,1/2
+are bulk permittivities of the two media, e.g., the air cladding and the
+dielectric substrate in the case of Fig. 1. Now, the capacitive surface
+impedance of a wide-patch/narrow-gap grid (s ≪D) is given by
+Zsurf = Zgrid =
+
+
+
+
+
+−j
+η0/√εr,eff
+2α
+,
+TM pol.
+−j
+η0/√εr,eff
+2α
+
+1−
+1
+εr,eff
+sin2 θinc
+2
+,
+TE pol.
+(5)

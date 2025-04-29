@@ -1,0 +1,98 @@
+14
+2.
+First-order correction of the density matrix in Bloch representation
+a.
+Covariant derivative
+Before deriving the density matrix in detail, we introduce the Covariant derivative66,71–73.
+In Bloch repre-
+sentation, the commutation between the position operator r and the operator ˆO satisfied ⟨ψm(k′)| ˆO |ψn(k)⟩=
+⟨ψm(k)| ˆO |ψn(k)⟩δ(k −k′) is64
+⟨ψm(k′)|
+h
+r, ˆO
+i
+|ψn(k)⟩
+=
+X
+n1
+Z
+ddk
+h
+⟨ψm(k′)| r |ψn1(k1)⟩⟨ψn1(k1)| ˆO |ψn(k)⟩−⟨ψm(k′)| ˆO |ψn1(k1)⟩⟨ψn1(k1)| r |ψn(k)⟩
+i
+=
+X
+n1
+Z
+ddk
+n
+[i∂k′δ(k1 −k′)δmn1 + Amn1(k′)δ(k1 −k′)] ⟨ψn1(k)| ˆO |ψn(k)⟩δ(k −k1)
+−⟨ψm(k′)| ˆO |ψn1(k′)⟩δ(k1 −k′) [i∂k1δ(k −k1)δn1n + An1n(k′)δ(k −k1)]
+o
+=
+X
+n1
+Z
+ddk1i∂k′δ(k1 −k′)δmn1 ⟨ψn1(k)| ˆO |ψn(k)⟩δ(k −k1)
++
+X
+n1
+Z
+ddk1Amn1(k′)δ(k1 −k′) ⟨ψn1(k)| ˆO |ψn(k)⟩δ(k −k1)
+−
+X
+n1
+Z
+ddk1 ⟨ψm(k′)| ˆO |ψn1(k′)⟩δ(k1 −k′)i∂k1δ(k −k1)δn1n
+−
+X
+n1
+Z
+ddk1 ⟨ψm(k′)| ˆO |ψn1(k′)⟩δ(k1 −k′)An1n(k′)δ(k −k1)
+= [Omn(k) −Omn(k′)] i∂k′δ(k −k′) +
+X
+n1
+[Amn1(k′)On1n(k) −An1n(k′)Omn1(k′)] δ(k −k′)
+= i∂k′ [Omn(k) −Omn(k′)] δ(k −k′) + δ(k −k′)i∂k′Omn(k′) +
+X
+n1
+[Amn1(k′)On1n(k) −An1n(k′)Omn1(k′)] δ(k −k′)
+= δ(k −k′)
+(
+i∂kOmn(k) +
+X
+n1
+[Amn1(k)On1n(k) −An1n(k)Omn1(k)]
+)
+.
+(C5)
+Here, Omn(k) = ⟨ψm(k)| ˆO |ψn(k)⟩= ⟨um(k)| ˆO(k) |un(k)⟩, in which ˆO(k) = e−ik·r ˆOeik·r.
+And Amn(k) =
+⟨um(k)| i∂k |un(k)⟩is Berry connection of magnon, in which |un(k)⟩= e−ik·r |ψn(k)⟩. And d is the dimension of
+the system. So Covariant derivative can be expressed as66
+[DkO(k)]mn = ⟨um(k)|
+h
+r, ˆO(k)
+i
+|un(k)⟩
+= ⟨ψm(k)|
+h
+r, ˆO
+i
+|ψn(k)⟩
+= i∂kOmn(k) +
+X
+n1
+[Amn1(k)On1n(k) −An1n(k)Omn1(k)]
+(C6)
+which satisfy ⟨ψm(k′)|
+h
+r, ˆO
+i
+|ψn(k)⟩= [DkO(k)]mn δ(k −k′). If k is regarded as discrete, Eq. C5 satisfies64
+⟨ψm(k′)|
+h
+r, ˆO
+i
+|ψn(k)⟩= [DkO(k)]mn δkk′.
+(C7)

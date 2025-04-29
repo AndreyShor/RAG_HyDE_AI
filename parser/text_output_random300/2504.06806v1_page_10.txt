@@ -1,0 +1,50 @@
+10 
+poor antisymmetry (from -0.53 to -0.68 of antisymmetry in Ssym). More generally, 
+MBC preserves the antisymmetry of the improved methods whenever the original 
+methods exhibit this property. 
+This finding strongly supports our hypothesis that a better description of the unfolded 
+state of the proteins might be a necessary step to improve the current state-of-the-art 
+protein stability-change predictions. The MBC correction is just a simple, yet 
+effective, zero-order correction. Thus, it is clearly possible to envision more 
+sophisticated and, eventually, better-performing methods. Nonetheless, we believe 
+that the simplicity of our approach has its own merits per se, since it allows the 
+retrofitting of several existing approaches, achieving  good performance and 
+avoiding extra computational costs. 
+ 
+Materials and Methods 
+Datasets composition 
+The main training set used in this work, namely VBS3322, consists of 3,322 
+mutations obtained by combining the VariBench35 and the S264834 data sets. In the 
+cases where the same mutation is reported in both data sets, the VariBench value is 
+considered. We also augmented the dataset by including the antisymmetric 
+complement of each mutation, as suggested in a previous work36. 
+The test set used for the benchmarking is the S461. For all the structures that 
+showed missing backbone atoms, we preprocessed the structure using the 
+PDBFixer utility37. 
+The FoldX results used for both training and evaluation have already been 
+published38, while Stability Oracle results for the S461 dataset have been computed 
+from 
+the 
+data 
+provided 
+by 
+its 
+authors 
+on 
+Github 
+(https://github.com/danny305/StabilityOracle) 
+ 
+Mass balance Correction 
+The simplest approach to calculate the ΔΔG for the sequence-mutation process is to 
+assume that the second term of equation [1] depends only on the amino acids 
+involved in the mutation.  
+This simplification leads to the following reaction, considering the wild-type (𝑤) and 
+mutated  (𝑚) residues: 
+  
+𝑃𝑟𝑜𝑡𝑒𝑖𝑛(𝑤, 𝑖) + 𝑅𝑒𝑠𝑖𝑑𝑢𝑒(𝑚) ⇄𝑃𝑟𝑜𝑡𝑒𝑖𝑛(𝑚, 𝑖) + 𝑅𝑒𝑠𝑖𝑑𝑢𝑒(𝑤)  
+ 
+[6] 
+ 
+where 𝑃𝑟𝑜𝑡𝑒𝑖𝑛(𝑥, 𝑖) represents a protein with residue 𝑥 in position 𝑖, while 𝑅𝑒𝑠𝑖𝑑𝑢𝑒(𝑥) 
+refers to a single amino acid. Conceptually, this corresponds to estimating the 
+difference in the (effective) Gibbs free energy of solvation for two amino acids in 

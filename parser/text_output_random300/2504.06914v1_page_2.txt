@@ -1,0 +1,134 @@
+2
+mations in active crystals [73]. In this study, we charac-
+terize crystal deformations using non-affine fluctuations,
+deriving a scaling law in terms of activity Λ and den-
+sity.
+Our scaling argument predicts a Λ2 dependence,
+confirmed over three decades through detailed numerical
+simulations – one of the key achievements of this paper.
+The non-affine parameter diverges at large Λ, signaling
+defect proliferation and activated melting of the solid to a
+hexatic phase, marked by vanishing shear modulus, solid
+order, and eventually the hexatic order. The softening
+and melting are further characterized analyzing the pro-
+liferation of topological defects. Finally, we propose lo-
+cally tuned activity as a means to control non-affinity
+and the mechanical properties of a solid.
+II.
+MODEL
+We consider an excluded volume solid in two dimen-
+sions characterized by a triangular lattice and quasi-
+long-range order, composed of N = nxny particles in-
+teracting via the Weeks-Chandler-Andersen (WCA) po-
+tential [74, 75], U(rij) = 4ϵ[(σ/rij)12 −(σ/rij)6] + ϵ for
+|rij| < rc = 21/6σ and U(rij) = 0 otherwise. The system
+is maintained at high density ρ = N/LxLy with mean
+inter-particle separation a = [2/
+√
+3ρ]1/2.
+The equilib-
+rium phase diagram, based on the WCA potential, re-
+veals that for fixed temperature kBT/ε = 1.0, the solid
+undergoes a continuous BKTHNY transition to a hexatic
+phase at ρσ2 = 0.92, followed by first-order melting to a
+liquid at ρσ2 = 0.906 [76].
+We investigate the behavior of an equilibrium solid
+at high density (ρσ2 ≥1) under self-propulsion, mod-
+eled by Active Brownian Particles (ABP). Each parti-
+cle moves with self-propulsion speed v0 in a direction
+ˆni = cos θi(t), sin θi(t), with the angle θi(t) evolving via
+rotational diffusion. The dynamics of the i-th particle is
+governed by the following coupled Langevin equations:
+dri(t) = v0ˆni(t)dt −µ∇i
+X
+jϵRi
+U(rij)dt +
+p
+2Dtdt dBi(t)
+dθi(t) =
+p
+2Drdt dBr
+i (t),
+(1)
+where Dt and Dr are the translational and rotational
+diffusivities, and dBi(t) and dBr
+i (t) are independent and
+univariate Gaussian white noise terms with mean zero.
+The Euler-Maruyama method is used to directly inte-
+grate the dimensionless forms of the above equations
+(see Appendix-A) in numerical simulations. The units
+of energy, length, and time are set by ϵ, σ, τu = σ2/µϵ.
+The system property is controlled by the following di-
+mensionless parameters: activity Λ = v0σ/µϵ, transla-
+tional diffusivity ˜Dt = Dt/µϵ, and orientational diffusiv-
+ity ˜Dr = Drσ2/µϵ. In this paper, we focus on the impact
+of activity Λ, by setting ˜Dr = 3, ˜Dt = 1, and ρσ2 = 1.1,
+unless otherwise specified.
+III.
+NON-AFFINE PARAMETER
+The non-affine fluctuation χ0 at lattice position R0
+is defined within a coarse-graining volume Ωcontaining
+neighbors {Ri} (see Fig. 1c). Instantaneous positions r0
+and {ri} yield displacements u0 = r0 −R0 and ui =
+ri −Ri relative to reference coordinates {Ri} on an ideal
+triangular lattice. The local strain matrix E is obtained
+by minimizing the mean-square difference D2 between
+the observed relative displacements ∆i = ui −u0 and
+estimated displacements E[Ri −R0] [17],
+χ0 =
+X
+i
+(∆i −E[Ri −R0])2 .
+(2)
+Note that D has the dimension of length.
+After min-
+imization, the αβ-th component of the affine strain is
+given by
+Em
+αβ =
+X
+γ
+xαγy−1
+βγ −δαβ,
+(3)
+where
+xαβ =
+NΩ
+X
+i=1
+(riα −r0α) (Riβ −R0β) ,
+yαβ =
+NΩ
+X
+i=1
+(Riα −R0α) (Riβ −R0β) .
+The residual D2 value using the minimized E denoted
+by Em in Eq.(3) gives the non-affine fluctuation χ0 of the
+0-th particle [17, 35]:
+χ0 =
+X
+i
+(∆i −Em[Ri −R0])2 .
+(4)
+A projection operator formalism [36] showed that this
+procedure projects the relative displacement field ∆i onto
+mutually orthogonal subspaces of the affine strain tensor
+Em and the non-affine parameter χ0. The global non-
+affine parameter X = N −1 PN
+i=1 χi is the system average
+with χi denoting non-affine parameter associated with i-
+th particle. Note that χ and X have dimensions of length
+squared, which we use in the next section to develop a
+scaling argument.
+A.
+Scaling analysis
+In an equilibrium harmonic solid with spring constant
+k and temperature kBT, the characteristic length scale
+of displacement fluctuations is ℓ2 = kBT
+k , and the mean
+non-affine parameter is ⟨χ⟩eq ∼ℓ2 [36]. With transla-
+tional diffusion Dt = µkBT, similar scaling is expected
+in our system, where the elastic constant k, derivable
+from U ′′(a), increases with density.
+The bulk, shear,
+and Young’s moduli of a two-dimensional solid increase

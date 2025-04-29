@@ -1,0 +1,68 @@
+2
+the QLSA, whereas methods in the latter two categories apply Hamiltonian simulation directly. Mathemati-
+cally, methods in the latter two categories yield similar final expressions, although their derivation procedures
+differ significantly.
+Methods in the first category consist of three steps: discretizing the time variable, encoding the discretized
+linear differential equation into an enlarged linear system, and solving the resulting linear system using QLSA.
+This approach was first introduced by [4], which uses linear multi-step methods to discretize the time variable.
+However, due to the limitations of the discretization method, the query complexity in [4] is poly(1/ϵ) even
+if the most efficient QLSA is applied. To improve the dependence on the precision ϵ, Berry et al. [7] applies
+a truncated Taylor series to approximate the propagator exp(At) for autonomous ODEs and encodes the
+evaluation process of the truncated Taylor series into a linear system. The dependence on ϵ is improved to
+poly(log(1/ϵ)). The analysis in [7] requires A to be diagonalizable, i.e., there exists an invertible matrix V
+such that V −1AV is a diagonal matrix, and the final complexity depends linearly on the condition number
+of V , κV = ∥V ∥2·∥V −1∥2. To eliminate the dependence on κV , Krovi [32] proposes a modified linear system
+that also encodes the evaluation process of the truncated Taylor series into a linear system, and improves
+the analysis in [7]. In [32], the resulting complexity depends on C(A) := max0≤t≤T ∥exp(At)∥2 instead of
+κV . More recently, Dong et al. [13] revisited the analysis in [7] and obtained a similar complexity result to
+[32] without modifying the linear system. Additionally, Childs and Liu [11] and Berry and C. S. Costa [5]
+generalize methods in this category to address non-autonomous linear ODEs, i.e., time-dependent A(t) and
+b(t), using spectral method and Dyson’s series, respectively.
+The second category of methods originates from [3]. These methods are based on a novel integral expression
+for the non-unitary evolution operator T e
+R t
+0 A(s)ds, where T denotes the time-ordering operator. By decom-
+posing A(t) into its Hermitian and anti-Hermitian parts, i.e., A(t) = L(t) + ıH(t), where L(t) = A(t)+A†(t)
+2
+and H(t) = A(t)−A†(t)
+2ı
+, the non-unitary evolution operator can be expressed as an integral,
+T e
+R t
+0 A(s)ds =
+Z
+R
+1
+π(1 + k2)T eı
+R t
+0 (H(s)+kL(s))dsdk.
+(2)
+This identity holds under the assumption that L(t) is negative semi-definite, i.e., L(t) ⪯0 for all t ∈[0, T].
+Later, in [2], a large family of identities similar to Eq. (2) is unveiled, and the method in this category
+is improved to achieve near-optimal dependence on all parameters. The extension to the inhomogeneous
+case is also possible via Duhamel’s principle.
+Compared to the methods in the first category, methods
+in this category consider the non-autonomous cases directly and achieve the optimal state preparation cost.
+However, methods in this category only give the terminal state, whereas methods in the first category provide
+information throughout the evolution.
+The third category of methods is known as Schrödingerization [23, 25]. These methods use a warped phase
+transformation to map the linear differential equation into a higher-dimensional system, where it manifests
+as a Schrödinger equation in the Fourier space of the extra variable. In this way, the linear ODEs with
+non-unitary dynamics are converted into a system that evolves under unitary dynamics, i.e., a Schrödinger
+equation, which can be simulated on quantum computing via Hamiltonian simulation. Schrödingerization
+has been applied to a wide range of problems, including differential equations with various boundary con-
+ditions [10, 17, 19, 24, 26–28, 30], iterative methods in numerical linear algebra [20], and more. In [29],
+Schrödingerization is extended to solve linear differential equations with inhomogeneous terms, which is the
+same problem addressed in this paper. The resulting query complexity depends linearly on 1/ϵ. More re-
+cently, methods in this category have been adapted for analog quantum simulation [21, 22]. Explicit quantum
+circuit implementations corresponding to Schrödingerization have been explored in [18, 31].
+We propose a novel quantum algorithm for solving linear autonomous ODEs (1) in this paper, which falls
+within the first category of existing quantum algorithms. Our key contributions and innovations can be
+summarized as follows.
+• We replace the Taylor series approximation with the Padé approximation of the matrix exponential in
+related quantum algorithms [7, 13, 32]. The Padé approximation, a rational function commonly used
+in classical computing to approximate matrix exponentials [1, 16, 33], achieves similar accuracy to the
+Taylor approximation but with a lower order, though it requires a matrix inversion.
+• We propose a matrix encoding for the Padé approximation, denoted as L. The encoding avoids explicit
+matrix inversion and maintains a comparable level of complexity to the matrix encoding used for Taylor
+approximation, as presented in [7, 13, 32]. In contrast to the Taylor approximation, whose corresponding

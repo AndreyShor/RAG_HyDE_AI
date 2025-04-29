@@ -1,0 +1,100 @@
+Geometric Quantum Gates of Non-closed Paths Under Counterdiabatic Driving
+Ximo Wang, Hongyan Fan, Zhenqi Bai, Yichi Zhang†∗
+College of Physics and Electronic Engineering, Shanxi University, 030006 Taiyuan, People’s Republic of China
+Collaborative Innovation Center of Extreme Optics, Shanxi University,
+Taiyuan, Shanxi 030006, People’s Republic of China
+Non-adiabatic and non-closed evolutionary paths play a significant role in the fidelity of quan-
+tum gates. We propose a high-fidelity quantum control framework based on the quasi-topological
+number (νqua), which extends the traditional Chern number to characterize geometric responses
+in non-closed paths. By introducing a counterdiabatic gauge potential (AGP) that dynamically
+suppresses non-adiabatic transitions and reconstructs path curvature, we demonstrate that νqua —a
+relative homotopy invariant of compact manifolds in parameter space—quantifies the robustness
+of geometric phases during open-path quantum evolution. This integer invariant ensures gauge-
+invariant suppression of decoherence errors arising from dynamical phase coupling. By introducing
+nonlinear parametric ring paths, we address the defects caused by intermediate states in the Rydberg
+atomic system. Numerical simulations in the Kitaev superconducting chain and 2D transverse-field
+Ising model confirm that our protocol achieves quantum gate fidelity exceeding F > 0.9999. We
+bridges geometric quantum control with topological protection, offering a universal approach to
+noise-resistant quantum computing.
+Introduction—The pursuit of fault-tolerant quantum
+computation faces a fundamental challenge: preserving
+quantum state fidelity against environmental noise and
+control errors. While geometric phases [1–3] offer inher-
+ent resilience by encoding quantum information in global
+properties of evolution paths, existing geometric gates
+strictly require adiabatic evolution along closed paths in
+parameter space [4–6], imposing impractical constraints
+on realistic quantum control. Recent advances in coun-
+terdiabatic driving (CD) [7] mitigate non-adiabatic er-
+rors but remain confined to closed-path geometries, leav-
+ing dynamical-phase-induced decoherence unresolved in
+non-closed paths—a regime unavoidable in experiments
+due to microwave crosstalk in superconducting circuits
+[8, 9] or laser fluctuations in atomic systems [10–16].
+In this letter, we transcend these limitations by estab-
+lishing a non-adiabatic geometric quantum gate frame-
+work via quasi-topological invariants and counterdia-
+batic gauge potentials (AGP). We prove that the integer-
+valued quasi-topological number νqua—a relative homo-
+topy invariant—quantifies geometric phase robustness for
+open paths in compact parameter manifolds.
+By dy-
+namically reconstructing path curvature through AGP
+[17], our protocol suppresses non-adiabatic transitions
+and achieves U(1)-gauge-invariant phase decoupling, en-
+abling F > 0.9999 fidelity in Rydberg atom simulations.
+This approach unifies geometric control with topologi-
+cal protection, offering a hardware-agnostic solution for
+noise-resilient quantum computation.
+AGP achieves precise cancellation of non-adiabatic
+terms—CD has been discussed widely, and we already
+know its properties. We introduce a counterdiabatic po-
+tential [17]
+He = H(λ) + ˙λAλ
+(1)
+∗Contact author:zhangyichi@sxu.edu.cn
+We expand it and obtain
+Aλ = −i
+X
+m̸=n
+|m⟩⟨m| ∂λH(λ) |n⟩⟨n|
+(Em −En)
+(2)
+The wavefunction can separate phases and write them
+out in the form of time evolution.
+|ψ⟩= e−iϕ |n⟩
+(3)
+Analogous to the Berry phase method, we obtain that:
+i ⟨m|∂λn⟩= ⟨m| Aλ |n⟩
+(4)
+We demonstrated that this is non-diagonal, and it can
+maintain the form of geometric phase. So we consider
+the transition probability from state |n⟩to |m⟩, which is
+derived from non-adiabatic effects. After a series of calcu-
+lations(see the supplementary), we can obtain a equation
+as:
+cm(t) =
+Z t
+0
+exp[i
+Z t′
+0
+(Em −En)dτ] ˙λ
+× (i ⟨m|∂λn⟩−⟨m| Aλ |n⟩)dt′
+= 0
+(5)
+So AGP can offset the effects of non-diabatic accurately,
+as shown in Fig.1.
+The topological properties of non-adiabatic non-closed
+paths—The issues related to non-adiabatic effects were
+addressed in the previous section. We now turn to con-
+sider the case of non-closed paths(λ(t) ∈M,t ∈[0, T]).
+Within the parameter space, the Berry connection and
+Berry curvature can be well expressed along closed paths
+[1]. For non-closed paths, it is important to recognize
+that the expression form of the Berry curvature remains
+unchanged, although the initial and final states are al-
+tered. Therefore, we first stipulate that the initial and
+final states are known and fixed. Non-closed paths are
+difficult to handle, but we can choose a random path
+arXiv:2504.06678v1  [quant-ph]  9 Apr 2025

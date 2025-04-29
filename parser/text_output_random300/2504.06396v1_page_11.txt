@@ -1,0 +1,120 @@
+A Scalable Automatic Model Generation Tool for Cyber-Physical Network Topologies and Data Flows for Large-Scale
+Synthetic Power Grid Models
+XXX:11
+radial topologies. After clustering, labels are assigned to all nodes, including utilities and substations.
+For example, a substation label looks like this: Region.Utility_number.Substation_name. This label
+indicates the substation’s regional and utility affiliation. Regardless of the topology, each substation,
+UCC, and BA have specific cyber components, as depicted in Fig. 2. These cyber components are
+created using an object-oriented programming approach.
+4.2.2
+Creating Cyber-Physical Components. The cyber-physical model is created using object-
+oriented programming based on the architecture in Fig. 6. It has five classes (data types) including
+Substation, Utility, Regulatory, Nodes, and Links. They are organized as Cyber Classes and Physical
+Classes.
+Links and Nodes are considered Cyber classes. The Link class has attributes such as the link’s
+source and destination nodes, the media type of the link, bandwidth in bits per second, and distance
+(or length of the link). The Node class contains attributes such as region, utility, substation, IP
+address, label, and the Virtual Local Area Network (VLAN) where the node is installed. Its sub-
+classes generate the cyber and cyber-physical nodes inside substations and utilities, such as switch,
+router, host, firewall, relay, and relay controller. To indicate the types of applications they support,
+hosts and relay controllers have attributes such as openPorts and protocol. Physical classes include
+Utility, Substation and Regulatory, which are higher-level nodes that contain links and nodes. Their
+relationship to each other can be explained as follows: a Utility contains Substations, while a
+Regulatory contains Utilities. In particular, a Substation class has unique attributes such as the
+number of relays it contains (relaynum). Furthermore, we can model different types of substations,
+such as generation, transmission, and distribution. Generation substations can in turn be modeled
+as conventional generation, distributed energy resources (DER), or virtual power plant. In this
+paper, we focus on transmission and conventional generation substations. Being part of the Wide
+Node
+ +utility
+ +substation
+ +label
+ +VLAN
+>toJSONStr
+Switch
+ +arpTable
+Router
+ +interfaces
++routingTable
+Relay
+ +busNumber
+ +breakers
+ +relayType 
++relaySubType
+ Host
+ +openPorts
+ +ipaddress
+ +subnetMask
++protocol
+Fir ewall
+ +acls
+ +interfaces
+ +latitude
++longitude
+Relay Contr oller
+ +ipaddress
+ +subnetMask
+ +relayIPlist
++protocol
+Link
+ +source
+ +destination
+ +link_type
+ +bandwidth
+ +distance
+ 
+>toJSONStr
+Regulator y
+ +label
+ +networklan
+ +utilities
+ +num_of_utilities
+ +utilityFirewalls
+ +latitude
+ +longitude
+ +nodes
+ +links
+Utility
+ +label
+ +networklan
+ +utility_name
+ +utility_id
+ +substations    
++substationFirewalls
+ +latitude
+ +longitude
+ +nodes
+ +links
+Substation
+ +num_of_relays
+ +label
+ +networklan
+ +utility_name
+ +utility_id 
+ +substation_name
+ +substation_num
+ +latitude
+ +longitude
+ +nodes
+ +links
+Gener ation
+ +GenMW
+ +GenMVar
+ +location
+ +substation
+ +function
+ +capacityMW
+ +fuelSource
+ +regulatory
+Vir tual Power  
+Plant
+DER
+Distr ibution
+ +LoadMW
+ +LoadMVar
+Tr ansm ission
+ 
+Conventional
+Physical Classes
+Cyber Classes
+Fig. 6. Cyber and physical classes.

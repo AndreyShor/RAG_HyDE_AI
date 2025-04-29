@@ -1,0 +1,109 @@
+Other approaches to solving complex robotics tasks re-
+quiring semantic reasoning try to sidestep this task-to-
+visual grounding problem. Side stepping this problem in
+tasks such as natural language navigation instruction fol-
+lowing [13], semantic search problems [4, 49], and natural-
+language-directed pick and place [1, 11] leads to effective
+problem-specific solutions.
+More concretely, rather than
+rolling out the next action sequentially from what is cur-
+rently seen by the robot’s camera [1, 13], we use explicitly
+stored observations from the entire scene for task decom-
+position, which enables the reasoning of tasks without clear
+termination conditions and over larger scenes.
+Contribution. This paper presents the first framework
+to automatically generate a task hierarchy —which breaks
+down high-level tasks specified in natural language into
+subtasks and items— while grounding the task hierarchy
+into a 3D scene graph representation of the environment.
+We start by considering the idealized case where the
+robot is not only given high-level tasks but also the
+grounded breakdown of the tasks into subtasks (what we
+call a task hierarchy). Our first contribution is to gener-
+alize the Information Bottleneck (IB) principle [42] used
+in [30] to generate a hierarchy of compressed representa-
+tions: these are the layers of the 3D scene graph, which
+describe the scene at increasing levels of abstraction. We
+show that, under certain Markov assumptions between the
+random variables, we can derive an iterative algorithm for
+this hierarchical generalization of the IB (H-IB). Given a
+task hierarchy, the H-IB creates a scene graph where the
+layers are arranged according to the task hierarchy.
+A fundamental issue is that in practice the robot is given
+the high-level task, but may not be given the task hierarchy
+(i.e. might not be provided with the details of the subtasks to
+execute). This is a common situation since the task hierar-
+chy itself is environment-dependent. For instance, given the
+task “clean the office”, the exact breakdown and subtasks
+depend on the layout and items within the office in ques-
+tion. Therefore, the key observation is that not only should
+the map representation depend on the task, but the way we
+break down the task depends on the information in our map
+representation. Hence our second contribution is an itera-
+tive approach that alternates between a top-down hierarchi-
+cal task analysis to generate a task hierarchy, and a bottom-
+up task-driven 3D scene graph construction to ground the
+task hierarchy. The result is ASHiTA, an approach for au-
+tomatic scene-grounded hierarchical task analysis (Fig. 1).
+We evaluate ASHiTA on both the idealized case with
+given task hierarchies and also the case where only high-
+level tasks are specified.
+Our experiments show that (i)
+given a task hierarchy, ASHiTA is able to generate a task-
+driven 3D scene graph that is more accurate in grounding
+task-relevant objects than state-of-the-art zero-shot visual-
+grounding models [52, 53] and (ii) given high-level natural
+language tasks, ASHiTA is able to automatically generate a
+task hierarchy grounded to a 3D scene graph. To our knowl-
+edge, ASHiTA is the first system capable of accomplishing
+this, and our experiments demonstrate competitive advan-
+tages over naive LLM and scene graph baselines.
+2. Related Work
+Scene Graphs. Scene graphs have been used in computer
+graphics, vision, and robotics. 2D scene graphs such as [18]
+have been used for image retrieval, generation, and under-
+standing. 3D scene graphs model 3D scenes using a graph
+where nodes are semantic concepts —grounded in 3D—
+and edges represent relations [2, 21, 35].
+In contrast to
+voxel [28, 37] or neural feature field [20, 39] based rep-
+resentations, 3D scene graphs provide structured, relational
+information that directly supports high-level reasoning and
+task planning by explicitly capturing object relationships
+and attributes. SceneGraphFusion [46] estimates a scene
+graph of objects and relations in real-time. Hydra [14] is the
+first approach to build a hierarchical scene graph (includ-
+ing multiple layers) in real-time from sensor data. These
+algorithms and models focus on a closed set of semantic la-
+bels, which fundamentally limits their ability to represent
+novel and open-ended concepts encountered in complex,
+real-world environments.
+Open-Set Semantic Understanding. A number of re-
+cent works have explored the use of vision-language foun-
+dation models for open-set semantic understanding. Con-
+ceptGraph [12] leverages vision-language models for 3D
+multi-view association, as well as SAM [22] and CLIP [33]
+to cluster a scene based on the objects’ semantic and geo-
+metric similarity. HOV-SG [45] leverages open-vocabulary
+vision foundation models to obtain segment-level maps
+in 3D and ultimately construct a hierarchy of concepts,
+though not in real time. CLIO [30] builds a task-driven
+3D scene graph, where an information-theoretic framework
+is used to select the subset of objects and scene structures
+that are relevant to the task specified in natural language.
+While these approaches have made impressive strides to-
+wards semantically rich map representations, they still as-
+sume manually defined layers within the 3D scene graph,
+thus constraining the type of language instructions that can
+be grounded [30, 45].
+Hierarchical Task Analysis. The breakdown of a com-
+plex long-horizon task into subtasks has been historically
+studied within the task and motion planning (TAMP) frame-
+work [10, 51]. Given a task in natural language, SayCan [3]
+uses LLMs to generate a set of feasible planning steps, re-
+scoring matched admissible actions with a learned value
+function, but limited by the size of the action space and
+the assumption of a 1 to 1 mapping between LLM output
+and action. LLM+P [27] uses an LLM as a PDDL writer in
+solving a planning problem described in natural language,
+2

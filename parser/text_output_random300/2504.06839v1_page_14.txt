@@ -1,0 +1,265 @@
+which is finite for any T > 0 thanks to Lemma 2.1. If we now look at equation (2.1.12) we can write for t ≤T
+|φ(θ, t, h|h′)|
+≤
+|J(θ, t, h|h′)|
+|
+{z
+}
+≤∥J∥L∞
++
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′′′ |φ(θ′, t′, h′′′|h′)|
+|
+{z
+}
+≤Bφ
+t′≤Bφ
+T
+f(θ −θ′, t −t′, h|h′′′) −c
+2π E(2)(t −t′, h′′′)
+
+≤
+∥J∥L∞+ Bφ
+T
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′′′ f(θ −θ′, t −t′, h|h′′′) −c
+2π E(2)(t −t′, h′′′)
+
+≤
+∥J∥L∞+ Bφ
+T
+f(·, ·, h|·) −c
+2π E(2)
+L1(T1
+2π×[0,+∞)×[−1,1])
+|
+{z
+}
+≤d<1∀h by Lemma 2.3
+≤
+∥J∥L∞+ Bφ
+T d,
+and therefore since the previous inequality holds for any t ≤T, the same holds for the supremum, that is
+Bφ
+T ≤∥J∥L∞+ Bφ
+T d
+⇒
+Bφ
+T ≤∥J∥L∞
+1 −d ,
+and since this inequality holds in turn regardless of T, this proves that
+∥φ∥L∞(T1
+2π×[0,T ]×[−1,1]2) ≤∥J∥L∞
+1 −d ∀T > 0
+⇒
+φ ∈L∞.
+Step 2: let us prove that φ decays as 1
+t (at most). Denote again
+Cφ
+T :=
+sup
+(θ,t,h|h′)∈T1
+2π×[0,T ]×[−1,1]2 |tφ(θ, t, h|h′)|,
+which is again finite (for fixed T) thanks to Lemma 2.1. Also fix 1 < α < 1
+d, with d < 1 defined in Lemma 2.3. If we
+use again the representation (2.1.12), for t ≤T we get
+|tφ(θ, t, h|h′)|
+≤
+|tJ(θ, t, h|h′)|
+|
+{z
+}
+≤AJ
++
+t
+Z
+T1
+2π
+dθ′
+Z
+t
+α
+0
+dt′
+Z 1
+−1
+dh′′′ |φ(θ′, t′, h′′′|h′)|
+|
+{z
+}
+≤∥φ∥L∞
+f(θ −θ′, t −t′, h|h′′′) −c
+2π E(2)(t −t′, h′′′)
+
++
+t
+Z
+T1
+2π
+dθ′
+Z t
+t
+α
+dt′
+Z 1
+−1
+dh′′′ |φ(θ′, t′, h′′′|h′)|
+|
+{z
+}
+≤
+Cφ
+t′
+t′ ≤
+αCφ
+T
+t
+f(θ −θ′, t −t′, h|h′′′) −c
+2π E(2)(t −t′, h′′′)
+
+≤
+AJ + ∥φ∥L∞t
+Z
+T1
+2π
+dθ′
+Z
+t
+α
+0
+dt′
+Z 1
+−1
+dh′′′ f(θ −θ′, t −t′, h|h′′′) −c
+2π E(2)(t −t′, h′′′)
+
++
+αCφ
+T
+Z
+T1
+2π
+dθ′
+Z t
+t
+α
+dt′
+Z 1
+−1
+dh′′′ f(θ −θ′, t −t′, h|h′′′) −c
+2π E(2)(t −t′, h′′′)
+
+≤
+AJ + ∥φ∥L∞t
+Z
+T1
+2π
+dθ′
+Z t
+t(1−1
+α )
+dt′
+Z 1
+−1
+dh′′′ f(θ′, t′, h|h′′′) −c
+2π E(2)(t′, h′′′)
+
++
+αCφ
+T
+f(·, ·, h|·) −c
+2π E(2)
+L1(T1
+2π×[0,+∞)×[−1,1])
+|
+{z
+}
+≤d<1∀h by Lemma 2.3
+≤
+AJ + ∥φ∥L∞t
+Z
+T1
+2π
+dθ′
+Z ∞
+t(1−1
+α )
+dt′
+Z 1
+−1
+dh′′′ h
+f(θ′, t′, h|h′′′) + c
+2π E(2)(t′, h′′′)
+i
++ αdCφ
+T .
+Now we are going to study the second one of these three summands, whose first part can be estimated as
+Z
+T1
+2π
+dθ′
+Z ∞
+t(1−1
+α )
+t′
+Z 1
+−1
+dh′′′f(θ′, t′, h|h′′′)
+=
+Z ∞
+t(1−1
+α )
+dt′
+Z 1
+−1
+dh′′′Q(2)(t′, h|h′′′) = E(2)
+t(α −1)
+α
+, h
+
+≤
+αc2
+t(α −1) by (B.2.7) of Lemma B.3,
+and whose second part as
+Z
+T1
+2π
+dθ′
+Z ∞
+t(1−1
+α )
+dt′
+Z 1
+−1
+dh′′′ c
+2π E(2)(t′, h′′′)
+=
+c
+Z ∞
+t(1−1
+α )
+dt′
+Z 1
+−1
+dh′′′E(2)(t′, h′′′)
+≤
+αcc′
+2
+t(α −1) by (B.2.8) of Lemma B.3.
+14

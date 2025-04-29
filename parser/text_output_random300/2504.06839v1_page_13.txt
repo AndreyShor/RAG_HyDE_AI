@@ -1,0 +1,129 @@
+and, using (2.1.9), φ solves
+φ(θ, t, h|h′) = f(θ, t, h|h′) −1
+2π E(t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)φ(θ + π −2 arcsin(h′′), t′, h′′|h′),
+with f by Definition 1.8
+The equations above are exactly the properties (2.1.1) and (2.1.2).
+Now, as we said, the next step would be to deduce the long time (i.e. for t large) behavior of φ from its definition
+in (2.1.1). There are two problems in using directly (2.1.1): the first is that the integral of Q is 1 (and not < 1), and
+the second is that the integral in (2.1.1) involves only the variables (t′, h′), and instead we want to exploit the fact
+that f −
+1
+2πE has integral 0 in (θ, t, h) (which is stated in (B.3.5)). This suggests that, to begin with, we need to
+iterate over (2.1.1) twice, so that by changing variables we integrate also with respect to θ.
+In the next two Lemmas, therefore, we collect a more useful writing for φ. We write them together to show better
+how they will be used.
+The functions Q(n) and E(n) which we will refer to in the following are introduced in Definitions 1.5 and 1.6.
+Lemma 2.2. For any c ∈R the function φ defined in (2.1.1) of Lemma 2.1 verifies the following identity
+φ(θ, t, h|h′)
+=
+f(θ, t, h|h′) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)f(θ + π −2 arcsin(h′′), t′, h′′|h′)
+−
+1
+2π E(2)(t, h) + c
+2π
+Z ∞
+t
+dt′
+Z 1
+−1
+dh′′E(2)(t′, h′′) −E(2)(t, h′) −E(3)(t, h′)
+
++
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′′′φ(θ′, t′, h′′′|h′)
+h
+f(θ −θ′, t −t′, h|h′′′) −c
+2π E(2)(t −t′, h′′′)
+i
+.
+Lemma 2.3. There exists a constant ¯c > 0 such that for any c ∈(0, ¯c] it holds
+d :=
+sup
+h∈[−1,1]
+f(·, ·, h|·) −c
+2π E(2)
+L1(T1
+2π×[0,+∞)×[−1,1]) < 1.
+Let us postpone both the proofs of Lemmas 2.2 and 2.3 and let us see how we can combine them to get the following
+estimate for φ (which is exactly what we need to prove Proposition 2.1).
+Lemma 2.4. There exists a constant C > 0 such that the function φ defined by (2.1.1) of Lemma 2.1 verifies
+|φ(θ, t, h|h′)| ≤
+C
+t + 1
+∀(θ, t, h|h′) ∈T1
+2π × [0, +∞) × [−1, 1]2.
+Proof. Fix c ∈(0, ¯c], with ¯c provided by Lemma 2.3, and rewrite φ as in Lemma 2.2 with such c. Also denote
+J(θ, t, h|h′)
+:=
+f(θ, t, h|h′) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)f(θ + π −2 arcsin(h′′), t′, h′′|h′)
+(2.1.10)
+−
+1
+2π E(2)(t, h) + c
+2π
+Z ∞
+t
+dt′
+Z 1
+−1
+dh′′E(2)(t′, h′′) −E(2)(t, h′) −E(3)(t, h′)
+
+,
+(2.1.11)
+(we use this notation only in this proof), so that Lemma 2.2 writes better using J as
+φ(θ, t, h|h′) = J(θ, t, h|h′) +
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′′′φ(θ′, t′, h′′′|h′)
+h
+f(θ −θ′, t −t′, h|h′′′) −c
+2π E(2)(t −t′, h′′′)
+i
+.
+(2.1.12)
+We estimate respectively the summands in (2.1.10) by using Lemma B.5 and the summands in (2.1.11) by using
+Lemma B.3: this way we can state that the following quantities concerning J are finite
+∥J∥L∞
+and
+AJ :=
+sup
+(θ,t,h|h′)∈T1
+2π×[0,+∞)×[−1,1]2 |tJ(θ, t, h|h′)|.
+Step 1: let us begin with proving that φ is bounded. Denote
+Bφ
+T := ∥φ∥L∞(T1
+2π×[0,T ]×[−1,1]2),
+13

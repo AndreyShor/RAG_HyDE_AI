@@ -1,0 +1,47 @@
+(a) One–way function in classical public-key encryption
+(b) Quantum key distribution (BB84).
+Figure 1: Illustration on the fundamental physical principles behind the need of quantum cryptography – In Fig. (1a) a
+colour-mixing analogy represents the encoding in public-key cryptography as a purple sphere, symbolizing an encrypted
+message open to all. Yet, only holders of the private key can accurately decrypt it. Alice creates the purple sphere with
+a specific combination of colors (20% red, 80% blue) mimicking a one way function (Eve cannot perfectly decompose the
+purple shade into component colors). Bob, having some information about the precise mix (the private key), can decrypt it.
+In Fig. (1b) quantum cryptography. Colors represents the basis (red {|0⟩, |1⟩}, blue {|+⟩, |−⟩}). Due to no-cloning, Eve’s
+interference changes the color and shape of the ball. If Alice uses the red button and Eve guesses the blue button, the result
+in Bob’s box is purple. Contrary to classical cryptography, in the quantum case, Eve’s intrusion affects the outcome at
+Bob’s station. Bob detecting purple with a red button, signals Eve’s presence. Traditional and QKD protocols are realized
+in the same causal cone at today’s distances, respectively ∼106km, and ∼102km.
+1. Introduction
+1.1. Overview of modern cryptography
+The pioneering application of these revolutionary techniques has led to Quantum Key Distribution
+(QKD), (and beyond [1]), representing a significant leap forward in security compared to traditional
+public-key standards such as Diffie-Hellman [2] and RSA (Rivest-Shamir-Adleman)[3]. Facta lex inventa
+fraus – the principle that every established law is followed by the invention of a way to circumvent it
+– does not hold, in theory, for modern cryptography. With the advent of Quantum Cryptography [4–
+6], the security of communication protocols has shifted from complex, yet vulnerable algorithms, to
+fundamental quantum principles (uncertainty, entanglement, complementarity, no-cloning, non-locality,
+etc), providing a mechanism for inherently secure communication channels. While traditional public-key
+cryptography employs the concept of one-way functions to encrypt/decrypt information, QKD detects the
+potential intrusion of an eavesdropper, Eve, due to the principle of no-cloning or, equivalently, through
+the uncertainty principle. Fig. 1 visually compares RSA 1 with the prepare-and-measure scenario of
+BB84 [7] (emblematic of QKD). The players’ preparation (in Alice’s lab A) and measurements (in Bob’s
+lab B) can be the red or blue buttons. While in the classical case, Eve has no button (she can make
+perfect copies of the encoded messages sent and manipulate the copies however she chooses), in QKD
+Eve must choose and perform a measurement to obtain information. If Alice selects red and Eve selects
+blue, then the effect of Eve’s disturbance appears in Bob’s measurements as a purple ball (a mix of red
+and blue). Not only has the security of many public-key ciphers never been formally proven, but it is also
+well known that many of those currently in use are vulnerable to quantum computers [8]. QKD, on the
+other hand, creates robust encryption methods based on Kerckhoffs’s principle [9], which posits that a
+cryptosystem’s security should be maintained even if everything about it is public knowledge, except the
+secret key. However, theoretical security and practical security are different issues. Several groups have
+experimentally demonstrated vulnerabilities in QKD systems [10–15], raising questions about whether
+the theory or the experiments of QKD need refinement. Claiming that the principles of quantum theory
+are fundamentally flawed would be an exaggeration. The real issues predominantly reside in the practical
+implementation of QKD. While the theoretical basis of QKD is robust, its real-world application involves
+new technology, such as single-photon detectors, and can be compromised by unavoidable imperfections
+in the devices.
+“Theory and experiment are the same, in theory, but experimentally different.”
+(The Yale Literary Magazine, Feb, 1882, B. Brewster)
+1In Fig. 1a, one might think spectroscopy could reveal each purple’s components, but the process resembles a one-way
+cryptographic function: easy to mix, hard to reverse. Like password hashing, the color mixture conceals the original inputs,
+preventing unauthorized decryption.
+3

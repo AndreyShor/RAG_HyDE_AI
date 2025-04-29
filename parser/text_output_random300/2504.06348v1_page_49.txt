@@ -1,0 +1,63 @@
+where we recall that δ is the approximation error for time-evolution. Note that in the second line we assume
+an extensive scaling of volume with particle number such that Ω∼η (e.g., in a slab), and in the last line
+we use |G0| ∝|G| , | ¯G| ∝|G|, |G
+0
+trunc| ≪|G|, |G|, and ηion ≤ηval. Note that when the pseudoions are not
+dynamical quantum objects and are considered to be at fixed positions, we have ηion = 0 and ηval = η, such
+that one recovers the scaling found in Refs. [28, 91].
+Finally, the cost of coherently averaging over initial states and performing amplitude amplification (ig-
+noring the one-time classical cost of developing fingerprints) for information extraction is given by Eq. (142),
+giving the total complexity of our algorithm,
+˜O
+|S|η|G| + (η4/3|G|2/3 + η2/3η2
+val|G|1/3 + ηηvalηion)(|t| + log(1/ϵ))
+√sϵ
+
+.
+(145)
+where we recall that |S| is the size of the initial parameter space (e.g. initial positions, velocities, etc.) over
+which we average, s is the total probability that the target chemical species is formed given initial parameter
+space S, ϵ is the relative error in estimating s, and we set δ ∼O(ϵ) to ensure we measure the s up to the
+desired ϵ.
+While it is valuable to obtain such asymptotic cost expressions, they should be used with care. Some
+subroutines that are omitted as asymptotically subdominant, turn out to dominate for all of the selected
+problem instances. In particular, while the state preparation scaling with the basis size is asymptotically
+dominant when generic state preparation is adopted, we will see that for the case where |S| ∼1 and
+typical problem instances its cost is negligible compared to the second term arising from time-evolution.27
+Another clear illustration is seen in Fig. 7, where we observe that the block-encoding is dominated by PREP
+subroutines of the non-local terms rather than the SWUPs, while asymptotically the cost of PREPs are
+ignored due to polylogarithmic scaling in |G|. Therefore, one requires detailed constant-factor numerical
+resource estimates to understand the real costs of the algorithm.
+Numerical Quantum Resource Estimates for Problem Instances
+We give a detailed account of quantum resource estimates for the dominant time-evolution part of our
+quantum algorithm for various problem instances. Note importantly that the resource estimates we present
+only refer to implementing one round of time-evolution for a given specified time t, and does not include
+the multiplicative factor O(1/(√sϵ)) required for amplitude amplification. We study seven instances of the
+three classes of problems introduced in Sec. 2.4, Ammonia-Boron trifluoride (NH3BF3), direct methane to
+methanol (DMTM) on hexagonal boron nitride with a palladium complex, and water-gas-shift (WGS) on
+Copper(100). Restating Eq. (130) for convenience, the quantum algorithm for implementing time-evolution
+calls the iterate
+|τ|e
+2
++ log
+2c
+δ
+
++ 2
+(146)
+many times, where c ≈1.47762 is a constant (see Sec. 5.2 for details). Note that for a user-specified precision
+δ, the number of calls to the iterate is dominated by the first term, which scales linearly with given time t,
+and the total rescaling factor λ. The latter, an inherent figure of merit for a block-encoding, is hence crucial
+in determining the overall cost and is studied in Fig. 6. It is equally as important to understand how much a
+single implementation of the iterate Wsa itself costs, and so its dominant cost, given by the block-encoding
+Usa, is studied in Fig. 7, with a Toffoli cost breakdown shown in detail. As discussed in Sec. 5.2, the total
+gate cost for time-evolution is the cost of the iterate times the number of calls to the iterate. Then, to good
+approximation, we may simply multiply the cost of Usa times the number of calls to the iterate. These total
+costs are shown in Fig. 2.
+We first discuss our results for the rescaling factors. In Fig. 6, we show the distribution of the rescaling
+factors, λVNL, λVloc, λVel, λVion, λTel, and λTion. The sum of these numbers determines the total rescaling factor
+λ. Several observations are in order. First, the cost of λTion is negligible due to suppression by the pseudoion
+mass which is a factor of ∼104 −105 in the denominator of the kinetic term. Second, the contributions
+27This is not necessarily the case if we are interested in the properties of large ensembles, where |S| is large and the worst case
+state preparation cost is potentially large. In that case, the use of more efficient state preparation routines becomes crucial.
+49

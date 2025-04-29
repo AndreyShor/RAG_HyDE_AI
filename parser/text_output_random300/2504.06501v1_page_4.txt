@@ -1,0 +1,305 @@
+4
+R=1Ω
+(a)
+(b)
+1
+2
+3
+4
+5
+6
+7
+8
+Frequency (GHz)
+0
+0.2
+0.4
+0.6
+0.8
+1
+Magnitude |Γ|
+FWS
+ECM
+-100
+0
+Phase (deg)
+100
+1
+2
+3
+4
+5
+6
+7
+8
+-200
+-100
+0
+100
+200
+Phase (deg)
+0.11 pF
+0.22 pF
+0.33 pF
+0.44 pF
+0.55 pF
+0.66 pF
+FWS
+ECM
+Frequency (GHz)
+1
+3
+5
+7
+0
+0.2
+0.4
+0.6
+0.8
+1
+|Mag|
+1
+3
+5
+7
+1x1 Cell
+θ=0
+C=0.22 pF
+Fig. 3. Spectrum of 1×1 cell for different values of resistance and capacitance
+under normal incidence. (a) Varying series resistance for a fixed Cseries =
+0.22 pF. (b) Varying series capacitance when Rseries = 1 Ω.
+on elevation and azimuth angles. By writing the reflection coeffients
+in this way, we account for the influence of anisotropic properties on
+the overall scattering behavior. The weights a1 to a8 in this linear
+system can be determined given measured or simulated data by using
+various numerical methods such as the least mean square (LMS). In
+this work, we exploit the symmetries in the unit cell (square lattice,
+orthogonal anisotropy axes) and adopt simple intuitive φ-dependent
+expressions for the weights, inspired by uniaxial anisotropic materials
+[21], [22]
+a1 = a8 ≈cos2 φ,
+a2 = a7 ≈sin2 φ,
+a3 = a5 ≈−cos φ sin φ,
+a4 = a6 ≈+ cos φ sin φ.
+(14)
+These trigonometric expressions are not unique but, by only main-
+taining the azimuth φ dependence, they provide an excellent balance
+between simplicity and accuracy.
+III. RESULTS
+A. ECM Validation in Tunable Perfect Absorption
+To demonstrate the validity of the developed ECM-TLM we will
+use it to compute the reflection coefficient spectra in the case of
+complex-valued RC loading. Then, we will use the model to compute
+the series RC values and geometric dimensions required for perfect
+absorption at given frequency, incidence angle, and polarization. The
+ECM-TLM prediction is in all cases compared to FWS spectra, for
+the same parameters, to validate its accuracy and range.
+The 1 × 1 cell’s geometric dimensions are D(1×1) = 6.5mm, s =
+0.7mm, h = 2.2mm and εr = 2.2(1 −j0.0009), wLFE = 0.5mm.
+The 2 × 1 and 2 × 2 cell’s geometric dimensions are D(2×2) =
+6.8mm, s = 0.7mm, h = 2.2mm and εr = 2.2(1 −j0.0009),
+wLFE = 0.5mm. In all of the cases the target operational frequency
+is set to 5.5 GHz. Naturally, all unit cell designs can be scaled-down
+for operation at higher frequencies, i.e., in the microwave X-band
+10 GHz or millimeter wave band 28 GHz.
+We start by showing indicative reflection spectra of the 1×1 cell in
+Fig. 3 when only the series resistance or only the series capacitance
+in the lumped load is changed: the former strongly affects the Q-
+factor and the latter the resonance frequency, respectively. Note the
+excellent agreement between the ECM-TLM and the FWS.
+We then use the ECM-TLM and FWS to compute the series RC
+loads required for perfect absorption (reflection magnitude lower
+than −50 dB), as the oblique incidence angle θ varies in both
+polarization planes, in Fig. 4. We note different trends for TE and
+TM polarizations and the good agreement for angles up to 70◦(45◦)
+for the 1 × 1 (2 × 1) cell.
+Finally, we use the ECM-TLM and FWS to compute the series
+RC loads required for perfect absorption as the frequency is varied
+(a)
+(b)
+5.5 GHz
+5.5 GHz
+Perfect Absorption
+1x1 Cell (D=6.5mm)
+2x1 Cell (D=6.8mm)
+30
+40
+50
+60
+70
+80
+90
+100 110 120 130
+Series Resistance (Ohm)
+0.1
+0.15
+0.2
+0.25
+0.3
+0.35
+0.4
+25
+o
+30o
+35o
+40o
+45
+o
+50o
+55
+o
+60
+o
+65
+o
+70
+o
+30o
+35o
+40o
+45o
+50o
+55o
+60o
+65o
+70o
+25
+o
+30o
+35o
+40
+o
+45o
+50o
+55o
+60o
+65o
+70o
+30
+o
+35o
+40
+o
+45
+o
+50
+o
+55
+o
+60
+o
+65
+o
+70
+o
+TM pol. (FWS)
+TE pol. (FWS)
+TM pol.(ECM)
+TM pol.(ECM)
+10
+20
+30
+40
+50
+60
+70
+0
+1
+2
+3
+4
+5
+Series Capacitance (pF)
+30
+o
+35
+o
+40
+o
+45
+o
+50
+o
+55
+o
+30o
+35o
+40o
+45o
+50o
+55o
+60o
+65o
+70o
+30
+o
+35o
+40o
+45o
+50o
+30
+o
+35o
+40o
+45o
+50
+o
+55o
+60o
+65o
+70o
+TM pol. (FWS)
+TE pol. (FWS)
+TM pol.(ECM)
+TM pol.(ECM)
+Series Resistance (Ohm)
+Perfect Absorption
+Series Capacitance (pF)
+Fig. 4. Optimization of the RC values for perfect absorption under oblique
+incidence for the two polarizations (TE and TM) at f = 5.5 GHz; both
+panels show the optimized series RC values as the elevation angle becomes
+more oblique, which are obtained via full-wave simulations (FWS) and the
+equivalent circuit model (ECM). (a) 1 × 1 and (b) 2 × 1 cell configuration.
+in Fig. 5. We note the good agreement for deviations up to ±10%
+of the central frequency.
+B. ECM validation for Arbitrary Plane of Incidence
+To demonstrate that the developed ECM-TLM can be used to
+compute the co- and cross-polarized reflection spectra under an
+arbitrary plane of incidence (φ), oblique incidence (θ), and different
+loading in the two axes. The spectra for two arbitrarily chosen
+incident plane wave directions (θ, φ) are shown in Fig. 6. The
+comparison between the approximate model (dashed curves) and the
+FWS (solid curves) is agreeable for all four scattering parameters,
+while the numerically optimized LMS (dash-dot curves) using FWS-
+fitted a1→8 weights is also shown. The minor discrepancy Rsp ̸= Rps
+in the model is due to not explicitly enforcing reciprocity in the
+case of arbitrary incidence plane; note that the case of TM polarized
+oblique incidence on a uniaxially anisotropic medium is a known
+‘incomplete’ problem, i.e., one cannot fully decompose the E-field in
+two perpendicular planes.
+C. Polarization Manipulation
+Metasurfaces enable polarization control by tuning resistance and
+capacitance along the two rectangular axes of anisotropy, i.e., ad-
+justing the phase difference and relative magnitude of orthogonally
+polarized components. Using ECMs, we analyze square patches
+optimized at φ = 45◦and normal incidence, where both axes are
+equally illuminated. Two functionalities are studied: linear-to-circular
+conversion and linear-to-orthogonal transformation. In both cases, we
+employ only phase manipulation, i.e., Rx = Ry = 0. The selected
+structure is the 2 × 2 cell configuration for operational frequency of
+5.5 GHz.
+For the transformation from linear to circular polarization in
+reflection, we need to implement a quarter-wave plate, i.e., the phase
+difference between the co- and cross-polarized reflection coefficients
+must be ±90◦and their amplitudes must be equal, resulting in an
+axial ratio (AR) equal to 0 dB. Using our ECM, we computed that
+these conditions are met when Cx ≈2.51 pF and Cy ≈0.45 pF. For
+ideal linear cross-polarization conversion, we need to implement a
+half-wave plate, i.e., the goal is to achieve |Rss| = 0 and |Rps| = 1;
+in practice a magnitude ratio of ±20 dB denotes almost perfect
+conversion. The ECM-computed capacitance values for this condition
+at 5.5 GHz are Cx ≈1, 23 pF and Cy ≈0.13 pF.
+In Fig. 7, we compare the ECM-predicted spectra with the
+FWS-computed ones, using the same capacitance values. For cross-
+polarized reflection, it is evident that at 5.5GHz, |Rss| ≈0.065
+and |Rps| ≈0.99, indicating strong polarization conversion. Further

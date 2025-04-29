@@ -1,0 +1,131 @@
+MobiSys ’25, June 23–27, 2025, Anaheim, California, US
+Jinbo Peng, Junwen Duan, Zheng Lin, Haoxuan Yuan, Yue Gao, and Zhe Chen
+Sequential 
+scanning
+Sub-Nyquist 
+sampling
+SigChord
+Not concurrent
+Need sparsity
+Spectrum sensing
+Concurrent, 
+non-sparse
+Time
+Frequency
+Spectrogram
+Signal recovery
+Protocol identification
+Open header decoding
+Figure 1: The SigChord wide multiband sniffing system. Un-
+like sequential scanning methods [1–4] that capture only
+one signal at a time, or sub-Nyquist methods [5–8] limited
+to sparse spectra, SigChord detects and decodes concurrent,
+non-sparse wide multiband signals at low sampling rates.
+an urgent demand for a tool that provides holistic insights into the
+rapidly evolving and complex wireless environments.
+However, designing such a tool is non-trivial due to the prohibi-
+tively high cost of traditional sampling for wide bandwidths. Ac-
+cording to Nyquist sampling theory, capturing GHz spectra requires
+IQ sampling rates at least equal to the spectrum bandwidth, which
+confines sniffing to narrow and homogeneous signals [17, 18, 37–
+41], or necessitates sacrificing detailed information [42–47]. For
+the democratization of effective sniffing tools, existing studies for
+wideband signal sniffing reduces the sampling overhead through
+two strategies: rapid spectrum sweeping [1–3] and sub-Nyquist
+sampling [5–8, 48], but both have significant limitations. Spectrum
+sweeping employs narrowband radios to scan the spectrum rapidly
+but cannot capture multiple signals simultaneously, restricting its
+ability to analyze concurrent behaviors [22]. Moreover, while it
+expedites data collection by acquiring only limited information for
+each signal, this insufficiency restricts detailed physical-layer anal-
+ysis such as packet header decoding. Sub-Nyquist sampling tech-
+niques, such as Sparse Fourier Transform [6, 49] and Compressed
+Sensing (CS) [48, 50], can recover signals below the Nyquist rate
+by exploiting spectrum sparsity. However, the rapid expansion of
+wireless networks has introduced increasingly non-sparse condi-
+tions, where the occupied bandwidth exceeds the capabilities of
+sub-Nyquist sampling. In non-sparse scenarios, the IQ sampling
+rate falls below twice the Landau rate [5, 51]. Sub-Nyquist sampling
+techniques fail to detect and recover signals below twice the Landau
+rate [5].
+To overcome the aforementioned limitations, we propose Sig-
+Chord, a Transformer-based wireless signal sniffer capable of real-
+time and concurrent sniffing of non-sparse wideband signals, as
+shown in Figure 1. SigChord employs multi-coset sub-Nyquist sam-
+pling at the frontend. At the backend, SigChord first uses a Multi
+Layer Perceptron (MLP) network to embed the IQ samples into
+a latent space. Then, to enable non-sparse signal sniffing, unlike
+state-of-the-art (SOTA) end-to-end and generative model based
+algorithms [52, 53] that involve time-consuming iterations and
+struggle to preserve complex signal structures (e.g., modulation
+and encoding) [54–57], we divide the signal recovery into two
+stages. First, a deep Transformer network predicts the critical in-
+formation for recovery, i.e., the spectrum occupancy. Then, with
+this information, we make signal recovery below twice the Landau
+rate feasible through rule-based least squares estimation. After that,
+SigChord uses Transformer-based protocol identifiers and decoders
+0
+Landau rate
+Blind sub-
+Nyquist rate
+Nyquist 
+rate
+Σ
+𝐵
+𝑓
+(1) (2) (3)
+(4)
+(5)
+2Σ
+(1)
+(2)
+(3)
+(4)
+(5)
+Amplitude
+Bandwidth sum
+Figure 2: Nyquist rate, Landau rate [51] and blind sub-Nyquist
+rate [5] for multiband signals. The Nyquist rate equals to the
+bandwidth of the whole spectrum. The Landau rate equals
+to the sum of the bandwidth of each signal. The blind sub-
+Nyquist rate in [5] is twice the Landau rate.
+for protocol classification and physical layer packet decoding. By
+decoding open headers, SigChord extracts sufficient unencrypted
+data for wireless network measurement.
+• We design a physical layer sniffing system SigChord, capable
+of spectrum sensing, signal recovery, protocol identification,
+and decoding (including terrestrial, OFDM signals such as
+Wi-Fi [10] and non-terrestrial, single-carrier signals such as
+DVB-S2 [9]) with low sampling overhead. SigChord enables
+detailed signal sniffing in wide and non-sparse spectra for
+the first time.
+• We design a deep and rule-based algorithm for signal recov-
+ery that breaks the sub-Nyquist sampling limit, i.e., twice the
+Landau rate. The neural network does not require Nyquist-
+rate original signals as training labels, and the recovery al-
+gorithm generalizes well to entirely unseen signals.
+• The cascaded signal analysis Transformer networks elimi-
+nate the need for complex protocol-specific preamble cor-
+relation and traditional signal processing algorithms. With
+minimal adjustments to the model architecture, SigChord
+seamlessly adapts to a wide range of protocols for decoding
+physical layer headers.
+• We implement SigChord using software-defined radio plat-
+forms. Experiments show that SigChord is both highly ef-
+fective and efficient, enabling accurate and real-time perfor-
+mance in physical layer inspection.
+This paper is organized as follows. We give a brief introduction
+to sub-Nyquist sampling and physical layer protocol headers, and
+reveal our motivation in Section 2. In Section 3, we demonstrate
+the design details of SigChord. We introduce the implementation
+and setup in Section 4, show the experiment results in Section 5.
+Related studies are reviewed in Section 6 and we finally conclude
+this paper in Section 7.
+2
+Motivation and Background
+2.1
+Sub-Nyquist Sampling
+Traditional signal sampling is limited by the Nyquist rate, requir-
+ing a sampling rate at least equal to the full spectrum bandwidth,
+necessitating costly high-speed ADCs. Landau [51] showed that
+when spectrum occupancy is known, the minimum sampling rate

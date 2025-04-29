@@ -1,0 +1,123 @@
+8
+D.
+Axiomatic approach
+Since for a given data set of length n, epsilons with
+history length bigger than n do not contain any informa-
+tion (they are always equal to 0.5) we will, without the
+loss of generality, restrict ourselves to the sequence of the
+functions Ψh for h ≤n. Furthermore, based on Eq. (19),
+it is enough to investigate only functions ψh that have a
+finite number of arguments.
+Now, since we have established mathematical language
+to work with, we can enumerate some necessary and de-
+sirable properties that the functions ψh should satisfy.
+We will state them as a set of axioms. We use name
+axioms for this set of definitions describing desired prop-
+erties to highlight their importance and state that they
+can be used to set the theoretical background for the es-
+timation of the single epsilon. Furthermore, we give four
+separate axioms even though they can be combined into
+a smaller set. We see this distinction as useful since one
+can try to drop one or more of the axioms in the future to
+investigate a broader set of epsilon-combining functions.
+Axiom 1 (Zero condition). Each function ψh has to be
+equal to zero if the input is the sequence of only zeros
+ψh(0, 0, . . . , 0) = 0.
+(20)
+The first axiom makes sure that if all estimated ϵh
+are zeros then the value of the final epsilon is also zero.
+That condition is self-explanatory, although it should be
+considered together with the previous comments that we
+take into account only a finite number of ϵh up to some
+hmax. Additionally, one could strengthen this axiom by
+also imposing its reverse.
+Axiom 2 (Monotonicity). Each function ψh has to be
+monotone for all of the variables, namely
+∀
+ϵ0,...,ϵh
+∀
+i∈{0,...,h}
+∀
+ϵ′
+i>ϵi
+ψh(ϵ0, . . . , ϵi−1, ϵ′
+i, ϵi+1, . . . , ϵh)
+≥ψh(ϵ0, . . . , ϵi−1, ϵi, ϵi+1, . . . , ϵh).
+(21)
+The second axiom ensures that an increase in any ϵh
+cannot lead to a decrease in the final epsilon. The func-
+tions that do not fulfill this axiom are clearly against
+the spirit of the single-epsilon estimation. Also, here, it
+is possible to strengthen this axiom by imposing strong
+inequality.
+Axiom 3 (Position influentiality).
+∀
+ϵ0,...,ϵh
+∀
+i,j∈{0,...,h}:i<j ∀
+δ>0
+ψh(ϵ0, . . . , ϵi−1, ϵi −δ, ϵi+1, . . . , ϵj−1, ϵj + δ, ϵj+1, . . . , ϵh)
+≤ψh(ϵ0, . . . , ϵi−1, ϵi, ϵi+1, . . . , ϵj−1, ϵj, ϵj+1, . . . , ϵh)
+where the quantifier for all δ means here for all δ that
+makes sense, i.e., such that added to or subtracted from
+specific epsilon do not extend [0, 1/2] interval: ϵi −δ ≥
+0 and ϵj + δ ≤
+1
+2 The idea behind this axiom is that
+epsilon with a longer history should have less influence
+than previous ones (in the spirit of Remark IV.1).
+The third axiom, despite its complicated formulation,
+has a simple meaning. We demand here that ϵh with a
+smaller h index should not have a smaller impact on the
+final epsilon than the one with a bigger h index. It is
+in the spirit of the already mentioned decrease in estima-
+tion accuracy when history length increases. Once again,
+one could make this axiom stronger by imposing strong
+inequality.
+Axiom 4 (Normalization). Let a ∈(0, 1/2] then
+ψh(a, a, . . . , a) = a.
+(22)
+Finally, the fourth axiom reflects the fact that if all
+of the appropriate ϵh are equal, then the final epsilon
+should have the same value. Although, as we stated in
+the introduction, this axiom could be easily combined
+with the first one, we want to separate them for a few
+reasons. Firstly, contrary to the first axiom, an attempt
+to strengthen the fourth axiom by imposing its inverse is
+not reasonable. Secondly, the fourth axiom is the least
+important one and is the first candidate to omit if one
+would like to allow a broader set of epsilon-combining
+functions. Nevertheless, we strongly recommend not to
+omit it at all but rather replace it with some weaker con-
+dition so that, for example, the range of the final epsilon
+is still correct. Third, in the case of weighted averages,
+we will focus on in the next section, we will see that each
+of the four axioms imposes different conditions on these
+averages.
+E.
+Weighted averages
+Let us note here that the proposed axioms still allow
+for a variety of functions of epsilons to form the final
+epsilon value. We focus here on particular examples of
+such functions and compare their performance. Namely,
+we will consider weighted averages of the form
+ϵ =
+hmax
+X
+h=0
+whϵh
+(23)
+where wh are some weights.
+In the Observation below, we provide sufficient condi-
+tions for the weights to fulfill Axioms 1–4 given in Section
+IV D.
+Observation 1. The weighted average from Eq. (23)
+with positive, non-increasing, and normalized weights ful-
+fills Axioms 1–4.
+Proof. Axiom 1 is true for all weighted averages based
+on the definition given in Eq. (23). Additionally, if all
+of the weights are nonzero, the conversion of Axiom 1
+is also true, nevertheless, we do not necessarily impose
+that. Furthermore, to fulfill the other axioms, we need
+to impose some additional conditions on the weights. If
+all weights are positive, then the Axiom 2 is fulfilled. If

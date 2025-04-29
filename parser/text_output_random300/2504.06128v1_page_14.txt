@@ -1,0 +1,150 @@
+14
+F. CARAVENNA, R. SUN, AND N. ZYGOURAS
+which follows by the polynomial chaos expansion (2.11) noting that terms indexed by distinct
+space-time sequences pn1, x1q, . . . , pnk, xkq are orthogonal in L2.
+The second moment E
+“
+Zβ
+Lp0q2‰
+is uniformly bounded in L ď N and N P N when β “ βN
+lies in the sub-critical regime (1.26) [CSZ19a]. The next result considers the quasi-critical
+regime (1.22) and identifies how the second moment diverges as a function of ϑN in (1.22).
+The proof, based on renewal theory, is deferred to Appendix A.
+Proposition 2.3 (Second moment of point-to-plane partition function). For β “ βN
+in the quasi-critical regime (1.22), uniformly over L P 2N with L ď N, we have
+E
+“
+ZβN
+L p0q2‰
+“ UβN pLq „
+1
+1 ´ RL
+RN p1 ´ |ϑN|
+log N q
+as N Ñ 8 .
+(2.14)
+2.5. Variance of averaged partition functions. We finally compute the
+variance of the averaged partition function Zβ
+Lpφq “ ř
+xPZ2
+even φpxq Zβ
+Lpxq. We write
+Var
+“
+Zβ
+Lpφq
+‰
+“
+ÿ
+x,x1PZ2
+even
+φpxq φpx1q Cov
+“
+Zβ
+Lpxq, Zβ
+Lpx1q
+‰
+.
+Plugging in the polynomial chaos expansion (2.11) and renaming n1 “ m and nk “ n, by
+(2.12), we can write
+Cov
+“
+Zβ
+Lpxq, Zβ
+Lpx1q
+‰
+“
+ÿ
+0ămďnďL
+ÿ
+x1PZ2
+qmpx1 ´ xq qmpx1 ´ x1q σ2
+β Uβpn ´ mq
+“
+ÿ
+0ămďL
+q2mpx ´ x1q σ2
+β UβpL ´ mq
+“
+ÿ
+0ămďL
+q2mpx ´ x1q σ2
+β E
+“
+Zβ
+L´mp0q2‰
+,
+where we applied (2.13). In summary, introducing the shorthand
+q2mpφ, φq :“
+ÿ
+x,x1PZ2
+even
+φpxq φpx1q q2mpx ´ x1q ,
+we have thus obtained the key formula
+Var
+“
+Zβ
+Lpφq
+‰
+“
+ÿ
+0ămďL
+q2mpφ, φq σ2
+β E
+“
+Zβ
+L´mp0q2‰
+.
+(2.15)
+Since L ÞÑ E
+“
+Zβ
+Lp0q2‰
+“ UβpLq is increasing, recalling the definition (2.6) of RLpφ, φq, we
+obtain the bounds
+Rt 1
+2 Lupφ, φq σ2
+β E
+“
+Zβ
+t 1
+2 Lup0q2‰
+ď Var
+“
+Zβ
+Lpφq
+‰
+ď RLpφ, φq σ2
+β E
+“
+Zβ
+Lp0q2‰
+.
+(2.16)
+Remark 2.4. We can also rewrite (2.15) more explicitly as
+Var
+“
+Zβ
+Lpφq
+‰
+“
+ÿ
+kě1
+pσ2
+βqk
+ÿ
+0ăn1ă¨¨¨ănkďL
+q2n1pφ, φq
+k
+ź
+i“2
+q2pni´ni´1qp0q .
+(2.17)
+We now compute the asymptotic behavior of Var
+“
+Zβ
+Lpφq
+‰
+for β “ βN in the quasi-critical
+regime (1.22), allowing for general system size L “ LN and initial condition φ “ φN (this
+will be essential for the proof of our results).

@@ -1,0 +1,73 @@
+40
+Tools and methodology
+Target.
+Yadism supports computations with nuclei with mass number A and Z protons as
+targets in the scattering process. By acting on the coefficients associated to up and down partons
+Yadism implements the isospin symmetry of the form:
+
+
+
+c′
+u
+c′
+d
+
+
+= 1
+A
+
+
+
+Z
+A −Z
+A −Z
+Z
+
+
+
+
+
+
+cu
+cd
+
+
+
+(2.5)
+where c′
+i and ci are the effective and the proton coefficient associated with the parton i. This
+rotation is particularly useful in the context of proton PDF fitting where it can be used to relate
+neutron, deuteron, and heavier nuclear structure functions to the proton ones. In this way,
+isospin is used as a first approximation of nuclear correction by just swapping up and down
+contribution for the amount specified by the target nuclei. In particular for:
+• proton targets (A = 1, Z = 1): up and down are kept as they are.
+• neutron targets (A = 1, Z = 0): up and down components are fully swapped, such that
+the up coefficient function is matched to the down PDF and conversely.
+• isoscalar targets, i.e.
+deuteron (A = 2, Z = 1): the effective coefficient functions
+are mixed such that c′
+u is half the original cu and half the original cd.
+Yadism is completely general with respect to the nuclear target allowing a user to provide values
+for A and Z as input to the computation. Alternatively, for a number of targets, the name itself
+can also be provided as input. The readily available targets are: iron (A = 49.618, Z = 23.403),
+used to describe NuTeV data; lead (A = 208, Z = 82), used to describe CHORUS data; neon and
+marble (CaCO3) with both A = 20, Z = 10, used to describe respectively the BEBCWA59 [136]
+and CHARM [137] data.
+Cross-sections.
+Yadism supports the computation of both structure functions and (reduced)
+cross-sections. In particular, we implement the structure functions:
+F2, FL, xF3, g4, gL, 2xg1 ,
+(2.6)
+where the normalization is chosen such that at LO, all the structure functions are proportional
+to different PDF combinations of the form xf(x). Generally, we can write the (reduced)
+cross-sections for a DIS process in terms of the structure functions as
+σ(x, Q2, y) = N
+
+F2(x, Q2) −dLFL(x, Q2) + d3xF3(x, Q2)
+
+,
+(2.7)
+where N, dL, and d3 may depend on the experimental setup or the scattered lepton. The
+different reduced cross-sections implemented in Yadism, and their definitions in terms of N,
+dL, and d3 can be found in the online documentation. 4 The implemented definitions can be
+4https://yadism.readthedocs.io/en/latest/theory/intro.html#cross-sections

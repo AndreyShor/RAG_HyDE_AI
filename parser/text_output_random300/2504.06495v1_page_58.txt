@@ -1,0 +1,57 @@
+C
+Proof of the conditional median results in Section 6
+Proof of Equation (29).
+We consider the continuous-time process in (18), assuming that
+it has reached its steady state distribution in Theorem 4 by time τ = 0. It is well known (see,
+e.g., Karlin and Taylor (1981), Chapter 15) that for this process, the survival probability up
+to time τ for large τ is asymptotically proportional to the distance from the boundary, with
+a coeﬃcient that depends on both σ and µ. Let fX(x) denote the stationary distribution of
+the process, as established in Theorem 4:
+fX(x) = 2µ
+σ2 exp
+
+−2µ(x −log(ǫ))
+σ2
+
+,
+x ≥log(ǫ).
+The survival probability from initial value x for large τ is:
+pτ(x) ∼2(x −log(ǫ))
+σ
+√
+2πτ
+exp
+
+−µ2τ
+2σ2
+
+,
+as τ →∞.
+Here, ∼means that the ratio of the left-hand side to the right-hand side converges to 1 as
+τ →∞; that is, the expression gives the leading-order asymptotic behavior of the survival
+probability for large τ. Using Bayes’ rule, the survival-conditioned density of X0 is:
+fX0|Xτ̸=−∞(x) =
+fX(x) · pτ(x)
+R ∞
+log(ǫ) fX(y) · pτ(y) dy
+∼2µ
+σ2 exp
+
+−2µ(x −log(ǫ))
+σ2
+
+· 2(x −log(ǫ))
+σ
+√
+2πτ
+· 1
+Zτ
+where Zτ is the normalization constant. After simpliﬁcation and collecting terms:
+fX0|Xτ ̸=−∞(x) ∼Cτ · (x −log(ǫ)) exp
+
+−2µ(x −log(ǫ))
+σ2
+
+This corresponds to a shifted Gamma distribution with shape parameter 2, rate parameter
+2µ/σ2, and shift log(ǫ). Speciﬁcally, it is a Gamma(2, 2µ/σ2) distribution shifted by log(ǫ).
+57

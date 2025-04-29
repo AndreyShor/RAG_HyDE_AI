@@ -1,0 +1,80 @@
+the input features. In Fig. 5a, the time series of a tank
+feature (T2) is overlaid with latent node 1, revealing a strong
+correlation. The negative sign of the correlation arises from
+the tanh activation function’s symmetry and random weight
+initialization but still encodes the temporal dynamics. During
+the attack phase (T2 overflow), this relationship breaks down,
+and the tank feature exhibits variability far beyond normal
+operational ranges, highlighting the anomaly.
+In Fig. 5b, a flow value at a junction (J298) is compared to
+its corresponding latent node. While the correlation remains
+strong, the latent representation incorporates contributions
+from other features, reflecting the system’s interconnected
+nature. As with T2, the attack phase disrupts this correlation,
+underscoring the latent representation’s sensitivity to anoma-
+lies.
+Finally, Fig. 5c shows latent node 6, a statistical node
+capturing non-deterministic features like pump activations.
+The alignment validate our hypothesis that statistical nodes
+encode abrupt, discrete behaviors.
+These results suggest that the model starts to distinguish
+and meaningfully represent both deterministic and statistical
+features, indicating a potential step towards more interpretable
+latent representations for anomaly detection in complex sys-
+tems.
+B. Detection Performance
+To assess the overall performance impact of our training
+approach, Tab. III compares the classification performance
+metrics against state-of-the-art references. Our model achieves
+a performance of 0.9555, closely matching the AE-based
+benchmark of 0.9587 [23]. The leading approach in the
+BATADAL challenge [27] performs slightly better but relies
+on intricate physical modeling of the water distribution pro-
+cess. While effective, this method requires substantial domain
+expertise, making it less practical for real-world applications.
+In a previous study [21], it was shown that an edge-based
+approach could improve the mean time to detect anomalies.
+With the introduction of the proposed algorithm, we fur-
+ther enhance this detection time by an additional 3%. This
+outperform the current benchmarks [21], [28]. Notably, our
+model reduces the number of fully connected layers from three
+to two, which not only simplifies the architecture but also
+decreases computational requirements. This reduction aligns
+with our broader goal of developing greener intrusion detection
+systems and contribute to the overarching societal goals of
+sustainability. Despite its simplicity and minimal reliance on
+domain-specific knowledge, our model slightly outperforms
+the challenge leader, offering a more generalizable and ac-
+cessible solution for anomaly detection in water distribution
+systems.
+VI. DISCUSSION & OUTLOOK
+In this paper, we introduced hTDC-AE, a novel approach
+to structuring the latent space of an autoencoder for anomaly
+detection by incorporating a temporal differential consistency
+(TDC) loss term during training. Our approach demonstrates
+Fig. 5. Comparison of three different input features and their highly correlated
+latent nodes across 500 examples from the BATADAL test dataset, including
+one attack phase (highlighted in grey). The input features were scaled, and
+the offset was adjusted to facilitate the comparison.
+stable and reproducible results across multiple training runs.
+By organizing the latent space into deterministic and statistical
+nodes, the model shows the potential to bridge the gap between
+data-driven methods and the integration of physics-inspired
+principles. Deterministic nodes show indications of encoding
+features related to physical processes, while statistical nodes
+capture non-deterministic, abrupt changes such as pump acti-
+vations. Furthermore, our results suggest that a TDC-based
+approach enhances the model’s ability to detect not only
+gradual deviations but also more sudden anomalies, such as
+tank overflows or abrupt pressure drops, making it applicable
+to a wider range of real-world scenarios.
+Dynamic nodes exhibit strong temporal correlations, ap-
+proximating the causal link between system states and their
+derivatives. We attribute the enhanced detection capability
+to the breakdown of this approximated causal link, which
+translates into a faster increase in reconstruction error, enabling
+quicker and more reliable anomaly identification.
+Our approach matches the classification performance of
+state-of-the-art models while significantly improving the time
+to detect anomalies, a key performance metric in real-world
+cyber-physical systems, by 3%. This improvement is critical

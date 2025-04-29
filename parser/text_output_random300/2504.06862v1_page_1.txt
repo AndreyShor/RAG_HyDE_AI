@@ -1,0 +1,100 @@
+Dynamics of critical cascades in interdependent networks
+Dolev Dilmoney,1 Bnaya Gross,2, 3 Shlomo Havlin,1 and Nadav M. Shnerb1
+1Department of Physics, Bar-Ilan University, Ramat-Gan IL52900, Israel.
+2Network Science Institute, Northeastern University, Boston, MA 02115
+3Department of Physics, Northeastern University, Boston, MA 02115
+The collapse of interdependent networks, as well as similar avalanche phenomena, is driven by
+cascading failures. At the critical point, the cascade begins as a critical branching process, where
+each failing node (element) triggers, on average, the failure of one other node. As nodes continue to
+fail, the network becomes increasingly fragile and the branching factor grows. If the failure process
+does not reach extinction during its critical phase, the network undergoes an abrupt collapse. Here,
+we implement the analogy between this dynamic and birth-death processes to derive new analytical
+results and significantly optimize numerical calculations. Using this approach, we analyze three key
+aspects of the dynamics: the probability of collapse, the duration of avalanches, and the length of
+the cascading plateau phase preceding a collapse. This analysis quantifies how system size and the
+intensity of the initial triggering event influence these characteristics.
+Network science has experienced remarkable develop-
+ment in recent decades, finding extensive applications
+across various fields, including the study of neural, social,
+metabolic, and communication networks [1, 2]. Within
+this domain, the topic of interdependent networks has
+gained significant attention in recent years [3]. This con-
+cept has also found a wide range of applications, from
+critical infrastructures and cybersecurity to the dynamics
+of ecological communities [4–6]. Recent work has effec-
+tively demonstrated the key features of interdependent
+network collapse using a clear and physically straightfor-
+ward experimental model, which involves thermally con-
+nected layers of amorphous superconductors [7].
+Interdependent networks are characterized by two
+types of links: connectivity links within each network
+and dependency links between nodes of different net-
+works. Each link type serves a distinct role. Connectiv-
+ity links are understood as in standard percolation prob-
+lems, so nodes that disconnect from the giant connected
+component (GCC) of their network are considered non-
+functional. Dependency links, on the other hand, propa-
+gate damage between the networks: if a node in one net-
+work fails, its dependent node in the other network will
+fail as well, even if it is still connected to the GCC of its
+own network (see Figure 1(a)). When nodes are removed
+from one network, the interplay between these two types
+of links can trigger a cascading failure. Therefore, while
+a single network experiences a continuous second-order
+transition in which the GCC collapses when 1−pc of the
+nodes are removed, interdependent networks undergo an
+abrupt, first order transition, at ˜p > pc (Figure 1(b)) [3].
+These cascading failures are a general characteristic of
+avalanche phenomena [8], which have also been exten-
+sively studied in recent decades in various contexts such
+as magnetic materials, plastic distortions, crack propa-
+gation, earthquakes, neural networks and so on [9–13].
+In all these systems, a failure or change in the state of a
+single component, such as a spin, imposes ’pressure’ on
+adjacent components, and a critical point in parameter
+space separates localized avalanches from widespread col-
+lapses. Such cascades are mathematically analogous to
+stochastic birth-death processes, where individuals can
+produce a random number of offspring [11, 14–17].
+In this Letter, we aim to examine the analogy between
+demographic processes and the dynamics of cascading
+failures. In particular, we will focus on the critical point,
+where the corresponding dynamics begins as a neutral
+birth-death process [18–21] but, over time, diverges from
+neutrality.
+We will implement this analogy to derive
+novel qualitative and quantitative insights.
+Specifically, our study addresses three crucial ques-
+tions: First, how does the likelihood of a collapse change
+in relation to the scale of the initial attack? Second, the
+impact of this initial attack size on the ’plateau time’ —
+the period of slow dynamics preceding the collapse (Fig-
+ure 1(c)). Third, we examine how the initial attack size
+impacts the mean ’avalanche time,’ the duration until an
+avalanche ends, whether or not it causes collapse.
+From Nodes to Generations:– As depicted in Figure
+1(a), damage cascades reciprocally between dependent
+networks, with each failed node having a chance P1→m of
+triggering the failure of m nodes within the same network
+in the subsequent iteration.
+With a sufficiently large
+number of nodes, N, and a small number of failed nodes,
+failures are uncorrelated. Consequently, at the t-th step,
+if the count of failed nodes is nt, then nt+1—the tally
+of failed nodes in the subsequent step in the same net-
+work—is the sum of nt independent variables, following a
+probability distribution function of P1→m (see Appendix
+A). Hence, this branching process mirrors a demographic
+dynamics, where nodes represent individuals and iter-
+ations are equivalent to generations (Figure 1(d)). At
+p = ˜p, the process is neutral, meaning that during the
+plateau (Figure 1(c)), the mean number of offspring per
+node is one.
+The “population dynamics” of nt is influenced by demo-
+graphic stochasticity, namely the binomial noise associ-
+ated with the randomness of the birth-death process, and
+to deterministic forces that yield exponential growth (if
+m > 1) or exponential decay (if m < 1). At ˜p the growth
+rate vanishes, and the dynamics is neutral: the number
+of failures in each generation, n, is (on average) time-
+arXiv:2504.06862v1  [physics.soc-ph]  9 Apr 2025

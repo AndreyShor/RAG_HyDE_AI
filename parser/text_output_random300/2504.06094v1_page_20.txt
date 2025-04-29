@@ -1,0 +1,62 @@
+Proof. We already observed that B1 becomes a subobject of Zreg, hence it is enough to show
+that the underlying C-objects agree. By the above decomposition of A, we have
+B1 ≃
+M
+Y1,Y2∈Irr(C)
+Y1 ⊠A−Y2 ⊗Ω(Y ∗
+1 ) ⊠A+ Ω(Y ∗
+2 ).
+To get the underlying object (B1)−in C, we take the A+-central vectors, or equivalently, re-
+place Ω(Y ∗
+1 ) ⊠A+ Ω(Y ∗
+2 ) by HomC+(A+, Ω(Y ∗
+1 ) ⊠A+ Ω(Y ∗
+2 )). Since the Yi are irreducible, this is
+nontrivial (then 1-dimensional) if and only if Y2 is isomorphic to Y ∗
+1 . We thus have
+(B1)−≃
+M
+Y ∈Irr(C)
+Y ⊠A−Y ∗,
+which proves the claim.
+□
+Theorem 5.17. Suppose A• satisﬁes charge-transporter generation 4.10, algebraic Haag dual-
+ity 2.2, and that it is locally aligned 5.6. Then DHR(A•) is equivalent to Z(C).
+Proof. We need to check that the category Z′ is spanned by the monoidal unit of Z(C). By
+Proposition 5.13, it is enough to check this at the level of underlying objects. Since we know
+that B1 is isomorphic to Zreg, the claim follows from Proposition 3.1.
+□
+5.4. Converse for local alignment. In this subsection we assume strict Haag duality, and
+consider the unitary tensor equivalence Ω: C−→Cmop from above.
+Theorem 5.18. Let A• be a rational abstract spin chain 3.3 satisfying algebraic Haag dual-
+ity 2.2. Suppose that the canonical functor DHR(A•) →Z(C−) is an equivalence. Then the
+basic construction B1 is a DHR-bimodule.
+Proof. Given an A-A-correspondence H with right A-valued inner product ⟨ξ, η⟩A, we restrict
+H to a B0-B0-bimodule and equip it with the right B0-valued inner product
+⟨ξ | η⟩B0 = E (⟨ξ | η⟩A) .
+Since B0
+E⊂A is a ﬁnite index inclusion, H is complete for this B0-valued inner product,
+and it becomes a B0-B0 correspondence. This construction provides a functor π: Corr(A) →
+Corr(B0). Let E be the full sub-category of dualizable A-A-correspondences H such that π(H)
+is in the image of C−⊠C+ inside Corr(B0). Then since the 2-category of C*-algebras and corre-
+spondences is Q-system complete [CHPJP22], E is equivalent to the category of A-A bimodules
+internal to C−⊠C+. Then B1 = A ⊠B0 A ∈E.
+On the other hand, since A is a realization of the symmetric enveloping Q-system in C−⊠
+Cmop
+−
+≃C−⊠C+, then E ≃Z(C−). But since π(DHR(A•)) ⊂C−⊠C+, DHR(A•) ⊆E. Finally
+since DHR(A•) ≃Z(C−), then DHR(A•) = E so B1 ∈DHR(A•).
+□
+6. Abstract spin chains from C∗-2-categories
+In this section, we will construct abstract spin chains in the spirit of the fusion spin chains
+studied in [Jon24]. However, the categories we consider will be more general, and the resulting
+net of algebras will not be translation invariant. We will illustrate the various conditions we
+have introduced in the previous section for this class of abstract spin chains.
+Let us ﬁx a ﬁnite rigid C∗-2-category C = (Cij)i,j∈S such that the monoidal categories Ci := Cii
+at the diagonal are C∗-fusion categories.
+Then Cij is an invertible Ci-Cj-bimodule category.
+Given X ∈Cij, we denote the normalized categorical trace on End(X) by trX. Note that we
+have
+trX⊗Y = trX ◦(id ⊗trY ) = trY ◦(trX ⊗id)
+on End(X ⊗Y ) for Y ∈Cjk.
+20

@@ -1,0 +1,107 @@
+32
+where we reverse the summation order and make the variable substitution l = i∗−i in the first
+equality. Taking the common factor (−1)i∗= −1 outside the summation, we see that the sum equals
+zero. Therefore, we obtain
+s
+X
+i=0
+(−1)idj+idr−i =
+s
+X
+i=i∗+1
+(−1)idj+idr−i =
+s−i∗−1
+X
+i=0
+(−1)i+i∗+1dj+i∗+1+idr−i∗−1−i.
+Let s′ = s −i∗−1, j′ = j + i∗+ 1, and r′ = r −i∗−1. Then, we have r′ + j′ + 1 as an even number,
+with j′ > r′, and thus the above summation is non-negative as in the first case.
+In summary, the summation (A14) is non-negative if j + s ≥r. Specifically, it equals zero when j + s = r.
+We now rewrite the summation (A13) as
+i
+X
+i=i
+(−1)idj+idr−i = (−1)i
+i−i
+X
+i=0
+(−1)idj+i+idr−i−i.
+(A15)
+Defining s′ = i−i, j′ = j +i, and r′ = r −i, we observe r′ +j′ +1 is an even number. Moreover, we compute
+j′ + s′ −r′ = j + min{k −j, r} + max{0, r −k} −r = min{k, r + j} −min{k, r} ≥0.
+Thus, the sign of (A13) is determined by
+(−1)i = (−1)max{0,r−k}.
+Notably, if r ≥k, we have j′ + s′ = r′, leading to the summation equaling zero. Consequently, we conclude
+that the summation (A13) is always non-negative.
+Hence, we have established that (−1)j+1xj ≥0. Moreover, from (A11), we obtain
+0 ≤(−1)j+1xj = 1 −(−1)j+1 xk+1
+√
+k + 1 + (−1)j+1βj+1λxj+1.
+Using the fact that |xk+1| <
+√
+k + 1, we conclude that
+1 −(−1)j+1 xk+1
+√
+k + 1 ≥0,
+while
+(−1)j+1βj+1λxj+1 ≤0.
+Thus, we obtain
+|xj| = (−1)j+1xj ≤1 −(−1)j+1 xk+1
+√
+k + 1 ≤2.
+This implies the final bound
+∥e1T W −1∥2 ≤
+√
+5k + 1.
+Lemma A.8. Suppose A ∈Cn×n satisfies ∥A∥2 ≤1, and let Wk(A) be defined as in Eq. (20). Then, we
+have
+ e
+ET Wk(A)−1
+2 ≤
+√e +
+2e
+3 −e
+ √
+2k + 1.
+Here, e
+E = e1 ⊗In, where e1 is define in Eq. (21).
+Proof. As in Lemma A.7, we consider solving the linear system
+
+
+In
+√k+1
+In
+In
+√k+1 βkA In
+...
+...
+...
+In
+√k+1
+β2A
+In
+In
+√k+1
+β1A
+
+
+
+
+Xk+1
+Xk
+...
+X2
+X1
+
+
+=
+
+
+(−In)k+1
+(−In)k
+...
+(−In)2
+−In
+
+
+.

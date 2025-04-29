@@ -1,0 +1,110 @@
+Beyond 50 variables, VQE failed to return non-
+zero Ps. However, at the 72 variable problem size,
+convergence criteria were met and sub-optimal so-
+lutions were found (distribution and convergence
+plots are shown in Figures 13, 14, 15, 16 and 17,
+as well as the performance metrics for the differ-
+ent problem sizes in Table 4). At large problem
+sizes, more qubits are used and errors accumu-
+late causing poor convergence to a state which
+has no overlap with the ground state. The ex-
+tended runtime relative to the allocated device
+access time also meant that multiple experimen-
+tal runs were not possible. Moreover, proper hy-
+perparameter optimisation was not possible ei-
+ther due to this runtime, meaning that hyperpa-
+rameters either need to be imported from smaller
+problem instances ran on the state vector solver
+or extrapolated from them.
+Due to these complications, we do not report a
+practical scaling analysis for this problem solved
+with VQE on quantum hardware. However, we
+can make some theoretical comments on the ex-
+pected scaling behaviour of VQE and VQAs in
+general. Notably, VQE is a heuristic algorithm,
+and to our knowledge, there is a lack of evi-
+dence of provable speed-ups for VQAs on optimi-
+sation problems. Ref. [72] does claim a provable
+speed-up for QAOA applied to a specific sym-
+metric optimisation problem and Ref. [14] also
+provides empirical evidence that QAOA offers a
+modest polynomial speedup over leading classi-
+cal solvers for random k-SAT, which is a satisfac-
+tion problem rather than an optimisation prob-
+lem (the authors of Ref. [73] believe their results
+on the equivalence of QAOA to quantum anneal-
+ing apply for this k-SAT instance, which implies
+that quantum annealing should at least match
+QAOA’s performance in terms of AR). Another
+quantum algorithm which has provable speed-ups
+for optimisation problems is decoded quantum in-
+terferometry (DQI) [15], which contains the quan-
+tum Fourier transform as a sub-routine and is
+therefore a fault tolerant algorithm.
+Regarding near-term algorithms, it remains to
+either find structured instances of problems where
+provable speed-ups exist or to experimentally find
+possible modest speed-ups. It is also worth not-
+ing that using a one-qubit-per-variable encoding
+makes it impossible to scale to large problems
+with current hardware due to qubit count limita-
+tions. Efforts in multi-variable to qubit encoding
+are investigated in Refs. [74,75]. In Appendix D.1
+we discuss barren plateaus and classical simula-
+bility in the context of our ansatz.
+6
+Conclusions and Outlook
+We
+introduced
+a
+systematic
+approach
+for
+analysing the performance of various algorithms
+for solving QUBO problems. This approach is ap-
+plicable to other use-cases and problems in gen-
+eral. We applied it to the configurational analy-
+sis problem, determining the energy of defective
+graphene structures.
+We defined performance
+metrics, considering both solution quality and
+runtime, that are hardware and algorithm agnos-
+tic.
+We then explored the scaling of the prob-
+lem to larger sizes. Our results show that simu-
+lated annealing was the best-performing method
+in both solution quality and runtime, with a poly-
+nomial scaling in time. It can also access large
+problems of hundreds of variables, in contrast to
+the quantum methods. We also find evidence of
+polynomial scaling with quantum annealing, solv-
+ing QUBOs up to 72 variables. Of the two embed-
+ding techniques that we tested, clique embedding
+was found to be optimal in terms of runtime.
+We encountered challenges in scaling the VQE
+methods for several reasons, namely lack of con-
+vergence within the maximum number of itera-
+tions, convergence to states with no overlap with
+the ground state and limited experimental repe-
+titions. However, we were able to solve a dense
+QUBO with 50 variables and obtain sub-optimal
+solutions for a 72 variable dense QUBO. A myr-
+iad of techniques that could further improve the
+performance of gate-based VQAs exist, such as:
+• Warm start [76], where instead of choosing
+random initial parameters for the ansatz, the
+starting guess comes from a classical solution
+to a relaxed (continuous variable) version of
+the problem.
+• Concentration of parameters (also referred to
+as transfer of parameters) [77], where, sim-
+ilar to warm start, the starting parameters
+of the VQA are chosen based off information
+from other, easier to solve, problems.
+• Ascending-CVaR
+objective
+functions
+can
+also be used, where the CVaR α parameter
+is increased in each iteration [78].
+15

@@ -1,0 +1,119 @@
+5
+Generalized assignment.
+While the red-rec algo-
+rithm requires an assignment subroutine where the num-
+ber of tokens mapped to a vertex in S ∪T is one, our
+proposed bird algorithm requires a more general subrou-
+tine that assumes that the vertices in S can have multiple
+tokens mapped to them (see Sec. III E for details). To
+support the bird algorithm, we implement both the sim-
+ple variant as well as the generalized variant with mul-
+tiple tokens mapped to a source vertex. This mapping
+is only a virtual one to solve particular cases in 2D. We
+never require multiple atoms to physically occupy the
+same trap in practice.
+Generating moves.
+The 1D reconfiguration sub-
+routine in the previous red-rec algorithm generates a se-
+quential list of batched or unbatched moves; however,
+the batching routine requires a partial ordering of moves
+to properly group them into batches. We construct this
+partial ordering as follows. After constructing a distance-
+minimizing matching M (via assignment), we generate a
+path system P containing the unique shortest path be-
+tween the vertices of every matched pair. Next, we label
+every path in P as either right-oriented (the source vertex
+appears to the left of the target vertex in G), left-oriented
+(the target vertex appears to the left of the source ver-
+tex in G), or isolated (the source vertex is equal to the
+target vertex).
+Given that M is distance minimizing,
+we know that no vertex of G can appear in both a left-
+oriented and a right-oriented path.
+Moreover, no two
+paths in P can share the same source or target vertex.
+As our final goal is to produce a partially-ordered list
+of elementary displacement operations, we need to ad-
+dress one remaining issue. This issue occurs when a left-
+oriented (or right-oriented) path P ′ is fully contained
+within another left-oriented (or right-oriented) path P,
+meaning all vertices of P ′ are internal vertices of P (this
+occurs since the assignment algorithm prefers to match
+vertices that are closer to each other). We resolve this
+potential collision issue by modifying the path system;
+for any such problematic pair of paths, P and P ′, we
+swap their target vertices. We then fix the path system
+in linear time by traversing the graph G once from left
+to right (fixing right-oriented paths) and once from right
+to left (fixing left-oriented paths). Finally, we compute
+a partially-ordered list of elementary displacement oper-
+ations such that the in-order execution of the operations
+in the list solves the reconfiguration problem without any
+obstructions. The existence of such a list is guaranteed by
+the fact that our path system minimizes total distance,
+left-oriented paths and right-oriented paths do not share
+any vertices, and no path is fully contained inside an-
+other. One such partially-ordered list of elementary dis-
+placement operations can be obtained by solving right-
+oriented paths from the rightmost path to the leftmost
+path, i.e., sort the right-oriented paths by the index of
+their target vertices in ascending order and add to the list
+the elementary displacements of each path in descending
+order. The same procedure is repeated for left-oriented
+paths to complete the list.
+Any isolated path not ad-
+dressed in either of the two previous steps is ignored, as
+the token does not need to move.
+Complexity.
+Our exact 1D algorithm is efficient at
+solving atom reconfiguration problems on path graphs,
+also known as chain graphs. Even though one can com-
+pute a matching/assignment in time O(n), the exact 1D
+algorithm has a running time of O(n2) in the worst case,
+for an n-path graph G. Asymptotically, the quadratic
+bound on running time is the best possible as there ex-
+ist instances that require O(n2) elementary displacement
+operations to be solved, e.g., a path on 2n vertices where
+S is the first n vertices and T is the last n vertices. This
+quadratic bound is rarely reached in practice since most
+instances of the atom reconfiguration problem on paths
+require a linear number of displacement operations; as
+atoms are initially distributed with equal probability over
+the path. This expectation is confirmed by experimental
+results showing that our implementation of the exact 1D
+algorithm scales linearly with input size.
+When source and target vertices can hold more than
+one token, the assignment problem on paths is solvable in
+time quadratic in |S|+|T|, as noted by Karp and Li [26].
+However, if we restrict target vertices to single tokens
+and only allow multiple tokens per source vertex, we can
+again solve the assignment problem in linear, O(n), time.
+Hence, the generalized exact 1D algorithm also runs in
+O(n2)-time in the worst case for an n-path graph G.
+B.
+The exact 1D algorithm (parallel
+implementation)
+In this section, we describe how we parallelize the exact
+1D algorithm, so that it can be used as a subroutine
+in our parallel implementation of the red-rec algorithm
+described in Section III D. To do so, we aim to divide the
+problem into many independent sub-problems and solve
+the sub-problems in parallel. To find independent sub-
+problems, we look for pairs of vertices that have the same
+number of source and target vertices between them.
+Formally, in a single dimension, our graph G is a path
+on n vertices, {v0, . . . , vn−1}. We let G[i, j] denote the
+subgraph of G consisting of the path from vertex vi (in-
+clusive) to vertex vj (inclusive). We let ∆i denote the
+difference between the number of sources and the number
+of targets in G[0, i], i.e., ∆i = |V (G[0, i])∩S|−|V (G[0, i−
+1])∩T|. We say vertex vi is at level ∆i. We observe that
+if there exists a source vertex vi ∈S and a target vertex
+vj ∈T such that vi and vj are non-adjacent and ∆i = ∆j,
+then the number of source vertices in G[i+1, j−1] is equal
+to the number of target vertices (we assume without loss
+of generality that i < j as we can otherwise consider the
+graph G[j +1, i−1]). In other words, the sub-problem in
+between vi and vj, i.e., G[i+1, j −1], is “self-contained”.
+To find these independent sub-problems, we start by
+computing ∆i for each index i, 0 ≤i ≤n −1. Recall

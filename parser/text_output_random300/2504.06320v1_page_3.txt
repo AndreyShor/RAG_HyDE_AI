@@ -1,0 +1,119 @@
+TABLE I
+FEATURES OF THE BATADAL DATASET CORRESPONDING TO DIFFERENT
+EDGE AREAS BASED ON [21].
+Edge Areas
+Dataset Features
+Edge 1
+L T1, F PU1, S PU1, F PU2, S PU2, F PU3,
+S PU3, P J280, P J269
+Edge 2
+L T2, L T3, L T4, F PU4, S PU4, F PU5, S PU5,
+P J300, P J256, F PU6, S PU6, F PU7, S PU7,
+P J289, P J415, P J14, P J422, F V2, S V2
+Edge 3
+L T5,
+L T6,
+L T7,
+F PU8,
+S PU8,
+F PU9,
+S PU9,
+P J302,
+P J306,
+F PU10,
+S PU10,
+F PU11, S PU11, P J307, P J317
+B. Performance Metrics
+The most common performance metrics for anomaly detec-
+tion applications are used, including confusion matrix and its
+derivatives – F1 score, true positive rate (TPR), true negative
+rate (TNR) and positive predictive value (PPV ).
+In order to compare results to literature, some additional
+performance metrics proposed specifically for the BATADAL
+challenge [22] were adopted. They read:
+• Performance score ST T D, reflecting time-to-detection or
+the time between a start of an attack and the actual
+detection of that attack, where ST T D = 1 being the ideal
+case in which all attacks are immediately detected, and
+ST T D = 0 being the case in which none of the attacks
+is detected.
+• Classification performance score SCLF , defined as the
+mean value of TPR and TNR.
+• Ranking score S, defined as the mean value of the
+previous two scores – ST T D and SCLF .
+C. Data Preprocessing
+To ensure our models handle the input data effectively, it is
+necessary to normalize the features. While standard normal-
+ization—subtracting the mean and dividing by the standard
+deviation—is a typical choice, we employ robust scaling due to
+its proven effectiveness in previous studies [23], [21]. Robust
+scaling relies on the median and the interquartile range (IQR),
+which is the difference between the 75th and 25th percentiles,
+as expressed in the equation below:
+scaled value = original value −median
+p75 −p25
+(1)
+This approach is more resistant to outliers, preventing extreme
+values from having an undue influence on the feature distri-
+bution. As a result, the scaled features tend to have a standard
+deviation near 1, without being distorted by the presence of
+outliers.
+IV. TEMPORAL DIFFERENTIAL CONSISTENCY INFORMED
+AUTOENCODERS IN WATER DISTRIBUTION NETWORKS
+The motivation behind this approach is to embed physics-
+inspired consistency principles into the autoencoder while
+extending its applicability beyond purely data-driven represen-
+tations. Traditional autoencoders primarily encode statistical
+features, which may not fully capture the structured tempo-
+ral dependencies present in many physical and engineered
+systems. Inspired by [1] and the Lagrangian formalism [24],
+we explore whether integrating these ideas into a hybrid
+autoencoder can enhance its ability to model a broader range
+of complex dynamical systems. Specifically, we hypothesize
+that by structuring the latent space with both dynamic and
+static nodes, the model can more effectively capture abrupt
+anomalies, such as tank overflows, in addition to gradual
+degradation processes like continuous wear [1]. Furthermore,
+we investigate whether this structured latent space allows the
+model to represent system evolution without explicitly using
+physical laws. Our goal is to assess whether this approach
+can be applied to diverse systems, such as water distribution
+networks, where both deterministic and stochastic effects
+influence system behavior.
+As a start we need a way to approximate the first time
+derivative. The central difference derivative is a numerical
+method used to approximate the derivative of a function. It is
+based on evaluating the slope between two points symmetri-
+cally spaced around the point of interest. The central difference
+formula for the first derivative of a function f(t) is:
+˙f(t) ≈f(t + ∆t) −f(t −∆t)
+2∆t
+where ∆t is a small step size. This method is preferred over
+forward or backward difference methods because it provides a
+higher order of accuracy—specifically, it has an error term that
+is O(∆t2), which means the approximation error decreases
+quadratically as ∆t decreases [25], [1].
+A. Structuring the Latent Space
+To implement this approach, we split the latent space into
+deterministic and statistical nodes. The deterministic nodes are
+organized in pairs, with each pair consisting of a static rep-
+resentation and its corresponding first-time derivative, thereby
+capturing both the static and dynamic aspects of the system.
+In the case of the BATADAL data, this structure is static
+features may include elements like tank stand levels, which
+remain relatively constant over time, while dynamic features
+could encompass variables such as flow rates, which vary
+and reflect the system’s evolving state. Additionally, there
+are features like valve states, which can be either open or
+closed. Such behaviors are difficult to model using physical
+deterministic laws due to challenges like exploding gradients.
+B. Integrating Central Difference Calculation into the Latent
+Space
+In alignment with [1], we compute the latent representations
+at the previous (t−1) and next (t+1) time steps and apply the
+central difference method to approximate the time derivative
+of the static nodes. This derivative is then used to ensure that
+the dynamic (derivative) nodes in the latent space approximate
+the central difference derivative of the respective static nodes,
+considering the time interval ∆t. This approach is shown
+schematically in Fig. 1. It is important to note that, since each

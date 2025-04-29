@@ -1,0 +1,83 @@
+OPAL: Encoding Causal Understanding of Physical Systems for
+Robot Learning
+Daniel Tcheurekdjian1, Joshua Klasmeier1, Tom Cooney1, Christopher McCann1, and Tyler
+Fenstermaker1
+1Apiary Systems
+1{daniel.tcheurekdjian, joshua.klasmeier, tom.cooney, christopher.mccann,
+tyler.fenstermaker}@apiarysystems.tech
+April 10, 2025
+Abstract
+We present OPAL (Operant Physical Agent with Lan-
+guage), a novel vision-language-action architecture that
+introduces topological constraints to flow matching for
+robotic control. To do so, we further introduce topolog-
+ical attention. Our approach models action sequences as
+topologically-structured representations with non-trivial
+constraints.
+Experimental results across 10 complex
+manipulation tasks demonstrate OPAL’s superior perfor-
+mance compared to previous approaches, including Octo,
+OpenVLA, and π0.
+Our architecture achieves significant improvements in
+zero-shot performance without requiring task-specific
+fine-tuning, while reducing inference computational re-
+quirements by 42%. The theoretical guarantees provided
+by our topological approach result in more coherent long-
+horizon action sequences. Our results highlight the poten-
+tial of constraining the search space of learning problems
+in robotics by deriving from fundamental physical laws,
+and the possibility of using topological attention to em-
+bed causal understanding into transformer architectures.
+1
+Introduction
+Robotic control in unstructured environments remains
+a significant challenge in artificial intelligence.
+While
+large-corpus transformer-based models have demon-
+strated significant improvements in generalizing to out-
+of-context tasks [26, 21], these same models fail to gen-
+eralize to corporeal systems.
+It appears that corporeal
+comprehension will not be derived "for free" from models
+trained on language and vision data, and instead must be
+developed by training on embodied systems.
+Building generalist models (those which capture pre-
+trained represenations that generalize across tasks) in the
+linguistic and visual domains has proven to be more
+achievable than in robotics for several reasons:
+First, the data requirements for training embodied agents
+differ fundamentally from those of language and vision
+models. While linguistic and visual systems benefit from
+vast, static datasets that can be collected and processed at
+scale [7, 22], robotic learning demands interactive, phys-
+ical data collection—a process that is inherently time-
+consuming, expensive, and difficult to parallelize [18].
+This creates a significant bottleneck in developing the
+data-hungry architectures that have driven success in other
+domains.
+Second, robotics introduces complex physical constraints
+that are absent in purely representational domains.
+A
+robotic system must contend with physical limitations,
+environmental variability, sensor noise, and actuation un-
+certainty—all while operating under real-time constraints.
+These embodied challenges introduce failure modes that
+do not exist in disembodied AI systems, where mistakes
+have no immediate physical consequences.
+Third, the evaluation criteria for robotic systems are mul-
+tifaceted and often task-specific, making it difficult to de-
+velop general-purpose metrics comparable to those used
+in language and vision benchmarks [9]. Success in robotic
+manipulation, for instance, may involve evaluating grasp
+stability, motion efficiency, and task completion—metrics
+that vary dramatically across different environments and
+objectives.
+Recent advances in vision-language models have enabled
+more flexible multi-modal understanding, but generating
+coherent action sequences for physical tasks remains diffi-
+cult. Previous approaches including Octo [27] and Open-
+VLA [15] have made progress in this domain.
+Most recently, π0 [2], has been introduced as a proto-
+type generalist architecture π0 struggles with maintaining
+1
+arXiv:2504.06538v1  [cs.RO]  9 Apr 2025

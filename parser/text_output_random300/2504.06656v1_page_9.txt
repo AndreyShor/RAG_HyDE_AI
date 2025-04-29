@@ -1,0 +1,95 @@
+MVA Classiﬁer
+AUC (with cut)
+AUC (without cut)
+MLP
+0.724
+0.647
+BDT
+0.718
+0.640
+LikelihoodD
+0.680
+0.635
+Likelihood
+0.590
+0.582
+TABLE I: MVA Classiﬁer Area Under (AUC) the Curve with cuts and without cuts values.
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Signal efficiency
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Background rejection
+MVA Method:
+MLP
+BDT
+LikelihoodD
+Likelihood
+Background rejection versus Signal efficiency
+(a)
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Signal efficiency
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Background rejection
+MVA Method:
+MLP
+BDT
+LikelihoodD
+Likelihood
+Background rejection versus Signal efficiency
+(b)
+FIG. 5: Signal eﬃciency and background rejection without applying cuts (a) and with applying
+cuts (b), respectively.
+where nh is the count of hidden layer nodes and nvar is the number of input variables. It is
+necessary to identify the collection of weights that minimizes the error function and is obtained by
+replacing a random set of weights ⃗ωρ by the small amount −∇⃗ωE.
+⃗ωρ+1 = ⃗ωρ −η∇⃗ωE
+(9)
+If the user-set learning rate (LearningRate) option, where η > 0, determines how quickly the
+weights are altered. The weights of the subsequent techniques are used to refresh the output layer
+using Eq (8equation.4.8), the weights of the following methods are used for refreshing the output
+layer:
+∆ω(2)i,1 = −η ∂Ea
+∂ω(2)
+i,1
+= −η1
+2
+∂[(yANN,a −ˆya)2]
+∂ω(2)
+i,1
+(10)
+9

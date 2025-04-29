@@ -1,0 +1,105 @@
+prompted with a domain PDDL and example problem-
+PDDL pairs as context. Similarly, ProgPrompt [41] lever-
+ages a programmatic LLM prompt structure to generate an
+entire executable plan program directly, functional across
+situated environments, robot capabilities, and tasks. Au-
+toTAMP [6] uses Signal Temporal Logic (STL), derived
+from state observation and language instructions, as the in-
+termediary representation and performs autoregressive re-
+prompting to correct syntactic and semantic errors. To en-
+able geometrically and kinematically feasible plans, recent
+works have explored the use of intermediate goals instead
+of actions [48] and the generation of discrete and continu-
+ous language-parameterized constraints [24]. The ability of
+LLMs to perform task planning remains under debate, with
+both positive [40] and discouraging [43] results. Grounding
+the output of LLMs within the spatial and semantic struc-
+ture of a scene graph [34] could potentially address the
+limitations of these approaches in their ability to integrate
+context-specific spatial information and actionable scene el-
+ements, which are essential for robust and contextually rel-
+evant task execution.
+3. Problem Formulation
+The core insight of ASHiTA is that when only given the
+visual observations of a 3D scene and high-level tasks, the
+proper breakdown of the tasks into subtasks depends on the
+available tools and objects in the scene representation, while
+at the same time, a scene representation capable of support-
+ing the task execution depends on the task hierarchy.
+Hierarchical Task Analysis. Hierarchical Task Analy-
+sis (HTA) is widely used in fields such as User Experience
+Design and Human-Computer Interaction [8, 32]. It is used
+to break down complex tasks into a task hierarchy com-
+posed of atomic subtasks to aid the understanding of how
+tasks are performed. In the context of this work, our goal
+is to perform HTA of a task that is grounded in the physi-
+cal scene in order to understand how high-level tasks can be
+carried out with observed objects in a 3D environment.
+Task-Driven Scene Graph. We construct a Task-Driven
+Scene Graph as a scene representation to ground the task hi-
+erarchy given by HTA. Each node in the scene graph corre-
+sponds to a task, a subtask, or an item involved in carrying
+out a subtask (Fig. 1). These nodes are organized hierar-
+chically such that each task involves multiple subtasks, and
+each subtask involves interactions with certain items.
+4. ASHiTA
+This section describes ASHiTA, our approach for coupled
+HTA and task-driven 3D scene graph construction. The ar-
+chitecture is summarized in Fig. 2. ASHiTA consists of
+three main components: (i) construction of the primitives
+layer from visual input (Sec. 4.1), (ii) scene hierarchy up-
+date (Sec. 4.2), where we construct and update the scene
+graph based on the task hierarchy for a given high-level
+task, and (iii) task update (Sec. 4.3), where the task hier-
+archy is updated based on the generated scene graph. Given
+a set of high-level tasks, ASHiTA starts with an initial task
+hierarchy and iteratively performs scene hierarchy update
+and task update to refine the task hierarchy and the scene
+graph in an alternating fashion.
+4.1. Primitives Layer Construction
+The primitives layer is the bottom layer of ASHiTA’s task-
+driven scene graph. It consists of a set of 3D bounding
+boxes with associated visual features.
+To construct the
+primitives layer from RGB-D inputs, a frontend performs
+primitive detection and association, and a backend jointly
+optimizes the estimated camera poses and primitive posi-
+tions, ensuring spatial and temporal consistency of the prim-
+itives. The camera poses are queried from RTABMap [25].
+The frontend relies on EfficientViT [29], a class-agnostic
+segmentation model, to detect class-agnostic 2D segments
+from the input RGB camera images and MobileCLIP [44],
+a visual-language encoder, to generate feature embeddings
+for each segment, thus forming a set of 2D primitives de-
+tected in the input frame. Note that the resolution of each
+primitive depends on the segmentation model, which means
+that a primitive can contain any object or object part. Each
+primitive is then projected to 3D and transformed to the
+world frame using the depth image and the estimated cam-
+era pose, forming the 3D primitives. To associate the latest
+3D primitives with previously seen primitives, we first sam-
+ple candidates from within a 1m radius, then formulate the
+problem of associating the latest primitives I = {i0, ..., iN}
+to the candidate primitives J = {j0, ..., jM} as an assign-
+ment problem using an N × M score matrix, where each
+entry contains the score s(i, j) for matching primitive i with
+j. The score is defined as the weighted sum of visual simi-
+larity and semantic similarity between primitives i and j
+s(i, j) = ωtextϕtext(i, j) + ωvisual
+X
+bbox
+kmatch(i, j) (1)
+The visual similarity term is the sum of the match
+scores [26] of matched keypoints kmatch [7] within the de-
+tection bounding box of primitives i and j, and the semantic
+similarity term is the cosine similarity ϕtext of the feature
+embeddings of primitives i and j. We compute the opti-
+mal solution to this assignment problem with the Hungarian
+matching algorithm [23], by maximizing the total cumula-
+tive sum of scores for matching primitive i with primitive j.
+After association, we optimize the camera poses and primi-
+tive positions using GTSAM [9].
+4.2. Scene Hierarchy Update
+To construct the scene hierarchy from the primitives layer,
+we use and extend a well-known tool from information the-
+3

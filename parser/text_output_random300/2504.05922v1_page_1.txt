@@ -1,0 +1,106 @@
+Thawed Gaussian Ehrenfest dynamics at conical intersections: When can a
+single mean-field trajectory capture internal conversion?
+Alan Scheideggera) and Jiˇr´ı J. L. Van´ıˇcekb)
+Laboratory of Theoretical Physical Chemistry, Institut des Sciences et Ing´enierie Chimiques,
+Ecole Polytechnique F´ed´erale de Lausanne (EPFL), CH-1015, Lausanne, Switzerland
+(Dated: April 9, 2025)
+The thawed Gaussian Ehrenfest dynamics is a single-trajectory method that partially includes both nuclear
+quantum and electronically nonadiabatic effects by combining the thawed Gaussian wavepacket dynamics
+with Ehrenfest dynamics. First, we demonstrate the improvement over the parent methods in a multidi-
+mensional system consisting of vertically displaced harmonic potentials with constant diabatic couplings, for
+which the thawed Gaussian Ehrenfest dynamics is exact. Then, we show that single-trajectory mean-field
+methods completely fail to capture electronic population transfer in the vicinity of conical intersections be-
+tween potential energy surfaces associated with electronic states of different symmetry (i.e., belonging to
+different irreducible representations of the molecular point group). The underlying cause of this limitation
+suggests that the thawed Gaussian Ehrenfest dynamics can be useful for studying nonadiabatic dynamics
+close to conical intersections of electronic states of the same symmetry, which have been understudied owing
+to the difficulty in locating them. Using a model of this type of intersection, we compare the thawed Gaussian
+Ehrenfest dynamics with exact quantum dynamics and find that the approximate mean-field approach yields
+a molecular wavefunction that remains qualitatively similar to the exact one even after crossing and recrossing
+the conical intersection.
+I.
+INTRODUCTION
+The
+Born-Oppenheimer
+approximation
+simplifies
+molecular
+dynamics
+calculations
+by
+separating
+the
+treatment of nuclei and electrons, under the assumption
+that electrons adjust promptly to nuclear movements
+and remain in the same quantum eigenstate as nuclei
+evolve. Within this framework, the nuclear wavefunction
+generally evolves on a single potential energy surface,
+but the approximation can be generalized to an initial
+superposition of electronic states, with each nuclear
+wavepacket evolving on its respective potential energy
+surface.
+However, the Born-Oppenheimer approxima-
+tion is inadequate for describing nonadiabatic dynamics,
+where
+interactions
+between
+electronic
+and
+nuclear
+motions become non-negligible.
+Many methods have been developed to perform nona-
+diabatic dynamics while mitigating the exponential scal-
+ing of the exact grid-based quantum solution1. Some of
+these, such as the multi-configurational time-dependent
+Hartree2,3 and variational multi-configurational Gaus-
+sian methods4, multi-configurational Ehrenfest dynam-
+ics5 and full multiple spawning6, remain exact in the limit
+of an infinite number of basis functions. More approx-
+imate mixed quantum-classical dynamics methods offer
+an efficient alternative by describing nuclear motion clas-
+sically while treating electrons quantum-mechanically. In
+practice, some nuclear quantum effects can be recov-
+ered by propagating a swarm of trajectories and ob-
+taining nuclear expectation values by an ensemble av-
+erage. Mixed quantum-classical methods, including the
+a)Electronic mail: alan.scheidegger@epfl.ch
+b)Electronic mail: jiri.vanicek@epfl.ch
+multitrajectory Ehrenfest dynamics7,8, trajectory surface
+hopping9, mapping approaches such as the Meyer–Miller
+model10–12 and spin-mapping methods13–15, and the
+coupled-trajectory mixed quantum-classical algorithm16
+have been successfully applied to many molecular sys-
+tems.
+In particular, they generally provide accurate
+short-time dynamics across conical intersections17.
+Nevertheless, all of these methods still suffer from
+an important computational overhead, as they require
+the propagation of multiple trajectories.
+In this con-
+text, Ehrenfest dynamics in its single-trajectory formu-
+lation stands out as the most efficient, but also most
+approximate, mixed quantum-classical method. Single-
+trajectory Ehrenfest dynamics is limited by the overesti-
+mation of electronic coherence, as all electronic states
+share the same classical trajectory of the nuclei, and
+by the inability to account for nuclear quantum effects.
+In contrast, the single-trajectory semiclassical Gaussian
+wavepacket dynamics methods neglect nonadiabatic ef-
+fects, but improve on classical dynamics by partially in-
+corporating nuclear quantum effects through the nonzero
+width of the many-dimensional Gaussian representing the
+nuclear wavefunction18,19. These methods offer various
+levels of accuracy and computational cost. The simplest
+among them is the single-trajectory frozen Gaussian ap-
+proximation, which associates a Gaussian wavepacket of
+a fixed width to the classical trajectory. Conversely, the
+variational thawed Gaussian approximation provides the
+optimal solution for a Gaussian wavepacket ansatz and,
+surprisingly, can qualitatively describe quantum tunnel-
+ing20.
+The thawed Gaussian Ehrenfest dynamics (TGED)
+family of methods21
+can be seen as a generaliza-
+tion of Ehrenfest dynamics and semiclassical Gaussian
+wavepacket dynamics, or alternatively, as an applica-
+arXiv:2504.05922v1  [physics.chem-ph]  8 Apr 2025

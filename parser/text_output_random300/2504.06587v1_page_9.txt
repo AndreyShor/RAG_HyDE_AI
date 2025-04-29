@@ -1,0 +1,171 @@
+SigChord: Sniffing Wide Non-sparse Multiband Signals for Terrestrial and Non-terrestrial Wireless Networks
+MobiSys ’25, June 23–27, 2025, Anaheim, California, US
+0.4
+0.6
+0.8
+1
+1.2
+r
+0
+0.5
+1
+1.5
+2
+MSE
+Landau rate
+Twice the Landau rate
+SigChord
+DTMP
+DCS
+Reference MSE
+(a) Over-the-air signals
+0.4
+0.6
+0.8
+1
+r
+0
+0.5
+1
+1.5
+2
+MSE
+Landau rate
+SigChord
+DTMP
+DCS
+Reference MSE
+(b) Random signals
+Figure 13: Recovery performance on signals from unseen
+environments at different sampling rates. The signals have
+SNR of 10dB.
+0.00
+0.01
+0.02
+0.03
+0.04
+0.05
+Time ( s)
+1
+0
+1
+Real part
+Recovered signals in time domain
+DTMP
+DCS
+Original
+SigChord
+0
+1
+Freq (GHz)
+0.00
+0.05
+Amplitude
+0
+1
+Freq (GHz)
+0.00
+0.05
+Amplitude
+0
+1
+Freq (GHz)
+0.00
+0.05
+Amplitude
+0
+1
+Freq (GHz)
+0.00
+0.05
+Amplitude
+Figure 14: Examples of noise-free random Gaussian signal
+recovery in time and frequency domains by SigChord, DTMP
+and DCS at 𝑟= 0.67.
+and retains a notable gap from the reference even at 𝑟> 1. While
+DCS performs adequately on random Gaussian signals, it strug-
+gles with over-the-air signals. For noise-free random Gaussian
+signals shown in Figure 14, DCS fails in faithful spectrum recovery,
+and only SigChord achieves perfect recovery due to its rule-based
+Transformer design, as shown in Figure 14. At 𝑟≈0.5, SigChord ’s
+performance declines due to the loss of the full column rank of 𝐴𝑆
+in Algorithm 1, consistent with the Landau rate. The drop occurs
+earlier for over-the-air signals since they do not fully occupy each
+sub-band, causing the full-rank transition (𝑃= |𝑆|) to occur at an 𝑟
+slightly above 0.5.
+During the inference phase, we set the batch size to 1,024. For
+𝑃= 8, the spectrum sensing module processes one batch in 17.0 ±
+0.33ms, corresponding to an average per-sample processing time
+of 16.6 𝜇s. Meanwhile, the remaining part of Algorithm 1 takes 29.1
+± 4.0 ms to recover these signals, resulting in an average recovery
+time of 28.42 𝜇s. For random Gaussian signals containing eight
+narrowband signals, the recovery phase requires 31.7 ± 4.0 ms
+per batch, averaging 30.96 𝜇s per sample. The recovery speed is
+significantly faster than DTMP and DCS, which require seconds to
+recover signals. Given that the duration of each multiband signal is
+48 𝜇s, the spectrum sensing and recovery modules in SigChord can
+achieve real-time performance using a consumer-level GPU.
+-10
+-8
+-6
+-4
+-2
+0
+2
+4
+6
+SNR (dB)
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Accuracy
+T-Prime r=0.625
+T-Prime r=0.83
+SigChord r=0.625
+SigChord r=0.83
+Figure 15: The protocol identification accuracy of SigChord
+compared with T-Prime [66] on synthetic dataset at varying
+SNRs.
+5.2
+Protocol Identification
+This section evaluates the protocol identification performance of
+SigChord, comparing it with the Transformer-based SOTA model
+T-Prime [66]. For both SigChord and T-Prime, signals are recovered
+by Algorithm 1 assuming accurate spectrum sensing. T-Prime is
+an encoder-only model designed for signal classification. Unlike
+SigChord, it does not apply a specialized embedding process to
+the input signal, using only a simple reshaping operation instead.
+T-Prime flattens all output tokens from the encoders and feeds
+them into a fully connected layer for classification. We implement
+T-Prime with 3 encoder layers, 𝑑𝑚𝑜𝑑𝑒𝑙= 64, 8 attention heads, and
+a feedforward dimension of 1,024. The sequence length is thus 75,
+same as SigChord with folding factor 𝐹= 32. We train T-Prime on
+the synthetic dataset with a batch size of 128 for 300 epochs.
+First, we compare the classification performance on the synthetic
+dataset under varying SNR conditions, as shown in Figure 15. Here
+and in Section. 5.3, we choose 𝑟= 0.625 and 𝑟= 0.83, representing
+situations with mild recovery errors and near-Nyquist optimal re-
+covery as shown in Figure 13, respectively. Although T-Prime has
+more parameters, SigChord consistently achieves superior perfor-
+mance across all SNR levels. At an extremely low sampling rate
+of 𝑟= 0.625, both models show performance degradation due to
+increased recovery errors as shown in Figure 13a, but SigChord
+demonstrates approximately a 2dB performance gain over T-Prime,
+achieving over 90% accuracy at an SNR of 6dB.
+Figure 16 shows the classification confusion matrices on the syn-
+thetic dataset at an SNR of 10dB. At 𝑟= 0.625, both models effec-
+tively distinguish Wi-Fi headers from DVB-S2. They show slightly
+lower accuracy in differentiating more similar non-HT and HT
+Wi-Fi formats. SigChord outperforms T-Prime by 1.4% for DVB-S2,
+2.1% for non-HT Wi-Fi, 3.1% for HT Wi-Fi, and 2.7% in recognizing
+no-head frames. Both models struggle to distinguish DVB-S2 from
+payloads (no-head) due to its short preamble in the header, which
+provides limited distinctive features. The entire header spans only
+4.5𝜇s, with just 1.3𝜇s for the SOF preamble. In contrast, Wi-Fi head-
+ers (L-STF, L-LTF, HT-STF, HT-LTF) are at least 18 𝜇s long thus
+have higher accuracies. At𝑟= 0.83, both models perform accurately,
+with SigChord exceeding 99.9% accuracy in all categories.

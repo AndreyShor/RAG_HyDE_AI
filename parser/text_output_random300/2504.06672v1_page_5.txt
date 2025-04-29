@@ -1,0 +1,119 @@
+redundant entries. Further details on the implementation
+and post-processing are provided in the Supp. Mat..
+Retrieval Augmented Conditioning (RagCA)
+After de-
+veloping the retrieval mechanism, we explain how to con-
+dition the T2V model using this retrieved information. For
+a visual representation of the process, refer to Fig. 2 (b).
+The first step involves representing the conditioning videos
+within an appropriate embedding space. Consistent with
+our guiding principle, our goal is to condition the main
+network in a way that enhances temporal dynamics, while
+avoiding direct copies of the the conditioning signals. The
+CLIP visual encoder emerges as a strong candidate for this
+purpose, as it effectively encodes high-level semantic with-
+out retaining low-level information [40]. Additionally, it
+offers a practical solution since we can directly utilize the
+embeddings returned by the retrieval mechanism. However,
+since fvis operates on independent frames, we introduce a
+module specifically designed to handle the temporal dimen-
+sion, which we term the transformer time enhancer model.
+In practice, we pack the per-frame CLIP embedding into a
+sequence of tokens:
+¯zi = [CLS; fvis(Zi,0); . . . ; fvis(Zi,T )]
+(5)
+with ¯zi ∈R(T +1)×dim, [. . . ; . . .] represents the concate-
+nation operation and [CLS] is a class token appended at the
+beginning of the sequence [12]. We apply the transformer
+time enhancer independently on each retrieved videos and
+pool the [CLS] token in output. In this way, we obtain the
+final conditioning signal z = τ(¯z), with z ∈Rb×K×dim (see
+Fig. 2 (b)).
+Next, we condition the pre-trained T2V model retain-
+ing the generation capabilities learned during the pertain-
+ing stage.
+Following previous works, we initialize new
+multi-head cross attention layers and inject them after ev-
+ery temporal attention layer of the base model. In practice,
+let xtemp ∈R(b·h·w)×T ×ch be the 3DUNet activation after a
+temporal layer, we compute a residual:
+xtemp = xtemp + MCA(xtemp, z)
+(6)
+where
+MCA(·)
+represent
+the
+multi-head
+cross-
+attention operation with queries computed from xtemp
+and keys/values from the z signals respectively.
+RAG Noise Initialization (RagInit)
+As explored in pre-
+vious works [25, 55, 56], noise initialization plays an im-
+portant role in diffusion models and can greatly affect the
+quality of the generated result. We further leverage the re-
+trieved videos and propose to initialize the noise averaging
+the latents. We diffuse the result following Eq. (1) and set-
+ting t = T:
+zRAG
+T
+= √αT · 1
+K
+K
+X
+i=1
+E(Zi) +
+√
+1 −αT · ϵ
+(7)
+This strategy is very fast, as it doesn’t require inversion,
+and comes at the additional cost of running the VAE encoder
+on the retrieved videos. Nevertheless, it has the advantage
+of providing a good initialization for the noise which is
+likely to be aligned with the conditioning videos.
+Implementation Details
+We build our framework on Ze-
+roscope [47], a latent T2V model based on an inflated
+3DUNet architecture with factorized spatial and temporal
+layers.
+We develop the retrieval system using the Web-
+Vid10M dataset [1]; our choice is motivated by the large
+scale and the general-purpose nature of its videos, which
+cover a wide range of scenarios. For the retrieval mech-
+anism, we implement the CLIP ViT-B-32 [40] as our fea-
+ture extractor to handle both fvis and ftxt. This model, pre-
+trained with a contrastive loss on images and captions from
+a large-scale dataset, outputs a 512-dimensional embedding
+representing the respective input. Although the choice of
+the encoder for the retrieval mechanism could, in principle,
+be independent of the conditioning process, we find it easier
+and more convenient to use the same encoder.
+Next, we leverage the FAISS library [13] to create an in-
+dex for efficient retrieval. The WebVid10M dataset contains
+duplicate or highly similar videos; to prevent the model
+from processing redundant information, given a query q,
+we apply a deduplication strategy based on the cosine sim-
+ilarity between samples. We empirically set the dedupli-
+cation threshold at δdedup = 0.965 and maintain this value
+across all experiments. Additionally, to ensure that the re-
+trieved videos are relevant to the query, we set a minimum
+cosine similarity threshold of δmin = 0.6 and remove sam-
+ples from the retrieval set Z that do not meet this criterion.
+This filtering is particularly applied when retrieving a large
+number of samples (i.e. K = 20, K = 50). In such cases,
+padding is used to match the required length.
+From an architectural point of view, we introduce the
+transformer temporal enhancer module to improve the tem-
+poral representation of the video.
+It is composed of 6
+layers of transformer blocks with a hidden dimension of
+dim = 512. A learnable token [CLS] is added at the be-
+ginning of the sequence and pooled in output to represent
+the video. Lastly, we add multi-head cross-attention layers
+to the base T2V model ZeroScope. We introduce a point-
+wise convolution initialized with zero-weights, to act as the
+identity when the model is initialized.
+The added modules are finetuned (while keeping the rest
+of the network frozen) for 200K iterations on the Web-
+Vid10M dataset, at resolution 448 × 256 and 12 frames.
+5

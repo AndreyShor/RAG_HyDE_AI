@@ -1,0 +1,75 @@
+Case 1: G(2)
+0
+does not touch one of the qubits 1, 2, or 3.
+WLOG, 3 /∈S. By Lemma 5.3
+(with r := 2 and U1 := G(0.5)
+{1,2}), we can choose an initial pure parity state |ψ⟩∈H{1,2} (of pure
+parity 0, say) of qubits 1 and 2 that turns G(1)
+1
+oﬀ, regardless of the initial state of the other qubits.
+But then, qubit 3 has no connection to the target at all, and so the ﬁnal state of the target is
+independent of the third input bit, regardless of the rest of the input bits and the initial state of
+the ancilla. Particularly, for any b ∈{0, 1}, let the initial state of the circuit be
+|0⟩⊗|ψ⟩⊗|b⟩⊗|0⟩⊗(n−3) ⊗|α⟩.
+(We set the third input qubit to |b⟩and input qubits 4, . . . , if any, to |0⟩.) Then the ﬁnal state of
+the circuit is of the form |0⟩⊗|τb⟩, where |τb⟩is the ﬁnal state of the non-target qubits. |τb⟩may
+depend on b, but the ﬁnal state of the target does not, and thus C does not weakly compute ⊗n.
+Case 2: G(2)
+0
+touches all of the qubits 1, 2, and 3 (i.e., not Case 1).
+That is, {1, 2, 3} ⊆S.
+By Lemma 5.3 (with r := 3,
+U1 := G(0.5)
+{1,2,3}, and U2 := G(1.5)
+{1,2,3}U1), for each b ∈{0, 1} we can
+choose an initial state |ψb⟩∈H{1,2,3} with pure parity b on qubits 1, 2, and 3 that turns G(1)
+1
+and G(2)
+0
+both oﬀ, regardless of the initial state of the other qubits. Thus given the initial state
+|0⟩⊗|ψb⟩⊗|0⟩⊗(n−3) ⊗|α⟩, the target has no connection to the ﬁrst three input qubits, so its ﬁnal
+value cannot depend on b. Since the initial state |ψb⟩⊗|0⟩⊗(n−3) of the input qubits has pure
+parity b, C does not weakly compute ⊗n.
+Lemma 6.8. G(1)
+0
+can only touch at most one input qubit.
+Proof. Suppose some G(1)
+0
+= CT Z, where T includes the target and at least two other input qubits.
+WLOG, {0, 1, 2} ⊆T. By Lemma 5.3 (with r := 2 and U1 := G(0.5)
+{1,2}), for each b ∈{0, 1}, we can
+choose an initial state |ψb⟩of pure parity b on qubits 1 and 2 that turns G(1)
+0
+oﬀ, regardless of the
+initial state of the other qubits. For each b, set the initial state of the other input qubits to all |0⟩,
+resulting in an initial state
+ψ′
+b
+
+:= |0⟩⊗|ψb⟩⊗|0⟩⊗(n−2) ⊗|α⟩
+where |α⟩is the initial state of the ancilla qubits.
+Since |ψ′
+b⟩turns G(1)
+0
+oﬀ, the target is not
+connected to any other qubits before layer 2. Applying G(1.5)G(1)G(0.5) to |ψ′
+b⟩thus results in a
+state
+|ϕb⟩:= |ϕ⟩{0} ⊗|ϕb⟩{1,2} ⊗|ϕ⟩B
+right before layer 2, where B := {0, 1, 2}, |ϕ⟩{0} := G(1.5)
+0
+G(0.5)
+0
+|0⟩independent of b, |ϕb⟩{1,2} :=
+G(1.5)
+{1,2}G(0.5)
+{1,2} |ψb⟩, and |ϕ⟩B is the state of the qubits in B and is independent of b. Figure 2 shows
+in a typical case how the circuit C simpliﬁes before layer 2 on initial state |ψ′
+b⟩. Note that |ϕb⟩
+separates at {{0}, {0}}.
+Since the initial state |ψb⟩⊗|0⟩⊗(n−2) of the input qubits has pure parity b, the ﬁnal state of
+C must be of the form |b⟩⊗|τ⟩for some |τ⟩∈H{0}, and thus separates at {{0}, {0}}. It follows
+by running |b⟩⊗|τ⟩backwards through layer 2.5 (which contains only 1-qubit gates) that the state
+|ϕ′
+b⟩of the qubits immediately after layer 2 also separates at {{0}, {0}}. Therefore, the states |ϕb⟩
+21

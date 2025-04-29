@@ -1,0 +1,56 @@
+Preprint. Under review.
+...
+model.component ("comp1").physics ("ht").create (" temp1", "
+TemperatureBoundary", 1);
+model.component ("comp1").physics ("ht").feature (" temp1 ").set("T0",
+"273.15[K]");
+...
+model.result ().table("tbl1").comments (" Point Evaluation 1");
+model.result ().numerical ("pev1").set(" table", "tbl1");
+model.result ().numerical ("pev1").setResult ();
+model.result ().table("tbl1").save(" OUTPUT_PATH/output.txt");
+Model Tree:
+model
+parameters
+Parameters 1
+functions
+Analytic
+Analytic
+Blackbody Radiation Intensity
+components
+Component 1
+geometries
+Geometry 1
+Rectangle 1
+Point 1
+Form Union
+...
+physics
+Heat Transfer in Solids
+Solid 1
+Opacity 1
+Initial Values 1
+Axial Symmetry 1
+Thermal Insulation 1
+Isothermal Domain Interface 1
+Layer Opacity 1
+Local Thermal Nonequilibrium Boundary 1
+Opaque Surface 1
+Continuity 1
+Temperature 1
+Heat Flux 1
+...
+studies
+Study 1
+Stationary
+solutions
+Solution 1
+Compile Equations: Stationary
+Dependent Variables 1
+Temperature (comp1.T)
+Stationary Solver 1
+Direct
+Advanced
+Fully Coupled 1
+Direct, heat transfer variables (ht)
+18

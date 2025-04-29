@@ -1,0 +1,32 @@
+16 
+ 
+Fig. 11 Cerebral perfusion monitoring using the proposed DL model during the lunch test. The black lines represent 
+the mean values of the recovered rCBFi at each test phase. The mean value from the first test phase (30 minutes 
+before lunch) was used as the global baseline for rCBFi calculation. 
+ 
+4 
+Discussion 
+We successfully implemented a DL model trained on the two-layer DCS analytical model-
+generated dataset with noise calculated from subject-specific baseline measurements. Our model 
+demonstrated improved CBFi sensitivity ~87% vs 55%, rCBFi error ~5.8% vs 19% on simulated 
+dataset, and 750× faster than fitting method during a brain activity test. 
+Although our model showed excellent performance, it is worth noting that single-exponential 
+fitting also performed well in our study, significantly enhancing CBF sensitivity and effectively 
+minimizing the influence of the scalp layer relative to older conventional DCS setups (Fig. 9). This 
+improvement can be attributed to advances in SPAD sensor technology, which enables early lag 
+time detection while substantially improving the measurement SNR18–20,55. Single-exponential 
+fitting, a simplified implementation of the semi-infinite analytical solution, is commonly used to 
+characterize relative CBF changes13. Since the early part of the 𝑔𝑔2 curve is primarily influenced 
+by brain blood flow, while the later part is dominated by scalp blood flow, fitting only the early 
+portion of the 𝑔𝑔2  curve can enhance brain blood flow sensitivity while reducing scalp 
+interference6,56. 
+Indeed, a primary limitation of this work is also the restricted lag time range. The two-layer 
+analytical model has demonstrated its ability to separate CBF and extracerebral blood flow. 
+However, during training dataset preparation, the lag time range was tailored to 1.28 µs – 39.68 
+µs to match the SPAD settings, which resulted in the loss of some dynamic information from 
+shallow layers. By training only on the early portion of the 𝑔𝑔2 curve, we provided the network 
+with less information about the slow decays from shallow flow, making it harder for the model to 
+learn to distinguish extracerebral contributions. This limitation also explains why the DL model 
+accurately recovers CBFi at lower flow rates but underestimates CBFi (Fig. 6) and rCBFi (Fig. 7) 
+at higher flow rates. As BFi increases, the 𝑔𝑔2 curve shifts leftward and decays faster within the 
+limited lag window, the restricted lag time range may not capture sufficient deep tissue 

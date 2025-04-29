@@ -1,0 +1,50 @@
+5.2
+Implementing the iterative algorithm: preliminary observations
+For concreteness, let us spell out the first few steps in the iterative procedure. Denote the points in
+the iteration by fi. Our zeroth approximation to the unknown function f is given by f0 ≡1, which
+corresponds to the pure AdS. The next steps are
+f1 = F(f0) = f0 −(DA|f0)−1(Af0 −Af)
+(5.12)
+f2 = F(f1) = f0 −(DA|f0)−1(Af0 −Af) −(DA|f0)−1(Af1 −Af)
+(5.13)
+...
+Thus, we are in effect constructing a series representation for the unknown f. Notice the analogy
+to Newton’s method in the above algorithm; where the analogy fails is that the inverse of the
+‘derivative’ is here always evaluated at the same point. Remarkably, for any function δA we have
+an explicit expression for δf = D−1A |f0 δA given by (3.39) (in even dimension) and (3.33) (in
+odd dimension). This is all we need in terms of metric perturbation theory; we don’t need explicit
+formulas for higher order perturbations δ2f, δ3f etc.
+We remark here that the series representation (5.12) applies for reconstructing metrics which
+are near the Schwarzschild–AdS metric given in (3.44), at least in the low temperature regime when
+zH ≫1. Indeed, since
+fAdS−BH(z) =
+1
+1 −(z/zH)3
+we see that fAdS−BH ≈1 when zH ≫1. So any metric ˆf which are near fAdS−BH when zH ≫1
+are also close to 1 and therefore can be represented via (5.12).
+Even though the area quantities above are in fact just the ‘finite parts’ thereof, in practice we
+take Afi and Af to be the non-regularized areas and write Adata = Af0 −Af, which is actually our
+regular data. Then we can augment the above procedure by writing Afi−Af = (Afi−Af0)+Adata so
+that at each iteration we regularize the new area function Afi against the corresponding quantity in
+pure AdS (by combining two divergent integrals under a single integral sign so that the divergences
+in the integrands cancel out).
+Numerical implementation of the algorithm may be rather challenging. For this, we first need
+to numerically solve the full minimal surface equation in the metric involving fi for a large family
+of boundary disk radii. Then we evaluate numerically the integral Afi −Af0 where we plug in
+the numerical approximation for the embedding function of the minimal surface corresponding to
+fi, and the hemisphere solution, and we do this for a number of radii. Finally, we need a finite
+difference approximation for the first and second derivatives of (Afi −Af0) + Adata to compute the
+next function fi+1 using the explicit inversion formula. Controlling the numerical error through all
+these stages might require some care. The computation is probably going to be quite costly unless
+we for some reason have very fast convergence towards the sought-after function.
+Our iterative scheme is reminiscent of the perturbative reconstruction method presented in [8,
+Sec. 6.1]. One notable difference, however, is that our algorithm is not based on a Taylor expansion
+of the unknown function. Our algorithm is global in the sense that each new step integrates over
+all the values of earlier iteration. As it is well-known that Taylor expansion is highly unstable and
+sensitive to numerical errors, it is possible that our method leads to better stability and convergence
+in the reconstruction.
+6
+Discussion
+Our analysis has focused on reconstructing aspects of the bulk geometry from boundary data, but
+several subtleties remain. One key omission in our discussion is the divergence structure of the
+– 24 –

@@ -1,0 +1,139 @@
+7
+does not depend on the labels of the wires. There-
+fore, if we write K′ the bitstring given from K by
+flipping its j-th entry, we have σK′[1:k] = σ′.
+In both cases, the resulting permutation σ′ belongs
+to the set of permutations reachable from the first k
+mixers.
+By hypothesis, the sorting network given by
+the reverse of this mixing network will reduce σ′ to the
+identity. Concatenating this with the first conditional
+swap gives a valid sorting network that reduces σ to the
+identity.
+The procedure sorts the labels in the shallowest way,
+otherwise we could find an example of interferometer
+that does not satisfy Theorem 2. Therefore the com-
+piler not only outputs a set of angles for implementing
+a given unitary on a given interferometer, it also
+outputs the shallowest way to do it.
+Special case of a rectangular interferometer.
+Our result applies to the case of a universal rectangu-
+lar chip.
+As the shape of the chip is a succession of
+two alternating layers, the overhead is low as only two
+calls to the synthesis framework are necessary. We have
+the theoretical guarantee that our framework will com-
+pute the optimal depth to implement any unitary in the
+rectangular-shaped chip. It is not clear if the compiler
+given by Clements et al.’s scheme [9] exhibits similar
+property. From numerical simulations, it appears that
+the scheme also returns the shallowest possible imple-
+mentation but to our knowledge there is not theoretical
+proof that it is always the case.
+V.
+EXTENSIONS OF THE FRAMEWORK
+A.
+Application to boson sampling
+Implementing a full operator U on m modes is
+only necessary if there are input photons in every
+mode, which is not always the case in boson sam-
+pling experiments.
+If we know that the k-th mode
+will never receive a photon as input then the out-
+put statistics do not depend on the k-th column of
+U.
+We can use this to further compress the inter-
+ferometer and reduce the number of active components.
+Let m be the number of modes, and n the number
+input photons. For simplicity we assume that the pho-
+tons enter the first n modes. The goal is now to imple-
+ment the first n columns of a full m-mode operator U.
+Namely we need to find an optical circuit on m modes
+that implements an operator C such that
+C
+
+In
+
+=
+u1 u2 . . . un
+
+:= V
+where the ui’s are the columns of U.
+Each column of V is parameterized by 2m real degrees
+of freedom, and in total V can be parameterized by
+2nm real numbers.
+However V satisfies the relation
+V †V = In, giving n2 equations removing n2 degrees of
+freedom. Therefore, again up to a diagonal matrix that
+removes n parameters, we need at most
+2nm −n(n + 1)
+real numbers to characterize V . Hence we need only
+nm −n(n + 1)/2 MZIs to implement V .
+Regarding
+the MZI-depth, in the worst case, as we still want the
+last mode to talk to the first one, the optimal depth is
+lower bounded by m −1.
+Current methods cannot reach both an optimal
+depth and an optimal number of MZIs as summarised
+in Table I. The naive way to adapt the methods to
+partial synthesis is to remove the MZIs that never
+encounter a photon.
+Otherwise,
+extending these
+methods to partial synthesis is not easy. For example
+a Clements decomposition requires one to perform
+column operations that are no longer allowed.
+We can however adapt the algorithm presented in
+Section III to this case, and find a circuit with same
+depth but with the optimal number of MZIs.
+If we
+manage to sort the first n labels, then the Bruhat de-
+composition in a block form where we separate the first
+n columns would give
+A =
+
+U1
+B
+0
+U2
+ 
+I
+0
+0 P
+ 
+U3
+C
+0
+U4
+
+=
+
+U5 D
+0
+E
+
+where U1, U2, U3, U4, U5 are all triangular. The unitar-
+ity of A implies that D = 0 and U5 is diagonal which
+ends the synthesis, as we only care about reducing the
+first n columns to the identity operator.
+What then
+remains is to provide a simplified sorting network that
+can always sort the first n labels with fewer conditional
+swaps, meaning fewer MZIs in the resulting circuit.
+We give a recursive procedure to construct partial
+sorting networks, with an example shown in Fig. 6.
+• Initialization: to sort one label, the circuit given
+in Fig. 6a is optimal as the last mode needs to
+connect to the first one.
+• Adding one label: adding a label to sort can be
+done by adding a subdiagonal or superdiagonal
+layer of conditional swaps.
+In our example, we
+need a subdiagonal layer to sort a second label,
+shown in Fig. 6b. If we have a circuit sorting k
+labels, adding a subdiagonal layer is equivalent to
+adding the layer sequentially to the circuit. Over-
+all, the circuit was sorting the first k labels and
+the last layer can be seen as sorting the first label
+of the remaining n −k labels. Thus, label k + 1
+will end in the k + 1-th wire and will be sorted.

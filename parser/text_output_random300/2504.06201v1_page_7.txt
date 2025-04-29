@@ -1,0 +1,48 @@
+ 
+7 
+ 
+Integer Programming 
+IP uses branch-and-bound, cutting planes, and other methods to search the solution space for 
+optimal integer decisions and prove global optimality within a tolerance (gap). We use Gurobi 
+(version 10.0.2) 39 for benchmarking with the default settings (0.1% global optimality gap) plus a 
+two-hour time limit and 240 GB software memory limit per optimization problem. The benchmark 
+QUBO problem is implemented in the Pyomo modeling environment (version 6.6.2) 40. We also 
+experimented with a large gap and observed the first identified integer solution often had a poor 
+objective function value. These results are not further reported for brevity. 
+ 
+Simulated Annealing 
+SA, which is inspired by the annealing process in metallurgy, is a probabilistic optimization 
+algorithm designed to approximate a global optimum of a given objective function. It is 
+considered a metaheuristic method, which can be applied to a wide range of optimization 
+problems41,42. In SA, temperature and cooling schedule are major factors that determine how 
+extensively the algorithm explores the solution space43. This algorithm often identifies near-
+optimal solutions but cannot guarantee that local or global optimality conditions are satisfied. For 
+SA, the hyperparameters are configured as follows: 1,000 reads, 1,000 sweeps, a ‘random’ initial 
+state generation, and a ‘geometric’ temperature schedule. 
+ 
+Steepest Descent 
+SD operates by employing variable flips to reduce the energy of a given QUBO through local 
+minimization computations rather than relying on a calculated gradient in a traditional gradient 
+descent algorithm44. This algorithm is computationally inexpensive and beneficial for local 
+refinement; thus, it can be used to search for local optima. In our benchmarking study, SD utilizes 
+hyperparameters set to 1,000 reads and a ‘random’ strategy for initial state generation. 
+ 
+Tabu Search 
+TS is designed to solve combinatorial and discrete optimization problems by using memory to 
+guide the search for better solutions, as introduced by Glover45. This algorithm can escape 
+already visited local minima by remembering those points (called ‘Tabu List’ to keep track of 
+moves during the search), aiming to identify high-quality solutions in a large solution space. This 
+algorithm works well for combinatorial optimization problems with small search spaces. 
+However, it can be hard to evaluate neighboring solutions and to maintain and update the Tabu 
+List with increasing problem sizes. The hyperparameter settings for TS are as follows: 1,000 
+reads, a timeout of 100 ms, and ‘random’ initial state generation. 
+ 
+Parallel Tempering with Isoenergetic Cluster Moves (PT-ICM) 
+PT-ICM is an advanced Monte Carlo method designed to navigate optimization space, such as 
+QUBO problems46-48. PT operates by maintaining multiple replicas of the system at different 
+temperatures and allowing exchanges between replicas based on a Metropolis criterion. This 
+approach helps lower-temperature replicas escape local minima with the aid of higher-temperature 
+replicas. ICM identifies clusters of variables that can flip without changing the system’s energy46. 
+In this study, the hyperparameters for PT-ICM are set as follows: the number of sweeps is 1,000, 
+the number of replicas is 10, and the number of iterations is 10. 
+ 

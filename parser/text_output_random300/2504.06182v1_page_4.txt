@@ -1,0 +1,119 @@
+4
+e.g., the Hungarian algorithm [24] and the minimum-cost
+maximum-flow (MCMF) algorithm [25]. More efficient
+algorithms are known for special cases, such as when H
+is constructed from a path graph G [26]. We provide a
+more detailed discussion of these algorithms in Sec. III
+Clearly, it is not enough to just maintain a distance-
+minimizing matching; as such a matching does not pro-
+vide the information needed for generating the elemen-
+tary displacement operations of the tokens, i.e., the un-
+obstructed displacement trajectories. We resolve the is-
+sue by maintaining an arbitrary shortest path Pi (in G)
+for every matched pair, i.e., for every vsivti ∈M. We
+call this set of paths a path system, which is computed
+using either several breadth-first search (BFS) calls or
+using an all-pairs shortest-path (APSP) algorithm.
+In
+our previous work, we introduced path systems with-
+out any restrictions on the lengths or weights of the
+paths [21]. However, for this work, restricting path sys-
+tems to shortest paths is sufficient and simplifies the pre-
+sentation. Formally, we define a path system P in G as
+a set of shortest paths, P = {P1, P2, . . . , Pk}, in which
+each path Pi ∈P for i ∈{1, . . . , k} is a shortest path
+from vsi (source vertex) to vti (target vertex), which we
+denote by {vsi, v1, v2, . . . , vti}. Single-vertex paths with
+vsi = vti are also allowed. The weight of a path system
+P in G is given by the sum of the weights of its paths,
+w(P) = P
+P ∈P w(P) = P
+P ∈P
+P
+e∈P w(e).
+We say that a move of token τi associated with path
+Pi ∈P is executable whenever the target vertex vti does
+not contain a token; an unobstructed move is trivially
+executable, whereas an obstructed move can always be
+converted to a sequence of unobstructed moves, assum-
+ing vti contains no token. A path system P is said to be
+valid (for T) or T-valid whenever there exists some or-
+dering of the moves/paths that makes them executable,
+and executing all the moves associated with P results in
+each vertex in T having a token on it (we assume that
+the weight of a path system is infinity whenever it is not
+valid). Clearly, in a valid path system, all source vertices
+are distinct and all target vertices are distinct, although
+some source vertices can be the same as some target ver-
+tices. We note that for any valid path system, we can
+always find an executable move, unless the problem has
+already been solved with all vertices in T containing to-
+kens. We also note that, before any move is executed,
+whenever we have a token τ on some target or internal
+vertex of a path P ∈P, then there must exist another
+path P ′ ∈P, P ′ ̸= P, for which the token τ is on the
+source vertex.
+Using the previous observations, it be-
+comes easy to show that our matching procedure (in the
+bipartite graph H) combined with shortest paths compu-
+tation (in G) as well as conversion of obstructed moves
+(if needed) produces a valid (partially-ordered) path sys-
+tem [21].
+Putting it all together, a solution to an atom recon-
+figuration problem can now be viewed as a (partially-
+ordered) path system P such that executing the moves
+associated with P (respecting the partial order) places
+a token on every vertex in T while avoiding collisions.
+Given that we are dealing with unweighted grid graphs,
+each path P ∈P having |E(P)| edges corresponds to
+exactly |E(P)| elementary displacement operations.
+III.
+ATOM RECONFIGURATION
+ALGORITHMS
+In this section, we provide a detailed presentation of
+several proposed or improved atom reconfiguration al-
+gorithms, along with their implementation details.
+In
+particular, we propose an improved 1D reconfigura-
+tion algorithm (Sec. III A) and its parallel implemen-
+tation (Sec. III B). We also describe improvements to
+the previously proposed red-rec algorithm (Sec. III C)
+and its parallel implementation (Sec. III D), introduce a
+newly proposed reconfiguration algorithm for grid graphs
+with centered targets, which we call the bird algorithm
+(Sec. III E), and present improvements to the previously
+proposed aro algorithm (Sec. III F).
+A.
+The exact 1D algorithm (serial implementation)
+One of the core subroutines of the red-rec and bird al-
+gorithms is a 1D reconfiguration subroutine, known as
+the exact 1D algorithm. This subroutine reconfigures in-
+dividual columns of a grid through two key operations:
+(1) assigning source tokens to target traps and (2) gen-
+erating moves along unique shortest paths to realize the
+target configuration.
+In the original red-rec algorithm, these two operations
+were combined. In this work, we separate them for mod-
+ularity and enhance each step to improve the efficiency
+and versatility of our system. For the assignment rou-
+tine, we use a simpler algorithm than the one used for
+the original red-rec implementation and develop a gener-
+alized assignment routine required by the bird algorithm.
+For move generation, we introduce an improved subrou-
+tine that computes a partial ordering of moves, which is
+then used by the batching routine (see Sec. IV).
+Assignment.
+The assignment algorithm computes a
+distance-minimizing matching between S and T that sat-
+urates T in linear time by exploiting the simple structure
+of path graphs to avoid having to construct the bipartite
+graph H (discussed in Section II C). When |S| = |T|, one
+can easily compute (in linear time) a distance-minimizing
+matching by two passes over the graph; once left-to-right
+and once right-to-left, where we assume that the vertices
+of the path are ordered horizontally from left to right.
+The challenge occurs when |S| > |T| [26, 27]. The prior
+red-rec algorithm relied on the linear assignment algo-
+rithm of Karp and Li [26]. In this work, we instead use
+a simpler version of the algorithm proposed by Aggarwal
+et al. [27].

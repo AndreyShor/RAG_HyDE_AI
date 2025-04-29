@@ -1,0 +1,170 @@
+14
+τ = L/c, since we cannot image inside of the nonlinear
+medium. We will see in Section VI techniques to circum-
+vent these issues.
+V. REVIEW OF THE EXPERIMENTAL PLATFORMS
+At the heart of the physical phenomena underlying the
+fluid-like behavior of light is the nonlinear response of
+the propagation medium. Depending on the experimen-
+tal platform, this nonlinearity can have multiple origins.
+We will focus on the three most common experimental
+platforms: atomic clouds, photorefractive crystals and
+thermo-optic liquids.
+A. Atomic clouds
+Atomic media are well known for their strongly non-
+linear response to a near resonance laser field. The field
+of nonlinear and quantum optics in hot atomic vapors
+is extremely broad (Glorieux et al., 2023) with applica-
+tions from magnetometry to quantum memory. While co-
+herent excitation with multi-levels and multi-fields could
+open exciting perspectives (Lukin et al., 2000), most of
+the experimental realizations today focus on single-field
+near-resonant excitation. In the following we provide the
+derivation of the χ(3) nonlinearity in atomic vapor and
+present how to use this system for paraxial fluids of light.
+We will follow the example of the D2 line of a rubidium
+87 vapor. In the case of atomic vapors, the χ(3) response
+is derived from the optical Bloch equations (Glorieux,
+2018; Grynberg et al., 2010).
+1. χ(3) nonlinearity for a two-level atom
+As a first approximation, we will study the case of
+a two-level atom. For the rubidium D2 line, these two
+levels are the 5S1/2 ground state |g⟩and 5P3/2 excited
+state |e⟩. We will note the energy of each level Eg =
+ℏωg (resp. Ee = ℏωe) and ωeg = ωe −ωg the resonant
+frequency of this transition. The transition is driven by
+a monochromatic field polarized along a unit vector u:
+E(t) = 1
+2Ee−iωtu + c.c.. We write the Hamiltonian of an
+atom interacting with the electric field as ˆH = ˆH0 + ˆW,
+with ˆH0 the atomic Hamiltonian and ˆW the interaction
+Hamiltonian:
+ˆH0 = ℏωg |g⟩⟨g| + ℏωe |e⟩⟨e| ∼ℏωeg |e⟩⟨e|
+ˆW(t) = −D · E(t) = (d∗|g⟩⟨e| + d |e⟩⟨g|) · E(t)
+= ℏ
+2
+
+Ω∗|g⟩⟨e| + Ω|e⟩⟨g|
+
+×
+
+e−iωt + eiωt
+,
+(67)
+where D is the dipole operator and we defined the atomic
+Hamiltonian up to an energy constant. In Eq. (67), we
+have introduced the Rabi frequency Ω= −µegE
+ℏ, and the
+transition dipole moment µeg = ⟨e| d · u |g⟩. The tran-
+sition dipole moment contains the internal structure of
+the atom and encapsulates the selection rules depending
+on the polarization of the electric field.
+We switch to
+the interaction picture with respect to the Hamiltonian
+ℏω |e⟩⟨e| to eliminate the time dependence of the interac-
+tion term, and within the rotating wave approximation,
+we obtain:
+ˆH = ℏ
+
+0
+Ω∗
+2
+Ω
+2
+−∆
+
+(68)
+with ∆= ω−ωeg. Then, we calculate the evolution of the
+density operator ˆρ = P
+i,j∈[e,g] ρij |i⟩⟨j|, which is given
+by the master equation:
+∂ˆρ
+∂t = −i
+ℏ
+h
+ˆH, ˆρ
+i
++
+X
+ν
+
+ˆLν ˆρˆL†
+ν −1
+2{ˆL†
+ν ˆLν, ˆρ}
+
+,
+(69)
+where ˆLν are the jump operators.
+Here, we include a
+jump operator to describe spontaneous emission: ˆLsp =
+√
+Γ |g⟩⟨e|, where Γ is the transition linewidth. We also
+include decoherence with ˆLdec = √γ(|e⟩⟨e| −|g⟩⟨g|),
+where γ = Γ/2 + γcol, where γcol is the collision rate.
+We can now express the medium polarization as:
+P = N
+V ⟨D⟩= N
+V Tr(ρD) = N
+V
+µegρeg
+2
+e−iωt + c.c.
+
+,
+(70)
+where N
+V is the atomic density. Writing P = 1
+2Pe−iωt +
+c.c., we can find the expression for the complex envelope:
+P = N
+V µgeρeg. The susceptibility χ of the atoms to the
+electric field then writes:
+χ = N
+V
+µgeρeg
+ε0E
+.
+(71)
+Solving Eq. (69) for the stationary state, using the fact
+that the total population ρee + ρgg is conserved, finally
+yields:
+χ = α(0)c
+ωeg
+i −∆
+γ
+1 + ( ∆
+γ )2 + | E
+Es |2 ,
+(72)
+where α(0) = α(E = 0, ∆= 0) = ωeg
+c
+N
+V
+|µeg|2
+ε0ℏγ
+is the
+weak-probe line-center linear absorption coefficient and
+Es =
+√
+2γℏ/µeg is the line-center saturation field. In the
+limit where | E
+Es |2 ≪1 + ( ∆
+γ )2, we expand the expres-
+sion (72) in powers of E/Es up to the second order and
+obtain:
+χ(1) = α(0)c
+ωeg
+i −∆
+γ
+1 + ( ∆
+γ )2 ,
+χ(3) = −α(0)c
+|Es|2ωeg
+i −∆
+γ
+h
+1 + ( ∆
+γ )2
+i2 .
+(73)

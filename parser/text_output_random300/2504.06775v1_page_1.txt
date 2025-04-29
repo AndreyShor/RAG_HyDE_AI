@@ -1,0 +1,89 @@
+Variational Quantum Machine Learning with Quantum Error Detection
+Eromanga Adermann,1, ∗Hajime Suzuki,1 and Muhammad Usman2, 3
+1Data61, CSIRO, 26 Pembroke Rd, Marsfield, NSW, 2122, Australia
+2Data61, CSIRO, Research Way, Clayton, Vic, 3168, Australia
+3School of Physics, The University of Melbourne, Parkville, Vic, 3010, Australia
+(Dated: April 10, 2025)
+Quantum machine learning (QML) is an emerging field that promises advantages such as faster
+training, improved reliability and superior feature extraction over classical counterparts. However,
+its implementation on quantum hardware is challenging due to the noise inherent in these systems,
+necessitating the use of quantum error correction (QEC) codes. Current QML research remains
+primarily theoretical, often assuming noise-free environments and offering little insight into the
+integration of QEC with QML implementations. To address this, we investigate the performance
+of a simple, parity-classifying Variational Quantum Classifier (VQC) implemented with the [[4,2,2]]
+error-detecting stabiliser code in a simulated noisy environment, marking the first study into the
+implementation of a QML algorithm with a QEC code. We invoke ancilla qubits to logically encode
+rotation gates, and classically simulate the logically-encoded VQC under two simple noise models
+representing gate noise and environmental noise. We demonstrate that the stabiliser code improves
+the training accuracy at convergence compared to noisy implementations without QEC. However,
+we find that the effectiveness and reliability of error detection is contingent upon keeping the ancilla
+qubit error rates below a specific threshold, due to the propagation of ancilla errors to the physical
+qubits. Our results provide an important insight: for QML implementations with QEC codes that
+both require ancilla qubits for logical rotations and cannot fully correct errors propagated between
+ancilla and physical qubits, the maximum achievable accuracy of the QML model is limited. This
+highlights the need for additional error correction or mitigation strategies to support the practical
+implementation of QML algorithms with QEC on quantum devices.
+I.
+INTRODUCTION
+The integration of quantum computing with machine
+learning is predicted to address the increasing demand
+for computational power and efficiency across a wide
+range of complex tasks within the field of machine learn-
+ing [1–5].
+QML algorithms aim to exploit the funda-
+mental quantum phenomena of superposition and entan-
+glement that are unavailable to classical machine learn-
+ing algorithms. By harnessing these unique properties of
+quantum mechanics, QML offers the potential for com-
+putational speed-ups, improved model performance com-
+pared to their classical counterparts for certain classes of
+problems [6–8], including enhanced pattern recognition
+through the use of quantum feature maps that lead to
+quantum speed-ups [9, 10], and greater robustness to ad-
+versarial attacks exhibited by QML models [11–15].
+Given that the vast majority of QML experiments have
+thus far been conducted theoretically in ideal classical
+simulation environments, it is unclear whether the ad-
+vantages predicted so far will be retained when imple-
+menting QML algorithms on realistic quantum hardware,
+such as on Noisy Intermediate Scale Quantum (NISQ) de-
+vices [16, 17]. As for all quantum algorithms, one of the
+biggest obstacles to the practical implementation of QML
+on quantum devices is vulnerability to noise, which can
+cause errors and distort computations, leading to mean-
+ingless outputs.
+∗eromanga.adermann@csiro.au
+Numerous strategies have been developed to suppress
+and mitigate noise with the goal of achieving quantum
+advantage prior to the advent of fully fault-tolerant quan-
+tum systems, including approximate algorithms such as
+the Quantum Approximate Optimisation Algorithm [18],
+heuristic approaches [1] and approximate amplitude en-
+coding [13], all of which reduce circuit depths and min-
+imise noise accumulation. Noise-induced errors can also
+be reduced using virtual distillation [19, 20], which sup-
+presses errors by combining multiple noisy copies of
+a quantum state, and dynamical decoupling [21–23],
+which preserves coherence during computation by apply-
+ing carefully-timed pulses to qubits. While these meth-
+ods may be applied to QML, and while some have al-
+ready proven to be effective in implementations of QML
+on a quantum device [13], achieving scalability and fault
+tolerance for quantum algorithms ultimately requires the
+adoption of Quantum Error Correction (QEC) codes [24].
+Early QEC research focused on stabiliser codes [25–
+27], and established the Threshold Theorem, which states
+that fault-tolerant quantum computation is possible pro-
+vided physical error rates in quantum hardware remain
+below a finite threshold [28, 29]. Since then, QEC has
+expanded to include diverse codes tailored for different
+advantages and environments, such as surface codes [30],
+Bacon-Shor codes [31] and 3D color codes [32].
+Very
+recently we have begun to see experimental verification
+of the effectiveness of these codes, such as in the land-
+mark demonstration of the surface code operating below
+its critical threshold on superconducting processors [33].
+However, the present challenge with QEC codes is their
+high resource overhead, with practical implementations
+arXiv:2504.06775v1  [quant-ph]  9 Apr 2025

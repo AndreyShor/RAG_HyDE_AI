@@ -1,0 +1,209 @@
+7
+0
+25
+50
+75
+100
+M, Gate Number
+0
+1
+P1
+a)
+0
+25
+50
+75
+100
+M, Gate Number
+0
+1
+P1
+b)
+0
+25
+50
+75
+100
+M, Gate Number
+0
+1
+P1
+c)
+0
+25
+50
+75
+100
+M, Gate Number
+0
+1
+P1
+d)
+0
+25
+50
+75
+100
+125
+150
+|Phase| Accum. 
+Per Gate (o)
+e)
+0.6
+0.8
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+br, Blue/Red Ratio
+0
+20
+40
+60
+80
+M , 1q, Coherence 
+Decay (gates)
+f)
+FIG. 5: Light shift as function of blue/red amplitude
+ratio (ζbr). a-d) Ramsey measurements with
+ζbr = 0.6, 0.9, 1.05, 1.1, respectively. f) The accumulated
+phase per gate (teal diamonds) g) and coherence decay
+constants (blue circles) were extracted from Ramsey
+measurements for various blue/red ratios, using a cosine
+with a Gaussian decay profile. Each of the shaded
+regions correspond to data extracted from plots a-d.
+a single-qubit MS gate pulse to each ion in series (only
+one ion at a time to avoid driving any actual entangling
+gates).
+An example set of data for this calibration is
+shown in Fig. 6 for four qubits.
+C.
+Residual Light Shift Cancellation
+While calibrating ζbr eliminates the strongest contribu-
+tions of the fourth-order light shift, there is still a residual
+light shift. As shown in Fig. 5, this residual light shift is
+6°, but we typically find it varies across different MS gate
+pairs in a larger chain, and can be anywhere from 3−30°
+for maximally entangling gates. To correct for this resid-
+ual light shift we take advantage of a “frame rotation,”
+a phase-bookkeeping approach which advances the phase
+on all subsequent pulses on any given qubit.
+We describe the nuances of how this frame rotation
+is implemented in our control hardware, Octet, in detail
+in [12], but relevant features are discussed here. In par-
+ticular, across a circuit, these frame rotations are tracked
+Rµ
+y( π
+2 )
+MS1( π
+2 )
+Rµ
+y(π)
+MS1( π
+2 )
+Rµ
+y( π
+2 )
+Rµ
+y( π
+2 )
+MS2( π
+2 )
+Rµ
+y(π)
+MS2( π
+2 )
+Rµ
+y( π
+2 )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0.7
+0.8
+0.9
+1.0
+1.1
+1.2
+1.3
+br, Blue/Red Ratio
+0
+0.2
+0.4
+P1, |1  Detection Probability
+0
+20
+40
+M
+0
+1
+P1
+Ramsey
+Echo
+q
+1
+q0
+q1
+q2
+FIG. 6: Microwave echo calibration of ζbr for selecting
+point of best coherence. A two-qubit pulse sequence
+example is shown on the top where we start by applying
+a microwave Rµ
+y( π
+2 ) pulse to each ion. We test the echo
+sequence against the Ramsey sequence by applying the
+equivalent single-qubit MS(π/2) gates as in the
+Ramsey sequence on each of the ions in the chain,
+separated in time such that the light drives only one ion
+at a time. These are separated by an echoing microwave
+π pulse, reversing the phase evolution of the spins.
+Then another set of single-qubit MS gates are applied.
+Finally, a final projection pulse is applied via another
+microwave Rµ
+y( π
+2 ) gate. In the bottom, plotted are the
+results of the echo calibration of ζbr taken on four
+qubits, with each qubit’s trace fit to a Gaussian. For
+each qubit [q−1,q0,q1,q2], the best ζbr is found to be
+[1.10, 1.10, 1.12, 1.15]. The inset shows the a Ramsey
+sequence and the equivalent echo sequence on one
+qubit, with both showing similar decay profiles.
+within the control hardware for each qubit. To be clear,
+we refer to the overall tracked phase per qubit (i) per
+circuit as the “qubit frame,” Φi and the individual opera-
+tions that modify that frame as “frame rotations,” ϕf,i(t).
+We note that ϕf,i(t) can be programmed to occur dur-
+ing a gate or as a standalone operation, i.e. a virtual Z
+(or phase) gate. In the context of the Raman transitions
+that underly our gates, phases are defined as the relation
+between certain legs of the specific Raman transitions,
+and thus care must be taken to ensure the qubit frame
+is referenced properly. For instance, in the MS gate, we
+reference the qubit frame Φi on both tones of the IA
+beam.
+Harnessing this the control hardware capability, we de-
+scribe an implementation that cancels the residual light
+shift. We use ϕf,i(t) as a dynamic phase shift concur-

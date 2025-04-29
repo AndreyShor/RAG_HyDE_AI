@@ -1,0 +1,119 @@
+Description
+Unit
+Value
+Reference
+Present work
+CRA mean BF
+[µl/min]
+40.91
+[10]
+46.56
+[µl/min]
+38.1 ± 9.1
+[6]
+[µl/min]
+33 ± 9.6
+[27]
+CRA peak systolic BF
+[µl/min]
+120.6 ∗
+[13]
+129.46
+[µl/min]
+122.5 ∗
+[16]
+CRA end diastolic BF
+[µl/min]
+30.1 ∗
+[13]
+54.76
+[µl/min]
+30 ∗
+[16]
+CRV mean BF
+[µl/min]
+64.9 ± 12.8
+[9]
+43.47
+25 - 38 years
+[µl/min]
+80 ± 12
+[7]
+54 - 58 years
+[µl/min]
+73 ± 13
+[7]
+CRA Mean Pressure (Pcra)
+[mmHg]
+43.92
+[10]
+44.55
+Retinal Arterioles
+[mmHg]
+36.09
+[10]
+35.71
+Mean Pressure (Part)
+Retinal Venules Mean
+[mmHg]
+22.13
+[10]
+20.47
+Pressure (Pven)
+CRV Mean Pressure (Pcrv)
+[mmHg]
+18.84
+[10]
+17.4
+Table 4: Experimental data, blood flow. ∗uses assumption on CRA diameter value of about 160 µm [6, 17].
+[25]. Given the challenges associated with directly measuring venous parameters in clinical settings, mathematical
+modeling provides a valuable tool for inferring these values and gaining a deeper understanding of the underlying
+physiological mechanisms
+As IOP increases, a marked decrease in CRA blood flow is observed, reflecting the restriction of the vascular
+supply due to elevated pressure. In contrast, CRV blood flow increases due to augmented resistance in the venous
+return pathway (see Fig. 4).
+The simulation results, reported in Table 5, indicate a clear trend of decreasing CRA blood flow and increasing
+CRV blood flow as IOP rises. Despite these variations, the other cardiovascular parameters at a systemic level, such
+as SP/DP, EDV/ESV, and CO, remain largely unaffected by changes in IOP, as expected.
+Output
+Unit
+IOP = 15 mmHg
+IOP = 20 mmHg
+IOP = 25 mmHg
+IOP = 30 mmHg
+SP / DP
+[mmHg]
+128/69
+127/69
+127/69
+127/69
+EDV / ESV
+[ml]
+113/43
+113/43
+113/43
+113/43
+CO
+[l/min]
+5.26
+5.26
+5.26
+5.26
+CRA mean BF
+[µl/min]
+46.6
+43.6
+36.3
+30.8
+CRV mean BF
+[µl/min]
+43.5
+40.5
+29.1
+23.3
+Table 5: Scenario A. IOP: Intraocular Pressure.
+Simulation B: effect of left ventricle compliance reduction on the Eye2Heart model.
+Simulation B focused on the impact of reducing LVc, adjusted by 10%, 30%, and 50%. This change was modeled by
+altering the elastance scaling (ELS) parameter, which reflects the ability of the left ventricle to stretch and contract
+during the cardiac cycle. This simulation setup builds upon the work of [35], which primarily investigated cardiac
+11

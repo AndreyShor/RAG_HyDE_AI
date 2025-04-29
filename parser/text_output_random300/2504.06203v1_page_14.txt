@@ -1,0 +1,168 @@
+14
+blocks in ⟨ψ|OO|ψ⟩to a finite sum. It’s well-known that individual conformal blocks have softer divergences (logarithmic) in the
+t-channel OPE limit (see e.g. [111, 112] for how such weaker divergences resum to produce the stronger t-channel singularity in
+the absence of truncation) and thus this should suffice to regularize ˆO and we denote the corresponding regularized self-adjoint
+operator by ˆO∆. Below we will establish the existence of such an operator, densely defined on H∆, rigorously using Kato’s
+representation theorems on quadratic forms [113] (see also [114–116]).
+On the truncated space H∆, we have the following sesquilinear form
+(ϕf, ϕg) =
+X
+∆a,b≤∆
+CabO
+Z
+Rd
++
+ddxddydd−1⃗zfa(x)g∗
+b(y)
+(|⃗x −⃗y|2 + (xd + yd)2)
+∆a+∆b−∆O
+2
+(|⃗x −⃗z|2 + x2
+d)
+∆a+∆O−∆b
+2
+(|⃗y −⃗z|2 + y2
+d)
+∆b+∆O−∆a
+2
+,
+(B.2)
+defined on the dense subspace Φ∆⊂H∆spanned by finite linear combination of the primary fields and their descendants from
+H∆(again only including scalar primary contributions in the sum over a, b for simplicity). We want to show that there is a
+self-adjoint operator ˆO∆, such that it is densely defined on Φ∆and
+⟨ϕf| ˆO∆|ϕg⟩= (ϕf, ϕg) .
+(B.3)
+First let us prove this in the case when H∆contains only one conformal family, which we denote as Hϕ, with scalar primary
+ϕ(x). The corresponding sesquilinear form is defined by the following matrix elements,
+(ϕf, ϕg)|Hϕ ≡B(1)
+ϕ (x, y)B(2)
+ϕ (x, y) ,
+(B.4)
+where B(1,2)
+ϕ
+(x, y) define two sesquilinear forms separately by
+B(1)
+ϕ (x, y) ≡
+1
+(|⃗x −⃗y|2 + (xd + yd)2)
+2∆ϕ−∆O
+2
+,
+B(2)
+ϕ (x, y) ≡
+Z
+dd−1z
+1
+(|⃗x −⃗z|2 + x2
+d)
+∆O
+2 (|⃗y −⃗z|2 + y2
+d)
+∆O
+2
+.
+(B.5)
+It is easy to see that B(2)
+ϕ (x, y) is positive definite because
+Z
+ddxddyf(x)f ∗(y)
+Z
+dd−1⃗z
+1
+(|⃗x −⃗z|2 + x2
+d)
+∆O
+2 (|⃗y −⃗z|2 + y2
+d)
+∆O
+2
+=
+Z
+dd−1⃗z
+
+Z
+ddx
+f(x)
+(|⃗x −⃗z|2 + x2
+d)
+∆O
+2
+
+2
+.
+(B.6)
+Note that B(1)
+ϕ (x, y) is positive definite for any ∆ϕ > ∆O/2 as a consequence of the following transformation
+Z
+Rd
++
+ddxddy
+f(x)f ∗(y)
+(|⃗x −⃗y|2 + (xd + yd)2)
+2∆ϕ−∆O
+2
+=
+Z
+Rd
++
+ddxddy
+Z ∞
+0
+dt t
+2∆ϕ−∆O
+2
+−1
+Γ
+
+2∆ϕ−∆O
+2
+f(x)f ∗(y)e−t|⃗x−⃗y|2−t(xd+yd)2
+=
+X
+n≥0
+1
+n!
+Z
+dd−1⃗xdd−1⃗y
+Z ∞
+0
+dt t
+2∆ϕ−∆O
+2
+−1
+Γ
+
+2∆ϕ−∆O
+2
+e−t|⃗x−⃗y|2F(t, ⃗x)F ∗(t, ⃗y) ,
+(B.7)
+where
+F(t, ⃗x) ≡
+Z ∞
+0
+dxde−tx2
+dxn
+d(2t)
+n
+2 f(xd, ⃗x) .
+(B.8)
+The positivity of (B.7) then follows from the Fourier transform, since the kernel Kt(⃗x, ⃗y) ≡e−t|⃗x−⃗y|2 satisfies,
+Kt(⃗x, ⃗y) =
+Z
+dd−1⃗p
+(4πt)
+d−1
+2 ei⃗p·(⃗x−⃗y)Kt(⃗p),
+Kt(⃗p) = e−p2
+4t > 0 .
+(B.9)
+For ∆ϕ = ∆O/2, the above argument does not directly apply. Nonetheless, since the kernel is simply B(1)
+ϕ
+≡1 in this case, for
+any state |ϕf⟩∈Φ∆, which we can approximate using a primary operator ϕ(x) as
+|ϕf⟩=
+n
+X
+i=1
+ciϕ(xi) |0⟩,
+(B.10)

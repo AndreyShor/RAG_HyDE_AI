@@ -1,0 +1,118 @@
+Finally, we report error bars on all of our met-
+rics to enable proper statistical interpretation.
+We have two distinct sources of error in our meth-
+ods. For our optimal solution probability metric,
+we have the standard error, SE, which takes into
+account shot noise when sampling from the out-
+put distribution:
+SE =
+s
+Ps(1 −Ps)
+Nsolutions
+.
+(5)
+Here we create our collection of solutions
+by aggregating shots across many experiments.
+This means that the total number of solutions
+for quantum annealing and VQE is equal to
+Nsolutions = Nexperiments×Nshots, with Nexperiments
+being the number of times the experiment is re-
+peated and Nshots the number of shots per exper-
+iment. While in simulated annealing and random
+sampling it is equal to the number of times we run
+the algorithm. For the definitions of shots and
+experiments see Section 4.1.
+This is necessary
+with quantum annealing as the D-Wave devices
+have a maximum QPU access time, and in order
+to increase the number of shots to a sufficiently
+large number, one needs to run the experiment
+again [57].
+We also compute the standard deviation, σ:
+σ =
+v
+u
+u
+t
+PNexperiments
+i=1
+(xi −µ)2
+Nexperiments
+,
+(6)
+where xi is a value obtained from the experiment
+and µ is the experiment mean. The resulting er-
+ror bar takes into account errors due to imperfect
+preparation of the ground state.
+We therefore
+repeat ‘experiments’: the entire process of state
+preparation and generating Nshots samples sev-
+eral times (Nexperiments).
+For each experiment,
+we compute the values of our quality of solution
+metrics, and then report the mean and standard
+deviation as above to capture this variation in
+state preparation. Note that we also use σ for our
+time metrics. Finally, we note that we could sim-
+ply aggregate all shots across all experiments into
+one big distribution and not discuss two sources
+of error. We choose to separate out the two error
+sources to achieve more detailed insight into these
+methods, and to allow us to meaningfully char-
+acterise the runtime. As σ is the more dominant
+error source (notice SE will be small as Nsolutions
+is large) we report this as our error bars in the
+main text and report the SE in Appendix C, Ta-
+ble 2.
+5
+Results
+We first solve the 18 variable QUBO and anal-
+yse our methods’ performance using the metrics
+defined in Section 4.3.
+Figure 3 shows the en-
+ergy probability distributions obtained by each
+method before post-selection.
+For VQE on the state vector simulator and
+quantum annealing, the experiment was carried
+out 10 times, the output samples were accumu-
+lated and the distributions renormalised.
+For
+VQE on the IBM QPU the experiment was car-
+ried out 5 times due to time constraints. We re-
+port our metrics averaged across repeat experi-
+ments and their error bars as described in the
+previous section. Finally, as brute force is an ex-
+act method, we take it to have idealised values of
+our quality of solution metrics, a value of 1 for Ps
+and AR. Figure 4 shows the post-selected distri-
+butions, in which solutions that violate the con-
+straint on the number of vacancies are excluded.
+We see that the distributions have more weight
+over a range of energies close to the minimum.
+To produce the quantum annealing results pre-
+sented, D-Wave’s 5612 physical qubit Advantage
+System 6.4 was used. The VQE results were pro-
+duced using the local noiseless IBM state vector
+solver and the real 156 qubit device ibm_fez, ac-
+cessible via the cloud from the IBM Quantum
+Platform.
+Not all of the physical qubits from
+the quantum annealing device and gate-based
+QPU are used: for further details of the qubit
+embedding procedure see Appendices D and E.
+The classical brute force, simulated annealing and
+random sampling were performed on a machine
+with 32 CPUs and 123 GB RAM. However, multi-
+threading was not configured which would better
+utilize the machine’s capabilities.
+Acceleration
+through the use of GPUs would also likely have
+been beneficial.
+We now discuss the results for each method and
+how they scale for larger sizes of the problem in
+detail. In the following sub-sections we first fo-
+cus on the results of quantum annealing (Section
+5.1), and then the results of VQE (Section 5.2).
+Classical results are discussed throughout both
+sections.
+10

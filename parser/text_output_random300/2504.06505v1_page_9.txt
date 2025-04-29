@@ -1,0 +1,51 @@
+ 
+9 
+ultimately destabilizing the simulation process.  Therefore, we employed differential learning rates, 
+assigning a larger learning rate to parameters such as mass and friction coefficients to accelerate the training 
+process, while applying a smaller learning rate to potential parameters to prevent instability. Furthermore, 
+the gradients of potential parameters were exclusively calculated using partial backpropagation to ensure 
+stability.  Together, these strategies stabilize training and enable reliable convergence. 
+III. Results 
+To illustrate our method, we investigate this method by building a CG model of liquid water 
+molecules. More specifically, we applied the dynamic matching method to learn from the AA simulation 
+of water. In our experience, the simulation is performed with SPC/E water model37 within a 2 nm box with 
+periodic boundary conditions. The Langevin integration was used to simulate the constant  NPT ensemble 
+with temperature 300 K and pressure 1 bar. An integration step of 2 fs was used, and the structures were 
+saved every 10 steps. The equilibrium run was performed for 100 ns following the energy minimization. A 
+100 ns trajectory was collected as the data that the dynamic matching method will learn from to build the 
+CG model. The CG map was defined as the center of mass (COM) of each water molecule.  
+The equilibrium properties we focused on were the radial distribution function (RDF) and angular 
+distribution function (ADF) functions. The RDF is defined as: 
+  
+𝑔(𝑟) =
+I
+J& 〈∑∑
+𝛿(𝑟−𝑟KL)
+LMK
+K
+〉, 
+  (8) 
+where 𝑟KL = ‖𝑹K −𝑹L‖ is the pairwise distance, 𝑁 is the number of particles, 𝑉 is the volume of the 
+simulation box, and I and J are indices of particles. The ADF is defined as: 
+ 
+𝑝(𝜃) =
++
+N 〈∑∑
+∑
+𝛿(𝜃−𝜃KLF)
+FOL
+LMK
+K
+〉, 
+(9) 
+where 𝑊 is a normalization factor to ensure 𝑝(𝜃) is normalized and 𝜃KLF represents the angle form angle 
+formed by particles 𝐼, 𝐽, and 𝐾 which are neighbours. A cutoff of 4.5 Å is used to determine the neighbor 
+list. Compared with the RDF, the ADF provides additional structural information by capturing the three-
+body correlation of neighboring particles. 
+Figures 3(a)-(b) (Brownian dynamics) and 4(a)-(b) (Langevin dynamics) compare the 
+thermodynamic properties of CG models against their mapped atomistic models. Both the RDF and ADF 
+of the randomly initialized CG models exhibit significant deviations from the AA simulation benchmarks. 
+However, after optimization using the dynamic matching framework, all CG models converge consistently 
+to the AA reference data. This demonstrates that the optimized CG models accurately reproduce the 
+structural spatial correlations inherent in the AA systems. 
+ 

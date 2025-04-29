@@ -1,0 +1,155 @@
+Proof of Proposition 6.1
+68
+Proof. We begin by observing that the quantity |Gλ
+(7.32) −Gλ
+(7.31)| is bounded above by a multiple of
+Z A+L
+0
+e
+√
+2d(x−L)
+Z b1/4
+−x
+e−u2
+2b
+√
+2πb
+(u + x)E0,u,b
+h
+Fλ
+b,x−L(Υu+x
+b
+)1{M0,b(Υu+x
+b
+)≤λ}
+i
+dudx
+(7.33)
++
+Z A+L
+0
+e
+√
+2d(x−L)
+Z ∞
+b3/4
+e−u2
+2b
+√
+2πb
+(u + x)E0,u,b
+h
+Fλ
+b,x−L(Υu+x
+b
+)1{M0,b(Υu+x
+b
+)≤λ}
+i
+dudx .
+(7.34)
+Recalling the definition (7.1), we have that
+Fλ
+b,x−L(Υu+x
+b
+) ≤|Dλ
+b,0(Υu+x
+b
+)|−1 .
+By using the above estimate, we proceed to bound (7.33) and (7.34) separately. Starting from (7.33),
+using Lemma 4.27, we obtain that
+(7.33) ≲b−1
+2
+Z A+L
+0
+e
+√
+2d(x−L)(b1/4 + x)dx ,
+and the quantity on the right-hand side can be made arbitrarily small by taking b ≥0 sufficiently large.
+Regarding (7.34), thanks to Lemma 4.28, we obtain that
+(7.34) ≲
+Z A+L
+0
+e
+√
+2d(x−L)
+Z ∞
+b3/4
+e−u2
+2b
+√
+2πb
+(u + x)(bd2 + (u/b)2d)dudx ,
+and, as before, the quantity on the right-hand side can be made arbitrarily small by taking b ≥0
+sufficiently large. Hence, the claim follows.
+Thanks to the previous lemma, from now on, we can focus on Gλ
+(7.32) instead of Gλ
+(7.31). We now
+address the fact that the quantity Fλ
+b,x−L(Υu+x
+b
+) is not a priori bounded. The approach to overcoming
+this issue is quite straightforward. Specifically, recalling (7.9), we show that replacing Fλ
+b,x−L(Υu+x
+b
+)
+in Gλ
+(7.32) with Fλ
+b,x−L,L(Υu+x
+b
+) introduces only a negligible error, provided that L is sufficiently large.
+More precisely, we consider
+Gλ
+(7.35)
+def= α
+Z A+L
+L/2
+e
+√
+2d(x−L)
+Z b3/4
+b1/4
+e−u2
+2b
+√
+2πb
+(u + x)E0,u,b
+h
+Fλ
+b,x−L,L(Υu+x
+b
+)
+· 1{M0,b+1,b(Υu+x
+b
+)≤x−(A+L)}1{infs∈[0,b] Bs≥−x}1{M0,b(Υu+x
+b
+)≤λ}
+i
+dudx ,
+(7.35)
+and we claim the following result.
+Lemma 7.12. For any λ > 0, ε > 0 and A ≥0, there exist L ≥0 sufficiently large, and b ≥0
+sufficiently large such that
+|Gλ
+(7.35) −Gλ
+(7.32)| ≤ε .
+Proof. We start by addressing the fact that the integral over x from 0 to A + L in Gλ
+(7.32) can be
+reduced, up to a negligible error, to an integral from L/2 to A + L. To this end, for x ∈[0, A + L]
+and u ∈[b1/4, b3/4], we recall that thanks to Lemma 4.22, it holds that
+E0,u,b
+h
+Fλ
+b,x−L(Υu+x
+b
+)1{M0,b(Υu+x
+b
+)≤λ}
+i
+≲u
+b .
+(7.36)
+Using the above bound, one can easily see that the difference between Gλ
+(7.32) and the same quantity
+with the integral over x from 0 to A + L replaced by the integral over x from L/2 to A + L can be
+made arbitrarily small by taking L ≥0 sufficiently large uniformly over all b ≥0.

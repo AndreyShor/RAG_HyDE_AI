@@ -1,0 +1,105 @@
+9
+with QUBO or even conventional methods.
+Prospective
+applications
+of
+our
+method
+include
+QUBO-mapped physical systems that call for being
+treated in the canonical ensemble.
+For instance, in-
+corporating finite-temperature considerations could en-
+hance the realism of models in soft matter and biolog-
+ical physics, including protein folding, protein design,
+and RNA secondary structure predictions, which have
+all been mapped to QUBO models.
+V.
+ACKNOWLEDGMENTS
+We are grateful to Pietro Faccioli, Philipp Hauke, and
+Guglielmo Mazzola for feedback on the manuscript. We
+thank CINECA for access to the D-Wave platform un-
+der the PRACE programme.
+This study was funded
+in part by the European Union - NextGenerationEU,
+in the framework of the PRIN Project ”The Physics
+of Chromosome Folding” (code: 2022R8YXMR, CUP:
+G53D23000820006) and by PNRR Mission 4, Compo-
+nent 2, Investment 1.4 CN 00000013 CN-HPC: National
+Centre for HPC, Big Data and Quantum Computing -
+spoke 7 (CUP: G93C22000600001). The views and opin-
+ions expressed are solely those of the authors and do not
+necessarily reflect those of the European Union, nor can
+the European Union be held responsible for them.
+APPENDIX A: DENSITY OF STATES
+RECONSTRUCTION FOR THE L × L ISING
+SYSTEM
+QUBO model for the L × L Ising system
+To perform the QUBO-based reconstruction of W for
+the 2D Ising system, we introduce the following QUBO-
+Hamiltonian, which involves site (σi) and edge (ηij, θij)
+variables on the L × L lattice, as well as slack variables
+(sk):
+H = H0 + AHs =
+X
+⟨ij⟩
+Vij + AHs ,
+(14)
+where:
+Vij = (1 + 2σiσj + 2(σi + σj)ηij
+−4(σi + σj + ηij)θij −σi −σj −ηij + 8θij)
+(15)
+Hs =
+
+X
+⟨ij⟩
+ηij −2¯nq −2
+m−1
+X
+k=0
+2ksk
+
+
+2
+.
+(16)
+In the above expressions, A is a non-negative coefficient,
+which we set equal to 1, and P
+⟨ij⟩indicates the summa-
+tion over distinct pairs of neighboring lattice sites.
+The σi = 0, 1 binary site variables are in one-to-one
+correspondence with the up/down spins of the physical
+Ising model. The η binary variables are instead intro-
+duced to keep track of parallel and antiparallel neighbor-
+ing spins. They are tied to the σs by an XNOR relation,
+which is enforced as a quadratic QUBO constraint in-
+volving the binary ancilla variables, θ. This is best seen
+by setting A = 0, which reduces the QUBO Hamiltonian
+to H0. In this case, minimizing the Hamiltonian for a
+given spin configuration σ amounts to minimizing the in-
+dividual quadratic terms Vij, yielding the sought XNOR
+relation:
+ηij =
+(
+1
+if σi = σj,
+0
+otherwise.
+(17)
+We note that the expressions for Vij are constructed
+such that for any set of the σ variables – each mappable
+to a unique set of physical spins – the energy-minimizing
+ηs and θs yield H0 = 0. Thus, the degenerate ground
+states of H0 are in one-to-one correspondence with the
+possible spin configurations and, thanks to the ancilla θ
+variables, also with the associated ηs, which represent the
+parallel or antiparallel alignment of neighboring spins.
+A schematic representation of the σ and η variables of
+a ground state solution of H0 in a 4 × 4 system is shown
+in Fig. 4.
+The second quadratic term in eq. 14, which involves
+slack variables, has the same structure as that of eq. 4.
+Its minimization ensures that the number of parallel
+spins, 2nq = P
+⟨ij⟩ηij, falls within the interval [2¯nq, 2¯nq+
+2m+1 −2].

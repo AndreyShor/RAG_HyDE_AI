@@ -1,0 +1,29 @@
+FIG. 1. Graph embedding of a demonstrative 4-qubit circuit transpiled on quantum hardware with native gates
+and linear qubit connectivity.
+CNOT connectivity of the transpiled circuit adhering to the device’s qubit
+connectivity is encoded in a directed graph. Single and two-qubit gate errors (si and tij) of the device are
+encoded in the node feature matrix. The rest of the features used while training; sc (tc): single (two) qubit
+gate count, pc: number of parameters, nc: noisy expectation value calculated using VQE on the noisy device
+are derived from the circuit.
+FIG. 2. GraphNetMitigator architecture: Output from GNN and features derived from the circuit are con-
+catenated and serve as an input to the feed-forward neural network (regressor). The weights of the model are
+updated to minimize the Huber loss with hyperparameter δ which makes it robust against the outliers.
+representation is a natural modeling choice for such train-
+ing data and GNNs can elegantly integrate such data
+structures. As mentioned in the section II B, we derive
+the graph by transpiling the circuit adhering to the qubit-
+connectivity of the real quantum device having n number
+of qubits. Graphs contain two types of information that
+we may wish to utilize for making predictions: nodes
+and edge connectivity. The node information can be em-
+bedded in the node feature matrix Xg. Expressing the
+graph’s connectivity is not that straightforward. Using
+an adjacency matrix A might be the most straightfor-
+ward option, as it can be easily converted into a tensor
+format. Here we explain how the graph and its corre-
+sponding attributes are constructed.
+The graph G(V, E) is represented as follows: The nodes
+{vi} correspond to the number of qubits n in the device,
+and directed edges eij ∈E symbolize the CNOT con-
+nectivity between the vi-th (parent node) and vj-th (tar-
+4

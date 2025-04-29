@@ -1,0 +1,67 @@
+PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY A, VOLUME 383, ISSUE 2289, 2025, DOI:10.1098/RSTA.2024.0146
+7
+3) Information Exchange: To summarize, at each time-step t each agent n ∈{1, . . . , N} solves the distributed Model
+Predictive Control (MPC) problem outlined in Problem (P1) over a rolling finite planning horizon of length T time-steps. The
+agents optimize their local objective function as described in Sec. IVIV-A-IV-A2 with respect to their own control inputs and
+decision (binary) variables as detailed in equations (5b) to (5m) to generate complementary look-ahead coverage plans through
+coordination and information exchange. This process is facilitated by the following coordinated processing and information
+exchange protocol: At each time-step t agent n acquires the most recent plans from all preceding agents k < n in the sequence
+˙ξk,m,˜p(t + τ|t), τ ∈{1, . . . , T} and also collects the previous predicted plans of all subsequent agents k > n who have yet to
+generate their latest plans, ˙ξk,m,˜p(t −1 + τ|t −1), τ ∈{1, . . . , T}. Because these binary decision variables indicate the points
+of interest ˜p ∈{1, . . . , |P|} that are scheduled for coverage by other agents k ̸= n agent n uses this information to generate
+plans that cover points not scheduled for observation by other agents. This is shown in Eq. (5i) which essentially decentivizes
+agent n for generating a coverage trajectory for a point of interest which has been scheduled for coverage by preceding agents
+in the sequence while also accounting for points of interest that have been scheduled for coverage in the previous time-step
+by agents which have yet to generate their latest plans. Subsequently, the agents that generate plans after agent n will take
+into account the latest plans of all previous agents k ∈{1, . . . , n} and in turn they will revise their previous plans accordingly
+targeting points of interest not already scheduled for coverage.
+Additionally, at each time-step t agent n receives from all other agents their record of already visited points, Qk, ∀k ̸= n
+which it combines to generate plans for unobserved points as captured by the binary variable ˆξn used in Eq. (5i). Finally,
+agent n also receives the positional state of all other agents k ̸= n at each time-step t which is used for computing p⋆
+n in
+the guidance objective as discussed in Sec. IV-A2. This information exchange protocol is repeated at each time-step enabling
+the agents to adapt their decisions on-line while considering the plans of their peers and minimizing duplication of work by
+generating complementary plans.
+B. Integrating Light-path Propagation Constraints
+Although Problem (P1), generates non-myopic coverage plans which maximize the number of points of interest which reside
+inside the convex-hull of the agent’s camera FOV inside the planning horizon it does not account for the notion of visibility
+as illustrated in Fig. 1(c). In its current form Problem (P1) does not provide a way of determining which parts of the object’s
+surface area are visible given the future planned state of the agent.
+In the context of visibility determination consider the point p˜p situated on a specific facet κ˜p within the set K. For p˜p to
+be deemed visible at a future time-step t + τ|t through the field of view (FOV) of the camera M n,m(t + τ|t) it must reside
+within the convex hull of this FOV and subsequently visibility is affirmed if there is at least one light-ray Rn,i from the set
+Rn,m(t + τ|t) for i ∈{1, . . . , NR} that intersects lastly with κ˜p which contains p˜p before hitting the camera lens center. This
+set Rn,m(t + τ|t) encapsulates all potential light-rays dictated by the camera’s state m at the given future time. To confirm
+visibility it must be ensured that the intersection operation symbolized by ⊕between any light-ray Rn,i and the facets in K
+results in the facet κ˜p which holds p˜p. If this intersection operation returns κ˜p then p˜p is considered visible from the camera
+state M n,m(t + τ|t). Conversely, if no intersections occur the operation results in ∅.
+Define the equation of the plane containing the facet κ as dot(ακ, x) = βκ where ακ ∈R3 represents the unit normal
+vector perpendicular to the plane of κ and x ∈R3 denotes a point in space. The intersection point of the light-ray Rn,i =
+rn,i + h[xp
+n(t) −rn,i], where h ∈[0, 1], with the plane of facet κ is determined by the following set of equations:
+dot (ακ, rn,i + h[xp
+n(t) −rn,i]) = βκ =⇒
+(11a)
+h =
+βκ −dot(ακ, rn,i)
+dot(ακ, xp
+n(t) −rn,i),
+(11b)
+where Eq. (11a) results from inserting the expression for Rn,i into the plane’s equation and Eq. (11b) solves for h. If the
+denominator in Eq. (11b) equals zero it implies the light-ray is parallel to the facet leading to no intersection or an undefined
+one. Thus, for visibility the condition dot (ακ, xp
+n(t) −rn,i) ̸= 0 is required to ensure a unique intersection. The intersection
+is valid if h ∈[0, 1] and the intersection point ˆx = rn,i + ˆh[xp
+n(t) −rn,i] (with ˆh as the solution from Eq. (11b)) lies within
+the convex hull of κ that is, ˆx ∈ConvHull(κ).
+The process described above must be applied at every time-step within the planning horizon to evaluate all potential
+realizations of light-rays Rn,i ∈Rn,m(t+τ|t) determined by the agent’s camera states M n,m(t+τ|t) and the triangular mesh
+K describing the object of interest. This assessment is crucial for determining the visibility of each point of interest p˜p ∈P in
+relation to the agent’s projected path. However, this method is computationally intensive and in addition requires the integration
+of non-convex and non-linear constraints (as illustrated in Eq. (11b)) which complicate efficient optimization. To circumvent
+these difficulties this work adopts an alternative strategy that involves initially learning state-dependent light-path propagation
+constraints to assess visibility. These constraints are then integrated as logical constraints into the coverage controller outlined
+in Problem (P1).
+This is achieved by first partitioning the environment E into a 3D grid G composed of discrete, non-overlapping cells denoted
+as G = {G1, . . . , G|G|}, with the union of all cells covering the entire grid S|G|
+g=1 Gg = G. Within each cell G ∈G, Ns joint

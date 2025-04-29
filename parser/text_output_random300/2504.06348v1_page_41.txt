@@ -1,0 +1,165 @@
+Routine
+Subroutine
+Toffoli gates
+Ancilla qubits
+Reference
+Load ζI
+ηion
+5 + bM
+App. E.5.1
+PREP3
+PREP3,el
+0
+0
+App. E.4.1
+PREP3,ion
+4Z + ⌈log(Z)⌉(bZ −3) −2
+bZ
+App. E.4.1
+PREPNL,1
+11Z + 3⌈log(9Z)⌉+ 2bα,l + bkeep −8
+2bkeep + ⌈log(9Z)⌉
+App. E.5.2
+PREPNL,2
+|0⟩→|ψ ˜
+G⟩
+(1 + 2R)(12˜n + 74n + 4n2 + 6nbpl + 6nbexp + 3brot + 8)
+2n + max{bexp, bpl}
+App. E.5.3
+|0⟩→| ¯Gα
+l,ζ⟩
+(1 + R)(4˜n + 2n2 + 7bn + 51
+4 b2 + 32b + 116 −2nmax(nmax + b))
+65b
+App. E.5.4
+USPM
+0
+0
+-
+Ineq. test
+(1 + R)(b + b ˜
+M)
+b + 2b ˜
+M
+App. E.5.5
+Pl
+USPM
+0
+0
+-
+Arithmetic
+5˜n + 5n2 + 8bn + 21
+4 b2 + 13
+2 b −2nmax(nmax + b) −6
+App. E.5.6
+Ineq. test
+2(max{b, ⌈log M⌉})2 + max{b, ⌈log M⌉}
+2 max{b, ⌈log M⌉} + 1
+App. E.5.4
+(Arithmetic)†
+5˜n + 5n2 + 8bn + 21
+4 b2 + 13
+2 b −2nmax(nmax + b) −6
+0
+App. E.5.6
+USP†
+M
+0
+0
+-
+SWAPp1,p2
+0
+0
+-
+Nucl. mom.
+P += p1 −p2
+2¯n
+¯n
+App. E.5.7
+Flag if ∈G
+0
+0
+App. E.5.7
+PREP†
+NL,2
+(Ineq. test)†
+(1 + R)(b + b ˜
+M)
+0
+App. E.5.5
+USP†
+M
+0
+0
+-
+| ¯Gα
+l,ζ⟩→|0⟩
+(1 + R)(4˜n + 2n2 + 7bn + 51
+4 b2 + 32b + 116 −2nmax(nmax + b))
+0
+App E.5.4
+|ψ ˜
+G⟩→|0⟩
+(1 + 2R)(12˜n + 74n + 4n2 + 6nbpl + 6nbexp + 3brot + 8)
+0
+App. E.5.3
+PREP†
+NL,1
+11Z + 3⌈log(9Z)⌉+ 2bα,l + bkeep −8
+0
+App. E.5.2
+PREP†
+3
+PREP†
+3,ion
+4Z + ⌈log(Z)⌉(bZ −3) −2
+0
+App. E.4.1
+PREP†
+3,el
+0
+0
+App. E.4.1
+Table 6: The resource costs for the implementation of the non-local interaction term. The parameter R
+quantifies the amount of repetition needed for amplitude amplification; for all elements that we explored
+numerically, R ≤3. The parameters in red are tunable, and must be chosen to satisfy an overall error budget
+for the block encoding. Other parameters are defined in their linked appendices. Note Z is the total number
+of pseudoion types.
+5.2.1
+Jacobi-Angers expansion and the cost of implementing the time-evolution
+We follow the construction in Ref. [24] and express the complex exponential with the Jacobi-Angers expan-
+sion. For |x| ≤1,
+eixτ = cos(xτ) + i sin(xτ),
+(118)
+cos(τx) = J0(τ) + 2
+∞
+X
+k>0: even
+(−1)k/2Jk(τ)Tk(x),
+(119)
+sin(τx) = 2
+∞
+X
+k>0: odd
+(−1)(k−1)/2Jk(τ)Tk(x).
+(120)
+where Jk(τ) are the Bessel functions of the first kind and Tk(x) = cos(k cos−1(x)) are the Chebyshev
+polynomials. For any fixed τ, the above series are truncated by dropping all terms with k ≥r:
+Cr(x) = J0(τ) + 2
+r−1
+X
+k>0: even
+(−1)k/2Jk(τ)Tk(x),
+(121)
+Sr(x) = 2
+r−1
+X
+k>0: odd
+(−1)(k−1)/2Jk(τ)Tk(x),
+(122)
+In Ref. [80] (Lemma 6, v1) it was shown that for any τ ∈R we can achieve a truncation error
+max
+x∈[−1,1]
+Cr(x) −iSr(x) −e−iτx ≤δ
+(123)
+41

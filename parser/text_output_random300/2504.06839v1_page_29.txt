@@ -1,0 +1,97 @@
+and now in the third summand in the right hand side we first exchange the integration order (before with respect to
+(h′′, h′′′, t′′) and then with respect to t′), then we change the variables names (t′′ ↔t′), and lastly we change variables
+from h′′ to θ′′ in such a way to have
+θ + 2π −2 arcsin(h′′) −2 arcsin(h′′′) = θ′′, that is h′′ = h′′(θ −θ′′, h′′′) as in Definition 1.7.
+By using this steps the term in (3.1.10) writes also as
+R t
+0 dt′ R 1
+−1 dh′′′ R θ+3π−2 arcsin(h′′′)
+θ+π−2 arcsin(h′′′)
+dθ′′φk(θ′′, t′, h′′′|θ′, h′) ∂h′′(θ−θ′′,h′′′)
+∂θ
+e2πi(t−t′)k·v(θ)
+·
+R t−t′
+0
+dt′′Q(t −t′ −t′′, h|h′′(θ −θ′′, h′′′)Q(t′′, h′′(θ −θ′′, h′′′)|h′′′)e2πit′′k·(v(θ′′−π+2 arcsin(h′′′)−v(θ))
+=
+Z t
+0
+dt′
+Z 1
+−1
+dh′′′
+Z θ+3π−2 arcsin(h′′′)
+θ+π−2 arcsin(h′′′)
+dθ′′φk(θ′′, t′, h′′′|θ′, h′)gk(θ, t −t′, h|θ′′, h′′′)
+=
+Z
+T1
+2π
+dθ′′
+Z t
+0
+dt′
+Z 1
+−1
+dh′′′φk(θ′′, t′, h′′′|θ′, h′)gk(θ, t −t′, h|θ′′, h′′′),
+where the last equality holds because gk and φk are periodic with respect to θ′′. This proves property (3.1.8).
+Finally, (3.1.9) is exactly (B.3.11) of Lemma B.6 in the Appendix.
+As in the case without the dependance on variable x, the properties (3.1.8) and (3.1.9) of the previous Lemma 3.1
+can be combined to prove that φk has the same properties as gk. In other words, we can prove Proposition 3.1.
+Proof of Proposition 3.1
+Proof. For k ∈R2, k ̸= (0, 0), the function φk in the statement of Proposition 3.1 is exactly the function φk defined
+through Lemma 3.1. Therefore it also writes as in (3.1.8) of Lemma 3.2.
+Therefore what we need is to prove that there exists a constant C depending only Q (and not on k) such that φk
+defined in Lemma 3.1 satisfies
+|φk(θ, t, h|θ′, h′)| ≤
+C
+min{1, |k|6}(t + 1)
+∀(θ, t, h|θ′, h′) ∈T1
+2π × [0, +∞) × [−1, 1] × T1
+2π × [−1, 1].
+The proof is exactly analogue to the proof of Lemma 2.4: the differences are in the fact that one has to substitute
+f(θ −θ′, t −t′, h|h′) with gk(θ, t −t′, h|θ′, h′), therefore we only sketch it.
+To prove that φk is bounded, one can use (3.1.8) of Lemma 3.2 (which is the analogue of Lemma 2.2 in the previous
+Section), in such a way to get
+∥φk∥L∞≤∥Jk∥L∞
+1 −dk ,
+(3.1.11)
+with
+Jk(θ, t, h|θ′, h′)
+:=
+gk(θ, t, h|θ′, h′)
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′′Q(t −t′, h|h′′)e2πi(t−t′)k·v(θ)gk(θ + π −2 arcsin(h′′), t′, h′′|θ′, h′),
+dk
+:=
+sup
+(θ,h)∈T1
+2π×[−1,1]
+∥gk(θ, ·, h|·, ·)∥L1.
+Notice that for any k by Definition 1.9 of gk and 1.8 of f we have
+∥Jk∥L∞≤2∥gk∥L∞≤2∥f∥L∞thanks to (B.3.7) of Lemma B.5,
+that is, Jk is bounded uniformly with respect to k, and that by (3.1.9) of Lemma 3.2 there exists a constant C′ ∈(0, 1)
+such that
+dk ≤1 −C′ min{1, |k|2}.
+Thus by (3.1.11) one obtains
+∥φk∥L∞≤
+2∥f∥L∞
+C′ min{1, |k|2}.
+(3.1.12)
+Moreover, to prove the statement one has also to prove that φk decays as 1
+t at most. To this purpose, one can notice
+that arguing again as in the proof of Lemma 2.4 one gets
+∥tφk∥L∞≤
+∥tJk∥L∞+ C
+αk
+αk−1∥φk∥L∞
+1 −αkdk
+,
+(3.1.13)
+29

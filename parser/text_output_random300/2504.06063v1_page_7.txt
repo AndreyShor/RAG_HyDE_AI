@@ -1,0 +1,164 @@
+7
+compact interval [ωmin−ϵ, ωmax] (see Eqs. (16) and (18)),
+for convolutions of the distributions Z(p)(ω0, ω2) with
+smooth smearing kernels,
+1
+¯Γ
+dΓ(p)(σ)
+dω2
+=
+|ω|3−p
+Z ∞
+ωmin−ϵ
+dω0 Θ(p)
+σ (ωmax −ω0) Z(p)(ω0, ω2), (33)
+and with a limiting procedure,
+Γ =
+2
+X
+p=0
+Z (|ω|max+ϵ)2
+0
+dω2 lim
+σ7→0
+dΓ(p)(σ)
+dω2
+.
+(34)
+We now rely on the Stone–Weierstrass theorem and ob-
+serve that, for any positive value of the length scale a,
+the kernels Θ(p)
+σ (ωmax −ω0) can exactly be represented
+according to
+Θ(p)
+σ (ωmax −ω0) = lim
+N7→∞
+N
+X
+n=1
+g(p)
+n (N) e−ω0(amDs)n .
+(35)
+The coefficients g(p)
+n (N) appearing in the previous for-
+mula have to be read as the coordinates of the kernels
+Θ(p)
+σ (ωmax −ω0) on the discrete set of basis-functions
+exp[−ω0(amDs)n]. The functional basis has been cho-
+sen in order to establish a direct connection between
+dΓ(p)(σ)/dω2 and the primary data of a lattice simu-
+lation, i.e. Euclidean correlators at discrete time sepa-
+rations. Indeed, while it is not possible to compute the
+Z(p)(ω0, ω2) distributions directly on the lattice, it is in-
+stead possible (see section VI) to compute the following
+Euclidean correlators
+ˆZ(p)(t, ω2) =
+Z ∞
+ωmin−ϵ
+dω0 e−ω0(mDst) Z(p)(ω0, ω2) (36)
+at the discrete Euclidean times t = an, where a is the
+lattice spacing5. By using Eq. (35) the connection can
+now easily be established,
+1
+¯Γ
+dΓ(p)(σ)
+dω2
+= |ω|3−p
+lim
+N7→∞
+N
+X
+n=1
+g(p)
+n (N) ˆZ(p)(an, ω2) .
+(37)
+In order to determine the coefficients g(p)
+n (N), and to
+study numerically the N 7→∞limit at fixed σ > 0 and
+5 see Ref. [6] for the generalization of this strategy to the case in
+which the length scale a, called τ in that paper, is kept constant
+in physical units.
+the associated systematic errors, we use the HLT algo-
+rithm of Ref. [9], see section VII. In order to perform the
+necessary σ 7→0 extrapolations we rely on the asymptotic
+formulae derived and discussed in section V. Details con-
+cerning the numerical evaluation of the ω2 integral will
+be provided in section XI.
+IV.
+THE LEPTON-ENERGY MOMENTS
+The lepton-energy moments are defined as the integrals
+of the differential decay rate multiplied by a power of the
+lepton energy (mDseℓ) and normalized by the total rate,
+i.e.
+Mn =
+Z (|ω|max+ϵ)2
+0
+dω2
+Z ωmax
+ωmin−ϵ
+dω0
+Z emax
+ℓ
+emin
+ℓ
+deℓ
+dMn
+dω2dω0deℓ
+,
+(38)
+where
+dMn
+dω2dω0deℓ
+= (mDseℓ)n
+Γ
+dΓ
+dω2dω0deℓ
+.
+(39)
+In this work we have computed the first two moments,
+M1 and M2. To do that, as already done in the case of the
+total rate, we performed the eℓintegrals analytically and
+then represented M1 and M2 in terms of the smearing
+kernels Θ(p)
+σ (ωmax −ω0).
+Concerning the first moment, we have
+M1 =
+3
+X
+p=0
+Z (|ω|max+ϵ)2
+0
+dω2 lim
+σ7→0
+dM (p)
+1 (σ)
+dω2
+,
+(40)
+where
+1
+¯
+M1
+dM (p)
+1 (σ)
+dω2
+=
+|ω|4−p
+Z ∞
+ωmin
+0
+−ϵ
+dω0 Θ(p)
+σ (ωmax −ω0) Z(p)
+1 (ω0, ω2), (41)
+with the normalization given by
+¯
+M1 = 1
+Γ
+m6
+Ds G2
+F SEW
+96π4
+,
+(42)
+and where we have introduced the following four linear

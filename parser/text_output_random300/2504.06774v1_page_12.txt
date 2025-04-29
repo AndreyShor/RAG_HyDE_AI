@@ -1,0 +1,86 @@
+such as LeakyReLU, before the final output dense layer.
+The additional dense
+layer refines the temporal features learned by the LSTM, allowing the network to
+capture more intricate relationships within the data. This architecture balances
+simplicity and additional feature transformation, potentially improving performance
+on moderately complex data sets.
+Layer
+Layer Details
+Neurons
+Activation Function
+Dimension
+0
+Input
+modes
+-
+(seq_len, modes)
+1
+LSTM
+128
+-
+128
+2
+Dense
+64
+Leaky ReLU
+64
+3
+Dense
+modes
+Linear
+modes
+Table 2: Layer details for LSTM 2 Dense architecture.
+• LSTM Time-Distributed: The final architecture features a single LSTM layer
+followed by a time-distributed layer. The time-distributed layer applies dense to
+each of the horizon timesteps individually. Unlike the original implementation by
+Abadía-Heredia et al.
+[1], which uses a forecast horizon of 6, this work adopts
+a horizon of 2.
+Abadía-Heredia et al.
+developed a predictive model, which has
+been adapted into an autoregressive framework to align with the overall design of
+this study. This will help compare the results between single-step and multi-step
+temporal predictions. In addition, to maintain similarity, the number of neurons
+was changed from 100 to 128.
+Layer
+Layer Details
+Neurons
+Activation Function
+Dimension
+0
+Input
+modes
+-
+(seq_len, modes)
+1
+LSTM
+128
+-
+128
+2
+Dense
+64
+Leaky ReLU
+64
+3
+Time-Distributed (Dense)
+32
+Leaky ReLU
+32
+4
+Dense
+modes
+Linear
+modes
+Table 3: Layer details for LSTM Time-Distributed architecture.
+The varying depth of dense layers in these architectures aims to explore the optimal
+configuration for modeling temporal data. Shallower architectures rely on the inherent
+ability of LSTM to capture temporal dependencies, while deeper architectures leverage ad-
+ditional dense layers for complex feature transformations. By systematically testing these
+configurations, this study seeks to determine the ideal balance between model complexity
+and generalization, ensuring robust predictions across diverse fluid dynamics scenarios.
+The choice of activation function often depends on the task and the network architec-
+ture. Leaky ReLU was chosen as the activation function for this study due to its ability
+to address the limitations of standard ReLU in handling negative input values effectively.
+This feature makes it particularly advantageous for modeling both laminar and turbulent
+12

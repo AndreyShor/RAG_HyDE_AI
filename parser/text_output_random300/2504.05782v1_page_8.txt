@@ -1,0 +1,158 @@
+Model
+Overall
+Easy
+Medium
+Hard
+Original
+Dynamic
+△
+Original
+Dynamic
+△
+Original
+Dynamic
+△
+Original
+Dynamic
+△
+Gemini2-thinking
+58.1
+41.6
+16.5
+66.7
+43.8
+22.9
+57.0
+44.8
+12.2
+51.5
+36.2
+15.3
+Gemini2-flash
+56.4
+47.0
+9.4
+66.6
+50.1
+16.4
+54.7
+46.1
+8.6
+48.9
+44.5
+4.4
+Claude-3.7
+46.7
+31.4
+15.3
+49.2
+32.3
+16.9
+50.2
+36.3
+13.9
+40.5
+25.2
+15.3
+GPT-4o
+51.2
+40.9
+10.3
+54.1
+35.7
+18.5
+53.7
+51.3
+2.4
+35.4
+34.8
+0.6
+Qwen2-VL-7B-GRPO
+28.2
+26.0
+2.2
+32.7
+29.4
+3.3
+26.3
+24.9
+1.4
+26.5
+19.9
+6.6
+Qwen2-VL-7B
+27.3
+26.1
+1.2
+31.8
+34.6
+-2.8
+25.5
+25.4
+0.0
+25.6
+20.5
+5.0
+InternVL2.5-8B
+41.7
+26.1
+15.6
+48.5
+23.5
+25.0
+44.1
+27.5
+16.6
+38.4
+30.8
+7.7
+Table 4. Accuracy on the original subset and the corresponding dynamic bootstrapped set. The △denotes the accuracy fluctuation.
+Figure 8. Accuracy of InternVL2.5-8B on the sampled subset using different combinations of dynamic bootstrapping strategies.
+accuracy breakdown across different difficulty levels, high-
+lighting temporal trends and potential shifts in model per-
+formance over time. Findings: The results suggest that
+there is a possibility that earlier exam data is included more
+in the training set, therefore improving accuracy on these
+memorized similar questions.
+5.3. Results on Full MDK12-Bench
+We also evaluate each baseline on the entire dataset of
+141.3K questions. Fig. 6 summarizes the main results. Run-
+ning on the full benchmark is computationally intensive;
+hence we prioritize the representative checkpoints from each
+model family. Results confirm that the trends seen in the
+subsets align well with the full set. The Test Logic: As
+illustrated in Fig. 7, it is noted that our benchmark can
+serve as an additional testbed after detecting which knowl-
+edge the model failed. That is, the new proposed models
+are first tested on three subsets of MDK12-Bench, and pro-
+vide knowledge-level performance. After gathering the key
+knowledge points that models do not perform well, the cor-
+responding full-set data related to these key points can be
+extracted as a targeted subset for an enhanced evaluation.
+This is a preliminary dynamic evaluation process.
+5.4. Dynamic Evaluation Results
+Main dynamic evaluation results. We sampled 50% mul-
+timodal instances from MDK12-mini as the original set
+(including 695 easy-level instances, 818 medium-level in-
+stances and 1124 hard-level instances. Then we applied all
+bootstrapping methods (3 textual and 3 visual) to create aug-
+mented test queries. Table 4 summarizes the results for each
+model under original vs. bootstrapped queries. The main
+insights are introduced as follows:
+1) Models show clear vulnerability to combined tex-
+tual and visual bootstrapping: The accuracy of MLLMs
+consistently dropped under combined bootstrapping, high-
+lighting weaknesses in handling simultaneous context shifts.
+2) Higher-performing models exhibit greater sensitivity
+to dynamic perturbations: GPT-4o showed significant ac-
+curacy drops (10.3%), emphasizing their heavy reliance on
+contextual reasoning rather than purely memorized knowl-
+edge. In contrast, Qwen2.5-VL-7B showed a relatively mi-
+nor reduction (1.20%), indicating reliance on certain ques-
+tion format distribution and, thus, greater stability under
+dynamic conditions. 3) High-order reasoning models are
+particularly sensitive to easier tasks under dynamic con-
+ditions: Gemini2-think experienced a substantial accuracy
+decline (22.9%) on easy tasks, suggesting these models rely
+significantly on precise contextual comprehension. It is easy
+to be disturbed by altered context outside the distribution.

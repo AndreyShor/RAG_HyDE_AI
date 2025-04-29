@@ -1,0 +1,59 @@
+Chemical exchange effects from SABRE were found negligible, as evidenced by minimal
+linewidth differences in 𝐽-spectra with different catalyst concentrations as shown in Fig. S2.
+SABRE-pumping.
+The pumping term ˆ𝑃ensures steady-state state aligns with the SABRE-
+hyperpolarized population imbalances at zero-field,
+ˆˆ𝑅ˆ𝜌eq + ˆ𝑃= 0,
+(S8)
+In the absence of external field, the steady state is isotropic, i.e., it has no preferred directions in
+space. As a result, the quantum states with the same the total angular momentum (𝐹) and total
+proton angular momentum (𝐾) have the same populations. And the steady-state
+ˆ𝜌eq can be fully
+describe by two parameters (see Fig. S3), 𝛼(for population imbalances in 𝐾= 3/2 manifold) and 𝛽
+(for population imbalance in 𝐾= 1/2 manifold). The values of are determined from the integrated
+signals of 1-𝐽and 2-𝐽peaks from a “ZF-ZF” experiment (36) with a 90◦15N-1H DC pulse:
+𝛼= 𝐼1J
+8𝑏0
+, 𝛽=
+𝐼2J
+20𝑏0
+,
+(S9)
+with,
+𝑏0 = 1
+2 (𝜇1H −𝜇15N) · 𝐶· 𝑁A · 𝜇0
+3 · 𝑟3
+𝑑3 .
+(S10)
+Here, 𝜇1H and 𝜇15N are the magnetic dipole moment for 15N and 1H nucleus, respectively.
+The numerical solver.
+The master equation is solved via Strang splitting, which separates coher-
+ent and dissipative dynamics with second-order accuracy. The density operator ˆ𝜌(𝑡) evolves over a
+timestep Δ𝑡as follows:
+1. Coherent half-step: Apply unitary evolution with:
+ˆ𝑈1 = 𝑒
+−𝑖
+
+ˆ𝐻0+ ˆ𝐻F(𝑡+ Δ𝑡
+4 )
+
+Δ𝑡
+2 ,
+updating ˆ𝜌→ˆ𝑈1 ˆ𝜌ˆ𝑈†
+1.
+2. Dissipative step: Update ˆ𝜌via a Euler step, ˆ𝜌→ˆ𝜌+
+ ˆˆ𝑅ˆ𝜌+ ˆ𝑃
+
+Δ𝑡.
+3. Second coherent half-step: Apply
+ˆ𝑈2 = 𝑒
+−𝑖
+
+ˆ𝐻0+ ˆ𝐻F(𝑡+ 3Δ𝑡
+4 )
+
+Δ𝑡
+2 ,
+updating ˆ𝜌→ˆ𝑈2 ˆ𝜌ˆ𝑈†
+2.
+S5

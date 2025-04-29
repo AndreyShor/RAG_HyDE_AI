@@ -1,0 +1,30 @@
+A Self-Supervised Framework for Space Object Behaviour Characterisation.
+12
+Figure 10: Sampling the latent space of our fine-tuned Perceiver-VAE. (A) Initial exploration of noise scaling in synthetic data
+generation. As in VAE training, at inference time we can offer a reference real light curve into the forward pass of the model.
+Once this has been encoded, we capture the latent vectors that respond highest to this reference curve, apply gaussian noise at
+different scales to these scalar values (0.25-1.0), and then decode the results. As expected, this results in synthetic light curves that
+adhere to the general global feature of the input curve, but differ on local features, and at increasing variance as you increase the
+distance from the latent activation. (B-C) Our synthetic data generation querying approach. Here we use the fine-tuned motion
+classifier, but this could also readily be the anomaly tuned classifier from Section 2.6. D-I To generate informed synthetic data, we
+first classify a held out test set using the motions described in Fig 9. Selecting a desired motion (e.g., Tumbling), we isolated test
+samples with high confidence class likelihood of belonging to tumbling, before using those as our latent space activating samples.
+As in (A), we then generate synthetic samples using a gaussian noise with noise scale of 0.75 around the latent activations.
+Pre-training was conducted with a batch size of 32 and an initial
+learning rate of 1e−3, with gradient clipping at 0.5 to prevent
+exploding gradients. We implemented a learning rate sched-
+uler that reduced the rate by a factor of 0.5 when validation
+loss plateaued for 5 consecutive epochs. We pre-trained for 50-
+200 epochs, implementing early stopping with a patience of 50
+epochs to ensure proper convergence while preventing overfit-
+ting.
+3.4
+Fine-tuning
+For fine-tuning, we provide an additional constraint on the
+model. In addition to the Variational autoencoding task (Equa-
+tion 3), the model also minimises binary cross entropy loss
+(Equation 9, or categorical cross entropy loss in the case of the
+multi-class motion prediciton problem). This results in an over-
+all loss term of:
+Lfine-tune = Ltotal + Lclass,
+(8)

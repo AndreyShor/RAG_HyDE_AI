@@ -1,0 +1,67 @@
+x by performing a molecular dynamics (MD) simulation at 5000 K employing the ASE package [86] and
+an Andersen thermostat [87] with a simulation time step of 0.1 fs.
+For each molecule, we construct a
+configurational database by extracting 5,000 structures, sampling every 10 frames from the MD simulation.
+Next, we train a simple machine-learning (ML) model to predict the energy EXα(x). For each structure
+in each dataset, given by a set of ionic positions x and ionic charges z, we compute simple feature vectors
+that can be easily computed by a quantum circuit. Our approach is based on an extension of a simple
+molecular descriptor, the Coulomb matrix [88], defined by a matrix M with entries
+Mij =
+0.5z2.4
+i
+for i = j
+zizj
+|xi−xj|
+for i ̸= j ,
+(132)
+where i and j label ions for each structure. While simple, the Coulomb matrix descriptor has one drawback
+for our problem: the individual entries of the matrix are not invariant as one swaps different indices associated
+with equivalent atomic species. Common solutions involve the usage of the eigenvectors of M, ordered by
+their respective eigenvalues, as the feature vectors, or sorting the various columns of M according to their
+2-norm. While it is possible to implement such approaches in a quantum circuit, they involve sorting values
+and incur additional overhead in circuit size and auxiliary qubits.
+Here, we propose alternative Coulomb-matrix-type of descriptors that are simple to implement with
+quantum circuits. We first consider successively higher matrix products M p, where p ∈Z+ and compute the
+corresponding squared Frobenius norms mp ≡P
+ij |(M p)ij|2, which is invariant under atom permutation.
+We also compute an element-wise inverse of the Coulomb matrix N, Nij ≡1/Mij, and similarly compute the
+squared norms np ≡P
+ij |(N p)ij|2. Next, we augment these scalars mp and np with arbitrary powers q ∈Z+.
+We define a feature vector as u ≡(m1, · · · , mp, n1, · · · , np, · · · , mq
+1, · · · , mq
+p, nq
+1, · · · , nq
+p)T , with dimension
+2pq.
+Next, we train a logistic regression model to classify whether a feature vector u is associated with a
+molecule, an unstable structure, or a different chemical compound, i.e., we build the feature indicator in
+Eq. (14).
+For our example, we utilize a simple criterion: we consider a structure part of a molecule if
+its energy per atom is within Emax = 0.25 eV of the equilibrium energy. To avoid overfitting, we add L2
+regularization to our loss function and perform stratified k-fold cross-validation with 5 splits. We find it
+sufficient to use p = 2 and q = 3 (i.e., 12 scalars to form the feature vector) to obtain an accurate prediction
+of various simple molecules (H2O, CO, CO2 and H2), obtaining an area-under-the-curve (AUC) score beyond
+99.9%.
+A significant advantage of this approach is that the logistic model is simple to train and tune. A logistic
+model fits a probability function p(u) = [1 + exp(wT u + b)]−1 that the feature u is associated with a desired
+molecule, where the training weights w ∈R2pq and the intercept b ∈R are obtained from training the logistic
+regression, and where the subscript Xα is implied in all quantities. After we determine the weights, we seek
+a simpler fingerprinting function I(u) that has a binary output and is easier to evaluate. We hence define
+I(u) = Θ(wT u + b), where the intercept b is obtained from the logistic fitting.
+After the logistic fitting is performed, one may also fine-tune the decision criterion of whether a given
+atomic configuration is part of a molecule. Instead of changing Emax, generating a new dataset, and re-
+peating the logistic regression procedure, one can simply alter the value of the intercept b, without changing
+the weights w, to make the fingerprinting function more or less strict. This procedure is particularly conve-
+nient because one typically needs to utilize small values of Emax to ensure physically relevant fingerprinting
+thresholds. However, small values of Emax yield a large population imbalance between configurations that
+are flagged as part of the molecule and those that are not. As regression techniques typically perform worse
+with large population imbalances, it is much more stable to utilize a larger value of Emax that roughly
+divides the atomic configurations into equal populations that are part of and not part of a molecule during
+the logistic regression procedure, and simply adjust b afterward to fine tune the fingerprinting function to
+within the desired threshold.
+For more complex chemical structures, a different criterion, perhaps not based on energetics alone, can be
+employed to train fingerprints. Such a criterion depends on the desired goals of the simulation: for instance,
+one can identify unstable structures that are topologically similar to the reference molecule or identify a set
+of ionic configurations that behave, electronically and/or vibrationally, similar to the reference molecule. In
+other words, one can classically train fingerprints with a ground truth based on energies and/or topological
+44

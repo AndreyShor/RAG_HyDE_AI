@@ -1,0 +1,55 @@
+ELECTRONIC STRUCTURE GUIDED INVERSE DESIGN
+USING GENERATIVE MODELS
+Shuyi Jia†, Panchapakesan Ganesh‡§, Victor Fung†§
+†Computational Science and Engineering, Georgia Institute of Technology, Atlanta, GA, USA
+‡Center For Nanophase Materials Sciences, Oak Ridge National Laboratory, Oak Ridge, TN, USA
+§Corresponding authors: ganeshp@ornl.gov, victorfung@gatech.edu
+ABSTRACT
+The electronic structure of a material fundamentally determines its underlying physical,
+and by extension, its functional properties. Consequently, the ability to identify or gener-
+ate materials with desired electronic properties would enable the design of tailored func-
+tional materials. Traditional approaches relying on human intuition or exhaustive compu-
+tational screening of known materials remain inefficient and resource-prohibitive for this
+task. Here, we introduce DOSMatGen, the first instance of a machine learning method
+which generates crystal structures that match a given desired electronic density of states.
+DOSMatGen is an E(3)-equivariant joint diffusion framework, and utilizes classifier-free
+guidance to accurately condition the generated materials on the density of states. Our
+experiments find this approach can successfully yield materials which are both stable
+and match closely with the desired density of states. Furthermore, this method is highly
+flexible and allows for finely controlled generation which can target specific templates
+or even individual sites within a material. This method enables a more physics-driven
+approach to designing new materials for applications including catalysts, photovoltaics,
+and superconductors.
+1
+INTRODUCTION
+The ability to design novel materials with specific functional properties is fundamental to technological
+breakthroughs, driving innovation in fields such as energy storage, electronics, and healthcare [1, 2, 3, 4,
+5]. While traditional approaches to materials design rely heavily on Edisonian trial-and-error testing, or
+exhaustive screening through experimental or computational methods, these methods are often both time-
+consuming and resource-intensive [6, 7]. In contrast, recent advances in deep generative models have
+enabled them to be a potentially transformative approach to materials design. Specifically, this approach to
+inverse design eliminates the need for exhaustive screening of the materials space by working backwards to
+create materials from the ground up via a data-driven process [8, 9, 10, 11].
+Deep generative models for materials design can be trained to conditionally generate the precise crystal
+structure of materials, which allows for further computational investigation followed by eventual experi-
+mental synthesis and validation. Current state-of-the-art approaches generally operate by generating new
+candidates within a given materials representation, or by applying an iterative process such as denoising
+directly on atomic coordinates in the Cartesian space. Examples of the former case include text-based rep-
+resentations for autoregressive language modeling of materials [12, 13, 14], 3D voxelized images for varia-
+tional autoencoders and generative adversarial networks (GANs) [15, 16, 17], among others [18, 19, 20, 21].
+In the latter case, a seminal early example would be the crystal diffusion variational autoencoder (CDVAE)
+[22], which employs a diffusion model [23] to denoise atomic coordinates while predicting composition
+and lattice parameters from a latent representation. Building on this foundation, recent diffusion-based
+and flow-matching approaches have advanced to jointly generate all relevant structural and compositional
+attributes in a unified process [24, 25, 26]. Using these methods, new materials have been generated with
+desired properties which have been validated with density functional theory (DFT) [27, 28, 29, 30] and in
+some cases, experimental studies [25].
+In this work, we introduce DOSMatGen, a conditional diffusion model designed to generate stable crys-
+talline materials with targeted atomic-level electronic properties. Extending the periodic E(3)-equivariant
+denoising framework of DiffCSP [24], DOSMatGen achieves high-quality conditional generation by care-
+fully tuning the balance between the structural validity of the generated materials and their alignment with
+the target properties. As a concrete demonstration, we focus on conditioning the diffusion process on
+node-level density of states (DOS). The DOS corresponds to a 1D spectral property that encodes the key
+electronic-level functionality of a material, from its metal, semiconducting, insulating states, to more ex-
+1
+arXiv:2504.06249v1  [cond-mat.mtrl-sci]  8 Apr 2025

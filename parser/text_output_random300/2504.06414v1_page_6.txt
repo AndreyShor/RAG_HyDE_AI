@@ -1,0 +1,29 @@
+quantized values produce zero gradients, straight through estimator approach has been applied to backpropagate 
+gradients [28], [29].   
+ 
+(a) 
+    (b) 
+ 
+Figure 4. Implementation of the neural network. (a) Quantization of sigmoid activation function. (Even though 11 
+state quantization was used for the range [-1,1], output of sigmoid function only adopts 6 states since output of 
+sigmoid is in the range [0,1]). (b) A simple schematic of our proposed quantized SC-ANN   
+ 
+Algorithm: Quantization aware training for SC-ANN 
+ 
+Input: 
+Training input dataset X0= [X1, X2, X3, …XN] 
+Testing input dataset T0 = [T1, T2, T3, …TM] 
+// X, T are n dimensional vectors. 
+// number of layers= L, learning rate=  η, QL= number of quantization states.  
+ 
+Begin 
+ 
+Weight initialization: W ← Gaussian distribution [-1, 1] 
+X ← X/ maximum (X);  // input data normalized; 
+ 
+// feedforward  
+for k= 1 to L do 
+ 
+Xk-1 ← Quantize (Clip (Xk-1), −1, 1), QL) 
+ 
+Wk ← Quantize (Clip (Wk), −1, 1), QL) 

@@ -1,0 +1,66 @@
+Figure 13: Figure from [79]. (left) The expected key rate versus the QBER is lower for finite n and with a security proof
+against coherent attacks than the one against individual and collective attacks. (Right) The expected key rate as a function
+of the number of rounds ¯n.
+state at the output of the sequential process conditioned by the event ω is denoted as ρ|ω ∈Nn
+i=1 Σi(pi) ⊆
+Nn
+i=1 RiOiSiCiE = Rn
+1 On
+1 Sn
+1 Cn
+1 E (denoting, e.g.
+Rn ≡R⊗n).
+With this notation, each register is
+isomorphic to the corresponded register at round i = 1. B(Ω) is the Borel σ–algebra.
+Note that the trade-off functions applied for the probabilities p(ω) have consistent bound from all
+the other quantum output O1, . . . , On ≡On
+1 and similarly Sn
+1 .
+For instance infρ|ω H(On
+1 |Sn
+1 E)ρ|ω ≥
+fmin(p(ω)). Using these definitions, EAT can be stated as the following theorem.
+Theorem 8 (Entropy accumulation theorem). Given a markovian sequential process M = ⃝n
+i=1Mi ⊗id
+(see fig. 12a) such that the output state is ρ|ω = M(ρin), a convex fmin(p(ω)) ≥t with t ∈R, and
+ε ∈(0, 1), then
+Hε
+min(On
+1 |Sn
+1 E)ρ|ω ≥nt −ν√n,
+ν = 2 (log(1 + 2 dim Oi) + ⌈∥∇fmin ∥∞⌉)
+p
+1 −2 log(εp(ω)). (111)
+Proof. (details in Refs. [84, 82, 83]). The smooth min-entropy Hϵ
+min is related to the sandwiched R´enyi
+entropy Hα for some parameter α > 1 used to decompose the entropy of the full sequence into a sum
+of conditional entropies for each round: Hα(On
+1 |Sn
+1 E) ≈Pn
+i=1 Hα(Oi|SiE). The Markovinity ensures
+that each term Hα(Oi|SiE) depends only on the previous rounds and not the entire sequence. Now,
+Hα can be bounded by the von Neumann entropy H(Oi|SiE) using properties of the R´enyi entropy
+Hα(Ai|BiR) ≈H(Ai|BiR) −O(α −1). Combining this with the tradeoff function fmin, which lower
+bounds H(Oi|SiE), we get: Hα(Ai|BiR) ≥f(p(ω)) −O(α −1). The distribution p(ω) of the classical
+outcomes is used to bound the entropy of the sequence. The observed event Ωensures that f(p(ω)) ≥t,
+i.e. the entropy rate averaged over all rounds is at least t. The finite-size effects arise because n is finite
+and fmin depends on the second order statistical fluctuations ν√n in the observed data. The sandwiched
+R´enyi entropy Hα is converted to the smooth min-entropy Hϵ
+min. Thus, the total smooth min-entropy
+grows approximately linearly with n, up to finite-size corrections.
+4.1.1. Finite key analysis with EAT
+Thanks to EAT, the key rate r of CHSH protocol versus the QBER Q can be predicted at finite n
+(see Fig. 13). For n = 1015, the curve nearly overlaps the asymptotic iid case 3.6, which was shown to
+be optimal allowing the protocol to tolerate up to Q = 0.071.
+Instead, for non-iid coherent attack analysis, the key rate obtained in [65] remains well below the
+lowest curve presented in Fig. 13, even if the number of signals approaches infinity, with a maximum
+noise tolerance of only 1.6%. Fig. 13 shows the key rate as a function of the number of rounds n, for
+different values of Q. Evidently, the rates achieved are significantly higher than those without EAT, and
+are comparable to the key rates of the practical device-dependent QKD with the difference that the device-
+independent one requires a larger n. Indeed, the finite-key analysis in Ref. [79] shows that the experiments
+[74] and [181] require, respectively, n = 108 and n = 1010 rounds against coherent attacks for r > 0.
+This analysis involves noisy preprocessing, random key measurements, and modified CHSH inequalities.
+While this is a marked improvement wrt the basic protocol in [57] (Sec. 3.6) (which yields zero asymptotic
+key rates for those experiments), the values of n are still impractical. Therefore, two modifications were
+applied: (i) a pre-shared key, which results in a net key generation rate approximately double that of
+41

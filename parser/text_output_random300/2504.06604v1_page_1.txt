@@ -1,0 +1,37 @@
+Image registration of 2D optical thin sections in a 3D porous medium:
+Application to a Berea sandstone digital rock image
+Jaehong Chung1, *
+Wei Cai2
+Tapan Mukerji1,3
+1Department of Geophysics, Stanford University, Stanford, CA, USA
+2Department of Mechanical Engineering, Stanford University, Stanford, CA, USA
+3Department of Energy Science and Engineering, Stanford University, Stanford, CA, USA
+ABSTRACT
+This study proposes a systematic image registration approach to align 2D optical thin-section images
+within a 3D digital rock volume. Using template image matching with differential evolution opti-
+mization, we identify the most similar 2D plane in 3D. The method is validated on a synthetic porous
+medium, achieving exact registration, and applied to Berea sandstone, where it achieves a structural
+similarity index (SSIM) of 0.990. With the registered images, we explore upscaling properties based
+on paired multimodal images, focusing on pore characteristics and effective elastic moduli. The
+thin-section image reveals 50 % more porosity and submicron pores than the registered CT plane. In
+addition, bulk and shear moduli from thin sections are 25 % and 30 % lower, respectively, than those
+derived from CT images. Beyond numerical comparisons, thin sections provide additional geological
+insights, including cementation, mineral phases, and weathering effects, which are not clear in CT
+images. This study demonstrates the potential of multimodal image registration to improve computed
+rock properties in digital rock physics by integrating complementary imaging modalities.
+Keywords Image registration · Digital rock physics · Effective properties
+1
+Introduction
+Understanding pore-scale processes is essential for various subsurface applications, including groundwater flow [Zhu
+et al., 1999, Bear and Cheng, 2010], carbon dioxide sequestration [Chen et al., 2019, Chung et al., 2023, 2024a],
+underground hydrogen storage [Hashemi et al., 2021, Wang et al., 2023], and radioactive waste disposal [Curti et al.,
+2019, Chung et al., 2019]. Traditionally, these processes have been investigated through laboratory experiments using
+core plugs, which are time-consuming and challenging to reproduce. Recently, digital rock physics (DRP) utilizes
+high-resolution digital rock images to perform pore-scale analysis and simulate physical processes to compute effective
+properties [Andrä et al., 2013a,b]. DRP provides a non-destructive and cost-effective alternative to conventional
+laboratory measurements [Berg et al., 2017]. In particular, micro-CT imaging has become a widely used tool in DRP
+for computing effective properties, offering 3D rock microstructures while preserving sample integrity. It enables
+permeability estimation via pore-scale fluid flow simulations [Blunt et al., 2013] and elastic moduli estimation via micro-
+scale mechanical simulations [Zhu et al., 2017, Saxena and Mavko, 2016]. More recently, deep learning approaches
+Corresponding author: jhchung1@stanford.edu
+arXiv:2504.06604v1  [physics.geo-ph]  9 Apr 2025

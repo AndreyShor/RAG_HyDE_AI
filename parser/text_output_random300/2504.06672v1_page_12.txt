@@ -1,0 +1,104 @@
+RAGME: Retrieval Augmented Video Generation for Enhanced Motion Realism
+Supplementary Material
+We provide additional details and results for our method.
+In Appendix A, we delve deeper into the implementation
+of RAGME, with a particular focus on the retrieval system.
+Following this, we present both qualitative and quantitative
+results. In Appendix B, we report the full evaluation metrics
+on the VBench suite. Lastly, in Appendix C we showcase
+additional qualitative results.
+A. Implementation
+We provide additional details on the implementation of our
+retrieval mechanism. We build our retrieval system on the
+WebVid10M [1] dataset. First, we use the CLIP ViT-B/32
+model to encode the video frames. This model includes
+both image and text encoders, which produce embeddings
+of size dim = 512. Next, we leverage the FAISS library
+[13] to create an index for efficient retrieval. The Web-
+Vid10M dataset contains duplicate or highly similar videos;
+to prevent the model from processing redundant informa-
+tion, given a query q, we apply a deduplication strategy
+based on the cosine similarity between samples. We empir-
+ically set the deduplication threshold at δdedup = 0.965 and
+maintain this value across all experiments. Additionally, to
+ensure that the retrieved videos are relevant to the query, we
+set a minimum cosine similarity threshold of δmin = 0.6
+and remove samples from the retrieval set Z that do not meet
+this criterion. In such cases, padding is used to match the
+required length.
+From an architectural point of view, we introduce the
+transformer temporal enhancer module to improve the tem-
+poral representation of the video.
+It is composed of 6
+layers of transformer blocks with a hidden dimension of
+dim = 512. A learnable token [CLS] is added at the be-
+ginning of the sequence and pooled in output to represent
+the video. Lastly, we add multi-head cross-attention layers
+to the base T2V model ZeroScope. We introduce a point-
+wise convolution initialized with zero-weights, to act as the
+identity when the model is initialized.
+The added modules are finetuned (while keeping the rest
+of the network frozen) for 200K iterations on the Web-
+Vid10M dataset, at resolution 448 × 256 and 12 frames.
+Training is performed with an effective batch size of 16,
+distributed on 4 Nvidia A100 GPUs.
+B. VBench Results
+We report all the metrics from the VBench benchmark in
+Fig. 7, which complements the results of Tab.
+2 of the
+main paper. We can observe that the methods perform sim-
+ilarly on many metrics, with some noticeable exceptions.
+Aesthetic Quality
+Appearance Style
+Background Consistency
+Color
+Dynamic Degree
+Human Action
+Imaging Quality
+Motion Smoothness
+Multiple Objects
+Object Class
+Overall Consistency
+Scene
+Spatial Relationship
+Subject Consistency
+Temporal Flickering
+Temporal Style
+0.2
+0.4
+0.6
+0.8
+1.0
+ZeroScope
+FreeInit
+RagInit
+RAGME
+Figure 7. Full comparison on the VBench benchmark.
+RAGME outperforms the baseline on the motion-related
+metrics (e.g. Dynamic Degree and Human Action), while
+falling short on Image Quality and Subject Consistency.
+The first can be explained by the low quality of the Web-
+Vid10M dataset (e.g., the presence of the watermark) which
+can deteriorate the quality of the generated frames. The
+second is linked with the increased motion, which would
+inevitably make the consistency harder. However, from vi-
+sual inspection, we didn’t notice a significant drop in the
+quality of the videos nor temporal artifacts such as flicker-
+ing or inconsistent objects.
+C. Qualitative Results
+In Fig. 9, we present additional videos for the VBench
+prompts. RAGME generates better results also in the pres-
+ence of complex or objects prompt (e.g. the last row). Next,
+we compare the first frame of the generated video with the
+first frame of the retrieved samples, showing that the model
+is not directly coping with the conditioning signal.
+Motion Transfer
+While our method is designed for flex-
+ible conditioning on multiple retrieved videos, a key appli-
+cation in video editing is motion transfer. This involves
+transferring motion from a reference video while control-
+ling the appearance and overall style of the output, for in-
+stance, through a textual prompt.
+Our approach is specifically designed to avoid explicit
+copy-paste artifacts, extracting only high-level motion se-
+1

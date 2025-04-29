@@ -1,0 +1,108 @@
+SigChord: Sniffing Wide Non-sparse Multiband Signals for
+Terrestrial and Non-terrestrial Wireless Networks
+Jinbo Peng
+jbpeng22@m.fudan.edu.cn
+Fudan University
+Shanghai, China
+Junwen Duan
+jwduan24@m.fudan.edu.cn
+Fudan University
+Shanghai, China
+Zheng Lin
+zlin20@fudan.edu.cn
+Fudan University
+Shanghai, China
+Haoxuan Yuan
+hxyuan22@m.fudan.edu.cn
+Fudan University
+Shanghai, China
+Yue Gao
+gao.yue@fudan.edu.cn
+Fudan University
+Shanghai, China
+Zhe Chen
+zhechen@fudan.edu.cn
+Fudan University
+Shanghai, China
+Abstract
+While unencrypted information inspection in physical layer (e.g.,
+open headers) can provide deep insights for optimizing wireless
+networks, the state-of-the-art (SOTA) methods heavily depend on
+full sampling rate (a.k.a Nyquist rate), and high-cost radios, due to
+terrestrial and non-terrestrial networks densely occupying multiple
+bands across large bandwidth (e.g., from 4G/5G at 0.4-7 GHz to
+LEO satellite at 4-40GHz). To this end, we present SigChord, an
+efficient physical layer inspection system built on low-cost and
+sub-Nyquist sampling radios. We first design a deep and rule-based
+interleaving algorithm based on Transformer network to perform
+spectrum sensing and signal recovery under sub-Nyquist sampling
+rate, and second, cascade protocol identifier and decoder based
+on Transformer neural networks to help physical layer packets
+analysis. We implement SigChord using software-defined radio
+platforms, and extensively evaluate it on over-the-air terrestrial
+and non-terrestrial wireless signals. The experiments demonstrate
+that SigChord delivers over 99% accuracy in detecting and decoding,
+while still decreasing 34% sampling rate, compared with the SOTA
+approaches.
+CCS Concepts
+• Networks →Network measurement; Mobile networks; •
+Applied computing →Telecommunications; • Computing
+methodologies →Neural networks.
+Keywords
+Landau rate, deep learning, compressed sensing, network monitor-
+ing, sub-Nyquist sampling
+Our code is open-sourced at https://anonymous.4open.science/r/Anonymous-A3F5.
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+MobiSys ’25, June 23–27, 2025, Anaheim, California, US
+© 2025 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+ACM ISBN xxx-x-xxxx-XXXX-X/25/06
+https://doi.org/XXXXXXX.XXXXXXX
+ACM Reference Format:
+Jinbo Peng, Junwen Duan, Zheng Lin, Haoxuan Yuan, Yue Gao, and Zhe
+Chen. 2025. SigChord: Sniffing Wide Non-sparse Multiband Signals for
+Terrestrial and Non-terrestrial Wireless Networks. In Proceedings of The
+23rd ACM International Conference on Mobile Systems, Applications, and
+Services (MobiSys ’25). ACM, New York, NY, USA, 14 pages. https://doi.org/
+XXXXXXX.XXXXXXX
+1
+Introduction
+Wireless communication plays a vital role in modern network in-
+frastructure, underpinning countless applications and services [9–
+15]. In this context, a lack of precise situational awareness will
+complicate management and undermine the ability to maintain
+network quality [16, 17]. Therefore, physical layer inspection tools
+are important in these environments. Such tools play a role similar
+to the upper layer sniffing and monitoring tools [4, 17–20] which
+help dissect and optimize network communication. Similarly, by
+enabling researchers and network operators to analyze wireless
+signals directly for deep packet inspection, these tools facilitate
+better understanding, optimization, network configurations, and
+protocol designs [21–23], ultimately improving the performance
+and reliability of wireless networks.
+However, current packet inspection tools, such as Wireshark [4],
+provide narrow and isolated views of individual signals, lacking the
+holistic perspective needed to address the complexities of modern
+wireless environments, which are characterized by heterogeneous
+networks sharing spectrum resources to improve spectrum utiliza-
+tion [24–30]. On the one hand, terrestrial networks, including Wi-Fi,
+LTE, and 5G NR, share the unlicensed spectrum around the 5GHz
+band for flexible network deployments [31]. This leads to a complex
+and dynamic environment, creating significant management chal-
+lenges and making it increasingly difficult for individual systems
+to assess and adapt to the coexistence of heterogeneous wireless
+networks [31, 32]. On the other hand, the rise of non-terrestrial
+networks has exacerbated these challenges. Low-Earth Orbit (LEO)
+satellite networks, although typically assigned dedicated frequency
+bands, have been observed occupying unlicensed bands, leading
+to coexistence with terrestrial networks [33–35]. Furthermore, the
+wide beam coverage of satellites often overlaps with multiple terres-
+trial networks. In bent-pipe communications [36], satellites function
+as relay nodes to extend coverage, further complicating the dynam-
+ics of wireless coexistence and heterogeneity. Therefore, there is
+arXiv:2504.06587v1  [cs.NI]  9 Apr 2025

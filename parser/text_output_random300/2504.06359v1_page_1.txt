@@ -1,0 +1,101 @@
+arXiv:2504.06359v1  [quant-ph]  8 Apr 2025
+Quantum Covert Communication under Extreme Adversarial Control
+Trey Li∗
+University of Manchester, Manchester, UK
+(Dated: April 8, 2025)
+Secure quantum communication traditionally assumes that the adversary controls only the public
+channel. We consider a more powerful adversary who can demand private information of users.
+This type of adversary has been studied in public key cryptography in recent years, initiated by
+Persiano, Phan, and Yung at Eurocrypt 2022. We introduce a similar attacker to quantum com-
+munication, referring to it as the controller. The controller is a quantum computer that controls
+the entire communication infrastructure, including both classical and quantum channels. It can
+even ban classical public key cryptography and post-quantum public key cryptography, leaving only
+quantum cryptography and post-quantum symmetric key cryptography as the remaining options.
+We demonstrate how such a controller can control quantum communication and how users can
+achieve covert communication under its control.
+I.
+INTRODUCTION
+Quantum mechanics changes our understanding of in-
+formation and security [1].
+Unlike classical security,
+which relies on computational complexity [2, 3], quantum
+security is based on the fundamental laws of physics. The
+core principles of quantum mechanics—superposition,
+entanglement, uncertainty, wavefunction collapse, and
+no-cloning—form the foundation of secure quantum com-
+munication.
+Superposition [4] allows a photon to encode informa-
+tion in multiple quantum states simultaneously, similar
+to how a qubit can embody both 0 and 1 at the same
+time. This capability improves the eﬃciency and secu-
+rity of quantum information transmission by allowing for
+denser data encoding and more robust encryption meth-
+ods.
+Entanglement [5, 6] establishes a strong correlation be-
+tween quantum particles. When one particle’s state is
+measured, the state of its entangled partner is instanta-
+neously determined, regardless of the distance between
+them.
+This principle enables secure remote agreement
+on photon states, making any unauthorized measurement
+immediately detectable.
+Heisenberg’s Uncertainty Principle [7] states that mea-
+suring certain conjugate properties (such as position and
+momentum, or energy and time) of a quantum system
+will inevitably disturb the system. This inherent distur-
+bance exposes any interception or interference.
+Wavefunction collapse [8] happens when a quantum
+system is measured, forcing it into a single state and
+destroying the original superposition. This makes eaves-
+dropping impossible, as the act of measurement collapses
+the state of the system.
+The no-cloning theorem [4, 9] asserts that it is impossi-
+ble to create an exact copy of an unknown quantum state.
+This safeguards data from duplication during transmis-
+sion.
+∗trey.li@manchester.ac.uk
+Together, these principles form the foundation of quan-
+tum communication, providing security based on the fun-
+damental laws of quantum mechanics rather than com-
+putation theory.
+However, security is never unconditional, it always de-
+pends on the assumed capacities of the adversary.
+Classical public key cryptography [10, 11] relies on
+computational problems like discrete logarithms [10] and
+factoring [11] . These problems are secure against clas-
+sical adversaries but are vulnerable to quantum attacks
+[12, 13].
+Post-quantum cryptography [14, 15] uses computa-
+tional problems that are believed to resist quantum at-
+tacks. While it aims to develop algorithms that remain
+secure in the quantum era, its implementation is classical,
+and it still relies on computational complexity without
+taking advantage of quantum mechanics.
+Quantum cryptography [16–18], however, directly ex-
+ploits quantum principles for secure communication. It
+resists both classical and quantum adversaries. Unlike
+classical and post-quantum cryptography, it does not de-
+pend on computational assumptions.
+Early quantum protocols, such as BB84 [19] and E91
+[20], are designed to resists quantum eavesdroppers who
+can intercept, manipulate, and exploit entanglement.
+However, this model of adversary may not cover all future
+threats in quantum networks.
+A physically more powerful adversary was studied in
+[21].
+Unlike typical adversaries who might attempt to
+eavesdrop or tamper with the signal, this adversary ex-
+ploits inherent channel imperfections to extract informa-
+tion. By leveraging channel noise, it can detect covert
+communication while passively monitoring transmissions
+without actively interfering.
+However, the strength of
+this adversary lies more in its physical capabilities rather
+than conceptual innovations.
+It remains an adversary
+that only focus on controlling the public channel without
+demanding private data from users.
+In recent years, a conceptually super powerful adver-
+sary known as the dictator [22–24] has been considered
+in public key cryptography. In contrast to traditional ad-
+versaries, this adversary can demand user private keys,

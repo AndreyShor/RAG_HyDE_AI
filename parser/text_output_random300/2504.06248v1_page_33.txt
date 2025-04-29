@@ -1,0 +1,115 @@
+25
+recalling that y(t0) = u0 and that Ut is also locally defined at some point u ∈U. Performing the total derivative
+gives the explicit form
+Ut0[f](u0) =
+ ∂
+∂t + F (t, y(t)) · ∇f(y(t))
+
+t=t0
+=
+∂
+∂t0
++ F (t0, u0) · ∇f(u0) .
+Therefore, the Koopman generator is
+U = ∂t +
+N
+X
+j=1
+Fi(t, u)∂j ,
+(S82)
+where (t, u) ∈S, ∂t := ∂/∂t, ∂j := ∂/∂uj and where we have removed the time index of the generator for simplicity.
+Under these considerations, the Koopman generator U and the infinitesimal generator v both act on smooth functions
+[Remark S24] and can be manipulated together. The next lemma is the equivalent of Thm. (S23) for systems of
+first-order ODEs and provides the infinitesimal criterion of symmetry in terms of the Koopman generator.
+Lemma S8. [Lemma of the paper] A connected local group of transformations G acting on an open subset S ⊂T ×U
+is a symmetry group of the dynamics in Eq. (S80) if and only if
+[U, v] −U[ξ(t, u)]U = 0
+(S83)
+for every infinitesimal generator v = ξ(t, u)∂t + PN
+j=1 ϕj(t, u)∂j of G.
+Proof. To begin with, Lem. S7 ensures that the dynamics (S80) is nondegenerate, which guarantees that Thm. S23 can
+be applied. Now, since the dynamics is a first-order system of ODEs, only the first prolongation of the infinitesimal
+generator v is needed. By the general prolongation formula in Ref. [60, Theorem 2.36], the first prolongation of v is
+pr(1) v = v +
+N
+X
+j=1
+ϕt
+j(t, u, ˙u) ∂
+∂˙uj
+,
+with
+ϕt
+j = Dt(ϕj −ξ ˙uj) + ξ¨uj = ˙ϕj +
+N
+X
+k=1
+(∂kϕj −˙ξδjk)Fk −
+N
+X
+k=1
+∂kξ FkFj ,
+(S84)
+where the superscript t in ϕt
+j is a label used to denote the component of the prolongation associated with ∂/∂˙uj and
+Dt = d/dt is the total derivative. The dependencies on t, u, ˙u are omitted in Eq. (S84) to simplify the notation, as
+will be done from now on. The infinitesimal condition for G to be a symmetry group is then
+pr(1) v[∆i] = ξ ˙∆i +
+N
+X
+j=1
+ϕj∂j∆i +
+N
+X
+j=1
+ϕt
+j
+∂∆i
+∂˙uj
+= 0 ,
+for all i ∈{1, ..., N}. Inserting Eq. (S84), performing the derivatives and rearranging leads to the infinitesimal criterion
+˙ϕi +
+N
+X
+j=1
+(∂jϕi −˙ξδij)Fj −
+N
+X
+j=1
+∂jξFjFi = ξ ˙Fi +
+N
+X
+j=1
+ϕj∂jFi ,
+∀i ∈{1, ..., N} .
+(S85)
+Applying Thm. S23 to our particular case, a connected local group of transformations G is a symmetry group if
+and only if Eqs. (S85) are satisfied. It now remains to show that Eqs. (S85) are equivalent to condition (S83). The
+commutator of U and v is
+[U, v] = [∂t +
+X
+j
+Fj∂j, ξ∂t +
+X
+i
+ϕi∂i] = [∂t, ξ∂t] +
+X
+i
+[∂t, ϕi∂i] +
+X
+j
+[Fj∂j, ξ∂t] +
+X
+i,j
+[Fj∂j, ϕi∂i] ,
+where we have used the bilinearity of the commutator. More explicitly, the last equation is
+[U, v] = (∂tξ)∂t +
+X
+i
+(∂tϕi)∂i +
+X
+j
+(Fj(∂jξ)∂t −ξ(∂tFj)∂j) +
+X
+i,j
+(Fj(∂jϕi)∂i −ϕi(∂iFj)∂j) ,

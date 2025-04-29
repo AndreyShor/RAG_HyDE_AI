@@ -1,0 +1,126 @@
+PAGIONO
+An ionospheric activity index
+Dr.Paul.Kinsler@physics.org
+FIG. 1. Shows a combination of measurement sampling and cate-
+gorization into low, medium, and high magnetic latitudes (coloured
+black, brown, and white respectively), regions where there is no data
+coverage are dark blue. The magnetic latitude zones are as deter-
+mined at the altitude of the ionosphere (i.e. not the magnetic lat-
+itude at ground level), as based on a sinusoidal approximation to
+the relevant figure(s) shown at the end of the WMM2015 [43] and
+WMM2020 [44] reports. We use an ionosphere-altitude demarka-
+tion of magnetic latitude, because the signal intersection/interaction
+is in the ionosphere, and not at ground-level.
+B.
+dTEC frequency histograms
+Each data slice contains a number of dTEC events (or val-
+ues δEC) that match the division criteria used to define it.
+These can be binned into frequency histograms, histograms
+which usually – especially at large event numbers – are peaked
+around a centre near δEC = 0 and have widths less than 1
+TECU/s wide. These frequency histograms provide us with
+an estimate of the probability density function (PDF) P(δEC)
+for the dTEC values in that data slice.
+Since the histograms are peaked, and the number of dTEC
+events is finite, they tend to be poorly sampled at larger dTEC
+values and so we restrict our histograms to have bin centres
+δi within the range (−2,2), a restriction which still encom-
+passes the great majority of events, even during extremely ac-
+tive conditions. We split that range into 400 equal width bins,
+200 bins centred at negative δEC’s, and 200 centred at positive
+δEC’s; there is no bin centred at δEC = 0.
+In what follows, although we initially create and analyse
+histograms based on unscaled dTEC events, we use those ini-
+tial results to motivate and justify a normalisation proceedure
+for dTEC values. Thus, in our main analysis we create, fit,
+and analyse frequency histograms based on these normalised
+dTEC values, and not on the unscaled dTEC. However, in ei-
+ther case our fitting procedure is unchanged, and we describe
+that next.
+C.
+Fitting I: the core and the wings
+The main fitting function contains four parts, mainly con-
+sisting of a central Gaussian core added to two independent
+exponential decays, one in the positive dTEC direction, one
+negative; and a shared offset from exact zero dTEC. For
+brevity, we will henceforth refer to this as a “G2E” (a Gaus-
+sian plus two exponentials) fit. This requires 7 real-valued
+parameters {αi}, where all but the offset are always positive
+valued, and where odd indices denote widths, and even indices
+denote amplitudes. The fitting function is:
+pG2E({αi};δEC)
+= α2G(α1;δEC −α0)
++α4E−(α3;δEC −α0)
++α6E+(α5;δEC −α0),
+(2)
+where δEC is dTEC, G(α;x) is a normalised Gaussian with
+standard deviation α centred at zero, and E±(α;x) are one-
+sided and normalised exponentials with width parameters α3
+and α5. One of these (E−) is non-zero only for δEC ≤α0 val-
+ues, and the other (E+) is non-zero only for δEC ≥α0 values.
+These fitting functions are therefore
+G(α;δ)
+=
+1
+√
+2πα exp
+
+−δ 2/2α2
+;
+(3)
+E−(α;δ) = 1
+α exp[−|δ|/α],
+δ < 0;
+(4)
+E+(α;δ) = 1
+α exp[−|δ|/α],
+δ > 0;
+(5)
+where E± are otherwise zero, except at exactly δ = 0 where
+we replace the value of the exponential function with 1/2.
+When fitting pG2E to a dTEC frequency histogram, we
+set a minimum allowed width for the gaussian and exponen-
+tial components equal to the dTEC resolution scale of 0.005
+TECU/s.
+This pG2E is sufficient to accurately characterise most dis-
+tributions with event counts over 10k, although note that even
+on our chosen “quiet” days, some bins contained event distri-
+butions which did not conform as well as might be hoped.
+Allowing both the centre offset α0, a potential smooth cen-
+tral gaussian peak, and the aymmetry of exponentials E+ and
+E−is key to getting an acceptable fit on as many sampled
+distributions as possible; as is the ability to match sharp cen-
+tral peaks if the exponential fits dominate. This is partly be-
+cause the python routine used (scipy.optimize.curve_fit) can
+sometimes – although not frequently – give poor results for
+no obvious reason. However, the large number of data slices
+requiring fits means that they could not all be reasonably in-
+spected and/or patched manually, so an automated procedure
+and a flexible fitting function was needed. Here our code first
+fits the data to both (a) a simple gaussian, and (b) an attempt
+at that of (2); finally choosing the closest match.
+When computing the best fits, we needed to decide whether
+or not to assert error bars on the histogram-distributions of
+sampled dTEC values. We could, for example, estimate sta-
+tistical error bars on the basis of the number of dTEC values
+in each of the distribution’s (histogram’s) internal bins. How-
+ever, the naturally much better sampling of the centre would
+then end up (over-)prioritising a good fit to the centre of the
+distribution at the expense of matching the wings and widths.
+Since here we are more interested in those widths and wings
+of the distributions, we did not specify error bars; thus im-
+plicitly asserting equal error bars over the whole range. It is
+of course possible that some more systematic proceedure – or
+a numerical/ experimental investigation would be preferable,
+but we leave that for later work.
+We characterised the goodness of our fit using the summed
+absolute differences between the P(δEC) created from the
+binned data, and the fit itself (p({αi};δEC)), i.e.
+for bin-
+centres δi,
+Dif = ∑i |P(δi)−p({αi};δi)|.
+(6)
+See the Supplementary Material
+for some not-untypical
+distributions as might be seen over a range of event counts.
+5

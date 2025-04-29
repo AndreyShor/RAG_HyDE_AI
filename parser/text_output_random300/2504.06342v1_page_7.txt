@@ -1,0 +1,114 @@
+7
+thin disks and exhibits strong dependence on the
+accretion rate:
+𝜀hot( ¤𝑀BH) = 𝜀0
+
+¤𝑀BH
+0.01 ¤𝑀Edd
+𝑎
+= 𝜀0 (100 ¤𝑚)𝑎,
+(7)
+where the parameters 𝜀0 and 𝑎vary across different
+accretion rate regimes:
+(𝜀0, 𝑎) =
+
+
+(0.2, 0.59),
+¤𝑚≲9.4 × 10−5
+(0.045, 0.27),
+9.4 × 10−5 ≲¤𝑚≲5 × 10−3
+(0.88, 4.53),
+5 × 10−3 ≲¤𝑚≲6.6 × 10−3
+(0.1, 0),
+6.6 × 10−3 ≲¤𝑚≲2 × 10−2
+(8)
+2.3.2. The cold (quasar) mode
+When the black hole accretion rate exceeds the
+2% Eddington accretion rate, the accretion enters
+the cold mode. The cold mode is further divided
+into two regimes, bounded by the Eddington rate.
+Below the Eddington rate, the accretion flow is
+described by the standard thin disk. 10% of the ac-
+cretion power is converted to radiation, producing a
+highly luminous AGN with bolometric luminosity
+𝐿bol = 0.1 ¤𝑀BH𝑐2. The readers are referred to Yuan
+et al. (2018) for the calculation of ¤𝑀BH. Leverag-
+ing extensive observational constraints on outflows
+in luminous AGN, we adopt the empirically fitted
+relations for mass flux and velocity as functions
+of 𝐿bol from Gofford et al. (2015), consistent with
+Yuan et al. (2018):
+¤𝑀wind,cold = 0.28
+
+𝐿bol
+1045 erg s−1
+0.85
+M⊙yr−1, (9)
+𝑣wind,cold = min
+ 
+2.5 × 104
+
+𝐿bol
+1045 erg s−1
+0.4
+, 105
+!
+km s−1.
+(10)
+We impose an upper limit on 𝑣wind,cold to reflect
+the observed velocity saturation (Gofford et al.
+2015). Although small-scale accretion disk simula-
+tions suggest that outflows predominantly emerge
+at the spherical polar angles 𝜃between 0◦−60◦
+and 120◦−180◦(Wang et al. 2022), we adopt a
+¤𝑀(𝜃) ≈cos2 𝜃distribution since the outflow open-
+ing angle significantly expands as it propagates out-
+ward to our inner boundary at ∼105𝑟s.
+For super-Eddington accretion, similar to the case
+of hot accretion mode, we do not have abundant
+constraint on the properties of wind. Therefore the
+wind mass flux and velocity in our model are taken
+from the theoretical study of wind and jet based
+on general relativity radiative transfer MHD simu-
+lations of super-Eddington accretion flows around
+spinning black holes (Yang et al. 2023):
+¤𝑀BH =
+3𝑟s
+𝑟d
+0.39
+¤𝑀(𝑟d),
+(11)
+¤𝑀wind,super = ¤𝑀(𝑟d) −¤𝑀BH,
+(12)
+𝑣wind,super ≈0.15𝑐,
+(13)
+where 𝑟d is the outer boundary of the super-
+Eddington accretion disk with 𝑟d = min(𝑟circ, 𝑟in),
+𝑟circ is the circularization radius of the accretion
+flow, and ¤𝑀(𝑟d) ≈¤𝑀(𝑟in). The mass flux is con-
+fined to the spherical polar angle 𝜃within 0◦−30◦
+and 150◦−180◦. Following Zhu et al. (2023b), we
+implement a radiative efficiency model fitted from
+Jiang et al. (2019):
+𝜀super = 0.21
+100 ¤𝑀BH
+¤𝑀Edd
+−0.17
+.
+(14)
+2.4. Star formation and stellar evolution
+The star formation and stellar evolution sub-
+grid model follows the prescriptions in MACER2D
+(Ciotti & Ostriker 2012). We briefly summarize the
+key aspects here. The implementation is based on
+the Schmidt-Kennicutt law (Kennicutt 1998) and
+stellar evolution models (Maraston 2005).
+Gas
+that exceeds a critical number density threshold
+𝑛th = 1 cm−3 and falls below a critical tempera-
+ture threshold 𝑇th = 104 K undergoes conversion to
+stars. The conversion rate depends on a star for-
+mation efficiency parameter 𝜖SF = 0.1 and a star
+formation timescale 𝜏SF:
+𝜏SF = max(𝜏cool, 𝜏dyn),
+(15)

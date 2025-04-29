@@ -1,0 +1,127 @@
+Tupd ∼nel1.3, achieving an approximate speedup pro-
+portional to nel.
+A similar improvement can be applied to the evaluation
+of the kinetic energy, which requires the Laplacian of
+Ψ, which in turn requires Jacobians of all intermediates
+of the neural network, including the orbitals Φ. In ex-
+isting neural wave functions, every entry of Φ depends
+on every electron, and therefore the Jacobian ∇rΦ is
+dense, containing O(nel3) entries. Propagating this Ja-
+cobian forward requires O(nel4) operations as detailed
+in Sec. 4.4. In contrast, FiRE’s Jacobian is sparse as
+depicted in Fig. 1b, yielding an O(nel) speedup, which
+we again can see in empirical runtimes in Fig. 2b.
+By combining these techniques, all crucial operations
+for VMC training are accelerated by O(nel) as sketched
+in Fig. 1c and measured in Fig. 2c. Our empirical mea-
+surements show that our total runtime per step Ttot
+grows only Ttot ∼nel2.3 up to 500 valence electrons,
+instead of Ttot ∼nel3.0 for existing neural wavefunc-
+tions. When comparing absolute runtimes for a 200 va-
+lence electron system, our approach yields 12× to 16×
+speedups over existing neural wave functions (Fig. 2d)
+and even larger speedups for larger molecules. Notably,
+these speedups are on top of the speedups obtained by
+the forward Laplacian [13], a recent efficient method to
+evaluate the Laplacian of Ψ. Thus, speedups are even
+greater compared to the original FermiNet [3, 27] and
+Psiformer [10] implementation.
+2.2
+Accurate relative energies
+In the following,
+we demonstrate that FiRE not
+only accelerates NN-VMC but maintains high accu-
+racy in various settings, such as non-covalent binding,
+singlet-triplet gaps, or ionization potentials. We test
+these tasks on diverse systems, including biochemical
+compounds, hydrocarbons, and organometallic com-
+pounds.
+Non-covalent interactions
+When restricting the
+range of electron embeddings, a natural question is how
+this affects the model’s ability to capture long-range
+non-covalent interactions. We investigate this behavior
+by comparing FiRE, LapNet [13], and CCSD(T)/CBS
+interaction energies for 11 non-covalent interactions
+from the S22 dataset [20, 21].
+The systems include
+hydrogen bonds, dispersion energies, and mixed inter-
+actions.
+For FiRE, we set the cutoff to c = 5a0 as
+determined by our ablation study in App. A. This is
+larger than the shortest distance between the interact-
+ing molecules but substantially smaller than the size
+of each entire complex.
+Like Li et al. [13], we com-
+pare the energy of the bound system with the energy
+of the molecules separated by 10 ˚A.
+The errors rel-
+ative to CCSD(T) are plotted in Fig. 3a.
+It is ap-
+parent that FiRE accurately reconstructs the interac-
+tion energies, yielding a mean absolute error (MAE) of
+0.5 mEh when using energy extrapolation (see App. H)
+and 2.3 mEh without any extrapolation, compared to
+LapNet’s 2.3 mEh. Thus, even small cutoffs are suffi-
+cient for capturing complex long-range interactions.
+Among the previous systems, the T-shaped benzene
+dimer is a particularly well-studied system where a va-
+riety of NN-VMC methods [10, 13, 28] attempted to
+reconstruct the experimental results by Grover et al.
+[29] and Krause et al. [30]. We compare all NN-VMC
+methods to the zero-point vibrational energy (ZPVE)
+corrected experimental results and CCSD(T)/CBS [21]
+in Fig. 3b. Furthermore, we study the cutoff effect by
+evaluating FiRE with c ∈{3a0, 5a0, 7a0}. While previ-
+ous works like Ren et al. [28] overestimate the energy
+gap significantly, von Glehn et al. [10]’s calculations are
+inconsistent in that the generally more accurate Psi-
+former significantly underestimates the gap compared
+to FermiNet. For FiRE, results with all tested cutoffs
+are within the experimental uncertainty. At c = 3a0
+and c = 5a0 FiRE probably slightly underestimates the
+true interaction energy, yielding 2.9 mEh and 3.6 mEh
+respectively. At c = 7a0 FiRE yields 4.6 mEh, which
+is in almost perfect agreement with both CCSD(T)
+(4.3 mEh) and the ZPVE corrected experimental value
+of 4.4 mEh by Grover et al., which is considered to be
+the more accurate experiment [28, 31].
+Singlet-triplet gaps
+Beyond interaction energies,
+we investigate the singlet-triplet gaps on a series of in-
+creasingly larger n-acenes from naphthalene (C10H8)
+to hexacene (C26H16).
+Previous work found accu-
+rate methods such as CCSD(T)/FPA [32], ACI-DSRG-
+MRPT2 [33], and AFQMC [34] to be in disagreement
+with experimental results [22–26].
+We demonstrate
+that larger cutoffs are unnecessary for covalently bound
+organic compounds, and c = 3a0 suffices to obtain ac-
+curate energies. We obtain the respective states by set-
+ting the magnetic spin number sz = N↑−N↓to 0 for
+singlet and 2 for triplet states and enforce state purity
+with the S+ loss from Li et al. [19]. For naphthalene
+and anthracene, energies converged well within 50k
+steps, and the remaining molecules were optimized for
+100k steps. The resulting state gaps of FiRE, AFQMC,
+CCSD(T), and ACI-DSRG-MRPT2, depending on the
+system size, are visualized in Fig. 3c whereas Fig. 3d
+shows the error relative to the ZPVE corrected exper-
+imental results. Notably, CCSD(T) and AFQMC con-
+sistently overestimate the energy gap, whereas ACI-
+DSRG-MRPT2 underestimates it. Despite the shrink-
+ing energy gaps in n, the reference methods’ errors
+increase with system size. On the other hand, FiRE
+remains closest to the experimental results, exhibit-
+ing minimal deviations across all systems.
+On aver-
+age, FiRE’s MAE to the experimental gap is 1.7 mEh,
+whereas CCSD(T), ACI-DSRG-MRPT2, and AFQMC
+deviate by 4.6 mEh, 4.1 mEh, and 4.4 mEh, respec-
+tively. Interestingly, as seen in our ablations in App. C,
+our attention-based Jastrow factor, which introduces
+global-ranged correlation without affecting the overall
+scaling of FiRE (see 4.2), contributes substantially to
+this accuracy.
+4

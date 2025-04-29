@@ -1,0 +1,62 @@
+158
+NNLO polarized PDFs with MHOU
+encodes the positivity condition of Eq. (5.13). In Eqs. (5.14) and (5.15), f denotes the parton,
+and i denotes the point at which the function Cf is evaluated. In particular, n = 20 points are
+sampled in the range
+5 · 10−7, 9 · 10−1, half of which are logarithmically spaced below 10−1
+and half of which are linearly spaced above. The unpolarized PDF f and its one-σ uncertainty
+σf are taken from the same PDF set that enters the computation of theoretical predictions.
+Finally, Q2
+pos = 5 GeV2 and the Lagrange multiplier Λpos grows exponentially during the fit and
+reaches the maximum value Λint = 1010 at maximum training length.
+Optimization of the parameters θ is achieved through stochastic gradient descent, as in
+NNPDF4.0 [109, Sect. 3.2]. The specific optimization algorithm is selected from those that
+are readily available in the TENSORFLOW library [155] through hyperparameter optimization,
+as discussed in the next section. Cross-validation is used to prevent overfitting and design a
+stopping criterion. To this purpose, for each pseudodata replica, the data points are split into
+a training and a validation set, in a proportion of 60% and 40%. Post-fit checks are finally
+enforced to exclude parameter configurations that violate the positivity constraint, or that have
+values of χ2 outside the 4σ interval of their distribution.
+5.2.3. Hyperoptimization
+We now discuss the hyperparameter optimization procedure adopted to determine the baseline
+methodology. The underlying approach follows Ref [367], where the hyperoptimization is
+performed at the level of the PDF distributions resulting from a fit of multiple replicas. This
+was not accessible in the previous studies of Chapters 3 and 4 due to several limitations, the
+main one being the inability to perform simultaneous fit of multiple replicas at once, which
+are now evaluated using graphics processing units (GPUs). Such improvements allow us to
+distribute the hyperoptimization scans across multiple GPUs, enabling an asynchronous search
+of the parameter space. In principle, the greater the number of GPUs utilized, the faster the
+scan of the hyperparameter space proceeds.
+The improved method extends the K-fold procedure used in the NNPDF4.0 methodology, and
+its diagrammatic representation is shown in Fig. 5.3. The algorithm starts each trial with a
+selected set of hyperparameters from which nfolds folds are constructed. For each subset of
+folds, the p-th fold is left-out and the remaining ones are combined into a dataset from which
+the neural network is optimized according to the procedure described above in Section 5.2.2.
+Each of these fits is performed simultaneously drawing Nrep replicas. The hyperoptimization
+loss function is then defined as
+L(χ2)
+hopt
+ˆθ
+
+=
+1
+nfolds
+nfolds
+X
+p=1
+min∗
+θ∈Θ
+ D
+χ2
+PDF,p
+
+θ, ˆθ
+E
+rep
+
+,
+(5.16)
+where we distinguish between the model parameters θ (e.g. network weights and biases) and
+hyperparameters of interest ˆθ. The ∗sign indicates that the minimization is regularized with
+training and validation split to avoid overfitting, and the figure of merit χ2
+PDF,p is evaluated on

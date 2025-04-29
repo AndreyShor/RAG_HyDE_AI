@@ -1,0 +1,62 @@
+6
+One can easily see that V = UP where U is the quantum experiment for ⃗X. As will eventually be discussed in
+Remark V.1, access to controlled-V and controlled-V †, in the end, is the only thing that we need.
+The quantum experiment highlighted here can mean a number of things. Consider a classical Monte Carlo process
+in some simulation code, we can transport all parts of the code into a quantum computer and the resulting unitary
+will be U. From a complexity perspective, this draws an even comparison with a quantum and a classical mean
+estimator. In addition, this language generalizes to a quantum sensor, where the quantum computer, via the unitary,
+is coupled to the physical world.
+2 With some modifications we can further expand this language for inherently
+quantum information processes without one-to-one classical analogues, such as quantum chromodynamics simulations
+[7, 8] or variational quantum circuits used in QML [9]. Further intricacies of these discussions as will be explored in
+Sec V.
+Similarly, for a univariate random variable, there is also a notion of quantum experiment implemented below:
+Definition II.33 (Univariate Quantum Experiment). Given a univariate random variable X, a quantum experiment
+is a unitary U such that for all k ∈Ω
+U |Ω⟩|k⟩|0⟩= |k⟩|Xk⟩|aux′
+k⟩
+(17)
+The unitary acts on HΩ⊗Hvec ⊗Hanx′, where Hvec is the Hilbert space with basis representing quantum states
+corresponding to vectors in Rd.
+One can then easily define complete univariate quantum experiment, which we will omit.
+Note that:
+Remark II.34 (Drawing Classical Samples from Quantum Experiment). Using one access to the (complete) quantum
+experiment for a random variable (either univairate or multivariate) X ensured by a measurement, one can draw a
+sample of X in the classical sense.
+Note that given a fault-tolerant quantum computer, we can make simple transformations of the outcome of a
+random experiment, and it is effectly transforming the random variable of concern.
+Remark II.35 (Post-processing Quantum Experiment). Given a simple function f that is efficiently computable and
+a univariate quantum experiment of some random variable X, we can transport the computation process to a quantum
+computer and construct a quantum experiment for f(X) with corresponding small overhead.
+Given access to a quantum experiment, we can build a phase oracle that will be crucial to our mean value estimation
+algorithm:
+Definition II.36 (Univariate Phase Oracle). With O(1) call to the quantum experiment that implements that imple-
+ments some random variable X (and its inverse), we can construct a phase oracle O on HS ⊗HΩ. For ⃗u ∈S and
+k ∈Ω, where S is some set of vectors in Rd, we have
+O |k⟩= eiXk |k⟩
+(18)
+Overall, many of the above definitions follow those from Ref. [2]. In this paper, we will ignore the potential errors
+and infidelities during implementations of the primitives introduced in this paper. A more meticulous reader may
+reintegrate these errors back into our analysis.
+The phase estimation algorithm is one of the most classic algorithm of quantum computing, and we will briefly
+describe it as:
+Theorem II.37 (Phase Estimation). Given a unitary U on some register in H. Let U to have some eigenvector |φ⟩
+with eigenvalue e2πiφ. We set φ ∈(−1
+2, 1
+2].
+Say we initialize the register H with some easy-to-prepare state |ψ⟩. Using N access to controlled versions of U
+(entangling with an extra register to control), there is an algorithm that returns an estimate ˜φ such that:
+P
+h
+| ˜φ −φ| ⩽κ
+N
+i
+⩾|⟨φ|ψ⟩|2
+
+1 −
+1
+2(κ −1)
+
+(19)
+where κ ∈N+, and note that |⟨φ|ψ⟩|2 = Pθ∼(arg U,|ψ⟩)[θ = 2πφ].
+2 Of course, it needs to be hooked up to a fault-tolorant device to run our algorithm.

@@ -1,0 +1,325 @@
+D. Apriori Costs (Regularisation) 
+Additionally, to measurement data we consider properties of 
+the model Parameters itself or relations between different model 
+parameters. This is typically referred to as regularization or 
+filtering depending on context. The regularization should be 
+chosen in a way to prefer even assumptions about the tracks and 
+ensures a solvable problem for missing measurement data. 
+Intuitively, the regularization incentivizes a simpler track is 
+preferred even if a complex track would fit the measurements 
+slightly better. Praxis shows that this is even more important if 
+we want to estimate all track states (position, velocity, 
+acceleration) only based on positions without directly measuring 
+velocities and accelerations. Without any regularization the 
+solution starts to swing, especially in the derivatives. General 
+rule of thumb: the less measurements we have and the worse the 
+quality of the measurement data the higher the importance of the 
+regularization. For typical vehicle trajectories we can make the 
+following assumptions. 
+• 
+Smaller accelerations are more plausible 
+• 
+Smaller acceleration changes are more plausible 
+• 
+Locally smaller changes of changes are more plausible 
+(curve drive) 
+• 
+… 
+To easily formulate these conditions, we can exploit the 
+structure of the physical spline. A smaller acceleration means 
+that all coefficients except for the first two (initial position and 
+initial velocity) are small. We call this a regularization of order 
+zero of the physical spline. This results in the following  
+𝑒# = 1
+2 & 𝑐8 ⋅𝑤8
+2 
+𝑞8 = (0
+…
+0
+1
+0
+…
+0) with one at kth row 
+𝑄= & 𝑐8 ⋅𝑞8 ⋅𝑞8
+9 
+𝑜𝑟 𝑄# = 𝑐⋅
+⎝
+⎜
+⎛
+0
+0
+0
+0
+0
+0
+1
+0
+0
+1
+0
+0
+1⎠
+⎟
+⎞ for 𝑐8 = 𝑐 for all k. 
+(18) 
+ 
+Depending on vehicle geometries, lateral and longitudinal 
+acceleration limits are roughly on a similar scale. Thus a good 
+and simple option is to weigh penalties on x and y direction with 
+a similar weight. 
+Smaller acceleration changes would be called the order one 
+regularization of the physical spline and be expressed with 
+differences in the coefficients. Equation (19) adds costs for the 
+difference between proceeding coefficients. 
+𝑒6 = 1
+2 R 𝑐2 ⋅(𝑤278 −𝑤2)1 
+ 
+𝑞2 = (0
+…
+0
+1
+−1
+0
+…
+0) with one at kth row followed by −1  
+ 
+𝑄6 = R 𝑐2 ⋅𝑞2 ⋅𝑞2
+9 
+ 
+(19) 
+ 
+𝑜𝑟 𝑄6 = 𝑐⋅
+⎝
+⎜
+⎜
+⎜
+⎜
+⎜
+⎜
+⎜
+⎛
+0
+0
+.
+0
+0
+.
+.
+.
+1
+−1
+0
+−1
+2
+−1
+0
+−1
+2
+.
+.
+.
+0
+.
+.
+−1
+0
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+0
+−1
+.
+.
+. 0
+.
+.
+.
+2
+−1
+0
+⋱
+⋱
+⋱
+0
+⋱
+⋱
+.
+.
+.
+0
+.
+.
+⋱
+0
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+0
+−1
+.
+.
+0
+.
+.
+.
+2
+−1
+0
+−1
+2
+−1
+0
+1
+−1⎠
+⎟
+⎟
+⎟
+⎟
+⎟
+⎟
+⎟
+⎞
+ 
+𝑓𝑜𝑟 𝑐2 = 𝑐 𝑓𝑜𝑟 𝑎𝑙𝑙 𝑘 
+ 
+Following the same scheme the order two regularization is 
+given by  
+𝑒! = 1
+2 = 𝑐5 ⋅7(𝑤5$% −𝑤5$#) −(𝑤5$# −𝑤5)8
+% 
+ 
+𝑄! = 𝑐⋅
+⎝
+⎜
+⎜
+⎜
+⎜
+⎜
+⎜
+⎜
+⎛
+0
+0
+.
+0
+0
+.
+.
+.
+1
+−2
+1
+−2
+5
+−4
+1
+−4
+6
+0
+.
+.
+1
+0
+.
+−4
+1
+0
+.
+.
+.
+.
+.
+.
+.
+.
+.
+0
+1
+−4
+.
+0
+⋱
+.
+.
+0
+6
+−4
+1
+⋱
+⋱
+⋱
+1
+−4
+6
+0
+.
+.
+⋱
+0
+.
+−4
+1
+0
+.
+.
+.
+.
+.
+.
+.
+.
+.
+0
+1
+−4
+.
+0
+−2
+.
+.
+0
+6
+−4
+1
+5
+−4
+1
+1
+−2
+1⎠
+⎟
+⎟
+⎟
+⎟
+⎟
+⎟
+⎟
+⎞
+ 
+𝑓𝑜𝑟 𝑐5 = 𝑐 𝑓𝑜𝑟 𝑎𝑙𝑙 𝑘. 
+(20) 
+ 
+ 
+In (Fig. 5) we can see the effect of a higher regularisation 
+weight of order zero and one. Looking closely at the right end 
+we can see that the slope of the velocity goes to zero for order 
+zero and stays for order one. For order two the curvature would 
+stay.  
+ 
+Fig. 5. Effect of different regularisations 

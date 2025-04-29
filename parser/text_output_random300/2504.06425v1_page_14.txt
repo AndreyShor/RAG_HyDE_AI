@@ -1,0 +1,109 @@
+14
+NEURAL NETWORK POLYCONVEXIFICATION
+representation of the target values for the training dataset along the diagonal (ν1, ν1)-axis. For
+the loss function L from (15), we choose the penalty parameters λineq = 1.5 and λsym = 1.
+5.2.2. Numerical Results. On average, for a single realisation, the training process requires 3.6 h
+± 54 minutes to complete 87 ± 22 epochs. The final training error is 2.31 × 10−3 ± 1.62 × 10−3,
+while the validation error reaches 3.53 × 10−3 ± 2.29 × 10−3. The learning curves for one selected
+realisation are plotted in Figure 5.
+−1
+−0.5
+0
+0.5
+1
+0
+2
+4
+6
+ν1
+Φpc((ν1, ν1); λ, α)
+0
+20
+40
+60
+10−2
+10−1
+Epochs
+Loss
+Training Loss
+Validation Loss
+Figure 5. Left: Training data for the generalised Kohn–Strang–Dolzmann
+example. One-dimensional cross-section along the diagonal (ν1, ν1)-axis of the
+analytical polyconvex envelopes. Envelopes are evaluated at the training points
+in parameter space, i.e. for (λ, α) ∈{1, 1.2, . . . , 1.8, 2}2. Right: Learning curves
+based on the loss function L from (15) for a single network initialisation.
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+λ
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+α
+0.025
+0.030
+0.035
+0.040
+0.045
+Mean error
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+λ
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+α
+0.016
+0.018
+0.020
+0.022
+Relative quadratic error
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+λ
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+α
+0.0325
+0.0350
+0.0375
+0.0400
+0.0425
+0.0450
+Relative max error
+Figure 6. Errors over parameter space for the generalised Kohn–Strang–
+Dolzmann example. Left: Mean errors. Middle: Relative quadratic errors.
+Right: Relative max errors. All errors are computed for an average over ten
+network realisations with respect to the analytical polyconvex envelopes for
+different values λ and α.
+Figure 6 illustrates the relative errors between the predictions and the analytical polyconvex
+envelopes for different sets of parameters (λ, α), including both values present in the training set
+and those outside of it. These errors are computed on a uniform (100 × 100)-discretisation of
+the domain [−ν, ν]2. Across all considered parameter sets, the errors remain consistently low,
+ranging between 2% and 4%. Additionally, Figure 7 provides one-dimensional cross-sections of
+these predictions. Furthermore, Figure 8 demonstrates that the neural network is capable of
+making accurate predictions even for parameter values outside the parameter learning domain,
+highlighting its ability to extrapolate accurately. Notably, these figures indicate that errors are
+primarily localised at the domain boundaries, while the neural network successfully captures
+the kink at the point (0, 0) with an accuracy sufficient for most engineering applications. In

@@ -1,0 +1,133 @@
+25
+where
+In +
+k
+X
+j=1
+β1 · · · βj(−A)j =
+k
+X
+j=0
+dj(−A)j = Dkk(A).
+Therefore, matrix Wk(A) is non-singular if and only if Dkk(A) is non-singular.
+3.
+Proofs of Lemma III.4 and Lemma III.5
+Lemma A.1. Let A ∈Rn×n be an invertible matrix and partitioned as
+A =
+
+A11 A12
+A21 A22
+
+,
+where A11 ∈Rn1×n1, A22 ∈Rn2×n2, and A11 is assumed to be invertible. In this case, define S = A22 −
+A21A−1
+11 A12. Then, S is also invertible, and the inverse of A is given by
+A−1 =
+
+A−1
+11 + A−1
+11 A12S−1A21A−1
+11
+−A−1
+11 A12S−1
+−S−1A21A−1
+11
+S−1
+
+.
+Lemma A.2. Let M be a matrix of the form
+M =
+
+
+M11
+· · · M1n
+...
+...
+Mm1 · · · Mmn
+
+,
+where each Mij is a matrix block. Define the matrix f
+M such that f
+Mij ≥∥Mij∥2 for each i, j,. Then, we
+have the inequality
+∥M∥2 ≤∥f
+M∥2.
+Proof. Let xT = [xT
+1 , · · · , xT
+n] be an arbitrary unit vector. Then, we have
+∥Mx∥2 =
+
+
+
+Pn
+j=1 M1jxj
+...
+Pn
+j=1 Mmjxj
+
+
+
+2
+=
+v
+u
+u
+u
+t
+m
+X
+i=1
+
+n
+X
+j=1
+Mijxj
+
+2
+2
+≤
+v
+u
+u
+u
+t
+m
+X
+i=1
+
+
+n
+X
+j=1
+∥Mij∥2 ∥xj∥2
+
+
+2
+≤
+
+f
+M
+
+
+∥x1∥2
+...
+∥xn∥2
+
+
+
+2
+≤∥f
+M∥2.
+By the definition of the matrix 2-norm, we have ∥M∥2 ≤∥f
+M∥2.
+Lemma A.3. Let Dkk(·) be the denominator of the (k, k) Padé approximation given by (7). Then, we have
+Dkk(−1) ≤√e
+for all
+k ∈N+.
+Proof. Using the fact that
+(2k −j)!k!
+(2k)!(k −j)! ≤
+1
+2
+j
+,

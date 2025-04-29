@@ -1,0 +1,46 @@
+2
+Review of anomaly resolution in groups
+In this section we will brieﬂy review results on anomaly resolution for ordinary
+groups as discussed in [1–6]. In later sections, we will describe how these results
+can be generalized to the case of noninvertible symmetries.
+2.1
+General picture
+Begin with a ﬁnite group G acting on a two-dimensional theory, with a ’t Hooft
+anomaly [α] ∈H3(G,U(1)) with representative α ∈Z3(G,U(1)). To resolve this
+anomaly, we look for a larger group Γ that projects to G with kernel some abelian
+group K,
+1 Ð→K
+i
+Ð→Γ
+π
+Ð→G Ð→1,
+(2.1)
+such that the pullback π∗[α] = [π∗α] ∈H3(Γ,U(1)) is trivial, i.e. we can ﬁnd a
+2-cochain j ∈C2(Γ,U(1)) such that dj = π∗α, or explicitly
+j(γ2,γ3)j(γ1,γ2γ3)
+j(γ1γ2,γ3)j(γ1,γ2) = α(π(γ1),π(γ2),π(γ3)),
+∀γ1,γ2,γ3 ∈Γ.
+(2.2)
+In this situation Γ is anomaly free and it (or any of its subgroups) can be gauged.
+The Lyndon-Hochschild-Serre spectral sequence can be used to connect the
+group cohomology of Γ to the cohomology groups of G and K. This can be used
+to ﬁnd constructions of trivializations.
+Explicitly, pick a section s ∶G →Γ of
+π, i.e. a map such that π(s(g)) = g for all g ∈G. s will not, in general, be a
+homomorphism (only if the extension is split will a homomorphism section exist).
+Without loss of generality, we will restrict to sections that send the identity element
+of G to the identity element of Γ, s(eG) = eΓ. Using the section we can construct
+the extension class [¯c] ∈H2(G,Kab), where Kab = K/[K,K] is the abelianization
+of K. Note that there is an action of G on Kab given by g ⋅¯k = s(g)ks(g)−1. To
+specify the extension class we ﬁrst construct a map c ∶G × G →K as
+c(g1,g2) = s(g1)s(g2)s(g1g2)−1.
+(2.3)
+We then take the image ¯c of this map under the quotient K →Kab. One can check
+that ¯c is in fact a cocycle in Z2(G,Kab) with the action of G on Kab described
+above. Diﬀerent choices of section s will lead to cocycles ¯c that diﬀer by an exact
+cocycle, but the extension class [¯c] ∈H2(G,Kab) will be independent of the choice
+of section and is determined only by the short exact sequence (2.1).
+The Lyndon-Hochschild-Serre spectral sequence gives us a map
+d2 ∶H1(G,H1(k,U(1))) Ð→H3(G,U(1)).
+(2.4)
+5

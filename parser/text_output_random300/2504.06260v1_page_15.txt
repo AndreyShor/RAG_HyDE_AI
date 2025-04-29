@@ -1,0 +1,54 @@
+Preprint. Under review.
+fewer than 20 pages. The first requirement is a consequence of how our connection
+to the COMSOL Multiphysics®sandbox is set up, and to make the problem easier
+for the models to attempt to solve. We additionally ensured that the problems were
+amenable to computing a numerical artifact.
+3. Solving Speed: We also excluded any problems whose ground truth code took over
+a minute to solve.
+B.1.2
+Generation Procedure:
+Without any modification, the tutorials might export a single value, a table, or not export
+any target quantity at all, with the final output being qualitative in nature, such as in the
+form of plots or figures. For our benchmark, however, we specifically wanted every problem
+to have a numerically verifiable target value, in order for there to be an absolute notion of
+correctness (i.e. if the code was fully correct, and aligned with the intent of the problem,
+it should be able to export this value). This also enables easier evaluation of the problems.
+The following procedure and guidelines were adopted to curate the benchmark:
+• For an initial set of 2-3 problems, model specifications and plans were annotated by
+hand, by an expert user of COMSOL Multiphysics®.
+• For subsequent problems, we speed up the benchmark generation procedure by
+following an initial LLM-assisted data generation process, with the final verification
+steps involving humans. An LLM is provided with a tutorial, as well as a two-shot
+prompt with the expert annotated model specifications.
+• The LLM is entasked with returning a model specification for the tutorial that has
+the same format. This requires the LLM to identify an appropriate target value from
+the tutorial which it does from either the text or the figures, and returning a model
+specification for computing this target value.
+• The LLM is then asked to create a plan corresponding to the model specifications,
+using a two-shot prompt with two plans. The utility of the tutorials are that the plan
+is closest to the GUI instructions listed in the tutorial, while model specifications is
+more concise.
+• A ground truth code that can compute the correct value is then generated for
+the problem. We manually verify that the ground code when run, exports the
+desired target value. This step also involves simultaneously ensuring that all
+information required to build the model is contained in the plan, and in the model
+specifications by editing the LLM-generated drafts and ensuring that no Translation
+Errors are encountered when parsing and executing the ground truth code in
+COMSOL Multiphysics®using the bridge described in Appendix D.1 or that any
+errors if encountered are in non-crucial lines and do not prevent the solution
+from being computed. Any missing or incorrect information is fixed, and the
+selection information field, that contains numerical identities of boundaries and
+points is also created.
+• We add an instruction to export the output to OUTPUT PATH/output.txt in the model
+specifications and plan.
+B.1.3
+Fields from an example entry:
+Here is an example of the information saved for one of the problems, comsol 453 based
+on Steady-State 2D Axisymmetric Heat Transfer with Conduction, Heat Transfer Module
+Application Gallery, COMSOL Multiphysics®v.6.1. COMSOL AB, Stockholm, Sweden, 2023
+(COMSOL Multiphysics®, a):
+Model Specifications:
+## Finite Element Analysis Description: 2D Axisymmetric Steady-State Heat Con-
+duction in a Cylinder
+**ANALYSIS TYPE:** Steady-state heat conduction with axisymmetric geometry.
+15

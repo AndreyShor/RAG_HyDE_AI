@@ -1,0 +1,43 @@
+12
+•
+Bhattacharyya et al.
+4.1.3
+Portfolio Optimization.
+Solving the QUBO-Relaxed warmstart makes portfolio optimization become a QUBO-Relaxed programming
+problem, and as a result there is no longer a dependence on the number of random initializations. Thus, we
+don’t distinguish between 10 and 50 initializations. With that being said, both metrics fall under (↑) with GW2
+outperforming QUBO-Relaxed.
+The instance-specific approximation ratios obtained by QUBO-Relaxed and GW2 are both relatively high (when
+compared to other problems), but GW2 is still more than 0.25 standard deviations above QUBO-Relaxed.
+In terms of optimal sampling probability, GW2 out performs QUBO-Relaxed, but their probabilities are within 0.25
+standard deviations of each other. Notice that these sampling probabilities are significantly further from 1 than the
+corresponding instance-specific approximation ratios, corresponding to QAOA states which are superpositions
+of both the optimal state and other sub-optimal but still high cost sates. For portfolio optimization in particular,
+because the budget constraint is large, any term that satisfies that constraint will have a high cost by default.
+The reasoning for why Portfolio Optimization behaves this way is likely due to its QUBO-Relaxedity, which not
+only changes the optimization routine for the QUBO-Relaxed warmstart but also impacts the performance of
+GW2 (as can be seen empirically).
+4.1.4
+Maximum Independent Set.
+Both MIS problems considering both metrics fall under (↔), specifically following the order of QUBO-Relaxed
+with 50 initializations, GW2 Last rotation, then QUBO-Relaxed with 10 initializations.
+For MIS, the GW2 warmstart is usually within 0.25 standard deviations of QUBO-Relaxed with 50 initializations.
+The instance-specific approximation ratio for MIS-GNP is the only problem and metric for which QUBO-Relaxed
+with 50 initializations performs above 0.25 standard deviations of the GW2 warmstart. This suggests that when
+even GW2 warmstarts preform better than QUBO-Relaxed with 10 but worse than 50 initializations, the margin
+between the best GW2 warmstart and QUBO-Relaxed is not large. Furthermore, MIS problems are a constrained
+optimization task, which might explain why increasing the number of initializations for QUBO-Relaxed provides
+an advantage over GW2.
+5
+Conclusion
+We introduced a new method for applying semidefinite relaxations to solving QUBO problems via QAOA by
+using a mapping from QUBOs to Max-Cut problems as an intermediate step. We benchmarked this approach on
+various QUBO problems: Random QUBOs, TSP, Portfolio Optimization, and MIS. As a comparison, we used a
+non-QUBO-Relaxed warmstart, QUBO-Relaxed.
+We found that the best choice of SDP warmstart was Goemans-Williamson projected onto 2 dimensions, with a
+rotation applied to the auxiliary variable introduced in the mapping from QUBOs to Max-Cuts.
+Because QUBO-Relaxed relies on a non-QUBO-Relaxed optimization problem, its performance is strongly depen-
+dent on the number of random initial conditions tested by the optimizer. To give a fair comparison between GW2
+and QUBO-Relaxed we tested both 50 and 10 random initializations for the latter. Empirically we saw that 50
+initializations generally outperformed 10 initializations, but this difference was problem dependent. Because this
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

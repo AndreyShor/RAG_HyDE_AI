@@ -1,0 +1,77 @@
+This framework effectively combines dimensionality reduction with temporal evolu-
+tion, enabling efficient and accurate reconstruction and prediction of flow dynamics at
+reduced computational cost. By truncating the smaller singular values, SVD enables di-
+mensionality reduction and noise suppression, making it a powerful tool for applications
+such as data cleaning, image compression, and Principal Component Analysis (PCA)
+[34, 35].
+HOSVD extends these principles of SVD to multidimensional arrays. HOSVD pre-
+serves the inherent multifaceted nature of data, making it particularly suitable for applic-
+ations where spatial, temporal, and other complex dependencies need to be maintained
+[36, 37, 24]. This approach allows for a more accurate and efficient representation of
+high-dimensional data, capturing the significant features along each mode [38, 39]. As
+a result, HOSVD is particularly advantageous for applications in fields such as fluid dy-
+namics, image processing, and data compression, where preserving the multidimensional
+relationships within the data is crucial for accurate analysis and prediction.
+HOSVD decomposes databases organized in tensor form, where SVD is applied to each
+one of the fibers of the tensor. For instance, the HOSVD of the fourth-order tensor X is
+presented as:
+Xj1j2j3k ≃
+P1
+X
+p1=1
+P2
+X
+p2=1
+P3
+X
+p3=1
+N
+X
+n=1
+Sp1p2p3nU (1)
+j1p1U (2)
+j2p2U (3)
+j3p3T kn,
+(6)
+where Sp1p2p3n is the core tensor, another fourth-order tensor, and the columns of the
+matrices U (1), U (2), U (3), and T are known as the modes of the decomposition.
+The first set of modes (i.e., the columns of the matrices U (l) for l = 1, 2, 3) correspond
+to the number of components of the database and the spatial variables, so they are known
+as the spatial HOSVD modes, while the columns of the matrix T correspond to the time
+variable and are referred to as the temporal HOSVD modes.
+The decomposition involves singular values corresponding to each mode, signifying
+the importance of each mode. Similarly to SVD, dimensionality reduction is achieved by
+retaining significant modes based on a tolerance ε applied to each set [33]:
+σ(1)
+P1+1
+σ(1)
+1
+≤ε1,
+σ(2)
+P2+1
+σ(2)
+1
+≤ε2,
+σ(3)
+P3+1
+σ(3)
+1
+≤ε3,
+σt
+N+1
+σt
+1
+≤ε4.
+(7)
+After dimensionality reduction, the tensor is approximated as [33]:
+X ≃
+N
+X
+n=1
+W j1j2j3n ˆT kn,
+(8)
+Where:
+• W j1j2j3n are the spatial modes.
+• ˆT kn = σt
+n T kn are the temporal modes.
+10

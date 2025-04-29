@@ -1,0 +1,114 @@
+3
+FIG. 2. Circuit representation of percept-action loops, with
+time flowing from left to right. (a) The agent and environment
+are modeled as channels with memory. (b) The agent and
+environment are represented by their hidden Markov models,
+characterized by finite adaptive memories Mt and Zt. The
+transition matrices Θ and Φ remain fixed over time.
+An agent can be understood as possessing two types
+of memory: (i) algorithmic memory, which remains fixed
+for all times and stores the agent’s transition matrix Φ,
+effectively representing the agent’s algorithm (analogous
+to DNA in a biological context), and (ii) adaptive mem-
+ory M, which stores information about the past percept-
+action sequence and, through the action of Φ, influences
+future actions.
+With the definitions of agent and environment chan-
+nels, as well as their hidden Markov models, we define
+percept-action loops as tuples consisting of an agent and
+an environment. To highlight that the agent and environ-
+ment mutually interact, these are denoted as agt →
+←env or
+agtM →
+←env, depending on whether the agent is described
+by its channel or its model (similarly, env can be replaced
+with envM).
+Each percept-action loop model corresponds to an as-
+sociated stochastic process. For instance, agt →
+←env de-
+termines the input-output behavior of the agent and en-
+vironment, thereby defining the percept-action process
+AS = ((A0, S0), (A1, S1), . . . ) with distribution
+pAS = νenv
+S|Aηagt
+A|S,
+see also Figure 2a. Importantly, the stochastic process
+corresponding to agtM →
+←envM, which has a distribution
+pMASZ including both the agent’s and the environment’s
+hidden memory, can be shown to form a finite-state
+Markov chain. This constitutes the global Markov chain
+of a percept-action loop (see Supplemental Material D
+for a proof):
+M0A0S0Z0 →M1A1S1Z1 →· · · .
+This Markovian property allows us to leverage exist-
+ing results on finite-state Markov chains, ensuring that
+the asymptotic dynamics of percept-action loops are well-
+behaved [26, 27] (see Supplemental Material B for an
+overview).
+III.
+MAXIMALLY PREDICTIVE AGENTS
+For a given input-output behavior of the agent and en-
+vironment, agt →
+←env, what does it mean for an agent
+to be as predictive as possible of its future percepts?
+To approach this question, it is helpful to begin with
+the following observation. In order to endow the agent
+with knowledge that reduces uncertainty about future
+percepts, a natural first step is to encode agtM →
+←env =
+(Θagt, pagt
+A0M0, νenv
+S|A) into its fixed algorithmic memory. In
+what follows, we assume this is always the case.
+With this setup, the agent has access to the distribu-
+tion of the underlying process, pMAS, which results in
+an uncertainty H(St) about percept St, where H(St) de-
+notes Shannon entropy in units of bits. If, in addition, the
+agent takes its memory Mt into account before observing
+St, this memory reduces the agent’s expected (with re-
+spect to memory states) uncertainty to H(St|Mt). This
+reduction in uncertainty,
+I [Mt; St] = H(St) −H(St|Mt),
+(7)
+is simply the mutual information I [Mt; St] between St
+and Mt, quantifying how much Mt enables the agent to
+predict St (see Supplemental Material A for some back-
+ground on information measures).
+To enhance its predictive capabilities, the agent can
+store information from past percepts S0:t and actions
+A0:t+1 in its memory.
+Since the information that
+S0:tA0:t+1 provides about St is given by I [S0:tA0:t+1; St],
+we arrive at the following
+Definition 3. Let agt →
+←env be a percept-action loop. A
+model agtM for agt is said to be maximally predictive,
+or for short predictive, of percept St in round t if
+I [A0:t+1S0:t; St|Mt] = 0,
+(8)
+and an agent model is said to be asymptotically mean
+(a.m.) predictive if
+⟨I [A0:t+1S0:t; St|Mt]⟩t = 0,
+(9)
+where
+⟨•⟩t := lim
+n→∞
+1
+n
+n−1
+X
+t=0
+•
+(10)
+denotes the Ces´aro limit, the limit of the arithmetic
+mean.
+Note that eq. (8) expresses that the agent’s memory
+Mt contains at least all the information from the past,
+S0:tA0:t+1, which helps predicting the next percept, St,
+(see Figure 3), while eq. (9) requires this condition to
+hold asymptotically on average [28].
+Interestingly, although environments, as per Defini-
+tion 1, are constrained to a finite number of hidden
+states, an agent may require a countably infinite num-
+ber of memory states to be predictive as t →∞. This

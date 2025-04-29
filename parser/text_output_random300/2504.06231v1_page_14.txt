@@ -1,0 +1,46 @@
+Limitations. Several works [31, 27] find Orb-v2 yields inaccurate finite-difference estimates of
+second and third order derivatives of the PES when using small atomic displacements, resulting
+in poor thermal conductivity estimates. Zhao et al. [47] observe that Orb-v2 underperforms
+many other potentials in identifying transition state pathways; again, this is a workflow involving
+higher-order information from the PES. The MLIPX benchmarking tool [48] has revealed that
+Orb-v2’s geometry optimizations of out-of-distribution slab-adsorbate systems can be unreliable
+with non-convergent energy graphs. Finally, a limitation has been highlighted by Bigi, Langer,
+and Ceriotti [22], who demonstrated that existing non-conservative models systematically fail to
+conserve energy in NVE MD simulations.
+Diagnosis.The last two limitations primarily stem from non-conservatism. The other limitations
+are more subtle, but we have broadly arrived at the same conclusion as Fu et al. [40], namely
+that enforcing smoothness can be critical for downstream tasks involving higher-order derivatives
+of the PES. Unlike Fu et al. [40]—whose starting point was an Equiformer architecture [14]—our
+starting point of Orb-v2 is already relatively smooth due its use of a small number of radial
+basis functions and smooth envelope cutoffs in its attention layers. Nevertheless, we find room
+for improvement on this front, as captured in our modelling updates below.
+Appendix C:
+Orb-v3 modelling updates
+Motivated in part by the above limitations, as well as the desire for increased speed, Orb-v3
+deviates in a significant number of ways from its predecessor:
+Model Compilation. A simple but important update was to compile the model in PyTorch [7].
+Models are compiled by default whilst still allowing for dynamic graph sizes due to Pytorch’s
+advanced compilation engine, which can take into account dynamic shapes. Importantly, Orb-v3
+requires torch==2.6.0 because there is a bug involving compilation of computation graphs
+containing RMSNorm in previous versions of torch.
+Width over depth. We increase the width of every MLP in the GNS backbone from 512 to 1024.
+This allows us to train a 5 layer model with approximately the same parameter count (∼25𝑀)
+as Orb-v2, but is 2 −3× faster.
+Direct and conservative models. In addition to direct models, we also release conservative
+models that compute forces and stress via backpropagation of the energy with respect to
+positions and a symmetric displacement tensor, respectively [13, 11].
+Larger, more diverse dataset. Our main models are trained on OMat24 (AIMD only), rather
+than the Mptraj and Alexandria datasets used by Orb-v2.
+Smoother edge embeddings. The edge embeddings in Orb-v2 were a concatenation of each
+edge vector (normalized to unit length) and 20 Gaussian radial basis functions (RBFs) applied
+to the edge length. In Orb-v3, we instead compute an outer-product between Bessel radial basis
+functions and Spherical Harmonic angular embeddings. Specifically we use 8 Bessel bases and
+set 𝐿𝑚𝑎𝑥= 3 for the spherical harmonics.
+Huber loss and pair repulsion. We adopt two useful ideas from Batatia et al. [21]. Firstly, we
+switch from using mean absolute error losses for energies, forces and stress, to using Huber
+losses (delta = 0.01). We also include a non-learnable ZBL pair repulsion term in our models,
+enabling them to more accurately model strong repulsive forces for atoms close together.
+Controllable max neighbors. We release models with unlimited numbers of neighbors, in
+addition to a maximum of 20 as used by Orb-v2. As demonstrated throughout the paper,
+limiting neighbors reduces costs; both the graph construction cost and the cost of the model
+14

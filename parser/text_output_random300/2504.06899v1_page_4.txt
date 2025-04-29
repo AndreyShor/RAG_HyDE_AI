@@ -1,0 +1,109 @@
+4
+The second, quite similar but different testing method
+was presented by Martinez et. al. [43] that is based on
+the Borel-normality criterion [44]. In our case, the test
+takes into account subsequences of consecutive bits that
+can overlap, while in the latter approach, no overlapping
+is considered. Furthermore, they claim that the longest
+length of a considered subsequence should be of the or-
+der of log2(log2(n)), while our test takes into account
+subsequences of length log2(n).
+III.
+SEISMIC DATA
+Since its formation, the planet has manifested natural
+movements, pulsations, and vibrations due to interac-
+tions of fluids and solids caused by heat exchange. In par-
+ticular, seismic waves correspond to mechanical waves of
+acoustic energy that travel through the media and their
+surfaces. In the case of the Earth, these can be caused
+naturally by earthquakes, volcanic eruptions, magmatic
+movements, and landslides. They can also be generated
+artificially by impacts, explosions, and industrial pro-
+cesses [e.g., 45].
+Seismic waves can be classified into two large groups:
+surface and body waves. As their name suggests, surface
+waves propagate through the Earth’s surface, while body
+waves propagate through the interior of the Earth. The
+principal’s body waves are the P-waves (primary or prin-
+cipal) and the S-waves (secondary, shear). P-waves are
+faster and are the first wave to arrive, presenting a lon-
+gitudinal movement of compression and expansion, and
+the particles of material affected by its passage move back
+and forth in the same direction of wave propagation, like
+an accordion. S-waves are a little slower than P-waves;
+they arrive in the second position as a pure wave, their
+movement is transverse (shear), and the affected particles
+move in a perpendicular direction, vertically for SV-waves
+and horizontally for SH-waves (for review see [e.g 46–48]
+The instruments that record the Earth’s vibrations are
+called Seismometers [46]. Their composition is equivalent
+(nowadays, instruments are digital) to three masses held
+by springs, each with a degree of freedom of movement in
+the three spatial components: vertical, north-horizontal,
+and east-horizontal. Each sensor can record the vibration
+within a range of amplitude or intensity, frequency, and
+duration (continuous or triggered by an event), which de-
+pends on each instrument. This instrument is designed to
+capture the Earth’s vibrations caused by earthquakes, in-
+cluding body and surface waves that convey details about
+the event’s magnitude and geometry and insights into the
+Earth’s interior [46, 49]. Additionally, some seismologi-
+cal stations continuously record environmental vibrations
+of the ground, natural or artificial, called noise, which
+do not correspond to specific seismic events. The sta-
+tions are deployed all around the planet, and the seis-
+mic records are open and free for everyone who needs
+to use them [46]. Each station is generally connected to
+multiple national and/or international seismological ser-
+vices, such as the SSN of Mexico (www.ssn.unam.mx),
+the CSN of Chile (www.csn.uchile.cl), the USGS of the
+USA (www.usgs.gov), or EarthScope (IRIS and UN-
+AVCO [50]), where the records are stored and available
+in various formats.
+A.
+Type of the seismic data
+The seismic information obtained to prove randomness
+corresponds to two data types obtained from seismologi-
+cal stations. The first corresponds to waveforms from dif-
+ferent earthquakes, and the second corresponds to noise
+recorded by certain stations.
+1.
+Waveforms
+To obtain the waveform of the earthquakes, we selected
+all the events between Mw = 6.0 and Mw = 7.0, from
+1976–2021, with depths between 30–1000 km, from the
+GCMT catalog [51, 52], which has a total of 2218 events.
+For each earthquake, we downloaded, from the Earth-
+Scope seismic service, the record of all the available sta-
+tions in a range of 10 and 50 degrees of epicentral distance
+(stations located at between ∼1000–5000 km from the
+epicenter). It is important to mention that to increase the
+aleatory of the data and due to the large amount of data,
+we use all the available earthquake-station pairs that fol-
+low the previous criteria (including those that may have
+incorrect instrument responses or clipping signals).
+Then, we transform the raw signal to displacement,
+velocity, and acceleration and filter the signal between
+0.1 and 200 Hz, obtaining the principal body waves
+and the high-period signals.
+Then, we cut the signal
+with dynamic windows into two sections. The first win-
+dow had been selected from the P-wave time arrival un-
+til 15[s/◦] ∗∆after its arrival, with ∆the epicentral
+distance in degrees, containing principally body waves.
+The second window starts at the S-wave time arrival to
+35[s/◦]∗∆after its arrival, where the surface waves would
+be predominant [53]. Once we have cut the signal, we
+unite (concatenate) each one of the time windows for all
+the stations and earthquakes. Finally, we will have six
+files corresponding to the two different time windows for
+the three data types (displacement, velocity, and accel-
+eration).
+2.
+Noise
+For the noise signals, we selected stations close to
+populated areas to increase the human noise in the
+records. The seismological station selected corresponds
+to Chile, Argentina, Iceland, Indonesia, Malaysia, Aus-
+tralia, Nepal, India, and the USA, and the time window
+corresponds to 24 hours, respectively. These instruments,

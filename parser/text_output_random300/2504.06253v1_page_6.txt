@@ -1,0 +1,84 @@
+6
+•
+Bhattacharyya et al.
+We can also define Hamiltonians3 𝐻QUBO
+𝑄
+and 𝐻Max-Cut
+𝐽
+as (where 𝑍𝑖is the Pauli 𝑍applied to qubit 𝐼)
+𝐻Q
+𝑄=
+∑︁
+0≤𝑖,𝑗<𝑛
+𝑄𝑖,𝑗
+1 −𝑍𝑖
+2
+ 1 −𝑍𝑖
+2
+
+,
+𝐻M
+𝐴= −1
+4
+∑︁
+0≤𝑖,𝑗<𝑛
+𝐴𝑖,𝑗𝑍𝑖𝑍𝑗.
+(18)
+Which in turn satisfy
+⟨𝜓(𝑥)|𝐻Q
+𝑄|𝜓(𝑥)⟩= 𝑥𝑇𝑄𝑥,
+⟨𝜓(𝑦)|𝐻M
+𝐴|𝜓(𝑦)⟩= −1
+4𝑦𝑇𝐴𝑦.
+(19)
+Now, given the QUBO problem associated with 𝑄, it can be solved by either
+• Running QAOA with 𝐻𝐶= 𝐻Q
+𝑄.
+• Running QAOA with 𝐻𝐶= 𝐻M
+𝐴where 𝐴is the adjacency matrix of the corresponding graph of 𝑄.
+3
+Methods
+3.1
+Warm-start Quantum Optimization
+Warm-start QAOA refers to using information about the Hamiltonian 𝐻𝐶to determine an appropriate initial
+state, |𝜓init⟩.
+3.1.1
+QUBO-Relaxed. The QUBO-Relaxed warmstart (see [5, 8]) is inspired by the following relaxation of a
+QUBO. Given a symmetric 𝑄∈R𝑛×𝑛, let
+𝑦𝑐= arg max
+𝑦∈[0,1]𝑛𝑦𝑇𝑄𝑦.
+(20)
+In the event that 𝑄is negative semidefinite, it is known that the above relaxation is convex4 and thus can be
+solved efficiently [20]. However, for arbitrary 𝑄, solving the relaxation is known to be NP-Hard [9] meaning
+that, unless 𝑃= 𝑁𝑃, there is no algorithm that is guaranteed to find the global optimum in polynomial time.
+As discussed later in our numerical results, for general 𝑄, we instead estimate 𝑦𝑐by considering random initial
+points in the box [0, 1]𝑛and performing a local optimization.
+Given a positive real hyperparameter 𝜀> 0, the QUBO-Relaxed initial state for 𝐻QUBO
+𝑄
+is given by
+|𝜓𝑗⟩= 𝑅𝑌(𝜃𝑗)|0⟩
+where
+𝜃𝑗=
+
+
+2 arcsin(𝜀)
+if
+𝑦𝑐
+𝑗≤𝜀
+2 arcsin(𝑦𝑐
+𝑗)
+if
+𝜀≤𝑦𝑐
+𝑗≤1 −𝜀
+2 arcsin(1 −𝜀)
+if
+𝑦𝑐
+𝑗≥1 −𝜀
+.
+(21)
+3Here 𝑄and 𝑀refer to QUBO and Max-Cut respectively.
+4Technically, the objective is a concave function; however convex optimization is usually considered in the context of minimization problems
+and minimization of a convex objective 𝑓is equivalent to maximization of the concave objective −𝑓. In general, we abuse this language
+and say that an optimization problem “is convex" whenever a convex objective is being minimized or when a concave objective is being
+maximized.
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

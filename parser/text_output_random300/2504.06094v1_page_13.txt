@@ -1,0 +1,94 @@
+⟨ηi|ξ⟩̸= 0 should happen for some i. Thus, for each Y we have some Y ′ ∈Irr(C+) such that
+A(Y ⊠Y ′) is nonzero. This shows that, if Irr(C−) is an inﬁnite set, then supp(A) is also inﬁnite.
+It remains to show that Irr(C−) is inﬁnite if and only if Irr(C+) is inﬁnite. By symmetry it is
+enough to show that the ﬁniteness of Irr(C−) implies the same for Irr(C+). If Irr(C−) is ﬁnite,
+then Proposition 5.4 implies that DHR(A•) is a full subcategory of Z(C−), hence is a fusion
+category. Then, Irr(C+) has to be ﬁnite as well.
+□
+4.4. Equivalence between C+ and C−under algebraic Haag duality. Let us further
+assume that A• satisﬁes the algebraic Haag duality. We will just use the property A−= A∩A′
++.
+Proposition 4.20. Given X ∈DHR(A•), the A−-bimodule X−can be described as
+X ∩A′
++ = { ξ ∈X | ∀a ∈A+, aξ = ξa } ,
+that is, the subspace of A+-central vectors in X.
+Proof. The inclusion of X−in X ∩A′
++ is obvious by construction, so let us show the reverse
+inclusion. Let us ﬁx a basis (ξi) localized in F ⊂(−∞, −1], and η be a vector in X ∩A′
++. Then
+the inner product ⟨ξi|η⟩commutes with A+, and by the algebraic Haag duality, belongs to A−.
+This shows that η is in the span of ξiA−, which shows the claim.
+□
+Given an A−-bimodule map f : X−→Y−and a basis (ξj)j of X localized in F ⊂(−∞, −1]
+deﬁne
+(4.1)
+˜f : X →Y,
+x 7→
+X
+j
+f(ξj) ⟨ξj|x⟩.
+Proposition 4.21. Let A• be an abstract spin system satisfying algebraic Haag duality. Given
+X, Y ∈DHR(A•), the assignment
+(4.2)
+HomC(X−, Y−) →HomB0-A(X, Y ),
+f 7→˜f
+is a natural isomorphism.
+Proof. First notice that the deﬁnition of ˜f is independent of the choice of projective basis of X−.
+This follows from Proposition 2.7 relating the charge transporters that connect two diﬀerent
+choices of such bases. That ˜f is a right A-module map is an immediate consequence of the
+A-linearity of the inner-product of X. Now, for b ∈A+ we have that
+(4.3)
+˜f(bx) =
+X
+j
+f(ξj) ⟨ξj|bx⟩=
+X
+j
+f(ξj) ⟨b∗ξj|x⟩=
+X
+j
+f(ξj) ⟨ξjb∗|x⟩
+=
+X
+j
+f(ξj)b ⟨ξj|x⟩=
+X
+j
+bf(ξj) ⟨ξj|x⟩= b ˜f(x),
+where the second equality uses that (ξi) is negatively localized, and the last equality holds due
+to Proposition 4.20 since f(ξj) ∈Y−. For b ∈A−
+(4.4)
+˜f(bx) =
+X
+j
+f(ξj) ⟨b∗ξj|x⟩=
+X
+i,j
+f(ξj) ⟨ξi ⟨ξi|b∗ξj⟩|x⟩
+=
+X
+i,j
+f(ξj) ⟨ξi|b∗ξj⟩∗⟨ξi|x⟩=
+X
+i,j
+f(ξj) ⟨ξj|bξi⟩⟨ξi|x⟩
+=
+X
+i
+f
+X
+j
+ξj ⟨ξj|bξi⟩
+
+⟨ξi|x⟩=
+X
+i
+f (bξi) ⟨ξi|x⟩
+=
+X
+i
+bf(ξi) ⟨ξi|x⟩= b ˜f(x),
+where the second equality expresses b∗ξj in terms of the projective basis, and the ﬁfth and sixth
+equalities uses the fact that f is an A−-bimodule map. It follows that ˜f is a B0-module map,
+and thus the assignment (4.2) is well-deﬁned.
+13

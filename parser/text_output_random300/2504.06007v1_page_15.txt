@@ -1,0 +1,30 @@
+CAMulator
+Figure 11: Annual mean zonal wind at the second model level in CAM6 (middle row) and CAMulator (top row) for
+three sea surface temperature (SST) climatologies: 2000+0K (left column), 2000+2K (middle column), and 2000+4K
+(right column). The bottom row shows the difference (CAMulator - CAM), highlighting deviations between the
+two models. The color scale represents zonal wind speed (m/s), with positive/negative values (red/blue) indicating
+stronger/weaker values in CAMulator.
+The difference maps (Figs. 11g–i) further highlight systematic deviations, particularly in the North Atlantic and over
+regions of strong land-sea contrast, such as the western boundary currents. While these biases remain relatively small
+in magnitude compared to temperature biases, they suggest that CAMulator does not fully capture the dynamical
+adjustments that drive localized changes in low-level winds. This implies that some aspects of the wind field may be
+inherently more difficult for a ML-based emulator to reproduce from CAM6.
+Overall, these results indicate that CAMulator successfully replicates large-scale low-level wind features, particularly in
+regions where wind anomalies are tightly coupled to SST changes. However, for dynamically driven patterns such as
+the NAO, its response diverges from CAM6, potentially due to challenges in learning internally generated variability
+from training data alone. Future work should assess whether incorporating additional predictors—such as large-scale
+pressure anomalies or eddy kinetic energy—could improve CAMulator’s ability to mimic dynamically driven circulation
+responses to warming.
+4
+CAMulator Deficiencies, Future Work, and Conclusions
+In this work, we introduce CAMulator, an auto-regressive, machine-learned (ML) emulator of the Community At-
+mosphere Model version 6 (CAM6). CAMulator is forced by sea surface temperatures (SSTs) and incoming solar
+radiation and is explicitly constrained to conserve global mass, water, and energy. It exhibits numerical stability
+over indefinite roll-outs and accurately reproduces the surface and integrated atmospheric heating response to within
+sample SST variations. The annual climatology is well captured, and dominant modes of variability, such as El Niño
+Southern Oscillation (ENSO), the North Atlantic Oscillation (NAO), and the Pacific North American (PNA) pattern,
+emerge naturally, with slightly muted amplitudes in some cases. Additionally, CAMulator’s physical constraints
+alleviate some of the drizzle problem commonly found in traditional climate models (Fig. 8). Beyond these physical
+attributes, CAMulator is computationally efficient and differentiable, making it a promising tool for a range of scientific
+applications.
+15

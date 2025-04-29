@@ -1,0 +1,174 @@
+3
+where Cw, Cg, Sv refer to the domains of the induced currents
+on the impedance sheets, ground plane and dielectric, respec-
+tively. In addition, k is the free-space wavenumber, η ≈377Ω
+is the free-space impedance, H(2)
+0
+is the second-kind Hankel
+function of zeroth order, and ρ = yˆy + zˆz, ρ′ = y′ˆy + z′ˆz
+are the position vectors of the observation and source points,
+respectively.
+The total ﬁeld, which is x-polarized, should be zero on
+the ground plane based on the boundary conditions, since the
+latter is considered a perfect electric conductor. Moreover, the
+impedance boundary condition, formulated by Leontovich and
+Shchulkin [31], requires that the ratio of the total electric ﬁeld
+to the induced current density is Zn at the n-the impedance
+strip [32]. Lastly, the polarization current is written as a func-
+tion of the total electric ﬁeld through the dielectric constant
+of the substrate. In summary, the total electric ﬁeld satisﬁes:
+Etot = Einc + Esc
+w + Esc
+g + Esc
+v
+=
+
+
+
+
+
+
+
+Z(y)Jw(y),
+on Cw,
+0,
+on Cg,
+1
+jω(εr −1)ε0
+Jv(y, z),
+in Cv,
+(2)
+where ω is the angular frequency of operation and Z(y)
+comprises the surface impedance values Zn at the location
+of each impedance strip. Equations (1)-(2) deﬁne a system of
+volume-surface integral equations (VSIE) with respect to the
+unknown current densities.
+The VSIE are solved with a Method of Moments (MoM)
+approach. Speciﬁcally, the surface current densities Jw(y)
+and Jg(y) are expanded to Nw and Ng 1-D pulse basis
+functions extending along the impedance sheets and ground
+plane, respectively. Moreover, a total of Nv 2-D pulse basis
+functions are utilized for the expansion of the volumetric
+current density Jv(y, z). At each one of these basis functions
+the current is assumed constant with an unknown complex
+amplitude. By performing testing at the center of each basis
+function domain (point matching), a linear system of equations
+can be obtained with (Nw+Ng+Nv) equations and unknowns,
+which can be written in a block-matrix format as follows:
+
+
+Ggg
+Ggv
+Ggw
+Gvg
+Gvv −P
+Gvw
+Gwg
+Gwv
+Gww −Zw
+
+
+
+
+¯Jg¯Jv
+¯Jw
+
+=
+
+
+¯Einc
+g
+¯Einc
+v
+¯Einc
+w
+
+.
+(3)
+In Eq. (3), the vectors ¯Ji and ¯Einc
+i
+(i = {w, g, v} contain
+the unknown complex amplitudes of the current densities and
+the sampled incident ﬁeld values, respectively, at the center of
+each basis function domain. The matrix P is diagonal with
+all elements being equal to 1/[jω(εr −1)ε0], whereas the
+matrix Zw is also diagonal and contains the surface impedance
+values corresponding to the location of each basis function
+along the impedance strips. Lastly, the matrices Gij represent
+the self and mutual impedances with their elements Gij[n][m]
+calculated analytically [23].
+By solving the linear system in Eq. (3), the induced current
+densities are calculated for a given incident ﬁeld and set of
+surface impedances Zn. Then, the far-ﬁeld radiation can be
+computed at a number of equally-spaced discrete angles θn
+in the yz plane. By convention, we assume positive angles
+(θn > 0) for angles in the half-space with y > 0, and negative
+angles (θn > 0) for the half-space with y < 0. The ﬁeld
+pattern is obtained from the sampled current densities as:
+¯Eff =
+Gfg
+Gfv
+Gfw
+
+
+
+¯Jg¯Jv
+¯Jw
+
+,
+(4)
+where | ¯Eff| is a vector containing the ﬁeld pattern values in
+the discretized angles θn (the phase of ¯Eff is disregarded, as
+the focus is on the amplitude of the pattern), and the elements
+of the Gfi matrices are given as:
+• i = {g, w},
+Gfi[n][m] = −η∆i
+4
+r
+2jk
+π exp{jk(ymsin(θn) + zmcos(θn))},
+(5a)
+• i = v,
+Gfi[n][m] = −ηπr2
+0
+4
+r
+2jk
+π exp{jk(ymsin(θn) + zmcos(θn))},
+(5b)
+where the coordinates (ym, zm) are the centers of the m-th
+current basis function. The radiation intensity is calculated at
+each angle θn as U(θn) = |Eff(θn)|2/(2η). Then, the 2-D
+directivity (referring to the yz cross-section) at each angle is
+given as:
+D(θn) = 2π U(θn)
+Prad
+,
+(6)
+where the radiated power Prad is found through a numerical
+integration of the radiation intensity:
+Prad =
+Z π/2
+−π/2
+U(θ)dθ.
+(7)
+Equations (4)-(7) are used to calculate the directivity in the
+far-ﬁeld. However, measurements in the used bi-static mea-
+surement setup are taken in a ﬁnite radius rd. Since a small
+difference in the pattern may exist, it may be beneﬁcial to
+calculate the exact ﬁeld without applying any far-ﬁeld approx-
+imation. For each angle θn, the total ﬁeld Enf is calculated
+at the points (y, z) = (rdsin(θn), rdcos(θn)) by multiplying
+the weights ¯Ji with the respective Green’s functions. The
+radiation intensity is then calculated at this “near-ﬁeld” radius
+as U(rd, θn) = r2
+d|Enf(θn)|2/(2η). Naturally, as rd →∞,
+the calculation of the directivity at the radius rd converges to
+the far-ﬁeld calculation.
+C. Optimization of surface impedances
+The analysis framework described above can be supple-
+mented with an optimization technique to determine the sur-
+face impedances Zn that shape the reﬂections from the RIS
+into a desired far-ﬁeld pattern. The optimization variables are
+the imaginary parts of the surface impedances Xn, with the
+real parts Rn(Xn) added based on a lookup table for the

@@ -1,0 +1,57 @@
+set consists of a tensor that contains 500 snapshots. A total of 100 snapshots have been
+predicted to compare with the last 100 ground truth snapshots. Figure 11 and 12 illustrate
+the ground truth and the predictions for the streamwise and normal velocity components,
+respectively, at the time step t = 428, providing a reference for evaluating the model’s
+predictive performance. The figures below present the predicted streamwise and normal
+velocity components for both the HOSVD and SVD approaches using LSTM architectures
+with 1 dense, 2 dense, and time-distributed layers. The first column represents predictions
+from the HOSVD-based method, while the second column corresponds to predictions
+from the SVD-based method.
+Each row sequentially depicts the results for different
+architectures: the first row for LSTM with 1 dense, the second row for LSTM with 2
+dense, and the third row for LSTM with time-distributed. After the snapshots, the average
+RRMSE was presented, followed by the temporal evolution of the flow at a representative
+point in the wake and the UQ results. This provides a deeper insight into the accuracy
+of the predictions over time.
+The most notable observation is that HOSVD provides smoother and more consistent
+predictions compared to SVD. This can be attributed to its ability to handle the multi-
+dimensional nature of the tensor data more effectively, preserving spatial and temporal
+correlations during dimensionality reduction. For the streamwise velocity components,
+HOSVD handles regions with sharp transitions and high gradients more effectively, en-
+suring better alignment with the ground truth. In contrast, for certain snapshots, like at t
+= 428, SVD predicts an averaged flow in some areas, demonstrating its limitations in pre-
+serving temporal consistency. However, the combination of SVD with the time-distributed
+architecture performs reasonably well, generating snapshots visually comparable to those
+obtained from the HOSVD models. The normal velocity predictions from the HOSVD
+and SVD models are quite similar to the ground truth and are robust, capturing subtle
+variations and maintaining consistency across the entire flow field.
+Architecture
+HOSVD (%)
+SVD (%)
+LSTM 1 Dense
+0.4
+0.6
+LSTM 2 Dense
+0.2
+0.5
+LSTM Time-Distributed
+0.4
+0.5
+Table 9: RRMSE values for HOSVD and SVD across LSTM architectures for the stream-
+wise velocity component.
+Architecture
+HOSVD (%)
+SVD (%)
+LSTM 1 Dense
+5.1
+7.8
+LSTM 2 Dense
+3.8
+5
+LSTM Time-Distributed
+4.2
+5.4
+Table 10: RRMSE values for HOSVD and SVD across LSTM architectures for the normal
+velocity component.
+For quantitative analysis, the RRMSE values for the streamwise and normal velocity
+25

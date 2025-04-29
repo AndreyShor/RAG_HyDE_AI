@@ -1,0 +1,84 @@
+The Work Capacity of Channels with Memory:
+Maximum Extractable Work in Percept-Action Loops
+Lukas J. Fiderer,∗Paul C. Barth, Isaac D. Smith, and Hans J. Briegel
+Universit¨at Innsbruck, Institut f¨ur Theoretische Physik, Technikerstraße 21a, A-6020 Innsbruck, Austria
+Predicting future observations plays a central role in machine learning, biology, economics, and
+many other fields. It lies at the heart of organizational principles such as the variational free energy
+principle and has even been shown—based on the second law of thermodynamics—to be necessary
+for reaching the fundamental energetic limits of sequential information processing. While the use-
+fulness of the predictive paradigm is undisputed, complex adaptive systems that interact with their
+environment are more than just predictive machines: they have the power to act upon their envi-
+ronment and cause change. In this work, we develop a framework to analyze the thermodynamics of
+information processing in percept-action loops—a model of agent–environment interaction—allowing
+us to investigate the thermodynamic implications of actions and percepts on equal footing. To this
+end, we introduce the concept of work capacity—the maximum rate at which an agent can expect
+to extract work from its environment.
+Our results reveal that neither of two previously estab-
+lished design principles for work-efficient agents—maximizing predictive power and forgetting past
+actions—remains optimal in environments where actions have observable consequences. Instead,
+a trade-off emerges: work-efficient agents must balance prediction and forgetting, as remembering
+past actions can reduce the available free energy. This highlights a fundamental departure from the
+thermodynamics of passive observation, suggesting that prediction and energy efficiency may be at
+odds in active learning systems.
+I.
+INTRODUCTION
+Percept-action loops—cycles in which an agent per-
+ceives its environment, processes and stores information,
+and acts to influence future perception—underlie adap-
+tive behavior in both biological and artificial systems.
+Such loops can be observed across various domains, from
+humans learning chess, to animals foraging, to artificial
+intelligence models engaging in dialogue. Despite the di-
+verse range of examples, certain principles governing the
+energetics of these processes are shared across domains.
+Energetic considerations in biology have been linked
+to a wide range of animal behaviors and physiological
+processes.
+An example from the former includes the
+energy-saving flight patterns of albatrosses [1] and from
+the latter information processing in the brain, where en-
+ergy consumption associated with neural signaling is min-
+imized through efficient coding strategies [2, 3]. At the
+molecular level, ribosomes have been shown to perform
+simple decoding computations at energy costs within an
+order of magnitude of Landauer’s bound—significantly
+outperforming even the most advanced supercomputers
+[4]. Indeed, in artificial intelligence, the energetic cost of
+supercomputers is becoming an increasing concern, par-
+ticularly in the training of large neural networks [5], re-
+sulting in performance-power trade-offs in large language
+models [6].
+This raises fundamental questions: What are the ener-
+getic limits of adaptive information processing in percept-
+action loops?
+And how should efficient agents be de-
+signed?
+These questions can be tackled by reducing the prob-
+∗lukasjfiderer@gmail.com
+FIG. 1. Tape setting (a) and percept-action loop setting (b).
+In the tape setting, (a), an agent processes symbols St from
+a pre-existing tape. Outgoing symbols At do not influence
+future inputs.
+In the percept-action loop setting, (b), the
+agent interacts with an environment (Env.)
+in rounds.
+In
+round t, the agent provides an action symbol At and receives
+a percept symbol St from the environment. Both the agent
+and environment can have memory, allowing future percepts
+to depend on past actions.
+lem to an information-theoretic model of percept-action
+loops. By abstracting away implementation-dependent
+details, we derive energetic bounds that arise solely from
+the intrinsic cost of information processing, as analyzed
+through nonequilibrium thermodynamics [7, 8]. Indeed,
+inspired by Maxwell’s demon, nonequilibrium thermody-
+namics has been applied to investigate energetics in the
+tape setting (see Figure 1), where agents sequentially pro-
+cess and modify symbols on a pre-existing tape [9–22].
+In this framework, predictable correlations in the input
+serve as an energetic resource, while generating correla-
+tions in the output incurs an energy cost. However, exist-
+ing works typically assume stationary input patterns and
+exclude feedback between agent and environment, leav-
+arXiv:2504.06209v1  [cs.LG]  8 Apr 2025

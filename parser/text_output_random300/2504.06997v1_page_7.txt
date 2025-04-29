@@ -1,0 +1,41 @@
+7 
+2.4 Deep learning model architecture 
+In this study, we employed a Long Short-Term Memory (LSTM) network as our deep learning 
+model architecture. LSTM, an advanced variant of the RNN architecture designed for model 
+sequential data, has been applied in several studies for DCS data analysis30,46. Our LSTM model 
+architecture is illustrated in Fig. 3. The dataset consists of 1,200,000 samples, with 80% used for 
+training (960,000 samples) and 20% for validation. CBFi was used as the training label, and each 
+value was scaled by 106 to prevent slow training convergence. We chose an LSTM with 2×128 
+units as it offered a good balance of complexity and performance, and similar RNN-based models 
+have proven effective in DCS analysis27,28,30. Based on our model architecture (Table 2), the total 
+number of trainable parameters is 198,273, yielding a training sample-to-parameter ratio of 4.84:1. 
+This ratio supports effective generalization while reducing the risk of overfitting, which is 
+generally sufficient to avoid overfitting. The model was trained by minimizing the mean squared 
+error (MSE) loss function, with Adam as the optimizer. To avoid overfitting, we applied dropout 
+rate of 0.3 and L2 regularization (weight decay of 10-4, batch size: 256 and epochs: 1000) during 
+the training. A fully connected layer processes the unit’s output to regress CBFi. The model was 
+developed using Pytorch and executed on our workstation (GPU: NVIDIA Quadro RTX 5000 with 
+16 GB memory). The training and validation loss curves are shown in Fig. 4. 
+ 
+Fig. 3 The proposed LSTM model architecture. 
+Table 2 LSTM architecture parameters. 
+Parameters 
+Values 
+Input size 
+31×1 
+Number of hidden layers 
+2 
+Layer unit 
+128 
+Loss function 
+MSE 
+Optimizer 
+Adam 
+Learning rate 
+0.0001 
+Batch size 
+256 
+Epoch 
+1,000 
+Output size 
+1 

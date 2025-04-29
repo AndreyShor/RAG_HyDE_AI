@@ -1,0 +1,147 @@
+26
+F. CARAVENNA, R. SUN, AND N. ZYGOURAS
+hence to prove (4.16) we need to show that
+@M P N :
+lim
+NÑ8
+!
+E
+“
+pZav
+N q2‰
+´ E
+“
+pZoff
+N q2‰)
+“ 0 .
+(4.17)
+Proof of (4.17). Let us define a variant ˜Zoff
+N,j of (4.15) where we only switch off disorder in
+a given interval p ˜Nj, Njs, namely
+for j “ 1, . . . , M :
+˜Zoff
+N,j :“ E
+”
+e
+H
+βN
+p0,Nszp ˜
+Nj,Njs ˇˇˇ S0 „ Uδϱ
+N
+?
+N
+ı
+.
+(4.18)
+We claim that we can bound the difference in (4.17) by
+E
+“
+pZav
+N q2‰
+´ E
+“
+pZoff
+N q2‰
+“ Var
+“
+Zav
+N
+‰
+´ Var
+“
+Zoff
+N
+‰
+ď
+M
+ÿ
+j“1
+␣
+Var
+“
+Zav
+N
+‰
+´ Var
+“ ˜Zoff
+N,j
+‰(
+. (4.19)
+It then suffices to estimate separately each term in this sum.
+In order to prove (4.19), recall the polynomial chaos expansion (2.11) for the point-to-
+plane partition function Zβ
+Npxq, which yields a corresponding polynomial chaos expansion
+for the averaged partition function Zβ
+Npφq “ ř
+xPZ2
+even φpxq Zβ
+Npxq. The polynomial chaos
+expansion for Zoff
+N from (4.15) is a subset of the polynomial chaos expansion for Zav
+N : it is
+obtained by restricting the sum to times n1, . . . , nk which avoid all intervals p ˜Nj, Njs for
+j “ 1, . . . , M (see Remark 2.2), hence its variance admits a formula like (2.17) with the
+same restriction on the sum. Then the difference Var
+“
+Zav
+N
+‰
+´ Var
+“
+Zoff
+N
+‰
+is given again by
+formula (2.17) where the sequence of times n1, . . . , nk is now required to intersect at least
+one of the intervals p ˜Nj, Njs for j “ 1, . . . , M. By a union bound, we obtain precisely (4.19).
+Let us finally focus on a given term in the RHS of (4.19). Since Var
+“
+Zav
+N
+‰
+Ñ ϱ as N Ñ 8,
+see (2.26), it is enough to show that
+@j P t1, . . . , Mu:
+lim
+NÑ8 Var
+“ ˜Zoff
+N,j
+‰
+“ ϱ .
+(4.20)
+We recall that ˜Zoff
+N,j corresponds to switching off disorder between AN “ ˜Nj and BN “ Nj.
+It is instructive (and more transparent) to fix 0 ă a ď b ă 1 and consider general times
+AN “ N pδ2ϱ
+N q1´a`op1q “ N e´p1´aq ϱ |ϑN|`op|ϑN|q ,
+BN “ N pδ2ϱ
+N q1´b`op1q “ N e´p1´bq ϱ |ϑN|`op|ϑN|q .
+Later we will specialize to b “ a “ j´1
+M due to the choice of Nj and ˜Nj in (4.5) and (4.6).
+We compute Var
+“ ˜Zoff
+N,j
+‰
+by formula (2.17) where the sum is restricted to times n1, . . . , nk
+that do not intersect the interval pAN, BNs. We split Var
+“ ˜Zoff
+N,j
+‰
+“ I1 ` I2 ` I3 as follows:
+‚ part I1: all times ni take place before AN;
+‚ part I2: all times ni take place after BN;
+‚ part I3: the first time n1 takes place before AN, the last time nk takes place after BN.
+The first contribution I1 is nothing but the variance of the averaged partition function of
+polymer length AN, that is (recall (4.1))
+I1 “ Var
+“
+ZβN
+AN pUδϱ
+N
+?
+Nq
+‰
+„
+aϱ
+1 ` p1 ´ aqϱ ,
+(4.21)

@@ -1,0 +1,101 @@
+23
+0
+10
+20
+30
+40
+50
+0
+20
+40
+60
+80
+100
+120
+140
+Taylor
+Padé
+0
+10
+20
+30
+40
+50
+0
+200
+400
+600
+800
+1000
+1200
+Condition Number
+Taylor
+Padé
+0
+10
+20
+30
+40
+50
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+Success Probability
+Taylor
+Padé
+Figure 14. For varying time interval length T, and with the same accuracy requirement ϵ and approximation order
+k, the leftmost plot compares the average minimum choice of m for the two methods. The middle plot compares
+the average condition number, and the rightmost plot compares the average success probability. The shaded area
+represents the mean value plus or minus the standard deviation.
+10-1
+10-5
+10-10
+10-14
+Relative Solution Error
+0
+5
+10
+15
+Taylor
+Padé
+10-1
+10-5
+10-10
+10-14
+Relative Solution Error
+5
+10
+15
+20
+Condition Number
+Taylor
+Padé
+Figure 15. Comparison of the two methods for different precision requirements. The left plot compares the smallest k
+needed to achieve the required precision for both methods, on average. The right plot compares the average condition
+number of the linear systems derived from both methods with the smallest choice of k that achieves the required
+precision. The shaded area represents the mean value plus or minus the standard deviation.
+linear systems. We then evaluate the condition number of each linear system and calculate the mean value
+and standard deviation across the one hundred samples. The results are shown in Fig. 15.
+From the left plot of Fig. 15, we observe that the average magnitude of k∗required by the Padé
+approximation-based method is roughly half that of the Taylor approximation-based method. This aligns
+with the third point in our theoretical comparison. The smaller k benefits both the total query complexity
+(see Eq. (43)) and the gate complexity (as shown in Eq. (44)). Additionally, the average condition number of
+the linear system based on the Padé approximation is smaller, further supporting the efficiency of the Padé
+approximation-based method.
+VI.
+CONCLUSION
+We propose a quantum algorithm to solve linear autonomous ordinary differential equations (ODEs) of the
+form (3) using the Padé approximation. By discretizing the time step-by-step with step size h, the solution
+to (3) can be expressed in terms of eAh. The proposed method then uses the Padé approximation, a rational
+function of Ah, to approximate eAh. The matrix rational function is encoded into a large linear system
+Lm,k,p(Ah), as shown in (22), which does not explicitly involve matrix inversion. The matrix Lm,k,p(Ah)
+has a sparse block structure, allowing it to be efficiently block encoded using an oracle query to A. Details
+of the quantum circuit for encoding Lm,k,p(Ah) can be found in Sec. III C. By applying this block-encoding
+in QLSA, we obtain the overall quantum algorithm for solving the linear ODEs.
+The complexity analysis of the proposed quantum algorithm is conducted in detail. The core of the anal-
+ysis focuses on deriving asymptotic upper bounds for the condition number of Lm,k,p(Ah). Unlike existing

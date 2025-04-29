@@ -1,0 +1,26 @@
+constrained network. This is because we have embedded this physical law directly into the model 
+architecture through the sigmoid activation in the amplitude branch. It automatically ensures 
+amplitude values never exceed the physical range of [0 , 1], and thus leads to more efficient learning 
+process. In contrast, without this activation, the model requires several epochs to learn this constraint 
+(see bottom diagram in Figure III-b). The phase loss, however, converges more gradually, reflecting 
+the complexity of phase prediction (Figure III-c). 
+ 
+ 
+Figure III: Evolution of various loss components during training. The top and bottom diagrams in b correspond to the 
+models with and without sigmoid activation in the amplitude output, respectively. 
+ 
+ 
+Table I presents the model’s performance that is averaged over 10 runs with different random 
+initializations for both datasets. The amplitude loss is quite low for both datasets, confirming the 
+ability of the model to make accurate predictions. The energy conservation loss is effectively zero, 
+demonstrating that our physics-constraint architecture successfully enforces this fundamental physics 
+law. The phase loss, that measures Euclidean distance in sine/cosine space between true and 
+predicted phase values, stabilizes around 0.11 for both datasets, corresponding to a prediction error 
+of about 5.5%. To quantify the phase prediction error, we calculate the angular difference between 
+true and predicted phase values using the dot product of their unit vector representations. For each 
+data point, we calculate cos(𝜑𝑇𝑟𝑢𝑒) . cos(𝜑𝑃𝑟𝑒𝑑𝑖𝑐𝑡) + sin(𝜑𝑇𝑟𝑢𝑒) . sin(𝜑𝑃𝑟𝑒𝑑𝑖𝑐𝑡), which yields the 
+cosine of the angular difference. We then apply the inverse cosine function to obtain the angular 
+difference in radians. This approach provides physically meaningful error in radians. As seen in the 
+table, the mean angular error for Dataset A is 0.114 radians (approximately 6.5°), while for Dataset B, 
+it is 0.124 radians (approximately 7.1°).  The R2 (known as coefficient of determination) for prediction 
+of phase values is about 0.906 for Dataset B and 0.928 for Dataset A, where value 1 means perfect 

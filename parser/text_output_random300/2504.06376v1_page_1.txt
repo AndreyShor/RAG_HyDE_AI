@@ -1,0 +1,53 @@
+Quantum Combine and Conquer and Its
+Applications to Sublinear Quantum Convex Hull
+and Maxima Set Construction
+Shion Fukuzawa # Ñ
+University of California, Irvine, USA
+Michael T. Goodrich # Ñ 
+University of California, Irvine, USA
+Sandy Irani # Ñ
+University of California, Irvine, USA
+Abstract
+We introduce a quantum algorithm design paradigm called combine and conquer, which is a
+quantum version of the “marriage-before-conquest” technique of Kirkpatrick and Seidel.
+In a
+quantum combine-and-conquer algorithm, one performs the essential computation of the combine
+step of a quantum divide-and-conquer algorithm prior to the conquer step while avoiding recursion.
+This model is better suited for the quantum setting, due to its non-recursive nature. We show
+the utility of this approach by providing quantum algorithms for 2D maxima set and convex hull
+problems for sorted point sets running in ˜O(
+√
+nh) time, w.h.p., where h is the size of the output.
+2012 ACM Subject Classification Theory of computation
+Keywords and phrases quantum computing, computational geometry, divide and conquer, convex
+hulls, maxima sets
+Digital Object Identifier 10.4230/LIPIcs.SoCG.2025.XX
+Funding This work was supported in part by NSF Grant 2212129.
+1
+Introduction
+In classical computing, divide and conquer is an algorithm design pardigm that is usually
+described in terms of the following three steps:
+1. Divide: divide a problem into two or more subproblems.
+2. Conquer: solve the subproblems, typically using recursion.
+3. Combine: combine subproblem solutions into a solution to the original problem.
+Perhaps because of the wide applicability of algorithm design paradigms, like divide
+and conquer, there is interest in adapting classical paradigms to the quantum setting. For
+example, Childs, Kothari, Kovacs-Deak, Sundaram, and Wang [9] describe an adaptation
+of the divide-and-conquer technique to quantum computing that in some cases results in
+query complexities better than what is possible classically. Likewise, Allcock, Bao, Belovs,
+Lee, and Santha [3] study the time complexity of a number of quantum divide-and-conquer
+algorithms, establishing conditions under which search and minimization problems with
+classical divide-and-conquer algorithms are amenable to quantum speedups. Akmal and
+Jin [2] adapt classical divide-and-conquer approaches for string problems to the quantum
+setting. There is also related work by many others; see, e.g., [4,6,8,14,25,35,37].
+A well-known problem that can be solved classically using the divide-and-conquer
+paradigm is the convex hull problem; e.g., see Seidel [34]. In the two-dimensional version
+of this problem, one is given a set, S, of n points in the plane and asked to output a
+representation of the smallest convex polygon that contains the points in S. (See Figure 1.)
+© Shion Fukuzawa, Michael T. Goodrich, and Sandy Irani;
+licensed under Creative Commons License CC-BY 4.0
+41st International Symposium on Computational Geometry (SoCG 2025).
+Editors: Oswin Aichholzer and Haitao Wang; Article No. XX; pp. XX:0–XX:17
+Leibniz International Proceedings in Informatics
+Schloss Dagstuhl – Leibniz-Zentrum für Informatik, Dagstuhl Publishing, Germany
+arXiv:2504.06376v1  [cs.CG]  8 Apr 2025

@@ -1,0 +1,55 @@
+3.2.2
+TEMPLATE GUIDED GENERATION
+In this task, we investigate the use of an existing material to serve as a template for the diffusion process.
+Instead of sampling AT , XT , and LT from their prior distributions at T = 1000—representing the gener-
+ation from complete noise—we initiate the diffusion process at T < 1000. This approach involves adding
+noise to a specified template material at the chosen timestep. Similar to the masked generation task, only a
+subset of the atoms of the template material is conditioned on a target DOS, while the DOS of the uncondi-
+tioned atoms can vary freely. This type of task can be useful when performing inverse design within specific
+materials classes such as perovskites or two-dimensional materials. For illustration, we use Zn2Sn62 as the
+template material and initialize the diffusion process at T ∈{200, 350, 500}. In this task, the Zn atoms in
+Zn2Sn6 are conditioned to match Ni’s DOS. We generate 50 candidate structures for each T and select a
+representative structure to visualize its conditioned atoms’ DOS with the ground truth in Fig. 5.
+Template: Zn2Sn6
+FeNiSeSn5
+CoCoSn6
+CoCoAu4Sn2
+Figure 5: Density of states (DOS) for generated materials from starting timestep T ∈{200, 350, 500}. The
+template material Zn2Sn6 is shown on the far left. The orange curve represents the DOS of the first atom
+in each generated material, conditioned on Ni’s DOS from Au3Ni (shown in blue). The conditioned atoms
+are underlined, with the first atom highlighted in red to indicate that the plotted DOS corresponds to it.
+Visualizations of all structures are of a 2 × 2 × 2 supercell.
+From Fig. 5, we can observe that the DOS of the first atom in the generated materials closely aligns with
+the target DOS, but still maintains the 3D structure of the original template. Due to the diffusion process
+starting from a template material noisified at T < 1000, the final composition exhibits a strong bias towards
+the original Sn, though at higher T, the composition moves farther away from Sn to become other elements.
+Interestingly, the original Zn atoms, which are conditioned on Ni’s DOS, are replaced by other element
+types such as Fe and Co rather than Ni. This suggests that DOSMatGen can propose chemically viable
+substitutions for the conditioned atoms by considering the overall composition, even when the target DOS
+is directly associated with that of Ni.
+3.2.3
+FIXED ATOM TYPE GENERATION
+In this task, we explore the feasibility of fixing the first atom’s element type to an arbitrary specified element.
+Similar to the masked generation task, the diffusion process begins at T = 1000, meaning the materials
+are generated entirely from noise. The key difference in this task is that the first atom is constrained to a
+predefined element type, whereas in the masked generation task, the model can freely diffuse the first atom
+into any element type. The first atom in the generated structure is still conditioned on the DOS of Ni from
+Au3Ni. In our experiments, we define a constraint on the element type to be Ti, Co, Cu, or Pd. Co and Cu
+are selected because their proximity to to Ni in the same period, and similarly Pd is chosen for being in the
+same group as Ni. Meanwhile, Ti is included as an element which bears little chemical similarity to Ni,
+to test if the model can nevertheless generate an atomic environment to enable Ti to behave electronically
+like Ni. For each element type, we generate 50 candidate structures and select a representative structure to
+visualize its first atom’s DOS with the ground truth in Fig. 6.
+Fig. 6 reveals that when the first atom is constrained to neighboring transition metals such as Co, Cu, and
+Pd, the resulting density of states (DOS) demonstrates remarkable alignment with the target DOS. This is to
+be expected due to the proximity of Pd, Co and Cu to Ni in the periodic table. Meanwhile, the DOS of the
+Ti-constrained case is not as similar to target DOS, though it still exhibits a peak near the ground truth peak
+location, suggesting that this is a harder task, but one which DOSMatGen is still able to follow the guidance
+to some extent. In addition, in all four generated structures shown in Fig. 6, we observe high compositional
+diversity in the unconditioned atoms. These are exciting observations, as it suggests that DOSMatGen can
+provide viable elemental substitutions while maintaining a similar electronic structure. This concept can
+conceivably be expanded to tackle pressing materials design challenges such as finding earth-abundant and
+low-toxicity substitutions to existing functional materials such as noble metal catalysts or lead-based halide
+perovskites.
+2Materials Project ID: mp-971919.
+7

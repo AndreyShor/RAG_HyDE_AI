@@ -1,0 +1,119 @@
+or modified retrospectively to ensure proper behaviour).
+In this work, we propose an alternative perspective on
+CBF synthesis. In particular, we argue that the synthesis
+of CBFs should begin with the design of their gradients.
+By constructing CBFs from their gradients, we can directly
+mitigate issues such as varying relative degrees. Since CBFs
+inherently involve boundary conditions that are meant to
+capture the geometry of the safe set, the problem of CBF
+synthesis naturally leads to solving boundary value problems.
+Solving such problems is non-trivial, especially for generic
+control-affine systems; to address this, we leverage physics-
+informed neural networks (PINNs) [11], [12] as a tool for
+solving the associated boundary value problems through
+supervised learning. This overall approach enables us to
+mitigate the varying relative degree issue without relying on
+retrospective modifications or conservative safe set approx-
+imations (Fig. 1). As compared to existing CBF synthesis
+methods such as sum-of-squares (SOS) approaches [13],
+learning-based methods [14]–[16], and Hamilton-Jacobi (HJ)
+reachability-based techniques [17], [18], our approach specif-
+ically focuses on addressing the varying relative degree issue
+through gradient-based design.
+Our contributions are as follows:
+1) We introduce a new perspective on addressing the
+varying relative degree issue by treating the problem
+of CBF synthesis as solving boundary value problems.
+2) We propose a PINN-based method that allows us to syn-
+thesize CBFs that are free from inactivity issues without
+relying on retrospective modifications or conservative
+approximations.
+3) We demonstrate the effectiveness of our approach in
+both simulation and real-time quadrotor experiments.
+II. PROBLEM FORMULATION
+We consider the control architecture shown in Fig. 2 and
+systems with continuous-time control affine dynamics:
+˙x = f(x) + g(x)u,
+(1)
+where x ∈X ⊂Rn is the state of the system with X denoting
+the set of admissible states, u ∈Rm is the input of the
+system, and f : Rn 7→Rn and g : Rn 7→Rn×m are locally
+Lipschitz continuous functions.
+Given an uncertified policy π(x), our goal is to design a
+safety filter to safeguard the system—ensuring that the state
+of the system remains within a given safe set C ⊆X. The
+safe set C is assumed to be compact and is parameterized
+as the zero-superlevel set of a continuously differentiable
+function h : X 7→R:
+C = {x ∈X | h(x) ≥0}.
+The boundary of the safe set is ∂C = {x ∈X | h(x) = 0}
+with ∇h(x) ̸= 0 for all x ∈∂C, and the interior of the safe
+set is Int(C) = {x ∈X | h(x) > 0}.
+
+
+
+
+
+
+
+Uncertiﬁed
+Input
+System
+State
+Certiﬁed
+Input
+High-Level
+Goal
+Fig. 2: A block diagram of a typical safety filter control architecture. Given
+an uncertified policy π(x), a safety filter πs(x) is designed to safeguard the
+system by making minimal adjustments to the control inputs when they are
+deemed unsafe.
+III. BACKGROUND
+In this section, we provide the background on CBF-
+based safety filters to facilitate our discussion. We begin by
+introducing our notations and necessary definitions.
+We denote the Euclidean norm as ∥·∥. A set of consecutive
+integers is denoted by Z[a,b], where a and b are positive
+integers with a ≤b. The notations Int(·) and Conv(·)
+correspond to the interior and the convex hull of a set,
+respectively. The Lie derivative of a function h along a vector
+field f is written as Lfh, and ∇represents the gradient
+operator. The symbol ◦denotes function composition.
+Definition 1 (Forward Invariant Set): Consider a system
+with dynamics ˙x = f(x) with f : X 7→X being a Lipschitz
+continuous function. A set C ⊆X is a forward invariant set
+for the system if x(0) ∈C implies x(t) ∈C for all t ∈T+
+x0,
+where T+
+x0 is the maximum time interval of existence for the
+state trajectory initialized at x(0) = x0.
+Definition 2 (Extended Class-K Function): A continuous
+function γ : R 7→R is an extended class-K function, denoted
+by Ke, if it is strictly increasing and passes through the
+origin (i.e., γ(0) = 0).
+Definition 3 (Relative Degree [4]): Let h : X 7→R be a
+ρth-order differentiable function. A system with dynamics (1)
+and output equation y = h(x) is said to have a relative degree
+of ρ if ρ is the smallest integer between 1 and n such that
+LgLρ−1
+f
+h(x) ̸= 0 for all x ∈X.
+In this work, we consider systems with dynamics as spec-
+ified in (1) and say that a ρth-order differentiable function,
+h(x), has a relative degree of ρ if the system with (1) and
+output equation y = h(x) has a relative degree of ρ.
+Definition 4 (CBF [4]): Let C ⊆X be the zero-superlevel
+set of a continuously differentiable function h : X →R with
+∂C = {x ∈X | h(x) = 0} and ∇xh(x) ̸= 0 for all x ∈∂C.
+The function h is a CBF for (1) if there exists a function
+γ ∈Ke such that the following condition is satisfied:
+max
+u∈Rm [Lfh(x) + Lgh(x)u] ≥−γ(h(x)),
+∀x ∈X.
+Based on Def. 4, we can define a set of certified inputs
+for every x ∈X:
+Ucbf(x) = {u ∈Rm | ˙h(x, u) ≥−γ(h(x))},
+where ˙h(x, u) = Lfh(x) + Lgh(x)u.
+As discussed in [4], CBFs can be used to verify the for-
+ward invariance of a safe set under the closed-loop dynamics
+of a system.

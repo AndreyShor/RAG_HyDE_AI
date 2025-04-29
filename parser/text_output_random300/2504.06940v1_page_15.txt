@@ -1,0 +1,94 @@
+15
+where we used the assumption ε ⩽s. We also defined:
+D = χ1 + η
+2
++ χ3 η3 + 3η2 + 3η
+2
+sε ⩽1.13572χ + 0.14888χ3
+(70)
+Let’s define g(β) = µ −1
+2(1 + s2)β to be the linear approximation around for f(β). We find that:
+(
+g (2(µ −cε)) = −s2µ + (1 + s2)cε ⩾(c + s2(c −1))ε
+g (2(µ + cε)) = −s2µ −(1 + s2)cε ⩽−(1 + s2)cε
+(71)
+Since −(1 + s2)c = −(c + s2c) ⩽−(c + s2c −c) = −(c + s2(c −1)) we combine these two equations into:
+(
+g (2(µ −cε)) ⩾(c + s2(c −1))ε
+g (2(µ + cε)) ⩽−(c + s2(c −1))ε
+(72)
+Let the difference between f and g at 2(µ ± cε) be ∆±, we can bound it with
+∆± = |f (2(µ ± cε)) −g (2(µ ± cε))| = 1
+2|f ′(β′
+±)|(2(µ ± cε))2
+⩽1
+2
+
+χ3s2 1
+2λε + Ds
+
+× 4(1 + c)2ε2 = χ3(1 + c)2 1
+λs2ε + 2D(1 + c)2sε2
+⩽(1 + c)2
+χ3
+λ + 2D
+
+s2ε
+(73)
+where β′
+−, β′
++ ∈B, (µ ± cε)2 ⩽(1 + c)2ε2 because |µ| ⩽ε.
+Using λ ⩾5, we obtain χ ⩽1.3410 and D ⩽1.88203. This gives ∆± ⩽6.635 via Eq. (73). The constraint we
+defined in theorem statement c ⩾7.635s2
+0
+1+s2
+0
+thus becomes:
+c ⩾7.635s2
+0
+1 + s2
+0
+⩾7.635s2
+1 + s2
+∴(1 + s2)c −s2 ⩾6.635s2
+∴(c + (s2)(c −1))ε ⩾6.635s2ε ⩾∆±
+(74)
+Combined with Eq. (72) we then reach the conclusion that f(2(µ −cε)) ⩾0 and f(2(µ + cε)) ⩽0. This demonstrates
+that there is a solution α ∈[2(µ −cε), 2(µ + cε)].
+As the second part of the proof, we show that the probability for α is sufficiently high. First, Eq. (65) becomes
+E
+
+tan2 θ −β
+2
+
+⩽1.7983s2 + 7.480sε
+(75)
+Clearly E
+h
+tan2 θ−β
+2
+i
+< 1, by Eq. (50) we obtain:
+P
+φ∼(arg G,|1⟩)[φ = α] =
+1
+1 + E
+
+tan2 θ−α
+2
+
+⩾1 −E
+
+tan2 θ −α
+2
+
+⩾1 −(1.7983s2 + 7.480sε)
+⩾1 −δ
+(76)
+The last inequality can be derived from the constraint δ ⩾1.7983s2
+0 + 7.480s0ε.
+B.
+Quantum Subroutine
+Theorem III.4 gives a pretty good result of the properties of the Grover gate. However, there are some nasty
+constraints and irregularities, namely a factor 2 in the eigenvalue, a lot of tan functions, and an enforced upper bound
+for all instances of the random variables. The following theorem cleans things up:

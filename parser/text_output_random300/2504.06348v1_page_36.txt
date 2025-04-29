@@ -1,0 +1,150 @@
+using quantum rejection sampling as in Ref. [75] (see Type II reference state in App. C, here the same as
+in Ref. [29]) as well as a trivial
+1
+√
+2
+P
+c∈{0,1} |c⟩= |+⟩state. The SELECT for the electron-electron and
+pseudoion-pseuodion Coulomb terms are respectively given by
+SELcoul,el =
+X
+q∈G0
+X
+c∈{0,1}
+|q, c⟩⟨q, c| ⊗U coul,el
+(q,c) ,
+SELcoul,ion =
+X
+Q∈G
+0
+trunc
+X
+c∈{0,1}
+|Q, c⟩⟨Q, c| ⊗U coul,ion
+(Q,c)
+,
+(94)
+where the unitaries are
+U coul,el
+(q,c)
+=
+X
+p,p′∈G
+(−1)c([p−q/∈G]∨[p′+q/∈G])|p −q⟩⟨p| ⊗|p′ + q⟩⟨p′|,
+(95)
+U coul,ion
+(Q,c)
+=
+X
+P,P′∈Gtrunc
+(−1)c([P−Q/∈Gtrunc]∨[P′+Q/∈Gtrunc])|P −Q⟩⟨P| ⊗|P′ + Q⟩⟨P′|.
+(96)
+The total rescaling factor is then,
+λVel+Vion = 2π
+Ω
+
+ηval(ηval −1)
+X
+q∈G0
+1
+|kq|2 +
+ηion
+X
+I̸=J=1
+ZPI
+I ZP I
+J
+X
+Q∈G
+0
+trunc
+1
+|kQ|2
+
+,
+(97)
+where we may consider the first/second term in the parenthesis as the rescaling factors for the block-encoding
+of Vel, V PI
+ion, respectively, as given above by λVel, λVion.
+The cost for PREP1, tabulated in App. E.3.1, is included in Table 4. We tabulate the most significant
+costs for the preparation of PREPcoul,el and PREPcoul,ion in App. E.3.2. The cost of SELECT is calculated
+in App. E.3.3.
+Routine
+Toffoli gates
+Ancilla qubits
+Reference
+PREP1
+6(ηval + 5⌈log η⌉+ 2⌈log 2ηval⌉+ 2bκ −8)
+⌈log(2ηval)⌉
+App. E.3.1
+PREPcoul,el
+5˜n + 4n2 + 8bgn
+˜n
+App. E.3.2
+PREPcoul,ion
+5˜¯n + 4¯n2 + 8bg¯n
+˜¯n
+App. E.3.2
+SELcoul,el
+8n
+nmax
+App. E.3.3
+SELcoul,ion
+8¯n
+¯nmax
+App. E.3.3
+PREP†
+coul,ion
+5
+2 ˜¯n + 2¯n2 + 4bg¯n
+0
+App. E.3.2
+PREP†
+coul,el
+5
+2 ˜n + 2n2 + 4bgn
+0
+App. E.3.2
+PREP†
+1
+2(ηval + 5⌈log η⌉+ 2⌈log 2ηval⌉+ 2bκ −8)
+⌈log(2ηval)⌉
+App. E.3.1
+Table 4: The resource costs for the Coulomb terms Vel and V PI
+ion, assuming the compilation scheme in
+App. E.3. The parameters in red are tunable, and must be chosen to satisfy an overall error budget for the
+block encoding. Here, ˜n = P3
+i=1 n2
+i and nmax = maxi ni. The corresponding quantities for pseudoions are
+indicated with an overbar. The resource costs assume that the system is charge-neutral; see App. E.3.1.
+5.1.4
+Electron-pseudoion interaction: The local term V PI
+loc
+We begin from Eq. (38) and rewrite the local term to simply handle momentum conservation,
+V i,I
+loc =
+3
+X
+s=−1
+X
+q∈G0
+X
+c∈{0,1}
+2π(¯rζI
+loc)3
+Ω
+rπ
+2 cζI
+s e−(|kq|¯r
+ζI
+loc)2/2(|kq|¯rζI
+loc)2s
+
+
+X
+p∈G,P∈G
+(−1)c([p−q/∈G]∨[P+q/∈G])|p −q⟩⟨p|i ⊗|P + q⟩⟨P|I
+
+,
+(98)
+36

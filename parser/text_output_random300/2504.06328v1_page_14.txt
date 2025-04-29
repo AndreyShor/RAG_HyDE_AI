@@ -1,0 +1,102 @@
+component vi becomes an amplitude in a normal-
+ized quantum state:
+|ψ(v)⟩=
+1
+∥v∥
+d
+X
+i=1
+vi |i⟩.
+(8)
+This encoding preserves the geometry of the orig-
+inal feature space while embedding it in the high-
+dimensional Hilbert space of the quantum system.
+In principle, the quantum state now encodes not
+only the magnitude relationships of the DFU fea-
+tures but also allows interference and entanglement
+effects if multiple qubits are used.
+4.2.4. Hybrid Quantum-Classical Pipeline
+After encoding the SPD-derived features into
+quantum states, we feed them into a variational
+quantum circuit.
+The circuit (Fig. 3) consists of
+parameterized single-qubit rotations and entangling
+gates (e.g., CNOTs), forming a multi-layer ansatz
+that can approximate complex decision boundaries.
+We used PennyLane to simulate this quantum com-
+ponent, and the final measurements (e.g., expecta-
+tion values of Pauli-Z operators) are passed to a
+small classical neural network or directly used for
+classification.
+Figure 3: Hybrid quantum-classical circuit for DFU clas-
+sification.
+The amplitude-encoded SPD features from the
+modified Xception network are fed into a variational quan-
+tum circuit. Outputs are then processed by a classical post-
+processing layer to yield final class predictions. (Placeholder:
+replace with actual circuit diagram.)
+Training Procedure..
+1. Classical Pretraining: Train or fine-tune the
+modified Xception network to extract robust
+DFU features (128-D vector).
+2. SPD Construction: Convert these features
+into an SPD representation to preserve geomet-
+ric relationships.
+3. Quantum Embedding and Optimization:
+Encode each SPD vector into a quantum state,
+then optimize the variational parameters of the
+quantum circuit using gradient-based meth-
+ods (e.g., Adam or quantum natural gradient).
+The loss function is typically cross-entropy or a
+margin-based criterion, depending on the clas-
+sification setup.
+4. Hybrid Inference:
+During inference, each
+DFU image is processed by the Xception net-
+work, transformed to SPD form, embedded in
+the quantum circuit, and then mapped to a fi-
+nal class label.
+4.2.5. Relevance and Insights
+This DFU classification case study highlights the
+flexibility of our hybrid geometric approach:
+• Medical Imaging Context: DFU images of-
+ten exhibit subtle color and textural cues in-
+dicative of infection or ischaemia. By extract-
+ing deep features and mapping them onto an
+SPD manifold, we maintain the important geo-
+metric relationships that might be lost in naive
+Euclidean embeddings.
+• Quantum Advantage Potential:
+While
+our experiments are currently simulated, the
+amplitude-encoded states and variational cir-
+cuits could exploit quantum interference to
+separate complex patterns in fewer parameters
+than classical networks alone.
+• Generalizability:
+Although
+the
+pipeline
+is
+described
+for
+DFU
+classification,
+the
+same methodology—deep feature extraction,
+SPD mapping, quantum embedding—can be
+adapted to other medical or non-medical imag-
+ing tasks that benefit from geometric insights.
+Overall, this DFU case study provides strong em-
+pirical evidence that combining geometric mani-
+fold representations (SPD) with quantum embed-
+dings can yield significant performance and inter-
+pretability benefits.
+We believe this approach is
+especially well-suited for challenging medical imag-
+ing scenarios where data distributions are complex
+and high-dimensional, as exemplified by the wide
+variability in DFU appearance (Fig. 2). Future re-
+search will focus on evaluating these hybrid mod-
+els on larger DFU datasets, integrating additional
+14

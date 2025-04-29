@@ -1,0 +1,132 @@
+5
+next lemma provides the infinitesimal criterion of sym-
+metry in terms of commutation of operators [proof in
+Sec. IV A].
+Lemma (Infinitesimal condition for Lie symmetries).
+A connected local group of transformations G acting on
+an open subset of R × RN is a symmetry group of the
+first-order ODEs in Eq. (7) if and only if
+[U, S] −U[ξ(t, y)] U = 0
+(8)
+for every generator S = ξ(t, y)∂t +PN
+j=1 ϕj(t, y)∂j of G.
+For symmetry generators where ξ(t, z)
+=
+0 and
+ϕ1, ..., ϕN are time-independent, the infinitesimal crite-
+rion (8) takes the more familiar and elegant form
+[K, S] = 0 ,
+(9)
+where, in general, K = PN
+j=1 Fj(t, y)∂j. Doing the calcu-
+lation using some symmetry generator S leads to partial
+differential equations called the determining equations.
+Although Eqs. (8-9) enable using commutation relations
+to search for symmetries, there is no general procedure
+to obtain particular solutions of the determining equa-
+tions [72]: this is the art of Lie’s method [60].
+For the Kuramoto model, the generator U = ∂t + K
+with K in Eq. (2) acts on observables depending on (t, z)
+and we want the symmetries to be automorphisms of the
+N-torus [Fig. 1 (b)] potentially acting on time.
+Using
+the criterion (8), it is straightforward to show that the
+global dilatation generator i L0 (rotation of all the oscilla-
+tors), the Koopman generator K and the trivial generator
+f(t) U for some smooth function f are symmetry genera-
+tors. Time translation is expressed in terms of the latter
+generators such that ∂t = U −K. However, it is easily
+verified that these symmetries do not generate new con-
+stants of motion from the monomials or the cross-ratios.
+At this point, a simple intuition comes in handy :
+the symmetries must map periodic solutions to peri-
+odic solutions.
+This restricts ξ and ϕ1, ..., ϕN in S
+to be periodic functions, enabling their expansion in
+Fourier series ξ(t, z) = P
+p∈ZN εp(t)zp and ϕℓ(t, z) =
+P
+p∈ZN φℓp(t)zp. Using commutation relations and sim-
+plifying leads to general determining equations form-
+ing an infinite differential-algebraic system of equations
+[Sec IV C]. To narrow our search for symmetries, we limit
+p to a finite subset of ZN with fixed total degree PN
+j=1 pj
+and we set εp(t, z) = 0 along with ∂tφℓp(t, z) = 0 for all
+ℓ, p. Under these restrictions, the determining equations
+become a finite overdetermined system of linear equa-
+tions
+D(A) φ = 0 ,
+(10)
+where φ is a complex vector of the symmetry genera-
+tor coefficients and D(A) is a complex rectangular ma-
+trix whose elements depend only on the complex inter-
+action matrix A. We call D(A) the determining matrix
+[Sec IV D].
+The problem of finding a symmetry via the general de-
+termining equations thus reduces to the more tractable
+problem of finding A such that D(A) has a zero singular
+value whose right singular vector corresponds to the co-
+efficients φ of a symmetry generator. Under this form, it
+is clear that the possibility of having Lie symmetries is
+strongly tied to the network.
+Using Eq. (10) and symbolic calculations in basic ex-
+amples [Sec IV E] lead us to infer a family of network
+motifs admitting Lie symmetries in the Kuramoto model.
+As soon as there is a source oscillator with natural fre-
+quency ωs connecting disjoint subgraphs with vertex sets
+W1, ..., Wr in the network, the Koopman generators of
+the subgraphs in the rotating frame of the source
+Sη = Kη −iωsLη
+0 ,
+η ∈{1, ..., r} , r > 1
+(11)
+are
+Lie
+symmetry
+generators,
+where
+Kη
+=
+P
+j∈Wη
+P
+k∈V(Ajkzk−¯Ajk¯zkz2
+j )∂j and Lη
+0 = P
+j∈Wη zj∂j
+[Lem. S10]. Concretely, for a given solution (zj(t))j∈V,
+such symmetries make the oscillators in the subgraphs
+evolve in time in the frame of the source while leaving
+the trajectories of the other oscillators unchanged, which
+gives a new solution (˜zj(t))j∈V.
+The symmetry generators in Eq. (11) enable us to un-
+cover new forms of constants of motion for the Kuramoto
+model [Fig. 2 (c) and proof in Sec. IV E].
+Theorem 3 (Symmetry-generated constants of motion).
+Consider that the Kuramoto model in Eq. (1) has a sym-
+metry generator Sη as defined in Eq. (11) related to the
+subgraph induced by Wη and the source oscillator s.
+3A. If four vertices a, b, c, d ∈V \ {s} have
+3.1A. a unique incoming edge with weight As from s;
+3.2A. identical natural frequencies ω;
+3.3A. and one, two or three of them belong to Wη,
+then the cross-ratio cabcd and Sη[cabcd] are functionally
+independent constants of motion.
+3B. If three vertices u, v, w ∈V \ {s} have
+3.1B. a unique incoming edge with weight As from s;
+3.2B. identical natural frequencies ω = ωs−2 Im(As);
+3.3B. and one or two of them belong to Wη,
+then the cross-ratio csuvw and Sη[csuvw] are functionally
+independent constants of motion.
+As a consequence, if there is a source star with n ≥4
+leaves having identical frequencies ω (to satisfy 3.1A),
+where all edges from the source s to the leaves have iden-
+tical complex weight As (to satisfy 3.2A), Thm. 2 (and
+Lem. S6) implies that there are n −3 conserved cross-
+ratios (cρ)ρ∈{1,...,n−3} associated with the leaves. There
+is also one more conserved and functionally independent
+cross-ratio cs depending on the core if ω = ωs −2 Im(As)
+(condition 3.2B). Now, recall that there are no restric-
+tions on the outgoing edges from the n leaves to conserve
+the related cross-ratios and that Bn is the Bell number.

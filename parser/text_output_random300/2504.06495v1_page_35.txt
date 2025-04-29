@@ -1,0 +1,62 @@
+This permits direct characterization of the conditional process given survival, which would
+be more complicated in the discrete-time setting.
+Theorem 4 shows that the stationary distribution of Xτ, conditional on survival until
+time τ, is exponential, shifted by the boundary log(ǫ), with rate µ/σ2. In steady state, this
+means that most surviving paths lie only about σ2/µ above the boundary. This may seem
+at odds with our earlier argument that the process should be far from the boundary at the
+time of the experiment, but we will resolve this apparent contradiction in Section 6.
+Long-run behaviour of E[Φτ|Φτ > 0]
+The continuous-time version of the original branching process (before rescaling and taking
+logs) and of the exogenous threshold are given by Φτ = ατ exp(Xτ) and ξτ = ǫατ, respectively.
+Using Theorem 4, we can now calculate the expectation of Φτ/ξτ conditional on survival in
+the steady state:
+lim
+τ→∞
+E[Φτ|Φτ > 0]
+ξτ
+= lim
+τ→∞
+E[Φτ|Φτ > 0]
+ǫ ατ
+= 1
+ǫ lim
+τ→∞E[exp(Xτ)|Xτ ̸= ∞]
+= 1
+ǫ
+Z ∞
+log ǫ
+exp(x) πX(dx) = µ
+σ2
+Z ∞
+log ǫ
+exp
+n
+1 −µ
+σ2
+
+[x −log(ǫ)]
+o
+dx
+=
+µ
+µ −σ2 =
+β
+β −1 = 1
+ε ,
+where we assume β := µ/σ2 > 1 (otherwise the expectation does not exist), and in the ﬁnal
+step we use (26) to express β in terms of ε.
+The last display shows that our branching process with exogenous threshold rule ξτ = ǫατ
+satisﬁes, in the steady state (as τ →∞), the relationship ξτ = ε E
+
+Φτ
+ Φτ > 0
+
+, which
+coincides exactly with our endogenous threshold rule in (25). While this does not constitute
+a full proof of our claim in Section 5.1 above — since the model remains deﬁned by an
+exogenous threshold — it serves as a crucial consistency check.
+The calculation also reveals what makes β = 1 special: it is the critical point at which
+E[Φτ|Φτ > 0] ceases to be well-deﬁned in the steady state. This explains why our endogenous
+threshold rule, formulated in terms of E[Φτ|Φτ > 0], naturally singles out β = 1 as the special
+case in the limit ε →0, though we still have to formally derive this result for the actual model
+34

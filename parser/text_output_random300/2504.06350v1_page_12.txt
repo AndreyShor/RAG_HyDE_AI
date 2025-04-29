@@ -1,0 +1,117 @@
+|0⟩A′
+H
+H
+|ψ⟩˜
+A ˜
+B
+|ψAB⟩
+ZA
+XA
+ZB
+XB
+|junk⟩¯
+A ¯
+BE
+|0⟩B′
+H
+H
+Figure 6: Explicit implementation of the isometry of Eq. (16) (details in Ref. [134])
+A simple case of self-testing is given by the maximal violation of CHSH of Eq. (11). It is easy to
+observe that any realization such that β = 2
+√
+2 consists of anticommuting operators on the support of
+the state |ψ⟩, {MA|0, MA|1} |ψ⟩= {NB|0, NB|1} |ψ⟩. Indeed, let MA|± =
+MA|0±MA|1
+√
+2
+, the sum-of-square
+(SOS) decomposition of the shifted CHSH operator assures that:
+2
+√
+21 −ˆβ = (MA|+ −NB|0)2 + (MA|−−NB|1)2
+√
+2
+⪰0.
+(19)
+Then the anticommutation comes from β = 2
+√
+2 =⇒MA|+ = NB|0 |ψ⟩and MA|−|ψ⟩= NB|1 |ψ⟩. The
+explicit isometry of Eq. (16) is given in the circuit 6. Anologously for the isometries on the measurements
+of Eq. (17). Similar calculations holds when only one detector is inefficient [135] (see sec. 2.4.1 putting
+αB = 0 in (27)) and the tilted Bell operator can be obtained, i.e. ˆβ + αAMA|0(see Eq. (27)) such that
+q
+2 + α2
+A1 −(ˆβ + αAMA|0) =
+X
+i
+P †
+i Pi
+(20)
+in terms of polynomials Pi ∈{1, MA|x, NB|y, MA|x ⊗NB|y}. SOS decomposition allows to prove that
+if maximal violation βQ =
+p
+2 + α2
+A is obtained then the optimal realization (|ψ⟩AB , MA|±, NB|y) is
+self-tested [136, 134], with
+|ψ⟩AB = cos θ |00⟩+ sin θ |11⟩,
+NB|0 = σz,
+NB|1 = σx,
+MA|± = cos µ σz ± sin µ σx
+(21)
+where αA = 2/
+√
+1 + 2 tan2 2θ, tan(µ) = sin(2θ).
+If the polynomials Pi are written in terms of the
+operators of any optimal realization, then ∀i Pi |ψ⟩= 0.
+These conditions implies the existence of
+operators {ZA, XA, ZB, XB} satisfying
+ZB |ψ⟩AB = ZB |ψ⟩AB ,
+sin θXA(1 + ZB) |ψ⟩AB = cos θXA(1 −ZA) |ψ⟩AB .
+(22)
+In turn, Eq. (22) ensures the existence of local isometries ΦA and ΦB such that
+ΦA ⊗ΦB |ψ⟩AB = |ψ⟩˜
+A ˜
+B ⊗|junk⟩¯
+A ¯
+BE
+ΦA ⊗ΦB(MA|x ⊗NB|y |ψ⟩AB) = M ′
+A|x ⊗N ′
+B|y |ψ⟩˜
+A ˜
+B ⊗|junk⟩¯
+A ¯
+BE .
+(23)
+Self-testing can be made robust in the sense that in a neighborhood of the maximal quantum value IβQ,
+there exists a physical realization R that is close—up to a local isometry—to the ideal realization RQ (see
+numerical SWAP technique in [137, 138]). The most general case involving two inefficient detectors, the
+SOS decomposition is analyzed with NPA hierarchy (see Sec. 2.2) without finding a simple expression
+for the polynomial Pi, unless the inefficiency of the detectors is the same [139]. The solution in this case
+is obtained with Jordan’s lemma [110] and Groebner basis.
+Lemma 1. (Jordan’s lemma) In CHSH, {Ma|x}a,x=0,1 and {Nb|y}b,y=0,1 can be projective w.l.o.g., then
+there must exist a local unitary transformations that simultaneously block-diagonalize the observables
+MA|x, NB|y, with blocks of size 1 or 2. But, to compute ⟨MA|x⟩ψ, ⟨NB|y⟩ψ we can always complete a one-
+dimensional block by adding to it a projector over a state in the null space of the corresponding reduced
+state ρA(B) = TrB(A)|ψ⟩⟨ψ|. We can thus assume all blocks to be two-dimensional and write Alice’s
+measurement operators as
+MA|0 =
+M
+i
+M (i)
+A|0 =
+M
+i
+σZ,
+MA|1 =
+M
+i
+M (i)
+A|1 =
+M
+i
+(cos θA
+i σZ + sin θA
+i σX),
+(24)
+where index i iterates over the Jordan blocks. Similarly, for Bob’s observables.
+12

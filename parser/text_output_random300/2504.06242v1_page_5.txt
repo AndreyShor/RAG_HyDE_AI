@@ -1,0 +1,104 @@
+Polytopic Safe Set 
+Approximation
+
+
+
+
+		
+(a) Polytopic safe set approximation [1].
+Nonlinear Safe Set
+Approximation
+
+
+
+
+
+	
+
+
+
+(b) Nonlinear safe set approximation.
+Fig. 3: The use of multiple CBFs has been proposed to mitigate issues arising from varying relative degrees. Here, we illustrate the boundaries of
+approximated safe sets for the approach from [1] and our proposed method. In these illustrations, the true safe set C and the approximated safe set CQ are
+shown in blue and green, respectively. For each case, the boundary of an individual CBF, ∂Cq, is shown as a dark gray solid line, and the corresponding
+level sets are illustrated in light gray. The arrows on the boundary ∂Cq indicate the positive gradient directions. (a) In [1], we proposed using a polytopic
+set to under-approximate C. In this case, the safety boundaries are hyperplanes. This approach is conservative and is restricted to convex sets. (b) In this
+work, we instead use multiple CBFs, where the individual CBFs can have nonlinear boundaries to better preserve the geometry of the original safe set.
+This approach can be generalized to certain non-convex safe sets where the condition in (5) can be satisfied for all pairs of points on ∂Cq for all q.
+where ∇ˆh(x) = ∇T h(x)/||∇h(x)|| is the normalized gra-
+dient vector at a point x. This condition allows us to
+define hypersurfaces with consistent parallel level curves.
+For convex sets, we can extend the boundary ∂Cq ∩∂C by
+defining consistent hypersurfaces that satisfy the condition
+in (5) for every pair of points in ∂Cq. For non-convex sets, to
+best preserve the geometry of the safe set, we first compute
+the convex hull of the safe set, Conv(C). The set of CBF
+boundaries is then defined to consist of the disjoint sets
+in ∂C \ (∂Conv(C) ∩∂C), along with further partitions in
+∂Conv(C) ∩∂C. An example is shown in Fig. 1.
+As discussed in Sec. IV, the varying relative degree issue
+can arise from two sources: either the gradient of the function
+h vanishes in the interior of compact sets, or the gradient
+is orthogonal to gi(x) at the boundary. The first issue is
+mitigated by introducing multiple continuously differentiable
+functions with non-compact zero-superlevel sets. However,
+the second problem still needs to be addressed. We note that
+if such a point exists, the original set cannot be rendered
+safe without encountering the same problem. To address this
+issue, we consider a local inner approximation of the safe
+set (e.g., through the use of single or multiple hyperplanes
+with constant gradient norms that best match the local
+geometry while not being orthogonal to gi(x)).
+This approach allows us to handle non-convex safe sets as
+long as we can find a set of partitions where the condition
+in (5) can be satisfied for all pairs of points in ∂Cq. We do
+note that the approach is restricted to connected safe sets,
+though this is not overly restrictive in practice. If the safe set
+comprises separate sets, a system initialized within one of the
+sets will remain within the set. Thus, for a given initial state
+x0 ∈C, at any given time, only the constraints associated
+with the relevant connected set need to be enforced.
+C. Gradient Design
+We consider a set of Q CBFs with gradients parameterized
+in the following form:
+∇hq(x) = g(x)αq(x) + b(x)βq(x), ∀q ∈Z[1,Q],
+(6)
+where αq(x) ∈Rm and βq(x) ∈Rn−p(x) are parameters of
+the target CBF gradient with p(x) denoting the rank of g(x),
+The matrix b(x) ∈Rn×(n−p(x)) has orthonormal columns
+that span the orthogonal complement of the column space of
+g(x) such that the columns of b(x) and g(x) together span
+Rn. Note that if p(x) = n, we do not require additional
+vectors to span Rn. While we keep the formulation general,
+the rank of g(x) is often constant over X in practice.
+Each of the CBF candidates defines a nonlinear contour
+with positive gradient directions pointing toward the interior
+of the safe set. We can design the gradient of each CBF
+candidate to ensure that each level set of hq(x) preserves the
+shape and orientation of the zero-level set ∂Cq. The union
+of all the gradients ∇hq(x) for all x ∈∂Cq spans a cone
+Kq. Let sq be the vector of length one that corresponds to
+the central axis of the cone Kq, then we specify the gradient
+for CBF candidate hq for all x ∈X as
+∇hq(x) = ∇hq(x∗
+c),
+where x∗
+c is the intersection of the boundary ∂Cq and the set
+L = {x + σqsq ∈X | σq ∈R}.
+Since the columns of g(x) and b(x) together span Rn,
+we can parametrize ∇hq(x) in the form of (6). To ensure
+that the non-zero Lie derivative condition is satisfied for all
+x ∈X and the overall input set Ucbf is non-empty, we need
+to introduce additional constraints on the gradient parameters
+αq(x) and βq(x). To this end, we define
+∇˜hq(x) = g(x)˜αq(x) + b(x)˜βq(x)
+(7)
+and formulate an optimization problem to find parameters
+˜αq(x) and ˜βq(x) such that ∇˜hq(x) closely matches the
+desired target gradient ∇hq(x) while ensuring that the addi-
+tional Lie derivative and feasibility conditions for qualifying
+hq as multi-CBFs are satisfied.
+To facilitate the design verification of the feasible input
+set, we consider a set of parametrized functions γq ∈Ke
+with corresponding parameters denoted by θq (e.g., in the
+linear case γq(ξ) = cqξ, the parameter θq is the slope cq).

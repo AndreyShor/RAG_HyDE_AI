@@ -1,0 +1,140 @@
+PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY A, VOLUME 383, ISSUE 2289, 2025, DOI:10.1098/RSTA.2024.0146
+3
+xp
+n
+cr
+Rn,i
+E
+N34WetX1KMegkWoUEoiUj0WvXisYj+gCWGz3bRLN5uwOxFK6MWLf8WLB0W8+h+8+W/ctjlo64OBx3szMwLEs4U2Pa3sbS8srq2Xtgobm5t7+yae/stFaeS0CaJeSw7AVaUM0GbwID
+TiIpjgJO28HweuK3H6hULBb3MEqoF+G+YCEjGLTkm0duhGFAM/uxr4oQ8WFAQVcZMBO/XNkl21p7AWiZOTEsrR8M0vtxeTNKICMdKdR07AS/DEhjhdFx0U0UTIa4T7uaChxR
+5WXTL8bWiVZ6VhLXQKsqfp7IsORUqMo0J2Tm9W8NxH/87ophJdexkSAhVktihMuQWxNYnE6jFJCfCRJphIpm+1yABLTEAHV9QhOPMvL5LWdWpVWu356X6VR5HAR2iY1RGDrpAd
+XSDGqiJCHpEz+gVvRlPxovxbnzMWpeMfOYA/YHx+QMHRZhH</latexit>Rn(t, ✓, φ)
+Z
+Y
+X
+cl
+hyTFfjFqTuLPXgqBUQ=">AB6nicbVBNS8NAEJ34WetX1aOXxSJ4KolI9Vj04
+rGi/YA2lM120y7dbMLuRCmhP8GLB0W8+ou8+W/ctjlo64OBx3szMwLEikMu6
+3s7K6tr6xWdgqbu/s7u2XDg6bJk414w0Wy1i3A2q4FIo3UKDk7URzGgWSt4LRz
+dRvPXJtRKwecJxwP6IDJULBKFrpnvWeqWyW3FnIMvEy0kZctR7pa9uP2ZpxBU
+ySY3peG6CfkY1Cib5pNhNDU8oG9EB71iqaMSNn81OnZBTq/RJGtbCslM/T2R0
+ciYcRTYzoji0Cx6U/E/r5NieOVnQiUpcsXmi8JUEozJ9G/SF5ozlGNLKNPC3kr
+YkGrK0KZTtCF4iy8vk+Z5xatWqncX5dp1HkcBjuEzsCDS6jBLdShAQwG8Ayv
+8OZI58V5dz7mrStOPnMEf+B8/gBZXI3c</latexit>cw
+rn,i
+FOV
+X Occluded *
+Visible
+Z
+Y
+X
+xp
+n
+Z
+Y
+X
+(a)
+(b)
+(c)
+Occluded point
+Light-ray
+FOV
+Visible point
+p
+
+Fig. 1. The figure illustrates: (a) the agent sensing model, (b) the triangulated surface area of the object of interest, and the points pi that need to be covered,
+(c) the need for incorporating light-path propagation to asses the coverage of points i.e., although both points (marked with ∗, and ×) reside inside the agent’s
+FOV, only point ∗is visible as shown, this aspect is further discussed in Sec. IV-B.
+result, at each time step t, the agent n with position xp
+n(t) can rotate its camera’s FOV through the subsequent geometric
+transformation:
+M n(t, θ, ϕ)i = Rotz(ϕ)Roty(θ)M i
+0 + xp
+n(t), ∀i ∈{1, .., 5}, θ ∈Θ, ϕ ∈Φ,
+(2)
+where M 0 ∈R3×5 denotes the FOV vertices of a downward facing camera centered at the origin of the 3D cartesian coordinate
+system and Roty(θ), Rotz(ϕ) denote the 3D rotation matrices around the y-axis and z-axis respectively. Here, M i
+0 represents the
+ith column of M 0. Consequently, M n(t, θ, ϕ)i denotes the vertex of the FOV that has been rotated and translated accordingly.
+The matrices M 0, Roty(θ) and Rotz(ϕ) are respectively given by:
+
+
+−cl
+2
+cl
+2
+cl
+2
+−cl
+2
+0
+cw
+2
+cw
+2
+−cw
+2
+−cw
+2
+0
+−cr
+−cr
+−cr
+−cr
+0
+
+,
+
+
+cos(θ)
+0
+sin(θ)
+0
+1
+0
+−sin(θ)
+0
+cos(θ)
+
+and
+
+
+cos(ϕ)
+−sin(ϕ)
+0
+sin(ϕ)
+cos(ϕ)
+0
+0
+0
+1
+
+.
+(3)
+Finally, we assume that at each time-step t a finite number NR of (straight) light-rays modeling the direction of light
+propagation enters the camera’s optical center and contribute to the imaging process. The set of light-rays captured by the
+agent’s camera FOV M n(t, θ, ϕ) is represented in this work by Rn(t, θ, ϕ) = {Rn,1, . . . , Rn,NR} where Rn,i indicates an
+individual light-ray within the set. This light-ray is further characterized by the line segment:
+Rn,i = rn,i + h[xp
+n(t) −rn,i],
+∀i ∈{1, . . . , NR}, h ∈[0, 1],
+(4)
+where xp
+n(t) denotes the endpoint of the light-ray entering the camera’s optical center at time-step t (given by the agent’s
+positional state) and rn,i ∈R3 is a fixed point on the camera’s FOV base that serves as the ray’s origin. It is important to
+note that depending on the agent’s positional state and camera rotation angles θ and ϕ a different set Rn(t, θ, ϕ) of light-rays
+occur as Rn(t, θ, ϕ) is a function of xp
+n(t), θ and ϕ.
+C. Collaborative Coverage Problem
+The goal of the N agents is to collaboratively cover (i.e., observe) with their cameras a given set P = {p1, .., p|P|}, p˜p ∈R3
+of points of interest (˜p denotes the index of point p) which reside on the surface area ∂O of an object of interest O. Specifically, it
+is assumed that the object of interest O has been 3D reconstructed as a point-cloud and its surface area ∂O has been triangulated
+into a 3D triangle mesh K consisting of a finite set of non-overlapping triangular facets κ ∈K where κ ∈R3×3 as shown in
+Fig. 1(b). Consequently, our aim becomes the generation of collision-free collaborative coverage trajectories which cover all
+points P (where each point p˜p ∈P resides on the corresponding facet κ˜p ∈K) on the object’s surface area. Specifically, the
+problem tackled in this work can be stated as follows: Given a team of N agents n = {1, . . . , N}, at each time-step t design a
+set of collision-free collaborative look-ahead coverage plans (i.e., determine each agent’s kinematic and camera control inputs)
+inside a rolling finite planning horizon T which maximize the coverage of the points of interest P on the object’s surface area.
+IV. COLLABORATIVE ROLLING HORIZON 3D COVERAGE CONTROL
+In order to tackle the coverage problem discussed above we formulate a distributed rolling horizon model predictive control
+(DMPC) problem, as detailed in Problem (P1). This controller seeks to find each agent’s joint control inputs {un(t+τ|t), θn(t+

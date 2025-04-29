@@ -1,0 +1,49 @@
+Fukuzawa, Goodrich, and Irani
+XX:15
+Algorithm 8 ClassicalMaximaSet(S, M)
+1: if n ≤1 return M = S.
+2: Divide step: Divide S into S1 and S2 of size at most ⌈n/2⌉each, such that the points
+of S1 have smaller x-coordinates than those in S2.
+3: Conquer step:
+4: Recursively call ClassicalMaximaSet(S1, M1).
+5: Recursively call ClassicalMaximaSet(S2, M2).
+6: Combine step:
+7: Let pmax be the point in S2 with largest y-coordinate
+8: Remove all points from M1 with y-coordinates smaller than pmax and concatenate the
+list of remaining points with M2, returning this as M.
+B
+A Review of a Classical Convex Hull Algorithm
+Algorithm 9 finds the upper hull of a set, S, of lexicographically sorted points in the plane,
+where we assume, for the sake of simplicity, that points have distinct x-coordinates.
+Algorithm 9 ClassicalUpperHull(S, U)
+1: if n ≤1 then
+2:
+return U = S.
+3: Divide step: Divide S into S1 and S2 of size at most ⌈n/2⌉each, such that the points
+of S1 have smaller x-coordinates than those in S2.
+4: Conquer step:
+5: Recursively call ClassicalUpperHull(S1, U1).
+6: Recursively call ClassicalUpperHull(S2, U2).
+7: Combine step:
+8:
+Find a bridge upper tangent edge, e = (v, w), such that v ∈S1 and w ∈S2 no point of
+S is above the line vw.
+9: Remove all points from U1 (resp., U2) below e and concatenate the list of remaining
+points of U1 with e and the remaining points of U2, returning this as U.
+By a well-known point-line duality, the bridge edge in Step 8 can be found by a solving
+a two-dimensional linear program; see, e.g., [11,29,33]. In this duality, each point p with
+coordinate (px, py) in the primal plane maps to a line y = pxx −py in the dual plane and
+vice versa. See Figure 6.
+C
+Quantum Jarvis March Convex Hull Algorithms
+As mentioned above, another well-known classical algorithm for computing a two-dimensional
+convex hull is the Jarvis march algorithm; see, e.g., [11,30,33]. In this algorithm, we start
+with a point, p, known to be on the convex hull, such as a point with smallest y-coordinate.
+Then, we find the next point on the convex hull in a clockwise order, by a simple linear-time
+maximum-finding step. We iterate this search, winding around the convex hull, until we
+return to the starting point. Since each iteration takes O(n) time, this algorithm runs in
+O(nh) time.
+Lanzagorta and Uhlmann [24] describe a quantum assisted version of the Jarvis march
+algorithm. As in the classical version, this quantum Jarvis march convex hull algorithm
+starts with an edge, (p, q), known to be on the convex hull, and then does searches over
+SoCG 2025

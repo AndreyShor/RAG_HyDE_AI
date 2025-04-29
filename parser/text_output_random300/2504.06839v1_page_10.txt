@@ -1,0 +1,118 @@
+2
+The long time evolution of a density depending on (θ, s, h).
+The aim of this Section is to prove Theorem 1.1, which states that if µ0 ∈L1 ∩Lp(T1
+2π × [0, +∞) × [−1, 1]) and µt is
+a solution of
+µt(θ, s, h) = µ0(θ, s + t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)µt′(θ + π −2 arcsin(h′), 0, h′),
+then
+µt −⟨µ0⟩
+2π E
+
+Lp
+≤
+C
+∥µ0∥L1 + ∥µ0∥Lp
+t + 1
++ ∥µ0∥L1(T1
+2π×[t/4,+∞)×[−1,1]) + ∥µ0∥Lp(T1
+2π×[t/4,+∞)×[−1,1])
+
+,
+up for a constant C > 0 depending only on Q.
+As we said in the introduction, the first term which µt is composed of represents again the probability density of
+the particles for which no collision has occurred until time t. The second one can be understood as the probability
+density that at least a collision has occurred before time t. From the equation above we can preliminary notice that
+the long time behavior of µt is determined by the long time behavior of µt(θ, 0, h), which is in turn determined by the
+equation
+µt(θ, 0, h) = µ0(θ, t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)µt′(θ + π −2 arcsin(h′), 0, h′).
+(2.0.1)
+Now if µt(θ, 0, h) = c, by (2.0.1) we get µ0(θ, t, h) = cE(t, h) and therefore by (1.1.9) µt ≡cE at any time t.
+Therefore the rate of convergence of µt(θ, s, h) to the equilibrium state is determined by the rate of convergence of
+µt(θ, 0, h) to the constant ⟨µ0⟩
+2π , that is what we are going to study in the next steps.
+2.1
+Writing µt(θ, 0, h) as a linear function of µ0.
+In this Subsection we collect some results that allow us to prove Theorem 1.1. In particular we want to write µt(θ, 0, h)
+as a linear function of µ0 to get a better estimate of its long time behavior. Therefore the first purpose is to prove
+now the following intermediate result.
+Proposition 2.1. There exists a function φ ∈L∞(T1
+2π × [0, +∞) × [−1, 1]2; R) depending only on the kernel Q such
+that for every µ0 ∈L1(T1
+2π ×[0, +∞)×[−1, 1]) the evaluation at s = 0 of its time evolution writes as an affine function
+of φ and a linear function of µ0 as
+µt(θ, 0, h)
+=
+µ0(θ, t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(t −t′, h|h′)µ0(θ + π −2 arcsin(h′), t′, h′)
++
+1
+2π
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′µ0(θ′, t′, h′)
++
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′φ(θ −θ′, t −t′, h|h′)µ0(θ′, t′, h′),
+and moreover there exists a constant C > 0 such that
+|φ(θ, t, h)| ≤
+C
+t + 1
+∀(θ, t, h) ∈T1
+2π × [0, +∞) × [−1, 1].
+This Proposition is all what we need to prove Theorem 1.1. We can observe that among all the summands which
+µt(θ, 0, h) is split in the statement of Proposition 2.1, the most similar to ⟨µ0⟩
+2π is the third one, and the other ones are
+vanishing for large t (we will state and prove it rigorously later).
+We are finally splitting the probability (density) that a collision occurs at time t (that is, µt(θ, 0, h)) in four
+contributions: the first and the second one are understood respectively as the probability that the first and the second
+collision occur exactly at time t, while the sum of third and the fourth one as the probability that at least two collisions
+happened before time t.
+To prove Proposition 2.1 we make several steps by some preliminary Lemmas. We first recall the Definition 1.8 of
+the function f, that is,
+f(θ, t, h|h′) :=
+X
+ℓ∈Z
+∂h′′(θ + 2ℓπ, h′)
+∂θ
+Z t
+0
+dt′Q(t −t′, h|h′′(θ + 2ℓπ, h′))Q(t′, h′′(θ + 2ℓπ, h′)|h′),
+with h′′ as in Definition 1.7
+h′′(θ, h′) := sin
+θ + 2π −2 arcsin(h′)
+2
+
+1[2 arcsin(h′)−3π,2 arcsin(h′)−π)(θ).
+10

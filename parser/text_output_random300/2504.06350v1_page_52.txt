@@ -1,0 +1,107 @@
+space (Figure 14). Maximizing qL involves identifying two additional points that are collinear with this
+point: pL
+AB(a, b|x, y), located within the local set L, and pNL, which lies outside the local set but within
+the quantum set Q. The goal is to minimize the ratio of the distances from pL
+AB(a, b|x, y) to pAB(a, b|x, y)
+and from pNL
+AB(a, b|x, y) to pAB(a, b|x, y).
+The assertion that Eve has perfect knowledge of all outcomes when distributing a local correlation to Alice
+and Bob is based on the fact that the local set L forms a convex polytope within the probability space. As
+such, any local correlation pL
+AB(a, b|x, y) can be expressed as a combination of the extremal points of the
+polytope, which can be represented by the vector pL = (pL
+i (a, b|x, y))i. Furthermore, in this geometric
+construction, maximizing the local weight qL results in the optimal local correlation pL
+AB(a, b|x, y) lying
+on the boundary of the local polytope L, meaning it must always reside on one of the polytope’s facets.
+Analogous to pL, one can define the vector qL = (qL
+i (a, b|x, y))i, which represents the probabilities as-
+signed by Eve to each local correlation in the CC attack. Similarly, the average non-local correlation
+that Eve distributes can be modeled as a mixture of preselected non-local quantum correlations, forming
+the vector pNL = (pNL
+i
+(a, b|x, y))i, with the corresponding probability vector qNL = (qNL
+i
+(a, b|x, y))i
+indicating the probabilities assigned by Eve to each non-local correlation.
+To optimize the CC attack, Eve seeks a probability vector q = qL ⊕qNL, ensuring that local correla-
+tions are distributed as frequently as possible. This requires solving the following linear program, which
+maximizes the overall probability of sending any local boxes:
+qCC[pNL, p(a, b|x, y)] = arg max
+X
+i
+qL
+i ,
+subject to the following constraints:
+qL · pL + qNL · pNL = p(a, b|x, y),
+X
+i
+qL
+i +
+X
+j
+qNL
+j
+= 1,
+∀i, j : 0 ≤qL
+i , qNL
+j
+≤1.
+The first condition is nothing but eq. (147) and the other constraints ensure q is a valid probability vector.
+The set of extremal local correlation, pL, is a predetermined fixed collection fixed by the scenario.
+To apply the CC attack and upper bound the key rate in a DI-QKD protocol, one must first specify the
+ideal correlation that would be shared by the parties in the absence of noise, denoted by QAB(a, b|x, y).
+However, due to practical imperfections—such as finite detection efficiency η and visibility v—the actual
+noisy correlation observed is pAB(a, b|x, y). This correlation is then decomposed within the attack into
+local and nonlocal parts as equation (147).
+The method in [296] works such that the eavesdropper must specify in advance the set of nonlocal
+correlations pNL to be used in the convex decomposition and then apply the linear program (4.5) to
+determine the local contribution. For a CHSH protocol involving maximally entangled states with finite
+detection efficiency η, the maximum local weight can be analytically determined as
+qL = (1 −η)(1 + (3 + 2
+√
+2)η)
+for
+η ≥ηloc,
+where ηloc = 2(
+√
+2−1) ≈82.8% is the detection efficiency threshold, below which (η < ηloc) the correlation
+p(a, b|x, y) becomes local.
+As a result, the following bounds can be derived for the one-way and two-way protocols:
+r1-way ≤(3 + 2
+√
+2)η2 −2(1 +
+√
+2)η −η
+2h(η) −(1 −η)h
+η
+2
+
+,
+(150)
+r2-way ≤η
+
+2(1 +
+√
+2)η −2
+√
+2 −1
+ 
+1 −h
+
+1 −η
+1 −2(1 +
+√
+2)(1 −η)
+
+.
+(151)
+There are critical values for one-way (η1-crit ≈89.18%) and two-way (η2-crit ≈85.36%) protocols, below
+which the key rates become negative. This demonstrates that, for detection efficiencies in the range
+ηloc ≤η ≤ηi-crit, no DI-QKD protocol is feasible, even though the shared correlation remains nonlocal.
+The same result can be extended to the case of finite visibility (v < 1); i.e., there are critical visibilities
+that introduce nonlocal intervals in which no DI-QKD protocol is possible.
+Zhang et al. [297] applied the CC attack to a two-way protocol by optimizing the non-local points in
+the CC decomposition using the NPA-hierarchy [127]. They demonstrated that noise reduction can be
+achieved by employing the B-step procedure [224].
+52

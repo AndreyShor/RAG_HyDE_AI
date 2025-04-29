@@ -1,0 +1,36 @@
+When applied to boxes of the form ǫP P R + δP P R + (1 −ǫ −δ)P C for
+0 < δ < ǫ < 1, which are achievable by quantum states, the protocol still
+achieves distillation for some values of ǫ and δ (without crossing tsirelson’s
+bound of course).
+Corollary 3. There exists correlations arbitrarily close to the classical and
+quantum sets of correlations that trivialize communication complexity.
+The Brunner Skrzypczyk protocol brings boxes of CHSH value arbitrarily
+close to 2, yet still unreachable by quantum states, and distills then to CHSH
+value arbitrarily close to 4 crossing the bound Bcc deﬁned in corollary 2
+6
+Implications in Cryptography
+Deﬁnition 17. An oblivious transfer (OT) protocol is a protocol in which
+a sender sends a message to the receiver with probability 1/2, while himself
+learning nothing of whether the receiver received the message. One out of two
+oblivious transfer (1-2 OT) is a variant in which the sender holds two bits s0
+and s1, and the receiver has bit c. The receiver wishes to learn bit sc without
+the sender learning c.
+Wolf and Wullschleger [21] gave a protocol for secure 1-2 OT. Their pro-
+tocol uses a single PR-box and proceeds as follows. Alice inputs x = x0 ⊕x1.
+Bob inputs y = c. Alice gets output a and Bob b. Alice sends m = x0 ⊕a to
+Bob. Bob computes m ⊕b = x0 ⊕a ⊕b = x0 ⊕(x0 ⊕x1)c = xc.
+Wolf and Wullschleger’s protocol for 1-2 OT is secure, but when trying the
+usual reduction from OT to 1-2 OT, it becomes insecure. In the reduction,
+the sender uses sk = b and s¯k = 0 with k ∈R {0, 1} the receiver uses any
+c ∈{0, 1}. The players perform 1-2 OT with sk, s¯k and c, then the sender
+announces k to the receiver who learns b with probability 1/2 if k = c. Using
+their protocol, the receiver can delay his input into the box until the sender
+announced k and always learn b.
+Buhrman et al. [7], based on the Wolf and Wullschleger protocol, showed
+that bit commitment and OT are possible given perfect PR-boxes.
+The following deﬁnition will be of use in the bit-commitment protocol
+described in Buhrman et al.
+Deﬁnition 18. Let the operator |x|11 for a bit string x denote the number
+of substrings 11 of x starting at odd positions (with positions starting at 1).
+| · |11 is deﬁned recursively as follows
+16

@@ -1,0 +1,144 @@
+Evaluating Mutation Techniques in Genetic Algorithm-Based Quantum Circuit Synthesis
+GECCO ’25, July 14–18, 2025, Malaga, Spain
+Specific target
+state required for
+an algorithm
+Quantum device
+(simulated or
+hardware)
+Config file for
+hyperparameter
+Evaluate & chose
+parallel/serial
+processor
+Split population
+onto island
+Initializing device,
+Environment and
+population
+Generational
+process
+Migration between
+Islands
+Select elite &
+parent candidates
+from current
+population
+Generate 
+offsprings from
+parents candidates
+& mutate 
+offsprings
+Select between
+parent & offspring
+candidates
+Assemble new
+population
+from elites,
+immigrants &
+offsprings
+Evaluating fitness 
+of new population
+Optimized quantum
+circuit to reach target
+state
+Select candidate
+with the highest
+fitness
+Immigrant
+candidates
+generated through
+random processes
+Figure 1: The GA optimization process. Yellow represents the
+outer layer, orange represents GA steps, and red represents
+the repeated optimization cycle. White boxes indicate inputs,
+blue boxes indicate outputs, green boxes indicate essential
+steps, and purple boxes indicate optional steps.
+S operation(wires = 3)
+CNOT operation(wires = [0,1])
+S operation(wires = 1)
+H operation(wires = 2)
+T operation(wires = 3)
+S
+S
+H
+Quantum Circuit
+List of Quantum
+Operations
+Figure 2: An example list of quantum operations and its
+corresponding circuit.
+3.3
+Environment Initialization
+The genetic algorithm requires three key inputs to begin: a target
+density matrix, which specifies the desired quantum state and thus
+defines the optimization goal; a quantum device (either simulated
+or physical) to execute and evaluate the circuits; and a configu-
+ration file containing GA parameters such as generation count,
+stopping criteria, population size, and mutation rates. To simplify
+customization, these parameters are organized into distinct sec-
+tions, including run, population, island, fitness, evolutionary, and
+parallel. For instance, the population section defines the number of
+candidates and the minimum and maximum circuit depths, while
+the island section governs the number of islands and the frequency
+of candidate migration between them. This structured approach
+makes it easier to adjust the GA for different experimental setups
+and performance objectives.
+3.4
+Population Initialization
+Population initialization produces an initial set of candidates on
+which future generations build. Fig. 3 shows the process of generat-
+ing random quantum circuits by choosing circuit depth, quantum
+operations, and qubit assignments. A short post-processing step
+removes trivial candidates lacking sufficient complexity. This ap-
+proach provides a diverse initial population and lays the ground-
+work for effective optimization.
+S(wires = 3)
+S(wires = 1)
+H(wires = 2)
+T(wires = 3)
+List of quantum
+Operations
+Settings:
+Quantum Operations: [ I, H, S, CNOT, T ]
+Depth: [ 2 - 8 ]
+CNOT(wires = [0,1])
+Repeats n amount
+Figure 3: Using Python lists to define circuit depth and oper-
+ations for each candidate during population initialization.
+3.5
+Evaluation Process
+To evaluate candidates, the framework offers three main meth-
+ods that target different circuit configurations: Parallel processing,
+which runs batches of candidates concurrently on multicore proces-
+sors, is well-suited to circuits with four or more qubits. In contrast,
+serial single processing evaluates candidates individually and min-
+imizes overhead, making it optimal for circuits with fewer than
+four qubits and shallow depth. For smaller circuits that have higher
+depth, serial batch processing assesses all candidates in a single
+batch, reducing redundancy. If the configuration does not specify a
+particular method, the framework runs a quick test on the initial
+population to determine which approach completes fastest and then
+applies that method for all remaining generations.
+3.6
+Fitness Evaluation
+The fitness function incorporates fidelity, circuit depth, and the
+number of T operations to quantify how well a circuit meets hard-
+ware constraints while approximating the target state. The fidelity
+score, which measures how closely a candidate approximates the
+target state, is the primary metric for an optimal solution.
+𝐹(𝜌, 𝜎) =
+
+tr
+√︃√𝜌𝜎√𝜌
+2
+(1)
+where 𝜌and 𝜎are both density matrices. For practical use, a score
+between 0.90-0.99 is typically aimed for. Circuit depth measures
+sequential gate execution; shallower circuits reduce noise accumu-
+lation. The number of T gates is another key factor, as T gates are
+resource-intensive in the Clifford+T gate set. The overall fitness is
+computed as:
+𝑠fitness = 𝑤fidelity · 𝑠fidelity −𝑤d · 𝑠d −𝑤T-ops · 𝑠T-ops,
+(2)
+where 𝑤is the weight for each metric, 𝑑the circuit depth and 𝑠is
+the corresponding score.

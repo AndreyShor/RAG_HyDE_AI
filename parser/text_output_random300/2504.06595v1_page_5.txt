@@ -1,0 +1,211 @@
+5
+lattice ion
+6 nearest 
+neighbors,
+coupling 
+...
+...
+...
+12 next-nearest 
+nighbors,
+coupling 
+...
+...
+...
+a)
+Phonon dispersion
+Recoil kernel
+Energy (meV)
+20
+15
+10
+5
+0
+Displacement distribution
+Speed distribution
+arb. units
+0
+0.25
+0.5
+0.75
+Displacement     (Å)
+Speed     (Å/ps)
+0
+5
+10
+15
+b)
+c)
+d)
+e)
+X
+M
+R
+Γ
+Γ
+1.0
+0.5
+0
+0
+0.5
+1.0
+2.0
+1.5
+time     (ps)
+(meV)
+10-3
+5
+25
+50
+analytic
+numeric
+FIG. 1. Model system. A simple cubic lattice, depicted in
+(a), where each lattice ion couples to its 6 nearest neighbors
+(shown in green) with a coupling k1, and to its 12 next-nearest
+neighbors (shown in orange) with a coupling k2.
+(b) The
+phonon dispersion computed using the dynamical matrix in
+Eq. (21) for m = 3.5 meV ps2/˚A2, a = 3 ˚A, k1 = 520 meV/˚A2,
+and k2 = 170 meV/˚A2. (c) Diagonal element of the recoil ma-
+trix
+↔
+W(t) for this model system. The rapid decay of this term
+provides support for the time-local treatment. (d),(e) Distri-
+butions of displacements and speeds of the framework ions due
+to thermal motion at different temperatures. Solid curves are
+analytic Maxwell-Boltzmann distributions and shaded areas
+are histograms obtained from numerically generated displace-
+ments for a system of 60 × 60 × 60 unit cells.
+↔
+W j,k(t) =
+X
+l
+ηlη†
+l
+mΩ2
+l
+eiql·(Lj−Lk)
+N
+cos(Ωlt) .
+(22)
+To illustrate this decay, we plotted its diagonal element
+Wd(t) for our model system as a function of time in
+Fig. 1(c).
+We see that, despite its oscillatory nature,
+this term decays rapidly for t ≳0.2 ps, corresponding
+to the period of the fastest mode. We reiterate that the
+maximum phonon frequency chosen here is substantially
+smaller than the typical values seen in ionic conductors,
+which are closer to 20 THz. Therefore, the recoil kernel
+in stiffer real materials is expected to decay even faster.
+In the context of ionic motion, the homogeneous por-
+tion rH(t) = P
+n ζj(t)↔
+m−1
+2 εj corresponds to thermal vi-
+brations of the lattice and the amplitudes of ζj(t) =
+Aj cos(Ωjt+ϕj) need to reflect this fact. Writing Aj(nj)
+explicitly as a function of the quantum excitation level,
+we have
+⟨Re[ζj(t)]2⟩=
+I dϕj
+2π
+P
+n A2
+j(n) cos2(Ωjt + ϕj)e−nΩj/ΩT
+P
+n e−nΩj/ΩT
+=1
+2
+P
+n A2
+j(n)e−nΩj/ΩT
+P
+n e−nΩj/ΩT
+,
+(23)
+where ΩT
+= kBT/ℏis the thermal frequency.
+Us-
+ing the fact that, for a quantum harmonic oscilla-
+tor, ⟨Re[ζj(t)]2⟩=
+ℏ
+Ωj
+
+nB(Ωj) + 1
+2
+
+, where nB is the
+Bose-Einstein distribution,
+we find that Aj(nj)
+=
+q
+nj + 1
+2
+q
+2ℏ
+Ωj , where nj is an integer obtained from the
+probability distribution e−nΩj/ΩT . The phase ϕj, on the
+other hand, is uniformly distributed over [0, 2π].
+To get a better feel for the framework’s thermal mo-
+tion, we consider a system of 60 × 60 × 60 unit cells.
+We generate rH(0) and ˙rH(0) for several temperatures
+by sampling Aj’s and ϕj’s and then construct the his-
+tograms for the framework mass displacement and speed
+if Fig. 1(d) and (e), respectively.
+Because it consists of independent harmonics with ran-
+dom phases and thermally-distributed amplitudes, rH(t)
+is a stationary Gaussian process with zero mean and a
+covariance matrix given by
+C
+↔(t) = ⟨rH(t)r†
+H(0)⟩
+=
+X
+l
+↔
+m−1
+2 εlε†
+l
+↔
+m−1
+2 Re [⟨ζl(t)ζl(0)⟩]
+=
+X
+l
+↔
+m−1
+2 εlε†
+l
+↔
+m−1
+2 ℏcos(Ωlt)
+2Ωl
+coth
+ Ωl
+2ΩT
+
+. (24)
+Diagonal elements of C
+↔(0) give the variance of the frame-
+work atoms’ displacements along individual Cartesian
+directions.
+Multiplying the summand in the penulti-
+mate line of Eq. (24) by Ω2
+l gives the covariance ma-
+trix for velocities.
+The total displacement probability
+distribution is given by the Maxwell-Boltzmann form
+4πr2 exp(−r2/2σ2)/(2πσ)3/2, where σ is the square root
+of C
+↔(0)’s diagonal element. Similarly, we compute the
+standard deviation for the velocity. In Fig. 1(d) and (e),
+we see excellent agreement between simulated histograms
+and analytic forms of the distributions over a range of
+temperatures.
+Finally, to describe the interaction between the frame-
+work and the particle, we follow our earlier work [23–
+26] and adopt a simplified form by assuming that U
+is given by the sum of pairwise terms coupling the
+mobile particle and individual framework masses.
+For

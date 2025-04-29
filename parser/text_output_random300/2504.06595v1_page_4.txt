@@ -1,0 +1,118 @@
+4
+other words, the uniform shift of the framework gener-
+ated by K is physically equivalent to a shift of the mobile
+particle in the opposite direction. Our aim is to use the
+time-local form in Eq. (2) to obtain the mobile particle’s
+trajectory. First, however, we validate the time-local ap-
+proximation and build intuition by performing a set of
+numerical experiments using a model system introduced
+in Sec. III. We then show, in Sec. IV, that we can sim-
+plify Eq. (16) by replacing r →rH on the right-hand
+side, leading to
+r = rH −
+↔
+V −1∇rU(rH, R) −KL∇R
+dU(rH, R)
+dt
+,
+(17)
+allowing us to write down the differential equation for R
+M ¨R = −∇RU(reff, Reff) ,
+(18)
+reff = rH −
+↔
+V −1∇rU(rH, R) ,
+(19)
+Reff = R + L∇R
+dU(rH, R)
+dt
+,
+(20)
+where the last term of Eq. (17) was moved to R inside
+U because it corresponds to a uniform framework shift.
+III.
+MODEL SYSTEM
+The aim of this section is to introduce a tractable
+model system and justify our parameter choices.
+Typical scales for physical quantities in solid materi-
+als are meV for kinetic energies, ˚A for lengths, and ps
+for times. Normalizing our system parameters by these
+quantities implies a mass scale, where [m] = [E]/[v2] =
+[E][t]2/[ℓ]2.
+A dimensionless mass M = 1 then corre-
+sponds to 1 meV ps2/˚A2 ≈9.66 Da. One of the most
+common mobile ion species, Li, then has mass M ≈0.7,
+and the lattice (most commonly formed from Si, Ge, S,
+and P) then has mass m ≈3.5.
+The simplest three-dimensional crystal is a cubic lat-
+tice containing a single atom per unit cell, shown in
+Fig. 1(a). A typical nearest-neighbor distance for mo-
+noelemental simple cubic, bcc, and fcc lattices is about
+3 ˚A, or a ≈3. This size is within the range of previous
+benchmarking studies of sulfur model solid electrolytes,
+with volume per atom of 20–70 ˚A3 [9]. We stress that cu-
+bic lattices generally do not make good ionic conductors,
+but we chose this simple geometry for demonstration pur-
+poses only.
+Each atom is coupled to its nearest (next-nearest)
+neighbors via springs with force constants k1 (k2) so that
+the dynamical matrix is
+D(q) = 2k1
+m
+
+
+1 −cos qxa
+0
+0
+0
+1 −cos qya
+0
+0
+0
+1 −cos qza
+
+
++ 2k2
+m
+
+
+2 −cos qxa cos qya −cos qxa cos qza
+sin qxa sin qya
+sin qxa sin qza
+sin qya sin qxa
+2 −cos qya cos qxa −cos qya cos qza
+sin qya sin qza
+sin qza sin qxa
+sin qza sin qya
+2 −cos qza cos qxa −cos qza cos qya
+
+,
+(21)
+with qx,y,z = 2π [1, 2, . . . , Nx,y,z] /Nx,y,za. Keeping k2 ̸=
+0 is important because, in its absence, the Cartesian coor-
+dinates become decoupled, decomposing the lattice into
+individual one-dimensional systems.
+The highest phonon angular frequency in the system
+considered here is Ωmax =
+p
+4k1/m + 8k2/m, corre-
+sponding to the X point in the Brillouin zone. Taking
+a reasonable maximum cycle frequency fmax = 5 THz,
+corresponding to ≈20 meV, we have Ωmax = 2πfmax =
+10π ps−1. The choice of 5 THz is on the lower end of fre-
+quencies found in softer monoelemental systems or two-
+element ionic conductors (such as lithium halides [28]),
+picked to get a physically appropriate speed of sound.
+For a reasonable value k1/k2 ≈3, we then have k2 =
+5π2m ≈170 meV/˚A2 and k1 ≈520 meV/˚A2. These val-
+ues translate to ≈15π ˚A/ps (≈4700 m/s) as the speed
+of sound for the longitudinal phonon along the lattice’s
+principal axes, a physically reasonable value. The phonon
+dispersion obtained by diagonalizing Eq. (21) is given in
+Fig. 1(b).
+An important component of our derivation in Sec. II is
+the rapid decay of the recoil kernel
+↔
+W in Eq. (10). For the
+monoatomic lattice considered here, the 3×3 component
+of this kernel coupling framework atoms j and k is

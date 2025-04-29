@@ -1,0 +1,101 @@
+ 
+listed in parentheses below the corresponding observed 
+datetime. In the training and validation sets, the pixel 
+sampling in the slit direction and integration time 
+parameters were set to 0.1585 and 4.8, respectively, 
+while these parameters were generally set to 0.317 and 
+1.6, respectively. For the test set, the observation mode, 
+integration time, and scan step size parameters were set 
+to ‘FL’, 0.8, and 2, respectively, unlike the ‘QT’, 1.6, 
+and 1 setup used in all other cases. Despite these 
+variations in observation modes, which result in 
+differing noise levels across the data, the deep learning 
+model is expected to perform robustly under these 
+diverse conditions. 
+2.3. Training and evaluation 
+All the data preprocessing and the model training 
+setups follow [6]. The SP maps used for training were 
+resized to achieve a more focused field of view (FOV) 
+on ARs. The total pixel counts for the eight resized SP 
+maps used for training and the five SP maps used for 
+validation were 911,860 and 875,940, respectively. We 
+normalized the dataset for model training using min-
+max scaling for Stokes I and zero-mean scaling for 
+Stokes V. The training process utilized a batch size of 
+512 over 1000 epochs, with the Adam optimizer and a 
+reduced learning rate on the plateau parameter set with 
+a patience of 50 epochs. Early stopping was also 
+implemented with a patience of 100 epochs. The 
+reconstruction loss function during training is defined as 
+the sum of the mean absolute errors (MAEs) for the 
+Stokes I and V profiles, as shown in Equation 1: 
+𝐿𝑜𝑠𝑠𝑟𝑒𝑐𝑜𝑛𝑠= 𝑀𝐴𝐸𝐼+ 𝑀𝐴𝐸𝑉.  
+   (1) 
+To evaluate the model’s performance, similar to [6], 
+we separately calculated the root mean square error 
+(RMSE) between the original input profiles and the 
+reconstructed output profiles of Stokes I and V spectra. 
+The RMSE value calculated for each pixel in the SP 
+maps serves as a measure of reconstruction accuracy, 
+with pixels exhibiting higher RMSE values being more 
+likely to be anomalous. 
+3. RESULTS 
+3.1. Model performance 
+Using the pre-trained compression model, we 
+reconstructed the test spectra from three pre-flare SP 
+maps and one during-flare SP map and computed the 
+reconstruction error as RMSE for each pixel across all 
+four SP maps. Table 2 presents the observational error 
+(𝜎𝑜𝑏𝑠), calculated as the mean standard deviation of the 
+continuum within the wavelength pixel range from 0 to 
+15, along with the resulting mean reconstruction error 
+(𝜇𝑅𝑀𝑆𝐸) values for both Stokes spectra across all four 
+test SP maps.  
+Table 2. Comparison of observational error and mean 
+reconstruction error values. 
+In all four cases, the mean RMSEs were lower than the 
+observational errors for both Stokes parameters, 
+indicating the model’s satisfactory performance. As an 
+example, Figure 2 presents the Stokes V spectra at four 
+different spatial positions within AR 13663 (top-left 
+plot), along with their reconstruction error (RMSEV) 
+values (top-right plot) and reconstructed profiles 
+(bottom 
+plot) 
+in 
+the 
+SP 
+map 
+captured 
+at 
+20240504_143042. The spectral positions are color-
+coded in the continuum image as follows: quiet Sun 
+(red), pore (yellow), penumbra (magenta), and umbra 
+(green), with these colors also representing their 
+respective information in the other plots of Figure 2. The 
+reconstructed profiles closely match the true Stokes V 
+profiles, demonstrating a significant reduction in noise 
+levels where applicable. 
+SP map 
+𝝈𝒐𝒃𝒔,𝑰 𝝁𝑹𝑴𝑺𝑬𝑰𝝈𝒐𝒃𝒔,𝑽 
+𝝁𝑹𝑴𝑺𝑬𝑽
+20240504_143042 
+0.0066 
+0.0060 
+0.0061 
+0.0056 
+20240505_020424 
+0.0072 
+0.0066 
+0.0083 
+0.0074 
+20240505_021351 
+0.0066 
+0.0060 
+0.0063 
+0.0058 
+20240505_065322 
+0.0073 
+0.0066 
+0.0079 
+0.0071 

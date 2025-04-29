@@ -1,0 +1,112 @@
+11
+In our recent work [21], we showed that diffusion co-
+efficients can deviate from Arrhenius scaling even in the
+simplest case, where the electrolyte is composed of a sin-
+gle atom. This deviation is also commonly observed ex-
+perimentally, yet in Sec. VI, we found that the diffusion
+coefficient follows an Arrhenius scaling with an activation
+energy close to the statically-computed value.
+In our simulations, the energy barrier was composed
+primarily of the particle-framework interaction, while the
+deformation energy played a much smaller role. Conse-
+quently, for the particle to escape a local minimum, it was
+sufficient that it have enough energy without relying on
+a favorable framework configuration when it approached
+the unit cell’s face. For a particle with Boltzmann energy
+distribution, the probability that it has sufficient energy
+Ea is approximately proportional to e−Ea/ℏΩT , giving the
+Arrhenius form for the probability of the particle’s es-
+cape.
+However, if the relaxed configuration involves a
+large lattice deformation, particle escape also requires a
+favorable framework arrangement, leading to a deviation
+from the Arrhenius form. The reason for this deviation
+is the fact that the probability of a particle having suf-
+ficient energy and the lattice assuming a configuration
+that allows the particle to move between energy minima
+is no longer Boltzmann distributed, as discussed in detail
+in Ref. [21].
+VIII.
+SUMMARY
+We have presented a scheme for computing the mo-
+tion of mobile ions in solid electrolytes using a time-
+local approximation.
+By its construction, this formal-
+ism is intermediate between fully-static NEB calculations
+and time-approximation-free AIMD simulations. Our ap-
+proach demonstrates the main features associated with
+ionic transport: dissipation and diffusion. The simpli-
+fied computation procedure makes it possible to perform
+simulations on time and length scales more similar to
+those anticipated in devices. In addition to providing a
+time-local formulation, we also propose a computation-
+ally tractable way to capture the short-time-nonlocal ef-
+fects.
+We envision several natural extensions to this work.
+First, although we focused on a single mobile ion, it is
+straightforward to extend our treatment to multiple cur-
+rent carriers. We do not expect the formalism pertaining
+to the response kernel to be significantly altered. Rather,
+we would only need to include the interaction between
+the mobile particles to prevent them from occupying the
+same energy minimum. We suspect that simulating ionic
+motion with multiple ions could reveal subtle correlation
+effects, as well as a departure from the diffusive behavior,
+leading to anomalous diffusion.
+Next, in the limit of high carrier concentration, the in-
+terstitial transport picture changes into a vacancy-carrier
+current. We suspect modifying our formulation to de-
+scribe vacancy (rather than particle) motion would not
+introduce dramatic changes to the structure of the solu-
+tions, since the timescale for the response kernel decay
+should be similar.
+Finally, machine learning (ML) techniques can play a
+substantial role in the simulations. For the model system
+considered here, we took a very simple interaction form
+U. In reality, of course, the potential profile inside a unit
+cell is very complex and computing it for an arbitrary
+position of the interstitial atom is computationally costly.
+Fortunately, ML has been successfully used to generate
+potential profiles much faster than using the traditional
+ab initio methods.
+For this work, all computations were performed using
+julia [29].
+The plots were made with Makie.jl pack-
+age [30] using the color scheme designed for colorblind
+readers [31]. The scripts used for computing and plotting
+can be found at https://github.com/rodin-physics/cubic-
+lattice-loss-diffusion.
+ACKNOWLEDGMENTS
+A. R. acknowledges the support by Yale-NUS Col-
+lege (through Start-up Grant). B. A. O. acknowledges
+support from the M. J. Murdock Charitable Trust, and
+from the the National Science Foundation through Grant
+No. PHY-2418777. A. U. was supported by the Min-
+istry of Education, Singapore, under its funding for the
+Research Centre of Excellence Institute for Functional
+Intelligence Materials, National University of Singapore
+(I-FIM, project No.
+EDUNC-33-18-279-V12) and by
+the National Research Foundation, Singapore under its
+AI Singapore Programme (AISG Award No:
+AISG3-
+RP-2022-028).
+A. M. was supported by the Ministry
+of Education, Singapore, under its funding for the Re-
+search Centre of Excellence Institute for Functional In-
+telligence Materials, National University of Singapore (I-
+FIM, project No. EDUNC-33-18-279-V12).
+[1] G. D. Mahan and W. L. Roth, Superionic Conductors,
+1st ed. (Plenum Press, 1976).
+[2] H. Mehrer, Diffusion in Solids, 1st ed. (Springer, 2007).
+[3] J. C. Bachman, S. Muy, A. Grimaud, H. H. Chang,
+N. Pour, S. F. Lux, O. Paschos, F. Maglia, S. Lupart,
+P. Lamp, L. Giordano, and Y. Shao-Horn, Inorganic
+solid-state electrolytes for lithium batteries: Mechanisms
+and properties governing ion conduction, Chemical Re-
+views 116, 140 (2016).
+[4] A. Manthiram, X. Yu, and S. Wang, Lithium battery
+chemistries enabled by solid-state electrolytes, Nat. Rev.
+Mats. 2, 1 (2017).
+[5] T. Famprikis, P. Canepa, J. A. Dawson, M. S. Islam,
+and C. Masquelier, Fundamentals of inorganic solid-

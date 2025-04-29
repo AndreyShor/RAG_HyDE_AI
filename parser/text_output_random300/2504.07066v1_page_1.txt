@@ -1,0 +1,95 @@
+Intertwining Josephson and Vortex Topologies in Conventional Superconductors
+Zhuo Chen,1, ∗Jiangxu Li,1, ∗Lun-Hui Hu,1, 2 Zhen Bi,3 and Rui-Xing Zhang1, 4, †
+1Department of Physics and Astronomy, The University of Tennessee, Knoxville, TN 37996, USA
+2Center for Correlated Matter and School of Physics, Zhejiang University, Hangzhou, China
+3Department of Physics, The Pennsylvania State University, University Park, Pennsylvania 16802, USA
+4Department of Materials Science and Engineering,
+The University of Tennessee, Knoxville, TN 37996, USA
+Recent experimental advances have unveiled promising evidence of vortex-bound Majorana quasi-
+particles in multiple superconducting compounds. However, theoretical progress in understanding
+these phenomena, especially from ab initio approaches, has been limited by the computational com-
+plexity of simulating vortex structures.
+To bridge this gap, we introduce the Josephson–vortex
+correspondence (JVC), a theoretical framework that systematically maps the bound-state topologi-
+cal properties of vortices to those of π-phase Josephson junctions in the same superconductor. This
+correspondence allows vortex phase diagrams to be constructed directly from Josephson junction
+calculations, thereby eliminating the need for large-scale vortex calculations. We demonstrate the
+validity and predictive power of JVC across a variety of effective models, and further extend the
+framework to the first-principles level. Applying our approach to 2M-WS2 and Sr3SnO, we identify
+them as realistic, doping-tunable platforms for realizing vortex Majorana zero modes. Our theory
+will pave the way for ab initio Majorana material discovery and design.
+I.
+INTRODUCTION
+Topological principles in quantum condensed matters
+can enable exotic quasiparticle excitations that are oth-
+erwise unattainable [1–5]. For instance, Majorana zero
+modes (MZMs), a class of non-Abelian quasiparticles,
+are predicted to exist in topological superconductors
+(TSCs) with unconventional pairing symmetries [6–11].
+These MZMs hold transformative potential for quan-
+tum technologies [12].
+While definitive proof of TSCs
+remains elusive [13], zero-bias peaks (ZBP) in the tun-
+neling spectroscopy have been observed inside Abrikosov
+vortices of multiple 3D s-wave superconductors with a
+trivial ground-state topology, including FeTe1−xSex [14–
+17], (Li0.84Fe0.16)OHFeSe [18], 2M-WS2 [19, 20], and
+LiFeAs [21–23]. These ZBPs are often interpreted as sig-
+natures of vortex-bound MZMs, but the definitive exis-
+tence of such modes remains debated.
+The identification of the above compounds follows a
+key insight: the presence of a normal-state Dirac surface
+state is considered crucial for the emergence of vortex
+MZMs, as first highlighted by Fu and Kane in the con-
+text of superconducting topological insulators (TIs) [24].
+While the Fu-Kane paradigm has been instrumental in
+shaping our understanding of vortex MZMs, real-world
+superconductors, such as those discussed here, invariably
+feature bulk Fermi pockets that facilitate Cooper pair-
+ing instabilities [25].
+These low-energy metallic bands
+can obscure the surface states and potentially influence
+the fate of vortex MZMs, complicating the direct appli-
+cation of the Fu-Kane theory [26–29]. Moreover, while
+the observation of a ZBP is necessary, it is not suffi-
+cient to definitively identify MZMs experimentally. For
+∗These authors contributed equally to this work
+† ruixing@utk.edu
+instance, near-surface impurities bind low-energy vor-
+tex states that effectively mimic the phenomenology of
+MZMs, leading to potential false positives [30]. These
+theoretical and experimental challenges underscore the
+difficulties in conclusively interpreting the nature of ZBP
+signals in these systems.
+Recent theoretical advances have introduced an alter-
+native bulk perspective for understanding the origin of
+vortex MZMs, viewing vortex lines in 3D type-II su-
+perconductors as effective 1D class-D nanowires. Along
+these “nanowires”, Caroli–de Gennes–Matricon (CdGM)
+bound states necessarily form and disperse [31]. If these
+1D CdGM states acquire topologically nontrivial char-
+acteristics, MZMs will emerge as boundary modes at
+the ends of the vortex line [32]. This vortex-line topol-
+ogy (VLT) framework directly quantifies the condition
+for realizing vortex MZMs, without requiring the disen-
+tanglement of surface and bulk contributions. However,
+evaluating VLT through vortex simulations presents sig-
+nificant computational challenges, as the vortex geom-
+etry breaks all in-plane translational symmetries, sub-
+stantially increasing computational complexity. Conse-
+quently, VLT studies to date have been largely limited
+to effective k · p or tight-binding models with idealized,
+often unrealistic, parameters, leaving their applicability
+to real-world materials in question.
+The overarching goal of this work is to enable VLT
+characterization at the first-principles level, while over-
+coming the numerical challenges discussed earlier. Our
+approach is driven by a key geometric insight: a vortex
+line can be smoothly deformed into a pair of perpendicu-
+lar π-phase Josephson junctions. By focusing on a single
+π-junction, or a “halved” vortex, we observe the emer-
+gence of 2D dispersing Andreev bound states within the
+bulk pairing gap. Similar to CdGM modes, these An-
+dreev states can, in principle, develop emergent topolog-
+ical features through sub-gap band inversions. We refer
+arXiv:2504.07066v1  [cond-mat.supr-con]  9 Apr 2025

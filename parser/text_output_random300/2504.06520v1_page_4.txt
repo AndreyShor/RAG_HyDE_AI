@@ -1,0 +1,43 @@
+interior within the medium, the excitation sources were placed outside the ROI at random 
+locations near the boundaries. An excitation signal comprising five frequencies (i.e., 500 Hz, 
+1000 Hz, 1500 Hz, 2000 Hz, and 2500 Hz) with randomly assigned amplitude and phase was 
+applied to these point sources. The wave equations were solved using a time interval of 5 µs 
+over 2667 time steps, allowing 13.3 ms for wave propagation to reach a steady state and the 
+formation of a fully reverberant shear wave field. White Gaussian noise with a signal-to-noise 
+ratio of 10 dB was added to the shear-wave field. Figure 1(b) illustrates the 3D particle velocity 
+field of the multi-frequency reverberant shear wave within the two-sided medium, highlighting 
+wavelength variations on each side. The simulation was designed to mimic real OCE 
+experiments, with the velocity field analyzed only along the sensor axis (z-axis). To estimate 
+the SWS at different frequencies, the velocity field for each frequency was extracted from the 
+multi-frequency reverberant shear wave field using bandpass frequency filters with a range of 
+10 Hz centered at 500 Hz, 1000 Hz, 1500 Hz, 2000 Hz, and 2500 Hz. 
+(a) 
+(b) 
+Fig. 1. K-Wave elastography simulation. (a) A two-sided medium with a softer side (SWS of 
+1m/s) and stiffer side (SWS of 2m/s); (b) 3D particle velocity field of the multi-frequency 
+reverberant shear wave field including excitation frequencies of 500 Hz, 1000 Hz, 1500 Hz, 
+2000 Hz, and 2500 Hz. 
+4. Multi-frequency reverberant OCE 
+4.1 Experimental setup 
+Figure 2 illustrates the schematic of the MFR-OCE system, which integrates a custom-built, 
+fiber-based, swept-source OCT system with a piezoelectric actuator-based excitation 
+mechanism. The swept-laser source (HSL-2100-HW, Santec, Aichi, Japan) has a spectral 
+tuning range of approximately 140 nm, centered at a wavelength of 1310 nm. The system 
+includes a Mach-Zehnder interferometer (MZI) for spectral nonlinearity calibration, as 
+described by Yao et al. [41,42]. The measured depth resolution in air is approximately 6 μm.   
+The sample arm incorporates a custom pupil-relay precision scanning mechanism in the 
+sample arm to achieve diffraction-limited performance, as detailed by Xu et al. [43]. A Thorlabs 
+microscope objective (model LSM03, Newton, NJ, USA) with an effective focal length of 36 
+mm and a maximum field of view of 18 × 18 mm2 is used for scanning. The system’s lateral 
+resolution is measured to be approximately 20 μm.  
+The system employs two balanced photodetectors (model 1817-FC, Newport, Irvine, 
+California, USA) to capture the two primary signals: (1) the interference signal between the 
+sample and reference arms and (2) the MZI calibration signal. These detectors feature a 
+bandwidth ranging from DC to 80 MHz and are sensitive to wavelengths between 900 nm and 
+1700 nm. To maximize fringe contrast, two polarization controllers (Thorlabs FPC030) are 
+used, i.e., one in the reference arm and one in the sample arm, for the OCT signal. Similarly, 
+an additional polarization controller is used to maximize the fringe contrast of the MZI signal. 
+The system sensitivity is measured to be approximately 110 dB. 
+System operation is controlled using LabVIEW software (Version 14, National Instruments, 
+Austin, TX, USA), which allows for adjustment of parameters such as the field of view, the 
+number of lateral scanning points (B-mode scan), and the number of spectra to acquire at each 

@@ -1,0 +1,132 @@
+2
++𝜈0
+-𝜈0
+Frequency
+k
+2N-1
+0
+...
+1
+...
+...
+ω 1 −0
+ω 1 −0
+ω 1 −0
+ω 1 −0
+δC
+-δC
+δ0
+2N-1
+0
+...
+1
+-𝜈1
++𝜈2N-1
+-𝜈2N-1
++𝜈1
+δ1
+ω 1 −0
+ω 1 −0
+ω 1 −0
+FIG. 1: Illustration of sideband transitions and Raman
+detunings used in an MS(θ) gate. The hyperfine states
+|0⟩and |1⟩are separated with an energy splitting of
+ω|1⟩−|0⟩= 12.643 GHz. For a chain of N ions, there are
+also 2N radial motional modes k where {k : 0...2N −1},
+and each blue (red) mode is characterized by frequency
+νk(−νk). The Raman tones applied to the IA beams are
+symmetrically detuned from the blue (red) motional
+mode k by δk(−δk). We also denote δc(−δc) indicating
+the equivalent blue (red) detunings from the carrier
+transition such that δk = δc −νk.
+2S1/2 |F = 1, mF = 0⟩(|1⟩) serve as the qubit states,
+split by 12.6 GHz. We utilize Raman transitions to drive
+between the qubit levels for all laser-based gates. The
+single-photon detuning of the Raman transition is posi-
+tioned between the 2P1/2 and 2P3/2 levels, roughly 33
+THz away from 2P1/2. During an MS(θ) gate, motional
+sidebands of the two target qubits are addressed by
+red- and blue-detuned Raman transitions to implement
+the necessary spin-dependent force for the entangling
+interaction [3, 4]. As these Raman transitions must be
+sensitive to the motion of the ions, they are performed
+in a counter-propagating configuration – achieved by
+applying a single-toned, all-encompassing beam from
+one direction orthogonal to the full length of the chain
+(i.e. the ‘global’ beam) and individual addressing (IA)
+beams on each of the target ions from the opposite
+side. Each of the IA beams consist of two tones, which
+are symmetrically blue- and red-detuned by δc from
+the qubit splitting (i.e.
+carrier transition) as shown
+in Fig. 1.
+To control these tones we use our custom
+control hardware system Octet, an RF system-on-chip
+(RFSoC) device that is specifically designed to support
+two tones per channel.
+Each Octet channel controls
+an acousto-optic modulator (AOM) for the global and
+IA beams, and provides independent amplitude, phase,
+and frequency modulation specified either as splines or
+discrete changes.
+More details of the beam geometry
+and Octet hardware control can be found in Ref. [12].
+In support of the discussion that follows we introduce
+the Hamiltonian for the bare MS gate interaction:
+H(t) = −iℏ
+2
+X
+i,k
+σx,iηk,iΩiake−iδkt + h.c.
+(2)
+Here, k denotes any of the 2N motional modes along
+the radial directions within a chain of N ions (i.e. two
+orthogonal radial principal axes each host a manifold of
+N motional modes), ηk,i is the Lamb-Dicke parameter of
+mode k for ion i, Ωi is the Rabi drive frequency targeting
+ion i, and a†
+k and ak are the creation and annihilation
+operators of mode k characterized by frequency νk
+2π. As
+shown in Fig. 1, δk is the detuning of the applied light
+from the blue or red sideband resonance frequency of
+mode k.
+II.
+FREQUENCY ROBUSTNESS VIA
+GAUSSIAN-PULSE SHAPE AND MODE CHOICE
+Motional modes are subject to frequency drift, and so
+frequency and amplitude modulation can be utilized as
+a tool to combat these drifts and other sources of noise
+when the driving field becomes entangled with the ion’s
+motional modes [26, 27]. We use amplitude modulation
+along with a specific fixed detuning to limit these types
+of errors. As described in Ref. [21], we find that using
+a spectrally compact pulse shape can minimize displace-
+ment errors that result in residual spin-motion entangle-
+ment after a gate. This pulse shape requirement is ful-
+filled by a Gaussian envelope which is approximated as a
+spline and applied to the amplitude of the RF waveform
+driving the AOMs.
+We choose the fixed frequency such that the detuning
+balances contributions to θ from multiple modes. From
+this, the gate becomes significantly more robust to vari-
+ations in motional frequency up to 10 kHz [21].
+This
+implementation is robust to symmetric changes in mode
+frequencies typical of variations in driving RF power, but
+not to antisymmetric changes due to DC voltage or stray
+field instability. We choose the detuning for each pair of
+ions such that both of the nearest detuned modes,k−, k+,
+have strong ηk,i for each of the ions i in the pair and have
+signs such that the contributions of the nearest modes
+add constructively. More expressly, we select modes such
+that |ηi,k+ηj,k+ −ηi,k−ηj,k−| is maximized.
+For even numbers of ions, this mode selection criteria
+is straightforward within a single radial mode manifold.
+However, for odd chain lengths, the center ion does not
+participate in antisymmetric modes where the behavior
+on either side of the center ion is equal and opposite.
+Therefore, we select operating detunings slightly nearer
+to a symmetric mode for gates involving the center ion
+and forgo the robustness to motional frequency changes
+provided by motional mode balancing.

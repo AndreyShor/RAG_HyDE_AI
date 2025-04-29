@@ -1,0 +1,79 @@
+information gain and disturbance, tied to quantum uncertainty [198, 199] and wave-particle duality
+[200, 201]. Variants like generalized contextuality [48], hyperbits [202], Kirkwood-Dirac distribution [203],
+witwords [183], and overall Generalized Probabilistic Theories [204, 205] highlight quantum advantages
+for DI cryptography.
+3. Fully Device Independent Quantum Key Distribution (DI-QKD)
+Device-dependent cryptography permits inventa fraus [13]; facta lexia, DI-QKD eliminates them via
+BI violation. In this section, we are going to introduce the DI protocols that enhance security.
+Definition 11 (Indistinguishable protocols). Let Π and Π′ protocols which take inputs and produce
+outputs in the presence of an external environment. We define an equivalence relation Π ∼ϵ(n) Π′ if for
+any probabilistic polynomial-time (PPT) environment Z, there exists a negligible function ϵ(n) (in the
+security parameter n) such that
+AdvZ(Π, Π′) ≤ϵ(n),
+AdvZ(Π, Π′) :=
+Pr
+
+Z(Π) = 1
+
+−Pr
+
+Z(Π′) = 1
+.
+(32)
+where Adv is the distinguishing advantage function.
+In other words, no efficient environment can tell Π apart from Π′ with more than the negligible
+advantage ϵ(n).
+Definition 12 (Simulation Security). We denote a real protocol executed among parties which may be
+corrupted by a real adversary ER as a function ΠR(ER) and an ideal protocol ΠI that receives inputs from
+the parties and returns outputs that are guaranteed to satisfy the security properties in the presence of a
+simulated adversary (simulator) ES also as a function ΠI(ES). The protocol ΠR(ER) is said to securely
+realize the ideal functionality ΠI if for every PPT adversary ER there exists a PPT simulator ES such
+that ΠI(ES) ∼ϵ(n) ΠR(ER).
+This definition captures the intuition that any attack on ΠR in the real world can be simulated in the
+ideal world, so that no environment can distinguish the two executions except with negligible probability.
+In practice, protocols are rarely executed in isolation.
+The UC framework requires that security be
+preserved even when the protocol is composed with an arbitrary set of other protocols.
+Definition 13 (Universal Composable (UC) Security). A protocol ΠR UC-realizes an ideal functionality
+ΠI if for every PPT adversary A even in the presence of arbitrary concurrent protocol executions {Πi}i)
+there exists a PPT simulator ES such that for every PPT environment Z, (ΠR, {Π}i) ∼ϵ(n) (ΠR, {Π}i),
+that is
+Pr
+
+Z(ΠR, {Π}i) = 1
+
+−Pr
+
+Z(ΠI, {Π}i) = 1
+ ≤ϵ(n).
+(33)
+Here, the environment Z is allowed arbitrary interactions with all components (including Π as a
+subroutine, and any other concurrently running protocols {Πi}i), and the security guarantee must hold
+regardless of the surrounding context and any efficient environment.
+3.1. Bell inequalities bound eavesdropper’s knowledge
+Suppose that the behaviour observed by Alice and Bob p = pAB|XY to compute the Bell functional
+(e.g. (12)) is a marginal of a global non-signalling distribution pABE|XY Z where Eve is correlated with
+Alice and Bob. This distribution is a priori unknown and may have been chosen by the adversary. In
+other words, all our security claims are supposed to hold for any possible initial non-signaling distribution
+pABE|XY Z. If Bob measure Y = y = 0 and obtains B = b, then we can quantify the knowledge that Eve
+has about b by optimal guessing probability
+pg(b|E) = max
+z
+X
+e
+max
+b
+pBE|Y Z(b, e, y = 0, z),
+if pg(b|E) =
+(
+1
+Eve knows with certainty b
+0
+Eve is completely ignorant about b.
+(34)
+We will show that Eve’s knowledge is bounded by a functional f acting on the Bell value Pg(b|E) <
+f[βQ(p)], but first we observe that Eve’s knowledge about b is in terms of the statistics of A, B, X, T re-
+gardless of how the correlations p = pAB|XY are generated. In particular, the privacy of B is independent
+of the functioning of the device used to generate it. Even if the devices are maliciously designed by Eve,
+and even if the devices violate quantum theory, the security of the protocol is not compromised. The only
+18

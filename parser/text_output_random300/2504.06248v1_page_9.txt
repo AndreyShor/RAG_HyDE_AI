@@ -1,0 +1,73 @@
+Kuramoto meets Koopman: Constants of motion, symmetries, and network motifs
+— Supplementary information —
+CONTENTS
+I. Introduction to the Kuramoto model under Koopman’s perspective
+1
+A. Different descriptions for the Kuramoto model
+1
+B. Koopman generator for the Kuramoto model
+3
+II. Monomial eigenfunctions and their conservation
+4
+A. Proof of Theorem 1: Monomial eigenfunctions of the Koopman generator
+4
+B. Monomials as constants of motion
+7
+C. Basic examples for Theorem 1 and the conservation of monomials
+7
+III. Conservation of cross-ratios
+8
+A. Introduction to cross-ratios
+8
+B. Cross-ratios as joint invariants of the special linear algebra
+9
+C. Functional independence of cross-ratios
+11
+D. Proof of Theorem 2: Cross-ratios as constants of motion
+13
+E. Basic examples for Theorem 2
+19
+F. Corollaries of Theorem 2
+20
+IV. Lie symmetries and the generation of new constants of motion
+23
+A. Proof of the Lemma: Infinitesimal criterion of symmetry under Koopman’s perspective
+24
+B. Basic symmetries of the Kuramoto model
+26
+C. General determining equations for the Kuramoto model
+27
+D. Determining matrix and its singular vectors as symmetry generator coefficients
+30
+E. Proof of Theorem 3: Symmetry-generated constants of motion
+30
+F. Basic examples for Theorem 3
+33
+I.
+INTRODUCTION TO THE KURAMOTO MODEL UNDER KOOPMAN’S PERSPECTIVE
+Koopman theory has been initially developed to formulate classical dynamics using linear operators on spaces of
+observables—mirroring the structure of quantum mechanics [23–25, 28]. Despite this elegant framework, the theory
+long lacked concrete theoretical examples for complex systems, where intricate interactions among many constituents
+give rise to emergent phenomena such as synchronization. Since, moreover, these dynamical systems are transformed
+into infinite-dimensional systems as a price to pay for having a linear operator, this casts doubt among many researchers
+on the usefulness of Koopman theory. For these reasons, one of our goals is to provide concrete analytical results on a
+widely-used dynamics on networks. For its 50th anniversary and its significant impact on the study of complex systems,
+the Kuramoto model is a natural choice to achieve this goal. In this section, we introduce different descriptions of the
+Kuramoto model and derive the Koopman generator K of the Kuramoto model presented in the paper.
+A.
+Different descriptions for the Kuramoto model
+First of all, we provide more precise descriptions of the Kuramoto model. Note that we define a more general form
+of the model than the original one [1] and even more general than the Kuramoto-Sakaguchi model (or Sakaguchi-
+Kuramoto model if preferred) [5]. To highlight the original contribution of Kuramoto, we will stick to the name
+“Kuramoto model”.
+Definition S1. The Kuramoto model is an initial value problem of dimension N such that, for θj : T →E with
+T , E ⊂R,
+˙θj(t) = ωj + σ
+N
+X
+k=1
+Wjk sin(θk(t) −θj(t) −αjk) ,
+j ∈{1, ..., N}
+(S1)
+θj(0) = ϑj ∈E
+(S2)

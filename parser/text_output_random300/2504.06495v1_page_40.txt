@@ -1,0 +1,27 @@
+quantum experiments.
+However, the conclusion in the last sentence ignores an important point: the measurement
+step (B) itself reduces the value of X0, particularly when δk is small. To address this, the
+following theorem considers the full measurement setup involving steps (A), (B), and (C), and
+explicitly accounts for the possibility that δk may be very small. Mathematically, we capture
+this by allowing δk →0 as τ →∞. To be clear, we are not suggesting that δk physically
+varies with time; rather, this formulation enables us to analyze asymptotic regimes in which
+both τ is large and δk is small.
+Theorem 6 Consider the setup as described in (A), (B), and (C), and ﬁx a measurement
+outcome k ∈{1, . . . , K}. Suppose that either δk is ﬁxed as τ →∞, or that δk →0 while
+τ · δk →∞as τ →∞. Then the conditional median of the post-measurement state satisﬁes
+Med(X0 | Xτ ̸= −∞, B = k) = log(ǫ) + log(2) + log (τ · δk) + R(τ),
+where the remainder term satisﬁes lim
+τ→∞R(τ) = 0.
+The proof is provided in the appendix. Theorem 6 shows that the conditional median of X0
+increases with τ, with the leading-order behavior captured by log (τ · δk). Conceptually, the
+result follows from equation (29), once we account for the additional shift of log(δk) in the
+initial condition X0 induced by the measurement step (B) — though the formal proof is a
+bit more involved.
+In Theorems 1 and 2, we treated xa/b = log(φa/b) as ﬁxed while taking the limit ǫ →0, i.e.,
+log ǫ →−∞. However, the relevant quantity for the results is not the absolute magnitude
+of xa/b or log ǫ individually, but rather their diﬀerence: xa/b −log ǫ. Theorem 6 shows that,
+conditional on survival until time τ, the initial diﬀerence X0 −log ǫ = log(Φ0/ξ0) typically
+scales as log(τ · δk) at τ = 0. Thus, if we hold X0 = xa/b ﬁxed, Theorem 6 implies that ǫ
+typically scales as 1/(τ · δk). This scaling justiﬁes the limit conditions ǫ →0 and ǫ · t →∞
+used in Theorems 1 and 2, provided that 1 ≫δk ≫1/τ.
+39

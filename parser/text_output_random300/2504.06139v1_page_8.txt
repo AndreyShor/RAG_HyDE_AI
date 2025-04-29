@@ -1,0 +1,41 @@
+Evidently, every function that can be distributively computed has trivial
+communication complexity. So every function that has communication com-
+plexity strictly greater than 1 cannot be distributively computed, and since
+most functions have non-trivial communication complexity, most functions
+are not distributively computable. Perhaps surprisingly, the next result by
+van Dam [20] shows that the existence of the NLB renders every function’s
+communication complexity trivial.
+Theorem 5. In a world in which perfect non-local boxes exists, all Boolean
+functions can be distributively computed.
+The proof uses the fact that every function f : {0, 1}n × {0, 1}n →{0, 1}
+can be expressed as a multivariate polynomial which can be written in the
+form f(x, y) = P
+i Pi(x) · Qi(y), where Pi and Qi are polynomials and x, y ∈
+{0, 1}n. This can be distributively computed by Alice and Bob because Pi(x)
+depends only of x and Qi(y) only of y. They then input Pi(x) and Qi(y) into
+the ith box.
+3.2
+n participants
+Let us extend the deﬁnition of distributed computation to n players, where
+the parity of the outputs is equal to the value of the function.
+Deﬁnition 8. The Boolean function f is n-partite distributively computed
+by n participants if they respectively receive xi and output ai, 1 ≤i ≤n, such
+that Ln
+i=1 ai = f(x1, . . . , xn).
+The next result, by Barrett and Pironio [2], extends van Dam’s result to
+n-partite communication complexity.
+Theorem 6. Correlations of the form
+P(a1, . . . , an|x1, . . . , xn) =
+(
+1/2n−1
+if Ln
+i=1 ai = f(x1, . . . , xn)
+mod 2
+0
+otherwise
+can be simulated with non-local boxes.
+Corollary 1. Any n-partite communication complexity problem can be solved
+with n −1 bits of communication.
+This is easy to see, as all participants send their outputs to the ﬁrst who
+can then compute the function.
+8

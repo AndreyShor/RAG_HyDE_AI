@@ -1,0 +1,66 @@
+QUBO
+Variables
+Ps
+Ps
+Post-Selection
+User Runtime
+(minutes)
+QPU Time
+(minutes)
+8
+0.509
+0.762
+63.2
+17.3
+18
+0.183 ± 0.067
+0.595 ± 0.12
+42.3 ± 6.5
+15.7 ± 3.57
+32
+0.0075
+0.038
+151
+31.3
+50
+0.0007
+0.016
+137
+42.4
+72
+0
+0
+252
+98.2
+Table 4: Performance metrics for VQE on the QPU at different problem sizes. Only one experiment was conducted
+for the 8, 32, 50 and 72 variable problem sizes (one set of intial random starting parameters). As can be seen in
+Figures 15 and 16 the convergence criteria was not met for the 32 and 50 variable problems before the set maximum
+number of iterations. Despite this, good enough approximations to the ground state were found to allow non-zero
+Ps. If the maximum number of iterations were increased for these two problem sizes the user runtime and QPU time
+would likely increase (but this is also initial starting parameter dependent). Errors included are the standard deviation
+from 5 experimental repeats (only for the 18 variable problem size).
+(a)
+(b)
+Figure 10: (a) Ibm_fez qubit connectivity. Taken from the IBM Quantum platform on 20/01/2025 at 13:34 GMT.
+The qubits highlighted in red were used for one of the 18 variable QUBO runs. These qubits are determined to have
+the lowest error rates. The lighter coloured circles correspond to qubits with higher readout errors at the time of
+calibration. (b) D-wave Advantage_system 6.4 QPU connectivity and mapping for the problem. Generated with the
+D-Wave problem inspector.
+highlighted in red. The qubits that were used were chosen based off the error rates of each qubit, which
+can vary with device calibration. Tlatency for VQE on the QPU should be minimal as qiskit serverless
+was used.
+The classical optimiser used was COBYLA for the state vector solver and for the real device. For
+the 18 variable problem an optimiser tolerance of 1 was set as this was the value where successful
+termination was achieved within the number of specified iterations (250). The chosen tolerance and
+maximum number of iterations is dependent on the problem size and informed by hyperparameter
+search.
+The circuit ansatz used was Qiskit’s ‘RealAmplitudes’ [100]. For this study, only one alternating layer
+(repetition) was used, along with the default entanglement pattern ‘reverse_linear’. Measurements are
+made in the computational basis (single qubit Pauli-Z basis), such that a 0 or 1 is measured depending
+on the overlap with the Pauli-Z eigenstates |0⟩and |1⟩.
+D.1
+Ansatz, Lie Algebra, Barren Plateaus and Classical Simulability
+The ansatz used was qiskit’s RealAmplitudes circuit, shown in Figure 11, which is commonly used
+for chemistry applications or classification circuits in machine learning [100]. It is particularly suited
+for problems with real-valued solutions (since the ansatz only generates real amplitudes, no complex
+27

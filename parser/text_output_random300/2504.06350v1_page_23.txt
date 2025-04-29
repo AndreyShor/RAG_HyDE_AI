@@ -1,0 +1,93 @@
+with fixed x ∈{0, 1} and e determined by the values of z that chooses the strategies {vi} = {ℓr
+j, pNL}.
+This is the first evidence of an analogue of quantum mechanical uncertainty relations in a generic no-
+signalling theory. The pseudosifting is optimized to extract correlations from the nonlocal strategy pNL,
+but the pseudosifting has another action on deterministic strategies. Specifically, for ℓr
+1 and ℓr
+2, after
+pseudosifting we have no error, and Eve knows b for x = 0 since b(y)|y=0 = b(y)|y=1 = a, but error in
+half cases, and Eve is ignorant on b for x = 1 since b(y)|y=0 ̸= b(y)|y=1. The opposite scenario for ℓr
+3 and
+ℓr
+4 [56].
+3.4.1. Extraction of a secret key
+Quantum cryptographic protocols utilize key metrics like the Quantum Bit Error Rate (QBER) in Eq.
+(4) and the secret key rate, which is based on information-theoretic quantities such as the mutual infor-
+mation and Shannon entropy. The mutual information I(A : B) = H(A) −H(A|B) measures how much
+information Bob can infer about Alice’s symbols, where H(X) = ⟨−log X⟩= −P
+x p(x) log p(x) (binary
+entropy h if x ∈{0, 1}) quantifies the uncertainty of a random variable X 13. Higher I(A : B) implies
+less uncertainty for Bob, indicating better knowledge of Alice’s symbols. The secret key rate, expressed
+in bits per measurement round, reflects the secure bits generated per round that remain inaccessible to
+eavesdroppers. In DI-QKD, this rate is influenced by factors like quantum channel error rates, noise,
+and eavesdroppers’ potential information.
+Achievable distances and key rates can be experimentally
+estimated, as discussed in Sec. 1 and Sec. 6, and theoretical methods for estimation are presented below.
+One-way classical postprocessing.
+14 Under the assumption of individual and collective attacks, for one-
+way classical postprocessing, the achievable secret key rate is bounded by the Devetak-Winter bound
+(50) which we introduce here since we refer to it frequently through this paper
+Devetak-Winter formula. One of the most important quantities for modern security proofs is the Deve-
+tak–Winter rate [221], which gives a lower bound on the asymptotic secret key rate r. It proves that the
+secret key rate, which is the rate at which secure keys can be generated, is determined by the difference
+between the mutual information shared by the legitimate parties (Alice and Bob) and the information
+that an eavesdropper (Eve) could gain
+r ≥I(A : B) −I(A : E) = H(A|E) −H(A|B),
+(50)
+This equation rigorously shows that the key distribution remains secure even when Eve has full access to
+the quantum channel, as long as the secret key rate remains positive. The generalized Devetak-Winter
+formula incorporating preprocessing and postprocessing is given by:
+r ≥sup
+T,F
+[S(A′|E′) −S(A′|B′)] ,
+(51)
+where T represents preprocessing operations such as local operations, quantum filtering, encoding, or
+advantage distillation, while F represents postprocessing operations like error correction, privacy ampli-
+fication, and interactive communication. The modified systems after preprocessing are denoted as A′ and
+B′, while E′ represents Eve’s modified system after considering preprocessing effects.
+To compute the key rate, the so-called depolarization procedure transform w.l.o.g. Eve’s strategy of Eq.
+(46) into the isotropic distribution pE = pL1 + pNLpNL with pr
+j = pL/8. Given that, the probability
+distributions in Eq. (48) p(ab|x = 0, y = k) = p(ab|x = 1, y = k) = P
+e p(abe|X = x, Y = k, z = pE), and
+the tripartite probability distribution reads
+p(abe|0, k, pE) =
+ab\e
+(?, ?)
+(a, ?)
+(a, b)
+00
+pNL
+2
+pL
+8
+pL
+4
+01
+0
+pL
+8
+0
+10
+0
+pL
+8
+0
+11
+pNL
+2
+pL
+8
+pL
+4
+.
+(52)
+The information flow goes from Alice to Bob and from the distribution in (52) Bob’s error probability
+is ϵB = pL/4, after preprocessing, the quantity to be corrected in error correction is e′
+AB = (1 −q)eAB +
+q(1 −eAB) while Eve’s information is I(A : E) = pL/2(1 −h(q)). Therefore Eq. (50) yields
+13The surprise function f : p ∈[0, 1] 7→−log p so called because for a rare event limp→0 f(p) = ∞and for a certain event
+limp→1 f(p) = 0.
+14It refers to a communication process where information flows only in one direction to minimize the opportunities for
+eavesdropping and information leakage, simplifying the communication process.
+23

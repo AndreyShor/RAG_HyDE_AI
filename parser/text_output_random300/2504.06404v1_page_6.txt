@@ -1,0 +1,180 @@
+Fitting the physical spline to standing objects could lead to a 
+small shaking around zero velocity. It is mostly a cosmetic 
+problem, because the effect is really small and has no cumulative 
+drift.  However lightly shaking standing objects are visually 
+unpleasant when you generate a birds eye video of a moving car. 
+To avoid that we introduce a regularization of order -1 to prefer 
+smaller velocities. This regularisation is against the principle of 
+momentum conservation. Thus this regularization will only be 
+active during phases of longer intervals with zero velocity and 
+skipped otherwise.  The error function would be (21) 
+𝑣( = 𝑤( 
+𝑣2 = 𝑤( + ∆𝑡⋅𝑤2 
+𝑣: = 𝑤( + ∆𝑡⋅(𝑤2 + 𝑤:) 
+… 
+ 
+𝑒# = 1
+2 ⋅𝑐( ⋅𝑣(
+2 + ⋯+ 1
+2 ⋅𝑐0 ⋅𝑣0
+2 
+ 
+∇𝑒# = 𝑐( ⋅∇𝑣( ⋅𝑣( + 𝑐2 ⋅∇𝑣2 ⋅𝑣2 + ⋯ 
+∇𝑣2 ⋅𝑣2 = 𝑐2 r
+1
+∆𝑡
+⋮
+s ⋅(𝑤( + Δ𝑡⋅𝑤2) = 𝑐2 ⋅𝑞2
+9𝑞2 ⋅𝑤 
+ 
+𝑞( = (1
+0
+…
+0) 
+𝑞2 = (1
+∆𝑡
+0
+…
+0) 
+𝑞: = (1
+∆𝑡
+∆𝑡
+0
+…
+0) 
+… 
+ 
+𝑄# = & 𝑐8 ⋅𝑞8
+9 ⋅𝑞8. 
+(21) 
+ 
+V. EXTENSIONS FOR HEADING 
+We can estimate the heading with the same model by 
+introducing static nonlinearities, that get solved before and after 
+the fitting. The functions fx and fy will be replaced with fsin and 
+fcos . With this modelling we resolve the periodic nature of the 
+heading. After the fitting the heading can be recreated with the 
+following formular  
+𝑓;<=(𝑡) = & 𝑓#(𝑡) ⋅𝑤#
+&
+#
+ 
+ 
+(22) 
+𝑓=+0(𝑡) = & 𝑓#(𝑡) ⋅𝑤#
+&
+#
+ 
+ 
+ 
+𝜓= arctan2h𝑓;<=(𝑡), 𝑓=+0(𝑡)i. 
+ 
+A. Adding Heading measurements to the heading estimation 
+Equation (23) shows how to add heading measurements to 
+the heading estimation. 
+𝑒= 1
+2 &h𝑓>?@h𝑡#i −cosh𝜓#ii
+2 + 1
+2 &h𝑓@ABh𝑡#i −sinh𝜓#ii
+2 
+ 
+(23) 
+Using the same procedure as above we get the following 
+matrices  
+𝑞) =
+⎝
+⎜
+⎜
+⎛
+𝑓()0,#(𝑡!)
+⋮
+𝑓()0,0(𝑡!)
+𝑓6'(,#(𝑡!)
+⋮
+𝑓6'(,0(𝑡!)⎠
+⎟
+⎟
+⎞
+  𝑄) = 𝑐) ⋅𝑞) ⋅𝑞)
+4    𝑏) = 𝑐) ⋅
+⎝
+⎜
+⎜
+⎜
+⎛
+𝑓()0,#7𝑡!8 ⋅sin7𝜓!8
+⋮
+𝑓()0,07𝑡!8 ⋅sin7𝜓!8
+𝑓6'(,#7𝑡!8 ⋅cos7𝜓!8
+⋮
+𝑓6'(,07𝑡!8 ⋅cos7𝜓!8⎠
+⎟
+⎟
+⎟
+⎞
+. 
+(24) 
+B. Adding velocity measurements to the heading estimation 
+Equation (25) shows how to add velocity measurements to the 
+heading estimation  
+ 
+𝑥̇ ⋅sin(𝜓) −𝑦̇ ⋅cos(𝜓) = 0 
+𝑒= 1
+2 & v𝑥̇# ⋅𝑓=+0h𝑡#i −𝑦̇# ⋅𝑓;<=h𝑡#iw
+2
+. 
+(25) 
+C. Adding acceleration measurements to the heading 
+estimation 
+Equation 
+(26) 
+shows 
+how 
+to 
+consider 
+acceleration 
+measurements at a given velocity. 
+  
+𝑥̇ = 𝑣⋅cos(𝜓)  𝑦̇ = 𝑣⋅sin (𝜓) 
+𝑣= x𝑥̇ 2 + 𝑦̇ 2    𝑣̇ = 𝑥̇ ⋅𝑥̈ + 𝑦̇ ⋅𝑦̈
+𝑣
+ 
+𝑥̈ = 𝑑
+𝑑𝑡(cos(𝜓)) ⋅𝑣+ cos(𝜓) ⋅𝑣̇ 
+𝑦̈ = 𝑑
+𝑑𝑡(sin(𝜓)) ⋅𝑣+ sin(𝜓) ⋅𝑣̇ 
+𝑒= 1
+2 &h𝑓̇;<=h𝑡#i ⋅𝑣# + 𝑓>?@h𝑡#i ⋅𝑣̇# −𝑥̈#i
+2
++ 1
+2 &h𝑓̇=+0h𝑡#i ⋅𝑣# + 𝑓@ABh𝑡#i ⋅𝑣̇# −𝑦̈#i
+2 
+(26) 
+ 
+VI. RESULTS AND USE CASES 
+A. Post processed trajectory optimization 
+Our main use case for the physical Spline is the improvement 
+of recorded object tracks in the post processing. The tracks were 
+recorded with the sensors of an autonomous vehicle (Lidar, 
+Radar, Camera). The results can later be used for analysis or as 
+pseudo ground truth for machine learning models. The physical 
+spline delivers kinematically consistent object tracks that make 
+use of the advantage that in post processing we already have 
+access to the whole object track. In case of an online 
+implementation the physical spline would have to be 
+implemented as a moving horizon estimator (see further in [5]). 
+To tune the physical spline, we equipped another vehicle with 
+a high precision GNSS system that was optimized later with a 
+PPK approach. The recorded data was used as benchmark to 
+compare the recorded Lidar/Radar/Camera measurements. The 
+results look very promising. Fig 6 shows the raw data in blue 
+and the improved data with the physical spline in orange. Each 
+subplot shows another signal of the object track. In Fig. 7 we 
+can see additionally in green the ground truth of the high 
+precision measurement device that was mounted inside of the 
+tracked vehicle for reference. We can see that the physical 
+spline corrects many errors. Due to its consistency with the 
+physics of the vehicle, the jumps in the input measurement 
+signals were not possible and dominated by the correct 
+influence of other measured signals. The worst performance we 
+can see at the corner of the object track. Especially the heading 

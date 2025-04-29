@@ -1,0 +1,58 @@
+Main results
+7
+In [Mad15], Madaule proved that there exists a constant c > 0 such that
+sup
+x∈B(0,1)
+Xb(x) −mb −c ⇒G + log µγc(B(0, 1))
+in law as b →∞, where G is an independent random variable with standard Gumbel distribution, and
+µγc is the critical GMC. Hence, if we aim to describe the shape of the field around a point where the
+value of the field is comparable to its maximum, it seems natural to condition the field Xb on achieving
+the value mb + z at the origin, for some fixed z ∈R, while simultaneously requiring that the origin is
+a mesoscopic maximum. We first zoom in around the origin by introducing the rescaled field
+Xb(·)
+def= Xb(e−b·) .
+We now introduce some Gaussian fields that will play an important role in our analysis.
+Definition 2.3. For b ∈R+ ∪{∞}, we let Φb be the centred Gaussian field on Rd such that, for all x,
+y ∈Rd,
+E[Φb(x)Φb(y)] = ab(x) + ab(y) −ab(x −y) .
+Moreover, for b ∈R+ ∪{∞}, we let Υb be the Gaussian field on Rd given by
+Υb(·)
+def= Φb(·) −
+√
+2dab(·) .
+Remark 2.4. As one can easily check, the covariance of the field Φ∞resembles very much the
+covariance structure of the DGFF on Z2 pinned to zero at zero (see [BL18, Equation (2.7)]). Indeed,
+in this setting, the covariance takes the same form as for the field Φ∞with a∞: Z2 →R given by the
+potential kernel of the simple symmetric random walk started from zero (see [BL18, Equation (2.8)]).
+Now, going back to our previous discussion, a straightforward calculation shows that the field Xb
+conditioned to take the value mb + z at the origin has the same law as the shifted field
+Xb(·) −hb(·)(Xb(0) −(mb + z)) .
+In particular, for every x, y ∈Rd sufficiently close (much less than eb) to the origin, we note that, for
+b > 0 large enough, it holds that
+E[(Xb(x) −hb(x)Xb(0))(Xb(y) −hb(y)Xb(0))] ≈ab(x) + ab(y) −ab(x −y) ,
+and also
+(mb + z) −(mb + z)hb(x) ≈
+√
+2dab(x) .
+Therefore, the preceding computations imply that
+(Xb(·) −hb(·)(Xb(0) −(mb + z))) −(mb + z) ≈Φb(·) −
+√
+2dab(·) = Υb(·) .
+Hence, recalling Definition 2.3, we aim at describing the limit in law as b →∞of the field Υb under
+the condition that the origin is close to being a maximum in the ball of radius eb centred at the origin.
+Before doing so, we introduce some additional notation. For k ≥0, we set
+Rk
+def= {F : C(Rd) →R : F(ϕ) = F(ψ) whenever ϕ|B(0,k) = ψ|B(0,k)} .
+(2.3)
+In other words, Rk is the set of (measurable) mappings from C(Rd) to R that depend on the values of
+the input function only inside B(0, k). Furthermore, with a slight abuse of the usual notation, we
+define
+Cb
+loc(C(Rd))
+def=
+[
+k≥0
+Rk ∩Cb(C(Rd)) ,
+(2.4)
+where Cb denotes continuous bounded functions. We can now state our first main result, where we
+write M0,b(f) as a shorthand for sup|x|≤eb f(x).

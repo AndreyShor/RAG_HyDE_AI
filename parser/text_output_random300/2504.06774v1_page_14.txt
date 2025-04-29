@@ -1,0 +1,48 @@
+implemented for hyperparameter tuning. Choosing the ranges of these parameters will
+strictly depend on the dataset used, refining them through experimentation, periodicity,
+and domain knowledge. Monitoring training performance and using validation data are
+key to finding the optimal values.
+The number of neurons in the LSTM layer was tuned and set to 128, which was
+found to be optimal across all test cases. This choice ensures a balance between model
+complexity and predictive accuracy without excessive overfitting. For the dense layers,
+64 and 32 neurons were selected for progressive feature compression, where the network
+gradually reduces the dimensionality of the extracted temporal features before producing
+the final output. This design helps avoid abrupt dimensionality reductions, which could
+lead to the loss of critical flow dynamics.
+Bayesian optimization was implemented to find the optimal values for the various
+LSTM architectures. The ranges for the hyperparameter tuning have been presented in
+Table 4.
+Parameter
+Laminar data sets
+Turbulent data sets
+Batch Size
+4 to 32
+4 to 32
+Learning Rate
+10−3 to 10−4
+10−4 to 10−5
+Sequence Length
+5 to 20
+20 to 50
+Table 4: Hyperparameter ranges for batch size, learning rate, and sequence length for the
+data sets used in this study.
+A well-designed deep learning model involves thoughtful considerations about data
+preparation, computational efficiency, and model architecture to optimize performance
+and generalization. An overview of these aspects for model development is presented in
+Appendix A3.
+2.4
+Data Preprocessing
+Effective data management is critical for training reliable and robust deep learning models.
+One of the foundational principles is the division of data into distinct sets: training, devel-
+opment (dev), and test sets. This division enables an unbiased evaluation and systematic
+optimization of the model. The data is typically divided into training, development, and
+test sets in ratios such as 80-10-10 or 70-20-10, etc. [45, 46]. However, the proper division
+of the data should depend on the size of the data set. For smaller data sets, the dev and
+test sets might use larger proportions of 20% or 30%, while larger data sets often adopt
+splits such as 98-1-1, as even small percentages yield sufficient examples for evaluation. In
+some cases, data sets are split only into training and development sets, particularly when
+the data set size is small or when cross-validation is used for evaluation [47]. By exclud-
+ing a separate test set, all available data can be utilized for model training and iterative
+optimization. In this study, the data set is divided into training and development/test
+sets in a ratio of 80:20, where the development and test sets are identical. Specifically,
+14

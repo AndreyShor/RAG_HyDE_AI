@@ -1,0 +1,129 @@
+4
+equal between species B, C, only adjusting the properties
+of the (smart) species A. We also fix the reproduction
+rate of species A equal to the other two (for example, we
+might imagine that this rate is fixed for the organism of
+interest, while the rates for predation and movement are
+behavioural choices and hence easier for the individuals
+to adjust). We fix the parameters ph = 0.02, H = 0.02 as-
+sociated with hunger levels. Alternative values for these
+parameters would change quantitatively the model be-
+haviour but we expect the qualitative results of this work
+to be robust.
+Simulations are initialised by setting every site inde-
+pendently to be either empty or to a randomly chosen
+species, with probabilities
+pinit(∅) = 1/2,
+pinit(A) = pinit(B) = pinit(C) = 1/6
+(8)
+All particles have initial hunger level 0.
+Lattice sizes
+are either L = 120 or L = 300, a comparison of the
+behaviour in these cases is useful for (qualitative) assess-
+ment of finite-size effects. Note that we perform finite-
+size scaling with all parameters fixed, in contrast to [7]
+which took λ ∝L2.
+The population of a given species is measured by its
+number density ρX = NX/L2, where NX is the number
+of particles belonging to species X. We write ρtotal =
+ρA+ρB +ρC. In addition to particles’ species and hunger
+levels, we also follow several other statistics for each par-
+ticle: their age (number of MCS since birth) and their
+predation/reproduction counts, which are the numbers of
+times they performed the predation and reproduction ac-
+tions (number of prey consumed and number of children
+produced). We collect histograms of particle ages and
+predation/reproduction counts at their times of death,
+which may happen either spontaneously (ω) or by pre-
+dation (σ).
+D.
+Directional movement strategies
+As discussed in Sec. I, animals perceive their immedi-
+ate surroundings and adjust their behaviours accordingly.
+To incorporate this behaviour in our model, we allow
+the smart species A to adjust the probabilities P(D) for
+the directions along which they perform actions. These
+probabilities will depend on the prey and predator indi-
+viduals in its neighbourhood, as well as the empty spaces
+nearby, and on particles of the same species (which we
+call “peer” particles). For species A, the prey is species
+B and the predators are species C, recall (1). Dynam-
+ics where particles choose their movement rates based on
+the local environment have been studied before, see for
+example [62–66].
+We consider three types of behaviour for moving par-
+ticles. In the simplest case, we choose one of the four
+available directions at random: this is P(D) = P0(D)
+with
+P0(D) = (1/4)
+(9)
+Evade
+SQi1WPRS48VbC20oWy2k3bpZjfsTsQS+jO8eFDEq7/Gm/GbZuDtj4YeLw3w8y8MBHcoOd9O4W19Y3NreJ2aWd3b/+gfHjUNirVDFpMCaU7ITUguIQWchTQSTQOBTwEI5vZ/7DI2jDlbzHSQJBTIeSR5xRtFK3h/CEWSOVO2
+XK17Vm8NdJX5OKiRHs1/+6g0US2OQyAQ1put7CQYZ1ciZgGmplxpIKBvTIXQtlTQGE2Tzk6fumVUGbqS0LYnuXP09kdHYmEkc2s6Y4sgsezPxP6+bYnQdZFwmKYJki0VRKlxU7ux/d8A1MBQTSyjT3N7qshHVlKFNqWRD8JdfX
+iXti6pfq9buLiv1mzyOIjkhp+Sc+OSK1EmDNEmLMKLIM3klbw46L86787FoLTj5zDH5A+fzB+OPkas=</latexit>Hunt
+V
+2R6DHoxWNE84BkCbOzk2TI7MOZ3mBY8h1ePCji1Y/x5t84m+xBEwsGiqouqe8WAqNtv1trayurW9sFraK2zu7e/ulg8OmjhLFeINFMlJtj2ouRcgbKFDydqw4DTzJW97oJvNbY60iMIHnMTcDegFH3BKBrJ7SJ/wvQ+i/jT
+XqlsV+wZyDJxclKGHPVe6avrRywJeIhMUq07jh2jm1KFgk+LXYTzWPKRnTAO4aGNODaTWdHT8mpUXzSj5R5IZKZ+juR0kDrSeCZyYDiUC96mfif10mwf+WmIowT5CGbL+onkmBEsgaILxRnKCeGUKaEuZWwIVWUoempaEpwFr
++8TJrnFadaqd5dlGvXeR0FOIYTOAMHLqEGt1CHBjB4hGd4hTdrbL1Y79bHfHTFyjNH8AfW5w9aR5J/</latexit>Spread
+R
+i0dM5JHASmaHBibMzm5melWy4T+8eNAYr/6LN/GAfagYCWdVKq6090VxFIYdN1vZ2V1bX1jM7eV397Z3dsvHBw2TJRoDnUeyUi3AmZACgV1FCihFWtgYSChGYyqU7/5ANqISN3hOAY/ZAMl+oIztNJ9B+EJ06pMDIKedAtFt+TOQJeJl5EiyVD
+rFr46vYgnISjkhnT9twY/ZRpFzCJN9JDMSMj9gA2pYqFoLx09nVE3pqlR7tR9qWQjpTf0+kLDRmHAa2M2Q4NIveVPzPayfYv/JToeIEQfH5on4iKUZ0GgHtCQ0c5dgSxrWwt1I+ZJpxm4HJ2xC8xZeXSeO85JVL5duLYuU6iyNHjskJOSMeuS
+QVckNqpE40eSZvJI359F5cd6dj3nripPNHJE/cD5/AEtFkw=</latexit>Cluster
+FIG. 2.
+Illustration of strategies with directional biases,
+where a (smart) particle chooses to perform its action based
+on the local environment. These strategies are abbreviated
+as E (evade), S (spread), H (hunt) and C (cluster). If there
+is no directional bias then the strategy is “non-directional”.
+If all species behave identically then the strategy is “null” or
+“symmetric” (under permutation).
+For pure directional strategies (see below), each particle
+has a preferred direction D∗based on its environment
+(see below). Then we take P(D) = P1(D) with
+P1(D) =
+(
+(1/4) + (ϕ/4),
+D = D∗,
+(1/4) −(ϕ/12),
+D ̸= D∗.
+(10)
+with 0 ≤ϕ ≤3 so that ϕ is the strength of the directional
+preference (it is possible to work with −1 ≤ϕ ≤3 but we
+restrict to positive ϕ so that D∗is indeed the preferred
+direction).
+Finally, we consider mixed directional strategies in
+which particles have two preferred directions D∗
+1, D∗
+2 with
+preferences ϕ1, ϕ2. Then P(D) = P2(D) with
+P2(D) = 1
+4 + ϕ1
+4
+
+δD,D∗
+1 −1
+3
+
++ ϕ2
+4
+
+δD,D∗
+2 −1
+3
+
+(11)
+where δD,D∗= 1 if D = D∗and zero otherwise, so that P2
+reduces to P1 if ϕ2 = 0. For mixed strategies we require
+ϕ1 + ϕ2 ≤3 and ϕ1, ϕ2 ≥0.
+To assign the preferred direction(s) for a particle at
+position x, we define its perception area to be a square
+of side 2R+1, centred at x. See Fig. 2, which also shows
+how this square is divided into four triangles, one associ-
+ated with each direction D. An example pure directional
+strategy is hunting (H), where the preferred direction is
+assigned by counting the number of prey within each tri-
+angle and taking D∗to be the direction whose triangle
+has the maximal number of prey. (In case of a tie, we
+take D∗to be one of the maximising directions, chosen
+uniformly at random. Note also that the triangles over-
+lap along the diagonals of the lattice: particles on those

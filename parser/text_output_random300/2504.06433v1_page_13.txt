@@ -1,0 +1,48 @@
+Fix a nonzero α ∈C and deﬁne
+P = T1T2 −α
+X
+s:s1=1
+X
+u:u1=1
+csduxszu .
+Then P is indecomposable and hence irreducible.
+Proof. We deﬁne a partial assignment to the x- and z-variables so that P gets projected to the
+form in Lemma 3.3.
+Recall that each index s of an x-variable is split as s = s1 ◦s2, where s ∈{0, 1}k, s1 ∈{0, 1}k1,
+and s2 ∈{0, 1}k2, where k = k1 + k2. By our assumptions, there are ˙s2, ¨s2 ∈{0, 1}k2 such that
+c1◦˙s2 ̸= 0 and cs1◦¨s2 ̸= 0, for some s1 ∈{0, 1}k1 such that s1 ̸= 1. Now the projection is deﬁned as
+follows: We maintain one variable for each s1 ∈{0, 1}k1, namely x1◦˙s2, and xs1◦¨s2, for s1 ̸= 1. All
+other x-variables we set to 0. Let b be this assignment. Similarly, we project the z-variables via
+an assignment c in an analogous way.
+Observe that P ′ = P|x=b,z=c is of the form as in Lemma 3.3 and fulﬁlls the assumptions made
+there. Hence, we have that P ′ is indecomposable.
+Now assume that P is decomposable, That is, we can write P = gh, for non-constant poly-
+nomials g, h on disjoint sets of variables. Hence, for g′ = g|x=b,z=c and h′ = h|x=b,z=c, we have
+that
+P ′ = g′h′.
+(10)
+Since P ′ is indecomposable, it follows that one of the two factors, say g′, is constant. Hence, g
+depends only on the variables that are set to 0 by assignments b and c. However, since P is a
+homogeneous polynomial, the factors g and h are homogeneous as well, and therefore g′ = 0. But
+this contradicts (10).
+The next two lemmas generalize Lemma 3.4 and 3.5 in the same way as Lemma 3.6 generalizes
+Lemma 3.3. Their proofs follow the proof of Lemma 3.6 almost literally, so we omit them.
+Lemma 3.7. Let k = k1 + k2, m = m1 + m2, and n = n1 + n2, where k1, m1, n1 ≥1. Deﬁne the
+polynomials
+T1(x) =
+X
+s
+csxs
+T2(z, w) =
+X
+u,v
+du,vzuwv ,
+where
+• s, u, and v run over the strings in {0, 1}k, {0, 1}m, and {0, 1}n, respectively,
+• xs is a variable for each s ∈{0, 1}k and similarly for the zu and wv, and
+• cs, du,v ∈C such that for s = s1 ◦s2, where si ∈{0, 1}ki, and u = u1 ◦u2, where ui ∈{0, 1}mi,
+and v = v1 ◦v2, where vi ∈{0, 1}ni, for i = 1, 2, we have
+– ∃s2 c1◦s2 ̸= 0 and ∃u2, v2 d1◦u2,1◦v2 ̸= 0
+– ∃s1 ̸= 1 ∃s2 cs ̸= 0,
+– ∃u1 ̸= 1 ∃u2 ∃v du,v ̸= 0 and ∃u ∃v1 ̸= 1 ∃v2 du,v ̸= 0.
+13

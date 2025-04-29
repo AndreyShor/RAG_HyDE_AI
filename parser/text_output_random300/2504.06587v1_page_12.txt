@@ -1,0 +1,130 @@
+MobiSys ’25, June 23–27, 2025, Anaheim, California, US
+Jinbo Peng, Junwen Duan, Zheng Lin, Haoxuan Yuan, Yue Gao, and Zhe Chen
+fine-grained spectrum sensing via carefully scheduled scanning.
+SweepSense [2] improves scanning speed and enables protocol
+identification using cyclostationary analysis. Crescendo [3] fur-
+ther improves SweepSense with power control and locked VCOs
+for high-fidelity. However, sequential scanning inherently fails to
+capture entire headers or monitor the full spectrum simultaneously.
+Universal sub-Nyquist sampling: Sub-Nyquist sampling re-
+duces the cost of wideband monitoring. Landau [51] proved that
+the average sampling rate must be greater than the sum of oc-
+cupied bandwidths if the spectrum occupancy is known. Under
+the CS framework, Tropp et al.[73] showed multi-tone recovery
+via random sub-Nyquist sampling. Mishali et al. [5] demonstrated
+stable sampling above twice the Landau rate without occupancy
+knowledge and empirically validated practical schemes such as
+multi-coset sampling and modulated wideband converters [48],
+achieving blind sampling at approximately 5.98 times the Landau
+rate. More recently, Song et al. [8] optimize sub-sampling and re-
+covery algorithms to achieve sampling rates as low as 5/2 of the
+Landau rate for spectrum sensing tasks.
+Beyond sparsity: The twice-Landau-rate bound limits wide-
+band sniffing to sparse signals. Some studies bypass this sparsity
+restriction by focusing on less detailed properties [74–78]. Cohen
+and Eldar [77, 78] proved that twice-Landau-rate sampling is not
+necessary of power spectrum and cyclic spectrum recovery. Guan
+et al. [44] use MEMS acoustic resonators to sparsify analog sig-
+nals, enabling non-sparse spectrum sensing. WISE [79] leverage
+UWB signals for spectrum sensing, bypassing sparse recovery alto-
+gether. Zhang et al. [43] incorporate deep learning for sub-Nyquist
+spectrum sensing, outperforming traditional methods. While these
+approaches mitigate sparsity constraints, they lose detailed infor-
+mation, precluding deep physical-layer analysis.
+Passive signal analysis: Non-cooperative signal analysis is
+challenging due to the complexity of electromagnetic waves and
+limited prior knowledge. Early work [80] used higher-order cumu-
+lants for modulation classification. CNNs [81] demonstrate superior
+performance over handcrafted features, and recent advancements
+shift to Transformer models [66, 71, 72] for modulation and proto-
+col classification. T-Prime [66] classifies fine-grained Wi-Fi signals
+even with spectrum overlapping. Beyond classification, deep learn-
+ing has been applied to channel state estimation [82, 83], signal
+demodulation [83–85] and decoding [86, 87]. Li et al. [88] address
+ultra-low SNR demodulation of LoRa signals with deep learning.
+Cammerer et al. [89] implement a deep learning receiver for 5G NR
+signals, though it lacks adaptability to varying parameters. These
+methods focus on single-signal analysis and are unsuitable for wide
+multiband scenarios.
+7
+Conclusion
+We present SigChord, a Transformer-based system designed to sniff
+physical layer signals in wide and non-sparse spectra. Existing
+methods face significant trade-offs, either failing to capture the en-
+tire spectrum concurrently, losing critical details, or relying heavily
+on sparsity constraints. SigChord addresses these challenges by
+integrating sub-Nyquist sampling with the powerful representation
+capabilities of Transformer networks. It achieves signal recovery
+exceeding the sub-Nyquist sampling limit through a rule-based
+Transformer network, reducing the SOTA sampling rate from 2.5
+times the Landau rate to 1.66 and lower. And signal analysis process
+is simplified with cascaded Transformer networks. Experimental
+results show that SigChord excels in key tasks such as spectrum
+sensing, signal recovery, protocol identification, and header decod-
+ing, all while achieving real-time on a consumer-level GPU.
+References
+[1] Lixin Shi, Paramvir Bahl, and Dina Katabi. Beyond Sensing: Multi-GHz Realtime
+Spectrum Analytics. In NSDI ’15, pages 159–172, Oakland, CA, May 2015. USENIX
+Association.
+[2] Yeswanth Guddeti, Raghav Subbaraman, Moein Khazraee, Aaron Schulman, and
+Dinesh Bharadia. SweepSense: Sensing 5 GHz in 5 Milliseconds with Low-
+cost Radios. In NSDI ’19, pages 317–330, Boston, MA, February 2019. USENIX
+Association.
+[3] Raghav Subbaraman, Kevin Mills, Aaron Schulman, and Dinesh Bharadia.
+Crescendo: Towards Wideband, Real-time, High-Fidelity Spectrum Sensing Sys-
+tems. In ACM MobiCom ’23, New York, NY, USA, 2023. Association for Computing
+Machinery.
+[4] Wireshark. Wireshark, 2024.
+[5] Moshe Mishali and Yonina C. Eldar. Blind Multiband Signal Reconstruction:
+Compressed Sensing for Analog Signals. IEEE Transactions on Signal Processing,
+57(3):993–1009, 2009.
+[6] Haitham Hassanieh, Lixin Shi, Omid Abari, Ezzeldin Hamed, and Dina Katabi.
+GHz-wide Sensing and Decoding using the Sparse Fourier Transform. In IEEE
+INFOCOM ’14, pages 2256–2264. IEEE, 2014.
+[7] Zhijin Qin, Jiancun Fan, Yuanwei Liu, Yue Gao, and Geoffrey Ye Li. Sparse
+Representation for Wireless Communications: A Compressive Sensing Approach.
+IEEE Signal Processing Magazine, 35(3):40–58, 2018.
+[8] Zihang Song, Jian Yang, Han Zhang, and Yue Gao. Approaching Sub-nyquist
+Boundary: Optimized Compressed Spectrum Sensing based on Multicoset Sam-
+pler for Multiband Signal. IEEE Transactions on Signal Processing, 70:4225–4238,
+2022.
+[9] ETSI Standard. Digital Video Broadcasting (DVB), Second Generation Framing
+Structure, Channel Coding and Modulation Systems for Broadcasting, Interactive
+Services, News Gathering and other Broadband Satellite Applications (DVB-S2).
+European Telecommunications Standards Institute (ETSI) EN, 302(307):V1, 2014.
+[10] IEEE Standard for Information Technology–Telecommunications and Information
+Exchange between Systems - Local and Metropolitan Area Networks–Specific Re-
+quirements - Part 11: Wireless LAN Medium Access Control (MAC) and Physical
+Layer (PHY) Specifications. IEEE Std 802.11-2020 (Revision of IEEE Std 802.11-2016),
+pages 1–4379, 2020.
+[11] Zheng Lin, Lifeng Wang, Bo Tan, and Xiang Li. Spatial-spectral terahertz net-
+works. IEEE Transactions on Wireless Communications, 21(6):3881–3892, 2021.
+[12] Fangqiang Ding, Andras Palffy, Dariu M Gavrila, and Chris Xiaoxuan Lu. Hidden
+Gems: 4d Radar Scene Flow Learning using Cross-modal Supervision. In Proc of
+IEEE/CVF CVPR, pages 9340–9349, 2023.
+[13] Lanqing Yang, Yi-Chao Chen, Hao Pan, Dian Ding, Guangtao Xue, Linghe Kong,
+Jiadi Yu, and Minglu Li. Magprint: Deep Learning based User Fingerprinting
+using Electromagnetic Signals. In IEEE INFOCOM’20, pages 696–705. IEEE, 2020.
+[14] Zheng Yang, Yi Zhang, Kun Qian, and Chenshu Wu. SLNet: A Spectrogram
+Learning Neural Network for Deep Wireless Sensing. In Proc. of USENIX NSDI’23,
+pages 1221–1236, 2023.
+[15] Zheng Lin, Lifeng Wang, Jie Ding, Yuedong Xu, and Bo Tan. Tracking and
+transmission design in terahertz v2i networks. IEEE Transactions on Wireless
+Communications, 22(6):3586–3598, 2022.
+[16] Junxian Huang, Feng Qian, Yihua Guo, Yuanyuan Zhou, Qiang Xu, Z Morley
+Mao, Subhabrata Sen, and Oliver Spatscheck. An In-depth Study of LTE: Effect
+of Network Protocol and Application Behavior on Performance. ACM SIGCOMM
+Computer Communication Review, 43(4):363–374, 2013.
+[17] Yuanjie Li, Chunyi Peng, Zengwen Yuan, Jiayao Li, Haotian Deng, and Tao
+Wang. Mobileinsight: Extracting and Analyzing Cellular Network Information
+on Smartphones. In Proc. of MobiCom’16, pages 202–215, 2016.
+[18] Yuanjie Li, Chunyi Peng, Zhehui Zhang, Zhaowei Tan, Haotian Deng, Jinghao
+Zhao, Qianru Li, Yunqi Guo, Kai Ling, Boyan Ding, et al. Experience: a Five-year
+Retrospective of MobileInsight. In Proc. of Mobicom’21, pages 28–41, 2021.
+[19] Nofel Yaseen, Behnaz Arzani, Krishna Chintalapudi, Vaishnavi Ranganathan,
+Felipe Frujeri, Kevin Hsieh, Daniel S Berger, Vincent Liu, and Srikanth Kandula.
+Towards a Cost vs. Quality Sweet Spot for Monitoring Networks. In Proc. of ACM
+HotNets’21, pages 38–44, 2021.
+[20] Qun Huang, Xin Jin, Patrick PC Lee, Runhui Li, Lu Tang, Yi-Chao Chen, and
+Gong Zhang. Sketchvisor: Robust network measurement for software packet
+processing. In Proc. of SIGCOMM’17, pages 113–126, 2017.

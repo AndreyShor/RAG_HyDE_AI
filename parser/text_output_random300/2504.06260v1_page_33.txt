@@ -1,0 +1,54 @@
+Preprint. Under review.
+**10. Post-Processing:** * **Point Evaluation:** * Add a ”Point Evaluation” node to
+extract the tangential stress (σyy) at point O. * Select point O. * Evaluate the expression
+”solid.syy”. * Export the table containing this value to OUTPUT PATH/output.txt.
+TARGET QUANTITY to be computed: Tangential edge stress σyy) at O in Pa.
+ANSWER:
+java ```
+<<SAME AS CODE IN MODELSPECS ONE -SHOT PROMPT >>
+```
+===
+Now generate the JAVA API code to compute the target quantity for the problem
+below, by following the plan described. Export the table containing the target
+quantity to OUTPUT PATH/output.txt.
+PLAN: {{problem description}}
+TARGET QUANTITY to be computed : {{ target description }}
+ANSWER:
+We used the prompt above for the Plan experiment on Gemini-1.5-Pro
+ModelSpecs | Phy-Doc In-Context
+You are an experienced COMSOL engineer. You must solve the problem to compute
+the desired TARGET QUANTITY by generating COMSOL JAVA API code. The
+model creation line “‘Model model = ModelUtil.create(”Model”);“‘ has already been
+generated and you should not repeat this line. All lines of code must begin with
+‘model.‘ You must not generate any ‘model.sol...‘ solver code but should ensure
+that your ‘model.study...‘ block ends with a ‘model.study(”std1”).run();‘. This will
+automatically create and run the default solver for the problem.
+You are provided with the list of valid physics interfaces and valid features under
+interfaces. You must only use the interfaces in the available interfaces list.
+===
+AVAILABLE COMSOL PHYSICS INTERFACES:
+['BeamCrossSection ', 'PorousMediaFlowRichards ', '
+MoistureTransportInBuildingMaterials ', 'CreepingFlow ', '
+CathodicProtection '... <List of 140 Interface >...' LumpedBattery
+', 'CompressiblePotentialFlow ', 'BatteryBinaryElectrolyte ', '
+ColdPlasma ', 'LaplaceEquation ', 'DilutedSpeciesInPorousCatalysts
+']
+AVAILABLE FEATURES UNDER INTERFACES:
+{'ElectromagneticWavesBeamEnvelopes ': {'features ': ['
+MatchedBoundaryCondition ', 'SymmetryPlane ', 'Scattering ', '
+TransitionBoundaryCondition ', 'Impedance ', 'Port ', '
+FieldContinuity '], 'physics_tags ': ['ewbe ']}, '
+TransientPressureAcoustics ': {'features ': ['InteriorSoundHard ',
+'InteriorLumpedSpeakerBoundary ', 'TransientMonopoleLineSource ',
+'CylindricalWaveRadiation ', 'Impedance ', '
+NonlinearAcousticsWestervelt ', 'Pressure ', 'PlaneWaveRadiation
+'], 'physics_tags ': ['actd ', 'actd2 ']}, ...<Interface -Feature
+Mapping >...' PressureAcousticsAsymptoticScattering ': {'features ':
+[], 'physics_tags ': ['paas ']}, '
+ElectromagneticWavesBoundaryElements ': {'features ': [], '
+physics_tags ': ['embe ']}, 'WallDistance ': {'features ': ['Wall '],
+'physics_tags ': ['wd ', 'wd2 ']}}
+===
+Use the example provided below to infer how to format your response and generate
+COMSOL code.
+33

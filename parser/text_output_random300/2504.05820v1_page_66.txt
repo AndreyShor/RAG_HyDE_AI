@@ -1,0 +1,47 @@
+52
+Tools and methodology
+the distribution G(σ, C) by fluctuating the central data via
+σ(r)
+i
+= σi + a(r)
+i Lij,
+covij = LikLT
+kj ,
+(2.24)
+where a(r)
+i
+is a normally distributed random array and Lik are obtained form the Cholesky
+decomposition of the covariance matrix. covij can include both experimental and theoretical
+uncertainties. We substitute these fluctuated values in the χ2 definition Eq. (2.23) obtaining
+the loss function χ(r),2, which is then evaluated during the minimization. We then repeat
+the sampling procedure of Eq. (2.24) until the distribution of the best fitting parameters is
+sufficiently populated, typically 100 replicas are adequate to describe the full PDFs distributions.
+As we will see later, since we are parametrizing our unknown PDF parameter space with a
+neural network, to avoid over-fitting, we introduce a cross validation technique, splitting the
+data into two categories: the validation and training set [154]. During the minimization we
+seek for the minimum of χ(r),2 over the training set, while evaluating the stopping criteria at
+subsequent iterations on the validation set (look-back stopping). Note that, the training and
+validation split is preformed independently for each replica and, datapoints of the same datasets
+can also be split.
+Feed forward neural networks.
+The constraints imposed by QCD do not allow us to determine
+a precise functional for of the PDFs on the all x domain and fixed scale Q. Thus, to perform a
+fit, it is important to select a sufficiently flexible PDF parametrization and avoid introducing
+a parametrization bias which can distort the result drastically. Feed forward neural networks
+provide a useful tool to address this problem. From a Machine Learning prospective the task of
+PDF fitting can be classified as a supervised learning problem, where the input data are labelled
+and, the goal is to reconstruct a mapping which has to accurate if the output is known (data
+region), and unbiased as possible where the output is not known (extrapolation region).
+Neural networks are inspired by the biological mechanism behind the human brain. They
+consist in a relation graph, where each basic unit, called artificial neuron, is connected to others
+by a precise quantitative rule. In a feed forward network, neurons are organized in layers where
+each element is connected to the previous by an activation function and provide as output, a
+real number which is then used to weight the response of subsequent neuron layer. Thanks to
+their flexibility the neural networks are able to continuously update their response and learn
+hidden patters present in the data used for training. In particular, it has been proven that a
+single layer is sufficient to represent any function within the range of the given inputs [110].
+The way in which information flows inside the network is specified by a set of hyperparameters
+that control, among others, the activation function, the number of neurons and layers, the
+learning rate.
+As mentioned, the forward propagation is given by the recursive evaluation of the activation
+function. Starting from an array of inputs point x (the PDF x-grid in our case), for each layer l

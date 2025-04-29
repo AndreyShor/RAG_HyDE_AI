@@ -1,0 +1,51 @@
+A Scalable Automatic Model Generation Tool for Cyber-Physical Network Topologies and Data Flows for Large-Scale
+Synthetic Power Grid Models
+XXX:9
+EMS           HMI       ICCP Server
+Database   
+Web Server
+ Host 1
+Outstation  
+RTAC
+Local HMI
+Host 2
+ICCP Client
+ ICCP
+ HTTPS
+ SQL
+ DNP3
+Balancing 
+Authority
+Utility Control 
+Center
+Substation
+Fig. 4. Data flows used between nodes.
+phases: obtaining power system data (from PowerWorld) and creating the cyber-physical network
+(using Python).
+4.1
+Power Network Data
+Using PowerWorld, the substation and branch data files are exported as two Comma Separated
+Value (CSV) files.
+• Substation data: Tables ?? and 2 provide examples of substations’ locations, identifiers,
+and other attributes for the 500-bus case. Substations are classified into generation and
+transmission. Generation substations list their power outputs under the Gen MW and
+Python
+Power World
+Get power 
+system topology 
+information.
+Information 
+converted into 
+CSV file.
+Cluster 
+substations into 
+utilities.
+Convert data into 
+JSON string.
+Use NetworkX 
+to generate map 
+and metrics.
+Generate cyber 
+components for 
+power system.
+Fig. 5. Process for creating the cyber-physical JSON model.

@@ -1,0 +1,111 @@
+4
+-4
+-3
+-2
+-1
+0
+1
+2
+Energy ( arbitrary units )
+200
+150
+100
+50
+0
+Iteration
+4
+3
+2
+1
+0
+(rad)
+200
+100
+0
+5
+4
+3
+2
+1
+0
+200
+100
+0
+5
+4
+3
+2
+1
+200
+100
+0
+Exact
+ = 2.2
+c
+c = 1
+ Mitigated
+θi
+N = 1
+N = 2
+N = 3
+FIG. 3. Error-mitigated variational optimization of a 4-spin circular Ising model (shown in the bottom left inset) with a transverse field
+intensity of J = 0.5. Energy minimization is performed using a 3-layer parameterized circuit tailored to the system. The top insets show the
+optimization of the variational parameters during the learning process for each layer. At each iteration, the energies of the trial states, measured
+under different noise coefficients c = 1 (red) and c = 2.2 (green), are averaged over 20,000 samples. The mitigated energies (blue), derived via
+first-order Richardson extrapolation, are fed back into the optimization process to adjust the circuit parameters for subsequent iterations. The
+darker and lighter data points represent perturbations in opposite directions within the parameter space throughout the optimization process.
+damping rate given by
+
+Ωef
+Ωf0g1
+2
+Γr [34].
+However, due to the dispersive coupling, the photon num-
+ber in the storage cavity influences the transition frequencies
+in Fig. 2(a). Consequently, during the experiment, we ex-
+tend the gate duration to minimize the photon number in the
+storage cavity as much as possible, which inevitably increases
+the impact of decoherence and reduces the gate fidelity [34].
+With the amplitude of Ωf0g1 fixed, T1 and T ∗
+2 of the trans-
+mon qubit depend on Ωef for different Fock states in the stor-
+age cavity, as illustrated in Figs. 2(b) and 2(c), respectively.
+We now turn to the evaluation of gate fidelity, as shown in
+Fig. 2(d). It has been shown that in 3D superconducting cav-
+ity QED systems, gate performance is primarily limited by
+incoherent errors arising from the decoherence of the trans-
+mon qubit [31, 32]. In particular, when the coherence time of
+the transmon qubit is reduced by a factor of 1/c, the gate fi-
+delity is expected to degrade by the same factor. The changes
+in identity gate fidelity align with the reduction in qubit co-
+herence times as Ωef varies. However, a notable reduction in
+Hadamard gate fidelity occurs specifically upon activating the
+pump Ωf0g1. This reduction could be attributed to the poten-
+tial transitions between the transmon qubit and nearby two-
+level systems, possibly triggered by the strong multiplexing
+pump. Despite this issue, we utilize a parameter of c = 2.2,
+where both gate fidelity and coherence time degrade by the
+same factor, allowing us to proceed with error mitigation.
+We now apply the qubit-efficient VQE approach combined
+with the analog error mitigation technique to determine the
+ground state energy of an N +1-spin circular Ising model with
+a transverse field. In this case, the entanglement is typically
+low except near the quantum critical region. Therefore, out-
+side of this region, it can be expected that a two-qubit system
+is sufficient to capture the essential features of the system,
+effectively representing the key dynamics of the model with
+minimal computational resources. The Hamiltonian is given
+by
+H = ∑
+⟨ij⟩
+ZiZj +J∑
+i
+Xi,
+(4)
+where X and Z are Pauli operators, and J is the amplitude of
+the transverse field. The spin-spin interaction ZiZj is summed
+over nearest-neighbor pairs ⟨ij⟩on a ring formed by the N +1
+spins. The quantum circuit, shown in Fig. 1(b), serves as the
+ansatz for the VQE algorithm, enabling us to generate a pa-
+rameterized quantum state that approximates the ground state
+of the system.

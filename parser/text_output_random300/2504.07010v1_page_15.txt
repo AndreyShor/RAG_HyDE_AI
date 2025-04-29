@@ -1,0 +1,70 @@
+2.5.2
+Calibration training
+More explicit guarantees can be obtained under
+Assumption 2.4. Let ˆYm ∼P ˆY and Ym ∼P ˆY , m = 1 . . . , M, be the noisy
+and noiseless i.i.d. outputs of a QC device and
+ˆ
+BC(Y, ˆY ) the corresponding
+empirical estimation of (1). Then, for any ˆY and Y , there exists a scalar
+function, bc = bc(ˆY ), that approximates
+ˆ
+BC(Y, ˆY ) and obeys
+εBC = |bc(ˆY ) −ˆ
+BC(Y, ˆY )| ⊥⊥(ˆY , Y )
+(22)
+i.e. has attribute-independent residuals.
+In this case, we can prove the following
+Theorem 2.5. Let
+ˆ
+BC and bc be as in Assumption 2.4, ˆYnm ∼P ˆYn and
+Ynm ∼P ˆYn, n = 1, . . . , N + 1, m = 1 . . . , M, be the noisy and noiseless
+outputs of N +1 QC devices, and
+ˆ
+BCn, n =, . . . , N, the associated empirical
+estimation of (1). Then, for any t > 0 and any α ∈(0, 1),
+Prob
+
+BC(YN+1, ˆYN+1) ≥bc(ˆYN+1) −qα −t
+
+≥(1 −α)(1 −2e
+−
+2t2
+M
+CN+1 )
+(23)
+qα = inf
+q
+( N
+X
+n=1
+1
+
+| ˆ
+BCn −bc(Yn, ˆYn)| < q
+
+≥⌈(1 −α)(N + 1)⌉
+)
+(24)
+where CN+1 = |cN+1 −c−1
+N+1|, cN+1 =
+q
+min{miny PYn(y), miny P ˆYn(y)}.
+Remark. Assuming there exists a conditional model of a circuit’s BC
+with ˆY -independent residuals is a weaker assumption than assuming the
+existence of the QEM function ϵnoise in (3).
+Proof of Theorem 2.5. By assumption, | ˆ
+BCn −bc( ˆYn)| are i.i.d. and then
+exchangeable. The definition of qα implies
+Prob
+
+ˆ
+BCN+1 ≥bc( ˆYN+1) −qα
+
+≥1 −α
+(25)
+for all α ∈(0, 1).
+For any n = 1, . . . , N + 1, BC(Yn, ˆYn) is the expectation
+under P ˆYn of Rn(y) =
+r
+PYn(y)
+P ˆYn(y). Hoeffding’s inequality bounds the deviation of its

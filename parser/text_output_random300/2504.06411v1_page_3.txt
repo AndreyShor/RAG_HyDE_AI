@@ -1,0 +1,85 @@
+]]S, T[[ = {(ω, t) ∈Ω× [0, ∞) | S(ω) < t < T(ω)}.
+The set of semimartingales on a manifold M will be denoted by S (M). At times we will slightly abuse notation
+and write Γt to refer to a semimartingale Γ. The lifetime of Γ will be denoted by ξΓ. For simplicity, unless
+otherwise mentioned, semimartingales will be assumed to have infinite lifetime. Given a semimartingale Γ we let
+Γ = Γ0 + MΓ + AΓ denote the Doob-Meyer decomposition of Γ, where MΓ is a local martingale and AΓ is a finite
+variation process. Given a Borel set A in a manifold M and a semimartingale Γ, we define the first hitting
+time for A as the random variable
+τ h
+A(Γ)(ω) = inf{t ∈[0, ∞]| Γ(ω) ∈A}
+and the first exit time from A as the random variable
+τ e
+A(Γ)(ω) = inf{t ∈[0, ∞]| Γ(ω) /∈A}.
+τ h
+A(Γ) and τ e
+A(Γ) are stopping times and they are predictable stopping times if A is a closed set (see, for example,
+Emery [12]). If the process Γ is understood from context then we will use the notation τ h
+A and τ e
+A for first hitting
+time and first exit time, respectively. We will also define τ (h,e)
+A
+(Γ) or τ (h,e)
+A
+to be τ e
+A
+
+Γt+τ h
+A(Γ)
+
+. Assuming A is
+closed, by definition of τ (h,e)
+A
+, Γ takes its values in A in [[τ h
+A, τ (h,e)
+A
++ τ h
+A]] and if τ1 and τ2 are stopping times such
+that Γ takes its values in [[τ1, τ2]] ⊆[[τ h
+A, τ (h,e)
+A
++ τ h
+A]]. Thus Γ|[[τ h
+A,τ (h,e)
+A
++τ h
+A]] is the portion of Γ contained in A.
+If τ is a stopping time, we define the stopped process Γ|τ by Γ|τ
+t (ω) = Γt∧T (ω)(ω), where t ∧T(ω) denotes the
+minimum of t and T(ω), for all ω ∈Ω.
+Given Γ ∈S (M) and a locally bounded predictable T ∗M-valued process Z over Γ (that is, Z projects to
+Γ), the Stratonovich integral of Z along Γ is denoted by
+R
+Z ◦dΓ and the Itˆo integral of Z along Γ is denoted by
+R
+ZdIΓ. If α is a 1-form on M and Z = α(Γ) then
+R
+α ◦dΓ :=
+R
+Z ◦dΓ and
+R
+αdIΓ :=
+R
+ZdIΓ. The reader is
+referred to Emery [12] for more details on Stratonovich and Itˆo integrals.
+We will refer to Arnaudon and Thalamier [4] for the topology of semimartingales on S (M) and the topology
+of uniform convergence on compacts in probability (ucp) on the space Dc(M) of M-valued continuous, adapted
+processes. Endow Ck(M) with the topology of uniform convergence of compacts upto derivatives of order k.
+Definition 2.1. Let M, N be smooth manifolds and E = Ck(M) × Dc(M) or Ck(M) × S (M) or Dc(M) or
+S (M), and F = Dc(N) or S (N). A map ϕ : E →F is said to be lower semicontinuous if for every sequence
+(Xn) in E converging to X ∈E, the sequence ϕ(Xn)|ξϕ(X)−converges to ϕ(X)
+Remark 2.1. If we assume that semimartingales have infinite lifetime then ϕ is lower semicontinuous if and
+only if ϕ is continuous.
+For the proof of the next lemma we refer to Proposition 2.6 in [4].
+Lemma 2.1.
+1. The map
+Ck(M) × Dc(M) →Dc(R)
+(f, X) 7→f(X)
+is lower semicontinous.
+2. The maps
+Ck(M) × S (M) →S (R)
+(f, X) 7→f(X),
+where k ≥2, and
+S (Rn) →S (R)
+X = (X1, · · · , Xn) 7→MXi or AXi or {MXi, MXj},
+where {·, ·} denotes the quadratic variation, is lower semicontinous, are lower semicontinuous.
+3

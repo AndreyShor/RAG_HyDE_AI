@@ -1,0 +1,116 @@
+Figure 2: OPAL utilizes a multi-head architecture to process the data observed over the course of a task
+rather than relying on purely data-driven priors.
+The theoretical foundation rests on the formal description
+of string configurations on edges of a lattice, governed by
+local fusion rules. These fusion rules specify mathemati-
+cally which configurations can meet at vertices, analogous
+to how certain actions can only follow or precede others in
+a physically valid sequence. The fusion rules are encoded
+by tensors F ij
+k that specify the amplitude for configura-
+tions i and j to fuse into configuration k. For physical
+consistency, these tensors must satisfy mathematical con-
+sistency conditions known as the pentagon and hexagon
+equations:
+(3)
+X
+n
+F ijk
+n F inm
+l
+=
+X
+p
+F jkm
+p
+F ijp
+l
+F ikm
+l
+These equations ensure that global consistency emerges
+from the local rules, a property essential for generating
+physically valid action sequences.
+We establish a formal mapping from this topological
+field theory to robotic action sequences. Action tokens
+correspond to string types in the topological formalism.
+Physical prerequisites and constraints correspond to
+fusion rules. Invariant physical properties, such as object
+integrity, correspond to topological charges.
+Physical
+consistency conditions correspond to the pentagon and
+hexagon equations of the topological theory.
+This
+mapping provides a mathematically rigorous framework
+for imposing physical constraints on robotic action
+generation.
+We formally define our topological attention mechanism
+as:
+(4)
+Att(Q, K, V ) = softmax
+QKT
+√
+d
+· Mtopo
+
+V
+The topological mask Mtopo encodes the physical con-
+straints:
+(5)
+Mtopo(i, j) =
+X
+k
+F ij
+k · δ(C(i, j, k))
+where F ij
+k represents the fusion coefficient between ac-
+tion tokens, and C(i, j, k) enforces consistency condi-
+tions.
+Unlike standard attention mechanisms that learn uncon-
+strained relationships between tokens, topological atten-
+tion operates within a mathematically constrained man-
+ifold of physically valid configurations. This constraint
+provides several formal advantages.
+It enforces physi-
+cal consistency by restricting information flow to valid
+configurations, mathematically guaranteed by the proper-
+ties of Mtopo. The approach improves sample efficiency
+by constraining the action space, reducing the effective
+dimensionality of the learning problem.
+The topologi-
+cal constraints represent universal physical principles that
+generalize across tasks, a property derived from the task-
+independence of the underlying physical laws. Further-
+more, the structure of Mtopo provides interpretability by
+revealing the physical constraints the model has learned.
+The implementation incorporates a three-level hierarchy
+of fusion rules, each with formal mathematical properties
+that ensure physical consistency at different scales.
+At the most granular level, local fusion rules govern in-
+teractions between adjacent action tokens within a primi-
+tive. These rules ensure basic physical consistency, such
+as ensuring that a gripper must open before grasping. For-
+mally:
+(6)
+X
+c
+N ab
+c
+= 1
+∀a, b
+∈P k
+t
+where N ab
+c
+is the fusion tensor determining whether ac-
+tions a and b can be followed by action c. The constraint
+P
+c N ab
+c
+= 1 ensures that every pair of actions has at least
+one valid continuation, a necessary condition for physical
+feasibility.
+At an intermediate level, non-local fusion channels en-
+able long-range dependencies with topological protection.
+These channels ensure that distant parts of the action se-
+quence remain physically consistent even when they do
+5

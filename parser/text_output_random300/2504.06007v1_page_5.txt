@@ -1,0 +1,51 @@
+CAMulator
+4. Global total atmospheric energy conservation scheme: The global atmospheric energy budget is defined as
+the balance between the tendency of total atmospheric energy and net energy fluxes at the top of the atmosphere
+and the surface. At each forecast step, Temperature is corrected to ensure that the sum of total atmospheric
+energy tendencies aligns with the net energy sources and sinks over the past 6-hour period.
+Corrections to surface pressure, total precipitation, and air temperature are applied using multiplicative ratios across all
+grid cells, computed dynamically at each time step. While this approach enforces conservation, there are no explicit
+safeguards against overcorrection and no effort to redistribute values in the nonnegative correction, which may warrant
+further investigation in future work. We test the model in configurations with and without the physics blocks activated
+(CAMulator-phys and CAMulator-nophys, respectively).
+It is essential to apply these conservation schemes in the specified order to preserve the theoretical dependencies
+between mass, moisture, and energy conservation. Further technical details are provided in Appendix B.
+2.3
+Training
+CAMulator was trained in a staged approach to balance stability and conservation constraints. Initially, the model
+was trained for 113 epochs as a single-step (6-hour) prediction task, minimizing the latitude-weighted mean squared
+error (MSE), with conservation block layers entirely omitted to allow for more stable initial learning. After this phase,
+conservation layers were introduced, and training continued for 77 additional epochs, now as a two-step (12-hour)
+forecast task. In the two-step training, the loss from both forecasted states was accumulated and used to optimize the
+model weights. For the single-step pretraining, cosine-annealing schedules were applied with an initial learning rate of
+1E −5. Both stages used latitude-weighted MSE as a loss function, the AdamW optimizer [Loshchilov, 2017], and
+batch sizes of 32. The training was conducted using Pytorch on 4 NVIDIA A100 GPUs, each with 40 GB of memory
+[Paszke et al., 2019]. In this phase final model state trained for 190 epochs in total over the course of three days.
+To determine the final model weights, we conducted a validation cycle, which consisted of training on 500 samples
+followed by a ten-year simulation. The resulting climatology was then compared to an archived CAM6 climatology.
+This process was repeated after each training iteration to assess the model’s ability to capture the climatology of
+precipitation and 2-meter temperature. The final model was selected based on latitude-weighted mean squared error
+(RMSE), ensuring the closest match to the CAM6 climatology for these two fields. The 50th cycle was selected as our
+final model, which took an additional 12 hours of training.
+2.4
+Climate Forecast Inference Options
+We explore multiple inference configurations, each defined by the forcing applied to the SST field, while all other
+dynamic forcing variables remain unchanged. The following four SST scenarios are considered:
+1. Observed SSTs (1979–2014) – Uses monthly historical SST values from this period as in the CAM6
+simulations
+2. Year 2000 Climatological SST – Applies the mean SST state from the year 2000, held constant throughout
+the simulation.
+3. Year 2000 +2K Climatological SST – Uses the year 2000 SST climatology, with a uniform and instantaneous
++2K temperature increase applied globally to the SST field.
+4. Year 2000 +4K Climatological SST – Uses the year 2000 SST climatology, with a uniform and instantaneous
++4K temperature increase applied globally to the SST field.
+For every SST case, the monthly sea surface values are linearly interpolated to a 6-hour timestep. In the 1979–2014
+observed SST case, the simulation continuously cycles through these years, allowing for realistic variability. In contrast,
+climatological SST scenarios (year 2000, +2K, and +4K) can be extended indefinitely, making them well-suited
+for exploring equilibrium climate responses under different baseline ocean conditions. We note that the model was
+trained exclusively on the 1979–2010 SST state, making the remaining two inference cases (Year 2000+2K, and +4K
+climatological SSTs) entirely out-of-sample predictions. To ensure diverse initial conditions, we introduce a stochastic
+kinetic energy backscatter scheme [Berner et al., 2009] for the first 15 days to the 1979–2014 SST runs, allowing the
+model to reach an independent atmospheric state by week 2. This approach mirrors the initialization strategy used in
+CAM6 simulations, where initial temperature perturbations help generate distinct trajectories [Kay et al., 2015].
+5

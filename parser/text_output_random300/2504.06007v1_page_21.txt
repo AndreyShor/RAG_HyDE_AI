@@ -1,0 +1,52 @@
+CAMulator
+⟨RT ⟩−⟨FS⟩−
+∂A
+∂t
+
+= ϵA
+(20)
+Here, the net energy flux is computed as ⟨RT ⟩−⟨FS⟩because both terms have downward as positive. The downward
+on the top of the atmosphere means the energy goes “into” the atmosphere, but the downward on the surface mean the
+energy “leaves” the atmosphere. This is different from equation 15 where both sources and sinks are at the surface.
+The air temperature (T) can be corrected to ensure thermal energy (CpT) closes the energy budget, forcing ϵA = 0:
+⟨A∗(t1)⟩= ⟨A (t0)⟩+ ∆t⟨RT ⟩−⟨FS⟩,
+γ = ⟨A∗(t1)⟩
+⟨A (t1)⟩
+T ∗(t1) = γT (t1) + γ −1
+Cp
+[Lvq (t1) + Φs + k (t1)]
+(21)
+Where ⟨A∗(t1)⟩is the corrected global sum of total atmospheric energy, γ is the multiplicative correction ratio. The
+same γ is applied to T at all grid cells and pressure levels.
+Supplemental Material
+B.4
+Global Spectra
+The verification of the global energy spectrum is computed using spherical harmonic transforms. For a given forecasted
+or analyzed field F (ϕ, λ), it can be represented using spherical harmonic functions Y (ϕ, λ) as orthonormal basis and
+spherical harmonic coefficients (a):
+F (ϕ, λ) =
+lmax
+X
+l=0
+l
+X
+m=−l
+am
+l Y m
+l
+(ϕ, λ)
+(22)
+Where degree l represents the total angular frequency of Y . m is the zonal wave number. The energy spectrum of F at
+a given m is the sum of magnitudes of a in all degrees with l ≥m:
+P (m) =
+X
+l≥m
+∥am
+l ∥2
+(23)
+The kinetic energy (m2 · s−2) and potential temperature energy (K2) spectrum on 500 hPa pressure level were computed
+and as functions of m, ti, and tl. The result is averaged on ti. Comparing P (m) on forecasts and the ERA5 target,
+the ability of weather prediction models to represent the energy transfer across scales can be verified. In addition, the
+energy spectrum provides a measure of the effective resolution of AI NWP models, which helps identify the smoothing
+effect of neural-network-based computations and model training.
+21

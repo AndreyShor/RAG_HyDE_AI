@@ -1,0 +1,103 @@
+35
+The leaves of the star can be sources within arbitrary subgraphs. One of the simplest cases is presented in the next
+example.
+Example S33. Consider the same star as the last example, but connect vertices 2 and 3 to a sixth vertex and vertices
+4 and 5 to a seventh vertex. The weight matrix is thus
+A =
+
+
+
+
+
+
+
+
+
+
+
+
+iω1/2
+0
+0
+0
+0
+0
+0
+A1
+iω/2
+0
+0
+0
+0
+0
+A1
+0
+iω/2
+0
+0
+0
+0
+A1
+0
+0
+iω/2
+0
+0
+0
+A1
+0
+0
+0
+iω/2
+0
+0
+A61
+A62
+A63
+0
+0
+iω6/2
+0
+A71
+0
+0
+A74
+A75
+0
+iω7/2
+
+
+
+
+
+
+
+
+
+
+
+
+with ω1 ̸= ω + 2 Im(A1) and the Koopman generator is K = iω1z1∂1 + P5
+η=2 Kη + K6 + K7, where K2 to K5 are
+defined as in the previous example and K6 = P3
+k=1(A6kzk −¯A6k¯zkz2
+6)∂6, K7 = P
+k∈{1,4,5}(A7kzk −¯A7k¯zkz2
+7)∂7. The
+monomial z1e−iω1t and c2345 are still conserved, but there remain only two symmetries:
+S1 = K2 + K3 + K6 −iω1
+X
+j∈{2,3,6}
+zj∂j
+and
+S2 = K4 + K5 + K7 −iω1
+X
+j∈{4,5,7}
+zj∂j .
+We find that
+S1[c2345(z)] = −S2[c2345(z)]
+= [2i Im(A1)(z2z3 −z4z5) + A1z1(z4 + z5 −z2 −z3) −¯
+A1¯z1(z4z5(z2 + z3) −z2z3(z4 + z5))] (z2 −z3)(z4 −z5)
+(z3 −z4)2(z2 −z5)2
+is another functionally independent constant of motion (see the symbolic calculations in the Mathematica scripts
+example cte mvt from symmetry 2.wls and example cte mvt from symmetry 3.wls when ω1 = ω + 2 Im(A1)).

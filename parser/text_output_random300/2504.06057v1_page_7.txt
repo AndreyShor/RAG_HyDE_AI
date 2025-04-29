@@ -1,0 +1,146 @@
+7
+|β⟩are eigenstates, the decoherence cannot emerge from
+the dynamics due to the system Hamiltonian [54]. In the
+case of qubits, one possible way to satisfy condition 35 is
+by encoding information in two eigenstates that undergo
+an anticrossing at a specific applied field, thereby realiz-
+ing clock-transition conditions [29]. At this anticrossing,
+the transition frequency between the two levels becomes
+first-order insensitive to small fluctuations in the mag-
+netic field, and both levels exhibit equal magnetization:
+X
+k
+Γk
+z ⟨β| Sz
+k |β⟩=
+X
+k
+Γk
+z ⟨α| Sz
+k |α⟩
+(36)
+This condition can imply 35, for instance, through sym-
+metry arguments, but not necessarily. The most favor-
+able condition is when the clock transition occurs at zero
+applied field, as in this case time-reversal symmetry en-
+forces ⟨α| Sz
+k |α⟩= ⟨β| Sz
+k |β⟩= 0 ∀k.
+For qudits, the challenge lies in the relevance of multi-
+ple transition frequencies, making it extremely difficult
+to satisfy condition 36 for all of them—except at zero
+applied field. This would require a non-Kramers nano-
+magnet (with an even number of electrons) that possesses
+sufficiently low symmetry, ensuring the presence of d low-
+lying nonmagnetic singlet eigenstates. These states must
+exhibit well-spaced energy gaps of similar magnitude to
+remain within an addressable energy window compatible
+with available magnetic pulses.
+Additionally, effective
+pulse operations require sizeable magnetic-dipole matrix
+elements between multiple pairs of states.
+Finally, no
+energy gap should be so small that second-order deco-
+herence contributions become significant.
+Meeting all these constraints in a single physical system is
+highly challenging, particularly because the zero-field re-
+quirement precludes any external control over the Hamil-
+tonian.
+Therefore, rather than aiming for a perfectly
+optimal control of decoherence, we will explore whether
+suboptimal but still viable conditions can be achieved in
+realistic systems and experimental setups, and whether
+for such systems the effect of second-order terms in de-
+coherence is actually minor. We stress that we do not
+require Markovian dynamics [55] because we only need
+the applicability of the Schrieffer-Wolff transformation
+for the eigenstates of interest, extending the range of ap-
+plicability of our method.
+C.
+Consequences of neglecting the second order
+perturbed terms
+In section IV B, we stated that the term ˜R in equa-
+tion 31 can be neglected. In supplemental material VI A,
+we demonstrate that for MNMs the second-order per-
+turbed terms can be neglected by estimating all the in-
+teractions acting on a generic spin in the bath. The re-
+sults show that first-order interactions (Equation 9) are
+usually much larger than second-order ones (Equation
+10), unless the terms (⟨β| Sµ
+k |β⟩−⟨α| Sµ
+k |α⟩)Γk
+ηµ in 31
+are small. In this case (see supplemental material VI A)
+[Hα, Hβ] ≈
+X
+k,µ,η
+(⟨β| Sµ
+k |β⟩−⟨α| Sµ
+k |α⟩)Γk
+ηµOk
+η+
++ [HB, ∆HSB2].
+(37)
+Yet, even when it is the leading term in 37, the second-
+order contribution is usually small, with little impact on
+coherence times.
+V.
+NUMERICAL RESULTS
+In this section, we illustrate the impact on the coher-
+ence factor when the ideal condition expressed in Equa-
+tion 34 is not met, using two representative case studies.
+Additionally, we present an example of a realistic molec-
+ular spin qudit.
+For this purpose, we define the following parameter
+∆=
+X
+Wk
+η
+
+X
+i∈Wk
+µ
+Γi
+ηµ(⟨β| Sµ
+i |β⟩−⟨α| Sµ
+i |α⟩)
+
+(38)
+that measures how far we are from the ideal condition
+expressed in equation 23. Note that, in the following, we
+will study central systems made of electronic spins only.
+In addition, we suppose diagonal gyromagnetic ratio ten-
+sors. It follows that, considering equation 35, equation
+38 takes the following simplified form
+∆=
+X
+k,η
+Γk
+ηη(⟨β| Sη
+k |β⟩−⟨α| Sη
+k |α⟩)
+
+(39)
+All the numerical values of ∆reported in this work will
+be expressed in Bohr magneton units. In all the systems
+we considered, a Hanh echo pulse sequence has been con-
+sidered to suppress the trivial effect of the free induction
+decay, modeled as explained in section II B. Besides, the
+randomly generated spin baths are composed of 1000 nu-
+clear spins (I = 1/2) distributed into a spherical volume
+of radius 20 ˚A, with the only constraint of setting the
+minimum distance between each pair of spins (belonging
+to the system or the bath) to a typical value of 3 ˚A.
+A.
+Single giant spin-S system
+As a first example, we report the case of the simplest
+molecular spin qudit, namely a system that contains a
+single spin S > 1/2.
+Specifically, we consider a giant
+electronic spin with S = 10, which provides a large set
+of states for potential logical encoding. Note that there
+are no real representatives of single ions with an elec-
+tronic spin S = 10. However, there are many examples
+of molecular clusters composed of many strongly inter-
+acting metal ions, whose spins are locked at low temper-
+atures into an effective “giant spin”. In these cases, such

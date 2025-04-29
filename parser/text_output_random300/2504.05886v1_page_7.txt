@@ -1,0 +1,212 @@
+7
+a
+se64="/ZQ4uhoe3Iq6UJWOmtxEGU1F
+ltc=">AB6nicbVDLSgNBEOyNrxhf
+UY9eBoMQL2FXJHoMevEY0TwgWcLspD
+cZMju7zMwKIeQTvHhQxKtf5M2/cZLs
+QRMLGoqbrq7gkRwbVz328mtrW9sbu
+W3Czu7e/sHxcOjpo5TxbDBYhGrdkA1C
+i6xYbgR2E4U0igQ2ApGtzO/9YRK81g
++mnGCfkQHkoecUWOlhzI97xVLbsWdg
+6wSLyMlyFDvFb+6/ZilEUrDBNW647m
+J8SdUGc4ETgvdVGNC2YgOsGOpBFqf
+zI/dUrOrNInYaxsSUPm6u+JCY20Hke
+B7YyoGeplbyb+53VSE17Ey6T1KBki0
+VhKoiJyexv0ucKmRFjSyhT3N5K2JAq
+yoxNp2BD8JZfXiXNi4pXrVTvL0u1my
+yOPJzAKZTBgyuowR3UoQEMBvAMr/Dm
+COfFeXc+Fq05J5s5hj9wPn8AjD2NVQ
+=</latexit>(a)
+0.0
+0.1
+0.2
+0.3
+0.4
+ΩA
+0
+5
+10
+15
+20
+25
+30
+35
+hΩAi = 0.291
+0.0
+0.1
+0.2
+0.3
+0.4
+ΩA
+0
+5
+10
+15
+20
+25
+30
+35
+hΩAi = 0.305
+0.0
+0.1
+0.2
+0.3
+0.4
+ΩA
+0
+5
+10
+15
+20
+25
+30
+35
+hΩAi = 0.313
+0
+1000 2000 3000 4000 5000
+t
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+0.40
+ΩX
+more stable
+A
+B
+C
+(b)
+0
+1000 2000 3000 4000 5000
+t
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+0.40
+ΩX
+less stable
+A
+B
+C
+FIG. 4.
+(a) Probability distribution of ρA for σA
+=
+0.31, 0.25, 0.22 (from left to right) and λA = 1.8.
+Also,
+pω = 0.01, and T = 2 × 105 MCS, other parameters are fixed
+as in Table I. Each distribution is obtained from 100 simula-
+tions. (b) Time series for σA = 1.0 (symmetric) and σA = 0.5
+(asymmetric) with λA = 1.0 and pω = 0.015. In the latter
+case, ρA is increased at the cost of ρC.
+Fixed Parameters
+Value
+Time step, τ
+(2/9)
+Reproduction rates, µA, µB, µC
+1
+Predation rates, σB, σC
+1
+Movement rates, λB, λC
+1
+Hunger progression probability, ph 0.02
+Hunger reproduction factor, H
+0.02
+System size, L
+120∗
+Death probability, pω
+0.005 (sparse)
+0.015 (crowded)
+TABLE I. The list of fixed parameters in the RL calculations,
+and their values.
+∗We use L = 120 for optimization calculations using RL. The
+results of Secs. III and VI A used larger lattices, L = 300.
+actually learn and evolve, in the context of real ecosys-
+tems [71–73]. Note however that the method we employ
+here does not involve learning by individual particles: the
+value function is defined at the level of the species, and it
+is assumed that individuals act according to some shared
+processing of this information. Such ideas have provided
+valuable insight into many social behaviours of animals
+such as ants and bees [74–77] and it sometimes termed
+“social learning” [78–80].
+B.
+Optimisation problem
+We use RL to optimise the population of the smart
+species (A). As noted above, we choose the death proba-
+bility and the hunger parameters such that fixation is not
+possible, so this optimum is achieved in the coexistence
+phase. However, we also explained in Sec. III A that the
+coexistence phase is necessarily “metastable”, and finite
+λ
+σ
+λ
+σ
+λ
+σ
+policy ωk: choose Sk+1
+policy ωk+1: choose Sk+2
+update value function ωk+1(Sk+1)
+update value function ωk+2(Sk+2)
+e
+RnePGvePGgiFdv/hs3bQ9+vbDw8swMs/MGsRQGXfTKUxNz8zOFedLC4tLyvl1bUroxLNocmVPomYAakiKCJAiXcxBpYGEi4DgYnef36DrQRKrEYQztkN1Goic4Q4s65V0f4R7TWEnBhzTzY9FJBzu1jI75EeV9pQzQ7CLne1mnXHGr7kj0r/EmpkImOuUP/yu4kIEXLJjGl5boztlGkUXEJW8hMDMeMDdgstay
+MWgmno8MyumVJl/aUti9COqLfJ1IWGjMA9sZMuyb37Uc/ldrJdg7bKcihOEiI8X9RJUdE8JdoVGjKoTWMa2H/aoNgmnG0WZsCN7vk/+aq1rVq1fr5/uVxvEkjiLZIJtkm3jkgDTIKTkjTcLJA3kiL+TVeXSenTfnfdxacCYz6+SHnI8v7q2gUA=</latexit>policy ωk+2: choose Sk+3
+k
+yOyDmV41LPFXvHhQxKsf4s2/cZLsQRMLGoqbrq7/FgKjY7zbeVWVtfWN/Kbha3tnd09e/+goaNEcajzSEaq5TMNUoRQR4ESWrECFvgSmv7oeuo370FpEYV3OI7BC9gFH3BGRqpaxc7CI+YKnhgqndJ1R1R1275JSdGegycTNSIhlqXfur04t4EkCIXDKt264To5cyhYJLmBQ6iYaY8REb
+QNvQkAWgvXR2/IQeG6VH+5EyFSKdqb8nUhZoPQ580xkwHOpFbyr+57UT7F94qQjBCHk80X9RFKM6DQJ2hMKOMqxIYwrYW6lfMgU42jyKpgQ3MWXl0njtOxWypXbs1L1KosjTw7JETkhLjknVXJDaqROBmTZ/JK3qwn68V6tz7mrTkrmymSP7A+fwCnMJTI</latexit>reward: rk
+f
+8WLB0W8+hne/Bs7y0ETHxQ83quiqp4XS6HRtr+thcWl5ZXV3Fp+fWNza7uws1vXUaI41HgkI9X0mAYpQqihQAnNWAELPAkNb3A98hv3oLSIwjscxuAGrBcKX3CGRuoU9tsIj5gqeGCqe0kzqjrp4MTJOoWiXbLHoPEmZIimaLaKXy1uxFPAgiRS6Z1y7FjdFOmUHAJWb6daIgZH7AetAwNWQDaTcPZPTIKF3qR8pUiHSs/
+p5IWaD1MPBMZ8Cwr2e9kfif10rQv3BTEcYJQsgni/xEUozoKA3aFQo4yqEhjCthbqW8zxTjaDLmxCc2ZfnSf205JRL5duzYuVqGkeOHJBDckwck4q5IZUSY1wkpFn8krerCfrxXq3PiatC9Z0Zo/8gfX5A16tlkQ=</latexit>reward: rk+1
+n
+eNGoa5+CtePCji1c/w5t/YWQ6a+KDg8V4VfW8SAqNjvNtZaWV1bXsu5jc2t7R17d6+mw1hxqPJQhqrhMQ1SBFBFgRIakQLmexLq3vB67NfvQWkRBnc4iqDts34geoIzNFLHPmghPGKi4IGp7iVNqeokw9Ni2rHzTsGZgC4Sd0byZIZKx/5qdUMe+xAgl0zrputE2E6YQsElpLlWrCFifMj60DQ0YD7o
+djJ5IKXHRunSXqhMBUgn6u+JhPlaj3zPdPoMB3reG4v/ec0YexftRARjBDw6aJeLCmGdJwG7QoFHOXIEMaVMLdSPmCKcTSZ5UwI7vzLi6RWLilQun2LF+msWRJYfkiJwQl5yTMrkhFVIlnKTkmbySN+vJerHerY9pa8azeyTP7A+fwBgMpZF</latexit>reward: rk+2
+p
+X+lx5AiCOc+m/qDTlAwpNm9PTejOx5ca6kpTD8F6x8+Li6tr6xWdna3tndq+5/atnMGYFNkanMXMdgUmNTZKk8Do3CGmsB2PvpZ+e4zGykz/pEmOvRutEykAPJSvxp2CW+pcPkACPkYlEOeOC1Kl095dwzGDLN+MZoe/Sj7cb9aC+vhDHyZRHNSY3Nc9atP3UEmXIqahAJrO1GYU68AQ1IonFa6zmIOYgQ32PFUQ4q2V8wum/JDrw
+x4khlfmvhMfb1RQGrtJI39ZAo0tIteKb7ndRwl571C6twRavHyUOIUp4yXMfGBNChITwBYaT/KxdDMCDIh1nxIUSLJy+T1k9atQb309rF5fzODbYAfvCjljEztgF+8auWJMJ9ov9YXfsPvgd/A0egseX0ZVgvOZvUHw/B+aZaFL</latexit>update value function ωk(Sk)
+FIG. 5.
+Illustration of the RL algorithm. At each step k,
+the algorithm receives a reward rk and updates its state to
+Sk+1 using the ϵ-greedy policy (17). The red arrows indicate
+the chosen transition in each step.
+systems must always enter the extinct state at some suf-
+ficiently long time. To illustrate this, Fig. 4(a) shows his-
+tograms of ρA obtained after simulation of T = 2 × 105
+MCS. The distribution has two peaks: one at ρA = 0
+corresponding to extinction, and one at ρA > 0, cor-
+responding to coexistence. Since extinct systems never
+recover, increasing T always increases the probability of
+extinction.
+To avoid problems associated with this effect, we set
+up our optimisation problem as follows. Define
+r(t) =
+(
+ρA(t),
+ρA(t) ≥δ ,
+−1,
+ρA(t) < δ .
+(13)
+such that r(t) is the A-population for systems in the co-
+existence phase, but r(t) = −1 if species A dies out, or
+if its population is lower than a threshold δ. We take
+δ = 0.05, the idea is that for these small populations the
+species is likely to be on the pathway to extinction, even
+if this state has not been reached.
+We write ⟨O(t)⟩coex be the average of an observable
+O(t), for a system started in the coexistence phase at time
+t = 0. We aim to optimise a set of parameters σA, λA, . . .
+and we write S = (σA, λA, . . . ) for a particular choice of
+of these parameters.
+Then the value function for our
+optimisation is
+ϱ(S) = ⟨r(T)⟩coex
+(14)
+where the parameter T is taken small enough that this ϱ
+has a positive maximum (corresponding to a metastable

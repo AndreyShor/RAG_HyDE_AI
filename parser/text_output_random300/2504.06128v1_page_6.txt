@@ -1,0 +1,107 @@
+6
+F. CARAVENNA, R. SUN, AND N. ZYGOURAS
+Hölder spaces is recalled in Subsection 3.4). Since positive Hölder spaces Cε consist of
+functions, this shows that, in a sense, the SHF Z ϑ
+t pdxq barely fails to be a function.
+Theorem 1.5 (Regularity of the SHF). Fix any t ą 0 and ϑ P R. Almost surely, the
+SHF Z ϑ
+t pdxq belongs to C0´ :“ Ş
+εą0 C´ε and, hence, contains no atoms.
+The results above are proved in Section 3. The proof of Theorems 1.2 and 1.5 are based
+on the approximation of the SHF via partition functions of directed polymers, which was
+used in the original construction of the SHF in [CSZ23a] and will be recalled next.
+1.3. Results for directed polymers. To define the directed polymer model, let
+S “ pSnqně0 be the simple symmetric random walk on Z2 with law P and expectation E.
+We denote its transition kernel by
+qnpzq :“ PpSn “ z | S0 “ 0q
+for n P N0 “ t0u Y N , z P Z2 .
+(1.14)
+We define the expected replica overlap RN “ E
+“ řN
+n“1 1tSn“S1
+nu
+‰
+where S1 is an independent
+copy of S with S1
+0 “ S0 “ 0. By the local central limit theorem (2.3)
+RN “
+N
+ÿ
+n“1
+ÿ
+xPZ2
+qnpxq2 “
+N
+ÿ
+n“1
+q2np0q “ log N
+π
+` Op1q
+as N Ñ 8
+(1.15)
+(see also [CSZ19a, Proposition 3.2] for a refined asymptotic behavior).
+The environment (disorder) is given by a family pωpn, zqqnPN,zPZ2 of i.i.d. random variables
+satisfying the assumptions in (1.2). Note that λpβq :“ log Ereβωs „ 1
+2β2 as β Ñ 0. We
+introduce the quantity
+σ2
+β :“ Var
+“
+eβω´λpβq‰
+“ eλp2βq´2λpβq ´ 1 „
+βÓ0 β2 .
+(1.16)
+Given φ, ψ : Z2 Ñ R, polymer length N P N, and inverse temperature (or disorder
+strength) β ě 0, we define the averaged directed polymer partition function as follows:
+Zβ
+Npφ, ψq :“
+ÿ
+zPZ2
+φpzq Zβ
+Npz, z1q ψpz1q
+with
+Zβ
+Npz, z1q :“ E
+“
+eHβ
+p0,NspSq 1SN“z1 ˇˇS0 “ z
+‰
+,
+(1.17)
+where
+Hβ
+I pSq :“
+ÿ
+nPIXZ
+␣
+β ωpn, Snq ´ λpβq
+(
+for I Ă R .
+(1.18)
+When ψ ” 1, we will simplify notation and write Zβ
+Npφq :“ Zβ
+Npφ, 1q.
+Remark 1.6. To comply with the periodicity of the simple random walk, we usually consider
+φ supported on the even sub-lattice
+Z2
+even :“ tpx, yq P Z2 : x ` y is evenu .
+As explained in Section 1.1, the Critical 2D SHF Z ϑ
+t p¨q is the scaling limit of the diffusively
+rescaled partition functions ZβN
+tN p¨
+?
+Nq regarded as a random measure on R2, if the disorder
+strength βN is chosen to be in the following critical window:
+σ2
+βcrit
+N
+“
+1
+RN
+ˆ
+1 `
+ϑ
+log N
+˙
+for some ϑ P R .
+(1.19)

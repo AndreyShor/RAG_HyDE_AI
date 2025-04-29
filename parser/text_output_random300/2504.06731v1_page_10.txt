@@ -1,0 +1,78 @@
+By virtue this lemma, it can be easily shown that the inequality in Proposition 2 holds strictly in several cases.
+Proposition 3. Consider the FJ-MM with matrices (6), where W is some stochastic matrix and ˜W characterizes
+the joint impact of social inertia (as in Use Case 3) and recent memory influence (as in Use Case 4). Specifically,
+˜W = α1W + α2I,
+α1, α2 ≥0,
+α1 + α2 = 1.
+Suppose also that Assumption 2 holds. Then the FJ-MM model converges strictly slower than the comparison FJ
+model and than the original FJ model with matrix W. More precisely,
+ρ( ¯Ad) = σ(1 −β0) +
+p
+σ(1 −β0)2 + 4β0
+2
+> ρ( ¯A) = ρ(ΛW) = σ.
+(12)
+Proof. We first compute the spectral radius for the FJ-MM model. Recalling that the eigenvalues of ¯Ad are such
+scalars λ such that ¯Adv = λv, with some vector v = [v⊤
+1 ; v⊤
+2 ]⊤, then observing that v2 = λv1, one proves that
+(ΛβW + Λ(1 −β0)(α1W + α2I)λ)v1 = λ2v1.
+(13)
+Substituting Λ = σI and using the Perron-Frobenius theorem, the spectral radius ρ( ¯Ad) is the maximum of numbers
+λ ≥0 such that
+0 = det(λ2I −λσ(1 −β0)W −σβ0(α1W + α2I)) = det((λ2 −σβ0α2)I −[λσ(1 −β0) + σβ0α1]),
+(14)
+Notice that λσ(1−β0)+σβ0α1 > 0, because if it were not, then λ = 0 and α1 = 0, which would imply λ2 −σβ0α2 =
+−σβ0 < 0. Consequently, λ could not be a root of equation (14). Hence, the number
+µ :=
+λ2 −σβ0α2
+λσ(1 −β0) + σβ0α1
+∈R
+(15)
+µ appears as an eigenvalue of W. Conversely, if µ is an eigenvalue of W and satisfies (15), then λ is an eigenvalue
+of ¯Ad. By treating (15) as a quadratic equation in λ and selecting its maximal (nonnegative) root, one can show
+that the spectral radius ρ( ¯Ad) is given by
+ρ( ¯Ad) = max
+µ
+σ(1 −β0)
+2
+ 
+µ +
+s
+µ2 + 4β0(α1µ + α2)
+σ(1 −β0)2
+!
+,
+which maximum is taken over all real µ eigenvalues of W and, obviously, is achieved at µ = 1.
+Recalling that α1 + α2 = 1 > σ, one finally notices that
+ρ( ¯Ad) = σ(1 −β0)
+2
+ 
+1 +
+s
+1 + 4β0(α1 + α2)
+σ(1 −β0)2
+!
+> σ(1 −β0)
+2
+ 
+1 +
+s
+1 +
+4β0
+(1 −β0)2
+!
+= σ,
+which proves (12) and finishes the proof of Proposition 3.
+It is interesting to note that under Assumption 2, the spectral radius of ¯Ad is independent of the coefficients α1
+and α2, e.g., the FJ-MM model exhibits the same convergence rate in Use Case 3 as in Use Case 4.
+The following numerical example illustrates that, for Λ = σI with σ being fixed and [β] = β0I, the spectral
+radius in Use Case 3 depends only on β0 but not on the graph, as guaranteed by Proposition 3.
+Example 4. Fig. 6 illustrates the numerical simulations, in which the convergence rate (maximal eigenvalue) of
+the FJ-MM is computed for several graphs as a function of β0, assuming that Λ = 0.6I and [β] = β0I. Technically,
+the example shows the results for an undirected cycle graph with N = 20 nodes, an Erdos-Renyi graph with N = 150
+nodes and probability of edge creation 0.4, a Watts-Strogatz graph with N = 200 nodes, degree equal to 0.6N and
+rewiring probability 0.7, and a complete graph with N = 50 nodes.
+It can be observed that the convergence rate is, first, independent of the graph structure and, second, strictly
+greater than that of the comparison FJ model (and of the original FJ model with matrix W), which equals σ = 0.6.
+Using an analogous proof strategy, we can prove that the convergence result holds also in Use Case 1.

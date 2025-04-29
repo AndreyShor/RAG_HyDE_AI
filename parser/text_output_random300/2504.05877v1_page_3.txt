@@ -1,0 +1,131 @@
+3
+input into the cavity to be transfered between different
+sidebands. Consequently, any input pump tone, even in
+the few-photon regime, is emitted across multiple side-
+band modes, forming a frequency comb with spacing Ω,
+as illustrated in Fig. 1f.
+Considering a input pump tone ωin, from the equation
+of motion, we obtain that the complex amplitude in the
+cavity satisfies (Supplementary Note II.A):
+a(t) =√κeaine−i∆t
+×
+∞
+X
+m=−∞
+∞
+X
+l=−∞
+Jl(β)Jm−l(−β)
+ilΩ+ κ/2 −i∆eimΩt
+(1)
+where ∆= ωin −ω0 arises from the rotation of the frame,
+κ represents the total dissipation of the cavity, κe denotes
+the external dissipation due to the coupling between the
+cavity and the external input/output, and ain represents
+the externally injected pump photons.
+In contrast, in Kerr optomechanical combs, the mod-
+ulation coefficient β depends on the pump tone itself,
+meaning it is influenced by both ain and ∆.
+Conse-
+quently, ain must reach a sufficient intensity to over-
+come non-linearity initiation thresholds.
+Additionally,
+∆needs to be constrained within a range that can ef-
+fectively excite the oscillator (For κ < Ω, ∆≈Ω) in
+Kerr optomechanical combs. However, in our approach,
+β is predetermined and independent of ain, allowing for
+the threshold-less ain.
+In other terms, the pump tone
+does not induce nonlinear effects but instead serves as a
+probe for the pre-established frequency components. Fur-
+thermore, we found that the pump tone exhibits highly
+flexible tuning capabilities within the approximate range
+−2βΩ≲∆≲2βΩ, as detailed in the Supplementary
+Note II.A. From equation 1, the term e−i∆t indicates that
+the comb teeth are referenced to the pump tone. When
+∆̸= 0, the pump tone alters the relative intensities of
+the frequency comb components to some extent.
+The Device
+We demonstrate Floquet cavity frequency comb in a
+superconducting microwave circuit, as illustrated in Fig.
+2a. The resonance frequency of the cavity is modulated
+by a displacement-dependent capacitors.
+The sample
+used in this study is similar to that reported in our pre-
+vious work [50, 51] (detailed fabrication in Supplemen-
+tary Note III.A). Our device consists of two aluminum
+drumhead mechanical oscillators [52, 53] optomechani-
+cally coupled to two microwave cavities, as schematically
+shown in Fig. 2b. Here, we ignore one of the mechani-
+cal oscillators. The Hamiltonian of such a system can be
+expressed as,
+Hsys =
+X
+j=1,2
+ℏ(ωc,j + g0,j
+xzpf
+ˆx)ˆa†
+jˆaj + ℏωmˆb†ˆb,
+(2)
+where ωc,j represents the j-th cavity’s intrinsic frequency.
+ωm represents the mechanical resonant frequency, and aj
+(a†
+j) and b (b†) represent the annihilation (creation) op-
+erators of the cavities and mechanical oscillator, respec-
+tively. ˆx is the displacement of the mechanical oscilla-
+tor, and xzpf represents the zero-point fluctuation of the
+mechanical oscillator’s displacement. Besides, the coeffi-
+cient g0,j represents the single photon coupling strength
+between the j-th cavity and oscillator.
+Our entire device operates in a dilution refrigerator at
+a temperature of 10 mK (detailed setup in Supplemen-
+tary Note III.B). The first cavity’s (cavity-1) intrinsic
+frequency is ωc1 = 2π × 4.91 GHz, with external de-
+cay rate κe1 = 2π × 49.6 kHz and intrinsic decay rate
+κi1 = 2π × 298.9 kHz. For the other microwave cavity
+(cavity-2), the intrinsic frequency is ωc2 = 2π×6.47 GHz,
+accompanied by κe2 = 2π×21.7 kHz and κi2 = 2π×245.7
+kHz. The oscillator is characterized to have frequency of
+ωm = 2π ×9.1 MHz and the damping rate γm = 2π ×124
+Hz. Additionally, from the measurements based on fre-
+quency modulation technique, the single-photon coupling
+strengths are measured to be g01 = 2π × 79 Hz and
+g02 = 2π × 46 Hz. The detailed characterization method
+is described in Supplementary Note III.C.
+Construct the giant-mode cavity
+We choose the cavity-2 and the mechanical oscillator
+together to form the complete Floquet cavity system with
+modulation frequency ωm, as schematically shown in Fig.
+2c. It is worth noting that, in the absence of excitation,
+the mechanical oscillator is in a thermal state in equilib-
+rium, with an extremely small time-averaged amplitude.
+To achieve Floquet modulation of the cavity-2 in a sinu-
+soidal (cosinusoidal) periodic manner, we designate the
+cavity-1 as auxiliary driving cavity to drive the mechan-
+ical oscillator into a self-induced oscillation or phonon
+lasing state (Supplementary Note IV) through optome-
+chanical parametric excitation [43, 54, 55] .
+By applying a blue-sideband drive with ∆d = ωd −
+ωc1 = ωm, the mechanical oscillator’s vibrations are grad-
+ually amplified and enter self-induced oscillation at a
+critical power of Pd = Pde = 3 dBm, where ωd repre-
+sents the drive signal applied to cavity-1, Pd denotes the
+drive power, Pde is the critical power point, shown in Fig.
+2d. The power values correspond to the signal generator
+output powers and are therefore expressed in arbitrary
+units. We assume that the displacement ˆx(t) is a classi-
+cal state x(t) = Xm cos(ωmt+ϕm)+X0, which is valid for
+γm/ωm ≪1 [56]. Xm is a classical amplitude and the X0
+is the the mean value of the displacement (see Methods).
+Correspondingly, the modulation strength is A = g02Xm
+xzpf
+that is proportional to Pd.
+We characterize the Floquet sidebands of cavity-2 by
+using a vector network analyzer (VNA) to extract the re-
+flection coefficient S21 = R = 1−√κe
+⟨a(t)⟩
+⟨ain(t)⟩. Combining
+with equation-1, the depth of the different sidebands is
+also determined by the Bessel function (detailed in Sup-
+plementary Note II.B), as shown in Fig. 2e. These side-
+bands are symmetrically distributed with a spacing corre-

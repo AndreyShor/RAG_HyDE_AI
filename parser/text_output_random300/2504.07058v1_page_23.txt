@@ -1,0 +1,107 @@
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+y
+0.00
+0.04
+0.08
+0.12
+0.16
+0.20
+0.24
+0.28
+0.32
+0.36
+(a) Exact
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+x
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+y
+0.00
+0.04
+0.08
+0.12
+0.16
+0.20
+0.24
+0.28
+0.32
+0.36
+(b) Predicted
+Figure 14: Exact and predicted contour plot at 𝑇= 1 with 𝛾= 0.01.
+3.2.1
+1D linear Burgess equation
+The model for linear brain tumor growth given in [20,38] is analyzed:
+𝜕𝑢
+𝜕𝑡= 1
+2
+𝜕2𝑢
+𝜕𝑥2 + 𝑢(𝑡, 𝑥),
+(3.18)
+subject to the conditions:
+𝑢(0, 𝑥) = 𝑥,
+𝑢(𝑡, 0) = 0,
+𝑢(𝑡, 1) = 𝑒𝑡,
+(3.19)
+where in Eq. (2.7), 𝑅(𝑡, 𝑥) = 𝑢(𝑡, 𝑥). The exact solution is:
+𝑢(𝑡, 𝑥) = 𝑥𝑒𝑡.
+(3.20)
+Figure 15 presents a graphical comparison of the approximate solutions computed using PINN and the exact
+solution for the model defined by Eq. (3.18). The results confirm that the PINN-based approximation closely
+matches the exact solution, demonstrating its stability. Furthermore, Fig. 15 illustrates the growth in tumor
+cell density as time 𝑡advances. A three-dimensional representation comparing the PINN and exact solutions is
+shown in Fig. 16. Additionally, Table 7 reports the relative error E𝑟
+𝐺and training error E𝑇along with the selected
+hyper-parameters. The zoom view of the plot at 𝑡= 0.5 clearly illustrates that the PINN prediction is closer to
+the exact solution than the Fibonacci and Haar wavelet methods [38].
+𝑁
+𝐾−1
+¯𝑑
+𝜆
+E𝑇
+E𝑟
+𝐺
+Training Time/s
+3072
+4
+16
+0.1
+0.0004
+3.9e-05
+4
+Table 7: Best-Performing PINN Configuration for Section 3.2.1.
+3.2.2
+1D extended Fisher–Kolmogorov equation
+The 1D case of the EFK model is given as follows:
+𝑢𝑡+ 𝛾𝑢𝑥𝑥𝑥𝑥−𝑢𝑥𝑥+ 𝑢3 −𝑢= 𝑓,
+(3.21)
+(3.22)
+The exact solution [1]is :
+𝑢(𝑡, 𝑥) = exp (−𝑡) sin(𝜋𝑥).
+(3.23)
+The corresponding source term is:
+𝑓(𝑡, 𝑥) = exp (−𝑡) sin(𝜋𝑥)
+
+𝛾𝜋4 + 𝜋2 −2 + exp(−2𝑡)(sin(𝜋𝑥))2
+.
+23

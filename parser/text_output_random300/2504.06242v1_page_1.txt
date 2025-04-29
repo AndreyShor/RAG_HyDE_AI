@@ -1,0 +1,104 @@
+Addressing Relative Degree Issues in Control Barrier Function
+Synthesis with Physics-Informed Neural Networks
+Lukas Brunke1, Siqi Zhou1, Francesco D’Orazio2, and Angela P. Schoellig1
+Abstract— In robotics, control barrier function (CBF)–based
+safety filters are commonly used to enforce state constraints.
+A critical challenge arises when the relative degree of the
+CBF varies across the state space. This variability can create
+regions within the safe set where the control input becomes
+unconstrained. When implemented as a safety filter, this may
+result in chattering near the safety boundary and ultimately
+compromise system safety. To address this issue, we propose
+a novel approach for CBF synthesis by formulating it as
+solving a set of boundary value problems. The solutions to
+the boundary value problems are determined using physics-
+informed neural networks (PINNs). Our approach ensures that
+the synthesized CBFs maintain a constant relative degree across
+the set of admissible states, thereby preventing unconstrained
+control scenarios. We illustrate the approach in simulation and
+further verify it through real-world quadrotor experiments,
+demonstrating its effectiveness in preserving desired system
+safety properties.
+I. INTRODUCTION
+In robotics, safety filters are gaining increasing attention
+as a means of providing safety guarantees to learning-
+based control methods that are not inherently designed to be
+safe [2]. A common approach to safety filter design involves
+the use of control barrier functions (CBFs) [3]–[5]. When
+augmenting a system with a CBF-based safety filter, the
+objective is to certify or minimally adjust the control com-
+mands computed by an otherwise unsafe policy. This idea
+has been applied across a wide range of robotic problems,
+including, but not limited to, manipulation, locomotion, as
+well as autonomous driving and flight.
+In the CBF safety filter literature, while both continuous-
+time and discrete-time implementations have been proposed,
+it is common to use a continuous-time formulation of
+CBFs [4], [6]. This is due to the fact that, for control-affine
+systems, a continuous-time formulation leads to a quadratic
+program (QP) that can be solved efficiently online [3], [4].
+However, a subtle but important issue often overlooked in
+this setting is the problem of varying relative degrees. The
+relative degree determines the number of times the barrier
+function must be differentiated before the control input
+appears explicitly. If this property is not properly checked,
+the resulting safety filter may become inactive in the safe set.
+When such points lie close to the safe set boundary, this can
+lead to chattering or even constraint violations [1]. Notably,
+1Learning Systems and Robotics Lab and the Munich Institute of
+Robotics and Machine Intelligence, Technical University of Munich, 80333
+Munich, Germany. Email: firstname.lastname@tum.de
+2Department
+of
+Computer,
+Control
+and
+Management
+Engi-
+neering,
+Sapienza
+University
+of
+Rome,
+Rome,
+Italy.
+E-mail:
+lastname@diag.uniroma1.it.
+
+
+
+
+
+
+
+
+(a) Compact safe set.
+
+
+(b) Level sets of two CBFs covering different segments of the safe set boundary.
+Fig. 1: An illustration of our proposed approach where we leverage multiple
+control barrier functions (CBFs) to mitigate the varying relative degree issue
+in certifying compact safe sets [1]. In this work, we introduce an alternative
+perspective by formulating CBF synthesis as boundary value problems,
+which are solved using physics-informed neural networks (PINNs). This
+approach allows us to mitigate the relative degree issue without conservative
+safe set approximations. (a) As an example, a non-convex, compact safe set
+is parameterized by multiple CBFs, each covering a segment of the safe
+set boundary. (b) The level sets of two representative CBFs are shown. The
+flexibility of PINNs allows us to closely approximate the original safe set
+boundary for both convex segments and non-convex segments (highlighted
+in red between two crosses in the top panel).
+this issue can arise even in the simple case of linear systems
+with quadratic CBFs.
+In recent work, several approaches have been proposed
+to address this issue. Some of the approaches include using
+multiple CBFs with affine or quadratic forms [1], [7], [8],
+reformulating the safety filter QP to relax the assumption on
+uniform relative degree [9], introducing penalization terms
+to numerically mitigate chattering [1], and reconstructing
+CBFs such that the inactivity issue does not compromise
+safety during task execution [1], [10]. While effective, these
+approaches often rely on conservative approximations of
+the safe set or only address the problem in an ad-hoc
+manner (i.e., a CBF is first constructed and then verified
+arXiv:2504.06242v1  [eess.SY]  8 Apr 2025

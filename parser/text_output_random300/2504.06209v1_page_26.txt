@@ -1,0 +1,60 @@
+26
+Appendix F: Maximally predictive agent models
+In computational mechanics, the concept of a maximally predictive Markov model is based on the idea that in order
+to optimally predict the future, the model’s memory must store all relevant information from the past. A commonly
+studied scenario involves a fixed input process X, which is transformed by a channel into an output process Y . In
+this context, a Markov model with memory states M is defined as maximally predictive at time t if [17, 30]:
+I[X0:t; Xt:∞|Mt] = 0
+(F1)
+and
+I[Mt; Xt:∞|X0:t] = 0.
+(F2)
+The first condition captures the notation of a maximally predictive memory Mt while the second condition states that
+the Markov model cannot predict the inputs beyond their correlations with the past. Assuming the channel is causal,
+as we do in this work, the latter simply corresponds to a d-separation.
+However, it is important to notice that the above definition of maximally predictive Markov models was made in
+the context of stationary ergodic processes without feedback (see e.g., [30]), i.e., where outputs do not influence future
+inputs. It turns out that, in order to lift these assumptions, we need to suitably generalize the definition of maximally
+predictive Markov models. As we will show, for the special case of stationary processes without feedback we recover
+eq. (F1).
+In the following, we use the convention that, for variables W, X, Xn:t, Y, Z, Zn:t with n, t ∈N0,
+I [W; Xn:tY |Z] = I [W; Y |Z]
+(F3)
+and
+I [X; Y |Zn:t] = I [X; Y ]
+(F4)
+if t ≤n.
+Definition 12. Let agt →
+←env be a percept-action loop. A model agtM for agt is said to be maximally predictive, or
+for short predictive, of percept St in round t if
+I [A0:t+1S0:t; St|Mt] = 0,
+(F5)
+and an agent model is said to be asymptotically mean (a.m.) predictive if
+⟨I [A0:t+1S0:t; St|Mt]⟩t = 0.
+(F6)
+In the following, A
+→
+←env
+pred denotes the set of agent models which are a.m. predictive for an environment channel env.
+Note that Ces`aro limit in eq. (F6) exists since conditional mutual information can be rewritten as a sum of (positive
+and negative) entropy rates, each of which converges by Lemma 3.
+An agent model which is predictive at time t must encode in its memory Mt all information from past percepts S0:t
+and actions A0:t+1 (including the current action) which helps predicting the current percept St.
+By Equation (F6), an agent is a.m. predictive if eq. (F5) holds asymptotically in the Ces`aro sense. There are
+multiple ways this condition can be satisfied. One possibility is that the agent is predictive for sufficiently many
+rounds (e.g., on a subset of N0 with unit natural density). Alternatively, an agent would also be a.m. predictive if the
+summands in eq. (F6), I [A0:n+1S0:n; Sn|Mn], decay sufficiently fast — say as 1/n as n →∞. Arguably the simplest
+case (which already received some attention in the literature [19]) is when the agent is predictive at all times, meaning
+that eq. (F5) holds for all n ∈N0. In that case, there is an equivalent condition for a Markov model to be predictive.
+Based on this equivalence, we will show that our definition of a.m. predictive Markov models reduces to the condition
+in eq. (F1) from [30] when applied to stationary processes.
+Lemma 8. Let agt →
+←env be a percept-action loop. An agent model agtM is predictive of the next percept at all times,
+i.e.,
+I [A0:t+1S0:t; St|Mt] = 0
+∀t ∈N0,
+(F7)
+if and only if it is predictive of all future percepts at all times,
+I [A0:t+1S0:t; St:∞|Mt] = 0
+∀t ∈N0.
+(F8)

@@ -1,0 +1,55 @@
+CAMulator
+The goal of this work is to represent CAM6 with as much fidelity as possible, thus, we primarily analyze the emulation
+of CAM6 by CAMulator. In some cases, we incorporate reanalysis products to provide qualitative context for the
+differences between CAM6, CAMulator, and the assimilated observational datasets. For precipitation, we use NOAA’s
+Global Precipitation Climatology Project (GPCP) product [Adler et al., 2003], while all other variables are compared
+against the global ECMWF Reanalysis version 5 (ERA5) [Hersbach et al., 2020].
+Following best practices, we divide the available data period into three subsets: a training data set (1979 - 2010), a
+validation subset (2011) and a testing data set (2012–2014).
+2
+Methods
+2.1
+Model Architecture
+CAMulator is based on WXFormer, a transformer-based architecture developed at NSF NCAR and described in Schreck
+et al. [2024]. Figure 1 shows the CAMulator architecture and workflow. WXFormer utilizes a CrossFormer backbone
+[Wang et al., 2023] for multi-scale feature processing and long-range dependency modeling, combined with hierarchical
+transpose convolutional layers for upsampling in the decoding stages. Standard skip connections, similar to those in a
+U-Net Ronneberger et al. [2015], are incorporated to efficiently transfer feature information and preserve spatial details
+from the encoder to the decoder.
+WXFormer has demonstrated state-of-the-art performance among leading AI-based weather prediction (AIWP) models
+[Schreck et al., 2024], making it an ideal base-model for climate modeling. To adapt WXFormer for our use case, we
+introduce several architectural modifications tailored to climate-scale forecasting.
+First, we increase the feature embedding size by doubling the dimensionality of the cross embedding layers (CEL) while
+maintaining computational efficiency (Fig. 1b). The CEL employs a multi-kernel approach, applying four convolutional
+kernels (4×4, 8×8, 16×16, and 32×32) in parallel, each with a 2×2 stride during the initial processing stage [Wang et al.,
+2023]. This multi-scale strategy enhances the model’s ability to capture spatial patterns across a range of atmospheric
+scales.
+Additionally, we reduce both the global and local window sizes of the Long Short Distance Attention mechanism (LSDA;
+Fig. 1c) to align with the lower-resolution of CAM6 compared to WXFormer’s original ∼0.28° ERA5 application
+(see [Schreck et al., 2024] for further details). This adaptation ensures more effective regional feature extraction while
+maintaining performance consistency.
+With these modifications, CAMulator is comprised of ~751 million trainable parameters, making it a high-capacity
+climate emulator optimized for long-term simulations. CAMulator takes as input the state of the atmosphere at time
+step i and predicts the state at i + 1 with a 6-hour forecast horizon. The model operates autoregressively, generating
+multi-step forecasts, allowing it to function as a standalone climate model capable of running indefinitely.
+2.2
+Conservation Blocks
+Following [Sha et al., 2025a] and Watt-Meyer et al. [2024], conservation schemes are applied after the CAMulator
+output layer to ensure physically consistent model roll-outs (Fig. 1e). The order of application is critical, as each
+scheme depends on the corrections applied in previous steps. Below, we describe the purpose and implementation of
+each scheme, with the adjusted variables emphasized. For the direct calculation of these corrections see Appendix
+section B.
+1. Nonnegative correction: AI models can produce negative values, which are unphysical for certain variables.
+For all nonnegative variables (specific total water, total precipitation, 10-meter windspeed, and [Total, High,
+Low, Medium] Cloud Cover), any negative raw outputs are set to zero. While this approach ensures physical
+consistency, alternative correction methods, such as redistribution, may be beneficial in some cases.
+2. Global dry air mass conservation scheme: At each forecast step, surface pressure is corrected to ensure
+that global dry air mass remains constant, maintaining consistency with the initial condition. The correction
+is applied at each grid cell using a multiplicative factor, computed by first determining the residual mass
+imbalance and then adjusting accordingly.
+3. Global moisture budget conservation scheme: At each forecast step, total precipitation is adjusted to balance
+the global sum of the total precipitable water tendency (derived from specific total water) and the accumulated
+net flux of precipitation and evaporation over the previous 6-hour period. The correction is applied at each
+grid cell using a multiplicative factor, computed by first determining the residual water imbalance and then
+adjusting accordingly.
+4

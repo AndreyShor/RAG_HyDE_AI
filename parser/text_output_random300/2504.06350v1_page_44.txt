@@ -1,0 +1,87 @@
+Using this definition, the main theorem in [254] is expressed as the following theorem.
+Theorem 10. Consider a DI-QKD protocol based on a two-player non-local game G2 between Alice and
+Bob, with quantum winning probability ω2. Suppose an adversary (Eve) holds quantum side information
+and may launch general coherent attacks, which can be modeled by extending the game to a three-party
+non-local game G3 with quantum winning probability ω3 < ω2. Then, there exists an affine min-tradeoff
+function f : [0, 1] →R, defined for any β ∈[ω3, ω2] by
+f(p) = p −β
+ln 2 (1 −β + ω3) −log(1 −β + ω3),
+(117)
+such that the smooth min-entropy of Alice’s raw key conditioned on Eve’s quantum side information and
+public communication, satisfies
+Hε
+min(A|E) ≥nf(pexp) −O(√n),
+(118)
+where pexp ∈[0, 1] is the observed winning probability in the testing rounds.
+The monogamy-of-entanglement property in this setting is reflected in the fact that the optimal quantum
+winning probability ω2 of the two-player non-local game (played between Alice and Bob) exceeds the
+tripartite quantum winning probability ω3 of the extended game, in which a third party receives both
+inputs and attempts to guess the key bit produced by Alice and Bob.
+Theorem 10 implies that it is indeed possible to construct DI-QKD — and prove their security —
+from any two-player non-local game that exhibits a sufficiently large gap ω2 > ω3 between the two-party
+and three-party instances of the game.
+(G)EAT vs. iid and non-iid techniques. (G)EAT is more general in the sense that it does not need
+to assume that the rounds of the experiment are independent and identically distributed (iid). This, in
+particular, implies that (i) the measurement devices are memoryless, i.e. they behave independently
+and in the same way in every round of the protocol;(ii) the distributed state is the same for every
+round ρAn
+1 Bn
+1 E = ρ⊗n
+ABE.
+The iid simplification can be justified, for example, in experimental setups
+where Alice and Bob control, to some extent, the source and measurement devices, but do not have a
+full characterization of their working devices. In this case, Hε
+min(Kn
+1 | En
+1 ) can be directly related to
+the single-round conditional von Neumann entropy H(Ki|Ei) and (G)EAT is equivalent to the quantum
+asymptotic equipartition property (AEP) [268] yielding
+Hε
+min(Kn
+1 | En
+1 ) ≥nH(Ki | Ei) −cε
+√n,
+(119)
+where cε is dependent only on ε and H(Ki | Ei) ≤1 −χ0 of Eq. (69) for CHSH protocol.
+(G)EAT improves the traditional DI-QKD security proofs under coherent attacks [65, 66]. This, in
+particular, assumes that Eve exploits all dof of the quantum systems, applying global operations across all
+protocol rounds ρABE = ρAnBnE and a global measurement ME on ρE.Let us consider CHSH protocol
+with abortion threshold S ≤2
+√
+2(1 −2Q), then
+Hε
+min(A | E)ρ > −6(1 −τ ′) log
+ 
+11
+12 + 3
+8
+r
+Q
+1 −τ
+!
+−O
+log(1/ε)
+2Q2n
+
+,
+∀τ + τ ′ > 1,
+(120)
+with n the rounds and Q the QBER. After postprocessing r ≥Hϵ
+min(A|E) −h(Q), as in Eq. (50). Eq.
+(120) relies on quantum reconstruction paradigm (QRP) [269]. However, the key rate is lower compared
+to security proofs obtained via (G)EAT.
+4.3. Analytical bounds
+4.3.1. 2-input/2-output protocols
+CHSHc security proof. . The first analytical bound, as mentioned in Section 3.6, was established by Ac´ın
+et al. [54] against collective attacks (see Equation 69). The following upper bound was found in [54]:
+Theorem 11. Let |ψABE⟩be a quantum state for a CHSHc protocol. Then, the following upper bound
+holds for the Holevo quantity:
+χ(B1 : E) ≤h
+ 
+1 +
+p
+(S/2)2 −1
+2
+!
+,
+44

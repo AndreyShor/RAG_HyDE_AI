@@ -1,0 +1,80 @@
+Multilevel Quantum Rabi Models
+9
+random variables X, Y ∼N (0, 1/2). The coupling matrix Λ would then be said to
+belong to the Ginibre ensemble class of matrices [16].
+Rather than analyzing the singular value distribution of the coupling matrix
+directly, we use the result that the largest singular value of Λ corresponds to the largest
+eigenvalue κ1 of the associated Wishart matrix W = ΛΛT. Since the distribution of
+κ1 is well-approximated by a known form [17], this approach provides a practical and
+accurate way to characterize λ1. Since the singular values of Λ are defined as the square
+roots of the eigenvalues of W = ΛΛT, we have:
+λ1 = √κ1.
+(13)
+This transformation allows us to approximate the distribution of λ1 using the well-
+characterized properties of κ1.
+The approximate distribution for the largest eigenvalue of a Wishart matrix [17]
+(see Eq. B.1 for an explicit expression) expresses the eigenvalue distribution of W in
+terms of a scaled and shifted Gaussian distribution, itself derived as an approximation to
+the Tracy-Widom distribution [18] which is asymptotically exact for n, m →∞. Using
+this, we find that the normalised probability density function (PDF) of the largest
+singular value λ1 defined for y > 0 (or y > √µ −ρα if µ −ρα > 0,) is approximately
+given by
+fλ1(y) =
+2
+ρθkΓ(k)y
+y2 −µ
+ρ
++ α
+k−1
+e
+−1
+θ
+
+y2−µ
+ρ
++α
+
+,
+(14)
+where k = 79.6595, θ = 0.101037 and α = 9.81961 are fitting parameters chosen to
+match the first 3 moments of the approximated Gaussian distribution to the type-2
+Tracy Widom distribution [17].
+The scaling and centering parameters of the Tracy
+Widom 2 distribution [19,20] are given by
+µ = (√n + √m)2, ρ = √µ
+ 1
+√n +
+1
+√m
+1/3
+.
+(15)
+We find that the average largest singular value E[λ1] can be approximated as [21]:
+E[λ1] ≈
+√ρ
+θk
+µ
+ρ −α
+k+1/2
+U
+
+k, 3
+2 + k, 1
+θ
+µ
+ρ −α
+
+,
+(16)
+where U is Tricomi’s confluent hypergeometric function. This expression turns out to
+be accurate even for small m, n, however in the asymptotic regime n →∞with m = n,
+we recover the result that the average largest singular value scales as
+E[λ1] ∼2√n,
+(17)
+which has also been derived directly via the Marchenko-Pastur distribution of the
+eigenvalues of large rectangular matrices [22,23].
+Using Eq.
+14, we find that the variance of the largest singular values is
+approximately given by
+Var[λ1] ≈ρ[θ(k + 1) −α] + µ −E[λ1]2,
+(18)

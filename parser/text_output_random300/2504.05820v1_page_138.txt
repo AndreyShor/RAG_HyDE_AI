@@ -1,0 +1,44 @@
+124
+The Path to aN3LO Parton Distributions
+Total cross-section data are obtained by extrapolating measurements performed in a fiducial
+region. Whereas for NC DY production in the central rapidity region and for dilepton invariant
+masses around the Z-peak, the N3LO/NNLO cross-section ratio depends only mildly on the
+dilepton rapidity yℓℓ[288, 289], it is unclear whether this is the case also off-peak or at very
+large and very small rapidities. Hence, the inclusion of N3LO corrections for hadronic processes
+is, at present, not fully reliable. We have consequently not included them in our default
+determination, but only in a dedicated variant, with the goal of assessing their impact. For
+conciseness, we refer to Ref. [3] for its discussion.
+Despite the fact that we are not yet able to determine reliably N3LO corrections for currently
+available LHC measurements, we wish to include the full NNPDF4.0 dataset in our aN3LO
+PDF determination. To this purpose, we endow all data for which N3LO are not included with
+an extra uncertainty that accounts for the missing N3LO terms. This is estimated using the
+methodology of Refs. [152, 151], recently used in Ref. [6] to produce a variant of the NNPDF4.0
+PDF sets that includes MHOUs, summarized in Section 2.2.
+Thus, when not including N3LO corrections to the hard cross-section, the theory prediction is
+evaluated by combining aN3LO evolution with the NNLO cross-sections. The prediction is then
+supplemented with a theory covariance matrix, computed varying the renormalization scale µR
+using a three-point prescription [152, 151]:
+covNNLO
+mn
+= 1
+2 (∆m(+)∆n(+) + ∆m(−)∆n(−)) ,
+(4.28)
+analogous to Eq. (4.27), but now with ∆m(±) the shift in the prediction for the m-th data point
+obtained by replacing the coefficient functions with those obtained by performing upper or
+lower renormalization scale variation using the methodology of Ref. [151] (as implemented and
+discussed in [6, Eq. 2.9]). This MHOU covariance matrix is then added to the IHOU covariance
+matrix as a further term on the right-hand side of Eq. (4.8).
+The impact of this uncertainty is shown in Fig. 4.15, where we show for all hadronic datasets
+the square root of the diagonal entries of the MHOU covariance matrix Eq. (4.28), compared
+to those of the IHOU covariance matrix Eq. (4.8), and to the experimental uncertainties, all
+normalized to the central theory prediction. The MHOU is generally larger than the IHOU,
+indicating that the missing N3LO terms in the hard cross-sections are larger than the IHOU
+uncertainty in N3LO perturbative evolution. The experimental uncertainties are generally larger
+still.
+In addition to the NNPDF4.0 aN3LO baseline PDF set obtained in this manner, we will also
+produce a NNPDF4.0 MHOU aN3LO set, in analogy to the NLO and NNLO MHOU. For this set,
+MHOUs on both perturbative evolution and on the hard matrix elements are included using
+the methodology of Refs. [152, 151] with a theory covariance matrix determined performing
+combined correlated renormalization and factorization scale variations with a 7-point prescrip-
+tion, as discussed in Section 2.2 and with more details in Ref. [6]. In this case, we simply
+perform scale variation on the expressions at the order at which they are being computed,

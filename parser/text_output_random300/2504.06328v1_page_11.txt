@@ -1,0 +1,101 @@
+leveraging superposition, it combines basis states
+much like a richer basis for function approximation;
+by leveraging entanglement, it introduces higher-
+order correlations as built-in geometric dimensions;
+by leveraging the unitary group structure, it en-
+ables transformations and optimizations that ex-
+plore enormous solution spaces continuously. This
+section has detailed how the formal geometric tools
+(Fubini–Study metric, Bures distance, quantum
+Fisher information, etc.) substantiate these claims
+with mathematical rigor. In the following sections,
+we will build on this understanding to demonstrate
+concrete QML architectures and learning tasks that
+exemplify the discussed advantages.
+Ultimately,
+the geometric unification provided here reinforces
+the paper’s central thesis: quantum machine learn-
+ing is a more expressive paradigm that extends clas-
+sical geometric learning into the quantum realm,
+where new phenomena open up capabilities beyond
+classical limits.
+Transition to Practical Case Studies. In the
+preceding sections, we illustrated how quantum ma-
+chine learning (QML) serves as a natural geomet-
+ric extension of classical manifold-based methods.
+We now demonstrate how these insights apply to
+real-world tasks by describing two hybrid classical-
+quantum pipelines:
+structural health monitoring
+(SHM) for bridge infrastructures and diabetic foot
+ulcer (DFU) classification. These case studies high-
+light how manifold-aware preprocessing (e.g., using
+SPD matrices) can be combined with quantum em-
+beddings to capture both geometric and quantum-
+specific structures, yielding tangible performance
+improvements.
+4. Case Studies and Experimental Results
+In this section, we present two experimental
+case studies, Bridge’s Structural Health Monitoring
+(SHM) and Diabetic Foot Ulcer (DFU) Classifica-
+tion, that validate our hybrid geometric quantum-
+classical approach. Both the SHM and DFU case
+studies demonstrate that the integration of geo-
+metric feature extraction (via SPD matrices and
+polynomial expansion) with quantum embeddings
+yields superior performance. The DFU study, de-
+spite its preliminary conference status, underscores
+the versatility of our framework across different do-
+mains—from engineering to healthcare. By high-
+lighting these two case studies, we not only sub-
+stantiate our claim regarding the expressive power
+of quantum machine learning but also illustrate
+that the approach is applicable in a variety of high-
+impact fields. Both studies were initially presented
+at QTML 2024, and here we extend and enhance
+the analysis to further support our claim that lever-
+aging geometric machine learning (GML) principles
+within a quantum framework provides significant
+advantages over classical methods alone. Addition-
+ally, we include a brief overview of related case stud-
+ies from the research community that further under-
+score the relevance and broad applicability of our
+approach.
+4.1. Structural Health Monitoring (SHM) via Hy-
+brid Quantum-Classical Models
+Structural Health Monitoring (SHM) is a critical
+task for ensuring the integrity and longevity of in-
+frastructures such as bridges. Although Finite El-
+ement Modeling (FEM) provides detailed insights
+into a bridge’s structural behavior, real-time anal-
+ysis can be prohibitively expensive due to the high
+computational cost and the potentially large output
+dimension. In our study, we addressed these chal-
+lenges by developing a hybrid pipeline that com-
+bines classical feature extraction, Riemannian ge-
+ometry (via SPD matrices), and quantum circuits.
+Context and Data Setup.. We focus on a bridge
+FEM scenario in which the input comprises 7-
+dimensional vectors x ∈R7—these might repre-
+sent loading conditions, material properties, or en-
+vironmental factors—while the output is a high-
+dimensional structural response vector y ∈R1017.
+Capturing this 7-to-1017 mapping accurately and
+efficiently is vital for real-time or near-real-time
+SHM tasks.
+Motivation for SPD Matrices and Polynomial Ex-
+pansion.. To exploit geometry while maintaining
+consistency with quantum states, we transform
+each 7-dimensional input into a Symmetric Positive
+Definite (SPD) matrix. First, we apply a second-
+degree polynomial feature expansion to x, produc-
+ing an augmented feature vector:
+z = PolyFeatures(x),
+(6)
+which includes nonlinear and interaction terms. We
+then form a covariance-like matrix
+Z = z z⊤+ ϵ I,
+(7)
+where I is the identity matrix and ϵ > 0 is a small
+constant ensuring positive definiteness. This Z ∈
+11

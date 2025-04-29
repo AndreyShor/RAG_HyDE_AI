@@ -1,0 +1,39 @@
+Figure 7: Dependence of convergence rate on network choices in Use Case 3 (FJ-MM vs comparison FJ)
+of the susceptibility matrix Λ.
+Moreover, their dependence on β is generally non-monotonic.
+Since providing
+an analytical description of these dependencies is nontrivial, we only demonstrate several numerical experiments.
+In these experiments, we use one of the graps, described in Example 4, however, the diagonal entries of Λ are
+now heterogeneous: nodes belonging to a randomly chosen subset ˆV are assigned λii = 0 (indicating complete
+stubbornness), while the remaining agents are assigned λii = 1.
+First, we focus on the dependence of the convergence rate on the network choice under the hypothesis of Use
+Case 3 (i.e., ˜W = I). Our initial experiment demonstrates that when setting [β] = β0I in (6), the dependence of
+the convergence rates on β0 differs substantially from the homogeneous λii case (Proposition 3). In particular, the
+gap between the spectral radii of the FJ-MM and its comparison models is non-monotonic.
+Example 5. We compare the convergence rates of the FJ-MM model and the comparison FJ model for different
+network choices under the assumption that ˜W = I (Social Inertia). We adopt the same graphs as in Example 4.
+The set of randomly chosen stubborn nodes has cardinality |ˆV| = 0.2|V|). It can be observed (Fig. 7) that the gap
+between the spectral radii of the FJ-MM and the comparison FJ model is no longer a monotonic function of β0.
+This outcome is expected since, when β0 = 1, both models lose asymptotic stability, yielding ρ( ¯Ad) = ρ( ¯A) = 1.
+Unlike the situation in Example 4, the gap visibly depends on the network’s topology.
+In the case of secondary neighbors (Use Case 1), the relationship between the spectral radii and β0 becomes
+even more complex and substantially depends on Λ. Specifically, while the spectral radius of the comparison model
+exhibits a pronounced minimum at some β0 = β∗∈(0, 1), the spectral radius of the FJ-MM model increases
+monotonically to 1 as β0 →1. Furthermore, the gap between the two models widens as the number of stubborn
+agents, |ˆV|, increases. This behavior is illustrated in our final example.
+Example 6 (Influence of cardinality of ˆV). Consider a Watts-Strogatz graph randomly generated, with N = 200
+nodes, degree equal to 0.6N and rewiring probability 0.7, under the assumption that ˜W = W 2 (Use Case 1). We
+compare two cases: 15% of individuals are stubborn vs. 50% of stubborn agents and show the spectral radii of the
+FJ-MM, the associated comparison model and the original FJ model with matrix W (corresponding to β0 = 0).
+5
+Conclusion
+In this paper, we propose a generalization of the Friedkin–Johnsen (FJ) model, termed FJ-MM, which integrates
+memory effects and higher-order (multi-hop) neighbor influences to account for both current and past opinions
+across direct and secondary connections. Our analysis shows that while the convergence properties of the FJ-MM
+model reduce to those of a comparison model–namely, the standard FJ model with a modified influence matrix–the
+convergence rate is significantly affected by the incorporation of past opinions, as demonstrated by preliminary
+eigenvalue analysis and numerical simulations on random graphs.
+Also, our numerical experiments reveal that
+memory and multi-hop influence reshape the opinion landscape by reducing polarization in the final opinion profile.
+The findings presented in this paper suggest several promising directions for future research, particularly in
+exploring both the steady-state and transient properties of the FJ-MM dynamics. It is well established that the FJ

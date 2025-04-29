@@ -1,0 +1,44 @@
+(a) Network’s Average Opinion Dynamics
+(b) Nodes’ Ultimate Opinions Distribution
+Figure 5: Example 3: Comparison of the averaged opinion’s dynamics and the ultimate opinion vectors for the original FJ model (2),
+the FJ-MM and the comparison FJ model.
+Proof. Consider the eigenvalue-eigenvector system associated to the dynamical system in (7).
+Given ρ( ¯A) the
+spectral radius of ¯A, it exists v ∈Rn s.t. ¯Av = ρ( ¯A)v, with v eigenvector associated to maximum eigenvalue ρ( ¯A).
+Let us now define x = [v; v]. Then, it holds:
+¯Adx =
+
+0
+I
+ΛW (2)
+ΛW (1)
+
+x =
+
+v
+ρ( ¯A)v
+
+≥ρ( ¯A)x
+(11)
+From Corollary 3.2 in [51], it follows that ρ( ¯Ad) ≥ρ( ¯A).
+The result is in line with what intuitively expected. Indeed, the memory term acts as a rumor that drives the
+node opinion back to the past, influenced by opinions at previous steps. Moreover, focusing on Use Case 4, as shown
+in the following Corollary, the inequality holds also compared to the original FJ.
+Corollary 2. Let us assume to be under the assumptions of Use Case 4, i.e. recent memory influence. The FJ-MM
+model converges slower than the original FJ model without memory, that is,
+ρ( ¯Ad) ≥ρ(ΛW) .
+Proof. Proposition 2, since W (1) + W (2) = W, implies that ¯A = ΛW and ρ( ¯A) = ρ(ΛW).
+4.1
+A Special Case: Homogeneous Susceptibility
+It is interesting to explicitly compare the convergence rates of the FJ-MM model with matrices (6) and its corre-
+sponding comparison FJ model. This comparison is relatively straightforward when all agents share the same level
+of susceptibility to social influence, λii, and assign identical total weights, βi > 0, to past opinions:
+Assumption 2. Assume that Λ = σI with σ ∈R with4 σ ∈(0, 1). Moreover, assume that all elements of the vector
+β are equal βi = β0 ∈(0, 1) for every i ∈V.
+The spectral radius of the comparison FJ model with such a susceptibility matrix is straightworward to find.
+Lemma 2. If Λ = σI, then for every stochastic matrix ˆW one has ρ(Λ ˆW) = σ, in particular, ρ( ¯A) = σ. Hence,
+the convergence rate of the FJ-MM admits the following lower bound
+ρ( ¯Ad) ≥ρ( ¯A) = σ.
+Proof. The first statement is straightforward since ρ(σ ˆW) = σ. The second statement follows from Corollary 2.
+4The case of Λ = 0 is, obviously, degenerate, as all agents are totally stubborn and the dynamics terminate in a single step. The
+case Λ = I corresponds to the DeGroot model, where there is no asymptotic stability.

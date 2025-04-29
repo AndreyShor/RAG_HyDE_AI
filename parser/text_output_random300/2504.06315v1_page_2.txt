@@ -1,0 +1,51 @@
+cardiovascular models typically do not account for the unique hemodynamic requirements of ocular perfusion, while
+ocular models frequently overlook the dynamic effects of cardiac function. The lack of a unified modeling framework
+has constrained the potential for accurate simulations of cardiovascular-ocular interactions across various physiolog-
+ical states. A recent study by Caddy and co-authors [3] attempted to model large-scale arterial hemodynamics from
+the heart to the eye under simulated microgravity conditions. Although this research represents a significant step
+in connecting cardiovascular and ocular dynamics, it primarily focuses on arterial circulation without incorporating
+closed-loop feedback mechanisms, which are vital for fully understanding the complex interactions between these
+systems.
+Previous work from our research group has developed theoretical models of both cardiovascular [11] and retinal
+networks [10], validated against clinical and experimental data. However, these models have remained isolated from
+each other. To address this limitation, we propose the development of a novel coupled Eye2Heart model. This
+model will serve as a virtual laboratory to investigate the integrated dynamics of cardiovascular and retinal blood
+circulation. The specific objectives of this research are twofold: (i) to develop and validate a closed-loop heart-eye
+model that integrates both cardiovascular and ocular dynamics, and (ii) to simulate clinically relevant scenarios, such
+as variations in IOP or changes in cardiac elastance, to explore system behavior under diverse conditions. Through
+these efforts, we aim to provide a more comprehensive understanding of cardiovascular and ocular health, leading to
+new insights for clinical applications and therapeutic interventions.
+The remainder of the paper is as follows: Section 2 presents the mathematical framework, the assumptions under-
+lying the Eye2Heart model, and the value of the parameter employed in the model for baseline simulations. Section
+3 first details the validation process, comparing our baseline results with experimental and clinical data, and then
+explores key simulation scenarios, including variations in IOP and heart elastance. Finally, Section 4 discusses the
+implications of our findings, the limitations of the study, and directions for future research.
+2
+Model and methods
+This work presents a novel closed-loop mathematical model designed to capture the intricate interplay between the
+ocular and cardiovascular circulation systems. A closed-loop model is a mathematical framework that encapsulates
+the interdependent feedback mechanisms between interconnected systems, ensuring that the output from one system
+serves as an input to the other, thus forming a continuous cycle. This approach aims to mimic the physiological
+interactions between the eye and the heart, where variations in one system can directly influence the other.
+The proposed coupling is based on mathematical equations derived from fundamental physiological principles,
+enabling an accurate simulation of this bidirectional relationship. In this section, we describe the development, imple-
+mentation, and parameterization of the original closed-loop eye-heart model we designed, emphasizing its potential
+to provide novel insights into the integrated function of these critical systems.
+2.1
+Closed-loop Eye2Heart model
+Figure 1 illustrates the novel closed-loop Eye-Heart model, referred to as Eye2Heart hereafter. The system is
+built using an analogy between fluid flow in a hydraulic network and electrical current in a circuit. In this framework,
+blood pressure, blood volume, and blood flow are represented by electric potential, electric charge, and electric current,
+respectively. Cardiovascular compartments, including blood vessels and heart ventricles, are modeled as combinations
+of resistances (R), representing the opposition to flow that blood is experiencing when flowing through a compartment,
+and compliances (C), representing the ability of that compartment to deform and store volume. By writing Kirchhoff
+laws for the nodes (conservation of current/flow rate) and for closed circuits (conservation of the voltage/pressure
+difference), the resulting mathematical model is a system of 23 ordinary differential equations (ODEs) that capture
+the dynamic interactions between the ocular and the cardiovascular circulatory systems. This structure provides a
+robust foundation for analyzing and modeling the interconnected dynamics of these compartments. For clarity, the
+description is divided into three parts: the cardiovascular subsystem, the ocular subsystem, and the eye-heart coupling
+dynamics. To enhance the physiological interpretability of the model, the state variables and parameters have been
+renamed from their original terminology, as used in previous works by Avanzolini et al. [2] and Guidoboni et al. [10].
+These updates better reflect the physiological roles of the variables and parameters within the context of the integrated
+model.
+2

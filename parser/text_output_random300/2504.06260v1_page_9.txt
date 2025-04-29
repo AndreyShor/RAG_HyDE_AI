@@ -1,0 +1,96 @@
+Preprint. Under review.
+Table 5: Code Metrics: Comparison across tasks, prompts and agents.
+Experiment
+Executability
+Model Tree Score
+Valid Target
+ModelSpecs : One-Shot
+0.60±0.05
+0.46±0.07
+0/15
+ModelSpecs : PhyDoc In-Context
+0.62±0.05
+0.58±0.07
+1/15
+ModelSpecs : Multi-Turn Agent
+0.88±0.03
+0.56±0.08
+2/15
+Plan : One-Shot
+0.54±0.03
+0.39±0.03
+0/15
+Plan : PhyDoc In-Context
+0.59±0.05
+0.59±0.06
+0/15
+Table 6: Physics Metrics: Comparison across tasks, prompts and agents.
+Experiment
+Interface
+Factuality
+Interface
+Recall
+Feature
+Recall
+Feature
+Property
+Recall
+Feature
+Dim.
+ModelSpecs : One-Shot
+0.54±0.14
+0.43±0.14 0.39±0.10 0.15±0.09
+0.86±0.14
+ModelSpecs : PhyDoc In-Context
+1.00±0.00
+0.71±0.13 0.48±0.10 0.08±0.07
+0.59±0.16
+ModelSpecs : Multi-Turn Agent
+0.93±0.07
+0.79±0.11 0.75±0.09 0.24±0.10
+0.89±0.07
+Plan : One-Shot
+0.38±0.14
+0.36±0.13 0.43±0.11 0.32±0.11
+0.79±0.15
+Plan : PhyDoc In-Context
+0.85±0.10
+0.57±0.14 0.47±0.11 0.13±0.07
+0.93±0.07
+5.2
+Agent Results
+Our results underscored the need to ground the LLM’s responses with feedback from and
+documentation about the API. The interactive Multi-Turn Agent has the best performance
+of all the COMSOL Multiphysics®experiments on the ModelSpecs task on several metrics
+including executability (0.62 →0.88). Although Relative Error | Strict is the principal metric
+one would ideally optimize for, we do not report means over that metric here since the
+LLM was only able to pass the ‘Strict’ cut (i.e. compute a valid target that was also within
+10% of the correct answer) for a single problem in the Multi-Turn Agent and ModelSpecs +
+PhyDoc In-Context experiments. For this problem, the correct target value is 18.3◦Celsius,
+and the value exported by the LLM is 20◦Celsius (specifically 19.999...◦Celsius), which is a
+default temperature in COMSOL Multiphysics®: this is an indicator of the solution not being
+solved correctly. While a stricter relative error threshold would eliminate such serendipitous
+matches, this risks filtering out problems in which a solution might be conceptually correct
+but differs from the target because of say, differences in numerical choices.
+In Appendix G, we additionally examine how well the problems can be solved in Python by
+‘SWE-agent’, a software-engineering agentic framework (Yang et al., 2024a). In this setting,
+generating executable code is no longer a challenge. However, the bottleneck now lies
+in achieving the desired precision, due to the absence of verified physics modules and
+automatic numerical solvers in Python, which requires a user / LLM to explicitly define all
+equations from scratch. The agent is able to compute a valid target for 11 problems but is
+only able to compute a solution that passes the ‘Strict’ cut for 4 problems.
+6
+Conclusion and future directions
+FEABench addresses a key gap in the application of LLMs to scientific disciplines by
+analyzing their ability to operate engineering simulation software to solve problems that
+require numerical analysis to model mathematical and physical systems. The combination of
+capabilities required include low-resource code generation and physics and spatial reasoning
+skills. The complex compositional nature of this task makes it a novel testbed to measure the
+ability of agentic approaches to interact with a simulation environment and master a domain-
+specific language well enough to solve real-world quantitative problems. We designed a
+multiphysics reasoning agent with specialized tools and hybrid feedback to enhance the
+ability of LLMs to generate executable code. By introducing a multifaceted evaluation
+strategy and different task formulations, we analyzed the bottlenecks to succeeding at the
+tasks. Addressing these challenges would advance the development of agentic systems for
+engineering modelling and simulation.
+9

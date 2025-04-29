@@ -1,0 +1,146 @@
+2
+ing the thermodynamics of genuine percept-action loops
+largely unexplored (but see [23] for a recent exception,
+investigating quantum processes with feedback).
+In this work, we model both agent and environment
+as hidden Markov channels. By combining results from
+stochastic thermodynamics [7, 8] with the information
+theory of hidden Markov models [24], we obtain a frame-
+work which goes beyond prior work situated in the tape
+setting by relaxing the assumption of stationary input
+patterns and incorporating feedback between agent and
+environment. This framework is the primary contribu-
+tion of this work.
+The
+central
+quantity
+of
+this
+work
+is
+the
+work
+capacity—the optimal rate of energy production achiev-
+able by any agent—which, analogous to communication
+capacity, is an intrinsic information-theoretic property of
+the environment channel.
+The investigation of work capacity in the framework
+developed here leads to two key results: (i) in the ab-
+sence of feedback, where the agent’s percepts are not
+influenced by its actions, we extend prior results [17]
+beyond the stationary regime, showing that agents can
+reach the work capacity of the environment if and only
+if they are maximally predictive of their percepts while
+choosing actions randomly, without retaining memory of
+them; (ii) in the presence of feedback, maximally pre-
+dictive agents are generally inefficient. This counterintu-
+itive result highlights crucial distinctions between cyclic
+information processing in percept-action loops and linear
+information processing on a tape.
+In the following sections,
+we first introduce the
+percept-action loop framework (Section II) and define
+what it means for an agent to be maximally predictive
+(Section III). We then present our results on the work ca-
+pacity of channels (Section IV) and the design principles
+of work-efficient agents (Section V). Finally, we discuss
+directions for future research and conclude by situating
+our findings in a broader context (Section VI).
+II.
+FRAMEWORK
+We consider a classical (as opposed to quantum) agent
+interacting with a classical environment in discrete time
+steps (in the following called rounds) indexed by t ∈N0,
+where N0 denotes the nonnegative integers.
+In each
+round t, the agent selects an action At and subsequently
+receives a percept St (see Figure 1b).
+Since both the
+agent and environment may be stochastic, At and St are
+random variables taking values in finite alphabets A and
+S. Embedding the smaller alphabet into the larger, lets
+us set A = S, which will be assumed in the following.
+Throughout this work, random variables are denoted
+by capital letters, their realizations by lowercase let-
+ters, their alphabets—such as the sets of possible actions
+and percepts—by calligraphic letters, and sequences of
+random variables—interpreted as random variables on a
+product space—by At:n = (At, At+1, . . . , An−1). Infinite
+sequences, known as stochastic processes, are written as
+A = A0:∞, with analogous notation for their realizations,
+at:n = (at, at+1, . . . , an−1) ∈An and a = a0:∞∈AN0.
+The environment and agent are described by channels
+(conditional probability distributions) νenv
+S|A and ηagt
+A|S,
+which stochastically map actions A to percepts S and
+vice versa.
+We assume these channels are causal (re-
+specting time ordering such that future outputs cannot
+influence past inputs) and admit a finite memory imple-
+mentation. The finite-memory assumption is both prac-
+tical and ensures well-behaved asymptotics in percept-
+action loops. These constraints define what is commonly
+referred to in the literature as a finite-state [25] or hidden
+Markov channel [24] (see Supplemental Material C for a
+more in-depth exposition).
+Definition 1. A channel νenv
+S|A is an environment
+channel, denoted as
+env := νenv
+S|A,
+(1)
+if there exists a finite set of states Z, a distribution pZ0
+over Z, and a transition matrix Φ = (ϕ(j|i))j,i with i ∈
+A × Z and j ∈S × Z such that
+νenv
+S|A(s|a) =
+X
+z
+penv
+Z0 (z0)
+∞
+Y
+t=0
+ϕenv (st, zt+1|at, zt)
+(2)
+where the sum runs over all z ∈ZN0. Then, the tuple
+envM := (Φenv, penv
+Z0 )
+(3)
+is called a (hidden Markov) environment model of
+νenv
+Y |X and z ∈Z the hidden states of the model.
+While a channel describes only the input-output be-
+havior, a hidden Markov model provides an explicit
+memory-based mechanism that generates temporal corre-
+lations. Agents are defined analogously, with the key dis-
+tinction that the agent initiates the percept-action loop
+by selecting a first action A0 (see Figure 2):
+Definition 2. A channel ηagt
+A|S is an agent channel,
+denoted as
+agt := ηagt
+A|S,
+(4)
+if there exists a finite set of states M, a distribution
+pagt
+A0M0 over A × M, and a transition matrix Θagt =
+(θ(j|i))j,i with i ∈S × M and j ∈A × M such that
+ηagt
+A|S(a|s) =
+X
+m
+pagt
+A0M0(a0, m0)
+∞
+Y
+t=0
+θagt (at+1, mt+1|st, mt) ,
+(5)
+where the sum runs over all m ∈MN0. Then, the tuple
+agtM := (Θagt, pagt
+A0M0)
+(6)
+is called a (hidden Markov) agent model, of agt and
+m ∈M the memory states of the model.

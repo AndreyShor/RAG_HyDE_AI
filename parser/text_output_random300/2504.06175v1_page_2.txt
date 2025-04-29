@@ -1,0 +1,119 @@
+2
+global depolarizing noise on the Bell pairs we also report
+experimental results that we fit numerically. In further
+experimental exploration we report the performance of
+three different distillation protocols as a function of the
+input Bell fidelity which we degrade by idling the Bell
+states before distillation. We model the waiting time er-
+ror using a non-Pauli noise model (using the damping-
+dephasing channel [44, 45]) and include ZZ crosstalk
+to obtain reasonable agreement with experimental data
+both when distillation provides an improvement in Bell
+fidelity and when it does not.
+Our results show that (1) simple noise parameters of
+a device can be turned into a non-Pauli noise model to
+capture essential features of our entanglement distillation
+protocols; (2) using the noise model it is possible to pick
+one distillation protocol in favor of another; and (3) de-
+pending on the metric of success for distillation, one may
+or may not find broad improvement from the simplest
+distillation protocols.
+The rest of this paper is organized as follows.
+Us-
+ing standard notation (see App. A), we first summarize
+well-known ideas of entanglement distillation in Sec. II.
+These ideas include the recurrence protocol, what we call
+the {ZX3B} distillation protocol (also called double se-
+lection in [17]), impact of distillation on Bell pairs of
+unequal Bell fidelity, and distillation under global depo-
+larizing noise. The next section, Sec. III A, is devoted
+to studying the effects of gate noise, measurement noise,
+and local depolarizing noise on Bell state preparation and
+entanglement distillation. In Sec. III B we augment the
+noise model of the previous section by adding global de-
+polarizing noise to qubits as they wait prior to being
+distilled. We generate experimental data on supercon-
+ducting qubits to mimic depolarizing noise using twirling.
+Finally, in Sec. IV we report results on the experimental
+study of three distillation protocols, two recurrence-type
+protocols and the ZX3B protocol, as a function of idling
+noise on superconducting qubits; we match this data nu-
+merically using a damping-dephasing (non-Pauli) noise
+model also described in that section.
+II.
+ENTANGLEMENT DISTILLATION
+In this section we summarize the concept of distillation
+based on and extending the recurrence protocol [1, 2]
+and show some simple calculations based on depolarizing
+models focusing on how the protocols suffer if there is an
+imbalance in the fidelities of the input states.
+A.
+Recurrence (Z2B, X2B)
+The minimal recurrence protocols, using two Bell
+states (four qubits, 0, 1, 2, and 3), are shown in Fig. 1a
+and Fig. 1b. In Fig. 1a we show Z2B recurrence where
+the circuit measures Z0Z1 and Z2Z3, and post-selects for
+the case where these two measurements, i and j, respec-
+tively, equal each other. Replacing these ZZ measure-
+ments with XX measurements results in what we call
+X2B recurrence, shown in Fig. 1b.
+Due to the nature of the measurement, Z2B can detect
+single X or Y errors and X2B can detect single Z or Y
+errors. In essence, these protocols measure a stabilizer
+of the Bell state (either ZZ or XX) and discard upon
+encountering an error. The only difference between Bell
+state distillation compared to other forms of error detec-
+tion in Clifford circuits is that the stabilizer measurement
+happens in a distributed fashion, i.e. instead of comput-
+ing the parity of the Bell state into one qubit, we com-
+pute it into an entangled resource. This allows the par-
+ity checks to happen locally on each half of the Bell pair
+without further (quantum) communication across differ-
+ent halves of a Bell pair.
+We can gain some intuition for the performance of the
+protocol by applying Z2B to Bell states with a stochastic
+bit flip,
+ρ02 = I ⊗Dp(ϕ02)
+and
+ρ13 = I ⊗Dq(ϕ13),
+(1)
+where ϕ is the maximally entangled state, the identity
+channel I acts on qubits 0 and 1 and the bit flip channels
+Dp and Dq (see App. A) act on qubits 2 and 3 respec-
+tively with bit flip probabilities p and q. The measure-
+ments i and j in Fig. 1b equal each other with probability
+ps = (1−p)(1−q)+pq (sometimes called the acceptance
+probability) and result in a distilled state ρ′
+02 = I⊗Dr(ϕ)
+where r = pq/ps. The maximum Bell fidelity before dis-
+tillation, and Bell fidelity after distillation take values,
+Fb = max(1−p, 1−q),
+and
+Fa = (1 −p)(1 −q)
+ps
+, (2)
+respectively.
+Interchanging p and q does not change
+Fa, Fb, and ps, thus we let p ≤q, and write
+Fa −Fb = 1
+ps
+p(1 −p)(1 −2q) ≥0,
+(3)
+where the inequality is strict whenever 0 < p ≤q < 1/2.
+The strict inequality implies distillation improves Bell fi-
+delity for all non-trivial p and q (under the assumption
+of a perfect implementation of the distillation protocol).
+This example demonstrates (1) recurrence in Fig. 1a re-
+duces the X error rate from linear (O(p) or O(q)) to
+quadratic, O(pq), with probability ps; (2) the reduction
+occurs by post-selecting away those errors on qubits 2
+and 3 which anti-commute with the Z2Z3 measurement.
+Similar conclusions hold for the X2B recurrence protocol
+when analyzed for phase-flip noise, i.e., Z errors.
+B.
+ZX3B Distillation
+The limitation in the previous recurrence protocols was
+that they are not simultaneously sensitive to phase flip
+and bit flip error.
+If we increase the number of input
+Bell states to three (six qubits), then we can perform

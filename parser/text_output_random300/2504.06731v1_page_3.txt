@@ -1,0 +1,70 @@
+A matrix M is Schur stable if ρ(M) < 1, where ρ(M) is the spectral radius, i.e., the largest modulus of M’s
+eigenvalues. The well-known Perron–Frobenius theorem [42] states that for any nonnegative matrix M ≥0, the
+spectral radius ρ(M) is a (real) eigenvalue of M. A matrix M ≥0 is (row) stochastic if M1 = 1, and (row)
+substochastic if M1 ≤1.
+Using the Ger˘sgorin disk theorem [42], it is easy to verify that ρ(M) ≤1 for all
+substochastic matrices, and ρ(M) = 1 if M is stochastic.
+A (weighted directed) graph is defined by the triple G[W] = (V, E, W), where the set of nodes V = {1, . . . , n}
+represents the individuals (agents), the set of directed edges E ⊆V × V indicates the presence of social influence,
+and W = (wij) ≥0 is the weighted n×n adjacency matrix such that wij > 0 if and only if (i, j) ∈E. Additionally, a
+binary adjacency matrix B ∈{0, 1}n×n can also be introduced with bij = 1 if and only if wij > 0. For two matrices
+W 1, W 2 ≥0, the graph G[W 1 + W 2] corresponds to the union of two graphs G[W 1] and G[W 2].
+2.2
+The FJ and FJ-MM Models
+Henceforth, we consider a social group where each agent i is characterized at each discrete timestep t by a scalar
+state xi(t) ∈R, interpreted as their opinion on a particular topic. The overall network state at time t is represented
+by the vector x(t) = [x1(t), . . . , xn(t)]⊤∈Rn.
+The classical FJ model [1,12] is defined by three components: the stochastic influence matrix W = (wij) ∈Rn×n,
+the diagonal susceptibility matrix Λ ∈Rn×n with entries λii ∈[0, 1], and the vector of innate opinions s ∈Rn. The
+model assumes that opinions evolve according to the following update rule:
+xi(t + 1) = λii¯xi(t) + (1 −λii)si, ¯xi(t) :=
+n
+X
+j=1
+wijxj(t).
+(1)
+In other words, at each step of the opinion update, an agent’s new opinion is determined by their innate opinion
+si and the weighted average of their own and others’ opinions, ¯xi(t). The weight wij > 0, assigned by agent i
+to agent j, reflects i’s appraisal of j—such as recognition of expertise or trust. The coefficient λii represents an
+agent’s openness to assimilating others’ opinions, or their susceptibility to social influence. An agent with λii = 0
+is considered ’totally stubborn’, fully anchored to their innate opinion si, while λii = 1 corresponds to the classical
+French–DeGroot model, where opinions are updated solely through iterative averaging. In compact matrix form,
+the state vector x(t) evolves according to the following dynamics:
+x(t + 1) = ΛWx(t) + (I −Λ)s,
+∀t = 0, 1, . . .
+(2)
+The properties of the FJ model have been studied in [1,15,17,25,43], to mention a few.
+In this paper, we focus on an extended version of the FJ model, where the average of current opinions from (1),
+¯xi(t), computed by each agent i, is expanded to incorporate some opinions from previous steps as follows:
+¯xi(t) =
+Xn
+j=1
+XL
+ℓ=1 w(ℓ)
+ij xj(t −ℓ+ 1),
+(3)
+which leads to the matrix equation
+x(t + 1) = Λ
+XL
+ℓ=1 W (ℓ)x(t −ℓ+ 1) + (I −Λ)s.
+(4)
+Here, L ≥1 represents the depth of memory (with L = 1 corresponding to the original FJ model (1)), while the
+convex combination mechanism is preserved: w(ℓ)
+ij
+≥0 and PL
+ℓ=1
+Pn
+j=1 w(ℓ)
+ij
+= 1. Although this extension can
+accommodate communication delays, it is not motivated by them; rather, it aims to capture the effects of memory
+and multi-hop influence, thereby justifying the acronym FJ-MM.
+Definition 1 (FJ-MM). The system (4), defined by the diagonal matrix 0 ≤Λ ≤In and nonnegative matrices
+W (ℓ), ℓ= 1, . . . , L, whose sum W (1) + . . . + W (L) is a stochastic matrix, is referred to as the FJ-MM model.
+Note that the classical FJ model includes the French–DeGroot dynamics as a special case in which all agents
+are maximally susceptible, i.e., Λ = In. In the FJ-MM model, this corresponds to the French–DeGroot dynamics
+with memory—a model that has been studied in the context of delay robustness in consensus algorithms [30].
+Remarkably, delay can even facilitate consensus in the presence of periodic communication graphs [44], where the
+undelayed DeGroot model is known to oscillate. In this paper, we are primarily interested in the generic case where
+the FJ-MM dynamics is asymptotically stable, which is only possible when λii < 1 for at least one agent i.
+We now present two remarks regarding the choice of initial condition and the Lyapunov stability of the FJ-MM.

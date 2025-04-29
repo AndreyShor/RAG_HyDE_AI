@@ -1,0 +1,105 @@
+4
+than t, they abandon the communication and
+submit random strings to the controller.
+The error check will fail with high probability because
+ct and r are independently random strings, and the ex-
+pected number of matching bits is k1/2. For instance,
+using similar parameters as in [26], with k1 = 5000 and
+t = 10%, the probability that the number of unmatched
+bits between ct and r is smaller than 500 is approximately
+10−100 ≈2−332.19, a rare event.
+The controller cannot distinguish whether the failure is
+caused by covert communication or eavesdropping. This
+is because, by the no-cloning theorem and wavefunction
+collapse, both cases result in a random r. Also, by the
+same reason, Colin has no idea whether the one-time pad
+ciphertext ct is truly a valid substring of b, unless he had
+used Alice’s secret basis (which he does not know) to
+eavesdrop Alice’s photons.
+If the error checking accidentally passes, Alice and Bob
+submit fake shared keys ¯K to Colin in a way similar to the
+naive approach. Again, by no-cloning and wavefunction
+collapse, Colin has no idea whether ¯K is the true shared
+secret.
+Overall, in a one-time execution of the revised BB84,
+Colin statistically / informationally has no advantage in
+telling whether Alice and Bob are exchanging covert in-
+formation.
+As to the security against a typical attacker, note that
+Colin can be viewed as an upgraded Eve, with access to
+additional information beyond Eve can. Hence if Colin
+cannot detect whether Alice and Bob are exchanging
+covert messages, then Eve cannot gain any information
+of the covert message either.
+Similar to traditional attacks in quantum communica-
+tion, both Colin and Eve can disrupt the communication
+by eavesdropping on the photons. But they cannot learn
+anything about the covert messages.
+III.
+COVERT KEY DISTRIBUTION IN DL04
+We consider the third controller for DL04 [25], this
+controller knows the secret basis of the photon sender.
+A.
+Controller for DL04
+DL04 is essentially BB84 with photon encoding and re-
+turning. Its main idea is to encode each message bit into
+a photon by ﬂipping its state using unitary operations.
+It runs as follows:
+1. Photons Sending Phase:
+• Bob generates two random strings a
+=
+(a1, . . . , an) ∈{0, 1}n and b = (b1, . . . , bn) ∈
+{0, 1}n, prepares a sequence of photons p =
+(|ϕa1b1⟩,..., |ϕanbn⟩) such that |ϕ00⟩= |0⟩,
+|ϕ01⟩= |1⟩, |ϕ10⟩= |+⟩, and |ϕ11⟩= |−⟩, and
+sends them to Alice over a quantum channel.
+Call this batch of photons the A-batch.
+• Alice randomly chooses a batch of photons to
+complete a typical BB84 error rate estimation
+process with Bob. Call this batch of photons
+the S-batch.
+• If the error rate is too high, Bob concludes
+that the communication is insecure, and the
+protocol is aborted. If the error rate is suﬃ-
+ciently low, the remaining photons, called the
+B-batch (suppose its size is k), will be used to
+do encryption.
+2. Photons Returning Phase:
+• After conﬁrming the security of the B-batch,
+Alice proceeds to encode the message m =
+{0, 1}k by encoding each photon in the B-
+batch with one of two possible operations:
+• I = |0⟩⟨0| + |1⟩⟨1|
+• U = iσy = |0⟩⟨1| −|1⟩⟨0|
+where if mi = 0 then apply I on the i-th pho-
+ton of the B-batch, otherwise apply U on it,
+resulting in a batch of encoded photons.
+– The operation I does not have any af-
+fects, and U has the following eﬀects on
+the states:
+• U|0⟩= −|1⟩,
+U|1⟩= |0⟩
+• U|+⟩= |−⟩,
+U|−⟩= −|+⟩
+Alice sends the encoded B-batch to Bob.
+• Bob measures the photons using the correct
+bases which he knows, resulting in a string
+d = (d1, . . . , dk) ∈{0, 1}k. Bob then extracts
+the subsequence e ∈{0, 1}k of a corresponding
+to the positions of the B-batch in the A-batch,
+and recovers the message as m′ = d ⊗e.
+• To ensure the security of the transmission, Al-
+ice randomly selects some photons from the B-
+batch as checking instances to check the error
+rate with Bob.
+There are also three main secrets in DL04:
+1. the message m;
+2. the state selection string b;
+3. the basis selection string a.
+We consider a very strong controller who demands all
+three of them (in principle, he can demand everything he
+has evidence of existence). Speciﬁcally:
+Controller IV: This controller requires Bob to
+share two secrets a, b with him using BB84 before
+starting DL04 with Alice, and requires him to use
+a, b as the basis selection string and state selection

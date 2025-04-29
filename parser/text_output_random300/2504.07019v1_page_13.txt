@@ -1,0 +1,143 @@
+S3
+Since ˆHN comprises only even products of operators and does not act on degrees of freedom in orbital N + 1,
+Eq. (S.13) simplifies to:
+⟨k|k′⟩N+1 ⟨N; r|L
+d ˆHN |N, r′⟩R
+d = δkk′ ⟨N; r |N; r′⟩L,R
+d
+EN(r′) = δkk′δrr′EN(r) .
+(S.17)
+Similarly, in Eq. (S.14) ˆT a
+N+1 consists of a number operator acting only on degrees of freedom of orbital N + 1 and
+so reduces to,
+⟨k|N+1 ˆT a
+N+1 |k′⟩N+1 ⟨N; r|N; r′⟩L,R
+d
+= δkk′δrr′ϵN+1|k| ,
+(S.18)
+where we used the fact that when using our convention for the index k, the spin-summed occupation number for state
+|k⟩N+1 in orbital N + 1 is nk = |k|.
+Eqs. (S.15) and (S.16) are more complicated since they connect the part of the chain spanned by ˆHN to the added
+orbital N + 1. To make progress we insert the identity,
+1N+1 =
+X
+m,s
+|m⟩N+1 |N; s⟩R
+d ⟨N; s|L
+d ⟨m|N+1 ,
+(S.19)
+between the creation and annihilation operators of ˆT b
+N+1 and ˆT c
+N+1 in Eq. (S.10). Then Eq. (S.15) becomes,
+tN
+X
+σ,m,s
+⟨N; r|L
+d ⟨k|N+1 f †
+Nσ |m⟩N+1 |N; s⟩R
+d ⟨N; s|L
+d ⟨m|N+1 fN+1σ |k′⟩N+1 |N; r′⟩R
+d
+(S.20)
+= tN
+X
+σ,m,s
+(−1)k ⟨k|m⟩N+1 ⟨N; r|L
+d f †
+Nσ |N; s⟩R
+d · ⟨m|N+1 fN+1σ |k′⟩N+1 · ⟨N; s|N; r′⟩L,R
+d
+(S.21)
+= tN
+X
+σ
+(−1)kM σ
+k,k′ · ⟨N; r|L
+d f †
+Nσ |N; r′⟩R
+d ,
+(S.22)
+where we have defined M σ
+k,k′ to denote the matrix element ⟨k|N+1fN+1σ|k′⟩N+1, which is independent of the value of
+N. Note also that (M σ
+k,k′)† = M σ
+k′,k. The factor of (−1)k comes from the fermionic anticommutation when reordering
+operators.
+Similarly for Eq. (S.16), we obtain,
+tN
+X
+σ
+(−1)k′M σ
+k′,k · ⟨N; r|L
+d fNσ |N; r′⟩R
+d .
+(S.23)
+The nontrivial matrix elements ⟨N; r|L
+d f †
+Nσ |N; r′⟩R
+d and ⟨N; r|L
+d fNσ |N; r′⟩R
+d must be computed at the previous step
+and saved. Note that they are not simple Hermitian conjugates of each other and must be calculated separately.
+From these expressions, one may construct the NH Hamiltonian ˆHN+1 at step N + 1 from information obtained at
+step N – specifically, the eigenvalues EN(r), and the matrix elements ⟨N; r|L
+d f †
+Nσ |N; r′⟩R
+d and ⟨N; r|L
+d fNσ |N; r′⟩R
+d .
+With Hb
+N+1 now constructed, we can diagonalize this matrix to obtain the eigenvalues EN+1 and the left and right
+eigenvectors |N + 1; r⟩L(R)
+d
+. In particular, we can write Hb
+N+1 = UR
+N+1Hd
+N+1(UL
+N+1)† where Hd
+N+1 is the diagonal
+matrix of eigenvalues EN+1 and UR(L)
+N+1 is a matrix whose columns are the right(left) eigenvectors. This provides the
+set of complex eigenvalues EN+1 needed for the next step.
+What about the matrix elements of the fN+1σ and f †
+N+1σ operators? These are also needed for the next step. To
+compute these, we expand the eigenstates as,
+|N + 1; r⟩R(L)
+d
+=
+X
+m,s
+U R(L)
+N+1 (r; m, s)(†) |N + 1; m; s⟩R(L)
+b
+≡
+X
+m,s
+U R(L)
+N+1 (r; m, s)(†) |m⟩N+1 |N; s⟩R(L)
+d
+.
+(S.24)
+We use this to construct the matrix element,
+⟨N + 1; r|L
+d f †
+N+1σ |N + 1; r′⟩R
+d
+=
+X
+m,s
+m′,s′
+U L
+N+1(r; m, s)†U R
+N+1(r′; m′, s′) ⟨N; s|N; s′⟩L,R
+d
+⟨m|N+1 f †
+N+1σ |m′⟩N+1 (S.25)
+=
+X
+m,m′,s
+M σ
+m′m U L
+N+1(r; m, s)†U R
+N+1(r′; m′, s)
+(S.26)

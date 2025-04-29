@@ -1,0 +1,51 @@
+flow regimes.
+Leaky ReLU(z) =
+
+
+
+z,
+if z ≥0
+0.01z,
+if z < 0
+(9)
+In laminar flows characterized by smooth and well-defined dynamics, Leaky ReLU
+preserves small negative gradients, ensuring the network’s learning capacity in regions
+with minimal activation. In turbulent flows, where complex variations dominate the flow
+field, Leaky ReLU mitigates the issue of "dead neurons" by allowing non-zero gradients for
+negative inputs, thus enabling the network to capture intricate flow patterns. Hyperbolic
+tangent is the default activation function for the LSTM layer [43].
+The architecture is optimized using the Mean Absolute Error (MAE) as the loss func-
+tion and the ADAM optimizer [44], ensuring robust convergence and effective handling of
+the diverse flow regimes considered in this study.
+MAE = 1
+n
+n
+X
+i=1
+|yi −ˆyi|
+(10)
+where yi represents the true values, ˆyi denotes the predicted values, and n is the total
+number of observations.
+The Adam optimizer combines the strengths of momentum and RMSprop for efficient
+training [44]. Momentum computes an exponentially weighted average of past gradients,
+which smooths updates and accelerates convergence in the most relevant directions. Sim-
+ultaneously, Adam employs adaptive learning rates for each parameter, adjusting them
+based on recent gradient magnitudes. This dynamic adjustment ensures stable updates,
+even in the presence of noisy gradients or non-stationary objectives.
+2.3.1
+Hyperparameter Tuning
+Tuning crucial parameters is another important step in optimizing deep learning models,
+as it directly impacts model performance and convergence. Hyperparameters are para-
+meters established before training begins, such as the learning rate, batch size, number of
+layers, and number of units per layer. Their values significantly influence the effectiveness
+with which the model learns from the data.
+Each architecture has been hyper-tuned for the parameters of batch size, learning
+rate, and sequence length to ensure optimal performance across each specific test case.
+Sequence length determines how much historical data (time steps) the model sees as input.
+The batch size determines the number of samples processed before updating the model,
+with larger batches often allowing higher learning rates. The learning rate controls the
+step size during optimization and should be tuned to ensure stable and efficient training.
+Selecting these hyperparameters is a problem-specific task, as there is no universal
+configuration that guarantees optimal performance. Bayesian optimization, coarse-to-fine
+adjustment, grid search, and random search are some of the most common techniques
+13

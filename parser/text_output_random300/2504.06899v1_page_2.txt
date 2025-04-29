@@ -1,0 +1,128 @@
+2
+for all i ∈{1, . . . , n} and |P(s0|e) −1
+2| ≤ϵ, where e
+represents any knowledge about si that the adversary
+may possess. This is a striking result since the source
+has a straightforward structure. It is a mixture of certain
+permutations of an iid Bernoulli distribution biased by ϵ
+around { 1
+2, 1
+2} distribution [6].
+On the other hand, private randomness, an early
+recognized quantum resource [1], arises from quantum
+mechanical axioms guaranteeing randomness in specific
+measurement outcomes.
+Renner and Colbeck’s break-
+through [7] defied the Santha-Vazirani limitation, reveal-
+ing a method to overcome it utilizing statistically inde-
+pendent quantum devices decoupled from the weak ran-
+domness source. Optimizing this process produced prac-
+tical protocols using only two devices [8, 9].
+Two primary models underpin private randomness:
+the Santha-Vazirani source, previously mentioned, and
+the Hmin source [10]. Our focus is on estimating the pri-
+vacy level of weakly private randomness, assuming that
+it conforms to the Santha-Vazirani source. However, our
+developed software could be easily modified to estimate
+the Hmin source as well. Notably, recent advances have
+employed heuristic modeling to characterize heartbeat
+signals as Santha-Vazirani sources [11].
+In this article, we go beyond these results in two ways.
+Firstly, we provide the axioms that any function estimat-
+ing a parameter ϵ should satisfy. Secondly, we focus on a
+different physical source, a more efficient one, that of the
+(i) Earthquakes and (ii) Earth vibrations (seismic noise).
+Our approach further develops the technique of attribut-
+ing ϵ to a sequence of bits and goes beyond the limita-
+tions of the low amount of data that the human heart
+can generate within a day. We base this on the plausi-
+ble assumption that local and global Earth’s vibrations
+are primarily unpredictable.
+We then note that tech-
+niques for privatizing such a priori unpredictable source
+using quantum devices are known [12]. We also provide
+open-source software that enables the estimation of the
+parameter ϵ for an input sequence of bits.
+A.
+Private randomness amplification—previous
+works
+This section presents the background for the problem
+of randomness amplification and the history of results
+in this domain compactly, based on the comprehensive
+review [13].
+Let us first observe that generating randomness using
+a quantum device is straightforward when we trust its
+inner workings. Preparing a quantum bit (qubit) in the
+equal superposition |+⟩:= 1/
+√
+2(|0⟩+|1⟩) and measuring
+it in the computational basis enables the generation of
+random outputs.
+Indeed, the Born rule [14] dictates unbiased outcomes
+for these measurements:
+1
+2 : |0⟩and
+1
+2 : |1⟩.
+How-
+ever, trusting random number generators (RNGs) re-
+mains questionable. An eavesdropper might have mod-
+ified the devices during manufacturing, leading them
+to exhibit predictable behavior advantageous to an ad-
+versary in collaboration with the manufacturer.
+The
+history of successful attacks on classical RNGs is well-
+documented, particularly following the seminal Trojan
+hardware attack [15]. Based on altering the dopant level
+of three transistors within the RNG circuit, the attack
+introduces a subtle modification to the overall structure,
+rendering it challenging to detect while compromising the
+security of randomness.
+One of the possible solutions employs quantum device-
+independent private random number generators relying
+on a short but secure uniformly random seed called
+(quantum) private randomness expansion [16–19]. The
+seed enables the selection of inputs to the device(s) while
+subsequent outputs undergo processing via quantum-
+proof extractors. Upon the violation of a Bell inequality
+[20]—an assessment of the inputs and outputs of a de-
+vice surpassing a predetermined threshold—the involved
+parties ascertain that the resulting larger output string
+maintains both uniformity and remains undisclosed to
+potential adversaries.
+Furthermore, the application scope of device certifica-
+tion via Bell violations has expanded significantly. This
+approach not only validates the randomness of quan-
+tum RNGs [17, 21] and secures QKD in quantum com-
+munication [13, 22] but also proves properties of a de-
+vice, such as privacy of randomness based solely on the
+statistics of inputs and outputs of the device, facilitat-
+ing device-independent quantum information processing
+[23]. Moreover, it ensures the integrity of quantum net-
+works [24, 25], verifies quantum measurements [26, 27],
+and guarantees fidelity in quantum computing [28]. Ad-
+ditionally, it explores fundamental physics [29] and vali-
+dates quantum computational advantages [30]. The com-
+prehensive nature of Bell violations certification spans
+numerous applications in quantum technology, ensuring
+robust security, reliability, and trust.
+Here, it’s noteworthy to recognize that the adversary’s
+limitations could arise from quantum mechanics, defining
+a quantum adversary, or from the inherent impossibility
+of super-luminal signaling, defining a non-signaling ad-
+versary. Researchers have explored setups for generating
+private randomness in both of these contexts [31–34].
+Furthermore, extractors are functional applications
+[35–37], separating the function’s output from the ad-
+versary’s memory—a repository encompassing all con-
+ceivable knowledge (refer to [1, 13] for comprehensive re-
+views). However, this solution poses a critical challenge,
+as it necessitates a perfectly random and secure seed, a
+requirement lacking practical justification.
+This problem, however, was resolved by the idea of
+quantum private randomness amplification, on develop-
+ing which we focus in this manuscript. According to this
+approach, the honest parties have access to a source of
+weakly secure random bits (the Santha-Vazirani or, in
+general, Hmin source). The inputs to the quantum de-
+vice(s) employ these seeds, and the resultant outputs,

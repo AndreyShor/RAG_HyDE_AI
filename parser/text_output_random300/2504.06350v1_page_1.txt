@@ -1,0 +1,90 @@
+The future of secure communications: device independence in quantum
+key distribution
+Seyed Arash Ghoreishia,b, Giovanni Scalac,d,e, Renato Rennerf, Let´ıcia Lira Taccag,h, Jan Boudab,
+Stephen Patrick Walborng,h, Marcin Paw lowskie
+a RCQI, Institute of Physics, Slovak Academy of Sciences, D´ubravsk´a cesta 9, 84511 Bratislava, Slovakia
+bFaculty of Informatics, Masaryk University, Botanick´a 68a, 602 00 Brno, Czech Republic
+cDipartimento Interateneo di Fisica, Politecnico di Bari, 70126 Bari, Italy
+dINFN, Sezione di Bari, 70126 Bari, Italy
+eInternational Centre for Theory of Quantum Technologies, University of Gda´nsk, Jana Ba˙zy´nskiego 1A, Gda´nsk,
+80-309, Poland
+fInstitute for Theoretical Physics, ETH Z¨urich, 8093 Z¨urich, Switzerland
+gDepartamento de Fisica, Universidad de Concepci´on, Concepci´on, B´ıo-B´ıo, Chile
+hMillennium Institute for Research in Optics, Universidad de Concepci´on, Concepci´on, B´ıo-B´ıo, Chile
+Abstract
+In the ever-evolving landscape of quantum cryptography, Device-independent Quantum Key Distribution
+(DI-QKD) stands out for its unique approach to ensuring security based not on the trustworthiness of
+the devices but on nonlocal correlations. Beginning with a contextual understanding of modern crypto-
+graphic security and the limitations of standard quantum key distribution methods, this review explores
+the pivotal role of nonclassicality and the challenges posed by various experimental loopholes for DI-
+QKD. Various protocols, security against individual, collective and coherent attacks, and the concept
+of self-testing are also examined, as well as the entropy accumulation theorem, and additional math-
+ematical methods in formulating advanced security proofs. In addition, the burgeoning field of semi-
+device-independent models (measurement DI–QKD, Receiver DI–QKD, and One–sided DI–QKD) is also
+analyzed. The practical aspects are discussed through a detailed overview of experimental progress and
+the open challenges toward the commercial deployment in the future of secure communications.
+Keywords:
+device-independent quantum key distribution, quantum key distribution, quantum
+communications
+Contents
+1
+Introduction
+3
+1.1
+Overview of modern cryptography
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+3
+1.2
+From classical to quantum cryptography . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+1.3
+Standard Quantum Key Distribution . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+1.3.1
+Theoretical security of QKD
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+4
+1.3.2
+Implementation issues and Quantum Hacking . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6
+1.4
+Overview of Device-independent QKD . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+6
+1.5
+Focus of this Review . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+8
+2
+Nonclassicality in quantum cryptography
+8
+2.1
+Bell nonlocality . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+8
+2.2
+The Navascu´es-Pironio-Acin hierarchy . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+11
+2.3
+Self-testing
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+11
+2.4
+Experimental Loopholes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+13
+2.4.1
+Detection Efficiency Loophole . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+13
+2.4.2
+Locality and Measurement-dependence Loophole . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+16
+2.4.3
+Experimental Breakthroughs
+. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+16
+2.5
+Other notions of nonclassicality that can power Cryptography . . . . . . . . . . . . . . . . . . . . . . . . . .
+17
+Email addresses: arash.ghoreishi@savba.sk (Seyed Arash Ghoreishi), giovanni.scala@poliba.it (Giovanni Scala),
+renner@ethz.ch (Renato Renner), letacca@udec.cl (Let´ıcia Lira Tacca), bouda@fi.muni.cz (Jan Bouda),
+swalborn@udec.cl (Stephen Patrick Walborn), marcin.pawlowski@ug.edu.pl (Marcin Paw lowski)
+Preprint submitted to Physics Reports
+April 10, 2025
+arXiv:2504.06350v1  [quant-ph]  8 Apr 2025

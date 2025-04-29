@@ -1,0 +1,160 @@
+11
+Figure 5 Sketch of the 3D NLSE with all terms contribut-
+ing the dynamics adapted from (Aladjidi, 2023). From left
+to right: interactions or self-defocusing, kinetic energy along
+(x, y) or diffraction, potential energy or waveguiding, kinetic
+energy along t or dispersion, rigid drift or group velocity. This
+last term disappears in the co-moving frame as explained in
+the text.
+where we reintroduced the loss, potential (taken indepen-
+dent of z), and nonlinear terms, assuming that they do
+not depend on t.
+The term
+i
+vg
+∂
+∂t in Eq. (52) is known as a rigid drift and
+can be removed by a change of variable to the co-moving
+frame: t′ = t −
+z
+vg , E(z, t) = E(z, t′).
+Note that here
+(and in later variable changes) we keep the notation E
+for E(z, t′), even though it is a new quantity: the field
+envelope in the co-moving frame.
+The derivative over z is computed using the chain rule:
+∂
+∂z
+
+t
+= ∂t′
+∂z
+∂
+∂t′ + ∂
+∂z
+
+t′ = −1
+vg
+∂
+∂t′ + ∂
+∂z
+
+t′ ,
+(53)
+and allows to cancel the rigid drift. This transformation
+is known in optics as a retarded time frame and leads to:
+i∂E(z, t′)
+∂z
+=
+
+−1
+2k0
+∇2
+⊥+ D0
+2
+∂2
+∂t′2
+−iα
+2 −k0
+δn0(r)
+n0
+−k0
+nE
+2
+n0
+|E|2
+
+E(z, t′).
+(54)
+Conceptually, the fluid of light becomes a 3D+1 system
+where the propagation axis z still acts as an effective evo-
+lution parameter (analogous to time) and the third spa-
+tial dimension being the time t′ in the reference frame of
+the pulse. The mass m⊥= k0 in the transverse plane is
+still due to diffraction, and a mass in the temporal di-
+rection mt = −1
+D0
+is introduced due to the group velocity
+dispersion.
+B. Mapping the 3D+1 NLSE and the GPE
+We now map the 3D+1 NLSE to the GPE using the
+same approach as in Section II.C. We use a similar change
+of variable (but in the co-moving frame): τ = z
+c , ζ =
+vgt−z , E(z, t) = E(τ, ζ) and we multiply by ℏto recover
+the dimension of an energy:
+iℏ∂E
+∂τ = [−ℏ2
+2 ¯m⊥
+∇2
+⊥−ℏ2
+2 ¯mζ
+∂2
+∂ζ2 −i ¯γ
+2
++ ¯V (r, ζ) + ¯g(r, ζ)|E|2
+E
+(55)
+where we defined the analogous mass in the transverse
+plane as ¯m⊥= ℏk0/c, an the mass along the ζ-axis as
+¯mζ = −ℏ/cv2
+gD0. The terms ¯V , ¯γ and ¯g are defined the
+same way as in Section II.C.
+In Eq. 55, the mass is anisotropic. But since it appears
+only in the kinetic energy terms, we can rescale the ζ axis
+once more to eliminate this anisotropy, at the expense of
+modifying the definition of momentum along the ζ-axis.
+This rescaling is introduced as:
+ζ′ ≡
+ζ
+q
+−k0D0v2g
+,
+(56)
+leading to an isotropic form for the 3D+1 NLSE:
+iℏ∂
+∂τ E(x, y, ζ′) = [−ℏ2
+2 ¯m∇2
+x,y,ζ′ −i ¯γ
+2 + ¯V (r⊥, ζ′)
++¯g(r⊥, ζ′)|E|2
+E(x, y, ζ′),
+(57)
+with ¯m = ℏk0/c. Note that in Eq. (55) and Eq. (57), the
+terms ¯g are proportional but not equal since |E|2 depends
+on the rescaling. This will become clear in the next step
+of the derivation with the proper normalization of |E|2.
+We decomposed these two variable changes for clarity,
+but the final change from t to ζ′ could have been intu-
+ited from our previous remark on the kinetic energy. The
+overall rescaling is indeed the square root of the ratio of
+the mass along the time-axis and the mass in the trans-
+verse plane:
+ζ′ =
+1
+√−k0D0
+t′ =
+r mt
+m⊥
+t′.
+(58)
+In 3D, there is a final step that can be done to complete
+the mapping with the GPE. The electric field envelope
+E(x, y, ζ′) can be normalized to be of the same dimen-
+sion as a wavefunction ψ(x, y, ζ′), in order to obtain the
+interaction coefficient ¯g3D with the same dimension as in
+the GPE.
+We first convert the electric field E(x, y, t′) into a photon
+density |ψ|2 along (x, y, t′) by dividing the intensity I by
+the energy ℏω0 of one photon:
+|E(x, y, t′)|2 =
+2
+ε0n0cI(x, y, t′) =
+2
+ε0n0c
+I(x, y, t′)
+ℏω0
+ℏω0
+= 2ℏω0
+ε0n0c|ψ(x, y, t′)|2.
+(59)

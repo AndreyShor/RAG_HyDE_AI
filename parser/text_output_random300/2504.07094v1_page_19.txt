@@ -1,0 +1,122 @@
+4
+D.
+Algorithmic implementation
+Below is the pseudocode of the algorithm used
+for the iterative solution of the self-consistent equa-
+tions, employing nested relaxations.
+We typically
+set Ncycles = 100, ϵ = 10−15, Niter = 50, 000.
+Algorithm 1: Pseudocode of the iterative
+method
+Initialize ⃗W (0);
+Compute ⃗Z(0) from ⃗W (0) ;
+// eq. S5
+⃗Zdamp ←⃗Z(0);
+i ←1;
+for cycle ←1 to Ncycles do
+c ←1;
+repeat
+for each E in energy range num ←0;
+denom ←0;
+for each j in histograms that include E
+r ←1 −W (i−1)(E)
+Z(i−1)
+j
+;
+num ←num + nj(E)
+gj · r ;
+denom ←denom +
+Nj
+Zdamp
+j
+· gj · r
+;
+W (i)(E) ←α · num
+denom + (1 −α) · W (i−1)(E);
+Normalize ⃗W (i) ;
+// eq. S3
+Compute ⃗Z(i) from ⃗W (i) ;
+// eq. S5
+i ←i + 1;
+c ←c + 1;
+δ ←0;
+for each E in energy range
+δ ←δ +
+W (i)(E) −W (i−1)(E)
+
+W (i−1)(E)
+;
+until δ < ϵ or c ≥Niter;
+⃗Zdamp ←α⃗Z(i) + (1 −α)⃗Zdamp;
+To avoid loss of numerical precision due to round-
+off errors, it is advisable to perform the numeri-
+cal summations after sorting the summands in as-
+cending numerical order, thus adding elements from
+the smallest to the largest. For energy levels (bins)
+where no entries were observed in any on the inter-
+vals, the corresponding W array elements are always
+kept equal to zero.
+The iterative method can also be used to solve
+the approximate self-consistent equations S14, which
+converge significantly faster than the full ones. To
+this end, it suffices to modify the algorithm at lines
+6, 12, and 26 of the pseudocode by removing the re-
+peat and until statements, which makes variable c
+unnecessary, and setting r ←1. The W array ob-
+tained at convergence closely approximates the so-
+lution of the full set of self-consistent equations and
+is then used to initialize the latter for the final re-
+finement.
+Fig. S2 illustrates the convergence of the two-
+step procedure for the 12 × 12 Ising model dis-
+cussed in the main text Appendix A. For this ap-
+plication, we covered the admissible energy range
+with ∼150 intervals of width 8, corresponding to
+m = 3 slack variables, and used a sampling depth
+of 1000 for each histogrammed interval. The result-
+ing density of states profile, W(E), was compared
+with the one calculated exactly, W exact(E). Consid-
+ering the wide dynamic range of W of the system,
+which spans ∼40 orders of magnitude, we measured
+the convergence as the relative difference to the ex-
+act solution, averaged over all distinct energy levels:
+⟨erel⟩= ⟨|W(E) −W exact(E)|/W exact(E)⟩E.
+The top panel of Fig. S2 illustrates the conver-
+gence of the iterative algorithm based on the approx-
+imate equations S14, initialized from a uniform (flat)
+W profile. Because the exact profile spans ∼40 or-
+ders of magnitude, the flat initial profile implies a
+very large initial error. In spite of this, the iterative
+procedure converges rapidly within few percents of
+W exact(E). The converged solution of the approxi-
+mate equations is then refined by using it to initialize
+the iterative solution of the full equations.
+2.
+SOLVING QUBO PROBLEMS WITH
+PARALLEL TEMPERING METHODS
+Classical parallel tempering (PT) methods, also
+termed replica exchange methods (REMs) guaran-
+tee that the ground state manifold of QUBO Hamil-
+tonians is sampled uniformly. Thus, we resorted to
+PT/REMs as the ideal tools to carry out a stringent
+and transparent validation of our framework for re-
+constructing density-of-states.
+The PT/REM-based optimization of a given
+QUBO Hamiltonian, H(σ1, . . . , σn), was set up as
+follows.
+The largest reduced temperature of the
+replicas, kB Tmax, was picked by computing the root-
+mean-squared fluctuation of the QUBO energy for
+random spin configurations and then setting kB Tmax
+to be between 2 and 3 orders of magnitude larger
+than this characteristic energy fluctuation. The low-
+est reduced temperature, kB Tmin, was picked by
+computing the root-mean-squared fluctuation of the
+QUBO energy for single-spin flips over random con-
+formations and then setting kB Tmin to be at least
+three orders of magnitude smaller than this char-
+acteristic single-spin energy fluctuation. The tem-
+perature range was then tentatively covered with
+Nr replicas, where Nr was customarily set equal to
+twice the square root of the number of degrees of
+freedom, Nr = 2√n and spread across the entire

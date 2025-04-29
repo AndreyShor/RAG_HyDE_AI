@@ -1,0 +1,117 @@
+12
+More broadly, reducing entangling angle shows im-
+proved gate performance, both in terms of fidelity and
+coherence, not only for MS(θ) gateset on the QSCOUT
+testbed described here, but also on commercial trapped-
+ion systems [1, 6].
+Likewise, expanding to the circuit
+compilation, these performance improvements persist at
+the circuit level [25]. Superconducting systems have also
+begun to take advantage of expanded entangling gate-
+sets to include fractional gates that yield improvements
+in both performance and circuit depth [38, 39]. As such,
+generating arbitrary amounts of entanglement is an im-
+portant resource for NISQ processors.
+ACKNOWLEDGEMENTS
+This research was supported by the U.S. Department
+of Energy, Office of Science, Office of Advanced Scientific
+Computing Research Quantum Testbed Program and
+by Sandia National Laboratories’ Laboratory Directed
+Research and Development Program.
+Sandia National
+Laboratories is a multi-mission laboratory managed and
+operated by National Technology & Engineering Solu-
+tions of Sandia, LLC (NTESS), a wholly owned sub-
+sidiary of Honeywell International Inc., for the U.S. De-
+partment of Energy’s National Nuclear Security Admin-
+istration (DOE/NNSA) under contract DE-NA0003525.
+This written work is authored by an employee of NT-
+ESS. The employee, not NTESS, owns the right, title
+and interest in and to the written work and is responsi-
+ble for its contents. Any subjective views or opinions that
+might be expressed in the written work do not necessarily
+represent the views of the U.S. Government. The pub-
+lisher acknowledges that the U.S. Government retains a
+non-exclusive, paid-up, irrevocable, world-wide license to
+publish or reproduce the published form of this written
+work or allow others to do so, for U.S. Government pur-
+poses. The DOE will provide public access to results of
+federally sponsored research in accordance with the DOE
+Public Access Plan. SAND2025-03151O.
+APPENDIX A: CALIBRATION SCHEDULE
+In this appendix, we outline the typical calibration
+schedule for both single- and two-qubit gates performed
+for users of the QSCOUT hardware. While some users
+will not require the full suite of calibrations and others
+will require additional calibrations, this is a representa-
+tive workflow.
+After loading a chain of ions, the ion florescence is
+aligned into a multi-core fiber, where each single core is
+coupled to separate photomultiplier tubes (PMT) for de-
+tection. For each calibration step, we Doppler cool and
+prepare the ions in |0⟩. The axial ion spacing and chain
+position are aligned to the 335 nm IA beams using DC
+control voltages applied directly to the trap, which tune
+the curvature and position of the harmonic trapping po-
+tential.
+Amplitudes necessary to generate slightly less
+than π pulse (when aligned) are applied to the IA beams
+while tuning the position of trap potential to achieve
+maximum transfer to |1⟩.
+Figure 12a shows a scan of
+the axial potential well position which moves 1 µm for
+each integer step of the solution line number.
+Submi-
+cron positioning is achieved by interpolating between line
+numbers. In the scenario that the well position for maxi-
+mum transfer to |1⟩does not coincide for all ions, the ion
+spacing is adjusted by scaling the trap frequency. How-
+ever, for ion chain lengths of 4 to 6, not all ions will be
+fully aligned due to the harmonic nature of the poten-
+tial; therefore, the potential is adjusted such that some
+ions are intentionally misaligned to have the greatest av-
+erage coverage for all ions. At ion numbers greater than
+6, quartic terms and/or additional spectator ions may be
+necessary to have more even spacing of the data qubit
+ions.
+Next the drive amplitudes of the 355 nm IA Raman
+beams are calibrated.
+We calibrate the amplitudes to
+yield 10 µs counter-propagating (IA and global) and 25
+µs co-propagating IA π-times on the |0⟩→|1⟩transi-
+tion. In the co-propagating IA configuration, two tones
+are applied to the AOM for the IA beams while one of
+those tone amplitude (tone1) is swept. For the counter-
+propagating beam geometry, the tone applied to the IA
+beams’ AOM is swept while the other tone, on the global
+beam, is kept fixed. We measure Rabi oscillations ver-
+sus amplitude with a fixed gate duration and determine
+the saturation amplitude asat and scaling factor Ξ of the
+IA beams’ AOM in equation (4) from a fit to equation
+(5) (see Section III). Note that in the co- and counter-
+propagating single-qubit case (unlike the two-qubit case
+described in Section III), we sweep a single tone applied
+to the IA beam, not the tone applied to the global. Fig-
+ure 12b and c show the observed Rabi oscillations as the
+pulse amplitude is swept for the IA beams. For the am-
+plitude scan, the gate duration is increased to 250 µs (co-
+propagating, 10x the desired π time) or 30 µs (counter-
+propagating, 3x the desired π time) to generate sufficient
+oscillations before AOM saturation to ensure a precise fit.
+The drive amplitude for the desired π-time is calculated
+using equation (4) with the fit asat and Ξ.
+The next step in the process is to identify the ra-
+dial motional modes for both Raman sideband cooling
+and MS gate calibration. Sideband cooling is applied to
+all radial motional modes for the pulse amplitude scans
+described above and the two-qubit gate calibrations de-
+scribed below.
+Figure 13a shows a coarse frequency sweep of the lower
+(<2.25MHz) and upper (>2.25 MHz) radial sidebands for
+two ions. Sideband locations are identified using a peak
+finding routine. Finer scans, centered around the peaks
+in Fig. 13a, are shown in Fig. 13b and c for the lower
+and upper sidebands, respectively. Each sideband in the
+lower (or upper) manifold is calibrated in parallel by us-
+ing one ion for each sideband mode. For chain lengths
+of three ions or more, the ion-mode assignment is chosen

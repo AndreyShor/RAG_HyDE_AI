@@ -1,0 +1,114 @@
+28
+train, (Ztrain,Ytrain) and test (Ztest,Ytest) datasets. It is
+crucial that the training process is never inadvertently
+exposed to the test data, as doing so invalidates the test-
+ing performance and will result in artificially strong per-
+formance.
+4. With the train dataset, optimize a set of fixed weights W
+which perform a multiply and accumulate operation on
+the output states. This can be achieved via a number of
+methods including regression (typically linear or ridge
+regression for continuous data such as predicting ana-
+logue time-series, or logistic regression for classifying
+discrete data classes such as images or spoken words)
+and gradient descent. These can be performed relatively
+simply with various software packages with some popu-
+lar choices in the python libraries sklearn and PyTorch,
+or hand-coded for more flexibility. The regression pro-
+cesses function by performing a simple linear least-
+squares fit to identify a weight matrix W for each reser-
+voir output channel such that the error between the de-
+sired computational output Ytrain (target data) and actual
+reservoir output multiplied by the weight matrix ZtrainW
+is minimized, e.g. Ytrain −ZtrainW is as close to zero as
+possible. This is a simple single matrix solve, hence
+much faster and computationally cheaper than tech-
+niques like backpropagation used to train larger neural
+networks.
+5. Test the performance of the reservoir by applying the
+weights obtained during training to the test dataset,
+comparing the reservoir output in response to the test
+data Ztest multiplied by the previously trained weight
+matrix W to the target Ytest, e.g. evaluating ZtestW −
+Ytest. Performance is typically evaluated using mean
+squared error (MSE) or normalized mean squared er-
+ror (NMSE) for continuous regression/prediction tasks
+or accuracy for classification tasks, with the error be-
+ing the difference between the reservoir output and the
+desired target computational response Ytrain.
+There are a few subtle things one must consider when test-
+ing a reservoir. The length of the training set (n) should be
+larger than the number of reservoir outputs (m), n > 1.5m is
+a good starting point. If n ≤m, the regression will overfit
+the training dataset, leading to an ill-chosen set of weights
+which do not give good performance in the test set. A sign of
+this is when the train MSE is much lower than the test MSE,
+and one can plot train/test MSE as a function of training set
+length and number of reservoir outputs to better evaluate per-
+formance and overfitting. One should also ensure that the test
+set is reasonably large to ensure that the region of data that
+is evaluated in terms of performance is representative of the
+entire task. For example, if the input time-series is a repeated
+sine-wave with 30 points per period, then the test set should
+be at least 30 points, but ideally much longer if experimental
+constraints permit this.
+There are a few ways the dedicated researcher can improve
+performance at this stage, with hyperparameter optimization
+and feature selection two good options. Hyperparameter op-
+timization involves tuning various parameters which are not
+part of the reservoir states, for example, input scaling factor
+or regression penalty term. Hyperparameters can also be re-
+lated to the physical system itself, for instance if there is some
+voltage bias effect which may tune the behavior of the ASI
+array. This can be completed via a grid-search or a more so-
+phisticated optimization algorithm.
+Feature selection involves removing certain reservoir out-
+puts during training, in order to find a better weight solution.
+Quite often, two or more reservoir outputs will be highly cor-
+related. During training, it is better to remove highly corre-
+lated channels as they do not add any additional information,
+only noise. Another case is where a measurement channel is
+only noise, in which case it is better to remove this channel
+prior to training. Feature selection can be achieved manually,
+via thresholding to only include channels with high amplitude,
+or removing correlated features28,261.
+When assessing the benefits of optimization, it is important
+to split the measured dataset X into train, validate, and test
+datasets. The validate set acts like a second test set, to con-
+firm that optimized parameters are generalizing well for the
+desired task rather than overfitting to a fixed single test set.
+It provides a second dataset which is unseen during training,
+and if performance is similarly strong on both the validate and
+test datasets, there is good likelihood that the system has gen-
+eralized well rather than overfit to an arbitrary test set. For
+each hyperparameter/set of features, the weights are obtained
+using the train dataset and the computational performance of
+that set is obtained on the validate dataset. This is repeated
+for all hyperparameters. The performance of sets are com-
+pared and the best method is chosen. At this point, one per-
+forms a final evaluation of performance using the test set and
+this is the final performance of the model. This is necessary
+as it is possible to overfit the hyperparameters to the specific
+dataset used in the train and validate sets, which leads to bad
+performance on unseen data. One can go a step further and
+perform cross-validation, where the portion of data used for
+train, validate, and test is changed multiple times and an aver-
+age performance over all test sets is stated. This ensures that
+the reservoir performs well over all parts of the input, not just
+the specific splitting chosen.
+IX.
+OUTLOOK AND SUMMARY
+The purpose of this tutorial article was to introduce readers
+to magnonics with artificial spin ice, which has emerged as
+a rapidly developing field that has received significant inter-
+est because of its basic and technological importance1,2,262.
+ASI systems, which range from two-dimensional to three-
+dimensional structures, offer a diverse platform for investi-
+gating emergent phenomena such as geometrical frustration,
+magnetic monopoles, and phase transitions. The use of so-
+phisticated lithographic techniques to fabricate ASI arrays,
+as well as simulation tools that solve the Landau-Lifshitz-
+Gilbert equation, have allowed for a better understanding of
+microstate preparation, control, and microstate-driven mag-
+netization dynamics. Our detailed description of the physi-
+cal principles underlying the dynamics of artificial spin ice

@@ -1,0 +1,171 @@
+4
+ated by the crystal,
+νP (r, L) = 1
+r +
+P
+X
+n̸=0
+
+1
+|r −nL| −1
+nL
+
++ 2πr2
+3L3 ,
+(12)
+where the periodic series accounts for the contribution from
+all replicas containing both the duplicated charges and the op-
+positely charged neutralizing charges. When P approaches
+infinity, ν∞(r, L) remains rigorously well-defined. It behaves
+like the Coulomb interaction at small distances but deviates
+at large distances. In fact, the spherically averaged deviation
+is exclusively determined by the negative of the cubic infinite
+boundary term,
+1
+4π
+Z
+dΩνP (r, L) = 1
+r + 2πr2
+3L3 ,
+for
+r ⩽L,
+(13)
+since all terms in the periodic series vanish identically under
+spherical averaging,
+1
+4π
+Z
+dΩ
+1
+|r −nL| = 1
+nL
+for
+nL ⩾r.
+(14)
+This result is a direct manifestation of Newton’s shell
+theorem—originally formulated for gravitational potentials—
+stating that, outside any spherically symmetric charge (mass)
+distribution, the potential is the same as if all the charge (mass)
+were concentrated at a point in the center.
+The lattice sum of 1/r defined in Eq. (12) properly incorpo-
+rates the effect of PBC while excluding the infinite boundary
+term. A similar definition applies to basic interactions other
+than 1/r. For example, one may truncate the spherical aver-
+age of νP (r, L) at the radius of the sphere with the equivalent
+volume 4πr3
+s /3 = V . The resultant modified Coulomb inter-
+action, also called the angular-average (aa) Ewald potential,
+reads[21–24]
+waa(r) = 1
+r + r2
+2r3s
+−3
+2rs
+for
+r ⩽rs = (3V )1/3
+(4π)1/3 , (15)
+and waa(r) = 0 for r > rs. waa(r) approaches zero with zero
+derivative at rs. Its length scale is now characterized by rs.
+Obviously, waa(|nL|) = 0 for any n ̸= 0 and the lattice sum
+of waa(r) introduces no conditional convergence. Therefore,
+the bulk component analogue to ν∞(r, L) in Eq. (12) can be
+simply expressed as
+νaa(r, L) = waa(r) +
+∞
+X
+n̸=0
+waa(|r −nL|) + 3
+2rs
+,
+(16)
+where the constant 3/(2rs) has been added such that νaa(r, L)
+behaves like the Coulomb interaction at small distances as
+well. Due to the short-range nature of waa(r), the summations
+over integers n1, n2, and n3 in the above equation are con-
+strained to at most three discrete values: typically {−1, 0, 1}
+for r ∈[−L, L]3.
+The real-space expression [Eq.(16)] can be converted to a
+Fourier-space expression via the well-known Poisson summa-
+tion formula (e.g.[13, 23])
+νaa(r, L) =
+9
+5rs
++ 1
+V
+∞
+X
+n̸=0
+ei2πn·r/L ˆwaa(2πn/L),
+(17)
+where ˆwaa(k) is the three-dimensional Fourier transform of
+waa(r),
+ˆwaa(k) = 4π
+k2
+
+1 + 3ks cos(ks) −3 sin(ks)
+k3s
+
+ks=krs
+. (18)
+At small k, ˆwaa(k) should determine long-range electrostatic
+correlations among charges[16, 36, 37]. In the limit k →0
+with rs fixed, ˆwaa(k) approaches 2πr2
+s /5, leading to the con-
+stant term
+2πr2
+s
+5
+1
+L3 + 3
+2rs
+=
+9
+5rs
+.
+(19)
+On the other hand, in the limit rs →∞followed by ks →∞,
+ˆwaa(k) asymptotically converges to 4π/k2, which coincides
+with the Fourier transform of 1/r. Consequently, Eq. (17)
+in this limit differs from Eq. (5) solely by the constant term.
+Direct validation via the Poisson summation formula applied
+to ν∞(r, L) confirms
+ν∞(r, L) = νe3dtf(r, L)
+∀r ∈[−L, L]3,
+(20)
+as rigorously derived in the Appendix.
+Traditionally, the bare Coulomb interaction is often trun-
+cated at a fixed cutoff distance (denoted as rc), independent of
+both V and L (e.g.[16, 38–40]). The resultant truncated inter-
+action wcd(r) might either decay sufficiently fast or smoothly
+taper to zero with a vanishing derivative at r = rc. Using
+wcd(r) as the basic interaction, the corresponding volume-
+dependent effective interaction under PBC can be expressed
+as a Fourier series
+νcd(r, L) = τcd + 1
+V
+∞
+X
+n̸=0
+ei2πn·r/L ˆwcd(2πn/L),
+(21)
+where ˆwcd(k) is the Fourier transform of wcd(r) and τcd is a
+constant determined by enforcing that νcd(r, L) −1/r strictly
+vanishes in the limit r →0. Explicit forms of wcd(r) and
+νcd(r, L) for common truncation schemes are provided in the
+Appendix.
+For both waa(r) and wcd(r), their short-range nature en-
+sures the unconditional k →0 limits of their Fourier trans-
+forms and the convergence of the Fourier series, Eqs. (17)
+and (21), for any r, while the constants ξ/L, 9/(5rs) and τcd
+guarantee the correct short-range behavior of the effective in-
+teractions, νe3dtf(r, L), νaa(r, L), and νcd(r, L), respectively.
+In the present work, we focus on systems with three-
+dimensional periodicity. However, extending the rigorous def-
+inition of the effective pairwise interaction to systems with
+two- or one-dimensional periodicity (e.g., [13, 41, 42]) is
+straightforward.
+III.
+PROPERTIES OF THE EFFECTIVE INTERACTIONS
+Before deriving the electrostatic energies, we examine the
+properties of the effective interactions, νe3dtf(r, L), νaa(r, L)
+and νcd(r, L), as formulated in both Fourier [Eqs. (5), (17)

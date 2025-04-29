@@ -1,0 +1,56 @@
+K2D = 1
+3
+σ11 + σ22 + σ33
+ε11 + ε22
+
+(14)
+G2D = 1
+2
+σ12
+ε12
+
+(15)
+The computed bulk and shear moduli for each 2D image are listed in Table 2. The results indicate that the TS-based
+images yield 25 % lower bulk moduli and 30 % lower shear moduli than the CT plane. Although this analysis is limited
+to 2D comparisons, it highlights the variations in elastic moduli between paired but modality-different digitized images.
+These findings suggest the potential for correcting 3D image-based effective moduli using numerical simulations, as
+CT-derived moduli are consistently stiffer than those measured in laboratory experiments [Saxena et al., 2017b, 2019b].
+Table 3: Input properties of minerals for elasticity computation [Mavko et al., 2020]
+Phase
+Bulk modulus (GPa)
+Shear modulus (GPa)
+Pore
+0
+0
+Quartz
+36
+45
+4.3
+Geological features
+Lastly, we examine additional geological insights by directly comparing grayscale CT images with their paired TS
+images. Figure 11 shows the registered grayscale CT image alongside its corresponding TS image for one-to-one
+comparison. The TS image enhances the visibility of individual grains, which are less distinct in the CT plane, and
+provides information on calcite cementation. Although Fe-bearing minerals (white) are distinguishable from quartz
+(dark gray) in our dataset’s grayscale CT plane (Figure 11), identifying specific mineralogical information becomes
+challenging when the 3D digital rock consists of minerals with similar densities (e.g., quartz and orthoclase, which
+have less than a 3 % density difference; [Goldfarb et al., 2022]). Additionally, the TS image reveals weathering effects,
+distinguishing intact and clean quartz from areas affected by cementation or weathering processes.
+By integrating these paired images, we can correlate geological features such as cementation, mineralogy, and
+weathering conditions. This correlation enables a more accurate assignment of material properties based on real
+geological characteristics rather than relying solely on intact mineral component properties, thereby improving the
+accuracy of computed effective properties.
+5
+Conclusion
+We develop a systematic image registration approach to align 2D thin-section images within a 3D CT volume using
+differential evolution (DE) optimization. The method is first validated on a synthetic porous medium with a known 2D
+plane location, achieving near-perfect alignment with rotation angle errors below 0.001 degrees. Applying the approach
+to Berea sandstone, we successfully register the thin-section image within the CT volume, achieving a structural
+similarity index of 0.990.
+With this valid registration, we explore the advantages of paired 2D multimodal images for improving 3D digital
+rock-based computed effective properties. The thin-section image reveals approximately 50 % more porosity than the
+CT plane and shows a consistent reduction in pore sizes, both of which may help correct porosity underestimation and
+permeability overestimation in 3D CT-based computations. Additionally, bulk and shear moduli computed from thin
+sections are 25 % and 30% lower, respectively, than those derived from CT images, suggesting potential corrections
+for CT-derived moduli, which tend to be stiffer than laboratory measurements. Beyond these quantitative differences,
+the thin-section image provides additional geological insights, revealing cementation patterns, mineral phases, and
+12

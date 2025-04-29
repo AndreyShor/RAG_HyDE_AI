@@ -1,0 +1,72 @@
+27
+Proof. (⇐) Suppose that I [A0:t+1S0:t; St:∞|Mt] = 0 for all t ∈N0. By using the single-step chain rule of mutual
+information (eq. (A9)), with W = A0:t+1S0:t, X = St, Y = St+1:∞, and Z = Mt, we can write
+I[A0:t+1S0:t; St:∞|Mt] = I[A0:t+1S0:t; St|Mt] + I[A0:t+1S0:t; St+1:∞|MtSt]
+(F9)
+for all t ∈N0.
+Since the left-hand side vanishes by assumption (eq. (F8)), the nonnegativity of mutual infor-
+mation implies that both terms on the right-hand side must independently vanish.
+In particular, that means
+I[A0:t+1S0:t; St|Mt] = 0 for all t ∈N0.
+(⇒) The proof proceeds in two steps. First, we will show that
+I [A0:t+1S0:t; Aj+1Sj|MtAt+1:j+1St:j] = 0
+(F10)
+for an arbitrary t ∈N0, and for j ∈{t, t + 1, . . . }. Second, the proof is concluded by an application of the chain rule
+of mutual information.
+In order to show eq. (F10), first consider the case j = t: Using the chain rule of mutual information in the form of
+eq. (A10) with W = A0:j+1S0:j, X = Sj, Y = Aj+1 and Z = Mj gives
+I [A0:j+1S0:j; Aj+1Sj|Mj] = I [A0:j+1S0:j; Sj|Mj] + I [A0:j+1S0:j; Aj+1|MjSj] .
+(F11)
+However, both terms on the right-hand side vanish, the first by assumption (eq. (F7)) and the second due to d-
+separataion (see Figure 13), leaving us with
+I [A0:j+1S0:j; Aj+1Sj|Mj] = 0
+(F12)
+for j ∈N0. But eq. (F12) is just eq. (F10) with t = j.
+Mj
+Aj
+Sj
+Zj
+Mj+1
+Aj+1
+Zj+1
+Sj+1
+Mj−1
+Aj−1
+Sj−1
+Zj−1
+Mj+2
+Aj+2
+Zj+2
+Sj+2
+Mj−2
+Aj−2
+Sj−2
+Zj−2
+Mj+3
+Aj+3
+Zj+3
+Mj−3
+Aj−3
+Sj−3
+Zj−3
+FIG. 13. Bayesian network for a percept-action loop (lemma 6), used in the proof of Lemma 8. Here blue nodes d-separates
+red and green nodes.
+What is left to show is the case where j > t. First note that eq. (F12) still holds in that case. Additionally
+we will make use of several other conditions involving the random variables A0:j+1S0:j, Mt, At+1:j+1St:j, Mj and
+Aj+1Sj. Relations between those random variables can be represented by the information diagram in Figure 14. For
+example, eq. (F10) then corresponds to two information atoms in the diagram, l+f. Altogether we have the following
+conditions:
+I [A0:j+1S0:j; Aj+1Sj|Mj] = 0 = a + b + c + d + e + f,
+(F13)
+I [Aj+1Sj; Mt|MjA0:j+1S0:j] = 0 = k,
+(F14)
+I[A0:t+1S0:t; Mj|MtAt+1:j+1St:j] = 0 = m + l,
+(F15)
+I[A0:t+1S0:t; Mj|MtAt+1:j+1St:jAj+1Sj] = 0 = m,
+(F16)
+where the last equality in each line expresses the condition through the information atoms defined in Figure 14.
+The first condition, eq. (F13), is just eq. (F12). The conditions in eqs. (F14) to (F16) follow from d-separation (see
+Figure 15 where for visualization purposes we set t to j −2).
+From the information diagram in Figure 14 we see that eq. (F13) and eq. (F14) allow us to write
+I [MtA0:j+1S0:j; Aj+1Sj|Mj] = a + b + c + d + e + f + k = 0.
+(F17)

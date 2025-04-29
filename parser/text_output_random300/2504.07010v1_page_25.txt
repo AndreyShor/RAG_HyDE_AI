@@ -1,0 +1,32 @@
+and dBC may come from the choice of factorizable Bernoulli distributions.
+Remarkably, the ratio estimation remains good when the dimensionality of
+the support increases exponentially (from s = 10 to s = 80).
+Simulated data
+The nearly perfect coverage of all is probably due to the
+5-fold larger calibration set but suggests that the (simulated) noise distribu-
+tion is exchangeable across different circuit sizes. shift produced more effi-
+cient prediction intervals overall but undercovered in some cases. mondrian
+was the less efficient on these simulations but improved after combining it
+with a trained shift model, as in shift+mondrian.
+Real data
+The consistent undercoverage of all shows that noise distribu-
+tions are more affected by changing a circuit’s depth than size. The perfor-
+mance in the four different setups followed the same pattern as for simulated
+data. shift serious low validity was likely due to the reduced size of the
+training data set.4
+Except for dTV, where shift+mondrian was the best
+model, the performance of mondrian and shift+mondrian was comparable.
+Impact Statement
+This paper presents work whose goal is to advance the field of Machine
+Learning and Quantum Computing. There are many potential societal con-
+sequences of our work, none of which we feel must be specifically highlighted
+here.
+References
+Adeniyi, T. B. and Kumar, S. A. (2025). Adaptive neural network for quan-
+tum error mitigation. Quantum Machine Intelligence, 7(1):1–14.
+Angelopoulos, A. N. and Bates, S. (2021). A gentle introduction to conformal
+prediction and distribution-free uncertainty quantification. arXiv preprint
+arXiv:2107.07511.
+Anthony, B. (2020). Constructing normalized nonconformity measures based
+on maximizing predictive efficiency.
+4The test Error Rate of g was high on average (data not shown).

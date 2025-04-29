@@ -1,0 +1,62 @@
+25
+Plugging eq. (E23) into eq. (E20) yields
+pMAS(m, a, s) =
+X
+z
+penv
+Z0 (z0)pagt
+A0M0(a0, m0)
+∞
+Y
+t=0
+˜ϕenv (st, zt+1|zt) θagt(at+1, mt+1|st, mt),
+(E25)
+for the global distribution.
+All that is left to show is that the distribution in eq. (E25) can be recovered through marginalization from a
+distribution of the form in eq. (E21).
+For all t ∈N0, we set Vt = AtMt and Wt = StZt+1 and
+pVt+1|StMt(vt+1|st, mt) = θagt(at+1, mt+1|st, at) for all vt+1 = (at+1, mt+1), and
+(E26)
+pWt|Zt(wt|zt) = ˜ϕenv(st, zt+1|zt) for all wt = (st, zt+1).
+(E27)
+For each t ∈N, we consider all terms on the right-hand side of eq. (E21) which contain Vt and marginalize:
+X
+vt∈V
+pMt|Vt(mt|vt) pAt|Vt(at|vt) pVt|St−1Mt−1(vt|st−1mt−1) = θagt(at, mt|st−1, at−1)
+(E28)
+which follows from Vt = AtMt, and thus pMt|Vt and pAt|Vt are delta distributions, and eq. (E26). Similarly, for each
+t ∈N0, we consider all terms on the right-hand side of eq. (E21) which contain Wt and marginalize:
+X
+wt∈W
+pZt+1|Wt(zt+1|wt)pSt|Wt(st|wt)pWt|Zt(wt|zt) = ˜ϕenv(st, zt+1|zt)
+(E29)
+which follows from Wt = StZt+1 and eq. (E27).
+Finally, we consider all terms on the right-hand side of eq. (E21) which contain V0 and marginalize:
+X
+v0∈V
+pV0(v0)pM0|V0(m0|v0)pA0|V0(a0|v0) = pA0M0(a0, m0),
+(E30)
+which follows from V0 = A0M0. Finally, let pV0 be such that pA0M0 = pagt
+A0M0.
+We thus constructed a distribution pMASZV W such that marginalizing out V , W , and Z yields eq. (E25).
+□
+In Bayesian networks of percept-action loops, there can in general be infinitely many paths between two nodes X
+and Y , as the total process MASZ extends to the infinite future. However, note that paths that go through nodes
+that lie in the future of both X and Y must necessarily contain a collider. Those paths are therefore d-separated if
+the collider and all of its children are not part of the separating set.
+3.
+Existing approaches to the information theory of percept-action loops
+In the previous section, we introduced a Bayesian network (Figure 10) for a general class of percept-action loops.
+Existing information-theoretic treatments of percept-action loops such as [58, 80–82] also provide Bayesian networks,
+see for example [58, figure 1], [80, equation 11], [81, figure 4.1b], and [82, figure 4]. These Bayesian networks mainly
+deviate from our network in how the agent dynamics is modeled.
+The difference between our network and the ones from the literature can be understood as follows. Since we model
+the environment (respectively the agent) with a Markov channel on an input-output and a hidden-state register (see
+Figure 9) we focus on incoming and outgoing random variables of this channel while being agnostic to its inner
+workings. In comparison, from the perspective of our framework, existing approaches model variables inside the
+channel (such as V in Figure 9c). For example, we recover the Bayesian network in [80, equation 11] from Figure 10
+by considering variables Wt and Vt as the agent’s memory while ignoring variables Mt and Zt. While our approach
+requires the introduction of auxiliary hidden variables Vt and Wt to obtain a compatible Bayesian network, we only
+need a single transition matrix to model the agent (in [58, 80–82] two transition matrices are necessary). Accordingly,
+our model is suitable in those contexts where one wishes to model the environment (respectively the agent) with a
+single Markov channel on an input-output and a memory register.

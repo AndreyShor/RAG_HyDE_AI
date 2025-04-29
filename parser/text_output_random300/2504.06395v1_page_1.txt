@@ -1,0 +1,80 @@
+Unlimited quantum correlation advantage from bound entanglement
+Armin Tavakoli,1, ∗Carles Roch i Carceller,1 Lucas Tendick,2, 3, 4 and Tamás Vértesi5
+1Physics Department and NanoLund, Lund University, Box 118, 22100 Lund, Sweden
+2Inria, Université Paris-Saclay Palaiseau, France
+3CPHT, CNRS, Ecole Polytechnique, Institut Polytechnique de Paris, Palaiseau, France
+4LIX, CNRS, Ecole Polytechnique, Institut Polytechnique de Paris, Palaiseau, France
+5HUN-REN Institute for Nuclear Research, P.O. Box 51, H-4001 Debrecen, Hungary
+(Dated: April 10, 2025)
+Entangled states that cannot be distilled to maximal entanglement are called bound entangled and they are
+often viewed as too weak to break the limitations of classical models. Here, we show a strongly contrasting result:
+that bound entangled states, when deployed as resources between two senders who communicate with a receiver,
+can generate correlation advantages of unlimited magnitude. The proof is based on using many copies of a bound
+entangled state to assist quantum communication. We show that in order to simulate the correlations predicted by
+bound entanglement, one requires in the many-copy limit either an entanglement visibility that tends to zero or a
+diverging amount of overhead communication. This capability of bound entanglement is unlocked by only using
+elementary single-qubit operations. The result shows that bound entanglement can be a scalable resource for
+breaking the limitations of physical models without access to entanglement.
+I.
+INTRODUCTION
+Entanglement is the paradigmatic resource for quantum in-
+formation. Although most useful forms of entanglement can
+be converted into maximally entangled states by the process
+of entanglement distillation, there exist also entangled states
+for which distillation is impossible, even when the state is
+available in infinitely many copies. These states are called
+bound entangled [1]; see Fig 1. In practice, bound entangled
+states are classified as the entangled states that fail to be de-
+tected by the seminal positive partial-transpose (PPT) criterion,
+as the existence of other bound entangled states remains a
+long-standing open problem [2, 3]. Bound entangled states
+are remarkably common in high-dimensional Hilbert spaces:
+their volume becomes superexponentially larger than that of
+separable states [4], and their distance to the separable set can
+become arbitrarily large [5].
+Nevertheless, bound entangled states are often too weakly
+entangled to be useful for quantum information protocols, let
+alone to generate correlations that break the limitations of
+generic classical models (see the review [6]). For example,
+bound entangled states can neither be used to beat the classical
+capacity limit in quantum communication [7] nor the classical
+fidelity limit in teleportation [8]. Moreover, they have been
+conjectured to be useless for device-independent quantum key
+distribution [9]. For 15 years, the conjecture stood that bound
+entanglement also cannot violate any Bell inequality [10], be-
+fore being falsified in 2014 by an explicit counter example
+[11]. However, the degree of violation, which is of the order
+10−4, is too small to make it practically relevant. Despite later
+works exploring nonlocality from bipartite bound entangled
+states, no significantly larger violation has been found [12, 13].
+Similar trends have also been observed in quantum steering
+scenarios [14]. This may suggest that it is a rare occurance that
+a bound entangled state can violate, even by a tiny margin, a
+∗armin.tavakoli@fysik.lu.se
+FIG. 1: Bipartite quantum states. The sets of separable states, bound
+entangled states and entangled states. All states that are not separable
+are entangled. The subset of entangled states that are bound
+entangled cannot be distilled to maximal entanglement when
+available in any number of copies.
+Bell inequality or steering inequality.
+In contrast, it was recently shown that three-dimensional
+bound entangled states can generate significant correlation ad-
+vantages in scenarios that involve communication between
+senders and receivers [15].
+Subsequently, numerical evi-
+dence has shown that the correlation advantages can become
+even more pronounced in communication tasks using four-
+dimensional bound entanglement [16]. These results pave the
+way for a much stronger and conceptually important question:
+Can high-dimensional bound entanglement generate unlimited
+correlation advantages over any possible communication
+model that has no access to entanglement?
+This question is the focus of this article, and we answer it
+affirmatively.
+We consider a scenario with two independent senders and
+one receiver [17]. The formers respectively hold private clas-
+sical data and encode it into quantum messages that are sent
+to the receiver. The receiver decodes the two messages with
+the aim of learning some binary property of their combined
+data. This is illustrated in Fig 2. Importantly, no limitations
+arXiv:2504.06395v1  [quant-ph]  8 Apr 2025

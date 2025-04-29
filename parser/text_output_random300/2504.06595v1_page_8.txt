@@ -1,0 +1,121 @@
+8
+Unit cell
+Motion along line
+8 couplings along line
+...
+...
+...
+...
+100 x 100 x 100 lattice
+(periodic boundary)
+a)
+b)
+c)
+Time (ps)
+0
+10
+20
+30
+Position     (Å)
+Velocity     (Å/ps)
+Time-local solution
+Full solution
+0
+-5
+5
+10.0
+10.5
+11.0
+Trapped Dissipation
+FIG. 4. Dissipation. (a) A particle constrained to move along
+one of the edges of the unit cell, interacting with four frame-
+work masses ahead of it and four behind via the Yukawa
+interaction with λ = 1/2 ˚A and U0 = 150 meV. We com-
+puted the full solution using Eqs. (2) and (3) using the fifth-
+order Runge-Kutta method with δt = 5 × 10−3 ps. We also
+computed the time-local result using fifth-order Runge-Kutta
+from Eqs. (18)–(20) with rH = ˙rH = 0. The calculated posi-
+tions and speeds are given in (b) and (c), respectively, showing
+a very good agreement between the two methods.
+particle quite well. Therefore, when exploring dissipa-
+tion and diffusion in the following sections, we make use
+of this simplified form of Eq. (16).
+V.
+DISSIPATION
+Employing the time-local, quasistatic, homogeneous-
+motion approximation, we set ˙r and r to zero on the
+right-hand side of Eq. (25) (as in Sec. IV), which yields
+r = wU ′(R) −lU ′′(R) ˙R .
+(26)
+Since we already assumed the deflection is small, we em-
+ployed a series expansion for the force exerted on the
+mobile particle,
+M ¨R = −U ′(R −r)
+≈−U ′(R) + U ′′(R)
+h
+wU ′(R) −lU ′′(R) ˙R
+i
+= −U ′(R) + wU ′′(R)U ′(R) −l [U ′′(R)]2 ˙R .
+(27)
+The first term is essentially the force on the mobile parti-
+cle from the undeflected framework, the second is a cor-
+rection due to the framework relaxation, and the third
+is a force proportional to the speed and directed against
+the motion—a drag force.
+To demonstrate the ability of our formalism to cap-
+ture drag, we computed two trajectories. First, we used
+the full set of equations of motion in Eqs. (2) and (3)
+for a cubic system of 100 × 100 × 100 masses with pe-
+riodic boundary conditions and rH = ˙rH = 0. Second,
+we used the time-local, quasistiatic, homogeneous-motion
+approximation of Sec. IV given by Eqs. (17)–(20) with
+rH = ˙rH = 0.
+As before, the calculations were per-
+formed using the fifth-order Runge-Kutta method.
+To make the results easier to compare, we set up the
+initial conditions in a manner which produced a one-
+dimensional path. In particular, we initialized the mobile
+particle on one of the edges of a cubic unit cell, halfway
+between the corners, moving along the edge. We allowed
+the particle to interact with eight framework masses: four
+positioned along the edge ahead of its initial position and
+four behind [see Fig. 4(a)]. We excluded the closer-lying
+masses not positioned along the edge to speed up the cal-
+culation. Although this restriction does not lead to physi-
+cally realistic mobile ion trajectories, it does demonstrate
+dissipation in our model.
+Integrating over momenta (Eq. (22)) is computation-
+ally costly, so prior to running the simulation, we precal-
+culated
+↔
+W j−k(0) for all index pairs j, k that are required
+to connect all the framework masses that interact with
+the particle at any given time.
+For this demonstration,
+we employed a screened
+Coulomb interaction with λ = 1/2 ˚A with U0 = 150 meV.
+We chose this smaller interaction strength to lead to more
+oscillations before the particle came to rest. Additionally,
+because we introduced the particle at a highly energetic
+position, we wanted to avoid the effects of the boundary
+term that we dropped from Eq. (11). In Figure 4, we see
+the position and velocity of the particle computed using
+the time-local formalism and the full system of equations.
+The two solutions show a very similar decay profile, with
+the full solution decaying slightly faster. A tiny phase
+difference is visible at later times, which we attribute to
+the framework motion present in the full-solution case
+and absent from the time-local approach. In short, dissi-
+pation is not affected much by our simplifications, even
+in a more realistic scenario.
+VI.
+DIFFUSION
+Finally, we introduced thermal motion to the frame-
+work to check its influence on mobile particle motion.
+The computational procedure was essentially identical to
+the previous section, but with a preliminary procedure
+and two additional steps. Prior to the calculation, we
+generated a set of mode excitation levels nj and corre-
+sponding phases ϕj. For the first additional step during
+the trajectory simulation, whenever we needed to cal-
+culate the force exerted on the mobile particle, we be-

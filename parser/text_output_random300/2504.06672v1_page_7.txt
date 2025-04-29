@@ -1,0 +1,150 @@
+Method
+Human Action
+Subject Consistency
+Background Consistency
+Motion Smoothness
+Temporal Flickering
+Dynamic Degree
+ZeroScope
+0.922
+0.962
+0.984
+0.985
+0.986
+0.367
+FreeInit
+0.912
+0.978
+0.990
+0.988
+0.994
+0.242
+RagInit (Our)
+0.952
+0.961
+0.985
+0.985
+0.990
+0.467
+RAGME
+0.974
+0.911
+0.972
+0.968
+0.982
+0.692
+Table 2. Comparison between RAGME and the baselines on VBench [23]. We report the metrics related to motion dynamics and temporal
+consistency. Our method outperforms the competitors in the quality of motion while slightly decreasing the consistency-related metrics.
+Human Action
+Subject C.
+Background C.
+Motion Smoothness
+Temporal Flickering
+Dynamic Degree
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Scores
+0.97
+0.91
+0.98
+0.97
+0.99
+0.69
+0.98
+0.94
+0.95
+0.95
+0.97
+0.82
+WebVid vs Kinetics
+WebVid
+Kinetics
+Figure 3. We compare the role of different retrieval databases on
+the person-related subset of VBench [23]. We retrieve it from the
+Kinetics [26] and the WebVid10M [1].
+4.2. Ablations
+Role of the database D
+We ablate the role of the retrieval
+database D in our system, specifically focusing on the types
+of videos we retrieve.
+In the previous section, we used
+a general retrieval mechanism without making strong as-
+sumptions about the task. The retrieval database consisted
+of general videos from WebVid, and we did not exploit the
+textual components. However, the proposed mechanism is
+highly flexible, allowing different databases to be used at
+inference time to retrieve videos tailored to specific appli-
+cations. Hence, we assume access to an application-specific
+database for human-related prompts, specifically the Kinet-
+ics [26] video dataset, and plug it into our pipeline without
+further fine-tuning. This dataset, commonly used for action
+recognition tasks, contains a large set of actions performed
+by people. We replace our base dataset, derived from Web-
+Vid10M, with Kinetics and evaluate how this change affects
+performance on the VBench metrics. The results, shown in
+Fig. 3, demonstrate a relative improvement in both the Hu-
+man Action and Dynamic Degree metrics. These findings
+highlight the importance of the retrieved videos in the pro-
+cess and suggest that the mechanism can be specialized for
+specific applications to achieve better performance.
+0.76
+0.78
+0.80
+0.82
+0.84
+0.86
+Cosine Similarity (
+)
+320
+330
+340
+350
+360
+FVD (
+)
+1
+5
+10
+20
+50
+FVD vs Cosine Similarity
+K
+1
+5
+10
+20
+50
+Figure 4. We study the impact of the retrieved samples K on the
+FVD vs Cosine Similarity trade-off. We select K = 5 as a good
+trade-off between the two.
+Number of retrieved examples K
+We study the impact
+of the number of retrieved samples on the final generated
+videos, comparing the FVD vs DINO-similarity trade-off.
+Specifically, we train different versions of the models to
+use different numbers of K. We use a reduced computa-
+tion budget and train the models for 25k iterations. We
+report the results in Fig. 4. We can observe that K = 1,
+i.e. retrieving a single sample, achieves good FVD but in-
+curs very high DINO-similarity (i.e. undesired copy-paste-
+effects). Vice-versa, increasing K too much, results in pro-
+gressively worse FVD probably because it becomes harder
+for the model to get meaningful information (besides in-
+curring additional computational costs). We observe that
+K = 5 represents a good trade-off. We set this value and
+use it throughout all our experiments. In principle, nothing
+prevents us from training a model with a given K and adopt-
+ing a different K′ at inference time. However, we observed
+slightly reduced performances. We add a more detailed dis-
+cussion, along with qualitative results for different K in the
+supplementary material.
+Computational Complexity
+Lastly we discuss the com-
+putational complexity added by our method. Running a Dif-
+fusion Model is computationally expensive, mainly due to
+the cost of the denoiser network. However, the main compu-
+7

@@ -1,0 +1,312 @@
+Instance
+Pseudoion Counts
+ηT
+tot
+Λ, Λ, Λtrunc
+n, n
+(|G|, |G|)T
+Super cell
+Qubits
+NH3BF3
+N5 : 1, B3 : 1
+F7 : 3, H1 : 3
+ 32
+8
+40
+!
+ 10.31
+10.31
+13.96
+!
+,
+ 42.22
+42.22
+56.52
+!
+,
+ 1.66
+1.66
+1.55
+!
+ 6
+6
+7
+!
+,
+ 8
+8
+9
+!
+
+504 063
+33 227 775
+
+(18.90, 18.90, 28.35)
+Cuboid
+808
+DMTM
+Molecular
+N5 : 3, C4 : 1, O6 : 1
+H1 : 10, Pd18 : 1
+ 53
+16
+69
+!
+ 12.32
+12.32
+12.32
+!
+,
+ 49.87
+49.87
+49.87
+!
+,
+ 1.56
+1.56
+1.56
+!
+ 7
+7
+7
+!
+,
+ 9
+9
+9
+!
+
+2 048 383
+133 432 831
+
+(32.13, 32.13, 32.13)
+Cuboid
+1545
+DMTM
+3×3
+B3 : 8, N5 : 9, C4 : 1
+O6 : 1, H1 : 4, Pd18 : 1
+ 101
+24
+125
+!
+ 15.87
+15.87
+10.47
+!
+,
+ 32.25
+32.25
+42.39
+!
+,
+ 1.54
+1.54
+1.50
+!
+ 6
+6
+7
+!
+,
+ 7
+7
+9
+!
+
+504 063
+8 241 919
+
+(14.18, 14.18, 37.80)
+Rhombohedron 120◦
+2471
+DMTM
+5×5
+B3 : 24, N5 : 25, C4 : 1
+O6 : 1, H1 : 4, Pd18 : 1
+ 229
+56
+285
+!
+ 9.52
+9.52
+10.47
+!
+,
+ 39.00
+39.00
+42.39
+!
+,
+ 1.54
+1.54
+1.50
+!
+ 6
+6
+7
+!
+,
+ 8
+8
+9
+!
+
+504 063
+33 227 775
+
+(23.63, 23.63, 37.80)
+Rhombohedron 120◦
+5751
+DMTM
+9×9
+B3 : 80, N5 : 81, C4 : 1
+O6 : 1, H1 : 4, Pd18 : 1
+ 677
+168
+845
+!
+ 10.75
+10.75
+10.47
+!
+,
+ 43.51
+43.51
+42.39
+!  1.54
+1.54
+1.50
+!
+ 7
+7
+7
+!
+,
+ 9
+9
+9
+!
+
+2 048 383
+133 432 831
+
+(42.53, 42.53, 37.80)
+Rhombohedron 120◦
+18753
+WGS
+2×3×3
+C4 : 1, O6 : 2, H1 : 2
+Cu1 : 85, Cu11 : 5
+ 158
+95
+253
+!
+ 9.42
+9.50
+9.50
+!
+,
+ 38.13
+38.93
+38.93
+!
+,
+ 1.50
+1.53
+1.53
+!
+ 7
+6
+6
+!
+,
+ 9
+8
+8
+!
+
+504 063
+33 227 775
+
+(42.01, 20.50, 20.50)
+Cuboid
+5377
+WGS
+2×5×5
+C4 : 1, O6 : 2, H1 : 2
+Cu1 : 245, Cu11 : 5
+ 318
+255
+573
+!
+ 9.42
+11.59
+11.59
+!
+,
+ 38.13
+46.90
+46.90
+!
+,
+ 1.50
+1.47
+1.47
+!
+ 7
+7
+7
+!
+,
+ 9
+9
+9
+!
+
+2 048 383
+133 432 831
+
+(42.01, 34.16, 34.16)
+Cuboid
+13563
+Table 1: Instances for all 3 classes of problems considered. Superscripts on the HGH pseudoions indicate the
+number of valence electrons. ηtot = (ηval, ηion, η) indicates the total particle counts for electrons, pseudoions,
+the sum total of both. The vectors Λ = (Λ1, Λ2, Λ3) (Λ = (Λ1, Λ2, Λ3)) indicate the anisotropic momentum
+cutoffs for electrons (pseudoions), and Λtrunc is the anisotropic momentum cutoff for the pseudoion-pseudoion
+interaction. The vectors n = (n1, n2, n3) (n = (n1, n2, n3)) indicate the number of qubits in each reciprocal
+lattice direction for electrons (pseudoions), and |G| (|G|) indicates the the basis size for electrons (pseudoions).
+The super cell types are “Cuboid” with lattice vectors a1(1, 0, 0), a2(0, 1, 0), a3(0, 0, 1) and “Rhombohedron
+120◦” with lattice vectors a1(1, 0, 0), a2(- 1
+2,
+√
+3
+2 , 0), a3(0, 0, 1), with (a1, a2, a3) given in the table. The last
+column denotes the total number of qubits (space cost) required for the system, excluding all ancilla needed
+in the computation.
+3. Water Gas Shift (WGS): The WGS reaction CO + H2O ⇌CO2 + H2 plays a pivotal role in energy
+production, the hydrogen economy, and environmental sustainability, making its study essential for
+both scientific and industrial advancements. We consider 2 increasingly demanding representations of
+bilayer Cu(100) systems of the form 2 × m × m conventional unit cells, where the the center 5 atoms
+on the top surface are Cu11 and the rest of the copper atoms are Cu1. Both instances have a single
+CO and a single H2O molecule.
+In Fig. 2, we compute the quantum resource estimate (QRE) in terms of Toffoli gates for time-evolving
+the pseudoion Hamiltonian (Eq. (3)) for each of the 7 instances above for time t (in atomic units) with
+evolution error δ. We perform a detailed cost analysis of the time-evolution circuit, neglecting the one-time
+and significantly sub-leading costs of initial state preparation and information extraction. Note that QSP-
+based time-evolution gives a linear scaling in the simulation time and an additive cost in the log of the inverse
+error (details in Sec. 5.2). For molecular identification, a further multiplicative cost in the square root of
+the inverse of the (potentially biased) chemical rate has to be included. A detailed analysis of asymptotic
+scaling and a discussion of practical quantum resource estimates is given in Sec. 7.
+For the smallest instance of NH3BF3 with η = 40, we find the cost per time-step to be ∼4 × 109 Toffolis
+with a spatial cost of 808 qubits (excluding ancillae). For the largest instance of DMTM 9 × 9 with η = 845,
+we find the cost per time step to be ∼2 × 1012 Toffolis with a spatial cost of 18753 qubits (excluding
+ancilla). Elementary chemical processes are likely captured within ≲1ps and so a useful simulation likely
+requires ≲4 × 104 time steps, adding an additional few orders of magnitude overhead.
+Deploying our
+framework on the limited resources available on early generation FTQCs requires careful consideration of
+the appropriate problem instances and evolution time, in order to extract scientifically useful information.
+Addressing this issue is a subject of future work, perhaps involving co-development of classical methods to
+pair with quantum dynamical simulations, as well as further improvements to the quantum algorithm. We
+see the above estimates as a starting point for further development.
+15

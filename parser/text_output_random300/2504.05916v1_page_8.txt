@@ -1,0 +1,42 @@
+Multilevel Quantum Rabi Models
+8
+these seem irrelevant, but for ε ̸= 0 weak couplings between states in the radiation basis
+mean that even the dark states generally participate in (and complicate) the dynamics.
+In summary, while detunings break the exact doublet symmetry, they do so in a
+very controlled way if the detunings are small. The approximate symmetry continues
+to structure the spectrum in a way that provides a useful framework for analytical and
+numerical approaches.
+4. Coupling Scalings in Multilevel Systems
+We now move on to consider larger systems, focusing in particular on systems with
+either uniform or random couplings. We start by looking at how the coupling can be
+boosted for the uniform and random cases, i.e. how the strongest coupling (after the
+SVD has been performed) scales with the number of near-degenerate levels, before going
+on to look at the overall structure of the energy level distribution for random couplings.
+4.1. Coupling Boost for Uniform Couplings
+The situation where all of the individual transitions have the same coupling is an
+important (and simple) special case. As we have already seen, for n = m = 2, the
+SVD yields the diagonal elements λ1 = 2λ, λ2 = 0, so that the system features a single
+nontrivial Rabi model. It is easy to generalize this result to n = m > 2 via a constant
+coupling matrix Λij = λ, which yields λ1 = nλ, λj>1 = 0, i.e.
+the only nontrivial
+Rabi model embedded in the system has a coupling constant that grows linearly in the
+number of states. This is in contrast to the case where there is only a single ground state
+(m = 1), but multiple excited states [10] (n > 1) , where the coupling scales ∼√n.
+Interestingly, the reduction of the multilevel system to a single effective Rabi model
+extends beyond the case of purely uniform coupling.
+If it is possible to factorize
+the coupling matrix in terms of two vectors v, w, so that Λij = viwj then one finds
+λ1 = |v||w|, λj>1 = 0.
+4.2. Coupling Boost for Random Coupling Matrix
+The case of a random coupling matrix is the opposite extreme to that of uniform
+couplings.
+Our goal is to find an approximate distribution for the largest singular
+value, λ1, of our complex n×m coupling matrix Λ, so that we can analyse its statistical
+properties. To do this, we employ tools from random matrix theory and leverage known
+results on the eigenvalue distribution of Wishart ensemble matrices. We leave most of
+the details of the calculation to Appendix B, and simply focus on the main results here.
+We assume a coupling matrix, Λ, with elements that are independent and identically
+distributed (IID), taken from a complex Gaussian distribution with mean 0 and variance
+1, denoted C N (0, 1).
+A random variable is said to follow a complex Gaussian
+distribution Z ∼C N (0, 1) if Z = X + iY , where X and Y are IID real Gaussian

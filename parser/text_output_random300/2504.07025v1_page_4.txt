@@ -1,0 +1,152 @@
+mission. Both are defined as follows:
+  \re s
+i
+zeb
+o
+x
+ 
+{
+0
+.92\hsize 
+}{!}{$\mat
+h
+b
+f  {R_{\phi 
+_\text {po
+l
+}
+}
+}
+ 
+=
+ \b e gin  
+{
+bma
+tri
+x} 
+1
+ 
+& 0
+ & 
+0
+ 
+&
+ 
+0
+ 
+\
+\
+ 
+0
+ 
+& \ cos (2\phi _\text {pol}) & \sin (2\phi _\text {pol}) & 0 \\ 0 & -\sin (2\phi _\text {pol}) & \cos (2\phi _\text {pol}) & 0 \\ 0 & 0 & 0 & 1 \end {bmatrix},~ \mathbf {M_{LP}} = \begin {bmatrix} 0.5 & 0.5 & 0 & 0 \\ 0.5 & 0.5 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end {bmatrix}. $}
+(4)
+Accordingly, passing/modulating through a linear polarizer,
+the outgoing Stokes vector sout can be transformed by:
+  \l
+abel  {eq:lp_ph i _p
+ol} \mathbf {s}^\text {out}_{\phi _\text {pol}} = \mathbf {M_{\phi _\text {pol}}} \mathbf {s}^\text {out} = \mathbf {R_{\phi _\text {pol}}^T} \mathbf {M_{LP}} \mathbf {R_{\phi _\text {pol}}} \mathbf {s}^\text {out}. 
+(5)
+Then, the final rendered polarized image is denoted by:
+  \m
+athb f  
+{I}^\
+text {out}_{\phi _{\text {pol}}} = \frac {1}{2} \mathbf {s}^\text {out}_{\phi _\text {pol}}[0], 
+(6)
+where sout
+ϕpol[0] is the first element of Stokes vector.
+Loss function.
+In order to describe the polarization status
+in the region of interest (RoI) and reduce the background
+noise, we apply a coordinate-based network to predict the
+soft mask m(x) of each sampled point x on the camera ray.
+Therefore, the complete loss function consists of three com-
+ponents with balancing weights denoted as follows:
+  \mat h cal { L } = \mathcal {L}_\text {rgb} + \mathcal {L}_\text {mask} + 0.1 \mathcal {L}_\text {eikonal}. \label {eq:loss_fn} 
+(7)
+The RGB loss Lrgb describes the discrepancies between the
+rendered polarized image Iout
+ϕpol and the captured image Iϕpol
+using ℓ1 loss. The loss is masked with the ground-truth
+mask to reduce the noise from surrounding environment.
+The predicted mask is supervised by the ground-truth mask
+with the binary cross entropy loss Lmask. In addition, we
+introduce the eikonal loss Leikonal [10] to regularize the net-
+work to learn a valid signed distance field (SDF).
+3.3. Theoretical Analysis
+Our method aims to retrieve not only geometric and po-
+larization information but also the polarizer’s angle from
+multi-view images, requiring only one polarization image
+per view, which presents us with more unknown variables
+to address within a reduced set of limitations.
+As aforementioned, we utilize the polarimetric BRDF
+model to express the Stokes vector sout as a linear combina-
+tion of polarized diffuse and specular counterparts, respec-
+tively. Here, we focus solely on the radiance component:
+  \l a be l  { eq:rad } \m a thbf {I }^ \te xt {out} = (\mathbf {n}\cdot \mathbf {i}) \left ( f_d(\mathbf {i}, \mathbf {n}, \mathbf {v}) + f_s(\mathbf {i}, \mathbf {n}, \mathbf {v},\eta )\right ) L_i, 
+(8)
+where i, n, v and η denote the incident lighting direction,
+normal, viewing direction, and roughness. Li is incident il-
+lumination and is usually defined as white light (Li = 1.0).
+The diffuse reflectance fd pertains to light that enters the
+subsurface, scatters, and subsequently transmits back in the
+direction of observation. The specular reflectance fs mod-
+els both specular lobe and spike, which are defined below:
+  \ begin {split } f
+_d  &= k_d  T (\ mathbf  {v}, \mathbf {n})T(\mathbf {i}, \mathbf {n}), \\ f_s & = k_s W(\mathbf {i}, \mathbf {n}, \mathbf {v}, \eta ) R(\mathbf {h}, \mathbf {v}), \end {split} 
+(9)
+where W =
+DG
+4(n·o), and all other parameters are defined in
+the same manner as outlined in [1].
+The Fresnel coefficients T and R at polarization filter
+angle ϕpol are represented by:
+  T_{ \ ph i  _
+\
+t ex
+t { po
+l
+}} = \f r ac {T_p + T_s}{2} \:+\: \rho _t\frac {T_p-T_s}{2}\cos (2\phi _t - 2\phi _\text {pol}), 
+(10)
+  R_{ \ ph i  _
+\
+t ex
+t { po
+l
+}} = \f r ac {R_s + R_p}{2} \:+\: \rho _r\frac {R_s-R_p}{2}\cos (2\phi _r - 2\phi _\text {pol}), (11)
+where the subscriptions p and s indicate the components
+parallel and perpendicular to the reflection plane, while ρt
+and ρr represent the degree of linear polarization for trans-
+mittance and reflection respectively, ϕt and ϕr correspond
+to the angle of polarization of transmission and reflection.
+Ultimately, the output estimated radiance Iout (Eq. 8) at
+the polarization filter angle ϕpol can be expressed as follows:
+  \l
+abel  {e q :i _est} \ be gin {spli t}  
+\mathb f {I }^\tex t {out}_ {\phi _\text {pol}} = (\mathbf {n}\cdot \mathbf {i}) & \left ( k_d T(\mathbf {v}, \mathbf {n},\phi _\text {pol})T(\mathbf {i}, \mathbf {n}) \: + \right . \\ &~ \left . k_s W(\mathbf {i}, \mathbf {n}, \mathbf {v}, \eta ) R(\mathbf {h}, \mathbf {v}, \phi _\text {pol}) \right ) L_i. \end {split} 
+(12)
+In our implementation, the incident direction i of the light is
+approximated as the reflected direction of v, thereby align-
+ing the half vector h with the normal direction. Conse-
+quently, the unknown variables in Eq. 12 are limited to n
+(2 unknowns, parameterized in spherical coordinates), kd
+(3 unknowns), ks (3 unknowns), η (1 unknown), and ϕpol
+(1 unknown), totaling 10 unknowns. It is worth noting that,
+except for ϕpol, the remaining variables represent intrinsic
+material properties of the object and are fully disentangled
+within this material model. These variables remain con-
+sistent for the same spatial point, irrespective of the view-
+ing angle. The view dependency of color provides 3 sepa-
+rate constraints (R, G and B) for each view, implying that
+only four views are sufficient to render the problem over-
+determined, eventually forming 12 independent equations.
+Distinction to prior works.
+In contrast to the well-
+established polarization method, i.e., PANDORA [7], our
+method necessitates the acquisition of one single polariza-
+tion image at each viewing angle.
+We employ the pro-
+posed end-to-end rendering framework and enhance ge-
+ometric and material reconstruction through optimization
+of the rendering loss function. Comparing with conven-
+tional non-polarization solutions, such as VolSDF [33], our

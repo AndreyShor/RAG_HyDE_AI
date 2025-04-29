@@ -1,0 +1,134 @@
+RelightGS
+GS-IR
+Ours
+GT
+Figure 8. Comparison between our method and other GS-based
+IR methods on the normal reconstruction and NVS results. Our
+Spatially-varying Gaussian representation enhances the represen-
+tation capacity, producing less artifacts.
+Relighting (Ours)
+Relighting (GS-IR)
+Visibility & Indirect
+Figure 9. Indirect Illumination on real dataset MipNeRF360.
+Our physically-based indirect illumination modeling helps us
+achieve natural relighting results. More results are in the supple-
+mentary material.
+Spatially-varying Gaussian
+Ground Truth
+Constant Gaussian
+Figure 10. Ablation study on Spatially-varying Gaussian represen-
+tation. The Spatially-varying Gaussian yields smoother rendering
+results, significantly reducing artifacts.
+Spatially-varying Gaussian representation.
+We evalu-
+ate the impact of our Spatially-varying Gaussian representa-
+tion in Tab. 3 and Fig. 10. As shown in Fig 10, our Spatially-
+varying Gaussian shows a smoother surface, and fewer arti-
+facts compared to the Constant Gaussian.
+Indirect illumination modeling. Besides the metrics im-
+provement shown in Tab. 3, we further conducted a more
+in-depth ablation study on components (visibility, indirect
+illumination) of our physically-based indirect illumination,
+as shown in Tab. 4.
+As the components were gradually
+Table 3. Ablation study of our key components on TensoIR Syn-
+thetic dataset. “SVG” means the Spatially-varying Gaussian rep-
+resentation, “PBI” means the physically-based illumination. Num-
+bers in red represent the best performance, while orange numbers
+denote the second best.
+Component
+Relighting
+NVS
+SVG
+PBI
+PSNR↑
+SSIM↑
+LPIPS↓
+PSNR↑
+SSIM↑
+LPIPS↓
+✗
+✗
+28.614
+0.904
+0.093
+34.640
+0.941
+0.047
+✓
+✗
+29.447
+0.937
+0.074
+35.794
+0.961
+0.041
+✓
+✓
+31.087
+0.946
+0.055
+36.709
+0.975
+0.033
+added, both the relighting and NVS quality progressively
+improved. The specific impact of each component on the
+training process is explained in the supplementary.
+Table 4. Ablation study of several components in our physically-
+based lighting model on the TensoIR Synthetic dataset. “Vis.”
+means the visibility to environment light, “Ind.” means the radi-
+ance field indirect illumination term. Numbers in red represent the
+best performance, while orange numbers denote the second best.
+Component
+Relighting
+NVS
+Vis.
+Ind.
+PSNR↑SSIM↑LPIPS↓PSNR↑SSIM↑LPIPS↓
+✗
+✗
+29.447
+0.937
+0.074
+35.794
+0.961
+0.041
+✓
+✗
+30.253
+0.941
+0.068
+36.059
+0.963
+0.037
+✓
+✓
+31.087
+0.946
+0.055
+36.709
+0.975
+0.033
+6.4. Discussion and limitations
+We have identified several limitations of our method. We
+do not introduce geometric prior, leading to unsatisfied re-
+covery for highly specular objects. This issue can be al-
+leviated by introducing SDF like GS-ROR [38], which we
+leave for future work. Additionally, our model brings 50%
+∼80% more GPU memory cost compared to 3DGS/2DGS
+and 10% ∼20% more compared to Relightable 3DGS [6],
+due to the Gaussian vertices.
+7. Conclusion
+In this paper, we have presented a novel framework for in-
+verse rendering. At the core of our framework is a spatially-
+varying Gaussian representation and a curve Gaussian ren-
+dering scheme, which allows spatially-varying material and
+normal parameters, showing more powerful representa-
+tion capability than typical Gaussian primitives. Besides,
+we present a physically-based indirect illumination mod-
+eling method, which brings physical constraints for train-
+ing and enables natural indirect light for relighting. Conse-
+quently, our method outperforms existing NeRF-based and
+Gaussian-based inverse rendering methods without losing
+efficiency. In future work, improving the geometric accu-
+racy is a potential direction.

@@ -1,0 +1,131 @@
+15
+Supplemental Material
+VII.
+THE CORRELATION PRIOR
+The correlation prior used in this work is based on the
+Horndeski theory with parameters covering a wide range,
+as investigated in [65]. Specifically, the prior is defined as,
+C(a, a′) ≡⟨[w(a) −wfid(a)][w(a) −wfid(a′)]⟩
+=
+p
+C(a)C(a′)R(a, a′),
+(6)
+where C(a) ≡C(a, a) and R(a, a′) is the normalised cor-
+relation function thus equals unity for a = a′. The func-
+tional form of the correlation prior used in this work is
+taken from [65]:
+C(a) = 0.05 + 0.8a2,
+R(a, a′) = exp
+h
+−(|ln a −ln a′| /0.3)1.2i
+.
+(7)
+VIII.
+DETAILS OF w(z) RECONSTRUCTION
+AND INTERPRETATION
+A.
+MCMC reconstruction of w(z)
+The total χ2 minimised in the MCMC process has two
+pieces, namely
+χ2 = χ2
+data + Aχ2
+prior,
+χ2
+prior = DT
+wC−1
+Π Dw = wT ˜C−1
+Π w,
+(8)
+where Dw = w −wfid = (I −S) w and ˜C−1
+Π , the in-
+verse modified covariance matrix of the prior, is defined
+as ˜C−1
+Π ≡(I −S)T C−1
+Π (I −S). Matrices I and S are the
+identity matrix and the transformation matrix, respec-
+tively, and the fiducial model wfid = Sw is calculated by
+taking a local average of 5 neighboring w bins through
+the transformation matrix S [62]. The factor A balances
+the strength between data and prior, and we set A = 1
+as a default to obtain the main result in Fig. 3.
+B.
+Reconstruction of w(z) using a Wiener filter
+projection
+In order to obtain the data modes without using any
+correlation prior, we need to set A = 0. However, this
+makes the convergence of MCMC chains impractical. To
+overcome this problem, we use a Wiener filter projection.
+Suppose a Fisher matrix of w, denoted as Fdata, can
+be obtained from a given dataset, and one performs two
+MCMC reconstructions to obtain w1 and w2 with two
+sets of modified prior covariance matrices ˜C−1
+Π,1 and ˜C−1
+Π,2,
+respectively, then the following relation can be derived
+using the formulism of the Wiener filter projection [62]:
+w2 =
+
+I + F−1
+data ˜C−1
+Π,2
+−1 
+I + F−1
+data ˜C−1
+Π,1
+
+w1
+(9)
+where I is the identity matrix.
+In practice, we set A = 0.01 to perform a MCMC re-
+construction to obtain Cp(A = 0.01), which is the pos-
+terior covariance matrix of w, then we can obtain Fdata
+via
+Fdata = C−1
+p (A = 0.01) −0.01C−1
+Π .
+(10)
+The MCMC also returns the reconstructed w, de-
+noted as wA=0.01. Given Fdata, w1 = wA=0.01 and
+˜C−1
+Π,1 = 0.01C−1
+Π , one can in principle reconstruct w for
+another modified correlation prior by a Wiener filter pro-
+jection using Eq. (9).
+One interesting special case is the reconstruction w
+from data alone, without using any correlation prior. This
+is straightforward since wdata can be found by setting
+˜C−1
+Π,2 = 0, and the covariance matrix for wdata is simply
+F−1
+data.
+IX.
+PRINCIPAL COMPONENTS ANALYSIS
+(PCA)
+PCA is a widely used tool in cosmology to find uncor-
+related eigenmodes by diagonalising the associated (in-
+verse) covariance matrix. Specifically,
+F = WT ΛW ,
+(11)
+where F is the inverse covariance matrix, W is the decor-
+relation matrix whose rows are the eigenvectors ei(z), and
+Λ is a diagonal matrix storing the eigenvalues λi [69]. In
+this work, we apply PCA for Fdata and ˜C−1
+Π , respectively,
+and show the eigenvalues and eigenvectors in Fig. 3.
+X.
+COVARIANT PRINCIPAL COMPONENTS
+ANALYSIS (CPCA)
+CPCA is a variant of PCA with nice features. It allows
+for finding eigenmodes for both the prior and posterior,
+therefore it is much easier to quantify the effective degrees
+of freedom in the system, especially when the prior is
+complex.
+Unlike PCA, the CPCA decomposition is as in [70]:
+CΠΨ = CpΨL ,
+(12)
+where the decomposition matrix Ψ and the diagonal ma-
+trix L store the CPCA eigenvectors and eigenvalues, re-
+spectively. The CPCA decomposition, Eq. (12), yields
+ΨT CpΨ = I,
+ΨT CΠΨ = L.
+(13)

@@ -1,0 +1,37 @@
+the prediction intervals.
+Calibration training.
+Papadopoulos et al. (2008) proposed to rescale the
+conformity scores with a pre-trained function of the inputs.
+While CP-
+aware training of the prediction model has become common in the literature
+Colombo and Vovk (2020); Anthony (2020); Stutz et al. (2021), trainable
+conformity scores have been less explored. In our scheme, we train a shift
+function that automatically compensates for the distribution drift. Under
+idealized assumptions, we show that training the shift model reduces the to-
+tal variation between calibration and test distributions, which is proportional
+to the validity gap defined in Barber et al. (2023).
+A general scheme.
+The proposed procedure applies beyond the QC frame-
+work and can quantify the accuracy of image and text generation models,
+where the output is also high-dimensional and possibly discrete. Existing
+CP schemes in the image-generation framework are restricted to image-
+reconstruction tasks, where CP can be applied pixel-wise by comparing the
+model output and the original pixels. Bounding the overall distribution dis-
+tance overcomes this limitation. Moreover, our approach does not require de-
+signing expansive multiple-output CP approaches like Messoudi et al. (2021).
+1.2
+Related Work
+CP for generative models
+Our work is related to the problem of applying
+CP to multivariate generative models for two reasons: i) The output space is
+high-dimensional. ii) The predictor is an analytically unavailable generative
+distribution from which we can only sample. Campos et al. (2024) review
+recent CP approaches for Large Language Models. Kutiel et al. (2023) fo-
+cus on visualization and use image masks to represent the uncertainty of
+an image regressor model. Belhasin et al. (2023) attempt to capture spa-
+tial correlations when computing CP per-pixel intervals but restrict to image
+restoration applications. We are unaware of approaches combining CP and
+the divergence measures used to train generative models, e.g. the Frechet
+Inception Distance (FID) or Kernelized Wasserstein divergence. A combi-
+nation of density ratio estimation and CP has appeared in Tibshirani et al.
+(2019) and Hu and Lei (2024).

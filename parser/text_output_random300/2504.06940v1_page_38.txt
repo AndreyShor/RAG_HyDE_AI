@@ -1,0 +1,56 @@
+38
+Appendix B: Continuation of Theorem III.2
+In Theorem III.2 we analyzed the spectrum of the Grover gate. However, in Sec. III A we only proved the part of
+the theorem that is useful to our later analysis. Here we will complete the proof for the theorem.
+Theorem B.1 (Spectrum of Grover Gate, Restated). The spectrum of the Grover gate G for a real univariate variable
+θ contains all eigenvalues of the form eiα where −π < α ⩽π satisfies Eq. (39) (assuming tan θk−α
+2
+do not blow up
+for any k ∈Ω). Corresponding to α, the eigenvector, specified by |ψ⟩where ψ is a complex random variable, satisfy
+Eq. (40).
+In the event that there are multiple outcomes in θ that share the same value (mod 2π). For each possible such value
+φ ∈(−π, π], let S = {k ∈Ω: θk = φ (mod 2π)}. We find, in addition, an eigenvalue eiα satisfying φ −α = π
+(mod 2π), and eigenvectors |ψ⟩(where ψ is a complex random variable) with
+ψk = 0
+∀k ̸∈S
+E [ψ] = 0
+(B1)
+Proof. In the main text, we have simplified the equation for eigenvalues down to Eq. (45), which we will restate here:
+E [ψ] = 1 + ei(θ−α)
+2
+ψ
+(B2)
+To complete our cases, now consider α such that there are some k ∈Ωsuch that ei(θk−α) = −1. Then we immediately
+finds E [ψ] = 0. Let A = {k ∈Ω: θk −α = π (mod 2π)}. This means that ψk = 0 for all k ̸∈A. Combined, that is:
+ψk = 0
+∀k ̸∈A
+E [ψ] = 0
+(B3)
+We can show that under the assumptions we made on α, this equation is equivalent to Eq. (B2). Note that such
+equation has non-trivial solution if and only if |A| ⩾2. This means that we find multiple θk takes the same value
+(α + π), mod 2π, for all k ∈A. Conversely, for each value φ such that there are multiple k ∈Ωwith θk = φ, setting
+α = θ −π (mod 2π) immediately traces back to satisfy Eq. (B2) and shows corresponding eigenvalues and eigenkets.
+Combined with the main text, we complete the proof for Theorem III.2.
+[1] D. Landau and K. Binder, A guide to Monte Carlo simulations in statistical physics (Cambridge university press, 2021).
+[2] R. Kothari and R. O’Donnell, Mean estimation when you have the source code; or, quantum monte carlo methods (2022),
+arXiv:2208.07544 [quant-ph].
+[3] G. Lugosi and S. Mendelson, Mean estimation and regression under heavy-tailed distributions–a survey (2019),
+arXiv:1906.04280 [math.ST].
+[4] G. Lugosi and S. Mendelson, Multivariate mean estimation with direction-dependent accuracy (2020), arXiv:2010.11921
+[math.ST].
+[5] A. Cornelissen, Y. Hamoudi, and S. Jerbi, Near-optimal quantum algorithms for multivariate mean estimation, in Proceed-
+ings of the 54th Annual ACM SIGACT Symposium on Theory of Computing, STOC ’22 (ACM, 2022).
+[6] W. J. Huggins, K. Wan, J. McClean, T. E. O’Brien, N. Wiebe, and R. Babbush, Nearly optimal quantum algorithm for
+estimating multiple expectation values, Phys. Rev. Lett. 129, 240501 (2022).
+[7] Y. Y. Atas, J. F. Haase, J. Zhang, V. Wei, S. M.-L. Pfaendler, R. Lewis, and C. A. Muschik, Simulating one-dimensional
+quantum chromodynamics on a quantum computer: Real-time evolutions of tetra- and pentaquarks, Phys. Rev. Res. 5,
+033184 (2023).
+[8] J. Preskill, Simulating quantum field theory with a quantum computer (2018), arXiv:1811.10085 [hep-lat].
+[9] Y. Wang and J. Liu, A comprehensive review of quantum machine learning: from nisq to fault tolerance, Reports on
+Progress in Physics 87, 116402 (2024).
+[10] S. P. Jordan, Fast quantum algorithm for numerical gradient estimation, Physical Review Letters 95, 10.1103/phys-
+revlett.95.050501 (2005).
+[11] D. Bulger, Quantum computational gradient estimation (2005), arXiv:quant-ph/0507109 [quant-ph].
+[12] A. Gily´en, S. Arunachalam, and N. Wiebe, Optimizing quantum optimization algorithms via faster quantum gradient
+computation, in Proceedings of the Thirtieth Annual ACM-SIAM Symposium on Discrete Algorithms (Society for Industrial
+and Applied Mathematics, 2019) p. 1425–1444.

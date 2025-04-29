@@ -1,0 +1,125 @@
+Error in tracking from quadruped task
+Error in tracking from biped task
+linear velocity ↓
+angular velocity ↓
+EE position ↓
+linear velocity↓
+angular velocity↓
+EE position↓
+E2E
+0.387 ± 0.022
+0.257 ± 0.026
+0.254 ± 0.009
+0.313 ± 0.026
+0.353 ± 0.066
+0.431 ± 0.024
+Imitation
+0.383 ± 0.022
+0.253 ± 0.025
+0.257 ± 0.010
+0.310 ± 0.027
+0.334 ± 0.060
+0.448 ± 0.018
+RAMBO-base
+0.321 ± 0.041
+0.293 ± 0.126
+0.168 ± 0.036
+0.305 ± 0.060
+0.389 ± 0.171
+0.453 ± 0.025
+RAMBO-joint
+0.108 ± 0.014
+0.101 ± 0.032
+0.046 ± 0.007
+0.306 ± 0.046
+0.383 ± 0.109
+0.134 ± 0.044
+RAMBO-ff
+0.374 ± 0.036
+0.404 ± 0.154
+0.286 ± 0.048
+0.320 ± 0.061
+0.389 ± 0.187
+0.447 ± 0.026
+RAMBO
+0.087 ± 0.009
+0.085 ± 0.022
+0.039 ± 0.003
+0.286 ± 0.039
+0.352 ± 0.075
+0.036 ± 0.002
+TABLE V: Quantitative evaluation of RAMBO compared with baselines. The mean and variance are calculated across 3 different seeds with 1000 episode
+for each seed. For biped tasks, the end-effector tracking error is calculated as the mean of tracking FL and FR end-effectors.
+Fig. 5: Tracking comparison between E2E (left) and RAMBO (right).
+forces with both front end-effectors while walking in
+bipedal modes with hind legs.
+• Dice holding: The quadruped is commanded to hold
+a soft dice by applying inward forces with both front
+end-effectors while walking with hind legs.
+• Sponge holding: The quadruped is commanded to hold
+a sponge by applying forward force with front left end-
+effector while stably walking with other three legs.
+• Plate balancing: The quadruped is commanded to hold
+a plate by applying upward force with front left end-
+effector while stably walking with other three legs.
+We show the snapshots of these experiments in Fig. 1.
+In more detail, we overlay the multiple snapshots of shop-
+ping cart pushing and sponge holding tasks in Fig. 4 to
+demonstrate that RAMBO enables the quadruped to apply
+the desired force stably while walking dynamically. We refer
+the interested readers to the hardware demonstrations in the
+supplementary video.
+C. Further Comparison with E2E Policy
+We further compare the performance of RAMBO against
+the end-to-end policy on hardware in terms of tracking
+the desired EE position. As illustrated in Fig. 5, RAMBO
+achieves significantly more accurate EE tracking while walk-
+ing forward with the remaining three legs. In contrast, the
+E2E policy tends to sacrifice EE tracking precision in favor
+of maintaining overall stability during locomotion.
+We attribute this discrepancy to the large exploration space
+inherent in end-to-end training, which makes it difficult for
+the policy to consistently prioritize accurate EE tracking.
+In RAMBO, this behavior is explicitly enforced through
+the desired joint positions computed via inverse kinematics,
+while the learned residual policy refines performance by
+providing feedback offsets relative to these target positions.
+D. Compliance
+Lastly, we showcase one of the key features enabled
+by RAMBO —compliance—by lowering the PD gains at
+the joints associated with the manipulation end-effectors.
+Fig. 6: Compliance enabled by RAMBO in quadruped mode (left) and
+bipedal mode (right). The robot is commanded to maintain its end-effector
+position while allowing external forces to displace it compliantly.
+Thanks to the gravity compensation term, the robot is able
+to maintain a stable end-effector position while walking
+and being compliant against external pushes. As illustrated
+in Fig. 6, this compliance is demonstrated through an inter-
+active handshake, where users are able to physically engage
+with the robot safely. By decoupling the feedforward torque
+and PD feedback, RAMBO enables a flexible trade-off be-
+tween compliance and accuracy in end-effector tracking—an
+essential property for ensuring safe and adaptive interactions
+with the environment.
+VI. CONCLUSION
+We present RAMBO, a hybrid control framework that com-
+bines model-based contact force optimization with a learned
+residual policy to enable robust and precise whole-body loco-
+manipulation on legged robots. By leveraging a computation-
+ally efficient QP-based on the SRB model, RAMBO computes
+feedforward torque commands while maintaining robustness
+through learning-based feedback. Our results demonstrate
+that RAMBO outperforms baseline methods in both tracking
+and manipulation performance across a range of quadrupedal
+and bipedal tasks, in both simulation and real-world settings.
+Additionally, the framework allows for a flexible trade-off
+between tracking accuracy and compliance—crucial for safe
+and adaptive interaction. One potential limitation could be
+the usage of SRB model, which can be in principle replaced
+by full-body model in the future work. Other directions in-
+clude extending the framework with online model adaptation
+to further enhance generalization and precision.
+VII. ACKNOWLEDGMENT
+We thank Zijun Hui, Taerim Yoon for developing the hard-
+ware testing software stack. We thank Yu(Antares) Zhang for
+helping the hardware experiments.

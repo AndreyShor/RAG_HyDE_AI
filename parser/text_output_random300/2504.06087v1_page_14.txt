@@ -1,0 +1,78 @@
+Supplementary Information
+Accurate Ab-initio Neural-network Solutions to
+Large-Scale Electronic Structure Problems
+A
+Effect of cutoff: H10
+0
+5
+10
+cutoﬀ[a0]
+0
+2
+4
+6
+8
+EFiRE −EMRCI+Q [mEh]
+a)
+absolute error
+0
+5
+10
+cutoﬀ[a0]
+−2
+−1
+0
+∆EFiRE −∆EMRCI+Q [mEh]
+FermiNet
+AFQMC
+VMC(AGP)
+b)
+relative error
+0
+5
+10
+cutoﬀ[a0]
+1
+2
+3
+σ(EFiRE) [mEh]
+c)
+standard deviation
+d = 1.8a0
+d = 2.8a0
+FermiNet
+AFQMC
+VMC(AGP)
+FiRE
+Figure S1: Impact of cutoff on accuracy for H10 hydrogen-chain a) error in absolute energy relative
+to MRCI+Q b) error in relative energy ∆E = E2.8 −E1.8 relative to MRCI+Q c) standard deviation of the
+sampled energies
+To investigate the effect of the cutoff radius c on accuracy, we compute energies for H10 hydrogen chains at
+inter-atomic spacings d = 1.8 a0 and d = 2.8 a0. This toy system has been used to benchmark many high-
+accuracy methods [1] because, despite its small size, even methods like CCSD(T) miss relative energies by up
+to 15 mHa. Fig. S1 depicts the errors in absolute energy, relative energy, and energy standard deviation. We
+find that all quantities rapidly converge with increasing cutoff, reaching convergence at c ≈3 −5 a0, which is
+much smaller than the length of the molecule (16-26 a0). We also find our energies to be in good agreement
+with other high-accuracy methods, like FermiNet [2] and AFQMC [1]. For cutoffs c ≥5 a0, we even obtain lower
+absolute energies than FermiNet despite being range-limited and having fewer determinants. For the impact of
+hyperparameters other than the cutoff, see the ablation study in App. C.
+Notably, in a densely packed system and for a sufficiently large nel, the average number of neighbors of any
+electron nnb scale linearly in the volume, i.e., O(c3). Consequently, the wave function update sacles O(c9).
+We fix the cutoff to c = 3a0 for comparing ionization potentials and singlet-triplet gaps and c = 5a0 when
+computing interaction energies to optimize the tradeoff between compute time and accuracy. We found this to
+be a favorable tradeoff between the accuracy of relative energies and compute time.
+B
+Non-local interactions in hydrocarbons: cumulene
+Cumulenes form an interesting test system because they contain long-range interactions. For short chains, the
+equilibrium geometry is planar with a singlet ground state. The twisted geometry, with the methylene groups
+at each end twisted by 90 degrees, is higher in energy with a triplet ground state. This system has been used to
+investigate long-range interactions in neural-network potentials [3], and ethylene, the smallest of these molecules,
+has been used as a benchmark system for neural wave functions [4]. We compute the energy difference between
+the twisted and planar geometry Etwisted −Eplanar for cumulenes of increasing size from n = 2 to n = 16 carbon
+atoms, using the S+ spin operator [5] to enforce singlet and triplet states respectively. Fig. S2 depicts the
+energy difference as a function of the number of carbon atoms n, compared to several other quantum chemistry
+methods. We find that we can still accurately resolve this energy difference even with a small cutoff of c = 3 a0,
+which is substantially smaller than the distance between the two methylene groups. For short chain lengths
+where it is possible to run a CCSD(T) calculation, we find our method to be in good agreement with CCSD(T)
+with a maximum deviation of 2 mHa.
+14

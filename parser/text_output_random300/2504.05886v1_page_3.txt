@@ -1,0 +1,111 @@
+3
+Algorithm 1 Discrete-time model dynamics
+1: initialise each site independently according to Eq. (8).
+2: for t = 1, ..., T do
+3:
+update the hunger level all the particles in the system
+4:
+for n = 1, ..., L × L do
+5:
+choose a random lattice site i.
+6:
+if site i is occupied by a particle then
+7:
+particle dies with probability pω.
+8:
+if the particle does not die then
+9:
+choose random action A with probability PX(A), according to Eq. (7).
+10:
+choose random direction D with probability P(D), according to Eqs. (9,10,11).
+11:
+if action A is allowed in direction D then
+12:
+perform the action.
+13:
+end if
+14:
+end if
+15:
+end if
+16:
+end for
+17: end for
+where it is now explicit that particles are born in the hun-
+gry state (for example A′′), and their hunger level is set to
+zero by predation; the symbols A, B, C denote particles
+that may be in any hunger level. (It is implicit here that
+the reproduction rate µX depends on the hunger level of
+the reproducing particle; we also explain in the following
+that the rates may be different according to particles’
+local environments.)
+B.
+Formulation as discrete-time Markov process
+The model described so far can be used to define
+a Markov process in continuous time.
+However, we
+take here a different route which is convenient for com-
+puter simulation: we define our model as a discrete-time
+Markov process, which we simulate by Monte Carlo (MC)
+dynamics. The computational method is given as Algo-
+rithm 1.
+Particles may perform actions A taken from
+the set {σ, µ, λ, ι} which respectively indicate selection,
+reproduction, and movement (as above), as well as re-
+maining idle (ι). These actions also involve a randomly
+chosen neighbour denoted by D (direction) which is cho-
+sen from the set {left, right, up, down}.
+On each MC update, one chooses a random site i, a
+random action A and a random direction D. The site is
+chosen uniformly at random. If the site is empty then
+nothing happens.
+Otherwise, the particle on that site
+dies with probability
+pω = ωτ,
+(6)
+where τ is the time step. If there is no such death then
+an action is chosen according to the particle species X as
+PX(σ) = τσX,
+PXℓ(µ) = τµX,ℓ,
+PX(λ) = τλX,
+PXℓ(ι) = 1 −τ(σX + µX,ℓ+ λX)
+(7)
+where Xℓindicates a particle with hunger level ℓ, and
+µX,ℓis the corresponding reproduction rate [either µX
+or µ′′
+X, see (3)]. The time step τ must be chosen small
+enough that PXℓ(ι) ≥0 for all species (and hunger lev-
+els). In the simplest case, the direction D is also chosen
+randomly among the 4 neighbours, P(D) = (1/4), see
+however Sec. II D below. (The choice of direction is al-
+ways independent of the action.) Given the random ac-
+tion and the random neighbour, it may be that the action
+is not allowed (for example, reproduction is only allowed
+if the neighbour is empty). If the action is possible then
+it is performed. The idle action (ι) is always allowed; it
+leaves the system state the same.
+We define an MC sweep (MCS) to be L2 MC up-
+dates, so that each particle attempts on average one ac-
+tion per sweep. In between each sweep, we increase the
+hunger level of every particle independently with proba-
+bility ph = τh.
+To connect this process with a continuous-time formu-
+lation of the dynamics, one would take τ to be the time
+per MCS. However, the relationship between continuous
+and discrete time formulations is not trivial here because
+(for example) each update involves either a death or an-
+other action (but not both). Throughout the following,
+we fix σB = σC = 1 and µA = µB = µC = 1, these
+rates serve as a baseline against which other rates can be
+compared (the choices of other parameters are discussed
+below). Note that σA is not fixed: this reflects that A will
+be the smart species in the following, which may adjust
+its rates to optimise its population. When simulating the
+system, we report time in MCS.
+C.
+Further simulation details
+The model definition depends on several parameters.
+Our main concern here is the effect of singling out a
+smart species that behaves differently from the others.
+To explore this in a controlled way, we keep some of the
+parameters fixed. In particular, we keep all parameters

@@ -1,0 +1,40 @@
+4.1
+Binary Games
+In this section, we consider non-local games where answers are bits.
+Deﬁnition 12. A binary game G = (X ×Y, A×B, π, V ) is a non-local game
+where A = B = {0, 1}.
+This next result states that quantum strategies cannot have an advantage
+over classical strategies if there exists a quantum strategy that always win
+the game.
+Theorem 8. Let G be a binary game. If there exists a quantum strategy for
+G that wins with probability 1, then ωC(G) = 1.
+This result is fairly strong, it implies that we will never be able to perfectly
+achieve such tasks when it is not possible classically.
+4.2
+XOR-games
+In this section, we study games for which the result depends not on the
+individual answers, but on the exclusive-OR of respective answers.
+This
+category of games include the bipartite communication complexity tasks of
+section 3.
+Deﬁnition 13. A XOR-game G = (X × Y, A × B, π, V ) is a binary game
+where V : C × X × Y →{0, 1} and C = {a ⊕b|a ∈A, b ∈B}.
+The following deﬁnition will be of use for some of the results of this
+section. It is the winning probability when players are restricted to a trivial
+strategy, a trivial strategy consisting of outputting random bits.
+Deﬁnition 14. The success probability for a game G if both parties are
+restricted to a trivial strategy (output random bits) is
+τ(G) = 1
+2
+X
+c∈{0,1}
+X
+x,y
+π(x, y)V (c, x, y)
+When playing a XOR-game, the gain of the best quantum strategy over
+the trivial strategy cannot be too great compared to the gain of the best
+classical strategy over the trivial strategy.
+This is the essence of the fol-
+lowing result, which upper bounds the gap between quantum and classical
+advantages over the trivial strategy.
+11

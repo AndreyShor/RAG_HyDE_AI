@@ -1,0 +1,36 @@
+21
+:
+FIG. S2. Previous results on the possible forms of weight matrices allowing conserved cross-ratios and a generic example of
+weight matrix satisfying the conditions of Thm. S12, without considering natural frequencies and phase lags for simplicity.
+Note that the phase-lag matrix can also have a similar structure to W.
+Proof. (⇐) Assume that the first condition of the corollary holds. Then, conditions 1 and 2 of Thm. S12 are automat-
+ically satisfied. Moreover, if the second condition of the corollary also holds, then condition 3 of Thm. S12 is satisfied
+as well. Therefore, a Kuramoto system that satisfies the two conditions of the corollary admits each cross-ratio cabcd
+as a constant of motion. Now, according to Lem. S6, only N −3 of them can be functionally independent, meaning
+that N −3 is the maximal number of functionally independent cross-ratios being constants of motion.
+(⇒) We will prove the contrapositive. Let (j, k), where j, k ∈{1, · · · , N} and k ̸= j, be a pair for which condition
+1 or condition 2 of the corollary is not satisfied. Without loss of generality, relabel the oscillators in such a way that
+j = N −1 and k = N. Consider the cross-ratio c(N−3)(N−2)(N−1)N. This cross-ratio cannot be conserved, because
+condition 1 of the corollary not being satisfied implies that condition 1 of Thm. S12 is not satisfied, and 2 of the
+corollary not being satisfied implies that condition 3 of Thm. S12 is not satisfied. Moreover, by the same reasoning,
+any cross-ratio involving N −1 and N cannot be conserved. Consider the N −4 cross-ratios in
+{c1234, c2345, ..., c(N−4)(N−3)(N−2)(N−1)}.
+(S73)
+According to Lem. S6, any cabcd with a, b, c, d ∈{1, · · · , N −1} is functionally dependent on those N −4 cross-ratios, so
+any additional independent cross-ratio must involve oscillator N. Since all permutations of the indices of a cross-ratio
+are functionally dependent, consider without loss of generality that this new independent cross-ratio is caNbc, where
+a, b, c ∈{1, · · · , N −1}. However, the N −3 cross-ratios in
+{c1234, c2345, ..., c(N−4)(N−3)(N−2)(N−1), caNbc}
+(S74)
+cannot all be conserved. Indeed, consider the cross-ratio c(N−1)abc, which is dependent on the N −4 first cross-ratios.
+Then, by Eq. (S56),
+c(N−1)abc caNbc = c(N−1)Nbc ,
+(S75)
+but recall that any cross-ratio involving oscillators N −1 and N cannot be conserved. Therefore, if either condition
+1 or condition 2 is not satisfied, then the model cannot admit N −3 conserved cross-ratios.
+From a graph-theoretical perspective, the latter corollary implies that graphs other than the complete graph or the
+star graph also admit N −3 conserved cross-ratios. Consider the following simple example.
+Example S18. Consider binary matrices A satisfying the first condition of Corollary S17, disregarding the diagonal.
+There are 2N such matrices, corresponding to all possible binary choices for each of the N columns. Each of these
+matrices defines a graph. Between them, there are many graph isomorphisms. Starting from the complete graph,
+for which all matrix elements are equal to 1: if one changes no column, there is 1 possible graph; if one changes

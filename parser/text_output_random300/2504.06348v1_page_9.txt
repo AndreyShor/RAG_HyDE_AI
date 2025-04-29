@@ -1,0 +1,186 @@
+total pseudopotential into ‘local’ and ‘nonlocal’ components as
+V I
+PP(RI) =
+ηval
+X
+i=1
+V i,I
+PP,loc(RI) +
+ηval
+X
+i=1
+V i,I
+PP,NL(RI),
+(5)
+with
+V i,I
+PP,loc(RI) =
+Z
+r
+ 
+−ZI
+|r −RI|erf(¯λI
+loc|r −RI|) + e−(¯λI
+loc|r−RI|)2
+4
+X
+c=1
+CI
+c (
+√
+2¯λI
+loc|r −RI|)2(c−1)
+!
+|r⟩⟨r|i,
+(6)
+V i,I
+PP,NL(RI) =
+Z
+r,r′
+lmax
+X
+l=0
+l
+X
+m=−l
+3
+X
+a,b=1
+
+⟨r, RI|ζI,l,m
+a
+⟩BI,l
+a,b⟨ζI,l,m
+b
+|r′, RI⟩
+
+|r⟩⟨r′|i,
+(7)
+where r, r′ are the positions of electron i, RI is the position of pseudoion I, and
+¯λI
+loc :=
+1
+√
+2¯rI
+loc
+,
+⟨r, R|ζI,l,m
+a
+⟩= ζI,l
+a (|r −R|)Y m
+l (\
+r −R),
+(8)
+where, for any vector v, ˆv is the unit vector v/∥v∥. Here Y m
+l
+are complex spherical harmonics (see App. A
+for convention), ζI,l
+a (r) are radial functions defined as
+ζI,l
+a (r) = AI,l
+a rl+2(a−1)e
+−1
+2 ( r
+¯rI
+l
+)2
+,
+AI,l
+a =
+√
+2
+(¯rI
+l )(l+ 4a−1
+2
+)
+q
+Γ(l + 4a−1
+2
+)
+,
+where ¯rI
+loc, CI
+1, CI
+2, CI
+3, CI
+4, ¯rI
+l , BI,l
+a,b are the HGH fitting parameters that depend on the ion type found by
+matching various quantities in the valence region with an all-electron or DFT calculation.3 Eq. (7) expresses
+V i,I
+PP,NL as a sum of projectors on states with low angular momentum – typically, lmax ≤2.
+We see from Eq. (4) that the 1-body pseudopotentials are “lifted” to bona-fide 2-body electron-pseudoion
+interactions which are diagonal in the pseudoion position (hence the traditional 1-body pseudopotential
+term is no longer present). In contrast to the Born-Oppenheimer approximation, this treatment includes the
+quantum mechanical motion of all chemically relevant degrees of freedom, i.e. the dynamics of both pseu-
+doions and electrons, and their mutual interactions. Besides the interactions with electrons, the pseudoions
+themselves evolve via their own kinetic terms Tion and the pseudoion-pseudoion interactions V PI
+ion as seen in
+Eq. (3). The simple form of V PI
+ion stems from the intuition that in non-relativistic chemical and material sys-
+tems, pseudoions are sufficiently spatially separated such that, to leading order in the multipole expansion,
+they can be treated as effective point charges interacting via Coulomb repulsion, with ZI replaced by ZPI
+I
+defined in Eq. (2). More sophisticated models could be introduced in the future.
+Using Eq. (5) and Eq. (4), explicitly, we have
+V PI
+el−ion =
+ηion
+X
+I=1
+ηval
+X
+i=1
+V i,I
+loc
+|
+{z
+}
+V PI
+loc
++
+ηion
+X
+I=1
+ηval
+X
+i=1
+V i,I
+NL
+|
+{z
+}
+V PI
+NL
+,
+(9)
+where
+V i,I
+loc =
+Z
+RI
+V i,I
+PP,loc(RI) ⊗|R⟩⟨R|I,
+(10)
+V i,I
+NL =
+Z
+RI
+V i,I
+PP,NL(RI) ⊗|R⟩⟨R|I.
+(11)
+3The variables rI
+loc, CI
+1, CI
+2, CI
+3, CI
+4, ¯rI
+l , BI,l
+a,b are, respectively, the rloc, C1, C2, C3, C4, rl, hl
+i,j parameters from Ref. [60] (up
+to index relabeling i, j →a, b). We append the superscript here and elsewhere to show explicit dependence on the ion I. The
+radial functions ζI,l
+a
+are denoted as pl
+i in [60].
+9

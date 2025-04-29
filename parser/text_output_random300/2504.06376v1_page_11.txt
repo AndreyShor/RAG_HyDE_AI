@@ -1,0 +1,58 @@
+XX:10
+Quantum Combine and Conquer
+Algorithm 4 Bridge(i, j, h)
+Require: i, j: The indices of blocks to find the bridge edge over.
+Require: h: The total number of blocks that we are partitioning into.
+1: Let L be a vertical line drawn between the last point of Si and the first point of Sj.
+This can be computed by querying Uin at the final and first index of blocks i and j
+respectively.
+2: (ps, pf) =qLP(L, i, j, h)
+3: Return the two endpoints ps ∈Si and pf ∈Sj of the bridge edge.
+in the clockwise direction, each edge makes a right turn from its previous edge. Since bridge
+edges are edges in the upper hull, this is true for them as well. We will compute bridge edges
+between consecutive pairs, but if at any point a left turn is formed between two bridge edges,
+we know that these edges will not be a part of the upper hull. Critically, this allows us to
+ignore an entire block of points, and move on to find the bridge edge between the remaining
+blocks. The details of the above approach are outlined in Algorithm 5.
+Algorithm 5 FindBridgeEdges(h)
+1: Initialize an empty stack Σ.
+2: Let L1 :=Bridge(0, 1, h), and push this onto Σ. ▷Li will represent the bridge edge that
+ends in block i.
+3: for i ∈[2, h −1] do
+4:
+Let Li := Bridge(i −1, i, h).
+5:
+while Li−1 and Li form a left turn do
+6:
+Pop the stack
+7:
+Let t be the index of the item on top of the stack.
+8:
+Let Li := Bridge(t, i, h).
+9:
+Push Li on the stack
+10: Return Σ as an array.
+▶Lemma 5. Let S be a set of points divided into h blocks such that pi ≤pj for all pi ∈Si
+and pj ∈Sj where i ≤j. Then, the set of bridge edges of this partition can be found in
+˜O(
+√
+nh) time.
+Proof. Each block’s pending contribution to the bridge edges can only be popped at most
+once. Thus, the total time it takes for the loop starting at line 3 of Algorithm 5 will be
+proportional to O(h). For each edge, we must compute the Bridge between sets Sj and Si,
+which will take ˜O(
+p
+n/h) time by lemma 3 and 4. Thus, the total time it takes to find the
+bridge edges is ˜O(
+√
+nh).
+◀
+Once the bridge edges are identified, what remains is to find the edges of the convex hull
+whose end points are in the same block. To do this, we use a quantum assisted Jarvis march.
+Recall that the Jarvis march is another standard convex hull algorithm in which we start
+with an edge (p, q) on the convex hull, then do a search over the remaining points to find the
+point r such that the angle formed between (p, q) and (q, r) is maximized.
+In each block, Si, rather than performing a full Jarvis march, however, we start the search
+from the bridge edge entering Si from the left, and perform up to h Grover searches for the
+point maximizing the angle until we find the starting point of the bridge edge leaving Si.
+We summarize this step in Algorithm 6 and Lemma 6. See also Figure 4.

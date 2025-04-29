@@ -1,0 +1,67 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+B
+Superlinear functions: Proof of Lemma 3.3
+Lemma 3.3 involves the superlinear functions φ and ψ and constructs another superlinear
+function Ξ = Ξφ,ψ. It is a generalization of (3.4d) which corresponds to φ = C and ψ(w) = cwp
+with p > 1. Then ψC can be estimated below by cpC.
+It is easy to see that Ξ is even and increasing on [0, ∞) as s 7→wφ(s/w) is so for each
+w > 0. As ψ is increasing and w 7→wφ(s/w) is decreasing (as sφ′(s) ≥φ(s)) we have the lower
+estimate
+Ξ(s) ≥min{w∗φ(s/w∗), ψ(w∗)}
+for all w∗> 0,
+and it remains to choose w∗appropriate for each s.
+The superlinearity of ψ provides for each M > 1 a wM ≥1 such that ψ(wM) ≥MwM. For
+sM = M1/2wM and using C(s|w) = wC(s/w) we thus obtain
+Ξ(sM)
+sM
+≥min
+nwMφ(sM/wM)
+sM
+, ψ(wM)
+sM
+o
+= min
+nφ(M1/2)
+M1/2
+, M1/2o
+→∞
+for M →∞, which implies sM →∞. As Ξ is increasing on [0, ∞), the desired superlinearity
+of Ξ and Lemma 3.3 are established.
+C
+Gagliardo-Nirenberg
+To prove Proposition 5.4, we will use a variant of the Gagliardo-Nirenberg estimate handling
+spatial and temporal integrability according to the a priori estimates from the L∞bound for
+the energy and the L2 bound for the dissipation. We will use the classical dimension-dependent
+Gagliardo-Nirenberg estimate
+∥u∥Lq(Td) ≤Cq,d∥u∥1−θq
+L2(Td)∥u∥θq
+H1(Td)
+with θq = d
+2 −d
+q,
+where q ∈[2, ∞) and (d−2)q ≤2d. With this, we obtain for α > 0 and r ≥1 with αr ≥2 and
+(d−2)αr ≤2d the estimate
+ZZ
+ΩT
+uαv dx dt ≤
+Z T
+0
+∥u(t)∥α
+Lαr(Td)∥v(t)∥Lr′(Td) dt
+≤Cα
+αr,d∥v∥L∞([0,T];Lr′(Td))∥u∥α(1−θαr)
+L∞([0,T];L2(Td))
+Z T
+0
+∥u(t)∥αθαr
+H1(Td) dt,
+(C.1)
+where r′ = r/(r−1) is the dual exponent of r.
+References
+[AGS08] L. Ambrosio, N. Gigli, and G. Savar´e, Gradient ﬂows: in metric spaces and in the
+space of probability measures, Springer Science & Business Media, 2008.
+[Ali79] N. D. Alikakos: Lp bounds of solutions of reaction-diﬀusion equations. Comm. Partial
+Diﬀ. Eqns. 4:8 (1979) 827–868.
+42

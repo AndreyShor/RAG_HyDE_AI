@@ -1,0 +1,81 @@
+stays in the state |0⟩and the rest of the subroutine only prepares junk in ancilla registers. The added cost
+of controlling the QROM is a small constant number of Toffolis, which we omit from the cost.
+Once |˜ϕV ⟩is prepared (up to junk), we must flag the part of the state that we wish to amplify in order
+to yield |ϕV ⟩. First, we flag whether ¯I = ¯J with cost ⌈log η⌉; we then check whether ¯I or ¯J is greater than
+ηel, with cost 2⌈log η⌉. The subspace that we wish to suppress is the one in which:
+(¯I ̸= ¯J) ∨(¯I > ηval ∧¯J ≤ηval) ∨(¯I ≤ηval ∧¯J > ηval).
+(178)
+This logic can be executed with at most four Toffolis and four ancillae (and the cost of uncomputation
+is free). This subroutine costs 2(κ −ηval + 5⌈log η⌉+ 2⌈log κ⌉+ 2bκ −8), counting costs from the initial USP
+using Eq. (167), from the QROM (assuming no free clean ancillae) and the flagging logic. The factor of two
+outside the expression accounts for the fact that the subroutine must be repeated twice, once for ¯I and once
+for ¯J. The success probability is
+Psucc =
+ηval(ηval −1) + P
+I̸=J ZIZJ
+(ηval + P
+I ZI)(ηval + P
+J ZJ).
+(179)
+For charge-neutral systems, P
+I ZI = ηval and so
+Psucc =
+ηval(ηval −1) + P
+I̸=J ZIZJ
+4η2
+val
+= 1
+4 +
+P
+I̸=J ZIZJ
+
+−ηval
+4η2
+val
+≥1
+4,
+(180)
+where in the last inequality we have used that P
+I̸=J ZIZJ ≥P
+I ZI = ηval. One round of amplification
+therefore suffices. The cost is then multiplied by three (two computations, plus one uncomputation) yielding
+a total cost
+6(κ −ηval + 5⌈log η⌉+ 2⌈log κ⌉+ 2bκ −8).
+(181)
+Note that we must also perform a single rotation to amplify appropriately, but we assume that the cost is
+negligible in comparison to the costs above. Assuming that the system is charge-neutral, the total cost is
+6(ηval + 5⌈log η⌉+ 2⌈log 2ηval⌉+ 2bκ −8).
+(182)
+In most cases, the most significant contribution to the ancilla count is the ⌈log(ζ)⌉= ⌈log(2ηval)⌉qubits
+necessary for the QROM.
+E.3.2
+PREPcoul, el, PREPcoul, ion
+The subroutine PREPcoul,el prepares the state |ϕV
+q ⟩∝P
+q∈G0
+q
+π
+Ω|kq|2 |q⟩. The compilation for this state
+proceeds identically to the construction in [29] (Sec. VII A and App. B) and discussed in the context of
+quantum rejection sampling in [75]. In particular, we must (i) compute |kq|2 to a register; (ii) prepare
+an appropriate reference state (provided in App. C); (iii) multiply the reference by a uniform state; (iv)
+carry out an inequality test; (v) reflect and uncompute steps (i)-(iii). The procedure must also be invoked
+in reverse for the uncomputation of |ϕV
+q ⟩. The breakdown in [29] considers that |kq|2 is computed to a
+register three times; twice in the preparation (in order to amplify once), and once in the unpreparation
+(because the final invocation can be uncomputed using measurement-based uncomputation). Additionally,
+the register containing |kq|2 must be multiplied by a uniform superposition register in order to carry out
+rejection sampling. However, we assume that M is chosen to be a power of two and the multiplication has no
+cost (it consists only of padding the register containing |kq|2 by log M bits). We will keep the computation
+and uncomputation costs separate in the tabulation below.
+As for the cost of computing |kq|2, the arithmetic is given in [29], App. C. While the arithmetic is simple,
+the details of the cost depend somewhat on the structure of the Gramian derived from the Bravais vectors.
+We will assume the worst-case cost for a number of plane waves in each dimension (n1, n2, n3) which is given
+by
+5
+2(n2
+1 + n2
+2 + n2
+3) + 2(n1 + n2 + n3)2 + 4bg(n1 + n2 + n3),
+(183)
+74

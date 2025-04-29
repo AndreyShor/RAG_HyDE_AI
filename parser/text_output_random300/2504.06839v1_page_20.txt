@@ -1,0 +1,201 @@
+We prove this only for p ∈[1, +∞), since the proof of the statement in the case p = ∞follows in the same way as the
+proof for finite p.
+To this end, we turn back to Proposition 2.1, and plugging it into (1.1.9) we get
+µt(θ, s, h)
+=
+µ0(θ, s + t, h) +
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)µ0(θ + π −2 arcsin(h′), t′, h′)
++
+R t
+0 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′)
+R t′
+0 dt′′ R 1
+−1 dh′′
+·Q(t′ −t′′, h′|h′′)µ0(θ + 2π −2 arcsin(h′) −2 arcsin(h′′), t′′, h′′)
++
+1
+2π
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)
+Z
+T1
+2π
+dθ′
+Z t′
+0
+dt′′
+Z 1
+−1
+dh′′µ0(θ′, t′′, h′′)
+(2.2.1)
++
+R t
+0 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′)
+R
+T1
+2π dθ′ R t′
+0 dt′′ R 1
+−1 dh′′
+·φ(θ + π −2 arcsin(h′) −θ′, t′ −t′′, h′|h′′)µ0(θ′, t′′, h′′).
+Since the fourth summand in (2.2.1) writes as
+(2.2.1)
+=
+1
+2π
+Z t
+0
+dt′′
+Z 1
+−1
+dh′′
+Z
+T1
+2π
+dθ′µ0(θ′, t′′, h′′)
+Z t
+t′′ dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)
+|
+{z
+}
+=E(s,h)−E(s+t−t′′,h)
+=
+1
+2π
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′′µ0(θ′, t′, h′′)[E(s, h) −E(s + t −t′, h)],
+we have
+µt(θ, s, h)
+=
+µ0(θ, s + t, h)
+(2.2.2)
++
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)µ0(θ + π −2 arcsin(h′), t′, h′)
+(2.2.3)
++
+R t
+0 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′)
+R t′
+0 dt′′ R 1
+−1 dh′′Q(t′ −t′′, h′|h′′)
+·µ0(θ + 2π −2 arcsin(h′) −2 arcsin(h′′), t′′, h′′)
+(2.2.4)
++
+E(s, h)
+2π
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′′µ0(θ′, t′, h′′)
+(2.2.5)
+−
+1
+2π
+Z t
+0
+dt′E(s + t −t′, h)
+Z 1
+−1
+dh′′
+Z
+T1
+2π
+dθ′µ0(θ′, t′, h′′)
+(2.2.6)
++
+R t
+0 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′)
+R
+T1
+2π dθ′ R t′
+0 dt′′ R 1
+−1 dh′′
+·φ(θ + π −2 arcsin(h′) −θ′, t′ −t′′, h′|h′′)µ0(θ′, t′′, h′′)
+.
+(2.2.7)
+To prove inequality the first part of the Theorem we have to estimate all the terms in the expression above.
+As for the first one we have
+∥(2.2.2)∥p
+Lp
+=
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh|µ0(θ, s + t, h)|p
+=
+Z
+T1
+2π
+dθ
+Z ∞
+t
+ds
+Z 1
+−1
+dh|µ0(θ, s, h)|p = ∥µ0∥p
+Lp(T1
+2π×[t,+∞)×[−1,1]),
+and therefore the estimate in (1.1.13) applies to it.
+A very simple but crucial inequality in the next estimates is the following: let f ≥0, then by Young inequality
+applied when the measure is dxf(x) over the set X we have
+
+Z
+X
+dxf(x)g(x)
+
+p
+≤
+Z
+X
+dxf(x)|g(x)|p
+Z
+X
+dxf(x)
+p−1
+,
+(2.2.8)
+and this will be mostly used for f = Q, g = µ0 and X = [t1, t2] × [−1, 1], in such a way to have
+R
+X dxf(x) =
+E(t1, h) −E(t2, h).
+20

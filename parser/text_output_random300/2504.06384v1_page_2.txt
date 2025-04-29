@@ -1,0 +1,130 @@
+2
+EC procedure to achieve near-optimal performance.
+II.
+COMPOSABLE SECURITY RATE WITH
+TIGHT LEAKAGE BOUND
+A.
+Secret key length with composable terms
+The secret-key length is upper-bounded by the follow-
+ing expression (see also Ref. [9, Eq. (36)])
+sǫcor+ǫh+ǫs
+n
+≤nR∞−√n∆ǫs
+aep(h) + θ,
+(1)
+obtained assuming that the protocol did not abort, the
+extracted key is correct, with probability larger than 1 −
+ǫcor, and secret with probability larger than 1−ǫsec. The
+ǫsec = ǫs + ǫh, where ǫs is the smoothing parameter and
+ǫh is the probability of failure of Privacy Ampliﬁcation
+(PA). The asymptotic key-rate R∞in Eq. (1) is given by
+R∞= H(k) −χ(k : E) −n−1leakec.
+(2)
+The quantity ∆ǫs
+aep, given by the expression
+∆ǫs
+aep(h) ≃4 log2
+√
+2hd + 2
+ p
+log2(2/ǫ2s),
+(3)
+accounts for the penalty due to ﬁnite-size eﬀects, while
+θ = log2(2ǫ2
+hǫcor)
+(4)
+is the penalty paid for non-ideal veriﬁcation and Privacy
+Ampliﬁcation while n is the block size of the raw key
+after channel parameter estimation (PE) and leakec is
+the error correction (EC) leakage.
+The quantity H(k), in Eq. (2), is the Shannon entropy
+of the key variable k and χ(k : E) is Eve’s Holevo informa-
+tion. The key variable k takes values from the alphabet
+K = {0, 1, . . ., 2hd −1} for d-bit digitization of the nor-
+malized quadrature results, according to refs. [9, 47, 48].
+In this description, the dummy variable h = {1, 2} dis-
+tinguishes between homodyne (h = 1) and heterodyne
+detection (h = 2). More speciﬁcally, for heterodyne pro-
+tocol, the digitized outcomes are in the vectorial form
+(kq, kp), that can be concatenated as
+k = kq2d + kp,
+(5)
+without loss of any information because the mapping
+(kq, kp) ↔k is one-to-one, and with Shannon entropies
+related by the following mathematical expression H(k) =
+2H(k) (see Appendix
+A for details). For error correc-
+tion the parties may now decide to use the vectorial form
+{k(1)
+q , k(1)
+p , k(2)
+q , k(2)
+p , . . . , k(n)
+q
+, k(n)
+p }.
+From here,
+we apply the procedure given in [9,
+Eq. (48)], to write Eq. (2) as
+R∞= hH(k) −χ(x : E) −n−1leakec,
+(6)
+where variable x is the continuous-variable version of k.
+Note that for the homodyne protocol k and k are equiv-
+alent forms of the key variable. The steps to obtain the
+Holevo bound for the RR protocol have been detailed in
+Ref. [9], hence we give only the ﬁnal expression for the
+CM for the DR protocol in Appendix B.
+We can now calculate the secret-key rate after param-
+eter estimation, replacing in the Holevo bound the chan-
+nel parameters with their worse-case scenario values for
+transmissivity τ ǫpe and excess noise ξǫpe, obtaining the
+expression below
+Rǫpe
+∞= hH(k) −n−1leakec −χ(x : E)|τ ǫpe,ξǫpe ,
+(7)
+which can replace R∞in Eq. (1).
+B.
+Theoretical estimation of EC leakage
+In case of one-way reconciliation, where low-density
+parity-check (LDPC) codes [51, 52] are used (see also
+Sec. III), the EC leakage term can be upper-bounded by
+the number of syndrome bits, given by
+leakec ≤log2 |M|,
+(8)
+where M is the alphabet of the syndrome strings. One
+may calculate the size of the alphabet |M| via EC simula-
+tions, as done in Ref. [46] for asymptotic security analysis
+and in Refs. [28, 47, 48] for composable security analysis.
+However, in a complete theoretical analysis, one may
+use the asymptotic bound (Slepian-Wolf coding [61])
+stating that
+log2 |M| −nhH(k|y) ≥0,
+(9)
+where H(k|y) is the conditional Shannon entropy of k
+conditioned on the continuous variable y of the other
+party.
+In fact, when considering ﬁnite-size eﬀects one
+can use a more rigorous bound [50] providing a tighter
+estimate of the performance of information reconciliation.
+Such a bound is given by
+log2 |M| −nhH(k|y) −√n∆ǫec
+leak(h)
+ ≤δ(n),
+(10)
+where
+∆ǫec
+leak(h) =
+p
+hV (k|y)Φ−1(1 −ǫec)
+(11)
+with Φ being the cumulative normal distribution. The
+right-hand side of Eq. (10) is given by
+δ(n) = 1
+2 log2 hn + O(1)
+(12)
+while the conditional entropy and the conditional entropy
+variance are given by
+H(k|y) = E [−log2 p(k|y)] , V (k|y) = Var [−log2 p(k|y)] .
+(13)
+We now extend the calculation of Eq. (10) to non-
+binary alphabets (i.e., d > 1) using the expression of

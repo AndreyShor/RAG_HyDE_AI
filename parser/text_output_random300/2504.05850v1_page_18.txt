@@ -1,0 +1,86 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+18
+z
+1
+0
+1
+λ
+1
+λ
+G
+1
+0
+z
+1
+λ
+1
+λ
+1
+G1
+Figure 3.
+Constructing the three-star (right) in D = 2λ + 2 dimensions by appending
+an edge to the two-star (left). The weights are as indicated.
+Note that in renormalizable QFTs, higher (non-logarithmic) divergences only appear in two-point
+insertions which can be eliminated with the method of Section 5. Thereafter, a physical graph only has
+logarithmic singularities.
+8.4. Appending an edge with spin or with weight ̸= 1. Let D = 2λ + 2 = 4 + 2n −ϵ, n = 0, 1, . . ..
+In this section we append an edge Qα
+ν with spin α to the vertex z of a graph G, thus creating a new
+graph G1 whose vertex z connects to the vertex z in G, see Figure 1. This is only possible (with the
+method of this section) for certain weights ν. The range of all possible weights is ν = 1 −k/λ + |α|/2λ
+for k = 0, 1, . . . , n + 1.
+The case ν = 1, α = ∅appends a scalar edge of weight 1. The spin is only in the graphical function
+f α
+G(z). In this setup, appending an edge is equivalent to solving the differential equation (58). We have
+(100)
+f α
+G1(z) = −
+1
+Γ(λ)(□α
+λ)−1f α
+G(z).
+An algorithm to determine (□α
+λ)−1f α
+G(z) is explained in the previous subsections. The result is unique
+in the space of graphical functions.
+Next, we consider the scalar case of weight ν = 1 −k/λ, k = 1, . . . , n + 1. We express the appended
+edge as a string of k + 1 edges of weight 1, see [2]. Repeated use of (6) gives (see the proof of Proposition
+39 in [2])
+1 −k
+λ
+=
+Γ(λ)k+1k!
+Γ(λ −k)
+· · ·
+1
+1
+1
+|
+{z
+}
+k+1
+.
+(101)
+The string of k + 1 edges of weight 1 can be appended by repeatedly inverting □α
+λ. It is not easily
+possible to append more than n+2 edges because one runs into non-logarithmic infrared singularities for
+k ≥n + 2.
+If the appended propagator has spin α ̸= ∅, we append a scalar edge of weight ν −|α|/2λ (if possible)
+and differentiate the appended edge with respect to z2 using (67). Note that this procedure can produce
+extra singularities in intermediate steps so that even a convergent graphical function may need to be
+dimensionally regularized.
+8.5. A simple test and first benchmarks. To test the method of appending an edge we applied it to
+the graph in Figure 3. The two-star is rational
+(102)
+fG(z) =
+1
+zz(z −1)(z −1).
+The three-star is easily calculated with [23] by appending an edge to the scalar graph G. In four dimensions
+it contains a Bloch-Wigner dilogarithm [17]. We want to obtain the graphical functions with spin k0 +k1
+by taking k0 derivatives with respect to z0 and k1 derivatives with respect to z1 using Equations (67),
+(68), and (70). Because each differentiation increases the pole order by one, the graphical function is
+regular if k0, k1 ≤2λ −1.
+We do this in two different ways. Firstly, we take derivatives of the three-star itself. Secondly, we take
+derivatives of the two-star and append an edge to the vertex z. Both methods have to give the same
+result. This is checked for all configurations and orders of ϵ. We stopped the calculations if it takes one
+day on a single core of an office PC. The memory demand in these cases is modest (≈1GB). We did this

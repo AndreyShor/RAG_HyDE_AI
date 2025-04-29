@@ -1,0 +1,39 @@
+ 
+6 
+ 
+FIG. 1. Adversarial training framework of dynamic matching. Trajectory ensembles are separately generated from 
+the all-atom (AA) molecular dynamics and coarse-grained (CG) model. The classifier network 𝑓! is trained to 
+discriminate between mapped AA trajectories and CG trajectories. Concurrently, the CG model parameters are 
+optimized to minimize the classifier’s ability to distinguish between the two ensembles. Through this adversarial 
+interplay, the dynamic and thermodynamic of the CG model is aligned with the reference AA system. 
+ 
+Network Architectures: 
+In this framework, we are training two networks: the classifier network and the potential network, 
+which characterize the interaction potential between CG beads. 
+Classifier network: The classifier network takes a trajectory {𝑹@, 𝑹+, ⋯, 𝑹-} and predicts whether this 
+trajectory is from AA or CG simulations. Here 𝑹2 ∈ℝAB is the CG coordinate or the mapped atomic 
+representation at time 𝑡. To ensure the scalability of the network structure, the classifier first uses an 
+equivariant graph neural network (GNN) to encode individual frame 𝑹2  into a graph representation 
+a𝒗,,2
+D , 𝒆,,2
+D,E d where 𝑘 indexes the GNN layers, superscripts i and j represent the labels of CG beads, v, and e 
+separately represent the node features and the edges features. In the first layer, the directed edge feature 
+from node i to node j is defined by 𝒆+,2
+DE = 𝑹2
+E −𝑹2
+D, characterizing the displacement between CG beads. 
+The node feature is defined by 𝒗+,2
+D
+= 𝑹+,2
+D
+−𝑹+,2$+
+D
+, characterizing the change of position during the 
+simulations (Fig. 2A).  To ensure the effective representation of these features and respect the rotational 
+and translational equivariance property of the system,  we adopted the Neural Equivariant Interatomic 
+Potentials (NequIP)31 network. NequIP is an equivariant graph neural network (GNN) specifically designed 
+to encode atomic environments. It processes node features (atoms) and edge features (interatomic 
+relationships) in a manner that inherently accounts for rotational and translational symmetries. By 
+incorporating these symmetries directly into its architecture, NequIP offers an efficient and physically 
+consistent framework for processing molecular configurations, making it well-suited for encoding 
+molecular representations in simulations.  

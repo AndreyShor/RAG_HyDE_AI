@@ -1,0 +1,97 @@
+Are Molecules Magical?
+Non-Stabilizerness in Molecular Bonding
+Matthieu Sarkis∗and Alexandre Tkatchenko†
+Department of Physics and Materials Science, University of Luxembourg, L-1511 Luxembourg City, Luxembourg
+(Dated: April 10, 2025)
+Isolated atoms as well as molecules at equilibrium are presumed to be simple from the point
+of view of quantum computational complexity. Here we show that the process of chemical bond
+formation is accompanied by a marked increase in the quantum complexity of the electronic ground
+state. By studying the hydrogen dimer H2 as a prototypical example, we demonstrate that when two
+hydrogen atoms form a bond, a specific measure of quantum complexity exhibits a pronounced peak
+that closely follows the behavior of the binding energy. This measure of quantum complexity, known
+as magic in the quantum information literature, reflects how difficult it is to simulate the state using
+classical methods. This observation suggests that regions of strong bonding formation or breaking
+are also regions of enhanced intrinsic quantum complexity. This insight suggests a connection of
+quantum information measures to chemical reactivity and advocates the use of stretched molecules
+as a quantum computational resource.
+Introduction—Quantum entanglement is a fundamen-
+tal feature of many-body physics and quantum chem-
+istry, reflecting nonclassical correlations between con-
+stituents [1–3].
+It has become a key diagnostic in a
+wide range of systems—from condensed matter to molec-
+ular bonds—often quantified by measures such as the von
+Neumann entropy or Renyi entropies of reduced density
+matrices [4]. For example, in molecular systems such as
+the hydrogen molecule H2, entanglement between elec-
+trons is negligible when the atoms are far apart or nearly
+fused into a single nucleus, but grows as a covalent bond
+forms. However, it is now understood that entanglement
+alone is not a sufficient indicator of a quantum state’s
+computational complexity or quantumness [5, 6]. There
+exist highly entangled yet classically simulable states, no-
+tably the so-called stabilizer states that can be produced
+by Clifford gates—transformations belonging to the nor-
+malizer of the Pauli group—and efficiently simulated on
+a classical computer via the Gottesman-Knill theorem
+[7–9]. In other words, entanglement by itself does not
+guarantee quantum advantage.
+The resource that ele-
+vates a quantum state beyond stabilizer dynamics is re-
+ferred to as non-stabilizerness or magic, as described by
+the resource theory of stabilizer quantum computation
+[5, 6, 10]. Stabilizer states and Clifford operations are
+considered free since they can be simulated efficiently on
+a classical computer, whereas non-stabilizer states pro-
+vide the essential resource for transcending classical sim-
+ulability. Magic can be quantified by various monotones
+that do not increase under stabilizer operations; one con-
+venient measure is the mana, defined via the negativity
+of the state’s discrete Wigner function [6]. Indeed, sta-
+bilizer states possess a positive Wigner function, and for
+pure states, mana vanishes if and only if the state is a sta-
+bilizer state—a discrete analog of Hudson’s theorem link-
+ing positive Wigner representations to Gaussian states,
+thereby underlining that negativity in the quasiprobabil-
+ity distribution is essential for a state to supply quantum
+computational advantage.
+Besides mana, other magic
+measures have been proposed, such as the robustness of
+magic [11–13] and the stabilizer Renyi entropies [14, 15].
+Therefore, magic indicates the quantum overhead inher-
+ent in accurately modeling a system. If a molecular sys-
+tem has low magic, then a classical method might suffice.
+High magic, on the other hand, flags the need for quan-
+tum computational resources.
+In parallel, quantum information concepts have begun
+to permeate the study of molecules and chemical bond-
+ing. The process of bond formation involves superposi-
+tion of atomic configurations and entanglement between
+electrons. Measures such as entanglement entropy have
+been used to characterize these correlations in chemical
+systems. Rissler, Noack, and White [1] applied quantum
+information theory in chemistry by introducing orbital
+mutual information as a measure of electron interactions
+between orbitals, a concept that not only successfully
+identifies chemical bond patterns but also aids in opti-
+mizing DMRG algorithms. Building on this foundation,
+Boguslawski et al.
+[2] further developed the approach
+by calculating one- and two-electron entropies for molec-
+ular wavefunctions, thereby providing a more intuitive
+picture of electron correlation that informs the selection
+of active spaces. Recognizing the complexity of electron
+interactions, Ding et al. [16] refined these ideas by dis-
+entangling total orbital correlations into distinct classi-
+cal and quantum components, which raised important
+questions regarding the genuine role of entanglement in
+chemical bonds. In a complementary effort, Szalay et al.
+[4] introduced a multiorbital correlation framework that
+utilizes genuine multipartite entanglement measures and
+clustering algorithms to reveal multi-center bonding pat-
+terns and to highlight the limitations of traditional bond-
+ing descriptions. Extending these insights to a more nu-
+anced bonding analysis, Ding, Matito, and Schilling [3]
+proposed the concept of maximally entangled atomic or-
+bitals (MEAOs), demonstrating that entanglement pat-
+arXiv:2504.06673v1  [quant-ph]  9 Apr 2025

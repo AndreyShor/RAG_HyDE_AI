@@ -1,0 +1,289 @@
+Physics-informed KAN PointNet
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Absolute error of velocity u (m/s)
+0.01
+0.02
+0.03
+0.04
+0.05
+0.06
+0.07
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Absolute error of velocity v (m/s)
+0.02
+0.04
+0.06
+0.08
+0.10
+0.12
+0.14
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Absolute error of pressure p (Pa)
+0.005
+0.010
+0.015
+0.020
+0.025
+0.030
+0.035
+0.040
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Absolute error of temperature T (K)
+0.02
+0.04
+0.06
+0.08
+0.10
+0.12
+0.14
+0.16
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Absolute error of velocity u (m/s)
+0.01
+0.02
+0.03
+0.04
+0.05
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Absolute error of velocity v (m/s)
+0.02
+0.04
+0.06
+0.08
+0.10
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Absolute error of pressure p (Pa)
+0.005
+0.010
+0.015
+0.020
+0.025
+0.030
+1.0
+0.5
+0.0
+0.5
+1.0
+x (m)
+1.0
+0.5
+0.0
+0.5
+1.0
+y (m)
+Absolute error of temperature T (K)
+0.02
+0.04
+0.06
+0.08
+0.10
+Figure 6: Distribution of absolute pointwise error for the prediction of the velocity, pressure, and temperature fields by the
+physics-informed KAN PointNet for the geometries when the relative pointwise error (𝐿2 norm) becomes maximum (first
+row) and minimum (second row). The Jacobi polynomial used has a degree of 2, with 𝛼= 𝛽= −0.5. Here, 𝑛𝑠= 0.5 is set.
+Table 2
+Computational cost and error analysis of the velocity, temperature, and pressure fields of 135 geometries predicted by
+the physics-informed KAN PointNet for different degrees of the Jacobi polynomial. Here, 𝑛𝑠= 0.5 is set. In the Jacobi
+polynomial, 𝛼= 𝛽= −0.5 is set. || ⋅||𝑉shows the 𝐿2 norm over the entire domain 𝑉and || ⋅||Γ shows the 𝐿2 norm over
+the inner cylinder surface.
+Polynomial degree
+2
+3
+4
+5
+6
+Average ||̃𝑢−𝑢||𝑉∕||𝑢||𝑉
+1.08973E−1
+1.19702E−1
+1.13309E−1
+1.88704E−1
+2.05859E−1
+Maximum ||̃𝑢−𝑢||𝑉∕||𝑢||𝑉
+1.31928E−1
+1.40406E−1
+1.43837E−1
+2.17029E−1
+2.38389E−1
+Minimum ||̃𝑢−𝑢||𝑉∕||𝑢||𝑉
+8.78500E−2
+1.00543E−1
+9.28611E−2
+1.68615E−1
+1.86217E−1
+Average || ̃𝑣−𝑣||𝑉∕||𝑣||𝑉
+8.84278E−2
+9.71973E−2
+1.00067E−1
+1.22098E−1
+1.76641E−1
+Maximum || ̃𝑣−𝑣||𝑉∕||𝑣||𝑉
+1.11167E−1
+1.17739E−1
+1.26364E−1
+1.58934E−1
+2.16676E−1
+Minimum || ̃𝑣−𝑣||𝑉∕||𝑣||𝑉
+7.06122E−2
+8.13682E−2
+8.27909E−2
+9.23098E−2
+1.45240E−1
+Average || ̃𝑝−𝑝||𝑉∕||𝑝||𝑉
+2.97057E−2
+2.93362E−2
+5.60406E−2
+7.13754E−2
+7.03334E−2
+Maximum || ̃𝑝−𝑝||𝑉∕||𝑝||𝑉
+3.41539E−2
+3.42451E−2
+5.91457E−2
+7.50780E−2
+7.29919E−2
+Minimum || ̃𝑝−𝑝||𝑉∕||𝑝||𝑉
+2.63087E−2
+2.48404E−2
+5.24305E−2
+6.85314E−2
+6.79873E−2
+Average || ̃𝑇−𝑇||𝑉∕||𝑇||𝑉
+2.84486E−2
+3.06295E−2
+5.84228E−2
+1.34718E−1
+1.85275E−1
+Maximum || ̃𝑇−𝑇||𝑉∕||𝑇||𝑉
+3.66225E−2
+3.97039E−2
+6.56761E−2
+1.47693E−1
+2.03668E−1
+Minimum || ̃𝑇−𝑇||𝑉∕||𝑇||𝑉
+2.28196E−2
+2.49564E−2
+5.08258E−2
+1.19578E−1
+1.67913E−1
+Average || ̃𝑇−𝑇||Γ∕||𝑇||Γ
+5.03499E−3
+1.19854E−2
+1.67429E−2
+1.77187E−2
+6.24591E−2
+Maximum || ̃𝑇−𝑇||Γ∕||𝑇||Γ
+9.08389E−3
+1.98724E−2
+2.44606E−2
+2.60403E−2
+8.56928E−2
+Minimum || ̃𝑇−𝑇||Γ∕||𝑇||Γ
+2.59714E−3
+5.87528E−3
+1.18108E−2
+9.29117E−3
+4.72897E−2
+Minimum loss achieved
+3.03649E−4
+2.75245E−4
+4.84736E−4
+5.61811E−4
+5.63230E−4
+Training time
+15.4
+23.8
+52.7
+74.8
+102.7
+per epoch (s)
+Number of epochs to
+2238
+2437
+2390
+2422
+2414
+reach the minimum loss
+Number of trainable
+666880
+888384
+1109888
+1331392
+1552896
+parameters
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 11 of 25

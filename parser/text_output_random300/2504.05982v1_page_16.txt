@@ -1,0 +1,51 @@
+We can obtain α by a linear ﬁt to S(t) on a log-log scale. Practically, we take t′ and the
+ﬁtting parameters that ﬁt the data best, and obtain the unbiased MFPT by substituting
+⟨τ|τ > T ∗⟩in Equation 12.
+5.2
+Short-time infrequent MetaD
+Sharp resetting is more suitable for kinetics inference from MetaD simulations with resetting.
+As in the case of sharp resetting of standard MD trajectories, we treat each segment between
+restarts as an independent simulation. We then analyze them using short-time infrequent
+MetaD42 (ST-iMetaD), as we next explain. For clarity, we ﬁrst discuss how ST-iMetaD is
+applied to MetaD simulations without resetting.
+When inferring kinetics from MetaD simulations, several assumptions are usually made.
+Mainly, we assume that the underlying FPT distribution is exponential and that the external
+bias does not aﬀect the transition state.4,42,86–88 When the assumptions are valid, the ratio
+of the unbiased MFPT to the eﬀective MFPT with MetaD, ⟨τ⟩M, is4,23,86
+⟨τ⟩
+⟨τ⟩M
+≈Z
+ZM
+= ⟨eβV ⟩,
+(15)
+where Z and ZM are the partition functions conﬁned to the initial state, with and without
+the external bias V , respectively, and β is the inverse temperature. Practically, the FPT τi
+of each MetaD trajectory is rescaled to give ˜τi = αiτi, with4,23
+αi = 1
+ni
+ni
+X
+j=1
+eβVi(j).
+(16)
+Here, Vi(j) is the bias experienced in trajectory i at timestep j. The total nuber of steps
+in trajectory i is ni. If the assumptions hold, the rescaled FPT distribution f (˜τ) should
+be exponential. As a result, in standard infrequent MetaD (iMetaD), an exponential ﬁt is
+performed, and its mean is taken as the estimation for the unbiased MFPT.4,89
+However, in many cases, the assumptions break and f (˜τ) is far from exponential. The
+main causes for error are bias over-deposition and hysteresis, which may arise due to subop-
+timal choice of CV and too frequent bias deposition.4,42,87–89 Interestingly, we obsreved that
+f (˜τ) often follows the true f (τ) at short times, even when it dramatically deviates from it at
+long times.39,42 The reason is that trajectories with short ˜τ experience relatively little bias,
+and are less vulnerable to the errors of bias over-deposition. Figure 3(c) illustrates it through
+the logarithm of the survival function, which is linear for the exponential distribution (gray
+line). The rescaled survival function (orange dashed line) shows the correct linear decay at
+rate k up to some time t′, where it deviates.
+In ST-iMetaD,42 we limit the analysis to short timescales.
+We ﬁnd a linear ﬁt to
+log (S (˜τ)) only at times < t′ to obtain k, and estimate the unbiased MFPT as −k−1. This
+ﬁt is illustrated with a blue dash-dotted line in Figure 5(c), showing good agreement with
+the unbiased survival. Practically, we take t′ and k best matching the data. ST-iMetaD
+showed improved accuracy in comparison to standard iMetaD for predicting the unfolding
+rate of chignolin42 and several protein-ligand residence times90 with enough samples. Be-
+16

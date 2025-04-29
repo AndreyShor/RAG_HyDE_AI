@@ -1,0 +1,58 @@
+Architecture
+HOSVD (%)
+SVD (%)
+LSTM 1 Dense
+11
+16.3
+LSTM 2 Dense
+6.8
+15.4
+LSTM Time-Distributed
+7.2
+10.3
+Table 12: RRMSE values for HOSVD and SVD across LSTM architectures for the normal
+velocity component of the 3D cylinder flow.
+Architecture
+HOSVD (%)
+SVD (%)
+LSTM 1 Dense
+42.8
+54.1
+LSTM 2 Dense
+39.4
+51
+LSTM Time-Distributed
+39.6
+47.2
+Table 13: RRMSE values for HOSVD and SVD across LSTM architectures for the span-
+wise velocity component of the 3D cylinder flow.
+Figure 19 captures the temporal evolution of predicted streamwise velocity components
+for both HOSVD (left column) and SVD (right column) across LSTM architectures for
+3D cylinder flow. HOSVD-based models consistently align more closely with the ground
+truth, effectively replicating the periodic patterns of the velocity components across time
+steps. Although minor deviations occur at certain time steps, particularly for the LSTM
+1 dense architecture near peaks and troughs, these are minimal and do not significantly
+affect the overall alignment. In contrast, SVD-based models show less consistency, with
+deviations from the ground truth, particularly near the peaks of the velocity component.
+However, both models perform well in predicting the temporal evolution in the spanwise
+direction. The same can be said for the plots of normal velocity, where both HOSVD
+and SVD-based models exhibit a consistent match with the ground truth across the time
+steps.
+The spanwise velocity component presents an interesting case, as shown in Figure 21.
+The point has been selected at a region comprising near zero velocities to compare the
+performance between HOSVD and SVD in very low-velocity values. The HOSVD-based
+models excel in capturing the oscillatory behavior of the velocity components, maintaining
+consistent alignment with ground truth across all LSTM architectures. However, it does
+not accurately predict the peak and trough values of this velocity component but does
+approach the peak values more efficiently than the SVD counterparts. SVD-based models
+struggle in this scenario.
+While the general trend is followed, the predictions do not
+reach the maximum and minimum velocity values observed in the ground truth. HOSVD
+performs better in this regard.
+Building on the above observations, the analysis extends to uncertainty quantification
+(UQ), providing deeper insights into predictive reliability. For HOSVD (left column),
+the error distributions are tightly centered around zero for all architectures, with a nar-
+row spread. This indicates a high level of reliability and consistency in the predictions,
+regardless of the velocity component or the LSTM architecture used. The SVD-based
+models (right column) demonstrate broader and less consistent error distributions across
+34

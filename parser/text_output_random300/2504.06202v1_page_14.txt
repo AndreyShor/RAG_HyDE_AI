@@ -1,0 +1,49 @@
+Below, we work with the BLS. Recall that we use LD to denote the BLS in D with intensity
+α, and let ε ≤s ≤r. We write Ls for the set of loops in LD that are contained in Bs. We first
+introduce some notions for deterministic objects. For any loop configuration Ls in Bs, we can define
+the quality associated with Ls as follows, where for any set A ⊂C and any loop configuration L,
+we use Λ(A, L) to denote the union of A and all the clusters in L that intersect A. We say that
+(η1, η2) is an admissible pair of excursions in Bs if Λ(η1, Ls) and Λ(η2, Ls) both intersect Bε, but
+they do not intersect each other. If we denote the starting and ending points of ηi by xi and yi,
+respectively, we say that the admissible pair (η1, η2) is δ-separated (at scale s) if
+Λ(η1 ∪Bδs(x1) ∪Bδs(y1), Ls) ∩(η2 ∪Bδs(x2) ∪Bδs(y2)) = ∅.
+(4.1)
+Furthermore, we say that (γ1, γ2) is a δ-good pair of loops (at scale s) if each γi contains an
+excursion ηi such that (η1, η2) is a δ-separated admissible pair, and Λ(γ1, Ls) ∩Λ(γ2, Ls) = ∅. Note
+that if (γ1, γ2) is a δ-good pair of loops, then it is δ′-good for all δ′ ∈(0, δ).
+Given the loop configuration Ls in Bs, we consider the extension probability across s (from ε)
+by δ-good pairs of loops in L2s \ Ls (i.e., the loop soup at the next scale), which is defined as
+ms(δ; ε, Ls) = P
+ 
+there is a δ-good pair of loops (γ1, γ2) in L2s \ Ls such that the two clusters in
+Ls ∪(L2s \ Ls) containing γ1 and γ2, respectively, are disjoint and outermost
+!
+.
+(4.2)
+Since ms(δ; ε, Ls) is decreasing in δ, the following quality at scale s is well-defined:
+Qε(Ls) := sup{δ ∈[0, 1/4] : ms(δ; ε, Ls) ≥δ}.
+(4.3)
+Then, our separation lemma for loop-soup clusters can be stated as follows, in terms of the above-
+mentioned quality.
+Lemma 4.3. For all α ∈(0, 1/2], there exist constants u, c > 0 such that for all 0 < 2ε < r < 1/2,
+P(Qε(Lr) ≥u) ≥c P(E2(ε, r)).
+(4.4)
+4.2
+Summary of corresponding results in [13] for BLS
+We now state continuous versions of several key results that were derived in [13] in the discrete
+setting, including various separation lemmas, a locality property, and a quasi-multiplicativity upper
+bound. Since they can all be established in a similar way as in [13], we refer the reader to that
+paper and skip the proofs. These properties will be used in the derivation of the separation lemma
+for CLE.
+Separation lemma.
+We start with a version of separation lemma for Brownian motions inside
+a BLS. The setup is analogous to that of Proposition 4.7 in [13]. Let Lε be a loop configuration
+in Bε. Let V1 and V2 be two disjoint subsets of Bε, which both intersect ∂Bε. Let j, k ≥1. Let
+¯x = (x1, . . . , xj) be a vector of j vertices in V1 ∩∂Bε and ¯y = (y1, . . . , yk) be a vector of k vertices
+in V2 ∩∂Bε (some of the points in ¯x may coincide, and similarly with ¯y). We view the quintuple
+(Lε, V1, V2, ¯x, ¯y) as an initial configuration, and we restrict to the case when Λ(V1, Lε) ∩V2 = ∅.
+For ε ≤s ≤r, let Π1
+s (resp. Π2
+s) be the union of j (resp. k) independent Brownian motions started,
+respectively, from each of the j points in ¯x (resp. each of the k points in ¯y), and stopped upon
+14

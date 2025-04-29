@@ -1,0 +1,81 @@
+resource cost is negligible compared to the time-evolution and we omit precise compilation and numerical
+resource estimation here.
+C.2
+Type II (Power-law ladder)
+This reference state is used for the state preparation routine PREPcoul,el, PREPcoul,ion (Eq. (93)) in the
+Coulomb term block-encoding. Defining Rp := maxj |k(j)
+p |,
+˜G(kp) =
+(
+0
+for Rp ∈[0, ΛIR)
+21−µ(kp)
+for Rp ≥ΛIR
+where µ(kp) = 1+⌊log2(Rp)⌋is an index label for all piecewise constant levels that form a “ladder” bounding
+the power law amplitudes of the target state
+1
+|kp|, and ΛIR = minp,p̸=0 |kp| is a cutoff to avoid the singularity
+at p = 0. The success probability is approximately 0.31 for the NH3BF3 simulation instance, indicating only
+1 round of amplification.36
+C.3
+Type III (Power-law ladder with exponential tail)
+This reference state is used for the state preparation routine PREPloc,2 (Eq. (103)) for s = −1 in the local
+term block-encoding. Defining Rζ
+p := maxj |k(j)
+p ¯rζ
+loc| (similar to the Type II state),
+˜Gζ
+s=−1(kp¯rζ
+loc) =
+
+
+
+
+
+0
+Rζ
+p ∈[0, ΛIR)
+21−µ(kp¯rζ
+loc)
+for Rζ
+p ∈[ΛIR, k∗
+s=−1)
+ds=−1e−γζ
+α||kp¯rζ
+loc||1
+for Rζ
+p ≥k∗
+s=−1
+where as before, µ(kp¯rζ
+loc) = 1 +
+
+log2(Rζ
+p)
+
+is an index label for all piecewise constant levels that form the
+“ladder,” and ΛIR = minp,p̸=0 |kp| is the lower cutoff. The same cuts as before are shown on the right hand
+side of Fig. 8. The success probability for the NH3BF3 instance discussed earlier is approximately 0.29, also
+indicating only 1 round of amplification (and that the power law in the interior region dominates the success
+probability relative to the tail, hence giving a similar number to the Type II case).
+D
+Approximate rescaling factor bounds
+We find easily-computable approximate upper bounds on the rescaling factors for each of the pairwise
+interaction block-encoding terms to obtain a rough estimate of query complexity in the time-evolution.
+Recall that k = Bp where B is an affine transformation built from the reciprocal lattice vectors and that
+Ωdet B = (2π)3 where Ωis the real-space simulation cell volume. In general, as we will see below, the
+rescaling factor bounds on the local and non-local terms are independent of the simulation cell and basis size
+while the rescaling factor bounds on the Coulomb term (and exact rescaling factor for the kinetic term) only
+depend on the maximum norm of the momentum exchange (momentum for the kinetic term). This makes
+the bounds easy to compute as rough estimates for the total rescaling factor without having to generate a
+large basis and numerically sum many terms as is required in the exact formulas.
+Coulomb Term
+We approximately bound the below sum with an integral, and further circumscribe the integration region
+⋄0 := {k : k ∈BG0} with a sphere of radius Q = maxq∈⋄0 |q|.
+36In the limit of large basis sizes, footnote 2 in Ref. [75] with d = 3 and x = 3 gives an analytical integral estimate using
+box integrals for the success probability as 0.274, close to the numerical value found. We note that this analytical value further
+differs from the 0.239 value computed in the earlier Ref. [28] which is lower by factor of
+1
+(1−1
+23 ) due to an imperfect (but
+efficient) preparation of the reference state in their circuit construction.
+68

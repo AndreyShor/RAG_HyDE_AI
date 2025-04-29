@@ -1,0 +1,42 @@
+effects of disadvantageous environments on individual behavior when facing social
+dilemmas, we introduce the advantageous environment into the individual’s payoff.
+Individuals are endorsed with a fitness function on which the adaptive control mech-
+anism operates (See Fig. 1). The fitness function for the focal agent i is defined as:
+Fi =
+
+
+
+
+
+pi,
+if pi ≥¯pi,
+(1 −µ)pi + µ¯pi,
+if pi < ¯pi.
+(7)
+If the player performs better than their social peers, their fitness comes exclusively
+from their own contribution. Otherwise, the adaptive control mechanism operates.
+Then, the parameter µ (0 ≤µ ≤1) represents the coupling of the individual to its
+social neighborhood or environment. If µ →0, again fitness comes mainly from the
+individual’s own performance, but as µ →1, the importance of the advantageous
+environment to the player’s fitness increases. In the limit µ = 1, the player’s fitness
+depends exclusively on their neighborhood performance (fitness obtained through ad-
+vantageous environment).
+4. Strategy-resource exchange and update. A neighboring player j of the focal player
+i is randomly selected, and their fitness Fj is determined as given by the previous
+equation. Player i then attempts to propagate its strategy to j at a rate given by the
+modified Fermi function:
+W(i→j) =
+ri
+1 + exp((Fj −Fi)/k),
+(8)
+where k = 0.1 represents the noise effect in the strategy update process, also referred
+to as the selection strength [47]. The term ri denotes the resource quantity of player
+i. Regarding resource evolution, each player initially possesses one unit of resources.
+When player i successfully propagates its strategy to neighbor j, it gains a fraction ε of
+j’s resources, while player j loses an equal amount. Following previous studies [48, 49],
+we set ε = 10% in our simulations unless otherwise specified. In case of a successful
+strategy and resource exchange, they are consequently updated for the involved agents
+and the dynamics proceeds again to the first step in the list (Game stage).
+All Monte Carlo simulation results presented in this study are based on networks of sizes
+ranging from 200 × 200 to 600 × 600 players. The final proportion of cooperators is measured
+8

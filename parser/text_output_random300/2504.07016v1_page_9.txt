@@ -1,0 +1,65 @@
+recovers the three-dimensional bulk metric under additional geometric and topological assumptions.
+The second [28] recovers individual two-dimensional minimal surfaces in a general setting but does
+not address how these surfaces can be “glued” together to reconstruct the full three-dimensional
+bulk metric.
+It remains an open question whether the methods developed in [28, 39] can be extended to
+non-compact Riemannian manifolds with asymptotic infinity. Our linearized approach avoids the
+potential complications of these methods in the non-compact setting while still providing physically
+relevant insights into the bulk reconstruction problem. The restriction to first-order perturbations
+also allows us to develop reconstruction methods that are also computationally tractable. To provide
+context and motivation for our approach, we next outline how metric recovery is achieved in the
+compact case and under what conditions. This discussion naturally leads into the methodology
+employed in the present work.
+F1
+F3
+F2
+∂A
+A
+Figure 2: Illustration of the boundary defor-
+mation δ(∂A) of the entangling region A en-
+closed by the black curve ∂A = ∂Σ. We will
+limit on deforming ∂A = S1, however.
+The recovery of minimal surfaces from the area
+data of minimal surfaces in [28] relies on the higher-
+order linearization method, a technique recently de-
+veloped in the study of inverse problems for non-
+linear partial differential equations [26, 27, 41]. To
+explain the method in more detail, suppose that X
+is a manifold with boundary ∂X equipped with a
+Riemannian metric g. Consider also an embedded
+minimal surface Σ whose boundary ∂Σ lies entirely
+in ∂X.
+Next consider nearby minimal surfaces, which
+can be considered as solutions u = uµ to the min-
+imal surface equation (see e.g. [4, Appendix B.2])
+gαβ 
+∂α∂βuµ + Γµ
+νλ ∂αuν ∂βuλ −Γγ
+αβ ∂γuµ
+= 0,
+(2.5)
+where α, β correspond to coordinates on the surface and the other Greek indices go from
+1, . . . , dim(X).
+We let the nearby solutions anchor to ∂X in a manner, which is described by
+three deformations F1, F2, and F3 of ∂Σ and their magnitudes ϵ1, ϵ2, and ϵ3. This gives us a three
+parameter family of minimal surfaces, which we write as
+uϵ1F1+ϵ2F2+ϵ3F3.
+Each uϵ1F1+ϵ2F2+ϵ3F3 is the unique solution to the minimal surface equation determined by the
+deformation ϵ1F1 +ϵ2F2 +ϵ3F3 of ∂Σ, illustrated in Fig. 2, and ϵ1 = ϵ2 = ϵ3 = 0 corresponds to the
+original minimal surface Σ with boundary ∂Σ. In [28], the minimal surfaces are two-dimensional,
+so the functions Fj are defined on one-dimensional manifolds. In the current work, the functions Fj
+can for example be defined on the circle S1, which corresponds to the intersection of a hemisphere
+with the asymptotic infinity. See Section 3.2. (To avoid possible confusion, we mention that [28]
+uses Fermi-coordinates to write the minimal surface equation (2.5).)
+Let us use the notation ϵ = 0 to denote ϵ1 = ϵ2 = ϵ3 = 0. By taking the derivative ∂ϵj|ϵ=0 of
+the minimal surface uϵ1F1+ϵ2F2+ϵ3F3, we have that the function
+vj :=
+∂
+∂ϵj
+
+ϵ=0uϵ1F1+ϵ2F2+ϵ3F3
+(2.6)
+solves the linearized minimal surface equation
+∆gv + qv = 0
+(2.7)
+– 9 –

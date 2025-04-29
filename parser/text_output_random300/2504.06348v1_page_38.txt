@@ -1,0 +1,164 @@
+Routine
+Subroutine
+Toffoli gates
+Ancilla qubits
+Reference
+PREP2
+PREP2,el
+7⌈log2(ηval)⌉+ 2bηel −6
+max{bZ, ⌈log(ηval)⌉}
+App. E.4.1
+PREP2,ion
+6Z + ⌈log(Z)⌉(bZ −3) + 7⌈log(ηion)⌉+ 2bI −6
+bZ + max{bI, ⌈log(ηion)⌉}
+App. E.4.1
+PREPloc
+PREPloc,1
+Z(2bs + bkeep + 25)
+2bkeep + 3
+App. E.4.2
+PREPloc,2
+0*
+0*
+-
+SELloc
+8¯n
+¯n
+App. E.4.3
+PREP†
+loc
+(PREPloc,2)†
+0*
+0*
+-
+(PREPloc,1)†
+Z(2bs + bkeep + 25)
+0
+App. E.4.2
+PREP†
+2
+PREP†
+2,ion
+6Z + ⌈log(Z)⌉(bZ −3) + 7⌈log(ηion)⌉+ 2bI −6
+bZ + max{bI, ⌈log(ηion)⌉}
+App. E.4.1
+PREP†
+2,el
+7⌈log2(ηval)⌉+ 2bηel −6
+max{bZ, ⌈log(ηval)⌉}
+App. E.4.1
+Table 5: The resource costs for the implementation of the local interaction term. The cost labeled “0*” for
+PREPloc,2 is because the costs for this state preparation are captured in the non-local term. The parameters
+in red are tunable, and must be chosen to satisfy an overall error budget for the block encoding. Other
+parameters are defined in their linked appendices. Note Z is the total number of pseudoion types.
+5.1.5
+Electron-pseudoion interaction: the non-local term V PI
+NL
+We begin from Eq. (39). Let XI,l be the orthogonal matrix that diagonalizes the (3 × 3) real symmetric
+matrix BI,l, namely BI,l = XI,lDI,l(XI,l)T where DI,l is a diagonal matrix of eigenvalues DI,l
+α . Then, we
+define
+GI,l
+α (|kp|¯rI
+l ) :=
+3
+X
+b=1
+[XI,l]bαgl
+b(|kp|¯rI
+l ).
+(107)
+Noting that the matrix BI,l (and in fact all I-dependent HGH parameters) actually depends on I only
+through the ion-type ζI, we have that the non-local term takes a convenient form,
+V i,I
+NL =
+X
+p1,p2∈G,P∈G
+P+p1−p2∈G
+3
+X
+α=1
+lmax
+X
+l=0
+4π
+Ω(¯rζI
+l )3(2l+1)DζI,l
+α
+GζI,l
+α
+(|kp2|¯rζI
+l )GζI,l
+α
+(|kp1|¯rζI
+l )Pl(ˆkp1·ˆkp2)|p2, P+p1−p2⟩⟨p1, P|i,I.
+(108)
+As mentioned in Sec. 2.1, for practical purposes we expect lmax ≤2 and so we show how to compile the
+circuit for the case of lmax = 2, although the procedure may be easily generalized for higher l if desired. The
+particle index register preparation routine is,
+PREP3|0⟩=
+1
+√ηval
+ηval
+X
+i=1
+|i⟩⊗
+1
+qPηion
+I=1 λ ˜V I
+NL
+ηion
+X
+I=1
+q
+λ ˜V I
+NL|I⟩
+(109)
+where
+λ ˜V I
+NL =
+lmax
+X
+l=0
+3
+X
+α=1
+4π
+Ω(¯rζI
+l )3(2l + 1)|DζI,l
+α
+|
+X
+p2∈G
+|GζI,l
+α (|kp2|¯rζI
+l )|2.
+(110)
+We proceed with the block-encoding of the non-local term BENL as per the circuit structure shown in
+Fig. 4. We discuss the steps in detail below, noting that, as in the local term, the state preparation depends
+on the ion I only through its type ζI.
+1. Controlled on the register encoding ζI, we apply a unitary that prepares the following state over the
+angular momenta, eigenstate indices, and output indices, l, α and p2 respectively:
+PREPNL|0⟩|ζI⟩=
+1
+q
+λ ˜V I
+NL
+lmax
+X
+l=0
+3
+X
+α=1
+r
+4π
+Ω(¯rζI
+l )3(2l + 1)DζI,l
+α
+X
+p2∈G
+GζI,l
+α (|kp2|¯rζI
+l )|l⟩|α⟩|p2⟩|ζI⟩
+(111)
+38

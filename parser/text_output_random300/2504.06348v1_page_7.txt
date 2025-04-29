@@ -1,0 +1,110 @@
+are computed coherently, accumulating the amplitude associated to a given chemical species in an
+auxiliary register. This amplitude, which carries information about a specific reaction rate, is recon-
+structed via amplitude estimation. We have validated that this procedure works well with a restricted
+classical dynamical simulation. Ensemble averaging over initial conditions is performed coherently via
+amplitude amplification, so that information is extracted at Heisenberg scaling.
+In summary, we present an end-to-end algorithmic framework for optimized simulation of quantum chemical
+dynamics. In the conventional chemical modeling parlance, we put forth a trajectory-less approach evolving
+the entire wavefunction under exact, non-Born-Oppenheimer dynamics up to a controlled, user-specified
+precision, with polynomial space (qubits) and time (gates) cost. As well as proposing novel solutions, we
+present detailed implementations and compute the dominant cost of the routines we use. The results are
+showcased in Sec. 2.4 for a sequence of increasingly challenging applications. Our study provides evidence
+that algorithms for time dynamics are likely to become a complementary to energy estimation algorithms in
+quantum chemistry. However, we note that these algorithms have not yet been the subject of a concerted
+optimization effort like those for ground state energy estimation, and so expect that further cost reductions
+are possible in the future. Furthermore, we stress that performing exact time evolution is substantially more
+challenging on classical machines, and so FTQC may provide a unique scientific advantage already with
+rather small problem instances. In specific instances (e.g. charge migration in C2HI) one can find an efficient
+matrix-product state description which recovers the results of full configuration-interaction calculations up to
+a small error [61], but these approaches are fundamentally limited to small correlation regimes. In a general
+setting, strongly correlated states that might occur during bond reconfiguration/charge transfer, especially
+when considering photochemistry, are expected to be challenging to capture even with such state-of-the-art
+classical methods. Our FTQC algorithm can address these challenging cases.
+2
+Designing in-silico quantum dynamical simulation of chemical re-
+actions
+In this overview, we begin by discussing the dynamical degrees of freedom and the Hamiltonian required
+for time-evolution (Sec. 2.1). We then discuss how to construct a tunable and physically salient initial state
+for simulating reaction mechanisms (Sec. 2.2). Next, we develop a flexible chemical species identification
+protocol assisted by classical computational pre-processing for information extraction after time-evolution
+(Sec. 2.3). We then propose a sequence of increasingly challenging applications and give a summary of the
+corresponding quantum computing resource estimates (Sec. 2.4).
+2.1
+Dynamical degrees of freedom and pseudoions
+The non-relativistic Hamiltonian of interacting electrons and ions, written in terms of atomic units with
+position coordinates in units of the Bohr radius a0 = 4πϵ0ℏ2/(mee2), spatial derivatives (i.e. momenta) in
+units a−1
+0 , masses in units of the electron mass me, and energies in units of 1 Hartree =
+ℏ2
+mea2
+0 , is given by
+H = −1
+2
+ηel
+X
+i=1
+∇2
+i
+|
+{z
+}
+Tel
+−
+ηion
+X
+I=1
+1
+2MI
+∇2
+I
+|
+{z
+}
+Tion
++1
+2
+ηel
+X
+i̸=j
+1
+|ri −rj|
+|
+{z
+}
+Vel
++1
+2
+ηion
+X
+I̸=J
+ZIZJ
+|RI −RJ|
+|
+{z
+}
+Vion
+−
+ηel
+X
+i=1
+ηion
+X
+I=1
+ZI
+|ri −RI|
+|
+{z
+}
+Vel−ion
+,
+(1)
+where i = 1, . . . ηel and I = 1, . . . , ηion label the electrons and ions, respectively, and the ions have atomic
+masses and charges MI, ZI, respectively.
+The Hamiltonian in Eq. (1), when expressed in a finite plane-wave basis, can be used to construct block-
+encodings, and to implement polynomials of H via quantum signal processing [62], e.g., for the purpose of
+implementing time-evolution or eigenstate filtering. The gate complexity will be polynomial in the total
+number of particles (η = ηel +ηion) for systems in condensed phase (such as those that involve a metal slab),
+specifically O(η8/3) and sublinear dependence in the number of plane-waves |G| in the worst case, when
+using a plane-wave basis. While this is still considered efficient, the scaling with η8/3 will lead to a very large
+cost in practice. Modeling a typical scenario of a catalytic chemical reaction, involving small molecules and
+7

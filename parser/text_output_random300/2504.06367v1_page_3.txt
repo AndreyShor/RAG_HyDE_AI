@@ -1,0 +1,109 @@
+3
+simulations (resolution correction), inhomogeneous reioniza-
+tion effects and a possible mis-estimation of instrumental noise
+of the data.
+The structure of this paper is as follows: In Section II, we
+present the 1D Lyman-𝛼flux power spectrum measurements.
+Section III introduces the hydrodynamical simulations, high-
+lighting their key properties and the impact of CWDM on
+the matter power spectrum. We also describe the synthetic
+flux power spectrum models derived from these simulations.
+Section IV details the emulator used for the MCMC analysis.
+In Section V, we discuss various analysis choices, comparing
+their effect on constraints on mixed dark matter models and ex-
+ploring the degeneracy between the WDM parameters 𝑓WDM
+and 𝑚WDM. Finally, Section VI summarizes our findings and
+examines the implications of the allowed CWDM models for
+the 𝑆8 tension.
+II.
+DATA
+We utilize the same dataset as presented in [46], specifically
+the one-dimensional (1D) flux power spectra introduced in
+[69]. These spectra were derived from a sample of 15 high-
+resolution quasar observations conducted with the UVES and
+HIRES spectrographs per averaged redshift bin, centered at
+𝑧= 4.2, 4.6 and 5.0.
+In particular, we analyze the power
+spectra across 16 𝑘-bins, uniformly spaced by Δlog10(𝑘)=0.1,
+from log10(𝑘/km−1 s) = -2.2 to log10(𝑘/km−1 s) = -0.7. The
+measurements at these 𝑘-bins incorporate corrections for finite
+spectral resolution and pixel size, as detailed in Appendix K
+of [69]. These corrections were derived by applying the same
+window function as in [69, 87, 88]. Furthermore, the non-
+diagonal elements of the covariance matrix are adopted from
+[46], which employed the same box size, 𝐿box, as in this work
+to construct the bootstrap cross-correlation coefficient.
+The velocity width corresponding to the smallest scale
+probed in this dataset is approximately 30 km s−1, which is
+significantly larger than the spectral resolutions of HIRES and
+UVES, measured as 6 ≈km s−1 and 7 ≈km s−1, respectively.
+These characteristics make it an ideal dataset to resolve the
+small-scale features of the Lyman-𝛼forest. Prior studies have
+used lower-resolution datasets with a larger number of QSO
+samples (e.g., [60, 73]) or data from the same instruments but
+with approximately half the number of quasar spectra (e.g.,
+[88, 89]).
+These studies have been limited to scales of up
+to 𝑘≈0.1 s km−1. While such datasets have been effective
+in constraining both the instantaneous thermal state and the
+evolution of the intergalactic medium (IGM), [69] extends this
+reach to 𝑘max = 0.2 s km−1. Crucially, the high 𝑘-bins intro-
+duced in this work are the ones sensitive to dark matter free-
+streaming, allowing us to probe power suppression on scales
+of 10–100 kpc. This extension to smaller scales is made pos-
+sible by improved modeling of instrumental noise and metal
+contaminants [69, 90, 91]. To account for these uncertainties,
+we marginalize over these effects as part of our analysis.
+III.
+SIMULATIONS
+To probe CDM and pure warm dark matter WDM cosmolo-
+gies, we use the same set of simulations from the Sherwood
+project as employed in [46], incorporating the fiducial ultravio-
+let (UV) background from [94]. These simulations feature sev-
+eral advancements over previous models used in earlier studies
+([58, 72]), including the implementation of a non-equilibrium
+thermo-chemistry solver.
+In this work, we expand upon the Sherwood simulations
+framework by conducting additional simulation runs aimed
+at constraining CWDM models detailed in Table I. The sim-
+ulations are performed within a cosmological volume of 20
+ℎ−1 Mpc, with 2×10243 dark matter and gas particles, which
+provides sufficient resolution to capture the small-scale struc-
+ture of the Lyman-𝛼forest ([46]) (see Subsection III C). Fur-
+ther details regarding the simulations can be found in [46]
+(Table I) and [95].
+In Figure 1 we show the projected gas and dark matter
+density fields extracted from simulation runs for CDM and
+WDM cosmologies. One can see that the overdense regions in
+the gas distribution, which serve as the seeds for the formation
+of stars and galaxies, closely follow the distribution of dark
+matter on large scales. The gas distribution at the small scales
+appears more diffuse compared to the dark matter distribution
+in the top-right panel due to the pressure smoothing effect: the
+gas hydrodynamically reacts to heating from reionization by
+expanding, suppressing small-scale structure [94]. The neutral
+hydrogen, which is responsible for the Lyman-𝛼absorption,
+resides in these filaments or voids. The bottom two panels
+CDM gas
+CDM DM
+WDM 1 keV DM
+WDM 3 keV DM
+10
+1
+100
+101
+1 + 
+gas
+10
+1
+100
+101
+1 + 
+DM
+FIG. 1: Slice through a cosmological simulation of size 20 ℎ−1 Mpc
+with 2 × 10243 dark matter (DM) and gas particles at 𝑧= 4.2 from the
+Sherwood-Relics simulation suite that was run with the P-Gadget3
+code. Top panel: Hydrogen gas distribution (left), dark matter dis-
+tribution in the standard CDM model (right). Bottom panel: dark
+matter distribution in a 1 keV WDM model (left) compared to a 3 keV
+WDM model (right) with brighter colours indicating higher density.

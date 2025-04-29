@@ -1,0 +1,40 @@
+152
+NNLO polarized PDFs with MHOU
+10
+2
+10
+1
+x
+100
+101
+102
+103
+104
+Q2 (GeV2)
+Kinematic coverage
+Deep Inelastic Scattering
+Drell
+Yan AL
+Single-inclusive jet production ALL
+Di-jet production ALL
+Figure 5.1: The kinematic coverage of the NNPDFPOL2.0 dataset in the (x, Q2) plane after applying
+kinematic cuts.
+sponding publications. Specifically, full covariance matrices are provided only for the HERMES
+measurement of [346] and for the STAR measurements of [357, 363, 359, 360, 358]. Most
+notably, the latter include correlations between single-inclusive jet and dijet bins, a fact that
+allows us to include all the measurements at the same time in the fit. Information on correlations
+is generally not provided by other experiments, except for the highlight of a multiplicative, fully
+correlated, uncertainty due to the beam polarization.
+5.1.2. Perturbative accuracy
+The perturbative accuracy of the theoretical predictions corresponding to the measurements
+described in Section 5.1.1 relies on the perturbative accuracy of matrix elements and of DGLAP
+splitting functions, which are both expanded as a series in the strong coupling as. In this context,
+this work pursues two goals: first, to include corrections up to NNLO in both; and, second, to
+include MHOUs arising from the truncation of the expansion series to a finite accuracy.
+The first goal is achieved by deploying a set of computational tools, available as open-source
+software, that we specifically designed for PDF fitting. As already mentioned, these include:
+Yadism (Section 2.1.2) for the computation of the polarized inclusive structure function g1;
+PineAPPL [114] (interfaced with the private pieces of software in [354, 361, 362] used to
+compute the polarized proton-proton collision spin asymmetries) for the construction of PDF-
+independent interpolation grids; EKO (Section 2.1.1) for PDF evolution. Each of these pieces
+of software has been extended to handle the computation of the polarized observables at

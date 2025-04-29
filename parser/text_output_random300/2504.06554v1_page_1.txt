@@ -1,0 +1,87 @@
+Experimental Implementation of a Qubit-Efficient Variational Quantum Eigensolver with Analog
+Error Mitigation on a Superconducting Quantum Processor
+Yuwei Ma,1, ∗Weiting Wang,1, ∗Xianghao Mu,1 Weizhou Cai,1 Ziyue Hua,1 Xiaoxuan Pan,1
+Dong-Ling Deng,1, 2, 3 Rebing Wu,4, 3 Chang-Ling Zou,5, 3, † Lei Wang,6, 3, ‡ and Luyan Sun1, 3, §
+1Center for Quantum Information, Institute for Interdisciplinary Information Sciences, Tsinghua University, Beijing 100084, China
+2Shanghai Qi Zhi Institute, 41th Floor, AI Tower, No. 701 Yunjin Road, Xuhui District, Shanghai 200232, China
+3Hefei National Laboratory, Hefei 230088, China
+4Center for Intelligent and Networked Systems, Department of Automation, Tsinghua University, Beijing 100084, P. R. China
+5CAS Key Laboratory of Quantum Information, University of Science and Technology of China, Hefei, Anhui 230026, P. R. China
+6Beijing National Laboratory for Condensed Matter Physics and Institute of Physics,
+Chinese Academy of Sciences, Beijing 100190, China
+We experimentally demonstrate a qubit-efficient variational quantum eigensolver (VQE) algorithm using a
+superconducting quantum processor, employing minimal quantum resources with only a transmon qubit cou-
+pled to a high-coherence photonic qubit. By leveraging matrix product states to compress the quantum state
+representation, we simulate an N +1-spin circular Ising model with a transverse field. Furthermore, we develop
+an analog error mitigation approach through zero-noise extrapolation by introducing a precise noise injection
+technique for the transmon qubit. As a validation, we apply our error-mitigated qubit-efficient VQE in deter-
+mining the ground state energies of a 4-spin Ising model. Our results demonstrate the feasibility of performing
+quantum algorithms with minimal quantum resources while effectively mitigating the impact of noise, offering
+a promising pathway to bridge the gap between theoretical advances and practical implementations on current
+noisy intermediate-scale quantum devices.
+I.
+INTRODUCTION
+Quantum technology has seen rapid advancement, from
+its theoretical beginnings [1, 2] to the development of noisy
+intermediate-scale quantum (NISQ) devices [3]. These de-
+vices, which leverage tens to hundreds of qubits, are ca-
+pable of solving problems that challenge classical comput-
+ers, marking an important step toward realizing quantum ad-
+vantage [4, 5]. Despite these achievements, NISQ devices
+face considerable limitations, including shallow circuit depths
+and the inability to implement full quantum error correction,
+which restrict the scope of quantum algorithms that can be
+executed effectively [6, 7]. Among the algorithms designed
+for these NISQ devices, the variational quantum eigensolver
+(VQE) stands out due to its hybrid quantum-classical ap-
+proach, which has proven effective in finding the ground state
+energies of quantum systems [8–10]. The VQE has already
+been used to compute molecular energies and solve quantum
+many-body problems [11, 12], generating significant interest
+in both research and industry [13, 14]. However, the practical
+implementation of VQE on NISQ devices remains challeng-
+ing due to the constraints imposed by high noise level and lim-
+ited qubit resources. These challenges necessitate the devel-
+opment of qubit-efficient strategies [15] and error mitigation
+techniques [16–20] to improve the scalability and accuracy of
+quantum simulations.
+Qubit-efficient methods, such as those leveraging matrix
+product states (MPS), tensor networks, and circuit-cutting
+techniques, reduce the number of qubits required for simula-
+tions while maintaining accuracy [21–27]. These approaches
+enable the simulation of larger quantum systems on current
+hardware by effectively managing qubit resources, making
+them promising solutions for scaling quantum computations
+within the constraints of NISQ devices. In particular, MPS
+provides a compact and efficient representation of quantum
+states, particularly for systems with limited entanglement. On
+a quantum computer, MPS can be implemented using fewer
+qubits than the physical degrees of freedom by sequentially
+measuring and reusing qubits. This approach effectively in-
+creases the bond dimension, allowing the representation of
+more entanglement with fewer qubits [28, 29]. For example, it
+has been shown that even a 1D cluster state of arbitrary length
+can be represented using just two qubits [21]. Additionally,
+error mitigation techniques, such as zero-noise extrapolation
+and probabilistic error cancellation, play a crucial role in re-
+ducing computational errors without the need for full error
+correction [6, 17, 30]. These methods are particularly suited
+for NISQ devices, where the overhead required for full quan-
+tum error correction remains prohibitively high [3].
+In this work, we experimentally implement a qubit-efficient
+VQE algorithm using a superconducting quantum processor.
+By leveraging MPS [21], we reduce the qubit requirements
+for simulating an N +1-spin circular Ising model with a trans-
+verse field. Specifically, we simulate a 4-spin system using
+just two physical qubits, demonstrating the potential for scal-
+ing quantum simulations with fewer resources.
+To further
+enhance the accuracy of our simulations, we employ analog
+error mitigation using zero-noise extrapolation, which miti-
+gates errors by extrapolating results from multiple noise lev-
+els. This combination of qubit-efficient algorithms and error
+mitigation allows us to push the boundaries of what is achiev-
+able on current quantum hardware, highlighting the feasibility
+of tackling larger quantum problems within the constraints of
+existing technologies.
+arXiv:2504.06554v1  [quant-ph]  9 Apr 2025

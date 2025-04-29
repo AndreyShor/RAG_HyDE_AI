@@ -1,0 +1,79 @@
+VQE calculations on a NISQ era trapped ion quantum computer using a multireference
+unitary coupled cluster ansatz: application to the BeH2 insertion problem
+Palak Chawla,1, ∗Disha Shetty,1, ∗Peniel Bertrand Tsemo,1, 2 Kenji Sugisaki,1, 3, 4, 5
+Jordi Riu,6, 7 Jan Nogué,6, 7 Debashis Mukherjee,1 and V. S. Prasannaa1, 8, †
+1Centre for Quantum Engineering, Research and Education, TCG Crest, Kolkata 700091, India
+2Department of Physics, IIT Tirupati, Chindepalle, Andhra Pradesh 517619, India
+3Graduate School of Science and Technology, Keio University,
+7-1 Shinkawasaki, Saiwai-ku, Kawasaki, Kanagawa 212-0032, Japan
+4Quantum Computing Center, Keio University, 3-14-1 Hiyoshi,
+Kohoku-ku, Yokohama, Kanagawa 223-8522, Japan
+5Keio University Sustainable Quantum Artificial Intelligence Center (KSQAIC),
+Keio University, 2-15-45 Mita, Minato-ku, Tokyo, Japan
+6Qilimanjaro Quantum Tech, Carrer de Veneçuela, 74, Sant Martí, 08019, Barcelona, Spain
+7Universitat Politècnica de Catalunya, Carrer de Jordi Girona, 3, 08034 Barcelona, Spain
+8Academy of Scientific and Innovative Research (AcSIR), Ghaziabad- 201002, India
+In this study, we employ the variational quantum eigensolver algorithm with a multireference
+unitary coupled cluster ansatz to report the ground state energy of the BeH2 molecule in a geometry
+where strong correlation effects are significant. We consider the two most important determinants
+in the construction of the reference state for our ansatz. Furthermore, in order to carry out our
+intended 12-qubit computation on a noisy intermediate scale quantum era trapped ion hardware
+(the commercially available IonQ Forte-I), we perform a series of resource reduction techniques to
+a. decrease the number of two-qubit gates by 99.84% (from 12515 to 20 two-qubit gates) relative
+to the unoptimized circuit, and b. reduce the number of measurements via the idea of supercliques,
+while losing 2.69% in the obtained ground state energy (with error mitigation and post-selection)
+relative to that computed classically for the same resource-optimized problem setting.
+I.
+INTRODUCTION
+The field of quantum chemistry using quantum comput-
+ers has been one of the most rapidly emerging areas of re-
+search in quantum sciences and technologies, owing to the
+promise of the speedup that quantum algorithms offer for
+solving such problems [1–4]. On the quantum computing
+front, since we currently are in the noisy intermediate scale
+quantum (NISQ) era [5], calculations involving over a hand-
+ful of qubits are primarily limited by the currently achiev-
+able two-qubit gate fidelities. In such a scenario, despite
+the limited number of qubits available, it is important to
+push the boundaries of quantum chemical computations us-
+ing quantum computers, while maximizing both precision
+and the number of qubits that can be effectively utilized.
+On the other hand, on the quantum chemistry front, the
+quest to accurately predict molecular energies in strongly
+correlated regimes has long been an issue of fundamental
+importance owing to the variety of applications that it can
+find [6–11].
+In this work, we aim to carry out a quantum chemi-
+cal calculation where strong correlation effects are at play
+on a NISQ era quantum computer. To that end, we use
+∗Contributed equally to the work
+† srinivasaprasannaa@gmail.com
+the widely employed quantum-classical hybrid Variational
+Quantum Eigensolver (VQE)[12–24] algorithm with a mul-
+tireference unitary coupled cluster ansatz (MRUCC-VQE).
+We remark at this point that several works exist in liter-
+ature to capture strong correlation effects using the VQE
+algorithm [25–30]. However, while many studies focus on
+the extremely important formulation step, few take the next
+step of implementing and executing a problem instance on a
+quantum computer, where the key challenges lie in reducing
+circuit depth while retaining precision to as much extent as
+possible. To the best of our knowledge, only one work em-
+ploys a MRUCC-VQE approach [29] on quantum hardware.
+The work uses a superconducting qubit quantum computer
+to obtain energies of some light molecular systems.
+Our
+work is based on the multireference ansatz discussed in Sug-
+isaki et al [30], where the authors simulate the BeH2 inser-
+tion problem in the MRUCC-VQE framework. We carry
+out a 12-qubit computation (with error mitigation) on a
+commercially available trapped ion quantum computer for
+the same problem. Among the commercially available quan-
+tum computers, trapped ion devices offer among the best
+two-qubit gate fidelities as well as all-to-all connectivity,
+thus making the platform our choice for this work.
+The manuscript is organized as follows: We discuss the
+BeH2 insertion problem (Section II A) followed by details of
+MRUCC-VQE (Section II B) and then proceed to expound
+on our resource reduction techniques (Section II C). Sec-
+arXiv:2504.07037v1  [physics.chem-ph]  9 Apr 2025

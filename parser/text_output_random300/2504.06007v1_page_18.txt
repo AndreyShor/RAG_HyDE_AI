@@ -1,0 +1,97 @@
+CAMulator
+A.3
+Rain amount and Rain Frequency
+The calculation of rain amount and rain frequency follows the method outlined in Pendergrass and Hartmann [2014],
+but we summarize the approach here for completeness. The rain-rate distribution is constructed using logarithmically
+spaced bins, where each bin is 7% wider than the previous one, with its center shifted accordingly. Only rain rates
+exceeding 0.03 mm day−1 are included, while dry days are defined by a precipitation threshold of 0.0321 mm day−1.
+At each grid point, we first compute a histogram of rain rates and normalize it by the total number of days to obtain
+the rain frequency distribution. The total precipitation amount within each bin is then summed to construct the rain
+amount distribution. Finally, these distributions are averaged globally using an area-weighted approach to produce the
+global-mean distributions. To formalize this, we define the probability distribution of rain amount p and rain frequency
+f for each dataset, using daily rain accumulation r from model output or gridded observations. The bin edges are
+denoted as T l
+i (left) and T r
+i (right), with the bin centers defined as T c
+i = (T l
+i + T r
+i )/2. The transformation of the
+distribution is expressed mathematically as follows:
+pi(T c
+i ) =
+1
+∆ln R
+Z ln T r
+i
+ln T l
+i
+p(ln r)d ln r =
+1
+∆ln T
+X
+gridpts
+r(T l
+i < r < T r
+i )Agridpt
+Atotal
+,
+(3)
+fi(T c
+i ) =
+1
+∆ln T
+Z ln T r
+i
+ln T l
+i
+f(ln r)d ln r =
+1
+∆ln T
+X
+gridpts
+Nd(T l
+i < r < T r
+i )
+P Nd
+Agridpt
+Atotal
+,
+(4)
+Fd =
+1
+P Nd
+X
+gridpts
+Nd(r = 0)Agridpt
+Atotal
+,
+(5)
+where A is the grid cell area, and Nd represents the number of days in the dataset. The bin width is set as
+∆ln T = (Ti+1 −Ti)
+Ti
+= 7.67%,
+(6)
+ensuring sufficient resolution to capture the distribution of rain rates.
+A.4
+Low Frequency Variability
+To extract the leading patterns of variability, we perform an empirical orthogonal function (EOF) decomposition on the
+monthly anomaly fields. The climatology is defined as the monthly mean computed over the full 30-year simulation
+or reanalysis record. Prior to decomposition, all fields are area-weighted by the square root of the cosine of latitude
+to account for variations in grid cell area. We represent the spatial patterns by regressing the field pointwise onto a
+one-standard-deviation change in the corresponding temporal principal component.
+We examine the DJF Pacific–North American (PNA) pattern and the North Atlantic Oscillation (NAO) in detail.
+Following [Phillips et al., 2014] (NCAR’s Climate Variability Diagnostic Package), these patterns are defined as the
+leading modes of atmospheric variability over the regions [20–85°N, 120°E–120°W] and [20–80°N, 90°W–40°E],
+respectively.
+The eight strongest El Niño and La Niña events are identified using the Niño3.4 index from the observational record.
+The December El Niño years include 1979, 1982, 1986, 1987, 1991, 1994, 1997, and 2002, while the December La
+Niña years include 1983, 1984, 1988, 1995, 1998, 1999, 2000, and 2007. The composite precipitation pattern is then
+calculated by computing the DJF seasonal averages and subtracting the La Niña composite field from the El Niño
+composite field.
+B
+Model Grid and Conservation Schemes
+CAMulator leverages a hybrid sigma-pressure coordinate system, where vertical integrals are computed by first
+determining the local pressure value. The pressure at each model level k is given by:
+P(i, j, k) = AkP0 + BkPS(i, j)
+(7)
+18

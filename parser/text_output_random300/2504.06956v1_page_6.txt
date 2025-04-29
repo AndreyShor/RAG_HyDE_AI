@@ -1,0 +1,64 @@
+Main results
+6
+maximum in a bounded region and then take the limit as the size of the region tends to infinity in order
+to obtain the “cluster process” which describes the shape of the field around a mesoscopic maximum.
+In the continuum however, conditioning the origin to be a maximum even within a bounded region
+becomes problematic, as such a conditioning is already degenerate.
+To address this issue, we introduce a “softer” form of conditioning: we fix an arbitrary threshold
+λ > 0 and, instead of conditioning on the origin being a mesoscopic maximum, we condition on
+the value at the origin being at least as large as the nearest mesoscopic maximum minus λ. This
+conditioning is non-degenerate within a bounded region as long as λ > 0. Theorem A proves that
+we can then take the limit as the region size increases to infinity, thus yielding a limiting field eΥλ.
+Finally, we show the existence of a unique random field Ψ on Rd which is 0 at the origin, takes only
+negative values, is independent of the arbitrary threshold λ, and such that eΥλ can be expressed as a
+randomly shifted version of Ψ (under a suitably tilted measure, see (2.10) for details). In this sense,
+we can consider Ψ as the canonical field describing the shape of the field X from the perspective of a
+mesoscopic maximum.
+Acknowledgements. This work grew out of discussions between MH and Christophe Garban at the 2023
+SwissMAP Workshop in Mathematical Physics. We are also grateful to Michael Aizenman and R´emi Rhodes for
+interesting discussions on this topic. Both authors were supported by the Royal Society through MH’s Research
+Professorship RP\R1\191065.
+2
+Main results
+We now provide a description of our main results. First, in Section 2.1, we discuss the shape of a
+⋆-scale invariant field around a mesoscopic maximum. Following that, in Section 2.2, we state the
+result concerning the convergence of the supercritical GMC. In Section 2.3, we present the result
+regarding the convergence of the measure-valued processes (µγ,t+s)s≥0 as t →∞.
+2.1
+Local structure of extremal points
+We aim to investigate the local structure around points within the domain where the field attains
+unusually large values, comparable to its maximum. The strong correlation with nearby points
+suggests that each peak in the field comes with a cluster of high values. These clusters of high-value
+points are generally well-separated from each other. By selecting one of these clusters and identifying
+as reference point the maximum of the field inside the cluster, our goal is to describe the “shape” of
+the field in the vicinity of this reference point.
+Remark 2.1. We will see that the behaviour of Xb near a mesoscopic maximum is dominated by its
+radial dependence. This in turn behaves like a Brownian motion, with time playing the role of the
+logarithm of spatial distance. It is useful to keep this analogy in mind when parsing the results in this
+section.
+In order to make this heuristic precise, we need to introduce some notation.
+Definition 2.2. For b ∈(0, ∞), we introduce the recentering constant mb by letting
+mb
+def=
+√
+2db −
+3
+2
+√
+2d
+log b .
+(2.1)
+Furthermore, we define functions hb : Rd →R and ab : Rd →R by
+hb(x)
+def= 1
+b
+Z b
+0
+K(e−sx)ds ,
+ab(x)
+def=
+Z b
+0
+(1 −K(e−sx))ds ,
+(2.2)
+with the definition of ab extended also to the case b = ∞.

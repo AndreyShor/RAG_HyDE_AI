@@ -1,0 +1,114 @@
+In our work, we use a fully connected feedforward net-
+work architecture with continuously differentiable activation
+functions (e.g., hyperbolic tangent). For a network with a
+finite depth of D, the function Hq can be expressed as
+Hq(x) = lD−1 ◦nD−1 ◦· · · ◦n2 ◦l1 ◦n1 ◦l0(x),
+(14)
+where ni : RNi 7→RNi and li : RNi−1 7→RNi represent the
+nonlinear activation layers and linear transformation layers,
+respectively, with Ni being the width of layer i.
+Note that we accounted for the boundary conditions by
+introducing the corresponding loss function (13) in the
+training process. We can alternatively enforce the boundary
+conditions exactly through the architecture of the PINN if
+the boundary condition can be expressed in terms of a well-
+behaved trial function B that satisfies the boundary condition
+by construction [22]. In this case, we define the PINN as
+Hq(x) = B ◦ϕ(x),
+where ϕ(x) = lD−1 ◦nD−1 ◦· · · ◦n2 ◦l1 ◦n1 ◦l0(x) as
+in (14), and B(ξ) = F(x)ξ with F(x) = 0 for x ∈∂Cq.
+Thus, through this approach, by construction, we can enforce
+PINN to have zero output for x ∈∂Cq as required by our
+CBF formulation. The remaining process then follows the
+standard PINN training procedure.
+VI. SIMULATION AND EXPERIMENTAL RESULTS
+We evaluate our PINN-based CBF synthesis using a
+quadrotor in simulation and the real world. A video of the
+experiments can be seen at this link: http://tiny.cc/relative-
+degree-pinn-cbf.
+In both examples, we use a non-linear feedback con-
+troller [23] to stabilize the quadrotor’s attitude and constrain
+its motion to the z-axis. The system dynamics along the z-
+axis are given by
+˙x =
+ ˙z
+k1 −g + k2uT ,
+where x = [z, ˙z]T ∈R2 is the state, u ∈R is the mass-
+normalized acceleration input, g = 9.81 m/s2 is the gravita-
+tional constant, and k1, k2 ∈R are the system parameters.
+In the simulation, k1 = 20.91 and k2 = 3.65 and in the real
+world k1 = 20.91 and k2 = 2.19. In this example, g(x) is
+constant over the state space and yields Lgh(x) = 0 for two
+states on the boundary of the safe set C. For both settings,
+each PINN has three hidden layers with 100 neurons and
+uses the tanh activation function. We run the safety filter at
+100 Hz in the simulation and 70 Hz in the real world.
+We consider different safe sets in simulation and in real-
+world experiments, respectively, illustrating the applicability
+of our approach to a non-convex and a convex set. In the
+simulation, the desired safe set is derived from a continuously
+differentiable Himmelblau function [24]. We approximate
+the non-convex safe set using ten PINNs. We compare the
+standard single-CBF safety filter approach directly using the
+Himmelblau function as the CBF with our proposed multi-
+CBF safety filter that synthesizes multiple CBFs based on
+the Himmelblau function using PINNs while also accounting
+for the varying relative degree. The closed-loop trajectories
+1
+1.5
+2
+2.5
+3
+3.5
+−0.5
+0
+0.5
+1
+1.5
+CQ
+C
+x1
+x2
+Lgh(x) = 0
+x (single-CBF safety filter)
+x (multi-CBF safety filter)
+Fig. 4: Simulation results of our proposed PINN-based CBF synthesis ap-
+proach for rendering a non-convex set safe. We can accurately approximate
+the desired safe set (gray shaded area) using ten PINNs (zero-level sets in
+green). We compare the single-CBF and our proposed multi-CBF approach
+starting from the same initial condition (blue circle). The system’s state in
+closed-loop with the single-CBF safety filter (black crosses) violates the
+desired safety constraint. In contrast, the state of the system in closed-loop
+with the CBF safety filter using our PINN-based CBFs (red crosses) stays
+inside the safe set for all future time, although the system converges to a
+state where Lgh(x) = 0 for the single CBF (black solid line).
+of both safety filters are initialized at the same state (blue
+circle), and the same unsafe control input trajectory π(x) =
+0.4 m/s2 is applied to both systems for the duration of the
+simulation. As shown in Fig. 4, the single-CBF safety filter
+leads to constraint violations caused by reaching the set of
+states where Lgh(x) = 0 intersects the boundary of C. Our
+proposed multi-CBF safety filter also converges to the same
+states, but by design Lghq(x) ̸= 0 for all PINN-based CBFs,
+and consequently, the safety filter renders CQ ⊆C safe
+without chattering issues or constraint violations.
+In the real-world example, the safe set is represented as
+an ellipsoid defined by a quadratic function. The uncertified
+controller π(x) is tasked to drive the quadrotor from a point
+inside the safe set to a point outside of it. As shown in Fig. 5,
+with the single-CBF approach where the quadratic function
+is directly used as the CBF, the quadrotor experiences sig-
+nificant input chattering as it approaches the boundary of the
+safe set, especially in regions close to the set where the CBF
+becomes inactive (i.e., where Lgh = 0). In contrast, with
+our proposed multi-CBF approach, with properly designed
+CBF gradients, the quadrotor remains within the safe set
+without exhibiting any chattering behaviour in the filtered
+input command. This set of experiments further illustrates
+the efficacy of our approach in mitigating the adverse effects
+caused by varying relative degrees in practical systems.
+VII. CONCLUSIONS
+In this work, we proposed an alternative view on control
+barrier function (CBF) synthesis to address the issue of
+varying relative degrees. In particular, we design CBFs by
+first specifying their gradient fields and formulating CBF

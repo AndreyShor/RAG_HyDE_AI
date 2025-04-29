@@ -1,0 +1,93 @@
+11
+Finally, we determine the expansion coefficients qn(t) when ⟨eλQt⟩is expanded in terms of ω:
+⟨eλQt⟩= ∑
+n≥0
+qn(t)ωn.
+(S-25)
+Since qn(t) does not depends on ρa, ρb, and λ, we consider the case ρb = 0. In this case, the above equation becomes
+⟨eλQt⟩= ∑
+n≥0
+qn(t)ρn
+a(eλ −1)n.
+(S-26)
+On the other hand, Eq. (S-11) for ρb = 0 becomes
+⟨eλQt⟩=
+L
+∑
+p=0
+∑
+x1<⋯<xp≤0
+ρp
+a(1 −ρa)L−pTr[eλNReLt[∣x1,⋯,xp⟩⟨x1,⋯,xp∣]]
+(S-27)
+=
+L
+∑
+p=0
+∑
+x1<⋯<xp≤0
+p
+∑
+m=0
+ρp
+a(1 −ρa)L−peλmPrt(NR = m∣x1,⋯,xp).
+(S-28)
+Here, we use the identity ∑L
+m=0 Pm = 1 in the second line, and define the probability that m particles are located to
+the right of the origin (x > 1) at time t with the initial state ∣x1,⋯,xp⟩as
+Prt(NR = m∣x1,⋯,xp) ∶= Tr[PmeLt[∣x1,⋯,xp⟩⟨x1,⋯,xp∣]].
+(S-29)
+Taking simultaneously the limits ρa →0 and λ →∞at fixed ρaeλ in Eq. (S-26) and Eq. (S-28), we have the following
+expression for qn(t),
+qn(t) =
+∑
+x1<⋯<xn≤0
+Prt(NR = n∣x1,⋯,xn)
+(S-30)
+=
+∑
+y1<⋯<yn≤0<x1<⋯<xn
+⟨x∣eLt[∣y⟩⟨y∣]∣x⟩.
+(S-31)
+III.
+THE BETHE ANSATZ FOR THE ONE-DIMENSONAL FERMI-HUBBARD MODEL
+We briefly explain the Bethe ansatz in the one-dimensional Fermi-Hubbard model. The notation used here basically
+follows Ref. [80]. We refer the readers to Chapter 3 in Ref. [80] for the detail of the Bethe ansatz in the Fermi-Hubbard
+model.
+The one-dimensional Fermi-Hubbard model is known to be exactly solvable via the nested Bethe ansatz [79, 80].
+Although the interaction strength is purely imaginary in Eq. (8) of the main text, the integrability of the Fermi-
+Hubbard model is not spoiled [78–80]. On the infinite interval, the solution of the stationary Schr¨odinger equation,
+H2nϕ(x;a) = Eϕ(x;a),
+H2n = −
+2n
+∑
+j=1
+(∆+
+j + ∆−
+j ) + 4iγ
+∑
+1≤j<k≤2n
+δxj,xk −4iγn,
+(S-32)
+is given by the Bethe wave function [79, 80],
+ϕ(x;a∣z) ∶=
+∑
+P ∈S2n
+sign(PQ)⟨aQ∣zP⟩
+2n
+∏
+j=1
+z
+xQ(j)
+P (j)
+(S-33)
+with E(z) ∶= −2∑2n
+j=1(zj + 1/zj)/2 −4iγn and the permutation Q such that xQ(1) ≤⋯≤xQ(2n). Here, ∣zP⟩is the
+vector,
+∣zP⟩=
+∑
+a1,⋯,a2n=↓,↑
+⟨a∣zP⟩∣a⟩,
+(S-34)
+defined in the auxiliary spin vector space spanned by the basis ∣a⟩∶= ea1 ⊗⋯⊗ea2n with e↑= (1,0)t, e↓= (0,1)t.
+Each ∣zP⟩or each scattering amplitude ⟨aQ∣zP⟩are related by the Yang operator Yj,j+1(λ) ∶= (λΠj,j+1 −2γ)/(λ−2γ)

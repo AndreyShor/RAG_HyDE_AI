@@ -1,0 +1,49 @@
+Preprint. Under review.
+PLAN: {{problem description}}
+TARGET QUANTITY to be computed : {{ target description }}
+ANSWER:
+H.2
+Multi-Turn Agent Prompts
+The following prompt is used in the ToolLookupAgent to call tools. tool snippet is popu-
+lated with the descriptions of each tool. state info is the execution and verifier feedback
+for the solution to iterate upon (left panel of Figure 3).
+Tool Selection
+You are a COMSOL engineer. You are attempting to gather information relevant to
+execution feedback that you received from the COMSOL client after you executed
+some code. The relevant information can be queried as ‘ToolCall‘. Each ‘ToolCall‘
+must consist of str along with the relevant arguments, if any. A ToolCall may or may
+not require arguments. Identify the relevant tool calls and return your reply as a
+‘ToolCalls‘ object, which consists of a list of ‘ToolCall‘s.
+===
+Here is some information on each tool
+{{tool snippet}}
+===
+Now return the relevant ToolCallList for the following execution feedback / error
+message.
+FEEDBACK: {{ state info }}
+Correction Prompt
+You are an engineer solving the following PROBLEM in COMSOL, by generating a
+solution that consists of the JAVA COMSOL API code needed to solve the problem.
+You have so far generated the code in CODE. On executing the lines in CODE you
+encountered the issue described in CURRENT EXECUTION FEEDBACK. CURRENT
+EXECUTION FEEDBACK is formatted as ‘Line →Status: Error (if Status=‘Error‘)‘
+where Status is ‘Correct‘ if the line of code was able to execute and ‘Error‘ if it raised
+an error. You have additionally been provided with EXECUTION HISTORY which
+is a record of some of your previous code solutions and their execution results. You
+may use it as relevant context to understand what blocks of code work and what
+you’ve already tried.
+You must return a BETTER solution by correcting lines of code that raised errors, or
+substituting blocks of code with other equivalent code snippets that would solve the
+problem. The solution must be a full contiguous block of CODE. Use the example
+provided below to understand how to format your CODE.
+===
+EXAMPLE 0:
+PROBLEM:* Select 2D for the space dimension.
+* Select Fluid Flow > Single-Phase Flow > Laminar Flow (spf).
+* Create a Stationary Study
+* Insert a geometry from file.
+**Parameters**
+* Name & Expression & Description \\
+* Re & 100 & Reynolds number \\
+* rho0 & 1e3 [kg/m$ˆ3$] & Density \\
+35

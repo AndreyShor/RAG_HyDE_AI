@@ -1,0 +1,121 @@
+3
+interactions occurring on the hydrocarbon in the first
+FGD.
+Each
+event
+in
+the
+dataset
+includes
+the
+energy-
+momentum four-vector for the leading muon and, if it
+exists, the leading proton in both truth and reconstructed
+space. For events that have been reconstructed, a detec-
+tor sample ID is also included based on the sub-detectors
+used to measure the muon candidate (and proton candi-
+date, if any), defined as one of:
+1. µTPC : only a reconstructed muon in the TPC
+2. µTPC + pTPC : 1 muon and 1 proton in the TPC
+3. µTPC + pFGD : 1 muon in the TPC and 1 proton
+in the FGD
+4. µFGD + pTPC : 1 muon in the FGD and 1 proton
+in the TPC
+5. µFGD : 1 muon in the FGD
+6. CC1π : 1 muon and 1 π+ in the TPC
+7. CCOther : 1 muon and multiple pion tracks in the
+TPC
+8. CCMichel : 1 muon and a michel tagged pion in
+the FGD
+The
+final
+three
+sample
+IDs
+here
+are
+intended
+as
+background-enhanced samples and are used to help con-
+strain backgrounds to the CC0π analysis.
+For events
+in the truth space, a topology ID is included indicating
+what observable final state particles result from the in-
+teraction, defined as one of:
+1. CC0π0p : only an outgoing muon from the charged
+current interaction
+2. CC0π1p : 1 muon and 1 proton
+3. CC0πNp : 1 muon and 2 or more protons
+4. CC1π : 1 muon and 1 charged pion
+5. CCOther : other events with a muon (neutral pion
+or multiple pion production)
+Events are designated as signal or background at truth
+level by these topology IDs, with 1–3 serving as signal
+and 4–5 serving as background. Due to limitations of the
+data release, this is not the full list of backgrounds typi-
+cally included in a T2K analysis. In particular, it omits
+contributions from neutral current interactions, νe inter-
+actions with erroneous particle identification, wrong-sign
+events from ¯ν interactions, and out of fiducial volume
+interactions.
+The dataset also contains information about system-
+atic uncertainties associated with the flux, detector, and
+neutrino interaction models for the analysis. This comes
+in the form of a vector of 500 weight variations for each
+individual event that represent coherent random throws
+of these uncertainties. However, the detector systematic
+uncertainties do not include dedicated proton reconstruc-
+tion effects, since the proton kinematics were not part of
+the original analysis associated with this data release.
+IV.
+TEST SETUP
+We create a set of “fake data” to serve as the unfolding
+target by reweighting a subset of the available events in
+the dataset with a modified charged-current quasi-elastic
+(CCQE) cross section based on the RPA calculation from
+Ref. [58]. This fake data represents a nontrivially differ-
+ent signal model from that used in the simulated dataset,
+which did not include this weak-charge screening effect
+caused by the nuclear medium. The modification is per-
+formed by applying an event weight to CCQE events as
+a function of the true Q2 based on a parametrization of
+the RPA calculation using Bernstein polynomials, which
+is described in detail in Ref. [59]. The original set of non-
+reweighted events and weights then serve as the simula-
+tion for the unfolding procedure. Truth-level info for the
+fake data is not used during the unfolding procedures,
+but it is brought in for evaluation of the performance of
+each method in the final stage. For convenience, in the
+rest of this article we will refer to the fake data simply
+as “data”, as during unfolding it is treated the same way
+that real data would be.
+For the events designated as simulation, we generate
+500 throws of the event weights that simultaneously ac-
+count for detector, cross-section, and flux systematic un-
+certainties, as well as Monte Carlo statistical uncertain-
+ties from the number of generated events. The weight
+variations from systematic effects are taken from the T2K
+public simulated data release.
+Monte Carlo statistical
+uncertainties are obtained by bootstrap resampling the
+available events with replacement. We similarly create
+500 throws of the statistical uncertainties in the observed
+data by applying to it a weighted bootstrap resampling,
+where each data event with weight w receives a resampled
+weight wresampled = Poisson(λ = w). This reduces the
+number of data events to the same statistics as Ref. [51]
+and simulates the corresponding statistical uncertainty
+of that result. The unfolded results are then obtained
+by a toy universe method, where each of the 500 throws
+is independently run through the unfolding procedure.
+The resulting ensemble of 500 unfolded truth distribu-
+tions gives our systematic and statistical uncertainties
+on the result. To maintain comparability between the
+unfolding methods under consideration, we use the same
+set of 500 variations for each of the procedures.
+We consider four observables for evaluating the perfor-
+mance of each method:
+• (pµ, cos θµ) : the two-dimensional muon kinematics
+defined by its momentum and forward angle, which
+were used in the differential cross-section analysis
+associated with the original data release [51]

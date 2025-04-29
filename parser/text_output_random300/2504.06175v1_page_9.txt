@@ -1,0 +1,114 @@
+9
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Fb
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Acceptance Fraction
+(a) Acceptance ratio
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1.0
+Fb
+0.90
+0.95
+1.00
+1.05
+1.10
+1.15
+1.20
+1.25
+1.30
+Fa/Fb
+(b) Fractional change in Bell fidelity with distillation
+FIG. 7. Experimental results (blue) on ibm kyiv for the Z2B recurrence distillation protocol with global depolarizing noise.
+Orange curves are theory assuming perfect distillation.
+0
+10
+20
+30
+40
+50
+60
+Delay time µs
+0.2
+0.4
+0.6
+0.8
+1.0
+Bell Fidelity
+Recurrence Z2B
+ρ1 - Data
+ρ2 - Data
+Distilled - Data
+FIG. 8. Experimental data from qubits (0,1,2,3) of ibm kyiv
+(points) showing increase in the Bell fidelity under Z2B dis-
+tillation of qubits undergoing coherent ZZ errors.
+averaging over random iterations, as we did in the pre-
+vious section. However, an effective T1/T2 idling error is
+not obtained by simply waiting on an actual device; due
+to ZZ interactions between neighboring pairs the Bell
+state fidelity can strongly degrade. We show a simple
+example of this in Fig.(8). Here we can get tremendous
+improvement in the Bell fidelity, but this is because we
+allowed the Bell fidelity to decrease via a coherent error
+term; the purity of the state is unchanged. One has to
+be careful of similar situations where distillation provides
+an apparent benefit, but where improvement could more
+easily be achieved without post-selection. In this exam-
+ple, the ZZ coherent error term can be also be canceled
+by applying staggered dynamical decoupling (DD) [50–
+52] (see App. G, Fig. 13a). With staggered DD, the cir-
+cuit is now well described by T1 and T2 errors.
+Once we apply staggered DD, typical data is shown in
+Fig. 9 with dotted lines. We see some natural features of
+the experiments. One, the starting Bell fidelity is lower
+than one due to the creation and swap operations (for in-
+stance see the Bell fidelity in Figs. 9a and 9b at t = 0 is
+less than one). Second, there is a natural asymmetry in
+the initial fidelity due to the variability of noise parame-
+ters between qubits (for instance the Bell fidelity of the
+two bell pairs in Fig. 9b are unequal). Third, depending
+on the distillation protocol used, Z2B or X2B, one may
+or may not see broad improvement in Bell fidelity (see
+Fig. 9d with improvement and 9c without); however we
+do not yet see broad across the device. To understand
+these features better we look to build a more involved
+device noise model.
+C.
+Device Model and Numerics
+To build a more involved device model we must include
+T1/T2 noise [44, 45] (see App. F for a mathematical de-
+scription) during the wait periods. These include when
+the swap is occurring, when the Bell states are idle and
+when the measurements are occurring. Furthermore, due
+to the effect described in Ref. [53] it’s not enough to use
+the bare T1/T2 even though we performed staggered echo
+sequences. We must still include the ZZ terms and sim-
+ulate the echo sequence to get the proper decay of the
+Bell states during the wait. We continue to add in the
+gate and measurement noise as described in Sec. III A.
+We pull the ZZ, T1, T2, gate times and measurement er-
+ror from the backend of the device (see Tables III and IV
+in App. E).
+For recurrence Z2B the simulations are given by the
+solid lines in Fig. 9a and we notice fairly good agree-
+ment between the experimental and numerical simula-
+tions. Confirming the general trend of the data is con-
+sistent with the calibration data.
+However, the figure

@@ -1,0 +1,54 @@
+for some K > 0 independent of δ. From this it follows that if δ was small enough, it must be
+v∗= f.
+(Otherwise one may divide by |v∗−f| to arrive at a contradiction.) Thus, we have shown that
+when |f −f0| = δ with δ sufficiently small, any fixed point v∗of F with |v∗−f0| < δ must coincide
+with the the function f that we wanted to recover.
+We next argue that the iteration defined by
+vj+1 := F[vj],
+v0 = f0
+(5.9)
+converges to a unique fixed point of F satisfying |v∗−f0| < δ provided that δ was small enough.
+Thus, by what we argued above, the iteration will then converge to v∗= f. Note that if v1, v2 are
+two functions with |v1 −f0|, |v1 −f0| < δ, we can take the expansion (5.7) with v1 and v2 in place
+of v∗and f respectively then hit both sides of the equation with (DA |f=f0)−1 to get
+F[v1] −F[v2] = DF |f=v2 (v1 −v2) + O(|v1 −v2|2),
+where the implied constant in the O-notation is bounded due to |v1 −v2| ≤2δ. Note that
+DF |v2= (DA |f=f0)−1 (DA |f=f0 −DA |v2) ,
+which implies that
+DF |v2 (v1 −v2) = O(|v1 −v2||f0 −v2|).
+Consequently, if δ was small enough (forcing |f0 −v2| and |v1 −v2| to be small), the operator F is
+a contraction in the sense that
+|F[v1] −F[v2]| ≤C|v1 −v2|
+(5.10)
+for some constant C < 1 independent of δ.
+By the contraction property (5.10), we have
+|vj+1 −vj| = |F[vj] −F[vj−1]| ≤C|vj −vj−1|.
+Iterating this estimate gives
+|vj+1 −vj| ≤Cj|v1 −f0|.
+Consequently, for any m > l, we have by the triangle inequality:
+|vm −vl| ≤
+m−1
+X
+k=l
+|vk+1 −vk| ≤|v1 −f0|
+m−1
+X
+k=l
+Ck.
+Summing the geometric series on the right gives
+|vm −vl| ≤
+Cl
+1 −C |v1 −f0|.
+Since C < 1, we thus have demonstrated the iteration vj+1 = F[vj] converges to a fixed point.
+Moreover, the convergence is geometrical. We also remark that the fixed point is unique and at
+a distance less than δ from f0, which follow directly from the fact that F was a contraction. In
+summary
+lim
+j→∞vj = v∗= f.
+(5.11)
+The presentation here is, of course, not mathematically rigorous. We have not specified which
+norm ∥·∥we are using on function spaces and whether the operators A, DA|f=v∗and (DA |f=f0)−1
+etc. behave well on these function spaces. A rigorous mathematical study of the limiting behaviour
+of the iterative procedure (5.9) is beyond the scope of this current article. We remark that analogous
+and mathematically precise arguments appear for example in [53].
+– 23 –

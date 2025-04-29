@@ -1,0 +1,102 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+which will be used throughout. We further note that (1.2) contains the tilt-invariant form of
+the reactions derived in [MiS20], where the dual dissipation potential, deﬁned below, will not
+depend on ω.
+What is more important to us, the system (1.2) has a gradient structure and can now
+be investigated with variational methods. More precisely, we will introduce continuous and
+discrete gradient systems in continuity equation format (cf. [PeS23]), link them to (1.2) and
+appropriate jump processes, respectively, and obtain a convergence result for these gradient
+systems in the spirit of Γ-convergence for gradient ﬂows, see [SaS04], more precisely EDP-
+convergence in the sense of [MiS20, Ste21, MMP21, Mie23].
+Upon rigorously linking these
+gradient systems to their corresponding equations, the ﬁnite approximation of solutions will
+then be a direct consequence.
+Next, we discuss our ﬁnite approximation of the system (1.2). For simplicity, we discretize
+the torus using uniform grids Zd
+N, N ∈N, noting that our model can be generalized to other
+domains and discretizations by following ideas of, e.g., [HrT23]. Furthermore, we assume for
+simplicity that the diﬀusion coeﬃcients δi as well as the reaction coeﬃcients κr are spatially
+independent, although our analysis would not be harmed when considering suﬃciently smooth
+coeﬃcients that are uniformly bounded above and away from zero.
+For ﬁxed N ∈N, the discretized evolution equation is a coupled ODE of the concentration
+ci,k of each species i ∈I in each discrete position k ∈Zd
+N. Denoting by E :=
+
+e = (e1, . . . , ed)⊤∈
+{0, 1}d, Pd
+l=1 el = 1
+	
+the set of d-dimensional unit vectors, the evolution is given by
+˙ci,k =
+X
+e∈E
+h
+N2di,k,e
+ ci,k+e
+wN
+i,k+e
+−ci,k
+wN
+i,k
+
++ N2di,k,−e
+ ci,k−e
+wN
+i,k−e
+−ci,k
+wN
+i,k
+i
++
+X
+r∈R
+κrω
+αr+βr
+2
+ ck
+wN
+k
+αr
+−
+ ck
+wN
+k
+βr
+(βr
+i −αr
+i ),
+(1.3)
+for the discrete reference concentrations wN
+i,k :=
+R
+QN
+k ωidx, where QN
+k
+:= {x ∈Td : xl ∈
+[kl/N, (kl+1)/N), l = 1, . . . , d} are d-dimensional cubes of side length 1/N. This system is
+related to the reaction-diﬀusion master equation (RDME) treated in [MSW23], where also the
+diﬀusion is replaced by jumps between nearest neighbors on the lattice. The intensity of the
+jumps is characterized by rates di,k,e := δi√wi,k+ewi,k, which are scaled by N2. In our case,
+the reactions are modeled pointwise nonlinearities analogously to the space-continuous system,
+whereas in the RDME the reactions are modeled as linear jump processes on the number of
+particles. Our systems are complemented with suitable initial data satisfying a suitable well-
+preparedness condition speciﬁed later.
+This work contains three main analytical results, which we summarize here. We refer to
+Section 4 for more details. The ﬁrst main result, Theorem 4.3, is the rigorous link of each
+prelimit system (1.3) to a corresponding gradient structure via a so-called energy-dissipation
+principle (EDP). Here, the main step is proving a chain rule, which is obtained by exploiting
+the discrete nature of the underlying base space.
+The second main result, Theorem 4.8, is the energy dissipation principle for the limit system
+(1.2).
+Since this model is deﬁned over a continuous base space, multiple regularity issues
+have to be overcome in order to control in particular the nonlinear reaction terms, which
+generate non-convexities in the variational formulation. Introducing the length |γ|1 = P
+i∈I γi
+of stoichiometric vectors γ ∈[0, ∞)I, our main assumptions are the following:
+∀r ∈R :
+|αr|1, |βr|1 ≤pcrit := 1+2/d and 1
+2|αr+βr|1 < pcrit.
+(1.4)
+3

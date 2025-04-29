@@ -1,0 +1,56 @@
+The k-qubit quantum AND-gate (a.k.a. the generalized Toﬀoli gate) CkX ﬂips the value of the
+target (the ﬁrst qubit, say) just when all control bits are 1:
+CkX |x1, x2, . . . , xk⟩=
+x1 ⊕Πk
+j=2xj, x2, . . . , xk
+E
+for any x1, . . . , xk ∈{0, 1}. For example C2X = F1 = C-NOT.
+The gates mentioned above are all “classical” in the sense that they map computational basis
+states to computational basis states. This is not true of the C-SIGN gate.
+The k-qubit C-SIGN gate CkZ ﬂips the overall phase just when all bits are 1:
+CkZ |x1, . . . , xk⟩= (−1)Πk
+j=1xj |x1, . . . , xk⟩
+for any x1, . . . , xk ∈{0, 1}. The C-SIGN gate results from the quantum AND-gate by conjugating
+the target qubit with Hadamard gates: CkZ = H1(CkX)H1, and vice versa, CkX = H1(CkZ)H1.
+A technical advantage of the C-SIGN gate over the quantum AND-gate is that the C-SIGN gate
+has no distinguished target or control qubits; all qubits incident to the gate are on the “same
+footing;” more precisely, the C-SIGN gate commutes with the SWAP operator applied to any pair
+of its qubits. For example, we depict a C3Z-gate acting on adjacent qubits in a circuit diagram as
+follows:
+With that in mind we deﬁne, for any subset S of the qubits of a multiqubit register, the gate CSZ
+as the C-SIGN gate acting on the qubits in S. Note, however, that CSZ is a unitary operator on
+the entire register, being the tensor product of a C-SIGN gate on the qubits in S with the identity
+operator on the other qubits. We deﬁne C∅Z := −I by convention, where I is the identity operator
+on the entire register. We also refer to a C-SIGN gate acting on an unspeciﬁed set of qubits as a
+CZ-gate.
+Deﬁnition 2.4. A QAC-circuit is a quantum circuit that includes CZ-gates and (arbitrary) single-
+qubit gates. For QAC-circuit C, we deﬁne the depth of C in the standard way, except we do not
+include single-qubit gates as contributing to the depth, i.e., as if all single-qubit gates are removed.
+Deﬁnition 2.5. A depth-d QAC-circuit can have d layers of CZ-gates, which we call layers 1
+through d, respectively, layer 1 lying to the left of layer 2, etc. To the left, right, and in between
+these layers are arbitrary 1-qubit gates. Viewing the circuit as acting from left to right, the leftmost
+1-qubit gates are applied ﬁrst; we say these gates are on layer 0.5. Then the layer-1 CZ-gates are
+applied, followed by the 1-qubit gates between layers 1 and 2 (layer 1.5), followed by the CZ-gates
+on layer 2, and so on, then ﬁnally the rightmost layer of 1-qubit gates (layer d + 1
+2).
+For a given layer ℓand qubit label j, we denote by G(ℓ)
+j
+the gate on layer ℓthat is incident to
+qubit j. If no such gate exists, then G(ℓ)
+j
+:= I. Thus for integral ℓ, G(ℓ)
+j
+is either I or a CZ gate,
+and for non-integral ℓ, G(ℓ)
+j
+is a 1-qubit gate. For non-integral ℓ, if S is a subset of the qubits in
+the circuit, we let G(ℓ)
+S
+denote the tensor product N
+j∈S G(ℓ)
+j
+of the G(ℓ)
+j
+for j ∈S. For any ℓ, we
+let G(ℓ) denote the tensor product of all gates on layer ℓ, acting on all the qubits.
+6

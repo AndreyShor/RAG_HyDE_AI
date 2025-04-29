@@ -1,0 +1,57 @@
+18
+NEURAL NETWORK POLYCONVEXIFICATION
+(SVPC LP). In exact arithmetics, there exists a minimiser ξ ∈RNδ of (24) with at most kd + 1
+non-zero entries reflecting the convex coefficients of the supporting points of the polyconvex
+envelope at ˆν in the set Σδ which are sometimes also referred to as volume fractions. For a
+detailed description of the algorithm see [NPPW24], a MATLAB implementation can be found
+under https://github.com/TmNmr/SVPC. In this paper, we use a python implementation of this
+algorithm which uses the scipy.optimize.linprog function for solving the linear program.
+In the numerical examples, the structured lattice for the algorithm is obtain by discretising
+uniformly the learning domain for ˆνk+1, i.e. [νmin, νmax]d with 256 points along each axis leading
+to a lattice Σδ consisting of Nδ = 256d points. For this choice of discretisation size δ, an
+absolute error compared to the analytical polyconvex envelope of order 10−5 can be predicted, see
+e.g. [NPPW24, Figures 4.2, 4.4 and 4.5]. In what follows, we denote by Φpc
+δ
+the approximation
+of the polyconvex envelope by the SVPC LP algorithm.
+6.4. Numerical Results for the Two-Dimensional Saint Venant–Kirchhoff Model. We
+consider the function Φ from (19) in the Saint Venant–Kirchhoff-based formulation, i.e. ψ0 from
+(2) is chosen with the material parameters as before. We aim for the representation of the
+function ˜Φpc : Rd × R+ →R, i.e. the polyconvex envelope of the normalised version (21), by a
+neural network.
+6.4.1. Network Architecture and Learning Data. In this example, we implement a PICNN where
+each path consists of three hidden layers with 30, 60, and 60 neurons, respectively. The convex
+input, denoted as ˆm, represents the minors of the signed singular values ˆνk+1, i.e. m(ˆνk+1),
+while the nonconvex inputs, denoted as ζ, correspond to the parameter αk.
+The learning
+domain for ˆνk+1 is defined as [νmin, νmax]2 with νmin = 0.001 and νmax = 5, while the learning
+domain for the parameter αk is [0, α∞]. For the learning dataset, the set of points in the signed
+singular value space is obtained by discretising each axis as follows, [νmin : 0.005 : 1] ∪[1 :
+0.015 : νmax], leading to a 464 × 464 grid, and we choose the set of learning values αk as
+Iαk = {0, 0.1, . . . , 1.5, 1.7, 2, 2.5, 3, 3.5, 4}, i.e. 22 values. These discretisations lead to a learning
+dataset size of 4,736,512 points. From this dataset, 70% of the samples are randomly assigned to
+the training set, while the remaining 30% constitute the validation set. The target values ˜Φpc
+δ
+are computed with the SVPC LP algorithm. The computation of the target values takes 3510
+CPU hours. Figure 9 illustrates the target values along the axis (ν1, ν1). For the loss function,
+we choose the penalty parameters λineq = 1 and λsym = 1.
+6.4.2. Numerical Results. On average, for a single realisation, the training process requires 2.23
+h ± 30 minutes to complete 54 ± 12 epochs. The final training error is 5.10 × 10−5 ± 6.09 × 10−6,
+while the validation error reaches 4.21 × 10−5 ± 1.27 × 10−5. The learning curves for one of these
+realisations are presented in Figure 9.
+Figure 10 illustrates the relative errors between the predictions and the polyconvex envelopes
+computed by the algorithm from Section 6.3 for different values of αk, including values that are
+outside the training domain. These errors are computed on a uniform 100 × 100 lattice of the
+domain [νmin, νmax]2. Across all considered values αk, the errors remain consistently low, ranging
+between 1% and 2%. In particular, it is important to note that the hypothesis stating that the
+energies become independent from αk for αk ≥α∞is verified and validates the choice of α∞= 4.
+Additionally, Figure 11 provides examples of re-shifted predictions which are in good agreement
+with the polyconvex envelopes computed by the SVPC LP algorithm. Specially, these predictions
+are obtained for values of αk that are not included in the learning set Iαk and lie outside the
+parameter’s training domain, demonstrating good predictability and generalisation capabilities
+of the network.
+For comparison, the computation of one polyconvex envelope on a (100 × 100)-grid using the
+SVPC LP algorithm of Section 6.3 takes 7.2 hours on one CPU while its prediction via neural
+networks takes only 0.2 seconds, emphasising once again the benefits of using a neural network
+approach for polyconvexification in engineering applications. In addition, the neural network
+implemented in this example contains 26,121 parameters, comprising both weights and biases.

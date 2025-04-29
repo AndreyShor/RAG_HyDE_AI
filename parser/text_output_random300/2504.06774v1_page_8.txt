@@ -1,0 +1,40 @@
+2.1
+Data structure
+In this study, data are organized in the form of a multidimensional array (snapshot tensor)
+to capture the temporal dynamics of fluid flow fields. This data is arranged in the snapshot
+matrix as [1]:
+X = V K
+1 = [V 1, V 2, . . . , V k, V k+1, . . . , V K−1, V K],
+(1)
+where V k represents the variable of the flow field at time instant tk, and K is the
+total number of snapshots. The snapshot tensor is structured to include both spatial and
+temporal information, ensuring a comprehensive representation of the flow field dynamics.
+The data dimensions are given by J × K, where J denotes the total number of spatial
+grid points along the streamwise, spanwise, and normal directions, respectively.
+The data sets used in this study include velocity components for two and three-
+dimensional flow fields. For two-dimensional flow fields, the data sets include the stream-
+wise and normal velocity components (vx and vy), while for three-dimensional flow fields,
+the datasets include the streamwise, normal, and spanwise velocity components (vx, vy,
+and vz).
+The generalized snapshot tensor for three-dimensional flow data with T var = 3 physical
+variables (velocity components) can be represented as follows [33]:
+V 1j2j3j4k = vx(xj2, yj3, zj4, tk),
+V 2j2j3j4k = vy(xj2, yj3, zj4, tk),
+V 3j2j3j4k = vz(xj2, yj3, zj4, tk),
+(2)
+where:
+• j1 = 1, 2, 3 indexes the three velocity components (vx, vy, vz),
+• j2, j3, j4 index the discrete spatial grid points in the x, y, and z directions, respect-
+ively,
+• k indexes the temporal snapshots.
+For two-dimensional flow fields, the datasets are represented by a fourth-order tensor
+since the spanwise (z) direction is not included. This organization allows for the applic-
+ation of SVD/HOSVD, which extracts dominant temporal modes. These are then used
+to train the LSTM network for temporal predictions. Depending on the specific case, the
+shape of the tensor can vary significantly, ranging from tensors that incorporate only one
+velocity component to those that account for all three velocity components (streamwise,
+spanwise, and vertical) or even some including several variables (i.e., pressure, several
+species in reactive flows, several pollutants in air pollution modeling, etc.). Predictions
+are generated for both two-dimensional and three-dimensional flow fields, ensuring that
+the methodology is comprehensive across distinct spatial configurations. The tensors are
+8

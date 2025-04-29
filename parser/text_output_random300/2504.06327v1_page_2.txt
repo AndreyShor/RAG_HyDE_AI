@@ -1,0 +1,55 @@
+Physics-informed KAN PointNet
+PointNet [41] is employed. Since PointNet [41] and its advanced versions [42, 43] can capture the geometric features of
+inputs in a latent space, they can differentiate between various geometries. As a result, inverse problems across multiple
+geometries can be solved simultaneously in a single training process. Kashefi and Mukerji [20] solved an inverse heat
+transfer convection problem over 108 irregular geometries simultaneously. Similarly, Kashefi et al. [40] used PIPN to
+solve an inverse linear elasticity problem over 532 domains with irregular geometries. The architecture of PointNet
+[41], derived from the field of computer graphics, is more complex than fully connected neural networks and involves
+several components. The primary components of PointNet are fundamentally built using shared Multilayer Perceptrons
+(MLPs) [44]. In this article, we introduce Physics-Informed Kolmogorov-Arnold PointNet (PI-KAN-PointNet), where
+the network replaces MLPs with Kolmogorov-Arnold Networks (KANs) [45, 46].
+KANs [45, 46] have recently been introduced as a novel alternative to conventional MLPs [47, 48, 49]. KANs
+are rooted in the Kolmogorov-Arnold representation theorem [50, 51, 52, 53, 54, 55, 56, 57]. Unlike MLPs, which
+rely on training weights and biases with fixed activation functions, KANs focus on training the activation functions
+themselves [45]. KANs have been incorporated into Convolutional Neural Networks (CNNs) [58, 59], graph neural
+networks [60, 61, 62, 63], and PointNet [64, 65]. This approach has proven effective across a variety of fields, including
+physics-informed machine learning [66, 67, 68, 69, 70, 71, 72, 73], deep operator networks [74, 67], neural ordinary
+differential equations [75, 76], image classification [58, 77, 78, 79, 80, 81, 82, 83, 84, 85], image segmentation
+[86, 87], image detection [88], audio classification [83], and numerous other scientific and industrial applications
+[89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108]. In this article, we focus on the
+contributions of KANs to the field of physics-informed deep learning.
+Several researchers have made significant advancements in the application of KANs in physics-informed deep
+learning, particularly in solving inverse problems. Wang et al. [70] introduced a physics-informed Kolmogorov-
+Arnold network for solving inverse problems in solid mechanics, such as nonlinear hyperelasticity. Shukla et al.
+[67] used a physics-informed Kolmogorov-Arnold network with Chebyshev polynomials as the basis for KANs to
+simulate two-dimensional lid-driven cavity problems and solve the Allen-Cahn equation. Similarly, Toscano et al.
+[69] applied the same version of the physics-informed Kolmogorov-Arnold network to infer velocity and temperature
+fields in three-dimensional turbulent flow. Howard et al. [68] developed a domain decomposition algorithm to
+reduce the computational cost of solving inverse problems using physics-informed Kolmogorov-Arnold networks.
+The interpretability of KANs in the context of physics-informed deep learning was explored by Ranasinghe et al.
+[109]. To improve the efficiency of physics-informed Kolmogorov-Arnold networks, Rigas et al. [71] introduced a
+grid adaptation method for constructing B-splines as the basis of KANs.
+As mentioned in the first paragraph, we propose PI-KAN-PointNet, a novel architecture that replaces traditional
+MLPs with KANs within the physics-informed PointNet framework (i.e., PIPN). Although PIPN [20] demonstrates
+robust performance in solving inverse problems on multiple sets of irregular geometries, there is room for improvement.
+One limitation of PIPN [20] is that the activation function in the final layer is fixed; regardless of the underlying
+physics, the network must predict the solution using a predetermined function, typically a sigmoid or hyperbolic
+tangent function. A similar constraint applies to the intermediate layers. In PINNs, the hyperbolic tangent function
+is used in all layers primarily because the Navier–Stokes equations involve a second spatial derivative, and activation
+functions such as the rectified linear unit (ReLU) would yield a zero second derivative, causing the loss function to
+diverge. However, the hyperbolic tangent function was chosen mainly due to its availability in deep learning frameworks
+such as TensorFlow [110] and PyTorch [111], rather than based on a principled understanding of its optimality or its
+relationship to the physics of the problem. On the other hand, because the activation functions in KAN layers are
+learnable, they can be optimized during training based on the physics of the problem. In particular, allowing flexibility
+in the final layer enhances the network’s ability to solve inverse problems, especially when the activation function
+is responsible for predicting unknown boundary conditions. Furthermore, in the context of geometric deep learning,
+when the solution depends on the geometry of the problem, such flexibility further aids in predicting variables on
+boundaries with irregular or non-smooth shapes. This means that the activation functions learn both the physics and
+the geometric features of the problem. Moreover, depending on the type of partial differential equation, one can select an
+appropriate polynomial degree for KAN layers, alleviating concerns about the differentiability of the activation function
+when using automatic differentiation to formulate the governing equations in the loss function of physics-informed
+PointNet. Additionally, in a deep neural network such as PointNet, different layers can employ varying polynomial
+degrees, resulting in a diverse set of activation functions tailored to the network’s design, rather than relying on a fixed
+activation function (or a limited set of options) for all layers.
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 2 of 25

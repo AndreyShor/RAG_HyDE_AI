@@ -1,0 +1,67 @@
+Setup type
+CHSH value
+QBER
+Raw bit rate
+Distance
+point-to-point SPDC
+η, E
+E
+η, B
+η
+Event ready
+T2,E
+T2,E
+η, B
+T2
+Table 3: Summary of relevant DI-QKD parameters and technical characteristics affecting them for both point-to-point
+photonic setups with SPDC sources, and event-ready setups using stationary qubits. Here η is the overall photonic detection
+efficiency, E is the decoherence of photonic quantum systems in the optical link, T2 is the decoherence time of stationary
+node qubits, and B is the overall “brightness” (entangled pairs created/sec) of the source.
+[458, 459]. These efficiencies do not typically depend upon the propagation distance within the optical
+channel.
+The link efficiency ηℓ, on the other hand, does depend upon the propagation distance, decaying
+exponentially with the length ℓof the channel [460, 360, 461]. In particular, ηℓ= 10−γℓ/10, where γ
+is the attenuation coefficient in dB/distance. Losses in an optical fiber link include contributions from
+attenuation (typically value ∼0.2dB/km in the telecom band) that accumulate over distance, as well as
+from fiber splices connecting different sections of fiber. Mechanical splices using barrel connectors typically
+have losses greater than 0.5dB/connection, while fusion splicing can give losses less than 0.01dB/splice in
+standard single-mode fiber, showing the necessity of dedicated high-quality optical fiber links for DI-QKD.
+Moreover, networking hardware, such as optical switches, can also present losses of several dB.
+Achieving the critical detection efficiency required for DI-QKD (typically η > 80%, see Section 3)
+in an all-photonic setup (such as a single SPDC source) presents significant technical challenges. Even
+considering ηc = ηm = ηd = 1 and that all link loss is due to attenuation, ηℓ= 0.8 (or about 1dB loss)
+corresponds to ∼4.85km of propagation in an optical fiber. Fortunately, “event ready” setups can be
+used to overcome the probabilistic nature of most sources of entangled particles, as well as low collection
+efficiency and losses between source and the detection stations. These are schemes in which the presence
+of the entangled state at the respective detection sites is heralded by a separate detection event [164–166].
+While there have been proposals and experiments involving all-photonic event-ready setups, a considerable
+advantage arises when employing stationary quantum systems such as ions, atoms, quantum dots and NV
+centers, since these can be measured with efficiency close to unity, making event-ready setups involving
+entangled stationary qubits one of the most promising path towards useful implementation of DI-QKD.
+We discuss event-ready sections in further detail in Section 6.3.2. In addition, we note here that there
+has been theoretical progress in reducing the CDE for DI-QKD, by including pre- and post-processing,
+as discussed in Section 3.
+6.3. High-quality entanglement sources
+High-quality sources of entangled quantum systems are a necessary resource for DI-QKD. Quality
+refers not only to robust violation of detection loophole-free Bell-inequalities, but also a high brightness
+B (or repetition rate R), as these two characteristics have a direct effect on the key rates obtainable. In
+addition to the overall detection efficiency discussed in Section 6.2, decoherence in the channel (such as
+depolarization, dephasing, etc) will also degrade the quality of entanglement. In the next two subsections,
+we describe the two principle entanglement sources used for DI-QKD. A summary of the merits of these
+sources for DI-QKD in terms of the relevant experimental parameters is given in Table 3.
+6.3.1. Spontaneous Parametric Down-Conversion sources
+A major step in experimental Bell tests was the development of spontaneous parametric down-
+conversion sources (SPDC) as a source of entangled photon pairs in the 1990’s [462, 463], which offered
+much higher count rates than the first generation of experiments based on atomic cascade [464, 172].
+The most efficient SPDC sources today are based on periodically poled nonlinear crystals in Sagnac in-
+terferometers, as shown in Fig. 17. An adequate choice of crystal length and optics produces highly pure
+entangled polarization states, reaching state fidelities over 99.5%, where the transverse spatial mode of
+the photons is optimized for coupling into single-mode fibers [465, 466, 52]. Coupling efficiencies over
+95% have been achieved [52]. SPDC is a probabilistic source of photon pairs, and the state fidelities
+refer to the post-selected state obtained when two photons are registered. Taking into account the full
+SPDC output described by two-mode squeezed vacuum, the absence of post-selection results in a limited
+violation of Bell inequalities [467]. The probabilistic nature also places a trade-off between the bright-
+ness achievable and the fidelity, since multiple-pair events become non-negligible at high pump intensity,
+and limit the quality of the two-photon state, especially for pulsed sources [468]. SPDC sources have
+been used for point-to-point DI-QKD [52], and can also be incorporated into event-ready setups using
+72

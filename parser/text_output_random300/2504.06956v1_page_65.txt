@@ -1,0 +1,103 @@
+Proof of Proposition 6.1
+65
+we have that6
+Z
+Bbt−log 4(x)
+1{Mm,bt+1,bt−dt<−A}1{Yχ
+t (m)−dt≥−A}1{m∈Dλ
+m,bt}
+|Dλ
+m,bt|
+dm
+≤
+Z
+Bbt−log 4(x)
+1{m∈Dλ
+x,bt}
+|D
+λ
+x,bt|
+dm = 1 .
+From this point, it suffices to follow the proof of [Mad15, Lemma 5.1] to conclude.
+7.2.4
+A renewal result
+Combining Lemmas 7.5, 7.6, 7.8, and 7.9, we have shown in the previous subsection that for any
+λ > 0 and ε > 0, there exist 0 ≤A < L sufficiently large such that there exists b0 > 0 and s0 > 0
+sufficiently large, such that for any s ≥s0 satisfying (es + 1)/(R + 1) ∈N and any b ≥b0, there
+exists a sufficiently large T ≥0 such that for all t ≥T and any function χ : [0, R]d →R satisfying
+the conditions in (6.6), it holds that
+E
+
+1 −exp
+
+−
+Z
+[0,R]d Fγ,t(x)µχ
+γ,t(dx)
+
+−E(7.22)
+ ≤ερχ([0, R]d) ,
+Therefore, in what follows, we fix λ > 0 and A, L, b ≥0, and we study the quantity E(7.22). Given a
+function g : Rd →R, we introduce the fields Υb and Υb,g on Rd by letting
+Υb(x)
+def= Yb(e−bx) −Yb(0) ,
+Υb,g(x)
+def= Υb(x) + g(x) .
+(7.28)
+Thanks to translation invariance, the scaling relation (3.9), the Markov property at time tb
+def= t −b
+of the process (Yt(·))t≥0, the assumptions (W1) and (W2), and, for m ∈SR,t, by applying the
+Cameron–Martin theorem (see Lemma C.1) with density exp(
+√
+2dYtb(m) + d(t −b)) to the process
+(Ys(m))s∈[0,tb], we can rewrite E(7.22) as follows
+Z
+SR,t
+e−
+√
+2dχ(m)t3/2E−χ(m)
+h
+1{sups∈[0,tb] Bs≤0, sups∈[t/2,tb] Bs≤dt+L}Fλ
+A,L,b(Btb −dt −L, gχ,m
+t,b )
+i
+dm ,
+where, under P−χ(m) the Brownian motion (Bs)s≥0 is started from −χ(m), and recalling the definition
+(7.1) of the function Fλ
+k,x, the map Fλ
+A,L,b : R × C(Rd) →R is given by
+Fλ
+A,L,b(z, g)
+def= e−
+√
+2d(z+L)+dbEz
+h
+1{Yb(0)≥−A−L}1{sups∈[0,b] Ys(0)≤0}
+· 1{M0,b+1,b(Υb,g)+Yb(0)<−A−L}1{M0,b(Υb,g)≤λ}Fλ
+b,−Yb(0)−L(Υb,g)
+i
+.
+(7.29)
+where, under Pz the field (Ys(x))s≥0,x∈Rd has the same law of (Ys(x) + z)s≥0,x∈Rd under P, and
+(gχ,m
+t,b (x))x∈Rd is an independent continuous random field given by
+gχ,m
+t,b (x)
+def=
+Z tb
+0
+(1−K(es−tx))dBs+Ztb(e−bx)−
+√
+2d
+Z tb
+0
+(1−K(es−tx))ds−(χ(m+e−tx)−χ(m)) ,
+where we recall once again that Ztb is the field introduced in Definition 3.9.
+Lemma 7.10. For any λ > 0 and A, L, b ≥0, consider the function Fλ
+A,L,b : R × C(Rd) →R
+defined in (7.29). Then, there exist two functions h : R →R+ and F∗: C(Rd) →R+, possibly
+depending on the parameters λ, A, L, b, such that:
+6As we mentioned in Remark 7.7, the reason we included the indicator function of the event {Mm,bt+1,bt −dt < −A}
+is due to a technical reason. Indeed, without this indicator function, we would not be able to bound the integral by one. It is
+not difficult to construct a “pathological example” for a possible realisation of the field Yt for which the integral becomes
+arbitrarily large.

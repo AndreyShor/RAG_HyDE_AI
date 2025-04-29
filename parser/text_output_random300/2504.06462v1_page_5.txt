@@ -1,0 +1,89 @@
+5
+The surface impedance of the unit cell as a function of
+the varactor’s capacitance is ﬁrst obtained, as described in
+[22], [23]. The ﬁnite RIS of length Ltot is simulated, but with
+the inclusion of only a single meta-wire (i.e., as if N = 1).
+The meta-wire has the geometry of Fig. 2, and it is placed
+at the center (y = 0) of the impedance layer. The varactor’s
+capacitance is varied and the scattered electric ﬁeld from the
+single-cell RIS upon an incident illumination is recorded at
+a line segment of length 2λ that is located λ/2 above the
+RIS. Similarly, the scattered ﬁeld from the homogenized RIS
+model, that features a single impedance strip of varying surface
+impedance Z = R + jX, is calculated at the same line
+segment through the MoM approach. For each capacitance,
+the impedance value Z with the closest matching in terms of
+the scattered electric ﬁeld values is assigned as the surface
+impedance. Compared to [22], [23], the impedance is varied
+in a grid of real part and imaginary part values, allowing to
+additionally characterize the losses. The resulting graph of
+surface impedance as a function of capacitance is given in
+Fig. 3(a). While the illumination (in this work, a normally-
+incident Gaussian beam) and the observation points for the
+scattered-ﬁeld comparison are selected arbitrarily, the ex-
+tracted values would not differ signiﬁcantly for other choices.
+A higher accuracy may be achievable by accounting for the
+local ﬁeld on each cell [35]. However, the matching between
+full-wave simulations and the homogenized-model predictions
+is already satisfactory (as will become evident in Sec. IV), and
+accounting for the local ﬁeld would have required a different
+set of simulations for each cell and optimized solution.
+Following a more typical approach, the unit cell is also
+characterized in terms of a reﬂection coefﬁcient S11 under
+periodic boundary conditions. The amplitude and phase of S11
+are given in Fig. 3(b), allowing to establish a correspondence
+between surface impedances and reﬂection coefﬁcients. While
+the surface impedances are utilized in the optimization frame-
+work, translating them to reﬂection coefﬁcients is beneﬁcial to
+predict the reﬂected radiation pattern through a simple reﬂect-
+array model and assess the beneﬁts of the adopted integral-
+equation approach.
+IV. SIMULATION RESULTS
+The capabilities of the RIS for beamsteering and beam-
+forming with high efﬁciency are examined in this section
+through full-wave simulations. The assumed RIS has a length
+of Ltot = 6.5λ ≈390mm in the center frequency of 5GHz.
+There are a total of 30 meta-wires, each one with a surface
+impendace Zn to be optimized. The meta-wires take the form
+of the unit cell presented in Sec. III with their optimized
+surface impedances implemented through the corresponding
+capacitance values. Although the RIS is truncated to Lx = 4λ
+(16 cells) along the x-axis, the full-wave simulations assume
+an inﬁnite structure by simulating a single row of unit cells
+and applying periodic boundary conditions along the x-axis.
+Nevertheless, the width Lx = 4λ is sufﬁcient to maintain
+high-accuracy of the radiation pattern in the yz-plane, as will
+become evident from the measured results.
+For the MoM solution, during each optimization iteration,
+the induced currents are expanded to Ng = 600, Nw = 150
+Fig. 3. (a) Extracted surface impedance Zw as a function of the varactor’s
+capacitance at f = 5GHz. (b) Extracted reﬂection phase S11 under periodic
+boundary conditions at f = 5GHz.
+and Nv = 3000 basis functions expanding throughout the
+ground plane, impedance wires and substrate, respectively.
+Moreover, the imaginary parts of the surface impedance, that
+constitute the optimization variables are constrained within the
+range Xn ∈[−17.85, −12.05]Ωcorresponding to a capaci-
+tance Cn ∈[0.2, 1]pF, or a bias voltage V ∈[0.5, 11.5]V. The
+stricter range compared to the nominal range of the varactor’s
+model was selected so that any fabrication issues (e.g., shift
+in the substrate’s permittivity) will not affect the realizability
+of the optimized surface impedance values.
+A. Beamsteering simulation results
+An incident plane wave at f = 5GHz is impinging on the
+RIS from an angle of θin = −15◦. By optimizing the surface
+impedances through the presented framework, we explore the
+ability of the RIS to steer the beam with high directivity at the
+angular range of ±60◦with a 15◦step. Although a 15◦step
+was selected for the reﬂected angle for presentation purposes,
+it is noted that beams with a maximum radiation towards any
+angle within this range can be realized. The specular case
+(reﬂection towards 15◦) is not optimized, as the response can
+be directly obtained by uniformly loading the varactors at each
+meta-wire with the minimum capacitance value Cn = 0.2pF.
+To calculate the desired far-ﬁeld Eff
+des(θ), an array of virtual
+sources is assumed along the RIS aperture with currents given
+as:
+Ivs[n] = exp{−jkynsin(θout)},
+(10)

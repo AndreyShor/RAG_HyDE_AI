@@ -1,0 +1,60 @@
+6
+In the last line, note that S(B1)Φ = S(A1)Φ holds. From the above, we obtain
+nQ(n, ǫ) −nE(n, ǫ) = S(M)ν + S(B1)Φ −S(A0)Φ
+≥S(RnR′n)ρ −S(BnWBRnR′n)ξ −nδ1(n, ǫ),
+(7)
+where nE(n, ǫ) = S(A0)Φ −S(A1)Φ. By adding Eq. (6) and Eq. (7), we obtain
+2nQ(n, ǫ) ≥S(RnR′n)ρ −S(BnWBRnR′n)ξ + S(BnWB)ξ −nδ(n, ǫ) −2nδ1(n, ǫ)
+= I(BnWB : RnR′n)ξ −nδ(n, ǫ) −2nδ1(n, ǫ)
+(8)
+≥I(Bn : RnR′n)ξ −nδ(n, ǫ) −2nδ1(n, ǫ),
+≥2na(ρ, ǫ) −nδ(n, ǫ) −2nδ1(n, ǫ),
+(9)
+where the third line follows from the data processing inequality. The last line follows from the deﬁnition of a(·, ǫ) and
+its superadditivity Lemma 5. Dividing by 2n, Q∗≥a(ρ, ǫ) −1
+2δ(n, ǫ) −δ1(n, ǫ). Taking the limit n →∞and ǫ →0
+in either order, δ(n, ǫ) + δ1(n, ǫ) →0, so
+Q∗≥lim
+ǫ→0 a(ρ, ǫ)
+= a(ρ, 0).
+The last line follows from Lemma 5 point 4, i.e., the continuity of the function at ǫ = 0.
+■
+The entanglement-assisted simulation of an identity channel was already studied in [5], where the optimal rate was
+found to be S(CQ)ω −1
+2S(C)ω, (entropies are with respect to the Koashi-Imoto decomposition). Below, we show
+that we can obtain this result as a corollary of Theorem 6.
+Proposition 7. The optimal entanglement-assisted rate for the simulation of the identity channel id : A →A is equal
+to a(ρAR, 0) = S(CQ)ω −1
+2S(C)ω.
+Proof. For N = id, the function at γ = 0 is
+a(ρAR, 0) :=
+min
+Λ:A→A
+1
+2I(A : RR′)τ
+s.t.
+F(ρAR, τ AR) = 1.
+Consider the KI-decomposition of ρAR only with systems CQ and its puriﬁcation
+ωCNQR =
+X
+c
+pc|c⟩⟨c|C ⊗ωQR
+c
+|ω⟩CQRR′C′
+=
+X
+c
+√pc |c⟩C ⊗|ωc⟩QRR′
+⊗|c⟩C′
+,
+(10)
+where R′C′ are purifying systems. Note that a(ωCQR, 0) = a(ρAR, 0) holds since there are CPTP maps in both
+directions T : A →CQ and R : CQ →A, and applying CPTP maps only increases the ﬁdelity and lowers the mutual
+information. So, we evaluate the function below
+a(ωCQR, 0) :=
+min
+Λ:CQ→CQ
+1
+2I(CQ : RR′)τ
+s.t.
+F(ωCQR, τ CQR) = 1.

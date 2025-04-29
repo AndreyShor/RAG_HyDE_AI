@@ -1,0 +1,321 @@
+Illusion Spaces in VR: The Interplay Between Size and Taper Angle Perception in Grasping
+CHI ’25, April 26-May 1, 2025, Yokohama, Japan
+Table 2: Size perception estimation with different virtual angles
+Physical Object 1
+Virtual Angle [°]
+2
+4
+6
+8
+10
+12
+14
+size: 3cm, angle: 8◦
+UT [cm]
+4.43
+4.16
+4.16
+4.05
+3.67
+3.95
+3.99
+DT [cm]
+2.36
+2.30
+2.30
+2.29
+2.23
+2.12
+2.40
+PSE [cm]
+3.39
+3.23
+3.23
+3.17
+2.95
+3.04
+3.20
+Physical Object 2
+Virtual Angle [°]
+2
+4
+6
+8
+10
+12
+14
+size: 6cm, angle: 8◦
+UT [cm]
+7.73
+7.71
+7.07
+7.58
+7.37
+7.04
+6.88
+DT [cm]
+5.49
+5.10
+5.43
+5.49
+5.25
+5.36
+5.58
+PSE [cm]
+6.61
+6.40
+6.25
+6.53
+6.31
+6.20
+6.23
+Physical Object 3
+Virtual Angle [°]
+2
+4
+6
+8
+10
+12
+14
+size: 9cm, angle: 8◦
+UT [cm]
+10.89
+11.22
+10.95
+9.98
+10.51
+10.63
+10.19
+DT [cm]
+8.74
+8.05
+7.99
+8.39
+8.02
+8.40
+7.92
+PSE [cm]
+9.82
+9.63
+9.47
+9.19
+9.27
+9.51
+9.05
+Physical Object 4
+Virtual Angle [°]
+10
+12
+14
+16
+18
+20
+22
+size: 6cm, angle: 16◦
+UT [cm]
+7.54
+7.50
+7.66
+7.61
+7.25
+6.86
+6.89
+DT [cm]
+5.60
+5.43
+5.34
+5.01
+5.25
+5.10
+4.97
+PSE [cm]
+6.57
+6.47
+6.50
+6.31
+6.25
+5.98
+5.93
+Physical Object 5
+Virtual Angle [°]
+-6
+-4
+-2
+0
+2
+4
+6
+size: 6cm, angle: 0◦
+UT [cm]
+7.31
+7.33
+7.25
+7.72
+7.83
+7.53
+7.09
+DT [cm]
+5.76
+5.53
+5.64
+5.74
+5.20
+5.33
+5.37
+PSE [cm]
+6.54
+6.43
+6.45
+6.73
+6.52
+6.43
+6.23
+Table 3: Angle perception estimation with different virtual sizes
+Physical Object 1
+Virtual Size [cm]
+1
+2
+3
+4
+5
+6
+size: 3cm, angle: 8◦
+UT [°]
+4.22
+7.62
+11.23
+12.69
+12.79
+17.86
+DT [°]
+2.48
+3.46
+4.52
+4.29
+6.51
+4.31
+PSE [°]
+3.35
+5.54
+7.88
+8.49
+9.65
+11.08
+Physical Object 2
+Virtual Size [cm]
+4
+5
+6
+7
+8
+9
+size: 6cm, angle: 8◦
+UT [°]
+7.70
+8.35
+10.04
+11.06
+11.21
+14.86
+DT [°]
+2.88
+3.59
+4.87
+6.00
+6.02
+5.03
+PSE [°]
+5.29
+5.97
+7.46
+8.53
+8.62
+9.94
+Physical Object 3
+Virtual Size [cm]
+6
+7
+8
+9
+10
+11
+size: 9cm, angle: 8◦
+UT [°]
+10.61
+10.39
+11.49
+10.69
+11.77
+11.13
+DT [°]
+4.01
+3.78
+5.34
+5.60
+5.02
+4.87
+PSE [°]
+7.31
+7.08
+8.42
+8.15
+8.39
+8.00
+Physical Object 4
+Virtual Size [cm]
+4
+5
+6
+7
+8
+9
+size: 6cm, angle: 16◦
+UT [°]
+13.61
+16.27
+17.17
+16.55
+18.97
+19.1
+DT [°]
+3.25
+6.70
+7.89
+9.93
+5.85
+11.16
+PSE [°]
+8.43
+11.48
+12.53
+13.24
+12.41
+15.13
+5.4
+Mathematical expression of the illusion
+space
+If the physical objects within our range of sizes and angles all
+fit in this pattern, we are able to predict the size and angle of
+virtual objects that a certain physical object can represent. The
+mathematical expression can be obtained by combining the four
+dimensions we discussed before: virtual size, virtual angle, physical
+size and physical angle.
+Specifically, we calculated how much the four vertices change
+when the physical angle changes from 8°, and applied this change
+to the illusion space with virtual size, virtual angle and physical
+size to complete the four dimensions in the prediction.
+For a physical object of size 𝑆𝑝, angle 𝐴𝑝and virtual angle in-
+congruence 𝐴𝑣(ratio of virtual angle and physical angle), the down-
+scaling threshold for size perception 𝐷𝑇𝑆𝑖𝑧𝑒is:
+𝐷𝑇𝑆𝑖𝑧𝑒=
+−10𝐴𝑝𝐴𝑣+ 5𝐴𝑝−2𝐴𝑣𝑆𝑝+ 87𝐴𝑣+ 𝑆2𝑝+ 35𝑆𝑝+ 275
+−7𝐴𝑝+ 37𝑆𝑝+ 489
+(5)
+Note that for the physical sizes [cm] and the physical angles
+[°], only the values should be calculated (without their units). The
+upscaling threshold for size perception 𝑈𝑇𝑆𝑖𝑧𝑒is:
+𝑈𝑇𝑆𝑖𝑧𝑒=
+−4𝐴𝑝𝐴𝑣+ 𝐴𝑝𝑆𝑝−30𝐴𝑝+ 9𝐴𝑣𝑆𝑝−93𝐴𝑣+ 𝑆2𝑝−86𝑆𝑝+ 1778
+−26𝐴𝑝−29𝑆𝑝+ 1197
+(6)

@@ -1,0 +1,63 @@
+Main results
+10
+Proposition 2.11. For any λ ∈Λ and for all F ∈Cb
+loc(C(Rd)), it holds that
+E[F(eΥλ)] ∝E
+Z
+Rd F(τxΨλ)e
+√
+2dΨλ(x)1{Ψλ(x)≥−λ}dx
+
+,
+(2.10)
+where the proportionality constant is chosen in such a way that E[1] = 1.
+Remark 2.12. We observe that the fact that the proportionality constant in the previous proposition
+lies in (0, ∞) follows directly from Definition 2.7 of the field Ψλ, together with the fact that the
+proportionality constant appearing in that definition lies in (0, ∞).
+As claimed above, we now state a result that confirms that the field Ψλ, introduced in Definition 2.7,
+is indeed canonical. Specifically, we have the following result, whose proof is given in Section 5.3.
+Proposition 2.13. For any λ1, λ2 ∈Λ, one has Ψλ1
+law= Ψλ2.
+Since the law of Ψλ does not depend on λ, except possibly for a countable number of “bad” values,
+we just write Ψ from now on.
+2.2
+Stable convergence of supercritical GMC
+We now state our main result regarding the convergence of GMC measures. Before proceeding, we
+fix for the remainder of this section the set Λ ⊆R+ introduced in Lemma 5.1 below. We also let Ψ
+denote the field introduced in Definition 2.7, which, as noted in Proposition 2.13, has a law that does
+not depend on λ ∈Λ.
+We begin by introducing the assumptions considered in our next main theorem.
+Assumption 2.14. For n ∈N, consider a collection of fields (Wi,t)i∈[n],t≥0 on Rd such that:
+(W1) For any t ≥0, the collection of fields (Wi,t)i∈[n] is independent of the σ-field Ft defined in
+(1.5).
+(W2) There exist stationary fields (Wi)i∈[n] on Rd such that, for any fixed t ≥0,
+(Wi,t(·))i∈[n]
+law= (Wi(et·))i∈[n] .
+(W3) For 0 ≤s < t and for all x, y ∈Rd such that |x −y| > e−s, it holds that
+(Wi,t(x))i∈[n] ⊥(Wi,t(y))i∈[n] .
+(W4) For all γ >
+√
+2d, it holds that supx∈Rd
+Pn
+i=1 E[eγWi(x)] < ∞.
+For λ ∈Λ, recalling (2.6), we define the constant
+a⋆
+def=
+α c⋆,λ
+γ E[
+R
+Rd e
+√
+2dΨ(x)1{Ψ(x)≥−λ}dx]
+∈(0, ∞) .
+(2.11)
+The subscript λ is not included in the notation a⋆since it turns out that the right-hand side of (2.11)
+does not actually depend on λ ∈Λ, as shown in Lemma 5.8 below. We are now ready to state our
+next main theorem, with the definition of stable convergence provided in Section 3.2.
+Theorem C. Let γ >
+√
+2d and consider the sequence of measures (µγ,t)t≥0 defined in (1.9). For
+n ∈N, consider a collection of fields (Wi,t)i∈[n],t≥0 satisfying (W1) – (W4). For each t ≥0 and
+each i ∈[n], define the measure µγ,t,i by
+µγ,t,i(dx)
+def= eγWi,t(x)µγ,t(dx) .

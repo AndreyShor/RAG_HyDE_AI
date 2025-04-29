@@ -1,0 +1,63 @@
+Fukuzawa, Goodrich, and Irani
+XX:9
+(conquer) phase of our algorithm is
+h
+X
+j=1
+˜O(hj
+p
+n/h)
+≤
+˜O(h
+p
+n/h)
+=
+˜O(
+√
+nh).
+Given this overview, let us next describe how to perform the different steps of our
+algorithm, beginning with our quantum algorithm for finding all the bridge edges intersecting
+the vertical lines, L1, L2, . . . , Lh−1, which separate the subsets, S0, S1, . . . , Sh−1, of S. At a
+high level, our combine-step method can be viewed as a quantum adaptation of a classical
+algorithm by Goodrich [15] for computing the upper hull of a partially sorted set of points.
+As mentioned above, by point-line duality, bridge finding is dual to two-dimensional linear
+programming. In more detail, let S be a set of n points in the plane, and L be a vertical
+line in this plane. Let S′ be the same set of points after shifting the plane horizontally so
+that L is the y-axis. We define a dual plane by taking each point p = (a, b) and mapping
+it to a line y = ax −b. A standard result in computational geometry is that the points in
+the upper hull of S′ correspond to the lower envelope of the set of lines in the dual plane;
+see, e.g., [11,30,33]. Furthermore, by the duality transformation, the highest point in the
+lower envelope is the intersection of two lines in the envelope whose slopes transition from
+positive to negative. Mapping this point to the primal plane gives us the bridge edge we
+are looking for. Thus, we can reduce the problem of finding a bridge edge to the problem of
+finding the largest point in the intersection of n lower-halfplanes. We also use the following
+lemma due to Sadakane et al. showing that the problem of computing the highest point in
+the intersection of n halfplanes efficiently using a quantum algorithm.
+▶Lemma 4 (Sadakane et al. [32]). The highest point in the intersection of n lower-halfplanes
+can be computed in O(√n log2 n) time, using a quantum computer, with probability 1 −n−c
+for any constant c given the linear constraints in superposition.
+The linear constraints in superposition refers to a state in the following form:
+|ψ⟩:=
+1
+√n
+n−1
+X
+i=0
+|i⟩|pi⟩
+(5)
+where pi are the coordinates of each of the n points. By point-line duality, the coordinates
+fully describe the halfplanes in the dual plane.
+The output element is a point in the dual plane, which maps back to a line in the primal
+plane. To determine which points this line intersects, we can run two iterations of minimum
+finding to find the points in S that are on the resulting line by minimizing by the distance to
+the line. We combine the above two lemmas to a function with the signature,
+qLP(L, i, j, h),
+(6)
+and it returns the endpoints ps, pf ∈S of the bridge edge as a tuple. This process will also
+call qPrep(i,h) as needed.
+We are now ready to describe the full algorithm. The first step will be to divide our input
+set into h blocks, each containing n/h points. We define a bridge edge to be an edge in the
+upper hull of S whose endpoints are in two different blocks.
+To find the bridge edges, we take inspiration from the classical Graham scan algorithm
+for computing the convex hull. We will be using the fact that if we traverse the convex hull
+SoCG 2025

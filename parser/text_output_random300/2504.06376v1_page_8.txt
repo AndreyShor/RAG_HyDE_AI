@@ -1,0 +1,66 @@
+Fukuzawa, Goodrich, and Irani
+XX:7
+Algorithm 2 CompleteMaximaSet(j, h, Tj, Mj)
+Require: j, h: The block we are conquering and the total number of blocks.
+Require: Tj: The y coordinate of the tallest point in Sj.
+Require: Rj: The y coordinate of the first point in M appearing after all points in Sj.
+1: Define a Boolean function f that takes as input a point p and returns 1 if p is not
+dominated by Tj or Rj.
+2: while qMax(f,⪯Lex, j, h) returns a point q do
+3:
+Store q in an output list.
+4:
+Define a new f that takes as input a point p and returns 1 if p is not dominated by
+Tj or q.
+Algorithm 3 QuantumMaximaSet(S)
+Require: Uin: a the unitary that encodes the lexicographically sorted data [d0, . . . , dn−1]
+Require: h: the number of blocks to partition into.
+1: h = 4.
+2: while True do
+3:
+for j ∈[0, 1, . . . , h −1]
+4:
+Tj = qMax(f, ⪯y, j, h) where f(x) = 1 for all x ∈S
+5:
+Let T = [T0, T1, . . . , Th−1].
+6:
+M = ClassicalMaximaSet(T)
+7:
+for j ∈[0, 1, . . . , h −1]
+8:
+CompleteMaximaSet(j, h, Tj, Mj)
+9:
+if The total number of points found exceeds h then
+10:
+h = 2h
+11:
+else
+12:
+Print all the points in the output register of all j blocks and terminate the loop.
+time. Once this set T is found, the maxima set M of T can be computed classically in O(h)
+time. The total time incurred by the calls to CompleteMaximaSet is dominated by the calls to
+qMax, each of which outputs a point or terminates the call to CompleteMaximaSet. Therefore
+qMax is called O(h) times and each call requires ˜O(
+p
+n/h) time for a total of ˜O(
+√
+nh) time.
+Note that the condition that the points we are searching over are between Tj and Rj can be
+done in constant time. The outer loop repeats at most O(log n) times, whose contribution is
+suppressed by ˜O. Finally, the time to output the points that were found takes O(h) time
+and is dominated by the other parts of the algorithm.
+◀
+4
+Quantum Convex Hulls
+In this section, we describe a quantum algorithm to construct the convex hull of n points
+in the plane in ˜O(
+√
+nh) time, where h is the size of the output. Again, we assume that the
+input set is sorted in lexicographic order. We follow our combine-and-conquer paradigm,
+where we use some global properties that can be computed from our subsets to prune off
+points that do not appear in the output, then use these values to isolate the problem solving
+within each block. Here, however, the combine step is more complicated that simply finding
+a point, pmax, with maximum y-coordinate.
+We begin by reviewing a well-known classical divide-and-conquer algorithm for 2D convex
+hulls (see, e.g., [11,29,30,33]). The convex hull CH(S) of a set, S, of n points in the plane
+SoCG 2025

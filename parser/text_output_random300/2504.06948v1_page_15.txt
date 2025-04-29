@@ -1,0 +1,123 @@
+15
+k
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+θk
+1.49
+2.36
+3.34
+4.40
+5.53
+6.69
+7.89
+9.11
+10.35
+11.61
+12.88
+14.16
+15.45
+16.74
+18.04
+19.34
+Table I. Maximal values θk of ∥Ah∥2 such that the condition Eq. (37) is satisfied with δ = 10−8.
+where the series converges absolutely for |x| < min{|t| : Dkk(t) = 0} =: νk, which is the smallest absolute
+value among the zero points of Dkk(·). Therefore, let
+G := e−AhRkk(Ah) −I,
+and we obtain the following bound
+∥G∥2 = ∥ρk (Ah)∥2 ≤
+∞
+X
+j=2k+1
+|cj|θj =: fk(θ),
+(36)
+where θ := ∥Ah∥2 < νk. It is clear that if A is a general matrix and only ∥A∥is known, then Eq. (36) provides
+the tightest bound for ∥G∥2. We state the following lemma, whose proof is provided in Appendix C 1.
+Lemma IV.2. Let δ ∈
+
+0,
+1
+∥AT ∥2
+
+, with ∥AT∥2 ≥1, and let m be chosen such that
+fk(θ)
+θ
+≤
+δ
+e −1,
+(37)
+where θ := ∥Ah∥2 and fk(·) is defined in Eq. (36). Then, we have
+∥bx(ih) −x(ih)∥2 ≤δT · (∥A∥2∥x(ih)∥2 + ∥b∥2) ,
+∀i = 1, . . . , m.
+(38)
+In practice, we can evaluate fk(θ) to high precision using symbolic computation, as demonstrated in [16].
+Let δ = 10−8.
+We apply the bisection method to find the largest θ that satisfies Eq. (37), denoted by
+θk. The results, shown in Table I, indicate that ∥Ah∥2 can be significantly larger than 1. Therefore, if the
+approximation order k is predetermined, Lemma IV.2 allows us to choose h without the restriction ∥Ah∥2 ≤1.
+This is especially advantageous when A is Hermitian and negative semi-definite, as the condition number of
+Lm,k,p(Ah) can be bounded without the ∥Ah∥2 ≤1 condition.
+B.
+Success probability
+In quantum computation, we are concerned with the success probability of the algorithm. In the case
+of solving Eq. (22), the resulting vector is stored in a quantum superposition state. After measuring this
+superposition, we obtain the desired quantum state with a certain probability. The equation below illustrates
+how the resulting vector is stored in a quantum state,
+1
+C
+
+
+z(1)
+z(2)
+...
+z(m)
+bx
+bx
+...
+bx
+
+
+=
+m−1
+X
+i=0
+k
+X
+j=0
+z(i)
+j
+
+2
+C
+|i(k + 1) + j⟩
+z(i)
+j
+E
++
+p−1
+X
+a=0
+∥bx∥2
+C
+|m(k + 1) + a⟩|bx⟩,
+(39)
+where C =
+qPm
+i=1
+z(i)2
+2 + p∥bx∥2
+2 is a normalization factor. In the rest of this paper, we refer to the qubits
+in the first ket as the index register, while the qubits in the second ket as the value register. We measure the

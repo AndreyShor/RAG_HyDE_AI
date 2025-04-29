@@ -1,0 +1,61 @@
+Ry(θ1)
+•
+Ry(θ9)
+Ry(θ2)
+•
+Ry(θ10)
+Ry(θ3)
+•
+Ry(θ11)
+Ry(θ4)
+•
+Ry(θ12)
+Ry(θ5)
+•
+Ry(θ13)
+Ry(θ6)
+•
+Ry(θ14)
+Ry(θ7)
+•
+Ry(θ15)
+Ry(θ8)
+Ry(θ16)
+Figure 11: The real amplitudes ansatz for 8 qubits. 18 qubits were used in Section 4.3 which corresponds to 32
+parameters.
+amplitudes). The circuit consists of alternating layers of Y rotations and CX entanglements. Figure
+12 shows the ansatz for the 2 qubits.
+Ry(θ1)
+•
+Ry(θ3)
+Ry(θ2)
+Ry(θ4)
+Figure 12: Quantum circuit representation of the ansatz with two Ry gates, a CNOT gate, and another two Ry
+gates.
+The Dynamical Lie Algebra (DLA) for this circuit ig is given by all possible nested commutators
+between the generators iGj, until no new independent skew-Hermitian operator is generated. The first
+two elements of the DLA are iY ⊗I and iI⊗Y (which we will write as iY1 and iY2), since RY (θ) = eiY θ.
+By noting exp(iπ2(|1⟩⟨1| ⊗(I −X))) = CNOT the third element of g is |1⟩⟨1| ⊗(I −X). To find
+other elements of the DLA we now take the commutator of our current elements. We can do this in
+Pennylane [101] to give the DLA:
+⟨iX, iY ⟩LIE = {iY0, iY1, iX1, iZ1}.
+(7)
+Considering the additional two RY
+gates produces no new elements in the DLA. Therefore
+dim gRealAmplitudes = 4. The dimension of the special unitary group su(2n) is dim su(N) = N2 −1,
+which for n = 2 gives dim su(4) = 15. The Hilbert space is H = C2n, and for full universality, we require
+the available gates to span all of SU(2n). That means when we have all unitaries of SU(2n) available
+to us, we can reach any state in Hilbert space from any other state. Therefore, the RealAmplitudes
+ansatz is not universal.
+The dimension of the DLA for the RealAmplitudes with reverse linear entanglement scales polyno-
+mially with n. This can be seen by the fact that each RY contributes a local generator iYj, therefore,
+n generators. Each CNOT gate introduces a new generator (e.g. iXj, iZj) on the target qubit. The
+number of these generators scales linearly with n because the entanglement is limited to neighbour-
+ing qubits. The new number of generators produced under commutation is restricted by the limited
+connectivity.
+Ref. [102] states that barren plateaus do not exist for QUBO problems due to having 2-local ob-
+servables. A key idea in Ref. [103] is that if there is an absence of barren plateaus this implies that
+your circuit can be simulated classically in polynomial time (rather than exponential time using the
+state vector simulator). The simulation algorithm: G-sim [104], exploits low dimensional lie algebra.
+In summary, our ansatz likely avoids barren plateaus and is efficiently classical simuable.
+28

@@ -1,0 +1,106 @@
+LSTMs are adept at capturing temporal structures, their com-
+plexity and resource-intensive nature do not align with our
+sustainability goals, as they often result in models that are
+computationally heavy and energy-intensive, and they are not
+always applicable for edge applications.
+Physics-informed neural networks (PINNs) have shown
+great promise in embedding physical laws directly into neu-
+ral networks, improving generalization and interpretability in
+physics-based applications [16], [17], [18]. However, applying
+PINNs in complex systems like water distribution networks
+is particularly challenging. These systems are governed by
+numerous interdependent physical laws, and remodeling the
+entire system to integrate these laws into the neural network
+would require significant computational resources and exten-
+sive domain expertise, making it impractical for real-world
+applications [19], [20].
+Recent work [1] has proposed a system-theoretic approach
+inspired by classical embedding theory to analyze the di-
+mensionality of a system’s latent representation. This method
+introduces physics-inspired consistency principles, which ap-
+proximate the causal mechanisms governing system dynamics
+without explicitly enforcing physical laws. The underlying
+idea is that complex systems in a stable regime exhibit
+predictable behavior, allowing for well-approximated lower-
+dimensional embeddings. In contrast, anomalies disrupt these
+stable relationships, introducing additional complexity into the
+system.
+To incorporate temporal dynamics into the training process,
+the proposed TDC-AE (Temporal Differential Consistency
+Autoencoder) employs a Temporal Differential Consistency
+(TDC) loss. This loss function enforces consistency between
+the approximated time derivative of static latent variables
+and the corresponding dynamic latent variables, improving
+the model’s ability to detect deviations from normal behav-
+ior. By integrating lightweight physics-inspired constraints,
+this method provides an efficient alternative to traditional
+physics-informed approaches, making it well-suited for real-
+time anomaly detection in CPS with constrained computational
+resources.
+Finally, sustainability is a critical consideration in designing
+machine learning models in CPS. Training and deploying these
+models often demand significant computational resources,
+leading to higher energy consumption and carbon emissions.
+As infrastructure systems like water distribution increasingly
+prioritize sustainability, conventional methods, while effective
+in terms of detection performance, often overlook energy
+efficiency. This makes them unsuitable for real-time, large-
+scale applications where minimizing energy use is essential.
+This challenge of sustainability was addressed in previous
+research [21], where edge computing was leveraged to achieve
+substantial gains in energy efficiency for anomaly detection
+systems. Building on this, we now focus on refining the
+internal architecture of the model to further enhance detection
+performance and maximize energy efficiency.
+III. METHODOLOGY
+Our approach builds upon two key ideas: the benefits of
+edge computing for anomaly detection [21] and the temporal
+differential consistency (TDC) loss framework [1]. While
+these approaches provide strong foundations, they also present
+limitations. Edge computing alone does not inherently address
+the challenge of finding an embedding that accurately captures
+the system dynamics. While TDC aims to enforce meaningful
+relationships between static and dynamic states in complex
+dynamical systems, we hypothesize that a diverse range of sys-
+tems may require a more refined representation that accounts
+for both deterministic and non-deterministic components.
+To address the challenge of distinguishing between deter-
+ministic and non-deterministic contributions to system dy-
+namics, we propose a hybrid autoencoder-based approach,
+hybrid TDC-AE, where the latent space is structured into
+statistical and deterministic nodes. The deterministic nodes
+are designed to capture aspects of the system that can be
+described by physical principles, such as differential equations
+and conservation laws, while statistical nodes account for
+residual variability and unmodeled effects. We aim to guide
+the autoencoder toward a latent representation that aligns with
+the underlying causal structure of the system.
+A. Dataset
+The evaluation is conducted using the publicly available
+BATADAL dataset, which stands for BATtle of the Attack De-
+tection ALgorithms [22]. This dataset was developed as part of
+a challenge aimed at comparing the performance of algorithms
+designed to detect cyber-attacks in water supply systems. It
+represents the C-Town water distribution system, modeled
+after a real-world, medium-sized network. The system includes
+429 pipes, 388 junctions, 7 storage tanks (T1 −T7), 11
+pumps (PU1 −PU11) distributed across 5 pumping stations,
+5 valves (V 1−V 4), a single reservoir, and nine Programmable
+Logic Controllers (PLCs). The dataset contains 43 numerical
+metrics recorded on an hourly basis, with each feature vector
+representing one hour and consisting of 43 features. These
+features are readings from the SCADA system, including 7
+features representing tank water levels, 12 features related
+to inlet and outlet pressures for an actuated valve and all
+pumping stations, and 24 features representing their flow rates
+and operational status.
+We adopt the dataset split from this study [1], where
+the BATADAL dataset is divided into three segments, each
+representing a distinct edge area within the water distribu-
+tion network. This segmentation is based on the network’s
+topology, ensuring that the data for each model is closely
+aligned with the physical layout and operational relevance of
+the Programmable Logic Controllers (PLCs) situated in these
+areas. Tab. I presents the features used for each segment,
+illustrating how the dataset has been tailored to reflect the
+operational structure of the system.

@@ -1,0 +1,120 @@
+6
+the accuracy of our modeling and the predominant role of de-
+coherence in limiting the performance of the VQE algorithm.
+For comparison, we also perform numerical simulations of the
+circuit using an ideal noise-free model, as shown by the yel-
+low triangles in Fig. 4. The close alignment between the ex-
+act ground state energies and the simulation with ideal model
+confirms the effective of the qubit-efficient VQE algorithm.
+In evaluating the scalability of our approach, we note
+that systems with bounded entanglement, such as 1D cluster
+states [21], allow the MPS-based representation to scale effec-
+tively with minimal loss of accuracy. Since the transverse field
+Ising model exhibits low entanglement away from the quan-
+tum critical region, our circuit is expected to efficiently simu-
+late larger spin systems without substantial accuracy loss. To
+assess the potential for further enhancing the accuracy of our
+qubit-efficient VQE, we perform numerical simulations incor-
+porating higher-order error mitigation techniques [34]. These
+simulations indicate that extending the analog error mitigation
+to higher orders can significantly reduce the remaining dis-
+crepancies, bringing the mitigated results closer to the ideal
+ground state energies. While experimental implementation
+of higher-order mitigation is not feasible in the current setup
+due to practical limitations, these simulation results highlight
+promising avenues for future research in error mitigation tech-
+niques.
+IV.
+CONCLUSION
+In this work, we experimentally demonstrated a qubit-
+efficient VQE algorithm on a superconducting quantum pro-
+cessor, addressing the challenges posed by the limited qubit
+resources and high noise levels of NISQ devices. By lever-
+aging an MPS representation, we efficiently simulated the
+ground state energies of an N +1-spin circular transverse-field
+Ising model using only two physical qubits: a transmon qubit
+and a high-coherence photonic mode. We validated the qubit-
+efficient VQE and analog error mitigation approach by deter-
+mining the ground state energies of the 4-spin Ising model,
+demonstrating improved precision compared to unmitigated
+results.
+The methods developed here can be readily extended to
+other quantum algorithms and larger system sizes [12, 41],
+paving the way for tackling more complex problems in quan-
+tum chemistry, condensed matter physics, and optimization.
+However, it is important to recognize the limitations of the
+current approach. The reliance on the MPS representation re-
+stricts the class of quantum states that can be efficiently en-
+coded, particularly those with high entanglement across all
+qubits. Additionally, while the analog error mitigation proto-
+col is effective for suppressing certain types of noise, it may
+not be sufficient for mitigating all sources of errors in the
+quantum system. Overcoming these limitations will require
+the development of more advanced qubit encodings, enhanced
+error mitigation techniques, and the potential integration with
+quantum error correction schemes.
+This work was funded by the National Natural Science
+Foundation of China (Grants No.
+11925404, 92165209,
+92365301,
+92265210,
+11890704,
+92365206,
+12474498,
+T2225018, 92270107, 12188101, T2121001, 62173201), In-
+novation Program for Quantum Science and Technology
+(Grant No. 2021ZD0300200 and 2021ZD0301800), and the
+National Key R&D Program (2017YFA0304303). This work
+was also supported by the Fundamental Research Funds for
+the Central Universities and USTC Research Funds of the
+Double First-Class Initiative. This work was partially carried
+out at the USTC Center for Micro and Nanoscale Research
+and Fabrication.
+∗These authors contributed equally to this work.
+† clzou321@ustc.edu.cn
+‡ wanglei@iphy.ac.cn
+§ luyansun@tsinghua.edu.cn
+[1] P. Benioff, “The computer as a physical system: A microscopic
+quantum mechanical hamiltonian model of computers as rep-
+resented by turing machines,” Journal of Statistical Physics 22,
+563–591 (1980).
+[2] R. P. Feynman, “Simulating physics with computers,” Interna-
+tional Journal of Theoretical Physics 21, 467–488 (1982).
+[3] J. Preskill, “Quantum Computing in the NISQ era and beyond,”
+Quantum 2, 79 (2018).
+[4] F. Arute, K. Arya, R. Babbush, D. Bacon, J. C. Bardin,
+R. Barends, R. Biswas, S. Boixo, F. G. Brandao, D. A. Buell,
+et al., “Quantum supremacy using a programmable supercon-
+ducting processor,” Nature 574, 505–510 (2019).
+[5] Y. Wu, W.-S. Bao, S. Cao, F. Chen, M.-C. Chen, X. Chen, T.-H.
+Chung, H. Deng, Y. Du, D. Fan, M. Gong, C. Guo, C. Guo,
+S. Guo, L. Han, L. Hong, H.-L. Huang, Y.-H. Huo, L. Li,
+N. Li, S. Li, Y. Li, F. Liang, C. Lin, J. Lin, H. Qian, D. Qiao,
+H. Rong, H. Su, L. Sun, L. Wang, S. Wang, D. Wu, Y. Xu,
+K. Yan, W. Yang, Y. Yang, Y. Ye, J. Yin, C. Ying, J. Yu, C. Zha,
+C. Zhang, H. Zhang, K. Zhang, Y. Zhang, H. Zhao, Y. Zhao,
+L. Zhou, Q. Zhu, C.-Y. Lu, C.-Z. Peng, X. Zhu,
+and J.-W.
+Pan, “Strong quantum computational advantage using a super-
+conducting quantum processor,” Phys. Rev. Lett. 127, 180501
+(2021).
+[6] J. Tilly, H. Chen, S. Cao, D. Picozzi, K. Setia, Y. Li, E. Grant,
+L. Wossnig, I. Rungger, G. H. Booth, and J. Tennyson, “The
+variational quantum eigensolver: A review of methods and best
+practices,” Physics Reports 986, 1–128 (2022).
+[7] K. Bharti, A. Cervera-Lierta, T. H. Kyaw, T. Haug, S. Alperin-
+Lea, A. Anand, M. Degroote, H. Heimonen, J. S. Kottmann,
+T. Menke, W.-K. Mok, S. Sim, L.-C. Kwek, and A. Aspuru-
+Guzik, “Noisy intermediate-scale quantum algorithms,” Rev.
+Mod. Phys. 94, 015004 (2022).
+[8] A. Peruzzo, J. Mcclean, P. Shadbolt, M. Yung, X. Zhou, P. J.
+Love, A. Aspuruguzik, and J. L. Obrien, “A variational eigen-
+value solver on a photonic quantum processor,” Nature Com-
+munications 5, 4213 (2014).
+[9] J. R. McClean, J. Romero, R. Babbush,
+and A. Aspuru-
+Guzik, “The theory of variational hybrid quantum-classical al-
+gorithms,” New Journal of Physics 18, 023023 (2016).
+[10] D. Wecker, M. B. Hastings, and M. Troyer, “Progress towards
+practical quantum variational algorithms,” Phys. Rev. A 92,
+042303 (2015).

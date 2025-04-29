@@ -1,0 +1,148 @@
+SINGULARITY AND REGULARITY OF THE CRITICAL 2D SHF
+21
+Assume that for some p P r1, 8q and C ă 8 the following bounds hold:
+@N P N, x P Rd :
+$
+&
+%
+E
+“ˇˇT ω
+N pϕp ¨ ´ xqq
+ˇˇp‰1{p ď C ,
+E
+“ˇˇT ω
+N
+`
+pψpiqqλ
+x
+˘ˇˇp‰1{p ď C λγ
+@λ P p0, 1s, 1 ď i ă 2d .
+(3.18)
+Then pT ω
+N qNPN is a tight sequence of random variables taking values in the space Cγ1
+for any
+γ1 ă γ ´ d
+p.
+Remark 3.6 (Topology of Hölder spaces). Given γ ă 0 and any distribution T P Cγ,
+let us denote rrTssK,γ “ cK the best constant in the inequality (3.16). Defining the distance
+dCγpT, T 1q :“
+ÿ
+KPN
+2´K
+rrT ´ T 1ssK,γ
+1 ` rrT ´ T 1ssK,γ
+,
+we have that Cγ is a complete metric space, but it is not separable, see [FM17].
+To ensure separability, one can define Cγ
+0 as the closure of smooth compactly supported
+functions C8
+c
+under the distance dCγ. One has the strict inclusion Cγ
+0 Ă Cγ, however for any
+˜γ ą γ one can sandwich C˜γ Ă Cγ
+0 Ă Cγ (so the difference is “small” in a sense).
+The results in [FM17] are formulated for the separable spaces Cγ
+0 (called Cγ in that paper).
+However, the tightness criterion in Theorem 3.5 applies also to the usual spaces Cγ, because
+Cγ
+0 is a closed subset of Cγ, hence compact sets in Cγ
+0 are also compact in Cγ.
+We now turn to the proof of Theorem 1.7, which is based on the following moment bounds.
+Recall the initial conditions UBpz,Rqp¨q from (1.23) and the convergence in distribution (3.8).
+Proposition 3.7 (Moment bounds). Fix t ą 0 and ϑ P R. Let βcrit
+N
+be in the critical
+regime (1.19). For any h P 2N, ε ą 0, δ0 ă 8, there is a constant C “ Ct,ϑ
+p,ε,δ0 ă 8 such that
+sup
+NPN
+E
+“
+Zβcrit
+N
+tN
+`
+UBpx
+?
+N,δ
+?
+Nq
+˘h‰1{h ď C δ´ε
+@x P R2, δ P p0, δ0q ,
+(3.19)
+and hence
+E
+“
+Z ϑ
+t
+`
+UBpx,δq
+˘h‰1{h ď C δ´ε
+@x P R2, δ P p0, δ0q .
+(3.20)
+Proof. In view of (3.8), the bound (3.20) follows by (3.19) and Fatou’s Lemma.
+To prove the bound (3.19), we apply equation (6.1) in [CSZ23a, Theorem 6.1] for ψ ” 1
+(we just exchange N, ˜N): given h P N and 1 ă p ă 8, there is a constant C1 “ C1pϑ, h, pq ă 8
+such that, uniformly in large N, ˜N P N and integrable φ : R2 Ñ R, we have
+E
+“`
+Zβcrit
+N
+˜
+N
+`
+φ
+˘
+´ 1
+˘h‰ 1
+h ď
+ˆ
+C1
+logp1 ` N{ ˜Nq
+˙ 1
+h ››››
+φ
+w
+››››
+p
+››w
+››
+q ,
+where q is the dual of p (i.e. 1
+p ` 1
+q “ 1) and wp¨q :“ e´|¨| is a weight function. In particular,
+for ˜N “ tN and φp¨q :“
+1
+πδ2 1Bpx,δqp¨q, we obtain
+E
+“`
+Zβcrit
+N
+tN
+`
+UBpx
+?
+N,δ
+?
+Nq
+˘
+´ 1
+˘h‰ 1
+h ď
+ˆ
+C1
+logp1 ` 1
+t q
+˙ 1
+h ˆ
+ż
+Bpx,δq
+ep|y|
+pπδ2qp dy
+˙ 1
+p ˆ ż
+R2
+e´q|y| dy
+˙ 1
+q
+.

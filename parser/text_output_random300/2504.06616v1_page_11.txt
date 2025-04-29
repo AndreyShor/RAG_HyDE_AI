@@ -1,0 +1,25 @@
+11
+Calculate SNRLi-Ma of 
+each Bayesian Block
+Identify precursor and 
+quiescent period 
+Identify EE and Dip
+1. Segment by Bayesian Block algorithm.
+2. Calculate SNRLi-Ma and filter SNRLi-Ma >3.
+3. Classify HSB and LSB.
+1. Combine up to 10 consecutive LSBs following the first HSB as a 
+quiescent period candidate.
+2. Merge consecutive HSBs preceding the quiescent  period as 
+precursor candidate.
+3. Validate quiescent period & precursor if both durations < 2s.
+1. Recognize Blocks with SNRLi-Ma < SNRLi-Ma,max/3 after peak HSB 
+as Sub-HSB.
+2. Merge any consecutive Sub-HSB as a single EE candidate.
+3. If any Block has SNRLi-Ma < EE candidate's first block between 
+peak HSB and EE candidate, confirm Dip and EE.
+Light curves of 1819 GBM 
+GRBs from 2014 to 2024
+Five Type IL GRBs
+230307A, 211211A, 200914A,
+ 200311A, 170228A
+Figure 1. Flowchart of the entire criterion.

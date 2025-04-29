@@ -1,0 +1,46 @@
+performance. This metric indicates how much of the variance in true phase values can be explained 
+by our model.  
+The model demonstrates consistent performance across both dataset sizes, with a slight improvement 
+in performance metrics and a reduction in standard deviations when using the larger dataset. It 
+indicates that the physics-constrained approach maintains robust performance even with the smaller 
+Dataset B. These results show the effectiveness of the physics-constrained neural network despite the 
+small dataset sizes and the challenging behavior of phase. The model's strong performance with 
+limited data is especially beneficial for metasurface design, where generating training samples via full 
+electromagnetic simulations is both computationally time-consuming and expensive. 
+ 
+ 
+Amplitude Loss 
+Energy Loss 
+Phase Loss 
+Angular Error (Radians) 
+R2 (phase) 
+Dataset A 
+0.001 ± 0.001 
+0.000 ± 0.000 
+0.107 ± 0.027 
+0.114 ± 0.033 
+0.928 ± 0.051 
+Dataset B 
+0.001 ± 0.001 
+0.000 ± 0.000 
+0.113 ± 0.031 
+0.124 ± 0.043 
+0.906 ± 0.074 
+Table I: Performance metrics of the physics-constrained neural network (mean ± standard deviation over 10 runs). 
+ 
+ 
+Figure IV shows the prediction capabilities of the model from two perspectives: relationship between 
+gap size and phase response, and direct correlation between the true and predicted values of phase. 
+The relationship between gap size and phase response is shown in Figure IV-a, that illustrates how the 
+model captures this relationship across different gap sizes. The scatter plot shows that the physics-
+constrained network is capable to capture the complex, non-linear relationship between gap size and 
+phase values across entire range. Figure IV-b provides a direct comparison between the true and 
+predicted values of phase using color scale indicating prediction error in sine/cosine space. There is a 
+strong diagonal alignment along the perfect-prediction line (red dashed line) visually confirms a high 
+value for the metric R2. An interesting example of the model’s handling of phase wrapping is observed 
+at the point highlighted by black arrow, where the true phase is 0 radian, while the prediction is near 
+2π. Despite the large numerical difference between these values, the color indicates a low error, as 
+the sine/cosine representation recognizes them as physically close states. This is a powerful example 
+demonstrating the advantage of the physics-informed approach in handling the circular nature of 
+phase values.  
+ 

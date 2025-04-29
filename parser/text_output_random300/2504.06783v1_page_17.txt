@@ -1,0 +1,40 @@
+ 
+17 
+ 
+Δ𝑥𝑢= ∑𝛼(𝜏)
+Γ
+𝜏=1
+𝑐𝑜𝑣(Δ𝑥(𝜏), Δ𝑦(𝜏))
+(𝜎(𝜏))2
+∙Δ𝑦𝑜,(𝜏)， 𝜏= 1,
+𝛤 (𝛤= 3 𝑖𝑛 𝑡ℎ𝑖𝑠 𝑠𝑡𝑢𝑑𝑦).
+(2) 
+Here, Δ𝑦𝑜,(𝜏)  represents the observational increment, 𝑦𝑓
+𝑝  is the “prior” model-estimated value at the 
+observation location, 𝜎(𝜏) is the standard deviation of the multi-timescale (three timescales: stationary, low-
+frequency, and high-frequency in this case) ensemble, 𝜎(𝑜) is the standard deviation of the observation, 𝑦𝑜 
+is the observation, Δ𝑥𝑢 is the observation increment on the model grid after projection, 𝑐𝑜𝑣(Δ𝑥(𝜏), Δ𝑦(𝜏))  
+is the covariance relationship between the model value at the model grid and the estimated model value at the 
+observation location of each timescale filtering scheme, and 𝛼(𝜏) represents the adjustable weight coefficients 
+in the combination of filters. 
+Deep-ocean bias treatment. Given the scarcity of deep-ocean observations, an ocean model bias relaxing 
+scheme [10] is used during CDA to control deep-ocean model bias and achieve coherent ocean stratification 
+[3,25]. In this scheme, climatological temperature and salinity data are restored into the model space with 
+depth-dependent restoration strength. Specifically, the upper ocean is primarily constrained by observations, 
+while the deep ocean is relaxed towards the climatology of the World Ocean Atlas (WOA) [50,51]. On the 
+basis of real-observation assimilation experiments with CM2 [29] and CESM [30], the restoration timescale is 
+linearly related to depth, ranging from infinite to 360 days as depth increases from the surface to 1000 m, then 
+decreasing to nearly 180 days at 1500 m. At greater depths, the restoration strength increases further, with a 
+timescale of 30 days at the ocean bottom. 
+Coupled data assimilation scheme. Ocean observations—including sea surface temperatures (SSTs) 
+from the Hadley Centre Sea Ice and Sea Surface Temperature Dataset (HadISST) and Optimum Interpolation 
+SST (OISST), as well as in-situ ocean temperature and salinity profiles since 1945—are assimilated into the 
+CDA systems. To simplify the CDA framework for climate reanalysis, only surface pressure (Ps) data from the 
+fifth-generation ECMWF reanalysis (ERA5) atmospheric reanalysis products [52] are assimilated as the 
+atmospheric “observations” (see Text S1c). The Ps data effectively represent all other atmospheric information 
+by capturing whole-column atmospheric mass variation [52]. The assimilation of Ps increments uses an 
+inverted projection method of the vertical integral, effectively extracting observational information into the 
+models [53,54]. The CESM-CDA and CM2-CDA systems are initialized from their coupled states on January 
+1, 1945, within their respective historical simulations. These systems completed their coupled reanalysis to the 
+present, using historical radiative forcings, and followed the RCP45 scenario setting after 2007 (see Table S1).  
+ 

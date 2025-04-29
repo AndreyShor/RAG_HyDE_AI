@@ -1,0 +1,146 @@
+9
+B.
+Proof of Theorem 2
+In order to prove Theorem 2 of the main paper, we first develop the following Lemma 2.
+Lemma 2: The error η(γ)
+n
+= ∥|χ(γ)
+n ⟩−|ϕn⟩]∥averaged over a uniform distribution of γ after n steps of SRGD
+with steps size ∆β = β
+n is upper bounded by
+˜bn =
+p
+2∆β∥H∥∞D
+
+e8β∥H∥∞−1
+1/2
+(40)
+and for any ˜δ > 0 we have that
+Pr
+h
+η(γ)
+n
+> ˜bn + ˜δ
+i
+≤2∆β∥H∥∞D2
+˜δ2
+
+e8β∥H∥∞−1
+
+(41)
+Proof : We define |∆(γ)
+k ⟩= |χ(γ)
+k ⟩−|ϕk⟩so that the random variable η(γ)
+k
+= ∥|∆(γ)
+k ⟩∥is given as the Euclidean
+norm of the (unnormalized ) ket vector |∆(γ)
+k ⟩. The error η(γ)
+k
+describes the norm difference between the state |χ(γ)
+k ⟩
+prepared by k steps of stochastic Riemannian gradient descent (SRGD) defined by the update rule
+|χ(γ)
+k (s)⟩= esg(γ)
+k
+|χ(γ)
+k−1⟩,
+(42)
+where g(γ)
+k
+= DTr
+
+[H, |χ(γ)
+k−1⟩⟨χ(γ)
+k−1|]iPk
+
+iPk is the stochastic Riemannian gradient, and the state |ϕk⟩obtained by
+k steps of Riemannian gradient descent (RGD) defined by
+|ϕk(s)⟩= esGk |ϕk−1⟩,
+(43)
+where Gk = [H, |ϕk−1⟩⟨ϕk−1|] is the Riemannian gradient. The update occurs for a step size s = ∆β and D is the
+number of orthonormal Pauli basis elements Pk, satisfying Tr(PkPk′) = δk,k′ and P 2
+k = 1
+d, that we sample from.
+In general D = d2 −1 = 22N −1, but we may pick D to be smaller as long as Gk can be decomposed with fewer
+basis elements. The following proof holds in either case.
+In order to prove Lemma 2, we make use of Jensen’s inequality to find
+Eγ[η(γ)
+n ] = Eγ∥|∆(γ)
+n ⟩∥≤
+q
+Eγ∥|∆(γ)
+n ⟩∥2
+(44)
+Var(η(γ)
+n ) = Eγ[η(γ)2
+n
+] −(Eγ[η(γ)
+n ])2 ≤Eγ∥|∆(γ)
+n ⟩∥2,
+(45)
+and thus both the variance and average can be bounded by bounding Eγ∥|∆(γ)
+n ⟩∥2.
+The proof proceeds similarly to how Theorem 1 was addressed, in particular we derive something analogous to (37),
+but construct the recursion relation in the square η(γ)2
+k
+of the Euclidean norm of |∆(γ)
+k ⟩, instead of a recursion relation
+in the norm. For η(γ)2
+k
+averaged over the paths γ we can perform a Taylor series expansion, up to first order in s, to
+obtain
+Eγ[η(γ)2
+k
+] = Eγ⟨∆(γ)
+k |∆(γ)
+k ⟩≤Eγ[η(γ)2
+k−1] + ∆βK + (∆β)2
+2
+R
+(46)
+where K is an upper bound of
+d
+ds Eγ⟨∆(γ)
+k |∆(γ)
+k ⟩
+
+s=0 and R is an upper bound for the remainder term
+d2
+ds2 Eγ⟨∆(γ)
+k |∆(γ)
+k ⟩
+
+s=ξ , ξ ∈[0, ∆β] while the zeroth order term gives Eγ[η(γ)2
+k−1] as one would expect.
+To determine K we compute
+
+d
+dsEγ⟨∆(γ)
+k |∆(γ)
+k ⟩
+
+s=0
+=
+Eγ ⟨ϕk−1|
+
+Gk −g(γ)
+k
+
+|χ(γ)
+k−1⟩+ c.c.
+
+=
+Eγ ⟨ϕk−1| [H, |ϕk−1⟩⟨ϕk−1| −|χ(γ)
+k−1⟩⟨χ(γ)
+k−1|] |χ(γ)
+k−1⟩+ c.c.
+ ,
+(47)
+where “c.c.” denotes the complex conjugate and in the second line we used that the average EPk in the k-the step
+over the Pauli Pk is given by
+EPk[g(γ)
+k ] = [H, |χ(γ)
+k−1⟩⟨χ(γ)
+k−1|]
+(48)

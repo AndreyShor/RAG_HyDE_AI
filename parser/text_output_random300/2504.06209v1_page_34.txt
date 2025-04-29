@@ -1,0 +1,65 @@
+34
+FIG. 20. An agent interacting with the cascade of two environment channel env1 and env2.
+To this end, recall that any agtM →
+←env can be represented through a finite-state global Markov process of some
+agtM →
+←envM which models agtM →
+←env, see lemma 4. By corollary 1, this process is asymptotically periodic with a
+finite period in the sense of corollary 1. Let d be this period. That is, there are only d asymptotically expected
+input distributions for the agent’s transition matrix, lim
+n→∞pMdn+cSdn+c for c ∈{1, 2, . . . , d}, which repeat in the same
+periodic manner. We will now exploit this to construct a Landauer-efficient agent.
+Let us extend the agent agtM by a separate deterministic counter c which starts at 1 and, with every round, if c < d
+counts up or if c = d resets to 1. This additional counter memory is fully deterministic and thus has zero entropy for
+all times. It therefore does not contribute to the extractable work.
+Now, consider a protocol implementing the agent which, conditioned on the counter c, implements one of d efficient
+protocols optimized for the asymptotically expected distribution lim
+n→∞pMdn+cSdn+c. Thereby, we have constructed a
+protocol which implements agtM in a Landauer-efficient way using only finite memory.
+3.
+Definition and properties of work capacity
+For a given environment, the extracted work in eq. (G12) depends not only on an agent’s input-output behavior,
+as characterized by an agent’s channel agt, but also on the agent’s memory usage, as specified by a model agtM. The
+environment’s capacity to do work is then defined as the supremum of the work rate with respect to all agent models
+agtM.
+Definition 13. The work capacity Cwork of channel env = νenv
+A|S is defined as
+Cwork(env) :=
+max
+agtM∈A→
+←env W(agtM →
+←env)
+(G13)
+where W(agtM →
+←env) := ⟨H (At|Mt) −H (St|Mt)⟩t is the work rate. An agent model agtM is said to be efficient
+with respect to an environment channel env if W(agtM →
+←env) = Cwork(env) and the set of efficient agents is denoted
+A
+→
+←env
+eff
+.
+In the following we will prove various properties of work capacity.
+Theorem 8. For any percept-action loop agtM →
+←env with action-percept alphabet Y, the channel capacity Cwork(env)
+has the following properties:
+(i) (Existence) The limit in the definition of Cwork(env) exists,
+(ii) (Bounds) 0 ≤Cwork(env) ≤ln |Y|,
+(iii) (Subadditivity under channel cascade) Let env1 = penv1
+S|A and env2 = penv2
+S|A be two hidden Markov channels.
+Define the cascade env2 ◦env1 = penv2◦env1
+S|A
+of env1 and env2 as
+penv2◦env1
+S|A
+(s|a) =
+X
+i∈YN0
+penv2
+S|A′(s|i)penv1
+S′|A(i|a),
+(G14)
+see also Figure 20. Then,
+Cwork(env2 ◦env1) ≤Cwork(env1) + Cwork(env2).
+(G15)

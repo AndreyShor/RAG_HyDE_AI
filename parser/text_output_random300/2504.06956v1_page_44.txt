@@ -1,0 +1,130 @@
+Resampling property and independence from the threshold
+44
+and where the function ab is defined as in (2.2). In particular, the field Φb is shift invariant in the
+sense that τxΦb has the same law as Φb for every x ∈Rd. Then, by applying the Cameron–Martin
+theorem (see Lemma C.1), we have that for all F : C(Rd) →R and y ∈Rd, it holds that
+E[F(Υb)] = E[F(Φb −
+√
+2dab)]
+= E
+h
+F(Φb +
+√
+2dE[Φb(·)Φb(y)] −
+√
+2dab)e−
+√
+2dΦb(y)−2dab(y)i
+= E
+h
+F(τ−yΦb +
+√
+2dE[Φb(·)Φb(y)] −
+√
+2dab)e−
+√
+2dτ−yΦb(y)−2dab(y)i
+= E
+h
+F(τ−yΥb +
+√
+2dτ−yab +
+√
+2dE[Φb(·)Φb(y)] −
+√
+2dab)e
+√
+2dΦb(−y)−2dab(y)i
+= E
+h
+F(τ−yΥb)e
+√
+2dΥb(−y)i
+.
+(5.7)
+Now, for each λ ∈Λ, F ∈Cb
+loc(C(Rd)), and 0 ≤k ≤b, we can write
+E
+h
+F(Υb)1{M0,b(Υb)≤λ}
+i
+= E
+R
+Bk F(Υb)1{M0,b(Υb)≤λ}e
+√
+2d(Υb(x)−Mx,b(Υb))1{Υb(x)≥Mx,b(Υb)−λ} dx
+R
+Bk e
+√
+2d(Υb(y)−My,b(Υb))1{Υb(y)≥My,b(Υb)−λ}dy
+
+,
+Therefore, using (5.7), the expectation on the right-hand side of the previous display is equal to
+Z
+Bk
+E
+F(τ−xΥb)1{M−x,b(Υb)−Υb(−x)≤λ}e
+√
+2d(Υb(−x)−M0,b(Υb))1{M0,b(Υb)≤λ}
+R
+Bk e
+√
+2d(Υb(y−x)−My−x,b(Υb))1{Υb(y−x)≥My−x,b(Υb)−λ}dy
+
+dx
+= E
+Z
+Bk
+F(τxΥb)e
+√
+2d(Υb(x)−M0,b(Υb))1{Υb(x)≥Mx,b(Υb)−λ}
+R
+Bk(x) e
+√
+2d(Υb(y)−My,b(Υb))1{Υb(y)≥My,b(Υb)−λ}dy
+dx1{M0,b(Υb)≤λ}
+
+.
+(5.8)
+We observe that the integral over x inside the expectation in (5.8) is bounded above by a positive finite
+constant. Indeed, since the function F is bounded by assumption and the exponential terms are easily
+bounded, it suffices to verify that
+Z
+Bk
+1{Υb(x)≥Mx,b(Υb)−λ}
+R
+Bk(x) 1{Υb(y)≥My,b(Υb)−λ}dy dx < ∞.
+To simplify the notation, we introduce the set Aλ
+def= {x ∈Rd : Υb(x) ≥Mx,b(Υb) −λ}. We note
+that there exist a positive number σd that depends only on d and points {z1, . . . zσd} ⊆Rd, such
+that Bk ⊆∪σd
+i=1B(zi, ek/2). Consequently, this implies that the quantity on the left-hand side of the
+previous expression is bounded above by
+σd
+X
+i=1
+Z
+B(z,ek/2)
+1{x∈Aλ}
+R
+Bk(x) 1{y∈Aλ}dy dx ≤
+σd
+X
+i=1
+Z
+B(z,ek/2)
+1{x∈Aλ}
+R
+B(z,ek/2) 1{y∈Aλ}dy dx ≤σd .
+We now want to take the limit as b →∞in the expectation in (5.8) by applying Theorems A and B.
+However, the function that assigns to Υb the quantity inside the expectation in (5.8) is not a function
+in Cb
+loc(C(Rd)). In order to overcome this issue, we proceed in three steps.
+Step 1: We can choose 0 < k ≤j ≤b sufficiently large such that for all x ∈Bk and all y ∈Bk(x)
+the following inclusions hold
+Bj ⊆Bb ⊆B2b ,
+Bj ⊆Bb(x) ⊆B2b ,
+Bj ⊆Bb(y) ⊆B2b .
+In particular, this implies that on the event {M0,2b(Υb) = M0,j(Υb)} it holds, for all x ∈Bk and all
+y ∈Bk(x), that
+M0,b(Υb) = Mx,b(Υb) = My,b(Υb) = M0,j(Υb) .

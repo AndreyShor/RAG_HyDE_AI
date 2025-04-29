@@ -1,0 +1,52 @@
+Tools and methodology
+53
+Figure 2.8: Diagrammatic representation of the NNPDF fitting framework. The blue box contains the
+minimization of the χ2 figure of merit, whose computation is illustrated in Fig. 2.9. From Ref. [109].
+the weight of the subsequent neurons NN(l+1)
+j
+is given by
+NN(l+1)
+j
+
+x; w(l), ξ(l)
+= ϕ
+ nl
+X
+i=1
+w(l)
+i NN(l)
+i
+
+x; w(l−1), ξ(l−1)
++ ξ(l)
+i
+!
+,
+(2.25)
+where ϕ, the activation function, contains two degrees of freedom: a multiplicative weight
+(w(l)
+i ) and a linear bias (ξ(l)
+i ), which are usually normalized in a unit interval. The sum, in
+Eq. (2.25), runs over the number of connected nodes, and the recursive evaluation requires and
+initial boundary condition.
+On the other hand, backward propagation corresponds to the moment in which the network
+trains and learns the pattern of the target data. This is fixed by the optimization of a loss
+function, i.e. the χ2 in our case. At each minimization step, starting from the final layer, it is
+possible to compute weight and bias values (w(l), ξ(l)) that leads to lower loss and, by a chain
+rule, update all the previous layers of the network.
+The specific SGD optimizer, its settings, the training and validation fraction, the neural network
+architecture are all tunable parameters of the fitting methodology that can be determined
+via the hyperoptimization. In order to assess the independence of the result on the choice
+of these hyperparameters while adopting an efficient methodology, one needs to scan many
+hyperparameter combinations and test their performance on different subset of the data.
+In this thesis, for the unpolarized fits, we adopt the same hyperparameters selected with the
+K-folding procedure described in [109, Sec. 3.3]; while for the polarized fits of Chapter 5
+we perform a different hyperoptimization as described in Section 5.2.3. The former, adopts
+hyperbolic tangent activation function and a stochastic gradient descent (SGD) algorithm,
+called nADAM implemented in TensorFlow [155], for which the backward propagation reduces
+essentially to a computation of derivatives χ2 in terms of w(l), ξ(l). nADAM being based on a
+numerical minimization, ensures good efficiency with respect to other minimizer as genetic
+algorithms and, by adapting the learning rate based on the previous iterations, it reduces the
+possibility of being trapped in local minima.
+Fitting strategy.
+Fig. 2.8 summarizes the workflow of the NNPDF fitting framework. The main

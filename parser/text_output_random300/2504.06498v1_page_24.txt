@@ -1,0 +1,67 @@
+As discussed, the threshold external feedback gain (𝐺th
+ext) required for maser oscillations to
+spontaneously emerge corresponds to the inverse of the on-resonance internal gains:
+𝐺th
+ext =
+1
+𝐺int( 𝑓0) .
+(S14)
+For 1-𝐽and 2-𝐽transitions, this yields 𝐺th
+ext ≈7.2 and 𝐺th
+ext ≈5.8, respectively, consistent with the
+results in Fig. 2E-2F.
+The Normalization of Fourier Transformation
+Suppose a continuous signal 𝑥(𝑡) is sampled at a rate 𝑓𝑠to get a discrete sequence
+𝑥[𝑛] = 𝑥
+
+𝑡= 𝑛
+𝑓𝑠
+
+,
+𝑛= 0, 1, . . . , 𝑁−1,
+(S15)
+over a total duration 𝑇= 𝑁/ 𝑓𝑠. The discrete Fourier transform (DFT) is then calculated as,
+𝑋[𝑘] =
+𝑁−1
+∑︁
+𝑛=0
+𝑥[𝑛] 𝑒−𝑗2𝜋𝑘
+𝑁𝑛,
+𝑘= 0, 1, . . . , 𝑁−1.
+(S16)
+Interpreting the sum as a Riemann approximation, i.e., Δ𝑡· Í(·) ≈
+∫𝑇
+0 (·) 𝑑𝑡, 𝑋[𝑘] approximates
+the continuous Fourier integral,
+𝑋[𝑘] ≈𝑓𝑠
+∫𝑇
+0
+𝑥(𝑡) 𝑒−𝑗2𝜋𝑓𝑘𝑡𝑑𝑡,
+(S17)
+with the discrete frequency 𝑓𝑘= 𝑘𝑓𝑠
+𝑁and the sampling interval Δ𝑡= 1/ 𝑓𝑠.
+Two different normalization conventions adopted:
+Convention I:
+Divide 𝑋[𝑘] by the number of samples 𝑁, giving,
+e𝑋II[𝑘] = 𝑋[𝑘]
+𝑁
+≈1
+𝑇
+∫𝑇
+0
+𝑥(𝑡) 𝑒−𝑗2𝜋𝑓𝑘𝑡𝑑𝑡.
+(S18)
+In this case, the Fourier amplitudes retain the original units of 𝑥(𝑡) (e.g., pT). This convention was
+adopted in Fig. 3.
+Convention II:
+Multiply 𝑋[𝑘] by Δ𝑡= 1/ 𝑓𝑠, so that,
+e𝑋I[𝑘] = 𝑋[𝑘]
+𝑓𝑠
+≈
+∫𝑇
+0
+𝑥(𝑡) 𝑒−𝑗2𝜋𝑓𝑘𝑡𝑑𝑡.
+(S19)
+This yields Fourier amplitudes with units such as pT/Hz (if 𝑥(𝑡) is measured in pT). This convention
+was adopted in Fig. 1
+S7

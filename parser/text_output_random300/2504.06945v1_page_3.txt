@@ -1,0 +1,112 @@
+3
+2. For the purely fermionic part, one of the well-tested approaches is to incorporate the patch theory, introduced in
+Refs. [1, 4–6, 8, 27].
+The usefulness of using these coordinates lies in the fact that the itinerant fermions, in the
+vicinity of a given point on the Fermi surface, primarily couple with the bosons whose momentum (q) is in a direction
+perpendicular to the local Fermi momentum. Consequently, the fermions in different patches on the Fermi surface are
+effectively decoupled from each other in the low-energy limit, except of course when they have antiparallel tangents.
+It makes it possible to extract all the physical properties (e.g., Green’s functions) to be easily extracted from the
+information contained in the local patches, without having to refer to the global properties of the Fermi surface. Using
+the patch coordinates, the kinetic action for the fermionic excitations is captured by
+Sf =
+Z
+k
+ψ†(k) (−i k0 + δk) ψ(k) ,
+δk = vF k⊥+
+k2
+∥
+2 m ,
+(2)
+in the Fourier space. Here, ψ denotes the fermionic field residing on the patch under consideration. We have used
+the condensed notations of k ≡(k0, k) (with k0 denoting the Matsubara frequency) and
+R
+k ≡
+R dk0 dk∥dk⊥
+(2 π)3
+. While
+writing the kinetic terms in the the patch coordinates, we have expanded the fermion momentum about the local Fermi
+momentum, kF , such that k⊥is directed perpendicular to the local Fermi surface, and k∥is tangential to it.
+3. The last bit comprises the coupling terms between the bosons and the fermions, which is captured by
+Sint = ˜e
+Z
+k
+Z
+q
+(cos kx −cos ky) ϕ(q) ψ†(k + q) ψ(k) ,
+(3)
+where ˜e is the fermion-boson coupling constant. We would like to point out that this piece of the total action is written
+in the global momentum space coordinates (rather than the patch coordinates of the Fermi surface). Converting the
+above to the patch coordinates, and keeping only the leading order terms in momentum about the Fermi surface, we
+get (cos kx −cos ky) ≃cos kF . Re-expressing the coupling strength as e = ˜e cos kF , we then get the following form for
+the fermion-boson interaction in the patch coordinates:
+˜Sint = e
+Z
+k
+Z
+q
+ϕ(q) ψ†(k + q) ψ(k) .
+(4)
+The penultimate step for obtaining the final form of the total action, Stot, involves as appropriate rescaling of the energy
+and momenta, and dropping the irrelevant terms [4, 5] after determining the engineering dimension of each term. This is
+implemented by setting [k0] = [k⊥] = 1 and [k∥] = 1/2. This finally leads to
+Stot = Sf + ˜Sb + ˜Sint ,
+˜Sb = 1
+2
+Z
+k
+k2
+∥ϕ(−k) ϕ(k) .
+(5)
+The patch coordinates enables us to extract the correct forms of the one-loop self-energies for the bosons and the fermions
+[1, 4, 5], as described below:
+1. From Stot, the bare Matusubara Green’s functions for the fermions and bosons are found to be
+G(0)(k) =
+1
+i k0 −δk
+and D(0)(q) =
+1
+−q2
+||
+,
+(6)
+respectively.
+2. Since the bare kinetic term of the boson depends only on q||, we need to include the lowest-order quantum corrections to
+ensure that the loop-integrals are infrared- and ultraviolet-finite [4, 5]. Since the one-loop bosonic self-energy evaluates
+to Π(q) = −e2 R
+k G(0)(k + q) G(0)(k) =
+e2 m |q0|
+2 π vF |q|||, we use the one-loop corrected bosonic propagator,
+D(1)(q) =
+
+D(0)(q)
+−1
+−Π(q)
+−1
+= −
+1
+q2
+|| +
+e2 m |q0|
+2 π vF |q|||
+,
+(7)
+in all our subsequent loop-calculations. We note that Π(q) takes a form which represents an overdamped harmonic
+oscillator, thus earning it the nomenclature of Landau damping. The validity of this expression corresponds to the
+limits of |q0|/|q∥| ≪1, |q| ≪kF , and |q| →0.
+3. Using the dressed bosonic propagator (containing the all-important effects of Landau damping), the one-loop fermion
+self-energy in the Matsubara space turns out to be
+Σ(k) = −i e
+4
+3 sgn(k0) |k0|
+2
+3
+2
+√
+3 π
+2
+3 k
+1
+2
+F
+.
+(8)

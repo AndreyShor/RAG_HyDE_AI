@@ -1,0 +1,58 @@
+Introduction
+5
+where Y′
+t is an independent copy of Yt. In particular, by taking the limit as t →∞in the display
+above, we obtain that for all s ≥0,
+Us = e−s/2U0 + (1 −e−s)1/2Z ,
+where U0 and Z are independent standard normal random variables. This is precisely the defining
+property of a stationary Ornstein–Uhlenbeck process.
+Returning to our setting, we show in Corollary D that there exists an R-valued process (Wγ,s)s≥0
+with Wγ,0 = 0, which we refer to as the weight process, such that, for any s ≥0, the measure νγ,s
+can be expressed as follows
+νγ,s =
+X
+j∈N
+eWγ,s,jwjδxj ,
+where (xj, wj)j∈N enumerates (in an arbitrary manner) the atoms of the Poisson point measure
+ηγ[µγc] as introduced in Definition 1.5, and the collection (Wγ,s,j)j∈N consists of i.i.d. copies of
+Wγ,s. We emphasise that the spatial locations xi of the point masses are fixed once and for all and do
+not change as s varies. The only aspect that evolves in the process νγ,s is the weights of the point
+masses, whose dynamics are governed by the weight process as described above. Moreover, the mass
+of each atom evolves independently of all the others.
+To prove this result, we adopt a general framework where we consider the joint limit as t →∞of the
+family of measures (µγ,t,i)i∈[n] defined as follows
+µγ,t,i(dx)
+def= t
+3γ
+2
+√
+2d et(γ/
+√
+2−
+√
+d)2eγ(Xt(x)+Wi,t(x))−γ2
+2 tdx = eγWi,t(x)µγ,t(dx) ,
+where, the collection of processes (Wi,·)i∈[n]2 satisfies some suitable assumptions (see Assump-
+tion 2.14 for details). Specifically, in Theorem C, we analyse the joint convergence of these types of
+measures.
+Remark 1.8. It is worth noting that for s ≥0, the convergence of the collection of measures
+(µγ,t+s)t≥0 naturally fits within this general framework. This follows directly from the decomposition
+Xt+s = Xt + Xt,t+s, together with the fact that the field Xt,t+s satisfies our assumptions.
+Remark 1.9. One motivation for working within this general framework is that it facilitates our
+companion paper [BH25], where we establish the uniqueness of the supercritical GMC measure.
+Specifically, we show that if X(ε) denotes the convolution approximation of a ⋆-scale invariant field
+at level ε, then, roughly speaking, X(e−t) ≈Xt + W(et·) for a smooth Gaussian field W that is
+independent of X (see [BH25, Proposition B] for details).
+The proof of Theorem C, in addition to relying on technical results from [Mad15], requires a fine
+understanding of the structure of ⋆-scale invariant fields around their extremal points. Specifically,
+consider a log-correlated Gaussian field X conditioned on two events: first, that its value at the
+origin is comparable to the maximum of the field within an order-one region; second, that the origin
+is a “mesoscopic maximum” within this region. Then, after shifting the coordinate system at this
+maximum (so that the value at the origin becomes 0) and after a suitable rescaling, we want to study
+the “shape of the field” in that region. This is the content of Theorem A, which describes the law of
+the field governing the shape of the field X around a mesoscopic maximum. With this result in hand,
+the precise form of the weight process (Wγ,s)s≥0, as given in (2.17), emerges quite naturally.
+We emphasise that in the case of dimension d = 2, a similar investigation has been conducted for the
+discrete Gaussian free field (DGFF) in [BL18]. However, their results rely heavily on the fact that the
+DGFF is defined on the discrete grid Z2. There, one can condition a field on the origin being the
+2Here, and in what follows, we write [n] = {1, . . . , n} and [n]0 = {0, 1, . . . , n}.

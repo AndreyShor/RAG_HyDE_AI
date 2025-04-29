@@ -1,0 +1,50 @@
+7
+This process is analytically solvable (e.g., using characteristics). The chance that the lineage goes extinct before
+the t-th generation is
+Q(t) =
+t
+1 + t ≈1 −1
+t ,
+(C2)
+where the last approximation is for large t. Thus, the probability of survival for t generations is
+S(t) = 1 −Q(t) ≈1
+t .
+(C3)
+Conditioned on survival, the chance that the population has size n at time t is
+Pn(t) = 1
+t
+
+t
+1 + t
+n
+≈e−n/t
+t
+(C4)
+and therefore, the mean population size (conditioned on survival) is n(t) = t.
+Since n(t) = t, the accumulated number of birth until t, M(t), is proportional (again, for surviving populations) to
+t2.
+One may also approach the neutral process using the corresponding Fokker-Planck equation,
+dP(n)
+dt
+= σ2
+2
+∂
+∂n (nP(n)) ,
+(C5)
+where σ2 is the variance of the number of offspring per generation. A simple scaling argument shows that for a general
+distribution of offspring number, as long as the process is neutral (i.e., its mean is unity),
+n(t) = σ2t
+2 .
+(C6)
+These features are demonstrated in Figure 4.
+FIG. 4.
+Growth of n(t) with t in a neutral process. The left panel depicts several histories of nt as a function of t.
+in all cases, n0 = 1, and nt+1 was drawn from a Poisson distribution whose mean is nt. Each gray line represents a single
+history. Most of these histories went extinct in the first steps, in agreement with Eq. (C2). The surviving histories reach higher
+population levels, and the mean (over the surviving populations) population size grows linearly with t (blue line, average taken
+over 106 histories). Here we implemented a Poisson process for which σ2 = 1, therefore the slope of the blue line is 1/2. The
+right panel presents a heat map, where the color of nt corresponds to the number of visits at n at time t, divided by the number
+of processes that survive until t and multiplied by t.
+Appendix D: Simulation procedure
+To map the dynamics of interdependent networks to a birth–death process, we monitor the number of “decedents” per
+failed node, Pm. When both networks are statistically identical, there is no need to track the process on interdependent

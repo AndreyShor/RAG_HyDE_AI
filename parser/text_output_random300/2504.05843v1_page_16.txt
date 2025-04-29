@@ -1,0 +1,78 @@
+At this point we have transformed the original loop integral over one four-momentum into a parametric
+double integral. Did we make progress, though? One-dimensional MB integrals can often be computed exactly,
+but already the simple looking expression for I1 resists naive attempts on integration. Yet, as the Γ function
+exponentially decays in the imaginary direction the method does allow for a fairly stable numerical evaluation
+of Feynman integrals [28]. However, if straight line contours are desired, their positions along the real axis
+must be so arranged that they run between Γ functions with positive and negative sign, respectively, of the
+MB parameters zi. This may necessitate jumping over a singularity and thereby extracting some residues.
+The result is a sum over — partially lower-dimensional — MB integrals. For planar Feynman integrals the two
+most commonly applied strategies for fixing reals parts are realised in the packages MB.m [28] and MBresolve.m
+[13], where the latter can be uploaded into the former.
+Next, we turn to the double box. Mellin-Barnes representations can be built loop-wise: we send the bottom
+point to infinity also for the double box, thereby amputating the two propagators attached to it. We could
+substitute the MB representation (6) for the remaining three propagators attached to the left vertex in the
+right panel of Figure 1, and take the product with the two propagators on the top right and on the right
+of the graph.
+The process described in the opening paragraphs of the Section is then repeated.
+The six
+point permutations of (6) generate six slightly inequivalent-looking four-parameter representations for the full
+two-loop integral, cf. [9]. Picking residues of four simultaneous contour integrals can be cumbersome — there
+will usually be several series of residues, cf. the MBconicHulls.m package [21] — whereas the otherwise very
+efficient barnesRoutines.m [20] does not spot ways to apply Barnes’ lemmata to integrate any of the four MB
+parameters out of these six representations.
+An alternative is to put together all five propagators in a single step employing five Feynman parameters,
+and generating one common denominator
+q1x2
+15 + q2x2
+26 + q3x2
+56 + q4x2
+35 + q5x2
+36 .
+(94)
+Successively integrating over both (dual) loop-momenta (ie. the positions of the two vertices) the integral
+representation
+I2 =
+Z
+dq1 . . . dq5 δ(1 −P
+i qi)
+U(q1 . . . q5) f(q1 . . . q5, x2
+12, x2
+13, x2
+23)
+(95)
+is obtained, where U and f are the famous Symanzik polynomials. At first glance this looks hardly helpful:
+U has six terms and f even nine, so to split both into monomials we apparently need the astounding number
+of 13 MB parameters. Nonetheless, appealing to a trick [29, 19, 30] we will only need seven. What is more,
+barnesRoutines.m will be able to integrate out five of these, leading to a two-parameter representation looking
+like a higher-transcendentality analogue of (6).
+To this end we may split the parameters into the groups {q1, q3, q4} and {q2, q5}, respectively. This partition
+has a graphical origin: the propagators 1/x2
+26, 1/x2
+36 associated with q2 and q5, respectively, are not connected
+to the left vertex in the right panel of Figure 1. This can be used to simplify the Symanzik polynomials,
+the structure of which is also closely associated with the Feynman graph. Now, in one of the partitions the
+integration range for the parameters is extended from [0, 1] to [0, ∞], upon which they can be scaled out of
+the δ function [19, 30]. We choose q2, q5 as these Cheng-Wu variables upon which we can put
+q1 + q3 + q4 →1
+(96)
+in the polynomials. Then
+U = q3(q1 + q4) + q2 + q5
+(97)
+and
+f = q1q2q3x2
+12 + q1(q2q4 + q3q4 + q3q5 + q4q5)x2
+13 + q2(q3q4 + q5)x2
+23 .
+(98)
+The idea is now to decompose f into monomials introducing six MB parameters, which we will do from the
+back to the front. The U polynomial is treated differently: we can use the formula
+Z ∞
+0
+dq qm(q + A)n = A1+m+n Γ[1 + m]Γ[−1 −m −n]
+Γ[−n]
+(99)
+to eliminate the Cheng-Wu variables {q2, q5} in favour of Γ functions. Having done so, the remainder of the
+U polynomial unfortunately still counts two terms, namely q3(q1 + q4), which we split introducing a seventh
+MB parameter. In a final step, equation (93) can be used to integrate out {q1, q3, q4} resulting into a seven-
+parameter MB representation.
+16

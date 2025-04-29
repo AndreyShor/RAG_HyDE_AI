@@ -1,0 +1,126 @@
+2
+∆β of the discretized Riemannian gradient flow evolu-
+tion, which can be interpreted as a Riemannian gradient
+descent algorithm minimizing the energy of the system,
+as depicted in Fig. 1. We go on to develop an upper
+bound (Theorem 1) for the error between the ITE state
+and the state that is created through Riemannian gradi-
+ent descent, which can again be controlled through ∆β.
+The developed equivalence between ITE and Riemannian
+gradient flows has two key implications: (i) it motivates
+using the large literature on heuristic adaptive quantum
+algorithms [19–26] to design quantum algorithms for im-
+plementing ITE and (ii) the developed upper bound gives
+performance guarantees for state preparation methods
+that are based on Riemannian gradient flows [18–20, 29].
+We demonstrate the utility of (i) and (ii) by develop-
+ing a stochastic implementation of the discretized Rie-
+mannian gradient flow. Each step in this stochastic Rie-
+mannian gradient descent algorithm is efficiently imple-
+mentable on a quantum computer and the energy of the
+system is provably reduced on average in each step. We
+then derive performance bounds for using the stochastic
+Riemannian gradient descent algorithm to prepare the
+ITE state |ψ(β)⟩to arbitrary precision (Theorem 2). We
+show that the randomized evolution concentrates around
+ITE, converging at a rate determined by ∆β. We proceed
+to use the developed bounds to obtain insights on how
+knowledge of the initial state and H may be exploited to
+develop quantum circuit implementations that prepare
+the ITE state efficiently.
+Quantum imaginary time evolution as Riemannian
+gradient descent – The theory of Riemannian gradient
+flows is a rich framework for solving optimization prob-
+lems defined on a Riemannian manifold, such as the uni-
+tary group [16]. Riemannian gradient flows have a long
+history in optimization. Applications range from diago-
+nalizing a matrix through Brocket’s double bracket flow
+to solving least squares type problems [30, 31] and finding
+the ground state of a many-body Hamiltonian [32, 33].
+Recently, Riemannian gradient flows have been utilized
+to develop quantum algorithms for ground state prob-
+lems [18–20]. Rather than optimizing over parameters
+in a quantum circuit to minimize cost function J (e.g.,
+as in variational quantum algorithms [34]), J is instead
+directly optimized over unitary transformations.
+The Riemannian gradient flow on the special unitary
+group SU(d) of dimension d is defined by the solution to
+the differential equation [16, 17]
+d
+dtU = −gradJ[U]
+(2)
+for the unitary operator U ∈SU(d). Here, gradJ[U] ∈
+TUSU(d) is the Riemannian gradient of a cost function
+J[U] that lives in the tangent space TUSU(d) given at
+the identity T1SU(d) = su(d) by the special unitary al-
+gebra su(d).
+In this work we consider a cost function
+that is given by the expectation value J = ⟨ϕ| H |ϕ⟩of
+the Hamiltonian H with respect to the state |ϕ⟩= U |ψ0⟩.
+This state is created by applying the unitary transforma-
+tion U to the initial state |ϕ0⟩. The choice of the cost
+function is motivated by the fact that the solution to (2)
+prepares the groundstate of H, by minimizing J, when t
+is sufficiently large [16, 17].
+The discretized solution to the differential equation (2)
+defining the Riemannian gradient flow is given by a se-
+quence of unitary transformations of the form
+U(∆t) = e−∆tgrad J,
+(3)
+where ∆t is the step size and gradJ = [H, |ϕ⟩⟨ϕ|] ∈su(d)
+is the Riemannian gradient at the state |ϕ⟩[35].
+The state that is created by successively applying the
+transformation (3) k-times to the initial state |ϕ0⟩= |ψ0⟩
+is recursively given by
+|ϕk⟩= Uk(∆t) |ϕk−1⟩.
+(4)
+The recursive update (4) can be understood as a Rieman-
+nian gradient descent (RGD) algorithm that minimizes
+J.
+We see that the unitary transformation Uk(∆t) =
+e−∆tgradJ where gradJ = [H, |ϕk−1⟩⟨ϕk−1|] creating the
+state |ϕk⟩depends on the previous state |ϕk−1⟩. This ob-
+servation indicates that designing a quantum algorithm
+that implements RGD requires some “feedback” mecha-
+nism that leverages the information about the previous
+state to inform the update step.
+Before we discuss how a quantum algorithm can be de-
+signed that adaptively grows a quantum circuit to create
+|ϕn⟩based on measurement data, we first discuss how
+RGD can be used to create the ITE state (1) arbitrarily
+well. We observe that for small step sizes ∆t = ∆β, the
+ITE state |ψ(∆β)⟩and the state |ϕ(∆t)⟩= U1(∆t) |ψ0⟩
+created through one step of RGD are close to each other,
+which is expressed through the relation
+d
+dx |ψ(x)⟩
+
+x=0 =
+d
+dx |ϕ(x)⟩
+
+x=0. As such, the Euclidean norm difference
+∥|ψ(∆β)⟩−|ϕ(∆β)⟩∥between the two states is of the
+order O(∆β2). We remark that this observation is equiv-
+alent to the observation made in [28] that the ITE state
+solves Brocket’s double bracket flow equation [16, 30],
+which describes the Riemannian gradient flow on the ad-
+joint orbit of the unitary group.
+An upper bound can be obtained for ∥|ψ(∆β)⟩−
+|ϕ(∆β)⟩∥by bounding the remainder of the correspond-
+ing Tailor expansions. With further details found in Ap-
+pendix A, we establish the following Lemma.
+Lemma 1: Let |ψ(∆β)⟩and |ϕ(∆β)⟩= U(∆β) |ψ0⟩
+be the states created by ITE (1) and one step of RGD (3)
+with step size ∆β. Then for any initial state |ψ0⟩,
+∥|ψ(∆β)⟩−|ϕ(∆β)⟩∥≤6∆β2∥H∥2
+∞,
+(5)
+where ∥H∥∞denotes the spectral norm of H.
+Consequently, if we divide β into n segments ∆β = β
+n,
+we expect that the error ϵn = ∥|ψ(β)⟩−|ϕn⟩∥between
+the state |ϕn⟩created through n steps of RGD (4) and
+the ITE state |ψ(β)⟩to be of the order O(1/n).
+The main technical challenge in rigorously establishing
+this intuition is the fact that standard techniques used to

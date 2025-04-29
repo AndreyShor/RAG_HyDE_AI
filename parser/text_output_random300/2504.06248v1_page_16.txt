@@ -1,0 +1,174 @@
+8
+Example S11. Consider the system of 10 Kuramoto oscillators associated to the complex matrix
+A =
+
+
+iω1/2
+B12eiα12
+B13eiα13
+0
+0
+0
+0
+0
+0
+0
+B21e−iα12
+iω2/2
+B23eiα23
+0
+0
+0
+0
+0
+0
+0
+B31e−iα13 B32e−iα23
+iω3/2
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+iω4/2
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+iω5/2
+C12eiα56
+0
+0
+0
+0
+0
+0
+0
+0
+C21e−iα56
+iω6/2
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+iω7/2
+D12eiα78
+0
+0
+0
+0
+0
+0
+0
+0
+D21e−iα78
+iω8/2
+0
+0
+A9,1
+A9,2
+A9,3
+A9,4
+A9,5
+A9,6
+A9,7
+A9,8
+iω9/2
+A9,10
+A10,1
+A10,2
+A10,3
+A10,4
+A10,5
+A10,6
+A10,7
+A10,8
+A10,9 iω10/2
+
+
+,
+(S30)
+where B, C, D are respectively 3×3, 2×2 and 2×2 real matrices with null diagonal and nonzero off-diagonal elements.
+Since 2 × 2 matrices are always symmetrizable, let diag(µC)C and diag(µD)D be symmetric and consider also that
+B is symmetrizable, i.e., diag(µB)B is symmetric. The second and third conditions of Thm. S5 are thus satisfied.
+Moreover, the first and fourth conditions of Thm. S5 are obviously satisfied. Altogether Thm. S5 guarantees that the
+Koopman generator possesses four monomial eigenfunctions
+ψB(z) = zµB ,
+ψ4(z) = z4 ,
+ψC(z) = zµC ,
+ψD(z) = zµD ,
+(S31)
+where
+λB = i ˜ωB ,
+λ4 = i ω4 ,
+λC = i ˜ωC ,
+λD = i ˜ωD
+(S32)
+and
+˜ωB := (µB)1ω1 + (µB)2ω2 + (µB)3ω3 ,
+˜ωC := (µC)1ω5 + (µC)2ω6 ,
+˜ωD := (µD)1ω7 + (µD)2ω8 .
+(S33)
+To further specify the example, suppose that ω4, ˜ωB, ˜ωD ∈R \ {0} and ˜ωC = 0. Since ψC is a monomial eigenfunction
+of null eigenvalue, it is a constant of motion and there are q = 3 monomial eigenfunctions with nonzero eigenvalues.
+We can construct q −1 = 2 time-independent conserved monomials according to Lem. S5. The constants of motion
+are zν1 and zν2, where V = UO for the 10 × 3 matrix U = (µB e4 µD) for e4 the unit vector with the fourth entry
+being unity, V = (ν1 ν2), and O is a 3 × 2 matrix where the columns are linearly independent vectors which are
+orthogonal to ˜ω = (˜ωB ω4 ˜ωD)⊤. For example, the matrix O can be of the form
+O =
+
+
+ω4
+0
+−˜ωB
+˜ωD
+0
+−ω4
+
+.
+(S34)
+Then, the monomial constants of motion would be zν1 = ψω4
+B ψ−˜ωB
+4
+= zω4µBz−˜ωB
+4
+and zν2 = ψ˜ωD
+4 ψ−ω4
+D
+= z ˜ωD
+4
+z−ω4µD.
+III.
+CONSERVATION OF CROSS-RATIOS
+In 1994, Watanabe and Strogatz found constants of motion for identical phase oscillators, shaping subsequent years
+of theoretical studies on such oscillators. Fifteen years later [62], these constants of motion were linked to the cross-
+ratios. The applicability of such outstanding results for phase oscillators on general heterogeneous networks, however,
+remained elusive and one could doubt that it is even possible to have any constant of motion at all in such case. In the
+last section, we found the necessary and sufficient conditions to conserved monomials; in this section, we provide such
+conditions for the conservation of cross-ratios. The first three subsections introduce the cross-ratios and its properties
+(functional independence and their joint invariance for the special linear algebra). Most importantly, Section III D
+contains the proof of Theorem 2 from the main text while its corollaries are in Section III F.
+A.
+Introduction to cross-ratios
+In this subsection, we present some facts about the cross-ratios (also called anharmonic ratio), which are central
+quantities in the paper. The cross-ratio of four different points za, zb, zc, zd in C ∪{∞} is
+cabcd(z) = (za, zb ; zc, zd) = (zc −za)(zd −zb)
+(zc −zb)(zd −za)
+(S35)

@@ -1,0 +1,87 @@
+Local structure of extremal points
+29
+Proof. The proof follows the exact same argument as in the proof of [BL18, Lemma 5.4] (see also
+[BL18, Lemma 5.6] for a related statement about Brownian bridges). In particular, the lower bound
+follows trivially from Lemma A.1, while the upper bound follows from Lemmas A.5, A.7, and A.10.
+We now have all the necessary ingredients to prove Proposition 4.14.
+Proof of Propositon 4.14. We will only prove (4.31), as the proof of (4.32) is completely analogous
+and, in fact, simpler.
+The proof is based on a sequence of replacements that gradually convert one expectation into the
+other. We can and will assume that the function F ∈Cb
+loc(C(Rd)) depends only on the value of the
+field inside the ball Bk0 for some fixed k0 > 0. For b ∈N, l ∈[b −1]0, and k ∈[l]0, on the event
+{Kb ≤l}, arguing as in Remark 4.7, we have that
+sup
+x∈Bk
+|Υb,g(x) −Υl(x)| ≲e−(l−k)/2(log l)2 .
+(4.34)
+Step 1: We start by replacing Υb,g by Υl in the argument of F. For k ≥k0, we recall that on the event
+{Kb ≤k}, both Υb,g and Υl are bounded on Bk0 by a quantity depending only on k. Therefore, for
+k0 < k < l < b, using the uniform continuity of F on compacts, the bound in (4.34), and Lemma 4.10,
+we obtain that for any ε > 0, by taking b > l both large enough,
+E0,u,b
+h
+|F(Υb,g) −F(Υl)|1{M0,b(Υb,g)≤λ}1{Kb≤k}
+i
+≤εu
+b .
+(4.35)
+Similarly, using the boundedness of F and Lemma 4.10, we also have that for any ε > 0, by taking
+k > 0 large enough, it holds that
+E0,u,b
+h
+|F(Υb,g) −F(Υl)|1{M0,b(Υb,g)≤λ}1{Kb>k}
+i
+≤εu
+b .
+(4.36)
+Hence, (4.35) and (4.36) imply that, for any ε > 0, by taking b > k both large enough, it holds that
+E0,u,b
+h
+F(Υb,g)1{M0,b(Υb,g)≤λ}
+i
+−E0,u,b
+h
+F(Υl)1{M0,b(Υb,g)≤λ}
+i ≤εu
+b .
+(4.37)
+Step 2: In this step, we show that for any ε > 0, by taking b > l both large enough, it holds that
+E0,u,b
+h
+F(Υl)1{M0,b(Υb,g)≤λ}
+i
+≤2u
+b Hl,λ(F) + εu
+b .
+(4.38)
+To this end, for δ ∈(0, λ), and k0 < k < l < b, we define the event Eb,l,k,δ by letting
+Eb,l,k,δ
+def= {Kb ≤k}∩{M0,k(Υb,g) < λ−δ}∩{Bl ∈[l1/6, l5/6]}∩
+
+b\
+j=k+1
+{Bj ≥λ+2Rk(j)}
+
+.
+For any ε > 0, by Lemmas 4.10, 4.13, 4.16, and A.11 for l > k both large enough and δ > 0 small
+enough,
+lim sup
+b→∞
+b
+uP0,u,b(Ec
+b,l,k,δ, M0,b(Υb,g) ≤λ) ≤ε .
+Therefore, so far we proved that, for b > l both large enough, it holds that
+E0,u,b
+h
+F(Υl)1{M0,b(Υb,g)≤λ}
+i
+≤εu
+b + E
+h
+F(Υl)1{Eb,l,k,δ}
+i
+.
+(4.39)
+Now, we can choose l ≥k large enough in such a way that the right-hand side of (4.34) is less than
+δ for j ∈[k] and less than Rk(j) for j ∈{k + 1, . . . , l} (assuming that the constant C > 0 in the

@@ -1,0 +1,79 @@
+We now use the integral representation
+3F2[u]{a1,a2,a3}
+{b1,b2}
+=
+Γ[b1]Γ[b2]
+Γ[a2]Γ[a3]Γ[b1 −a2]Γ[b2 −a3] ∗
+Z 1
+0
+ds dt sa2−1(1 −s)b1−a2−1ta3−1(1 −t)b2−a3−1(a −s t u)−a1
+(11)
+and
+1
+Γ[−n2 −δ]Γ[1 + n2 + δ] = sin[π(n2 + δ)]
+π
+= (−1)n2 sin[πδ]
+π
+(12)
+to see that the n2 sum collapses to a geometric series in the argument s t v/((1 −s)(1 −t)). Hence
+I1 = ∂γ∂δ
+sin[πδ]2 uγvδ
+x2
+12
+Z 1
+0
+ds dt sγ+δ(1 −s)−δtγ+δ(1 −t)−δ
+(1 −s t u)(1 −s −t + s t −s t v) ,
+γ = 0 = δ .
+(13)
+Two comments are in order. First, p+1Fp
+{ai}
+{bj} is symmetric wrt. permutations of both index sets. In the
+case at hand this means that up to variable transformations one other Euler-integral can be derived. In that
+case, the first sum yields 3F2 as before, but the second sum is not of geometric type. It is a 2F1 so that in
+total a three-parameter integral is obtained. A further two equivalent representations are obtained taking the
+sum in n2 before that in n1. We will not study the latter three Euler integrals here.
+Second, how can we hope to extract a γ1 δ1 component from the Laurent expansion of (13)?
+Simply
+expanding the numerator in γ, δ we obtain logarithms and thus integrable singularities, so that the entire
+expression seems of minimal order δ2 (before differentiation) due to the factor sin[πδ]2 up front. Thus direct
+integration of the expanded integrand clearly fails. On the other hand, Euler integrals are the true realm
+of intersection theory for hypergeometric functions [7]. An application has been given also in the context of
+N = 4 gluings in [6], although primarily with the intention of simplifying the integration. However, here
+the use of intersection theory seems mandatory as it resolves the conundrum about the leading orders of the
+Laurent expansion revealing a simple pole in δ of the integral in (13).
+3
+Bivariate intersection theory for the one-loop box
+We review the necessary minimum of information closely following [14, 15, 16], though specialising to the case
+at hand. Consider 2-forms
+ϕL = ˆϕL(s, t) ds ∧dt ,
+ϕR = ˆϕR(s, t) ds ∧dt .
+(14)
+These forms will be rational and so have a polynomial numerator and a number of denominator polynomials.
+The aim is to compute integrals of the type
+I =
+ZZ 1
+0
+w(s, t) ϕL
+(15)
+forming a family, i.e. various integrals which may have some polynomial numerator, and in which the elements
+of the set of all denominators {p1 . . . pn} can be raised to non-negative integer powers. The factor w defining
+the twisted cohomology is the product of all possible denominators raised to some small non-integer power.
+To be concrete, in our example (13) the possible denominators are
+{p1 . . . p6} = {s, 1 −s, t, 1 −t, 1 −s t u, 1 −s −t + s t −s t v}
+(16)
+and the twist factor is
+w = sγ+δ(1 −s)−δtγ+δ(1 −t)−δpρ
+5 pρ
+6 .
+(17)
+Later, we will rescale γ →γ ϵ, δ →δ ϵ, ρ →ρ ϵ, where ϵ plays the rˆole of a dimensional regulator. The first
+four factors in w do in fact regularise the integral at the boundaries of the integration region. We may choose
+the powers of p1 . . . p4 as in (13). Yet, similar factors involving p5, p6 are needed at intermediate stages of the
+computation. At the end of the computations (13) is recovered in the limit ρ →0.
+Intersection theory allows us to decompose the most general integral in the family in terms of a set of
+masters. Let
+ˆωs = ∂s log(w) ,
+ˆωt = ∂t log(w) .
+(18)
+4

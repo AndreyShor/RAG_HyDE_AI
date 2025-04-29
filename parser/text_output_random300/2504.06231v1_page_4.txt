@@ -1,0 +1,44 @@
+During development, we observed that our direct Orb-v3 models—which have more degrees
+of freedom and are thus more data-dependent—tend to overfit to forces when trained on mpa,
+and struggle to accurately model second- and third-order derivatives of the PES. This problem
+occurs even when finetuning on mpa from an -omat base model. Intriguingly, we were able to
+resolve this problem via a simple form of distillation of conservative models into direct models.
+Concretely, we used orb-v3-conservative-inf-mpa to generate a static set of energy, force and
+stress predictions across the entirety of mpa, and then used those predictions as targets when
+training orb-v3-direct-*-mpa models. See Appendix H for further discussion.
+Speed and Memory
+Molecular dynamics simulations are typically run using time steps on the order of a femtosecond,
+and yet many physically interesting phenomena only emerge at the nanosecond scale or beyond.
+This entails making millions of sequential calls to an MLIP to iteratively update atomic positions.
+As shown in the Pareto frontier plot of Figure 1, orb-v3-direct-* are the only universal MLIPs
+that can compute hundreds, rather than tens, of forward passes per second, thereby passing
+the threshold of one million steps per hour for small systems. This step-change in speed, at a
+relatively low cost in accuracy, makes orb-v3-direct-* models powerful tools for accelerated
+scientific discovery.
+Another clear trend from Figure 1 is the memory efficiency of orb-v3-direct-* models. In order
+to stress test memory efficiency (and latency), Figure 2 profiles a range of MLIPs on periodic
+systems of up to 100,000 atoms. All baseline methods, as well as our conservative models,
+encounter Out Of Memory (OOM) errors for 100,000 atoms; in contrast, orb-v3-direct-20 uses
+only 32.8GB of GPU memory and completes in under half a second.
+Finally, it is interesting to observe in Figure 2 that state-of-the-art MLIPs are easily bottlenecked
+by expensive graph construction routines which can dominate their runtime. As explained in
+Appendix D, we have prioritized efficient off-the-shelf solutions using a combination of brute
+force and GPU-accelerated nearest neighbors routines, via the cuML library [8].
+Benchmark Results
+In order to evaluate the performance of the models along the Pareto frontier defined by the
+Orb-v3 family of models, we use several well established benchmarks which incorporate tasks
+covering a wide variety of computational workflows, including geometry optimization, phonon
+calculations, and molecular dynamics.
+Matbench Discovery
+Table 1 reports F1 and 𝜅SRME from the Matbench-Discovery benchmark [32]. F1 is a metric
+that assesses a model’s thermodynamic stability predictions and requires accurate geometry
+optimizations combined with single-point energy calculations (relative to a pre-existing convex
+hull). The 𝜅SRME metric assesses a model’s ability to predict thermal conductivity via the Wigner
+formulation of heat transport [31] and requires accurate geometry optimizations as well as
+second- and third-order energy derivative estimation via finite differences. In addition, we
+report model forward passes per second, giving a sense of the tradeoffs available at various levels
+of benchmark performance. Particularly of note is the performance of Orb-v3 models when
+used for computing thermal conductivity, demonstrating that it is possible to train rotationally
+non-invariant, direct models which yield competitive results (and by implication, admit smooth
+second- and third-order derivatives of the potential energy surface).
+4

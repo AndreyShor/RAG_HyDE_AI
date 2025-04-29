@@ -1,0 +1,109 @@
+ρin
+M1
+M2
+Mn
+ρout
+R0
+R1
+R2
+Rn−1
+Rn
+O1 S1
+O2 S2
+On Sn
+E
+(a) EAT
+ρin
+M1
+M2
+Mn
+ρout
+R0
+R1
+R2
+Rn−1
+Rn
+E0
+E1
+E2 En−1
+En
+O1
+O2
+On
+(b) GEAT
+Figure 12: (Generalized) Entropy accumulation theorem – 12a sequential processes ⃝n
+i=1Mi ⊗id with Mi : Ri−1 7→
+RiOiSiCi, and its generalization ⃝n
+i=1Mi with Mi : Ri−1Ei−1 7→RiEiOiSiCi in 12.
+The ε–smooth min-entropy Hε
+min(K | E)ρ, where K is the raw data obtained by the honest parties, E
+the dof related to the quantum system held by Eve, and ε the tolerance on the security of the protocol,
+determines the maximal length |K| of the secret key at given ε. Unlike von Neumann entropy, which
+measures the average randomness, the smoothed min-entropy is more suitable for cryptography as it
+specifically quantifies the minimal uncertainty in K given E.
+Definition 17. (Sequential process) We call sequential process the composition map M = ⃝n
+i=1Mi,
+where Mi : Ri−1 7→RiOiSiCi are CPTP maps that transform the state on Ri−1 (quantum registers)
+into Ri, with output quantum system Oi (readout observed outcome), Si (side information), Ci (classical
+check).
+As in Fig. 12a, in the i–th round, the internal state in the input memory Ri−1 is updated to the
+output memory Ri ensuring that the state at the step i depends on the previous one (non-i.i.d). At each
+i, the quantum output system in the register Oi accumulates the entropy of Eve. The leaked information
+(about the measurements or outcomes) is in the partial state on the support of Si and the environment
+”controlled” by Eve in the Hilbert space E. The conditional entropy H(On
+1 |Sn
+1 E) quantifies how much
+uncertainty remains about the update post-measurement state outputs On
+1 after Eve learns the side
+information Sn
+1 and external system E. The quantity Xn
+1 refers to the whole process of n rounds where
+each round i is isomorphic the i = 1. The protocol is considered secure if the entropy in Eq. (106) is
+higher than a lower bound from parameter estimation that is computed by other output c(j)
+i
+or simply
+ci ∈Ci stored in a classical register Ci = {c(j)
+i }j with probability distribution p(j)
+i
+= p(c(j)
+i ) such that
+P
+j p(j)
+i
+= 1, p(j)
+i
+≥0. This is derived from the system ρOiSi and used for BI violation.
+Definition 18. (Markovianity) Given M a sequential process from 17.
+It is markovian iff Oi−1 ↔
+Si−1E ↔Si, i.e. the mutual information I(Oi−1 : Si|Si−1E) = 0
+Definition 19. (trade-off functions) The following quantum state set
+Σi(pij) = {ρRiOiSiCiE = Mi(ρRi−1E)|ρCi = ρcij = pij ∈Ci}
+(108)
+with ρCi defines in the classical register Ci the probability distribution with weight pij = ⟨cij| ρCi |cij⟩≥0
+and P
+j pij = 1 on the possible classical output cij in the i–th round. Given pij, then real functions fmin
+and fmax are called min(max)–tradeoff function for Mi if respectively
+fmin(p) ≤
+inf
+ρ∈Σi(p) H(Oi|SiE)ρ,
+fmax(p) ≥
+sup
+ρ∈Σi(p)
+H(Oi|SiE)ρ
+(109)
+The function f is adequate to quantify the accumulated entropy in a single step of the process
+because it balances between overly optimistic and pessimistic entropy estimates.
+A naive approach
+might use the conditional von Neumann entropy H(O2|O1), which averages the entropy over all states
+and overestimates the extractable randomness. On the other hand, a worst-case min-entropy Hw.c.
+min =
+mino1,o2 [−log Pr(o2|o1)] is too pessimistic, as it fails to capture the realistic entropy when the systems
+are independent. The correct definition considers the worst-case state o1 but averages the entropy con-
+tribution −log Pr(o2|o1) over o2, leading to mino1 Eo2 [−log Pr(o2|o1)] = mino1 H(O2|O1 = o1).
+Definition 20. (events on classical registers) The classical registers Ci defines the following classical
+probability space (Ω, B(Ω), p) where the sample set
+Ω= {ω = (c1, . . . , cn)|∀i, ci ∈{cij}j} ⊆C1 × · · · × Cn ≡Cn
+(110)
+contains the results from each step extracted by ρOiSi for i = 1, . . . , n so that the updated final state reduced
+to the classical registers Cn is the probability distribution ρCn = p(ω), with ω ∈Ω. The updated final
+40

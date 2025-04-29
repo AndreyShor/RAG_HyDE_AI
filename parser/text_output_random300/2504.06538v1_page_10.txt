@@ -1,0 +1,108 @@
+• The topological constraints provide the largest per-
+formance improvement (9.0% absolute increase in
+average ATP), with particularly pronounced ef-
+fects on complex manipulation tasks (Bussing Hard
++10%).
+• The hierarchical action representation significantly
+improves performance on multi-stage tasks (Bussing
+Hard +16%), but provides minimal benefit for sim-
+pler tasks like Box Building (+6%).
+• The Runge-Kutta integration technique offers a mod-
+est performance gain (2.2% average ATP) while sub-
+stantially improving computational efficiency.
+7.4
+Robustness Analysis
+To evaluate model robustness, we tested performance un-
+der three perturbation conditions:
+1. Visual perturbations: Varying lighting conditions
+and adding visual noise (±20% brightness, Gaussian
+noise σ = 0.1)
+2. Linguistic variations:
+Paraphrasing task instruc-
+tions while preserving semantic content
+3. Object perturbations: Slight alterations to object
+positions and orientations (±2cm, ±10)
+OPAL maintains 92% of its original performance under
+visual perturbations, 95% under linguistic variations, and
+88% under object perturbations. In comparison, π0 re-
+tains only 78%, 89%, and 73% respectively, while both
+Octo and OpenVLA show performance degradation ex-
+ceeding 50% under all perturbation types.
+This enhanced robustness can be attributed to the topolog-
+ical constraints, which enforce physical consistency even
+when input conditions vary. The theoretical guarantees
+provided by our framework translate to practical advan-
+tages in real-world deployment scenarios where perturba-
+tions are inevitable.
+8
+Discussion
+8.1
+Topological Structure in Action Space
+Our results demonstrate that imposing topological con-
+straints on the action space leads to more coherent and
+physically plausible action sequences. The string-net for-
+malism provides a natural framework for representing ac-
+tion sequences with internal topological constraints. Just
+as string-nets encode quantum states through networks of
+labeled strings following local fusion rules, our action rep-
+resentation encodes motion primitives through hierarchi-
+cal structures following learned compositional rules.
+8.2
+Long-Term Coherence Through Topo-
+logical Constraints
+Our approach achieves significantly more coherent long-
+term action sequences through several mathematically
+formalizable mechanisms. The primary mechanism is the
+structural inductive bias encoded in the topological atten-
+tion framework. By encoding physical constraints directly
+into the attention mechanism, we fundamentally restrict
+the model’s search space to physically plausible trajecto-
+ries. This approach differs fundamentally from previous
+methods that attempt to learn physical constraints implic-
+itly from data, which often fail to generalize to novel sit-
+uations due to the absence of explicit structural guidance.
+Invariant maintenance constitutes a second key mecha-
+nism. Topological field theories are characterized math-
+ematically by their ability to maintain invariants under
+continuous deformations. Analogously, our topological
+attention mechanism ensures that key physical invariants,
+including object relations and physical feasibility, are pre-
+served throughout the action sequence, even as individual
+actions vary. This preservation can be formally expressed
+as:
+(23)
+I(Aτ1
+t ) = I(Aτ2
+t )
+∀τ1, τ2
+∈[0, 1]
+where I represents an invariant measure on the action
+space. The maintenance of these invariants is a direct con-
+sequence of the topological structure imposed by Mtopo.
+The hierarchical representation of actions as primitives
+P k
+t enables multi-scale consistency in the generated se-
+quences. This consistency manifests at three scales: lo-
+cal consistency within each primitive (such as a complete
+grasp sequence), inter-primitive consistency between ad-
+jacent primitives (such as transitions from grasping to lift-
+ing), and global plan consistency across the entire action
+horizon (maintaining overall task structure). The mathe-
+matical formalism of our approach guarantees consistency
+at each of these scales through the hierarchical application
+of fusion rules and consistency conditions.
+Our approach provides formal action coherence guaran-
+tees. Specifically, we can prove that:
+(24)
+Dphys(At, P) ≤ϵ
+where Dphys denotes a distance metric in the space of
+physical trajectories, P represents the manifold of phys-
+ically valid trajectories, and ϵ constitutes a bound that
+decreases as model capacity increases.
+The proof fol-
+lows from the properties of the topological constraints
+encoded in Mtopo and the projection operations applied
+during training and inference. This formal guarantee pro-
+vides a theoretical foundation for the empirical improve-
+ments observed in our experimental results.
+10

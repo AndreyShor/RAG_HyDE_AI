@@ -1,0 +1,212 @@
+therefore we have
+(2.1.16)
+=
+Z t
+0
+dt′
+Z 1
+−1
+dh′′′
+Z θ+3π−2 arcsin(h′′′)
+θ+π−2 arcsin(h′′′)
+dθ′φ(θ′, t′, h′′′|h′)f(θ −θ′, t −t′, h|h′′′)
+=
+Z
+T1
+2π
+dθ′
+Z t
+0
+dt′
+Z 1
+−1
+dh′′′φ(θ′, t′, h′′′|h′)f(θ −θ′, t −t′, h|h′′′),
+because the integrand is again periodic in θ′ and therefore any interval of length 2π is fine.
+Summing (2.1.14) with (2.1.15) and (2.1.16) (both written better as we did) we get property (2.1.13).
+Step 2: let us prove that if we integrate all the terms in equation (2.1.13) (evaluated in t′ instead of t) on the set
+{t′ ≤t} we get
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dhφ(θ, t′, h|h′)E(2)(t −t′, h) =
+Z ∞
+t
+dt′
+Z 1
+−1
+dhE(2)(t′, h) −E(2)(t, h′) −E(3)(t, h′).
+(2.1.17)
+To prove this property (2.1.17), we compute the integral
+R
+T1
+2π dθ
+R t
+0 dt′ R 1
+−1 dh for each summand in the right hand side
+of the identity (2.1.13) (the integral of the left hand side does not need to be changed).
+The first one is immediate:
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dhf(θ, s, h|h′)
+=
+R t
+0 dt′ R 1
+−1 dh
+R 2 arcsin(h′)−π
+2 arcsin(h′)−3π dθ ∂h′′(θ,h′)
+∂θ
+·
+R t′
+0 dt′′Q(t′ −t′′, h|h′′(θ, h′))Q(t′′, h′′(θ, h′)|h′)
+=
+Z t
+0
+dt′
+Z 1
+−1
+dh
+Z 1
+−1
+dh′′
+Z t′
+0
+dt′′Q(t′ −t′′, h|h′′)Q(t′′, h′′|h′)
+|
+{z
+}
+=Q(2)(t′,h|h′) by Definition 1.5
+=
+Z t
+0
+dt′
+Z 1
+−1
+dhQ(2)(t′, h|h′) = 1 −E(2)(t, h′) by Definition 1.6,
+and the second one is very similar
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh
+Z t′
+0
+dt′′
+Z 1
+−1
+dh′′Q(t′ −t′′, h|h′′)f(θ + π −2 arcsin(h′′), t′′, h′′|h′)
+=
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh
+Z t′
+0
+t′′
+Z 1
+−1
+dh′′Q(t′ −t′′, h|h′′)f(θ, t′′, h′′|h′)
+=
+R t
+0 dt′ R 1
+−1 dh
+R t′
+0 dt′′ R 1
+−1 dh′′Q(t′ −t′′, h|h′′)
+R 2 arcsin(h′)−π
+2 arcsin(h′)−3π dθ ∂h′′(θ,h′)
+∂θ
+·
+R t′′
+0
+dt′′′Q(t′′ −t′′′, h′′|h′′(θ, h′))Q(t′′′, h′′(θ, h′)|h′)
+=
+Z t
+0
+dt′
+Z 1
+−1
+dh
+Z t′
+0
+dt′′
+Z 1
+−1
+dh′′Q(t′ −t′′, h|h′′)
+Z 1
+−1
+dh′′′
+Z t′′
+0
+dt′′′Q(t′′ −t′′′, h′′|h′′′)Q(t′′′, h′′′|h′)
+|
+{z
+}
+=Q(2)(t′′,h′′|h′) by Definition 1.5
+=
+Z t
+0
+dt′
+Z 1
+−1
+dh
+Z t′
+0
+dt′′
+Z 1
+−1
+dh′′Q(t′ −t′′, h|h′′)Q(2)(t′′, h′′|h′)
+|
+{z
+}
+=Q(3)(t′,h|h′) by Definition 1.5
+=
+Z t
+0
+dt′
+Z 1
+−1
+dhQ(3)(t′, h|h′) = 1 −E(3)(t, h′) by Definition 1.6.
+The third one is almost fine, indeed property (B.2.6) of Lemma B.3 states that E(2) has integral 2 (with respect to
+variables (s, h)), and therefore
+Z
+T1
+2π
+dθ
+Z t
+0
+dt′
+Z 1
+−1
+dh 1
+2π E(2)(t′, h) = 2 −
+Z ∞
+t
+dt′
+Z 1
+−1
+dhE(2)(t′, h).
+16

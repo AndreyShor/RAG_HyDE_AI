@@ -1,0 +1,133 @@
+GRAPHICAL FUNCTIONS WITH SPIN
+6
+5. Two-point functions
+A two-point function has two external vertices 0 = z0 and z1. By scaling internal variables we obtain
+(26)
+Aα
+G(0, z1) = ∥z1∥−2λNGAα
+G(0, ˆz1),
+where ˆz1 = z1/∥z1∥.
+A transformation xi 7→ˆz1 −xi for all internal vertices gives
+(27)
+Aα
+G(ˆz1, 0) = (−1)|α|Aα
+G(0, ˆz1).
+The Feynman integral Aα
+G(0, ˆz1) is a linear combination of products of ˆz1 and g. To express this linear
+combination, we use a partition of the set {α1, . . . , α|α|} into π0
+1, . . . , π0
+N, π1 where the sets π0
+i = {π0
+i1, π0
+i2}
+are pairs. The last slot π1 may have any number of elements. We order π0 before π1, so that, e.g., in the
+case |α| = 4 we distinguish the partitions π0 = {12}, π1 = 34 and π0 = {34}, π1 = 12. (To lighten the
+notation we omit brackets for sets of labels.) Let Πα
+1 be the set of all these partitions. The set Πα
+0 in the
+previous section corresponds to the subset of Πα
+1 with empty last slot. The set Πα
+1 has
+(28)
+|Πα
+1 | = 1 + 1
+1!
+|α|
+2
+
++ 1
+2!
+|α|
+2, 2
+
++ . . . =
+⌊|α|
+2 ⌋
+X
+j=0
+|α|!
+2j(|α| −2j)!j!
+elements. For π ∈Πα
+1 we use the shorthand
+(29)
+gπ0 ˆzπ1
+1
+= gπ0
+11,π0
+12 · · · gπ0
+N1,π0
+N1 ˆzπ1
+1
+1 · · · ˆz
+π1
+|α|−2N
+1
+,
+N = |π0|,
+for the corresponding expansion into products of g and ˆz1. With (26) we get
+(30)
+Aα
+G(0, z1) = ∥z1∥−2λNG X
+π∈Πα
+1
+PG,π gπ0 ˆzπ1
+1 .
+The core information of the Feynman integral Aα
+G(0, z1) is encoded in the numbers (periods) PG,π,
+which are the gπ0 ˆzπ1
+1
+coefficients of Aα
+G(0, ˆz1).
+If |α| is even, integration over ˆz1 connects PG,π to the Feynman period of the graph G0 which is G
+with additional edge 01 of weight
+(31)
+ν01 = −NG +
+λ
+λ + 1.
+Note that ν01 is chosen such that N(G0) = 0. If |α| is odd, then P α
+G0 = 0.
+Example 7. With the graph G(α) consisting of an edge 01 with spin α (such that Aα
+G(0, ˆz1) = ˆzα
+1 ) we
+get from Example 6
+Z
+SD−1 ˆzα1
+1 ˆzα2
+1 dD−1ˆz1 = 1
+D,
+(32)
+Z
+SD−1 ˆzα1
+1 ˆzα2
+1 ˆzα3
+1 ˆzα4
+1 dD−1ˆz1 = gα1,α2gα3,α4 + gα1,α3gα2,α4 + gα1,α4gα2,α3
+D(D + 2)
+.
+We obtain for |α| = 2
+(33)
+PG0,{12} = PG,({12},∅) + PG,(∅,12)
+D
+,
+and for |α| = 4
+(34)
+PG0,{12,34} = PG,({12,34},∅) + PG,({12},34)
+D
++ PG,(∅,1234)
+D(D + 2) .
+To calculate PG,π from spin 0 periods (corresponding to unlabeled scalar graphs), we proceed as in
+the period case and define a bilinear form on Πα
+1 ,
+(35)
+⟨π1, π2⟩1 = gπ0
+1 ˆzπ1
+1
+1 gπ0
+2 ˆzπ1
+2
+1
+∈Z[D],
+for π1, π2 ∈Πα
+1 .
+Note that ⟨π1, π2⟩1 does not depend on ˆz1 because all indices are contracted and ∥ˆz1∥= 1.
+Lemma 8. The bilinear form ⟨·, ·⟩1 is nondegenerate.

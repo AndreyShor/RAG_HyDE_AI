@@ -1,0 +1,84 @@
+Background and preliminaries
+14
+3.1
+Basic and recurrent notation
+Numbers. We write N = {1, 2, . . .} and N0 = {0, 1, 2, . . .}. We let R+ = (0, ∞) and R+
+0 =
+[0, ∞). Without specific mention, the logarithm will be taken with respect to the natural base e.
+For a ∈R, we use ⌊a⌋to represent the largest integer not greater than a. Given n ∈N, we write
+[n] = {1, . . . , n} and [n]0 = {0, 1, . . . , n}.
+Subsets of Euclidean space. We consider the space Rd where d ≥1 is a fixed dimension. We
+let (e1, . . . , ed) be the orthonormal basis of Rd. For x ∈Rd, we write x = (x1, . . . , xd) for its
+coordinates. For r ∈R and x ∈Rd, we write B(x, r) for the ball centred at x and with radius r.
+Furthermore, we write
+Br(x)
+def= B(x, er) ,
+(3.1)
+and we simply write Br for Br(0). For every Lebesgue measurable set D ⊆Rd, we denote its
+Lebesgue measure by |D|.
+Functions and measure spaces. We write C(Rd) (resp. Cc(Rd), Cb(Rd)) for the space of continuous
+(resp. continuous with compact support, continuous and bounded) functions from Rd to R. We write
+C+
+c (Rd) for the space of positive continuous functions from Rd to R with compact support. Given a
+measure ν and a function f, we write ν(f) to denote the integral of f against ν.
+Maxima and related sets. For a subset D ⊆Rd, a function f : D →R, and λ > 0 we let
+MD(f)
+def= sup
+x∈D
+f(x) ,
+Dλ
+D(f)
+def= {x ∈D : f(x) ≥MD(f) −λ} .
+(3.2)
+For D = Rd, we simply write M(f) and Dλ(f). Additionally, if D = [0, R]d for some R ≥0, then
+we write MR(f) (resp. Dλ
+R(f)) in place of M[0,R]d(f) (resp. Dλ
+[0,R]d(f)). Furthermore, when it will
+be convenient to do so, we will use the following shorthands,
+Mx,r(f) = MBr(x)(f) ,
+Dλ
+x,r(f) = Dλ
+Br(x)(f) ,
+(3.3)
+and also, for r2 > r1, we set
+Mx,r2,r1(f) = MBr2(x)\Br1(x)(f) ,
+Dλ
+x,r2,r1(f) = Dλ
+Br2(x)\Br1(x)(f) .
+(3.4)
+3.2
+Topological preliminaries
+In this subsection, we collect some results on the convergence of random measures and introduce
+the concept of stable convergence, which plays an important role in our main result regarding the
+convergence of supercritical GMC measures.
+Laplace functionals. It is well known that if η is a random point measure on Rd, then its law is
+uniquely characterised by its Laplace functional on the set C+
+c (Rd):
+C+
+c (Rd) ∋φ 7→E[exp(−η(φ))] .
+We also recall that, if ην is a Poisson point measure with intensity measure ν, then
+E exp[(−ην(φ))] = exp
+
+−
+Z
+Rd(1 −e−φ(x))ν(dx)
+
+.
+Remark 3.1. For γ >
+√
+2d and a Radon measure ν on Rd, let Pγ[ν] be the integrated atomic random
+measure with parameter γ and spatial intensity ν as specified in Defnition 1.5. Then, in this case, for
+every φ ∈C+
+c (Rd), it holds that
+E[exp(−Pγ[ν](φ))] = exp
+
+−β(d, γ)
+Z
+Rd φ(x)
+√
+2d
+γ ν(dx)
+
+,
+(3.5)
+where we recall the definition (2.13) of the constant β(d, γ).

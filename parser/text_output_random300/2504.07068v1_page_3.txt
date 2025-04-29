@@ -1,0 +1,57 @@
+3
+We say that the scheme has ﬁdelity 1 −ǫ if
+Fn := F
+
+σBnKnRn ⊗|Φ⟩⟨Φ|A1B1, ξBnKnRnA1B1
+n
+
+≥1 −ǫ.
+(2)
+For a given (n, ǫ), we deﬁne the minimal qubit and entanglement rates as
+Q(n, ǫ) := 1
+n log |M|
+(3)
+E(n, ǫ) := 1
+n(S(A0) −S(A1))
+(4)
+such that there exists an (n, ǫ) code with |M| and S(A0) −S(A1). We say that a qubit Q and entanglement rate E
+are asymptotically achievable if there exists a sequence of codes {(Cn, Dn)}n such that
+Fn ≥1 −ǫn
+and
+Q(n, ǫ) ≤Q + δn
+and
+E(n, ǫ) ≤E + ηn,
+for some vanishing non-negative sequences {ǫn}, {δn} and {ηn}. The optimal qubit and entanglement rates are deﬁned
+respectively as
+Q∗= inf{Q : Q is achievable},
+E∗= inf{E : E is achievable}.
+Two distinct notions of feedback is introduced in [2] as passive feedback and coherent feedback. In a passive feedback
+model, the encoder obtains a copy of the decoder’s output. For quantum channels, it is not possible to give the encoder
+a copy of the decoder’s output because of the no-cloning theorem. A coherent feedback of a channel is deﬁned as
+an isometry in which the part of the output that does not go to the decoder is retained by the encoder, rather than
+escaping to the environment. Classical and coherent feedback are thus rather diﬀerent notions.
+Remark 1. We consider coherent feedback in this paper, and refer to it simply as feedback. Our model uniﬁes the
+(coherent) feedback and non-feedback simulation of [2] in a single model as follows. If we assume that the source state
+ρAR is pure, and we let system K = E or K = ∅then we recover the feedback or non-feedback channel simulation of
+[2], respectively.
+III.
+DECOUPLING CONDITION AND RATE FUNCTIONALS
+The ﬁdelity criterion of Eq. (2) implies the decoupling lemma below, where we show that the distilled entanglement
+systems A1B1 are decoupled from the rest of the systems. We apply this lemma in our converse proofs. The proof of
+this lemma is presented in Sec. A of the Appendix.
+Lemma 2. The ﬁdelity criterion of Eq. (2) implies that the decoded state on systems A1B1 is decoupled from the rest
+of the systems in the following sense
+I(BnKnWAWBRnR′n : A1B1)ξn ≤nδ(n, ǫ),
+where δ(n, ǫ) = 4
+√
+6ǫ log(d1) + 2
+nh(
+√
+6ǫ), with d1 = log |A1|
+n
+and the binary entropy h(ǫ) = −ǫ log ǫ −(1 −ǫ) log(1 −ǫ).
+The mutual information is with respect to the decoded state ξn.
+In Deﬁnition 3 described below, we deﬁne two functions of a state ρAR. Our main results are that, these func-
+tions characterize the optimal simulation rates. Theorem 6 of the manuscript states that the optimal entanglement-
+assisted rate for the simulation of the channel N : A →BK is equal to a(ρAR, 0).
+Theorem 8 states that the

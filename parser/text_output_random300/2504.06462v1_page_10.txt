@@ -1,0 +1,79 @@
+10
+Fig. 12.
+Specular reﬂection as a function of the common bias voltage for
+the uniformly-loaded RIS. The incident wave illuminates the RIS from θ =
+−15◦.
+Fig. 13. Experimental characterization of the varactors through RIS measure-
+ments with uniform loading: (a) A capacitance-voltage (C-V) curve extracted
+from simulations is compared with the one extracted from the theoretical
+spice model. (b) The normalized losses at 5GHz as calculated from the
+measurements and from the unit cell’s simulation with an R = 3Ωlumped
+resistance for each varactor.
+Fig. 13(a) is preferred to determine the required voltages from
+the optimized surface impedances/capacitances.
+In addition to the capacitance value for different bias
+voltages, the assumed model of a series lumped resistance of
+R = 3Ωfor each varactor is veriﬁed through measurements.
+Speciﬁcally, the drop in the measured S21 values at 5GHz
+for different bias voltages Vc (or, equivalently, for different
+capacitance values) is plotted in Fig. 13(b). In comparison, the
+simulated losses are plotted for an RIS unit cell under periodic
+boundary conditions, with an illumination from −15◦and a
+lumped resistance of R = 3Ωin series with the varactor’s
+capacitance. Both curves are normalized to their peak value
+that is non-resonant and exhibits negligible losses. As ob-
+served, the series lumped resistance of R = 3Ωis a reasonable
+estimation at 5GHz, as the curves match closely, especially
+for the capacitance values close to the resonance that exhibit
+the highest loss. It is highlighted, that both experimentally-
+extracted curves in Fig. 13(a)-(b) are approximate, as all
+other parameters of the RIS (e.g., permittivity or loss tangent
+of the substrate) are assumed to take their nominal values.
+Additionally, they only provide an average estimation of the
+varactors’ parameters, as a small detuning may exist among
+the different varactors on the assembled RIS.
+C. Beamsteering Measurements
+The beamsteering patterns are ﬁrst measured to assess the
+RIS ability to steer the incident beam with high directivity
+(limited only by the aperture size) and low power losses.
+As mentioned before, the frequency is set at 5GHz and the
+illumination angle is −15◦. The optimized surface impedances
+of Fig. 4 are converted to capacitances and applied DC bias
+voltages using the experimentally-extracted C-V curve. The
+set of 30 voltage values are applied to the RIS meta-wires and
+the reﬂection is captured at different angles. The directivity
+patterns for these untuned cases are plotted in Fig. 14(a).
+It is noted that the retro-reﬂection case (θout = −15◦) is
+not measured, as it is not possible to measure at a ±7.5◦
+range around the transmitting antenna due to the two antennas
+colliding with each other. Moreover, the specular case is
+not optimized, but a measurement with all the voltages set
+to 0V (producing a beam towards the specular) is included
+as reference. As observed, the patterns show an efﬁcient
+steering of the reﬂected beam up to ±60◦with the measured
+directivities for each case matching closely with the expected
+values in Fig. 5. The average illumination efﬁciency, as deﬁned
+in Eq. (12), is 0.87 among the demonstrated steering angles
+and the average power efﬁciency is 0.61, limited primarily by
+the varactors’ losses.
+In order to obtain the highest performance metrics from the
+RIS, a tuning step is performed for each set of voltages. In
+particular, the receiving antenna is positioned at the angle of
+the expected peak radiation and the voltages are tuned through
+particle swarm optimization at a tight range of ±0.25V around
+their initial values. At every function evaluation, input is taken
+from the VNA regarding the S21 transmission coefﬁcient.
+Maximizing the received power through optimization leads to
+a higher total efﬁciency of the RIS for each beamsteering case.
+At the same time, the tight range is selected with the aim
+to maintain the nature of the initial optimized solution and
+only correct small issues stemming from the alignment of the
+setup, the variation of the individual varactors’ properties, the
+ﬁniteness of the RIS along the x-direction and any fabrication
+errors. The tuned patterns are given in Fig. 14(b) and the
+relative metrics are included in Table I that summarizes all
+efﬁciency metrics both before and after tuning. On average,
+the tuning increases the average illumination efﬁciency to
+0.94% and the average power efﬁciency to 0.63. While tuning
+provides a simple way to enhance the efﬁciency of the reﬂected
+beams for beamsteering, it is also evident that applying directly

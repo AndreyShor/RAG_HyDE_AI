@@ -1,0 +1,73 @@
+NH3-BF3
+DMTM Molecular
+DMTM 3x3
+DMTM 5x5
+DMTM 9x9
+WGS 3x3x2
+WGS 5x5x2
+1
+100
+104
+106
+108
+1011
+1014
+1017
+1020
+t (ℏ/Eh)
+Toffoli gates
+Toffoli Gate Cost at δ = 10-9
+1 fs
+1 ps
+1 ns
+1 fs
+1 ps
+1 ns
+1 fs
+1 ps
+1 ns
+Figure 2: Total Toffoli gate cost for all problem instances in Table 1 as a function of time (in atomic units, the
+unit time step is ℏ/Eh = 2.42×10−17s where Eh is 1 Hartree) for total time-evolution error δ = 10−9. Larger
+values of δ may be sufficient for several applications but does not decrease the resource costs substantially
+for the studied time regimes.
+Algorithm
+3
+Hamiltonians in plane-wave basis
+3.1
+Electrons and nuclei
+In this section, we define notation and derive the full Hamiltonian describing electrons and nuclei in the
+plane-wave basis, which we shall then modify in Sec. 3.2 to include a pseudoion description. Let |r⟩i, |R⟩I be
+the position eigenstates of electron i = 1, . . . , ηel and ion I = 1, . . . , ηion, respectively, labeled by the position
+operators eigenvalues r, R. Define the finite periodic plane wave basis,
+|p⟩i :=
+1
+√
+Ω
+Z
+ri
+e−ikp·ri|r⟩i,
+|P⟩I :=
+1
+√
+Ω
+Z
+RI
+e−iKP·RI|R⟩I,
+(15)
+for electron and ion i, I, respectively.
+The integral is over the real-space simulation cell defined by the
+real-space lattice vectors {aα}3
+α=1. The volume of the simulation cell is
+Ω= | det(A)| = |a1 · (a2 × a3)|,
+(16)
+where A is a matrix with columns {aα}3
+α=1. Note that we label the electronic momentum eigenstates by
+integers p = (p1, p2, p3), where each pα ∈Z (for α = 1, 2, 3) lives in the set
+Gα := [−pmax
+α
+, pmax
+α
+],
+G = G1 × G2 × G3,
+(17)
+16

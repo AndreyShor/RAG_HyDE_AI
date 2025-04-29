@@ -1,0 +1,149 @@
+where j = (α, I) is a composite index for the α-th Cartesian component of I-th pseudoion position, such
+that Rs is a 3ηs
+ion element vector with elements Rs
+j (and similarly Rs,0 with elements Rs,0
+j ). The second
+term contains the 3ηs
+ion × 3ηs
+ion Hessian matrix, aka force matrix, denoted by Fs with elements Fs
+jj′.
+Let ∆Rs = Rs−Rs,0 denote a vector of displacements. Reexpressing the nuclear Hamiltonian of Eq. (52)
+in terms of mass-weighted coordinate displacements ∆˜Rs = {√MI∆Rs
+I}I∈Is with elements ∆˜Rs
+j and using
+the PES expansion,
+HPI,s
+ion ≈Es(Rs,0) −
+3ηs
+ion
+X
+j=1
+1
+2
+∂2
+∂(∆˜Rj)2 + 1
+2
+3ηs
+ion
+X
+j,j′=1
+∆˜Rs
+j ˜Fs
+jj′|∆˜Rs=0∆˜Rs
+j′
+where ˜Fs
+jj′ =
+1
+√
+MjMj′ Fs
+jj′ are the elements of the mass-weighted Hessian ˜Fs, which is real and symmetric
+since the PES is real. In this standard form, diagonalization of ˜Fs can be realized by an orthogonal trans-
+formation that decouples the quadratic potential term and leaves the form of the kinetic term unchanged,
+thereby fully decoupling the harmonic oscillators.
+Note, however, that the PES has the global Euclidean symmetry SE(3),
+Es(SRs
+1 + R, ..., SRs
+ηs
+ion + R) = Es(Rs
+1, ..., Rs
+ηs
+ion)
+where R, S are an arbitrary translation and rotation. As a result, the force matrix Fs has exactly 6 (or 5
+for linear molecules) zero eigenvalues that correspond to the global Euclidean symmetry generators, since
+the eigenvectors corresponding to infinitesimal global translations and rotations of the pseudoions incur no
+energy cost.
+For numerical accuracy, it is important to remove the global Euclidean symmetry before computing the
+remaining eigenmodes associated to the internal degrees of freedom. This can be achieved with the following
+procedure. First, explicitly define the global translation and rotation vectors in mass-weighted coordinates
+as
+˜tsx = {
+p
+MI(1, 0, 0)s
+I}I∈Is, ˜tsy = {
+p
+MI(0, 1, 0)s
+I}I∈Is, ˜tsz = {
+p
+MI(0, 0, 1)s
+I}I∈Is,
+˜rsx = {ˆx × ∆˜Rs
+I}I∈Is, ˜rsy = {ˆy × ∆˜Rs
+I}I∈Is, ˜rsz = {ˆz × ∆˜Rs
+I}I∈Is,
+which respectively correspond to the action of the generators of translations and rotations on a generic
+displacement vector ∆˜Rs
+I. Perform a QR decomposition on the 3ηs
+ion × 3ηs
+ion matrix
+[ ˜tsx
+T , ˜tsy
+T , ˜tsz
+T , ˜rsx
+T , ˜rsy
+T , ˜rsz
+T |∗]
+where ∗indicates 3ηs
+ion × 3ηs
+ion −6 random real entries, and define ˜Q as the last 3ηs
+ion −6 (or 3ηs
+ion −5)
+columns of the unitary part of the decomposition which, by construction, spans the subspace orthogonal
+to the Euclidean transformations. Construct the 3ηs
+ion −6 × 3ηs
+ion −6 (or 3ηs
+ion −5 × 3ηs
+ion −5) matrix
+¯˜Fs = ˜QT ˜Fs ˜Q in which the global symmetry has been removed. Diagonalization of ¯˜Fs gives eigenvalues and
+eigenstates fs,k, ¯es
+λ,k from which we obtain es
+j,k = P3ηs
+ion−6
+λ=1
+˜Qjλ¯eλ,k as the components of the “polarization”
+eigenvectors ˆes
+k that obey the orthonormality condition P3ηs
+ion
+j=1 es
+j,kes
+j,k′ = δkk′ for k, k′ = 1, ..., 3ηs
+ion −6 (or
+3ηs
+ion −5). These are the normal modes in mass-weighted Cartesian coordinates.
+Defining new variables qs,k =
+˜
+∆Rs·ˆes
+k = P3ηs
+ion
+j=1
+p
+Mj∆Rs
+jes
+j,k (and conjugate ˜ps,k ≡i
+∂
+∂qs,k = i
+∂
+∂(
+˜
+∆Rs) ·ˆes
+k)
+we obtain decoupled harmonic oscillators for normal modes with angular frequency ωs,k =
+p
+fs,k and unit
+mass as,
+Hvib,s = Es(Rs,0) +
+3ηs
+ion−6
+X
+k=1
+
+−1
+2
+∂2
+(∂qs,k)2 + 1
+2fs,k(qs,k)2
+
+which is the same term as in Eq. (60).21 Note that the computational procedure above works in the redundant
+21With slight abuse of notation, the constant Es(Rs,0) is the same as the constant Es(Qs,0) since indeed the PES only
+depends non-trivially on the 3ηs
+ion −6 shape coordinates.
+30

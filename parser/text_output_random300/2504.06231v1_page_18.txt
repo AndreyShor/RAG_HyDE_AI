@@ -1,0 +1,51 @@
+0.005
+0.01
+0.02
+0.03
+0.04
+0.05
+displacement [˚A]
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+1.2
+1.4
+1.6
+1.8
+2.0
+SRME(κ)
+float64
+float32-highest
+float32-high
+mixed
+Figure 8: Variation of the evaluated 𝜅SRME with displacement step size as used by Phonopy
+to estimate the second- and third-order derivatives – for different PyTorch precision levels.
+The hatched bar refers to an experiment using low precision for the geometry optimization
+(float32-high) but a high precision for the subsequent finite difference evaluations (float64).
+other datasets is an important topic for future research. If the degradation of direct forces is a
+common occurrence across a range of downstream finetuning datasets, then improved forms of
+distillation may become essential. The distillation method used in this work is rather basic and
+does not make use of new, hessian-based methods for MLIPs [36, 44].
+Appendix I:
+Effect of filtering OMat24
+During development of the Orb-v3 potentials, we observed that all models (conservative or
+direct) suffered from undesirable out-of-distribution behavior when trained on the full OMat24
+dataset and evaluated on homo-nuclear diatomics, as shown in the far left column of Figure
+10. Interestingly, models with such diatomics still had low 𝜅SRME values for small bulk crystals,
+indicating that that this was not a general pathology across all systems, but emerged in the
+OOD setting of a two-atom system with one edge per atom.
+Also shown in Figure 10 are different attempts to filter the OMat24 dataset. The central two
+columns show different amounts of filtering based on outlying energies, forces and stress. Such
+filtering was strongly beneficial, but still insufficient as large kinks remained in the energy
+surface. The only completely effective strategy that we tried was to remove all non-AIMD data,
+as depicted in the far right column.
+Arguably, this is a dissatisfying outcome as we would like to avoid discarding valid DFT data.
+Whilst we broadly in favour of retaining as much of a model’s training data as possible, it
+remains unclear if the large proportion of "rattled" systems in OMat24 (45% of the data), and
+the amount by which they are rattled, is generally beneficial or not for the current generation of
+universal MLIPs, or whether the problems we have observed are unique to more unconstrained
+architectures.
+18

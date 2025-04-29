@@ -1,0 +1,121 @@
+8
+to cover the above-mentioned nc range with 4 staggered
+intervals of 4 bins each. We set the sampling depth of
+each interval to 50, thus maintaining coverage well below
+the exhaustive limit.
+The minimization of the QUBO
+Hamiltonians, which involved 115 qubits, was performed
+with the D-Wave hybrid classical-quantum sampler with
+the default runtime of 3s. Although this was the mini-
+mum runtime allowed, it consistently yielded one of the
+ground states at each minimization trial.
+The density of states reconstructed from the hybrid
+sampling is presented in Fig. 3 alongside the ground truth
+result, i.e., the statistical distribution of equivalent recon-
+structions based on the uniform sampling of the exhaus-
+tively enumerated states.
+The comparison shows that
+the reconstruction based on the hybrid classical-quantum
+sampling is fully consistent with the ground truth refer-
+ence. For instance, about half of the data points (4 out
+of 7 bins) fall within the Q1-Q3 interquartile range.
+The result provides a proof-of-concept demonstration
+of the feasibility of using quantum optimization platforms
+for intervalled sampling that are sufficiently uniform that
+accurate reconstructions of the density of states can be
+achieved.
+With the constant improvements of quan-
+tum platforms, our method could thus enable studying
+QUBO-mapped physical models with significant speed
+improvements over classical optimizers.
+IV.
+CONCLUSIONS
+We have introduced a general method to compute
+expectation values of observables by reweighting mi-
+crostates obtained by minimizing QUBO Hamiltonians
+of physical models.
+QUBO models are natively suited to sample systems
+with fixed order parameters, e.g. microstates at a fixed
+energy of the physical model, since their values can be
+straightforwardly fixed with quadratic constraints in the
+QUBO Hamiltonian. Our method enables computing ob-
+servables in the conjugate ensembles, e.g. canonical av-
+erages at fixed temperature. First, we turn the quadratic
+constraints of the order parameters into quadratic re-
+straints by introducing slack variables. In this way, the
+QUBO-based sampling can be directed towards finite in-
+tervals of the constrained order parameter. Next, we tar-
+get an overlapping series of intervals that cover the entire
+range of interest of the order parameter. The gathered
+states are then processed with a generalized histogram
+reweighting technique to optimally reconstruct the den-
+sity of states, which is finally harnessed to compute the
+sought expectation values in the conjugate ensembles.
+The general formulation of our method makes it usable
+with different conjugate ensembles, as we demonstrated
+by using the method in two different contexts.
+First, we validated the approach for the 2D Ising
+model, for which the density of states is known exactly.
+Using a 12×12 system, we demonstrated that the method
+enables a bias-free reconstruction of the entire density of
+states. By using multiple energy intervals, and sampling
+negligible fraction of the entire configuration space, we
+achieved an average relative reconstruction accuracy of
+order 10−2 across the 42 orders of magnitudes spanned
+by the density of states.
+Finally, we explored the topological entanglement of
+a melt of self-assembled semiflexible rings, which is rel-
+evant across diverse contexts, from polymer physics to
+synthetic supramolecular constructs and designed meta-
+materials. The problem is challenging for conventional
+sampling methods using real-space representations, and
+no results have heretofore been established for ring melts
+about how intra- and inter-ring entanglement vary with
+the bending rigidity. By leveraging the available efficient
+mapping to QUBO models and applying our reweight-
+ing method to states sampled in multiple intervals of
+the bending energy, we obtained the knotting and link-
+ing probabilities for a broad range of bending rigidities,
+the conjugate order parameter.
+We thus established,
+among other results, that the linking probability is non-
+monotonic and can be maximized at a suitable value of
+the bending rigidity. The result establishes, for the first
+time, that the linking probability in systems of topolog-
+ically unrestricted ring polymers has a non-monotonic
+dependence on bending rigidity. Besides advancing the
+characterization of dense polymer self-assemblies beyond
+state-of-the-art real-space sampling methods, the find-
+ings suggest new ways to optimize mechanical-bonding
+in extended supramolecular assemblies, such as Olympic
+gels.
+In both these contexts, the uniform sampling of the
+ground state manifold of the QUBO Hamiltonians was
+performed using a parallel tempering scheme on a clas-
+sical computer.
+However, quantum optimization plat-
+forms are the ideal avenue for our method because
+they can afford increasing practical speedups as their
+size and performance continues to improve.
+To this
+end, we used classical-quantum optimizers to sample
+exhaustively-enumerable ring melts, and demonstrated
+the feasibility of obtaining accurate reconstructions of
+the density-of-states for computing canonical averages.
+Our scheme can be extended in several directions,
+both for formulation and applications. For instance, the
+method can be generalized to reconstruct the density
+of states that are functions of several order parameters,
+W(µ1, µ2, ...). This would involve equipping the QUBO
+Hamiltonian with a quadratic restraint for each parame-
+ter and generalizing the self-consistent equations for W.
+In addition, while the powers-of-two linear combination
+of slack variables provides a natural uniform coverage
+of the intervals, it may be more efficient to devise other
+combination schemes designed to counteract the entropic
+suppression arising from wide dynamic ranges of the den-
+sity of states. In this case, the self-consistent equations
+for W would need to be adjusted to take into account the
+sampling biases introduced ad hoc. By the same token,
+data from the intervalled QUBO sampling could be com-
+bined with that from unconstrained sampling, performed

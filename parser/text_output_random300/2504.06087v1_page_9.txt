@@ -1,0 +1,149 @@
+To enforce the electronic cusp conditions, we use von
+Glehn et al. [10]’s cusp Jastrow factor
+Jcusp(r) = exp
+
+
+
+
+X
+0<i<j≤N↑,
+N↑<i<j≤nel
+ωparα2
+par
+αpar + |ri −rj|
++
+X
+0<i≤N↑<j≤nel
+ωantiα2
+anti
+αanti + |ri −rj|
+
+
+(28)
+with learnable parameters wpar, wanti, αpar, αanti ∈R.
+In addition to this constrained Jastrow factor, we add
+two neural network-based Jastrow factors.
+The first
+one is a per-electron MLP-based Jastrow factor
+JMLP(r) = exp
+ nel
+X
+i=1
+MLP1(hi)
+!  nel
+X
+i=1
+MLP2(hi)
+!
+(29)
+from Gao et al. [55] where in addition to the log read-
+out via MLP1, we add a node-inducing component via
+MLP2. Note that the MLPs in this Jastrow factor still
+only have access to the local environment of individ-
+ual elements, with the total Jastrow factor being the
+sum of the individual electrons, limiting the correlation
+effects that can be captured.
+To capture global electron correlation effects, one could
+apply an MLP to an average electron embedding,
+but such a Jastrow factor would lose access to high-
+frequency information due to the averaging. Instead
+we propose a novel Jastrow factor based on cross at-
+tention to so-called registers [56].
+For each register
+r ∈{1, . . . , Nreg}, we define a query qr ∈RD, and
+weights W V
+r
+∈RD×dreg. We perform cross attention
+between the electron embeddings H ∈Rnel×D (used
+as keys) and the register queries to obtain the register
+embeddings
+vr = softmax (Hkr)T HW V
+r .
+(30)
+Similar to the per-electron MLP Jastrow factor, we
+perform a 2-step readout on V = Concat[vr]Nreg
+r=1 ∈
+RNregdreg:
+Jatt(r) = exp (MLP1 (V )) MLP2 (V ) .
+(31)
+We demonstrate the importance of this Jastrow factor
+in App. C, where we observe an approximately 10 mEh
+improvement of absolute energies and 2 mEh for rela-
+tive energies. Note that while this Jastrow factor can
+capture correlation between electron embeddings at ar-
+bitrary distance, a forward pass through this Jastrow
+factor scales linearly with the number of electrons and
+therefore does not affect overall scaling of our method.
+4.3
+Low-rank wave function updates
+Updates of the wavefunction after moving a small num-
+ber of electrons are the key step for Monte Carlo sam-
+pling or evaluation of pseudopotentials.
+To enable
+these efficient low-rank updates, we store all interme-
+diate embeddings of the network when computing Ψ.
+When changing the positions of K < nel electrons with
+indices ι1, . . . , ιK to positions ˆrι1, . . . , ˆrιK, we deter-
+mine the update set U = {ι1, . . . , ιK} ∪SK
+k=1 Nrιk ∪
+Nr′ιk of all electron indices i which are within the cutoff
+c of a moved electron’s previous or new location. For
+any physically plausible molecule Coulomb repulsion
+spreads the electrons across the molecule, such that
+the average number of electrons within a given cut-
+off radius does not scale with system size. Therefore,
+given a large enough system, the size of the update set
+|U| is independent of nel. We then only recompute the
+embeddings hi for this bounded number of electrons
+i ∈U. The same technique is applied to all other parts
+of the wave function, such as the Jastrow factor.
+Of particular importance is the update of the determi-
+nant in equation 1. If only the rows i ∈U of Φ are
+changed, we can express the resulting orbital matrix
+Φ′ as a low rank update
+Φ′ = Φ +
+X
+i∈U
+ei(Φ′
+i −Φi)T = Φ + UV T .
+(32)
+Here, ei ∈Rnel denotes the ith unit vector, and
+U, V ∈Rnel×|U| denote the matrices of all unit vectors
+ei and changes in the orbital matrix Vi = (Φ′
+i −Φi)
+for i ∈U. Like conventional VMC [57], the matrix de-
+terminant lemma and the Woodbury matrix identity
+enable us to compute updates for det[Φ] and Φ−1
+A :=(I|U| + V T Φ−1U),
+(33)
+det[Φ′] = det
+
+Φ + UV T 
+= det[Φ] det[A],
+(34)
+Φ′−1 =Φ−1 −Φ−1UA−1V Φ−1.
+(35)
+Constructing A requires O(nel · |U|2) operations and
+since A is only in R|U|×|U|, computing its inverse and
+determinant only scales as O(|U|3). We note that we
+can compute the determinant and the inverse of A from
+the same LU decomposition, requiring low additional
+computational effort. The same idea can also be used
+when computing the original full inverse Φ−1 from the
+LU obtained during determinant computation.
+We use low-rank updates during Monte Carlo sampling
+and when evaluating non-local operators such as the ef-
+fective core potential and the S+ spin operator. All of
+these require evaluating ratios of the form Ψ(r′)/Ψ(r).
+For single electron moves during Monte Carlo sampling
+and the non-local effective core potential, r′ and r dif-
+fer in only a single electron. For the S+ operator, they
+differ in only two electrons.
+4.4
+Efficient Laplacian
+Our finite-range embeddings allow for a more efficient
+computation of the Laplacian of the wave function,
+which is required for the kinetic energy. For a compos-
+ite function f = fN ◦. . . ◦f1 of some input x1 ∈Rd1,
+the forward Laplacian framework [13] propagates the
+9

@@ -1,0 +1,137 @@
+5
+string. He can then use a to measure Bob’s send-
+ing photons and see if their states match b; he then
+re-prepares the same photons according to a, b and
+forward them to Alice. He can also require Alice
+to send him the message m she wants to send to
+Bob anytime before she returns Bob’s photons, and
+measures her returning photons to check if she is re-
+ally sending m to Bob; he then re-prepares the same
+B-batch and re-encodes the message into them and
+forward them to Bob.
+As we can see, everything in the standard DL04 pro-
+tocol is basically transparent to this controller.
+B.
+Covert Key Distribution in DL04
+We use entangled photons and Bell states to achieve
+covert key distribution under the control of this Colin.
+The idea is to carry a random covert message m′ (the key
+that Alice wants to share with Bob) by the Bell states of
+entangled photons. More speciﬁcally, we let the A-batch
+to be the signal photons of a set of entangled photons
+of random Bell states. Alice encodes an extra bit into
+each photon in the B-batch by ﬂipping the bit diﬀerent
+times, which will result in a change of the Bell state of the
+entangled pair, and only Bob, who has the idler photons
+can measure the Bell states of the entangled pairs, and
+thus tell any Bell state changes. Colin has no idea about
+the Bell state of the entangled pairs since he does not
+have the idler photons. He will have zero advantage in
+telling any Bell state changes. The revised DL04 is as
+follows.
+1. Photons Sending Phase:
+• Bob generates three random strings:
+– a = (a1, . . . , an) ∈{0, 1}n, the basis se-
+lection string.
+– b = (b1, . . . , bn) ∈{0, 1}n, the state selec-
+tion string.
+– c = (c1, . . . , cn) ∈{0, 1}n, the Bell state
+selection string.
+• Bob
+prepares
+n
+entangled
+photon
+pairs
+(Ai, Bi) in the Bell state |Φci⟩AiBi (if ai = 0)
+or |Ψci⟩AiBi (if ai = 1), where:
+|Φci⟩AiBi =
+1
+√
+2
+(|0⟩Ai|0⟩Bi + (−1)ci|1⟩Ai|1⟩Bi)
+|Ψci⟩AiBi =
+1
+√
+2 (|0⟩Ai|1⟩Bi + (−1)ci|1⟩Ai|0⟩Bi)
+• Bob
+selects
+signal
+photons
+A
+=
+(A1, A2, . . . , An) according to b and sends
+them to Alice,
+where the selection is as
+follows:
+– If bi = 0, the photon that will be mea-
+sured as |0⟩(if ai = 0) or |+⟩(if ai = 1)
+is marked as the signal photon Ai and the
+other is marked as the idler photon Bi.
+– If bi = 1, the photon that will be mea-
+sured as |1⟩(if ai = 0) or |−⟩(if ai = 1)
+is marked as the signal photon Ai and the
+other is marked as the idler photon Bi.
+• Alice and Bob performs an error rate estima-
+tion process as in the standard DL04 using an
+S-batch.
+2. Photons Returning Phase:
+• After conﬁrming the security of the B-batch,
+Alice proceeds to encode the normal mes-
+sage m = {0, 1}k and random covert message
+m′ = {0, 1}k by ﬂipping the photons in B-
+batch with the unitary operation:
+• U = iσy = |0⟩⟨1| −|1⟩⟨0|
+for 0, 1, 2, 3 times depending on whether mim′
+i
+is 00, 01, 10 or 11.
+– Applying U on |0⟩and |+⟩for 0, 1, 2, 3
+times results in single photon state/phase
+changed as:
+• |0⟩
+U−→−|1⟩
+U−→−|0⟩
+U−→|1⟩
+• |+⟩
+U−→|−⟩
+U−→−|+⟩
+U−→−|−⟩
+It results in Bell state changed as:
+• |Φ+⟩
+U−→|Φ−⟩
+U−→−|Φ+⟩
+U−→−|Φ−⟩
+• |Ψ+⟩
+U−→|Ψ−⟩
+U−→−|Ψ+⟩
+U−→−|Ψ−⟩
+• Alice then sends the encoded B-batch, A′ =
+(A′
+1, A′
+2, . . . , A′
+k), back to Bob.
+3. Decoding Phase:
+• Bob can recover one of m and m′ but not both.
+Bob can recover the normal message bit mi
+by checking if the state of the signal photon
+A′
+i has ﬂipped.
+Bob can recover the covert
+message bit m′
+i by checking if the Bell state of
+the entangle pair (A′
+i, Bi) has ﬂipped.
+• If Bob chooses to recover m, he performs the
+second error rate estimation with Alice nor-
+mally as standard DL04. If Bob chooses to
+decode m′, he performs the second error rate
+estimation using a random string (and they
+will announce failure with high probability).
+The correctness of the protocol can be seen from the
+explanation embedded in the protocol description.
+Let us analyze what Colin can do to detect the exis-
+tence of covert communication, and show why the proto-
+col is secure (i.e., covert communication undetectable).
+Colin can measure Bob’s photon on their way to Alice
+and see if they are single photons (no entangled pho-
+tons are expected in normal DL04). However, without

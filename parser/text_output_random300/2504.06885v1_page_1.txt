@@ -1,0 +1,99 @@
+A Practical Cross-Platform,
+Multi-Algorithm Study of
+Quantum Optimisation for Configurational Analysis of
+Materials
+Kieran McDowall, Theodoros Kapourniotis, Christopher Oliver, Phalgun Lolur†, and
+Konstantinos Georgopoulos
+National Quantum Computing Centre, Rutherford Appleton Laboratory, Harwell Campus, Didcot, Oxfordshire, OX11 0QX
+Quantum computers show potential for
+achieving computational advantage over
+classical computers, with many candidate
+applications in the domains of chemistry
+and materials science.
+We consider the
+well-studied
+problem
+of
+configurational
+analysis of materials and, more specifically,
+finding the lowest energy configuration of
+defective graphene structures. This prob-
+lem acts as a test-case which allows us to
+study various algorithms that are appli-
+cable to Quadratic Unconstrained Binary
+Optimisation (QUBO) problems,
+which
+are
+generally
+classically
+intractable
+ex-
+actly. To solve this problem, we implement
+two methods, the Variational Quantum
+Eigensolver (VQE) and Quantum Anneal-
+ing (QA), on commercially-available gate-
+based and quantum annealing devices that
+are accessible via Quantum-Computing-as-
+a-Service (QCaaS) models. To analyse the
+performance of these algorithms, we use a
+toolbox of relevant metrics and compare
+performance against three classical algo-
+rithms. We employ quantum methods to
+solve fully-connected QUBOs of up to 72
+variables, and find that algorithm perfor-
+mance beyond this is restricted by device
+connectivity, noise and classical compu-
+tation time overheads.
+The applicability
+of our approach goes beyond the selected
+configurational analysis test-case, and we
+anticipate that our approach will be of use
+for optimisation problems in general.
+Kieran McDowall: kieran.mcdowall@stfc.ac.uk
+Theodoros Kapourniotis: theodoros.kapourniotis@stfc.ac.uk
+†Current affilation: Capgemini UK PLC, 95 Queen Victo-
+ria Street, London, United Kingdom, EC4V 4HN.
+1
+Introduction
+Quantum mechanics provides the framework for
+understanding chemistry as we know it.
+The
+foundations that let us predict the behaviour and
+properties of any chemical species have been es-
+tablished for almost a hundred years. That the
+problem size grows exponentially with the num-
+ber of particles led Dirac to note, ‘The exact ap-
+plication of these laws leads to equations much
+too complicated to be soluble’, in 1929 [1]. Hence,
+despite having a framework, it is difficult for clas-
+sical computers to simulate chemistry efficiently.
+Quantum computers offer an alternative platform
+for solving such problems, building from Feyn-
+man’s proposal in 1982 of constructing a com-
+puter based on quantum hardware [2].
+There are several types of chemistry prob-
+lems that could be considered as candidates to
+be solved using quantum algorithms, including
+fermionic simulation [3] and combinatorial opti-
+misation problems. Combinatorial optimisation
+problems in particular are ubiquitous across sci-
+ence and industry, motivating quantum optimi-
+sation as a highly active field of research and de-
+velopment, and a candidate for near-term quan-
+tum advantage [4, 5].
+In this study we explore
+the problem of finding the lowest-energy config-
+uration of defective graphene structures, based
+on the formulation found in Ref. [6].
+Suppose
+we are tasked with removing a specific number
+of atoms from a graphene sheet of N sites. The
+goal is to find which atoms, when removed, will
+result in a configuration with the lowest-energy.
+The configuration of lowest energy will be the one
+with the maximum number of remaining atom-
+atom bonds. This is an instance of the densest
+k-subgraph problem, with many applications be-
+yond configurational analysis [7]. In this work,
+1
+arXiv:2504.06885v1  [quant-ph]  9 Apr 2025

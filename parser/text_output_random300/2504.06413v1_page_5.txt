@@ -1,0 +1,121 @@
+Evaluating Mutation Techniques in Genetic Algorithm-Based Quantum Circuit Synthesis
+GECCO ’25, July 14–18, 2025, Malaga, Spain
+GA-driven improvements without incurring excessive computa-
+tional overhead for every generation.
+3.10
+Tools and Libraries
+This environment relies on several well-established libraries to
+maintain reliability and comparability. PennyLane, an open-source
+Python framework, enables seamless quantum programming on
+both simulated and real hardware, allowing the easy translation of
+operation lists into executable circuits. NumPy supports efficient
+handling of matrices and arrays, reducing generation times and en-
+abling large-scale simulations. Optuna automates hyperparameter
+tuning for the GA, storing experiment results in a manageable data-
+base that facilitates performance analysis. Lastly, Slurm distributes
+computational jobs across multiple server nodes, enabling parallel
+processing and accelerating large-scale or repeated optimizations.
+Taken together, these tools create a robust and adaptable environ-
+ment for generating, evaluating, and improving candidate circuits
+across various mutation settings.
+4
+EXPERIMENTAL SETUP
+This section describes the decisions made to set up the GA evalua-
+tions for quantum circuit optimization. It covers how the evalua-
+tions were conducted, including computational resources, dataset
+generation, hyperparameter tuning, and performance metrics. Each
+element aims to create a robust, reproducible framework that can
+assess the GA’s effectiveness across diverse scenarios.
+4.1
+Dataset
+The datasets used in this work comprise randomly generated Pen-
+nyLane circuits, subsequently optimized as noted in Section 3.9.
+Each dataset contains circuits with a fixed number of qubits yet
+varying circuit depths to resemble realistic quantum states. The
+qubit count ranges from five to eight, as fewer than five qubits
+often resulted in near-optimal solutions that showed little variation
+among mutation methods, and more than eight qubits demanded
+prohibitive computational resources. Circuit depths span from five
+to fifteen operations, providing enough complexity to challenge
+the GA while remaining computationally tractable.
+4.2
+Performance Metric
+The performance metric measures the GA’s effectiveness in opti-
+mizing quantum circuits. Specifically, it is defined as the average
+of the highest final fitness scores across all circuits in a dataset.
+This metric evaluates both solution quality and consistency under
+varying datasets and optimization conditions.
+4.3
+Hyperparameter Optimization
+Hyperparameter optimization proceeded in two stages. The first
+stage focused on initialization settings, such as average, minimum,
+and maximum circuit depths, and tested different numbers of islands
+for a generic target circuit with four to eight qubits. Wide parameter
+bounds in Optuna enabled a broad search to establish a solid starting
+point for subsequent experiments.
+The second stage refined the mutation process. It used narrower
+parameter bounds to optimize mutation rate, the number of mu-
+tations per candidate, and related parameters. This step aimed to
+strike a balance between exploration and exploitation, enhancing
+the GA’s capacity to discover high-quality solutions without con-
+verging prematurely.
+All experiments ran on Linux-based high-performance machines
+in the CIP-Pool at Ludwig Maximilian University, using SLURM
+for job scheduling. SLURM’s built-in seeding ensured reproducibil-
+ity, with each experiment executed on seeds one through four in
+random order.
+5
+RESULTS
+This work examines how different mutation strategies affect quan-
+tum state preparation using a GA. The flexible environment in-
+troduced in earlier sections generated extensive data through nu-
+merous experiments, which were then evaluated for insights into
+the effectiveness of each strategy. A detailed description of the
+experimental setup, including computational resources and dataset
+generation, can be found in Section 4.
+Rather than comparing the GA’s performance to other methods,
+we focus on how each mutation strategy performs within the same
+GA framework. We infer effectiveness through well-known metrics,
+with fidelity as a primary measure of optimization success.
+5.1
+Genetic Algorithm Performance
+We first tested the GA with target states using different qubit counts
+to explore how complexity influences algorithmic performance.
+Four-qubit and six-qubit target states emerged as especially infor-
+mative. Four-qubit systems, while consistently solved by the GA,
+did not present significant challenges to distinguish among muta-
+tion strategies. Fig. 8 and Fig. 9 show that most strategies performed
+near optimality for four qubits, offering limited insights into their
+comparative strengths.
+['change']
+['swap']
+['change', 'addition']
+['change', 'swap']
+['swap', 'addition']
+['addition']
+['deletion']
+['change', 'addition', 'deletion']
+['change', 'deletion']
+['swap', 'addition', 'deletion']
+['change', 'swap', 'addition']
+['change', 'swap', 'addition', 'deletion']
+['addition', 'deletion']
+['change', 'swap', 'deletion']
+['swap', 'deletion']
+0.75
+0.80
+0.85
+0.90
+0.95
+1.00
+Fitness Score
+Figure 8: Histogram of average final fitness scores for various
+mutation strategy combinations on four qubits.
+Because four qubits proved too simple for a meaningful test, we
+shifted to six-qubit target states, which provided higher complex-
+ity and revealed clearer differences in the performance of various
+mutation strategies.
+5.2
+Impact of Mutation Strategies
+We evaluated different mutation strategies for six-qubit target states
+using a dataset of 150 distinct, optimized circuits. Each target state

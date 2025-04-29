@@ -1,0 +1,78 @@
+Figure 2. Data curation and statistics of our MDK12-Bench. (a) The data curation pipeline consists of four stages: data collection,
+screening, parsing, and processing. The knowledge in our benchmark is structured into six interconnected levels: Level 1 - discipline, Level 2
+- grade, Level 3 - curriculum, Level 4 - topics, Level 5 - meta-knowledge, and Level 6 - key knowledge point. Statistics of knowledge coverage
+of our bench is illustrated in terms of the number of instance occurrences at (b) discipline and grade levels; (c) high-school curriculum level;
+and (d) elementary- and middle-school curriculum level. Examples of curriculum-level knowledge points are also demonstrated.
+flow to ensure both reliability and broad coverage of the col-
+lected questions, laying a robust foundation for subsequent
+screening and parsing. We accumulated large-scale question
+sets from multiple grade levels, regions, and multimodal
+formats to form the metadata source for MDK12-Bench.
+Data Screening. After the initial collection, we utilized
+a combination of GPT-4o-based automated review and hu-
+man inspection, based on a predefined checklist, to filter
+the invalid metadata. We removed questions containing
+low-quality images or without specific knowledge points.
+Additionally, we preserved the question analysis section in
+each instance to support chain-of-thought studies, along with
+partition information covering exams from 2016 to 2025,
+thus allowing examination of potential knowledge evolution
+over time. Each question instance was assigned a difficulty
+level, facilitating dynamic evaluations and enabling model
+performance analysis under varying complexity levels.
+Data Parsing. Following the screening stage, we performed
+rule-based parsing to transform each question into a struc-
+tured format. This process extracted fields such as Year,
+Question, Grade Level, Image, Difficulty Level, Answer,
+Question Type, Knowledge, Course, Analysis, and Modal-
+ity, all of which were systematically stored. By aligning
+questions, solutions, and annotations in a standardized struc-
+ture, the resulting dataset significantly enhances retrieval
+efficiency, allowing models or analysis tools to readily ac-
+cess specific subjects, difficulty levels, or knowledge points.
+Data Processing. Once the data was parsed, we carried
+out additional post-processing steps to ensure linguistic and
+formatting consistency. Leveraging the GPT-4o API, we
+translated all Chinese text into English, followed by metic-
+ulous domain-expert reviews to verify technical accuracy.
+For images containing Chinese text, we utilized an image
+translation tool and performed manual checks. Furthermore,
+we built a comprehensive knowledge structure encompassing
+discipline, grade/year, curriculum, chapter/unit, lesson/topic,
+and key knowledge points, linking each translated question
+to this framework to enrich its academic context.
+Table 2. Key Statistics of MDK12-Bench
+Overall Statistics
+Total instances
+141,320
+Text-only instances
+77,857
+Multimodal instances
+63,463
+Total images
+105,218
+Exam years coverage
+10
+Knowledge Structure
+Knowledge levels
+6
+Total knowledge points
+6,827
+Level 1&2 knowledge points
+13
+Level 3 knowledge points
+90
+Level 4 knowledge points
+499
+Level 5&6 knowledge points
+6,225
+Mini-Subsets
+Total instances
+14,595
+Easy-level instances
+4.951
+Medium-level instances
+4,692
+Hard-level instances
+4,952
+Data Statistics. As shown in Table 2 and Fig. 2(b), our

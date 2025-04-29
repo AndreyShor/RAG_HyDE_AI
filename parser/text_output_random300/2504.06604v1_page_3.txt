@@ -1,0 +1,26 @@
+Figure 1: Thin section preparation process
+To address this challenge, we propose an optimization approach that employs cross-correlation analysis with 3D
+rotations to locate the best-matched interface between thin-section and micro-CT images. This approach aims to
+(i) reduce manual alignment efforts, (ii) explore the advantages of paired multimodal images in improving digital
+rock-based computed effective properties.
+To demonstrate the versatility of the proposed method, we apply it to both synthetic 3D porous media, serving as
+controlled testbeds for validation, and Berea sandstone samples. These applications highlight the method’s effectiveness
+across a range of 3D porous structures. Furthermore, with the two registered images of Berea sandstone, we analyze
+differences in pore characteristics and upscaling properties by comparing images from the same location in two
+different modalities. Our results indicate that precise registration can help correct image-based simulated properties,
+improving the accuracy of image-based rock property estimates. Additionally, this study provides a foundation for
+future data-driven super-resolution techniques that rely on spatially consistent multimodal imaging.
+2
+Method
+We developed a systematic approach to register a 2D thin section within a 3D image. Figure 2 shows the overall
+procedure of the image registration, which consists of four steps: (1) performing a linear transformation of the 3D CT
+scan, (2) extracting a 2D image from the rotated 3D volume, (3) applying template matching to evaluate the similarity
+between the extracted image and the thin section image, and (4) repeating (1)–(3) to find the optimal registration via an
+optimization algorithm, specifically the differential evolution (DE) algorithm used in this study.
+Before performing this workflow, a preprocessing step may be necessary depending on the dataset. In general, when two
+images differ in their feature spaces, filters can be applied to make the features more coherent, and the pixel size can be
+matched by rescaling [Brown, 1992, Zitova and Flusser, 2003]. In this section, we assume that the two images have the
+same resolution and feature space to explain the general procedure of our registration workflow, as preprocessing steps
+may vary depending on the dataset. In the section 3.2, we will further discuss the preprocessing steps required for Berea
+sandstone digital images. Here, we present the general procedure for registering any 2D image to a 3D CT volume.
+3

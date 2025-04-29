@@ -1,0 +1,224 @@
+Thus, one has
+(3.2.4) ≤C(˜µ0)1−1
+p
+˜µt −⟨˜µ0⟩
+2π E
+
+1
+p
+L1(T2×T1
+2π×[0,+∞)×[−1,1])
+−−−−→
+t→+∞0 thanks to (3.2.6), that is, Step 2A.
+Summarizing, by using Step 1, Step 2A and Step 2B, one gets the statement (1.1.18).
+The second statement (1.1.19) can be proved as follows. First notice that if µ0 satisfies the hypothesis with p = ∞,
+then it satisfies them for every p ∈[1, +∞]. To prove this, let us begin with noticing that, as we said at the beginning
+of the proof, µ0 belongs to L1(T2 × T1
+2π × [0, +∞) × [−1, 1]), indeed
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh∥µ0(·, θ, s, h)∥L∞(T2)
+≥
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh
+Z
+T2 dx|µ0(x, θ, t, h)|
+=
+∥µ0∥L1(T2×T1
+2π×[0,+∞)×[−1,1]),
+and thus, by interpolation, one has
+∥µ0∥Lp(T2×T1
+2π×[0,+∞)×[−1,1]) ≤∥µ0∥
+1
+p
+L1(T2×T1
+2π×[0,+∞)×[−1,1])∥µ0∥
+1−1
+p
+L∞(T2×T1
+2π×[0,+∞)×[−1,1]) < +∞,
+therefore the Lp norm of µ0 is finite. As for the second summand in the hypothesis, it holds
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh∥µ0(·, θ, s, h)∥L∞(T2) ≥
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh∥µ0(·, θ, s, h)∥Lp(T2),
+and therefore
+∥µ0∥Lp(T2×T1
+2π×[0,+∞)×[−1,1]) +
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh∥µ0(·, θ, s, h)∥Lp(T2) < +∞,
+(3.2.7)
+which is our claim.
+To prove (1.1.19), we have to prove that for any η ∈L1(T2 × T1
+2π × [0, +∞) × [−1, 1]), it holds
+Z
+T2 dx
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dhη(x, θ, s, h)
+
+µt(x, θ, s, h) −⟨µ0⟩
+2π E(s, h)
+
+−−−−→
+t→+∞0.
+For the sake of brevity, let us shorten
+(A, B) :=
+Z
+T2 dx
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dhA(x, θ, s, h)B(x, θ, s, h),
+and, since here it is clear that we are integrating on the space T2 × T1
+2π × [0, +∞) × [−1, 1], let us write
+∥A∥Lp := ∥A∥Lp(T2×T1
+2π×[0,+∞)×[−1,1]).
+To prove the statement, fix ˜η ∈L1 ∩L2(T2 × T1
+2π × [0, +∞) × [−1, 1]) such that
+∥η −˜η∥L1 ≤
+ε
+∥µ0∥L∞+
+R
+T1
+2π dθ
+R ∞
+0
+ds
+R 1
+−1 dh∥µ0(·, θ, s, h)∥L∞(T2) + ∥µ0∥L1
+.
+(3.2.8)
+We are going to use (3.2.7) with p = 2. With this notations, thanks to triangle inequality we have
+
+
+η, µt −⟨µ0⟩
+2π E
+
+≤
+
+
+η −˜η, µt −⟨µ0⟩
+2π E
+ +
+
+
+˜η, µt −⟨µ0⟩
+2π E
+
+≤
+∥η −˜η∥L1
+µt −⟨µ0⟩
+2π E
+
+L∞+ ∥˜η∥L2
+µt −⟨µ0⟩
+2π E
+
+L2
+≤
+C∥η −˜η∥L1
+ 
+∥µ0∥L∞+
+Z
+T1
+2π
+dθ
+Z t
+0
+ds
+Z 1
+−1
+dh∥µ0(·, θ, s, h)∥L∞(T2) +
+
+⟨µ0⟩
+2π E
+
+L∞
+!
++
+∥˜η∥L2
+µt −⟨µ0⟩
+2π E
+
+L2
+≤
+C∥η −˜η∥L1
+ 
+∥µ0∥L∞+
+Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh∥µ0(·, θ, s, h)∥L∞(T2) + ∥µ0∥L1
+!
++
+∥˜η∥L2
+µt −⟨µ0⟩
+2π E
+
+L2
+≤
+Cε + ∥˜η∥L2
+µt −⟨µ0⟩
+2π E
+
+L2 ,
+33

@@ -1,0 +1,41 @@
+ 
+7 
+ 
+FIG. 2. Classifier architecture. (A) Graph representation of particle trajectories. Particle trajectories (represented by 
+Cartesian coordinates) are converted into a graph where nodes correspond to particles, and edges connect nodes if the 
+inter-particle distance is below a predefined cutoff.  Node features "𝑣",$
+% $ encode the displacement of each particle 
+between successive frames, while edge features  "𝑒",$
+%& $ represent the relative displacement between connected particle 
+pairs. (B) Classification workflow. The trajectory of graph representations from (A) is processed by an equivariant 
+neural network to update the note features, embedding the structure and dynamic information of the local environment. 
+The time series of updated node features are then analyzed by equivariant attention layers, which aggregate temporal 
+dependencies across frames to compute the final classification score. 
+ 
+Following the encoder, the learned node features are passed into a network that applies the attention 
+mechanism to process the time series information and give the final classification. More specifically, the 
+network takes the time series of individual node features  a𝒗F,+
+D
+, 𝒗F,<
+D
+, ⋯, 𝒗F,-
+D
+d  as input and gives the 
+classification score for node 𝑖, denoded as 𝑐D. The attention layers in this architecture are analogous to 
+standard multi-head attention layers but adapted to incorporate the equivariant properties of tensor 
+representations. The nonlinear transformations are performed using the e3nn framework 31, 32, which ensures 
+equivariance under rotation. The attention weights are calculated via the inner product between the 
+irreducible spherical harmonic representations of the input features.  
+The classification score of the whole trajectory is calculated by averaging over all CG beads, i.e. 
+𝑐= ∑
+𝑐D
+B
+D3+
+ for a system with 𝑛 beads. This design respects the permutation-invariant nature of the task, 
+ensuring that the classification is independent of the order in which beads are indexed. Additionally, it 
+improves the scalability of the system by reducing computational complexity. The permutational invariance 
+guarantees that the model can generalize to systems of varying sizes and configurations without requiring 
+retraining. 
+This strategy of using the time series of nodes instead of the time series of graphs to classify the 
+trajectory is based on the assumption that the local environment mostly determines the local dynamics and 
+thermodynamics. The message-passing operation could be considered as an operation that gathers the local 

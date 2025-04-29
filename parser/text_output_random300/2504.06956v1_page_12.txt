@@ -1,0 +1,84 @@
+Main results
+12
+2.3
+A measure-valued process
+As we have already briefly mentioned, an interesting situation where Theorem C can be applied is
+when the admissible fields are given by the increments of the martingale approximation of the ⋆-scale
+invariant field X. More precisely, we note that for all t, s ≥0 it holds that
+Xt+s(x) = Xt(x) + Ws,t(x) ,
+∀x ∈Rd ,
+where Ws,t(·) = Ws(et·) with Ws(·) a centred Gaussian field independent of Ft and such that
+E[Ws(x)Ws(y)] =
+Z s
+0
+K(eu(x −y))du ,
+∀x, y ∈Rd .
+For γ >
+√
+2d, the measure µγ,t+s can then be rewritten as
+µγ,t+s(dx) = eγ(Ws,t(x)−
+√
+2ds)+ds((t + s)/t)
+3γ
+2
+√
+2d µγ,t(dx) .
+(2.15)
+Furthermore, for any finite collection of non-negative numbers (s1, . . . , sn) ⊆R+
+0 , the family of
+fields (Wsi,t)i∈[n],t≥0 satisfies (W1) – (W4). Therefore, by Theorem C and Kolmogorov’s extension
+theorem, there exists a process (νγ,s)s≥0 taking values in the space of non-negative, locally finite
+measures on Rd such that the collection of measures (νγ,s1, . . . , νγ,sn) is the σ(X)-stable limit of
+(µγ,t+s1, . . . , µγ,t+sn) as t →∞.
+Let Ψ denote the field appearing in (2.12). For all s ≥0, we define the field Ψs on Rd by letting
+Ψs(·) = Ψ(e−s·) + (Ws(e−s·) −
+√
+2ds) .
+(2.16)
+As a consequence of (2.15), we then have the following corollary of Theorem C.
+Corollary D. For γ >
+√
+2d, consider the R-valued process (Wγ,s)s≥0 given by
+Wγ,s
+def= log
+Z
+Rd exp(γΨs(x))dx
+
+.
+(2.17)
+Let (xj, wj)j∈N ⊆Rd ×[0, ∞] be an arbitrary enumeration of the atoms of the Poisson point measure
+ηγ[µγc] as introduced in Definition 1.5. Consider the collection of measures (νγ,s)s≥0 defined as
+follows
+νγ,s
+def= a
+γ
+√
+2d
+⋆
+X
+j∈N
+eWγ,s,jwjδxj ,
+∀s ≥0 ,
+(2.18)
+where (Wγ,s,j)j∈N is a collection of i.i.d. copies of Wγ,s, independent of ηγ[µγc]. Then, the
+collection of measures (µγ,t+s)s≥0 converges σ(X)-stably in the finite dimensional sense to the
+collection of measures (νγ,s)s≥0 as t →∞.
+We conclude this section with a couple of remarks and conjectures.
+Remark 2.18 (Stationarity modulo tilt). For s ≥0, write xs = argmax{Ψs(x) : x ∈Rd}, Zs =
+Ψs(xs), and eΨs = Ψs(xs +·)−Ψs(xs). Fix a finite collection of non-negative numbers (s0, . . . , sn) ⊆
+R+
+0 such that s0 ≤. . . ≤sn, and consider the joint limit of (µγ,t+si)i∈[n] as t →∞. For all
+(fi)i∈[n] ∈(C+
+c (Rd))n, their joint Laplace transform is given by the expression in Proposition 2.17
+with
+Tγ[f1, . . . , fn](·) = E
+ n
+X
+i=1
+fi(·)
+Z
+Rd exp(γΨsi(y))dy
+
+√
+2d
+γ 

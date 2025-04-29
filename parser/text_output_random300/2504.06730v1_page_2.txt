@@ -1,0 +1,114 @@
+provides a real-world use-case for the application of SNNs,
+yielding fast and precise detection of coincident particle
+events.
+II. BACKGROUND
+A. Positron Emission Tomography
+PET is based on attaching a radioactive β+-emitter to a
+metabolic substance, e.g. sugar, and injecting this so-called
+radiotracer into the subject of study. The tracer accumulates
+in certain tissues according to its metabolic properties, where
+it undergoes a β+-decay. The emitted positrons annihilate with
+electrons in the surrounding tissue, resulting in two 511 keV
+photons which move in opposite directions and are measured
+using scintillating crystals organized as a ring-detector. By
+connecting coincident pairs of detected photons as so-called
+lines of response (LOR), an image can be reconstructed from
+the entirety of all LORs, i.e. the sinogram, as an inverse
+problem.
+Since radioactive decay is a stochastic process, measure-
+ments are conducted over a time-span to acquire sufﬁcient
+signal. In a clinical setting, the goal is to keep the radioactive
+dose to the patient as low as possible. Therefore, long mea-
+surement times at low activities are used to gather sufﬁcient
+statistics. However, these low-activity measurements do not
+allow the observation of fast kinematic processes that happen
+on the seconds-to-minutes scale and are usually completed
+within a fraction of the acquisition-time of a PET image. For
+research purposes, preclinical studies are conducted on mice
+and rats, allowing for much higher radiation doses and faster
+acquisition times. For example, the SAFIR-project [4] provides
+a detector capable of processing vastly increased measurement
+activities, shortening the image acquisition time from several
+minutes to less than 10 seconds.
+PET image reconstruction is based on sorting the indi-
+vidually detected photons into coincidence pairs. However,
+a signiﬁcant fraction of photons is lost due physical effects
+such as the limited detection efﬁciency and time-resolution of
+the detector, as well as photons being subject to photoelectric
+absorption processes in the body. Hence, a lot of single
+events are registered, only a fraction of which has a detected
+coincidence partner. A major preprocessing step in PET image
+reconstruction is thus ﬁltering out all coincidence pairs from
+the entirety of detector hits.
+To date, coincidence pair matching is still performed using
+non-ML approaches. Common techniques rely on storing all
+detected photons as a list of ‘single’ events with a given
+energy, time and location (singles list-mode data), and it-
+eratively ﬁltering this list post-acquisition [3]. The Single-
+Coincidence-Window-sorting (SCW) algorithm, a commonly
+used variant, sequentially processes such a time-sorted list of
+single events using a ﬁxed time ‘window’ dependent on the
+detectors timing resolution. For a given event, the algorithm
+examines if the time-difference to the next single event is
+smaller than the window. If not, the Type I event is rejected
+as a ‘single’, and the algorithm moves on to the next event
+in the list. If yes, then both are accepted as coincident Type
+II event and translated into a line-of-response (LOR). Should
+more than one event ﬁt inside the ‘time-window’, all are
+rejected (Type III), as it cannot be known which two hits
+among the multiple correspond to a LOR. Conventionally,
+the SCW algorithm is additionally supplied with geometrical
+information, rejecting highly unlikely coincidences such as
+those between neighboring crystals. A schematic detailing the
+algorithm is shown in Figure 1. Due to its sequential nature,
+the SCW algorithm scales heavily with the signal acquisition
+rate, a property that becomes especially problematic at high
+frequency measurements as those encountered in preclinical
+PET.
+B. Leaky Integrate Fire Spiking Neural Networks
+Spiking neural networks try to mimic information propa-
+gation as closely as possible to the biological analog of the
+brain [1]. The most prominent difference to ANNs is the
+integration of the temporal component, i.e. the activation of
+a spiking neuron is time dependent, and spike propagation in
+a network takes place asynchronously. The Leaky Integrate
+and Fire (LIF) neuron is a common mathematical approach
+to model neural activity in spiking neural networks [5], [6].
+Formally, LIFs can be described recursively as follows:
+Mt+1 = WXt+1 + αMt −αSt
+(1)
+St =
+(
+1,
+if Mt > Mthreshold
+0,
+otherwise
+(2)
+where t denotes the discretized time step of the input spike
+train X, M the membrane potential, Mthreshold the maximum
+membrane capacity, S the output spike, W a trainable weight
+matrix and α = exp(−1/τ) a decay value for the potentials,
+with τ being the time constant of the neuron’s membrane. α
+is usually a constant, scalar hyperparameter to the model in
+the range [0.9, 0.99], but may also be learned and dynamically
+inferred [7].
+The above formalism allows the interpretation of a spiking
+neural network with LIF neurons as a recurrent neural net-
+work and by extension enables gradient-based training with
+backpropagation through time [8], [9]. To overcome the dead
+neuron phenomenon, resulting from the non-differentiability
+of the Heaviside spiking function, surrogate gradient tech-
+niques can be employed during training [10]. In particular,
+the Heaviside gradient is smoothed out and replaced with the
+arctan function to enable training with widely used stochastic
+gradient descent approaches as follows:
+∂S
+∂M =
+1
+π(1 + [Mπ]2).
+(3)
+III. SPIKING NEURAL NETWORKS FOR PET
+A. Problem Statement
+We formulate coincidence pairing as a supervised learning
+problem in which a set of binary time series for each crystal
+is denoised and time-normalized to only identify Type II

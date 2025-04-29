@@ -1,0 +1,49 @@
+Proof. Note that A := Aε ∩D is a simply connected domain. Let f be the conformal map from A
+onto D that leaves a, 1 fixed. Let PA be the probability measure of an SLEκ in A from a to 1. Let
+α(κ) be given by (1.1). Let ΛD(η, D \ A) be the mass of Brownian loops in D that intersect both η
+and D \ A. By the restriction property of SLEκ, we have
+P[η ⊂A] =
+Z
+1η⊂A(f′
+A(a)f′
+A(1))(6−κ)/(2κ) exp (−α(κ)ΛD(η, D \ A)) dPA(η).
+(2.2)
+Note that for κ ∈(0, 4], SLEκ a.s. does not touch the boundary of the domain (except at its
+endpoints), hence ΛD(η, D \ A) < ∞for PA-a.e. η. Hence the integrand in (2.2) is positive for
+PA-a.e. η, leading to a positive integral.
+3
+Two-arm events for CLE
+As a warm-up, we first establish up-to-constants estimates for two-arm events in CLEκ. This case,
+involving only one loop, is much easier.
+Indeed, in the four-arm case, we will have to handle
+interactions between different crossing loops in the CLE. We use this simple case to illustrate some
+ideas which will be used again later on.
+Definition 3.1 (Two-arm events for CLE). For κ ∈(8/3, 4], let Γ+ (resp. Γ) be a CLEκ in H (resp.
+D). We define the boundary two-arm event A+
+2 (ε, r) (resp. interior two-arm event A2(ε, r)) to be
+the event that there is at least one loop γ in Γ+ (resp. Γ) that intersects both ∂Bε and ∂Br.
+The goal of this section is to prove the following proposition.
+Proposition 3.2. For κ ∈(8/3, 4] and r ∈(0, 1), we have the following up-to-constants estimates
+for two-arm events in CLEκ, as ε →0,
+P(A+
+2 (ε, r)) ≍εξ+
+2 (κ),
+P(A2(ε, r)) ≍εξ2(κ),
+where ξ+
+2 (κ) and ξ2(κ) are given by (1.2), and the implicit constants depend on r, κ.
+We will perform a Markovian exploration of CLEκ as in [36], in order to relate CLEκ loops to
+SLEκ curves, so that we can apply Propositions 2.2 and 2.3. For this purpose, we need to restrict
+ourselves to some good events. On the event A+
+2 (ε, r) (resp. A2(ε, r)), there is a loop γ in Γ+
+(resp. Γ) that intersects ∂Bε and ∂Br. Let G+(ε, r) (resp. G(ε, r)) be the event that all the loops
+in Γ+ \ {γ} (resp. Γ \ {γ}) which intersect B2r have diameter less than r/10.
+Lemma 3.3. For κ ∈(8/3, 4] and r ∈(0, 1), we have, as ε →0,
+P(A+
+2 (ε, r)) ≍P(A+
+2 (ε, r) ∩G+(ε, r)),
+P(A2(ε, r)) ≍P(A2(ε, r) ∩G(ε, r)).
+The proof relies on the Brownian loop soup (BLS) representation of the CLE. We view the
+events for CLEκ equivalently as events for the BLS with intensity α in the same domain, coupled
+with CLEκ, where α and κ are related by (1.1). Throughout the proof, we denote by LD the
+Brownian loop soup with intensity α in the domain D.
+9

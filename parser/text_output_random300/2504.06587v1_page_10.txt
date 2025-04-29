@@ -1,0 +1,301 @@
+MobiSys ’25, June 23–27, 2025, Anaheim, California, US
+Jinbo Peng, Junwen Duan, Zheng Lin, Haoxuan Yuan, Yue Gao, and Zhe Chen
+Table 3: Header fields decoded by SigChord
+Protocol
+Sampling Rate
+Avg. Bit Acc
+MCS Acc
+Frame Size Acc /
+Packet Length Error
+Pilot Acc / Duration Error
+CBW Acc
+DVB-S2
+𝑟= 0.625
+0.937
+0.846
+Frame Size Acc: 0.915
+Pilot: 0.934
+-
+𝑟= 0.83
+0.998
+0.990
+Frame Size Acc: 0.999
+Pilot: 0.999
+-
+Non-HT Wi-Fi
+𝑟= 0.625
+0.965
+0.943
+95%-tile of Err: 1.06KB
+-
+-
+𝑟= 0.83
+0.993
+0.998
+95%-tile of Err: 0.00KB
+-
+-
+HT Wi-Fi
+𝑟= 0.625
+0.931
+0.893
+95%-tile of Err: 12.5KB
+95%-tile of Err: 1.18ms
+0.985
+𝑟= 0.83
+0.987
+0.995
+95%-tile of Err: 0.224KB
+95%-tile of Err: 0.0ms
+0.997
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Predicted
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Ground truth
+94.77% 3.83%
+0.73%
+0.67%
+8.11% 91.62% 0.19%
+0.07%
+4.31%
+0.58% 94.55% 0.55%
+4.67%
+0.38%
+1.32% 93.64%
+0.2
+0.4
+0.6
+0.8
+(a) T-Prime [66] 𝑟= 0.625
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Predicted
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Ground truth
+99.81% 0.17%
+0.02%
+0.00%
+0.16% 99.84% 0.00%
+0.00%
+0.03%
+0.00% 99.96% 0.01%
+0.00%
+0.00%
+0.00% 100.00%
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+(b) T-Prime [66] 𝑟= 0.83
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Predicted
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Ground truth
+97.47% 1.39%
+0.48%
+0.66%
+6.68% 93.01% 0.07%
+0.24%
+2.81%
+0.08% 96.65% 0.46%
+2.69%
+0.05%
+0.51% 96.76%
+0.2
+0.4
+0.6
+0.8
+(c) SigChord 𝑟= 0.625
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Predicted
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Ground truth
+99.94% 0.03%
+0.03%
+0.00%
+0.06% 99.94% 0.00%
+0.00%
+0.00%
+0.00% 100.00% 0.00%
+0.00%
+0.00%
+0.00% 100.00%
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+(d) SigChord 𝑟= 0.83
+Figure 16: The confusion matrix of protocol identification
+on synthetic dataset at SNR 10dB.
+Figure 17 presents the classification confusion matrices on over-
+the-air signals, despite neither model being trained on such data. T-
+Prime demonstrates limited generalization, particularly with DVB-
+S2 headers. At𝑟= 0.83, where signal recovery error is relatively low,
+its classification accuracy for DVB-S2 drops to around 90%. This
+issue is pronounced at 𝑟= 0.625, where increased recovery errors
+reduce its accuracy to approximately 58%. In contrast, SigChord
+exhibits robust generalization across all sampling rates. It achieves
+over 99% accuracy in identifying each category at 𝑟= 0.83, and
+over 88% accuracy in recognizing DVB-S2 headers at 𝑟= 0.625.
+The protocol identification model can achieve high performance
+and real-time processing at the same time. Setting the inference
+batch size to 1,024, SigChord processes one batch in 45.3 ± 0.4ms,
+averaging 44.23𝜇s per sample. By organizing the spectrum sensing,
+signal recovery and protocol identification model as a pipeline,
+those wide multiband signal analysis tasks can be completed in
+real-time on a consumer-level GPU. These analysis results along
+with recovered signals can be further forwarded to downstream
+modules.
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Predicted
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Ground truth
+91.84% 7.47%
+0.57%
+0.11%
+41.02% 58.51% 0.29%
+0.18%
+7.29%
+0.63% 91.67% 0.41%
+5.86%
+0.78%
+1.36% 92.00%
+0.2
+0.4
+0.6
+0.8
+(a) T-Prime [66] 𝑟= 0.625
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Predicted
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Ground truth
+95.33% 4.67%
+0.00%
+0.00%
+9.46% 90.54% 0.00%
+0.00%
+0.59%
+0.07% 99.33% 0.00%
+0.38%
+0.03%
+0.03% 99.57%
+0.0
+0.2
+0.4
+0.6
+0.8
+(b) T-Prime [66] 𝑟= 0.83
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Predicted
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Ground truth
+94.71% 4.44%
+0.27%
+0.57%
+10.94% 88.37% 0.15%
+0.55%
+4.11%
+0.26% 95.26% 0.37%
+4.00%
+0.00%
+0.40% 95.60%
+0.0
+0.2
+0.4
+0.6
+0.8
+(c) SigChord 𝑟= 0.625
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Predicted
+No-head
+DVB-S2
+Non-HT Wi-Fi
+HT Wi-Fi
+Ground truth
+99.66% 0.34%
+0.00%
+0.00%
+0.52% 99.48% 0.00%
+0.00%
+0.67%
+0.07% 99.26% 0.00%
+0.63%
+0.10%
+0.00% 99.27%
+0.0
+0.2
+0.4
+0.6
+0.8
+(d) SigChord 𝑟= 0.83
+Figure 17: The confusion matrix of protocol identification
+on the unseen over-the-air signals.
+5.3
+Header Decoding
+This section evaluates the header decoding performance of Sig-
+Chord on DVB-S2, IEEE 802.11g/b non-HT Wi-Fi and IEEE 802.11n
+HT Wi-Fi signals, assuming the protocol headers are identified
+correctly. With seconds of fine-tuning on 1,000 data points for 5
+epochs, we show the decoding accuracy on over-the-air signals.
+The decoding accuracies of each bit in the headers are shown in
+Figure 18. SigChord demonstrates exceptionally high decoding accu-
+racy across various protocol fields at 𝑟= 0.83, with MCS prediction
+accuracy exceeding 99% for all three protocol types. For DVB-S2,
+frame length and payload pilot format parameters are decoded with
+99.9% accuracy, while the channel bandwidth for HT Wi-Fi reaches
+99.7% accuracy. Additionally, SigChord excels in decoding Non-HT
+Wi-Fi packet length and HT Wi-Fi transmission duration fields, as
+shown in Table 3 and Figure 19. Specifically, for Non-HT Wi-Fi,
+SigChord decodes packet length with zero error for at least 95%
+of packets, achieving an average packet length prediction error of
+only 0.014KB. Similarly, it predicts transmission time with zero
+error for at least 95% of packets, with an average prediction error
+of just 13.57𝜇s.

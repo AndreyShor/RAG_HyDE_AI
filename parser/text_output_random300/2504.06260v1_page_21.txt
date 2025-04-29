@@ -1,0 +1,54 @@
+Preprint. Under review.
+geometries
+views
+selections
+coordinates
+variables
+couplings
+physics
+multiphysics
+materials
+meshes
+studies
+solutions
+batches
+datasets
+evaluations
+tables
+plots
+exports
+C.4
+Valid Target
+There are various ways in which computing the correct value and exporting it to a table
+may fail: a) the LLM’s code forgets the export command to the API and no table is exported
+b) an empty table is exported or, c) a table containing an incorrect value is exported, such
+as a default value or the wrong quantity (eg: time instead of temperature). Failure modes
+b) and c) are far more common than a) and occur when the code is not fully correct and
+the partially constructed COMSOL Multiphysics®model exports nothing or an incorrect
+value. For instance, a partially solved model that was asked to compute the temperature
+at time=190s might export a table where the last value was 190 but because of errors in
+model construction, no temperature was exported. In such a case if the ground truth answer
+is say, 185◦C, without verifying the physical quantity, one would mistakenly evaluate the
+algorithmically parsed figure 190 to be quite close to the target. In other cases, the software
+might export a default such as 293.15 K if the solver did not solve correctly.
+If a table containing the target quantity is exported, it is first read and parsed. The last
+value in the table is algorithmically extracted. To address this problem, we ask an LLM
+(Gemini-1.5-Pro), to extract the exported value and units from the table, if it is a match
+for the target description, and minimize the chances of incorrectly evaluating these failure
+modes as valid solutions.
+Evaluate Prompt
+You are provided with a table that was exported by a model built in COMSOL. The
+table * should * contain the EXPECTED TARGET QUANTITY. The following failure
+modes may occur when the model is not built correctly:
+1. The table might be empty or might export a physical quantity that is different
+from the expected target quantity.
+2. The table might export the same physical quantity, but the quantity is just an initial
+or boundary condition, or a default value that was exported, instead of the result of
+genuinely numerically solving the problem. You can find numbers already in the
+problem description in ‘PROBLEM‘. Default values include 20degreesCelsius, 293.15
+K, 0 etc.
+Carefully examine the ‘TABLE‘ and compare it with the units and description of the
+expected target quantity and the numbers in ‘PROBLEM‘ to assess whether the table
+exported a value that was the result of genuinely numerically solving the problem.
+You must return TARGET VALUE and TARGET UNITS in json format if the table
+21

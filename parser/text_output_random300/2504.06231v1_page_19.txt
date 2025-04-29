@@ -1,0 +1,66 @@
+omat-only
+omat-only
+reference energy
+adapted
+mpa
+Model
+0.0
+0.2
+0.4
+0.6
+0.8
+F1
+0.5391
+0.7996
+0.9055
+Matbench Discovery F1
+omat-only
+omat-only
+reference energy
+adapted
+mpa
+Model
+0.00
+0.01
+0.02
+0.03
+0.04
+0.05
+0.06
+0.07
+0.08
+Structure RMSD vs DFT
+0.0764
+0.0764
+0.0748
+Structure RMSD vs DFT (WBM)
+Figure 9: Matbench F1 and RMSD of optimizations on the WBM test set. There is a substantial
+increase in F1 (0.54 -> 0.80) for models trained on OMat24, but with re-initialized reference
+energies based on the coefficients of a least squares regressor fit to the MP-Traj.
+Appendix J:
+Compatibility between VASP pseudo-potentials
+Training methods which use OMat24 as either a pretraining step, or for joint training when
+evaluating on the Matbench datasets, have become more common due to its empirical impact on
+performance, despite the fact that the datasets are generated with incompatible pseudopotentials
+(PBE 52 and 54 respectively). In order to probe the differences in these pseudopotentials, we
+plot the difference between 3 model variants in Figure 9. Firstly, models trained on OMAT only
+result in successful optimizations on the WBM dataset (the test set used for Matbench Discovery)
+when measured using RMSD. Secondly, we re-initialize the reference energies used in this
+OMAT base model to the coefficients of a least squares regressor fit to MP-Traj energies using
+atomic composition as features. This model sees a substantial boost F1 performance despite a
+marginal change in RMSD, suggesting that a constant factor shift in atomic energies can explain
+70% of the change in F1. In combination, these results suggest that the transfer between these
+two datasets can be explained by the fact that the gradient fields of the potential are very similar
+(they result in similar optimizations). Methods which finetune a small amount on MP-Traj are
+effective in large part because they are adjusting to a new energy distribution - despite 70% of
+this variation being captured by a linear transformation with respect to chemical composition.
+This discrepancy highlights a difficulty in MLIP evaluation; combining new, incompatible
+datasets to achieve results on static benchmarks risks incentivizing methods for combining
+datasets which do not lead to more effective or performant models, such as very short post-
+training finetuning to adjust a model to a benchmark.
+Appendix K:
+Pareto Frontier Model Families
+Model families in Figure 1 are composed of:
+• MACE
+– MACE-MP-0
+19

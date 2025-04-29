@@ -1,0 +1,87 @@
+7
+APPENDIX
+A.
+Proof of Lemma 1 and Theorem 1
+We define the imaginary time evolved state
+|ψ(β)⟩=
+e−βH |ψ0⟩
+∥e−βH |ψ0⟩∥,
+(14)
+for some initial state |ψ0⟩and further define the Riemannian gradient descent (RGD) update via |ϕk⟩
+=
+Uϕk−1(∆β) |ϕk−1⟩where
+Uϕ(∆β) = e−∆β[H,|ϕ⟩⟨ϕ|]
+(15)
+with step size ∆β = β
+n. In contrast to the main body of the manuscript, here we indicate that the RGD update step
+Uϕ depends on the state |ϕ⟩the update is applied to. Throughout this work we assume that the initial state |ψ0⟩of
+ITE is the same for RGD.
+Lemma 1: Let |ψ(∆β)⟩=
+e−∆βH|ψ⟩
+∥e−∆βH|ψ⟩∥and |ϕ(∆β)⟩= Uψ(∆β) |ψ⟩be the states created by one step of imaginary
+time evolution and one step of RGD with step size ∆β. Then for any |ψ⟩,
+∥|ψ(∆β)⟩−|ϕ(∆β)⟩∥≤6∆β2∥H∥2
+∞
+(16)
+Proof: By the triangle inequality the error between the imaginary time evolved state |ψ(∆β)⟩and the state |ϕ(∆β)⟩
+is upper bounded by
+∥|ψ(∆β)⟩−|ϕ(∆β)⟩∥=
+
+e−∆βH |ψ⟩
+∥e−∆βH |ψ⟩∥−e∆β[|ψ⟩⟨ψ|,H] |ψ⟩
+
+(17)
+≤∥(1 + (−H + ⟨ψ|H|ψ⟩) ∆β) |ψ⟩−(1 + (−H + ⟨ψ|H|ψ⟩) ∆β) |ψ⟩∥+ R′ + R
+(18)
+= R′ + R,
+(19)
+where the remainder terms R′ and R for the first order of the Taylor expansion of
+e−∆βH
+∥e−∆βH|ψ⟩∥and e∆β[|ψ⟩⟨ψ|,H] in ∆β
+can be upper bounded using the Lagrange form of the remainder. We find
+R′ ≤
+∆β2 1
+2!
+d2
+dx2
+e−xH
+∥e−xH |ψ⟩∥|ψ⟩
+
+x=∆β
+
+(20)
+≤
+
+∆β2
+2
+h
+H2 |ψ
+′⟩−2⟨H⟩H |ψ
+′⟩−2⟨H2⟩|ψ
+′⟩+ 3⟨H⟩2 |ψ
+′⟩
+i ≤4∆β2∥H∥2
+∞,
+(21)
+where |ψ
+′⟩is the normalised state |ψ
+′⟩=
+e−xH|ψ⟩
+∥e−xH|ψ⟩∥at x = ∆β, and ⟨H⟩(⟨H2⟩) is the expectation value of H (H2)
+with respect to |ψ
+′⟩. Similarly we can bound
+R ≤
+∆β2 1
+2!
+d2
+dx2 e∆β[|ψ⟩⟨ψ|,H] |ψ⟩
+
+x=∆β
+ ≤2∆β2∥H∥2
+∞.
+(22)
+We thus arrive at
+∥|ψ(∆β)⟩−|ϕ(∆β)⟩∥≤6∆β2∥H∥2
+∞
+(23)
+which completes the proof of Lemma 1.

@@ -1,0 +1,70 @@
+9
+Fig. 9.
+Spectrum of: (a) the induced currents on the impedance layer, and
+(b) the scattered electric ﬁeld at a plane λ/20 above the RIS. The cases
+of beamsteering at 45◦and beamforming into a sector pattern with a 45◦
+beamwidth are examined. The spectrum for the beamforming case exhibits
+higher-intensity surface waves that facilitate the amplitude tapering along the
+RIS aperture.
+y
+x
+Fig. 10. Photograph of the top layer of the fabricated RIS prototype. Inset:
+Magniﬁed photograph of the unit cells at the bottom-right corner.
+resembles the plane-wave assumed in the optimization and
+simulations. On the other hand, an identical receiving horn
+antenna captures the reﬂected power from the RIS at different
+angles θ by rotating at a constant radius R2 = 2.5m from the
+RIS center. Measurements are taken through a VNA connected
+to both antennas and recording the S21(θ) coefﬁcient. For the
+beamsteering case, measurements are taken every 1◦close to
+the expected peak (i.e., within a ±20◦range) and every 2.5◦
+elsewhere. On the other hand, for the sector patterns demon-
+strating the beamforming capabilities, measurements are taken
+every 2.5◦for the whole pattern. The S21(θ) values for each
+case are processed according to the procedure described in the
+Appendix A in order to extract the directivity pattern and the
+total, illumination and power efﬁciency of the RIS.
+A measurement in the absence of the RIS was performed to
+assess the noise ﬂoor of the setup. In this case, the measured
+Fig. 11. Bi-static measurement setup consisting of the RIS on the stage, the
+illuminating horn antenna at a ﬁxed angle and the rotating receiving horn
+antenna.
+power originates from reﬂections by non-absorptive surfaces
+in the chamber (e.g., table, ﬂoor) and from direct transmission
+between the antennas. For all angles, the noise ﬂoor was
+29dB to 32dB below the measured peak of the beamsteering
+patterns, and 24dB to 26dB below the peak of the sector
+patterns. Therefore, the key characteristics of the radiation
+patterns (i.e., maximum directivity, beamwidth, major side
+lobes) are measured credibly, whereas some nulls or minor
+lobes may be affected by scattering unrelated to the RIS.
+B. Experimental Characterization of Varactors
+It is paramount to characterize experimentally the varactors
+at f = 5GHz, which is the intended frequency of operation
+for the RIS. This is both because the spice model from
+the manufacturer is not referring explicitly to the operating
+frequency and also because there is a variation of the var-
+actors’ capacitance for a given voltage due to manufacturing
+uncertainties. To extract the capacitance for a given voltage,
+all the bias voltage lines of the RIS are set to a common
+voltage level Vc. The specular reﬂection from an incident wave
+from −15◦is measured for different levels of the common DC
+bias Vc in the range of 0V to 10V with a step of 0.2V. The
+measured RIS response as a function of frequency is shown
+for selected voltage levels in Fig. 12, where it is evident that
+the resonance frequency shifts as a result of the change in
+the bias voltage and the corresponding capacitance of the
+varactors. By simulating a single unit cell in Ansys HFSS
+for different capacitance values in the range [0.2, 1]pF, the
+resonance frequency for different capacitances is determined.
+Then, through a comparison of the resonance frequency be-
+tween the simulated data for different capacitances and the
+measured data for different voltages, a correspondance is
+established between the DC bias voltage and the effective
+capacitance. The relevant result is given in Fig. 13 together
+with the theoretical curve extracted from the spice model
+and simulated in Keysight Advanced Design System (ADS).
+In general, the matching is satisfactory and the capacitance
+range of [0.2, 1]pF is achieved within the limitations of the
+USB-controllers that provide an output voltage up to 10V.
+For all experiments, the experimentally-extracted curve in

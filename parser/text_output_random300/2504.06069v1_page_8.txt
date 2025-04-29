@@ -1,0 +1,41 @@
+include an explicit energy conservation term in loss function that penalizes model if its predictions 
+violate the physical principle.  
+Loss Function Formulation 
+Our loss function incorporates multiple physics-informed components, each addressing specific 
+electromagnetic aspects of metasurface:  
+I. Amplitude loss 
+𝐿𝑎𝑚𝑝= 1
+𝑁∑(𝐴𝑝,𝑖−𝐴𝑡,𝑖)2
+𝑁
+𝑖=1
+ 
+(2) 
+where 𝐴𝑝,𝑖 and 𝐴𝑡,𝑖 are the predicted and true amplitude values for sample i respectively, and N is the 
+dataset size. 
+II. Energy conservation loss 
+We use an energy conservation constraint: 
+𝐿𝑒𝑛𝑒𝑟𝑔𝑦= 1
+𝑁∑(max⁡(0⁡, 𝐴𝑝,𝑖−1))2
+𝑁
+𝑖=1
+ 
+(3) 
+This term penalizes only predictions surpassing the physical limit of perfect transmission (𝐴𝑝,𝑖= 1), 
+ensuring compliance with the energy conservation principle. 
+III. Phase loss 
+The phase loss can leverage our sine-cosine representation to calculate error based on measuring of 
+the Euclidean distance between true and predicted phases on the unit circle in sine/cosine space: 
+𝐿𝑝ℎ𝑎𝑠𝑒= 1
+𝑁∑√(𝑠𝑖𝑛𝑛𝑜𝑟𝑚,𝑖−𝑠𝑖𝑛𝑡,𝑖)2⁡+⁡(𝑐𝑜𝑠𝑛𝑜𝑟𝑚,𝑖−𝑐𝑜𝑠𝑡,𝑖)2
+𝑁
+𝑖=1
+ 
+(4) 
+This formulation provides a physically meaningful calculation of phase error that inherently addresses 
+the phase wrapping problem with no discontinuities at the boundaries. Since cosine and sine terms 
+represent coordinates on the unit circle, the Euclidean distance captures the chord length between 
+true and predicted phase positions. This dimensionless metric ranges from 0 (perfect prediction, 
+where true and predicted phase values coincide) to 2 (maximum error, where true and predicted 
+phase values are diametrically opposite on the unit circle). The method naturally handles phase 
+wrapping at 0/2π boundaries, as points near these boundaries remain close in sine-cosine space even 
+when they appear distant in conventional phase representation. 

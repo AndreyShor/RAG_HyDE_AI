@@ -1,0 +1,123 @@
+4
+2.
+Exchange Energy
+The exchange energy is essentially short range, and it in-
+volves a summation over nearest neighbors. If we assume
+a small spatial variation of the magnetization at the meso-
+scopic length scale, the exchange energy density can be writ-
+ten as41–43
+EEx =
+Z  2A
+µoM2
+S
+∇2 ⃗M
+
+dV,
+(9)
+where A is the exchange stiffness constant in J/m (SI units).
+3.
+Anisotropy Energy
+Anisotropy refers to the directional dependence of magnetic
+material properties, playing a crucial role in the magnetic re-
+versal mechanism and holding significant fundamental impor-
+tance. There are several anisotropy energy terms relevant for
+thin film magnetism. A brief overview is given in the follow-
+ing.
+a.
+Magnetocrystalline Anisotropy Energy:
+The Magne-
+tocrystalline anisotropy energy has its origin at the atomic
+level. In materials exhibiting significant anisotropy, there ex-
+ists a robust coupling between the spin and orbital angular mo-
+menta within individual atoms due to spin-orbit coupling. Ad-
+ditionally, atomic orbitals, which are typically non-spherical,
+exhibit strong interactions with the lattice. Due to their shape,
+these orbitals tend to align preferentially along specific crys-
+tallographic directions. Consequently, the interplay between
+spin-orbit and orbit-lattice coupling dictates a preferred align-
+ment for the magnetization, known as the easy direction. The
+energy required to deviate the magnetization from this pref-
+erential orientation is termed magnetocrystalline anisotropy
+energy. Given the diverse lattice structures present in mate-
+rials, it is natural to anticipate that this anisotropy energy is
+dependent on the lattice structure.
+Uniaxial Magnetocrystalline Anisotropy occurs in hexag-
+onal crystals, such as cobalt. Phenomenologically one can
+write the energy expression as36
+EUniaxial = KuVsin2θ,
+(10)
+where θ is the angle between the easy direction and the
+magnetization, Ku is the anisotropy constant in units of en-
+ergy/volume, and V is the volume of the sample.
+Cubic magnetocrystalline anisotropy occurs in cubic crys-
+tals, such as iron and nickel. Phenomenologically, one can
+write the energy expression as36–38,41
+ECubic = KoV +K1V(α2
+1 α2
+2 +α2
+2 α2
+3 +α2
+3 α2
+1 )
+(11)
+Here, the αi represent the cosines of the angles between the
+magnetization direction and the crystal axes.
+b.
+Shape Anisotropy Energy
+The shape anisotropy en-
+ergy arises from the tendency of a FM to align its magnetic
+moments along certain preferred directions due to its shape.
+In the case of a two-dimensional nanowire, the demagnetizing
+factors are lower along the long axis compared to the short
+axis. This means that it is easier to magnetize the nanowire
+with an in-plane external field applied along the long axis,
+leading to an induced anisotropy known as shape anisotropy.
+The shape anisotropy energy increases as demagnetizing field
+⃗HD increases. A common phenomenological expression for
+the shape anisotropy energy for an ellipsoidal ferromagnet is
+given by:
+EUniaxial = KDV sin2 θ.
+(12)
+Here, θ is the angle between the long axis of the sample and
+the magnetization direction. The anisotropy constant is KD =
+1
+2(Nx −Nz)M2, where Nx and Nz are demagnetization factors
+in the short and long axis direction, respectively.
+While various anisotropy energy terms exist,
+shape
+anisotropy dominates artificial spin ice dynamics. This prefer-
+ence arises because the patterned thin films from which ASIs
+are made are typically polycrystalline, with individual grains
+of the magnetic film (e.g., a NiFe thin film on a thermally oxi-
+dized Si substrate, with no perpendicular magnetic anisotropy
+and random grain orientation). In such a case, the influence
+of magnetocrystalline anisotropy is expected to be negligible
+compared to shape anisotropy.
+B.
+Micromagnetic Simulations
+Advances in computational hardware and numerical tech-
+niques enable the implementation of the micromagnetic ap-
+proach described above on both high-performance computing
+facilities and standard office desktop computers, utilizing ei-
+ther CPU or GPU processing.
+The key advantages of this micromagnetic simulations
+(MS) approach are as follows:
+1. Replicating Experimental Observations: MS accu-
+rately replicate experimental phenomena such as FM
+hysteresis and ferromagnetic resonance (FMR) spectra,
+providing a virtual laboratory for validation and explo-
+ration.
+2. Deciphering Parameter Influences: By exploring the
+dependence of experimental outcomes (e.g., coercivity,
+resonance frequency) on simulation parameters like the
+exchange length of the FM, MS facilitates a nuanced
+understanding of these relationships, guiding experi-
+mental design and interpretation.
+3. Optimizing Future Experiments: MS empower re-
+searchers to fine-tune physical parameters for upcom-
+ing experiments, enhancing efficiency and efficacy by
+iteratively refining hypotheses and experimental setups.
+A finite difference method (FDM) based program called Ob-
+ject Oriented Micromagnetic Framework (OOMMF) can be
+used to perform MS44. The geometry of an object needs to be
+first discretized in the form of cuboid spins of sizes p nm × q

@@ -1,0 +1,44 @@
+Orb-v3 Models
+Orb-v3 is a family of models that share the same basic architecture as Orb-v2 [28, 9] as well
+as the same diffusion pretraining scheme. Despite this similar top-level training strategy, we
+find that there is a range of often subtle design choices that affect a model’s performance. We
+enumerate the full list of these in Appendix C, focusing here on the three most significant
+choices: conservatism, maximum neighbor limits and choice of dataset.
+These three key variables chart a path across the performance-speed-memory Pareto frontier.
+Thus, our publicly released models* use suffixed names of the form orb-v3-X-Y-Z, where
+X ∈{direct, conservative},
+Y ∈{20, inf},
+Z ∈{omat, mpa}
+where X denotes whether forces and stress are computed as gradients of the energy, Y refers to a
+maximum number of neighbors per atom, and Z is the final dataset that a model was trained on.
+Conservatism and equigrad
+Orb-v2 demonstrated that non-conservative potentials can be fast, low-memory and performant.
+However, as shown by Bigi, Langer, and Ceriotti [22], they may have inherent limitations such
+as not conserving energy in NVE molecular dynamics. We argue that the choice of direct versus
+conservative models may ultimately be workflow-dependent, and thus release both types.
+During training, our conservative models benefit from equigrad, a new roto-equivariance-
+inducing regularization scheme. The key insight is that we can quantify and improve the
+rotational invariance of the energy prediction by regularizing the gradient of 𝐸with respect to
+an identity rotation matrix applied to atomic positions. See the corresponding Section below for
+more information.
+Neighbor limits
+Orb-v2 defined atomic neighborhoods by a max radius of 10 Å and a limit of 20 neighbors.
+We have since discovered that neighbor limits come with performance penalties for certain
+calculations—likely due to the discontinuities they create in the PES—corroborating the findings
+of Fu et al. [40]. However, unlike Fu et al. [40], we still release models that use neighbor limits,
+because they occupy a different part of the performance-speed-memory Pareto frontier.
+Datasets and distillation
+The OMat24 dataset [20] has quickly become the default dataset for universal MLIPs [29].
+Roughly half of its 100M datapoints come from AIMD, and the other half from ‘rattling’
+existing low-energy structures. Early in development, we found that these rattled systems
+had deleterious effects on our models when evaluated on out-of-distribution hetero-diatomic
+systems (see Appendix I). Thus, all orb-v3-*-omat models are only trained on the AIMD subset
+of OMat24.
+We also release models trained on mpa, which is shorthand for the combination of MPTraj [5] and
+Alexandria (PBE) [16]. These datasets have been instrumental in the development of universal
+MLIPs, but in our view have now been supplanted by OMat24, which is much larger, more
+diverse in terms of off-equilibrium structures, and uses newer pseudo-potentials. We release
+mpa models for compatibility with existing benchmarks such as Matbench-Discovery, but advise
+users of orb-v3 to default to the -omat versions.
+*Available under an Apache 2.0 License at https://github.com/orbital-materials/orb-models.
+3

@@ -1,0 +1,56 @@
+activation energy required to escape the local minimum. Note that the accuracy of the energy estimates must
+only be sufficiently high to discriminate among a set of potential products. There is an inherent robustness in
+the choice of accuracy since typically only after a significant distortion do we want to identify the collection
+of atoms as a separate chemical species. Ultimately, the exact region of configuration space we identify as
+the chemical species of interest depends to an extent on the chemistry we wish to capture, but we expect
+some inherent stability under small changes of this definition.7
+Compilation of counting logic
+It is convenient to view IXα as acting on a subspace of the configuration space of all ions, and so given
+x ∈R3ηion, we have that IXα acts on the appropriate nXα components of x. Then, for a given reaction or
+other dynamical process being simulated, we specify a list of chemical species (X1, ..., XM) to identify, and
+for x ∈R3ηion, compute a corresponding set of configuration indicators {IX1(x) = iX1, . . . , IXM (x) = iXM }.
+The indicators are then mapped to molecular species counts using a compiler C to produce species counters,
+CX1,...,XM : {0, 1}⊗M →NM,
+(iX1, ..., iXM ) 7→(CX1(iX1, ..., iXM ), ..., CXM (iX1, ..., iXM ))
+where CXα counts the number of chemical species Xα. The compiler processes the configuration indicators
+to (1) ensure that there is no double-counting or overlapping of indicators, and (2) for the collection of atoms
+in the simulation, check occurrence and count all (combinatorially many) possible ways a species Xα can
+appear as a combination of the available atoms. As an example of the first property, suppose hypothetically
+that we have prior knowledge that the CO configuration indicator does not sufficiently discern CO as an
+isolated species and CO as a substructure within CO2. Then, positive indicators for both CO and CO2
+sharing a common C atom do not indicate the presence of both species. There is a single CO2, but it triggers
+both indicators. To avoid such double-counting, the compiler function performs additional logic to ensure
+that CO is only flagged when it is not a derivative of CO2. The compiling logic is also pre-determined
+classically given knowledge of the fidelity and interplay of indicators.8
+Fingerprinting for an individual species
+Direct coherent implementation of the classical indicators can be impractically expensive. For the energetic
+classification we suggested, one would need to either directly load the indicator functions that partition the
+ionic configuration space into the quantum computer, or run a quantum phase estimation, an expensive
+subroutine introducing further large multiplicative costs.
+All of these solutions have serious drawbacks.
+Therefore, we must construct a more efficient strategy for chemical species identification. To this end, we
+propose a classical pre-processing algorithm to identify discerning fingerprints of the chemical species, i.e.,
+we develop an efficient substitute for IXα which, after compilation, we efficiently implement on a quantum
+computer. Using machine-learning parlance, for each chemical species Xα, we identify a set of features,
+FXα : R3nXα →RQXα
+.
+(13)
+Here, FXα maps the 3nXα configurational coordinates of molecule Xα to a smaller QXα-dimensional feature
+space. Features must be efficiently computable on a quantum computer, ideally only involving simple arith-
+metic and a small number of free parameters to be loaded. Examples of features include functions of bond
+distances, bond angles, or other chemically justified quantities. A feature indicator map
+Ifeat
+Xα : RQXα
+→{0, 1}
+(14)
+is constructed such that ˜IXα = Ifeat
+Xα ◦FXα closely approximates the indicator IXα. The feature indicator map
+may be developed agnostically and scalably by using an appropriately-chosen machine-learning model (e.g.
+7On an abstract note, the system only consists of interacting electrons and ions, and so what to identify as a molecule/chemical
+species must, in part, by up to our interpretation of the collective/bound structures that appear in the wavefunction. Also note
+that one may consider exchanging the above binary (“hard”) indicator for a non-binary (e.g. real number) “soft” indicator.
+8One might fairly worry that checking combinatorially-many instances results in poor scaling for identification. However, for
+a small handful of chemical species of interest, as we envision for any reasonably early to mid generation FTQC, the practical
+costs of checking all instances (involving coherent arithmetic and additional simple logic) are negligible compared to that of
+performing quantum time-evolution.
+13

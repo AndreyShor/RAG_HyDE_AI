@@ -1,0 +1,77 @@
+• Measure the extra register, obtaining outcome 0 with probability sx.
+• Repeat.
+Note that we can see s as the average of a Bernoulli variable that takes two values, 1 when the target
+chemical species is identified at the final time (which has probability s = P
+x pxsx) and 0 when it is not
+(which has probability P
+x px(1 −sx)). When averaged over Nsample trials, we obtain a random variable
+with average s and variance s(1 −s)/Nsample ≤s/Nsample. By Chebyshev’s inequality, the empirical mean ˜s
+satisfies Eq. (134) up to a constant failure probability (say, 0.1%) as long as
+Nsamples = O(s−1ϵ−2).
+(136)
+The overall cost of this procedure then scales as
+O
+Cinit + Calgo
+sϵ2
+
+,
+(137)
+where Cinit is the average cost of initializing the initial state and Calgo is the cost of running the rest of the
+algorithm. Note that the scaling with s−1 is expected to be a limiting factor, since s will be small in many
+instances despite our attempts to favorably bias the reaction as discussed in Sec. 2.2. This can be partially
+mitigated (at the cost of longer depth) by the following procedure.
+Solution 2: coherent averaging by amplitude amplification
+The coherent averaging procedure is as follows:
+• Apply a unitary on O(log2 |S|) qubit registers, preparing them in the state
+|S|−1
+X
+x=0
+√px|x⟩,
+(138)
+where x is just an integer label of the configurations in S.
+• Apply the controlled unitary P
+x Ux ⊗|x⟩⟨x| that prepares the initial state
+|S|−1
+X
+x=0
+√px|ψx(0)⟩|x⟩,
+(139)
+from the all zero state.
+• Run the time-evolution and chemical species identification components of the algorithm, to obtain the
+state
+X
+x
+√pxsx|ψidentified
+x
+(t)⟩|x⟩|0⟩+
+p
+px(1 −sx)|ψ⊥
+x (t)⟩|x⟩|0⊥⟩)
+
+= √s|ϕ0⟩|0⟩+
+√
+1 −s|ϕ⊥⟩|0⊥⟩, (140)
+where |ϕ0⟩=
+1
+√s
+P
+x
+√pxsx|ψidentified
+x
+(t)⟩|x⟩, |ϕ⊥⟩=
+1
+√1−s
+P
+x
+p
+px(1 −sx)|ψ⊥
+x (t)⟩|x⟩, where the extra
+register flags as |0⟩the identification of a target species and by ‘not zero’ as everything else.
+• Perform amplitude estimation to estimate the amplitude of the zero component.
+Note that in the first step we need to be able to prepare a quantum state that coherently encodes the
+distribution px. In the worst case this has a cost O(|S|), but if px has special properties (e.g., if it can be
+well-approximated by a much simpler reference distribution [75]), then the cost will have better scaling, up
+to O(log2 |S|). In the second step the initialization unitary has in the worst case a cost O(|S|Cinit), while
+in many cases we can expect further savings exploiting the structure of the configuration space. The third
+step has a cost Calgo, as before.
+47

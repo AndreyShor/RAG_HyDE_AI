@@ -1,0 +1,128 @@
+11
+Algorithm 3 – The aro algorithm
+Require: A tuple (G, S, T) where G = (V, E) is an n-vertex
+grid graph, S ⊆V (G) is the source configuration of to-
+kens, T ⊆V (G) is the target configuration of tokens, and
+|S| ≥|T|;
+1: For every vertex in u ∈T, compute a shortest path from
+u to every vertex v ∈S using breadth-first search in
+G (O(n2));
+2: Compute a distance-minimizing matching M followed by
+a distance-minimizing path system P (we assume wG(P)
+is finite) using the MCMF solver (O(n2));
+3: Apply the (distance-preserving) rerouting heuristic to re-
+duce the number of displaced tokens (O(n3));
+4: while GP is not a forest (O(n)) do
+5:
+Let E = E(GP) (edges of the path system);
+6:
+for each edge e ∈E do
+7:
+Let G′ = (V, E \ {e});
+8:
+Compute shortest paths between S and T in G′;
+9:
+Compute P′ for (G′, S, T) (O(n2));
+10:
+if wG′(P′) ≤wG(P) then
+11:
+Let P = P′;
+12:
+Let G = G′;
+13:
+break;
+14: Generate partially-ordered list of moves (O(n2));
+15: return list;
+MCMF-based
+assignment
+routine.
+The
+im-
+proved aro algorithm reduces the problem of finding
+a distance-minimizing matching to the MCMF prob-
+lem, rather than using the Hungarian method, when the
+graphs are unweighted. In the standard formulation of
+the MCMF problem, the aim is to maximize a flow sent
+from a source to a sink vertex while minimizing a pre-
+determined notion of cost, with the edges having costs
+and capacities. We let H be a copy of G where we then
+replace every edge by two directed edges, one in each di-
+rection, each of which having infinite capacity and unit
+cost. We add a vertex s⋆to H and add directed edges
+from s⋆to every vertex of S. Similarly, we add a vertex
+t⋆to H and add directed edges from every vertex in T
+to t⋆. Edges incident to s⋆or t⋆have unit capacity and
+unit cost. It is known that a distance-minimizing match-
+ing that saturates T corresponds to a minimum-cost flow
+of value |T| from s⋆to t⋆[29].
+Our MCMF solver is similar in essence to the
+Edmonds-Karp algorithm, an implementation of the
+Ford-Fulkerson method to compute maximum flows in
+a network [24, 25]. At every step, a shortest (augment-
+ing) path between s⋆and t⋆is computed, and flow is
+sent along this path, while keeping track of the direc-
+tions along which the flow units are being sent in. The
+computation of the shortest path can be done in time
+O(n + m) using breadth-first search, because our graphs
+are unweighted. The graph H can be constructed in time
+O(n+m). Since computing a matching will require com-
+puting O(n) shortest paths, and given that m ∈O(n) in
+planar graphs, our MCMF solver runs in time O(n2) (in
+contrast to the running time of O(nm log n) for the algo-
+rithm that solves the problem for unweighted arbitrary
+graphs on n vertices and m edges [29]).
+Improved cycle-breaking procedure.
+The other,
+more substantial improvement that we propose to the
+aro algorithm is an improved cycle-breaking procedure.
+When GP is not a forest, the main result of Ref. [21]
+guarantees the existence of at least one valid distance-
+minimizing path system P⋆, such that GP⋆is a forest,
+GP⋆uses a proper subset of the edges of GP and w(P⋆) ≤
+w(P). This existence in turn implies that there exists at
+least one edge e in E that does not need to be present in
+a valid distance-minimizing path system. We say that e
+is safe, because deleting it does not affect the existence of
+a valid distance-minimizing path system. To determine
+whether an edge is safe to delete, we delete the edge and
+compute a distance-minimizing path system P′ in the
+resulting graph with one less edge G′ = (V, E \ {e}). If
+wG′(P′) ≤wG(P) then e is safe and we retain the edge
+deletion and replace G and P by G′ and P′, respectively,
+and repeat the process as long as GP is not a forest.
+Termination is again guaranteed by Theorem 1 in [21].
+After finitely many edge deletions, we obtain the path
+system P⋆, as desired.
+Each iteration of the improved cycle-breaking proce-
+dure reduces the number of edges by one. Moreover, the
+number of edges in a planar graph is O(n). Hence, the
+main loop in the algorithm iterates O(n) times. In the
+worst case, at any given point, exactly one edge of E is
+safe to delete and that edge appears at the last iteration
+of the for loop. As |E| = O(n), a single iteration of the
+main loop attempts to delete O(n) edges, one edge at a
+time, and for every attempt, a distance-minimizing path
+system is computed. This implies that O(n2) distance-
+minimizing path systems are computed in the worst case.
+Given that a distance-minimizing path system can be
+computed in time O(n2) using the MCMF approach, the
+revised version of the aro algorithm runs in time O(n4)
+while our previous, more general, implementation runs in
+time O(n8). Note, however, that the revised version of
+the aro algorithm does not render the original version ob-
+solete, as the revised version does not support weighted
+graphs and is tailored for grid graphs only.
+IV.
+BATCHING ROUTINE
+Batching groups together moves that can be executed
+simultaneously, which improves the performance of exe-
+cuting the list of moves generated by the reconfiguration
+algorithms. In prior work, the 1D and red-rec algorithms
+generated batched moves implicitly, whereas the aro al-
+gorithm did not generate batched moves. In this paper,
+we propose a general batching routine that works for any
+of our proposed reconfiguration algorithms, including the
+exact 1D, red-rec, bird, and aro algorithms. In this sec-
+tion, we describe this batching routine in its most general
+form, i.e., by ignoring restrictions associated with input
+parameters and other restrictions imposed by the control

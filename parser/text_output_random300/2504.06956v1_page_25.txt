@@ -1,0 +1,75 @@
+Local structure of extremal points
+25
+Proof. The proof is almost identical to that of Lemma 4.8. Therefore, we only highlight the necessary
+changes. First, for a fixed A > 0, we note that (4.10) in Lemma 4.8 also holds uniformly for
+all u ∈[−A, b1/4]. Then, the only thing that needs to be changed is the bound (4.20). Indeed,
+Proposition A.5 can only be applied for u ∈[bι, b3/4] for some ι ∈(0, 1/8). However, we can easily
+overcome this issue by using monotonicity and replacing the endpoint u in the probability on the
+left-hand side of (4.20) with u + bι for some ι ∈(0, 1/8). This allows us to apply Proposition A.5,
+from which we deduce that the probability on the left-hand side of (4.20) is bounded above by a
+multiple of a2
+k(u + bι)/(b −k). The conclusion then follows by proceeding with the remaining part
+of the argument in the proof of Lemma 4.8 and recalling that u < b1/4.
+The following lemma is analogous to [BL18, Lemma 4.21] in our setting.
+Lemma 4.12. There exist constants c1, c2 > 0 such that for λ > 0, for b ∈N large enough and
+u ∈[b1/4, b3/4],
+c1
+u
+b ≤P0,u,b(M0,b(Υb,g) ≤λ) ≤c2
+u
+b .
+(4.21)
+Similarly, there exist constants ec1, ec2 > 0 such that for λ > 0, for b ∈N large enough,
+ec1
+1
+√
+b
+≤P(M0,b(Υ∞) ≤λ) ≤ec2
+1
+√
+b
+.
+(4.22)
+Proof. We start with the upper bound in (4.21). Thanks to (4.13), it holds that
+{M0,b(Υb,g) ≤λ} ⊆{Kb = b} ∪
+
+Kb < b,
+b−1
+\
+j=1
+{Bj ≥−λ −RKb(j)}
+
+.
+Thanks to Lemmas 4.8 and 4.10, the probability of the event on the right-hand side of the above
+display is less than than a multiple of
+u
+b
+b−1
+X
+k=1
+e−c1(log k)2 + e−c2(log b)2 ,
+for some constants c1, c2 > 0. Therefore, the desired bound follows. We observe that the upper bound
+in (4.22) can be deduced in a similar way.
+We now focus on the lower bounds. In particular, we limit ourself to study the lower bound in (4.21),
+since the one in (4.22) can be obtained similarly. For k, b ∈N such that k < b, let Ek be the event
+that all conditions in the definition of the control variable Kb are satisfied with Θk(·), except that we
+do not impose any requirements on the oscillation bounds for the Brownian motion for time indices
+up to and including time k. In particular, the event Ek is conditionally independent from σ((Bs)s≤k)
+given σ(Bk). We have the following lower bound
+P0,u,b(M0,b(Υb,g) ≤λ) ≥P0,u,b
+
+M0,k(Υb,g) ≤λ, Ek,
+b−1
+\
+j=k
+{Bj ≥λ + Rk(j)}
+
+.
+(4.23)
+where we used the fact that, thanks to Lemma 4.9, on the event Ek4, it holds that
+b−1
+\
+j=k
+{Bj ≥λ + Rk(j)} ⊆{M0,b,k(Υb,g) ≤λ} .
+4To be precise, the conclusion of Lemma 4.9 holds on the event {Kb ≤k}. However, as one can easily check, on the
+annulus Bb \ Bk only the conditions on the oscillations of the Brownian motion after time k are relevant.

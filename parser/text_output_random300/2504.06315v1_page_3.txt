@@ -1,0 +1,105 @@
+Raorta2eye,1
+Laorta2eye
+Qaorta2eye
+Paorta2eye,1
+Caorta2eye
+Raorta2eye,2
+Paorta2eye,2
+Reye,1
+Peye
+Ceye
+Reye,2
+Rcra,in,1
+Ccra,in
+Pcra,in
+Rcra,in,2
+Rcra,1a
+Pcra,1
+Ccra,1
+Rcra,1b
+Rcra,2a
+Pcra,2
+Rcra,2b
+Rart,1
+Part
+Cart
+Rart,2
+Rcap,1
+Rcap,2
+Pcap
+Rven,1
+Cven
+X15
+Rven,2
+Rcrv,1a
+Rcrv,1b
+Pcrv,1
+Rcrv,2a
+Ccrv,2
+Pcrv,2
+Rcrv,2b
+Rcrv,out,1
+Pcrv,out
+Ccrv,out
+Rcrv,out,2
+Reye2vc,1
+Peye2vc,1
+Ceye2vc
+Peye2vc,2
+Leye2vc
+Qeye2vc
+Reye2vc,2
+Paorta
+Raorta,1
+S aortic
+RLV
+S pv
+Rpv
+ELV
+VLV
+−
++
+ULV
+Pvc
+Rvc
+S vc
+RRV
+S pa
+Rpa
+ERV
+−
++
+URV
+VRV
+Raorta,2
+Caorta
+Laorta
+Qaorta
+Pbody
+Cbody
+Lbody
+Qbody
+Cvc
+Rbody
+Lpv
+Qpv Ppv
+Cpv
+Rlungs,2
+Plungs
+Clungs
+Rlungs,1
+Ppa
+Cpa
+Llungs
+Qlungs
+Figure 1: Cardiovascular model schematic of the Eye2Heart closed loop circuit.
+Cardiovascular System
+The cardiovascular system in this model builds upon the mathematical framework proposed by Avanzolini et al [2],
+modified to account for its coupling with the upper circulation that supplies blood specifically to one eye. The aortic
+pressure (Paorta) and the right venous-atrial pressure (Pvc) are now interfaced with an ad hoc upper circulation module,
+designed to model blood flow to the ocular compartment and specifically to the retinal circulation.
+To incorporate these dynamics, the original equations have been reformulated, ensuring seamless integration of
+the new blood circulation pathway into the system. A key parameter, Rbody, which represents the equivalent peripheral
+resistance of the body, has been updated to reflect the redistribution of blood volume toward the eye. In the original
+model, Rbody was assigned a value of 6.75 · 10−2 [mmHg · s · ml−1]. In the revised eye-heart model, this parameter has
+3

@@ -1,0 +1,36 @@
+MOBO provides valuable insights into the interplay between competing rewards and incorporates 
+human decision-making into the optimization process by allowing trade-offs within the Pareto 
+front to be tailored for different scenarios. 
+We illustrate these principles through the automated optimization of tapping mode in Scanning 
+Probe Microscopy (SPM), where three reward functions—derived either from the underlying 
+physics of the system or from human heuristics—guide the optimization. Our results show that 
+MOBO rapidly converges to optimal control parameters, producing high-quality, reproducible 
+scans while quantifying the relationships between competing rewards. The Pareto front analysis 
+not only helps to refine the design and validation of reward functions but also enables human 
+operators to actively participate in the decision-making process. 
+By assigning weights to different rewards, MOBO allows human operators to precisely control 
+the trade-offs between objectives, transforming each reward into a quantifiable tuning parameter. 
+This framework shifts experimental optimization from intuitive, trial-and-error approaches to a 
+systematic, data-driven strategy, enhancing both efficiency and reproducibility in complex 
+scientific experiments. 
+ 
+ 
+MOBO implementation and instrument control 
+For all the MOBO workflows in this work, we limit the parameter space resolution to 100 x 100 x 
+50 so that the workflow is lightweight enough to run on a local computer with central processing 
+unit (CPU) only. The surrogate Gaussian Process (GP) model was incorporated using gpytorch 
+[52]. MOBO is implemented in BOTorch [53]. 
+The SPM control is achieved by our home built open-source Python interface library, AESPM 
+[54]. This library not only enables real-time operating the SPM system local or remotely with 
+code the same way as human operators but also has access to the intermediate data like trace and 
+retrace scan lines in all the channels which are essential for fast optimization presented in this 
+work.  
+AESPM is an open-source SPM-Python interface library. It can be found in the following link 
+with detailed examples and tutorial notebooks: https://github.com/RichardLiuCoding/aespm 
+SpmSimu is an open-source SPM scanning simulator. It can be found in the following link with 
+detailed examples and tutorial notebooks: https://github.com/RichardLiuCoding/spmsimu 
+To help readers understand and reproduce the results in this work, we have provided an open-
+source Python notebook for the tutorial presented in the Appendix 1: 
+https://github.com/RichardLiuCoding/Publications/blob/main/MOBO%20Tutorial_v2.ipynb 
+We have also prepared a full MOBO workflow based on our SpmSimu simulator that readers can 
+modify to build automated workflow on their own instruments: 

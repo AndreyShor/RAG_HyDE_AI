@@ -1,0 +1,54 @@
+NEURAL NETWORK ENHANCED POLYCONVEXIFICATION OF
+ISOTROPIC ENERGY DENSITIES IN COMPUTATIONAL MECHANICS
+L. BALAZI∗, T. NEUMEIER∗, M. A. PETER†, D. PETERSEIM†
+Abstract. We present a neural network approach for fast evaluation of parameter-dependent
+polyconvex envelopes, which are crucial in computational mechanics. Our method uses a neural
+network architecture that inherently encodes polyconvexity in the main variable by combining
+a feature extraction layer that computes the minors function on the signed singular value
+characterisation of isotropic energy densities with a partially input convex neural network
+(PICNN). Polyconvex underestimation is weakly enforced by penalisation during training, as are
+the symmetries of the function. As a guiding example, we focus on a well-known isotropic damage
+problem, reformulated in terms of signed singular values, and apply a splitting approach to reduce
+the dimensionality of the parameter space, thereby making training more tractable. Numerical
+experiments show that the networks achieve sufficient accuracy for engineering applications
+while providing high compression and significant speed-up over traditional polyconvexification
+schemes. Most importantly, the network adapts to varying physical or material parameters,
+enabling real-time polyconvexification in large-scale computational mechanics scenarios.
+Key words. Polyconvexity, input convex neural network, relaxation, isotropic damage model, parameter-dependent
+AMS subject classifications. 49J45, 49J10, 74G65, 74B20, 68T07, 74A45
+1. Introduction
+Many relevant problems in solid mechanics seek to minimise the deformations u: Ω→Rd of a
+body Ωin spatial dimension d ∈{2, 3} with respect to the energy functional
+(1)
+I(u) =
+Z
+Ω
+W(∇u; ζ) dx,
+where the energy density W : Rd×d × Rp →R∞:= R ∪{∞} is defined over a suitable class
+of admissible functions. The vector ζ ∈Rp represents spatially varying parameters, including
+material history, damage evolution or phase information. In many established engineering models,
+the density W is either inherently nonconvex or develops nonconvexity as its parameters evolve, as
+in damage or phase transition models. Such nonconvexity not only poses significant mathematical
+challenges, including the potential non-existence of minimisers, but also leads to serious problems
+in numerical simulation, such as mesh dependence and reduced robustness.
+Relaxing W via (semi-)convexification identifies bounds of infimising sequences for the original
+nonconvex problem, yielding robust and mesh insensitive numerical results.
+As shown in
+[Bal76, Bal77, Bal02], polyconvexity is well suited for nonlinear elasticity. However, an analytical
+polyconvex envelope W pc is often not available, so computational relaxation methods are
+required. Conventional approaches include optimisation-based and computational geometry
+methods, such as relaxation algorithms approximating the rank-one convex hull [Dol99, DW00,
+Bar04, BKN+24, KNP+24, KNM+22, CD18] or dedicated algorithms for polyconvex envelopes
+∗Institute of Mathematics, University of Augsburg, Universit¨atsstr. 12a, 86159 Augsburg,
+Germany
+† Institute of Mathematics & Centre for Advanced Analytics and Predictive Sciences (CAAPS),
+University of Augsburg, Universit¨atsstr. 12a, 86159 Augsburg, Germany
+E-mail address: {loic.balazi, timo.neumeier, malte.peter, daniel.peterseim}@uni-a.de.
+Date: April 10, 2025.
+The authors gratefully acknowledge funding from the German Research Foundation (DFG) within the Priority
+Programme 2256 Variational Methods for Predicting Complex Phenomena in Engineering Structures and Materials
+(project number 441154176, reference IDs PE1464/7-2 and PE2143/5-2). Furthermore, we would like to thank the
+Bavarian State Ministry of Science and the Arts for funding the Augsburg AI Production Network as part of the
+High-Tech Agenda Plus.
+1
+arXiv:2504.06425v1  [math.NA]  8 Apr 2025

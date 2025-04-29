@@ -1,0 +1,88 @@
+r(D) =
+max
+q∈[0,1/2]
+
+1 −h(e′
+AB) −pL
+2 (1 −h(q))
+
+, with pNL =
+√
+2(1 −2D) −1.
+(53)
+The critical disturbance D characterizes the properties of the channel linking Alice and Bob. r(pNL) > 0
+is obtained with optimal preprocessing at p′
+NL ≳0.236 (D ≲6.3%) and without preprocessing at p′′
+NL ≳
+0.318.
+Since pE(pNL) ∈Q ⇐⇒pNL ≤
+√
+2 −1 ≃0.414, both p′
+NL, p′′
+NL ∈Q.
+Definition 14. [Bell limit] A family of distributions p = p(ab|xy) reach the Bell limit if leads to a secret
+key r > 0 for any amount of nonlocality.
+Remark 1. In the case of p0
+1 = p0
+2, p1
+1 = p1
+2, and pr
+3 = pr
+4 = 0, even neglecting preprocessing pNL > 0 =⇒
+rCK = 1−h(pL/2)
+2
+−pL
+2 > 0. Notice that, ∃p reaching the Bell limit, despite the fact p /∈Q hence it cannot
+be broadcasted using quantum preparations. Indeed L ⊊Q ⊊NS and P
+j,r pr
+jℓr
+j = 0 ⇐⇒∀pr
+j = 0 (see
+Ref. [56] sec.III.E.3). There exists a protocol (Sec. 2.3) that for p ∈Q reach the Bell limit an extended
+BI scenario [72, 222].
+Two-way classical postprocessing. – In two-way postprocessing, no optimal procedure or tight bound
+analogous to Eq. (50) is known. The most common method, Advantage Distillation (AD) [223, 224], say
+that
+∃˜B, ˜E s.t. I(A : B) < I(B : E)
+AD
+=⇒I( ˜A : ˜B) > I( ˜B : ˜E)
+(54)
+enabling one-way postprocessing on ˜B, ˜E. In AD, Alice publicly reveals N instances where her bits
+are equal, i.e., ai1 = ai2 = · · · = aiN = a. Bob checks his corresponding bits and announces whether all
+his bits are also equal. If Bob’s bits are all equal, Alice and Bob keep one of these instances, (aik, bik)
+otherwise, they discard the N instances. The error rate between Alice and Bob after this process denoted
+as ˜eAB, becomes exponentially smaller: ˜eAB = eN
+AB/[(1 −eAB)N + eN
+AB], where eAB is the initial error
+rate between Alice and Bob. As N →∞, ˜eAB →0, meaning that Alice and Bob almost always share
+identical bits after a sufficiently large number of instances. The probability that Eve makes an error on
+Bob’s symbols after AD is approximated by ˜eE ≳C[f(eAB)]N, where f(·) is a function that depends
+on the probability distribution and C is a constant. As long as the condition f(eAB) > eAB/(1 −eAB),
+is satisfied, Eve’s error increases exponentially with N. There is always a finite value of N such that
+Eve’s error becomes greater than Bob’s, ensuring that a secret key can be extracted. The bound on
+the tolerable error after AD is derived by solving this inequality and provides the necessary condition
+for secrecy extraction. Without preprocessing pNL ≳0.2; with preprocessing (allowing Alice and Bob
+to flip some bit before AD) pNL ≳0.09. It remains an open question if in two-way postprocessing, a
+Bell limit can be reached. Although one might consider that a two ways communication would increase
+interceptions, overall AD is more noise tolerant (lower pNL) than one-way post-processing, by iteratively
+improving correlations and discarding mismatched rounds to reduce error rates. Preprocessing enhances
+this by scrambling Eve’s knowledge before AD.
+Intrinsic information. Given a tripartite probability distribution p3 with entries p(abe), the intrinsic
+information I↓= I(A : B ↓E) = minE→¯
+E I(A : B| ¯E) ≥r [225]. This upper bound represents the
+mutual information between Alice and Bob conditioned on Eve’s knowledge. I↓< 0 =⇒r = 0 witness
+the impossibility of secret correlations in p3. The vice-versa is unknown. Furthermore, ∃p3 with a I↓> 0
+but r = 0, indicating the presence of bound information (similarly to bound entanglement). While bound
+information has been proven in multipartite settings, its existence in bipartite scenarios remains unknown.
+For the CHSH protocol, I(A : B|E) = pNL when Alice and Bob are perfectly correlated. In other cases,
+they are uncorrelated. A conjectured optimal map for minimizing this conditioned mutual information
+is introduced, supported by numerical evidence giving
+I↓= (1 −pL/2)(1 −h(pL/(4 −2pl))).
+(55)
+This conjectured intrinsic information remains positive for pNL > 0, which leads to two possibilities: (i)
+r > 0 ∀p3 /∈L (ii) In the Bell limit (pNL ≃0) p3 might represent bipartite bound information.
+CHSH protocol admits larger-dimensional outcomes generalization using CGLMP inequalities with
+more extractable secrecy as the outcomes increase (see Ref. [56] sec.IV) or via CHAIN BI (Sec. 3.5).
+The former is a tight family of BI, while CHAIN BI, though not tight, can be efficiently implemented
+in the next protocol of Sec. 3.5. Before we comment Eve’s attack confined within quantum theory.
+24

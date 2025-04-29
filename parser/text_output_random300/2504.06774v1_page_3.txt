@@ -1,0 +1,41 @@
+putational efficiency.
+Another important aspect of a DL model is its architecture. A well-designed archi-
+tecture is crucial to effectively capture the temporal evolution and nonlinear dynamics of
+fluid flow phenomena. The proper development of these architectures improves the ability
+of the model to predict complex fluid flows with greater accuracy and efficiency, provid-
+ing a robust framework for solving computationally intensive problems in fluid mechanics.
+LSTMs have been integrated with ROMs, autoencoders, and hybrid frameworks to en-
+hance their predictive capabilities and improve computational efficiency. An application
+of this is the work by Wiewel et al. [10], who introduced an LSTM-based latent space
+physics framework where raw high-dimensional data were first reduced using autoencoders
+into a latent space. In this latent space, the LSTMs modeled the temporal evolution of the
+flow dynamics. The architecture relied on the ability of autoencoders to compress complex
+spatial data into manageable representations, while the LSTMs provided temporal fore-
+casting capabilities. This approach was particularly effective in cylinder wake problems,
+where the architecture captured nonlinear temporal interactions in a computationally effi-
+cient manner. Building on this, Wiewel et al. [11] extended their work with a latent-space
+subdivision approach. This architecture used multiple LSTM models operating in sub-
+divided latent spaces, with each LSTM responsible for a specific subset of the dynamics.
+This refinement improved the stability of the architecture over long prediction horizons
+and its adaptability to complex scenarios like jet flows. By handling each component
+of the latent space separately, the architecture was able to better account for different
+temporal dynamics and ensure accurate forecasting over extended timescales. LSTM and
+CNNs can also be combined to create hybrid architectures. Han et al. [12] demonstrated
+this by proposing a hybrid deep neural network architecture designed to model unsteady
+flow fields with moving boundaries, such as oscillating cylinders. In this architecture,
+CNN layers were employed to extract spatial features from flow-field snapshots, capturing
+localized patterns such as vortices and wake structures. These spatial features were then
+passed to the LSTM layers, which are well-suited for modeling temporal dependencies,
+enabling accurate predictions of the flow’s future states. This hybrid design effectively
+integrates spatial and temporal dynamics, making it particularly effective in predicting
+unstable wake behavior.
+However, there is no fixed methodology tailored to fluid mechanics problems, as the
+optimal architecture configuration often depends on the specific characteristics of the flow
+under study. This challenge has led to the development of case-specific architectures, as
+shown in the studies above. Factors such as the number of layers, the selection of neurons
+per layer, and other critical parameters must be investigated to determine the optimal
+architecture for fluid mechanics problems. The study by Cao et al. [13] further reinforces
+this notion. They proposed a Pareto-based optimization method to automatically discover
+the best composite architectures. Instead of defining a single "best" architecture, they
+construct a Pareto front, optimizing for multiple objectives such as accuracy, training
+3

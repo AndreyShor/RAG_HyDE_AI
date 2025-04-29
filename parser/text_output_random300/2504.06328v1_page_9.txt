@@ -1,0 +1,112 @@
+3.3. Dynamics on Unitary Manifolds and Varia-
+tional Quantum Circuits
+A powerful way to understand the training of
+quantum models (such as variational quantum cir-
+cuits) is through the lens of dynamics on unitary
+manifolds. Any fixed-size quantum model (e.g. an
+n-qubit quantum circuit) performs transformations
+in a Hilbert space via unitary operators. The space
+of all N × N unitary matrices (up to global phase)
+forms a Lie group manifold U(N) (or SU(N) for de-
+terminant 1), which for N = 2n has real dimension
+N 2 −1 = 22n −1. Each parameterized quantum
+circuit corresponds to a path within this manifold
+of unitaries, which in turn induces a trajectory in
+the space of quantum states when acting on a ref-
+erence state. For example, consider a parametrized
+unitary U(θ) = UL(θL) · · · U2(θ2)U1(θ1) composed
+of L elementary gates. As we vary the parameter
+vector θ = (θ1, . . . , θL), the unitary U(θ) traces
+out a surface on the U(N) manifold. If each gate
+Uk(θk) = e−iθkGk is the exponential of a Hermitian
+generator Gk (e.g. a Pauli operator for qubit ro-
+tations), then moving an infinitesimal amount dθk
+corresponds to a tangent step −i dθk Gk U(θ) at the
+current point on the unitary manifold. The collec-
+tion of such generators {Gk} (and their commu-
+tation relations) determines the local geometry of
+reachable states: if the Gk do not all commute, the
+path is nontrivial and can cover a much larger por-
+tion of the manifold. In the special case that all
+Gk mutually commute, U(θ) would simply equal
+exp[−i(P
+k θkGk)] and the trajectory would lie on
+a torus (flat submanifold) within U(N). Generally,
+however, layered circuits have non-commuting gen-
+erators, and the resultant trajectory can be thought
+of as a curved path that winds through U(N), ca-
+pable of reaching any unitary (if the set of gener-
+ators is universal for the Lie algebra u(N)). Thus,
+a sufficiently expressive variational quantum circuit
+can navigate the entire unitary manifold (at least
+in principle), which is exponentially larger in di-
+mension than any classical parameter space for n
+bits.
+Training such a circuit (via adjusting θ) is
+essentially a process of finding an optimal path or
+positioning on this high-dimensional curved mani-
+fold to accomplish a learning task.
+The geometric view of QML training enables us
+to import tools like natural gradients and geodesic
+updates from differential geometry.
+In classical
+deep learning, one often uses the Fisher informa-
+tion matrix to compute a natural gradient update
+that respects the geometry of the parameter space,
+moving in a direction that causes a maximal re-
+duction in loss per unit of “distance” in param-
+eter space.
+Analogously, in QML the quantum
+natural gradient uses the quantum Fisher informa-
+tion (Fubini–Study metric) as the underlying met-
+ric for the parameters of a quantum circuit. Con-
+cretely, if L(θ) is a loss function (e.g. an expec-
+tation value to minimize), the steepest descent di-
+rection in the curved quantum state space is given
+by ∆θi ∝−P
+j(J−1)ij ∂L
+∂θj , where Jij is the QFI
+(FS) metric tensor defined earlier. Following this
+direction aligns the parameter update with the nat-
+ural geometry of the state manifold, often leading
+to faster convergence and better performance com-
+pared to an unmetriced gradient descent. One can
+interpret this update as moving along a geodesic on
+the manifold of states or unitaries, ensuring that
+the new state |ψ(θ + ∆θ)⟩is as close as possible
+to the old state |ψ(θ)⟩in terms of quantum fidelity,
+while still improving the loss. Such techniques have
+already been applied in variational quantum eigen-
+solvers and classifiers, highlighting how respecting
+quantum geometry can mitigate issues like bar-
+ren plateaus (regions of vanishing gradients) by ac-
+counting for the true curvature of the landscape
+rather than the raw parameter-space slope.
+Consider a simple yet illustrative example: a sin-
+gle qubit variational circuit with two parameters,
+U(θ1, θ2) = e−iθ2Y e−iθ1X (a rotation about X fol-
+lowed by a rotation about Y ). This can reach any
+point on the Bloch sphere. The parameters θ1, θ2
+form a coordinate chart on SU(2) ∼= S3 (which
+double-covers the Bloch sphere S2).
+The Fubini
+-Study metric in these coordinates is nontrivial (be-
+cause X and Y rotations do not commute), produc-
+ing a curved metric g(θ1, θ2) rather than a flat iden-
+tity matrix. If one naively did gradient descent on
+θ1, θ2, the steps would not account for how a small
+change in θ1 vs. θ2 affects the state differently de-
+pending on the current θ values. By computing the
+quantum natural gradient, one effectively precondi-
+tions these updates with g−1, ensuring movement
+along the Bloch sphere is appropriately calibrated.
+This is akin to following great-circle distances on
+the sphere rather than treating θ1, θ2 as Cartesian
+axes.
+In multi-qubit circuits, the same principle
+holds but with a much higher-dimensional Jij; the
+method directs the parameter updates along the
+geodesics of the complex projective manifold of the
+n-qubit state.
+Finally, it is worth noting that viewing QML
+9

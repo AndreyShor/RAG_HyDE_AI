@@ -1,0 +1,269 @@
+Table 1. Quantitative assessment of rendering and reconstruction quality. To ensure a fair comparison in the 3D reconstruction quality,
+all models are normalized to the unit sphere. Note that, we do not directly compare with NeuralPIL and Ref-NeuS, as they fail to produce
+valid geometry in several cases, as evident in Fig. 4. Nevertheless, with the incorporation of polarization cues, our method consistently
+achieves the best results.
+RedOx
+GreenOx
+Cat
+Horse
+Lays
+PSNR ↑
+SSIM ↑
+CD ↓
+PSNR
+SSIM
+CD
+PSNR
+SSIM
+CD
+PSNR
+SSIM
+CD
+PSNR
+SSIM
+CD
+NeuralPIL
+22.47
+0.9378
+-
+23.51
+0.9301
+-
+22.36
+0.8626
+-
+21.27
+0.9049
+-
+20.93
+0.8657
+-
+PhySG
+16.42
+0.9737
+2.36e-2
+18.39
+0.9822
+1.43e-2
+16.32
+0.9513
+1.48e-3
+16.59
+0.9518
+1.31e-3
+17.41
+0.9569
+2.66e-3
+NVDiffRec
+30.86
+0.9639
+0.3005
+30.66
+0.9862
+0.2638
+23.61
+0.9614
+0.5936
+27.15
+0.9590
+0.1315
+29.31
+0.9693
+0.1152
+InvRender
+22.47
+0.9631
+2.28e-2
+27.32
+0.9758
+1.78e-2
+22.32
+0.9510
+1.82e-3
+24.92
+0.9464
+1.13e-3
+25.61
+0.9673
+1.21e-3
+Ref-NeuS
+27.21
+0.8562
+-
+27.35
+0.8528
+-
+23.27
+0.8464
+-
+23.45
+0.8562
+-
+27.28
+0.91753
+-
+NeRO
+19.88
+0.8503
+2.04e-3
+16.98
+0.5972
+1.08e-3
+24.51
+0.8039
+9.31e-3
+22.22
+0.8294
+1.20e-3
+26.68
+0.9256
+1.04e-3
+Ours (diffuse)
+25.03
+0.9683
+1.06e-3
+28.24
+0.9860
+7.99e-4
+24.39
+0.9465
+5.91e-3
+22.43
+0.8996
+7.88e-4
+28.52
+0.9457
+3.50e-3
+Ours (w/o pol)
+26.29
+0.9662
+3.01e-3
+30.77
+0.9738
+7.14e-4
+23.84
+0.9343
+1.39e-3
+25.84
+0.9566
+6.76e-4
+24.04
+0.9520
+2.76e-3
+Ours
+30.88
+0.9774
+2.23e-4
+31.02
+0.9883
+1.17e-4
+24.83
+0.9696
+9.88e-5
+27.97
+0.9606
+2.07e-4
+30.82
+0.9780
+1.01e-3
+These methods typically rely on RGB data, which can
+struggle with accurate geometry reconstruction and radi-
+ance decomposition due to the limitations of using only in-
+tensity measurements. This often results in artifacts and
+inconsistencies, particularly in areas with strong specular
+reflections. We propose that incorporating polarization in-
+formation is essential as it connects surface normals with
+lighting and material properties, improving the accuracy of
+these processes. Our evaluations, using open-source code
+from the original authors, indicate that our approach still
+delivers superior quality as shown in Tab. 1.
+However,
+due to the inherent limitations in various methods, such
+as, PhySG’s overly smooth geometry and inaccurate ra-
+diance decomposition, InvRender’s superior performance
+only in synthetic scenarios, Ref-NeuS’s effectiveness in
+view-dependent weighting scheme, and NeRO’s proficiency
+in handling strong reflective objects, conventional objects in
+real-world settings often exhibit sub-optimal performance.
+In Tab. 1, we further conduct a thorough evaluation con-
+cerning the quantitative accuracy on the aforementioned test
+set. Firstly, we assess the rendering quality of our method
+and compare it to state-of-the-art algorithms. Hereby, we
+report the average PSNR and SSIM in comparison to the
+ground-truth test images.
+Next, we employ an invasive
+method to reconstruct the ground-truth shapes for these
+highly specular objects, so as to facilitate numerical as-
+sessment on the geometry recovery. Specifically, we ap-
+ply a diffuse developer to objects and scan them using a
+high-end industrial-level 3D scanner. However, due to the
+potential inconsistency between the scanning and recon-
+struction coordinate systems, we manually scale and trans-
+late the scanned model to align with the reconstruction co-
+ordinate system.
+Subsequently, we utilize the non-rigid
+ICP algorithm to achieve the complete alignment between
+the scanned model and the reconstructed model under the
+shared coordinate system. Once aligned, the sum of the
+bi-directional chamfer distance (CD) between the recon-
+structed and scanned models is computed.
+As depicted in Fig. 4, the outcomes indicate that NVD-
+Mixed Radiance
+Diffuse
+Specular
+Normal
+Illumination Map
+GT
+PANDORA
+Ours
+Figure 5. Comparison of reflectance separation and surface
+normals with baselines on rendered Bust model. Note that, al-
+though PANDORA outputs sharp results, our method is also able
+to produce comparable results, because overall we use fewer con-
+straints and need to solve for more unknowns.
+Table 2. Quantitative evaluation on rendered Bust model. We
+evaluate our method and PANDORA on 10% held-out testsets
+of 45 images, and report the average peak signal-to-noise ratio
+(PSNR) and structured similarity (SSIM) of diffuse, specular and
+mixed radiance, mean angular error (MAE).
+Method
+Diffuse
+Specular
+Mixed
+Normals
+PSNR ↑
+SSIM ↑
+PSNR
+SSIM
+PSNR
+SSIM
+MAE ↓
+PANDORA
+23.97
+0.907
+26.02
+0.864
+26.86
+0.895
+4.096◦
+Ours
+23.29
+0.887
+25.97
+0.860
+26.53
+0.888
+4.227◦
+iffRec encounters challenges in effectively disentangling
+the diffuse and specular components and yields fundamen-
+tally erroneous geometric estimations. Surprisingly, this de-
+ficiency appears to exert minimal influence on the ultimate
+rendering quality, as evidenced by the high PSNR and SSIM
+metrics. We hypothesize that this arises from the method’s
+inability to effectively resolve the inherent ambiguity be-
+tween these two components, yet it still manages to yield
+exceptional rendering results grounded primarily in RGB
+loss. Conversely, NeRO exhibits improved geometric re-
+construction capabilities, but its performance in radiance
+decomposition is lackluster. This arises from its rigid de-
+sign tailored for entirely specular objects.

@@ -1,0 +1,92 @@
+Picking residues now goes as in the one-loop example barring for one difference: we close both integration
+contours to the right.
+Due to presence of the parameters α, β this freezes the MB parameters at z4 =
+n4 + α, z6 = n6 + β, n4, n6 ∈N0. Hence we obtain a modified equation (9):
+I2,1 = −
+1
+4 x2
+12
+∞
+X
+n4,n6 = 0
+∂α∂β∂γ∂δ un4+α+γvn6+β+δ Γ[1 + n4 + n6 + α + β + γ + δ]2
+Γ[1 + n4 + γ]2Γ[1 + n6 + δ]2
+(52)
+Nevertheless, the modified numerator Γ function leads to a substantial complication: both sums are now of
+3F2 type so that we obtain a fourfold Euler integral. Index permutations in resolving the two hypergeometric
+sums into double integrals yield a total of 15 distinct Euler integrals. In order to avoid inflating the size of the
+basis for intersection theory we prefer formulae with a single coordinate dependent factor, for instance
+I2,1 = −
+1
+4 x2
+12
+∂α∂β∂γ∂δ uα+γvβ+δ J2,1 ,
+(53)
+J2,1 =
+Z dq dr ds dt (1 −q)−1+γ (1 −r)γrσ+γ+δ (1 −s)−1+δ (1 −t)−1−σtσ+δ Γ[1 + σ + γ + δ]
+(1 −r −q r u + q r2 u + r s t v)1+σ+γ+δ Γ[−σ] Γ[−σ −δ] Γ[δ] Γ[1 + σ + δ] Γ[γ])
+.
+(54)
+In the last line σ = α + β. As in our calculation of the one-loop box, the twist factor w for the intersection
+theory computation will have to contain two additional terms, here qρsρ with a fourth regulator ρ.
+The
+intersection matrices will depend on {γ, δ, ρ, σ}.
+In the second case, we write
+Γ[−z4]2(ψ[−z4]2 −ψ′[−z4]) = −∂α(∂α −2∂β)Γ[−z4 + α]Γ[−z4 + β] ,
+α = 0 = β
+(55)
+(or the same with α ↔β). Here we run into an issue about mutiplying distributions: picking residues we
+would not know whether to assign z4 = n4 + α or z4 = n4 + β for integer n4. Likely one can avoid the
+problem scaling both α, β by some other parameter and differentiating another time in the latter. To be on
+the safe side, we rather close the contour to the right for the z6 integration — so z6 = n6 ∈N0 — and then
+for the z4 integration to the left:
+1 + z4 + n6 = −n4 ,
+n4 ∈N0
+⇒
+z4 = −(1 + n4 + n6)
+(56)
+Note that MBresolve.m’s rule {ℜ(z4) = −0.297642, ℜ(z6) = −0.381832} (cf. Appendix A) puts the real part
+of 1 + z4 + z6 to the right of the imaginary axis, so the summation does indeed begin at n4 = 0. This creates
+the series
+I2,2
+=
+1
+2 x2
+12 u
+∞
+X
+n4,n6 = 0
+∂α(∂α −2 ∂β)∂γ∂δ
+ 1
+u
+n4+γ v
+u
+n6+δ
+(57)
+∗Γ[1 + n4 + n6 + α + γ + δ]Γ[1 + n4 + n6 + β + γ + δ]
+Γ[1 + n4 + γ]2Γ[1 + n6 + δ]2
+.
+If the Euler integrals do give a re-summation of this series, it will hardly be of importance that its arguments
+are 1/u, v/u. Identifying α and β we essentially reproduce the structure of the first case, displaying the latter
+as a simpler version of the same object. Out of 36 possible Euler representations we pick
+I2,2 =
+1
+2 x2
+12
+∂α(∂α −2 ∂β)∂γ∂δ uβvδ J2,2 ,
+(58)
+J2,2 =
+Z dq dr ds dt (1 −q)−1+γ (1 −r)−α+β+γrα+γ+δ (1 −s)−1+δ (1 −t)−1−αtα+δ Γ[1 + β + γ + δ]
+(−q r + q r2 + u −r u + r s t v)1+β+γ+δ Γ[−α] Γ[−α −δ] Γ[δ] Γ[1 + α + δ] Γ[γ])
+.
+(59)
+Again, to run a reduction by intersection theory an additional term qρsρ becomes necessary; in the result
+for J2,2 the limit ρ →0 will be well-defined. At intermediate stages, though, we have to cope with all five
+regularisation parameters.
+To our knowledge, in the literature the iterative algorithm [8] described in Section 3 has only been tested
+for the minimal case of two integrations. Will we be able to use it to deal with a full four Euler parameters? In
+past tries on direct integration of Euler representations [5] it has turned out to be advantageous to integrate
+out the parameters in the inverse sequence of their appearance in the process of re-summation. Yet, for the
+present purpose the sequence t, s, r, q is not too useful, because the coordinate-dependent denominators are
+quadratic in r. Thus we adopt the sequence t, s, q, r which will entirely linearise the problem.
+9

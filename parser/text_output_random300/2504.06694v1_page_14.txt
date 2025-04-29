@@ -1,0 +1,73 @@
+COMPARISON OF FROBENIUS ALGEBRA STRUCTURES ON CALABI–YAU TORIC HYPERSURFACES
+14
+The CY Frobenius manifold structure depends on a Maurer–Cartan solution of the relevant dGBV
+algebra and a good opposite ﬁltration to the Hodge ﬁltration on H•(X) and the LG Frobenius manifold
+structure depends on a universal unfolding of f and a good opposite ﬁltration to the “Hodge ﬁltration”
+on R(f). It seems to be a subtle question to compare these two constructions on Hr−2
+pr (X) ∼= A(f)
+explicitly. The LG construction is more explicit in that it deals directly with a polynomial f (while
+the CY construction deals with holomorphic polyvector ﬁelds on a manifold X), and can be made into
+a concrete algorithm (see [10]) based on the Gr¨obner basis by using the Jacobian ideal membership
+problem for f.
+Theorem 1.1 and Corollary 1.2 provide a non-trivial Frobenius manifold structure on the LG Frobenius
+algebra simply by transporting the CY Frobenius manifold structure. Hence a natural open question
+would be whether there exists an LG type construction meaning “the theory of primitive forms and
+higher residue pairing” (in the sense of [10]) or the L2-Hodge theoretic construction (in the sense of [11])
+on (A(f), •LG, ⟨−, −⟩LG).
+Finally, we conclude with a concrete example of a function f with a critical locus that is non-isolated
+and non-compact, yet to which our main theorem applies.
+Example 3.12. We consider the projective P1-bundle over P6 associated to the vector bundle OP6(2)⊕
+OP6(3):
+P = P(OP6(2) ⊕OP6(3)),
+which is a smooth projective Fano toric variety of dimension 7 over C. In general, it is known that if X is
+a smooth projective Fano variety and D1, · · · , Dk are nef divisors on X such that −KX −D1 −· · · −Dk
+is ample, then the projective bundle P(⊕k
+i=1OX(Di)) is a Fano variety. The homogeneous coordinate
+ring of P is C[x0, · · · , x6, y1, y2] = C[z1, · · · , z9], which is graded by the class group Cl(P) of P. In this
+case, Cl(P) is isomorphic to Z2. In fact, we have
+deg(xi) = (1, 0)
+for
+i = 0, · · · , 6,
+deg(y1) = (−2, 1),
+deg(y2) = (−3, 1).
+Also note that P can be written as a GIT quotient:
+P ∼= (C7 \ {0} × C2 \ {0})/(C×)2,
+where (C×)2 ∼= D = Spec(C[Cl(P)]):
+(ζ1, ζ2) · (x0, · · · , x6, y1, y2) = (ζ1x0, · · · , ζ1x6, ζ−2
+1 ζ2y1, ζ−3
+1 ζ2y2),
+(ζ1, ζ2) ∈(C×)2.
+Then the anti-canonical divisor class β = −KP of P is given by P9
+i=1 deg zi = (2, 2) ∈Z2 ∼= Cl(P).
+Since P is Fano, β is ample. Let
+f(z) = f(x, y) = y2
+1 · u(x) + y2
+2 · v(x) ∈C[z1, · · · , z9],
+where u(x) (respectively, v(x)) is a homogeneous polynomial of degree 6 (respectively, 8) in C[x0, · · · , x6] =
+C[z1, · · · , z7]. Then deg f = (2, 2) = β under the identiﬁcation Z2 ∼= Cl(P).
+Moreover, we assume that Xu,v := {x ∈P6 : u(x) = v(x) = 0} deﬁnes a smooth projective complete
+intersection variety of ample hypersurfaces in P6. Then Xf ⊂P deﬁnes a Calabi–Yau (i.e. deg f = β)
+smooth ample hypersurface in P. Note that the critical locus
+Crit(f) =
+
+a ∈C9
+
+∂f(a)
+∂zi
+= 0,
+i = 1, · · · , 9
+
+is given by
+Crit(f) = (C7 × {0}) ⊔({0} × (C2 \ {0}),
+which is non-isolated and non-compact in C9. On the other hand, (1.2) holds, since X is even-dimensional.
+Hence our main theorem applies.
+References
+[1] Barannikov, Serguei: Non-commutative periods and mirror symmetry in higher dimensions, Comm. Math. Phys. 228
+(2002), no. 2, 281–325.
+[2] Barannikov, S.; Kontsevich, M.: Frobenius manifolds and formality of Lie algebras of polyvector ﬁelds, Internat. Math.
+Res. Notices 4 (1998) 201–215.
+[3] Batyrev, Victor; Cox, David: On the Hodge structure of projective hypersurfaces in toric varieties, Duke Math. J., 75
+(1994) No. 2 293–338.
+[4] Carlson, J.; Griﬃths, P.: Inﬁnitesimal variations of Hodge structure and the global Torelli problem, in Journees de
+geometrie algebrique, Angers, juillet 1979, Sijthoﬀand Noordhoﬀ, Alphen aan den Rijn, 1980, 51–76.
+[5] Cox, David: Toric residues. Arkiv f¨or matematik, 34(1):73–96, 1996.

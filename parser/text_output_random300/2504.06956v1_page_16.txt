@@ -1,0 +1,49 @@
+Background and preliminaries
+16
+Stable convergence of random measures. We now recall some facts about stable convergence of
+random measures. This type of convergence interpolates to some extent between convergence in law
+and convergence in probability. We refer to the monographs [JS03,HL15] and references therein for
+more details on stable convergence in a more general setting.
+We consider a collection (νt)t≥0 of M+(X)-valued random variables defined on a common probability
+space (Ω, P) and a M+(X)-valued random variables ν defined on a possibly larger probability space.
+We also fix a σ-algebra Σ over Ω.
+Definition 3.6. We say that νt converges Σ-stably to ν ∈M+(X) as t →∞, if (Z, νt) ⇒(Z, ν) for
+all Σ-measurable random variables Z.
+Remark 3.7. If Σ is the trivial σ-algebra, then this coincides with convergence in law. Conversely,
+if Σ is the full σ-algebra of the probability space Ωand the limiting random variable is defined on
+(Ω, P), then this corresponds to convergence in probability.
+Given a Polish space Y and a Y-valued random variable Y, we have the following result that
+characterises σ(Y)-stable convergence.
+Lemma 3.8. Consider the same setting described above. Then νt converges σ(Y)-stably to ν if and
+only if (Y, νt) ⇒(Y, ν) as t →∞.
+Proof. See for instance [HL15, Exercise 3.11].
+3.3
+Some properties of ⋆-scale invariant fields
+Let X be a ⋆-scale invariant field as defined in (1.2) and with seed covariance function K satisfying
+assumptions (K1) – (K2). Recalling the covariance structure (1.4) of X, we point out that there exists
+a smooth function g : Rd × Rd →R such that, for all x, y ∈Rd,
+E[X(x)X(y)] = −log |x −y| + g(x, y) ,
+or in other words, X is a log-correlated Gaussian field. Thanks to [JSW19], it is known that a
+partial converse is true, i.e., given a log-correlated Gaussian field X with covariance of the form
+−log|x −y| + g(x, y) for some function g : Rd × Rd →R satisfying certain (weak) regularity
+assumptions, then X can be decomposed as X = X⋆+ L, where X⋆is a ⋆-scale invariant field, L is a
+centred Gaussian field with H¨older regularity, and X⋆and L are jointly Gaussian.
+We recall that (Xt)t≥0 denotes the martingale approximation of X as defined in (1.3). For every t ≥0,
+we recall the definition (1.5) of the σ-field Ft. The following properties are straightforward to check:
+1. For 0 ≤s < t, the random field Xs,t is independent from the σ-field Fs.
+2. For any fixed x ∈Rd, the process (Xt(x))t≥0 has the law of a standard Brownian motion.
+3. For 0 ≤s < t, the following scaling relation holds
+Xs,t(·)
+law= Xt−s(es·) .
+(3.9)
+We now introduce a field that will play an import role in what follows. We recall that K is the (unique)
+positive definite function such that the convolution of K with itself equals K.
+Definition 3.9. For ξ′ a space-time white noise on Rd × R+, we define the field Z∞on Rd by letting,
+Z∞(·)
+def=
+Z ∞
+0
+Z
+Rd(K(e−r(· −y)) −K(e−r·)K(e−ry))e−dr
+2 ξ′(dy, dr) .
+(3.10)

@@ -1,0 +1,140 @@
+14
+Bird
+Success probability
+Ntx
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+Nty
+Ntx
+Red-Rec
+FIG. 2.
+Operational performance. Mean success prob-
+ability for preparing a center-compact configuration of Ntx
+atoms in a rectangular grid of Ntx × Nty traps using red-rec
+(left) and bird (right) with batching. Both algorithms out-
+perform the deprecated version of red-rec, with the transition
+curve at ¯p = 0.5 outlined in orange.
+mately linear scaling with the nearest power of two of Ntx
+(see green line in Fig. 1b). For the small problem sizes
+considered here, the parallel implementation is slightly
+slower than the serial implementation, solving a grid of
+N T
+a
+= 322 atoms in 197(35) µs.
+However, by extrap-
+olating the fits, we predict a performance crossover at
+Ntx ≈42.
+We further analyze the runtime performance of the
+bird algorithm. Compared to red-rec, bird is relatively
+slower but still very fast, solving a grid of N T
+a
+= 322
+atoms in 138(10) µs. Its runtime scaling is the same as
+red-rec, O(N 3/2
+t
+= N 3
+tx) (see blue line in Fig. 1b, d).
+Given that bird achieves a slightly higher mean success
+probability than red-rec (see Sec. V C), the slight increase
+in runtime may be justified for real-time operations.
+We finally analyze the runtime performance of the aro
+algorithm (see Sec. III F). We have significantly improved
+its implementation since our previous work [21], reducing
+its worst-case time complexity from O(N 8
+t ) to O(N 4
+t ) (see
+purple curve in Fig. 1c, d). Still, aro is significantly slower
+than both red-rec and bird, taking 30(12) s to solve a grid
+of N T
+a = 322 atoms. Although such a runtime prevents
+real-time operations in practical settings, our improved
+implementation remains valuable for cross-benchmarking
+the performance of other algorithms, including those de-
+signed to solve atom reconfiguration problems on arbi-
+trary graphs.
+C.
+Operational performance
+Having quantified the runtime performance of the var-
+ious algorithms, we now focus on quantifying their op-
+erational performance.
+We compute the mean success
+probability for various problem sizes (Fig. 2). The sur-
+face plot exhibits two distinct regions: one representing
+near-certain failure, with ¯p ≤0.02, and the other repre-
+senting near-certain success, with ¯p ≥0.98. These two
+regions are separated by a sharp transition region cen-
+tered around ¯p = 0.5. This transition region scales ap-
+proximately as Nty ∼N α
+tx, with α = 1.077 for red-rec
+and α = 1.047 for bird. These numbers indicate a need
+for Nt ∼(N T
+a )(1+α)/2 traps to prepare an array of N T
+a
+atoms. Both the bird and red-rec algorithms outperform
+our previous version of red-rec (orange curves in Fig 2).
+50
+60
+70
+80
+Height of grid Nty
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Success prob.
+FIG. 3.
+Operational performance.
+Mean success
+probability for preparing a center-compact configuration of
+N T
+a = 322 atoms using red-rec (yellow triangles), bird (blue
+disks), and aro (purple square) without batching. The recon-
+figuration problem is a in a rectangular grid of Nt = 32×Nty
+traps.
+We further compute the mean success probability for
+preparing a configuration of N T
+a = 322 = 1024 atoms in
+an array of Nt = 32 × Nty traps (Fig. 3). We observe
+that aro outperforms bird, which in turn outperforms
+red-rec. For example, for Nty = 64, we find that ¯p =
+0.30, 0.54, 0.65 for red-rec, bird, and aro, respectively.
+To better understand the reason for bird outperform-
+ing red-rec, we compute the number of displacement op-
+erations, Nν, and transfer operations, Nα, over multiple
+reconfiguration cycles in the presence of loss.
+We re-
+call that aro exactly minimizes the number of displace-
+ment operations, albeit at the cost of a slight increase in
+the number of displaced atoms, and thus the number of
+transfer operations [21]. Without batching (Fig. 4a, b),
+bird performs fewer transfer and displacement operations
+than red-rec across all reconfiguration cycles, except for
+the first cycle, where the numbers are approximately the
+same.
+With batching (Fig. 4c, d), the number of dis-
+placement and transfer operations is conserved, but the
+total execution time is reduced due to the batching of
+sequences of displacement operations, NBν, and transfer
+operations, NBα. We observe that red-rec has slightly
+fewer batched sequences of operations in the first two
+cycles, but bird performs better in the subsequent cy-
+cles.
+However, because of the relatively long trapping
+lifetime (τ = 60 s), the relative decrease in the execu-
+tion time resulting from batching does not translate in a
+significant increase in performance (see Fig. 5b), at least
+not sufficient to outperform aro, which benefits less from
+batching. These results outline an approach to construct
+a hybrid algorithm exploiting the red-rec algorithm in
+the first two reconfiguration cycles, and bird afterward.
+VI.
+CONCLUSION
+In conclusion, we presented new and enhanced versions
+of atom reconfiguration algorithms.
+These algorithms,

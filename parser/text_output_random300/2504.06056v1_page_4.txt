@@ -1,0 +1,124 @@
+PAGIONO
+An ionospheric activity index
+Dr.Paul.Kinsler@physics.org
+timescale. Currently the processing encompasses the GPS,
+GALILEO, BEIDOU, and GLONASS constellations. In our
+analysis that follows, the calculation of dTEC, and its tem-
+poral or spatial variation, is key to revealing GNSS-relevant
+ionospheric disturbances.
+IV.
+DATA HANDLING
+The accumulated dTEC data, or specific subsets (“slices”)
+thereof were then used to create frequency histograms of
+signed dTEC values. As indicated in the Motivation, although
+it might seem more straightforward to simply calculate mo-
+ments of these data samples, in some cases we cannot be sure
+in advance whether such moments will adequately represent
+the underlying physics, due to the possible presence of power-
+law tails with low-value exponents. Instead, we just fit each
+data slice to a simple empirical model. This model was cho-
+sen after experimentation with different and variously compli-
+cated fitting functions.
+A.
+Data subsets and slices
+For the statistical analysis, the available dTEC data is di-
+vided 1 into slices along any combination of four separate
+axes:
+Hours: each hour extends from 0 minutes 0 seconds through
+to 59 minutes 59.˙9 seconds,
+Degrees longitudes: we use 30 degree divisions (“dode-
+cants”, or twelfths of the globe), and the associated di-
+vision extends to 15 degrees west of the central value,
+and up to but not including 15 degrees east of the central
+value,
+Magnetic latitudes: separate all latitudes into five divisions,
+low, medium (north and south), high (north and south)
+according to a sinusoidal fit to the magnetic latitude
+(“mlz”), as depicted – and justified – on Fig. 1.
+Band pair: covers all possible pair-wise combination of the
+broadcast GNSS signals.
+These divisions, along with their defined labels and values
+are all listed on table I, which also lists some derived alternate
+divisions, namely two-hour slices and local (or solar) times.
+These allow a total of 24x12x5x32, i.e. over 45 thousand
+(45k) potential slices.
+Owing to the erratic geographic spread of ground stations,
+their signals availabilty, these slices do not always contain
+enough events for consistent sampling and reliable analysis.
+We therefore also compute aggregate properties, i.e. based
+on dividing over only three, two, or one of the data divisions.
+This gives us extra slices to consider, leading to about 64k
+combinations in total. Note that – as explained later – we nor-
+malise against the different responses of the band pairs, and
+1 Terminology: “dividing”/“division” refers to a restriction along some axis
+(eg setting T05), and a slice is the result of one or several divisions (e.g.
+at T05, lonc:090, mlz:1n, and lpair:*) ... We reserve “bin” for use when
+referring the assignment of dTEC values into sub-intervals for histograms.
+Category
+Label
+allowed values
+UTC hours
+T
+T00, T01, T02, .., T23
+Longitude
+lonc
+000, 030, 060, .., 330
+Magnetic
+latitude
+mlz
+0, 1n, 1s, 2n, 2s
+Band pair
+lpair
+L1CL2C L1CL6C L1DL5D
+L1DL7D L1IL6I L1IL7I
+L1LL2L L1PL2P L1PL5P
+L1WL2W L1XL2X L1XL5X
+L1XL6X L1XL7X L1XL8X
+L2IL6I L2IL7I L2XL5X
+L2XL6X L2XL7X L5DL7D
+L5IL7I L5QL7Q L5QL8Q
+L5XL6X L5XL7X L5XL8X
+L6IL7I L6XL7X L6XL8X
+L7QL8Q L7XL8X
+§ UTC 2 hours
+D
+D00, D01, D02, .., D11
+§ Local time,
+2 hours
+S
+S00, S01, S02, .., S11
+TABLE I. Labels used to specify the data divisions. For magnetic lat-
+itudes, we use “0” to indicate low latitudes, “1n” and “1s” for north-
+ern and southern mid latitudes, and “2n” and “2s” for high magnetic
+latitudes. Longitude slices are centred on the degree position speci-
+fied, but time slices start at the hour specified. The two lines marked
+§ (for 2-hour slices), are derived during postprocessing to aid analy-
+sis.
+so most of our analyses will put results from any band pair in
+the same slice; thus the number of slices ordinarily considered
+is reduced to about 2k.
+There is a key tradeoff here, which we have tried to bridge
+by using both fully divided data and aggregated data. Because
+of the highly contingent nature of signal availability and re-
+ception, and of ionospheric properties, at different times or lo-
+cations, we cannot always reliably assume that a distribution is
+perfectly representative, even if the slice contains a large num-
+ber of dTEC samples. However, it is difficult to sample even
+the relatively coarse zones adequately if we insist on the quiet
+conditions needed for a “nothing happening” reference. No-
+tably, we find many more recorded events in northern latitude
+(sometimes even eight times more at high north compared to
+high south); which is a key reason why we choose our divi-
+sions to distinguish between northern and southern mid and
+high magnetic latitudes. Without such a division, an apparent
+“all high latitudes” result would in fact contain a significant
+bias towards northern high latitudes. Likewise, aggregated
+event counts in our longitude divisions vary by up to a fac-
+tor of five between the highest (for lonc:000) and the lowest
+(for lonc:180, 210, 330).
+Notwithstanding these sampling concerns, by allowing
+slices localized in both space and time, we can still track
+moving disturbances, as well as follow more generic sun-
+following ionospheric features; thus enabling useful predic-
+tive capability.
+4

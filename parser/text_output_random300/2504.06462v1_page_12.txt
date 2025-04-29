@@ -1,0 +1,97 @@
+12
+Fig. 15. Measured directivity patterns for the sector patterns at 5GHz with a
+beamwidth of: (a) θb = 30◦, (b) θb = 45◦, and (c) θb = 60◦. The patterns
+from full-wave simulations are also included for comparison.
+were investigated through simulations and experiments. For
+the beamforming case, it was shown that the subwavelength
+cells allow for the excitation of surface waves that are nec-
+essary to achieve both amplitude and phase tapering along
+the RIS aperture. Additionally, optimizing the RIS through
+the simpliﬁed integral-equation model shows high accuracy,
+when compared with full-wave simulations and a simpliﬁed
+reﬂectarray model that disregards any mutual coupling effects.
+The experiments veriﬁed beamsteering with directivities that
+approximate the theoretical limit of a uniform-aperture of the
+same size (i.e., average illumination efﬁciency of 95%) and
+with relatively high power efﬁciency averaging 63% for steer-
+ing up to ±60◦. On the other hand, the beamforming sector
+patterns displayed good matching with full-wave simulations.
+For all cases of varying beamwidth, the variation along the
+angular pass range was at or below 3dB, whereas the SLL
+was maintained below −10.9dB and the estimated power
+efﬁciency was slightly over the constraint of 50%. Overall, the
+proposed work paves the way to realize RISs with enhanced
+beamforming capabilities that allow not only to steer the beam
+but fully control its characteristics with high ﬁdelity.
+APPENDIX A
+CALCULATION OF MEASURED RIS EFFICIENCY
+As mentioned in the main text, the receiving antenna records
+the S21(θ) coefﬁcient in different angles at a constant radius
+R2. Given that |S21|2 is analogous to the power transmitted
+towards each angle θ, the directivity pattern is directly calcu-
+lated as:
+Dmeas(θ) = 2π
+|S21|2
+R π/2
+−π/2 |S21(θ)|2dθ
+,
+(18)
+where the integration is performed numerically. Subsequently,
+the measured illumination efﬁciency ηil is calculated through
+Eq. (12) by using the measured directivity Dmeas(θ = θout) as
+the nominator. The illumination efﬁciency quantiﬁes how di-
+rective is the beam compared to a uniform-amplitude aperture
+of the same physical size that radiates towards θout. Of course,
+such a metric is relevant only in the beamsteering case that the
+aim is to maximize the received power at a single direction
+θout.
+Furthermore, a total efﬁciency can be obtained. This is
+affected not only by the broadening of the beam in the yz-
+plane, but also by all other factors that limit the received
+power compared to an ideal lossless RIS reﬂecting towards
+the desired angle θout. The bi-static radar equation dictates
+that the transmission coefﬁcient between the transmitting and
+receiving antenna ports is:
+|Sideal
+21
+(θout, θi)|2 = Pr
+Pi
+= σ(θout, θi)GtGr
+4π
+
+λ
+4πR1R2
+2
+,
+(19)
+where Pr, Pi are the received and incident power, respectively,
+Gt, Gr are the gains of the transmitting and receiving antennas
+and R1, R2 are their distances from the center of the RIS.
+Finally, σ(θr, θi) is the radar cross-section (RCS) of the RIS,
+which for an ideal case is [12]:
+σ(θout, θi) = 4π (LxLy)2
+λ2
+cos(θi)cos(θout),
+(20)
+where Lx, Ly are the RIS’ lengths along the x and y axis,
+respectively. By replacing the ideal RCS value of Eq. (20)
+into Eq. (19), an ideal |Sideal
+21
+|2 transmission coefﬁcient can
+be calculated. Finally, the total efﬁciency is deﬁned as the
+ratio between the measured and ideal values:
+ηtot =
+|S21(θout)|2
+|Sideal
+21
+(θout, θi)|2 .
+(21)
+Assuming that uniformity is maintained along the the x-
+axis, so that no excessive broadening exists in the elevation
+plane, the other factor that limits the total efﬁciency is the
+power losses of the RIS. Therefore, an estimation of the power
+efﬁciency for each beamsteering case is obtained as:
+ηp = ηtot
+ηil
+.
+(22)

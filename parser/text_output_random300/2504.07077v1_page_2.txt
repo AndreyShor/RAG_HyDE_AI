@@ -1,0 +1,117 @@
+an increased number of gates and hence gate errors. The
+requirement of such additional mitigating circuits and
+exponential overheads make these methods impractical.
+Along with VQE, works have been done in the Projective
+Quantum Eigensolver (PQE)16 framework using ZNE17.
+Statistical learning methods are known to learn com-
+plex functions underlying the input data very well and
+the field of QEM is no exception to such models, as they
+eliminate the need for extra mitigating circuit execution,
+reducing runtime overheads.
+Although initial machine
+learning (ML) exploration for QEM has shown promis-
+ing results,18–23 they are limited to shallow circuits and
+small fermionic systems. Scalable and cost-efficient QEM
+techniques must be tested for molecular Hamiltonians for
+strongly correlated systems beyond two-electron as they
+pose the most versatile and diverse circuit classes. How-
+ever, existing schemes face information-theoretic limita-
+tions, such as entanglement spreading. To achieve quan-
+tum advantage, entanglement is necessary, but it comes
+at the cost of rapid noise spreading. Even when oper-
+ating at poly(log(log(n))) depth, estimating the expecta-
+tion values of noiseless observables, in the worst-case sce-
+nario, requires a super-polynomial number of samples24.
+Many QEM strategies like ZNE use exponentially many
+samples with respect to circuit depth, implying that the
+information should quickly get degraded due to sequen-
+tial noise effects, requiring exponential overhead to re-
+move the accumulated error25. Hence such QEM strat-
+egy is primarily limited to model Hamiltonian and very
+shallow quantum circuits.
+In this work, we develop GraphNetMitigator (GNM)
+- a combined Graph Neural Network (GNN) and
+regression-based learning model to mitigate the noisy
+expectation values obtained through VQE for strongly
+correlated molecular systems over their entire potential
+energy profile across diverse quantum devices. We use
+snippets of the entire circuit consisting of single- and
+two-body fermionic excitations for model training and
+use them to predict the mitigated expectation values for
+the complete ansatz. The use of GNN is motivated from
+the fact that graph representations are the best mod-
+eling choice for such type of data where the instances
+have a similar circuit structures but differ in terms of
+two-qubit gate connectivity. We dynamically generate a
+portion of noisy training data during ansatz construc-
+tion to ensure runtime efficiency.
+To validate the ro-
+bustness of the GNM, we train it in two different set-
+tings: (1) assuming access to the ideal quantum com-
+puter (simulator-generated expectation values are used
+as labels) and (2) assuming we do not have access to the
+fault-tolerant quantum computer. In the latter case, we
+generate the labels by sequentially mitigating quantum
+error (see supplementary materials for details) which was
+found to produce accurate energetics for shallow quan-
+tum circuits without additional mitigation circuits. We
+employed CNOT-efficient implementation throughout to
+reduce circuit depth drastically26,27. The performance of
+the GNM is tested on linear H4 and BH molecules across
+their dissociation energy surface with diverse noise pro-
+files derived from real hardware. We also study the ro-
+bustness of GNM over other QEM techniques with varied
+synthetic noise strengths.
+II.
+THEORY
+The current limitations of the hardware has motivated
+research to construct shallow dynamic ansatz that can be
+realized in NISQ hardware28,29. In often cases, the con-
+struction of the dynamic ansatz relies on the evaluation
+of gradients28 in quantum hardware and under noisy sce-
+nario, such ansatz are often sub-optimally expressive. We
+previously advocated the importance of minimizing (or
+entirely bypassing) the usage of quantum resources while
+the dynamic ansatze are constructed such that the result-
+ing ansatze maintain the requisite expressibility30–32. Of
+course, their execution (through whatever method they
+are generated) in a quantum device requires additional
+EM routines for accurate prediction of energetics.
+In
+this manuscript, while our principal focus is to develop
+the ML based EM strategy for any arbitrary disentan-
+gled ansatz10, we also propose a robust methodology that
+forms a dynamic ansatz in a noisy quantum architecture
+which is nearly identical to an ansatz constructed under
+noiseless environment from the same operator pool. Such
+an undertaking serves twin desirable goals: firstly, it au-
+tomatically generates the features needed for the regres-
+sor of our subsequent ML model and more importantly,
+due to its compatibility with a sequential reference error
+mitigation (SREM) strategy that generates mitigated re-
+sults (which are used as training labels) for sub-circuits
+on the fly as the ansatz gets constructed. In short, this
+entire workflow can be executed in noisy quantum device
+without any implicit or explicit dependence to the fault-
+tolerant qubits. In the following section, we begin with
+the dynamic ansatz construction strategy in a noisy en-
+vironment and demonstrate how this strategy generates
+additional features that are used up by the ML regressor.
+A.
+Construction of a Dynamic Ansatz in Noisy Architecture
+For all the two-body excitations characterized by the
+hole-particle composite index tuple I, we calculate the
+one-parameter energy functional by optimizing the single
+parameter circuits
+EI = ⟨ϕHF | e−τI(θI) ˆHeτI(θI) |ϕHF ⟩∀I
+(3)
+where θI is the sole variational parameter in each such
+optimization. Furthermore, we calculate the "noisy" ref-
+erence energy for each of these one-parameter circuits
+with the parameter values set to be zero:
+E0
+I = ⟨ϕHF | e−τI(θI=0) ˆHeτI(θI=0) |ϕHF ⟩∀I
+(4)
+With the knowledge of the noisy reference energy for each
+one parameter circuit, we only screen in those operators
+2

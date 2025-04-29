@@ -1,0 +1,108 @@
+Exact Current Fluctuations in a Tight-Binding Chain with Dephasing Noise
+Taiki Ishiyama,1 Kazuya Fujimoto,1 and Tomohiro Sasamoto1
+1Department of Physics, Institute of Science Tokyo,
+2-12-1 Ookayama, Meguro-ku, Tokyo 152-8551, Japan
+(Dated: April 10, 2025)
+For a tight-binding chain with dephasing noise on an infinite interval, we exactly calculate the
+variance of the integrated current for a step initial condition with average densities, ρa on the
+negative axis and ρb on the positive axis. Our exact solution reveals that the presence of dephasing,
+no matter how small, alters the nature of current fluctuations from ballistic to diffusive in the
+long-time limit. The derivation relies on the Bethe ansatz on the infinite interval and a nontrivial
+parameter dependence, referred to as the ω-dependence, of the moment generating function for the
+integrated current. Furthermore, we demonstrate that the asymptotic form of the variance and
+a numerically obtained cumulant generating function coincide with those in the symmetric simple
+exclusion process.
+Introduction.— Nonequilibrium fluctuations have been
+central objects of study in classical statistical mechanics
+for many years. Investigating them has provided deep
+insights into the universal behavior of nonequilibrium
+phenomena in classical systems, such as absorbing-state
+phase transitions including the directed percolation uni-
+versality class [1], and dynamical critical phenomena [2],
+as well as interface growth phenomena described by the
+Kardar-Parisi-Zhang (KPZ) universality class [3, 4].
+Recently, nonequilibrium dynamics in isolated quan-
+tum many-body systems has attracted significant atten-
+tion, as exemplified by the development of generalized
+hydrodynamics [5, 6] and studies of electron fluids [7, 8].
+While these approaches focus primarily on average be-
+havior, there has been growing theoretical interest in
+nonequilibrium fluctuations as a means to explore univer-
+sal dynamics [9–34]. This interest has been further fueled
+by state-of-the-art experimental platforms, which now
+make it possible to investigate fluctuations [35–41]. For
+example, in an experiment using superconducting qubits,
+KPZ-type behavior was observed in the lower moments of
+currents, while non-KPZ-type behavior appeared in the
+higher moments [39].
+These efforts naturally motivate the study of how dis-
+sipation affects the nature of nonequilibrium fluctuations
+[42–48]. This is because dissipation is not only unavoid-
+able in experiments, but is also known to dramatically
+alter the properties of quantum systems. A well-known
+example of such dissipation is dephasing noise, a simple
+and fundamental form of particle-conserving dissipation
+that is also experimentally feasible [49–51]. Dephasing
+changes the long-time behavior of systems from ballis-
+tic to diffusive, even when it is arbitrary weak. While
+this has been demonstrated for an average current in a
+few simple models [52–64], whether such a drastic change
+also occurs for current fluctuations remains a fundamen-
+tal and intriguing question [45, 46].
+In this work, we theoretically study current fluctua-
+tions in a tight-binding chain with dephasing noise start-
+ing from a step initial condition with two densities (see
+Fig. 1). We derive an exact expression for the variance
+of an integrated current and show that the presence of
+dephasing, no matter how small, changes the growth of
+current fluctuations from ballistic to diffusive in the long-
+time limit. Our derivation consists of two essential steps.
+First we show that the moment generating function of an
+integrated current exhibits a nontrivial parameter depen-
+dence on the counting field and initial densities. Second
+we prove the integral formula for the Green’s function by
+employing the Bethe ansatz technique on an infinite in-
+terval. Both techniques have been successfully applied to
+the study of fluctuations in classical interacting systems
+[65–68]. To the best of our knowledge, this is the first ex-
+ample of their application to the study of fluctuations in
+open quantum many-body systems. In addition to these
+results, we demonstrate that both the asymptotic form of
+the variance and a numerically obtained cumulant gener-
+ating function of an integrated current agree with those
+in the symmetric simple exclusion process (SEP) [66].
+Setup.— We consider a tight-binding chain with de-
+phasing noise on an infinite interval. Under the Markov
+approximation, the time evolution of the density matrix
+ρ(t) is governed by the Gorini-Kossakowski-Sudarhan-
+Lindblad (GKSL) equation [69–71],
+dρ
+dt = L[ρ] ∶= −i[H,ρ] + ∑
+x∈Z
+LxρL†
+x −1
+2{L†
+xLx,ρ},
+(1)
+where L is referred to as the Liouvillian.
+In Eq. (1),
+the Hamiltonian is given by the one-dimensional tight-
+binding model H ∶= −∑x∈Z(a†
+xax+1 + a†
+x+1ax) and the
+Lindblad operator Lx ∶= √4γnx describes dephasing.
+This Lindblad operator can be derived from continu-
+ous weak measurements [71], incoherent light scattering
+[72], or noisy on-site potentials [73]. Here, ax, a†
+x, and
+nx ∶= a†
+xax are the annihilation, creation, and number op-
+erators of fermions at site x, and γ represents the strength
+of the dephasing. In this work, we consider a step initial
+condition with two densities,
+ρini ∶= ∏
+x∈Z
+[ρxnx + (1 −ρx)(1 −nx)],
+(2)
+where we define ρx ∶= ρa for x ≤0 and ρx ∶= ρb for x > 0.
+arXiv:2504.06989v1  [cond-mat.stat-mech]  9 Apr 2025

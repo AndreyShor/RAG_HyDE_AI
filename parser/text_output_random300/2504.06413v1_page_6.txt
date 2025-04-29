@@ -1,0 +1,174 @@
+GECCO ’25, July 14–18, 2025, Malaga, Spain
+Kölle et al.
+addition
+change
+swap
+deletion
+0.75
+0.80
+0.85
+0.90
+0.95
+1.00
+Fitness Score
+0
+1
+Figure 9: Fitness score comparison on four qubits, showing
+whether a strategy was present in a trial. Most results ap-
+proach optimal values.
+underwent 150 GA generations. This experiment aimed to identify
+whether specific strategies or strategy combinations yield superior
+fitness outcomes. We used diverse hyperparameter values to mini-
+mize biases in parameter settings. Table 1 summarizes the results
+of 300 trials under different conditions.
+Table 1: Results from 300 trials with different parameter
+settings chosen by Optuna. The highest mean and 75th per-
+centile appear in the swap, addition combination, while swap,
+addition, deletion yields the highest median and 25th per-
+centile.
+Strategy
+Mean
+Median
+25th Pctl
+75th Pctl
+deletion (del)
+0.3432
+0.2803
+0.2452
+0.3488
+addition (add)
+0.2939
+0.2725
+0.2614
+0.3435
+change (ch)
+0.2660
+0.2557
+0.2215
+0.3156
+swap (sw)
+0.3070
+0.2480
+0.2302
+0.2973
+ch, add
+0.3209
+0.2895
+0.2414
+0.3168
+sw, add
+0.3598
+0.2864
+0.2387
+0.4243
+sw, del
+0.3531
+0.2825
+0.2495
+0.3626
+ch, del
+0.3298
+0.2704
+0.2607
+0.3088
+ch, sw
+0.3281
+0.2684
+0.2483
+0.3096
+add, del
+0.2845
+0.2628
+0.2587
+0.2844
+sw, add, del
+0.3424
+0.2962
+0.2630
+0.3554
+ch, sw, add
+0.3207
+0.2833
+0.2506
+0.2980
+ch, add, del
+0.2740
+0.2746
+0.2416
+0.2938
+ch, sw, del
+0.3289
+0.2574
+0.2260
+0.3674
+ch, sw, add, del
+0.2827
+0.2650
+0.2420
+0.2828
+Individual Strategies. Fig. 11 shows that including a mutation
+strategy typically boosts performance relative to not using it, except
+for change, which lowers overall fitness. Swap increases variability
+the most, while change reduces it—at the cost of lower mean fitness.
+Both deletion and addition have minimal influence on standard
+deviation.
+Combined Strategies. Fig. 10 highlights several promising com-
+binations, especially swap, addition, swap, addition, deletion, and
+['swap', 'addition', 'deletion']
+['change', 'addition']
+['swap', 'addition']
+['change', 'swap', 'addition']
+['swap', 'deletion']
+['deletion']
+['change', 'addition', 'deletion']
+['addition']
+['change', 'deletion']
+['change', 'swap']
+['change', 'swap', 'addition', 'deletion']
+['addition', 'deletion']
+['change', 'swap', 'deletion']
+['change']
+['swap']
+0.2
+0.4
+0.6
+0.8
+1.0
+Fitness Score
+Figure 10: Histogram of average final fitness scores for vari-
+ous strategy combinations on six qubits.
+swap
+deletion
+addition
+change
+0.2
+0.4
+0.6
+0.8
+1.0
+Fitness Score
+0
+1
+Figure 11: Effect on fitness scores if a strategy was present
+in a trial for six qubits. Outliers likely reflect the inherent
+randomness of the GA.
+swap, deletion. Notably, these do not include change, reinforcing
+that change generally underperforms. The strong impact of swap is
+intuitive, because swapping operations can introduce significant
+restructuring. The use of addition or deletion helps maintain or
+adjust circuit complexity.
+Summary. Swap, deletion emerges as a particularly robust strat-
+egy, consistently achieving near-top results and reducing circuit
+depth over time. Addition can be useful but constantly increases
+depth, making swap, deletion an efficient choice for retaining strong
+performance while limiting circuit growth.
+5.3
+Impact of Mutation Rate, Population, and
+Adaptive Mutation
+We also investigated how hyperparameters—mutation rate, popula-
+tion size, and adaptive mutation—affect mutation strategy perfor-
+mance.
+Mutation Rate. Fig. 12 and Fig. 13 show that, within the tested
+ranges, further adjusting mutation rates after narrowing their bounds
+had little effect on final fitness. This indicates prior tuning already
+identified rates near local optima.

@@ -1,0 +1,68 @@
+Preprint. Under review.
+Table 7: Code Similarity across LLMs.
+Model
+FEABench Gold: ModelSpecs
+FEABench Large
+Claude-3.5-Sonnet
+0.19±0.03
+0.20±0.01
+GPT-4o
+0.17±0.03
+0.15±0.01
+Gemini-1.5-Pro
+0.17±0.03
+0.15±0.01
+Gemma-2-27B-IT
+0.15±0.02
+Gemma-2-9B-IT
+0.11±0.02
+CodeGemma-7B-IT
+0.12±0.02
+Table 8: Code Similarity across experiments.
+Experiment
+Code Similarity
+ModelSpecs : One-Shot
+0.17±0.03
+ModelSpecs : PhyDoc In-Context
+0.15±0.02
+ModelSpecs : Multi-Turn Agent
+0.17±0.03
+Plan : One-Shot
+0.21±0.03
+Plan : PhyDoc In-Context
+0.20±0.02
+be pythonized and results in a sequence of COMSOL Multiphysics®API calls and their
+‘pythonized’ counterparts, all of which start with model. and end with ’;’.
+The pythonized lines are then passed to the MPh client, and replies for each line are received.
+We parse API replies using the following patterns. A reply containing any of the following
+[‘Messages’, ‘has no attribute’, ‘No matching overloads’, ‘invalid syntax’, ‘Exception’, ‘is not
+defined’] are considered Syntax Errors. Replies with [‘Ambiguous’, ‘comma’, ‘No Model
+set’] are Translation errors. The last category category is rare in our experiments and are
+occasionally encountered when we tested adding new problems to the benchmark that
+contained lines that weren’t translated correctly in the query: the first two flag errors in the
+query to COMSOL Multiphysics®via Mph, while the last indicates that an action is being
+done on a non-existent model, which is inconsistent with the setup of the code. All other
+replies are designated Correct.
+Executability =
+CorrectLines
+TotalParsedLines
+(1)
+C.3
+Model Tree Score
+The model tree representation of the model built by the language model can be extracted,
+and one can use the same similarity score as above to compute a similarity score relative
+to the target tree. We expect this to be a more reliable measure of alignment since different
+blocks of code that build the same model will have the same model tree (addressing the
+case described in Code Similarity). Using the formula below, the score will be 1.0 if the trees
+are identical, and 0.0 if the trees are equivalent to a tree before any code is run.
+ModelTreeScore = Score(LM, GT) −Score(Empty, GT)
+1.0 −Score(Empty, GT)
+(2)
+The following is an empty tree, corresponding to a model that has only been initialized,
+before any code is run.
+model
+parameters
+Parameters 1
+functions
+components
+20

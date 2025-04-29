@@ -1,0 +1,125 @@
+5
+corresponding to broadband stations(BH, HH), particu-
+larly have a wide range of samplers per second compared
+with other kinds of stations, such as the long period ones
+(LH); however, to uniform the data, we resample the data
+to 4 samples per second.
+As before, we transform the records into physics sig-
+nals: displacement, velocity, and acceleration. We filter
+the data between 1 and 15 Hz, which allows the inclu-
+sion of seismic human noise (4–14 Hz), microseismicity,
+and environmental noise (more than 1 Hz) [e.g., 54, 55].
+Then, we will have three files for each station contain-
+ing the displacement, velocity, and acceleration. See Ap-
+pendix A 2 for more technical details.
+IV.
+METHODS
+This section discusses both the theoretical aspects of
+quality estimation for a weak source of randomness and
+the practical approach derived from these considerations.
+Section IV A begins with the formal definition of the ϵ-
+SV-source (see Eq. (1)) and demonstrates why we can-
+not directly apply it to randomness estimation for fi-
+nite sequences. Next, Section IV B introduces the cor-
+rect method for estimating ϵh (epsilons for fixed history
+length), which plays a key role in defining the ϵ-SV-
+source.
+Section IV C then presents a general function
+for combining a sequence of ϵh values into a single ϵ
+value. Following this, Section IV D outlines a set of ax-
+ioms that a reasonable ϵ-estimating function should sat-
+isfy to replace the formal ϵ-SV-source formula effectively.
+Section IV E explores several examples of such functions
+and identifies the most suitable one for our scenario. Fi-
+nally, Section IV F covers possible discretization meth-
+ods, which represent the final mandatory step of data
+preprocessing.
+A.
+Formal definition
+Let us start by recalling the definition of ϵ-SV-Source
+already introduced in Eq. (1).
+Definition IV.1 (ϵ-Santha-Vazirani-Source). We say
+that the source S (that produces some binary sequence
+s1, s2, . . .) is ϵ-Santha-Vazirani-Source if we have that
+∀
+n∈N
+∀
+s0,...,sn+1∈{0,1}
+1
+2 −ϵ ≤P(Sn+1 = sn+1|Sn = sn, . . . , S0 = s0, E) ≤1
+2 + ϵ
+(2)
+where E represents all other random variables in the past
+light cone of Sn+1.
+Then for ϵ = 0 we obtain a fully random source, and
+for ϵ = 1/2 the source can even be deterministic.
+We will begin by modifying the definition so that there
+will be a separate inequality for each history length. The
+first step would be to remove the global variable E since
+it is not part of the generated sequence and cannot be
+statistically checked in any way. We can do this since
+we assume that the source is of the ϵ-SV Source form.
+We should point out that this assumption is reasonable
+since it is unlikely that the adversary could influence the
+seismic signals, especially the one from the strong earth-
+quake with an epicenter between 30 km and 1000 km
+below the Earth’s surface.
+Similarly, there is reasonable argumentation for taking
+seismic noise as the ϵ-SV source. Detectors that collect
+this kind of data are sensitive even to small ground vibra-
+tions. On one hand, it is expected that in crowded areas,
+the devices would detect and record more unpredictable
+bits compared to the ones generated in remote places.
+The detection of noise is the result of numerous vibra-
+tion sources. This makes the control and the influence
+on the device by the adversary unattainable in practice.
+It gives us inequality in a much simpler form.
+∀
+n∈N
+∀
+s0,...,sn+1∈{0,1}
+1
+2 −ϵ ≤P(Sn+1 = sn+1|Sn = sn, . . . , S0 = s0) ≤1
+2 + ϵ.
+(3)
+We can then further transform the inequality in the fol-
+lowing way.
+∀
+n∈N
+max
+s0,...,sn+1∈{0,1}
+P(Sn+1 = sn+1|Sn = sn, . . . , S0 = s0) −1
+2
+ ≤ϵ.
+(4)
+We should also comment here that if some source is ϵ-SV-
+Source then it is also ϵ′-SV-Source for all ϵ′ > ϵ. Since
+we are interested in the smallest value of ϵ anyway, we
+can assume that the value is optimal from the beginning.
+Therefore, we will use the same ϵ variable name in the
+equation below to not abuse the notation. Then, we can
+rewrite it to obtain epsilon as a supremum over all pos-
+sible n values.
+ϵ = sup
+n∈N
+max
+s0,...,sn+1∈{0,1}
+P(Sn+1 = sn+1|Sn = sn, . . . , S0 = s0) −1
+2
+ .
+(5)
+Since our estimation will need constant history lengths at
+some point, we can rewrite the formula in the following
+way.
+ϵ ≤sup
+n∈N
+max
+h∈{0,...,n}
+max
+sn−h+1,...,sn+1∈{0,1}
+P(Sn+1 = sn+1|Sn = sn, . . . , Sn−h+1 = sn−h+1) −1
+2
+ .
+(6)
+The above inequality is true since we add maximization
+over a whole set of histories rather than a single one. We

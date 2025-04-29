@@ -1,0 +1,73 @@
+7
+FIG. 4.
+Mean final training accuracy of the logically-encoded VQC under different levels of gate (left) and environmental
+(right) noise ranging from p = 0.001 −0.01, and with different degrees of error detection implemented from 0 to 5 rounds
+of syndrome extractions. The mean final training accuracy is calculated from the training accuracies attained by the VQC
+over the final 40 iterations of training, after convergence. The standard deviation of the mean final training accuracy from 10
+training runs is represented by the shaded regions.
+training accuracy.
+Notably, when there is no noise on
+the ancilla qubits, the error detection works as expected
+and even at the highest noise levels, we see the training
+accuracy reach 1.0 within five rounds of syndrome ex-
+tractions. As long as there is any noise on the ancilla
+qubits, the error detection loses effectiveness, such that
+at higher ancilla noise levels (i.e., panc ≥0.005), the error
+detection becomes unreliable.
+Thus, a likely explanation for the high variability in
+final training accuracy at high ancilla qubit error rates
+is that the ancilla errors are not well-detected in this
+set-up, so they cannot be reliably eliminated from the
+training.
+We do not add syndrome extractions to the
+ancilla qubits, since it would require an additional en-
+coding of the ancilla qubits, leading to more ancillary
+qubits that we cannot perform syndrome extractions on.
+Since the ancilla qubits are entangled with the physical
+qubits, their errors spread easily into the physical qubits
+through the CNOT gates (see Figure 2).
+While some
+of these errors will be detectable by syndrome measure-
+ments on the physical qubits, most of these errors will
+be non-Pauli. Hence, as the noise level increases, it be-
+comes more difficult to protect the training through syn-
+drome extractions, leading to the lower final accuracies
+and greater variance in its value. As we will demonstrate
+in Section IV C 1, high noise levels result in high spread in
+physical qubit state fidelities, which produces the higher
+variance and non-monotonicity in the final training ac-
+curacies.
+We again observe the tendency for the mean final train-
+ing accuracies to plateau for panc > 0 instead of increase
+with more rounds of syndrome extraction. The plateau-
+ing effect is particularly apparent in the subplots of Fig-
+ure 6 where ancilla qubits are subject to noise (fanc ̸= 0),
+but is most apparent where the ancilla Pauli Error Rate
+is less than approximately 0.003. We also find that the
+higher the noise level, the lower the accuracy at which
+the plateau occurs. At higher levels of ancilla noise, the
+plateauing is hidden by the greater variance and non-
+monotonicity in the evolution of the final training accu-
+racy. The plateau indicates that there is a limit for how
+many ancilla-caused errors can be detected and removed
+from the physical qubits by the stabiliser code for a given
+Pauli Error Rate, leaving only errors that syndrome mea-
+surements cannot detect.
+When that limit is reached,
+adding more syndrome extractions will not result in the
+detection of more errors, leading to the plateau.
+The plateauing is also present in the simulation re-
+sults under gate noise (see Figure 5), though not as
+clearly visible because the threshold noise level before
+high variability takes over is lower than for the environ-
+mental noise simulations. The plateauing is most visible
+for panc ≈0.002 −0.004, where the ancilla noise is high
+enough to produce plateauing but low enough to not be
+masked by the high variability in final training accuracy.
+Interestingly, the plateauing starts at a higher number
+of syndrome extraction rounds in the simulations under
+the gate noise model than under the environmental noise
+model, suggesting that there are fewer detectable errors
+spreading to the physical qubits under the environmen-
+tal noise model. Additionally, with the same ancilla and
+physical Pauli Error Rates, the gate noise model finishes

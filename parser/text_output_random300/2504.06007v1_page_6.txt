@@ -1,0 +1,33 @@
+CAMulator
+Figure 1: (a) the CAMulator architecture consists of encoding stages using a CrossFormer backbone and decoding
+stages with hierarchical transpose convolutional layers, with skip connections for improved feature flow. (b) The CEL
+captures multi-scale features using four convolutional kernels. The LSDA mechanism includes (c)(i) SDA for local
+interactions and (c)(ii) LDA for global dependencies. (d) The decoder component employs convolutional upsampling
+blocks with skip connections to progressively increase feature map resolution and maintain spatial information. e)
+predictions are then de-normalized and past through the four physics conservation blocks prior to loss calculations
+2.5
+Computational Speed and Opportunities
+CAM6 achieves significant computational throughput on Derecho, a NSF NCAR supercomputer, with 10 CPU nodes
+delivering 14 simulation years per day at the selected resolution. This performance metric reflects pure compute time,
+excluding I/O overhead. In contrast, our trained ML-based emulator achieves a dramatic 350 times speedup, running at
+480 simulation years per day for a deterministic run on a single NVIDIA A100 GPU, while including all computational
+overhead and I/O operations. This acceleration enables high-throughput climate experiments, facilitating long-term
+scenario projections, ensemble simulations, and uncertainty quantification that would otherwise be computationally
+prohibitive with traditional numerical models.
+While this speedup is already substantial, further improvements at inference time are possible through:
+• Scalability via Ensemble Parallelism: Expanding ensemble members across multiple GPUs to improve
+robustness and uncertainty estimation.
+• Memory-Efficient Data Handling: Leveraging asynchronous I/O strategies and distributed storage solutions
+to further reduce bottlenecks in large-scale climate simulations.
+We avoid mixed precision (FP16/BF16) arithmetic to preserve the conservation properties critical for accurate climate
+modeling.
+This optimized workflow positions the emulator as a scalable and efficient alternative to traditional GCMs, capable of
+running thousands of years of simulation within days, opening new avenues for large-ensemble climate forecasting,
+extreme event attribution, and policy-relevant decision support.
+3
+Results
+3.1
+Annual Cycle and Roll-out
+Figure 2 illustrates two key aspects of CAMulator’s response to SST forcing. The top panel compares a 12-member
+CAMulator ensemble with the training data from 1979–2014, demonstrating that CAMulator effectively captures the
+6

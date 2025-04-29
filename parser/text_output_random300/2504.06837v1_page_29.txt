@@ -1,0 +1,123 @@
+EDP convergence for nonlinear RDS
+April 10, 2025
+G. Heinze, A. Mielke, A. Stephan
+≤
+
+X
+k∈Zd
+N
+(hN
+k + 11QN
+k )UN
+k
+
+1
+2
+L2([0,T]×X)
+
+X
+k∈Zd
+N
+(hN
+k −11QN
+k )UN
+k
+
+1
+2
+L2([0,T]×X)
+≤2d
+
+X
+m∈M
+(UN
+k+m + UN
+k )
+
+1
+2
+L2([0,T]×XN)
+
+X
+m∈M
+(UN
+k+m −UN
+k )
+
+1
+2
+L2([0,T]×XN)
+≤CM
+s
+KE
+L1Ks
+diﬀ
+ω∗
+KS
+diﬀ
+δ∗ω∗
+1
+N ,
+where in the last step we used that each m ∈M is a sum of ﬁnitely many d-dimensional unit
+vectors, estimated the ﬁrst factor using (5.1a), and extracted the power 1/N from the second
+factor by estimating with the uniform bound (5.2d) and Deﬁnition 3.4.
+Moreover, by Proposition 5.4 the curves ρN are N-uniformly bounded in Lpcrit([0, T] × X),
+so is the limit ρ. This concludes the proof of Proposition 5.8.
+The weak-∗convergence ρN(t) ⇀∗ρ(t) for all t ∈[0, T] follows from the bounds in Proposi-
+tion 5.5 by arguing analogously to [HrT23, Lemma 4.5].
+To later obtain a lower limit inequality for the dissipation functionals, we must ensure that
+the limit objects from Proposition 5.5 and Proposition 5.8 satisfy the continuity equation. This
+fact is established in the following lemma:
+Lemma 5.9 (Closedness of CE). Let (ρ, j, f) be a limit of (ρN, jN, f N)N∈N ⊂CE in the sense
+of Propositions 5.8 and 5.5. Then, it holds (ρ, j, f) ∈CE.
+Proof. By deﬁnition the set CE is closed with respect to the weak-L1 convergence of the time-
+integrated embedded ﬂuxes shown in Proposition 5.5 and the pointwise-in-time weak-∗conver-
+gence of the embedded concentrations shown in Proposition 5.8.
+To prove the lower limit inequality for the slopes, we will employ a convergence result for
+the diﬀerences of the piecewise constantly embedded concentrations. This is established next.
+Proposition 5.10 (Convergence of diﬀerences). Assume (4.A1) and let (cN, F N, JN) satisfy
+the a priori estimates (5.1). Let ρ be the limit of (ιNcN)N from Proposition 5.8. Recalling UN
+i,k =
+(ci,k/wN
+i,k)1/2, we introduce uN
+i = ιNUN
+i , u := ((ρi/ωi)1/2)i, and ∇NuN := 1
+N
+P
+e∈E(SN
+e uN−uN)e.
+Then, it holds u ∈L2(0, T; H1(Td)), uN →u strongly in L2([0, T] × X) and along a (not
+renamed) subsequence ∇NuN ⇀∇u weakly in L2([0, T] × X).
+Proof. Throughout this proof we ﬁx an arbitrary species i and omit the corresponding index.
+We denote ωN = ιNwN. The strong L2 convergence uN →u immediately follows by integrating
+the estimate
+|uN −u|2 =
+
+r
+ρN
+ωN −
+r ρ
+ω
+
+2
+≤
+ ρN
+ωN −ρ
+ω
+ ≤1
+ω∗
+|ρN −ρ| + 1
+ω2∗
+|ρ||ωN −ω|,
+and using Assumption 4.1.
+Next, we consider the diﬀerences ∇NuN =
+1
+N
+P
+e∈E(SN
+e uN −uN)e.
+Since ιN commutes
+with multiplication, it holds ∥∇NuN∥2
+L2(ΩT ;Rd) ≤δω∗KS
+diﬀand hence (along a not renamed
+29

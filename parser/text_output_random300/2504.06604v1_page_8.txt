@@ -1,0 +1,23 @@
+3.2
+Thin section registration in Berea sandstone CT image
+We applied the image registration approach to a Berea sandstone digital image. Figure 6 shows the dataset and
+preprocessing steps, which convert images from different modalities into the same feature space for image registration.
+In this study, we segmented binary images (1 for solid and 0 for pore). The top row shows grayscale Berea sandstone
+CT images (748 × 748 × 1234) segmented using Otsu’s thresholding [Otsu et al., 1975] with the commercial software
+GeoDict [GmbH, 2025]. The three rightmost plane views display the segmented CT images from the middle of each
+axis. The bottom row shows the blue epoxy-impregnated thin section (13776 × 8460), where the epoxy highlights the
+pores. The thin-section image was segmented using a color-based thresholding approach in the hue-saturation-value
+(HSV) color space, classifying blue regions as pores and other areas as solid [Liu et al., 2022]. The 3D CT data has a
+relatively low resolution, with a voxel size of 8.02 µm, whereas the voxel size of the thin-section image is 0.65 µm. To
+enable cross-correlation analysis, the thin-section image was downsampled by a factor of 0.65/8.02, aligning its voxel
+size with that of the CT image and ensuring a consistent spatial resolution between the two datasets. To achieve this, we
+employed cubic spline interpolation, which preserves fine-scale pore structures and minimizes aliasing artifacts during
+downsampling.
+Figure 6: Preprocessing steps, binarization for CT and thin section images to make them in the same feature space
+(solid (1) and pore (0)). (Top row) The original grayscale CT scan, its segmented binary version, and extracted middle
+slices along the xy-, yz-, and xz-planes. (Bottom row) The original thin-section image, its segmented binary version,
+and pixel size adjustment from 0.65 µm to 8.02 µm
+Since the exact location of the thin section was unknown (i.e., no ground truth), we defined the optimization parameter
+bounds based on observations of both images. In particular, we specified the x- and y-rotation angle bounds to (−3, 3)
+degrees, the z-rotation angle bounds to (0, 10) degrees, and the section number range to 1/4 −3/4 of the cubic size.
+8

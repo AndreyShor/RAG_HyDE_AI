@@ -1,0 +1,56 @@
+Warm-Start QAOA via a Reduction to Max-Cut
+•
+19
+B.3
+Portfolio Optimization
+Portfolio Optimization is the process of diversifying one’s assets to ensure an appropriate balance between risk
+and expected returns. Portfolio Optimization has been used as a benchmarking problem for different variations
+of QAOA [8, 27].
+Given the asset price of 𝑛stocks, the goal is to find a vector 𝑥∈{0, 1}𝑛that maximizes return, minimizes risk,
+and satisfies 1𝑇𝑥= 𝐵where 𝐵is a budget 1 ≤𝐵≤𝑛.
+Following [8], 𝑆𝑖,𝑘, the price of asset 𝑖over time 𝑘is generated using Geometric Brownian Motion for 𝑁= 250
+time steps and 𝑛assets:
+𝑆𝑖,𝑘= 𝑆𝑖,0 exp[(𝜇𝑖−𝜎2
+𝑖/2)𝑘/𝑁+ 𝜎𝑖𝑊𝑘],
+(36)
+with 𝑆𝑖,0 = 1 for all 0 ≤𝑖< 𝑛. Both the drifts, 𝜇𝑖, and the volatilities 𝜎𝑖are randomly generated using uniform
+distribution set within the range [−0.05, 0.05] and [−0.20, 0.20], respectively. 𝑊𝑘= Í𝑗
+𝑙=0 𝑧𝑙/
+√
+𝑁represents the
+cumulative Brownian motion, where 𝑧𝑙is a random variable with a standard normal distribution.
+For a set of asset prices, the return of asset 𝑖from time 𝑘to 𝑘+ 1 is, 𝑟𝑖,𝑘= 𝑆𝑖,𝑘/𝑆𝑖,𝑘−1 −1. Using these returns, a
+covariance matrix Σ ∈R𝑛×𝑛and a mean return vector 𝜇∈R𝑛can be calculated [28].
+The optimal asset vector 𝑥will then maximize
+𝜇𝑇𝑥−𝑞𝑥𝑇Σ𝑥−𝜆(1𝑇𝑥−𝐵)2,
+(37)
+where 𝜆is a Lagrange multiplier for the penalty (budget) constraint.
+This problem can be converted to a QUBO with 𝑄∈R𝑛×𝑛such that
+𝑥𝑇𝑄𝑥= 𝜇𝑇𝑥−𝑞𝑥𝑇Σ𝑥−𝜆(1𝑇𝑥−𝐵)2.
+(38)
+For our experiments, we set 𝜆= sum(|Σ|) + sum(|𝜇|), 𝑛= 16, 𝐵= 8, 𝑞= 0.5.
+B.4
+Maximum Independent Set
+Given a graph 𝐺= (𝑉, 𝐸) a subset 𝑈⊆𝑉is said to be an independent set if there are no edges between any of
+the vertices of 𝑈.
+The Maximum Independent Set (MIS) problem is to find an independent set of maximum cardinality of an
+arbitrary graph. This problem is equivalent to the NP-hard set packing problem [22]. There exist greedy ap-
+proximate (classical) algorithms for MIS [29]. The MIS problem has also been previously studied with QAOA
+in [30, 31]. Given a weighted graph 𝐺= (𝑉, 𝐸) with edge weights 𝑤: 𝐸→R, the MIS can be formulated as a
+QUBO [3] where 𝑄∈R|𝑉|×|𝑉|
+𝑥𝑇𝑄𝑥=
+∑︁
+0≤𝑖<|𝑉|
+𝑥𝑖−𝑐
+∑︁
+(𝑖,𝑗)∈𝐸
+𝑤𝑖𝑗𝑥𝑖𝑥𝑗
+(39)
+and 𝑐is a free variable controlling the weight of the penalty term. To ensure that the optimal vertex set is indeed
+independent it’s required that 𝑐> 1. For our simulations, 𝑐was set to 1.1.
+The graphs were sampled from two distributions: 11
+• Erdős–Rényi random graphs (GNP) (see [32]). Here 𝑛= 16, 𝑝= 0.25,
+• Newman–Watts–Strogatz random graphs (NWS) (see [33]). Here, 𝑛= 16,𝑘= 3, 𝑝= 0.5.
+11The values for graph distrubution parameters were chosen so that both the binomial and Newman-Watts-Strogatz graphs had similar
+independence numbers on average. If the graph generated is not connected we resample the distribution (i.e. rejection sample).
+ACM Trans. Quantum Comput., Vol. 1, No. 1, Article . Publication date: April 2025.

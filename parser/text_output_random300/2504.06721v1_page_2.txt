@@ -1,0 +1,161 @@
+where xt ∈Rdx and ut ∈Rdu are respectively the state and
+input of the system at step t, while wt is an independent
+white noise describing uncertainty influencing the system
+evolution. As usual in RL, a cost function c(xt) encodes the
+task to be accomplished. A policy πθ : x →u that depends
+on the parameters θ selects the inputs applied to the system.
+The objective is to find policy parameters θ∗that minimize
+the cumulative expected cost, defined as follows,
+J(θ) =
+T
+X
+t=0
+E[c(xt)],
+(2)
+where the initial state x0 is sampled according to a given
+probability p(x0).
+MC-PILCO consists of a series of attempts, known as
+trials, to solve the desired task. Each trial consists of three
+main phases: (i) model learning, (ii) policy update, and (iii)
+policy execution. In the first trial, the GP model is derived
+from data collected with an exploration policy, for instance,
+a random exploration policy.
+In the model learning step, previous experience is used to
+build or update a model of the system dynamics. The policy
+update step formulates an optimization problem whose ob-
+jective is to minimize the cost in eq. (2) w.r.t. the parameters
+of the policy θ. Finally, in the last step, the current optimized
+policy is applied to the system and the collected samples are
+stored to update the model in the next trials.
+In the rest of this section, we give a brief overview of the
+main components of the algorithm and highlight their most
+relevant features.
+1) Model Learning: MC-PILCO relies on GP Regression
+(GPR) to learn the system dynamics [11]. For the use of GPs
+in system identification and control we refer the interested
+reader to [12]. In our previous work, [2], we presented
+a framework specifically designed for mechanical systems,
+named speed-integration model. Given a mechanical system
+with d degrees of freedom, the state is defined as xt =
+[qT
+t , ˙qT
+t ]T where qt ∈Rd and ˙qt ∈Rd are, respectively, the
+generalized positions and velocities of the system at time t.
+Let Ts be the sampling time and assume that accelerations
+between successive time steps are constant. The following
+equations describe the one-step-ahead evolution of the i-th
+degree of freedom,
+˙q(i)
+t+1 = ˙q(i)
+t
++ ∆(i)
+t
+(3a)
+q(i)
+t+1 = q(i)
+t
++ Ts ˙q(i)
+t
++ Ts
+2 ∆(i)
+t
+(3b)
+where ∆(i)
+t
+is the change in velocity. MC-PILCO estimates
+the unknown function ∆(i)
+t
+from collected data by GPR. Each
+∆(i)
+t
+is modeled as an independent GP, denoted f i, with input
+vector ˜xt = [xT
+t , uT
+t ]T , hereafter referred as GP input.
+The posterior distributions of each ∆(i)
+t
+given Di are
+Gaussian distributed, with mean and variance expressed as
+follows:
+E[ ˆ∆(i)
+t ] = m(i)
+∆(˜xt) + K˜xt ˜
+XΓ−1
+i (y(i) −m(i)
+∆( ˜X)),
+var[ ˆ∆(i)
+t ] = ki(˜xt, ˜xt) −K˜xt ˜
+XΓ−1
+i K ˜
+X ˜xt,
+Γi = K ˜
+X ˜
+X + σ2
+i I,
+(4)
+refer to [11] for the derivation of Equation (4). Then, also the
+posterior distribution of the one-step ahead transition model
+in (3) is Gaussian, namely,
+p(xt+1|xt, ut, D) ∼N(µt+1, Σt+1)
+(5)
+with mean µt+1 and covariance Σt+1 derived combining (3)
+and (4).
+2) Policy Update: In the policy update phase, the policy
+is trained to minimize the expected cumulative cost in eq. (2)
+with the expectation computed w.r.t. the one-step ahead
+probabilistic model in eq. (5). This requires the computation
+of long-term distributions starting from the initial distribution
+p(x0) and eq. (5), which is not possible in closed form. MC-
+PILCO resorts to Monte Carlo sampling [13] to approximate
+the expectation in eq. (2). The Monte Carlo procedure starts
+by sampling from p(x0) a batch of N particles and simulates
+their evolution based on the one-step-ahead evolution in
+eq. (5) and the current policy. Then, the expectations in
+eq. (2) are approximated by the mean of the simulated
+particles costs, namely,
+ˆJ(θ) =
+T
+X
+t=0
+ 
+1
+N
+N
+X
+n=1
+c
+
+x(n)
+t
+!
+(6)
+where x(n)
+t
+is the state of the n-th particle at time t.
+The optimization problem is interpreted as a stochastic
+gradient descend problem (SGD) [14], applying the reparam-
+eterization trick to differentiate stochastic operations [15].
+The authors of [2] proposed the use of dropout [16] of the
+policy parameters θ to improve exploration and increase the
+ability to escape from local minima during policy optimiza-
+tion of MC-PILCO.
+B. Global Policy training
+The task in object presents several practical issues when
+applying the algorithm. The first one is that the control
+frequency requested by the challenge is quite high for a
+MBRL approach. Indeed, high control frequencies require
+a high number of model evaluations which increases the
+computational cost of the algorithm. The double pendulum
+system from the RealAIGym project can be controlled at
+relatively low frequencies like similar systems [2], [17].
+Indeed, in the real hardware stage of the first two editions
+of the competition, the MC-PILCO controller was trained to
+work at 33 Hz [3], [4]. However, the absence of friction in
+the simulated system makes the system particularly sensitive
+to the system input. Hence, we selected a control frequency
+of 50 Hz for this stage.
+The second challenge lies in the task requirements. Indeed,
+the task requires the policy to drive the system to the unstable
+equilibrium starting from an initial state x0 = [pT
+0 , ˙pT
+0 ]T ,

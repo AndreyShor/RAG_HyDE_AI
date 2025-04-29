@@ -1,0 +1,322 @@
+Going back to the proof, the second term in the sum can be bounded as follows
+∥(2.2.3)∥Lp
+≤
+ Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh
+
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)|µ0(θ + π −2 arcsin(h′), t′, h′)|
+
+p! 1
+p
+=
+ Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh
+
+Z t
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)|µ0(θ, t′, h′)|
+
+p! 1
+p
+≤
+ Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh
+
+Z
+t
+2
+0
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)|µ0(θ, t′, h′)|
+
+p! 1
+p
+(2.2.9)
++
+ Z
+T1
+2π
+dθ
+Z ∞
+0
+ds
+Z 1
+−1
+dh
+
+Z t
+t
+2
+dt′
+Z 1
+−1
+dh′Q(s + t −t′, h|h′)|µ0(θ, t′, h′)|
+
+p! 1
+p
+(2.2.10)
+We shall estimate separately (2.2.9) and (2.2.10). As for the first one, thanks to Young inequality used as in (2.2.8),
+we have
+(2.2.9)p
+≤
+Z
+T1
+2π
+dθ
+Z
+t
+2
+0
+dt′
+Z 1
+−1
+dh′|µ0(θ, t′, h′)|p
+Z ∞
+0
+ds
+Z 1
+−1
+dhQ(s + t −t′, h|h′)
+
+E(s + t
+2, h) −E(s + t, h)
+p−1
+|
+{z
+}
+≤E(s+ t
+2 ,h)p−1≤(2C)p−1
+(t+2)p−1 by Lemma B.2
+≤
+(2C)p−1
+(t + 2)p−1
+Z
+T1
+2π
+dθ
+Z
+t
+2
+0
+dt′
+Z 1
+−1
+dh′
+E(t −t′, h′)
+|
+{z
+}
+≤
+C
+t−t′+1 ≤2C
+t+2 by Lemma B.2
+|µ0(θ, t′, h′)|p ≤(2C)p
+(t + 2)p ∥µ0∥p
+Lp,
+while the second one satisfies
+(2.2.10)p
+≤
+Z
+T1
+2π
+dθ
+Z t
+t
+2
+dt′
+Z 1
+−1
+dh′|µ0(θ, t′, h′)|p
+Z ∞
+0
+ds
+Z 1
+−1
+dhQ(s + t −t′, h|h′)
+
+E(s, h) −E(s + t
+2, h)
+p−1
+|
+{z
+}
+≤1
+≤
+Z
+T1
+2π
+dθ
+Z t
+t
+2
+dt′
+Z 1
+−1
+dh′ E(t −t′, h′)
+|
+{z
+}
+≤1
+|µ0(θ, t′, h′)|p ≤∥µ0∥p
+Lp(T1
+2π×[ t
+2 ,+∞)×[−1,1]).
+which complies with (1.1.13) and ends the estimate of (2.2.3) since
+∥(2.2.3)∥Lp ≤(2.2.9) + (2.2.10) ≤2C
+t + 2∥µ0∥Lp + ∥µ0∥Lp(T1
+2π×[ t
+2 ,+∞)×[−1,1]).
+Then, going back to (2.2.4), if we split {t′ ∈[0, t]} in {t′ ∈[0, t
+2]}∪{t′ ∈[ t
+2, t]} and {t′′ ∈[0, t′]} in {t′′ ∈[0, t′
+2 ]}∪{t′′ ∈
+[ t′
+2 , t′]}, we get
+∥(2.2.4)∥Lp
+≤
+
+
+R
+T1
+2π dθ
+R ∞
+0
+ds
+R 1
+−1 dh
+
+R t
+0 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′)
+·
+R t′
+0 dt′′ R 1
+−1 dh′′Q(t′ −t′′, h′|h′′)|µ0(θ + 2π −2 arcsin(h′) −2 arcsin(h′′), t′′, h′′)|
+
+p
+
+
+1
+p
+≤
+
+
+R
+T1
+2π dθ
+R ∞
+0
+ds
+R 1
+−1 dh
+
+R t
+2
+0 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′)
+·
+R t′
+0 dt′′ R 1
+−1 dh′′Q(t′ −t′′, h′|h′′)|µ0(θ, t′′, h′′)|
+
+p
+
+
+1
+p
+(2.2.11)
++
+
+
+
+R
+T1
+2π dθ
+R ∞
+0
+ds
+R 1
+−1 dh
+
+R t
+t
+2 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′)
+·
+R t′
+2
+0
+dt′′ R 1
+−1 dh′′Q(t′ −t′′, h′|h′′)|µ0(θ, t′′, h′′)|
+
+p
+
+
+
+1
+p
+(2.2.12)
++
+
+
+R
+T1
+2π dθ
+R ∞
+0
+ds
+R 1
+−1 dh
+
+R t
+t
+2 dt′ R 1
+−1 dh′Q(s + t −t′, h|h′)
+·
+R t′
+t′
+2 dt′′ R 1
+−1 dh′′Q(t′ −t′′, h′|h′′)|µ0(θ, t′′, h′′)|
+
+p
+
+
+1
+p
+,
+(2.2.13)
+21

@@ -1,0 +1,131 @@
+2
+of useful algorithms potentially requiring hundreds of
+thousands of qubits [34].
+As a result, the theoretical and experimental imple-
+mentation of QEC codes is still in its early stages and
+is largely limited to the smallest codes or the simplest
+operations. QEC codes have been successfully applied to
+a small number of quantum operations in both theoreti-
+cal and experimental quantum environments. In partic-
+ular, the [[4,2,2]] stabiliser code has seen widespread use
+in recent years across a range of applications, including
+magic state preparation [35], quantum chemistry [36, 37],
+Variational Quantum Eigensolvers [38–40], and the im-
+plementation of diverse quantum circuits [41–43]. Codes
+with enhanced error correction capabilities and greater
+resource requirements, including the Steane code [44, 45],
+repetition code [46], Shor code [47], Bacon-Shor code and
+surface code, have primarily been applied to error cor-
+rection on a single logical qubit [48–51] or to the imple-
+mentation of simple operations on 1-2 logical qubits [52–
+55], though notably the Steane Code was recently used
+to logically encode three-qubit circuits for the quantum
+Fourier Transform [56].
+Despite these recent advance-
+ments, no experiment or theoretical simulation has yet
+demonstrated the application of a QEC code to a QML
+problem.
+We present the first study on the implementation of a
+QML algorithm with a QEC code. Specifically, we im-
+plement a simple Variational Quantum Classifier (VQC)
+with the [[4,2,2]] stabiliser code. We selected the simplest
+stabiliser code and QML algorithm in order to minimise
+resource overhead in our experiments, which nevertheless
+requires 20 qubits to implement five rounds of syndrome
+extractions. In Sections II and III, we explain how we
+logically encoded the VQC according to the [[4,2,2]] code,
+introduce the noise models we used to simulate realistic
+noisy environments, and detail the parameters used in
+our simulations. We then present and discuss the results
+of our analyses in Section IV, showing that a threshold
+error rate for ancilla qubits exists, such that above this
+threshold the QEC code is no longer capable of ensuring
+good training accuracies and state fidelities.
+We con-
+clude in Section V with a discussion of the implications
+of our findings for the practical implementation of QML
+algorithms on NISQ and fully fault-tolerant systems.
+II.
+EXPERIMENTAL SET-UP
+We chose a very simple 2-qubit VQC for our experi-
+ments (displayed in Figure 1), in order to minimise both
+resource overhead and computational time required to
+run the simulations. The VQC takes two qubits encoded
+in the basis encoding as input, and classifies their par-
+ity through measurement of the first qubit in the Z basis.
+The quantity measured is the expectation value over 1000
+shots. We use only one rotational parameter, θ, to train
+the classifier, as any more than one leads to overfitting.
+The classifier is able to reach an accuracy of 1.0 within
+100 training iterations.
+A.
+Logical Encoding
+We chose the [[4,2,2]] 4-qubit Calderbank-Shor-Steane
+(CSS) stabiliser code for our encoding and error detec-
+tion, as it is the simplest stabiliser code that protects
+against X and Z single-qubit errors [57]. It encodes 2
+logical qubits using 4 physical qubits, and can only fa-
+cilitate detection (not correction) of single-qubit errors.
+As with all stabiliser codes, errors are detected by taking
+measurements of ancilla qubits after applying stabilisers
+to the physical qubits, known as syndrome extraction.
+We used the following mapping to encode 2 logical
+qubits with 4 physical qubits:
+|00⟩L =
+1
+√
+2(|0000⟩+ |1111⟩)
+(1)
+|01⟩L =
+1
+√
+2(|0011⟩+ |1100⟩)
+(2)
+|10⟩L =
+1
+√
+2(|0101⟩+ |1010⟩)
+(3)
+|11⟩L =
+1
+√
+2(|0110⟩+ |1001⟩),
+(4)
+where the left-hand side represents the four different 2-
+logical qubit states (indicated by the subscript L), and
+the right-hand side represents the physical qubit states.
+With these definitions, the CNOT gate in the VQC is
+logically encoded by a SWAP gate between the first two
+physical qubits.
+The logical encoding for the rotation
+gates require additional ancilla qubits (one ancilla per
+rotation gate to be encoded), where the ancilla qubits
+undergo the rotation instead of the physical qubits. This
+process generally requires a series of CNOT gates before
+and after the application of each rotation gate, which
+entangle the physical (and logical) qubits with the ancilla
+qubits.
+In our logical encoding, the quantum state of the full
+qubit system, including ancilla qubits, is always of the
+form:
+|Ψ⟩=
+3
+X
+i=0
+ci |ψi⟩L
+n−1
+O
+j=0
+|ϕi⟩aj ,
+(5)
+where |ψi⟩L represents each of the four possible logical
+basis states, ci is the complex coefficient associated with
+the i-th logical basis state, |ϕi⟩aj represents the state of
+the j-th ancilla qubit, aj, associated with the i-th logical
+basis state, and n is the total number of ancilla qubits
+that have been introduced into the system.
+To illustrate, the full quantum state after the first two
+RX rotations is given by:
+|Ψ⟩= −ics |00⟩L |0⟩a1 |0⟩a2 + c2 |01⟩L |0⟩a1 |1⟩a2
+−s2 |10⟩L |1⟩a1 |0⟩a2 −isc |11⟩L |1⟩a1 |1⟩a2 ,
+(6)

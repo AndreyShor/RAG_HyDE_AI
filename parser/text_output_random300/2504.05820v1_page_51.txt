@@ -1,0 +1,95 @@
+Tools and methodology
+37
+10−7
+10−6
+10−5
+10−4
+10−3
+10−2
+10−1
+100
+x
+−0.004
+−0.002
+0.000
+0.002
+0.004
+0.006
+rel. distance to µ2
+b = m2
+b
+g(x)
+0.5
+2.0
+5.0
+10−7
+10−6
+10−5
+10−4
+10−3
+10−2
+10−1
+100
+x
+−0.010
+−0.008
+−0.006
+−0.004
+−0.002
+0.000
+0.002
+0.004
+V (x)
+Figure 2.3: Difference of PDF evolution with the bottom matching µ2
+b at 1/2, 2, and 5 times the
+bottom mass m2
+b relative to µ2
+b = m2
+b. Note the different scale for the two distributions. All evolved in
+µF = 1.65 →102 GeV.
+strong coupling varies faster. When dealing with µ2
+h ̸= m2
+h the PDF matching conditions become
+discontinuous already at NLO.
+Backward matching.
+For backward evolution the PDF matching has to be applied in the
+reversed order. In EKO we have implemented two different strategies to perform the inverse
+matching: the first one is a numerical inversion, called exact, where the operator matrix
+elements of Eqs. (1.101) and (1.102) are inverted exactly in Mellin space; in the second method,
+called expanded, the matching matrices are inverted through a perturbative expansion in as in
+Mellin space, given by:
+
+A(nf)
+exp
+−1
+(µ2
+h) = I −as(µ2
+h)A(1),(nf) + a2
+s(µ2
+h)
+h
+−A(2),(nf) −(A(1),(nf))2i
++ a3
+s(µ2
+h)
+h
+−A(3),(nf) + A(1),(nf)A(2),(nf) + A(2),(nf)A(1),(nf) −(A(1),(nf))3i
+,
+(2.4)
+with I the identity matrix in flavor space.
+As a consistency check we have performed a closure test verifying that after applying two
+opposite EKOss to a custom initial condition we are able to recover the initial PDF. Specifically,
+the product of the two kernels is an identity both in flavor and momentum space up to the
+numerical precision. The results are shown in Fig. 2.4 in case of NNLO evolution crossing the
+bottom threshold scale µF = mb. The differences between the two inversion methods are more
+visible for singlet-like quantities, because of the non-commutativity of the matching matrix
+A(nf)
+S
+.
+Special attention must be given to the heavy quark distributions which are always treated
+as intrinsic, when performing backward evolution.
+In fact, if the initial PDF (above the
+mass threshold) contains an intrinsic contribution, this has to be evolved below the threshold
+otherwise momentum sum rules can be violated.
+This intrinsic component is then scale
+independent and fully decoupled from the evolving (light) PDFs. On the other hand, if the

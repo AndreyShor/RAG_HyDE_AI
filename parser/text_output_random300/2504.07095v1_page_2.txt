@@ -1,0 +1,120 @@
+eralize to the situations they have never encountered. A
+world model [2–4] is an inner model that simulates how the
+world evolves, and in essence it does one thing: Given the
+current state and action, it predicts the future state [2]. In
+this work, we focus on building the world model for mo-
+tion dynamics. Given an arbitrary robot, a world model
+must learn the dynamics of the physical body and predict
+the future physical state given its current state and actions.
+While many pioneering works were proposed in the past [5–
+9] to solve different reinforcement learning tasks, almost all
+of these works evaluate world models indirectly using the
+downstream tasks as surrogates. This work aims to fill this
+neglected gap. How good are the world models at doing
+what they do – to predict the future given the current state
+and action? If the world models are truly generalizable, can
+we possibly use them to generalize to the never encountered
+situations or even learn the new tasks in a zero-shot manner?
+In this work, we push the limit of world models in reinforce-
+ment learning and build the state-of-the-art world model,
+Neural Motion Simulator (MoSim), that significantly sur-
+passes the previous ones in direct evaluations, predicting the
+future raw and latent states. We show, for the first time, that
+when a world model’s prediction horizon and accuracy are
+sufficient, it is possible to train or search for a new policy
+completely in the predicted space in a zero-shot manner. In
+order to model the motion precisely, we introduce a world
+model architecture with rigid-body dynamics and Neural
+Ordinary Differential Equations (Neural ODE) [10], which
+enables accurate long-horizon predictions of future physi-
+cal states. Since MoSim predicts in the raw state space, it
+can be combined with essentially any model-free reinforce-
+ment learning (RL) algorithm and turn into a model-based
+approach. This effectively decouples the modeling of physi-
+cal environment from the development of the RL algorithm.
+Such a separation allows MoSim to benefit from the inde-
+pendent advancements from both world models and RL al-
+gorithms, significantly improving the sample efficiency and
+enhancing generalization capabilities. Our findings high-
+light that modeling world models for motion dynamics is a
+promising direction for developing more versatile and capa-
+ble embodied systems.
+Our main contributions are summarized as follows:
+• We propose MoSim, a neural simulator with state-of-
+the-art long-horizon prediction accuracy.
+• Leveraging MoSim’s predictive capability, we show that
+it is possible to achieve zero-shot model-based RL,
+which can be integrated with any model-free algorithm.
+• We take initial steps toward addressing the key chal-
+lenges of zero-shot RL, demonstrating the potential of
+this direction.
+We created a website https://oamics.github.io/
+mosim_page/ to provide additional details, including a
+link to our open source code repository.
+2. Method
+In this section, we introduce the model architecture, bench-
+mark, and training strategy.
+2.1. Architecture
+Dynamics Model.
+MoSim performs predictions within
+the continuous physical state space S of the robot. The
+physical state s(t) := (q1, q2, . . . , qn, ˙q1, ˙q2, · · · , ˙qn)T =
+(qT , ˙qT )T is a vector that changes continuously over time
+t, including the coordinates q and their corresponding ve-
+locities ˙q2. s includes variables such as joint motor angles,
+angular velocities, spatial positions and velocities, etc. In
+practice, these state variables can be obtained through sen-
+sors mounted on the robot. As shown in Figure 2(b), We
+model the system dynamics by two terms: 1) a Predictor
+term f, which models the deterministic rigid body dynam-
+ics and 2) a Corrector term, which handles noise or other
+unmodeled factors that deviate from the rigid body motion:
+˙s(t) = f(s(t), a(t)) + ϵ(s(t), a(t)),
+(1)
+where a(t) denotes a time-varying action vector, which can
+be joint torque inputs or other control signal inputs, ˙s(t)
+represents the time derivative of s(t), f denotes the rigid
+body dynamic function, and ϵ represents the residual un-
+modeled factors. In the absence of stochasticity, the initial
+state s(t0) and a given action a(t) uniquely determine the
+state s(t0 + T) for any T.
+Ideal Rigid Body Dynamics. For ideal rigid body motion,
+the dynamic equations have an explicit form [11, 12]:
+˙sideal = d
+dt
+q
+˙q
+
+= f(s(t), a(t))
+(2)
+=
+
+˙q
+M(q)[b(q, ˙q) + τ(a) + c(q, ˙q, a)]
+
+.
+(3)
+where M(q) is the inverse of inertia matrix that depends
+only on the position and it is symmetric positive defi-
+nite; b(q, ˙q) is a vector-valued function of the state, de-
+scribing the effects of conservative forces, such as gravity;
+c(q, ˙q, a), as a residual term, accounts for the effects of
+equality constraints and contact forces (e.g., collision and
+friction forces) which are difficult to be explicitly modeled.
+If we let ϵ(q, ˙q, a) in Equation 1 absorb M(q)c(q, ˙q, a) in
+Equation 3, then we can reach the following formulation:
+˙s(t) =
+
+˙q
+M(s)[b(s) + τ(a)]
+
++ ϵ(s(t), a(t))
+(4)
+In MoSim, we parameterize each of M(s) (Position En-
+coder), b (State Encoder), τ (Action Encoder), and ϵ (Cor-
+rector) using a different neural network, as shown in Fig-
+ure 2. We use standard ResNet [13] to implement M, b,
+2In this paper, we use dots to denote derivatives with respect to time.
+For example, ¨q represents the second-order derivative of q with respect to
+time, i.e., acceleration.
+2

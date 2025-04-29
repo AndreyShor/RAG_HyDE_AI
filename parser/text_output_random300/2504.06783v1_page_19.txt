@@ -1,0 +1,50 @@
+ 
+19 
+ 
+where, 𝑐𝑜𝑣(𝐺𝑡 , 𝐺𝑚)  represents the covariance between 𝐺𝑡  and 𝐺𝑚 . Specifically, it is calculated as 
+𝑐𝑜𝑣(𝐺𝑡 , 𝐺𝑚) =
+1
+𝐽0 ∑
+1
+𝐾0 ∑𝐺t(j,k)∗𝐺𝑚(𝑗,𝑘)
+𝑘
+𝑗
+∗𝜎𝐺𝑡
+𝜎𝐺𝑚
+  (where j and k denote the indices for the y‒z plane, and the sums 
+are taken over the appropriate ranges of j and k). Here, 𝐺𝑚  is the mean state of CDA GMOC, 𝐺𝑡  is the 
+instantaneous time slice of GMOC, 𝐽0 and 𝐾0 are numbers of points on the y‒z plane, and 𝜎𝐺𝑡 and 𝜎𝐺𝑚 
+are the standard deviations of 𝐺𝑡 and 𝐺𝑚, respectively. 
+Geostrophic component of GMOC. We calculate the geostrophic GMOC using observed and CDA-
+derived ocean temperature and salinity data, and subsequently verified its geostrophic component. The 
+following formula for the geostrophic meridional velocity (vg) is derived based on the geostrophic balance and 
+thermal wind relationship, which are fundamental in oceanographic studies [61]: 
+𝒗𝒈(𝑘) = 𝒗𝒈(𝑘+ 1) −𝑔
+𝑓
+[𝑧(𝑘+ 1) −𝑧(𝑘)]
+𝜎(𝑘)
+𝜕𝜎(𝑘)
+𝜕𝑥
+,
+(5) 
+where, g is the gravitational acceleration, f is the Coriolis parameter, k is the k-th vertical grid with k increasing 
+downwards, z is the grid depth, and σ(k) is the potential density referenced to z(k). The geostrophic velocity is 
+reconstructed with the level of no motion at the ocean bottom. Referring to previous research, a small spatially 
+uniform velocity O (0.1 mm/s) is removed afterwards to ensure zero meridional transport [62]. 
+North Atlantic Deep Water. The NADW index is defined as the average thickness between two isopycnals 
+of σ1.5 over the domain of 55°–35° W and 45°–65° N [63,64]. Here, σ1.5 represents the potential density 
+referenced to a depth of 1500 m. In this study, we chose σ1.5 = (34.56, 34.68) as the two isopycnals for CESM-
+HIS, CESM-CDA, CM2-CDA, ORAS5, and EN4, and σ1.5 = (34.52, 34.56) for CM2-HIS. The differences in 
+the isopycnals chosen for different simulations are attributed to the distinct characteristics of deep mode water 
+formation and evolution in each model. 
+Residual circulation of the Antarctic Circumpolar Current. The ACC-RC denotes the net transport of 
+Ekman effects, while being compensated by eddy-induced transport [38]. It reflects the overall balance 
+between the direct impact of Ekman effects and the counteracting influence of eddy-induced transport. We 
+calculate the ACC-RC from the following formula [65]: 
+𝛹∗= −𝜏
+𝑓+ 𝐾𝑒𝑆,
+(6) 
+where, τ represent wind stress, f is the Coriolis parameter, Ke is eddy diffusivity coefficient, which is set to 
+1000 m2/s in this study [66], and S is the slope of isopycnal. Similar to the GMOC index, we define the ACC-
+RC index as the linear regression coefficient of the instantaneous time-slice (monthly in this particular case) 
+distribution of the ACC-RC system in relation to its temporal mean distribution. 

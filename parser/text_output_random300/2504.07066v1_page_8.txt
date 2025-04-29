@@ -1,0 +1,98 @@
+8
+Besides, we can deduce the nature of vortex criticality
+based on the momentum-space locations of JT phase
+transitions:
+(a) on-TRIM: indicating one Kitaev or nodal vortex
+phase transition at around µc.
+(b) off-TRIM & opposite kz: indicating two simulta-
+neous vortex gap closures at around µc, which to-
+gether change the chiral winding number by ±2.
+(c) off-TRIM & same kz: indicating two subsequent
+vortex phase transitions around µc, each changing
+either Kitaev or nodal vortex topology. The nature
+of vortex transitions can be further predicted when
+the system features C2z or C4z, following Sec. III C.
+The above criticality correspondence relations provide
+concrete guidelines to quantitatively reconstruct the vor-
+tex topological phase diagram without performing large-
+scale vortex simulations.
+IV.
+JOSEPHSON-VORTEX RELATIONS IN
+EFFECTIVE MODELS
+In this section, we will numerically investigate a set
+of effective models for 3D conventional superconduc-
+tors that exhibit diverse manifestations of JT and VLT
+physics. For each model, we begin by constructing the
+topological phase diagram of the π-junction through com-
+prehensive simulations. Leveraging the JVC relations, we
+then infer the corresponding vortex-line topological phase
+diagram. Finally, we directly compute the vortex phase
+diagram and compare it against the JVC-based predic-
+tion, thereby benchmarking the accuracy and robustness
+of our correspondence framework.
+A.
+Doped topological insulator
+We start with the standard Fu-Kane system, i.e.,
+a doped 3D class-AII topological insulator (TI) with
+conventional s-wave Cooper pairing [24].
+The normal-
+state Hamiltonian for such a TI can be minimally de-
+scribed by a massive Dirac model on a cubic lattice
+with hT I(k) = P5
+i=1 di(k)γi.
+Here, we have defined
+d = (v sin kx, v sin ky, vz sin kz, 0, m(k)) with the mass
+term m(k) = m0 + m1(cos kx + cos ky) + m2 cos kz. Our
+choice of the Dirac γ matrices are
+γ1 = σx ⊗sx, γ2 = σx ⊗sy, γ3 = σx ⊗sz,
+γ4 = σy ⊗s0, γ5 = σz ⊗s0.
+(15)
+We denote σα and sα as the Pauli matrices for the orbital
+and spin degrees of freedom, respectively. Notably, hT I
+features the spatial inversion symmetry P = γ5, the TRS
+Θ = −iγ13K, and a 4-fold around-ˆz rotation symmetry
+C4z = exp(iJzπ/2) with the generator Jz = γ12/2. For
+our purpose, we choose the model parameter set to be
+FIG. 3. JT and VLT phase diagrams of a superconducting
+TI. (a) µ-dependent Andreev spectrum in a (100)-directional
+π-junction at ky,z = 0.
+Andreev band crossings at E = 0
+manifest as Josephson topological phase transitions. Regions
+in blue are Z2 trivial, while the pink region is Z2 topological.
+(b) Wilson loop characterization of Andreev bound states at
+µ = 0.7, where the helical winding pattern suggests a non-
+trivial JT Z2 index ν0 = 1. (c) µ-dependent CdGM spectrum
+of a (001)-directional vortex line at kz = 0. The pink region
+shows a topological Kitaev vortex phase with end MZMs. (d)
+Evolution of µ(J)
+c
+and µ(v)
+c
+as a function of pairing order ∆0,
+which confirms the π-junction and vortex line are simultane-
+ously topological.
+m0 = 2.5 and v = vz = −m1 = −m2 = 1, with which
+the normal state at µ = 0 achieves a strong Z2 TI phase
+with a topological band inversion at Γ point.
+The BdG Hamiltonian for the doped TI system directly
+follows the formalism in Eq. 1, where a bulk conven-
+tional s-wave pairing is assumed. We further construct a
+thick-slab Hamiltonian Hx(ky, kz) for this BdG system,
+which consists of 300 unit cells along ˆx direction and
+respects the periodic boundary conditions along other
+directions. The π-junction geometry is implemented by
+taking the left half slab to carry a positive pairing am-
+plitude ∆0 = 0.03, while the electrons on the other half
+slab are negatively paired with −∆0.
+The JT in this setup can be intuitively understood by
+taking two limits: µ = 0 and µ = ∞. With zero doping,
+the Fermi level crosses only the Dirac surface states, and
+an effective surface theory will suffice. Specifically, on ei-
+ther (010) or (001) surface, the surface Dirac fermion will
+develop a pairing-induced mass that flips its sign exactly
+at the π-junction, thus leading to a pair of helical Majo-
+rana modes bound to the domain [24, 59]. To numerically
+check the JT, we have calculated the inversion eigenval-
+ues of all negative-energy states at ky,z = 0, π for the
+π-junction slab with µ = 0. Following Eq. 4, we find the
+BdG inversion-symmetry indicator to be κ = 1. Mean-

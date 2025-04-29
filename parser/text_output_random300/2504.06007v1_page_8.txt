@@ -1,0 +1,46 @@
+CAMulator
+Figure 3: Time series of conservation diagnostics and budget residuals for CAMulator with and without physics
+conservation blocks. (a) Total dry mass (kg) for CAMulator-phys (teal), CAMulator-nophys (black), with the initialized
+mass shown as a reference (red dashed line). (b) Moisture budget residual (kg) comparing CAMulator-phys and
+CAMulator-nophys. (c) Global energy budget residual (W) for CAMulator-phys and CAMulator-nophys. (d) Total
+energy tendency (W), representing the time derivative of total atmospheric energy, comparing CAMulator-phys and
+CAMulator-nophys.
+Figure 3 shows the conservation properties for global mass, water, and energy of the CAMulator system with the
+conservative layers activated (Figure 3; CAMulator-phys teal line) and inactive (Figure 3; CAMulator-nophys black
+line). CAMulator-nophys immediately deviates from the desired conservation properties and quickly settles into it’s
+own errant climatology halfway through the first month of the climate simulation. The residuals are calculated as the
+previous time-step minus the current [t−1 −t0], meaning an observed positive residual indicates that CAMulator-nophys
+sheds mass, water, and energy prior to settling into a steady state. We note that we can still achieve stable simulation
+runs and indefinite roll-outs with CAMulator-nophys.
+Interestingly, enforcing total energy tendency conservation balances the tendency such that it is centered around zero
+and regularly oscillates with the diurnal cycle (Fig. 3e), whereas sporadic behavior is observed in CAMulator-nophys.
+3.2
+Annual Mean Biases
+We next evaluate the time-averaged annual climatology of the CAMulator simulation over the period 1979–2014. Figure
+4a–c shows the zonal mean precipitation, 2m temperature, and zonal wind at the lowest model level for CAM6 and
+CAMulator, shown in purple and teal, respectively. The zonal mean for two reanalysis products is also shown in dashed
+gray.
+Overall, CAMulator simulates the annual mean state well. Figure 4d–f presents the difference between the annual
+means (CAMulator - CAM). The largest precipitation errors occur in the tropics, with a wet bias over Central America
+and a dry bias over the Maritime Continent (Fig. 4d). For 2m temperature, a persistent warm bias is evident over
+Greenland, particularly in winter, likely due to the lack of ice representation in the CAMulator state (Fig. 4e). The
+largest discrepancies in zonal winds appear in the storm track regions, where slight shifts in the locations of peak wind
+magnitudes are observed (Fig. 4f). For every field, the spatial annual climatological RMSE is computed and displayed
+in the supplemental material (Figs. 2S-16S), we additionally compute the annual RMSE values which are in appendix
+table A.1.
+3.3
+Modes of Variability
+Evaluating a climate model’s performance requires not only assessing its accuracy in representing climatological
+averages but also its ability to capture lower-frequency climate modes [e.g., Phillips et al., 2014]. Given the vast number
+of modes of variability identified in the literature, a comprehensive analysis is impractical. Instead, we focus on three
+principal and well-documented modes used in major climate model evaluations: the Pacific North American Pattern
+(PNA), the North Atlantic Oscillation (NAO), and the El Niño–Southern Oscillation (ENSO) precipitation response. As
+these modes typically peak in boreal winter (defined here as December–February (DJF)), our analysis will center on
+their wintertime behavior. This section focuses on the representation of the PNA and NAO, while the following section
+will examine ENSO.
+Figure 5 shows the regression of the 500 hPa geopotential height (Z500) anomaly onto the leading principal component
+for the PNA and NAO regions in DJF, comparing CAMulator and CAM. Panels (a) and (b) illustrate the PNA-associated
+Z500 anomalies for CAMulator and CAM, respectively, while panels (c) and (d) display the NAO-related anomalies.
+Both patterns exhibit a close match to the CAM6 variability in terms of explained variance, indicating that these modes
+are well represented. Although the CAMulator patterns appear slightly muted in amplitude, they qualitatively capture
+8

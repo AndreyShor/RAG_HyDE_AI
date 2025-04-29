@@ -1,0 +1,79 @@
+9
+2. quasi-topological number calculation:
+(a) Calculate Berry curvature F = ∂µA∆−∂∆Aµ
+(b) Select the reference path Sref and integrate:
+νqua = 1
+2π
+Z
+S
+F −
+Z
+Sref
+F
+
+(S47)
+3. AGP Construction:
+HCD = H + ˙λAλ,
+Aλ = i
+X
+m̸=n
+|m⟩⟨m|∂λH|n⟩⟨n|
+Em −En
+(S48)
+13
+STRATEGIES FOR OPTIMIZING FIDELITY TO 0.9999+
+13.1
+Path Parameter Optimization
+• Smooth path design:curvature is reduced by using B´ezier curves:
+B3(t) = 3t(1 −t)2 + 3t2(1 −t) + t3,
+µ(t) = µ0 + δµB3(t/T)
+(S49)
+• Dynamic reference path update:
+S(k+1)
+ref
+= S(k)
+ref + η∇λF
+(S50)
+13.2
+AGP Parameter Adjustment
+• Energy gap truncation:Introduce energy threshold ϵ = 0.1∆gap:
+Aλ = i
+X
+|Em−En|>ϵ
+|m⟩⟨m|∂λH|n⟩⟨n|
+Em −En
+(S51)
+• Adaptive evolution time:
+T =
+10ℏ
+mint ∆gap(t),
+∆gap = |E1 −E0|
+(S52)
+The perturbed path is the source of noise: δx ∼N(0, σ). The second-order Taylor expansion of the phase error δγ:
+δγ ≈1
+2
+Z
+C
+(∂µAν −∂νAµ)δλµδλνdt
+(S53)
+Thus, the phase error is proportional to the square of the noise amplitude, with a proportionality coefficient being
+k, determined by the path length and the energy gap of the system ∆gap. In the one-dimensional topological kitaev
+chain, The quantization of the quasi-topological number introducing AGP requires that the path satisfy the adiabatic
+condition.
+T ≫
+ℏ
+∆gap
+(S54)
+Noisy evolution matrix:
+Unoisy = e(iπ/4+δγ)σz
+(S55)
+Fidelity:
+F =
+
+Tr(U †
+idealUnoisy)
+2
+ = |cos(δγ)| ≈1 −δγ
+2
+2
+(S56)

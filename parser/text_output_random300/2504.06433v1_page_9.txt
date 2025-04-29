@@ -1,0 +1,85 @@
+We apply Corollary 3.2 to prove Lemma 3.3, below. That and the next two lemmas (Lemmas 3.4
+and 3.5) will only be used to prove analogous but more general lemmas (Lemmas 3.6, 3.7, and 3.8)
+that we will use in Section 4.
+Lemma 3.3. Let k, m ∈N be positive. Deﬁne the polynomials
+T1(x) =
+X
+s
+csxs
+T2(z) =
+X
+u
+duzu ,
+where
+• s and u run over the strings in {0, 1}k and {0, 1}m, respectively,
+• xs is a variable for each s ∈{0, 1}k and zu is a variable for each u ∈{0, 1}m, and
+• cs, du ∈C are coeﬃcients such that
+– c1 ̸= 0 and d1 ̸= 0,
+– ∃s ̸= 1 cs ̸= 0,
+– ∃u ̸= 1 du ̸= 0.
+Fix a nonzero α ∈C and deﬁne
+P = T1T2 −αc1d1x1z1 .
+Then P is indecomposable and hence irreducible.
+Proof. We ﬁnd a justifying assignment a = a(A, B) of P such that P(a) = 0, satisfying Corol-
+lary 3.2, where a depends on values A ∈{1, 2, 3, 4, 5} and B ∈C is yet to be determined. Fix
+s0 ̸= 1 and u0 ̸= 1 such that cs0 ̸= 0 and du0 ̸= 0. We deﬁne a by the following assignment to the
+x- and z-variables:
+xs :=
+
+
+
+
+
+A
+if s = s0,
+1
+if s = 1,
+0
+otherwise,
+zu :=
+
+
+
+
+
+B
+if u = u0,
+1
+if u = 1,
+0
+otherwise.
+This makes
+T1 = c1 + cs0A ,
+T2 = d1 + du0B ,
+(2)
+and
+P(a) = T1T2 −αc1d1 .
+(3)
+We consider the projections of P to univariate polynomials, for every variable of P, where the
+other variables are set according to a. For the x- and z-variables, let the projections be polynomi-
+als P (1)
+s
+(xs) and P (2)
+u (zu). We have
+P (1)
+s
+(xs) =
+
+
+
+(T2 −αd1) c1x1 + C1,
+for s = 1,
+csT2xs + Cs,
+for s ̸= 1,
+(4)
+P (2)
+u (zu) =
+
+
+
+(T1 −αc1) d1z1 + D1,
+for u = 1,
+T1duzu + Du,
+for u ̸= 1,
+(5)
+9

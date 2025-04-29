@@ -1,0 +1,115 @@
+Property MAE
+𝜔max
+𝑆
+𝐹
+𝐶𝑉
+𝐾bulk
+𝐾shear
+Unit
+[K]
+[J/mol·K]
+[kJ/mol]
+[J/mol·K]
+[GPa]
+[GPa]
+MACE-MPA-0 [MPtraj+Alex]
+31
+20
+8
+6
+14
+10
+eSEN-30M [MPtraj+Alex]
+21
+13
+5
+4
+N/A
+N/A
+MACE-OMAT-0
+17
+10
+3
+3
+13
+9
+SevenNet-MF-ompa
+13
+8
+3
+2
+12
+15
+Orb-v3-conservative-inf-omat
+7
+6
+2
+1
+8
+9
+Orb-v3-conservative-20-omat
+10
+9
+3
+2
+9
+9
+Orb-v3-direct-inf-omat
+10
+8
+2
+1
+12
+14
+Orb-v3-direct-20-omat
+11
+10
+3
+2
+12
+16
+Table 2: Summary of the performance of current models across various physical property
+prediction benchmarks. The first four columns cover both low- and high-frequency vibrational
+properties from the MDR phonon benchmark [27, 18]; the highest phonon frequency 𝜔max,
+the vibrational entropy 𝑆, free energy 𝐹, and heat capacity 𝑐V. The last two columns cover
+mechanical properties, and were obtained using MatCalc and the associated benchmark dataset
+of elastic constants [25]. A full overview of all computational details is given in Appendix G.
+Table 2 presents the performance of a variety of models across these properties, and it allows
+us to make two major observations.
+First, orb-v3-conservative-inf-omat achieves the
+highest accuracy for almost all of the metrics in the table, while being faster than any of the
+best-performing models currently available in literature. This is a clear demonstration that
+architectural constraints can be relaxed in the interest of performance, provided that there is
+a sufficient amount of high quality QM data available to train on. At present, this condition
+is evidently satisfied by the OMat24 dataset, which contains ∼55 million AIMD-sampled
+structures. The second observation is that even a non-conservative model with a sparse graph
+featurization such as orb-v3-direct-20-omat is comparable in accuracy to the current state
+of the art in literature. This is remarkable, considering that it is about 30 times faster than
+SevenNet, the current best performing model in literature (see Figure 2 for speed benchmarks).
+Equigrad - Learned Rotational Invariance
+To incentivize learned invariance during training, we introduce equigrad, a simple, differentiable
+metric which quantifies the degree of rotational invariance and which can be used as a
+regularization method during training. Conceptually, we compute a gradient of the predicted
+energy 𝐸with respect to an identity rotation matrix 𝑹that is inserted into the computational
+graph at the input. An elegant way to achieve this is by first expressing an identity rotation 𝑹as
+the matrix exponential of a skew-symmetric null matrix, and then computing the gradient of 𝐸
+with respect to that null matrix:
+𝑹= 𝑒𝑮−𝑮𝑇
+and
+Δrot =
+𝜕𝐸
+
+𝒓𝑇𝑹, 𝒉𝑹
+
+𝜕𝑮
+
+𝑮=0
+(1)
+where 𝒓are atomic positions and 𝒉is the cell matrix.
+Invariant models have by definition Δrot = 0 because the predicted energy does not depend on
+the global orientation of the input coordinates and cell vectors. For non-invariant models trained
+with data augmentation, ||Δrot|| is naturally small but nonzero, and quantifies the hypothetical
+change in energy if a rotation were to be applied at the input.
+For conservative models, evaluation of Equation 1 is essentially trivial since computing the
+interatomic forces and virial stress already require a backward pass through the network. As
+7

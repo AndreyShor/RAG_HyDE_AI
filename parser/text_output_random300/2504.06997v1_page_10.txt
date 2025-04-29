@@ -1,0 +1,33 @@
+10 
+2.6 Human brain activity test 
+We applied the proposed DL model combined with the SPAD sensor to evaluate cerebral perfusion 
+differences during a simple brain activation paradigm (eating lunch). Specifically, a healthy adult 
+male (29 years old) recorded CBFi using our system before and after the lunch. Experimental 
+details are provided in Sec. 2.3. CBFi measurements were taken 30 minutes before and 5, 30, 75, 
+and 120 minutes post-meal to assess digestion-induced cerebral perfusion changes. In each test 
+phase, 5000 frames of autocorrelation data were collected. As illustrated in Fig. 1, a custom 3D-
+printed probe was used to hold the source and detector fibers, which were attached to the 
+participant’s forehead with an adjustable Velcro strap. During the test, the power density from the 
+source fiber tip was attenuated to remain below the Maximum Permissible Exposure limit set by 
+the American Laser Safety Standard (<300 mW/mm² for 785 nm)50. The participant wore laser 
+safety goggles to prevent laser exposure to the eyes. Ethical approval was granted by the 
+Biomedical Engineering Departmental Ethics Committee at the University of Strathclyde. 
+ 
+3 
+Results 
+3.1 Noise characterization 
+Fig. 5 (a) shows an example of detected blood flow changes during a pulse cycle, recovered using 
+single-exponential fitting. The fitting method is employed to illustrate how CBFi changes over a 
+pulse cycle affect the measured signal. Fig. 5 (b) presents the scaled measured ACF and the 
+corresponding fitted decay curves at the peak and trough in Fig. 5 (a). Fig. 5 (c) displays the 
+difference, ∆= 𝑥𝑥(𝜏𝜏) − 𝑓𝑓(𝜏𝜏), calculated at the peak and trough. Fig. 5 (d) is the standard deviation 
+𝜎𝜎 calculated over 5,000 frames, which serves as the noise model for generating synthetic noise 
+(see Sec. 2.2.). 
+We scaled the SPAD ACF data before noise characterization (using Eq. 8) to match the training 
+input format. Because the SPAD’s autocorrelator uses linear lag spacing, the noise standard 
+deviation is expected to follow an exponential decay45. Indeed, in Fig. 5 (d) the standard deviation 
+is lower at the first and last lag points compared to the middle; we believe this occurs due to our 
+scaling and the rapid decay of the 𝑔𝑔2  curve over the initial lag range at high flow rates. 
+Additionally, since the correlation time ranges from 1.28 µs to 39.68 µs, corresponding to the very 
+beginning of a full 𝑔𝑔2 decay, so the correlation values drop off very rapidly (especially for high 
+flow). Consequently, the first point of the scaled SPAD ACF is 1.5 (by design of the scaling). 

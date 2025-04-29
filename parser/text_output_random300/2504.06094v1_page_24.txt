@@ -1,0 +1,84 @@
+where f ∈A[a,b] acts on F[a,b](Z) by precomposition on the right and by postcomposition with
+f ⊗idZa on the left. Now, for I = [a, b] ⊂[c, d] = J we use the half-braidings of Z to deﬁne an
+intertwiner
+ηI,J : F[a,b](Z) →F[c,d](Z),
+f 7→id ⊗cX[c,a] ◦id ⊗f ⊗id.
+We obtain an A-correspondence by taking the inductive limit
+(6.3)
+F(Z) = lim
+−→
+a,b
+F[a,b](Z).
+For an interval I = [a, b], the canonical map into the limit is denoted by ηI : F[a,b](Z) →F(Z).
+Lemma 6.5. For any Z ∈Z(C), the A-correspondence F(Z) deﬁned in (6.3) fulﬁlls the locality
+condition and thus belongs to DHR(A•).
+Proof. The proof follows mutatis mutandis from the argument in [Jon24, Lemma 4.15]. We
+spell out some details next.
+Let [a, b] be an interval of diameter greater or equal to r. For Y ∈Irr(Ca,b), let {vY
+k : Y →
+X[a,b]⊗Zb}k be mutually orthogonal partial isometries with P
+k vY
+k ◦(vY
+k )∗equal to the projection
+of X[a,b] ⊗Zb onto the Y -isotypical component. In particular,
+X
+Y ∈Irr(Ca,b)
+X
+k
+vY
+k ◦(vY
+k )∗= idX[a,b]⊗Zb.
+For each Y ∈Irr(Ca,b) there exists a projection pY
+a,b : X[a,b] →Y . Deﬁne
+wY
+k = vY
+k ◦pY
+a,b : X[a,b] →X[a,b] ⊗Zb.
+By construction,
+X
+Y ∈Irr(Ca,b)
+X
+k
+wY
+k ◦(wY
+k )∗= idX[a,b]⊗Zb.
+In other words, {wY
+k }Y,k constitute a projective basis for Fa,b(Z) over End(X[a,b]).
+Let I = [a, b] ⊂[c, d] = J. A routine computation shows that the map ηI,J : F[a,b](Z) →
+F[c,d](Z) preserves the projective basis, that is, {ηI,J(wY
+k )}Y,k is also a projective basis for
+F[c,d](Z) over End(X[c,d]):
+X
+Y ∈Irr(Ca,b),k
+ηI,J(wY
+k ) ◦ηI,J(wY
+k )∗=
+X
+Y ∈Irr(Ca,b),k
+id ⊗cX[c,a] ◦id ⊗wY
+k ◦(wY
+k )∗⊗id ◦id ⊗c∗
+X[c,a]
+= id ⊗cX[c,a] ◦idX[a,b]⊗Zb ◦id ⊗c∗
+X[c,a] = idX[c,d]⊗Zd
+Therefore, in the inductive limit F(Z), we obtain a projective basis over A.
+As in the fusion case, one veriﬁes that {ηI(wY
+k )}Y,k can be localized in any interval of diameter
+at least r. Indeed, consider intervals I = [a, b] and J = [c, d] ⊂(−∞, a). For f ∈AJ we have,
+by naturality of the half-braiding and functoriality of ⊗, that
+ιJ(f) ⊲ηI(wY
+k ) = η[c,b](f ⊗idX[d,b] ◦idX[a,b] ⊗cX[c,a] ◦idX[c,a] ⊗wY
+k )
+= η[c,b](idX[a,b] ⊗cX[c,a] ◦f ⊗idX[d,a] ⊗wY
+k )
+= η[c,b](idX[a,b] ⊗cX[c,a] ◦idX[c,a] ⊗wY
+k ◦f ⊗idX[d,b]) = ηI(wY
+k ) ⊳ιJ(f)
+A similar argument shows locality in the case that J = [c, d] ⊂(b, ∞).
+□
+We obtain a functor
+Z(C) →DHR(A•),
+Z 7→F(Z).
+Proposition 6.6. The abstract spin chain A• satisﬁes charge-transporter generation, Condi-
+tion 4.10.
+24

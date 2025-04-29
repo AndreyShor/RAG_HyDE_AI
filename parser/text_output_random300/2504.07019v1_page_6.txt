@@ -1,0 +1,205 @@
+6
+END MATTER
+Iterative diagonalization.– Here we give an overview
+of the NH-NRG algorithm, highlighting key differences
+with the Hermitian formulation described in Ref. [41]. In
+the following we assume a bi-orthonormal basis [6] such
+that the inner product of left and right states satisfies
+⟨n|m⟩L,R = δnm.
+Further details can be found in the
+Supplemental Material [46].
+At step N+1 of the NH-NRG calculation, we construct
+the Hamiltonian matrix Hb
+N+1 with elements,
+⟨N + 1; k; r|L
+b ˆHN+1 |N + 1; k′; r′⟩R
+b ,
+(E.1)
+where L(R) refers to the left(right) states, and the b sub-
+script denotes the basis states, which are decomposed as,
+|N + 1; k; r⟩L(R)
+b
+= |k⟩N+1 ⊗|N; r⟩L(R)
+d
+.
+(E.2)
+Here |N; r⟩L(R)
+d
+are the Nk retained left(right) eigen-
+states of the previous iteration satisfying ˆHN |N; r⟩R
+d =
+EN(r) |N; r⟩R
+d and ⟨N; r|L
+d ˆHN = ⟨N; r|L
+d EN(r); whereas
+|k⟩N+1 = {|−⟩, |↓⟩, |↑⟩, |↑↓⟩} are the four states of the
+added orbital N + 1, labeled respectively by the index
+k = {0, −1, +1, 2}, which are equal for L and R.
+From the recursion relation ˆHN+1 = ˆHN + ˆTN+1 and
+Eq. (E.2), we may then express the matrix elements as,
+⟨N + 1; k; r|L
+b ˆHN+1 |N + 1; k′; r′⟩R
+b
+(E.3)
+= ⟨k|N+1 ⟨N; r|L
+d ˆHN |k′⟩N+1 |N; r′⟩R
+d
++ϵN+1
+X
+σ
+⟨k|N+1 ⟨N; r|L
+d f †
+N+1σfN+1σ |k′⟩N+1 |N; r′⟩R
+d
++tN
+X
+σ
+⟨k|N+1 ⟨N; r|L
+d f †
+NσfN+1σ |k′⟩N+1 |N; r′⟩R
+d
++tN
+X
+σ
+⟨k|N+1 ⟨N; r|L
+d f †
+N+1σfNσ |k′⟩N+1 |N; r′⟩R
+d .
+This expression simplifies to,
+⟨N + 1; k; r|L
+b ˆHN+1 |N + 1; k′; r′⟩R
+b
+(E.4)
+= δkk′δrr′ (EN(r) + |k|ϵN+1)
++(−1)k tN
+X
+σ M σ
+kk′ ⟨N; r|L
+d f †
+Nσ |N; r′⟩R
+d
++(−1)k′ tN
+X
+σ M σ
+k′k ⟨N; r|L
+d fNσ |N; r′⟩R
+d
+where in the last two lines we inserted the identity
+between the creation and annihilation operators [46].
+Here, M σ
+kk′ = (M σ
+k′k)† denotes the trivial matrix element
+⟨k|fN+1σ|k′⟩N+1 whose value does not depend on N.
+Thus we can construct the Hamiltonian matrix Hb
+N+1
+at NRG iteration N + 1 using information from iteration
+N. Specifically, we need the set of complex eigenvalues
+EN(r), and the matrix elements ⟨N; r|L
+d f †
+Nσ |N; r′⟩R
+d and
+⟨N; r|L
+d fNσ |N; r′⟩R
+d which in the NH case are not Her-
+mitian conjugates and need to be computed separately.
+With Hb
+N+1 in hand, we diagonalize the matrix to
+obtain the eigenvalues EN+1 and the left and right
+eigenvectors |N + 1; r⟩L(R)
+d
+.
+Specifically,
+Hb
+N+1
+=
+UR
+N+1Hd
+N+1(UL
+N+1)† where Hd
+N+1 is the diagonal ma-
+trix of eigenvalues EN+1 and UR(L)
+N+1 is a matrix whose
+columns are the right(left) eigenvectors.
+Therefore we
+can expand the eigenstates as,
+|N + 1; r⟩R(L)
+d
+=
+X
+m,s
+U R(L)
+N+1 (r; m, s)(†) |N + 1; m; s⟩R(L)
+b
+≡
+X
+m,s
+U R(L)
+N+1 (r; m, s)(†) |m⟩N+1 |N; s⟩R(L)
+d
+.
+(E.5)
+We use this to construct the nontrivial matrix elements
+required for the next step,
+⟨N + 1; r|L
+d f †
+N+1σ |N + 1; r′⟩R
+d
+(E.6)
+=
+X
+m,m′,s
+M σ
+m′m U L
+N+1(r; m, s)†U R
+N+1(r′; m′, s)
+⟨N + 1; r|L
+d fN+1σ |N + 1; r′⟩R
+d
+(E.7)
+=
+X
+m,m′,s
+M σ
+mm′ U L
+N+1(r; m, s)†U R
+N+1(r′; m′, s)
+Note that only the ‘lowest’ Nk eigenstates are retained
+at each step, meaning that the computational complexity
+is approximately constant at each step. In practice this
+Fock space truncation is done by retaining states with
+the lowest real part of the complex eigenvalues EN.
+As such, the chain can be built up iteratively, starting
+from ˆH0 consisting of just the impurity and the Wil-
+son zero-orbital. Since states with large Re(EN) are dis-
+carded at each step, we focus on the states with pro-
+gressively smaller Re(EN) as the calculation proceeds.
+To analyze the RG flow we specify EN with respect to
+the state with the lowest Re(EN) at that iteration, and
+rescale by a factor of ΛN/2. It is these rescaled eigenval-
+ues that are plotted in the figures.
+Truncation
+schemes
+and
+numerical
+precision.–
+Through extensive numerical testing, we found that
+truncation to the Nk states with the lowest Re(EN) at
+each step yields the most stable and accurate results. In
+this Letter we presented results for Λ = 3 and Nk = 400,
+which we explicitly checked were numerically converged
+with respect to increasing Nk (essentially no change
+in the RG flow was observed by increasing Nk to 1024
+kept states).
+In certain cases we observed numerical
+instabilities in the diagonalization which were completely
+resolved by using high-precision numerics.
+All of the
+results presented were confirmed to be converged using
+128-bit precision complex numbers [82].
+Other truncation schemes (discussed further below)
+were investigated.
+For example, truncation to the Nk
+states with the lowest magnitude |EN| produces a some-
+what different set of states being tracked along the RG
+flow. However, retained states common to both trunca-
+tion schemes were found to have exactly the same RG

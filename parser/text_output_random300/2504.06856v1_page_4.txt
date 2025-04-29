@@ -1,0 +1,128 @@
+Rendering
+    SDS
+Stage I
+Sample
+Sample
+∇θLSDS
+Stage II
+Rendering
+Rendering
+ SR-SDS
+image to 
+upscale
+∇θLSR−SDS
+Sample
+Sample
+“A cow 
+in a suit”
+Figure 1. Overall pipeline. Our method consists of two stages. On
+the first stage, given a 3D mesh and a prompt our method employs
+a differentiable rendering pipeline to generate random views of the
+model under various lighting. We update the randomly initialized
+model texture using Score Distillation Sampling (SDS). On the
+second stage, refine the texture from the first stage using SDS with
+a super-resolution diffusion model. For the same view and lighting,
+we render two frames: a frame with the fixed texture taken from the
+first step and a frame with a current texture. Using the former frame
+as the condition, we back-propagate the SDS gradients through the
+latter frame.
+mapping gid(θ, c) = θ that outputs a 2D image θ and does
+not rely on the second stochastic variable. The goal is to
+generate images on par with the diffusion model samples
+with a gradient descent algorithm. Intuitively, the SDS gra-
+dients guide images g(θ, c) towards the manifold of natural
+images. Using the chain rule, these gradients also prop-
+agate to the parameter θ. However, in the case of latent
+diffusion models guidance happens within the latent space:
+g(θ, c) = enc(gid(θ, c)). As a result, the training signal
+must propagate through the encoder.
+Next, to mitigate some of the potential issues of SDS in
+our analysis, we consider a toy diffusion model that repre-
+sents a degenerate distribution δ(x −x∗) concentrated at x∗.
+The problems may include a poorly trained score estimation
+model or the excessive variance of the stochastic gradient 1.
+For the degenerate distribution, we use the optimal model
+that separates the Gaussian noise from the original sample
+ϵdegenerate(xt) = xt−√¯αtx∗
+√1−¯αt .
+(3)
+Note that for the model from Eq. 3 and constant weights
+w(t) = 1 the gradient in Eq. 1 simplifies to the deterministic
+gradient of the mean squared error:
+∇θLSDS(θ) = ∇θ∥g(θ) −x∗∥2.
+(4)
+In other words, in the specified toy setup, we can assume
+LSDS(θ) = ∥g(θ) −x∗∥2
+(5)
+Pixel-Space 
+Reconstruction with 
+DIP 
+43.56
+Pixel-Space 
+Reconstruction 
+148.02
+Latent-Space 
+Reconstruction 
+8.53
+Decoded 
+Reconstruction 
+26.38
+Latent-Space 
+Reconstruction with 
+DIP 
+23.81
+Pixel-Space 
+Reconstruction with 
+DIP 
+27.03
+Pixel Space Diffusion
+Latent Space Diffusion:  & 
+θ
+enc(dec(θ))
+θRGB
+θDIP
+PSNR = 148.02
+PSNR = 43.56
+PSNR = 23.81
+PSNR = 8.53
+PSNR = 26.38
+PSNR = 27.03
+Score Distillation Sampling Outputs
+Reconstructions
+Figure 2. Optimization based image generation for a toy single-
+mode diffusion model. We study the effect of image parameteri-
+zation and the difference between pixel and latent space diffusion
+models. Score Distillation Sampling (SDS) finds the distribution
+mode for both latent and pixel space diffusion models. Top row:
+the pixel space model achieves near-perfect reconstruction quality
+measured by PSNR. The latent code enc(θRGB) is also close to the
+mode and leads to high quality reconstruction. However, for the
+latent model the optimized parameter θRGB fails to approximate the
+original image. Bottom row: The implicit regularization proposed
+in [41] significantly improves the results for SDS for the latent
+diffusion model, but still falls short of the image reconstruction
+given by the decoder or pixel space diffusion model.
+To analyze SDS, we ran the optimization in various setups
+and report the results in Figure 2. For the pixel-space dif-
+fusion model with g(θ) = θ, gradient descent rapidly con-
+verges to θ ≈x∗(top row, left). For the latent-space model
+we assume x∗to be the latent code of the same image and
+minimize ∥enc(g(θ)) −x∗∥2. Although gradient descent
+converges and the decoder maps enc(θ) to the original im-
+age (top row, right), the optimized parameter θ itself is a
+poor approximation to the original image (top row, middle).
+In practice, SDS with latent diffusion models finds glob-
+ally optimal solutions that fall outside of the natural image
+domain.
+Notably, the above observation does not limit text-to-3D
+applications. However, in the above toy setup and texture
+synthesis domain the observed artifacts limit the applicability
+of SDS. To avoid the artifacts, a recent work [41] proposed
+to parameterize textures with a deep convolutional network.
+Their solution builds upon the observations of [38] and acts
+as an implicit regularizer. It helps avoiding solutions out-
+side of the natural image domain, but requires running an
+additional convolutional and, as we show below, still leads
+to noticeable image artifacts.
+In the bottom row of Figure 2, we report SDS perfor-
+mance with an implicit image parameterization from [41].

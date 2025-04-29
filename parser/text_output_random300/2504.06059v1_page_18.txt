@@ -1,0 +1,71 @@
+18
+n−1
+X
+i=0
+Tk[i] ≤
+n−1
+X
+i=0
+1
+2k
+k
+i
+
+· m + n.
+(A4)
+Given that the sequence (Pn−1
+i=0 Tk[i])k is a decreasing sequence of integers with limit n, it suffices to find an
+integer K such that
+n−1
+X
+i=0
+1
+2K
+K
+i
+
+· m < 1
+(A5)
+and we can conclude from
+n−1
+X
+i=0
+TK[i] < 1 + n
+that Pn−1
+i=0 TK[i] = n and we indeed have reached the equilibrium.
+To solve
+n−1
+X
+i=0
+1
+2K
+K
+i
+
+· m < 1
+for K, we use the following inequality for the sum of binomial coefficients [31]
+n−1
+X
+i=0
+K
+i
+
+≤2K−1 exp
+(K −2n)2
+4(n −K)
+
+.
+Assuming K > 2n, we end up with a quadratic equation in K:
+K2 + (−4n −4 ln(m/2)) K + 4n2 + 4n ln(m/2) > 0
+for which the smallest integer solution is
+K =
+l
+2n + 2 ln(m/2) + 2
+p
+n ln(m/2) + ln(m/2)2
+m
+.
+(A6)
+We can compute numerically the exact depth, the best solution to inequality A5 and the analytical estimation of
+Eq. A6. We plot these values for various values of m in the case n = 40 and for various values of n for m = 3000.
+They are represented in Figure 12. Overall the bounds follow a similar behavior and are quite tight.

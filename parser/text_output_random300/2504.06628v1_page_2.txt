@@ -1,0 +1,151 @@
+2
+Equality (2) and inequality (3) imply that we can con-
+trol entropy production ∆stot via changing active fluctu-
+ations.
+In the absence of active fluctuations, Eq. (2) and in-
+equality (3) reduce to the conventional integral fluctu-
+ation theorem (FT) and second law of thermodynamics
+(SL) (e.g., Ref. [42]), respectively. We note that the FT
+and SL for Gaussian systems in previous studies were
+mostly based on physical arguments, although providing
+valuable insights into nonequilibrium thermodynamics,
+yet certain elements in these derivations—such as the
+construction of the time-reversed process—are not well
+treated with full mathematical rigor. Here, our results
+are not only applicable to systems with non-Gaussian ac-
+tive fluctuations but also offer a rigorous mathematical
+approach to resolve the aforementioned inconsistencies in
+systems driven solely by Gaussian thermal noise.
+Finally,
+we
+introduce
+an
+efficient
+computational
+method based on a L´evy score particle algorithm for
+calculating entropy production in active systems [43].
+This approach allows us to compute various entropy
+production components (∆Stot, ∆Sact, ∆Ssys, ∆Sm),
+thereby facilitating the analysis of stochastic thermody-
+namic properties in systems with non-Gaussian active
+fluctuations. Moreover, we adapt our deep learning algo-
+rithm to a range of dynamical scenarios, demonstrating
+its robustness and effectiveness in capturing the nonequi-
+librium characteristics of active matter.
+Model—In Euclidean space Rd, we consider the over-
+damped dynamics of a single particle driven by a force
+F (r) = −∇U(r)+f(r), where the first and second term
+denote conservative and non-conservative part, respec-
+tively. The motion is described by Langevin equation:
+dr(t)/ dt = F (r(t))/Γ + ηth(t) + ηact(t),
+(4)
+where Γ is the friction coefficient, ηth(t) and ηact(t) are
+the thermal and active noise, respectively. The thermal
+noise ηth is a Gaussian white noise with zero mean and
+variance ⟨ηth,i(t)ηth,j(t′)⟩= 2Dthδi,jδ(t −t′), where Dth
+is the diffusion coefficient and the indices i, j = 1, 2, . . . , d
+denote spatial directions. The diffusion and friction coef-
+ficients satisfy the Einstein relation Dth = kBT /Γ, where
+T denotes the bath temperature, to hold the fluctuation-
+dissipation theorem for thermal noise. The active noise
+ηact is modeled as the compound Poisson process (also
+known as Poissonian shot noise) which consists of discrete
+“kicks” occurring at a rate λ0, and is expressed as:
+ηact,i(t) =
+Nt
+X
+k=1
+Ak,iδ(t −tk),
+(5)
+where the times tk are distributed according to a Poisson
+process with rate λ0; the total number of kicks Nt in the
+interval [0, t] follows a Poisson distribution with mean
+λ0t; the kick amplitudes Ak,i are independent and iden-
+tically distributed random variables drawn from a fixed
+probability distribution with intensity νA. The associ-
+ated L´evy measure ν of this active noise process is given
+by ν = λ0νA, which is a probability measure on Rd.
+The L´evy–Fokker–Planck equation corresponding to
+Eq. (4) reads [43, 44]
+∂tP(r, t) = −∇·
+"
+F (r)/Γ −Dth∇log P(r, t)
++
+Z 1
+0
+dθ
+Z
+ν( dz)zP(r −θz, t)
+P(r, t)
+
+P(r, t)
+#
+,
+=: −∇· J(r, t)
+=: −∇· [V (r, t)P(r, t)]
+(6)
+where we have defined the probability current J(r, t) and
+the associated velocity field V (r, t).
+The common definition of a nonequilibrium Gibbs en-
+tropy
+Ssys(t) ≡−
+Z
+drP(r, t) log P(r, t) ≡⟨ssys(t)⟩,
+(7)
+suggests to define a trajectory-dependent entropy for the
+system
+ssys(t) = −log P(r(t), t),
+(8)
+where the probability P(r, t) obtained by solving the
+L´evy–Fokker–Planck equation (6) is evaluated along the
+stochastic trajectory r(t). Obviously, for any given tra-
+jectory r(t), the stochastic entropy ssys depends on the
+given initial data P0(r) and thus contains information
+on the whole ensemble. The definition (8) has been used
+previously by Crooks for stochastic microscopically re-
+versible dynamics [45], by Qian for stochastic dynam-
+ics of macromolecules [46], and by Seifert for stochas-
+tic nonequilibrium dynamics [42].
+All of these works,
+however, only discussed Gaussian fluctuations for this
+stochastic entropy.
+The rate of change of the system entropy (8) is given
+by
+˙ssys(t) = −∂tP(r, t)
+P(r, t)
+
+r(t)
+−∇P(r, t)
+P(r, t)
+
+r(t)
+⋄˙r
+= −∂tP(r, t)
+P(r, t)
+
+r(t)
++
+J(r, t)
+DthP(r, t)
+
+r(t)
+⋄˙r
+−F (r)
+ΓDth
+
+r(t)
+⋄˙r
+−
+R 1
+0 dθ
+R
+ν( dz)zP(r −θz, t)
+DthP(r, t)
+
+r(t)
+⋄˙r,
+(9)
+where ⋄denotes the Marcus canonical integral that pre-
+serves the chain rule for stochastic differential with jumps
+[47]; the L´evy–Fokker–Planck Eq. (6) for the current is
+used in the second equality; the third term in the second

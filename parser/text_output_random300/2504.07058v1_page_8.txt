@@ -1,0 +1,119 @@
+2.6
+Residuals
+This section describes the residuals linked to different training sets, including interior, temporal, spatial and
+data points used for inverse problems. The primary objective is to minimize these residuals. Optimization
+will incorporate stochastic gradient descent techniques, such as ADAM for first-order optimization, along with
+higher-order methods like variants of the BFGS algorithm. The PINN 𝑢𝜃depends on tuning parameters 𝜃∈𝜃′,
+which correspond to the network’s weights and biases. In a standard deep learning framework, training involves
+adjusting these parameters to ensure that the neural network approximation 𝑢𝜃closely matches the exact solution
+𝑢. The interior residual is defined as:
+ℜint,𝜃= ℜint,𝜃(𝑡, 𝑥),
+∀(𝑡, 𝑥) ∈[0,𝑇] × D.
+(2.24)
+It can be expressed in terms of the differential operator as follows:
+ℜint,𝜃= D(𝑢𝜃) −f.
+(2.25)
+The residual formulation of our models, given in Eq. (2.6) and Eq. (2.10), can be written as:
+ℜint,𝜃= 𝜕𝑡𝑢𝜃−0.5𝜕𝑥𝑥𝑢𝜃−𝑅(𝑢𝜃)
+ℜint,𝜃= 𝜕𝑡𝑢𝜃+ 𝛾∆2𝑢𝜃−∆𝑢𝜃+ 𝐹(𝑢𝜃).
+(2.26)
+Residuals corresponding to initial, boundary, and data points are formulated as:
+ℜtb = ℜtb,𝜃= 𝑢𝜃−𝑢0,
+∀𝑥∈D,
+ℜsb = ℜsb,𝜃= 𝑢𝜃−𝑢𝑏,
+∀(𝑡, 𝑥) ∈𝜕D.
+(2.27)
+Additionally, the residual for data points is given by:
+ℜ𝒅= L(𝑢𝜃) −𝑔,
+∀(𝑡, 𝑥) ∈D′
+𝑇.
+(2.28)
+The goal is to determine the optimal tuning parameters 𝜃∈𝜃′ that minimize the residual in the forward problem:
+𝜃∗∈𝜃′ : 𝜃∗= arg min
+𝜃∈𝜃′
+
+∥ℜint,𝜃∥2
+𝐿2(D𝑇)+∥ℜsb,𝜃∥2
+𝐿2([0,T]×𝜕D)+∥ℜtb,𝜃∥2
+𝐿2(D)
+
+.
+(2.29)
+For the inverse problem, an additional term corresponding to the data residual R𝒅is introduced in Eq. (2.29),
+leading to the following minimization problem:
+𝜃∗∈𝜃′ : 𝜃∗= arg min
+𝜃∈𝜃′
+
+∥ℜint,𝜃∥2
+𝐿2(D𝑇)+∥ℜsb,𝜃∥2
+𝐿2([0,T]×𝜕D)+∥ℜ𝒅,𝜃∥2
+𝐿2(D′
+𝑇)+∥ℜtb,𝜃∥2
+𝐿2(D)
+
+.
+(2.30)
+Since the integrals in Eqs. (2.29) and (2.30) involve the 𝐿2 norm, an exact computation is not feasible. Instead,
+numerical quadrature methods are employed for approximation.
+2.7
+Loss Functions and Optimization
+The integrals (2.25) is approximated using the following loss functions for forward problems:
+ℒ1(𝜃) =
+𝑁𝑠𝑏
+∑︁
+𝑗=1
+𝑤𝑠𝑏
+𝑗|ℜsb,𝜃(𝑧𝑠𝑏
+𝑗)|2+
+𝑁𝑡𝑏
+∑︁
+𝑗=1
+𝑤𝑡𝑏
+𝑗|ℜtb,𝜃(𝑧𝑡𝑏
+𝑗)|2+𝜆
+𝑁𝑖𝑛𝑡
+∑︁
+𝑗=1
+𝑤𝑖𝑛𝑡
+𝑗
+|ℜint,𝜃(𝑧𝑖𝑛𝑡
+𝑗)|2,
+(2.31)
+The integrals (2.27) is approximated using the following loss functions for inverse problems:
+ℒ2(𝜃) =
+𝑁𝑑
+∑︁
+𝑗=1
+𝑤𝑑
+𝑗|ℜ𝒅,𝜃(𝑧𝑑
+𝑗)|2+
+𝑁𝑠𝑏
+∑︁
+𝑗=1
+𝑤𝑠𝑏
+𝑗|ℜsb,𝜃(𝑧𝑠𝑏
+𝑗)|2+
+𝑁𝑡𝑏
+∑︁
+𝑗=1
+𝑤𝑡𝑏
+𝑗|ℜtb,𝜃(𝑧𝑡𝑏
+𝑗)|2+𝜆
+𝑁𝑖𝑛𝑡
+∑︁
+𝑗=1
+𝑤𝑖𝑛𝑡
+𝑗
+|ℜint,𝜃(𝑧𝑖𝑛𝑡
+𝑗)|2.
+(2.32)
+The loss function minimization is regularized as follows:
+𝜃∗= arg min
+𝜃∈𝜃′(ℒ𝑖(𝜃) + 𝜆𝑟𝑒𝑔ℒ𝑟𝑒𝑔(𝜃)),
+(2.33)
+where 𝑖= 1, 2. In deep learning, regularization helps prevent over-fitting. A common form of regularization is
+ℒreg(𝜃) = ∥𝜃∥𝑞
+𝑞, where 𝑞= 1 (for 𝐿1 regularization) or 𝑞= 2 (for 𝐿2 regularization). The regularization parameter
+𝜆reg balances the trade-off between the loss function ℒand the regularization term, where 0 ⩽𝜆reg ≪1. Stochastic
+gradient descent algorithms such as ADAM will be used for optimization, as they are widely adopted for first-order
+8

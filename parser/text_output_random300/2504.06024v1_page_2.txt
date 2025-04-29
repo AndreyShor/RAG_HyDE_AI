@@ -1,0 +1,40 @@
+specifically created for the analysis, construction, and execution of quantum programs. It can interface
+with various quantum hardware and functions as a simulator, resource estimator, and emulator, allowing
+users to test, run, and debug quantum algorithms. Additionally, the AriaQuanta compiler supports GPU
+usage, enabling faster program execution.The Ariaquanta emulator can also run a program serially or
+in parallel (single-core and multi-core) on the CPU. Since this platform is written in Python, it is well-
+suited for Noisy Intermediate Scale Quantum (NISQ) devices. AriaQuanta offers multiple backends for
+simulating quantum algorithms and can run on GPUs, which allows it to execute programs more quickly
+than similar platforms. Compared to other quantum programming platforms, AriaQuanta encompasses
+all their features while also being GPU-capable and run a program serially or in parallel . The framework
+will be fully introduced and reviewed in the following sections.
+2
+The AriaQuanta Architecture
+2.1
+Simplified Architecture
+The AriaQuanta platform is a Python-based library for quantum computing. The first step in implement-
+ing quantum computing involves defining qubits, gate operators, and circuits, and then applying these
+operators to the N-qubit states. In its initial implementation, AriaQuanta can simulate quantum circuits
+with any number of qubits and gates, as well as perform quantum measurements on the state vector.
+Figure 1 shows a simplified schematic of the platform structure. This figure illustrates the overall opera-
+tion of the quantum circuit, including the measurement process and the circuit diagram. This structure
+facilitates the execution of quantum programs, making it user-friendly. It is important to note that in
+this simplified version, the simulation operation is performed within the same circuit class, eliminating
+the need to use the backend. In this case, the user can execute a quantum circuit with simple commands.
+As shown in Figure 1, the process begins with defining the qubits, followed by adding various types of
+gates—single-qubit, two-qubit, three-qubit, control gates and arbitrary quantum gates—to the circuit.
+Finally, the measurement is performed, and the output is provided as a state vector or probability.
+All commonly used gates are defined within the platform and are easy to use. Additionally, arbitrary
+gates can be easily defined. In the circuit drawing section, different gates are displayed in various colors
+for easier identification and visual appeal. Single-qubit gates are shown in blue, two-qubit gates in purple,
+and three-qubit gates in black. All circuit information is available, including the number of qubits, gates,
+size, and depth.
+2.2
+General Architecture
+Before delving into the various functions of the Aria Quanta, we will first provide an overview of its general
+architecture. A simplified version of this architecture was presented in section 2 . In this section, we
+expand on that framework and develop it further to include additional applications. Figure 2 illustrates
+the general architecture of AriaQuanta.
+This architecture includes features such as the ability to integrate various functions, communicate with
+external computing systems, manage computing tasks efficiently, and provide a user-friendly interface. In
+2

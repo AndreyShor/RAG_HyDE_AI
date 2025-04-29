@@ -1,0 +1,164 @@
+passing the test, ts ≤1 −δδ′/(3N). For fixed δ, δ′ we can choose N ≫1, M ∼N 3/4, and ϵ ∼N −1/4 such
+that
+1 −1/(2MNϵ) < ts ≤1 −δδ′/(3N)
+(39)
+breaks down. If λ in (38) is local, then Eq.(39) holds and Eve’s knowledge is not bounded.
+Note that, CHSH in E91 is used to ensure the purity of the shared state. In contrast, in this protocol,
+the BI violation limits Eve’ knowledge (vanishing for N →∞) about the players’ systems [55, 215].
+However, this protocol has zero key rate (defined in Sec. 3.4) ascribing correlations with noiseless states. A
+more practical scheme, but without tackling the most powerful adversary, was proposed in [30] (extended
+version [56]) and improved with higher noise tolerance and key rate in [216].
+3.4. CHSH Protocol – against individual no-signalling attacks
+Individual attacks. While in general attacks, as discussed in Sec. 3.3, Eve prepares a collective state
+involving her system and 2n particles sent to Alice and Bob, in the CHSH protocol [30, 56], she is limited
+to individual attack, i.e., Eve can only gather independent knowledge about each bit of the key, without
+correlating different instances. The following joint distribution characterizes an individual attack
+pABE|XY Z = pE|XY ZpAB|XY ZE = pE|ZpAB|XY ZE
+(40)
+such that when Eve inputs Z (before error correction and privacy amplification) and obtains outcome
+E = e, she generates the distribution p(ab|xyze).
+Consequently, the following marginal distribution
+reproduces the observed correlation p between Alice and Bob with entries
+p(ab|xy) =
+X
+e
+p(abe|xyz)
+X
+e
+p(ab|xyze)p(e|z).
+(41)
+The no-signalling condition in Eq. (7) is applied in pE|XY Z = pE|Z. Being NS a convex polytope,
+pAB|XY ZE can be expressed as a convex combination of extremal points, but in Eq. (40), pAB|XY ZE is
+taken extremal because individual attacks satisfy two key properties: (i) the interconvertibility property
+[146, 145] ensures that extremal points p(ab|xyze) describe the most general individual attack; (ii) local
+operations and public communication between Alice and Bob do not enhance their security (for proof
+see Sec. 2.C of Ref. [217]). For binary a, b the extreme points {pAB|XY ZE} = pext ∈NS are fully
+characterized (binary input [55, 146], arbitrary input [145]). For binary input and output Eve’s strategy
+is sketched in Fig. 2c. Let us analyze it in detail.
+Proposition 3. For p ∈NS ⊂[0, 1]16 with binary input and output the no-signaling conditions requires
+that P
+a p(ab|xy) = p(b|y) and P
+b p(ab|xy) = p(a|x) so that
+(i) ∃pNL =
+1
+2δa⊕b,yx isotropic correlation (as in Fig. (2b) with v = 1) know as Popescu-Rohrlich-
+Tsirelson box [218, 55, 219], or nonlocal machine [220], or unit of nonlocality [145, 146] and it is
+the vertex on the top in Fig. (2c)
+pNL =
+ab\xy
+00
+01
+10
+11
+00
+1/2
+0
+0
+1/2
+01
+1/2
+0
+0
+1/2
+10
+1/2
+0
+0
+1/2
+11
+0
+1/2
+1/2
+0
+(42)
+(ii) As in Fig. (2c), ∃8 extreme points ℓr
+j with entries pext(ab|xy) = δa,λA(x)δb,λB(y) (satisfying 1) s.t.
+S∗= 3 defined as
+ℓr
+j : (x, y) ∈{0, 1}2 7→{0, 1}2 ∋ℓr
+j(x, y) = (a(x), b(y))
+(43)
+where at each j ∈{1, . . . , 4}, and r = 0, 1 the output (a(x), b(y)) are
+ℓ0
+1
+ℓ1
+1
+ℓ0
+2
+ℓ1
+2
+ℓ0
+3
+ℓ1
+3
+ℓ0
+4
+ℓ1
+4
+(0, 0)
+(1, 1)
+(x, 0)
+(x + 1, 1)
+(0, y)
+(1, y + 1)
+(x, y + 1)
+(x + 1, y)
+(44)
+for example
+ℓ0
+1 =
+ab\xy
+00
+01
+10
+11
+00
+1
+1
+1
+1
+01
+0
+0
+0
+0
+10
+0
+0
+0
+0
+11
+0
+0
+0
+0
+, ℓ1
+4 =
+ab\xy
+00
+01
+10
+11
+00
+0
+0
+1
+0
+01
+0
+0
+0
+1
+10
+1
+0
+0
+0
+11
+0
+1
+0
+0
+, etc.
+(45)
+21

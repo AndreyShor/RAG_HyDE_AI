@@ -1,0 +1,100 @@
+Computing Canonical Averages with Quantum and Classical Optimizers:
+Thermodynamic Reweighting for QUBO Models of Physical Systems
+Francesco Slongo1 and Cristian Micheletti1, ∗
+1Scuola Internazionale Superiore di Studi Avanzati (SISSA), Via Bonomea 265, I-34136 Trieste, Italy.
+(Dated: April 10, 2025)
+Abstract. We present a general method to compute canonical averages for physical models
+sampled via quantum or classical quadratic unconstrained binary optimization (QUBO). First, we
+introduce a histogram reweighting scheme applicable to QUBO-based sampling constrained to spe-
+cific intervals of an order parameter, e.g., physical energy. Next, we demonstrate that the scheme
+can accurately recover the density of states, which in turn allows for calculating expectation values
+in the conjugate ensemble, e.g., at a fixed temperature. The method can thus be used to advance the
+state-of-the-art characterization of physical systems that admit a QUBO-based representation and
+that are otherwise intractable with real-space sampling methods. A case in point are space-filling
+melts of lattice ring polymers, recently mapped in QUBO form, for which our method reveals that
+the ring catenation probability is non-monotonic with the bending rigidity.
+Introduction The possibility of evaluating multiple
+solutions concurrently makes quantum computing ideally
+poised to solve optimization tasks in ways that are radi-
+cally different from conventional methods. A prominent
+class of combinatorial problems solvable with quantum
+algorithms is quadratic unconstrained binary optimiza-
+tion (QUBO), which includes SAT, maximum clique, and
+graph coloring.
+Solving a QUBO problem is equivalent to finding the
+ground state configuration(s) of a quadratic Ising-like
+Hamiltonian:
+H0(σ) =
+X
+i
+hi σi +
+X
+i̸=j
+Jij σiσj ,
+(1)
+where the h variables are the local external fields, J is
+a symmetric interaction matrix, and the σs are binary
+variables taking values of either 0 or 1.
+In pursuit of potential advantages offered by quantum
+optimization and simulations [1–10], and to leverage the
+practical speedups of special-purpose classical Ising ma-
+chines [11–14], researchers are increasingly recasting con-
+ventional sampling simulations of discrete physical sys-
+tems as QUBO problems [15–35]. The mapping typically
+involves a one-to-one correspondence of the real-space
+configurations of the original system and the degenerate
+ground state solutions of an appropriate QUBO Hamil-
+tonian. Uncorrelated configurations of the physical sys-
+tems can thus be obtained by performing independent
+and unbiased minimizations of the QUBO Hamiltonian
+in the abstract space of its binary variables, followed by
+backmapping the solutions to real-space representations.
+For soft matter systems, such as dense phases of
+polymers, resorting to the QUBO-based sampling on
+fully-quantum or hybrid classical-quantum annealers can
+be significantly more efficient than conventional Monte
+Carlo sampling in real space [33].
+Remarkably, the
+∗cristian.micheletti@sissa.it
+speedup benefits can be reaped, albeit to a lesser degree,
+even when the QUBO minimization is performed classi-
+cally. A case in point is sampling maximally dense lattice
+ring polymers with infinite bending rigidity [33]. Com-
+pared to real-space advanced sampling methods, numer-
+ical benchmarks show that classical QUBO-based sam-
+pling takes the runtime scaling with system size, N, from
+N 5.4 down to N 3.7.
+QUBO-based sampling thus holds the promise of
+bringing significant performance improvements com-
+pared to Monte Carlo methods to many other instances
+of hard physical problems [15, 32, 36–39], including pro-
+tein design strategies and RNA secondary structure pre-
+diction [35, 40, 41]. However, one known limitation is
+that QUBO-based sampling is natively tied to the micro-
+canonical ensemble, unlike Monte Carlo methods, which
+naturally operate in the canonical ensemble. This is be-
+cause QUBO schemes, as long as they are free of biases
+[42, 43], allow for covering the ground state manifold
+uniformly so that different energy-minimizing states are
+sampled with equal probability.
+This limitation can be partly overcome in specific con-
+texts, e.g., when excited states returned by quantum an-
+nealing runs are informative about the low-temperature
+Gibbs ensemble of the physical model [5, 7, 38, 44,
+45].
+However, even aside from considerations of fair
+sampling[43, 46, 47], a general approach for calculating
+Boltzmann averages for QUBO representations of physi-
+cal systems is still lacking.
+In response to this challenge, here we introduce a
+QUBO-based scheme that enables computing canonical
+expectation values by combining the use of slack variables
+and a thermodynamic reweighting scheme. First, slack
+variables are introduced in the Hamiltonian to restrain
+the order parameter of interest, e.g., the energy of the
+physical model, within specific intervals. Next, a suit-
+able weighted histogram method is used to combine data
+from overlapping intervals and thus recover the density
+of states. The latter is finally used to calculate expec-
+tation values in the conjugate ensemble, e.g., at a fixed
+arXiv:2504.07094v1  [quant-ph]  9 Apr 2025

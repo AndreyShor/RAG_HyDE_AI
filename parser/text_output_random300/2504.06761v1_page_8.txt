@@ -1,0 +1,72 @@
+8
+W. Shen, Y. Ge, Z. Han, Y. Zhao and Y. Yang
+Re𝜏
+𝑁𝑥
+𝑁𝑦
+𝑁𝑧
+Number of vortices
+CPU hours
+1,000
+1024
+64
+384
+11536
+0.3
+2,000
+1024
+128
+384
+44695
+1.1
+5,200
+2048
+256
+768
+299250
+7.8
+10,000
+2048
+512
+768
+1105762
+13.9
+Table 1. Summary of computational parameters and cost for synthetic wall-attached turbulence in half
+channel flow at various friction Reynolds numbers Re𝜏. The computational domain is fixed at 8𝜋× 1 × 3𝜋
+in the streamwise (𝑥), wall-normal (𝑦), and spanwise (𝑧) directions, respectively. The table lists the number
+of grid points in each direction (𝑁𝑥, 𝑁𝑦, 𝑁𝑧), the total number of self-similar vortices synthesized, and the
+CPU hours required for constructing each flow field.
+Figure 3 provides an overview of the construction process for SWAT, summarizing the
+key steps involved. This process is based on the attached-eddy model, where the structural
+properties of vortex packets are determined by input parameters such as the friction Reynolds
+number and boundary layer thickness. These properties include the hierarchical distribution
+of hairpin vortices, their population density, and spanwise meandering. The vorticity field
+is then reconstructed using the centerlines, circulation strengths, and core size distributions.
+Finally, the velocity field is computed using the Biot–Savart law, with corrections for wall
+and bulk flow. In our approach, the only required input parameter for a given channel flow
+within a specified computational domain is the friction Reynolds number Re𝜏. All other flow
+characteristics, including the hierarchical vortex structures, their spatial distributions, and
+the velocity field, are systematically derived from this single parameter.
+Compared to DNS, the computational cost of the SWAT method is almost negligible.
+Table 1 summarizes key metrics for all SWAT cases presented in this paper, covering friction
+Reynolds numbers ranging from 1,000 to 10,000. These metrics include the number of
+computational grid points, the number of vortices, and the CPU hours required for each
+calculation. The smallest hairpin vortex height is resolved with at least five grid points
+in the wall-normal direction, ensuring an accurate representation of coherent structures.
+The computational expense of SWAT primarily depends on the number of grid points and
+the total number of self-similar vortices, and thus increases with the specified Reynolds
+number. Nevertheless, due to the method’s highly efficient numerical construction, the overall
+consumption of computing resources remains minimal.
+3. Statistics and structure of synthetic wall-attached turbulence
+3.1. Mean velocity and Reynolds stresses
+Taking turbulent channel flow as a representative case, we leverage DNS data (Lee & Moser
+2015; Oberlack et al. 2022) to systematically assess the statistical properties and structural
+characteristics of the constructed SWAT. We first generate a synthetic wall-bounded flow
+within a computational domain of 𝐿𝑥× 𝐿𝑧= 8𝜋× 3𝜋, with a prescribed channel half-height
+of 𝛿= 1, a Reynolds number of Re𝜏= 1000.
+To visualize the generated turbulence, we employ the VSF of 𝜙𝑣= 0.1, as illustrated in
+figure 4(a). The synthetic flow field, constructed using our numerical methods and carefully
+designed vortex elements, exhibits structural features that closely resemble those observed
+in both experimental measurements and high-fidelity DNS data. Notably, vortices spanning
+a wide range of length scales remain attached to the wall, forming a complex multiscale
+structure of a vortex forest. This hierarchical organization of vortices is a key characteristic
+of wall turbulence, capturing essential dynamical features of real turbulent boundary layers.

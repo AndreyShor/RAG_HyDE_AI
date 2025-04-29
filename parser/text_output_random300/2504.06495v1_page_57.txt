@@ -1,0 +1,60 @@
+gives:
+bτ = log
+
+ε · ebτ ·
+η
+η −1
+
+= bτ + log
+
+ε ·
+η
+η −1
+
+,
+so we must have:
+ε ·
+η
+η −1 = 1
+⇒
+η =
+1
+1 −ε,
+which indeed satisﬁes η > 1.
+# Solving for α and c0: From the eigenvalue relation for η, we have:
+1
+1 −ε = −eµ +
+p
+eµ2 + 2σ2λ0
+σ2
+⇒
+λ0 =
+σ2
+2(1 −ε)2 +
+eµ
+1 −ε.
+This principal eigenvalue governs the survival decay rate and thus the asymptotic growth of
+the conditional expectation. The growth rate of bτ is then:
+log α = dbτ
+dτ =
+σ2
+1 −ε −eµ.
+To determine c0, recall that initially Φ0 = φ0 and thus ξ0 = ε · φ0. Matching with the Ansatz
+ξ0 = c0 · α0 gives:
+c0 = ε · φ0
+1 −ε.
+# Uniqueness and conclusion: The map ξ 7→ε · E[Φτ | Φτ > ξ] is continuous and strictly
+increasing, ensuring uniqueness of the ﬁxed point ξτ at each τ. Hence, we conclude:
+ξτ = c0 · ατ · (1 + o(1)),
+with
+log α =
+σ2
+1 −ε −eµ,
+so that:
+lim
+τ→∞
+log(ξτ/c0)
+τ
+= log α,
+as claimed.
+56

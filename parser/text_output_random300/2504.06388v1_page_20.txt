@@ -1,0 +1,113 @@
+Elimination of spurious oscillations on photoemission spectra
+20
+Acknowledgments
+This work is supported by PICT Grants No.
+2020-01755, No.
+2020-01434,
+and No.
+2020–01931 of ANPCyT (Argentina),
+PIP Grant No.
+2022-2024
+No 11220210100468CO and No.
+11220200102421CO of Consejo Nacional de
+Investigaciones Cient´ıﬁcas y T´ecnicas (CONICET) (Argentina).
+Appendix A. Numerical calculation of the scattering waves
+We assume a localized one-dimensional potential (V (z) ̸= 0 for z0 < z < z1) and an
+incident particle from the left. Since in all our cases the potential is asymptotically
+zero in the external region, the wave function Ψ(l,−)
+k
+(z) in Eq. (8b) can be divided in
+three diﬀerent regions:
+Ψ(l,−)
+k
+(z) =
+
+
+
+φI(z)
+if
+z < z0
+φII(z)
+if
+z0 < z < z1
+φIII(z)
+if
+z > z1.
+(A.1)
+First, the transmission
+T (−)
+l
+
+2
+and reﬂection
+R(−)
+l
+
+2
+coeﬃcients must satisfy
+T (−)
+l
+
+2
++
+R(−)
+l
+
+2
+= 1. Then, the boundary conditions at the edges z0 and z1 are established,
+requiring the continuity of the wave function and its derivative.
+The proposed
+procedure to obtain Ψ(l,−)
+k
+(z) is the following [23]:
+(i) Given the energy of the incident particle E, an initial value of the complex
+reﬂection parameter R(−)
+l
+is proposed, which must be restricted to a unit circle
+because
+R(+)
+l
+
+2
+≤1.
+(ii) Applying the continuity criteria, in Eq.
+(A.1) we use the function φI(z) to
+determine the function φII(z) and its derivative at the point z0.
+(iii) The time-independent Schr¨odinger equation is solved in the intermediate region
+by integrating from z0 to z1 using the 4th order Runge-Kutta method [20].
+(iv) Knowing the function φII(z1), and applying the continuity conditions to Eq.
+(A.1), the right-hand side function φIII(z) is obtained.
+With it, we get the
+transmission coeﬃcient given by T (−)
+l
+(k) = φIII(z1) eikz1.
+(v) Using this value of the transmission coeﬃcient T (+)
+l
+(k), the equation is integrated
+in the opposite direction (from z1 to z0), obtaining, in the central region of Eq.
+(A.1), a new φII(z).
+(vi) On the left edge z0,
+the continuity conditions are applied,
+determining
+φI(z0). This allows obtaining a new complex reﬂection coeﬃcient R(−)
+l
+
+new =
+
+φII(z0) −eikz0
+eikz0 from Eq. (9b). We deﬁne a real function that corresponds
+to the Euclidean distance between the old and new reﬂection coeﬃcients R(−)
+l
+and R(−)
+l
+
+new.
+(vii) An iteration process is performed, such that it minimizes the distance between the
+old and new reﬂection coeﬃcients R(−)
+l
+and R(−)
+l
+
+new. The integration problem
+is now transformed into an optimization problem. In the present work, this is
+done using the steepest descent method [20].

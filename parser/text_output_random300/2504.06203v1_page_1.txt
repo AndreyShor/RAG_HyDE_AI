@@ -1,0 +1,111 @@
+Factorizing Defects from Generalized Pinning Fields
+Fedor K. Popov1 and Yifan Wang2
+1 Simons Center for Geometry and Physics, SUNY, Stony Brook, NY 11794, USA and
+2 Center for Cosmology and Particle Physics, New York University, New York, NY 10003, USA
+(Dated: April 9, 2025)
+We introduce generalized pinning fields in conformal field theory that model a large class of critical impurities
+at large distance, enriching the familiar universality classes. We provide a rigorous definition of such defects as
+certain unbounded operators on the Hilbert space and prove that when inserted on codimension-one surfaces they
+factorize the spacetime into two halves. The factorization channels are further constrained by symmetries in the
+bulk. As a corollary, we solve such critical impurities in the 2d minimal models and establish the factorization
+phenomena previously observed for localized mass deformations in the 3d O(N) model.
+I.
+INTRODUCTION AND SUMMARY
+Extended operators defined on submanifolds of the space-
+time constitute a fundamental component of modern quantum
+field theory (QFT), shaping our understanding of symmetry
+principles, phases of matter and strong coupling phenomena.
+When extended in time, they are also known as defects – such
+as impurities and boundaries – which exhibit rich dynamics,
+particularly in gapless bulk systems described by conformal
+field theories (CFTs). In cases where the CFT admits a grav-
+ity dual, defects correspond to strings, branes and nontrivial
+backreacted geometries, providing a valuable portal to inves-
+tigate systematically such nonperturbative objects in quantum
+gravity. Hence it is essential to determine what defects and
+extended operators are admissible in CFT (and QFT more
+broadly) and to understand their corresponding dynamics.
+To this end, powerful monotonicity theorems have been es-
+tablished for defect renormalization group (RG) flows [1–10],
+ensuring that certain defects remain unscreened at large dis-
+tances, while additional constraints from generalized symme-
+tries are beginning to be explored [11–18]. Furthermore, con-
+formal bootstrap techniques have been developed to directly
+probe the operator algebra data at the defect fixed point [19],
+while the study of defect fusion and the Casimir effect offers
+new perspectives on universal defect data via the framework
+of effective field theory [20–23]. Nevertheless, explicit exam-
+ples of nontrivial conformal defects remain scarce, and even
+with a well-defined short-distance description, their behavior
+at large distances remains unclear.
+Here we introduce a large family of defects with the follow-
+ing simple UV definition in an arbitrary CFT in d ≥2,
+Dh(O) ≡
+h
+eh ˆ
+Oi
+ren ,
+ˆO ≡
+Z
+Σp
+O(x) ,
+(I.1)
+where O is a scalar operator of dimension ∆O < p and Σp
+is the defect worldvolume which we will often take to be
+an Rp hyperplane in the Euclidean spacetime. Intuitively, a
+nonzero coupling constant h in (I.1) triggers a defect RG flow
+on Σp. With appropriate renormalization, this defines a p-
+dimensional flat defect in the CFT (similarly for Σp = Sp
+which defines the spherical defect). Such a defect is expected
+to flow to a nontrivial conformal defect in the IR, which we
+denote as,
+D(O) ≡lim
+h→∞Dh(O) .
+(I.2)
+This is because the monotonicity theorems requires the defect
+entropy (for p odd) and conformal anomaly (for p even) to
+decrease under defect RG, and they both vanish for the triv-
+ial defect. These defects generalize the well-studied pinning
+field defects in the Ising and general O(N) CFTs where O is
+taken to be the fundamental scalar field (measuring the local
+spin) and h is the so-called background pinning field [24, 25].
+We will thus refer to (I.1) and (I.2) as the generalized pin-
+ning field defect and its conformal fixed point. In particular,
+our definition includes the defect RG flows studied by [26–
+30] in the very same O(N) CFT but triggered by certain mass
+deformations on a surface. There it was observed based on
+large N analysis and ϵ-expansion that the generalized pin-
+ning field surface defect at 3d appears to factorize into con-
+formal boundary conditions for two disconnected regions of
+the spacetime. Interestingly, this factorization also manifests
+in different ways depending on the sign of the pinning field
+h, revealing the intricate phase structure on the surface, which
+includes a newly discovered extraordinary-log phase at strong
+surface coupling [26, 31].
+In this work, we focus on codimension-one (i.e. p = d−1)
+generalized pinning field defects and establish this factoriza-
+tion property in great generality. In particular, this implies that
+there is no energy transmission across the interface in the IR.
+Intuitively, this is because the conformal pinning defect
+(I.2) will take the form of an un-normalized projector on the
+CFT rigged Hilbert space H (see around (II.4)),
+D(O) =
+M
+α
+|α⟩⟨α| ,
+(I.3)
+by projecting to the highest or lowest eigenvalues of the op-
+erator ˆO depending on the sign of h, where the eigenbasis is
+denoted by |α⟩. The eigenstates |α⟩are scalars with respect to
+SO(d−1) and hence do not support a non-vanishing two-point
+function of the stress energy tensor Tµν across the interface.
+Furthermore, by conformal symmetry, we expect these eigen-
+states to describe conformal boundary conditions of the CFT.
+However one should be cautious with the above heuristic
+reasoning, since the conformal boundary conditions do not
+define normalizable states in H and relatedly ˆO may not be
+a healthy bounded operator on H. In the following we will
+formalize these points using results from the spectral theory
+of unbounded operators on Hilbert spaces, particularly the
+Gelfand triple construction. This framework allows us to pre-
+arXiv:2504.06203v1  [hep-th]  8 Apr 2025

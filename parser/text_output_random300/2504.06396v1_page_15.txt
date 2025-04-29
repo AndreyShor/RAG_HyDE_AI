@@ -1,0 +1,76 @@
+A Scalable Automatic Model Generation Tool for Cyber-Physical Network Topologies and Data Flows for Large-Scale
+Synthetic Power Grid Models
+XXX:15
+Algorithm 2: Create UCC, BA Objects & Network Topology
+1 Function create_utilities (𝑈𝑡𝑖𝑙𝑖𝑡𝑖𝑒𝑠_𝐷𝑖𝑐𝑡)
+2
+for utility 𝑢𝑡𝑙in 𝑈𝑡𝑖𝑙𝑖𝑡𝑖𝑒𝑠_𝐷𝑖𝑐𝑡do
+3
+Create an instance of Utility class 𝑢𝑡𝑙
+4
+Populate instance 𝑢𝑡𝑙with node objects of cyber classes
+5
+[shown in Fig. 6]
+6
+nodes ←[‘cyberphysicalNodes’, ‘cyberNodes’].
+7
+links ←[Based on the topologies in Fig. 2]
+8
+if "star" in topology then
+9
+Add links between all substations 𝑠𝑢𝑏in 𝑢𝑡𝑙.
+10
+end
+11
+if "radial" in topology then
+12
+Add links between gen. and trans. 𝑠𝑢𝑏.
+13
+Add links between all substations 𝑠𝑢𝑏in 𝑢𝑡𝑙.
+14
+end
+15
+if "statistics-based" in topology then
+16
+network ←Solve an optimization problem from statistics derived from a
+real-world utility in [24].
+17
+Overlay network on the power system network to match cyber nodes to power
+system nodes.
+18
+Assign node with the highest degree as 𝑢𝑡𝑙for network.
+19
+Add links between substations based on network.
+20
+end
+21
+populate_cyber_information()
+22
+Output 𝑢𝑡𝑙data into JSON files.
+23
+end
+24 end
+25 Function generate_BA (𝑈𝑡𝑖𝑙𝑖𝑡𝑖𝑒𝑠_𝐷𝑖𝑐𝑡,𝑛𝑢𝑚_𝑜𝑓_𝐵𝐴𝑠)
+26
+𝑅𝑒𝑔𝑢𝑙𝑎𝑡𝑜𝑟𝑖𝑒𝑠_𝐷𝑖𝑐𝑡←Cluster 𝑢𝑡𝑙objects into balancing authorities using k-means
+clustering with N=num_of_BAs
+27
+for regulatory 𝑟𝑒𝑔in 𝑅𝑒𝑔𝑢𝑙𝑎𝑡𝑜𝑟𝑖𝑒𝑠_𝐷𝑖𝑐𝑡do
+28
+Create an instance of Regulatory class 𝑟𝑒𝑔
+29
+Populate instance reg with node objects of cyber classes [shown in Fig. 2].
+30
+populate_cyber_information()
+31
+Output 𝑟𝑒𝑔data into JSON files.
+32
+end
+33 end
+5.2
+Verification
+The outcomes for each test case across the three different topologies are detailed in Table 4. The
+average path length, denoted as 𝐿𝑎𝑣𝑒, exhibits minimal variation between the star and radial
+topologies, typically ranging from four to six hops between routers, indicative of more direct
+paths. In contrast, the statistics-based topology demonstrates a considerably greater path length,
+averaging about 13 hops for the 500-bus case, 18 hops for the 2,000-bus case, and 6 hops for the

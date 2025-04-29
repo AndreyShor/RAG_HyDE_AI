@@ -1,0 +1,83 @@
+19
+Thus, we have
+∥|x′
+l⟩−|x(T)⟩∥2 ≤∥|x(T)⟩−|xl⟩∥2 + ∥|xl⟩−|x′
+l⟩∥2 < ϵ,
+∀l ∈S.
+Furthermore, by Lemma D.3, we have
+γ′
+l ≥γl −ϵ′ ≥
+9
+10c√mg .
+Therefore, if we measure the index register of |x′⟩in the standard basis, the probability of getting outcome
+l ∈S is
+X
+l∈S
+|γ′
+l|2 ≥
+81p
+100c2mg2 =
+81
+7000g2 ,
+and when this occurs, the state of the value register becomes |x′
+l⟩, which is ϵ-close to the desired state |x(T)⟩
+in l2 norm. Using amplitude amplification [8], we can raise this probability to Ω(1) with O(g) repetitions of
+the above procedure.
+In summary, the query complexity is
+O
+ 
+(h2 + 1) · αT · C(A) · g ·
+p
+k log k · log
+p
+m(h2 + 1)g
+ϵ
+!
+.
+Finally, the total gate complexity is multiplied by the query complexity along with the gate complexity for
+block-encoding, as given in Theorem III.8.
+V.
+COMPARISON WITH PREVIOUS METHODS
+In this section, we compare our method with two other approaches: the method based on Taylor ap-
+proximation [7, 13, 32] and the method based on linear combination of Hamiltonian simulation (LCHS) [2],
+which achieves near-optimal dependence on all parameters. First, we compare the theoretical query com-
+plexity of the three methods. Then, we conduct numerical comparisons between our method and the Taylor
+approximation-based method in two distinct scenarios.
+• Scenario I: For a given desired precision ϵ and a fixed approximation order k, we compare the smallest
+values of m required by both methods to achieve the condition ∥bx−x(T )∥2
+∥x(T )∥2
+< ϵ.
+• Scenario II: For a given desired precision ϵ and m = ⌈∥AT∥2⌉, we compare the smallest approximation
+order k required by both methods to achieve the condition ∥bx−x(T )∥2
+∥x(T )∥2
+< ϵ.
+A.
+Theoretical comparison
+We use the result from [13] as the theoretical query complexity for the method based on Taylor approxima-
+tion. In [13], an oracle OA is used to compute the non-zero entries of A. However, in our setting, we assume
+the availability of a (α, d)-block-encoding of A, denoted as UA. To make their results and ours comparable,
+we modify their setting accordingly. In this modified setting, their algorithm requires
+O
+
+αT · C(A) · g · k · log 1
+δ
+
+,
+(48)
+queries to UA, Ox and Ob, where the parameters are defined as
+δ =
+ϵ
+25√mg ,
+k =
+ 2 log Ω
+log log Ω
+
+,
+Ω= 2e3T
+δ
+
+∥A∥2 + e2∥AT∥2∥b∥2
+∥x(T)∥2
+
+,
+m = ⌈∥AT∥2⌉,

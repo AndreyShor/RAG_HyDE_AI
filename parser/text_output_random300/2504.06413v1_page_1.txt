@@ -1,0 +1,102 @@
+Evaluating Mutation Techniques in Genetic Algorithm-Based
+Quantum Circuit Synthesis
+Michael Kölle
+LMU Munich
+Munich, Germany
+michael.koelle@ifi.lmu.de
+Tom Bintener
+LMU Munich
+Munich, Germany
+Maximilian Zorn
+LMU Munich
+Munich, Germany
+Gerhard Stenzel
+LMU Munich
+Munich, Germany
+Leo Sünkel
+LMU Munich
+Munich, Germany
+Thomas Gabor
+LMU Munich
+Munich, Germany
+Claudia Linnhoff-Popien
+LMU Munich
+Munich, Germany
+ABSTRACT
+Quantum computing leverages the unique properties of qubits and
+quantum parallelism to solve problems intractable for classical
+systems, offering unparalleled computational potential. However,
+the optimization of quantum circuits remains critical, especially
+for noisy intermediate-scale quantum (NISQ) devices with limited
+qubits and high error rates. Genetic algorithms (GAs) provide a
+promising approach for efficient quantum circuit synthesis by au-
+tomating optimization tasks. This work examines the impact of
+various mutation strategies within a GA framework for quantum
+circuit synthesis. By analyzing how different mutations transform
+circuits, it identifies strategies that enhance efficiency and perfor-
+mance. Experiments utilized a fitness function emphasizing fidelity,
+while accounting for circuit depth and T operations, to optimize
+circuits with four to six qubits. Comprehensive hyperparameter
+testing revealed that combining delete and swap strategies out-
+performed other approaches, demonstrating their effectiveness in
+developing robust GA-based quantum circuit optimizers.
+CCS CONCEPTS
+• Hardware →Quantum computation; • Computing method-
+ologies →Genetic algorithms; • Theory of computation →
+Evolutionary algorithms.
+KEYWORDS
+Variational Quantum Circuits, Automated Circuit Design, Mutation
+ACM Reference Format:
+Michael Kölle, Tom Bintener, Maximilian Zorn, Gerhard Stenzel, Leo Sünkel,
+Thomas Gabor, and Claudia Linnhoff-Popien. 2025. Evaluating Mutation
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for profit or commercial advantage and that copies bear this notice and the full citation
+on the first page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior specific permission
+and/or a fee. Request permissions from permissions@acm.org.
+GECCO ’25, July 14–18, 2025, Malaga, Spain
+© 2025 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+ACM ISBN 979-8-4007-1465-8/2025/07...$15.00
+https://doi.org/10.1145/3712256.3726402
+Techniques in Genetic Algorithm-Based Quantum Circuit Synthesis. In
+Genetic and Evolutionary Computation Conference (GECCO ’25), July 14–18,
+2025, Malaga, Spain. ACM, New York, NY, USA, 8 pages. https://doi.org/10.
+1145/3712256.3726402
+1
+INTRODUCTION
+Quantum computing offers a promising way to tackle complex
+problems that classical computers cannot solve [8, 9, 25]. Quantum
+circuits lie at the core of quantum computing and are essential
+for implementing quantum algorithms [3]. The efficient synthe-
+sis and optimization of these circuits is critical yet challenging,
+especially on NISQ devices, which have limited qubits and high
+error rates [17, 19]. As more performant quantum hardware contin-
+ues to emerge, efficient and automated quantum circuit synthesis
+grows increasingly important, because manual circuit creation is
+not sustainable [1, 2, 30].
+The synthesis of quantum circuits is difficult because of the com-
+plexity of quantum operations and the limits of current hardware.
+GAs offer a possible solution by using evolutionary strategies to
+improve quantum circuit designs [24]. GAs are especially effective
+at exploring large, complex solution spaces [4, 13], but their per-
+formance in quantum circuit synthesis and optimization remains
+an open area of research [15, 21]. In particular, examining how
+different mutation strategies interact with quantum circuits may
+provide new ways to enhance optimization efficiency.
+To investigate these mutation strategies, we conducted a series
+of experiments. We developed a multifunctional quantum environ-
+ment that can create, manipulate, and evaluate quantum circuits
+efficiently. It includes a circuit optimizer that works within the
+Clifford + T set, following standard protocols [23], and an unbiased
+circuit generator that produces diverse candidate circuits for test-
+ing. An autonomous system switches between serial and parallel
+processing modes based on available hardware and data, ensuring
+optimal resource use.
+A GA framework was then implemented within this quantum
+environment. The fitness function in this framework is derived
+from fidelity, circuit depth, and the number of T operations [12, 26,
+31]. The framework allows either a single-population or an island
+model, along with tournament selection for elites and offsprings,
+arXiv:2504.06413v1  [quant-ph]  8 Apr 2025

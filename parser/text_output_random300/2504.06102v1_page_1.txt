@@ -1,0 +1,96 @@
+Sherlock: A Dataset for Process-aware Intrusion Detection
+Research on Power Grid Networks
+Dataset Paper
+Eric Wagner∗
+eric.wagner@fkie.fraunhofer.de
+Fraunhofer FKIE
+RWTH Aachen University
+Aachen, Germany
+Lennart Bader∗
+lennart.bader@fkie.fraunhofer.de
+Fraunhofer FKIE
+RWTH Aachen University
+Aachen, Germany
+Konrad Wolsing
+konrad.wolsing@fkie.fraunhofer.de
+Fraunhofer FKIE
+RWTH Aachen University
+Aachen, Germany
+Martin Serror
+martin.serror@fkie.fraunhofer.de
+Fraunhofer FKIE
+Aachen, Germany
+Abstract
+Physically distributed components and legacy protocols make the
+protection of power grids against increasing cyberattack threats
+challenging. Infamously, the 2015 and 2016 blackouts in Ukraine
+were caused by cyberattacks, and the German Federal Office for In-
+formation Security (BSI) recorded over 200 cyber incidents against
+the German energy sector between 2023 and 2024. Intrusion detec-
+tion promises to quickly detect such attacks and mitigate the worst
+consequences. However, public datasets of realistic scenarios are
+vital to evaluate these systems. This paper introduces Sherlock, a
+dataset generated with the co-simulator Wattson. In total, Sher-
+lock covers three scenarios with various attacks manipulating the
+process state by injecting malicious commands or manipulating
+measurement values. We additionally test five recently-published
+intrusion detection systems on Sherlock, highlighting specific
+challenges for intrusion detection in power grids. Dataset and doc-
+umentation are available at https://sherlock.wattson.it/.
+CCS Concepts
+• Security and privacy →Intrusion detection systems.
+Keywords
+dataset, critical infrastructure, power grid, IEC 60870-5-104
+ACM Reference Format:
+Eric Wagner, Lennart Bader, Konrad Wolsing, and Martin Serror. 2025.
+Sherlock: A Dataset for Process-aware Intrusion Detection Research on
+Power Grid Networks: Dataset Paper. In Proceedings of the Fifteenth ACM
+Conference on Data and Application Security and Privacy (CODASPY ’25),
+June 4–6, 2025, Pittsburgh, PA, USA. ACM, New York, NY, USA, 6 pages.
+https://doi.org/10.1145/3714393.3726006
+∗Both authors contributed equally to this work
+This work is licensed under a Creative Commons Attribution 4.0 International License.
+CODASPY ’25, June 4–6, 2025, Pittsburgh, PA, USA
+© 2025 Copyright held by the owner/author(s).
+ACM ISBN 979-8-4007-1476-4/2025/06
+https://doi.org/10.1145/3714393.3726006
+1
+Introduction
+Cyberattacks against critical infrastructures, such as power grids,
+are on the rise [3, 22]. These attacks typically exploit vulnerabil-
+ities in the underlying Industrial Control System (ICS) networks,
+which are known to rely on insecure legacy communication pro-
+tocols [15, 23]. To make matters worse, such legacy protocols are
+difficult to replace due to long lifecycles of industrial hardware,
+stringent availability requirements, and limited update capabilities.
+Under these circumstances, feasible preventive security measures,
+such as network segmentation and firewalls, do not suffice for
+protection [7]. Effective intrusion detection promises to identify
+cyberattacks in their early stages and thus enable timely counter-
+measures that prevent severe damage. Industrial Intrusion Detec-
+tion Systems (IIDSs) are thus widely recognized as a retrofittable,
+non-disruptive, and promising security solution, serving as the last
+line of defense for critical infrastructure [20]. However, such IIDSs
+must deal with the unique characteristics of power grid networks.
+Traditional network-based IIDSs detect suspicious activities by
+scanning traffic for known attack patterns [19]. However, ICS net-
+works are often exposed to unknown attacks due to their distinct
+characteristics and the use of a wide range of different protocols.
+Meanwhile, the predictable nature of control and sensor traffic,
+closely tied to underlying physical processes, creates opportunities
+for process-aware intrusion detection [7]. Here, the core idea is
+to examine a system’s physical state using data transmitted over
+the network to detect anomalies. However, this approach necessi-
+tates domain-specific training data as a prerequisite for accurately
+modeling the expected system behavior.
+This relatively new research area is experiencing significant
+growth, with at least 130 new process-aware intrusion detection
+mechanisms proposed in 2021 alone [20]. However, progress is
+hindered by a lack of high-quality datasets: fewer than half of
+publications use public datasets, and only 16.4 % utilize more than
+one. Within critical infrastructures, the energy sector faces a no-
+table dataset gap, as most existing datasets primarily represent
+small-scale networks or individual components [2, 8, 32]. Conse-
+quently, no comprehensive dataset is currently available for evalu-
+ating process-aware intrusion detection in power grid networks.
+arXiv:2504.06102v1  [cs.CR]  8 Apr 2025

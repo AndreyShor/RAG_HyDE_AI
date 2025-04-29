@@ -1,0 +1,20 @@
+(a) HOSVD
+(b) SVD
+Figure 28: Uncertainty quantification (UQ) results for (a) HOSVD (left column) and (b)
+SVD (right column) across LSTM architectures. From top to bottom: predictions for
+LSTM with 1 Dense, 2 Dense, and Time-Distributed architectures for the experimental
+cylinder flow. Histograms have been constructed using 50 bins.
+architecture, when paired with HOSVD, was sufficient to achieve accurate predictions,
+effectively capturing simpler dynamics. However, the addition of one or more dense layers
+in the LSTM architecture displayed an improvement across various metrics, specifically
+along the spanwise and normal directions. The LSTM 2 dense and LSTM time-distributed
+configurations enhanced the predictive accuracy across all the datasets. The RRMSE
+metrics further reinforced these observations, with HOSVD achieving lower error values
+across all LSTM architectures. In particular, the LSTM 2 dense architecture achieved the
+lowest RRMSE for HOSVD, underscoring its ability to balance complexity and prediction
+accuracy in turbulent flow cases. They help to preserve uncorrelated dynamics connected
+to small flow scales typically found in transient and turbulent flows.
+The comparison between the HOSVD-based LSTM 2 dense and the time-distributed
+model reveals minimal differences in metrics and snapshot predictions across all cases.
+However, the time-distributed architecture performs better in the spanwise predictions for
+44

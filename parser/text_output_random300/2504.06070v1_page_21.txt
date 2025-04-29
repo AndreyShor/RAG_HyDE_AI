@@ -1,0 +1,76 @@
+Published as a conference paper at ICLR 2025
+Table S5: Comparison of calibrated MSE for latent physical quantities between our model and
+HelmFluid.
+Latent Physical Quantities
+PINP (Case 1)
+PINP (Case 2)
+HelmFluid (Case 1)
+HelmFluid (Case 2)
+ux
+0.1056
+0.3128
+0.1482
+0.5035
+uy
+0.0806
+0.2806
+0.1187
+0.3407
+p
+0.1539
+0.4653
+-
+-
+Table S6: Comparison of our model’s results with those obtained after removing the physical con-
+straints and temporal constraints on 2D fluid data.
+Metrics
+no Physical Constraints
+no Temporal Constraints
+no Velocity-Pressure Constrain
+Normal
+MAE
+0.0209
+0.0272
+0.0293
+0.0262
+MSE
+0.0057
+0.0089
+0.0108
+0.0087
+The results in Tables S4 and S5 highlight the superiority of our approach in predicting the latent
+physical quantities. Moreover, even with a constant factor difference, a high correlation (≥0.9)
+is sufficient to demonstrate the consistency between our predictions and the true data in terms of
+distribution, regardless of scaling. This can serve as supplementary information for concentration
+prediction and provide interpretable evidence for the future evolution of fluid dynamics.
+E
+ABLATION STUDY
+In this section, we conduct ablation studies to assess the contributions of different components of
+our method, including constraint ablation, model ablation, and prediction operator ablation.
+E.1
+CONSTRAINTS
+The constraint ablation experiment consists of two parts: removing the physical constraints and
+removing the temporal constraints:
+Physical Constraints. We removed the physical constraints while retaining the temporal constraints
+and retrained the model. The results show a decline in prediction accuracy due to the absence of
+physical constraints (Table S6), and the inferred latent physical quantities exhibit issues, lacking real
+physical significance (Figure S6).
+Velocity-Pressure Constraint. To validate whether the inclusion of pressure p is beneficial for
+prediction, we also designed an experiment: no Velocity-Pressure Constraint, which removes e1 in
+Eq. 12. Results in Figure 9 (a) and Table 3 show that the inclusion of constraints and p is beneficial
+for prediction. In Figure S6, we present this result, where it can be seen that the predicted velocity
+field is not correct.
+Temporal Constraints. We removed the temporal constraints while retaining the physical con-
+straints and retrained the model. The results indicate that the prediction accuracy also declined
+due to the lack of temporal constraints (Table S6), and the inference of latent physical quantities,
+especially the pressure field, was problematic (Figure S6).
+E.2
+MODELS
+In this section, we perform ablation experiments on our model structure by removing the correction
+network to verify its necessity.
+Correction Network.
+As shown in Table S7, after removing the correction network, prediction
+accuracy significantly decreased. Figure S7 illustrates an example where ”stripes” appeared in the
+output after the correction network was removed. These artifacts are caused by errors in the gradient
+operator. By using the correction network, this issue can be effectively mitigated.
+21

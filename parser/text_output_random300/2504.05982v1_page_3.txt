@@ -1,0 +1,48 @@
+1
+Introduction
+Molecular dynamics (MD) simulations follow the motion of chemical, physical, and biological
+systems with atomic resolution. They provide valuable insights into the mechanism of com-
+plex processes and allow quantitative estimates of thermodynamic and kinetic properties.
+However, their inherent microscopic resolution dictates simulation time steps on the order
+of a femtosecond, limiting their overall timescale to a few microseconds. Processes that oc-
+cur on longer timescales, such as protein conformational transitions and crystal nucleation,
+growth, and polymorphism, cannot be studied directly in standard MD simulations, and
+require specialized enhanced sampling algorithms.1–5
+Diﬀerent enhanced sampling methods were developed over the years, such as umbrella
+sampling,6,7 replica-exchange,8 free-energy dynamics,9,10 Gaussian accelerated MD,11 on-
+the-ﬂy probability enhanced sampling (OPES),12,13 milestoning,14,15 transition path sam-
+pling,16,17 forward ﬂux sampling,18 transition interface sampling,19 weighted ensemble,20,21
+and Metadynamics (MetaD).22–25 Many of them, and in particular MetaD and its vari-
+ants,26–28 rely on identifying eﬃcient collective variables (CVs).
+These are functions of
+phase space variables that can distinguish between metastable states and describe the dy-
+namics between them.29 Good CVs provide high accelerations and accurate estimations of
+thermodynamic and kinetic properties but are very challenging to obtain.30 Despite much
+progress in recent years,30–36 often only suboptimal CVs are available, leading to limited
+accelerations and slow convergence.37–39
+We recently developed a CV-free enhanced sampling method based on stochastic reset-
+ting (SR):5,39–41 stopping the simulations at random times and restarting them, resampling
+the initial conditions. It can expedite the sampling of rare events by an order of magnitude
+when used as a standalone tool,5,40 and accelerate MetaD simulations by more than two
+orders of magnitude.39 It enables the inference of unbiased kinetics from accelerated simu-
+lations,5,39,41 even for non-exponential processes,40 and very recently inspired an improved
+kinetics inference procedure for MetaD simulations without resetting.42
+One of the most appealing features of SR as an enhanced sampling method is its in-
+credible simplicity: standard resetting requires nothing more than stopping a simulation
+and restarting it while continuing monitoring the overall simulation time. Resetting can be
+implemented straightforwardly in existing codes, and combined with any other enhanced
+sampling method. As trajectories with SR are composed of statistically independent seg-
+ments, resetting is also highly parallelized.
+Resetting is useful because it is based on a
+rigorous theory, which allows predicting all the observables of the process under resetting
+from trajectories without resetting. For instance, it provides a universal suﬃcient criterion
+(which we describe in detail later) to test whether additional sampling of rare events can be
+achieved through simulations with resetting, and the resulting speedup.
+Here, we thoroughly review stochastic resetting for enhanced sampling. We ﬁrst deﬁne
+what SR is in Section 2. We then summarize key results in the ﬁeld of SR in Section 3, which
+give suﬃcient conditions to when a stochastic process will be accelerated by resetting. Next,
+we discuss the applications of resetting as a standalone method and in combination with
+MetaD to accelerate MD simulations. We also present the concept of informed resetting,
+where we exploit information on reaction progress for greater speedups.41 Section 5 reviews
+procedures to infer the unbiased kinetics of the system from accelerated simulations with
+3

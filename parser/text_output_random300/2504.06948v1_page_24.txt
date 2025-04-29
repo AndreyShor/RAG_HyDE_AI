@@ -1,0 +1,99 @@
+24
+work, when the matrix A is negative semi-definite, our upper bound for the condition number is independent
+of ∥Ah∥2, which relaxes the constraint ∥Ah∥2 < 1 in the final complexity analysis. Combining the condition
+number analysis with the complexity analysis of QLSA and the success probability analysis, we obtain the
+overall complexity analysis, which includes both the oracle query complexity and the gate complexity. Com-
+pared to other algorithms of a similar nature [7, 13, 32], the proposed algorithm shows improved dependence
+on the approximation order k. Furthermore, thanks to the Padé approximation, the approximating order k
+can be chosen much smaller than that in the case of using Taylor approximation. Numerical experiments
+are conducted to validate the theoretical results and illustrate the complexity comparison of the proposed
+method with other algorithms of the same type.
+Several straightforward future directions emerge from this work. First, we could combine the proposed
+Padé approximation-based algorithm with ODE linearization techniques to tackle nonlinear ODEs. Addi-
+tionally, by carefully selecting the time step h, the proposed quantum algorithm could be extended to handle
+non-autonomous ODEs; however, the corresponding complexity analysis would need to be revisited. Further-
+more, Padé approximation could be applied to other quantum ODE algorithms to enhance their performance,
+potentially achieving optimal dependency on all parameters and improving the prefactors.
+Appendix A: Construction and condition number analysis of the linear system
+1.
+Proof of Lemma III.2
+Proof. From Eq. (17), we can observe that
+(
+z(s)
+1
++ β1Ahz(s)
+0
+= −d1hb = −1
+2hb,
+z(s)
+j+1 + βj+1Ahz(s)
+j
+= 0,
+j = 1, . . . , k −1.
+Again by Eq. (17), we obtain
+(
+ez(s)
+1
+−α1Ahz(s)
+0
+= n1hb = 1
+2hb,
+ez(s)
+j+1 −αj+1Ahez(s)
+j
+= 0,
+j = 1, . . . , k −1.
+Since αj = βj for all j = 1, . . . , k, we conclude that
+z(s)
+j
+= (−1)j ez(s)
+j , ∀j = 1, . . . , k.
+2.
+Proof of Lemma III.3
+Proof. For matrix Wk(A), we have the following decomposition:
+
+
+In
+In
+In
+· · ·
+In
+In βkA
+In
+βk−1A
+...
+...
+In β1A
+
+
+=
+
+
+In In In −βkA · · · In + Pk
+j=2 β2 · · · βj(−A)j−1
+In
+In
+...
+In
+
+
+×
+
+
+0
+0
+· · ·
+0
+In + Pk
+j=1 β1 · · · βj(−A)j
+In βkA
+In
+βk−1A
+...
+...
+In
+β1A
+
+
+,
+(A1)

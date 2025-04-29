@@ -1,0 +1,73 @@
+Input
+Text2Tex
+Paint-It
+FlashTex
+Ours
+Ground Truth
+Figure 4. Qualitative comparison. We synthesized textures for models from the Objaverse dataset using the proposed approach and a number
+of recent competing methods. Our method generates seamless textures with softer colors compared with latent diffusion-based approaches.
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Ours (XL)
+Paint-it
+Ours (XL+L)
+Paint-it
+Ours (XL)
+FlashTex
+Ours (XL+L)
+FlashTex
+Ours (XL)
+Text2Tex
+Ours (XL+L)
+Text2Tex
+Ours (XL+L)
+Ours (XL)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Ours (M)
+Paint-it
+Ours (M+L)
+Paint-it
+Ours (M)
+FlashTex
+Ours (M+L)
+FlashTex
+Ours (M)
+Text2Tex
+Ours (M+L)
+Text2Tex
+Ours (M+L)
+Ours (M)
+Figure 5. Human preference study comparing our method with competing optimization based and back-projection baselines.
+line that generates only the diffuse map, one of the PBR
+components. As shown in Table 2, generating the full set of
+PBR maps leads to better FID and KID scores compared to
+generating the diffuse map alone. We provide visualization
+of PBR maps in Appendix E. Despite better metrics, a closer
+study of illustrations indicates that the method occasionally
+stuggles with baked-in lighting.
+Can our second stage improve other methods? We hy-
+pothesize that our second stage in the PBR texture generation
+pipeline can improve the results of other texture synthesis
+methods. To validate this, we experiment with applying our
+second stage to well-initialized diffuse maps from another
+method.
+As shown in Table 3, our second stage can effectively
+generate PBR textures when initialized with diffuse maps
+from Text2Tex. We explore two configurations: (1) where
+we keep the initial diffuse map fixed (kd frozen) and (2)
+where we fine-tune the diffuse map during PBR generation
+(kd trained).
+The results show that when the diffuse map is kept frozen,
+the FID score remains unchanged with a slight increase in
+KID. This may be because freezing kd also preserves any
+baked lighting information present in the initial diffuse map,
+preventing our method from correcting for these lighting

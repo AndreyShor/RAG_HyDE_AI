@@ -1,0 +1,60 @@
+An investigation into the performance of the protocol under ideal reconciliation conditions (ϵ = 1)
+reveals the potential for achieving remarkably high secret key rates, approaching one bit per use. Notable,
+symmetric configurations, where the transmissivities are the same between Alice-Charlie and Bob-Charlie,
+are not the most secure option, particularly for longer distances. The optimal configuration is asymmetric,
+corresponding to minimal loss in Alice’s link, which allows Bob’s link to have a low transmissivity.
+Specifically, if Charlie’s position can be situated close to Bob, the total transmission distance, i.e., the
+distance between Alice and Bob, can theoretically extend up to 80 km. Taking into account realistic
+reconciliation performance, the experimental rates closely approach the maximum theoretical predictions.
+In particular, with ϵ ≈0.97, the experimental rates can achieve remarkably high values over typical
+connection lengths within a metropolitan network.
+Zhang et al. [365] introduced a CV-MDI QKD protocol using squeezed states and demonstrated that
+its secret key rate consistently surpasses the coherent-state-based protocol, particularly under collective
+attacks, with a total maximum transmission distance increase of 6.1 km under both perfect and imperfect
+detectors. The transmission distance further increases in asymmetric scenarios. In the extreme case where
+Charlie is on Bob’s side, such that the coherent-state-based protocol achieves zero transmission distance,
+the squeezed-state protocol significantly outperforms it, especially with the introduction of optimal Gaus-
+sian noise levels on Bob’s side, as determined for maximizing key rate and transmission distance under
+reverse reconciliation. Chen et al. [366] extended this protocol against general attacks using entropic un-
+certainty relations, yielding a composable security analysis and demonstrating the system’s resilience to
+a maximum channel loss of 0.64 dB. One key limitation of Gaussian-modulated protocols is their low rec-
+onciliation efficiency in long-distance transmissions, which has driven interest in discrete modulation. Ma
+et al. [367] proposed a four-state discrete-modulated CV-MDI-QKD protocol, leveraging nonorthogonal
+coherent states for encoding bits, achieving longer transmission distances and simplified implementation
+compared to Gaussian modulation, with the eight-state protocol [368] further improving key rates and
+modulation variances. Wilkinson et al. [369] introduced postselection in long-distance CV-MDI-QKD,
+extending the communication range to 14 km over standard optical fiber, while protocols employing
+quantum catalysis [370, 371], quantum scissors [372], and multimode signals [373] further improved per-
+formance by improving transmission distance and reducing noise. Practical implementation challenges,
+such as independent light sources, phase reference calibration, and external disturbances, require miti-
+gation to prevent overestimation of key rates. Ma et al. [374] studied phase calibration imperfections
+and their thermal noise equivalence, proposing models for realistic security analysis, while Zhao et al.
+[368] introduced Bayesian phase-noise estimation to eliminate local oscillator transmission. Simplified
+implementations, such as the plug-and-play scheme [375, 376], address synchronization issues by deriving
+local oscillators from a shared laser, reducing complexity and enhancing stability. However, imperfections
+in state preparation also introduce Gaussian noise, as modeled by Ma et al. [374], who explored intensity
+error impacts under various distributions and emphasized placing stable sources on the encoder’s side for
+optimization. Countermeasures like Huang et al.’s one-time calibration method [377] and noise charac-
+terization approaches are critical for enhancing practical security. Addressing transmittance fluctuations,
+Zheng et al.
+[378] highlighted performance degradation under varying channel conditions, proposing
+Gaussian post-selection to mitigate risks of denial-of-service attacks, while Li et al. [379] studied the ef-
+fects of non-ideal Bell detection due to angle errors, showing significant transmission distance reductions
+even with minor errors. Efforts to reduce CV-MDI-QKD complexity include self-referenced schemes [380],
+shared optical path methods [381], and unidimensional modulation [382], achieving comparable perfor-
+mance with reduced system demands. Semi-Quantum Key Distribution (SQKD), introduced by Boyer
+et al. [383], evolved into a continuous variable version [384], enabling secure communication between
+classical and quantum users, leveraging Charlie’s full quantum capabilities to balance cost-effectiveness
+and security under various attack scenarios.
+Finite-size effects. The impact of finite-size effects on the key rate of CV-MDI-QKD was initially in-
+vestigated by Papanastasiou et al. [385], considering two-mode Gaussian attacks, and by Zhang et al.
+[386], examining collective attacks. To study the security of the protocol, a potent approach is to employ
+the entanglement-based representation, where the description of the dynamics occurs within an extended
+Hilbert space, allowing the use of pure states. The protocol is outlined as follows: Alice and Bob employ
+sources of coherent states, which are purified, assuming they start from two-mode squeezed vacuum states
+ρaA and ρbB, where modes A and B are transmitted over the communication links, while local modes a
+and b are heterodyned. The measurements project the traveling modes into pure coherent states. The
+attenuation of the channel on modes A and B is modeled using two beam splitters with transmissivities
+τA and τB, where 0 ≤τA, τB ≤1. These processes manipulate Alice and Bob’s signals with a pair of
+Eve’s ancillary systems E1 and E2, which generally belong to a broader reservoir of modes controlled by
+63

@@ -1,0 +1,91 @@
+3
+2018), and non-thermal processes such as magnetic
+fields (Cen 2024) and cosmic rays (CRs) (Su et al.
+2021).
+These feedback processes exhibit highly
+nonlinear behavior and couple with other feedback
+mechanisms, influencing jet and wind launching,
+ISM/CGM interactions, turbulence generation, and
+multiphase gas mixing.
+The complexity arising from this diversity in
+scales and physics poses significant challenges for
+comprehensive modeling of AGN feedback, par-
+ticularly in cosmological and zoom simulations
+of galaxy formation and evolution.
+Sub-grid
+models typically address unresolved AGN feed-
+back processes, including gas accretion onto the
+SMBH, jet and wind launching, and feedback en-
+ergy/momentum interactions with the ISM and
+CGM. However, implementation approaches vary
+substantially across different simulations (Vogels-
+berger et al. 2014; Dubois et al. 2014; Crain et al.
+2015; Weinberger et al. 2017; Dav´e et al. 2019;
+Wellons et al. 2023; Hopkins et al. 2023). For in-
+stance, IllustrisTNG incorporates a kinetic mode
+at low accretion rates and a thermal mode at high
+accretion rates (Weinberger et al. 2017), while EA-
+GLE employs a thermal feedback model with fixed
+efficiency (Crain et al. 2015). SIMBA combines
+both kinetic and thermal feedback, emphasizing
+kinetic feedback at low accretion rates (Dav´e et al.
+2019). FIRE-3 implements a comprehensive model
+including radiation, mechanical winds, and cosmic
+rays (Wellons et al. 2023; Hopkins et al. 2023). De-
+spite these variations in implementation, consensus
+exists regarding AGN feedback’s role in suppress-
+ing star formation and quenching massive galaxies
+through gas heating or outflow-driven gas removal.
+Despite extensive observational evidence of AGN
+activity across various scales, the detailed physi-
+cal processes of AGN feedback and its evolution-
+ary impact remain incompletely understood. No-
+tably, limited observational evidence supports in-
+stantaneous, negative feedback effects from AGNs
+(Shin et al. 2019). Some observations suggest pos-
+itive AGN feedback, indicated by correlations be-
+tween AGN luminosity and host galaxy star forma-
+tion rates – an apparent contradiction to theoret-
+ical expectations of AGN-induced star formation
+quenching (Cresci et al. 2015). On the other hand,
+some simulations indicate that AGN feedback may
+locally enhance star formation through gas com-
+pression (Gaibler et al. 2012; Mercedes-Feliz et al.
+2023).
+Overall, the integrated impacts of AGN
+feedback on global star formation remains debated.
+Addressing these challenges requires imple-
+menting a comprehensive, multi-dimensional, and
+multi-physics model capturing essential AGN feed-
+back processes, particularly precise determination
+of central SMBH accretion rates that govern the
+AGN power and concrete AGN outputs.
+Moti-
+vated by this need, Yuan et al. (2018) developed
+the Massive AGN Controlled Ellipticals Resolved
+(MACER, hereafter MACER2D) project - a two-
+dimensional axisymmetric hydrodynamic frame-
+work studying the evolution of elliptical galax-
+ies with the effects of AGN feedback included.
+MACER2D has several key features. It focuses on
+galactic rather than cosmological scales thus it has
+achieved very high spatial resolution. In fact, the
+Bondi radius, which is the outer boundary of the ac-
+cretion flow of the central AGN, is well resolved. In
+this case, the mass flux within the Bondi radius can
+be accurately calculated. Combined with the black
+hole accretion theory, the mass accretion rate at the
+black hole horizon and the accordingly computed
+AGN outputs can be obtained, including the AGN
+power and properties of radiation, jet, and wind.
+These quantities are crucial for the study of AGN
+feedback. Moreover, the interaction between these
+outputs and ISM is calculated rather than parame-
+terized as in almost all cosmological simulations.
+Admittedly, we note that the model is still idealized
+and misses the proper cosmological context, which
+is discussed in more detail in the caveat of the con-
+clusions. In addition, although the mass accretion
+rate can be obtained more reliably than in cosmo-
+logical simulations, the effects of the feedback are
+still parameterized in a subgrid fashion based on

@@ -1,0 +1,165 @@
+7
+|ψα, t⟩= e−iεαt |uα, t⟩, |uα, t⟩= |uα, t + T⟩,
+(3)
+Here,
+εα is the quasi-energy.
+So the Hamilto-
+nian can be represented as a diagonal matrix H(t) =
+P
+n hn(t)|n⟩⟨n| under the Fock basis {|n⟩} , with ma-
+trix elements of hn(t) = n (ω0 + A cos Ωt).
+Thus, the
+Schr¨odinger equation can be simplified as
+i∂tψn(t) = n (ω0 + A cos Ωt) ψn(t),
+(4)
+here ψn(t) = ⟨n | ψ, t⟩. Combined with Eq. 3, the steady-
+state solution can be expressed as
+|ψn, t⟩= e−inω0t |un, t⟩,
+|un, t⟩= e−inΩA sin Ωt|n⟩.
+(5)
+We define |unm, t⟩= |un, t⟩eimΩt = unm(t)|n⟩,with
+unm(t) = e−inΩA sin ΩteimΩt, which satisfies
+HF |unm, t⟩= εnm |unm, t⟩.
+(6)
+At this point, we have identified Brillouin regions over
+the frequency domain, where the single Brillouin region
+have a width of Ω, and the different Brillouin regions are
+represented by the index m, called the Floquet index.
+And where HF = H(t) −i∂t is called the Floquet Hamil-
+tonian, |unm, t⟩is the time-periodic Floquet state, and
+quasi-energy εnm = nω0 + mΩ. The |un, t⟩can also be
+written as |un0, t⟩. Under the complete base vector set
+{|nmn⟩⟩} with |nm⟩= |n⟩eimΩt , the matrix elements of
+the Floquet Hamiltonian are
+⟨⟨nm| HF | n′
+m′⟩⟩= ⟨n|H[m−m′] |n′⟩+ m′Ωδmm′δnn′,
+(7)
+where H[l] is the Fourier component of H(t) . Since
+H(t) =
+X
+n
+n (ω0 + A cos Ωt) |n⟩⟨n|
+=
+X
+l
+H[l]eilΩt
+(8)
+where H[0] = P
+n nωc|n⟩⟨n|, H[±1] = P
+n n A
+2 |n⟩⟨n| , and
+H[l] = 0 for |l| > 1 . Thus, the Eq. 7 can be further
+expressed as
+⟨⟨nm| HF | n′
+m′⟩⟩= δnn′
+
+nω0δmm′ + nA
+2 δm,m′±1
+
++ m′Ωδmm′δnn′,
+(9)
+Obviously, HF is a block diagonal form about n, and
+we write the projection of HF in subspace {|nm⟩⟩} with
+fixed n as H(n)
+F
+,
+H(n)
+F
+=
+
+
+...
+...
+...
+...
+...
+· · · nω0 −Ωn A
+2
+0
+· · ·
+· · ·
+n A
+2
+nω0
+n A
+2
+· · ·
+· · ·
+0
+n A
+2
+nω0 + Ω· · ·
+...
+...
+...
+...
+...
+
+
+,
+(10)
+which satisfies H(n)
+F
+|unm⟩⟩= εnm |unm⟩⟩according to
+the Eq. 6. It can be observed that each Fock state en-
+ergy level splits into 2m + 1 sublevels, consistent with
+the periodic nature of the Floquet Hamiltonian.
+The
+off-diagonal elements, proportional to A/2, characterize
+the coupling strength between adjacent Floquet states,
+thereby determining the transition rates between differ-
+ent energy levels. This coupling reflects the influence of
+the periodic driving field and results in transitions medi-
+ated by the exchange of discrete energy quanta of size Ω.
+For more detailed derivations, please refer to the Supple-
+mentary Note I.B.
+Self-induced oscillation by blue-detuned driving
+In the blue-detuned regime, the optomechanical damp-
+ing rate γopt is negative.
+Initially, this results in an
+increase in the oscillator’s effective temperature.
+As
+the overall damping rate γm + γopt becomes negative,
+any small initial fluctuation will grow exponentially over
+time, eventually reaching a steady-state regime. These
+are referred to as self-induced optomechanical oscillations
+(or phonon lasing regime) , where the mechanical oscilla-
+tion amplitude stabilizes at a fixed value Xm. The gov-
+erning dynamical equations are given by:
+˙a1(t) =
+
+−κ1
+2 + i
+
+∆d −g01
+xzpf
+x
+
+a1(t) + √κe1ad, (11)
+d2x(t)
+dt2
++ γm
+dx(t)
+dt
++ ω2
+mx(t) = F(t)
+meff
+,
+(12)
+where the radiation-pressure force F(t) = ℏg01
+xzpf |a1(t)|2 ,
+κ1 is the total decay rate of the cavity-1, ad represents
+the drive photons, and meff is the effective mass of the
+mechanical oscillator.
+Ignoring in the initial phase ϕm, we have x(t) =
+Xm cos(ωmt) + X0.
+In steady state, we define an
+amplitude-dependent effective optomechanical damping
+rate as:
+γopt = −
+⟨F ˙x⟩
+meff ⟨˙x2⟩,
+(13)
+which represents the ratio of the time-averaged power
+input due to this force to the corresponding mechanical
+energy lost. The time-averaged radiation-pressure force

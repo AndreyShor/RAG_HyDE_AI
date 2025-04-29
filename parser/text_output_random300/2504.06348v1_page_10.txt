@@ -1,0 +1,53 @@
+The Hamiltonian in Eq. (3) is written in a general way. That is, for each atom of the catalyst and, if
+desired, for each atom of the reactants, one can decide how many of the electrons are removed, if any.4 A
+conservative approach would be to employ the pseudoion description only for the atoms in the extended
+catalyst, particularly for those atoms away from a chemically active site, whose main purpose in the catalyst
+is to provide increased electronic delocalization (as would appear in a realistic extended system) and behave
+as an effective (small) thermal bath. However, one may liberally and flexibly use pseudoions as replacements
+to all-electron atoms, and check the convergence of the results when varying the number of DoF combined
+into pseudoions. Such quantum dynamical simulations are completely out of reach for classical computers,
+and could produce valuable scientific insight. For example, relative reaction rates between configurations
+(e.g., computed from two different catalyst surfaces/motifs) may display systematic error cancellation giving
+rise to more physically accurate numerical results than one might apriori expect, and be sufficiently accurate
+to rank their relative reactivity. In any case, under reasonable choices the coarse-grained treatment of bulk
+catalytic properties leads to drastic savings for the quantum algorithm compared to the full simulation under
+the Hamiltonian in Eq. (1), with the number of electrons cut by a factor of 10 or more, and lower momentum
+cutoffs for the plane-wave basis set by a factor of up to 1000 [67], at a relatively small price of a more
+complicated form of the modified electron-ion interaction term.
+2.2
+Physically salient and algorithmically efficient quantum state preparations
+The choice of the initial state is consequential and it is informed by a range of considerations. We want our
+choice to capture salient physical features, but only to the extent that they impact the physics of interest,
+while leaving any remaining freedom to improve algorithmic efficiency.
+This ensures that we can make
+maximal use of limited quantum resources to glean useful physical insight.
+As discussed in the introduction (Sec. 1.1), a typical catalytic reaction involves adsorption of reactant
+molecules onto a catalyst surface – possibly with in-situ surface modifications – bond reconfiguration of
+the reactants usually through key intermediate (often rate-determining) states, and desorption of the newly
+reconfigured products. Here we specifically target the study of reaction mechanisms, i.e. bond reconfigura-
+tion, the “quantum heart” of catalytic reactions. The DoF of reactant molecules (or catalyst species) can
+be approximately decomposed at the initial time into four independent classes: the translational motion
+of the center of mass (CoM), the overall rotational motion of the molecule, internal vibrational motions
+of the bonds, and the electronic motion. The total state for each chemical species at the initial time is
+taken to be the product of the wavefunctions for each of its motional classes. Details including algorithmic
+implementations will be given in Sec. 4, while here we only introduce the main conceptual ideas.
+Translational Motion
+Statistical mechanics considerations might suggest preparing the CoM translational degrees of freedom of
+each reactant as a Gaussian wavepacket (e.g., of minimal uncertainty), with velocity taken from a Maxwell
+distribution at the reaction temperature T. However, it is typically the case that most initial kinematic
+configurations will be unlikely to undergo bond reconfigurations – the reactants might not reach the catalyst
+surface at the same space or time, might spend considerable time hopping on the surface of the catalyst
+to/away from the active sites, or might reach the surface at speeds or angles of incidence unsuitable for
+adsorption, a prerequisite for a catalytic reaction to occur. We wish to remove these inactive initial configu-
+rations from our simulation as much as prior knowledge and chemical intuition allows, while still capturing
+relevant physical features:
+1. Chemically active kinematic configurations: For optimal use of quantum computational resources, suf-
+ficiently strong mutual interactions between species (reactants and catalyst) should develop within a
+suitably short time, i.e., we would like the reactants to reach the catalyst surface at similar times,
+and fairly quickly. On the other hand, if the reactants approach the surface with sufficiently large
+velocities, adsorption is unlikely. Hence, while ideally we would initialize the reactants far from each
+other and the surface to ensure small initial interactions – thus justifying independent state prepara-
+tion of each chemical species as per commonly-invoked molecular chaos hypothesis – for the sake of
+4The HGH pseudopotentials often give a couple of options for a given atom, usually corresponding to natural division of
+core and valence electrons based on the orbital structure and filling of the atom.
+10

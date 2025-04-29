@@ -1,0 +1,58 @@
+Swinging small quantum systems out of available values of control parameters
+4
+for optimizing functions that have continuous first and second derivatives. It approximates
+the Hessian matrix inverse and finds a local minimum of function iteratively.
+3. Two-qubit toy model
+Before going to more complicated many-body systems, let us first start with an illustration
+of the method’s performance on quite a simple two-qubit model. Let us consider the system
+described by the Hamiltonian (1) with
+H0 = −∆
+2
+√
+2 (σx
+1 + σx
+2 + σz
+1 + σz
+2) ,
+(4a)
+Hc = −∆σz
+1σz
+2,
+(4b)
+where σx
+i and σz
+i are Pauli matrices acting on i-th qubit. By convention, we introduced
+numerical coefficients such that the energy splitting between two states of qubit (the
+difference between eigenvalues of the drift Hamiltonian H0) is equal ∆, while the intensity
+g(t) is a dimensionless parameter controlling the interaction strength between qubits.
+Consequently, in this model time is naturally measured in units of ¯h/∆.
+This model
+generalizes the exactly solvable two-level system and, although the Hamiltonian can be
+easily diagonalized for any temporal value of g, the closed-form analytical solution for the
+state preparation problem is unknown. The system is known to have an unexpectedly rich
+control phase diagram [27].
+Suppose that our goal is to prepare the target state |tar⟩which is the ground state of
+the Hamiltonian for g2 = 4 by starting from the initial state |ini⟩being the non-interacting
+ground state (g1 = 0). Moreover, we assume that we have experimental access only to
+interactions bounded by gB = −gA = 2, which means that the target state cannot be
+obtained by a direct adiabatic protocol.
+We aim to reach the state |tar⟩by optimizing
+time-dependence g(t) to maximize the final fidelity F after fixed protocol time T with the
+method described in the previous section.
+First, let us note that the fidelity between the initial and the target state is |⟨tar|ini⟩|2 ≈
+0.7815.
+Therefore, this fidelity is a trivial lower bound for optimization since it can be
+obtained by keeping strength constant in time, g(t) ≡0.
+It corresponds to M = 0
+optimization parameters. By increasing M and performing optimization one can increase
+the final fidelity. In Fig. 1a we present the dependence of the highest possible final fidelity
+F(T) obtained for a different number of optimization points M and required protocol
+time T. It is clear that for a fixed period T, one can increase the maximal fidelity which
+eventually saturates at 1. However, for shorter periods T, reaching the fidelity close to 1
+is not possible even for a large number of optimization points M. For example, the final
+fidelity larger than 99% (dashed line) cannot be obtained for periods smaller than limiting
+period TL ≈2.2¯h/∆since a further increase of the number of points M does not change
+the performance (black curve). Complementarily, this fact can be deduced from Fig. 1b
+presenting the minimal duration T needed to reach the final fidelity F = 0.99 for a given
+number of points M. It is clear that for periods shorter than TL (dashed line), an arbitrarily
+large number of points M cannot guarantee saturation of the final fidelity over 99%. This

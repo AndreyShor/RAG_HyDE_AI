@@ -1,0 +1,52 @@
+Physics-informed KAN PointNet
+To construct shared KAN layers in PointNet, we employ Jacobi polynomials. The test case addressed in this
+study involves solving the inverse problem of natural convection over 135 geometries simultaneously, with the goal of
+predicting the velocity, pressure, and temperature fields over these 135 domains. The governing equations consist of
+the conservation of mass, momentum, and energy in two dimensions, which are coupled together. We utilize PyTorch’s
+automatic differentiation [111] to incorporate the partial differential equations into the loss function of PI-KAN-
+PointNet. Additionally, we explore the impact of different types and degrees of Jacobi polynomials on the performance
+of PI-KAN-PointNet. The depth of the network is examined to determine the optimal architecture for solving this
+inverse problem and minimizing computational expenses. Moreover, a comprehensive comparison is made between
+the proposed PI-KAN-PointNet and the physics-informed PointNet with MLPs (i.e., PIPN [20]). Finally, we examine
+a hybrid architecture that integrates KAN and MLP layers within the PI-KAN-PointNet framework. Specifically, we
+analyze the performance of PI-KAN-PointNet, where MLP layers are incorporated in the encoder while KAN layers
+are used in the decoder, and vice versa.
+The remainder of this article is organized as follows. Section 2 provides an overview of the governing equations for
+natural convection. Section 3 details the architecture of KAN layers. Section 4 elaborates on integrating KAN layers
+into PointNet and establishing PI-KAN-PointNet for solving inverse problems. Section 5 covers the computational
+setup, dataset, and details of the deep learning framework. Section 6.1 presents an analysis of PI-KAN-PointNet’s
+performance, including the impact of various parameters on result accuracy. Section 6.2 compares PI-KAN-PointNet
+with physics-informed PointNet using MLPs. Section 6.3 discusses the performance of alternative architectures for
+PI-KAN-PointNet. Section 6.4 proposes a physics-informed PointNet combined with both MLPs and KANs, where
+one serves as the encoder and the other as the decoder, and vice versa. Finally, Section 7 summarizes the research
+findings and discusses potential future directions.
+2. Benchmark case: Natural convection in a square enclosure containing a cylinder
+To assess the capabilities of physics-informed PointNet with KAN for solving inverse problems, we consider the
+benchmark test case of natural convection in a square enclosure with a cylinder, which leads to thermally driven flow.
+A physics-informed neural network we used by Cai et al. [31] to solve an inverse problem involving two-dimensional
+forced convection heat transfer (see Fig. 2 of [31]). Moreover, Cai et al. [31] utilized their proposed physics-informed
+neural network to reconstruct the thermal fields of steady and unsteady mixed convection heat transfer for flow past a
+circular cylinder. Additionally, Wang et al. [30] applied a physics-informed neural network to solve an inverse problem
+in natural convection within a square enclosure containing a circular inner cylinder.
+The governing equations for the conservation of mass, momentum, and energy for an incompressible, steady-state
+flow of a Newtonian fluid in two-dimensional space are given by:
+∇⋅u = 0
+in 𝑉,
+(1)
+𝜌(u ⋅∇)u −𝜇Δu + ∇𝑝= f
+in 𝑉,
+(2)
+𝜌(u ⋅∇)𝑇−𝜅
+𝑐𝑝
+Δ𝑇= 0
+in 𝑉,
+(3)
+where u is the velocity vector with components 𝑢and 𝑣in the 𝑥and 𝑦directions, respectively. The variables 𝑝and
+𝑇represent the pressure and temperature, respectively, while f denotes the external body force, with 𝑓𝑥and 𝑓𝑦
+corresponding to its components in the 𝑥and 𝑦directions. The fluid density is denoted by 𝜌, the dynamic viscosity by
+𝜇, the thermal conductivity by 𝜅, and the specific heat at constant pressure by 𝑐𝑝. Energy dissipation is neglected in
+Eq. 3. The fluid domain 𝑉is a non-simply connected region defined as:
+𝑉∶= 𝐻−𝑊,
+(4)
+A. Kashefi & T. Mukerji: Preprint submitted to Elsevier
+Page 3 of 25

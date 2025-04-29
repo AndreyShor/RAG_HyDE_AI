@@ -1,0 +1,91 @@
+NOTES ON COLOR REDUCTIONS AND γ TRACES
+2
+a
+b
+i
+j
+k
+i
+i
+j
+a
+b
+T i
+ab
+fijk
+δi,j
+δa,b
+Figure 1. Feynman rules for color graphs
+In some sense, we consider color factors as objects in a combinatorial differential geometry with Euclidean
+metric.
+The matrices T i are chosen orthogonal and normalized,
+(3)
+Tr T iT j = δi,j.
+We use orthogonality to express the structure constants fijk in terms of the matrices T i,
+(4)
+fijk = Tr [T i, T j]T k.
+The cyclicity of the trace implies that the fijk are fully anti-symmetric in their indices,
+(5)
+fijk = fjki = fkij = −fikj = −fkji = −fjik.
+The first two identities of (5) allow us to use a graphical representation.
+To T i
+ab we associate a corolla (a vertex with three half-edges). The half-edge i has no orientation, while
+the half-edges a and b are ingoing and outgoing, respectively (see Figure 1).
+To fijk we associate a corolla of three non-oriented half-edges, where we fix a planar representation
+with counter-clockwise i, j, k. The sum over double indices glues the corresponding half-edges. Note that
+matrix products in the T i preserve the orientation. We obtain a graph with fixed planar embedding: a
+ribbon graph. By anti-symmetry, flipping two edges in the vertex fijk gives a minus sign, see Figure 2.
+So, the planar embedding determines the sign of the color factor.
+j
+k
+i
+j
+k
+i
+= −
+Figure 2. Flipping two edges at an adjoint vertex gives a minus sign.
+The graphical representations of (1) to (5) are in Figure 3, where we swapped the sides of (1). To sim-
+plify the graphical notation it is customary to drop the labels of external half-edges using the convention
+that half-edges located at the same position have equal labels.
+Lemma 1. An orthonormal basis of the fundamental (defining) representation of sl(N) are the N × N
+matrices
+T αβ =
+1
+√
+2(Eαβ + Eβα),
+˜T αβ =
+i
+√
+2(Eαβ −Eβα)
+for 1 ≤α < β ≤N,
+T k =
+1
+p
+k(k + 1)
+
+k
+X
+r=1
+Err
+
+−kE(k+1)(k+1)
+
+for k = 1, . . . , N −1,
+(6)
+where (Eab)cd = δa,cδb,d are the elementary matrices. We fix any sequence of αβ in T αβ and ˜T αβ to
+continue the labels 1, . . . , N −1 of T k to N −1 + 2N(N −1)/2 = N 2 −1.
+Proof. The orhonormality of T αβ and ˜T αβ is clear. Because for α ̸= β and any γ we have (no sum)
+Tr EγγEαβ = δα,γTr Eαβ = 0, the T αβ and ˜T αβ are orthogonal to the T k. From
+(T k)2 =
+1
+k(k + 1)
+
+k
+X
+r=1
+Err
+
++ k2E(k+1)(k+1)
+
+we obtain Tr (T k)2 = 1.
+□

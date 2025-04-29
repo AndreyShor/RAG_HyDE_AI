@@ -1,0 +1,126 @@
+11
+F(θ) = P|00⟩cos2
+θ
+2
+
++ P|11⟩sin2
+θ
+2
+
++ AΠ cos
+θ
+2
+
+sin
+θ
+2
+
+(15)
+Here P|ij⟩refers to the probability of measuring state
+|ij⟩, while AΠ is the fitted contrast of the parity oscilla-
+tions, discussed in more detail in Appendix A. In Fig. 11,
+a clear trend is seen that shows reduced infidelity for de-
+creasing entangling angle. This trend is similar to that
+seen by other groups using arbitrary-angle MS(θ) gates
+as well [1, 6].
+Due to significant error bars in our es-
+timates, we caution against deducing a specific scaling
+behavior.
+0
+/8
+/4
+3 /8
+/2
+, Entangling Angle (rad.)
+0.000
+0.005
+0.010
+0.015
+0.020
+0.025
+0.030
+0.035
+Estimated Gate Infidelity
+FIG. 11: Estimated MS(θ) infidelity as a function of θ.
+The infidelity estimate is determined by Eq. 15. Error
+bars are calculated for each independent measurement
+(the state probabilities and the parity oscillations) and
+then summed in quadrature. For the probability
+measurements, 2σ Wilson scores are used. For the
+parity measurement, a maximum likelihood estimation
+is used to fit an amplitude to the parity oscillations, and
+then the 2σ confidence intervals are determined from a
+likelihood estimation performed across a selection of
+oscillation amplitudes around the fitted amplitude.
+B.
+What is the best gate angle to use?
+As shown in Fig. 11, it is clear that the fidelity per gate
+improves with decreasing θ, and in Fig. 3, the decay con-
+stant Mσ,even increases with decreasing θ. However, the
+fidelity per radian of entangling angle is better for large θ
+as seen by the total number of visible Rabi oscillations in
+Fig. 3 improving with increasing θ. By lowering the in-
+tensity of the beam for a fixed gate duration to generate
+smaller θ, we limit the effect of power-dependent errors;
+however, random frequency shifts and noise in the system
+will still cause imprecision in both θ and gate coherence
+that would compound for multiple applications of small-
+angle gates when trying to generate a larger-angle gate.
+Therefore,
+when
+compiling
+quantum
+gates
+with
+continuously-parameterized circuits, the minimal suffi-
+cient entangling angle to achieve some desired unitary
+should be used while putting as much of the entangling
+angle as possible into a single pulse. For example, if a cir-
+cuit calls for a fully-entangling unitary, a single MS(π/2)
+should be used, not two applications of MS(π/4). On the
+other hand, circuits calling for incremental entangling ro-
+tations (e.g., small Trotter steps) should use only as large
+a θ as necessary to take each step. These conditions are
+naturally accomplished when using the KAK decompo-
+sition for arbitrary SU(4) unitary operations [22, 24], a
+standard approach used for circuit compilation. More-
+over, additional compilation techniques are able to uti-
+lize an MS(θ) gateset for improved performance such
+as swap mirroring, reordering qubit labels to reduce en-
+tangling angle on poorer performing pairs, and circuit
+approximation [25].
+VII.
+CONCLUSION
+Tailoring the degree of entanglement in two-qubit oper-
+ations offers greater flexibility in circuit design than with
+a more restricted gateset featuring only maximally entan-
+gling gates. This paired with improved gate performance
+for decreased θ enables decomposition of arbitary unitary
+operations into a minimal set of high performance entan-
+gling operations. We have detailed the key elements of
+implementation that enable the realization of arbitrary-
+angle entangling gates in the QSCOUT system.
+We describe a detailed set of calibrations that result
+in high performance arbitrary-angle gates. Careful char-
+acterization of the saturation and distortion effects on
+the RF amplitude arising from the hardware is used to
+precisely tune the amplitude for a desired arbitrary θ.
+Effects of the fourth-order light shift, namely, phase ac-
+cumulation during an entangling gate that lead to deco-
+herence, are mitigated by careful selection of the tone am-
+plitudes generating MS(θ). We find, however, a residual
+light shift is still present when selecting tone amplitudes
+that result in the best entangling gate coherence. To ad-
+dress this, a dynamic virtual phase shift concurrent with
+the entangling gate is used to nullify the residual light
+shift phase.
+We have also incorporated a series of approaches that
+work to provide holistic improvements in MS(θ) perfor-
+mance. Spectrally compact pulse shaping and motional
+mode balancing minimize the impact of frequency drift
+and reduce displacement errors.
+Additionally, a basis
+transformation of the entangling interaction to ZZ(θ) is
+performed in order to mitigates crosstalk-induced rota-
+tion errors and to isolate the gate from phase instabilities
+arising from different laser propagation paths.

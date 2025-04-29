@@ -1,0 +1,135 @@
+A&A proofs: manuscript no. main
+that the substantial uncertainties on KBe should not hinder further
+analysis.
+We cross-checked our shift-and-add disentangling results
+with the method of Seeburger et al. (2024), which does not re-
+quire orbital parameters as input. This technique provided disen-
+tangled component spectra, RVs for the narrow-lined B star, and
+an inferred mass ratio. The donor star’s RVs are consistent with
+those derived via cross-correlation, within 1–2σ. The inferred
+mass ratio, q ≈0.061, implies a semi-amplitude for the Be star
+of KBe ≈5 km/s, though both q and KBe have significant uncer-
+tainties. Overall, these results align with those obtained from the
+shift-and-add technique.
+The full wavelength range of the observed, disentangled and
+modelled spectra is shown in Fig. B.3. The S/N of the disen-
+tangled spectra, based on the pixel-to-pixel scatter at 4500 Å, is
+approximately 370 for the stripped star and 280 for the Be star.
+However, this estimate does not account for systematic uncer-
+tainties introduced by the disentangling process, which dominate
+the overall uncertainty. By estimating the systematic uncertain-
+ties as the standard deviation of the flux residuals between the
+observed and disentangled spectra, we find these to be roughly
+1.4 times larger than the statistical pixel-based noise.
+Appendix C: Stellar atmosphere models
+For the stripped star, we computed new model atmospheres
+with the non-LTE Potsdam Wolf-Rayet (PoWR) code (Gräfener
+et al. 2002; Hamann & Gräfener 2003; Sander et al. 2015).
+The models were computed, with negligible mass-loss rates;
+˙M = 10−9 M⊙/yr, microturbulent velocity of 10 km/s, and a fixed
+terminal wind velocity 1000 km/s. From these models, synthetic
+spectra were generated for stars of effective temperatures 10,
+12.5, 13, 14, and 15 kK and with surface gravity log g in the
+range 2.0 to 3.0 with step sizes of 0.25 dex. Two sets of abun-
+dances were considered: one with solar composition following
+Asplund et al. (2021), and one representative of a stripped star,
+with nitrogen enrichment and carbon and oxygen depletion. The
+adopted mass fractions are listed in Table C.1. To explore the
+effects of hydrogen depletion, we computed an additional series
+of models with fixed Teff = 13.5 kK and log g = 2.25, but with
+varying hydrogen mass fractions from X = 0.001 to 0.7 in steps
+of 0.1, keeping the CNO-processed abundances fixed.
+Appendix D: Helium enrichment
+Initial comparisons between the disentangled spectrum of the
+stripped star and solar-composition models revealed that helium
+lines were systematically under-predicted (Fig. 7). This discrep-
+ancy points to helium enrichment, as expected for a stripped
+star that has lost much of its hydrogen envelope. To quantify
+the effect, we computed additional PoWR models with fixed
+Teff = 13.5 kK and log g = 2.25, varying only the hydrogen
+(and hence helium) content while keeping the CNO-processed
+abundances fixed. As shown in Fig. D.1, increasing helium en-
+hances the strength of the He I lines. The model with X = 0.3
+best reproduces the observed helium line equivalent widths and
+was adopted as our fiducial model. This value is consistent with
+predictions from the MESA evolutionary tracks (Sect. 8), which
+suggest X ∼0.25 for the stripped star. Notably, the Balmer line
+profiles remain largely unaffected for hydrogen mass fractions
+down to X ∼0.1, supporting the robustness of our flux ratio and
+surface gravity estimates derived from these lines. We note, how-
+ever, that helium enrichment can impact metal line strengths. In
+Table C.1: Mass fractions adopted for the PoWR model stellar
+atmospheres.
+Element
+Mass fraction
+solar (Asplund et al. 2021)
+stripped
+Hydrogen
+0.74
+0.3 (0.001–0.7)
+Helium
+0.24
+0.68 (1-X-Z)
+Nitrogen
+0.0007
+0.007
+Carbon
+0.00255
+0.00075
+Oxygen
+0.0058
+0.0050
+Silicon
+0.00067
+0.00066
+Magnesium
+0.00064
+0.00069
+Iron group
+0.0012
+0.0012
+Notes. The solar abundances follow Asplund et al. (2021), the stripped
+star models are enriched in N and deficient in O and C compared to a
+solar composition. H and He are varied in the stripped-star grid, with
+He determined by Y = 1 −X −Z, we list the adopted best-fit values.
+particular, Si II 4128, 4131 Å lines are somewhat over-predicted
+in the X = 0.3 model. A model with a slightly higher hydro-
+gen content or a lower flux contribution would provide a better
+match. However, given the additional uncertainties related to mi-
+croturbulence and metallicity, we adopt X = 0.3 as the best com-
+promise and defer a detailed abundance analysis to future work.
+Finally, we note that other bloated stripped stars, such as LB-1
+(X ∼0.55, Shenar et al. 2020) and HR 6819 (solar composi-
+tion per Bodensteiner et al. 2020a or X ∼0.55 from El-Badry &
+Quataert 2020), do not show strong evidence for significant hy-
+drogen depletion. This suggests that helium enrichment alone is
+not a definitive indicator of a stripped star, possibly due to mea-
+surement challenges or because these stars retain a substantial
+hydrogen fraction.
+Appendix E: Rotation
+We determined the rotational velocities of the binary compo-
+nents by fitting rotationally broadened models to individual ab-
+sorption lines in the disentangled spectra. For the narrow-lined
+stripped star, we used metal absorption lines while for the Be
+star companion we had to resort to He I lines for lack of strong
+enough metal lines. The model spectra were convolved with a
+Gaussian kernel to account for instrumental broadening (using
+the resolution of the telescope with the lowest resolving power),
+a rotational kernel with varying values of vrot sin i, and a radial-
+tangential kernel with the standard limb-darkening coefficient
+ϵ = 0.6 (Gray 2005; Aerts et al. 2014) and varying the macro-
+turbulent velocity vmac. We adapted the Fortran code rotin3 to
+Python for numerical implementation. For each spectral line, the
+best-fit parameters and their variances were determined using a
+least-squares approach implemented with the curve_fit func-
+tion from the scipy.optimize Python package. The reported
+values and errors for the rotation measurement are derived as the
+weighted mean and standard deviation of the weighted mean,
+calculated from the inverse-variance weighted results of all anal-
+ysed spectral lines.
+Fig. E.1 shows the line profile of the Si III 4552 Å line in the
+disentangled spectrum of the stripped star. Overplotted are the
+best-fit PoWR model spectra (Teff = 13.5 kK, log g = 2.25) with
+nothing but instrumental broadening, only applying rotational
+broadening, only macroturbulent broadening, and a combined
+Article number, page 22 of 28

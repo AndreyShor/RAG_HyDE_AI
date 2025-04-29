@@ -1,0 +1,92 @@
+Threshold-less and Flexibly Tunable Frequency Comb via Floquet Engineering
+Sihan Wang,1, 2, 3, 4 Cheng Wang,5 Matthijs H. J. de Jong,5 Laure Mercier
+de L´epinay,5 Jingwei Zhou,3, 4, ∗Mika A. Sillanp¨a¨a,5 and Yulong Liu1, 2, †
+1Beijing academy of quantum information sciences, Beijing, 100193, China
+2Beijing Key Laboratory of Fault-Tolerant Quantum Computing, Beijing 100193, China
+3Hefei National Research Center for Physics Sciences at Microscale,
+University of Science and Technology of China, Hefei 230026, China
+4CAS Key Laboratory of Microscale Magnetic Resonance,
+University of Science and Technology of China, Hefei 230026, China
+5QTF Centre of Excellence, Department of Applied Physics, Aalto University, FI-00076 Aalto, Finland
+(Dated: April 9, 2025)
+Frequency combs have revolutionized communication, metrology and spectroscopy.
+Numerous
+efforts have been dedicated to developing integrated combs, predominantly relying on Pockels or
+Kerr mechanisms. In this work, we propose and demonstrate a new type of frequency comb—Floquet
+cavity frequency comb—that does not rely on intrinsic non-linearity. By periodically modulating
+the resonance frequency of a cavity, a giant-mode cavity with multiple equally spaced frequency
+components is created. The pump tone interacts with the pre-modulated cavity, generating the
+output frequency comb. This approach offers a flexible tuning range and operates in a threshold-
+less manner, obviating the need to overcome nonlinear initiation thresholds. We implement this on
+a microwave cavity optomechanical system on-chip. Compared to Kerr optomechanical combs, this
+approach efficiently generates comb with pump signal far from the cavity’s intrinsic frequency, and
+the power required for detection is reduced by approximately a factor of 106, providing a promising
+platform for frequency comb generation.
+Introduction
+Frequency combs, composed of discrete, equally spaced
+frequencies [1], have contributed to advancements in op-
+tical communication [2, 3], precision metrology [4, 5],
+spectroscopy [6, 7], and atomic clock [8–10].
+The
+compact on-chip frequency combs (microcombs) include
+microresonator-based combs [11–13] and electro-optic
+(EO) combs [14–18]. Microresonator combs relying on
+Kerr nonlinearity have been successfully demonstrated
+in silica [11], silicon nitride [19], silicon carbide [20], di-
+amond [21], and lithium niobate (LN) [22]. Integrated
+EO combs utilize the Pockels effect, which have also
+recently been realized in thin-film LN devices [14–16]
+and lithium tantalate [18]. Despite these remarkable ad-
+vances, EO and microresonator combs face limitations
+of their generation efficiency [14, 23, 24] or tuning preci-
+sion [19, 25]. However, emerging paradigms for frequency
+comb generation [26–28], which do not rely on intrinsic
+medium properties, are anticipated to further broaden
+the range of applications and facilitate integration with
+diverse physical systems, such as silicon photonic sys-
+tems [29], quantum information [30–33]. They are also
+promising routes to overcome the power limitations of
+lasers in fields like astrocombs [34, 35] and molecular fin-
+gerprinting [6, 36]. Floquet engineering [37], involving
+the periodic time-dependent modulation, has the capa-
+bility to control and generate new multi-mode sidebands
+by tuning energy spectra [38–40], as well as to induce in-
+teractions between modes [41, 42]. These sidebands, act-
+∗zhoujw@ustc.edu.cn
+† liuyl@baqis.ac.cn
+ing as new frequency components, demonstrate that Flo-
+quet engineering is a promising although underexplored
+approach for frequency comb generation, without neces-
+sitating Kerr nonlinearity or Pockels effect.
+In this work, we propose and demonstrate a previ-
+ously unknown type of frequency comb, termed the Flo-
+quet cavity frequency comb. Specifically, by periodically
+modulating the resonance frequency of a cavity, we cre-
+ate a giant-mode cavity with multiple equally spaced fre-
+quency components. Then, a single-frequency pump tone
+is added, interacting with this pre-modulated multi-mode
+structure to generate the output frequency comb. Ad-
+ditionally, the absolute positions of the comb teeth are
+referenced to the frequency of the pump tone, with the in-
+tensity approximately symmetrically distributed around
+the cavity’s intrinsic frequency. Furthermore, in contrast
+to Kerr or EO combs, which require precise frequency
+tuning to match the free spectral range, our approach
+offers a flexible tuning range.
+The frequency compo-
+nents of the Floquet cavity are predefined, enabling the
+frequency comb to exceptionally operate threshold-less:
+without the need to overcome nonlinear initiation thresh-
+olds.
+Based on the proposed theoretical framework, such a
+frequency comb can be realized across a wide range of
+physical systems. Here, we demonstrate its implemen-
+tation for modulating the resonance frequency of a su-
+perconducting microwave cavity via a tunable capacitor,
+which is realized through a mechanical oscillator.
+To
+achieve sinusoidal (cosinusoidal) modulation, we addi-
+tionally employ an auxiliary cavity to establish a con-
+ventional optomechanical coupling, driving the mechan-
+ical oscillator from thermal state into self-induced oscil-
+arXiv:2504.05877v1  [quant-ph]  8 Apr 2025

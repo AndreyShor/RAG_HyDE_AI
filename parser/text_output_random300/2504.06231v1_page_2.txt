@@ -1,0 +1,50 @@
+graph featurization. As shown in Figure 1, such models are highly scalable—often more than
+10x faster and with 8x lower memory footprint than alternative MLIPs, whilst still enjoying
+excellent performance when trained on large ab initio molecular dynamics (AIMD) datasets
+such as OMAT24.
+0.00
+0.25
+0.50
+0.75
+1.00
+1.25
+1.50
+1.75
+2.00
+SRME (lower is better)
+0
+50
+100
+150
+200
+Model Forward Pass Steps/Second
+orb-v3
+con-inf-omat
+orb-v3
+direct-inf-mpa
+orb-v3
+direct-20-omat
+0.4 GB
+5.6 GB
+10.7 GB
+15.9 GB
+21.0 GB
+Models
+Orb V3 Model Family (OMAT)
+Orb V3 Model Family (MPA)
+MACE Model Family
+Mattersim
+7net Model Family
+Orb V2
+Pareto Frontier
+Figure 1: The Pareto frontier for a range of universal Machine Learning Interatomic Potentials.
+The 𝐾𝑆𝑅𝑀𝐸metric assesses a model’s ability to predict thermal conductivity via the Wigner
+formulation of heat transport [31] and requires accurate geometry optimizations as well as
+second and third order derivatives of the PES (computed via finite differences). The y-axis
+measure a model’s forward passes per second on a dense periodic system of 1000 atoms,
+disregarding graph construction time, measured on a NVIDIA H200. Point sizes represent max
+GPU memory usage. Y-axis jitter (+/- 5 steps/second) has been applied to allow visualization
+of overlapping points. Model families include a range of specific models with broadly the
+same architecture, but may be different sizes or trained on different datasets. More details are
+provided in Appendix K.
+2

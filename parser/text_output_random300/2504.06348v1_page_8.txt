@@ -1,0 +1,101 @@
+an extended (condensed phase or large cluster) system, requires a far too large number of degrees of freedom
+(DoF) to brute-force simulate all of the electrons and ions, and a correspondingly large basis size per particle
+to maintain fine resolution of the highly energetic core electrons. In particular, the extended system poses
+the largest difficulty in a dynamical situation since a finite size approximation to a fully extended system,
+even with periodic boundary conditions, needs to be large enough to model realistic physics, i.e. there must
+be sufficient DoF to act as both a surface of a bulk material and a thermal bath for the catalytic reaction. A
+full dynamical simulation of such a large number of degrees of freedom is prohibitively expensive even with
+state-of-the-art current quantum Hamiltonian simulation techniques.
+As a simple yet effective way of eliminating chemically less relevant electronic degrees of freedom, partic-
+ularly those of the subsurface layers of the catalyst, is to employ pseudopotentials. Pseudopotential methods
+are a mainstay in conventional quantum chemistry calculations [57, 58, 59]. The main idea is to replace
+core electron degrees of freedom by an effective modification of the electron-ion interaction - the so-called
+pseudopotential term. The number of removed electronic DoF is a partially tunable knob interpolating be-
+tween an all-electron simulation, and one where all but the outermost valence electrons have been replaced
+by an effective potential. For quantum algorithms, employing pseudopotentials reduces the complexity in
+two ways: first, by reducing the number of electrons in the system; and secondly by reducing the number of
+plane-waves needed for convergence since core electrons tend to have highly oscillatory wavefunctions that
+are no longer required to be captured. A possible complication is whether we can efficiently implement the
+new electron-interaction term on a quantum computer. The answer is affirmative, and Sec. 5 is devoted to
+that analysis.
+Pseudopotentials have been extensively used in classical algorithms for static electronic structure calcula-
+tions, and most recently they have also been employed in quantum algorithms for the same problem [63, 29].
+Here we extend the idea by generalizing pseudopotentials to quantum dynamical evolution, for which the
+notion of a simple one-body potential is no longer applicable. We define a new object - a pseudoion - as
+a point-like dynamical object constructed from combining chemically-inactive core electrons and a nucleus.
+Specifically, for each atom I, we treat ηcore,I core electrons together with the positively charged nucleus (of
+atomic number ZI) as a single ion with positive charge
+ZPI
+I
+= ZI −ηcore,I.
+(2)
+In total, we have ηval = ηel−ηcore valence electrons, where ηcore = Pηion
+I=1 ηcore,I. Note that here valence refers
+to the residual electronic degrees of freedom, which is a parameter rather than a chemically defined property.
+Hence, for each atom, electrons are divided into two sets - valence and core electrons. This modifies the
+Hamiltonian into the following form,
+HPI = −1
+2
+ηval
+X
+i=1
+∇2
+i −
+ηion
+X
+I=1
+1
+2MI
+∇2
+I + 1
+2
+ηval
+X
+i̸=j
+1
+|ri −rj|
+|
+{z
+}
+same as Eq. (1), but only valence electrons
++1
+2
+ηion
+X
+I̸=J
+ZPI
+I ZPI
+J
+|RI −RJ|
+|
+{z
+}
+V PI
+ion
++ V PI
+el−ion,
+(3)
+where V PI
+el−ion is a modified interaction term between the electrons and the newly-defined pseudoions, which,
+as we shall see shortly, is constructed from a pseudopotential.
+There are different classes of pseudopotentials, obtained by the procedures described in Refs. [58, 64, 65,
+66, 60]. We follow the same kind of norm-conserving pseudopotentials recently introduced into quantum
+algorithms [63, 29], specifically the HGH pseudopotentials [66, 60]. However, as stated earlier, we consider
+the problem of simulating dynamics instead. To this end, crucially, we do not make the ubiquitous Born-
+Oppenheimer approximation and consider both the electrons and pseudoions as dynamical and interacting
+objects. Accordingly, we promote the pseudopotentials to operators on the full Hilbert space of electrons
+and pseudoions as follows,
+V PI
+el−ion :=
+ηion
+X
+I=1
+Z
+RI
+V I
+PP(RI) ⊗|R⟩⟨R|I
+(4)
+where V I
+PP(RI) is the pseudopotential, i.e. the sum of potential energy terms imposed on electrons by the
+ion labeled by I at position RI. For simplicity, we take the HGH form from Ref. [60], which expands the
+8

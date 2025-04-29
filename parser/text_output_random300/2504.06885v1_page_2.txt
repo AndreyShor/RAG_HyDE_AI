@@ -1,0 +1,105 @@
+we consider only the case of removing 3 atoms,
+and thus k = N −3.
+To solve the problem we first formulate it as
+a QUBO [8]. QUBOs are paradigmatic formula-
+tions capable of encoding a variety of optimisa-
+tion problems and known to be nondeterministic
+polynomial time hard (NP-hard) to exactly solve
+in worst case [9]. Unless P=NP, these problems
+are intractable for classical computers whereas,
+for quantum computers, modest speed-ups are
+possible [10,11], while they remain unlikely to be
+tractable [12,13] in the worst case. Nonetheless,
+it is believed that the correlations arising in real
+world problems are complex enough to generate
+hard instances and at the same time provide some
+structure to be exploited by a quantum computer
+to potentially solve the problem faster or achieve
+better solutions (e.g. [14,15]).
+Quantum algorithms for optimisation problems
+exist for both gate-based quantum computers
+and quantum annealers.
+In this work, we ap-
+ply two well studied practical approaches, vari-
+ational quantum algorithms (VQAs) and quan-
+tum annealing algorithms (QAAs). Despite the
+simplicity of these methods, and despite efforts
+in investigating VQAs and QAAs in real quan-
+tum hardware, there are significant challenges in
+using these approaches to achieve quantum ad-
+vantage in optimisation. These include difficul-
+ties such as the approximate nature of these al-
+gorithms, issues that inhibit their performance
+such as barren plateaus [16] and non-adiabatic
+effects in QAAs [17]. There are also more prac-
+tical issues around, for example, noise and deco-
+herence [18] and optimisation of controls. As a
+result, there are many open questions that must
+be addressed before quantum advantage may be
+achieved. Valuable insights for dealing with these
+issues can be attained by experimental implemen-
+tation of these algorithms on real near-term quan-
+tum devices.
+Motivated by these challenges, in this work
+we present a systematic testing of performance
+of VQA and QAA methods on commercially-
+available quantum hardware: a gate-based QPU
+(ibm_fez) and a quantum annealer (D-Wave Ad-
+vantage). We use the graphene defect problem as
+our test-case. The simplicity of this model and its
+use in a previous pedagogical study [6] removes
+a level of complexity in understanding our analy-
+sis, making it more accessible. However, most of
+our analysis applies to optimisation problems in
+general.
+Our main contributions are:
+• We synthesize an application-focused bench-
+marking framework for quantum optimisa-
+tion algorithms. We analyse several perfor-
+mance metrics, carefully selected to ensure
+the framework applies to both digital and
+analog methods.
+While this framework is
+built around a specific test-case, the selected
+metrics remain test-case independent.
+As
+such, we anticipate the framework will be
+useful across various problems and research
+themes.
+• We apply this benchmarking framework in
+practice to the selected test-case and at sizes
+that reveal the limitations in the implemen-
+tation of VQAs and QAAs.
+In Section 2 we present other recent efforts
+in benchmarking optimisation algorithms and
+real world implementations.
+We then formu-
+late our specific problem in Section 3.
+In Sec-
+tion 4 we describe our methodology for the cross-
+platform benchmarking including the chosen met-
+rics, whose results we present in Section 5. Fi-
+nally, in Section 6 we discuss open questions
+and future directions. Additional details of our
+methodology are included in the Appendices.
+2
+Related Work
+Progress has been made in solving quantum
+chemistry problems with classical hardware, by
+exploiting domain knowledge about the structure
+of specific problems [19]. While a standard ap-
+proach to solving electronic structure problems
+on classical computers is density functional the-
+ory (DFT) [20], we instead use the QUBO for-
+mulation of the problem given in Ref. [6]. Some
+of the best classical methods for solving QUBOs
+include linear programming (e.g. [21]), greedy al-
+gorithms (e.g. [22]) or heuristics (e.g. [23]).
+More specifically, Ref. [6] demonstrates how
+QAA can be applied to solve a version of the
+graphene defect use-case formulated as a Dens-
+est k-Subgraph (DkS) problem (see Appendix A
+for more detail on its formulation and complex-
+ity). This problem is NP-hard for general k and
+bipartite graphs of degree up to 3 [24]. In [6] an
+2

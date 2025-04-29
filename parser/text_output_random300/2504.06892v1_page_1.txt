@@ -1,0 +1,99 @@
+Applications of Hybrid Machine Learning Methods to Large Datasets: A Case Study
+Georgios Maragkopoulos,1, 2 Nikolaos Stefanakos,1, 2 Aikaterini Mandilara,1, 2 and Dimitris Syvridis1, 2
+1Department of Informatics and Telecommunications,
+National and Kapodistrian University of Athens, Panepistimiopolis, Ilisia, 15784, Greece
+2Eulambia Advanced Technologies, Agiou Ioannou 24,
+Building Complex C, Ag.
+Paraskevi, 15342, Greece
+We combine classical and quantum Machine Learning (ML) techniques to effectively analyze long
+time-series data acquired during experiments. Specifically, we demonstrate that replacing a deep
+classical neural network with a thoughtfully designed Variational Quantum Circuit (VQC) in an ML
+pipeline for multiclass classification of time-series data yields the same classification performance,
+while significantly reducing the number of trainable parameters. To achieve this, we use a VQC based
+on a single qudit, and encode the classical data into the VQC via a trainable hybrid autoencoder
+which has been recently proposed as embedding technique. Our results highlight the importance of
+tailored data pre-processing for the circuit and show the potential of qudit-based VQCs.
+I.
+INTRODUCTION
+Variational Quantum Circuits (VQCs) refer to quan-
+tum circuits with parameterized gates, and they were
+first introduced as the core component of variational
+quantum algorithms [1]. Soon after, they were adopted
+in the field of Quantum Machine Learning (QML) [2, 3]
+as the quantum analogue of classical Neural Networks
+(NNs) [4, 5]. Today, extensive numerical trials on bench-
+mark Machine Learning (ML) problems and theoretical
+investigations suggest that VQCs are not yet sophisti-
+cated enough to outperform NNs. Moreover, the pres-
+ence of barren plateaus [6] poses significant challenges
+in training VQCs. On the other hand, research on the
+structure, capacity and training of VQCs is still ongo-
+ing, and there are conjectures that VQCs may be bet-
+ter suited for handling quantum data or for solving spe-
+cific problems [7], much like quantum computers. Ad-
+ditionally, the performance of VQCs has primarily been
+tested on feature spaces of small dimensions, often re-
+sulting from pre-processing of initial data with the PCA
+method. Open questions thus remain on how VQCs per-
+form on big unstructured data and also whether PCA as
+a pre-processing technique is the most suitable approach.
+In this work, we employ a VQC for a multiclass classifi-
+cation task involving unstructured data acquired during
+experiments with a Quantum Key Distribution (QKD)
+system.
+In previous work [8], we performed the same
+task using a deep NN, providing a basis for compari-
+son.
+Although the number of weights in the VQC is
+approximately one-sixtieth of those in the NN, their per-
+formance, as quantified by several metrics, is shown to
+be comparable. To achieve this high level of performance
+with the VQC, we carefully design its circuit by replac-
+ing qubits with a qudit and by using pre-processing tech-
+niques [9] aimed at optimizing the embedding of classical
+data on the VQC. The results highlight the importance
+of these two aspects of a VQC: their adapted encoding
+within the VQC, and the power of qudits.
+The manuscript is structured as follows. In Section II,
+we review the acquisition and processing of data to per-
+form the classification task using purely classical meth-
+ods. Specifically, we construct an ML pipeline, the fi-
+nal component of which is a deep NN, and we present
+the results of the classification achieved by this classi-
+cal methodology on the test data.
+In Section III, we
+review the main aspects of VQCs made of qudits and
+explain how they can function as Quantum Neural Net-
+works (QNNs). The second key element of this work is
+the targeted encoding of classical data onto a VQC using
+a hybrid method, which we refer to as Quantum Autoen-
+coders (QAEs). QAEs are described in Section IV. In
+Section V, we replace the deep NN in the ML pipeline
+with a VQC composed of a nine-level qudit, where the
+inputs are first pre-processed by a QAE, and present the
+classification results achieved. This is the main model
+suggested in this work, and we refer to it as QAE–qudit
+VQC. For completeness, in the same section, we construct
+alternative hybrid models and compare their classifica-
+tion outcomes with those achieved by the QAE–qudit
+VQC model. In the Discussion section (Section VI), we
+summarize the key findings of this work and the elements
+of our suggested model.
+II.
+DATA ACQUISITION AND A CLASSICAL
+ML PIPELINE FOR THEIR MULTICLASS
+CLASSIFICATION
+In a previous work [8], we used a pair of QKD Toshiba
+terminals, QKD4.2A-MU and QKD4.2B-MU [10], to col-
+lect Quantum Bit Error Rate (QBER) and Secure Key
+Rate (SKR) data [11] under different conditions for the
+QKD fiber channel.
+These conditions include normal
+operation, coexisting classical signals at varying power
+levels, and different degrees of attenuation. More specifi-
+cally, these different conditions define nine distinct labels
+for the data, which we briefly describe here as:
+• Class 0: Normal function
+• Class 1: Coexistence using 1 Laser
+• Class 2: Coexistence using 2 Lasers
+arXiv:2504.06892v1  [quant-ph]  9 Apr 2025

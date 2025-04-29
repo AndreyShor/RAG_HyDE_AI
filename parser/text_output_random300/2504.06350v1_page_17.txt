@@ -1,0 +1,69 @@
+high-efficiency superconducting photo-detectors, which permitted the realization of experiments above
+the CDE. A loophole-free Bell test using an event-ready setup with entangled neutral atoms in [181],
+where atom-photon entanglement and entanglement swapping to prepare entangled spin states of two
+atoms separated by 398 m; In Ref. [182], all three major loopholes were addressed using randomness
+from photons emitted by cosmic sources to determine the measurement settings. This approach effec-
+tively closes the locality loophole by ensuring that the measurement settings are not influenced by any
+local hidden variable by using events that occurred 11 years prior (see sec. 6 for experimental details).
+2.5. Other notions of nonclassicality that can power Cryptography
+Definition 9 (Local Hidden State (LHS) model). Let us consider Alice’s measurements with the POVM
+MA|x = {Ma|x}a on ρAB ∈B(CdA ⊗CdB), such that the update conditional state on Bob’s side is given
+by
+ρa|x =
+σa|x
+pA|X(a|x),
+σa|x = TrA[(Ma|x ⊗1B)ρAB],
+pA|X(a|x) = Trσa|x > 0.
+(29)
+The collection {σa|x}a,x, a.k.a. assemblages, is said to admit a LHS model if there exists: (i) a classi-
+cal random variable λ with probability distribution p(λ), (ii) a set of conditional probability distributions
+p(a|x, λ), (iii) a collection of normalized quantum states {σλ}λ ∈B(HB), such that the following decom-
+position holds (discrete case):
+σa|x =
+X
+λ
+pΛ(λ) pA|XΛ(a|x, λ) σλ,
+∧
+ρB = TrA[ρAB] =
+X
+a
+σa|x
+∀x, a.
+(30)
+Bob performs full tomography of the quantum state ρa|x that is effectively prepared in his lab after
+Alice’s action. Then the LHS correlations are:
+p(a, b|x, y) = pB|Y (b|y, σa|x) = pA|X(a|x)pB|Y (b|y, ρa|x) =
+X
+λ
+pA|XΛ(a|, λ)pB|Y (b|yρa|xλ)pΛ(λ),
+(31)
+where Bob’s conditional probability is pB|Y,ρ(b|y, ρ) = tr[Nb|yρ], for ρ ∈{σa|x}a,x.
+Definition 10 (Quantum Steering). A bipartite quantum state ρAB is said to be unsteerable (from Alice
+to Bob) if Eq. (30) holds, otherwise is said to be steerable (from Alice to Bob), ρAB ∈SA→B.
+In other words, quantum steering is exhibited when the correlations between Alice’s measurement
+outcomes and Bob’s conditional states cannot be explained by a classical mixture of preexisting states
+on Bob’s side. Notice that steering is directional (ρAB ∈SA→B ∧ρAB /∈SB→A). Whether in DI-QKD
+the nonlocal correlation p ∈Q \ L =⇒Alice and Bob are untrusted (their measurement devices are
+“black boxes” – unknown to the experimenter), a certification of a steering state (violation of a steering
+inequality SI) allows one-sided DI-QKD (1SDI-QKD): only Alice can be trusted (her measurement de-
+vices are well-characterized), while Bob’s devices remain untrusted [183] (see section 5.5). Specifically,
+p(ρAB) ∈Q\L =⇒ρAB ∈SA→B =⇒ρAB entangled, but the only if does not hold. Follows a series of in-
+teresting facts: (i) Steering inequality (SI) violation requires a lower CDE than its analogous BI violation,
+known to be more sensitive to detection loopholes. Indeed for loophole-free steering with qubits with N
+measurement settings η∗∝1/N [95, 184, 185]. (ii) SI are easier to test than BI using continuous-variable
+(CV) systems, where high-efficiency Gaussian measurements suffice [186]. The first demonstration was
+realized in “92 using homodyne measurements on entangled optical fields [187]. Since then, a series of
+experiments have demonstrated one-way Gaussian steering [188] and non-Gaussian steering [189]. (iii)
+loophole free SI violations in discrete-variable (DV) systems were demonstated in 2012 [190–192]. These
+experiments used polarization-entangled photon pairs and superconducting detectors to achieve high de-
+tection efficiencies. In Ref [190] the detection loophole is closed by using superconducting detectors,
+Ref. [192] demonstrated steering over 1 km of optical fiber, even with lower detection efficiencies. Detec-
+tion, locality, and measurement-dependence loopholes were closed in a photonic setup with measurements
+spaced 48 meters apart [191]. For more details [193, 194] and sec. 6.
+Contextuality. Rooted in the Kochen-Specker (KS) paradox, contextuality, another nonclassicality no-
+tion, reveals the impossibility of assigning pre-existing values to quantum observables independently of
+measurement context (Def. 1). A contextuality-based DI-QKD scheme, exemplified by the Peres-Mermin
+square [195, 196], uses a bipartite system satisfying KS paradox conditions locally while exhibiting per-
+fect distant correlations [197]. This ensures secure key extraction, as any eavesdropping attempt by Eve
+introduces detectable errors. Unlike Bell-based methods, contextuality relies on the trade-off between
+17

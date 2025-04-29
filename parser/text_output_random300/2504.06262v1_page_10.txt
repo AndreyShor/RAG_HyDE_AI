@@ -1,0 +1,174 @@
+10
+flow of light without energy dissipation, can also be ob-
+served in the linear region of the dispersion, for k⊥< kξ.
+To convince ourselves of this fact, let us recall the Lan-
+dau criterion for superfluidity, which defines a critical
+speed above which a flow dissipates energy in the form
+of density waves. In the case of a transverse flow of the
+background fluid at a velocity v, the energy of the el-
+ementary wave is shifted by k⊥.v due to the Doppler
+effect:
+ΩB(k⊥) = k⊥.v +
+s k2
+⊥
+2k0
+2
++ k2
+⊥|∆n| .
+(44)
+For the flow to generate density waves, the expres-
+sion (44) has to be negative, to be energetically favorable:
+ΩB(k⊥)v=0 + k⊥.v < 0.
+(45)
+As ΩB(k⊥)v=0 > 0, this is possible only if k⊥.v < 0,
+that is if the density wave propagates counter-flow, and if
+ΩB(k⊥)v=0 < |k⊥||v| . These conditions define a critical
+speed for the background flow above which density waves
+are excited:
+vc = min
+k⊥
+ΩB(k⊥)v=0
+|k⊥|
+
+.
+(46)
+This is the Landau criterion for superfluidity (Landau,
+1941; Leggett, 2001).
+If the dispersion is quadratic in
+k⊥, then vc = 0 and energy will always be dissipated in
+the form of density waves. But in the sonic region of the
+dispersion, ΩB(k⊥) = csk⊥and we obtain a finite value
+for the critical velocity which is precisely the speed of
+sound: vc = cs.
+III. WHAT IS THE DIMENSION OF THE SYSTEM?
+So far in this review, we have assumed a perfectly
+monochromatic laser beam, neglecting the temporal di-
+mension and resulting in a 2D+1 description for fluids
+of light. This is the approach widely used in the litera-
+ture. However, the most comprehensive way to describe
+paraxial fluids of light involves considering a full 3D+1
+geometry. In this framework, the three spatial dimen-
+sions are composed of the transverse coordinates (x, y)
+and the physical time coordinate t. In this section, we
+derive a 3D+1 evolution equation starting from optics
+notations and then mapping it to the BEC language.
+A. The role of time: 3D+1 NLSE in nonlinear optics
+We consider a laser with a central frequency ω0, al-
+lowing the field envelope E to vary with time: E(r, t) =
+1
+2E(r, t)ei(k0z−ω0t) + c.c.. This definition describes well a
+pulsed laser, but also applies to continuous wave lasers,
+where the linewidth is finite and could be taken into ac-
+count with a slowly varying envelope. Actually, adding
+this temporal dependency in the envelope describes any
+fluctuations of the laser around the carrier frequency at
+ω0. We write the total field E(r, t) in the frequency do-
+main:
+E(r, ω) = 1
+2E(r, ω −ω0)eik0z + 1
+2E(r, ω + ω0)e−ik0z
+(47)
+≃1
+2E(r, ω −ω0)eik0z.
+(48)
+In the second line, we have neglected the term at ω +
+ω0 since E is supposed to vary slowly compared to the
+frequency ω0. As a result, for frequencies ω around ω0,
+such that |ω −ω0| ≪ω0, only the first term of Eq. (48)
+contributes significantly to the field.
+After re-injecting the envelope of Eq. (47) into the
+paraxial wave equation (25) and writing k2(ω)
+=
+ω2
+c2 ℜ
+
+1 + χ(1)(ω)
+
+, we find the following equation:
+2ik0
+∂E
+∂z (ω −ω0) = −∇2
+⊥E(ω −ω0) −(k2 −k2
+0)E(ω −ω0).
+(49)
+Here, the losses and the nonlinearity, that are not spe-
+cific to the introduction of t in the derivation, have been
+ignored. However, following the same approach as in Sec-
+tion II.B, both could be integrated without difficulties.
+As k is typically of the same order as k0 due to the
+paraxial approximation, we can approximate k2 −k2
+0 ≃
+2k0(k −k0). We then expand k around the carrier fre-
+quency ω0 up to second order:
+k(ω) ≃k(ω0) + 1
+vg
+= ∂k
+∂ω
+
+ω0
+(ω −ω0) + 1
+2 = ∂2k
+∂ω2
+
+ω0
+(ω −ω0)2
+= k0 + 1
+vg
+δω + D0
+2 δω2,
+(50)
+where we defined δω = ω −ω0, and we introduced two
+terms: the group velocity
+1
+vg
+= ∂k
+∂ω
+
+ω0
+and the group
+velocity dispersion D0 = ∂2k
+∂ω2
+
+ω0
+.
+Injecting the expansion in Eq. (49) we find:
+i∂E
+∂z (δω) =
+
+−1
+2k0
+∇2
+⊥−1
+vg
+δω −D0
+2 δω2
+
+E(δω). (51)
+By taking the inverse Fourier transform, and simplifying
+the global phase offset due to the frequency translation
+ω0, we obtain:
+i∂E
+∂z =
+
+−1
+2k0
+∇2
+⊥+ D0
+2
+∂2
+∂t2 −i
+vg
+∂
+∂t
+−iα
+2 −k0
+δn0(r)
+n0
+−k0
+nE
+2
+n0
+|E|2
+
+E,
+(52)

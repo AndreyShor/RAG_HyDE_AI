@@ -1,0 +1,115 @@
+PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY A, VOLUME 383, ISSUE 2289, 2025, DOI:10.1098/RSTA.2024.0146
+11
+: Agent start
+*: Agent stop
+X
+Top-down View
+(a)
+Library building
+(c)
+DJI Mavic Enterprise
+(d)
+(e)
+Executed coverage trajectories
+System snapshot
+UAV 1
+UAV 2
+UAV 3
+Live camera 
+feed
+0
+50
+100
+150
+Time-steps (s)
+50
+100
+150
+Posx (m)
+0
+50
+100
+150
+Time-steps (s)
+50
+100
+150
+Posy (m)
+0
+50
+100
+150
+Time-steps (s)
+10
+20
+30
+40
+Posz (m)
+Position
+0
+50
+100
+150
+Time-steps (s)
+-2
+0
+2
+Velx (m/s)
+0
+50
+100
+150
+Time-steps (s)
+-2
+0
+2
+Vely (m/s)
+0
+50
+100
+150
+Time-steps (s)
+-1
+0
+1
+Velz (m/s)
+Velocity
+(b)
+: Agent 1
+: Agent 3
+: Agent 2
+Fig. 5.
+Real-world experimental evaluation of the proposed collaborative 3D coverage controller: (a) Building for coverage, (b) Generated collaborative
+coverage plans with 3 UAV agents, (c) Real-time monitoring of mission progress, (d) DJI Mavic drones used in the experiment, (e) Telemetry data.
+monitoring was conducted using our dedicated multi-UAV multi-tasking platform [23], as illustrated in Fig. 5(c). While this
+prototype implementation was not optimal, it successfully demonstrated the proposed approach’s effectiveness and revealed
+limitations and areas for future improvement. Notably, reliance on GPS positioning introduced errors and inconsistencies in UAV
+localization, resulting in distorted coverage plans in certain cases. Additionally, communication delays due to network latency
+affected the UAVs’ operation, and environmental disturbances caused deviations from the planned trajectories. Finally, with the
+current prototype implementation, we were unable to evaluate the real-time capabilities of the proposed controller or thoroughly
+assess its performance in real-world scenarios. For future work, we aim to co-design the software and hardware components of
+the proposed controller to facilitate its deployment on real-world platforms. Promising avenues for further research include the
+development of efficient real-time mixed-integer programming (MIP) controllers via adaptive neighborhood search techniques
+[24], and learning-based approaches [25].
+VI. WAY FORWARD IN UAV SWARM SYSTEMS
+Swarm systems have the potential to revolutionize society, the economy, technology, and various other fields by enhancing
+efficiency, scalability, and adaptability across a wide range of applications. In emergency response, swarms of autonomous
+drones and ground vehicles can cooperatively patrol [26] and search areas not previously encountered, locate victims, gather
+real-time information, and execute complex missions with minimal human oversight, thereby enhancing situational awareness
+and operational capabilities. Meanwhile, in military contexts, swarm technologies have the potential to create coordinated
+defense mechanisms for surveillance and reconnaissance. These fields exemplify the potential of swarm system technologies
+in tackling complex challenges across diverse sectors through the application of collective intelligence principles. However,
+despite recent progress in various aspects of swarming systems [27]–[29], numerous challenges remain before these systems
+reach the required level of maturity. These challenges range from technological issues, such as the development of smarter,
+more compact machines, to interactive aspects, including the creation of innovative interfaces and modes of communication,
+and extend to socio-technical issues related to evaluating trustworthiness and addressing the ethical and legal ramifications
+of deploying swarm systems. In this work, we address several limitations of existing multi-UAV and swarm systems for
+coverage planning by developing an intelligent distributed model predictive controller. This controller incorporates light-path
+propagation constraints, allowing for the generation of optimal, complementary look-ahead trajectories for the efficient coverage
+of 3D objects of interest. However, numerous open challenges and limitations persist, and overcoming these obstacles will be
+crucial for advancing coverage planning and the field of swarm systems in general, as elaborated next:
+a) Scalability and Coordination: A major challenge for UAV swarm systems is their scalability. As the swarm size grows,
+managing communication, coordination, and control becomes exponentially more complex. Existing algorithms and frameworks,
+including this work, struggle to scale effectively when the number and interactions among the UAVs increases. Currently this
+problem is handled by various distributed frameworks which although can handle large number of agents, they only generate
+myopic and greedy plans [29]. On the other hand, to enable the generation of complimentary look-ahead coverage plans,
