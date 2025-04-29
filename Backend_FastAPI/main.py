@@ -49,7 +49,7 @@ async def send_llm_request(request: ChatRequest): # type: ignore
         elif(llm.has_physics_prefix(lastMessage)):
             print("response physics")
             lastMessage = lastMessage.removeprefix("phy:").removeprefix("Phy:")
-            response = llm.get_response_as_physics_guru_RAG(lastMessage)
+            response = llm.get_repsone_relative_to_person_info_RAG(lastMessage, "john")
         else:
             print("general response")
             response = llm.get_response_normal(lastMessage)

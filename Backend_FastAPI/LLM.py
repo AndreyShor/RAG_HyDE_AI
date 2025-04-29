@@ -135,7 +135,7 @@ class LLM():
 
     def get_response_as_physics_guru_HyDE(self, prompt: str):
         """This function is used to get the response from the LLM with HyDE (Hypothetical Document Embeddings) on Physics Data Set."""
-
+        
         # Define the prompt template
         output_parser = StrOutputParser()
 
@@ -216,20 +216,27 @@ class LLM():
             ("user", "{input}")
         ])
 
+        #  Retrieve User Data
         start_time = time.time()
-
         db = MongoDBConnection()
         userData = db.find_one("profiles", {"_id": personName})
         userData = json.dumps(userData, default=str) 
         durationRAG = time.time() - start_time
-        context = "You are given user profile. Dont tell user anything about his profile at all just answer his quesion without any aditional questions " + userData
+        
+        # Mainly for logging purposes
+        context_list: List[str] = []
 
-        promptContext = context + "\n" + prompt
+        # Create Query to LLM
+        instruction = "You are given user profile. Don't tell user anything about his profile at all. Just answer his question without any additional questions."
+        formatted_user_data = self._format_text(userData)  # You can define your own formatting function if needed
+        promptContext = f"{instruction}\n\nUser Profile Description:\n{formatted_user_data}\n"
+        context_list.append(promptContext)
 
+        promptContext = promptContext + "\n User prompt to answer:\n" +  prompt
 
         chain = prompt_template | self.llm | output_parser
 
-                # Run the chain and get the response
+        # Run the chain and get the response
         try:
             print("\nSending prompt to local LLM via LangChain...")
 
@@ -237,7 +244,7 @@ class LLM():
             response = chain.invoke({"input": promptContext})
             durationResponse = time.time() - start_time
 
-            self.logger.log_rag(prompt, context, response, durationResponse, durationRAG) # type: ignore
+            self.logger.log_rag(prompt, context_list, response, durationResponse, durationRAG) # type: ignore
 
             return response
         except Exception as e:
@@ -278,15 +285,25 @@ class LLM():
         db = MongoDBConnection()
         userData = db.find_one("profiles", {"_id": personName})
         userData = json.dumps(userData, default=str) 
-        userInfo = "There is " + personName + "data about his preferences and life:" + userData
         durationRAG = time.time() - start_time
 
+        # Mainly for logging purposes
+        context_list: List[str] = []
+
+        # Create Query to LLM
+        instruction = "You are given user profile. Don't tell user anything about his profile at all. Just answer his question without any additional questions."
+        formatted_user_data = self._format_text(userData)  # You can define your own formatting function if needed
+        promptContext = f"{instruction}\n\nUser Profile Description:\n{formatted_user_data}\n"
+        context_list.append(promptContext)
+
+        promptContext = promptContext + "\n User prompt to answer:\n" +  prompt
+
         # Construct final prompt
-        finalPrompt = agentInstruction + "\n" + userInfo + "\n" +prompt
+        finalPrompt = "Use agent suggestion to give resposne: " +  agentInstruction + "\n" + promptContext
         
         chain = prompt_template | self.llm | output_parser
 
-                # Run the chain and get the response
+        # Run the chain and get the response
         try:
             print("\nSending prompt to local LLM via LangChain...")
             start_time = time.time()
@@ -294,7 +311,7 @@ class LLM():
             durationResponse = time.time() - start_time
 
             # Log Creation
-            self.logger.log_hyde(prompt, agentInstruction, userInfo, response, durationResponse, durationRAG, durationAgent) # type: ignore
+            self.logger.log_hyde(prompt, agentInstruction, context_list, response, durationResponse, durationRAG, durationAgent) # type: ignore
             return response
         except Exception as e:
             print(f"\nAn error occurred:")
