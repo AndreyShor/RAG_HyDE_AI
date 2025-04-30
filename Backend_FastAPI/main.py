@@ -11,7 +11,6 @@ from routeModel import ChatRequest
 # LLM Functionality for API
 from LLM import LLM
 
-
 # LLM Setings
 local_api_base = "http://host.docker.internal:1234/v1"
 local_api_key = "lm-studio"
@@ -43,16 +42,16 @@ async def send_llm_request(request: ChatRequest): # type: ignore
             local_api_base=local_api_base
         )
 
-        if(llm.has_self_reference(lastMessage)):
-            print("Response persona")
-            response = llm.get_repsone_relative_to_person_info_HyDE(lastMessage, "john")
-        elif(llm.has_physics_prefix(lastMessage)):
+        # if(llm.has_self_reference(lastMessage)):
+        #     print("Response persona")
+        #     response = llm.get_repsone_relative_to_person_info_HyDE(lastMessage, "john")
+        if(llm.has_physics_prefix(lastMessage)):
             print("response physics")
             lastMessage = lastMessage.removeprefix("phy:").removeprefix("Phy:")
-            response = llm.get_repsone_relative_to_person_info_RAG(lastMessage, "john")
+            response = llm.get_repsone_relative_to_person_info_RAG(lastMessage, 'john')
         else:
             print("general response")
-            response = llm.get_response_normal(lastMessage)
+            response = llm.get_repsone_relative_to_person_info_RAG(lastMessage, 'john')
 
         return {"message": response}
 
